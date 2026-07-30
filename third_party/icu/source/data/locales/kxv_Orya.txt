@@ -270,6 +270,7 @@ kxv_Orya{
             }
             eras{
                 abbreviated{
+<<<<<<< HEAD
                     0{"ବିସି"}
                     1{"ଏଡି"}
                 }
@@ -284,6 +285,22 @@ kxv_Orya{
                 wide%variant{
                     0{"ବିଫୋର କମନ ଏରା"}
                     1{"କମନ ଏରା"}
+=======
+                    "ବିସି",
+                    "ଏଡି",
+                }
+                abbreviated%variant{
+                    "ବିସିଇ",
+                    "ସିଇ",
+                }
+                wide{
+                    "ବିଫୋର କ୍ରାଇଷ୍ଟ",
+                    "ଆନ୍ନା ଡୋମିନି",
+                }
+                wide%variant{
+                    "ବିଫୋର କମନ ଏରା",
+                    "କମନ ଏରା",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
             intervalFormats{

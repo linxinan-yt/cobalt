@@ -18,6 +18,12 @@ fr{
         "Africa:Mogadishu"{
             ec{"Mogadiscio"}
         }
+<<<<<<< HEAD
+=======
+        "Africa:Ndjamena"{
+            ec{"N’Djamena"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Africa:Tripoli"{
             ec{"Tripoli (Libye)"}
         }
@@ -33,6 +39,15 @@ fr{
         "America:Cayman"{
             ec{"Caïmans"}
         }
+<<<<<<< HEAD
+=======
+        "America:Cordoba"{
+            ec{"Córdoba"}
+        }
+        "America:Cuiaba"{
+            ec{"Cuiabá"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Detroit"{
             ec{"Détroit"}
         }
@@ -93,6 +108,12 @@ fr{
         "America:Puerto_Rico"{
             ec{"Porto Rico"}
         }
+<<<<<<< HEAD
+=======
+        "America:Santarem"{
+            ec{"Santarém"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Santo_Domingo"{
             ec{"Saint-Domingue"}
         }
@@ -343,6 +364,15 @@ fr{
         "Europe:Warsaw"{
             ec{"Varsovie"}
         }
+<<<<<<< HEAD
+=======
+        "Indian:Comoro"{
+            ec{"Comores"}
+        }
+        "Indian:Mahe"{
+            ec{"Mahé"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Indian:Mauritius"{
             ec{"Maurice"}
         }

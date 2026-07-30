@@ -23,8 +23,12 @@
 #include "components/network_hints/renderer/web_prescient_networking_impl.h"
 #include "components/surface_embed/renderer/create_plugin.h"
 #include "components/web_cache/renderer/web_cache_impl.h"
+<<<<<<< HEAD
 #include "content/common/pseudonymization_salt.h"
 #include "content/common/skia_utils.h"
+=======
+#include "build/buildflag.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "content/public/common/content_switches.h"
 #include "content/public/common/pseudonymization_util.h"
 #include "content/public/common/web_identity.h"
@@ -206,6 +210,7 @@ class ShellContentRendererUrlLoaderThrottleProvider
       const network::ResourceRequest& request) override {
     std::vector<std::unique_ptr<blink::URLLoaderThrottle>> throttles;
     if (local_frame_token.has_value()) {
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
       auto throttle =
           content::MaybeCreateIdentityUrlLoaderThrottle(base::BindRepeating(
               [](const blink::LocalFrameToken& token,
@@ -227,6 +232,7 @@ class ShellContentRendererUrlLoaderThrottleProvider
               local_frame_token.value(), main_thread_task_runner_));
       if (throttle)
         throttles.push_back(std::move(throttle));
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
     }
 
     return throttles;

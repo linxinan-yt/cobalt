@@ -285,6 +285,13 @@ gd{
                 other{"{0} sna deich mìltean"}
                 two{"{0} sna deich mìltean"}
             }
+            portion-per-1e9{
+                dnam{"pàirt sa bhillean"}
+                few{"{0} pàirtean sa bhillean"}
+                one{"{0} phàirt sa bhillean"}
+                other{"{0} pàirt sa bhillean"}
+                two{"{0} phàirt sa bhillean"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -468,9 +475,17 @@ gd{
                 two{"{0} nano-diog"}
             }
             night{
+<<<<<<< HEAD
                 few{"{0} oidhcheannan"}
                 one{"{0} oidhche"}
                 other{"{0} oidhche"}
+=======
+                dnam{"oidhche"}
+                few{"{0} oidhcheannan"}
+                one{"{0} oidhche"}
+                other{"{0} oidhche"}
+                per{"{0}/oidhche"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 two{"{0} oidhche"}
             }
             quarter{
@@ -1229,6 +1244,13 @@ gd{
                 other{"{0} mìle mara san uair"}
                 two{"{0} mhìle mara san uair"}
             }
+            light-speed{
+                dnam{"solas"}
+                few{"{0} solasan"}
+                one{"{0} sholas"}
+                other{"{0} solas"}
+                two{"{0} sholas"}
+            }
             meter-per-second{
                 dnam{"meatair san diog"}
                 few{"{0} meatairean san diog"}
@@ -1728,6 +1750,12 @@ gd{
             permyriad{
                 dnam{"‱"}
             }
+            portion-per-1e9{
+                few{"{0}ppb"}
+                one{"{0}ppb"}
+                other{"{0}ppb"}
+                two{"{0}ppb"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1894,6 +1922,10 @@ gd{
                 two{"{0}ns"}
             }
             night{
+<<<<<<< HEAD
+=======
+                dnam{"oidhche"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 few{"{0}oidh."}
                 one{"{0}oidh."}
                 other{"{0}oidh."}
@@ -2617,6 +2649,10 @@ gd{
                 two{"{0}kn"}
             }
             light-speed{
+<<<<<<< HEAD
+=======
+                dnam{"solas"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 few{"{0}solas."}
                 one{"{0}sholas"}
                 other{"{0}solas"}
@@ -3055,6 +3091,9 @@ gd{
             }
             permyriad{
                 dnam{"sna deich mìltean"}
+            }
+            portion-per-1e9{
+                dnam{"pàirt/billean"}
             }
         }
         consumption{

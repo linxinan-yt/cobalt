@@ -510,8 +510,28 @@ rtc_library("fake_network") {
 
 if (rtc_include_tests) {
   if (!build_with_chromium) {
+<<<<<<< HEAD
     rtc_cc_test("bitrate_allocator_unittest") {
       sources = [ "bitrate_allocator_unittest.cc" ]
+=======
+    rtc_library("call_tests") {
+      testonly = true
+
+      sources = [
+        "bitrate_allocator_unittest.cc",
+        "bitrate_estimator_tests.cc",
+        "call_unittest.cc",
+        "flexfec_receive_stream_unittest.cc",
+        "payload_type_picker_unittest.cc",
+        "receive_time_calculator_unittest.cc",
+        "rtp_bitrate_configurator_unittest.cc",
+        "rtp_demuxer_unittest.cc",
+        "rtp_payload_params_unittest.cc",
+        "rtp_transport_controller_send_unittest.cc",
+        "rtp_video_sender_unittest.cc",
+        "rtx_receive_stream_unittest.cc",
+      ]
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       deps = [
         ":bitrate_allocator",
         ":call",

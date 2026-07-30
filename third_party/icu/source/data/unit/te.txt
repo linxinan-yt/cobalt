@@ -217,6 +217,11 @@ te{
                 one{"{0} పెర్మేరియాడ్"}
                 other{"{0} పెర్మేరియాడ్"}
             }
+            portion-per-1e9{
+                dnam{"ప్రతి బిలియన్‌కి భాగాలు"}
+                one{"ప్రతి బిలియన్‌కి {0} భాగం"}
+                other{"ప్రతి బిలియన్‌కి {0} భాగాలు"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -350,6 +355,12 @@ te{
                 other{"{0} నానోసెకన్లు"}
             }
             night{
+<<<<<<< HEAD
+=======
+                dnam{"రాత్రి"}
+                one{"{0} రాత్రి"}
+                other{"{0} రాత్రులు"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 per{"ఒక రాత్రికి {0}"}
             }
             quarter{
@@ -864,6 +875,11 @@ te{
                 one{"{0} నాట్"}
                 other{"{0} నాట్‌లు"}
             }
+            light-speed{
+                dnam{"లైట్"}
+                one{"{0} లైట్"}
+                other{"{0} లైట్"}
+            }
             meter-per-second{
                 dnam{"మీటర్లు/సెకను"}
                 one{"సెకనుకు {0} మీటరు"}
@@ -1213,8 +1229,15 @@ te{
                 other{"{0}నె"}
             }
             night{
+<<<<<<< HEAD
                 one{"{0}రాత్రి"}
                 other{"{0}రాత్రులు"}
+=======
+                dnam{"రాత్రులు"}
+                one{"{0}రాత్రి"}
+                other{"{0}రాత్రులు"}
+                per{"రాత్రికి {0}"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 one{"{0}క్వా"}
@@ -1356,6 +1379,11 @@ te{
                 dnam{"కి.మీ/గం"}
                 one{"{0}కి.మీ/గం"}
                 other{"{0}కి.మీ/గం"}
+            }
+            light-speed{
+                dnam{"లైట్"}
+                one{"{0} లైట్"}
+                other{"{0} లైట్"}
             }
             mile-per-hour{
                 one{"{0} మై/గం."}
@@ -1602,6 +1630,9 @@ te{
             }
             permyriad{
                 dnam{"పెర్మేరియాడ్"}
+            }
+            portion-per-1e9{
+                dnam{"భాగాలు/బిలియన్"}
             }
         }
         consumption{

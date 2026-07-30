@@ -7,9 +7,15 @@ ro{
             g-force{
                 case{
                     genitive{
+<<<<<<< HEAD
                         few{"{0} forțe g"}
                         one{"unei forțe g"}
                         other{"{0} de forțe g"}
+=======
+                        few{"{0} forță g"}
+                        one{"unei forțe g"}
+                        other{"{0} forță g"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     }
                 }
                 few{"{0} forțe g"}
@@ -487,6 +493,20 @@ ro{
                 one{"{0} la zece mii"}
                 other{"{0} la zece mii"}
             }
+            portion-per-1e9{
+                case{
+                    genitive{
+                        few{"{0} părți pe miliard"}
+                        one{"unei părți pe miliard"}
+                        other{"{0} de părți pe miliard"}
+                    }
+                }
+                dnam{"părți pe miliard"}
+                few{"{0} părți pe miliard"}
+                gender{"feminine"}
+                one{"{0} parte pe miliard"}
+                other{"{0} de părți pe miliard"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -834,6 +854,10 @@ ro{
                 gender{"feminine"}
                 one{"{0}/noapte"}
                 other{"{0} de nopți"}
+<<<<<<< HEAD
+=======
+                per{"{0}/noapte"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 case{
@@ -1933,7 +1957,22 @@ ro{
                 other{"{0} de noduri"}
             }
             light-speed{
+<<<<<<< HEAD
                 gender{"feminine"}
+=======
+                case{
+                    genitive{
+                        few{"{0} lumină"}
+                        one{"{0} lumină"}
+                        other{"{0} lumină"}
+                    }
+                }
+                dnam{"lumină"}
+                few{"{0} lumină"}
+                gender{"feminine"}
+                one{"{0} lumină"}
+                other{"{0} lumină"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             meter-per-second{
                 case{
@@ -2382,6 +2421,9 @@ ro{
                 one{"{0} ‱"}
                 other{"{0} ‱"}
             }
+            portion-per-1e9{
+                dnam{"părți/miliard"}
+            }
         }
         consumption{
             mile-per-gallon{
@@ -2415,6 +2457,13 @@ ro{
                 few{"{0} l"}
                 one{"{0} l"}
                 other{"{0} l"}
+            }
+            night{
+                dnam{"nopți"}
+                few{"{0} nopți"}
+                one{"{0} noapte"}
+                other{"{0} de nopți"}
+                per{"{0}/noapte"}
             }
             week{
                 dnam{"săpt."}
@@ -2481,6 +2530,14 @@ ro{
                 few{"{0} de Hg"}
                 one{"{0} de Hg"}
                 other{"{0} de Hg"}
+            }
+        }
+        speed{
+            light-speed{
+                dnam{"lumină"}
+                few{"{0} lumină"}
+                one{"{0} lumină"}
+                other{"{0} lumină"}
             }
         }
         torque{
@@ -2615,6 +2672,7 @@ ro{
                 one{"{0} mol"}
                 other{"{0} moli"}
             }
+<<<<<<< HEAD
             ofglucose{
                 dnam{"Glc"}
             }
@@ -2625,6 +2683,9 @@ ro{
                 other{"{0} de părți"}
             }
             part-per-1e9{
+=======
+            portion-per-1e9{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 dnam{"părți/miliard"}
             }
         }
@@ -2896,6 +2957,14 @@ ro{
                 few{"{0} de Hg"}
                 one{"{0} de Hg"}
                 other{"{0} de Hg"}
+            }
+        }
+        speed{
+            light-speed{
+                dnam{"lumină"}
+                few{"{0} lumină"}
+                one{"{0} lumină"}
+                other{"{0} lumină"}
             }
         }
         speed{

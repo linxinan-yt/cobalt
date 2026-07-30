@@ -30,7 +30,10 @@
 #include <vector>
 
 #include "perfetto/base/build_config.h"
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/type_builder_functions/type_builders.cc
 #include "perfetto/base/compiler.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/type_builders.cc
 #include "perfetto/base/logging.h"
 #include "perfetto/base/status.h"
 #include "perfetto/ext/base/flat_hash_map.h"
@@ -40,9 +43,13 @@
 #include "perfetto/public/compiler.h"
 #include "perfetto/trace_processor/basic_types.h"
 #include "src/trace_processor/containers/interval_tree.h"
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/type_builder_functions/type_builders.cc
 #include "src/trace_processor/containers/string_pool.h"
 #include "src/trace_processor/core/plugin/plugin.h"
 #include "src/trace_processor/perfetto_sql/engine/perfetto_sql_connection.h"
+=======
+#include "src/trace_processor/perfetto_sql/engine/perfetto_sql_engine.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/type_builders.cc
 #include "src/trace_processor/perfetto_sql/intrinsics/types/array.h"
 #include "src/trace_processor/perfetto_sql/intrinsics/types/counter.h"
 #include "src/trace_processor/perfetto_sql/intrinsics/types/node.h"
@@ -69,7 +76,11 @@ inline void HashSqlValue(base::MurmurHashCombiner& h, const SqlValue& v) {
   h.Combine(v.type);
   switch (v.type) {
     case SqlValue::Type::kString:
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/type_builder_functions/type_builders.cc
       h.Combine(base::StringView(v.AsString()));
+=======
+      h.Combine(v.AsString());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/type_builders.cc
       break;
     case SqlValue::Type::kDouble:
       h.Combine(v.AsDouble());
@@ -525,9 +536,15 @@ struct CounterPerTrackAgg
         new_rows_track->last_equal_id = id;
         new_rows_track->last_equal_ts = ts;
         new_rows_track->last_equal_val = val;
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/type_builder_functions/type_builders.cc
         // TODO(b/509816724): In the future we should also support "lagging" -
         // if the next one has the same value as the previous, we should remove
         // the previous.
+=======
+        // TODO(mayzner): In the future we should also support "lagging" - if
+        // the next one has the same value as the previous, we should remove the
+        // previous.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/type_builders.cc
         return;
       } else {
         if (new_rows_track->last_equal_ts != 0) {
@@ -645,6 +662,7 @@ TypeBuilderFunctionsPlugin::~TypeBuilderFunctionsPlugin() = default;
 
 }  // namespace
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/type_builder_functions/type_builders.cc
 void RegisterPlugin() {
   static PluginRegistration reg(
       []() -> std::unique_ptr<PluginBase> {
@@ -654,6 +672,26 @@ void RegisterPlugin() {
       TypeBuilderFunctionsPlugin::kDepIds.data(),
       TypeBuilderFunctionsPlugin::kDepIds.size());
   base::ignore_result(reg);
+=======
+base::Status RegisterTypeBuilderFunctions(PerfettoSqlEngine& engine,
+                                          StringPool* pool) {
+  RETURN_IF_ERROR(engine.RegisterAggregateFunction<ArrayAgg>(nullptr));
+  RETURN_IF_ERROR(engine.RegisterFunction<Struct>(nullptr));
+  RETURN_IF_ERROR(engine.RegisterAggregateFunction<RowDataframeAgg>(nullptr));
+  // Use a static UserData since aggregate functions don't take ownership.
+  static auto interval_tree_user_data =
+      perfetto_sql::PartitionedTable::UserData{pool};
+  RETURN_IF_ERROR(engine.RegisterAggregateFunction<IntervalTreeIntervalsAgg>(
+      &interval_tree_user_data));
+  RETURN_IF_ERROR(
+      engine.RegisterAggregateFunction<CounterPerTrackAgg>(nullptr));
+
+#if PERFETTO_BUILDFLAG(PERFETTO_LLVM_SYMBOLIZER)
+  RETURN_IF_ERROR(engine.RegisterAggregateFunction<SymbolizeAgg>(nullptr));
+#endif
+
+  return engine.RegisterAggregateFunction<NodeAgg>(nullptr);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/type_builders.cc
 }
 
 }  // namespace perfetto::trace_processor::type_builder_functions

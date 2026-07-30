@@ -30,9 +30,12 @@
 #include "src/trace_processor/importers/common/cpu_tracker.h"
 #include "src/trace_processor/importers/common/event_tracker.h"
 #include "src/trace_processor/importers/common/flow_tracker.h"
+<<<<<<< HEAD
 #include "src/trace_processor/importers/common/global_metadata_tracker.h"
 #include "src/trace_processor/importers/common/global_stats_tracker.h"
 #include "src/trace_processor/importers/common/gpu_tracker.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "src/trace_processor/importers/common/import_logs_tracker.h"
 #include "src/trace_processor/importers/common/machine_tracker.h"
 #include "src/trace_processor/importers/common/mapping_tracker.h"
@@ -104,10 +107,19 @@ void InitPerMachineState(TraceProcessorContext* context, int64_t machine_id) {
   context->symbol_tracker = Ptr<SymbolTracker>::MakeRoot(context);
   context->machine_tracker = Ptr<MachineTracker>::MakeRoot(context, machine_id);
   context->process_tracker = Ptr<ProcessTracker>::MakeRoot(context);
+<<<<<<< HEAD
   context->mapping_tracker = Ptr<MappingTracker>::MakeRoot(context);
   context->cpu_tracker = Ptr<CpuTracker>::MakeRoot(context);
   context->gpu_tracker = Ptr<GpuTracker>::MakeRoot(context);
   context->user_tracker = Ptr<UserTracker>::MakeRoot(context);
+=======
+  std::unique_ptr<ClockSynchronizerListenerImpl> clock_tracker_listener =
+      std::make_unique<ClockSynchronizerListenerImpl>(context);
+  context->clock_tracker =
+      Ptr<ClockTracker>::MakeRoot(std::move(clock_tracker_listener));
+  context->mapping_tracker = Ptr<MappingTracker>::MakeRoot(context);
+  context->cpu_tracker = Ptr<CpuTracker>::MakeRoot(context);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 void CopyPerMachineState(const TraceProcessorContext* source,
@@ -117,8 +129,11 @@ void CopyPerMachineState(const TraceProcessorContext* source,
   dest->process_tracker = source->process_tracker.Fork();
   dest->mapping_tracker = source->mapping_tracker.Fork();
   dest->cpu_tracker = source->cpu_tracker.Fork();
+<<<<<<< HEAD
   dest->gpu_tracker = source->gpu_tracker.Fork();
   dest->user_tracker = source->user_tracker.Fork();
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 void InitPerTraceState(TraceProcessorContext* context, TraceId trace_id) {
@@ -126,7 +141,11 @@ void InitPerTraceState(TraceProcessorContext* context, TraceId trace_id) {
       TraceProcessorContext::TraceState{trace_id});
   context->content_analyzer = nullptr;
   context->import_logs_tracker =
+<<<<<<< HEAD
       Ptr<ImportLogsTracker>::MakeRoot(context, trace_id);
+=======
+      Ptr<ImportLogsTracker>::MakeRoot(context, raw_trace_id);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 void CopyTraceState(const TraceProcessorContext* source,
@@ -192,11 +211,16 @@ void InitGlobalState(TraceProcessorContext* context, const Config& config) {
   context->track_group_idx_state =
       Ptr<TrackCompressorGroupIdxState>::MakeRoot();
   context->stack_profile_tracker = Ptr<StackProfileTracker>::MakeRoot(context);
+<<<<<<< HEAD
   context->profiler_sample_tracker =
       Ptr<ProfilerSampleTracker>::MakeRoot(context);
   context->deobfuscation_tracker = nullptr;
   context->blob_packet_writer = Ptr<BlobPacketWriter>::MakeRoot();
   context->register_additional_proto_modules = {};
+=======
+  context->deobfuscation_tracker = nullptr;
+  context->register_additional_proto_modules = nullptr;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // Per-Trace State (Miscategorized).
   context->registered_file_tracker =
@@ -234,9 +258,13 @@ void CopyGlobalState(const TraceProcessorContext* source,
   dest->uuid_state = source->uuid_state.Fork();
   dest->heap_graph_tracker = source->heap_graph_tracker.Fork();
   dest->deobfuscation_tracker = source->deobfuscation_tracker.Fork();
+<<<<<<< HEAD
   dest->blob_packet_writer = source->blob_packet_writer.Fork();
   dest->stack_profile_tracker = source->stack_profile_tracker.Fork();
   dest->profiler_sample_tracker = source->profiler_sample_tracker.Fork();
+=======
+  dest->stack_profile_tracker = source->stack_profile_tracker.Fork();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 }  // namespace

@@ -626,9 +626,12 @@ fo{
             standard{"vanlig raðskipan"}
             traditional{"siðbundin raðskipan"}
             zhuyin{"zhuyin raðskipan"}
+<<<<<<< HEAD
         }
         collation%core{
             standard{"vanlig"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         hc{
             h11{"12 tímar klokkuskipan (0–11)"}

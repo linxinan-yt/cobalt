@@ -107,6 +107,7 @@ kok{
         }
         deva{
             patterns{
+<<<<<<< HEAD
                 accountingFormat%alphaNextToNumber{"¤ #,##,##0.00"}
                 accountingFormat%noCurrency{"#,##,##0.00"}
                 currencyFormat{"¤#,##,##0.00"}
@@ -323,6 +324,12 @@ kok{
                         other{"¤000LCr"}
                     }
                 }
+=======
+                currencyFormat{"¤#,##,##0.00"}
+            }
+            symbols{
+                nan{"0/0"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         latn{
@@ -1131,6 +1138,12 @@ kok{
                 }
                 Hv{
                     H{"HH – HH v"}
+<<<<<<< HEAD
+=======
+                }
+                M{
+                    M{"M–M"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
                 MEd{
                     M{"E, d-M, E d-M"}
@@ -1266,6 +1279,7 @@ kok{
                 }
                 MMMMd{"d MMMM"}
                 MMMd{"d MMM"}
+<<<<<<< HEAD
                 Md{"d/M"}
                 hm{"a h:mm"}
                 hms{"a h:mm:ss"}
@@ -1275,6 +1289,12 @@ kok{
                 yM{"M-y"}
                 yMEd{"d-M-y, E"}
                 yMMM{"MMM y"}
+=======
+                Md{"d-M"}
+                yM{"M-y"}
+                yMEd{"d-M-y, E"}
+                yMMM{"MMM, y"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 yMMMM{"MMMM, y"}
                 yMMMd{"d MMM, y"}
                 yMd{"d-M-y"}
@@ -1398,6 +1418,14 @@ kok{
                 narrow%variant{
                     0{"BC"}
                     1{"AD"}
+                }
+                narrow{
+                    "क्रि.आ.",
+                    "क्रि.श.",
+                }
+                narrow%variant{
+                    "BC",
+                    "AD",
                 }
                 wide{
                     0{"क्रिस्ता आदीं"}
@@ -1939,6 +1967,16 @@ kok{
                 }
             }
         }
+        minute-narrow{
+            relative{
+                "0"{"हो मिन"}
+            }
+        }
+        minute-short{
+            relative{
+                "0"{"हो मिन."}
+            }
+        }
         mon{
             relative{
                 "-1"{"फाटलो सोमार"}
@@ -2094,6 +2132,20 @@ kok{
                 }
             }
         }
+        quarter-narrow{
+            relative{
+                "-1"{"फाटलें तिम्ह"}
+                "0"{"हें तिम्ह"}
+                "1"{"फुडलें तिम्ह"}
+            }
+        }
+        quarter-short{
+            relative{
+                "-1"{"फाटलें तिम्ह."}
+                "0"{"हें तिम्ह."}
+                "1"{"फुडलें तिम्ह."}
+            }
+        }
         sat{
             relative{
                 "-1"{"फाटलो शेनवार"}
@@ -2113,6 +2165,7 @@ kok{
         }
         sat-narrow{
             relative{
+<<<<<<< HEAD
                 "-1"{"फाटलो शे"}
                 "0"{"हो शे"}
                 "1"{"फुडलो शे"}
@@ -2126,6 +2179,11 @@ kok{
                     one{"{0} शे आदीं"}
                     other{"{0} शे आदीं"}
                 }
+=======
+                "-1"{"निमाणो शे."}
+                "0"{"हो शे."}
+                "1"{"फुडलो शेन."}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         sat-short{
@@ -2306,6 +2364,7 @@ kok{
         }
         tue-narrow{
             relative{
+<<<<<<< HEAD
                 "-1"{"फाटलो मं"}
                 "0"{"हो मं"}
                 "1"{"फुडलो मं"}
@@ -2319,6 +2378,11 @@ kok{
                     one{"{0} मं आदीं"}
                     other{"{0} मं आदीं"}
                 }
+=======
+                "-1"{"फाटलो मं."}
+                "0"{"हो मं."}
+                "1"{"फुडलो मं."}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         tue-short{

@@ -12,19 +12,32 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD
 import type {Trace} from '../../public/trace';
 import StandardGroupsPlugin from '../dev.perfetto.StandardGroups';
 import type {PerfettoPlugin} from '../../public/plugin';
+=======
+import {Trace} from '../../public/trace';
+import StandardGroupsPlugin from '../dev.perfetto.StandardGroups';
+import {PerfettoPlugin} from '../../public/plugin';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {
   STR,
   LONG,
   UNKNOWN,
+<<<<<<< HEAD
   type SqlValue,
+=======
+  SqlValue,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   LONG_NULL,
 } from '../../trace_processor/query_result';
 import {SourceDataset} from '../../trace_processor/dataset';
 import SupportPlugin from '../com.android.AndroidLongBatterySupport';
+<<<<<<< HEAD
 import {TrackNode} from '../../public/workspace';
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 const PACKAGE_LOOKUP = `
   create or replace perfetto table package_name_lookup as

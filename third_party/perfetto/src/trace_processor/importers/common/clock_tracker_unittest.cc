@@ -24,8 +24,11 @@
 
 #include "perfetto/base/logging.h"
 #include "perfetto/ext/base/utils.h"
+<<<<<<< HEAD
 #include "src/trace_processor/importers/common/global_metadata_tracker.h"
 #include "src/trace_processor/importers/common/global_stats_tracker.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "src/trace_processor/importers/common/import_logs_tracker.h"
 #include "src/trace_processor/importers/common/machine_tracker.h"
 #include "src/trace_processor/importers/common/metadata_tracker.h"
@@ -45,6 +48,7 @@ class ClockTrackerTest : public ::testing::Test {
  public:
   ClockTrackerTest() {
     context_.storage.reset(new TraceStorage());
+<<<<<<< HEAD
     context_.global_stats_tracker =
         std::make_unique<GlobalStatsTracker>(context_.storage.get());
     context_.global_args_tracker.reset(
@@ -67,6 +71,15 @@ class ClockTrackerTest : public ::testing::Test {
         std::make_unique<ClockSynchronizerListenerImpl>(&context_));
     ct_ = std::make_unique<ClockTracker>(&context_, primary_sync_.get(),
                                          /*is_primary=*/true);
+=======
+    context_.global_args_tracker.reset(
+        new GlobalArgsTracker(context_.storage.get()));
+    context_.metadata_tracker.reset(
+        new MetadataTracker(context_.storage.get()));
+    context_.import_logs_tracker.reset(new ImportLogsTracker(&context_, 1));
+    ct_ = std::make_unique<ClockTracker>(
+        std::make_unique<ClockSynchronizerListenerImpl>(&context_));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
   std::optional<int64_t> Convert(ClockTracker::ClockId src_clock_id,
                                  int64_t src_timestamp,
@@ -74,6 +87,7 @@ class ClockTrackerTest : public ::testing::Test {
     return ct_->Convert(src_clock_id, src_timestamp, target_clock_id, {});
   }
 
+<<<<<<< HEAD
   // Builds a ClockTracker for a remote machine sharing the global graph.
   std::unique_ptr<ClockTracker> MakeRemoteTracker(uint32_t raw_machine_id) {
     context_.machine_tracker =
@@ -84,6 +98,9 @@ class ClockTrackerTest : public ::testing::Test {
 
   TraceProcessorContext context_;
   std::unique_ptr<ClockSynchronizer> primary_sync_;
+=======
+  TraceProcessorContext context_;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   std::unique_ptr<ClockTracker> ct_;
 };
 
@@ -130,6 +147,7 @@ TEST_F(ClockTrackerTest, ClockDomainConversions) {
             static_cast<int64_t>(100000 - 1000 + 1e6));
 }
 
+<<<<<<< HEAD
 // Merging independent traces from a remote machine deduplicates them onto one
 // machine: the first is the primary, the rest are non-primary. A non-primary
 // trace isolates its builtin clocks onto its own file tag so its snapshots
@@ -165,6 +183,15 @@ TEST_F(ClockTrackerTest, RemoteNonPrimaryFileResolvesThroughSharedRealtime) {
   // A BOOTTIME event on the non-primary trace reaches trace time only because
   // its REALTIME is the shared machine-canonical node feeding the rendezvous.
   EXPECT_TRUE(remote_np.ToTraceTime(BOOTTIME, 300000).has_value());
+=======
+TEST_F(ClockTrackerTest, ToTraceTimeFromSnapshot) {
+  EXPECT_FALSE(ct_->ToTraceTime(REALTIME, 0).has_value());
+
+  EXPECT_EQ(*ct_->ToTraceTimeFromSnapshot({{REALTIME, 10}, {BOOTTIME, 10010}}),
+            10010);
+  EXPECT_EQ(ct_->ToTraceTimeFromSnapshot({{MONOTONIC, 10}, {REALTIME, 10010}}),
+            std::nullopt);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 // When a clock moves backwards conversions *from* that clock are forbidden
@@ -408,17 +435,22 @@ TEST_F(ClockTrackerTest, CacheDoesntAffectResultsTwoStep) {
 // instant the host BOOTTIME reads 10000 and the remote's reads 0 (so remote +
 // 10000 == host), exactly what a remote_clock_sync would establish.
 TEST_F(ClockTrackerTest, ClockOffset) {
+<<<<<<< HEAD
   auto rt = MakeRemoteTracker(0x1001);
   uint32_t m = context_.machine_id().value;  // rt's (table) machine id.
   rt->AddQualifiedSnapshot(
       {{ClockId::Machine(0, protos::pbzero::BUILTIN_CLOCK_BOOTTIME), 10000},
        {ClockId::Machine(m, protos::pbzero::BUILTIN_CLOCK_BOOTTIME), 0}});
+=======
+  EXPECT_FALSE(ct_->ToTraceTime(REALTIME, 0).has_value());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   rt->AddSnapshot({{REALTIME, 10}, {BOOTTIME, 10010}});
   rt->AddSnapshot({{REALTIME, 20}, {BOOTTIME, 20220}});
   rt->AddSnapshot({{REALTIME, 30}, {BOOTTIME, 30030}});
   rt->AddSnapshot({{MONOTONIC, 1000}, {BOOTTIME, 100000}});
 
+<<<<<<< HEAD
   auto seq_clock_1 = ClockId::Sequence(0, 1, 64);
   auto seq_clock_2 = ClockId::Sequence(0, 2, 64);
   rt->AddSnapshot({{MONOTONIC, 2000}, {seq_clock_1, 1200}});
@@ -446,6 +478,43 @@ TEST_F(ClockTrackerTest, ClockOffset) {
   EXPECT_EQ(*rt->ToTraceTime(seq_clock_1, 1100), -100 + 1000 + 100000 + 10000);
   // seq_clock_2 -> seq_clock_1 -> MONOTONIC -> BOOTTIME -> cross-machine edge.
   EXPECT_EQ(*rt->ToTraceTime(seq_clock_2, 2100),
+=======
+  // Client-to-host BOOTTIME offset is -10000 ns.
+  ct_->SetRemoteClockOffset(BOOTTIME, -10000);
+
+  ct_->AddSnapshot({{REALTIME, 10}, {BOOTTIME, 10010}});
+  ct_->AddSnapshot({{REALTIME, 20}, {BOOTTIME, 20220}});
+  ct_->AddSnapshot({{REALTIME, 30}, {BOOTTIME, 30030}});
+  ct_->AddSnapshot({{MONOTONIC, 1000}, {BOOTTIME, 100000}});
+
+  auto seq_clock_1 = ClockTracker::SequenceToGlobalClock(1, 64);
+  auto seq_clock_2 = ClockTracker::SequenceToGlobalClock(2, 64);
+  ct_->AddSnapshot({{MONOTONIC, 2000}, {seq_clock_1, 1200}});
+  ct_->AddSnapshot({{seq_clock_1, 1300}, {seq_clock_2, 2000, 10, false}});
+
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 0), 20000);
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 1), 20001);
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 9), 20009);
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 10), 20010);
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 11), 20011);
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 19), 20019);
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 20), 30220);
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 21), 30221);
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 29), 30229);
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 30), 40030);
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 40), 40040);
+
+  EXPECT_EQ(*ct_->ToTraceTime(MONOTONIC, 0), 100000 - 1000 + 10000);
+  EXPECT_EQ(*ct_->ToTraceTime(MONOTONIC, 999), 100000 - 1 + 10000);
+  EXPECT_EQ(*ct_->ToTraceTime(MONOTONIC, 1000), 100000 + 10000);
+  EXPECT_EQ(*ct_->ToTraceTime(MONOTONIC, 1e6),
+            static_cast<int64_t>(100000 - 1000 + 1e6 + 10000));
+
+  // seq_clock_1 -> MONOTONIC -> BOOTTIME -> apply offset.
+  EXPECT_EQ(*ct_->ToTraceTime(seq_clock_1, 1100), -100 + 1000 + 100000 + 10000);
+  // seq_clock_2 -> seq_clock_1 -> MONOTONIC -> BOOTTIME -> apply offset.
+  EXPECT_EQ(*ct_->ToTraceTime(seq_clock_2, 2100),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             (100 * 10) + 100 + 1000 + 100000 + 10000);
 }
 
@@ -455,6 +524,7 @@ TEST_F(ClockTrackerTest, RemoteNoClockOffset) {
   auto rt = MakeRemoteTracker(0x1001);
   rt->AddDeferredClockSync(BOOTTIME);
 
+<<<<<<< HEAD
   rt->AddSnapshot({{REALTIME, 10}, {BOOTTIME, 10010}});
   rt->AddSnapshot({{REALTIME, 20}, {BOOTTIME, 20220}});
   rt->AddSnapshot({{MONOTONIC, 1000}, {BOOTTIME, 100000}});
@@ -483,6 +553,70 @@ TEST_F(ClockTrackerTest, RemoteNoClockOffset) {
             (100 * 10) + 100 + 1000 + 100000);
 }
 
+=======
+  ct_->AddSnapshot({{REALTIME, 10}, {BOOTTIME, 10010}});
+  ct_->AddSnapshot({{REALTIME, 20}, {BOOTTIME, 20220}});
+  ct_->AddSnapshot({{MONOTONIC, 1000}, {BOOTTIME, 100000}});
+
+  auto seq_clock_1 = ClockTracker::SequenceToGlobalClock(1, 64);
+  auto seq_clock_2 = ClockTracker::SequenceToGlobalClock(2, 64);
+  ct_->AddSnapshot({{MONOTONIC, 2000}, {seq_clock_1, 1200}});
+  ct_->AddSnapshot({{seq_clock_1, 1300}, {seq_clock_2, 2000, 10, false}});
+
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 0), 10000);
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 9), 10009);
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 10), 10010);
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 11), 10011);
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 19), 10019);
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 20), 20220);
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 21), 20221);
+
+  EXPECT_EQ(*ct_->ToTraceTime(MONOTONIC, 0), 100000 - 1000);
+  EXPECT_EQ(*ct_->ToTraceTime(MONOTONIC, 999), 100000 - 1);
+  EXPECT_EQ(*ct_->ToTraceTime(MONOTONIC, 1000), 100000);
+  EXPECT_EQ(*ct_->ToTraceTime(MONOTONIC, 1e6),
+            static_cast<int64_t>(100000 - 1000 + 1e6));
+
+  // seq_clock_1 -> MONOTONIC -> BOOTTIME.
+  EXPECT_EQ(*ct_->ToTraceTime(seq_clock_1, 1100), -100 + 1000 + 100000);
+  // seq_clock_2 -> seq_clock_1 -> MONOTONIC -> BOOTTIME.
+  EXPECT_EQ(*ct_->ToTraceTime(seq_clock_2, 2100),
+            (100 * 10) + 100 + 1000 + 100000);
+}
+
+// Test clock offset of non-defualt trace time clock domain.
+TEST_F(ClockTrackerTest, NonDefaultTraceTimeClock) {
+  context_.machine_tracker =
+      std::make_unique<MachineTracker>(&context_, 0x1001);
+
+  ct_->SetTraceTimeClock(MONOTONIC);
+  ct_->SetRemoteClockOffset(MONOTONIC, -2000);
+  ct_->SetRemoteClockOffset(BOOTTIME, -10000);  // This doesn't take effect.
+
+  ct_->AddSnapshot({{REALTIME, 10}, {BOOTTIME, 10010}});
+  ct_->AddSnapshot({{MONOTONIC, 1000}, {BOOTTIME, 100000}});
+
+  auto seq_clock_1 = ClockTracker::SequenceToGlobalClock(1, 64);
+  ct_->AddSnapshot({{MONOTONIC, 2000}, {seq_clock_1, 1200}});
+
+  int64_t realtime_to_trace_time_delta = -10 + 10010 - 100000 + 1000 - (-2000);
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 9), 9 + realtime_to_trace_time_delta);
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 10), 10 + realtime_to_trace_time_delta);
+  EXPECT_EQ(*ct_->ToTraceTime(REALTIME, 20), 20 + realtime_to_trace_time_delta);
+
+  int64_t mono_to_trace_time_delta = -2000;
+  EXPECT_EQ(*ct_->ToTraceTime(MONOTONIC, 0), 0 - mono_to_trace_time_delta);
+  EXPECT_EQ(*ct_->ToTraceTime(MONOTONIC, 999), 999 - mono_to_trace_time_delta);
+  EXPECT_EQ(*ct_->ToTraceTime(MONOTONIC, 1000),
+            1000 - mono_to_trace_time_delta);
+  EXPECT_EQ(*ct_->ToTraceTime(MONOTONIC, 1e6),
+            static_cast<int64_t>(1e6) - mono_to_trace_time_delta);
+
+  // seq_clock_1 -> MONOTONIC.
+  EXPECT_EQ(*ct_->ToTraceTime(seq_clock_1, 1100), 1100 - 1200 + 2000 - (-2000));
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 TEST_F(ClockTrackerTest, MultiHopCacheIsHit) {
   // Path: MONOTONIC_RAW -> MONOTONIC -> BOOTTIME
   ct_->AddSnapshot({{MONOTONIC_RAW, 100}, {MONOTONIC, 200}});
@@ -545,19 +679,31 @@ TEST_F(ClockTrackerTest, CacheInvalidationAndPathReoptimization) {
   EXPECT_EQ(*Convert(MONOTONIC, 50, BOOTTIME), 50 + (200 - 100) + (4000 - 300));
   EXPECT_EQ(ct_->cache_hits_for_testing(), 1u);
 
+<<<<<<< HEAD
   // 2. Add a direct, more optimal path. This will clear the cache. Recording
   // the snapshot into the clock_snapshot table converts its clocks, which
   // immediately re-warms the cache with the new path.
+=======
+  // 2. Add a direct, more optimal path. This will clear the cache.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   ct_->AddSnapshot({{MONOTONIC, 500}, {BOOTTIME, 6000}});
 
   // 3. Convert again. The new, more optimal path should be used for the
   // conversion (cached by the recording above).
   EXPECT_EQ(*Convert(MONOTONIC, 400, BOOTTIME), 400 + (6000 - 500));
+<<<<<<< HEAD
   EXPECT_EQ(ct_->cache_hits_for_testing(), 2u);
 
   // The new path should now be cached.
   EXPECT_EQ(*Convert(MONOTONIC, 400, BOOTTIME), 400 + (6000 - 500));
   EXPECT_EQ(ct_->cache_hits_for_testing(), 3u);
+=======
+  EXPECT_EQ(ct_->cache_hits_for_testing(), 1u);
+
+  // The new path should now be cached.
+  EXPECT_EQ(*Convert(MONOTONIC, 400, BOOTTIME), 400 + (6000 - 500));
+  EXPECT_EQ(ct_->cache_hits_for_testing(), 2u);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 TEST_F(ClockTrackerTest, ThreeHopConversion) {
@@ -579,6 +725,7 @@ TEST_F(ClockTrackerTest, ThreeHopConversion) {
   // Another conversion within the same range.
   EXPECT_EQ(*Convert(REALTIME, 20, BOOTTIME), expected_ts + 10);
   EXPECT_EQ(ct_->cache_hits_for_testing(), hits + 2);
+<<<<<<< HEAD
 }
 
 // Tests for multi-trace clock isolation (shared_sync fallback).
@@ -746,6 +893,8 @@ TEST_F(ClockTrackerTest, SetTraceDefaultClock_DoesNotChangeGlobalClock) {
 
   // Global clock should still be BOOTTIME (test fixture default).
   EXPECT_EQ(context_.trace_time_state->clock_id, BOOTTIME);
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 }  // namespace

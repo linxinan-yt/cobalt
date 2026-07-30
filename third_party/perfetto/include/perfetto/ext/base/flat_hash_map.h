@@ -30,11 +30,16 @@
 #include <cstddef>
 #include <cstdint>
 #include <cstring>
+<<<<<<< HEAD
 #include <functional>
 #include <limits>
 #include <memory>
 #include <string>
 #include <string_view>
+=======
+#include <limits>
+#include <memory>
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include <type_traits>
 #include <utility>
 
@@ -134,8 +139,40 @@ static constexpr int kDefaultLoadLimitPct = 75;
 
 }  // namespace flat_hash_map_v2_internal
 
+// Non-templated base class to hold helpers for FlatHashMap.
+struct FlatHashMapBase {
+ public:
+  // Helper to detect if a hasher has is_transparent defined.
+  template <typename, typename = void>
+  struct HasIsTransparent : std::false_type {};
+
+  template <typename H>
+  struct HasIsTransparent<H, std::void_t<typename H::is_transparent>>
+      : std::true_type {};
+
+  // Helper to check if a lookup key type K is allowed.
+  // Returns true if:
+  // 1. K can be implicitly converted to Key, OR
+  // 2. Hasher has is_transparent AND Hasher is invocable with K AND Key and K
+  // are equality comparable
+  template <typename K, typename Key, typename Hasher>
+  static constexpr bool IsLookupKeyAllowed() {
+    if constexpr (HasIsTransparent<Hasher>::value) {
+      return std::is_invocable_v<Hasher, const K&> &&
+             std::is_same_v<decltype(std::declval<const Key&>() ==
+                                     std::declval<const K&>()),
+                            bool>;
+    } else if constexpr (std::is_convertible_v<K, Key>) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+};
+
 template <typename Key,
           typename Value,
+<<<<<<< HEAD
           typename Hasher = base::MurmurHash<Key>,
           typename Eq = flat_hash_map_v2_internal::HashEq<Key>>
 class FlatHashMapV2 {
@@ -152,6 +189,15 @@ class FlatHashMapV2 {
     Value value;
   };
 
+=======
+          typename Hasher =
+              std::conditional_t<base::flags::use_murmur_hash_for_flat_hash_map,
+                                 base::MurmurHash<Key>,
+                                 base::FnvHash<Key>>,
+          typename Probe = QuadraticProbe,
+          bool AppendOnly = false>
+class FlatHashMap : protected FlatHashMapBase {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  public:
   class Iterator {
    public:
@@ -191,9 +237,15 @@ class FlatHashMapV2 {
     const uint8_t* ctrl_end_ = nullptr;
     Slot* slot_ = nullptr;
   };  // Iterator
+<<<<<<< HEAD
 
   explicit FlatHashMapV2(size_t initial_capacity = 0,
                          int load_limit_pct = kDefaultLoadLimitPct)
+=======
+  static constexpr int kDefaultLoadLimitPct = 75;
+  explicit FlatHashMap(size_t initial_capacity = 0,
+                       int load_limit_pct = kDefaultLoadLimitPct)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       : load_limit_percent_(load_limit_pct) {
     if (initial_capacity > 0) {
       Reset(initial_capacity, true);
@@ -224,12 +276,112 @@ class FlatHashMapV2 {
   FlatHashMapV2(const FlatHashMapV2&) = delete;
   FlatHashMapV2& operator=(const FlatHashMapV2&) = delete;
 
+<<<<<<< HEAD
   template <typename K = Key>
   PERFETTO_ALWAYS_INLINE Value* Find(const K& key) const {
     size_t key_hash = Hasher{}(key);
     uint8_t h2 = H2(key_hash);
     FindResult res = FindSlotIgnoringTombstones<false>(key, key_hash, h2);
     if (PERFETTO_UNLIKELY(res.needs_insert)) {
+=======
+  std::pair<Value*, bool> Insert(Key key, Value value) {
+    const size_t key_hash = Hasher{}(key);
+    const uint8_t tag = HashToTag(key_hash);
+    static constexpr size_t kSlotNotFound = std::numeric_limits<size_t>::max();
+
+    // This for loop does in reality at most two attempts:
+    // The first iteration either:
+    //  - Early-returns, because the key exists already,
+    //  - Finds an insertion slot and proceeds because the load is < limit.
+    // The second iteration is only hit in the unlikely case of this insertion
+    // bringing the table beyond the target |load_limit_| (or the edge case
+    // of the HT being full, if |load_limit_pct_| = 100).
+    // We cannot simply pre-grow the table before insertion, because we must
+    // guarantee that calling Insert() with a key that already exists doesn't
+    // invalidate iterators.
+    size_t insertion_slot;
+    size_t probe_len;
+    for (;;) {
+      PERFETTO_DCHECK((capacity_ & (capacity_ - 1)) == 0);  // Must be a pow2.
+      insertion_slot = kSlotNotFound;
+      // Start the iteration at the desired slot (key_hash % capacity_)
+      // searching either for a free slot or a tombstone. In the worst case we
+      // might end up scanning the whole array of slots. The Probe functions are
+      // guaranteed to visit all the slots within |capacity_| steps. If we find
+      // a free slot, we can stop the search immediately (a free slot acts as an
+      // "end of chain for entries having the same hash". If we find a
+      // tombstones (a deleted slot) we remember its position, but have to keep
+      // searching until a free slot to make sure we don't insert a duplicate
+      // key.
+      for (probe_len = 0; probe_len < capacity_;) {
+        const size_t idx = Probe::Calc(key_hash, probe_len, capacity_);
+        PERFETTO_DCHECK(idx < capacity_);
+        const uint8_t tag_idx = tags_[idx];
+        ++probe_len;
+        if (tag_idx == kFreeSlot) {
+          // Rationale for "insertion_slot == kSlotNotFound": if we encountered
+          // a tombstone while iterating we should reuse that rather than
+          // taking another slot.
+          if (AppendOnly || insertion_slot == kSlotNotFound)
+            insertion_slot = idx;
+          break;
+        }
+        // We should never encounter tombstones in AppendOnly mode.
+        PERFETTO_DCHECK(!(tag_idx == kTombstone && AppendOnly));
+        if (!AppendOnly && tag_idx == kTombstone) {
+          insertion_slot = idx;
+          continue;
+        }
+        if (tag_idx == tag && keys_[idx] == key) {
+          // The key is already in the map.
+          return std::make_pair(&values_[idx], false);
+        }
+      }  // for (idx)
+
+      // If we got to this point the key does not exist (otherwise we would have
+      // hit the return above) and we are going to insert a new entry.
+      // Before doing so, ensure we stay under the target load limit.
+      if (PERFETTO_UNLIKELY(size_ >= load_limit_)) {
+        MaybeGrowAndRehash(/*grow=*/true);
+        continue;
+      }
+      // If there are too many tombstones, it's worth doing a rehash to
+      // clean them up. This is to avoid the case where we have a table full
+      // of tombstones which would cause lookups to be very slow.
+      bool is_many_tombstones = tombstones_ > size_ && size_ > 128;
+      bool is_tombstones_plus_size_too_high = tombstones_ + size_ > load_limit_;
+      if (PERFETTO_UNLIKELY(is_many_tombstones ||
+                            is_tombstones_plus_size_too_high)) {
+        MaybeGrowAndRehash(/*grow=*/false);
+        continue;
+      }
+      PERFETTO_DCHECK(insertion_slot != kSlotNotFound);
+      break;
+    }  // for (attempt)
+
+    PERFETTO_CHECK(insertion_slot < capacity_);
+
+    // We found a free slot (or a tombstone). Proceed with the insertion.
+    if (tags_[insertion_slot] == kTombstone) {
+      PERFETTO_DCHECK(tombstones_ > 0);
+      tombstones_--;
+    }
+    Value* value_idx = &values_[insertion_slot];
+    new (&keys_[insertion_slot]) Key(std::move(key));
+    new (value_idx) Value(std::move(value));
+    tags_[insertion_slot] = tag;
+    PERFETTO_DCHECK(probe_len > 0 && probe_len <= capacity_);
+    max_probe_length_ = std::max(max_probe_length_, probe_len);
+    size_++;
+
+    return std::make_pair(value_idx, true);
+  }
+
+  template <typename K = Key>
+  Value* Find(const K& key) const {
+    const size_t idx = FindInternal(key);
+    if (idx == kNotFound)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       return nullptr;
     }
     return &slots_[res.idx].value;
@@ -237,10 +389,17 @@ class FlatHashMapV2 {
 
   template <typename K = Key>
   bool Erase(const K& key) {
+<<<<<<< HEAD
     size_t key_hash = Hasher{}(key);
     uint8_t h2 = H2(key_hash);
     FindResult res = FindSlotIgnoringTombstones<false>(key, key_hash, h2);
     if (PERFETTO_UNLIKELY(res.needs_insert)) {
+=======
+    if (AppendOnly)
+      PERFETTO_FATAL("Erase() not supported because AppendOnly=true");
+    size_t idx = FindInternal(key);
+    if (idx == kNotFound)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       return false;
     }
     PERFETTO_DCHECK(size_ > 0);
@@ -318,12 +477,29 @@ class FlatHashMapV2 {
     uint64_t needs_insert : 1;
   };
 
+<<<<<<< HEAD
   // Tracks growth capacity and whether any deletions have occurred.
   // Using bitfields like absl's GrowthInfo to avoid manual bit manipulation.
   struct GrowthInfo {
     uint64_t growth_left : 63;
     uint64_t has_tombstones : 1;
   };
+=======
+  template <typename K = Key>
+  size_t FindInternal(const K& key) const {
+    static_assert(
+        IsLookupKeyAllowed<K, Key, Hasher>(),
+        "Heterogeneous lookup requires Hasher to define is_transparent and "
+        "support hashing the lookup key type. For same-type lookup, Key and K "
+        "must match exactly.");
+    const size_t key_hash = Hasher{}(key);
+    const uint8_t tag = HashToTag(key_hash);
+    PERFETTO_DCHECK((capacity_ & (capacity_ - 1)) == 0);  // Must be a pow2.
+    PERFETTO_DCHECK(max_probe_length_ <= capacity_);
+    for (size_t i = 0; i < max_probe_length_; ++i) {
+      const size_t idx = Probe::Calc(key_hash, i, capacity_);
+      const uint8_t tag_idx = tags_[idx];
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // Not found sentinel (must fit in 63-bit FindResult.idx)
   static constexpr size_t kNotFound = std::numeric_limits<size_t>::max() >> 1;

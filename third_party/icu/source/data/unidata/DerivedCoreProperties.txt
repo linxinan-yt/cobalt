@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 # DerivedCoreProperties-17.0.0.txt
 # Date: 2025-07-30, 23:55:08 GMT
 # © 2025 Unicode®, Inc.
+=======
+# DerivedCoreProperties-16.0.0.txt
+# Date: 2024-05-31, 18:09:32 GMT
+# © 2024 Unicode®, Inc.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 # Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
 # For terms of use and license, see https://www.unicode.org/terms_of_use.html
 #
@@ -178,7 +184,10 @@ FF5E          ; Math
 FFE2          ; Math
 FFE9..FFEC    ; Math
 10D8E..10D8F  ; Math
+<<<<<<< HEAD
 1CEF0         ; Math
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1D400..1D454  ; Math
 1D456..1D49C  ; Math
 1D49E..1D49F  ; Math
@@ -256,7 +265,11 @@ FFE9..FFEC    ; Math
 1EEF0..1EEF1  ; Math
 1F8D0..1F8D8  ; Math
 
+<<<<<<< HEAD
 # Total code points: 2322
+=======
+# Total code points: 2312
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -346,7 +359,11 @@ FFE9..FFEC    ; Math
 0840..0858    ; Alphabetic
 0860..086A    ; Alphabetic
 0870..0887    ; Alphabetic
+<<<<<<< HEAD
 0889..088F    ; Alphabetic
+=======
+0889..088E    ; Alphabetic
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 0897          ; Alphabetic
 08A0..08C8    ; Alphabetic
 08C9          ; Alphabetic
@@ -835,8 +852,16 @@ A771..A787    ; Alphabetic
 A788          ; Alphabetic
 A78B..A78E    ; Alphabetic
 A78F          ; Alphabetic
+<<<<<<< HEAD
 A790..A7DC    ; Alphabetic
 A7F1..A7F4    ; Alphabetic
+=======
+A790..A7CD    ; Alphabetic
+A7D0..A7D1    ; Alphabetic
+A7D3          ; Alphabetic
+A7D5..A7DC    ; Alphabetic
+A7F2..A7F4    ; Alphabetic
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7F5..A7F6    ; Alphabetic
 A7F7          ; Alphabetic
 A7F8..A7F9    ; Alphabetic
@@ -1053,9 +1078,13 @@ FFDA..FFDC    ; Alphabetic
 10EAB..10EAC  ; Alphabetic
 10EB0..10EB1  ; Alphabetic
 10EC2..10EC4  ; Alphabetic
+<<<<<<< HEAD
 10EC5         ; Alphabetic
 10EC6..10EC7  ; Alphabetic
 10EFA..10EFC  ; Alphabetic
+=======
+10EFC         ; Alphabetic
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 10F00..10F1C  ; Alphabetic
 10F27         ; Alphabetic
 10F30..10F45  ; Alphabetic
@@ -1241,12 +1270,15 @@ FFDA..FFDC    ; Alphabetic
 11A97         ; Alphabetic
 11A9D         ; Alphabetic
 11AB0..11AF8  ; Alphabetic
+<<<<<<< HEAD
 11B60         ; Alphabetic
 11B61         ; Alphabetic
 11B62..11B64  ; Alphabetic
 11B65         ; Alphabetic
 11B66         ; Alphabetic
 11B67         ; Alphabetic
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 11BC0..11BE0  ; Alphabetic
 11C00..11C08  ; Alphabetic
 11C0A..11C2E  ; Alphabetic
@@ -1333,11 +1365,17 @@ FFDA..FFDC    ; Alphabetic
 16FE0..16FE1  ; Alphabetic
 16FE3         ; Alphabetic
 16FF0..16FF1  ; Alphabetic
+<<<<<<< HEAD
 16FF2..16FF3  ; Alphabetic
 16FF4..16FF6  ; Alphabetic
 17000..18CD5  ; Alphabetic
 18CFF..18D1E  ; Alphabetic
 18D80..18DF2  ; Alphabetic
+=======
+17000..187F7  ; Alphabetic
+18800..18CD5  ; Alphabetic
+18CFF..18D08  ; Alphabetic
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1AFF0..1AFF3  ; Alphabetic
 1AFF5..1AFFB  ; Alphabetic
 1AFFD..1AFFE  ; Alphabetic
@@ -1402,6 +1440,7 @@ FFDA..FFDC    ; Alphabetic
 1E4EB         ; Alphabetic
 1E5D0..1E5ED  ; Alphabetic
 1E5F0         ; Alphabetic
+<<<<<<< HEAD
 1E6C0..1E6DE  ; Alphabetic
 1E6E0..1E6E2  ; Alphabetic
 1E6E3         ; Alphabetic
@@ -1413,6 +1452,8 @@ FFDA..FFDC    ; Alphabetic
 1E6F5         ; Alphabetic
 1E6FE         ; Alphabetic
 1E6FF         ; Alphabetic
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1E7E0..1E7E6  ; Alphabetic
 1E7E8..1E7EB  ; Alphabetic
 1E7ED..1E7EE  ; Alphabetic
@@ -1466,7 +1507,11 @@ FFDA..FFDC    ; Alphabetic
 30000..3134A  ; Alphabetic
 31350..33479  ; Alphabetic
 
+<<<<<<< HEAD
 # Total code points: 147421
+=======
+# Total code points: 142759
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -2098,14 +2143,21 @@ A7C3          ; Lowercase
 A7C8          ; Lowercase
 A7CA          ; Lowercase
 A7CD          ; Lowercase
+<<<<<<< HEAD
 A7CF          ; Lowercase
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7D1          ; Lowercase
 A7D3          ; Lowercase
 A7D5          ; Lowercase
 A7D7          ; Lowercase
 A7D9          ; Lowercase
 A7DB          ; Lowercase
+<<<<<<< HEAD
 A7F1..A7F4    ; Lowercase
+=======
+A7F2..A7F4    ; Lowercase
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7F6          ; Lowercase
 A7F8..A7F9    ; Lowercase
 A7FA          ; Lowercase
@@ -2166,7 +2218,11 @@ FF41..FF5A    ; Lowercase
 1E030..1E06D  ; Lowercase
 1E922..1E943  ; Lowercase
 
+<<<<<<< HEAD
 # Total code points: 2595
+=======
+# Total code points: 2569
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -2777,7 +2833,10 @@ A7C2          ; Uppercase
 A7C4..A7C7    ; Uppercase
 A7C9          ; Uppercase
 A7CB..A7CC    ; Uppercase
+<<<<<<< HEAD
 A7CE          ; Uppercase
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7D0          ; Uppercase
 A7D2          ; Uppercase
 A7D4          ; Uppercase
@@ -2834,7 +2893,11 @@ FF21..FF3A    ; Uppercase
 1F150..1F169  ; Uppercase
 1F170..1F189  ; Uppercase
 
+<<<<<<< HEAD
 # Total code points: 2006
+=======
+# Total code points: 1978
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -2942,8 +3005,16 @@ A722..A76F    ; Cased
 A770          ; Cased
 A771..A787    ; Cased
 A78B..A78E    ; Cased
+<<<<<<< HEAD
 A790..A7DC    ; Cased
 A7F1..A7F4    ; Cased
+=======
+A790..A7CD    ; Cased
+A7D0..A7D1    ; Cased
+A7D3          ; Cased
+A7D5..A7DC    ; Cased
+A7F2..A7F4    ; Cased
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7F5..A7F6    ; Cased
 A7F8..A7F9    ; Cased
 A7FA          ; Cased
@@ -3018,7 +3089,11 @@ FF41..FF5A    ; Cased
 1F150..1F169  ; Cased
 1F170..1F189  ; Cased
 
+<<<<<<< HEAD
 # Total code points: 4632
+=======
+# Total code points: 4578
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -3381,8 +3456,12 @@ FFF9..FFFB    ; Case_Ignorable
 10D69..10D6D  ; Case_Ignorable
 10D6F         ; Case_Ignorable
 10EAB..10EAC  ; Case_Ignorable
+<<<<<<< HEAD
 10EC5         ; Case_Ignorable
 10EFA..10EFF  ; Case_Ignorable
+=======
+10EFC..10EFF  ; Case_Ignorable
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 10F46..10F50  ; Case_Ignorable
 10F82..10F85  ; Case_Ignorable
 11001         ; Case_Ignorable
@@ -3534,11 +3613,14 @@ FFF9..FFFB    ; Case_Ignorable
 1E4EB         ; Case_Ignorable
 1E4EC..1E4EF  ; Case_Ignorable
 1E5EE..1E5EF  ; Case_Ignorable
+<<<<<<< HEAD
 1E6E3         ; Case_Ignorable
 1E6E6         ; Case_Ignorable
 1E6EE..1E6EF  ; Case_Ignorable
 1E6F5         ; Case_Ignorable
 1E6FF         ; Case_Ignorable
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1E8D0..1E8D6  ; Case_Ignorable
 1E944..1E94A  ; Case_Ignorable
 1E94B         ; Case_Ignorable
@@ -3547,7 +3629,11 @@ E0001         ; Case_Ignorable
 E0020..E007F  ; Case_Ignorable
 E0100..E01EF  ; Case_Ignorable
 
+<<<<<<< HEAD
 # Total code points: 2794
+=======
+# Total code points: 2749
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -4153,7 +4239,10 @@ A7C2          ; Changes_When_Lowercased
 A7C4..A7C7    ; Changes_When_Lowercased
 A7C9          ; Changes_When_Lowercased
 A7CB..A7CC    ; Changes_When_Lowercased
+<<<<<<< HEAD
 A7CE          ; Changes_When_Lowercased
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7D0          ; Changes_When_Lowercased
 A7D2          ; Changes_When_Lowercased
 A7D4          ; Changes_When_Lowercased
@@ -4176,7 +4265,11 @@ FF21..FF3A    ; Changes_When_Lowercased
 16EA0..16EB8  ; Changes_When_Lowercased
 1E900..1E921  ; Changes_When_Lowercased
 
+<<<<<<< HEAD
 # Total code points: 1488
+=======
+# Total code points: 1460
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -4795,7 +4888,10 @@ A7C3          ; Changes_When_Uppercased
 A7C8          ; Changes_When_Uppercased
 A7CA          ; Changes_When_Uppercased
 A7CD          ; Changes_When_Uppercased
+<<<<<<< HEAD
 A7CF          ; Changes_When_Uppercased
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7D1          ; Changes_When_Uppercased
 A7D3          ; Changes_When_Uppercased
 A7D5          ; Changes_When_Uppercased
@@ -4821,7 +4917,11 @@ FF41..FF5A    ; Changes_When_Uppercased
 16EBB..16ED3  ; Changes_When_Uppercased
 1E922..1E943  ; Changes_When_Uppercased
 
+<<<<<<< HEAD
 # Total code points: 1580
+=======
+# Total code points: 1552
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -5439,7 +5539,10 @@ A7C3          ; Changes_When_Titlecased
 A7C8          ; Changes_When_Titlecased
 A7CA          ; Changes_When_Titlecased
 A7CD          ; Changes_When_Titlecased
+<<<<<<< HEAD
 A7CF          ; Changes_When_Titlecased
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7D1          ; Changes_When_Titlecased
 A7D3          ; Changes_When_Titlecased
 A7D5          ; Changes_When_Titlecased
@@ -5465,7 +5568,11 @@ FF41..FF5A    ; Changes_When_Titlecased
 16EBB..16ED3  ; Changes_When_Titlecased
 1E922..1E943  ; Changes_When_Titlecased
 
+<<<<<<< HEAD
 # Total code points: 1507
+=======
+# Total code points: 1479
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -6080,7 +6187,10 @@ A7C2          ; Changes_When_Casefolded
 A7C4..A7C7    ; Changes_When_Casefolded
 A7C9          ; Changes_When_Casefolded
 A7CB..A7CC    ; Changes_When_Casefolded
+<<<<<<< HEAD
 A7CE          ; Changes_When_Casefolded
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7D0          ; Changes_When_Casefolded
 A7D2          ; Changes_When_Casefolded
 A7D4          ; Changes_When_Casefolded
@@ -6106,7 +6216,11 @@ FF21..FF3A    ; Changes_When_Casefolded
 16EA0..16EB8  ; Changes_When_Casefolded
 1E900..1E921  ; Changes_When_Casefolded
 
+<<<<<<< HEAD
 # Total code points: 1561
+=======
+# Total code points: 1533
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -6219,7 +6333,13 @@ A779..A787    ; Changes_When_Casemapped
 A78B..A78D    ; Changes_When_Casemapped
 A790..A794    ; Changes_When_Casemapped
 A796..A7AE    ; Changes_When_Casemapped
+<<<<<<< HEAD
 A7B0..A7DC    ; Changes_When_Casemapped
+=======
+A7B0..A7CD    ; Changes_When_Casemapped
+A7D0..A7D1    ; Changes_When_Casemapped
+A7D6..A7DC    ; Changes_When_Casemapped
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7F5..A7F6    ; Changes_When_Casemapped
 AB53          ; Changes_When_Casemapped
 AB70..ABBF    ; Changes_When_Casemapped
@@ -6248,7 +6368,11 @@ FF41..FF5A    ; Changes_When_Casemapped
 16EBB..16ED3  ; Changes_When_Casemapped
 1E900..1E943  ; Changes_When_Casemapped
 
+<<<<<<< HEAD
 # Total code points: 3037
+=======
+# Total code points: 2981
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -6624,8 +6748,16 @@ A771..A787    ; ID_Start
 A788          ; ID_Start
 A78B..A78E    ; ID_Start
 A78F          ; ID_Start
+<<<<<<< HEAD
 A790..A7DC    ; ID_Start
 A7F1..A7F4    ; ID_Start
+=======
+A790..A7CD    ; ID_Start
+A7D0..A7D1    ; ID_Start
+A7D3          ; ID_Start
+A7D5..A7DC    ; ID_Start
+A7F2..A7F4    ; ID_Start
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7F5..A7F6    ; ID_Start
 A7F7          ; ID_Start
 A7F8..A7F9    ; ID_Start
@@ -6790,8 +6922,11 @@ FFDA..FFDC    ; ID_Start
 10E80..10EA9  ; ID_Start
 10EB0..10EB1  ; ID_Start
 10EC2..10EC4  ; ID_Start
+<<<<<<< HEAD
 10EC5         ; ID_Start
 10EC6..10EC7  ; ID_Start
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 10F00..10F1C  ; ID_Start
 10F27         ; ID_Start
 10F30..10F45  ; ID_Start
@@ -6920,11 +7055,17 @@ FFDA..FFDC    ; ID_Start
 16F93..16F9F  ; ID_Start
 16FE0..16FE1  ; ID_Start
 16FE3         ; ID_Start
+<<<<<<< HEAD
 16FF2..16FF3  ; ID_Start
 16FF4..16FF6  ; ID_Start
 17000..18CD5  ; ID_Start
 18CFF..18D1E  ; ID_Start
 18D80..18DF2  ; ID_Start
+=======
+17000..187F7  ; ID_Start
+18800..18CD5  ; ID_Start
+18CFF..18D08  ; ID_Start
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1AFF0..1AFF3  ; ID_Start
 1AFF5..1AFFB  ; ID_Start
 1AFFD..1AFFE  ; ID_Start
@@ -6982,6 +7123,7 @@ FFDA..FFDC    ; ID_Start
 1E4EB         ; ID_Start
 1E5D0..1E5ED  ; ID_Start
 1E5F0         ; ID_Start
+<<<<<<< HEAD
 1E6C0..1E6DE  ; ID_Start
 1E6E0..1E6E2  ; ID_Start
 1E6E4..1E6E5  ; ID_Start
@@ -6989,6 +7131,8 @@ FFDA..FFDC    ; ID_Start
 1E6F0..1E6F4  ; ID_Start
 1E6FE         ; ID_Start
 1E6FF         ; ID_Start
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1E7E0..1E7E6  ; ID_Start
 1E7E8..1E7EB  ; ID_Start
 1E7ED..1E7EE  ; ID_Start
@@ -7038,7 +7182,11 @@ FFDA..FFDC    ; ID_Start
 30000..3134A  ; ID_Start
 31350..33479  ; ID_Start
 
+<<<<<<< HEAD
 # Total code points: 145916
+=======
+# Total code points: 141269
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -7144,7 +7292,11 @@ FFDA..FFDC    ; ID_Start
 0859..085B    ; ID_Continue
 0860..086A    ; ID_Continue
 0870..0887    ; ID_Continue
+<<<<<<< HEAD
 0889..088F    ; ID_Continue
+=======
+0889..088E    ; ID_Continue
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 0897..089F    ; ID_Continue
 08A0..08C8    ; ID_Continue
 08C9          ; ID_Continue
@@ -7723,8 +7875,16 @@ A771..A787    ; ID_Continue
 A788          ; ID_Continue
 A78B..A78E    ; ID_Continue
 A78F          ; ID_Continue
+<<<<<<< HEAD
 A790..A7DC    ; ID_Continue
 A7F1..A7F4    ; ID_Continue
+=======
+A790..A7CD    ; ID_Continue
+A7D0..A7D1    ; ID_Continue
+A7D3          ; ID_Continue
+A7D5..A7DC    ; ID_Continue
+A7F2..A7F4    ; ID_Continue
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7F5..A7F6    ; ID_Continue
 A7F7          ; ID_Continue
 A7F8..A7F9    ; ID_Continue
@@ -7970,9 +8130,13 @@ FFDA..FFDC    ; ID_Continue
 10EAB..10EAC  ; ID_Continue
 10EB0..10EB1  ; ID_Continue
 10EC2..10EC4  ; ID_Continue
+<<<<<<< HEAD
 10EC5         ; ID_Continue
 10EC6..10EC7  ; ID_Continue
 10EFA..10EFF  ; ID_Continue
+=======
+10EFC..10EFF  ; ID_Continue
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 10F00..10F1C  ; ID_Continue
 10F27         ; ID_Continue
 10F30..10F45  ; ID_Continue
@@ -8199,12 +8363,15 @@ FFDA..FFDC    ; ID_Continue
 11A98..11A99  ; ID_Continue
 11A9D         ; ID_Continue
 11AB0..11AF8  ; ID_Continue
+<<<<<<< HEAD
 11B60         ; ID_Continue
 11B61         ; ID_Continue
 11B62..11B64  ; ID_Continue
 11B65         ; ID_Continue
 11B66         ; ID_Continue
 11B67         ; ID_Continue
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 11BC0..11BE0  ; ID_Continue
 11BF0..11BF9  ; ID_Continue
 11C00..11C08  ; ID_Continue
@@ -8311,11 +8478,17 @@ FFDA..FFDC    ; ID_Continue
 16FE3         ; ID_Continue
 16FE4         ; ID_Continue
 16FF0..16FF1  ; ID_Continue
+<<<<<<< HEAD
 16FF2..16FF3  ; ID_Continue
 16FF4..16FF6  ; ID_Continue
 17000..18CD5  ; ID_Continue
 18CFF..18D1E  ; ID_Continue
 18D80..18DF2  ; ID_Continue
+=======
+17000..187F7  ; ID_Continue
+18800..18CD5  ; ID_Continue
+18CFF..18D08  ; ID_Continue
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1AFF0..1AFF3  ; ID_Continue
 1AFF5..1AFFB  ; ID_Continue
 1AFFD..1AFFE  ; ID_Continue
@@ -8406,6 +8579,7 @@ FFDA..FFDC    ; ID_Continue
 1E5EE..1E5EF  ; ID_Continue
 1E5F0         ; ID_Continue
 1E5F1..1E5FA  ; ID_Continue
+<<<<<<< HEAD
 1E6C0..1E6DE  ; ID_Continue
 1E6E0..1E6E2  ; ID_Continue
 1E6E3         ; ID_Continue
@@ -8417,6 +8591,8 @@ FFDA..FFDC    ; ID_Continue
 1E6F5         ; ID_Continue
 1E6FE         ; ID_Continue
 1E6FF         ; ID_Continue
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1E7E0..1E7E6  ; ID_Continue
 1E7E8..1E7EB  ; ID_Continue
 1E7ED..1E7EE  ; ID_Continue
@@ -8471,7 +8647,11 @@ FFDA..FFDC    ; ID_Continue
 31350..33479  ; ID_Continue
 E0100..E01EF  ; ID_Continue
 
+<<<<<<< HEAD
 # Total code points: 149240
+=======
+# Total code points: 144541
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -8843,8 +9023,16 @@ A771..A787    ; XID_Start
 A788          ; XID_Start
 A78B..A78E    ; XID_Start
 A78F          ; XID_Start
+<<<<<<< HEAD
 A790..A7DC    ; XID_Start
 A7F1..A7F4    ; XID_Start
+=======
+A790..A7CD    ; XID_Start
+A7D0..A7D1    ; XID_Start
+A7D3          ; XID_Start
+A7D5..A7DC    ; XID_Start
+A7F2..A7F4    ; XID_Start
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7F5..A7F6    ; XID_Start
 A7F7          ; XID_Start
 A7F8..A7F9    ; XID_Start
@@ -9014,8 +9202,11 @@ FFDA..FFDC    ; XID_Start
 10E80..10EA9  ; XID_Start
 10EB0..10EB1  ; XID_Start
 10EC2..10EC4  ; XID_Start
+<<<<<<< HEAD
 10EC5         ; XID_Start
 10EC6..10EC7  ; XID_Start
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 10F00..10F1C  ; XID_Start
 10F27         ; XID_Start
 10F30..10F45  ; XID_Start
@@ -9144,11 +9335,17 @@ FFDA..FFDC    ; XID_Start
 16F93..16F9F  ; XID_Start
 16FE0..16FE1  ; XID_Start
 16FE3         ; XID_Start
+<<<<<<< HEAD
 16FF2..16FF3  ; XID_Start
 16FF4..16FF6  ; XID_Start
 17000..18CD5  ; XID_Start
 18CFF..18D1E  ; XID_Start
 18D80..18DF2  ; XID_Start
+=======
+17000..187F7  ; XID_Start
+18800..18CD5  ; XID_Start
+18CFF..18D08  ; XID_Start
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1AFF0..1AFF3  ; XID_Start
 1AFF5..1AFFB  ; XID_Start
 1AFFD..1AFFE  ; XID_Start
@@ -9206,6 +9403,7 @@ FFDA..FFDC    ; XID_Start
 1E4EB         ; XID_Start
 1E5D0..1E5ED  ; XID_Start
 1E5F0         ; XID_Start
+<<<<<<< HEAD
 1E6C0..1E6DE  ; XID_Start
 1E6E0..1E6E2  ; XID_Start
 1E6E4..1E6E5  ; XID_Start
@@ -9213,6 +9411,8 @@ FFDA..FFDC    ; XID_Start
 1E6F0..1E6F4  ; XID_Start
 1E6FE         ; XID_Start
 1E6FF         ; XID_Start
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1E7E0..1E7E6  ; XID_Start
 1E7E8..1E7EB  ; XID_Start
 1E7ED..1E7EE  ; XID_Start
@@ -9262,7 +9462,11 @@ FFDA..FFDC    ; XID_Start
 30000..3134A  ; XID_Start
 31350..33479  ; XID_Start
 
+<<<<<<< HEAD
 # Total code points: 145893
+=======
+# Total code points: 141246
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -9364,7 +9568,11 @@ FFDA..FFDC    ; XID_Start
 0859..085B    ; XID_Continue
 0860..086A    ; XID_Continue
 0870..0887    ; XID_Continue
+<<<<<<< HEAD
 0889..088F    ; XID_Continue
+=======
+0889..088E    ; XID_Continue
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 0897..089F    ; XID_Continue
 08A0..08C8    ; XID_Continue
 08C9          ; XID_Continue
@@ -9942,8 +10150,16 @@ A771..A787    ; XID_Continue
 A788          ; XID_Continue
 A78B..A78E    ; XID_Continue
 A78F          ; XID_Continue
+<<<<<<< HEAD
 A790..A7DC    ; XID_Continue
 A7F1..A7F4    ; XID_Continue
+=======
+A790..A7CD    ; XID_Continue
+A7D0..A7D1    ; XID_Continue
+A7D3          ; XID_Continue
+A7D5..A7DC    ; XID_Continue
+A7F2..A7F4    ; XID_Continue
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7F5..A7F6    ; XID_Continue
 A7F7          ; XID_Continue
 A7F8..A7F9    ; XID_Continue
@@ -10195,9 +10411,13 @@ FFDA..FFDC    ; XID_Continue
 10EAB..10EAC  ; XID_Continue
 10EB0..10EB1  ; XID_Continue
 10EC2..10EC4  ; XID_Continue
+<<<<<<< HEAD
 10EC5         ; XID_Continue
 10EC6..10EC7  ; XID_Continue
 10EFA..10EFF  ; XID_Continue
+=======
+10EFC..10EFF  ; XID_Continue
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 10F00..10F1C  ; XID_Continue
 10F27         ; XID_Continue
 10F30..10F45  ; XID_Continue
@@ -10424,12 +10644,15 @@ FFDA..FFDC    ; XID_Continue
 11A98..11A99  ; XID_Continue
 11A9D         ; XID_Continue
 11AB0..11AF8  ; XID_Continue
+<<<<<<< HEAD
 11B60         ; XID_Continue
 11B61         ; XID_Continue
 11B62..11B64  ; XID_Continue
 11B65         ; XID_Continue
 11B66         ; XID_Continue
 11B67         ; XID_Continue
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 11BC0..11BE0  ; XID_Continue
 11BF0..11BF9  ; XID_Continue
 11C00..11C08  ; XID_Continue
@@ -10536,11 +10759,17 @@ FFDA..FFDC    ; XID_Continue
 16FE3         ; XID_Continue
 16FE4         ; XID_Continue
 16FF0..16FF1  ; XID_Continue
+<<<<<<< HEAD
 16FF2..16FF3  ; XID_Continue
 16FF4..16FF6  ; XID_Continue
 17000..18CD5  ; XID_Continue
 18CFF..18D1E  ; XID_Continue
 18D80..18DF2  ; XID_Continue
+=======
+17000..187F7  ; XID_Continue
+18800..18CD5  ; XID_Continue
+18CFF..18D08  ; XID_Continue
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1AFF0..1AFF3  ; XID_Continue
 1AFF5..1AFFB  ; XID_Continue
 1AFFD..1AFFE  ; XID_Continue
@@ -10631,6 +10860,7 @@ FFDA..FFDC    ; XID_Continue
 1E5EE..1E5EF  ; XID_Continue
 1E5F0         ; XID_Continue
 1E5F1..1E5FA  ; XID_Continue
+<<<<<<< HEAD
 1E6C0..1E6DE  ; XID_Continue
 1E6E0..1E6E2  ; XID_Continue
 1E6E3         ; XID_Continue
@@ -10642,6 +10872,8 @@ FFDA..FFDC    ; XID_Continue
 1E6F5         ; XID_Continue
 1E6FE         ; XID_Continue
 1E6FF         ; XID_Continue
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1E7E0..1E7E6  ; XID_Continue
 1E7E8..1E7EB  ; XID_Continue
 1E7ED..1E7EE  ; XID_Continue
@@ -10696,7 +10928,11 @@ FFDA..FFDC    ; XID_Continue
 31350..33479  ; XID_Continue
 E0100..E01EF  ; XID_Continue
 
+<<<<<<< HEAD
 # Total code points: 149221
+=======
+# Total code points: 144522
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -11014,7 +11250,11 @@ FF9E..FF9F    ; Grapheme_Extend
 10D24..10D27  ; Grapheme_Extend
 10D69..10D6D  ; Grapheme_Extend
 10EAB..10EAC  ; Grapheme_Extend
+<<<<<<< HEAD
 10EFA..10EFF  ; Grapheme_Extend
+=======
+10EFC..10EFF  ; Grapheme_Extend
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 10F46..10F50  ; Grapheme_Extend
 10F82..10F85  ; Grapheme_Extend
 11001         ; Grapheme_Extend
@@ -11167,16 +11407,23 @@ FF9E..FF9F    ; Grapheme_Extend
 1E2EC..1E2EF  ; Grapheme_Extend
 1E4EC..1E4EF  ; Grapheme_Extend
 1E5EE..1E5EF  ; Grapheme_Extend
+<<<<<<< HEAD
 1E6E3         ; Grapheme_Extend
 1E6E6         ; Grapheme_Extend
 1E6EE..1E6EF  ; Grapheme_Extend
 1E6F5         ; Grapheme_Extend
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1E8D0..1E8D6  ; Grapheme_Extend
 1E944..1E94A  ; Grapheme_Extend
 E0020..E007F  ; Grapheme_Extend
 E0100..E01EF  ; Grapheme_Extend
 
+<<<<<<< HEAD
 # Total code points: 2232
+=======
+# Total code points: 2193
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -11470,7 +11717,11 @@ E0100..E01EF  ; Grapheme_Extend
 0CBE          ; Grapheme_Base
 0CC1          ; Grapheme_Base
 0CC3..0CC4    ; Grapheme_Base
+<<<<<<< HEAD
 0CDC..0CDE    ; Grapheme_Base
+=======
+0CDD..0CDE    ; Grapheme_Base
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 0CE0..0CE1    ; Grapheme_Base
 0CE6..0CEF    ; Grapheme_Base
 0CF1..0CF2    ; Grapheme_Base
@@ -12123,8 +12374,16 @@ A788          ; Grapheme_Base
 A789..A78A    ; Grapheme_Base
 A78B..A78E    ; Grapheme_Base
 A78F          ; Grapheme_Base
+<<<<<<< HEAD
 A790..A7DC    ; Grapheme_Base
 A7F1..A7F4    ; Grapheme_Base
+=======
+A790..A7CD    ; Grapheme_Base
+A7D0..A7D1    ; Grapheme_Base
+A7D3          ; Grapheme_Base
+A7D5..A7DC    ; Grapheme_Base
+A7F2..A7F4    ; Grapheme_Base
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7F5..A7F6    ; Grapheme_Base
 A7F7          ; Grapheme_Base
 A7F8..A7F9    ; Grapheme_Base
@@ -12476,10 +12735,13 @@ FFFC..FFFD    ; Grapheme_Base
 10EAD         ; Grapheme_Base
 10EB0..10EB1  ; Grapheme_Base
 10EC2..10EC4  ; Grapheme_Base
+<<<<<<< HEAD
 10EC5         ; Grapheme_Base
 10EC6..10EC7  ; Grapheme_Base
 10ED0         ; Grapheme_Base
 10ED1..10ED8  ; Grapheme_Base
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 10F00..10F1C  ; Grapheme_Base
 10F1D..10F26  ; Grapheme_Base
 10F27         ; Grapheme_Base
@@ -12665,9 +12927,12 @@ FFFC..FFFD    ; Grapheme_Base
 11A9E..11AA2  ; Grapheme_Base
 11AB0..11AF8  ; Grapheme_Base
 11B00..11B09  ; Grapheme_Base
+<<<<<<< HEAD
 11B61         ; Grapheme_Base
 11B65         ; Grapheme_Base
 11B67         ; Grapheme_Base
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 11BC0..11BE0  ; Grapheme_Base
 11BE1         ; Grapheme_Base
 11BF0..11BF9  ; Grapheme_Base
@@ -12766,11 +13031,17 @@ FFFC..FFFD    ; Grapheme_Base
 16FE0..16FE1  ; Grapheme_Base
 16FE2         ; Grapheme_Base
 16FE3         ; Grapheme_Base
+<<<<<<< HEAD
 16FF2..16FF3  ; Grapheme_Base
 16FF4..16FF6  ; Grapheme_Base
 17000..18CD5  ; Grapheme_Base
 18CFF..18D1E  ; Grapheme_Base
 18D80..18DF2  ; Grapheme_Base
+=======
+17000..187F7  ; Grapheme_Base
+18800..18CD5  ; Grapheme_Base
+18CFF..18D08  ; Grapheme_Base
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1AFF0..1AFF3  ; Grapheme_Base
 1AFF5..1AFFB  ; Grapheme_Base
 1AFFD..1AFFE  ; Grapheme_Base
@@ -12788,11 +13059,15 @@ FFFC..FFFD    ; Grapheme_Base
 1BC9F         ; Grapheme_Base
 1CC00..1CCEF  ; Grapheme_Base
 1CCF0..1CCF9  ; Grapheme_Base
+<<<<<<< HEAD
 1CCFA..1CCFC  ; Grapheme_Base
 1CD00..1CEB3  ; Grapheme_Base
 1CEBA..1CED0  ; Grapheme_Base
 1CEE0..1CEEF  ; Grapheme_Base
 1CEF0         ; Grapheme_Base
+=======
+1CD00..1CEB3  ; Grapheme_Base
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1CF50..1CFC3  ; Grapheme_Base
 1D000..1D0F5  ; Grapheme_Base
 1D100..1D126  ; Grapheme_Base
@@ -12875,6 +13150,7 @@ FFFC..FFFD    ; Grapheme_Base
 1E5F0         ; Grapheme_Base
 1E5F1..1E5FA  ; Grapheme_Base
 1E5FF         ; Grapheme_Base
+<<<<<<< HEAD
 1E6C0..1E6DE  ; Grapheme_Base
 1E6E0..1E6E2  ; Grapheme_Base
 1E6E4..1E6E5  ; Grapheme_Base
@@ -12882,6 +13158,8 @@ FFFC..FFFD    ; Grapheme_Base
 1E6F0..1E6F4  ; Grapheme_Base
 1E6FE         ; Grapheme_Base
 1E6FF         ; Grapheme_Base
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1E7E0..1E7E6  ; Grapheme_Base
 1E7E8..1E7EB  ; Grapheme_Base
 1E7ED..1E7EE  ; Grapheme_Base
@@ -12962,6 +13240,7 @@ FFFC..FFFD    ; Grapheme_Base
 1F890..1F8AD  ; Grapheme_Base
 1F8B0..1F8BB  ; Grapheme_Base
 1F8C0..1F8C1  ; Grapheme_Base
+<<<<<<< HEAD
 1F8D0..1F8D8  ; Grapheme_Base
 1F900..1FA57  ; Grapheme_Base
 1FA60..1FA6D  ; Grapheme_Base
@@ -12972,6 +13251,16 @@ FFFC..FFFD    ; Grapheme_Base
 1FACD..1FADC  ; Grapheme_Base
 1FADF..1FAEA  ; Grapheme_Base
 1FAEF..1FAF8  ; Grapheme_Base
+=======
+1F900..1FA53  ; Grapheme_Base
+1FA60..1FA6D  ; Grapheme_Base
+1FA70..1FA7C  ; Grapheme_Base
+1FA80..1FA89  ; Grapheme_Base
+1FA8F..1FAC6  ; Grapheme_Base
+1FACE..1FADC  ; Grapheme_Base
+1FADF..1FAE9  ; Grapheme_Base
+1FAF0..1FAF8  ; Grapheme_Base
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1FB00..1FB92  ; Grapheme_Base
 1FB94..1FBEF  ; Grapheme_Base
 1FBF0..1FBF9  ; Grapheme_Base
@@ -12985,7 +13274,11 @@ FFFC..FFFD    ; Grapheme_Base
 30000..3134A  ; Grapheme_Base
 31350..33479  ; Grapheme_Base
 
+<<<<<<< HEAD
 # Total code points: 157494
+=======
+# Total code points: 152730
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -13302,7 +13595,11 @@ ABC0..ABDA    ; InCB; Consonant
 0FC6          ; InCB; Extend
 102D..1030    ; InCB; Extend
 1032..1037    ; InCB; Extend
+<<<<<<< HEAD
 103A          ; InCB; Extend
+=======
+1039..103A    ; InCB; Extend
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 103D..103E    ; InCB; Extend
 1058..1059    ; InCB; Extend
 105E..1060    ; InCB; Extend
@@ -13321,8 +13618,12 @@ ABC0..ABDA    ; InCB; Consonant
 17B4..17B5    ; InCB; Extend
 17B7..17BD    ; InCB; Extend
 17C6          ; InCB; Extend
+<<<<<<< HEAD
 17C9..17D1    ; InCB; Extend
 17D3          ; InCB; Extend
+=======
+17C9..17D3    ; InCB; Extend
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 17DD          ; InCB; Extend
 180B..180D    ; InCB; Extend
 180F          ; InCB; Extend
@@ -13336,14 +13637,22 @@ ABC0..ABDA    ; InCB; Consonant
 1A1B          ; InCB; Extend
 1A56          ; InCB; Extend
 1A58..1A5E    ; InCB; Extend
+<<<<<<< HEAD
+=======
+1A60          ; InCB; Extend
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1A62          ; InCB; Extend
 1A65..1A6C    ; InCB; Extend
 1A73..1A7C    ; InCB; Extend
 1A7F          ; InCB; Extend
 1AB0..1ABD    ; InCB; Extend
 1ABE          ; InCB; Extend
+<<<<<<< HEAD
 1ABF..1ADD    ; InCB; Extend
 1AE0..1AEB    ; InCB; Extend
+=======
+1ABF..1ACE    ; InCB; Extend
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1B00..1B03    ; InCB; Extend
 1B34          ; InCB; Extend
 1B35          ; InCB; Extend
@@ -13352,13 +13661,21 @@ ABC0..ABDA    ; InCB; Consonant
 1B3C          ; InCB; Extend
 1B3D          ; InCB; Extend
 1B42          ; InCB; Extend
+<<<<<<< HEAD
 1B43          ; InCB; Extend
+=======
+1B43..1B44    ; InCB; Extend
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1B6B..1B73    ; InCB; Extend
 1B80..1B81    ; InCB; Extend
 1BA2..1BA5    ; InCB; Extend
 1BA8..1BA9    ; InCB; Extend
 1BAA          ; InCB; Extend
+<<<<<<< HEAD
 1BAC..1BAD    ; InCB; Extend
+=======
+1BAB..1BAD    ; InCB; Extend
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1BE6          ; InCB; Extend
 1BE8..1BE9    ; InCB; Extend
 1BED          ; InCB; Extend
@@ -13405,6 +13722,10 @@ A980..A982    ; InCB; Extend
 A9B3          ; InCB; Extend
 A9B6..A9B9    ; InCB; Extend
 A9BC..A9BD    ; InCB; Extend
+<<<<<<< HEAD
+=======
+A9C0          ; InCB; Extend
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A9E5          ; InCB; Extend
 AA29..AA2E    ; InCB; Extend
 AA31..AA32    ; InCB; Extend
@@ -13418,6 +13739,10 @@ AAB7..AAB8    ; InCB; Extend
 AABE..AABF    ; InCB; Extend
 AAC1          ; InCB; Extend
 AAEC..AAED    ; InCB; Extend
+<<<<<<< HEAD
+=======
+AAF6          ; InCB; Extend
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 ABE5          ; InCB; Extend
 ABE8          ; InCB; Extend
 ABED          ; InCB; Extend
@@ -13436,7 +13761,11 @@ FF9E..FF9F    ; InCB; Extend
 10D24..10D27  ; InCB; Extend
 10D69..10D6D  ; InCB; Extend
 10EAB..10EAC  ; InCB; Extend
+<<<<<<< HEAD
 10EFA..10EFF  ; InCB; Extend
+=======
+10EFC..10EFF  ; InCB; Extend
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 10F46..10F50  ; InCB; Extend
 10F82..10F85  ; InCB; Extend
 11001         ; InCB; Extend
@@ -13449,8 +13778,12 @@ FF9E..FF9F    ; InCB; Extend
 110C2         ; InCB; Extend
 11100..11102  ; InCB; Extend
 11127..1112B  ; InCB; Extend
+<<<<<<< HEAD
 1112D..11132  ; InCB; Extend
 11134         ; InCB; Extend
+=======
+1112D..11134  ; InCB; Extend
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 11173         ; InCB; Extend
 11180..11181  ; InCB; Extend
 111B6..111BE  ; InCB; Extend
@@ -13480,6 +13813,10 @@ FF9E..FF9F    ; InCB; Extend
 113C7..113C9  ; InCB; Extend
 113CE         ; InCB; Extend
 113CF         ; InCB; Extend
+<<<<<<< HEAD
+=======
+113D0         ; InCB; Extend
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 113D2         ; InCB; Extend
 113E1..113E2  ; InCB; Extend
 11438..1143F  ; InCB; Extend
@@ -13514,6 +13851,10 @@ FF9E..FF9F    ; InCB; Extend
 11930         ; InCB; Extend
 1193B..1193C  ; InCB; Extend
 1193D         ; InCB; Extend
+<<<<<<< HEAD
+=======
+1193E         ; InCB; Extend
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 11943         ; InCB; Extend
 119D4..119D7  ; InCB; Extend
 119DA..119DB  ; InCB; Extend
@@ -13521,6 +13862,7 @@ FF9E..FF9F    ; InCB; Extend
 11A01..11A0A  ; InCB; Extend
 11A33..11A38  ; InCB; Extend
 11A3B..11A3E  ; InCB; Extend
+<<<<<<< HEAD
 11A51..11A56  ; InCB; Extend
 11A59..11A5B  ; InCB; Extend
 11A8A..11A96  ; InCB; Extend
@@ -13528,6 +13870,13 @@ FF9E..FF9F    ; InCB; Extend
 11B60         ; InCB; Extend
 11B62..11B64  ; InCB; Extend
 11B66         ; InCB; Extend
+=======
+11A47         ; InCB; Extend
+11A51..11A56  ; InCB; Extend
+11A59..11A5B  ; InCB; Extend
+11A8A..11A96  ; InCB; Extend
+11A98..11A99  ; InCB; Extend
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 11C30..11C36  ; InCB; Extend
 11C38..11C3D  ; InCB; Extend
 11C3F         ; InCB; Extend
@@ -13548,6 +13897,10 @@ FF9E..FF9F    ; InCB; Extend
 11F36..11F3A  ; InCB; Extend
 11F40         ; InCB; Extend
 11F41         ; InCB; Extend
+<<<<<<< HEAD
+=======
+11F42         ; InCB; Extend
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 11F5A         ; InCB; Extend
 13440         ; InCB; Extend
 13447..13455  ; InCB; Extend
@@ -13586,16 +13939,23 @@ FF9E..FF9F    ; InCB; Extend
 1E2EC..1E2EF  ; InCB; Extend
 1E4EC..1E4EF  ; InCB; Extend
 1E5EE..1E5EF  ; InCB; Extend
+<<<<<<< HEAD
 1E6E3         ; InCB; Extend
 1E6E6         ; InCB; Extend
 1E6EE..1E6EF  ; InCB; Extend
 1E6F5         ; InCB; Extend
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1E8D0..1E8D6  ; InCB; Extend
 1E944..1E94A  ; InCB; Extend
 1F3FB..1F3FF  ; InCB; Extend
 E0020..E007F  ; InCB; Extend
 E0100..E01EF  ; InCB; Extend
 
+<<<<<<< HEAD
 # Total code points: 2217
+=======
+# Total code points: 2192
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # EOF

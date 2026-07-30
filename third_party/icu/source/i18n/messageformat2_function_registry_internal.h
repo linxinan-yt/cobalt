@@ -23,6 +23,7 @@ U_NAMESPACE_BEGIN
 
 namespace message2 {
 
+<<<<<<< HEAD
 // Constants for option names
 namespace options {
 static constexpr std::u16string_view ALWAYS = u"always";
@@ -71,6 +72,8 @@ static constexpr std::u16string_view WEEKDAY = u"weekday";
 static constexpr std::u16string_view YEAR = u"year";
 } // namespace options
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     // Built-in functions
     /*
       The standard functions are :datetime, :date, :time,
@@ -81,6 +84,7 @@ static constexpr std::u16string_view YEAR = u"year";
     class StandardFunctions {
         friend class MessageFormatter;
 
+<<<<<<< HEAD
         public:
         // Used for normalizing variable names and keys for comparison
         static UnicodeString normalizeNFC(const UnicodeString&);
@@ -90,6 +94,10 @@ static constexpr std::u16string_view YEAR = u"year";
         static void checkSelectOption(const FunctionOptions&, UErrorCode&);
         static UnicodeString getStringOption(const FunctionOptions& opts,
                                              std::u16string_view optionName,
+=======
+        static UnicodeString getStringOption(const FunctionOptions& opts,
+                                             const UnicodeString& optionName,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                                              UErrorCode& errorCode);
 
         class DateTime;
@@ -125,6 +133,7 @@ static constexpr std::u16string_view YEAR = u"year";
             const Locale& locale;
             const DateTimeFactory::DateTimeType type;
             friend class DateTimeFactory;
+<<<<<<< HEAD
             DateTime(const Locale& l, DateTimeFactory::DateTimeType t)
                 : locale(l), type(t) {}
             const LocalPointer<icu::DateFormat> icuFormatter;
@@ -134,6 +143,11 @@ static constexpr std::u16string_view YEAR = u"year";
             UDate tryTimeZonePatterns(const UnicodeString&, UErrorCode&) const;
             DateInfo createDateInfoFromString(const UnicodeString&, UErrorCode&) const;
 
+=======
+            DateTime(const Locale& l, DateTimeFactory::DateTimeType t) : locale(l), type(t) {}
+            const LocalPointer<icu::DateFormat> icuFormatter;
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             /*
               Looks up an option by name, first checking `opts`, then the cached options
               in `toFormat` if applicable, and finally using a default
@@ -142,12 +156,20 @@ static constexpr std::u16string_view YEAR = u"year";
              */
             UnicodeString getFunctionOption(const FormattedPlaceholder& toFormat,
                                             const FunctionOptions& opts,
+<<<<<<< HEAD
                                             std::u16string_view optionName) const;
+=======
+                                            const UnicodeString& optionName) const;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             // Version for options that don't have defaults; sets the error
             // code instead of returning a default value
             UnicodeString getFunctionOption(const FormattedPlaceholder& toFormat,
                                             const FunctionOptions& opts,
+<<<<<<< HEAD
                                             std::u16string_view optionName,
+=======
+                                            const UnicodeString& optionName,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                                             UErrorCode& errorCode) const;
 
         };
@@ -328,7 +350,11 @@ static constexpr std::u16string_view YEAR = u"year";
 
     };
 
+<<<<<<< HEAD
     extern void formatDateWithDefaults(const Locale& locale, const DateInfo& date, UnicodeString&, UErrorCode& errorCode);
+=======
+    extern void formatDateWithDefaults(const Locale& locale, UDate date, UnicodeString&, UErrorCode& errorCode);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     extern number::FormattedNumber formatNumberWithDefaults(const Locale& locale, double toFormat, UErrorCode& errorCode);
     extern number::FormattedNumber formatNumberWithDefaults(const Locale& locale, int32_t toFormat, UErrorCode& errorCode);
     extern number::FormattedNumber formatNumberWithDefaults(const Locale& locale, int64_t toFormat, UErrorCode& errorCode);

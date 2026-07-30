@@ -101,7 +101,10 @@ public:
     void TestLargeAppend();
     void TestU16StringView();
     void TestWStringView();
+<<<<<<< HEAD
     void TestRange();
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 
 #endif

@@ -11,6 +11,7 @@
 #ifndef PC_CODEC_VENDOR_H_
 #define PC_CODEC_VENDOR_H_
 
+#include <string>
 #include <utility>
 #include <vector>
 
@@ -115,6 +116,7 @@ class CodecVendor {
       const RtpTransceiverDirection& offer,
       const RtpTransceiverDirection& answer) const;
 
+<<<<<<< HEAD
   RTCError MergeCodecsByDirection(MediaType type,
                                   RtpTransceiverDirection direction,
                                   absl::string_view mid,
@@ -126,6 +128,10 @@ class CodecVendor {
   // and to makessure we consistently make calls to GetNegotiatedCodecsForOffer
   // and GetNegotiatedCodecsForAnswer in the same calling context.
   RTC_NO_UNIQUE_ADDRESS SequenceChecker sequence_checker_;
+=======
+  TypedCodecVendor audio_send_codecs_;
+  TypedCodecVendor audio_recv_codecs_;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   const FieldTrialsView& trials_;
 
@@ -157,12 +163,19 @@ class CodecLookupHelper {
 
 // A helper function to merge codecs numbered in one PT numberspace
 // into a list numbered in another PT numberspace. Exposed for testing.
+<<<<<<< HEAD
 // This function is only available for testing the legacy path.
 RTCError MergeCodecsForTesting(const CodecList& reference_codecs,
                                absl::string_view mid,
                                CodecList& offered_codecs,
                                PayloadTypeSuggester& pt_suggester,
                                bool pick_from_top_of_range = false);
+=======
+RTCError MergeCodecsForTesting(const CodecList& reference_codecs,
+                               const std::string& mid,
+                               CodecList& offered_codecs,
+                               PayloadTypeSuggester& pt_suggester);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 }  //  namespace webrtc
 

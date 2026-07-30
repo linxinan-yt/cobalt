@@ -27,17 +27,27 @@ export function renderCodeSnippet(): m.Children {
       ),
     ),
     renderWidgetShowcase({
+<<<<<<< HEAD
       renderWidget: ({wide, downloadFileName}) =>
+=======
+      renderWidget: ({wide}) =>
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         m(CodeSnippet, {
           language: 'SQL',
           text: wide
             ? 'SELECT a_very_long_column_name, another_super_long_column_name, yet_another_ridiculously_long_column_name FROM a_table_with_an_unnecessarily_long_name WHERE some_condition_is_true AND another_condition_is_also_true;'
             : 'SELECT * FROM slice LIMIT 10;',
+<<<<<<< HEAD
           downloadFileName: downloadFileName,
         }),
       initialOpts: {
         wide: false,
         downloadFileName: '',
+=======
+        }),
+      initialOpts: {
+        wide: false,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       },
     }),
   ];

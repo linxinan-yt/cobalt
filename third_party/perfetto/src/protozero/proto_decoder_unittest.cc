@@ -277,6 +277,14 @@ TEST(ProtoDecoderTest, MoveTypedDecoder) {
   // Construct a decoder that uses inline storage (i.e., the fields are stored
   // within the object itself).
   using Decoder = TypedProtoDecoder<32>;
+<<<<<<< HEAD
+=======
+  std::unique_ptr<Decoder> decoder(new Decoder(proto.data(), proto.size()));
+  ASSERT_GE(reinterpret_cast<uintptr_t>(&decoder->at<1>()),
+            reinterpret_cast<uintptr_t>(decoder.get()));
+  ASSERT_LT(reinterpret_cast<uintptr_t>(&decoder->at<1>()),
+            reinterpret_cast<uintptr_t>(decoder.get()) + sizeof(Decoder));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   auto check_decoder_contents = [](const Decoder& decoder) {
     EXPECT_EQ(decoder.Get(1).as_int32(), 10);

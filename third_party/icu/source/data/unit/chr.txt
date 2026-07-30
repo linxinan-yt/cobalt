@@ -212,6 +212,11 @@ chr{
                 one{"{0} ᏋᎻᎵᎠᏗ"}
                 other{"{0} ᏋᎻᎵᎠᏗ"}
             }
+            portion-per-1e9{
+                dnam{"ᏚᏙᏢᏒ ᎢᏳᏓᎵ ᎢᏳᏔᎵᎳᏗᏅᏛ"}
+                one{"{0} ᎤᏙᏢᏒ ᎢᏳᏓᎵ ᎢᏳᏔᎵᎳᏗᏅᏛ"}
+                other{"{0} ᏚᏙᏢᏒ ᎢᏳᏓᎵ ᎢᏳᏔᎵᎳᏗᏅᏛ"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -339,6 +344,12 @@ chr{
             nanosecond{
                 one{"{0} ᎾᏃᎠᏎᏢ"}
                 other{"{0} ᎾᏃᏗᏎᏢ"}
+            }
+            night{
+                dnam{"ᏚᎵᏏᏂᏒ"}
+                one{"{0} ᎤᏒ"}
+                other{"{0} ᏚᎵᏏᏂᏒ"}
+                per{"{0}/ᎤᏒ"}
             }
             quarter{
                 dnam{"ᎯᎸᏍᎩ ᎩᏄᏘᏗ"}
@@ -852,6 +863,11 @@ chr{
                 one{"{0} ᎠᎧᏁᎲ"}
                 other{"{0} ᏓᎧᏁᎲ"}
             }
+            light-speed{
+                dnam{"ᎠᏨᏍᏗ"}
+                one{"{0} ᎠᏨᏍᏗ"}
+                other{"{0} ᎠᏨᏍᏗ"}
+            }
             meter-per-second{
                 dnam{"ᏗᏟᎶᏗ ᎠᏎᏢ ᎢᏳᏓᎵ"}
                 one{"{0} ᎠᏟᎶᏗ ᎠᏎᏢ ᎢᏳᏓᎵ"}
@@ -1188,6 +1204,10 @@ chr{
             permyriad{
                 dnam{"‱"}
             }
+            portion-per-1e9{
+                one{"{0}ppb"}
+                other{"{0}ppb"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1316,8 +1336,15 @@ chr{
                 other{"{0}ᎾᏃ"}
             }
             night{
+<<<<<<< HEAD
                 one{"{0}ᎤᏒ"}
                 other{"{0}ᏚᎵᏏᏂᏒ"}
+=======
+                dnam{"ᏚᎵᏏᏂᏒ"}
+                one{"{0}ᎤᏒ"}
+                other{"{0}ᏚᎵᏏᏂᏒ"}
+                per{"{0}/ᎤᏒ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 one{"{0}Ꭿ"}
@@ -1743,6 +1770,10 @@ chr{
                 other{"{0}kn"}
             }
             light-speed{
+<<<<<<< HEAD
+=======
+                dnam{"ᎠᏨᏍᏗ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0}ᎠᏨᏍᏗ"}
                 other{"{0}ᎠᏨᏍᏗ"}
             }
@@ -2044,6 +2075,9 @@ chr{
             }
             permyriad{
                 dnam{"ᏋᎻᎵᎠᏗ"}
+            }
+            portion-per-1e9{
+                dnam{"ᏚᏙᏢᏒ/ᎢᏳᏔᎵᎳᏗᏅᏛ"}
             }
         }
         consumption{

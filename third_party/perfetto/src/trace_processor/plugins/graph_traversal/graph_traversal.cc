@@ -203,6 +203,7 @@ struct Bfs : public sqlite::AggregateFunction<Bfs> {
 
 }  // namespace
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/graph_traversal/graph_traversal.cc
 namespace graph_traversal {
 namespace {
 
@@ -230,6 +231,12 @@ void RegisterPlugin() {
       GraphTraversalPlugin::kPluginId, GraphTraversalPlugin::kDepIds.data(),
       GraphTraversalPlugin::kDepIds.size());
   base::ignore_result(reg);
+=======
+base::Status RegisterGraphTraversalFunctions(PerfettoSqlEngine& engine,
+                                             StringPool& pool) {
+  RETURN_IF_ERROR(engine.RegisterFunction<Dfs>(&pool));
+  return engine.RegisterFunction<Bfs>(&pool);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/graph_traversal.cc
 }
 
 }  // namespace graph_traversal

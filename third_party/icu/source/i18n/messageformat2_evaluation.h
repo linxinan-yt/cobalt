@@ -31,6 +31,7 @@ U_NAMESPACE_BEGIN
 
 namespace message2 {
 
+<<<<<<< HEAD
     namespace functions {
     static constexpr std::u16string_view DATETIME = u"datetime";
     static constexpr std::u16string_view DATE = u"date";
@@ -43,6 +44,8 @@ namespace message2 {
     static constexpr std::u16string_view STRING = u"string";
     }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     using namespace data_model;
 
     // PrioritizedVariant
@@ -161,7 +164,13 @@ namespace message2 {
     public:
         MessageContext(const MessageArguments&, const StaticErrors&, UErrorCode&);
 
+<<<<<<< HEAD
         const Formattable* getGlobal(const VariableName&, UErrorCode&) const;
+=======
+        const Formattable* getGlobal(const MessageFormatter&,
+                                     const VariableName&,
+                                     UErrorCode&) const;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
         // If any errors were set, update `status` accordingly
         void checkErrors(UErrorCode& status) const;
@@ -213,7 +222,10 @@ namespace message2 {
         FunctionName name;
         const Selector* selector; // May be null
         const Formatter* formatter; // May be null, but one or the other should be non-null unless argument is a FormattedPlaceholder
+<<<<<<< HEAD
         bool checkSelectOption() const;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }; // class InternalValue
 
 } // namespace message2

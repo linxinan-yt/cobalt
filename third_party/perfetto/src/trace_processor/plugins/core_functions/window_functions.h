@@ -21,6 +21,11 @@
 #include <type_traits>
 
 #include "perfetto/base/logging.h"
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/core_functions/window_functions.h
+=======
+#include "perfetto/base/status.h"
+#include "src/trace_processor/perfetto_sql/engine/perfetto_sql_engine.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/window_functions.h
 #include "src/trace_processor/sqlite/bindings/sqlite_result.h"
 #include "src/trace_processor/sqlite/bindings/sqlite_window_function.h"
 
@@ -133,6 +138,14 @@ class LastNonNull : public sqlite::WindowFunction {
   }
 };
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/core_functions/window_functions.h
+=======
+inline base::Status RegisterLastNonNullFunction(PerfettoSqlEngine& engine) {
+  return engine.RegisterWindowFunction<LastNonNull>("LAST_NON_NULL", 1,
+                                                    nullptr);
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/window_functions.h
 }  // namespace perfetto::trace_processor
 
 #endif  // SRC_TRACE_PROCESSOR_PLUGINS_CORE_FUNCTIONS_WINDOW_FUNCTIONS_H_

@@ -15,7 +15,16 @@
 #ifndef SRC_TRACE_PROCESSOR_PLUGINS_LAYOUT_FUNCTIONS_LAYOUT_FUNCTIONS_H_
 #define SRC_TRACE_PROCESSOR_PLUGINS_LAYOUT_FUNCTIONS_LAYOUT_FUNCTIONS_H_
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/layout_functions/layout_functions.h
 namespace perfetto::trace_processor::layout_functions {
+=======
+#include "perfetto/base/status.h"
+#include "src/trace_processor/perfetto_sql/engine/perfetto_sql_engine.h"
+
+namespace perfetto::trace_processor {
+
+class TraceProcessorContext;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/layout_functions.h
 
 // Implements INTERNAL_LAYOUT(ts, dur) window aggregate function.
 // This function takes a set of slices (ordered by ts) and computes depths

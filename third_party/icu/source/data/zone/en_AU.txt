@@ -4,9 +4,12 @@
 en_AU{
     %%Parent{"en_001"}
     zoneStrings{
+<<<<<<< HEAD
         "Pacific:Wallis"{
             ec{"Wallis and Futuna"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "meta:Australia_Central"{
             sd{"ACDT"}
             sg{"ACT"}
@@ -32,9 +35,12 @@ en_AU{
             lg{"China Time"}
             ls{"China Standard Time"}
         }
+<<<<<<< HEAD
         "meta:French_Southern"{
             ls{"French Southern and Antarctic Time"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "meta:Japan"{
             ld{"Japan Summer Time"}
             lg{"Japan Time"}

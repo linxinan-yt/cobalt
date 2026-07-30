@@ -5,8 +5,13 @@ tt{
     Languages{
         af{"африкаанс"}
         am{"амхар"}
+<<<<<<< HEAD
         ar{"гарәпчә"}
         ar_001{"заманча стандарт гарәпчә"}
+=======
+        ar{"гарәп"}
+        ar_001{"Заманча стандарт гарәп"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         arn{"мапуче"}
         as{"ассам"}
         az{"әзәрбайҗан"}
@@ -194,9 +199,12 @@ tt{
         calendar{
             gregorian{"григориан ел исәбе"}
             iso8601{"ISO-8601 календаре"}
+<<<<<<< HEAD
         }
         calendar%core{
             gregorian{"милади"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         collation{
             standard{"гадәти тәртипләү ысулы"}

@@ -104,7 +104,15 @@ Int64ToUnicodeString(int64_t num)
     char buffer[64];    // nos changed from 10 to 64
     char danger = 'p';  // guard against overrunning the buffer (rtg)
 
+<<<<<<< HEAD
     snprintf(buffer, sizeof(buffer), "%" PRId64, num);
+=======
+#if defined(_MSC_VER)
+    snprintf(buffer, sizeof(buffer), "%I64d", num);
+#else
+    snprintf(buffer, sizeof(buffer), "%lld", static_cast<long long>(num));
+#endif
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     assert(danger == 'p');
 
     return buffer;
@@ -221,7 +229,11 @@ UnicodeString toString(const Formattable& f) {
 
 // useful when operator+ won't cooperate
 UnicodeString toString(int32_t n) {
+<<<<<<< HEAD
     return UnicodeString() + static_cast<int64_t>(n);
+=======
+    return UnicodeString() + static_cast<long>(n);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 
@@ -243,6 +255,7 @@ UnicodeString toString(const UnicodeSet& uniset, UErrorCode& status) {
 
 // stephen - cleaned up 05/05/99
 UnicodeString operator+(const UnicodeString& left, char num)
+<<<<<<< HEAD
 { return left + static_cast<int64_t>(num); }
 UnicodeString operator+(const UnicodeString& left, short num)
 { return left + static_cast<int64_t>(num); }
@@ -254,6 +267,19 @@ UnicodeString operator+(const UnicodeString& left, unsigned short num)
 { return left + static_cast<uint64_t>(num); }
 UnicodeString operator+(const UnicodeString& left, unsigned int num)
 { return left + static_cast<uint64_t>(num); }
+=======
+{ return left + static_cast<long>(num); }
+UnicodeString operator+(const UnicodeString& left, short num)
+{ return left + static_cast<long>(num); }
+UnicodeString operator+(const UnicodeString& left, int num)
+{ return left + static_cast<long>(num); }
+UnicodeString operator+(const UnicodeString& left, unsigned char num)
+{ return left + static_cast<unsigned long>(num); }
+UnicodeString operator+(const UnicodeString& left, unsigned short num)
+{ return left + static_cast<unsigned long>(num); }
+UnicodeString operator+(const UnicodeString& left, unsigned int num)
+{ return left + static_cast<unsigned long>(num); }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 UnicodeString operator+(const UnicodeString& left, float num)
 { return left + static_cast<double>(num); }
 
@@ -2085,6 +2111,7 @@ UBool IntlTest::assertEquals(const char* message, std::u16string_view expected,
         possibleDataError);
 }
 
+<<<<<<< HEAD
 bool IntlTest::assertSigned64Equals(const char *message, int64_t expected, int64_t actual) {
     if (expected != actual) {
         errln(UnicodeString("FAIL: ") + message + "; got " + actual + "; expected " + expected);
@@ -2101,6 +2128,14 @@ bool IntlTest::assertSigned64Equals(const char *message, int64_t expected, int64
 bool IntlTest::assertSigned32Equals(const char *message, int32_t expected, int32_t actual) {
     if (expected != actual) {
         errln(UnicodeString("FAIL: ") + message + "; got " + actual + "=0x" + toHex(actual) +
+=======
+UBool IntlTest::assertEquals(const char* message,
+                             int32_t expected,
+                             int32_t actual) {
+    if (expected != actual) {
+        errln(UnicodeString("FAIL: ") + message + "; got " +
+              actual + "=0x" + toHex(actual) +
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
               "; expected " + expected + "=0x" + toHex(expected));
         return false;
     }
@@ -2114,16 +2149,26 @@ bool IntlTest::assertSigned32Equals(const char *message, int32_t expected, int32
 
 bool IntlTest::assertCodePointEquals(const char *message, char32_t expected, char32_t actual) {
     if (expected != actual) {
+<<<<<<< HEAD
         errln(UnicodeString("FAIL: ") + message + "; got U+" + toHex(actual, actual <= 0xFFFF ? 4 : -1) +
               " " + UnicodeString(static_cast<UChar32>(actual)) + "; expected U+" +
               toHex(expected, expected <= 0xFFFF ? 4 : -1) + +" " +
               UnicodeString(static_cast<UChar32>(expected)));
+=======
+        errln(UnicodeString("FAIL: ") + message + "; got int64 " +
+              Int64ToUnicodeString(actual) + 
+              "; expected " + Int64ToUnicodeString(expected) );
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         return false;
     }
 #ifdef VERBOSE_ASSERTIONS
     else {
+<<<<<<< HEAD
         logln(UnicodeString("Ok: ") + message + "; got U+" + toHex(actual, actual <= 0xFFFF ? 4 : -1) +
               " " + UnicodeString(static_cast<UChar32>(actual)));
+=======
+      logln(UnicodeString("Ok: ") + message + "; got int64 " + Int64ToUnicodeString(actual));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 #endif
     return true;
@@ -2149,12 +2194,19 @@ UBool IntlTest::assertEquals(const char* message,
 
 bool IntlTest::assertBooleanEquals(const char *message, int8_t expected, int8_t actual) {
     if (expected != actual) {
+<<<<<<< HEAD
         errln(UnicodeString("FAIL: ") + message + "; got " + toString(actual) + "; expected " +
               toString(expected));
+=======
+        errln(UnicodeString("FAIL: ") + message + "; got " +
+              toString(actual) +
+              "; expected " + toString(expected));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         return false;
     }
 #ifdef VERBOSE_ASSERTIONS
     else {
+<<<<<<< HEAD
         logln(UnicodeString("Ok: ") + message + "; got " + toString(actual));
     }
 #endif
@@ -2170,6 +2222,9 @@ bool IntlTest::assertBooleanNotEquals(const char *message, int8_t expected, int8
 #ifdef VERBOSE_ASSERTIONS
     else {
         logln(UnicodeString("Ok: ") + message + "; got " + toString(actual));
+=======
+      logln(UnicodeString("Ok: ") + message + "; got " + toString(actual));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 #endif
     return true;
@@ -2353,7 +2408,11 @@ UBool IntlTest::assertEqualsNear(const char* message,
 
 static char ASSERT_BUF[256];
 
+<<<<<<< HEAD
 const char* IntlTest::extractToAssertBuf(std::u16string_view message) {
+=======
+static const char* extractToAssertBuf(std::u16string_view message) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     UnicodeString buf;
     escape(message, buf);
     buf.extract(0, 0x7FFFFFFF, ASSERT_BUF, sizeof(ASSERT_BUF) - 1, nullptr);
@@ -2385,7 +2444,25 @@ UBool IntlTest::assertEquals(std::u16string_view message,
                              const char* actual) {
     return assertEquals(extractToAssertBuf(message), expected, actual);
 }
+<<<<<<< HEAD
 
+=======
+UBool IntlTest::assertEquals(std::u16string_view message,
+                             UBool expected,
+                             UBool actual) {
+    return assertEquals(extractToAssertBuf(message), expected, actual);
+}
+UBool IntlTest::assertEquals(std::u16string_view message,
+                             int32_t expected,
+                             int32_t actual) {
+    return assertEquals(extractToAssertBuf(message), expected, actual);
+}
+UBool IntlTest::assertEquals(std::u16string_view message,
+                             int64_t expected,
+                             int64_t actual) {
+    return assertEquals(extractToAssertBuf(message), expected, actual);
+}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 UBool IntlTest::assertEquals(std::u16string_view message,
                              double expected,
                              double actual) {
@@ -2406,6 +2483,14 @@ UBool IntlTest::assertEquals(std::u16string_view message,
                              const std::vector<std::string>& actual) {
     return assertEquals(extractToAssertBuf(message), expected, actual);
 }
+<<<<<<< HEAD
+=======
+UBool IntlTest::assertNotEquals(std::u16string_view message,
+                                int32_t expectedNot,
+                                int32_t actual) {
+    return assertNotEquals(extractToAssertBuf(message), expectedNot, actual);
+}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 UBool IntlTest::assertEqualsNear(std::u16string_view message,
                                  double expected,
                                  double actual,

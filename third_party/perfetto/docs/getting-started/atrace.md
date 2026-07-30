@@ -444,7 +444,11 @@ use cases, but we are not there yet. So the answer is: _depends_.
 | When to prefer Atrace                                                                                                           | When to prefer the Tracing SDK                                                                                 |
 | ------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | You need something simple that just works.                                                                                      | You need more advanced features (e.g. flows).                                                                  |
+<<<<<<< HEAD
 | You are okay with one on/off toggle for the whole app. (If you are in the Android system you can only use a limited set of tags) | You need fine-grained control over tracing categories.                                                         |
+=======
+| You are okay with one on/off toggle for the whole app. (If you are in the Android system you can only se a limited set of tags) | You need fine-grained control over tracing categories.                                                         |
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 | You are okay with events being multiplexed in the main ftace buffer.                                                            | You want control over muxing events in different buffers.                                                       |
 | Instrumentation overhead is not a big concern, your trace points are hit sporadically.                                          | You want minimal overhead for your instrumentation points. Your trace points are frequent (every 10ms or less) |
 

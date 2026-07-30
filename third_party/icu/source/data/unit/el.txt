@@ -479,6 +479,22 @@ el{
                 one{"{0} τοις δεκάκις χιλίοις"}
                 other{"{0} τοις δεκάκις χιλίοις"}
             }
+            portion-per-1e9{
+                case{
+                    accusative{
+                        one{"{0} μέρος στο δισεκατομμύριο"}
+                        other{"{0} μέρη στο δισεκατομμύριο"}
+                    }
+                    genitive{
+                        one{"{0} μέρους στο δισεκατομμύριο"}
+                        other{"{0} μερών στο δισεκατομμύριο"}
+                    }
+                }
+                dnam{"μέρη στο δισεκατομμύριο"}
+                gender{"neuter"}
+                one{"{0} μέρος στο δισεκατομμύριο"}
+                other{"{0} μέρη στο δισεκατομμύριο"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1999,6 +2015,10 @@ el{
                         other{"{0} φωτός"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"φως"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 gender{"neuter"}
                 one{"{0} φως"}
                 other{"{0} φως"}
@@ -2566,6 +2586,12 @@ el{
             nanosecond{
                 dnam{"ns"}
             }
+            night{
+                dnam{"νύχτ."}
+                one{"{0} νύχτ."}
+                other{"{0} νύχτ."}
+                per{"{0}/νύχτ."}
+            }
             quarter{
                 one{"{0} τέτ."}
                 other{"{0} τέτ."}
@@ -2745,6 +2771,11 @@ el{
             }
             light-speed{
                 dnam{"φώς"}
+<<<<<<< HEAD
+=======
+                one{"{0} φως"}
+                other{"{0} φως"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             meter-per-second{
                 dnam{"μ./δ."}
@@ -2979,6 +3010,9 @@ el{
             }
             permyriad{
                 dnam{"τοις δεκάκις χιλίοις"}
+            }
+            portion-per-1e9{
+                dnam{"μέρη/δισεκατομμύριο"}
             }
         }
         consumption{

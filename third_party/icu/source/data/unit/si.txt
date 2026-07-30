@@ -179,6 +179,11 @@ si{
                 one{"{0} පර්මැරියඩ්"}
                 other{"{0} පර්මැරියඩ්"}
             }
+            portion-per-1e9{
+                dnam{"බිලියනයකට කොටස්"}
+                one{"බිලියනයකට කොටස් {0}"}
+                other{"බිලියනයකට කොටස් {0}"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -285,8 +290,15 @@ si{
                 other{"නැනෝතත්පර {0}"}
             }
             night{
+<<<<<<< HEAD
                 one{"{0} රාත්‍රිය"}
                 other{"රාත්‍රිය {0}"}
+=======
+                dnam{"රාත්‍රිය"}
+                one{"{0} රාත්‍රිය"}
+                other{"රාත්‍රිය {0}"}
+                per{"{0}/රාත්‍රිය"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 one{"කාල {0}"}
@@ -775,6 +787,10 @@ si{
                 other{"නාවික සැතපුම් {0}"}
             }
             light-speed{
+<<<<<<< HEAD
+=======
+                dnam{"ආලෝකය"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} ආලෝකය"}
                 other{"ආලෝකය {0}"}
             }
@@ -1083,6 +1099,11 @@ si{
             permyriad{
                 dnam{"‱"}
             }
+            portion-per-1e9{
+                dnam{"බිකො"}
+                one{"බිකො {0}"}
+                other{"බිකො {0}"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1113,6 +1134,12 @@ si{
             month{
                 one{"මා {0}"}
                 other{"මා {0}"}
+            }
+            night{
+                dnam{"රාත්‍රිය"}
+                one{"රාත්‍රිය {0}"}
+                other{"රාත්‍රිය {0}"}
+                per{"{0}/රාත්‍රිය"}
             }
             second{
                 dnam{"තත්"}
@@ -1304,6 +1331,11 @@ si{
             beaufort{
                 one{"බි{0}"}
                 other{"බි{0}"}
+            }
+            light-speed{
+                dnam{"ආලෝකය"}
+                one{"ආලෝකය {0}"}
+                other{"ආලෝකය {0}"}
             }
             meter-per-second{
                 dnam{"මී/තත්"}
@@ -1532,6 +1564,11 @@ si{
             }
             permyriad{
                 dnam{"පර්මැරියඩ්"}
+            }
+            portion-per-1e9{
+                dnam{"කොටස්/බිලියනය"}
+                one{"බිකො {0}"}
+                other{"බිකො {0}"}
             }
         }
         consumption{

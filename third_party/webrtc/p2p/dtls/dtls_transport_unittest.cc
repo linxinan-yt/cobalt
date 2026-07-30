@@ -30,8 +30,12 @@
 #include "api/dtls_transport_interface.h"
 #include "api/environment/environment.h"
 #include "api/field_trials.h"
+<<<<<<< HEAD
 #include "api/ice_transport_interface.h"
 #include "api/make_ref_counted.h"
+=======
+#include "api/field_trials_view.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "api/scoped_refptr.h"
 #include "api/sequence_checker.h"
 #include "api/test/rtc_error_matchers.h"
@@ -57,7 +61,11 @@
 #include "rtc_base/ssl_identity.h"
 #include "rtc_base/ssl_stream_adapter.h"
 #include "rtc_base/stream.h"
+<<<<<<< HEAD
 #include "system_wrappers/include/metrics.h"
+=======
+#include "rtc_base/thread.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "test/create_test_environment.h"
 #include "test/create_test_field_trials.h"
 #include "test/gmock.h"
@@ -156,8 +164,13 @@ class DtlsTestClient {
         make_ref_counted<FakeIceTransport>(std::move(fake_ice_transport));
 
     dtls_transport_ = std::make_unique<DtlsTransportInternalImpl>(
+<<<<<<< HEAD
         env, ice_transport_, crypto_options, ssl_max_version_,
         ssl_stream_factory_);
+=======
+        CreateTestEnvironment(), fake_ice_transport_.get(), crypto_options,
+        ssl_max_version_, ssl_stream_factory_);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     // Note: Certificate may be null here if testing passthrough.
     dtls_transport_->SetLocalCertificate(certificate_);
     dtls_transport_->SubscribeWritableState(
@@ -443,9 +456,15 @@ class DtlsTestClient {
   DtlsTransportInternalImpl::SslStreamFactory ssl_stream_factory_;
 };
 
+<<<<<<< HEAD
 class FakeSSLStreamAdapter : public SSLStreamAdapter {
  public:
   explicit FakeSSLStreamAdapter(std::unique_ptr<SSLStreamAdapter> impl_)
+=======
+class FakeSSLStreamAdapter : public webrtc::SSLStreamAdapter {
+ public:
+  explicit FakeSSLStreamAdapter(std::unique_ptr<webrtc::SSLStreamAdapter> impl_)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       : impl_(std::move(impl_)) {}
 
   void Init() {
@@ -458,6 +477,7 @@ class FakeSSLStreamAdapter : public SSLStreamAdapter {
   void SetWriteError(std::optional<int> error) { write_error_ = error; }
 
   // SSLStreamAdapter overrides.
+<<<<<<< HEAD
   void SetIdentity(std::unique_ptr<SSLIdentity> identity) override {
     impl_->SetIdentity(std::move(identity));
   }
@@ -473,6 +493,25 @@ class FakeSSLStreamAdapter : public SSLStreamAdapter {
   }
 #pragma clang diagnostic pop
   void SetMaxProtocolVersion(SSLProtocolVersion version) override {
+=======
+  void SetIdentity(std::unique_ptr<webrtc::SSLIdentity> identity) override {
+    impl_->SetIdentity(std::move(identity));
+  }
+  webrtc::SSLIdentity* GetIdentityForTesting() const override {
+    return impl_->GetIdentityForTesting();
+  }
+  void SetServerRole(webrtc::SSLRole role) override {
+    impl_->SetServerRole(role);
+  }
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+  void SetMode(webrtc::SSLMode mode) override { impl_->SetMode(mode); }
+  webrtc::SSLProtocolVersion GetSslVersion() const override {
+    return impl_->GetSslVersion();
+  }
+#pragma clang diagnostic pop
+  void SetMaxProtocolVersion(webrtc::SSLProtocolVersion version) override {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     impl_->SetMaxProtocolVersion(version);
   }
   void SetInitialRetransmissionTimeout(int timeout_ms) override {
@@ -480,12 +519,21 @@ class FakeSSLStreamAdapter : public SSLStreamAdapter {
   }
   void SetMTU(int mtu) override { impl_->SetMTU(mtu); }
   int StartSSL() override { return impl_->StartSSL(); }
+<<<<<<< HEAD
   SSLPeerCertificateDigestError SetPeerCertificateDigest(
       absl::string_view digest_alg,
       std::span<const uint8_t> digest_val) override {
     return impl_->SetPeerCertificateDigest(digest_alg, digest_val);
   }
   std::unique_ptr<SSLCertChain> GetPeerSSLCertChain() const override {
+=======
+  webrtc::SSLPeerCertificateDigestError SetPeerCertificateDigest(
+      absl::string_view digest_alg,
+      webrtc::ArrayView<const uint8_t> digest_val) override {
+    return impl_->SetPeerCertificateDigest(digest_alg, digest_val);
+  }
+  std::unique_ptr<webrtc::SSLCertChain> GetPeerSSLCertChain() const override {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     return impl_->GetPeerSSLCertChain();
   }
   bool GetSslCipherSuite(int* cipher_suite) const override {
@@ -497,6 +545,7 @@ class FakeSSLStreamAdapter : public SSLStreamAdapter {
   bool GetSslVersionBytes(int* version) const override {
     return impl_->GetSslVersionBytes(version);
   }
+<<<<<<< HEAD
   [[deprecated]] bool ExportSrtpKeyingMaterial(
       ZeroOnFreeBuffer<uint8_t>& keying_material) override {
     return impl_->ExportSrtpKeyingMaterial(keying_material);
@@ -505,6 +554,12 @@ class FakeSSLStreamAdapter : public SSLStreamAdapter {
       ZeroOnFreeBuffer<uint8_t>& keying_material) override {
     return impl_->AppendSrtpKeyingMaterial(keying_material);
   }
+=======
+  bool ExportSrtpKeyingMaterial(
+      webrtc::ZeroOnFreeBuffer<uint8_t>& keying_material) override {
+    return impl_->ExportSrtpKeyingMaterial(keying_material);
+  }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   uint16_t GetPeerSignatureAlgorithm() const override {
     return impl_->GetPeerSignatureAlgorithm();
   }
@@ -524,6 +579,7 @@ class FakeSSLStreamAdapter : public SSLStreamAdapter {
   uint16_t GetSslGroupId() const override { return impl_->GetSslGroupId(); }
 
   // StreamInterface overrides.
+<<<<<<< HEAD
   StreamState GetState() const override { return impl_->GetState(); }
   void Close() override { impl_->Close(); }
   StreamResult Read(std::span<uint8_t> buffer,
@@ -537,14 +593,34 @@ class FakeSSLStreamAdapter : public SSLStreamAdapter {
     if (write_error_) {
       error = *write_error_;
       return SR_ERROR;
+=======
+  webrtc::StreamState GetState() const override { return impl_->GetState(); }
+  void Close() override { impl_->Close(); }
+  webrtc::StreamResult Read(webrtc::ArrayView<uint8_t> buffer,
+                            size_t& read,
+                            int& error) override {
+    return impl_->Read(buffer, read, error);
+  }
+  webrtc::StreamResult Write(webrtc::ArrayView<const uint8_t> data,
+                             size_t& written,
+                             int& error) override {
+    if (write_error_) {
+      error = *write_error_;
+      return webrtc::SR_ERROR;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
     return impl_->Write(data, written, error);
   }
   bool Flush() override { return impl_->Flush(); }
 
  private:
+<<<<<<< HEAD
   std::unique_ptr<StreamInterface> stream_;
   std::unique_ptr<SSLStreamAdapter> impl_;
+=======
+  std::unique_ptr<webrtc::StreamInterface> stream_;
+  std::unique_ptr<webrtc::SSLStreamAdapter> impl_;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   std::optional<int> write_error_;
 };
 
@@ -779,9 +855,13 @@ TEST_F(DtlsTransportInternalImplTest, TestSendPacketWithOptions) {
   std::unique_ptr<char[]> packet(new char[size]);
   memset(packet.get(), 0, size);
   packet[0] = 0x00;
+<<<<<<< HEAD
   SetBE32(std::span<uint8_t>(
               reinterpret_cast<uint8_t*>(packet.get() + kPacketNumOffset), 4),
           0);
+=======
+  SetBE32(packet.get() + kPacketNumOffset, 0);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   AsyncSocketPacketOptions packet_options;
   packet_options.packet_id = kFakePacketId;
@@ -794,7 +874,11 @@ TEST_F(DtlsTransportInternalImplTest, TestSendPacketWithOptions) {
   EXPECT_THAT(
       webrtc::WaitUntil(
           [&] { return client2_.NumPacketsReceived(); }, Eq(1u),
+<<<<<<< HEAD
           {.timeout = TimeDelta::Millis(kTimeout), .clock = &time_controller_}),
+=======
+          {.timeout = TimeDelta::Millis(kTimeout), .clock = &fake_clock_}),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       IsRtcOk());
 
   // Now check the sent packet info on client1.
@@ -811,9 +895,13 @@ TEST_F(DtlsTransportInternalImplTest, TestSendSrtpBypassPacketWithOptions) {
   std::unique_ptr<char[]> packet(new char[size]);
   memset(packet.get(), 0, size);
   packet[0] = kRtpLeadByte;  // Make it look like an SRTP packet.
+<<<<<<< HEAD
   SetBE32(std::span<uint8_t>(
               reinterpret_cast<uint8_t*>(packet.get() + kPacketNumOffset), 4),
           0);
+=======
+  SetBE32(packet.get() + kPacketNumOffset, 0);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   AsyncSocketPacketOptions packet_options;
   packet_options.packet_id = kFakePacketId;
@@ -826,7 +914,11 @@ TEST_F(DtlsTransportInternalImplTest, TestSendSrtpBypassPacketWithOptions) {
   EXPECT_THAT(
       webrtc::WaitUntil(
           [&] { return client2_.NumPacketsReceived(); }, Eq(1u),
+<<<<<<< HEAD
           {.timeout = TimeDelta::Millis(kTimeout), .clock = &time_controller_}),
+=======
+          {.timeout = TimeDelta::Millis(kTimeout), .clock = &fake_clock_}),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       IsRtcOk());
 
   // Now check the sent packet info on client1.
@@ -834,6 +926,7 @@ TEST_F(DtlsTransportInternalImplTest, TestSendSrtpBypassPacketWithOptions) {
   EXPECT_GE(client1_.sent_packet().send_time_ms, 0);
 }
 
+<<<<<<< HEAD
 TEST_F(DtlsTransportInternalImplTest,
        DestructionDeregistersCallbacksFromIceTransport) {
   PrepareDtls(KT_DEFAULT);
@@ -850,16 +943,28 @@ TEST_F(DtlsTransportInternalImplTest,
   client1_.fake_ice_transport()->NotifyNetworkRouteChanged(std::nullopt);
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 TEST_F(DtlsTransportInternalImplTest, TestWriteError) {
   PrepareDtls(KT_DEFAULT);
   FakeSSLStreamAdapter* fake_stream = nullptr;
   client1_.set_ssl_stream_factory(
+<<<<<<< HEAD
       [&](const Environment& env, std::unique_ptr<StreamInterface> stream,
           absl::AnyInvocable<void(SSLHandshakeError)>
               handshake_error_callback) {
         auto fake =
             std::make_unique<FakeSSLStreamAdapter>(SSLStreamAdapter::Create(
                 env, std::move(stream), std::move(handshake_error_callback)));
+=======
+      [&](std::unique_ptr<webrtc::StreamInterface> stream,
+          absl::AnyInvocable<void(SSLHandshakeError)> handshake_error_callback,
+          const FieldTrialsView* field_trials) {
+        auto fake =
+            std::make_unique<FakeSSLStreamAdapter>(SSLStreamAdapter::Create(
+                std::move(stream), std::move(handshake_error_callback),
+                field_trials));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         fake->Init();
         fake_stream = fake.get();
         return fake;
@@ -876,12 +981,22 @@ TEST_F(DtlsTransportInternalImplTest, TestPacketOptionsResetAfterWriteError) {
   PrepareDtls(KT_DEFAULT);
   FakeSSLStreamAdapter* fake_stream = nullptr;
   client1_.set_ssl_stream_factory(
+<<<<<<< HEAD
       [&](const Environment& env, std::unique_ptr<StreamInterface> stream,
           absl::AnyInvocable<void(SSLHandshakeError)>
               handshake_error_callback) {
         auto fake =
             std::make_unique<FakeSSLStreamAdapter>(SSLStreamAdapter::Create(
                 env, std::move(stream), std::move(handshake_error_callback)));
+=======
+      [&](std::unique_ptr<webrtc::StreamInterface> stream,
+          absl::AnyInvocable<void(SSLHandshakeError)> handshake_error_callback,
+          const FieldTrialsView* field_trials) {
+        auto fake =
+            std::make_unique<FakeSSLStreamAdapter>(SSLStreamAdapter::Create(
+                std::move(stream), std::move(handshake_error_callback),
+                field_trials));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         fake->Init();
         fake_stream = fake.get();
         return fake;

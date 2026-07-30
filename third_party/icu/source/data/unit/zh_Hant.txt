@@ -72,6 +72,7 @@ zh_Hant{
                 dnam{"每公升毫莫耳"}
                 other{"每公升 {0} 毫莫耳"}
             }
+<<<<<<< HEAD
             ofglucose{
                 dnam{"葡萄糖"}
                 other{"{0} 葡萄糖"}
@@ -81,6 +82,9 @@ zh_Hant{
                 other{"{0} 比例"}
             }
             part-per-1e9{
+=======
+            portion-per-1e9{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 dnam{"十億分點濃度"}
                 other{"{0} 十億分點濃度"}
             }
@@ -121,6 +125,11 @@ zh_Hant{
             }
             month{
                 per{"每月 {0}"}
+            }
+            night{
+                dnam{"夜"}
+                other{"{0} 夜"}
+                per{"{0}/夜"}
             }
             second{
                 per{"每秒 {0}"}
@@ -231,6 +240,10 @@ zh_Hant{
             }
             meter{
                 per{"每公尺 {0}"}
+            }
+            mile-scandinavian{
+                dnam{"斯堪地那維亞里"}
+                other{"{0} 斯堪地那維亞里"}
             }
             solar-radius{
                 dnam{"太陽半徑"}
@@ -444,7 +457,11 @@ zh_Hant{
             part-per-1e6{
                 other{"{0}百萬分率"}
             }
+<<<<<<< HEAD
             part-per-1e9{
+=======
+            portion-per-1e9{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0}ppb"}
             }
         }
@@ -506,7 +523,13 @@ zh_Hant{
                 other{"{0}ns"}
             }
             night{
+<<<<<<< HEAD
                 other{"{0}夜"}
+=======
+                dnam{"夜"}
+                other{"{0}夜"}
+                per{"{0}/夜"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         electric{
@@ -661,6 +684,7 @@ zh_Hant{
                 other{"{0}英里"}
             }
             mile-scandinavian{
+                dnam{"斯堪地那維亞里"}
                 other{"{0}smi"}
             }
             millimeter{
@@ -1098,6 +1122,16 @@ zh_Hant{
             permille{
                 dnam{"千分比"}
             }
+<<<<<<< HEAD
+=======
+            permillion{
+                dnam{"百萬分率"}
+                other{"{0} 百萬分率"}
+            }
+            portion-per-1e9{
+                dnam{"濃度/十億"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         consumption{
             liter-per-100-kilometer{

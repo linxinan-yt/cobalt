@@ -801,6 +801,35 @@ lv{
                 other{"{0} promiriādes"}
                 zero{"{0}‱"}
             }
+            portion-per-1e9{
+                case{
+                    accusative{
+                        one{"{0} miljarddaļu"}
+                        other{"{0} miljarddaļas"}
+                        zero{"{0} miljarddaļu"}
+                    }
+                    dative{
+                        one{"{0} miljarddaļai"}
+                        other{"{0} miljarddaļām"}
+                        zero{"{0} miljarddaļu"}
+                    }
+                    genitive{
+                        one{"{0} miljarddaļas"}
+                        other{"{0} miljarddaļu"}
+                        zero{"{0} miljarddaļu"}
+                    }
+                    locative{
+                        one{"{0} miljarddaļā"}
+                        other{"{0} miljarddaļās"}
+                        zero{"{0} miljarddaļu"}
+                    }
+                }
+                dnam{"miljarddaļas"}
+                gender{"feminine"}
+                one{"{0} miljarddaļa"}
+                other{"{0} miljarddaļas"}
+                zero{"{0} miljarddaļu"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1482,9 +1511,17 @@ lv{
                         zero{"{0} nakšu"}
                     }
                 }
+<<<<<<< HEAD
                 gender{"feminine"}
                 one{"{0} nakts"}
                 other{"{0} naktis"}
+=======
+                dnam{"naktis"}
+                gender{"feminine"}
+                one{"{0} nakts"}
+                other{"{0} naktis"}
+                per{"{0}/nakts"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 zero{"{0} nakšu"}
             }
             quarter{
@@ -3390,6 +3427,10 @@ lv{
                         zero{"{0} gaismas"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"gaisma"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 gender{"feminine"}
                 one{"{0} gaisma"}
                 other{"{0} gaismas"}
@@ -4070,6 +4111,7 @@ lv{
             }
         }
         concentr{
+<<<<<<< HEAD
             ofglucose{
                 dnam{"Glc"}
                 one{"{0} Glc"}
@@ -4081,6 +4123,10 @@ lv{
                 one{"{0} daļa"}
                 other{"{0} daļa"}
                 zero{"{0} daļu"}
+=======
+            portion-per-1e9{
+                dnam{"miljarddaļas"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         duration{
@@ -4096,6 +4142,13 @@ lv{
                 other{"{0} m."}
                 per{"{0}/m."}
                 zero{"{0} m."}
+            }
+            night{
+                dnam{"naktis"}
+                one{"{0} nakts"}
+                other{"{0} naktis"}
+                per{"{0}/nakts"}
+                zero{"{0} nakšu"}
             }
             quarter{
                 one{"{0} c."}
@@ -4320,6 +4373,12 @@ lv{
                 other{"{0} mezgli"}
                 zero{"{0} mezgli"}
             }
+            light-speed{
+                dnam{"gaisma"}
+                one{"{0} gaisma"}
+                other{"{0} gaismas"}
+                zero{"{0} gaismu"}
+            }
             meter-per-second{
                 one{"{0}m/s"}
                 other{"{0}m/s"}
@@ -4451,6 +4510,9 @@ lv{
             }
             permyriad{
                 dnam{"promiriāde"}
+            }
+            portion-per-1e9{
+                dnam{"miljarddaļas"}
             }
         }
         consumption{

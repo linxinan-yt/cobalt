@@ -208,6 +208,11 @@ et{
                 one{"{0} promüriaad"}
                 other{"{0} promüriaadi"}
             }
+            portion-per-1e9{
+                dnam{"miljardikosa"}
+                one{"{0} miljardikosa"}
+                other{"{0} miljardikosa"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -341,6 +346,12 @@ et{
                 other{"{0} nanosekundit"}
             }
             night{
+<<<<<<< HEAD
+=======
+                dnam{"ööd"}
+                one{"{0} öö"}
+                other{"{0} ööd"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 per{"{0} öö kohta"}
             }
             quarter{
@@ -1131,6 +1142,12 @@ et{
                 one{"{0} k"}
                 other{"{0} k"}
             }
+            night{
+                dnam{"ööd"}
+                one{"{0} öö"}
+                other{"{0} ööd"}
+                per{"{0}/öö"}
+            }
             second{
                 dnam{"s"}
                 one{"{0} s"}
@@ -1337,6 +1354,11 @@ et{
             }
             permyriad{
                 dnam{"promüriaad"}
+            }
+            portion-per-1e9{
+                dnam{"osakesed/miljard"}
+                one{"{0} miljardikosa"}
+                other{"{0} miljardikosa"}
             }
         }
         consumption{

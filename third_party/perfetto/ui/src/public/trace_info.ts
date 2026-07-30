@@ -12,7 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD
 import type {time} from '../base/time';
+=======
+import {time} from '../base/time';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 export interface TraceInfo {
   readonly traceTitle: string; // File name and size of the current trace.

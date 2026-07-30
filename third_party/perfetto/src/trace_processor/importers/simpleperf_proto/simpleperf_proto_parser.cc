@@ -24,9 +24,13 @@
 #include "perfetto/ext/base/string_view.h"
 #include "src/trace_processor/importers/common/mapping_tracker.h"
 #include "src/trace_processor/importers/common/process_tracker.h"
+<<<<<<< HEAD
 #include "src/trace_processor/importers/common/profiler_sample_tracker.h"
 #include "src/trace_processor/importers/common/stack_profile_tracker.h"
 #include "src/trace_processor/importers/common/stats_tracker.h"
+=======
+#include "src/trace_processor/importers/common/stack_profile_tracker.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "src/trace_processor/importers/common/virtual_memory_mapping.h"
 #include "src/trace_processor/importers/simpleperf_proto/simpleperf_proto_tracker.h"
 #include "src/trace_processor/storage/stats.h"
@@ -39,9 +43,13 @@ namespace perfetto::trace_processor::simpleperf_proto_importer {
 
 SimpleperfProtoParser::SimpleperfProtoParser(TraceProcessorContext* context,
                                              SimpleperfProtoTracker* tracker)
+<<<<<<< HEAD
     : context_(context),
       tracker_(tracker),
       simpleperf_source_id_(context->storage->InternString("simpleperf")) {}
+=======
+    : context_(context), tracker_(tracker) {}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 SimpleperfProtoParser::~SimpleperfProtoParser() = default;
 
@@ -89,7 +97,11 @@ void SimpleperfProtoParser::Parse(int64_t ts,
       DummyMemoryMapping* mapping = tracker_->GetMapping(file_id);
       if (!mapping) {
         // Drop sample if file_id not found
+<<<<<<< HEAD
         context_->stats_tracker->IncrementStats(
+=======
+        context_->storage->IncrementStats(
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             stats::simpleperf_missing_file_mapping);
         return;
       }
@@ -106,6 +118,7 @@ void SimpleperfProtoParser::Parse(int64_t ts,
       depth++;
     }
 
+<<<<<<< HEAD
     // Insert the leaf callsite (the last callsite created, which has the
     // highest depth) as a profiler sample.
     if (callsite_id.has_value()) {
@@ -118,6 +131,17 @@ void SimpleperfProtoParser::Parse(int64_t ts,
           context_->profiler_sample_tracker->InternTaskContext(task_context);
       row.callsite_id = *callsite_id;
       context_->profiler_sample_tracker->AddSample(row);
+=======
+    // Insert into cpu_profile_stack_sample table with the leaf callsite
+    // (the last callsite created, which has the highest depth)
+    if (callsite_id.has_value()) {
+      tables::CpuProfileStackSampleTable::Row row;
+      row.ts = ts;
+      row.callsite_id = *callsite_id;
+      row.utid = utid;
+      row.process_priority = 0;  // Default priority
+      context_->storage->mutable_cpu_profile_stack_sample_table()->Insert(row);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
     return;
   }

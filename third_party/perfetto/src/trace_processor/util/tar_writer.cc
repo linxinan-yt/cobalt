@@ -92,7 +92,38 @@ base::Status ValidateFilename(const std::string& filename) {
   return base::OkStatus();
 }
 
+<<<<<<< HEAD
 TarHeader MakeTarHeader(const std::string& filename, size_t file_size) {
+=======
+base::Status TarWriter::AddFileFromPath(const std::string& filename,
+                                        const std::string& file_path) {
+  RETURN_IF_ERROR(ValidateFilename(filename));
+
+  // Get file size
+  auto file_size_opt = base::GetFileSize(file_path);
+  if (!file_size_opt) {
+    return base::Status("Failed to get file size: " + file_path);
+  }
+  size_t file_size = static_cast<size_t>(*file_size_opt);
+
+  base::ScopedFile file = base::OpenFile(file_path, O_RDONLY);
+  if (!file) {
+    return base::Status("Failed to open file: " + file_path);
+  }
+
+  RETURN_IF_ERROR(CreateAndWriteHeader(filename, file_size));
+
+  RETURN_IF_ERROR(base::CopyFileContents(*file, *output_file_));
+
+  // Write padding to align to 512-byte boundary
+  RETURN_IF_ERROR(WritePadding(file_size));
+
+  return base::OkStatus();
+}
+
+base::Status TarWriter::CreateAndWriteHeader(const std::string& filename,
+                                             size_t file_size) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   TarHeader header;
 
   // Initialize header

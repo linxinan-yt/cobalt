@@ -68,7 +68,10 @@ private:
     void TestCompatible73();
     void TestCompatible74();
     void TestCompatible77();
+<<<<<<< HEAD
     void TestCompatible78();
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     void TestGetAvailable();
     void TestExamplesInDocs();
     void TestFormatPeriodEn();
@@ -4296,6 +4299,11 @@ void MeasureFormatTest::TestCompatible77() {
     measureUnitValue = MeasureUnit::getPartPerMillion();
     measureUnit.adoptInstead(MeasureUnit::createPermyriad(status));
     measureUnitValue = MeasureUnit::getPermyriad();
+<<<<<<< HEAD
+=======
+    measureUnit.adoptInstead(MeasureUnit::createPortionPer1E9(status));
+    measureUnitValue = MeasureUnit::getPortionPer1E9();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     measureUnit.adoptInstead(MeasureUnit::createLiterPer100Kilometers(status));
     measureUnitValue = MeasureUnit::getLiterPer100Kilometers();
     measureUnit.adoptInstead(MeasureUnit::createLiterPerKilometer(status));
@@ -4629,6 +4637,7 @@ void MeasureFormatTest::TestCompatible77() {
     assertSuccess("", status);
 }
 
+<<<<<<< HEAD
 void MeasureFormatTest::TestCompatible78() {
     UErrorCode status = U_ZERO_ERROR;
     LocalPointer<MeasureUnit> measureUnit;
@@ -5112,6 +5121,8 @@ void MeasureFormatTest::TestCompatible78() {
     assertSuccess("", status);
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 void MeasureFormatTest::TestBasic() {
     UErrorCode status = U_ZERO_ERROR;
     MeasureUnit *ptr1 = MeasureUnit::createArcMinute(status);
@@ -6598,10 +6609,19 @@ void MeasureFormatTest::TestInvalidIdentifiers() {
         "meter-per-1000-1000",
         "meter-per-1000-second-1000-kilometer",
         "per-1000-and-per-1000",
+<<<<<<< HEAD
         "meter-per-100-100-kilometer",
+=======
+        "meter-per-100-100-kilometer", // Failing ICU-23045
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     };
 
     for (const auto& input : inputs) {
+        if (uprv_strcmp(input, "meter-per-100-100-kilometer") == 0) {
+            logKnownIssue("ICU-23045", "Incorrect constant denominator for certain unit identifiers "
+                                       "leads to incorrect unit identifiers.");
+            continue;
+        }
         status.setScope(input);
         MeasureUnit::forIdentifier(input, status);
         status.expectErrorAndReset(U_ILLEGAL_ARGUMENT_ERROR);

@@ -13,12 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_proto_clone.cc
 #include "src/trace_processor/plugins/winscope_importer/windowmanager_proto_clone.h"
 
 #include "perfetto/protozero/field.h"
 #include "perfetto/protozero/scattered_heap_buffer.h"
 #include "protos/third_party/android/frameworks/base/proto/tracing/winscope/server/windowmanagerservice.pbzero.h"
 #include "protos/third_party/android/frameworks/base/proto/tracing/winscope/windowmanager.pbzero.h"
+=======
+#include "src/trace_processor/importers/proto/winscope/windowmanager_proto_clone.h"
+
+#include "perfetto/protozero/field.h"
+#include "perfetto/protozero/scattered_heap_buffer.h"
+#include "protos/perfetto/trace/android/server/windowmanagerservice.pbzero.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_proto_clone.cc
 
 namespace perfetto::trace_processor::winscope::windowmanager_proto_clone {
 
@@ -27,6 +35,7 @@ namespace {
 void CloneField(const protozero::Field& field, protozero::Message* dst);
 void CloneWindowContainerProtoPruningChildren(
     protozero::ConstBytes src_bytes,
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_proto_clone.cc
     com::android::internal::pbzero::WindowContainerProto* dst_window_container);
 void CloneWindowManagerServiceDumpProtoPruningChildren(
     protozero::ConstBytes src_bytes,
@@ -101,6 +110,47 @@ std::vector<uint8_t> CloneRootWindowContainerProtoPruningChildren(
                           kWindowContainerFieldNumber) {
       auto* dst_window_container = dst_root->BeginNestedMessage<
           com::android::internal::pbzero::WindowContainerProto>(field.id());
+=======
+    protos::pbzero::WindowContainerProto* dst_window_container);
+void CloneDisplayContentProtoPruningChildren(
+    protozero::ConstBytes src_bytes,
+    protos::pbzero::DisplayContentProto* dst_dc);
+void CloneDisplayAreaProtoPruningChildren(
+    protozero::ConstBytes src_bytes,
+    protos::pbzero::DisplayAreaProto* dst_da);
+void CloneTaskProtoPruningChildren(protozero::ConstBytes src_bytes,
+                                   protos::pbzero::TaskProto* dst_task);
+void CloneActivityRecordProtoPruningChildren(
+    protozero::ConstBytes src_bytes,
+    protos::pbzero::ActivityRecordProto* dst_activity);
+void CloneWindowTokenProtoPruningChildren(
+    protozero::ConstBytes src_bytes,
+    protos::pbzero::WindowTokenProto* dst_wt);
+void CloneWindowStateProtoPruningChildren(
+    protozero::ConstBytes src_bytes,
+    protos::pbzero::WindowStateProto* dst_ws);
+void CloneTaskFragmentProtoPruningChildren(
+    protozero::ConstBytes src_bytes,
+    protos::pbzero::TaskFragmentProto* dst_tf);
+
+}  // namespace
+
+std::vector<uint8_t> CloneRootWindowContainerProtoPruningChildren(
+    const protos::pbzero::RootWindowContainerProto::Decoder& root) {
+  protozero::ConstBytes bytes{root.begin(),
+                              static_cast<size_t>(root.end() - root.begin())};
+  protozero::ProtoDecoder src_root(bytes);
+  protozero::HeapBuffered<protos::pbzero::RootWindowContainerProto>
+      dst_root_buf;
+  protos::pbzero::RootWindowContainerProto* dst_root = dst_root_buf.get();
+
+  for (auto field = src_root.ReadField(); field; field = src_root.ReadField()) {
+    if (field.id() ==
+        protos::pbzero::RootWindowContainerProto::kWindowContainerFieldNumber) {
+      auto* dst_window_container =
+          dst_root->BeginNestedMessage<protos::pbzero::WindowContainerProto>(
+              field.id());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_proto_clone.cc
       CloneWindowContainerProtoPruningChildren(field.as_bytes(),
                                                dst_window_container);
       continue;
@@ -112,6 +162,7 @@ std::vector<uint8_t> CloneRootWindowContainerProtoPruningChildren(
 }
 
 std::vector<uint8_t> CloneWindowContainerChildProtoPruningChildren(
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_proto_clone.cc
     const com::android::internal::pbzero::WindowContainerChildProto::Decoder&
         child) {
   protozero::ConstBytes bytes{child.begin(),
@@ -122,20 +173,38 @@ std::vector<uint8_t> CloneWindowContainerChildProtoPruningChildren(
       dst_child_buf;
   com::android::internal::pbzero::WindowContainerChildProto* dst_child =
       dst_child_buf.get();
+=======
+    const protos::pbzero::WindowContainerChildProto::Decoder& child) {
+  protozero::ConstBytes bytes{child.begin(),
+                              static_cast<size_t>(child.end() - child.begin())};
+  protozero::ProtoDecoder src_child(bytes);
+  protozero::HeapBuffered<protos::pbzero::WindowContainerChildProto>
+      dst_child_buf;
+  protos::pbzero::WindowContainerChildProto* dst_child = dst_child_buf.get();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_proto_clone.cc
 
   for (auto field = src_child.ReadField(); field;
        field = src_child.ReadField()) {
     switch (field.id()) {
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_proto_clone.cc
       case com::android::internal::pbzero::WindowContainerChildProto::
+=======
+      case protos::pbzero::WindowContainerChildProto::
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_proto_clone.cc
           kWindowContainerFieldNumber:
         CloneWindowContainerProtoPruningChildren(
             field.as_bytes(), dst_child->set_window_container());
         break;
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_proto_clone.cc
       case com::android::internal::pbzero::WindowContainerChildProto::
+=======
+      case protos::pbzero::WindowContainerChildProto::
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_proto_clone.cc
           kDisplayContentFieldNumber:
         CloneDisplayContentProtoPruningChildren(
             field.as_bytes(), dst_child->set_display_content());
         break;
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_proto_clone.cc
       case com::android::internal::pbzero::WindowContainerChildProto::
           kDisplayAreaFieldNumber:
         CloneDisplayAreaProtoPruningChildren(field.as_bytes(),
@@ -162,6 +231,28 @@ std::vector<uint8_t> CloneWindowContainerChildProtoPruningChildren(
         break;
       case com::android::internal::pbzero::WindowContainerChildProto::
           kTaskFragmentFieldNumber:
+=======
+      case protos::pbzero::WindowContainerChildProto::kDisplayAreaFieldNumber:
+        CloneDisplayAreaProtoPruningChildren(field.as_bytes(),
+                                             dst_child->set_display_area());
+        break;
+      case protos::pbzero::WindowContainerChildProto::kTaskFieldNumber:
+        CloneTaskProtoPruningChildren(field.as_bytes(), dst_child->set_task());
+        break;
+      case protos::pbzero::WindowContainerChildProto::kActivityFieldNumber:
+        CloneActivityRecordProtoPruningChildren(field.as_bytes(),
+                                                dst_child->set_activity());
+        break;
+      case protos::pbzero::WindowContainerChildProto::kWindowTokenFieldNumber:
+        CloneWindowTokenProtoPruningChildren(field.as_bytes(),
+                                             dst_child->set_window_token());
+        break;
+      case protos::pbzero::WindowContainerChildProto::kWindowFieldNumber:
+        CloneWindowStateProtoPruningChildren(field.as_bytes(),
+                                             dst_child->set_window());
+        break;
+      case protos::pbzero::WindowContainerChildProto::kTaskFragmentFieldNumber:
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_proto_clone.cc
         CloneTaskFragmentProtoPruningChildren(field.as_bytes(),
                                               dst_child->set_task_fragment());
         break;
@@ -177,6 +268,7 @@ std::vector<uint8_t> CloneWindowContainerChildProtoPruningChildren(
 
 namespace {
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_proto_clone.cc
 void CloneWindowManagerServiceDumpProtoPruningChildren(
     protozero::ConstBytes src_bytes,
     com::android::internal::pbzero::WindowManagerServiceDumpProto*
@@ -199,6 +291,15 @@ void CloneWindowContainerProtoPruningChildren(
   for (auto field = src_wc.ReadField(); field; field = src_wc.ReadField()) {
     if (field.id() == com::android::internal::pbzero::WindowContainerProto::
                           kChildrenFieldNumber) {
+=======
+void CloneWindowContainerProtoPruningChildren(
+    protozero::ConstBytes src_bytes,
+    protos::pbzero::WindowContainerProto* dst_wc) {
+  protozero::ProtoDecoder src_wc(src_bytes);
+  for (auto field = src_wc.ReadField(); field; field = src_wc.ReadField()) {
+    if (field.id() ==
+        protos::pbzero::WindowContainerProto::kChildrenFieldNumber) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_proto_clone.cc
       continue;  // prune children fields
     }
     CloneField(field, dst_wc);
@@ -207,11 +308,19 @@ void CloneWindowContainerProtoPruningChildren(
 
 void CloneDisplayContentProtoPruningChildren(
     protozero::ConstBytes src_bytes,
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_proto_clone.cc
     com::android::internal::pbzero::DisplayContentProto* dst_dc) {
   protozero::ProtoDecoder src_dc(src_bytes);
   for (auto field = src_dc.ReadField(); field; field = src_dc.ReadField()) {
     if (field.id() == com::android::internal::pbzero::DisplayContentProto::
                           kRootDisplayAreaFieldNumber) {
+=======
+    protos::pbzero::DisplayContentProto* dst_dc) {
+  protozero::ProtoDecoder src_dc(src_bytes);
+  for (auto field = src_dc.ReadField(); field; field = src_dc.ReadField()) {
+    if (field.id() ==
+        protos::pbzero::DisplayContentProto::kRootDisplayAreaFieldNumber) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_proto_clone.cc
       CloneDisplayAreaProtoPruningChildren(field.as_bytes(),
                                            dst_dc->set_root_display_area());
       continue;
@@ -222,11 +331,19 @@ void CloneDisplayContentProtoPruningChildren(
 
 void CloneDisplayAreaProtoPruningChildren(
     protozero::ConstBytes src_bytes,
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_proto_clone.cc
     com::android::internal::pbzero::DisplayAreaProto* dst_da) {
   protozero::ProtoDecoder src_da(src_bytes);
   for (auto field = src_da.ReadField(); field; field = src_da.ReadField()) {
     if (field.id() == com::android::internal::pbzero::DisplayAreaProto::
                           kWindowContainerFieldNumber) {
+=======
+    protos::pbzero::DisplayAreaProto* dst_da) {
+  protozero::ProtoDecoder src_da(src_bytes);
+  for (auto field = src_da.ReadField(); field; field = src_da.ReadField()) {
+    if (field.id() ==
+        protos::pbzero::DisplayAreaProto::kWindowContainerFieldNumber) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_proto_clone.cc
       CloneWindowContainerProtoPruningChildren(field.as_bytes(),
                                                dst_da->set_window_container());
       continue;
@@ -235,6 +352,7 @@ void CloneDisplayAreaProtoPruningChildren(
   }
 }
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_proto_clone.cc
 void CloneTaskProtoPruningChildren(
     protozero::ConstBytes src_bytes,
     com::android::internal::pbzero::TaskProto* dst_task) {
@@ -242,12 +360,23 @@ void CloneTaskProtoPruningChildren(
   for (auto field = src_task.ReadField(); field; field = src_task.ReadField()) {
     if (field.id() == com::android::internal::pbzero::TaskProto::
                           kWindowContainerFieldNumber) {
+=======
+void CloneTaskProtoPruningChildren(protozero::ConstBytes src_bytes,
+                                   protos::pbzero::TaskProto* dst_task) {
+  protozero::ProtoDecoder src_task(src_bytes);
+  for (auto field = src_task.ReadField(); field; field = src_task.ReadField()) {
+    if (field.id() == protos::pbzero::TaskProto::kWindowContainerFieldNumber) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_proto_clone.cc
       CloneWindowContainerProtoPruningChildren(
           field.as_bytes(), dst_task->set_window_container());
       continue;
     }
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_proto_clone.cc
     if (field.id() ==
         com::android::internal::pbzero::TaskProto::kTaskFragmentFieldNumber) {
+=======
+    if (field.id() == protos::pbzero::TaskProto::kTaskFragmentFieldNumber) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_proto_clone.cc
       CloneTaskFragmentProtoPruningChildren(field.as_bytes(),
                                             dst_task->set_task_fragment());
       continue;
@@ -258,12 +387,21 @@ void CloneTaskProtoPruningChildren(
 
 void CloneActivityRecordProtoPruningChildren(
     protozero::ConstBytes src_bytes,
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_proto_clone.cc
     com::android::internal::pbzero::ActivityRecordProto* dst_activity) {
   protozero::ProtoDecoder src_activity(src_bytes);
   for (auto field = src_activity.ReadField(); field;
        field = src_activity.ReadField()) {
     if (field.id() == com::android::internal::pbzero::ActivityRecordProto::
                           kWindowTokenFieldNumber) {
+=======
+    protos::pbzero::ActivityRecordProto* dst_activity) {
+  protozero::ProtoDecoder src_activity(src_bytes);
+  for (auto field = src_activity.ReadField(); field;
+       field = src_activity.ReadField()) {
+    if (field.id() ==
+        protos::pbzero::ActivityRecordProto::kWindowTokenFieldNumber) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_proto_clone.cc
       CloneWindowTokenProtoPruningChildren(field.as_bytes(),
                                            dst_activity->set_window_token());
       continue;
@@ -274,11 +412,19 @@ void CloneActivityRecordProtoPruningChildren(
 
 void CloneWindowTokenProtoPruningChildren(
     protozero::ConstBytes src_bytes,
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_proto_clone.cc
     com::android::internal::pbzero::WindowTokenProto* dst_wt) {
   protozero::ProtoDecoder src_wt(src_bytes);
   for (auto field = src_wt.ReadField(); field; field = src_wt.ReadField()) {
     if (field.id() == com::android::internal::pbzero::WindowTokenProto::
                           kWindowContainerFieldNumber) {
+=======
+    protos::pbzero::WindowTokenProto* dst_wt) {
+  protozero::ProtoDecoder src_wt(src_bytes);
+  for (auto field = src_wt.ReadField(); field; field = src_wt.ReadField()) {
+    if (field.id() ==
+        protos::pbzero::WindowTokenProto::kWindowContainerFieldNumber) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_proto_clone.cc
       CloneWindowContainerProtoPruningChildren(field.as_bytes(),
                                                dst_wt->set_window_container());
       continue;
@@ -289,11 +435,19 @@ void CloneWindowTokenProtoPruningChildren(
 
 void CloneWindowStateProtoPruningChildren(
     protozero::ConstBytes src_bytes,
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_proto_clone.cc
     com::android::internal::pbzero::WindowStateProto* dst_ws) {
   protozero::ProtoDecoder src_ws(src_bytes);
   for (auto field = src_ws.ReadField(); field; field = src_ws.ReadField()) {
     if (field.id() == com::android::internal::pbzero::WindowStateProto::
                           kWindowContainerFieldNumber) {
+=======
+    protos::pbzero::WindowStateProto* dst_ws) {
+  protozero::ProtoDecoder src_ws(src_bytes);
+  for (auto field = src_ws.ReadField(); field; field = src_ws.ReadField()) {
+    if (field.id() ==
+        protos::pbzero::WindowStateProto::kWindowContainerFieldNumber) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_proto_clone.cc
       CloneWindowContainerProtoPruningChildren(field.as_bytes(),
                                                dst_ws->set_window_container());
       continue;
@@ -304,11 +458,19 @@ void CloneWindowStateProtoPruningChildren(
 
 void CloneTaskFragmentProtoPruningChildren(
     protozero::ConstBytes src_bytes,
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_proto_clone.cc
     com::android::internal::pbzero::TaskFragmentProto* dst_tf) {
   protozero::ProtoDecoder src_tf(src_bytes);
   for (auto field = src_tf.ReadField(); field; field = src_tf.ReadField()) {
     if (field.id() == com::android::internal::pbzero::TaskFragmentProto::
                           kWindowContainerFieldNumber) {
+=======
+    protos::pbzero::TaskFragmentProto* dst_tf) {
+  protozero::ProtoDecoder src_tf(src_bytes);
+  for (auto field = src_tf.ReadField(); field; field = src_tf.ReadField()) {
+    if (field.id() ==
+        protos::pbzero::TaskFragmentProto::kWindowContainerFieldNumber) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_proto_clone.cc
       CloneWindowContainerProtoPruningChildren(field.as_bytes(),
                                                dst_tf->set_window_container());
       continue;

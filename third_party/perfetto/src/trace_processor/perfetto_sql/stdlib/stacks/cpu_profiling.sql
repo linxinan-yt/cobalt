@@ -19,6 +19,7 @@ INCLUDE PERFETTO MODULE callstacks.stack_profile;
 -- during the trace: a convenience projection of the `stack_sample` view with
 -- thread and cpu information denormalized.
 --
+<<<<<<< HEAD
 -- This covers every callstack profiler source (linux perf, simpleperf, macOS
 -- instruments, Chrome, legacy V8, gecko, the StackSample packet, ...) but only
 -- samples from what is generally considered CPU profiling: sampling on time,
@@ -27,6 +28,17 @@ INCLUDE PERFETTO MODULE callstacks.stack_profile;
 -- excluded.
 CREATE PERFETTO TABLE cpu_profiling_samples(
   -- The id of the sample. Joinable with stack_sample.id.
+=======
+-- Currently, this table is backed by the following data sources:
+--  * Linux perf
+--  * Simpleperf proto format
+--  * macOS instruments
+--  * Chrome CPU profiling
+--  * Legacy V8 CPU profiling
+--  * Profiling data in Gecko traces
+CREATE PERFETTO TABLE cpu_profiling_samples (
+  -- The id of the sample.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   id LONG,
   -- The timestamp of the sample.
   ts TIMESTAMP,

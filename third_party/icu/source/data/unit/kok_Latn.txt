@@ -4,6 +4,7 @@
 kok_Latn{
     %%Parent{"root"}
     units{
+<<<<<<< HEAD
         angle{
             degree{
                 dnam{"onx"}
@@ -140,10 +141,21 @@ kok_Latn{
                 other{"{0} xekdde"}
             }
             day{
+=======
+        duration{
+            century{
+                dnam{"xekdde"}
+                other{"{0} xekdde"}
+            }
+            day{
+                dnam{"dis"}
+                other{"{0} dis"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 per{"dor disa {0}"}
             }
             decade{
                 dnam{"doskam"}
+<<<<<<< HEAD
                 one{"{0} dosok"}
                 other{"{0} doskam"}
             }
@@ -154,62 +166,103 @@ kok_Latn{
             }
             hour{
                 one{"{0} vor"}
+=======
+                other{"{0} doskam"}
+            }
+            hour{
+                dnam{"voram"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} voram"}
                 per{"dor vora {0}"}
             }
             microsecond{
                 dnam{"maikrosekond"}
+<<<<<<< HEAD
                 one{"{0} maikrosekond"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} maikrosekond"}
             }
             millisecond{
                 dnam{"milisekond"}
+<<<<<<< HEAD
                 one{"{0} milisekond"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} milisekond"}
             }
             minute{
                 dnam{"mintam"}
+<<<<<<< HEAD
                 one{"{0} minut"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} mintam"}
                 per{"dor minut {0}"}
             }
             month{
                 dnam{"mhoine"}
+<<<<<<< HEAD
                 one{"{0} mhoino"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} mhoine"}
                 per{"dor mhoino {0}"}
             }
             nanosecond{
                 dnam{"nanosekond"}
+<<<<<<< HEAD
                 one{"{0} nanosekond"}
                 other{"{0} nanosekond"}
             }
             night{
                 one{"{0} rat"}
+=======
+                other{"{0} nanosekond"}
+            }
+            night{
+                dnam{"rati"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} rati"}
                 per{"dor rat {0}"}
             }
             quarter{
                 dnam{"timhoinalle"}
+<<<<<<< HEAD
                 one{"{0} timhoinallem"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} timhoinalle"}
                 per{"{0}/timhoinallem"}
             }
             second{
                 dnam{"sekond"}
+<<<<<<< HEAD
                 one{"{0} sekond"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} sekond"}
                 per{"dor sekond {0}"}
             }
             week{
+<<<<<<< HEAD
                 per{"dor sumanak {0}"}
             }
             year{
                 one{"{0} voros"}
+=======
+                dnam{"suman"}
+                other{"{0} suman"}
+                per{"dor sumanak {0}"}
+            }
+            year{
+                dnam{"vorsam"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} vorsam"}
                 per{"dor voros {0}"}
             }
         }
+<<<<<<< HEAD
         graphics{
             megapixel{
                 dnam{"mega-chitr-totvam"}
@@ -388,10 +441,18 @@ kok_Latn{
         duration{
             century{
                 one{"{0}x"}
+=======
+    }
+    unitsNarrow{
+        duration{
+            century{
+                dnam{"x"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0}x"}
             }
             day{
                 dnam{"d"}
+<<<<<<< HEAD
                 one{"{0}d"}
                 other{"{0}d"}
                 per{"{0}/d"}
@@ -446,16 +507,73 @@ kok_Latn{
             week{
                 dnam{"sum"}
                 one{"{0}sum"}
+=======
+                other{"{0}d"}
+            }
+            decade{
+                dnam{"dos"}
+                other{"{0}dos"}
+            }
+            hour{
+                dnam{"vor"}
+                other{"{0}vor"}
+                per{"{0}/vor"}
+            }
+            microsecond{
+                dnam{"μsek"}
+                other{"{0}μsek"}
+            }
+            millisecond{
+                dnam{"msek"}
+                other{"{0}msek"}
+            }
+            minute{
+                other{"{0}min"}
+            }
+            month{
+                dnam{"mho"}
+                other{"{0}mho"}
+                per{"{0}/mho"}
+            }
+            nanosecond{
+                dnam{"nsek"}
+                other{"{0}nsek"}
+            }
+            night{
+                dnam{"rati"}
+                other{"{0}rati"}
+                per{"{0}/rat"}
+            }
+            quarter{
+                dnam{"timho"}
+                other{"{0}timho"}
+                per{"{0}/timho"}
+            }
+            second{
+                dnam{"sek"}
+                other{"{0}sek"}
+                per{"{0}/sek"}
+            }
+            week{
+                dnam{"sum"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0}sum"}
                 per{"{0}/sum"}
             }
             year{
+<<<<<<< HEAD
                 one{"{0}voros"}
                 other{"{0}vorsam"}
+=======
+                dnam{"vorsam"}
+                other{"{0}vorsam"}
+                per{"{0}/voros"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
     }
     unitsShort{
+<<<<<<< HEAD
         angle{
             degree{
                 dnam{"onx"}
@@ -508,16 +626,25 @@ kok_Latn{
             century{
                 dnam{"x"}
                 one{"{0} x"}
+=======
+        duration{
+            century{
+                dnam{"x"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} x"}
             }
             day{
                 dnam{"dis"}
+<<<<<<< HEAD
                 one{"{0} dis"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} dis"}
                 per{"{0}/dis"}
             }
             decade{
                 dnam{"dos"}
+<<<<<<< HEAD
                 one{"{0} dos"}
                 other{"{0} dos"}
             }
@@ -529,61 +656,95 @@ kok_Latn{
             hour{
                 dnam{"voram"}
                 one{"{0} vor"}
+=======
+                other{"{0} dos"}
+            }
+            hour{
+                dnam{"voram"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} vor"}
                 per{"{0}/vor"}
             }
             microsecond{
                 dnam{"μsek"}
+<<<<<<< HEAD
                 one{"{0} μsek"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} μsek"}
             }
             millisecond{
                 dnam{"msek"}
+<<<<<<< HEAD
                 one{"{0} msek"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} msek"}
             }
             month{
                 dnam{"mho"}
+<<<<<<< HEAD
                 one{"{0} mho"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} mho"}
                 per{"{0}/mho"}
             }
             nanosecond{
                 dnam{"nanosek"}
+<<<<<<< HEAD
                 one{"{0} nsek"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} nsek"}
             }
             night{
                 dnam{"rati"}
+<<<<<<< HEAD
                 one{"{0} rat"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} rati"}
                 per{"{0}/rat"}
             }
             quarter{
                 dnam{"timho"}
+<<<<<<< HEAD
                 one{"{0} timho"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} timho"}
                 per{"{0}/timho"}
             }
             second{
                 dnam{"sek"}
+<<<<<<< HEAD
                 one{"{0} sek"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} sek"}
                 per{"{0}/sek"}
             }
             week{
                 dnam{"suman"}
+<<<<<<< HEAD
                 one{"{0} suman"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} suman"}
                 per{"{0}/suman"}
             }
             year{
                 dnam{"vorsam"}
+<<<<<<< HEAD
                 one{"{0} voros"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} vorsam"}
                 per{"{0}/voros"}
             }
         }
+<<<<<<< HEAD
         graphics{
             megapixel{
                 dnam{"mega-chitr-totvam"}
@@ -608,5 +769,7 @@ kok_Latn{
                 dnam{"onx tapman"}
             }
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

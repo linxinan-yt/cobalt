@@ -63,7 +63,10 @@ export default class implements PerfettoPlugin {
     await this.addScrollTimelineTrack(ctx, group);
     await this.addScrollTimelineV4Track(ctx, group);
     await this.addVsyncTracks(ctx, group);
+<<<<<<< HEAD
     this.registerShowFrameTimelinesCommand(ctx, group);
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     ctx.defaultWorkspace.addChildInOrder(group);
     group.expand();
   }

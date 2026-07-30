@@ -1251,7 +1251,11 @@ root{
             symbols:alias{"/LOCALE/NumberElements/latn/symbols"}
         }
     }
+<<<<<<< HEAD
     Version{"48"}
+=======
+    Version{"47"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     calendar{
         buddhist{
             AmPmMarkers:alias{"/LOCALE/calendar/gregorian/AmPmMarkers"}
@@ -1942,6 +1946,7 @@ root{
                     y{"G y–y"}
                 }
                 GyM{
+<<<<<<< HEAD
                     G{"G y-MM – G y-MM"}
                     M{"G y-MM – y-MM"}
                     y{"G y-MM – y-MM"}
@@ -1951,6 +1956,17 @@ root{
                     M{"G y-MM-dd, E – y-MM-dd, E"}
                     d{"G y-MM-dd, E – y-MM-dd, E"}
                     y{"G y-MM-dd, E – y-MM-dd, E"}
+=======
+                    G{"GGGGG y-MM – GGGGG y-MM"}
+                    M{"GGGGG y-MM – y-MM"}
+                    y{"GGGGG y-MM – y-MM"}
+                }
+                GyMEd{
+                    G{"GGGGG y-MM-dd, E – GGGGG y-MM-dd, E"}
+                    M{"GGGGG y-MM-dd, E – y-MM-dd, E"}
+                    d{"GGGGG y-MM-dd, E – y-MM-dd, E"}
+                    y{"GGGGG y-MM-dd, E – y-MM-dd, E"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
                 GyMMM{
                     G{"G y MMM – G y MMM"}
@@ -1970,10 +1986,17 @@ root{
                     y{"G y MMM d – y MMM d"}
                 }
                 GyMd{
+<<<<<<< HEAD
                     G{"G y-MM-dd – G y-MM-dd"}
                     M{"G y-MM-dd – y-MM-dd"}
                     d{"G y-MM-dd – y-MM-dd"}
                     y{"G y-MM-dd – y-MM-dd"}
+=======
+                    G{"GGGGG y-MM-dd – GGGGG y-MM-dd"}
+                    M{"GGGGG y-MM-dd – y-MM-dd"}
+                    d{"GGGGG y-MM-dd – y-MM-dd"}
+                    y{"GGGGG y-MM-dd – y-MM-dd"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
                 H{
                     H{"HH–HH"}
@@ -2037,6 +2060,7 @@ root{
                     y{"G y–y"}
                 }
                 yM{
+<<<<<<< HEAD
                     M{"G y-MM – y-MM"}
                     y{"G y-MM – y-MM"}
                 }
@@ -2044,6 +2068,15 @@ root{
                     M{"G y-MM-dd, E – y-MM-dd, E"}
                     d{"G y-MM-dd, E – y-MM-dd, E"}
                     y{"G y-MM-dd, E – y-MM-dd, E"}
+=======
+                    M{"GGGGG y-MM – y-MM"}
+                    y{"GGGGG y-MM – y-MM"}
+                }
+                yMEd{
+                    M{"GGGGG y-MM-dd, E – y-MM-dd, E"}
+                    d{"GGGGG y-MM-dd, E – y-MM-dd, E"}
+                    y{"GGGGG y-MM-dd, E – y-MM-dd, E"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
                 yMMM{
                     M{"G y MMM–MMM"}
@@ -2064,9 +2097,15 @@ root{
                     y{"G y MMM d – y MMM d"}
                 }
                 yMd{
+<<<<<<< HEAD
                     M{"G y-MM-dd – y-MM-dd"}
                     d{"G y-MM-dd – y-MM-dd"}
                     y{"G y-MM-dd – y-MM-dd"}
+=======
+                    M{"GGGGG y-MM-dd – y-MM-dd"}
+                    d{"GGGGG y-MM-dd – y-MM-dd"}
+                    y{"GGGGG y-MM-dd – y-MM-dd"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
             monthNames{
@@ -2266,6 +2305,7 @@ root{
                     y{"G y–y"}
                 }
                 GyM{
+<<<<<<< HEAD
                     G{"G y-MM – G y-MM"}
                     M{"G y-MM – y-MM"}
                     y{"G y-MM – y-MM"}
@@ -2275,6 +2315,17 @@ root{
                     M{"G y-MM-dd, E – y-MM-dd, E"}
                     d{"G y-MM-dd, E – y-MM-dd, E"}
                     y{"G y-MM-dd, E – y-MM-dd, E"}
+=======
+                    G{"GGGGG y-MM – GGGGG y-MM"}
+                    M{"GGGGG y-MM – y-MM"}
+                    y{"GGGGG y-MM – y-MM"}
+                }
+                GyMEd{
+                    G{"GGGGG y-MM-dd, E – GGGGG y-MM-dd, E"}
+                    M{"GGGGG y-MM-dd, E – y-MM-dd, E"}
+                    d{"GGGGG y-MM-dd, E – y-MM-dd, E"}
+                    y{"GGGGG y-MM-dd, E – y-MM-dd, E"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
                 GyMMM{
                     G{"G y MMM – G y MMM"}
@@ -2294,10 +2345,17 @@ root{
                     y{"G y MMM d – y MMM d"}
                 }
                 GyMd{
+<<<<<<< HEAD
                     G{"G y-MM-dd – G y-MM-dd"}
                     M{"G y-MM-dd – y-MM-dd"}
                     d{"G y-MM-dd – y-MM-dd"}
                     y{"G y-MM-dd – y-MM-dd"}
+=======
+                    G{"GGGGG y-MM-dd – GGGGG y-MM-dd"}
+                    M{"GGGGG y-MM-dd – y-MM-dd"}
+                    d{"GGGGG y-MM-dd – y-MM-dd"}
+                    y{"GGGGG y-MM-dd – y-MM-dd"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
                 H{
                     H{"HH–HH"}
@@ -2767,7 +2825,11 @@ root{
                 M{"L"}
                 MEd{"MM-dd, E"}
                 MMM{"LLL"}
+<<<<<<< HEAD
                 MMMEd{"MMM d, E"}
+=======
+                MMMEd{"MMM d"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 MMMMW{
                     other{"MMMM 'week' W"}
                 }

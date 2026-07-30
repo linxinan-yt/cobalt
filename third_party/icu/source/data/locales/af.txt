@@ -581,8 +581,13 @@ af{
                     1{"g.j."}
                 }
                 wide{
+<<<<<<< HEAD
                     0{"voor Christus"}
                     1{"ná Christus"}
+=======
+                    "voor Christus",
+                    "ná Christus",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
                 wide%variant{
                     0{"voor die gewone jaartelling"}
@@ -1428,6 +1433,13 @@ af{
         standard-narrow{
             end{"{0}, {1}"}
         }
+<<<<<<< HEAD
+=======
+        unit{
+            2{"{0}, {1}"}
+            end{"{0}, {1}"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         unit-narrow{
             2{"{0} {1}"}
             end{"{0} {1}"}

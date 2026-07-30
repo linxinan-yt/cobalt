@@ -35,6 +35,15 @@ import {postMessageHandler} from './post_message_handler';
 import {Router} from '../core/router';
 import {checkHttpRpcConnection} from './rpc_http_dialog';
 import {maybeOpenTraceFromRoute} from './trace_url_handler';
+<<<<<<< HEAD
+=======
+import {
+  DEFAULT_TRACK_MIN_HEIGHT_PX,
+  MINIMUM_TRACK_MIN_HEIGHT_PX,
+  TRACK_MIN_HEIGHT_SETTING,
+} from './timeline_page/track_view';
+import {renderTimelinePage} from './timeline_page/timeline_page';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {HttpRpcEngine} from '../trace_processor/http_rpc_engine';
 import {showModal} from '../widgets/modal';
 import {IdleDetector} from './idle_detector';
@@ -62,6 +71,7 @@ import {
   type CommandInvocation,
   commandInvocationArraySchema,
 } from '../core/command_manager';
+<<<<<<< HEAD
 import {type HotkeyConfig, HotkeyContext} from '../widgets/hotkey_context';
 import {sleepMs} from '../base/utils';
 import type {Route} from '../public/app';
@@ -104,6 +114,9 @@ import type {Route} from '../public/app';
 //        └─────────────────────────────────────────────────────────────────┘
 //
 // =============================================================================
+=======
+import {HotkeyConfig, HotkeyContext} from '../widgets/hotkey_context';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 const CSP_WS_PERMISSIVE_PORT = featureFlags.register({
   id: 'cspAllowAnyWebsocketPort',
@@ -315,8 +328,17 @@ function main() {
   document.body.classList.add('pf-fonts-loading');
   document.head.append(css);
 
+<<<<<<< HEAD
   Promise.race([document.fonts.ready, sleepMs(15000)]).then(() => {
     document.body.classList.remove('pf-fonts-loading');
+=======
+  // Load the script to detect if this is a Googler (see comments on globals.ts)
+  // and initialize GA after that (or after a timeout if something goes wrong).
+  const app = AppImpl.instance;
+  tryLoadIsInternalUserScript(app).then(() => {
+    app.analytics.initialize(app.isInternalUser);
+    app.notifyOnExtrasLoadingCompleted();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   });
 
   const app = AppImpl.instance;
@@ -362,6 +384,10 @@ function onCssLoaded(app: AppImpl) {
 
   const pages = app.pages;
   pages.registerPage({route: '/', render: () => m(HomePage)});
+<<<<<<< HEAD
+=======
+  pages.registerPage({route: '/viewer', render: () => renderTimelinePage()});
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   const router = new Router();
   router.onRouteChanged = routeChange;
 
@@ -372,6 +398,18 @@ function onCssLoaded(app: AppImpl) {
     schema: z.enum(['dark', 'light']),
     defaultValue: 'light',
   } as const);
+<<<<<<< HEAD
+=======
+
+  AppImpl.instance.settings.register({
+    id: TRACK_MIN_HEIGHT_SETTING,
+    name: 'Track Height',
+    description:
+      'Minimum height of tracks in the trace viewer page, in pixels.',
+    schema: z.number().int().min(MINIMUM_TRACK_MIN_HEIGHT_PX),
+    defaultValue: DEFAULT_TRACK_MIN_HEIGHT_PX,
+  });
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // Add command to toggle the theme.
   app.commands.registerCommand({
@@ -386,9 +424,16 @@ function onCssLoaded(app: AppImpl) {
   // Mount the main mithril component. This also forces a sync render pass.
   raf.mount(document.body, {
     view: () => {
+<<<<<<< HEAD
       const commands = app.commands;
       const hotkeys: HotkeyConfig[] = [];
       for (const {id, defaultHotkey} of commands.getCommands()) {
+=======
+      const app = AppImpl.instance;
+      const commands = app.commands;
+      const hotkeys: HotkeyConfig[] = [];
+      for (const {id, defaultHotkey} of commands.commands) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         if (defaultHotkey) {
           hotkeys.push({
             callback: () => commands.runCommand(id),
@@ -397,6 +442,7 @@ function onCssLoaded(app: AppImpl) {
         }
       }
 
+<<<<<<< HEAD
       // Add a dummy binding to prevent Mod+P from opening the print dialog.
       // Firstly, there is no reason to print the UI. Secondly, plugins might
       // register a Mod+P hotkey later at trace load time. It would be confusing
@@ -407,6 +453,8 @@ function onCssLoaded(app: AppImpl) {
         callback: () => {},
       });
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       const currentTraceId = app.trace?.engine.engineId ?? 'no-trace';
 
       // Trace data is cached inside many components on the tree. To avoid
@@ -473,9 +521,15 @@ function onCssLoaded(app: AppImpl) {
   });
 
   // Initialize plugins, now that we are ready to go.
+<<<<<<< HEAD
   const pluginManager = app.plugins;
   corePlugins.forEach((p) => pluginManager.registerPlugin(p, true));
   plugins.forEach((p) => pluginManager.registerPlugin(p, false));
+=======
+  const pluginManager = AppImpl.instance.plugins;
+  CORE_PLUGINS.forEach((p) => pluginManager.registerPlugin(p, true));
+  NON_CORE_PLUGINS.forEach((p) => pluginManager.registerPlugin(p, false));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   const route = Router.parseUrl(window.location.href);
   const overrides = (route.args.enablePlugins ?? '').split(',');
   pluginManager.activatePlugins(app, overrides);

@@ -570,7 +570,11 @@ public:
      *
      * @stable ICU 3.8
      */
+<<<<<<< HEAD
     U_I18N_API static UClassID getStaticClassID();
+=======
+    static UClassID U_EXPORT2 getStaticClassID();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 private:
     /**

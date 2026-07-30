@@ -58,10 +58,15 @@ import {createThreadStateTrack} from './thread_state_track';
 import {WakerOverlay} from './waker_overlay';
 import {Cpu} from '../../components/cpu';
 import {ThreadStateByCpuAggregator} from './thread_state_by_cpu_aggregator';
+<<<<<<< HEAD
 import type {App} from '../../public/app';
 import type {Flag} from '../../public/feature_flag';
 import type {Setting} from '../../public/settings';
 import {z} from 'zod';
+=======
+import {App} from '../../public/app';
+import {Flag} from '../../public/feature_flag';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 function uriForThreadStateTrack(upid: number | null, utid: number): string {
   return `${getThreadUriPrefix(upid, utid)}_state`;
@@ -80,7 +85,10 @@ export default class SchedPlugin implements PerfettoPlugin {
   static readonly id = 'dev.perfetto.Sched';
   static readonly dependencies = [ProcessThreadGroupsPlugin, ThreadPlugin];
   static threadStateByCpuFlag: Flag;
+<<<<<<< HEAD
   static taskColorModeSetting: Setting<'process' | 'priority'>;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   static onActivate(app: App) {
     SchedPlugin.threadStateByCpuFlag = app.featureFlags.register({
@@ -88,6 +96,7 @@ export default class SchedPlugin implements PerfettoPlugin {
       name: 'Thread State by CPU Aggregation',
       description:
         'Add a new area selection aggregation tab showing thread states broken down by CPU.',
+<<<<<<< HEAD
       defaultValue: true,
     });
 
@@ -109,6 +118,9 @@ export default class SchedPlugin implements PerfettoPlugin {
         const next = current === 'process' ? 'priority' : 'process';
         SchedPlugin.taskColorModeSetting.set(next);
       },
+=======
+      defaultValue: false,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     });
   }
 
@@ -119,8 +131,12 @@ export default class SchedPlugin implements PerfettoPlugin {
   }
 
   async onTraceLoad(ctx: Trace): Promise<void> {
+<<<<<<< HEAD
     const numMachines = await getMachineCount(ctx.engine);
     const cpus = await getSchedCpus(ctx, numMachines);
+=======
+    const cpus = await getSchedCpus(ctx);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     this._schedCpus = cpus;
 
     const hasSched = await this.hasSched(ctx.engine);
@@ -245,7 +261,11 @@ export default class SchedPlugin implements PerfettoPlugin {
           kinds: [CPU_SLICE_TRACK_KIND],
           cpu: cpu.ucpu,
         },
+<<<<<<< HEAD
         renderer: createCpuSliceTrack(ctx, uri, table.name, cpu.ucpu, threads),
+=======
+        renderer: new CpuSliceTrack(ctx, uri, cpu.ucpu, threads),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       });
       group.addChildInOrder(new TrackNode({name, uri}));
     }
@@ -560,6 +580,7 @@ export default class SchedPlugin implements PerfettoPlugin {
 /**
  * Get the list of unique cpus in the sched table.
  */
+<<<<<<< HEAD
 async function getSchedCpus(ctx: Trace, numMachines: number): Promise<Cpu[]> {
   const queryRes = await ctx.engine.query(`
     SELECT DISTINCT
@@ -571,11 +592,22 @@ async function getSchedCpus(ctx: Trace, numMachines: number): Promise<Cpu[]> {
     FROM sched
     JOIN cpu USING (ucpu)
     LEFT JOIN machine ON machine.id = cpu.machine_id
+=======
+async function getSchedCpus(ctx: Trace): Promise<Cpu[]> {
+  const queryRes = await ctx.engine.query(`
+    SELECT DISTINCT
+      ucpu,
+      IFNULL(cpu.machine_id, 0) AS machine_id,
+      cpu.cpu AS cpu
+    FROM sched
+    JOIN cpu USING (ucpu)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     ORDER BY ucpu
   `);
 
   const ucpus: Cpu[] = [];
   for (
+<<<<<<< HEAD
     const it = queryRes.iter({
       ucpu: NUM,
       machine_id: NUM,
@@ -596,6 +628,13 @@ async function getSchedCpus(ctx: Trace, numMachines: number): Promise<Cpu[]> {
         numMachines,
       ),
     );
+=======
+    const it = queryRes.iter({ucpu: NUM, machine_id: NUM, cpu: NUM});
+    it.valid();
+    it.next()
+  ) {
+    ucpus.push(new Cpu(it.ucpu, it.cpu, it.machine_id));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   return ucpus;

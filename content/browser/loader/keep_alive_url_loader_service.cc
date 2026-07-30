@@ -11,6 +11,13 @@
 #include "base/memory/raw_ptr.h"
 #include "base/memory/ref_counted.h"
 #include "base/trace_event/typed_macros.h"
+<<<<<<< HEAD
+=======
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+#include "content/browser/attribution_reporting/attribution_suitable_context.h"
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+#include "content/browser/loader/keep_alive_attribution_request_helper.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "content/browser/loader/keep_alive_url_loader.h"
 #include "content/browser/renderer_host/document_associated_data.h"
 #include "content/browser/renderer_host/frame_tree_node.h"
@@ -60,6 +67,12 @@ KeepAliveURLLoaderService::FactoryContext::FactoryContext(
       weak_document_ptr(other->weak_document_ptr),
       ukm_source_id(other->ukm_source_id),
       policy_container_host(other->policy_container_host),
+<<<<<<< HEAD
+=======
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+      attribution_context(other->attribution_context),
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       network_isolation_key(other->network_isolation_key) {}
 
 KeepAliveURLLoaderService::FactoryContext::~FactoryContext() = default;
@@ -79,7 +92,36 @@ void KeepAliveURLLoaderService::FactoryContext::OnDidCommitNavigation(
   // on prerendering page.
   ukm_source_id = navigation_handle->GetNextPageUkmSourceId();
   policy_container_host = rfh->policy_container_host();
+<<<<<<< HEAD
   CHECK(policy_container_host);
+=======
+
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  // `attribution_context` is needed for all kinds of keepalive requests, as
+  // trigger registrations are allowed for all subresource requests.
+  attribution_context = AttributionSuitableContext::Create(navigation_handle);
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+
+  CHECK(policy_container_host);
+
+  if (rfh->IsInLifecycleState(RenderFrameHost::LifecycleState::kPrerendering)) {
+    rfh->document_associated_data().AddPostPrerenderingActivationStep(
+        base::BindOnce(&KeepAliveURLLoaderService::FactoryContext::
+                           OnDidCommitPrerenderedPageActivation,
+                       weak_ptr_factory.GetWeakPtr()));
+  }
+}
+
+void KeepAliveURLLoaderService::FactoryContext::
+    OnDidCommitPrerenderedPageActivation() {
+  auto* rfh = static_cast<RenderFrameHostImpl*>(
+      weak_document_ptr.AsRenderFrameHostIfValid());
+  CHECK(rfh);
+
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  attribution_context = AttributionSuitableContext::Create(rfh);
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 void KeepAliveURLLoaderService::FactoryContext::
@@ -245,7 +287,22 @@ class KeepAliveURLLoaderService::KeepAliveURLLoaderFactoriesBase {
         service_->storage_partition_,
         base::BindRepeating(&KeepAliveURLLoaderFactoriesBase::CreateThrottles,
                             base::Unretained(this)),
+<<<<<<< HEAD
         base::PassKey<KeepAliveURLLoaderService>());
+=======
+        base::PassKey<KeepAliveURLLoaderService>(),
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+        KeepAliveAttributionRequestHelper::CreateIfNeeded(
+            resource_request.attribution_reporting_eligibility,
+            resource_request.url,
+            resource_request.attribution_reporting_src_token,
+            resource_request.devtools_request_id, context->attribution_context,
+            context->weak_document_ptr)
+#else
+        nullptr
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+    );
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     // Adds a new loader receiver to the set held by `this`, binding the pending
     // `receiver` from a renderer to `raw_loader` with `loader` as its context.
     // The set will keep `loader` alive.

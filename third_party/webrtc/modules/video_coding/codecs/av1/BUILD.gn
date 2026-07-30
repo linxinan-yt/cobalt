@@ -62,7 +62,10 @@ rtc_library("libaom_av1_encoder") {
   ]
   deps = [
     ":libaom_speed_config_factory",
+<<<<<<< HEAD
     "../..:frame_sampler",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     "../..:video_codec_interface",
     "../../../../api:field_trials_view",
     "../../../../api:scoped_refptr",
@@ -75,6 +78,7 @@ rtc_library("libaom_av1_encoder") {
     "../../../../api/video:video_frame",
     "../../../../api/video:video_frame_type",
     "../../../../api/video:video_rtp_headers",
+    "../../../../api/video_codecs:encoder_speed_controller_factory",
     "../../../../api/video_codecs:scalability_mode",
     "../../../../api/video_codecs:video_codecs_api",
     "../../../../common_video/generic_frame_descriptor",
@@ -84,7 +88,10 @@ rtc_library("libaom_av1_encoder") {
     "../../../../rtc_base/experiments:encoder_speed_experiment",
     "../../../../rtc_base/experiments:psnr_experiment",
     "../../../../system_wrappers",
+<<<<<<< HEAD
     "../../../rtp_rtcp:rtp_rtcp_format",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     "../../svc:scalability_structures",
     "../../svc:scalable_video_controller",
     "//third_party/abseil-cpp/absl/algorithm:container",
@@ -96,6 +103,7 @@ rtc_library("libaom_av1_encoder") {
   ]
 }
 
+<<<<<<< HEAD
 rtc_library("libaom_av1_encoder_v2") {
   visibility = [ "../../../../api/video_codecs:libaom_av1_encoder_factory" ]
   poisonous = [ "software_video_codecs" ]
@@ -125,15 +133,25 @@ rtc_library("libaom_av1_encoder_v2") {
   ]
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 rtc_library("libaom_speed_config_factory") {
   sources = [
     "libaom_speed_config_factory.cc",
     "libaom_speed_config_factory.h",
   ]
   deps = [
+<<<<<<< HEAD
     "../../../../api:field_trials_view",
     "../../../../api/units:time_delta",
     "../../../../api/video_codecs:video_codecs_api",
+=======
+    "../..:video_codec_interface",
+    "../..:video_coding_utility",
+    "../../../../api:field_trials_view",
+    "../../../../api/video_codecs:video_codecs_api",
+    "../../../../rtc_base:logging",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     "../../../../rtc_base/experiments:psnr_experiment",
   ]
 }
@@ -191,6 +209,7 @@ if (rtc_include_tests) {
       "../../../../api/video:video_bitrate_allocation",
       "../../../../api/video:video_frame",
       "../../../../api/video:video_frame_type",
+      "../../../../api/video:video_rtp_headers",
       "../../../../api/video_codecs:scalability_mode",
       "../../../../api/video_codecs:video_codecs_api",
       "../../../../modules/rtp_rtcp:rtp_rtcp_format",
@@ -261,10 +280,37 @@ if (rtc_include_tests) {
     ]
 
     if (enable_libaom) {
+<<<<<<< HEAD
       deps += [
         ":libaom_av1_encoder_unittest",
         ":libaom_av1_unittest",
         ":libaom_speed_config_factory_unittest",
+=======
+      sources += [
+        "libaom_av1_encoder_unittest.cc",
+        "libaom_av1_unittest.cc",
+        "libaom_speed_config_factory_unittest.cc",
+      ]
+      deps += [
+        ":libaom_av1_encoder",
+        ":libaom_speed_config_factory",
+        "../..:encoded_video_frame_producer",
+        "../..:video_coding_utility",
+        "../../../../api:create_frame_generator",
+        "../../../../api:field_trials",
+        "../../../../api:field_trials_view",
+        "../../../../api:frame_generator_api",
+        "../../../../api:mock_video_encoder",
+        "../../../../api/units:data_size",
+        "../../../../api/units:time_delta",
+        "../../../../modules/rtp_rtcp:rtp_rtcp_format",
+        "../../../../test:fileutils",
+        "../../../../test:test_support",
+        "../../../../test:video_test_support",
+        "../../svc:scalability_mode_util",
+        "../../svc:scalability_structures",
+        "../../svc:scalable_video_controller",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       ]
     }
   }

@@ -538,6 +538,7 @@ TEST(EventConfigTest, GroupMultipleType) {
   EXPECT_TRUE(tracepoint.sample_type & PERF_SAMPLE_READ);
 }
 
+<<<<<<< HEAD
 TEST(EventConfigTest, RawEventRejectsTypeAndPmu) {
   protos::gen::PerfEventConfig cfg;
   auto* follower = cfg.add_followers();
@@ -551,6 +552,8 @@ TEST(EventConfigTest, RawEventRejectsTypeAndPmu) {
   EXPECT_FALSE(event_config.has_value());
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 TEST(EventConfigTest, EventModifiers) {
   protos::gen::PerfEventConfig cfg;
   {

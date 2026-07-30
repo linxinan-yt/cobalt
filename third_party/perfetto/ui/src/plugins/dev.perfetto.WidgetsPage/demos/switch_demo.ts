@@ -27,6 +27,7 @@ export function renderSwitch(): m.Children {
       ),
     ),
     renderWidgetShowcase({
+<<<<<<< HEAD
       renderWidget: ({label, labelLeft, showInlineText, ...opts}) => {
         const switchWidget = m(Switch, {
           label: label ? 'Switch' : undefined,
@@ -37,11 +38,22 @@ export function renderSwitch(): m.Children {
           ? m('span', 'Inline ', switchWidget, ' text')
           : switchWidget;
       },
+=======
+      renderWidget: ({label, labelLeft, ...rest}) =>
+        m(Switch, {
+          label: label ? 'Switch' : undefined,
+          labelLeft: labelLeft ? 'Left Label' : undefined,
+          ...rest,
+        }),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       initialOpts: {
         label: true,
         labelLeft: false,
         disabled: false,
+<<<<<<< HEAD
         showInlineText: false,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       },
     }),
   ];

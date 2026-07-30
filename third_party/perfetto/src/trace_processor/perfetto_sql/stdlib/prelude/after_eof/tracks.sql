@@ -19,13 +19,20 @@
 -- This module provides the track concept and specialized track tables for
 -- organizing events by thread, process, CPU, and GPU contexts.
 
+<<<<<<< HEAD
 INCLUDE PERFETTO MODULE prelude.after_eof.views;
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 -- Tracks are a fundamental concept in trace processor and represent a
 -- "timeline" for events of the same type and with the same context. See
 -- https://perfetto.dev/docs/analysis/trace-processor#tracks for a more
 -- detailed explanation, with examples.
+<<<<<<< HEAD
 CREATE PERFETTO VIEW track(
+=======
+CREATE PERFETTO VIEW track (
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- Unique identifier for this track. Identical to |track_id|, prefer using
   -- |track_id| instead.
   id ID,
@@ -53,8 +60,13 @@ CREATE PERFETTO VIEW track(
   -- Join with the `args` table or use the `EXTRACT_ARG` helper function to
   -- expand the args.
   source_arg_set_id ARGSETID,
+<<<<<<< HEAD
   -- Machine identifier
   machine_id JOINID(machine.id),
+=======
+  -- Machine identifier, non-null for tracks on a remote machine.
+  machine_id LONG,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- An opaque key indicating that this track belongs to a group of tracks which
   -- are "conceptually" the same track.
   --
@@ -64,8 +76,12 @@ CREATE PERFETTO VIEW track(
   -- distinction doesn't matter and all tracks with the same `track_group_id`
   -- should be merged together into a single logical "UI track".
   track_group_id LONG
+<<<<<<< HEAD
 )
 AS
+=======
+) AS
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 SELECT
   id,
   name,
@@ -78,7 +94,11 @@ SELECT
 FROM __intrinsic_track;
 
 -- Tracks which are associated to a single thread.
+<<<<<<< HEAD
 CREATE PERFETTO TABLE thread_track(
+=======
+CREATE PERFETTO TABLE thread_track (
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- Unique identifier for this thread track.
   id ID(track.id),
   -- Name of the track.
@@ -97,12 +117,20 @@ CREATE PERFETTO TABLE thread_track(
   -- the trace. For example: whether this track orginated from atrace, Chrome
   -- tracepoints etc.
   source_arg_set_id ARGSETID,
+<<<<<<< HEAD
   -- Machine identifier
   machine_id JOINID(machine.id),
   -- The utid that the track is associated with.
   utid JOINID(thread.id)
 )
 AS
+=======
+  -- Machine identifier, non-null for tracks on a remote machine.
+  machine_id LONG,
+  -- The utid that the track is associated with.
+  utid JOINID(thread.id)
+) AS
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 SELECT
   t.id,
   t.name,
@@ -115,11 +143,18 @@ FROM __intrinsic_track AS t
 JOIN args AS a
   ON t.dimension_arg_set_id = a.arg_set_id
 WHERE
+<<<<<<< HEAD
   t.event_type = 'slice'
   AND a.key = 'utid';
 
 -- Tracks which are associated to a single process.
 CREATE PERFETTO TABLE process_track(
+=======
+  t.event_type = 'slice' AND a.key = 'utid';
+
+-- Tracks which are associated to a single process.
+CREATE PERFETTO TABLE process_track (
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- Unique identifier for this process track.
   id ID(track.id),
   -- Name of the track.
@@ -138,12 +173,20 @@ CREATE PERFETTO TABLE process_track(
   -- the trace. For example: whether this track orginated from atrace, Chrome
   -- tracepoints etc.
   source_arg_set_id ARGSETID,
+<<<<<<< HEAD
   -- Machine identifier
   machine_id JOINID(machine.id),
   -- The upid that the track is associated with.
   upid JOINID(process.id)
 )
 AS
+=======
+  -- Machine identifier, non-null for tracks on a remote machine.
+  machine_id LONG,
+  -- The upid that the track is associated with.
+  upid JOINID(process.id)
+) AS
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 SELECT
   t.id,
   t.name,
@@ -156,11 +199,18 @@ FROM __intrinsic_track AS t
 JOIN args AS a
   ON t.dimension_arg_set_id = a.arg_set_id
 WHERE
+<<<<<<< HEAD
   t.event_type = 'slice'
   AND a.key = 'upid';
 
 -- Tracks which are associated to a single CPU.
 CREATE PERFETTO TABLE cpu_track(
+=======
+  t.event_type = 'slice' AND a.key = 'upid';
+
+-- Tracks which are associated to a single CPU.
+CREATE PERFETTO TABLE cpu_track (
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- Unique identifier for this cpu track.
   id ID(track.id),
   -- Name of the track.
@@ -179,12 +229,20 @@ CREATE PERFETTO TABLE cpu_track(
   -- the trace. For example: whether this track orginated from atrace, Chrome
   -- tracepoints etc.
   source_arg_set_id ARGSETID,
+<<<<<<< HEAD
   -- Machine identifier
   machine_id JOINID(machine.id),
   -- The CPU that the track is associated with.
   cpu LONG
 )
 AS
+=======
+  -- Machine identifier, non-null for tracks on a remote machine.
+  machine_id LONG,
+  -- The CPU that the track is associated with.
+  cpu LONG
+) AS
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 SELECT
   t.id,
   t.name,
@@ -197,8 +255,12 @@ FROM __intrinsic_track AS t
 JOIN args AS a
   ON t.dimension_arg_set_id = a.arg_set_id
 WHERE
+<<<<<<< HEAD
   t.event_type = 'slice'
   AND a.key = 'cpu';
+=======
+  t.event_type = 'slice' AND a.key = 'cpu';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 -- Table containing tracks which are loosely tied to a GPU.
 --
@@ -206,7 +268,11 @@ WHERE
 -- other track tables (e.g. not having a GPU column, mixing a bunch of different
 -- tracks which are barely related). Please use the track table directly
 -- instead.
+<<<<<<< HEAD
 CREATE PERFETTO TABLE gpu_track(
+=======
+CREATE PERFETTO TABLE gpu_track (
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- Unique identifier for this cpu track.
   id ID(track.id),
   -- Name of the track.
@@ -228,16 +294,25 @@ CREATE PERFETTO TABLE gpu_track(
   -- The dimensions of the track which uniquely identify the track within a
   -- given type.
   dimension_arg_set_id ARGSETID,
+<<<<<<< HEAD
   -- Machine identifier
   machine_id JOINID(machine.id),
+=======
+  -- Machine identifier, non-null for tracks on a remote machine.
+  machine_id LONG,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- The source of the track. Deprecated.
   scope STRING,
   -- The description for the track.
   description STRING,
   -- The context id for the GPU this track is associated to.
   context_id LONG
+<<<<<<< HEAD
 )
 AS
+=======
+) AS
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 SELECT
   id,
   name,
@@ -251,6 +326,7 @@ SELECT
   extract_arg(dimension_arg_set_id, 'context_id') AS context_id
 FROM __intrinsic_track
 WHERE
+<<<<<<< HEAD
   type IN (
     'drm_vblank',
     'drm_sched_ring',
@@ -261,3 +337,6 @@ WHERE
     'gpu_log',
     'graphics_frame_event'
   );
+=======
+  type IN ('drm_vblank', 'drm_sched_ring', 'drm_fence', 'mali_mcu_state', 'gpu_render_stage', 'vulkan_events', 'gpu_log', 'graphics_frame_event');
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

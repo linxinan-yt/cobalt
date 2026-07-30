@@ -110,6 +110,10 @@ th{
             permyriad{
                 other{"{0} เปอร์มีเรียด"}
             }
+            portion-per-1e9{
+                dnam{"ส่วนต่อพันล้าน"}
+                other{"{0} ส่วนต่อพันล้าน"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -192,6 +196,11 @@ th{
             }
             nanosecond{
                 other{"{0} นาโนวินาที"}
+            }
+            night{
+                dnam{"คืน"}
+                other{"{0} คืน"}
+                per{"{0}/คืน"}
             }
             second{
                 other{"{0} วินาที"}
@@ -481,6 +490,10 @@ th{
                 dnam{"กิโลเมตรต่อชั่วโมง"}
                 other{"{0} กิโลเมตรต่อชั่วโมง"}
             }
+            light-speed{
+                dnam{"แสง"}
+                other{"{0} แสง"}
+            }
             meter-per-second{
                 other{"{0} เมตรต่อวินาที"}
             }
@@ -713,6 +726,10 @@ th{
             permyriad{
                 dnam{"‱"}
             }
+            portion-per-1e9{
+                dnam{"สตพล."}
+                other{"{0}สตพล."}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -801,7 +818,13 @@ th{
                 other{"{0}นาโนวิ"}
             }
             night{
+<<<<<<< HEAD
                 other{"{0}คืน"}
+=======
+                dnam{"คืน"}
+                other{"{0}คืน"}
+                per{"{0}/คืน"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 other{"{0}ไตรมาส"}
@@ -1162,6 +1185,10 @@ th{
                 other{"{0}นอต"}
             }
             light-speed{
+<<<<<<< HEAD
+=======
+                dnam{"แสง"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0}แสง"}
             }
             meter-per-second{
@@ -1467,6 +1494,10 @@ th{
             }
             permyriad{
                 dnam{"เปอร์มีเรียด"}
+            }
+            portion-per-1e9{
+                dnam{"ส่วน/พันล้าน"}
+                other{"{0} สตพล."}
             }
         }
         consumption{

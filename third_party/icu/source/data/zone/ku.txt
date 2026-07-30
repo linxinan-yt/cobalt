@@ -469,6 +469,12 @@ ku{
             ld{"Saeta Havînê ya Çîyayî ya Amerîkaya Bakur"}
             lg{"Saeta Çîyayî ya Amerîkaya Bakur"}
             ls{"Saeta Standard a Çîyayî ya Amerîkaya Bakur"}
+<<<<<<< HEAD
+=======
+            sd{"SHÇ"}
+            sg{"SÇ"}
+            ss{"SSÇ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "meta:America_Pacific"{
             ld{"Saeta Havînê ya Pasîfîkê ya Amerîkaya Bakur"}
@@ -588,12 +594,20 @@ ku{
         "meta:Chile"{
             ld{"Saeta Havînê ya Şîlîyê"}
             lg{"Saeta Şîlîyê"}
+<<<<<<< HEAD
             ls{"Saeta Şîlîyê ya Standard"}
+=======
+            ls{"Saeta Standard a Şîlîyê"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "meta:China"{
             ld{"Saeta Havînê ya Çînê"}
             lg{"Saeta Çînê"}
+<<<<<<< HEAD
             ls{"Saeta Çînê ya Standard"}
+=======
+            ls{"Saeta Standard a Çînê"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "meta:Christmas"{
             ls{"Saeta Girava Christmasê"}
@@ -604,7 +618,11 @@ ku{
         "meta:Colombia"{
             ld{"Saeta Havînê ya Kolombîyayê"}
             lg{"Saeta Kolombîyayê"}
+<<<<<<< HEAD
             ls{"Saeta Kolombîyayê ya Standard"}
+=======
+            ls{"Saeta Standard a Kolombîyayê"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "meta:Cook"{
             ld{"Saeta Havînê ya Giravên Cookê"}
@@ -659,7 +677,11 @@ ku{
         "meta:Fiji"{
             ld{"Saeta Havînê ya Fîjîyê"}
             lg{"Saeta Fîjîyê"}
+<<<<<<< HEAD
             ls{"Saeta Fîjîyê ya Standard"}
+=======
+            ls{"Saeta Standard a Fîjîyê"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "meta:French_Guiana"{
             ls{"Saeta Guiyanaya Fransî"}
@@ -772,6 +794,9 @@ ku{
         "meta:Kazakhstan"{
             ls{"Saeta Qazaxistanê"}
         }
+        "meta:Kazakhstan"{
+            ls{"Saeta Qazaxistanê"}
+        }
         "meta:Kazakhstan_Eastern"{
             ls{"Saeta Qazaxistana Rojhilat"}
         }
@@ -805,11 +830,14 @@ ku{
             lg{"Saeta Lord Howeyê"}
             ls{"Saeta Standard a Lord Howeyê"}
         }
+<<<<<<< HEAD
         "meta:Macau"{
             ld{"Saeta Havînê ya Macaoyê"}
             lg{"Saeta Macaoyê"}
             ls{"Saeta Macaoyê ya Standard"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "meta:Magadan"{
             ld{"Saeta Havînê ya Magadanê"}
             lg{"Saeta Magadanê"}
@@ -993,7 +1021,11 @@ ku{
         "meta:Taipei"{
             ld{"Saeta Havînê ya Taîpeîyê"}
             lg{"Saeta Taîpeîyê"}
+<<<<<<< HEAD
             ls{"Saeta Taîpeîyê ya Standard"}
+=======
+            ls{"Saeta Standard a Taîpeîyê"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "meta:Tajikistan"{
             ls{"Saeta Tacikistanê"}
@@ -1069,6 +1101,10 @@ ku{
         }
         regionFormat{"Saeta {0}(y)ê"}
         regionFormatDaylight{"Saeta Havînê ya {0}(y)ê"}
+<<<<<<< HEAD
         regionFormatStandard{"Saeta {0}(y)ê ya Standard"}
+=======
+        regionFormatStandard{"Saeta Standard a {0}(y)ê"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

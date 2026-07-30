@@ -17,8 +17,18 @@ INCLUDE PERFETTO MODULE counters.intervals;
 
 INCLUDE PERFETTO MODULE android.suspend;
 
+<<<<<<< HEAD
 CREATE PERFETTO TABLE _kernel_wakelock_track AS
 SELECT id, name, extract_arg(dimension_arg_set_id, 'wakelock_type') AS type
+=======
+INCLUDE PERFETTO MODULE counters.intervals;
+
+CREATE PERFETTO TABLE _kernel_wakelock_track AS
+SELECT
+  id,
+  name,
+  extract_arg(dimension_arg_set_id, 'wakelock_type') AS type
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 FROM track AS t
 WHERE
   type = 'android_kernel_wakelock';
@@ -26,6 +36,7 @@ WHERE
 CREATE PERFETTO TABLE _android_kernel_wakelocks_base AS
 WITH
   kernel_wakelock_counter AS (
+<<<<<<< HEAD
     SELECT *
     FROM counter_leading_intervals!((
         SELECT id, ts, track_id, value
@@ -33,6 +44,19 @@ WITH
         WHERE
           track_id IN (SELECT id FROM _kernel_wakelock_track)
       ))
+=======
+    SELECT
+      *
+    FROM counter_leading_intervals!((
+        SELECT
+          id,
+          ts,
+          track_id,
+          value
+        FROM counter
+        WHERE track_id IN (SELECT id FROM _kernel_wakelock_track)
+    ))
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   )
 SELECT
   ts,

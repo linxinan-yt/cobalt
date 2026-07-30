@@ -161,6 +161,7 @@ TEST(ScreamV2Test, ReferenceWindowIncreaseLessPerStepIfCeDetected) {
   EXPECT_GT(scream_1.ref_window(), scream_2.ref_window());
 }
 
+<<<<<<< HEAD
 TEST(ScreamV2Test, ReferenceWindowDecreaseOnConsecutiveLossEvents) {
   SimulatedClock clock(Timestamp::Seconds(1'234));
   Environment env = CreateTestEnvironment({.time = &clock});
@@ -202,6 +203,8 @@ TEST(ScreamV2Test, ReferenceWindowDecreaseOnConsecutiveLossEvents) {
   EXPECT_GE(scream.ref_window(), ref_window);
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 TEST(ScreamV2Test, ReferenceWindowIncreaseToDataInflight) {
   SimulatedClock clock(Timestamp::Seconds(1'234));
   Environment env = CreateTestEnvironment({.time = &clock});
@@ -221,9 +224,15 @@ TEST(ScreamV2Test, ReferenceWindowIncreaseToDataInflight) {
     clock.AdvanceTime(feedback_interval);
   }
   // Target rate can increase up to 1.1 * data_in_flight + Max Segment Size(
+<<<<<<< HEAD
   // default 1280 bytes) when no max target rate has been set.
   EXPECT_EQ(scream.ref_window(),
             1.1 * feedback.data_in_flight + DataSize::Bytes(1280));
+=======
+  // default 1000 bytes) when no max target rate has been set.
+  EXPECT_EQ(scream.ref_window(),
+            1.1 * feedback.data_in_flight + DataSize::Bytes(1000));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 TEST(ScreamV2Test, CalculatesL4sAlpha) {
@@ -347,16 +356,47 @@ TEST(ScreamV2Test, AdaptsToLossLinkCapacity5Mbps) {
 
   AdaptsToLinkCapacityResult result = RunAdaptToLinkCapacityTest(params);
 
+<<<<<<< HEAD
   EXPECT_LT(result.data_rate, DataRate::KilobitsPerSec(5400));
   EXPECT_GT(result.data_rate, DataRate::KilobitsPerSec(1500));
   EXPECT_LT(result.max_rate_after_adaption, DataRate::KilobitsPerSec(5400));
   EXPECT_GT(result.min_rate_after_adaption, DataRate::KilobitsPerSec(1500));
+=======
+  EXPECT_LT(result.data_rate_after_adaption, DataRate::KilobitsPerSec(5400));
+  EXPECT_GT(result.data_rate_after_adaption, DataRate::KilobitsPerSec(2500));
+  EXPECT_LT(result.max_rate_after_adaption, DataRate::KilobitsPerSec(5400));
+  EXPECT_GT(result.min_rate_after_adaption, DataRate::KilobitsPerSec(2500));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   EXPECT_LT(result.max_smoothed_rtt_after_adaptation,
             TimeDelta::Millis(10 * 2 + 40));
 }
 
 TEST(ScreamV2Test, AdaptsToDelayLinkCapacity2Mbps) {
+<<<<<<< HEAD
+=======
+  AdaptsToLinkCapacityParams params{
+      .network_config = {.queue_delay_ms = 10,
+                         .link_capacity = DataRate::KilobitsPerSec(2000)},
+      .send_as_ect1 = false,  // Adapt only due to delay increase.
+      .adaption_time = TimeDelta::Seconds(3)};
+
+  AdaptsToLinkCapacityResult result = RunAdaptToLinkCapacityTest(params);
+
+  EXPECT_LT(result.data_rate_after_adaption, DataRate::KilobitsPerSec(2300));
+  EXPECT_GT(result.data_rate_after_adaption, DataRate::KilobitsPerSec(1700));
+  EXPECT_LT(result.max_rate_after_adaption, DataRate::KilobitsPerSec(2300));
+  EXPECT_GT(result.min_rate_after_adaption, DataRate::KilobitsPerSec(1700));
+
+  EXPECT_LT(result.max_smoothed_rtt_after_adaptation,
+            TimeDelta::Millis(10 * 2 + 50 + 10));
+}
+
+// TODO: bugs.webrtc.org/447037083 - implement support for resetting base delay
+// if a standing queue has been build up.
+// https://github.com/EricssonResearch/scream/blob/master/code/ScreamV2Tx.cpp#L1127
+TEST(ScreamV2Test, DISABLED_AdaptsToDelayLinkCapacity2MbpsLongRunning) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   AdaptsToLinkCapacityParams params{
       .network_config = {.queue_delay_ms = 10,
                          .link_capacity = DataRate::KilobitsPerSec(2000)},

@@ -66,14 +66,22 @@ pb_msg!(ChromeLatencyInfo {
     trace_id: i64, primitive, 1,
     step: ChromeLatencyInfoStep, enum, 2,
     frame_tree_node_id: i32, primitive, 3,
+<<<<<<< HEAD
     component_info: ChromeLatencyInfoComponentInfo, msg, 4,
+=======
+    component_info: ComponentInfo, msg, 4,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     is_coalesced: bool, primitive, 5,
     gesture_scroll_id: i64, primitive, 6,
     touch_id: i64, primitive, 7,
     input_type: ChromeLatencyInfoInputType, enum, 8,
 });
 
+<<<<<<< HEAD
 pb_msg!(ChromeLatencyInfoComponentInfo {
+=======
+pb_msg!(ComponentInfo {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     component_type: ChromeLatencyInfoLatencyComponentType, enum, 1,
     time_us: u64, primitive, 2,
 });

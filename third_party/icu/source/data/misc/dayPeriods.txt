@@ -1046,6 +1046,105 @@ dayPeriods:table(nofallback){
         set19{
             afternoon1{
                 before{"18:00"}
+<<<<<<< HEAD
+=======
+                from{"12:00"}
+            }
+            evening1{
+                before{"24:00"}
+                from{"18:00"}
+            }
+            midnight{
+                at{"00:00"}
+            }
+            morning1{
+                before{"12:00"}
+                from{"04:00"}
+            }
+            night1{
+                before{"04:00"}
+                from{"00:00"}
+            }
+            noon{
+                at{"12:00"}
+            }
+        }
+        set2{
+            afternoon1{
+                before{"18:00"}
+                from{"12:00"}
+            }
+            evening1{
+                before{"21:00"}
+                from{"18:00"}
+            }
+            midnight{
+                at{"00:00"}
+            }
+            morning1{
+                before{"12:00"}
+                from{"00:00"}
+            }
+            night1{
+                before{"24:00"}
+                from{"21:00"}
+            }
+            noon{
+                at{"12:00"}
+            }
+        }
+        set20{
+            afternoon1{
+                before{"18:00"}
+                from{"12:00"}
+            }
+            evening1{
+                before{"22:00"}
+                from{"18:00"}
+            }
+            midnight{
+                at{"00:00"}
+            }
+            morning1{
+                before{"12:00"}
+                from{"04:00"}
+            }
+            night1{
+                before{"04:00"}
+                from{"22:00"}
+            }
+            noon{
+                at{"12:00"}
+            }
+        }
+        set21{
+            afternoon1{
+                before{"18:00"}
+                from{"12:00"}
+            }
+            evening1{
+                before{"24:00"}
+                from{"18:00"}
+            }
+            midnight{
+                at{"00:00"}
+            }
+            morning1{
+                before{"12:00"}
+                from{"04:00"}
+            }
+            night1{
+                before{"04:00"}
+                from{"00:00"}
+            }
+            noon{
+                at{"12:00"}
+            }
+        }
+        set22{
+            afternoon1{
+                before{"18:00"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 from{"14:00"}
             }
             evening1{
@@ -2790,10 +2889,10 @@ dayPeriods:table(nofallback){
             }
             morning1{
                 before{"12:00"}
-                from{"06:00"}
+                from{"00:00"}
             }
             night1{
-                before{"06:00"}
+                before{"24:00"}
                 from{"21:00"}
             }
         }

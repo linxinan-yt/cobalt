@@ -51,9 +51,12 @@ extern IntlTest *createPluralMapTest();
 extern IntlTest *createStaticUnicodeSetsTest();
 #endif
 static IntlTest *createUHashTest();
+<<<<<<< HEAD
 extern IntlTest *createUTFIteratorTest();
 extern IntlTest *createUTFStringTest();
 extern IntlTest *createIntlTestTest();
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 void IntlTestUtilities::runIndexedTest( int32_t index, UBool exec, const char* &name, char* par )
 {
@@ -94,8 +97,11 @@ void IntlTestUtilities::runIndexedTest( int32_t index, UBool exec, const char* &
     TESTCASE_AUTO_CREATE_CLASS(UColHeaderOnlyTest);
 #endif
     TESTCASE_AUTO_CREATE_CLASS(USetHeaderOnlyTest);
+<<<<<<< HEAD
     TESTCASE_AUTO_CREATE_CLASS(UTFIteratorTest);
     TESTCASE_AUTO_CREATE_CLASS(UTFStringTest);
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     TESTCASE_AUTO_END;
 }
 

@@ -140,6 +140,10 @@ lo{
                 dnam{"ເປີ​ມີ​ຣຽດ"}
                 other{"{0} ເປີ​ມີ​ຣຽດ"}
             }
+            portion-per-1e9{
+                dnam{"ສ່ວນໃນພັນລ້ານສ່ວນ"}
+                other{"{0} ສ່ວນໃນພັນລ້ານສ່ວນ"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -226,6 +230,11 @@ lo{
             nanosecond{
                 dnam{"ນາ​ໂນ​ວິ​ນາ​ທີ"}
                 other{"{0} ນາ​ໂນ​ວິ​ນາ​ທີ"}
+            }
+            night{
+                dnam{"ຄືນ"}
+                other{"{0} ຄືນ"}
+                per{"{0}/ຄືນ"}
             }
             second{
                 dnam{"ວິນາທີ"}
@@ -529,6 +538,10 @@ lo{
                 dnam{"ນ໋ອດ"}
                 other{"{0} ນ໋ອດ"}
             }
+            light-speed{
+                dnam{"ແສງ"}
+                other{"{0} ແສງ"}
+            }
             meter-per-second{
                 dnam{"ແມັດຕໍ່ວິນາທີ"}
                 other{"{0} ແມັດຕໍ່ວິນາທີ"}
@@ -720,6 +733,13 @@ lo{
             permille{
                 dnam{"‰"}
             }
+<<<<<<< HEAD
+=======
+            portion-per-1e9{
+                dnam{"ສ່ວນ/ພັນລ້ານສ່ວນ"}
+                other{"{0}ppb"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         consumption{
             liter-per-100-kilometer{
@@ -731,11 +751,23 @@ lo{
             }
         }
         duration{
+            century{
+                dnam{"ສຕວ"}
+                other{"{0} ສຕວ"}
+            }
             day{
                 other{"{0} ມ."}
             }
             millisecond{
                 dnam{"ມລວ"}
+<<<<<<< HEAD
+=======
+            }
+            night{
+                dnam{"ຄືນ"}
+                other{"{0} ຄືນ"}
+                per{"{0}/ຄືນ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             week{
                 dnam{"ອທ."}
@@ -785,6 +817,10 @@ lo{
             }
         }
         speed{
+            light-speed{
+                dnam{"ແສງ"}
+                other{"{0} ແສງ"}
+            }
             meter-per-second{
                 dnam{"ມ/ວ"}
             }
@@ -938,6 +974,15 @@ lo{
             permille{
                 dnam{"ຕໍ່ພັນ"}
             }
+<<<<<<< HEAD
+=======
+            permillion{
+                dnam{"ພາດ/ລ້ານ"}
+            }
+            portion-per-1e9{
+                dnam{"ສ່ວນ/ພັນລ້ານສ່ວນ"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         consumption{
             liter-per-100-kilometer{

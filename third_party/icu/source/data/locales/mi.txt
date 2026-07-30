@@ -1013,6 +1013,12 @@ mi{
             2{"{0}, {1} rānei"}
             end{"{0}, {1} rānei"}
         }
+        or-narrow{
+            2{"{0}, {1} rānei"}
+        }
+        or-short{
+            2{"{0}, {1} rānei"}
+        }
         standard-narrow{
             2{"{0}, {1}"}
             end{"{0}, {1}"}

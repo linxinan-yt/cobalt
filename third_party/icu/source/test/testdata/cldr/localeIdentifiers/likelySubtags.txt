@@ -82,11 +82,14 @@ az-AQ ;	az-Latn-AQ ;	az-AQ ;
 az-AZ ;	az-Latn-AZ ;	az ;	
 az-Egyp ;	az-Egyp-AZ ;	az-Egyp ;	
 az-Latn ;	az-Latn-AZ ;	az ;	
+<<<<<<< HEAD
 ba ;	ba-Cyrl-RU ;	ba ;	
 ba-AQ ;	ba-Cyrl-AQ ;	ba-AQ ;	
 ba-Cyrl ;	ba-Cyrl-RU ;	ba ;	
 ba-Egyp ;	ba-Egyp-RU ;	ba-Egyp ;	
 ba-RU ;	ba-Cyrl-RU ;	ba ;	
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 bal ;	bal-Arab-PK ;	bal ;	
 bal-AQ ;	bal-Arab-AQ ;	bal-AQ ;	
 bal-Egyp ;	bal-Egyp-PK ;	bal-Egyp ;	
@@ -832,11 +835,14 @@ pl-AQ ;	pl-Latn-AQ ;	pl-AQ ;
 pl-Egyp ;	pl-Egyp-PL ;	pl-Egyp ;	
 pl-Latn ;	pl-Latn-PL ;	pl ;	
 pl-PL ;	pl-Latn-PL ;	pl ;	
+<<<<<<< HEAD
 pms ;	pms-Latn-IT ;	pms ;	
 pms-AQ ;	pms-Latn-AQ ;	pms-AQ ;	
 pms-Egyp ;	pms-Egyp-IT ;	pms-Egyp ;	
 pms-IT ;	pms-Latn-IT ;	pms ;	
 pms-Latn ;	pms-Latn-IT ;	pms ;	
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 ps ;	ps-Arab-AF ;	ps ;	
 ps-AF ;	ps-Arab-AF ;	ps ;	
 ps-AQ ;	ps-Arab-AQ ;	ps-AQ ;	

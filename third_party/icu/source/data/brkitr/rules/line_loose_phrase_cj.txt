@@ -148,7 +148,11 @@ $CANT_CM = [ $SP $BK $CR $LF $NL $ZW $CM];       # Bases that can't take CMs
 # AL_FOLLOW  set of chars that can unconditionally follow an AL
 #            Needed in rules where stand-alone $CM s are treated as AL.
 #
+<<<<<<< HEAD
 $AL_FOLLOW      = [$BK $CR $LF $NL $ZW $SP $CL $CP $EX $HL $IS $SY $WJ $GL [$OP - $EastAsian] $QU $BA $HH $HY $NS $IN $NU $PR $PO $POX $ALPlus];
+=======
+$AL_FOLLOW      = [$BK $CR $LF $NL $ZW $SP $CL $CP $EX $HL $IS $SY $WJ $GL [$OP - $EastAsian] $QU $BA $BAX $HY $NS $IN $NU $PR $PO $POX $ALPlus];
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 
 #
@@ -329,6 +333,7 @@ $LB20NonBreaks = [$LB18NonBreaks - $CB];
 #             Originally added as a Finnish tailoring, promoted to default ICU behavior (ICU-8151),
 #             and then to default UAX #14 behaviour (UTC-179-C32).
 #
+<<<<<<< HEAD
 ^($HY | $HH) $CM* ($ALPlus | $HL);
 $GL $CM* ($HY | $HH) $CM* ($ALPlus | $HL ); 
 # Non-breaking CB from LB8a:
@@ -342,6 +347,21 @@ $OP $CM* $SP+ ($HY | $HH) $CM* ($ALPlus | $HL );
 $LB8NonBreaks [\p{Pf} & $QU] $CM* ([\p{Pi} & $QU] $CM* $SP*)+ $SP ($HY | $HH) $CM* ($ALPlus | $HL );
 $CAN_CM $CM*  [\p{Pf} & $QU] $CM* ([\p{Pi} & $QU] $CM* $SP*)+ $SP ($HY | $HH) $CM* ($ALPlus | $HL );
 ^$CM+  [\p{Pf} & $QU] $CM* ([\p{Pi} & $QU] $CM* $SP*)+ $SP ($HY | $HH) $CM* ($ALPlus | $HL );
+=======
+^($HY | $HH) $CM* $ALPlus;
+$GL $CM* ($HY | $HH) $CM* $ALPlus;
+# Non-breaking CB from LB8a:
+$CB $CM* $ZWJ ($HY | $HH) $CM* $ALPlus;
+# Non-breaking SP from LB14:
+$OP $CM* $SP+ ($HY | $HH) $CM* $ALPlus; 
+# Non-breaking SP from LB15a:
+($OP $CM* $SP+ | [$OP $QU $GL] $CM*) ([\p{Pi} & $QU] $CM* $SP*)+ $SP ($HY | $HH) $CM* $ALPlus;
+^([\p{Pi} & $QU] $CM* $SP*)+ $SP ($HY | $HH) $CM* $ALPlus;
+# Non-breaking SP from LB15a following LB15b:
+$LB8NonBreaks [\p{Pf} & $QU] $CM* ([\p{Pi} & $QU] $CM* $SP*)+ $SP ($HY | $HH) $CM* $ALPlus;
+$CAN_CM $CM*  [\p{Pf} & $QU] $CM* ([\p{Pi} & $QU] $CM* $SP*)+ $SP ($HY | $HH) $CM* $ALPlus;
+^$CM+  [\p{Pf} & $QU] $CM* ([\p{Pi} & $QU] $CM* $SP*)+ $SP ($HY | $HH) $CM* $ALPlus;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # LB 21        x   (BA | HH | HY | NS)
 #           BB x
@@ -358,9 +378,15 @@ $BB $CM* [^$CB];                                  #  $BB  x
 $BB $CM* $LB20NonBreaks;
 
 # LB 21a Do not break after the hyphen in Hebrew + Hyphen + non-Hebrew
+<<<<<<< HEAD
 #   HL (HY | HH) x [^HL]
 #
 $HL $CM* ($HY | $HH) $CM* [^$CB $HL]?;
+=======
+#   HL (HY | BA) x [^HL]
+#
+$HL $CM* ($HY | [ $BA - $EastAsian ] | $BAX ) $CM* [^$CB $HL]?;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # LB 21b (forward) Don't break between SY and HL
 # (break between HL and SY already disallowed by LB 13 above)

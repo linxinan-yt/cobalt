@@ -36,7 +36,11 @@ import {
   TraceHttpStream,
   TraceMultipleFilesStream,
 } from '../core/trace_stream';
+<<<<<<< HEAD
 import type {TraceStream} from '../public/stream';
+=======
+import {TraceStream} from '../public/stream';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {
   deserializeAppStatePhase1,
   deserializeAppStatePhase2,
@@ -46,6 +50,7 @@ import {raf} from './raf_scheduler';
 import {TraceImpl} from './trace_impl';
 import type {TraceSource} from './trace_source';
 import {Router} from '../core/router';
+<<<<<<< HEAD
 import type {TraceInfoImpl} from './trace_info_impl';
 import {base64Decode} from '../base/string_utils';
 import {
@@ -57,6 +62,10 @@ import {GUTTER_FRACTION} from './timeline';
 import {sha1} from '../base/hash';
 import {showModal} from '../widgets/modal';
 import m from 'mithril';
+=======
+import {TraceInfoImpl} from './trace_info_impl';
+import {base64Decode} from '../base/string_utils';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 const ENABLE_CHROME_RELIABLE_RANGE_ZOOM_FLAG = featureFlags.register({
   id: 'enableChromeReliableRangeZoom',
@@ -106,6 +115,7 @@ const FORCE_FULL_SORT_FLAG = featureFlags.register({
     'Forces the trace processor into performing a full sort ignoring any windowing logic',
   defaultValue: false,
 });
+<<<<<<< HEAD
 const KEEP_CURRENT_PAGE_ON_TRACE_LOAD_FLAG = featureFlags.register({
   id: 'keepCurrentPageOnTraceLoad',
   name: 'Keep current page on trace load',
@@ -113,6 +123,8 @@ const KEEP_CURRENT_PAGE_ON_TRACE_LOAD_FLAG = featureFlags.register({
     'When loading a new trace, stay on the current page instead of navigating to the default landing page',
   defaultValue: false,
 });
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 // TODO(stevegolton): Move this into some global "SQL extensions" file and
 // ensure it's only run once.
@@ -157,10 +169,18 @@ async function createEngine(
   if (app.httpRpc.newEngineMode === 'USE_HTTP_RPC_IF_AVAILABLE') {
     useRpc = (await HttpRpcEngine.checkConnection()).connected;
   }
+<<<<<<< HEAD
 
   const descriptorBlobs: Uint8Array[] = [];
   for (const b64Str of await app.protoDescriptors()) {
     descriptorBlobs.push(base64Decode(b64Str));
+=======
+  const descriptorBlobs: Uint8Array[] = [];
+  if (app.extraParsingDescriptors.length > 0) {
+    for (const b64Str of app.extraParsingDescriptors) {
+      descriptorBlobs.push(base64Decode(b64Str));
+    }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
   let engine;
   if (useRpc) {
@@ -266,6 +286,26 @@ async function loadTraceIntoEngine(
   trace.timeline.setVisibleWindow(newViewport);
 
   const cacheUuid = traceDetails.cached ? traceDetails.uuid : '';
+<<<<<<< HEAD
+=======
+
+  // Attempt to preserve the existing page, only add/change the local_cache_key.
+  //
+  // This is so that if the user opens a trace from a URL or has navigated to a
+  // page before opening a trace, we stay on that page. This allows links to
+  // e.g. #!/explore to work as expected.
+  //
+  // Only navigate to the timeline page if we are currently on the home page.
+  const route = Router.parseUrl(window.location.href);
+
+  let nextPage = route.page;
+  if (route.page === '/' || route.page === '') {
+    // Currently on the home page, navigate to the timeline page.
+    nextPage = '/viewer';
+  }
+
+  Router.navigate(`#!${nextPage}${route.subpage}?local_cache_key=${cacheUuid}`);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // Make sure the helper views are available before we start adding tracks.
   await includeSummaryTables(trace);
@@ -340,6 +380,7 @@ async function loadTraceIntoEngine(
   if (allStartupCommands.length > 0) {
     updateStatus(app, 'Running startup commands');
     using _ = trace.omnibox.disablePrompts();
+<<<<<<< HEAD
 
     // Execute startup commands in trace context after everything is ready.
     // This simulates user actions taken after trace load is complete,
@@ -378,6 +419,9 @@ async function loadTraceIntoEngine(
     if (blocked.length > 0 || failed.length > 0) {
       showStartupCommandIssuesDialog(blocked, failed);
     }
+=======
+    await trace.commands.runStartupCommands();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   return trace;

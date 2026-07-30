@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import m from 'mithril';
+<<<<<<< HEAD
 import type {Trace} from '../../public/trace';
 import {TabStrip, type TabOption} from '../../widgets/tab_strip';
 import {EmptyState} from '../../widgets/empty_state';
@@ -36,15 +37,34 @@ import {TracesTab, type TracesData, loadTracesData} from './tabs/traces';
 import {
   ImportErrorsTab,
   type ImportErrorsData,
+=======
+import {Trace} from '../../public/trace';
+import {TabStrip, TabOption} from '../../widgets/tabs';
+import {EmptyState} from '../../widgets/empty_state';
+import type {TabKey} from './utils';
+import {isValidTabKey} from './utils';
+import {OverviewTab, OverviewData, loadOverviewData} from './tabs/overview';
+import {ConfigTab, ConfigData, loadConfigData} from './tabs/config';
+import {AndroidTab, AndroidData, loadAndroidData} from './tabs/android';
+import {MachinesTab, MachinesData, loadMachinesData} from './tabs/machines';
+import {
+  ImportErrorsTab,
+  ImportErrorsData,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   loadImportErrorsData,
 } from './tabs/import_errors';
 import {
   DataLossesTab,
+<<<<<<< HEAD
   type DataLossesData,
+=======
+  DataLossesData,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   loadDataLossesData,
 } from './tabs/data_losses';
 import {
   TraceErrorsTab,
+<<<<<<< HEAD
   type TraceErrorsData,
   loadTraceErrorsData,
 } from './tabs/trace_errors';
@@ -65,6 +85,16 @@ import {
   loadMetadataData,
   hasMetadataData,
 } from './tabs/metadata';
+=======
+  TraceErrorsData,
+  loadTraceErrorsData,
+} from './tabs/trace_errors';
+import {
+  UiLoadingErrorsTab,
+  UiLoadingErrorsData,
+} from './tabs/ui_loading_errors';
+import {StatsTab, StatsData, loadStatsData} from './tabs/stats';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 export interface TraceInfoPageAttrs {
   readonly trace: Trace;
@@ -73,6 +103,7 @@ export interface TraceInfoPageAttrs {
 
 interface AllTabData {
   overview: OverviewData;
+<<<<<<< HEAD
   diagnostics: ReadonlyArray<Diagnostic>;
   config: ConfigData;
   android: AndroidData;
@@ -83,6 +114,14 @@ interface AllTabData {
   traceErrors: TraceErrorsData;
   dataLosses: DataLossesData;
   notices: NoticesData;
+=======
+  config: ConfigData;
+  android: AndroidData;
+  machines: MachinesData;
+  importErrors: ImportErrorsData;
+  traceErrors: TraceErrorsData;
+  dataLosses: DataLossesData;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   uiLoadingErrors: UiLoadingErrorsData;
   stats: StatsData;
 }
@@ -138,16 +177,22 @@ export class TraceInfoPage implements m.ClassComponent<TraceInfoPageAttrs> {
         return m(OverviewTab, {
           trace,
           data: this.tabData.overview,
+<<<<<<< HEAD
           diagnostics: this.tabData.diagnostics,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
           onTabChange: (key: TabKey) => {
             this.currentTab = key;
           },
         });
+<<<<<<< HEAD
       case 'trace_doctor':
         return m(TraceDoctorTab, {
           diagnostics: this.tabData.diagnostics,
           isMultiTrace: this.tabData.overview.traceCount > 1,
         });
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       case 'config':
         return m(ConfigTab, {
           data: this.tabData.config,
@@ -156,18 +201,24 @@ export class TraceInfoPage implements m.ClassComponent<TraceInfoPageAttrs> {
         return m(AndroidTab, {
           data: this.tabData.android,
         });
+<<<<<<< HEAD
       case 'traces':
         return m(TracesTab, {
           data: this.tabData.traces,
         });
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       case 'machines':
         return m(MachinesTab, {
           data: this.tabData.machines,
         });
+<<<<<<< HEAD
       case 'metadata':
         return m(MetadataTab, {
           data: this.tabData.metadata,
         });
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       case 'import_errors':
         return m(ImportErrorsTab, {
           data: this.tabData.importErrors,
@@ -180,10 +231,13 @@ export class TraceInfoPage implements m.ClassComponent<TraceInfoPageAttrs> {
         return m(DataLossesTab, {
           data: this.tabData.dataLosses,
         });
+<<<<<<< HEAD
       case 'notices':
         return m(NoticesTab, {
           data: this.tabData.notices,
         });
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       case 'ui_loading_errors':
         return m(UiLoadingErrorsTab, {
           data: this.tabData.uiLoadingErrors,
@@ -199,6 +253,7 @@ export class TraceInfoPage implements m.ClassComponent<TraceInfoPageAttrs> {
     const engine = trace.engine;
     this.tabData = {
       overview: await loadOverviewData(trace),
+<<<<<<< HEAD
       diagnostics: await loadTraceDiagnostics(engine),
       config: await loadConfigData(engine),
       android: await loadAndroidData(engine),
@@ -209,6 +264,14 @@ export class TraceInfoPage implements m.ClassComponent<TraceInfoPageAttrs> {
       traceErrors: await loadTraceErrorsData(engine),
       dataLosses: await loadDataLossesData(engine),
       notices: await loadNoticesData(engine),
+=======
+      config: await loadConfigData(engine),
+      android: await loadAndroidData(engine),
+      machines: await loadMachinesData(engine),
+      importErrors: await loadImportErrorsData(engine),
+      traceErrors: await loadTraceErrorsData(engine),
+      dataLosses: await loadDataLossesData(engine),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       uiLoadingErrors: {errors: trace.loadingErrors},
       stats: await loadStatsData(engine),
     };
@@ -217,7 +280,11 @@ export class TraceInfoPage implements m.ClassComponent<TraceInfoPageAttrs> {
 
   private getTabs(): TabOption[] {
     const tabs: TabOption[] = [{key: 'overview', title: 'Overview'}];
+<<<<<<< HEAD
     if ((this.tabData?.config?.configs?.length ?? 0) > 0) {
+=======
+    if (this.tabData?.config?.configText) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       tabs.push({key: 'config', title: 'Trace Config'});
     }
     if ((this.tabData?.overview?.importErrors ?? 0) > 0) {
@@ -226,6 +293,7 @@ export class TraceInfoPage implements m.ClassComponent<TraceInfoPageAttrs> {
     if ((this.tabData?.traceErrors?.errors?.length ?? 0) > 0) {
       tabs.push({key: 'trace_errors', title: 'Trace Errors'});
     }
+<<<<<<< HEAD
     if ((this.tabData?.diagnostics?.length ?? 0) > 0) {
       tabs.push({key: 'trace_doctor', title: 'Trace Doctor'});
     }
@@ -251,6 +319,24 @@ export class TraceInfoPage implements m.ClassComponent<TraceInfoPageAttrs> {
       tabs.push({key: 'metadata', title: 'Metadata'});
     }
     tabs.push({key: 'stats', title: 'Statistics'});
+=======
+    if ((this.tabData?.overview?.dataLosses ?? 0) > 0) {
+      tabs.push({key: 'data_losses', title: 'Data Losses'});
+    }
+    if ((this.tabData?.overview?.uiLoadingErrorCount ?? 0) > 0) {
+      tabs.push({key: 'ui_loading_errors', title: 'UI Loading Errors'});
+    }
+    const hasAndroid =
+      (this.tabData?.android?.packageList?.length ?? 0) > 0 ||
+      (this.tabData?.android?.gameInterventions?.length ?? 0) > 0;
+    if (hasAndroid) {
+      tabs.push({key: 'android', title: 'Android'});
+    }
+    if ((this.tabData?.machines?.machineCount ?? 0) > 1) {
+      tabs.push({key: 'machines', title: 'Machines'});
+    }
+    tabs.push({key: 'stats', title: 'Info and Stats (advanced)'});
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     return tabs;
   }
 }

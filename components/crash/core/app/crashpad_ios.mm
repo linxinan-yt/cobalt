@@ -63,7 +63,11 @@ const std::map<std::string, std::string>& GetProcessSimpleAnnotations() {
           base::apple::ObjCCast<NSString>([base::apple::FrameworkBundle()
               objectForInfoDictionaryKey:@"CFBundleVersion"]);
       process_annotations["ver"] = base::SysNSStringToUTF8(version);
+<<<<<<< HEAD
       process_annotations["plat"] = kPlatformName;
+=======
+      process_annotations["plat"] = std::string(kPlatformName);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }  // @autoreleasepool
     return process_annotations;
   }

@@ -121,9 +121,12 @@ NFRule::makeRules(UnicodeString& description,
     // (this also strips the rule descriptor, if any, off the
     // description string)
     LocalPointer<NFRule> rule1(new NFRule(rbnf, description, status));
+<<<<<<< HEAD
     if (U_FAILURE(status)) {
         return;
     }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     /* test for nullptr */
     if (rule1.isNull()) {
         status = U_MEMORY_ALLOCATION_ERROR;
@@ -173,9 +176,12 @@ NFRule::makeRules(UnicodeString& description,
             // increment the original rule's base value ("rule1" actually
             // goes SECOND in the rule set's rule list)
             rule2.adoptInstead(new NFRule(rbnf, UnicodeString(), status));
+<<<<<<< HEAD
             if (U_FAILURE(status)) {
                 return;
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             /* test for nullptr */
             if (rule2.isNull()) {
                 status = U_MEMORY_ALLOCATION_ERROR;

@@ -2173,12 +2173,39 @@ zh_Hant{
         }
         dayOfYear{
             dn{"該年第幾天"}
+<<<<<<< HEAD
         }
         dayperiod{
             dn{"時段"}
         }
         era{
             dn{"紀元"}
+=======
+        }
+        dayOfYear-narrow{
+            dn{"該年第幾天"}
+        }
+        dayOfYear-short{
+            dn{"該年第幾天"}
+        }
+        dayperiod{
+            dn{"時段"}
+        }
+        dayperiod-narrow{
+            dn{"時段"}
+        }
+        dayperiod-short{
+            dn{"時段"}
+        }
+        era{
+            dn{"紀元"}
+        }
+        era-narrow{
+            dn{"紀元"}
+        }
+        era-short{
+            dn{"紀元"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         fri{
             relative{
@@ -2209,6 +2236,12 @@ zh_Hant{
                 }
             }
         }
+<<<<<<< HEAD
+=======
+        hour-narrow{
+            dn{"時"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         hour-short{
             dn{"時"}
         }
@@ -2226,6 +2259,12 @@ zh_Hant{
                 }
             }
         }
+<<<<<<< HEAD
+=======
+        minute-narrow{
+            dn{"分"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         minute-short{
             dn{"分"}
         }
@@ -2385,14 +2424,38 @@ zh_Hant{
         weekOfMonth{
             dn{"該月第幾週"}
         }
+<<<<<<< HEAD
+=======
+        weekOfMonth-narrow{
+            dn{"月週次"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         weekOfMonth-short{
             dn{"月週次"}
         }
         weekday{
             dn{"星期"}
+<<<<<<< HEAD
         }
         weekdayOfMonth{
             dn{"該月第幾週"}
+=======
+        }
+        weekday-narrow{
+            dn{"星期"}
+        }
+        weekday-short{
+            dn{"星期"}
+        }
+        weekdayOfMonth{
+            dn{"該月第幾週"}
+        }
+        weekdayOfMonth-narrow{
+            dn{"該月第幾週"}
+        }
+        weekdayOfMonth-short{
+            dn{"該月第幾週"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         year{
             dn{"年"}

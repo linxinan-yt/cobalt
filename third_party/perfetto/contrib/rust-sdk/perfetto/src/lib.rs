@@ -12,7 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD
 #![doc = include_str!("../README.md")]
+=======
+//! # perfetto
+//!
+//! This crate provides Rust bindings for Perfetto.
+//!
+//! It is uses the public ABI under the hood and has been designed for safe
+//! and efficient usage in Rust projects. Performance critical operations
+//! such as checking if a track event category is enabled is done in Rust
+//! code as well as encoding of proto messages.
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #![deny(missing_docs)]
 #![warn(clippy::undocumented_unsafe_blocks)]
 #![cfg_attr(
@@ -167,7 +179,11 @@ mod tests {
                 pb_msg::{PbMsg, PbMsgWriter},
                 protos::config::{
                     data_source_config::DataSourceConfig,
+<<<<<<< HEAD
                     trace_config::{TraceConfig, TraceConfigBufferConfig, TraceConfigDataSource},
+=======
+                    trace_config::{BufferConfig, DataSource, TraceConfig},
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     track_event::track_event_config::TrackEventConfig,
                 },
             };
@@ -176,10 +192,17 @@ mod tests {
             let mut msg = PbMsg::new(&writer).unwrap();
             {
                 let mut cfg = TraceConfig { msg: &mut msg };
+<<<<<<< HEAD
                 cfg.set_buffers(|buf_cfg: &mut TraceConfigBufferConfig| {
                     buf_cfg.set_size_kb(1024);
                 });
                 cfg.set_data_sources(|data_sources: &mut TraceConfigDataSource| {
+=======
+                cfg.set_buffers(|buf_cfg: &mut BufferConfig| {
+                    buf_cfg.set_size_kb(1024);
+                });
+                cfg.set_data_sources(|data_sources: &mut DataSource| {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     data_sources.set_config(|ds_cfg: &mut DataSourceConfig| {
                         ds_cfg.set_name(&self.data_source_name);
                         if !self.enabled_categories.is_empty()

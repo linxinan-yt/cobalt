@@ -12,8 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/operations/aggregations.scss
 @use "../../../../assets/theme" as *;
 @use "../common" as *;
+=======
+@import "../common";
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/operations/aggregations.scss
 
 .pf-exp-multi-select-container {
   display: flex;
@@ -22,7 +26,11 @@
   gap: 1rem;
 
   label {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/operations/aggregations.scss
     font-size: var(--pf-font-size-m);
+=======
+    font-size: var(--pf-exp-font-size-md);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/operations/aggregations.scss
     font-weight: 600;
   }
 }

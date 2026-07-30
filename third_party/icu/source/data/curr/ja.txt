@@ -1237,11 +1237,19 @@ ja{
         JPY{
             other{"円"}
         }
+<<<<<<< HEAD
         XCG{
             other{"カリブ ギルダー"}
         }
         ZWG{
             other{"ジンバブエ ゴールド"}
+=======
+        RSD{
+            other{"セルビア ディナール"}
+        }
+        UAH{
+            other{"ウクライナ フリヴニャ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     }
     CurrencyUnitPatterns{

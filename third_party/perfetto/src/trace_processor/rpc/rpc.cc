@@ -727,8 +727,13 @@ void Rpc::ResetTraceProcessor(const uint8_t* args, size_t len) {
   for (auto it = reset_trace_processor_args.extra_parsing_descriptors(); it;
        ++it) {
     protozero::ConstBytes bytes = it->as_bytes();
+<<<<<<< HEAD
     config.extra_parsing_descriptors.emplace_back(
         reinterpret_cast<const char*>(bytes.data), bytes.size);
+=======
+    config.extra_parsing_descriptors.push_back(
+        std::string(reinterpret_cast<const char*>(bytes.data), bytes.size));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
   ResetTraceProcessorInternal(config);
 }

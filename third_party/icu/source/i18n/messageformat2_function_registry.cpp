@@ -10,6 +10,7 @@
 #if !UCONFIG_NO_MF2
 
 #include <math.h>
+<<<<<<< HEAD
 #include <cmath>
 
 #include "unicode/dtptngen.h"
@@ -18,6 +19,12 @@
 #include "unicode/messageformat2_function_registry.h"
 #include "unicode/normalizer2.h"
 #include "unicode/simpletz.h"
+=======
+
+#include "unicode/dtptngen.h"
+#include "unicode/messageformat2_data_model_names.h"
+#include "unicode/messageformat2_function_registry.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "unicode/smpdtfmt.h"
 #include "charstr.h"
 #include "double-conversion.h"
@@ -25,9 +32,13 @@
 #include "messageformat2_function_registry_internal.h"
 #include "messageformat2_macros.h"
 #include "hash.h"
+<<<<<<< HEAD
 #include "mutex.h"
 #include "number_types.h"
 #include "ucln_in.h"
+=======
+#include "number_types.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "uvector.h" // U_ASSERT
 
 // The C99 standard suggested that C++ implementations not define PRId64 etc. constants
@@ -178,6 +189,7 @@ void MFFunctionRegistry::checkStandard() const {
 
 // Formatter/selector helpers
 
+<<<<<<< HEAD
 // Returns the NFC-normalized version of s, returning s itself
 // if it's already normalized.
 /* static */ UnicodeString StandardFunctions::normalizeNFC(const UnicodeString& s) {
@@ -200,6 +212,8 @@ void MFFunctionRegistry::checkStandard() const {
     return normalized;
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 // Converts `s` to a double, indicating failure via `errorCode`
 static void strToDouble(const UnicodeString& s, double& result, UErrorCode& errorCode) {
     CHECK_ERROR(errorCode);
@@ -289,6 +303,7 @@ MFFunctionRegistry::~MFFunctionRegistry() {
 
 // --------- Number
 
+<<<<<<< HEAD
 bool inBounds(const UnicodeString& s, int32_t i) {
     return i < s.length();
 }
@@ -416,6 +431,8 @@ bool isDigitSizeOption(const UnicodeString& s) {
     }
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 /* static */ number::LocalizedNumberFormatter StandardFunctions::formatterForOptions(const Number& number,
                                                                                      const FunctionOptions& opts,
                                                                                      UErrorCode& status) {
@@ -423,11 +440,14 @@ bool isDigitSizeOption(const UnicodeString& s) {
 
     using namespace number;
 
+<<<<<<< HEAD
     validateDigitSizeOptions(opts, status);
     if (U_FAILURE(status)) {
         return {};
     }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     if (U_SUCCESS(status)) {
         Formattable opt;
         nf = NumberFormatter::with();
@@ -443,6 +463,7 @@ bool isDigitSizeOption(const UnicodeString& s) {
 
             // Default notation is simple
             Notation notation = Notation::simple();
+<<<<<<< HEAD
             UnicodeString notationOpt = opts.getStringFunctionOption(options::NOTATION);
             if (notationOpt == options::SCIENTIFIC) {
                 notation = Notation::scientific();
@@ -451,6 +472,16 @@ bool isDigitSizeOption(const UnicodeString& s) {
             } else if (notationOpt == options::COMPACT) {
                 UnicodeString displayOpt = opts.getStringFunctionOption(options::COMPACT_DISPLAY);
                 if (displayOpt == options::LONG) {
+=======
+            UnicodeString notationOpt = opts.getStringFunctionOption(UnicodeString("notation"));
+            if (notationOpt == UnicodeString("scientific")) {
+                notation = Notation::scientific();
+            } else if (notationOpt == UnicodeString("engineering")) {
+                notation = Notation::engineering();
+            } else if (notationOpt == UnicodeString("compact")) {
+                UnicodeString displayOpt = opts.getStringFunctionOption(UnicodeString("compactDisplay"));
+                if (displayOpt == UnicodeString("long")) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     notation = Notation::compactLong();
                 } else {
                     // Default is short
@@ -514,6 +545,7 @@ bool isDigitSizeOption(const UnicodeString& s) {
         nf = nf.integerWidth(IntegerWidth::zeroFillTo(minIntegerDigits));
 
         // signDisplay
+<<<<<<< HEAD
         UnicodeString sd = opts.getStringFunctionOption(options::SIGN_DISPLAY);
         UNumberSignDisplay signDisplay;
         if (sd == options::ALWAYS) {
@@ -523,6 +555,17 @@ bool isDigitSizeOption(const UnicodeString& s) {
         } else if (sd == options::NEGATIVE) {
             signDisplay = UNumberSignDisplay::UNUM_SIGN_NEGATIVE;
         } else if (sd == options::NEVER) {
+=======
+        UnicodeString sd = opts.getStringFunctionOption(UnicodeString("signDisplay"));
+        UNumberSignDisplay signDisplay;
+        if (sd == UnicodeString("always")) {
+            signDisplay = UNumberSignDisplay::UNUM_SIGN_ALWAYS;
+        } else if (sd == UnicodeString("exceptZero")) {
+            signDisplay = UNumberSignDisplay::UNUM_SIGN_EXCEPT_ZERO;
+        } else if (sd == UnicodeString("negative")) {
+            signDisplay = UNumberSignDisplay::UNUM_SIGN_NEGATIVE;
+        } else if (sd == UnicodeString("never")) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             signDisplay = UNumberSignDisplay::UNUM_SIGN_NEVER;
         } else {
             signDisplay = UNumberSignDisplay::UNUM_SIGN_AUTO;
@@ -530,6 +573,7 @@ bool isDigitSizeOption(const UnicodeString& s) {
         nf = nf.sign(signDisplay);
 
         // useGrouping
+<<<<<<< HEAD
         UnicodeString ug = opts.getStringFunctionOption(options::USE_GROUPING);
         UNumberGroupingStrategy grp;
         if (ug == options::ALWAYS) {
@@ -537,6 +581,15 @@ bool isDigitSizeOption(const UnicodeString& s) {
         } else if (ug == options::NEVER) {
             grp = UNumberGroupingStrategy::UNUM_GROUPING_OFF;
         } else if (ug == options::MIN2) {
+=======
+        UnicodeString ug = opts.getStringFunctionOption(UnicodeString("useGrouping"));
+        UNumberGroupingStrategy grp;
+        if (ug == UnicodeString("always")) {
+            grp = UNumberGroupingStrategy::UNUM_GROUPING_ON_ALIGNED;
+        } else if (ug == UnicodeString("never")) {
+            grp = UNumberGroupingStrategy::UNUM_GROUPING_OFF;
+        } else if (ug == UnicodeString("min2")) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             grp = UNumberGroupingStrategy::UNUM_GROUPING_MIN2;
         } else {
             // Default is "auto"
@@ -545,7 +598,11 @@ bool isDigitSizeOption(const UnicodeString& s) {
         nf = nf.grouping(grp);
 
         // numberingSystem
+<<<<<<< HEAD
         UnicodeString ns = opts.getStringFunctionOption(options::NUMBERING_SYSTEM);
+=======
+        UnicodeString ns = opts.getStringFunctionOption(UnicodeString("numberingSystem"));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         if (ns.length() > 0) {
             ns = ns.toLower(Locale("en-US"));
             CharString buffer;
@@ -604,19 +661,37 @@ static double parseNumberLiteral(const Formattable& input, UErrorCode& errorCode
         return {};
     }
 
+<<<<<<< HEAD
     // Validate string according to `number-literal` production
     // in the spec for `:number`. This is because some cases are
     // forbidden by this grammar, but allowed by StringToDouble.
     if (!validateNumberLiteral(inputStr)) {
+=======
+    // Hack: Check for cases that are forbidden by the MF2 grammar
+    // but allowed by StringToDouble
+    int32_t len = inputStr.length();
+
+    if (len > 0 && ((inputStr[0] == '+')
+                    || (inputStr[0] == '0' && len > 1 && inputStr[1] != '.')
+                    || (inputStr[len - 1] == '.')
+                    || (inputStr[0] == '.'))) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         errorCode = U_MF_OPERAND_MISMATCH_ERROR;
         return 0;
     }
 
+<<<<<<< HEAD
     // Convert to double using double_conversion::StringToDoubleConverter
     using namespace double_conversion;
     int processedCharactersCount = 0;
     StringToDoubleConverter converter(0, 0, 0, "", "");
     int32_t len = inputStr.length();
+=======
+    // Otherwise, convert to double using double_conversion::StringToDoubleConverter
+    using namespace double_conversion;
+    int processedCharactersCount = 0;
+    StringToDoubleConverter converter(0, 0, 0, "", "");
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     double result =
         converter.StringToDouble(reinterpret_cast<const uint16_t*>(inputStr.getBuffer()),
                                  len,
@@ -661,6 +736,24 @@ static UChar32 digitToChar(int32_t val, UErrorCode errorCode) {
     }
 }
 
+<<<<<<< HEAD
+=======
+static FormattedPlaceholder tryParsingNumberLiteral(const number::LocalizedNumberFormatter& nf, const FormattedPlaceholder& input, UErrorCode& errorCode) {
+    double numberValue = parseNumberLiteral(input.asFormattable(), errorCode);
+    if (U_FAILURE(errorCode)) {
+        return notANumber(input);
+    }
+
+    UErrorCode savedStatus = errorCode;
+    number::FormattedNumber result = nf.formatDouble(numberValue, errorCode);
+    // Ignore U_USING_DEFAULT_WARNING
+    if (errorCode == U_USING_DEFAULT_WARNING) {
+        errorCode = savedStatus;
+    }
+    return FormattedPlaceholder(input, FormattedValue(std::move(result)));
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 int32_t StandardFunctions::Number::maximumFractionDigits(const FunctionOptions& opts) const {
     Formattable opt;
 
@@ -668,7 +761,11 @@ int32_t StandardFunctions::Number::maximumFractionDigits(const FunctionOptions& 
         return 0;
     }
 
+<<<<<<< HEAD
     if (opts.getFunctionOption(options::MAXIMUM_FRACTION_DIGITS, opt)) {
+=======
+    if (opts.getFunctionOption(UnicodeString("maximumFractionDigits"), opt)) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         UErrorCode localErrorCode = U_ZERO_ERROR;
         int64_t val = getInt64Value(locale, opt, localErrorCode);
         if (U_SUCCESS(localErrorCode)) {
@@ -685,7 +782,11 @@ int32_t StandardFunctions::Number::minimumFractionDigits(const FunctionOptions& 
     Formattable opt;
 
     if (!isInteger) {
+<<<<<<< HEAD
         if (opts.getFunctionOption(options::MINIMUM_FRACTION_DIGITS, opt)) {
+=======
+        if (opts.getFunctionOption(UnicodeString("minimumFractionDigits"), opt)) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             UErrorCode localErrorCode = U_ZERO_ERROR;
             int64_t val = getInt64Value(locale, opt, localErrorCode);
             if (U_SUCCESS(localErrorCode)) {
@@ -702,21 +803,33 @@ int32_t StandardFunctions::Number::minimumFractionDigits(const FunctionOptions& 
 int32_t StandardFunctions::Number::minimumIntegerDigits(const FunctionOptions& opts) const {
     Formattable opt;
 
+<<<<<<< HEAD
     if (opts.getFunctionOption(options::MINIMUM_INTEGER_DIGITS, opt)) {
+=======
+    if (opts.getFunctionOption(UnicodeString("minimumIntegerDigits"), opt)) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         UErrorCode localErrorCode = U_ZERO_ERROR;
         int64_t val = getInt64Value(locale, opt, localErrorCode);
         if (U_SUCCESS(localErrorCode)) {
             return static_cast<int32_t>(val);
         }
     }
+<<<<<<< HEAD
     return 1;
+=======
+    return 0;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 int32_t StandardFunctions::Number::minimumSignificantDigits(const FunctionOptions& opts) const {
     Formattable opt;
 
     if (!isInteger) {
+<<<<<<< HEAD
         if (opts.getFunctionOption(options::MINIMUM_SIGNIFICANT_DIGITS, opt)) {
+=======
+        if (opts.getFunctionOption(UnicodeString("minimumSignificantDigits"), opt)) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             UErrorCode localErrorCode = U_ZERO_ERROR;
             int64_t val = getInt64Value(locale, opt, localErrorCode);
             if (U_SUCCESS(localErrorCode)) {
@@ -733,7 +846,11 @@ int32_t StandardFunctions::Number::minimumSignificantDigits(const FunctionOption
 int32_t StandardFunctions::Number::maximumSignificantDigits(const FunctionOptions& opts) const {
     Formattable opt;
 
+<<<<<<< HEAD
     if (opts.getFunctionOption(options::MAXIMUM_SIGNIFICANT_DIGITS, opt)) {
+=======
+    if (opts.getFunctionOption(UnicodeString("maximumSignificantDigits"), opt)) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         UErrorCode localErrorCode = U_ZERO_ERROR;
         int64_t val = getInt64Value(locale, opt, localErrorCode);
         if (U_SUCCESS(localErrorCode)) {
@@ -749,14 +866,22 @@ int32_t StandardFunctions::Number::maximumSignificantDigits(const FunctionOption
 bool StandardFunctions::Number::usePercent(const FunctionOptions& opts) const {
     Formattable opt;
     if (isInteger
+<<<<<<< HEAD
         || !opts.getFunctionOption(options::STYLE, opt)
+=======
+        || !opts.getFunctionOption(UnicodeString("style"), opt)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         || opt.getType() != UFMT_STRING) {
         return false;
     }
     UErrorCode localErrorCode = U_ZERO_ERROR;
     const UnicodeString& style = opt.getString(localErrorCode);
     U_ASSERT(U_SUCCESS(localErrorCode));
+<<<<<<< HEAD
     return (style == options::PERCENT_STRING);
+=======
+    return (style == UnicodeString("percent"));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 /* static */ StandardFunctions::Number StandardFunctions::Number::integer(const Locale& loc) {
@@ -778,8 +903,11 @@ FormattedPlaceholder StandardFunctions::Number::format(FormattedPlaceholder&& ar
     realFormatter = formatterForOptions(*this, opts, errorCode);
 
     number::FormattedNumber numberResult;
+<<<<<<< HEAD
     int64_t integerValue = 0;
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     if (U_SUCCESS(errorCode)) {
         // Already checked that contents can be formatted
         const Formattable& toFormat = arg.asFormattable();
@@ -788,31 +916,44 @@ FormattedPlaceholder StandardFunctions::Number::format(FormattedPlaceholder&& ar
             double d = toFormat.getDouble(errorCode);
             U_ASSERT(U_SUCCESS(errorCode));
             numberResult = realFormatter.formatDouble(d, errorCode);
+<<<<<<< HEAD
             integerValue = static_cast<int64_t>(std::round(d));
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             break;
         }
         case UFMT_LONG: {
             int32_t l = toFormat.getLong(errorCode);
             U_ASSERT(U_SUCCESS(errorCode));
             numberResult = realFormatter.formatInt(l, errorCode);
+<<<<<<< HEAD
             integerValue = l;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             break;
         }
         case UFMT_INT64: {
             int64_t i = toFormat.getInt64(errorCode);
             U_ASSERT(U_SUCCESS(errorCode));
             numberResult = realFormatter.formatInt(i, errorCode);
+<<<<<<< HEAD
             integerValue = i;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             break;
         }
         case UFMT_STRING: {
             // Try to parse the string as a number
+<<<<<<< HEAD
             double d = parseNumberLiteral(toFormat, errorCode);
             if (U_FAILURE(errorCode))
                 return {};
             numberResult = realFormatter.formatDouble(d, errorCode);
             integerValue = static_cast<int64_t>(std::round(d));
             break;
+=======
+            return tryParsingNumberLiteral(realFormatter, arg, errorCode);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         default: {
             // Other types can't be parsed as a number
@@ -822,6 +963,7 @@ FormattedPlaceholder StandardFunctions::Number::format(FormattedPlaceholder&& ar
         }
     }
 
+<<<<<<< HEAD
     // Need to return the integer value if invoked as :integer
     if (isInteger) {
         return FormattedPlaceholder(FormattedPlaceholder(Formattable(integerValue), arg.getFallback()),
@@ -829,6 +971,9 @@ FormattedPlaceholder StandardFunctions::Number::format(FormattedPlaceholder&& ar
                                     FormattedValue(std::move(numberResult)));
     }
     return FormattedPlaceholder(arg, std::move(opts), FormattedValue(std::move(numberResult)));
+=======
+    return FormattedPlaceholder(arg, FormattedValue(std::move(numberResult)));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 StandardFunctions::Number::~Number() {}
@@ -836,6 +981,7 @@ StandardFunctions::NumberFactory::~NumberFactory() {}
 
 // --------- PluralFactory
 
+<<<<<<< HEAD
 StandardFunctions::Plural::PluralType StandardFunctions::Plural::pluralType(const FunctionOptions& opts) const {
     Formattable opt;
 
@@ -847,6 +993,20 @@ StandardFunctions::Plural::PluralType StandardFunctions::Plural::pluralType(cons
                 return PluralType::PLURAL_ORDINAL;
             }
             if (val == options::EXACT) {
+=======
+
+StandardFunctions::Plural::PluralType StandardFunctions::Plural::pluralType(const FunctionOptions& opts) const {
+    Formattable opt;
+
+    if (opts.getFunctionOption(UnicodeString("select"), opt)) {
+        UErrorCode localErrorCode = U_ZERO_ERROR;
+        UnicodeString val = opt.getString(localErrorCode);
+        if (U_SUCCESS(localErrorCode)) {
+            if (val == UnicodeString("ordinal")) {
+                return PluralType::PLURAL_ORDINAL;
+            }
+            if (val == UnicodeString("exact")) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 return PluralType::PLURAL_EXACT;
             }
         }
@@ -999,7 +1159,11 @@ StandardFunctions::PluralFactory::~PluralFactory() {}
 // --------- DateTimeFactory
 
 /* static */ UnicodeString StandardFunctions::getStringOption(const FunctionOptions& opts,
+<<<<<<< HEAD
                                                               std::u16string_view optionName,
+=======
+                                                              const UnicodeString& optionName,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                                                               UErrorCode& errorCode) {
     if (U_SUCCESS(errorCode)) {
         Formattable opt;
@@ -1014,11 +1178,19 @@ StandardFunctions::PluralFactory::~PluralFactory() {}
 }
 
 // Date/time options only
+<<<<<<< HEAD
 static UnicodeString defaultForOption(std::u16string_view optionName) {
     if (optionName == options::DATE_STYLE
         || optionName == options::TIME_STYLE
         || optionName == options::STYLE) {
         return UnicodeString(options::SHORT);
+=======
+static UnicodeString defaultForOption(const UnicodeString& optionName) {
+    if (optionName == UnicodeString("dateStyle")
+        || optionName == UnicodeString("timeStyle")
+        || optionName == UnicodeString("style")) {
+        return UnicodeString("short");
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
     return {}; // Empty string is default
 }
@@ -1032,7 +1204,11 @@ static UnicodeString defaultForOption(std::u16string_view optionName) {
 // which works for datetime options but not necessarily in general.
 UnicodeString StandardFunctions::DateTime::getFunctionOption(const FormattedPlaceholder& toFormat,
                                                              const FunctionOptions& opts,
+<<<<<<< HEAD
                                                              std::u16string_view optionName) const {
+=======
+                                                             const UnicodeString& optionName) const {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     // Options passed to the current function invocation take priority
     Formattable opt;
     UnicodeString s;
@@ -1054,7 +1230,11 @@ UnicodeString StandardFunctions::DateTime::getFunctionOption(const FormattedPlac
 // Used for options that don't have defaults
 UnicodeString StandardFunctions::DateTime::getFunctionOption(const FormattedPlaceholder& toFormat,
                                                              const FunctionOptions& opts,
+<<<<<<< HEAD
                                                              std::u16string_view optionName,
+=======
+                                                             const UnicodeString& optionName,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                                                              UErrorCode& errorCode) const {
     if (U_SUCCESS(errorCode)) {
         // Options passed to the current function invocation take priority
@@ -1079,6 +1259,7 @@ UnicodeString StandardFunctions::DateTime::getFunctionOption(const FormattedPlac
 static DateFormat::EStyle stringToStyle(UnicodeString option, UErrorCode& errorCode) {
     if (U_SUCCESS(errorCode)) {
         UnicodeString upper = option.toUpper();
+<<<<<<< HEAD
         if (upper == options::FULL_UPPER) {
             return DateFormat::EStyle::kFull;
         }
@@ -1092,6 +1273,21 @@ static DateFormat::EStyle stringToStyle(UnicodeString option, UErrorCode& errorC
             return DateFormat::EStyle::kShort;
         }
         if (upper.isEmpty() || upper == options::DEFAULT_UPPER) {
+=======
+        if (upper == UnicodeString("FULL")) {
+            return DateFormat::EStyle::kFull;
+        }
+        if (upper == UnicodeString("LONG")) {
+            return DateFormat::EStyle::kLong;
+        }
+        if (upper == UnicodeString("MEDIUM")) {
+            return DateFormat::EStyle::kMedium;
+        }
+        if (upper == UnicodeString("SHORT")) {
+            return DateFormat::EStyle::kShort;
+        }
+        if (upper.isEmpty() || upper == UnicodeString("DEFAULT")) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             return DateFormat::EStyle::kDefault;
         }
         errorCode = U_ILLEGAL_ARGUMENT_ERROR;
@@ -1139,6 +1335,7 @@ Formatter* StandardFunctions::DateTimeFactory::createFormatter(const Locale& loc
     return result;
 }
 
+<<<<<<< HEAD
 // DateFormat parsers that are shared across threads
 static DateFormat* dateParser = nullptr;
 static DateFormat* dateTimeParser = nullptr;
@@ -1346,6 +1543,8 @@ void formatDateWithDefaults(const Locale& locale,
     df->format(dateInfo.date, result, nullptr, errorCode);
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 FormattedPlaceholder StandardFunctions::DateTime::format(FormattedPlaceholder&& toFormat,
                                                    FunctionOptions&& opts,
                                                    UErrorCode& errorCode) const {
@@ -1417,24 +1616,39 @@ FormattedPlaceholder StandardFunctions::DateTime::format(FormattedPlaceholder&& 
         #define ADD_PATTERN(s) skeleton += UnicodeString(s)
         if (U_SUCCESS(errorCode)) {
             // Year
+<<<<<<< HEAD
             UnicodeString year = getFunctionOption(toFormat, opts, options::YEAR, errorCode);
+=======
+            UnicodeString year = getFunctionOption(toFormat, opts, UnicodeString("year"), errorCode);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             if (U_FAILURE(errorCode)) {
                 errorCode = U_ZERO_ERROR;
             } else {
                 useDate = true;
+<<<<<<< HEAD
                 if (year == options::TWO_DIGIT) {
                     ADD_PATTERN("YY");
                 } else if (year == options::NUMERIC) {
+=======
+                if (year == UnicodeString("2-digit")) {
+                    ADD_PATTERN("YY");
+                } else if (year == UnicodeString("numeric")) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     ADD_PATTERN("YYYY");
                 }
             }
             // Month
+<<<<<<< HEAD
             UnicodeString month = getFunctionOption(toFormat, opts, options::MONTH, errorCode);
+=======
+            UnicodeString month = getFunctionOption(toFormat, opts, UnicodeString("month"), errorCode);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             if (U_FAILURE(errorCode)) {
                 errorCode = U_ZERO_ERROR;
             } else {
                 useDate = true;
                 /* numeric, 2-digit, long, short, narrow */
+<<<<<<< HEAD
                 if (month == options::LONG) {
                     ADD_PATTERN("MMMM");
                 } else if (month == options::SHORT) {
@@ -1444,68 +1658,131 @@ FormattedPlaceholder StandardFunctions::DateTime::format(FormattedPlaceholder&& 
                 } else if (month == options::NUMERIC) {
                     ADD_PATTERN("M");
                 } else if (month == options::TWO_DIGIT) {
+=======
+                if (month == UnicodeString("long")) {
+                    ADD_PATTERN("MMMM");
+                } else if (month == UnicodeString("short")) {
+                    ADD_PATTERN("MMM");
+                } else if (month == UnicodeString("narrow")) {
+                    ADD_PATTERN("MMMMM");
+                } else if (month == UnicodeString("numeric")) {
+                    ADD_PATTERN("M");
+                } else if (month == UnicodeString("2-digit")) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     ADD_PATTERN("MM");
                 }
             }
             // Weekday
+<<<<<<< HEAD
             UnicodeString weekday = getFunctionOption(toFormat, opts, options::WEEKDAY, errorCode);
+=======
+            UnicodeString weekday = getFunctionOption(toFormat, opts, UnicodeString("weekday"), errorCode);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             if (U_FAILURE(errorCode)) {
                 errorCode = U_ZERO_ERROR;
             } else {
                 useDate = true;
+<<<<<<< HEAD
                 if (weekday == options::LONG) {
                     ADD_PATTERN("EEEE");
                 } else if (weekday == options::SHORT) {
                     ADD_PATTERN("EEEEE");
                 } else if (weekday == options::NARROW) {
+=======
+                if (weekday == UnicodeString("long")) {
+                    ADD_PATTERN("EEEE");
+                } else if (weekday == UnicodeString("short")) {
+                    ADD_PATTERN("EEEEE");
+                } else if (weekday == UnicodeString("narrow")) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     ADD_PATTERN("EEEEE");
                 }
             }
             // Day
+<<<<<<< HEAD
             UnicodeString day = getFunctionOption(toFormat, opts, options::DAY, errorCode);
+=======
+            UnicodeString day = getFunctionOption(toFormat, opts, UnicodeString("day"), errorCode);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             if (U_FAILURE(errorCode)) {
                 errorCode = U_ZERO_ERROR;
             } else {
                 useDate = true;
+<<<<<<< HEAD
                 if (day == options::NUMERIC) {
                     ADD_PATTERN("d");
                 } else if (day == options::TWO_DIGIT) {
+=======
+                if (day == UnicodeString("numeric")) {
+                    ADD_PATTERN("d");
+                } else if (day == UnicodeString("2-digit")) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     ADD_PATTERN("dd");
                 }
             }
             // Hour
+<<<<<<< HEAD
             UnicodeString hour = getFunctionOption(toFormat, opts, options::HOUR, errorCode);
+=======
+            UnicodeString hour = getFunctionOption(toFormat, opts, UnicodeString("hour"), errorCode);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             if (U_FAILURE(errorCode)) {
                 errorCode = U_ZERO_ERROR;
             } else {
                 useTime = true;
+<<<<<<< HEAD
                 if (hour == options::NUMERIC) {
                     ADD_PATTERN("h");
                 } else if (hour == options::TWO_DIGIT) {
+=======
+                if (hour == UnicodeString("numeric")) {
+                    ADD_PATTERN("h");
+                } else if (hour == UnicodeString("2-digit")) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     ADD_PATTERN("hh");
                 }
             }
             // Minute
+<<<<<<< HEAD
             UnicodeString minute = getFunctionOption(toFormat, opts, options::MINUTE, errorCode);
+=======
+            UnicodeString minute = getFunctionOption(toFormat, opts, UnicodeString("minute"), errorCode);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             if (U_FAILURE(errorCode)) {
                 errorCode = U_ZERO_ERROR;
             } else {
                 useTime = true;
+<<<<<<< HEAD
                 if (minute == options::NUMERIC) {
                     ADD_PATTERN("m");
                 } else if (minute == options::TWO_DIGIT) {
+=======
+                if (minute == UnicodeString("numeric")) {
+                    ADD_PATTERN("m");
+                } else if (minute == UnicodeString("2-digit")) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     ADD_PATTERN("mm");
                 }
             }
             // Second
+<<<<<<< HEAD
             UnicodeString second = getFunctionOption(toFormat, opts, options::SECOND, errorCode);
+=======
+            UnicodeString second = getFunctionOption(toFormat, opts, UnicodeString("second"), errorCode);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             if (U_FAILURE(errorCode)) {
                 errorCode = U_ZERO_ERROR;
             } else {
                 useTime = true;
+<<<<<<< HEAD
                 if (second == options::NUMERIC) {
                     ADD_PATTERN("s");
                 } else if (second == options::TWO_DIGIT) {
+=======
+                if (second == UnicodeString("numeric")) {
+                    ADD_PATTERN("s");
+                } else if (second == UnicodeString("2-digit")) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     ADD_PATTERN("ss");
                 }
             }
@@ -1532,6 +1809,7 @@ FormattedPlaceholder StandardFunctions::DateTime::format(FormattedPlaceholder&& 
     const Formattable& source = toFormat.asFormattable();
     switch (source.getType()) {
     case UFMT_STRING: {
+<<<<<<< HEAD
         // Lazily initialize date parsers used for parsing date literals
         initDateParsers(errorCode);
         if (U_FAILURE(errorCode)) {
@@ -1567,6 +1845,46 @@ FormattedPlaceholder StandardFunctions::DateTime::format(FormattedPlaceholder&& 
                 if (errorCode == U_ILLEGAL_ARGUMENT_ERROR) {
                     errorCode = U_MF_OPERAND_MISMATCH_ERROR;
                 }
+=======
+        const UnicodeString& sourceStr = source.getString(errorCode);
+        U_ASSERT(U_SUCCESS(errorCode));
+        // Pattern for ISO 8601 format - datetime
+        UnicodeString pattern("YYYY-MM-dd'T'HH:mm:ss");
+        LocalPointer<DateFormat> dateParser(new SimpleDateFormat(pattern, errorCode));
+        if (U_FAILURE(errorCode)) {
+            errorCode = U_MF_FORMATTING_ERROR;
+        } else {
+            // Parse the date
+            UDate d = dateParser->parse(sourceStr, errorCode);
+            if (U_FAILURE(errorCode)) {
+                // Pattern for ISO 8601 format - date
+                UnicodeString pattern("YYYY-MM-dd");
+                errorCode = U_ZERO_ERROR;
+                dateParser.adoptInstead(new SimpleDateFormat(pattern, errorCode));
+                if (U_FAILURE(errorCode)) {
+                    errorCode = U_MF_FORMATTING_ERROR;
+                } else {
+                    d = dateParser->parse(sourceStr, errorCode);
+                    if (U_FAILURE(errorCode)) {
+                        errorCode = U_MF_OPERAND_MISMATCH_ERROR;
+                    }
+                }
+            }
+            // Use the parsed date as the source value
+            // in the returned FormattedPlaceholder; this is necessary
+            // so the date can be re-formatted
+            toFormat = FormattedPlaceholder(message2::Formattable::forDate(d),
+                                            toFormat.getFallback());
+            df->format(d, result, 0, errorCode);
+        }
+        break;
+    }
+    case UFMT_DATE: {
+        df->format(source.asICUFormattable(errorCode), result, 0, errorCode);
+        if (U_FAILURE(errorCode)) {
+            if (errorCode == U_ILLEGAL_ARGUMENT_ERROR) {
+                errorCode = U_MF_OPERAND_MISMATCH_ERROR;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         break;
@@ -1624,11 +1942,17 @@ void StandardFunctions::TextSelector::selectKey(FormattedPlaceholder&& toFormat,
     if (U_FAILURE(errorCode)) {
         return;
     }
+<<<<<<< HEAD
     // Normalize result
     UnicodeString normalized = normalizeNFC(formattedValue);
 
     for (int32_t i = 0; i < keysLen; i++) {
         if (keys[i] == normalized) {
+=======
+
+    for (int32_t i = 0; i < keysLen; i++) {
+        if (keys[i] == formattedValue) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 	    prefs[0] = keys[i];
             prefsLen = 1;
             break;
@@ -1733,7 +2057,11 @@ double formattableToNumber(const Formattable& arg, UErrorCode& status) {
     }
     // 8. If the decimalPlaces option is set, then
     Formattable opt;
+<<<<<<< HEAD
     if (options.getFunctionOption(options::DECIMAL_PLACES, opt)) {
+=======
+    if (options.getFunctionOption(UnicodeString("decimalPlaces"), opt)) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         // 8i. If its value resolves to a numerical integer value 0 or 1
         // or their corresponding string representations '0' or '1', then
         double decimalPlacesInput = formattableToNumber(opt, status);
@@ -1752,7 +2080,11 @@ double formattableToNumber(const Formattable& arg, UErrorCode& status) {
     }
     // 9. If the fails option is set, then
     Formattable failsOpt;
+<<<<<<< HEAD
     if (options.getFunctionOption(options::FAILS, failsOpt)) {
+=======
+    if (options.getFunctionOption(UnicodeString("fails"), failsOpt)) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         UnicodeString failsString = failsOpt.getString(status);
         if (U_SUCCESS(status)) {
             // 9i. If its value resolves to the string 'always', then

@@ -15,6 +15,7 @@
 import './styles.scss';
 import m from 'mithril';
 
+<<<<<<< HEAD
 import type {PerfettoPlugin} from '../../public/plugin';
 import type {Trace} from '../../public/trace';
 import {TrackNode} from '../../public/workspace';
@@ -27,6 +28,15 @@ import {
   FTRACE_RAW_TRACK_KIND,
 } from './common';
 import {FtraceExplorer, type FtraceExplorerCache} from './ftrace_explorer';
+=======
+import {PerfettoPlugin} from '../../public/plugin';
+import {Trace} from '../../public/trace';
+import {TrackNode} from '../../public/workspace';
+import {NUM} from '../../trace_processor/query_result';
+import {Cpu} from '../../components/cpu';
+import {FtraceFilter, FtracePluginState} from './common';
+import {FtraceExplorer, FtraceExplorerCache} from './ftrace_explorer';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {createFtraceTrack} from './ftrace_track';
 
 const VERSION = 2;
@@ -63,12 +73,16 @@ export default class implements PerfettoPlugin {
       (x) => x as FtraceFilter,
     );
 
+<<<<<<< HEAD
     const ftraceTabUri = 'perfetto.FtraceRaw#FtraceEventsTab';
 
     let hasExpandedOnce = false;
 
     const numMachines = await getMachineCount(ctx.engine);
     const cpus = await getFtraceCpus(ctx, numMachines);
+=======
+    const cpus = await getFtraceCpus(ctx);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     const group = new TrackNode({
       name: 'Ftrace Events',
       sortOrder: -5,
@@ -153,6 +167,7 @@ export default class implements PerfettoPlugin {
         ctx.tabs.showTab(ftraceTabUri);
       },
     });
+<<<<<<< HEAD
 
     // Also use the ftrace explorer for area selections, as a child of the
     // selection tab. It shares the (persisted) event-name filter with the
@@ -182,7 +197,35 @@ export default class implements PerfettoPlugin {
         };
       },
     });
+=======
   }
+}
+
+/**
+ * Get the list of unique cpus in the ftrace_event table.
+ */
+async function getFtraceCpus(ctx: Trace): Promise<Cpu[]> {
+  const queryRes = await ctx.engine.query(`
+    SELECT DISTINCT
+      ucpu,
+      IFNULL(cpu.machine_id, 0) AS machine_id,
+      cpu.cpu AS cpu
+    FROM ftrace_event
+    JOIN cpu USING (ucpu)
+    ORDER BY ucpu
+  `);
+
+  const ucpus: Cpu[] = [];
+  for (
+    const it = queryRes.iter({ucpu: NUM, machine_id: NUM, cpu: NUM});
+    it.valid();
+    it.next()
+  ) {
+    ucpus.push(new Cpu(it.ucpu, it.cpu, it.machine_id));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
+  }
+
+  return ucpus;
 }
 
 /**

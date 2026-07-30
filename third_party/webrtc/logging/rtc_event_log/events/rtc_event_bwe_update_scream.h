@@ -14,11 +14,18 @@
 #include <stdint.h>
 
 #include <memory>
+<<<<<<< HEAD
 #include <span>
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include <string>
 #include <vector>
 
 #include "absl/strings/string_view.h"
+<<<<<<< HEAD
+=======
+#include "api/array_view.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "api/rtc_event_log/rtc_event.h"
 #include "api/units/data_rate.h"
 #include "api/units/data_size.h"
@@ -82,7 +89,11 @@ class RtcEventBweUpdateScream final : public RtcEvent {
   uint32_t avg_queue_delay_ms() const { return avg_queue_delay_ms_; }
   uint32_t l4s_marked_permille() const { return l4s_marked_permille_; }
 
+<<<<<<< HEAD
   static std::string Encode(std::span<const RtcEvent*> batch) {
+=======
+  static std::string Encode(ArrayView<const RtcEvent*> batch) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     // TODO(terelius): Implement
     return "";
   }

@@ -82,9 +82,20 @@ base::Status TraceRedactor::Redact(std::string_view source_filename,
                                    std::string_view dest_filename,
                                    Context* context) const {
   const std::string source_filename_str(source_filename);
+<<<<<<< HEAD
   ASSIGN_OR_RETURN(trace_processor::TraceBlob blob,
                    LoadTrace(source_filename_str));
   trace_processor::TraceBlobView whole_view(std::move(blob));
+=======
+  base::ScopedMmap mapped = base::ReadMmapWholeFile(source_filename_str);
+  if (!mapped.IsValid()) {
+    return base::ErrStatus("TraceRedactor: failed to map pages for trace (%s)",
+                           source_filename_str.c_str());
+  }
+
+  trace_processor::TraceBlobView whole_view(
+      trace_processor::TraceBlob::FromMmap(std::move(mapped)));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   RETURN_IF_ERROR(Collect(context, whole_view));
 

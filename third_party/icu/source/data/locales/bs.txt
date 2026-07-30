@@ -808,6 +808,13 @@ bs{
             AmPmMarkersAbbr{
                 "a. m.",
                 "p. m.",
+<<<<<<< HEAD
+=======
+            }
+            AmPmMarkersNarrow{
+                "a. m.",
+                "p. m.",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             DateTimePatterns{
                 "HH:mm:ss zzzz",
@@ -945,6 +952,10 @@ bs{
                     }
                 }
                 stand-alone{
+                    abbreviated{
+                        am{"a. m."}
+                        pm{"p. m."}
+                    }
                     narrow{
                         am{"prijepodne"}
                         pm{"popodne"}
@@ -957,8 +968,13 @@ bs{
             }
             eras{
                 abbreviated{
+<<<<<<< HEAD
                     0{"p. n. e."}
                     1{"n. e."}
+=======
+                    "p. n. e.",
+                    "n. e.",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
                 narrow{
                     0{"p.n.e."}
@@ -968,7 +984,12 @@ bs{
                     1{"nove ere"}
                 }
                 wide%variant{
+<<<<<<< HEAD
                     1{"nove ere"}
+=======
+                    "p. n. e.",
+                    "nove ere",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
             intervalFormats{
@@ -1050,6 +1071,12 @@ bs{
                 d{
                     d{"d–d."}
                 }
+<<<<<<< HEAD
+=======
+                h{
+                    a{"h a – h a"}
+                }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 hm{
                     a{"h:mm a – h:mm a"}
                     h{"h:mm – h:mm a"}
@@ -1520,6 +1547,7 @@ bs{
                 }
             }
         }
+<<<<<<< HEAD
         minute-narrow{
             relativeTime{
                 future{
@@ -1534,13 +1562,21 @@ bs{
                 }
             }
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         minute-short{
             dn{"min"}
             relativeTime{
                 future{
+<<<<<<< HEAD
                     few{"za {0} min"}
                     one{"za {0} min"}
                     other{"za {0} min"}
+=======
+                    few{"za {0} min."}
+                    one{"za {0} min"}
+                    other{"za {0} min."}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
                 past{
                     few{"prije {0} min"}
@@ -1568,6 +1604,28 @@ bs{
                 }
             }
         }
+<<<<<<< HEAD
+=======
+        mon-narrow{
+            relative{
+                "-1"{"prošli pon."}
+                "0"{"ovaj pon."}
+                "1"{"sljedeći pon."}
+            }
+            relativeTime{
+                future{
+                    few{"za {0} pon"}
+                    one{"za {0} pon"}
+                    other{"za {0} pon"}
+                }
+                past{
+                    few{"prije {0} pon"}
+                    one{"prije {0} pon"}
+                    other{"prije {0} pon"}
+                }
+            }
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         mon-short{
             relative{
                 "-1"{"prošli pon"}

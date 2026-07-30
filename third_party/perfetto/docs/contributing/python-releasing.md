@@ -2,9 +2,13 @@
 
 This guide shows how to make a new Perfetto Python library release to PyPI.
 
+<<<<<<< HEAD
 The package version is derived automatically from the `CHANGELOG` (the top
 `vX.Y` entry maps to the PyPI version `0.X.Y`), so there is no separate
 version-bump step. Publishing is a single stage, driven by the
+=======
+The release process is split into two stages, both orchestrated by the
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 `tools/release/release_python.py` script.
 
 ## Prerequisites
@@ -22,13 +26,21 @@ version-bump step. Publishing is a single stage, driven by the
    For example:
 
 ```bash
+<<<<<<< HEAD
 COMMIT=$(git rev-parse v56.0^{commit})
+=======
+tools/release/release_python.py --bump-version
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 ```
 
 2. Run the release script, passing that commit:
 
 ```bash
+<<<<<<< HEAD
 tools/release/release_python.py --publish --commit "$COMMIT"
+=======
+tools/release/release_python.py --publish --commit <landed-commit-hash>
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 ```
 
 The script will then perform the following steps:

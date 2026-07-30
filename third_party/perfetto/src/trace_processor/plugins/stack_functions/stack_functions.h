@@ -17,7 +17,18 @@
 #ifndef SRC_TRACE_PROCESSOR_PLUGINS_STACK_FUNCTIONS_STACK_FUNCTIONS_H_
 #define SRC_TRACE_PROCESSOR_PLUGINS_STACK_FUNCTIONS_STACK_FUNCTIONS_H_
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/stack_functions/stack_functions.h
 namespace perfetto::trace_processor::stack_functions {
+=======
+#include <cstddef>
+
+#include "perfetto/base/status.h"
+
+namespace perfetto::trace_processor {
+
+class PerfettoSqlEngine;
+class TraceProcessorContext;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/stack_functions.h
 
 // Registers the stack manipulation related functions:
 //
@@ -42,6 +53,10 @@ namespace perfetto::trace_processor::stack_functions {
 // See protos/perfetto/trace_processor/stack.proto
 void RegisterPlugin();
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/stack_functions/stack_functions.h
 }  // namespace perfetto::trace_processor::stack_functions
+=======
+}  // namespace perfetto::trace_processor
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/stack_functions.h
 
 #endif  // SRC_TRACE_PROCESSOR_PLUGINS_STACK_FUNCTIONS_STACK_FUNCTIONS_H_

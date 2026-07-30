@@ -306,6 +306,11 @@ kok{
                 other{"{0} राती"}
                 per{"दर रात {0}"}
             }
+            night{
+                dnam{"राती"}
+                other{"{0} राती"}
+                per{"दर रात {0}"}
+            }
             quarter{
                 dnam{"तिम्हयनाळे"}
                 one{"{0} तिम्हयनाळें"}
@@ -738,7 +743,10 @@ kok{
             }
             light-speed{
                 dnam{"प्रकाश"}
+<<<<<<< HEAD
                 one{"{0} प्रकाश"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} प्रकाश"}
             }
             meter-per-second{
@@ -1172,6 +1180,11 @@ kok{
                 other{"{0}तिम्ह"}
                 per{"{0}/तिम्ह"}
             }
+            night{
+                dnam{"राती"}
+                other{"{0}राती"}
+                per{"{0}/रात"}
+            }
             second{
                 dnam{"सेकंद"}
                 one{"{0}सॅक"}
@@ -1548,7 +1561,10 @@ kok{
         speed{
             light-speed{
                 dnam{"प्रकाश"}
+<<<<<<< HEAD
                 one{"{0} प्रकाश"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} प्रकाश"}
             }
             meter-per-second{
@@ -1956,6 +1972,11 @@ kok{
                 other{"{0} तिम्ह"}
                 per{"{0}/तिम्ह"}
             }
+            night{
+                dnam{"राती"}
+                other{"{0} राती"}
+                per{"{0}/रात"}
+            }
             second{
                 dnam{"सेकंदांनी"}
                 one{"{0} सॅक"}
@@ -2210,7 +2231,10 @@ kok{
             }
             light-speed{
                 dnam{"प्रकाश"}
+<<<<<<< HEAD
                 one{"{0} प्रकाश"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} प्रकाश"}
             }
             meter-per-second{

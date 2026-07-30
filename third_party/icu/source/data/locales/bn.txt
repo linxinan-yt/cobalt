@@ -652,8 +652,13 @@ bn{
                     1{"খৃষ্টাব্দ"}
                 }
                 abbreviated%variant{
+<<<<<<< HEAD
                     0{"\u0022খ্রিঃপূঃ\u0022"}
                     1{"খ্রিষ্টাব্দ"}
+=======
+                    "\u0022খ্রিঃপূঃ\u0022",
+                    "খ্রিষ্টাব্দ",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
                 wide{
                     1{"খ্রিস্টাব্দ"}
@@ -1412,6 +1417,14 @@ bn{
                 }
             }
         }
+        second-short{
+            relativeTime{
+                past{
+                    one{"{0} সেকেন্ড আগে"}
+                    other{"{0} সেকেন্ড আগে"}
+                }
+            }
+        }
         sun{
             relative{
                 "-1"{"গত রবিবার"}
@@ -1566,6 +1579,22 @@ bn{
                 "[\\: ∶]",
             }
         }
+<<<<<<< HEAD
+=======
+        general{
+            lenient{
+                "[.．․﹒ 。｡︒]",
+                "['＇’ ՚ ᾽᾿ ʼ]",
+                "[%％﹪ ٪]",
+                "[‰ ؉]",
+                "[\$＄﹩]",
+                "[£￡ ₤]",
+                "[¥￥]",
+                "[₩￦]",
+                "[₹ {Rp} {Rs}₨]",
+            }
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",

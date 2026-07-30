@@ -1363,6 +1363,33 @@ fa{
                 past{
                     one{"{0} جمعه قبل"}
                     other{"{0} جمعه قبل"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        fri-narrow{
+            relativeTime{
+                future{
+                    one{"{0} جمعه بعد"}
+                    other{"{0} جمعه بعد"}
+                }
+                past{
+                    one{"{0} جمعه قبل"}
+                    other{"{0} جمعه قبل"}
+                }
+            }
+        }
+        fri-short{
+            relativeTime{
+                future{
+                    one{"{0} جمعه بعد"}
+                    other{"{0} جمعه بعد"}
+                }
+                past{
+                    one{"{0} جمعه قبل"}
+                    other{"{0} جمعه قبل"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -1412,6 +1439,33 @@ fa{
                 past{
                     one{"{0} دوشنبه قبل"}
                     other{"{0} دوشنبه قبل"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        mon-narrow{
+            relativeTime{
+                future{
+                    one{"{0} دوشنبه بعد"}
+                    other{"{0} دوشنبه بعد"}
+                }
+                past{
+                    one{"{0} دوشنبه قبل"}
+                    other{"{0} دوشنبه قبل"}
+                }
+            }
+        }
+        mon-short{
+            relativeTime{
+                future{
+                    one{"{0} دوشنبه بعد"}
+                    other{"{0} دوشنبه بعد"}
+                }
+                past{
+                    one{"{0} دوشنبه قبل"}
+                    other{"{0} دوشنبه قبل"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -1465,6 +1519,33 @@ fa{
                 past{
                     one{"{0} شنبه قبل"}
                     other{"{0} شنبه قبل"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        sat-narrow{
+            relativeTime{
+                future{
+                    one{"{0} شنبه بعد"}
+                    other{"{0} شنبه بعد"}
+                }
+                past{
+                    one{"{0} شنبه قبل"}
+                    other{"{0} شنبه قبل"}
+                }
+            }
+        }
+        sat-short{
+            relativeTime{
+                future{
+                    one{"{0} شنبه بعد"}
+                    other{"{0} شنبه بعد"}
+                }
+                past{
+                    one{"{0} شنبه قبل"}
+                    other{"{0} شنبه قبل"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -1498,6 +1579,33 @@ fa{
                 past{
                     one{"{0} یکشنبه قبل"}
                     other{"{0} یکشنبه قبل"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        sun-narrow{
+            relativeTime{
+                future{
+                    one{"{0} یکشنبه بعد"}
+                    other{"{0} یکشنبه بعد"}
+                }
+                past{
+                    one{"{0} یکشنبه قبل"}
+                    other{"{0} یکشنبه قبل"}
+                }
+            }
+        }
+        sun-short{
+            relativeTime{
+                future{
+                    one{"{0} یکشنبه بعد"}
+                    other{"{0} یکشنبه بعد"}
+                }
+                past{
+                    one{"{0} یکشنبه قبل"}
+                    other{"{0} یکشنبه قبل"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -1515,6 +1623,33 @@ fa{
                 past{
                     one{"{0} پنجشنبه قبل"}
                     other{"{0} پنجشنبه قبل"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        thu-narrow{
+            relativeTime{
+                future{
+                    one{"{0} پنجشنبه بعد"}
+                    other{"{0} پنجشنبه بعد"}
+                }
+                past{
+                    one{"{0} پنجشنبه قبل"}
+                    other{"{0} پنجشنبه قبل"}
+                }
+            }
+        }
+        thu-short{
+            relativeTime{
+                future{
+                    one{"{0} پنجشنبه بعد"}
+                    other{"{0} پنجشنبه بعد"}
+                }
+                past{
+                    one{"{0} پنجشنبه قبل"}
+                    other{"{0} پنجشنبه قبل"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -1532,6 +1667,33 @@ fa{
                 past{
                     one{"{0} سه‌شنبه قبل"}
                     other{"{0} سه‌شنبه قبل"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        tue-narrow{
+            relativeTime{
+                future{
+                    one{"{0} سه‌شنبه بعد"}
+                    other{"{0} سه‌شنبه بعد"}
+                }
+                past{
+                    one{"{0} سه‌شنبه قبل"}
+                    other{"{0} سه‌شنبه قبل"}
+                }
+            }
+        }
+        tue-short{
+            relativeTime{
+                future{
+                    one{"{0} سه‌شنبه بعد"}
+                    other{"{0} سه‌شنبه بعد"}
+                }
+                past{
+                    one{"{0} سه‌شنبه قبل"}
+                    other{"{0} سه‌شنبه قبل"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -1549,6 +1711,33 @@ fa{
                 past{
                     one{"{0} چهارشنبه قبل"}
                     other{"{0} چهارشنبه قبل"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        wed-narrow{
+            relativeTime{
+                future{
+                    one{"{0} چهارشنبه بعد"}
+                    other{"{0} چهارشنبه بعد"}
+                }
+                past{
+                    one{"{0} چهارشنبه قبل"}
+                    other{"{0} چهارشنبه قبل"}
+                }
+            }
+        }
+        wed-short{
+            relativeTime{
+                future{
+                    one{"{0} چهارشنبه بعد"}
+                    other{"{0} چهارشنبه بعد"}
+                }
+                past{
+                    one{"{0} چهارشنبه قبل"}
+                    other{"{0} چهارشنبه قبل"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }

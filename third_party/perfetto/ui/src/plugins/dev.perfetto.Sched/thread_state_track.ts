@@ -13,9 +13,15 @@
 // limitations under the License.
 
 import {HSLColor} from '../../base/color';
+<<<<<<< HEAD
 import type {ColorScheme} from '../../base/color_scheme';
 import {ColorVariant, SliceTrack} from '../../components/tracks/slice_track';
 import type {Trace} from '../../public/trace';
+=======
+import {ColorScheme} from '../../base/color_scheme';
+import {SliceTrack} from '../../components/tracks/slice_track';
+import {Trace} from '../../public/trace';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {SourceDataset} from '../../trace_processor/dataset';
 import {LONG, NUM, NUM_NULL, STR} from '../../trace_processor/query_result';
 import {colorForThreadState} from './common';
@@ -36,7 +42,10 @@ export function createThreadStateTrack(
   uri: string,
   utid: number,
 ) {
+<<<<<<< HEAD
   let hoveredSliceId: number | undefined;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   return SliceTrack.create({
     trace,
     uri,
@@ -51,6 +60,7 @@ export function createThreadStateTrack(
         state: STR,
         depth: NUM,
       },
+<<<<<<< HEAD
       select: {
         id: 'id',
         ts: 'ts',
@@ -63,6 +73,24 @@ export function createThreadStateTrack(
         layer: "CASE WHEN state IN ('S', 'I') THEN 0 ELSE 1 END",
       },
       src: 'thread_state',
+=======
+      src: `
+        SELECT
+          id,
+          ts,
+          dur,
+          ucpu,
+          utid,
+          sched_state_io_to_human_readable_string(state, io_wait) AS state,
+          -- Move sleeping and idle slices to the back layer, others on top
+          CASE
+            WHEN state IN ('S', 'I') THEN 0
+            ELSE 1
+          END AS layer,
+          0 AS depth
+        FROM thread_state
+      `,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       filter: {
         col: 'utid',
         eq: utid,
@@ -73,6 +101,7 @@ export function createThreadStateTrack(
       sliceHeight: 12,
       titleSizePx: 10,
     },
+<<<<<<< HEAD
     // The following set of callbacks work around base slice_track's behaviour
     // of globally highlighting all slices with the same title. Highlighting
     // all "running" or "sleeping" slices across all visible thread tracks is
@@ -90,6 +119,8 @@ export function createThreadStateTrack(
       slices.map((s) =>
         s.id === hoveredSliceId ? ColorVariant.VARIANT : ColorVariant.BASE,
       ),
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     sliceName: (row) => row.state || '[Unknown]',
     colorizer: (row): ColorScheme => {
       const colorForState = colorForThreadState(row.state || '[Unknown]');

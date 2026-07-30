@@ -25,10 +25,13 @@
 
 #include "perfetto/base/logging.h"
 #include "perfetto/ext/base/crash_keys.h"
+<<<<<<< HEAD
 #include "perfetto/ext/base/file_utils.h"
 #include "perfetto/ext/base/metatrace.h"
 #include "perfetto/ext/base/metatrace_events.h"
 #include "perfetto/ext/base/unix_socket.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "perfetto/ext/base/utils.h"
 #include "perfetto/ext/base/watchdog.h"
 #include "perfetto/ext/base/weak_ptr.h"
@@ -71,6 +74,7 @@ constexpr uint32_t kMaxConnectionBackoffMs = 30 * 1000;
 // Should be larger than FtraceController::kControllerFlushTimeoutMs.
 constexpr uint32_t kFlushTimeoutMs = 1000;
 
+<<<<<<< HEAD
 // Floor for the kTraceDidntStop watchdog timeout. When the system is busy
 // (ftrace is loaded, draining takes time) the calculated timeout can be too
 // tight on short traces and trip the watchdog even though the producer can
@@ -78,6 +82,8 @@ constexpr uint32_t kFlushTimeoutMs = 1000;
 // producers.
 constexpr uint32_t kMinTraceDidntStopTimeoutMs = 5 * 60 * 1000;
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 constexpr size_t kTracingSharedMemSizeHintBytes = 2 * 1024 * 1024;
 constexpr size_t kTracingSharedMemPageSizeHintBytes = 32 * 1024;
 

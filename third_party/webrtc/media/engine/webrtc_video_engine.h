@@ -238,8 +238,12 @@ class WebRtcVideoSendChannel : public MediaChannelUtil,
   // MediaChannel, unless replaced.
   void SetEncoderSelector(
       uint32_t ssrc,
+<<<<<<< HEAD
       scoped_refptr<VideoEncoderFactory::EncoderSelectorInterface>
           encoder_selector) override;
+=======
+      VideoEncoderFactory::EncoderSelectorInterface* encoder_selector) override;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   void SetSsrcListChangedCallback(
       absl::AnyInvocable<void(const std::set<uint32_t>&)> callback) override {

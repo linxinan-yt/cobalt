@@ -248,6 +248,7 @@ static void U_CALLCONV initAliasData(UErrorCode &errCode) {
     }
 
     sectionSizes = static_cast<const uint32_t*>(udata_getMemory(data));
+<<<<<<< HEAD
     int32_t dataLength = udata_getLength(data); // This is the length minus the UDataInfo size
     if (dataLength <= int32_t(sizeof(sectionSizes[0]))) {
         // We don't even have a TOC!
@@ -259,6 +260,15 @@ static void U_CALLCONV initAliasData(UErrorCode &errCode) {
     if (tableStart < minTocLength || dataLength <= sizeOfTOC) {
         // We don't have a whole TOC!
         goto invalidFormat;
+=======
+    table = reinterpret_cast<const uint16_t*>(sectionSizes);
+
+    tableStart      = sectionSizes[0];
+    if (tableStart < minTocLength) {
+        errCode = U_INVALID_FORMAT_ERROR;
+        udata_close(data);
+        return;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
     gAliasData = data;
 

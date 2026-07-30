@@ -734,7 +734,15 @@ public:
              + fVertexFiller.unflattenSize();
     }
 
+<<<<<<< HEAD
     int glyphSrcPadding() const override { return kGlyphInsetting; }
+=======
+    int glyphSrcPadding() const override { return 0; }
+
+    void testingOnly_packedGlyphIDToGlyph(StrikeCache* cache) const override {
+        fGlyphs.packedGlyphIDToGlyph(cache, fVertexFiller.grMaskType());
+    }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     std::tuple<bool, SkRect> deviceRectAndNeedsTransform(
             const SkMatrix &positionMatrix) const override {
@@ -830,7 +838,15 @@ public:
 
     const AtlasSubRun* testingOnly_atlasSubRun() const override { return this; }
 
+<<<<<<< HEAD
     int glyphSrcPadding() const override { return 1; } // Padding NOT equal to insetting
+=======
+    void testingOnly_packedGlyphIDToGlyph(StrikeCache *cache) const override {
+        fGlyphs.packedGlyphIDToGlyph(cache, fVertexFiller.grMaskType());
+    }
+
+    int glyphSrcPadding() const override { return 1; }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     void draw(SkCanvas*,
               SkPoint drawOrigin,
@@ -964,7 +980,15 @@ public:
 
     const AtlasSubRun* testingOnly_atlasSubRun() const override { return this; }
 
+<<<<<<< HEAD
     int glyphSrcPadding() const override { return kGlyphInsetting; }
+=======
+    void testingOnly_packedGlyphIDToGlyph(StrikeCache *cache) const override {
+        fGlyphs.packedGlyphIDToGlyph(cache, fVertexFiller.grMaskType());
+    }
+
+    int glyphSrcPadding() const override { return SK_DistanceFieldInset; }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     void draw(SkCanvas*,
               SkPoint drawOrigin,

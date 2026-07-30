@@ -320,6 +320,7 @@ void HTMLIFrameElement::ParseAttribute(
       should_call_did_change_attributes = true;
       UseCounter::Count(GetDocument(), WebFeature::kIFrameCSPAttribute);
     }
+<<<<<<< HEAD
   } else if (name == html_names::kConnectionallowlistAttr) {
     // The `connectionallowlist` attribute lets an embedder require a
     // Connection-Allowlist of the document it frames (Connection-Allowlist
@@ -333,6 +334,10 @@ void HTMLIFrameElement::ParseAttribute(
     // `ConnectionAllowlistEmbeddedEnforcement` depends_on `ConnectionAllowlist`
     // (see runtime_enabled_features.json5), so this accessor already returns
     // false unless the `ConnectionAllowlist` origin trial is also enabled.
+=======
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  } else if (name == html_names::kBrowsingtopicsAttr) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     if (GetExecutionContext() &&
         RuntimeEnabledFeatures::ConnectionAllowlistEmbeddedEnforcementEnabled(
             GetExecutionContext())) {
@@ -364,6 +369,7 @@ void HTMLIFrameElement::ParseAttribute(
         should_call_did_change_attributes = true;
       }
     }
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
   } else if (name == html_names::kAdauctionheadersAttr &&
              GetExecutionContext()) {
     if (!GetExecutionContext()->IsSecureContext()) {
@@ -712,6 +718,21 @@ void HTMLIFrameElement::DidChangeAttributes() {
       ParseConnectionAllowlistAttribute(required_connection_allowlist_);
   attributes->credentialless = credentialless_;
 
+<<<<<<< HEAD
+=======
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  if (RuntimeEnabledFeatures::TopicsAPIEnabled(GetExecutionContext()) &&
+      GetExecutionContext()->IsSecureContext()) {
+    attributes->browsing_topics =
+        FastHasAttribute(html_names::kBrowsingtopicsAttr);
+  }
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+
+  if (GetExecutionContext()->IsSecureContext()) {
+    attributes->ad_auction_headers =
+        FastHasAttribute(html_names::kAdauctionheadersAttr);
+  }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   if (RuntimeEnabledFeatures::SharedStorageAPIEnabled(GetExecutionContext()) &&
       GetExecutionContext()->IsSecureContext()) {

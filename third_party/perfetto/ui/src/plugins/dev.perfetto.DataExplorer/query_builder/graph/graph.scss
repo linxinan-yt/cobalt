@@ -12,13 +12,63 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.scss
 @use "../../../../assets/theme" as *;
+
+.pf-exp-node-graph {
+  position: relative;
+<<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.scss
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--pf-color-background);
+========
+  touch-action: none;
+>>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/assets/widgets/resize_handle.scss
+=======
+<<<<<<<< HEAD:third_party/perfetto/ui/src/core/cookie_consent.scss
+.pf-cookie-consent {
+  position: absolute;
+  z-index: 10;
+  left: 10px;
+  bottom: 10px;
+  width: 550px;
+  background-color: #19212b;
+  font-size: var(--pf-font-size-m);
+  color: rgb(180, 183, 186);
+  border-radius: 5px;
+  padding: 20px;
+
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+  button {
+    padding: 10px;
+    border-radius: 3px;
+    color: #fff;
+    margin-left: 5px;
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+  button:hover {
+    background-color: #373f4b;
+    cursor: pointer;
+  }
+========
+@import "../../../../assets/theme";
 
 .pf-exp-node-graph {
   position: relative;
   height: 100%;
   overflow: hidden;
+  border: 1px solid var(--pf-color-border);
   background-color: var(--pf-color-background);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.scss
 
   // Ensure NodeGraph takes full height
   .pf-canvas {
@@ -31,6 +81,12 @@
   position: absolute;
   top: 1rem;
   left: 1rem;
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.scss
   gap: 0.25rem;
   pointer-events: auto;
+=======
+  gap: 0.5rem;
+  pointer-events: auto;
+>>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.scss
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.scss
 }

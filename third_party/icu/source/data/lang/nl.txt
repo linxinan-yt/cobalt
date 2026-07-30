@@ -97,7 +97,10 @@ nl{
         bkm{"Kom"}
         bla{"Siksika"}
         blo{"Anii"}
+<<<<<<< HEAD
         blt{"Tai Dam"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         bm{"Bambara"}
         bn{"Bengaals"}
         bo{"Tibetaans"}

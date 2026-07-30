@@ -435,8 +435,11 @@ void TestUScriptCodeAPI(void){
             "Aran",
             // new in ICU 76
             "Garay", "Gurung_Khema", "Kirat_Rai", "Ol_Onal", "Sunuwar", "Todhri", "Tulu_Tigalari",
+<<<<<<< HEAD
             // new in ICU 78
             "Beria_Erfe", "Sidetic", "Tai_Yo", "Tolong_Siki", "Hntl",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         };
         static const char* expectedShort[] = {
             "Bali", "Batk", "Blis", "Brah", "Cham", "Cirt", "Cyrs", "Egyd", "Egyh", "Egyp",
@@ -481,8 +484,11 @@ void TestUScriptCodeAPI(void){
             "Aran",
             // new in ICU 76
             "Gara", "Gukh", "Krai", "Onao", "Sunu", "Todr", "Tutg",
+<<<<<<< HEAD
             // new in ICU 78
             "Berf", "Sidt", "Tayo", "Tols", "Hntl",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         };
         int32_t j = 0;
         if(UPRV_LENGTHOF(expectedLong)!=(USCRIPT_CODE_LIMIT-USCRIPT_BALINESE)) {

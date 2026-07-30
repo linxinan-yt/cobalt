@@ -135,6 +135,12 @@ fo{
         "Indian:Mauritius"{
             ec{"Móritius"}
         }
+<<<<<<< HEAD
+=======
+        "Pacific:Enderbury"{
+            ec{"Enderbury"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Pacific:Honolulu"{
             ec{"Honolulu"}
         }

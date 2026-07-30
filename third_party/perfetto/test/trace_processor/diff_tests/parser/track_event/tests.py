@@ -1019,9 +1019,14 @@ class TrackEvent(TestSuite):
         query="""
         WITH inline_slices AS (
           SELECT
+<<<<<<< HEAD
             callsite_id
           FROM slice
           JOIN __intrinsic_track_event_callstacks USING (slice_id)
+=======
+            EXTRACT_ARG(arg_set_id, 'callsite_id') AS callsite_id
+          FROM slice
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
           WHERE name GLOB 'Inline Slice *'
         ),
         inline_stats AS (
@@ -1038,10 +1043,15 @@ class TrackEvent(TestSuite):
           inline_stats.inline_unique_callstacks
         FROM slice
         CROSS JOIN inline_stats
+<<<<<<< HEAD
         LEFT JOIN __intrinsic_track_event_callstacks tec
           ON tec.slice_id = slice.id AND tec.callsite_id IS NOT NULL
         LEFT JOIN stack_profile_callsite spc
           ON spc.id = tec.callsite_id
+=======
+        LEFT JOIN stack_profile_callsite spc
+          ON spc.id = EXTRACT_ARG(slice.arg_set_id, 'callsite_id')
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         LEFT JOIN stack_profile_frame spf
           ON spf.id = spc.frame_id
         LEFT JOIN stack_profile_symbol sps
@@ -1056,6 +1066,7 @@ class TrackEvent(TestSuite):
         "Interned Slice","FuncB","[NULL]",0,1
         """))
 
+<<<<<<< HEAD
   def test_track_event_callstack_weights(self):
     return DiffTestBlueprint(
         trace=Path('track_event_callstacks.textproto'),
@@ -1076,6 +1087,8 @@ class TrackEvent(TestSuite):
         "Interned Slice","end",4.000000
         """))
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   def test_track_event_name_resolution_extended(self):
     return DiffTestBlueprint(
         trace=Path('track_event_name_resolution_extended.textproto'),

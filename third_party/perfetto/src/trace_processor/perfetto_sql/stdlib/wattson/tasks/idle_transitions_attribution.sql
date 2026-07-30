@@ -53,7 +53,17 @@ WITH
     SELECT ts, dur, cpu, idle_group, min(ts) AS min
     FROM _ii_idle_tasks
     WHERE
+<<<<<<< HEAD
       utid IN (SELECT utid FROM thread WHERE is_idle)
+=======
+      utid IN (
+        SELECT
+          utid
+        FROM thread
+        WHERE
+          is_idle
+      )
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     GROUP BY
       idle_group
   ),
@@ -74,7 +84,17 @@ WITH
     SELECT ts, dur, cpu, idle_group, max(ts) AS min
     FROM _ii_idle_tasks
     WHERE
+<<<<<<< HEAD
       utid IN (SELECT utid FROM thread WHERE is_idle)
+=======
+      utid IN (
+        SELECT
+          utid
+        FROM thread
+        WHERE
+          is_idle
+      )
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     GROUP BY
       idle_group
   )

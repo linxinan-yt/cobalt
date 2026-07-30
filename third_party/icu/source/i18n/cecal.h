@@ -99,12 +99,15 @@ protected:
      */
     virtual int32_t handleGetLimit(UCalendarDateFields field, ELimitType limitType) const override;
 
+<<<<<<< HEAD
     /**
      * Compute fields from the JD
      * @internal
      */
     virtual void handleComputeFields(int32_t julianDay, UErrorCode &status) override;
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 protected:
     /**
      * The Coptic and Ethiopic calendars differ only in their epochs.
@@ -115,6 +118,7 @@ protected:
     virtual int32_t getJDEpochOffset() const = 0;
 
     /**
+<<<<<<< HEAD
      * Compute the era from extended year.
      * @internal
      */
@@ -125,6 +129,19 @@ protected:
      * @internal
      */
     virtual int32_t extendedYearToYear(int32_t extendedYear) const = 0;
+=======
+     * Convert a Julian day to an Coptic/Ethiopic year, month and day
+     *
+     * @param julianDay the Julian day
+     * @param jdEpochOffset the epoch offset from Julian epoch
+     * @param year receives the extended year
+     * @param month receives the month
+     * @param date receives the day
+     * @internal
+     */
+    static void jdToCE(int32_t julianDay, int32_t jdEpochOffset,
+        int32_t& year, int32_t& month, int32_t& day, UErrorCode& status);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 
 U_NAMESPACE_END

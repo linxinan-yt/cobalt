@@ -16,10 +16,13 @@
 
 #include "perfetto/ext/base/dynamic_string_writer.h"
 
+<<<<<<< HEAD
 #include <cstring>
 #include <limits>
 #include <string>
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "test/gtest_and_gmock.h"
 
 namespace perfetto {
@@ -44,6 +47,7 @@ TEST(DynamicStringWriterTest, BasicCases) {
   }
   {
     base::DynamicStringWriter writer;
+<<<<<<< HEAD
     writer.AppendPaddedInt<'0', 3>(0);
     ASSERT_EQ(writer.GetStringView().ToStdString(), "000");
   }
@@ -81,6 +85,10 @@ TEST(DynamicStringWriterTest, BasicCases) {
     base::DynamicStringWriter writer;
     writer.AppendDouble(1e100);
     ASSERT_EQ(writer.GetStringView().ToStdString(), "1e+100");
+=======
+    writer.AppendDouble(123.25);
+    ASSERT_EQ(writer.GetStringView().ToStdString(), "123.250000");
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
   {
     base::DynamicStringWriter writer;
@@ -136,6 +144,7 @@ TEST(DynamicStringWriterTest, WriteAllTypes) {
   writer.AppendChar('0');
   writer.AppendInt(132545);
   writer.AppendUnsignedInt(523);
+<<<<<<< HEAD
   writer.AppendPaddedInt<'0', 0>(1);
   writer.AppendPaddedInt<'0', 3>(0);
   writer.AppendPaddedInt<'0', 1>(1);
@@ -143,6 +152,8 @@ TEST(DynamicStringWriterTest, WriteAllTypes) {
   writer.AppendPaddedInt<'0', 3>(1);
   writer.AppendPaddedInt<' ', 5>(123);
   writer.AppendPaddedUnsignedInt<' ', 5>(456);
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   writer.AppendDouble(123.25);
   writer.AppendBool(true);
 
@@ -152,6 +163,7 @@ TEST(DynamicStringWriterTest, WriteAllTypes) {
   writer.AppendString(kTestStr);
 
   ASSERT_EQ(writer.GetStringView().ToStdString(),
+<<<<<<< HEAD
             "01325455231000101001  123  456123.25truetesttesttest");
 }
 
@@ -342,6 +354,9 @@ TEST(DynamicStringWriterTest, GrowsBeyondInitial) {
   ASSERT_EQ(writer.pos(), huge.size());
   ASSERT_EQ(writer.GetStringView().size(), huge.size());
   ASSERT_EQ(memcmp(writer.GetStringView().data(), huge.data(), huge.size()), 0);
+=======
+            "0132545523123.250000truetesttesttest");
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 }  // namespace

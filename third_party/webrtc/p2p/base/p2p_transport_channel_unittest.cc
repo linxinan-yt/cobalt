@@ -397,11 +397,17 @@ class P2PTransportChannelTestBase : public ::testing::Test {
     Candidate candidate;
   };
 
+<<<<<<< HEAD
   class Endpoint {
    public:
     explicit Endpoint(Thread* thread)
         : network_manager_(thread),
           role_(ICEROLE_UNKNOWN),
+=======
+  struct Endpoint {
+    Endpoint()
+        : role_(ICEROLE_UNKNOWN),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
           role_conflict_(false),
           save_candidates_(false) {}
     bool HasTransport(const PacketTransportInternal* transport) const {

@@ -171,6 +171,7 @@ CounterIntervalsPlugin::~CounterIntervalsPlugin() = default;
 
 }  // namespace
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/counter_intervals/counter_intervals.cc
 void RegisterPlugin() {
   static PluginRegistration reg(
       []() -> std::unique_ptr<PluginBase> {
@@ -179,6 +180,13 @@ void RegisterPlugin() {
       CounterIntervalsPlugin::kPluginId, CounterIntervalsPlugin::kDepIds.data(),
       CounterIntervalsPlugin::kDepIds.size());
   base::ignore_result(reg);
+=======
+base::Status RegisterCounterIntervalsFunctions(PerfettoSqlEngine& engine,
+                                               StringPool* pool) {
+  return engine.RegisterFunction<CounterIntervals>(
+      std::make_unique<CounterIntervals::UserData>(
+          CounterIntervals::UserData{&engine, pool}));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/counter_intervals.cc
 }
 
 }  // namespace perfetto::trace_processor::counter_intervals

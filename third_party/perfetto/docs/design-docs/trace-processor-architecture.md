@@ -85,11 +85,15 @@ All format readers implement same interface but with completely different intern
 - JSON: Incremental JSON parsing with state machine
 - Proto: Modular packet processing with field-based routing
 - Systrace: Line-by-line text processing
+<<<<<<< HEAD
 - Archives (ZIP/TAR): Container formats that extract and delegate. Members are
   processed in a fixed priority order (a
   [perfetto_manifest](/docs/reference/perfetto-manifest.md) member first, which
   configures cross-file [merging](/docs/concepts/merging-traces.md): machine
   attribution and clock relations)
+=======
+- Archives (ZIP/TAR): Container formats that extract and delegate
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 ### 2. TraceSorter::Stream<T> Pattern
 Each format defines its own event types and creates typed streams:

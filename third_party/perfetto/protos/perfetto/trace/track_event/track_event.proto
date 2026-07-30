@@ -103,7 +103,11 @@ package perfetto.protos;
 // their default track association) can be emitted as part of a
 // TrackEventDefaults message.
 //
+<<<<<<< HEAD
 // Next reserved id: 13 (up to 15). Next id: 58.
+=======
+// Next reserved id: 13 (up to 15). Next id: 57.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 message TrackEvent {
   // Names of categories of the event. In the client library, categories are a
   // way to turn groups of individual events on or off.
@@ -294,7 +298,11 @@ message TrackEvent {
   oneof callstack_field {
     // Inline callstack data. Use this for simplicity when interning is not
     // needed (e.g., for unique callstacks or when trace size is not critical).
+<<<<<<< HEAD
     InlineCallstack callstack = 55;
+=======
+    Callstack callstack = 55;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     // Reference to interned Callstack (see InternedData.callstacks).
     // This is the efficient option when callstacks are repeated.
@@ -311,7 +319,11 @@ message TrackEvent {
   // Use this for simple callstacks with function names and source locations.
   // For binary/library information (mappings, build IDs, relative PCs), use
   // interned callstacks via callstack_iid instead.
+<<<<<<< HEAD
   message InlineCallstack {
+=======
+  message Callstack {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     // Frame within an inline callstack.
     message Frame {
       // Function name, e.g., "malloc" or "std::vector<int>::push_back"
@@ -330,6 +342,7 @@ message TrackEvent {
     repeated Frame frames = 1;
   }
 
+<<<<<<< HEAD
   // An optional additive value attributed to this callstack occurrence. When
   // present, weighted callstack aggregations only include occurrences which
   // have this field set; they do not mix weighted and unweighted samples.
@@ -337,6 +350,8 @@ message TrackEvent {
   // weighted occurrences are available.
   optional double callstack_weight = 57;
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   // Debug annotations associated with this event. These are arbitrary key-value
   // pairs that can be used to attach additional information to the event.
   // See DebugAnnotation message for details on supported value types.

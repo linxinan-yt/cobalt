@@ -497,9 +497,14 @@ tr{
                 GyMMM{"G MMM y"}
                 GyMMMEd{"G d MMM y E"}
                 GyMMMd{"G d MMM y"}
+<<<<<<< HEAD
                 GyMd{"G dd.MM.y"}
                 Hv{"HH v"}
                 MEd{"d/M E"}
+=======
+                GyMd{"GGGGG dd.MM.y"}
+                MEd{"d/MM E"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 MMMEd{"d MMM E"}
                 MMMMEd{"d MMMM E"}
                 MMMMW{

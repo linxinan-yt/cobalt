@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/query_builder_utils_unittest.ts
 import {
   findErrors,
   findWarnings,
@@ -24,6 +25,13 @@ import type {QueryResponse} from '../../../components/query_table/queries';
 import {SqlSourceNode} from './nodes/sources/sql_source';
 import type {Trace} from '../../../public/trace';
 import protos from '../../../protos';
+=======
+import {findErrors, findWarnings} from './query_builder_utils';
+import {Query, QueryNode, NodeType} from '../query_node';
+import {QueryResponse} from '../../../components/query_table/queries';
+import {SqlSourceNode} from './nodes/sources/sql_source';
+import {Trace} from '../../../public/trace';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/query_builder_utils_unittest.ts
 
 describe('query_builder_utils', () => {
   function createMockNode(nodeId: string): QueryNode {
@@ -32,6 +40,7 @@ describe('query_builder_utils', () => {
       type: NodeType.kTable,
       nextNodes: [],
       finalCols: [],
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/query_builder_utils_unittest.ts
       attrs: {},
       context: {},
       validate: () => true,
@@ -41,6 +50,15 @@ describe('query_builder_utils', () => {
       nodeInfo: () => null,
       clone: () => createMockNode(nodeId),
       getStructuredQuery: () => undefined,
+=======
+      state: {},
+      validate: () => true,
+      getTitle: () => 'Test',
+      nodeSpecificModify: () => null,
+      clone: () => createMockNode(nodeId),
+      getStructuredQuery: () => undefined,
+      serializeState: () => ({}),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/query_builder_utils_unittest.ts
     } as QueryNode;
   }
 
@@ -65,7 +83,13 @@ describe('query_builder_utils', () => {
       const query: Query = {
         sql: 'SELECT * FROM table',
         textproto: '',
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/query_builder_utils_unittest.ts
         standaloneSql: '',
+=======
+        modules: [],
+        preambles: [],
+        columns: [],
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/query_builder_utils_unittest.ts
       };
       const response = createMockQueryResponse();
 
@@ -88,7 +112,13 @@ describe('query_builder_utils', () => {
       const query: Query = {
         sql: 'SELECT * FROM table',
         textproto: '',
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/query_builder_utils_unittest.ts
         standaloneSql: '',
+=======
+        modules: [],
+        preambles: [],
+        columns: [],
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/query_builder_utils_unittest.ts
       };
       const response = createMockQueryResponse({
         error: 'SQL syntax error',
@@ -116,7 +146,13 @@ describe('query_builder_utils', () => {
       const query: Query = {
         sql: 'SELECT * FROM table',
         textproto: '',
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/query_builder_utils_unittest.ts
         standaloneSql: '',
+=======
+        modules: [],
+        preambles: [],
+        columns: [],
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/query_builder_utils_unittest.ts
       };
 
       const result = findErrors(query, undefined);
@@ -196,10 +232,17 @@ describe('query_builder_utils', () => {
     });
 
     it('should warn for SqlSourceNode with non-module statements', () => {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/query_builder_utils_unittest.ts
       const node = new SqlSourceNode(
         {sql: 'CREATE VIEW test AS SELECT 1; SELECT * FROM test'},
         {trace: {} as Trace},
       );
+=======
+      const node = new SqlSourceNode({
+        sql: 'CREATE VIEW test AS SELECT 1; SELECT * FROM test',
+        trace: {} as Trace,
+      });
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/query_builder_utils_unittest.ts
       const response = createMockQueryResponse({
         query: 'CREATE VIEW test AS SELECT 1; SELECT * FROM test',
         statementCount: 2,
@@ -215,10 +258,17 @@ describe('query_builder_utils', () => {
     });
 
     it('should not warn for SqlSourceNode with only module includes', () => {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/query_builder_utils_unittest.ts
       const node = new SqlSourceNode(
         {sql: 'INCLUDE PERFETTO MODULE android.slices; SELECT * FROM slice'},
         {trace: {} as Trace},
       );
+=======
+      const node = new SqlSourceNode({
+        sql: 'INCLUDE PERFETTO MODULE android.slices; SELECT * FROM slice',
+        trace: {} as Trace,
+      });
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/query_builder_utils_unittest.ts
       const response = createMockQueryResponse({
         query: 'INCLUDE PERFETTO MODULE android.slices; SELECT * FROM slice',
         statementCount: 2,
@@ -232,12 +282,19 @@ describe('query_builder_utils', () => {
     });
 
     it('should handle multiple module includes correctly', () => {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/query_builder_utils_unittest.ts
       const node = new SqlSourceNode(
         {
           sql: 'INCLUDE PERFETTO MODULE android.slices; INCLUDE PERFETTO MODULE android.frames; SELECT * FROM slice',
         },
         {trace: {} as Trace},
       );
+=======
+      const node = new SqlSourceNode({
+        sql: 'INCLUDE PERFETTO MODULE android.slices; INCLUDE PERFETTO MODULE android.frames; SELECT * FROM slice',
+        trace: {} as Trace,
+      });
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/query_builder_utils_unittest.ts
       const response = createMockQueryResponse({
         query:
           'INCLUDE PERFETTO MODULE android.slices; INCLUDE PERFETTO MODULE android.frames; SELECT * FROM slice',
@@ -252,10 +309,17 @@ describe('query_builder_utils', () => {
     });
 
     it('should handle case-insensitive INCLUDE PERFETTO MODULE', () => {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/query_builder_utils_unittest.ts
       const node = new SqlSourceNode(
         {sql: 'include perfetto module android.slices; SELECT * FROM slice'},
         {trace: {} as Trace},
       );
+=======
+      const node = new SqlSourceNode({
+        sql: 'include perfetto module android.slices; SELECT * FROM slice',
+        trace: {} as Trace,
+      });
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/query_builder_utils_unittest.ts
       const response = createMockQueryResponse({
         query: 'include perfetto module android.slices; SELECT * FROM slice',
         statementCount: 2,
@@ -269,10 +333,17 @@ describe('query_builder_utils', () => {
     });
 
     it('should not warn for single statement SqlSourceNode', () => {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/query_builder_utils_unittest.ts
       const node = new SqlSourceNode(
         {sql: 'SELECT * FROM slice'},
         {trace: {} as Trace},
       );
+=======
+      const node = new SqlSourceNode({
+        sql: 'SELECT * FROM slice',
+        trace: {} as Trace,
+      });
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/query_builder_utils_unittest.ts
       const response = createMockQueryResponse({
         query: 'SELECT * FROM slice',
         statementCount: 1,
@@ -300,10 +371,17 @@ describe('query_builder_utils', () => {
     });
 
     it('should handle empty statements in query split', () => {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/query_builder_utils_unittest.ts
       const node = new SqlSourceNode(
         {sql: 'CREATE VIEW test AS SELECT 1;; SELECT * FROM test'},
         {trace: {} as Trace},
       );
+=======
+      const node = new SqlSourceNode({
+        sql: 'CREATE VIEW test AS SELECT 1;; SELECT * FROM test',
+        trace: {} as Trace,
+      });
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/query_builder_utils_unittest.ts
       const response = createMockQueryResponse({
         query: 'CREATE VIEW test AS SELECT 1;; SELECT * FROM test',
         statementCount: 2,
@@ -318,12 +396,19 @@ describe('query_builder_utils', () => {
     });
 
     it('should handle statements with whitespace', () => {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/query_builder_utils_unittest.ts
       const node = new SqlSourceNode(
         {
           sql: '   INCLUDE PERFETTO MODULE android.slices   ;   SELECT * FROM slice   ',
         },
         {trace: {} as Trace},
       );
+=======
+      const node = new SqlSourceNode({
+        sql: '   INCLUDE PERFETTO MODULE android.slices   ;   SELECT * FROM slice   ',
+        trace: {} as Trace,
+      });
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/query_builder_utils_unittest.ts
       const response = createMockQueryResponse({
         query:
           '   INCLUDE PERFETTO MODULE android.slices   ;   SELECT * FROM slice   ',
@@ -338,12 +423,19 @@ describe('query_builder_utils', () => {
     });
 
     it('should detect non-module statements mixed with modules', () => {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/query_builder_utils_unittest.ts
       const node = new SqlSourceNode(
         {
           sql: 'INCLUDE PERFETTO MODULE android.slices; CREATE VIEW test AS SELECT 1; SELECT * FROM test',
         },
         {trace: {} as Trace},
       );
+=======
+      const node = new SqlSourceNode({
+        sql: 'INCLUDE PERFETTO MODULE android.slices; CREATE VIEW test AS SELECT 1; SELECT * FROM test',
+        trace: {} as Trace,
+      });
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/query_builder_utils_unittest.ts
       const response = createMockQueryResponse({
         query:
           'INCLUDE PERFETTO MODULE android.slices; CREATE VIEW test AS SELECT 1; SELECT * FROM test',
@@ -361,10 +453,17 @@ describe('query_builder_utils', () => {
 
   describe('integration tests', () => {
     it('should correctly identify error vs warning scenarios', () => {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/query_builder_utils_unittest.ts
       const node = new SqlSourceNode(
         {sql: 'CREATE VIEW test AS SELECT 1; SELECT * FROM test'},
         {trace: {} as Trace},
       );
+=======
+      const node = new SqlSourceNode({
+        sql: 'CREATE VIEW test AS SELECT 1; SELECT * FROM test',
+        trace: {} as Trace,
+      });
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/query_builder_utils_unittest.ts
 
       // Scenario 1: No issues
       const response1 = createMockQueryResponse({
@@ -375,7 +474,13 @@ describe('query_builder_utils', () => {
       const query1: Query = {
         sql: 'SELECT * FROM table',
         textproto: '',
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/query_builder_utils_unittest.ts
         standaloneSql: '',
+=======
+        modules: [],
+        preambles: [],
+        columns: [],
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/query_builder_utils_unittest.ts
       };
       expect(findErrors(query1, response1)).toBeUndefined();
       expect(findWarnings(response1, createMockNode('test'))).toBeUndefined();
@@ -397,6 +502,7 @@ describe('query_builder_utils', () => {
       expect(findWarnings(response3, node)).toBeDefined();
     });
   });
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/query_builder_utils_unittest.ts
 
   describe('queryToRun', () => {
     it('should return "N/A" for undefined query', () => {
@@ -566,4 +672,6 @@ describe('query_builder_utils', () => {
       }
     });
   });
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/query_builder_utils_unittest.ts
 });

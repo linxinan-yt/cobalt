@@ -39,7 +39,10 @@
 #include "src/trace_processor/importers/common/tracks_common.h"
 #include "src/trace_processor/importers/common/tracks_internal.h"
 #include "src/trace_processor/importers/proto/packet_sequence_state_generation.h"
+<<<<<<< HEAD
 #include "src/trace_processor/importers/proto/track_event_sequence_state.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "src/trace_processor/storage/stats.h"
 #include "src/trace_processor/storage/trace_storage.h"
 #include "src/trace_processor/types/trace_processor_context.h"
@@ -177,7 +180,11 @@ void TrackEventTracker::ReserveDescriptorTrack(
     uint64_t uuid,
     const DescriptorTrackReservation& reservation) {
   if (uuid == kDefaultDescriptorTrackUuid && reservation.parent_uuid) {
+<<<<<<< HEAD
     context_->import_logs_tracker->RecordAnalysisLog(
+=======
+    context_->import_logs_tracker->RecordAnalysisError(
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         stats::track_descriptor_default_track_with_parent,
         [&](ArgsTracker::BoundInserter& inserter) {
           inserter.AddArg(parent_uuid_key_id_,
@@ -736,7 +743,11 @@ bool TrackEventTracker::IsTrackHierarchyValid(uint64_t uuid) {
 }
 
 void TrackEventTracker::RecordTrackError(size_t stat_key, uint64_t track_uuid) {
+<<<<<<< HEAD
   context_->import_logs_tracker->RecordAnalysisLog(
+=======
+  context_->import_logs_tracker->RecordAnalysisError(
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       stat_key, [this, track_uuid](ArgsTracker::BoundInserter& inserter) {
         inserter.AddArg(track_uuid_key_id_,
                         Variadic::UnsignedInteger(track_uuid));

@@ -707,9 +707,12 @@ ky{
             one{"(белгисиз акча бирдиги)"}
             other{"(белгисиз акча)"}
         }
+<<<<<<< HEAD
         ZWG{
             one{"Зимбабве алтыны"}
             other{"Зимбабве алтыны"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

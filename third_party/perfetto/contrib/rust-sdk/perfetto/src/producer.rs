@@ -45,7 +45,10 @@ bitflags! {
 pub struct ProducerInitArgs {
     backends: Backends,
     shmem_size_hint_kb: u32,
+<<<<<<< HEAD
     machine_id: u32,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 /// Producer arguments builder.
@@ -79,6 +82,7 @@ impl ProducerInitArgsBuilder {
         self
     }
 
+<<<<<<< HEAD
     /// Sets the machine id this process's trace data is attributed to. Only
     /// honored by the in-process backend; the system backend derives the
     /// machine id service-side and ignores this. Lets separate in-process
@@ -90,6 +94,8 @@ impl ProducerInitArgsBuilder {
         self
     }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     /// Returns producer arguments struct.
     pub fn build(&self) -> &ProducerInitArgs {
         &self.args
@@ -114,7 +120,10 @@ impl Producer {
                 backend_args,
                 args.shmem_size_hint_kb,
             );
+<<<<<<< HEAD
             PerfettoProducerBackendInitArgsSetMachineId(backend_args, args.machine_id);
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             if args.backends.contains(Backends::IN_PROCESS) {
                 PerfettoProducerInProcessInit(backend_args);
             }

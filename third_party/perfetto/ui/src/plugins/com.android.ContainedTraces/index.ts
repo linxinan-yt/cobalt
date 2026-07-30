@@ -12,9 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD
 import type {Trace} from '../../public/trace';
 import StandardGroupsPlugin from '../dev.perfetto.StandardGroups';
 import type {PerfettoPlugin} from '../../public/plugin';
+=======
+import {Trace} from '../../public/trace';
+import StandardGroupsPlugin from '../dev.perfetto.StandardGroups';
+import {PerfettoPlugin} from '../../public/plugin';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {STR, LONG, LONG_NULL} from '../../trace_processor/query_result';
 import {SourceDataset} from '../../trace_processor/dataset';
 import SupportPlugin from '../com.android.AndroidLongBatterySupport';
@@ -36,10 +42,18 @@ export default class implements PerfettoPlugin {
     return ctx.plugins.getPlugin(SupportPlugin);
   }
 
+<<<<<<< HEAD
   async onTraceLoad(ctx: Trace, args: {[key: string]: unknown}): Promise<void> {
     const support = this.support(ctx);
 
     const containedTraces = (args?.containedTraces ?? []) as ContainedTrace[];
+=======
+  async onTraceLoad(ctx: Trace): Promise<void> {
+    const support = this.support(ctx);
+
+    const containedTraces = (ctx.openerPluginArgs?.containedTraces ??
+      []) as ContainedTrace[];
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     const bySubscription = new Map<string, ContainedTrace[]>();
     for (const trace of containedTraces) {

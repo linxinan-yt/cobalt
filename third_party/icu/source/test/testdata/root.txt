@@ -12,9 +12,15 @@
 
 root
 {
+<<<<<<< HEAD
     Version { 48.0 }
     ExpectCLDRVersionAtLeast { 48.0 } // 'base' cldr version. Allow up to version =.=.* of this
     CurrentCLDRVersion { 48.0 } // Current CLDR version as of the test update. Warn if not an exact match.
+=======
+    Version { 45.0 }
+    ExpectCLDRVersionAtLeast { 45.0 } // 'base' cldr version. Allow up to version =.=.* of this
+    CurrentCLDRVersion { 45.0 } // Current CLDR version as of the test update. Warn if not an exact match.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     ShortLanguage { xxx }
 

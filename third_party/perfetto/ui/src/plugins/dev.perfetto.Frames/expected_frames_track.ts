@@ -16,7 +16,11 @@ import {HSLColor} from '../../base/color';
 import {makeColorScheme} from '../../components/colorizer';
 import type {Trace} from '../../public/trace';
 import {SourceDataset} from '../../trace_processor/dataset';
+<<<<<<< HEAD
 import {LONG, NUM, NUM_NULL, STR} from '../../trace_processor/query_result';
+=======
+import {LONG, NUM, STR} from '../../trace_processor/query_result';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {SliceTrack} from '../../components/tracks/slice_track';
 import {ThreadSliceDetailsPanel} from '../../components/details/thread_slice_details_tab';
 

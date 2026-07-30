@@ -47,6 +47,7 @@ and see the change logs below.
 
 ---------------------------------------------------------------------------- ***
 
+<<<<<<< HEAD
 TODO: Run gencolusb for Unicode updates.
 - https://github.com/markusicu/icu/blob/main/icu4c/source/tools/gencolusb/README.md
 - until ICU-12062 is done
@@ -372,6 +373,8 @@ copying that version number into the $ICU_SRC/.bazeliskrc config file.
 
 ---------------------------------------------------------------------------- ***
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 Unicode 16.0 update for ICU 76
 
 https://www.unicode.org/versions/Unicode16.0.0/

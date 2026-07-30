@@ -87,9 +87,19 @@ constexpr int kWidth = 320;
 constexpr int kHeight = 100;
 constexpr int kCaptureTimeMsToRtpTimestamp = 90;  // 90 kHz clock.
 constexpr TimeDelta kDefaultReportInterval = TimeDelta::Millis(1000);
+<<<<<<< HEAD
 constexpr RtpHeaderExtensionId kAbsoluteSendTimeExtensionId(1);
 constexpr RtpHeaderExtensionId kTransportSequenceNumberExtensionId(2);
 constexpr RtpHeaderExtensionId kTransmissionOffsetExtensionId(3);
+=======
+
+// RTP header extension ids.
+enum : int {
+  kAbsoluteSendTimeExtensionId = 1,
+  kTransportSequenceNumberExtensionId,
+  kTransmissionOffsetExtensionId,
+};
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 class RtcpRttStatsTestImpl : public RtcpRttStats {
  public:

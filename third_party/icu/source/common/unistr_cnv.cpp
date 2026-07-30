@@ -275,8 +275,12 @@ UnicodeString::doExtract(int32_t start, int32_t length,
     }
 
     // perform the conversion
+<<<<<<< HEAD
     UErrorCode bufferStatus = U_ZERO_ERROR;
     ucnv_fromUnicode(cnv, &dest, destLimit, &src, srcLimit, nullptr, true, &bufferStatus);
+=======
+    ucnv_fromUnicode(cnv, &dest, destLimit, &src, srcLimit, nullptr, true, &errorCode);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     length = static_cast<int32_t>(dest - originalDest);
 
     // if an overflow occurs, then get the preflighting length
@@ -286,6 +290,7 @@ UnicodeString::doExtract(int32_t start, int32_t length,
         destLimit=buffer+sizeof(buffer);
         do {
             dest=buffer;
+<<<<<<< HEAD
             bufferStatus=U_ZERO_ERROR;
             ucnv_fromUnicode(cnv, &dest, destLimit, &src, srcLimit, nullptr, true, &bufferStatus);
             length += static_cast<int32_t>(dest - buffer);
@@ -293,6 +298,12 @@ UnicodeString::doExtract(int32_t start, int32_t length,
     }
     if (U_FAILURE(bufferStatus)) {
         errorCode = bufferStatus;
+=======
+            errorCode=U_ZERO_ERROR;
+            ucnv_fromUnicode(cnv, &dest, destLimit, &src, srcLimit, nullptr, true, &errorCode);
+            length += static_cast<int32_t>(dest - buffer);
+        } while(errorCode==U_BUFFER_OVERFLOW_ERROR);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 
     return u_terminateChars(originalDest, destCapacity, length, &errorCode);
@@ -395,7 +406,11 @@ UnicodeString::doCodepageCreate(const char *codepageData,
         myTarget = array + length();
         UErrorCode bufferStatus = U_ZERO_ERROR;
         ucnv_toUnicode(converter, &myTarget,  array + getCapacity(),
+<<<<<<< HEAD
             &mySource, mySourceEnd, nullptr, true, &bufferStatus);
+=======
+            &mySource, mySourceEnd, nullptr, true, &status);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
         // update the conversion parameters
         setLength(static_cast<int32_t>(myTarget - array));

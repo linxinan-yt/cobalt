@@ -6,8 +6,11 @@ yo_BJ{
         calendar{"Kàlɛ́ńdà"}
         cf{"Ònà Ìgbekalɛ̀ owó"}
         collation{"Ètò Ɛlɛ́sɛɛsɛ"}
+<<<<<<< HEAD
         em{"Ìgbékalɛ̀ Ɛ̀mójì"}
         lw{"Àwɔn Ìdá Ìlà Láàárín Àwɔn Ɔ̀rɔ̀"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         ms{"Èto Ìdiwɔ̀n"}
         numbers{"Àwɔn nɔ́ńbà"}
         ss{"Ìdá Gbólóhùn Lɛ́yìn Ìgékúrú"}
@@ -151,10 +154,13 @@ yo_BJ{
         cf{
             account{"Ìgúnrégé Ìshirò Owó Kɔ́rɛ́ńsì"}
             standard{"Ònà ìgbekalɛ̀ owó tó jɛ́ àjùmɔ̀lò"}
+<<<<<<< HEAD
         }
         cf%core{
             account{"Ìshirò owó"}
             standard{"Àjùmɔ̀lò"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         collation{
             ducet{"Ètò Ɛlɛ́sɛɛsɛ Àkùàyàn Unicode"}

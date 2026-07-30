@@ -192,7 +192,7 @@
 #include "content/renderer/media/win/dcomp_texture_factory.h"
 #endif
 
-#if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
+#if BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_COBALT_HERMETIC_BUILD) || BUILDFLAG(IS_CHROMEOS)
 #include "content/child/sandboxed_process_thread_type_handler.h"
 #endif
 
@@ -300,6 +300,7 @@ bool IsBackgrounded(std::optional<base::Process::Priority> process_priority) {
   }
 }
 
+<<<<<<< HEAD
 // Helper function to update the content and media clients when the
 // GpuChannelHost may have been updated.
 void OnPotentialNewGpuChannelHost(gpu::GpuChannelHost* host) {
@@ -308,6 +309,21 @@ void OnPotentialNewGpuChannelHost(gpu::GpuChannelHost* host) {
     GetContentClient()->SetGpuInfo(host->gpu_info());
   } else {
     RenderMediaClient::SetGpuFeatureInfo(gpu::GpuFeatureInfo());
+=======
+#if BUILDFLAG(IS_COBALT)
+bool IsCriticalAllowedInForeground() {
+  static const bool kAllowCriticalInForeground =
+      base::CommandLine::ForCurrentProcess()->HasSwitch(
+          "allow-critical-memory-pressure-handling-in-foreground");
+  return kAllowCriticalInForeground;
+}
+#endif  // BUILDFLAG(IS_COBALT)
+
+perfetto::StaticString ProcessPriorityToString(
+    std::optional<base::Process::Priority> priority) {
+  if (!priority) {
+    return "Unknown";
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 }
 
@@ -581,7 +597,7 @@ void RenderThreadImpl::Init() {
   }
 #endif
 
-#if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
+#if BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_COBALT_HERMETIC_BUILD) || BUILDFLAG(IS_CHROMEOS)
   SandboxedProcessThreadTypeHandler::NotifyMainChildThreadCreated();
 #endif
 
@@ -628,8 +644,13 @@ void RenderThreadImpl::Init() {
   base::DiscardableMemoryAllocator::SetInstance(
       discardable_memory_allocator_.get());
 
+<<<<<<< HEAD
 #if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
   ChildProcess::current()->SetIOThreadType(base::ThreadType::kPresentation);
+=======
+#if BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_COBALT_HERMETIC_BUILD) || BUILDFLAG(IS_CHROMEOS)
+  ChildProcess::current()->SetIOThreadType(base::ThreadType::kDisplayCritical);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #endif
 
   process_foregrounded_count_ = 0;
@@ -1135,6 +1156,20 @@ RenderThreadImpl::SharedMainThreadContextProvider() {
   return shared_main_thread_contexts_;
 }
 
+#if BUILDFLAG(USE_STARBOARD_MEDIA)
+uint64_t RenderThreadImpl::GetMediaSourceMaximumMemoryCapacity() const {
+  return RenderMediaClient::GetMediaSourceMaximumMemoryCapacity();
+}
+
+uint64_t RenderThreadImpl::GetMediaSourceCurrentMemoryCapacity() const {
+  return RenderMediaClient::GetMediaSourceCurrentMemoryCapacity();
+}
+
+uint64_t RenderThreadImpl::GetMediaSourceTotalAllocatedMemory() const {
+  return RenderMediaClient::GetMediaSourceTotalAllocatedMemory();
+}
+#endif  // BUILDFLAG(USE_STARBOARD_MEDIA)
+
 #if BUILDFLAG(IS_WIN)
 scoped_refptr<DCOMPTextureFactory> RenderThreadImpl::GetDCOMPTextureFactory() {
   DCHECK(IsMainThread());
@@ -1226,7 +1261,13 @@ void RenderThreadImpl::OnChannelError() {
   // So, if we get a channel error, crash the whole process right now to get a
   // more informative stack, since we will otherwise just crash later when we
   // try to restart it.
+  // In Cobalt single-process mode, when BrowserMainLoop shuts down IPC channels
+  // during application termination, the in-process renderer thread naturally
+  // receives a channel error notification. Crashing here would prevent clean
+  // process exit.
+#if !BUILDFLAG(IS_COBALT)
   CHECK(!IsSingleProcess());
+#endif
   ChildThreadImpl::OnChannelError();
 }
 
@@ -1699,6 +1740,57 @@ void RenderThreadImpl::OnRendererForegrounded() {
   process_foregrounded_count_++;
 }
 
+<<<<<<< HEAD
+=======
+void RenderThreadImpl::OnMemoryPressure(
+    base::MemoryPressureLevel memory_pressure_level) {
+  TRACE_EVENT(
+      "memory", "RenderThreadImpl::OnMemoryPressure",
+      [&](perfetto::EventContext ctx) {
+        auto* event = ctx.event<perfetto::protos::pbzero::ChromeTrackEvent>();
+        auto* data = event->set_chrome_memory_pressure_notification();
+        data->set_level(base::trace_event::MemoryPressureLevelToTraceEnum(
+            memory_pressure_level));
+      });
+
+  v8::MemoryPressureLevel v8_memory_pressure_level =
+      static_cast<v8::MemoryPressureLevel>(memory_pressure_level);
+
+#if !BUILDFLAG(ALLOW_CRITICAL_MEMORY_PRESSURE_HANDLING_IN_FOREGROUND)
+  // In order to reduce performance impact, translate critical level to
+  // moderate level for foreground renderer.
+#if BUILDFLAG(IS_COBALT)
+  if (!IsCriticalAllowedInForeground() && !RendererIsHidden() &&
+      v8_memory_pressure_level == v8::MemoryPressureLevel::kCritical)
+    v8_memory_pressure_level = v8::MemoryPressureLevel::kModerate;
+#else
+  if (!RendererIsHidden() &&
+      v8_memory_pressure_level == v8::MemoryPressureLevel::kCritical)
+    v8_memory_pressure_level = v8::MemoryPressureLevel::kModerate;
+#endif  // BUILDFLAG(IS_COBALT)
+#endif  // !BUILDFLAG(ALLOW_CRITICAL_MEMORY_PRESSURE_HANDLING_IN_FOREGROUND)
+
+  if (base::FeatureList::IsEnabled(
+          features::kForwardMemoryPressureToBlinkIsolates)) {
+    blink::MemoryPressureNotificationToAllIsolates(v8_memory_pressure_level);
+  }
+
+  if (blink_platform_impl_) {
+    blink::WebMemoryPressureListener::OnMemoryPressure(memory_pressure_level);
+  }
+  if (memory_pressure_level == base::MEMORY_PRESSURE_LEVEL_CRITICAL) {
+    discardable_memory_allocator_->ReleaseFreeMemory();
+
+    // Do not call into blink if it is not initialized.
+    if (blink_platform_impl_) {
+      // Purge Skia font cache, resource cache, and image filter.
+      SkGraphics::PurgeAllCaches();
+    }
+  }
+  ::partition_alloc::MemoryReclaimer::Instance()->ReclaimAll();
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 void RenderThreadImpl::OnRendererInterfaceReceiver(
     mojo::PendingAssociatedReceiver<mojom::Renderer> receiver) {
   DCHECK(!renderer_receiver_.is_bound());

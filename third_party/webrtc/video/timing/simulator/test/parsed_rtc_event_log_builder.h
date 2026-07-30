@@ -13,7 +13,10 @@
 
 #include <cstdint>
 #include <memory>
+<<<<<<< HEAD
 #include <optional>
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 #include "api/environment/environment.h"
 #include "api/rtc_event_log/rtc_event.h"
@@ -21,9 +24,13 @@
 #include "api/units/time_delta.h"
 #include "api/units/timestamp.h"
 #include "logging/rtc_event_log/rtc_event_log_parser.h"
+<<<<<<< HEAD
 #include "modules/rtp_rtcp/source/rtcp_packet.h"
 #include "system_wrappers/include/clock.h"
 #include "system_wrappers/include/ntp_time.h"
+=======
+#include "system_wrappers/include/clock.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 namespace webrtc::video_timing_simulator {
 
@@ -39,17 +46,25 @@ class ParsedRtcEventLogBuilder {
   // Interactions with the `log_clock_`.
   // Note that this clock is different from the simulation clock!
   Timestamp CurrentTime();
+<<<<<<< HEAD
   NtpTime CurrentNtpTime();
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   void AdvanceTime(TimeDelta duration);
 
   // Log specific events to the log.
   // Should not be called after a call to `Build`.
+<<<<<<< HEAD
   void LogVideoRecvConfig(uint32_t ssrc, uint32_t rtx_ssrc);
   void LogRtpPacketIncoming(
       uint32_t ssrc,
       std::optional<uint16_t> rtx_original_sequence_number = std::nullopt);
   void LogRtcpPacketOutgoing(const rtcp::RtcpPacket& rtcp_packet);
   void LogRtcpPacketIncoming(const rtcp::RtcpPacket& rtcp_packet);
+=======
+  void LogVideoRecvConfig(uint32_t ssrc);
+  void LogRtpPacketIncoming(uint32_t ssrc);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // Returns the parsed log. Should only be called once.
   std::unique_ptr<ParsedRtcEventLog> Build();
@@ -64,8 +79,13 @@ class ParsedRtcEventLogBuilder {
   // the simulation.
   SimulatedClock log_clock_;
   const Environment log_env_;
+<<<<<<< HEAD
   std::unique_ptr<ParsedRtcEventLog> parsed_log_;
   std::unique_ptr<RtcEventLog> log_;
+=======
+  std::unique_ptr<RtcEventLog> log_;
+  std::unique_ptr<ParsedRtcEventLog> parsed_log_;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 
 }  // namespace webrtc::video_timing_simulator

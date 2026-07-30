@@ -384,6 +384,13 @@ bs{
                 other{"{0} nanosekundi"}
             }
             night{
+<<<<<<< HEAD
+=======
+                dnam{"noći"}
+                few{"{0} noći"}
+                one{"{0} noć"}
+                other{"{0} noći"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 per{"{0} po noći"}
             }
             quarter{
@@ -1233,6 +1240,7 @@ bs{
         }
     }
     unitsNarrow{
+<<<<<<< HEAD
         angle{
             steradian{
                 few{"{0} sr"}
@@ -1243,6 +1251,14 @@ bs{
         area{
             acre{
                 dnam{"aker"}
+=======
+        area{
+            acre{
+                dnam{"aker"}
+                few{"{0} ac"}
+                one{"{0} ac"}
+                other{"{0} ac"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         concentr{
@@ -1313,6 +1329,13 @@ bs{
             }
             nanosecond{
                 dnam{"ns"}
+            }
+            night{
+                dnam{"noći"}
+                few{"{0} noći"}
+                one{"{0} noć"}
+                other{"{0} noći"}
+                per{"{0}/noć"}
             }
             second{
                 dnam{"sekunda"}
@@ -1403,11 +1426,18 @@ bs{
             light-year{
                 dnam{"sg"}
             }
+<<<<<<< HEAD
+=======
+            meter{
+                dnam{"m"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             mile{
                 dnam{"mi"}
             }
             yard{
                 dnam{"yd"}
+<<<<<<< HEAD
             }
         }
         magnetic{
@@ -1420,6 +1450,8 @@ bs{
                 few{"{0} Wb"}
                 one{"{0} Wb"}
                 other{"{0} Wb"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         mass{
@@ -1472,14 +1504,46 @@ bs{
             }
         }
         volume{
+            centiliter{
+                dnam{"cl"}
+                few{"{0} cl"}
+                one{"{0} cl"}
+                other{"{0} cl"}
+            }
+            deciliter{
+                dnam{"dl"}
+                few{"{0} dl"}
+                one{"{0} dl"}
+                other{"{0} dl"}
+            }
+            hectoliter{
+                dnam{"hl"}
+            }
             liter{
                 dnam{"litar"}
                 few{"{0}l"}
                 one{"{0}l"}
                 other{"{0}l"}
             }
+<<<<<<< HEAD
             quart-imperial{
                 dnam{"imp. kvart"}
+=======
+            megaliter{
+                dnam{"Ml"}
+            }
+            milliliter{
+                dnam{"ml"}
+                few{"{0} ml"}
+                one{"{0} ml"}
+                other{"{0} ml"}
+            }
+            quart-imperial{
+                dnam{"imp. kvart"}
+                few{"{0} imp. kvarta"}
+                one{"{0} imp. kvart"}
+                other{"{0} imp. kvarata"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             tablespoon{
                 dnam{"kšk."}
@@ -1520,6 +1584,12 @@ bs{
         area{
             acre{
                 dnam{"katastarska jutra"}
+<<<<<<< HEAD
+=======
+                few{"{0} ac"}
+                one{"{0} ac"}
+                other{"{0} ac"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             dunam{
                 dnam{"dunumi"}

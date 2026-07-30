@@ -33,12 +33,33 @@ hu{
         "Africa:Tunis"{
             ec{"Tunisz"}
         }
+<<<<<<< HEAD
+=======
+        "America:Araguaina"{
+            ec{"Araguaína"}
+        }
+        "America:Argentina:Rio_Gallegos"{
+            ec{"Río Gallegos"}
+        }
+        "America:Argentina:Tucuman"{
+            ec{"Tucumán"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Bahia_Banderas"{
             ec{"Bahia Banderas"}
         }
         "America:Cayman"{
             ec{"Kajmán-szigetek"}
         }
+<<<<<<< HEAD
+=======
+        "America:Cordoba"{
+            ec{"Córdoba"}
+        }
+        "America:Cuiaba"{
+            ec{"Cuiabá"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Dominica"{
             ec{"Dominika"}
         }
@@ -63,6 +84,12 @@ hu{
         "America:Rio_Branco"{
             ec{"Río Branco"}
         }
+<<<<<<< HEAD
+=======
+        "America:Sao_Paulo"{
+            ec{"São Paulo"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:St_Barthelemy"{
             ec{"Saint-Barthélemy"}
         }

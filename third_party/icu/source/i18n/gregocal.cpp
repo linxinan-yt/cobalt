@@ -156,7 +156,11 @@ static const UDate kPapalCutover = (2299161.0 - kEpochStartAsJulianDay) * U_MILL
 GregorianCalendar::GregorianCalendar(UErrorCode& status)
 :   Calendar(status),
 fGregorianCutover(kPapalCutover),
+<<<<<<< HEAD
 fCutoverJulianDay(kCutoverJulianDay), fGregorianCutoverYear(kDefaultCutoverYear),
+=======
+fCutoverJulianDay(kCutoverJulianDay), fNormalizedGregorianCutover(fGregorianCutover), fGregorianCutoverYear(kDefaultCutoverYear),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 fIsGregorian(true), fInvertGregorian(false)
 {
     setTimeInMillis(getNow(), status);
@@ -189,7 +193,11 @@ GregorianCalendar::GregorianCalendar(TimeZone* zone, const Locale& aLocale,
                                      UErrorCode& status)
                                      :   Calendar(zone, aLocale, status),
                                      fGregorianCutover(kPapalCutover),
+<<<<<<< HEAD
                                      fCutoverJulianDay(kCutoverJulianDay), fGregorianCutoverYear(kDefaultCutoverYear),
+=======
+                                     fCutoverJulianDay(kCutoverJulianDay), fNormalizedGregorianCutover(fGregorianCutover), fGregorianCutoverYear(kDefaultCutoverYear),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                                      fIsGregorian(true), fInvertGregorian(false)
 {
     setTimeInMillis(getNow(), status);
@@ -201,7 +209,11 @@ GregorianCalendar::GregorianCalendar(const TimeZone& zone, const Locale& aLocale
                                      UErrorCode& status)
                                      :   Calendar(zone, aLocale, status),
                                      fGregorianCutover(kPapalCutover),
+<<<<<<< HEAD
                                      fCutoverJulianDay(kCutoverJulianDay), fGregorianCutoverYear(kDefaultCutoverYear),
+=======
+                                     fCutoverJulianDay(kCutoverJulianDay), fNormalizedGregorianCutover(fGregorianCutover), fGregorianCutoverYear(kDefaultCutoverYear),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                                      fIsGregorian(true), fInvertGregorian(false)
 {
     setTimeInMillis(getNow(), status);
@@ -213,7 +225,11 @@ GregorianCalendar::GregorianCalendar(int32_t year, int32_t month, int32_t date,
                                      UErrorCode& status)
                                      :   Calendar(TimeZone::createDefault(), Locale::getDefault(), status),
                                      fGregorianCutover(kPapalCutover),
+<<<<<<< HEAD
                                      fCutoverJulianDay(kCutoverJulianDay), fGregorianCutoverYear(kDefaultCutoverYear),
+=======
+                                     fCutoverJulianDay(kCutoverJulianDay), fNormalizedGregorianCutover(fGregorianCutover), fGregorianCutoverYear(kDefaultCutoverYear),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                                      fIsGregorian(true), fInvertGregorian(false)
 {
     set(UCAL_ERA, AD);

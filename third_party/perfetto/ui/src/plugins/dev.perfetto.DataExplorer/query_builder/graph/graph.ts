@@ -15,7 +15,11 @@
 /**
  * Graph Component - Query Builder Visual Graph Editor
  *
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
  * This file implements the visual graph editor for the Data Explorer query builder.
+=======
+ * This file implements the visual graph editor for the Explore Page query builder.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
  * It handles the rendering, layout, and interaction of query nodes in a node-graph format.
  *
  * Key Concepts:
@@ -33,11 +37,17 @@
 
 import m from 'mithril';
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
 import {classNames} from '../../../../base/classnames';
 import {Icons} from '../../../../base/semantic_icons';
 import {Button, ButtonVariant} from '../../../../widgets/button';
 import {Intent} from '../../../../widgets/common';
 import {uuidv4} from '../../../../base/uuid';
+=======
+import {Icons} from '../../../../base/semantic_icons';
+import {Button, ButtonVariant} from '../../../../widgets/button';
+import {Intent} from '../../../../widgets/common';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
 import {
   MenuItem,
   MenuDivider,
@@ -45,6 +55,7 @@ import {
   PopupMenu,
 } from '../../../../widgets/menu';
 import {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
   type Connection,
   type Label,
   type Node,
@@ -67,6 +78,28 @@ import {
 } from '../graph_utils';
 import {RoundActionButton} from '../widgets';
 import {getNodeHue} from './node_config';
+=======
+  Connection,
+  Node,
+  NodeGraph,
+  NodeGraphApi,
+  NodePort,
+} from '../../../../widgets/nodegraph';
+import {UIFilter} from '../operations/filter';
+import {
+  QueryNode,
+  singleNodeOperation,
+  SourceNode,
+  MultiSourceNode,
+  ModificationNode,
+  NodeType,
+  addConnection,
+  removeConnection,
+} from '../../query_node';
+import {EmptyGraph} from '../empty_graph';
+import {nodeRegistry} from '../node_registry';
+import {NodeBox} from './node_box';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
 
 // ========================================
 // TYPE DEFINITIONS
@@ -81,24 +114,46 @@ type LayoutMap = Map<string, Position>;
 const LAYOUT_CONSTANTS = {
   INITIAL_X: 100,
   INITIAL_Y: 100,
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
   BATCH_NODE_HORIZONTAL_OFFSET: 250,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
 };
 
 // ========================================
 // TYPE GUARDS
 // ========================================
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
 // Check if a node should show a top port based on its type (capabilities)
 // rather than its current connection state
 function shouldShowTopPort(node: QueryNode): boolean {
   // Single-input operation nodes always have a top port, even when disconnected
   return singleNodeOperation(node.type);
+=======
+function isSourceNode(node: QueryNode): node is SourceNode {
+  return (
+    node.type === NodeType.kTable ||
+    node.type === NodeType.kSimpleSlices ||
+    node.type === NodeType.kSqlSource
+  );
+}
+
+// Multi-input nodes (have prevNodes array, cannot be docked)
+function isMultiSourceNode(node: QueryNode): node is MultiSourceNode {
+  return (
+    node.type === NodeType.kIntervalIntersect ||
+    node.type === NodeType.kUnion ||
+    node.type === NodeType.kMerge
+  );
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
 }
 
 // ========================================
 // GRAPH ATTRIBUTES INTERFACE
 // ========================================
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
 // Callbacks shared between BuilderAttrs and GraphAttrs.
 // Builder forwards these to Graph without transformation.
 export interface GraphCallbacks {
@@ -108,11 +163,21 @@ export interface GraphCallbacks {
   readonly onDeselect: () => void;
   readonly onNodeLayoutChange: (nodeId: string, layout: Position) => void;
   readonly onLabelsChange?: (labels: TextLabelData[]) => void;
+=======
+export interface GraphAttrs {
+  readonly rootNodes: QueryNode[];
+  readonly selectedNode?: QueryNode;
+  readonly nodeLayouts: LayoutMap;
+  readonly onNodeSelected: (node: QueryNode) => void;
+  readonly onDeselect: () => void;
+  readonly onNodeLayoutChange: (nodeId: string, layout: Position) => void;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
   readonly onAddSourceNode: (id: string) => void;
   readonly onAddOperationNode: (id: string, node: QueryNode) => void;
   readonly onClearAllNodes: () => void;
   readonly onDuplicateNode: (node: QueryNode) => void;
   readonly onDeleteNode: (node: QueryNode) => void;
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
   readonly onConnectionRemove: (
     fromNode: QueryNode,
     toNode: QueryNode,
@@ -130,14 +195,62 @@ export interface GraphAttrs extends GraphCallbacks {
   readonly nodeLayouts: LayoutMap;
   readonly labels: ReadonlyArray<TextLabelData>;
   readonly loadGeneration?: number;
+=======
+  readonly onConnectionRemove: (fromNode: QueryNode, toNode: QueryNode) => void;
+  readonly onImport: () => void;
+  readonly onImportWithStatement: () => void;
+  readonly onExport: () => void;
+  readonly onRemoveFilter: (node: QueryNode, filter: UIFilter) => void;
+  readonly devMode?: boolean;
+  readonly onDevModeChange?: (enabled: boolean) => void;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
 }
 
 // ========================================
 // UTILITY FUNCTIONS
 // ========================================
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
 // Alias for consistency with existing code in this file
 const findQueryNode = findNodeById;
+=======
+// Traverses the graph using BFS with cycle detection (visited set prevents infinite loops)
+export function getAllNodes(rootNodes: QueryNode[]): QueryNode[] {
+  const allNodes: QueryNode[] = [];
+  const visited = new Set<string>();
+
+  for (const root of rootNodes) {
+    const queue: QueryNode[] = [root];
+
+    while (queue.length > 0) {
+      const curr = queue.shift();
+      if (!curr) continue;
+
+      if (visited.has(curr.nodeId)) {
+        continue;
+      }
+
+      visited.add(curr.nodeId);
+      allNodes.push(curr);
+
+      for (const child of curr.nextNodes) {
+        if (child !== undefined && !visited.has(child.nodeId)) {
+          queue.push(child);
+        }
+      }
+    }
+  }
+  return allNodes;
+}
+
+function findQueryNode(
+  nodeId: string,
+  rootNodes: QueryNode[],
+): QueryNode | undefined {
+  const allNodes = getAllNodes(rootNodes);
+  return allNodes.find((n) => n.nodeId === nodeId);
+}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
 
 // A node is "docked" if it has no layout (rendered as part of parent's chain via 'next' property)
 function isChildDocked(child: QueryNode, nodeLayouts: LayoutMap): boolean {
@@ -148,6 +261,7 @@ function isChildDocked(child: QueryNode, nodeLayouts: LayoutMap): boolean {
 // NODE PORT AND MENU UTILITIES
 // ========================================
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
 // Calculate the number of ports to display for secondary inputs.
 // Shows one extra empty port for adding new connections, but respects max limit.
 function calculateNumPorts(
@@ -196,10 +310,38 @@ function getInputLabels(node: QueryNode): NodePort[] {
     for (let i = 0; i < numPorts; i++) {
       const portName = getPortName(portNames, i);
       labels.push({content: portName, direction: 'left'});
+=======
+function getInputLabels(node: QueryNode): NodePort[] {
+  if (isSourceNode(node)) {
+    return [];
+  }
+
+  if (isMultiSourceNode(node)) {
+    const multiSourceNode = node as MultiSourceNode;
+
+    // Check if node has custom input labels
+    if (
+      'getInputLabels' in multiSourceNode &&
+      typeof multiSourceNode.getInputLabels === 'function'
+    ) {
+      return (
+        multiSourceNode as MultiSourceNode & {getInputLabels: () => string[]}
+      )
+        .getInputLabels()
+        .map((label) => ({content: label, direction: 'left'}));
+    }
+
+    // Always show one extra empty port for adding new connections
+    const numPorts = multiSourceNode.prevNodes.length + 1;
+    const labels: NodePort[] = [];
+    for (let i = 0; i < numPorts; i++) {
+      labels.push({content: `Input ${i + 1}`, direction: 'left'});
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
     }
     return labels;
   }
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
   // Source nodes have no inputs
   return [];
 }
@@ -215,12 +357,74 @@ function getPortName(
 
   // Array of names - use the index or fallback if out of bounds
   return portNames[portIndex] ?? `Input ${portIndex}`;
+=======
+  // Check if ModificationNode has inputNodes (additional left-side inputs)
+  if ('inputNodes' in node) {
+    const modNode = node as ModificationNode;
+    if (modNode.inputNodes !== undefined && Array.isArray(modNode.inputNodes)) {
+      // Check if node has custom input labels
+      if (
+        'getInputLabels' in modNode &&
+        typeof modNode.getInputLabels === 'function'
+      ) {
+        return modNode.getInputLabels();
+      }
+
+      const labels: NodePort[] = [];
+
+      // Add top port for prevNode (main data flow)
+      labels.push({content: 'Input', direction: 'top'});
+
+      // For AddColumnsNode, show exactly one left-side port
+      // (it only supports connecting one table to add columns from)
+      if ('type' in modNode && modNode.type === NodeType.kAddColumns) {
+        labels.push({content: 'Table', direction: 'left'});
+        return labels;
+      }
+
+      // For other nodes with inputNodes, dynamically show ports
+      const numConnected = modNode.inputNodes.filter(
+        (it: QueryNode | undefined) => it,
+      ).length;
+      // Always show one extra empty port for adding new connections
+      const numLeftPorts = numConnected + 1;
+
+      // Add left-side ports for inputNodes (additional table inputs)
+      for (let i = 0; i < numLeftPorts; i++) {
+        labels.push({content: `Table ${i + 1}`, direction: 'left'});
+      }
+      return labels;
+    }
+  }
+
+  return [{content: 'Input', direction: 'top'}];
+}
+
+function buildMenuItems(
+  nodeType: 'source' | 'multisource' | 'modification',
+  devMode: boolean | undefined,
+  onAddNode: (id: string) => void,
+): m.Children[] {
+  return nodeRegistry
+    .list()
+    .filter(([_id, descriptor]) => descriptor.type === nodeType)
+    .map(([id, descriptor]) => {
+      if (descriptor.devOnly && !devMode) {
+        return null;
+      }
+      return m(MenuItem, {
+        label: descriptor.name,
+        onclick: () => onAddNode(id),
+      });
+    });
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
 }
 
 function buildAddMenuItems(
   targetNode: QueryNode,
   onAddOperationNode: (id: string, node: QueryNode) => void,
 ): m.Children[] {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
   const allowedChildren = nodeRegistry.getAllowedChildrenFor(targetNode.type);
   if (allowedChildren.length === 0) {
     return [];
@@ -259,6 +463,20 @@ function buildAddMenuItems(
     menuItems.push(...sections[i].items);
   }
   return menuItems;
+=======
+  const modificationItems = buildMenuItems('modification', undefined, (id) =>
+    onAddOperationNode(id, targetNode),
+  );
+  const multisourceItems = buildMenuItems('multisource', undefined, (id) =>
+    onAddOperationNode(id, targetNode),
+  );
+
+  // Add a divider between modification and multisource nodes if both exist
+  if (modificationItems.length > 0 && multisourceItems.length > 0) {
+    return [...modificationItems, m(MenuDivider), ...multisourceItems];
+  }
+  return [...modificationItems, ...multisourceItems];
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
 }
 
 // ========================================
@@ -274,13 +492,22 @@ function getRootNodes(
 
   // A node is docked (not a root) if:
   // 1. It's a single-node operation (modification node)
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
   // 2. It has a primaryInput (parent in the primary flow)
+=======
+  // 2. It has a prevNode (parent in the primary flow)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
   // 3. It doesn't have a layout position (purely visual property)
   for (const node of allNodes) {
     if (
       singleNodeOperation(node.type) &&
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
       'primaryInput' in node &&
       node.primaryInput !== undefined &&
+=======
+      'prevNode' in node &&
+      node.prevNode !== undefined &&
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
       isChildDocked(node, nodeLayouts)
     ) {
       dockedNodes.add(node);
@@ -295,14 +522,19 @@ function ensureNodeLayouts(
   attrs: GraphAttrs,
   nodeGraphApi: NodeGraphApi | null,
 ): void {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
   if (!nodeGraphApi) return;
 
   let lastPlacement: Position | undefined;
 
+=======
+  // Assign layouts to new nodes using smart placement
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
   for (const qnode of roots) {
     if (!attrs.nodeLayouts.has(qnode.nodeId)) {
       let placement: Position;
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
       if (!lastPlacement) {
         // First node - use API placement
         const canDockTop = shouldShowTopPort(qnode);
@@ -329,6 +561,20 @@ function ensureNodeLayouts(
       }
 
       lastPlacement = placement;
+=======
+      // Use NodeGraph API to find optimal non-overlapping placement
+      if (nodeGraphApi) {
+        const nodeTemplate = createNodeConfig(qnode, attrs);
+        placement = nodeGraphApi.findPlacementForNode(nodeTemplate);
+      } else {
+        // Fallback to default position if API not ready yet
+        placement = {
+          x: LAYOUT_CONSTANTS.INITIAL_X,
+          y: LAYOUT_CONSTANTS.INITIAL_Y,
+        };
+      }
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
       attrs.onNodeLayoutChange(qnode.nodeId, placement);
     }
   }
@@ -338,6 +584,37 @@ function ensureNodeLayouts(
 // NODE RENDERING
 // ========================================
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
+=======
+// Assigns a color hue based on the node's type for visual distinction
+function getNodeHue(node: QueryNode): number {
+  switch (node.type) {
+    case NodeType.kTable:
+      return 354; // Red (#ffcdd2)
+    case NodeType.kSimpleSlices:
+      return 122; // Green (#c8e6c9)
+    case NodeType.kSqlSource:
+      return 199; // Cyan/Light Blue (#b3e5fc)
+    case NodeType.kAggregation:
+      return 339; // Pink (#f8bbd0)
+    case NodeType.kModifyColumns:
+      return 261; // Purple (#d1c4e9)
+    case NodeType.kAddColumns:
+      return 232; // Indigo (#c5cae9)
+    case NodeType.kLimitAndOffset:
+      return 175; // Teal (#b2dfdb)
+    case NodeType.kSort:
+      return 54; // Yellow (#fff9c4)
+    case NodeType.kIntervalIntersect:
+      return 45; // Amber/Orange (#ffecb3)
+    case NodeType.kUnion:
+      return 187; // Cyan (#b2ebf2)
+    default:
+      return 65; // Lime (#f0f4c3)
+  }
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
 // Returns the next docked child in the chain (rendered via 'next' property)
 function getNextDockedNode(
   qnode: QueryNode,
@@ -351,14 +628,20 @@ function getNextDockedNode(
   ) {
     const child = qnode.nextNodes[0];
     // Only dock the child if it's part of the primary flow chain
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
     // (i.e., the child's primaryInput points back to this parent)
     if ('primaryInput' in child && child.primaryInput === qnode) {
+=======
+    // (i.e., the child's prevNode points back to this parent)
+    if ('prevNode' in child && child.prevNode === qnode) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
       return renderChildNode(child, attrs);
     }
   }
   return undefined;
 }
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
 function buildNodeContextMenuItems(
   qnode: QueryNode,
   attrs: GraphAttrs,
@@ -381,10 +664,13 @@ function buildNodeContextMenuItems(
   ];
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
 function createNodeConfig(
   qnode: QueryNode,
   attrs: GraphAttrs,
 ): Omit<Node, 'x' | 'y'> {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
   const canDockTop = shouldShowTopPort(qnode);
   const addMenuItems = buildAddMenuItems(qnode, attrs.onAddOperationNode);
   const outputs: NodePort[] =
@@ -417,6 +703,32 @@ function createNodeConfig(
     }),
     next: getNextDockedNode(qnode, attrs),
     invalid: !qnode.validate(),
+=======
+  const noTopPort = isSourceNode(qnode) || isMultiSourceNode(qnode);
+
+  return {
+    id: qnode.nodeId,
+    inputs: getInputLabels(qnode),
+    outputs: [
+      {
+        content: 'Output',
+        direction: 'bottom',
+        contextMenuItems: buildAddMenuItems(qnode, attrs.onAddOperationNode),
+      },
+    ],
+    canDockBottom: true,
+    canDockTop: !noTopPort,
+    hue: getNodeHue(qnode),
+    accentBar: true,
+    content: m(NodeBox, {
+      node: qnode,
+      onDuplicateNode: attrs.onDuplicateNode,
+      onDeleteNode: attrs.onDeleteNode,
+      onAddOperationNode: attrs.onAddOperationNode,
+      onRemoveFilter: attrs.onRemoveFilter,
+    }),
+    next: getNextDockedNode(qnode, attrs),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
   };
 }
 
@@ -445,7 +757,11 @@ function renderNodes(
   attrs: GraphAttrs,
   nodeGraphApi: NodeGraphApi | null,
 ): Node[] {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
   const allNodes = getAllNodes(rootNodes, {traverseGroups: false});
+=======
+  const allNodes = getAllNodes(rootNodes);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
   const roots = getRootNodes(allNodes, attrs.nodeLayouts);
 
   ensureNodeLayouts(roots, attrs, nodeGraphApi);
@@ -466,6 +782,7 @@ function renderNodes(
 // CONNECTION HANDLING
 // ========================================
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
 // Single-input nodes use port 0 for primaryInput, multi-source nodes don't have primaryInput
 function hasPrimaryInputPort(node: QueryNode): boolean {
   return singleNodeOperation(node.type);
@@ -480,6 +797,32 @@ function toSecondaryIndex(
     return visualPort === 0 ? undefined : visualPort - 1;
   }
   return visualPort;
+=======
+// For multi-source nodes, finds which input port (0-indexed) the parent is connected to
+function calculateInputPort(child: QueryNode, parent: QueryNode): number {
+  if (isMultiSourceNode(child)) {
+    const index = child.prevNodes.indexOf(parent);
+    return index !== -1 ? index : 0;
+  }
+
+  // Check if modification node has inputNodes (additional left-side inputs)
+  if ('inputNodes' in child && 'prevNode' in child) {
+    const modNode = child as ModificationNode;
+    if (modNode.inputNodes !== undefined && Array.isArray(modNode.inputNodes)) {
+      // Check if parent is the main prevNode (port 0)
+      if (modNode.prevNode === parent) {
+        return 0;
+      }
+      // Check if parent is in inputNodes array (ports 1+)
+      const index = modNode.inputNodes.indexOf(parent);
+      if (index !== -1) {
+        return index + 1; // Port 1 = inputNodes[0], Port 2 = inputNodes[1], etc.
+      }
+    }
+  }
+
+  return 0;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
 }
 
 // Builds visual connections between nodes (skips docked chains since they use 'next' property)
@@ -488,24 +831,38 @@ function buildConnections(
   nodeLayouts: LayoutMap,
 ): Connection[] {
   const connections: Connection[] = [];
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
   const allNodes = getAllNodes(rootNodes, {traverseGroups: false});
+=======
+  const allNodes = getAllNodes(rootNodes);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
 
   for (const qnode of allNodes) {
     for (const child of qnode.nextNodes) {
       if (child === undefined) continue;
 
       // Skip docked children - they're rendered via 'next' property, not as connections
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
       // But only skip if it's part of the primary flow chain (child's primaryInput points back)
+=======
+      // But only skip if it's part of the primary flow chain (child's prevNode points back)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
       if (
         qnode.nextNodes.length === 1 &&
         singleNodeOperation(child.type) &&
         isChildDocked(child, nodeLayouts) &&
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
         'primaryInput' in child &&
         child.primaryInput === qnode
+=======
+        'prevNode' in child &&
+        child.prevNode === qnode
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
       ) {
         continue;
       }
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
       // Check if this parent is connected to multiple ports on the child
       // (e.g., Union node with same parent connected to Input 0 and Input 1)
       const connectedPorts: number[] = [];
@@ -534,6 +891,14 @@ function buildConnections(
           toPort: toPort,
         });
       }
+=======
+      connections.push({
+        fromNode: qnode.nodeId,
+        fromPort: 0,
+        toNode: child.nodeId,
+        toPort: calculateInputPort(child, qnode),
+      });
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
     }
   }
 
@@ -546,6 +911,7 @@ function handleConnect(conn: Connection, rootNodes: QueryNode[]): void {
   const toNode = findQueryNode(conn.toNode, rootNodes);
 
   if (!fromNode || !toNode) {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
     console.warn(
       `Cannot create connection: node not found (from: ${conn.fromNode}, to: ${conn.toNode})`,
     );
@@ -565,6 +931,20 @@ function handleConnect(conn: Connection, rootNodes: QueryNode[]): void {
 
   const secondaryIndex = toSecondaryIndex(toNode, conn.toPort);
   addConnection(fromNode, toNode, secondaryIndex);
+=======
+    return;
+  }
+
+  // For multisource nodes, all ports are left-side and 0-indexed (port 0 = prevNodes[0])
+  // For modification nodes, port 0 is top (prevNode), ports 1+ are left-side (inputNodes[0], inputNodes[1], ...)
+  let portIndex: number | undefined;
+  if (isMultiSourceNode(toNode)) {
+    portIndex = conn.toPort;
+  } else {
+    portIndex = conn.toPort > 0 ? conn.toPort - 1 : undefined;
+  }
+  addConnection(fromNode, toNode, portIndex);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
 
   m.redraw();
 }
@@ -573,16 +953,21 @@ function handleConnect(conn: Connection, rootNodes: QueryNode[]): void {
 function handleConnectionRemove(
   conn: Connection,
   rootNodes: QueryNode[],
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
   onConnectionRemove: (
     fromNode: QueryNode,
     toNode: QueryNode,
     isSecondaryInput: boolean,
   ) => void,
+=======
+  onConnectionRemove: (fromNode: QueryNode, toNode: QueryNode) => void,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
 ): void {
   const fromNode = findQueryNode(conn.fromNode, rootNodes);
   const toNode = findQueryNode(conn.toNode, rootNodes);
 
   if (!fromNode || !toNode) {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
     console.warn(
       `Cannot remove connection: node not found (from: ${conn.fromNode}, to: ${conn.toNode})`,
     );
@@ -626,6 +1011,16 @@ export interface TextLabelData {
   readonly y: number;
   readonly width: number;
   readonly text: string;
+=======
+    return;
+  }
+
+  // Use the helper function to cleanly remove the connection
+  removeConnection(fromNode, toNode);
+
+  // Call the parent callback for any additional cleanup (e.g., state management)
+  onConnectionRemove(fromNode, toNode);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
 }
 
 // ========================================
@@ -635,6 +1030,7 @@ export interface TextLabelData {
 export class Graph implements m.ClassComponent<GraphAttrs> {
   private nodeGraphApi: NodeGraphApi | null = null;
   private hasPerformedInitialLayout: boolean = false;
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
   private hasPerformedInitialRecenter: boolean = false;
   private recenterRequired: boolean = false;
   // True while a recenter is pending. The graph is hidden (visibility:hidden)
@@ -758,15 +1154,55 @@ export class Graph implements m.ClassComponent<GraphAttrs> {
     const moreMenuItems = [
       m(MenuItem, {
         label: 'Export to JSON',
+=======
+
+  private renderEmptyNodeGraph(attrs: GraphAttrs) {
+    return m(EmptyGraph, {
+      onAddSourceNode: attrs.onAddSourceNode,
+      onImport: attrs.onImport,
+      onImportWithStatement: attrs.onImportWithStatement,
+      devMode: attrs.devMode,
+      onDevModeChange: attrs.onDevModeChange,
+    });
+  }
+
+  private renderControls(attrs: GraphAttrs) {
+    const sourceMenuItems = buildMenuItems(
+      'source',
+      attrs.devMode,
+      attrs.onAddSourceNode,
+    );
+
+    const operationMenuItems = buildMenuItems(
+      'multisource',
+      attrs.devMode,
+      attrs.onAddSourceNode,
+    );
+
+    const addNodeMenuItems = [
+      m(MenuTitle, {label: 'Sources'}),
+      ...sourceMenuItems,
+      m(MenuDivider),
+      m(MenuTitle, {label: 'Operations'}),
+      ...operationMenuItems,
+    ];
+
+    const moreMenuItems = [
+      m(MenuItem, {
+        label: 'Export',
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
         icon: Icons.Download,
         onclick: attrs.onExport,
       }),
       m(MenuItem, {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
         label: 'Import from JSON',
         icon: 'file_upload',
         onclick: attrs.onImport,
       }),
       m(MenuItem, {
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
         label: 'Clear All Nodes',
         icon: Icons.Delete,
         intent: Intent.Danger,
@@ -779,14 +1215,22 @@ export class Graph implements m.ClassComponent<GraphAttrs> {
       m(
         PopupMenu,
         {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
           trigger: RoundActionButton({
             icon: Icons.Add,
             title: 'Add Node',
             onclick: () => {},
+=======
+          trigger: m(Button, {
+            label: 'Add Node',
+            icon: Icons.Add,
+            variant: ButtonVariant.Filled,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
           }),
         },
         addNodeMenuItems,
       ),
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
       attrs.selectedNodes.size > 1 &&
         attrs.onCreateGroup !== undefined &&
         m(Button, {
@@ -808,12 +1252,18 @@ export class Graph implements m.ClassComponent<GraphAttrs> {
           }
         },
       }),
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
       m(
         PopupMenu,
         {
           trigger: m(Button, {
             icon: Icons.ContextMenuAlt,
             variant: ButtonVariant.Minimal,
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
+=======
+            style: {marginLeft: '8px'},
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
           }),
         },
         moreMenuItems,
@@ -822,11 +1272,32 @@ export class Graph implements m.ClassComponent<GraphAttrs> {
   }
 
   view({attrs}: m.CVnode<GraphAttrs>) {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
     const {rootNodes} = attrs;
+=======
+    const {rootNodes, selectedNode} = attrs;
+    const allNodes = getAllNodes(rootNodes);
+
+    if (allNodes.length === 0) {
+      return m(
+        '.pf-exp-node-graph',
+        {
+          tabindex: 0,
+          onclick: (e: MouseEvent) => {
+            if (e.target === e.currentTarget) {
+              attrs.onDeselect();
+            }
+          },
+        },
+        this.renderEmptyNodeGraph(attrs),
+      );
+    }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
 
     const nodes = renderNodes(rootNodes, attrs, this.nodeGraphApi);
     const connections = buildConnections(rootNodes, attrs.nodeLayouts);
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
     // Detect if loadGeneration has changed (indicates a load operation occurred)
     const loadGenerationChanged =
       attrs.loadGeneration !== undefined &&
@@ -846,6 +1317,8 @@ export class Graph implements m.ClassComponent<GraphAttrs> {
       }
     }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
     // Perform auto-layout if nodeLayouts is empty and API is available
     if (
       !this.hasPerformedInitialLayout &&
@@ -854,6 +1327,7 @@ export class Graph implements m.ClassComponent<GraphAttrs> {
       nodes.length > 0
     ) {
       this.hasPerformedInitialLayout = true;
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
       this.hasPerformedInitialRecenter = true;
       // Call autoLayout to arrange nodes hierarchically
       // autoLayout will call onNodeMove for each node it repositions
@@ -875,12 +1349,29 @@ export class Graph implements m.ClassComponent<GraphAttrs> {
     // un-centered nodes before autofit adjusts the viewport.
     if (this.recenterRequired) {
       this.pendingRecenter = true;
+=======
+      // Defer autoLayout to next tick to ensure DOM nodes are fully rendered
+      setTimeout(() => {
+        if (this.nodeGraphApi) {
+          // Call autoLayout to arrange nodes hierarchically
+          this.nodeGraphApi.autoLayout();
+          // After autoLayout, the nodes array will have updated x,y coordinates
+          // Update the nodeLayouts map with these new positions
+          for (const node of nodes) {
+            attrs.onNodeLayoutChange(node.id, {x: node.x, y: node.y});
+          }
+          // Trigger a redraw to reflect the new positions
+          m.redraw();
+        }
+      }, 0);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
     }
 
     return m(
       '.pf-exp-node-graph',
       {
         tabindex: 0,
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
         onkeydown: (e: KeyboardEvent) => {
           // Skip if user is typing in an input or textarea
           const target = e.target as HTMLElement;
@@ -918,11 +1409,14 @@ export class Graph implements m.ClassComponent<GraphAttrs> {
             e.preventDefault();
           }
         },
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
       },
       [
         m(NodeGraph, {
           nodes,
           connections,
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
           selectedNodeIds: attrs.selectedNodes,
           hideControls: true,
           fillHeight: true,
@@ -952,12 +1446,23 @@ export class Graph implements m.ClassComponent<GraphAttrs> {
             }
           },
           multiselect: true,
+=======
+          selectedNodeIds: new Set(
+            selectedNode?.nodeId ? [selectedNode.nodeId] : [],
+          ),
+          hideControls: true,
+          onReady: (api: NodeGraphApi) => {
+            this.nodeGraphApi = api;
+          },
+          multiselect: false,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
           onNodeSelect: (nodeId: string) => {
             const qnode = findQueryNode(nodeId, rootNodes);
             if (qnode) {
               attrs.onNodeSelected(qnode);
             }
           },
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
           onNodeAddToSelection: (nodeId: string) => {
             const qnode = findQueryNode(nodeId, rootNodes);
             if (qnode) {
@@ -971,6 +1476,12 @@ export class Graph implements m.ClassComponent<GraphAttrs> {
             attrs.onDeselect();
           },
           onNodeMove: (nodeId: string, x: number, y: number) => {
+=======
+          onSelectionClear: () => {
+            attrs.onDeselect();
+          },
+          onNodeDrag: (nodeId: string, x: number, y: number) => {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
             attrs.onNodeLayoutChange(nodeId, {x, y});
           },
           onConnect: (conn: Connection) => {
@@ -989,6 +1500,7 @@ export class Graph implements m.ClassComponent<GraphAttrs> {
               attrs.onDeleteNode(qnode);
             }
           },
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/graph.ts
           onUndock: (
             _parentId: string,
             nodeId: string,
@@ -1082,6 +1594,19 @@ export class Graph implements m.ClassComponent<GraphAttrs> {
             m.redraw();
           },
         } satisfies NodeGraphAttrs),
+=======
+          onUndock: () => {
+            // When undocking, NodeGraph widget assigns x,y via onNodeDrag callback
+            // The node relationships (nextNodes/prevNode) remain unchanged
+            m.redraw();
+          },
+          onDock: (_targetId: string, childNode: Omit<Node, 'x' | 'y'>) => {
+            // Remove coordinates so node becomes "docked" (renders via parent's 'next')
+            attrs.nodeLayouts.delete(childNode.id);
+            m.redraw();
+          },
+        }),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/graph.ts
         this.renderControls(attrs),
       ],
     );

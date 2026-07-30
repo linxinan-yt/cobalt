@@ -16,6 +16,10 @@
 
 #include "src/trace_processor/importers/proto/android_probes_module.h"
 
+<<<<<<< HEAD
+=======
+#include <atomic>
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include <cstdint>
 #include <memory>
 #include <optional>
@@ -25,6 +29,7 @@
 #include "perfetto/base/logging.h"
 #include "perfetto/ext/base/string_view.h"
 #include "perfetto/protozero/field.h"
+<<<<<<< HEAD
 #include "perfetto/trace_processor/ref_counted.h"
 #include "protos/perfetto/common/builtin_clock.pbzero.h"
 #include "src/trace_processor/importers/common/clock_tracker.h"
@@ -32,6 +37,15 @@
 #include "src/trace_processor/importers/common/import_logs_tracker.h"
 #include "src/trace_processor/importers/common/parser_types.h"
 #include "src/trace_processor/importers/common/stats_tracker.h"
+=======
+#include "perfetto/protozero/scattered_heap_buffer.h"
+#include "perfetto/trace_processor/ref_counted.h"
+#include "perfetto/trace_processor/trace_blob.h"
+#include "protos/perfetto/common/builtin_clock.pbzero.h"
+#include "src/trace_processor/importers/common/clock_tracker.h"
+#include "src/trace_processor/importers/common/event_tracker.h"
+#include "src/trace_processor/importers/common/parser_types.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "src/trace_processor/importers/proto/android_probes_parser.h"
 #include "src/trace_processor/importers/proto/android_probes_tracker.h"
 #include "src/trace_processor/importers/proto/blob_packet_writer.h"
@@ -41,7 +55,10 @@
 #include "src/trace_processor/sorter/trace_sorter.h"
 #include "src/trace_processor/storage/stats.h"
 #include "src/trace_processor/storage/trace_storage.h"
+<<<<<<< HEAD
 #include "src/trace_processor/util/clock_synchronizer.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 #include "protos/perfetto/common/android_energy_consumer_descriptor.pbzero.h"
 #include "protos/perfetto/common/android_log_constants.pbzero.h"
@@ -112,12 +129,17 @@ ModuleResult AndroidProbesModule::TokenizePacket(
   // to shepherd these events through the sorting queues in a special way.
   // Therefore, we just forge new packets and sort them as if they came from the
   // underlying trace.
+<<<<<<< HEAD
   if (args.field.id() == TracePacket::kPowerRailsFieldNumber) {
+=======
+  if (field_id == TracePacket::kPowerRailsFieldNumber) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     auto power_rails = decoder.power_rails();
     protos::pbzero::PowerRails::Decoder evt(power_rails);
 
     parser_.ParseRailDescriptor(evt);
 
+<<<<<<< HEAD
     if (!evt.has_energy_data()) {
       context_->import_logs_tracker->RecordParserLog(
           stats::power_rail_empty_packet, args.ts);
@@ -162,26 +184,64 @@ ModuleResult AndroidProbesModule::TokenizePacket(
       module_context_->trace_packet_stream->Push(
           actual_ts, TracePacketData{std::move(tbv), args.state});
     }
+=======
+    // For each energy data message, turn it into its own trace packet
+    // making sure its timestamp is consistent between the packet level and
+    // the EnergyData level.
+    for (auto it = evt.energy_data(); it; ++it) {
+      protos::pbzero::PowerRails::EnergyData::Decoder data(*it);
+      int64_t actual_ts =
+          data.has_timestamp_ms()
+              ? static_cast<int64_t>(data.timestamp_ms()) * 1000000
+              : packet_timestamp;
+
+      protozero::HeapBuffered<protos::pbzero::TracePacket> data_packet;
+      // Keep the original timestamp to later extract as an arg; the sorter does
+      // not read this.
+      data_packet->set_timestamp(static_cast<uint64_t>(packet_timestamp));
+
+      auto* power_rails_proto = data_packet->set_power_rails();
+      power_rails_proto->set_session_uuid(evt.session_uuid());
+      auto* energy = power_rails_proto->add_energy_data();
+      energy->set_energy(data.energy());
+      energy->set_index(data.index());
+      energy->set_timestamp_ms(static_cast<uint64_t>(actual_ts / 1000000));
+
+      auto [vec, size] = data_packet.SerializeAsUniquePtr();
+      TraceBlobView tbv(TraceBlob::TakeOwnership(std::move(vec), size));
+      module_context_->trace_packet_stream->Push(
+          actual_ts, TracePacketData{std::move(tbv), state});
+    }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     return ModuleResult::Handled();
   }
 
   // We treat Android logs similarly to ftrace in that they have many events, so
   // we just mimic the sorting logic to the one from kPowerRailsFieldNumber
   // above.
+<<<<<<< HEAD
   if (args.field.id() == TracePacket::kAndroidLogFieldNumber) {
+=======
+  if (field_id == TracePacket::kAndroidLogFieldNumber) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     auto android_log = decoder.android_log();
     protos::pbzero::AndroidLogPacket::Decoder pkt(android_log);
     for (auto it = pkt.events(); it; ++it) {
       protos::pbzero::AndroidLogPacket::LogEvent::Decoder evt(*it);
       auto realtime_ts = static_cast<int64_t>(evt.timestamp());
       std::optional<int64_t> trace_ts = context_->clock_tracker->ToTraceTime(
+<<<<<<< HEAD
           ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_REALTIME),
           realtime_ts);
+=======
+          protos::pbzero::BUILTIN_CLOCK_REALTIME, realtime_ts);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       if (!trace_ts.has_value()) {
         continue;
       }
       int64_t actual_ts = *trace_ts;
 
+<<<<<<< HEAD
       TraceBlobView tbv =
           context_->blob_packet_writer->WritePacket([&](auto* data_packet) {
             data_packet->set_timestamp(static_cast<uint64_t>(actual_ts));
@@ -214,6 +274,40 @@ ModuleResult AndroidProbesModule::TokenizePacket(
           });
       module_context_->trace_packet_stream->Push(
           actual_ts, TracePacketData{std::move(tbv), args.state});
+=======
+      protozero::HeapBuffered<protos::pbzero::TracePacket> data_packet;
+      data_packet->set_timestamp(static_cast<uint64_t>(actual_ts));
+
+      auto* log_pkt = data_packet->set_android_log();
+      auto* log_evt = log_pkt->add_events();
+      log_evt->set_log_id(
+          static_cast<protos::pbzero::AndroidLogId>(evt.log_id()));
+      log_evt->set_pid(evt.pid());
+      log_evt->set_tid(evt.tid());
+      log_evt->set_uid(evt.uid());
+      log_evt->set_timestamp(evt.timestamp());
+      log_evt->set_tag(evt.tag());
+      log_evt->set_prio(
+          static_cast<protos::pbzero::AndroidLogPriority>(evt.prio()));
+      log_evt->set_message(evt.message());
+      for (auto arg_it = evt.args(); arg_it; ++arg_it) {
+        protos::pbzero::AndroidLogPacket::LogEvent::Arg::Decoder arg(*arg_it);
+        auto* new_arg = log_evt->add_args();
+        new_arg->set_name(arg.name());
+        if (arg.has_int_value()) {
+          new_arg->set_int_value(arg.int_value());
+        } else if (arg.has_float_value()) {
+          new_arg->set_float_value(arg.float_value());
+        } else if (arg.has_string_value()) {
+          new_arg->set_string_value(arg.string_value());
+        }
+      }
+
+      auto [vec, size] = data_packet.SerializeAsUniquePtr();
+      TraceBlobView tbv(TraceBlob::TakeOwnership(std::move(vec), size));
+      module_context_->trace_packet_stream->Push(
+          actual_ts, TracePacketData{std::move(tbv), state});
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
     if (pkt.has_stats()) {
       parser_.ParseAndroidLogStats(pkt.stats());
@@ -225,6 +319,7 @@ ModuleResult AndroidProbesModule::TokenizePacket(
   return ModuleResult::Ignored();
 }
 
+<<<<<<< HEAD
 void AndroidProbesModule::ParseField(const ParseFieldArgs& args) {
   switch (args.field.id()) {
     case TracePacket::kAndroidAflagsFieldNumber:
@@ -256,6 +351,34 @@ void AndroidProbesModule::ParseField(const ParseFieldArgs& args) {
       parser_.ParseEntityStateResidency(
           args.ts, args.field.Cast<TracePacket::kEntityStateResidency>());
       return;
+=======
+void AndroidProbesModule::ParseTracePacketData(
+    const TracePacket::Decoder& decoder,
+    int64_t ts,
+    const TracePacketData&,
+    uint32_t field_id) {
+  switch (field_id) {
+    case TracePacket::kAndroidLogFieldNumber:
+      parser_.ParseAndroidLogPacket(ts, decoder.android_log());
+      return;
+    case TracePacket::kAndroidGameInterventionListFieldNumber:
+      parser_.ParseAndroidGameIntervention(
+          decoder.android_game_intervention_list());
+      return;
+    case TracePacket::kPowerRailsFieldNumber:
+      parser_.ParsePowerRails(ts, decoder.timestamp(), decoder.power_rails());
+      return;
+    case TracePacket::kBatteryFieldNumber:
+      parser_.ParseBatteryCounters(ts, decoder.battery());
+      return;
+    case TracePacket::kAndroidEnergyEstimationBreakdownFieldNumber:
+      parser_.ParseEnergyBreakdown(
+          ts, decoder.android_energy_estimation_breakdown());
+      return;
+    case TracePacket::kEntityStateResidencyFieldNumber:
+      parser_.ParseEntityStateResidency(ts, decoder.entity_state_residency());
+      return;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     case TracePacket::kInitialDisplayStateFieldNumber:
       parser_.ParseInitialDisplayState(
           args.ts, args.field.Cast<TracePacket::kInitialDisplayState>());

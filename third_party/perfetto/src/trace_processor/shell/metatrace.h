@@ -17,8 +17,11 @@
 #ifndef SRC_TRACE_PROCESSOR_SHELL_METATRACE_H_
 #define SRC_TRACE_PROCESSOR_SHELL_METATRACE_H_
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/shell/metatrace.h
 #include <string>
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/pprof_functions.h
 #include "perfetto/base/status.h"
 #include "perfetto/trace_processor/metatrace_config.h"
 #include "perfetto/trace_processor/trace_processor.h"

@@ -19,7 +19,6 @@
 #include "api/async_dns_resolver.h"
 #include "api/environment/environment.h"
 #include "rtc_base/async_packet_socket.h"
-#include "rtc_base/checks.h"
 #include "rtc_base/socket_address.h"
 #include "rtc_base/ssl_certificate.h"
 #include "rtc_base/system/rtc_export.h"
@@ -85,6 +84,7 @@ class RTC_EXPORT PacketSocketFactory {
 
   virtual std::unique_ptr<AsyncDnsResolverInterface>
   CreateAsyncDnsResolver() = 0;
+<<<<<<< HEAD
 
   // TODO(issues.webrtc.org/42225835):
   // Make pure virtual once downstream is updated
@@ -98,6 +98,8 @@ class RTC_EXPORT PacketSocketFactory {
     RTC_DCHECK_NOTREACHED();
     return nullptr;
   }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 
 }  //  namespace webrtc

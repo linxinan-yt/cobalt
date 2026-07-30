@@ -159,7 +159,28 @@ std::string GetOpenSslError() {
   }
   return error;
 }
+<<<<<<< HEAD
 #endif
+=======
+
+#ifdef OPENSSL_IS_BORINGSSL
+std::string GetOpenSslError() {
+  std::string error;
+  int64_t error_id;
+  const char* error_file;
+  int error_line;
+  while ((error_id = ERR_get_error_line(&error_file, &error_line)) != 0) {
+    char buf[ERR_ERROR_STRING_BUF_LEN];
+    ERR_error_string_n(error_id, buf, sizeof(buf));
+    absl::StrAppendFormat(&error, "\nOpenSSL error (file: %s, line: %d): %s",
+                          error_file, error_line, buf);
+  }
+  return error;
+}
+#endif
+
+}  // namespace
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 //////////////////////////////////////////////////////////////////////
 // StreamBIO

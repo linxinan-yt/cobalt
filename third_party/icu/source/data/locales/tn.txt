@@ -11,7 +11,11 @@ tn{
                 currencyFormat{"¤#,##0.00"}
             }
             symbols{
+<<<<<<< HEAD
                 group{"'"}
+=======
+                group{"’"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
     }
@@ -77,6 +81,7 @@ tn{
             }
             eras{
                 abbreviated{
+<<<<<<< HEAD
                     0{"BC"}
                     1{"AD"}
                 }
@@ -91,6 +96,22 @@ tn{
                 wide%variant{
                     0{"Pele ga Krestie"}
                     1{"Morago ga Krestie"}
+=======
+                    "BC",
+                    "AD",
+                }
+                abbreviated%variant{
+                    "BCE",
+                    "CE",
+                }
+                wide{
+                    "Pele ga tsalo ya Morena Jeso",
+                    "Morago ga Leso la Morena Jeso",
+                }
+                wide%variant{
+                    "Pele ga Krestie",
+                    "Morago ga Krestie",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
             intervalFormats{
@@ -214,6 +235,7 @@ tn{
         quotationStart{"‘"}
     }
     fields{
+<<<<<<< HEAD
         day{
             relative{
                 "-1"{"maabane"}
@@ -242,6 +264,8 @@ tn{
                 "1"{"beke e tlang"}
             }
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         year{
             relative{
                 "-1"{"ngogola"}

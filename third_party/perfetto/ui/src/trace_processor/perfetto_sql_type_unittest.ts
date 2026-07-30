@@ -34,10 +34,18 @@ test('PerfettoSqlType.ParseSimpleTypes', () => {
 
   for (const [rawInput, expectedKind] of Object.entries(TEST_CASES)) {
     for (const input of [rawInput, rawInput.toUpperCase()]) {
+<<<<<<< HEAD
       // Simple types don't need table/column parameters
       expect(
         parsePerfettoSqlTypeFromString({
           type: input,
+=======
+      expect(
+        parsePerfettoSqlTypeFromString({
+          type: input,
+          table: 'my_table',
+          column: 'my_column',
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }),
       ).toEqual(okResult({kind: expectedKind}));
     }
@@ -139,6 +147,7 @@ test('PerfettoSqlType.ParseUnknownTypes', () => {
   );
 
   expect(parse('')).toEqual(errResult('Unknown type: '));
+<<<<<<< HEAD
 
   // Plain 'id' requires table and column context
   expect(
@@ -148,6 +157,8 @@ test('PerfettoSqlType.ParseUnknownTypes', () => {
   ).toEqual(
     errResult(`Cannot parse plain 'id' type without table and column context`),
   );
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 });
 
 test('PerfettoSqlType.ToString', () => {

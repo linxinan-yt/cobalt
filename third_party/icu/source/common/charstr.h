@@ -67,8 +67,13 @@ public:
      * the assignment operator, to make copies explicit and to
      * use a UErrorCode where memory allocations might be needed.
      */
+<<<<<<< HEAD
     U_COMMON_API CharString &copyFrom(const CharString &other, UErrorCode &errorCode);
     U_COMMON_API CharString &copyFrom(StringPiece s, UErrorCode &errorCode);
+=======
+    CharString &copyFrom(const CharString &other, UErrorCode &errorCode);
+    CharString &copyFrom(StringPiece s, UErrorCode &errorCode);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     U_COMMON_API UBool isEmpty() const { return len==0; }
     U_COMMON_API int32_t length() const { return len; }
@@ -99,7 +104,18 @@ public:
      */
     U_COMMON_API int32_t extract(char *dest, int32_t capacity, UErrorCode &errorCode) const;
 
+<<<<<<< HEAD
     U_COMMON_API bool operator==(const CharString& other) const {
+=======
+    bool operator==(const CharString& other) const {
+        return len == other.length() && (len == 0 || uprv_memcmp(data(), other.data(), len) == 0);
+    }
+    bool operator!=(const CharString& other) const {
+        return !operator==(other);
+    }
+
+    bool operator==(StringPiece other) const {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         return len == other.length() && (len == 0 || uprv_memcmp(data(), other.data(), len) == 0);
     }
     U_COMMON_API bool operator!=(const CharString& other) const {
@@ -130,7 +146,11 @@ public:
     }
     U_COMMON_API CharString &append(const char *s, int32_t sLength, UErrorCode &status);
 
+<<<<<<< HEAD
     U_COMMON_API CharString &appendNumber(int64_t number, UErrorCode &status);
+=======
+    CharString &appendNumber(int64_t number, UErrorCode &status);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     /**
      * Returns a writable buffer for appending and writes the buffer's capacity to

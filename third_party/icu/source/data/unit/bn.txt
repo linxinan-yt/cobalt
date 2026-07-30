@@ -183,6 +183,11 @@ bn{
                 one{"{0} পারমিরিয়াড"}
                 other{"{0} পারমিরিয়াড"}
             }
+            portion-per-1e9{
+                dnam{"পার্ট প্রতি বিলিয়ন"}
+                one{"{0} পার্ট প্রতি বিলিয়ন"}
+                other{"{0} পার্ট প্রতি বিলিয়ন"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -284,6 +289,12 @@ bn{
             nanosecond{
                 one{"{0} ন্যানোসেকেন্ড"}
                 other{"{0} ন্যানোসেকেন্ড"}
+            }
+            night{
+                dnam{"রাত্রি"}
+                one{"{0} রাত্রি"}
+                other{"{0} রাত্রি"}
+                per{"{0}/রাত্রি"}
             }
         }
         electric{
@@ -984,6 +995,10 @@ bn{
             permille{
                 dnam{"‰"}
             }
+            portion-per-1e9{
+                one{"{0}ppb"}
+                other{"{0} ppb"}
+            }
         }
         consumption{
             mile-per-gallon-imperial{
@@ -1021,8 +1036,15 @@ bn{
                 other{"{0}ns"}
             }
             night{
+<<<<<<< HEAD
                 one{"{0}রাত্রি"}
                 other{"{0}রাত্রি"}
+=======
+                dnam{"রাত্রি"}
+                one{"{0}রাত্রি"}
+                other{"{0}রাত্রি"}
+                per{"{0}/রাত্রি"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 one{"{0}ত্রৈমাসিক"}
@@ -1353,6 +1375,9 @@ bn{
             }
             permyriad{
                 dnam{"পারমিরিয়াড"}
+            }
+            portion-per-1e9{
+                dnam{"পার্ট/ বিলিয়ন"}
             }
         }
         consumption{

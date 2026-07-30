@@ -18,12 +18,17 @@ import zip_helpers
 class FeatureParserDelegate(java_cpp_utils.CppConstantParser.Delegate):
   # Ex. 'BASE_FEATURE(kConstantName, "StringNameOfTheFeature", ...);'
   # or 'BASE_FEATURE(kConstantName, ...);'
+  # or any of the above with STARBOARD_FEATURE in place of BASE_FEATURE
   # would parse as:
   #   ExtractConstantName() -> 'ConstantName'
   #   ExtractValue() -> '"StringNameOfTheFeature"' or '"ConstantName"'
+<<<<<<< HEAD
   # TODO(crbug.com/482451012): Support parsing `BASE_RUNTIME_MUTABLE_FEATURE`
   # macros with mutabilty support in the generated Java code.
   _FEATURE_RE = re.compile(r'BASE_FEATURE\(\s*(k\w+),')
+=======
+  _FEATURE_RE = re.compile(r'(?:BASE_FEATURE|STARBOARD_FEATURE)\(\s*(k\w+),')
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   _STRING_LITERAL_RE = re.compile(r'"(?:\\"|[^"])*"')
   _constant_name = None  # The name of the current macro.
   _comma_count = 0  # Number of commas seen in the current macro.

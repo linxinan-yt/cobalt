@@ -41,11 +41,14 @@ ar_XB{
                 one{"{0} ؜‮revolution‬؜"}
                 other{"{0} ؜‮revolutions‬؜"}
             }
+<<<<<<< HEAD
             steradian{
                 dnam{"؜‮steradians‬؜"}
                 one{"{0} ؜‮steradian‬؜"}
                 other{"{0} ؜‮steradians‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         area{
             acre{
@@ -53,6 +56,7 @@ ar_XB{
                 one{"{0} ؜‮acre‬؜"}
                 other{"{0} ؜‮acres‬؜"}
             }
+<<<<<<< HEAD
             bu-jp{
                 dnam{"؜‮bu‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮bu‬؜ [؜‮JP‬؜]"}
@@ -63,6 +67,8 @@ ar_XB{
                 one{"{0} ؜‮cho‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮cho‬؜ [؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             dunam{
                 dnam{"؜‮dunams‬؜"}
                 one{"{0} ؜‮dunam‬؜"}
@@ -73,11 +79,14 @@ ar_XB{
                 one{"{0} ؜‮hectare‬؜"}
                 other{"{0} ؜‮hectares‬؜"}
             }
+<<<<<<< HEAD
             se-jp{
                 dnam{"؜‮se‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮se‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮se‬؜ [؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             square-centimeter{
                 dnam{"؜‮square‬؜ ؜‮centimeters‬؜"}
                 one{"{0} ؜‮square‬؜ ؜‮centimeter‬؜"}
@@ -190,11 +199,14 @@ ar_XB{
                 one{"{0} ؜‮karat‬؜"}
                 other{"{0} ؜‮karats‬؜"}
             }
+<<<<<<< HEAD
             katal{
                 dnam{"؜‮katals‬؜"}
                 one{"{0} ؜‮katal‬؜"}
                 other{"{0} ؜‮katals‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             milligram-ofglucose-per-deciliter{
                 dnam{"؜‮milligrams‬؜ ؜‮per‬؜ ؜‮deciliter‬؜"}
                 one{"{0} ؜‮milligram‬؜ ؜‮per‬؜ ؜‮deciliter‬؜"}
@@ -210,6 +222,7 @@ ar_XB{
                 one{"{0} ؜‮mole‬؜"}
                 other{"{0} ؜‮moles‬؜"}
             }
+<<<<<<< HEAD
             ofglucose{
                 dnam{"؜‮of‬؜ ؜‮glucose‬؜"}
                 one{"{0} ؜‮of‬؜ ؜‮glucose‬؜"}
@@ -230,6 +243,8 @@ ar_XB{
                 one{"{0} ؜‮part‬؜ ؜‮per‬؜ ؜‮billion‬؜"}
                 other{"{0} ؜‮parts‬؜ ؜‮per‬؜ ؜‮billion‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             percent{
                 dnam{"؜‮percent‬؜"}
                 one{"{0} ؜‮percent‬؜"}
@@ -240,11 +255,27 @@ ar_XB{
                 one{"{0} ؜‮permille‬؜"}
                 other{"{0} ؜‮permille‬؜"}
             }
+<<<<<<< HEAD
+=======
+            permillion{
+                dnam{"؜‮parts‬؜ ؜‮per‬؜ ؜‮million‬؜"}
+                one{"{0} ؜‮part‬؜ ؜‮per‬؜ ؜‮million‬؜"}
+                other{"{0} ؜‮parts‬؜ ؜‮per‬؜ ؜‮million‬؜"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             permyriad{
                 dnam{"؜‮permyriad‬؜"}
                 one{"{0} ؜‮permyriad‬؜"}
                 other{"{0} ؜‮permyriad‬؜"}
             }
+<<<<<<< HEAD
+=======
+            portion-per-1e9{
+                dnam{"؜‮parts‬؜ ؜‮per‬؜ ؜‮billion‬؜"}
+                one{"{0} ؜‮part‬؜ ؜‮per‬؜ ؜‮billion‬؜"}
+                other{"{0} ؜‮parts‬؜ ؜‮per‬؜ ؜‮billion‬؜"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         consumption{
             liter-per-100-kilometer{
@@ -349,11 +380,14 @@ ar_XB{
                 one{"{0} ؜‮decade‬؜"}
                 other{"{0} ؜‮decades‬؜"}
             }
+<<<<<<< HEAD
             fortnight{
                 dnam{"؜‮fortnights‬؜"}
                 one{"{0} ؜‮fortnight‬؜"}
                 other{"{0} ؜‮fortnights‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             hour{
                 dnam{"؜‮hours‬؜"}
                 one{"{0} ؜‮hour‬؜"}
@@ -424,6 +458,7 @@ ar_XB{
                 one{"{0} ؜‮ampere‬؜"}
                 other{"{0} ؜‮amperes‬؜"}
             }
+<<<<<<< HEAD
             coulomb{
                 dnam{"؜‮coulombs‬؜"}
                 one{"{0} ؜‮coulomb‬؜"}
@@ -439,6 +474,8 @@ ar_XB{
                 one{"{0} ؜‮henry‬؜"}
                 other{"{0} ؜‮henrys‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             milliampere{
                 dnam{"؜‮milliamperes‬؜"}
                 one{"{0} ؜‮milliampere‬؜"}
@@ -449,11 +486,14 @@ ar_XB{
                 one{"{0} ؜‮ohm‬؜"}
                 other{"{0} ؜‮ohms‬؜"}
             }
+<<<<<<< HEAD
             siemens{
                 dnam{"؜‮siemens‬؜"}
                 one{"{0} ؜‮siemens‬؜"}
                 other{"{0} ؜‮siemens‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             volt{
                 dnam{"؜‮volts‬؜"}
                 one{"{0} ؜‮volt‬؜"}
@@ -461,31 +501,40 @@ ar_XB{
             }
         }
         energy{
+<<<<<<< HEAD
             becquerel{
                 dnam{"؜‮becquerels‬؜"}
                 one{"{0} ؜‮becquerel‬؜"}
                 other{"{0} ؜‮becquerels‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             british-thermal-unit{
                 dnam{"؜‮British‬؜ ؜‮thermal‬؜ ؜‮units‬؜"}
                 one{"{0} ؜‮British‬؜ ؜‮thermal‬؜ ؜‮unit‬؜"}
                 other{"{0} ؜‮British‬؜ ؜‮thermal‬؜ ؜‮units‬؜"}
             }
+<<<<<<< HEAD
             british-thermal-unit-it{
                 dnam{"؜‮British‬؜ ؜‮thermal‬؜ ؜‮units‬؜ [؜‮IT‬؜]"}
                 one{"{0} ؜‮British‬؜ ؜‮thermal‬؜ ؜‮unit‬؜ [؜‮IT‬؜]"}
                 other{"{0} ؜‮British‬؜ ؜‮thermal‬؜ ؜‮units‬؜ [؜‮IT‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             calorie{
                 dnam{"؜‮calories‬؜"}
                 one{"{0} ؜‮calorie‬؜"}
                 other{"{0} ؜‮calories‬؜"}
             }
+<<<<<<< HEAD
             calorie-it{
                 dnam{"؜‮calories‬؜ [؜‮IT‬؜]"}
                 one{"{0} ؜‮calorie‬؜ [؜‮IT‬؜]"}
                 other{"{0} ؜‮calories‬؜ [؜‮IT‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             electronvolt{
                 dnam{"؜‮electronvolts‬؜"}
                 one{"{0} ؜‮electronvolt‬؜"}
@@ -496,11 +545,14 @@ ar_XB{
                 one{"{0} ؜‮Calorie‬؜"}
                 other{"{0} ؜‮Calories‬؜"}
             }
+<<<<<<< HEAD
             gray{
                 dnam{"؜‮grays‬؜"}
                 one{"{0} ؜‮gray‬؜"}
                 other{"{0} ؜‮grays‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             joule{
                 dnam{"؜‮joules‬؜"}
                 one{"{0} ؜‮joule‬؜"}
@@ -521,11 +573,14 @@ ar_XB{
                 one{"{0} ؜‮kilowatt‬؜ ؜‮hour‬؜"}
                 other{"{0} ؜‮kilowatt‬؜-؜‮hours‬؜"}
             }
+<<<<<<< HEAD
             sievert{
                 dnam{"؜‮sieverts‬؜"}
                 one{"{0} ؜‮sievert‬؜"}
                 other{"{0} ؜‮sieverts‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             therm-us{
                 dnam{"؜‮US‬؜ ؜‮therms‬؜"}
                 one{"{0} ؜‮US‬؜ ؜‮therm‬؜"}
@@ -533,11 +588,14 @@ ar_XB{
             }
         }
         force{
+<<<<<<< HEAD
             kilogram-force{
                 dnam{"؜‮kilograms‬؜-؜‮force‬؜"}
                 one{"{0} ؜‮kilogram‬؜-؜‮force‬؜"}
                 other{"{0} ؜‮kilograms‬؜-؜‮force‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             kilowatt-hour-per-100-kilometer{
                 dnam{"؜‮kilowatt‬؜-؜‮hours‬؜ ؜‮per‬؜ 100 ؜‮kilometers‬؜"}
                 one{"{0} ؜‮kilowatt‬؜-؜‮hour‬؜ ؜‮per‬؜ 100 ؜‮kilometers‬؜"}
@@ -630,11 +688,14 @@ ar_XB{
                 other{"{0} ؜‮centimeters‬؜"}
                 per{"{0} ؜‮per‬؜ ؜‮centimeter‬؜"}
             }
+<<<<<<< HEAD
             chain{
                 dnam{"؜‮chains‬؜"}
                 one{"{0} ؜‮chain‬؜"}
                 other{"{0} ؜‮chains‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             decimeter{
                 dnam{"؜‮decimeters‬؜"}
                 one{"{0} ؜‮decimeter‬؜"}
@@ -667,6 +728,7 @@ ar_XB{
                 other{"{0} ؜‮inches‬؜"}
                 per{"{0} ؜‮per‬؜ ؜‮inch‬؜"}
             }
+<<<<<<< HEAD
             jo-jp{
                 dnam{"؜‮jo‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮jo‬؜ [؜‮JP‬؜]"}
@@ -677,6 +739,8 @@ ar_XB{
                 one{"{0} ؜‮ken‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮ken‬؜ [؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             kilometer{
                 dnam{"؜‮kilometers‬؜"}
                 one{"{0} ؜‮kilometer‬؜"}
@@ -739,6 +803,7 @@ ar_XB{
                 one{"{0} ؜‮point‬؜"}
                 other{"{0} ؜‮points‬؜"}
             }
+<<<<<<< HEAD
             ri-jp{
                 dnam{"؜‮ri‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮ri‬؜ [؜‮JP‬؜]"}
@@ -764,16 +829,21 @@ ar_XB{
                 one{"{0} ؜‮shaku‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮shaku‬؜ [؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             solar-radius{
                 dnam{"؜‮solar‬؜ ؜‮radii‬؜"}
                 one{"{0} ؜‮solar‬؜ ؜‮radius‬؜"}
                 other{"{0} ؜‮solar‬؜ ؜‮radii‬؜"}
             }
+<<<<<<< HEAD
             sun{
                 dnam{"؜‮sun‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮sun‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮sun‬؜ [؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             yard{
                 dnam{"؜‮yards‬؜"}
                 one{"{0} ؜‮yard‬؜"}
@@ -802,6 +872,7 @@ ar_XB{
                 other{"{0} ؜‮solar‬؜ ؜‮luminosities‬؜"}
             }
         }
+<<<<<<< HEAD
         magnetic{
             tesla{
                 dnam{"؜‮teslas‬؜"}
@@ -814,6 +885,8 @@ ar_XB{
                 other{"{0} ؜‮webers‬؜"}
             }
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         mass{
             carat{
                 dnam{"؜‮carats‬؜"}
@@ -830,11 +903,14 @@ ar_XB{
                 one{"{0} ؜‮Earth‬؜ ؜‮mass‬؜"}
                 other{"{0} ؜‮Earth‬؜ ؜‮masses‬؜"}
             }
+<<<<<<< HEAD
             fun{
                 dnam{"؜‮fun‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮fun‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮fun‬؜ [؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             grain{
                 dnam{"؜‮grains‬؜"}
                 one{"{0} ؜‮grain‬؜"}
@@ -879,11 +955,14 @@ ar_XB{
                 other{"{0} ؜‮pounds‬؜"}
                 per{"{0} ؜‮per‬؜ ؜‮pound‬؜"}
             }
+<<<<<<< HEAD
             slug{
                 dnam{"؜‮slugs‬؜"}
                 one{"{0} ؜‮slug‬؜"}
                 other{"{0} ؜‮slugs‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             solar-mass{
                 dnam{"؜‮solar‬؜ ؜‮masses‬؜"}
                 one{"{0} ؜‮solar‬؜ ؜‮mass‬؜"}
@@ -983,11 +1062,14 @@ ar_XB{
                 one{"{0} ؜‮millimeter‬؜ ؜‮of‬؜ ؜‮mercury‬؜"}
                 other{"{0} ؜‮millimeters‬؜ ؜‮of‬؜ ؜‮mercury‬؜"}
             }
+<<<<<<< HEAD
             ofhg{
                 dnam{"؜‮of‬؜ ؜‮mercury‬؜"}
                 one{"{0} ؜‮of‬؜ ؜‮mercury‬؜"}
                 other{"{0} ؜‮of‬؜ ؜‮mercury‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             pascal{
                 dnam{"؜‮pascals‬؜"}
                 one{"{0} ؜‮pascal‬؜"}
@@ -1052,11 +1134,14 @@ ar_XB{
                 one{"{0} ؜‮kelvin‬؜"}
                 other{"{0} ؜‮kelvins‬؜"}
             }
+<<<<<<< HEAD
             rankine{
                 dnam{"؜‮rankines‬؜"}
                 one{"{0} ؜‮rankine‬؜"}
                 other{"{0} ؜‮rankines‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         torque{
             newton-meter{
@@ -1133,6 +1218,7 @@ ar_XB{
                 one{"{0} ؜‮cup‬؜"}
                 other{"{0} ؜‮cups‬؜"}
             }
+<<<<<<< HEAD
             cup-imperial{
                 dnam{"؜‮cups‬؜ ؜‮Imperial‬؜"}
                 one{"{0} ؜‮cup‬؜ ؜‮Imperial‬؜"}
@@ -1143,6 +1229,8 @@ ar_XB{
                 one{"{0} ؜‮cup‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮cup‬؜ [؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             cup-metric{
                 dnam{"؜‮metric‬؜ ؜‮cups‬؜"}
                 one{"{0} ؜‮metric‬؜ ؜‮cup‬؜"}
@@ -1183,11 +1271,14 @@ ar_XB{
                 one{"{0} ؜‮Imp‬؜. ؜‮fluid‬؜ ؜‮ounce‬؜"}
                 other{"{0} ؜‮Imp‬؜. ؜‮fluid‬؜ ؜‮ounces‬؜"}
             }
+<<<<<<< HEAD
             fluid-ounce-metric{
                 dnam{"؜‮metric‬؜ ؜‮fluid‬؜ ؜‮ounces‬؜"}
                 one{"{0} ؜‮metric‬؜ ؜‮fluid‬؜ ؜‮ounce‬؜"}
                 other{"{0} ؜‮metric‬؜ ؜‮fluid‬؜ ؜‮ounces‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             gallon{
                 dnam{"؜‮gallons‬؜"}
                 one{"{0} ؜‮gallon‬؜"}
@@ -1210,6 +1301,7 @@ ar_XB{
                 one{"{0} ؜‮jigger‬؜"}
                 other{"{0} ؜‮jiggers‬؜"}
             }
+<<<<<<< HEAD
             koku{
                 dnam{"؜‮koku‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮koku‬؜ [؜‮JP‬؜]"}
@@ -1220,6 +1312,8 @@ ar_XB{
                 one{"{0} ؜‮kosaji‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮kosaji‬؜ [؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             liter{
                 dnam{"؜‮liters‬؜"}
                 one{"{0} ؜‮liter‬؜"}
@@ -1236,11 +1330,14 @@ ar_XB{
                 one{"{0} ؜‮milliliter‬؜"}
                 other{"{0} ؜‮milliliters‬؜"}
             }
+<<<<<<< HEAD
             osaji{
                 dnam{"؜‮osaji‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮osaji‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮osaji‬؜ [؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             pinch{
                 dnam{"؜‮pinches‬؜"}
                 one{"{0} ؜‮pinch‬؜"}
@@ -1251,11 +1348,14 @@ ar_XB{
                 one{"{0} ؜‮pint‬؜"}
                 other{"{0} ؜‮pints‬؜"}
             }
+<<<<<<< HEAD
             pint-imperial{
                 dnam{"؜‮pints‬؜ ؜‮Imperial‬؜"}
                 one{"{0} ؜‮pint‬؜ ؜‮Imperial‬؜"}
                 other{"{0} ؜‮pints‬؜ ؜‮Imperial‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             pint-metric{
                 dnam{"؜‮metric‬؜ ؜‮pints‬؜"}
                 one{"{0} ؜‮metric‬؜ ؜‮pint‬؜"}
@@ -1271,6 +1371,7 @@ ar_XB{
                 one{"{0} ؜‮Imp‬؜. ؜‮quart‬؜"}
                 other{"{0} ؜‮Imp‬؜. ؜‮quarts‬؜"}
             }
+<<<<<<< HEAD
             sai{
                 dnam{"؜‮sai‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮sai‬؜ [؜‮JP‬؜]"}
@@ -1281,6 +1382,8 @@ ar_XB{
                 one{"{0} ؜‮shaku‬؜ [؜‮volume‬؜, ؜‮JP‬؜]"}
                 other{"{0} ؜‮shaku‬؜ [؜‮volume‬؜, ؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             tablespoon{
                 dnam{"؜‮tablespoons‬؜"}
                 one{"{0} ؜‮tablespoon‬؜"}
@@ -1291,11 +1394,14 @@ ar_XB{
                 one{"{0} ؜‮teaspoon‬؜"}
                 other{"{0} ؜‮teaspoons‬؜"}
             }
+<<<<<<< HEAD
             to-jp{
                 dnam{"؜‮to‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮to‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮to‬؜ [؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     }
     unitsShort{
@@ -1337,11 +1443,14 @@ ar_XB{
                 one{"{0} ؜‮rev‬؜"}
                 other{"{0} ؜‮rev‬؜"}
             }
+<<<<<<< HEAD
             steradian{
                 dnam{"؜‮sr‬؜"}
                 one{"{0} ؜‮sr‬؜"}
                 other{"{0} ؜‮sr‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         area{
             acre{
@@ -1349,6 +1458,7 @@ ar_XB{
                 one{"{0} ؜‮ac‬؜"}
                 other{"{0} ؜‮ac‬؜"}
             }
+<<<<<<< HEAD
             bu-jp{
                 dnam{"؜‮bu‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮bu‬؜ [؜‮JP‬؜]"}
@@ -1359,6 +1469,8 @@ ar_XB{
                 one{"{0} ؜‮cho‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮cho‬؜ [؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             dunam{
                 dnam{"؜‮dunams‬؜"}
                 one{"{0} ؜‮dunam‬؜"}
@@ -1369,11 +1481,14 @@ ar_XB{
                 one{"{0} ؜‮ha‬؜"}
                 other{"{0} ؜‮ha‬؜"}
             }
+<<<<<<< HEAD
             se-jp{
                 dnam{"؜‮se‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮se‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮se‬؜ [؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             square-centimeter{
                 dnam{"؜‮cm‬؜²"}
                 one{"{0} ؜‮cm‬؜²"}
@@ -1486,11 +1601,14 @@ ar_XB{
                 one{"{0} ؜‮kt‬؜"}
                 other{"{0} ؜‮kt‬؜"}
             }
+<<<<<<< HEAD
             katal{
                 dnam{"؜‮kat‬؜"}
                 one{"{0} ؜‮kat‬؜"}
                 other{"{0} ؜‮kat‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             milligram-ofglucose-per-deciliter{
                 dnam{"؜‮mg‬؜/؜‮dL‬؜"}
                 one{"{0} ؜‮mg‬؜/؜‮dL‬؜"}
@@ -1506,6 +1624,7 @@ ar_XB{
                 one{"{0} ؜‮mol‬؜"}
                 other{"{0} ؜‮mol‬؜"}
             }
+<<<<<<< HEAD
             ofglucose{
                 dnam{"؜‮Glc‬؜"}
                 one{"{0} ؜‮Glc‬؜"}
@@ -1526,6 +1645,8 @@ ar_XB{
                 one{"{0} ؜‮ppb‬؜"}
                 other{"{0} ؜‮ppb‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             percent{
                 dnam{"؜‮percent‬؜"}
                 one{"{0}%"}
@@ -1536,11 +1657,27 @@ ar_XB{
                 one{"{0}‰"}
                 other{"{0}‰"}
             }
+<<<<<<< HEAD
+=======
+            permillion{
+                dnam{"؜‮parts‬؜/؜‮million‬؜"}
+                one{"{0} ؜‮ppm‬؜"}
+                other{"{0} ؜‮ppm‬؜"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             permyriad{
                 dnam{"؜‮permyriad‬؜"}
                 one{"{0}‱"}
                 other{"{0}‱"}
             }
+<<<<<<< HEAD
+=======
+            portion-per-1e9{
+                dnam{"؜‮parts‬؜/؜‮billion‬؜"}
+                one{"{0} ؜‮ppb‬؜"}
+                other{"{0} ؜‮ppb‬؜"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         consumption{
             liter-per-100-kilometer{
@@ -1645,11 +1782,14 @@ ar_XB{
                 one{"{0} ؜‮dec‬؜"}
                 other{"{0} ؜‮dec‬؜"}
             }
+<<<<<<< HEAD
             fortnight{
                 dnam{"؜‮fw‬؜"}
                 one{"{0} ؜‮fw‬؜"}
                 other{"{0} ؜‮fw‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             hour{
                 dnam{"؜‮hours‬؜"}
                 one{"{0} ؜‮hr‬؜"}
@@ -1720,6 +1860,7 @@ ar_XB{
                 one{"{0} ؜‮A‬؜"}
                 other{"{0} ؜‮A‬؜"}
             }
+<<<<<<< HEAD
             coulomb{
                 dnam{"؜‮C‬؜"}
                 one{"{0} ؜‮C‬؜"}
@@ -1735,6 +1876,8 @@ ar_XB{
                 one{"{0} ؜‮H‬؜"}
                 other{"{0} ؜‮H‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             milliampere{
                 dnam{"؜‮milliamps‬؜"}
                 one{"{0} ؜‮mA‬؜"}
@@ -1745,11 +1888,14 @@ ar_XB{
                 one{"{0} ؜‮Ω‬؜"}
                 other{"{0} ؜‮Ω‬؜"}
             }
+<<<<<<< HEAD
             siemens{
                 dnam{"؜‮S‬؜"}
                 one{"{0} ؜‮S‬؜"}
                 other{"{0} ؜‮S‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             volt{
                 dnam{"؜‮volts‬؜"}
                 one{"{0} ؜‮V‬؜"}
@@ -1757,31 +1903,40 @@ ar_XB{
             }
         }
         energy{
+<<<<<<< HEAD
             becquerel{
                 dnam{"؜‮Bq‬؜"}
                 one{"{0} ؜‮Bq‬؜"}
                 other{"{0} ؜‮Bq‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             british-thermal-unit{
                 dnam{"؜‮BTU‬؜"}
                 one{"{0} ؜‮Btu‬؜"}
                 other{"{0} ؜‮Btu‬؜"}
             }
+<<<<<<< HEAD
             british-thermal-unit-it{
                 dnam{"؜‮BTU‬؜-؜‮IT‬؜"}
                 one{"{0} ؜‮BTU‬؜-؜‮IT‬؜"}
                 other{"{0} ؜‮BT‬؜-؜‮IT‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             calorie{
                 dnam{"؜‮cal‬؜"}
                 one{"{0} ؜‮cal‬؜"}
                 other{"{0} ؜‮cal‬؜"}
             }
+<<<<<<< HEAD
             calorie-it{
                 dnam{"؜‮cal‬؜-؜‮IT‬؜"}
                 one{"{0} ؜‮cal‬؜-؜‮IT‬؜"}
                 other{"{0} ؜‮cal‬؜-؜‮IT‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             electronvolt{
                 dnam{"؜‮electronvolt‬؜"}
                 one{"{0} ؜‮eV‬؜"}
@@ -1792,11 +1947,14 @@ ar_XB{
                 one{"{0} ؜‮Cal‬؜"}
                 other{"{0} ؜‮Cal‬؜"}
             }
+<<<<<<< HEAD
             gray{
                 dnam{"؜‮Gy‬؜"}
                 one{"{0} ؜‮Gy‬؜"}
                 other{"{0} ؜‮Gy‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             joule{
                 dnam{"؜‮joules‬؜"}
                 one{"{0} ؜‮J‬؜"}
@@ -1817,11 +1975,14 @@ ar_XB{
                 one{"{0} ؜‮kWh‬؜"}
                 other{"{0} ؜‮kWh‬؜"}
             }
+<<<<<<< HEAD
             sievert{
                 dnam{"؜‮Sv‬؜"}
                 one{"{0} ؜‮Sv‬؜"}
                 other{"{0} ؜‮Sv‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             therm-us{
                 dnam{"؜‮US‬؜ ؜‮therm‬؜"}
                 one{"{0} ؜‮US‬؜ ؜‮therm‬؜"}
@@ -1829,11 +1990,14 @@ ar_XB{
             }
         }
         force{
+<<<<<<< HEAD
             kilogram-force{
                 dnam{"؜‮kgf‬؜"}
                 one{"{0} ؜‮kgf‬؜"}
                 other{"{0} ؜‮kgf‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             kilowatt-hour-per-100-kilometer{
                 dnam{"؜‮kWh‬؜/100؜‮km‬؜"}
                 one{"{0} ؜‮kWh‬؜/100؜‮km‬؜"}
@@ -1926,11 +2090,14 @@ ar_XB{
                 other{"{0} ؜‮cm‬؜"}
                 per{"{0}/؜‮cm‬؜"}
             }
+<<<<<<< HEAD
             chain{
                 dnam{"؜‮ch‬؜"}
                 one{"{0} ؜‮ch‬؜"}
                 other{"{0} ؜‮ch‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             decimeter{
                 dnam{"؜‮dm‬؜"}
                 one{"{0} ؜‮dm‬؜"}
@@ -1963,6 +2130,7 @@ ar_XB{
                 other{"{0} ؜‮in‬؜"}
                 per{"{0}/؜‮in‬؜"}
             }
+<<<<<<< HEAD
             jo-jp{
                 dnam{"؜‮jo‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮jo‬؜ [؜‮JP‬؜]"}
@@ -1973,6 +2141,8 @@ ar_XB{
                 one{"{0} ؜‮ken‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮ken‬؜ [؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             kilometer{
                 dnam{"؜‮km‬؜"}
                 one{"{0} ؜‮km‬؜"}
@@ -2035,6 +2205,7 @@ ar_XB{
                 one{"{0} ؜‮pt‬؜"}
                 other{"{0} ؜‮pt‬؜"}
             }
+<<<<<<< HEAD
             ri-jp{
                 dnam{"؜‮ri‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮ri‬؜ [؜‮JP‬؜]"}
@@ -2060,16 +2231,21 @@ ar_XB{
                 one{"{0} ؜‮shaku‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮shaku‬؜ [؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             solar-radius{
                 dnam{"؜‮solar‬؜ ؜‮radii‬؜"}
                 one{"{0} ؜‮R‬؜☉"}
                 other{"{0} ؜‮R‬؜☉"}
             }
+<<<<<<< HEAD
             sun{
                 dnam{"؜‮sun‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮sun‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮sun‬؜ [؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             yard{
                 dnam{"؜‮yards‬؜"}
                 one{"{0} ؜‮yd‬؜"}
@@ -2098,6 +2274,7 @@ ar_XB{
                 other{"{0} ؜‮L‬؜☉"}
             }
         }
+<<<<<<< HEAD
         magnetic{
             tesla{
                 dnam{"؜‮T‬؜"}
@@ -2110,6 +2287,8 @@ ar_XB{
                 other{"{0} ؜‮Wb‬؜"}
             }
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         mass{
             carat{
                 dnam{"؜‮carats‬؜"}
@@ -2126,11 +2305,14 @@ ar_XB{
                 one{"{0} ؜‮M‬؜⊕"}
                 other{"{0} ؜‮M‬؜⊕"}
             }
+<<<<<<< HEAD
             fun{
                 dnam{"؜‮fun‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮fun‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮fun‬؜ [؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             grain{
                 dnam{"؜‮grains‬؜"}
                 one{"{0} ؜‮gr‬؜"}
@@ -2175,11 +2357,14 @@ ar_XB{
                 other{"{0} ؜‮lb‬؜"}
                 per{"{0}/؜‮lb‬؜"}
             }
+<<<<<<< HEAD
             slug{
                 dnam{"؜‮slug‬؜"}
                 one{"{0} ؜‮slug‬؜"}
                 other{"{0} ؜‮slug‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             solar-mass{
                 dnam{"؜‮solar‬؜ ؜‮masses‬؜"}
                 one{"{0} ؜‮M‬؜☉"}
@@ -2279,11 +2464,14 @@ ar_XB{
                 one{"{0} ؜‮mmHg‬؜"}
                 other{"{0} ؜‮mmHg‬؜"}
             }
+<<<<<<< HEAD
             ofhg{
                 dnam{"؜‮of‬؜ ؜‮Hg‬؜"}
                 one{"{0} ؜‮of‬؜ ؜‮Hg‬؜"}
                 other{"{0} ؜‮of‬؜ ؜‮Hg‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             pascal{
                 dnam{"؜‮Pa‬؜"}
                 one{"{0} ؜‮Pa‬؜"}
@@ -2348,11 +2536,14 @@ ar_XB{
                 one{"{0} ؜‮K‬؜"}
                 other{"{0} ؜‮K‬؜"}
             }
+<<<<<<< HEAD
             rankine{
                 dnam{"°؜‮R‬؜"}
                 one{"{0} °؜‮R‬؜"}
                 other{"{0} °؜‮R‬؜"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         torque{
             newton-meter{
@@ -2429,6 +2620,7 @@ ar_XB{
                 one{"{0} ؜‮c‬؜"}
                 other{"{0} ؜‮c‬؜"}
             }
+<<<<<<< HEAD
             cup-imperial{
                 dnam{"؜‮cup‬؜ ؜‮Imp‬؜"}
                 one{"{0} ؜‮cup‬؜ ؜‮Imp‬؜."}
@@ -2439,6 +2631,8 @@ ar_XB{
                 one{"{0} ؜‮cup‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮cup‬؜ [؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             cup-metric{
                 dnam{"؜‮mcup‬؜"}
                 one{"{0} ؜‮mc‬؜"}
@@ -2479,11 +2673,14 @@ ar_XB{
                 one{"{0} ؜‮fl‬؜ ؜‮oz‬؜ ؜‮Imp‬؜."}
                 other{"{0} ؜‮fl‬؜ ؜‮oz‬؜ ؜‮Imp‬؜."}
             }
+<<<<<<< HEAD
             fluid-ounce-metric{
                 dnam{"؜‮fl‬؜ ؜‮oz‬؜ ؜‮m‬؜."}
                 one{"{0} ؜‮fl‬؜ ؜‮oz‬؜ ؜‮m‬؜."}
                 other{"{0} ؜‮fl‬؜ ؜‮oz‬؜ ؜‮m‬؜."}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             gallon{
                 dnam{"؜‮gal‬؜"}
                 one{"{0} ؜‮gal‬؜"}
@@ -2506,6 +2703,7 @@ ar_XB{
                 one{"{0} ؜‮jigger‬؜"}
                 other{"{0} ؜‮jiggers‬؜"}
             }
+<<<<<<< HEAD
             koku{
                 dnam{"؜‮koku‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮koku‬؜ [؜‮JP‬؜]"}
@@ -2516,6 +2714,8 @@ ar_XB{
                 one{"{0} ؜‮kosaji‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮kosaji‬؜ [؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             liter{
                 dnam{"؜‮liters‬؜"}
                 one{"{0} ؜‮L‬؜"}
@@ -2532,11 +2732,14 @@ ar_XB{
                 one{"{0} ؜‮mL‬؜"}
                 other{"{0} ؜‮mL‬؜"}
             }
+<<<<<<< HEAD
             osaji{
                 dnam{"؜‮osaji‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮osaji‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮osaji‬؜ [؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             pinch{
                 dnam{"؜‮pinches‬؜"}
                 one{"{0} ؜‮pn‬؜"}
@@ -2547,11 +2750,14 @@ ar_XB{
                 one{"{0} ؜‮pt‬؜"}
                 other{"{0} ؜‮pt‬؜"}
             }
+<<<<<<< HEAD
             pint-imperial{
                 dnam{"؜‮pt‬؜ ؜‮Imp‬؜."}
                 one{"{0} ؜‮pt‬؜ ؜‮Imp‬؜."}
                 other{"{0} ؜‮pt‬؜ ؜‮Imp‬؜."}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             pint-metric{
                 dnam{"؜‮mpt‬؜"}
                 one{"{0} ؜‮mpt‬؜"}
@@ -2567,6 +2773,7 @@ ar_XB{
                 one{"{0} ؜‮qt‬؜-؜‮Imp‬؜."}
                 other{"{0} ؜‮qt‬؜-؜‮Imp‬؜."}
             }
+<<<<<<< HEAD
             sai{
                 dnam{"؜‮sai‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮sai‬؜ [؜‮JP‬؜]"}
@@ -2577,6 +2784,8 @@ ar_XB{
                 one{"{0} ؜‮shaku‬؜ [؜‮vol‬؜, ؜‮JP‬؜]"}
                 other{"{0} ؜‮shaku‬؜ [؜‮vol‬؜, ؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             tablespoon{
                 dnam{"؜‮tbsp‬؜"}
                 one{"{0} ؜‮tbsp‬؜"}
@@ -2587,11 +2796,14 @@ ar_XB{
                 one{"{0} ؜‮tsp‬؜"}
                 other{"{0} ؜‮tsp‬؜"}
             }
+<<<<<<< HEAD
             to-jp{
                 dnam{"؜‮to‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮to‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮to‬؜ [؜‮JP‬؜]"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     }
 }

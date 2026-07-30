@@ -24,10 +24,17 @@ import {
   getSchedWakeupInfo,
   type SchedWakeupInfo,
 } from '../../components/sql_utils/sched';
+<<<<<<< HEAD
 import type {CanvasColors} from '../../public/canvas_colors';
 import type {Selection, TrackEventSelection} from '../../public/selection';
 import type {Trace} from '../../public/trace';
 import type {Overlay, TrackBounds} from '../../public/track';
+=======
+import {CanvasColors} from '../../public/canvas_colors';
+import {Selection, TrackEventSelection} from '../../public/selection';
+import {Trace} from '../../public/trace';
+import {Overlay, TrackBounds} from '../../public/track';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {CPU_SLICE_URI_PREFIX, uriForSchedTrack} from './common';
 
 const MARGIN = 3;

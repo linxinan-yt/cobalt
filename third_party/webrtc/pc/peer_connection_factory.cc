@@ -210,10 +210,13 @@ scoped_refptr<AudioSourceInterface> PeerConnectionFactory::CreateAudioSource(
 
 bool PeerConnectionFactory::StartAecDump(FILE* file, int64_t max_size_bytes) {
   RTC_DCHECK_RUN_ON(worker_thread());
+<<<<<<< HEAD
   if (!file) {
     RTC_LOG(LS_ERROR) << "Cannot start AEC dump with null file pointer.";
     return false;
   }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   if (media_engine_ref_) {
     RTC_LOG(LS_WARNING) << "Replacing ongoing AEC dump.";
   } else {
@@ -372,7 +375,11 @@ std::unique_ptr<Call> PeerConnectionFactory::CreateCall_s(
     const PeerConnectionInterface::RTCConfiguration& configuration) {
   RTC_DCHECK_RUN_ON(signaling_thread());
 
+<<<<<<< HEAD
   CallConfig call_config(env, worker_thread(), network_thread());
+=======
+  CallConfig call_config(env, network_thread());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   if (!context_->media_engine() || !context_->call_factory()) {
     return nullptr;
   }

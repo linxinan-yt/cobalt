@@ -30,9 +30,12 @@ xh{
         "Europe:London"{
             ld{"British Summer Time"}
         }
+<<<<<<< HEAD
         "Pacific:Enderbury"{
             ec{"ICanton Island"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "meta:Afghanistan"{
             ls{"Afghanistan Time"}
         }

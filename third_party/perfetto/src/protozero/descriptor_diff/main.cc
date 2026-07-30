@@ -16,7 +16,10 @@
 
 #include <fcntl.h>
 #include <stdio.h>
+<<<<<<< HEAD
 #include <stdlib.h>
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include <sys/stat.h>
 #include <sys/types.h>
 

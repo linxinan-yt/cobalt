@@ -12,10 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD
 import type {Store} from '../../base/store';
 import {materialColorScheme} from '../../components/colorizer';
 import {SliceTrack} from '../../components/tracks/slice_track';
 import type {Trace} from '../../public/trace';
+=======
+import {Store} from '../../base/store';
+import {materialColorScheme} from '../../components/colorizer';
+import {SliceTrack} from '../../components/tracks/slice_track';
+import {Trace} from '../../public/trace';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {SourceDataset} from '../../trace_processor/dataset';
 import {LONG, NUM, STR} from '../../trace_processor/query_result';
 import type {FtraceFilter} from './common';

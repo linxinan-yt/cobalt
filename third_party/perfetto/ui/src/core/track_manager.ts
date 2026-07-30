@@ -107,9 +107,25 @@ export class TrackManagerImpl implements TrackManager {
     return this.tracks.tryGet(uri)?.desc;
   }
 
+<<<<<<< HEAD
   // Returns a wrapped track that provides error containment for rendering.
   getWrappedTrack(uri: string): TrackWrapper | undefined {
     return this.tracks.tryGet(uri);
+=======
+  // This is only called by the timeline_page.ts.
+  getTrackFSM(uri: string): TrackWithFSM | undefined {
+    // Search for a cached version of this track,
+    const trackFsm = this.tracks.tryGet(uri);
+    trackFsm?.markUsed();
+    return trackFsm;
+  }
+
+  // Destroys all tracks that didn't recently get a getTrackRenderer() call.
+  flushOldTracks() {
+    for (const trackFsm of this.tracks.values()) {
+      trackFsm.tick();
+    }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   registerTrackFilterCriteria(filter: TrackFilterCriteria): void {

@@ -15,14 +15,21 @@
 import m from 'mithril';
 import {removeFalsyValues} from '../../base/array_utils';
 import {AsyncLimiter} from '../../base/async_limiter';
+<<<<<<< HEAD
 import {ensureExists} from '../../base/assert';
+=======
+import {assertExists} from '../../base/logging';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {Time} from '../../base/time';
 import {
   createAggregationTab,
   createIITable,
 } from '../../components/aggregation_adapter';
+<<<<<<< HEAD
 import {sliceDistributionCellRenderers} from '../../components/details/slice_details';
 import {openDistributionTab} from '../../components/distribution_panel';
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {
   metricsFromTableOrSubquery,
   type QueryFlamegraphMetric,
@@ -133,7 +140,10 @@ export default class TraceProcessorTrackPlugin implements PerfettoPlugin {
           machine.label_index as machineLabelIndex,
           extract_arg(ct.dimension_arg_set_id, 'utid') as utid,
           extract_arg(ct.dimension_arg_set_id, 'upid') as upid,
+<<<<<<< HEAD
           extract_arg(ct.dimension_arg_set_id, 'gpu') as gpu_id,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
           extract_arg(ct.source_arg_set_id, 'description') as description
         from counter_track ct
         join _counter_track_summary using (id)
@@ -171,8 +181,12 @@ export default class TraceProcessorTrackPlugin implements PerfettoPlugin {
       pid: LONG_NULL,
       isMainThread: NUM,
       isKernelThread: NUM,
+<<<<<<< HEAD
       machine: NUM,
       machineLabelIndex: NUM_NULL,
+=======
+      machine: NUM_NULL,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       description: STR_NULL,
     });
     for (; it.valid(); it.next()) {
@@ -189,7 +203,11 @@ export default class TraceProcessorTrackPlugin implements PerfettoPlugin {
         pid,
         isMainThread,
         isKernelThread,
+<<<<<<< HEAD
         machineLabelIndex,
+=======
+        machine,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         description,
       } = it;
       const schema = schemas.get(type);
@@ -259,7 +277,45 @@ export default class TraceProcessorTrackPlugin implements PerfettoPlugin {
   private async addSlices(ctx: Trace) {
     await ctx.engine.query(`
       include perfetto module viz.threads;
+<<<<<<< HEAD
       include perfetto module viz.track_event_callstacks;
+=======
+
+      with grouped as materialized (
+        select
+          t.type,
+          min(t.name) as name,
+          lower(min(t.name)) as lower_name,
+          extract_arg(t.dimension_arg_set_id, 'utid') as utid,
+          extract_arg(t.dimension_arg_set_id, 'upid') as upid,
+          extract_arg(t.source_arg_set_id, 'description') as description,
+          group_concat(t.id) as trackIds,
+          count() as trackCount
+        from _slice_track_summary s
+        join track t using (id)
+        group by type, upid, utid, t.track_group_id, ifnull(t.track_group_id, t.id)
+      )
+      select
+        s.type,
+        s.name,
+        s.utid,
+        ifnull(s.upid, tp.upid) as upid,
+        s.trackIds as trackIds,
+        __max_layout_depth(s.trackCount, s.trackIds) as maxDepth,
+        thread.tid,
+        thread.name as threadName,
+        ifnull(p.pid, tp.pid) as pid,
+        ifnull(p.name, tp.name) as processName,
+        ifnull(thread.is_main_thread, 0) as isMainThread,
+        ifnull(k.is_kernel_thread, 0) AS isKernelThread,
+        s.description AS description
+      from grouped s
+      left join process p on s.upid = p.upid
+      left join thread using (utid)
+      left join _threads_with_kernel_flag k using (utid)
+      left join process tp on thread.upid = tp.upid
+      order by lower_name
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     `);
 
     // Step 1: Materialize track metadata
@@ -375,10 +431,14 @@ export default class TraceProcessorTrackPlugin implements PerfettoPlugin {
       processName: STR_NULL,
       isMainThread: NUM,
       isKernelThread: NUM,
+<<<<<<< HEAD
       hasCallstacks: NUM,
       description: STR_NULL,
       track_rank: NUM,
       lower_name: STR_NULL,
+=======
+      description: STR_NULL,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     });
     for (; it.valid(); it.next()) {
       const {
@@ -394,7 +454,10 @@ export default class TraceProcessorTrackPlugin implements PerfettoPlugin {
         pid,
         isMainThread,
         isKernelThread,
+<<<<<<< HEAD
         hasCallstacks,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         description,
       } = it;
       const schema = schemas.get(type);
@@ -416,11 +479,14 @@ export default class TraceProcessorTrackPlugin implements PerfettoPlugin {
       });
       const uri = `/slice_${trackIds[0]}`;
 
+<<<<<<< HEAD
       // Apply displayName function from schema if available
       const displayName = schema.displayName
         ? schema.displayName(trackName)
         : trackName;
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       const maybeDescriptionRenderer = schema.description?.({
         name: trackName ?? undefined,
         description: description ?? undefined,
@@ -548,6 +614,7 @@ export default class TraceProcessorTrackPlugin implements PerfettoPlugin {
         break;
       }
       default: {
+<<<<<<< HEAD
         const standardGroupsPlugin =
           ctx.plugins.getPlugin(StandardGroupsPlugin);
         const standardGroup = standardGroupsPlugin.getOrCreateStandardGroup(
@@ -555,6 +622,11 @@ export default class TraceProcessorTrackPlugin implements PerfettoPlugin {
           topLevelGroup,
         );
 
+=======
+        const standardGroup = ctx.plugins
+          .getPlugin(StandardGroupsPlugin)
+          .getOrCreateStandardGroup(ctx.defaultWorkspace, topLevelGroup);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         this.getGroupByName(standardGroup, group, null).addChildInOrder(track);
         break;
       }
@@ -860,8 +932,13 @@ export default class TraceProcessorTrackPlugin implements PerfettoPlugin {
         // Only process upids that have valid track groups
         const rows: MinimapRow[] = [];
         const sortedUpids = Array.from(upidOrderMap.keys()).sort((a, b) => {
+<<<<<<< HEAD
           const orderA = ensureExists(upidOrderMap.get(a));
           const orderB = ensureExists(upidOrderMap.get(b));
+=======
+          const orderA = assertExists(upidOrderMap.get(a));
+          const orderB = assertExists(upidOrderMap.get(b));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
           return orderA - orderB;
         });
 
@@ -940,3 +1017,139 @@ export default class TraceProcessorTrackPlugin implements PerfettoPlugin {
     });
   }
 }
+<<<<<<< HEAD
+=======
+
+function createSliceFlameGraphPanel(trace: Trace) {
+  let previousSelection: AreaSelection | undefined;
+  let currentFlamegraph:
+    | Awaited<ReturnType<typeof computeSliceFlamegraph>>
+    | undefined;
+  const limiter = new AsyncLimiter();
+
+  return {
+    id: 'slice_flamegraph_selection',
+    name: 'Slice Flamegraph',
+    render(selection: AreaSelection) {
+      const selectionChanged =
+        previousSelection === undefined ||
+        !areaSelectionsEqual(previousSelection, selection);
+      previousSelection = selection;
+      if (selectionChanged) {
+        limiter.schedule(async () => {
+          // Compute the new flamegraph
+          const flamegraph = await computeSliceFlamegraph(trace, selection);
+
+          // Swap the current flamegraph with the newly computed one, keeping
+          // track of the previous one so we can dispose of it.
+          const previousFlamegraph = currentFlamegraph;
+          currentFlamegraph = flamegraph;
+
+          // If we had a previous flamegraph, dispose of it now that the new
+          // one is ready.
+          if (previousFlamegraph) {
+            await previousFlamegraph[Symbol.asyncDispose]();
+          }
+        });
+      }
+
+      if (currentFlamegraph === undefined) {
+        return undefined;
+      }
+
+      return {isLoading: false, content: currentFlamegraph.render()};
+    },
+  };
+}
+
+async function computeSliceFlamegraph(
+  trace: Trace,
+  currentSelection: AreaSelection,
+): Promise<QueryFlamegraph | undefined> {
+  const trackIds = [];
+  for (const trackInfo of currentSelection.tracks) {
+    if (!trackInfo?.tags?.kinds?.includes(SLICE_TRACK_KIND)) {
+      continue;
+    }
+    if (trackInfo.tags?.trackIds === undefined) {
+      continue;
+    }
+    trackIds.push(...trackInfo.tags.trackIds);
+  }
+  if (trackIds.length === 0) {
+    return undefined;
+  }
+
+  const dataset = new SourceDataset({
+    src: `
+      select
+        id,
+        dur,
+        ts,
+        parent_id,
+        name
+      from slice
+      where track_id in (${trackIds.join(',')})
+    `,
+    schema: {
+      id: NUM,
+      ts: LONG,
+      dur: LONG,
+      parent_id: NUM_NULL,
+      name: STR_NULL,
+    },
+  });
+
+  const iiTable = await createIITable(
+    trace.engine,
+    dataset,
+    currentSelection.start,
+    currentSelection.end,
+  );
+
+  const metrics = metricsFromTableOrSubquery(
+    `(
+      select *
+      from _viz_slice_ancestor_agg!(
+        (
+          select s.id, s.dur
+          from ${iiTable.name} s
+          left join ${iiTable.name} t on t.parent_id = s.id
+          where t.id is null
+        ),
+        ${iiTable.name}
+      )
+    )`,
+    [
+      {
+        name: 'Duration',
+        unit: 'ns',
+        columnName: 'self_dur',
+      },
+      {
+        name: 'Samples',
+        unit: '',
+        columnName: 'self_count',
+      },
+    ],
+    'include perfetto module viz.slices;',
+    undefined,
+    [
+      {
+        name: 'simple_count',
+        displayName: 'Slice Count',
+        mergeAggregation: 'SUM',
+        isVisible: (_) => true,
+      },
+    ],
+  );
+  return new QueryFlamegraph(
+    trace,
+    metrics,
+    {
+      state: Flamegraph.createDefaultState(metrics),
+    },
+    [iiTable],
+  );
+}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

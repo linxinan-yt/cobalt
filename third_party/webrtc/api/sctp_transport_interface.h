@@ -171,8 +171,11 @@ struct SctpOptions {
   // It must be smaller than or equal to kSctpSendBufferSize.
   int max_message_size = kSctpSendBufferSize;
 
+<<<<<<< HEAD
   // Negotiated in the SCTP handshake.
   int max_sctp_streams = kMaxSctpStreams;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   // draft-hancke-tsvwg-snap
   std::optional<std::vector<uint8_t>> local_init;
   std::optional<std::vector<uint8_t>> remote_init;

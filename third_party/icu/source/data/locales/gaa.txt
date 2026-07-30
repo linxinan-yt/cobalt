@@ -6,12 +6,15 @@ gaa{
     ExemplarCharacters{"[a b d e ɛ f g h i j k l m n ŋ o ɔ p r s t u v w y z]"}
     ExemplarCharactersPunctuation{"[\\- ‐‑ – — , ; \\: ! ? . … '‘’ \u0022“” ( ) \\[ \\] § @ * / \\& # † ‡ ′ ″]"}
     NumberElements{
+<<<<<<< HEAD
         latn{
             patterns{
                 accountingFormat%alphaNextToNumber{"¤ #,##0.00;(¤ #,##0.00)"}
                 accountingFormat%noCurrency{"#,##0.00;(#,##0.00)"}
             }
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         minimalPairs{
             ordinal{
                 other{"ni ji {0}"}
@@ -23,7 +26,11 @@ gaa{
     }
     calendar{
         gregorian{
+<<<<<<< HEAD
             AmPmMarkersAbbr{
+=======
+            AmPmMarkers{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 "LEEBI",
                 "SHWANE",
             }
@@ -89,6 +96,7 @@ gaa{
             }
         }
     }
+<<<<<<< HEAD
     fields{
         sun{
             relative{
@@ -98,6 +106,8 @@ gaa{
             }
         }
     }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     listPattern{
         standard-short{
             2{"{0} kɛ {1}"}
@@ -114,10 +124,13 @@ gaa{
                 "gaa",
             }
         }
+<<<<<<< HEAD
         namePattern{
             givenFirst-long-addressing-formal{"{title} {surname}"}
             givenFirst-long-referring-formal{"{title} {given} {given2} {surname} {surname2}"}
             sorting-long-referring-formal{"{surname-prefix} {surname-core}, {given} {given2}"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

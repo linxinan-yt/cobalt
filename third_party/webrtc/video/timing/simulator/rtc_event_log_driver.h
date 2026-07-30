@@ -14,6 +14,7 @@
 #include <cstdint>
 #include <memory>
 #include <optional>
+<<<<<<< HEAD
 #include <set>
 
 #include "absl/base/nullability.h"
@@ -24,16 +25,32 @@
 #include "api/environment/environment.h"
 #include "api/sequence_checker.h"
 #include "api/task_queue/task_queue_base.h"
+=======
+
+#include "absl/base/nullability.h"
+#include "absl/container/flat_hash_map.h"
+#include "absl/functional/any_invocable.h"
+#include "absl/strings/string_view.h"
+#include "api/environment/environment.h"
+#include "api/task_queue/task_queue_base.h"
+#include "api/test/time_controller.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "api/units/time_delta.h"
 #include "api/units/timestamp.h"
 #include "logging/rtc_event_log/events/logged_rtp_rtcp.h"
 #include "logging/rtc_event_log/events/rtc_event_video_receive_stream_config.h"
 #include "logging/rtc_event_log/rtc_event_log_parser.h"
 #include "logging/rtc_event_log/rtc_event_processor.h"
+<<<<<<< HEAD
 #include "rtc_base/thread_annotations.h"
 #include "test/time_controller/simulated_time_task_queue_controller.h"
 #include "video/timing/simulator/rtp_packet_simulator.h"
 #include "video/timing/simulator/rtt_simulator.h"
+=======
+#include "modules/rtp_rtcp/include/rtp_rtcp_defines.h"
+#include "rtc_base/thread_annotations.h"
+#include "video/timing/simulator/rtp_packet_simulator.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 namespace webrtc::video_timing_simulator {
 
@@ -50,6 +67,7 @@ namespace webrtc::video_timing_simulator {
 // running on the provided task queue(s).
 //
 // TODO: b/423646186 - Improvements:
+<<<<<<< HEAD
 //  * Consider splitting the `RtcEventLogDriver` class into two:
 //    - One for orchestration (queue, event processor,
 //      event handler registration, ...).
@@ -70,31 +88,57 @@ class RtcEventLogDriver {
     std::set<uint32_t> ssrc_filter = {};
   };
 
+=======
+//  * Handle `LogSegment`s.
+//  * Handle stop events.
+//  * Parse RTT updates from RTCPs.
+//  * Handle RTX.
+//  * Split `GlobalSimulatedTimeController` into global and non-global. Use the
+//    later for driving the single-threaded time in this class.
+class RtcEventLogDriver {
+ public:
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   // A stream that is driven by simulated RTP packets coming from the log.
   class StreamInterface {
    public:
     virtual ~StreamInterface() = default;
+<<<<<<< HEAD
     // Insert `simulated_packet` into the stream.
     virtual void InsertSimulatedPacket(
         const RtpPacketSimulator::SimulatedPacket& simulated_packet) = 0;
     // Propagate an RTT update to the stream components.
     virtual void UpdateMaxRtt(TimeDelta max_rtt) = 0;
+=======
+    // Insert `rtp_packet` into the stream.
+    virtual void InsertPacket(const RtpPacketReceived& rtp_packet) = 0;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     // Notify the stream that no more packets will be inserted.
     virtual void Close() = 0;
   };
 
+<<<<<<< HEAD
   // Factory that creates a stream given the environment and the stream SSRCs.
   using StreamInterfaceFactory =
       absl::AnyInvocable<std::unique_ptr<StreamInterface>(const Environment&,
                                                           /*ssrc=*/uint32_t,
                                                           /*rtx_ssrc=*/uint32_t)
                              const>;
+=======
+  // Factory that creates a stream given the environment and the stream SSRC.
+  using StreamInterfaceFactory =
+      absl::AnyInvocable<std::unique_ptr<StreamInterface>(const Environment&,
+                                                          uint32_t) const>;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // Slack added after final event, in order to catch any straggling frames.
   static constexpr TimeDelta kShutdownAdvanceTimeSlack = TimeDelta::Millis(100);
 
+<<<<<<< HEAD
   RtcEventLogDriver(const Config& config,
                     const ParsedRtcEventLog* absl_nonnull parsed_log,
+=======
+  RtcEventLogDriver(const ParsedRtcEventLog* absl_nonnull parsed_log,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     absl::string_view field_trials_string,
                     StreamInterfaceFactory stream_factory);
   ~RtcEventLogDriver();
@@ -105,6 +149,7 @@ class RtcEventLogDriver {
   // Perform the simulation. Should only be called once per instantiation.
   void Simulate();
 
+<<<<<<< HEAD
   Timestamp GetCurrentTimeForTesting() {
     return time_controller_.GetClock()->CurrentTime();
   }
@@ -123,6 +168,13 @@ class RtcEventLogDriver {
     RtcEventLogDriver& driver_;
   };
 
+=======
+  Timestamp GetCurrentTimeForTesting() const {
+    return time_controller_->GetClock()->CurrentTime();
+  }
+
+ private:
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   // Simulation.
   // Sets the `time_controller_` simulated time to `log_timestamp`, thus
   // executing all relevant tasks on the `simulator_queue_`.
@@ -136,6 +188,7 @@ class RtcEventLogDriver {
   // RtcEventProcessor callbacks (running on main thread).
   void OnLoggedVideoRecvConfig(const LoggedVideoRecvConfig& config);
   void OnLoggedRtpPacketIncoming(const LoggedRtpPacketIncoming& packet);
+<<<<<<< HEAD
   void OnLoggedRtcpPacketSenderReportOutgoing(
       const LoggedRtcpPacketSenderReport& packet);
   void OnLoggedRtcpPacketExtendedReportsOutgoing(
@@ -155,6 +208,11 @@ class RtcEventLogDriver {
   // Environment.
   const Config config_;
   SimulatedTimeTaskQueueController time_controller_;
+=======
+
+  // Environment.
+  std::unique_ptr<TimeController> absl_nonnull time_controller_;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   const Environment env_;
 
   // Input.
@@ -166,6 +224,7 @@ class RtcEventLogDriver {
   std::optional<Timestamp> prev_log_timestamp_;
   std::unique_ptr<TaskQueueBase, TaskQueueDeleter> simulator_queue_;
   RtpPacketSimulator packet_simulator_ RTC_GUARDED_BY(simulator_queue_);
+<<<<<<< HEAD
   RttCallbackAdapter rtt_callback_adapter_ RTC_GUARDED_BY(simulator_queue_);
   std::unique_ptr<RttSimulator> rtt_simulator_ RTC_GUARDED_BY(simulator_queue_);
   // Owned streams. Keyed by `ssrc`, so that they can be replaced if needed.
@@ -177,6 +236,10 @@ class RtcEventLogDriver {
   // Keep track of all logged `ssrc`s for text logging purposes.
   absl::flat_hash_set<uint32_t> all_known_ssrcs_
       RTC_GUARDED_BY(simulator_queue_);
+=======
+  absl::flat_hash_map<uint32_t, std::unique_ptr<StreamInterface>> streams_
+      RTC_GUARDED_BY(simulator_queue_);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 
 }  // namespace webrtc::video_timing_simulator

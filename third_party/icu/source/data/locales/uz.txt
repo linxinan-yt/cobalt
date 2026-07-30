@@ -758,6 +758,39 @@ uz{
                         "Shavvol",
                         "Zulqaʼda",
                         "Zulhijja",
+<<<<<<< HEAD
+=======
+                    }
+                }
+                stand-alone{
+                    abbreviated{
+                        "Muh.",
+                        "Saf.",
+                        "Rab. avv.",
+                        "Rab. son.",
+                        "Jum. avv.",
+                        "Jum. son.",
+                        "Raj.",
+                        "Sha.",
+                        "Ram.",
+                        "Shav.",
+                        "Zulq.",
+                        "Zulh.",
+                    }
+                    wide{
+                        "Muharram",
+                        "Safar",
+                        "Rabiʼul avval",
+                        "Rabiʼus soniy",
+                        "Jumodul avval",
+                        "Jumodus soniy",
+                        "Rajab",
+                        "Sha’bon",
+                        "Ramazon",
+                        "Shavvol",
+                        "Zulqaʼda",
+                        "Zulhijja",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     }
                 }
             }

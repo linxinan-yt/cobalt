@@ -13,20 +13,27 @@
 // limitations under the License.
 
 import m from 'mithril';
+<<<<<<< HEAD
 import {
   type TableColumn,
   type ListColumnsContext,
   tableColumnId,
 } from '../table_column';
+=======
+import {TableColumn, TableManager, tableColumnId} from '../table_column';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {MenuDivider, MenuItem} from '../../../../../widgets/menu';
 import {raf} from '../../../../../core/raf_scheduler';
 import {uuidv4} from '../../../../../base/uuid';
 import {hasModKey, modKey} from '../../../../../base/hotkeys';
 import {TextInput} from '../../../../../widgets/text_input';
 import {Spinner} from '../../../../../widgets/spinner';
+<<<<<<< HEAD
 import type {Filters} from '../filters';
 import type {Trace} from '../../../../../public/trace';
 import type {SqlColumn} from '../sql_column';
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 export type SelectColumnMenuAttrs = {
   columns:

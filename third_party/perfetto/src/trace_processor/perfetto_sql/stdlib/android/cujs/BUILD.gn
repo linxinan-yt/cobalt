@@ -16,12 +16,16 @@ import("../../../../../../gn/perfetto_sql.gni")
 
 perfetto_sql_source_set("cujs") {
   sources = [
+<<<<<<< HEAD
     "base.sql",
     "boundaries.sql",
     "cuj_frame_counters.sql",
     "frames.sql",
     "relevant_slices.sql",
     "slices.sql",
+=======
+    "cujs_base.sql",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     "sysui_cujs.sql",
     "threads.sql",
   ]

@@ -183,6 +183,11 @@ mn{
                 one{"арван мянганы {0} хувь"}
                 other{"арван мянганы {0} хувь"}
             }
+            portion-per-1e9{
+                dnam{"мкг/кг"}
+                one{"{0} мкг/кг"}
+                other{"{0} мкг/кг"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -281,6 +286,10 @@ mn{
                 other{"{0} наносекунд"}
             }
             night{
+<<<<<<< HEAD
+=======
+                dnam{"шөнө"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} шөнө"}
                 other{"{0} шөнө"}
                 per{"{0}/шөнөдөө"}
@@ -431,6 +440,11 @@ mn{
             }
         }
         graphics{
+            dot-per-inch{
+                dnam{"цэг/инч"}
+                one{"{0} цэг/инч"}
+                other{"{0} цэг/инч"}
+            }
             pixel-per-centimeter{
                 dnam{"пиксель/см"}
                 one{"{0} пиксель/см"}
@@ -955,6 +969,11 @@ mn{
             permyriad{
                 dnam{"‱"}
             }
+            portion-per-1e9{
+                dnam{"мкг/кг"}
+                one{"{0} мкг/кг"}
+                other{"{0} мкг/кг"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1024,6 +1043,10 @@ mn{
         }
         length{
             astronomical-unit{
+<<<<<<< HEAD
+=======
+                dnam{"о.о.н"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0}о.о.н"}
                 other{"{0}о.о.н"}
             }
@@ -1321,8 +1344,21 @@ mn{
             permille{
                 dnam{"мянганы хувь"}
             }
+<<<<<<< HEAD
+=======
+            permillion{
+                dnam{"хувь/сая"}
+                one{"саяны {0} хувь"}
+                other{"{0}x10⁻⁶"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             permyriad{
                 dnam{"арван мянганы хувь"}
+            }
+            portion-per-1e9{
+                dnam{"мкг/кг"}
+                one{"{0} мкг/кг"}
+                other{"{0} мкг/кг"}
             }
         }
         consumption{

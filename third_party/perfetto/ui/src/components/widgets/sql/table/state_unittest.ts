@@ -20,6 +20,7 @@ import {createTableColumn} from './columns';
 import {PerfettoSqlTypes} from '../../../../trace_processor/perfetto_sql_type';
 
 const trace = createFakeTraceImpl({allowQueries: true});
+<<<<<<< HEAD
 const idColumn = createTableColumn({trace, column: 'id', type: undefined});
 const nameColumn = createTableColumn({trace, column: 'name', type: undefined});
 const tsColumn = createTableColumn({
@@ -27,6 +28,11 @@ const tsColumn = createTableColumn({
   column: 'ts',
   type: PerfettoSqlTypes.TIMESTAMP,
 });
+=======
+const idColumn = new StandardColumn('id', undefined);
+const nameColumn = new StandardColumn('name', undefined);
+const tsColumn = new TimestampColumn(trace, 'ts');
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 const table: SqlTableDescription = {
   name: 'table',

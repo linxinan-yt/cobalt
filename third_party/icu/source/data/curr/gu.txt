@@ -762,9 +762,12 @@ gu{
             one{"પશ્ચિમી આફ્રિકન [CFA] ફ્રેંક"}
             other{"પશ્ચિમી આફ્રિકન [CFA] ફ્રેંક્સ"}
         }
+<<<<<<< HEAD
         ZWG{
             one{"ઝીંબાબિયન ગોલ્ડ"}
             other{"ઝીંબાબિયન ગોલ્ડ"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

@@ -43,6 +43,7 @@ U_NAMESPACE_BEGIN
 /* forward declaration */
 class SimpleDateFormat;
 class Hashtable;
+class CharString;
 
 /**
  * DateFormatSymbols is a public class for encapsulating localizable date-time
@@ -613,7 +614,11 @@ public:
      * @return    the non-localized date-time pattern characters
      * @stable ICU 2.0
      */
+<<<<<<< HEAD
     U_I18N_API static const char16_t* getPatternUChars();
+=======
+    static const char16_t* U_EXPORT2 getPatternUChars();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     /**
      * Gets localized date-time pattern characters. For example: 'u', 't', etc.
@@ -970,8 +975,13 @@ private:
     /** valid/actual locale information 
      *  these are always ICU locales, so the length should not be a problem
      */
+<<<<<<< HEAD
     Locale validLocale;
     Locale actualLocale;
+=======
+    CharString* validLocale = nullptr;
+    CharString* actualLocale = nullptr;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     DateFormatSymbols() = delete; // default constructor not implemented
 

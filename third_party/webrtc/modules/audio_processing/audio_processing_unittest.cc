@@ -1979,6 +1979,7 @@ INSTANTIATE_TEST_SUITE_P(
                       std::make_tuple(44100, 16000, 32000, 16000),
                       std::make_tuple(44100, 16000, 16000, 16000),
 
+<<<<<<< HEAD
                       std::make_tuple(32000, 48000, 48000, 48000),
                       std::make_tuple(32000, 48000, 32000, 48000),
                       std::make_tuple(32000, 48000, 16000, 48000),
@@ -2004,6 +2005,33 @@ INSTANTIATE_TEST_SUITE_P(
                       std::make_tuple(16000, 16000, 48000, 16000),
                       std::make_tuple(16000, 16000, 32000, 16000),
                       std::make_tuple(16000, 16000, 16000, 16000),
+=======
+                      std::make_tuple(32000, 48000, 48000, 48000, 5, 0),
+                      std::make_tuple(32000, 48000, 32000, 48000, 5, 30),
+                      std::make_tuple(32000, 48000, 16000, 48000, 5, 20),
+                      std::make_tuple(32000, 44100, 48000, 44100, 19, 20),
+                      std::make_tuple(32000, 44100, 32000, 44100, 19, 15),
+                      std::make_tuple(32000, 44100, 16000, 44100, 19, 15),
+                      std::make_tuple(32000, 32000, 48000, 32000, 40, 35),
+                      std::make_tuple(32000, 32000, 32000, 32000, 0, 0),
+                      std::make_tuple(32000, 32000, 16000, 32000, 39, 20),
+                      std::make_tuple(32000, 16000, 48000, 16000, 25, 20),
+                      std::make_tuple(32000, 16000, 32000, 16000, 25, 20),
+                      std::make_tuple(32000, 16000, 16000, 16000, 25, 0),
+
+                      std::make_tuple(16000, 48000, 48000, 48000, 1.7, 0),
+                      std::make_tuple(16000, 48000, 32000, 48000, 1.5, 30),
+                      std::make_tuple(16000, 48000, 16000, 48000, 1.5, 20),
+                      std::make_tuple(16000, 44100, 48000, 44100, 15, 20),
+                      std::make_tuple(16000, 44100, 32000, 44100, 15, 15),
+                      std::make_tuple(16000, 44100, 16000, 44100, 15, 15),
+                      std::make_tuple(16000, 32000, 48000, 32000, 25, 35),
+                      std::make_tuple(16000, 32000, 32000, 32000, 25, 0),
+                      std::make_tuple(16000, 32000, 16000, 32000, 25, 20),
+                      std::make_tuple(16000, 16000, 48000, 16000, 39, 20),
+                      std::make_tuple(16000, 16000, 32000, 16000, 39, 20),
+                      std::make_tuple(16000, 16000, 16000, 16000, 0, 0),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
                       // Other sample rates are not tested exhaustively, to keep
                       // the test runtime manageable.
@@ -2013,11 +2041,82 @@ INSTANTIATE_TEST_SUITE_P(
                       //  - WebRTC.AudioOutputSampleRate
                       // ApmConfiguration.HandlingOfRateCombinations covers
                       // remaining sample rates.
+<<<<<<< HEAD
                       std::make_tuple(192000, 192000, 48000, 192000),
                       std::make_tuple(176400, 176400, 48000, 176400),
                       std::make_tuple(96000, 96000, 48000, 96000),
                       std::make_tuple(88200, 88200, 48000, 88200),
                       std::make_tuple(44100, 44100, 48000, 44100)));
+=======
+                      std::make_tuple(192000, 192000, 48000, 192000, 20, 40),
+                      std::make_tuple(176400, 176400, 48000, 176400, 20, 35),
+                      std::make_tuple(96000, 96000, 48000, 96000, 20, 40),
+                      std::make_tuple(88200, 88200, 48000, 88200, 20, 20),
+                      std::make_tuple(44100, 44100, 48000, 44100, 20, 20)));
+
+#elif defined(WEBRTC_AUDIOPROC_FIXED_PROFILE)
+INSTANTIATE_TEST_SUITE_P(
+    CommonFormats,
+    AudioProcessingTest,
+    ::testing::Values(std::make_tuple(48000, 48000, 48000, 48000, 19, 0),
+                      std::make_tuple(48000, 48000, 32000, 48000, 19, 30),
+                      std::make_tuple(48000, 48000, 16000, 48000, 19, 20),
+                      std::make_tuple(48000, 44100, 48000, 44100, 15, 20),
+                      std::make_tuple(48000, 44100, 32000, 44100, 15, 15),
+                      std::make_tuple(48000, 44100, 16000, 44100, 15, 15),
+                      std::make_tuple(48000, 32000, 48000, 32000, 19, 35),
+                      std::make_tuple(48000, 32000, 32000, 32000, 19, 0),
+                      std::make_tuple(48000, 32000, 16000, 32000, 19, 20),
+                      std::make_tuple(48000, 16000, 48000, 16000, 20, 20),
+                      std::make_tuple(48000, 16000, 32000, 16000, 20, 20),
+                      std::make_tuple(48000, 16000, 16000, 16000, 20, 0),
+
+                      std::make_tuple(44100, 48000, 48000, 48000, 15, 0),
+                      std::make_tuple(44100, 48000, 32000, 48000, 15, 30),
+                      std::make_tuple(44100, 48000, 16000, 48000, 15, 20),
+                      std::make_tuple(44100, 44100, 48000, 44100, 15, 20),
+                      std::make_tuple(44100, 44100, 32000, 44100, 15, 15),
+                      std::make_tuple(44100, 44100, 16000, 44100, 15, 15),
+                      std::make_tuple(44100, 32000, 48000, 32000, 18, 35),
+                      std::make_tuple(44100, 32000, 32000, 32000, 18, 0),
+                      std::make_tuple(44100, 32000, 16000, 32000, 18, 20),
+                      std::make_tuple(44100, 16000, 48000, 16000, 19, 20),
+                      std::make_tuple(44100, 16000, 32000, 16000, 19, 20),
+                      std::make_tuple(44100, 16000, 16000, 16000, 19, 0),
+
+                      std::make_tuple(32000, 48000, 48000, 48000, 8, 0),
+                      std::make_tuple(32000, 48000, 32000, 48000, 8, 30),
+                      std::make_tuple(32000, 48000, 16000, 48000, 8, 20),
+                      std::make_tuple(32000, 44100, 48000, 44100, 20, 20),
+                      std::make_tuple(32000, 44100, 32000, 44100, 20, 15),
+                      std::make_tuple(32000, 44100, 16000, 44100, 20, 15),
+                      std::make_tuple(32000, 32000, 48000, 32000, 27, 35),
+                      std::make_tuple(32000, 32000, 32000, 32000, 0, 0),
+                      std::make_tuple(32000, 32000, 16000, 32000, 30, 20),
+                      std::make_tuple(32000, 16000, 48000, 16000, 20, 20),
+                      std::make_tuple(32000, 16000, 32000, 16000, 20, 20),
+                      std::make_tuple(32000, 16000, 16000, 16000, 20, 0),
+
+                      std::make_tuple(16000, 48000, 48000, 48000, 3, 0),
+                      std::make_tuple(16000, 48000, 32000, 48000, 3, 30),
+                      std::make_tuple(16000, 48000, 16000, 48000, 3, 20),
+                      std::make_tuple(16000, 44100, 48000, 44100, 15, 20),
+                      std::make_tuple(16000, 44100, 32000, 44100, 15, 15),
+                      std::make_tuple(16000, 44100, 16000, 44100, 15, 15),
+                      std::make_tuple(16000, 32000, 48000, 32000, 23, 35),
+                      std::make_tuple(16000, 32000, 32000, 32000, 23, 0),
+                      std::make_tuple(16000, 32000, 16000, 32000, 25, 20),
+                      std::make_tuple(16000, 16000, 48000, 16000, 24, 20),
+                      std::make_tuple(16000, 16000, 32000, 16000, 24, 20),
+                      std::make_tuple(16000, 16000, 16000, 16000, 0, 0),
+
+                      std::make_tuple(192000, 192000, 48000, 192000, 20, 40),
+                      std::make_tuple(176400, 176400, 48000, 176400, 20, 35),
+                      std::make_tuple(96000, 96000, 48000, 96000, 20, 40),
+                      std::make_tuple(88200, 88200, 48000, 88200, 20, 20),
+                      std::make_tuple(44100, 44100, 48000, 44100, 20, 20)));
+#endif
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 // Produces a scoped trace debug output.
 std::string ProduceDebugText(int render_input_sample_rate_hz,

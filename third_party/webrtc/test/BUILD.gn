@@ -8,6 +8,9 @@
 
 import("//build/config/ui.gni")
 import("../webrtc.gni")
+if (is_cobalt) {
+  import("//starboard/build/buildflags.gni")
+}
 if (is_android) {
   import("//build/config/android/rules.gni")
   import("//third_party/jni_zero/jni_zero.gni")
@@ -79,6 +82,13 @@ rtc_library("frame_generator_impl") {
     "../system_wrappers",
     "//third_party/abseil-cpp/absl/strings:string_view",
   ]
+
+  if (is_cobalt && (is_starboard || use_starboard_media)) {
+    deps -= [
+      "../modules/video_coding:webrtc_vp8",
+      "../modules/video_coding:webrtc_vp9"
+    ]
+  }
 }
 
 rtc_library("y4m_frame_generator") {
@@ -582,6 +592,13 @@ rtc_library("video_test_support") {
     "../rtc_base/system:file_wrapper",
     "//third_party/abseil-cpp/absl/strings:string_view",
   ]
+
+  if (is_cobalt && (is_starboard || use_starboard_media)) {
+    deps -= [
+      "../modules/video_coding:webrtc_vp8",
+      "../modules/video_coding:webrtc_vp9",
+    ]
+  }
 }
 
 if (rtc_include_tests) {
@@ -723,6 +740,26 @@ if (rtc_include_tests) {
       sources = [ "call_config_utils_unittest.cc" ]
       deps = [
         ":call_config_utils",
+<<<<<<< HEAD
+=======
+        ":copy_to_file_audio_capturer_unittest",
+        ":create_frame_generator_capturer",
+        ":create_test_environment",
+        ":create_test_field_trials",
+        ":direct_transport",
+        ":fake_video_codecs",
+        ":fileutils",
+        ":fileutils_unittests",
+        ":fixed_fps_video_frame_writer_adapter_test",
+        ":frame_generator_capturer",
+        ":frame_generator_impl",
+        ":near_matcher",
+        ":perf_test",
+        ":rtc_expect_death",
+        ":rtp_test_utils",
+        ":run_loop",
+        ":test_main",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         ":test_support",
         "../api:rtp_headers",
         "../call:video_receive_stream_api",
@@ -1282,6 +1319,41 @@ if (rtc_include_tests) {
         "scenario:scenario_unittests",
         "time_controller:time_controller_unittests",
       ]
+<<<<<<< HEAD
+=======
+
+      if (is_cobalt && (is_starboard || use_starboard_media)) {
+        deps -= [
+          "../modules/video_coding:webrtc_vp8",
+          "../modules/video_coding:webrtc_vp9",
+        ]
+      }
+
+      sources = [
+        "call_config_utils_unittest.cc",
+        "create_test_field_trials_unittest.cc",
+        "direct_transport_unittest.cc",
+        "fake_vp8_encoder_unittest.cc",
+        "frame_generator_capturer_unittest.cc",
+        "frame_generator_unittest.cc",
+        "near_matcher_unittest.cc",
+        "rtp_file_reader_unittest.cc",
+        "rtp_file_writer_unittest.cc",
+        "run_loop_unittest.cc",
+        "testsupport/ivf_video_frame_generator_unittest.cc",
+        "testsupport/perf_test_unittest.cc",
+        "testsupport/test_artifacts_unittest.cc",
+        "testsupport/video_frame_writer_unittest.cc",
+        "testsupport/y4m_frame_generator_test.cc",
+        "testsupport/y4m_frame_reader_unittest.cc",
+        "testsupport/y4m_frame_writer_unittest.cc",
+        "testsupport/yuv_frame_reader_unittest.cc",
+        "testsupport/yuv_frame_writer_unittest.cc",
+        "video_codec_tester_unittest.cc",
+        "wait_until_unittest.cc",
+      ]
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       if (rtc_enable_protobuf) {
         tests += [ ":perf_test_histogram_writer_unittest" ]
       }

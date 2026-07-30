@@ -36,7 +36,10 @@
 #include "src/trace_processor/importers/common/parser_types.h"
 #include "src/trace_processor/importers/common/process_tracker.h"
 #include "src/trace_processor/importers/common/slice_tracker.h"
+<<<<<<< HEAD
 #include "src/trace_processor/importers/common/stats_tracker.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "src/trace_processor/importers/common/track_tracker.h"
 #include "src/trace_processor/importers/common/tracks.h"
 #include "src/trace_processor/importers/common/tracks_common.h"
@@ -62,7 +65,10 @@
 #include "protos/perfetto/trace/power/battery_counters.pbzero.h"
 #include "protos/perfetto/trace/power/power_rails.pbzero.h"
 #include "protos/perfetto/trace/trace_packet.pbzero.h"
+<<<<<<< HEAD
 #include "protos/third_party/android/packages/modules/bluetooth/tracing/bluetooth_trace.pbzero.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 namespace perfetto::trace_processor {
 namespace {
@@ -156,6 +162,7 @@ AndroidProbesParser::AndroidProbesParser(TraceProcessorContext* context,
       power_rail_raw_name_id_(context->storage->InternString("raw_name")),
       power_rail_subsys_name_arg_id_(
           context->storage->InternString("subsystem_name")),
+<<<<<<< HEAD
       rail_packet_timestamp_id_(context->storage->InternString("packet_ts")),
       aflags_read_only_id_(context->storage->InternString("read-only")),
       aflags_read_write_id_(context->storage->InternString("read-write")),
@@ -169,6 +176,9 @@ AndroidProbesParser::AndroidProbesParser(TraceProcessorContext* context,
       aflags_integer_id_(context->storage->InternString("integer")),
       aflags_unspecified_id_(context->storage->InternString("unspecified")),
       android_logcat_(context->storage->InternString("android_logcat")) {}
+=======
+      rail_packet_timestamp_id_(context->storage->InternString("packet_ts")) {}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 void AndroidProbesParser::ParseRailDescriptor(
     const protos::pbzero::PowerRails_Decoder& evt) {
@@ -475,6 +485,7 @@ void AndroidProbesParser::ParseAndroidLogEvent(int64_t ts,
       msg_id = context_->storage->InternString(base::StringView(new_msg));
     }
   }
+<<<<<<< HEAD
   // Log events are NOT required to be sorted by trace_time. The virtual table
   // will take care of sorting on-demand.
   tables::LogTable::Row row;
@@ -486,6 +497,14 @@ void AndroidProbesParser::ParseAndroidLogEvent(int64_t ts,
   row.tag = evt.has_tag() ? std::make_optional(tag_id) : std::nullopt;
   row.msg = msg_id;
   context_->storage->mutable_log_table()->Insert(row);
+=======
+  UniquePid utid = tid ? context_->process_tracker->UpdateThread(tid, pid) : 0;
+
+  // Log events are NOT required to be sorted by trace_time. The virtual table
+  // will take care of sorting on-demand.
+  context_->storage->mutable_android_log_table()->Insert(
+      {ts, utid, prio, tag_id, msg_id});
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 void AndroidProbesParser::ParseAndroidLogStats(protozero::ConstBytes blob) {

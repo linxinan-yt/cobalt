@@ -185,8 +185,13 @@ UDPPort::UDPPort(const PortParametersRef& args,
     : Port(args, type),
       request_manager_(
           args.network_thread,
+<<<<<<< HEAD
           [this](std::span<const uint8_t> data, StunRequest* request) {
             SendStunRequest(data, request);
+=======
+          [this](const void* data, size_t size, StunRequest* request) {
+            SendStunRequest(data, size, request);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
           }),
       socket_(socket),
       error_(0),
@@ -203,8 +208,13 @@ UDPPort::UDPPort(const PortParametersRef& args,
     : Port(args, type, min_port, max_port),
       request_manager_(
           args.network_thread,
+<<<<<<< HEAD
           [this](std::span<const uint8_t> data, StunRequest* request) {
             SendStunRequest(data, request);
+=======
+          [this](const void* data, size_t size, StunRequest* request) {
+            SendStunRequest(data, size, request);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
           }),
       socket_(nullptr),
       error_(0),
@@ -631,11 +641,19 @@ void UDPPort::MaybeSetPortCompleteOrError() {
   }
 }
 
+<<<<<<< HEAD
 void UDPPort::SendStunRequest(std::span<const uint8_t> data, StunRequest* req) {
   StunBindingRequest* sreq = static_cast<StunBindingRequest*>(req);
   AsyncSocketPacketOptions options(StunDscpValue());
   options.info_signaled_after_sent.packet_type = PacketType::kStunMessage;
   SendTo(data, sreq->server_addr(), options, /*payload=*/true);
+=======
+void UDPPort::SendStunRequest(const void* data, size_t size, StunRequest* req) {
+  StunBindingRequest* sreq = static_cast<StunBindingRequest*>(req);
+  AsyncSocketPacketOptions options(StunDscpValue());
+  options.info_signaled_after_sent.packet_type = PacketType::kStunMessage;
+  SendTo(data, size, sreq->server_addr(), options, /*payload=*/true);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   stats_.stun_binding_requests_sent++;
 }

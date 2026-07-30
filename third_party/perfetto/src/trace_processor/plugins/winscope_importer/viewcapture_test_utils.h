@@ -14,15 +14,24 @@
  * limitations under the License.
  */
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/viewcapture_test_utils.h
 #ifndef SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_VIEWCAPTURE_TEST_UTILS_H_
 #define SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_VIEWCAPTURE_TEST_UTILS_H_
+=======
+#ifndef SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_VIEWCAPTURE_TEST_UTILS_H_
+#define SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_VIEWCAPTURE_TEST_UTILS_H_
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/viewcapture_test_utils.h
 
 #include <cstdint>
 #include <optional>
 #include <vector>
 
 #include "perfetto/protozero/scattered_heap_buffer.h"
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/viewcapture_test_utils.h
 #include "protos/third_party/android/frameworks/base/proto/tracing/winscope/viewcapture.pbzero.h"
+=======
+#include "protos/perfetto/trace/android/viewcapture.pbzero.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/viewcapture_test_utils.h
 
 namespace perfetto::trace_processor::winscope::viewcapture::test {
 
@@ -47,6 +56,7 @@ class View {
     return *this;
   }
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/viewcapture_test_utils.h
   View& SetWidth(int32_t value) {
     width_ = value;
     return *this;
@@ -62,6 +72,11 @@ class View {
   std::optional<int32_t> visibility_;
   std::optional<int32_t> width_;
   std::optional<int32_t> height_;
+=======
+  std::optional<int32_t> id_;
+  std::optional<int32_t> parent_id_;
+  std::optional<int32_t> visibility_;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/viewcapture_test_utils.h
 };
 
 class SnapshotProtoBuilder {
@@ -74,8 +89,12 @@ class SnapshotProtoBuilder {
   }
 
   std::string Build() {
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/viewcapture_test_utils.h
     protozero::HeapBuffered<com::android::internal::pbzero::ViewCapture>
         snapshot_proto;
+=======
+    protozero::HeapBuffered<protos::pbzero::ViewCapture> snapshot_proto;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/viewcapture_test_utils.h
 
     int32_t i = 0;
     for (const auto& view : views_) {
@@ -91,6 +110,7 @@ class SnapshotProtoBuilder {
       if (view.visibility_.has_value()) {
         view_proto->set_visibility(view.visibility_.value());
       }
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/viewcapture_test_utils.h
 
       if (view.width_.has_value()) {
         view_proto->set_width(view.width_.value());
@@ -99,6 +119,8 @@ class SnapshotProtoBuilder {
       if (view.height_.has_value()) {
         view_proto->set_height(view.height_.value());
       }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/viewcapture_test_utils.h
     }
 
     return snapshot_proto.SerializeAsString();
@@ -110,4 +132,8 @@ class SnapshotProtoBuilder {
 
 }  // namespace perfetto::trace_processor::winscope::viewcapture::test
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/viewcapture_test_utils.h
 #endif  // SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_VIEWCAPTURE_TEST_UTILS_H_
+=======
+#endif  // SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_VIEWCAPTURE_TEST_UTILS_H_
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/viewcapture_test_utils.h

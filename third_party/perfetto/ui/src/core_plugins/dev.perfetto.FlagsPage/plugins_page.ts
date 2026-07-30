@@ -32,6 +32,7 @@ import {EmptyState} from '../../widgets/empty_state';
 import {Popup} from '../../widgets/popup';
 import {Box} from '../../widgets/box';
 import {Anchor} from '../../widgets/anchor';
+<<<<<<< HEAD
 import {Icon} from '../../widgets/icon';
 import {Icons} from '../../base/semantic_icons';
 import {GateDetector, renderSegments} from '../../base/mithril_utils';
@@ -39,6 +40,8 @@ import {findRef} from '../../base/dom_utils';
 import {Callout} from '../../widgets/callout';
 
 const SEARCH_BOX_REF = 'plugin-search-box';
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 enum SortOrder {
   Name = 'name',
@@ -93,6 +96,7 @@ function sortText(sortOrder: SortOrder) {
 export interface PluginsPageAttrs {
   readonly subpage?: string;
 }
+<<<<<<< HEAD
 
 export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
   private filterText: string = '';
@@ -126,6 +130,12 @@ export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
     this.dependantsByPluginId = dependants;
   }
 
+=======
+
+export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
+  private filterText: string = '';
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   view({attrs}: m.Vnode<PluginsPageAttrs>): m.Children {
     const pluginManager = AppImpl.instance.plugins;
     const registeredPlugins = pluginManager.getAllPlugins();
@@ -139,6 +149,7 @@ export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
 
     const isFiltering = this.filterText !== '';
     const filteredPlugins = isFiltering
+<<<<<<< HEAD
       ? fuzzySearch(
           sorted,
           [
@@ -156,6 +167,10 @@ export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
           idSegments: item.desc.id,
           descriptionSegments: item.desc.description?.trim(),
         }));
+=======
+      ? finder.find(this.filterText)
+      : sorted.map((item) => ({item, segments: []}));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     const subpage = decodeURIComponent(attrs.subpage ?? '');
 
     const page = m(
@@ -247,6 +262,7 @@ export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
         filteredPlugins.length > 0
           ? m(
               CardStack,
+<<<<<<< HEAD
               filteredPlugins.map(
                 ({item: plugin, idSegments, descriptionSegments}) => {
                   return this.renderPluginCard(
@@ -257,6 +273,14 @@ export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
                   );
                 },
               ),
+=======
+              filteredPlugins.map(({item: plugin}) => {
+                return this.renderPluginCard(
+                  plugin,
+                  subpage === `/${plugin.desc.id}`,
+                );
+              }),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             )
           : this.renderEmptyState(isFiltering),
       ),
@@ -311,6 +335,7 @@ export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
   private renderPluginCard(
     plugin: PluginWrapper,
     focused: boolean,
+<<<<<<< HEAD
     idSegments?: readonly FuzzySegment[] | string,
     descriptionSegments?: readonly FuzzySegment[] | string,
   ): m.Children {
@@ -328,6 +353,43 @@ export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
         'pf-plugins-page__card',
         plugin.enableFlag.get() && 'pf-plugins-page__card--enabled',
         isExperimental && 'pf-plugins-page__card--experimental',
+=======
+  ): m.Children {
+    const loadTime = plugin.traceContext?.loadTimeMs;
+    return m(
+      Card,
+      {
+        id: plugin.desc.id,
+        className: classNames(
+          'pf-plugins-page__card',
+          plugin.active && 'pf-plugins-page__card--active',
+          plugin.enableFlag.get() && 'pf-plugins-page__card--enabled',
+          focused && 'pf-plugins-page__card--focused',
+        ),
+        key: plugin.desc.id,
+      },
+      m(
+        '.pf-plugins-page__details',
+        m(
+          Stack,
+          {
+            orientation: 'horizontal',
+            gap: 'small',
+            className: 'pf-plugins-page__label-row',
+          },
+          m('h1', plugin.desc.id),
+          m(
+            '.pf-plugins-page__link-button',
+            m(Anchor, {
+              href: `#!/plugins/${encodeURIComponent(plugin.desc.id)}`,
+              icon: 'link',
+              title: 'Link to this plugin',
+            }),
+          ),
+        ),
+        plugin.desc.description &&
+          m('.pf-plugins-page__description', plugin.desc.description),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       ),
       title: renderSegments(idSegments ?? plugin.desc.id),
       linkHref: `#!/plugins/${encodeURIComponent(plugin.desc.id)}`,
@@ -430,6 +492,20 @@ export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
         );
       }),
     );
+  }
+
+  oncreate(vnode: m.VnodeDOM<PluginsPageAttrs>) {
+    const subpage = decodeURIComponent(vnode.attrs.subpage ?? '');
+    console.log(subpage);
+    const pluginId = /[/](.+)/.exec(subpage)?.[1];
+    console.log('Scrolling to plugin', pluginId);
+    if (pluginId) {
+      const plugin = vnode.dom.querySelector(`#${CSS.escape(pluginId)}`);
+      console.log('Scrolling to plugin', pluginId, plugin);
+      if (plugin) {
+        plugin.scrollIntoView({block: 'center'});
+      }
+    }
   }
 }
 

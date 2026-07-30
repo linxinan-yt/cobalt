@@ -213,9 +213,15 @@ BASE_EXPORT BASE_DECLARE_FEATURE(kPartitionAllocUseSmallSingleSlotSpans);
 BASE_EXPORT BASE_DECLARE_FEATURE(kPartitionAllocUsePriorityInheritanceLocks);
 #endif  // PA_BUILDFLAG(ENABLE_PARTITION_LOCK_PRIORITY_INHERITANCE)
 
+<<<<<<< HEAD
 BASE_EXPORT BASE_DECLARE_FEATURE(kPartitionAllocFreeWithSize);
 BASE_EXPORT BASE_DECLARE_FEATURE_PARAM(bool,
                                        kPartitionAllocStrictFreeSizeCheck);
+=======
+#if BUILDFLAG(IS_COBALT)
+BASE_EXPORT BASE_DECLARE_FEATURE(kPartitionAllocReuseMainPartitionForBuffers);
+#endif  // BUILDFLAG(IS_COBALT)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 }  // namespace base::features
 

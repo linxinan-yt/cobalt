@@ -19,6 +19,10 @@ es_419{
         ht{"haitiano"}
         kbd{"cabardiano"}
         krc{"karachái-bálkaro"}
+<<<<<<< HEAD
+=======
+        ks{"cachemiro"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         lij{"genovés"}
         ml{"malabar"}
         mni{"manipuri"}
@@ -61,9 +65,12 @@ es_419{
             islamic-rgsa{"calendario islámico (Arabia Saudita)"}
             islamic-tbla{"calendario islámico tabular"}
         }
+<<<<<<< HEAD
         calendar%core{
             roc{"calendario chino"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         colAlternate{
             non-ignorable{"ordenar símbolos"}
             shifted{"ordenar ignorando símbolos"}

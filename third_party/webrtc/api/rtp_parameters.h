@@ -901,6 +901,7 @@ struct RTC_EXPORT RtpParameters {
   // If at least two active encodings have different codec values
   // (including one being unset and another set), this is considered mixed.
   bool IsMixedCodec() const;
+<<<<<<< HEAD
 
   template <typename Sink>
   friend void AbslStringify(Sink& sink, const RtpParameters& p) {
@@ -918,6 +919,8 @@ struct RTC_EXPORT RtpParameters {
     }
     sink.Append("}");
   }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 
 }  // namespace webrtc

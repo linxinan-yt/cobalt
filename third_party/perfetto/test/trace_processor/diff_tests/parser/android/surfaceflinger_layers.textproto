@@ -16,7 +16,11 @@ packet {
   first_packet_on_sequence: true
   timestamp: 2748300281655
   timestamp_clock_id: 3
+<<<<<<< HEAD
   [com.android.internal.FrameworksNativeWinscopeTracePacket.surfaceflinger_layers_snapshot] {
+=======
+  surfaceflinger_layers_snapshot {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     elapsed_realtime_nanos: 123
     where: "visibleRegionsDirty"
     layers {
@@ -285,7 +289,11 @@ packet {
 packet {
   timestamp: 2749700000000
   timestamp_clock_id: 3
+<<<<<<< HEAD
   [com.android.internal.FrameworksNativeWinscopeTracePacket.surfaceflinger_layers_snapshot] {
+=======
+  surfaceflinger_layers_snapshot {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     elapsed_realtime_nanos: 0
     excludes_composition_state: true
     layers {

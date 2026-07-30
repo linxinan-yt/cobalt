@@ -6418,8 +6418,29 @@
         "merge": {
           "script": "//testing/merge_scripts/standard_isolated_script_merge.py"
         },
+<<<<<<< HEAD
         "module_name": "//:rust_tests",
         "name": "rust_tests",
+=======
+        "name": "shared_screencast_stream_test",
+        "resultdb": {
+          "result_format": "json"
+        },
+        "swarming": {
+          "dimensions": {
+            "cpu": "x86-64",
+            "os": "Ubuntu-22.04"
+          }
+        },
+        "test": "shared_screencast_stream_test",
+        "test_id_prefix": "ninja://modules/desktop_capture:shared_screencast_stream_test/"
+      },
+      {
+        "merge": {
+          "script": "//testing/merge_scripts/standard_isolated_script_merge.py"
+        },
+        "name": "slow_peer_connection_unittests",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "resultdb": {
           "result_format": "json"
         },
@@ -7566,6 +7587,7 @@
         "merge": {
           "script": "//testing/merge_scripts/standard_isolated_script_merge.py"
         },
+<<<<<<< HEAD
         "module_name": "//:rust_tests",
         "name": "rust_tests",
         "resultdb": {
@@ -7585,6 +7607,8 @@
           "script": "//testing/merge_scripts/standard_isolated_script_merge.py"
         },
         "module_name": "//modules/desktop_capture:shared_screencast_stream_test",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "name": "shared_screencast_stream_test",
         "resultdb": {
           "result_format": "json"
@@ -7602,7 +7626,10 @@
         "merge": {
           "script": "//testing/merge_scripts/standard_isolated_script_merge.py"
         },
+<<<<<<< HEAD
         "module_name": "//pc:slow_peer_connection_unittests",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "name": "slow_peer_connection_unittests",
         "resultdb": {
           "result_format": "json"

@@ -29,6 +29,7 @@
 
 namespace perfetto::trace_redaction {
 
+<<<<<<< HEAD
 class RedactorClockSynchronizerListenerImpl
     : public perfetto::trace_processor::ClockSynchronizerListener {
  public:
@@ -43,6 +44,42 @@ using RedactorClockSynchronizer = trace_processor::ClockSynchronizer;
 using SequenceId = uint32_t;
 using ClockId = trace_processor::ClockId;
 using ClockTimestamp = trace_processor::ClockTimestamp;
+=======
+class RedactorClockSynchronizerListenerImpl {
+ public:
+  using Synchronizer = perfetto::trace_processor::ClockSynchronizer<
+      RedactorClockSynchronizerListenerImpl>;
+
+  RedactorClockSynchronizerListenerImpl();
+
+  base::Status OnClockSyncCacheMiss();
+
+  base::Status OnInvalidClockSnapshot();
+
+  base::Status OnTraceTimeClockIdChanged(Synchronizer::ClockId);
+
+  base::Status OnSetTraceTimeClock(Synchronizer::ClockId);
+
+  void RecordConversionError(Synchronizer::ErrorType,
+                             Synchronizer::ClockId,
+                             Synchronizer::ClockId,
+                             int64_t,
+                             std::optional<size_t>);
+
+  // Always returns true as redactor only supports local host clock conversion.
+  bool IsLocalHost();
+
+ private:
+  // Number of time that trace time has been updated.
+  uint32_t trace_time_updates_;
+};
+
+using RedactorClockSynchronizer = perfetto::trace_processor::ClockSynchronizer<
+    RedactorClockSynchronizerListenerImpl>;
+using SequenceId = uint32_t;
+using ClockId = RedactorClockSynchronizer::ClockId;
+using ClockTimestamp = RedactorClockSynchronizer::ClockTimestamp;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 // This class handles conversions between different clocks for trace redactor.
 //
@@ -117,7 +154,10 @@ class RedactorClockConverter {
   base::StatusOr<ClockId> GetGlobalDefaultDataSourceClock(
       const DataSourceType& clock_type) const;
 
+<<<<<<< HEAD
   perfetto::trace_processor::TraceTimeState trace_time_state_;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   mutable RedactorClockSynchronizer clock_synchronizer_;
   std::optional<ClockId> primary_trace_clock_;
   base::FlatHashMap<SequenceId, SequenceClocks> seq_to_default_clocks_;

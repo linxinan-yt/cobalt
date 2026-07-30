@@ -11,11 +11,15 @@ es_419{
             }
         }
         concentr{
+<<<<<<< HEAD
             part{
                 one{"{0} parte"}
                 other{"{0} partes"}
             }
             part-per-1e9{
+=======
+            portion-per-1e9{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 dnam{"partes por mil millones"}
                 one{"{0} parte por mil millones"}
                 other{"{0} partes por mil millones"}
@@ -206,6 +210,7 @@ es_419{
             }
         }
         energy{
+<<<<<<< HEAD
             becquerel{
                 one{"{0}Bq"}
                 other{"{0}Bq"}
@@ -222,6 +227,8 @@ es_419{
                 one{"{0}Sv"}
                 other{"{0}Sv"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             therm-us{
                 one{"{0}thm EE.UU."}
                 other{"{0}thm EE.UU."}
@@ -261,6 +268,7 @@ es_419{
                 dnam{"parsec"}
             }
         }
+<<<<<<< HEAD
         magnetic{
             tesla{
                 one{"{0}T"}
@@ -271,6 +279,8 @@ es_419{
                 other{"{0}Wb"}
             }
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         mass{
             ounce-troy{
                 one{"{0}ozt"}
@@ -291,6 +301,10 @@ es_419{
             ofhg{
                 one{"{0}de Hg"}
                 other{"{0}de Hg"}
+            }
+            light-speed{
+                one{"{0} luz"}
+                other{"{0} luz"}
             }
         }
         volume{

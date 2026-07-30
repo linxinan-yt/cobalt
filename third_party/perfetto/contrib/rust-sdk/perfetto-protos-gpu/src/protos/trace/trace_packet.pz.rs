@@ -16,6 +16,7 @@
 
 use crate::pb_msg;
 use crate::pb_msg_ext;
+<<<<<<< HEAD
 use crate::protos::trace::generic_kernel::generic_gpu_frequency::*;
 use crate::protos::trace::gpu::gpu_counter_event::*;
 use crate::protos::trace::gpu::gpu_log::*;
@@ -24,6 +25,13 @@ use crate::protos::trace::gpu::gpu_render_stage_event::*;
 use crate::protos::trace::gpu::vulkan_api_event::*;
 use crate::protos::trace::gpu::vulkan_memory_event::*;
 use crate::protos::trace::system_info::gpu_info::*;
+=======
+use crate::protos::trace::gpu::gpu_counter_event::*;
+use crate::protos::trace::gpu::gpu_log::*;
+use crate::protos::trace::gpu::gpu_render_stage_event::*;
+use crate::protos::trace::gpu::vulkan_api_event::*;
+use crate::protos::trace::gpu::vulkan_memory_event::*;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 use perfetto_sdk::protos::trace::trace_packet::TracePacket;
 
@@ -33,9 +41,12 @@ pb_msg_ext!(TracePacket {
     vulkan_memory_event: VulkanMemoryEvent, msg, 62,
     gpu_log: GpuLog, msg, 63,
     vulkan_api_event: VulkanApiEvent, msg, 65,
+<<<<<<< HEAD
     gpu_mem_total_event: GpuMemTotalEvent, msg, 71,
     gpu_info: GpuInfo, msg, 128,
     generic_gpu_frequency_event: GenericGpuFrequencyEvent, msg, 129,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 });
 
 /// Import this to use the extra `TracePacket` fields.

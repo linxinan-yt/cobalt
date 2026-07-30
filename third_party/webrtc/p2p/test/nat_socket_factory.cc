@@ -282,7 +282,11 @@ class NATSocket : public Socket {
     result = (socket_) ? socket_->Bind(addr) : -1;
     if (result >= 0) {
       socket_->SubscribeConnectEvent(
+<<<<<<< HEAD
           this, [this](Socket* socket) { OnConnectEvent(socket); });
+=======
+          [this](Socket* socket) { OnConnectEvent(socket); });
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       socket_->SubscribeReadEvent(
           this, [this](Socket* socket) { OnReadEvent(socket); });
       socket_->SubscribeWriteEvent(

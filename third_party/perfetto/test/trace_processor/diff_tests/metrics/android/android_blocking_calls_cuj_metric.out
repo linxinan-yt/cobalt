@@ -129,7 +129,7 @@ android_blocking_calls_cuj_metric {
     }
   }
   cuj {
-    id: 4
+    id: 3
     name: "CUJ_WITH_MANY_BLOCKING_CALLS"
     process {
       name: "com.google.android.third.process"
@@ -422,8 +422,13 @@ android_blocking_calls_cuj_metric {
     }
   }
   cuj {
+<<<<<<< HEAD
     id: 5
     name: "CUJ_WITH_NESTED_HANDLER"
+=======
+    id: 4
+    name: "CUJ_WITH_TOP_LEVEL_SLICES"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     process {
       name: "com.google.android.nested.handlers"
       uid: 10005
@@ -445,7 +450,7 @@ android_blocking_calls_cuj_metric {
     }
   }
   cuj {
-    id: 6
+    id: 5
     name: "OVERLAPPING_CUJ_1"
     process {
       name: "com.android.systemui"
@@ -468,7 +473,7 @@ android_blocking_calls_cuj_metric {
     }
   }
   cuj {
-    id: 7
+    id: 6
     name: "OVERLAPPING_CUJ_2"
     process {
       name: "com.android.systemui"
@@ -491,7 +496,7 @@ android_blocking_calls_cuj_metric {
     }
   }
   cuj {
-    id: 8
+    id: 7
     name: "WITH_NAMED_BINDER_TRANSACTION"
     process {
       name: "com.android.systemui"

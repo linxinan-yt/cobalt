@@ -35,15 +35,22 @@ class PprofTraceReader : public ChunkedTraceReader {
   ~PprofTraceReader() override;
 
   base::Status Parse(TraceBlobView blob) override;
+<<<<<<< HEAD
   base::Status OnPushDataToSorter() override;
   void OnEventsFullyExtracted() override {}
+=======
+  base::Status NotifyEndOfFile() override;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
  private:
   base::Status ParseProfile();
 
   TraceProcessorContext* const context_;
   std::vector<uint8_t> buffer_;
+<<<<<<< HEAD
   bool parsed_any_data_ = false;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // Constant strings interned at construction time
   const StringId unknown_string_id_;

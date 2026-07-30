@@ -60,7 +60,10 @@ void NumberRangeFormatterTest::runIndexedTest(int32_t index, UBool exec, const c
         TESTCASE_AUTO(test21683_StateLeak);
         TESTCASE_AUTO(testCreateLNRFFromNumberingSystemInSkeleton);
         TESTCASE_AUTO(test22288_DifferentStartEndSettings);
+<<<<<<< HEAD
         TESTCASE_AUTO(test23110_PercentApproximately);
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     TESTCASE_AUTO_END;
 }
 
@@ -1184,6 +1187,7 @@ void NumberRangeFormatterTest::test22288_DifferentStartEndSettings() {
         assertEquals("Should format successfully", u"2–3 US dollars", result.toString(status));
 }
 
+<<<<<<< HEAD
 void NumberRangeFormatterTest::test23110_PercentApproximately() {
     IcuTestErrorCode status(*this, "test23110_PercentApproximately");
 
@@ -1204,6 +1208,8 @@ void NumberRangeFormatterTest::test23110_PercentApproximately() {
         u"500,000% – 500,000,000%");
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 void  NumberRangeFormatterTest::assertFormatRange(
       const char16_t* message,
       const UnlocalizedNumberRangeFormatter& f,

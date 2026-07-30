@@ -708,6 +708,30 @@ hr{
                 one{"{0} permyriad"}
                 other{"{0} permyriada"}
             }
+            portion-per-1e9{
+                case{
+                    accusative{
+                        few{"{0} dijela na milijardu"}
+                        one{"{0} dio na milijardu"}
+                        other{"{0} dijelova na milijardu"}
+                    }
+                    genitive{
+                        few{"{0} dijela na milijardu"}
+                        one{"{0} dijela na milijardu"}
+                        other{"{0} dijelova na milijardu"}
+                    }
+                    instrumental{
+                        few{"{0} dijela na milijardu"}
+                        one{"{0} dijelom na milijardu"}
+                        other{"{0} dijelova na milijardu"}
+                    }
+                }
+                dnam{"dijelovi na milijardu"}
+                few{"{0} dijela na milijardu"}
+                gender{"inanimate"}
+                one{"{0} dio na milijardu"}
+                other{"{0} dijelova na milijardu"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1308,6 +1332,10 @@ hr{
                 gender{"feminine"}
                 one{"{0} noć"}
                 other{"{0} noći"}
+<<<<<<< HEAD
+=======
+                per{"{0}/noć"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 case{
@@ -2871,7 +2899,11 @@ hr{
                     }
                     instrumental{
                         few{"{0} milimetra živina stupca"}
+<<<<<<< HEAD
                         one{"{0} milimetrom živina stupca"}
+=======
+                        one{"{0} milimetar živina stupca"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                         other{"{0} milimetara živina stupca"}
                     }
                 }
@@ -2970,6 +3002,10 @@ hr{
                         other{"{0} svjetala"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"svjetlo"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 few{"{0} svjetla"}
                 gender{"neuter"}
                 one{"{0} svjetlo"}
@@ -3524,6 +3560,7 @@ hr{
                 one{"{0} mol"}
                 other{"{0} mola"}
             }
+<<<<<<< HEAD
             ofglucose{
                 dnam{"Glc"}
                 few{"{0} Glc"}
@@ -3535,6 +3572,10 @@ hr{
                 few{"{0} dijela"}
                 one{"{0} dio"}
                 other{"{0} dijelova"}
+=======
+            portion-per-1e9{
+                dnam{"dijelovi/milijarda"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         consumption{
@@ -3561,6 +3602,13 @@ hr{
                 few{"{0} m"}
                 one{"{0} m"}
                 other{"{0} m"}
+            }
+            night{
+                dnam{"noć"}
+                few{"{0} noći"}
+                one{"{0} noć"}
+                other{"{0} noći"}
+                per{"{0}/noć"}
             }
         }
         electric{
@@ -3676,6 +3724,14 @@ hr{
                 few{"{0} Hg"}
                 one{"{0} Hg"}
                 other{"{0} Hg"}
+            }
+        }
+        speed{
+            light-speed{
+                dnam{"svjetlo"}
+                few{"{0} svjetla"}
+                one{"{0} svjetlo"}
+                other{"{0} svjetala"}
             }
         }
         volume{
@@ -3819,6 +3875,9 @@ hr{
                 few{"{0} ‱"}
                 one{"{0} ‱"}
                 other{"{0} ‱"}
+            }
+            portion-per-1e9{
+                dnam{"dijelovi/milijarda"}
             }
         }
         consumption{

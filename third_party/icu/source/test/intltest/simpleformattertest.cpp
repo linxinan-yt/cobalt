@@ -91,10 +91,17 @@ void SimpleFormatterTest::TestNoArguments() {
 void SimpleFormatterTest::TestSyntaxErrors() {
     UErrorCode status = U_ZERO_ERROR;
     SimpleFormatter fmt("{}", status);
+<<<<<<< HEAD
     assertEquals("syntax error {}", U_ILLEGAL_ARGUMENT_ERROR, status);
     status = U_ZERO_ERROR;
     fmt.applyPattern("{12d", status);
     assertEquals("syntax error {12d", U_ILLEGAL_ARGUMENT_ERROR, status);
+=======
+    assertEquals("syntax error {}", static_cast<int32_t>(U_ILLEGAL_ARGUMENT_ERROR), status);
+    status = U_ZERO_ERROR;
+    fmt.applyPattern("{12d", status);
+    assertEquals("syntax error {12d", static_cast<int32_t>(U_ILLEGAL_ARGUMENT_ERROR), status);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 void SimpleFormatterTest::TestOneArgument() {

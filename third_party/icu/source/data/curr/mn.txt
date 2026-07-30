@@ -693,9 +693,12 @@ mn{
             one{"(тодорхойгүй мөнгөн тэмдэгтийн нэгж)"}
             other{"(тодорхойгүй мөнгөн тэмдэгт)"}
         }
+<<<<<<< HEAD
         ZWG{
             one{"Зимбабвегийн гоулд"}
             other{"Зимбабвегийн гоулд"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

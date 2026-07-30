@@ -220,8 +220,12 @@ void ThreadStateTracker::PushThreadState(int64_t ts,
 
   if (auto row_ref = GetLastRowRef(utid); row_ref && ts == row_ref->ts()) {
     // Detected two thread state event changes at the same time.
+<<<<<<< HEAD
     context_->stats_tracker->IncrementStats(
         stats::generic_task_state_invalid_order);
+=======
+    storage_->IncrementStats(stats::generic_task_state_invalid_order);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   AddOpenState(ts, utid, state, cpu);

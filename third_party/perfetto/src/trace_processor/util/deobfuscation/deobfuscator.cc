@@ -160,6 +160,7 @@ std::optional<ProguardMember> ParseMember(std::string line) {
 
   auto paren_idx = deobfuscated_name.find('(');
   if (paren_idx != std::string::npos) {
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/util/deobfuscation/deobfuscator.cc
     result.type = ProguardMemberType::kMethod;
 
     // Parse R8 format: "1:3:void foo():10:12" or "1:3:void foo():10"
@@ -181,6 +182,13 @@ std::optional<ProguardMember> ParseMember(std::string line) {
         }
         type_name = type_name.substr(second_colon + 1);
       }
+=======
+    member_type = ProguardMemberType::kMethod;
+    deobfuscated_name.resize(paren_idx);
+    auto colon_idx = type_name.find(':');
+    if (colon_idx != std::string::npos) {
+      type_name = type_name.substr(colon_idx + 1);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/profiling/deobfuscator.cc
     }
 
     // Extract source line range from deobfuscated_name suffix

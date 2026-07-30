@@ -611,10 +611,13 @@ tt{
             "EC$",
             "Көнчыгыш Кариб доллары",
         }
+<<<<<<< HEAD
         XCG{
             "Cg.",
             "кариб гульдены",
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         XOF{
             "F CFA",
             "Көнбатыш Африка КФА франкы",
@@ -639,10 +642,13 @@ tt{
             "ZMW",
             "Замбия квачасы",
         }
+<<<<<<< HEAD
         ZWG{
             "ZWG",
             "Зимбабве алтыны",
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
     CurrencyPlurals{
         AED{
@@ -1086,9 +1092,12 @@ tt{
         XCD{
             other{"Көнчыгыш Кариб долларлары"}
         }
+<<<<<<< HEAD
         XCG{
             other{"кариб гульдены"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         XOF{
             other{"Көнбатыш Африка КФА франклары"}
         }
@@ -1107,8 +1116,11 @@ tt{
         ZMW{
             other{"Замбия квачалары"}
         }
+<<<<<<< HEAD
         ZWG{
             other{"Зимбабве алтыны"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

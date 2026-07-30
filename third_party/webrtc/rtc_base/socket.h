@@ -185,8 +185,12 @@ class RTC_EXPORT Socket {
   void UnsubscribeConnectEvent(void* tag) {
     connect_event_callbacks_.RemoveReceivers(tag);
   }
+<<<<<<< HEAD
   [[deprecated]] void SubscribeConnectEvent(
       absl::AnyInvocable<void(Socket*)> callback) {
+=======
+  void SubscribeConnectEvent(absl::AnyInvocable<void(Socket*)> callback) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     connect_event_callbacks_.AddReceiver(std::move(callback));
   }
   void NotifyConnectEvent(Socket* socket) {
@@ -200,8 +204,12 @@ class RTC_EXPORT Socket {
   void UnsubscribeCloseEvent(void* tag) {
     close_event_callbacks_.RemoveReceivers(tag);
   }
+<<<<<<< HEAD
   [[deprecated]] void SubscribeCloseEvent(
       absl::AnyInvocable<void(Socket*, int)> callback) {
+=======
+  void SubscribeCloseEvent(absl::AnyInvocable<void(Socket*, int)> callback) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     close_event_callbacks_.AddReceiver(std::move(callback));
   }
   void NotifyCloseEvent(Socket* socket, int error) {

@@ -401,6 +401,7 @@ BASE_FEATURE(kPartitionAllocUsePriorityInheritanceLocks,
              FEATURE_DISABLED_BY_DEFAULT);
 #endif  // PA_BUILDFLAG(ENABLE_PARTITION_LOCK_PRIORITY_INHERITANCE)
 
+<<<<<<< HEAD
 // Note: There are two ChromeOS platforms (OVIS & REX) that are disabled for
 // this feature because of https://crbug.com/495493036.
 BASE_FEATURE(kPartitionAllocFreeWithSize, FEATURE_ENABLED_BY_DEFAULT);
@@ -409,5 +410,12 @@ BASE_FEATURE_PARAM(bool,
                    &kPartitionAllocFreeWithSize,
                    "strict-free-size-check",
                    true);
+=======
+#if BUILDFLAG(IS_COBALT)
+BASE_FEATURE(kPartitionAllocReuseMainPartitionForBuffers,
+             "PartitionAllocReuseMainPartitionForBuffers",
+             FEATURE_DISABLED_BY_DEFAULT);
+#endif  // BUILDFLAG(IS_COBALT)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 }  // namespace base::features

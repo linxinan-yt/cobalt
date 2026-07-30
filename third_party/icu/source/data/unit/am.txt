@@ -33,6 +33,10 @@ am{
                         other{"{0} ራዲያኖች"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"ራዲ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} ራዲ"}
                 other{"{0} ራዲ"}
             }
@@ -43,6 +47,10 @@ am{
                         other{"{0} ኡደቶች"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"ኡደት"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} ኡደት"}
                 other{"{0} ኡደት"}
             }
@@ -71,8 +79,14 @@ am{
                 one{"{0} ካሬ ሜትር"}
                 other{"{0} ካሬ ሜትር"}
             }
+            square-yard{
+                dnam{"ስኴር ያርድ"}
+                one{"{0} ስኴር ያርድ"}
+                other{"{0} ስኴር ያርድ"}
+            }
         }
         compound{
+            1024p8{"ዮቢ {0}"}
             10p-1{"ደሲ{0}"}
             10p-12{"ፒኮ{0}"}
             10p-15{"ፌምቶ{0}"}
@@ -85,6 +99,9 @@ am{
             10p1{"ዴካ{0}"}
             10p18{"ኤክሳ {0}"}
             10p2{"ሄክቶ{0}"}
+            10p21{"ዜታ {0}"}
+            10p24{"ዮታ {0}"}
+            10p27{"ሮና {0}"}
             10p3{"ኪሎ{0}"}
             10p6{"ሜጋ{0}"}
             10p9{"ጊጋ{0}"}
@@ -288,6 +305,10 @@ am{
                 dnam{"ለሊት"}
                 one{"{0}/ለሊት"}
                 other{"{0}/ለሊት"}
+<<<<<<< HEAD
+=======
+                per{"{0}/ለሊት"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 case{
@@ -319,6 +340,7 @@ am{
                         other{"{0} አምፒሮች"}
                     }
                 }
+<<<<<<< HEAD
                 one{"{0} አምፒር"}
                 other{"{0} አምፒር"}
             }
@@ -326,6 +348,11 @@ am{
                 dnam{"ሄነሪስ"}
                 one{"{0} ሄ"}
                 other{"{0} ሄ"}
+=======
+                dnam{"አምፒር"}
+                one{"{0} አምፒር"}
+                other{"{0} አምፒር"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             ohm{
                 case{
@@ -344,15 +371,54 @@ am{
                         other{"{0} ቮልቶች"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"ቮልት"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} ቮልት"}
                 other{"{0} ቮልት"}
             }
         }
         energy{
+<<<<<<< HEAD
             calorie-it{
                 dnam{"ካሎሪ [IT]"}
                 one{"{0} ካሎሪ [IT]"}
                 other{"{0} ካሎሪ [IT]"}
+=======
+            joule{
+                case{
+                    accusative{
+                        one{"{0} ጁልስ"}
+                        other{"{0} ጁልስ"}
+                    }
+                }
+                dnam{"ጁልስ"}
+                one{"{0} ጁልስ"}
+                other{"{0} ጁልስ"}
+            }
+            kilocalorie{
+                case{
+                    accusative{
+                        one{"{0} ኪሎ ካሎሪ"}
+                        other{"{0} ኪሎ ካሎሪ"}
+                    }
+                }
+                dnam{"ኪሎ ካሎሪ"}
+                one{"{0} ኪሎ ካሎሪ"}
+                other{"{0} ኪሎ ካሎሪ"}
+            }
+            kilojoule{
+                case{
+                    accusative{
+                        one{"{0} ኪጁ"}
+                        other{"{0} ኪጁ"}
+                    }
+                }
+                dnam{"ኪጁ"}
+                one{"{0} ኪጁ"}
+                other{"{0} ኪጁ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         force{
@@ -383,6 +449,55 @@ am{
                 other{"{0} ኒ"}
             }
         }
+<<<<<<< HEAD
+=======
+        frequency{
+            gigahertz{
+                case{
+                    accusative{
+                        one{"{0} ጊጋኸርዝ"}
+                        other{"{0} ጊጋኸርዝ"}
+                    }
+                }
+                dnam{"ጊጋኸርዝ"}
+                one{"{0} ጊጋኸርዝ"}
+                other{"{0} ጊጋኸርዝ"}
+            }
+            hertz{
+                case{
+                    accusative{
+                        one{"{0} ኸርዝ"}
+                        other{"{0} ኸርዝ"}
+                    }
+                }
+                dnam{"ኸርዝ"}
+                one{"{0} ኸርዝ"}
+                other{"{0} ኸርዝ"}
+            }
+            kilohertz{
+                case{
+                    accusative{
+                        one{"{0} ኪሎኸርዝ"}
+                        other{"{0} ኪሎኸርዝ"}
+                    }
+                }
+                dnam{"ኪሎኸርዝ"}
+                one{"{0} ኪሎኸርዝ"}
+                other{"{0} ኪሎኸርዝ"}
+            }
+            megahertz{
+                case{
+                    accusative{
+                        one{"{0} ሜጋኸርዝ"}
+                        other{"{0} ሜጋኸርዝ"}
+                    }
+                }
+                dnam{"ሜጋኸርዝ"}
+                one{"{0} ሜጋኸርዝ"}
+                other{"{0} ሜጋኸርዝ"}
+            }
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         graphics{
             em{
                 dnam{"ታይፖግራፊክ em"}
@@ -521,6 +636,14 @@ am{
                 one{"{0} ካራት"}
                 other{"{0} CD"}
             }
+<<<<<<< HEAD
+=======
+            dalton{
+                dnam{"ዳልተንስ"}
+                one{"{0} ዳልተንስ"}
+                other{"{0} ዳልተንስ"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             earth-mass{
                 one{"{0} ኤርዝማስስ"}
                 other{"{0} ኤርዝማስስ"}
@@ -552,8 +675,25 @@ am{
                         other{"{0} ማይክሮ ግራም"}
                     }
                 }
+<<<<<<< HEAD
                 one{"{0} ማግ"}
                 other{"{0} ማግ"}
+=======
+                dnam{"ማግ"}
+                one{"{0} ማግ"}
+                other{"{0} ማግ"}
+            }
+            milligram{
+                case{
+                    accusative{
+                        one{"{0} ሚግ"}
+                        other{"{0} ሚግ"}
+                    }
+                }
+                dnam{"ሚግ"}
+                one{"{0} ሚግ"}
+                other{"{0} ሚግ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             solar-mass{
                 one{"{0} ሶላር ማስስ"}
@@ -571,6 +711,17 @@ am{
             }
         }
         power{
+            gigawatt{
+                case{
+                    accusative{
+                        one{"{0} ጊዋ"}
+                        other{"{0} ጊዋ"}
+                    }
+                }
+                dnam{"ጊጋ ዋት"}
+                one{"{0} ጊዋ"}
+                other{"{0} ጊዋ"}
+            }
             horsepower{
                 one{"{0} የፈረስ ጉልበት"}
                 other{"{0} የፈረስ ጉልበት"}
@@ -586,10 +737,33 @@ am{
                 other{"{0} ኪሎዋት"}
             }
             megawatt{
+<<<<<<< HEAD
                 dnam{"ሜጋ ዋት"}
             }
             milliwatt{
                 dnam{"ሚሊ ዋት"}
+=======
+                case{
+                    accusative{
+                        one{"{0} ሜዋ"}
+                        other{"{0} ሜዋ"}
+                    }
+                }
+                dnam{"ሜጋ ዋት"}
+                one{"{0} ሜዋ"}
+                other{"{0} ሜዋ"}
+            }
+            milliwatt{
+                case{
+                    accusative{
+                        one{"{0} ሚዋ"}
+                        other{"{0} ሚዋ"}
+                    }
+                }
+                dnam{"ሚሊ ዋት"}
+                one{"{0} ሚዋ"}
+                other{"{0} ሚዋ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             watt{
                 case{
@@ -639,6 +813,17 @@ am{
                 one{"{0} ኪሎሜትር በሰዓት"}
                 other{"{0} ኪሎሜትር በሰዓት"}
             }
+            light-speed{
+                case{
+                    accusative{
+                        one{"{0} ብርሃን"}
+                        other{"{0} ብርሃን"}
+                    }
+                }
+                dnam{"ብርሃን"}
+                one{"{0} ብርሃን"}
+                other{"{0} ብርሃን"}
+            }
             meter-per-second{
                 case{
                     accusative{
@@ -676,6 +861,10 @@ am{
                         other{"{0} ኬልቪኖች"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"ኬ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} ኬ"}
                 other{"{0} ኬ"}
             }
@@ -710,6 +899,16 @@ am{
                 one{"{0} ኩቢክ ማይል"}
                 other{"{0} ኩቢክ ማይል"}
             }
+            cubic-yard{
+                dnam{"ኪዩቢክ ያርድ"}
+                one{"{0} ኪዩቢክ ያርድ"}
+                other{"{0} ኪዩቢክ ያርድ"}
+            }
+            cup{
+                dnam{"ኩባያ"}
+                one{"{0} ኩባያ"}
+                other{"{0} ኩባያ"}
+            }
             deciliter{
                 case{
                     accusative{
@@ -727,11 +926,29 @@ am{
                 other{"{0} Imp. fluid ኦንስስ"}
             }
             gallon{
+<<<<<<< HEAD
                 one{"{0}/ጋሎን"}
                 other{"{0}/ጋሎን"}
             }
             hectoliter{
                 dnam{"ሄክቶሊትር"}
+=======
+                dnam{"ጋሎን"}
+                one{"{0}/ጋሎን"}
+                other{"{0}/ጋሎን"}
+                per{"{0}/ጋሎን"}
+            }
+            hectoliter{
+                case{
+                    accusative{
+                        one{"{0} ሄሊ"}
+                        other{"{0} ሄሊ"}
+                    }
+                }
+                dnam{"ሄክቶሊትር"}
+                one{"{0} ሄሊ"}
+                other{"{0} ሄሊ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             liter{
                 case{
@@ -743,6 +960,20 @@ am{
                 one{"{0} ሊትር"}
                 other{"{0} ሊትር"}
             }
+<<<<<<< HEAD
+=======
+            megaliter{
+                case{
+                    accusative{
+                        one{"{0} ሜሊ"}
+                        other{"{0} ሜሊ"}
+                    }
+                }
+                dnam{"ሜጋሊትር"}
+                one{"{0} ሜሊ"}
+                other{"{0} ሜሊ"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             pint-metric{
                 case{
                     accusative{
@@ -752,6 +983,21 @@ am{
                 }
                 one{"{0} mpt"}
                 other{"{0} mpt"}
+            }
+            quart{
+                dnam{"ኳርትስ"}
+                one{"{0} ኳርትስ"}
+                other{"{0} ኳርትስ"}
+            }
+            tablespoon{
+                dnam{"የሻይ ማንኪያ"}
+                one{"{0} የሻይ ማንኪያ"}
+                other{"{0} የሻይ ማንኪያ"}
+            }
+            teaspoon{
+                dnam{"የሻይ ማንኪያዎች"}
+                one{"{0} የሻይ ማንኪያዎች"}
+                other{"{0} የሻይ ማንኪያዎች"}
             }
         }
     }
@@ -788,6 +1034,17 @@ am{
                 one{"{0} ማይል²"}
                 other{"{0} ማይል²"}
             }
+            square-yard{
+                one{"{0} ስኴር ያርድ"}
+                other{"{0} ስኴር ያርድ"}
+            }
+        }
+        compound{
+            1024p8{"ዮቢ {0}"}
+            10p-6{"ማይክሮ{0}"}
+            10p21{"ዜታ {0}"}
+            10p24{"ዮታ {0}"}
+            10p27{"ሮና {0}"}
         }
         concentr{
             katal{
@@ -844,6 +1101,12 @@ am{
                 one{"{0} ወር"}
                 other{"{0} ወር"}
             }
+            night{
+                dnam{"ለሊቶች"}
+                one{"{0} ለሊት"}
+                other{"{0} ለሊት"}
+                per{"{0}/ለሊት"}
+            }
             quarter{
                 one{"{0} ሩብ"}
                 other{"{0} ሩ"}
@@ -863,6 +1126,7 @@ am{
             }
         }
         electric{
+<<<<<<< HEAD
             henry{
                 dnam{"ሄ"}
                 one{"{0} ሄ"}
@@ -881,6 +1145,56 @@ am{
                 dnam{"ኪግ-ኃይል"}
                 one{"{0} ኪግ-ኃይል"}
                 other{"{0} ኪግ-ኃይል"}
+=======
+            ampere{
+                dnam{"አምፒር"}
+                one{"{0} አምፒር"}
+                other{"{0} አምፒር"}
+            }
+            volt{
+                dnam{"ቮልት"}
+                one{"{0} ቮልት"}
+                other{"{0} ቮልት"}
+            }
+        }
+        energy{
+            joule{
+                dnam{"ጁልስ"}
+                one{"{0} ጁልስ"}
+                other{"{0} ጁልስ"}
+            }
+            kilocalorie{
+                dnam{"ኪሎ ካሎሪ"}
+                one{"{0} ኪሎ ካሎሪ"}
+                other{"{0} ኪሎ ካሎሪ"}
+            }
+            kilojoule{
+                dnam{"ኪጁ"}
+                one{"{0} ኪጁ"}
+                other{"{0} ኪጁ"}
+            }
+        }
+        frequency{
+            gigahertz{
+                dnam{"ጊጋኸርዝ"}
+                one{"{0} ጊጋኸርዝ"}
+                other{"{0} ጊጋኸርዝ"}
+            }
+            hertz{
+                dnam{"ኸርዝ"}
+                one{"{0} ኸርዝ"}
+                other{"{0} ኸርዝ"}
+            }
+            kilohertz{
+                dnam{"ኪሎኸርዝ"}
+                one{"{0} ኪሎኸርዝ"}
+                other{"{0} ኪሎኸርዝ"}
+            }
+            megahertz{
+                dnam{"ሜጋኸርዝ"}
+                one{"{0} ሜጋኸርዝ"}
+                other{"{0} ሜጋኸርዝ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         graphics{
@@ -917,6 +1231,16 @@ am{
             carat{
                 dnam{"ካራት"}
             }
+            dalton{
+                dnam{"ዳልተንስ"}
+                one{"{0} ዳልተንስ"}
+                other{"{0} ዳልተንስ"}
+            }
+            microgram{
+                dnam{"ማግ"}
+                one{"{0} ማግ"}
+                other{"{0} ማግ"}
+            }
             milligram{
                 dnam{"ሚሊግራም"}
                 one{"{0} ሚሊግራም"}
@@ -926,10 +1250,25 @@ am{
         power{
             gigawatt{
                 dnam{"ጊዋ"}
+<<<<<<< HEAD
+=======
+                one{"{0} ጊዋ"}
+                other{"{0} ጊዋ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             horsepower{
                 one{"{0} የፈረስ ኃይል"}
                 other{"{0} የፈረስ ኃይል"}
+            }
+            megawatt{
+                dnam{"ሜዋ"}
+                one{"{0} ሜዋ"}
+                other{"{0} ሜዋ"}
+            }
+            milliwatt{
+                dnam{"ሚዋ"}
+                one{"{0} ሚዋ"}
+                other{"{0} ሚዋ"}
             }
         }
         pressure{
@@ -954,6 +1293,13 @@ am{
                 other{"{0} ሜፓ"}
             }
         }
+        speed{
+            light-speed{
+                dnam{"ብርሃን"}
+                one{"{0} ብርሃን"}
+                other{"{0} ብርሃን"}
+            }
+        }
         temperature{
             celsius{
                 one{"{0}°"}
@@ -965,13 +1311,38 @@ am{
                 one{"{0} ኤጫ"}
                 other{"{0} ኤጫ"}
             }
+<<<<<<< HEAD
+=======
+            cubic-yard{
+                dnam{"ኪዩቢክ ያርድ"}
+                one{"{0} ኪዩቢክ ያርድ"}
+                other{"{0} ኪዩቢክ ያርድ"}
+            }
+            cup{
+                dnam{"ኩባያ"}
+                one{"{0} ኩባያ"}
+                other{"{0} ኩባያ"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             dram{
                 one{"{0} ክመ"}
                 other{"{0} ክመ"}
             }
             gallon{
+<<<<<<< HEAD
                 one{"{0} ጋሎን"}
                 other{"{0} ጋሎን"}
+=======
+                dnam{"ጋሎን"}
+                one{"{0} ጋሎን"}
+                other{"{0} ጋሎን"}
+                per{"{0}/ጋሎን"}
+            }
+            hectoliter{
+                dnam{"ሄሊ"}
+                one{"{0} ሄሊ"}
+                other{"{0} ሄሊ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             megaliter{
                 one{"{0} ሜጋሊትር"}
@@ -981,9 +1352,24 @@ am{
                 one{"{0} ሚሊ"}
                 other{"{0} ሚሊ"}
             }
+            quart{
+                dnam{"ኳርትስ"}
+                one{"{0} ኳርትስ"}
+                other{"{0} ኳርትስ"}
+            }
             quart-imperial{
                 one{"{0} ፈመ"}
                 other{"{0} ፈመ"}
+            }
+            tablespoon{
+                dnam{"የሻይ ማንኪያ"}
+                one{"{0} የሻይ ማንኪያ"}
+                other{"{0} የሻይ ማንኪያ"}
+            }
+            teaspoon{
+                dnam{"የሻይ ማንኪያዎች"}
+                one{"{0} የሻይ ማንኪያዎች"}
+                other{"{0} የሻይ ማንኪያዎች"}
             }
         }
     }
@@ -1314,11 +1700,14 @@ am{
                 one{"{0} አምፒር"}
                 other{"{0} አምፒር"}
             }
+<<<<<<< HEAD
             henry{
                 dnam{"ሄ"}
                 one{"{0} ሄ"}
                 other{"{0} ሄ"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             volt{
                 dnam{"ቮልት"}
                 one{"{0} ቮልት"}

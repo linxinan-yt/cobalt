@@ -7,9 +7,15 @@
 #include <utility>
 
 #include "base/files/file.h"
+<<<<<<< HEAD
 #include "base/task/bind_post_task.h"
 #include "base/task/sequenced_task_runner.h"
 #include "base/task/thread_pool.h"
+=======
+#include "components/optimization_guide/machine_learning_tflite_buildflags.h" // nogncheck
+
+#if BUILDFLAG(BUILD_WITH_TFLITE_LIB)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "services/passage_embeddings/passage_embedder.h"
 
 namespace passage_embeddings {

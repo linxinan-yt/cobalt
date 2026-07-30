@@ -15,16 +15,38 @@
 #include <string>
 #include <vector>
 
+<<<<<<< HEAD
 #include "absl/strings/str_cat.h"
 #include "absl/strings/string_view.h"
 #include "api/rtp_header_extension_id.h"
 #include "rtc_base/checks.h"
 #include "test/gmock.h"
+=======
+#include "rtc_base/checks.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "test/gtest.h"
 
 namespace webrtc {
 
 namespace {
+<<<<<<< HEAD
+=======
+RtpParameters CreateRtpParametersWithCodecs(
+    const std::vector<bool>& active,
+    const std::vector<std::optional<RtpCodec>>& codecs) {
+  RTC_DCHECK_EQ(active.size(), codecs.size());
+
+  RtpParameters parameters;
+  for (size_t i = 0; i < codecs.size(); ++i) {
+    RtpEncodingParameters encoding;
+    encoding.active = active[i];
+    encoding.codec = codecs[i];
+    parameters.encodings.push_back(encoding);
+  }
+  return parameters;
+}
+}  // namespace
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 using ::testing::Pair;
 using ::testing::UnorderedElementsAre;
@@ -396,6 +418,7 @@ TEST(RtpParametersTest, IsMixedCodec) {
   EXPECT_TRUE(parameters.IsMixedCodec());
 }
 
+<<<<<<< HEAD
 TEST(RtpExtensionTest, ToStringAndStringifySanitize) {
   RtpExtension ext("http://example.com/test\r\n\\foo", RtpHeaderExtensionId(1));
 
@@ -426,4 +449,6 @@ TEST(CodecParameterMapTest, InitializerListWithAbslStringView) {
 }
 
 }  // namespace
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }  // namespace webrtc

@@ -259,7 +259,10 @@ TEST_F(GenericDecoderTest, UsesMappedColorSpaceIfSet) {
   FrameInfo frame_info;
   frame_info.rtp_timestamp = kRtpTimestamp;
   frame_info.decode_start = Timestamp::Zero();
+<<<<<<< HEAD
   frame_info.rotation = kVideoRotation_0;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   frame_info.content_type = VideoContentType::UNSPECIFIED;
   frame_info.frame_type = VideoFrameType::kVideoFrameKey;
   frame_info.color_space = kMappedColorSpace;
@@ -277,6 +280,7 @@ TEST_F(GenericDecoderTest, UsesMappedColorSpaceIfSet) {
   EXPECT_EQ(decoded_frame->color_space(), kMappedColorSpace);
 }
 
+<<<<<<< HEAD
 TEST_F(GenericDecoderTest, SetsScreenshareContentTypeIfSetInFrameInfo) {
   constexpr uint32_t kRtpTimestamp = 1;
   FrameInfo frame_info;
@@ -317,6 +321,8 @@ TEST_F(GenericDecoderTest, SetsUnspecifiedContentTypeIfSetInFrameInfo) {
   EXPECT_EQ(decoded_frame->content_type(), VideoContentType::UNSPECIFIED);
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 TEST_F(GenericDecoderTest, UsesDecoderColorSpaceIfNoneMapped) {
   constexpr uint32_t kRtpTimestamp = 1;
   const ColorSpace kDecoderColorSpace(
@@ -328,7 +334,10 @@ TEST_F(GenericDecoderTest, UsesDecoderColorSpaceIfNoneMapped) {
   FrameInfo frame_info;
   frame_info.rtp_timestamp = kRtpTimestamp;
   frame_info.decode_start = Timestamp::Zero();
+<<<<<<< HEAD
   frame_info.rotation = kVideoRotation_0;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   frame_info.content_type = VideoContentType::UNSPECIFIED;
   frame_info.frame_type = VideoFrameType::kVideoFrameKey;
   frame_info.color_space = std::nullopt;

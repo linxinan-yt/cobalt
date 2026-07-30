@@ -90,14 +90,18 @@ source_set("trace_redaction") {
     "../../protos/perfetto/trace/ftrace:zero",
     "../../protos/perfetto/trace/profiling:zero",
     "../../protos/perfetto/trace/ps:zero",
+<<<<<<< HEAD
     "../../protos/third_party/android/frameworks/base/proto/tracing:frameworks_base_trace_packet_zero",
     "../../protos/third_party/android/frameworks/native/tracing:frameworks_native_trace_packet_zero",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     "../base",
     "../trace_processor/util:blob",
     "../trace_processor/util:clock",
   ]
 }
 
+<<<<<<< HEAD
 if (enable_perfetto_integration_tests) {
   source_set("integrationtests") {
     testonly = true
@@ -132,6 +136,39 @@ if (enable_perfetto_integration_tests) {
       "../base:test_support",
     ]
   }
+=======
+source_set("integrationtests") {
+  testonly = true
+  sources = [
+    "boardphase_packet_filter_integrationtest.cc",
+    "collect_frame_cookies_integrationtest.cc",
+    "filter_sched_waking_events_integrationtest.cc",
+    "filter_task_rename_integrationtest.cc",
+    "process_thread_timeline_integrationtest.cc",
+    "prune_package_list_integrationtest.cc",
+    "prune_perf_events_integrationtest.cc",
+    "redact_sched_events_integrationtest.cc",
+    "reduce_threads_in_process_trees_integrationtest.cc",
+    "scrub_process_stats_integrationtest.cc",
+    "trace_processor_integrationtest.cc",
+    "trace_redaction_integration_fixture.cc",
+    "trace_redaction_integration_fixture.h",
+  ]
+  deps = [
+    ":trace_redaction",
+    "../../gn:default_deps",
+    "../../gn:gtest_and_gmock",
+    "../../include/perfetto/trace_processor:trace_processor",
+    "../../protos/perfetto/trace:non_minimal_cpp",
+    "../../protos/perfetto/trace:non_minimal_zero",
+    "../../protos/perfetto/trace/android:cpp",
+    "../../protos/perfetto/trace/android:zero",
+    "../../protos/perfetto/trace/ftrace:zero",
+    "../../protos/perfetto/trace/ps:zero",
+    "../base",
+    "../base:test_support",
+  ]
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 perfetto_unittest_source_set("unittests") {
@@ -170,7 +207,10 @@ perfetto_unittest_source_set("unittests") {
     "../../protos/perfetto/trace/ftrace:zero",
     "../../protos/perfetto/trace/ps:cpp",
     "../../protos/perfetto/trace/ps:zero",
+<<<<<<< HEAD
     "../../protos/third_party/android/frameworks/native/tracing:frameworks_native_trace_packet_zero",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     "../base",
     "../base:test_support",
   ]

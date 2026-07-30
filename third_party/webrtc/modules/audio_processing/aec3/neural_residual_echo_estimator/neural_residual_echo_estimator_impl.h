@@ -18,6 +18,10 @@
 #include <vector>
 
 #include "absl/base/nullability.h"
+<<<<<<< HEAD
+=======
+#include "api/array_view.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "api/audio/echo_canceller3_config.h"
 #include "api/audio/neural_residual_echo_estimator.h"
 #include "api/audio/tflite_model_handle.h"
@@ -28,9 +32,12 @@
 #include "modules/audio_processing/aec3/aec3_common.h"
 #include "modules/audio_processing/aec3/neural_residual_echo_estimator/neural_feature_extractor.h"
 #include "modules/audio_processing/logging/apm_data_dumper.h"
+<<<<<<< HEAD
 #include "rtc_base/checks.h"
 #include "rtc_base/synchronization/mutex.h"
 #include "rtc_base/thread_annotations.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "third_party/tflite/src/tensorflow/lite/model_builder.h"
 #include "third_party/tflite/src/tensorflow/lite/op_resolver.h"
 #ifdef WEBRTC_ANDROID_PLATFORM_BUILD

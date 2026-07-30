@@ -1543,14 +1543,22 @@ destBucket
 avg_duration (RavgDuration!
 max_duration (RmaxDuration!
 sum_duration (RsumDuration
+<<<<<<< HEAD
 Þ
+=======
+–
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 <protos/perfetto/metrics/android/wattson_in_time_period.protoperfetto.protos"ñ
 AndroidWattsonTimePeriodMetric%
 metric_version (RmetricVersion.
 power_model_version (RpowerModelVersionL
 period_info (2+.perfetto.protos.AndroidWattsonEstimateInfoR
 periodInfo*
+<<<<<<< HEAD
 is_crude_estimate (RisCrudeEstimate"‡
+=======
+is_crude_estimate (RisCrudeEstimate"­
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 AndroidWattsonEstimateInfo
 	period_id (RperiodId
 period_name (	R
@@ -1619,7 +1627,11 @@ $AndroidWattsonTasksAttributionMetric%
 power_model_version (RpowerModelVersionN
 period_info (2-.perfetto.protos.AndroidWattsonTaskPeriodInfoR
 periodInfo*
+<<<<<<< HEAD
 is_crude_estimate (RisCrudeEstimate"¢
+=======
+is_crude_estimate (RisCrudeEstimate"¢
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 AndroidWattsonTaskPeriodInfo
 	period_id (RperiodId
 period_name (	R

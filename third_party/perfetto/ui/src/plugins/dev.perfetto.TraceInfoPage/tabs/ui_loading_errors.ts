@@ -26,7 +26,13 @@ export interface UiLoadingErrorsTabAttrs {
   data: UiLoadingErrorsData;
 }
 
+<<<<<<< HEAD
 export class UiLoadingErrorsTab implements m.ClassComponent<UiLoadingErrorsTabAttrs> {
+=======
+export class UiLoadingErrorsTab
+  implements m.ClassComponent<UiLoadingErrorsTabAttrs>
+{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   view({attrs}: m.CVnode<UiLoadingErrorsTabAttrs>) {
     const errors = attrs.data.errors;
 

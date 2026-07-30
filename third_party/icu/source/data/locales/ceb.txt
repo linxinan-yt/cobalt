@@ -626,7 +626,7 @@ ceb{
                         "Hunyo",
                         "Hulyo",
                         "Agosto",
-                        "Septiyembre",
+                        "Septyembre",
                         "Oktubre",
                         "Nobyembre",
                         "Disyembre",
@@ -656,7 +656,11 @@ ceb{
                         "Hunyo",
                         "Hulyo",
                         "Agosto",
+<<<<<<< HEAD
                         "Septiyembre",
+=======
+                        "Septyembre",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                         "Oktubre",
                         "Nobyembre",
                         "Disyembre",

@@ -32,8 +32,11 @@
 #include "src/trace_processor/types/variadic.h"
 
 namespace perfetto::trace_processor {
+<<<<<<< HEAD
 
 class ArgsInserter;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 // Interns args into the storage from all ArgsTrackers across trace processor.
 // Note: most users will want to use ArgsTracker to push args to the strorage

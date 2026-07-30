@@ -15,6 +15,7 @@
 import m from 'mithril';
 import {Icons} from '../../../../../base/semantic_icons';
 import {MenuItem} from '../../../../../widgets/menu';
+<<<<<<< HEAD
 import type {
   TableColumn,
   RenderedCell,
@@ -24,13 +25,25 @@ import type {
 import type {SqlTableState} from '../state';
 import {
   type PerfettoSqlType,
+=======
+import {TableColumn, RenderedCell, TableManager} from '../table_column';
+import {SqlTableState} from '../state';
+import {
+  PerfettoSqlType,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   PerfettoSqlTypes,
   typesEqual,
   underlyingSqlType,
 } from '../../../../../trace_processor/perfetto_sql_type';
+<<<<<<< HEAD
 import {type SqlColumn, sqlColumnId, SqlExpression} from '../sql_column';
 import type {SqlValue} from '../../../../../trace_processor/query_result';
 import {createTableColumn} from '../columns';
+=======
+import {SqlColumn, sqlColumnId, SqlExpression} from '../sql_column';
+import {SqlValue} from '../../../../../trace_processor/query_result';
+import {createTableColumn} from '../create_column';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 type CastParams = {
   type: PerfettoSqlType;
@@ -99,6 +112,7 @@ export class CastColumn implements TableColumn {
     return this.wrappedColumn.getTitle?.();
   }
 
+<<<<<<< HEAD
   renderCell(value: SqlValue, context?: RenderCellContext): RenderedCell {
     // Delegate rendering to the appropriate column type based on the cast type
     // This allows proper formatting for timestamps, durations, etc.
@@ -107,6 +121,24 @@ export class CastColumn implements TableColumn {
 
   listDerivedColumns(context: ListColumnsContext) {
     return this.wrappedColumn.listDerivedColumns?.(context);
+=======
+  renderCell(
+    value: SqlValue,
+    tableManager?: TableManager,
+    supportingValues?: {} | undefined,
+  ): RenderedCell {
+    // Delegate rendering to the appropriate column type based on the cast type
+    // This allows proper formatting for timestamps, durations, etc.
+    return this.wrappedColumn.renderCell(value, tableManager, supportingValues);
+  }
+
+  supportingColumns() {
+    return this.wrappedColumn.supportingColumns?.() || (() => {});
+  }
+
+  listDerivedColumns(manager: TableManager) {
+    return this.wrappedColumn.listDerivedColumns?.(manager);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   getColumnSpecificMenuItems(args: {

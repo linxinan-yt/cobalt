@@ -16,6 +16,10 @@ pl{
                         few{"{0} przyspieszeniom ziemskim"}
                         many{"{0} przyspieszeniami ziemskimi"}
                         one{"przyspieszeniu ziemskiemu"}
+<<<<<<< HEAD
+=======
+                        other{"{0} przyspieszenia ziemskiego"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     }
                     genitive{
                         few{"{0} przyspieszeń ziemskich"}
@@ -27,11 +31,25 @@ pl{
                         few{"{0} przyspieszeniami ziemskimi"}
                         many{"{0} przyspieszeniami ziemskimi"}
                         one{"przyspieszeniem ziemskim"}
+<<<<<<< HEAD
+=======
+                        other{"{0} przyspieszenia ziemskiego"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     }
                     locative{
                         few{"{0} przyspieszeniach ziemskich"}
                         many{"{0} przyspieszeniach ziemskich"}
                         one{"przyspieszeniu ziemskim"}
+<<<<<<< HEAD
+=======
+                        other{"{0} przyspieszenia ziemskiego"}
+                    }
+                    vocative{
+                        few{"{0} przyspieszenia ziemskie"}
+                        many{"{0} przyspieszeń ziemskich"}
+                        one{"przyspieszenie ziemskie"}
+                        other{"{0} przyspieszenia ziemskiego"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     }
                 }
                 dnam{"przyspieszenie ziemskie"}
@@ -945,6 +963,28 @@ pl{
                 one{"{0} punkt bazowy"}
                 other{"{0} punktu bazowego"}
             }
+            portion-per-1e9{
+                case{
+                    accusative{
+                        few{"{0} części na miliard"}
+                        many{"{0} części na miliard"}
+                        one{"{0} część na miliard"}
+                        other{"{0} części na miliard"}
+                    }
+                    genitive{
+                        few{"{0} części na miliard"}
+                        many{"{0} części na miliard"}
+                        one{"{0} części na miliard"}
+                        other{"{0} części na miliard"}
+                    }
+                }
+                dnam{"części na miliard"}
+                few{"{0} części na miliard"}
+                gender{"feminine"}
+                many{"{0} części na miliard"}
+                one{"{0} część na miliard"}
+                other{"{0} części na miliard"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1650,11 +1690,19 @@ pl{
                         other{"{0} nocy"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"noce"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 few{"{0} noce"}
                 gender{"feminine"}
                 many{"{0} nocy"}
                 one{"{0} noc"}
                 other{"{0} nocy"}
+<<<<<<< HEAD
+=======
+                per{"{0}/noc"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 case{
@@ -5400,6 +5448,14 @@ pl{
                 other{"{0} m-ca"}
                 per{"{0}/m-c"}
             }
+            night{
+                dnam{"noce"}
+                few{"{0} noce"}
+                many{"{0} nocy"}
+                one{"{0} noc"}
+                other{"{0} nocy"}
+                per{"{0}/noc"}
+            }
             second{
                 dnam{"s"}
                 few{"{0} s"}
@@ -5472,6 +5528,13 @@ pl{
                 many{"{0} km/h"}
                 one{"{0} km/h"}
                 other{"{0}km/h"}
+            }
+            light-speed{
+                dnam{"św."}
+                few{"{0} św."}
+                many{"{0} św."}
+                one{"{0} św."}
+                other{"{0} św."}
             }
             mile-per-hour{
                 dnam{"mph"}

@@ -68,8 +68,12 @@ bool IsIoWait(uint8_t reason) {
 EtwParser::EtwParser(TraceProcessorContext* context)
     : context_(context),
       anonymized_process_string_id_(
+<<<<<<< HEAD
           context->storage->InternString("Anonymized Process")),
       disk_io_tracker_(context) {}
+=======
+          context->storage->InternString("Anonymized Process")) {}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 base::Status EtwParser::ParseEtwEvent(uint32_t cpu,
                                       int64_t ts,

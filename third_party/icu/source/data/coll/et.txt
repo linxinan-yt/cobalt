@@ -8,7 +8,11 @@ et{
                 "&[before 1]T<š<<<Š<z<<<Z<ž<<<Ž"
                 "&[before 1]X<õ<<<Õ<ä<<<Ä<ö<<<Ö<ü<<<Ü"
             }
+<<<<<<< HEAD
             Version{"48"}
+=======
+            Version{"47"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     }
 }

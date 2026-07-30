@@ -332,6 +332,15 @@ cy{
                 two{"{0}‱"}
                 zero{"{0}‱"}
             }
+            portion-per-1e9{
+                dnam{"rhannau fesul biliwn"}
+                few{"{0} rhan fesul biliwn"}
+                many{"{0} rhan fesul biliwn"}
+                one{"{0} rhan fesul biliwn"}
+                other{"{0} rhan fesul biliwn"}
+                two{"{0} rhan fesul biliwn"}
+                zero{"ppb"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -530,6 +539,16 @@ cy{
                 other{"{0} nanoeiliadau"}
                 two{"{0} nanoeiliadau"}
                 zero{"{0} nanoeiliadau"}
+            }
+            night{
+                dnam{"nosau"}
+                few{"{0} noson"}
+                many{"{0} noson"}
+                one{"{0} noson"}
+                other{"{0} noson"}
+                per{"{0}/noson"}
+                two{"{0} noson"}
+                zero{"{0} noson"}
             }
             quarter{
                 dnam{"chwarteri"}
@@ -1368,6 +1387,10 @@ cy{
                 zero{"{0} cilometr yr awr"}
             }
             light-speed{
+<<<<<<< HEAD
+=======
+                dnam{"golau"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 few{"golau"}
                 many{"golau"}
                 one{"golau"}
@@ -1882,6 +1905,14 @@ cy{
             percent{
                 dnam{"%"}
             }
+            portion-per-1e9{
+                few{"{0} ppb"}
+                many{"{0} ppb"}
+                one{"{0}ppb"}
+                other{"{0}ppb"}
+                two{"{0} ppb"}
+                zero{"{0} ppb"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -2035,10 +2066,18 @@ cy{
                 zero{"{0}m"}
             }
             night{
+<<<<<<< HEAD
+=======
+                dnam{"nosau"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 few{"{0}noson"}
                 many{"{0}noson"}
                 one{"{0}noson"}
                 other{"{0}noson"}
+<<<<<<< HEAD
+=======
+                per{"{0}/noson"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 two{"{0}noson"}
                 zero{"{0} noson"}
             }
@@ -2716,6 +2755,10 @@ cy{
                 zero{"{0}not"}
             }
             light-speed{
+<<<<<<< HEAD
+=======
+                dnam{"golau"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 few{"{0} golau"}
                 many{"{0} golau"}
                 one{"{0} golau"}
@@ -3147,6 +3190,9 @@ cy{
             }
             permyriad{
                 dnam{"permyriad"}
+            }
+            portion-per-1e9{
+                dnam{"rhannau/biliwn"}
             }
         }
         consumption{

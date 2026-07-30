@@ -104,9 +104,12 @@
 #include "test/time_controller/simulated_time_controller.h"
 
 using ::testing::_;
+<<<<<<< HEAD
 using ::testing::IsEmpty;
 using ::testing::Not;
 using ::testing::NotNull;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 using ::testing::Return;
 
 namespace webrtc {
@@ -256,9 +259,15 @@ scoped_refptr<MockRtpSenderInternal> CreateMockSender(
   EXPECT_CALL(*sender, ssrc()).WillRepeatedly(Return(ssrc));
   EXPECT_CALL(*sender, media_type()).WillRepeatedly(Return(media_type));
   EXPECT_CALL(*sender, GetParameters()).WillRepeatedly([s = sender.get()]() {
+<<<<<<< HEAD
     return s->GetParametersInternal(false, false);
   });
   EXPECT_CALL(*sender, GetParametersInternal(_, _)).WillRepeatedly([ssrc]() {
+=======
+    return s->GetParametersInternal();
+  });
+  EXPECT_CALL(*sender, GetParametersInternal()).WillRepeatedly([ssrc]() {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     RtpParameters params;
     params.encodings.push_back(RtpEncodingParameters());
     params.encodings[0].ssrc = ssrc;
@@ -2327,7 +2336,10 @@ TEST_P(RTCStatsCollectorTest, CollectRTCInboundRtpStreamStats_Audio) {
       .num_packets_reported_lost = 222, .num_packets_reported_recovered = 200};
   pc_->SetCallStats(call_stats);
 
+<<<<<<< HEAD
   RTC_ALLOW_PLAN_B_DEPRECATION_BEGIN();
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   auto voice_media_channels =
       pc_->AddVoiceChannel("AudioMid", "TransportName", voice_media_info);
   RTC_ALLOW_PLAN_B_DEPRECATION_END();
@@ -2521,7 +2533,10 @@ TEST_P(RTCStatsCollectorTest, CollectRTCInboundRtpStreamStats_Video) {
       .num_packets_reported_lost = 222, .num_packets_reported_recovered = 200};
   pc_->SetCallStats(call_stats);
 
+<<<<<<< HEAD
   RTC_ALLOW_PLAN_B_DEPRECATION_BEGIN();
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   auto video_media_channels =
       pc_->AddVideoChannel("VideoMid", "TransportName", video_media_info);
   RTC_ALLOW_PLAN_B_DEPRECATION_END();
@@ -3560,7 +3575,11 @@ TEST_P(RTCStatsCollectorTestWithParamKind,
 
   // The report block's timestamp cannot be from the future, set the fake clock
   // to match.
+<<<<<<< HEAD
   time_controller_.AdvanceTime(kReportBlockTimestampUtcOffset);
+=======
+  fake_clock_.SetTime(kReportBlockTimestampUtc);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   uint32_t ssrcs[] = {12, 13};
   std::vector<ReportBlockData> report_block_datas;
   Call::Stats call_stats;
@@ -3591,11 +3610,15 @@ TEST_P(RTCStatsCollectorTestWithParamKind,
                                std::nullopt);
   pc_->SetCallStats(call_stats);
 
+<<<<<<< HEAD
   const Timestamp expected_timestamp = std::get<1>(GetParam())
                                            ? kReportBlockTimestamp
                                            : kReportBlockTimestampUtc;
   scoped_refptr<const RTCStatsReport> report =
       stats_->GetStatsReport(main_thread_);
+=======
+  scoped_refptr<const RTCStatsReport> report = stats_->GetStatsReport();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   for (uint32_t ssrc : ssrcs) {
     std::string stream_id = "" + std::to_string(ssrc);
     RTCRemoteInboundRtpStreamStats expected_remote_inbound_rtp(

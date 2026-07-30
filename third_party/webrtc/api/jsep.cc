@@ -197,9 +197,14 @@ SessionDescriptionInterface::Create(
     EncodingOptions encoding_options) {
   if (!description && type != SdpType::kRollback)
     return nullptr;
+<<<<<<< HEAD
   return absl::WrapUnique(
       new SessionDescriptionInterface(type, std::move(description), id, version,
                                       std::move(candidates), encoding_options));
+=======
+  return absl::WrapUnique(new SessionDescriptionInterface(
+      type, std::move(description), id, version, std::move(candidates)));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 SessionDescriptionInterface::~SessionDescriptionInterface() = default;
@@ -226,14 +231,22 @@ SessionDescriptionInterface::SessionDescriptionInterface(
     std::unique_ptr<SessionDescription> desc,
     absl::string_view id,
     absl::string_view version,
+<<<<<<< HEAD
     std::vector<IceCandidateCollection> candidates,
     EncodingOptions encoding_options)
+=======
+    std::vector<IceCandidateCollection> candidates)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     : sdp_type_(type),
       id_(id),
       version_(version),
       description_(std::move(desc)),
+<<<<<<< HEAD
       candidate_collection_(std::move(candidates)),
       encoding_options_(encoding_options) {
+=======
+      candidate_collection_(std::move(candidates)) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   RTC_DCHECK(description() || type == SdpType::kRollback);
   RTC_DCHECK(candidate_collection_.empty() ||
              candidate_collection_.size() == number_of_mediasections());
@@ -249,8 +262,12 @@ SessionDescriptionInterface::Clone() const {
   RTC_DCHECK_RUN_ON(&sequence_checker_);
   return SessionDescriptionInterface::Create(
       sdp_type_, description() ? description()->Clone() : nullptr, id(),
+<<<<<<< HEAD
       version(), CloneCandidateCollection(candidate_collection_),
       encoding_options_);
+=======
+      version(), CloneCandidateCollection(candidate_collection_));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 bool SessionDescriptionInterface::AddCandidate(const IceCandidate* candidate) {

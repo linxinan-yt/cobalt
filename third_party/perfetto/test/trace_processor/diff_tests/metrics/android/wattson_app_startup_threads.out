@@ -1,7 +1,11 @@
 wattson_app_startup_threads {
   metric_version: 4
   power_model_version: 1
+<<<<<<< HEAD
   is_crude_estimate: 0
+=======
+  is_crude_estimate: false
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   period_info {
     period_id: 1
     task_info {

@@ -3,5 +3,9 @@
 // Generated using tools/cldr/cldr-to-icu/
 
 {
+<<<<<<< HEAD
     "cldrVersion": "48"
+=======
+    "cldrVersion": "47"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }

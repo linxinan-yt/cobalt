@@ -3,6 +3,7 @@
 // Generated using tools/cldr/cldr-to-icu/
 en{
     zoneStrings{
+<<<<<<< HEAD
         "America:Mexico_City"{
             ec{"Mexico City"}
         }
@@ -39,6 +40,11 @@ en{
         "Asia:Aqtau"{
             ec{"Aktau"}
         }
+=======
+        "Antarctica:Macquarie"{
+            ec{"Macquarie Island"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Asia:Qostanay"{
             ec{"Kostanay"}
         }
@@ -48,12 +54,15 @@ en{
         "Asia:Saigon"{
             ec{"Ho Chi Minh City"}
         }
+<<<<<<< HEAD
         "Atlantic:Canary"{
             ec{"Canaries"}
         }
         "Atlantic:Faeroe"{
             ec{"Faroes"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Australia:Lord_Howe"{
             ec{"Lord Howe Island"}
         }
@@ -69,8 +78,19 @@ en{
         "Europe:London"{
             ld{"British Summer Time"}
         }
+<<<<<<< HEAD
         "Indian:Chagos"{
             ec{"Chagos Archipelago"}
+=======
+        "Indian:Christmas"{
+            ec{"Christmas Island"}
+        }
+        "Indian:Cocos"{
+            ec{"Cocos Islands"}
+        }
+        "Pacific:Easter"{
+            ec{"Easter Island"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "Indian:Christmas"{
             ec{"Christmas Island"}
@@ -110,6 +130,12 @@ en{
         }
         "Pacific:Pitcairn"{
             ec{"Pitcairn Islands"}
+        }
+        "Pacific:Wake"{
+            ec{"Wake Island"}
+        }
+        "Pacific:Norfolk"{
+            ec{"Norfolk Island"}
         }
         "Pacific:Wake"{
             ec{"Wake Island"}

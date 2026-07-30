@@ -5,7 +5,11 @@
 #ifndef COMPONENTS_UPDATE_CLIENT_TEST_UTILS_H_
 #define COMPONENTS_UPDATE_CLIENT_TEST_UTILS_H_
 
+<<<<<<< HEAD
 #include <string_view>
+=======
+#include "build/build_config.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 namespace base {
 class FilePath;
@@ -24,6 +28,20 @@ namespace update_client {
 // should be handled by the caller.
 [[nodiscard]] base::FilePath DuplicateTestFile(const base::FilePath& temp_path,
                                                std::string_view file);
+
+#if BUILDFLAG(IS_STARBOARD)
+class ScopedStarboardInstallationMock {
+ public:
+  ScopedStarboardInstallationMock();
+  ~ScopedStarboardInstallationMock();
+
+  void SetInstallationPath(const char* path);
+  void SetRequestRollForwardSuccess(bool success);
+
+  ScopedStarboardInstallationMock(const ScopedStarboardInstallationMock&) = delete;
+  ScopedStarboardInstallationMock& operator=(const ScopedStarboardInstallationMock&) = delete;
+};
+#endif
 
 }  // namespace update_client
 

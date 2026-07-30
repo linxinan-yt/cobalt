@@ -128,7 +128,11 @@ def UploadArtifact(api, ctx, platform, out_dir, artifact):
 
   # Upload .pdb files (Windows only) to all target paths
   if api.platform.is_win:
+<<<<<<< HEAD
     pdb_path = exe_dir.join(artifact_ext + '.pdb')
+=======
+    pdb_path = exe_dir.joinpath(artifact_ext + '.pdb')
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     for gcs_path in gcs_paths:
       api.gsutil.upload(pdb_path, 'perfetto-luci-artifacts', gcs_path + '.pdb')
 

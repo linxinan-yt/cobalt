@@ -288,7 +288,11 @@ bn{
         kw{"কর্ণিশ"}
         kwk{"কোয়াক’ওয়ালা"}
         kxv{"কুভি"}
+<<<<<<< HEAD
         ky{"কিরগিজ"}
+=======
+        ky{"কির্গিজ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         la{"লাতিন"}
         lad{"লাদিনো"}
         lag{"লাঙ্গি"}
@@ -554,7 +558,11 @@ bn{
         wo{"ওলোফ"}
         wuu{"উ চীনা"}
         xal{"কাল্মাইক"}
+<<<<<<< HEAD
         xh{"খোসা"}
+=======
+        xh{"জোসা"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         xnr{"কাংরি"}
         xog{"সোগা"}
         yao{"ইয়াও"}
@@ -757,7 +765,11 @@ bn{
             hebrew{"হিব্রু ক্যালেন্ডার"}
             indian{"ভারতীয় জাতীয় বর্ষপঞ্জী"}
             islamic{"ইসলামিক ক্যালেন্ডার"}
+<<<<<<< HEAD
             islamic-civil{"ইসলামিক ক্যালেন্ডার (ছকবদ্ধ, নাগরিক বর্ষপঞ্জি)"}
+=======
+            islamic-civil{"ইসলামিক-সিভিল বর্ষপঞ্জী"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             islamic-rgsa{"ইসলামিক বর্ষপঞ্জী (সৌদি আরব, দৃশ্যমান)"}
             islamic-tbla{"ইসলামিক বর্ষপঞ্জী (ছকবদ্ধ, জ্যোতির্বিদ্যীয় যুগ)"}
             islamic-umalqura{"ইসলামিক বর্ষপঞ্জী (উম্মা আল-কুরআ)"}

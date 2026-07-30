@@ -336,6 +336,30 @@ public:
    */
   inline bool operator== (const UnicodeString& text) const;
 
+#ifndef U_HIDE_DRAFT_API
+  /**
+   * Equality operator. Performs only bitwise comparison with `text`
+   * which is, or which is implicitly convertible to,
+   * a std::u16string_view or (if U_SIZEOF_WCHAR_T==2) std::wstring_view.
+   *
+   * For performance, you can use UTF-16 string literals with compile-time
+   * length determination:
+   * \code
+   * UnicodeString str = ...;
+   * if (str == u"literal") { ... }
+   * \endcode
+   * @param text The string view to compare to this string.
+   * @return true if `text` contains the same characters as this one, false otherwise.
+   * @draft ICU 76
+   */
+  template<typename S, typename = std::enable_if_t<ConvertibleToU16StringView<S>>>
+  inline bool operator==(const S &text) const {
+    std::u16string_view sv(internal::toU16StringView(text));
+    int32_t len;
+    return !isBogus() && (len = length()) == static_cast<int32_t>(sv.length()) && doEquals(sv.data(), len);
+  }
+#endif  // U_HIDE_DRAFT_API
+
   /**
    * Equality operator. Performs only bitwise comparison with `text`
    * which is, or which is implicitly convertible to,
@@ -366,6 +390,30 @@ public:
    * @stable ICU 2.0
    */
   inline bool operator!= (const UnicodeString& text) const;
+
+#ifndef U_HIDE_DRAFT_API
+  /**
+   * Inequality operator. Performs only bitwise comparison with `text`
+   * which is, or which is implicitly convertible to,
+   * a std::u16string_view or (if U_SIZEOF_WCHAR_T==2) std::wstring_view.
+   *
+   * For performance, you can use std::u16string_view literals with compile-time
+   * length determination:
+   * \code
+   * #include &lt;string_view&gt;
+   * using namespace std::string_view_literals;
+   * UnicodeString str = ...;
+   * if (str != u"literal"sv) { ... }
+   * \endcode
+   * @param text The string view to compare to this string.
+   * @return false if `text` contains the same characters as this one, true otherwise.
+   * @draft ICU 76
+   */
+  template<typename S, typename = std::enable_if_t<ConvertibleToU16StringView<S>>>
+  inline bool operator!=(const S &text) const {
+    return !operator==(text);
+  }
+#endif  // U_HIDE_DRAFT_API
 
   /**
    * Inequality operator. Performs only bitwise comparison with `text`
@@ -1918,6 +1966,7 @@ public:
    * @stable ICU 2.0
    */
   inline UBool isBogus() const;
+<<<<<<< HEAD
 
 #ifndef U_HIDE_DRAFT_API
 private:
@@ -1954,6 +2003,8 @@ public:
    */
   unspecified_reverse_iterator rend() const { return std::u16string_view(*this).rend(); }
 #endif  // U_HIDE_DRAFT_API
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   //========================================
   // Write operations
@@ -2007,6 +2058,24 @@ public:
    * @stable ICU 2.4
    */
   UnicodeString &fastCopyFrom(const UnicodeString &src);
+
+#ifndef U_HIDE_DRAFT_API
+  /**
+   * Assignment operator. Replaces the characters in this UnicodeString
+   * with a copy of the characters from the `src`
+   * which is, or which is implicitly convertible to,
+   * a std::u16string_view or (if U_SIZEOF_WCHAR_T==2) std::wstring_view.
+   *
+   * @param src The string view containing the characters to copy.
+   * @return a reference to this
+   * @draft ICU 76
+   */
+  template<typename S, typename = std::enable_if_t<ConvertibleToU16StringView<S>>>
+  inline UnicodeString &operator=(const S &src) {
+    unBogus();
+    return doReplace(0, length(), internal::toU16StringView(src));
+  }
+#endif  // U_HIDE_DRAFT_API
 
   /**
    * Assignment operator. Replaces the characters in this UnicodeString
@@ -2273,6 +2342,23 @@ public:
    */
   inline UnicodeString& operator+= (const UnicodeString& srcText);
 
+#ifndef U_HIDE_DRAFT_API
+  /**
+   * Append operator. Appends the characters in `src`
+   * which is, or which is implicitly convertible to,
+   * a std::u16string_view or (if U_SIZEOF_WCHAR_T==2) std::wstring_view,
+   * to the UnicodeString object.
+   *
+   * @param src the source for the new characters
+   * @return a reference to this
+   * @draft ICU 76
+   */
+  template<typename S, typename = std::enable_if_t<ConvertibleToU16StringView<S>>>
+  inline UnicodeString& operator+=(const S &src) {
+    return doAppend(internal::toU16StringView(src));
+  }
+#endif  // U_HIDE_DRAFT_API
+
   /**
    * Append operator. Appends the characters in `src`
    * which is, or which is implicitly convertible to,
@@ -2343,6 +2429,23 @@ public:
    */
   inline UnicodeString& append(ConstChar16Ptr srcChars,
             int32_t srcLength);
+
+#ifndef U_HIDE_DRAFT_API
+  /**
+   * Appends the characters in `src`
+   * which is, or which is implicitly convertible to,
+   * a std::u16string_view or (if U_SIZEOF_WCHAR_T==2) std::wstring_view,
+   * to the UnicodeString object.
+   *
+   * @param src the source for the new characters
+   * @return a reference to this
+   * @draft ICU 76
+   */
+  template<typename S, typename = std::enable_if_t<ConvertibleToU16StringView<S>>>
+  inline UnicodeString& append(const S &src) {
+    return doAppend(internal::toU16StringView(src));
+  }
+#endif  // U_HIDE_DRAFT_API
 
   /**
    * Appends the characters in `src`
@@ -3092,11 +3195,19 @@ public:
    */
   const char16_t *getTerminatedBuffer();
 
+<<<<<<< HEAD
+=======
+#ifndef U_HIDE_DRAFT_API
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   /**
    * Converts to a std::u16string_view.
    *
    * @return a string view of the contents of this string
+<<<<<<< HEAD
    * @stable ICU 76
+=======
+   * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
    */
   inline operator std::u16string_view() const {
     return {getBuffer(), static_cast<std::u16string_view::size_type>(length())};
@@ -3110,7 +3221,11 @@ public:
    * about char16_t vs. wchar_t become clearer.
    *
    * @return a string view of the contents of this string
+<<<<<<< HEAD
    * @stable ICU 76
+=======
+   * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
    */
   inline operator std::wstring_view() const {
     const char16_t *p = getBuffer();
@@ -3120,6 +3235,10 @@ public:
     return { reinterpret_cast<const wchar_t *>(p), (std::wstring_view::size_type)length() };
   }
 #endif  // U_SIZEOF_WCHAR_T
+<<<<<<< HEAD
+=======
+#endif  // U_HIDE_DRAFT_API
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   //========================================
   // Constructors
@@ -3321,6 +3440,26 @@ public:
    * @stable ICU 59
    */
   inline UnicodeString(const std::nullptr_t text, int32_t textLength);
+
+#ifndef U_HIDE_DRAFT_API
+  /**
+   * Constructor from `text`
+   * which is, or which is implicitly convertible to,
+   * a std::u16string_view or (if U_SIZEOF_WCHAR_T==2) std::wstring_view.
+   * The string is bogus if the string view is too long.
+   *
+   * If you need a UnicodeString but need not copy the string view contents,
+   * then you can call the UnicodeString::readOnlyAlias() function instead of this constructor.
+   *
+   * @param text UTF-16 string
+   * @draft ICU 76
+   */
+  template<typename S, typename = std::enable_if_t<ConvertibleToU16StringView<S>>>
+  UNISTR_FROM_STRING_EXPLICIT UnicodeString(const S &text) {
+    fUnion.fFields.fLengthAndFlags = kShortString;
+    doAppend(internal::toU16StringViewNullable(text));
+  }
+#endif  // U_HIDE_DRAFT_API
 
   /**
    * Constructor from `text`
@@ -3635,6 +3774,58 @@ public:
    * @stable ICU 2.0
    */
   virtual ~UnicodeString();
+
+#ifndef U_HIDE_DRAFT_API
+  /**
+   * Readonly-aliasing factory method.
+   * Aliases the same buffer as the input `text`
+   * which is, or which is implicitly convertible to,
+   * a std::u16string_view or (if U_SIZEOF_WCHAR_T==2) std::wstring_view.
+   * The string is bogus if the string view is too long.
+   *
+   * The text will be used for the UnicodeString object, but
+   * it will not be released when the UnicodeString is destroyed.
+   * This has copy-on-write semantics:
+   * When the string is modified, then the buffer is first copied into
+   * newly allocated memory.
+   * The aliased buffer is never modified.
+   *
+   * In an assignment to another UnicodeString, when using the copy constructor
+   * or the assignment operator, the text will be copied.
+   * When using fastCopyFrom(), the text will be aliased again,
+   * so that both strings then alias the same readonly-text.
+   *
+   * @param text The string view to alias for the UnicodeString.
+   * @draft ICU 76
+   */
+  template<typename S, typename = std::enable_if_t<ConvertibleToU16StringView<S>>>
+  static inline UnicodeString readOnlyAlias(const S &text) {
+    return readOnlyAliasFromU16StringView(internal::toU16StringView(text));
+  }
+
+  /**
+   * Readonly-aliasing factory method.
+   * Aliases the same buffer as the input `text`.
+   *
+   * The text will be used for the UnicodeString object, but
+   * it will not be released when the UnicodeString is destroyed.
+   * This has copy-on-write semantics:
+   * When the string is modified, then the buffer is first copied into
+   * newly allocated memory.
+   * The aliased buffer is never modified.
+   *
+   * In an assignment to another UnicodeString, when using the copy constructor
+   * or the assignment operator, the text will be copied.
+   * When using fastCopyFrom(), the text will be aliased again,
+   * so that both strings then alias the same readonly-text.
+   *
+   * @param text The UnicodeString to alias.
+   * @draft ICU 76
+   */
+  static inline UnicodeString readOnlyAlias(const UnicodeString &text) {
+    return readOnlyAliasFromUnicodeString(text);
+  }
+#endif  // U_HIDE_DRAFT_API
 
   /**
    * Readonly-aliasing factory method.
@@ -4163,6 +4354,10 @@ private:
 U_COMMON_API UnicodeString U_EXPORT2
 operator+ (const UnicodeString &s1, const UnicodeString &s2);
 
+<<<<<<< HEAD
+=======
+#ifndef U_HIDE_DRAFT_API
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 /**
  * Creates a new UnicodeString from the concatenation of a UnicodeString and `s2`
  * which is, or which is implicitly convertible to,
@@ -4171,6 +4366,7 @@ operator+ (const UnicodeString &s1, const UnicodeString &s2);
  * @param s1 The string to be copied to the new one.
  * @param s2 The string view to be copied to the new string, after s1.
  * @return UnicodeString(s1).append(s2)
+<<<<<<< HEAD
  * @stable ICU 76
  */
 template<
@@ -4179,6 +4375,15 @@ template<
 inline UnicodeString operator+(const US &s1, const S &s2) {
   return unistr_internalConcat(s1, internal::toU16StringView(s2));
 }
+=======
+ * @draft ICU 76
+ */
+template<typename S, typename = std::enable_if_t<ConvertibleToU16StringView<S>>>
+inline UnicodeString operator+(const UnicodeString &s1, const S &s2) {
+  return unistr_internalConcat(s1, internal::toU16StringView(s2));
+}
+#endif  // U_HIDE_DRAFT_API
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 #ifndef U_FORCE_HIDE_INTERNAL_API
 /** @internal */

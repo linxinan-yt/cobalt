@@ -17,7 +17,11 @@ import {MultiselectInput} from '../../../widgets/multiselect_input';
 import {renderDocSection, renderWidgetShowcase} from '../widgets_page_utils';
 import {
   MultiSelect,
+<<<<<<< HEAD
   type MultiSelectDiff,
+=======
+  MultiSelectDiff,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   PopupMultiSelect,
 } from '../../../widgets/multiselect';
 import {PopupPosition} from '../../../widgets/popup';
@@ -37,7 +41,10 @@ const availableOptions: ReadonlyArray<string> = [
   'plugh',
   'xyzzy',
   'thud',
+<<<<<<< HEAD
   'a really really long option to test overflow and wrapping handling',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 ];
 let selectedOptions: string[] = ['foo', 'qux', 'grault'];
 

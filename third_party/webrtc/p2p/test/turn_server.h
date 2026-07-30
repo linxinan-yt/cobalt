@@ -97,7 +97,11 @@ class TurnServerAllocation final {
   std::string ToString() const;
 
   void HandleTurnMessage(const TurnMessage* msg, EcnMarking ecn);
+<<<<<<< HEAD
   void HandleChannelData(std::span<const uint8_t> payload, EcnMarking ecn);
+=======
+  void HandleChannelData(ArrayView<const uint8_t> payload, EcnMarking ecn);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
  private:
   struct Channel {
@@ -290,7 +294,11 @@ class TurnServer {
   void OnInternalSocketClose(AsyncPacketSocket* socket, int err);
 
   void HandleStunMessage(TurnServerConnection* conn,
+<<<<<<< HEAD
                          std::span<const uint8_t> payload,
+=======
+                         ArrayView<const uint8_t> payload,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                          EcnMarking ecn) RTC_RUN_ON(thread_);
   void HandleBindingRequest(TurnServerConnection* conn, const StunMessage* msg)
       RTC_RUN_ON(thread_);

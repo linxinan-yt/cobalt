@@ -511,10 +511,16 @@ UBool NormalizerConformanceTest::checkNorm(UNormalizationMode mode, int32_t opti
 
     // Do the Edits cover the entire input & output?
     UBool pass = true;
+<<<<<<< HEAD
     pass &= assertEquals("edits.hasChanges()", s8 != out8, edits.hasChanges());
     pass &= assertEquals("edits.lengthDelta()",
                          static_cast<int64_t>(out8.length()) - static_cast<int64_t>(s8.length()),
                          edits.lengthDelta());
+=======
+    pass &= assertEquals("edits.hasChanges()", static_cast<UBool>(s8 != out8), edits.hasChanges());
+    pass &= assertEquals("edits.lengthDelta()",
+                         static_cast<int32_t>(out8.length() - s8.length()), edits.lengthDelta());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     Edits::Iterator iter = edits.getCoarseIterator();
     while (iter.next(errorCode)) {}
     pass &= assertEquals("edits source length", s8.length(), iter.sourceIndex());

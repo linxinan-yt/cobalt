@@ -34,7 +34,11 @@
 
 U_NAMESPACE_BEGIN
 
+<<<<<<< HEAD
 class FixedString;
+=======
+class CharString;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 namespace number::impl {
 class DecimalQuantity;

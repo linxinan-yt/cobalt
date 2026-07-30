@@ -67,6 +67,7 @@ macro_rules! pb_enum {
 /// Defines the type for a protobuf message. `name` is the name of the message type.
 #[macro_export]
 macro_rules! pb_msg {
+<<<<<<< HEAD
     // Empty message (no fields)
     (
         $name:ident {
@@ -83,6 +84,8 @@ macro_rules! pb_msg {
     };
 
     // Message with fields
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     (
         $name:ident {
             $( $field:ident : $tp:tt, $kind:ident, $id:literal ),+ $(,)?

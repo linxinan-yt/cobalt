@@ -8125,9 +8125,15 @@ void NumberFormatTest::TestAccountingCurrency() {
     expect(NumberFormat::createInstance("de_DE", style, status),
         Formattable(-23456.7), UnicodeString("-23.456,70\\u00A0\\u20AC").unescape(), true, status);
     expect(NumberFormat::createInstance("en_ID", style, status),
+<<<<<<< HEAD
         Formattable(static_cast<double>(0)), UnicodeString("Rp\\u00A00").unescape(), true, status);
     expect(NumberFormat::createInstance("en_ID", style, status),
         Formattable(-0.2), UnicodeString("(Rp\\u00A00)").unescape(), true, status);
+=======
+        Formattable(static_cast<double>(0)), UnicodeString("Rp\\u00A00,00").unescape(), true, status);
+    expect(NumberFormat::createInstance("en_ID", style, status),
+        Formattable(-0.2), UnicodeString("(Rp\\u00A00,20)").unescape(), true, status);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     expect(NumberFormat::createInstance("sh_ME", style, status),
         Formattable(static_cast<double>(0)), UnicodeString("0,00\\u00A0\\u20AC").unescape(), true, status);
     expect(NumberFormat::createInstance("sh_ME", style, status),
@@ -8222,7 +8228,11 @@ void NumberFormatTest::TestCurrencyUsage() {
 
             // test the getter here
             UCurrencyUsage curUsage = fmt->getCurrencyUsage();
+<<<<<<< HEAD
             assertEquals("Test usage getter - standard", curUsage, UCURR_USAGE_STANDARD);
+=======
+            assertEquals("Test usage getter - standard", static_cast<int32_t>(curUsage), static_cast<int32_t>(UCURR_USAGE_STANDARD));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
             fmt->setCurrencyUsage(UCURR_USAGE_CASH, &status);
         }else{
@@ -8234,7 +8244,11 @@ void NumberFormatTest::TestCurrencyUsage() {
 
         // must be usage = cash
         UCurrencyUsage curUsage = fmt->getCurrencyUsage();
+<<<<<<< HEAD
         assertEquals("Test usage getter - cash", curUsage, UCURR_USAGE_CASH);
+=======
+        assertEquals("Test usage getter - cash", static_cast<int32_t>(curUsage), static_cast<int32_t>(UCURR_USAGE_CASH));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
         UnicodeString cash_currency;
         fmt->format(agent,cash_currency);
@@ -9056,9 +9070,15 @@ void NumberFormatTest::TestFormatFailIfMoreThanMaxDigits() {
     if (status.errDataIfFailureAndReset()) {
         return;
     }
+<<<<<<< HEAD
     assertEquals("Coverage for getter 1", false, df.isFormatFailIfMoreThanMaxDigits());
     df.setFormatFailIfMoreThanMaxDigits(true);
     assertEquals("Coverage for getter 2", true, df.isFormatFailIfMoreThanMaxDigits());
+=======
+    assertEquals("Coverage for getter 1", static_cast<UBool>(false), df.isFormatFailIfMoreThanMaxDigits());
+    df.setFormatFailIfMoreThanMaxDigits(true);
+    assertEquals("Coverage for getter 2", static_cast<UBool>(true), df.isFormatFailIfMoreThanMaxDigits());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     df.setMaximumIntegerDigits(2);
     UnicodeString result;
     df.format(1234, result, status);
@@ -9072,9 +9092,15 @@ void NumberFormatTest::TestParseCaseSensitive() {
     if (status.errDataIfFailureAndReset()) {
         return;
     }
+<<<<<<< HEAD
     assertEquals("Coverage for getter 1", false, df.isParseCaseSensitive());
     df.setParseCaseSensitive(true);
     assertEquals("Coverage for getter 1", true, df.isParseCaseSensitive());
+=======
+    assertEquals("Coverage for getter 1", static_cast<UBool>(false), df.isParseCaseSensitive());
+    df.setParseCaseSensitive(true);
+    assertEquals("Coverage for getter 1", static_cast<UBool>(true), df.isParseCaseSensitive());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     Formattable result;
     ParsePosition ppos;
     df.parse(u"1e2", result, ppos);
@@ -9089,9 +9115,15 @@ void NumberFormatTest::TestParseNoExponent() {
     if (status.errDataIfFailureAndReset()) {
         return;
     }
+<<<<<<< HEAD
     assertEquals("Coverage for getter 1", false, df.isParseNoExponent());
     df.setParseNoExponent(true);
     assertEquals("Coverage for getter 1", true, df.isParseNoExponent());
+=======
+    assertEquals("Coverage for getter 1", static_cast<UBool>(false), df.isParseNoExponent());
+    df.setParseNoExponent(true);
+    assertEquals("Coverage for getter 1", static_cast<UBool>(true), df.isParseNoExponent());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     Formattable result;
     ParsePosition ppos;
     df.parse(u"1E2", result, ppos);
@@ -9106,9 +9138,15 @@ void NumberFormatTest::TestSignAlwaysShown() {
     if (status.errDataIfFailureAndReset()) {
         return;
     }
+<<<<<<< HEAD
     assertEquals("Coverage for getter 1", false, df.isSignAlwaysShown());
     df.setSignAlwaysShown(true);
     assertEquals("Coverage for getter 1", true, df.isSignAlwaysShown());
+=======
+    assertEquals("Coverage for getter 1", static_cast<UBool>(false), df.isSignAlwaysShown());
+    df.setSignAlwaysShown(true);
+    assertEquals("Coverage for getter 1", static_cast<UBool>(true), df.isSignAlwaysShown());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     UnicodeString result;
     df.format(1234, result, status);
     status.errIfFailureAndReset();

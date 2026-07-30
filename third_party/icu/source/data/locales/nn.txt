@@ -65,6 +65,16 @@ nn{
         }
     }
     calendar{
+<<<<<<< HEAD
+=======
+        generic{
+            intervalFormats{
+                yMMMEd{
+                    d{"E d.–E d. MMM y G"}
+                }
+            }
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         gregorian{
             AmPmMarkersAbbr{
                 "f.m.",
@@ -798,6 +808,20 @@ nn{
         }
         week-narrow{
             dn{"v."}
+<<<<<<< HEAD
+=======
+            relativePeriod{"veka med {0}"}
+            relativeTime{
+                future{
+                    one{"om {0} v."}
+                    other{"om {0} v."}
+                }
+                past{
+                    one{"for {0} v. sidan"}
+                    other{"for {0} v. sidan"}
+                }
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         week-short{
             relativePeriod{"veka med {0}"}

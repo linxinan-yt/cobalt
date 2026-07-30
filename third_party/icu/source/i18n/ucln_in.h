@@ -64,7 +64,10 @@ typedef enum ECleanupI18NType {
     UCLN_I18N_LIST_FORMATTER,
     UCLN_I18N_NUMSYS,
     UCLN_I18N_MF2_UNISETS,
+<<<<<<< HEAD
     UCLN_I18N_MF2_DATE_PARSERS,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     UCLN_I18N_COUNT /* This must be last */
 } ECleanupI18NType;
 

@@ -249,6 +249,7 @@ TEST_F(PeerConnectionPrAnswerSwitchTest, SendMediaNoDataChannel) {
 }
 
 TEST_F(PeerConnectionPrAnswerSwitchTest, MediaWithCcfbFirstThenTwcc) {
+<<<<<<< HEAD
   // CCFB negotiation is asymmetric: the generator sets the flag but doesn't
   // add it to codecs' feedback_params, while the parser adds it to codecs'
   // feedback_params. This causes false positive munging detection (71, 86)
@@ -256,6 +257,9 @@ TEST_F(PeerConnectionPrAnswerSwitchTest, MediaWithCcfbFirstThenTwcc) {
   SetFieldTrials(
       "WebRTC-RFC8888CongestionControlFeedback/Enabled,offer:true/"
       "WebRTC-NoSdpMangleAllowForTesting/Enabled,71,86/");
+=======
+  SetFieldTrials("WebRTC-RFC8888CongestionControlFeedback/Enabled,offer:true/");
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   SetFieldTrials("Callee2",
                  "WebRTC-RFC8888CongestionControlFeedback/Disabled/");
   std::unique_ptr<PeerConnectionIntegrationWrapper> second_callee =
@@ -289,6 +293,15 @@ TEST_F(PeerConnectionPrAnswerSwitchTest, MediaWithCcfbFirstThenTwcc) {
                   Gt(0)),
               IsRtcOk());
   // There should be no transport-cc generated.
+<<<<<<< HEAD
+=======
+  EXPECT_THAT(
+      caller_pc_internal->FeedbackAccordingToTransportCcCountForTesting(),
+      Eq(0));
+  // The final answer does TWCC and send audio and video.
+  second_callee->AddAudioVideoTracks();
+  second_callee->ReceiveSdpMessage(SdpType::kOffer, saved_offer);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   EXPECT_THAT(
       caller_pc_internal->FeedbackAccordingToTransportCcCountForTesting(),
       Eq(0));

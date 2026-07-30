@@ -1170,6 +1170,46 @@ cs{
                 one{"{0} desetina promile"}
                 other{"{0} desetin promile"}
             }
+            portion-per-1e9{
+                case{
+                    accusative{
+                        few{"{0} částice na miliardu"}
+                        many{"{0} částice na miliardu"}
+                        one{"{0} částici na miliardu"}
+                        other{"{0} částic na miliardu"}
+                    }
+                    dative{
+                        few{"{0} částicím na miliardu"}
+                        many{"{0} částice na miliardu"}
+                        one{"{0} částici na miliardu"}
+                        other{"{0} částicím na miliardu"}
+                    }
+                    genitive{
+                        few{"{0} částic na miliardu"}
+                        many{"{0} částice na miliardu"}
+                        one{"{0} částice na miliardu"}
+                        other{"{0} částic na miliardu"}
+                    }
+                    instrumental{
+                        few{"{0} částicemi na miliardu"}
+                        many{"{0} částice na miliardu"}
+                        one{"{0} částicí na miliardu"}
+                        other{"{0} částicemi na miliardu"}
+                    }
+                    locative{
+                        few{"{0} částicích na miliardu"}
+                        many{"{0} částice na miliardu"}
+                        one{"{0} částici na miliardu"}
+                        other{"{0} částicích na miliardu"}
+                    }
+                }
+                dnam{"částice na miliardu"}
+                few{"{0} částice na miliardu"}
+                gender{"feminine"}
+                many{"{0} částice na miliardu"}
+                one{"{0} částice na miliardu"}
+                other{"{0} částic na miliardu"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -2140,6 +2180,10 @@ cs{
                         other{"{0} nocích"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"noci"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 few{"{0} noci"}
                 gender{"feminine"}
                 many{"{0} noci"}
@@ -3676,6 +3720,10 @@ cs{
                         other{"{0} bodech"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"body"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 few{"{0} body"}
                 gender{"inanimate"}
                 many{"{0} bodu"}
@@ -4612,31 +4660,51 @@ cs{
                 case{
                     accusative{
                         few{"{0} milimetry rtuťového sloupce"}
+<<<<<<< HEAD
                         many{"{0} milimetru rtuťového sloupce"}
+=======
+                        many{"{0} milimetrů rtuťového sloupce"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                         one{"{0} milimetr rtuťového sloupce"}
                         other{"{0} milimetrů rtuťového sloupce"}
                     }
                     dative{
                         few{"{0} milimetrům rtuťového sloupce"}
+<<<<<<< HEAD
                         many{"{0} milimetru rtuťového sloupce"}
+=======
+                        many{"{0} milimetrům rtuťového sloupce"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                         one{"{0} milimetru rtuťového sloupce"}
                         other{"{0} milimetrům rtuťového sloupce"}
                     }
                     genitive{
                         few{"{0} milimetrů rtuťového sloupce"}
+<<<<<<< HEAD
                         many{"{0} milimetru rtuťového sloupce"}
+=======
+                        many{"{0} milimetrů rtuťového sloupce"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                         one{"{0} milimetru rtuťového sloupce"}
                         other{"{0} milimetrů rtuťového sloupce"}
                     }
                     instrumental{
                         few{"{0} milimetry rtuťového sloupce"}
+<<<<<<< HEAD
                         many{"{0} milimetru rtuťového sloupce"}
+=======
+                        many{"{0} milimetry rtuťového sloupce"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                         one{"{0} milimetrem rtuťového sloupce"}
                         other{"{0} milimetry rtuťového sloupce"}
                     }
                     locative{
                         few{"{0} milimetrech rtuťového sloupce"}
+<<<<<<< HEAD
                         many{"{0} milimetru rtuťového sloupce"}
+=======
+                        many{"{0} milimetrech rtuťového sloupce"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                         one{"{0} milimetru rtuťového sloupce"}
                         other{"{0} milimetrech rtuťového sloupce"}
                     }
@@ -4791,6 +4859,10 @@ cs{
                         other{"{0} světlech"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"světlo"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 few{"{0} světla"}
                 gender{"neuter"}
                 many{"{0} světla"}
@@ -5711,6 +5783,14 @@ cs{
                 other{"{0} m."}
                 per{"{0}/m."}
             }
+            night{
+                dnam{"noci"}
+                few{"{0} noci"}
+                many{"{0} noci"}
+                one{"{0} noc"}
+                other{"{0} nocí"}
+                per{"{0}/noc"}
+            }
             quarter{
                 dnam{"kv."}
                 few{"{0} kv."}
@@ -5797,6 +5877,10 @@ cs{
         }
         speed{
             light-speed{
+<<<<<<< HEAD
+=======
+                dnam{"světlo"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 few{"{0} sv."}
                 many{"{0} sv."}
                 one{"{0} sv."}
@@ -5943,6 +6027,13 @@ cs{
                 many{"{0} ‱"}
                 one{"{0} ‱"}
                 other{"{0} ‱"}
+            }
+            portion-per-1e9{
+                dnam{"částic/mld."}
+                few{"{0} částice na mld"}
+                many{"{0} částic na mld"}
+                one{"{0} částice na mld"}
+                other{"{0} částic na mld"}
             }
         }
         consumption{

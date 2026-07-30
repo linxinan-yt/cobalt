@@ -131,7 +131,11 @@ TargetFilter ParseTargetFilter(
 // returns |std::nullopt| if the input is invalid.
 std::optional<uint32_t> ChooseActualRingBufferPages(uint32_t config_value) {
   if (!config_value) {
+<<<<<<< HEAD
     static_assert(base::IsPowerOfTwo(kDefaultDataPagesPerRingBuffer));
+=======
+    static_assert(IsPowerOfTwo(kDefaultDataPagesPerRingBuffer));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     return std::make_optional(kDefaultDataPagesPerRingBuffer);
   }
 
@@ -313,6 +317,7 @@ std::optional<PerfCounter> MakePerfCounter(
                                      tracepoint_pb.filter(), *maybe_id);
     } else if (event_desc.has_raw_event()) {
       const auto& raw = event_desc.raw_event();
+<<<<<<< HEAD
       if (!raw.pmu_name().empty() && raw.has_type()) {
         PERFETTO_ELOG("raw_event cannot specify both type and pmu_name.");
         return std::nullopt;
@@ -328,6 +333,10 @@ std::optional<PerfCounter> MakePerfCounter(
       }
       return PerfCounter::RawEvent(name, *raw_type, raw.config(), raw.config1(),
                                    raw.config2());
+=======
+      return PerfCounter::RawEvent(name, raw.type(), raw.config(),
+                                   raw.config1(), raw.config2());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     } else {
       return PerfCounter::BuiltinCounter(
           name, protos::gen::PerfEvents::PerfEvents::SW_CPU_CLOCK,

@@ -432,6 +432,7 @@ Executes a PerfettoSQL query and displays results in a new query tab.
 }
 ```
 
+<<<<<<< HEAD
 **Example with tab title:**
 
 ```json
@@ -464,6 +465,8 @@ Add a note for a given timestamp in trace clock with specific text.
 }
 ```
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 ### Macro Commands
 
 Macros are user-defined sequences of commands that execute in order. They
@@ -471,6 +474,7 @@ provide a way to automate complex, multi-step analysis workflows.
 
 #### User-defined Macros
 
+<<<<<<< HEAD
 Macros can be defined through the UI settings (**Settings > Macros**). Each
 macro has a unique ID that you define, which becomes the command ID used to
 invoke it.
@@ -478,6 +482,14 @@ invoke it.
 **Command Pattern:**
 
 - `{macro.id}` - Executes the macro with the specified ID
+=======
+Macros can be defined through the UI settings and automatically get stable
+command IDs.
+
+**Command Pattern:**
+
+- `dev.perfetto.UserMacro.{macroName}` - Executes a user-defined macro
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 **Arguments:**
 
@@ -487,7 +499,11 @@ None (macro commands and arguments are pre-configured)
 
 ```json
 {
+<<<<<<< HEAD
   "id": "user.myteam.MyAnalysisWorkflow",
+=======
+  "id": "dev.perfetto.UserMacro.MyAnalysisWorkflow",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   "args": []
 }
 ```
@@ -495,19 +511,25 @@ None (macro commands and arguments are pre-configured)
 **Notes:**
 
 - Each macro contains a sequence of commands that execute in order
+<<<<<<< HEAD
 - Macro IDs should use reverse-domain style naming (e.g.,
   `user.myteam.MacroName`, `com.company.AnalysisWorkflow`)
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 - When used as startup commands, all commands within the macro must also be
   allowlisted
 - Macros can include any stable automation command from this reference
 - Failed commands within a macro are logged but don't stop execution of
   remaining commands
 
+<<<<<<< HEAD
 > **Note (Migration):** The macros format was changed from a dictionary to an
 > array structure. Existing macros were automatically migrated and use IDs in
 > the format `dev.perfetto.UserMacro.<old_name>`. New macros should use
 > reverse-domain style IDs.
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 ---
 
 ## Using Commands for Automation

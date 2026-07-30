@@ -16,15 +16,39 @@ import type {PerfettoPlugin} from '../../public/plugin';
 import type {Trace} from '../../public/trace';
 import {COUNTER_TRACK_KIND} from '../../public/track_kinds';
 import {TrackNode} from '../../public/workspace';
+<<<<<<< HEAD
 import {NUM, NUM_NULL, STR_NULL} from '../../trace_processor/query_result';
 import TraceProcessorTrackPlugin from '../dev.perfetto.TraceProcessorTrack';
 import {TraceProcessorCounterTrack} from '../dev.perfetto.TraceProcessorTrack/trace_processor_counter_track';
 
 export default class LinuxPerfPlugin implements PerfettoPlugin {
+=======
+import {
+  LONG,
+  NUM,
+  NUM_NULL,
+  STR,
+  STR_NULL,
+} from '../../trace_processor/query_result';
+import {Flamegraph} from '../../widgets/flamegraph';
+import ProcessThreadGroupsPlugin from '../dev.perfetto.ProcessThreadGroups';
+import TraceProcessorTrackPlugin from '../dev.perfetto.TraceProcessorTrack';
+import {TraceProcessorCounterTrack} from '../dev.perfetto.TraceProcessorTrack/trace_processor_counter_track';
+import {createPerfCallsitesTrack} from './perf_samples_profile_track';
+
+const PERF_SAMPLES_PROFILE_TRACK_KIND = 'PerfSamplesProfileTrack';
+
+function makeUriForProc(upid: number, sessionId: number) {
+  return `/process_${upid}/perf_samples_profile_${sessionId}`;
+}
+
+export default class implements PerfettoPlugin {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   static readonly id = 'dev.perfetto.LinuxPerf';
   static readonly dependencies = [TraceProcessorTrackPlugin];
 
   async onTraceLoad(trace: Trace): Promise<void> {
+<<<<<<< HEAD
     const perfCountersGroup = new TrackNode({
       name: 'Perf counters',
       isSummary: true,
@@ -33,17 +57,161 @@ export default class LinuxPerfPlugin implements PerfettoPlugin {
       select id, name, unit, cpu
       from perf_counter_track
       order by name, cpu
+=======
+    await this.addProcessPerfSamplesTracks(trace);
+    await this.addThreadPerfSamplesTracks(trace);
+    await this.addPerfCounterTracks(trace);
+
+    trace.onTraceReady.addListener(async () => {
+      await selectPerfTracksIfSingleProcess(trace);
+    });
+  }
+
+  private async addProcessPerfSamplesTracks(trace: Trace) {
+    const pResult = await trace.engine.query(`
+      SELECT DISTINCT upid, pct.name AS cntrName, perf_session_id AS sessionId
+      FROM perf_sample
+      JOIN thread USING (utid)
+      JOIN perf_counter_track AS pct USING (perf_session_id)
+      WHERE
+        callsite_id IS NOT NULL AND
+        upid IS NOT NULL AND
+        pct.is_timebase
+      ORDER BY cntrName, perf_session_id
     `);
+
+    // Remember all the track URIs so we can use them in a command.
+    const trackUris: string[] = [];
+
+    const countersByUpid = new Map<
+      number,
+      {cntrName: string; sessionId: number}[]
+    >();
     for (
+      const it = pResult.iter({upid: NUM, cntrName: STR, sessionId: NUM});
+      it.valid();
+      it.next()
+    ) {
+      const {upid, cntrName, sessionId} = it;
+      if (!countersByUpid.has(upid)) {
+        countersByUpid.set(upid, []);
+      }
+      countersByUpid.get(upid)!.push({cntrName, sessionId});
+    }
+
+    for (const [upid, counters] of countersByUpid) {
+      // Summary track containing all callstacks, hidden if there's only one counter.
+      const headless = counters.length == 1;
+      const uri = `/process_${upid}/perf_samples_profile`;
+      trace.tracks.registerTrack({
+        uri,
+        tags: {
+          kinds: [PERF_SAMPLES_PROFILE_TRACK_KIND],
+          upid,
+        },
+        renderer: createPerfCallsitesTrack(trace, uri, upid),
+      });
+      const group = trace.plugins
+        .getPlugin(ProcessThreadGroupsPlugin)
+        .getGroupForProcess(upid);
+      const summaryTrack = new TrackNode({
+        uri,
+        name: `Process callstacks`,
+        isSummary: true,
+        headless: headless,
+        sortOrder: -40,
+      });
+      group?.addChildInOrder(summaryTrack);
+
+      // Nested tracks: one per counter being sampled on.
+      for (const {cntrName, sessionId} of counters) {
+        const uri = makeUriForProc(upid, sessionId);
+        trackUris.push(uri);
+        trace.tracks.registerTrack({
+          uri,
+          tags: {
+            kinds: [PERF_SAMPLES_PROFILE_TRACK_KIND],
+            upid,
+            perfSessionId: sessionId,
+          },
+          renderer: createPerfCallsitesTrack(
+            trace,
+            uri,
+            upid,
+            undefined,
+            sessionId,
+          ),
+        });
+        const track = new TrackNode({
+          uri,
+          name: `Process callstacks ${cntrName}`,
+          sortOrder: -40,
+        });
+        summaryTrack.addChildInOrder(track);
+      }
+    }
+
+    // Add a command to select all the perf samples in the trace - it selects
+    // the entirety of each (non-summary) process scoped perf sample track.
+    trace.commands.registerCommand({
+      id: 'dev.perfetto.SelectAllPerfSamples',
+      name: 'Select all perf samples',
+      callback: () => {
+        trace.selection.selectArea({
+          start: trace.traceInfo.start,
+          end: trace.traceInfo.end,
+          trackUris,
+        });
+      },
+    });
+  }
+
+  private async addThreadPerfSamplesTracks(trace: Trace) {
+    const tResult = await trace.engine.query(`
+      SELECT DISTINCT
+        upid, utid, tid, thread.name AS threadName,
+        pct.name AS cntrName, perf_session_id AS sessionId
+      FROM perf_sample
+      JOIN thread USING (utid)
+      JOIN perf_counter_track AS pct USING (perf_session_id)
+      WHERE
+        callsite_id IS NOT NULL AND
+        pct.is_timebase
+      ORDER BY cntrName, perf_session_id
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
+    `);
+
+    const countersByUtid = new Map<
+      number,
+      {
+        threadName: string | null;
+        tid: bigint;
+        upid: number | null;
+        cntrName: string;
+        sessionId: number;
+      }[]
+    >();
+    for (
+<<<<<<< HEAD
       const it = result.iter({
         id: NUM,
         name: STR_NULL,
         unit: STR_NULL,
         cpu: NUM_NULL,
+=======
+      const it = tResult.iter({
+        utid: NUM,
+        tid: LONG,
+        threadName: STR_NULL,
+        upid: NUM_NULL,
+        cntrName: STR,
+        sessionId: NUM,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       });
       it.valid();
       it.next()
     ) {
+<<<<<<< HEAD
       const uri = `/counter_${it.id}`;
       const title = it.cpu === null ? `${it.name}` : `Cpu ${it.cpu} ${it.name}`;
       trace.tracks.registerTrack({
@@ -54,6 +222,110 @@ export default class LinuxPerfPlugin implements PerfettoPlugin {
           cpu: it.cpu ?? undefined,
         },
         renderer: new TraceProcessorCounterTrack({
+=======
+      const {threadName, utid, tid, upid, cntrName, sessionId} = it;
+      if (!countersByUtid.has(utid)) {
+        countersByUtid.set(utid, []);
+      }
+      countersByUtid
+        .get(utid)!
+        .push({threadName, tid, upid, cntrName, sessionId});
+    }
+
+    for (const [utid, counters] of countersByUtid) {
+      // Summary track containing all callstacks, hidden if there's only one counter.
+      const headless = counters.length == 1;
+      const tid = counters[0].tid;
+      const threadName = counters[0].threadName;
+      const upid = counters[0].upid;
+      const uri = `${getThreadUriPrefix(upid, utid)}_perf_samples_profile`;
+      trace.tracks.registerTrack({
+        uri,
+        tags: {
+          kinds: [PERF_SAMPLES_PROFILE_TRACK_KIND],
+          utid,
+          upid: upid ?? undefined,
+        },
+        renderer: createPerfCallsitesTrack(trace, uri, upid ?? undefined, utid),
+      });
+      const group = trace.plugins
+        .getPlugin(ProcessThreadGroupsPlugin)
+        .getGroupForThread(utid);
+      const summaryTrack = new TrackNode({
+        uri,
+        name: `${threadName ?? 'Thread'} ${tid} callstacks`,
+        isSummary: true,
+        headless: headless,
+        sortOrder: -50,
+      });
+      group?.addChildInOrder(summaryTrack);
+
+      // Nested tracks: one per counter being sampled on.
+      for (const {cntrName, sessionId} of counters) {
+        const uri = `${getThreadUriPrefix(upid, utid)}_perf_samples_profile_${sessionId}`;
+        trace.tracks.registerTrack({
+          uri,
+          tags: {
+            kinds: [PERF_SAMPLES_PROFILE_TRACK_KIND],
+            utid,
+            upid: upid ?? undefined,
+            perfSessionId: sessionId,
+          },
+          renderer: createPerfCallsitesTrack(
+            trace,
+            uri,
+            upid ?? undefined,
+            utid,
+            sessionId,
+          ),
+        });
+        const track = new TrackNode({
+          uri,
+          name: `${threadName ?? 'Thread'} ${tid} callstacks ${cntrName}`,
+          sortOrder: -50,
+        });
+        summaryTrack.addChildInOrder(track);
+      }
+    }
+  }
+
+  private async addPerfCounterTracks(trace: Trace) {
+    const perfCountersGroup = new TrackNode({
+      name: 'Perf counters',
+      isSummary: true,
+    });
+
+    const result = await trace.engine.query(`
+      select
+        id,
+        name,
+        unit,
+        cpu
+      from perf_counter_track
+      order by name, cpu
+    `);
+
+    const it = result.iter({
+      id: NUM,
+      name: STR_NULL,
+      unit: STR_NULL,
+      cpu: NUM_NULL,
+    });
+
+    for (; it.valid(); it.next()) {
+      const {id: trackId, name, unit, cpu} = it;
+      const uri = `/counter_${trackId}`;
+
+      const title = cpu === null ? `${name}` : `Cpu ${cpu} ${name}`;
+      trace.tracks.registerTrack({
+        uri,
+        tags: {
+          kinds: [COUNTER_TRACK_KIND],
+          trackIds: [trackId],
+          cpu: cpu ?? undefined,
+        },
+        renderer: new TraceProcessorCounterTrack(
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
           trace,
           uri,
           yMode: 'rate',
@@ -66,6 +338,148 @@ export default class LinuxPerfPlugin implements PerfettoPlugin {
     }
     if (perfCountersGroup.hasChildren) {
       trace.defaultWorkspace.addChildInOrder(perfCountersGroup);
+<<<<<<< HEAD
     }
   }
+=======
+    }
+
+    trace.selection.registerAreaSelectionTab(createAreaSelectionTab(trace));
+  }
+}
+
+async function selectPerfTracksIfSingleProcess(trace: Trace) {
+  const profile = await assertExists(trace.engine).query(`
+    select distinct upid
+    from perf_sample
+    join thread using (utid)
+    where callsite_id is not null
+    order by ts asc
+    limit 2
+  `);
+  if (profile.numRows() == 1) {
+    trace.commands.runCommand('dev.perfetto.SelectAllPerfSamples');
+  }
+}
+
+function createAreaSelectionTab(trace: Trace) {
+  let previousSelection: undefined | AreaSelection;
+  let flamegraph: undefined | QueryFlamegraph;
+
+  return {
+    id: 'perf_sample_flamegraph',
+    name: 'Perf sample flamegraph',
+    render(selection: AreaSelection) {
+      const changed =
+        previousSelection === undefined ||
+        !areaSelectionsEqual(previousSelection, selection);
+
+      if (changed) {
+        flamegraph = computePerfSampleFlamegraph(trace, selection);
+        previousSelection = selection;
+      }
+
+      if (flamegraph === undefined) {
+        return undefined;
+      }
+
+      return {isLoading: false, content: flamegraph.render()};
+    },
+  };
+}
+
+function getSelectedProcessTrackTags(currentSelection: AreaSelection) {
+  const ret: number[][] = [];
+  for (const trackInfo of currentSelection.tracks) {
+    // process-level aggregate tracks have a upid tag but no utid tags
+    if (
+      trackInfo?.tags?.kinds?.includes(PERF_SAMPLES_PROFILE_TRACK_KIND) &&
+      trackInfo.tags?.perfSessionId !== undefined &&
+      trackInfo.tags?.utid === undefined
+    ) {
+      ret.push([
+        assertExists(trackInfo.tags?.upid),
+        Number(trackInfo.tags.perfSessionId),
+      ]);
+    }
+  }
+  return ret;
+}
+
+function getSelectedThreadTrackTags(currentSelection: AreaSelection) {
+  const ret: number[][] = [];
+  for (const trackInfo of currentSelection.tracks) {
+    if (
+      trackInfo?.tags?.kinds?.includes(PERF_SAMPLES_PROFILE_TRACK_KIND) &&
+      trackInfo.tags?.perfSessionId !== undefined &&
+      trackInfo.tags?.utid !== undefined
+    ) {
+      ret.push([trackInfo.tags?.utid, Number(trackInfo.tags.perfSessionId)]);
+    }
+  }
+  return ret;
+}
+
+function computePerfSampleFlamegraph(
+  trace: Trace,
+  currentSelection: AreaSelection,
+) {
+  const processTrackTags = getSelectedProcessTrackTags(currentSelection);
+  const threadTrackTags = getSelectedThreadTrackTags(currentSelection);
+  if (processTrackTags.length === 0 && threadTrackTags.length === 0) {
+    return undefined;
+  }
+
+  const trackConstraints = [
+    ...processTrackTags.map(
+      ([upid, sessionId]) =>
+        `(t.upid = ${upid} AND p.perf_session_id = ${sessionId})`,
+    ),
+    ...threadTrackTags.map(
+      ([utid, sessionId]) =>
+        `(p.utid = ${utid} AND p.perf_session_id = ${sessionId})`,
+    ),
+  ].join(' OR ');
+
+  const metrics = metricsFromTableOrSubquery(
+    `
+      (
+        select
+          id,
+          parent_id as parentId,
+          name,
+          mapping_name,
+          source_file || ':' || line_number as source_location,
+          self_count
+        from _callstacks_for_callsites!((
+          select p.callsite_id
+          from perf_sample p
+          join thread t using (utid)
+          where p.ts >= ${currentSelection.start}
+            and p.ts <= ${currentSelection.end}
+            and (${trackConstraints})
+        ))
+      )
+    `,
+    [
+      {
+        name: 'count',
+        unit: '',
+        columnName: 'self_count',
+      },
+    ],
+    'include perfetto module linux.perf.samples',
+    [{name: 'mapping_name', displayName: 'Mapping'}],
+    [
+      {
+        name: 'source_location',
+        displayName: 'Source location',
+        mergeAggregation: 'ONE_OR_SUMMARY',
+      },
+    ],
+  );
+  return new QueryFlamegraph(trace, metrics, {
+    state: Flamegraph.createDefaultState(metrics),
+  });
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }

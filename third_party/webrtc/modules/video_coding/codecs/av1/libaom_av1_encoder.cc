@@ -126,8 +126,11 @@ EncoderSpeedController::EncodeResults ToSpeedControllerEncodeResult(
       .speed = speed,
       .encode_time = encode_result.encode_time,
       .qp = image.qp_ / 4,  // Use [0, 63] range instead of [0, 255].
+<<<<<<< HEAD
       .psnr = image.psnr().has_value() ? std::optional<double>(image.psnr()->y)
                                        : std::nullopt,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       .frame_info = frame_info};
 }
 
@@ -462,6 +465,31 @@ int LibaomAv1Encoder::InitEncode(const VideoCodec* codec_settings,
     }
   }
 
+  if (encoder_speed_experiment_.IsDynamicSpeedEnabled()) {
+    LibaomSpeedConfigFactory speed_config_factory(
+        codec_settings->GetVideoEncoderComplexity(), codec_settings->mode);
+
+    if (SvcEnabled()) {
+      for (int si = 0; si < svc_params_->number_spatial_layers; ++si) {
+        EncoderSpeedController::Config speed_config =
+            speed_config_factory.GetSpeedConfig(
+                encoder_settings_.spatialLayers[si].width,
+                encoder_settings_.spatialLayers[si].height,
+                svc_controller_->StreamConfig().num_temporal_layers);
+
+        speed_controllers_.push_back(
+            EncoderSpeedController::Create(speed_config, GetFrameInterval(si)));
+      }
+    } else {
+      EncoderSpeedController::Config speed_config =
+          speed_config_factory.GetSpeedConfig(encoder_settings_.width,
+                                              encoder_settings_.height,
+                                              /*num_temporal_layers=*/1);
+      speed_controllers_.push_back(EncoderSpeedController::Create(
+          speed_config, GetFrameInterval(/*spatial_index=*/0)));
+    }
+  }
+
   return WEBRTC_VIDEO_CODEC_OK;
 }
 
@@ -751,8 +779,11 @@ TimeDelta LibaomAv1Encoder::GetFrameInterval(int spatial_index) const {
     return frame_interval;
   }
 
+<<<<<<< HEAD
   RTC_DCHECK_LT(spatial_index, svc_params_->number_spatial_layers);
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   // Allocate a time slice for each spatial layer, proportional to the
   // fraction of pixels allocated for that layer.
   // E.g. if QVGA + VGA is used, 20% of the encoder time will be allocated
@@ -919,9 +950,12 @@ int32_t LibaomAv1Encoder::Encode(
       svc_params_ ? svc_params_->number_spatial_layers : 1;
   auto next_layer_frame = layer_frames.begin();
   std::vector<std::pair<EncodedImage, CodecSpecificInfo>> encoded_images;
+<<<<<<< HEAD
   // Index into `encoded_images` indicating the last active layer which produced
   // an encoded image. Used to correctly set `end_of_picture`.
   std::optional<size_t> last_encoded_image_index;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   for (size_t sid = 0; sid < num_spatial_layers; ++sid) {
     // The libaom AV1 encoder requires that `aom_codec_encode` is called for
     // every spatial layer, even if the configured bitrate for that layer is
@@ -941,12 +975,27 @@ int32_t LibaomAv1Encoder::Encode(
 
     aom_enc_frame_flags_t flags =
         layer_frame->IsKeyframe() ? AOM_EFLAG_FORCE_KF : 0;
+<<<<<<< HEAD
+=======
 
     if (SvcEnabled()) {
       SetSvcLayerId(*layer_frame);
       SetSvcRefFrameConfig(*layer_frame);
     }
 
+#if defined(WEBRTC_ENCODER_PSNR_STATS) && defined(AOM_EFLAG_CALCULATE_PSNR)
+    if (psnr_experiment_.IsEnabled() &&
+        psnr_frame_sampler_.ShouldBeSampled(frame)) {
+      flags |= AOM_EFLAG_CALCULATE_PSNR;
+    }
+#endif
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
+
+    if (!speed_controllers_.empty()) {
+      RTC_DCHECK_GT(speed_controllers_.size(), sid);
+      EncoderSpeedController& speed_controller = *speed_controllers_[sid];
+
+<<<<<<< HEAD
     EncodeResult output;
     if (!speed_controllers_.empty()) {
       RTC_DCHECK_GT(speed_controllers_.size(), sid);
@@ -991,6 +1040,16 @@ int32_t LibaomAv1Encoder::Encode(
 
       SET_ENCODER_PARAM_OR_RETURN_ERROR(AOME_SET_CPUUSED, settings.speed);
       output = DoEncode(duration, flags, layer_frame);
+=======
+      EncoderSpeedController::FrameEncodingInfo frame_info{
+          .reference_type = AsSpeedControllerFrameType(*layer_frame),
+          .is_repeat_frame = frame.is_repeat_frame()};
+      EncoderSpeedController::EncodeSettings settings =
+          speed_controller.GetEncodeSettings(frame_info);
+
+      SET_ENCODER_PARAM_OR_RETURN_ERROR(AOME_SET_CPUUSED, settings.speed);
+      EncodeResult output = DoEncode(duration, flags, layer_frame);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       if (output.status_code != AOM_CODEC_OK) {
         RTC_LOG(LS_WARNING)
             << "LibaomAv1Encoder::Encode returned error: '"
@@ -998,6 +1057,7 @@ int32_t LibaomAv1Encoder::Encode(
         return WEBRTC_VIDEO_CODEC_ERROR;
       }
 
+<<<<<<< HEAD
       if (non_encoded_layer_frame || !output.encoded_image.has_value()) {
         // Frame dropped, presumably by rate controller. This is not an error.
         if (baseline_output.has_value() &&
@@ -1036,12 +1096,39 @@ int32_t LibaomAv1Encoder::Encode(
       }
 
       output = DoEncode(duration, flags, layer_frame);
+=======
+      if (!output.encoded_image.has_value()) {
+        // Frame dropped, presumably by rate controller. This is not an error.
+        continue;
+      }
+
+      RTC_DCHECK(output.encoded_image.has_value());
+
+      speed_controller.OnEncodedFrame(
+          ToSpeedControllerEncodeResult(output, frame_info, settings.speed));
+
+      RTC_DCHECK_GT(output.encoded_image->size(), 0u);
+      PopulateEncodedImageFromVideoFrame(frame, *output.encoded_image);
+      CodecSpecificInfo codec_specifics = CreateCodecSpecificInfo(
+          *output.encoded_image, *layer_frame, end_of_picture);
+
+      if (non_encoded_layer_frame) {
+        continue;
+      }
+
+      encoded_images.emplace_back(std::move(*output.encoded_image),
+                                  std::move(codec_specifics));
+    } else {
+      // No speed controller used.
+      EncodeResult output = DoEncode(duration, flags, layer_frame);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       if (output.status_code != AOM_CODEC_OK) {
         RTC_LOG(LS_WARNING)
             << "LibaomAv1Encoder::Encode returned error: '"
             << aom_codec_err_to_string(output.status_code) << "'.";
         return WEBRTC_VIDEO_CODEC_ERROR;
       }
+<<<<<<< HEAD
       if (non_encoded_layer_frame || !output.encoded_image.has_value()) {
         // Frame dropped, presumably by rate controller. This is not an error.
         EncodedImage dropped_image;
@@ -1065,6 +1152,26 @@ int32_t LibaomAv1Encoder::Encode(
     last_encoded_image_index = encoded_images.size();
     encoded_images.emplace_back(std::move(*output.encoded_image),
                                 std::move(codec_specifics));
+=======
+      if (!output.encoded_image.has_value()) {
+        // Status code OK but no image - the encoder dropped the frame,
+        // presumable due to rate control. This is not an error.
+        continue;
+      }
+
+      if (non_encoded_layer_frame) {
+        continue;
+      }
+
+      RTC_DCHECK_GT(output.encoded_image->size(), 0u);
+      PopulateEncodedImageFromVideoFrame(frame, *output.encoded_image);
+      CodecSpecificInfo codec_specifics = CreateCodecSpecificInfo(
+          *output.encoded_image, *layer_frame, end_of_picture);
+
+      encoded_images.emplace_back(std::move(*output.encoded_image),
+                                  std::move(codec_specifics));
+    }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   for (size_t i = 0; i < encoded_images.size(); ++i) {

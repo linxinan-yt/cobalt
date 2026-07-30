@@ -19,6 +19,7 @@
 
 #include <cstddef>
 #include <cstdint>
+<<<<<<< HEAD
 #include <memory>
 #include <optional>
 #include <vector>
@@ -29,12 +30,18 @@
 #include "perfetto/public/compiler.h"
 #include "src/trace_processor/storage/trace_storage.h"
 #include "src/trace_processor/types/trace_processor_context.h"
+=======
+#include <optional>
+#include "perfetto/base/status.h"
+#include "src/trace_processor/storage/trace_storage.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "src/trace_processor/util/clock_synchronizer.h"
 
 namespace perfetto::trace_processor {
 
 class ClockTrackerTest;
 
+<<<<<<< HEAD
 class ClockSynchronizerListenerImpl;
 
 // ClockTracker wraps ClockSynchronizer (the pure conversion engine) and adds
@@ -263,7 +270,38 @@ class ClockSynchronizerListenerImpl : public ClockSynchronizerListener {
 
  private:
   TraceProcessorContext* context_;
+=======
+class ClockSynchronizerListenerImpl {
+ private:
+  TraceProcessorContext* context_;
+  StringId source_clock_id_key_;
+  StringId target_clock_id_key_;
+  StringId source_timestamp_key_;
+  StringId source_sequence_id_key_;
+  StringId target_sequence_id_key_;
+
+ public:
+  explicit ClockSynchronizerListenerImpl(TraceProcessorContext* context);
+
+  base::Status OnClockSyncCacheMiss();
+
+  base::Status OnInvalidClockSnapshot();
+
+  base::Status OnTraceTimeClockIdChanged(ClockSynchronizerBase::ClockId);
+
+  base::Status OnSetTraceTimeClock(ClockSynchronizerBase::ClockId);
+
+  void RecordConversionError(ClockSynchronizerBase::ErrorType,
+                             ClockSynchronizerBase::ClockId source_clock_id,
+                             ClockSynchronizerBase::ClockId target_clock_id,
+                             int64_t source_timestamp,
+                             std::optional<size_t>);
+
+  bool IsLocalHost();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
+
+using ClockTracker = ClockSynchronizer<ClockSynchronizerListenerImpl>;
 
 }  // namespace perfetto::trace_processor
 

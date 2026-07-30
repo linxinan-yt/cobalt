@@ -251,6 +251,12 @@ hy{
                 Hms{"H:mm:ss"}
                 Hv{"ժ․ HH v"}
                 MEd{"dd.MM, E"}
+<<<<<<< HEAD
+=======
+                MMMEd{"d MMM, E"}
+                MMMMd{"d MMMM"}
+                MMMd{"d MMM"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 Md{"dd.MM"}
                 y{"y, G"}
                 yyyy{"y, G"}
@@ -405,6 +411,7 @@ hy{
                     one{"MMMM W-ին շաբաթ"}
                     other{"MMMM W-րդ շաբաթ"}
                 }
+                MMMMd{"d MMMM"}
                 MMMd{"d MMM"}
                 Md{"dd.MM"}
                 yM{"MM.y"}

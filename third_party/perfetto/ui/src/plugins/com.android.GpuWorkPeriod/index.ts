@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD
 import {Gpu} from '../../components/gpu';
 import {
   LONG,
@@ -23,12 +24,20 @@ import {
 } from '../../trace_processor/query_result';
 import type {PerfettoPlugin} from '../../public/plugin';
 import type {Trace} from '../../public/trace';
+=======
+import {LONG, LONG_NULL, NUM, STR} from '../../trace_processor/query_result';
+import {PerfettoPlugin} from '../../public/plugin';
+import {Trace} from '../../public/trace';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {TrackNode} from '../../public/workspace';
 import {SLICE_TRACK_KIND} from '../../public/track_kinds';
 import {SliceTrack} from '../../components/tracks/slice_track';
 import {SourceDataset} from '../../trace_processor/dataset';
+<<<<<<< HEAD
 import GpuPlugin, {SUMMARY_GROUP_SORT_BASE} from '../dev.perfetto.Gpu';
 import StandardGroupsPlugin from '../dev.perfetto.StandardGroups';
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 export default class implements PerfettoPlugin {
   static readonly id = 'com.android.GpuWorkPeriod';
@@ -115,6 +124,7 @@ export default class implements PerfettoPlugin {
         },
         renderer: track,
       });
+<<<<<<< HEAD
 
       // The per-GPU split (when there is more than one GPU) is flattened into
       // the group name rather than adding a second nesting level, keeping the
@@ -129,6 +139,16 @@ export default class implements PerfettoPlugin {
           it.machineName ?? undefined,
         );
         groupName = `Work Period (${gpu.displayName})${gpu.maybeMachineLabel()}`;
+=======
+      let workPeriod = workPeriodByGpu.get(gpuId);
+      if (workPeriod === undefined) {
+        workPeriod = new TrackNode({
+          name: `GPU Work Period (GPU ${gpuId})`,
+          isSummary: true,
+        });
+        workPeriodByGpu.set(gpuId, workPeriod);
+        ctx.defaultWorkspace.addChildInOrder(workPeriod);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       }
 
       let group = groupsByName.get(groupName);

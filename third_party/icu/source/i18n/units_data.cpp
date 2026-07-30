@@ -109,6 +109,7 @@ class ConversionRateDataSink : public ResourceSink {
                 status = U_MEMORY_ALLOCATION_ERROR;
                 return;
             } else {
+<<<<<<< HEAD
                 cr->sourceUnit = srcUnit;
                 if (cr->sourceUnit.isEmpty() != (*srcUnit == '\0')) {
                     status = U_MEMORY_ALLOCATION_ERROR;
@@ -128,6 +129,17 @@ class ConversionRateDataSink : public ResourceSink {
                 if (!offset.isBogus()) { copyInvariantChars(offset, cr->offset, status); }
                 if (!special.isBogus()) { copyInvariantChars(special, cr->specialMappingName, status); }
                 copyInvariantChars(systems, cr->systems, status);
+=======
+                cr->sourceUnit.append(srcUnit, status);
+                cr->baseUnit.appendInvariantChars(baseUnit, status);
+                if (!factor.isBogus()) {
+                    cr->factor.appendInvariantChars(factor, status);
+                    trimSpaces(cr->factor, status);
+                }
+                if (!offset.isBogus()) cr->offset.appendInvariantChars(offset, status);
+                if (!special.isBogus()) cr->specialMappingName.appendInvariantChars(special, status);
+                cr->systems.appendInvariantChars(systems, status);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
     }
@@ -396,9 +408,13 @@ void U_I18N_API getAllConversionRates(MaybeStackVector<ConversionRateInfo> &resu
 const ConversionRateInfo *ConversionRates::extractConversionInfo(StringPiece source,
                                                                  UErrorCode &status) const {
     for (size_t i = 0, n = conversionInfo_.length(); i < n; ++i) {
+<<<<<<< HEAD
         if (uprv_strncmp(conversionInfo_[i]->sourceUnit.data(), source.data(), source.size()) == 0) {
             return conversionInfo_[i];
         }
+=======
+        if (conversionInfo_[i]->sourceUnit == source) return conversionInfo_[i];
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 
     status = U_INTERNAL_PROGRAM_ERROR;

@@ -809,9 +809,12 @@ hi{
             one{"(मुद्रा की अज्ञात इकाई)"}
             other{"(अज्ञात मुद्रा)"}
         }
+<<<<<<< HEAD
         ZWG{
             one{"ज़िंबाब्वियन गोल्ड"}
             other{"ज़िंबाब्वियन गोल्ड"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

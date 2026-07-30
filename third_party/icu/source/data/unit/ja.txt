@@ -207,6 +207,11 @@ ja{
             nanosecond{
                 other{"{0} ナノ秒"}
             }
+            night{
+                dnam{"泊"}
+                other{"{0} 泊"}
+                per{"{0}/泊"}
+            }
             quarter{
                 other{"{0} 四半期"}
             }
@@ -564,6 +569,10 @@ ja{
             knot{
                 other{"{0} ノット"}
             }
+            light-speed{
+                dnam{"光"}
+                other{"{0} 光"}
+            }
             meter-per-second{
                 dnam{"メートル毎秒"}
                 other{"秒速 {0} メートル"}
@@ -817,6 +826,9 @@ ja{
             permyriad{
                 dnam{"‱"}
             }
+            portion-per-1e9{
+                other{"{0}ppb"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -914,7 +926,13 @@ ja{
                 other{"{0}ns"}
             }
             night{
+<<<<<<< HEAD
                 other{"{0}泊"}
+=======
+                dnam{"泊"}
+                other{"{0}泊"}
+                per{"{0}/泊"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 other{"{0}Q"}
@@ -1279,6 +1297,10 @@ ja{
                 other{"{0}kn"}
             }
             light-speed{
+<<<<<<< HEAD
+=======
+                dnam{"光"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0}光"}
             }
             meter-per-second{

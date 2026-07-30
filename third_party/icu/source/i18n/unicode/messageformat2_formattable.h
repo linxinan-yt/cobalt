@@ -17,7 +17,10 @@
 #include "unicode/chariter.h"
 #include "unicode/numberformatter.h"
 #include "unicode/messageformat2_data_model_names.h"
+<<<<<<< HEAD
 #include "unicode/smpdtfmt.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 #ifndef U_HIDE_DEPRECATED_API
 
@@ -67,6 +70,7 @@ namespace message2 {
         virtual ~FormattableObject();
     }; // class FormattableObject
 
+<<<<<<< HEAD
     /**
      * The `DateInfo` struct represents all the information needed to
      * format a date with a time zone. It includes an absolute date and a time zone name,
@@ -95,6 +99,42 @@ namespace message2 {
         UnicodeString zoneId;
     };
 
+=======
+    class Formattable;
+} // namespace message2
+
+U_NAMESPACE_END
+
+/// @cond DOXYGEN_IGNORE
+// Export an explicit template instantiation of the std::variant that is used
+// to represent the message2::Formattable class.
+// (When building DLLs for Windows this is required.)
+// (See measunit_impl.h, datefmt.h, collationiterator.h, erarules.h and others
+// for similar examples.)
+#if U_PF_WINDOWS <= U_PLATFORM && U_PLATFORM <= U_PF_CYGWIN
+#if defined(U_REAL_MSVC) && defined(_MSVC_STL_VERSION)
+template class U_I18N_API std::_Variant_storage_<false,
+  double,
+  int64_t,
+  icu::UnicodeString,
+  icu::Formattable,
+  const icu::message2::FormattableObject *,
+  std::pair<const icu::message2::Formattable *,int32_t>>;
+#endif
+typedef std::pair<const icu::message2::Formattable*, int32_t> P;
+template class U_I18N_API std::variant<double,
+				       int64_t,
+				       icu::UnicodeString,
+				       icu::Formattable,
+				       const icu::message2::FormattableObject*,
+                                       P>;
+#endif
+/// @endcond
+
+U_NAMESPACE_BEGIN
+
+namespace message2 {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     /**
      * The `Formattable` class represents a typed value that can be formatted,
      * originating either from a message argument or a literal in the code.
@@ -110,7 +150,11 @@ namespace message2 {
      * @internal ICU 75 technology preview
      * @deprecated This API is for technology preview only.
      */
+<<<<<<< HEAD
     class U_I18N_API_CLASS Formattable : public UObject {
+=======
+    class U_I18N_API Formattable : public UObject {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     public:
 
         /**
@@ -119,7 +163,11 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API UFormattableType getType() const;
+=======
+        UFormattableType getType() const;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
         /**
          * Gets the double value of this object. If this object is not of type
@@ -130,7 +178,11 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API double getDouble(UErrorCode& status) const {
+=======
+        double getDouble(UErrorCode& status) const {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             if (U_SUCCESS(status)) {
                 if (isDecimal() && getType() == UFMT_DOUBLE) {
                     return (std::get_if<icu::Formattable>(&contents))->getDouble();
@@ -152,7 +204,11 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API int32_t getLong(UErrorCode& status) const {
+=======
+        int32_t getLong(UErrorCode& status) const {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             if (U_SUCCESS(status)) {
                 if (isDecimal() && getType() == UFMT_LONG) {
                     return std::get_if<icu::Formattable>(&contents)->getLong();
@@ -175,7 +231,11 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API int64_t getInt64Value(UErrorCode& status) const {
+=======
+        int64_t getInt64Value(UErrorCode& status) const {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             if (U_SUCCESS(status)) {
                 if (isDecimal() && getType() == UFMT_INT64) {
                     return std::get_if<icu::Formattable>(&contents)->getInt64();
@@ -202,7 +262,11 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API int64_t getInt64(UErrorCode& status) const;
+=======
+        int64_t         getInt64(UErrorCode& status) const;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Gets the string value of this object. If this object is not of type
          * kString then the result is undefined and the error code is set.
@@ -212,7 +276,11 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API const UnicodeString& getString(UErrorCode& status) const {
+=======
+        const UnicodeString& getString(UErrorCode& status) const {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             if (U_SUCCESS(status)) {
                 if (std::holds_alternative<UnicodeString>(contents)) {
                     return *std::get_if<UnicodeString>(&contents);
@@ -223,6 +291,7 @@ namespace message2 {
         }
 
         /**
+<<<<<<< HEAD
          * Gets the struct representing the date value of this object.
          * If this object is not of type kDate then the result is
          * undefined and the error code is set.
@@ -241,6 +310,24 @@ namespace message2 {
                 status = U_ILLEGAL_ARGUMENT_ERROR;
             }
             return nullptr;
+=======
+         * Gets the Date value of this object. If this object is not of type
+         * kDate then the result is undefined and the error code is set.
+         *
+         * @param status Input/output error code.
+         * @return    the Date value of this object.
+         * @internal ICU 75 technology preview
+         * @deprecated This API is for technology preview only.
+         */
+        UDate getDate(UErrorCode& status) const {
+            if (U_SUCCESS(status)) {
+                if (isDate()) {
+                    return *std::get_if<double>(&contents);
+                }
+                status = U_ILLEGAL_ARGUMENT_ERROR;
+            }
+            return 0;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
 
         /**
@@ -250,7 +337,11 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API UBool isNumeric() const { return (getType() == UFMT_DOUBLE || getType() == UFMT_LONG || getType() == UFMT_INT64); }
+=======
+        UBool isNumeric() const { return (getType() == UFMT_DOUBLE || getType() == UFMT_LONG || getType() == UFMT_INT64); }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
         /**
          * Gets the array value and count of this object. If this object
@@ -262,7 +353,11 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API const Formattable* getArray(int32_t& count, UErrorCode& status) const;
+=======
+        const Formattable* getArray(int32_t& count, UErrorCode& status) const;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
         /**
          * Returns a pointer to the FormattableObject contained within this
@@ -274,7 +369,11 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API const FormattableObject* getObject(UErrorCode& status) const {
+=======
+        const FormattableObject* getObject(UErrorCode& status) const {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             if (U_SUCCESS(status)) {
                 // Can't return a reference since FormattableObject
                 // is an abstract class
@@ -294,10 +393,18 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API friend inline void swap(Formattable& f1, Formattable& f2) noexcept {
             using std::swap;
 
             swap(f1.contents, f2.contents);
+=======
+        friend inline void swap(Formattable& f1, Formattable& f2) noexcept {
+            using std::swap;
+
+            swap(f1.contents, f2.contents);
+            swap(f1.holdsDate, f2.holdsDate);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         /**
          * Copy constructor.
@@ -305,14 +412,22 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API Formattable(const Formattable&);
+=======
+        Formattable(const Formattable&);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Assignment operator
          *
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API Formattable& operator=(Formattable) noexcept;
+=======
+        Formattable& operator=(Formattable) noexcept;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Default constructor. Leaves the Formattable in a
          * valid but undefined state.
@@ -320,7 +435,11 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API Formattable() : contents(0.0) {}
+=======
+        Formattable() : contents(0.0) {}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * String constructor.
          *
@@ -329,7 +448,11 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API Formattable(const UnicodeString& s) : contents(s) {}
+=======
+        Formattable(const UnicodeString& s) : contents(s) {}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Double constructor.
          *
@@ -338,7 +461,11 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API Formattable(double d) : contents(d) {}
+=======
+        Formattable(double d) : contents(d) {}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Int64 constructor.
          *
@@ -347,6 +474,7 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API Formattable(int64_t i) : contents(i) {}
         /**
          * Date constructor.
@@ -358,6 +486,22 @@ namespace message2 {
          * @deprecated This API is for technology preview only.
          */
         U_I18N_API Formattable(DateInfo&& d) : contents(std::move(d)) {}
+=======
+        Formattable(int64_t i) : contents(i) {}
+        /**
+         * Date factory method.
+         *
+         * @param d A UDate value to wrap as a Formattable.
+         * @internal ICU 75 technology preview
+         * @deprecated This API is for technology preview only.
+         */
+        static Formattable forDate(UDate d) {
+            Formattable f;
+            f.contents = d;
+            f.holdsDate = true;
+            return f;
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Creates a Formattable object of an appropriate numeric type from a
          * a decimal number in string form.  The Formattable will retain the
@@ -372,7 +516,11 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API static Formattable forDecimal(std::string_view number, UErrorCode& status);
+=======
+        static Formattable forDecimal(std::string_view number, UErrorCode& status);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Array constructor.
          *
@@ -382,7 +530,11 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API Formattable(const Formattable* arr, int32_t len) : contents(std::pair(arr, len)) {}
+=======
+        Formattable(const Formattable* arr, int32_t len) : contents(std::pair(arr, len)) {}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Object constructor.
          *
@@ -391,14 +543,22 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API Formattable(const FormattableObject* obj) : contents(obj) {}
+=======
+        Formattable(const FormattableObject* obj) : contents(obj) {}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Destructor.
          *
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API virtual ~Formattable();
+=======
+        virtual ~Formattable();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Converts the Formattable object to an ICU Formattable object.
          * If this has type UFMT_OBJECT or kArray, then `status` is set to
@@ -410,23 +570,37 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API icu::Formattable asICUFormattable(UErrorCode& status) const;
+=======
+        icu::Formattable asICUFormattable(UErrorCode& status) const;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     private:
 
         std::variant<double,
                      int64_t,
                      UnicodeString,
                      icu::Formattable, // represents a Decimal
+<<<<<<< HEAD
                      DateInfo,
                      const FormattableObject*,
                      std::pair<const Formattable*, int32_t>> contents;
+=======
+                     const FormattableObject*,
+                     std::pair<const Formattable*, int32_t>> contents;
+        bool holdsDate = false; // otherwise, we get type errors about UDate being a duplicate type
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         UnicodeString bogusString; // :((((
 
         UBool isDecimal() const {
             return std::holds_alternative<icu::Formattable>(contents);
         }
         UBool isDate() const {
+<<<<<<< HEAD
             return std::holds_alternative<DateInfo>(contents);
+=======
+            return std::holds_alternative<double>(contents) && holdsDate;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     }; // class Formattable
 
@@ -444,11 +618,16 @@ namespace message2 {
  * @deprecated This API is for technology preview only.
  */
 #ifndef U_IN_DOXYGEN
+<<<<<<< HEAD
 class U_I18N_API_CLASS ResolvedFunctionOption : public UObject {
+=======
+class U_I18N_API ResolvedFunctionOption : public UObject {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   private:
 
     /* const */ UnicodeString name;
     /* const */ Formattable value;
+<<<<<<< HEAD
     // True iff this option was represented in the syntax by a literal value.
     // This is necessary in order to implement the spec for the `select` option
     // of `:number` and `:integer`.
@@ -469,6 +648,21 @@ class U_I18N_API_CLASS ResolvedFunctionOption : public UObject {
           return *this;
     }
     U_I18N_API virtual ~ResolvedFunctionOption();
+=======
+
+  public:
+      const UnicodeString& getName() const { return name; }
+      const Formattable& getValue() const { return value; }
+      ResolvedFunctionOption(const UnicodeString& n, const Formattable& f) : name(n), value(f) {}
+      ResolvedFunctionOption() {}
+      ResolvedFunctionOption(ResolvedFunctionOption&&);
+      ResolvedFunctionOption& operator=(ResolvedFunctionOption&& other) noexcept {
+          name = std::move(other.name);
+          value = std::move(other.value);
+          return *this;
+    }
+    virtual ~ResolvedFunctionOption();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }; // class ResolvedFunctionOption
 #endif
 
@@ -558,10 +752,16 @@ class U_I18N_API FunctionOptions : public UObject {
     explicit FunctionOptions(UVector&&, UErrorCode&);
 
     const ResolvedFunctionOption* getResolvedFunctionOptions(int32_t& len) const;
+<<<<<<< HEAD
     UBool getFunctionOption(std::u16string_view, Formattable&) const;
     UBool wasSetFromLiteral(const UnicodeString&) const;
     // Returns empty string if option doesn't exist
     UnicodeString getStringFunctionOption(std::u16string_view) const;
+=======
+    UBool getFunctionOption(const UnicodeString&, Formattable&) const;
+    // Returns empty string if option doesn't exist
+    UnicodeString getStringFunctionOption(const UnicodeString&) const;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     int32_t optionsCount() const { return functionOptionsLen; }
 
     // Named options passed to functions
@@ -571,10 +771,14 @@ class U_I18N_API FunctionOptions : public UObject {
     ResolvedFunctionOption* options;
     int32_t functionOptionsLen = 0;
 
+<<<<<<< HEAD
     /**
      * The original FunctionOptions isn't usable after this call.
      * @returns A new, merged FunctionOptions.
      */
+=======
+    // Returns a new FunctionOptions
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     FunctionOptions mergeOptions(FunctionOptions&& other, UErrorCode&);
 }; // class FunctionOptions
 
@@ -688,7 +892,11 @@ class U_I18N_API FunctionOptions : public UObject {
      * @internal ICU 75 technology preview
      * @deprecated This API is for technology preview only.
      */
+<<<<<<< HEAD
     class U_I18N_API_CLASS FormattedPlaceholder : public UObject {
+=======
+    class U_I18N_API FormattedPlaceholder : public UObject {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     public:
         /**
          * Fallback constructor. Constructs a value that represents a formatting error,
@@ -700,7 +908,11 @@ class U_I18N_API FunctionOptions : public UObject {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API explicit FormattedPlaceholder(const UnicodeString& s) : fallback(s), type(kFallback) {}
+=======
+        explicit FormattedPlaceholder(const UnicodeString& s) : fallback(s), type(kFallback) {}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Constructor for fully formatted placeholders.
          *
@@ -712,7 +924,11 @@ class U_I18N_API FunctionOptions : public UObject {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API FormattedPlaceholder(const FormattedPlaceholder& input, FormattedValue&& output)
+=======
+        FormattedPlaceholder(const FormattedPlaceholder& input, FormattedValue&& output)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             : fallback(input.fallback), source(input.source),
             formatted(std::move(output)), previousOptions(FunctionOptions()), type(kEvaluated) {}
         /**
@@ -727,7 +943,11 @@ class U_I18N_API FunctionOptions : public UObject {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API FormattedPlaceholder(const FormattedPlaceholder& input, FunctionOptions&& opts, FormattedValue&& output)
+=======
+        FormattedPlaceholder(const FormattedPlaceholder& input, FunctionOptions&& opts, FormattedValue&& output)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             : fallback(input.fallback), source(input.source),
             formatted(std::move(output)), previousOptions(std::move(opts)), type(kEvaluated) {}
         /**
@@ -739,7 +959,11 @@ class U_I18N_API FunctionOptions : public UObject {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API FormattedPlaceholder(const Formattable& input, const UnicodeString& fb)
+=======
+        FormattedPlaceholder(const Formattable& input, const UnicodeString& fb)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             : fallback(fb), source(input), type(kUnevaluated) {}
         /**
          * Default constructor. Leaves the FormattedPlaceholder in a
@@ -748,7 +972,11 @@ class U_I18N_API FunctionOptions : public UObject {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API FormattedPlaceholder() : type(kNull) {}
+=======
+        FormattedPlaceholder() : type(kNull) {}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Returns the source `Formattable` value for this placeholder.
          * The result is undefined if this is a null operand.
@@ -758,7 +986,11 @@ class U_I18N_API FunctionOptions : public UObject {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API const message2::Formattable& asFormattable() const;
+=======
+        const message2::Formattable& asFormattable() const;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Returns true iff this is a fallback placeholder.
          *
@@ -768,7 +1000,11 @@ class U_I18N_API FunctionOptions : public UObject {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API bool isFallback() const { return type == kFallback; }
+=======
+        bool isFallback() const { return type == kFallback; }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Returns true iff this is a null placeholder.
          *
@@ -778,7 +1014,11 @@ class U_I18N_API FunctionOptions : public UObject {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API bool isNullOperand() const { return type == kNull; }
+=======
+        bool isNullOperand() const { return type == kNull; }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Returns true iff this has formatting output.
          *
@@ -788,7 +1028,11 @@ class U_I18N_API FunctionOptions : public UObject {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API bool isEvaluated() const { return (type == kEvaluated); }
+=======
+        bool isEvaluated() const { return (type == kEvaluated); }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Returns true iff this represents a valid argument to the formatter.
          *
@@ -797,7 +1041,11 @@ class U_I18N_API FunctionOptions : public UObject {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API bool canFormat() const { return !(isFallback() || isNullOperand()); }
+=======
+        bool canFormat() const { return !(isFallback() || isNullOperand()); }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Gets the fallback value of this placeholder, to be used in its place if an error occurs while
          * formatting it.
@@ -805,7 +1053,11 @@ class U_I18N_API FunctionOptions : public UObject {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API const UnicodeString& getFallback() const { return fallback; }
+=======
+        const UnicodeString& getFallback() const { return fallback; }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Returns the options of this placeholder. The result is the empty map if !isEvaluated().
          * @return A reference to an option map, capturing the options that were used
@@ -814,14 +1066,23 @@ class U_I18N_API FunctionOptions : public UObject {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API const FunctionOptions& options() const { return previousOptions; }
+=======
+        const FunctionOptions& options() const { return previousOptions; }
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Returns the formatted output of this placeholder. The result is undefined if !isEvaluated().
          * @return          A fully formatted `FormattedPlaceholder`.
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API const FormattedValue& output() const { return formatted; }
+=======
+        const FormattedValue& output() const { return formatted; }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Move assignment operator:
          * The source FormattedPlaceholder will be left in a valid but undefined state.
@@ -829,7 +1090,11 @@ class U_I18N_API FunctionOptions : public UObject {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API FormattedPlaceholder& operator=(FormattedPlaceholder&&) noexcept;
+=======
+        FormattedPlaceholder& operator=(FormattedPlaceholder&&) noexcept;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Move constructor:
          * The source FormattedPlaceholder will be left in a valid but undefined state.
@@ -837,7 +1102,11 @@ class U_I18N_API FunctionOptions : public UObject {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API FormattedPlaceholder(FormattedPlaceholder&& other) { *this = std::move(other); }
+=======
+        FormattedPlaceholder(FormattedPlaceholder&& other) { *this = std::move(other); }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Formats this as a string, using defaults.  If this is
          * either the null operand or is a fallback value, the return value is the result of formatting the
@@ -853,7 +1122,11 @@ class U_I18N_API FunctionOptions : public UObject {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
+<<<<<<< HEAD
         U_I18N_API UnicodeString formatToString(const Locale& locale,
+=======
+        UnicodeString formatToString(const Locale& locale,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                                      UErrorCode& status) const;
 
     private:

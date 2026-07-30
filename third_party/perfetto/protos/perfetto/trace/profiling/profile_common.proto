@@ -164,6 +164,7 @@ message Frame {
   // is available at trace collection time. If not set, line numbers may be
   // added later via offline symbolization (see ModuleSymbols).
   optional uint32 line_number = 6;
+<<<<<<< HEAD
 
   // The kind of code this frame represents, for categorization (e.g. coloring
   // a flamegraph, or telling interpreted Python frames apart from native and
@@ -183,6 +184,8 @@ message Frame {
     Kind kind = 7;
     string kind_str = 8;
   }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 message Callstack {

@@ -12,7 +12,10 @@
 
 #include <cstdint>
 #include <memory>
+<<<<<<< HEAD
 #include <optional>
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include <string>
 #include <utility>
 
@@ -23,16 +26,24 @@
 #include "api/rtc_event_log_output.h"
 #include "api/units/time_delta.h"
 #include "api/units/timestamp.h"
+<<<<<<< HEAD
 #include "logging/rtc_event_log/events/rtc_event_rtcp_packet_incoming.h"
 #include "logging/rtc_event_log/events/rtc_event_rtcp_packet_outgoing.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "logging/rtc_event_log/events/rtc_event_rtp_packet_incoming.h"
 #include "logging/rtc_event_log/events/rtc_event_video_receive_stream_config.h"
 #include "logging/rtc_event_log/rtc_event_log_parser.h"
 #include "logging/rtc_event_log/rtc_stream_config.h"
+<<<<<<< HEAD
 #include "modules/rtp_rtcp/source/rtcp_packet.h"
 #include "modules/rtp_rtcp/source/rtp_packet_received.h"
 #include "rtc_base/checks.h"
 #include "system_wrappers/include/ntp_time.h"
+=======
+#include "modules/rtp_rtcp/source/rtp_packet_received.h"
+#include "rtc_base/checks.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "test/create_test_environment.h"
 
 namespace webrtc::video_timing_simulator {
@@ -71,8 +82,13 @@ ParsedRtcEventLogBuilder::ParsedRtcEventLogBuilder()
     : log_clock_(Timestamp::Seconds(10000)),
       log_env_(CreateTestEnvironment(
           CreateTestEnvironmentOptions{.time = &log_clock_})),
+<<<<<<< HEAD
       parsed_log_(nullptr),
       log_(RtcEventLogFactory().Create(log_env_)) {
+=======
+      log_(RtcEventLogFactory().Create(log_env_)),
+      parsed_log_(nullptr) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   log_->StartLogging(std::make_unique<ParsingRtcEventLogOutput>(
                          [this](std::unique_ptr<ParsedRtcEventLog> parsed_log) {
                            parsed_log_ = std::move(parsed_log);
@@ -86,14 +102,18 @@ Timestamp ParsedRtcEventLogBuilder::CurrentTime() {
   return log_clock_.CurrentTime();
 }
 
+<<<<<<< HEAD
 NtpTime ParsedRtcEventLogBuilder::CurrentNtpTime() {
   return log_clock_.ConvertTimestampToNtpTime(log_clock_.CurrentTime());
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 void ParsedRtcEventLogBuilder::AdvanceTime(TimeDelta duration) {
   log_clock_.AdvanceTime(duration);
 }
 
+<<<<<<< HEAD
 void ParsedRtcEventLogBuilder::LogVideoRecvConfig(uint32_t ssrc,
                                                   uint32_t rtx_ssrc) {
   auto config = std::make_unique<rtclog::StreamConfig>();
@@ -119,6 +139,18 @@ void ParsedRtcEventLogBuilder::LogRtcpPacketOutgoing(
 void ParsedRtcEventLogBuilder::LogRtcpPacketIncoming(
     const rtcp::RtcpPacket& rtcp_packet) {
   Log(std::make_unique<RtcEventRtcpPacketIncoming>(rtcp_packet.Build()));
+=======
+void ParsedRtcEventLogBuilder::LogVideoRecvConfig(uint32_t ssrc) {
+  auto config = std::make_unique<rtclog::StreamConfig>();
+  config->remote_ssrc = ssrc;
+  Log(std::make_unique<RtcEventVideoReceiveStreamConfig>(std::move(config)));
+}
+
+void ParsedRtcEventLogBuilder::LogRtpPacketIncoming(uint32_t ssrc) {
+  RtpPacketReceived rtp_packet(/*extensions=*/nullptr);
+  rtp_packet.SetSsrc(ssrc);
+  Log(std::make_unique<RtcEventRtpPacketIncoming>(rtp_packet));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 void ParsedRtcEventLogBuilder::Log(std::unique_ptr<RtcEvent> event) {

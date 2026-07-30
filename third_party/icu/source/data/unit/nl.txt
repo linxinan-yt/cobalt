@@ -185,7 +185,7 @@ nl{
             item{
                 dnam{"onderdelen"}
                 gender{"neuter"}
-                one{"{0} onderdeel"}
+                one{"{0} ond."}
                 other{"{0} onderdelen"}
             }
             karat{
@@ -250,6 +250,9 @@ nl{
                 gender{"neuter"}
                 one{"{0} basispunt"}
                 other{"{0} basispunten"}
+            }
+            portion-per-1e9{
+                gender{"common"}
             }
         }
         consumption{
@@ -401,7 +404,14 @@ nl{
                 other{"{0} nanoseconden"}
             }
             night{
+<<<<<<< HEAD
                 gender{"common"}
+=======
+                dnam{"nachten"}
+                gender{"common"}
+                one{"{0} nacht"}
+                other{"{0} nachten"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 per{"{0} per nacht"}
             }
             quarter{
@@ -1001,7 +1011,14 @@ nl{
                 other{"{0} knopen"}
             }
             light-speed{
+<<<<<<< HEAD
                 gender{"neuter"}
+=======
+                dnam{"licht"}
+                gender{"neuter"}
+                one{"{0} licht"}
+                other{"{0} licht"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             meter-per-second{
                 dnam{"meter per seconde"}
@@ -1322,6 +1339,12 @@ nl{
                 other{"{0} m"}
                 per{"{0}/m"}
             }
+            night{
+                dnam{"nachten"}
+                one{"{0} nacht"}
+                other{"{0} nachten"}
+                per{"{0}/nacht"}
+            }
             quarter{
                 dnam{"kw."}
                 one{"{0} kw."}
@@ -1386,6 +1409,10 @@ nl{
         }
         speed{
             light-speed{
+<<<<<<< HEAD
+=======
+                dnam{"licht"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0}licht"}
                 other{"{0}licht"}
             }

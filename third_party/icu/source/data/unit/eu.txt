@@ -203,6 +203,19 @@ eu{
                 one{"milako {0}"}
                 other{"milako {0}"}
             }
+<<<<<<< HEAD
+=======
+            permillion{
+                dnam{"zati milioi bakoitzeko"}
+                one{"{0} zati milioi bakoitzeko"}
+                other{"{0} zati milioi bakoitzeko"}
+            }
+            portion-per-1e9{
+                dnam{"zati mila milioiko"}
+                one{"{0} zati mila milioiko"}
+                other{"{0} zati mila milioiko"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         consumption{
             liter-per-100-kilometer{
@@ -330,6 +343,11 @@ eu{
             }
             night{
                 dnam{"gauak"}
+<<<<<<< HEAD
+=======
+                one{"{0} gau"}
+                other{"{0} gau"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 per{"{0} gau bakoitzeko"}
             }
             quarter{
@@ -810,6 +828,11 @@ eu{
                 one{"{0} kilometro orduko"}
                 other{"{0} kilometro orduko"}
             }
+            light-speed{
+                dnam{"argia"}
+                one{"{0} argi"}
+                other{"{0} argi"}
+            }
             meter-per-second{
                 one{"{0} metro segundoko"}
                 other{"{0} metro segundoko"}
@@ -1009,6 +1032,7 @@ eu{
             millimole-per-liter{
                 dnam{"mmol/l"}
             }
+<<<<<<< HEAD
             ofglucose{
                 dnam{"glukosa-unitate"}
                 one{"{0} Glc"}
@@ -1020,6 +1044,9 @@ eu{
                 other{"{0} zati"}
             }
             part-per-1e9{
+=======
+            portion-per-1e9{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 dnam{"zati / m. m."}
                 one{"{0} zati / m. m."}
                 other{"{0} zati / m. m."}
@@ -1051,8 +1078,15 @@ eu{
                 other{"{0} hil"}
             }
             night{
+<<<<<<< HEAD
                 one{"{0} g."}
                 other{"{0} g."}
+=======
+                dnam{"gau"}
+                one{"{0} g."}
+                other{"{0} g."}
+                per{"{0}/gau"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             second{
                 dnam{"s"}
@@ -1205,6 +1239,10 @@ eu{
                 other{"{0}kn"}
             }
             light-speed{
+<<<<<<< HEAD
+=======
+                dnam{"argia"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} a."}
                 other{"{0} a."}
             }
@@ -1377,6 +1415,11 @@ eu{
             permyriad{
                 one{"‱ {0}"}
                 other{"‱ {0}"}
+            }
+            portion-per-1e9{
+                dnam{"zati / mila milioi"}
+                one{"{0} zati / m. m."}
+                other{"{0} zati / m. m."}
             }
         }
         consumption{

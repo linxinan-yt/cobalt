@@ -14,7 +14,11 @@ st{
     }
     calendar{
         gregorian{
+<<<<<<< HEAD
             AmPmMarkersAbbr{
+=======
+            AmPmMarkers{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 "Hoseng",
                 "Thapama",
             }
@@ -122,7 +126,11 @@ st{
                     abbreviated{
                         "Phe",
                         "Kol",
+<<<<<<< HEAD
                         "Hlb",
+=======
+                        "Ube",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                         "Mme",
                         "Mot",
                         "Jan",

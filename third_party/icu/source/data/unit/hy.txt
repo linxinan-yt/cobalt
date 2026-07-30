@@ -71,6 +71,7 @@ hy{
                         other{"{0} րոպեում"}
                     }
                 }
+                dnam{"րոպե"}
                 one{"{0} րոպե"}
                 other{"{0} րոպե"}
             }
@@ -93,6 +94,7 @@ hy{
                         other{"{0} վայրկյանում"}
                     }
                 }
+                dnam{"վայրկյան"}
                 one{"{0} վայրկյան"}
                 other{"{0} վայրկյան"}
             }
@@ -566,6 +568,32 @@ hy{
                 one{"{0} պրոմիլ"}
                 other{"{0} պրոմիլ"}
             }
+<<<<<<< HEAD
+=======
+            permillion{
+                case{
+                    ablative{
+                        one{"{0} մասից միլիոնի վրա"}
+                        other{"{0} մասից միլիոնի վրա"}
+                    }
+                    dative{
+                        one{"{0} մասին միլիոնի վրա"}
+                        other{"{0} մասին միլիոնի վրա"}
+                    }
+                    instrumental{
+                        one{"{0} մասով միլիոնի վրա"}
+                        other{"{0} մասով միլիոնի վրա"}
+                    }
+                    locative{
+                        one{"{0} մասում միլիոնի վրա"}
+                        other{"{0} մասում միլիոնի վրա"}
+                    }
+                }
+                dnam{"մաս միլիոնի վրա"}
+                one{"{0} մաս միլիոնի վրա"}
+                other{"{0} մաս միլիոնի վրա"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             permyriad{
                 case{
                     ablative{
@@ -588,6 +616,29 @@ hy{
                 dnam{"պերմիրիադ"}
                 one{"{0} պերմիրիադ"}
                 other{"{0} պերմիրիադ"}
+            }
+            portion-per-1e9{
+                case{
+                    ablative{
+                        one{"{0} մասից միլիարդի վրա"}
+                        other{"{0} մասից միլիարդի վրա"}
+                    }
+                    dative{
+                        one{"{0} մասին միլիարդի վրա"}
+                        other{"{0} մասին միլիարդի վրա"}
+                    }
+                    instrumental{
+                        one{"{0} մասով միլիարդի վրա"}
+                        other{"{0} մասով միլիարդի վրա"}
+                    }
+                    locative{
+                        one{"{0} մասում միլիարդի վրա"}
+                        other{"{0} մասում միլիարդի վրա"}
+                    }
+                }
+                dnam{"մաս միլիարդի վրա"}
+                one{"{0} մաս միլիարդի վրա"}
+                other{"{0} մաս միլիարդի վրա"}
             }
         }
         consumption{
@@ -997,6 +1048,10 @@ hy{
                         other{"{0} ժամում"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"ժամ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} ժամ"}
                 other{"{0} ժամ"}
                 per{"{0} ժամում"}
@@ -1137,6 +1192,10 @@ hy{
                         other{"{0} գիշերում"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"գիշեր"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} գիշեր"}
                 other{"{0} գիշեր"}
                 per{"գիշերը {0}"}
@@ -1231,6 +1290,10 @@ hy{
                         other{"{0} տարում"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"տարի"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} տարի"}
                 other{"{0} տարի"}
                 per{"տարեկան {0}"}
@@ -1317,6 +1380,7 @@ hy{
                         other{"{0} օհմում"}
                     }
                 }
+                dnam{"օհմ"}
                 one{"{0} օհմ"}
                 other{"{0} օհմ"}
             }
@@ -1495,11 +1559,14 @@ hy{
                 one{"{0} կիլովատտ-ժամ"}
                 other{"{0} կիլովատտ-ժամ"}
             }
+<<<<<<< HEAD
             sievert{
                 dnam{"զիվերտ"}
                 one{"{0} զիվերտ"}
                 other{"{0} զիվերտ"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         force{
             kilogram-force{
@@ -1729,6 +1796,7 @@ hy{
                         other{"{0} փիքսելում"}
                     }
                 }
+                dnam{"փիքսել"}
                 one{"{0} փիքսել"}
                 other{"{0} փիքսել"}
             }
@@ -2041,6 +2109,10 @@ hy{
                         other{"{0} կտ"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"կտ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} կտ"}
                 other{"{0} կտ"}
             }
@@ -2050,6 +2122,10 @@ hy{
                 other{"{0} արեգակնային շառավիղ"}
             }
             yard{
+<<<<<<< HEAD
+=======
+                dnam{"յարդ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} յարդ"}
                 other{"{0} յարդ"}
             }
@@ -2586,6 +2662,7 @@ hy{
             millimeter-ofhg{
                 case{
                     ablative{
+<<<<<<< HEAD
                         one{"{0} սնդիկի սյան միլիմետրից"}
                         other{"{0} սնդիկի սյան միլիմետրից"}
                     }
@@ -2605,6 +2682,27 @@ hy{
                 dnam{"միլիմետր սնդիկի սյուն"}
                 one{"{0} միլիմետր սնդիկի սյուն"}
                 other{"{0} միլիմետր սնդիկի սյուն"}
+=======
+                        one{"{0} միլիմետրից՝ սնդիկի սյան"}
+                        other{"{0} միլիմետրից՝ սնդիկի սյան"}
+                    }
+                    dative{
+                        one{"{0} միլիմետրին՝ սնդիկի սյան"}
+                        other{"{0} միլիմետրին՝ սնդիկի սյան"}
+                    }
+                    instrumental{
+                        one{"{0} միլիմետրով՝ սնդիկի սյան"}
+                        other{"{0} միլիմետրով՝ սնդիկի սյան"}
+                    }
+                    locative{
+                        one{"{0} միլիմետրում՝ սնդիկի սյան"}
+                        other{"{0} միլիմետրում՝ սնդիկի սյան"}
+                    }
+                }
+                dnam{"միլիմետր՝ սնդիկի սյան"}
+                one{"{0} միլիմետր՝ սնդիկի սյան"}
+                other{"{0} միլիմետր՝ սնդիկի սյան"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             ofhg{
                 dnam{"սնդիկի սյուն"}
@@ -2943,6 +3041,7 @@ hy{
                 other{"{0} խորանարդ յարդ"}
             }
             cup{
+                dnam{"բաժակ"}
                 one{"{0} բաժակ"}
                 other{"{0} բաժակ"}
             }
@@ -3126,6 +3225,9 @@ hy{
                 one{"{0} միլիլիտր"}
                 other{"{0} միլիլիտր"}
             }
+            pint{
+                dnam{"փինթ"}
+            }
             pint-metric{
                 case{
                     ablative{
@@ -3164,6 +3266,7 @@ hy{
     unitsNarrow{
         acceleration{
             g-force{
+                dnam{"g-ուժ"}
                 one{"{0}G"}
                 other{"{0}G"}
             }
@@ -3183,6 +3286,20 @@ hy{
             steradian{
                 one{"{0} sr"}
                 other{"{0} sr"}
+            }
+            arc-second{
+                dnam{"վայրկյան"}
+            }
+            degree{
+                dnam{"աստ"}
+            }
+            radian{
+                one{"{0}ռադ"}
+                other{"{0}ռադ"}
+            }
+            revolution{
+                one{"{0}պտ"}
+                other{"{0}պտ"}
             }
         }
         area{
@@ -3219,6 +3336,10 @@ hy{
                 other{"{0}մղ²"}
             }
             square-yard{
+<<<<<<< HEAD
+=======
+                dnam{"յդ²"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0}յդ²"}
                 other{"{0}յդ²"}
             }
@@ -3232,11 +3353,14 @@ hy{
                 one{"{0}կար"}
                 other{"{0}կար"}
             }
+<<<<<<< HEAD
             katal{
                 dnam{"կատ"}
                 one{"{0}կատ"}
                 other{"{0}կատ"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             millimole-per-liter{
                 one{"{0}մմոլ/լ"}
                 other{"{0}մմոլ/լ"}
@@ -3271,6 +3395,19 @@ hy{
             permille{
                 dnam{"‰"}
             }
+<<<<<<< HEAD
+=======
+            permillion{
+                dnam{"մմվ"}
+                one{"{0}մմվ"}
+                other{"{0}մմվ"}
+            }
+            portion-per-1e9{
+                dnam{"մմլրդվ"}
+                one{"{0}մմլրդվ"}
+                other{"{0}մմլրդվ"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         consumption{
             liter-per-kilometer{
@@ -3352,6 +3489,10 @@ hy{
                 per{"{0}/ա"}
             }
             night{
+<<<<<<< HEAD
+=======
+                dnam{"գիշեր"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0}/գ․"}
                 other{"{0}/գ․"}
                 per{"{0}/գ․"}
@@ -3399,21 +3540,46 @@ hy{
                 other{"{0}Վ"}
             }
         }
+        electric{
+            ampere{
+                one{"{0}Ա"}
+                other{"{0}Ա"}
+            }
+            milliampere{
+                one{"{0}մԱ"}
+                other{"{0}մԱ"}
+            }
+            ohm{
+                dnam{"օհմ"}
+                one{"{0} Ω"}
+                other{"{0}Ω"}
+            }
+            volt{
+                one{"{0}Վ"}
+                other{"{0}Վ"}
+            }
+        }
         energy{
+<<<<<<< HEAD
             becquerel{
                 dnam{"Բք"}
                 one{"{0}Բք"}
                 other{"{0}Բք"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             british-thermal-unit{
                 one{"{0}Բջմ"}
                 other{"{0}Բջմ"}
             }
+<<<<<<< HEAD
             calorie-it{
                 dnam{"միջազգային կալորիա"}
                 one{"{0} միջազգային կալորիա"}
                 other{"{0} միջազգային կալորիա"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             electronvolt{
                 one{"{0}էՎ"}
                 other{"{0}էՎ"}
@@ -3422,11 +3588,14 @@ hy{
                 one{"{0} կալ"}
                 other{"{0}կալ"}
             }
+<<<<<<< HEAD
             gray{
                 dnam{"Գր"}
                 one{"{0}Գր"}
                 other{"{0}Գր"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             kilocalorie{
                 one{"{0}կկալ"}
                 other{"{0}կկալ"}
@@ -3435,11 +3604,14 @@ hy{
                 one{"{0}կՋ"}
                 other{"{0}կՋ"}
             }
+<<<<<<< HEAD
             sievert{
                 dnam{"Զվ"}
                 one{"{0}Զվ"}
                 other{"{0}Զվ"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         force{
             kilogram-force{
@@ -3498,6 +3670,9 @@ hy{
                 one{"{0} լ. տ."}
                 other{"{0} լ. տ."}
             }
+            point{
+                dnam{"կտ"}
+            }
             yard{
                 dnam{"յդ"}
                 one{"{0}յդ"}
@@ -3508,6 +3683,7 @@ hy{
             lux{
                 one{"{0}լք"}
                 other{"{0}լք"}
+<<<<<<< HEAD
             }
         }
         magnetic{
@@ -3520,6 +3696,8 @@ hy{
                 dnam{"Վբ"}
                 one{"{0}Վբ"}
                 other{"{0}Վբ"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         mass{
@@ -3540,8 +3718,15 @@ hy{
                 other{"{0}մգ"}
             }
             ounce{
+<<<<<<< HEAD
                 one{"{0}ու"}
                 other{"{0}ու"}
+=======
+                dnam{"ու"}
+                one{"{0}ու"}
+                other{"{0}ու"}
+                per{"{0}/ու"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             ounce-troy{
                 dnam{"տ․ ու"}
@@ -3578,6 +3763,10 @@ hy{
                 one{"{0}մՎտ"}
                 other{"{0}մՎտ"}
             }
+            milliwatt{
+                one{"{0}մՎտ"}
+                other{"{0}մՎտ"}
+            }
             watt{
                 one{"{0}Վտ"}
                 other{"{0}Վտ"}
@@ -3597,6 +3786,7 @@ hy{
                 other{"{0}հՊա"}
             }
             inch-ofhg{
+                dnam{"մատ. ս.ս."}
                 one{"{0}\u0022 ս.ս."}
                 other{"{0}\u0022 ս. ս."}
             }
@@ -3612,6 +3802,7 @@ hy{
                 one{"{0}մբ"}
                 other{"{0}մբ"}
             }
+<<<<<<< HEAD
             millimeter-ofhg{
                 dnam{"մմսս"}
                 one{"{0} մմսս"}
@@ -3622,6 +3813,8 @@ hy{
                 one{"{0}սս"}
                 other{"{0}սս"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             pascal{
                 one{"{0}Պա"}
                 other{"{0}Պա"}
@@ -3658,6 +3851,10 @@ hy{
                 other{"{0}տկռ"}
             }
             bushel{
+<<<<<<< HEAD
+=======
+                dnam{"բուշել"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0}բու"}
                 other{"{0}բու"}
             }
@@ -3710,11 +3907,14 @@ hy{
                 one{"{0}հղ.ու"}
                 other{"{0}հղ.ու"}
             }
+<<<<<<< HEAD
             fluid-ounce-metric{
                 dnam{"մետր․ հղ․ ու"}
                 one{"{0} մետր․ հղ․ ու"}
                 other{"{0} մետր․ հղ․ ու"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             gallon{
                 one{"{0}գալ"}
                 other{"{0}գալ"}
@@ -3736,6 +3936,10 @@ hy{
                 other{"{0}պտղունց"}
             }
             pint{
+<<<<<<< HEAD
+=======
+                dnam{"փինթ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0}փինթ"}
                 other{"{0}փինթ"}
             }
@@ -3939,6 +4143,19 @@ hy{
             permille{
                 dnam{"պրոմիլ"}
             }
+<<<<<<< HEAD
+=======
+            permillion{
+                dnam{"մաս/միլիոն"}
+                one{"{0} մմվ"}
+                other{"{0} մմվ"}
+            }
+            portion-per-1e9{
+                dnam{"մաս/միլիարդ"}
+                one{"{0} մմլրդվ"}
+                other{"{0} մմլրդվ"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         consumption{
             liter-per-100-kilometer{
@@ -4135,11 +4352,16 @@ hy{
             }
             ohm{
                 dnam{"օհմ"}
+<<<<<<< HEAD
             }
             siemens{
                 dnam{"Սմ"}
                 one{"{0} Սմ"}
                 other{"{0} Սմ"}
+=======
+                one{"{0} Ω"}
+                other{"{0} Ω"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             volt{
                 dnam{"Վ"}

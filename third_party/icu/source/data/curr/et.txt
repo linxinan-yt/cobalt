@@ -2109,6 +2109,10 @@ et{
             one{"Jeemeni riaal"}
             other{"Jeemeni riaali"}
         }
+        YUD{
+            one{"Jugoslaavia kõva dinaar (1966–1990)"}
+            other{"Jugoslaavia kõva dinaar (1966–1990)"}
+        }
         YUM{
             one{"Jugoslaavia uus dinaar (1994–2002)"}
             other{"Jugoslaavia uut dinaari (1994–2002)"}

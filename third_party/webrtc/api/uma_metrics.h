@@ -253,7 +253,11 @@ enum SdpMungingType {
   // DataChannel-related munging.
   kDataChannelSctpInit = 100,
   kDataChannelMaxMessageSize = 101,
+<<<<<<< HEAD
   kDataChannelSctpPort = 102,
+=======
+  kDataChannelSctpPort = 101,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   kMaxValue,
 };
 

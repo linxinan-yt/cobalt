@@ -7,7 +7,10 @@ yo{
         cf{"Ònà Ìgbekalẹ̀ owó"}
         collation{"Ètò Ẹlẹ́sẹẹsẹ"}
         currency{"Owó"}
+<<<<<<< HEAD
         em{"Ìgbékalẹ̀ Ẹ̀mójì"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         hc{"Òbíríkiti Wákàtí (12 vs 24)"}
         lb{"Àra Ìda Ìlà"}
         lw{"Àwọn Ìdá Ìlà Láàárín Àwọn Ọ̀rọ̀"}
@@ -31,6 +34,10 @@ yo{
         ann{"Èdè Obolo"}
         anp{"Èdè Angika"}
         ar{"Èdè Lárúbáwá"}
+<<<<<<< HEAD
+=======
+        ar_001{"Èdè Lárúbáwá (Agbáyé)"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         arn{"Èdè Mapushe"}
         arp{"Èdè Arapaho"}
         ars{"Èdè Arabiki ti Najidi"}
@@ -591,10 +598,13 @@ yo{
         cf{
             account{"Ìgúnrégé Ìṣirò Owó Kọ́rẹ́ńsì"}
             standard{"Ònà ìgbekalẹ̀ owó tó jẹ́ àjùmọ̀lò"}
+<<<<<<< HEAD
         }
         cf%core{
             account{"Ìṣirò owó"}
             standard{"Àjùmọ̀lò"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         collation{
             ducet{"Ètò Ẹlẹ́sẹẹsẹ Àkùàyàn Unicode"}

@@ -205,6 +205,11 @@ sc{
                 one{"{0} pro deghemìgia"}
                 other{"{0} pro deghemìgia"}
             }
+            portion-per-1e9{
+                dnam{"partes pro milliardu"}
+                one{"{0} parte pro milliardu"}
+                other{"{0} partes pro milliardu"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1122,7 +1127,11 @@ sc{
                 one{"{0}ppm"}
                 other{"{0}ppm"}
             }
+<<<<<<< HEAD
             part-per-1e9{
+=======
+            portion-per-1e9{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0}ppb"}
                 other{"{0}ppb"}
             }
@@ -1857,7 +1866,11 @@ sc{
                 one{"{0} mmol/l"}
                 other{"{0} mmol/l"}
             }
+<<<<<<< HEAD
             part-per-1e9{
+=======
+            portion-per-1e9{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 dnam{"partes/milliardu"}
             }
         }

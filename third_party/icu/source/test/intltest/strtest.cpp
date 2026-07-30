@@ -881,6 +881,7 @@ void
 StringTest::Testctou() {
   const char *cs = "Fa\\u0127mu";
   UnicodeString u = ctou(cs);
+<<<<<<< HEAD
   assertEquals("Testing unescape@0", 0x0046, u.charAt(0));
   assertEquals("Testing unescape@2", 295, u.charAt(2));
 }
@@ -989,4 +990,8 @@ StringTest::TestCopyInvariantChars() {
     assertTrue("copied is empty", dst.isEmpty());
     assertTrue("copied alias is nullptr", dst.getAlias() == nullptr);
     assertEquals("copied data is empty", "", dst.data());
+=======
+  assertEquals("Testing unescape@0", static_cast<int32_t>(0x0046), u.charAt(0));
+  assertEquals("Testing unescape@2", static_cast<int32_t>(295), u.charAt(2));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }

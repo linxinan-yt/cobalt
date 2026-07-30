@@ -10,6 +10,10 @@
 #include "pc/codec_vendor.h"
 
 #include <cstddef>
+<<<<<<< HEAD
+=======
+#include <map>
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include <optional>
 #include <string>
 #include <utility>
@@ -128,7 +132,10 @@ const Codec* GetAssociatedCodecForRtx(const CodecList& codec_list,
 const RTCErrorOr<std::vector<const Codec*>> GetAssociatedCodecsForRed(
     const CodecList& codec_list,
     const Codec& red_codec) {
+<<<<<<< HEAD
   RTC_DCHECK_DISALLOW_THREAD_BLOCKING_CALLS();
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   std::string fmtp;
   std::vector<const Codec*> codecs;
   if (!red_codec.GetParam(kCodecParamNotInNameValueFormat, &fmtp)) {
@@ -149,6 +156,7 @@ const RTCErrorOr<std::vector<const Codec*>> GetAssociatedCodecsForRed(
   }
   for (size_t index = 0; index < redundant_payloads.size(); ++index) {
     absl::string_view associated_pt_str = redundant_payloads[index];
+<<<<<<< HEAD
     std::optional<PayloadType> associated_pt =
         PayloadTypeFromString(associated_pt_str);
     if (!associated_pt) {
@@ -157,14 +165,30 @@ const RTCErrorOr<std::vector<const Codec*>> GetAssociatedCodecsForRed(
                           << " to a valid payload type.";
       return RTCError(RTCErrorType::INTERNAL_ERROR,
                       "RED codec with invalid payload type argument");
+=======
+    int associated_pt;
+    if (!webrtc::FromString(associated_pt_str, &associated_pt)) {
+      RTC_LOG(LS_WARNING) << "Couldn't convert payload type "
+                          << associated_pt_str << " of RED codec " << red_codec
+                          << " to an integer.";
+      return RTCError(RTCErrorType::INTERNAL_ERROR,
+                      "RED codec with non-integer argument");
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 
     // Find the associated codec for the RED codec.
     const Codec* associated_codec =
+<<<<<<< HEAD
         FindCodecById(codec_list.codecs(), *associated_pt);
     if (!associated_codec) {
       RTC_LOG(LS_WARNING) << "Couldn't find associated codec with payload type "
                           << associated_pt_str << " for RED codec " << red_codec
+=======
+        FindCodecById(codec_list.codecs(), associated_pt);
+    if (!associated_codec) {
+      RTC_LOG(LS_WARNING) << "Couldn't find associated codec with payload type "
+                          << associated_pt << " for RED codec " << red_codec
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                           << ".";
       return RTCError(RTCErrorType::INTERNAL_ERROR,
                       "RED codec pointing to nonexistent PT");
@@ -377,6 +401,11 @@ RTCError MergeCodecsFromConfigurations(
       if (!error.ok()) {
         return error;
       }
+<<<<<<< HEAD
+=======
+      codec.id = suggestion.value();
+      offered_codecs.PushIfNotPresent(codec);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
   }
 
@@ -391,10 +420,79 @@ RTCError MergeCodecsFromConfigurations(
     });
     RTC_DCHECK(primary_it != offered_codecs.end());
 
+<<<<<<< HEAD
     RTCError error = MergeRedCodec(config, *primary_it, mid, offered_codecs,
                                    pt_suggester, pick_from_top_of_range);
     if (!error.ok()) {
       return error;
+=======
+      rtx_codec.params[kCodecParamAssociatedPayloadType] =
+          absl::StrCat(matching_codec->id);
+      RTCErrorOr<PayloadType> suggestion =
+          pt_suggester.SuggestPayloadType(mid, rtx_codec);
+      if (!suggestion.ok()) {
+        return suggestion.MoveError();
+      }
+      rtx_codec.id = suggestion.value();
+      offered_codecs.push_back(rtx_codec);
+    } else if (reference_codec.GetResiliencyType() ==
+                   Codec::ResiliencyType::kRed &&
+               !FindMatchingCodec(reference_codecs, offered_codecs,
+                                  reference_codec)) {
+      Codec red_codec = reference_codec;
+      RTCErrorOr<std::vector<const Codec*>> associated_codecs =
+          GetAssociatedCodecsForRed(reference_codecs, red_codec);
+      if (!associated_codecs.ok()) {
+        return associated_codecs.MoveError();
+      }
+      if (associated_codecs.value().empty()) {
+        // No parameter. Just blindly add the codec.
+        RTC_LOG(LS_WARNING)
+            << "RED codec with no associated codecs found: " << red_codec;
+        RTCErrorOr<PayloadType> suggestion =
+            pt_suggester.SuggestPayloadType(mid, red_codec);
+        if (!suggestion.ok()) {
+          return suggestion.MoveError();
+        }
+        red_codec.id = suggestion.value();
+        offered_codecs.PushIfNotPresent(red_codec);
+        continue;
+      }
+      if (associated_codecs.value().size() < 2) {
+        RTC_LOG(LS_WARNING)
+            << "RED codec with only one valid associated codec ignored: "
+            << red_codec;
+        continue;
+      }
+      StringBuilder sb;
+      for (const Codec* associated_codec : associated_codecs.value()) {
+        std::optional<Codec> matching_codec = FindMatchingCodec(
+            reference_codecs, offered_codecs, *associated_codec);
+        if (!matching_codec) {
+          // This should always succeed, because the associated codecs
+          // were looked up in reference_codecs, and all reference
+          // codecs were added in the first loop of the function.
+          RTC_LOG(LS_WARNING) << "Couldn't find matching "
+                              << associated_codec->name << " codec.";
+          // TODO: https://issues.webrtc.org/455503439 - consider CHECK
+          RTC_DCHECK_NOTREACHED();
+          return RTCError(RTCErrorType::INTERNAL_ERROR,
+                          "RED payload type lookup failed");
+        }
+        if (sb.size() > 0) {
+          sb << "/";
+        }
+        sb << matching_codec->id;
+      }
+      red_codec.params[kCodecParamNotInNameValueFormat] = sb.Release();
+      RTCErrorOr<PayloadType> suggestion =
+          pt_suggester.SuggestPayloadType(mid, red_codec);
+      if (!suggestion.ok()) {
+        return suggestion.MoveError();
+      }
+      red_codec.id = suggestion.value();
+      offered_codecs.push_back(red_codec);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
   }
 
@@ -418,6 +516,7 @@ RTCError MergeCodecsFromConfigurations(
   return RTCError::OK();
 }
 
+<<<<<<< HEAD
 // Adds all codecs from `reference_codecs` to `offered_codecs` that don't
 // already exist in `offered_codecs` and ensure the payload types don't
 // collide.
@@ -542,6 +641,8 @@ RTCError MergeCodecsLegacy(const CodecList& reference_codecs,
   return RTCError::OK();
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 // `codecs` is a full list of codecs with correct payload type mappings, which
 // don't conflict with mappings of the other media type; `supported_codecs` is
 // a list filtered for the media section`s direction but with default payload
@@ -894,6 +995,7 @@ RTCError AssignCodecIdsAndLinkRedRefactored(
 
 // Exposed for testing
 RTCError MergeCodecsForTesting(const CodecList& reference_codecs,
+<<<<<<< HEAD
                                absl::string_view mid,
                                CodecList& offered_codecs,
                                PayloadTypeSuggester& pt_suggester,
@@ -980,6 +1082,12 @@ RTCError CodecVendor::MergeCodecsByDirection(MediaType type,
                                            pick_from_top_of_range);
   }
   RTC_CHECK_NOTREACHED();
+=======
+                               const std::string& mid,
+                               CodecList& offered_codecs,
+                               PayloadTypeSuggester& pt_suggester) {
+  return MergeCodecs(reference_codecs, mid, offered_codecs, pt_suggester);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 RTCErrorOr<std::vector<Codec>> CodecVendor::GetNegotiatedCodecsForOffer(
@@ -1008,6 +1116,7 @@ RTCErrorOr<std::vector<Codec>> CodecVendor::GetNegotiatedCodecsForOffer(
         pt_suggester.AddLocalMapping(mid, codec.id, codec);
       }
     }
+<<<<<<< HEAD
     MergeCodecsByDirection(media_description_options.type,
                            media_description_options.direction, mid, codecs,
                            pt_suggester, /*pick_from_top_of_range=*/false);
@@ -1037,6 +1146,18 @@ RTCErrorOr<std::vector<Codec>> CodecVendor::GetNegotiatedCodecsForOffer(
       MergeCodecsLegacy(video_send_codecs_.codecs(), mid, codecs, pt_suggester,
                         /*pick_from_top_of_range=*/true);
     }
+=======
+    // Use MergeCodecs in order to handle PT clashes.
+    MergeCodecs(checked_codec_list.value(), mid, codecs, pt_suggester);
+  }
+  // Add our codecs that are not in the current description.
+  if (media_description_options.type == MediaType::AUDIO) {
+    MergeCodecs(audio_recv_codecs(), mid, codecs, pt_suggester);
+    MergeCodecs(audio_send_codecs(), mid, codecs, pt_suggester);
+  } else {
+    MergeCodecs(video_recv_codecs(), mid, codecs, pt_suggester);
+    MergeCodecs(video_send_codecs(), mid, codecs, pt_suggester);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   CodecList filtered_codecs;
@@ -1175,6 +1296,7 @@ RTCErrorOr<Codecs> CodecVendor::GetNegotiatedCodecsForAnswer(
         pt_suggester.AddLocalMapping(mid, codec.id, codec);
       }
     }
+<<<<<<< HEAD
     MergeCodecsByDirection(media_description_options.type,
                            RtpTransceiverDirection::kSendRecv, mid, codecs,
                            pt_suggester, /*pick_from_top_of_range=*/false);
@@ -1198,6 +1320,17 @@ RTCErrorOr<Codecs> CodecVendor::GetNegotiatedCodecsForAnswer(
       MergeCodecsLegacy(video_send_codecs_.codecs(), mid, codecs, pt_suggester);
       MergeCodecsLegacy(video_recv_codecs_.codecs(), mid, codecs, pt_suggester);
     }
+=======
+    MergeCodecs(checked_codec_list.value(), mid, codecs, pt_suggester);
+  }
+  // Add all our supported codecs
+  if (media_description_options.type == MediaType::AUDIO) {
+    MergeCodecs(audio_send_codecs(), mid, codecs, pt_suggester);
+    MergeCodecs(audio_recv_codecs(), mid, codecs, pt_suggester);
+  } else {
+    MergeCodecs(video_send_codecs(), mid, codecs, pt_suggester);
+    MergeCodecs(video_recv_codecs(), mid, codecs, pt_suggester);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   CodecList filtered_codecs;

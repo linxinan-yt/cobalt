@@ -60,7 +60,16 @@
 #include "content/browser/devtools/devtools_instrumentation.h"
 #include "content/browser/devtools/network_service_devtools_observer.h"
 #include "content/browser/download/download_manager_impl.h"
+<<<<<<< HEAD
 #include "content/browser/fenced_frame/fenced_frame_url_mapping.h"
+=======
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
+#include "content/browser/fenced_frame/fenced_frame_url_mapping.h"  // nogncheck
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+#include "content/browser/interest_group/ad_auction_headers_util.h"
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "content/browser/loader/browser_initiated_resource_request.h"
 #include "content/browser/loader/cached_navigation_url_loader.h"
 #include "content/browser/loader/navigation_early_hints_manager.h"
@@ -880,6 +889,88 @@ void PersistOriginTrialsFromHeaders(
       origin, partition_origin, tokens, base::Time::Now(), source_id);
 }
 
+<<<<<<< HEAD
+=======
+struct TopicsHeaderValueResult {
+  bool topics_eligible = false;
+  std::optional<std::string> header_value;
+};
+
+// Returns the topics header for a navigation request. Returns std::nullopt if
+// the request isn't eligible for topics. This should align with the handling in
+// `GetTopicsHeaderValueForSubresourceRequest()`.
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+TopicsHeaderValueResult GetTopicsHeaderValueForNavigationRequest(
+    FrameTreeNode* frame_tree_node,
+    const GURL& url) {
+  // Skip if the <iframe> does not have the "browsingtopics" opt-in attribute.
+  if (!frame_tree_node->browsing_topics()) {
+    return TopicsHeaderValueResult{};
+  }
+
+  RenderFrameHostImpl* rfh = frame_tree_node->current_frame_host();
+
+  // Skip top frame navigation.
+  // TODO(crbug.com/40260337): This should be checked at the mojom boundary of
+  // RenderFrameHostImpl::DidChangeIframeAttributes, and should be a DCHECK
+  // here.
+  if (rfh->is_main_frame()) {
+    return {};
+  }
+
+  // Skip fenced frames.
+  if (rfh->IsNestedWithinFencedFrame()) {
+    return {};
+  }
+
+  // Skip inactive pages (e.g. prerendered pages).
+  if (!rfh->GetPage().IsPrimary()) {
+    return {};
+  }
+
+  url::Origin origin = url::Origin::Create(url);
+  if (origin.opaque()) {
+    return {};
+  }
+
+  if (!network::IsOriginPotentiallyTrustworthy(origin)) {
+    return {};
+  }
+
+  const network::PermissionsPolicy* parent_policy =
+      rfh->GetParent()->GetPermissionsPolicy();
+
+  DCHECK(parent_policy);
+
+  if (!parent_policy->IsFeatureEnabledForOrigin(
+          network::mojom::PermissionsPolicyFeature::kBrowsingTopics, origin) ||
+      !parent_policy->IsFeatureEnabledForOrigin(
+          network::mojom::PermissionsPolicyFeature::
+              kBrowsingTopicsBackwardCompatible,
+          origin)) {
+    return {};
+  }
+
+  std::vector<blink::mojom::EpochTopicPtr> topics;
+  bool topics_eligible = GetContentClient()->browser()->HandleTopicsWebApi(
+      origin, rfh->GetMainFrame(),
+      browsing_topics::ApiCallerSource::kIframeAttribute,
+      /*get_topics=*/true,
+      /*observe=*/false, topics);
+
+  int num_versions_in_epochs =
+      topics_eligible
+          ? GetContentClient()->browser()->NumVersionsInTopicsEpochs(
+                rfh->GetMainFrame())
+          : 0;
+
+  return {
+      .topics_eligible = topics_eligible,
+      .header_value = DeriveTopicsHeaderValue(topics, num_versions_in_epochs)};
+}
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 ukm::SourceId GetPageUkmSourceId(FrameTreeNode* frame_tree_node) {
   CHECK(frame_tree_node);
   RenderFrameHost* render_frame_host = frame_tree_node->current_frame_host();
@@ -1740,10 +1831,12 @@ NavigationRequest::NavigationRequest(
                                        navigation_id_)),
       is_embedder_initiated_fenced_frame_navigation_(
           is_embedder_initiated_fenced_frame_navigation),
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
       fenced_frame_properties_(
           is_embedder_initiated_fenced_frame_navigation
               ? std::make_optional(FencedFrameProperties(common_params_->url))
               : std::nullopt),
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
       embedder_shared_storage_context_(embedder_shared_storage_context),
       request_method_(common_params_->method),
       original_url_(common_params_->url),
@@ -2133,6 +2226,29 @@ NavigationRequest::NavigationRequest(
         commit_params_->post_content_type = std::move(content_type).value();
       }
     }
+<<<<<<< HEAD
+=======
+
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+    TopicsHeaderValueResult topics_header_value_result =
+        GetTopicsHeaderValueForNavigationRequest(frame_tree_node,
+                                                 common_params_->url);
+
+    topics_eligible_ = topics_header_value_result.topics_eligible;
+
+    if (topics_header_value_result.header_value) {
+      headers.SetHeader(kBrowsingTopicsRequestHeaderKey,
+                        *topics_header_value_result.header_value);
+    }
+
+    if (has_ad_auction_headers_attribute_ &&
+        IsAdAuctionHeadersEligibleForNavigation(
+            *frame_tree_node_, url::Origin::Create(common_params_->url))) {
+      ad_auction_headers_eligible_ = true;
+      headers.SetHeader(kAdAuctionRequestHeaderKey, "?1");
+    }
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   begin_params_->headers = headers.ToString();
@@ -2387,10 +2503,12 @@ NavigationRequest::~NavigationRequest() {
     navigation_handle_proxy_->DidFinish();
 #endif
 
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
   if (is_deferred_on_fenced_frame_url_mapping_) {
     CHECK(NeedFencedFrameURLMapping());
     GetFencedFrameURLMap().RemoveObserverForURN(common_params_->url, this);
   }
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 
   RecordEarlyRenderFrameHostSwapMetrics();
 
@@ -2559,6 +2677,7 @@ void NavigationRequest::BeginNavigation() {
   // In long term, navigation support for urn::uuid in iframes will be
   // deprecated. Currently we issue a console warning when navigation starts.
   // TODO(crbug.com/40060657)
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
   if (NeedFencedFrameURLMapping()) {
     if (!is_fenced_frame) {
       // Iframes with urn::uuid.
@@ -2603,6 +2722,22 @@ void NavigationRequest::BeginNavigation() {
       ->MaybeSendFencedFrameAutomaticReportingBeacon(
           *this, blink::mojom::AutomaticBeaconType::kTopNavigationStart);
 
+<<<<<<< HEAD
+=======
+  // Log a histogram for a top-level navigation that initiates from a fenced
+  // frame or URN iframe.
+  if (GetInitiatorDocumentRenderFrameHost() &&
+      GetInitiatorDocumentRenderFrameHost()
+          ->frame_tree_node()
+          ->GetFencedFrameProperties()
+          .has_value() &&
+      IsInOutermostMainFrame()) {
+    base::UmaHistogramEnumeration(blink::kFencedFrameTopNavigationHistogram,
+                                  blink::FencedFrameNavigationState::kBegin);
+  }
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   BeginNavigationImpl();
 }
 
@@ -2743,15 +2878,18 @@ void NavigationRequest::OnPrerenderingActivationChecksComplete(
   is_running_potential_prerender_activation_checks_ = false;
   commit_deferrer_.reset();
 
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
   // We can only activate top-level pages, which can never be at a fenced frame
   // URN that needs to be mapped.
   CHECK(!NeedFencedFrameURLMapping());
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 
   BeginNavigationImpl();
   // DO NOT ADD CODE after this. The previous call to
   // BeginNavigationImpl may cause the destruction of the NavigationRequest.
 }
 
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 FencedFrameURLMapping& NavigationRequest::GetFencedFrameURLMap() {
   // The usual case here is a fenced frame root navigating to a URNs, in which
   // case we need to consult the `FencedFrameURLMapping` in the *outer*
@@ -2879,6 +3017,7 @@ void NavigationRequest::OnFencedFrameURLMappingComplete(
   BeginNavigationImpl();  // DO NOT ADD CODE after this, because it might have
                           // destroyed `this`.
 }
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 
 void NavigationRequest::BeginNavigationImpl() {
   TRACE_EVENT("navigation", "NavigationRequest::BeginNavigationImpl",
@@ -6288,10 +6427,23 @@ void NavigationRequest::OnRedirectChecksComplete(
       std::move(headers_update_params_);
   headers_update_params_.Clear();
 
+<<<<<<< HEAD
   if (remove_extra_headers_on_cross_origin_redirect_ &&
       !url::Origin::Create(commit_params_->redirects.back())
            .IsSameOriginWith(common_params_->url)) {
     CHECK(commit_params_->is_browser_initiated);
+=======
+  // The topics a request is allowed to see can change within its redirect
+  // chain thus we need to recalculate them. For example, different caller
+  // origins (i.e. navigation URL's origin) may receive different topics, as the
+  // callers can only get the topics about the sites they were on. Besides,
+  // regardless of cross-origin-ness, the timestamp can also affect the
+  // candidate epochs where the topics are derived from, thus resulting in
+  // different topics across redirects.
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  if (topics_eligible_) {
+    topics_eligible_ = false;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     // Browser-initiated navigations should always have a NavigationEntry.
     NavigationEntryImpl* nav_entry =
@@ -6310,6 +6462,7 @@ void NavigationRequest::OnRedirectChecksComplete(
     nav_entry->set_extra_headers(std::string());
     nav_entry->SetRemoveExtraHeadersOnCrossOriginRedirect(false);
   }
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
 
   if (shared_storage_writable_opted_in_) {
     // On a redirect, the PermissionsPolicy may change the status of this
@@ -6760,6 +6913,15 @@ void NavigationRequest::CommitErrorPage(
 
   ReuseRequestNavigationClientForCommitIfNeeded();
 
+<<<<<<< HEAD
+=======
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  topics_eligible_ = false;
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+
+  ad_auction_headers_eligible_ = false;
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   base::WeakPtr<NavigationRequest> weak_self(weak_factory_.GetWeakPtr());
   ReadyToCommitNavigation(true /* is_error */);
   // The caller above might result in the deletion of `this`. Return immediately
@@ -6790,6 +6952,7 @@ void NavigationRequest::CommitErrorPage(
           previous_origin.GetTupleOrPrecursorTupleIfOpaque();
   if (!is_error_page_with_same_precursor) {
     commit_params_->force_new_document_sequence_number = true;
+<<<<<<< HEAD
   } else {
     // We only preserve the document sequence number for temporary errors that
     // could later be reloaded and succeed, which don't stay in the current
@@ -6797,7 +6960,24 @@ void NavigationRequest::CommitErrorPage(
     // and will not share the precursor, so they will always force a new
     // document sequence number.
     CHECK_NE(ComputeErrorPageProcess(), ErrorPageProcess::kCurrentProcess);
+=======
   }
+
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
+  // If the outermost main frame is performing an error navigation, capture the
+  // state of fenced frames rendered in the viewport before the entire FrameTree
+  // is torn down. We have to do this now, because the renderer will change the
+  // visibility of its frames after receiving the commit.
+  if (previous_rfh->IsOutermostMainFrame() && !IsSameDocument()) {
+    auto* monitor =
+        PageUserData<FencedFrameViewportMonitor>::GetOrCreateForPage(
+            previous_rfh->GetPage());
+    if (monitor) {
+      monitor->ComputeSameSiteFencedFrameMaximumBeforePrimaryPageChange();
+    }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
+  }
+#endif
 
   PopulateDocumentTokenForCrossDocumentNavigation();
   // Use a separate cache shard, and no cookies, for error pages.
@@ -6937,12 +7117,54 @@ void NavigationRequest::CommitNavigation() {
   commit_params_->storage_key = GetRenderFrameHost()->CalculateStorageKey(
       origin_to_commit, base::OptionalToPtr(nonce));
 
+<<<<<<< HEAD
+=======
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  if (topics_eligible_) {
+    topics_eligible_ = false;
+
+    if (response()) {
+      HandleTopicsEligibleResponse(
+          response_head_->parsed_headers, url::Origin::Create(GetURL()),
+          *GetRenderFrameHost(),
+          browsing_topics::ApiCallerSource::kIframeAttribute);
+    }
+  }
+
+  if (ad_auction_headers_eligible_) {
+    ProcessAdAuctionResponseHeaders(origin_to_commit, *GetRenderFrameHost(),
+                                    response() ? response()->headers : nullptr);
+  } else if (has_ad_auction_headers_attribute_) {
+    RemoveAdAuctionResponseHeaders(response() ? response()->headers : nullptr);
+  }
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   RenderFrameHostImpl* old_frame_host =
       frame_tree_node_->render_manager()->current_frame_host();
   if (!NavigationTypeUtils::IsSameDocument(common_params_->navigation_type)) {
     // We want to record this for the frame that we are navigating away from.
     old_frame_host->RecordNavigationSuddenTerminationHandlers();
   }
+<<<<<<< HEAD
+=======
+
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
+  // If the outermost main frame is being navigated, capture the state of fenced
+  // frames rendered in the viewport before the entire FrameTree is torn down.
+  // We have to do this now, because the renderer will change the visibility of
+  // its frames after receiving the commit.
+  if (old_frame_host->IsOutermostMainFrame() && !IsSameDocument()) {
+    auto* monitor =
+        PageUserData<FencedFrameViewportMonitor>::GetOrCreateForPage(
+            old_frame_host->GetPage());
+    if (monitor) {
+      monitor->ComputeSameSiteFencedFrameMaximumBeforePrimaryPageChange();
+    }
+  }
+#endif
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   if (IsServedFromBackForwardCache() || IsPrerenderedPageActivation()) {
     CommitPageActivation();
     return;
@@ -7173,6 +7395,7 @@ void NavigationRequest::CommitNavigation() {
   commit_params_->modified_runtime_features =
       runtime_feature_state_context_.GetFeatureOverrides();
 
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
   // Documents loaded from fenced frame configs can opt into allowing
   // cross-origin subframes to use their reporting metadata to send
   // `reportEvent()` beacons. The cross-origin subframes still require a
@@ -7250,6 +7473,7 @@ void NavigationRequest::CommitNavigation() {
     commit_params_->fenced_frame_properties =
         computed_fenced_frame_properties->RedactFor(entity);
   }
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 
   commit_params_->load_with_storage_access = ShouldLoadWithStorageAccess(
       begin_params(), common_params(), frame_tree_node()->current_frame_host(),
@@ -7872,10 +8096,23 @@ net::Error NavigationRequest::CheckCSPDirectives(
       // overridden by the checks below.
       error = net::ERR_ABORTED;
     }
+#if BUILDFLAG(IS_COBALT)
+    // [cobalt-location-src] or [h5vcc-location-src]
+    if (!IsAllowedByCSPDirective(
+            initiator_policies->content_security_policies, &initiator_context,
+            network::mojom::CSPDirectiveName::CobaltLocationSrc,
+            has_followed_redirect, url_upgraded_after_redirect,
+            /*is_opaque_fenced_frame=*/false,
+            disposition)) {
+      error = net::ERR_ABORTED;
+      return error;
+    }
+#endif
   }
 
   // [frame-src] or [fenced-frame-src]
   if (parent_policies) {
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
     bool is_opaque_fenced_frame_root_navigation =
         frame_tree_node_->IsFencedFrameRoot() &&
         fenced_frame_properties_.has_value() &&
@@ -7883,6 +8120,9 @@ net::Error NavigationRequest::CheckCSPDirectives(
         !fenced_frame_properties_->mapped_url()
              ->GetValueForEntity(FencedFrameEntity::kEmbedder)
              .has_value();
+#else
+    bool is_opaque_fenced_frame_root_navigation = false;
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
     if (!IsAllowedByCSPDirective(
             parent_policies->content_security_policies, &parent_context,
             frame_tree_node_->IsFencedFrameRoot()
@@ -9524,6 +9764,7 @@ void NavigationRequest::ReadyToCommitNavigation(bool is_error) {
   // For fenced frames, update the mapped URL to be the URL from navigation
   // commit (after redirects), because we want future same-origin checks to be
   // performed with respect to the first origin committed in the fenced frame.
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
   if (is_embedder_initiated_fenced_frame_navigation_) {
     // In certain circumstances, the FencedFrameProperties will not have a
     // mapped url.
@@ -9548,6 +9789,7 @@ void NavigationRequest::ReadyToCommitNavigation(bool is_error) {
           GetParentFrameOrOuterDocument()->GetLastCommittedOrigin());
     }
   }
+#endif
 
   if (ready_to_commit_callback_for_testing_)
     std::move(ready_to_commit_callback_for_testing_).Run();
@@ -10838,6 +11080,7 @@ bool NavigationRequest::IsFencedFrameRequiredPolicyFeatureAllowed(
 
 bool NavigationRequest::CheckPermissionsPoliciesForFencedFrames(
     const url::Origin& origin) {
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
   // These checks only apply to fenced frames.
   if (!frame_tree_node_->IsFencedFrameRoot())
     return true;
@@ -10873,6 +11116,9 @@ bool NavigationRequest::CheckPermissionsPoliciesForFencedFrames(
     }
   }
   return true;
+#else
+  return true;
+#endif
 }
 
 std::unique_ptr<viz::PeakGpuMemoryTracker>
@@ -11583,6 +11829,7 @@ bool NavigationRequest::ShouldReplaceCurrentEntryForFailedNavigation() const {
               frame_tree_node_->current_frame_host()));
 }
 
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 const std::optional<FencedFrameProperties>&
 NavigationRequest::ComputeFencedFrameProperties(
     FencedFramePropertiesNodeSource node_source) const {
@@ -11601,9 +11848,11 @@ NavigationRequest::ComputeFencedFrameProperties(
 
   return frame_tree_node_->GetFencedFrameProperties(node_source);
 }
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 
 const std::optional<base::UnguessableToken>
 NavigationRequest::ComputeFencedFrameNonce() const {
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
   // For partition nonce, all nested frame inside a fenced frame tree should
   // operate on the partition nonce of the frame tree root.
   const std::optional<FencedFrameProperties>& computed_fenced_frame_properties =
@@ -11621,6 +11870,9 @@ NavigationRequest::ComputeFencedFrameNonce() const {
   }
   return computed_fenced_frame_properties->partition_nonce()
       ->GetValueIgnoringVisibility();
+#else
+  return std::nullopt;
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 }
 
 void NavigationRequest::RenderFallbackContentForObjectTag() {
@@ -11996,6 +12248,60 @@ void NavigationRequest::ResetViewTransitionState() {
   }
 }
 
+<<<<<<< HEAD
+=======
+bool NavigationRequest::IsDisabledEmbedderInitiatedFencedFrameNavigation() {
+  // The untrusted network access check only applies to embedder-initiated
+  // fenced frame root navigations. Note that
+  // `is_embedder_initiated_fenced_frame_navigation_` being true includes fenced
+  // frame and urn iframe embedder initiated navigations, so we need the
+  // additional `IsFencedFrameRoot` check.
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
+  if (frame_tree_node_->IsFencedFrameRoot() &&
+      is_embedder_initiated_fenced_frame_navigation_ &&
+      base::FeatureList::IsEnabled(
+          blink::features::kFencedFramesLocalUnpartitionedDataAccess)) {
+    const std::optional<FencedFrameProperties>&
+        embedder_fenced_frame_properties = GetParentFrameOrOuterDocument()
+                                               ->frame_tree_node()
+                                               ->GetFencedFrameProperties();
+    const std::optional<FencedFrameProperties>& target_fenced_frame_properties =
+        frame_tree_node_->GetFencedFrameProperties(
+            FencedFramePropertiesNodeSource::kFrameTreeRoot);
+
+    if (target_fenced_frame_properties.has_value() &&
+        target_fenced_frame_properties
+            ->HasDisabledNetworkForCurrentFrameTree() &&
+        embedder_fenced_frame_properties.has_value() &&
+        embedder_fenced_frame_properties
+            ->HasDisabledNetworkForCurrentFrameTree()) {
+      // Navigation should be aborted if:
+      // 1. The nested fenced frame has disabled the untrusted network access.
+      // 2. The embedder fenced frame has disabled the untrusted network access
+      // after the navigation starts.
+      //
+      // Note: The navigation is allowed if only embedder fenced frame has
+      // disabled the untrusted network access. This allows the fenced frame
+      // to navigate its nested fenced frame to a nested config while the parent
+      // fenced frame disables its own network.
+      //
+      // After top-level FF disables its network, the nested FF's navigation
+      // may not have committed yet. Top-level FF has no way of knowing when it
+      // is safe to disable network for nested FF (and it would be a privacy
+      // violation for it to know), so nested FF has to disable network for
+      // itself if it wants to get shared storage access.
+      //
+      // For top-level FF, it does not have shared storage access until all
+      // its descendants have also disabled network.
+      return true;
+    }
+  }
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
+
+  return false;
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 blink::RuntimeFeatureStateContext&
 NavigationRequest::GetMutableRuntimeFeatureStateContext() {
   // runtime_feature_state_context_ shouldn't be modified after READY_TO_COMMIT

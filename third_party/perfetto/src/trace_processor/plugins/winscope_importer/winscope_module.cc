@@ -61,6 +61,7 @@ WinscopeModule::WinscopeModule(ProtoImporterModuleContext* module_context,
       android_input_event_parser_(context),
       viewcapture_parser_(&context_),
       windowmanager_parser_(&context_) {
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/winscope_module.cc
   RegisterForField(FrameworksNativeWinscopeTracePacket::
                        kSurfaceflingerLayersSnapshotFieldNumber);
   RegisterForField(FrameworksNativeWinscopeTracePacket::
@@ -75,6 +76,17 @@ WinscopeModule::WinscopeModule(ProtoImporterModuleContext* module_context,
       FrameworksNativeWinscopeTracePacket::kProtologViewerConfigFieldNumber);
   RegisterForField(
       FrameworksNativeWinscopeTracePacket::kWinscopeExtensionsFieldNumber);
+=======
+  context->descriptor_pool_->AddFromFileDescriptorSet(
+      kWinscopeDescriptor.data(), kWinscopeDescriptor.size());
+  RegisterForField(TracePacket::kSurfaceflingerLayersSnapshotFieldNumber);
+  RegisterForField(TracePacket::kSurfaceflingerTransactionsFieldNumber);
+  RegisterForField(TracePacket::kShellTransitionFieldNumber);
+  RegisterForField(TracePacket::kShellHandlerMappingsFieldNumber);
+  RegisterForField(TracePacket::kProtologMessageFieldNumber);
+  RegisterForField(TracePacket::kProtologViewerConfigFieldNumber);
+  RegisterForField(TracePacket::kWinscopeExtensionsFieldNumber);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/winscope_module.cc
 }
 
 ModuleResult WinscopeModule::TokenizePacket(const TokenizePacketArgs& args) {
@@ -138,6 +150,7 @@ void WinscopeModule::ParseField(const ParseFieldArgs& args) {
 void WinscopeModule::ParseWinscopeExtensionsData(protozero::ConstBytes blob,
                                                  int64_t timestamp,
                                                  const TracePacketData& data) {
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/winscope_module.cc
   // WinscopeExtensions is purely a carrier of extension fields: walk them
   // all in wire order and dispatch on the field id.
   protozero::ProtoDecoder decoder(blob);
@@ -181,6 +194,36 @@ void WinscopeModule::ParseWinscopeExtensionsData(protozero::ConstBytes blob,
             field.Cast<FrameworksBaseWinscopeExtensions::kWindowmanager>());
         return;
     }
+=======
+  WinscopeExtensionsImpl::Decoder decoder(blob.data, blob.size);
+
+  if (auto field =
+          decoder.Get(WinscopeExtensionsImpl::kInputmethodClientsFieldNumber);
+      field.valid()) {
+    ParseInputMethodClientsData(timestamp, field.as_bytes());
+  } else if (field = decoder.Get(
+                 WinscopeExtensionsImpl::kInputmethodManagerServiceFieldNumber);
+             field.valid()) {
+    ParseInputMethodManagerServiceData(timestamp, field.as_bytes());
+  } else if (field = decoder.Get(
+                 WinscopeExtensionsImpl::kInputmethodServiceFieldNumber);
+             field.valid()) {
+    ParseInputMethodServiceData(timestamp, field.as_bytes());
+  } else if (field =
+                 decoder.Get(WinscopeExtensionsImpl::kViewcaptureFieldNumber);
+             field.valid()) {
+    viewcapture_parser_.Parse(timestamp, field.as_bytes(),
+                              data.sequence_state.get());
+  } else if (field = decoder.Get(
+                 WinscopeExtensionsImpl::kAndroidInputEventFieldNumber);
+             field.valid()) {
+    android_input_event_parser_.ParseAndroidInputEvent(timestamp,
+                                                       field.as_bytes());
+  } else if (field =
+                 decoder.Get(WinscopeExtensionsImpl::kWindowmanagerFieldNumber);
+             field.valid()) {
+    windowmanager_parser_.Parse(timestamp, field.as_bytes());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/winscope_module.cc
   }
 }
 
@@ -272,7 +315,11 @@ void WinscopeModule::ParseInputMethodServiceData(int64_t timestamp,
   }
 }
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/winscope_module.cc
 void WinscopeModule::OnEventsFullyExtracted() {
+=======
+void WinscopeModule::NotifyEndOfFile() {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/winscope_module.cc
   context_.shell_transitions_tracker_.Flush();
 }
 

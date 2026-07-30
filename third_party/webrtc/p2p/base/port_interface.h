@@ -33,6 +33,7 @@
 #include "rtc_base/net_helper.h"
 #include "rtc_base/network.h"
 #include "rtc_base/network/sent_packet.h"
+#include "rtc_base/sigslot_trampoline.h"
 #include "rtc_base/socket.h"
 #include "rtc_base/socket_address.h"
 #include "rtc_base/span_helpers.h"
@@ -157,6 +158,7 @@ class PortInterface {
   // unknown address).  Calling this method turns off delivery of packets
   // through this port.
   virtual void EnablePortPackets() = 0;
+<<<<<<< HEAD
   virtual void SubscribeReadPacket(
       const void* tag,
       absl::AnyInvocable<void(PortInterface*,
@@ -164,6 +166,8 @@ class PortInterface {
                               const SocketAddress&)> callback) = 0;
 
   ABSL_DEPRECATE_AND_INLINE()
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   virtual void SubscribeReadPacket(
       absl::AnyInvocable<
           void(PortInterface*, const char*, size_t, const SocketAddress&)>
@@ -253,6 +257,30 @@ class PortInterface {
                                     absl::string_view remote_ufrag) = 0;
 
   virtual int16_t network_cost() const = 0;
+<<<<<<< HEAD
+=======
+  // Since the Subscribe and Notify methods are defined on subclasses'
+  // interfaces, these signals need to be "protected", not "private".
+  // TODO: https://issues.webrtc.org/42222066 - replace and delete.
+  sigslot::signal6<PortInterface*,
+                   const SocketAddress&,
+                   ProtocolType,
+                   IceMessage*,
+                   const std::string&,
+                   bool>
+      SignalUnknownAddress;
+  sigslot::signal4<PortInterface*, const char*, size_t, const SocketAddress&>
+      SignalReadPacket;
+  sigslot::signal1<const SentPacketInfo&> SignalSentPacket;
+  SignalTrampoline<PortInterface, &PortInterface::SignalUnknownAddress>
+      unknown_address_trampoline_;
+  SignalTrampoline<PortInterface, &PortInterface::SignalReadPacket>
+      read_packet_trampoline_;
+  SignalTrampoline<PortInterface, &PortInterface::SignalSentPacket>
+      sent_packet_trampoline_;
+  sigslot::signal1<PortInterface*> SignalRoleConflict;
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   // Connection and Port are entangled; functions exposed to Port only
   // should not be public.
   friend class Connection;

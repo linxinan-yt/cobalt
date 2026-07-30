@@ -26,8 +26,11 @@
 #include "perfetto/ext/base/string_view.h"
 #include "perfetto/public/compiler.h"
 #include "src/trace_processor/importers/common/args_tracker.h"
+<<<<<<< HEAD
 #include "src/trace_processor/importers/common/import_logs_tracker.h"
 #include "src/trace_processor/importers/common/stats_tracker.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "src/trace_processor/storage/stats.h"
 #include "src/trace_processor/storage/trace_storage.h"
 #include "src/trace_processor/tables/metadata_tables_py.h"
@@ -739,12 +742,21 @@ void ProcessTracker::SetPidZeroIsUpidZeroIdleProcess() {
                    ThreadNamePriority::kTraceProcessorConstant);
 }
 
+<<<<<<< HEAD
 ArgsTracker::BoundInserter& ProcessTracker::AddArgsToProcess(UniquePid upid) {
   auto [it, inserted] =
       process_args_.Insert(upid, ArgsTracker::BoundInserter());
   if (PERFETTO_UNLIKELY(inserted))
     *it = args_tracker_.AddArgsToProcess(upid);
   return *it;
+=======
+ArgsTracker::BoundInserter ProcessTracker::AddArgsToProcess(UniquePid upid) {
+  return args_tracker_.AddArgsToProcess(upid);
+}
+
+ArgsTracker::BoundInserter ProcessTracker::AddArgsToThread(UniqueTid utid) {
+  return args_tracker_.AddArgsToThread(utid);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 ArgsTracker::BoundInserter& ProcessTracker::AddArgsToThread(UniqueTid utid) {

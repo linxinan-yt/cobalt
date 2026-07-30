@@ -17,7 +17,10 @@
 #include <vector>
 
 #include "api/units/time_delta.h"
+<<<<<<< HEAD
 #include "api/units/timestamp.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 namespace webrtc {
 
@@ -41,6 +44,7 @@ class EncoderSpeedController {
     kNoneReference  // A frame not used as reference sub subsequent frames.
   };
   struct Config {
+<<<<<<< HEAD
     struct PsnrProbingSettings {
       enum class Mode {
         // Sample one base layer frame every `sampling_interval`, and sample
@@ -63,6 +67,8 @@ class EncoderSpeedController {
     // support calculating PSNR.
     std::optional<PsnrProbingSettings> psnr_probing_settings;
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     // Represents an assignable speed level, with specific speeds for one or
     // more temporal layers.
     struct SpeedLevel {
@@ -76,6 +82,7 @@ class EncoderSpeedController {
 
       // Don't use this speed level if the average QP is lower than `min_qp`.
       std::optional<int> min_qp;
+<<<<<<< HEAD
       // Minimum PSNR gain required to go from the previous speed level to this
       // one, or nullopt if no PSNR calculation is required. This value must
       // not be set unless the encoder is capable of encoding a frame twice.
@@ -89,6 +96,8 @@ class EncoderSpeedController {
         double psnr_threshold;
       };
       std::optional<PsnrComparison> min_psnr_gain;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     };
     // Ordered vector of speed levels, start with the slowest speed (lower
     // effort) and the increasing the average speed for each entry.
@@ -105,10 +114,13 @@ class EncoderSpeedController {
     // True iff the frame is a repeat of the previous frame (e.g. the frames
     // used during quality convergence of a variable fps screenshare feed).
     bool is_repeat_frame;
+<<<<<<< HEAD
     // The capture time of the frame.
     // TODO: webrtc:443906251 - Remove default value once downstream usage
     // is updated.
     Timestamp timestamp = Timestamp::MinusInfinity();
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   };
 
   // Output from the controller, indicates which speed the encoder should be
@@ -116,6 +128,7 @@ class EncoderSpeedController {
   struct EncodeSettings {
     // Speed the encoder should use for this frame.
     int speed;
+<<<<<<< HEAD
     // If set, the encoder should encode this frame twice. FIRST with a speed of
     // `baseline_comparison_speed` and SECONDLY at speed `speed`. The two
     // results should then both be provided in `OnEncodedFrame()`.
@@ -123,6 +136,8 @@ class EncoderSpeedController {
     // If true, the encoder should calculate the PSNR for this frame - including
     // the second encoding if `baseline_comparison_speed` is set.
     bool calculate_psnr;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   };
 
   // Data the controller should be fed with after a frame has been encoded,
@@ -134,8 +149,11 @@ class EncoderSpeedController {
     TimeDelta encode_time;
     // The _average_ frame QP of the encoded frame.
     int qp;
+<<<<<<< HEAD
     // If set, the PSNR of the reconstructed frame vs the original raw frame.
     std::optional<double> psnr;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     // The frame encoding info - same as what was originally given as argument
     // to `GetEncodingSettings()`.
     FrameEncodingInfo frame_info;
@@ -158,6 +176,7 @@ class EncoderSpeedController {
   // thereafter be configured with requested settings.
   virtual EncodeSettings GetEncodeSettings(FrameEncodingInfo frame_info) = 0;
 
+<<<<<<< HEAD
   // TODO: webrtc:443906251 - Remove once downstream usage is gone.
   [[deprecated(
       "Use OnEncodedFrame(EncodeResults, std::optional<EncodeResults>)")]]
@@ -171,6 +190,10 @@ class EncoderSpeedController {
   virtual void OnEncodedFrame(
       EncodeResults results,
       std::optional<EncodeResults> baseline_results) = 0;
+=======
+  // Should be called after each frame has completed encoding.
+  virtual void OnEncodedFrame(EncodeResults results) = 0;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 
 }  // namespace webrtc

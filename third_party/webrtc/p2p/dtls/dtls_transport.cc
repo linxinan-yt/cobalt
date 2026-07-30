@@ -167,7 +167,11 @@ void StreamInterfaceChannel::ClearNextPacketOptions() {
   next_packet_options_.reset();
 }
 
+<<<<<<< HEAD
 StreamResult StreamInterfaceChannel::Write(std::span<const uint8_t> data,
+=======
+StreamResult StreamInterfaceChannel::Write(ArrayView<const uint8_t> data,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                                            size_t& written,
                                            int& /* error */) {
   RTC_DCHECK_RUN_ON(&callback_sequence_);
@@ -184,6 +188,14 @@ StreamResult StreamInterfaceChannel::Write(std::span<const uint8_t> data,
     dtls_stun_piggyback_controller_->CapturePacket(data);
   }
 
+<<<<<<< HEAD
+=======
+  AsyncSocketPacketOptions packet_options;
+  if (next_packet_options_) {
+    packet_options = std::move(*next_packet_options_);
+    next_packet_options_.reset();
+  }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   ice_transport_->SendPacket(reinterpret_cast<const char*>(data.data()),
                              data.size(), packet_options);
   written = data.size();
@@ -199,7 +211,11 @@ bool StreamInterfaceChannel::Flush() {
   return false;
 }
 
+<<<<<<< HEAD
 bool StreamInterfaceChannel::OnPacketReceived(std::span<const uint8_t> data) {
+=======
+bool StreamInterfaceChannel::OnPacketReceived(ArrayView<const uint8_t> data) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   RTC_DCHECK_RUN_ON(&callback_sequence_);
   if (packets_.size() > 0) {
     RTC_LOG(LS_WARNING) << "Packet already in queue.";
@@ -242,8 +258,13 @@ DtlsTransportInternalImpl::DtlsTransportInternalImpl(
     SslStreamFactory ssl_stream_factory)
     : ssl_stream_factory_(ssl_stream_factory),
       env_(env),
+<<<<<<< HEAD
       component_(ice_transport->internal()->component()),
       ice_transport_(std::move(ice_transport)),
+=======
+      component_(ice_transport->component()),
+      ice_transport_(ice_transport),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       downward_(nullptr),
       srtp_ciphers_(crypto_options.GetSupportedDtlsSrtpCryptoSuites()),
       ephemeral_key_exchange_cipher_groups_(
@@ -536,6 +557,20 @@ bool DtlsTransportInternalImpl::SetupDtls() {
           env_, std::move(downward),
           [this](SSLHandshakeError error) { OnDtlsHandshakeError(error); });
     }
+<<<<<<< HEAD
+=======
+    if (ssl_stream_factory_) {
+      dtls_ = ssl_stream_factory_(
+          std::move(downward),
+          [this](SSLHandshakeError error) { OnDtlsHandshakeError(error); },
+          &env_.field_trials());
+    } else {
+      dtls_ = SSLStreamAdapter::Create(
+          std::move(downward),
+          [this](SSLHandshakeError error) { OnDtlsHandshakeError(error); },
+          &env_.field_trials());
+    }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     if (!dtls_) {
       RTC_LOG(LS_ERROR) << ToString() << ": Failed to create DTLS adapter.";
       return false;
@@ -661,8 +696,13 @@ int DtlsTransportInternalImpl::SendPacket(
         // StreamInterfaceChannel::Write function. Such change would remove the
         // need of the next_packet_options_.
         StreamResult result = dtls_->Write(
+<<<<<<< HEAD
             std::span(reinterpret_cast<const uint8_t*>(data), size), written,
             error);
+=======
+            MakeArrayView(reinterpret_cast<const uint8_t*>(data), size),
+            written, error);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         if (result != SR_SUCCESS) {
           // Explicitly clear the next packet options, in case no packet was
           // sent.

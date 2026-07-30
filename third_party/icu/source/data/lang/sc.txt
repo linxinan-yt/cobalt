@@ -61,7 +61,10 @@ sc{
         bin{"bini"}
         bla{"pees nieddos"}
         blo{"anii"}
+<<<<<<< HEAD
         blt{"tai dam"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         bm{"bambara"}
         bn{"bengalesu"}
         bo{"tibetanu"}

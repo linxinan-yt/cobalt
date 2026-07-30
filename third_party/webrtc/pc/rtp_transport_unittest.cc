@@ -34,7 +34,12 @@
 #include "rtc_base/logging.h"
 #include "rtc_base/network/sent_packet.h"
 #include "rtc_base/network_route.h"
+<<<<<<< HEAD
 #include "test/create_test_environment.h"
+=======
+#include "rtc_base/thread.h"
+#include "test/create_test_field_trials.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "test/gmock.h"
 #include "test/gtest.h"
 #include "test/run_loop.h"
@@ -509,6 +514,7 @@ TEST(RtpTransportTest, ReceivedPacketEcnMarkingPropagatedToDemuxedPacket) {
 }
 
 TEST(RtpTransportTest, RtcpSentAsEct1IfReceivedRtpPacketAsEct1) {
+<<<<<<< HEAD
   test::RunLoop thread;
   const Environment env = CreateTestEnvironment();
   RtpTransport transport(kMuxDisabled, env.field_trials());
@@ -519,6 +525,17 @@ TEST(RtpTransportTest, RtcpSentAsEct1IfReceivedRtpPacketAsEct1) {
   // Setup RTCP transport to send to another fake transport.
   FakePacketTransport fake_rtcp_recipient(env, "rtcp_recipient");
   FakePacketTransport fake_rtcp(env, "fake_rtcp");
+=======
+  AutoThread thread;
+  RtpTransport transport(kMuxDisabled, CreateTestFieldTrials());
+  // Setup FakePacketTransport to send packets to itself.
+  FakePacketTransport fake_rtp("fake_rtp");
+  fake_rtp.SetDestination(&fake_rtp, true);
+  transport.SetRtpPacketTransport(&fake_rtp);
+  // Setup RTCP transport to send to another fake transport.
+  FakePacketTransport fake_rtcp_recipient("rtcp_recipient");
+  FakePacketTransport fake_rtcp("fake_rtcp");
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   fake_rtcp.SetDestination(&fake_rtcp_recipient, true);
   transport.SetRtcpPacketTransport(&fake_rtcp);
 

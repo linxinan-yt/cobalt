@@ -12,6 +12,7 @@
 #define VIDEO_TIMING_SIMULATOR_RENDERING_SIMULATOR_H_
 
 #include <cstdint>
+<<<<<<< HEAD
 #include <optional>
 #include <set>
 #include <span>
@@ -29,6 +30,20 @@
 #include "video/timing/simulator/frame_base.h"
 #include "video/timing/simulator/results_base.h"
 #include "video/timing/simulator/stream_base.h"
+=======
+#include <functional>
+#include <memory>
+#include <optional>
+#include <string>
+#include <vector>
+
+#include "api/environment/environment.h"
+#include "api/units/data_size.h"
+#include "api/units/time_delta.h"
+#include "api/units/timestamp.h"
+#include "logging/rtc_event_log/rtc_event_log_parser.h"
+#include "modules/video_coding/timing/timing.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 namespace webrtc::video_timing_simulator {
 
@@ -38,6 +53,7 @@ namespace webrtc::video_timing_simulator {
 class RenderingSimulator {
  public:
   struct Config {
+<<<<<<< HEAD
     std::string name = "";
     std::string field_trials_string = "";
     const VideoJitterTimingFactory* video_jitter_timing_factory = nullptr;
@@ -57,11 +73,32 @@ class RenderingSimulator {
     // Frame information.
     int num_packets = -1;              // Required.
     DataSize size = DataSize::Zero();  // Required.
+=======
+    using VideoTimingFactory =
+        std::function<std::unique_ptr<VCMTiming>(Environment)>;
+
+    std::string name = "";
+    std::string field_trials_string = "";
+    VideoTimingFactory video_timing_factory = [](Environment env) {
+      return std::make_unique<VCMTiming>(&env.clock(), env.field_trials());
+    };
+  };
+
+  // Metadata about a single rendered frame.
+  struct Frame {
+    // Frame information.
+    int num_packets = -1;
+    DataSize size = DataSize::Zero();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     // RTP header information.
     int payload_type = -1;
     uint32_t rtp_timestamp = 0;
+<<<<<<< HEAD
     int64_t unwrapped_rtp_timestamp = -1;  // Required.
+=======
+    int64_t unwrapped_rtp_timestamp = -1;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     // Dependency descriptor information.
     int64_t frame_id = -1;
@@ -69,17 +106,26 @@ class RenderingSimulator {
     int temporal_id = -1;
     int num_references = -1;
 
+<<<<<<< HEAD
     // Packet timestamps. Both are required.
+=======
+    // Packet timestamps.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     Timestamp first_packet_arrival_timestamp = Timestamp::PlusInfinity();
     Timestamp last_packet_arrival_timestamp = Timestamp::MinusInfinity();
 
     // Frame timestamps.
+<<<<<<< HEAD
     Timestamp assembled_timestamp = Timestamp::PlusInfinity();  // Required.
+=======
+    Timestamp assembled_timestamp = Timestamp::PlusInfinity();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     Timestamp render_timestamp = Timestamp::PlusInfinity();
     Timestamp decoded_timestamp = Timestamp::PlusInfinity();
     Timestamp rendered_timestamp = Timestamp::PlusInfinity();
 
     // Jitter buffer state at the time of this frame.
+<<<<<<< HEAD
     int frames_dropped = 0;
     // TODO: b/423646186 - Add `current_delay_ms`.
     // The `jitter_buffer_*` metrics below are recorded by the production code,
@@ -263,15 +309,60 @@ class RenderingSimulator {
       }
       return *rendered_late ? std::optional<TimeDelta>(RenderedMargin())
                             : std::nullopt;
+=======
+    int frames_dropped = -1;
+    // TODO: b/423646186 - Add `current_delay_ms`.
+    TimeDelta jitter_buffer_minimum_delay = TimeDelta::MinusInfinity();
+    TimeDelta jitter_buffer_target_delay = TimeDelta::MinusInfinity();
+    TimeDelta jitter_buffer_delay = TimeDelta::MinusInfinity();
+
+    bool operator<(const Frame& other) const {
+      return rendered_timestamp < other.rendered_timestamp;
+    }
+
+    std::optional<int64_t> InterFrameSizeBytes(const Frame& prev) const {
+      if (size.IsZero() || prev.size.IsZero()) {
+        return std::nullopt;
+      }
+      return size.bytes() - prev.size.bytes();
+    }
+    TimeDelta InterDepartureTime(const Frame& prev) const {
+      if (unwrapped_rtp_timestamp < 0 || prev.unwrapped_rtp_timestamp < 0) {
+        return TimeDelta::PlusInfinity();
+      }
+      constexpr int64_t kRtpTicksPerMs = 90;
+      int64_t inter_departure_time_ms =
+          (unwrapped_rtp_timestamp - prev.unwrapped_rtp_timestamp) /
+          kRtpTicksPerMs;
+      return TimeDelta::Millis(inter_departure_time_ms);
+    }
+    TimeDelta InterArrivalTime(const Frame& prev) const {
+      return rendered_timestamp - prev.rendered_timestamp;
+    }
+    TimeDelta AssemblyDuration() const {
+      return last_packet_arrival_timestamp - first_packet_arrival_timestamp;
+    }
+    TimeDelta PreDecodeBufferDuration() const {
+      return decoded_timestamp - assembled_timestamp;
+    }
+    TimeDelta PostDecodeMargin() const {
+      return render_timestamp - rendered_timestamp -
+             RenderingSimulator::kRenderDelay;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
   };
 
   // All frames in one stream.
+<<<<<<< HEAD
   struct Stream : public StreamBase<Stream, Frame> {
+=======
+  struct Stream {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     Timestamp creation_timestamp = Timestamp::PlusInfinity();
     uint32_t ssrc = 0;
     std::vector<Frame> frames;
 
+<<<<<<< HEAD
     // -- Per-stream metrics --
 
     // Total number of frames that were assembled in time or late.
@@ -353,20 +444,36 @@ class RenderingSimulator {
     }
     SamplesStatsCounter RenderedMarginDeficitMs() const {
       return BuildSamplesMs(&Frame::RenderedMarginDeficit);
+=======
+    bool IsEmpty() const { return frames.empty(); }
+
+    bool operator<(const Stream& other) const {
+      if (creation_timestamp != other.creation_timestamp) {
+        return creation_timestamp < other.creation_timestamp;
+      }
+      return ssrc < other.ssrc;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
   };
 
   // All streams.
+<<<<<<< HEAD
   struct Results : public ResultsBase<Results> {
+=======
+  struct Results {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     std::string config_name;
     std::vector<Stream> streams;
   };
 
   // Static configuration.
+<<<<<<< HEAD
 
   // The "render delay" that is passed through the timing component and
   // render buffer. It is added and subtracted through the pipeline, so it is
   // important to have it set.
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   static constexpr TimeDelta kRenderDelay = TimeDelta::Millis(10);
 
   explicit RenderingSimulator(Config config);
@@ -381,6 +488,7 @@ class RenderingSimulator {
   const Config config_;
 };
 
+<<<<<<< HEAD
 // -- Comparators and sorting --
 inline bool RenderOrder(const RenderingSimulator::Frame& a,
                         const RenderingSimulator::Frame& b) {
@@ -435,6 +543,8 @@ inline TimeDelta InterRenderedTime(const RenderingSimulator::Frame& cur,
   return cur.rendered_timestamp - prev.rendered_timestamp;
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }  // namespace webrtc::video_timing_simulator
 
 #endif  // VIDEO_TIMING_SIMULATOR_RENDERING_SIMULATOR_H_

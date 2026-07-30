@@ -18,6 +18,11 @@
 #include "third_party/blink/public/web/web_local_frame.h"
 #include "third_party/blink/renderer/platform/media/web_audio_source_provider_client.h"
 
+#if BUILDFLAG(USE_STARBOARD_MEDIA)
+#include "base/feature_list.h"
+#include "media/base/media_switches.h"
+#endif // BUILDFLAG(USE_STARBOARD_MEDIA)
+
 namespace blink {
 
 WebAudioMediaStreamAudioSink::WebAudioMediaStreamAudioSink(
@@ -30,9 +35,21 @@ WebAudioMediaStreamAudioSink::WebAudioMediaStreamAudioSink(
       track_stopped_(false),
       platform_buffer_duration_(platform_buffer_duration),
       sink_params_(media::AudioParameters::AUDIO_PCM_LOW_LATENCY,
+#if BUILDFLAG(USE_STARBOARD_MEDIA)
+                   media::ChannelLayoutConfig::Mono(),
+#else
                    media::ChannelLayoutConfig::Stereo(),
+#endif // BUILDFLAG(USE_STARBOARD_MEDIA)
                    context_sample_rate,
+<<<<<<< HEAD
                    render_quantum_frames) {
+=======
+                   kWebAudioRenderBufferSize)
+{
+#if BUILDFLAG(USE_STARBOARD_MEDIA)
+  LOG(INFO) << "WebAudioMediaStreamAudioSink: sink_params=" << sink_params_.AsHumanReadableString();
+#endif // BUILDFLAG(USE_STARBOARD_MEDIA)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   CHECK(sink_params_.IsValid());
   CHECK_GT(platform_buffer_duration_, base::TimeDelta());
 

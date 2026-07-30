@@ -31,4 +31,11 @@ bool RenderWidgetHostViewTVOS::RequiresDoubleTapGestureEvents() const {
   return false;
 }
 
+void RenderWidgetHostViewTVOS::OnGestureEvent(
+    const ui::GestureEventData& gesture) {}
+
+bool RenderWidgetHostViewTVOS::RequiresDoubleTapGestureEvents() const {
+  return false;
+}
+
 }  // namespace content

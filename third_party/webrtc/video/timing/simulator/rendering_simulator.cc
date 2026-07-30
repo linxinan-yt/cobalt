@@ -16,29 +16,47 @@
 #include <optional>
 #include <utility>
 
+<<<<<<< HEAD
 #include "absl/base/nullability.h"
 #include "absl/container/flat_hash_map.h"
 #include "api/environment/environment.h"
 #include "api/numerics/samples_stats_counter.h"
+=======
+#include "absl/algorithm/container.h"
+#include "absl/base/nullability.h"
+#include "absl/container/flat_hash_map.h"
+#include "api/environment/environment.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "api/sequence_checker.h"
 #include "api/units/data_size.h"
 #include "api/units/time_delta.h"
 #include "api/units/timestamp.h"
 #include "api/video/encoded_frame.h"
+<<<<<<< HEAD
 #include "api/video/timing/video_jitter_timing_interface.h"
 #include "api/video/video_frame.h"
 #include "logging/rtc_event_log/rtc_event_log_parser.h"
 #include "modules/video_coding/timing/timing.h"
+=======
+#include "api/video/video_frame.h"
+#include "logging/rtc_event_log/rtc_event_log_parser.h"
+#include "modules/rtp_rtcp/source/rtp_packet_received.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "rtc_base/checks.h"
 #include "rtc_base/logging.h"
 #include "rtc_base/numerics/sequence_number_unwrapper.h"
 #include "rtc_base/thread_annotations.h"
 #include "video/timing/simulator/assembler.h"
+<<<<<<< HEAD
 #include "video/timing/simulator/frame_base.h"
 #include "video/timing/simulator/receiver.h"
 #include "video/timing/simulator/rendering_tracker.h"
 #include "video/timing/simulator/rtc_event_log_driver.h"
 #include "video/timing/simulator/rtp_packet_simulator.h"
+=======
+#include "video/timing/simulator/rendering_tracker.h"
+#include "video/timing/simulator/rtc_event_log_driver.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 namespace webrtc::video_timing_simulator {
 
@@ -53,7 +71,11 @@ class RenderedFrameCollector : public AssemblerEvents,
       : env_(env), ssrc_(ssrc) {
     RTC_DCHECK_NE(ssrc_, 0);
   }
+<<<<<<< HEAD
   ~RenderedFrameCollector() override { RTC_DCHECK_RUN_ON(&sequence_checker_); }
+=======
+  ~RenderedFrameCollector() override = default;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   RenderedFrameCollector(const RenderedFrameCollector&) = delete;
   RenderedFrameCollector& operator=(const RenderedFrameCollector&) = delete;
@@ -155,7 +177,11 @@ class RenderedFrameCollector : public AssemblerEvents,
       RTC_DCHECK_EQ(key, value.frame_id);
       stream.frames.push_back(value);
     }
+<<<<<<< HEAD
     SortByArrivalOrder(stream.frames);
+=======
+    absl::c_sort(stream.frames);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     return stream;
   }
 
@@ -174,6 +200,7 @@ class RenderedFrameCollector : public AssemblerEvents,
       RTC_GUARDED_BY(sequence_checker_);
 };
 
+<<<<<<< HEAD
 std::unique_ptr<VCMTiming> CreateVCMTiming(
     const Environment& env,
     const RenderingSimulator::Config& config) {
@@ -186,6 +213,8 @@ std::unique_ptr<VCMTiming> CreateVCMTiming(
                                      std::move(video_jitter_timing));
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 // Combines all objects needed to perform rendering simulation of a single
 // stream. Inserts the streams results to the `results` pointer when `Close()`
 // is called (at the end of simulation).
@@ -194,21 +223,31 @@ class RenderingSimulatorStream : public RtcEventLogDriver::StreamInterface {
   RenderingSimulatorStream(const RenderingSimulator::Config& config,
                            const Environment& env,
                            uint32_t ssrc,
+<<<<<<< HEAD
                            uint32_t rtx_ssrc,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                            RenderingSimulator::Results* absl_nonnull results)
       : collector_(env, ssrc),
         tracker_(env,
                  RenderingTracker::Config{
                      .ssrc = ssrc,
                      .render_delay = RenderingSimulator::kRenderDelay},
+<<<<<<< HEAD
                  CreateVCMTiming(env, config),
                  &collector_),
         assembler_(env, ssrc, &collector_, &tracker_),
         receiver_(env, ssrc, rtx_ssrc, &assembler_),
+=======
+                 config.video_timing_factory(env),
+                 &collector_),
+        assembler_(env, ssrc, &collector_, &tracker_),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         results_(*results) {
     RTC_DCHECK_RUN_ON(&sequence_checker_);
     tracker_.SetDecodedFrameIdCallback(&assembler_);
   }
+<<<<<<< HEAD
   ~RenderingSimulatorStream() override {
     RTC_DCHECK_RUN_ON(&sequence_checker_);
   }
@@ -224,6 +263,14 @@ class RenderingSimulatorStream : public RtcEventLogDriver::StreamInterface {
     RTC_DCHECK_RUN_ON(&sequence_checker_);
     assembler_.UpdateMaxRtt(max_rtt);
     tracker_.UpdateMaxRtt(max_rtt);
+=======
+  ~RenderingSimulatorStream() override = default;
+
+  // Implements `RtcEventLogDriver::StreamInterface`.
+  void InsertPacket(const RtpPacketReceived& rtp_packet) override {
+    RTC_DCHECK_RUN_ON(&sequence_checker_);
+    assembler_.InsertPacket(rtp_packet);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   void Close() override {
@@ -240,7 +287,10 @@ class RenderingSimulatorStream : public RtcEventLogDriver::StreamInterface {
   RenderedFrameCollector collector_ RTC_GUARDED_BY(sequence_checker_);
   RenderingTracker tracker_ RTC_GUARDED_BY(sequence_checker_);
   Assembler assembler_ RTC_GUARDED_BY(sequence_checker_);
+<<<<<<< HEAD
   Receiver receiver_ RTC_GUARDED_BY(sequence_checker_);
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   RenderingSimulator::Results& results_;
 };
 
@@ -257,6 +307,7 @@ RenderingSimulator::Results RenderingSimulator::Simulate(
   results.config_name = config_.name;
 
   // Simulation.
+<<<<<<< HEAD
   auto stream_factory = [this, &results](const Environment& env, uint32_t ssrc,
                                          uint32_t rtx_ssrc) {
     return std::make_unique<RenderingSimulatorStream>(config_, env, ssrc,
@@ -265,10 +316,19 @@ RenderingSimulator::Results RenderingSimulator::Simulate(
   RtcEventLogDriver rtc_event_log_simulator(
       {.reuse_streams = config_.reuse_streams,
        .ssrc_filter = config_.ssrc_filter},
+=======
+  auto stream_factory = [this, &results](const Environment& env,
+                                         uint32_t ssrc) {
+    return std::make_unique<RenderingSimulatorStream>(config_, env, ssrc,
+                                                      &results);
+  };
+  RtcEventLogDriver rtc_event_log_simulator(
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       &parsed_log, config_.field_trials_string, std::move(stream_factory));
   rtc_event_log_simulator.Simulate();
 
   // Return.
+<<<<<<< HEAD
   SortByStreamOrder(results.streams);
   return results;
 }
@@ -288,4 +348,10 @@ SamplesStatsCounter RenderingSimulator::Stream::InterRenderedTimeMs() {
   return BuildSamplesMs(&InterRenderedTime);
 }
 
+=======
+  absl::c_sort(results.streams);
+  return results;
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }  // namespace webrtc::video_timing_simulator

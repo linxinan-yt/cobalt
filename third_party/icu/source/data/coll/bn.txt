@@ -9,7 +9,11 @@ bn{
                 "[reorder Beng Deva Guru Gujr Orya Taml Telu Knda Mlym Sinh]"
                 "&ঔ<ং<ঃ<ঁ"
             }
+<<<<<<< HEAD
             Version{"48"}
+=======
+            Version{"47"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         traditional{
             Sequence{
@@ -629,7 +633,11 @@ bn{
                 "&যৌ<<<য়ৌ"
                 "&য্<<<য়্"
             }
+<<<<<<< HEAD
             Version{"48"}
+=======
+            Version{"47"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     }
 }

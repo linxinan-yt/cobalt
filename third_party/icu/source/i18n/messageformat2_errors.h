@@ -66,6 +66,7 @@ namespace message2 {
     enum DynamicErrorType {
         UnresolvedVariable,
         FormattingError,
+<<<<<<< HEAD
         BadOptionError,
         /**
            This is used to signal errors from :number and :integer when a
@@ -77,6 +78,8 @@ namespace message2 {
             "The formatting of the _resolved value_ is not affected by the `select` option.")
         */
         RecoverableBadOptionError,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         OperandMismatchError,
         SelectorError,
         UnknownFunction,
@@ -125,7 +128,10 @@ namespace message2 {
         const StaticErrors& staticErrors;
         LocalPointer<UVector> resolutionAndFormattingErrors;
         bool formattingError = false;
+<<<<<<< HEAD
         bool badOptionError = false;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         bool selectorError = false;
         bool unknownFunctionError = false;
         bool unresolvedVariableError = false;
@@ -140,12 +146,18 @@ namespace message2 {
         void setFormattingError(const FunctionName&, UErrorCode&);
         // Used when the name of the offending formatter is unknown
         void setFormattingError(UErrorCode&);
+<<<<<<< HEAD
         void setBadOption(const FunctionName&, UErrorCode&);
         void setRecoverableBadOption(const FunctionName&, UErrorCode&);
         void setOperandMismatchError(const FunctionName&, UErrorCode&);
         bool hasDataModelError() const { return staticErrors.hasDataModelError(); }
         bool hasFormattingError() const { return formattingError; }
         bool hasBadOptionError() const { return badOptionError; }
+=======
+        void setOperandMismatchError(const FunctionName&, UErrorCode&);
+        bool hasDataModelError() const { return staticErrors.hasDataModelError(); }
+        bool hasFormattingError() const { return formattingError; }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         bool hasSelectorError() const { return selectorError; }
         bool hasSyntaxError() const { return staticErrors.hasSyntaxError(); }
         bool hasUnknownFunctionError() const { return unknownFunctionError; }

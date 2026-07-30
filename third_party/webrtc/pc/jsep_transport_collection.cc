@@ -294,8 +294,16 @@ void JsepTransportCollection::CommitTransports() {
   RTC_DCHECK_RUN_ON(&sequence_checker_);
   stable_mid_to_transport_ = mid_to_transport_;
   DestroyUnusedTransports();
+<<<<<<< HEAD
   RTC_HISTOGRAM_COUNTS_LINEAR("WebRTC.PeerConnection.RtpTransportCount",
                               transports_.size(), 1, 49, 50);
+=======
+  for (auto& transport : jsep_transports_by_name_) {
+    transport.second->CommitPayloadTypes();
+  }
+  RTC_HISTOGRAM_COUNTS_LINEAR("WebRTC.PeerConnection.RtpTransportCount",
+                              jsep_transports_by_name_.size(), 1, 49, 50);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   RTC_DCHECK(IsConsistent());
 }
 

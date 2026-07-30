@@ -31,7 +31,11 @@ This workspace consists of three crates:
 - **Protozero integration** — auto-generated Rust code from Perfetto `.proto` files via a protoc plugin.
 - **Vendored or system builds** — link against a bundled `perfetto_c` library or use an external one.
 - **FFI isolation** — `perfetto-sys` is the only crate exposing an API with `unsafe` code.
+<<<<<<< HEAD
 - **Cross-platform support** — Linux support is tested using CI.
+=======
+- **Cross-platform support** — Linux and macOS are tested.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 ---
 
@@ -67,6 +71,7 @@ cargo test --no-default-features --manifest-path contrib/rust-sdk/Cargo.toml
 
 ## Developer Notes
 
+<<<<<<< HEAD
 Regenerating low-level FFI bindings for Perfetto.
 
 To update the checked-in `contrib/rust-sdk/perfetto-sys/src/bindings.rs`
@@ -78,6 +83,8 @@ cargo build --manifest-path contrib/rust-sdk/Cargo.toml -p perfetto-sdk-sys --fe
 cp contrib/rust-sdk/target/debug/build/perfetto-sdk-sys-*/out/bindings.rs contrib/rust-sdk/perfetto-sys/src/bindings.rs
 ```
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 Regenerating Proto Bindings
 
 The Rust SDK uses a protoc plugin to generate Rust protozero code:

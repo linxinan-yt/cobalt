@@ -108,8 +108,13 @@ TEST(RtcpCompoundPacketTest, BuildWithInputBuffer) {
   const size_t kFirLength = 20;
 
   const size_t kBufferSize = kRrLength + kReportBlockLength + kFirLength;
+<<<<<<< HEAD
   MockFunction<void(std::span<const uint8_t>)> callback;
   EXPECT_CALL(callback, Call(_)).WillOnce([&](std::span<const uint8_t> packet) {
+=======
+  MockFunction<void(ArrayView<const uint8_t>)> callback;
+  EXPECT_CALL(callback, Call(_)).WillOnce([&](ArrayView<const uint8_t> packet) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     RtcpPacketParser parser;
     parser.Parse(packet);
     EXPECT_EQ(1, parser.receiver_report()->num_packets());
@@ -137,14 +142,22 @@ TEST(RtcpCompoundPacketTest, BuildWithTooSmallBuffer_FragmentedSend) {
   const size_t kBufferSize = kRrLength + kReportBlockLength;
   MockFunction<void(std::span<const uint8_t>)> callback;
   EXPECT_CALL(callback, Call(_))
+<<<<<<< HEAD
       .WillOnce([&](std::span<const uint8_t> packet) {
+=======
+      .WillOnce([&](ArrayView<const uint8_t> packet) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         RtcpPacketParser parser;
         parser.Parse(packet);
         EXPECT_EQ(1, parser.receiver_report()->num_packets());
         EXPECT_EQ(1U, parser.receiver_report()->report_blocks().size());
         EXPECT_EQ(0, parser.fir()->num_packets());
       })
+<<<<<<< HEAD
       .WillOnce([&](std::span<const uint8_t> packet) {
+=======
+      .WillOnce([&](ArrayView<const uint8_t> packet) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         RtcpPacketParser parser;
         parser.Parse(packet);
         EXPECT_EQ(0, parser.receiver_report()->num_packets());

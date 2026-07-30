@@ -272,8 +272,12 @@ class RTC_EXPORT Port : public PortInterface {
       const void* tag,
       absl::AnyInvocable<void(Port*, const Candidate&)> callback);
   void NotifyCandidateReady(Port* port, const Candidate& candidate) {
+<<<<<<< HEAD
     RTC_DCHECK_RUN_ON(thread_);
     candidate_ready_callback_list_.Send(this, candidate);
+=======
+    SignalCandidateReady(port, candidate);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
   // Provides all of the above information in one handy object.
   const std::vector<Candidate>& Candidates() const override;
@@ -286,24 +290,34 @@ class RTC_EXPORT Port : public PortInterface {
 
   // SignalPortComplete is sent when port completes the task of candidates
   // allocation.
+<<<<<<< HEAD
   void SubscribePortComplete(const void* tag,
                              absl::AnyInvocable<void(Port*)> callback);
   void NotifyPortComplete(Port* port) {
     RTC_DCHECK_RUN_ON(thread_);
     port_complete_callback_list_.Send(this);
   }
+=======
+  void SubscribePortComplete(absl::AnyInvocable<void(Port*)> callback);
+  void NotifyPortComplete(Port* port) { SignalPortComplete(port); }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // This signal sent when port fails to allocate candidates and this port
   // can't be used in establishing the connections. When port is in shared mode
   // and port fails to allocate one of the candidates, port shouldn't send
   // this signal as other candidates might be usefull in establishing the
   // connection.
+<<<<<<< HEAD
   void SubscribePortError(const void* tag,
                           absl::AnyInvocable<void(Port*)> callback);
   void NotifyPortError(Port* port) {
     RTC_DCHECK_RUN_ON(thread_);
     port_error_callback_list_.Send(this);
   }
+=======
+  void SubscribePortError(absl::AnyInvocable<void(Port*)> callback);
+  void NotifyPortError(Port* port) { SignalPortError(port); }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   void SubscribePortDestroyed(
       const void* tag,
@@ -617,6 +631,16 @@ class RTC_EXPORT Port : public PortInterface {
   CallbackList<Port*> port_error_callback_list_ RTC_GUARDED_BY(thread_);
 
   absl::AnyInvocable<void()> role_conflict_callback_ RTC_GUARDED_BY(thread_);
+
+  // Signals and trampolines. These will eventually be removed and replaced
+  // with straight CallbackLists (or simple callbacks).
+  // TODO: https://issues.webrtc.org/42222066 - replace and delete.
+  sigslot::signal2<Port*, const Candidate&> SignalCandidateReady;
+  sigslot::signal1<Port*> SignalPortComplete;
+  // Downstream code uses this signal. We will continue firing it along with the
+  // callback list. The signal can be deleted once all downstream usages are
+  // replaced with the new CallbackList implementation.
+  sigslot::signal1<Port*> SignalPortError;
 
   // Keep as the last member variable.
   WeakPtrFactory<Port> weak_factory_ RTC_GUARDED_BY(thread_);

@@ -29,7 +29,12 @@ namespace perfetto::trace_processor::type_builder_functions {
 //    creates a data structure allowing efficient lookups of rows by id.
 // TODO(lalitm): once we have some stability here, expand the comments
 // here.
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/type_builder_functions/type_builder_functions.h
 void RegisterPlugin();
+=======
+base::Status RegisterTypeBuilderFunctions(PerfettoSqlEngine& engine,
+                                          StringPool* pool);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/type_builders.h
 
 }  // namespace perfetto::trace_processor::type_builder_functions
 

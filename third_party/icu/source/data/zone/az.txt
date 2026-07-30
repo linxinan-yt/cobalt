@@ -789,6 +789,12 @@ az{
         "Europe:Tallinn"{
             ec{"Tallin"}
         }
+<<<<<<< HEAD
+=======
+        "Europe:Tirane"{
+            ec{"Tirana"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Europe:Vaduz"{
             ec{"Vaduts"}
         }

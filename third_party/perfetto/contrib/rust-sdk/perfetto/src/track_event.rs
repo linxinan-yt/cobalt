@@ -13,6 +13,7 @@
 // limitations under the License.
 
 use crate::{
+<<<<<<< HEAD
     data_source::TraceContextBase,
     fnv1a,
     heap_buffer::HeapBuffer,
@@ -20,6 +21,14 @@ use crate::{
     protos::trace::{
         interned_data::interned_data::InternedDataFieldNumber,
         track_event::{counter_descriptor::CounterDescriptor, track_descriptor::TrackDescriptor},
+=======
+    data_source::TraceContext,
+    fnv1a,
+    heap_buffer::HeapBuffer,
+    pb_msg::{PbMsg, PbMsgWriter},
+    protos::trace::track_event::{
+        counter_descriptor::CounterDescriptor, track_descriptor::TrackDescriptor,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     },
 };
 use perfetto_sdk_sys::*;
@@ -44,6 +53,7 @@ pub enum TrackEventError {
     CategoriesNotRegisteredError,
 }
 
+<<<<<<< HEAD
 /// Trace context struct passed to track event trace callbacks.
 pub struct TraceContext {
     base: TraceContextBase,
@@ -107,6 +117,8 @@ impl std::ops::DerefMut for TraceContext {
     }
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 /// An opaque struct used to represent the track event machinery.
 pub struct TrackEvent {}
 
@@ -332,10 +344,16 @@ impl TrackEventCategory {
             }
 
             let mut ctx = TraceContext {
+<<<<<<< HEAD
                 base: TraceContextBase {
                     iterator: iterator.ds,
                 },
                 incr: iterator.incr,
+=======
+                impl_: ptr::null_mut(),
+                iterator: iterator.ds,
+                _marker: PhantomData,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             };
             cb(&mut ctx);
 
@@ -401,8 +419,13 @@ macro_rules! track_event_categories {
     ) => {
         $vis mod $modname {
             use $crate::{
+<<<<<<< HEAD
                 track_event::{
                     TraceContext,
+=======
+                data_source::TraceContext,
+                track_event::{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     TrackEvent,
                     CategoryCallback,
                     EventContext,
@@ -716,6 +739,7 @@ impl TrackEventTrack {
 
     /// Register a named track.
     pub fn register_named_track(
+<<<<<<< HEAD
         name: &'static str,
         id: u64,
         parent_track_uuid: u64,
@@ -725,10 +749,13 @@ impl TrackEventTrack {
 
     /// Register a named track with a dynamic name.
     pub fn register_named_track_with_dynamic_name(
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         name: &str,
         id: u64,
         parent_track_uuid: u64,
     ) -> Result<Self, TrackEventError> {
+<<<<<<< HEAD
         Self::register_named_track_impl(name, id, parent_track_uuid, false)
     }
 
@@ -738,6 +765,8 @@ impl TrackEventTrack {
         parent_track_uuid: u64,
         is_name_static: bool,
     ) -> Result<Self, TrackEventError> {
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         let uuid = Self::named_track_uuid(name, id, parent_track_uuid);
         let writer = PbMsgWriter::new();
         let hb = HeapBuffer::new(&writer.writer);
@@ -748,11 +777,15 @@ impl TrackEventTrack {
             if parent_track_uuid != 0 {
                 desc.set_parent_uuid(parent_track_uuid);
             }
+<<<<<<< HEAD
             if is_name_static {
                 desc.set_static_name(name);
             } else {
                 desc.set_name(name);
             }
+=======
+            desc.set_name(name);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         msg.finalize();
         let descriptor_size = writer.writer.get_written_size();
@@ -772,6 +805,7 @@ impl TrackEventTrack {
 
     /// Register a counter track.
     pub fn register_counter_track(
+<<<<<<< HEAD
         name: &'static str,
         parent_track_uuid: u64,
     ) -> Result<Self, TrackEventError> {
@@ -791,6 +825,11 @@ impl TrackEventTrack {
         parent_track_uuid: u64,
         is_name_static: bool,
     ) -> Result<Self, TrackEventError> {
+=======
+        name: &str,
+        parent_track_uuid: u64,
+    ) -> Result<Self, TrackEventError> {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         let uuid = Self::counter_track_uuid(name, parent_track_uuid);
         let writer = PbMsgWriter::new();
         let hb = HeapBuffer::new(&writer.writer);
@@ -801,11 +840,15 @@ impl TrackEventTrack {
             if parent_track_uuid != 0 {
                 desc.set_parent_uuid(parent_track_uuid);
             }
+<<<<<<< HEAD
             if is_name_static {
                 desc.set_static_name(name);
             } else {
                 desc.set_name(name);
             }
+=======
+            desc.set_name(name);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             desc.set_counter(|counter: &mut CounterDescriptor| {
                 counter.set_is_incremental(false);
             });
@@ -1075,12 +1118,15 @@ impl ToTeHlNestedTrack for TrackEventNestedTrack<'_> {
                         },
                         name: cname.as_ptr(),
                         id: *id,
+<<<<<<< HEAD
                         is_name_static: false,
                         sibling_order_rank: 0,
                         child_ordering: 0,
                         sibling_merge_behavior: 0,
                         sibling_merge_key_str: ptr::null(),
                         sibling_merge_key_int: 0,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     },
                     cname,
                 )
@@ -1336,6 +1382,7 @@ impl EventContext {
         self
     }
 
+<<<<<<< HEAD
     /// Add a named track with static string.
     pub fn set_named_track(&mut self, name: &'static str, id: u64, parent_uuid: u64) -> &mut Self {
         self.set_named_track_impl(name, id, parent_uuid, true)
@@ -1360,6 +1407,11 @@ impl EventContext {
     ) -> &mut Self {
         let cname = CString::new(name).unwrap();
 
+=======
+    /// Add named track.
+    pub fn set_named_track(&mut self, name: &str, id: u64, parent_uuid: u64) -> &mut Self {
+        let cname = CString::new(name).unwrap();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         let track = PerfettoTeHlExtraNamedTrack {
             header: PerfettoTeHlExtra {
                 type_: PerfettoTeHlExtraType_PERFETTO_TE_HL_EXTRA_TYPE_NAMED_TRACK,
@@ -1367,9 +1419,13 @@ impl EventContext {
             name: cname.as_ptr(),
             id,
             parent_uuid,
+<<<<<<< HEAD
             is_name_static,
         };
 
+=======
+        };
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         self.extras.push(TeHlExtra::NamedTrack(track, cname));
         self
     }
@@ -2060,13 +2116,21 @@ mod tests {
                     .set_timestamp(42)
                     .set_clock_snapshot(|clock_snapshot: &mut ClockSnapshot| {
                         clock_snapshot
+<<<<<<< HEAD
                             .set_clocks(|clock: &mut ClockSnapshotClock| {
+=======
+                            .set_clocks(|clock: &mut Clock| {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                                 clock.set_clock_id(
                                     PerfettoTeTimestampType_PERFETTO_TE_TIMESTAMP_TYPE_BOOT,
                                 );
                                 clock.set_timestamp(42);
                             })
+<<<<<<< HEAD
                             .set_clocks(|clock: &mut ClockSnapshotClock| {
+=======
+                            .set_clocks(|clock: &mut Clock| {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                                 clock.set_clock_id(CUSTOM_CLOCK_ID);
                                 clock.set_timestamp(10000);
                             });

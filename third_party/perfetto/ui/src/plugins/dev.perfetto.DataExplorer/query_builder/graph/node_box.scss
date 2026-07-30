@@ -12,7 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/node_box.scss
 @use "../common" as *;
+=======
+@import "../common";
+@import "node_colors";
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/node_box.scss
 
 .pf-exp-node-box {
   @extend .pf-exp-node;
@@ -62,6 +67,7 @@
     );
     color: var(--pf-color-warning);
   }
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/graph/node_box.scss
 }
 
 .pf-exp-node-box__actions {
@@ -105,6 +111,41 @@
   }
 }
 
+=======
+}
+
+.pf-exp-node-box__actions {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-left: 0.5rem;
+  display: none;
+  flex-direction: row;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.pf-exp-node-box:hover .pf-exp-node-box__actions,
+.pf-exp-node-block__node:hover .pf-exp-node-box__actions,
+.pf-exp-node-container--selected > .pf-exp-node-box .pf-exp-node-box__actions,
+.pf-exp-node-block__node--selected .pf-exp-node-box__actions {
+  display: flex;
+}
+
+.pf-exp-node-box__warning-icon {
+  color: inherit;
+  font-size: 1.2rem;
+}
+
+.pf-exp-node-box__content {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  min-width: 0;
+  flex: 1;
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/graph/node_box.scss
 .pf-exp-node-box__filters {
   margin-top: 0.5rem;
 }

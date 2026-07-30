@@ -425,6 +425,10 @@ bool ThreadCache::IsInitialized() {
   return root && root->settings_.with_thread_cache;
 }
 
+bool ThreadCache::IsInitialized() {
+  return g_thread_cache_root.load(std::memory_order_acquire) != nullptr;
+}
+
 // static
 ThreadCache* ThreadCache::EnsureAndGetForQuarantine() {
   PartitionRoot* root =

@@ -321,11 +321,29 @@ ml{
                 one{
                     _{
                         _{"ചതുരശ്ര {0}"}
+<<<<<<< HEAD
+=======
+                        accusative{"ചതുരശ്ര {0}"}
+                        dative{"ചതുരശ്ര {0}"}
+                        genitive{"ചതുരശ്ര {0}"}
+                        instrumental{"ചതുരശ്ര {0}"}
+                        locative{"ചതുരശ്ര {0}"}
+                        sociative{"ചതുരശ്ര {0}"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     }
                 }
                 other{
                     _{
                         _{"ചതുരശ്ര {0}"}
+<<<<<<< HEAD
+=======
+                        accusative{"ചതുരശ്ര {0}"}
+                        dative{"ചതുരശ്ര {0}"}
+                        genitive{"ചതുരശ്ര {0}"}
+                        instrumental{"ചതുരശ്ര {0}"}
+                        locative{"ചതുരശ്ര {0}"}
+                        sociative{"ചതുരശ്ര {0}"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     }
                 }
             }
@@ -375,14 +393,18 @@ ml{
                         other{"{0} കാരറ്റിനോട്"}
                     }
                 }
+                dnam{"കാരറ്റ്"}
                 gender{"neuter"}
                 one{"{0} കാരറ്റ്"}
                 other{"{0} കാരറ്റ്"}
+<<<<<<< HEAD
             }
             katal{
                 dnam{"കാറ്റൽ"}
                 one{"{0} കാറ്റൽ"}
                 other{"{0} കാറ്റൽ"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             milligram-ofglucose-per-deciliter{
                 dnam{"മില്ലിഗ്രാം / ഡെസിലിറ്റർ"}
@@ -422,6 +444,7 @@ ml{
                     }
                 }
                 gender{"neuter"}
+<<<<<<< HEAD
             }
             ofglucose{
                 dnam{"ഗ്ലൂക്കോസ്"}
@@ -469,6 +492,8 @@ ml{
                 dnam{"പാർട്ട്സ് / ബില്ല്യൺ"}
                 one{"{0} പാർട്ട് / ബില്ല്യൺ"}
                 other{"{0} പാർട്ട്സ് / ബില്ല്യൺ"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             percent{
                 case{
@@ -531,6 +556,41 @@ ml{
                 one{"{0} പ്രതിമില്ലി"}
                 other{"{0} പ്രതിമില്ലി"}
             }
+<<<<<<< HEAD
+=======
+            permillion{
+                case{
+                    accusative{
+                        one{"{0} പാർട്ട് / മില്ല്യണിനെ"}
+                        other{"{0} പാർട്ട് / മില്ല്യണിനെ"}
+                    }
+                    dative{
+                        one{"{0} പാർട്ട് / മില്ല്യണിന്"}
+                        other{"{0} പാർട്ട് / മില്ല്യണിന്"}
+                    }
+                    genitive{
+                        one{"{0} പാർട്ട് / മില്ല്യണിന്റെ"}
+                        other{"{0} പാർട്ട് / മില്ല്യണിന്റെ"}
+                    }
+                    instrumental{
+                        one{"{0} പാർട്ട് / മില്ല്യണിനാൽ"}
+                        other{"{0} പാർട്ട് / മില്ല്യണിനാൽ"}
+                    }
+                    locative{
+                        one{"{0} പാർട്ട് / മില്ല്യണിൽ"}
+                        other{"{0} പാർട്ട് / മില്ല്യണിൽ"}
+                    }
+                    sociative{
+                        one{"{0} പാർട്ട് / മില്ല്യണിനോട്"}
+                        other{"{0} പാർട്ട് / മില്ല്യണിനോട്"}
+                    }
+                }
+                dnam{"പാർട്‌സ് / മില്ല്യൺ"}
+                gender{"neuter"}
+                one{"{0} പാർട്ട് / മില്ല്യൺ"}
+                other{"{0} പാർട്‌സ് / മില്ല്യൺ"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             permyriad{
                 case{
                     accusative{
@@ -561,6 +621,11 @@ ml{
                 gender{"neuter"}
                 one{"{0} പെ൪മിറിയാഡ്"}
                 other{"{0} പെ൪മിറിയാഡ്"}
+            }
+            portion-per-1e9{
+                dnam{"പാർട്‌സ്/ബില്ല്യൺ"}
+                one{"{0} പാർട്ട്/ബില്ല്യൺ"}
+                other{"{0} പാർട്‌സ്/ബില്ല്യൺ"}
             }
         }
         consumption{
@@ -899,6 +964,12 @@ ml{
             nanosecond{
                 one{"{0} നാനോസെക്കൻഡ്"}
                 other{"{0} നാനോസെക്കൻഡ്"}
+            }
+            night{
+                dnam{"രാത്രികൾ"}
+                one{"{0} രാത്രി"}
+                other{"{0} രാത്രികൾ"}
+                per{"{0}/രാത്രി"}
             }
             quarter{
                 dnam{"പാദങ്ങൾ"}
@@ -1694,6 +1765,7 @@ ml{
                         other{"{0} കാരറ്റിനോട്"}
                     }
                 }
+                dnam{"കാരറ്റ്"}
                 gender{"neuter"}
                 one{"{0} കാരറ്റ്"}
                 other{"{0} കാരറ്റ്"}
@@ -2451,6 +2523,7 @@ ml{
         }
         concentr{
             karat{
+<<<<<<< HEAD
                 one{"{0}kt"}
                 other{"{0}kt"}
             }
@@ -2469,9 +2542,19 @@ ml{
                 dnam{"പി.പി.ബി."}
                 one{"{0}പി.പി.ബി."}
                 other{"{0}പി.പി.ബി."}
+=======
+                dnam{"കാരറ്റ്"}
+                one{"{0} കാ."}
+                other{"{0}കാ."}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             permyriad{
                 dnam{"‱"}
+            }
+            portion-per-1e9{
+                dnam{"പി.പി.ബി."}
+                one{"{0}പി.പി.ബി."}
+                other{"{0}പി.പി.ബി."}
             }
         }
         consumption{
@@ -2569,8 +2652,15 @@ ml{
                 dnam{"നാ.സെ."}
             }
             night{
+<<<<<<< HEAD
                 one{"{0}രാത്രി"}
                 other{"{0}രാത്രികൾ"}
+=======
+                dnam{"രാത്രികൾ"}
+                one{"{0}രാത്രി"}
+                other{"{0}രാത്രികൾ"}
+                per{"{0}/രാത്രി"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             second{
                 dnam{"സെ."}
@@ -2723,6 +2813,7 @@ ml{
         }
         mass{
             carat{
+                dnam{"കാരറ്റ്"}
                 one{"{0}CD"}
                 other{"{0}CD"}
             }
@@ -3018,8 +3109,13 @@ ml{
             }
             karat{
                 dnam{"കാരറ്റ്"}
+<<<<<<< HEAD
                 one{"{0} kt"}
                 other{"{0} kt"}
+=======
+                one{"{0} കാ."}
+                other{"{0} കാ."}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             milligram-ofglucose-per-deciliter{
                 dnam{"മി.ഗ്രാം/ഡെ.ലി."}
@@ -3056,6 +3152,11 @@ ml{
             }
             permyriad{
                 dnam{"പെ൪മിറിയാഡ്"}
+            }
+            portion-per-1e9{
+                dnam{"പാർട്‌സ്/ബില്ല്യൺ"}
+                one{"{0} പി.പി.ബി."}
+                other{"{0} പി.പി.ബി."}
             }
         }
         consumption{

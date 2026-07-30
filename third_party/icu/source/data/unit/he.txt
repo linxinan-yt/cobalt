@@ -67,6 +67,15 @@ he{
             }
         }
         area{
+<<<<<<< HEAD
+=======
+            acre{
+                many{"{0} אקר"}
+                one{"{0} אקר"}
+                other{"{0} אקר"}
+                two{"{0} אקר"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             hectare{
                 gender{"masculine"}
                 many{"{0} הקטאר"}
@@ -302,6 +311,13 @@ he{
                 other{"{0} רבביות"}
                 two{"{0} רבביות"}
             }
+            portion-per-1e9{
+                dnam{"חלקים למיליארד"}
+                gender{"masculine"}
+                one{"{0} חלקים למיליארד"}
+                other{"{0} חלקים למיליארד"}
+                two{"{0} חלקים למיליארד"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -489,7 +505,16 @@ he{
                 two{"{0} ננו שניות"}
             }
             night{
+<<<<<<< HEAD
                 gender{"masculine"}
+=======
+                dnam{"לילות"}
+                gender{"masculine"}
+                one{"{0} לילה"}
+                other{"{0} לילות"}
+                per{"{0}/לילה"}
+                two{"{0} לילות"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 gender{"masculine"}
@@ -701,6 +726,7 @@ he{
         graphics{
             dot{
                 dnam{"נקודות קטנות"}
+<<<<<<< HEAD
                 many{"{0} נקודות קטנות"}
                 one{"נקודה קטנה אחת ({0})"}
                 other{"{0} נקודות קטנות"}
@@ -718,10 +744,21 @@ he{
                 one{"{0} נק׳ לאינץ׳"}
                 other{"{0} נק׳ לאינץ׳"}
                 two{"dpi ‏{0}"}
+=======
+            }
+            dot-per-centimeter{
+                dnam{"נקודות לסנטימטר"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             em{
                 dnam{"קו מפריד מסוג em"}
                 gender{"masculine"}
+<<<<<<< HEAD
+=======
+                one{"{0} em"}
+                other{"{0} ems"}
+                two{"{0} em"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             megapixel{
                 dnam{"מגה-פיקסל"}
@@ -884,7 +921,11 @@ he{
             point{
                 gender{"feminine"}
                 many{"{0} נקודות"}
+<<<<<<< HEAD
                 one{"נקודה אחת ({0})"}
+=======
+                one{"{0} נקודה"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} נקודות"}
                 two{"{0} נקודות"}
             }
@@ -1145,12 +1186,15 @@ he{
                 one{"{0} מילימטר כספית"}
                 other{"{0} מילימטר כספית"}
                 two{"{0} מילימטר כספית"}
+<<<<<<< HEAD
             }
             ofhg{
                 dnam{"כספית"}
                 one{"{0} כספית"}
                 other{"{0} כספית"}
                 two{"{0} כספית"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             pascal{
                 dnam{"פסקל"}
@@ -1191,7 +1235,15 @@ he{
                 two{"{0} קשר"}
             }
             light-speed{
+<<<<<<< HEAD
                 gender{"masculine"}
+=======
+                dnam{"אור"}
+                gender{"masculine"}
+                one{"{0} אור"}
+                other{"{0} אור"}
+                two{"{0} אור"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             meter-per-second{
                 dnam{"מטר לשנייה"}
@@ -1522,6 +1574,16 @@ he{
                 two{"{0} שנ׳"}
             }
         }
+<<<<<<< HEAD
+=======
+        area{
+            square-kilometer{
+                one{"{0} קמ״ר"}
+                other{"{0} קמ״ר"}
+                two{"{0} קמ״ר"}
+            }
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         compound{
             10p27{"רונא{0}"}
             10p30{"קווטא{0}"}
@@ -1555,6 +1617,7 @@ he{
                 two{"{0}ל׳/100ק״מ"}
             }
         }
+<<<<<<< HEAD
         digital{
             bit{
                 one{"bit‏{0}"}
@@ -1606,6 +1669,8 @@ he{
                 two{"TB‏{0}"}
             }
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         duration{
             day{
                 dnam{"יום"}
@@ -1678,6 +1743,7 @@ he{
                 other{"{0} נק' קטנות"}
                 two{"{0} נק' קטנות"}
             }
+<<<<<<< HEAD
             dot-per-centimeter{
                 dnam{"dpcm"}
                 many{"‎dpcm‏{0}"}
@@ -1709,6 +1775,8 @@ he{
                 other{"ppi ‏{0}"}
                 two{"ppi ‏{0}"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         length{
             inch{
@@ -1761,12 +1829,15 @@ he{
             }
         }
         volume{
+<<<<<<< HEAD
             cubic-meter{
                 many{"{0} מ\u0022ק"}
                 one{"{0} מ\u0022ק"}
                 other{"{0} מ\u0022ק"}
                 two{"{0} מ\u0022ק"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             dessert-spoon-imperial{
                 many{"{0}dsp-Imp"}
                 one{"{0}dsp-Imp"}
@@ -1832,6 +1903,12 @@ he{
             }
             hectare{
                 dnam{"הקטאר"}
+<<<<<<< HEAD
+=======
+                one{"{0} ha"}
+                other{"{0} ha"}
+                two{"{0} ha"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             square-centimeter{
                 dnam{"סמ״ר"}
@@ -1844,6 +1921,15 @@ he{
                 one{"{0} sq ft"}
                 other{"{0} sq ft"}
                 two{"{0} sq ft"}
+<<<<<<< HEAD
+=======
+            }
+            square-inch{
+                one{"{0} in²"}
+                other{"{0} in²"}
+                per{"{0}/in²"}
+                two{"{0} in²"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             square-kilometer{
                 dnam{"קמ״ר"}
@@ -1863,10 +1949,20 @@ he{
                 dnam{"מייל רבוע"}
                 one{"{0} sq mi"}
                 other{"{0} sq mi"}
+<<<<<<< HEAD
+=======
+                per{"{0}/mi²"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 two{"{0} sq mi"}
             }
             square-yard{
                 dnam{"yards²"}
+<<<<<<< HEAD
+=======
+                one{"{0} yd²"}
+                other{"{0} yd²"}
+                two{"{0} yd²"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         compound{
@@ -1899,6 +1995,7 @@ he{
                 other{"{0} פריטים"}
                 two{"{0} פריטים"}
             }
+<<<<<<< HEAD
             ofglucose{
                 dnam{"גלוקוז"}
                 one{"{0} גלוקוז"}
@@ -1910,6 +2007,17 @@ he{
                 one{"{0} חלק"}
                 other{"{0} חלק"}
                 two{"{0} חלקים"}
+=======
+            karat{
+                one{"{0} kt"}
+                other{"{0} kt"}
+                two{"{0} kt"}
+            }
+            milligram-ofglucose-per-deciliter{
+                one{"{0} mg/dL"}
+                other{"{0} mg/dL"}
+                two{"{0} mg/dL"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         consumption{
@@ -2131,6 +2239,10 @@ he{
             }
             kilowatt-hour-per-100-kilometer{
                 dnam{"קוט״ש/100 ק״מ"}
+<<<<<<< HEAD
+=======
+                many{"{0} קוט״ש/100 ק״מ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} קוט״ש/100 ק״מ"}
                 other{"{0} קוט״ש/100 ק״מ"}
                 two{"{0} קוט״ש/100 ק״מ"}
@@ -2153,6 +2265,7 @@ he{
             }
             dot-per-inch{
                 dnam{"dpi"}
+<<<<<<< HEAD
                 many{"dpi ‏{0}"}
                 one{"ppi ‏{0}"}
                 other{"dpi ‏{0}"}
@@ -2182,6 +2295,44 @@ he{
             }
         }
         length{
+=======
+                one{"{0} ppi"}
+                other{"{0} dpi"}
+                two{"{0} ppi"}
+            }
+            em{
+                one{"{0} em"}
+                other{"{0} em"}
+                two{"{0} em"}
+            }
+            megapixel{
+                one{"{0} MP"}
+                other{"{0} MP"}
+                two{"{0} MP"}
+            }
+            pixel{
+                one{"{0} px"}
+                other{"{0} px"}
+                two{"{0} px"}
+            }
+            pixel-per-centimeter{
+                one{"{0} ppcm"}
+                other{"{0} ppcm"}
+                two{"{0} ppcm"}
+            }
+            pixel-per-inch{
+                one{"{0} ppi"}
+                other{"{0} ppi"}
+                two{"{0} ppi"}
+            }
+        }
+        length{
+            astronomical-unit{
+                one{"{0} au"}
+                other{"{0} au"}
+                two{"{0} au"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             centimeter{
                 dnam{"ס״מ"}
                 one{"{0} ס״מ"}
@@ -2197,11 +2348,25 @@ he{
             }
             foot{
                 dnam{"רגל"}
+<<<<<<< HEAD
                 per{"{0} ‎/ft"}
             }
             inch{
                 dnam{"אינץ׳"}
                 per{"{0} ‎/in"}
+=======
+                one{"{0} ft"}
+                other{"{0} ft"}
+                per{"{0} ‎/ft"}
+                two{"{0} ft"}
+            }
+            inch{
+                dnam{"אינץ׳"}
+                one{"{0} in"}
+                other{"{0} in"}
+                per{"{0} ‎/in"}
+                two{"{0} in"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             kilometer{
                 dnam{"ק״מ"}
@@ -2223,6 +2388,14 @@ he{
                 per{"{0}/מ׳"}
                 two{"{0} מ׳"}
             }
+<<<<<<< HEAD
+=======
+            micrometer{
+                one{"{0} μm"}
+                other{"{0} μm"}
+                two{"{0} μm"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             mile{
                 dnam{"מייל"}
                 one{"{0} מייל"}
@@ -2235,12 +2408,28 @@ he{
                 other{"{0} מ״מ"}
                 two{"{0} מ״מ"}
             }
+<<<<<<< HEAD
+=======
+            nanometer{
+                one{"{0} nm"}
+                other{"{0} nm"}
+                two{"{0} nm"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             nautical-mile{
                 dnam{"מ״י"}
                 one{"מ״י אחד"}
                 other{"{0} מ״י"}
                 two{"שני מ״י"}
             }
+<<<<<<< HEAD
+=======
+            parsec{
+                one{"{0} pc"}
+                other{"{0} pc"}
+                two{"{0} pc"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             picometer{
                 dnam{"פ״מ"}
                 one{"{0} פ“מ"}
@@ -2380,6 +2569,24 @@ he{
             }
         }
         volume{
+<<<<<<< HEAD
+=======
+            acre-foot{
+                one{"{0} ac ft"}
+                other{"{0} ac ft"}
+                two{"{0} ac ft"}
+            }
+            barrel{
+                one{"{0} bbl"}
+                other{"{0} bbl"}
+                two{"{0} bbl"}
+            }
+            centiliter{
+                one{"{0} cL"}
+                other{"{0} cL"}
+                two{"{0} cL"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             cubic-centimeter{
                 dnam{"סמ״ק"}
                 one{"{0} סמ״ק"}
@@ -2389,6 +2596,17 @@ he{
             }
             cubic-foot{
                 dnam{"feet³"}
+<<<<<<< HEAD
+=======
+                one{"{0} ft³"}
+                other{"{0} ft³"}
+                two{"{0} ft³"}
+            }
+            cubic-inch{
+                one{"{0} in³"}
+                other{"{0} in³"}
+                two{"{0} in³"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             cubic-kilometer{
                 dnam{"קמ״ק"}
@@ -2397,10 +2615,26 @@ he{
                 two{"{0} קמ״ק"}
             }
             cubic-meter{
+<<<<<<< HEAD
                 many{"{0} מ\u0022ק"}
                 one{"{0} מ\u0022ק"}
                 other{"{0} מ\u0022ק"}
                 two{"{0} מ\u0022ק"}
+=======
+                one{"{0} m³"}
+                other{"{0} m³"}
+                two{"{0} m³"}
+            }
+            cubic-mile{
+                one{"{0} mi³"}
+                other{"{0} mi³"}
+                two{"{0} mi³"}
+            }
+            cubic-yard{
+                one{"{0} yd³"}
+                other{"{0} yd³"}
+                two{"{0} yd³"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             cup{
                 dnam{"כוסות"}
@@ -2408,6 +2642,14 @@ he{
                 other{"{0} כ׳"}
                 two{"{0} כ׳"}
             }
+<<<<<<< HEAD
+=======
+            cup-metric{
+                one{"{0} mc"}
+                other{"{0} mc"}
+                two{"{0} mc"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             deciliter{
                 dnam{"דצ״ל"}
                 one{"{0} דצ״ל"}
@@ -2425,6 +2667,14 @@ he{
                 one{"{0} fl oz"}
                 other{"{0} fl oz"}
                 two{"{0} fl oz"}
+<<<<<<< HEAD
+=======
+            }
+            fluid-ounce-imperial{
+                one{"{0} fl oz Imp."}
+                other{"{0} fl oz Imp."}
+                two{"{0} fl oz Imp."}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             gallon{
                 dnam{"גלון"}
@@ -2440,6 +2690,14 @@ he{
                 per{"{0}/גלון בריטי"}
                 two{"{0} גלון בריטי"}
             }
+<<<<<<< HEAD
+=======
+            hectoliter{
+                one{"{0} hL"}
+                other{"{0} hL"}
+                two{"{0} hL"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             liter{
                 dnam{"ליטר"}
                 one{"{0} ל׳"}
@@ -2447,6 +2705,14 @@ he{
                 per{"{0}/ל׳"}
                 two{"{0} ל׳"}
             }
+<<<<<<< HEAD
+=======
+            megaliter{
+                one{"{0} ML"}
+                other{"{0} ML"}
+                two{"{0} ML"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             milliliter{
                 dnam{"מ״ל"}
                 one{"{0} מ״ל"}
@@ -2461,9 +2727,26 @@ he{
             }
             pint{
                 dnam{"פינט"}
+<<<<<<< HEAD
             }
             quart{
                 dnam{"qts"}
+=======
+                one{"{0} pt"}
+                other{"{0} pt"}
+                two{"{0} pt"}
+            }
+            pint-metric{
+                one{"{0} mpt"}
+                other{"{0} mpt"}
+                two{"{0} mpt"}
+            }
+            quart{
+                dnam{"qts"}
+                one{"{0} qt"}
+                other{"{0} qt"}
+                two{"{0} qt"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             tablespoon{
                 dnam{"כפות"}

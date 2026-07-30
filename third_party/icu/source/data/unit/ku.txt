@@ -30,9 +30,24 @@ ku{
         }
         area{
             acre{
+<<<<<<< HEAD
                 one{"{0} akre"}
                 other{"{0} akre"}
             }
+=======
+                dnam{"akre"}
+                one{"{0} akre"}
+                other{"{0} akre"}
+            }
+            dunam{
+                dnam{"donim"}
+                one{"{0} donim"}
+                other{"{0} donim"}
+            }
+            hectare{
+                dnam{"hektar"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             square-centimeter{
                 dnam{"santîmetre kare"}
                 one{"{0} santîmetre kare"}
@@ -40,10 +55,18 @@ ku{
                 per{"{0} serê santîmetre kareyê"}
             }
             square-foot{
+<<<<<<< HEAD
+=======
+                dnam{"fît kare"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} fît kare"}
                 other{"{0} fît kare"}
             }
             square-inch{
+<<<<<<< HEAD
+=======
+                dnam{"înç kare"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} înç kare"}
                 other{"{0} înç kare"}
                 per{"{0} serê înç kareyê"}
@@ -55,16 +78,28 @@ ku{
                 per{"{0} serê kîlometre kareyê"}
             }
             square-meter{
+<<<<<<< HEAD
+=======
+                dnam{"metre kare"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} metre kare"}
                 other{"{0} metre kare"}
                 per{"{0} serê metre kareyê"}
             }
             square-mile{
+<<<<<<< HEAD
+=======
+                dnam{"mîl kare"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} mîl kare"}
                 other{"{0} mîl kare"}
                 per{"{0} serê mîl kareyê"}
             }
             square-yard{
+<<<<<<< HEAD
+=======
+                dnam{"yarda kare"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} yarda kare"}
                 other{"{0} yarda kare"}
             }
@@ -88,8 +123,18 @@ ku{
             west{"{0} rojava"}
         }
         duration{
+            century{
+                dnam{"ss"}
+                one{"{0} ss"}
+                other{"{0} ss"}
+            }
             day{
                 per{"{0}/roj"}
+            }
+            decade{
+                dnam{"dehsal"}
+                one{"{0} dehsal"}
+                other{"{0} dehsal"}
             }
             hour{
                 one{"{0} saet"}
@@ -105,10 +150,23 @@ ku{
                 other{"{0} meh"}
                 per{"{0}/meh"}
             }
+            night{
+                dnam{"şev"}
+                one{"{0} şev"}
+                other{"{0} şev"}
+                per{"{0}/şev"}
+            }
+            quarter{
+                dnam{"çaryek"}
+                one{"{0} çaryek"}
+                other{"{0} çaryek"}
+                per{"{0}/çaryek"}
+            }
             second{
                 dnam{"sanîye"}
                 one{"{0} sanîye"}
                 other{"{0} saniye"}
+                per{"{0}/sn"}
             }
             week{
                 dnam{"hefte"}
@@ -133,23 +191,43 @@ ku{
                 other{"{0} decîmetre"}
             }
             earth-radius{
+<<<<<<< HEAD
+=======
+                dnam{"nîvçapa dinyayê"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} nîvçapa dinyayê"}
                 other{"{0} nîvçapa dinyayê"}
             }
             fathom{
+<<<<<<< HEAD
+=======
+                dnam{"fathom"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} fathom"}
                 other{"{0} fathom"}
             }
             foot{
+<<<<<<< HEAD
+=======
+                dnam{"fît"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} fît"}
                 other{"{0} fît"}
                 per{"{0} serê fîtê"}
             }
             furlong{
+<<<<<<< HEAD
+=======
+                dnam{"furlong"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} furlong"}
                 other{"{0} furlong"}
             }
             inch{
+<<<<<<< HEAD
+=======
+                dnam{"înç"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} înç"}
                 other{"{0} înç"}
                 per{"{0} serê înçê"}
@@ -177,6 +255,10 @@ ku{
                 other{"{0} mîkrometre"}
             }
             mile{
+<<<<<<< HEAD
+=======
+                dnam{"mîl"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} mîl"}
                 other{"{0} mîl"}
             }
@@ -196,6 +278,10 @@ ku{
                 other{"{0} mîla behrê"}
             }
             parsec{
+<<<<<<< HEAD
+=======
+                dnam{"parsek"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} parsek"}
                 other{"{0} parsek"}
             }
@@ -205,13 +291,27 @@ ku{
                 other{"{0} pîkometre"}
             }
             point{
+<<<<<<< HEAD
+=======
+                dnam{"punto"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} punto"}
                 other{"{0} punto"}
             }
             solar-radius{
+<<<<<<< HEAD
                 one{"{0} nîvçapa rojê"}
                 other{"{0} nîvçapa rojê"}
             }
+=======
+                dnam{"nîvçapa rojê"}
+                one{"{0} nîvçapa rojê"}
+                other{"{0} nîvçapa rojê"}
+            }
+            yard{
+                dnam{"yarda"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         mass{
             kilogram{
@@ -221,15 +321,65 @@ ku{
         speed{
             kilometer-per-hour{
                 dnam{"kîlometreya serê saetê"}
+<<<<<<< HEAD
+=======
+                one{"{0} km/st"}
+                other{"{0} km/st"}
+            }
+        }
+        volume{
+            liter{
+                dnam{"lître"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
     }
     unitsNarrow{
         angle{
+<<<<<<< HEAD
+=======
+            arc-minute{
+                dnam{"dq. kevanî"}
+            }
+            arc-second{
+                dnam{"sn. kevanî"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             radian{
                 dnam{"rad"}
             }
         }
+<<<<<<< HEAD
+=======
+        area{
+            acre{
+                dnam{"akre"}
+            }
+            dunam{
+                dnam{"donim"}
+                one{"{0} donim"}
+                other{"{0} donim"}
+            }
+            hectare{
+                dnam{"hektar"}
+            }
+            square-foot{
+                dnam{"fît kare"}
+            }
+            square-inch{
+                dnam{"înç kare"}
+            }
+            square-meter{
+                dnam{"metre kare"}
+            }
+            square-mile{
+                dnam{"mîl kare"}
+            }
+            square-yard{
+                dnam{"yarda kare"}
+            }
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         consumption{
             liter-per-100-kilometer{
                 dnam{"l/100km"}
@@ -244,9 +394,19 @@ ku{
             west{"{0}Ra"}
         }
         duration{
+            century{
+                dnam{"ss"}
+                one{"{0} ss"}
+                other{"{0} ss"}
+            }
             day{
                 one{"{0}r"}
                 other{"{0}r"}
+            }
+            decade{
+                dnam{"dehsal"}
+                one{"{0} dehsal"}
+                other{"{0} dehsal"}
             }
             hour{
                 one{"{0}st"}
@@ -260,9 +420,28 @@ ku{
                 one{"{0}m"}
                 other{"{0}m"}
             }
+            night{
+                dnam{"şev"}
+                one{"{0} şev"}
+                other{"{0} şev"}
+                per{"{0}/şev"}
+            }
+            quarter{
+                dnam{"çaryek"}
+                one{"{0} çaryek"}
+                other{"{0} çaryek"}
+                per{"{0}/çaryek"}
+            }
             second{
+<<<<<<< HEAD
                 one{"{0}sn"}
                 other{"{0}sn"}
+=======
+                dnam{"sn"}
+                one{"{0}sn"}
+                other{"{0}sn"}
+                per{"{0}/sn"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             week{
                 one{"{0}hf"}
@@ -283,6 +462,7 @@ ku{
                 one{"{0}dm"}
                 other{"{0}dm"}
             }
+<<<<<<< HEAD
             foot{
                 one{"{0}′"}
                 other{"{0}′"}
@@ -292,6 +472,34 @@ ku{
                 other{"{0}″"}
             }
             meter{
+=======
+            earth-radius{
+                dnam{"nîvçapa dinyayê"}
+            }
+            fathom{
+                dnam{"fathom"}
+            }
+            foot{
+                dnam{"fît"}
+                one{"{0}′"}
+                other{"{0}′"}
+            }
+            furlong{
+                dnam{"furlong"}
+            }
+            inch{
+                dnam{"înç"}
+                one{"{0}″"}
+                other{"{0}″"}
+            }
+            light-year{
+                dnam{"sala rnh"}
+                one{"{0} sala rnh"}
+                other{"{0} sala rnh"}
+            }
+            meter{
+                dnam{"m"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0}m"}
                 other{"{0}m"}
             }
@@ -300,6 +508,10 @@ ku{
                 other{"{0}μm"}
             }
             mile{
+<<<<<<< HEAD
+=======
+                dnam{"mîl"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0}mi"}
                 other{"{0}mi"}
             }
@@ -311,10 +523,37 @@ ku{
                 one{"{0}nm"}
                 other{"{0}nm"}
             }
+<<<<<<< HEAD
+=======
+            parsec{
+                dnam{"parsek"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             picometer{
                 one{"{0}pm"}
                 other{"{0}pm"}
             }
+<<<<<<< HEAD
+=======
+            solar-radius{
+                dnam{"nîvçapa rojê"}
+            }
+            yard{
+                dnam{"yarda"}
+            }
+        }
+        speed{
+            kilometer-per-hour{
+                dnam{"km/st"}
+                one{"{0} km/st"}
+                other{"{0} km/st"}
+            }
+        }
+        volume{
+            liter{
+                dnam{"lître"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     }
     unitsShort{

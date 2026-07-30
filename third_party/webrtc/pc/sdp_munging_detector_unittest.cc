@@ -741,7 +741,11 @@ TEST_F(SdpMungingTest, RemoveContentRejected) {
   std::unique_ptr<SessionDescriptionInterface> offer = pc->CreateOffer();
   auto& contents = offer->description()->contents();
   ASSERT_THAT(contents, SizeIs(1));
+<<<<<<< HEAD
   std::string name = contents[0].mid();
+=======
+  auto name = contents[0].mid();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   EXPECT_TRUE(offer->description()->RemoveContentByName(contents[0].mid()));
   std::string sdp;
   offer->ToString(&sdp);
@@ -1077,6 +1081,7 @@ TEST_F(SdpMungingTest, VideoCodecsModifiedWithRawPacketization) {
   ASSERT_THAT(media_description, Not(IsNull()));
   std::vector<Codec> codecs = media_description->codecs();
   ASSERT_THAT(codecs, Not(SizeIs(0)));
+<<<<<<< HEAD
   codecs[0].packetization = "raw";
   media_description->set_codecs(codecs);
   RTCError error;
@@ -1098,6 +1103,8 @@ TEST_F(SdpMungingTest, VideoCodecsModifiedWithRawPacketization_Redesign) {
   ASSERT_THAT(media_description, Not(IsNull()));
   std::vector<Codec> codecs = media_description->codecs();
   ASSERT_THAT(codecs, Not(SizeIs(0)));
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   codecs[0].packetization = "raw";
   media_description->set_codecs(codecs);
   RTCError error;
@@ -1655,6 +1662,7 @@ TEST_F(SdpMungingTest, SctpInit) {
       ElementsAre(Pair(SdpMungingType::kDataChannelSctpInit, 1)));
 }
 
+<<<<<<< HEAD
 TEST_F(SdpMungingTest, SctpInitAndIceUfrag) {
   auto pc = CreatePeerConnection("WebRTC-Sctp-Snap/Enabled/");
   EXPECT_TRUE(pc->CreateDataChannel("dc"));
@@ -1687,6 +1695,8 @@ TEST_F(SdpMungingTest, SctpInitAndIceUfrag) {
       ElementsAre(Pair(SdpMungingType::kDataChannelSctpInit, 1)));
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 TEST_F(SdpMungingTest, MaxMessageSize) {
   auto pc = CreatePeerConnection();
   EXPECT_TRUE(pc->CreateDataChannel("dc"));

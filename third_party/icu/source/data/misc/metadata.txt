@@ -5408,9 +5408,13 @@ metadata:table(nofallback){
         "ksb_TZ",
         "ksf_CM",
         "ksh_DE",
+<<<<<<< HEAD
         "ku_Arab_IQ",
         "ku_Latn",
         "ku_Latn_TR",
+=======
+        "ku_TR",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "kw_GB",
         "kxv_Deva_IN",
         "kxv_Latn",

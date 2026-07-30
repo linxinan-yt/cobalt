@@ -775,7 +775,11 @@ ceb{
         }
         CRC{
             one{"Costa Rican colon"}
+<<<<<<< HEAD
             other{"Costa Rican colons"}
+=======
+            other{"Costa Rican colóns"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         CUC{
             one{"Cuban convertible peso"}
@@ -1047,7 +1051,11 @@ ceb{
         }
         NIO{
             one{"Nicaraguan cordoba"}
+<<<<<<< HEAD
             other{"Nicaraguan cordobas"}
+=======
+            other{"Nicaraguan córdobas"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         NOK{
             one{"Norwegian krone"}
@@ -1252,10 +1260,13 @@ ceb{
         XCD{
             one{"East Caribbean dollar"}
             other{"East Caribbean dollars"}
+<<<<<<< HEAD
         }
         XCG{
             one{"Carribean guilder"}
             other{"Carribean guilder"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         XOF{
             one{"West African CFA franc"}

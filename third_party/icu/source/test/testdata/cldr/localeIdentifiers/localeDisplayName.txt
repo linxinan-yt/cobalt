@@ -374,6 +374,7 @@ nl-Latn-BE; Vlaams (Latyn)
 zh-Hans-fonipa; Chinees (Vereenvoudig, fonipa)
 
 
+<<<<<<< HEAD
 @locale=ak
 @languageDisplay=standard
 
@@ -400,6 +401,8 @@ nl-Latn-BE; Dɛɛkye [Bɛɛgyiɔm (Laatin)
 zh-Hans-fonipa; Kyaena kasa a emu yɛ mmrɛ (fonipa)
 
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 @locale=am
 @languageDisplay=standard
 
@@ -420,7 +423,11 @@ en-MM; እንግሊዝኛ (ማይናማር[በርማ])
 es; ስፓኒሽ
 es-419; የላቲን አሜሪካ ስፓኒሽ
 es-Cyrl-MX; የሜክሲኮ ስፓኒሽ (ሲይሪልክ)
+<<<<<<< HEAD
 hi-Latn; ሕንድኛ (ላቲን)
+=======
+hi-Latn; ሕንድኛ [ላቲን]
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 nl-BE; ፍሌሚሽ
 nl-Latn-BE; ፍሌሚሽ (ላቲን)
 zh-Hans-fonipa; ቀለል ያለ ቻይንኛ (fonipa)
@@ -530,6 +537,7 @@ nl-Latn-BE; flamand (latın)
 zh-Hans-fonipa; sadələşmiş çin (fonipa)
 
 
+<<<<<<< HEAD
 @locale=ba
 @languageDisplay=standard
 
@@ -556,6 +564,8 @@ nl-Latn-BE; фламанд (латиница)
 zh-Hans-fonipa; ҡытай [ябайлаштырылған] (fonipa)
 
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 @locale=be
 @languageDisplay=standard
 
@@ -764,6 +774,7 @@ nl-Latn-BE; vlámština (latinka)
 zh-Hans-fonipa; čínština [zjednodušená] (fonipa)
 
 
+<<<<<<< HEAD
 @locale=cv
 @languageDisplay=standard
 
@@ -790,6 +801,8 @@ nl-Latn-BE; фламанд чӗлхи (латин ҫырулӑхӗ)
 zh-Hans-fonipa; ҫӑмӑллатнӑ китай чӗлхи (Тӗнчери фонетика алфавичӗ)
 
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 @locale=cy
 @languageDisplay=standard
 
@@ -1253,8 +1266,13 @@ es; Sifaniyanci
 es-419; Sifaniyancin Latin Amirka
 es-Cyrl-MX; Sifaniyanci Mesiko (Cyrillic)
 hi-Latn; Harshen Hindi (Latin)
+<<<<<<< HEAD
 nl-BE; Flemish
 nl-Latn-BE; Flemish (Latin)
+=======
+nl-BE; Holanci (Belgiyom)
+nl-Latn-BE; Holanci (Latin, Belgiyom)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 zh-Hans-fonipa; Sauƙaƙaƙƙen Sinanci (fonipa)
 
 
@@ -1674,6 +1692,7 @@ nl-Latn-BE; фламанд тілі (латын жазуы)
 zh-Hans-fonipa; жеңілдетілген қытай тілі (Халықаралық фонетикалық әліпби)
 
 
+<<<<<<< HEAD
 @locale=kk_Arab
 @languageDisplay=standard
 
@@ -1700,6 +1719,8 @@ nl-Latn-BE; فلاماند ءتىلى (لاتىن جازۋى)
 zh-Hans-fonipa; جەڭىلدەتىلگەن قىتاي ءتىلى (حالىقارالىق فونەتيكالىق ءالىپبي)
 
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 @locale=kk_Cyrl
 @languageDisplay=standard
 
@@ -1807,6 +1828,7 @@ zh-Hans-fonipa; 중국어(간체, fonipa)
 @locale=kok
 @languageDisplay=standard
 
+<<<<<<< HEAD
 en-MM; इंग्लीश (म्यानमार)
 es; स्पॅनीश
 es-419; स्पॅनीश (लॅटीन अमेरिका)
@@ -1815,11 +1837,22 @@ hi-Latn; हिन्दी (रोमी)
 nl-BE; हाॅलँडी (बेल्जियम)
 nl-Latn-BE; हाॅलँडी (रोमी, बेल्जियम)
 zh-Hans-fonipa; चीनी (सोंपी, fonipa)
+=======
+en-MM; इंग्लीश (म्यानमार [बर्मा])
+es; स्पॅनीश
+es-419; स्पॅनीश (लॅटीन अमेरिका)
+es-Cyrl-MX; स्पॅनीश (सिरिलिक, मेक्सिको)
+hi-Latn; हिन्दी (लॅटीन)
+nl-BE; डच (बेल्जियम)
+nl-Latn-BE; डच (लॅटीन, बेल्जियम)
+zh-Hans-fonipa; चिनी (सोंपी, fonipa)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 
 @locale=kok
 @languageDisplay=dialect
 
+<<<<<<< HEAD
 en-MM; इंग्लीश (म्यानमार)
 es; स्पॅनीश
 es-419; लातीं अमेरिकन स्पॅनीश
@@ -1827,12 +1860,22 @@ es-Cyrl-MX; मॅक्सिकन स्पॅनीश (सिरिलि�
 hi-Latn; हिन्दी [रोमी]
 nl-BE; फ्लेमिश
 nl-Latn-BE; फ्लेमिश (रोमी)
+=======
+en-MM; इंग्लीश (म्यानमार [बर्मा])
+es; स्पॅनीश
+es-419; लातीं अमेरिकन स्पॅनीश
+es-Cyrl-MX; मॅक्सिकन स्पॅनीश (सिरिलिक)
+hi-Latn; हिन्दी (लॅटीन)
+nl-BE; फ्लेमिश
+nl-Latn-BE; फ्लेमिश (लॅटीन)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 zh-Hans-fonipa; सोंपी चिनी (fonipa)
 
 
 @locale=kok_Deva
 @languageDisplay=standard
 
+<<<<<<< HEAD
 en-MM; इंग्लीश (म्यानमार)
 es; स्पॅनीश
 es-419; स्पॅनीश (लॅटीन अमेरिका)
@@ -1841,11 +1884,22 @@ hi-Latn; हिन्दी (रोमी)
 nl-BE; हाॅलँडी (बेल्जियम)
 nl-Latn-BE; हाॅलँडी (रोमी, बेल्जियम)
 zh-Hans-fonipa; चीनी (सोंपी, fonipa)
+=======
+en-MM; इंग्लीश (म्यानमार [बर्मा])
+es; स्पॅनीश
+es-419; स्पॅनीश (लॅटीन अमेरिका)
+es-Cyrl-MX; स्पॅनीश (सिरिलिक, मेक्सिको)
+hi-Latn; हिन्दी (लॅटीन)
+nl-BE; डच (बेल्जियम)
+nl-Latn-BE; डच (लॅटीन, बेल्जियम)
+zh-Hans-fonipa; चिनी (सोंपी, fonipa)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 
 @locale=kok_Deva
 @languageDisplay=dialect
 
+<<<<<<< HEAD
 en-MM; इंग्लीश (म्यानमार)
 es; स्पॅनीश
 es-419; लातीं अमेरिकन स्पॅनीश
@@ -1853,6 +1907,15 @@ es-Cyrl-MX; मॅक्सिकन स्पॅनीश (सिरिलि�
 hi-Latn; हिन्दी [रोमी]
 nl-BE; फ्लेमिश
 nl-Latn-BE; फ्लेमिश (रोमी)
+=======
+en-MM; इंग्लीश (म्यानमार [बर्मा])
+es; स्पॅनीश
+es-419; लातीं अमेरिकन स्पॅनीश
+es-Cyrl-MX; मॅक्सिकन स्पॅनीश (सिरिलिक)
+hi-Latn; हिन्दी (लॅटीन)
+nl-BE; फ्लेमिश
+nl-Latn-BE; फ्लेमिश (लॅटीन)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 zh-Hans-fonipa; सोंपी चिनी (fonipa)
 
 
@@ -2110,7 +2173,11 @@ en-MM; အင်္ဂလိပ် (မြန်မာ)
 es; စပိန်
 es-419; စပိန် (လက်တင်အမေရိက)
 es-Cyrl-MX; စပိန် [မက္ကဆီကို] (စစ်ရိလစ်)
+<<<<<<< HEAD
 hi-Latn; ဟိန္ဒီ (လက်တင်)
+=======
+hi-Latn; ဟိန္ဒီ [လက်တင်]
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 nl-BE; ဖလီမစ်ရှ်
 nl-Latn-BE; ဖလီမစ်ရှ် (လက်တင်)
 zh-Hans-fonipa; တရုတ် (ရိုးရှင်း/ IPA အသံထွက်)
@@ -2409,7 +2476,11 @@ en-MM; inglês (Mianmar [Birmânia])
 es; espanhol
 es-419; espanhol (América Latina)
 es-Cyrl-MX; espanhol (cirílico, México)
+<<<<<<< HEAD
 hi-Latn; hindi (latim)
+=======
+hi-Latn; híndi (latim)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 nl-BE; holandês (Bélgica)
 nl-Latn-BE; holandês (latim, Bélgica)
 zh-Hans-fonipa; chinês (simplificado, fonética do Alfabeto Fonético Internacional)
@@ -2422,12 +2493,17 @@ en-MM; inglês (Mianmar [Birmânia])
 es; espanhol
 es-419; espanhol (América Latina)
 es-Cyrl-MX; espanhol (cirílico, México)
+<<<<<<< HEAD
 hi-Latn; hindi [latim]
+=======
+hi-Latn; híndi (latim)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 nl-BE; flamengo
 nl-Latn-BE; flamengo (latim)
 zh-Hans-fonipa; chinês simplificado (fonética do Alfabeto Fonético Internacional)
 
 
+<<<<<<< HEAD
 @locale=qu
 @languageDisplay=standard
 
@@ -2480,6 +2556,8 @@ nl-Latn-BE; flam (latin)
 zh-Hans-fonipa; chinais simplifitgà (alfabet fonetic internaziunal [IPA])
 
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 @locale=ro
 @languageDisplay=standard
 
@@ -2610,6 +2688,7 @@ nl-Latn-BE; فليمش (لاطيني)
 zh-Hans-fonipa; چيني (سادي, fonipa)
 
 
+<<<<<<< HEAD
 @locale=shn
 @languageDisplay=standard
 
@@ -2636,6 +2715,8 @@ nl-Latn-BE; တၢတ်ႉၶျ် [ပႄႇၵျီႇယမ်ႇ] (လတ
 zh-Hans-fonipa; ၶႄႇ [ပၢၼ်မႂ်ႇ] (ပၢႆးသဵင် IPA)
 
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 @locale=si
 @languageDisplay=standard
 
@@ -2784,8 +2865,13 @@ zh-Hans-fonipa; кинески (поједностављено кинеско п
 
 en-MM; енглески (Мијанмар [Бурма])
 es; шпански
+<<<<<<< HEAD
 es-419; латиноамерички шпански
 es-Cyrl-MX; мексички шпански (ћирилица)
+=======
+es-419; шпански (Латинска Америка)
+es-Cyrl-MX; шпански (ћирилица, Мексико)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 hi-Latn; хинди (латиница)
 nl-BE; фламански
 nl-Latn-BE; фламански (латиница)
@@ -2810,8 +2896,13 @@ zh-Hans-fonipa; кинески (поједностављено кинеско п
 
 en-MM; енглески (Мијанмар [Бурма])
 es; шпански
+<<<<<<< HEAD
 es-419; латиноамерички шпански
 es-Cyrl-MX; мексички шпански (ћирилица)
+=======
+es-419; шпански (Латинска Америка)
+es-Cyrl-MX; шпански (ћирилица, Мексико)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 hi-Latn; хинди (латиница)
 nl-BE; фламански
 nl-Latn-BE; фламански (латиница)
@@ -2836,8 +2927,13 @@ zh-Hans-fonipa; kineski (pojednostavljeno kinesko pismo, IPA fonetika)
 
 en-MM; engleski (Mijanmar [Burma])
 es; španski
+<<<<<<< HEAD
 es-419; latinoamerički španski
 es-Cyrl-MX; meksički španski (ćirilica)
+=======
+es-419; španski (Latinska Amerika)
+es-Cyrl-MX; španski (ćirilica, Meksiko)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 hi-Latn; hindi (latinica)
 nl-BE; flamanski
 nl-Latn-BE; flamanski (latinica)
@@ -2899,7 +2995,11 @@ zh-Hans-fonipa; Kichina [Kilichorahisishwa] (fonipa)
 @locale=ta
 @languageDisplay=standard
 
+<<<<<<< HEAD
 en-MM; ஆங்கிலம் (மியான்மர் [பர்மா])
+=======
+en-MM; ஆங்கிலம் (மியான்மார் [பர்மா])
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 es; ஸ்பானிஷ்
 es-419; ஸ்பானிஷ் (லத்தீன் அமெரிக்கா)
 es-Cyrl-MX; ஸ்பானிஷ் (சிரிலிக், மெக்சிகோ)
@@ -2912,7 +3012,11 @@ zh-Hans-fonipa; சீனம் (எளிதாக்கப்பட்டத�
 @locale=ta
 @languageDisplay=dialect
 
+<<<<<<< HEAD
 en-MM; ஆங்கிலம் (மியான்மர் [பர்மா])
+=======
+en-MM; ஆங்கிலம் (மியான்மார் [பர்மா])
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 es; ஸ்பானிஷ்
 es-419; லத்தின் அமெரிக்க ஸ்பானிஷ்
 es-Cyrl-MX; மெக்ஸிகன் ஸ்பானிஷ் (சிரிலிக்)
@@ -2992,8 +3096,13 @@ zh-Hans-fonipa; ቻይንኛ (ዝተቐለለ፣ fonipa)
 
 en-MM; እንግሊዝኛ (ሚያንማር [በርማ])
 es; ስጳንኛ
+<<<<<<< HEAD
 es-419; ላቲን ኣመሪካዊ ስጳንኛ
 es-Cyrl-MX; ስጳንኛ ሜክሲኮ (ቋንቋ ሲሪል)
+=======
+es-419; ስጳንኛ (ላቲን ኣመሪካ)
+es-Cyrl-MX; ስጳንኛ (ቋንቋ ሲሪል፣ ሜክሲኮ)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 hi-Latn; ሂንዲ (ላቲን)
 nl-BE; ፍላሚሽ
 nl-Latn-BE; ፍላሚሽ (ላቲን)
@@ -3127,7 +3236,11 @@ es-Cyrl-MX; ispan [Meksika] (kirill)
 hi-Latn; hind (lotin)
 nl-BE; flamand
 nl-Latn-BE; flamand (lotin)
+<<<<<<< HEAD
 zh-Hans-fonipa; xitoy (soddalashgan, fonipa)
+=======
+zh-Hans-fonipa; xitoy [soddalashgan] (fonipa)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 
 @locale=uz_Latn
@@ -3153,7 +3266,11 @@ es-Cyrl-MX; ispan [Meksika] (kirill)
 hi-Latn; hind (lotin)
 nl-BE; flamand
 nl-Latn-BE; flamand (lotin)
+<<<<<<< HEAD
 zh-Hans-fonipa; xitoy (soddalashgan, fonipa)
+=======
+zh-Hans-fonipa; xitoy [soddalashgan] (fonipa)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 
 @locale=vi

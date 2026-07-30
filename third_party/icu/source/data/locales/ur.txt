@@ -24,6 +24,14 @@ ur{
                 exponential{"E"}
                 group{","}
                 plusSign{"+"}
+<<<<<<< HEAD
+=======
+            }
+        }
+        arabext{
+            patterns{
+                currencyFormat%alphaNextToNumber{"¤ #,##0.00"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         arabext{

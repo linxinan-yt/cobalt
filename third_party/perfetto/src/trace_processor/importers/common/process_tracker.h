@@ -216,8 +216,13 @@ class ProcessTracker {
   // to the pid.
   UniquePid GetOrCreateProcessWithoutMainThread(int64_t pid);
 
+<<<<<<< HEAD
   // Non-mutating lookup of the upid for |pid| (cf. GetThreadOrNull).
   std::optional<UniquePid> GetProcessOrNull(int64_t pid) {
+=======
+  // Returns the upid for a given pid.
+  std::optional<UniquePid> UpidForPidForTesting(uint32_t pid) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     auto* it = pids_.Find(pid);
     return it ? std::make_optional(*it) : std::nullopt;
   }
@@ -247,6 +252,7 @@ class ProcessTracker {
   // traces, we always have the "swapper" (idle) process having tid/pid 0.
   void SetPidZeroIsUpidZeroIdleProcess();
 
+<<<<<<< HEAD
   // Returns the inserter accumulating args for a process; args from all callers
   // merge into one arg set, committed in OnEventsFullyExtracted. The reference
   // is valid until the next AddArgsToProcess call.
@@ -254,6 +260,17 @@ class ProcessTracker {
 
   // As AddArgsToProcess, for a thread.
   ArgsTracker::BoundInserter& AddArgsToThread(UniqueTid utid);
+=======
+  // Returns a BoundInserter to add arguments to the arg set of a process.
+  // Arguments are flushed into trace storage only after the trace was loaded in
+  // its entirety.
+  ArgsTracker::BoundInserter AddArgsToProcess(UniquePid upid);
+
+  // Returns a BoundInserter to add arguments to the arg set of a thread.
+  // Arguments are flushed into trace storage only after the trace was loaded in
+  // its entirety.
+  ArgsTracker::BoundInserter AddArgsToThread(UniqueTid utid);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // Called when the trace was fully loaded.
   void OnEventsFullyExtracted();

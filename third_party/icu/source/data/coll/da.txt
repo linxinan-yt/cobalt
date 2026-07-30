@@ -9,7 +9,11 @@ da{
                 "[import da-u-co-standard]"
                 "[caseFirst off]"
             }
+<<<<<<< HEAD
             Version{"48"}
+=======
+            Version{"47"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         standard{
             Sequence{
@@ -21,7 +25,11 @@ da{
                 "&[before 1]ǀ<æ<<<Æ<<ä<<<Ä<ø<<<Ø<<ö<<<Ö<<ő<<<Ő<å<<<Å<<<aa<<<Aa<<<AA"
                 "&oe<<œ<<<Œ"
             }
+<<<<<<< HEAD
             Version{"48"}
+=======
+            Version{"47"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     }
 }

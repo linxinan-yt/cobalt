@@ -59,13 +59,26 @@ SqliteTokenizer::Token SqliteTokenizer::Next() {
     const char* end = source_.sql().data() + source_.sql().size();
     return Token{std::string_view(end, 0), sql_token::kIllegal};
   }
+<<<<<<< HEAD
   return Token{std::string_view(st.text, st.length), static_cast<int>(st.type)};
+=======
+  offset_ += static_cast<uint32_t>(n);
+  token.str = std::string_view(start, static_cast<uint32_t>(n));
+  if (token.token_type != TK_SPACE && token.token_type != TK_COMMENT) {
+    last_non_space_token_ = token.token_type;
+  }
+  return token;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 SqliteTokenizer::Token SqliteTokenizer::NextNonWhitespace() {
   Token t;
+<<<<<<< HEAD
   for (t = Next();
        t.token_type == sql_token::kSpace || t.token_type == sql_token::kComment;
+=======
+  for (t = Next(); t.token_type == TK_SPACE || t.token_type == TK_COMMENT;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
        t = Next()) {
   }
   return t;

@@ -19,7 +19,12 @@ import type {
   SettingRenderer,
   SettingsManager,
 } from '../public/settings';
+<<<<<<< HEAD
 import type {Storage} from './storage';
+=======
+import {Storage} from './storage';
+import {CORE_PLUGIN_ID} from './plugin_manager';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 export const PERFETTO_SETTINGS_STORAGE_KEY = 'perfettoSettings';
 
@@ -32,6 +37,7 @@ function deepFreeze<T>(obj: T): T {
 
 // Implement the Setting interface for registered settings
 export class SettingImpl<T> implements Setting<T> {
+<<<<<<< HEAD
   // Record what the raw value was at startup. This is used to determine if a
   // reload is required.
   readonly bootRawValue: unknown;
@@ -40,6 +46,13 @@ export class SettingImpl<T> implements Setting<T> {
   constructor(
     private readonly manager: SettingsManagerImpl,
     public readonly pluginId: string | undefined,
+=======
+  readonly bootValue?: T;
+
+  constructor(
+    private readonly manager: SettingsManagerImpl,
+    public readonly pluginId: string,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     public readonly id: string,
     public readonly name: string,
     public readonly description: string,
@@ -102,6 +115,12 @@ export class SettingsManagerImpl implements SettingsManager {
   }
 
   register<T>(setting: SettingDescriptor<T>, pluginId?: string): Setting<T> {
+<<<<<<< HEAD
+=======
+    // Default to CORE_PLUGIN_ID if no pluginId is provided
+    const resolvedPluginId = pluginId ?? CORE_PLUGIN_ID;
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     // Determine the initial value: stored value if valid, otherwise default.
 
     if (this.registry.has(setting.id)) {
@@ -110,7 +129,11 @@ export class SettingsManagerImpl implements SettingsManager {
 
     const settingImpl = new SettingImpl<T>(
       this,
+<<<<<<< HEAD
       pluginId,
+=======
+      resolvedPluginId,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       setting.id,
       setting.name,
       setting.description,

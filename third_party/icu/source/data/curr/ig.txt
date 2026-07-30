@@ -786,8 +786,11 @@ ig{
         ZMW{
             other{"Ego kwachas obodo Zambia"}
         }
+<<<<<<< HEAD
         ZWG{
             other{"Ego Ọlaọcha Zimbabwe"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

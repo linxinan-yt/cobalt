@@ -16,6 +16,12 @@
 #include "ui/events/keycodes/dom/dom_key.h"
 #include "ui/events/keycodes/keyboard_codes.h"
 
+#if BUILDFLAG(IS_COBALT)
+#import <GameController/GameController.h>
+
+#include "components/input/web_input_event_builders_ios.h"
+#endif
+
 static void* kObservingContext = &kObservingContext;
 
 namespace {
@@ -87,6 +93,15 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
 
 }  // namespace
 
+#if BUILDFLAG(IS_COBALT)
+@interface RenderWidgetUIView () {
+  NSMutableSet<GCController*>* _gameControllers;
+  CGPoint _lastSiriRemoteGamepadLocation;
+  BOOL _isBeingTouched;
+}
+@end
+#endif
+
 @implementation RenderWidgetUIView
 
 #pragma mark - Public
@@ -102,7 +117,29 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
     // tvOS supports multiple types of input events from the Remote, including
     // the clickpad (touch surface), the clickpad ring (directional control),
     // and various physical buttons.
+<<<<<<< HEAD
     [self addSwipeAndPanGestureRecognizers];
+=======
+#if BUILDFLAG(IS_COBALT)
+    _gameControllers = [[NSMutableSet alloc] init];
+    NSNotificationCenter* notifications = [NSNotificationCenter defaultCenter];
+    [notifications addObserver:self
+                      selector:@selector(controllerConnected:)
+                          name:GCControllerDidConnectNotification
+                        object:nil];
+    [notifications addObserver:self
+                      selector:@selector(controllerDisconnected:)
+                          name:GCControllerDidDisconnectNotification
+                        object:nil];
+    // Only register swipe/pan gestures when no game controller is present;
+    // the controller provides its own input events.
+    if (![self addExistingControllers]) {
+      [self addSwipeAndPanGestureRecognizers];
+    }
+#else
+    [self addSwipeAndPanGestureRecognizers];
+#endif
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
   return self;
 }
@@ -148,6 +185,14 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
 }
 
 - (void)removeView {
+#if BUILDFLAG(IS_COBALT)
+  // Release our strong references to controllers and stop observing
+  // connect/disconnect notifications. The valueChangedHandler blocks capture
+  // weakSelf, so they naturally become no-ops when this view deallocates.
+  [_gameControllers removeAllObjects];
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+#endif
+
   UIScrollView* view = (UIScrollView*)[self superview];
   [view removeObserver:self
             forKeyPath:NSStringFromSelector(@selector(contentInset))];
@@ -185,6 +230,24 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
   }
 }
 
+<<<<<<< HEAD
+=======
+#if BUILDFLAG(IS_COBALT)
+- (void)removeSwipeAndPanGestureRecognizers {
+  NSMutableArray<UIGestureRecognizer*>* toRemove = [NSMutableArray array];
+  for (UIGestureRecognizer* recognizer in self.gestureRecognizers) {
+    if ([recognizer isKindOfClass:[UISwipeGestureRecognizer class]] ||
+        [recognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
+      [toRemove addObject:recognizer];
+    }
+  }
+  for (UIGestureRecognizer* recognizer in toRemove) {
+    [self removeGestureRecognizer:recognizer];
+  }
+}
+#endif
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 // Helper method to add swipe gestures for `direction`.
 - (void)addSwipeGestureRecognizerWithDirection:
     (UISwipeGestureRecognizerDirection)direction {
@@ -255,8 +318,11 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
       _selectWillShowKeyboard = YES;
       return YES;
     }
+<<<<<<< HEAD
     // Reset `_selectWillShowKeyboard` to NO. If a previous press was
     // cancelled, the flag could remain YES.
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     _selectWillShowKeyboard = NO;
   } else if (type == blink::WebInputEvent::Type::kKeyUp) {
     if (_selectWillShowKeyboard) {
@@ -270,25 +336,39 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
   return NO;
 }
 
+<<<<<<< HEAD
 // Returns the set of unhanlded UIPress events to propagate to `super`.
 - (NSSet<UIPress*>*)handlePresses:(NSSet<UIPress*>*)presses
                          withType:(blink::WebInputEvent::Type)type {
   NSMutableSet<UIPress*>* unhandled = [NSMutableSet set];
+=======
+// Returns YES if events are handled. Otherwise, NO to allow the event
+// to propagate to `super`.
+- (BOOL)handlePresses:(NSSet<UIPress*>*)presses
+             withType:(blink::WebInputEvent::Type)type {
+  // If any of `presses` is not handled, set `needToHandleInFramework`.
+  BOOL needToHandleInFramework = NO;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   for (UIPress* press in presses) {
     RemoteButton button = remoteButtonFromPressType(press.type);
     if (button == kNone) {
       // Since UIPress has key information from the physical keyboard,
       // NativeWebKeyboardEvent is built with it in `sendKeyboardEvent`.
+<<<<<<< HEAD
       // If `press` is not handled in `sendKeyboardEvent`, it's
       // added in `unhandled`.
       if (![self sendKeyboardEvent:press eventType:type]) {
         [unhandled addObject:press];
       }
+=======
+      needToHandleInFramework |= ![self sendKeyboardEvent:press eventType:type];
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       continue;
     }
     if (button == kSelect && [self handleSelectPressWithType:type]) {
       continue;
     }
+<<<<<<< HEAD
     if (![self sendKeyEventWithRemoteButton:button eventType:type]) {
       [unhandled addObject:press];
       continue;
@@ -299,23 +379,53 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
     }
   }
   return unhandled;
+=======
+    needToHandleInFramework |= ![self sendKeyEventWithRemoteButton:button
+                                                         eventType:type];
+    if (press.type == UIPressTypeMenu) {
+      // Pass `UIPressTypeMenu` to the framework to manage app suspension.
+      needToHandleInFramework = YES;
+    }
+  }
+  return !needToHandleInFramework;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 - (void)pressesBegan:(NSSet<UIPress*>*)presses
            withEvent:(UIPressesEvent*)event {
+<<<<<<< HEAD
   NSSet<UIPress*>* unhandled =
       [self handlePresses:presses
                  withType:blink::WebInputEvent::Type::kKeyDown];
   if (unhandled.count > 0) {
     [super pressesBegan:unhandled withEvent:event];
+=======
+#if BUILDFLAG(IS_COBALT)
+  // A button press does not implicitly cancel an in-progress gamepad touch
+  // sequence, so cancel it explicitly here before dispatching the key event.
+  if (_isBeingTouched) {
+    [self touchCancelled];
+  }
+#endif
+  BOOL handled = [self handlePresses:presses
+                            withType:blink::WebInputEvent::Type::kKeyDown];
+  if (!handled) {
+    [super pressesBegan:presses withEvent:event];
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 }
 
 - (void)pressesEnded:(NSSet<UIPress*>*)presses
            withEvent:(UIPressesEvent*)event {
+<<<<<<< HEAD
   NSSet<UIPress*>* unhandled =
       [self handlePresses:presses withType:blink::WebInputEvent::Type::kKeyUp];
   if (unhandled.count > 0) {
+=======
+  BOOL handled = [self handlePresses:presses
+                            withType:blink::WebInputEvent::Type::kKeyUp];
+  if (!handled) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     [super pressesEnded:presses withEvent:event];
   }
 }
@@ -504,6 +614,21 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
       (result || _view->CanBecomeFirstResponderForTesting())) {
     _view->OnFirstResponderChanged();
   }
+#if BUILDFLAG(IS_COBALT)
+  if (result) {
+    // Re-register gamepad handlers in case another UIView had overwritten them.
+    // Clear first so startListeningToInputForController: doesn't skip already-
+    // known controllers.
+    [_gameControllers removeAllObjects];
+    BOOL hasControllers = [self addExistingControllers];
+    // Sync gesture state: gestures are mutually exclusive with controller
+    // input.
+    [self removeSwipeAndPanGestureRecognizers];
+    if (!hasControllers) {
+      [self addSwipeAndPanGestureRecognizers];
+    }
+  }
+#endif
   return result;
 }
 
@@ -532,6 +657,122 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
 
   [self hideAndDeleteKeyboard];
 }
+
+#if BUILDFLAG(IS_COBALT)
+#pragma mark - Controller Connect/Disconnect Notifications
+
+- (void)controllerConnected:(NSNotification*)notification {
+  GCController* controller = (GCController*)notification.object;
+  [self startListeningToInputForController:controller];
+  if (_gameControllers.count == 1) {
+    // First controller connected — remove gestures so the controller drives
+    // input.
+    [self removeSwipeAndPanGestureRecognizers];
+  }
+}
+
+- (void)controllerDisconnected:(NSNotification*)notification {
+  GCController* controller = (GCController*)notification.object;
+  [self stopListeningToInputForController:controller];
+  if (_gameControllers.count == 0) {
+    // Last controller gone — restore gesture-based input.
+    [self addSwipeAndPanGestureRecognizers];
+  }
+}
+
+#pragma mark - Controller Connect/Disconnect
+
+// Adds controllers that are already connected to the system.
+// Returns YES if at least one controller was registered.
+- (BOOL)addExistingControllers {
+  NSArray<GCController*>* controllers = [GCController controllers];
+  for (GCController* controller in controllers) {
+    [self startListeningToInputForController:controller];
+  }
+  return _gameControllers.count > 0;
+}
+
+// Starts listening to inputs from the given controller.
+// `controller` is the controller to start listening for input events.
+- (void)startListeningToInputForController:(GCController*)controller {
+  // For now, GCMicroGamepad from the siri remote is only handled.
+  if (!controller.microGamepad) {
+    return;
+  }
+
+  if ([_gameControllers containsObject:controller]) {
+    return;
+  }
+
+  [_gameControllers addObject:controller];
+  [self addDpadHandler:controller];
+}
+
+// Stops listening to inputs from the given controller.
+- (void)stopListeningToInputForController:(GCController*)controller {
+  [_gameControllers removeObject:controller];
+  // Reset touch state so a reconnected controller starts fresh.
+  _isBeingTouched = NO;
+}
+
+- (void)addDpadHandler:(GCController*)controller {
+  if (controller.extendedGamepad) {
+    // Only handle Siri remotes here.
+    return;
+  }
+
+  GCMicroGamepad* siriRemoteGamepad = controller.microGamepad;
+  siriRemoteGamepad.reportsAbsoluteDpadValues = YES;
+  // Ensure the handler runs on the main queue so that base::WeakPtr (_view) is
+  // accessed on the same sequence it was created on.
+  controller.handlerQueue = dispatch_get_main_queue();
+  __weak RenderWidgetUIView* weakSelf = self;
+  siriRemoteGamepad.valueChangedHandler =
+      ^(GCMicroGamepad* gamepad, GCControllerElement* element) {
+        RenderWidgetUIView* strongSelf = weakSelf;
+        if (!strongSelf || !strongSelf.isFocused || element != gamepad.dpad) {
+          return;
+        }
+        GCControllerDirectionPad* dpad = gamepad.dpad;
+        // This follows the way of how Kabuki currently works.
+        // TODO(532457474): Use a more standardized approach.
+        CGPoint newLocation = CGPointMake(dpad.xAxis.value, -dpad.yAxis.value);
+        BOOL isBeingTouched = dpad.up.pressed || dpad.down.pressed ||
+                              dpad.left.pressed || dpad.right.pressed;
+        if (!strongSelf->_isBeingTouched && isBeingTouched) {
+          // If the dpad has gone from not being touched, to being touched,
+          // report a touch down.
+          [strongSelf touchAtPosition:newLocation
+                            eventType:blink::WebInputEvent::Type::kTouchStart];
+        } else if (isBeingTouched) {
+          [strongSelf touchAtPosition:newLocation
+                            eventType:blink::WebInputEvent::Type::kTouchMove];
+        } else {
+          // No longer being touched, report a touch up.
+          [strongSelf touchAtPosition:strongSelf->_lastSiriRemoteGamepadLocation
+                            eventType:blink::WebInputEvent::Type::kTouchEnd];
+        }
+        strongSelf->_lastSiriRemoteGamepadLocation = newLocation;
+        strongSelf->_isBeingTouched = isBeingTouched;
+      };
+}
+
+- (void)touchAtPosition:(CGPoint)position
+              eventType:(blink::WebInputEvent::Type)type {
+  if (!_view) {
+    return;
+  }
+  _view->OnTouchEvent(
+      input::WebTouchEventBuilder::BuildFromGamepadData(type, position));
+}
+
+- (void)touchCancelled {
+  [self touchAtPosition:_lastSiriRemoteGamepadLocation
+              eventType:blink::WebInputEvent::Type::kTouchCancel];
+  _isBeingTouched = NO;
+  _lastSiriRemoteGamepadLocation = CGPointMake(0, 0);
+}
+#endif
 
 #pragma mark - UIGestureRecognizerDelegate
 

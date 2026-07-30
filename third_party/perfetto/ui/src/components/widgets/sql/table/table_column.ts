@@ -12,12 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD
 import type m from 'mithril';
 import type {SqlValue} from '../../../../trace_processor/query_result';
 import type {Trace} from '../../../../public/trace';
 import {type SqlColumn, sqlColumnId} from './sql_column';
 import type {Filters} from './filters';
 import type {PerfettoSqlType} from '../../../../trace_processor/perfetto_sql_type';
+=======
+import m from 'mithril';
+import {SqlValue} from '../../../../trace_processor/query_result';
+import {Trace} from '../../../../public/trace';
+import {SqlColumn, sqlColumnId} from './sql_column';
+import {Filters} from './filters';
+import {PerfettoSqlType} from '../../../../trace_processor/perfetto_sql_type';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 // Interface which allows TableColumn to interact with the table (e.g. add filters, or run the query).
 export interface TableManager {
@@ -55,11 +64,14 @@ export interface TableColumnParams {
 export interface TableColumn {
   readonly column: SqlColumn;
   readonly type: PerfettoSqlType | undefined;
+<<<<<<< HEAD
   // In some cases, the UI needs additional information to be able to render a given cell (e.g. for display arg values,
   // we need to know arg type as well as arg value to generate a correct filter). In these cases, the common solution is fetch a JSON value
   // or a protobuf from the SQL and render it accordingly, so if set, `display` column overrides which value is going to be passed to `renderCell`.
   // `column` is still always going to be used for sorting, aggregation and casting.
   readonly display?: SqlColumn;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // Column title to be displayed.
   // If not set, then `alias` will be used if it's unique.
@@ -73,6 +85,14 @@ export interface TableColumn {
   getColumnSpecificMenuItems?(args: {
     replaceColumn: (column: TableColumn) => void;
   }): m.Children;
+<<<<<<< HEAD
+=======
+
+  // In some cases to render a value in a table, we need information from additional columns.
+  // For example, args have three related columns: int_value, string_value and real_value. From the user perspective, we want to coalesce them into a single "value" column,
+  // but to do this correctly we need to fetch the `type` column.
+  supportingColumns?(): SupportingColumns;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   /**
    * Render a table cell. context can be undefined, in which case the cell should provide basic rendering (e.g. for pivot table).

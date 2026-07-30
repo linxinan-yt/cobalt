@@ -15,8 +15,13 @@
 import m from 'mithril';
 import {isSqlColumnEqual, type SqlColumn, sqlColumnId} from './sql_column';
 import {sqlValueToSqliteString} from '../../../../trace_processor/sql_utils';
+<<<<<<< HEAD
 import type {SqlValue} from '../../../../trace_processor/query_result';
 import {GridFilterChip, GridFilterBar} from '../../datagrid/datagrid_toolbar';
+=======
+import {SqlValue} from '../../../../trace_processor/query_result';
+import {GridFilterChip, GridFilterBar} from '../../data_grid/data_grid';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 // A filter which can be applied to the table.
 export interface Filter {

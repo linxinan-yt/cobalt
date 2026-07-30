@@ -5,11 +5,19 @@ gl{
     collations{
         search{
             Sequence{"[import es-u-co-search]"}
+<<<<<<< HEAD
             Version{"48"}
         }
         standard{
             Sequence{"[import es]"}
             Version{"48"}
+=======
+            Version{"47"}
+        }
+        standard{
+            Sequence{"[import es]"}
+            Version{"47"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     }
 }

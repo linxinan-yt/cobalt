@@ -1,6 +1,10 @@
 <!-- go/cmark -->
+<<<<<<< HEAD
 
 <!--* freshness: {owner: 'danilchap' reviewed: '2026-05-15'} *-->
+=======
+<!--* freshness: {owner: 'danilchap' reviewed: '2025-10-28'} *-->
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # WebRTC coding style guide
 
@@ -138,6 +142,7 @@ For example,
 | `const T* ptr, size_t num_elements` | `std::span<const T>` |
 | `T* ptr, size_t num_elements`       | `std::span<T>`       |
 
+<<<<<<< HEAD
 See the [cpp reference][span] for more detailed docs.
 
 std::span represents the same concept as base::span in Chromium and absl::Span
@@ -148,14 +153,25 @@ absl::Span.
 
 In the past WebRTC used own ArrayView type to represent a span, however that
 type has been migrated to std::span.
+=======
+See the [source code for `ArrayView`][ArrayView] for more detailed
+docs.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
+
+[ArrayView]: https://webrtc.googlesource.com/src/+/refs/heads/main/api/array_view.h
 
 ### Strings
 
 WebRTC uses std::string, with content assumed to be UTF-8. Note that this has to
 be verified whenever accepting external input.
 
+<<<<<<< HEAD
 For concatenation of strings, use `webrtc::StrJoin` or `webrtc::StringBuilder`
 directly.
+=======
+For concatenation of strings, use `webrtc::StrJoin` or
+`webrtc::SimpleStringBuilder` directly.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 For string views, use `absl::string_view`, not `std::string_view`. The former is
 heavily used in webrtc, and there are platforms we export to where the two are
@@ -165,10 +181,26 @@ status.
 
 The following string building tools are NOT recommended:
 
+<<<<<<< HEAD
 - The + operator. See [String Concatenation and operator+][totw-3] for why not.
 - `absl::StrCat`, `absl::StrAppend`, `absl::StrJoin`. These are optimized for
   speed, not code size, and have significant code size overhead.
 - [`std::strcat`][std-strcat]. It is too easy to create buffer overflows.
+=======
+* The + operator. See [String Concatenation and operator+][totw-3] for why not.
+* `absl::StrCat`, `absl::StrAppend`, `absl::StrJoin`. These are optimized for
+  speed, not code size, and have significant code size overhead.
+* [`std::strcat`][std-strcat]. It is too easy to create buffer overflows.
+
+[totw-3]: https://abseil.io/tips/3
+[std-strcat]: https://en.cppreference.com/w/cpp/string/byte/strcat.html
+
+### sigslot
+
+SIGSLOT IS DEPRECATED.
+
+Prefer `webrtc::CallbackList`, and manage thread safety yourself.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 ### Smart pointers
 
@@ -242,10 +274,19 @@ WebRTC follows the
 
 WebRTC follows [Chromium's Python style][chr-py-style].
 
+<<<<<<< HEAD
 Chromium's Python style is now using PEP-8 and not all Python code has been
 migrated. For this reason running presubmit on old WebRTC python script might
 trigger failures. The failures can either be fixed are ignored by adding the
 script to the [PYLINT_OLD_STYLE][old-style-lint] list.
+=======
+Chromium's Python style is now using PEP-8 and not all Python code has been migrated.
+For this reason running presubmit on old WebRTC python script might trigger failures.
+The failures can either be fixed are ignored by adding the script to the [PYLINT_OLD_STYLE][old-style-lint] list.
+
+[chr-py-style]: https://chromium.googlesource.com/chromium/src/+/main/styleguide/python/python.md
+[old-style-lint]: https://webrtc.googlesource.com/src/+/f70dc714a073397356f6ed866481da73f90f0b96/PRESUBMIT.py#48
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 ## Build files
 

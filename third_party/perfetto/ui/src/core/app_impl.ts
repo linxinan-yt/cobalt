@@ -14,6 +14,7 @@
 
 import {AsyncLimiter} from '../base/async_limiter';
 import {defer} from '../base/deferred';
+<<<<<<< HEAD
 import {ensureExists, assertTrue} from '../base/assert';
 import {ServiceWorkerController} from '../frontend/service_worker_controller';
 import type {App, Route} from '../public/app';
@@ -31,6 +32,23 @@ import {
   CommandManagerImpl,
   type Macro,
 } from './command_manager';
+=======
+import {assertExists, assertTrue} from '../base/logging';
+import {createProxy, getOrCreate} from '../base/utils';
+import {ServiceWorkerController} from '../frontend/service_worker_controller';
+import {App} from '../public/app';
+import {SqlPackage} from '../public/extra_sql_packages';
+import {FeatureFlagManager, FlagSettings} from '../public/feature_flag';
+import {PageHandler} from '../public/page';
+import {Raf} from '../public/raf';
+import {RouteArg, RouteArgs} from '../public/route_schema';
+import {Setting, SettingDescriptor, SettingsManager} from '../public/settings';
+import {TraceStream} from '../public/stream';
+import {DurationPrecision, TimestampFormat} from '../public/timeline';
+import {NewEngineMode} from '../trace_processor/engine';
+import {AnalyticsInternal, initAnalytics} from './analytics_impl';
+import {CommandInvocation, CommandManagerImpl} from './command_manager';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {featureFlags} from './feature_flags';
 import {loadTrace} from './load_trace';
 import {OmniboxManagerImpl} from './omnibox_manager';
@@ -102,10 +120,26 @@ export class AppImpl implements App {
   // The current active trace (if any).
   private _activeTrace: TraceImpl | undefined;
 
+<<<<<<< HEAD
   // Extra SQL packages injected from extensions.
   private _sqlPackagesPromises = new Array<
     Promise<ReadonlyArray<SqlPackage>>
   >();
+=======
+  // This is normally empty and is injected with Base64-encoded protobuf
+  // descriptor sets via is_internal_user.js.
+  extraParsingDescriptors: string[] = [];
+
+  // This is normally empty and is injected with extra google-internal macros
+  // via is_internal_user.js
+  extraMacros: Record<string, CommandInvocation[]>[] = [];
+
+  // Promise which is resolved when extra loading is completed.
+  extrasLoadingDeferred = defer<undefined>();
+
+  // The currently open trace.
+  currentTrace?: TraceContext;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // Protobuf descriptor sets as Base64-encoded strings injected from extensions.
   private _protoDescriptorsPromises = new Array<
@@ -192,11 +226,82 @@ export class AppImpl implements App {
     return this._isInternalUser;
   }
 
+<<<<<<< HEAD
   setIsInternalUser(promise: Promise<boolean>) {
     promise.then((value) => {
       this._isInternalUser = value;
       localStorage.setItem('isInternalUser', value ? '1' : '0');
       raf.scheduleFullRedraw();
+=======
+  set isInternalUser(value: boolean) {
+    localStorage.setItem('isInternalUser', value ? '1' : '0');
+    this._isInternalUser = value;
+    raf.scheduleFullRedraw();
+  }
+}
+
+/*
+ * Every plugin gets its own instance. This is how we keep track
+ * what each plugin is doing and how we can blame issues on particular
+ * plugins.
+ * The instance exists for the whole duration a plugin is active.
+ */
+
+export class AppImpl implements App {
+  readonly pluginId: string;
+  readonly initialPluginRouteArgs: RouteArgs;
+  private readonly appCtx: AppContext;
+  private readonly pageMgrProxy: PageManagerImpl;
+  private readonly settingsMgrProxy: SettingsManager;
+
+  // Invoked by frontend/index.ts.
+  static initialize(args: AppInitArgs) {
+    AppContext.initialize(args).forPlugin(CORE_PLUGIN_ID);
+  }
+
+  // Gets access to the one instance that the core can use. Note that this is
+  // NOT the only instance, as other AppImpl instance will be created for each
+  // plugin.
+  static get instance(): AppImpl {
+    return AppContext.instance.forPlugin(CORE_PLUGIN_ID);
+  }
+
+  // Only called by AppContext.forPlugin().
+  constructor(appCtx: AppContext, pluginId: string) {
+    this.appCtx = appCtx;
+    this.pluginId = pluginId;
+
+    const args: {[key: string]: RouteArg} = {};
+    this.initialPluginRouteArgs = Object.entries(
+      appCtx.initialRouteArgs,
+    ).reduce((result, [key, value]) => {
+      // Create a regex to match keys starting with pluginId
+      const regex = new RegExp(`^${pluginId}:(.+)$`);
+      const match = key.match(regex);
+
+      // Only include entries that match the regex
+      if (match) {
+        const newKey = match[1];
+        // Use the capture group (what comes after the prefix) as the new key
+        result[newKey] = value;
+      }
+      return result;
+    }, args);
+
+    this.pageMgrProxy = createProxy(this.appCtx.pageMgr, {
+      registerPage(pageHandler: PageHandler): Disposable {
+        return appCtx.pageMgr.registerPage({
+          ...pageHandler,
+          pluginId,
+        });
+      },
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
+    });
+
+    this.settingsMgrProxy = createProxy(this.appCtx.settingsManager, {
+      register<T>(setting: SettingDescriptor<T>): Setting<T> {
+        return appCtx.settingsManager.register(setting, pluginId);
+      },
     });
   }
 
@@ -208,6 +313,21 @@ export class AppImpl implements App {
     return raf;
   }
 
+<<<<<<< HEAD
+=======
+  get httpRpc() {
+    return this.appCtx.httpRpc;
+  }
+
+  get initialRouteArgs(): RouteArgs {
+    return this.appCtx.initialRouteArgs;
+  }
+
+  get settings(): SettingsManager {
+    return this.settingsMgrProxy;
+  }
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   get featureFlags(): FeatureFlagManager {
     return {
       register: (settings: FlagSettings) => featureFlags.register(settings),
@@ -242,6 +362,28 @@ export class AppImpl implements App {
   }
 
   private async openTrace(src: TraceSource): Promise<TraceImpl> {
+<<<<<<< HEAD
+    const result = defer<TraceImpl>();
+=======
+    if (src.type === 'ARRAY_BUFFER' && src.buffer instanceof Uint8Array) {
+      // Even though the type of `buffer` is ArrayBuffer, it's possible to
+      // accidentally pass a Uint8Array here, because the interface of
+      // Uint8Array is compatible with ArrayBuffer. That can cause subtle bugs
+      // in TraceStream when creating chunks out of it (see b/390473162).
+      // So if we get a Uint8Array in input, convert it into an actual
+      // ArrayBuffer, as various parts of the codebase assume that this is a
+      // pure ArrayBuffer, and not a logical view of it with a byteOffset > 0.
+      if (
+        src.buffer.byteOffset === 0 &&
+        src.buffer.byteLength === src.buffer.buffer.byteLength
+      ) {
+        src = {...src, buffer: src.buffer.buffer};
+      } else {
+        src = {...src, buffer: src.buffer.slice().buffer};
+      }
+    }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
+
     const result = defer<TraceImpl>();
 
     // Rationale for asyncLimiter: openTrace takes several seconds and involves
@@ -250,12 +392,22 @@ export class AppImpl implements App {
     // they will mess up the state of registries. So once we start, we must
     // complete trace loading (we don't bother supporting cancellations. If the
     // user is too bothered, they can reload the tab).
+<<<<<<< HEAD
     await this.openTraceAsyncLimiter.schedule(async () => {
       // Wait for extras parsing descriptors to be loaded
       // via is_internal_user.js. This prevents a race condition where
       // trace loading would otherwise begin before this data is available.
       this.closeCurrentTrace();
       this.isLoadingTrace = true;
+=======
+    await this.appCtx.openTraceAsyncLimiter.schedule(async () => {
+      // Wait for extras parsing descriptors to be loaded
+      // via is_internal_user.js. This prevents a race condition where
+      // trace loading would otherwise begin before this data is available.
+      await this.extraLoadingPromise;
+      this.appCtx.closeCurrentTrace();
+      this.appCtx.isLoadingTrace = true;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       try {
         // loadTrace() in trace_loader.ts will do the following:
         // - Create a new engine.
@@ -271,6 +423,10 @@ export class AppImpl implements App {
         // loadTrace to be finished before setting it because some internal
         // implementation details of loadTrace() rely on that trace to be current
         // to work properly (mainly the router hash uuid).
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         result.resolve(trace);
       } catch (error) {
         result.reject(error);
@@ -279,7 +435,60 @@ export class AppImpl implements App {
         raf.scheduleFullRedraw();
       }
     });
+<<<<<<< HEAD
     return result;
+=======
+
+    return result;
+  }
+
+  // Called by trace_loader.ts soon after it has created a new TraceImpl.
+  setActiveTrace(traceImpl: TraceImpl) {
+    this.appCtx.setActiveTrace(traceImpl.__traceCtxForApp);
+  }
+
+  closeCurrentTrace() {
+    this.appCtx.closeCurrentTrace();
+  }
+
+  get embeddedMode(): boolean {
+    return this.appCtx.embeddedMode;
+  }
+
+  get testingMode(): boolean {
+    return this.appCtx.testingMode;
+  }
+
+  get isLoadingTrace() {
+    return this.appCtx.isLoadingTrace;
+  }
+
+  get extraSqlPackages(): SqlPackage[] {
+    return this.appCtx.extraSqlPackages;
+  }
+
+  get extraParsingDescriptors(): ReadonlyArray<string> {
+    return this.appCtx.extraParsingDescriptors;
+  }
+
+  get extraMacros(): Record<string, CommandInvocation[]>[] {
+    return this.appCtx.extraMacros;
+  }
+
+  get perfDebugging(): PerfManager {
+    return this.appCtx.perfMgr;
+  }
+
+  get serviceWorkerController(): ServiceWorkerController {
+    return this.appCtx.serviceWorkerController;
+  }
+
+  // Nothing other than TraceImpl's constructor should ever refer to this.
+  // This is necessary to avoid circular dependencies between trace_impl.ts
+  // and app_impl.ts.
+  get __appCtxForTrace() {
+    return this.appCtx;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   navigate(newHash: string): void {
@@ -325,5 +534,13 @@ export class AppImpl implements App {
   async macros(): Promise<ReadonlyArray<Macro & {source?: string}>> {
     const macrosArray = await Promise.all(this._macrosPromises);
     return macrosArray.flat();
+  }
+
+  notifyOnExtrasLoadingCompleted() {
+    this.appCtx.extrasLoadingDeferred.resolve();
+  }
+
+  get extraLoadingPromise(): Promise<undefined> {
+    return this.appCtx.extrasLoadingDeferred;
   }
 }

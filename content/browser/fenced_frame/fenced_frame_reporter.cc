@@ -28,9 +28,21 @@
 #include "base/notreached.h"
 #include "base/strings/strcat.h"
 #include "base/types/pass_key.h"
+<<<<<<< HEAD
+=======
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+#include "content/browser/attribution_reporting/attribution_beacon_id.h"
+#include "content/browser/attribution_reporting/attribution_data_host_manager.h"
+#include "content/browser/attribution_reporting/attribution_host.h"
+#include "content/browser/attribution_reporting/attribution_manager.h"
+#include "content/browser/attribution_reporting/attribution_suitable_context.h"
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "content/browser/devtools/devtools_instrumentation.h"
 #include "content/browser/devtools/network_service_devtools_observer.h"
+#if BUILDFLAG(ENABLE_DEVTOOLS_BACKEND)
 #include "content/browser/devtools/protocol/network_handler.h"
+#endif
 #include "content/browser/devtools/render_frame_devtools_agent_host.h"
 #include "content/browser/fenced_frame/fenced_frame_config.h"
 #include "content/browser/renderer_host/frame_tree_node.h"
@@ -212,6 +224,15 @@ FencedFrameReporter::FencedFrameReporter(
     BrowserContext* browser_context,
     const url::Origin& main_frame_origin)
     : url_loader_factory_(std::move(url_loader_factory)),
+<<<<<<< HEAD
+=======
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+      attribution_manager_(
+          AttributionManager::FromBrowserContext(browser_context)),
+#else
+      attribution_manager_(nullptr),
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       browser_context_(browser_context),
       main_frame_origin_(main_frame_origin),
       invoking_api_(invoking_api) {
@@ -276,9 +297,47 @@ bool FencedFrameReporter::SendReport(
     return false;
   }
 
+<<<<<<< HEAD
   const std::string devtools_request_id =
       base::UnguessableToken::Create().ToString();
 
+=======
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  static base::AtomicSequenceNumber unique_id_counter;
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+
+  std::optional<AttributionReportingData> attribution_reporting_data;
+
+  const std::string devtools_request_id =
+      base::UnguessableToken::Create().ToString();
+
+  WebContents* web_contents =
+      WebContents::FromRenderFrameHost(request_initiator_frame);
+  if (web_contents) {
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+    network::mojom::AttributionSupport attribution_reporting_support =
+        static_cast<WebContentsImpl*>(web_contents)->GetAttributionSupport();
+    auto suitable_context =
+        AttributionSuitableContext::Create(request_initiator_frame);
+    if (suitable_context.has_value()) {
+      BeaconId beacon_id(unique_id_counter.GetNext());
+
+      AttributionDataHostManager* manager =
+          suitable_context->data_host_manager();
+      manager->NotifyFencedFrameReportingBeaconStarted(
+          beacon_id, std::move(*suitable_context), navigation_id,
+          devtools_request_id);
+
+      attribution_reporting_data.emplace(AttributionReportingData{
+          .beacon_id = beacon_id,
+          .is_automatic_beacon = navigation_id.has_value(),
+          .attribution_reporting_support = attribution_reporting_support,
+      });
+    }
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  }
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   url::Origin request_initiator =
       request_initiator_frame->GetLastCommittedOrigin();
   net::ReferrerPolicy request_referrer_policy = net::ReferrerPolicy::ORIGIN;
@@ -498,6 +557,7 @@ bool FencedFrameReporter::SendReportInternal(
 
   network::SimpleURLLoader* simple_url_loader_ptr = simple_url_loader.get();
 
+<<<<<<< HEAD
   // Send out the reporting beacon.
   simple_url_loader_ptr->DownloadHeadersOnly(
       url_loader_factory_.get(),
@@ -514,6 +574,86 @@ bool FencedFrameReporter::SendReportInternal(
           },
           event_variant, std::move(simple_url_loader),
           initiator_frame_tree_node_id, devtools_request_id));
+=======
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  AttributionDataHostManager* attribution_data_host_manager =
+      attribution_manager_ ? attribution_manager_->GetDataHostManager()
+                           : nullptr;
+
+  if (attribution_data_host_manager && is_attribution_reporting_allowed) {
+    // Notify Attribution Reporting API for the beacons.
+    simple_url_loader_ptr->SetOnRedirectCallback(base::BindRepeating(
+        [](base::WeakPtr<AttributionDataHostManager>
+               attribution_data_host_manager,
+           BeaconId beacon_id, const GURL& url_before_redirect,
+           const net::RedirectInfo& redirect_info,
+           const network::mojom::URLResponseHead& response_head,
+           std::vector<std::string>* removed_headers) {
+          if (attribution_data_host_manager) {
+            attribution_data_host_manager->NotifyFencedFrameReportingBeaconData(
+                beacon_id, url_before_redirect, response_head.headers.get(),
+                /*is_final_response=*/false);
+          }
+        },
+        attribution_data_host_manager->AsWeakPtr(),
+        attribution_reporting_data->beacon_id));
+
+    // Send out the reporting beacon.
+    simple_url_loader_ptr->DownloadHeadersOnly(
+        url_loader_factory_.get(),
+        base::BindOnce(
+            [](DestinationVariant event_variant,
+               base::WeakPtr<AttributionDataHostManager>
+                   attribution_data_host_manager,
+               BeaconId beacon_id,
+               std::unique_ptr<network::SimpleURLLoader> loader,
+               FrameTreeNodeId initiator_frame_tree_node_id,
+               std::string devtools_request_id,
+               scoped_refptr<net::HttpResponseHeaders> headers) {
+              if (attribution_data_host_manager) {
+                attribution_data_host_manager
+                    ->NotifyFencedFrameReportingBeaconData(
+                        beacon_id, loader->GetFinalURL(), headers.get(),
+                        /*is_final_response=*/true);
+              }
+              // Set up DevTools integration for the response.
+              devtools_instrumentation::OnFencedFrameReportResponseReceived(
+                  initiator_frame_tree_node_id, devtools_request_id,
+                  loader->GetFinalURL(), headers);
+
+              // Record UMA metrics for the destination.
+              RecordBeaconReportingResultHistogram(event_variant,
+                                                   headers.get());
+            },
+            event_variant, attribution_data_host_manager->AsWeakPtr(),
+            attribution_reporting_data->beacon_id, std::move(simple_url_loader),
+            initiator_frame_tree_node_id, devtools_request_id));
+  } else {
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+    // Send out the reporting beacon.
+    simple_url_loader_ptr->DownloadHeadersOnly(
+        url_loader_factory_.get(),
+        base::BindOnce(
+            [](DestinationVariant event_variant,
+               std::unique_ptr<network::SimpleURLLoader> loader,
+               FrameTreeNodeId initiator_frame_tree_node_id,
+               std::string devtools_request_id,
+               scoped_refptr<net::HttpResponseHeaders> headers) {
+              // Set up DevTools integration for the response.
+              devtools_instrumentation::OnFencedFrameReportResponseReceived(
+                  initiator_frame_tree_node_id, devtools_request_id,
+                  loader->GetFinalURL(), headers);
+
+              // Record UMA metrics for the destination.
+              RecordBeaconReportingResultHistogram(event_variant,
+                                                   headers.get());
+            },
+            event_variant, std::move(simple_url_loader),
+            initiator_frame_tree_node_id, devtools_request_id));
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  }
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // The associated histograms will be sent out in the FencedFrameReporter
   // destructor.
@@ -541,6 +681,73 @@ void FencedFrameReporter::RemoveObserverForTesting(
   observers_.RemoveObserver(observer);
 }
 
+<<<<<<< HEAD
+=======
+void FencedFrameReporter::OnForEventPrivateAggregationRequestsReceived(
+    std::map<std::string, FinalizedPrivateAggregationRequests>
+        private_aggregation_event_map) {
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  for (auto& [event_type, requests] : private_aggregation_event_map) {
+    FinalizedPrivateAggregationRequests& destination_vector =
+        private_aggregation_event_map_[event_type];
+    destination_vector.insert(destination_vector.end(),
+                              std::move_iterator(requests.begin()),
+                              std::move_iterator(requests.end()));
+  }
+
+  for (const std::string& pa_event_type : received_pa_events_) {
+    SendPrivateAggregationRequestsForEventInternal(pa_event_type);
+  }
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+}
+
+void FencedFrameReporter::SendPrivateAggregationRequestsForEvent(
+    const std::string& pa_event_type) {
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  if (!private_aggregation_manager_) {
+    // `private_aggregation_manager_` is nullptr when private aggregation
+    // feature flag is disabled, but a compromised renderer might still send
+    // events when it should not be able to. Simply ignores the events.
+    return;
+  }
+
+  // Always insert `pa_event_type` to `received_pa_events_`, since
+  // `private_aggregation_event_map_` might grow with more entries when
+  // reportWin() completes.
+  received_pa_events_.emplace(pa_event_type);
+
+  SendPrivateAggregationRequestsForEventInternal(pa_event_type);
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+}
+
+void FencedFrameReporter::SendPrivateAggregationRequestsForEventInternal(
+    const std::string& pa_event_type) {
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  DCHECK(private_aggregation_manager_);
+  DCHECK(winner_origin_.has_value() &&
+         winner_origin_.value().scheme() == url::kHttpsScheme);
+  DCHECK(main_frame_origin_.scheme() == url::kHttpsScheme);
+
+  auto it = private_aggregation_event_map_.find(pa_event_type);
+  if (it == private_aggregation_event_map_.end()) {
+    return;
+  }
+
+  SplitContributionsIntoBatchesThenSendToHost(
+      /*requests=*/std::move(it->second), *private_aggregation_manager_,
+      /*reporting_origin=*/winner_origin_.value(),
+      /*aggregation_coordinator_origin=*/winner_aggregation_coordinator_origin_,
+      main_frame_origin_);
+
+  // Remove the entry of key `pa_event_type` from
+  // `private_aggregation_event_map_` to avoid possibly sending the same
+  // requests more than once. As a result, receiving the same event type
+  // multiple times only triggers sending the event's requests once.
+  private_aggregation_event_map_.erase(it);
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 const std::vector<blink::FencedFrame::ReportingDestination>
 FencedFrameReporter::ReportingDestinations() {
   std::vector<blink::FencedFrame::ReportingDestination> out;
@@ -595,6 +802,47 @@ FencedFrameReporter::GetAdMacrosForTesting() {
   return out;
 }
 
+<<<<<<< HEAD
+=======
+std::set<std::string> FencedFrameReporter::GetReceivedPaEventsForTesting()
+    const {
+  return received_pa_events_;
+}
+
+std::map<std::string, FencedFrameReporter::FinalizedPrivateAggregationRequests>
+FencedFrameReporter::GetPrivateAggregationEventMapForTesting() {
+  std::map<std::string, FinalizedPrivateAggregationRequests> out;
+  for (auto& [event_type, requests] : private_aggregation_event_map_) {
+    for (auction_worklet::mojom::FinalizedPrivateAggregationRequestPtr&
+             request : requests) {
+      out[event_type].emplace_back(request.Clone());
+    }
+  }
+  return out;
+}
+
+void FencedFrameReporter::NotifyFencedFrameReportingBeaconFailed(
+    const std::optional<AttributionReportingData>& attribution_reporting_data) {
+  if (!attribution_reporting_data.has_value()) {
+    return;
+  }
+
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  AttributionDataHostManager* attribution_data_host_manager =
+      attribution_manager_ ? attribution_manager_->GetDataHostManager()
+                           : nullptr;
+  if (!attribution_data_host_manager) {
+    return;
+  }
+
+  attribution_data_host_manager->NotifyFencedFrameReportingBeaconData(
+      attribution_reporting_data->beacon_id,
+      /*reporting_url=*/GURL(), /*headers=*/nullptr,
+      /*is_final_response=*/true);
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 void FencedFrameReporter::NotifyIsBeaconQueued(
     const DestinationVariant& event_variant,
     bool is_queued) {

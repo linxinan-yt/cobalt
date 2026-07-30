@@ -371,7 +371,8 @@
     "name": "Artifact upload.gsutil upload",
     "~followup_annotations": [
       "@@@STEP_NEST_LEVEL@1@@@",
-      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe@@@"
+      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe@@@",
+      "@@@SET_BUILD_PROPERTY@gsutil_urls@{\"Artifact upload|gsutil upload\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe\"}@@@"
     ]
   },
   {
@@ -403,7 +404,8 @@
     "name": "Artifact upload.gsutil upload (2)",
     "~followup_annotations": [
       "@@@STEP_NEST_LEVEL@1@@@",
-      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe@@@"
+      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe@@@",
+      "@@@SET_BUILD_PROPERTY@gsutil_urls@{\"Artifact upload|gsutil upload\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (2)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe\"}@@@"
     ]
   },
   {
@@ -415,8 +417,8 @@
       "RECIPE_REPO[depot_tools]\\gsutil.py",
       "----",
       "cp",
-      "[CACHE]\\builder\\perfetto\\out\\windows-amd64\\trace_processor_shell.exe.pdb",
-      "gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb"
+      "[CACHE]\\builder\\perfetto\\out\\windows-amd64\\trace_processor_shell.exe",
+      "gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe"
     ],
     "cwd": "[CACHE]\\builder\\perfetto",
     "infra_step": true,
@@ -435,7 +437,56 @@
     "name": "Artifact upload.gsutil upload (3)",
     "~followup_annotations": [
       "@@@STEP_NEST_LEVEL@1@@@",
+<<<<<<< HEAD
+      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe@@@"
+=======
+      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb@@@",
+      "@@@SET_BUILD_PROPERTY@gsutil_urls@{\"Artifact upload|gsutil upload\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (2)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (3)\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb\"}@@@"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
+    ]
+  },
+  {
+    "cmd": [
+      "python3",
+      "-u",
+      "RECIPE_MODULE[depot_tools::gsutil]\\resources\\gsutil_smart_retry.py",
+      "--",
+      "RECIPE_REPO[depot_tools]\\gsutil.py",
+      "----",
+      "cp",
+      "[CACHE]\\builder\\perfetto\\out\\windows-amd64\\trace_processor_shell.exe.pdb",
+<<<<<<< HEAD
+      "gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb"
+=======
+      "gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe.pdb"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
+    ],
+    "cwd": "[CACHE]\\builder\\perfetto",
+    "infra_step": true,
+    "luci_context": {
+      "realm": {
+        "name": "perfetto:ci"
+      },
+      "resultdb": {
+        "current_invocation": {
+          "name": "invocations/build:8945511751514863184",
+          "update_token": "token"
+        },
+        "hostname": "rdbhost"
+      }
+    },
+<<<<<<< HEAD
+    "name": "Artifact upload.gsutil upload (3)",
+    "~followup_annotations": [
+      "@@@STEP_NEST_LEVEL@1@@@",
       "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb@@@"
+=======
+    "name": "Artifact upload.gsutil upload (4)",
+    "~followup_annotations": [
+      "@@@STEP_NEST_LEVEL@1@@@",
+      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe.pdb@@@",
+      "@@@SET_BUILD_PROPERTY@gsutil_urls@{\"Artifact upload|gsutil upload\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (2)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (3)\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (4)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe.pdb\"}@@@"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     ]
   },
   {
@@ -575,7 +626,41 @@
     "name": "Artifact upload.gsutil upload (5)",
     "~followup_annotations": [
       "@@@STEP_NEST_LEVEL@1@@@",
-      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts//windows-amd64/traceconv.exe@@@"
+      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts//windows-amd64/traceconv.exe@@@",
+      "@@@SET_BUILD_PROPERTY@gsutil_urls@{\"Artifact upload|gsutil upload\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (2)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (3)\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (4)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (5)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe\"}@@@"
+    ]
+  },
+  {
+    "cmd": [
+      "python3",
+      "-u",
+      "RECIPE_MODULE[depot_tools::gsutil]\\resources\\gsutil_smart_retry.py",
+      "--",
+      "RECIPE_REPO[depot_tools]\\gsutil.py",
+      "----",
+      "cp",
+      "[CACHE]\\builder\\perfetto\\out\\windows-amd64\\traceconv.exe",
+      "gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe"
+    ],
+    "cwd": "[CACHE]\\builder\\perfetto",
+    "infra_step": true,
+    "luci_context": {
+      "realm": {
+        "name": "perfetto:ci"
+      },
+      "resultdb": {
+        "current_invocation": {
+          "name": "invocations/build:8945511751514863184",
+          "update_token": "token"
+        },
+        "hostname": "rdbhost"
+      }
+    },
+    "name": "Artifact upload.gsutil upload (6)",
+    "~followup_annotations": [
+      "@@@STEP_NEST_LEVEL@1@@@",
+      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe@@@",
+      "@@@SET_BUILD_PROPERTY@gsutil_urls@{\"Artifact upload|gsutil upload\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (2)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (3)\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (4)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (5)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (6)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe\"}@@@"
     ]
   },
   {
@@ -639,7 +724,41 @@
     "name": "Artifact upload.gsutil upload (7)",
     "~followup_annotations": [
       "@@@STEP_NEST_LEVEL@1@@@",
-      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts//windows-amd64/traceconv.exe.pdb@@@"
+      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts//windows-amd64/traceconv.exe.pdb@@@",
+      "@@@SET_BUILD_PROPERTY@gsutil_urls@{\"Artifact upload|gsutil upload\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (2)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (3)\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (4)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (5)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (6)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (7)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe.pdb\"}@@@"
+    ]
+  },
+  {
+    "cmd": [
+      "python3",
+      "-u",
+      "RECIPE_MODULE[depot_tools::gsutil]\\resources\\gsutil_smart_retry.py",
+      "--",
+      "RECIPE_REPO[depot_tools]\\gsutil.py",
+      "----",
+      "cp",
+      "[CACHE]\\builder\\perfetto\\out\\windows-amd64\\traceconv.exe.pdb",
+      "gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe.pdb"
+    ],
+    "cwd": "[CACHE]\\builder\\perfetto",
+    "infra_step": true,
+    "luci_context": {
+      "realm": {
+        "name": "perfetto:ci"
+      },
+      "resultdb": {
+        "current_invocation": {
+          "name": "invocations/build:8945511751514863184",
+          "update_token": "token"
+        },
+        "hostname": "rdbhost"
+      }
+    },
+    "name": "Artifact upload.gsutil upload (8)",
+    "~followup_annotations": [
+      "@@@STEP_NEST_LEVEL@1@@@",
+      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe.pdb@@@",
+      "@@@SET_BUILD_PROPERTY@gsutil_urls@{\"Artifact upload|gsutil upload\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (2)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (3)\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (4)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (5)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (6)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (7)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe.pdb\", \"Artifact upload|gsutil upload (8)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe.pdb\"}@@@"
     ]
   },
   {
@@ -779,7 +898,41 @@
     "name": "Artifact upload.gsutil upload (9)",
     "~followup_annotations": [
       "@@@STEP_NEST_LEVEL@1@@@",
-      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts//windows-amd64/perfetto.exe@@@"
+      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts//windows-amd64/perfetto.exe@@@",
+      "@@@SET_BUILD_PROPERTY@gsutil_urls@{\"Artifact upload|gsutil upload\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (2)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (3)\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (4)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (5)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (6)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (7)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe.pdb\", \"Artifact upload|gsutil upload (8)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe.pdb\", \"Artifact upload|gsutil upload (9)\": \"gs://perfetto-luci-artifacts//windows-amd64/perfetto.exe\"}@@@"
+    ]
+  },
+  {
+    "cmd": [
+      "python3",
+      "-u",
+      "RECIPE_MODULE[depot_tools::gsutil]\\resources\\gsutil_smart_retry.py",
+      "--",
+      "RECIPE_REPO[depot_tools]\\gsutil.py",
+      "----",
+      "cp",
+      "[CACHE]\\builder\\perfetto\\out\\windows-amd64\\perfetto.exe",
+      "gs://perfetto-luci-artifacts/latest/windows-amd64/perfetto.exe"
+    ],
+    "cwd": "[CACHE]\\builder\\perfetto",
+    "infra_step": true,
+    "luci_context": {
+      "realm": {
+        "name": "perfetto:ci"
+      },
+      "resultdb": {
+        "current_invocation": {
+          "name": "invocations/build:8945511751514863184",
+          "update_token": "token"
+        },
+        "hostname": "rdbhost"
+      }
+    },
+    "name": "Artifact upload.gsutil upload (10)",
+    "~followup_annotations": [
+      "@@@STEP_NEST_LEVEL@1@@@",
+      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts/latest/windows-amd64/perfetto.exe@@@",
+      "@@@SET_BUILD_PROPERTY@gsutil_urls@{\"Artifact upload|gsutil upload\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (10)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/perfetto.exe\", \"Artifact upload|gsutil upload (2)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (3)\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (4)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (5)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (6)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (7)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe.pdb\", \"Artifact upload|gsutil upload (8)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe.pdb\", \"Artifact upload|gsutil upload (9)\": \"gs://perfetto-luci-artifacts//windows-amd64/perfetto.exe\"}@@@"
     ]
   },
   {
@@ -843,7 +996,41 @@
     "name": "Artifact upload.gsutil upload (11)",
     "~followup_annotations": [
       "@@@STEP_NEST_LEVEL@1@@@",
-      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts//windows-amd64/perfetto.exe.pdb@@@"
+      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts//windows-amd64/perfetto.exe.pdb@@@",
+      "@@@SET_BUILD_PROPERTY@gsutil_urls@{\"Artifact upload|gsutil upload\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (10)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/perfetto.exe\", \"Artifact upload|gsutil upload (11)\": \"gs://perfetto-luci-artifacts//windows-amd64/perfetto.exe.pdb\", \"Artifact upload|gsutil upload (2)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (3)\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (4)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (5)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (6)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (7)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe.pdb\", \"Artifact upload|gsutil upload (8)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe.pdb\", \"Artifact upload|gsutil upload (9)\": \"gs://perfetto-luci-artifacts//windows-amd64/perfetto.exe\"}@@@"
+    ]
+  },
+  {
+    "cmd": [
+      "python3",
+      "-u",
+      "RECIPE_MODULE[depot_tools::gsutil]\\resources\\gsutil_smart_retry.py",
+      "--",
+      "RECIPE_REPO[depot_tools]\\gsutil.py",
+      "----",
+      "cp",
+      "[CACHE]\\builder\\perfetto\\out\\windows-amd64\\perfetto.exe.pdb",
+      "gs://perfetto-luci-artifacts/latest/windows-amd64/perfetto.exe.pdb"
+    ],
+    "cwd": "[CACHE]\\builder\\perfetto",
+    "infra_step": true,
+    "luci_context": {
+      "realm": {
+        "name": "perfetto:ci"
+      },
+      "resultdb": {
+        "current_invocation": {
+          "name": "invocations/build:8945511751514863184",
+          "update_token": "token"
+        },
+        "hostname": "rdbhost"
+      }
+    },
+    "name": "Artifact upload.gsutil upload (12)",
+    "~followup_annotations": [
+      "@@@STEP_NEST_LEVEL@1@@@",
+      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts/latest/windows-amd64/perfetto.exe.pdb@@@",
+      "@@@SET_BUILD_PROPERTY@gsutil_urls@{\"Artifact upload|gsutil upload\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (10)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/perfetto.exe\", \"Artifact upload|gsutil upload (11)\": \"gs://perfetto-luci-artifacts//windows-amd64/perfetto.exe.pdb\", \"Artifact upload|gsutil upload (12)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/perfetto.exe.pdb\", \"Artifact upload|gsutil upload (2)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (3)\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (4)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (5)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (6)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (7)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe.pdb\", \"Artifact upload|gsutil upload (8)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe.pdb\", \"Artifact upload|gsutil upload (9)\": \"gs://perfetto-luci-artifacts//windows-amd64/perfetto.exe\"}@@@"
     ]
   },
   {
@@ -983,7 +1170,41 @@
     "name": "Artifact upload.gsutil upload (13)",
     "~followup_annotations": [
       "@@@STEP_NEST_LEVEL@1@@@",
-      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts//windows-amd64/traced.exe@@@"
+      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts//windows-amd64/traced.exe@@@",
+      "@@@SET_BUILD_PROPERTY@gsutil_urls@{\"Artifact upload|gsutil upload\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (10)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/perfetto.exe\", \"Artifact upload|gsutil upload (11)\": \"gs://perfetto-luci-artifacts//windows-amd64/perfetto.exe.pdb\", \"Artifact upload|gsutil upload (12)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/perfetto.exe.pdb\", \"Artifact upload|gsutil upload (13)\": \"gs://perfetto-luci-artifacts//windows-amd64/traced.exe\", \"Artifact upload|gsutil upload (2)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (3)\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (4)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (5)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (6)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (7)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe.pdb\", \"Artifact upload|gsutil upload (8)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe.pdb\", \"Artifact upload|gsutil upload (9)\": \"gs://perfetto-luci-artifacts//windows-amd64/perfetto.exe\"}@@@"
+    ]
+  },
+  {
+    "cmd": [
+      "python3",
+      "-u",
+      "RECIPE_MODULE[depot_tools::gsutil]\\resources\\gsutil_smart_retry.py",
+      "--",
+      "RECIPE_REPO[depot_tools]\\gsutil.py",
+      "----",
+      "cp",
+      "[CACHE]\\builder\\perfetto\\out\\windows-amd64\\traced.exe",
+      "gs://perfetto-luci-artifacts/latest/windows-amd64/traced.exe"
+    ],
+    "cwd": "[CACHE]\\builder\\perfetto",
+    "infra_step": true,
+    "luci_context": {
+      "realm": {
+        "name": "perfetto:ci"
+      },
+      "resultdb": {
+        "current_invocation": {
+          "name": "invocations/build:8945511751514863184",
+          "update_token": "token"
+        },
+        "hostname": "rdbhost"
+      }
+    },
+    "name": "Artifact upload.gsutil upload (14)",
+    "~followup_annotations": [
+      "@@@STEP_NEST_LEVEL@1@@@",
+      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts/latest/windows-amd64/traced.exe@@@",
+      "@@@SET_BUILD_PROPERTY@gsutil_urls@{\"Artifact upload|gsutil upload\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (10)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/perfetto.exe\", \"Artifact upload|gsutil upload (11)\": \"gs://perfetto-luci-artifacts//windows-amd64/perfetto.exe.pdb\", \"Artifact upload|gsutil upload (12)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/perfetto.exe.pdb\", \"Artifact upload|gsutil upload (13)\": \"gs://perfetto-luci-artifacts//windows-amd64/traced.exe\", \"Artifact upload|gsutil upload (14)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traced.exe\", \"Artifact upload|gsutil upload (2)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (3)\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (4)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (5)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (6)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (7)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe.pdb\", \"Artifact upload|gsutil upload (8)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe.pdb\", \"Artifact upload|gsutil upload (9)\": \"gs://perfetto-luci-artifacts//windows-amd64/perfetto.exe\"}@@@"
     ]
   },
   {
@@ -1047,7 +1268,41 @@
     "name": "Artifact upload.gsutil upload (15)",
     "~followup_annotations": [
       "@@@STEP_NEST_LEVEL@1@@@",
-      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts//windows-amd64/traced.exe.pdb@@@"
+      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts//windows-amd64/traced.exe.pdb@@@",
+      "@@@SET_BUILD_PROPERTY@gsutil_urls@{\"Artifact upload|gsutil upload\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (10)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/perfetto.exe\", \"Artifact upload|gsutil upload (11)\": \"gs://perfetto-luci-artifacts//windows-amd64/perfetto.exe.pdb\", \"Artifact upload|gsutil upload (12)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/perfetto.exe.pdb\", \"Artifact upload|gsutil upload (13)\": \"gs://perfetto-luci-artifacts//windows-amd64/traced.exe\", \"Artifact upload|gsutil upload (14)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traced.exe\", \"Artifact upload|gsutil upload (15)\": \"gs://perfetto-luci-artifacts//windows-amd64/traced.exe.pdb\", \"Artifact upload|gsutil upload (2)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (3)\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (4)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (5)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (6)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (7)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe.pdb\", \"Artifact upload|gsutil upload (8)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe.pdb\", \"Artifact upload|gsutil upload (9)\": \"gs://perfetto-luci-artifacts//windows-amd64/perfetto.exe\"}@@@"
+    ]
+  },
+  {
+    "cmd": [
+      "python3",
+      "-u",
+      "RECIPE_MODULE[depot_tools::gsutil]\\resources\\gsutil_smart_retry.py",
+      "--",
+      "RECIPE_REPO[depot_tools]\\gsutil.py",
+      "----",
+      "cp",
+      "[CACHE]\\builder\\perfetto\\out\\windows-amd64\\traced.exe.pdb",
+      "gs://perfetto-luci-artifacts/latest/windows-amd64/traced.exe.pdb"
+    ],
+    "cwd": "[CACHE]\\builder\\perfetto",
+    "infra_step": true,
+    "luci_context": {
+      "realm": {
+        "name": "perfetto:ci"
+      },
+      "resultdb": {
+        "current_invocation": {
+          "name": "invocations/build:8945511751514863184",
+          "update_token": "token"
+        },
+        "hostname": "rdbhost"
+      }
+    },
+    "name": "Artifact upload.gsutil upload (16)",
+    "~followup_annotations": [
+      "@@@STEP_NEST_LEVEL@1@@@",
+      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts/latest/windows-amd64/traced.exe.pdb@@@",
+      "@@@SET_BUILD_PROPERTY@gsutil_urls@{\"Artifact upload|gsutil upload\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (10)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/perfetto.exe\", \"Artifact upload|gsutil upload (11)\": \"gs://perfetto-luci-artifacts//windows-amd64/perfetto.exe.pdb\", \"Artifact upload|gsutil upload (12)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/perfetto.exe.pdb\", \"Artifact upload|gsutil upload (13)\": \"gs://perfetto-luci-artifacts//windows-amd64/traced.exe\", \"Artifact upload|gsutil upload (14)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traced.exe\", \"Artifact upload|gsutil upload (15)\": \"gs://perfetto-luci-artifacts//windows-amd64/traced.exe.pdb\", \"Artifact upload|gsutil upload (16)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traced.exe.pdb\", \"Artifact upload|gsutil upload (2)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (3)\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (4)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (5)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (6)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe\", \"Artifact upload|gsutil upload (7)\": \"gs://perfetto-luci-artifacts//windows-amd64/traceconv.exe.pdb\", \"Artifact upload|gsutil upload (8)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/traceconv.exe.pdb\", \"Artifact upload|gsutil upload (9)\": \"gs://perfetto-luci-artifacts//windows-amd64/perfetto.exe\"}@@@"
     ]
   },
   {

@@ -258,9 +258,12 @@ yo_BJ{
         "meta:Gulf"{
             ls{"Àkókò Àfɛnukò Gulf"}
         }
+<<<<<<< HEAD
         "meta:Hawaii"{
             ls{"Àkókò Àfɛnukò Hawaii-Aleutian"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "meta:Hawaii_Aleutian"{
             ld{"Àkókò Ojúmɔmɔ Hawaii-Aleutian"}
             lg{"Àkókò Hawaii-Aleutian"}

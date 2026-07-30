@@ -119,6 +119,7 @@ final class PerfettoTrackEventExtra {
     private final long mExtraPtr;
     private final String mName;
     private final long mId;
+<<<<<<< HEAD
     private final boolean mIsNameStatic;
 
     NamedTrack(
@@ -132,6 +133,14 @@ final class PerfettoTrackEventExtra {
       mName = name;
       mId = id;
       mIsNameStatic = isNameStatic;
+=======
+
+    NamedTrack(long id, String name, long parentUuid, PerfettoNativeMemoryCleaner memoryCleaner) {
+      mPtr = native_init(id, name, parentUuid);
+      mExtraPtr = native_get_extra_ptr(mPtr);
+      mName = name;
+      mId = id;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       memoryCleaner.registerNativeAllocation(this, mPtr, native_delete());
     }
 

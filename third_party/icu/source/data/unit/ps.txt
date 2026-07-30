@@ -344,6 +344,12 @@ ps{
             nanosecond{
                 dnam{"نينو ثانيې"}
             }
+            night{
+                dnam{"شپي"}
+                one{"{0}/شپه"}
+                other{"{0}/شپه"}
+                per{"{0}/شپه"}
+            }
             quarter{
                 dnam{"ربعه"}
             }
@@ -1039,6 +1045,7 @@ ps{
         }
     }
     unitsNarrow{
+<<<<<<< HEAD
         area{
             square-foot{
                 dnam{"ft²"}
@@ -1068,6 +1075,11 @@ ps{
             }
             part-per-1e9{
                 dnam{"ppb"}
+=======
+        concentr{
+            portion-per-1e9{
+                dnam{"p/b"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         consumption{
@@ -1138,6 +1150,12 @@ ps{
                 dnam{"مياشت"}
                 one{"{0} m"}
                 other{"{0} m"}
+            }
+            night{
+                dnam{"شپي"}
+                one{"{0}/شپه"}
+                other{"{0}/شپه"}
+                per{"{0}/شپه"}
             }
             second{
                 one{"{0} s"}
@@ -1417,6 +1435,9 @@ ps{
             }
             permyriad{
                 dnam{"زرمه"}
+            }
+            portion-per-1e9{
+                dnam{"p/b"}
             }
         }
         consumption{

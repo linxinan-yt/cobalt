@@ -987,6 +987,36 @@ uset_size(const USet* set);
 U_CAPI int32_t U_EXPORT2
 uset_getRangeCount(const USet *set);
 
+#ifndef U_HIDE_DRAFT_API
+
+/**
+ * @param set the set
+ * @return the number of strings in this set.
+ * @draft ICU 76
+ * @see uset_getRangeCount
+ * @see uset_getItemCount
+ * @see uset_size
+ */
+U_CAPI int32_t U_EXPORT2
+uset_getStringCount(const USet *set);
+
+/**
+ * Returns the index-th string (empty or multi-character) in the set.
+ * The string may not be NUL-terminated.
+ * The output length must be used, and the caller must not read more than that many UChars.
+ *
+ * @param set the set
+ * @param index the string index, 0 .. uset_getStringCount() - 1
+ * @param pLength the output string length; must not be NULL
+ * @return the pointer to the string; NULL if the index is out of range or pLength is NULL
+ * @draft ICU 76
+ * @see uset_getStringCount
+ */
+U_CAPI const UChar* U_EXPORT2
+uset_getString(const USet *set, int32_t index, int32_t *pLength);
+
+#endif  // U_HIDE_DRAFT_API
+
 /**
  * @param set the set
  * @return the number of strings in this set.
@@ -1323,6 +1353,10 @@ uset_getSerializedRange(const USerializedSet* set, int32_t rangeIndex,
                         UChar32* pStart, UChar32* pEnd);
 
 #if U_SHOW_CPLUSPLUS_API || U_SHOW_CPLUSPLUS_HEADER_API
+<<<<<<< HEAD
+=======
+#ifndef U_HIDE_DRAFT_API
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 namespace U_HEADER_ONLY_NAMESPACE {
 
@@ -1331,6 +1365,7 @@ namespace U_HEADER_ONLY_NAMESPACE {
 
 /**
  * Iterator returned by USetCodePoints.
+<<<<<<< HEAD
  * @stable ICU 76
  */
 class USetCodePointIterator {
@@ -1339,6 +1374,16 @@ public:
     USetCodePointIterator(const USetCodePointIterator &other) = default;
 
     /** @stable ICU 76 */
+=======
+ * @draft ICU 76
+ */
+class USetCodePointIterator {
+public:
+    /** @draft ICU 76 */
+    USetCodePointIterator(const USetCodePointIterator &other) = default;
+
+    /** @draft ICU 76 */
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     bool operator==(const USetCodePointIterator &other) const {
         // No need to compare rangeCount & end given private constructor
         // and assuming we don't compare iterators across the set being modified.
@@ -1348,15 +1393,26 @@ public:
         return uset == other.uset && c == other.c;
     }
 
+<<<<<<< HEAD
     /** @stable ICU 76 */
     bool operator!=(const USetCodePointIterator &other) const { return !operator==(other); }
 
     /** @stable ICU 76 */
+=======
+    /** @draft ICU 76 */
+    bool operator!=(const USetCodePointIterator &other) const { return !operator==(other); }
+
+    /** @draft ICU 76 */
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     UChar32 operator*() const { return c; }
 
     /**
      * Pre-increment.
+<<<<<<< HEAD
      * @stable ICU 76
+=======
+     * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
      */
     USetCodePointIterator &operator++() {
         if (c < end) {
@@ -1377,7 +1433,11 @@ public:
 
     /**
      * Post-increment.
+<<<<<<< HEAD
      * @stable ICU 76
+=======
+     * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
      */
     USetCodePointIterator operator++(int) {
         USetCodePointIterator result(*this);
@@ -1414,7 +1474,11 @@ private:
  *
  * C++ UnicodeSet has member functions for iteration, including codePoints().
  *
+<<<<<<< HEAD
  * @stable ICU 76
+=======
+ * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  * @see USetRanges
  * @see USetStrings
  * @see USetElements
@@ -1423,6 +1487,7 @@ class USetCodePoints {
 public:
     /**
      * Constructs a C++ "range" object over the code points of the USet.
+<<<<<<< HEAD
      * @stable ICU 76
      */
     USetCodePoints(const USet *pUset) : uset(pUset), rangeCount(uset_getRangeCount(pUset)) {}
@@ -1431,11 +1496,25 @@ public:
     USetCodePoints(const USetCodePoints &other) = default;
 
     /** @stable ICU 76 */
+=======
+     * @draft ICU 76
+     */
+    USetCodePoints(const USet *pUset) : uset(pUset), rangeCount(uset_getRangeCount(pUset)) {}
+
+    /** @draft ICU 76 */
+    USetCodePoints(const USetCodePoints &other) = default;
+
+    /** @draft ICU 76 */
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     USetCodePointIterator begin() const {
         return USetCodePointIterator(uset, 0, rangeCount);
     }
 
+<<<<<<< HEAD
     /** @stable ICU 76 */
+=======
+    /** @draft ICU 76 */
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     USetCodePointIterator end() const {
         return USetCodePointIterator(uset, rangeCount, rangeCount);
     }
@@ -1450,6 +1529,7 @@ private:
  * Returned by USetRangeIterator which is returned by USetRanges.
  * Both the rangeStart and rangeEnd are in the range.
  * (end() returns an iterator corresponding to rangeEnd+1.)
+<<<<<<< HEAD
  * @stable ICU 76
  */
 struct CodePointRange {
@@ -1464,11 +1544,31 @@ struct CodePointRange {
         bool operator!=(const iterator &other) const { return !operator==(other); }
 
         /** @stable ICU 76 */
+=======
+ * @draft ICU 76
+ */
+struct CodePointRange {
+    /** @draft ICU 76 */
+    struct iterator {
+        /** @draft ICU 76 */
+        iterator(UChar32 aC) : c(aC) {}
+
+        /** @draft ICU 76 */
+        bool operator==(const iterator &other) const { return c == other.c; }
+        /** @draft ICU 76 */
+        bool operator!=(const iterator &other) const { return !operator==(other); }
+
+        /** @draft ICU 76 */
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         UChar32 operator*() const { return c; }
 
         /**
          * Pre-increment.
+<<<<<<< HEAD
          * @stable ICU 76
+=======
+         * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
          */
         iterator &operator++() {
             ++c;
@@ -1477,7 +1577,11 @@ struct CodePointRange {
 
         /**
          * Post-increment.
+<<<<<<< HEAD
          * @stable ICU 76
+=======
+         * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
          */
         iterator operator++(int) {
             return c++;
@@ -1485,11 +1589,16 @@ struct CodePointRange {
 
         /**
          * The current code point in the range.
+<<<<<<< HEAD
          * @stable ICU 76
+=======
+         * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
          */
         UChar32 c;
     };
 
+<<<<<<< HEAD
     /** @stable ICU 76 */
     CodePointRange(UChar32 start, UChar32 end) : rangeStart(start), rangeEnd(end) {}
     /** @stable ICU 76 */
@@ -1499,22 +1608,42 @@ struct CodePointRange {
     /** @stable ICU 76 */
     iterator begin() const { return rangeStart; }
     /** @stable ICU 76 */
+=======
+    /** @draft ICU 76 */
+    CodePointRange(UChar32 start, UChar32 end) : rangeStart(start), rangeEnd(end) {}
+    /** @draft ICU 76 */
+    CodePointRange(const CodePointRange &other) = default;
+    /** @draft ICU 76 */
+    size_t size() const { return static_cast<size_t>((rangeEnd + 1) - rangeStart); }
+    /** @draft ICU 76 */
+    iterator begin() const { return rangeStart; }
+    /** @draft ICU 76 */
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     iterator end() const { return rangeEnd + 1; }
 
     /**
      * Start of a USet/UnicodeSet range of code points.
+<<<<<<< HEAD
      * @stable ICU 76
+=======
+     * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
      */
     UChar32 rangeStart;
     /**
      * Inclusive end of a USet/UnicodeSet range of code points.
+<<<<<<< HEAD
      * @stable ICU 76
+=======
+     * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
      */
     UChar32 rangeEnd;
 };
 
 /**
  * Iterator returned by USetRanges.
+<<<<<<< HEAD
  * @stable ICU 76
  */
 class USetRangeIterator {
@@ -1523,6 +1652,16 @@ public:
     USetRangeIterator(const USetRangeIterator &other) = default;
 
     /** @stable ICU 76 */
+=======
+ * @draft ICU 76
+ */
+class USetRangeIterator {
+public:
+    /** @draft ICU 76 */
+    USetRangeIterator(const USetRangeIterator &other) = default;
+
+    /** @draft ICU 76 */
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     bool operator==(const USetRangeIterator &other) const {
         // No need to compare rangeCount given private constructor
         // and assuming we don't compare iterators across the set being modified.
@@ -1531,10 +1670,17 @@ public:
         return uset == other.uset && rangeIndex == other.rangeIndex;
     }
 
+<<<<<<< HEAD
     /** @stable ICU 76 */
     bool operator!=(const USetRangeIterator &other) const { return !operator==(other); }
 
     /** @stable ICU 76 */
+=======
+    /** @draft ICU 76 */
+    bool operator!=(const USetRangeIterator &other) const { return !operator==(other); }
+
+    /** @draft ICU 76 */
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     CodePointRange operator*() const {
         if (rangeIndex < rangeCount) {
             UChar32 start, end;
@@ -1549,7 +1695,11 @@ public:
 
     /**
      * Pre-increment.
+<<<<<<< HEAD
      * @stable ICU 76
+=======
+     * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
      */
     USetRangeIterator &operator++() {
         ++rangeIndex;
@@ -1558,7 +1708,11 @@ public:
 
     /**
      * Post-increment.
+<<<<<<< HEAD
      * @stable ICU 76
+=======
+     * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
      */
     USetRangeIterator operator++(int) {
         USetRangeIterator result(*this);
@@ -1595,7 +1749,11 @@ private:
  *
  * C++ UnicodeSet has member functions for iteration, including ranges().
  *
+<<<<<<< HEAD
  * @stable ICU 76
+=======
+ * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  * @see USetCodePoints
  * @see USetStrings
  * @see USetElements
@@ -1604,6 +1762,7 @@ class USetRanges {
 public:
     /**
      * Constructs a C++ "range" object over the code point ranges of the USet.
+<<<<<<< HEAD
      * @stable ICU 76
      */
     USetRanges(const USet *pUset) : uset(pUset), rangeCount(uset_getRangeCount(pUset)) {}
@@ -1612,11 +1771,25 @@ public:
     USetRanges(const USetRanges &other) = default;
 
     /** @stable ICU 76 */
+=======
+     * @draft ICU 76
+     */
+    USetRanges(const USet *pUset) : uset(pUset), rangeCount(uset_getRangeCount(pUset)) {}
+
+    /** @draft ICU 76 */
+    USetRanges(const USetRanges &other) = default;
+
+    /** @draft ICU 76 */
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     USetRangeIterator begin() const {
         return USetRangeIterator(uset, 0, rangeCount);
     }
 
+<<<<<<< HEAD
     /** @stable ICU 76 */
+=======
+    /** @draft ICU 76 */
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     USetRangeIterator end() const {
         return USetRangeIterator(uset, rangeCount, rangeCount);
     }
@@ -1628,6 +1801,7 @@ private:
 
 /**
  * Iterator returned by USetStrings.
+<<<<<<< HEAD
  * @stable ICU 76
  */
 class USetStringIterator {
@@ -1636,6 +1810,16 @@ public:
     USetStringIterator(const USetStringIterator &other) = default;
 
     /** @stable ICU 76 */
+=======
+ * @draft ICU 76
+ */
+class USetStringIterator {
+public:
+    /** @draft ICU 76 */
+    USetStringIterator(const USetStringIterator &other) = default;
+
+    /** @draft ICU 76 */
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     bool operator==(const USetStringIterator &other) const {
         // No need to compare count given private constructor
         // and assuming we don't compare iterators across the set being modified.
@@ -1644,10 +1828,17 @@ public:
         return uset == other.uset && index == other.index;
     }
 
+<<<<<<< HEAD
     /** @stable ICU 76 */
     bool operator!=(const USetStringIterator &other) const { return !operator==(other); }
 
     /** @stable ICU 76 */
+=======
+    /** @draft ICU 76 */
+    bool operator!=(const USetStringIterator &other) const { return !operator==(other); }
+
+    /** @draft ICU 76 */
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     std::u16string_view operator*() const {
         if (index < count) {
             int32_t length;
@@ -1660,7 +1851,11 @@ public:
 
     /**
      * Pre-increment.
+<<<<<<< HEAD
      * @stable ICU 76
+=======
+     * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
      */
     USetStringIterator &operator++() {
         ++index;
@@ -1669,7 +1864,11 @@ public:
 
     /**
      * Post-increment.
+<<<<<<< HEAD
      * @stable ICU 76
+=======
+     * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
      */
     USetStringIterator operator++(int) {
         USetStringIterator result(*this);
@@ -1705,7 +1904,11 @@ private:
  *
  * C++ UnicodeSet has member functions for iteration, including strings().
  *
+<<<<<<< HEAD
  * @stable ICU 76
+=======
+ * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  * @see USetCodePoints
  * @see USetRanges
  * @see USetElements
@@ -1714,6 +1917,7 @@ class USetStrings {
 public:
     /**
      * Constructs a C++ "range" object over the strings of the USet.
+<<<<<<< HEAD
      * @stable ICU 76
      */
     USetStrings(const USet *pUset) : uset(pUset), count(uset_getStringCount(pUset)) {}
@@ -1722,11 +1926,25 @@ public:
     USetStrings(const USetStrings &other) = default;
 
     /** @stable ICU 76 */
+=======
+     * @draft ICU 76
+     */
+    USetStrings(const USet *pUset) : uset(pUset), count(uset_getStringCount(pUset)) {}
+
+    /** @draft ICU 76 */
+    USetStrings(const USetStrings &other) = default;
+
+    /** @draft ICU 76 */
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     USetStringIterator begin() const {
         return USetStringIterator(uset, 0, count);
     }
 
+<<<<<<< HEAD
     /** @stable ICU 76 */
+=======
+    /** @draft ICU 76 */
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     USetStringIterator end() const {
         return USetStringIterator(uset, count, count);
     }
@@ -1735,6 +1953,10 @@ private:
     const USet *uset;
     int32_t count;
 };
+<<<<<<< HEAD
+=======
+#endif  // U_HIDE_DRAFT_API
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 #ifndef U_HIDE_DRAFT_API
 /**
@@ -1894,10 +2116,16 @@ private:
     int32_t rangeCount, stringCount;
 };
 
+<<<<<<< HEAD
 #endif  // U_HIDE_DRAFT_API
 
 }  // namespace U_HEADER_ONLY_NAMESPACE
 
+=======
+}  // namespace U_HEADER_ONLY_NAMESPACE
+
+#endif  // U_HIDE_DRAFT_API
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #endif  // U_SHOW_CPLUSPLUS_API || U_SHOW_CPLUSPLUS_HEADER_API
 
 #endif  // __USET_H__

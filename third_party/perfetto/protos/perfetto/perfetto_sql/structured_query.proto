@@ -201,6 +201,7 @@ message PerfettoSqlStructuredQuery {
     repeated string partition_columns = 3;
   }
 
+<<<<<<< HEAD
   // Filters intervals from `base` to only those that overlap with intervals
   // from `intervals`. Unlike IntervalIntersect which is more general-purpose
   // and returns columns from all sources with suffixes, FilterToIntervals
@@ -328,6 +329,8 @@ message PerfettoSqlStructuredQuery {
     optional int64 dur = 3;
   }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   // DON'T USE. EXPERIMENTAL.
   message ExperimentalJoin {
     message EqualityColumns {
@@ -455,6 +458,7 @@ message PerfettoSqlStructuredQuery {
       // to input_query.
       ExperimentalJoin.FreeformCondition freeform_condition = 5;
     }
+<<<<<<< HEAD
   }
 
   // DON'T USE. EXPERIMENTAL.
@@ -577,6 +581,8 @@ message PerfettoSqlStructuredQuery {
 
     // The column name in the match_values query to match against. Required.
     optional string match_column = 4;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   // An opaque id field for the query. The convention is to use underscores
@@ -631,6 +637,7 @@ message PerfettoSqlStructuredQuery {
 
     // DON'T USE. EXPERIMENTAL.
     ExperimentalAddColumns experimental_add_columns = 102;
+<<<<<<< HEAD
 
     // DON'T USE. EXPERIMENTAL.
     ExperimentalCreateSlices experimental_create_slices = 104;
@@ -652,6 +659,8 @@ message PerfettoSqlStructuredQuery {
     // Source is a filter-in operation (semi-join). See
     // ExperimentalFilterIn documentation for more information.
     ExperimentalFilterIn experimental_filter_in = 108;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   // Evaluation order of operations:
@@ -722,6 +731,7 @@ message PerfettoSqlStructuredQuery {
         MEAN = 5;
         MEDIAN = 6;
         DURATION_WEIGHTED_MEAN = 7;
+<<<<<<< HEAD
         COUNT_DISTINCT = 9;
 
         // Requires a column_name and a percentile to be specified.
@@ -734,6 +744,14 @@ message PerfettoSqlStructuredQuery {
 
       // The name of the column to aggregate. Not required for COUNT or
       // CUSTOM.
+=======
+
+        // Requires a column_name and a percentile to be specified.
+        PERCENTILE = 8;
+      }
+
+      // The name of the column to aggregate. Not required for COUNT.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       optional string column_name = 1;
 
       // Required.
@@ -745,10 +763,13 @@ message PerfettoSqlStructuredQuery {
       // The percentile to compute when `op` is `PERCENTILE`. Must be between 0
       // and 100.
       optional double percentile = 4;
+<<<<<<< HEAD
 
       // The custom SQL expression to use when `op` is `CUSTOM`.
       // Example: "SUM(dur * priority) / SUM(dur)" for a weighted average.
       optional string custom_sql_expression = 5;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
     repeated Aggregate aggregates = 2;
   }

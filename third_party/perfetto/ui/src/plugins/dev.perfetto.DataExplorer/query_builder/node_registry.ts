@@ -12,9 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry.ts
 import type {QueryNode, NodeType, NodeContext} from '../query_node';
 import type {SqlModules} from '../../../plugins/dev.perfetto.SqlModules/sql_modules';
 import type {Trace} from '../../../public/trace';
+=======
+import {QueryNode, QueryNodeState} from '../query_node';
+import {SqlModules} from '../../../plugins/dev.perfetto.SqlModules/sql_modules';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry.ts
 
 // The context provided to the preCreate hook.
 export interface PreCreateContext {
@@ -24,6 +29,7 @@ export interface PreCreateContext {
 // The context provided to the node factory.
 export interface NodeFactoryContext {
   allNodes: QueryNode[];
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry.ts
   // Runtime context (trace, sqlModules, actions) provided by the caller.
   context?: NodeContext;
 }
@@ -32,6 +38,10 @@ export interface NodeFactoryContext {
 // trace and other runtime properties before node creation.
 export type PreCreateState = Record<string, unknown>;
 
+=======
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry.ts
 export interface NodeDescriptor {
   // The name of the node, as it appears in the UI.
   name: string;
@@ -45,16 +55,22 @@ export interface NodeDescriptor {
   // The keyboard shortcut for this node.
   hotkey?: string;
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry.ts
   // Whether this node is a source, modification, multi-source, or export node.
   type: 'source' | 'modification' | 'multisource' | 'export';
 
   // Optional category for grouping related nodes in the UI.
   // Nodes with the same category will be shown in a submenu.
   category?: string;
+=======
+  // Whether this node is a source, modification or a multi-source node.
+  type: 'source' | 'modification' | 'multisource';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry.ts
 
   // An optional, async function that runs before the node is created.
   // It can be used for interactive setup, like showing a modal.
   // If it returns null, the creation is aborted.
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry.ts
   // Can return an array to create multiple nodes at once (source nodes only).
   // Note: Operation nodes should only return a single state or null.
   preCreate?: (
@@ -110,10 +126,22 @@ export interface NodeDescriptor {
   // If undefined, falls back to the registry's default allowed children.
   // If an empty array, no children are allowed (no "+" button shown).
   allowedChildren?: string[];
+=======
+  preCreate?: (
+    context: PreCreateContext,
+  ) => Promise<Partial<QueryNodeState> | null>;
+
+  // A function that creates a new instance of the node.
+  factory: (state: QueryNodeState, context?: NodeFactoryContext) => QueryNode;
+
+  // Whether this node is only available in dev mode.
+  devOnly?: boolean;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry.ts
 }
 
 export class NodeRegistry {
   private nodes: Map<string, NodeDescriptor> = new Map();
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry.ts
   private byNodeType: Map<NodeType, NodeDescriptor> = new Map();
   private idByNodeType: Map<NodeType, string> = new Map();
   private defaultAllowedChildren: ReadonlyArray<string> = [];
@@ -122,12 +150,18 @@ export class NodeRegistry {
     this.nodes.set(id, descriptor);
     this.byNodeType.set(descriptor.nodeType, descriptor);
     this.idByNodeType.set(descriptor.nodeType, id);
+=======
+
+  register(id: string, descriptor: NodeDescriptor) {
+    this.nodes.set(id, descriptor);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry.ts
   }
 
   get(id: string): NodeDescriptor | undefined {
     return this.nodes.get(id);
   }
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry.ts
   getByNodeType(type: NodeType): NodeDescriptor | undefined {
     return this.byNodeType.get(type);
   }
@@ -190,6 +224,11 @@ export class NodeRegistry {
       }
     }
   }
+=======
+  list(): [string, NodeDescriptor][] {
+    return Array.from(this.nodes.entries());
+  }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry.ts
 }
 
 export const nodeRegistry = new NodeRegistry();

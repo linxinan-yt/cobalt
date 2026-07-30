@@ -309,9 +309,13 @@ as{
             }
         }
         gregorian{
-            AmPmMarkersAbbr{
-                "পূৰ্বাহ্ন",
-                "অপৰাহ্ন",
+            AmPmMarkers{
+                "AM",
+                "PM",
+            }
+            AmPmMarkersNarrow{
+                "am",
+                "pm",
             }
             DateTimePatterns{
                 "a h.mm.ss zzzz",
@@ -412,6 +416,22 @@ as{
                         "ব",
                         "শ",
                         "শ",
+                    }
+                }
+            }
+            dayPeriod{
+                stand-alone{
+                    abbreviated{
+                        am{"AM"}
+                        pm{"PM"}
+                    }
+                    narrow{
+                        am{"AM"}
+                        pm{"PM"}
+                    }
+                    wide{
+                        am{"AM"}
+                        pm{"PM"}
                     }
                 }
             }

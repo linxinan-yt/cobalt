@@ -43,7 +43,11 @@ pb_msg!(DebugAnnotation {
     int_value: i64, primitive, 4,
     double_value: f64, primitive, 5,
     pointer_value: u64, primitive, 7,
+<<<<<<< HEAD
     nested_value: DebugAnnotationNestedValue, msg, 8,
+=======
+    nested_value: NestedValue, msg, 8,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     legacy_json_value: String, primitive, 9,
     string_value: String, primitive, 6,
     string_value_iid: u64, primitive, 17,
@@ -54,11 +58,19 @@ pb_msg!(DebugAnnotation {
     array_values: DebugAnnotation, msg, 12,
 });
 
+<<<<<<< HEAD
 pb_msg!(DebugAnnotationNestedValue {
     nested_type: NestedValueNestedType, enum, 1,
     dict_keys: String, primitive, 2,
     dict_values: DebugAnnotationNestedValue, msg, 3,
     array_values: DebugAnnotationNestedValue, msg, 4,
+=======
+pb_msg!(NestedValue {
+    nested_type: NestedValueNestedType, enum, 1,
+    dict_keys: String, primitive, 2,
+    dict_values: NestedValue, msg, 3,
+    array_values: NestedValue, msg, 4,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     int_value: i64, primitive, 5,
     double_value: f64, primitive, 6,
     bool_value: bool, primitive, 7,

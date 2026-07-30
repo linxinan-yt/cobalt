@@ -1134,8 +1134,15 @@ hu{
                         other{"{0} éjszakává"}
                     }
                 }
+<<<<<<< HEAD
                 one{"{0} éjszaka"}
                 other{"{0} éjszaka"}
+=======
+                dnam{"éjszakák"}
+                one{"{0} éjszaka"}
+                other{"{0} éjszaka"}
+                per{"{0}/éjszaka"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 case{
@@ -3194,6 +3201,12 @@ hu{
             month{
                 one{"{0} h."}
                 other{"{0} h."}
+            }
+            night{
+                dnam{"éjszakák"}
+                one{"{0} éjszaka"}
+                other{"{0} éjszaka"}
+                per{"{0}/éjszaka"}
             }
         }
         energy{

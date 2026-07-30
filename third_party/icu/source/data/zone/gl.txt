@@ -51,6 +51,18 @@ gl{
         "America:Anguilla"{
             ec{"Anguila"}
         }
+<<<<<<< HEAD
+=======
+        "America:Araguaina"{
+            ec{"Araguaína"}
+        }
+        "America:Argentina:Rio_Gallegos"{
+            ec{"Río Gallegos"}
+        }
+        "America:Argentina:Tucuman"{
+            ec{"Tucumán"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Bahia"{
             ec{"Baía"}
         }
@@ -60,8 +72,19 @@ gl{
         "America:Cayman"{
             ec{"Illas Caimán"}
         }
+<<<<<<< HEAD
         "America:Coyhaique"{
             ec{"Coihaique"}
+=======
+        "America:Cordoba"{
+            ec{"Córdoba"}
+        }
+        "America:Cuiaba"{
+            ec{"Cuiabá"}
+        }
+        "America:Eirunepe"{
+            ec{"Eirunepé"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "America:El_Salvador"{
             ec{"O Salvador"}
@@ -123,6 +146,15 @@ gl{
         "America:Rio_Branco"{
             ec{"Río Branco"}
         }
+<<<<<<< HEAD
+=======
+        "America:Santarem"{
+            ec{"Santarém"}
+        }
+        "America:Sao_Paulo"{
+            ec{"São Paulo"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:St_Barthelemy"{
             ec{"Saint Barthélemy"}
         }
@@ -402,9 +434,13 @@ gl{
             ec{"Tahití"}
         }
         "meta:Acre"{
+<<<<<<< HEAD
             ld{"hora de verán de Acre"}
             lg{"hora de Acre"}
             ls{"hora estándar de Acre"}
+=======
+            lg{"hora de Acre"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "meta:Afghanistan"{
             ls{"hora de Afganistán"}

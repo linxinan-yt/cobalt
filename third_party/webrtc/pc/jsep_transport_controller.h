@@ -68,7 +68,11 @@
 
 namespace webrtc {
 
+<<<<<<< HEAD
 class JsepTransportController final {
+=======
+class JsepTransportController : public PayloadTypeSuggester {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  public:
   // Used when the RtpTransport/DtlsTransport of the m= section is changed
   // because the section is rejected or BUNDLE is enabled.

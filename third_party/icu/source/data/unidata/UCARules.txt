@@ -1,10 +1,19 @@
 ﻿# UCA_Rules_SHORT.txt
+<<<<<<< HEAD
 # Date: 2025-08-04, 23:56:37 GMT
 # © 2025 Unicode®, Inc.
 # Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
 # For terms of use and license, see https://www.unicode.org/terms_of_use.html
 # UCA Version: 17.0.0
 # UCD Version: 17.0.0
+=======
+# Date: 2024-06-05, 18:49:37 GMT
+# © 2024 Unicode®, Inc.
+# Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+# For terms of use and license, see https://www.unicode.org/terms_of_use.html
+# UCA Version: 16.0.0
+# UCD Version: 16.0.0
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 # For a description of the format and usage, see
 # http://www.unicode.org/reports/tr35/tr35-collation.html#Root_Data_Files
 
@@ -1350,7 +1359,10 @@
   <<	 ࣺ
   <<	 ٰ
     =	 𐻼
+<<<<<<< HEAD
   <<	 𐻺
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   <<	 ܑ
   <<	 ܰ
   <<	 ܱ
@@ -4218,9 +4230,12 @@
  <	 𜳓
  <	 𜳔
  <	 𜳕
+<<<<<<< HEAD
  <	 𜳺
  <	 𜳻
  <	 𜳼
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  <	 𜴀
  <	 𜴁
  <	 𜴂
@@ -4657,6 +4672,7 @@
  <	 𜺱
  <	 𜺲
  <	 𜺳
+<<<<<<< HEAD
  <	 𜺺
  <	 𜺻
  <	 𜺼
@@ -4697,6 +4713,8 @@
  <	 𜻮
  <	 𜻯
  <	 𜻰
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  <	 🬀
  <	 🬁
  <	 🬂
@@ -4936,7 +4954,10 @@
  <	 🯭
  <	 🯮
  <	 🯯
+<<<<<<< HEAD
  <	 🯺
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  <	 ☀
  <	 ☁
  <	 ☂
@@ -8719,8 +8740,11 @@
  <	 🪇
  <	 🪈
  <	 🪉
+<<<<<<< HEAD
  <	 🪊
  <	 🪎
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  <	 🪏
  <	 🪐
  <	 🪑
@@ -8777,8 +8801,11 @@
  <	 🫄
  <	 🫅
  <	 🫆
+<<<<<<< HEAD
  <	 🫈
  <	 🫍
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  <	 🫎
  <	 🫏
  <	 🫐
@@ -8805,8 +8832,11 @@
  <	 🫧
  <	 🫨
  <	 🫩
+<<<<<<< HEAD
  <	 🫪
  <	 🫯
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  <	 🫰
  <	 🫱
  <	 🫲
@@ -9456,6 +9486,7 @@
  <	 🢻
  <	 🣀
  <	 🣁
+<<<<<<< HEAD
  <	 🣐
  <	 🣑
  <	 🣒
@@ -9465,6 +9496,8 @@
  <	 🣖
  <	 🣗
  <	 🣘
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  <	 𝠀
  <	 𝠁
  <	 𝠂
@@ -10107,7 +10140,11 @@
  <	 ー
    <<<	 ｰ
  <	 ヽ
+<<<<<<< HEAD
 &\u20C1  # TODO: reset to the last currency symbol
+=======
+&\u20C0  # TODO: reset to the last currency symbol
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  <	 ¤
  <	 ¢
    <<<	 ￠
@@ -10168,7 +10205,10 @@
  <	 ₾
  <	 ₿
  <	 ⃀
+<<<<<<< HEAD
  <	 ⃁
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 &[last regular]  # TODO: digits & letters from here
  <	 0
     =	 ٠
@@ -10231,7 +10271,10 @@
     =	 𑱐
     =	 𑵐
     =	 𑶠
+<<<<<<< HEAD
     =	 𑷠
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     =	 𑽐
     =	 𖄰
     =	 𖩠
@@ -10357,7 +10400,10 @@
     =	 𑱚
     =	 𑵑
     =	 𑶡
+<<<<<<< HEAD
     =	 𑷡
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     =	 𑽑
     =	 𒐕
     =	 𒐞
@@ -10560,7 +10606,10 @@
     =	 𑱛
     =	 𑵒
     =	 𑶢
+<<<<<<< HEAD
     =	 𑷢
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     =	 𑽒
     =	 𒐀
     =	 𒐖
@@ -10727,7 +10776,10 @@
     =	 𑱜
     =	 𑵓
     =	 𑶣
+<<<<<<< HEAD
     =	 𑷣
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     =	 𑽓
     =	 𒐁
     =	 𒐈
@@ -10879,7 +10931,10 @@
     =	 𑱝
     =	 𑵔
     =	 𑶤
+<<<<<<< HEAD
     =	 𑷤
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     =	 𑽔
     =	 𒐂
     =	 𒐉
@@ -11030,7 +11085,10 @@
     =	 𑱞
     =	 𑵕
     =	 𑶥
+<<<<<<< HEAD
     =	 𑷥
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     =	 𑽕
     =	 𒐃
     =	 𒐊
@@ -11159,7 +11217,10 @@
     =	 𑱟
     =	 𑵖
     =	 𑶦
+<<<<<<< HEAD
     =	 𑷦
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     =	 𑽖
     =	 𒐄
     =	 𒐋
@@ -11278,7 +11339,10 @@
     =	 𑱠
     =	 𑵗
     =	 𑶧
+<<<<<<< HEAD
     =	 𑷧
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     =	 𑽗
     =	 𒐅
     =	 𒐌
@@ -11399,7 +11463,10 @@
     =	 𑱡
     =	 𑵘
     =	 𑶨
+<<<<<<< HEAD
     =	 𑷨
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     =	 𑽘
     =	 𒐆
     =	 𒐍
@@ -11518,7 +11585,10 @@
     =	 𑱢
     =	 𑵙
     =	 𑶩
+<<<<<<< HEAD
     =	 𑷩
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     =	 𑽙
     =	 𒐇
     =	 𒐎
@@ -11570,9 +11640,12 @@
    <<<	 ⁹
    <<<	 ₉
   <<	 ‎𞴶‎
+<<<<<<< HEAD
  <	 𖿴
  <	 𖿵
  <	 𖿶
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  <	 ৴
  <	 ৵
  <	 ৶
@@ -24181,6 +24254,7 @@
    <<<	 𖹞
  <	 𖹿
    <<<	 𖹟
+<<<<<<< HEAD
  <	 𖺻
    <<<	 𖺠
  <	 𖺼
@@ -24231,6 +24305,8 @@
    <<<	 𖺷
  <	 𖻓
    <<<	 𖺸
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  <	 ‎𐵊‎
  <	 ‎𐵋‎
  <	 ‎𐵌‎

@@ -198,6 +198,11 @@ tk{
                 one{"{0} permiriad"}
                 other{"{0} permiriad"}
             }
+            portion-per-1e9{
+                dnam{"bölejik/milliard"}
+                one{"milliardda {0} bölejik"}
+                other{"milliardda {0} bölejik"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -322,6 +327,12 @@ tk{
                 dnam{"nanosekunt"}
                 one{"{0} nanosekunt"}
                 other{"{0} nanosekunt"}
+            }
+            night{
+                dnam{"gije"}
+                one{"{0} gije"}
+                other{"{0} gije"}
+                per{"{0}/gije"}
             }
             quarter{
                 dnam{"çärýek"}
@@ -500,7 +511,11 @@ tk{
             dot-per-centimeter{
                 dnam{"santimetr başyna nokat"}
                 one{"santimetr başyna {0} nokat"}
+<<<<<<< HEAD
                 other{"{0} nokat santimetr başyna"}
+=======
+                other{"santimetr başyna {0} nokat"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             dot-per-inch{
                 dnam{"nokat dýuým başyna"}
@@ -840,6 +855,11 @@ tk{
                 one{"{0} düwün"}
                 other{"{0} düwün"}
             }
+            light-speed{
+                dnam{"ýagtylyk"}
+                one{"{0} ýagtylyk"}
+                other{"{0} ýagtylyk"}
+            }
             meter-per-second{
                 dnam{"metr/sekunt"}
                 one{"{0} metr/sekunt"}
@@ -1089,6 +1109,11 @@ tk{
             percent{
                 dnam{"%"}
             }
+            portion-per-1e9{
+                dnam{"bmlrd"}
+                one{"{0} bmlrd"}
+                other{"{0} bmlrd"}
+            }
         }
         consumption{
             mile-per-gallon-imperial{
@@ -1127,6 +1152,12 @@ tk{
                 dnam{"a"}
                 one{"{0}a"}
                 other{"{0}a"}
+            }
+            night{
+                dnam{"gije"}
+                one{"{0} gije"}
+                other{"{0} gije"}
+                per{"{0}/gije"}
             }
             quarter{
                 one{"{0}ç"}
@@ -1276,6 +1307,11 @@ tk{
                 dnam{"km/sag"}
                 one{"{0}km/sag"}
                 other{"{0}km/sag"}
+            }
+            light-speed{
+                dnam{"ýagtylyk"}
+                one{"{0} ýagtylyk"}
+                other{"{0} ýagtylyk"}
             }
             meter-per-second{
                 dnam{"m/s"}
@@ -1430,6 +1466,11 @@ tk{
             }
             permyriad{
                 dnam{"permiriad"}
+            }
+            portion-per-1e9{
+                dnam{"bölejik/milliard"}
+                one{"{0} bölejik/milliard"}
+                other{"{0} bölejik/milliard"}
             }
         }
         consumption{

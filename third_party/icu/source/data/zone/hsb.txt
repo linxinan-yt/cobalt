@@ -273,6 +273,9 @@ hsb{
         "Pacific:Easter"{
             ec{"Jutrowna kupa"}
         }
+        "Pacific:Enderbury"{
+            ec{"Enderbury"}
+        }
         "Pacific:Fiji"{
             ec{"Fidźi"}
         }

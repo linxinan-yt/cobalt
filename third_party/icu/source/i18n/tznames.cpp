@@ -179,9 +179,13 @@ TimeZoneNamesDelegate::TimeZoneNamesDelegate(const Locale& locale, UErrorCode& s
                 status = U_MEMORY_ALLOCATION_ERROR;
             } else {
                 cacheEntry->names = tznames;
+<<<<<<< HEAD
                 // The initial refCount is 2 because the entry is referenced both
                 // by this TimeZoneDelegate and by the gTimeZoneNamesCache
                 cacheEntry->refCount = 2;
+=======
+                cacheEntry->refCount = 1;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 cacheEntry->lastAccess = static_cast<double>(uprv_getUTCtime());
 
                 uhash_put(gTimeZoneNamesCache, newKey, cacheEntry, &status);

@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD
 import type {Trace} from '../../public/trace';
 import StandardGroupsPlugin from '../dev.perfetto.StandardGroups';
 import type {PerfettoPlugin} from '../../public/plugin';
@@ -23,6 +24,17 @@ import {
 } from '../../components/tracks/counter_track';
 import {TrackNode} from '../../public/workspace';
 import type {SourceDataset} from '../../trace_processor/dataset';
+=======
+import {Trace} from '../../public/trace';
+import StandardGroupsPlugin from '../dev.perfetto.StandardGroups';
+import {PerfettoPlugin} from '../../public/plugin';
+import {Engine} from '../../trace_processor/engine';
+import {SliceTrack, RowSchema} from '../../components/tracks/slice_track';
+import {CounterOptions} from '../../components/tracks/base_counter_track';
+import {createQueryCounterTrack} from '../../components/tracks/query_counter_track';
+import {TrackNode} from '../../public/workspace';
+import {SourceDataset} from '../../trace_processor/dataset';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {STR} from '../../trace_processor/query_result';
 
 export default class implements PerfettoPlugin {
@@ -91,6 +103,7 @@ export default class implements PerfettoPlugin {
     name: string,
     query: string,
     groupName: string,
+<<<<<<< HEAD
     config?: Omit<CounterTrackAttrs, 'trace' | 'uri' | 'sqlSource'>,
     groupCollapsed = true,
   ) {
@@ -100,6 +113,20 @@ export default class implements PerfettoPlugin {
       uri,
       sqlSource: query,
       ...config,
+=======
+    options?: Partial<CounterOptions>,
+    groupCollapsed = true,
+  ) {
+    const uri = `/long_battery_tracing_${name}`;
+    const track = await createQueryCounterTrack({
+      trace: ctx,
+      uri,
+      data: {
+        sqlSource: query,
+        columns: ['ts', 'value'],
+      },
+      options,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     });
     ctx.tracks.registerTrack({
       uri,
@@ -157,7 +184,11 @@ export default class implements PerfettoPlugin {
               google3.wireless.android.telemetry.trace_extractor.modules.atom_counters_slices`,
       );
       features.add('google3');
+<<<<<<< HEAD
     } catch {}
+=======
+    } catch (e) {}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     return features;
   }

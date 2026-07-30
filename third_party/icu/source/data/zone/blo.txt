@@ -465,9 +465,12 @@ blo{
         "America:New_York"{
             ec{"Niu Yɔrk"}
         }
+<<<<<<< HEAD
         "America:Nome"{
             ec{"Noome"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Noronha"{
             ec{"Norɔnya"}
         }
@@ -504,9 +507,12 @@ blo{
         "America:Puerto_Rico"{
             ec{"Pɔrto Rikoo"}
         }
+<<<<<<< HEAD
         "America:Punta_Arenas"{
             ec{"Punta Arenaasɩ"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Rankin_Inlet"{
             ec{"Raŋkɩn Ɩnlɛɛtɩ"}
         }
@@ -585,9 +591,12 @@ blo{
         "America:Winnipeg"{
             ec{"Winipɛɛg"}
         }
+<<<<<<< HEAD
         "America:Yakutat"{
             ec{"Yakutaatɩ"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Antarctica:Casey"{
             ec{"Keesi"}
         }
@@ -1185,6 +1194,12 @@ blo{
         "Pacific:Guam"{
             ec{"Guwam"}
         }
+<<<<<<< HEAD
+=======
+        "Pacific:Kanton"{
+            ec{"Kantɔn"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Pacific:Kiritimati"{
             ec{"Kirimatii"}
         }

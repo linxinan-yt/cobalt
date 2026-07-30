@@ -194,6 +194,7 @@ class DtlsStunPiggybackControllerTest : public ::testing::Test {
   DtlsStunPiggybackController client_;
   DtlsStunPiggybackController server_;
 
+<<<<<<< HEAD
   MOCK_METHOD(void, ClientPacketSink, (std::span<const uint8_t>));
   MOCK_METHOD(void, ServerPacketSink, (std::span<const uint8_t>));
 
@@ -201,6 +202,10 @@ class DtlsStunPiggybackControllerTest : public ::testing::Test {
   MOCK_METHOD(void, ServerCompleteCallback, (bool));
 
   ReceivedIpPacket packet_;
+=======
+  MOCK_METHOD(void, ClientPacketSink, (ArrayView<const uint8_t>));
+  MOCK_METHOD(void, ServerPacketSink, (ArrayView<const uint8_t>));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
  private:
   void MaybeSetHandshakeComplete(std::vector<uint8_t> packet) {
@@ -229,9 +234,13 @@ TEST_F(DtlsStunPiggybackControllerTest, BasicHandshake) {
   EXPECT_EQ(client_.state(), State::PENDING);
 
   // Post-handshake ACK
+<<<<<<< HEAD
   EXPECT_CALL(*this, ClientCompleteCallback(true));
   SendServerToClientEmbedded(empty, STUN_BINDING_REQUEST);
   EXPECT_CALL(*this, ServerCompleteCallback(true));
+=======
+  SendServerToClientEmbedded(empty, STUN_BINDING_REQUEST);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   SendClientToServerEmbedded(empty, STUN_BINDING_RESPONSE);
   EXPECT_EQ(server_.state(), State::COMPLETE);
   EXPECT_EQ(client_.state(), State::COMPLETE);
@@ -313,13 +322,19 @@ TEST_F(DtlsStunPiggybackControllerTest, FirstClientPacketLost) {
 
   // Flight 4
   SendServerToClientEmbedded(dtls_flight4, STUN_BINDING_REQUEST);
+<<<<<<< HEAD
   EXPECT_CALL(*this, ServerCompleteCallback(true));
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   SendClientToServerEmbedded(empty, STUN_BINDING_RESPONSE);
   EXPECT_EQ(server_.state(), State::COMPLETE);
   EXPECT_EQ(client_.state(), State::PENDING);
 
   // Post-handshake ACK
+<<<<<<< HEAD
   EXPECT_CALL(*this, ClientCompleteCallback(true));
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   SendServerToClientEmbedded(empty, STUN_BINDING_REQUEST);
   EXPECT_EQ(client_.state(), State::COMPLETE);
 }
@@ -329,9 +344,12 @@ TEST_F(DtlsStunPiggybackControllerTest, NotSupportedByServer) {
 
   // Flight 1
   SendClientToServerEmbedded(dtls_flight1, STUN_BINDING_REQUEST);
+<<<<<<< HEAD
   // TODO: bugs.webrtc.org/367395350 - assert when calling the complete
   // callback in this case which currently causes a sleuth of test failures.
   // EXPECT_CALL(*this, ClientCompleteCallback());
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   SendServerToClientEmbedded(empty, STUN_BINDING_RESPONSE);
   EXPECT_EQ(client_.state(), State::OFF);
 }
@@ -373,9 +391,13 @@ TEST_F(DtlsStunPiggybackControllerTest, SomeRequestsDoNotGoThrough) {
   EXPECT_EQ(client_.state(), State::PENDING);
 
   // Post-handshake ACK
+<<<<<<< HEAD
   EXPECT_CALL(*this, ServerCompleteCallback(true));
   SendClientToServerEmbedded(empty, STUN_BINDING_REQUEST);
   EXPECT_CALL(*this, ClientCompleteCallback(true));
+=======
+  SendClientToServerEmbedded(empty, STUN_BINDING_REQUEST);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   SendServerToClientEmbedded(empty, STUN_BINDING_RESPONSE);
   EXPECT_EQ(server_.state(), State::COMPLETE);
   EXPECT_EQ(client_.state(), State::COMPLETE);
@@ -395,9 +417,13 @@ TEST_F(DtlsStunPiggybackControllerTest, LossOnPostHandshakeAck) {
   EXPECT_EQ(client_.state(), State::PENDING);
 
   // Post-handshake ACK. Client to server gets lost
+<<<<<<< HEAD
   EXPECT_CALL(*this, ClientCompleteCallback(true));
   SendServerToClientEmbedded(empty, STUN_BINDING_REQUEST);
   EXPECT_CALL(*this, ServerCompleteCallback(true));
+=======
+  SendServerToClientEmbedded(empty, STUN_BINDING_REQUEST);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   SendClientToServerEmbedded(empty, STUN_BINDING_RESPONSE);
   EXPECT_EQ(server_.state(), State::COMPLETE);
   EXPECT_EQ(client_.state(), State::COMPLETE);
@@ -444,9 +470,13 @@ TEST_F(DtlsStunPiggybackControllerTest, BasicHandshakeAckData) {
               }));
 
   // Post-handshake ACK
+<<<<<<< HEAD
   EXPECT_CALL(*this, ClientCompleteCallback);
   SendServerToClientEmbedded(empty, STUN_BINDING_REQUEST);
   EXPECT_CALL(*this, ServerCompleteCallback);
+=======
+  SendServerToClientEmbedded(empty, STUN_BINDING_REQUEST);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   SendClientToServerEmbedded(empty, STUN_BINDING_RESPONSE);
   EXPECT_EQ(server_.state(), State::COMPLETE);
   EXPECT_EQ(client_.state(), State::COMPLETE);
@@ -483,9 +513,13 @@ TEST_F(DtlsStunPiggybackControllerTest, UnwrappedHandshakeAckData) {
               }));
 
   // Post-handshake ACK
+<<<<<<< HEAD
   EXPECT_CALL(*this, ClientCompleteCallback);
   SendServerToClientEmbedded(empty, STUN_BINDING_REQUEST);
   EXPECT_CALL(*this, ServerCompleteCallback);
+=======
+  SendServerToClientEmbedded(empty, STUN_BINDING_REQUEST);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   SendClientToServerEmbedded(empty, STUN_BINDING_RESPONSE);
   EXPECT_EQ(server_.state(), State::COMPLETE);
   EXPECT_EQ(client_.state(), State::COMPLETE);

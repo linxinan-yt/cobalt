@@ -77,6 +77,18 @@ yo_BJ{
                         "Ɔjɔ́bɔ",
                         "Ɛtì",
                         "Àbámɛ́ta",
+<<<<<<< HEAD
+=======
+                    }
+                    short{
+                        "Àìkú",
+                        "Ajé",
+                        "Ìsɛ́gun",
+                        "Ɔjɔ́rú",
+                        "Ɔjɔ́bɔ",
+                        "Ɛtì",
+                        "Àbámɛ́ta",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     }
                     wide{
                         "Ɔjɔ́ Àìkú",
@@ -89,6 +101,15 @@ yo_BJ{
                     }
                 }
                 stand-alone{
+                    abbreviated{
+                        "Àìkú",
+                        "Ajé",
+                        "Ìsɛ́gun",
+                        "Ɔjɔ́rú",
+                        "Ɔjɔ́bɔ",
+                        "Ɛtì",
+                        "Àbámɛ́ta",
+                    }
                     narrow{
                         "À",
                         "A",
@@ -97,6 +118,15 @@ yo_BJ{
                         "Ɔ",
                         "Ɛ",
                         "À",
+                    }
+                    short{
+                        "Àìkú",
+                        "Ajé",
+                        "Ìsɛ́gun",
+                        "Ɔjɔ́rú",
+                        "Ɔjɔ́bɔ",
+                        "Ɛtì",
+                        "Àbámɛ́ta",
                     }
                     wide{
                         "Àìkú",
@@ -132,6 +162,23 @@ yo_BJ{
                     }
                 }
                 stand-alone{
+<<<<<<< HEAD
+=======
+                    abbreviated{
+                        "Oshù Shɛ́rɛ́",
+                        "Oshù Èrèlè",
+                        "Oshù Ɛrɛ̀nà",
+                        "Oshù Ìgbé",
+                        "Oshù Ɛ̀bibi",
+                        "Oshù Òkúdu",
+                        "Oshù Agɛmɔ",
+                        "Oshù Ògún",
+                        "Oshù Owewe",
+                        "Oshù Ɔ̀wàrà",
+                        "Oshù Bélú",
+                        "Oshù Ɔ̀pɛ̀",
+                    }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     narrow{
                         "S",
                         "È",
@@ -185,6 +232,9 @@ yo_BJ{
         dayOfYear{
             dn{"Ɔjɔ́ inú ɔdún"}
         }
+        dayOfYear-narrow{
+            dn{"Ɔjɔ́ inú ɔdún."}
+        }
         dayOfYear-short{
             dn{"Ɔjɔ́ inú ɔdún."}
         }
@@ -217,6 +267,16 @@ yo_BJ{
                 "0"{"ɔjɔ́ Ajé yìí"}
                 "1"{"next Monday"}
             }
+<<<<<<< HEAD
+=======
+        }
+        mon-narrow{
+            relative{
+                "-1"{"ɔjɔ́ Ajé tó kɔjá"}
+                "0"{"ɔjɔ́ Ajé yìí"}
+                "1"{"next Monday"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         month{
             relative{
@@ -386,6 +446,19 @@ yo_BJ{
                     other{"{0} Ɔdún sɛ́yìn"}
                 }
             }
+<<<<<<< HEAD
+=======
+        }
+        year-narrow{
+            relativeTime{
+                future{
+                    other{"ní {0} Ɔdún"}
+                }
+                past{
+                    other{"Ɔdún {0} sɛ́yìn"}
+                }
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         year-short{
             relative{
@@ -394,6 +467,12 @@ yo_BJ{
                 "1"{"Ɔdún tó ńbɔ̀"}
             }
             relativeTime{
+<<<<<<< HEAD
+=======
+                future{
+                    other{"ní {0} Ɔdún"}
+                }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 past{
                     other{"Ɔdún {0} sɛ́yìn"}
                 }

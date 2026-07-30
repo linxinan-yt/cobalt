@@ -357,6 +357,7 @@ class RtpTransceiver : public RtpTransceiverInterface {
       RtpTransceiverDirection new_direction) override;
   std::optional<RtpTransceiverDirection> current_direction() const override;
   std::optional<RtpTransceiverDirection> fired_direction() const override;
+<<<<<<< HEAD
   // Records the user's intent to use Sframe and fires negotiation needed.
   // Triggered by the sender/receiver when
   // CreateSframeEncryptorOrError/CreateSframeDecryptorOrError is called.
@@ -370,6 +371,8 @@ class RtpTransceiver : public RtpTransceiverInterface {
   void ApplySframeEnabled(bool sframe_enabled);
   // Returns the current Sframe state.
   std::optional<bool> SframeEnabled() const override;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   bool receptive() const override;
   RTCError StopStandard() override;
   void StopInternal() override;
@@ -438,12 +441,16 @@ class RtpTransceiver : public RtpTransceiverInterface {
   VoiceMediaReceiveChannelInterface* voice_media_receive_channel();
 
  private:
+<<<<<<< HEAD
   VoiceChannelFactoryInterface* voice_channel_factory() const {
     return context_->voice_channel_factory();
   }
   VideoChannelFactoryInterface* video_channel_factory() const {
     return context_->video_channel_factory();
   }
+=======
+  MediaEngineInterface* media_engine() RTC_RUN_ON(context()->worker_thread());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   ConnectionContext* context() const { return context_; }
   CodecVendor& codec_vendor() {
     return *codec_lookup_helper_->GetCodecVendor();
@@ -485,6 +492,7 @@ class RtpTransceiver : public RtpTransceiverInterface {
   std::vector<RtpHeaderExtensionCapability>
   GetOfferedAndImplementedHeaderExtensions(
       const MediaContentDescription* content) const;
+<<<<<<< HEAD
 
   // Configures the channel with the provided content description.
   // Pushes a multi-stage execution task into the provided
@@ -518,6 +526,8 @@ class RtpTransceiver : public RtpTransceiverInterface {
   //    the cached parameters on the senders.
   void SetChannelContent(absl::AnyInvocable<RTCError() &&> set_content,
                          ScopedOperationsBatcher& batcher);
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   const Environment env_;
   // Enforce that this object is created, used and destroyed on one thread.
@@ -546,16 +556,21 @@ class RtpTransceiver : public RtpTransceiverInterface {
   bool reused_for_addtrack_ = false;
   bool has_ever_been_used_to_send_ = false;
   bool receptive_ RTC_GUARDED_BY(thread_) = false;
+<<<<<<< HEAD
   bool receptive_n_ RTC_GUARDED_BY(context()->network_thread()) = false;
   bool packet_notified_after_receptive_
       RTC_GUARDED_BY(context()->network_thread()) = false;
   RtpTransportInternal* rtp_transport_
       RTC_GUARDED_BY(context()->network_thread()) = nullptr;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // Accessed on both thread_ and the network thread. Considered safe
   // because all access on the network thread is within an invoke()
   // from thread_.
   std::unique_ptr<ChannelInterface> channel_ = nullptr;
+  std::unique_ptr<ConnectionContext::MediaEngineReference> media_engine_ref_
+      RTC_GUARDED_BY(context()->worker_thread());
   ConnectionContext* const context_;
   CodecLookupHelper* const codec_lookup_helper_;
   LegacyStatsCollectorInterface* const legacy_stats_;

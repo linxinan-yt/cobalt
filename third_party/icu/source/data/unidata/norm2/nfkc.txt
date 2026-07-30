@@ -13,7 +13,11 @@
 # to NFKC one-way mappings.
 # Use this file as the second gennorm2 input file after nfc.txt.
 
+<<<<<<< HEAD
 * Unicode 17.0.0
+=======
+* Unicode 16.0.0
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 00A0>0020
 00A8>0020 0308

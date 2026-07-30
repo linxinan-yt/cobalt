@@ -343,6 +343,12 @@ bs{
         "Europe:Tallinn"{
             ec{"Talin"}
         }
+<<<<<<< HEAD
+=======
+        "Europe:Tirane"{
+            ec{"Tirana"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Europe:Vatican"{
             ec{"Vatikan"}
         }

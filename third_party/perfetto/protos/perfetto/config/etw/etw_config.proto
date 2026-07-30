@@ -42,6 +42,7 @@ message EtwConfig {
   // Provides events relating to the memory manager.
   repeated string memory_provider_events = 3;
   // Provides events relating to file I/O.
+<<<<<<< HEAD
   repeated string file_provider_events = 4 [deprecated = true];
   // Events for which stacks should be collected.
   repeated string stack_sampling_events = 5;
@@ -50,4 +51,7 @@ message EtwConfig {
   // Provides events relating to multiple kinds of IO including disk, cache, and
   // network.
   repeated string system_io_provider_events = 7;
+=======
+  repeated string file_provider_events = 4;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }

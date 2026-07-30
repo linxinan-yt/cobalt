@@ -23,6 +23,7 @@
 #include "perfetto/base/logging.h"
 #include "perfetto/base/task_runner.h"
 #include "perfetto/base/time.h"
+#include "perfetto/ext/base/flags.h"
 #include "perfetto/ext/tracing/core/commit_data_request.h"
 #include "perfetto/ext/tracing/core/shared_memory.h"
 #include "perfetto/ext/tracing/core/shared_memory_abi.h"
@@ -407,11 +408,23 @@ void SharedMemoryArbiterImpl::UpdateCommitDataRequest(
     // trace.
     if (fully_bound_ &&
         (last_patch_req || bytes_pending_commit_ >= shmem_abi_.size() / 2)) {
+<<<<<<< HEAD
       // Only post an immediate flush task if we haven't already posted one.
       // This prevents spamming the task runner with immediate flushes when
       // the buffer remains over 50% full while chunks continue to be
       // committed. See b/330580374.
       if (!immediate_flush_scheduled_) {
+=======
+      bool should_post_immediate_flush = true;
+      if (base::flags::sma_prevent_duplicate_immediate_flushes) {
+        // Only post an immediate flush task if we haven't already posted one.
+        // This prevents spamming the task runner with immediate flushes when
+        // the buffer remains over 50% full while chunks continue to be
+        // committed. See b/330580374.
+        should_post_immediate_flush = !immediate_flush_scheduled_;
+      }
+      if (should_post_immediate_flush) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         weak_this = weak_ptr_factory_.GetWeakPtr();
         task_runner_to_post_delayed_callback_on = task_runner_;
         flush_delay_ms = 0;
@@ -437,13 +450,26 @@ void SharedMemoryArbiterImpl::UpdateCommitDataRequest(
         scoped_lock.unlock();
         FlushPendingCommitDataRequests();
       } else {
+        bool should_post_immediate_flush = true;
+        if (base::flags::sma_prevent_duplicate_immediate_flushes) {
+          // Only post an immediate flush task if we haven't already posted one.
+          // This prevents spamming the task runner with immediate flushes when
+          // the buffer remains over 50% full while chunks continue to be
+          // committed. See b/330580374.
+          should_post_immediate_flush = !immediate_flush_scheduled_;
+        }
+
         // Since we aren't on the |task_runner_| thread post a task instead,
         // in order to prevent non-overlaping commit data request flushes.
+<<<<<<< HEAD
         // Only post an immediate flush task if we haven't already posted one.
         // This prevents spamming the task runner with immediate flushes when
         // the buffer remains over 50% full while chunks continue to be
         // committed. See b/330580374.
         if (!immediate_flush_scheduled_) {
+=======
+        if (should_post_immediate_flush) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
           weak_this = weak_ptr_factory_.GetWeakPtr();
           task_runner_to_post_delayed_callback_on = task_runner_;
           flush_delay_ms = 0;

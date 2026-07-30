@@ -576,9 +576,62 @@ TEST_P(HTMLCanvasElementTest, IsCanvasOrInCanvasSubtreeSlotted) {
   EXPECT_TRUE(slotted->IsCanvasOrInCanvasSubtree());
   EXPECT_TRUE(slotted->IsInCanvasSubtree());
 
+<<<<<<< HEAD
   auto* slotted_child = GetDocument().getElementById(AtomicString("slotchild"));
   EXPECT_TRUE(slotted_child->IsCanvasOrInCanvasSubtree());
   EXPECT_TRUE(slotted_child->IsInCanvasSubtree());
+=======
+  base::test::TracingEnvironment tracing_environment_;
+};
+
+#if !BUILDFLAG(IS_COBALT_HERMETIC_BUILD)
+class HTMLCanvasElementWithTracingSyncTest
+    : public HTMLCanvasElementWithTracingTest,
+      public testing::WithParamInterface<const char*> {};
+
+INSTANTIATE_TEST_SUITE_P(All,
+                         HTMLCanvasElementWithTracingSyncTest,
+                         testing::ValuesIn({R"JS(
+          let canvas = document.getElementById('canvas');
+          let ctx = canvas.getContext('2d');
+          ctx.fillText("abc", 0, 10);
+          canvas.toDataURL();)JS",
+                                            R"JS(
+          let canvas = document.getElementById('canvas');
+          let ctx = canvas.getContext('2d');
+          ctx.fillText("abc", 0, 10);
+          ctx.getImageData(0, 0, 10, 10);)JS"}));
+
+TEST_P(HTMLCanvasElementWithTracingSyncTest,
+       CanvasReadbackEmitsIdentifiabilityTraces) {
+  // Enable script so that the canvas will create a LayoutHTMLCanvas.
+  GetDocument().GetSettings()->SetScriptEnabled(true);
+
+  SetBodyInnerHTML("<canvas id='canvas'></canvas>");
+
+  base::test::TestTraceProcessor test_trace_processor;
+  test_trace_processor.StartTrace(
+      base::test::DefaultTraceConfig(
+          "disabled-by-default-identifiability.high_entropy_api", false),
+      perfetto::kInProcessBackend);
+  auto* script = GetDocument().CreateRawElement(html_names::kScriptTag);
+  script->setTextContent(String(GetParam()));
+  GetDocument().body()->appendChild(script);
+
+  absl::Status status = test_trace_processor.StopAndParseTrace();
+  ASSERT_TRUE(status.ok()) << status.message();
+  std::string query = R"sql(
+    SELECT slice.name, args.display_value FROM slice
+      LEFT JOIN args USING (arg_set_id)
+      WHERE slice.category =
+        'disabled-by-default-identifiability.high_entropy_api'
+      AND args.key = 'debug.data_url'
+  )sql";
+  auto result = test_trace_processor.RunQuery(query);
+  ASSERT_TRUE(result.has_value()) << result.error();
+  EXPECT_THAT(result.value(),
+              Contains(ElementsAre(Eq("CanvasReadback"), StartsWith("data:"))));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 TEST_P(HTMLCanvasElementTest, LayoutsubtreeInvalidation) {
@@ -636,5 +689,6 @@ TEST_P(HTMLCanvasElementTest, HTMLInCanvasUseCounter) {
   RunDocumentLifecycle();
   EXPECT_TRUE(GetDocument().IsUseCounted(WebFeature::kHTMLInCanvas));
 }
+#endif
 
 }  // namespace blink

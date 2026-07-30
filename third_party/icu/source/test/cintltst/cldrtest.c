@@ -1013,10 +1013,17 @@ static void VerifyTranslation(void) {
                         log_knownIssue("CLDR-17203", "Some day names in kxv(_Deva)? use chars not in exemplars")) {
                     end = 0;
                 }
+<<<<<<< HEAD
                 if (uprv_strncmp(currLoc,"shn",3) == 0) {
                     log_knownIssue("CLDR-18922", "shn: Language autonym, month/day names use chars not in exemplars");
                     end = 0;
                 }              
+=======
+                if (uprv_strncmp(currLoc,"ak",2) == 0 &&  
+                        log_knownIssue("CLDR-17852", "Some month names in ax(_GH) use chars not in exemplars")) {
+                    end = 0;
+                }                
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
                 for (idx = 0; idx < end; idx++) {
                     const UChar *fromBundleStr = ures_getStringByIndex(resArray, idx, &langSize, &errorCode);
@@ -1054,10 +1061,17 @@ static void VerifyTranslation(void) {
                         log_knownIssue("CLDR-17203", "Some month names in kxv(_Deva)? use chars not in exemplars")) {
                     end = 0;
                 }
+<<<<<<< HEAD
                 if (uprv_strncmp(currLoc,"shn",3) == 0) {
                     log_knownIssue("CLDR-18922", "shn: Language autonym, month/day names use chars not in exemplars");
                     end = 0;
                 }              
+=======
+                if (uprv_strncmp(currLoc,"ak",2) == 0 &&  
+                        log_knownIssue("CLDR-17852", "Some month names in ax(_GH) use chars not in exemplars")) {
+                    end = 0;
+                }  
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
                 for (idx = 0; idx < end; idx++) {
                     const UChar *fromBundleStr = ures_getStringByIndex(resArray, idx, &langSize, &errorCode);

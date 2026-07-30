@@ -106,8 +106,12 @@ const int8_t Grego::MONTH_LENGTH[24] =
 
 int64_t Grego::fieldsToDay(int32_t year, int32_t month, int32_t dom) {
 
+<<<<<<< HEAD
     int64_t y = year;
     y--;
+=======
+    int64_t y = year - 1;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     int64_t julian = 365LL * y +
         ClockMath::floorDivideInt64(y, 4LL) + (JULIAN_1_CE - 3) + // Julian cal
@@ -177,6 +181,21 @@ int32_t Grego::dayToYear(int32_t day, int16_t& doy, UErrorCode& status) {
     return year;
 }
 
+<<<<<<< HEAD
+=======
+void Grego::dayToFields(int32_t day, int32_t& year, int8_t& month,
+                        int8_t& dom, int8_t& dow, UErrorCode& status) {
+    int16_t unusedDOY;
+    dayToFields(day, year, month, dom, dow, unusedDOY, status);
+}
+
+void Grego::dayToFields(int32_t day, int32_t& year, int8_t& month,
+                        int8_t& dom, int16_t& doy, UErrorCode& status) {
+    int8_t unusedDOW;
+    dayToFields(day, year, month, dom, unusedDOW, doy, status);
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 void Grego::timeToFields(UDate time, int32_t& year, int8_t& month,
                         int8_t& dom, int32_t& mid, UErrorCode& status) {
     int8_t unusedDOW;

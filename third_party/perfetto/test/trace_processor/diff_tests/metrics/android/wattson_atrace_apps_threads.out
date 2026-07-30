@@ -1,13 +1,21 @@
 wattson_atrace_apps_threads {
   metric_version: 4
   power_model_version: 1
+<<<<<<< HEAD
   is_crude_estimate: 0
+=======
+  is_crude_estimate: false
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   period_info {
     period_id: 1
     period_name: "NOTIFICATION_SHADE_EXPAND_COLLAPSE::Expand"
     task_info {
       estimated_mws: 206.344879
+<<<<<<< HEAD
       estimated_mw: 267.218414
+=======
+      estimated_mw: 52.574814
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 4.969837
       total_mws: 211.314728
       thread_name: "RenderThread"
@@ -17,7 +25,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 173.198456
+<<<<<<< HEAD
       estimated_mw: 224.293518
+=======
+      estimated_mw: 44.129402
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 1.705475
       total_mws: 174.903931
       thread_name: "ndroid.systemui"
@@ -27,7 +39,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 97.400505
+<<<<<<< HEAD
       estimated_mw: 126.134499
+=======
+      estimated_mw: 24.816769
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: -24.105721
       total_mws: 73.294785
       thread_name: "swapper"
@@ -37,7 +53,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 74.935982
+<<<<<<< HEAD
       estimated_mw: 97.042740
+=======
+      estimated_mw: 19.093010
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.033781
       total_mws: 74.969757
       thread_name: "heapprofdunwind"
@@ -47,7 +67,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 47.748833
+<<<<<<< HEAD
       estimated_mw: 61.835152
+=======
+      estimated_mw: 12.165971
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.362411
       total_mws: 48.111240
       thread_name: "surfaceflinger"
@@ -57,7 +81,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 41.330822
+<<<<<<< HEAD
       estimated_mw: 53.523773
+=======
+      estimated_mw: 10.530720
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.027531
       total_mws: 41.358353
       thread_name: "stack-unwinding"
@@ -67,7 +95,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 22.586414
+<<<<<<< HEAD
       estimated_mw: 29.249603
+=======
+      estimated_mw: 5.754814
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.007215
       total_mws: 22.593630
       thread_name: "binder:581_2"
@@ -77,7 +109,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 21.058292
+<<<<<<< HEAD
       estimated_mw: 27.270672
+=======
+      estimated_mw: 5.365463
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.193188
       total_mws: 21.251480
       thread_name: "RenderEngine"
@@ -87,7 +123,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 17.565874
+<<<<<<< HEAD
       estimated_mw: 22.747959
+=======
+      estimated_mw: 4.475626
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.665517
       total_mws: 18.231392
       thread_name: "heapprofd"
@@ -97,7 +137,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 15.652218
+<<<<<<< HEAD
       estimated_mw: 20.269758
+=======
+      estimated_mw: 3.988044
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.008301
       total_mws: 15.660519
       thread_name: "traced_probes"
@@ -107,7 +151,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 15.577502
+<<<<<<< HEAD
       estimated_mw: 20.173000
+=======
+      estimated_mw: 3.969007
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.043519
       total_mws: 15.621020
       thread_name: "mali-compiler"
@@ -117,7 +165,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 13.859881
+<<<<<<< HEAD
       estimated_mw: 17.948666
+=======
+      estimated_mw: 3.531372
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 1.600055
       total_mws: 15.459936
       thread_name: "mali_jd_thread"
@@ -127,7 +179,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 10.264517
+<<<<<<< HEAD
       estimated_mw: 13.292639
+=======
+      estimated_mw: 2.615306
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.210707
       total_mws: 10.475224
       thread_name: "binder:1423_D"
@@ -137,7 +193,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 9.553444
+<<<<<<< HEAD
       estimated_mw: 12.371793
+=======
+      estimated_mw: 2.434131
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 1.305687
       total_mws: 10.859131
       thread_name: "mali-cmar-backe"
@@ -147,7 +207,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 8.456360
+<<<<<<< HEAD
       estimated_mw: 10.951059
+=======
+      estimated_mw: 2.154604
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.297799
       total_mws: 8.754159
       thread_name: "s.nexuslauncher"
@@ -157,7 +221,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 8.186393
+<<<<<<< HEAD
       estimated_mw: 10.601449
+=======
+      estimated_mw: 2.085819
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.218964
       total_mws: 8.405357
       thread_name: "RenderThread"
@@ -167,7 +235,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 6.272300
+<<<<<<< HEAD
       estimated_mw: 8.122683
+=======
+      estimated_mw: 1.598125
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.159810
       total_mws: 6.432110
       thread_name: "android.hardwar"
@@ -177,7 +249,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 6.272032
+<<<<<<< HEAD
       estimated_mw: 8.122336
+=======
+      estimated_mw: 1.598057
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.431343
       total_mws: 6.703376
       thread_name: "binder:15865_2"
@@ -187,7 +263,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 6.165379
+<<<<<<< HEAD
       estimated_mw: 7.984219
+=======
+      estimated_mw: 1.570883
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.019638
       total_mws: 6.185017
       thread_name: "Jit thread pool"
@@ -197,7 +277,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 6.118854
+<<<<<<< HEAD
       estimated_mw: 7.923970
+=======
+      estimated_mw: 1.559029
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.140632
       total_mws: 6.259486
       thread_name: "binder:1423_19"
@@ -207,7 +291,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 5.846278
+<<<<<<< HEAD
       estimated_mw: 7.570980
+=======
+      estimated_mw: 1.489579
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.401153
       total_mws: 6.247431
       thread_name: "binder:578_4"
@@ -217,7 +305,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 5.570155
+<<<<<<< HEAD
       estimated_mw: 7.213399
+=======
+      estimated_mw: 1.419225
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.963406
       total_mws: 6.533561
       thread_name: "TimerDispatch"
@@ -227,7 +319,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 5.128266
+<<<<<<< HEAD
       estimated_mw: 6.641150
+=======
+      estimated_mw: 1.306636
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.005174
       total_mws: 5.133440
       thread_name: "traced"
@@ -237,7 +333,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 4.550554
+<<<<<<< HEAD
       estimated_mw: 5.893007
+=======
+      estimated_mw: 1.159440
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.453964
       total_mws: 5.004518
       thread_name: "decon0_kthread"
@@ -247,7 +347,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 4.416450
+<<<<<<< HEAD
       estimated_mw: 5.719341
+=======
+      estimated_mw: 1.125272
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.050740
       total_mws: 4.467190
       thread_name: "android.anim"
@@ -257,7 +361,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 4.356687
+<<<<<<< HEAD
       estimated_mw: 5.641947
+=======
+      estimated_mw: 1.110044
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.300729
       total_mws: 4.657416
       thread_name: "binder:578_1"
@@ -267,7 +375,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 4.147276
+<<<<<<< HEAD
       estimated_mw: 5.370759
+=======
+      estimated_mw: 1.056688
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.067578
       total_mws: 4.214855
       thread_name: "binder:1423_20"
@@ -277,7 +389,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 4.137250
+<<<<<<< HEAD
       estimated_mw: 5.357774
+=======
+      estimated_mw: 1.054134
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.412258
       total_mws: 4.549508
       thread_name: "BckgrndExec HP"
@@ -287,7 +403,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 4.009885
+<<<<<<< HEAD
       estimated_mw: 5.192835
+=======
+      estimated_mw: 1.021682
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.202287
       total_mws: 4.212172
       thread_name: "app"
@@ -297,7 +417,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.156218
+<<<<<<< HEAD
       estimated_mw: 4.087329
+=======
+      estimated_mw: 0.804176
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.176803
       total_mws: 3.333021
       thread_name: "binder:15865_5"
@@ -307,7 +431,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.003714
+<<<<<<< HEAD
       estimated_mw: 3.889835
+=======
+      estimated_mw: 0.765319
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.220362
       total_mws: 3.224076
       thread_name: "binder:8021_3"
@@ -317,7 +445,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.880519
+<<<<<<< HEAD
       estimated_mw: 3.730296
+=======
+      estimated_mw: 0.733930
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.073581
       total_mws: 2.954099
       thread_name: "kworker/u16:2"
@@ -327,7 +459,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.684458
+<<<<<<< HEAD
       estimated_mw: 3.476396
+=======
+      estimated_mw: 0.683976
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.243230
       total_mws: 2.927688
       thread_name: "kworker/u17:0"
@@ -337,7 +473,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.619813
+<<<<<<< HEAD
       estimated_mw: 3.392680
+=======
+      estimated_mw: 0.667505
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.226571
       total_mws: 2.846383
       thread_name: "kworker/u17:2"
@@ -347,7 +487,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.463385
+<<<<<<< HEAD
       estimated_mw: 3.190105
+=======
+      estimated_mw: 0.627648
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.101037
       total_mws: 2.564422
       thread_name: "system_server"
@@ -357,7 +501,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.185957
+<<<<<<< HEAD
       estimated_mw: 2.830833
+=======
+      estimated_mw: 0.556962
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.327193
       total_mws: 2.513149
       thread_name: "surfaceflinger"
@@ -367,7 +515,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.126996
+<<<<<<< HEAD
       estimated_mw: 2.754478
+=======
+      estimated_mw: 0.541939
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.180633
       total_mws: 2.307629
       thread_name: "binder:578_5"
@@ -377,7 +529,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.067434
+<<<<<<< HEAD
       estimated_mw: 2.677345
+=======
+      estimated_mw: 0.526763
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.095786
       total_mws: 2.163220
       thread_name: "mali-cmar-backe"
@@ -387,7 +543,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.943625
+<<<<<<< HEAD
       estimated_mw: 2.517012
+=======
+      estimated_mw: 0.495218
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.420474
       total_mws: 2.364099
       thread_name: "mali_apc_thread"
@@ -397,7 +557,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.867007
+<<<<<<< HEAD
       estimated_mw: 2.417791
+=======
+      estimated_mw: 0.475697
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.093421
       total_mws: 1.960428
       thread_name: "android.display"
@@ -407,7 +571,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.798620
+<<<<<<< HEAD
       estimated_mw: 2.329229
+=======
+      estimated_mw: 0.458272
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.033822
       total_mws: 1.832442
       thread_name: "SysUiBg"
@@ -417,7 +585,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.677326
+<<<<<<< HEAD
       estimated_mw: 2.172151
+=======
+      estimated_mw: 0.427367
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.051894
       total_mws: 1.729220
       thread_name: "roidJUnitRunner"
@@ -427,7 +599,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.641503
+<<<<<<< HEAD
       estimated_mw: 2.125760
+=======
+      estimated_mw: 0.418240
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.153495
       total_mws: 1.794998
       thread_name: "wmshell.main"
@@ -437,7 +613,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.582139
+<<<<<<< HEAD
       estimated_mw: 2.048884
+=======
+      estimated_mw: 0.403115
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.483606
       total_mws: 2.065745
       thread_name: "sugov:0"
@@ -447,7 +627,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.544844
+<<<<<<< HEAD
       estimated_mw: 2.000587
+=======
+      estimated_mw: 0.393612
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.208817
       total_mws: 1.753661
       thread_name: "SystemUIBg-8"
@@ -457,7 +641,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.482244
+<<<<<<< HEAD
       estimated_mw: 1.919519
+=======
+      estimated_mw: 0.377662
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.297466
       total_mws: 1.779710
       thread_name: "sugov:6"
@@ -467,7 +655,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.464107
+<<<<<<< HEAD
       estimated_mw: 1.896032
+=======
+      estimated_mw: 0.373041
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.063049
       total_mws: 1.527157
       thread_name: "traced_perf"
@@ -477,7 +669,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.420944
+<<<<<<< HEAD
       estimated_mw: 1.840135
+=======
+      estimated_mw: 0.362044
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.008858
       total_mws: 1.429802
       thread_name: "HwBinder:882_4"
@@ -487,7 +683,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.369890
+<<<<<<< HEAD
       estimated_mw: 1.774020
+=======
+      estimated_mw: 0.349036
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.003866
       total_mws: 1.373756
       thread_name: "logcat"
@@ -497,7 +697,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.310717
+<<<<<<< HEAD
       estimated_mw: 1.697390
+=======
+      estimated_mw: 0.333959
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.567429
       total_mws: 1.878146
       thread_name: "GPU completion"
@@ -507,7 +711,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.285026
+<<<<<<< HEAD
       estimated_mw: 1.664120
+=======
+      estimated_mw: 0.327413
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.156414
       total_mws: 1.441440
       thread_name: "SystemUIBg-2"
@@ -517,7 +725,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.242282
+<<<<<<< HEAD
       estimated_mw: 1.608766
+=======
+      estimated_mw: 0.316522
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.053700
       total_mws: 1.295982
       thread_name: "logd.writer"
@@ -527,7 +739,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.225198
+<<<<<<< HEAD
       estimated_mw: 1.586642
+=======
+      estimated_mw: 0.312169
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.030744
       total_mws: 1.255942
       thread_name: "RegionSampling"
@@ -537,7 +753,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.206165
+<<<<<<< HEAD
       estimated_mw: 1.561995
+=======
+      estimated_mw: 0.307320
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.139035
       total_mws: 1.345200
       thread_name: "SystemUIBg-5"
@@ -547,7 +767,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.159424
+<<<<<<< HEAD
       estimated_mw: 1.501464
+=======
+      estimated_mw: 0.295411
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.153519
       total_mws: 1.312943
       thread_name: "SystemUIBg-1"
@@ -557,7 +781,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.119683
+<<<<<<< HEAD
       estimated_mw: 1.449999
+=======
+      estimated_mw: 0.285285
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.118861
       total_mws: 1.238543
       thread_name: "SystemUIBg-7"
@@ -567,7 +795,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.072642
+<<<<<<< HEAD
       estimated_mw: 1.389081
+=======
+      estimated_mw: 0.273300
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.121054
       total_mws: 1.193696
       thread_name: "SystemUIBg-4"
@@ -577,7 +809,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.070235
+<<<<<<< HEAD
       estimated_mw: 1.385964
+=======
+      estimated_mw: 0.272686
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.020426
       total_mws: 1.090661
       thread_name: "CpuMonitorServi"
@@ -597,7 +833,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.971580
+<<<<<<< HEAD
       estimated_mw: 1.258205
+=======
+      estimated_mw: 0.247550
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.080120
       total_mws: 1.051700
       thread_name: "UiAutomation"
@@ -607,7 +847,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.957315
+<<<<<<< HEAD
       estimated_mw: 1.239731
+=======
+      estimated_mw: 0.243915
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.328657
       total_mws: 1.285972
       thread_name: "sugov:4"
@@ -627,7 +871,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.912452
+<<<<<<< HEAD
       estimated_mw: 1.181633
+=======
+      estimated_mw: 0.232485
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.052430
       total_mws: 0.964882
       thread_name: "binder:7309_7"
@@ -637,7 +885,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.899299
+<<<<<<< HEAD
       estimated_mw: 1.164600
+=======
+      estimated_mw: 0.229133
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.655405
       total_mws: 1.554705
       thread_name: "HWC release"
@@ -647,7 +899,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.894106
+<<<<<<< HEAD
       estimated_mw: 1.157875
+=======
+      estimated_mw: 0.227810
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.027474
       total_mws: 0.921579
       thread_name: "logd.reader.per"
@@ -657,7 +913,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.867771
+<<<<<<< HEAD
       estimated_mw: 1.123771
+=======
+      estimated_mw: 0.221100
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.009908
       total_mws: 0.877679
       thread_name: "rcuop/1"
@@ -667,7 +927,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.830948
+<<<<<<< HEAD
       estimated_mw: 1.076084
+=======
+      estimated_mw: 0.211718
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.022652
       total_mws: 0.853600
       thread_name: "OomAdjuster"
@@ -677,7 +941,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.824842
+<<<<<<< HEAD
       estimated_mw: 1.068178
+=======
+      estimated_mw: 0.210162
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.141492
       total_mws: 0.966335
       thread_name: "SystemUIBg-3"
@@ -687,7 +955,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.731705
+<<<<<<< HEAD
       estimated_mw: 0.947564
+=======
+      estimated_mw: 0.186432
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.190909
       total_mws: 0.922614
       thread_name: "DisplayHints"
@@ -697,7 +969,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.720989
+<<<<<<< HEAD
       estimated_mw: 0.933687
+=======
+      estimated_mw: 0.183701
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.102171
       total_mws: 0.823160
       thread_name: "SystemUIBg-6"
@@ -707,7 +983,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.676965
+<<<<<<< HEAD
       estimated_mw: 0.876675
+=======
+      estimated_mw: 0.172484
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.024346
       total_mws: 0.701311
       thread_name: "appSf"
@@ -717,7 +997,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.672190
+<<<<<<< HEAD
       estimated_mw: 0.870492
+=======
+      estimated_mw: 0.171268
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.060081
       total_mws: 0.732271
       thread_name: "BckgrndExec LP"
@@ -727,7 +1011,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.663573
+<<<<<<< HEAD
       estimated_mw: 0.859333
+=======
+      estimated_mw: 0.169072
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.087110
       total_mws: 0.750683
       thread_name: "mali-cmar-backe"
@@ -747,7 +1035,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.638730
+<<<<<<< HEAD
       estimated_mw: 0.827161
+=======
+      estimated_mw: 0.162743
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.013204
       total_mws: 0.651935
       thread_name: "NodeLooperThrea"
@@ -767,7 +1059,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.606426
+<<<<<<< HEAD
       estimated_mw: 0.785326
+=======
+      estimated_mw: 0.154512
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.059373
       total_mws: 0.665799
       thread_name: "hwuiTask0"
@@ -777,7 +1073,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.590602
+<<<<<<< HEAD
       estimated_mw: 0.764834
+=======
+      estimated_mw: 0.150480
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.011506
       total_mws: 0.602107
       thread_name: "android.bg"
@@ -787,7 +1087,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.538063
+<<<<<<< HEAD
       estimated_mw: 0.696796
+=======
+      estimated_mw: 0.137094
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.250747
       total_mws: 0.788810
       thread_name: "binder:15865_2"
@@ -797,7 +1101,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.518414
+<<<<<<< HEAD
       estimated_mw: 0.671351
+=======
+      estimated_mw: 0.132087
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.084004
       total_mws: 0.602418
       thread_name: "m.test.scenario"
@@ -807,7 +1115,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.500882
+<<<<<<< HEAD
       estimated_mw: 0.648647
+=======
+      estimated_mw: 0.127620
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.023998
       total_mws: 0.524881
       thread_name: "ImageWallpaper"
@@ -817,7 +1129,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.487089
+<<<<<<< HEAD
       estimated_mw: 0.630784
+=======
+      estimated_mw: 0.124106
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.046952
       total_mws: 0.534041
       thread_name: "binder:7309_5"
@@ -827,7 +1143,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.430226
+<<<<<<< HEAD
       estimated_mw: 0.557147
+=======
+      estimated_mw: 0.109618
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.009131
       total_mws: 0.439357
       thread_name: "android.ui"
@@ -877,7 +1197,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.384785
+<<<<<<< HEAD
       estimated_mw: 0.498299
+=======
+      estimated_mw: 0.098040
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.384785
       thread_name: "DefaultDispatch"
@@ -887,7 +1211,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.350611
+<<<<<<< HEAD
       estimated_mw: 0.454045
+=======
+      estimated_mw: 0.089333
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.037070
       total_mws: 0.387681
       thread_name: "writer"
@@ -897,7 +1225,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.345854
+<<<<<<< HEAD
       estimated_mw: 0.447884
+=======
+      estimated_mw: 0.088120
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.345854
       thread_name: "rcuop/2"
@@ -917,7 +1249,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.319507
+<<<<<<< HEAD
       estimated_mw: 0.413764
+=======
+      estimated_mw: 0.081407
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.014411
       total_mws: 0.333918
       thread_name: "aocd"
@@ -937,7 +1273,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.275212
+<<<<<<< HEAD
       estimated_mw: 0.356402
+=======
+      estimated_mw: 0.070121
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.028371
       total_mws: 0.303582
       thread_name: "InputDispatcher"
@@ -957,7 +1297,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.267024
+<<<<<<< HEAD
       estimated_mw: 0.345798
+=======
+      estimated_mw: 0.068035
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.267024
       thread_name: "statsd.writer"
@@ -967,7 +1311,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.245807
+<<<<<<< HEAD
       estimated_mw: 0.318323
+=======
+      estimated_mw: 0.062630
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.233733
       total_mws: 0.479540
       thread_name: "perf_mon_update"
@@ -977,7 +1325,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.233628
+<<<<<<< HEAD
       estimated_mw: 0.302550
+=======
+      estimated_mw: 0.059526
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.022137
       total_mws: 0.255765
       thread_name: "HwcAsyncWorker"
@@ -987,13 +1339,18 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.231526
+<<<<<<< HEAD
       estimated_mw: 0.299828
+=======
+      estimated_mw: 0.058991
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.067133
       total_mws: 0.298659
       thread_name: "RE Completion"
       process_name: "/system/bin/surfaceflinger"
       thread_id: 8397
       process_id: 578
+<<<<<<< HEAD
     }
     task_info {
       estimated_mws: 0.219400
@@ -1038,6 +1395,52 @@ wattson_atrace_apps_threads {
     task_info {
       estimated_mws: 0.178828
       estimated_mw: 0.231584
+=======
+    }
+    task_info {
+      estimated_mws: 0.219400
+      estimated_mw: 0.055901
+      idle_transitions_mws: 0.020888
+      total_mws: 0.240288
+      thread_name: "statsd.reader"
+      process_name: "/apex/com.android.os.statsd/bin/statsd"
+      thread_id: 869
+      process_id: 863
+    }
+    task_info {
+      estimated_mws: 0.212813
+      estimated_mw: 0.054223
+      idle_transitions_mws: 0.035706
+      total_mws: 0.248518
+      thread_name: "adpf_handler0"
+      process_name: "/vendor/bin/hw/android.hardware.power-service.pixel-libperfmgr"
+      thread_id: 714
+      process_id: 683
+    }
+    task_info {
+      estimated_mws: 0.202382
+      estimated_mw: 0.051565
+      idle_transitions_mws: 0.015670
+      total_mws: 0.218053
+      thread_name: "logd.klogd"
+      process_name: "/system/bin/logd"
+      thread_id: 524
+      process_id: 506
+    }
+    task_info {
+      estimated_mws: 0.197749
+      estimated_mw: 0.050385
+      idle_transitions_mws: 0.000000
+      total_mws: 0.197749
+      thread_name: "ssioncontroller"
+      process_name: "com.google.android.permissioncontroller"
+      thread_id: 2755
+      process_id: 2755
+    }
+    task_info {
+      estimated_mws: 0.178828
+      estimated_mw: 0.045564
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.017007
       total_mws: 0.195835
       thread_name: "init"
@@ -1047,7 +1450,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.176849
+<<<<<<< HEAD
       estimated_mw: 0.229021
+=======
+      estimated_mw: 0.045060
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.013639
       total_mws: 0.190488
       thread_name: "PowerManagerSer"
@@ -1057,7 +1464,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.169694
+<<<<<<< HEAD
       estimated_mw: 0.219755
+=======
+      estimated_mw: 0.043236
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.169694
       thread_name: "init"
@@ -1077,7 +1488,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.161701
+<<<<<<< HEAD
       estimated_mw: 0.209404
+=======
+      estimated_mw: 0.041200
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.010750
       total_mws: 0.172451
       thread_name: "TracingMuxer"
@@ -1087,7 +1502,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.161320
+<<<<<<< HEAD
       estimated_mw: 0.208911
+=======
+      estimated_mw: 0.041103
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.010610
       total_mws: 0.171930
       thread_name: "simpleinteracti"
@@ -1097,7 +1516,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.158481
+<<<<<<< HEAD
       estimated_mw: 0.205235
+=======
+      estimated_mw: 0.040380
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.158481
       thread_name: "migration/5"
@@ -1107,7 +1530,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.150579
+<<<<<<< HEAD
       estimated_mw: 0.195001
+=======
+      estimated_mw: 0.038366
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.019548
       total_mws: 0.170127
       thread_name: "binder:3175_3"
@@ -1117,7 +1544,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.147847
+<<<<<<< HEAD
       estimated_mw: 0.191463
+=======
+      estimated_mw: 0.037670
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.147847
       thread_name: "binder:2755_7"
@@ -1137,7 +1568,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.120935
+<<<<<<< HEAD
       estimated_mw: 0.156612
+=======
+      estimated_mw: 0.030813
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.040023
       total_mws: 0.160958
       thread_name: "rcuog/0"
@@ -1147,7 +1582,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.120553
+<<<<<<< HEAD
       estimated_mw: 0.156117
+=======
+      estimated_mw: 0.030716
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.027984
       total_mws: 0.148537
       thread_name: "RegSampIdle"
@@ -1157,7 +1596,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.118577
+<<<<<<< HEAD
       estimated_mw: 0.153559
+=======
+      estimated_mw: 0.030212
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.021557
       total_mws: 0.140134
       thread_name: "system_server"
@@ -1217,7 +1660,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.104895
+<<<<<<< HEAD
       estimated_mw: 0.135839
+=======
+      estimated_mw: 0.026726
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.087113
       total_mws: 0.192008
       thread_name: "rcu_preempt"
@@ -1247,7 +1694,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.096388
+<<<<<<< HEAD
       estimated_mw: 0.124824
+=======
+      estimated_mw: 0.024559
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.021708
       total_mws: 0.118096
       thread_name: "surfaceflinger"
@@ -1257,7 +1708,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.090421
+<<<<<<< HEAD
       estimated_mw: 0.117096
+=======
+      estimated_mw: 0.023039
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.018499
       total_mws: 0.108920
       thread_name: "migration/0"
@@ -1267,7 +1722,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.086438
+<<<<<<< HEAD
       estimated_mw: 0.111939
+=======
+      estimated_mw: 0.022024
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.012531
       total_mws: 0.098970
       thread_name: "binder:8021_4"
@@ -1307,7 +1766,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.083524
+<<<<<<< HEAD
       estimated_mw: 0.108165
+=======
+      estimated_mw: 0.021281
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.057277
       total_mws: 0.140801
       thread_name: "mali-mem-purge"
@@ -1317,7 +1780,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.083424
+<<<<<<< HEAD
       estimated_mw: 0.108035
+=======
+      estimated_mw: 0.021256
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.083424
       thread_name: "binder:6274_2"
@@ -1407,7 +1874,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.066593
+<<<<<<< HEAD
       estimated_mw: 0.086238
+=======
+      estimated_mw: 0.016967
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.066593
       thread_name: "binder:6749_10"
@@ -1447,7 +1918,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.058371
+<<<<<<< HEAD
       estimated_mw: 0.075591
+=======
+      estimated_mw: 0.014873
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.058371
       thread_name: "binder:6048_10"
@@ -1507,7 +1982,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.052748
+<<<<<<< HEAD
       estimated_mw: 0.068309
+=======
+      estimated_mw: 0.013440
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.052748
       thread_name: "binder:2729_C"
@@ -1537,7 +2016,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.049866
+<<<<<<< HEAD
       estimated_mw: 0.064576
+=======
+      estimated_mw: 0.012705
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.049866
       thread_name: "binder:7270_3"
@@ -1547,7 +2030,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.048126
+<<<<<<< HEAD
       estimated_mw: 0.062324
+=======
+      estimated_mw: 0.012262
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.055677
       total_mws: 0.103803
       thread_name: "psimon"
@@ -1567,7 +2054,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.047710
+<<<<<<< HEAD
       estimated_mw: 0.061785
+=======
+      estimated_mw: 0.012156
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.047710
       thread_name: "rild_exynos"
@@ -1677,7 +2168,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.037776
+<<<<<<< HEAD
       estimated_mw: 0.048920
+=======
+      estimated_mw: 0.009625
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.026899
       total_mws: 0.064675
       thread_name: "rcuog/4"
@@ -1697,7 +2192,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.034953
+<<<<<<< HEAD
       estimated_mw: 0.045264
+=======
+      estimated_mw: 0.008906
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.033250
       total_mws: 0.068202
       thread_name: "kworker/1:1"
@@ -1717,7 +2216,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.032613
+<<<<<<< HEAD
       estimated_mw: 0.042234
+=======
+      estimated_mw: 0.008310
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.032613
       thread_name: "adbd"
@@ -1737,7 +2240,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.030717
+<<<<<<< HEAD
       estimated_mw: 0.039779
+=======
+      estimated_mw: 0.007826
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.030717
       thread_name: "FinalizerWatchd"
@@ -1757,7 +2264,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.029289
+<<<<<<< HEAD
       estimated_mw: 0.037930
+=======
+      estimated_mw: 0.007463
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.029289
       thread_name: "migration/2"
@@ -1767,7 +2278,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.028423
+<<<<<<< HEAD
       estimated_mw: 0.036808
+=======
+      estimated_mw: 0.007242
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.028423
       thread_name: "kworker/u16:0"
@@ -1797,7 +2312,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.027171
+<<<<<<< HEAD
       estimated_mw: 0.035187
+=======
+      estimated_mw: 0.006923
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.020773
       total_mws: 0.047945
       thread_name: "kworker/0:2"
@@ -1817,7 +2336,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.025355
+<<<<<<< HEAD
       estimated_mw: 0.032835
+=======
+      estimated_mw: 0.006460
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.025355
       thread_name: "adbd"
@@ -1857,7 +2380,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.022552
+<<<<<<< HEAD
       estimated_mw: 0.029205
+=======
+      estimated_mw: 0.005746
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.015327
       total_mws: 0.037879
       thread_name: "kworker/3:12"
@@ -1897,7 +2424,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.018154
+<<<<<<< HEAD
       estimated_mw: 0.023510
+=======
+      estimated_mw: 0.004626
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.024549
       total_mws: 0.042704
       thread_name: "kworker/7:5"
@@ -1917,7 +2448,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.016060
+<<<<<<< HEAD
       estimated_mw: 0.020798
+=======
+      estimated_mw: 0.004092
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.021182
       total_mws: 0.037242
       thread_name: ".gms.persistent"
@@ -1957,7 +2492,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.012659
+<<<<<<< HEAD
       estimated_mw: 0.016393
+=======
+      estimated_mw: 0.003225
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.013610
       total_mws: 0.026269
       thread_name: "kworker/2:1"
@@ -1967,7 +2506,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.012473
+<<<<<<< HEAD
       estimated_mw: 0.016152
+=======
+      estimated_mw: 0.003178
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.012473
       thread_name: "ksoftirqd/2"
@@ -2007,7 +2550,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.010537
+<<<<<<< HEAD
       estimated_mw: 0.013645
+=======
+      estimated_mw: 0.002685
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.037616
       total_mws: 0.048153
       thread_name: "kworker/4:3"
@@ -2097,7 +2644,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.005558
+<<<<<<< HEAD
       estimated_mw: 0.007197
+=======
+      estimated_mw: 0.001416
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.005558
       thread_name: "migration/7"
@@ -2107,7 +2658,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.005013
+<<<<<<< HEAD
       estimated_mw: 0.006492
+=======
+      estimated_mw: 0.001277
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.005013
       thread_name: "migration/6"
@@ -2117,7 +2672,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.001062
+<<<<<<< HEAD
       estimated_mw: 0.001375
+=======
+      estimated_mw: 0.000270
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.004483
       total_mws: 0.005544
       thread_name: "kworker/5:33"
@@ -2127,7 +2686,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.000808
+<<<<<<< HEAD
       estimated_mw: 0.001047
+=======
+      estimated_mw: 0.000206
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.000808
       thread_name: "ksoftirqd/4"
@@ -2141,7 +2704,11 @@ wattson_atrace_apps_threads {
     period_name: "NOTIFICATION_SHADE_QS_EXPAND_COLLAPSE"
     task_info {
       estimated_mws: 219.478500
+<<<<<<< HEAD
       estimated_mw: 190.559067
+=======
+      estimated_mw: 55.921139
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 4.018383
       total_mws: 223.496887
       thread_name: "ndroid.systemui"
@@ -2151,7 +2718,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 201.113983
+<<<<<<< HEAD
       estimated_mw: 174.614349
+=======
+      estimated_mw: 51.242027
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 5.240748
       total_mws: 206.354736
       thread_name: "RenderThread"
@@ -2161,7 +2732,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 98.271629
+<<<<<<< HEAD
       estimated_mw: 85.322937
+=======
+      estimated_mw: 25.038725
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: -27.434870
       total_mws: 70.836761
       thread_name: "swapper"
@@ -2171,7 +2746,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 30.615738
+<<<<<<< HEAD
       estimated_mw: 26.581675
+=======
+      estimated_mw: 7.800613
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.164717
       total_mws: 30.780453
       thread_name: "surfaceflinger"
@@ -2181,7 +2760,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 15.726304
+<<<<<<< HEAD
       estimated_mw: 13.654138
+=======
+      estimated_mw: 4.006920
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.392206
       total_mws: 16.118509
       thread_name: "InputDispatcher"
@@ -2191,7 +2774,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 13.436808
+<<<<<<< HEAD
       estimated_mw: 11.666316
+=======
+      estimated_mw: 3.423577
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.222490
       total_mws: 13.659299
       thread_name: "s.nexuslauncher"
@@ -2201,7 +2788,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 13.055191
+<<<<<<< HEAD
       estimated_mw: 11.334983
+=======
+      estimated_mw: 3.326345
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 13.055191
       thread_name: "binder:581_2"
@@ -2211,7 +2802,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 12.735251
+<<<<<<< HEAD
       estimated_mw: 11.057200
+=======
+      estimated_mw: 3.244827
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.012038
       total_mws: 12.747290
       thread_name: "stack-unwinding"
@@ -2241,7 +2836,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 8.926736
+<<<<<<< HEAD
       estimated_mw: 7.750511
+=======
+      estimated_mw: 2.274452
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.616785
       total_mws: 9.543521
       thread_name: "binder:1423_D"
@@ -2251,7 +2850,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 7.943871
+<<<<<<< HEAD
       estimated_mw: 6.897152
+=======
+      estimated_mw: 2.024027
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 1.018558
       total_mws: 8.962428
       thread_name: "mali-cmar-backe"
@@ -2261,7 +2864,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 7.874606
+<<<<<<< HEAD
       estimated_mw: 6.837014
+=======
+      estimated_mw: 2.006378
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.633251
       total_mws: 8.507857
       thread_name: "binder:578_1"
@@ -2271,7 +2878,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 7.581090
+<<<<<<< HEAD
       estimated_mw: 6.582173
+=======
+      estimated_mw: 1.931593
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000698
       total_mws: 7.581789
       thread_name: "traced"
@@ -2281,7 +2892,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 6.475049
+<<<<<<< HEAD
       estimated_mw: 5.621869
+=======
+      estimated_mw: 1.649784
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 1.650115
       total_mws: 8.125164
       thread_name: "mali_jd_thread"
@@ -2291,7 +2906,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 5.897454
+<<<<<<< HEAD
       estimated_mw: 5.120380
+=======
+      estimated_mw: 1.502618
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.005037
       total_mws: 5.902491
       thread_name: "trigger_perfett"
@@ -2301,7 +2920,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 5.638010
+<<<<<<< HEAD
       estimated_mw: 4.895121
+=======
+      estimated_mw: 1.436514
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.298207
       total_mws: 5.936217
       thread_name: "binder:1423_5"
@@ -2311,7 +2934,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 5.385787
+<<<<<<< HEAD
       estimated_mw: 4.676132
+=======
+      estimated_mw: 1.372250
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.986176
       total_mws: 6.371963
       thread_name: "TimerDispatch"
@@ -2321,7 +2948,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 4.857092
+<<<<<<< HEAD
       estimated_mw: 4.217101
+=======
+      estimated_mw: 1.237543
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.282710
       total_mws: 5.139803
       thread_name: "binder:1423_19"
@@ -2331,7 +2962,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 4.650090
+<<<<<<< HEAD
       estimated_mw: 4.037374
+=======
+      estimated_mw: 1.184801
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.206614
       total_mws: 4.856704
       thread_name: "app"
@@ -2341,7 +2976,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.913202
+<<<<<<< HEAD
       estimated_mw: 3.397581
+=======
+      estimated_mw: 0.997048
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.065356
       total_mws: 3.978558
       thread_name: "android.ui"
@@ -2351,7 +2990,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.777037
+<<<<<<< HEAD
       estimated_mw: 3.279358
+=======
+      estimated_mw: 0.962355
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.074498
       total_mws: 3.851534
       thread_name: "kworker/u16:0"
@@ -2361,7 +3004,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.598581
+<<<<<<< HEAD
       estimated_mw: 3.124416
+=======
+      estimated_mw: 0.916886
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.618384
       total_mws: 4.216965
       thread_name: "decon0_kthread"
@@ -2371,7 +3018,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.558996
+<<<<<<< HEAD
       estimated_mw: 3.090047
+=======
+      estimated_mw: 0.906800
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 1.167805
       total_mws: 4.726800
       thread_name: "sugov:0"
@@ -2381,7 +3032,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.532836
+<<<<<<< HEAD
       estimated_mw: 3.067335
+=======
+      estimated_mw: 0.900135
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.001518
       total_mws: 3.534354
       thread_name: "SysUiBg"
@@ -2391,7 +3046,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.414545
+<<<<<<< HEAD
       estimated_mw: 2.964630
+=======
+      estimated_mw: 0.869995
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.127096
       total_mws: 3.541641
       thread_name: "RenderEngine"
@@ -2401,7 +3060,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.227812
+<<<<<<< HEAD
       estimated_mw: 2.802501
+=======
+      estimated_mw: 0.822417
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.134893
       total_mws: 3.362705
       thread_name: "roidJUnitRunner"
@@ -2411,7 +3074,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.220679
+<<<<<<< HEAD
       estimated_mw: 2.796309
+=======
+      estimated_mw: 0.820600
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.115951
       total_mws: 3.336630
       thread_name: "binder:7292_5"
@@ -2421,7 +3088,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.060216
+<<<<<<< HEAD
       estimated_mw: 2.656989
+=======
+      estimated_mw: 0.779715
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.083084
       total_mws: 3.143300
       thread_name: "android.hardwar"
@@ -2431,7 +3102,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.723675
+<<<<<<< HEAD
       estimated_mw: 2.364792
+=======
+      estimated_mw: 0.693968
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.005831
       total_mws: 2.729507
       thread_name: "Jit thread pool"
@@ -2441,7 +3116,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.582065
+<<<<<<< HEAD
       estimated_mw: 2.241841
+=======
+      estimated_mw: 0.657887
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.143291
       total_mws: 2.725356
       thread_name: "kworker/u17:2"
@@ -2451,7 +3130,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.518962
+<<<<<<< HEAD
       estimated_mw: 2.187053
+=======
+      estimated_mw: 0.641809
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.196365
       total_mws: 2.715327
       thread_name: "binder:15865_5"
@@ -2461,7 +3144,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.367912
+<<<<<<< HEAD
       estimated_mw: 2.055906
+=======
+      estimated_mw: 0.603323
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.192236
       total_mws: 2.560149
       thread_name: "binder:15865_2"
@@ -2471,7 +3158,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.251038
+<<<<<<< HEAD
       estimated_mw: 1.954431
+=======
+      estimated_mw: 0.573544
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.216818
       total_mws: 2.467856
       thread_name: "binder:578_5"
@@ -2481,7 +3172,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.141373
+<<<<<<< HEAD
       estimated_mw: 1.859216
+=======
+      estimated_mw: 0.545603
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.315316
       total_mws: 2.456689
       thread_name: "BckgrndExec HP"
@@ -2491,7 +3186,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.012752
+<<<<<<< HEAD
       estimated_mw: 1.747543
+=======
+      estimated_mw: 0.512831
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.140116
       total_mws: 2.152867
       thread_name: "system_server"
@@ -2501,7 +3200,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.930509
+<<<<<<< HEAD
       estimated_mw: 1.676137
+=======
+      estimated_mw: 0.491876
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.039321
       total_mws: 1.969831
       thread_name: "traced_perf"
@@ -2511,7 +3214,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.909125
+<<<<<<< HEAD
       estimated_mw: 1.657571
+=======
+      estimated_mw: 0.486428
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.416262
       total_mws: 2.325387
       thread_name: "binder:7292_4"
@@ -2521,7 +3228,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.704042
+<<<<<<< HEAD
       estimated_mw: 1.479510
+=======
+      estimated_mw: 0.434174
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.551791
       total_mws: 2.255833
       thread_name: "sugov:4"
@@ -2551,7 +3262,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.548908
+<<<<<<< HEAD
       estimated_mw: 1.344817
+=======
+      estimated_mw: 0.394648
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.176312
       total_mws: 1.725220
       thread_name: "surfaceflinger"
@@ -2561,7 +3276,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.520240
+<<<<<<< HEAD
       estimated_mw: 1.319927
+=======
+      estimated_mw: 0.387343
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.456569
       total_mws: 1.976809
       thread_name: "sugov:6"
@@ -2571,7 +3290,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.444023
+<<<<<<< HEAD
       estimated_mw: 1.253753
+=======
+      estimated_mw: 0.367924
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.110025
       total_mws: 1.554049
       thread_name: "binder:8021_3"
@@ -2581,7 +3304,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.161188
+<<<<<<< HEAD
       estimated_mw: 1.008185
+=======
+      estimated_mw: 0.295860
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.040672
       total_mws: 1.201860
       thread_name: "RegionSampling"
@@ -2591,7 +3318,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.124596
+<<<<<<< HEAD
       estimated_mw: 0.976414
+=======
+      estimated_mw: 0.286537
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.320802
       total_mws: 1.445397
       thread_name: "SystemUIBg-1"
@@ -2601,7 +3332,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.111921
+<<<<<<< HEAD
       estimated_mw: 0.965409
+=======
+      estimated_mw: 0.283307
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.316347
       total_mws: 1.428268
       thread_name: "SystemUIBg-4"
@@ -2611,7 +3346,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.102994
+<<<<<<< HEAD
       estimated_mw: 0.957659
+=======
+      estimated_mw: 0.281033
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.142286
       total_mws: 1.245281
       thread_name: "UiAutomation"
@@ -2621,7 +3360,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.101056
+<<<<<<< HEAD
       estimated_mw: 0.955976
+=======
+      estimated_mw: 0.280539
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.113924
       total_mws: 1.214980
       thread_name: "binder:7309_5"
@@ -2631,7 +3374,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.048683
+<<<<<<< HEAD
       estimated_mw: 0.910504
+=======
+      estimated_mw: 0.267195
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.007566
       total_mws: 1.056248
       thread_name: "mali-compiler"
@@ -2641,7 +3388,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.011675
+<<<<<<< HEAD
       estimated_mw: 0.878372
+=======
+      estimated_mw: 0.257766
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.347632
       total_mws: 1.359307
       thread_name: "SystemUIBg-8"
@@ -2651,7 +3402,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.952587
+<<<<<<< HEAD
       estimated_mw: 0.827070
+=======
+      estimated_mw: 0.242710
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.238895
       total_mws: 1.191482
       thread_name: "InputTracer"
@@ -2661,7 +3416,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.943976
+<<<<<<< HEAD
       estimated_mw: 0.819594
+=======
+      estimated_mw: 0.240517
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.392190
       total_mws: 1.336166
       thread_name: "SystemUIBg-5"
@@ -2671,7 +3430,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.928421
+<<<<<<< HEAD
       estimated_mw: 0.806089
+=======
+      estimated_mw: 0.236553
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.352458
       total_mws: 1.280879
       thread_name: "SystemUIBg-2"
@@ -2681,7 +3444,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.870946
+<<<<<<< HEAD
       estimated_mw: 0.756186
+=======
+      estimated_mw: 0.221909
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.237329
       total_mws: 1.108274
       thread_name: "SystemUIBg-7"
@@ -2691,7 +3458,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.839799
+<<<<<<< HEAD
       estimated_mw: 0.729143
+=======
+      estimated_mw: 0.213973
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.373527
       total_mws: 1.213326
       thread_name: "SystemUIBg-3"
@@ -2701,7 +3472,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.832485
+<<<<<<< HEAD
       estimated_mw: 0.722793
+=======
+      estimated_mw: 0.212110
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.177931
       total_mws: 1.010416
       thread_name: "SystemUIBg-6"
@@ -2711,7 +3486,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.828580
+<<<<<<< HEAD
       estimated_mw: 0.719403
+=======
+      estimated_mw: 0.211115
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.168998
       total_mws: 0.997579
       thread_name: "wmshell.main"
@@ -2721,7 +3500,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.827673
+<<<<<<< HEAD
       estimated_mw: 0.718615
+=======
+      estimated_mw: 0.210884
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.179249
       total_mws: 1.006922
       thread_name: "PowerStatsServi"
@@ -2731,7 +3514,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.785988
+<<<<<<< HEAD
       estimated_mw: 0.682423
+=======
+      estimated_mw: 0.200263
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.104505
       total_mws: 0.890493
       thread_name: "mali_apc_thread"
@@ -2741,7 +3528,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.762338
+<<<<<<< HEAD
       estimated_mw: 0.661889
+=======
+      estimated_mw: 0.194237
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.145259
       total_mws: 0.907597
       thread_name: "m.test.scenario"
@@ -2751,7 +3542,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.750880
+<<<<<<< HEAD
       estimated_mw: 0.651940
+=======
+      estimated_mw: 0.191317
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.028181
       total_mws: 0.779060
       thread_name: "kworker/u17:0"
@@ -2761,12 +3556,39 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.750176
+<<<<<<< HEAD
       estimated_mw: 0.651330
+      idle_transitions_mws: 0.013276
+      total_mws: 0.763452
+      thread_name: "process reaper"
+=======
+      estimated_mw: 0.191138
       idle_transitions_mws: 0.013276
       total_mws: 0.763452
       thread_name: "process reaper"
       process_name: "com.android.systemui"
       thread_id: 16132
+      process_id: 15865
+    }
+    task_info {
+      estimated_mws: 0.743639
+      estimated_mw: 0.189473
+      idle_transitions_mws: 0.147397
+      total_mws: 0.891036
+      thread_name: "DisplayHints"
+      process_name: "/vendor/bin/hw/android.hardware.graphics.composer@2.4-service"
+      thread_id: 614
+      process_id: 581
+    }
+    task_info {
+      estimated_mws: 0.723472
+      estimated_mw: 0.184334
+      idle_transitions_mws: 0.345969
+      total_mws: 1.069441
+      thread_name: "GPU completion"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
+      process_name: "com.android.systemui"
+      thread_id: 16127
       process_id: 15865
     }
     task_info {
@@ -2801,7 +3623,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.686510
+<<<<<<< HEAD
       estimated_mw: 0.596052
+=======
+      estimated_mw: 0.174916
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.428498
       total_mws: 1.115007
       thread_name: "HWC release"
@@ -2831,7 +3657,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.503039
+<<<<<<< HEAD
       estimated_mw: 0.436756
+=======
+      estimated_mw: 0.128170
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.038306
       total_mws: 0.541345
       thread_name: "BckgrndExec LP"
@@ -2841,7 +3671,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.450553
+<<<<<<< HEAD
       estimated_mw: 0.391186
+=======
+      estimated_mw: 0.114797
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.080107
       total_mws: 0.530660
       thread_name: "mali-cmar-backe"
@@ -2851,7 +3685,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.415091
+<<<<<<< HEAD
       estimated_mw: 0.360397
+=======
+      estimated_mw: 0.105762
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.083297
       total_mws: 0.498389
       thread_name: "binder:7309_2"
@@ -2861,7 +3699,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.392738
+<<<<<<< HEAD
       estimated_mw: 0.340989
+=======
+      estimated_mw: 0.100066
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.216241
       total_mws: 0.608978
       thread_name: "binder:15865_2"
@@ -2911,7 +3753,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.230620
+<<<<<<< HEAD
       estimated_mw: 0.200232
+=======
+      estimated_mw: 0.058760
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.216322
       total_mws: 0.446942
       thread_name: "perf_mon_update"
@@ -2941,7 +3787,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.194123
+<<<<<<< HEAD
       estimated_mw: 0.168545
+=======
+      estimated_mw: 0.049461
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.038341
       total_mws: 0.232465
       thread_name: "adpf_handler0"
@@ -2961,7 +3811,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.179868
+<<<<<<< HEAD
       estimated_mw: 0.156168
+=======
+      estimated_mw: 0.045829
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.179868
       thread_name: "NodeLooperThrea"
@@ -2971,7 +3825,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.177258
+<<<<<<< HEAD
       estimated_mw: 0.153902
+=======
+      estimated_mw: 0.045164
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.016272
       total_mws: 0.193530
       thread_name: "HwBinder:578_1"
@@ -3001,7 +3859,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.156123
+<<<<<<< HEAD
       estimated_mw: 0.135552
+=======
+      estimated_mw: 0.039779
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.156123
       thread_name: "kworker/3:3H"
@@ -3021,7 +3883,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.137733
+<<<<<<< HEAD
       estimated_mw: 0.119585
+=======
+      estimated_mw: 0.035093
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.004299
       total_mws: 0.142032
       thread_name: "statsd.writer"
@@ -3031,7 +3897,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.128947
+<<<<<<< HEAD
       estimated_mw: 0.111956
+=======
+      estimated_mw: 0.032855
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.028332
       total_mws: 0.157279
       thread_name: "RegSampIdle"
@@ -3091,7 +3961,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.088625
+<<<<<<< HEAD
       estimated_mw: 0.076947
+=======
+      estimated_mw: 0.022581
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.090707
       total_mws: 0.179332
       thread_name: "mali-mem-purge"
@@ -3101,7 +3975,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.088417
+<<<<<<< HEAD
       estimated_mw: 0.076767
+=======
+      estimated_mw: 0.022528
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.033213
       total_mws: 0.121630
       thread_name: "surfaceflinger"
@@ -3130,7 +4008,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.079361
+<<<<<<< HEAD
       estimated_mw: 0.068904
+=======
+      estimated_mw: 0.020220
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.006321
       total_mws: 0.085681
       thread_name: "SensorService"
@@ -3168,7 +4050,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.068262
+<<<<<<< HEAD
       estimated_mw: 0.059267
+=======
+      estimated_mw: 0.017392
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.003503
       total_mws: 0.071765
       thread_name: "android.hardwar"
@@ -3188,7 +4074,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.059074
+<<<<<<< HEAD
       estimated_mw: 0.051290
+=======
+      estimated_mw: 0.015051
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.007236
       total_mws: 0.066310
       thread_name: "UsfTransport"
@@ -3198,7 +4088,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.058859
+<<<<<<< HEAD
       estimated_mw: 0.051103
+=======
+      estimated_mw: 0.014997
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.014088
       total_mws: 0.072947
       thread_name: "kworker/2:1"
@@ -3208,7 +4102,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.052837
+<<<<<<< HEAD
       estimated_mw: 0.045875
+=======
+      estimated_mw: 0.013462
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.052837
       thread_name: "migration/1"
@@ -3218,7 +4116,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.051762
+<<<<<<< HEAD
       estimated_mw: 0.044942
+=======
+      estimated_mw: 0.013189
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.064392
       total_mws: 0.116154
       thread_name: "psimon"
@@ -3238,7 +4140,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.051100
+<<<<<<< HEAD
       estimated_mw: 0.044367
+=======
+      estimated_mw: 0.013020
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.011522
       total_mws: 0.062622
       thread_name: "kworker/3:12"
@@ -3325,7 +4231,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.031810
+<<<<<<< HEAD
       estimated_mw: 0.027618
+=======
+      estimated_mw: 0.008105
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.001931
       total_mws: 0.033741
       thread_name: "binder:15865_1"
@@ -3374,7 +4284,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.022995
+<<<<<<< HEAD
       estimated_mw: 0.019965
+=======
+      estimated_mw: 0.005859
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.003218
       total_mws: 0.026213
       thread_name: "binder:15865_3"
@@ -3413,7 +4327,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.019117
+<<<<<<< HEAD
       estimated_mw: 0.016598
+=======
+      estimated_mw: 0.004871
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.019117
       thread_name: "migration/5"
@@ -3472,7 +4390,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.015576
+<<<<<<< HEAD
       estimated_mw: 0.013524
+=======
+      estimated_mw: 0.003969
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.003187
       total_mws: 0.018763
       thread_name: "kworker/5:33"
@@ -3531,7 +4453,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.013068
+<<<<<<< HEAD
       estimated_mw: 0.011346
+=======
+      estimated_mw: 0.003330
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.013068
       thread_name: "migration/4"
@@ -3571,7 +4497,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.011181
+<<<<<<< HEAD
       estimated_mw: 0.009708
+=======
+      estimated_mw: 0.002849
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.160859
       total_mws: 0.172040
       thread_name: "binder:15865_4"
@@ -3641,7 +4571,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.006487
+<<<<<<< HEAD
       estimated_mw: 0.005632
+=======
+      estimated_mw: 0.001653
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.015393
       total_mws: 0.021880
       thread_name: "kworker/0:2"
@@ -3741,7 +4675,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.004244
+<<<<<<< HEAD
       estimated_mw: 0.003685
+=======
+      estimated_mw: 0.001081
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.004244
       thread_name: "ksoftirqd/0"
@@ -3751,7 +4689,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.003318
+<<<<<<< HEAD
       estimated_mw: 0.002880
+=======
+      estimated_mw: 0.000845
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.014128
       total_mws: 0.017445
       thread_name: "kworker/1:1"
@@ -3805,7 +4747,11 @@ wattson_atrace_apps_threads {
     period_name: "NOTIFICATION_SHADE_EXPAND_COLLAPSE::Collapse"
     task_info {
       estimated_mws: 219.510941
+<<<<<<< HEAD
       estimated_mw: 190.189789
+=======
+      estimated_mw: 55.929405
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 4.015409
       total_mws: 223.526352
       thread_name: "ndroid.systemui"
@@ -3815,7 +4761,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 201.113983
+<<<<<<< HEAD
       estimated_mw: 174.250214
+=======
+      estimated_mw: 51.242027
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 5.240748
       total_mws: 206.354736
       thread_name: "RenderThread"
@@ -3825,7 +4775,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 98.285301
+<<<<<<< HEAD
       estimated_mw: 85.156853
+=======
+      estimated_mw: 25.042208
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: -27.436611
       total_mws: 70.848694
       thread_name: "swapper"
@@ -3835,7 +4789,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 30.615738
+<<<<<<< HEAD
       estimated_mw: 26.526243
+=======
+      estimated_mw: 7.800613
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.164717
       total_mws: 30.780453
       thread_name: "surfaceflinger"
@@ -3845,7 +4803,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 15.638116
+<<<<<<< HEAD
       estimated_mw: 13.549256
+=======
+      estimated_mw: 3.984451
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.392206
       total_mws: 16.030321
       thread_name: "InputDispatcher"
@@ -3855,7 +4817,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 13.430937
+<<<<<<< HEAD
       estimated_mw: 11.636901
+=======
+      estimated_mw: 3.422081
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.222490
       total_mws: 13.653427
       thread_name: "s.nexuslauncher"
@@ -3865,7 +4831,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 13.055191
+<<<<<<< HEAD
       estimated_mw: 11.311345
+=======
+      estimated_mw: 3.326345
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 13.055191
       thread_name: "binder:581_2"
@@ -3875,7 +4845,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 12.564436
+<<<<<<< HEAD
       estimated_mw: 10.886143
+=======
+      estimated_mw: 3.201305
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.012038
       total_mws: 12.576474
       thread_name: "stack-unwinding"
@@ -3905,7 +4879,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 8.926736
+<<<<<<< HEAD
       estimated_mw: 7.734348
+=======
+      estimated_mw: 2.274452
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.616785
       total_mws: 9.543521
       thread_name: "binder:1423_D"
@@ -3915,7 +4893,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 7.943871
+<<<<<<< HEAD
       estimated_mw: 6.882769
+=======
+      estimated_mw: 2.024027
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 1.018558
       total_mws: 8.962428
       thread_name: "mali-cmar-backe"
@@ -3925,7 +4907,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 7.822643
+<<<<<<< HEAD
       estimated_mw: 6.777734
+=======
+      estimated_mw: 1.993139
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.631000
       total_mws: 8.453643
       thread_name: "binder:578_1"
@@ -3935,7 +4921,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 7.581090
+<<<<<<< HEAD
       estimated_mw: 6.568447
+=======
+      estimated_mw: 1.931593
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000698
       total_mws: 7.581789
       thread_name: "traced"
@@ -3945,7 +4935,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 6.475049
+<<<<<<< HEAD
       estimated_mw: 5.610145
+=======
+      estimated_mw: 1.649784
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 1.650115
       total_mws: 8.125164
       thread_name: "mali_jd_thread"
@@ -3955,7 +4949,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 5.897454
+<<<<<<< HEAD
       estimated_mw: 5.109703
+=======
+      estimated_mw: 1.502618
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.005037
       total_mws: 5.902491
       thread_name: "trigger_perfett"
@@ -3965,7 +4963,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 5.638010
+<<<<<<< HEAD
       estimated_mw: 4.884913
+=======
+      estimated_mw: 1.436514
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.298207
       total_mws: 5.936217
       thread_name: "binder:1423_5"
@@ -3975,7 +4977,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 5.385787
+<<<<<<< HEAD
       estimated_mw: 4.666381
+=======
+      estimated_mw: 1.372250
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.986176
       total_mws: 6.371963
       thread_name: "TimerDispatch"
@@ -3985,7 +4991,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 4.856341
+<<<<<<< HEAD
       estimated_mw: 4.207656
+=======
+      estimated_mw: 1.237352
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.282024
       total_mws: 5.138365
       thread_name: "binder:1423_19"
@@ -3995,7 +5005,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 4.650090
+<<<<<<< HEAD
       estimated_mw: 4.028955
+=======
+      estimated_mw: 1.184801
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.206614
       total_mws: 4.856704
       thread_name: "app"
@@ -4005,7 +5019,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.913202
+<<<<<<< HEAD
       estimated_mw: 3.390496
+=======
+      estimated_mw: 0.997048
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.065356
       total_mws: 3.978558
       thread_name: "android.ui"
@@ -4015,7 +5033,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.777037
+<<<<<<< HEAD
       estimated_mw: 3.272520
+=======
+      estimated_mw: 0.962355
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.074498
       total_mws: 3.851534
       thread_name: "kworker/u16:0"
@@ -4025,7 +5047,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.598581
+<<<<<<< HEAD
       estimated_mw: 3.117901
+=======
+      estimated_mw: 0.916886
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.618384
       total_mws: 4.216965
       thread_name: "decon0_kthread"
@@ -4035,7 +5061,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.547829
+<<<<<<< HEAD
       estimated_mw: 3.073928
+=======
+      estimated_mw: 0.903955
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 1.163949
       total_mws: 4.711778
       thread_name: "sugov:0"
@@ -4045,7 +5075,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.532836
+<<<<<<< HEAD
       estimated_mw: 3.060938
+=======
+      estimated_mw: 0.900135
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.001518
       total_mws: 3.534354
       thread_name: "SysUiBg"
@@ -4055,7 +5089,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.414545
+<<<<<<< HEAD
       estimated_mw: 2.958448
+=======
+      estimated_mw: 0.869995
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.127096
       total_mws: 3.541641
       thread_name: "RenderEngine"
@@ -4065,7 +5103,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.227812
+<<<<<<< HEAD
       estimated_mw: 2.796657
+=======
+      estimated_mw: 0.822417
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.134893
       total_mws: 3.362705
       thread_name: "roidJUnitRunner"
@@ -4075,7 +5117,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.220679
+<<<<<<< HEAD
       estimated_mw: 2.790477
+=======
+      estimated_mw: 0.820600
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.115951
       total_mws: 3.336630
       thread_name: "binder:7292_5"
@@ -4085,7 +5131,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.060216
+<<<<<<< HEAD
       estimated_mw: 2.651448
+=======
+      estimated_mw: 0.779715
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.083084
       total_mws: 3.143300
       thread_name: "android.hardwar"
@@ -4095,7 +5145,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.723675
+<<<<<<< HEAD
       estimated_mw: 2.359861
+=======
+      estimated_mw: 0.693968
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.005831
       total_mws: 2.729507
       thread_name: "Jit thread pool"
@@ -4105,7 +5159,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.582065
+<<<<<<< HEAD
       estimated_mw: 2.237166
+=======
+      estimated_mw: 0.657887
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.143291
       total_mws: 2.725356
       thread_name: "kworker/u17:2"
@@ -4115,7 +5173,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.518962
+<<<<<<< HEAD
       estimated_mw: 2.182492
+=======
+      estimated_mw: 0.641809
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.196365
       total_mws: 2.715327
       thread_name: "binder:15865_5"
@@ -4125,7 +5187,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.367912
+<<<<<<< HEAD
       estimated_mw: 2.051619
+=======
+      estimated_mw: 0.603323
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.192236
       total_mws: 2.560149
       thread_name: "binder:15865_2"
@@ -4135,7 +5201,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.251038
+<<<<<<< HEAD
       estimated_mw: 1.950356
+=======
+      estimated_mw: 0.573544
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.216818
       total_mws: 2.467856
       thread_name: "binder:578_5"
@@ -4145,7 +5215,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.141373
+<<<<<<< HEAD
       estimated_mw: 1.855339
+=======
+      estimated_mw: 0.545603
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.315316
       total_mws: 2.456689
       thread_name: "BckgrndExec HP"
@@ -4155,7 +5229,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.012752
+<<<<<<< HEAD
       estimated_mw: 1.743898
+=======
+      estimated_mw: 0.512831
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.140116
       total_mws: 2.152867
       thread_name: "system_server"
@@ -4165,7 +5243,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.930509
+<<<<<<< HEAD
       estimated_mw: 1.672642
+=======
+      estimated_mw: 0.491876
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.039321
       total_mws: 1.969831
       thread_name: "traced_perf"
@@ -4175,7 +5257,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.909125
+<<<<<<< HEAD
       estimated_mw: 1.654114
+=======
+      estimated_mw: 0.486428
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.416262
       total_mws: 2.325387
       thread_name: "binder:7292_4"
@@ -4185,7 +5271,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.710151
+<<<<<<< HEAD
       estimated_mw: 1.481717
+=======
+      estimated_mw: 0.435731
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.554671
       total_mws: 2.264822
       thread_name: "sugov:4"
@@ -4215,7 +5305,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.548908
+<<<<<<< HEAD
       estimated_mw: 1.342012
+=======
+      estimated_mw: 0.394648
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.176312
       total_mws: 1.725220
       thread_name: "surfaceflinger"
@@ -4225,7 +5319,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.520240
+<<<<<<< HEAD
       estimated_mw: 1.317174
+=======
+      estimated_mw: 0.387343
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.456569
       total_mws: 1.976809
       thread_name: "sugov:6"
@@ -4235,7 +5333,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.444023
+<<<<<<< HEAD
       estimated_mw: 1.251138
+=======
+      estimated_mw: 0.367924
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.110025
       total_mws: 1.554049
       thread_name: "binder:8021_3"
@@ -4245,7 +5347,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.161188
+<<<<<<< HEAD
       estimated_mw: 1.006082
+=======
+      estimated_mw: 0.295860
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.040672
       total_mws: 1.201860
       thread_name: "RegionSampling"
@@ -4255,7 +5361,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.124596
+<<<<<<< HEAD
       estimated_mw: 0.974378
+=======
+      estimated_mw: 0.286537
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.320802
       total_mws: 1.445397
       thread_name: "SystemUIBg-1"
@@ -4265,7 +5375,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.111921
+<<<<<<< HEAD
       estimated_mw: 0.963396
+=======
+      estimated_mw: 0.283307
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.316347
       total_mws: 1.428268
       thread_name: "SystemUIBg-4"
@@ -4275,7 +5389,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.102994
+<<<<<<< HEAD
       estimated_mw: 0.955662
+=======
+      estimated_mw: 0.281033
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.142286
       total_mws: 1.245281
       thread_name: "UiAutomation"
@@ -4285,7 +5403,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.101056
+<<<<<<< HEAD
       estimated_mw: 0.953982
+=======
+      estimated_mw: 0.280539
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.113924
       total_mws: 1.214980
       thread_name: "binder:7309_5"
@@ -4295,7 +5417,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.048683
+<<<<<<< HEAD
       estimated_mw: 0.908605
+=======
+      estimated_mw: 0.267195
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.007566
       total_mws: 1.056248
       thread_name: "mali-compiler"
@@ -4305,7 +5431,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.011675
+<<<<<<< HEAD
       estimated_mw: 0.876541
+=======
+      estimated_mw: 0.257766
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.347632
       total_mws: 1.359307
       thread_name: "SystemUIBg-8"
@@ -4315,7 +5445,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.952587
+<<<<<<< HEAD
       estimated_mw: 0.825345
+=======
+      estimated_mw: 0.242710
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.238895
       total_mws: 1.191482
       thread_name: "InputTracer"
@@ -4325,7 +5459,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.943976
+<<<<<<< HEAD
       estimated_mw: 0.817885
+=======
+      estimated_mw: 0.240517
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.392190
       total_mws: 1.336166
       thread_name: "SystemUIBg-5"
@@ -4335,7 +5473,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.928421
+<<<<<<< HEAD
       estimated_mw: 0.804408
+=======
+      estimated_mw: 0.236553
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.352458
       total_mws: 1.280879
       thread_name: "SystemUIBg-2"
@@ -4345,7 +5487,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.870946
+<<<<<<< HEAD
       estimated_mw: 0.754609
+=======
+      estimated_mw: 0.221909
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.237329
       total_mws: 1.108274
       thread_name: "SystemUIBg-7"
@@ -4355,7 +5501,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.844144
+<<<<<<< HEAD
       estimated_mw: 0.731387
+=======
+      estimated_mw: 0.215080
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.178467
       total_mws: 1.022611
       thread_name: "SystemUIBg-6"
@@ -4365,7 +5515,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.839799
+<<<<<<< HEAD
       estimated_mw: 0.727623
+=======
+      estimated_mw: 0.213973
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.373527
       total_mws: 1.213326
       thread_name: "SystemUIBg-3"
@@ -4375,7 +5529,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.828580
+<<<<<<< HEAD
       estimated_mw: 0.717903
+=======
+      estimated_mw: 0.211115
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.168998
       total_mws: 0.997579
       thread_name: "wmshell.main"
@@ -4385,7 +5543,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.827673
+<<<<<<< HEAD
       estimated_mw: 0.717117
+=======
+      estimated_mw: 0.210884
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.179249
       total_mws: 1.006922
       thread_name: "PowerStatsServi"
@@ -4395,7 +5557,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.785988
+<<<<<<< HEAD
       estimated_mw: 0.681000
+=======
+      estimated_mw: 0.200263
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.104505
       total_mws: 0.890493
       thread_name: "mali_apc_thread"
@@ -4405,7 +5571,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.762338
+<<<<<<< HEAD
       estimated_mw: 0.660509
+=======
+      estimated_mw: 0.194237
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.145259
       total_mws: 0.907597
       thread_name: "m.test.scenario"
@@ -4415,7 +5585,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.750880
+<<<<<<< HEAD
       estimated_mw: 0.650581
+=======
+      estimated_mw: 0.191317
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.028181
       total_mws: 0.779060
       thread_name: "kworker/u17:0"
@@ -4425,12 +5599,39 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.750176
+<<<<<<< HEAD
       estimated_mw: 0.649971
+      idle_transitions_mws: 0.013276
+      total_mws: 0.763452
+      thread_name: "process reaper"
+=======
+      estimated_mw: 0.191138
       idle_transitions_mws: 0.013276
       total_mws: 0.763452
       thread_name: "process reaper"
       process_name: "com.android.systemui"
       thread_id: 16132
+      process_id: 15865
+    }
+    task_info {
+      estimated_mws: 0.743639
+      estimated_mw: 0.189473
+      idle_transitions_mws: 0.147397
+      total_mws: 0.891036
+      thread_name: "DisplayHints"
+      process_name: "/vendor/bin/hw/android.hardware.graphics.composer@2.4-service"
+      thread_id: 614
+      process_id: 581
+    }
+    task_info {
+      estimated_mws: 0.723472
+      estimated_mw: 0.184334
+      idle_transitions_mws: 0.345969
+      total_mws: 1.069441
+      thread_name: "GPU completion"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
+      process_name: "com.android.systemui"
+      thread_id: 16127
       process_id: 15865
     }
     task_info {
@@ -4465,7 +5666,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.686510
+<<<<<<< HEAD
       estimated_mw: 0.594809
+=======
+      estimated_mw: 0.174916
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.428498
       total_mws: 1.115007
       thread_name: "HWC release"
@@ -4495,7 +5700,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.494309
+<<<<<<< HEAD
       estimated_mw: 0.428281
+=======
+      estimated_mw: 0.125945
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.038306
       total_mws: 0.532615
       thread_name: "BckgrndExec LP"
@@ -4505,7 +5714,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.450553
+<<<<<<< HEAD
       estimated_mw: 0.390371
+=======
+      estimated_mw: 0.114797
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.080107
       total_mws: 0.530660
       thread_name: "mali-cmar-backe"
@@ -4515,7 +5728,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.415091
+<<<<<<< HEAD
       estimated_mw: 0.359646
+=======
+      estimated_mw: 0.105762
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.083297
       total_mws: 0.498389
       thread_name: "binder:7309_2"
@@ -4525,7 +5742,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.392738
+<<<<<<< HEAD
       estimated_mw: 0.340278
+=======
+      estimated_mw: 0.100066
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.216241
       total_mws: 0.608978
       thread_name: "binder:15865_2"
@@ -4575,7 +5796,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.232657
+<<<<<<< HEAD
       estimated_mw: 0.201580
+=======
+      estimated_mw: 0.059279
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.222628
       total_mws: 0.455285
       thread_name: "perf_mon_update"
@@ -4605,7 +5830,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.194123
+<<<<<<< HEAD
       estimated_mw: 0.168193
+=======
+      estimated_mw: 0.049461
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.038341
       total_mws: 0.232465
       thread_name: "adpf_handler0"
@@ -4625,7 +5854,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.179868
+<<<<<<< HEAD
       estimated_mw: 0.155842
+=======
+      estimated_mw: 0.045829
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.179868
       thread_name: "NodeLooperThrea"
@@ -4635,7 +5868,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.177258
+<<<<<<< HEAD
       estimated_mw: 0.153581
+=======
+      estimated_mw: 0.045164
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.016272
       total_mws: 0.193530
       thread_name: "HwBinder:578_1"
@@ -4665,7 +5902,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.156123
+<<<<<<< HEAD
       estimated_mw: 0.135269
+=======
+      estimated_mw: 0.039779
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.156123
       thread_name: "kworker/3:3H"
@@ -4685,7 +5926,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.137733
+<<<<<<< HEAD
       estimated_mw: 0.119335
+=======
+      estimated_mw: 0.035093
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.004299
       total_mws: 0.142032
       thread_name: "statsd.writer"
@@ -4695,7 +5940,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.128947
+<<<<<<< HEAD
       estimated_mw: 0.111723
+=======
+      estimated_mw: 0.032855
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.028332
       total_mws: 0.157279
       thread_name: "RegSampIdle"
@@ -4755,7 +6004,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.088625
+<<<<<<< HEAD
       estimated_mw: 0.076787
+=======
+      estimated_mw: 0.022581
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.090707
       total_mws: 0.179332
       thread_name: "mali-mem-purge"
@@ -4765,7 +6018,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.088417
+<<<<<<< HEAD
       estimated_mw: 0.076607
+=======
+      estimated_mw: 0.022528
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.033213
       total_mws: 0.121630
       thread_name: "surfaceflinger"
@@ -4794,7 +6051,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.079361
+<<<<<<< HEAD
       estimated_mw: 0.068760
+=======
+      estimated_mw: 0.020220
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.006321
       total_mws: 0.085681
       thread_name: "SensorService"
@@ -4832,7 +6093,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.068262
+<<<<<<< HEAD
       estimated_mw: 0.059144
+=======
+      estimated_mw: 0.017392
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.003503
       total_mws: 0.071765
       thread_name: "android.hardwar"
@@ -4852,7 +6117,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.059074
+<<<<<<< HEAD
       estimated_mw: 0.051183
+=======
+      estimated_mw: 0.015051
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.007236
       total_mws: 0.066310
       thread_name: "UsfTransport"
@@ -4862,7 +6131,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.058859
+<<<<<<< HEAD
       estimated_mw: 0.050997
+=======
+      estimated_mw: 0.014997
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.014088
       total_mws: 0.072947
       thread_name: "kworker/2:1"
@@ -4872,7 +6145,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.052837
+<<<<<<< HEAD
       estimated_mw: 0.045779
+=======
+      estimated_mw: 0.013462
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.052837
       thread_name: "migration/1"
@@ -4882,7 +6159,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.051762
+<<<<<<< HEAD
       estimated_mw: 0.044848
+=======
+      estimated_mw: 0.013189
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.064392
       total_mws: 0.116154
       thread_name: "psimon"
@@ -4902,7 +6183,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.051100
+<<<<<<< HEAD
       estimated_mw: 0.044274
+=======
+      estimated_mw: 0.013020
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.011522
       total_mws: 0.062622
       thread_name: "kworker/3:12"
@@ -4989,7 +6274,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.031810
+<<<<<<< HEAD
       estimated_mw: 0.027561
+=======
+      estimated_mw: 0.008105
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.001931
       total_mws: 0.033741
       thread_name: "binder:15865_1"
@@ -5038,7 +6327,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.022995
+<<<<<<< HEAD
       estimated_mw: 0.019924
+=======
+      estimated_mw: 0.005859
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.003218
       total_mws: 0.026213
       thread_name: "binder:15865_3"
@@ -5077,7 +6370,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.019117
+<<<<<<< HEAD
       estimated_mw: 0.016564
+=======
+      estimated_mw: 0.004871
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.019117
       thread_name: "migration/5"
@@ -5136,7 +6433,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.015576
+<<<<<<< HEAD
       estimated_mw: 0.013495
+=======
+      estimated_mw: 0.003969
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.003187
       total_mws: 0.018763
       thread_name: "kworker/5:33"
@@ -5195,7 +6496,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.013068
+<<<<<<< HEAD
       estimated_mw: 0.011323
+=======
+      estimated_mw: 0.003330
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.013068
       thread_name: "migration/4"
@@ -5235,7 +6540,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.011181
+<<<<<<< HEAD
       estimated_mw: 0.009688
+=======
+      estimated_mw: 0.002849
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.160859
       total_mws: 0.172040
       thread_name: "binder:15865_4"
@@ -5305,7 +6614,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.006487
+<<<<<<< HEAD
       estimated_mw: 0.005620
+=======
+      estimated_mw: 0.001653
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.015393
       total_mws: 0.021880
       thread_name: "kworker/0:2"
@@ -5405,7 +6718,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.004244
+<<<<<<< HEAD
       estimated_mw: 0.003677
+=======
+      estimated_mw: 0.001081
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.004244
       thread_name: "ksoftirqd/0"
@@ -5415,7 +6732,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.003318
+<<<<<<< HEAD
       estimated_mw: 0.002874
+=======
+      estimated_mw: 0.000845
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.014128
       total_mws: 0.017445
       thread_name: "kworker/1:1"
@@ -5469,7 +6790,11 @@ wattson_atrace_apps_threads {
     period_name: "NOTIFICATION_SHADE_QS_EXPAND_COLLAPSE"
     task_info {
       estimated_mws: 214.306000
+<<<<<<< HEAD
       estimated_mw: 253.118866
+=======
+      estimated_mw: 54.603233
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 4.715330
       total_mws: 219.021332
       thread_name: "RenderThread"
@@ -5479,7 +6804,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 197.498962
+<<<<<<< HEAD
       estimated_mw: 233.267914
+=======
+      estimated_mw: 50.320950
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 2.549742
       total_mws: 200.048706
       thread_name: "ndroid.systemui"
@@ -5489,9 +6818,15 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 103.995613
+<<<<<<< HEAD
       estimated_mw: 122.830215
       idle_transitions_mws: -25.667099
       total_mws: 78.328514
+=======
+      estimated_mw: 26.497143
+      idle_transitions_mws: -25.668091
+      total_mws: 78.327522
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       thread_name: "swapper"
       process_name: ""
       thread_id: 0
@@ -5499,7 +6834,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 34.596596
+<<<<<<< HEAD
       estimated_mw: 40.862370
+=======
+      estimated_mw: 8.814899
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.167738
       total_mws: 34.764332
       thread_name: "surfaceflinger"
@@ -5509,7 +6848,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 16.515326
+<<<<<<< HEAD
       estimated_mw: 19.506409
+=======
+      estimated_mw: 4.207956
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000881
       total_mws: 16.516207
       thread_name: "binder:581_2"
@@ -5519,7 +6862,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 12.412807
+<<<<<<< HEAD
       estimated_mw: 14.660885
+=======
+      estimated_mw: 3.162671
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 2.858438
       total_mws: 15.271245
       thread_name: "mali_jd_thread"
@@ -5529,7 +6876,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 11.571850
+<<<<<<< HEAD
       estimated_mw: 13.667623
+=======
+      estimated_mw: 2.948403
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 1.123362
       total_mws: 12.695212
       thread_name: "mali-cmar-backe"
@@ -5539,7 +6890,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 10.643536
+<<<<<<< HEAD
       estimated_mw: 12.571183
+=======
+      estimated_mw: 2.711877
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.001341
       total_mws: 10.644877
       thread_name: "traced_probes"
@@ -5549,7 +6904,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 6.628986
+<<<<<<< HEAD
       estimated_mw: 7.829559
+=======
+      estimated_mw: 1.689006
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.825804
       total_mws: 7.454790
       thread_name: "binder:578_5"
@@ -5559,7 +6918,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 5.760103
+<<<<<<< HEAD
       estimated_mw: 6.803313
+=======
+      estimated_mw: 1.467622
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 1.189603
       total_mws: 6.949706
       thread_name: "TimerDispatch"
@@ -5569,7 +6932,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 5.411709
+<<<<<<< HEAD
       estimated_mw: 6.391822
+=======
+      estimated_mw: 1.378855
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.197026
       total_mws: 5.608736
       thread_name: "s.nexuslauncher"
@@ -5579,7 +6946,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 5.020875
+<<<<<<< HEAD
       estimated_mw: 5.930203
+=======
+      estimated_mw: 1.279274
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.174628
       total_mws: 5.195502
       thread_name: "binder:1423_1E"
@@ -5589,7 +6960,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 4.768395
+<<<<<<< HEAD
       estimated_mw: 5.631997
+=======
+      estimated_mw: 1.214944
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.809391
       total_mws: 5.577787
       thread_name: "decon0_kthread"
@@ -5599,7 +6974,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 4.657393
+<<<<<<< HEAD
       estimated_mw: 5.500892
+=======
+      estimated_mw: 1.186662
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.122537
       total_mws: 4.779930
       thread_name: "InputDispatcher"
@@ -5609,7 +6988,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 4.153626
+<<<<<<< HEAD
       estimated_mw: 4.905887
+=======
+      estimated_mw: 1.058306
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.394902
       total_mws: 4.548528
       thread_name: "binder:15865_6"
@@ -5619,7 +7002,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 4.093107
+<<<<<<< HEAD
       estimated_mw: 4.834408
+=======
+      estimated_mw: 1.042887
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.282174
       total_mws: 4.375280
       thread_name: "binder:15865_7"
@@ -5629,7 +7016,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 4.005697
+<<<<<<< HEAD
       estimated_mw: 4.731167
+=======
+      estimated_mw: 1.020615
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.151232
       total_mws: 4.156928
       thread_name: "android.hardwar"
@@ -5639,7 +7030,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.543884
+<<<<<<< HEAD
       estimated_mw: 4.185715
+=======
+      estimated_mw: 0.902950
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.089437
       total_mws: 3.633321
       thread_name: "RenderEngine"
@@ -5649,7 +7044,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.395709
+<<<<<<< HEAD
       estimated_mw: 4.010704
+=======
+      estimated_mw: 0.865196
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.184038
       total_mws: 3.579747
       thread_name: "app"
@@ -5659,7 +7058,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.275003
+<<<<<<< HEAD
       estimated_mw: 3.868137
+=======
+      estimated_mw: 0.834441
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.171378
       total_mws: 3.446381
       thread_name: "binder:1423_5"
@@ -5669,7 +7072,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 3.107310
+<<<<<<< HEAD
       estimated_mw: 3.670073
+=======
+      estimated_mw: 0.791714
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.203127
       total_mws: 3.310436
       thread_name: "kworker/u17:0"
@@ -5679,7 +7086,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.985828
+<<<<<<< HEAD
       estimated_mw: 3.526590
+=======
+      estimated_mw: 0.760762
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.476247
       total_mws: 3.462075
       thread_name: "BckgrndExec HP"
@@ -5689,7 +7100,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.946673
+<<<<<<< HEAD
       estimated_mw: 3.480343
+=======
+      estimated_mw: 0.750786
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.083425
       total_mws: 3.030097
       thread_name: "kworker/u16:0"
@@ -5699,7 +7114,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.698695
+<<<<<<< HEAD
       estimated_mw: 3.187454
+=======
+      estimated_mw: 0.687603
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.235450
       total_mws: 2.934144
       thread_name: "binder:578_4"
@@ -5709,7 +7128,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.255221
+<<<<<<< HEAD
       estimated_mw: 2.663663
+=======
+      estimated_mw: 0.574610
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.826829
       total_mws: 3.082050
       thread_name: "sugov:0"
@@ -5719,7 +7142,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.103690
+<<<<<<< HEAD
       estimated_mw: 2.484688
+=======
+      estimated_mw: 0.536001
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.198638
       total_mws: 2.302328
       thread_name: "binder:8021_3"
@@ -5729,7 +7156,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 2.087035
+<<<<<<< HEAD
       estimated_mw: 2.465017
+=======
+      estimated_mw: 0.531758
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.008546
       total_mws: 2.095581
       thread_name: "Jit thread pool"
@@ -5739,7 +7170,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.946783
+<<<<<<< HEAD
       estimated_mw: 2.299364
+=======
+      estimated_mw: 0.496023
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.082965
       total_mws: 2.029748
       thread_name: "binder:1423_D"
@@ -5749,7 +7184,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.831719
+<<<<<<< HEAD
       estimated_mw: 2.163461
+=======
+      estimated_mw: 0.466705
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 1.831719
       thread_name: "traced"
@@ -5759,9 +7198,15 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.545309
+<<<<<<< HEAD
       estimated_mw: 1.825180
       idle_transitions_mws: 0.097042
       total_mws: 1.642351
+=======
+      estimated_mw: 0.393731
+      idle_transitions_mws: 0.097715
+      total_mws: 1.643024
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       thread_name: "roidJUnitRunner"
       process_name: "android.platform.test.scenario"
       thread_id: 7325
@@ -5779,7 +7224,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.504829
+<<<<<<< HEAD
       estimated_mw: 1.777368
+=======
+      estimated_mw: 0.383417
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.034705
       total_mws: 1.539534
       thread_name: "binder:7292_4"
@@ -5789,7 +7238,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.504500
+<<<<<<< HEAD
       estimated_mw: 1.776979
+=======
+      estimated_mw: 0.383333
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.309865
       total_mws: 1.814365
       thread_name: "SystemUIBg-8"
@@ -5799,9 +7252,15 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.491250
+<<<<<<< HEAD
       estimated_mw: 1.761330
       idle_transitions_mws: 0.515970
       total_mws: 2.007220
+=======
+      estimated_mw: 0.379957
+      idle_transitions_mws: 0.516288
+      total_mws: 2.007539
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       thread_name: "sugov:4"
       process_name: "sugov:4"
       thread_id: 521
@@ -5809,7 +7268,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.404036
+<<<<<<< HEAD
       estimated_mw: 1.658321
+=======
+      estimated_mw: 0.357736
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 1.048472
       total_mws: 2.452508
       thread_name: "GPU completion"
@@ -5819,7 +7282,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.380752
+<<<<<<< HEAD
       estimated_mw: 1.630819
+=======
+      estimated_mw: 0.351803
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.004241
       total_mws: 1.384992
       thread_name: "android.ui"
@@ -5829,7 +7296,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.337748
+<<<<<<< HEAD
       estimated_mw: 1.580027
+=======
+      estimated_mw: 0.340846
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.384130
       total_mws: 1.721877
       thread_name: "SystemUIBg-1"
@@ -5839,7 +7310,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.322257
+<<<<<<< HEAD
       estimated_mw: 1.561731
+=======
+      estimated_mw: 0.336899
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.141300
       total_mws: 1.463558
       thread_name: "surfaceflinger"
@@ -5849,7 +7324,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.249595
+<<<<<<< HEAD
       estimated_mw: 1.475909
+=======
+      estimated_mw: 0.318386
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.274464
       total_mws: 1.524059
       thread_name: "SystemUIBg-2"
@@ -5859,7 +7338,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.159865
+<<<<<<< HEAD
       estimated_mw: 1.369927
+=======
+      estimated_mw: 0.295523
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.348873
       total_mws: 1.508738
       thread_name: "sugov:6"
@@ -5869,7 +7352,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.135418
+<<<<<<< HEAD
       estimated_mw: 1.341053
+=======
+      estimated_mw: 0.289294
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.279294
       total_mws: 1.414712
       thread_name: "SystemUIBg-4"
@@ -5879,7 +7366,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.121826
+<<<<<<< HEAD
       estimated_mw: 1.325000
+=======
+      estimated_mw: 0.285831
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.031412
       total_mws: 1.153238
       thread_name: "RegionSampling"
@@ -5889,7 +7380,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.069717
+<<<<<<< HEAD
       estimated_mw: 1.263453
+=======
+      estimated_mw: 0.272554
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.281083
       total_mws: 1.350800
       thread_name: "SystemUIBg-6"
@@ -5899,7 +7394,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.069663
+<<<<<<< HEAD
       estimated_mw: 1.263389
+=======
+      estimated_mw: 0.272540
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.339564
       total_mws: 1.409227
       thread_name: "SystemUIBg-7"
@@ -5909,7 +7408,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 1.053188
+<<<<<<< HEAD
       estimated_mw: 1.243930
+=======
+      estimated_mw: 0.268343
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.309063
       total_mws: 1.362251
       thread_name: "DisplayHints"
@@ -5919,7 +7422,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.948017
+<<<<<<< HEAD
       estimated_mw: 1.119712
+=======
+      estimated_mw: 0.241546
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.214509
       total_mws: 1.162526
       thread_name: "SystemUIBg-5"
@@ -5929,7 +7436,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.942206
+<<<<<<< HEAD
       estimated_mw: 1.112849
+=======
+      estimated_mw: 0.240066
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.134521
       total_mws: 1.076727
       thread_name: "wmshell.main"
@@ -5939,7 +7450,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.937246
+<<<<<<< HEAD
       estimated_mw: 1.106990
+=======
+      estimated_mw: 0.238802
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.245118
       total_mws: 1.182364
       thread_name: "SystemUIBg-3"
@@ -5949,7 +7464,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.913848
+<<<<<<< HEAD
       estimated_mw: 1.079354
+=======
+      estimated_mw: 0.232840
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.006844
       total_mws: 0.920692
       thread_name: "stack-unwinding"
@@ -5959,7 +7478,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.843477
+<<<<<<< HEAD
       estimated_mw: 0.996239
+=======
+      estimated_mw: 0.214910
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.673627
       total_mws: 1.517104
       thread_name: "HWC release"
@@ -5969,7 +7492,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.742199
+<<<<<<< HEAD
       estimated_mw: 0.876618
+=======
+      estimated_mw: 0.189106
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.050949
       total_mws: 0.793148
       thread_name: "system_server"
@@ -5979,7 +7506,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.667883
+<<<<<<< HEAD
       estimated_mw: 0.788843
+=======
+      estimated_mw: 0.170170
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.027182
       total_mws: 0.695065
       thread_name: "traced_perf"
@@ -5989,7 +7520,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.629652
+<<<<<<< HEAD
       estimated_mw: 0.743688
+=======
+      estimated_mw: 0.160430
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.078080
       total_mws: 0.707731
       thread_name: "BckgrndExec LP"
@@ -5999,7 +7534,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.564567
+<<<<<<< HEAD
       estimated_mw: 0.666815
+=======
+      estimated_mw: 0.143847
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.272086
       total_mws: 0.836653
       thread_name: "binder:15865_2"
@@ -6019,7 +7558,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.455443
+<<<<<<< HEAD
       estimated_mw: 0.537928
+=======
+      estimated_mw: 0.116043
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.025803
       total_mws: 0.481246
       thread_name: "mali-cmar-backe"
@@ -6029,7 +7572,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.455129
+<<<<<<< HEAD
       estimated_mw: 0.537557
+=======
+      estimated_mw: 0.115963
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.036386
       total_mws: 0.491515
       thread_name: "binder:7309_5"
@@ -6039,7 +7586,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.303748
+<<<<<<< HEAD
       estimated_mw: 0.358760
+=======
+      estimated_mw: 0.077392
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.007058
       total_mws: 0.310807
       thread_name: "TelecomMetricsC"
@@ -6049,7 +7600,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.298215
+<<<<<<< HEAD
       estimated_mw: 0.352225
+=======
+      estimated_mw: 0.075983
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.063881
       total_mws: 0.362096
       thread_name: "InputTracer"
@@ -6059,7 +7614,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.296264
+<<<<<<< HEAD
       estimated_mw: 0.349921
+=======
+      estimated_mw: 0.075485
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.027300
       total_mws: 0.323564
       thread_name: "UiAutomation"
@@ -6069,7 +7628,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.246746
+<<<<<<< HEAD
       estimated_mw: 0.291434
+=======
+      estimated_mw: 0.062869
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.016394
       total_mws: 0.263139
       thread_name: "TracingMuxer"
@@ -6079,7 +7642,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.222178
+<<<<<<< HEAD
       estimated_mw: 0.262416
+=======
+      estimated_mw: 0.056609
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.188180
       total_mws: 0.410357
       thread_name: "perf_mon_update"
@@ -6089,7 +7656,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.221721
+<<<<<<< HEAD
       estimated_mw: 0.261877
+=======
+      estimated_mw: 0.056493
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.065372
       total_mws: 0.287093
       thread_name: "mali_apc_thread"
@@ -6099,7 +7670,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.207460
+<<<<<<< HEAD
       estimated_mw: 0.245033
+=======
+      estimated_mw: 0.052859
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.207460
       thread_name: "android.hardwar"
@@ -6119,7 +7694,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.184430
+<<<<<<< HEAD
       estimated_mw: 0.217832
+=======
+      estimated_mw: 0.046991
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.011727
       total_mws: 0.196157
       thread_name: "android.display"
@@ -6129,7 +7708,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.178450
+<<<<<<< HEAD
       estimated_mw: 0.210769
+=======
+      estimated_mw: 0.045467
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.038645
       total_mws: 0.217095
       thread_name: "NetworkPolicy"
@@ -6139,7 +7722,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.174534
+<<<<<<< HEAD
       estimated_mw: 0.206144
+=======
+      estimated_mw: 0.044470
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.040294
       total_mws: 0.214829
       thread_name: "m.test.scenario"
@@ -6149,7 +7736,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.165705
+<<<<<<< HEAD
       estimated_mw: 0.195716
+=======
+      estimated_mw: 0.042220
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.015158
       total_mws: 0.180863
       thread_name: "StateService"
@@ -6159,7 +7750,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.160074
+<<<<<<< HEAD
       estimated_mw: 0.189064
+=======
+      estimated_mw: 0.040785
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.160074
       thread_name: "logcat"
@@ -6169,7 +7764,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.156344
+<<<<<<< HEAD
       estimated_mw: 0.184660
+=======
+      estimated_mw: 0.039835
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.026454
       total_mws: 0.182798
       thread_name: "SensorService"
@@ -6189,7 +7788,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.147971
+<<<<<<< HEAD
       estimated_mw: 0.174770
+=======
+      estimated_mw: 0.037702
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.106049
       total_mws: 0.254021
       thread_name: "UsfTransport"
@@ -6209,7 +7812,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.143400
+<<<<<<< HEAD
       estimated_mw: 0.169371
+=======
+      estimated_mw: 0.036537
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.031388
       total_mws: 0.174788
       thread_name: "RE Completion"
@@ -6229,7 +7836,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.141028
+<<<<<<< HEAD
       estimated_mw: 0.166569
+=======
+      estimated_mw: 0.035933
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.016193
       total_mws: 0.157221
       thread_name: "queued-work-loo"
@@ -6259,7 +7870,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.122167
+<<<<<<< HEAD
       estimated_mw: 0.144293
+=======
+      estimated_mw: 0.031127
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.009871
       total_mws: 0.132039
       thread_name: "adpf_handler0"
@@ -6269,7 +7884,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.120095
+<<<<<<< HEAD
       estimated_mw: 0.141846
+=======
+      estimated_mw: 0.030599
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.007572
       total_mws: 0.127668
       thread_name: "statsd.reader"
@@ -6289,7 +7908,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.103877
+<<<<<<< HEAD
       estimated_mw: 0.122690
+=======
+      estimated_mw: 0.026467
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.040393
       total_mws: 0.144269
       thread_name: "RegSampIdle"
@@ -6329,7 +7952,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.089482
+<<<<<<< HEAD
       estimated_mw: 0.105688
+=======
+      estimated_mw: 0.022799
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.043372
       total_mws: 0.132854
       thread_name: "surfaceflinger"
@@ -6339,7 +7966,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.086083
+<<<<<<< HEAD
       estimated_mw: 0.101673
+=======
+      estimated_mw: 0.021933
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.045898
       total_mws: 0.131981
       thread_name: "mali-mem-purge"
@@ -6369,7 +8000,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.078589
+<<<<<<< HEAD
       estimated_mw: 0.092823
+=======
+      estimated_mw: 0.020024
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.013306
       total_mws: 0.091895
       thread_name: "PowerManagerSer"
@@ -6379,7 +8014,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.077478
+<<<<<<< HEAD
       estimated_mw: 0.091510
+=======
+      estimated_mw: 0.019741
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.003965
       total_mws: 0.081443
       thread_name: "migration/5"
@@ -6399,7 +8038,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.068797
+<<<<<<< HEAD
       estimated_mw: 0.081257
+=======
+      estimated_mw: 0.017529
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.003383
       total_mws: 0.072180
       thread_name: "logd.reader.per"
@@ -6449,7 +8092,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.053545
+<<<<<<< HEAD
       estimated_mw: 0.063243
+=======
+      estimated_mw: 0.013643
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.008058
       total_mws: 0.061603
       thread_name: "android.hardwar"
@@ -6459,7 +8106,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.053358
+<<<<<<< HEAD
       estimated_mw: 0.063021
+=======
+      estimated_mw: 0.013595
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.000000
       total_mws: 0.053358
       thread_name: "migration/4"
@@ -6479,7 +8130,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.047294
+<<<<<<< HEAD
       estimated_mw: 0.055860
+=======
+      estimated_mw: 0.012050
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.010363
       total_mws: 0.057657
       thread_name: "rcuog/0"
@@ -6489,7 +8144,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.045638
+<<<<<<< HEAD
       estimated_mw: 0.053904
+=======
+      estimated_mw: 0.011628
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.015944
       total_mws: 0.061582
       thread_name: "kworker/3:12"
@@ -6499,7 +8158,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.043406
+<<<<<<< HEAD
       estimated_mw: 0.051267
+=======
+      estimated_mw: 0.011059
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.011485
       total_mws: 0.054891
       thread_name: "migration/3"
@@ -6619,7 +8282,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.016354
+<<<<<<< HEAD
       estimated_mw: 0.019316
+=======
+      estimated_mw: 0.004167
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.026759
       total_mws: 0.043113
       thread_name: "kworker/4:3"
@@ -6649,7 +8316,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.012565
+<<<<<<< HEAD
       estimated_mw: 0.014840
+=======
+      estimated_mw: 0.003201
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.008010
       total_mws: 0.020575
       thread_name: "rcu_preempt"
@@ -6669,7 +8340,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.008153
+<<<<<<< HEAD
       estimated_mw: 0.009629
+=======
+      estimated_mw: 0.002077
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.032144
       total_mws: 0.040297
       thread_name: "migration/7"
@@ -6699,7 +8374,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.005975
+<<<<<<< HEAD
       estimated_mw: 0.007057
+=======
+      estimated_mw: 0.001522
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.003278
       total_mws: 0.009253
       thread_name: "binder:7309_6"
@@ -6709,7 +8388,11 @@ wattson_atrace_apps_threads {
     }
     task_info {
       estimated_mws: 0.005429
+<<<<<<< HEAD
       estimated_mw: 0.006413
+=======
+      estimated_mw: 0.001383
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       idle_transitions_mws: 0.016079
       total_mws: 0.021508
       thread_name: "kworker/1:1"

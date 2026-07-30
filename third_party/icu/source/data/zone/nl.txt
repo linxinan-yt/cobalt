@@ -15,9 +15,30 @@ nl{
         "Africa:Sao_Tome"{
             ec{"Sao Tomé"}
         }
+<<<<<<< HEAD
         "America:Cancun"{
             ec{"Cancun"}
         }
+=======
+        "America:Argentina:Rio_Gallegos"{
+            ec{"Río Gallegos"}
+        }
+        "America:Argentina:Tucuman"{
+            ec{"Tucumán"}
+        }
+        "America:Belem"{
+            ec{"Belém"}
+        }
+        "America:Cancun"{
+            ec{"Cancun"}
+        }
+        "America:Cordoba"{
+            ec{"Córdoba"}
+        }
+        "America:Cuiaba"{
+            ec{"Cuiabá"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Lower_Princes"{
             ec{"Beneden Prinsen Kwartier"}
         }
@@ -33,6 +54,12 @@ nl{
         "America:North_Dakota:New_Salem"{
             ec{"New Salem, Noord-Dakota"}
         }
+<<<<<<< HEAD
+=======
+        "America:Sao_Paulo"{
+            ec{"São Paulo"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:St_Barthelemy"{
             ec{"Saint-Barthélemy"}
         }
@@ -214,6 +241,12 @@ nl{
         "Europe:Prague"{
             ec{"Praag"}
         }
+<<<<<<< HEAD
+=======
+        "Europe:Tirane"{
+            ec{"Tirana"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Europe:Vatican"{
             ec{"Vaticaanstad"}
         }
@@ -571,10 +604,13 @@ nl{
         }
         "meta:Guyana"{
             ls{"Guyaanse tijd"}
+<<<<<<< HEAD
         }
         "meta:Hawaii"{
             ls{"Hawaii-Aleoetische standaardtijd"}
             ss{"HAST"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "meta:Hawaii_Aleutian"{
             ld{"Hawaii-Aleoetische zomertijd"}

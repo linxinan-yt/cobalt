@@ -221,6 +221,7 @@ LayoutFunctionsPlugin::~LayoutFunctionsPlugin() = default;
 
 }  // namespace
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/layout_functions/layout_functions.cc
 void RegisterPlugin() {
   static PluginRegistration reg(
       []() -> std::unique_ptr<PluginBase> {
@@ -229,6 +230,11 @@ void RegisterPlugin() {
       LayoutFunctionsPlugin::kPluginId, LayoutFunctionsPlugin::kDepIds.data(),
       LayoutFunctionsPlugin::kDepIds.size());
   base::ignore_result(reg);
+=======
+base::Status RegisterLayoutFunctions(PerfettoSqlEngine& engine) {
+  return engine.RegisterWindowFunction<InternalLayout>(kFunctionName, 2,
+                                                       nullptr);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/layout_functions.cc
 }
 
 }  // namespace perfetto::trace_processor::layout_functions

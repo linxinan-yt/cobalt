@@ -237,6 +237,11 @@ jv{
                 dnam{"nanodetik"}
                 other{"{0} nanodetik"}
             }
+            night{
+                dnam{"wengi"}
+                other{"{0} wengi"}
+                per{"{0}/wengi"}
+            }
             second{
                 dnam{"detik"}
                 other{"{0} detik"}
@@ -566,6 +571,10 @@ jv{
                 dnam{"kilometer saben jam"}
                 other{"{0} kilometer saben jam"}
             }
+            light-speed{
+                dnam{"cahya"}
+                other{"{0} cahya"}
+            }
             meter-per-second{
                 dnam{"meter saben detik"}
                 other{"{0} meter saben detik"}
@@ -662,6 +671,13 @@ jv{
                 dnam{"mililiter"}
                 other{"{0} mililiter"}
             }
+<<<<<<< HEAD
+=======
+            pinch{
+                dnam{"jiwit"}
+                other{"{0} jiwit"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             tablespoon{
                 dnam{"sendok mangan"}
                 other{"{0} sendok mangan"}
@@ -715,6 +731,9 @@ jv{
             millisecond{
                 dnam{"mdtk"}
             }
+            night{
+                dnam{"wengi"}
+            }
             quarter{
                 other{"{0}seprapat"}
             }
@@ -746,6 +765,11 @@ jv{
                 other{"{0}tpi"}
             }
         }
+        light{
+            candela{
+                other{"{0} cd"}
+            }
+        }
         mass{
             tonne{
                 other{"{0}t"}
@@ -754,6 +778,12 @@ jv{
         power{
             horsepower{
                 other{"{0}dj"}
+            }
+        }
+        speed{
+            light-speed{
+                dnam{"cahya"}
+                other{"{0} cahya"}
             }
         }
         torque{
@@ -781,6 +811,10 @@ jv{
                 other{"{0}oz lm by"}
             }
             pinch{
+<<<<<<< HEAD
+=======
+                dnam{"jiwit"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0}jiwit"}
             }
             pint-metric{

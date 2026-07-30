@@ -628,7 +628,6 @@ rtc_source_set("packet_socket_factory") {
   deps = [
     ":async_dns_resolver",
     "../rtc_base:async_packet_socket",
-    "../rtc_base:checks",
     "../rtc_base:socket_address",
     "../rtc_base:ssl",
     "../rtc_base/system:rtc_export",
@@ -1704,14 +1703,21 @@ if (rtc_include_tests) {
     testonly = true
     sources = [ "test/mock_datagram_connection.h" ]
     deps = [
+<<<<<<< HEAD
+=======
+      ":array_view",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       ":candidate",
       ":datagram_connection",
       "../p2p:transport_description",
       "../rtc_base:refcount",
       "//test:test_support",
       "//testing/gmock",
+<<<<<<< HEAD
       "//third_party/abseil-cpp/absl/functional:any_invocable",
       "//third_party/abseil-cpp/absl/strings:string_view",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     ]
   }
 

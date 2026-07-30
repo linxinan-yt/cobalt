@@ -56,6 +56,7 @@ constexpr auto SliceBlueprint(const char type[],
       name,
       UnitBlueprintT::Unknown{},
       description,
+<<<<<<< HEAD
   };
 }
 
@@ -81,6 +82,8 @@ constexpr auto StateBlueprint(const char type[],
       name,
       UnitBlueprintT::Unknown{},
       description,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   };
 }
 

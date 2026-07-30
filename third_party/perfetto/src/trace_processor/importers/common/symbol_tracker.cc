@@ -31,7 +31,11 @@ SymbolTracker::SymbolTracker(TraceProcessorContext* context)
 
 SymbolTracker::~SymbolTracker() = default;
 
+<<<<<<< HEAD
 void SymbolTracker::OnEventsFullyExtracted() {
+=======
+void SymbolTracker::NotifyEndOfFile() {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   const StringId kEmptyString = context_->storage->InternString("");
   for (auto frame = context_->storage->mutable_stack_profile_frame_table()
                         ->IterateRows();

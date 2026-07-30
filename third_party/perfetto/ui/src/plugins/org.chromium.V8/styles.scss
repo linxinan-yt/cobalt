@@ -12,13 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/org.chromium.V8/styles.scss
 .pf-v8-loading-container {
   height: 100%;
+=======
+@import "../common";
+@import "./filter.scss";
+@import "./aggregations.scss";
+
+.pf-exp-query-operations {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/operations/operation_component.scss
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/org.chromium.V8/styles.scss
 .pf-v8-percent-cell {
   position: relative;
   height: 100%;
@@ -31,6 +40,18 @@
     position: relative;
     height: 100%;
   }
+=======
+  .pf-exp-section {
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: var(--pf-exp-font-size-md);
+      font-weight: 500;
+    }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/operations/operation_component.scss
 
   .value {
     position: absolute;

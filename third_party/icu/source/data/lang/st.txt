@@ -3,7 +3,10 @@
 // Generated using tools/cldr/cldr-to-icu/
 st{
     Languages{
+<<<<<<< HEAD
         cy{"Sewelsh"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         en{"Senyesemane"}
         st{"Sesotho"}
     }

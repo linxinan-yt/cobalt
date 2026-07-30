@@ -12,11 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD
 import type {Setting} from '../../public/settings';
 import type {
   SettingImpl,
   SettingsManagerImpl,
 } from '../../core/settings_manager';
+=======
+import {Setting} from '../../public/settings';
+import {SettingImpl, SettingsManagerImpl} from '../../core/settings_manager';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import m from 'mithril';
 import {AppImpl} from '../../core/app_impl';
 import {Button, ButtonVariant} from '../../widgets/button';
@@ -30,6 +35,7 @@ import {Icon} from '../../widgets/icon';
 import {Intent} from '../../widgets/common';
 import {EmptyState} from '../../widgets/empty_state';
 import {Stack, StackAuto} from '../../widgets/stack';
+<<<<<<< HEAD
 import {fuzzySearch, type FuzzySegment} from '../../base/fuzzy';
 import {Popup} from '../../widgets/popup';
 import {Box} from '../../widgets/box';
@@ -40,6 +46,14 @@ import {findRef} from '../../base/dom_utils';
 const SEARCH_BOX_REF = 'settings-search-box';
 const CORE_GROUP = 'Core';
 
+=======
+import {FuzzyFinder, FuzzySegment} from '../../base/fuzzy';
+import {CORE_PLUGIN_ID} from '../../core/plugin_manager';
+import {Popup} from '../../widgets/popup';
+import {Box} from '../../widgets/box';
+import {Anchor} from '../../widgets/anchor';
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 export interface SettingsPageAttrs {
   readonly subpage?: string;
 }
@@ -60,6 +74,7 @@ export class SettingsPage implements m.ClassComponent<SettingsPageAttrs> {
       : this.getAllSettingsGrouped(settingsManager);
     const groupedSettings = this.groupSettingsByPlugin(settings);
 
+<<<<<<< HEAD
     // Sort plugin IDs: CORE_GROUP first, then alphabetically
     const sortedPluginIds = Array.from(groupedSettings.keys()).sort((a, b) => {
       if (a === CORE_GROUP) return -1;
@@ -68,6 +83,16 @@ export class SettingsPage implements m.ClassComponent<SettingsPageAttrs> {
     });
 
     const page = m(
+=======
+    // Sort plugin IDs: CORE_PLUGIN_ID first, then alphabetically
+    const sortedPluginIds = Array.from(groupedSettings.keys()).sort((a, b) => {
+      if (a === CORE_PLUGIN_ID) return -1;
+      if (b === CORE_PLUGIN_ID) return 1;
+      return a.localeCompare(b);
+    });
+
+    return m(
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       SettingsShell,
       {
         title: 'Settings',
@@ -139,6 +164,7 @@ export class SettingsPage implements m.ClassComponent<SettingsPageAttrs> {
             }),
       ),
     );
+<<<<<<< HEAD
 
     return m(
       GateDetector,
@@ -166,10 +192,19 @@ export class SettingsPage implements m.ClassComponent<SettingsPageAttrs> {
       nameSegments: item.name,
       descriptionSegments: item.description.trim(),
     }));
+=======
+  }
+
+  private getAllSettingsGrouped(settingsManager: SettingsManagerImpl) {
+    return settingsManager
+      .getAllSettings()
+      .map((item) => ({item, segments: []}));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   private getFilteredSettingsGrouped(settingsManager: SettingsManagerImpl) {
     const allSettings = settingsManager.getAllSettings();
+<<<<<<< HEAD
     return fuzzySearch(
       allSettings,
       [
@@ -190,10 +225,21 @@ export class SettingsPage implements m.ClassComponent<SettingsPageAttrs> {
       nameSegments: readonly FuzzySegment[] | string;
       descriptionSegments: readonly FuzzySegment[] | string;
     }>,
+=======
+    const finder = new FuzzyFinder(allSettings, (s) => {
+      return `${s.name} ${s.description ?? ''}`;
+    });
+    return finder.find(this.filterText);
+  }
+
+  private groupSettingsByPlugin(
+    settings: Array<{item: SettingImpl<unknown>; segments: FuzzySegment[]}>,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   ) {
     const app = AppImpl.instance;
     const grouped = new Map<
       string,
+<<<<<<< HEAD
       {
         item: Setting<unknown>;
         nameSegments: readonly FuzzySegment[] | string;
@@ -207,6 +253,16 @@ export class SettingsPage implements m.ClassComponent<SettingsPageAttrs> {
         setting.pluginId === undefined ||
         app.plugins.isCorePlugin(setting.pluginId);
       const targetGroup = isCore ? CORE_GROUP : setting.pluginId;
+=======
+      Array<{item: Setting<unknown>; segments: FuzzySegment[]}>
+    >();
+    for (const result of settings) {
+      const setting = result.item;
+      const isCore =
+        setting.pluginId === CORE_PLUGIN_ID ||
+        app.plugins.isCorePlugin(setting.pluginId);
+      const targetGroup = isCore ? CORE_PLUGIN_ID : setting.pluginId;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
       const existing = grouped.get(targetGroup) ?? [];
       existing.push(result);
@@ -217,6 +273,7 @@ export class SettingsPage implements m.ClassComponent<SettingsPageAttrs> {
 
   private renderPluginSection(
     pluginId: string,
+<<<<<<< HEAD
     settings: readonly {
       item: Setting<unknown>;
       nameSegments: readonly FuzzySegment[] | string;
@@ -237,6 +294,22 @@ export class SettingsPage implements m.ClassComponent<SettingsPageAttrs> {
             nameSegments,
             descriptionSegments,
           );
+=======
+    settings: Array<{item: Setting<unknown>; segments: FuzzySegment[]}>,
+    subpage: string,
+  ) {
+    // Display CORE_PLUGIN_ID as "Core" in the UI
+    const displayName = pluginId === CORE_PLUGIN_ID ? 'Core' : pluginId;
+
+    return m(
+      '.pf-settings-page__plugin-section',
+      {key: pluginId},
+      m('h2.pf-settings-page__plugin-title', displayName),
+      m(
+        CardStack,
+        settings.map(({item}) => {
+          return this.renderSettingCard(item, subpage);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }),
       ),
     );
@@ -267,6 +340,7 @@ export class SettingsPage implements m.ClassComponent<SettingsPageAttrs> {
     }
   }
 
+<<<<<<< HEAD
   private renderSettingCard(
     setting: Setting<unknown>,
     subpage: string,
@@ -278,6 +352,42 @@ export class SettingsPage implements m.ClassComponent<SettingsPageAttrs> {
       title: renderSegments(nameSegments ?? setting.name),
       description: renderSegments(
         descriptionSegments ?? setting.description.trim(),
+=======
+  private renderSettingCard(setting: Setting<unknown>, subpage: string) {
+    return m(
+      Card,
+      {
+        id: setting.id,
+        className: classNames(
+          'pf-settings-page__card',
+          !setting.isDefault && 'pf-settings-page__card--changed',
+          subpage === `/${setting.id}` && 'pf-settings-page__card--focused',
+        ),
+        key: setting.id,
+      },
+      m(
+        '.pf-settings-page__details',
+        m(
+          Stack,
+          {
+            orientation: 'horizontal',
+            gap: 'small',
+            className: 'pf-settings-page__label-row',
+          },
+          m('h1', setting.name),
+          m(
+            '.pf-settings-page__link-button',
+            m(Anchor, {
+              href: `#!/settings/${encodeURIComponent(setting.id)}`,
+              icon: 'link',
+              title: 'Link to this setting',
+            }),
+          ),
+        ),
+        m('.pf-settings-page__setting-id', setting.id),
+        setting.description &&
+          m('.pf-settings-page__description', setting.description),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       ),
       focused: subpage === `/${setting.id}`,
       controls: m('.pf-settings-page__controls', [
@@ -368,6 +478,17 @@ export class SettingsPage implements m.ClassComponent<SettingsPageAttrs> {
           m(Icon, {icon: 'error_outline'}),
           m('span', 'Cannot edit this setting directly'),
         ]);
+    }
+  }
+
+  oncreate(vnode: m.VnodeDOM<SettingsPageAttrs>) {
+    const subpage = decodeURIComponent(vnode.attrs.subpage ?? '');
+    const settingId = /[/](.+)/.exec(subpage)?.[1];
+    if (settingId) {
+      const setting = vnode.dom.querySelector(`#${CSS.escape(settingId)}`);
+      if (setting) {
+        setting.scrollIntoView({block: 'center'});
+      }
     }
   }
 }

@@ -32,12 +32,17 @@
 #![allow(non_upper_case_globals)]
 #![allow(non_snake_case)]
 
+<<<<<<< HEAD
 #[cfg(feature = "bindgen")]
 include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
 
 #[cfg(not(feature = "bindgen"))]
 include!("bindings.rs");
 
+=======
+include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #[cfg(test)]
 mod tests {
     use super::*;

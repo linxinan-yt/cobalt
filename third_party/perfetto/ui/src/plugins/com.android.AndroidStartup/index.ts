@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD
 import {
   LONG,
   LONG_NULL,
@@ -22,6 +23,11 @@ import {
 } from '../../trace_processor/query_result';
 import type {Trace} from '../../public/trace';
 import type {PerfettoPlugin} from '../../public/plugin';
+=======
+import {LONG, LONG_NULL, NUM, STR} from '../../trace_processor/query_result';
+import {Trace} from '../../public/trace';
+import {PerfettoPlugin} from '../../public/plugin';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {SliceTrack} from '../../components/tracks/slice_track';
 import {SourceDataset} from '../../trace_processor/dataset';
 import {TrackNode} from '../../public/workspace';
@@ -97,17 +103,27 @@ export default class AndroidStartup implements PerfettoPlugin {
       include perfetto module android.startup.startup_breakdowns;
     `);
 
+<<<<<<< HEAD
     ctx.tracks.registerTrack({
       uri: STARTUP_TRACK_URI,
       renderer: await SliceTrack.createMaterialized({
         trace: ctx,
         uri: STARTUP_TRACK_URI,
+=======
+    const startupTrackUri = `/android_startups`;
+    ctx.tracks.registerTrack({
+      uri: startupTrackUri,
+      renderer: await SliceTrack.createMaterialized({
+        trace: ctx,
+        uri: startupTrackUri,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         dataset: new SourceDataset({
           schema: {
             id: NUM,
             ts: LONG,
             dur: LONG_NULL,
             name: STR,
+<<<<<<< HEAD
             startup_type: STR_NULL,
             upid: NUM_NULL,
           },
@@ -128,22 +144,47 @@ export default class AndroidStartup implements PerfettoPlugin {
           `,
         }),
         detailsPanel: () => new StartupDetailsPanel(ctx),
+=======
+          },
+          src: `
+            SELECT
+              startup_id AS id,
+              ts,
+              dur,
+              package AS name
+            FROM android_startups
+          `,
+        }),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       }),
     });
 
     // Needs a sort order lower than 'Ftrace Events' so that it is prioritized in the UI.
     const startupTrack = new TrackNode({
       name: 'Android App Startups',
+<<<<<<< HEAD
       uri: STARTUP_TRACK_URI,
+=======
+      uri: startupTrackUri,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       sortOrder: -6,
     });
     ctx.defaultWorkspace.addChildInOrder(startupTrack);
 
+<<<<<<< HEAD
     ctx.tracks.registerTrack({
       uri: BREAKDOWN_TRACK_URI,
       renderer: await SliceTrack.createMaterialized({
         trace: ctx,
         uri: BREAKDOWN_TRACK_URI,
+=======
+    const breakdownTrackUri = '/android_startups_breakdown';
+    ctx.tracks.registerTrack({
+      uri: breakdownTrackUri,
+      renderer: await SliceTrack.createMaterialized({
+        trace: ctx,
+        uri: breakdownTrackUri,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         dataset: new SourceDataset({
           schema: {
             ts: LONG,
@@ -164,7 +205,11 @@ export default class AndroidStartup implements PerfettoPlugin {
     // Needs a sort order lower than 'Ftrace Events' so that it is prioritized in the UI.
     const breakdownTrack = new TrackNode({
       name: 'Android App Startups Breakdown',
+<<<<<<< HEAD
       uri: BREAKDOWN_TRACK_URI,
+=======
+      uri: breakdownTrackUri,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       sortOrder: -6,
     });
     startupTrack.addChildLast(breakdownTrack);
@@ -176,6 +221,7 @@ export default class AndroidStartup implements PerfettoPlugin {
 
     await this.selectStartupMainThread(ctx, startupArgs);
   }
+<<<<<<< HEAD
 
   private async selectStartupMainThread(ctx: Trace, args: StartupArgs) {
     const e = ctx.engine;
@@ -274,4 +320,6 @@ export default class AndroidStartup implements PerfettoPlugin {
       );
     });
   }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }

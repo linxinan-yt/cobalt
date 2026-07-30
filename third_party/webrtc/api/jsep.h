@@ -221,10 +221,13 @@ RTC_EXPORT std::optional<SdpType> SdpTypeFromString(
 // and is therefore not expected to be thread safe.
 //
 // An instance can be created by CreateSessionDescription.
+<<<<<<< HEAD
 struct EncodingOptions {
   bool use_wildcard = false;
 };
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 class RTC_EXPORT SessionDescriptionInterface final {
  public:
   static std::unique_ptr<SessionDescriptionInterface> Create(
@@ -336,8 +339,12 @@ class RTC_EXPORT SessionDescriptionInterface final {
       std::unique_ptr<SessionDescription> description,
       absl::string_view id,
       absl::string_view version,
+<<<<<<< HEAD
       std::vector<IceCandidateCollection> candidates = {},
       EncodingOptions encoding_options = {});
+=======
+      std::vector<IceCandidateCollection> candidates = {});
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
  private:
   bool IsValidMLineIndex(int index) const;
@@ -353,7 +360,10 @@ class RTC_EXPORT SessionDescriptionInterface final {
       SequenceChecker::kDetached};
   std::vector<IceCandidateCollection> candidate_collection_
       RTC_GUARDED_BY(sequence_checker_);
+<<<<<<< HEAD
   const EncodingOptions encoding_options_ RTC_GUARDED_BY(sequence_checker_);
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 
 // Creates a SessionDescriptionInterface based on the SDP string and the type.

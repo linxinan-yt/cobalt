@@ -247,7 +247,11 @@ zu{
         kv{"isi-Komi"}
         kw{"isi-Cornish"}
         kwk{"Kwakʼwala"}
+<<<<<<< HEAD
         kxv{"isiKuvi"}
+=======
+        kxv{"Kuvi"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         ky{"isi-Kyrgyz"}
         la{"isi-Latin"}
         lad{"isi-Ladino"}
@@ -458,9 +462,15 @@ zu{
         uz{"isi-Uzbek"}
         vai{"isi-Vai"}
         ve{"isi-Venda"}
+<<<<<<< HEAD
         vec{"isiVenetian"}
         vi{"isi-Vietnamese"}
         vmw{"isiMakhuwa"}
+=======
+        vec{"IsiVenetian"}
+        vi{"isi-Vietnamese"}
+        vmw{"Makhuwa"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         vo{"isi-Volapük"}
         vun{"isiVunjo"}
         wa{"isi-Walloon"}

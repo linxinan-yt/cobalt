@@ -379,6 +379,18 @@ da{
             permyriad{
                 gender{"common"}
             }
+            portion-per-1e9{
+                case{
+                    genitive{
+                        one{"{0} milliardtedels"}
+                        other{"{0} milliardtedeles"}
+                    }
+                }
+                dnam{"milliardtedele"}
+                gender{"common"}
+                one{"{0} milliardtedel"}
+                other{"{0} milliardtedele"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -677,6 +689,10 @@ da{
                         other{"{0} nætters"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"nætter"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 gender{"common"}
                 one{"{0} nat"}
                 other{"{0} nætter"}
@@ -2051,8 +2067,15 @@ da{
                 other{"{0}ns"}
             }
             night{
+<<<<<<< HEAD
                 one{"{0}nat"}
                 other{"{0}nætter"}
+=======
+                dnam{"nætter"}
+                one{"{0}nat"}
+                other{"{0}nætter"}
+                per{"{0}/nat"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 dnam{"kvartal"}
@@ -2093,7 +2116,11 @@ da{
             }
             kilowatt-hour-per-100-kilometer{
                 dnam{"kWh/100 km"}
+<<<<<<< HEAD
                 one{"{0} kWh/100 km"}
+=======
+                one{"{0}kWh/100km"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} kWh/100 km"}
             }
             newton{
@@ -2332,6 +2359,9 @@ da{
             permyriad{
                 one{"{0} ‱"}
                 other{"{0} ‱"}
+            }
+            portion-per-1e9{
+                dnam{"dele/milliard"}
             }
         }
         consumption{
@@ -2585,9 +2615,15 @@ da{
         }
         pressure{
             inch-ofhg{
+<<<<<<< HEAD
                 dnam{"tommer Hg"}
                 one{"{0} tomme Hg"}
                 other{"{0} tommer Hg"}
+=======
+                dnam{"″ Hg"}
+                one{"{0} ″ Hg"}
+                other{"{0} ″ Hg"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             millimeter-ofhg{
                 dnam{"mmHg"}

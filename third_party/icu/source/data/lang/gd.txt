@@ -866,7 +866,10 @@ gd{
         Tirh{"Tirhuta"}
         Tnsa{"Tangsa"}
         Todr{"Todhri"}
+<<<<<<< HEAD
         Tols{"Tolong Siki"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         Tutg{"Tulu-Tigalari"}
         Ugar{"Ugariticeach"}
         Vaii{"Vai"}

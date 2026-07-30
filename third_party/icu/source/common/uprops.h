@@ -500,10 +500,13 @@ ublock_addPropertyStarts(const USetAdder *sa, UErrorCode &errorCode);
 uprv_getInclusions(const USetAdder *sa, UErrorCode *pErrorCode);
 */
 
+<<<<<<< HEAD
 /** @internal for icuexportdata */
 U_CAPI void U_EXPORT2
 uprv_addScriptExtensionsCodePoints(const USetAdder *sa, UErrorCode *pErrorCode);
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 // TODO: Move this into a different header file (udataswp.h? new unames.h?) so that uprops.h
 // need not be C-compatible any more.
 /**

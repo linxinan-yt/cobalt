@@ -169,7 +169,10 @@ nl{
                 accountingFormat%alphaNextToNumber{"¤ #,##0.00;(¤ #,##0.00)"}
                 accountingFormat%noCurrency{"#,##0.00;(#,##0.00)"}
                 currencyFormat{"¤ #,##0.00;¤ -#,##0.00"}
+<<<<<<< HEAD
                 currencyFormat%alphaNextToNumber{"¤ #,##0.00;¤ -#,##0.00"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 currencyFormat%noCurrency{"#,##0.00"}
             }
             patternsLong{

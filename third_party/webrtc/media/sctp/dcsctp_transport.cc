@@ -822,6 +822,7 @@ dcsctp::DcSctpOptions DcSctpTransport::CreateDcSctpOptions(
 
 std::vector<uint8_t> DcSctpTransport::GenerateConnectionToken(
     const Environment& env) {
+<<<<<<< HEAD
   Random random(env.clock().TimeInMicroseconds());
   auto temp_factory = std::make_unique<dcsctp::DcSctpSocketFactory>();
   return temp_factory->GenerateConnectionToken(
@@ -834,6 +835,14 @@ std::vector<uint8_t> DcSctpTransport::GenerateConnectionToken(
 size_t DcSctpTransport::EarlyReceivedPacketCountForTesting() const {
   RTC_DCHECK_RUN_ON(network_thread_);
   return early_received_packets_.size();
+=======
+  RTC_DCHECK(env.field_trials().IsEnabled("WebRTC-Sctp-Snap"))
+      << "Only implemented under field trial.";
+  // Example connection token.
+  return {0x01, 0x00, 0x00, 0x1e, 0x89, 0x6c, 0xdd, 0x1d, 0x00, 0x50,
+          0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xe0, 0x79, 0x65, 0x1d,
+          0xc0, 0x00, 0x00, 0x04, 0x80, 0x08, 0x00, 0x06, 0x82, 0xc0};
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 }  // namespace webrtc

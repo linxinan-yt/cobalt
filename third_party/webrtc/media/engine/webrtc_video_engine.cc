@@ -1701,12 +1701,17 @@ void WebRtcVideoSendChannel::FillSendCodecStats(
   // we can omit the codec information for those here and only insert the
   // primary codec that is being used to send here.
   video_media_info->send_codecs.insert(std::make_pair(
+<<<<<<< HEAD
       send_codec()->codec.id.value(), send_codec()->codec.ToCodecParameters()));
+=======
+      send_codec()->codec.id, send_codec()->codec.ToCodecParameters()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   for (const auto& it : send_codecs_) {
     auto codec_param_it = video_media_info->send_codecs.find(it.codec.id);
     if (codec_param_it == video_media_info->send_codecs.end()) {
       video_media_info->send_codecs.insert(
+<<<<<<< HEAD
           std::make_pair(it.codec.id.value(), it.codec.ToCodecParameters()));
     }
   }
@@ -1725,6 +1730,11 @@ WebRtcVideoSendChannel::GetStatsTask() {
     }
     return std::nullopt;
   };
+=======
+          std::make_pair(it.codec.id, it.codec.ToCodecParameters()));
+    }
+  }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 void WebRtcVideoSendChannel::OnPacketSent(const SentPacketInfo& sent_packet) {

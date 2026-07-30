@@ -8,7 +8,11 @@ se{
                 "[import und-u-co-search]"
                 "[import se-u-co-standard]"
             }
+<<<<<<< HEAD
             Version{"48"}
+=======
+            Version{"47"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         standard{
             Sequence{
@@ -53,7 +57,11 @@ se{
                 "<<<Ô<<ǫ"
                 "<<<Ǫ"
             }
+<<<<<<< HEAD
             Version{"48"}
+=======
+            Version{"47"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     }
 }

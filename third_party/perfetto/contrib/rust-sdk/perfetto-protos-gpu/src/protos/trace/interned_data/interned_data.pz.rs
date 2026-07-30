@@ -16,7 +16,10 @@
 
 use crate::pb_msg;
 use crate::pb_msg_ext;
+<<<<<<< HEAD
 use crate::protos::trace::gpu::gpu_counter_event::*;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 use crate::protos::trace::gpu::gpu_render_stage_event::*;
 
 use perfetto_sdk::protos::trace::interned_data::interned_data::InternedData;
@@ -26,7 +29,10 @@ pb_msg_ext!(InternedData {
     vulkan_memory_keys: InternedString, msg, 22,
     graphics_contexts: InternedGraphicsContext, msg, 23,
     gpu_specifications: InternedGpuRenderStageSpecification, msg, 24,
+<<<<<<< HEAD
     gpu_counter_descriptors: InternedGpuCounterDescriptor, msg, 47,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 });
 
 /// Import this to use the extra `InternedData` fields.

@@ -12,15 +12,57 @@ et{
         "Africa:Cairo"{
             ec{"Kairo"}
         }
+        "Africa:El_Aaiun"{
+            ec{"El Aaiún"}
+        }
         "Africa:Khartoum"{
             ec{"Hartum"}
         }
+<<<<<<< HEAD
         "Africa:Mogadishu"{
             ec{"Muqdisho"}
         }
         "America:Bahia_Banderas"{
             ec{"Bahia Banderas"}
         }
+=======
+        "Africa:Lome"{
+            ec{"Lomé"}
+        }
+        "Africa:Mogadishu"{
+            ec{"Muqdisho"}
+        }
+        "Africa:Ndjamena"{
+            ec{"N’Djamena"}
+        }
+        "America:Araguaina"{
+            ec{"Araguaína"}
+        }
+        "America:Argentina:Rio_Gallegos"{
+            ec{"Río Gallegos"}
+        }
+        "America:Argentina:Tucuman"{
+            ec{"Tucumán"}
+        }
+        "America:Bahia_Banderas"{
+            ec{"Bahia Banderas"}
+        }
+        "America:Belem"{
+            ec{"Belém"}
+        }
+        "America:Bogota"{
+            ec{"Bogotá"}
+        }
+        "America:Cordoba"{
+            ec{"Córdoba"}
+        }
+        "America:Cuiaba"{
+            ec{"Cuiabá"}
+        }
+        "America:Eirunepe"{
+            ec{"Eirunepé"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Havana"{
             ec{"Havanna"}
         }
@@ -36,6 +78,15 @@ et{
         "America:North_Dakota:New_Salem"{
             ec{"New Salem, Põhja-Dakota"}
         }
+<<<<<<< HEAD
+=======
+        "America:Santarem"{
+            ec{"Santarém"}
+        }
+        "America:Sao_Paulo"{
+            ec{"São Paulo"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:St_Barthelemy"{
             ec{"Saint-Barthélemy"}
         }
@@ -279,6 +330,9 @@ et{
         "Indian:Cocos"{
             ec{"Kookossaared"}
         }
+        "Indian:Mahe"{
+            ec{"Mahé"}
+        }
         "Indian:Maldives"{
             ec{"Maldiivid"}
         }
@@ -294,8 +348,14 @@ et{
         "Pacific:Honolulu"{
             ec{"Honolulu"}
         }
+        "Pacific:Kanton"{
+            ec{"Abariringa"}
+        }
         "Pacific:Marquesas"{
             ec{"Markiisaared"}
+        }
+        "Pacific:Noumea"{
+            ec{"Nouméa"}
         }
         "Pacific:Palau"{
             ec{"Belau"}

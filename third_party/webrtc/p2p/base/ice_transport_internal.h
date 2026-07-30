@@ -20,6 +20,10 @@
 #include <vector>
 
 #include "absl/functional/any_invocable.h"
+<<<<<<< HEAD
+=======
+#include "api/array_view.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "api/candidate.h"
 #include "api/peer_connection_interface.h"
 #include "api/rtc_error.h"
@@ -365,7 +369,10 @@ class RTC_EXPORT IceTransportInternal : public PacketTransportInternal {
     ice_transport_state_changed_callbacks_.Send(transport);
   }
   void SubscribeIceTransportStateChanged(
+<<<<<<< HEAD
       void* tag,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       absl::AnyInvocable<void(IceTransportInternal*)> callback);
 
   // Invoked when remote dictionary has been updated,
@@ -419,8 +426,17 @@ class RTC_EXPORT IceTransportInternal : public PacketTransportInternal {
  private:
   CallbackList<IceTransportInternal*, const Candidate&>
       candidate_gathered_callbacks_;
+<<<<<<< HEAD
   CallbackList<IceTransportInternal*> role_conflict_callbacks_;
   CallbackList<IceTransportInternal*> ice_transport_state_changed_callbacks_;
+=======
+  SignalTrampoline<IceTransportInternal,
+                   &IceTransportInternal::SignalRoleConflict>
+      role_conflict_trampoline_;
+  SignalTrampoline<IceTransportInternal,
+                   &IceTransportInternal::SignalIceTransportStateChanged>
+      ice_transport_state_changed_trampoline_;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 
 }  //  namespace webrtc

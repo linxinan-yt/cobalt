@@ -22,17 +22,28 @@ import {Icons} from '../../../../base/semantic_icons';
 import {type TableColumn, tableColumnId} from '../table/table_column';
 import {MenuDivider, MenuItem} from '../../../../widgets/menu';
 import {SelectColumnMenu} from '../table/menus/select_column_menu';
+<<<<<<< HEAD
 import type {SqlColumn} from '../table/sql_column';
+=======
+import {SqlColumn} from '../table/sql_column';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {buildSqlQuery} from '../table/query_builder';
 import {type Aggregation, AGGREGATIONS} from './aggregations';
 import {aggregationId, aggregationLabel, pivotId} from './ids';
 import {
   Grid,
   GridCell,
+<<<<<<< HEAD
   type GridColumn,
   GridHeaderCell,
   renderSortMenuItems,
   type SortDirection,
+=======
+  GridColumn,
+  GridHeaderCell,
+  renderSortMenuItems,
+  SortDirection,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 } from '../../../../widgets/grid';
 
 export interface PivotTableAttrs {
@@ -71,7 +82,11 @@ export class PivotTable implements m.ClassComponent<PivotTableAttrs> {
             },
             pivotId(pivot),
           ),
+<<<<<<< HEAD
           reorderable: {reorderGroup: 'pivot'},
+=======
+          reorderable: {handle: 'pivot'},
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
           thickRightBorder: index === pivots.length - 1,
         };
         return gridColumn;
@@ -88,9 +103,15 @@ export class PivotTable implements m.ClassComponent<PivotTableAttrs> {
                 state.sortByAggregation(agg, direction),
               menuItems: this.renderAggregationColumnMenu(attrs, agg, index),
             },
+<<<<<<< HEAD
             aggregationLabel(agg),
           ),
           reorderable: {reorderGroup: 'aggregation'},
+=======
+            aggregationId(agg),
+          ),
+          reorderable: {handle: 'aggregation'},
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         };
         return gridColumn;
       }),
@@ -99,7 +120,11 @@ export class PivotTable implements m.ClassComponent<PivotTableAttrs> {
     if (extraRowButton) {
       columns.push({
         key: 'action-button',
+<<<<<<< HEAD
         widthPx: 24,
+=======
+        minWidth: 0,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         header: m(GridHeaderCell, ''),
       });
     }

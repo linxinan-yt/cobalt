@@ -14,7 +14,11 @@
 
 import './hotkey_context.scss';
 import m from 'mithril';
+<<<<<<< HEAD
 import {checkHotkey, type Hotkey} from '../base/hotkeys';
+=======
+import {checkHotkey, Hotkey} from '../base/hotkeys';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {toHTMLElement} from '../base/dom_utils';
 import {classNames} from '../base/classnames';
 

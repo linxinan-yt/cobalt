@@ -1573,9 +1573,15 @@ void CollationAPITest::TestVariableTopSetting() {
                static_cast<int64_t>(newVarTop2), static_cast<int64_t>(newVarTop));
 
   coll->setAttribute(UCOL_ALTERNATE_HANDLING, UCOL_SHIFTED, status);
+<<<<<<< HEAD
   assertEquals("empty==dollar", UCOL_EQUAL, coll->compare(UnicodeString(), dollar));
   assertEquals("empty==euro", UCOL_EQUAL, coll->compare(UnicodeString(), euro));
   assertEquals("dollar<zero", UCOL_LESS, coll->compare(dollar, UnicodeString(static_cast<char16_t>(0x30))));
+=======
+  assertEquals("empty==dollar", static_cast<int32_t>(UCOL_EQUAL), static_cast<int32_t>(coll->compare(UnicodeString(), dollar)));
+  assertEquals("empty==euro", static_cast<int32_t>(UCOL_EQUAL), static_cast<int32_t>(coll->compare(UnicodeString(), euro)));
+  assertEquals("dollar<zero", static_cast<int32_t>(UCOL_LESS), static_cast<int32_t>(coll->compare(dollar, UnicodeString(static_cast<char16_t>(0x30)))));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   coll->setVariableTop(oldVarTop, status);
 
@@ -2383,7 +2389,11 @@ void CollationAPITest::TestCloneBinary() {
     rbc->setAttribute(UCOL_STRENGTH, UCOL_PRIMARY, errorCode);
     UnicodeString uUmlaut(static_cast<char16_t>(0xfc));
     UnicodeString ue = UNICODE_STRING_SIMPLE("ue");
+<<<<<<< HEAD
     assertEquals("rbc/primary: u-umlaut==ue", UCOL_EQUAL, rbc->compare(uUmlaut, ue, errorCode));
+=======
+    assertEquals("rbc/primary: u-umlaut==ue", static_cast<int32_t>(UCOL_EQUAL), rbc->compare(uUmlaut, ue, errorCode));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     uint8_t bin[25000];
     int32_t binLength = rbc->cloneBinary(bin, UPRV_LENGTHOF(bin), errorCode);
     if(errorCode.errDataIfFailureAndReset("rbc->cloneBinary()")) {
@@ -2395,8 +2405,13 @@ void CollationAPITest::TestCloneBinary() {
     if(errorCode.errDataIfFailureAndReset("RuleBasedCollator(rbc binary)")) {
         return;
     }
+<<<<<<< HEAD
     assertEquals("rbc2.strength==primary", UCOL_PRIMARY, rbc2.getAttribute(UCOL_STRENGTH, errorCode));
     assertEquals("rbc2: u-umlaut==ue", UCOL_EQUAL, rbc2.compare(uUmlaut, ue, errorCode));
+=======
+    assertEquals("rbc2.strength==primary", static_cast<int32_t>(UCOL_PRIMARY), rbc2.getAttribute(UCOL_STRENGTH, errorCode));
+    assertEquals("rbc2: u-umlaut==ue", static_cast<int32_t>(UCOL_EQUAL), rbc2.compare(uUmlaut, ue, errorCode));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     assertTrue("rbc==rbc2", *rbc == rbc2);
     uint8_t bin2[25000];
     int32_t bin2Length = rbc2.cloneBinary(bin2, UPRV_LENGTHOF(bin2), errorCode);
@@ -2407,8 +2422,13 @@ void CollationAPITest::TestCloneBinary() {
     if(errorCode.errDataIfFailureAndReset("RuleBasedCollator(rbc binary, length<0)")) {
         return;
     }
+<<<<<<< HEAD
     assertEquals("rbc3.strength==primary", UCOL_PRIMARY, rbc3.getAttribute(UCOL_STRENGTH, errorCode));
     assertEquals("rbc3: u-umlaut==ue", UCOL_EQUAL, rbc3.compare(uUmlaut, ue, errorCode));
+=======
+    assertEquals("rbc3.strength==primary", static_cast<int32_t>(UCOL_PRIMARY), rbc3.getAttribute(UCOL_STRENGTH, errorCode));
+    assertEquals("rbc3: u-umlaut==ue", static_cast<int32_t>(UCOL_EQUAL), rbc3.compare(uUmlaut, ue, errorCode));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     assertTrue("rbc==rbc3", *rbc == rbc3);
 }
 
@@ -2432,7 +2452,11 @@ void CollationAPITest::TestIterNumeric() {
     uiter_setUTF8(&iter40, "\x34\x30", 2);
     uiter_setUTF8(&iter72, "\x37\x32", 2);
     UCollationResult result = coll.compare(iter40, iter72, errorCode);
+<<<<<<< HEAD
     assertEquals("40<72", UCOL_LESS, result);
+=======
+    assertEquals("40<72", static_cast<int32_t>(UCOL_LESS), static_cast<int32_t>(result));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 void CollationAPITest::TestBadKeywords() {

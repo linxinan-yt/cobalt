@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import m from 'mithril';
+<<<<<<< HEAD
 import type {Engine} from '../../../trace_processor/engine';
 import {
   LONG,
@@ -28,6 +29,12 @@ import {Select} from '../../../widgets/select';
 import {FormGrid, FormLabel} from '../../../widgets/form';
 import {Time} from '../../../base/time';
 import {renderTimecode} from '../../../components/time_utils';
+=======
+import {Engine} from '../../../trace_processor/engine';
+import {NUM_NULL, STR, STR_NULL} from '../../../trace_processor/query_result';
+import {Section} from '../../../widgets/section';
+import {Grid, GridCell, GridHeaderCell} from '../../../widgets/grid';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 // Row specs
 const packageDataSpec = {
@@ -59,6 +66,7 @@ const androidGameInterventionRowSpec = {
 
 type AndroidGameInterventionRow = typeof androidGameInterventionRowSpec;
 
+<<<<<<< HEAD
 const aflagRowSpec = {
   ts: LONG,
   package: STR_NULL,
@@ -77,6 +85,11 @@ export interface AndroidData {
   gameInterventions: AndroidGameInterventionRow[];
   aflags: AflagRow[];
   aflagErrors: string[];
+=======
+export interface AndroidData {
+  packageList: PackageData[];
+  gameInterventions: AndroidGameInterventionRow[];
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 export async function loadAndroidData(engine: Engine): Promise<AndroidData> {
@@ -148,6 +161,7 @@ export async function loadAndroidData(engine: Engine): Promise<AndroidData> {
     });
   }
 
+<<<<<<< HEAD
   // Load aflags
   const aflagsResult = await engine.query(`
     include perfetto module android.aflags;
@@ -215,6 +229,14 @@ export function hasAndroidData(data?: AndroidData): boolean {
   );
 }
 
+=======
+  return {
+    packageList,
+    gameInterventions,
+  };
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 export interface AndroidTabAttrs {
   data: AndroidData;
 }
@@ -225,10 +247,13 @@ export class AndroidTab implements m.ClassComponent<AndroidTabAttrs> {
       '.pf-trace-info-page__tab-content',
       m(PackageListSection, {packageList: attrs.data.packageList}),
       m(AndroidGameInterventionList, {data: attrs.data.gameInterventions}),
+<<<<<<< HEAD
       m(AndroidAflagsSection, {
         aflags: attrs.data.aflags,
         aflagErrors: attrs.data.aflagErrors,
       }),
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     );
   }
 }
@@ -268,8 +293,13 @@ class PackageListSection implements m.ClassComponent<PackageListSectionAttrs> {
         ],
         rowData: packageList.map((pkg) => {
           const flags = [
+<<<<<<< HEAD
             (pkg.debuggable ?? 0) ? 'debuggable' : '',
             (pkg.profileableFromShell ?? 0) ? 'profileable' : '',
+=======
+            pkg.debuggable ?? 0 ? 'debuggable' : '',
+            pkg.profileableFromShell ?? 0 ? 'profileable' : '',
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
           ]
             .filter(Boolean)
             .join(' ');
@@ -314,7 +344,13 @@ function formatCurrentMode(mode: number | null): string {
   return mode !== null ? String(mode) : 'Unknown';
 }
 
+<<<<<<< HEAD
 class AndroidGameInterventionList implements m.ClassComponent<AndroidGameInterventionListAttrs> {
+=======
+class AndroidGameInterventionList
+  implements m.ClassComponent<AndroidGameInterventionListAttrs>
+{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   view({attrs}: m.CVnode<AndroidGameInterventionListAttrs>) {
     const data = attrs.data;
     if (data === undefined || data.length === 0) {
@@ -386,6 +422,7 @@ class AndroidGameInterventionList implements m.ClassComponent<AndroidGameInterve
     );
   }
 }
+<<<<<<< HEAD
 
 interface AndroidAflagsSectionAttrs {
   aflags: AflagRow[];
@@ -491,3 +528,5 @@ class AndroidAflagsSection implements m.ClassComponent<AndroidAflagsSectionAttrs
     );
   }
 }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

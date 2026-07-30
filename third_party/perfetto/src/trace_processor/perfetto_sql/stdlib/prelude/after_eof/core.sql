@@ -20,22 +20,44 @@
 -- trace concepts like trace boundaries and available metrics.
 
 -- Lists all metrics built-into trace processor.
+<<<<<<< HEAD
 CREATE PERFETTO VIEW trace_metrics(
   -- The name of the metric.
   name STRING
 )
 AS
 SELECT name FROM _trace_metrics;
+=======
+CREATE PERFETTO VIEW trace_metrics (
+  -- The name of the metric.
+  name STRING
+) AS
+SELECT
+  name
+FROM _trace_metrics;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 -- Definition of `trace_bounds` table. The values are being filled by Trace
 -- Processor when parsing the trace.
 -- It is recommended to depend on the `trace_start()` and `trace_end()`
 -- functions rather than directly on `trace_bounds`.
+<<<<<<< HEAD
 CREATE PERFETTO VIEW trace_bounds(
+=======
+CREATE PERFETTO VIEW trace_bounds (
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- First ts in the trace.
   start_ts TIMESTAMP,
   -- End of the trace.
   end_ts TIMESTAMP
+<<<<<<< HEAD
 )
 AS
 SELECT start_ts, end_ts FROM _trace_bounds;
+=======
+) AS
+SELECT
+  start_ts,
+  end_ts
+FROM _trace_bounds;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

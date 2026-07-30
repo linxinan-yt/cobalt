@@ -20,6 +20,14 @@ yo_BJ{
             permille{
                 other{"{0} ìdákan nínú ɛgbɛ̀rún"}
             }
+            portion-per-1e9{
+                dnam{"ɛ̀yà nínú ìdá blíɔ̀nù"}
+            }
+        }
+        consumption{
+            mile-per-gallon-imperial{
+                dnam{"maili ninu ami galɔɔnu kan"}
+            }
         }
         consumption{
             mile-per-gallon-imperial{
@@ -83,6 +91,11 @@ yo_BJ{
             decade{
                 other{"ɛ̀wádùn {0}"}
             }
+            night{
+                dnam{"àwɔn alɛ́"}
+                other{"àwɔn alɛ́ {0}"}
+                per{"{0}/alɛ́"}
+            }
             second{
                 other{"{0}ìsh àáy"}
                 per{"{0}/ìsh àáy"}
@@ -93,7 +106,10 @@ yo_BJ{
             year{
                 dnam{"ɔ̀dún"}
                 other{"{0} ɔ̀dún"}
+<<<<<<< HEAD
                 per{"{0} lɔ́dún"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         force{
@@ -130,6 +146,15 @@ yo_BJ{
                 dnam{"mɛtiriki tɔɔnu"}
             }
         }
+<<<<<<< HEAD
+=======
+        speed{
+            light-speed{
+                dnam{"ìmɔ́lɛ̀"}
+                other{"{0} ìmɔ́lɛ̀"}
+            }
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         volume{
             bushel{
                 dnam{"búsɛ́ɛ̀li"}
@@ -156,11 +181,21 @@ yo_BJ{
                 other{"{0}/ìsh"}
             }
             night{
+<<<<<<< HEAD
                 other{"àwɔn alɛ́{0}"}
+=======
+                dnam{"àwɔn alɛ́"}
+                other{"àwɔn alɛ́{0}"}
+                per{"{0}/alɛ́"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             week{
                 dnam{"ɔshɛ́"}
                 per{"{0}/ɔ̀shɛ̀"}
+            }
+            year{
+                dnam{"ɔd"}
+                other{"{0} ɔd"}
             }
         }
         length{
@@ -175,6 +210,10 @@ yo_BJ{
         }
         speed{
             light-speed{
+<<<<<<< HEAD
+=======
+                dnam{"ìmɔ́lɛ̀"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0}ìmɔ́lɛ̀"}
             }
         }

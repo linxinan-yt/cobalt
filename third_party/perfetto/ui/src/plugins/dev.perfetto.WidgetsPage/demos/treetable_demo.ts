@@ -13,10 +13,14 @@
 // limitations under the License.
 
 import m from 'mithril';
+<<<<<<< HEAD
 import {
   TreeTable,
   type TreeTableAttrs,
 } from '../../../components/widgets/treetable';
+=======
+import {TreeTable, TreeTableAttrs} from '../../../components/widgets/treetable';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {renderWidgetShowcase} from '../widgets_page_utils';
 
 interface File {

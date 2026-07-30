@@ -1197,6 +1197,12 @@ sd{
         "Pacific:Honolulu"{
             ec{"هونو لولو"}
         }
+<<<<<<< HEAD
+=======
+        "Pacific:Kanton"{
+            ec{"ڪانٽن"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Pacific:Kiritimati"{
             ec{"ڪريٽمٽي"}
         }

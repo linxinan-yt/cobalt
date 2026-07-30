@@ -162,6 +162,15 @@ protected:
      */
     virtual int32_t handleGetExtendedYear(UErrorCode& status) override;
 
+<<<<<<< HEAD
+=======
+    /**
+     * Compute fields from the JD
+     * @internal
+     */
+    virtual void handleComputeFields(int32_t julianDay, UErrorCode &status) override;
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     DECLARE_OVERRIDE_SYSTEM_DEFAULT_CENTURY
 
     /**
@@ -314,6 +323,15 @@ protected:
      * @internal
      */
     virtual int32_t handleGetExtendedYear(UErrorCode& status) override;
+<<<<<<< HEAD
+=======
+
+    /**
+     * Compute fields from the JD
+     * @internal
+     */
+    virtual void handleComputeFields(int32_t julianDay, UErrorCode &status) override;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     /**
      * Calculate the limit for a specified type of limit and field

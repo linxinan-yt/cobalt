@@ -21,6 +21,12 @@ da{
         "America:Merida"{
             ec{"Merida"}
         }
+<<<<<<< HEAD
+=======
+        "America:Sao_Paulo"{
+            ec{"São Paulo"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:St_Barthelemy"{
             ec{"Saint-Barthélemy"}
         }

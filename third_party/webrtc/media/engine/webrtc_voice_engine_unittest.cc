@@ -3142,10 +3142,17 @@ TEST_P(WebRtcVoiceEngineTestFake, SkipInitRecordingOnSend) {
 // This test verifies DSCP settings are properly applied on voice media channel.
 TEST_P(WebRtcVoiceEngineTestFake, TestSetDscpOptions) {
   EXPECT_TRUE(SetupSendStream());
+<<<<<<< HEAD
   FakeNetworkInterface network_interface(env_);
   MediaConfig config;
   std::unique_ptr<VoiceMediaSendChannelInterface> channel;
   RtpParameters parameters;
+=======
+  webrtc::FakeNetworkInterface network_interface(env_);
+  webrtc::MediaConfig config;
+  std::unique_ptr<webrtc::VoiceMediaSendChannelInterface> channel;
+  webrtc::RtpParameters parameters;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   channel = engine_->CreateSendChannel(env_, &call_, config, AudioOptions(),
                                        CryptoOptions());

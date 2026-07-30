@@ -84,8 +84,11 @@ void IntlTestRBNF::runIndexedTest(int32_t index, UBool exec, const char* &name, 
         TESTCASE(32, TestParseRuleDescriptorOverflow23002);
         TESTCASE(33, TestInfiniteRecursion);
         TESTCASE(34, testOmissionReplacementWithPluralRules);
+<<<<<<< HEAD
         TESTCASE(35, TestNullDereferenceWRITE23149);
         TESTCASE(36, TestNullDereferenceREAD23184);
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #else
         TESTCASE(0, TestRBNFDisabled);
 #endif
@@ -2755,6 +2758,7 @@ IntlTestRBNF::testOmissionReplacementWithPluralRules() {
     doTest(&rbnf, enTestFullData, false);
 }
 
+<<<<<<< HEAD
 void
 IntlTestRBNF::TestNullDereferenceWRITE23149() {
    UnicodeString test("x00:><>");
@@ -2781,6 +2785,8 @@ IntlTestRBNF::TestNullDereferenceREAD23184() {
     }
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 /* U_HAVE_RBNF */
 #else
 

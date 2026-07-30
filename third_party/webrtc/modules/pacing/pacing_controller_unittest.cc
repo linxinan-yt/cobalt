@@ -1425,7 +1425,11 @@ TEST_F(PacingControllerTest, PaddingPacketCanTriggerProbe) {
   pacer->SetPacerConfig(PacerConfig::Create(
       clock_.CurrentTime(),
       /*send_rate=*/DataRate::BitsPerSec(kInitialBitrateBps * kPaceMultiplier),
+<<<<<<< HEAD
       /*pad_rate=*/DataRate::KilobitsPerSec(300)));
+=======
+      /*padding_rate=*/DataRate::KilobitsPerSec(300)));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   pacer->EnqueuePacket(BuildPacket(RtpPacketMediaType::kVideo,
                                    /*ssrc=*/123, /*sequence_number=*/1,
@@ -2180,7 +2184,11 @@ TEST_F(PacingControllerTest, GapInPacingDoesntAccumulateBudget) {
 
   pacer->SetPacerConfig(PacerConfig::Create(clock_.CurrentTime(),
                                             kPackeSize / kPacketSendTime,
+<<<<<<< HEAD
                                             /*pad_rate=*/DataRate::Zero()));
+=======
+                                            /*padding_rate=*/DataRate::Zero()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // Send an initial packet.
   SendAndExpectPacket(pacer.get(), RtpPacketMediaType::kVideo, kSsrc,
@@ -2217,7 +2225,11 @@ TEST_F(PacingControllerTest, HandlesSubMicrosecondSendIntervals) {
   // Set pacing rate such that a packet is sent in 0.5us.
   pacer->SetPacerConfig(PacerConfig::Create(
       clock_.CurrentTime(), /*pacing_rate=*/2 * kPacketSize / kPacketSendTime,
+<<<<<<< HEAD
       /*pad_rate=*/DataRate::Zero(),
+=======
+      /*padding_rate=*/DataRate::Zero(),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       /*time_window=*/TimeDelta::Zero()));
 
   // Enqueue three packets, the first two should be sent immediately - the third
@@ -2241,7 +2253,11 @@ TEST_F(PacingControllerTest, HandlesSubMicrosecondPaddingInterval) {
   // Set both pacing and padding rates to 1 byte per 0.5us.
   pacer->SetPacerConfig(PacerConfig::Create(
       clock_.CurrentTime(), /*pacing_rate=*/2 * kPacketSize / kPacketSendTime,
+<<<<<<< HEAD
       /*pad_rate=*/2 * kPacketSize / kPacketSendTime));
+=======
+      /*padding_rate=*/2 * kPacketSize / kPacketSendTime));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // Enqueue and send one packet.
   EXPECT_CALL(callback_, SendPacket);
@@ -2362,7 +2378,11 @@ TEST_F(PacingControllerTest, RespectsQueueTimeLimit) {
   PacingController pacer(&clock_, &callback_, trials_);
   pacer.SetPacerConfig(PacerConfig::Create(clock_.CurrentTime(),
                                            kNominalPacingRate,
+<<<<<<< HEAD
                                            /*pad_rate=*/DataRate::Zero()));
+=======
+                                           /*padding_rate=*/DataRate::Zero()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   pacer.SetQueueTimeLimit(kQueueTimeLimit);
 
   // Fill pacer up to queue time limit.
@@ -2402,7 +2422,11 @@ TEST_F(PacingControllerTest, BudgetDoesNotAffectRetransmissionInsTrial) {
       CreateTestFieldTrials("WebRTC-Pacer-FastRetransmissions/Enabled/");
   PacingController pacer(&clock_, &callback_, trials);
   pacer.SetPacerConfig(PacerConfig::Create(clock_.CurrentTime(), kTargetRate,
+<<<<<<< HEAD
                                            /*pad_rate=*/DataRate::Zero()));
+=======
+                                           /*padding_rate=*/DataRate::Zero()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // Send a video packet so that we have a bit debt.
   pacer.EnqueuePacket(BuildPacket(RtpPacketMediaType::kVideo, kVideoSsrc,
@@ -2427,7 +2451,11 @@ TEST_F(PacingControllerTest, AbortsAfterReachingCircuitBreakLimit) {
   EXPECT_CALL(callback_, SendPadding).Times(0);
   PacingController pacer(&clock_, &callback_, trials_);
   pacer.SetPacerConfig(PacerConfig::Create(clock_.CurrentTime(), kTargetRate,
+<<<<<<< HEAD
                                            /*pad_rate=*/DataRate::Zero()));
+=======
+                                           /*padding_rate=*/DataRate::Zero()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // Set the circuit breaker to abort after one iteration of the main
   // sending loop.
@@ -2454,7 +2482,11 @@ TEST_F(PacingControllerTest, DoesNotPadIfProcessThreadIsBorked) {
 
   // Set both pacing and padding rate to be non-zero.
   pacer.SetPacerConfig(PacerConfig::Create(clock_.CurrentTime(), kTargetRate,
+<<<<<<< HEAD
                                            /*pad_rate=*/kTargetRate));
+=======
+                                           /*padding_rate=*/kTargetRate));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // Add one packet to the queue, but do not send it yet.
   pacer.EnqueuePacket(BuildPacket(RtpPacketMediaType::kVideo, kVideoSsrc,

@@ -19,6 +19,7 @@
 #include <cstdint>
 #include <utility>
 
+<<<<<<< HEAD
 #include "perfetto/ext/base/flat_hash_map.h"
 #include "src/trace_processor/importers/common/args_tracker.h"
 #include "src/trace_processor/importers/common/import_logs_tracker.h"
@@ -35,6 +36,18 @@
 #include "protos/perfetto/trace/interned_data/interned_data.pbzero.h"
 #include "protos/perfetto/trace/trace_packet.pbzero.h"
 #include "protos/third_party/android/frameworks/native/tracing/frameworks_native_trace_packet.pbzero.h"
+=======
+#include "perfetto/trace_processor/ref_counted.h"
+#include "src/trace_processor/importers/common/parser_types.h"
+#include "src/trace_processor/importers/proto/packet_sequence_state_generation.h"
+#include "src/trace_processor/importers/proto/proto_importer_module.h"
+#include "src/trace_processor/types/trace_processor_context.h"
+
+#include "protos/perfetto/trace/gpu/gpu_counter_event.pbzero.h"
+#include "protos/perfetto/trace/trace_packet.pbzero.h"
+
+namespace perfetto::trace_processor {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 namespace perfetto::trace_processor {
 
@@ -68,6 +81,7 @@ GraphicsEventModule::GraphicsEventModule(
 GraphicsEventModule::~GraphicsEventModule() = default;
 
 ModuleResult GraphicsEventModule::TokenizePacket(
+<<<<<<< HEAD
     const TokenizePacketArgs& args) {
   if (args.field.id() != TracePacket::kGpuCounterEventFieldNumber) {
     return ModuleResult::Ignored();
@@ -201,6 +215,32 @@ void GraphicsEventModule::TokenizeGpuCounterEvent(
 }
 
 void GraphicsEventModule::ParseGpuCounterEvent(
+=======
+    const protos::pbzero::TracePacket::Decoder& decoder,
+    TraceBlobView*,
+    int64_t,
+    RefPtr<PacketSequenceStateGeneration>,
+    uint32_t field_id) {
+  switch (field_id) {
+    case TracePacket::kGpuCounterEventFieldNumber:
+      parser_.TokenizeGpuCounterEvent(decoder.gpu_counter_event());
+      break;
+    case TracePacket::kFrameTimelineEventFieldNumber:
+    case TracePacket::kGpuRenderStageEventFieldNumber:
+    case TracePacket::kGpuLogFieldNumber:
+    case TracePacket::kGraphicsFrameEventFieldNumber:
+    case TracePacket::kVulkanMemoryEventFieldNumber:
+    case TracePacket::kVulkanApiEventFieldNumber:
+    case TracePacket::kGpuMemTotalEventFieldNumber:
+    default:
+      break;
+  }
+  return ModuleResult::Ignored();
+}
+
+void GraphicsEventModule::ParseTracePacketData(
+    const TracePacket::Decoder& decoder,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     int64_t ts,
     PacketSequenceStateGeneration* state,
     protozero::ConstBytes blob) {

@@ -63,8 +63,11 @@ def main():
   parser.add_argument('--chrome-track-event-descriptor', type=str, default=None)
   parser.add_argument('--test-extensions', type=str, default=None)
   parser.add_argument('--winscope-extensions', type=str, default=None)
+<<<<<<< HEAD
   parser.add_argument('--gpu-extensions', type=str, default=None)
   parser.add_argument('--gpu-interned-data-extensions', type=str, default=None)
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   parser.add_argument('--simpleperf-descriptor', type=str, default=None)
   parser.add_argument('--perf-file', type=str)
   parser.add_argument(
@@ -139,6 +142,7 @@ def main():
     args.test_extensions = os.path.join(protos_path, 'perfetto', 'trace',
                                         'test_extensions.descriptor')
   if args.winscope_extensions is None:
+<<<<<<< HEAD
     args.winscope_extensions = os.path.join(protos_path, 'third_party',
                                             'android',
                                             'android_extension.descriptor')
@@ -148,6 +152,10 @@ def main():
   if args.gpu_interned_data_extensions is None:
     args.gpu_interned_data_extensions = os.path.join(
         protos_path, 'perfetto', 'trace', 'gpu', 'gpu_interned_data.descriptor')
+=======
+    args.winscope_extensions = os.path.join(protos_path, 'perfetto', 'trace',
+                                            'android', 'winscope.descriptor')
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   if args.simpleperf_descriptor is None:
     args.simpleperf_descriptor = os.path.join(protos_path, 'third_party',
                                               'simpleperf',
@@ -170,8 +178,11 @@ def main():
       chrome_extensions=args.chrome_track_event_descriptor,
       test_extensions=args.test_extensions,
       winscope_extensions=args.winscope_extensions,
+<<<<<<< HEAD
       gpu_extensions=args.gpu_extensions,
       gpu_interned_data_extensions=args.gpu_interned_data_extensions,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       simpleperf_descriptor=args.simpleperf_descriptor,
       keep_input=args.keep_input,
       print_slowest_tests=args.print_slowest_tests,

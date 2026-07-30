@@ -326,9 +326,13 @@ void Httpd::OnWebsocketMessage(const base::WebsocketMessage& msg) {
 void RunHttpRPCServer(Rpc& rpc,
                       const std::string& listen_ip,
                       const std::string& port_number,
+<<<<<<< HEAD
                       const std::vector<std::string>& additional_cors_origins,
                       uint32_t idle_timeout_ms,
                       IdleStart idle_start) {
+=======
+                      const std::vector<std::string>& additional_cors_origins) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   Httpd srv(rpc);
   std::optional<int> port_opt = base::StringToInt32(port_number);
   std::string ip = listen_ip.empty() ? "localhost" : listen_ip;

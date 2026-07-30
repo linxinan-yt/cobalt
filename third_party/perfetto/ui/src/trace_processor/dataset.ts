@@ -174,6 +174,7 @@ export class SourceDataset<
 
   query(schema?: DatasetSchema) {
     schema = schema ?? this.schema;
+<<<<<<< HEAD
     const colNames = Object.keys(schema);
 
     // Track which joins are referenced in select statements
@@ -238,14 +239,29 @@ export class SourceDataset<
     const selectSql = `SELECT
 ${indent(colList, 2)}
 FROM ${fromClause}`;
+=======
+    const cols = Object.keys(schema);
+    const selectSql = `SELECT ${cols.join(', ')} FROM (${this.src})`;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     const filterSql = this.filterQuery();
     if (filterSql === undefined) {
       return selectSql;
     }
+<<<<<<< HEAD
     return `${selectSql}
 WHERE ${filterSql}`;
   }
 
+=======
+    return `${selectSql} WHERE ${filterSql}`;
+  }
+
+  optimize() {
+    // Cannot optimize SourceDataset
+    return this;
+  }
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   implements<T extends DatasetSchema>(required: T): this is Dataset<T> {
     return Object.entries(required).every(([name, required]) => {
       return name in this.schema && checkExtends(required, this.schema[name]);
@@ -275,8 +291,23 @@ WHERE ${filterSql}`;
 const MAX_SUBQUERIES_PER_UNION = 500;
 
 /**
+ * Classes are useless in TypeScript so we need to provide a factory function
+ * helper which provides the correct typing for the resultant union dataset
+ * based on the input datasets.
+ *
+ * @param datasets - The datasets to union together.
+ * @returns - A new union dataset representing the union of the input datasets.
+ */
+export function createUnionDataset<T extends readonly Dataset[]>(
+  datasets: T,
+): UnionDataset<T[number]['schema']> {
+  return new UnionDataset(datasets);
+}
+
+/**
  * A dataset that represents the union of multiple datasets.
  */
+<<<<<<< HEAD
 export class UnionDataset<
   T extends DatasetSchema = DatasetSchema,
 > implements Dataset<T> {
@@ -297,6 +328,13 @@ export class UnionDataset<
 
   private constructor(readonly union: ReadonlyArray<Dataset>) {}
 
+=======
+export class UnionDataset<T extends DatasetSchema = DatasetSchema>
+  implements Dataset<T>
+{
+  constructor(readonly union: ReadonlyArray<Dataset>) {}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   get schema(): T {
     // Find the minimal set of columns that are supported by all datasets of
     // the union
@@ -329,7 +367,44 @@ export class UnionDataset<
     // Flatten the entire union tree and extract all datasets
     const allDatasets = this.flattenUnion();
 
+<<<<<<< HEAD
     // Group SourceDatasets by src and merge them
+=======
+    // Handle large number of sub-queries by batching into multiple CTEs.
+    let sql = 'with\n';
+    const cteNames: string[] = [];
+
+    // Create CTEs for batches of sub-queries
+    for (let i = 0; i < subQueries.length; i += MAX_SUBQUERIES_PER_UNION) {
+      const batch = subQueries.slice(i, i + MAX_SUBQUERIES_PER_UNION);
+      const cteName = `union_batch_${Math.floor(i / MAX_SUBQUERIES_PER_UNION)}`;
+      cteNames.push(cteName);
+
+      sql += `${cteName} as (\n${batch.join('\nunion all\n')}\n)`;
+
+      // Add comma unless this is the last CTE.
+      if (i + MAX_SUBQUERIES_PER_UNION < subQueries.length) {
+        sql += ',\n';
+      }
+    }
+
+    const cols = Object.keys(schema);
+
+    // Union all the CTEs together in the final query.
+    sql += '\n';
+    sql += cteNames
+      .map((name) => `select ${cols.join(',')} from ${name}`)
+      .join('\nunion all\n');
+
+    return sql;
+  }
+
+  optimize(): Dataset<T> {
+    // Recursively optimize each dataset of this union
+    const optimizedUnion = this.union.map((ds) => ds.optimize());
+
+    // Find all source datasets and combine then based on src
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     const combinedSrcSets = new Map<string, SourceDataset[]>();
     const otherDatasets: Dataset[] = [];
 
@@ -420,9 +495,18 @@ export class UnionDataset<
       dataset.query(querySchema),
     );
 
+<<<<<<< HEAD
     // If we have a small number of sub-queries, just use a single union all.
     if (subQueries.length <= MAX_SUBQUERIES_PER_UNION) {
       return subQueries.join('\nUNION ALL\n');
+=======
+    const finalUnion = [...mergedSrcSets, ...otherDatasets];
+
+    if (finalUnion.length === 1) {
+      return finalUnion[0] as Dataset<T>;
+    } else {
+      return new UnionDataset(finalUnion);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 
     // Handle large number of sub-queries by batching into multiple CTEs.
@@ -460,6 +544,7 @@ FROM ${name}`,
     return sql;
   }
 
+<<<<<<< HEAD
   /**
    * Recursively flatten this union tree, extracting all leaf datasets.
    * Nested UnionDatasets are recursively flattened.
@@ -480,6 +565,8 @@ FROM ${name}`,
     return result;
   }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   implements<T extends DatasetSchema>(required: T): this is Dataset<T> {
     return Object.entries(required).every(([name, required]) => {
       return name in this.schema && checkExtends(required, this.schema[name]);

@@ -336,8 +336,18 @@ void FtraceTokenizer::TokenizeFtraceEvent(
     return;
   }
 
+<<<<<<< HEAD
   // Generic path: queue ts equals raw_ts, so leave FtraceData::raw_ts as the
   // kRawTsUnset sentinel (compressed away in the token buffer).
+=======
+  std::optional<int64_t> timestamp = context_->clock_tracker->ToTraceTime(
+      clock_id, static_cast<int64_t>(raw_timestamp));
+  // ClockTracker will increment some error stats if it failed to convert the
+  // timestamp so just return.
+  if (!timestamp.has_value()) {
+    return;
+  }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   module_context_->PushFtraceEvent(
       cpu, raw_ts, FtraceData{std::move(event), std::move(state)});
 }
@@ -547,7 +557,11 @@ void FtraceTokenizer::TokenizeFtraceGpuWorkPeriod(
   // Enforce clock type for the event data to be CLOCK_MONOTONIC_RAW
   // as specified, to calculate the timestamp correctly.
   std::optional<int64_t> timestamp = context_->clock_tracker->ToTraceTime(
+<<<<<<< HEAD
       ClockId::Machine(BuiltinClock::BUILTIN_CLOCK_MONOTONIC_RAW),
+=======
+      BuiltinClock::BUILTIN_CLOCK_MONOTONIC_RAW,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       static_cast<int64_t>(raw_timestamp));
 
   // ClockTracker will increment some error stats if it failed to convert the

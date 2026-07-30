@@ -49,6 +49,7 @@ class JsonTraceParser {
 
   StringId process_sort_index_hint_id_;
   StringId thread_sort_index_hint_id_;
+<<<<<<< HEAD
   StringId running_string_id_;
 
   void MaybeAddFlow(int64_t timestamp,
@@ -64,6 +65,10 @@ class JsonTraceParser {
       const JsonEvent& event,
       size_t stat_key,
       std::function<void(ArgsTracker::BoundInserter&)> extra_args = {});
+=======
+
+  void MaybeAddFlow(StringPool* pool, TrackId track_id, const JsonEvent& event);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 
 }  // namespace perfetto::trace_processor

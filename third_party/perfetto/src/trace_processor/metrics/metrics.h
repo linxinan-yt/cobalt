@@ -32,7 +32,11 @@
 #include "perfetto/protozero/scattered_heap_buffer.h"
 #include "perfetto/trace_processor/basic_types.h"
 #include "perfetto/trace_processor/trace_processor.h"
+<<<<<<< HEAD
 #include "src/trace_processor/perfetto_sql/engine/perfetto_sql_connection.h"
+=======
+#include "src/trace_processor/perfetto_sql/engine/perfetto_sql_engine.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "src/trace_processor/sqlite/bindings/sqlite_aggregate_function.h"
 #include "src/trace_processor/sqlite/bindings/sqlite_function.h"
 #include "src/trace_processor/sqlite/bindings/sqlite_result.h"
@@ -174,7 +178,11 @@ struct BuildProto : public sqlite::Function<BuildProto> {
 // Implements the RUN_METRIC SQL function.
 struct RunMetric : public sqlite::Function<RunMetric> {
   struct UserData {
+<<<<<<< HEAD
     PerfettoSqlConnection* connection;
+=======
+    PerfettoSqlEngine* engine;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     std::vector<SqlMetricFile>* metrics;
   };
 

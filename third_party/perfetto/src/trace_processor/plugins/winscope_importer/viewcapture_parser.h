@@ -18,8 +18,13 @@
 #define SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_VIEWCAPTURE_PARSER_H_
 
 #include "src/trace_processor/importers/proto/packet_sequence_state_generation.h"
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/viewcapture_parser.h
 #include "src/trace_processor/plugins/winscope_importer/viewcapture_args_parser.h"
 #include "src/trace_processor/plugins/winscope_importer/winscope_context.h"
+=======
+#include "src/trace_processor/importers/proto/winscope/viewcapture_args_parser.h"
+#include "src/trace_processor/importers/proto/winscope/winscope_context.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/viewcapture_parser.h
 #include "src/trace_processor/util/descriptors.h"
 #include "src/trace_processor/util/proto_to_args_parser.h"
 

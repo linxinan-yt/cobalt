@@ -45,6 +45,7 @@
 
 U_NAMESPACE_BEGIN
 
+class CharString;
 /**
  * Base class for all formats.  This is an abstract base class which
  * specifies the protocol for classes which convert other objects or
@@ -297,8 +298,13 @@ protected:
                                        UParseError& parseError);
 
  private:
+<<<<<<< HEAD
     Locale actualLocale;
     Locale validLocale;
+=======
+    CharString* actualLocale = nullptr;
+    CharString* validLocale = nullptr;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 
 U_NAMESPACE_END

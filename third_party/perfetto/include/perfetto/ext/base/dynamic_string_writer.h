@@ -14,8 +14,14 @@
  * limitations under the License.
  */
 
+<<<<<<< HEAD
+<<<<<<<< HEAD:third_party/perfetto/include/perfetto/ext/base/dynamic_string_writer.h
 #ifndef INCLUDE_PERFETTO_EXT_BASE_DYNAMIC_STRING_WRITER_H_
 #define INCLUDE_PERFETTO_EXT_BASE_DYNAMIC_STRING_WRITER_H_
+========
+#ifndef INCLUDE_PERFETTO_EXT_BASE_FIXED_STRING_WRITER_H_
+#define INCLUDE_PERFETTO_EXT_BASE_FIXED_STRING_WRITER_H_
+>>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/include/perfetto/ext/base/fixed_string_writer.h
 
 #include <string.h>
 
@@ -27,6 +33,13 @@
 #include <memory>
 #include <type_traits>
 
+=======
+#ifndef INCLUDE_PERFETTO_EXT_BASE_DYNAMIC_STRING_WRITER_H_
+#define INCLUDE_PERFETTO_EXT_BASE_DYNAMIC_STRING_WRITER_H_
+
+#include <string.h>
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "perfetto/base/logging.h"
 #include "perfetto/ext/base/string_utils.h"
 #include "perfetto/ext/base/string_view.h"
@@ -37,12 +50,27 @@ namespace base {
 // A helper class which writes formatted data to a string buffer.
 // This is used in the trace processor where we write O(GBs) of strings and
 // sprintf is too slow.
+<<<<<<< HEAD
+<<<<<<<< HEAD:third_party/perfetto/include/perfetto/ext/base/dynamic_string_writer.h
 class DynamicStringWriter {
+========
+class FixedStringWriter {
+>>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/include/perfetto/ext/base/fixed_string_writer.h
  public:
   using ScopedCString = std::unique_ptr<char, void (*)(void*)>;
 
   // Creates a string buffer from a char buffer and length.
+<<<<<<<< HEAD:third_party/perfetto/include/perfetto/ext/base/dynamic_string_writer.h
   DynamicStringWriter() {}
+========
+  FixedStringWriter(char* buffer, size_t size) : buffer_(buffer), size_(size) {}
+>>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/include/perfetto/ext/base/fixed_string_writer.h
+=======
+class DynamicStringWriter {
+ public:
+  // Creates a string buffer from a char buffer and length.
+  DynamicStringWriter() {}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // Appends n instances of a char to the buffer.
   void AppendChar(char in, size_t n = 1) { buffer_.append(n, in); }
@@ -70,6 +98,7 @@ class DynamicStringWriter {
     AppendString(buf.string_view());
   }
 
+<<<<<<< HEAD
   // Appends an integer to the buffer, padding with |padchar| if the number of
   // digits of the integer is less than |padding|.
   template <char padchar, uint64_t padding>
@@ -85,12 +114,15 @@ class DynamicStringWriter {
     AppendPaddedIntImpl<padchar, padding>(absolute_value, negate);
   }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   void AppendUnsignedInt(uint64_t value) {
     constexpr size_t STACK_BUFFER_SIZE = 32;
     StackString<STACK_BUFFER_SIZE> buf("%" PRIu64, value);
     AppendString(buf.string_view());
   }
 
+<<<<<<< HEAD
   template <char padchar, uint64_t padding>
   void AppendPaddedUnsignedInt(uint64_t value) {
     AppendPaddedIntImpl<padchar, padding>(value, false);
@@ -126,6 +158,8 @@ class DynamicStringWriter {
     AppendString(&data[idx + 1], size_needed - idx - 1);
   }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   // Appends a hex integer to the buffer.
   template <typename IntType>
   void AppendHexInt(IntType value) {
@@ -134,6 +168,7 @@ class DynamicStringWriter {
     AppendString(buf.string_view());
   }
 
+<<<<<<< HEAD
   void AppendHexString(const uint8_t* data, size_t size, char separator);
 
   void AppendHexString(StringView data, char separator) {
@@ -145,6 +180,12 @@ class DynamicStringWriter {
   void AppendDouble(double value) {
     constexpr size_t STACK_BUFFER_SIZE = 32;
     StackString<STACK_BUFFER_SIZE> buf("%.16g", value);
+=======
+  // Appends a double to the buffer.
+  void AppendDouble(double value) {
+    constexpr size_t STACK_BUFFER_SIZE = 32;
+    StackString<STACK_BUFFER_SIZE> buf("%lf", value);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     AppendString(buf.string_view());
   }
 
@@ -160,6 +201,7 @@ class DynamicStringWriter {
     return StringView(buffer_.c_str(), buffer_.size());
   }
 
+<<<<<<< HEAD
   ScopedCString CreateStringCopy() const {
     size_t n = buffer_.size();
     char* dup = reinterpret_cast<char*>(malloc(n + 1));
@@ -206,10 +248,23 @@ class DynamicStringWriter {
     AppendString(&data[idx + 1], kSizeNeeded - idx - 1);
   }
 
+=======
+  void Clear() { buffer_.clear(); }
+
+ private:
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   std::string buffer_;
 };
 
 }  // namespace base
 }  // namespace perfetto
 
+<<<<<<< HEAD
+<<<<<<<< HEAD:third_party/perfetto/include/perfetto/ext/base/dynamic_string_writer.h
 #endif  // INCLUDE_PERFETTO_EXT_BASE_DYNAMIC_STRING_WRITER_H_
+========
+#endif  // INCLUDE_PERFETTO_EXT_BASE_FIXED_STRING_WRITER_H_
+>>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/include/perfetto/ext/base/fixed_string_writer.h
+=======
+#endif  // INCLUDE_PERFETTO_EXT_BASE_DYNAMIC_STRING_WRITER_H_
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

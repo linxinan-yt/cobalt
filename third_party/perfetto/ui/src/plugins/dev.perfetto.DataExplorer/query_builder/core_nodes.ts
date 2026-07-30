@@ -8,7 +8,11 @@
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/core_nodes.ts
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+=======
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY, either express or implied.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/core_nodes.ts
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
@@ -17,6 +21,7 @@ import {SlicesSourceNode} from './nodes/sources/slices_source';
 import {
   modalForTableSelection,
   TableSourceNode,
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/core_nodes.ts
   type TableSourceNodeAttrs,
 } from './nodes/sources/table_source';
 import {
@@ -120,12 +125,35 @@ function applyJoinColumnDefaults(joinNode: JoinNode): void {
     for (const col of rightCols) col.checked = true;
   }
 }
+=======
+  TableSourceState,
+} from './nodes/sources/table_source';
+import {SqlSourceNode, SqlSourceState} from './nodes/sources/sql_source';
+import {AggregationNode, AggregationNodeState} from './nodes/aggregation_node';
+import {
+  ModifyColumnsNode,
+  ModifyColumnsState,
+} from './nodes/modify_columns_node';
+import {AddColumnsNode, AddColumnsNodeState} from './nodes/add_columns_node';
+import {
+  IntervalIntersectNode,
+  IntervalIntersectNodeState,
+} from './nodes/interval_intersect_node';
+import {MergeNode, MergeNodeState} from './nodes/merge_node';
+import {SortNode, SortNodeState} from './nodes/sort_node';
+import {UnionNode, UnionNodeState} from './nodes/union_node';
+import {
+  LimitAndOffsetNode,
+  LimitAndOffsetNodeState,
+} from './nodes/limit_and_offset_node';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/core_nodes.ts
 
 export function registerCoreNodes() {
   nodeRegistry.register('slice', {
     name: 'Slices',
     description: 'Explore all the slices from your trace.',
     icon: 'bar_chart',
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/core_nodes.ts
     hotkey: 'l',
     type: 'source',
     showOnLandingPage: true,
@@ -165,11 +193,41 @@ export function registerCoreNodes() {
 
   nodeRegistry.register('sql', {
     name: 'Query',
+=======
+    hotkey: 's',
+    type: 'source',
+    factory: (state) => new SlicesSourceNode(state),
+  });
+
+  nodeRegistry.register('table', {
+    name: 'Perfetto Table',
+    description:
+      'Query and explore data from any table in the Perfetto standard library.',
+    icon: 'table_chart',
+    hotkey: 't',
+    type: 'source',
+    preCreate: async ({sqlModules}) => {
+      const selection = await modalForTableSelection(sqlModules);
+      if (selection) {
+        return {
+          sqlTable: selection.sqlTable,
+          sqlModules,
+        };
+      }
+      return null;
+    },
+    factory: (state) => new TableSourceNode(state as TableSourceState),
+  });
+
+  nodeRegistry.register('sql', {
+    name: 'Query Node',
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/core_nodes.ts
     description:
       'Start with a custom SQL query to act as a source for further exploration.',
     icon: 'code',
     hotkey: 'q',
     type: 'source',
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/core_nodes.ts
     showOnLandingPage: true,
     nodeType: NodeType.kSqlSource,
     factory: (_attrs, factoryCtx) =>
@@ -230,6 +288,25 @@ export function registerCoreNodes() {
     },
     deserialize: (_attrs, trace) =>
       new TimeRangeSourceNode(_attrs as TimeRangeSourceNodeAttrs, {trace}),
+=======
+    factory: (state) => new SqlSourceNode(state as SqlSourceState),
+  });
+
+  nodeRegistry.register('aggregation', {
+    name: 'Aggregation',
+    description: 'Group and aggregate data from the source node.',
+    icon: 'functions',
+    type: 'modification',
+    factory: (state) => new AggregationNode(state as AggregationNodeState),
+  });
+
+  nodeRegistry.register('modify_columns', {
+    name: 'Modify Columns',
+    description: 'Select, rename, and add new columns to the data.',
+    icon: 'edit',
+    type: 'modification',
+    factory: (state) => new ModifyColumnsNode(state as ModifyColumnsState),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/core_nodes.ts
   });
 
   nodeRegistry.register('add_columns', {
@@ -238,6 +315,7 @@ export function registerCoreNodes() {
       'Add columns from another node via LEFT JOIN. Connect a node to the left-side port.',
     icon: 'add_box',
     type: 'modification',
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/core_nodes.ts
     category: 'Columns',
     nodeType: NodeType.kAddColumns,
     factory: (_attrs, factoryCtx) =>
@@ -322,6 +400,19 @@ export function registerCoreNodes() {
       new FilterInNode(_attrs as FilterInNodeAttrs, factoryCtx?.context ?? {}),
     deserialize: (_attrs, _trace, sqlModules) =>
       new FilterInNode(_attrs as FilterInNodeAttrs, {sqlModules}),
+=======
+    factory: (state) => {
+      const fullState: AddColumnsNodeState = {
+        ...state,
+        prevNode: state.prevNode!,
+        selectedColumns: (state as AddColumnsNodeState).selectedColumns ?? [],
+        leftColumn: (state as AddColumnsNodeState).leftColumn ?? 'id',
+        rightColumn: (state as AddColumnsNodeState).rightColumn ?? 'id',
+        autoExecute: false,
+      };
+      return new AddColumnsNode(fullState);
+    },
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/core_nodes.ts
   });
 
   nodeRegistry.register('interval_intersect', {
@@ -329,6 +420,7 @@ export function registerCoreNodes() {
     description: 'Intersect the intervals with another table.',
     icon: 'timeline',
     type: 'multisource',
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/core_nodes.ts
     category: 'Time',
     nodeType: NodeType.kIntervalIntersect,
     factory: (_attrs) =>
@@ -341,10 +433,29 @@ export function registerCoreNodes() {
 
   nodeRegistry.register('join', {
     name: 'Join',
+=======
+    factory: (state, context) => {
+      if (!context) {
+        throw new Error(
+          'NodeFactoryContext is required for IntervalIntersectNode',
+        );
+      }
+      const fullState: IntervalIntersectNodeState = {
+        ...state,
+        prevNodes: state.prevNodes ?? [],
+      };
+      return new IntervalIntersectNode(fullState);
+    },
+  });
+
+  nodeRegistry.register('merge', {
+    name: 'Merge',
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/core_nodes.ts
     description:
       'Join two tables using equality columns or custom SQL condition.',
     icon: 'merge',
     type: 'multisource',
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/core_nodes.ts
     nodeType: NodeType.kJoin,
     factory: (_attrs, factoryCtx) => {
       const attrs: JoinNodeAttrs = {
@@ -390,6 +501,21 @@ export function registerCoreNodes() {
       ),
     deserialize: (_attrs, _trace, sqlModules) =>
       new CreateSlicesNode(_attrs as CreateSlicesNodeAttrs, {sqlModules}),
+=======
+    factory: (state) => {
+      const fullState: MergeNodeState = {
+        ...state,
+        prevNodes: state.prevNodes ?? [],
+        leftQueryAlias: 'left',
+        rightQueryAlias: 'right',
+        conditionType: 'equality',
+        leftColumn: '',
+        rightColumn: '',
+        sqlExpression: '',
+      };
+      return new MergeNode(fullState);
+    },
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/core_nodes.ts
   });
 
   nodeRegistry.register('sort_node', {
@@ -397,11 +523,15 @@ export function registerCoreNodes() {
     description: 'Sort rows by one or more columns.',
     icon: 'sort',
     type: 'modification',
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/core_nodes.ts
     nodeType: NodeType.kSort,
     factory: (_attrs, factoryCtx) =>
       new SortNode(_attrs as SortNodeAttrs, factoryCtx?.context ?? {}),
     deserialize: (_attrs, _trace, sqlModules) =>
       new SortNode(_attrs as SortNodeAttrs, {sqlModules}),
+=======
+    factory: (state) => new SortNode(state as SortNodeState),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/core_nodes.ts
   });
 
   nodeRegistry.register('union_node', {
@@ -409,6 +539,7 @@ export function registerCoreNodes() {
     description: 'Combine rows from multiple sources.',
     icon: 'merge_type',
     type: 'multisource',
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/core_nodes.ts
     nodeType: NodeType.kUnion,
     factory: (_attrs, factoryCtx) => {
       const node = new UnionNode(
@@ -420,11 +551,24 @@ export function registerCoreNodes() {
     },
     deserialize: (_attrs, _trace, sqlModules) =>
       new UnionNode(_attrs as UnionNodeAttrs, {sqlModules}),
+=======
+    factory: (state) => {
+      const fullState: UnionNodeState = {
+        ...state,
+        prevNodes: state.prevNodes ?? [],
+        selectedColumns: [],
+      };
+      const node = new UnionNode(fullState);
+      node.onPrevNodesUpdated();
+      return node;
+    },
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/core_nodes.ts
   });
 
   nodeRegistry.register('limit_and_offset_node', {
     name: 'Limit and Offset',
     description: 'Limit the number of rows returned and optionally skip rows.',
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/core_nodes.ts
     icon: Icons.Filter,
     type: 'modification',
     nodeType: NodeType.kLimitAndOffset,
@@ -643,4 +787,11 @@ export function registerCoreNodes() {
 
   // Validate that all allowedChildren references point to registered nodes.
   nodeRegistry.validateAllowedChildren();
+=======
+    icon: 'filter_list',
+    type: 'modification',
+    factory: (state) =>
+      new LimitAndOffsetNode(state as LimitAndOffsetNodeState),
+  });
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/core_nodes.ts
 }

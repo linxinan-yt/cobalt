@@ -101,7 +101,11 @@ class DtlsStunPiggybackController {
   // * DTLSTransport when receiving a DTLS packet (possibly after the packet
   //   was emitted by this class).
   // * This class when processing a DTLS packet.
+<<<<<<< HEAD
   void ReportDtlsPacket(std::span<const uint8_t> data);
+=======
+  void ReportDtlsPacket(ArrayView<const uint8_t> data);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   int GetCountOfReceivedData() const { return data_recv_count_; }
 

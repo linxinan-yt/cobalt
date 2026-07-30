@@ -13,11 +13,19 @@
 // limitations under the License.
 
 import m from 'mithril';
+<<<<<<< HEAD
 import type {Engine} from '../../../trace_processor/engine';
 import {Section} from '../../../widgets/section';
 import {GridLayout} from '../../../widgets/grid_layout';
 import {
   type StatsSectionRow,
+=======
+import {Engine} from '../../../trace_processor/engine';
+import {Section} from '../../../widgets/section';
+import {GridLayout} from '../../../widgets/grid_layout';
+import {
+  StatsSectionRow,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   loadStatsWithFilter,
   groupByCategory,
   renderErrorCategoryCard,
@@ -26,8 +34,11 @@ import {
 
 export interface DataLossesData {
   losses: StatsSectionRow[];
+<<<<<<< HEAD
   isMultiTrace: boolean;
   isMultiMachine: boolean;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 export async function loadDataLossesData(
@@ -37,6 +48,7 @@ export async function loadDataLossesData(
     engine,
     "severity = 'data_loss' AND value > 0",
   );
+<<<<<<< HEAD
   const traceIds = new Set<number>();
   const machineIds = new Set<number>();
   for (const l of losses) {
@@ -48,6 +60,9 @@ export async function loadDataLossesData(
     isMultiTrace: traceIds.size > 1,
     isMultiMachine: machineIds.size > 1,
   };
+=======
+  return {losses};
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 export interface DataLossesTabAttrs {
@@ -89,8 +104,11 @@ export class DataLossesTab implements m.ClassComponent<DataLossesTabAttrs> {
           categories.map((cat) =>
             renderCategorySection(cat, {
               className: 'pf-trace-info-page__logs-grid',
+<<<<<<< HEAD
               isMultiTrace: attrs.data.isMultiTrace,
               isMultiMachine: attrs.data.isMultiMachine,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }),
           ),
         ),

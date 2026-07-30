@@ -12,10 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD
 import type {Trace} from '../../public/trace';
 import type {PerfettoPlugin} from '../../public/plugin';
 import {TrackNode} from '../../public/workspace';
 import {CounterTrack} from '../../components/tracks/counter_track';
+=======
+import {Trace} from '../../public/trace';
+import {PerfettoPlugin} from '../../public/plugin';
+import {TrackNode} from '../../public/workspace';
+import {createQueryCounterTrack} from '../../components/tracks/query_counter_track';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import StandardGroupsPlugin from '../dev.perfetto.StandardGroups';
 import {NUM, STR} from '../../trace_processor/query_result';
 
@@ -33,6 +40,7 @@ export default class implements PerfettoPlugin {
     group: TrackNode,
     sharing?: string,
   ) {
+<<<<<<< HEAD
     const track = CounterTrack.create({
       trace: ctx,
       uri,
@@ -42,6 +50,23 @@ export default class implements PerfettoPlugin {
       yOverrideMinimum: 0,
       yRangeSharingKey: sharing,
       yMode: 'rate',
+=======
+    const track = await createQueryCounterTrack({
+      trace: ctx,
+      uri,
+      data: {
+        sqlSource: sql,
+        columns: ['ts', 'value'],
+      },
+      columns: {ts: 'ts', value: 'value'},
+      options: {
+        unit: '%',
+        yOverrideMaximum: 100,
+        yOverrideMinimum: 0,
+        yRangeSharingKey: sharing,
+      },
+      materialize: false,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     });
     ctx.tracks.registerTrack({
       uri,
@@ -61,6 +86,7 @@ export default class implements PerfettoPlugin {
 
   async addSummaryCpuCounters(ctx: Trace): Promise<void> {
     const e = ctx.engine;
+<<<<<<< HEAD
 
     const tracks = await e.query(
       `select distinct
@@ -73,6 +99,27 @@ export default class implements PerfettoPlugin {
     );
 
     const it = tracks.iter({id: NUM, type: STR, cluster: NUM});
+=======
+    await e.query(
+      `CREATE PERFETTO TABLE _android_cpu_per_uid_summary AS
+      select
+        case when t.uid % 100000 < 10000 then 'System' else 'Apps' end as type,
+        cluster,
+        ts,
+        sum(100 * max(0, cpu_ratio)) as value
+      from android_cpu_per_uid_track t join android_cpu_per_uid_counter c on t.id = c.track_id
+      group by type, cluster, ts
+      order by type, cluster, ts;`,
+    );
+
+    const tracks = await e.query(
+      `select distinct type, cluster
+        from _android_cpu_per_uid_summary
+        order by type, cluster`,
+    );
+
+    const it = tracks.iter({type: STR, cluster: NUM});
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     if (it.valid()) {
       const group = new TrackNode({
         name: 'Summary',
@@ -85,8 +132,13 @@ export default class implements PerfettoPlugin {
         await this.addCpuPerUidTrack(
           ctx,
           `select ts, value
+<<<<<<< HEAD
           from counter
           where track_id = ${it.id}`,
+=======
+          from _android_cpu_per_uid_summary
+          where type = '${it.type}' and cluster = ${it.cluster}`,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
           name,
           `/cpu_per_uid_summary_${it.type}_${it.cluster}`,
           group,
@@ -104,6 +156,7 @@ export default class implements PerfettoPlugin {
   ): Promise<void> {
     const e = ctx.engine;
     const tracks = await e.query(
+<<<<<<< HEAD
       `select
          id,
          cluster,
@@ -111,6 +164,17 @@ export default class implements PerfettoPlugin {
        from android_cpu_per_uid_track
        where total_cpu_millis > ${thresholdMs}
        order by name, cluster`,
+=======
+      `select 
+          t.id,
+          t.cluster,
+          ifnull(package_name, 'UID ' || uid) as name,
+          sum(diff_ms) as total_cpu_ms
+        from android_cpu_per_uid_track t join android_cpu_per_uid_counter c on t.id = c.track_id
+        group by t.id, cluster, name
+        having total_cpu_ms > ${thresholdMs}
+        order by name, cluster`,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     );
     const it = tracks.iter({id: NUM, cluster: NUM, name: STR});
     if (it.valid()) {
@@ -126,8 +190,13 @@ export default class implements PerfettoPlugin {
           ctx,
           `select
            ts,
+<<<<<<< HEAD
            value
          from counter
+=======
+           min(100, 100 * cpu_ratio) as value
+         from android_cpu_per_uid_counter
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
          where track_id = ${it.id}`,
           name,
           `/${uriPrefix}_${it.id}`,

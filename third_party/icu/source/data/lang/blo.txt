@@ -359,7 +359,10 @@ blo{
         zh{"gɩcaɩnaja, manɖarɛŋ"}
     }
     Languages%short{
+<<<<<<< HEAD
         az{"Aserii kagɩja"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         en_US{"gɛɛshɩ (GKA)"}
     }
     Languages%variant{
@@ -410,9 +413,12 @@ blo{
         collation{
             standard{"ɩbii kʊnyaʊ ɖeiɖei"}
         }
+<<<<<<< HEAD
         collation%core{
             standard{"ɖeiɖei"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         ms{
             metric{"mɛta kʊfaŋʊ kayaashɩ"}
             uksystem{"Gɛɛshɩ kʊfaŋʊ kayaashɩ"}

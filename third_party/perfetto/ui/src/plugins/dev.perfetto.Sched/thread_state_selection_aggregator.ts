@@ -153,8 +153,13 @@ export class ThreadStateSelectionAggregator implements Aggregator {
         });
 
         const states: BarChartData[] = [];
+<<<<<<< HEAD
         for (; it.valid(); it.next()) {
           const name = it.state ?? 'Unknown';
+=======
+        for (let i = 0; it.valid(); ++i, it.next()) {
+          const name = it.state || 'Unknown';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
           states.push({
             title: `${name}: ${Duration.humanise(it.totalDur)}`,
             value: Number(it.totalDur),

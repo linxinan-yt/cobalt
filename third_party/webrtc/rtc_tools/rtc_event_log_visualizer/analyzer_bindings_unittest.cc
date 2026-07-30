@@ -18,7 +18,10 @@
 #include <vector>
 
 #include "absl/strings/string_view.h"
+<<<<<<< HEAD
 #include "api/environment/force_test_environment.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "rtc_base/system/file_wrapper.h"
 #include "test/gtest.h"
 #include "test/testsupport/file_utils.h"
@@ -74,7 +77,11 @@ TEST_F(RtcEventLogAnalyzerBindingsTest, OutgoingBitrateChart) {
   ASSERT_GT(output_size, 0u);
 
   // Parse output as charts.
+<<<<<<< HEAD
   analytics::ChartCollection collection;
+=======
+  webrtc::analytics::ChartCollection collection;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   bool success = collection.ParseFromString(
       absl::string_view(output.data(), static_cast<int>(output_size)));
   ASSERT_TRUE(success);
@@ -96,7 +103,11 @@ TEST_F(RtcEventLogAnalyzerBindingsTest, NetWorkDelayFeedbackChart) {
   ASSERT_GT(output_size, 0u);
 
   // Parse output as charts.
+<<<<<<< HEAD
   analytics::ChartCollection collection;
+=======
+  webrtc::analytics::ChartCollection collection;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   bool success = collection.ParseFromString(
       absl::string_view(output.data(), static_cast<int>(output_size)));
   ASSERT_TRUE(success);

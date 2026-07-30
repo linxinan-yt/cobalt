@@ -112,8 +112,13 @@ rtc_library("encoder_speed_controller_factory") {
   sources = [ "encoder_speed_controller.cc" ]
   deps = [
     ":video_codecs_api",
+<<<<<<< HEAD
     "../../modules/video_coding:encoder_speed_controller_impl",
     "../units:time_delta",
+=======
+    "../../api/units:time_delta",
+    "../../modules/video_coding:encoder_speed_controller_impl",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   ]
 }
 

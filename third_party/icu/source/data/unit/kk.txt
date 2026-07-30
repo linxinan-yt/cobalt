@@ -192,6 +192,11 @@ kk{
                 one{"{0} промириад"}
                 other{"{0} промириад"}
             }
+            portion-per-1e9{
+                dnam{"миллиардтағы бөлік"}
+                one{"{0} б/млрд"}
+                other{"{0} б/млрд"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -305,6 +310,12 @@ kk{
                 dnam{"наносекунд"}
                 one{"{0} наносекунд"}
                 other{"{0} наносекунд"}
+            }
+            night{
+                dnam{"түн"}
+                one{"{0} түн"}
+                other{"{0} түн"}
+                per{"{0}/түн"}
             }
             second{
                 dnam{"секунд"}
@@ -744,6 +755,11 @@ kk{
             knot{
                 dnam{"түйін"}
             }
+            light-speed{
+                dnam{"жарық"}
+                one{"{0} жарық"}
+                other{"{0} жарық"}
+            }
             meter-per-second{
                 one{"{0} метр/секунд"}
                 other{"{0} метр/секунд"}
@@ -1000,6 +1016,11 @@ kk{
             permille{
                 dnam{"‰"}
             }
+            portion-per-1e9{
+                dnam{"б/млрд"}
+                one{"{0} б/млрд"}
+                other{"{0} б/млрд"}
+            }
         }
         consumption{
             liter-per-kilometer{
@@ -1044,8 +1065,15 @@ kk{
                 dnam{"сағ"}
             }
             night{
+<<<<<<< HEAD
                 one{"{0}түн"}
                 other{"{0}түн"}
+=======
+                dnam{"түн"}
+                one{"{0}түн"}
+                other{"{0}түн"}
+                per{"{0}/түн"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             week{
                 dnam{"ап."}
@@ -1166,6 +1194,11 @@ kk{
         speed{
             knot{
                 dnam{"түйін"}
+            }
+            light-speed{
+                dnam{"жарық"}
+                one{"{0} жарық"}
+                other{"{0} жарық"}
             }
             meter-per-second{
                 dnam{"м/с"}
@@ -1390,6 +1423,11 @@ kk{
             }
             permyriad{
                 dnam{"промириад"}
+            }
+            portion-per-1e9{
+                dnam{"бөлік/миллиард"}
+                one{"{0} б/млрд"}
+                other{"{0} б/млрд"}
             }
         }
         consumption{

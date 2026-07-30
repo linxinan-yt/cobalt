@@ -138,10 +138,13 @@ const char kAttributeInactive[] = "inactive";
 const char kAttributeSctpPort[] = "sctp-port";
 const char kAttributeMaxMessageSize[] = "max-message-size";
 const int kDefaultSctpMaxMessageSize = 65536;
+<<<<<<< HEAD
 // 32 is a safe upper bound. Standard groups (FID, FEC-FR, SIM) use <= 3 SSRCs.
 // This allows a buffer for custom semantics while preventing resource
 // exhaustion.
 constexpr size_t kMaxSsrcsPerGroup = 32;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 // draft-hancke-tsvwg-snap
 const char kAttributeSctpSnap[] = "sctp-init";
@@ -222,11 +225,14 @@ bool IsTokenChar(char ch) {
          (ch >= 0x41 && ch <= 0x5a) || (ch >= 0x5e && ch <= 0x7e);
 }
 
+<<<<<<< HEAD
 void ReportSdpBandwidth(SdpBandwidthCategory category) {
   RTC_HISTOGRAM_ENUMERATION("WebRTC.PeerConnection.SdpBandwidth", category,
                             kSdpBandwidthMax);
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 struct SsrcInfo {
   uint32_t ssrc_id;
   std::string cname;
@@ -789,6 +795,31 @@ bool IsValidAbsoluteUri(absl::string_view uri) {
     }
   }
   return true;
+}
+
+bool ParseSctpInit(absl::string_view line,
+                   std::vector<uint8_t>* cookie,
+                   SdpParseError* error) {
+  // draft-hancke-tsvwg-snap
+  // a=sctp-init:<base64("CookieMonster")>
+  std::string base64_cookie;
+  if (!GetValue(line, kAttributeSctpSnap, &base64_cookie, error)) {
+    return false;
+  }
+  std::optional<std::string> decoded_cookie = Base64Decode(base64_cookie);
+  if (!decoded_cookie) {
+    return ParseFailed(line, "Base64 decoding of sctp-init failed.", error);
+  }
+  *cookie =
+      std::vector<uint8_t>(decoded_cookie->begin(), decoded_cookie->end());
+  return true;
+}
+
+void WriteSctpInit(const std::vector<uint8_t>& cookie, StringBuilder* os) {
+  // draft-hancke-tsvwg-snap
+  // a=sctp-init:<base64("CookieMonster")>
+  InitAttrLine(kAttributeSctpSnap, os);
+  *os << kSdpDelimiterColon << Base64Encode(cookie);
 }
 
 bool ParseExtmap(absl::string_view line,

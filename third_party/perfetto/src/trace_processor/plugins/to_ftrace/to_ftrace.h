@@ -23,7 +23,11 @@
 #include <optional>
 #include <vector>
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/to_ftrace/to_ftrace.h
 #include "perfetto/ext/base/dynamic_string_writer.h"
+=======
+#include "perfetto/ext/base/fixed_string_writer.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/to_ftrace.h
 #include "perfetto/ext/base/flat_hash_map.h"
 #include "src/trace_processor/sqlite/bindings/sqlite_function.h"
 #include "src/trace_processor/storage/trace_storage.h"
@@ -44,7 +48,11 @@ class SystraceSerializer {
   using StringIdMap =
       base::FlatHashMap<StringId, std::vector<std::optional<uint32_t>>>;
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/to_ftrace/to_ftrace.h
   void SerializePrefix(uint32_t raw_row, base::DynamicStringWriter* writer);
+=======
+  void SerializePrefix(uint32_t raw_row, base::FixedStringWriter* writer);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/to_ftrace.h
 
   StringIdMap proto_id_to_arg_index_by_event_;
   const TraceStorage* storage_ = nullptr;

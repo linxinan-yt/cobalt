@@ -41,6 +41,7 @@
     }
   }
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.AggregateProfiles/styles.scss
   &__controls {
     justify-content: center;
   }
@@ -58,8 +59,27 @@
     min-width: 200px;
   }
 
+=======
+  // Don't want the progress bar to shrink when the grid is in a flex column.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/assets/components/data_grid.scss
   &__loading {
     color: var(--pf-color-text-muted);
     text-align: center;
+  }
+}
+
+.pf-aggr-cell {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0.1em;
+
+  &__symbol {
+    margin-right: 0.3em;
+  }
+
+  &__content {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

@@ -915,12 +915,21 @@ eu{
                     1{"G.a."}
                 }
                 wide{
+<<<<<<< HEAD
                     0{"Kristo aurretik"}
                     1{"Kristo ondoren"}
                 }
                 wide%variant{
                     0{"oraingo aroaren aurretik"}
                     1{"oraingo aroa"}
+=======
+                    "Kristo aurretik",
+                    "Kristo ondoren",
+                }
+                wide%variant{
+                    "oraingo aroaren aurretik",
+                    "oraingo aroa",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
             intervalFormats{

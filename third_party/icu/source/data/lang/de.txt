@@ -20,7 +20,10 @@ de{
         lw{"Zeilenumbruch im Wortinneren"}
         ms{"Maßsystem"}
         numbers{"Ziffern"}
+<<<<<<< HEAD
         ss{"Satzabbruch nach Abk."}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         timezone{"Zeitzone"}
         va{"Lokale Variante"}
         x{"Privatnutzung"}
@@ -884,6 +887,7 @@ de{
             japanese{"Japanischer Kalender"}
             persian{"Persischer Kalender"}
             roc{"Minguo-Kalender"}
+<<<<<<< HEAD
         }
         calendar%core{
             buddhist{"buddhistisch"}
@@ -900,6 +904,8 @@ de{
             japanese{"japanisch"}
             persian{"persisch"}
             roc{"Minguo"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         cf{
             account{"Währungsformat (Buchhaltung)"}

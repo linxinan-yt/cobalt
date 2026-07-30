@@ -136,6 +136,7 @@ class Rpc {
       void(const uint8_t* /*buf*/, size_t /*len*/, bool /*has_more*/)>;
   void Query(const uint8_t*, size_t, const QueryResultBatchCallback&);
 
+<<<<<<< HEAD
   // Streams an export using the same callback pattern as Query(): called
   // inline, once per chunk, with |has_more| false on the last call. Returning
   // an error aborts the export.
@@ -144,6 +145,8 @@ class Rpc {
   static std::optional<TraceProcessor::ExportFormat> ParseExportFormat(int32_t);
   base::Status Export(TraceProcessor::ExportFormat, const ExportCallback&);
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   TraceProcessor* trace_processor() const { return trace_processor_.get(); }
 
  private:

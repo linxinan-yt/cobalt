@@ -428,6 +428,7 @@ ml{
                 Bhms{"B h:mm:ss"}
                 EBhm{"E, B h:mm"}
                 EBhms{"E, B h:mm:ss"}
+<<<<<<< HEAD
                 Eh{"E, h a"}
                 GyM{"G y/M"}
                 GyMEd{"G d/M/y, E"}
@@ -435,6 +436,9 @@ ml{
                 Hmsv{"v HH:mm:ss"}
                 Hmv{"v HH:mm"}
                 Hv{"v HH'h'"}
+=======
+                GyMd{"M/d/y G"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 MEd{"d/M, E"}
                 MMMMEd{"MMMM d, E"}
                 MMMMW{
@@ -543,8 +547,13 @@ ml{
             }
             eras{
                 abbreviated{
+<<<<<<< HEAD
                     0{"ബിസി"}
                     1{"എഡി"}
+=======
+                    "ബി.സി.",
+                    "എഡി",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
                 abbreviated%variant{
                     0{"ബിസിഇ"}
@@ -761,6 +770,20 @@ ml{
                         "പൗഷം",
                         "മാഘം",
                         "ഫൽഗുനം",
+                    }
+                    narrow{
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                        "10",
+                        "11",
+                        "12",
                     }
                     wide{
                         "ചൈത്രം",

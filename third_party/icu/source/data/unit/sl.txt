@@ -1160,6 +1160,46 @@ sl{
                 other{"{0} desettisočin"}
                 two{"{0} desettisočini"}
             }
+            portion-per-1e9{
+                case{
+                    accusative{
+                        few{"{0} delce na milijardo"}
+                        one{"{0} delec na milijardo"}
+                        other{"{0} delcev na milijardo"}
+                        two{"{0} delca na milijardo"}
+                    }
+                    dative{
+                        few{"{0} delcem na milijardo"}
+                        one{"{0} delcu na milijardo"}
+                        other{"{0} delcem na milijardo"}
+                        two{"{0} delcema na milijardo"}
+                    }
+                    genitive{
+                        few{"{0} delcev na milijardo"}
+                        one{"{0} delca na milijardo"}
+                        other{"{0} delcev na milijardo"}
+                        two{"{0} delcev na milijardo"}
+                    }
+                    instrumental{
+                        few{"{0} delci na milijardo"}
+                        one{"{0} delcem na milijardo"}
+                        other{"{0} delci na milijardo"}
+                        two{"{0} delcema na milijardo"}
+                    }
+                    locative{
+                        few{"{0} delcih na milijardo"}
+                        one{"{0} delcu na milijardo"}
+                        other{"{0} delcih na milijardo"}
+                        two{"{0} delcih na milijardo"}
+                    }
+                }
+                dnam{"delci na milijardo"}
+                few{"{0} delci na milijardo"}
+                gender{"masculine"}
+                one{"{0} delec na milijardo"}
+                other{"{0} delcev na milijardo"}
+                two{"{0} delca na milijardo"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -2098,6 +2138,10 @@ sl{
                         two{"{0} nočeh"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"noči"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 few{"{0} noči"}
                 gender{"feminine"}
                 one{"{0} noč"}
@@ -2986,7 +3030,7 @@ sl{
                 case{
                     accusative{
                         few{"{0} eme"}
-                        one{"{0} em"}
+                        one{"{0} emov"}
                         other{"{0} emov"}
                         two{"{0} ema"}
                     }
@@ -3017,7 +3061,7 @@ sl{
                 }
                 few{"{0} emi"}
                 gender{"masculine"}
-                one{"{0} em"}
+                one{"{0} emov"}
                 other{"{0} emov"}
                 two{"{0} ema"}
             }
@@ -3609,6 +3653,10 @@ sl{
                         two{"{0} točkah"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"točke"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 few{"{0} točke"}
                 gender{"feminine"}
                 one{"{0} točka"}
@@ -4716,6 +4764,10 @@ sl{
                         two{"{0} svetlobah"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"svetloba"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 few{"{0} svetlobe"}
                 gender{"feminine"}
                 one{"{0} svetloba"}
@@ -5574,9 +5626,17 @@ sl{
                 dnam{"mesec"}
             }
             night{
+<<<<<<< HEAD
                 few{"{0} n"}
                 one{"{0} n"}
                 other{"{0} n"}
+=======
+                dnam{"noči"}
+                few{"{0} n"}
+                one{"{0} n"}
+                other{"{0} n"}
+                per{"{0}/noč"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 two{"{0} n"}
             }
             quarter{
@@ -5619,7 +5679,11 @@ sl{
             }
             em{
                 few{"{0} emi"}
+<<<<<<< HEAD
                 one{"{0} em"}
+=======
+                one{"{0} emov"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} emov"}
                 two{"{0} ema"}
             }
@@ -5630,6 +5694,15 @@ sl{
                 one{"{0} sv. l."}
                 other{"{0} sv. l."}
                 two{"{0} sv. l."}
+            }
+        }
+        speed{
+            light-speed{
+                dnam{"svetloba"}
+                few{"{0} svetlobe"}
+                one{"{0} svetloba"}
+                other{"{0} svetlob"}
+                two{"{0} svetlobi"}
             }
         }
         temperature{
@@ -5935,7 +6008,11 @@ sl{
             }
             em{
                 few{"{0} emi"}
+<<<<<<< HEAD
                 one{"{0} em"}
+=======
+                one{"{0} emov"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} emov"}
                 two{"{0} ema"}
             }

@@ -29,7 +29,11 @@
 
   h3 {
     margin: 12px 0 0 0;
+<<<<<<< HEAD
     font-size: var(--pf-font-size-xxl);
+=======
+    font-size: 20px;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   p,
@@ -53,10 +57,16 @@
   }
 
   &__options {
+<<<<<<< HEAD
     overflow: hidden;
     flex: 0;
     min-width: 250px;
     overflow: hidden;
+=======
+    flex: 0;
+    min-width: 250px;
+    overflow: hidden;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     padding-inline: 16px;
 
     background: var(--pf-color-background-secondary);
@@ -64,9 +74,13 @@
     padding-block: 16px;
 
     label {
+<<<<<<< HEAD
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+=======
+      text-transform: capitalize;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
   }
 
@@ -121,6 +135,7 @@
   &__content-container {
     flex: 1;
     overflow-y: auto;
+<<<<<<< HEAD
 
     // Full-width pages own their own scrolling (e.g. a fillHeight DataGrid), so
     // clip here instead of letting content grow this scroll region unbounded.
@@ -132,11 +147,14 @@
       display: flex;
       min-height: 0;
     }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   &__content {
     flex: 1;
     padding-inline: 16px;
+<<<<<<< HEAD
     padding-bottom: 16px;
     max-width: 900px;
 
@@ -147,5 +165,9 @@
       min-height: 0;
       overflow: hidden;
     }
+=======
+    max-width: 900px;
+    padding-bottom: 32px;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 }

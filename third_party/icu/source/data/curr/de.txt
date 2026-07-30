@@ -2079,9 +2079,12 @@ de{
             one{"Zaire-Neuer Zaïre (1993–1998)"}
             other{"Zaire-Neue Zaïre (1993–1998)"}
         }
+<<<<<<< HEAD
         ZWG{
             one{"Simbabwe-Gold"}
             other{"Simbabwe-Gold"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

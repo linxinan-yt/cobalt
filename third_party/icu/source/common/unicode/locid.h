@@ -198,6 +198,7 @@ class UnicodeString;
 class U_COMMON_API_CLASS Locale : public UObject {
 public:
     /** Useful constant for the Root locale. @stable ICU 4.4 */
+<<<<<<< HEAD
     U_COMMON_API static const Locale& U_EXPORT2 getRoot();
     /** Useful constant for this language. @stable ICU 2.0 */
     U_COMMON_API static const Locale& U_EXPORT2 getEnglish();
@@ -242,6 +243,52 @@ public:
     U_COMMON_API static const Locale& U_EXPORT2 getCanada();
     /** Useful constant for this country/region. @stable ICU 2.0 */
     U_COMMON_API static const Locale& U_EXPORT2 getCanadaFrench();
+=======
+    static const Locale& U_EXPORT2 getRoot();
+    /** Useful constant for this language. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getEnglish();
+    /** Useful constant for this language. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getFrench();
+    /** Useful constant for this language. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getGerman();
+    /** Useful constant for this language. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getItalian();
+    /** Useful constant for this language. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getJapanese();
+    /** Useful constant for this language. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getKorean();
+    /** Useful constant for this language. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getChinese();
+    /** Useful constant for this language. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getSimplifiedChinese();
+    /** Useful constant for this language. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getTraditionalChinese();
+
+    /** Useful constant for this country/region. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getFrance();
+    /** Useful constant for this country/region. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getGermany();
+    /** Useful constant for this country/region. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getItaly();
+    /** Useful constant for this country/region. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getJapan();
+    /** Useful constant for this country/region. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getKorea();
+    /** Useful constant for this country/region. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getChina();
+    /** Useful constant for this country/region. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getPRC();
+    /** Useful constant for this country/region. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getTaiwan();
+    /** Useful constant for this country/region. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getUK();
+    /** Useful constant for this country/region. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getUS();
+    /** Useful constant for this country/region. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getCanada();
+    /** Useful constant for this country/region. @stable ICU 2.0 */
+    static const Locale& U_EXPORT2 getCanadaFrench();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     /**
      * Construct a default locale object, a Locale for the default locale ID.
@@ -276,10 +323,17 @@ public:
      * @see uloc_getDefault
      * @stable ICU 2.0
      */
+<<<<<<< HEAD
     U_COMMON_API Locale(const char* language,
                         const char* country = nullptr,
                         const char* variant = nullptr,
                         const char* keywordsAndValues = nullptr);
+=======
+    Locale(const char* language,
+           const char* country = nullptr,
+           const char* variant = nullptr,
+           const char* keywordsAndValues = nullptr);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     /**
      * Initializes a Locale object from another Locale object.
@@ -372,7 +426,11 @@ public:
      * @system
      * @stable ICU 2.0
      */
+<<<<<<< HEAD
     U_COMMON_API static const Locale& U_EXPORT2 getDefault();
+=======
+    static const Locale& U_EXPORT2 getDefault();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     /**
      * Sets the default. Normally set once at the beginning of a process,
@@ -454,6 +512,11 @@ public:
 #ifndef U_HIDE_INTERNAL_API
     /** @internal */
     U_COMMON_API static Locale U_EXPORT2 createFromName(StringPiece name);
+#endif  /* U_HIDE_INTERNAL_API */
+
+#ifndef U_HIDE_INTERNAL_API
+    /** @internal */
+    static Locale U_EXPORT2 createFromName(StringPiece name);
 #endif  /* U_HIDE_INTERNAL_API */
 
     /**
@@ -739,9 +802,13 @@ public:
      *
      * @stable ICU 49
      */
+<<<<<<< HEAD
     U_COMMON_API void setKeywordValue(const char* keywordName,
                                       const char* keywordValue,
                                       UErrorCode& status) {
+=======
+    void setKeywordValue(const char* keywordName, const char* keywordValue, UErrorCode &status) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         setKeywordValue(StringPiece{keywordName}, StringPiece{keywordValue}, status);
     }
 
@@ -811,7 +878,11 @@ public:
      * there is no Windows LCID value that corresponds to this locale, returns 0.
      * @stable ICU 2.0
      */
+<<<<<<< HEAD
     U_COMMON_API uint32_t getLCID() const;
+=======
+    uint32_t getLCID() const;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     /**
      * Returns whether this locale's script is written right-to-left.
@@ -962,7 +1033,11 @@ public:
      * Generates a hash code for the locale.
      * @stable ICU 2.0
      */
+<<<<<<< HEAD
     U_COMMON_API int32_t hashCode() const;
+=======
+    int32_t hashCode() const;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     /**
      * Sets the locale to bogus
@@ -979,7 +1054,11 @@ public:
      * @return false if it is a real locale, true if it is a bogus locale
      * @stable ICU 2.1
      */
+<<<<<<< HEAD
     U_COMMON_API inline UBool isBogus() const;
+=======
+    inline UBool isBogus() const;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     /**
      * Returns a list of all installed locales.
@@ -1151,6 +1230,10 @@ private:
      * @param canonicalize whether to call uloc_canonicalize on cLocaleID
      */
     Locale& init(const char* localeID, UBool canonicalize);
+<<<<<<< HEAD
+=======
+    /** @internal */
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     Locale& init(StringPiece localeID, UBool canonicalize);
 
     /*
@@ -1337,6 +1420,39 @@ Locale::toLanguageTag(UErrorCode& status) const
     return result;
 }
 
+<<<<<<< HEAD
+=======
+inline const char *
+Locale::getCountry() const
+{
+    return country;
+}
+
+inline const char *
+Locale::getLanguage() const
+{
+    return language;
+}
+
+inline const char *
+Locale::getScript() const
+{
+    return script;
+}
+
+inline const char *
+Locale::getVariant() const
+{
+    return fIsBogus ? "" : &baseName[variantBegin];
+}
+
+inline const char *
+Locale::getName() const
+{
+    return fullName;
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 template<typename StringClass, typename OutputIterator> inline void
 Locale::getKeywords(OutputIterator iterator, UErrorCode& status) const
 {
@@ -1393,9 +1509,15 @@ Locale::getUnicodeKeywordValue(StringPiece keywordName, UErrorCode& status) cons
     return result;
 }
 
+<<<<<<< HEAD
 U_COMMON_API inline UBool
 Locale::isBogus() const {
     return payload.isBogus();
+=======
+inline UBool
+Locale::isBogus() const {
+    return fIsBogus;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 U_NAMESPACE_END

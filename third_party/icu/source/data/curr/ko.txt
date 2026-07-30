@@ -1193,14 +1193,22 @@ ko{
         NIC{
             other{"니카라과 코르도바 오로(1988~1991)"}
         }
+<<<<<<< HEAD
         XCG{
             other{"카리브 길더"}
+=======
+        TRY{
+            other{"튀르키예 리라"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         XXX{
             other{"(알 수 없는 통화 단위)"}
         }
+<<<<<<< HEAD
         ZWG{
             other{"짐바브웨 골드"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

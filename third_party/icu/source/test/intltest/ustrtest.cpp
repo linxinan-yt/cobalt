@@ -6,7 +6,10 @@
  * others. All Rights Reserved.
  ********************************************************************/
 
+<<<<<<< HEAD
 #include <algorithm>
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include <string>
 #include <string_view>
 #include <utility>
@@ -33,8 +36,11 @@ using namespace std::string_view_literals;
 // Same for u"literal"s std::u16string literals.
 using namespace std::string_literals;
 
+<<<<<<< HEAD
 using icu::header::utfStringCodePoints;
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #if 0
 #include "unicode/ustream.h"
 
@@ -84,7 +90,10 @@ void UnicodeStringTest::runIndexedTest( int32_t index, UBool exec, const char* &
     TESTCASE_AUTO(TestLargeMemory);
     TESTCASE_AUTO(TestU16StringView);
     TESTCASE_AUTO(TestWStringView);
+<<<<<<< HEAD
     TESTCASE_AUTO(TestRange);
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     TESTCASE_AUTO_END;
 }
 
@@ -1964,11 +1973,16 @@ UnicodeStringTest::TestUTF8() {
         errln("UnicodeString::toUTF8(sink) did not sink.Flush().");
     }
     // Initial contents for testing that toUTF8String() appends.
+<<<<<<< HEAD
     std::string prefix = "-->";
     std::string result8 = prefix;
     std::string expected8 =
         prefix +
         std::string(reinterpret_cast<const char*>(expected_utf8), sizeof(expected_utf8));
+=======
+    std::string result8 = "-->";
+    std::string expected8 = "-->" + std::string(reinterpret_cast<const char*>(expected_utf8), sizeof(expected_utf8));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     // Use the return value just for testing.
     std::string &result8r = us.toUTF8String(result8);
     if(result8r != expected8 || &result8r != &result8) {
@@ -2481,11 +2495,19 @@ void UnicodeStringTest::TestU16StringView() {
 
     UnicodeString aliasFromSV = UnicodeString::readOnlyAlias(sv16);
     assertTrue("aliasFromSV pointer alias", aliasFromSV.getBuffer() == sv16.data());
+<<<<<<< HEAD
     assertEquals("aliasFromSV length", sv16.length(), aliasFromSV.length());
 
     UnicodeString aliasFromStr = UnicodeString::readOnlyAlias(str16);
     assertTrue("aliasFromStr pointer alias", aliasFromStr.getBuffer() == str16.data());
     assertEquals("aliasFromStr length", str16.length(), aliasFromStr.length());
+=======
+    assertEquals("aliasFromSV length", static_cast<int32_t>(sv16.length()), aliasFromSV.length());
+
+    UnicodeString aliasFromStr = UnicodeString::readOnlyAlias(str16);
+    assertTrue("aliasFromStr pointer alias", aliasFromStr.getBuffer() == str16.data());
+    assertEquals("aliasFromStr length", static_cast<int32_t>(str16.length()), aliasFromStr.length());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     UnicodeString aliasFromUStr = UnicodeString::readOnlyAlias(ustr);
     assertTrue("aliasFromUStr pointer alias", aliasFromUStr.getBuffer() == ustr.getBuffer());
@@ -2536,7 +2558,11 @@ void UnicodeStringTest::TestU16StringView() {
     // Convert UnicodeString to string view.
     std::u16string_view sv16FromUniStr(any);
     assertTrue("sv16FromUniStr buffer alias", sv16FromUniStr.data() == any.getBuffer());
+<<<<<<< HEAD
     assertEquals("sv16FromUniStr length", any.length(), sv16FromUniStr.length());
+=======
+    assertEquals("sv16FromUniStr length", any.length(), static_cast<int32_t>(sv16FromUniStr.length()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     // Just to show convenience: Convert UnicodeString to string view, then to std string.
     std::u16string str16FromUniStr(any);
@@ -2549,6 +2575,7 @@ void UnicodeStringTest::TestU16StringView() {
     assertEquals("any + sv16", UnicodeString(true, u"anysv16", 7), x);
     x = any + str16;
     assertEquals("any + str16", UnicodeString(true, u"anystr16", 8), x);
+<<<<<<< HEAD
 
     // Check that ICU’s operator+ do not make the standard ones ambiguous on standard types.
     // See ICU-23299.
@@ -2556,6 +2583,8 @@ void UnicodeStringTest::TestU16StringView() {
     char16_t mutableU16Array[] = u"Feld";
     const std::u16string concatenation = u16String + mutableU16Array;
     const std::u16string concatenationWithPointer = u16String + &*mutableU16Array;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 void UnicodeStringTest::TestWStringView() {
@@ -2653,6 +2682,7 @@ void UnicodeStringTest::TestWStringView() {
     assertEquals("any + sv16", UnicodeString(true, L"anysv16", 7), x);
     x = any + str16;
     assertEquals("any + str16", UnicodeString(true, L"anystr16", 8), x);
+<<<<<<< HEAD
 
     // Check that ICU’s operator+ do not make the standard ones ambiguous on standard types.
     // See ICU-23299.
@@ -2712,3 +2742,7 @@ void UnicodeStringTest::TestRange() {
         assertTrue("code points", s32 == U"süße 🚲 Soße");
     }
 }
+=======
+#endif
+}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

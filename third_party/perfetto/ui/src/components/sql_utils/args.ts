@@ -17,12 +17,20 @@ import type {Engine} from '../../trace_processor/engine';
 import {STR_NULL} from '../../trace_processor/query_result';
 import type {ArgSetId} from './core_types';
 
+<<<<<<< HEAD
 export type ArgValue = string | number | boolean | bigint | null;
 export type Args = ArgValue | Args[] | ArgsDict;
 export type ArgsDict = {[key: string]: Args};
 
 export function parseArgs(args: string): ArgsDict {
   return parseJsonWithBigints(args) as ArgsDict;
+=======
+export interface Arg {
+  id: ArgsId;
+  flatKey: string;
+  key: string;
+  displayValue: string;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 export async function getArgs(
@@ -36,10 +44,23 @@ export async function getArgs(
     args_json: STR_NULL,
   });
 
+<<<<<<< HEAD
   if (!it.valid() || it.args_json === null) {
     return {};
   }
 
   const argsDict = parseJsonWithBigints(it.args_json);
   return argsDict;
+=======
+  const result: Arg[] = [];
+  for (; it.valid(); it.next()) {
+    result.push({
+      id: asArgId(it.id),
+      flatKey: it.flatKey,
+      key: it.key,
+      displayValue: it.displayValue ?? 'NULL',
+    });
+  }
+  return result;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }

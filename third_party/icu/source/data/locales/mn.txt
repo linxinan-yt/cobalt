@@ -338,6 +338,7 @@ mn{
                 other{"Картанд {0} Х байна. Тэднийг авах уу?"}
             }
         }
+<<<<<<< HEAD
         mlym{
             patterns{
                 accountingFormat%alphaNextToNumber{"¤ #,##0.00"}
@@ -351,11 +352,15 @@ mn{
                 accountingFormat%noCurrency{"#,##0.00"}
                 currencyFormat%alphaNextToNumber{"¤ #,##0.00"}
             }
+=======
+        mong{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             symbols{
                 decimal{","}
                 group{" "}
             }
         }
+<<<<<<< HEAD
         mtei{
             patterns{
                 accountingFormat%alphaNextToNumber{"¤ #,##0.00"}
@@ -489,6 +494,8 @@ mn{
                 currencyFormat%alphaNextToNumber{"¤ #,##0.00"}
             }
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
     calendar{
         chinese{
@@ -564,8 +571,11 @@ mn{
                 Ed{"dd. E"}
                 Ehm{"E. h:mm a"}
                 Ehms{"E. h:mm:ss a"}
+<<<<<<< HEAD
                 GyM{"G y.MM"}
                 GyMEd{"E, y.MM.dd G"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 GyMMM{"G y 'оны' MM-'р' 'сар'"}
                 GyMMMEd{"G y 'оны' MM-'р' 'сарын' d, E"}
                 GyMMMd{"G y 'оны' MM-'р' 'сарын' d"}

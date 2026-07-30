@@ -19,7 +19,10 @@ export const languages = [
     year: 2012,
     creator: 'Microsoft',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Transpiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 2,
@@ -27,7 +30,10 @@ export const languages = [
     year: 1995,
     creator: 'Brendan Eich',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 3,
@@ -35,7 +41,10 @@ export const languages = [
     year: 1991,
     creator: 'Guido van Rossum',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 4,
@@ -43,7 +52,10 @@ export const languages = [
     year: 1995,
     creator: 'James Gosling',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 5,
@@ -51,7 +63,10 @@ export const languages = [
     year: 1985,
     creator: 'Bjarne Stroustrup',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 6,
@@ -59,7 +74,10 @@ export const languages = [
     year: 2009,
     creator: 'Google',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 7,
@@ -67,7 +85,10 @@ export const languages = [
     year: 2010,
     creator: 'Graydon Hoare',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 8,
@@ -75,7 +96,10 @@ export const languages = [
     year: 1995,
     creator: 'Yukihiro Matsumoto',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 9,
@@ -83,7 +107,10 @@ export const languages = [
     year: 2014,
     creator: 'Apple',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 10,
@@ -91,7 +118,10 @@ export const languages = [
     year: 2011,
     creator: 'JetBrains',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 11,
@@ -99,7 +129,10 @@ export const languages = [
     year: 1995,
     creator: 'Rasmus Lerdorf',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 12,
@@ -107,7 +140,10 @@ export const languages = [
     year: 2000,
     creator: 'Microsoft',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 13,
@@ -115,7 +151,10 @@ export const languages = [
     year: 1987,
     creator: 'Larry Wall',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 14,
@@ -123,7 +162,10 @@ export const languages = [
     year: 2004,
     creator: 'Martin Odersky',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 15,
@@ -131,7 +173,10 @@ export const languages = [
     year: 1990,
     creator: 'Lennart Augustsson, et al.',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 16,
@@ -139,7 +184,10 @@ export const languages = [
     year: 1993,
     creator: 'Roberto Ierusalimschy, et al.',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 17,
@@ -147,7 +195,10 @@ export const languages = [
     year: 2011,
     creator: 'Google',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 18,
@@ -155,7 +206,10 @@ export const languages = [
     year: 2012,
     creator: 'José Valim',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 19,
@@ -163,7 +217,10 @@ export const languages = [
     year: 2007,
     creator: 'Rich Hickey',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 20,
@@ -171,7 +228,10 @@ export const languages = [
     year: 2005,
     creator: 'Microsoft',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 21,
@@ -179,7 +239,10 @@ export const languages = [
     year: 1958,
     creator: 'John McCarthy',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 22,
@@ -187,7 +250,10 @@ export const languages = [
     year: 1993,
     creator: 'Ross Ihaka and Robert Gentleman',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 23,
@@ -195,7 +261,10 @@ export const languages = [
     year: 1984,
     creator: 'Cleve Moler',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 24,
@@ -203,7 +272,10 @@ export const languages = [
     year: 1984,
     creator: 'Brad Cox and Tom Love',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 25,
@@ -211,7 +283,10 @@ export const languages = [
     year: 1991,
     creator: 'Microsoft',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 26,
@@ -219,7 +294,10 @@ export const languages = [
     year: 1957,
     creator: 'John Backus',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 27,
@@ -227,7 +305,10 @@ export const languages = [
     year: 1959,
     creator: 'CODASYL',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 28,
@@ -235,7 +316,10 @@ export const languages = [
     year: 1996,
     creator: 'INRIA',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 29,
@@ -243,7 +327,10 @@ export const languages = [
     year: 1986,
     creator: 'Joe Armstrong, et al.',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 30,
@@ -251,7 +338,10 @@ export const languages = [
     year: 2003,
     creator: 'James Strachan',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 31,
@@ -259,7 +349,10 @@ export const languages = [
     year: 2012,
     creator: 'Jeff Bezanson, et al.',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 32,
@@ -267,7 +360,10 @@ export const languages = [
     year: 1972,
     creator: 'Dennis Ritchie',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 33,
@@ -275,7 +371,10 @@ export const languages = [
     year: 1949,
     creator: 'Kathleen Booth',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 34,
@@ -283,7 +382,10 @@ export const languages = [
     year: 1970,
     creator: 'Niklaus Wirth',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 35,
@@ -291,7 +393,10 @@ export const languages = [
     year: 1980,
     creator: 'Jean Ichbiah',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 36,
@@ -299,7 +404,10 @@ export const languages = [
     year: 1975,
     creator: 'Guy L. Steele and Gerald Jay Sussman',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 37,
@@ -307,7 +415,10 @@ export const languages = [
     year: 1972,
     creator: 'Alain Colmerauer',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 38,
@@ -315,7 +426,10 @@ export const languages = [
     year: 1972,
     creator: 'Alan Kay, et al.',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 39,
@@ -323,7 +437,10 @@ export const languages = [
     year: 1998,
     creator: 'Gary Grossman',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 40,
@@ -331,7 +448,10 @@ export const languages = [
     year: 2001,
     creator: 'Walter Bright',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 41,
@@ -339,7 +459,10 @@ export const languages = [
     year: 2008,
     creator: 'Andreas Rumpf',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 42,
@@ -347,7 +470,10 @@ export const languages = [
     year: 2014,
     creator: 'Ary Borenszweig',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 43,
@@ -355,7 +481,10 @@ export const languages = [
     year: 2016,
     creator: 'Andrew Kelley',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 44,
@@ -363,7 +492,10 @@ export const languages = [
     year: 2019,
     creator: 'Alexander Medvednikov',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 45,
@@ -371,7 +503,10 @@ export const languages = [
     year: 1995,
     creator: 'PLT Inc.',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 46,
@@ -379,7 +514,10 @@ export const languages = [
     year: 1984,
     creator: 'Scott Fahlman, et al.',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 47,
@@ -387,7 +525,10 @@ export const languages = [
     year: 1989,
     creator: 'Brian Fox',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 48,
@@ -395,7 +536,10 @@ export const languages = [
     year: 2006,
     creator: 'Jeffrey Snover',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 49,
@@ -403,7 +547,10 @@ export const languages = [
     year: 1988,
     creator: 'John Ousterhout',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 50,
@@ -411,7 +558,10 @@ export const languages = [
     year: 1977,
     creator: 'Alfred Aho, et al.',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 51,
@@ -419,7 +569,10 @@ export const languages = [
     year: 1984,
     creator: 'Phil Moorby',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 52,
@@ -427,7 +580,10 @@ export const languages = [
     year: 1980,
     creator: 'U.S. Department of Defense',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 53,
@@ -435,7 +591,10 @@ export const languages = [
     year: 2014,
     creator: 'Gavin Wood',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 54,
@@ -443,7 +602,10 @@ export const languages = [
     year: 2007,
     creator: 'Salesforce',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 55,
@@ -451,7 +613,10 @@ export const languages = [
     year: 2014,
     creator: 'Facebook',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Transpiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 56,
@@ -459,7 +624,10 @@ export const languages = [
     year: 2009,
     creator: 'Jeremy Ashkenas',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Transpiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 57,
@@ -467,7 +635,10 @@ export const languages = [
     year: 2012,
     creator: 'Evan Czaplicki',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Transpiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 58,
@@ -475,7 +646,10 @@ export const languages = [
     year: 2013,
     creator: 'Phil Freeman',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Transpiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 59,
@@ -483,7 +657,10 @@ export const languages = [
     year: 2007,
     creator: 'Edwin Brady',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 60,
@@ -491,7 +668,10 @@ export const languages = [
     year: 2007,
     creator: 'Ulf Norell',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 61,
@@ -499,7 +679,10 @@ export const languages = [
     year: 1989,
     creator: 'INRIA',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 62,
@@ -507,7 +690,10 @@ export const languages = [
     year: 2013,
     creator: 'Leonardo de Moura',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 63,
@@ -515,7 +701,10 @@ export const languages = [
     year: 1966,
     creator: 'Kenneth E. Iverson',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 64,
@@ -523,7 +712,10 @@ export const languages = [
     year: 1990,
     creator: 'Kenneth E. Iverson and Roger Hui',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 65,
@@ -531,7 +723,10 @@ export const languages = [
     year: 1993,
     creator: 'Arthur Whitney',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 66,
@@ -539,7 +734,10 @@ export const languages = [
     year: 2003,
     creator: 'Arthur Whitney',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 67,
@@ -547,7 +745,10 @@ export const languages = [
     year: 2016,
     creator: 'Jordan Walke',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Transpiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 68,
@@ -555,7 +756,10 @@ export const languages = [
     year: 2015,
     creator: 'Larry Wall',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 69,
@@ -563,7 +767,10 @@ export const languages = [
     year: 2011,
     creator: 'Nenad Rakocevic',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 70,
@@ -571,7 +778,10 @@ export const languages = [
     year: 1997,
     creator: 'Carl Sassenrath',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 71,
@@ -579,7 +789,10 @@ export const languages = [
     year: 1970,
     creator: 'Charles H. Moore',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 72,
@@ -587,7 +800,10 @@ export const languages = [
     year: 1984,
     creator: 'John Warnock and Chuck Geschke',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 73,
@@ -595,7 +811,10 @@ export const languages = [
     year: 1967,
     creator: 'Wally Feurzeig, et al.',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 74,
@@ -603,7 +822,10 @@ export const languages = [
     year: 1964,
     creator: 'John G. Kemeny and Thomas E. Kurtz',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 75,
@@ -611,7 +833,10 @@ export const languages = [
     year: 1958,
     creator: 'Committee',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 76,
@@ -619,7 +844,10 @@ export const languages = [
     year: 1964,
     creator: 'IBM',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 77,
@@ -627,7 +855,10 @@ export const languages = [
     year: 1962,
     creator: 'Ole-Johan Dahl and Kristen Nygaard',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 78,
@@ -635,7 +866,10 @@ export const languages = [
     year: 1966,
     creator: 'Martin Richards',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 79,
@@ -643,7 +877,10 @@ export const languages = [
     year: 1969,
     creator: 'Ken Thompson',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 80,
@@ -651,7 +888,10 @@ export const languages = [
     year: 1985,
     creator: 'David Turner',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 81,
@@ -659,7 +899,10 @@ export const languages = [
     year: 1973,
     creator: 'Robin Milner',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 82,
@@ -667,7 +910,10 @@ export const languages = [
     year: 1983,
     creator: 'Robin Milner, et al.',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 83,
@@ -675,7 +921,10 @@ export const languages = [
     year: 1986,
     creator: 'Bertrand Meyer',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 84,
@@ -683,7 +932,10 @@ export const languages = [
     year: 1978,
     creator: 'Niklaus Wirth',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 85,
@@ -691,7 +943,10 @@ export const languages = [
     year: 1986,
     creator: 'Niklaus Wirth',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 86,
@@ -699,7 +954,10 @@ export const languages = [
     year: 1977,
     creator: 'Ralph Griswold',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 87,
@@ -707,7 +965,10 @@ export const languages = [
     year: 1962,
     creator: 'Ralph Griswold, et al.',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 88,
@@ -715,7 +976,10 @@ export const languages = [
     year: 2003,
     creator: 'MIT Media Lab',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 89,
@@ -723,7 +987,10 @@ export const languages = [
     year: 2012,
     creator: 'Google',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Transpiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 90,
@@ -731,7 +998,10 @@ export const languages = [
     year: 1986,
     creator: 'National Instruments',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 91,
@@ -739,7 +1009,10 @@ export const languages = [
     year: 2009,
     creator: 'Cray Inc.',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 92,
@@ -747,7 +1020,10 @@ export const languages = [
     year: 2004,
     creator: 'IBM',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 93,
@@ -755,7 +1031,10 @@ export const languages = [
     year: 2012,
     creator: 'Sylvan Clebsch',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 94,
@@ -763,7 +1042,10 @@ export const languages = [
     year: 2017,
     creator: 'WSO2',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 95,
@@ -771,7 +1053,10 @@ export const languages = [
     year: 2016,
     creator: 'Mahmoud Fayed',
     typing: 'Dynamic',
+<<<<<<< HEAD
     execution: 'Interpreted',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 96,
@@ -779,7 +1064,10 @@ export const languages = [
     year: 2017,
     creator: 'Oscar Spencer and Blaine Bublitz',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 97,
@@ -787,7 +1075,10 @@ export const languages = [
     year: 2016,
     creator: 'Ginger Bill',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 98,
@@ -795,7 +1086,10 @@ export const languages = [
     year: 2022,
     creator: 'Google',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 99,
@@ -803,7 +1097,10 @@ export const languages = [
     year: 2023,
     creator: 'Modular',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
   {
     id: 100,
@@ -811,6 +1108,9 @@ export const languages = [
     year: 2016,
     creator: 'Louis Pilfold',
     typing: 'Static',
+<<<<<<< HEAD
     execution: 'Compiled',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   },
 ];

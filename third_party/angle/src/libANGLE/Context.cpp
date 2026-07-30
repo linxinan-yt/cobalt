@@ -4179,10 +4179,16 @@ Extensions Context::generateSupportedExtensions() const
         }
     }
 
+<<<<<<< HEAD
 // Disable the explicit context extension if the entry points are not compiled.
 #if !defined(ANGLE_ENABLE_EXPLICIT_CONTEXT)
     supportedExtensions.explicitContextANGLE = false;
 #endif
+=======
+#if defined(ENABLE_BUILDFLAG_IS_COBALT) && defined(__ANDROID__)
+    supportedExtensions.EGLImageExternalOES = true;
+#endif  // defined(ENABLE_BUILDFLAG_IS_COBALT) && defined(__ANDROID__)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     return supportedExtensions;
 }
@@ -4236,6 +4242,10 @@ void Context::initCaps()
 
     Extensions *extensions = mState.getMutableExtensions();
     *extensions            = mSupportedExtensions;
+#if defined(ENABLE_BUILDFLAG_IS_COBALT) && defined(__ANDROID__)
+    extensions->EGLImageExternalOES = true;
+#endif  // defined(ENABLE_BUILDFLAG_IS_COBALT) && defined(__ANDROID__)
+
 
     // GLES1 emulation: Initialize caps (Table 6.20 / 6.22 in the ES 1.1 spec)
     if (getClientVersion() < Version(2, 0))
@@ -4429,6 +4439,10 @@ void Context::initCaps()
             extensions->*(extensionInfo.second.ExtensionsMember) = false;
         }
     }
+
+#if defined(ENABLE_BUILDFLAG_IS_COBALT) && defined(__ANDROID__)
+    extensions->EGLImageExternalOES = true;
+#endif  // defined(ENABLE_BUILDFLAG_IS_COBALT) && defined(__ANDROID__)
 
     // Hide emulated ETC1 extension from WebGL contexts.
     if (mWebGLContext && limitations.emulatedEtc1)

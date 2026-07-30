@@ -25,11 +25,15 @@ export class Cpu {
   ) {}
 
   public maybeMachineLabel(): string {
+<<<<<<< HEAD
     return maybeMachineLabel(
       this.labelIndex,
       this.machineName,
       this.numMachines,
     );
+=======
+    return maybeMachineLabel(this.machine);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   public toString(): string {

@@ -55,7 +55,10 @@ public:
     void TestPropertiesUsingPpucd();
     void TestIDStatus();
     void TestIDType();
+<<<<<<< HEAD
     void TestScriptExtensionsCodePoints();
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 private:
 

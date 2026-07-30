@@ -4,6 +4,12 @@
 
 #include "components/update_client/update_query_params.h"
 
+<<<<<<< HEAD
+=======
+#include "build/build_config.h"
+
+#include "base/strings/stringprintf.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "base/system/sys_info.h"
 #include "components/update_client/update_query_params_delegate.h"
 #include "components/version_info/version_info.h"
@@ -59,6 +65,10 @@ TEST(UpdateQueryParamsTest, GetParams) {
 
   TestParams(UpdateQueryParams::CRX, true);
   TestParams(UpdateQueryParams::CHROME, true);
+
+#if BUILDFLAG(IS_STARBOARD)
+  UpdateQueryParams::SetDelegate(nullptr);
+#endif
 }
 
 }  // namespace update_client

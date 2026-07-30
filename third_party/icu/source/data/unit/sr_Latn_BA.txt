@@ -17,7 +17,11 @@ sr_Latn_BA{
             10p30{"Q{0}"}
         }
         concentr{
+<<<<<<< HEAD
             part-per-1e9{
+=======
+            portion-per-1e9{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 case{
                     accusative{
                         few{"{0} dijela na milijardu"}
@@ -197,7 +201,11 @@ sr_Latn_BA{
     }
     unitsNarrow{
         concentr{
+<<<<<<< HEAD
             part-per-1e9{
+=======
+            portion-per-1e9{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 dnam{"dijelovi/milijarda"}
             }
         }
@@ -240,6 +248,12 @@ sr_Latn_BA{
                 one{"{0} svjetlo"}
                 other{"{0} svjetala"}
             }
+            light-speed{
+                dnam{"svjetlo"}
+                few{"{0} svjetla"}
+                one{"{0} svjetlo"}
+                other{"{0} svjetala"}
+            }
         }
         volume{
             barrel{
@@ -268,7 +282,11 @@ sr_Latn_BA{
     }
     unitsShort{
         concentr{
+<<<<<<< HEAD
             part-per-1e9{
+=======
+            portion-per-1e9{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 dnam{"dijelovi/milijarda"}
             }
         }
@@ -294,6 +312,12 @@ sr_Latn_BA{
             }
         }
         speed{
+            light-speed{
+                dnam{"svjetlo"}
+                few{"{0} svjetla"}
+                one{"{0} svjetlo"}
+                other{"{0} svjetala"}
+            }
             light-speed{
                 dnam{"svjetlo"}
                 few{"{0} svjetla"}

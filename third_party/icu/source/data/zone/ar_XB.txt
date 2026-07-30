@@ -3,9 +3,12 @@
 // Generated using tools/cldr/cldr-to-icu/
 ar_XB{
     zoneStrings{
+<<<<<<< HEAD
         "America:Mexico_City"{
             ec{"؜‮Mexico‬؜ ؜‮City‬؜"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:St_Barthelemy"{
             ec{"؜‮St‬؜. ؜‮Barthélemy‬؜"}
         }
@@ -24,6 +27,7 @@ ar_XB{
         "America:St_Vincent"{
             ec{"؜‮St‬؜. ؜‮Vincent‬؜"}
         }
+<<<<<<< HEAD
         "Antarctica:Casey"{
             ec{"؜‮Casey‬؜ ؜‮Station‬؜"}
         }
@@ -56,10 +60,18 @@ ar_XB{
         }
         "Asia:Aqtau"{
             ec{"؜‮Aktau‬؜"}
+=======
+        "Antarctica:Macquarie"{
+            ec{"؜‮Macquarie‬؜ ؜‮Island‬؜"}
+        }
+        "Asia:Aqtau"{
+            ec{"؜‮Aqtau‬؜"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "Asia:Qostanay"{
             ec{"؜‮Kostanay‬؜"}
         }
+<<<<<<< HEAD
         "Asia:Qyzylorda"{
             ec{"؜‮Kyzylorda‬؜"}
         }
@@ -72,6 +84,11 @@ ar_XB{
         "Atlantic:Faeroe"{
             ec{"؜‮Faroes‬؜"}
         }
+=======
+        "Asia:Saigon"{
+            ec{"؜‮Ho‬؜ ؜‮Chi‬؜ ؜‮Minh‬؜ ؜‮City‬؜"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Atlantic:St_Helena"{
             ec{"؜‮St‬؜. ؜‮Helena‬؜"}
         }
@@ -82,7 +99,11 @@ ar_XB{
             ls{"؜‮Coordinated‬؜ ؜‮Universal‬؜ ؜‮Time‬؜"}
         }
         "Etc:Unknown"{
+<<<<<<< HEAD
             ec{"؜‮Unknown‬؜ ؜‮Location‬؜"}
+=======
+            ec{"؜‮Unknown‬؜ ؜‮City‬؜"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "Europe:Dublin"{
             ld{"؜‮Irish‬؜ ؜‮Standard‬؜ ؜‮Time‬؜"}
@@ -90,15 +111,19 @@ ar_XB{
         "Europe:London"{
             ld{"؜‮British‬؜ ؜‮Summer‬؜ ؜‮Time‬؜"}
         }
+<<<<<<< HEAD
         "Indian:Chagos"{
             ec{"؜‮Chagos‬؜ ؜‮Archipelago‬؜"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Indian:Christmas"{
             ec{"؜‮Christmas‬؜ ؜‮Island‬؜"}
         }
         "Indian:Cocos"{
             ec{"؜‮Cocos‬؜ ؜‮Islands‬؜"}
         }
+<<<<<<< HEAD
         "Indian:Comoro"{
             ec{"؜‮Comoros‬؜"}
         }
@@ -125,13 +150,25 @@ ar_XB{
         }
         "Pacific:Midway"{
             ec{"؜‮Midway‬؜ ؜‮Atoll‬؜"}
+=======
+        "Pacific:Easter"{
+            ec{"؜‮Easter‬؜ ؜‮Island‬؜"}
+        }
+        "Pacific:Honolulu"{
+            sd{"؜‮HDT‬؜"}
+            sg{"؜‮HST‬؜"}
+            ss{"؜‮HST‬؜"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "Pacific:Norfolk"{
             ec{"؜‮Norfolk‬؜ ؜‮Island‬؜"}
         }
+<<<<<<< HEAD
         "Pacific:Pitcairn"{
             ec{"؜‮Pitcairn‬؜ ؜‮Islands‬؜"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Pacific:Wake"{
             ec{"؜‮Wake‬؜ ؜‮Island‬؜"}
         }
@@ -153,7 +190,13 @@ ar_XB{
             ls{"؜‮South‬؜ ؜‮Africa‬؜ ؜‮Standard‬؜ ؜‮Time‬؜"}
         }
         "meta:Africa_Western"{
+<<<<<<< HEAD
             ls{"؜‮West‬؜ ؜‮Africa‬؜ ؜‮Time‬؜"}
+=======
+            ld{"؜‮West‬؜ ؜‮Africa‬؜ ؜‮Summer‬؜ ؜‮Time‬؜"}
+            lg{"؜‮West‬؜ ؜‮Africa‬؜ ؜‮Time‬؜"}
+            ls{"؜‮West‬؜ ؜‮Africa‬؜ ؜‮Standard‬؜ ؜‮Time‬؜"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "meta:Alaska"{
             ld{"؜‮Alaska‬؜ ؜‮Daylight‬؜ ؜‮Time‬؜"}
@@ -442,10 +485,13 @@ ar_XB{
         "meta:Guyana"{
             ls{"؜‮Guyana‬؜ ؜‮Time‬؜"}
         }
+<<<<<<< HEAD
         "meta:Hawaii"{
             ls{"؜‮Hawaii‬؜-؜‮Aleutian‬؜ ؜‮Standard‬؜ ؜‮Time‬؜"}
             ss{"؜‮HST‬؜"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "meta:Hawaii_Aleutian"{
             ld{"؜‮Hawaii‬؜-؜‮Aleutian‬؜ ؜‮Daylight‬؜ ؜‮Time‬؜"}
             lg{"؜‮Hawaii‬؜-؜‮Aleutian‬؜ ؜‮Time‬؜"}
@@ -460,9 +506,15 @@ ar_XB{
             ls{"؜‮Hong‬؜ ؜‮Kong‬؜ ؜‮Standard‬؜ ؜‮Time‬؜"}
         }
         "meta:Hovd"{
+<<<<<<< HEAD
             ld{"؜‮Khovd‬؜ ؜‮Summer‬؜ ؜‮Time‬؜"}
             lg{"؜‮Khovd‬؜ ؜‮Time‬؜"}
             ls{"؜‮Khovd‬؜ ؜‮Standard‬؜ ؜‮Time‬؜"}
+=======
+            ld{"؜‮Hovd‬؜ ؜‮Summer‬؜ ؜‮Time‬؜"}
+            lg{"؜‮Hovd‬؜ ؜‮Time‬؜"}
+            ls{"؜‮Hovd‬؜ ؜‮Standard‬؜ ؜‮Time‬؜"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "meta:India"{
             ls{"؜‮India‬؜ ؜‮Standard‬؜ ؜‮Time‬؜"}
@@ -682,9 +734,15 @@ ar_XB{
             ls{"؜‮North‬؜ ؜‮Korea‬؜ ؜‮Time‬؜"}
         }
         "meta:Qyzylorda"{
+<<<<<<< HEAD
             ld{"؜‮Kyzylorda‬؜ ؜‮Summer‬؜ ؜‮Time‬؜"}
             lg{"؜‮Kyzylorda‬؜ ؜‮Time‬؜"}
             ls{"؜‮Kyzylorda‬؜ ؜‮Standard‬؜ ؜‮Time‬؜"}
+=======
+            ld{"؜‮Qyzylorda‬؜ ؜‮Summer‬؜ ؜‮Time‬؜"}
+            lg{"؜‮Qyzylorda‬؜ ؜‮Time‬؜"}
+            ls{"؜‮Qyzylorda‬؜ ؜‮Standard‬؜ ؜‮Time‬؜"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "meta:Reunion"{
             ls{"؜‮Réunion‬؜ ؜‮Time‬؜"}
@@ -747,11 +805,14 @@ ar_XB{
         "meta:Truk"{
             ls{"؜‮Chuuk‬؜ ؜‮Time‬؜"}
         }
+<<<<<<< HEAD
         "meta:Turkey"{
             ld{"؜‮Türkiye‬؜ ؜‮Summer‬؜ ؜‮Time‬؜"}
             lg{"؜‮Türkiye‬؜ ؜‮Time‬؜"}
             ls{"؜‮Türkiye‬؜ ؜‮Standard‬؜ ؜‮Time‬؜"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "meta:Turkmenistan"{
             ld{"؜‮Turkmenistan‬؜ ؜‮Summer‬؜ ؜‮Time‬؜"}
             lg{"؜‮Turkmenistan‬؜ ؜‮Time‬؜"}

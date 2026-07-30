@@ -22,6 +22,7 @@ import {
   type SliceDetails,
   type SliceTreeNode,
 } from '../../components/sql_utils/slice';
+<<<<<<< HEAD
 import {
   asSliceSqlId,
   type SliceSqlId,
@@ -37,6 +38,12 @@ import {
   type TreeTableAttrs,
 } from '../../components/widgets/treetable';
 import {LONG, NUM, NUM_NULL, STR} from '../../trace_processor/query_result';
+=======
+import {asSliceSqlId, SliceSqlId} from '../../components/sql_utils/core_types';
+import {Grid, GridColumn, GridHeaderCell, GridCell} from '../../widgets/grid';
+import {TreeTable, TreeTableAttrs} from '../../components/widgets/treetable';
+import {LONG, NUM, STR} from '../../trace_processor/query_result';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {DetailsShell} from '../../widgets/details_shell';
 import {GridLayout, GridLayoutColumn} from '../../widgets/grid_layout';
 import {Section} from '../../widgets/section';
@@ -429,7 +436,11 @@ export class EventLatencySliceDetailsPanel implements TrackEventDetailsPanel {
 
     return m(
       Section,
+<<<<<<< HEAD
       {title: this.isJankStage ? `Jank Cause: ${name}` : (name ?? '[null]')},
+=======
+      {title: this.isJankStage ? `Jank Cause: ${name}` : name ?? '[null]'},
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       childWidgets,
     );
   }

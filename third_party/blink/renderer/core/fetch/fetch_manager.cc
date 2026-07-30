@@ -817,6 +817,9 @@ void FetchManager::Loader::DidReceiveCachedMetadata(mojo_base::BigBuffer data) {
 
 void FetchManager::Loader::DidStartLoadingResponseBody(BytesConsumer& body) {
   if (GetFetchRequestData()->Integrity().empty() &&
+#if BUILDFLAG(IS_COBALT)
+      !base::FeatureList::IsEnabled(features::kCobaltBypassBufferingBytesConsumer) &&
+#endif  // BUILDFLAG(IS_COBALT)
       !response_has_no_store_header_) {
     // BufferingBytesConsumer reads chunks from |bytes_consumer| as soon as
     // they get available to relieve backpressure.  Buffering starts after
@@ -1184,6 +1187,17 @@ void FetchLoaderBase::PerformHTTPFetch(ExceptionState& exception_state) {
     request.SetFetchRetryOptions(fetch_request_data_->RetryOptions().value());
   }
 
+<<<<<<< HEAD
+=======
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  request.SetBrowsingTopics(fetch_request_data_->BrowsingTopics());
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  request.SetAdAuctionHeaders(fetch_request_data_->AdAuctionHeaders());
+  request.SetAttributionReportingEligibility(
+      fetch_request_data_->AttributionReportingEligibility());
+  request.SetAttributionReportingSupport(
+      fetch_request_data_->AttributionSupport());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   request.SetSharedStorageWritableOptedIn(
       fetch_request_data_->SharedStorageWritable());
 

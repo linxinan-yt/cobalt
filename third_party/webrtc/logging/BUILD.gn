@@ -175,7 +175,10 @@ rtc_library("rtc_event_bwe") {
 }
 
 rtc_library("rtc_event_bwe_update_scream") {
+<<<<<<< HEAD
   visibility = [ "*" ]
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   sources = [
     "rtc_event_log/events/rtc_event_bwe_update_scream.cc",
     "rtc_event_log/events/rtc_event_bwe_update_scream.h",
@@ -183,6 +186,10 @@ rtc_library("rtc_event_bwe_update_scream") {
 
   deps = [
     ":rtc_event_log_parse_status",
+<<<<<<< HEAD
+=======
+    "../api:array_view",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     "../api/rtc_event_log",
     "../api/units:data_rate",
     "../api/units:data_size",

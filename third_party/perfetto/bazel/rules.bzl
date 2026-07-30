@@ -378,6 +378,35 @@ def perfetto_cpp_blob_header(name, script, deps, outs, args = [], **kwargs):
     )
 
 def perfetto_protozero_descriptor_diff(name, minuend, subtrahend, outs, **kwargs):
+<<<<<<< HEAD
+=======
+    cmd = [
+        "$(location src_protozero_descriptor_diff_protozero_descriptor_diff)",
+        "--minuend=$(location " + minuend + ")",
+        "--subtrahend=$(location " + subtrahend + ")",
+        "--out",
+        "$@",
+    ]
+    perfetto_genrule(
+        name = name,
+        cmd = " ".join(cmd),
+        tools = [
+            ":src_protozero_descriptor_diff_protozero_descriptor_diff",
+        ],
+        srcs = [
+          minuend,
+          subtrahend,
+        ],
+        outs = outs,
+        **kwargs
+    )
+
+def perfetto_cc_amalgamated_sql(name, deps, outs, namespace, **kwargs):
+    if PERFETTO_CONFIG.root[:2] != "//":
+        fail("Expected PERFETTO_CONFIG.root to start with //")
+
+    genrule_tool = kwargs.pop("genrule_tool", ":gen_amalgamated_sql_py")
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     cmd = [
         "$(location src_protozero_descriptor_diff_protozero_descriptor_diff)",
         "--minuend=$(location " + minuend + ")",

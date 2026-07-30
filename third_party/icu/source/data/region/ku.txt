@@ -75,12 +75,20 @@ ku{
         CA{"Kanada"}
         CC{"Giravên Kokosê (Keeling)"}
         CD{"Kongo - Kînşasa"}
+<<<<<<< HEAD
         CF{"Cimhûrîyeta Afrîkaya Navîn"}
+=======
+        CF{"Komara Afrîkaya Navîn"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         CG{"Kongo - Brazzaville"}
         CH{"Swîsre"}
         CI{"Côte d’Ivoire"}
         CK{"Giravên Cookê"}
+<<<<<<< HEAD
         CL{"Şîlî"}
+=======
+        CL{"Şîle"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         CM{"Kamerûn"}
         CN{"Çîn"}
         CO{"Kolombîya"}
@@ -185,7 +193,11 @@ ku{
         MF{"Saint Martin"}
         MG{"Madagaskar"}
         MH{"Giravên Marşalê"}
+<<<<<<< HEAD
         MK{"Makedonyaya Bakur"}
+=======
+        MK{"Makendonyaya Bakur"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         ML{"Malî"}
         MM{"Myanmar (Bûrma)"}
         MN{"Moxolistan"}
@@ -196,7 +208,11 @@ ku{
         MS{"Montserat"}
         MT{"Malta"}
         MU{"Mauritius"}
+<<<<<<< HEAD
         MV{"Maldîv"}
+=======
+        MV{"Maldîva"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         MW{"Malawî"}
         MX{"Meksîka"}
         MY{"Malezya"}
@@ -268,16 +284,26 @@ ku{
         TM{"Tirkmenistan"}
         TN{"Tûnis"}
         TO{"Tonga"}
+<<<<<<< HEAD
         TR{"Türkiye"}
+=======
+        TR{"Tirkîye"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         TT{"Trînîdad û Tobago"}
         TV{"Tûvalû"}
         TW{"Taywan"}
         TZ{"Tanzanya"}
         UA{"Ûkrayna"}
         UG{"Ûganda"}
+<<<<<<< HEAD
         UM{"Giravên Biçûk ên Derveyî DAYê"}
         UN{"Miletên Yekbûyî"}
         US{"Dewletên Amerîkayê yên Yekbûyî"}
+=======
+        UM{"Giravên Biçûk ên Derveyî DYAyê"}
+        UN{"Miletên Yekbûyî"}
+        US{"Dewletên Yekbûyî yên Amerîkayê"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         UY{"Ûrûguay"}
         UZ{"Ozbekistan"}
         VA{"Vatîkan"}
@@ -304,13 +330,20 @@ ku{
     }
     Countries%short{
         GB{"QY"}
+<<<<<<< HEAD
         US{"DAY"}
+=======
+        US{"DYA"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
     Countries%variant{
         CD{"Kongo (KDK)"}
         CG{"Kongo (Cimhûrîyet)"}
         CI{"Perava Ivoryê"}
+<<<<<<< HEAD
         CZ{"Cimhûrîyeta Çekî"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         NZ{"Aoteroaya Zelandaya Nû"}
         SZ{"Swazîlenda"}
         TL{"Tîmora Rojhilat"}

@@ -18,15 +18,32 @@
 #include "build/branding_buildflags.h"
 #include "build/build_config.h"
 #include "cc/base/switches.h"
-#include "components/language_detection/content/common/language_detection.mojom.h"
+#if !BUILDFLAG(IS_COBALT)
+#include "components/language_detection/content/common/language_detection.mojom.h"  // nogncheck
+#endif  // !BUILDFLAG(IS_COBALT)
 #include "components/optimization_guide/public/mojom/model_broker.mojom.h"
 #include "components/viz/host/gpu_client.h"
+<<<<<<< HEAD
 #include "components/vrp_flags/buildflags.h"
+=======
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+#include "content/browser/attribution_reporting/attribution_internals.mojom.h"  // nogncheck
+#include "content/browser/attribution_reporting/attribution_internals_ui.h"  // nogncheck
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "content/browser/background_fetch/background_fetch_service_impl.h"
 #include "content/browser/bad_message.h"
+#if !BUILDFLAG(IS_COBALT)
 #include "content/browser/bluetooth/web_bluetooth_service_impl.h"
+#endif
 #include "content/browser/browser_context_impl.h"
 #include "content/browser/browser_main_loop.h"
+<<<<<<< HEAD
+=======
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+#include "content/browser/browsing_topics/browsing_topics_document_host.h"  // nogncheck
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "content/browser/contacts/contacts_manager_impl.h"
 #include "content/browser/content_index/content_index_service_impl.h"
 #include "content/browser/cookie_store/cookie_store_manager.h"
@@ -37,6 +54,12 @@
 #include "content/browser/image_capture/image_capture_impl.h"
 #include "content/browser/indexed_db/indexed_db_internals.mojom.h"
 #include "content/browser/indexed_db/indexed_db_internals_ui.h"
+<<<<<<< HEAD
+=======
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+#include "content/browser/interest_group/ad_auction_service_impl.h"  // nogncheck
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "content/browser/keyboard_lock/keyboard_lock_service_impl.h"
 #include "content/browser/loader/content_security_notifier.h"
 #include "content/browser/media/media_web_contents_observer.h"
@@ -46,6 +69,13 @@
 #include "content/browser/picture_in_picture/picture_in_picture_service_impl.h"
 #include "content/browser/preloading/anchor_element_interaction_host_impl.h"
 #include "content/browser/preloading/speculation_rules/speculation_host_impl.h"
+<<<<<<< HEAD
+=======
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+#include "content/browser/private_aggregation/private_aggregation_internals.mojom.h"  // nogncheck
+#include "content/browser/private_aggregation/private_aggregation_internals_ui.h"  // nogncheck
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "content/browser/process_internals/process_internals.mojom.h"
 #include "content/browser/process_internals/process_internals_ui.h"
 #include "content/browser/quota/quota_context.h"
@@ -862,6 +892,409 @@ void BindMidiSessionProvider(
 }  // namespace
 
 // Documents/frames
+<<<<<<< HEAD
+=======
+void PopulateFrameBinders(RenderFrameHostImpl* host, mojo::BinderMap* map) {
+  map->Add<blink::mojom::AudioContextManager>(base::BindRepeating(
+      &RenderFrameHostImpl::GetAudioContextManager, base::Unretained(host)));
+
+  map->Add<blink::mojom::CacheStorage>(base::BindRepeating(
+      &RenderFrameHostImpl::BindCacheStorage, base::Unretained(host)));
+
+  map->Add<blink::mojom::CodeCacheHost>(base::BindRepeating(
+      &RenderFrameHostImpl::CreateCodeCacheHost, base::Unretained(host)));
+
+  map->Add<blink::mojom::BlobURLStore>(base::BindRepeating(
+      &RenderFrameHostImpl::BindBlobUrlStoreReceiver, base::Unretained(host)));
+
+#if BUILDFLAG(ENABLE_COMPUTE_PRESSURE)
+  if (base::FeatureList::IsEnabled(blink::features::kComputePressure)) {
+    map->Add<blink::mojom::WebPressureManager>(
+        base::BindRepeating(&BindPressureManager, base::Unretained(host)));
+  }
+#endif  // BUILDFLAG(ENABLE_COMPUTE_PRESSURE)
+
+  map->Add<blink::mojom::ContactsManager>(
+      base::BindRepeating(ContactsManagerImpl::Create, base::Unretained(host)));
+
+  map->Add<blink::mojom::ContentSecurityNotifier>(base::BindRepeating(
+      [](RenderFrameHostImpl* host,
+         mojo::PendingReceiver<blink::mojom::ContentSecurityNotifier>
+             receiver) {
+        mojo::MakeSelfOwnedReceiver(
+            std::make_unique<ContentSecurityNotifier>(host->GetGlobalId()),
+            std::move(receiver));
+      },
+      base::Unretained(host)));
+
+  map->Add<blink::mojom::DedicatedWorkerHostFactory>(base::BindRepeating(
+      &RenderFrameHostImpl::CreateDedicatedWorkerHostFactory,
+      base::Unretained(host)));
+
+  map->Add<blink::mojom::DevicePostureProvider>(
+      base::BindRepeating(&BindDevicePostureProvider, base::Unretained(host)));
+
+  map->Add<blink::mojom::FeatureObserver>(base::BindRepeating(
+      &RenderFrameHostImpl::GetFeatureObserver, base::Unretained(host)));
+
+  map->Add<blink::mojom::FileSystemAccessManager>(
+      base::BindRepeating(&RenderFrameHostImpl::GetFileSystemAccessManager,
+                          base::Unretained(host)));
+
+  map->Add<blink::mojom::FileSystemManager>(base::BindRepeating(
+      &RenderFrameHostImpl::GetFileSystemManager, base::Unretained(host)));
+
+  if (base::FeatureList::IsEnabled(blink::features::kFontAccess)) {
+    map->Add<blink::mojom::FontAccessManager>(base::BindRepeating(
+        &RenderFrameHostImpl::GetFontAccessManager, base::Unretained(host)));
+  }
+
+  map->Add<device::mojom::GamepadHapticsManager>(
+      &device::GamepadHapticsManager::Create);
+
+  map->Add<blink::mojom::GeolocationService>(base::BindRepeating(
+      &RenderFrameHostImpl::GetGeolocationService, base::Unretained(host)));
+
+  map->Add<blink::mojom::IdleManager>(base::BindRepeating(
+      &RenderFrameHostImpl::BindIdleManager, base::Unretained(host)));
+
+#if BUILDFLAG(ENABLE_MDNS)
+  map->Add<network::mojom::MdnsResponder>(base::BindRepeating(
+      &RenderFrameHostImpl::CreateMdnsResponder, base::Unretained(host)));
+#endif  // BUILDFLAG(ENABLE_MDNS)
+
+  // BrowserMainLoop::GetInstance() may be null on unit tests.
+  if (BrowserMainLoop::GetInstance()) {
+    map->Add<midi::mojom::MidiSessionProvider>(
+        base::BindRepeating(&MidiHost::BindReceiver,
+                            host->GetProcess()->GetDeprecatedID(),
+                            BrowserMainLoop::GetInstance()->midi_service()),
+        GetIOThreadTaskRunner({}));
+  }
+
+  map->Add<media::mojom::MediaPlayerObserverClient>(base::BindRepeating(
+      &BindMediaPlayerObserverClientHandler, base::Unretained(host)));
+
+  map->Add<blink::mojom::NotificationService>(base::BindRepeating(
+      &RenderFrameHostImpl::CreateNotificationService, base::Unretained(host)));
+
+  // WebRTC p2p connections are disallowed in fenced frames. Creation of
+  // RTCPeerConnection is already disabled in the renderer, so in theory this
+  // unbound interface should never present an issue.
+  bool should_ban_p2p =
+      base::FeatureList::IsEnabled(
+          blink::features::kFencedFramesLocalUnpartitionedDataAccess) &&
+      host->IsNestedWithinFencedFrame();
+  if (!should_ban_p2p) {
+    map->Add<network::mojom::P2PSocketManager>(
+        base::BindRepeating(&BindSocketManager, base::Unretained(host)));
+  }
+
+  map->Add<blink::mojom::PeerConnectionTrackerHost>(
+      base::BindRepeating(&RenderFrameHostImpl::BindPeerConnectionTrackerHost,
+                          base::Unretained(host)));
+
+  map->Add<blink::mojom::PermissionService>(base::BindRepeating(
+      &RenderFrameHostImpl::CreatePermissionService, base::Unretained(host)));
+
+  map->Add<blink::mojom::PresentationService>(base::BindRepeating(
+      &RenderFrameHostImpl::GetPresentationService, base::Unretained(host)));
+
+  map->Add<blink::mojom::QuotaManagerHost>(
+      base::BindRepeating(&BindQuotaManagerHost, base::Unretained(host)));
+
+  map->Add<blink::mojom::ReportingServiceProxy>(base::BindRepeating(
+      &CreateReportingServiceProxyForFrame, base::Unretained(host)));
+
+  map->Add<blink::mojom::SharedWorkerConnector>(
+      base::BindRepeating(&BindSharedWorkerConnector, base::Unretained(host)));
+
+  map->Add<media::mojom::SpeechRecognizer>(
+      base::BindRepeating(&SpeechRecognitionDispatcherHost::Create,
+                          host->GetProcess()->GetDeprecatedID(),
+                          host->GetRoutingID()),
+      GetIOThreadTaskRunner({}));
+
+  map->Add<blink::mojom::SpeechSynthesis>(base::BindRepeating(
+      &RenderFrameHostImpl::GetSpeechSynthesis, base::Unretained(host)));
+
+#if !BUILDFLAG(IS_ANDROID)
+  map->Add<blink::mojom::DeviceAPIService>(base::BindRepeating(
+      &RenderFrameHostImpl::GetDeviceInfoService, base::Unretained(host)));
+  map->Add<blink::mojom::ManagedConfigurationService>(
+      base::BindRepeating(&RenderFrameHostImpl::GetManagedConfigurationService,
+                          base::Unretained(host)));
+#endif  // !BUILDFLAG(IS_ANDROID)
+
+#if !BUILDFLAG(IS_COBALT)
+  map->Add<blink::mojom::WebUsbService>(base::BindRepeating(
+      &RenderFrameHostImpl::CreateWebUsbService, base::Unretained(host)));
+#endif
+
+  map->Add<blink::mojom::WebSocketConnector>(base::BindRepeating(
+      &RenderFrameHostImpl::CreateWebSocketConnector, base::Unretained(host)));
+
+  map->Add<blink::mojom::LockManager>(base::BindRepeating(
+      &RenderFrameHostImpl::CreateLockManager, base::Unretained(host)));
+
+  map->Add<blink::mojom::IDBFactory>(base::BindRepeating(
+      &RenderFrameHostImpl::CreateIDBFactory, base::Unretained(host)));
+
+  map->Add<blink::mojom::BucketManagerHost>(base::BindRepeating(
+      &RenderFrameHostImpl::CreateBucketManagerHost, base::Unretained(host)));
+
+  map->Add<blink::mojom::FileChooser>(
+      base::BindRepeating(&FileChooserImpl::Create, base::Unretained(host)));
+
+  map->Add<blink::mojom::FileUtilitiesHost>(
+      base::BindRepeating(FileUtilitiesHostImpl::Create,
+                          host->GetProcess()->GetDeprecatedID()),
+      base::ThreadPool::CreateSequencedTaskRunner(
+          {base::MayBlock(), base::TaskPriority::USER_VISIBLE}));
+
+  map->Add<device::mojom::GamepadMonitor>(&device::GamepadMonitor::Create);
+
+  map->Add<blink::mojom::WebSensorProvider>(base::BindRepeating(
+      &RenderFrameHostImpl::GetSensorProvider, base::Unretained(host)));
+
+  map->Add<payments::mojom::PaymentManager>(base::BindRepeating(
+      &RenderFrameHostImpl::CreatePaymentManager, base::Unretained(host)));
+
+  map->Add<handwriting::mojom::HandwritingRecognitionService>(
+      &CreateHandwritingRecognitionService);
+
+  if (base::FeatureList::IsEnabled(
+          webnn::mojom::features::kWebMachineLearningNeuralNetwork)) {
+    map->Add<webnn::mojom::WebNNContextProvider>(base::BindRepeating(
+        &BindWebNNContextProviderForRenderFrame, base::Unretained(host)));
+  }
+
+#if !BUILDFLAG(IS_COBALT)
+  map->Add<blink::mojom::WebBluetoothService>(base::BindRepeating(
+      &WebBluetoothServiceImpl::BindIfAllowed, base::Unretained(host)));
+#endif
+
+  map->Add<blink::mojom::PushMessaging>(base::BindRepeating(
+      &RenderFrameHostImpl::GetPushMessaging, base::Unretained(host)));
+
+  map->Add<blink::mojom::WebTransportConnector>(
+      base::BindRepeating(&RenderFrameHostImpl::CreateWebTransportConnector,
+                          base::Unretained(host)));
+
+  // BrowserMainLoop::GetInstance() may be null on unit tests.
+  if (BrowserMainLoop::GetInstance()) {
+    // BrowserMainLoop, which owns MediaStreamManager, is alive for the lifetime
+    // of Mojo communication (see BrowserMainLoop::ShutdownThreadsAndCleanUp(),
+    // which shuts down Mojo). Hence, passing that MediaStreamManager instance
+    // as a raw pointer here is safe.
+    MediaStreamManager* media_stream_manager =
+        BrowserMainLoop::GetInstance()->media_stream_manager();
+
+    map->Add<blink::mojom::MediaDevicesDispatcherHost>(
+        base::BindRepeating(&MediaDevicesDispatcherHost::Create,
+                            host->GetMainFrame()->GetGlobalFrameToken(),
+                            host->GetGlobalId(),
+                            base::Unretained(media_stream_manager)),
+        GetIOThreadTaskRunner({}));
+
+    map->Add<blink::mojom::MediaStreamDispatcherHost>(
+        base::BindRepeating(&MediaStreamDispatcherHost::Create,
+                            host->GetGlobalId(),
+                            base::Unretained(media_stream_manager)),
+        GetIOThreadTaskRunner({}));
+
+    map->Add<media::mojom::VideoCaptureHost>(
+        base::BindRepeating(&VideoCaptureHost::Create, host->GetGlobalId(),
+                            base::Unretained(media_stream_manager)),
+        GetIOThreadTaskRunner({}));
+  }
+
+  map->Add<blink::mojom::RendererAudioInputStreamFactory>(
+      base::BindRepeating(&RenderFrameHostImpl::CreateAudioInputStreamFactory,
+                          base::Unretained(host)));
+
+  map->Add<blink::mojom::RendererAudioOutputStreamFactory>(
+      base::BindRepeating(&RenderFrameHostImpl::CreateAudioOutputStreamFactory,
+                          base::Unretained(host)));
+
+  map->Add<media::mojom::ImageCapture>(
+      base::BindRepeating(&ImageCaptureImpl::Create, base::Unretained(host)));
+
+  map->Add<media::mojom::InterfaceFactory>(base::BindRepeating(
+      &RenderFrameHostImpl::BindMediaInterfaceFactoryReceiver,
+      base::Unretained(host)));
+
+#if BUILDFLAG(ENABLE_LIBRARY_CDMS) || BUILDFLAG(IS_WIN) || BUILDFLAG(IS_ANDROID)
+  map->Add<media::mojom::KeySystemSupport>(
+      base::BindRepeating(&RenderFrameHostImpl::BindKeySystemSupportReceiver,
+                          base::Unretained(host)));
+#endif
+
+  map->Add<media::mojom::MediaMetricsProvider>(base::BindRepeating(
+      &RenderFrameHostImpl::BindMediaMetricsProviderReceiver,
+      base::Unretained(host)));
+
+  map->Add<media::mojom::VideoEncoderMetricsProvider>(base::BindRepeating(
+      &RenderFrameHostImpl::BindVideoEncoderMetricsProviderReceiver,
+      base::Unretained(host)));
+
+  map->Add<media::mojom::WebrtcVideoPerfRecorder>(base::BindRepeating(
+      [](RenderFrameHostImpl* host,
+         mojo::PendingReceiver<media::mojom::WebrtcVideoPerfRecorder>
+             receiver) {
+        DCHECK_CURRENTLY_ON(BrowserThread::UI);
+        media::WebrtcVideoPerfRecorder::Create(
+            BrowserContextImpl::From(host->GetBrowserContext())
+                ->GetWebrtcVideoPerfHistory(),
+            std::move(receiver));
+      },
+      base::Unretained(host)));
+
+  map->Add<media::mojom::WebrtcVideoPerfHistory>(base::BindRepeating(
+      [](RenderFrameHostImpl* host,
+         mojo::PendingReceiver<media::mojom::WebrtcVideoPerfHistory> receiver) {
+        DCHECK_CURRENTLY_ON(BrowserThread::UI);
+        BrowserContextImpl::From(host->GetBrowserContext())
+            ->GetWebrtcVideoPerfHistory()
+            ->BindReceiver(std::move(receiver));
+      },
+      base::Unretained(host)));
+
+#if BUILDFLAG(ENABLE_MEDIA_REMOTING)
+  map->Add<media::mojom::RemoterFactory>(
+      base::BindRepeating(&RenderFrameHostImpl::BindMediaRemoterFactoryReceiver,
+                          base::Unretained(host)));
+#endif
+
+  map->Add<blink::mojom::OneShotBackgroundSyncService>(base::BindRepeating(
+      [](RenderFrameHostImpl* host,
+         mojo::PendingReceiver<blink::mojom::OneShotBackgroundSyncService>
+             receiver) {
+        host->GetProcess()->CreateOneShotSyncService(
+            host->GetStorageKey().origin(), std::move(receiver));
+      },
+      base::Unretained(host)));
+
+  map->Add<blink::mojom::PeriodicBackgroundSyncService>(base::BindRepeating(
+      [](RenderFrameHostImpl* host,
+         mojo::PendingReceiver<blink::mojom::PeriodicBackgroundSyncService>
+             receiver) {
+        host->GetProcess()->CreatePeriodicSyncService(
+            host->GetStorageKey().origin(), std::move(receiver));
+      },
+      base::Unretained(host)));
+
+  map->Add<media::mojom::VideoDecodePerfHistory>(
+      base::BindRepeating(&RenderProcessHost::BindVideoDecodePerfHistory,
+                          base::Unretained(host->GetProcess())));
+
+  map->Add<network::mojom::RestrictedCookieManager>(
+      base::BindRepeating(&RenderFrameHostImpl::BindRestrictedCookieManager,
+                          base::Unretained(host)));
+
+  map->Add<network::mojom::TrustTokenQueryAnswerer>(
+      base::BindRepeating(&RenderFrameHostImpl::BindTrustTokenQueryAnswerer,
+                          base::Unretained(host)));
+
+  map->Add<shape_detection::mojom::BarcodeDetectionProvider>(
+      &BindBarcodeDetectionProvider);
+
+  map->Add<shape_detection::mojom::FaceDetectionProvider>(
+      &BindFaceDetectionProvider);
+
+  map->Add<shape_detection::mojom::TextDetection>(&BindTextDetection);
+
+  auto* command_line = base::CommandLine::ForCurrentProcess();
+  if (command_line->HasSwitch(switches::kEnableGpuBenchmarking)) {
+    map->Add<mojom::InputInjector>(
+        base::BindRepeating(&RenderFrameHostImpl::BindInputInjectorReceiver,
+                            base::Unretained(host)));
+  }
+
+#if BUILDFLAG(IS_ANDROID) || (BUILDFLAG(IS_IOS) && !BUILDFLAG(IS_IOS_TVOS))
+#if !BUILDFLAG(IS_COBALT)
+  map->Add<device::mojom::NFC>(base::BindRepeating(
+      &RenderFrameHostImpl::BindNFCReceiver, base::Unretained(host)));
+#endif  // !BUILDFLAG(IS_COBALT)
+#else
+#if !BUILDFLAG(IS_COBALT)
+  map->Add<blink::mojom::HidService>(base::BindRepeating(
+      &RenderFrameHostImpl::GetHidService, base::Unretained(host)));
+#endif  // !BUILDFLAG(IS_COBALT)
+
+  map->Add<blink::mojom::InstalledAppProvider>(
+      base::BindRepeating(&RenderFrameHostImpl::CreateInstalledAppProvider,
+                          base::Unretained(host)));
+#endif  // BUILDFLAG(IS_ANDROID) || (BUILDFLAG(IS_IOS) &&
+        // !BUILDFLAG(IS_IOS_TVOS))
+
+#if !BUILDFLAG(IS_COBALT)
+  map->Add<blink::mojom::SerialService>(base::BindRepeating(
+      &RenderFrameHostImpl::BindSerialService, base::Unretained(host)));
+#endif
+
+#if BUILDFLAG(IS_CHROMEOS)
+  map->Add<blink::mojom::SmartCardService>(base::BindRepeating(
+      &RenderFrameHostImpl::GetSmartCardService, base::Unretained(host)));
+#endif
+
+#if BUILDFLAG(IS_MAC)
+  map->Add<blink::mojom::TextInputHost>(&BindTextInputHost);
+#endif
+
+  map->Add<blink::mojom::RenderAccessibilityHost>(
+      base::BindRepeating(&RenderFrameHostImpl::BindRenderAccessibilityHost,
+                          base::Unretained(host)));
+
+  map->Add<blink::mojom::NonAssociatedLocalFrameHost>(
+      base::BindRepeating(&RenderFrameHostImpl::BindNonAssociatedLocalFrameHost,
+                          base::Unretained(host)));
+
+  map->Add<blink::mojom::AIManager>(base::BindRepeating(
+      [](ContentBrowserClient* browser_client, RenderFrameHostImpl* host,
+         mojo::PendingReceiver<blink::mojom::AIManager> receiver) {
+        browser_client->BindAIManager(host->GetBrowserContext(),
+                                      &host->document_associated_data(), host,
+                                      std::move(receiver));
+      },
+      base::Unretained(GetContentClient()->browser()), base::Unretained(host)));
+
+#if BUILDFLAG(IS_FUCHSIA)
+  map->Add<media::mojom::FuchsiaMediaCodecProvider>(
+      base::BindRepeating(&RenderProcessHost::BindMediaCodecProvider,
+                          base::Unretained(host->GetProcess())));
+#endif
+
+  if (base::FeatureList::IsEnabled(blink::features::kTranslationAPI)) {
+    map->Add<blink::mojom::TranslationManager>(base::BindRepeating(
+        [](RenderFrameHostImpl* host,
+           mojo::PendingReceiver<blink::mojom::TranslationManager> receiver) {
+          GetContentClient()->browser()->BindTranslationManager(
+              host->GetProcess(), host->GetBrowserContext(),
+              &host->document_associated_data(), host->GetLastCommittedOrigin(),
+              std::move(receiver));
+        },
+        base::Unretained(host)));
+  }
+
+#if !BUILDFLAG(IS_COBALT)
+  if (base::FeatureList::IsEnabled(blink::features::kLanguageDetectionAPI)) {
+    map->Add<language_detection::mojom::ContentLanguageDetectionDriver>(
+        base::BindRepeating(
+            [](RenderFrameHostImpl* host,
+               mojo::PendingReceiver<
+                   language_detection::mojom::ContentLanguageDetectionDriver>
+                   receiver) {
+              GetContentClient()->browser()->BindLanguageDetectionDriver(
+                  host->GetBrowserContext(), &host->document_associated_data(),
+                  std::move(receiver));
+            },
+            base::Unretained(host)));
+  }
+#endif  // !BUILDFLAG(IS_COBALT)
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 void PopulateBinderMapWithContext(
     RenderFrameHostImpl* host,
     mojo::BinderMapWithContext<RenderFrameHost*>* map) {
@@ -879,6 +1312,7 @@ void PopulateBinderMapWithContext(
       &EmptyBinderForFrame<blink::mojom::CredentialManager>);
   map->Add<blink::mojom::LCPCriticalPathPredictorHost>(
       &EmptyBinderForFrame<blink::mojom::LCPCriticalPathPredictorHost>);
+<<<<<<< HEAD
   map->Add<blink::mojom::ScriptToolHost>(
       &EmptyBinderForFrame<blink::mojom::ScriptToolHost>);
   map->Add<blink::mojom::WebInstallService>(
@@ -900,6 +1334,16 @@ void PopulateBinderMapWithContext(
 
   map->Add<blink::mojom::DeclarativePerformanceObserverHost>(
       base::BindRepeating(&DeclarativePerformanceObserver::Bind));
+=======
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  if (base::FeatureList::IsEnabled(network::features::kBrowsingTopics) &&
+      base::FeatureList::IsEnabled(
+          blink::features::kBrowsingTopicsDocumentAPI)) {
+    map->Add<blink::mojom::BrowsingTopicsDocumentService>(
+        &BrowsingTopicsDocumentHost::CreateMojoService);
+  }
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #if !BUILDFLAG(IS_ANDROID)
   map->Add<blink::mojom::DirectSocketsService>(
       &DirectSocketsServiceImpl::CreateForFrame);
@@ -1376,6 +1820,15 @@ void PopulateBinderMapWithContext(
       &ContentIndexServiceImpl::CreateForFrame);
   map->Add<blink::mojom::KeyboardLockService>(
       &KeyboardLockServiceImpl::CreateMojoService);
+<<<<<<< HEAD
+=======
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  if (base::FeatureList::IsEnabled(network::features::kInterestGroupStorage)) {
+    map->Add<blink::mojom::AdAuctionService>(
+        &AdAuctionServiceImpl::CreateMojoService);
+  }
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   map->Add<blink::mojom::MediaSessionService>(&MediaSessionServiceImpl::Create);
   map->Add<blink::mojom::PictureInPictureService>(
       &PictureInPictureServiceImpl::Create);
@@ -1386,6 +1839,16 @@ void PopulateBinderMapWithContext(
   map->Add<device::mojom::VRService>(
       &EmptyBinderForFrame<device::mojom::VRService>);
 #endif
+<<<<<<< HEAD
+=======
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  RegisterWebUIControllerInterfaceBinder<
+      private_aggregation_internals::mojom::Factory,
+      PrivateAggregationInternalsUI>(map);
+  RegisterWebUIControllerInterfaceBinder<attribution_internals::mojom::Factory,
+                                         AttributionInternalsUI>(map);
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   RegisterWebUIControllerInterfaceBinder<storage::mojom::IdbInternalsHandler,
                                          indexed_db::IndexedDBInternalsUI>(map);
   RegisterWebUIControllerInterfaceBinder<::mojom::ProcessInternalsHandler,
@@ -1538,8 +2001,10 @@ void PopulateDedicatedWorkerBinders(DedicatedWorkerHost* host,
       base::BindRepeating(&DedicatedWorkerHost::CreateDirectSocketsService,
                           base::Unretained(host)));
 #endif
+#if !BUILDFLAG(IS_COBALT)
   map->Add<blink::mojom::WebUsbService>(base::BindRepeating(
       &DedicatedWorkerHost::CreateWebUsbService, base::Unretained(host)));
+#endif
   map->Add<blink::mojom::WebSocketConnector>(base::BindRepeating(
       &DedicatedWorkerHost::CreateWebSocketConnector, base::Unretained(host)));
   map->Add<blink::mojom::WebTransportConnector>(
@@ -1562,12 +2027,14 @@ void PopulateDedicatedWorkerBinders(DedicatedWorkerHost* host,
                           base::Unretained(host)));
   map->Add<blink::mojom::ReportingServiceProxy>(base::BindRepeating(
       &CreateReportingServiceProxyForDedicatedWorker, base::Unretained(host)));
+#if !BUILDFLAG(IS_COBALT)
   map->Add<blink::mojom::SerialService>(base::BindRepeating(
       &DedicatedWorkerHost::BindSerialService, base::Unretained(host)));
-#if !BUILDFLAG(IS_ANDROID)
+#endif
+#if !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)
   map->Add<blink::mojom::HidService>(base::BindRepeating(
       &DedicatedWorkerHost::BindHidService, base::Unretained(host)));
-#endif  // !BUILDFLAG(IS_ANDROID)
+#endif  // !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)
   map->Add<blink::mojom::BucketManagerHost>(base::BindRepeating(
       &DedicatedWorkerHost::CreateBucketManagerHost, base::Unretained(host)));
   map->Add<blink::mojom::FileSystemAccessManager>(
@@ -1607,6 +2074,7 @@ void PopulateDedicatedWorkerBinders(DedicatedWorkerHost* host,
                           base::Unretained(GetContentClient()->browser()),
                           host->GetProcessHost()->GetBrowserContext(),
                           base::Unretained(host), /*rfh=*/nullptr));
+<<<<<<< HEAD
   map->Add<blink::mojom::TranslationManager>(base::BindRepeating(
       [](DedicatedWorkerHost* host,
          mojo::PendingReceiver<blink::mojom::TranslationManager> receiver) {
@@ -1627,6 +2095,35 @@ void PopulateDedicatedWorkerBinders(DedicatedWorkerHost* host,
                 std::move(receiver));
           },
           base::Unretained(host)));
+=======
+
+  if (base::FeatureList::IsEnabled(blink::features::kTranslationAPI)) {
+    map->Add<blink::mojom::TranslationManager>(base::BindRepeating(
+        [](DedicatedWorkerHost* host,
+           mojo::PendingReceiver<blink::mojom::TranslationManager> receiver) {
+          auto* process_host = host->GetProcessHost();
+          GetContentClient()->browser()->BindTranslationManager(
+              process_host, process_host->GetBrowserContext(), host,
+              host->GetStorageKey().origin(), std::move(receiver));
+        },
+        base::Unretained(host)));
+  }
+#if !BUILDFLAG(IS_COBALT)
+  if (base::FeatureList::IsEnabled(blink::features::kLanguageDetectionAPI)) {
+    map->Add<language_detection::mojom::ContentLanguageDetectionDriver>(
+        base::BindRepeating(
+            [](DedicatedWorkerHost* host,
+               mojo::PendingReceiver<
+                   language_detection::mojom::ContentLanguageDetectionDriver>
+                   receiver) {
+              GetContentClient()->browser()->BindLanguageDetectionDriver(
+                  host->GetProcessHost()->GetBrowserContext(), host,
+                  std::move(receiver));
+            },
+            base::Unretained(host)));
+  }
+#endif  // !BUILDFLAG(IS_COBALT)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 void PopulateBinderMapWithContext(
@@ -1730,6 +2227,7 @@ void PopulateSharedWorkerBinders(SharedWorkerHost* host, mojo::BinderMap* map) {
         &BindWebNNWeightsFileCreatorForWorker<SharedWorkerHost>,
         base::Unretained(host)));
   }
+<<<<<<< HEAD
   map->Add<blink::mojom::TranslationManager>(base::BindRepeating(
       [](SharedWorkerHost* host,
          mojo::PendingReceiver<blink::mojom::TranslationManager> receiver) {
@@ -1750,6 +2248,23 @@ void PopulateSharedWorkerBinders(SharedWorkerHost* host, mojo::BinderMap* map) {
                 std::move(receiver));
           },
           base::Unretained(host)));
+=======
+#if !BUILDFLAG(IS_COBALT)
+  if (base::FeatureList::IsEnabled(blink::features::kLanguageDetectionAPI)) {
+    map->Add<language_detection::mojom::ContentLanguageDetectionDriver>(
+        base::BindRepeating(
+            [](SharedWorkerHost* host,
+               mojo::PendingReceiver<
+                   language_detection::mojom::ContentLanguageDetectionDriver>
+                   receiver) {
+              GetContentClient()->browser()->BindLanguageDetectionDriver(
+                  host->GetProcessHost()->GetBrowserContext(), host,
+                  std::move(receiver));
+            },
+            base::Unretained(host)));
+  }
+#endif  // !BUILDFLAG(IS_COBALT)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 #if !BUILDFLAG(IS_ANDROID)
   map->Add<blink::mojom::DirectSocketsService>(base::BindRepeating(
@@ -1799,6 +2314,40 @@ void PopulateBinderMap(SharedWorkerHost* host, mojo::BinderMap* map) {
   PopulateSharedWorkerBinders(host, map);
 }
 
+<<<<<<< HEAD
+=======
+// Shared storage worklets
+SharedStorageWorkletHost* GetContextForHost(SharedStorageWorkletHost* host) {
+  return host;
+}
+
+void PopulateSharedStorageWorkletBinders(SharedStorageWorkletHost* host,
+                                         mojo::BinderMap* map) {
+  // Ignore requests to bind UkmRecorderFactory and FeatureObserver, since there
+  // is no current plan to support them for worklets and the renderer always
+  // tries to bind them. TODO(crbug.com/366293454).
+  map->Add<ukm::mojom::UkmRecorderFactory>(base::DoNothing());
+  map->Add<blink::mojom::FeatureObserver>(base::DoNothing());
+
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  // SharedStorageWorkletHost binders
+  // base::Unretained(host) is safe because the map is owned by
+  // |SharedStorageWorkletHost::broker_|.
+  map->Add<blink::mojom::LockManager>(base::BindRepeating(
+      &SharedStorageWorkletHost::GetLockManager, base::Unretained(host)));
+#else
+  (void)host;
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+}
+
+void PopulateBinderMapWithContext(
+    SharedStorageWorkletHost* host,
+    mojo::BinderMapWithContext<SharedStorageWorkletHost*>* map) {}
+
+void PopulateBinderMap(SharedStorageWorkletHost* host, mojo::BinderMap* map) {
+  PopulateSharedStorageWorkletBinders(host, map);
+}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 // Service workers
 ServiceWorkerVersionInfo GetContextForHost(ServiceWorkerHost* host) {
@@ -1854,13 +2403,17 @@ void PopulateServiceWorkerBinders(ServiceWorkerHost* host,
                                                          std::move(receiver));
       },
       base::Unretained(host)));
+#if !BUILDFLAG(IS_COBALT)
   map->Add<blink::mojom::HidService>(base::BindRepeating(
       &ServiceWorkerHost::BindHidService, base::Unretained(host)));
 #endif
+#endif
   map->Add<blink::mojom::BucketManagerHost>(base::BindRepeating(
       &ServiceWorkerHost::CreateBucketManagerHost, base::Unretained(host)));
+#if !BUILDFLAG(IS_COBALT)
   map->Add<blink::mojom::WebUsbService>(base::BindRepeating(
       &ServiceWorkerHost::BindUsbService, base::Unretained(host)));
+#endif
   map->Add<blink::mojom::AIManager>(base::BindRepeating(
       &ServiceWorkerHost::BindAIManager, base::Unretained(host)));
 
@@ -1873,6 +2426,7 @@ void PopulateServiceWorkerBinders(ServiceWorkerHost* host,
         &BindWebNNWeightsFileCreatorForWorker<ServiceWorkerHost>,
         base::Unretained(host)));
   }
+<<<<<<< HEAD
   map->Add<blink::mojom::TranslationManager>(base::BindRepeating(
       [](ServiceWorkerHost* host,
          mojo::PendingReceiver<blink::mojom::TranslationManager> receiver) {
@@ -1897,6 +2451,26 @@ void PopulateServiceWorkerBinders(ServiceWorkerHost* host,
             }
           },
           base::Unretained(host)));
+=======
+#if !BUILDFLAG(IS_COBALT)
+  if (base::FeatureList::IsEnabled(blink::features::kLanguageDetectionAPI)) {
+    map->Add<language_detection::mojom::ContentLanguageDetectionDriver>(
+        base::BindRepeating(
+            [](ServiceWorkerHost* host,
+               mojo::PendingReceiver<
+                   language_detection::mojom::ContentLanguageDetectionDriver>
+                   receiver) {
+              if (auto* process_host = static_cast<RenderProcessHostImpl*>(
+                      RenderProcessHost::FromID(host->worker_process_id()))) {
+                GetContentClient()->browser()->BindLanguageDetectionDriver(
+                    process_host->GetBrowserContext(), host,
+                    std::move(receiver));
+              }
+            },
+            base::Unretained(host)));
+  }
+#endif  // !BUILDFLAG(IS_COBALT)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // RenderProcessHost binders
   map->Add<media::mojom::VideoDecodePerfHistory>(BindServiceWorkerReceiver(

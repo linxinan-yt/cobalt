@@ -780,6 +780,8 @@ actualLocale(Locale::getRoot())
 Calendar::~Calendar()
 {
     delete fZone;
+    delete actualLocale;
+    delete validLocale;
 }
 
 // -------------------------------------
@@ -818,8 +820,15 @@ Calendar::operator=(const Calendar &right)
         fWeekendCease            = right.fWeekendCease;
         fWeekendCeaseMillis      = right.fWeekendCeaseMillis;
         fNextStamp               = right.fNextStamp;
+<<<<<<< HEAD
         validLocale = right.validLocale;
         actualLocale = right.actualLocale;
+=======
+        UErrorCode status = U_ZERO_ERROR;
+        U_LOCALE_BASED(locBased, *this);
+        locBased.setLocaleIDs(right.validLocale, right.actualLocale, status);
+        U_ASSERT(U_SUCCESS(status));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 
     return *this;
@@ -1546,6 +1555,7 @@ void Calendar::computeGregorianFields(int32_t julianDay, UErrorCode& ec) {
         ec = U_ILLEGAL_ARGUMENT_ERROR;
         return;
     }
+<<<<<<< HEAD
     int8_t dayOfWeek;
     Grego::dayToFields(julianDay, fGregorianYear, fGregorianMonth,
                        fGregorianDayOfMonth,
@@ -1555,6 +1565,11 @@ void Calendar::computeGregorianFields(int32_t julianDay, UErrorCode& ec) {
         return;
     }
     internalSet(UCAL_DAY_OF_WEEK, dayOfWeek);
+=======
+    Grego::dayToFields(julianDay, fGregorianYear, fGregorianMonth,
+                       fGregorianDayOfMonth,
+                       fGregorianDayOfYear, ec);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 /**
@@ -1583,7 +1598,12 @@ void Calendar::computeWeekFields(UErrorCode &ec) {
     }
 
     // Compute day of week: JD 0 = Monday
+<<<<<<< HEAD
     int32_t dayOfWeek = fFields[UCAL_DAY_OF_WEEK];
+=======
+    int32_t dayOfWeek = julianDayToDayOfWeek(fFields[UCAL_JULIAN_DAY]);
+    internalSet(UCAL_DAY_OF_WEEK, dayOfWeek);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     int32_t firstDayOfWeek = getFirstDayOfWeek();
     // Calculate 1-based localized day of week
     int32_t dowLocal = dayOfWeek - firstDayOfWeek + 1;
@@ -4137,8 +4157,14 @@ Calendar::setWeekData(const Locale& desiredLocale, const char *type, UErrorCode&
     }
 
     if (U_SUCCESS(status)) {
+<<<<<<< HEAD
         validLocale = Locale(ures_getLocaleByType(monthNames.getAlias(), ULOC_VALID_LOCALE, &status));
         actualLocale = Locale(ures_getLocaleByType(monthNames.getAlias(), ULOC_ACTUAL_LOCALE, &status));
+=======
+        U_LOCALE_BASED(locBased,*this);
+        locBased.setLocaleIDs(ures_getLocaleByType(monthNames.getAlias(), ULOC_VALID_LOCALE, &status),
+                              ures_getLocaleByType(monthNames.getAlias(), ULOC_ACTUAL_LOCALE, &status), status);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     } else {
         status = U_USING_FALLBACK_WARNING;
         return;
@@ -4272,6 +4298,7 @@ int32_t Calendar::internalGetMonth(UErrorCode& status) const {
     if (U_FAILURE(status)) {
         return 0;
     }
+<<<<<<< HEAD
     if (resolveFields(kMonthPrecedence) == UCAL_ORDINAL_MONTH) {
         return internalGet(UCAL_ORDINAL_MONTH);
     }
@@ -4281,6 +4308,17 @@ int32_t Calendar::internalGetMonth(UErrorCode& status) const {
 int32_t Calendar::internalGetMonth(int32_t defaultValue, UErrorCode& status) const {
     if (U_FAILURE(status)) {
         return 0;
+=======
+    if (resolveFields(kMonthPrecedence) == UCAL_MONTH) {
+        return internalGet(UCAL_MONTH, status);
+    }
+    return internalGet(UCAL_ORDINAL_MONTH, status);
+}
+
+int32_t Calendar::internalGetMonth(int32_t defaultValue, UErrorCode& /* status */) const {
+    if (resolveFields(kMonthPrecedence) == UCAL_MONTH) {
+        return internalGet(UCAL_MONTH, defaultValue);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
     if (resolveFields(kMonthPrecedence) == UCAL_ORDINAL_MONTH) {
         return internalGet(UCAL_ORDINAL_MONTH);

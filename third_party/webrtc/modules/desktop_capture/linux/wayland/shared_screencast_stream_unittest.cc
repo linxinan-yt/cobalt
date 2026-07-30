@@ -139,7 +139,11 @@ TEST_F(MAYBE_PipeWireStreamTest, TestPipeWire) {
   waitStartStreamingEvent.Wait(kShortWait);
 
   Event frameRetrievedEvent;
+<<<<<<< HEAD
   EXPECT_CALL(*this, OnFrameRecorded).Times(7);
+=======
+  EXPECT_CALL(*this, OnFrameRecorded).Times(8);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   EXPECT_CALL(*this, OnDesktopFrameChanged)
       .Times(3)
       .WillRepeatedly([&frameRetrievedEvent] { frameRetrievedEvent.Set(); });
@@ -229,16 +233,27 @@ TEST_F(MAYBE_PipeWireStreamTest, TestPipeWire) {
     waitStartStreamingEvent2.Set();
   });
   Event emptyFrameEvent2;
+<<<<<<< HEAD
   EXPECT_CALL(*this, OnBufferCorruptedData).WillOnce([&emptyFrameEvent2] {
+=======
+  EXPECT_CALL(*this, OnEmptyBuffer).WillOnce([&emptyFrameEvent2] {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     emptyFrameEvent2.Set();
   });
   waitStartStreamingEvent2.Wait(kShortWait);
   test_screencast_stream_provider_->RecordFrame(
+<<<<<<< HEAD
       red_color, TestScreenCastStreamProvider::CorruptedData);
   emptyFrameEvent2.Wait(kShortWait);
 
   EXPECT_CALL(*this, OnFormatChanged(SPA_VIDEO_FORMAT_BGRA, 800, 640, 22,
                                      DRM_FORMAT_MOD_LINEAR))
+=======
+      red_color, TestScreenCastStreamProvider::EmptyData);
+  emptyFrameEvent2.Wait(kShortWait);
+
+  EXPECT_CALL(*this, OnFrameRateChanged(22))
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       .Times(1)
       .WillOnce([&waitStreamParamChangedEvent2] {
         waitStreamParamChangedEvent2.Set();
@@ -253,11 +268,16 @@ TEST_F(MAYBE_PipeWireStreamTest, TestPipeWire) {
     waitStartStreamingEvent3.Set();
   });
   Event emptyFrameEvent3;
+<<<<<<< HEAD
   EXPECT_CALL(*this, OnBufferCorruptedMetadata).WillOnce([&emptyFrameEvent3] {
+=======
+  EXPECT_CALL(*this, OnEmptyBuffer).WillOnce([&emptyFrameEvent3] {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     emptyFrameEvent3.Set();
   });
   waitStartStreamingEvent3.Wait(kShortWait);
   test_screencast_stream_provider_->RecordFrame(
+<<<<<<< HEAD
       red_color, TestScreenCastStreamProvider::CorruptedMetadata);
   emptyFrameEvent3.Wait(kShortWait);
 
@@ -406,6 +426,11 @@ TEST_F(MAYBE_PipeWireStreamTest, TestModifierFallback) {
       blue_color, TestScreenCastStreamProvider::InvalidStride);
   invalidStrideEvent.Wait(kShortWait);
 
+=======
+      red_color, TestScreenCastStreamProvider::EmptyData);
+  emptyFrameEvent3.Wait(kShortWait);
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   // Test disconnection from stream
   EXPECT_CALL(*this, OnStopStreaming);
   shared_screencast_stream_->StopScreenCastStream();

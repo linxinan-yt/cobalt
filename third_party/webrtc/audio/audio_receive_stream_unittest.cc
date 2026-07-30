@@ -138,10 +138,14 @@ struct ConfigHelper {
                TaskQueueBase* worker_thread,
                scoped_refptr<MockAudioMixer> audio_mixer,
                bool use_null_audio_processing)
+<<<<<<< HEAD
       : audio_mixer_(audio_mixer),
         rtp_stream_receiver_controller_(network_thread,
                                         worker_thread,
                                         &dummy_validator_) {
+=======
+      : audio_mixer_(audio_mixer) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     AudioState::Config config;
     config.audio_mixer = audio_mixer_;
     config.audio_processing =
@@ -158,8 +162,11 @@ struct ConfigHelper {
         .WillRepeatedly([](const std::map<int, SdpAudioFormat>& codecs) {
           EXPECT_THAT(codecs, ::testing::IsEmpty());
         });
+<<<<<<< HEAD
     EXPECT_CALL(*channel_receive_, remote_ssrc)
         .WillRepeatedly(Return(kRemoteSsrc));
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     stream_config_.rtp.remote_ssrc = kRemoteSsrc;
     stream_config_.rtp.nack.rtp_history_ms = 300;

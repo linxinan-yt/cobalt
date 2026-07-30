@@ -36,6 +36,12 @@ de{
         "America:Cayman"{
             ec{"Kaimaninseln"}
         }
+<<<<<<< HEAD
+=======
+        "America:Cordoba"{
+            ec{"Córdoba"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Havana"{
             ec{"Havanna"}
         }
@@ -48,6 +54,12 @@ de{
         "America:Mexico_City"{
             ec{"Mexiko-Stadt"}
         }
+<<<<<<< HEAD
+=======
+        "America:Sao_Paulo"{
+            ec{"São Paulo"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:St_Barthelemy"{
             ec{"Saint-Barthélemy"}
         }

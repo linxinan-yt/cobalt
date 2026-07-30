@@ -29,6 +29,7 @@ namespace message2 {
         addError(DynamicError(DynamicErrorType::FormattingError, UnicodeString("unknown formatter")), status);
     }
 
+<<<<<<< HEAD
     void DynamicErrors::setBadOption(const FunctionName& formatterName, UErrorCode& status) {
         addError(DynamicError(DynamicErrorType::BadOptionError, formatterName), status);
     }
@@ -37,6 +38,8 @@ namespace message2 {
         addError(DynamicError(DynamicErrorType::RecoverableBadOptionError, formatterName), status);
     }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     void DynamicErrors::setOperandMismatchError(const FunctionName& formatterName, UErrorCode& status) {
         addError(DynamicError(DynamicErrorType::OperandMismatchError, formatterName), status);
     }
@@ -145,11 +148,14 @@ namespace message2 {
                 status = U_MF_FORMATTING_ERROR;
                 break;
             }
+<<<<<<< HEAD
             case DynamicErrorType::BadOptionError:
             case DynamicErrorType::RecoverableBadOptionError: {
                 status = U_MF_BAD_OPTION;
                 break;
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             case DynamicErrorType::OperandMismatchError: {
                 status = U_MF_OPERAND_MISMATCH_ERROR;
                 break;
@@ -241,6 +247,7 @@ namespace message2 {
             resolutionAndFormattingErrors->adoptElement(errorP, status);
             break;
         }
+<<<<<<< HEAD
         case DynamicErrorType::BadOptionError: {
             badOptionError = true;
             resolutionAndFormattingErrors->adoptElement(errorP, status);
@@ -250,6 +257,8 @@ namespace message2 {
             resolutionAndFormattingErrors->adoptElement(errorP, status);
             break;
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     }
 

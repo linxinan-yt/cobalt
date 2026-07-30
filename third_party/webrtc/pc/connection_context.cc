@@ -224,6 +224,7 @@ MediaEngineInterface* ConnectionContext::media_engine_w() {
   return media_engine_.get();
 }
 
+<<<<<<< HEAD
 void ConnectionContext::ApplyGlobalAudioOptions(const AudioOptions& options) {
   RTC_DCHECK_RUN_ON(worker_thread());
   global_audio_options_.SetAll(options);
@@ -232,6 +233,8 @@ void ConnectionContext::ApplyGlobalAudioOptions(const AudioOptions& options) {
   }
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 void ConnectionContext::AddRefMediaEngine() {
   RTC_DCHECK_RUN_ON(worker_thread());
   RTC_DCHECK_GE(media_engine_reference_count_, 0);

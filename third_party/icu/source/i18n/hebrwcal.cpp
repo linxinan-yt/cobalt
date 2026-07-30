@@ -446,7 +446,12 @@ int32_t startOfYear(int32_t year, UErrorCode &status)
             // If the 1st is on Sun, Wed, or Fri, postpone to the next day
             day += 1;
             wd = (day % 7);
+<<<<<<< HEAD
         } else if (wd == 1 && frac > 15*HOUR_PARTS+204 && !HebrewCalendar::isLeapYear(year) ) {
+=======
+        }
+        if (wd == 1 && frac > 15*HOUR_PARTS+204 && !HebrewCalendar::isLeapYear(year) ) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             // If the new moon falls after 3:11:20am (15h204p from the previous noon)
             // on a Tuesday and it is not a leap year, postpone by 2 days.
             // This prevents 356-day years.
@@ -790,6 +795,26 @@ int64_t HebrewCalendar::handleComputeMonthStart(
     return day + 347997LL;
 }
 
+<<<<<<< HEAD
+=======
+constexpr uint32_t kHebrewRelatedYearDiff = -3760;
+
+int32_t HebrewCalendar::getRelatedYear(UErrorCode &status) const
+{
+    int32_t year = get(UCAL_EXTENDED_YEAR, status);
+    if (U_FAILURE(status)) {
+        return 0;
+    }
+    return year + kHebrewRelatedYearDiff;
+}
+
+void HebrewCalendar::setRelatedYear(int32_t year)
+{
+    // set extended year
+    set(UCAL_EXTENDED_YEAR, year - kHebrewRelatedYearDiff);
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 IMPL_SYSTEM_DEFAULT_CENTURY(HebrewCalendar, "@calendar=hebrew")
 
 bool HebrewCalendar::inTemporalLeapYear(UErrorCode& status) const {
@@ -853,11 +878,14 @@ int32_t HebrewCalendar::internalGetMonth(UErrorCode& status) const {
         }
     }
     return Calendar::internalGetMonth(status);
+<<<<<<< HEAD
 }
 
 int32_t HebrewCalendar::getRelatedYearDifference() const {
     constexpr int32_t kHebrewCalendarRelatedYearDifference = -3760;
     return kHebrewCalendarRelatedYearDifference;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 UOBJECT_DEFINE_RTTI_IMPLEMENTATION(HebrewCalendar)

@@ -15,6 +15,33 @@ fi{
         "Africa:Khartoum"{
             ec{"Khartum"}
         }
+<<<<<<< HEAD
+=======
+        "Africa:Lome"{
+            ec{"Lomé"}
+        }
+        "Africa:Ndjamena"{
+            ec{"N’Djamena"}
+        }
+        "America:Araguaina"{
+            ec{"Araguaína"}
+        }
+        "America:Argentina:Tucuman"{
+            ec{"Tucumán"}
+        }
+        "America:Bogota"{
+            ec{"Bogotá"}
+        }
+        "America:Cordoba"{
+            ec{"Córdoba"}
+        }
+        "America:Cuiaba"{
+            ec{"Cuiabá"}
+        }
+        "America:Eirunepe"{
+            ec{"Eirunepé"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Godthab"{
             ec%secondary{"Godthåb"}
         }
@@ -33,6 +60,12 @@ fi{
         "America:North_Dakota:New_Salem"{
             ec{"New Salem, Pohjois-Dakota"}
         }
+<<<<<<< HEAD
+=======
+        "America:Santarem"{
+            ec{"Santarém"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Santiago"{
             ec{"Santiago de Chile"}
         }

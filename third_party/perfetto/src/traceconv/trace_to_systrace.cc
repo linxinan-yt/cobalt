@@ -27,8 +27,14 @@
 
 #include "perfetto/base/build_config.h"
 #include "perfetto/base/logging.h"
+<<<<<<< HEAD
 #include "perfetto/ext/base/dynamic_string_writer.h"
 #include "perfetto/ext/base/string_utils.h"
+=======
+#include "perfetto/ext/base/fixed_string_writer.h"
+#include "perfetto/ext/base/string_utils.h"
+#include "perfetto/ext/base/utils.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "perfetto/trace_processor/trace_processor.h"
 #include "src/traceconv/utils.h"
 
@@ -84,7 +90,11 @@ const char kSystemTraceEventsFooter[] =
 inline void FormatProcess(uint32_t pid,
                           uint32_t ppid,
                           const base::StringView& name,
+<<<<<<< HEAD
                           base::DynamicStringWriter* writer) {
+=======
+                          base::FixedStringWriter* writer) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   writer->AppendLiteral("root             ");
   writer->AppendInt(pid);
   writer->AppendLiteral("     ");
@@ -97,7 +107,11 @@ inline void FormatProcess(uint32_t pid,
 inline void FormatThread(uint32_t tid,
                          uint32_t tgid,
                          const base::StringView& name,
+<<<<<<< HEAD
                          base::DynamicStringWriter* writer) {
+=======
+                         base::FixedStringWriter* writer) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   writer->AppendLiteral("root         ");
   writer->AppendInt(tgid);
   writer->AppendChar(' ');
@@ -120,7 +134,11 @@ class QueryWriter {
     base::DynamicStringWriter line_writer;
     auto iterator = tp_->ExecuteQuery(sql);
     for (uint32_t rows = 0; iterator.Next(); rows++) {
+<<<<<<< HEAD
       line_writer.Clear();
+=======
+      base::FixedStringWriter line_writer(buffer, base::ArraySize(buffer));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       callback(&iterator, &line_writer);
 
       if (global_writer_.pos() + line_writer.pos() >= kFlushThreshold) {
@@ -150,7 +168,12 @@ class QueryWriter {
   static constexpr size_t kFlushThreshold = size_t{1024} * 1024 * 16;
 
   trace_processor::TraceProcessor* tp_ = nullptr;
+<<<<<<< HEAD
   base::DynamicStringWriter global_writer_;
+=======
+  base::PagedMemory buffer_;
+  base::FixedStringWriter global_writer_;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   TraceWriter* trace_writer_;
 };
 
@@ -162,7 +185,11 @@ int ExtractRawEvents(TraceWriter* trace_writer,
 
   static const char kRawEventsCountSql[] = "select count(1) from ftrace_event";
   uint32_t raw_events = 0;
+<<<<<<< HEAD
   auto e_callback = [&raw_events](Iterator* it, base::DynamicStringWriter*) {
+=======
+  auto e_callback = [&raw_events](Iterator* it, base::FixedStringWriter*) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     raw_events = static_cast<uint32_t>(it->Get(0).long_value);
   };
   if (!q_writer.RunQuery(kRawEventsCountSql, e_callback))
@@ -181,7 +208,11 @@ int ExtractRawEvents(TraceWriter* trace_writer,
   fflush(stderr);
 
   auto raw_callback = [wrapped_in_json](Iterator* it,
+<<<<<<< HEAD
                                         base::DynamicStringWriter* writer) {
+=======
+                                        base::FixedStringWriter* writer) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     const char* line = it->Get(0 /* col */).string_value;
     if (wrapped_in_json) {
       for (uint32_t i = 0; line[i] != '\0'; i++) {
@@ -305,7 +336,11 @@ int ExtractSystrace(trace_processor::TraceProcessor* tp,
     // TODO(lalitm): change this query to actually use ppid when it is exposed
     // by the process table.
     static const char kPSql[] = "select pid, 0 as ppid, name from process";
+<<<<<<< HEAD
     auto p_callback = [](Iterator* it, base::DynamicStringWriter* writer) {
+=======
+    auto p_callback = [](Iterator* it, base::FixedStringWriter* writer) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       uint32_t pid = static_cast<uint32_t>(it->Get(0 /* col */).long_value);
       uint32_t ppid = static_cast<uint32_t>(it->Get(1 /* col */).long_value);
       const auto& name_col = it->Get(2 /* col */);
@@ -323,7 +358,11 @@ int ExtractSystrace(trace_processor::TraceProcessor* tp,
     static const char kTSql[] =
         "select tid, COALESCE(upid, 0), thread.name "
         "from thread left join process using (upid)";
+<<<<<<< HEAD
     auto t_callback = [](Iterator* it, base::DynamicStringWriter* writer) {
+=======
+    auto t_callback = [](Iterator* it, base::FixedStringWriter* writer) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       uint32_t tid = static_cast<uint32_t>(it->Get(0 /* col */).long_value);
       uint32_t tgid = static_cast<uint32_t>(it->Get(1 /* col */).long_value);
       const auto& name_col = it->Get(2 /* col */);

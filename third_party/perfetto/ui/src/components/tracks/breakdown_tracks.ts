@@ -16,6 +16,7 @@ import {assertUnreachable} from '../../base/assert';
 import {sqliteString} from '../../base/string_utils';
 import {uuidv4} from '../../base/uuid';
 import {SliceTrack} from './slice_track';
+<<<<<<< HEAD
 import {CounterTrack} from './counter_track';
 import type {Trace} from '../../public/trace';
 import {TrackNode} from '../../public/workspace';
@@ -30,6 +31,20 @@ import {
 } from '../../trace_processor/query_result';
 import type {TrackRenderer} from '../../public/track';
 import type {TrackEventDetailsPanel} from '../../public/details_panel';
+=======
+import {createQueryCounterTrack} from '../../components/tracks/query_counter_track';
+import {Trace} from '../../public/trace';
+import {TrackNode} from '../../public/workspace';
+import {SourceDataset} from '../../trace_processor/dataset';
+import {
+  SqlValue,
+  LONG,
+  NUM_NULL,
+  STR,
+  LONG_NULL,
+} from '../../trace_processor/query_result';
+import {TrackRenderer} from '../../public/track';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 /**
  * Aggregation types for the BreakdownTracks.
@@ -499,6 +514,7 @@ export class BreakdownTracks {
     title: string,
     newFilters: Filter[],
     columnIndex: number,
+<<<<<<< HEAD
     isPivot: boolean,
   ): Promise<TrackNode> {
     return this.createTrackNode(title, newFilters, (uri, filtersClause) => {
@@ -551,6 +567,45 @@ export class BreakdownTracks {
           : undefined,
       });
     });
+=======
+    sqlInfo: BreakdownTrackSqlInfo,
+    trackType: BreakdownTrackType,
+  ) {
+    let joinClause = '';
+
+    if (this.sliceJoinClause && trackType === BreakdownTrackType.SLICE) {
+      joinClause = this.sliceJoinClause;
+    } else if (this.pivotJoinClause && trackType === BreakdownTrackType.PIVOT) {
+      joinClause = this.pivotJoinClause;
+    }
+
+    return await this.createTrackNode(
+      title,
+      newFilters,
+      (uri: string, filtersClause: string) => {
+        return SliceTrack.createMaterialized({
+          trace: this.props.trace,
+          uri,
+          dataset: new SourceDataset({
+            schema: {
+              ts: LONG,
+              dur: LONG_NULL,
+              name: STR,
+            },
+            src: `
+              SELECT
+                ${sqlInfo.tsCol} AS ts,
+                ${sqlInfo.durCol} AS dur,
+                ${sqlInfo.columns[columnIndex]} AS name
+              FROM ${this.props.aggregation.tableName}
+              ${joinClause}
+              ${filtersClause}
+            `,
+          }),
+        });
+      },
+    );
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   private async getCounterTrackSortOrder(
@@ -590,7 +645,11 @@ export class BreakdownTracks {
   private async createTrackNode(
     name: string,
     filters: Filter[],
+<<<<<<< HEAD
     createTrack: (uri: string, filtersClause: string) => TrackRenderer,
+=======
+    createTrack: (uri: string, filtersClause: string) => Promise<TrackRenderer>,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     getSortOrder?: (filterClause: string) => Promise<number>,
   ): Promise<TrackNode> {
     const filtersClause =

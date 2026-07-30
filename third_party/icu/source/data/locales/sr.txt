@@ -537,6 +537,25 @@ sr{
                         afternoon1{"по подне"}
                         evening1{"увече"}
                         midnight{"поноћ"}
+<<<<<<< HEAD
+=======
+                        morning1{"ујутру"}
+                        night1{"ноћу"}
+                        noon{"подне"}
+                    }
+                    narrow{
+                        afternoon1{"по подне"}
+                        evening1{"увече"}
+                        midnight{"поноћ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
+                        morning1{"ујутру"}
+                        night1{"ноћу"}
+                        noon{"подне"}
+                    }
+                    wide{
+                        afternoon1{"по подне"}
+                        evening1{"увече"}
+                        midnight{"поноћ"}
                         morning1{"ујутру"}
                         night1{"ноћу"}
                         noon{"подне"}
@@ -1815,6 +1834,22 @@ sr{
                 "[\\: ∶]",
             }
         }
+<<<<<<< HEAD
+=======
+        general{
+            lenient{
+                "[.．․﹒ 。｡︒]",
+                "['＇’ ՚ ᾽᾿ ʼ]",
+                "[%％﹪ ٪]",
+                "[‰ ؉]",
+                "[\$＄﹩]",
+                "[£￡ ₤]",
+                "[¥￥]",
+                "[₩￦]",
+                "[₹ {Rp} {Rs}₨]",
+            }
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",

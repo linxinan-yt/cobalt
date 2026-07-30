@@ -15,7 +15,13 @@
 import m from 'mithril';
 import {Button} from '../../widgets/button';
 import {Icons} from '../../base/semantic_icons';
+<<<<<<< HEAD
 import type {Trace} from '../../public/trace';
+=======
+import {uuidv4Sql} from '../../base/uuid';
+import {createView} from '../../trace_processor/sql_utils';
+import {Trace} from '../../public/trace';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {SliceTrack} from './slice_track';
 import {SourceDataset} from '../../trace_processor/dataset';
 import {LONG, LONG_NULL, NUM, STR} from '../../trace_processor/query_result';
@@ -38,7 +44,43 @@ export async function createVisualizedArgsTrack({
   argName,
   onClose,
 }: VisualizedArgsTrackAttrs) {
+<<<<<<< HEAD
   return SliceTrack.createMaterialized({
+=======
+  const uuid = uuidv4Sql();
+  const escapedArgName = argName.replace(/[^a-zA-Z]/g, '_');
+  const viewName = `__arg_visualisation_helper_${escapedArgName}_${uuid}_slice`;
+
+  await createView({
+    engine: trace.engine,
+    name: viewName,
+    as: `
+      with slice_with_arg as (
+        select
+          slice.id,
+          slice.track_id,
+          slice.ts,
+          slice.dur,
+          slice.thread_dur,
+          NULL as cat,
+          args.display_value as name
+        from slice
+        join args using (arg_set_id)
+        where args.key='${argName}'
+      )
+      select
+        *,
+        (select count()
+        from ancestor_slice(s1.id) s2
+        join slice_with_arg s3 on s2.id=s3.id
+        ) as depth
+      from slice_with_arg s1
+      order by id
+    `,
+  });
+
+  return SliceTrack.create({
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     trace,
     uri,
     dataset: new SourceDataset({

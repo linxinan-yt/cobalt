@@ -766,6 +766,7 @@ TEST(StructuredQueryGeneratorTest, CountAllAggregation) {
   )"));
 }
 
+<<<<<<< HEAD
 TEST(StructuredQueryGeneratorTest, CountDistinctAggregation) {
   StructuredQueryGenerator gen;
   auto proto = ToProto(R"(
@@ -822,6 +823,8 @@ TEST(StructuredQueryGeneratorTest, CustomAggregation) {
   )"));
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 TEST(StructuredQueryGeneratorTest, AggregateToStringValidation) {
   // SUM without column name.
   {
@@ -881,6 +884,7 @@ TEST(StructuredQueryGeneratorTest, AggregateToStringValidation) {
     auto ret = gen.Generate(proto.data(), proto.size());
     ASSERT_FALSE(ret.ok());
   }
+<<<<<<< HEAD
 
   // COUNT_DISTINCT without column name.
   {
@@ -919,6 +923,8 @@ TEST(StructuredQueryGeneratorTest, AggregateToStringValidation) {
     auto ret = gen.Generate(proto.data(), proto.size());
     ASSERT_FALSE(ret.ok());
   }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 TEST(StructuredQueryGeneratorTest, ColumnTransformationAndAggregation) {
@@ -1505,6 +1511,7 @@ TEST(StructuredQueryGeneratorTest, UnionWithDifferentColumnOrderSucceeds) {
   )");
   auto ret = gen.Generate(proto.data(), proto.size());
   ASSERT_TRUE(ret.ok()) << ret.status().message();
+<<<<<<< HEAD
   EXPECT_EQ(*ret, R"(WITH sq_2 AS (
   SELECT dur, id, ts
   FROM sched
@@ -1529,6 +1536,12 @@ sq_0 AS (
 )
 SELECT *
 FROM sq_0)");
+=======
+  ASSERT_THAT(*ret, testing::HasSubstr("WITH union_query_0 AS"));
+  ASSERT_THAT(*ret, testing::HasSubstr("union_query_1 AS"));
+  ASSERT_THAT(*ret, testing::HasSubstr("SELECT * FROM union_query_0 UNION "
+                                       "SELECT * FROM union_query_1"));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 TEST(StructuredQueryGeneratorTest, AddColumnsWithEqualityColumns) {
@@ -2240,11 +2253,16 @@ TEST(StructuredQueryGeneratorTest, OrderByWithInnerQuerySimpleSlices) {
   )");
   auto ret = gen.Generate(proto.data(), proto.size());
   ASSERT_OK_AND_ASSIGN(std::string res, ret);
+<<<<<<< HEAD
   // Note: The inner_query has id="0" which would collide with the root query's
   // auto-generated name (sq_0), so the collision avoidance renames it to
   // sq_0_0.
   ASSERT_THAT(res, EqualsIgnoringWhitespace(R"(
     WITH sq_0_0 AS (
+=======
+  ASSERT_THAT(res, EqualsIgnoringWhitespace(R"(
+    WITH sq_0 AS (
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       SELECT * FROM (
         SELECT
           id,
@@ -2257,7 +2275,11 @@ TEST(StructuredQueryGeneratorTest, OrderByWithInnerQuerySimpleSlices) {
         FROM thread_or_process_slice
       )
     )
+<<<<<<< HEAD
     SELECT * FROM sq_0_0 ORDER BY slice_name ASC
+=======
+    SELECT * FROM sq_0 ORDER BY slice_name ASC
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   )"));
   ASSERT_THAT(gen.ComputeReferencedModules(),
               UnorderedElementsAre("slices.with_context"));
@@ -2460,7 +2482,11 @@ TEST(StructuredQueryGeneratorTest, ExperimentalFilterGroupWithMultipleValues) {
   ASSERT_THAT(res, EqualsIgnoringWhitespace(R"(
     WITH sq_0 AS (
       SELECT * FROM slice
+<<<<<<< HEAD
       WHERE (name = 'foo' OR name = 'bar' OR name = 'baz') OR name GLOB 'test*'
+=======
+      WHERE name = 'foo' OR name = 'bar' OR name = 'baz' OR name GLOB 'test*'
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     )
     SELECT * FROM sq_0
   )"));
@@ -2659,7 +2685,11 @@ TEST(StructuredQueryGeneratorTest, ExperimentalFilterGroupWithInt64AndDouble) {
   ASSERT_THAT(res, EqualsIgnoringWhitespace(R"(
     WITH sq_0 AS (
       SELECT * FROM slice
+<<<<<<< HEAD
       WHERE (dur > 1000 OR dur > 5000) OR cpu < 50.500000
+=======
+      WHERE dur > 1000 OR dur > 5000 OR cpu < 50.500000
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     )
     SELECT * FROM sq_0
   )"));
@@ -2784,6 +2814,7 @@ TEST(StructuredQueryGeneratorTest, FilterWithoutRhsFails) {
               testing::HasSubstr("must specify a right-hand side"));
 }
 
+<<<<<<< HEAD
 TEST(StructuredQueryGeneratorTest, MultiValueFilterAndedIsParenthesized) {
   // A filter with multiple RHS values is an OR. When ANDed with another filter
   // it must be parenthesized, otherwise SQL operator precedence (AND binds
@@ -2820,6 +2851,8 @@ TEST(StructuredQueryGeneratorTest, MultiValueFilterAndedIsParenthesized) {
   )"));
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 TEST(StructuredQueryGeneratorTest, ExperimentalFilterGroupWithSqlExpression) {
   StructuredQueryGenerator gen;
   auto proto = ToProto(R"(
@@ -2933,10 +2966,17 @@ TEST(StructuredQueryGeneratorTest, IntervalIntersectWithPartitionColumns) {
                     WITH
                       iibase AS (SELECT * FROM sq_1),
                       iisource0 AS (SELECT * FROM sq_2)
+<<<<<<< HEAD
                     SELECT ii.ts, ii.dur, ii.utid, base_0.id AS id_0, base_0.ts AS ts_0, base_0.dur AS dur_0, base_0.*, source_1.id AS id_1, source_1.ts AS ts_1, source_1.dur AS dur_1, source_1.*
                     FROM _interval_intersect!((iibase, iisource0), (utid)) ii
                     JOIN iibase AS base_0 ON ii.id_0 = base_0.id
                     JOIN iisource0 AS source_1 ON ii.id_1 = source_1.id
+=======
+                    SELECT ii.ts, ii.dur, ii.utid, iibase.*, iisource0.*
+                    FROM _interval_intersect!((iibase, iisource0), (utid)) ii
+                    JOIN iibase ON ii.id_0 = iibase.id
+                    JOIN iisource0 ON ii.id_1 = iisource0.id
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                   )
                 )
                 SELECT * FROM sq_0
@@ -2980,10 +3020,17 @@ TEST(StructuredQueryGeneratorTest,
                     WITH
                       iibase AS (SELECT * FROM sq_1),
                       iisource0 AS (SELECT * FROM sq_2)
+<<<<<<< HEAD
                     SELECT ii.ts, ii.dur, ii.utid, ii.upid, base_0.id AS id_0, base_0.ts AS ts_0, base_0.dur AS dur_0, base_0.*, source_1.id AS id_1, source_1.ts AS ts_1, source_1.dur AS dur_1, source_1.*
                     FROM _interval_intersect!((iibase, iisource0), (utid, upid)) ii
                     JOIN iibase AS base_0 ON ii.id_0 = base_0.id
                     JOIN iisource0 AS source_1 ON ii.id_1 = source_1.id
+=======
+                    SELECT ii.ts, ii.dur, ii.utid, ii.upid, iibase.*, iisource0.*
+                    FROM _interval_intersect!((iibase, iisource0), (utid, upid)) ii
+                    JOIN iibase ON ii.id_0 = iibase.id
+                    JOIN iisource0 ON ii.id_1 = iisource0.id
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                   )
                 )
                 SELECT * FROM sq_0
@@ -3031,10 +3078,17 @@ TEST(StructuredQueryGeneratorTest, IntervalIntersectWithEmptyPartitionColumns) {
                     WITH
                       iibase AS (SELECT * FROM sq_1),
                       iisource0 AS (SELECT * FROM sq_2)
+<<<<<<< HEAD
                     SELECT ii.ts, ii.dur, base_0.id AS id_0, base_0.ts AS ts_0, base_0.dur AS dur_0, base_0.*, source_1.id AS id_1, source_1.ts AS ts_1, source_1.dur AS dur_1, source_1.*
                     FROM _interval_intersect!((iibase, iisource0), ()) ii
                     JOIN iibase AS base_0 ON ii.id_0 = base_0.id
                     JOIN iisource0 AS source_1 ON ii.id_1 = source_1.id
+=======
+                    SELECT ii.ts, ii.dur, iibase.*, iisource0.*
+                    FROM _interval_intersect!((iibase, iisource0), ()) ii
+                    JOIN iibase ON ii.id_0 = iibase.id
+                    JOIN iisource0 ON ii.id_1 = iisource0.id
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                   )
                 )
                 SELECT * FROM sq_0
@@ -3321,7 +3375,11 @@ TEST(StructuredQueryGeneratorTest,
   )");
   auto ret = gen.Generate(proto.data(), proto.size());
   ASSERT_OK_AND_ASSIGN(std::string res, ret);
+<<<<<<< HEAD
   // Should include the whitespace in the generated SQL as-is (no normalization)
+=======
+  // Should include the whitespace in the generated SQL
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   ASSERT_THAT(
       res.c_str(),
       testing::HasSubstr("_interval_intersect!((iibase, iisource0), (   ))"));
@@ -3380,11 +3438,19 @@ TEST(StructuredQueryGeneratorTest,
                       iibase AS (SELECT * FROM sq_1),
                       iisource0 AS (SELECT * FROM sq_2),
                       iisource1 AS (SELECT * FROM sq_3)
+<<<<<<< HEAD
                     SELECT ii.ts, ii.dur, ii.utid, base_0.id AS id_0, base_0.ts AS ts_0, base_0.dur AS dur_0, base_0.*, source_1.id AS id_1, source_1.ts AS ts_1, source_1.dur AS dur_1, source_1.*, source_2.id AS id_2, source_2.ts AS ts_2, source_2.dur AS dur_2, source_2.*
                     FROM _interval_intersect!((iibase, iisource0, iisource1), (utid)) ii
                     JOIN iibase AS base_0 ON ii.id_0 = base_0.id
                     JOIN iisource0 AS source_1 ON ii.id_1 = source_1.id
                     JOIN iisource1 AS source_2 ON ii.id_2 = source_2.id
+=======
+                    SELECT ii.ts, ii.dur, ii.utid, iibase.*, iisource0.*, iisource1.*
+                    FROM _interval_intersect!((iibase, iisource0, iisource1), (utid)) ii
+                    JOIN iibase ON ii.id_0 = iibase.id
+                    JOIN iisource0 ON ii.id_1 = iisource0.id
+                    JOIN iisource1 ON ii.id_2 = iisource1.id
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                   )
                 )
                 SELECT * FROM sq_0
@@ -3445,12 +3511,21 @@ TEST(StructuredQueryGeneratorTest,
                       iisource0 AS (SELECT * FROM sq_2),
                       iisource1 AS (SELECT * FROM sq_3),
                       iisource2 AS (SELECT * FROM sq_4)
+<<<<<<< HEAD
                     SELECT ii.ts, ii.dur, ii.utid, ii.upid, base_0.id AS id_0, base_0.ts AS ts_0, base_0.dur AS dur_0, base_0.*, source_1.id AS id_1, source_1.ts AS ts_1, source_1.dur AS dur_1, source_1.*, source_2.id AS id_2, source_2.ts AS ts_2, source_2.dur AS dur_2, source_2.*, source_3.id AS id_3, source_3.ts AS ts_3, source_3.dur AS dur_3, source_3.*
                     FROM _interval_intersect!((iibase, iisource0, iisource1, iisource2), (utid, upid)) ii
                     JOIN iibase AS base_0 ON ii.id_0 = base_0.id
                     JOIN iisource0 AS source_1 ON ii.id_1 = source_1.id
                     JOIN iisource1 AS source_2 ON ii.id_2 = source_2.id
                     JOIN iisource2 AS source_3 ON ii.id_3 = source_3.id
+=======
+                    SELECT ii.ts, ii.dur, ii.utid, ii.upid, iibase.*, iisource0.*, iisource1.*, iisource2.*
+                    FROM _interval_intersect!((iibase, iisource0, iisource1, iisource2), (utid, upid)) ii
+                    JOIN iibase ON ii.id_0 = iibase.id
+                    JOIN iisource0 ON ii.id_1 = iisource0.id
+                    JOIN iisource1 ON ii.id_2 = iisource1.id
+                    JOIN iisource2 ON ii.id_3 = iisource2.id
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                   )
                 )
                 SELECT * FROM sq_0
@@ -3561,6 +3636,7 @@ TEST(StructuredQueryGeneratorTest,
                   "_interval_intersect!((iibase, iisource0), (col`name))"));
 }
 
+<<<<<<< HEAD
 // Regression test for CTE name collision bug where queries with explicit IDs
 // could collide with auto-generated index-based names.
 TEST(StructuredQueryGeneratorTest, IntervalIntersectNoDuplicateCteNames) {
@@ -6310,4 +6386,6 @@ TEST(StructuredQueryGeneratorTest, FilterInMissingMatchColumnFails) {
               testing::HasSubstr("FilterIn must specify a match_column"));
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }  // namespace perfetto::trace_processor::perfetto_sql::generator

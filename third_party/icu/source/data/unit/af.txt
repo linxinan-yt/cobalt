@@ -204,6 +204,11 @@ af{
                 one{"{0} per tienduisend"}
                 other{"{0} per tienduisend"}
             }
+            portion-per-1e9{
+                dnam{"deeltjies per miljard"}
+                one{"{0} deeltjie per miljard"}
+                other{"{0} deeltjies per miljard"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -327,6 +332,12 @@ af{
                 other{"{0} nanosekondes"}
             }
             night{
+<<<<<<< HEAD
+=======
+                dnam{"nagte"}
+                one{"{0} nag"}
+                other{"{0} nagte"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 per{"{0} per nag"}
             }
             quarter{
@@ -831,6 +842,11 @@ af{
                 one{"{0} knoop"}
                 other{"{0} knope"}
             }
+            light-speed{
+                dnam{"lig"}
+                one{"{0} lig"}
+                other{"{0} lig"}
+            }
             meter-per-second{
                 dnam{"meter per sekonde"}
                 one{"{0} meter per sekonde"}
@@ -1134,6 +1150,11 @@ af{
             permyriad{
                 dnam{"‱"}
             }
+            portion-per-1e9{
+                dnam{"deeltjies/miljard"}
+                one{"{0}deeltjie/miljard"}
+                other{"{0}deeltjies/miljard"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1231,6 +1252,12 @@ af{
             nanosecond{
                 one{"{0}ns."}
                 other{"{0}ns."}
+            }
+            night{
+                dnam{"nagte"}
+                one{"{0} nag"}
+                other{"{0} nagte"}
+                per{"{0}/nag"}
             }
             week{
                 dnam{"w."}
@@ -1365,6 +1392,13 @@ af{
                 one{"{0}em"}
                 other{"{0}em"}
             }
+<<<<<<< HEAD
+=======
+            megapixel{
+                one{"{0} MP"}
+                other{"{0} MP"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             pixel{
                 dnam{"px"}
                 one{"{0}px"}
@@ -1394,6 +1428,15 @@ af{
             }
             foot{
                 dnam{"vt."}
+<<<<<<< HEAD
+=======
+                one{"{0}vt."}
+                other{"{0}vt."}
+            }
+            furlong{
+                one{"{0}fur"}
+                other{"{0}fur"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             inch{
                 one{"{0}″"}
@@ -1591,6 +1634,11 @@ af{
             knot{
                 one{"{0}kn."}
                 other{"{0}kn."}
+            }
+            light-speed{
+                dnam{"lig"}
+                one{"{0} lig"}
+                other{"{0} lig"}
             }
             meter-per-second{
                 dnam{"m/s."}
@@ -1852,6 +1900,11 @@ af{
             permyriad{
                 dnam{"per tienduisend"}
             }
+            portion-per-1e9{
+                dnam{"deeltjies/miljard"}
+                one{"{0} deeltjie/miljard"}
+                other{"{0} deeltjies/miljard"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -2042,6 +2095,11 @@ af{
             }
             megapixel{
                 dnam{"megapieksels"}
+<<<<<<< HEAD
+=======
+                one{"{0} MP"}
+                other{"{0} MP"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             pixel{
                 dnam{"pieksels"}

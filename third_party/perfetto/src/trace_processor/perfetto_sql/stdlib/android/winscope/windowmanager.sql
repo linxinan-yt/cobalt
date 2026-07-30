@@ -27,8 +27,12 @@ CREATE PERFETTO VIEW android_windowmanager(
   focused_display_id LONG,
   -- Indicates whether snapshot was recorded without elapsed timestamp
   has_invalid_elapsed_ts BOOL
+<<<<<<< HEAD
 )
 AS
+=======
+) AS
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 SELECT
   id,
   ts,
@@ -39,7 +43,11 @@ SELECT
 FROM __intrinsic_windowmanager;
 
 -- Android WindowManager WindowContainer (from android.windowmanager data source).
+<<<<<<< HEAD
 CREATE PERFETTO VIEW android_windowmanager_windowcontainer(
+=======
+CREATE PERFETTO VIEW android_windowmanager_windowcontainer (
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- Row id
   id LONG,
   -- Snapshot id
@@ -64,8 +72,12 @@ CREATE PERFETTO VIEW android_windowmanager_windowcontainer(
   container_type STRING,
   -- Optional name override for some container types
   name_override STRING
+<<<<<<< HEAD
 )
 AS
+=======
+) AS
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 SELECT
   id,
   snapshot_id,

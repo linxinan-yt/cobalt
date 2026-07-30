@@ -32,7 +32,10 @@ use std::{
         Mutex, OnceLock,
         atomic::{AtomicBool, AtomicU64, Ordering},
     },
+<<<<<<< HEAD
     time::Duration,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 use thiserror::Error;
 
@@ -47,6 +50,7 @@ pub enum DataSourceError {
     RegisterError,
 }
 
+<<<<<<< HEAD
 /// Opaque handle used to perform operations from the OnSetup callback. Unused
 /// for now.
 pub struct OnSetupArgs {
@@ -148,6 +152,12 @@ impl OnFlushArgs {
 }
 
 type OnFlushCallback = Box<dyn FnMut(u32, &mut OnFlushArgs) + Send + Sync + 'static>;
+=======
+type OnSetupCallback = Box<dyn FnMut(u32, &[u8]) + Send + Sync + 'static>;
+type OnStartCallback = Box<dyn FnMut(u32) + Send + Sync + 'static>;
+type OnStopCallback = Box<dyn FnMut(u32) + Send + Sync + 'static>;
+type OnFlushCallback = Box<dyn FnMut(u32) + Send + Sync + 'static>;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 /// Data source buffer exhausted policy.
 #[derive(Default, PartialEq)]
@@ -198,7 +208,10 @@ struct DsCallbacks {
 pub struct DataSourceArgs {
     callbacks: DsCallbacks,
     buffer_exhausted_policy: DataSourceBufferExhaustedPolicy,
+<<<<<<< HEAD
     buffer_exhausted_policy_configurable: bool,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     will_notify_on_stop: bool,
     handles_incremental_state_clear: bool,
 }
@@ -226,6 +239,7 @@ impl DataSourceArgsBuilder {
         self
     }
 
+<<<<<<< HEAD
     /// Set buffer exhausted policy configurable flag.
     #[must_use = "Builder methods return an updated builder; use the returned value or keep chaining."]
     pub fn buffer_exhausted_policy_configurable(
@@ -236,6 +250,8 @@ impl DataSourceArgsBuilder {
         self
     }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     /// Set notify on stop flag.
     #[must_use = "Builder methods return an updated builder; use the returned value or keep chaining."]
     pub fn will_notify_on_stop(mut self, will_notify_on_stop: bool) -> Self {
@@ -243,6 +259,7 @@ impl DataSourceArgsBuilder {
         self
     }
 
+<<<<<<< HEAD
     /// Set whether this data source wants to receive incremental state clear notifications.
     ///
     /// This controls the **policy** of *whether* the tracing service should send clear
@@ -269,6 +286,9 @@ impl DataSourceArgsBuilder {
     /// - You don't use incremental state (just use the default `IncrementalState`)
     /// - Your incremental state is small or doesn't accumulate data
     /// - You want to avoid the IPC overhead of clear notifications
+=======
+    /// Set incremental state clear flag.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     #[must_use = "Builder methods return an updated builder; use the returned value or keep chaining."]
     pub fn handles_incremental_state_clear(
         mut self,
@@ -282,7 +302,11 @@ impl DataSourceArgsBuilder {
     #[must_use = "Builder methods return an updated builder; use the returned value or keep chaining."]
     pub fn on_setup<F>(mut self, cb: F) -> Self
     where
+<<<<<<< HEAD
         F: FnMut(u32, &[u8], &mut OnSetupArgs) + Send + Sync + 'static,
+=======
+        F: FnMut(u32, &[u8]) + Send + Sync + 'static,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     {
         self.args.callbacks.on_setup = Some(Box::new(cb));
         self
@@ -292,7 +316,11 @@ impl DataSourceArgsBuilder {
     #[must_use = "Builder methods return an updated builder; use the returned value or keep chaining."]
     pub fn on_start<F>(mut self, cb: F) -> Self
     where
+<<<<<<< HEAD
         F: FnMut(u32, &mut OnStartArgs) + Send + Sync + 'static,
+=======
+        F: FnMut(u32) + Send + Sync + 'static,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     {
         self.args.callbacks.on_start = Some(Box::new(cb));
         self
@@ -302,7 +330,11 @@ impl DataSourceArgsBuilder {
     #[must_use = "Builder methods return an updated builder; use the returned value or keep chaining."]
     pub fn on_stop<F>(mut self, cb: F) -> Self
     where
+<<<<<<< HEAD
         F: FnMut(u32, &mut OnStopArgs) + Send + Sync + 'static,
+=======
+        F: FnMut(u32) + Send + Sync + 'static,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     {
         self.args.callbacks.on_stop = Some(Box::new(cb));
         self
@@ -312,7 +344,11 @@ impl DataSourceArgsBuilder {
     #[must_use = "Builder methods return an updated builder; use the returned value or keep chaining."]
     pub fn on_flush<F>(mut self, cb: F) -> Self
     where
+<<<<<<< HEAD
         F: FnMut(u32, &mut OnFlushArgs) + Send + Sync + 'static,
+=======
+        F: FnMut(u32) + Send + Sync + 'static,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     {
         self.args.callbacks.on_flush = Some(Box::new(cb));
         self
@@ -364,12 +400,36 @@ unsafe extern "C" fn flush_callback_trampoline(user_arg: *mut c_void) {
     }
 }
 
+<<<<<<< HEAD
 /// Trace context base struct with passed to data source and track event trace callbacks.
 pub struct TraceContextBase {
     pub(crate) iterator: PerfettoDsImplTracerIterator,
 }
 
 impl TraceContextBase {
+=======
+/// Default incremental state struct used if not specified.
+pub struct IncrementalState {
+    /// Set to true when incremental state has been cleared and not yet acknowledged by
+    /// a call to with_incremental_state that sets it to false.
+    pub was_cleared: bool,
+}
+
+impl Default for IncrementalState {
+    fn default() -> Self {
+        Self { was_cleared: true }
+    }
+}
+
+/// Trace context struct passed to data source trace callbacks.
+pub struct TraceContext<'a, IncrT: Default = IncrementalState> {
+    pub(crate) impl_: *mut PerfettoDsImpl,
+    pub(crate) iterator: PerfettoDsImplTracerIterator,
+    pub(crate) _marker: PhantomData<&'a IncrT>,
+}
+
+impl<IncrT: Default> TraceContext<'_, IncrT> {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     /// Creates new trace packets and calls `cb` to write data to each of the packets.
     pub fn add_packet<F>(&mut self, mut cb: F)
     where
@@ -429,6 +489,7 @@ impl TraceContextBase {
         };
     }
 
+<<<<<<< HEAD
     /// Returns the index of the current instance.
     pub fn instance_index(&self) -> u32 {
         self.iterator.inst_id
@@ -574,12 +635,20 @@ pub struct TraceContext<'a, IncrT: Default + Clear = IncrementalState> {
 }
 
 impl<IncrT: Default + Clear> TraceContext<'_, IncrT> {
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     /// Calls `cb` with the incremental state for the instance.
     pub fn with_incremental_state<F>(&mut self, mut cb: F)
     where
         F: FnMut(&mut Self, &mut IncrT),
     {
+<<<<<<< HEAD
         assert!(!self.impl_.is_null());
+=======
+        if self.impl_.is_null() {
+            panic!("no impl");
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         // SAFETY:
         //
         // - `self.impl_` must be non-null.
@@ -590,8 +659,13 @@ impl<IncrT: Default + Clear> TraceContext<'_, IncrT> {
         let ptr = unsafe {
             PerfettoDsImplGetIncrementalState(
                 self.impl_,
+<<<<<<< HEAD
                 self.base.iterator.tracer,
                 self.base.iterator.inst_id,
+=======
+                self.iterator.tracer,
+                self.iterator.inst_id,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             )
         };
         if ptr.is_null() {
@@ -604,6 +678,7 @@ impl<IncrT: Default + Clear> TraceContext<'_, IncrT> {
         let state: &mut IncrT = unsafe { &mut *(ptr as *mut IncrT) };
         cb(self, state);
     }
+<<<<<<< HEAD
 }
 
 impl<IncrT: Default + Clear> std::ops::Deref for TraceContext<'_, IncrT> {
@@ -616,11 +691,21 @@ impl<IncrT: Default + Clear> std::ops::Deref for TraceContext<'_, IncrT> {
 impl<IncrT: Default + Clear> std::ops::DerefMut for TraceContext<'_, IncrT> {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.base
+=======
+
+    /// Returns the index of the current instance.
+    pub fn instance_index(&self) -> u32 {
+        self.iterator.inst_id
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }
 
 /// Data source struct.
+<<<<<<< HEAD
 pub struct DataSource<'a: 'static, IncrT: Default + Clear = IncrementalState> {
+=======
+pub struct DataSource<'a: 'static, IncrT: Default = IncrementalState> {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     enabled: *mut bool,
     impl_: *mut PerfettoDsImpl,
     callbacks: Mutex<Option<Box<DsCallbacks>>>,
@@ -633,7 +718,11 @@ unsafe extern "C" fn on_setup_callback_trampoline(
     ds_config: *mut c_void,
     ds_config_size: usize,
     user_arg: *mut c_void,
+<<<<<<< HEAD
     args: *mut PerfettoDsOnSetupArgs,
+=======
+    _args: *mut PerfettoDsOnSetupArgs,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 ) -> *mut c_void {
     let result = std::panic::catch_unwind(|| {
         // SAFETY: `user_arg` must be a pointer to a boxed DsCallbacks struct.
@@ -644,16 +733,23 @@ unsafe extern "C" fn on_setup_callback_trampoline(
             // - `ds_config_size` bytes starting at `ptr` must be valid for **reads**.
             let config =
                 unsafe { std::slice::from_raw_parts(ds_config as *const u8, ds_config_size) };
+<<<<<<< HEAD
             let mut on_setup_args = OnSetupArgs { _args: args };
             f(inst_id, config, &mut on_setup_args);
+=======
+            f(inst_id, config);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     });
     if let Err(err) = result {
         eprintln!("Fatal panic: {:?}", err);
         std::process::abort();
     }
+<<<<<<< HEAD
     // Instance contexts are not supported as preferably handled by the
     // client in Rust code.
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     ptr::null_mut()
 }
 
@@ -662,14 +758,22 @@ unsafe extern "C" fn on_start_callback_trampoline(
     inst_id: PerfettoDsInstanceIndex,
     user_arg: *mut c_void,
     _inst_ctx: *mut c_void,
+<<<<<<< HEAD
     args: *mut PerfettoDsOnStartArgs,
+=======
+    _args: *mut PerfettoDsOnStartArgs,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 ) {
     let result = std::panic::catch_unwind(|| {
         // SAFETY: `user_arg` must be a pointer to a boxed DsCallbacks struct.
         let callbacks: &mut DsCallbacks = unsafe { &mut *(user_arg as *mut _) };
         if let Some(f) = &mut callbacks.on_start {
+<<<<<<< HEAD
             let mut on_start_args = OnStartArgs { _args: args };
             f(inst_id, &mut on_start_args);
+=======
+            f(inst_id);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     });
     if let Err(err) = result {
@@ -683,14 +787,22 @@ unsafe extern "C" fn on_stop_callback_trampoline(
     inst_id: PerfettoDsInstanceIndex,
     user_arg: *mut c_void,
     _inst_ctx: *mut c_void,
+<<<<<<< HEAD
     args: *mut PerfettoDsOnStopArgs,
+=======
+    _args: *mut PerfettoDsOnStopArgs,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 ) {
     let result = std::panic::catch_unwind(|| {
         // SAFETY: `user_arg` must be a pointer to a boxed DsCallbacks struct.
         let callbacks: &mut DsCallbacks = unsafe { &mut *(user_arg as *mut _) };
         if let Some(f) = &mut callbacks.on_stop {
+<<<<<<< HEAD
             let mut on_stop_args = OnStopArgs { args };
             f(inst_id, &mut on_stop_args);
+=======
+            f(inst_id);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     });
     if let Err(err) = result {
@@ -704,14 +816,22 @@ unsafe extern "C" fn on_flush_callback_trampoline(
     inst_id: PerfettoDsInstanceIndex,
     user_arg: *mut c_void,
     _inst_ctx: *mut c_void,
+<<<<<<< HEAD
     args: *mut PerfettoDsOnFlushArgs,
+=======
+    _args: *mut PerfettoDsOnFlushArgs,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 ) {
     let result = std::panic::catch_unwind(|| {
         // SAFETY: `user_arg` must be a pointer to a boxed DsCallbacks struct.
         let callbacks: &mut DsCallbacks = unsafe { &mut *(user_arg as *mut _) };
         if let Some(f) = &mut callbacks.on_flush {
+<<<<<<< HEAD
             let mut on_flush_args = OnFlushArgs { args };
             f(inst_id, &mut on_flush_args);
+=======
+            f(inst_id);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     });
     if let Err(err) = result {
@@ -720,7 +840,11 @@ unsafe extern "C" fn on_flush_callback_trampoline(
     }
 }
 
+<<<<<<< HEAD
 unsafe extern "C" fn on_create_incr_trampoline<IncrT: Default + Clear>(
+=======
+unsafe extern "C" fn on_create_incr_trampoline<IncrT: Default>(
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     _ds: *mut PerfettoDsImpl,
     _inst_id: PerfettoDsInstanceIndex,
     _tracer: *mut PerfettoDsTracerImpl,
@@ -730,13 +854,18 @@ unsafe extern "C" fn on_create_incr_trampoline<IncrT: Default + Clear>(
     Box::into_raw(boxed) as *mut c_void
 }
 
+<<<<<<< HEAD
 unsafe extern "C" fn on_delete_incr_trampoline<IncrT: Default + Clear>(data: *mut c_void) {
+=======
+unsafe extern "C" fn on_delete_incr_trampoline<IncrT: Default>(data: *mut c_void) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     // Reclaims the Box and calls drop.
     //
     // SAFETY: `data` must be a pointer to a boxed IncrT struct.
     unsafe { drop(Box::from_raw(data as *mut IncrT)) };
 }
 
+<<<<<<< HEAD
 unsafe extern "C" fn on_clear_incr_trampoline<IncrT: Default + Clear>(
     incremental_state: *mut c_void,
     _user_arg: *mut c_void,
@@ -757,6 +886,9 @@ unsafe extern "C" fn on_clear_incr_trampoline<IncrT: Default + Clear>(
 }
 
 impl<'a: 'static, IncrT: Default + Clear> DataSource<'a, IncrT> {
+=======
+impl<'a: 'static, IncrT: Default> DataSource<'a, IncrT> {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     /// Create new data source type with a non-default `IncrT` type.
     pub fn new_with_incremental_state_type() -> Self {
         Self::default()
@@ -797,6 +929,7 @@ impl<'a: 'static, IncrT: Default + Clear> DataSource<'a, IncrT> {
             PerfettoDsSetOnFlushCallback(ds_impl, Some(on_flush_callback_trampoline));
             PerfettoDsSetOnCreateIncr(ds_impl, Some(on_create_incr_trampoline::<IncrT>));
             PerfettoDsSetOnDeleteIncr(ds_impl, Some(on_delete_incr_trampoline::<IncrT>));
+<<<<<<< HEAD
             PerfettoDsSetOnClearIncr(ds_impl, Some(on_clear_incr_trampoline::<IncrT>));
             PerfettoDsSetCbUserArg(ds_impl, user_arg);
             PerfettoDsSetBufferExhaustedPolicy(
@@ -807,6 +940,15 @@ impl<'a: 'static, IncrT: Default + Clear> DataSource<'a, IncrT> {
                 ds_impl,
                 args.buffer_exhausted_policy_configurable,
             );
+=======
+            PerfettoDsSetCbUserArg(ds_impl, user_arg);
+            if args.buffer_exhausted_policy != DataSourceBufferExhaustedPolicy::Drop {
+                PerfettoDsSetBufferExhaustedPolicy(
+                    ds_impl,
+                    args.buffer_exhausted_policy.to_ds_policy(),
+                );
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             let success = PerfettoDsImplRegister(
                 ds_impl,
                 &raw mut self.enabled,
@@ -843,6 +985,7 @@ impl<'a: 'static, IncrT: Default + Clear> DataSource<'a, IncrT> {
         if crate::__unlikely!(self.is_enabled()) {
             assert!(!self.impl_.is_null());
             let mut ctx = TraceContext::<'_, IncrT> {
+<<<<<<< HEAD
                 base: TraceContextBase {
                     // SAFETY: `self.impl_` must be a pointer to a registered data source. Ie.
                     // non-null and passed to a successful PerfettoDsImplRegister() call. Guaranteed
@@ -855,6 +998,18 @@ impl<'a: 'static, IncrT: Default + Clear> DataSource<'a, IncrT> {
             };
             loop {
                 if ctx.base.iterator.tracer.is_null() {
+=======
+                impl_: self.impl_,
+                // SAFETY: `self.impl_` must be a pointer to a registered data source. Ie.
+                // non-null and passed to a successful PerfettoDsImplRegister() call. Guaranteed
+                // to be the case as is_enabled() will always return false otherwise and this
+                // cannot be reached.
+                iterator: unsafe { PerfettoDsImplTraceIterateBegin(self.impl_) },
+                _marker: PhantomData,
+            };
+            loop {
+                if ctx.iterator.tracer.is_null() {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     break;
                 }
 
@@ -863,7 +1018,11 @@ impl<'a: 'static, IncrT: Default + Clear> DataSource<'a, IncrT> {
                 // SAFETY: `self.impl_` must be a pointer to a registered data source. Guaranteed
                 // to be the case as is_enabled() will always return false otherwise and this
                 // cannot be reached.
+<<<<<<< HEAD
                 unsafe { PerfettoDsImplTraceIterateNext(self.impl_, &raw mut ctx.base.iterator) };
+=======
+                unsafe { PerfettoDsImplTraceIterateNext(self.impl_, &raw mut ctx.iterator) };
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
     }
@@ -877,7 +1036,11 @@ impl<'a: 'static> DataSource<'a, IncrementalState> {
     }
 }
 
+<<<<<<< HEAD
 impl<'a: 'static, IncrT: Default + Clear> Default for DataSource<'a, IncrT> {
+=======
+impl<'a: 'static, IncrT: Default> Default for DataSource<'a, IncrT> {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     fn default() -> Self {
         Self {
             // `perfetto_atomic_false` is a pointer to a primitive with layout that
@@ -891,10 +1054,17 @@ impl<'a: 'static, IncrT: Default + Clear> Default for DataSource<'a, IncrT> {
 }
 
 /// SAFETY: Internal handle must be thread-safe.
+<<<<<<< HEAD
 unsafe impl<'a: 'static, IncrT: Default + Clear> Send for DataSource<'a, IncrT> {}
 
 /// SAFETY: Internal handle must be thread-safe.
 unsafe impl<'a: 'static, IncrT: Default + Clear> Sync for DataSource<'a, IncrT> {}
+=======
+unsafe impl<'a: 'static, IncrT: Default> Send for DataSource<'a, IncrT> {}
+
+/// SAFETY: Internal handle must be thread-safe.
+unsafe impl<'a: 'static, IncrT: Default> Sync for DataSource<'a, IncrT> {}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 #[cfg(test)]
 mod tests {
@@ -1024,10 +1194,18 @@ mod tests {
                         for test_event_field in PbDecoder::new(data) {
                             const STR_ID: u32 = TestEventFieldNumber::Str as u32;
 
+<<<<<<< HEAD
                             if let (STR_ID, PbDecoderField::Delimited(value)) =
                                 test_event_field.unwrap()
                             {
                                 test_str = String::from_utf8(value.to_vec()).unwrap();
+=======
+                            match test_event_field.unwrap() {
+                                (STR_ID, PbDecoderField::Delimited(value)) => {
+                                    test_str = String::from_utf8(value.to_vec()).unwrap();
+                                }
+                                _ => {}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                             }
                         }
                     }
@@ -1037,6 +1215,7 @@ mod tests {
         assert_eq!(&test_str, &super_long_test_string);
         Ok(())
     }
+<<<<<<< HEAD
 
     #[test]
     fn timestamp() {
@@ -1049,4 +1228,6 @@ mod tests {
         );
         assert!(ts.timestamp() > 0);
     }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }

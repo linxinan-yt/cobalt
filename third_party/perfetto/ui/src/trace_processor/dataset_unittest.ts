@@ -31,9 +31,13 @@ test('get query for simple dataset', () => {
     schema: {id: NUM},
   });
 
+<<<<<<< HEAD
   expect(dataset.query()).toEqual(`SELECT
   id
 FROM (slice)`);
+=======
+  expect(dataset.query()).toEqual('SELECT id FROM (slice)');
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 });
 
 test("get query for simple dataset with 'eq' filter", () => {
@@ -46,10 +50,14 @@ test("get query for simple dataset with 'eq' filter", () => {
     },
   });
 
+<<<<<<< HEAD
   expect(dataset.query()).toEqual(`SELECT
   id
 FROM (slice)
 WHERE id = 123`);
+=======
+  expect(dataset.query()).toEqual('SELECT id FROM (slice) WHERE id = 123');
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 });
 
 test("get query for simple dataset with an 'in' filter", () => {
@@ -62,6 +70,7 @@ test("get query for simple dataset with an 'in' filter", () => {
     },
   });
 
+<<<<<<< HEAD
   expect(dataset.query()).toEqual(`SELECT
   id
 FROM (slice)
@@ -367,6 +376,11 @@ WHERE id IN (123, 456)`);
   thread.name AS thread_name
 FROM (slice) JOIN thread AS thread USING (utid)
 WHERE id IN (123, 456)`);
+=======
+  expect(dataset.query()).toEqual(
+    'SELECT id FROM (slice) WHERE id IN (123,456)',
+  );
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 });
 
 test('get query for union dataset', () => {
@@ -389,11 +403,17 @@ test('get query for union dataset', () => {
     }),
   ]);
 
+<<<<<<< HEAD
   // Query automatically optimizes the union into a single source with IN filter
   expect(dataset.query()).toEqual(`SELECT
   id
 FROM (slice)
 WHERE id IN (123, 456)`);
+=======
+  expect(dataset.query()).toEqual(
+    'SELECT id FROM (slice) WHERE id = 123\nunion all\nSELECT id FROM (slice) WHERE id = 456',
+  );
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 });
 
 test('union dataset batches large numbers of unions', () => {

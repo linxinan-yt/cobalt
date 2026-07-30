@@ -40,6 +40,7 @@ import {TagInput} from './tag_input';
 import {TextInput} from './text_input';
 import {Tooltip} from './tooltip';
 import {z} from 'zod';
+<<<<<<< HEAD
 import type {Rect2D, Size2D} from '../base/geom';
 import {
   VirtualOverlayCanvas,
@@ -51,6 +52,13 @@ import {hash} from '../base/hash';
 import {escapeRegex, parseUserFilterRegex} from './flamegraph_regex';
 import type {MithrilEvent} from '../base/mithril_utils';
 import {Icons} from '../base/semantic_icons';
+=======
+import {Rect2D, Size2D} from '../base/geom';
+import {VirtualOverlayCanvas} from './virtual_overlay_canvas';
+import {MenuItem, MenuItemAttrs, PopupMenu} from './menu';
+import {Color, HSLColor} from '../base/color';
+import {hash} from '../base/hash';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 const LABEL_FONT_STYLE = '12px Roboto';
 const NODE_HEIGHT = 20;
@@ -154,6 +162,11 @@ export interface FlamegraphOptionalMarker {
   isVisible: (properties: ReadonlyMap<string, string>) => boolean;
 }
 
+export interface FlamegraphOptionalMarker {
+  readonly name: string;
+  isVisible: (properties: ReadonlyMap<string, string>) => boolean;
+}
+
 export type FlamegraphPropertyDefinition = {
   displayName: string;
   value: string;
@@ -176,7 +189,23 @@ export interface FlamegraphNode {
 }
 
 export interface FlamegraphQueryData {
+<<<<<<< HEAD
   readonly nodes: ReadonlyArray<FlamegraphNode>;
+=======
+  readonly nodes: ReadonlyArray<{
+    readonly id: number;
+    readonly parentId: number;
+    readonly depth: number;
+    readonly name: string;
+    readonly selfValue: number;
+    readonly cumulativeValue: number;
+    readonly parentCumulativeValue?: number;
+    readonly properties: ReadonlyMap<string, FlamegraphPropertyDefinition>;
+    readonly marker?: string;
+    readonly xStart: number;
+    readonly xEnd: number;
+  }>;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   readonly unfilteredCumulativeValue: number;
   readonly allRootsCumulativeValue: number;
   readonly minDepth: number;
@@ -707,6 +736,7 @@ export class Flamegraph implements m.ClassComponent<FlamegraphAttrs> {
               this.zoomRegion = renderNode?.source;
             },
           },
+<<<<<<< HEAD
           (() => {
             const popupVisible =
               this.isPopupAnchorVisible() &&
@@ -731,6 +761,29 @@ export class Flamegraph implements m.ClassComponent<FlamegraphAttrs> {
               this.renderTooltip(),
             );
           })(),
+=======
+          m(
+            Popup,
+            {
+              trigger: m('.popup-anchor', {
+                style: {
+                  left: this.tooltipPos?.x + 'px',
+                  top: this.tooltipPos?.y + 'px',
+                },
+              }),
+              // We have a wide set of buttons that would overflow given the
+              // normal width constraints of the popup.
+              fitContent: true,
+              position: PopupPosition.Right,
+              isOpen:
+                this.tooltipPos?.state === 'HOVER' ||
+                this.tooltipPos?.state === 'CLICK',
+              className: 'pf-flamegraph-tooltip-popup',
+              offset: NODE_HEIGHT,
+            },
+            this.renderTooltip(),
+          ),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         ),
       ),
     );
@@ -863,8 +916,11 @@ export class Flamegraph implements m.ClassComponent<FlamegraphAttrs> {
         name = nodes[source.queryIdx].name;
         colorScheme = getFlamegraphColorScheme(name, state === 'PARTIAL');
       }
+<<<<<<< HEAD
       const highlighted =
         source.kind === 'NODE' && this.highlightRegex?.test(name) === true;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       const bgColor = hover ? colorScheme.variant : colorScheme.base;
       const textColor = hover ? colorScheme.textVariant : colorScheme.textBase;
       ctx.fillStyle = bgColor.cssString;
@@ -1274,11 +1330,15 @@ export class Flamegraph implements m.ClassComponent<FlamegraphAttrs> {
       // Show marker at the top of the tooltip
       marker &&
         m('.tooltip-text-line', m('.tooltip-marker-text', `■ ${marker}`)),
+<<<<<<< HEAD
       m(
         '.tooltip-text-line',
         m('.tooltip-bold-text', `${nameLabel}:`),
         m('.tooltip-text', name),
       ),
+=======
+      m('.tooltip-bold-text', name),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       m(
         '.tooltip-text-line',
         m('.tooltip-bold-text', 'Cumulative:'),
@@ -2090,6 +2150,7 @@ function addFilter(
   };
 }
 
+<<<<<<< HEAD
 // Split text into individual filters by finding filter type prefixes
 // e.g. 'Show Stack: main Hide Frame: alloc' -> ['Show Stack: main', 'Hide Frame: alloc']
 // e.g. 'SS: foo HF: bar' -> ['SS: foo', 'HF: bar']
@@ -2151,12 +2212,15 @@ function parseFilter(
   return match ? {type: match.value, value} : {type: defaultType, value: text};
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 // Unfortunately, widgets *cannot* depend on components so we cannot use the
 // colorizer code. Since we need very little of that code anyway, just inline
 // what we need here.
 const PERCEIVED_BRIGHTNESS_LIMIT = 180;
 const WHITE_COLOR = new HSLColor([0, 0, 100]);
 const BLACK_COLOR = new HSLColor([0, 0, 0]);
+<<<<<<< HEAD
 // Lightness 85 ensures even darken(10) stays above brightness threshold for black text
 const GRAY_VARIANT_COLOR = new HSLColor([0, 0, 85]);
 
@@ -2209,11 +2273,44 @@ function getFlamegraphColorScheme(name: string, greyed: boolean): ColorScheme {
     return scheme;
   }
 
+=======
+const GRAY_VARIANT_COLOR = new HSLColor([0, 0, 62]);
+
+function makeColorScheme(base: Color, variant: Color) {
+  return {
+    base,
+    variant,
+    textBase:
+      base.perceivedBrightness >= PERCEIVED_BRIGHTNESS_LIMIT
+        ? BLACK_COLOR
+        : WHITE_COLOR,
+    textVariant:
+      variant.perceivedBrightness >= PERCEIVED_BRIGHTNESS_LIMIT
+        ? BLACK_COLOR
+        : WHITE_COLOR,
+  };
+}
+
+function getFlamegraphColorScheme(name: string, greyed: boolean) {
+  if (greyed) {
+    return makeColorScheme(GRAY_VARIANT_COLOR, GRAY_VARIANT_COLOR.darken(5));
+  }
+  if (name === 'unknown' || name === 'root') {
+    return makeColorScheme(
+      GRAY_VARIANT_COLOR.darken(10),
+      GRAY_VARIANT_COLOR.darken(15),
+    );
+  }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   // Hash the name to get a predictable hue, then create color with fixed
   // saturation and lightness values to match what pprof web UI does.
   const hue = hash(name, 360);
   const base = new HSLColor({h: hue, s: 46, l: 80});
+<<<<<<< HEAD
   scheme = makeColorScheme(base, base.darken(15).saturate(15));
   colorSchemeCache.set(name, scheme);
   return scheme;
+=======
+  return makeColorScheme(base, base.darken(15).saturate(15));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }

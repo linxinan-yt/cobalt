@@ -334,7 +334,10 @@ class NumberRangeFormatterTest : public IntlTestWithFieldPosition {
     void test21683_StateLeak();
     void testCreateLNRFFromNumberingSystemInSkeleton();
     void test22288_DifferentStartEndSettings();
+<<<<<<< HEAD
     void test23110_PercentApproximately();
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     void runIndexedTest(int32_t index, UBool exec, const char*& name, char* par = nullptr) override;
 

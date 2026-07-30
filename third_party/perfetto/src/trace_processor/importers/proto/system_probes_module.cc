@@ -67,8 +67,12 @@ ModuleResult SystemProbesModule::TokenizePacket(
 void SystemProbesModule::ParseField(const ParseFieldArgs& args) {
   switch (args.field.id()) {
     case TracePacket::kProcessTreeFieldNumber:
+<<<<<<< HEAD
       parser_.ParseProcessTree(args.ts,
                                args.field.Cast<TracePacket::kProcessTree>());
+=======
+      parser_.ParseProcessTree(ts, decoder.process_tree());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       return;
     case TracePacket::kProcessStatsFieldNumber:
       parser_.ParseProcessStats(args.ts,

@@ -24,12 +24,22 @@ JOIN _wattson_device AS device
 
 -- Table that is empty if the actual cpuidle counters do not exist on this trace
 CREATE PERFETTO VIEW _wattson_cpuidle_counters_exist AS
+<<<<<<< HEAD
 SELECT id FROM cpu_counter_track WHERE name = 'cpuidle' LIMIT 1;
+=======
+SELECT
+  id
+FROM cpu_counter_track
+WHERE
+  name = 'cpuidle'
+LIMIT 1;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 -- Create table that uses idle counters if present, otherwise extrapolates idle
 -- states in a simplified way (only 2 states, active or idle) from the swapper
 -- thread.
 CREATE PERFETTO TABLE _unified_idle_state AS
+<<<<<<< HEAD
 WITH
   -- If _wattson_cpuidle_counters_exist has rows, this CTE returns empty,
   -- effectively disabling the 'swapper_as_idle' branch efficiently.
@@ -106,6 +116,86 @@ CREATE PERFETTO TABLE _adjusted_deep_idle AS
 -- Adjusted ts if applicable, which makes the current active state longer if
 -- it is coming from an idle exit.
 WITH
+=======
+WITH
+  idle_prev AS (
+    SELECT
+      ts,
+      lag(ts, 1, trace_start()) OVER (PARTITION BY cpu ORDER BY ts) AS prev_ts,
+      value AS idle,
+      cli.value - cli.delta_value AS idle_prev,
+      cct.cpu
+    -- Same as cpu_idle_counters, but extracts some additional info that isn't
+    -- nominally present in cpu_idle_counters, such that the already calculated
+    -- lag values are reused instead of recomputed
+    FROM counter_leading_intervals!((
+      SELECT c.*
+      FROM counter c
+      JOIN cpu_counter_track cct ON cct.id = c.track_id AND cct.name = 'cpuidle'
+    )) AS cli
+    JOIN cpu_counter_track AS cct
+      ON cli.track_id = cct.id
+  ),
+  swapper_as_idle AS (
+    SELECT
+      ts,
+      cpu,
+      iif(is_idle, (
+        SELECT
+          idle
+        FROM _deepest_idle
+      ), 4294967295) AS idle
+    FROM sched
+    LEFT JOIN thread
+      USING (utid)
+    WHERE
+      NOT EXISTS(
+        SELECT
+          1
+        FROM _wattson_cpuidle_counters_exist
+      )
+  ),
+  idle_transitions AS (
+    SELECT
+      ts,
+      cpu,
+      idle,
+      lag(idle, 1, idle) OVER (PARTITION BY cpu ORDER BY ts) != idle AS transitioned
+    FROM swapper_as_idle
+  ),
+  continuous_idle_slices AS (
+    SELECT
+      ts,
+      cpu,
+      idle
+    FROM idle_transitions
+    WHERE
+      transitioned
+  )
+SELECT
+  ts,
+  prev_ts,
+  idle,
+  idle_prev,
+  cpu
+FROM idle_prev
+UNION ALL
+SELECT
+  ts,
+  lag(ts, 1, trace_start()) OVER (PARTITION BY cpu ORDER BY ts) AS prev_ts,
+  idle,
+  lag(idle) OVER (PARTITION BY cpu ORDER BY ts) AS idle_prev,
+  cpu
+FROM continuous_idle_slices;
+
+-- Adjust duration of active portion to be slightly longer to account for
+-- overhead cost of transitioning out of deep idle. This is done because the
+-- device is active and consumes power for longer than the logs actually report.
+CREATE PERFETTO TABLE _adjusted_deep_idle AS
+-- Adjusted ts if applicable, which makes the current active state longer if
+-- it is coming from an idle exit.
+WITH
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   idle_mod AS (
     SELECT
       iif(
@@ -118,7 +208,12 @@ WITH
       cpu,
       idle
     FROM _unified_idle_state
+<<<<<<< HEAD
     JOIN _filtered_deep_idle_offsets USING (cpu)
+=======
+    JOIN _filtered_deep_idle_offsets
+      USING (cpu)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   ),
   -- Use EITHER idle states as is OR device specific override of idle states
   _cpu_idle AS (

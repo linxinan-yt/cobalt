@@ -50,9 +50,15 @@ void Factor::divideBy(const Factor& rhs) {
     offset = std::max(rhs.offset, offset);
 }
 
+<<<<<<< HEAD
 void Factor::divideBy(const uint64_t constant) { factorDen *= constant; }
 
 void Factor::power(int32_t power) {
+=======
+void U_I18N_API Factor::divideBy(const uint64_t constant) { factorDen *= constant; }
+
+void U_I18N_API Factor::power(int32_t power) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     // multiply all the constant by the power.
     for (int i = 0; i < CONSTANTS_COUNT; i++) {
         constantExponents[i] *= power;
@@ -284,8 +290,13 @@ UBool checkSimpleUnit(const MeasureUnitImpl &unit, UErrorCode &status) {
 // SingleUnitImpl's simpleUnitID to get the corresponding ConversionRateInfo;
 // from that we get the specialMappingName (which may be empty if the simple unit
 // converts to base using factor + offset instelad of a special mapping).
+<<<<<<< HEAD
 StringPiece getSpecialMappingName(const MeasureUnitImpl& simpleUnit, const ConversionRates& ratesInfo,
                                   UErrorCode& status) {
+=======
+CharString getSpecialMappingName(const MeasureUnitImpl &simpleUnit, const ConversionRates &ratesInfo,
+                          UErrorCode &status) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     if (!checkSimpleUnit(simpleUnit, status)) {
         return {};
     }
@@ -299,7 +310,13 @@ StringPiece getSpecialMappingName(const MeasureUnitImpl& simpleUnit, const Conve
         status = U_INTERNAL_PROGRAM_ERROR;
         return {};
     }
+<<<<<<< HEAD
     return conversionUnit->specialMappingName.data();
+=======
+    CharString result;
+    result.copyFrom(conversionUnit->specialMappingName, status);
+    return result;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 /**
@@ -310,6 +327,7 @@ StringPiece getSpecialMappingName(const MeasureUnitImpl& simpleUnit, const Conve
 void loadConversionRate(ConversionRate &conversionRate, const MeasureUnitImpl &source,
                         const MeasureUnitImpl &target, Convertibility unitsState,
                         const ConversionRates &ratesInfo, UErrorCode &status) {
+<<<<<<< HEAD
     StringPiece specialSource = getSpecialMappingName(source, ratesInfo, status);
     StringPiece specialTarget = getSpecialMappingName(target, ratesInfo, status);
 
@@ -377,6 +395,67 @@ void loadConversionRate(ConversionRate &conversionRate, const MeasureUnitImpl &s
         conversionRate.factorNum = finalFactor.factorNum;
         conversionRate.factorDen = finalFactor.factorDen;
     }
+=======
+
+    conversionRate.specialSource = getSpecialMappingName(source, ratesInfo, status);
+    conversionRate.specialTarget = getSpecialMappingName(target, ratesInfo, status);
+    
+    if (conversionRate.specialSource.isEmpty() && conversionRate.specialTarget.isEmpty()) {
+        // Represents the conversion factor from the source to the target.
+        Factor finalFactor;
+
+        // Represents the conversion factor from the source to the base unit that specified in the conversion
+        // data which is considered as the root of the source and the target.
+        Factor sourceToBase = loadCompoundFactor(source, ratesInfo, status);
+        Factor targetToBase = loadCompoundFactor(target, ratesInfo, status);
+
+        // Merger Factors
+        finalFactor.multiplyBy(sourceToBase);
+        if (unitsState == Convertibility::CONVERTIBLE) {
+            finalFactor.divideBy(targetToBase);
+        } else if (unitsState == Convertibility::RECIPROCAL) {
+            finalFactor.multiplyBy(targetToBase);
+        } else {
+            status = UErrorCode::U_ARGUMENT_TYPE_MISMATCH;
+            return;
+        }
+
+        finalFactor.substituteConstants();
+
+        conversionRate.factorNum = finalFactor.factorNum;
+        conversionRate.factorDen = finalFactor.factorDen;
+
+        // This code corresponds to ICU4J's ConversionRates.getOffset().
+        // In case of simple units (such as: celsius or fahrenheit), offsets are considered.
+        if (checkSimpleUnit(source, status) && checkSimpleUnit(target, status)) {
+            conversionRate.sourceOffset =
+                sourceToBase.offset * sourceToBase.factorDen / sourceToBase.factorNum;
+            conversionRate.targetOffset =
+                targetToBase.offset * targetToBase.factorDen / targetToBase.factorNum;
+        }
+        // TODO(icu-units#127): should we consider failure if there's an offset for
+        // a not-simple-unit? What about kilokelvin / kilocelsius?
+
+        conversionRate.reciprocal = unitsState == Convertibility::RECIPROCAL;
+    } else if (conversionRate.specialSource.isEmpty() || conversionRate.specialTarget.isEmpty()) {
+        // Still need to set factorNum/factorDen for either source to base or base to target
+        if (unitsState != Convertibility::CONVERTIBLE) {
+            status = UErrorCode::U_ARGUMENT_TYPE_MISMATCH;
+            return;
+        }
+        Factor finalFactor;
+        if (conversionRate.specialSource.isEmpty()) {
+            // factorNum/factorDen is for source to base only
+            finalFactor = loadCompoundFactor(source, ratesInfo, status);
+        } else {
+            // factorNum/factorDen is for base to target only
+            finalFactor = loadCompoundFactor(target, ratesInfo, status);
+        }
+        finalFactor.substituteConstants();
+        conversionRate.factorNum = finalFactor.factorNum;
+        conversionRate.factorDen = finalFactor.factorDen;
+    }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 struct UnitIndexAndDimension : UMemory {
@@ -633,6 +712,7 @@ int32_t UnitsConverter::compareTwoUnits(const MeasureUnitImpl &firstUnit,
         return 0;
     }
 
+<<<<<<< HEAD
     StringPiece firstSpecial = getSpecialMappingName(firstUnit, ratesInfo, status);
     StringPiece secondSpecial = getSpecialMappingName(secondUnit, ratesInfo, status);
     if (!firstSpecial.empty() || !secondSpecial.empty()) {
@@ -641,11 +721,27 @@ int32_t UnitsConverter::compareTwoUnits(const MeasureUnitImpl &firstUnit,
             return -1;
         }
         if (secondSpecial.empty()) {
+=======
+    CharString firstSpecial = getSpecialMappingName(firstUnit, ratesInfo, status);
+    CharString secondSpecial = getSpecialMappingName(secondUnit, ratesInfo, status);
+    if (!firstSpecial.isEmpty() || !secondSpecial.isEmpty()) {
+        if (firstSpecial.isEmpty()) {
+            // non-specials come first
+            return -1;
+        }
+        if (secondSpecial.isEmpty()) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             // non-specials come first
             return 1;
         }
         // both are specials, compare lexicographically
+<<<<<<< HEAD
         return firstSpecial.compare(secondSpecial);
+=======
+        StringPiece firstSpecialPiece = firstSpecial.toStringPiece();
+        StringPiece secondSpecialPiece = secondSpecial.toStringPiece();
+        return firstSpecialPiece.compare(secondSpecialPiece);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 
     // Represents the conversion factor from the firstUnit to the base
@@ -762,7 +858,11 @@ double UnitsConverter::convert(double inputValue) const {
         if (!conversionRate_.specialSource.isEmpty()) {
             // We  have a special mapping from source to base (not using factor, offset).
             // Currently the only supported mapping is a scale-based mapping for beaufort.
+<<<<<<< HEAD
             base = uprv_strcmp(conversionRate_.specialSource.data(), "beaufort") == 0 ?
+=======
+            base = (conversionRate_.specialSource == StringPiece("beaufort"))?
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 scaleToBase(inputValue, minMetersPerSecForBeaufort, maxBeaufort): inputValue;
         } else {
             // Standard mapping (using factor) from source to base.
@@ -772,7 +872,11 @@ double UnitsConverter::convert(double inputValue) const {
         if (!conversionRate_.specialTarget.isEmpty()) {
             // We  have a special mapping from base to target (not using factor, offset).
             // Currently the only supported mapping is a scale-based mapping for beaufort.
+<<<<<<< HEAD
             result = uprv_strcmp(conversionRate_.specialTarget.data(), "beaufort") == 0 ?
+=======
+            result = (conversionRate_.specialTarget == StringPiece("beaufort"))?
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 baseToScale(base, minMetersPerSecForBeaufort, maxBeaufort): base;
         } else {
             // Standard mapping (using factor) from base to target.
@@ -805,7 +909,11 @@ double UnitsConverter::convertInverse(double inputValue) const {
         if (!conversionRate_.specialTarget.isEmpty()) {
             // We  have a special mapping from target to base (not using factor).
             // Currently the only supported mapping is a scale-based mapping for beaufort.
+<<<<<<< HEAD
             base = uprv_strcmp(conversionRate_.specialTarget.data(), "beaufort") == 0 ?
+=======
+            base = (conversionRate_.specialTarget == StringPiece("beaufort"))?
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 scaleToBase(inputValue, minMetersPerSecForBeaufort, maxBeaufort): inputValue;
         } else {
             // Standard mapping (using factor) from target to base.
@@ -815,7 +923,11 @@ double UnitsConverter::convertInverse(double inputValue) const {
         if (!conversionRate_.specialSource.isEmpty()) {
             // We  have a special mapping from base to source (not using factor).
             // Currently the only supported mapping is a scale-based mapping for beaufort.
+<<<<<<< HEAD
             result = uprv_strcmp(conversionRate_.specialSource.data(), "beaufort") == 0 ?
+=======
+            result = (conversionRate_.specialSource == StringPiece("beaufort"))?
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 baseToScale(base, minMetersPerSecForBeaufort, maxBeaufort): base;
         } else {
             // Standard mapping (using factor) from base to source.

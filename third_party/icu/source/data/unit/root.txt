@@ -2,7 +2,11 @@
 // License & terms of use: http://www.unicode.org/copyright.html
 // Generated using tools/cldr/cldr-to-icu/
 root{
+<<<<<<< HEAD
     Version{"48"}
+=======
+    Version{"47"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     durationUnits{
         hm{"h:mm"}
         hms{"h:mm:ss"}
@@ -208,6 +212,10 @@ root{
             permyriad{
                 dnam{"‱"}
                 other{"{0}‱"}
+            }
+            portion-per-1e9{
+                dnam{"ppb"}
+                other{"{0} ppb"}
             }
         }
         consumption{

@@ -20,7 +20,10 @@ ta{
                 accountingFormat%alphaNextToNumber{"¤ #,##0.00;(¤ #,##0.00)"}
                 accountingFormat%noCurrency{"#,##0.00;(#,##0.00)"}
                 currencyFormat{"¤#,##,##0.00"}
+<<<<<<< HEAD
                 currencyFormat%alphaNextToNumber{"¤ #,##,##0.00"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 currencyFormat%noCurrency{"#,##,##0.00"}
                 decimalFormat{"#,##,##0.###"}
                 percentFormat{"#,##,##0%"}
@@ -598,6 +601,7 @@ ta{
                     other{"MMMM W -ஆம் வாரம்"}
                 }
                 MMMMd{"d MMMM"}
+                MMMd{"d MMM"}
                 MMdd{"dd-MM"}
                 Md{"d/M"}
                 yM{"M/y"}
@@ -849,6 +853,23 @@ ta{
                     }
                     wide{
                         "முதல் காலாண்டு",
+<<<<<<< HEAD
+=======
+                        "இரண்டாம் காலாண்டு",
+                        "மூன்றாம் காலாண்டு",
+                        "நான்காம் காலாண்டு",
+                    }
+                }
+                stand-alone{
+                    abbreviated{
+                        "கா.1",
+                        "கா.2",
+                        "கா.3",
+                        "கா.4",
+                    }
+                    wide{
+                        "முதல் காலாண்டு",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                         "இரண்டாம் காலாண்டு",
                         "மூன்றாம் காலாண்டு",
                         "நான்காம் காலாண்டு",
@@ -1760,6 +1781,22 @@ ta{
                 "[\\: ∶]",
             }
         }
+<<<<<<< HEAD
+=======
+        general{
+            lenient{
+                "[.．․﹒ 。｡︒]",
+                "['＇’ ՚ ᾽᾿ ʼ]",
+                "[%％﹪ ٪]",
+                "[‰ ؉]",
+                "[\$＄﹩]",
+                "[£￡ ₤]",
+                "[¥￥]",
+                "[₩￦]",
+                "[₹ {Rp} {Rs}₨]",
+            }
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",

@@ -22,8 +22,13 @@
 #include "perfetto/trace_processor/ref_counted.h"
 #include "perfetto/trace_processor/trace_blob_view.h"
 #include "src/trace_processor/importers/common/parser_types.h"
+<<<<<<< HEAD
 #include "src/trace_processor/importers/proto/chrome_track_event_extension.descriptor.h"
 #include "src/trace_processor/importers/proto/gpu_track_event.descriptor.h"
+=======
+#include "src/trace_processor/importers/proto/android_track_event.descriptor.h"
+#include "src/trace_processor/importers/proto/chrome_track_event_extension.descriptor.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "src/trace_processor/importers/proto/packet_sequence_state_generation.h"
 #include "src/trace_processor/importers/proto/proto_importer_module.h"
 #include "src/trace_processor/importers/proto/track_event.descriptor.h"
@@ -62,14 +67,27 @@ TrackEventModule::~TrackEventModule() = default;
 ModuleResult TrackEventModule::TokenizePacket(const TokenizePacketArgs& args) {
   switch (args.field.id()) {
     case TracePacket::kTrackEventRangeOfInterestFieldNumber:
+<<<<<<< HEAD
       return tokenizer_.TokenizeRangeOfInterestPacket(args);
     case TracePacket::kTrackDescriptorFieldNumber:
       return tokenizer_.TokenizeTrackDescriptorPacket(args);
+=======
+      return tokenizer_.TokenizeRangeOfInterestPacket(std::move(state), decoder,
+                                                      packet, packet_timestamp);
+    case TracePacket::kTrackDescriptorFieldNumber:
+      return tokenizer_.TokenizeTrackDescriptorPacket(std::move(state), decoder,
+                                                      packet, packet_timestamp);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     case TracePacket::kTrackEventFieldNumber:
       return tokenizer_.TokenizeTrackEventPacket(args);
     case TracePacket::kThreadDescriptorFieldNumber:
       // TODO(eseckler): Remove once Chrome has switched to TrackDescriptors.
+<<<<<<< HEAD
       return tokenizer_.TokenizeThreadDescriptorPacket(args);
+=======
+      return tokenizer_.TokenizeThreadDescriptorPacket(std::move(state),
+                                                       decoder, packet);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
   return ModuleResult::Ignored();
 }

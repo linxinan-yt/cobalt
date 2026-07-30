@@ -30,7 +30,10 @@
 #include "src/trace_processor/importers/common/mapping_tracker.h"
 #include "src/trace_processor/importers/common/process_tracker.h"
 #include "src/trace_processor/importers/common/stack_profile_tracker.h"
+<<<<<<< HEAD
 #include "src/trace_processor/importers/common/stats_tracker.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "src/trace_processor/importers/common/virtual_memory_mapping.h"
 #include "src/trace_processor/importers/proto/packet_sequence_state_generation.h"
 #include "src/trace_processor/importers/proto/profile_packet_utils.h"
@@ -196,7 +199,10 @@ StackProfileSequenceState::LookupInternedMappingPath(
 }
 
 std::optional<CallsiteId> StackProfileSequenceState::FindOrInsertCallstack(
+<<<<<<< HEAD
     PacketSequenceStateGeneration* state,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     std::optional<UniquePid> upid,
     uint64_t iid) {
   if (CallsiteId* id = cached_callstacks_.Find({upid, iid}); id) {
@@ -249,7 +255,10 @@ StackProfileSequenceState::FindOrInsertCallstackFromFrames(
 }
 
 std::optional<FrameId> StackProfileSequenceState::FindOrInsertFrame(
+<<<<<<< HEAD
     PacketSequenceStateGeneration* state,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     std::optional<UniquePid> upid,
     uint64_t iid) {
   if (FrameId* id = cached_frames_.Find({upid, iid}); id) {
@@ -259,8 +268,12 @@ std::optional<FrameId> StackProfileSequenceState::FindOrInsertFrame(
       protos::pbzero::InternedData::kFramesFieldNumber, protos::pbzero::Frame>(
       iid);
   if (!decoder) {
+<<<<<<< HEAD
     context_->stats_tracker->IncrementStats(
         stats::stackprofile_invalid_frame_id);
+=======
+    context_->storage->IncrementStats(stats::stackprofile_invalid_frame_id);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     return std::nullopt;
   }
 
@@ -277,10 +290,54 @@ std::optional<FrameId> StackProfileSequenceState::FindOrInsertFrame(
   // Extract source file and line number (used by both dummy and regular frames)
   std::optional<base::StringView> source_file;
   if (decoder->has_source_path_iid()) {
+<<<<<<< HEAD
     source_file = LookupInternedSourcePath(state, decoder->source_path_iid());
     if (!source_file) {
       return std::nullopt;
     }
+=======
+    source_file = LookupInternedSourcePath(decoder->source_path_iid());
+    if (!source_file) {
+      return std::nullopt;
+    }
+  }
+
+  std::optional<uint32_t> line_number;
+  if (decoder->has_line_number()) {
+    line_number = decoder->line_number();
+  }
+
+  // Check if mapping_id is 0, which means this is a "dummy" frame (no real
+  // mapping) In this case, we should use the dummy mapping API with source file
+  // and line number
+  if (decoder->mapping_id() == 0) {
+    // Get or create the dummy mapping for interned frames with mapping_id = 0
+    if (!dummy_mapping_for_interned_frames_) {
+      dummy_mapping_for_interned_frames_ =
+          &context_->mapping_tracker->CreateDummyMapping("");
+    }
+
+    FrameId frame_id = dummy_mapping_for_interned_frames_->InternDummyFrame(
+        function_name, source_file, line_number);
+    cached_frames_.Insert({upid, iid}, frame_id);
+    return frame_id;
+  }
+
+  // Regular frame with a real mapping
+  VirtualMemoryMapping* mapping =
+      FindOrInsertMappingImpl(upid, decoder->mapping_id());
+  if (!mapping) {
+    return std::nullopt;
+  }
+
+  // InternFrame will create the symbol entry if source_file or line_number is
+  // provided
+  FrameId frame_id = mapping->InternFrame(decoder->rel_pc(), function_name,
+                                          source_file, line_number);
+
+  if (!mapping->is_jitted()) {
+    cached_frames_.Insert({upid, iid}, frame_id);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   std::optional<uint32_t> line_number;
@@ -371,6 +428,22 @@ StackProfileSequenceState::LookupInternedSourcePath(
     return std::nullopt;
   }
   return *str;
+}
+
+std::optional<base::StringView>
+StackProfileSequenceState::LookupInternedSourcePath(uint64_t iid) {
+  if (iid == 0) {
+    return std::nullopt;
+  }
+  auto* decoder = LookupInternedMessage<
+      protos::pbzero::InternedData::kSourcePathsFieldNumber,
+      protos::pbzero::InternedString>(iid);
+  if (!decoder) {
+    context_->storage->IncrementStats(stats::stackprofile_invalid_string_id);
+    return std::nullopt;
+  }
+
+  return ToStringView(decoder->str());
 }
 
 }  // namespace trace_processor

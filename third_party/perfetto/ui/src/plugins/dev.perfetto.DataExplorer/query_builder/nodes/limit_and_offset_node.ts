@@ -14,6 +14,7 @@
 
 import m from 'mithril';
 import {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/limit_and_offset_node.ts
   type QueryNode,
   nextNodeId,
   NodeType,
@@ -55,6 +56,42 @@ export class LimitAndOffsetNode implements QueryNode {
 
   get sourceCols(): ColumnInfo[] {
     return this.primaryInput?.finalCols ?? [];
+=======
+  QueryNode,
+  QueryNodeState,
+  nextNodeId,
+  NodeType,
+  ModificationNode,
+} from '../../query_node';
+import {ColumnInfo} from '../column_info';
+import protos from '../../../../protos';
+import {Card} from '../../../../widgets/card';
+import {TextInput} from '../../../../widgets/text_input';
+
+export interface LimitAndOffsetNodeState extends QueryNodeState {
+  prevNode: QueryNode;
+  limit?: number;
+  offset?: number;
+}
+export class LimitAndOffsetNode implements ModificationNode {
+  readonly nodeId: string;
+  readonly type = NodeType.kLimitAndOffset;
+  readonly prevNode: QueryNode;
+  nextNodes: QueryNode[];
+  readonly state: LimitAndOffsetNodeState;
+
+  constructor(state: LimitAndOffsetNodeState) {
+    this.nodeId = nextNodeId();
+    this.state = state;
+    this.prevNode = state.prevNode;
+    this.nextNodes = [];
+    this.state.limit = this.state.limit ?? 10;
+    this.state.offset = this.state.offset ?? 0;
+  }
+
+  get sourceCols(): ColumnInfo[] {
+    return this.prevNode?.finalCols ?? [];
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/limit_and_offset_node.ts
   }
 
   get finalCols(): ColumnInfo[] {
@@ -65,6 +102,7 @@ export class LimitAndOffsetNode implements QueryNode {
     return 'Limit and Offset';
   }
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/limit_and_offset_node.ts
   nodeDetails(): NodeDetailsAttrs {
     const hasOffset = this.attrs.offset !== undefined && this.attrs.offset > 0;
     const limitText = `Limit: ${this.attrs.limit ?? 10}`;
@@ -181,5 +219,94 @@ export class LimitAndOffsetNode implements QueryNode {
       this.attrs.offset,
       this.nodeId,
     );
+=======
+  nodeDetails(): m.Child {
+    const hasLimit = this.state.limit !== undefined && this.state.limit > 0;
+    const hasOffset = this.state.offset !== undefined && this.state.offset > 0;
+    if (!hasLimit && !hasOffset) {
+      return m('.pf-aggregation-node-details', `No limit set`);
+    }
+
+    const limitMessage = hasLimit ? `Limit: ${this.state.limit}` : undefined;
+    const offsetMessage = hasOffset
+      ? `Offset: ${this.state.offset}`
+      : undefined;
+
+    return m(
+      '.pf-aggregation-node-details',
+      [limitMessage, offsetMessage].filter(Boolean).join(', '),
+    );
+  }
+
+  nodeSpecificModify(): m.Child {
+    return m(Card, [
+      m('label', 'Limit '),
+      m(TextInput, {
+        oninput: (e: Event) => {
+          const target = e.target as HTMLInputElement;
+          this.state.limit = Number(target.value);
+          m.redraw();
+        },
+        value: this.state.limit?.toString() ?? '10',
+      }),
+      m('label', 'Offset '),
+      m(TextInput, {
+        oninput: (e: Event) => {
+          const target = e.target as HTMLInputElement;
+          this.state.offset = Number(target.value);
+          m.redraw();
+        },
+        value: this.state.offset?.toString() ?? undefined,
+      }),
+    ]);
+  }
+
+  validate(): boolean {
+    return this.prevNode !== undefined;
+  }
+
+  clone(): QueryNode {
+    return new LimitAndOffsetNode(this.state);
+  }
+
+  getStructuredQuery(): protos.PerfettoSqlStructuredQuery | undefined {
+    if (this.prevNode === undefined) return undefined;
+    const prevQuery = this.prevNode.getStructuredQuery();
+    if (!prevQuery) return undefined;
+
+    const hasLimit = this.state.limit !== undefined && this.state.limit > 0;
+    const hasOffset = this.state.offset !== undefined && this.state.offset > 0;
+
+    if (!hasLimit && !hasOffset) {
+      return prevQuery;
+    }
+
+    const query = protos.PerfettoSqlStructuredQuery.create({
+      innerQuery: prevQuery,
+    });
+
+    if (hasLimit) {
+      query.limit = this.state.limit!;
+    }
+
+    if (hasOffset) {
+      query.offset = this.state.offset!;
+    }
+
+    return query;
+  }
+
+  serializeState(): object {
+    return this.state;
+  }
+
+  static deserializeState(
+    state: LimitAndOffsetNodeState,
+  ): LimitAndOffsetNodeState {
+    return {
+      ...state,
+      prevNode: undefined as unknown as QueryNode,
+    };
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/limit_and_offset_node.ts
   }
 }

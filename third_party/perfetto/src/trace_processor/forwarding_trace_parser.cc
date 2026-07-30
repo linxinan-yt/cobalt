@@ -60,11 +60,36 @@ TraceSorter::SortingMode ConvertSortingMode(SortingMode sorting_mode) {
 std::optional<TraceSorter::SortingMode> GetMinimumSortingMode(
     TraceImporterId trace_type,
     const TraceProcessorContext& context) {
+<<<<<<< HEAD
   const TraceTypeDescriptor* d =
       context.trace_importer_registry->Find(trace_type);
   PERFETTO_CHECK(d);
   switch (d->sort_policy) {
     case TraceSortPolicy::kFullSort:
+=======
+  switch (trace_type) {
+    case kGzipTraceType:
+      return std::nullopt;
+
+    case kAndroidDumpstateTraceType:
+    case kAndroidLogcatTraceType:
+    case kArtHprofTraceType:
+    case kArtMethodTraceType:
+    case kCtraceTraceType:
+    case kFuchsiaTraceType:
+    case kGeckoTraceType:
+    case kInstrumentsXmlTraceType:
+    case kJsonTraceType:
+    case kNinjaLogTraceType:
+    case kPerfDataTraceType:
+    case kPerfTextTraceType:
+    case kPprofTraceType:
+    case kSimpleperfProtoTraceType:
+    case kSystraceTraceType:
+    case kTarTraceType:
+    case kUnknownTraceType:
+    case kZipFile:
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       return TraceSorter::SortingMode::kFullSort;
     case TraceSortPolicy::kConfigDriven:
       return ConvertSortingMode(context.config.sorting_mode);

@@ -19,7 +19,14 @@ import {JANK_COLOR} from './jank_colors';
 import {getColorForSlice, makeColorScheme} from '../../components/colorizer';
 import {HSLColor} from '../../base/color';
 import {ScrollTimelineDetailsPanel} from './scroll_timeline_details_panel';
+<<<<<<< HEAD
 import {ScrollUpdateClassification} from './scroll_timeline_model';
+=======
+import {
+  ScrollTimelineModel,
+  ScrollUpdateClassification,
+} from './scroll_timeline_model';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {SliceTrack} from '../../components/tracks/slice_track';
 import {SourceDataset} from '../../trace_processor/dataset';
 import {SCROLL_TIMELINE_TRACK} from './tracks';
@@ -48,7 +55,14 @@ function toColorScheme(
   }
 }
 
+<<<<<<< HEAD
 export function createScrollTimelineTrack(trace: Trace) {
+=======
+export function createScrollTimelineTrack(
+  trace: Trace,
+  model: ScrollTimelineModel,
+) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   return SliceTrack.create({
     trace,
     uri: SCROLL_TIMELINE_TRACK.uri,

@@ -31,9 +31,13 @@
 #include "perfetto/ext/base/status_or.h"
 #include "perfetto/trace_processor/basic_types.h"
 #include "protos/perfetto/trace_processor/stack.pbzero.h"
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/pprof_functions/pprof_functions.cc
 #include "src/trace_processor/core/plugin/plugin.h"
 #include "src/trace_processor/perfetto_sql/engine/perfetto_sql_connection.h"
 #include "src/trace_processor/sqlite/bindings/sqlite_aggregate_function.h"
+=======
+#include "src/trace_processor/perfetto_sql/engine/perfetto_sql_engine.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/pprof_functions.cc
 #include "src/trace_processor/sqlite/bindings/sqlite_result.h"
 #include "src/trace_processor/sqlite/sqlite_utils.h"
 #include "src/trace_processor/storage/trace_storage.h"
@@ -204,6 +208,7 @@ struct ProfileBuilder {
 
 }  // namespace
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/pprof_functions/pprof_functions.cc
 namespace pprof_functions {
 namespace {
 
@@ -230,6 +235,11 @@ void RegisterPlugin() {
       PprofFunctionsPlugin::kPluginId, PprofFunctionsPlugin::kDepIds.data(),
       PprofFunctionsPlugin::kDepIds.size());
   base::ignore_result(reg);
+=======
+base::Status PprofFunctions::Register(PerfettoSqlEngine& engine,
+                                      TraceProcessorContext* context) {
+  return engine.RegisterAggregateFunction<ProfileBuilder>(context);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/pprof_functions.cc
 }
 
 }  // namespace pprof_functions

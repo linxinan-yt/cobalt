@@ -10,6 +10,7 @@ ceb{
         de{"German"}
         de_CH{"Swiss High German"}
         en{"English"}
+<<<<<<< HEAD
         en_GB{"English (British)"}
         en_US{"English (America)"}
         es{"Espanyol"}
@@ -23,6 +24,17 @@ ceb{
         id{"Indonesian"}
         it{"Italian"}
         ja{"Japanese"}
+=======
+        en_GB{"Britanikong English"}
+        en_US{"English (America)"}
+        es{"Espanyol"}
+        es_ES{"Espanyol (Europa)"}
+        fr{"Pranses"}
+        hi{"Hindi"}
+        id{"Indonesian"}
+        it{"Italyano"}
+        ja{"Hinapon"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         ko{"Korean"}
         nl{"Dutch"}
         nl_BE{"Flemish"}
@@ -31,8 +43,13 @@ ceb{
         ru{"Russian"}
         th{"Thai"}
         tr{"Turkish"}
+<<<<<<< HEAD
         und{"Wala mailhi nga pinulongan"}
         zh{"Chinese"}
+=======
+        und{"Wala Mailhing Pinulongan"}
+        zh{"Inintsik"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         zh_Hans{"Pinasimple nga Chinese"}
         zh_Hant{"Tradisyonal nga Chinese"}
     }
@@ -51,7 +68,11 @@ ceb{
         hi_Latn{"Hinglish"}
     }
     Scripts{
+<<<<<<< HEAD
         Arab{"Arabic"}
+=======
+        Arab{"Arabiko"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         Cyrl{"Cyrillic"}
         Hans{"Pinasimple"}
         Hant{"Tradisyonal"}

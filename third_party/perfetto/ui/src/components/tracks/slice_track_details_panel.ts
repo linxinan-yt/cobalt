@@ -13,9 +13,15 @@
 // limitations under the License.
 
 import m from 'mithril';
+<<<<<<< HEAD
 import type {TrackEventDetailsPanel} from '../../public/details_panel';
 import type {Trace} from '../../public/trace';
 import type {SourceDataset} from '../../trace_processor/dataset';
+=======
+import {TrackEventDetailsPanel} from '../../public/details_panel';
+import {Trace} from '../../public/trace';
+import {SourceDataset} from '../../trace_processor/dataset';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {sqlValueToReadableString} from '../../trace_processor/sql_utils';
 import {DetailsShell} from '../../widgets/details_shell';
 import {GridLayout} from '../../widgets/grid_layout';
@@ -23,7 +29,11 @@ import {Section} from '../../widgets/section';
 import {Tree, TreeNode} from '../../widgets/tree';
 import {DurationWidget} from '../widgets/duration';
 import {Timestamp} from '../widgets/timestamp';
+<<<<<<< HEAD
 import type {RowSchema} from './slice_track';
+=======
+import {RowSchema} from './slice_track';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {exists} from '../../base/utils';
 import {Time} from '../../base/time';
 
@@ -36,9 +46,15 @@ import {Time} from '../../base/time';
  * - Common slice fields (name, ts, dur) with appropriate formatting
  * - All other dataset columns as readable strings
  */
+<<<<<<< HEAD
 export class SliceTrackDetailsPanel<
   T extends RowSchema,
 > implements TrackEventDetailsPanel {
+=======
+export class SliceTrackDetailsPanel<T extends RowSchema>
+  implements TrackEventDetailsPanel
+{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   constructor(
     private readonly trace: Trace,
     private readonly dataset: SourceDataset<T>,

@@ -12,10 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD
 import type {App} from '../../public/app';
 import {createAggregationTab} from '../../components/aggregation_adapter';
 import type {PerfettoPlugin} from '../../public/plugin';
 import type {Trace} from '../../public/trace';
+=======
+import {App} from '../../public/app';
+import {createAggregationTab} from '../../components/aggregation_adapter';
+import {PerfettoPlugin} from '../../public/plugin';
+import {Trace} from '../../public/trace';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {SLICE_TRACK_KIND} from '../../public/track_kinds';
 import {TrackNode} from '../../public/workspace';
 import {NUM, STR} from '../../trace_processor/query_result';
@@ -26,7 +33,11 @@ import {
   ACTUAL_FRAMES_SLICE_TRACK_KIND,
   FrameSelectionAggregator,
 } from './frame_selection_aggregator';
+<<<<<<< HEAD
 import type {Setting} from '../../public/settings';
+=======
+import {Setting} from '../../public/settings';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {z} from 'zod';
 
 // Build a standardized URI for a frames track
@@ -34,14 +45,23 @@ function makeUri(upid: number, kind: string) {
   return `/process_${upid}/${kind}`;
 }
 
+<<<<<<< HEAD
 export default class FramesPlugin implements PerfettoPlugin {
+=======
+export default class Frames implements PerfettoPlugin {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   static readonly id = 'dev.perfetto.Frames';
   static readonly dependencies = [ProcessThreadGroupsPlugin];
   static showExperimentalJankClassification: Setting<boolean>;
 
   static onActivate(app: App): void {
+<<<<<<< HEAD
     FramesPlugin.showExperimentalJankClassification = app.settings.register({
       id: `${FramesPlugin.id}#showExperimentalJankClassification`,
+=======
+    Frames.showExperimentalJankClassification = app.settings.register({
+      id: `${app.pluginId}#showExperimentalJankClassification`,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       name: 'show experimental jank classification track (alpha)',
       description: 'Use alternative method to classify jank. Not recommented.',
       schema: z.boolean(),
@@ -173,7 +193,11 @@ export default class FramesPlugin implements PerfettoPlugin {
       );
 
       // Experimental jank classification track (if enabled)
+<<<<<<< HEAD
       if (FramesPlugin.showExperimentalJankClassification.get()) {
+=======
+      if (Frames.showExperimentalJankClassification.get()) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         const experimentalUri = makeUri(upid, 'actual_frames_experimental');
         ctx.tracks.registerTrack({
           uri: experimentalUri,

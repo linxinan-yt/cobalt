@@ -44,6 +44,23 @@ class CodePointMatcher : public NumberParseMatcher, public UMemory {
     UChar32 fCp;
 };
 
+<<<<<<< HEAD
+=======
+} // namespace numparse::impl
+
+// Export a explicit template instantiations of MaybeStackArray, MemoryPool and CompactUnicodeString.
+// When building DLLs for Windows this is required even though no direct access leaks out of the i18n library.
+// (See digitlst.h, pluralaffix.h, datefmt.h, and others for similar examples.)
+// Note: These need to be outside of the numparse::impl namespace, or Clang will generate a compile error.
+#if U_PF_WINDOWS <= U_PLATFORM && U_PLATFORM <= U_PF_CYGWIN
+template class U_I18N_API MaybeStackArray<numparse::impl::CodePointMatcher*, 8>; 
+template class U_I18N_API MaybeStackArray<char16_t, 4>;
+template class U_I18N_API MemoryPool<numparse::impl::CodePointMatcher, 8>;
+template class U_I18N_API numparse::impl::CompactUnicodeString<4>;
+#endif
+
+namespace numparse::impl {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 struct AffixTokenMatcherSetupData {
     const CurrencySymbols& currencySymbols;

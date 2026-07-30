@@ -53,11 +53,14 @@ void Assert(bool condition) {
     abort();
 }
 
+<<<<<<< HEAD
 // Maximum line length for single-line pb_enum! macro invocations.
 // Enums that would produce output longer than this threshold will be
 // formatted across multiple lines for readability.
 constexpr size_t kMaxSingleLinePbEnumLength = 60;
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 struct FileDescriptorComp {
   bool operator()(const FileDescriptor* lhs, const FileDescriptor* rhs) const {
     int comp = lhs->name().compare(rhs->name());
@@ -107,8 +110,11 @@ class GeneratorJob {
       GenerateEnumDescriptor(enumeration);
     for (const Descriptor* message : messages_)
       GenerateMessageDescriptor(message);
+<<<<<<< HEAD
     for (const auto& key_value : extensions_)
       GenerateExtensionDescriptor(key_value.first, key_value.second);
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     return error_.empty();
   }
 
@@ -121,12 +127,15 @@ class GeneratorJob {
       path_add_prefix_ = value;
     } else if (name == "invoker") {
       invoker_ = value;
+<<<<<<< HEAD
     } else if (name == "external_crate") {
       external_crate_ = value;
     } else if (name == "local_files") {
       for (const auto& f : SplitString(value, "|")) {
         local_files_.insert(std::string(f));
       }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     } else {
       Abort(std::string() + "Unknown plugin option '" + name + "'.");
     }
@@ -143,12 +152,17 @@ class GeneratorJob {
       error_ = reason;
   }
 
+<<<<<<< HEAD
   // Get Rust struct name corresponding to proto descriptor (simple name only).
+=======
+  // Get Rust struct name corresponding to proto descriptor.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   template <class T>
   inline std::string GetRustStructName(const T* descriptor) {
     return StripChars(std::string(descriptor->name()), ".", '_');
   }
 
+<<<<<<< HEAD
   // Get full Rust struct name including parent type names for nested messages.
   std::string GetFullRustMessageName(const Descriptor* descriptor) {
     std::string name;
@@ -159,6 +173,8 @@ class GeneratorJob {
     return name;
   }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   std::string FieldToRustTypeName(const FieldDescriptor* field) {
     switch (field->type()) {
       case FieldDescriptor::TYPE_BOOL:
@@ -200,7 +216,11 @@ class GeneratorJob {
       case FieldDescriptor::TYPE_BYTES:
         return "String";
       case FieldDescriptor::TYPE_MESSAGE:
+<<<<<<< HEAD
         return GetFullRustMessageName(field->message_type());
+=======
+        return GetRustStructName(field->message_type());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       case FieldDescriptor::TYPE_GROUP:
         Abort("Groups not supported.");
         return "";
@@ -307,6 +327,7 @@ class GeneratorJob {
         }
       }
     }
+<<<<<<< HEAD
 
     // Collect dependencies for extension fields (base message and field types).
     for (const auto& key_value : extensions_) {
@@ -328,6 +349,8 @@ class GeneratorJob {
         }
       }
     }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   void Preprocess() {
@@ -376,12 +399,18 @@ class GeneratorJob {
     if (!enums_.empty()) {
       stub_rs_->Print("use crate::pb_enum;\n");
     }
+<<<<<<< HEAD
     if (!messages_.empty() || !extensions_.empty()) {
       stub_rs_->Print("use crate::pb_msg;\n");
     }
     if (!extensions_.empty()) {
       stub_rs_->Print("use crate::pb_msg_ext;\n");
     }
+=======
+    if (!messages_.empty()) {
+      stub_rs_->Print("use crate::pb_msg;\n");
+    }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     // Print use statements for public imports, enums and messages.
     std::vector<std::string> imports;
@@ -410,6 +439,7 @@ class GeneratorJob {
       if (!path_strip_prefix_.empty()) {
         mod_path = StripPrefix(imp, path_strip_prefix_);
       }
+<<<<<<< HEAD
       // When external_crate is set and this import is not a local file,
       // use the external crate path instead of crate::.
       bool is_external =
@@ -417,6 +447,10 @@ class GeneratorJob {
       std::string crate_prefix = is_external ? external_crate_ : "crate";
       stub_rs_->Print("use $crate$::protos$mod$::*;\n", "crate", crate_prefix,
                       "mod", ReplaceAll(mod_path, "/", "::"));
+=======
+      stub_rs_->Print("use crate::protos$mod$::*;\n", "mod",
+                      ReplaceAll(mod_path, "/", "::"));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
   }
 
@@ -426,6 +460,7 @@ class GeneratorJob {
       name.append(GetRustStructName(enumeration->containing_type()));
     }
     name.append(GetRustStructName(enumeration));
+<<<<<<< HEAD
 
     // Build enum values content and calculate single-line length
     std::string values_content;
@@ -521,10 +556,91 @@ class GeneratorJob {
     for (const FieldDescriptor* field : fields) {
       stub_rs_->Print("    $field$\n", "field",
                       GetFieldDescriptorContent(field));
+=======
+    stub_rs_->Print("\n");
+    stub_rs_->Print("pb_enum!($name$ {\n", "name", name);
+    for (int i = 0; i < enumeration->value_count(); ++i) {
+      const EnumValueDescriptor* value = enumeration->value(i);
+      const std::string value_name = std::string(value->name());
+      stub_rs_->Print("    ");
+      stub_rs_->Print("$val$: $number$,\n", "val", value_name, "number",
+                      IntLiteralString(value->number()));
     }
     stub_rs_->Print("});\n");
   }
 
+  void GenerateSimpleFieldDescriptorArgs(const FieldDescriptor* field) {
+    std::map<std::string, std::string> setter;
+    setter["id"] = std::to_string(field->number());
+    setter["name"] = field->lowercase_name();
+    setter["type"] = FieldToRustTypeName(field);
+
+    switch (field->type()) {
+      case FieldDescriptor::TYPE_BYTES:
+      case FieldDescriptor::TYPE_STRING:
+      case FieldDescriptor::TYPE_UINT64:
+      case FieldDescriptor::TYPE_UINT32:
+      case FieldDescriptor::TYPE_INT64:
+      case FieldDescriptor::TYPE_INT32:
+      case FieldDescriptor::TYPE_BOOL:
+      case FieldDescriptor::TYPE_SINT64:
+      case FieldDescriptor::TYPE_SINT32:
+      case FieldDescriptor::TYPE_SFIXED32:
+      case FieldDescriptor::TYPE_FIXED32:
+      case FieldDescriptor::TYPE_FLOAT:
+      case FieldDescriptor::TYPE_SFIXED64:
+      case FieldDescriptor::TYPE_FIXED64:
+      case FieldDescriptor::TYPE_DOUBLE:
+        stub_rs_->Print(setter, "$name$: $type$, primitive, $id$,");
+        break;
+      case FieldDescriptor::TYPE_ENUM:
+        stub_rs_->Print(setter, "$name$: $type$, enum, $id$,");
+        break;
+      case FieldDescriptor::TYPE_MESSAGE:
+      case FieldDescriptor::TYPE_GROUP:
+        Abort("Groups not supported.");
+        break;
+    }
+  }
+
+  void GenerateSimpleFieldDescriptor(const FieldDescriptor* field) {
+    stub_rs_->Print("    ");
+    GenerateSimpleFieldDescriptorArgs(field);
+    stub_rs_->Print("\n");
+  }
+
+  void GenerateNestedMessageFieldDescriptor(const FieldDescriptor* field) {
+    std::string inner_struct = GetRustStructName(field->message_type());
+    stub_rs_->Print("    ");
+    stub_rs_->Print("$name$: $inner_struct$, msg, $id$,", "name",
+                    field->lowercase_name(), "inner_struct", inner_struct, "id",
+                    std::to_string(field->number()));
+    stub_rs_->Print("\n");
+  }
+
+  void GenerateMessageDescriptor(const Descriptor* message) {
+    stub_rs_->Print("\npb_msg!($name$ {\n", "name", GetRustStructName(message));
+
+    // Field descriptors.
+    for (int i = 0; i < message->field_count(); ++i) {
+      GenerateFieldDescriptor(message->field(i));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
+    }
+    stub_rs_->Print("});\n");
+  }
+
+<<<<<<< HEAD
+=======
+  void GenerateFieldDescriptor(const FieldDescriptor* field) {
+    assert(!field->is_packed());
+    if (field->type() != FieldDescriptor::TYPE_MESSAGE) {
+      GenerateSimpleFieldDescriptor(field);
+    } else {
+      GenerateNestedMessageFieldDescriptor(field);
+    }
+  }
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   const FileDescriptor* const source_;
   Printer* const stub_rs_;
   std::string error_;
@@ -533,8 +649,11 @@ class GeneratorJob {
   std::string wrapper_namespace_;
   std::string path_strip_prefix_;
   std::string path_add_prefix_;
+<<<<<<< HEAD
   std::string external_crate_;
   std::set<std::string> local_files_;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   std::string invoker_;
   std::vector<std::string> namespaces_;
   std::string full_namespace_prefix_;

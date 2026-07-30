@@ -18,10 +18,13 @@ ku{
         AFN{
             "AFN",
             "efxanîyê efxanistanî",
+<<<<<<< HEAD
         }
         ALK{
             "ALK",
             "lekê arnawidî (1946–1965)",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         ALL{
             "ALL",
@@ -261,7 +264,11 @@ ku{
         }
         CLP{
             "CLP",
+<<<<<<< HEAD
             "pesoyê şîlîyî",
+=======
+            "pesoyê şîlîyê",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         CNH{
             "CNH",
@@ -278,10 +285,13 @@ ku{
         COP{
             "COP",
             "pesoyê kolombîyayî",
+<<<<<<< HEAD
         }
         COU{
             "COU",
             "unidad de valor realê kolombîyayî",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         CRC{
             "CRC",
@@ -406,10 +416,13 @@ ku{
         GEL{
             "GEL",
             "larîyê gurcistanî",
+<<<<<<< HEAD
         }
         GHC{
             "GHC",
             "cedîyê ganayî (1979–2007)",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         GHS{
             "GHS",
@@ -482,6 +495,7 @@ ku{
         IDR{
             "IDR",
             "rûpîyê endonezî",
+<<<<<<< HEAD
         }
         IEP{
             "IEP",
@@ -494,6 +508,8 @@ ku{
         ILR{
             "ILR",
             "şekelê îsraîlî (1980–1985)",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         ILS{
             "₪",
@@ -510,10 +526,13 @@ ku{
         IRR{
             "IRR",
             "rîyalê îranî",
+<<<<<<< HEAD
         }
         ISJ{
             "ISJ",
             "kronê îslandayî (1918–1981)",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         ISK{
             "ISK",
@@ -598,6 +617,7 @@ ku{
         LSL{
             "LSL",
             "lotîyê lesothoyî",
+<<<<<<< HEAD
         }
         LTL{
             "LTL",
@@ -626,6 +646,8 @@ ku{
         LVR{
             "LVR",
             "rubleyê letonyayî",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         LYD{
             "LYD",
@@ -702,10 +724,13 @@ ku{
         MUR{
             "MUR",
             "rûpîyê maûrîtîûsê",
+<<<<<<< HEAD
         }
         MVP{
             "MVP",
             "rûpîyê maldîvayî (1947–1981)",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         MVR{
             "MVR",
@@ -810,6 +835,7 @@ ku{
         PLN{
             "PLN",
             "zlotîyê polonyayî",
+<<<<<<< HEAD
         }
         PLZ{
             "PLZ",
@@ -818,6 +844,8 @@ ku{
         PTE{
             "PTE",
             "eskudoyê portugalî",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         PYG{
             "PYG",
@@ -826,6 +854,7 @@ ku{
         QAR{
             "QAR",
             "rîyalê qeterî",
+<<<<<<< HEAD
         }
         RHD{
             "RHD",
@@ -834,6 +863,8 @@ ku{
         ROL{
             "ROL",
             "leyê romanyayî (1952–2006)",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         RON{
             "RON",
@@ -866,10 +897,13 @@ ku{
         SCR{
             "SCR",
             "rûpîyê seyşelerî",
+<<<<<<< HEAD
         }
         SDD{
             "SDD",
             "dînarê sûdanî (1992–2007)",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         SDG{
             "SDG",
@@ -1166,14 +1200,18 @@ ku{
         XXX{
             "¤",
             "(yekeya pereyî ya nenas)",
+<<<<<<< HEAD
         }
         YDD{
             "YDD",
             "dînarê yemenî",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         YER{
             "YER",
             "rîyalê yemenî",
+<<<<<<< HEAD
         }
         YUD{
             "YUD",
@@ -1194,6 +1232,8 @@ ku{
         ZAL{
             "ZAL",
             "randê afrîkaya başûrî (fînansî)",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         ZAR{
             "ZAR",
@@ -1206,6 +1246,7 @@ ku{
         ZMW{
             "ZMW",
             "kwaçayê zambîyayî",
+<<<<<<< HEAD
         }
         ZRN{
             "ZRN",
@@ -1230,6 +1271,8 @@ ku{
         ZWR{
             "ZWR",
             "dolarê zîmbabweyî (2008)",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     }
     CurrencyPlurals{
@@ -1248,10 +1291,13 @@ ku{
         AFN{
             one{"efxanîyê efxanistanî"}
             other{"efxanîyên efxanistanî"}
+<<<<<<< HEAD
         }
         ALK{
             one{"lekê arnawidî (1946–1965)"}
             other{"lekên arnawidî (1946–1965)"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         ALL{
             one{"lekê arnawidî"}
@@ -1440,10 +1486,13 @@ ku{
         BWP{
             one{"pulayê botswanayî"}
             other{"pulayên botswanayî"}
+<<<<<<< HEAD
         }
         BYB{
             one{"rubleyê belarûsî (1994–1999)"}
             other{"rubleyên belarûsî (1994–1999)"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         BYN{
             one{"rubleyê belarûsî"}
@@ -1486,8 +1535,13 @@ ku{
             other{"unidades de fomentoyên şîlîyî"}
         }
         CLP{
+<<<<<<< HEAD
             one{"pesoyê şîlîyî"}
             other{"pesoyên şîlîyî"}
+=======
+            one{"pesoyê şîlîyê"}
+            other{"pesoyên şîlîyê"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         CNH{
             one{"yûanê çînî (offshore)"}
@@ -1504,10 +1558,13 @@ ku{
         COP{
             one{"pesoyê kolombîyayî"}
             other{"pesoyên kolombîyayî"}
+<<<<<<< HEAD
         }
         COU{
             one{"unidad de valor realê kolombîyayî"}
             other{"unidad de valor realên kolombîyayî"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         CRC{
             one{"kolonê kosta rîkayî"}
@@ -1628,10 +1685,13 @@ ku{
         GEL{
             one{"larîyê gurcistanî"}
             other{"larîyên gurcistanî"}
+<<<<<<< HEAD
         }
         GHC{
             one{"cedîyê ganayî (1979–2007)"}
             other{"cedîyên ganayî (1979–2007)"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         GHS{
             one{"cedîyê ganayî"}
@@ -1704,6 +1764,7 @@ ku{
         IDR{
             one{"rûpîyê endonezî"}
             other{"rûpîyên endonezî"}
+<<<<<<< HEAD
         }
         IEP{
             one{"lîreyê îrlandî"}
@@ -1716,6 +1777,8 @@ ku{
         ILR{
             one{"şekelê îsraîlî (1980–1985)"}
             other{"şekelên îsraîlî (1980–1985)"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         ILS{
             one{"şekelê nû yê îsraîlî"}
@@ -1732,10 +1795,13 @@ ku{
         IRR{
             one{"rîyalê îranî"}
             other{"rîyalên îranî"}
+<<<<<<< HEAD
         }
         ISJ{
             one{"kronê îslandayî (1918–1981)"}
             other{"kronên îslandayî (1918–1981)"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         ISK{
             one{"kronê îslandayî"}
@@ -1820,6 +1886,7 @@ ku{
         LSL{
             one{"lotîyê lesothoyî"}
             other{"lotîyên lesothoyî"}
+<<<<<<< HEAD
         }
         LTL{
             one{"lîtayê lîtvanyayî"}
@@ -1848,6 +1915,8 @@ ku{
         LVR{
             one{"rubleyê letonyayî"}
             other{"rubleyên letonyayî"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         LYD{
             one{"dînarê lîbyayî"}
@@ -1924,10 +1993,13 @@ ku{
         MUR{
             one{"rûpîyê maûrîtîûsê"}
             other{"rûpîyên maûrîtîûsê"}
+<<<<<<< HEAD
         }
         MVP{
             one{"rûpîyê maldîvayî (1947–1981)"}
             other{"rûpîyên maldîvayî (1947–1981)"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         MVR{
             one{"rûfîyaayê maldîvayî"}
@@ -2032,6 +2104,7 @@ ku{
         PLN{
             one{"zlotîyê polonyayî"}
             other{"zlotîyên polonyayî"}
+<<<<<<< HEAD
         }
         PLZ{
             one{"zlotîyê polonyayî (1950–1995)"}
@@ -2040,6 +2113,8 @@ ku{
         PTE{
             one{"eskudoyê portugalî"}
             other{"eskudoyên portugalî"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         PYG{
             one{"gûaranîyê paragûayî"}
@@ -2048,6 +2123,7 @@ ku{
         QAR{
             one{"rîyalê qeterî"}
             other{"rîyalên qeterî"}
+<<<<<<< HEAD
         }
         RHD{
             one{"dolarê rodezyayî"}
@@ -2056,6 +2132,8 @@ ku{
         ROL{
             one{"leyê romanyayî (1952–2006)"}
             other{"leyên romanyayî (1952–2006)"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         RON{
             one{"leyê romanyayî"}
@@ -2088,10 +2166,13 @@ ku{
         SCR{
             one{"rûpîyê seyşelerî"}
             other{"rûpîyên seyşelerî"}
+<<<<<<< HEAD
         }
         SDD{
             one{"dînarê sûdanî (1992–2007)"}
             other{"dînarên sûdanî (1992–2007)"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         SDG{
             one{"lîreyê sûdanî"}
@@ -2388,14 +2469,18 @@ ku{
         XXX{
             one{"yekeya pereyî ya nenas"}
             other{"(yekeyên pereyî yên nenas)"}
+<<<<<<< HEAD
         }
         YDD{
             one{"dînarê yemenî"}
             other{"dînarên yemenî"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         YER{
             one{"rîyalê yemenî"}
             other{"rîyalên yemenî"}
+<<<<<<< HEAD
         }
         YUD{
             one{"hard dînarê yûgoslavî (1966–1990)"}
@@ -2416,6 +2501,8 @@ ku{
         ZAL{
             one{"randê afrîkaya başûrî (fînansî)"}
             other{"randên afrîkaya başûrî (fînansî)"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         ZAR{
             one{"randê afrîkaya başûrî"}
@@ -2428,6 +2515,7 @@ ku{
         ZMW{
             one{"kwaçayê zambîyayî"}
             other{"kwaçayên zambîyayî"}
+<<<<<<< HEAD
         }
         ZRN{
             one{"zaîreyê nû ya zaîreyî (1993–1998)"}
@@ -2452,6 +2540,8 @@ ku{
         ZWR{
             one{"dolarê zîmbabweyî (2008)"}
             other{"dolarên zîmbabweyî (2008)"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     }
 }

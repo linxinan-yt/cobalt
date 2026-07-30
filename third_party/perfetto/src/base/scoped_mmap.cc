@@ -42,6 +42,7 @@ ScopedPlatformHandle OpenFileForMmap(const std::string& file_path) {
   return OpenFile(file_path, O_RDONLY);
 #elif PERFETTO_BUILDFLAG(PERFETTO_OS_WIN)
   // This does not use base::OpenFile to avoid getting an exclusive lock.
+<<<<<<< HEAD
   //
   // The share flags mirror the POSIX open(O_RDONLY) above, which has no notion
   // of share modes. Same flags as LLVM's openNativeFileInternal():
@@ -50,6 +51,11 @@ ScopedPlatformHandle OpenFileForMmap(const std::string& file_path) {
       CreateFileA(file_path.c_str(), GENERIC_READ,
                   FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE,
                   nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr));
+=======
+  return ScopedPlatformHandle(
+      CreateFileA(file_path.c_str(), GENERIC_READ, FILE_SHARE_READ, nullptr,
+                  OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #else
   // mmap is not supported. Do not even open the file.
   base::ignore_result(file_path);

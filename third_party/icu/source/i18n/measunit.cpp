@@ -39,6 +39,7 @@ UOBJECT_DEFINE_RTTI_IMPLEMENTATION(MeasureUnit)
 static const int32_t gOffsets[] = {
     0,
     2,
+<<<<<<< HEAD
     8,
     21,
     34,
@@ -62,6 +63,30 @@ static const int32_t gOffsets[] = {
     492,
     494,
     538
+=======
+    7,
+    17,
+    28,
+    32,
+    334,
+    345,
+    363,
+    367,
+    376,
+    379,
+    383,
+    391,
+    413,
+    417,
+    432,
+    433,
+    439,
+    450,
+    456,
+    460,
+    462,
+    496
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 
 static const int32_t kCurrencyOffset = 5;
@@ -130,6 +155,7 @@ static const char * const gSubTypes[] = {
     "percent",
     "permille",
     "permyriad",
+    "portion-per-1e9",
     "liter-per-100-kilometer",
     "liter-per-kilometer",
     "mile-per-gallon",
@@ -904,6 +930,7 @@ MeasureUnit MeasureUnit::getPartPer1E9() {
     return MeasureUnit(3, 9);
 }
 
+<<<<<<< HEAD
 MeasureUnit *MeasureUnit::createPercent(UErrorCode &status) {
     return MeasureUnit::create(3, 10, status);
 }
@@ -928,6 +955,16 @@ MeasureUnit MeasureUnit::getPermyriad() {
     return MeasureUnit(3, 12);
 }
 
+=======
+MeasureUnit *MeasureUnit::createPortionPer1E9(UErrorCode &status) {
+    return MeasureUnit::create(3, 10, status);
+}
+
+MeasureUnit MeasureUnit::getPortionPer1E9() {
+    return MeasureUnit(3, 10);
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 MeasureUnit *MeasureUnit::createLiterPer100Kilometers(UErrorCode &status) {
     return MeasureUnit::create(4, 0, status);
 }
@@ -1136,6 +1173,7 @@ MeasureUnit MeasureUnit::getMonthPerson() {
     return MeasureUnit(7, 10);
 }
 
+<<<<<<< HEAD
 MeasureUnit *MeasureUnit::createNanosecond(UErrorCode &status) {
     return MeasureUnit::create(7, 11, status);
 }
@@ -1200,6 +1238,64 @@ MeasureUnit MeasureUnit::getYearPerson() {
     return MeasureUnit(7, 18);
 }
 
+=======
+MeasureUnit *MeasureUnit::createNight(UErrorCode &status) {
+    return MeasureUnit::create(7, 11, status);
+}
+
+MeasureUnit MeasureUnit::getNight() {
+    return MeasureUnit(7, 11);
+}
+
+MeasureUnit *MeasureUnit::createQuarter(UErrorCode &status) {
+    return MeasureUnit::create(7, 12, status);
+}
+
+MeasureUnit MeasureUnit::getQuarter() {
+    return MeasureUnit(7, 12);
+}
+
+MeasureUnit *MeasureUnit::createSecond(UErrorCode &status) {
+    return MeasureUnit::create(7, 13, status);
+}
+
+MeasureUnit MeasureUnit::getSecond() {
+    return MeasureUnit(7, 13);
+}
+
+MeasureUnit *MeasureUnit::createWeek(UErrorCode &status) {
+    return MeasureUnit::create(7, 14, status);
+}
+
+MeasureUnit MeasureUnit::getWeek() {
+    return MeasureUnit(7, 14);
+}
+
+MeasureUnit *MeasureUnit::createWeekPerson(UErrorCode &status) {
+    return MeasureUnit::create(7, 15, status);
+}
+
+MeasureUnit MeasureUnit::getWeekPerson() {
+    return MeasureUnit(7, 15);
+}
+
+MeasureUnit *MeasureUnit::createYear(UErrorCode &status) {
+    return MeasureUnit::create(7, 16, status);
+}
+
+MeasureUnit MeasureUnit::getYear() {
+    return MeasureUnit(7, 16);
+}
+
+MeasureUnit *MeasureUnit::createYearPerson(UErrorCode &status) {
+    return MeasureUnit::create(7, 17, status);
+}
+
+MeasureUnit MeasureUnit::getYearPerson() {
+    return MeasureUnit(7, 17);
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 MeasureUnit *MeasureUnit::createAmpere(UErrorCode &status) {
     return MeasureUnit::create(8, 0, status);
 }
@@ -1853,7 +1949,11 @@ MeasureUnit *MeasureUnit::createKilogram(UErrorCode &status) {
 }
 
 MeasureUnit MeasureUnit::getKilogram() {
+<<<<<<< HEAD
     return MeasureUnit(16, 6);
+=======
+    return MeasureUnit(15, 5);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 MeasureUnit *MeasureUnit::createMicrogram(UErrorCode &status) {
@@ -1944,6 +2044,14 @@ MeasureUnit MeasureUnit::getMetricTon() {
     return MeasureUnit(16, 16);
 }
 
+MeasureUnit *MeasureUnit::createMetricTon(UErrorCode &status) {
+    return MeasureUnit::create(15, 14, status);
+}
+
+MeasureUnit MeasureUnit::getMetricTon() {
+    return MeasureUnit(15, 14);
+}
+
 MeasureUnit *MeasureUnit::createGigawatt(UErrorCode &status) {
     return MeasureUnit::create(18, 0, status);
 }
@@ -2016,6 +2124,7 @@ MeasureUnit MeasureUnit::getGasolineEnergyDensity() {
     return MeasureUnit(19, 2);
 }
 
+<<<<<<< HEAD
 MeasureUnit *MeasureUnit::createHectopascal(UErrorCode &status) {
     return MeasureUnit::create(19, 3, status);
 }
@@ -2089,6 +2198,33 @@ MeasureUnit MeasureUnit::getPoundPerSquareInch() {
 }
 
 MeasureUnit *MeasureUnit::createBeaufort(UErrorCode &status) {
+=======
+MeasureUnit *MeasureUnit::createLightSpeed(UErrorCode &status) {
+    return MeasureUnit::create(19, 3, status);
+}
+
+MeasureUnit MeasureUnit::getLightSpeed() {
+    return MeasureUnit(19, 3);
+}
+
+MeasureUnit *MeasureUnit::createMeterPerSecond(UErrorCode &status) {
+    return MeasureUnit::create(19, 4, status);
+}
+
+MeasureUnit MeasureUnit::getMeterPerSecond() {
+    return MeasureUnit(19, 4);
+}
+
+MeasureUnit *MeasureUnit::createMilePerHour(UErrorCode &status) {
+    return MeasureUnit::create(19, 5, status);
+}
+
+MeasureUnit MeasureUnit::getMilePerHour() {
+    return MeasureUnit(19, 5);
+}
+
+MeasureUnit *MeasureUnit::createCelsius(UErrorCode &status) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     return MeasureUnit::create(20, 0, status);
 }
 
@@ -2810,11 +2946,15 @@ int32_t MeasureUnit::getOffset() const {
 MeasureUnitImpl MeasureUnitImpl::copy(UErrorCode &status) const {
     MeasureUnitImpl result;
     result.complexity = complexity;
+<<<<<<< HEAD
     result.identifier = identifier;
     if (result.identifier.isEmpty() != identifier.isEmpty()) {
         status = U_MEMORY_ALLOCATION_ERROR;
         return result;
     }
+=======
+    result.identifier.append(identifier, status);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     result.constantDenominator = constantDenominator;
     for (int32_t i = 0; i < singleUnits.length(); i++) {
         SingleUnitImpl *item = result.singleUnits.emplaceBack(*singleUnits[i]);

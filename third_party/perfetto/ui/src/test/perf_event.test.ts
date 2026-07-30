@@ -12,7 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD
 import {test, type Page} from '@playwright/test';
+=======
+import {test, Page} from '@playwright/test';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {PerfettoTestHelper} from './perfetto_ui_test_helper';
 
 test.describe.configure({mode: 'serial'});
@@ -31,24 +35,39 @@ test('multiple callstack tracks', async () => {
   await grp.scrollIntoViewIfNeeded();
   await pth.toggleTrackGroup(grp);
 
+<<<<<<< HEAD
   await pth.waitForIdleAndScreenshot('perf_event_sf.png', {
     locator: page.locator('.pf-timeline-page__timeline'),
   });
 
   const processGrp = pth.locateTrack(
     'surfaceflinger 558/Perf Process Callstacks',
+=======
+  await pth.waitForIdleAndScreenshot('perf_event_sf.png');
+
+  const processGrp = pth.locateTrack(
+    'surfaceflinger 558/Process callstacks',
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     grp,
   );
   await processGrp.scrollIntoViewIfNeeded();
   await pth.toggleTrackGroup(processGrp);
   const threadGrp = pth.locateTrack(
+<<<<<<< HEAD
     'surfaceflinger 558/Thread 558 Perf Callstacks',
+=======
+    'surfaceflinger 558/Thread 558 callstacks',
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     grp,
   );
   await threadGrp.scrollIntoViewIfNeeded();
   await pth.toggleTrackGroup(threadGrp);
 
+<<<<<<< HEAD
   await pth.waitForIdleAndScreenshot('perf_event_sf_expanded.png', {
     locator: page.locator('.pf-timeline-page__timeline'),
   });
+=======
+  await pth.waitForIdleAndScreenshot('perf_event_sf_expanded.png');
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 });

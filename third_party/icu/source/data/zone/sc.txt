@@ -27,6 +27,12 @@ sc{
         "Africa:Tunis"{
             ec{"Tùnisi"}
         }
+<<<<<<< HEAD
+=======
+        "America:Argentina:Tucuman"{
+            ec{"Tucumán"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Havana"{
             ec{"S’Avana"}
         }

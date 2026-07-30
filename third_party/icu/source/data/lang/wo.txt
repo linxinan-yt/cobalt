@@ -6,6 +6,10 @@ wo{
         af{"Afrikaans"}
         am{"Amharik"}
         ar{"Arabic"}
+<<<<<<< HEAD
+=======
+        ar_001{"Araab"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         as{"Asame"}
         az{"Aserbayjane"}
         ba{"Baskir"}
@@ -194,9 +198,12 @@ wo{
         calendar{
             gregorian{"Arminaatu Gregoriyee"}
             iso8601{"ISO-8601 Calendar"}
+<<<<<<< HEAD
         }
         calendar%core{
             gregorian{"Gregorian"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         collation{
             standard{"SSO (Toftalin wiñ gën a xam)"}

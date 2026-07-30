@@ -303,7 +303,11 @@ ia{
         "meta:China"{
             ld{"hora estive de China"}
             lg{"hora de China"}
+<<<<<<< HEAD
             ls{"hora normal de China"}
+=======
+            ls{"hora standard de China"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "meta:Christmas"{
             ls{"hora del Insula de Natal"}
@@ -477,6 +481,9 @@ ia{
         "meta:Kazakhstan"{
             ls{"hora de Kazakhstan"}
         }
+        "meta:Kazakhstan"{
+            ls{"hora de Kazakhstan"}
+        }
         "meta:Kazakhstan_Eastern"{
             ls{"hora de Kazakhstan del Est"}
         }
@@ -505,7 +512,11 @@ ia{
         "meta:Lord_Howe"{
             ld{"hora estive de Lord Howe"}
             lg{"hora de Lord Howe"}
+<<<<<<< HEAD
             ls{"hora normal de Lord Howe"}
+=======
+            ls{"hora standard de Lord Howe"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "meta:Magadan"{
             ld{"hora estive de Magadan"}

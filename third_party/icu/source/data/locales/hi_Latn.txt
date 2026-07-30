@@ -150,9 +150,17 @@ hi_Latn{
                 "yMMdd",
             }
             availableFormats{
+<<<<<<< HEAD
                 EBh{"E, B h"}
                 Eh{"E, h a"}
                 GyMMMEEEEd{"EEEE, d MMM, y G"}
+=======
+                Gy{"G y"}
+                GyMMM{"G y MMM"}
+                GyMMMEEEEd{"G y, dd MMMM, E"}
+                GyMMMEd{"G y, dd MMM, E"}
+                GyMMMd{"G y, d MMM"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 MMMMW{
                     one{"MMMM 'kaa' 'week' W"}
                     other{"MMMM 'kaa' 'week' W"}

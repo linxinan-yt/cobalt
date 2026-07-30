@@ -1127,10 +1127,13 @@ ga{
             "ZWD",
             "Dollar Siombábach (1980–2008)",
         }
+<<<<<<< HEAD
         ZWG{
             "ZWG",
             "ór na Siombáibe",
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         ZWL{
             "ZWL",
             "Dollar na Siombáibe (2009)",
@@ -2737,6 +2740,7 @@ ga{
             other{"kwacha na Saimbia"}
             two{"kwacha na Saimbia"}
         }
+<<<<<<< HEAD
         ZWG{
             few{"ór na Siombáibe"}
             many{"n-ór na Siombáibe"}
@@ -2744,5 +2748,7 @@ ga{
             other{"ór na Siombáibe"}
             two{"ór na Siombáibe"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

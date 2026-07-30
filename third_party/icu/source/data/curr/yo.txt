@@ -956,8 +956,11 @@ yo{
         ZMW{
             other{"àwọn kàwasà Sámbíà"}
         }
+<<<<<<< HEAD
         ZWG{
             other{"Owó ìlú Sìnbábúwè"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

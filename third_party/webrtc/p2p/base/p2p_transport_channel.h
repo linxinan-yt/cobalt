@@ -241,7 +241,11 @@ class RTC_EXPORT P2PTransportChannel : public IceTransportInternal,
   // Returns the latest remote ICE parameters or nullptr if there are no remote
   // ICE parameters yet.
   const IceParameters* remote_ice_parameters() const {
+<<<<<<< HEAD
     RTC_DCHECK_RUN_ON(&network_thread_);
+=======
+    RTC_DCHECK_RUN_ON(network_thread_);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     return remote_ice_parameters_.empty() ? nullptr
                                           : &remote_ice_parameters_.back();
   }

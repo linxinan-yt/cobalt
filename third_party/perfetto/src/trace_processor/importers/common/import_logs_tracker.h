@@ -24,11 +24,17 @@
 #include <utility>
 
 #include "src/trace_processor/importers/common/args_tracker.h"
+<<<<<<< HEAD
+=======
+#include "src/trace_processor/storage/stats.h"
+#include "src/trace_processor/storage/trace_storage.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 namespace perfetto::trace_processor {
 
 class TraceProcessorContext;
 
+<<<<<<< HEAD
 // Tracks errors and other notable import-time events, recording them both as
 // stats (for aggregate metrics) and in the TraceImportLogsTable (for detailed,
 // queryable logs with context).
@@ -40,10 +46,23 @@ class ImportLogsTracker {
   // For "tokenization" logs (pre-parsing, only have byte offset).
   // Use when reading raw bytes and encountering malformed data.
   void RecordTokenizationLog(
+=======
+// Tracks import-time errors and warnings, recording them both as stats
+// (for aggregate metrics) and in the TraceImportLogsTable (for detailed,
+// queryable logs with context).
+class ImportLogsTracker {
+ public:
+  explicit ImportLogsTracker(TraceProcessorContext*, uint32_t trace_id);
+
+  // For "tokenization" errors (pre-parsing, only have byte offset)
+  // Use when reading raw bytes and encountering malformed data.
+  void RecordTokenizationError(
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       size_t stat_key,
       int64_t byte_offset,
       std::function<void(ArgsTracker::BoundInserter&)> args_callback = {});
 
+<<<<<<< HEAD
   // Overload for size_t byte offset (e.g., from TraceBlobView::offset()).
   void RecordTokenizationLog(
       size_t stat_key,
@@ -56,10 +75,25 @@ class ImportLogsTracker {
   // For "parser" logs (post-parsing, have timestamp + context).
   // Use when you have a parsed event but it's invalid/problematic.
   void RecordParserLog(
+=======
+  // Overload for size_t byte offset (e.g., from TraceBlobView::offset())
+  void RecordTokenizationError(
+      size_t stat_key,
+      size_t byte_offset,
+      std::function<void(ArgsTracker::BoundInserter&)> args_callback = {}) {
+    RecordTokenizationError(stat_key, static_cast<int64_t>(byte_offset),
+                            std::move(args_callback));
+  }
+
+  // For "parser" errors (post-parsing, have timestamp + context)
+  // Use when you have a parsed event but it's invalid/problematic.
+  void RecordParserError(
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       size_t stat_key,
       int64_t timestamp,
       std::function<void(ArgsTracker::BoundInserter&)> args_callback = {});
 
+<<<<<<< HEAD
   // For "collection" logs (e.g. errors occurring during trace recording on
   // device).
   // Use when recording information that was explicitly supplied by the
@@ -84,6 +118,17 @@ class ImportLogsTracker {
   // provide args_callback with sufficient context to identify and disambiguate
   // the specific error occurrence (e.g., track_uuid, utid, upid, etc.).
   void RecordAnalysisLog(
+=======
+  // For "analysis" errors (validation/resolution phase, no specific event)
+  // Use ONLY when the error occurs during analysis/validation, not tied to a
+  // specific packet or event (e.g., track hierarchy validation).
+  // IMPORTANT: This should be rare - prefer RecordTokenizationError or
+  // RecordParserError when you have context (byte offset or timestamp).
+  // IMPORTANT: Since this API has neither timestamp nor byte offset, you MUST
+  // provide args_callback with sufficient context to identify and disambiguate
+  // the specific error occurrence (e.g., track_uuid, utid, upid, etc.).
+  void RecordAnalysisError(
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       size_t stat_key,
       std::function<void(ArgsTracker::BoundInserter&)> args_callback);
 
@@ -95,7 +140,18 @@ class ImportLogsTracker {
       std::function<void(ArgsTracker::BoundInserter&)> args_callback);
 
   TraceProcessorContext* context_;
+<<<<<<< HEAD
   tables::TraceFileTable::Id trace_id_;
+=======
+  uint32_t trace_id_;
+
+  // Cached string IDs for severity levels
+  StringId severity_info_id_;
+  StringId severity_data_loss_id_;
+  StringId severity_error_id_;
+
+  StringId SeverityToStringId(stats::Severity severity);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 
 }  // namespace perfetto::trace_processor

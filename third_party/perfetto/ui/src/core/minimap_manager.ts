@@ -13,9 +13,15 @@
 // limitations under the License.
 
 import {HighPrecisionTimeSpan} from '../base/high_precision_time_span';
+<<<<<<< HEAD
 import type {time} from '../base/time';
 import {calculateResolution} from '../base/resolution';
 import type {
+=======
+import {time} from '../base/time';
+import {calculateResolution} from '../frontend/timeline_page/resolution';
+import {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   MinimapContentProvider,
   MinimapManager,
   MinimapRow,

@@ -46,12 +46,18 @@ void PerfettoTeInit(void) {
 }
 
 struct PerfettoTeTimestamp PerfettoTeGetTimestamp(void) {
+<<<<<<< HEAD
   // Clock ID values are kept in sync as PerfettoTeTimestampType uses values
   // from PerfettoDsClockId.
   struct PerfettoDsTimestamp ds_ts = PerfettoDsGetTimestamp();
   struct PerfettoTeTimestamp ret;
   ret.clock_id = ds_ts.clock_id;
   ret.value = ds_ts.value;
+=======
+  struct PerfettoTeTimestamp ret;
+  ret.clock_id = PERFETTO_TE_TIMESTAMP_TYPE_BOOT;
+  ret.value = perfetto::internal::TrackEventInternal::GetTimeNs();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   return ret;
 }
 

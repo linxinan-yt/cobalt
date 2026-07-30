@@ -364,6 +364,11 @@ rtc_library("video_coding_utility") {
     "../../api/video:video_codec_constants",
     "../../api/video:video_frame",
     "../../api/video:video_frame_type",
+<<<<<<< HEAD
+=======
+    "../../api/video/corruption_detection:corruption_detection_settings_generator",
+    "../../api/video/corruption_detection:filter_settings",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     "../../api/video_codecs:video_codecs_api",
     "../../common_video",
     "../../rtc_base:bitstream_reader",
@@ -390,6 +395,7 @@ rtc_library("video_coding_utility") {
   ]
 }
 
+<<<<<<< HEAD
 rtc_library("av1_qp_parser") {
   testonly = true
   sources = [
@@ -405,6 +411,8 @@ rtc_library("av1_qp_parser") {
   public_configs = [ "//third_party/libgav1:libgav1_public_config" ]
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 rtc_library("encoder_speed_controller_impl") {
   visibility = [ "*" ]
   sources = [
@@ -412,6 +420,10 @@ rtc_library("encoder_speed_controller_impl") {
     "utility/encoder_speed_controller_impl.h",
   ]
   deps = [
+<<<<<<< HEAD
+=======
+    "../../api:array_view",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     "../../api/units:time_delta",
     "../../api/units:timestamp",
     "../../api/video_codecs:video_codecs_api",
@@ -1160,6 +1172,11 @@ if (rtc_include_tests) {
       ":av1_qp_parser",
       ":chain_diff_calculator",
       ":codec_globals_headers",
+<<<<<<< HEAD
+=======
+      ":encoded_frame",
+      ":encoder_speed_controller_impl",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       ":frame_dependencies_calculator",
       ":frame_helpers",
       ":h264_sprop_parameter_sets",
@@ -1213,6 +1230,10 @@ if (rtc_include_tests) {
       "../../api/video:video_frame_type",
       "../../api/video:video_rtp_headers",
       "../../api/video/corruption_detection:corruption_detection_unittests",
+<<<<<<< HEAD
+=======
+      "../../api/video/corruption_detection:filter_settings",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       "../../api/video/corruption_detection:frame_instrumentation_data",
       "../../api/video_codecs:scalability_mode",
       "../../api/video_codecs:video_codecs_api",

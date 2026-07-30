@@ -464,6 +464,7 @@ uz{
         za{"Chjuan"}
         zgh{"tamazigxt"}
         zh{"xitoy"}
+        zh_Hans{"xitoy (soddalashgan)"}
         zh_Hant{"xitoy (an’anaviy)"}
         zu{"zulu"}
         zun{"zuni"}

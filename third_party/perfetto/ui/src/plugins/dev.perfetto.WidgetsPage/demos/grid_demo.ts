@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import m from 'mithril';
+<<<<<<< HEAD
 import {
   Grid,
   GridCell,
@@ -27,6 +28,11 @@ import {CodeSnippet} from '../../../widgets/code_snippet';
 import {Button, ButtonVariant} from '../../../widgets/button';
 import {Intent} from '../../../widgets/common';
 import {Icons} from '../../../base/semantic_icons';
+=======
+import {Grid, GridCell, GridHeaderCell, GridRow} from '../../../widgets/grid';
+import {renderWidgetShowcase} from '../widgets_page_utils';
+import {languages} from '../sample_data';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 export function renderGrid(): m.Children {
   return [
@@ -34,6 +40,7 @@ export function renderGrid(): m.Children {
       '.pf-widget-intro',
       m('h1', 'Grid'),
       m('p', [
+<<<<<<< HEAD
         'Grid is a ',
         m('code', '<table>'),
         ' on steroids! It adds quality of life features such as:',
@@ -509,26 +516,79 @@ function renderSimpleGridDemo(
         m(GridCell, {wrap, menuItems}, renderValue(row.status)),
       ];
     }),
+=======
+        'Grid is a purely presentational component for rendering tabular data with ',
+        'virtual scrolling and column resizing. Unlike DataGrid, it provides no automatic ',
+        'features like sorting or filtering - you must provide all content as GridCell and ',
+        'GridHeaderCell components. It is useful as a replacement for simple HTML tables or ',
+        'for building higher level grid experiences.',
+      ]),
+    ),
+
+    renderWidgetShowcase({
+      renderWidget: ({virtualize, wrap}) => {
+        if (virtualize) {
+          return m(VirtualGridDemo);
+        } else {
+          return renderSimpleGridDemo(wrap);
+        }
+      },
+      initialOpts: {
+        virtualize: false,
+        wrap: false,
+      },
+      noPadding: true,
+    }),
+  ];
+}
+
+function renderSimpleGridDemo(wrap: boolean) {
+  return m(Grid, {
+    key: 'grid-demo-no-virt',
+    columns: [
+      {key: 'id', header: m(GridHeaderCell, 'ID')},
+      {key: 'lang', header: m(GridHeaderCell, 'Language')},
+      {key: 'year', header: m(GridHeaderCell, 'Year')},
+      {key: 'creator', header: m(GridHeaderCell, 'Creator')},
+      {key: 'typing', header: m(GridHeaderCell, 'Typing')},
+    ],
+    rowData: languages.map((row) => [
+      m(GridCell, {wrap, align: 'right'}, row.id),
+      m(GridCell, {wrap}, row.lang),
+      m(GridCell, {wrap, align: 'right'}, row.year),
+      m(GridCell, {wrap}, row.creator),
+      m(GridCell, {wrap}, row.typing),
+    ]),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     fillHeight: true,
   });
 }
 
+<<<<<<< HEAD
 interface VirtualGridDemoAttrs {
   readonly contextMenus: boolean;
   readonly sortArrows: boolean;
 }
 
 function VirtualGridDemo(): m.ClassComponent<VirtualGridDemoAttrs> {
+=======
+function VirtualGridDemo() {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   const totalRows = 10_000;
   let currentOffset = 0;
   let loadedRows: GridRow[] = [];
 
+<<<<<<< HEAD
   const loadData = (offset: number, limit: number, contextMenus: boolean) => {
+=======
+  const loadData = (offset: number, limit: number) => {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     currentOffset = offset;
     loadedRows = [];
     for (let i = 0; i < limit && offset + i < totalRows; i++) {
       const idx = offset + i;
       const langData = languages[idx % languages.length];
+<<<<<<< HEAD
 
       const menuItems = contextMenus
         ? [
@@ -549,11 +609,20 @@ function VirtualGridDemo(): m.ClassComponent<VirtualGridDemoAttrs> {
         m(GridCell, {align: 'right', menuItems}, langData.year),
         m(GridCell, {menuItems}, langData.creator),
         m(GridCell, {menuItems}, langData.typing),
+=======
+      loadedRows.push([
+        m(GridCell, {align: 'right'}, idx + 1),
+        m(GridCell, langData.lang),
+        m(GridCell, {align: 'right'}, langData.year),
+        m(GridCell, langData.creator),
+        m(GridCell, langData.typing),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       ]);
     }
     m.redraw();
   };
 
+<<<<<<< HEAD
   const makeHeaderMenuItems = (columnKey: string) => {
     return [
       m(MenuItem, {
@@ -635,12 +704,28 @@ function VirtualGridDemo(): m.ClassComponent<VirtualGridDemoAttrs> {
               'Typing',
             ),
           },
+=======
+  return {
+    view: () => {
+      return m(Grid, {
+        key: 'virtual-grid',
+        columns: [
+          {key: 'id', header: m(GridHeaderCell, 'ID')},
+          {key: 'lang', header: m(GridHeaderCell, 'Language')},
+          {key: 'year', header: m(GridHeaderCell, 'Year')},
+          {key: 'creator', header: m(GridHeaderCell, 'Creator')},
+          {key: 'typing', header: m(GridHeaderCell, 'Typing')},
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         ],
         rowData: {
           data: loadedRows,
           total: totalRows,
           offset: currentOffset,
+<<<<<<< HEAD
           onLoadData: (offset, limit) => loadData(offset, limit, contextMenus),
+=======
+          onLoadData: loadData,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         },
         virtualization: {
           rowHeightPx: 24,

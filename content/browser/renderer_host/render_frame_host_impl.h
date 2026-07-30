@@ -208,7 +208,12 @@
 
 #if BUILDFLAG(IS_ANDROID)
 #include "base/containers/id_map.h"
+<<<<<<< HEAD
 #else
+=======
+#include "content/browser/webauth/webauth_request_security_checker.h"
+#elif !BUILDFLAG(IS_COBALT)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "third_party/blink/public/mojom/hid/hid.mojom-forward.h"
 #endif
 
@@ -236,7 +241,9 @@ class CacheStorage;
 class DeviceAPIService;
 class GeolocationService;
 class ManagedConfigurationService;
+#if !BUILDFLAG(IS_COBALT)
 class WebUsbService;
+#endif
 }  // namespace mojom
 }  // namespace blink
 
@@ -2120,12 +2127,21 @@ class CONTENT_EXPORT RenderFrameHostImpl
   void GetFileSystemAccessManager(
       mojo::PendingReceiver<blink::mojom::FileSystemAccessManager> receiver);
 
+<<<<<<< HEAD
+=======
+#if !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   void GetHidService(mojo::PendingReceiver<blink::mojom::HidService> receiver);
 
+#if !BUILDFLAG(IS_COBALT)
   void BindSerialService(
       mojo::PendingReceiver<blink::mojom::SerialService> receiver);
+<<<<<<< HEAD
   void BindModelContextHost(
       mojo::PendingReceiver<blink::mojom::ModelContextHost> receiver);
+=======
+#endif
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 #if BUILDFLAG(IS_CHROMEOS)
   void GetSmartCardService(
@@ -2192,7 +2208,9 @@ class CONTENT_EXPORT RenderFrameHostImpl
       const net::NetworkIsolationKey& nik,
       const blink::StorageKey& storage_key);
 
-#if BUILDFLAG(IS_ANDROID) || (BUILDFLAG(IS_IOS) && !BUILDFLAG(IS_IOS_TVOS))
+#if (BUILDFLAG(IS_ANDROID) ||                           \
+     (BUILDFLAG(IS_IOS) && !BUILDFLAG(IS_IOS_TVOS))) && \
+    !BUILDFLAG(IS_COBALT)
   void BindNFCReceiver(mojo::PendingReceiver<device::mojom::NFC> receiver);
 #endif
 
@@ -2243,9 +2261,11 @@ class CONTENT_EXPORT RenderFrameHostImpl
   void BindTrustTokenQueryAnswerer(
       mojo::PendingReceiver<network::mojom::TrustTokenQueryAnswerer> receiver);
 
+#if !BUILDFLAG(IS_COBALT)
   // Creates connections to WebUSB interfaces bound to this frame.
   void CreateWebUsbService(
       mojo::PendingReceiver<blink::mojom::WebUsbService> receiver);
+#endif
 
   void CreateWebSocketConnector(
       mojo::PendingReceiver<blink::mojom::WebSocketConnector> receiver);
@@ -4431,6 +4451,7 @@ class CONTENT_EXPORT RenderFrameHostImpl
   // and event data.
   // Note: This function has side effects. It may terminate misbehaving
   // renderers. It may also add messages for certain cases that return false.
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
   bool IsFencedFrameReportingFromRendererAllowed(bool cross_origin_exposed);
 
   // Helper function that handles creating and sending a fenced frame beacon for
@@ -4439,6 +4460,7 @@ class CONTENT_EXPORT RenderFrameHostImpl
       const FencedFrameReporter::DestinationVariant& event_variant,
       blink::FencedFrame::ReportingDestination destination,
       std::optional<int64_t> navigation_id = std::nullopt);
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 
   // Indicates whether this frame has third-party storage
   // partitioning enabled. This depends on the deprecation trial (which can
@@ -5280,9 +5302,11 @@ class CONTENT_EXPORT RenderFrameHostImpl
   // Keeps the track of the latest ServiceWorkerClient.
   base::WeakPtr<ServiceWorkerClient> last_committed_service_worker_client_;
 
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
   // The fenced frames owned by this document, ordered with newer fenced frames
   // being appended to the end.
   std::vector<std::unique_ptr<FencedFrame>> fenced_frames_;
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 
   // The guest frame trees owned by this document.
   std::vector<std::unique_ptr<GuestPageHolderImpl>> guest_pages_;

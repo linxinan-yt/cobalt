@@ -99,6 +99,10 @@ mn{
         dar{"даргва"}
         dav{"тайта"}
         de{"герман"}
+<<<<<<< HEAD
+=======
+        de_CH{"герман (Швейцар)"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         dgr{"догриб"}
         dje{"зарма"}
         doi{"догри"}
@@ -134,6 +138,10 @@ mn{
         fo{"фарер"}
         fon{"фон"}
         fr{"франц"}
+<<<<<<< HEAD
+=======
+        fr_CH{"франц (Швейцар)"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         frc{"франц, кажун"}
         frr{"хойд фриз"}
         fur{"фриулан"}

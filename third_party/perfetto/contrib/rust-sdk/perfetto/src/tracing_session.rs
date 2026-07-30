@@ -207,9 +207,15 @@ impl Drop for TracingSession {
 
 #[cfg(test)]
 mod tests {
+<<<<<<< HEAD
     use crate::data_source::DataSource;
     use crate::tests::{TracingSessionBuilder, acquire_test_environment};
     use crate::{track_event::TrackEvent, track_event_categories};
+=======
+    use crate::data_source::*;
+    use crate::tests::{TracingSessionBuilder, acquire_test_environment};
+    use crate::{track_event::*, track_event_categories, track_event_category_enabled};
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     use std::{
         error::Error,
         sync::{MutexGuard, OnceLock},
@@ -219,7 +225,10 @@ mod tests {
     static DATA_SOURCE: OnceLock<DataSource> = OnceLock::new();
 
     fn get_data_source() -> &'static DataSource<'static> {
+<<<<<<< HEAD
         use crate::data_source::DataSourceArgsBuilder;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         DATA_SOURCE.get_or_init(|| {
             let data_source_args = DataSourceArgsBuilder::new();
             let mut data_source = DataSource::new();
@@ -232,7 +241,10 @@ mod tests {
 
     #[test]
     fn data_source() -> Result<(), Box<dyn Error>> {
+<<<<<<< HEAD
         use crate::data_source::*;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         let _lock = acquire_test_environment();
         let data_source = get_data_source();
         let mut session = TracingSessionBuilder::new()
@@ -277,7 +289,11 @@ mod tests {
 
     #[test]
     fn track_event() -> Result<(), Box<dyn Error>> {
+<<<<<<< HEAD
         use crate::{trace_for_category, track_event::TraceContext, track_event_category_enabled};
+=======
+        use crate::trace_for_category;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         use session_test_te_ns as perfetto_te_ns;
         let _fx = TeTestFixture::new();
         let mut session = TracingSessionBuilder::new()
@@ -299,7 +315,10 @@ mod tests {
 
     #[test]
     fn read_trace() -> Result<(), Box<dyn Error>> {
+<<<<<<< HEAD
         use crate::data_source::TraceContext;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         use crate::pb_decoder::{PbDecoder, PbDecoderField};
         use crate::protos::trace::{test_event::*, trace::*, trace_packet::*};
         use std::sync::{Arc, Mutex};

@@ -202,6 +202,11 @@ pcm{
                 one{"{0} Fọ Ích Tẹ́n Taúzan"}
                 other{"{0} Fọ Ích Tẹ́n Taúzan"}
             }
+            portion-per-1e9{
+                dnam{"pat fọ ích bíliọn"}
+                one{"{0} pat fọ ích bíliọn"}
+                other{"{0} pat fọ ích bíliọn"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -326,6 +331,12 @@ pcm{
                 dnam{"Nánosẹ́kọn-dẹm"}
                 one{"{0} Nánosẹ́kọn"}
                 other{"{0} Nánosẹ́kọn"}
+            }
+            night{
+                dnam{"nait"}
+                one{"{0} nait"}
+                other{"{0} nait"}
+                per{"{0}/nait"}
             }
             quarter{
                 dnam{"kwọ́ta"}
@@ -804,6 +815,11 @@ pcm{
             knot{
                 dnam{"Nọt-dẹm"}
             }
+            light-speed{
+                dnam{"laít"}
+                one{"{0} laít"}
+                other{"{0} laít"}
+            }
             meter-per-second{
                 dnam{"Míta-dẹm Fọ Ẹ́vrí Sẹ́kọn"}
                 one{"{0} Míta Fọ Ẹ́vrí Sẹ́kọn"}
@@ -1052,6 +1068,11 @@ pcm{
             permyriad{
                 dnam{"‱"}
             }
+            portion-per-1e9{
+                dnam{"pfib"}
+                one{"{0}pfib"}
+                other{"{0}pfib"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1140,8 +1161,15 @@ pcm{
                 other{"{0}Mọnt"}
             }
             night{
+<<<<<<< HEAD
                 one{"{0}nait"}
                 other{"{0}nait"}
+=======
+                dnam{"nait"}
+                one{"{0}nait"}
+                other{"{0}nait"}
+                per{"{0}/nait"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             second{
                 dnam{"Sẹ́kọn"}
@@ -1215,6 +1243,10 @@ pcm{
                 dnam{"km/áw"}
             }
             light-speed{
+<<<<<<< HEAD
+=======
+                dnam{"laít"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0}laít"}
                 other{"{0}laít"}
             }
@@ -1378,6 +1410,11 @@ pcm{
             }
             permyriad{
                 dnam{"Fọ Ích Tẹ́n Taúzan"}
+            }
+            portion-per-1e9{
+                dnam{"pat/bíliọn"}
+                one{"{0} pfib"}
+                other{"{0} pfib"}
             }
         }
         consumption{

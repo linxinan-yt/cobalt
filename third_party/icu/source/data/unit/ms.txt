@@ -156,6 +156,10 @@ ms{
                 dnam{"permyriad"}
                 other{"{0} permyriad"}
             }
+            portion-per-1e9{
+                dnam{"bahagian per bilion"}
+                other{"{0} bahagian per bilion"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -251,6 +255,11 @@ ms{
                 other{"{0} nanosaat"}
             }
             night{
+<<<<<<< HEAD
+=======
+                dnam{"malam"}
+                other{"{0} malam"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 per{"{0} setiap malam"}
             }
             quarter{
@@ -662,6 +671,10 @@ ms{
                 dnam{"knot"}
                 other{"{0} knot"}
             }
+            light-speed{
+                dnam{"cahaya"}
+                other{"{0} cahaya"}
+            }
             meter-per-second{
                 dnam{"meter sesaat"}
                 other{"{0} meter sesaat"}
@@ -917,6 +930,14 @@ ms{
             day{
                 other{"{0} h"}
             }
+<<<<<<< HEAD
+=======
+            night{
+                dnam{"malam"}
+                other{"{0} malam"}
+                per{"{0}/malam"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             second{
                 other{"{0} s"}
             }
@@ -1078,6 +1099,10 @@ ms{
             kilometer-per-hour{
                 dnam{"km/j"}
             }
+            light-speed{
+                dnam{"cahaya"}
+                other{"{0} cahaya"}
+            }
             meter-per-second{
                 dnam{"m/s"}
             }
@@ -1195,6 +1220,9 @@ ms{
             }
             permille{
                 dnam{"per seribu"}
+            }
+            portion-per-1e9{
+                dnam{"bahagian/bilion"}
             }
         }
         consumption{

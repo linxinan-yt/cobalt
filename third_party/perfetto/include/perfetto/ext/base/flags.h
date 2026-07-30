@@ -23,6 +23,48 @@
     PERFETTO_BUILDFLAG(PERFETTO_OS_ANDROID)
 // Android: aconfig generates PERFETTO_FLAGS_* macros in perfetto_flags.h
 #include <perfetto_flags.h>
+<<<<<<< HEAD
+=======
+#endif
+
+namespace perfetto::base::flags {
+
+// The list of all the read-only flags accessible to the Perfetto codebase.
+//
+// The first argument is the name of the flag. Should match 1:1 with the name
+// in `perfetto_flags.aconfig`.
+// The second argument is the default value of the flag in non-Android platform
+// contexts.
+//
+// Note: For rt_mutex and rt_futex, the source of truth for non-Android platform
+// is in rt_mutex.h
+#define PERFETTO_READ_ONLY_FLAGS(X)                                    \
+  X(test_read_only_flag, NonAndroidPlatformDefault_FALSE)              \
+  X(use_murmur_hash_for_flat_hash_map, NonAndroidPlatformDefault_TRUE) \
+  X(ftrace_clear_offline_cpus_only, NonAndroidPlatformDefault_TRUE)    \
+  X(use_lockfree_taskrunner,                                           \
+    PERFETTO_BUILDFLAG(PERFETTO_ENABLE_LOCKFREE_TASKRUNNER)            \
+        ? NonAndroidPlatformDefault_TRUE                               \
+        : NonAndroidPlatformDefault_FALSE)                             \
+  X(use_rt_mutex, NonAndroidPlatformDefault_FALSE)                     \
+  X(use_rt_futex, NonAndroidPlatformDefault_FALSE)                     \
+  X(buffer_clone_preserve_read_iter, NonAndroidPlatformDefault_TRUE)   \
+  X(sma_prevent_duplicate_immediate_flushes, NonAndroidPlatformDefault_TRUE)
+
+////////////////////////////////////////////////////////////////////////////////
+//                                                                            //
+//                 implementation details start here                          //
+//                                                                            //
+////////////////////////////////////////////////////////////////////////////////
+
+[[maybe_unused]] constexpr bool NonAndroidPlatformDefault_TRUE = true;
+[[maybe_unused]] constexpr bool NonAndroidPlatformDefault_FALSE = false;
+
+#if PERFETTO_BUILDFLAG(PERFETTO_ANDROID_BUILD) && \
+    PERFETTO_BUILDFLAG(PERFETTO_OS_ANDROID)
+#define PERFETTO_FLAGS_DEF_GETTER(name, default_non_android_value) \
+  [[maybe_unused]] constexpr bool name = ::perfetto::flags::name();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #else
 // Non-Android: Define fallback PERFETTO_FLAGS_* macros
 // These match the pattern from Android's aconfig codegen

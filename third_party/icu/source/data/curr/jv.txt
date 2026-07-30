@@ -653,6 +653,7 @@ jv{
         }
     }
     CurrencyPlurals{
+<<<<<<< HEAD
         MAD{
             other{"Dirham Moroko"}
         }
@@ -661,6 +662,16 @@ jv{
         }
         ZWG{
             other{"Emas Zimbabwe"}
+=======
+        LSL{
+            other{"Loti Lesotho"}
+        }
+        MAD{
+            other{"Dirham Moroko"}
+        }
+        PHP{
+            other{"Peso Filipina"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     }
     CurrencyUnitPatterns{

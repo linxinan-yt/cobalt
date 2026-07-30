@@ -16,6 +16,12 @@ nn{
         "Asia:Ashgabat"{
             ec{"Asjgabat"}
         }
+<<<<<<< HEAD
+=======
+        "Asia:Hovd"{
+            ec{"Khovd"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Asia:Rangoon"{
             ec{"Yangôn"}
         }

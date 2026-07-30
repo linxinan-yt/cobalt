@@ -24,9 +24,30 @@ ca{
         "Africa:Monrovia"{
             ec{"Monròvia"}
         }
+<<<<<<< HEAD
         "Africa:Tripoli"{
             ec{"Trípoli"}
         }
+=======
+        "Africa:Ndjamena"{
+            ec{"N’Djamena"}
+        }
+        "Africa:Tripoli"{
+            ec{"Trípoli"}
+        }
+        "America:Araguaina"{
+            ec{"Araguaína"}
+        }
+        "America:Argentina:Rio_Gallegos"{
+            ec{"Río Gallegos"}
+        }
+        "America:Argentina:Tucuman"{
+            ec{"Tucumán"}
+        }
+        "America:Belem"{
+            ec{"Belém"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Blanc-Sablon"{
             ec{"Blanc Sablon"}
         }
@@ -42,6 +63,21 @@ ca{
         "America:Cayman"{
             ec{"Caiman"}
         }
+<<<<<<< HEAD
+=======
+        "America:Cordoba"{
+            ec{"Córdoba"}
+        }
+        "America:Cuiaba"{
+            ec{"Cuiabá"}
+        }
+        "America:Eirunepe"{
+            ec{"Eirunepé"}
+        }
+        "America:Maceio"{
+            ec{"Maceió"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Martinique"{
             ec{"Martinica"}
         }
@@ -63,6 +99,15 @@ ca{
         "America:Panama"{
             ec{"Panamà"}
         }
+<<<<<<< HEAD
+=======
+        "America:Santarem"{
+            ec{"Santarém"}
+        }
+        "America:Sao_Paulo"{
+            ec{"São Paulo"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Scoresbysund"{
             ec{"Scoresbysund"}
         }
@@ -339,7 +384,13 @@ ca{
             ls{"Hora estàndard de l’Àfrica meridional"}
         }
         "meta:Africa_Western"{
+<<<<<<< HEAD
             ls{"Hora de l’Àfrica occidental"}
+=======
+            ld{"Hora d’estiu de l’Àfrica occidental"}
+            lg{"Hora de l’Àfrica occidental"}
+            ls{"Hora estàndard de l’Àfrica occidental"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "meta:Alaska"{
             ld{"Hora d’estiu d’Alaska"}

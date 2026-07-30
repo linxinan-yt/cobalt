@@ -552,7 +552,11 @@ hi{
         uz{"उज़्बेक"}
         vai{"वाई"}
         ve{"वेन्दा"}
+<<<<<<< HEAD
         vec{"वेनीशियन"}
+=======
+        vec{"वनीशन"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         vi{"वियतनामी"}
         vmw{"मखुवा"}
         vo{"वोलापुक"}

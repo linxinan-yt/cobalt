@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 // Copyright (C) 2025 The Android Open Source Project
+=======
+<<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/com.example.SidePanel/side_panel_example.scss
+// Copyright (C) 2026 The Android Open Source Project
+========
+// Copyright (C) 2025 The Android Open Source Project
+>>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/org.kernel.Wattson/styles.scss
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,12 +20,54 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD
+<<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/org.kernel.Wattson/styles.scss
 @use "../../assets/theme" as *;
 
 .pf-wattson-warning {
   color: var(--pf-color-danger);
+========
+@import "./query_builder/builder.scss";
+
+.pf-explore-page {
+  --pf-exp-font-size-sm: 0.9em;
+  --pf-exp-font-size-md: 1.1em;
+  --pf-exp-font-size-lg: 1.8em;
+
+  height: 100%;
+  position: relative;
+  overflow: auto;
+  padding: 0.25rem;
+>>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/styles.scss
+=======
+<<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/com.example.SidePanel/side_panel_example.scss
+.pf-side-panel-example {
+  padding: 12px;
+========
+@import "../../assets/theme";
+
+.pf-wattson-warning {
+  color: var(--pf-color-danger);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   &__list {
     padding-left: 20px;
   }
+<<<<<<< HEAD
+}
+
+.pf-data-explorer-empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 300px;
+
+  button {
+    font-size: 1.2em;
+    padding: 1.5rem 2.5rem;
+  }
+=======
+>>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/org.kernel.Wattson/styles.scss
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }

@@ -71,6 +71,11 @@ fr_CA{
                 one{"{0} partie par milliard"}
                 other{"{0} parties par milliard"}
             }
+            portion-per-1e9{
+                dnam{"parties par milliard"}
+                one{"{0} partie par milliard"}
+                other{"{0} parties par milliard"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -507,6 +512,7 @@ fr_CA{
             }
         }
         concentr{
+<<<<<<< HEAD
             katal{
                 one{"{0}kat"}
                 other{"{0}kat"}
@@ -527,6 +533,13 @@ fr_CA{
                 one{"{0}%"}
                 other{"{0}%"}
             }
+=======
+            portion-per-1e9{
+                dnam{"p.p. 10⁹"}
+                one{"{0}pp10⁹"}
+                other{"{0}pp10⁹"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         digital{
             gigabit{
@@ -937,6 +950,11 @@ fr_CA{
             permyriad{
                 one{"{0} ‱"}
                 other{"{0} ‱"}
+            }
+            portion-per-1e9{
+                dnam{"p.p. 10⁹"}
+                one{"{0} p.p. 10⁹"}
+                other{"{0} p.p. 10⁹"}
             }
         }
         consumption{

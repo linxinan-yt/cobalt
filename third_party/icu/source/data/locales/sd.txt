@@ -19,9 +19,12 @@ sd{
             }
         }
         arabext{
+<<<<<<< HEAD
             patterns{
                 accountingFormat%alphaNextToNumber{"¤ #,##0.00;(¤ #,##0.00)"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             symbols{
                 decimal{"."}
                 group{"،"}
@@ -29,9 +32,12 @@ sd{
         }
         default{"arab"}
         deva{
+<<<<<<< HEAD
             patterns{
                 accountingFormat%alphaNextToNumber{"¤ #,##0.00;(¤ #,##0.00)"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             symbols{
                 group{"،"}
             }
@@ -263,9 +269,12 @@ sd{
                 "yMMdd",
             }
             availableFormats{
+<<<<<<< HEAD
                 EBh{"E B h"}
                 GyM{"MM-y G"}
                 GyMEd{"E, dd-MM-y G"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 GyMd{"M/d/y G"}
                 MMMMW{
                     one{"ھفتو W جو MMMM"}
@@ -1041,10 +1050,15 @@ sd{
         standard-narrow{
             2{"{0}، {1}"}
             end{"{0}, {1}"}
+            middle{"{0}، {1}"}
+        }
+        unit{
+            middle{"{0}، {1}"}
         }
         unit-short{
             2{"{0}، {1}"}
             end{"{0}, {1}"}
+            middle{"{0}، {1}"}
         }
     }
     measurementSystemNames{

@@ -31,9 +31,21 @@ yue_Hans{
             per{"每 {1} {0}"}
         }
         concentr{
+<<<<<<< HEAD
             katal{
                 dnam{"开特"}
                 other{"{0} 开特"}
+=======
+            portion-per-1e9{
+                dnam{"十亿分点浓度"}
+                other{"{0} 十亿分点浓度"}
+            }
+        }
+        consumption{
+            liter-per-100-kilometer{
+                dnam{"每 100 公里公升"}
+                other{"每 100 公里 {0} 公升"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             ofglucose{
                 dnam{"葡萄糖"}
@@ -63,6 +75,11 @@ yue_Hans{
             }
             month{
                 per{"每月 {0}"}
+            }
+            night{
+                dnam{"晚"}
+                other{"{0} 晚"}
+                per{"{0}/晚"}
             }
             quarter{
                 per{"每季 {0}"}
@@ -199,6 +216,10 @@ yue_Hans{
             kilometer-per-hour{
                 other{"每小时 {0} 公里"}
             }
+            light-speed{
+                dnam{"光速"}
+                other{"{0} 光速"}
+            }
             meter-per-second{
                 other{"每秒 {0} 米"}
             }
@@ -247,6 +268,7 @@ yue_Hans{
             }
         }
         concentr{
+<<<<<<< HEAD
             katal{
                 dnam{"开特"}
                 other{"{0} 开特"}
@@ -261,6 +283,15 @@ yue_Hans{
             }
             part-per-1e9{
                 other{"{0}ppb"}
+=======
+            portion-per-1e9{
+                other{"{0}ppb"}
+            }
+        }
+        consumption{
+            liter-per-100-kilometer{
+                dnam{"升/100公里"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         digital{
@@ -314,6 +345,13 @@ yue_Hans{
             kilogram-force{
                 dnam{"公斤力"}
                 other{"{0} 公斤力"}
+            }
+        }
+        duration{
+            night{
+                dnam{"晚"}
+                other{"{0}晚"}
+                per{"{0}/晚"}
             }
         }
         graphics{
@@ -377,6 +415,10 @@ yue_Hans{
                 other{"每小时 {0} 公里"}
             }
             light-speed{
+                other{"{0}光速"}
+            }
+            light-speed{
+                dnam{"光速"}
                 other{"{0}光速"}
             }
             meter-per-second{
@@ -573,6 +615,9 @@ yue_Hans{
             permyriad{
                 dnam{"点子"}
                 other{"{0} 点子"}
+            }
+            portion-per-1e9{
+                dnam{"浓度/十亿"}
             }
         }
         consumption{

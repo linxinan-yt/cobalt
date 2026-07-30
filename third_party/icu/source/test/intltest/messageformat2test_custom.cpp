@@ -1,5 +1,8 @@
 // © 2024 and later: Unicode, Inc. and others.
+<<<<<<< HEAD
 // License & terms of use: https://www.unicode.org/copyright.html
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 #include "unicode/utypes.h"
 

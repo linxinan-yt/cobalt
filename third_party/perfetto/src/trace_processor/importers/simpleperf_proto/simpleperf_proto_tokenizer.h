@@ -21,7 +21,10 @@
 #include <memory>
 
 #include "perfetto/base/status.h"
+<<<<<<< HEAD
 #include "perfetto/ext/base/status_or.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "perfetto/trace_processor/trace_blob_view.h"
 #include "src/trace_processor/importers/common/chunked_trace_reader.h"
 #include "src/trace_processor/importers/simpleperf_proto/simpleperf_proto_parser.h"
@@ -39,8 +42,12 @@ class SimpleperfProtoTokenizer : public ChunkedTraceReader {
 
   // ChunkedTraceReader implementation.
   base::Status Parse(TraceBlobView) override;
+<<<<<<< HEAD
   base::Status OnPushDataToSorter() override;
   void OnEventsFullyExtracted() override {}
+=======
+  base::Status NotifyEndOfFile() override;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
  private:
   enum class State : uint8_t {
@@ -51,12 +58,19 @@ class SimpleperfProtoTokenizer : public ChunkedTraceReader {
     kFinished
   };
 
+<<<<<<< HEAD
   enum class ParseResult { kOk, kNeedsMoreData };
 
   base::StatusOr<ParseResult> ParseMagic();
   base::StatusOr<ParseResult> ParseVersion();
   base::StatusOr<ParseResult> ParseRecordSize();
   base::StatusOr<ParseResult> ParseRecord();
+=======
+  base::Status ParseMagic();
+  base::Status ParseVersion();
+  base::Status ParseRecordSize();
+  base::Status ParseRecord();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   TraceProcessorContext* const context_;
   util::TraceBlobViewReader reader_;

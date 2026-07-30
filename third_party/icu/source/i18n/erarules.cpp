@@ -140,7 +140,11 @@ EraRules* EraRules::createInstance(const char *calType, UBool includeTentativeEr
         }
         const char *eraIdxStr = ures_getKey(eraRuleRes.getAlias());
         char *endp;
+<<<<<<< HEAD
         int32_t eraIdx = static_cast<int32_t>(uprv_strtol(eraIdxStr, &endp, 10));
+=======
+        int32_t eraIdx = static_cast<int32_t>(strtol(eraIdxStr, &endp, 10));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         if (static_cast<size_t>(endp - eraIdxStr) != uprv_strlen(eraIdxStr)) {
             status = U_INVALID_FORMAT_ERROR;
             return nullptr;
@@ -363,12 +367,23 @@ void EraRules::initCurrentEra() {
     int32_t year, mid;
     int8_t  month0, dom;
     Grego::timeToFields(localMillis, year, month0, dom, mid, ec);
+<<<<<<< HEAD
     currentEra = minEra;
     if (U_FAILURE(ec)) { return; }
     // Now that getEraCode no longer depends on currentEra, we can just do this:
     currentEra = getEraCode(year, month0 + 1 /* changes to 1-base */, dom, ec);
     if (U_FAILURE(ec)) {
         currentEra = minEra;
+=======
+    if (U_FAILURE(ec)) return;
+    int currentEncodedDate = encodeDate(year, month0 + 1 /* changes to 1-base */, dom);
+    int eraIdx = numEras - 1;
+    while (eraIdx > 0) {
+        if (currentEncodedDate >= startDates[eraIdx]) {
+            break;
+        }
+        eraIdx--;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }
 

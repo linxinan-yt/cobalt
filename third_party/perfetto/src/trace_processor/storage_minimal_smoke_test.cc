@@ -17,6 +17,12 @@
 #include <cstdio>
 #include <string>
 
+<<<<<<< HEAD
+=======
+#include <json/reader.h>
+#include <json/value.h>
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "perfetto/ext/base/file_utils.h"
 #include "perfetto/ext/trace_processor/export_json.h"
 #include "perfetto/trace_processor/basic_types.h"

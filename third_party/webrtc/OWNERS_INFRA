@@ -15,6 +15,13 @@ per-file .vpython=mbonadei@webrtc.org,jansson@webrtc.org,jleconte@webrtc.org
 per-file .vpython3=mbonadei@webrtc.org,jansson@webrtc.org,jleconte@webrtc.org
 per-file pylintrc=mbonadei@webrtc.org,jansson@webrtc.org,jleconte@webrtc.org
 per-file pylintrc_old_style=mbonadei@webrtc.org,jansson@webrtc.org,jleconte@webrtc.org
+<<<<<<< HEAD
+=======
+per-file WATCHLISTS=*
+per-file whitespace.txt=*
+per-file native-api.md=mbonadei@webrtc.org
+per-file ....lua=titovartem@webrtc.org
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 per-file .style.yapf=jleconte@webrtc.org
 per-file *.py=mbonadei@webrtc.org,jansson@webrtc.org,jleconte@webrtc.org
 

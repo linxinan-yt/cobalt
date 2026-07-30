@@ -15,7 +15,10 @@
 #include <cstdint>
 #include <functional>
 #include <memory>
+<<<<<<< HEAD
 #include <span>
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include <string>
 #include <utility>
 #include <vector>
@@ -298,7 +301,10 @@ TurnPort::~TurnPort() {
 
   if (socket_) {
     socket_->UnsubscribeSentPacket(this);
+<<<<<<< HEAD
     socket_->UnsubscribeReadyToSend(this);
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     socket_->UnsubscribeConnect(this);
     socket_->UnsubscribeCloseEvent(this);
   }
@@ -502,6 +508,7 @@ bool TurnPort::CreateTurnClientSocket() {
   }
 
   socket_->SubscribeReadyToSend(
+<<<<<<< HEAD
       this, [this, flag = task_safety_.flag()](AsyncPacketSocket* socket) {
         if (flag->alive()) {
           OnReadyToSend(socket);
@@ -514,6 +521,13 @@ bool TurnPort::CreateTurnClientSocket() {
         if (flag->alive()) {
           OnSentPacket(socket, info);
         }
+=======
+      this, [this](AsyncPacketSocket* socket) { OnReadyToSend(socket); });
+
+  socket_->SubscribeSentPacket(
+      this, [this](AsyncPacketSocket* socket, const SentPacketInfo& info) {
+        OnSentPacket(socket, info);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       });
 
   // TCP and UDP with DTLS port is ready to send stun requests after the socket
@@ -1115,9 +1129,14 @@ void TurnPort::HandleChannelData(uint16_t channel_id,
   //   +-------------------------------+
 
   // Extract header fields from the message.
+<<<<<<< HEAD
   std::span<const uint8_t> payload = packet.payload();
   uint16_t len = GetBE16(payload.subspan(2, 2));
   if (len > payload.size() - TURN_CHANNEL_HEADER_SIZE) {
+=======
+  uint16_t len = GetBE16(packet.payload().data() + 2);
+  if (len > packet.payload().size() - TURN_CHANNEL_HEADER_SIZE) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     RTC_LOG(LS_WARNING) << ToString()
                         << ": Received TURN channel data message with "
                            "incorrect length, len: "
@@ -1135,7 +1154,11 @@ void TurnPort::HandleChannelData(uint16_t channel_id,
     return;
   }
   ReceivedIpPacket unwrapped_packet = ReceivedIpPacket(
+<<<<<<< HEAD
       payload.subspan(TURN_CHANNEL_HEADER_SIZE, len), entry->address(),
+=======
+      packet.payload().subview(TURN_CHANNEL_HEADER_SIZE, len), entry->address(),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       packet.arrival_time(), packet.ecn(), packet.decryption_info());
   DispatchPacket(unwrapped_packet, PROTO_UDP);
 }

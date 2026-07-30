@@ -727,8 +727,11 @@ ms{
         XXX{
             other{"(mata wang tidak diketahui)"}
         }
+<<<<<<< HEAD
         ZWG{
             other{"Emas Zimbabwe"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

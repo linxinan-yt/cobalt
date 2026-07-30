@@ -13,7 +13,10 @@
 #include <array>
 #include <cstddef>
 #include <cstring>
+<<<<<<< HEAD
 #include <span>
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 #include "common_audio/channel_buffer.h"
 #include "common_audio/signal_processing/include/signal_processing_library.h"

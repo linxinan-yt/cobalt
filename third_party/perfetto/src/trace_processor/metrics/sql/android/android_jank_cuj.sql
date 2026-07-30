@@ -16,8 +16,16 @@
 -- Initialize relevant thread, frames and CUJ tables for computing this metric.
 SELECT RUN_METRIC('android/jank/android_jank_cuj_init.sql');
 
+<<<<<<< HEAD
 INCLUDE PERFETTO MODULE android.cujs.base;
 INCLUDE PERFETTO MODULE android.cujs.cuj_frame_counters;
+=======
+-- Creates a table that matches CUJ counters with the correct CUJs.
+-- After the CUJ ends FrameTracker emits counters with the number of total
+-- frames, missed frames, longest frame duration, etc.
+-- The same numbers are also reported by FrameTracker to statsd.
+SELECT RUN_METRIC('android/jank/internal/counters.sql');
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 DROP VIEW IF EXISTS android_jank_cuj_output;
 CREATE PERFETTO VIEW android_jank_cuj_output AS

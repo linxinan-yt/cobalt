@@ -32,6 +32,10 @@ class CONTENT_EXPORT RenderWidgetHostViewTVOS : public RenderWidgetHostViewIOS {
   void OnGestureEvent(const ui::GestureEventData& gesture) override;
   bool RequiresDoubleTapGestureEvents() const override;
 
+  // ui::GestureProviderClient implementation.
+  void OnGestureEvent(const ui::GestureEventData& gesture) override;
+  bool RequiresDoubleTapGestureEvents() const override;
+
  private:
   std::unique_ptr<ui::DisplayCALayerTree> display_tree_;
 };

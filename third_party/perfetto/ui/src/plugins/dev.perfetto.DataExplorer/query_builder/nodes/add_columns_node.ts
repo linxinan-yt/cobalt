@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/add_columns_node.ts
   type QueryNode,
   nextNodeId,
   NodeType,
@@ -93,10 +94,81 @@ export class AddColumnsNode implements QueryNode {
       portNames: ['Table'],
     };
     this.nextNodes = [];
+=======
+  QueryNode,
+  QueryNodeState,
+  nextNodeId,
+  NodeType,
+  ModificationNode,
+} from '../../query_node';
+import {ColumnInfo, columnInfoFromName} from '../column_info';
+import protos from '../../../../protos';
+import m from 'mithril';
+import {Card, CardStack} from '../../../../widgets/card';
+import {renderFilterOperation} from '../operations/filter';
+import {MultiselectInput} from '../../../../widgets/multiselect_input';
+import {Select} from '../../../../widgets/select';
+import {Button} from '../../../../widgets/button';
+import {TabStrip, TabOption} from '../../../../widgets/tabs';
+import {TextInput} from '../../../../widgets/text_input';
+
+export type AddColumnsMode = 'guided' | 'free';
+
+export interface AddColumnsNodeState extends QueryNodeState {
+  prevNode: QueryNode;
+  selectedColumns?: string[];
+  leftColumn?: string;
+  rightColumn?: string;
+  mode?: AddColumnsMode; // 'guided' or 'free' mode
+  // Note: sqlTable is no longer used - we get columns from the connected node
+
+  // Note: onAddAndConnectTable callback is now provided through
+  // QueryNodeState.actions.onAddAndConnectTable
+
+  // Pre-selected columns for each suggested table (before connecting)
+  suggestionSelections?: Map<string, string[]>;
+
+  // Track which suggestions are expanded to show column selection
+  expandedSuggestions?: Set<string>;
+
+  // Map from column name to its alias (for renaming added columns)
+  columnAliases?: Map<string, string>;
+
+  // Track if connection was made through guided suggestion
+  isGuidedConnection?: boolean;
+}
+
+export class AddColumnsNode implements ModificationNode {
+  readonly nodeId: string;
+  readonly type = NodeType.kAddColumns;
+  readonly prevNode: QueryNode;
+  inputNodes?: (QueryNode | undefined)[];
+  nextNodes: QueryNode[];
+  readonly state: AddColumnsNodeState;
+
+  constructor(state: AddColumnsNodeState) {
+    this.nodeId = nextNodeId();
+    this.state = state;
+    this.prevNode = state.prevNode;
+    this.inputNodes = [];
+    this.nextNodes = [];
+    this.state.filters = this.state.filters ?? [];
+    this.state.selectedColumns = this.state.selectedColumns ?? [];
+    this.state.leftColumn = this.state.leftColumn ?? 'id';
+    this.state.rightColumn = this.state.rightColumn ?? 'id';
+    this.state.autoExecute = this.state.autoExecute ?? false;
+    this.state.mode = this.state.mode ?? 'guided';
+    this.state.suggestionSelections =
+      this.state.suggestionSelections ?? new Map();
+    this.state.expandedSuggestions =
+      this.state.expandedSuggestions ?? new Set();
+    this.state.columnAliases = this.state.columnAliases ?? new Map();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/add_columns_node.ts
   }
 
   // Called when a node is connected/disconnected to inputNodes
   onPrevNodesUpdated(): void {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/add_columns_node.ts
     // If node is disconnected, reset everything
     if (!this.rightNode) {
       this.attrs.selectedColumns = [];
@@ -122,11 +194,35 @@ export class AddColumnsNode implements QueryNode {
 
   get sourceCols(): ColumnInfo[] {
     return this.primaryInput?.finalCols ?? [];
+=======
+    // Reset column selection when the right node changes
+    this.state.selectedColumns = [];
+
+    // When a node is connected, always switch to Guided mode
+    if (this.rightNode) {
+      this.state.mode = 'guided';
+    }
+
+    // If node is disconnected, reset the guided connection flag
+    if (!this.rightNode) {
+      this.state.isGuidedConnection = false;
+    }
+
+    this.state.onchange?.();
+  }
+
+  get sourceCols(): ColumnInfo[] {
+    return this.prevNode?.finalCols ?? [];
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/add_columns_node.ts
   }
 
   // Get the node connected to the left-side input port (for adding columns from)
   get rightNode(): QueryNode | undefined {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/add_columns_node.ts
     return getSecondaryInput(this, 0);
+=======
+    return this.inputNodes?.[0];
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/add_columns_node.ts
   }
 
   get rightCols(): ColumnInfo[] {
@@ -134,6 +230,7 @@ export class AddColumnsNode implements QueryNode {
   }
 
   get finalCols(): ColumnInfo[] {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/add_columns_node.ts
     let cols = [...this.sourceCols];
 
     // Add columns from connected node (JOIN)
@@ -243,6 +340,23 @@ export class AddColumnsNode implements QueryNode {
     }
 
     return undefined;
+=======
+    if (this.rightNode) {
+      // In free mode, add ALL columns from the connected node
+      if (this.state.mode === 'free') {
+        return [...this.sourceCols, ...this.rightCols];
+      }
+      // In guided mode, add only selected columns (with aliases if provided)
+      const newCols =
+        this.state.selectedColumns?.map((c) => {
+          const alias = this.state.columnAliases?.get(c);
+          // If an alias is provided, use it as the column name
+          return columnInfoFromName(alias ?? c);
+        }) ?? [];
+      return [...this.sourceCols, ...newCols];
+    }
+    return this.sourceCols;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/add_columns_node.ts
   }
 
   // Suggest joinable tables based on JOINID column types
@@ -258,12 +372,20 @@ export class AddColumnsNode implements QueryNode {
     }> = [];
 
     for (const col of this.sourceCols) {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/add_columns_node.ts
       const colType = col.type;
+=======
+      const colType = col.column.type;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/add_columns_node.ts
 
       // Check if this column has a JOINID type with explicit source information
       if (colType && colType.kind === 'joinid') {
         suggestions.push({
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/add_columns_node.ts
           colName: col.name,
+=======
+          colName: col.column.name,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/add_columns_node.ts
           suggestedTable: colType.source.table,
           targetColumn: colType.source.column,
         });
@@ -275,12 +397,21 @@ export class AddColumnsNode implements QueryNode {
 
   // Get available columns for a suggested table
   getTableColumns(tableName: string): string[] {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/add_columns_node.ts
     const table = this.getTable(tableName);
+=======
+    if (!this.state.sqlModules) return [];
+
+    const table = this.state.sqlModules
+      .listTables()
+      .find((t) => t.name === tableName);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/add_columns_node.ts
     if (!table) return [];
 
     return table.columns.map((c) => c.name);
   }
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/add_columns_node.ts
   // Get full table info for a suggested table
   private getTable(tableName: string) {
     if (!this.context.sqlModules) return undefined;
@@ -334,10 +465,13 @@ export class AddColumnsNode implements QueryNode {
     }
   }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/add_columns_node.ts
   getTitle(): string {
     return 'Add Columns';
   }
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/add_columns_node.ts
   // Check if the Apply button should be disabled in the join modal
   isApplyDisabled(): boolean {
     // When no rightNode exists, require table and columns selection
@@ -1505,10 +1639,561 @@ export class AddColumnsNode implements QueryNode {
 
     // If no columns are being added (no rightNode and no computed columns),
     // this is valid - it's just a passthrough node
+=======
+  nodeDetails(): m.Child {
+    const details: m.Child[] = [];
+
+    if (this.rightNode) {
+      if (this.state.mode === 'free') {
+        // Free mode: show that all columns are being added
+        const numCols = this.rightCols.length;
+        const plural = numCols > 1 ? 's' : '';
+        details.push(
+          m(
+            'div',
+            `Adding all ${numCols} column${plural} using `,
+            m('strong', 'id = id'),
+          ),
+        );
+      } else {
+        // Guided mode: show selected columns and join condition
+        if (
+          this.state.selectedColumns &&
+          this.state.selectedColumns.length > 0
+        ) {
+          const plural = this.state.selectedColumns.length > 1 ? 's' : '';
+          const joinCondition =
+            this.state.leftColumn && this.state.rightColumn
+              ? `${this.state.leftColumn} = ${this.state.rightColumn}`
+              : 'no join condition';
+          // Show column names with aliases if provided
+          const columnDisplay = this.state.selectedColumns
+            .map((col) => {
+              const alias = this.state.columnAliases?.get(col);
+              return alias ? `${col} as ${alias}` : col;
+            })
+            .join(', ');
+          details.push(
+            m(
+              'div',
+              `Add column${plural} `,
+              m('strong', columnDisplay),
+              ' using ',
+              m('strong', joinCondition),
+            ),
+          );
+        } else {
+          details.push(m('div', `No columns selected`));
+        }
+      }
+    } else {
+      details.push(m('div', 'Connect a node to add columns from'));
+    }
+
+    return m('.pf-aggregation-node-details', details);
+  }
+
+  nodeSpecificModify(): m.Child {
+    // If a node is connected, always show Guided mode (no tabs)
+    if (this.rightNode) {
+      return m('div', [this.renderGuidedMode()]);
+    }
+
+    // If no node is connected, show tabs to choose between Guided and Free
+    const currentMode = this.state.mode ?? 'guided';
+    const tabs: TabOption[] = [
+      {key: 'guided', title: 'Guided'},
+      {key: 'free', title: 'Free'},
+    ];
+
+    return m('div', [
+      m(TabStrip, {
+        tabs,
+        currentTabKey: currentMode,
+        onTabChange: (key: string) => {
+          this.state.mode = key === 'guided' || key === 'free' ? key : 'guided';
+          this.state.onchange?.();
+          m.redraw();
+        },
+      }),
+      currentMode === 'guided'
+        ? this.renderGuidedMode()
+        : this.renderFreeMode(),
+    ]);
+  }
+
+  private renderGuidedMode(): m.Child {
+    if (!this.rightNode) {
+      const suggestions = this.getJoinSuggestions();
+
+      return m(
+        'div',
+        m(
+          Card,
+          m('h3', 'Join Suggestions'),
+          suggestions.length > 0
+            ? m(
+                'div',
+                {style: {display: 'flex', flexDirection: 'column', gap: '8px'}},
+                [
+                  m(
+                    'p',
+                    {style: {marginBottom: '8px', color: '#888'}},
+                    'Based on your JOINID columns, you could join with:',
+                  ),
+                  suggestions.map((s) => {
+                    const availableColumns = this.getTableColumns(
+                      s.suggestedTable,
+                    );
+                    const selectedColumns =
+                      this.state.suggestionSelections?.get(s.suggestedTable) ??
+                      [];
+                    const isExpanded =
+                      this.state.expandedSuggestions?.has(s.suggestedTable) ??
+                      false;
+
+                    return m(
+                      'div',
+                      {
+                        style: {
+                          padding: '8px',
+                          backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                          borderRadius: '4px',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '8px',
+                        },
+                      },
+                      [
+                        // Header row with table name and expand/collapse
+                        m(
+                          'div',
+                          {
+                            style: {
+                              display: 'flex',
+                              justifyContent: 'space-between',
+                              alignItems: 'center',
+                              gap: '8px',
+                              cursor: 'pointer',
+                              userSelect: 'none',
+                            },
+                            onclick: (e: MouseEvent) => {
+                              // Don't toggle if clicking on the button
+                              if (
+                                (e.target as HTMLElement).closest('button') ||
+                                (e.target as HTMLElement).tagName === 'BUTTON'
+                              ) {
+                                return;
+                              }
+
+                              if (!this.state.expandedSuggestions) {
+                                this.state.expandedSuggestions = new Set();
+                              }
+                              if (isExpanded) {
+                                this.state.expandedSuggestions.delete(
+                                  s.suggestedTable,
+                                );
+                              } else {
+                                this.state.expandedSuggestions.add(
+                                  s.suggestedTable,
+                                );
+                              }
+                              m.redraw();
+                            },
+                          },
+                          [
+                            m(
+                              'span',
+                              {
+                                style: {
+                                  fontFamily: 'monospace',
+                                  fontSize: '12px',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  gap: '4px',
+                                },
+                              },
+                              [
+                                m(
+                                  'span',
+                                  {
+                                    style: {
+                                      fontSize: '16px',
+                                      lineHeight: '1',
+                                    },
+                                  },
+                                  isExpanded ? '▼' : '▶',
+                                ),
+                                m('strong', s.suggestedTable),
+                                ' table (using ',
+                                m('code', s.colName),
+                                ' = ',
+                                m('code', s.targetColumn),
+                                ')',
+                                selectedColumns.length > 0 &&
+                                  m(
+                                    'span',
+                                    {
+                                      style: {
+                                        marginLeft: '8px',
+                                        color: '#888',
+                                        fontSize: '11px',
+                                      },
+                                    },
+                                    `${selectedColumns.length} selected`,
+                                  ),
+                              ],
+                            ),
+                            isExpanded &&
+                              selectedColumns.length > 0 &&
+                              m(Button, {
+                                label: 'Add & Connect',
+                                icon: 'add_link',
+                                minimal: true,
+                                compact: true,
+                                onclick: (e: MouseEvent) => {
+                                  e.stopPropagation();
+                                  if (
+                                    this.state.actions?.onAddAndConnectTable
+                                  ) {
+                                    // Mark this as a guided connection
+                                    this.state.isGuidedConnection = true;
+                                    // Port index 0 = first left-side input port
+                                    this.state.actions.onAddAndConnectTable(
+                                      s.suggestedTable,
+                                      0,
+                                    );
+                                    // Pre-set the join columns based on the suggestion
+                                    this.state.leftColumn = s.colName;
+                                    this.state.rightColumn = s.targetColumn;
+                                    // Pre-set the selected columns
+                                    this.state.selectedColumns = [
+                                      ...selectedColumns,
+                                    ];
+                                    this.state.onchange?.();
+                                  }
+                                },
+                              }),
+                          ],
+                        ),
+                        // Column selection (only when expanded)
+                        isExpanded &&
+                          m(
+                            'div',
+                            {
+                              style: {
+                                marginTop: '4px',
+                                paddingTop: '8px',
+                                borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+                              },
+                            },
+                            [
+                              m(
+                                'div',
+                                {
+                                  style: {
+                                    marginBottom: '8px',
+                                    fontSize: '11px',
+                                    color: '#888',
+                                  },
+                                },
+                                `Select columns from ${s.suggestedTable} (${availableColumns.length} available):`,
+                              ),
+                              m(MultiselectInput, {
+                                options: availableColumns.map((col) => ({
+                                  key: col,
+                                  label: col,
+                                })),
+                                selectedOptions: selectedColumns,
+                                onOptionAdd: (key: string) => {
+                                  if (!this.state.suggestionSelections) {
+                                    this.state.suggestionSelections = new Map();
+                                  }
+                                  const current =
+                                    this.state.suggestionSelections.get(
+                                      s.suggestedTable,
+                                    ) ?? [];
+                                  this.state.suggestionSelections.set(
+                                    s.suggestedTable,
+                                    [...current, key],
+                                  );
+                                  m.redraw();
+                                },
+                                onOptionRemove: (key: string) => {
+                                  if (this.state.suggestionSelections) {
+                                    const current =
+                                      this.state.suggestionSelections.get(
+                                        s.suggestedTable,
+                                      ) ?? [];
+                                    this.state.suggestionSelections.set(
+                                      s.suggestedTable,
+                                      current.filter((c) => c !== key),
+                                    );
+                                    m.redraw();
+                                  }
+                                },
+                              }),
+                            ],
+                          ),
+                      ],
+                    );
+                  }),
+                  m(
+                    'p',
+                    {
+                      style: {
+                        marginTop: '8px',
+                        color: '#888',
+                        fontSize: '12px',
+                      },
+                    },
+                    'Connect a table node to the left port to add columns.',
+                  ),
+                ],
+              )
+            : m(
+                'p',
+                {style: {color: '#888'}},
+                'No JOINID columns found in your data. You can still connect any node to the left port, or switch to Free mode.',
+              ),
+        ),
+      );
+    }
+
+    const leftCols = this.sourceCols;
+    const rightCols = this.rightCols;
+
+    return m('div', [
+      m(
+        CardStack,
+        m(
+          Card,
+          m('h3', 'Select Columns to Add'),
+          m(MultiselectInput, {
+            options: rightCols.map((c) => ({
+              key: c.column.name,
+              label: c.column.name,
+            })),
+            selectedOptions: this.state.selectedColumns ?? [],
+            onOptionAdd: (key: string) => {
+              if (!this.state.selectedColumns) {
+                this.state.selectedColumns = [];
+              }
+              this.state.selectedColumns.push(key);
+              this.state.onchange?.();
+              m.redraw();
+            },
+            onOptionRemove: (key: string) => {
+              if (this.state.selectedColumns) {
+                this.state.selectedColumns = this.state.selectedColumns.filter(
+                  (c) => c !== key,
+                );
+                // Also remove the alias for this column
+                this.state.columnAliases?.delete(key);
+                this.state.onchange?.();
+                m.redraw();
+              }
+            },
+          }),
+          // Show alias inputs for selected columns
+          this.state.selectedColumns && this.state.selectedColumns.length > 0
+            ? m(
+                'div',
+                {
+                  style: {
+                    paddingTop: '5px',
+                    borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+                  },
+                },
+                [
+                  m(
+                    'h4',
+                    {style: {marginBottom: '8px'}},
+                    'Column Aliases (optional)',
+                  ),
+                  m(
+                    'div',
+                    {
+                      style: {
+                        fontSize: '11px',
+                        color: '#888',
+                        marginBottom: '8px',
+                      },
+                    },
+                    'Rename columns by providing an alias:',
+                  ),
+                  this.state.selectedColumns.map((colName) =>
+                    m(
+                      '.pf-form-row',
+                      {
+                        style: {
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '8px',
+                          marginBottom: '8px',
+                        },
+                      },
+                      [
+                        m(
+                          'code',
+                          {style: {minWidth: '120px', fontSize: '12px'}},
+                          colName,
+                        ),
+                        m('span', '→'),
+                        m(TextInput, {
+                          placeholder: 'alias (optional)',
+                          value: this.state.columnAliases?.get(colName) ?? '',
+                          oninput: (e: InputEvent) => {
+                            const target = e.target as HTMLInputElement;
+                            const alias = target.value.trim();
+                            if (!this.state.columnAliases) {
+                              this.state.columnAliases = new Map();
+                            }
+                            if (alias) {
+                              this.state.columnAliases.set(colName, alias);
+                            } else {
+                              this.state.columnAliases.delete(colName);
+                            }
+                            this.state.onchange?.();
+                          },
+                        }),
+                      ],
+                    ),
+                  ),
+                ],
+              )
+            : null,
+        ),
+        m(
+          Card,
+          m('h3', 'Join Condition'),
+          m(
+            '.pf-form-row',
+            m('label', 'Base Column:'),
+            m(
+              Select,
+              {
+                onchange: (e: Event) => {
+                  const target = e.target as HTMLSelectElement;
+                  this.state.leftColumn = target.value;
+                  this.state.onchange?.();
+                },
+              },
+              m(
+                'option',
+                {disabled: true, selected: !this.state.leftColumn},
+                'Select column',
+              ),
+              leftCols.map((col) =>
+                m(
+                  'option',
+                  {
+                    value: col.column.name,
+                    selected: col.column.name === this.state.leftColumn,
+                  },
+                  col.column.name,
+                ),
+              ),
+            ),
+          ),
+          m(
+            '.pf-form-row',
+            m('label', 'Connected Node Column:'),
+            m(
+              Select,
+              {
+                onchange: (e: Event) => {
+                  const target = e.target as HTMLSelectElement;
+                  this.state.rightColumn = target.value;
+                  this.state.onchange?.();
+                },
+              },
+              m(
+                'option',
+                {disabled: true, selected: !this.state.rightColumn},
+                'Select column',
+              ),
+              rightCols.map((col) =>
+                m(
+                  'option',
+                  {
+                    value: col.column.name,
+                    selected: col.column.name === this.state.rightColumn,
+                  },
+                  col.column.name,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+      renderFilterOperation(
+        this.state.filters,
+        this.state.filterOperator,
+        this.finalCols,
+        (newFilters) => {
+          this.state.filters = [...newFilters];
+          this.state.onchange?.();
+        },
+        (operator) => {
+          this.state.filterOperator = operator;
+          this.state.onchange?.();
+        },
+      ),
+    ]);
+  }
+
+  private renderFreeMode(): m.Child {
+    if (!this.rightNode) {
+      return m(
+        'div',
+        m(
+          Card,
+          m('h3', 'Free Mode'),
+          m(
+            'p',
+            {style: {color: '#888'}},
+            'Connect any node to the left port. All columns from the connected node will be added via LEFT JOIN.',
+          ),
+        ),
+      );
+    }
+
+    // Show simple UI when a node is connected
+    return m(
+      'div',
+      m(
+        Card,
+        m('h3', 'Connected Node'),
+        m(
+          'p',
+          {style: {marginBottom: '8px'}},
+          `All ${this.rightCols.length} columns from the connected node will be added.`,
+        ),
+        m(
+          'p',
+          {style: {color: '#888', fontSize: '12px'}},
+          'Switch to Guided mode to select specific columns and configure the join condition.',
+        ),
+      ),
+    );
+  }
+
+  validate(): boolean {
+    if (this.prevNode === undefined) return false;
+    if (this.rightNode === undefined) return true; // No node connected is valid (pass-through)
+
+    // In free mode, we use default join columns, so it's always valid
+    if (this.state.mode === 'free') return true;
+
+    // In guided mode, we need valid join columns
+    if (!this.state.leftColumn || !this.state.rightColumn) return false;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/add_columns_node.ts
     return true;
   }
 
   clone(): QueryNode {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/add_columns_node.ts
     const attrsCopy: AddColumnsNodeAttrs = {
       selectedColumns: this.attrs.selectedColumns
         ? [...this.attrs.selectedColumns]
@@ -1542,10 +2227,14 @@ export class AddColumnsNode implements QueryNode {
       onchange: this.context.onchange,
       sqlModules: this.context.sqlModules,
     });
+=======
+    return new AddColumnsNode(this.state);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/add_columns_node.ts
   }
 
   getStructuredQuery(): protos.PerfettoSqlStructuredQuery | undefined {
     if (!this.validate()) return undefined;
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/add_columns_node.ts
     if (this.primaryInput === undefined) return undefined;
 
     // If there's no rightNode, we only add computed columns (no JOIN)
@@ -1667,5 +2356,85 @@ export class AddColumnsNode implements QueryNode {
         : undefined,
       this.nodeId,
     );
+=======
+    if (!this.rightNode) return this.prevNode.getStructuredQuery();
+
+    const prevSq = this.prevNode.getStructuredQuery();
+    if (prevSq === undefined) return undefined;
+
+    const rightSq = this.rightNode.getStructuredQuery();
+    if (rightSq === undefined) return undefined;
+
+    // Use ExperimentalAddColumns which is specifically designed for this use case
+    const sq = new protos.PerfettoSqlStructuredQuery();
+    sq.id = this.nodeId;
+
+    const addColumns =
+      new protos.PerfettoSqlStructuredQuery.ExperimentalAddColumns();
+
+    // Set the core query (base data)
+    addColumns.coreQuery = prevSq;
+
+    // Set the input query (source of additional columns)
+    addColumns.inputQuery = rightSq;
+
+    // Set the columns to add based on mode
+    if (this.state.mode === 'free') {
+      // In free mode, add ALL columns from right table
+      addColumns.inputColumns = this.rightCols.map((col) => {
+        const selectCol = new protos.PerfettoSqlStructuredQuery.SelectColumn();
+        selectCol.columnNameOrExpression = col.column.name;
+        return selectCol;
+      });
+    } else {
+      // In guided mode, add only selected columns with optional aliases
+      addColumns.inputColumns = (this.state.selectedColumns ?? []).map(
+        (colName) => {
+          const selectCol =
+            new protos.PerfettoSqlStructuredQuery.SelectColumn();
+          selectCol.columnNameOrExpression = colName;
+          // Set alias if provided
+          const alias = this.state.columnAliases?.get(colName);
+          if (alias && alias.trim() !== '') {
+            selectCol.alias = alias.trim();
+          }
+          return selectCol;
+        },
+      );
+    }
+
+    // Set the join condition
+    const equalityCols =
+      new protos.PerfettoSqlStructuredQuery.ExperimentalJoin.EqualityColumns();
+
+    if (this.state.mode === 'free') {
+      // In free mode, use default 'id' columns for join
+      equalityCols.leftColumn = 'id';
+      equalityCols.rightColumn = 'id';
+    } else {
+      // In guided mode, use user-selected columns
+      equalityCols.leftColumn = this.state.leftColumn!;
+      equalityCols.rightColumn = this.state.rightColumn!;
+    }
+
+    addColumns.equalityColumns = equalityCols;
+
+    sq.experimentalAddColumns = addColumns;
+
+    return sq;
+  }
+
+  serializeState(): object {
+    return this.state;
+  }
+
+  static deserializeState(
+    serializedState: AddColumnsNodeState,
+  ): AddColumnsNodeState {
+    return {
+      ...serializedState,
+      prevNode: undefined as unknown as QueryNode,
+    };
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/add_columns_node.ts
   }
 }

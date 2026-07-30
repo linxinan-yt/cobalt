@@ -1165,6 +1165,46 @@ sk{
                 one{"{0} desatina promile"}
                 other{"{0} desatín promile"}
             }
+            portion-per-1e9{
+                case{
+                    accusative{
+                        few{"{0} častice na miliardu"}
+                        many{"{0} častice na miliardu"}
+                        one{"{0} časticu na miliardu"}
+                        other{"{0} častíc na miliardu"}
+                    }
+                    dative{
+                        few{"{0} časticiam na miliardu"}
+                        many{"{0} častice na miliardu"}
+                        one{"{0} častici na miliardu"}
+                        other{"{0} časticiam na miliardu"}
+                    }
+                    genitive{
+                        few{"{0} častíc na miliardu"}
+                        many{"{0} častice na miliardu"}
+                        one{"{0} častice na miliardu"}
+                        other{"{0} častíc na miliardu"}
+                    }
+                    instrumental{
+                        few{"{0} časticami na miliardu"}
+                        many{"{0} častice na miliardu"}
+                        one{"{0} časticou na miliardu"}
+                        other{"{0} časticami na miliardu"}
+                    }
+                    locative{
+                        few{"{0} časticiach na miliardu"}
+                        many{"{0} častice na miliardu"}
+                        one{"{0} častici na miliardu"}
+                        other{"{0} časticiach na miliardu"}
+                    }
+                }
+                dnam{"častice na miliardu"}
+                few{"{0} častice na miliardu"}
+                gender{"feminine"}
+                many{"{0} častice na miliardu"}
+                one{"{0} častica na miliardu"}
+                other{"{0} častíc na miliardu"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -2128,11 +2168,19 @@ sk{
                         other{"{0} nociach"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"noci"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 few{"{0} noci"}
                 gender{"feminine"}
                 many{"{0} noci"}
                 one{"{0} noc"}
                 other{"{0} nocí"}
+<<<<<<< HEAD
+=======
+                per{"{0}/noc"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 case{
@@ -5547,6 +5595,14 @@ sk{
                 other{"{0} m."}
                 per{"{0}/m."}
             }
+            night{
+                dnam{"noci"}
+                few{"{0} noci"}
+                many{"{0} noci"}
+                one{"{0} noc"}
+                other{"{0} nocí"}
+                per{"{0}/noc"}
+            }
             week{
                 dnam{"t."}
                 few{"{0} t."}
@@ -5556,6 +5612,7 @@ sk{
                 per{"{0}/t."}
             }
         }
+<<<<<<< HEAD
         energy{
             calorie-it{
                 dnam{"cal-IT"}
@@ -5568,6 +5625,15 @@ sk{
                 many{"{0} kp"}
                 one{"{0} kp"}
                 other{"{0} kp"}
+=======
+        force{
+            kilowatt-hour-per-100-kilometer{
+                dnam{"kWh/100 km"}
+                few{"{0} kWh/100 km"}
+                many{"{0} kWh/100 km"}
+                one{"{0} kWh/100 km"}
+                other{"{0} kWh/100 km"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         graphics{
@@ -5853,6 +5919,7 @@ sk{
             }
         }
         force{
+<<<<<<< HEAD
             kilogram-force{
                 dnam{"kp"}
                 few{"{0} kp"}
@@ -5860,6 +5927,8 @@ sk{
                 one{"{0} kp"}
                 other{"{0} kp"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             kilowatt-hour-per-100-kilometer{
                 dnam{"kWh/100 km"}
                 few{"{0} kWh/100 km"}

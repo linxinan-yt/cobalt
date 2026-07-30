@@ -1193,6 +1193,12 @@ kok{
         "Pacific:Guam"{
             ec{"गुआम"}
         }
+<<<<<<< HEAD
+=======
+        "Pacific:Kanton"{
+            ec{"कांटोन"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Pacific:Kiritimati"{
             ec{"किरितिमाती"}
         }

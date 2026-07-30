@@ -240,8 +240,13 @@ component("gl") {
   }
 
   if (use_ozone) {
+<<<<<<< HEAD
     if (!is_fuchsia) {
       if (!use_static_angle || is_chromeos) {
+=======
+    if (!is_fuchsia && !is_cobalt_hermetic_build) {
+      if (!use_static_angle) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         data_deps += [
           "//third_party/angle:libEGL",
           "//third_party/angle:libGLESv2",
@@ -432,7 +437,7 @@ component("gl") {
     ]
   }
 
-  if (is_android || is_chromeos || is_linux) {
+  if (is_android || is_chromeos || is_linux && !is_starboard) {
     # Windows doesn't support base::FileDescriptor.
     # libsync isn't supported or needed on MacOSX.
     # Fuchsia is excluded due to a libsync dependency and because it's

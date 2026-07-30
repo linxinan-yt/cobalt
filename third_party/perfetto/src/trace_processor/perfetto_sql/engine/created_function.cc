@@ -24,6 +24,10 @@
 #include <stack>
 #include <string>
 #include <utility>
+<<<<<<< HEAD
+=======
+#include <variant>
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include <vector>
 
 #include "perfetto/base/logging.h"
@@ -32,8 +36,14 @@
 #include "perfetto/ext/base/status_macros.h"
 #include "perfetto/ext/base/status_or.h"
 #include "perfetto/ext/base/string_view.h"
+<<<<<<< HEAD
 #include "perfetto/trace_processor/basic_types.h"
 #include "src/trace_processor/perfetto_sql/engine/perfetto_sql_connection.h"
+=======
+#include "perfetto/ext/base/variant.h"
+#include "perfetto/trace_processor/basic_types.h"
+#include "src/trace_processor/perfetto_sql/engine/perfetto_sql_engine.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "src/trace_processor/perfetto_sql/parser/function_util.h"
 #include "src/trace_processor/sqlite/bindings/sqlite_function.h"
 #include "src/trace_processor/sqlite/bindings/sqlite_result.h"
@@ -42,7 +52,10 @@
 #include "src/trace_processor/sqlite/sqlite_connection.h"
 #include "src/trace_processor/sqlite/sqlite_utils.h"
 #include "src/trace_processor/tp_metatrace.h"
+<<<<<<< HEAD
 #include "src/trace_processor/util/owned_sql_value.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "src/trace_processor/util/sql_argument.h"
 
 namespace perfetto::trace_processor {
@@ -138,6 +151,66 @@ base::Status BindArguments(sqlite3_stmt* stmt,
   return base::OkStatus();
 }
 
+<<<<<<< HEAD
+=======
+struct StoredSqlValue {
+  // unique_ptr to ensure that the pointers to these values are long-lived.
+  using OwnedString = std::unique_ptr<std::string>;
+  using OwnedBytes = std::unique_ptr<std::vector<uint8_t>>;
+  // variant is a pain to use, but it's the simplest way to ensure that
+  // the destructors run correctly for non-trivial members of the
+  // union.
+  using Data =
+      std::variant<int64_t, double, OwnedString, OwnedBytes, std::nullptr_t>;
+
+  explicit StoredSqlValue(SqlValue value) {
+    switch (value.type) {
+      case SqlValue::Type::kNull:
+        data = nullptr;
+        break;
+      case SqlValue::Type::kLong:
+        data = value.long_value;
+        break;
+      case SqlValue::Type::kDouble:
+        data = value.double_value;
+        break;
+      case SqlValue::Type::kString:
+        data = std::make_unique<std::string>(value.string_value);
+        break;
+      case SqlValue::Type::kBytes:
+        const auto* ptr = static_cast<const uint8_t*>(value.bytes_value);
+        data = std::make_unique<std::vector<uint8_t>>(ptr,
+                                                      ptr + value.bytes_count);
+        break;
+    }
+  }
+
+  SqlValue AsSqlValue() {
+    switch (data.index()) {
+      case base::variant_index<Data, std::nullptr_t>():
+        return {};
+      case base::variant_index<Data, int64_t>():
+        return SqlValue::Long(base::unchecked_get<int64_t>(data));
+      case base::variant_index<Data, double>():
+        return SqlValue::Double(base::unchecked_get<double>(data));
+      case base::variant_index<Data, OwnedString>(): {
+        const auto& str_ptr = base::unchecked_get<OwnedString>(data);
+        return SqlValue::String(str_ptr->c_str());
+      }
+      case base::variant_index<Data, OwnedBytes>(): {
+        const auto& bytes_ptr = base::unchecked_get<OwnedBytes>(data);
+        return SqlValue::Bytes(bytes_ptr->data(), bytes_ptr->size());
+      }
+    }
+    // GCC doesn't realize that the switch is exhaustive.
+    PERFETTO_CHECK(false);
+    return SqlValue();
+  }
+
+  Data data = nullptr;
+};
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 class Memoizer {
  public:
   // Supported arguments. For now, only functions with a single int argument are
@@ -560,17 +633,28 @@ class State : public CreatedFunction::UserData {
 State::~State() = default;
 
 std::unique_ptr<CreatedFunction::UserData> CreatedFunction::MakeContext(
+<<<<<<< HEAD
     PerfettoSqlConnection* connection) {
   return std::make_unique<State>(connection);
+=======
+    PerfettoSqlEngine* engine) {
+  return std::make_unique<State>(engine);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 bool CreatedFunction::IsValid(UserData* ctx) {
   return static_cast<State*>(ctx)->is_valid();
 }
 
+<<<<<<< HEAD
 void CreatedFunction::Reset(UserData* ctx, PerfettoSqlConnection* connection) {
   ctx->~UserData();
   new (ctx) State(connection);
+=======
+void CreatedFunction::Reset(UserData* ctx, PerfettoSqlEngine* engine) {
+  ctx->~UserData();
+  new (ctx) State(engine);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 void CreatedFunction::Step(sqlite3_context* ctx,
@@ -667,9 +751,15 @@ void CreatedFunction::Step(sqlite3_context* ctx,
     return sqlite::utils::SetError(ctx, status.c_message());
   }
 
+<<<<<<< HEAD
   auto result = EvaluateScalarStatement(
       state->CurrentStatement(), state->connection()->sqlite_connection()->db(),
       state->prototype());
+=======
+  auto result = EvaluateScalarStatement(state->CurrentStatement(),
+                                        state->engine()->sqlite_engine()->db(),
+                                        state->prototype());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   if (!result.ok()) {
     return sqlite::utils::SetError(ctx, result.status().c_message());
   }

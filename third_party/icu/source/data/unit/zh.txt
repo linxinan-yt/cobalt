@@ -95,7 +95,11 @@ zh{
             part-per-1e6{
                 other{"百万分之{0}"}
             }
+<<<<<<< HEAD
             part-per-1e9{
+=======
+            portion-per-1e9{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 dnam{"十亿分比"}
                 other{"十亿分之{0}"}
             }
@@ -168,6 +172,11 @@ zh{
             }
         }
         duration{
+            night{
+                dnam{"晚"}
+                other{"{0}晚"}
+                per{"{0}/晚"}
+            }
             quarter{
                 dnam{"季度"}
             }
@@ -463,6 +472,10 @@ zh{
                 dnam{"节"}
                 other{"{0}节"}
             }
+            light-speed{
+                dnam{"光"}
+                other{"{0}光"}
+            }
             meter-per-second{
                 dnam{"米/秒"}
                 other{"每秒{0}米"}
@@ -635,6 +648,11 @@ zh{
             }
             nanosecond{
                 other{"{0}ns"}
+            }
+            night{
+                dnam{"晚"}
+                other{"{0}晚"}
+                per{"{0}/晚"}
             }
         }
         electric{
@@ -968,6 +986,10 @@ zh{
             }
             knot{
                 other{"{0}kn"}
+            }
+            light-speed{
+                dnam{"光"}
+                other{"{0}光"}
             }
             meter-per-second{
                 dnam{"米/秒"}
@@ -1520,6 +1542,12 @@ zh{
             }
             ofhg{
                 other{"{0}Hg"}
+            }
+        }
+        speed{
+            light-speed{
+                dnam{"光"}
+                other{"{0}光"}
             }
         }
         speed{

@@ -13,7 +13,11 @@
 // limitations under the License.
 
 import m from 'mithril';
+<<<<<<< HEAD
 import {Menu, MenuDivider, MenuItem, MenuTitle} from '../../../widgets/menu';
+=======
+import {Menu, MenuDivider, MenuItem} from '../../../widgets/menu';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {renderWidgetShowcase} from '../widgets_page_utils';
 
 export function renderMenu(): m.Children {
@@ -30,7 +34,10 @@ export function renderMenu(): m.Children {
       renderWidget: () =>
         m(
           Menu,
+<<<<<<< HEAD
           m(MenuTitle, {label: 'Common Actions'}),
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
           m(MenuItem, {label: 'New', icon: 'add'}),
           m(MenuItem, {label: 'Open', icon: 'folder_open'}),
           m(MenuItem, {label: 'Save', icon: 'save', disabled: true}),
@@ -42,7 +49,10 @@ export function renderMenu(): m.Children {
             {label: 'Share', icon: 'share'},
             m(MenuItem, {label: 'Everyone', icon: 'public'}),
             m(MenuItem, {label: 'Friends', icon: 'group'}),
+<<<<<<< HEAD
             m(MenuTitle, {label: 'Other'}),
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             m(
               MenuItem,
               {label: 'Specific people', icon: 'person_add'},

@@ -1197,6 +1197,12 @@ zh_Hant{
         "Pacific:Honolulu"{
             ec{"檀香山"}
         }
+<<<<<<< HEAD
+=======
+        "Pacific:Kanton"{
+            ec{"坎頓島"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Pacific:Kiritimati"{
             ec{"基里地馬地島"}
         }

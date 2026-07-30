@@ -12,11 +12,18 @@
 
 #include <cstddef>
 #include <cstdint>
+<<<<<<< HEAD
 #include <span>
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include <type_traits>
 
 #include "absl/functional/any_invocable.h"
 #include "absl/strings/string_view.h"
+<<<<<<< HEAD
+=======
+#include "api/array_view.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "api/candidate.h"
 #include "api/datagram_connection.h"
 #include "p2p/base/transport_description.h"
@@ -45,14 +52,21 @@ class MockDatagramConnection : public DatagramConnection {
               (override));
   MOCK_METHOD(void,
               SendPackets,
+<<<<<<< HEAD
               (std::span<PacketSendParameters> packets),
+=======
+              (ArrayView<PacketSendParameters> packets),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
               (override));
   MOCK_METHOD(void,
               Terminate,
               (absl::AnyInvocable<void()> terminate_complete_callback),
               (override));
+<<<<<<< HEAD
   MOCK_METHOD(absl::string_view, IceUsernameFragment, (), (override));
   MOCK_METHOD(absl::string_view, IcePassword, (), (override));
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 
 static_assert(!std::is_abstract_v<RefCountedObject<MockDatagramConnection>>,

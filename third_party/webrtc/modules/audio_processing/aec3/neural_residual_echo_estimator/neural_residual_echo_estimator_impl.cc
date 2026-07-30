@@ -12,13 +12,19 @@
 
 #include <algorithm>
 #include <array>
+<<<<<<< HEAD
 #include <cstdint>
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include <cstdio>
 #include <map>
 #include <memory>
 #include <optional>
+<<<<<<< HEAD
 #include <span>
 #include <string>
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include <utility>
 #include <vector>
 
@@ -275,9 +281,15 @@ class TfLiteModelRunner : public NeuralResidualEchoEstimatorImpl::ModelRunner {
  public:
   TfLiteModelRunner(std::unique_ptr<tflite::Interpreter> tflite_interpreter,
                     audioproc::ReeModelMetadata metadata)
+<<<<<<< HEAD
       : input_tensor_size_(static_cast<int>(tflite::NumElements(
             tflite_interpreter->input_tensor_by_signature(kMicFrameInput,
                                                           kServingDefault)))),
+=======
+      : input_tensor_size_(static_cast<int>(
+            tflite::NumElements(tflite_interpreter->input_tensor(
+                static_cast<int>(ModelInputEnum::kMic))))),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         frame_size_(metadata.version() == 1 ? input_tensor_size_
                                             : (input_tensor_size_ - 1) * 2),
         step_size_(frame_size_ / 2),
@@ -285,6 +297,7 @@ class TfLiteModelRunner : public NeuralResidualEchoEstimatorImpl::ModelRunner {
                                 kUnboundedEchoMaskFrameOutput,
                                 kServingDefault) != nullptr),
         metadata_(metadata),
+<<<<<<< HEAD
         model_state_(
             tflite::NumElements(
                 tflite_interpreter->input_tensor_by_signature(kLstmStateInput,
@@ -293,6 +306,11 @@ class TfLiteModelRunner : public NeuralResidualEchoEstimatorImpl::ModelRunner {
         input_tensor_indexes_(GetInputTensorIndexes(tflite_interpreter)),
         output_tensor_indexes_(
             GetOutputTensorIndexes(tflite_interpreter, use_unbounded_mask_)),
+=======
+        model_state_(tflite::NumElements(tflite_interpreter->input_tensor(
+                         static_cast<int>(ModelInputEnum::kModelState))),
+                     0.0f),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         tflite_interpreter_(std::move(tflite_interpreter)) {
     for (const auto input_enum :
          {ModelInputEnum::kMic, ModelInputEnum::kLinearAecOutput,
@@ -368,6 +386,10 @@ class TfLiteModelRunner : public NeuralResidualEchoEstimatorImpl::ModelRunner {
   }
 
  private:
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   // Size of the input tensors.
   const int input_tensor_size_;
 
@@ -426,6 +448,23 @@ NeuralResidualEchoEstimatorImpl::LoadTfLiteModel(
     RTC_LOG(LS_ERROR) << "Error allocating tensors";
     return nullptr;
   }
+<<<<<<< HEAD
+=======
+  if (interpreter->inputs().size() !=
+      static_cast<int>(ModelInputEnum::kNumInputs)) {
+    RTC_LOG(LS_ERROR) << "Model input number mismatch, got "
+                      << interpreter->inputs().size() << " expected "
+                      << static_cast<int>(ModelInputEnum::kNumInputs);
+    return nullptr;
+  }
+  if (interpreter->outputs().size() !=
+      static_cast<int>(ModelOutputEnum::kNumOutputs)) {
+    RTC_LOG(LS_ERROR) << "Model output number mismatch, got "
+                      << interpreter->outputs().size() << " expected "
+                      << static_cast<int>(ModelOutputEnum::kNumOutputs);
+    return nullptr;
+  }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   auto metadata = ReadModelMetadata(model);
   if (!metadata.has_value()) {
     RTC_LOG(LS_ERROR) << "Error reading model metadata";
@@ -436,6 +475,7 @@ NeuralResidualEchoEstimatorImpl::LoadTfLiteModel(
                       << " expected 1 or 2.";
     return nullptr;
   }
+<<<<<<< HEAD
   if (!AllExpectedInputsArePresent(interpreter, *metadata)) {
     RTC_LOG(LS_ERROR) << "Model is missing expected input tensors or they "
                          "have the wrong type/size.";
@@ -446,6 +486,8 @@ NeuralResidualEchoEstimatorImpl::LoadTfLiteModel(
         << "Not all the expected outputs are present in the model.";
     return nullptr;
   }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   return std::make_unique<TfLiteModelRunner>(std::move(interpreter), *metadata);
 }
 

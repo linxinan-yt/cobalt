@@ -21,7 +21,10 @@
 #include "testutil.h"
 #include "uparse.h"
 #include "ucdtest.h"
+<<<<<<< HEAD
 #include "uprops.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "usettest.h"
 
 #include <iostream>
@@ -89,7 +92,10 @@ void UnicodeTest::runIndexedTest( int32_t index, UBool exec, const char* &name, 
     TESTCASE_AUTO(TestPropertiesUsingPpucd);
     TESTCASE_AUTO(TestIDStatus);
     TESTCASE_AUTO(TestIDType);
+<<<<<<< HEAD
     TESTCASE_AUTO(TestScriptExtensionsCodePoints);
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     TESTCASE_AUTO_END;
 }
 
@@ -495,7 +501,11 @@ void UnicodeTest::TestScriptMetadata() {
                          static_cast<int32_t>(charScript), static_cast<int32_t>(uscript_getScript(firstChar, errorCode)));
             assertEquals("RTL vs. set", rtl.contains(firstChar), uscript_isRightToLeft(sc));
             assertEquals("cased vs. set", cased.contains(firstChar), uscript_isCased(sc));
+<<<<<<< HEAD
             assertEquals("encoded, has characters", sc == charScript, !scriptSet.isEmpty());
+=======
+            assertEquals("encoded, has characters", static_cast<UBool>(sc == charScript), static_cast<UBool>(!scriptSet.isEmpty()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             if(uscript_isRightToLeft(sc)) {
                 rtl.removeAll(scriptSet);
             }
@@ -1167,16 +1177,25 @@ void UnicodeTest::TestIDStatus() {
     assertEquals("ID_Status(surrogate)=Restricted", U_ID_STATUS_RESTRICTED, getIDStatus(0xD800));
     assertEquals("ID_Status(Arabic tail fragment)=Restricted", U_ID_STATUS_RESTRICTED, getIDStatus(0xFE73));
     assertEquals("ID_Status(Hentaigana ko-3)=Restricted", U_ID_STATUS_RESTRICTED, getIDStatus(0x1B03A));
+<<<<<<< HEAD
     assertEquals("ID_Status(Katakana ko)=Allowed", U_ID_STATUS_ALLOWED, getIDStatus(0x30B3));
     assertEquals("ID_Status(U+29D98)=Allowed", U_ID_STATUS_ALLOWED, getIDStatus(0x29D98));
+=======
+    assertEquals("ID_Status(Katakana small ko)=Allowed", U_ID_STATUS_ALLOWED, getIDStatus(0x1B155));
+    assertEquals("ID_Status(U+2EE5D)=Allowed", U_ID_STATUS_ALLOWED, getIDStatus(0x2EE5D));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     assertEquals("ID_Status(U+10FFFF)=Restricted", U_ID_STATUS_RESTRICTED, getIDStatus(0x10FFFF));
 
     // Property names work and get the correct sets.
     UnicodeSet idStatus(u"[:Identifier_Status=Allowed:]", errorCode);
     // Unicode 15.1: 112778 Allowed characters; normally grows over time
+<<<<<<< HEAD
     // Unicode 17: Only 33791 Allowed characters after making
     // most Unified_Ideograph characters Uncommon_Use and revisiting others as well.
     assertTrue("Allowed number of characters", idStatus.size() >= 33791);
+=======
+    assertTrue("Allowed number of characters", idStatus.size() >= 112778);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     assertFalse("Allowed.contains(slash)", idStatus.contains(0x2F));
     assertTrue("Allowed.contains(digit 0)", idStatus.contains(0x30));
     assertTrue("Allowed.contains(colon)", idStatus.contains(0x3A));
@@ -1187,8 +1206,13 @@ void UnicodeTest::TestIDStatus() {
     assertFalse("Allowed.contains(surrogate)", idStatus.contains(0xD800));
     assertFalse("Allowed.contains(Arabic tail fragment)", idStatus.contains(0xFE73));
     assertFalse("Allowed.contains(Hentaigana ko-3)", idStatus.contains(0x1B03A));
+<<<<<<< HEAD
     assertTrue("Allowed.contains(Katakana ko)", idStatus.contains(0x30B3));
     assertTrue("Allowed.contains(U+29D98)", idStatus.contains(0x29D98));
+=======
+    assertTrue("Allowed.contains(Katakana small ko)", idStatus.contains(0x1B155));
+    assertTrue("Allowed.contains(U+2EE5D)", idStatus.contains(0x2EE5D));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     assertFalse("Allowed.contains(U+10FFFF)", idStatus.contains(0x10FFFF));
 }
 
@@ -1249,14 +1273,23 @@ void UnicodeTest::TestIDType() {
     assertEquals("ID_Type(Arabic tail fragment)", u"Technical", getIDTypes(0xFE73));
     assertEquals("ID_Type(Linear B syllable)", u"Exclusion", getIDTypes(0x10000));
     assertEquals("ID_Type(Hentaigana ko-3)", u"Obsolete", getIDTypes(0x1B03A));
+<<<<<<< HEAD
     assertEquals("ID_Type(Katakana ko)", u"Recommended", getIDTypes(0x30B3));
     assertEquals("ID_Type(U+29D98)", u"Recommended", getIDTypes(0x29D98));
+=======
+    assertEquals("ID_Type(Katakana small ko)", u"Recommended", getIDTypes(0x1B155));
+    assertEquals("ID_Type(U+2EE5D)", u"Recommended", getIDTypes(0x2EE5D));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     assertEquals("ID_Type(U+10FFFF)", u"Not_Character", getIDTypes(0x10FFFF));
 
     assertEquals("ID_Type(CYRILLIC THOUSANDS SIGN)", u"Not_XID Obsolete", getIDTypes(0x0482));
     assertEquals("ID_Type(SYRIAC FEMININE DOT)", u"Technical Limited_Use", getIDTypes(0x0740));
     assertEquals("ID_Type(NKO LETTER JONA JA)", u"Obsolete Limited_Use", getIDTypes(0x07E8));
     assertEquals("ID_Type(SYRIAC END OF PARAGRAPH)", u"Not_XID Limited_Use", getIDTypes(0x0700));
+<<<<<<< HEAD
+=======
+    assertEquals("ID_Type(LATIN SMALL LETTER EZH)=", u"Technical Uncommon_Use", getIDTypes(0x0292));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     assertEquals("ID_Type(MUSICAL SYMBOL KIEVAN C CLEF)", u"Not_XID Technical Uncommon_Use", getIDTypes(0x1D1DE));
     assertEquals("ID_Type(MRO LETTER TA)", u"Exclusion Uncommon_Use", getIDTypes(0x16A40));
     assertEquals("ID_Type(GREEK MUSICAL LEIMMA)", u"Not_XID Obsolete", getIDTypes(0x1D245));
@@ -1288,9 +1321,13 @@ void UnicodeTest::TestIDType() {
     UnicodeSet uncommon(u"[:Identifier_Type=Uncommon_Use:]", errorCode);
     UnicodeSet notChar(u"[:Identifier_Type=Not_Character:]", errorCode);
     // Unicode 15.1 set sizes; normally grows over time except Not_Character shrinks
+<<<<<<< HEAD
     // Unicode 17: Only 33773 Recommended characters after making
     // most Unified_Ideograph characters Uncommon_Use and revisiting others as well.
     assertTrue("Recommended number of characters", rec.size() >= 33773);
+=======
+    assertTrue("Recommended number of characters", rec.size() >= 112761);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     assertTrue("Inclusion number of characters", incl.size() >= 17);
     assertTrue("Limited_Use number of characters", limited.size() >= 5268);
     assertTrue("Uncommon_Use number of characters", uncommon.size() >= 398);
@@ -1299,11 +1336,19 @@ void UnicodeTest::TestIDType() {
     assertFalse("Recommended.contains(slash)", rec.contains(0x2F));
     assertTrue("Recommended.contains(digit 0)", rec.contains(0x30));
     assertTrue("Inclusion.contains(colon)", incl.contains(0x3A));
+<<<<<<< HEAD
     assertTrue("Recommended.contains(U+29D98)", rec.contains(0x29D98));
+=======
+    assertTrue("Recommended.contains(U+2EE5D)", rec.contains(0x2EE5D));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     assertTrue("Limited_Use.contains(SYRIAC FEMININE DOT)", limited.contains(0x0740));
     assertTrue("Limited_Use.contains(NKO LETTER JONA JA)", limited.contains(0x7E8));
     assertTrue("Not_Character.contains(surrogate)", notChar.contains(0xd800));
     assertTrue("Not_Character.contains(U+10FFFF)", notChar.contains(0x10FFFF));
+<<<<<<< HEAD
+=======
+    assertTrue("Uncommon_Use.contains(LATIN SMALL LETTER EZH)", uncommon.contains(0x0292));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     assertTrue("Uncommon_Use.contains(MUSICAL SYMBOL KIEVAN C CLEF)", uncommon.contains(0x1D1DE));
 
     // More mutually exclusive types, including some otherwise combinable ones.
@@ -1319,6 +1364,7 @@ void UnicodeTest::TestIDType() {
                     notNFKC.size() + di.size() + dep.size() + notChar.size(),
                 allExclusive.size());
 }
+<<<<<<< HEAD
 
 namespace {
 
@@ -1363,3 +1409,5 @@ void UnicodeTest::TestScriptExtensionsCodePoints() {
 
     assertTrue("scxCPs == expected", scxCPs == expected);
 }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

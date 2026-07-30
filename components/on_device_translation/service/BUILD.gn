@@ -64,7 +64,11 @@ source_set("on_device_translation_service") {
     "//mojo/public/cpp/bindings",
   ]
 
+<<<<<<< HEAD:components/on_device_translation/service/BUILD.gn
   if (is_linux || is_chromeos) {
+=======
+  if (is_linux && !is_cobalt_hermetic_build) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):components/services/on_device_translation/BUILD.gn
     sources += [
       "sandbox_hook.cc",
       "sandbox_hook.h",

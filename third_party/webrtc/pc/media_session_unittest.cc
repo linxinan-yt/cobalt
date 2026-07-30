@@ -29,6 +29,11 @@
 #include "api/audio_codecs/audio_format.h"
 #include "api/candidate.h"
 #include "api/environment/environment.h"
+<<<<<<< HEAD
+=======
+#include "api/environment/environment_factory.h"
+#include "api/field_trials.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "api/field_trials_view.h"
 #include "api/media_types.h"
 #include "api/payload_type.h"
@@ -746,7 +751,12 @@ MediaSessionOptions CreateAudioMediaSession() {
 class MediaSessionDescriptionFactoryTest : public testing::Test {
  public:
   MediaSessionDescriptionFactoryTest(absl::string_view field_trials_string = "")
+<<<<<<< HEAD
       : env_(CreateTestEnvironment({.field_trials = field_trials_string})),
+=======
+      : env_(CreateEnvironment(std::make_unique<FieldTrials>(
+            CreateTestFieldTrials(field_trials_string)))),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         tdf1_(env_.field_trials()),
         tdf2_(env_.field_trials()),
         codec_lookup_helper_1_(env_.field_trials()),
@@ -765,10 +775,21 @@ class MediaSessionDescriptionFactoryTest : public testing::Test {
             &tdf2_,
             &sctp_factory_2_,
             &codec_lookup_helper_2_) {
+<<<<<<< HEAD
     codec_lookup_helper_1_.SetAudioCodecs(kAudioCodecs1);
     codec_lookup_helper_1_.SetVideoCodecs(kVideoCodecs1);
     codec_lookup_helper_2_.SetAudioCodecs(kAudioCodecs2);
     codec_lookup_helper_2_.SetVideoCodecs(kVideoCodecs2);
+=======
+    codec_lookup_helper_1_.GetCodecVendor()->set_audio_codecs(
+        MAKE_VECTOR(kAudioCodecs1), MAKE_VECTOR(kAudioCodecs1));
+    codec_lookup_helper_1_.GetCodecVendor()->set_video_codecs(
+        MAKE_VECTOR(kVideoCodecs1), MAKE_VECTOR(kVideoCodecs1));
+    codec_lookup_helper_2_.GetCodecVendor()->set_audio_codecs(
+        MAKE_VECTOR(kAudioCodecs2), MAKE_VECTOR(kAudioCodecs2));
+    codec_lookup_helper_2_.GetCodecVendor()->set_video_codecs(
+        MAKE_VECTOR(kVideoCodecs2), MAKE_VECTOR(kVideoCodecs2));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     tdf1_.set_certificate(RTCCertificate::Create(
         std::unique_ptr<SSLIdentity>(new FakeSSLIdentity("id1"))));
     tdf2_.set_certificate(RTCCertificate::Create(
@@ -5182,7 +5203,11 @@ TEST_F(MediaSessionDescriptionFactoryTest,
 class MediaProtocolTest : public testing::TestWithParam<const char*> {
  public:
   MediaProtocolTest()
+<<<<<<< HEAD
       : env_(CreateTestEnvironment()),
+=======
+      : env_(CreateEnvironment()),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         tdf1_(env_.field_trials()),
         tdf2_(env_.field_trials()),
         codec_lookup_helper_1_(env_.field_trials()),
@@ -5201,10 +5226,21 @@ class MediaProtocolTest : public testing::TestWithParam<const char*> {
             &tdf2_,
             &sctp_factory_2_,
             &codec_lookup_helper_2_) {
+<<<<<<< HEAD
     codec_lookup_helper_1_.SetAudioCodecs(kAudioCodecs1);
     codec_lookup_helper_1_.SetVideoCodecs(kVideoCodecs1);
     codec_lookup_helper_2_.SetAudioCodecs(kAudioCodecs2);
     codec_lookup_helper_2_.SetVideoCodecs(kVideoCodecs2);
+=======
+    codec_lookup_helper_1_.GetCodecVendor()->set_audio_codecs(
+        MAKE_VECTOR(kAudioCodecs1), MAKE_VECTOR(kAudioCodecs1));
+    codec_lookup_helper_1_.GetCodecVendor()->set_video_codecs(
+        MAKE_VECTOR(kVideoCodecs1), MAKE_VECTOR(kVideoCodecs1));
+    codec_lookup_helper_2_.GetCodecVendor()->set_audio_codecs(
+        MAKE_VECTOR(kAudioCodecs2), MAKE_VECTOR(kAudioCodecs2));
+    codec_lookup_helper_2_.GetCodecVendor()->set_video_codecs(
+        MAKE_VECTOR(kVideoCodecs2), MAKE_VECTOR(kVideoCodecs2));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     tdf1_.set_certificate(RTCCertificate::Create(
         std::unique_ptr<SSLIdentity>(new FakeSSLIdentity("id1"))));
     tdf2_.set_certificate(RTCCertificate::Create(
@@ -5257,7 +5293,11 @@ INSTANTIATE_TEST_SUITE_P(MediaProtocolDtlsPatternTest,
                          ValuesIn(kMediaProtocolsDtls));
 
 void TestAudioCodecsOffer(RtpTransceiverDirection direction) {
+<<<<<<< HEAD
   Environment env(CreateTestEnvironment());
+=======
+  Environment env(CreateEnvironment());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   TransportDescriptionFactory tdf(env.field_trials());
   tdf.set_certificate(RTCCertificate::Create(
       std::unique_ptr<SSLIdentity>(new FakeSSLIdentity("id"))));
@@ -5267,6 +5307,7 @@ void TestAudioCodecsOffer(RtpTransceiverDirection direction) {
   FakeSctpTransportFactory sctpf;
   MediaSessionDescriptionFactory sf(env, nullptr, false, &ssrc_generator, &tdf,
                                     &sctpf, &codec_lookup_helper);
+<<<<<<< HEAD
   const std::vector<Codec> send_codecs(kAudioCodecs1.begin(),
                                        kAudioCodecs1.end());
   const std::vector<Codec> recv_codecs(kAudioCodecs2.begin(),
@@ -5274,6 +5315,13 @@ void TestAudioCodecsOffer(RtpTransceiverDirection direction) {
   const std::vector<Codec> sendrecv_codecs(kAudioCodecsAnswer.begin(),
                                            kAudioCodecsAnswer.end());
   codec_lookup_helper.SetAudioCodecs(send_codecs, recv_codecs);
+=======
+  const std::vector<Codec> send_codecs = MAKE_VECTOR(kAudioCodecs1);
+  const std::vector<Codec> recv_codecs = MAKE_VECTOR(kAudioCodecs2);
+  const std::vector<Codec> sendrecv_codecs = MAKE_VECTOR(kAudioCodecsAnswer);
+  codec_lookup_helper.GetCodecVendor()->set_audio_codecs(send_codecs,
+                                                         recv_codecs);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   MediaSessionOptions opts;
   AddMediaDescriptionOptions(MediaType::AUDIO, kAudioMid, direction, kActive,
@@ -5368,7 +5416,11 @@ std::vector<T> VectorFromIndices(const T* array, const int (&indices)[IDXS]) {
 void TestAudioCodecsAnswer(RtpTransceiverDirection offer_direction,
                            RtpTransceiverDirection answer_direction,
                            bool add_legacy_stream) {
+<<<<<<< HEAD
   Environment env(CreateTestEnvironment());
+=======
+  Environment env(CreateEnvironment());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   TransportDescriptionFactory offer_tdf(env.field_trials());
   TransportDescriptionFactory answer_tdf(env.field_trials());
   FakeSctpTransportFactory offer_sctpf;
@@ -5527,7 +5579,11 @@ INSTANTIATE_TEST_SUITE_P(MediaSessionDescriptionFactoryTest,
 class VideoCodecsOfferH265LevelIdTest : public testing::Test {
  public:
   VideoCodecsOfferH265LevelIdTest()
+<<<<<<< HEAD
       : env_(CreateTestEnvironment()),
+=======
+      : env_(CreateEnvironment()),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         tdf_offerer_(env_.field_trials()),
         tdf_answerer_(env_.field_trials()),
         sf_offerer_(env_,

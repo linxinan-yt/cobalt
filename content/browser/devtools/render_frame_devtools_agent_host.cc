@@ -32,7 +32,9 @@
 #include "content/browser/devtools/protocol/digital_credentials_handler.h"
 #include "content/browser/devtools/protocol/dom_handler.h"
 #include "content/browser/devtools/protocol/emulation_handler.h"
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 #include "content/browser/devtools/protocol/fedcm_handler.h"
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 #include "content/browser/devtools/protocol/fetch_handler.h"
 #include "content/browser/devtools/protocol/handler_helpers.h"
 #include "content/browser/devtools/protocol/input_handler.h"
@@ -480,8 +482,13 @@ bool RenderFrameDevToolsAgentHost::AttachSession(DevToolsSession* session) {
     session->CreateAndAddHandler<protocol::WebMCPHandler>();
   }
   session->CreateAndAddHandler<protocol::LogHandler>();
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
   session->CreateAndAddHandler<protocol::FedCmHandler>();
+<<<<<<< HEAD
   session->CreateAndAddHandler<protocol::DigitalCredentialsHandler>();
+=======
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #if !BUILDFLAG(IS_ANDROID)
   session->CreateAndAddHandler<protocol::WebAuthnHandler>();
 #endif  // !BUILDFLAG(IS_ANDROID)

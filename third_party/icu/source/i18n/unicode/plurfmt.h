@@ -505,7 +505,11 @@ public:
      * @stable ICU 4.0
      *
      */
+<<<<<<< HEAD
     U_I18N_API static UClassID getStaticClassID();
+=======
+    static UClassID U_EXPORT2 getStaticClassID();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     /**
      * ICU "poor man's RTTI", returns a UClassID for the actual class.

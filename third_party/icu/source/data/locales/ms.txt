@@ -966,10 +966,20 @@ ms{
             }
         }
         dayOfYear{
+<<<<<<< HEAD
             dn{"hari dalam tahun"}
         }
         dayOfYear-short{
             dn{"hari dlm thn"}
+=======
+            dn{"Hari dalam Tahun"}
+        }
+        dayOfYear-narrow{
+            dn{"Hari dlm Thn"}
+        }
+        dayOfYear-short{
+            dn{"Hari dlm Thn"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         dayperiod{
             dn{"PG/PTG"}
@@ -1387,6 +1397,7 @@ ms{
             }
         }
         weekOfMonth{
+<<<<<<< HEAD
             dn{"minggu dalam bulan"}
         }
         weekOfMonth-narrow{
@@ -1394,6 +1405,15 @@ ms{
         }
         weekOfMonth-short{
             dn{"minggu dlm bln"}
+=======
+            dn{"Minggu dalam Bulan"}
+        }
+        weekOfMonth-narrow{
+            dn{"Minggu dalam Bulan"}
+        }
+        weekOfMonth-short{
+            dn{"Minggu dlm bulan"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         weekday{
             dn{"Hari dalam Minggu"}
@@ -1401,6 +1421,12 @@ ms{
         weekdayOfMonth{
             dn{"Hari dalam Bulan"}
         }
+<<<<<<< HEAD
+=======
+        weekdayOfMonth-narrow{
+            dn{"Hari dlm bln"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         weekdayOfMonth-short{
             dn{"Hari dlm bln"}
         }
@@ -1478,6 +1504,22 @@ ms{
                 "[\\: ∶]",
             }
         }
+<<<<<<< HEAD
+=======
+        general{
+            lenient{
+                "[.．․﹒ 。｡︒]",
+                "['＇’ ՚ ᾽᾿ ʼ]",
+                "[%％﹪ ٪]",
+                "[‰ ؉]",
+                "[\$＄﹩]",
+                "[£￡ ₤]",
+                "[¥￥]",
+                "[₩￦]",
+                "[₹ {Rp} {Rs}₨]",
+            }
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",

@@ -90,18 +90,32 @@ enum URBNFRuleSetTag {
 /**
  * The RuleBasedNumberFormat class formats numbers according to a set of rules.
  *
+<<<<<<< HEAD
  * <p>This number formatter is typically used for spelling out numeric values in words (e.g., 25,376
  * as &quot;twenty-five thousand three hundred seventy-six&quot; or &quot;vingt-cinq mille trois
  * cent soixante-seize&quot; or
  * &quot;f&uuml;nfundzwanzigtausenddreihundertsechsundsiebzig&quot;), but can also be used for
  * other complicated formatting tasks. For example, formatting a number as Roman numerals (e.g. 8 as VIII)
  * or as ordinal digits (e.g. 1st, 2nd, 3rd, 4th).</p>
+=======
+ * <p>This number formatter is typically used for spelling out numeric values in words (e.g., 25,3476
+ * as &quot;twenty-five thousand three hundred seventy-six&quot; or &quot;vingt-cinq mille trois
+ * cents soixante-seize&quot; or
+ * &quot;f&uuml;nfundzwanzigtausenddreihundertsechsundsiebzig&quot;), but can also be used for
+ * other complicated formatting tasks, such as formatting a number of seconds as hours,
+ * minutes and seconds (e.g., 3,730 as &quot;1:02:10&quot;).</p>
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  *
  * <p>The resources contain three predefined formatters for each locale: spellout, which
  * spells out a value in words (123 is &quot;one hundred twenty-three&quot;); ordinal, which
  * appends an ordinal suffix to the end of a numeral (123 is &quot;123rd&quot;); and
+<<<<<<< HEAD
  * numbering system, which shows a number in other non-decimal based systems (e.g. Roman numerals).
  * The client can also define more specialized <code>RuleBasedNumberFormat</code>s
+=======
+ * duration, which shows a duration in seconds as hours, minutes, and seconds (123 is
+ * &quot;2:03&quot;).&nbsp; The client can also define more specialized <code>RuleBasedNumberFormat</code>s
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  * by supplying programmer-defined rule sets.</p>
  *
  * <p>The behavior of a <code>RuleBasedNumberFormat</code> is specified by a textual description
@@ -243,10 +257,17 @@ enum URBNFRuleSetTag {
  * <hr>
  *
  * <p>The description of a <code>RuleBasedNumberFormat</code>'s behavior consists of one or more <em>rule
+<<<<<<< HEAD
  * sets.</em> Each rule set consists of a name, a colon, and a list of <em>rules</em>. A rule
  * set name must begin with a % sign. Rule sets with a name that begins with a single % sign
  * are <em>public</em>, and that name can be referenced to format and parse numbers.
  * Rule sets with names that begin with %% are <em>private.</em>. They exist only for the use
+=======
+ * sets.</em> Each rule set consists of a name, a colon, and a list of <em>rules.</em> A rule
+ * set name must begin with a % sign. Rule sets with names that begin with a single % sign
+ * are <em>public:</em> the caller can specify that they be used to format and parse numbers.
+ * Rule sets with names that begin with %% are <em>private:</em> they exist only for the use
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  * of other rule sets. If a formatter only has one rule set, the name may be omitted.</p>
  *
  * <p>The user can also specify a special &quot;rule set&quot; named <code>%%lenient-parse</code>.
@@ -362,8 +383,13 @@ enum URBNFRuleSetTag {
  *
  * <ul>
  *   <li>If the rule set includes a default rule (and the number was passed in as a <code>double</code>),
+<<<<<<< HEAD
  *     use the default rule. If the number being formatted was passed in as a <code>long</code>,
  *     the default rule is ignored.</li>
+=======
+ *     use the default rule.&nbsp; (If the number being formatted was passed in as a <code>long</code>,
+ *     the default rule is ignored.)</li>
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  *   <li>If the number is negative, use the negative-number rule.</li>
  *   <li>If the number has a fractional part and is greater than 1, use the improper fraction
  *     rule.</li>
@@ -450,7 +476,11 @@ enum URBNFRuleSetTag {
  *         and format the resulting value.<br>
  *         If there is a DecimalFormat pattern between the &lt; characters and the
  *         rule does NOT also contain a &gt;&gt; substitution, we DON'T perform
+<<<<<<< HEAD
  *         floor() on the quotient. The quotient is passed through to the DecimalFormat
+=======
+ *         floor() on the quotient-- the quotient is passed through to the DecimalFormat
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  *         intact.  That is, for the value 1,900:<br>
  *         - "1/1000: &lt;&lt; thousand;" will produce "one thousand"<br>
  *         - "1/1000: &lt;0&lt; thousand;" will produce "2 thousand" (NOT "1 thousand")<br>
@@ -815,7 +845,11 @@ public:
    * @return the number of locales for which we have localized rule set display names.
    * @stable ICU 3.2
    */
+<<<<<<< HEAD
   U_I18N_API virtual int32_t getNumberOfRuleSetDisplayNameLocales() const;
+=======
+  virtual int32_t getNumberOfRuleSetDisplayNameLocales() const;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   /**
    * Return the index'th display name locale.
@@ -1029,7 +1063,11 @@ public:
    * @see #setLenient
    * @stable ICU 2.0
    */
+<<<<<<< HEAD
   U_I18N_API virtual inline UBool isLenient() const override;
+=======
+  virtual inline UBool isLenient() const override;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 #endif
 
@@ -1068,7 +1106,11 @@ public:
      * @return A rounding mode
      * @stable ICU 60
      */
+<<<<<<< HEAD
     U_I18N_API virtual ERoundingMode getRoundingMode() const override;
+=======
+    virtual ERoundingMode getRoundingMode() const override;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     /**
      * Set the rounding mode.
@@ -1083,14 +1125,22 @@ public:
      *
      * @stable ICU 2.8
      */
+<<<<<<< HEAD
     U_I18N_API static UClassID getStaticClassID();
+=======
+    static UClassID U_EXPORT2 getStaticClassID();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     /**
      * ICU "poor man's RTTI", returns a UClassID for the actual class.
      *
      * @stable ICU 2.8
      */
+<<<<<<< HEAD
     U_I18N_API virtual UClassID getDynamicClassID() const override;
+=======
+    virtual UClassID getDynamicClassID() const override;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     /**
      * Sets the decimal format symbols, which is generally not changed

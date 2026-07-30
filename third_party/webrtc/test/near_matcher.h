@@ -39,6 +39,24 @@ class NearMatcher {
       }
       return false;
     }
+<<<<<<< HEAD
+=======
+    if constexpr (std::is_same_v<AbsoluteT, Timestamp>) {
+      if (expected_ - AbsoluteT::Zero() < max_error_) {
+        // Avoid negative `expected_ - max_error_`.
+        bool in_range = value >= AbsoluteT::Zero();
+        if (os != nullptr) {
+          if (in_range) {
+            *os << " in range [" << absl::StrCat(AbsoluteT::Zero()) << ","
+                << absl::StrCat(upper_bound) << ")";
+          } else {
+            *os << " < lower bound " << absl::StrCat(AbsoluteT::Zero());
+          }
+        }
+        return in_range;
+      }
+    }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     AbsoluteT lower_bound = expected_ - max_error_;
     bool in_range = value > lower_bound;
     if (os != nullptr) {

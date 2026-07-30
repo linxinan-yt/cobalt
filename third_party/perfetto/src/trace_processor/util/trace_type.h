@@ -29,6 +29,7 @@
 
 namespace perfetto::trace_processor {
 
+<<<<<<< HEAD
 class ChunkedTraceReader;
 class TraceProcessorContext;
 
@@ -37,6 +38,31 @@ enum class TraceSortPolicy {
   kFullSort,
   kConfigDriven,
   kNone,
+=======
+enum TraceType {
+  kAndroidBugreportTraceType,
+  kAndroidDumpstateTraceType,
+  kAndroidLogcatTraceType,
+  kCtraceTraceType,
+  kFuchsiaTraceType,
+  kGzipTraceType,
+  kJsonTraceType,
+  kNinjaLogTraceType,
+  kPerfDataTraceType,
+  kPprofTraceType,
+  kProtoTraceType,
+  kSymbolsTraceType,
+  kSystraceTraceType,
+  kUnknownTraceType,
+  kZipFile,
+  kInstrumentsXmlTraceType,
+  kGeckoTraceType,
+  kArtMethodTraceType,
+  kArtHprofTraceType,
+  kPerfTextTraceType,
+  kSimpleperfProtoTraceType,
+  kTarTraceType,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 
 // The clock domain a trace type's native timestamps are expressed in.

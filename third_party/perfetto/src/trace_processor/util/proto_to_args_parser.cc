@@ -426,9 +426,132 @@ base::Status ProtoToArgsParser::StepProtoMessage(WorkItem& item,
     return ParseSimpleField(*field_descriptor, field, node, delegate);
   }
 
+<<<<<<< HEAD
   done = true;
   if (PERFETTO_UNLIKELY(add_defaults_)) {
     RETURN_IF_ERROR(AddMessageDefaults(item, delegate));
+=======
+  while (!work_stack.empty()) {
+    WorkItem& item = work_stack.back();
+    if (auto override_result =
+            MaybeApplyOverrideForType(item.descriptor->full_name(),
+                                      item.key_context, item.data, delegate)) {
+      work_stack.pop_back();
+      RETURN_IF_ERROR(override_result.value());
+      continue;
+    }
+
+    protozero::Field field = item.decoder.ReadField();
+    if (field.valid()) {
+      item.empty_message = false;
+      const auto* field_descriptor =
+          item.descriptor->FindFieldByTag(field.id());
+      if (!field_descriptor) {
+        if (unknown_extensions != nullptr) {
+          (*unknown_extensions)++;
+        }
+        // Unknown field, possibly an unknown extension.
+        continue;
+      }
+
+      if (add_defaults) {
+        item.existing_fields.insert(field_descriptor->number());
+      }
+
+      // The allowlist only applies to the top-level message.
+      if (work_stack.size() == 1 &&
+          !IsFieldAllowed(*field_descriptor, allowed_fields)) {
+        // Field is neither an extension, nor is allowed to be
+        // reflected.
+        continue;
+      }
+
+      // Detect packed fields based on the serialized wire type instead of the
+      // descriptor flag to tolerate proto/descriptor mismatches.
+      using FieldDescriptorProto = protos::pbzero::FieldDescriptorProto;
+      using PWT = protozero::proto_utils::ProtoWireType;
+      const auto descriptor_type = field_descriptor->type();
+      const bool is_length_delimited = field.type() == PWT::kLengthDelimited;
+      const bool looks_packed =
+          field_descriptor->is_repeated() && is_length_delimited &&
+          descriptor_type != FieldDescriptorProto::TYPE_MESSAGE &&
+          descriptor_type != FieldDescriptorProto::TYPE_STRING &&
+          descriptor_type != FieldDescriptorProto::TYPE_BYTES;
+      if (looks_packed) {
+        RETURN_IF_ERROR(ParsePackedField(
+            *field_descriptor, item.repeated_field_index, field, delegate));
+        continue;
+      }
+
+      ScopedNestedKeyContext field_key_context(key_prefix_);
+      AppendProtoType(key_prefix_.flat_key, field_descriptor->name());
+      if (field_descriptor->is_repeated()) {
+        std::string prefix_part = field_descriptor->name();
+        int& index = item.repeated_field_index[field.id()];
+        std::string number = std::to_string(index);
+        prefix_part.reserve(prefix_part.length() + number.length() + 2);
+        prefix_part.append("[");
+        prefix_part.append(number);
+        prefix_part.append("]");
+        index++;
+        AppendProtoType(key_prefix_.key, prefix_part);
+      } else {
+        AppendProtoType(key_prefix_.key, field_descriptor->name());
+      }
+
+      if (std::optional<base::Status> status =
+              MaybeApplyOverrideForField(field, delegate)) {
+        RETURN_IF_ERROR(*status);
+        continue;
+      }
+
+      if (field_descriptor->type() ==
+          protos::pbzero::FieldDescriptorProto::TYPE_MESSAGE) {
+        auto desc_idx =
+            pool_.FindDescriptorIdx(field_descriptor->resolved_type_name());
+        if (!desc_idx) {
+          return base::ErrStatus(
+              "Failed to find proto descriptor for %s",
+              field_descriptor->resolved_type_name().c_str());
+        }
+        work_stack.emplace_back(
+            WorkItem{field.as_bytes(),
+                     protozero::ProtoDecoder(field.as_bytes()),
+                     &pool_.descriptors()[*desc_idx],
+                     {},
+                     {},
+                     std::move(field_key_context),
+                     true});
+      } else {
+        RETURN_IF_ERROR(ParseSimpleField(*field_descriptor, field, delegate));
+      }
+      continue;
+    }
+
+    if (add_defaults) {
+      for (const auto& [id, field_desc] : item.descriptor->fields()) {
+        if (work_stack.size() == 1 &&
+            !IsFieldAllowed(field_desc, allowed_fields)) {
+          continue;
+        }
+        bool field_exists = item.existing_fields.find(field_desc.number()) !=
+                            item.existing_fields.cend();
+        if (field_exists) {
+          continue;
+        }
+        const std::string& field_name = field_desc.name();
+        ScopedNestedKeyContext key_context_default(key_prefix_);
+        AppendProtoType(key_prefix_.flat_key, field_name);
+        AppendProtoType(key_prefix_.key, field_name);
+        RETURN_IF_ERROR(AddDefault(field_desc, delegate));
+        item.empty_message = false;
+      }
+    }
+    if (item.empty_message) {
+      delegate.AddNull(item.key_context.key());
+    }
+    work_stack.pop_back();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
   if (PERFETTO_UNLIKELY(item.empty_message)) {
     InternCurrentKey();

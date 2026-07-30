@@ -178,7 +178,11 @@ es_US{
                     wide{
                         "1er trimestre",
                         "2.º trimestre",
+<<<<<<< HEAD
                         "3er trimestre",
+=======
+                        "3.º trimestre",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                         "4.º trimestre",
                     }
                 }
@@ -227,6 +231,17 @@ es_US{
         dayperiod{
             dn{"a. m./p. m."}
         }
+<<<<<<< HEAD
+=======
+        sun{
+            relativeTime{
+                future{
+                    one{"dentro de {0} domingo"}
+                    other{"dentro de {0} domingos"}
+                }
+            }
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         wed-short{
             relative{
                 "-1"{"el mie. pasado"}

@@ -38,7 +38,11 @@ pb_enum!(ThreadDescriptorChromeThreadType {
 
 pb_msg!(ThreadDescriptor {
     pid: i32, primitive, 1,
+<<<<<<< HEAD
     tid: i64, primitive, 2,
+=======
+    tid: i32, primitive, 2,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     thread_name: String, primitive, 5,
     chrome_thread_type: ThreadDescriptorChromeThreadType, enum, 4,
     reference_timestamp_us: i64, primitive, 6,

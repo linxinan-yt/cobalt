@@ -97,7 +97,10 @@ zh_Hant{
         bkm{"康姆文"}
         bla{"錫克錫卡文"}
         blo{"阿尼文"}
+<<<<<<< HEAD
         blt{"黑傣語"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         bm{"班巴拉文"}
         bn{"孟加拉文"}
         bo{"藏文"}

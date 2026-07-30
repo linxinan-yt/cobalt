@@ -1159,9 +1159,12 @@ kxv_Deva{
         "Pacific:Efate"{
             ec{"एप़ेट"}
         }
+<<<<<<< HEAD
         "Pacific:Enderbury"{
             ec{"केंटन"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Pacific:Fakaofo"{
             ec{"प़ाकाओप़ो"}
         }
@@ -1183,6 +1186,12 @@ kxv_Deva{
         "Pacific:Guam"{
             ec{"गुआम"}
         }
+<<<<<<< HEAD
+=======
+        "Pacific:Kanton"{
+            ec{"केंटन"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Pacific:Kiritimati"{
             ec{"किरीतिमाति"}
         }
@@ -1265,7 +1274,13 @@ kxv_Deva{
             ls{"दक्षिण आप्रिका मानांकॉ बेला"}
         }
         "meta:Africa_Western"{
+<<<<<<< HEAD
             ls{"पस्चिम आप्रिका बेला"}
+=======
+            ld{"पस्चिम आप्रिका काराँ मासा बेला"}
+            lg{"पस्चिम आप्रिका बेला"}
+            ls{"पस्चिम आप्रिका मानांकॉ बेला"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "meta:Alaska"{
             ld{"अलास्‍का डेलाइट बेला"}
@@ -1504,9 +1519,12 @@ kxv_Deva{
         "meta:Guyana"{
             ls{"गुयाना बेला"}
         }
+<<<<<<< HEAD
         "meta:Hawaii"{
             ls{"हवाति–आल्यूसन मानांकॉ बेला"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "meta:Hawaii_Aleutian"{
             ld{"हवाति–आल्यूसन डेलाइट बेला"}
             lg{"हवाति–आल्यूसन बेला"}

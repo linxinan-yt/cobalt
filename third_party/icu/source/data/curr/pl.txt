@@ -2235,11 +2235,14 @@ pl{
             one{"kwacha zambijska"}
             other{"kwachy zambijskiej"}
         }
+<<<<<<< HEAD
         ZWG{
             few{"złota Zimbabwe"}
             many{"złot Zimbabwe"}
             one{"złoto Zimbabwe"}
             other{"złota Zimbabwe"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

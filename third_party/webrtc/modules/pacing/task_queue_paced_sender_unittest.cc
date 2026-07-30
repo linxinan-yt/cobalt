@@ -129,6 +129,7 @@ TEST(TaskQueuePacedSenderTest, PacesPackets) {
   // Insert a number of packets, covering one second.
   static constexpr size_t kPacketsToSend = 42;
   SequenceChecker sequence_checker;
+<<<<<<< HEAD
   TaskQueuePacedSender pacer(
       time_controller.GetClock(), &packet_router, trials,
       PacingController::kMinSleepTime, TaskQueuePacedSender::kNoPacketHoldback,
@@ -138,6 +139,13 @@ TEST(TaskQueuePacedSenderTest, PacesPackets) {
           /*send_rate=*/
           DataRate::BitsPerSec(kDefaultPacketSize * 8 * kPacketsToSend),
           /*pad_rate=*/DataRate::Zero()));
+=======
+  pacer.SetConfig(PacerConfig::Create(
+      time_controller.GetClock()->CurrentTime(),
+      /*send_rate=*/
+      DataRate::BitsPerSec(kDefaultPacketSize * 8 * kPacketsToSend),
+      /*pad_rate=*/DataRate::Zero()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   pacer.EnsureStarted();
   pacer.EnqueuePackets(
       GeneratePackets(RtpPacketMediaType::kVideo, kPacketsToSend));
@@ -170,6 +178,7 @@ TEST(TaskQueuePacedSenderTest, PacesPacketsWithBurst) {
   GlobalSimulatedTimeController time_controller(Timestamp::Millis(1234));
   MockPacketRouter packet_router;
   FieldTrials trials = CreateTestFieldTrials();
+<<<<<<< HEAD
   // Insert a number of packets, covering one second.
   static constexpr size_t kPacketsToSend = 42;
   SequenceChecker sequence_checker;
@@ -183,6 +192,20 @@ TEST(TaskQueuePacedSenderTest, PacesPacketsWithBurst) {
           DataRate::BitsPerSec(kDefaultPacketSize * 8 * kPacketsToSend),
           /*pad_rate=*/DataRate::Zero(),
           /*time_window=*/TimeDelta::Seconds(0.5)));
+=======
+  TaskQueuePacedSender pacer(time_controller.GetClock(), &packet_router, trials,
+                             PacingController::kMinSleepTime,
+                             TaskQueuePacedSender::kNoPacketHoldback);
+
+  // Insert a number of packets, covering one second.
+  static constexpr size_t kPacketsToSend = 42;
+  SequenceChecker sequence_checker;
+  pacer.SetConfig(PacerConfig::Create(
+      time_controller.GetClock()->CurrentTime(),
+      /*send_rate=*/
+      DataRate::BitsPerSec(kDefaultPacketSize * 8 * kPacketsToSend),
+      /*pad_rate=*/DataRate::Zero(), /*time_window=*/TimeDelta::Seconds(0.5)));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   pacer.EnsureStarted();
   pacer.EnqueuePackets(
       GeneratePackets(RtpPacketMediaType::kVideo, kPacketsToSend));
@@ -220,6 +243,7 @@ TEST(TaskQueuePacedSenderTest, ReschedulesProcessOnRateChange) {
   const size_t kPacketsPerSecond = 5;
   const DataRate kPacingRate =
       DataRate::BitsPerSec(kDefaultPacketSize * 8 * kPacketsPerSecond);
+<<<<<<< HEAD
   TaskQueuePacedSender pacer(
       time_controller.GetClock(), &packet_router, trials,
       PacingController::kMinSleepTime, TaskQueuePacedSender::kNoPacketHoldback,
@@ -227,6 +251,11 @@ TEST(TaskQueuePacedSenderTest, ReschedulesProcessOnRateChange) {
       PacerConfig::Create(time_controller.GetClock()->CurrentTime(),
                           /*send_rate=*/kPacingRate,
                           /*pad_rate=*/DataRate::Zero()));
+=======
+  pacer.SetConfig(PacerConfig::Create(time_controller.GetClock()->CurrentTime(),
+                                      /*send_rate=*/kPacingRate,
+                                      /*pad_rate=*/DataRate::Zero()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   pacer.EnsureStarted();
 
   // Send some initial packets to be rid of any probes.
@@ -275,6 +304,7 @@ TEST(TaskQueuePacedSenderTest, SendsAudioImmediately) {
   NiceMock<MockPacketRouter> packet_router;
   FieldTrials trials = CreateTestFieldTrials();
   const DataRate kPacingDataRate = DataRate::KilobitsPerSec(125);
+<<<<<<< HEAD
   TaskQueuePacedSender pacer(
       time_controller.GetClock(), &packet_router, trials,
       PacingController::kMinSleepTime, TaskQueuePacedSender::kNoPacketHoldback,
@@ -282,6 +312,12 @@ TEST(TaskQueuePacedSenderTest, SendsAudioImmediately) {
       PacerConfig::Create(time_controller.GetClock()->CurrentTime(),
                           /*send_rate=*/kPacingDataRate,
                           /*pad_rate=*/DataRate::Zero()));
+=======
+
+  pacer.SetConfig(PacerConfig::Create(time_controller.GetClock()->CurrentTime(),
+                                      /*send_rate=*/kPacingDataRate,
+                                      /*pad_rate=*/DataRate::Zero()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   pacer.EnsureStarted();
 
   // Add some initial video packets. Not all should be sent immediately.
@@ -302,11 +338,19 @@ TEST(TaskQueuePacedSenderTest, SleepsDuringCoalscingWindow) {
   GlobalSimulatedTimeController time_controller(Timestamp::Millis(1234));
   NiceMock<MockPacketRouter> packet_router;
   FieldTrials trials = CreateTestFieldTrials();
+<<<<<<< HEAD
+=======
+  TaskQueuePacedSender pacer(time_controller.GetClock(), &packet_router, trials,
+                             kCoalescingWindow,
+                             TaskQueuePacedSender::kNoPacketHoldback);
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   // Set rates so one packet adds one ms of buffer level.
   const DataSize kPacketSize = DataSize::Bytes(kDefaultPacketSize);
   const TimeDelta kPacketPacingTime = TimeDelta::Millis(1);
   const DataRate kPacingDataRate = kPacketSize / kPacketPacingTime;
 
+<<<<<<< HEAD
   TaskQueuePacedSender pacer(
       time_controller.GetClock(), &packet_router, trials, kCoalescingWindow,
       TaskQueuePacedSender::kNoPacketHoldback, time_controller.GetMainThread(),
@@ -314,6 +358,12 @@ TEST(TaskQueuePacedSenderTest, SleepsDuringCoalscingWindow) {
                           /*send_rate=*/kPacingDataRate,
                           /*pad_rate=*/DataRate::Zero(),
                           /*time_window=*/TimeDelta::Zero()));
+=======
+  pacer.SetConfig(PacerConfig::Create(time_controller.GetClock()->CurrentTime(),
+                                      /*send_rate=*/kPacingDataRate,
+                                      /*pad_rate=*/DataRate::Zero(),
+                                      /*time_window=*/TimeDelta::Zero()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   pacer.EnsureStarted();
 
   // Add 10 packets. The first burst should be sent immediately since the
@@ -345,12 +395,18 @@ TEST(TaskQueuePacedSenderTest, ProbingOverridesCoalescingWindow) {
   const TimeDelta kPacketPacingTime = TimeDelta::Millis(1);
   const DataRate kPacingDataRate = kPacketSize / kPacketPacingTime;
 
+<<<<<<< HEAD
   TaskQueuePacedSender pacer(
       time_controller.GetClock(), &packet_router, trials, kCoalescingWindow,
       TaskQueuePacedSender::kNoPacketHoldback, time_controller.GetMainThread(),
       PacerConfig::Create(time_controller.GetClock()->CurrentTime(),
                           /*send_rate=*/kPacingDataRate,
                           /*pad_rate=*/DataRate::Zero()));
+=======
+  pacer.SetConfig(PacerConfig::Create(time_controller.GetClock()->CurrentTime(),
+                                      /*send_rate=*/kPacingDataRate,
+                                      /*pad_rate=*/DataRate::Zero()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   pacer.EnsureStarted();
 
   // Add 10 packets. The first should be sent immediately since the buffers
@@ -377,10 +433,18 @@ TEST(TaskQueuePacedSenderTest, SchedulesProbeAtSentTime) {
       CreateTestFieldTrials("WebRTC-Bwe-ProbingBehavior/min_probe_delta:1ms/");
   GlobalSimulatedTimeController time_controller(Timestamp::Millis(1234));
   NiceMock<MockPacketRouter> packet_router;
+<<<<<<< HEAD
+=======
+  TaskQueuePacedSender pacer(time_controller.GetClock(), &packet_router, trials,
+                             PacingController::kMinSleepTime,
+                             TaskQueuePacedSender::kNoPacketHoldback);
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   // Set rates so one packet adds 4ms of buffer level.
   const DataSize kPacketSize = DataSize::Bytes(kDefaultPacketSize);
   const TimeDelta kPacketPacingTime = TimeDelta::Millis(4);
   const DataRate kPacingDataRate = kPacketSize / kPacketPacingTime;
+<<<<<<< HEAD
   TaskQueuePacedSender pacer(
       time_controller.GetClock(), &packet_router, trials,
       PacingController::kMinSleepTime, TaskQueuePacedSender::kNoPacketHoldback,
@@ -389,6 +453,12 @@ TEST(TaskQueuePacedSenderTest, SchedulesProbeAtSentTime) {
                           /*send_rate=*/kPacingDataRate,
                           /*pad_rate=*/DataRate::Zero(),
                           /*time_window=*/TimeDelta::Zero()));
+=======
+  pacer.SetConfig(PacerConfig::Create(time_controller.GetClock()->CurrentTime(),
+                                      /*send_rate=*/kPacingDataRate,
+                                      /*pad_rate=*/DataRate::Zero(),
+                                      /*time_window=*/TimeDelta::Zero()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   pacer.EnsureStarted();
   EXPECT_CALL(packet_router, FetchFec).WillRepeatedly([]() {
     return std::vector<std::unique_ptr<RtpPacketToSend>>();
@@ -455,6 +525,7 @@ TEST(TaskQueuePacedSenderTest, NoMinSleepTimeWhenProbing) {
   const DataSize kPacketSize = DataSize::Bytes(kDefaultPacketSize);
   const TimeDelta kPacketPacingTime = TimeDelta::Millis(4);
   const DataRate kPacingDataRate = kPacketSize / kPacketPacingTime;
+<<<<<<< HEAD
   TaskQueuePacedSender pacer(
       time_controller.GetClock(), &packet_router, trials,
       PacingController::kMinSleepTime, TaskQueuePacedSender::kNoPacketHoldback,
@@ -462,6 +533,11 @@ TEST(TaskQueuePacedSenderTest, NoMinSleepTimeWhenProbing) {
       PacerConfig::Create(time_controller.GetClock()->CurrentTime(),
                           /*send_rate=*/kPacingDataRate,
                           /*pad_rate=*/DataRate::Zero()));
+=======
+  pacer.SetConfig(PacerConfig::Create(time_controller.GetClock()->CurrentTime(),
+                                      /*send_rate=*/kPacingDataRate,
+                                      /*padding_rate=*/DataRate::Zero()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   pacer.EnsureStarted();
   EXPECT_CALL(packet_router, FetchFec).WillRepeatedly([]() {
     return std::vector<std::unique_ptr<RtpPacketToSend>>();
@@ -515,6 +591,12 @@ TEST(TaskQueuePacedSenderTest, PacketBasedCoalescing) {
   GlobalSimulatedTimeController time_controller(Timestamp::Millis(1234));
   NiceMock<MockPacketRouter> packet_router;
   FieldTrials trials = CreateTestFieldTrials();
+<<<<<<< HEAD
+=======
+  TaskQueuePacedSender pacer(time_controller.GetClock(), &packet_router, trials,
+                             kFixedCoalescingWindow, kPacketBasedHoldback);
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   // Set rates so one packet adds one ms of buffer level.
   const DataSize kPacketSize = DataSize::Bytes(kDefaultPacketSize);
   const TimeDelta kPacketPacingTime = TimeDelta::Millis(1);
@@ -524,6 +606,7 @@ TEST(TaskQueuePacedSenderTest, PacketBasedCoalescing) {
   // `kFixedCoalescingWindow` sets the upper bound for the window.
   ASSERT_GE(kFixedCoalescingWindow, kExpectedHoldbackWindow);
 
+<<<<<<< HEAD
   TaskQueuePacedSender pacer(
       time_controller.GetClock(), &packet_router, trials,
       kFixedCoalescingWindow, kPacketBasedHoldback,
@@ -532,6 +615,12 @@ TEST(TaskQueuePacedSenderTest, PacketBasedCoalescing) {
                           /*send_rate=*/kPacingDataRate,
                           /*pad_rate=*/DataRate::Zero(),
                           /*time_window=*/TimeDelta::Zero()));
+=======
+  pacer.SetConfig(PacerConfig::Create(time_controller.GetClock()->CurrentTime(),
+                                      /*send_rate=*/kPacingDataRate,
+                                      /*pad_rate=*/DataRate::Zero(),
+                                      /*time_window=*/TimeDelta::Zero()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   EXPECT_CALL(packet_router, FetchFec).WillRepeatedly([]() {
     return std::vector<std::unique_ptr<RtpPacketToSend>>();
   });
@@ -568,6 +657,12 @@ TEST(TaskQueuePacedSenderTest, FixedHoldBackHasPriorityOverPackets) {
   GlobalSimulatedTimeController time_controller(Timestamp::Millis(1234));
   MockPacketRouter packet_router;
   FieldTrials trials = CreateTestFieldTrials();
+<<<<<<< HEAD
+=======
+  TaskQueuePacedSender pacer(time_controller.GetClock(), &packet_router, trials,
+                             kFixedCoalescingWindow, kPacketBasedHoldback);
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   // Set rates so one packet adds one ms of buffer level.
   const DataSize kPacketSize = DataSize::Bytes(kDefaultPacketSize);
   const TimeDelta kPacketPacingTime = TimeDelta::Millis(1);
@@ -577,6 +672,7 @@ TEST(TaskQueuePacedSenderTest, FixedHoldBackHasPriorityOverPackets) {
   // |kFixedCoalescingWindow| sets the upper bound for the window.
   ASSERT_LT(kFixedCoalescingWindow, kExpectedPacketHoldbackWindow);
 
+<<<<<<< HEAD
   TaskQueuePacedSender pacer(
       time_controller.GetClock(), &packet_router, trials,
       kFixedCoalescingWindow, kPacketBasedHoldback,
@@ -585,6 +681,12 @@ TEST(TaskQueuePacedSenderTest, FixedHoldBackHasPriorityOverPackets) {
                           /*send_rate=*/kPacingDataRate,
                           /*pad_rate=*/DataRate::Zero(),
                           /*time_window=*/TimeDelta::Zero()));
+=======
+  pacer.SetConfig(PacerConfig::Create(time_controller.GetClock()->CurrentTime(),
+                                      /*send_rate=*/kPacingDataRate,
+                                      /*pad_rate=*/DataRate::Zero(),
+                                      /*time_window=*/TimeDelta::Zero()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   EXPECT_CALL(packet_router, FetchFec).WillRepeatedly([]() {
     return std::vector<std::unique_ptr<RtpPacketToSend>>();
   });
@@ -623,6 +725,7 @@ TEST(TaskQueuePacedSenderTest, ProbingStopDuringSendLoop) {
   const TimeDelta kPacketPacingTime = TimeDelta::Millis(1);
   const DataRate kPacingDataRate = 2 * kPacketSize / kPacketPacingTime;
 
+<<<<<<< HEAD
   TaskQueuePacedSender pacer(
       time_controller.GetClock(), &packet_router, trials,
       PacingController::kMinSleepTime, TaskQueuePacedSender::kNoPacketHoldback,
@@ -630,6 +733,11 @@ TEST(TaskQueuePacedSenderTest, ProbingStopDuringSendLoop) {
       PacerConfig::Create(time_controller.GetClock()->CurrentTime(),
                           /*send_rate=*/kPacingDataRate,
                           /*pad_rate=*/DataRate::Zero()));
+=======
+  pacer.SetConfig(PacerConfig::Create(time_controller.GetClock()->CurrentTime(),
+                                      /*send_rate=*/kPacingDataRate,
+                                      /*pad_rate=*/DataRate::Zero()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   pacer.EnsureStarted();
 
   EXPECT_CALL(packet_router, FetchFec).WillRepeatedly([]() {
@@ -669,6 +777,7 @@ TEST(TaskQueuePacedSenderTest, PostedPacketsNotSendFromRemovePacketsForSsrc) {
   MockPacketRouter packet_router;
   static constexpr DataRate kPacingRate =
       DataRate::BytesPerSec(kDefaultPacketSize * 10);
+<<<<<<< HEAD
   TaskQueuePacedSender pacer(
       time_controller.GetClock(), &packet_router, trials,
       PacingController::kMinSleepTime, TaskQueuePacedSender::kNoPacketHoldback,
@@ -676,6 +785,11 @@ TEST(TaskQueuePacedSenderTest, PostedPacketsNotSendFromRemovePacketsForSsrc) {
       PacerConfig::Create(time_controller.GetClock()->CurrentTime(),
                           /*send_rate=*/kPacingRate,
                           /*pad_rate=*/DataRate::Zero()));
+=======
+  pacer.SetConfig(PacerConfig::Create(time_controller.GetClock()->CurrentTime(),
+                                      /*send_rate=*/kPacingRate,
+                                      /*pad_rate=*/DataRate::Zero()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   pacer.EnsureStarted();
 
   auto encoder_queue = time_controller.GetTaskQueueFactory()->CreateTaskQueue(
@@ -714,6 +828,7 @@ TEST(TaskQueuePacedSenderTest, Stats) {
   static constexpr size_t kPacketsToSend = 200;
   static constexpr DataRate kPacingRate =
       DataRate::BytesPerSec(kDefaultPacketSize * kPacketsToSend);
+<<<<<<< HEAD
   TaskQueuePacedSender pacer(
       time_controller.GetClock(), &packet_router, trials,
       PacingController::kMinSleepTime, TaskQueuePacedSender::kNoPacketHoldback,
@@ -721,6 +836,11 @@ TEST(TaskQueuePacedSenderTest, Stats) {
       PacerConfig::Create(time_controller.GetClock()->CurrentTime(),
                           /*send_rate=*/kPacingRate,
                           /*pad_rate=*/DataRate::Zero()));
+=======
+  pacer.SetConfig(PacerConfig::Create(time_controller.GetClock()->CurrentTime(),
+                                      /*send_rate=*/kPacingRate,
+                                      /*pad_rate=*/DataRate::Zero()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   pacer.EnsureStarted();
 
   // Allowed `QueueSizeData` and `ExpectedQueueTime` deviation.
@@ -792,6 +912,13 @@ TEST(TaskQueuePacedSenderTest,
                           /*pad_rate=*/DataRate::Zero(),
                           /*time_window=*/TimeDelta::Zero()));
   pacer.EnsureStarted();
+<<<<<<< HEAD
+=======
+  pacer.SetConfig(PacerConfig::Create(
+      time_controller.GetClock()->CurrentTime(),
+      /*send_rate=*/DataRate::KilobitsPerSec(500),
+      /*padding_rate=*/DataRate::Zero(), /*time_window=*/TimeDelta::Zero()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   bool send_packet_stack = false;
   EXPECT_CALL(packet_router, SendPacket)
@@ -804,7 +931,11 @@ TEST(TaskQueuePacedSenderTest,
         pacer.SetConfig(
             PacerConfig::Create(time_controller.GetClock()->CurrentTime(),
                                 /*send_rate=*/DataRate::KilobitsPerSec(1000),
+<<<<<<< HEAD
                                 /*pad_rate=*/DataRate::Zero(),
+=======
+                                /*padding_rate=*/DataRate::Zero(),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                                 /*time_window=*/TimeDelta::Zero()));
       });
   pacer.EnqueuePackets(

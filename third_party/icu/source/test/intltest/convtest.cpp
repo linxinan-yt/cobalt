@@ -816,7 +816,11 @@ ConversionTest::TestUTF8ToUTF8Overflow() {
     assertEquals("illFormed number of bytes written", 0, length);
     errorLength = UPRV_LENGTHOF(errorBytes);
     ucnv_getInvalidChars(cnv1.getAlias(), errorBytes, &errorLength, errorCode);
+<<<<<<< HEAD
     assertEquals("illFormed truncated errorLength", 2, errorLength);
+=======
+    assertEquals("illFormed truncated errorLength", 2, static_cast<int32_t>(errorLength));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     if (errorLength == 2) {
         assertEquals("illFormed truncated errorBytes", 0xf191, 
                      (static_cast<int32_t>(static_cast<uint8_t>(errorBytes[0])) << 8) | static_cast<uint8_t>(errorBytes[1]));
@@ -833,7 +837,11 @@ ConversionTest::TestUTF8ToUTF8Overflow() {
     assertEquals("illFormed trail byte number of bytes written", 0, length);
     errorLength = UPRV_LENGTHOF(errorBytes);
     ucnv_getInvalidChars(cnv1.getAlias(), errorBytes, &errorLength, errorCode);
+<<<<<<< HEAD
     assertEquals("illFormed trail byte errorLength", 1, errorLength);
+=======
+    assertEquals("illFormed trail byte errorLength", 1, static_cast<int32_t>(errorLength));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     if (errorLength == 1) {
         assertEquals("illFormed trail byte errorBytes", 0x93, static_cast<int32_t>(static_cast<uint8_t>(errorBytes[0])));
     }

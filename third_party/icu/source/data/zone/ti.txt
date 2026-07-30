@@ -1196,6 +1196,12 @@ ti{
         "Pacific:Honolulu"{
             ec{"ሆኖሉሉ"}
         }
+<<<<<<< HEAD
+=======
+        "Pacific:Kanton"{
+            ec{"ካንቶን"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Pacific:Kiritimati"{
             ec{"ኪሪቲማቲ"}
         }
@@ -1283,7 +1289,13 @@ ti{
             ls{"ግዜ ደቡብ ኣፍሪቃ"}
         }
         "meta:Africa_Western"{
+<<<<<<< HEAD
             ls{"ግዜ ምዕራብ ኣፍሪቃ"}
+=======
+            ld{"ግዜ ክረምቲ ምዕራብ ኣፍሪቃ"}
+            lg{"ግዜ ምዕራብ ኣፍሪቃ"}
+            ls{"ናይ መደበኛ ግዘ ምዕራብ ኣፍሪቃ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "meta:Alaska"{
             ld{"ናይ መዓልቲ ግዘ አላስካ"}
@@ -1522,9 +1534,12 @@ ti{
         "meta:Guyana"{
             ls{"ግዜ ጉያና"}
         }
+<<<<<<< HEAD
         "meta:Hawaii"{
             ls{"ናይ መደበኛ ሃዋይ-ኣሌውቲያን ግዘ"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "meta:Hawaii_Aleutian"{
             ld{"ናይ መዓልቲ ሃዋይ-ኣሌውቲያን ግዘ"}
             lg{"ናይ ሃዋይ-ኣሌውቲያን ግዘ"}

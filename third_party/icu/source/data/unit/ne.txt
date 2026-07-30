@@ -169,6 +169,11 @@ ne{
                 one{"{0} पर्माइराइड"}
                 other{"{0} पर्माइराइड"}
             }
+            portion-per-1e9{
+                dnam{"अंश प्रति बरब"}
+                one{"{0} अंश प्रति अरब"}
+                other{"{0} अंश प्रति अरब"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -271,6 +276,12 @@ ne{
                 other{"{0} न्यानोसेकेन्ड"}
             }
             night{
+<<<<<<< HEAD
+=======
+                dnam{"रात"}
+                one{"{0} रात"}
+                other{"{0} रात"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 per{"{0} प्रति रात"}
             }
             quarter{
@@ -686,6 +697,11 @@ ne{
                 one{"{0}नट"}
                 other{"{0}नट्स"}
             }
+            light-speed{
+                dnam{"प्रकाश"}
+                one{"प्रकाश"}
+                other{"{0} प्रकाश"}
+            }
             meter-per-second{
                 one{"{0} मिटर प्रति सेकेण्ड"}
                 other{"{0} मिटर प्रति सेकेण्ड"}
@@ -930,6 +946,17 @@ ne{
                 one{"{0}‰"}
                 other{"{0}‰"}
             }
+<<<<<<< HEAD
+=======
+            permillion{
+                one{"{0}ppm"}
+                other{"{0}ppm"}
+            }
+            portion-per-1e9{
+                one{"{0}ppb"}
+                other{"{0}ppb"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         consumption{
             liter-per-kilometer{
@@ -1001,8 +1028,15 @@ ne{
                 other{"{0}मि.से."}
             }
             night{
+<<<<<<< HEAD
                 one{"{0}रात"}
                 other{"{0}रात"}
+=======
+                dnam{"रात"}
+                one{"{0}रात"}
+                other{"{0}रात"}
+                per{"{0}/रात"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 per{"{0} /q"}
@@ -1247,6 +1281,18 @@ ne{
                 one{"{0} km/h"}
                 other{"{0} km/h"}
             }
+<<<<<<< HEAD
+=======
+            light-speed{
+                dnam{"प्रकाश"}
+                one{"{0}प्रकाश"}
+                other{"{0}प्रकाशा"}
+            }
+            mile-per-hour{
+                one{"{0} mi/h"}
+                other{"{0} mi/h"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         temperature{
             celsius{
@@ -1478,6 +1524,9 @@ ne{
             }
             permyriad{
                 dnam{"पर्माइराइड"}
+            }
+            portion-per-1e9{
+                dnam{"अंश/अरब"}
             }
         }
         consumption{

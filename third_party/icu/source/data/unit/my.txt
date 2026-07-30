@@ -160,6 +160,10 @@ my{
             permyriad{
                 other{"{0} ပါမီရိတ်"}
             }
+            portion-per-1e9{
+                dnam{"သန်းတစ်ထောင်ပုံ တစ်ပုံ"}
+                other{"သန်းတစ်ထောင်ပုံ {0} ပုံ"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -246,6 +250,11 @@ my{
             }
             nanosecond{
                 other{"{0} နာနိုစက္ကန့်"}
+            }
+            night{
+                dnam{"ည"}
+                other{"{0} ည"}
+                per{"{0}/ည"}
             }
             quarter{
                 dnam{"ကွာတား"}
@@ -595,6 +604,10 @@ my{
                 dnam{"နော့တီကယ်မိုင်"}
                 other{"{0} နော့တီကယ်မိုင်"}
             }
+            light-speed{
+                dnam{"အလင်း"}
+                other{"{0} အလင်း"}
+            }
             meter-per-second{
                 other{"တစ်စက္ကန့်လျှင် {0} မီတာ"}
             }
@@ -724,6 +737,7 @@ my{
                 other{"{0}°"}
             }
         }
+<<<<<<< HEAD
         concentr{
             ofglucose{
                 dnam{"Glc"}
@@ -733,6 +747,15 @@ my{
                 other{"{0} ပတ်"}
             }
             part-per-1e9{
+=======
+        area{
+            square-centimeter{
+                dnam{"cm²"}
+            }
+        }
+        concentr{
+            portion-per-1e9{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0}ppb"}
             }
         }
@@ -766,6 +789,11 @@ my{
         duration{
             millisecond{
                 other{"{0} ms"}
+            }
+            night{
+                dnam{"ည"}
+                other{"{0} ည"}
+                per{"{0}/ည"}
             }
             second{
                 other{"{0} s"}
@@ -862,6 +890,10 @@ my{
         }
         speed{
             light-speed{
+<<<<<<< HEAD
+=======
+                dnam{"အလင်း"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0}အလင်း"}
             }
         }
@@ -971,6 +1003,9 @@ my{
             }
             permyriad{
                 dnam{"ပါမီရိတ်"}
+            }
+            portion-per-1e9{
+                dnam{"သန်းတစ်ထောင်ပုံ တစ်ပုံ"}
             }
         }
         consumption{

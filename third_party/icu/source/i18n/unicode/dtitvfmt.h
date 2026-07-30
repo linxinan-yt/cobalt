@@ -584,7 +584,11 @@ public:
      * this date interval formatter.
      * @stable ICU 4.0
      */
+<<<<<<< HEAD
     U_I18N_API const DateIntervalInfo* getDateIntervalInfo() const;
+=======
+    const DateIntervalInfo* getDateIntervalInfo() const;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     /**
      * Set the date time interval patterns.
@@ -605,14 +609,22 @@ public:
      * @return the date formatter associated with this date interval formatter.
      * @stable ICU 4.0
      */
+<<<<<<< HEAD
     U_I18N_API const DateFormat* getDateFormat() const;
+=======
+    const DateFormat* getDateFormat() const;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     /**
      * Returns a reference to the TimeZone used by this DateIntervalFormat's calendar.
      * @return the time zone associated with the calendar of DateIntervalFormat.
      * @stable ICU 4.8
      */
+<<<<<<< HEAD
     U_I18N_API virtual const TimeZone& getTimeZone() const;
+=======
+    virtual const TimeZone& getTimeZone() const;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     /**
      * Sets the time zone for the calendar used by this DateIntervalFormat object. The
@@ -666,7 +678,11 @@ public:
      * @return          The class ID for all objects of this class.
      * @stable ICU 4.0
      */
+<<<<<<< HEAD
     U_I18N_API static UClassID getStaticClassID();
+=======
+    static UClassID U_EXPORT2 getStaticClassID();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     /**
      * Returns a unique class ID POLYMORPHICALLY. Pure virtual override. This
@@ -679,7 +695,11 @@ public:
      *                  other classes have different class IDs.
      * @stable ICU 4.0
      */
+<<<<<<< HEAD
     U_I18N_API virtual UClassID getDynamicClassID() const override;
+=======
+    virtual UClassID getDynamicClassID() const override;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 protected:
 

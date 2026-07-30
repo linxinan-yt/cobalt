@@ -382,6 +382,18 @@ sv{
                 one{"{0} promyriad"}
                 other{"{0} promyriad"}
             }
+            portion-per-1e9{
+                case{
+                    genitive{
+                        one{"{0} miljarddels"}
+                        other{"{0} miljarddelars"}
+                    }
+                }
+                dnam{"miljarddelar"}
+                gender{"common"}
+                one{"{0} miljarddel"}
+                other{"{0} miljarddelar"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -682,6 +694,10 @@ sv{
                         other{"{0} nätters"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"nätter"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 gender{"common"}
                 one{"{0} natt"}
                 other{"{0} nätter"}
@@ -1205,8 +1221,13 @@ sv{
                     }
                 }
                 gender{"common"}
+<<<<<<< HEAD
                 one{"{0} punkt"}
                 other{"{0} punkter"}
+=======
+                one{"{0} pkt"}
+                other{"{0} pkt"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             solar-radius{
                 dnam{"solradier"}
@@ -1584,7 +1605,20 @@ sv{
                 other{"{0} kilometer per timme"}
             }
             light-speed{
+<<<<<<< HEAD
                 gender{"neuter"}
+=======
+                case{
+                    genitive{
+                        one{"{0} ljus"}
+                        other{"{0} ljus"}
+                    }
+                }
+                dnam{"ljus"}
+                gender{"neuter"}
+                one{"{0} ljus"}
+                other{"{0} ljus"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             meter-per-second{
                 case{
@@ -2048,6 +2082,10 @@ sv{
             permyriad{
                 one{"{0}‱"}
                 other{"{0}‱"}
+            }
+            portion-per-1e9{
+                one{"{0}ppb"}
+                other{"{0}ppb"}
             }
         }
         consumption{

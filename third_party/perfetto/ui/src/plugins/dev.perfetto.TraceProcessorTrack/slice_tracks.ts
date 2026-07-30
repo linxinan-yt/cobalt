@@ -13,9 +13,13 @@
 // limitations under the License.
 
 import m from 'mithril';
+<<<<<<< HEAD
 import type {StandardGroup} from '../dev.perfetto.StandardGroups';
 import {Anchor} from '../../widgets/anchor';
 import {Icons} from '../../base/semantic_icons';
+=======
+import {StandardGroup} from '../dev.perfetto.StandardGroups';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 export interface SliceTrackGroupSchema {
   name: string;
@@ -30,6 +34,7 @@ interface SliceTrackTypeSchema {
   readonly topLevelGroup: 'PROCESS' | 'THREAD' | StandardGroup | undefined;
 
   /**
+<<<<<<< HEAD
    * Optional function to customize the display name of the track.
    *
    * This function is called during track registration to transform the raw
@@ -46,6 +51,8 @@ interface SliceTrackTypeSchema {
   readonly displayName?: (trackName: string) => string;
 
   /**
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
    * Optional function to provide a rich description renderer for the track.
    *
    * This function is called during track registration to generate custom

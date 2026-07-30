@@ -44,11 +44,14 @@
 
 namespace perfetto {
 
+<<<<<<< HEAD
 // Forward declaration for a proto.
 namespace protos::gen {
 class TraceConfig_AndroidReportConfig;
 }  // namespace protos::gen
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 class PerfettoCmd : public Consumer {
  public:
   PerfettoCmd();

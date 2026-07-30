@@ -258,6 +258,7 @@ static const FieldsDat fr_attrDef_long_midSent_day[kNumOffsets*2] = {
 
 static const char* ak_decDef_long_stdAlon_sec[kNumOffsets*2] = { // falls back to root
 /*  text                    numeric */
+<<<<<<< HEAD
     "simasin 5 a atwam",     "simasin 5 a atwam",               /* -5   */
     "simasin 2.2 a atwam",   "simasin 2.2 a atwam",             /* -2.2 */
     "simasin 2 a atwam",     "simasin 2 a atwam",               /* -2   */
@@ -283,6 +284,33 @@ static const FieldsDat ak_attrDef_long_stdAlon_sec[kNumOffsets*2] = {
     {UDAT_REL_NUMERIC_FIELD, 8, 9}, {UDAT_REL_NUMERIC_FIELD, 8, 9},
     {UDAT_REL_NUMERIC_FIELD, 8, 9}, {UDAT_REL_NUMERIC_FIELD, 8, 9},
     {UDAT_REL_NUMERIC_FIELD, 8, 9}, {UDAT_REL_NUMERIC_FIELD, 8, 9},
+=======
+    "nnibuo 5 a atwam",     "nnibuo 5 a atwam",               /* -5   */
+    "nnibuo 2.2 a atwam",   "nnibuo 2.2 a atwam",             /* -2.2 */
+    "nnibuo 2 a atwam",     "nnibuo 2 a atwam",               /* -2   */
+    "anibuo 1 a atwam",     "anibuo 1 a atwam",               /* -1   */
+    "nnibuo 0.7 a atwam",   "nnibuo 0.7 a atwam",             /* -0.7 */
+    "seesei",               "anibuo 0 a atwam",               /*  -0  */
+    "seesei",               "anibuo 0 mu",               /*  0   */
+    "nnibuo 0.7 mu",        "nnibuo 0.7 mu",             /*  0.7 */
+    "anibuo 1 mu",          "anibuo 1 mu",               /*  1   */
+    "nnibuo 2 mu",          "nnibuo 2 mu",               /*  2   */
+    "nnibuo 5 mu",          "nnibuo 5 mu",               /*  5   */
+};
+
+static const FieldsDat ak_attrDef_long_stdAlon_sec[kNumOffsets*2] = {
+    {UDAT_REL_NUMERIC_FIELD, 7, 8}, {UDAT_REL_NUMERIC_FIELD, 7, 8},
+    {UDAT_REL_NUMERIC_FIELD, 7, 10}, {UDAT_REL_NUMERIC_FIELD, 7, 10},
+    {UDAT_REL_NUMERIC_FIELD, 7, 8}, {UDAT_REL_NUMERIC_FIELD, 7, 8},
+    {UDAT_REL_NUMERIC_FIELD, 7, 8}, {UDAT_REL_NUMERIC_FIELD, 7, 8},
+    {UDAT_REL_NUMERIC_FIELD, 7, 10}, {UDAT_REL_NUMERIC_FIELD, 7, 10},
+    { -1, -1, -1},                  {UDAT_REL_NUMERIC_FIELD, 7, 8},
+    { -1, -1, -1},                  {UDAT_REL_NUMERIC_FIELD, 7, 8},
+    {UDAT_REL_NUMERIC_FIELD, 7, 10}, {UDAT_REL_NUMERIC_FIELD, 7, 10},
+    {UDAT_REL_NUMERIC_FIELD, 7, 8}, {UDAT_REL_NUMERIC_FIELD, 7, 8},
+    {UDAT_REL_NUMERIC_FIELD, 7, 8}, {UDAT_REL_NUMERIC_FIELD, 7, 8},
+    {UDAT_REL_NUMERIC_FIELD, 7, 8}, {UDAT_REL_NUMERIC_FIELD, 7, 8},
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 
 static const char* enIN_decDef_short_midSent_weds[kNumOffsets*2] = {

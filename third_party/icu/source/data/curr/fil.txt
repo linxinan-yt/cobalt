@@ -1361,9 +1361,12 @@ fil{
             one{"Zambian kwacha"}
             other{"Zambian kwachas"}
         }
+<<<<<<< HEAD
         ZWG{
             one{"Zimbabwean gold"}
             other{"Zimbabwean gold"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

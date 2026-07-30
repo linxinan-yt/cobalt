@@ -258,12 +258,17 @@ int main(int argc, char* argv[]) {
         "simulated_neteq_expand_rate"}},
       {"l4s",
        {"incoming_bitrate", "outgoing_bitrate", "incoming_ecn_feedback",
+<<<<<<< HEAD
         "outgoing_ecn_feedback"}},
       {"scream",
        {"scream_ref_window", "simulated_scream_delay",
         "simulated_scream_bitrates", "simulated_scream_ref_window",
         "simulated_scream_ratios", "simulated_scream_feedback_events_per_rtt",
         "network_delay_feedback", "pacer_delay"}}};
+=======
+        "outgoing_ecn_feedback", "scream_delay_estimates",
+        "scream_ref_window"}}};
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   if (absl::GetFlag(FLAGS_list_plots)) {
     std::cerr << "List of registered plots (for use with the --plot flag):"

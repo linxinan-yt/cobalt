@@ -22,7 +22,17 @@ import {getColorForSlice} from '../../components/colorizer';
 import {EVENT_LATENCY_TRACK} from './tracks';
 import {JANKY_LATENCY_NAME} from './event_latency_model';
 
+<<<<<<< HEAD
 export function createEventLatencyTrack(trace: Trace) {
+=======
+export const JANKY_LATENCY_NAME = 'Janky EventLatency';
+
+export function createEventLatencyTrack(
+  trace: Trace,
+  uri: string,
+  baseTable: string,
+) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   return SliceTrack.create({
     trace,
     uri: EVENT_LATENCY_TRACK.uri,

@@ -387,7 +387,11 @@ export class CpuFreqTrack implements TrackRenderer {
     colors,
     renderer,
     visibleWindow,
+<<<<<<< HEAD
     resolution,
+=======
+    colors,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }: TrackRenderContext): void {
     // Step 1: Declaratively ensure mipmap tables exist
     const tableResult = this.tableSlot.use({

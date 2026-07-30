@@ -141,9 +141,16 @@ class RtcEventLogSession
         time_controller_(Timestamp::Micros(prng_.Rand<uint32_t>())),
         log_storage_(),
         log_output_factory_(log_storage_.CreateFactory()) {
+<<<<<<< HEAD
     // `clock_` and the global clock overridden by `time_controller_` may have
     // arbitrary offset. The global clock is only used for logging start event,
     // so doesn't need to advance.
+=======
+    // `clock_` and `utc_clock_` may have arbitrary offset.
+    // UTC clock is only used for logging start event, so doesn't need to
+    // advance.
+    utc_clock_.SetTime(Timestamp::Micros(prng_.Rand<uint32_t>()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     // Find the name of the current test, in order to use it as a temporary
     // filename.
     auto test_info = ::testing::UnitTest::GetInstance()->current_test_info();
@@ -226,7 +233,11 @@ class RtcEventLogSession
   SimulatedClock clock_;
   test::EventGenerator gen_;
   test::EventVerifier verifier_;
+<<<<<<< HEAD
   GlobalSimulatedTimeController time_controller_;
+=======
+  ScopedFakeClock utc_clock_;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   std::string temp_filename_;
   MemoryLogStorage log_storage_;
   std::unique_ptr<LogWriterFactoryInterface> log_output_factory_;
@@ -885,7 +896,12 @@ INSTANTIATE_TEST_SUITE_P(
                           RtcEventLog::EncodingType::NewFormat)));
 
 class RtcEventLogCircularBufferTest
+<<<<<<< HEAD
     : public ::testing::TestWithParam<RtcEventLog::EncodingType> {};
+=======
+    : public ::testing::TestWithParam<RtcEventLog::EncodingType> {
+};
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 TEST_P(RtcEventLogCircularBufferTest, KeepsMostRecentEvents) {
   // TODO(terelius): Maybe make a separate RtcEventLogImplTest that can access
@@ -900,9 +916,16 @@ TEST_P(RtcEventLogCircularBufferTest, KeepsMostRecentEvents) {
   std::replace(test_name.begin(), test_name.end(), '/', '_');
   const std::string temp_filename = test::OutputPath() + test_name;
 
+<<<<<<< HEAD
   // Use GlobalSimulatedTimeController to control result of `TimeUTCMicros`
   // during `StartLogging`.
   GlobalSimulatedTimeController time_controller(kUtcTime);
+=======
+  // Use ScopedFakeClock to control result of `TimeUTCMicros` during
+  // `StartLogging`.
+  ScopedFakeClock utc_clock;
+  utc_clock.SetTime(kUtcTime);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   const RtcEventLog::EncodingType encoding_type = GetParam();
   MemoryLogStorage log_storage;
   SimulatedClock clock(Timestamp::Seconds(1));

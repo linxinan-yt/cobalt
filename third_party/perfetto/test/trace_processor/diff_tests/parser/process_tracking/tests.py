@@ -549,7 +549,11 @@ class ProcessTracking(TestSuite):
           trusted_uid: 304336
           trusted_packet_sequence_id: 3
           trusted_pid: 1137063
+<<<<<<< HEAD
           previous_packet_dropped: 1
+=======
+          previous_packet_dropped: true
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         """),
         query="""
@@ -562,6 +566,7 @@ class ProcessTracking(TestSuite):
         "tid","pid","thread_name","process_name"
         27,27,"ksoftirqd/1","ksoftirqd/1"
         28,28,"kworker/1:0","kworker/1:0"
+<<<<<<< HEAD
         """))
 
   # perfetto v58+: main threads are now explicitly serialised, so we know
@@ -654,3 +659,6 @@ class ProcessTracking(TestSuite):
         "pid","name"
         15,"'sleep 1'"
         """))
+=======
+        """))
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

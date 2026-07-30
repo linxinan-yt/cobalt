@@ -13,7 +13,10 @@
 #include <cstring>
 #include <memory>
 #include <set>
+<<<<<<< HEAD
 #include <span>
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include <string>
 #include <utility>
 #include <vector>
@@ -33,15 +36,22 @@
 #include "p2p/test/fake_ice_transport.h"
 #include "pc/datagram_connection_internal.h"
 #include "pc/test/fake_rtc_certificate_generator.h"
+<<<<<<< HEAD
 #include "rtc_base/copy_on_write_buffer.h"
 #include "rtc_base/network/sent_packet.h"
+=======
+#include "rtc_base/event.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "rtc_base/rtc_certificate.h"
 #include "rtc_base/socket_address.h"
 #include "rtc_base/ssl_fingerprint.h"
 #include "test/create_test_environment.h"
 #include "test/gmock.h"
 #include "test/gtest.h"
+<<<<<<< HEAD
 #include "test/run_loop.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "test/wait_until.h"
 
 namespace webrtc {
@@ -58,11 +68,16 @@ using PacketSendParameters = DatagramConnection::PacketSendParameters;
 using SendOutcome = DatagramConnection::Observer::SendOutcome;
 using WireProtocol = DatagramConnection::WireProtocol;
 
+<<<<<<< HEAD
 bool IsRtpOrRtcpPacket(uint8_t first_byte) {
   return (first_byte & 0xc0) == 0x80;
 }
 
 class DatagramConnectionTest : public ::testing::Test {
+=======
+class DatagramConnectionTest : public ::testing::Test,
+                               public sigslot::has_slots<> {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  public:
   DatagramConnectionTest() : env_(CreateTestEnvironment()) {}
 
@@ -154,6 +169,7 @@ TEST_F(DatagramConnectionTest, IceCredsGettersReturnCorrectValues) {
 }
 
 TEST_F(DatagramConnectionTest, TransportsBecomeWritable) {
+<<<<<<< HEAD
   CreateConnections();
   Connect();
 
@@ -161,6 +177,17 @@ TEST_F(DatagramConnectionTest, TransportsBecomeWritable) {
       WaitUntil([&]() { return conn1_->Writable() && conn2_->Writable(); }));
   EXPECT_TRUE(conn1_->Writable());
   EXPECT_TRUE(conn2_->Writable());
+=======
+  main_thread_.BlockingCall([&]() {
+    CreateConnections();
+    Connect();
+
+    ASSERT_TRUE(
+        WaitUntil([&]() { return conn1_->Writable() && conn2_->Writable(); }));
+    EXPECT_TRUE(conn1_->Writable());
+    EXPECT_TRUE(conn2_->Writable());
+  });
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 TEST_F(DatagramConnectionTest, ObserverNotifiedOnWritableChange) {
@@ -175,8 +202,15 @@ TEST_F(DatagramConnectionTest, ObserverNotifiedOnWritableChange) {
 
   Connect();
 
+<<<<<<< HEAD
   loop_.Run();
   EXPECT_TRUE(callback_called);
+=======
+  ASSERT_TRUE(
+      WaitUntil([&]() { return conn1_->Writable() && conn2_->Writable(); }));
+
+  ASSERT_TRUE(event.Wait(TimeDelta::Millis(1000)));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   EXPECT_TRUE(conn1_->Writable());
 }
 
@@ -211,34 +245,55 @@ TEST_F(DatagramConnectionTest, RtpPacketsAreSent) {
   // Calling SendPacket causes the packet to be sent on ice1_
   CreateConnections();
   Connect();
+<<<<<<< HEAD
 
   ASSERT_TRUE(
       WaitUntil([&]() { return conn1_->Writable() && conn2_->Writable(); }));
 
   auto data = MakeRtpPacketBuffer();
   bool callback_called = false;
+=======
+
+  ASSERT_TRUE(
+      WaitUntil([&]() { return conn1_->Writable() && conn2_->Writable(); }));
+
+  std::vector<uint8_t> data = {1, 2, 3, 4, 5};
+  Event event;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   EXPECT_CALL(*observer1_ptr_, OnSendOutcome(_))
       .WillOnce([&](const SendOutcome& outcome) {
         EXPECT_EQ(outcome.id, 1u);
         EXPECT_EQ(outcome.status, SendOutcome::Status::kSuccess);
         EXPECT_NE(outcome.send_time, Timestamp::MinusInfinity());
+<<<<<<< HEAD
         callback_called = true;
         loop_.Quit();
+=======
+        event.Set();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       });
   std::vector<PacketSendParameters> packets = {
       PacketSendParameters{.id = 1, .payload = data}};
   conn1_->SendPackets(packets);
+<<<<<<< HEAD
 
   // Pull the RTP sequence number from ice1's last_sent_packet
   uint16_t seq_num = ParseRtpSequenceNumber(ice1_->last_sent_packet());
   EXPECT_EQ(seq_num, 1);
   loop_.Run();
   EXPECT_TRUE(callback_called);
+=======
+  // Pull the RTP sequence number from ice1's last_sent_packet
+  uint16_t seq_num = ParseRtpSequenceNumber(ice1_->last_sent_packet());
+  EXPECT_EQ(seq_num, 0);
+  ASSERT_TRUE(event.Wait(TimeDelta::Millis(1000)));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 TEST_F(DatagramConnectionTest, RtpPacketsAreReceived) {
   CreateConnections();
   Connect();
+<<<<<<< HEAD
 
   ASSERT_TRUE(
       WaitUntil([&]() { return conn1_->Writable() && conn2_->Writable(); }));
@@ -255,6 +310,14 @@ TEST_F(DatagramConnectionTest, RtpPacketsAreReceived) {
       loop_.Quit();
   };
 
+=======
+
+  ASSERT_TRUE(
+      WaitUntil([&]() { return conn1_->Writable() && conn2_->Writable(); }));
+
+  std::vector<uint8_t> data = {1, 2, 3, 4, 5};
+  Event receive_event;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   EXPECT_CALL(*observer2_ptr_, OnPacketReceived(_, _))
       .WillOnce(
           [&](std::span<const uint8_t> received_data,
@@ -263,25 +326,99 @@ TEST_F(DatagramConnectionTest, RtpPacketsAreReceived) {
             EXPECT_EQ(memcmp(received_data.data(), data.data(), data.size()),
                       0);
             EXPECT_NE(metadata.receive_time, Timestamp::Zero());
+<<<<<<< HEAD
             callbacks.packet_received = true;
             check_done();
           });
 
+=======
+            receive_event.Set();
+          });
+
+  Event send_event;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   EXPECT_CALL(*observer1_ptr_, OnSendOutcome(_))
       .WillOnce([&](const SendOutcome& outcome) {
         EXPECT_EQ(outcome.id, 1u);
         EXPECT_EQ(outcome.status, SendOutcome::Status::kSuccess);
         EXPECT_NE(outcome.send_time, Timestamp::MinusInfinity());
+<<<<<<< HEAD
         callbacks.send_outcome = true;
         check_done();
+=======
+        send_event.Set();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       });
 
   std::vector<PacketSendParameters> packets = {
       PacketSendParameters{.id = 1, .payload = data}};
   conn1_->SendPackets(packets);
+<<<<<<< HEAD
   loop_.Run();
   EXPECT_TRUE(callbacks.packet_received);
   EXPECT_TRUE(callbacks.send_outcome);
+=======
+  // Process the message queue to ensure the packet is sent.
+  Thread::Current()->ProcessMessages(0);
+  ASSERT_TRUE(receive_event.Wait(TimeDelta::Millis(1000)));
+  ASSERT_TRUE(send_event.Wait(TimeDelta::Millis(1000)));
+}
+
+TEST_F(DatagramConnectionTest, SendMultiplePackets) {
+  CreateConnections();
+  Connect();
+
+  ASSERT_TRUE(
+      WaitUntil([&]() { return conn1_->Writable() && conn2_->Writable(); }));
+
+  std::vector<std::vector<uint8_t>> data = {{1, 2, 3}, {4, 5, 6, 7}, {8}};
+  std::vector<PacketSendParameters> packets;
+  for (size_t i = 0; i < data.size(); i++) {
+    packets.push_back(
+        PacketSendParameters{.id = static_cast<DatagramConnection::PacketId>(i),
+                             .payload = data[i]});
+  }
+
+  std::set<DatagramConnection::PacketId> expected_send_ids = {0, 1, 2};
+  Event send_event;
+  EXPECT_CALL(*observer1_ptr_, OnSendOutcome(_))
+      .WillRepeatedly([&](const SendOutcome& outcome) {
+        EXPECT_EQ(outcome.status, SendOutcome::Status::kSuccess);
+        EXPECT_NE(outcome.send_time, Timestamp::MinusInfinity());
+        EXPECT_NE(expected_send_ids.find(outcome.id), expected_send_ids.end());
+        expected_send_ids.erase(outcome.id);
+
+        if (expected_send_ids.size() == 0) {
+          send_event.Set();
+        }
+      });
+
+  Event recieve_event;
+  std::vector<std::vector<uint8_t>> received_packets;
+  EXPECT_CALL(*observer2_ptr_, OnPacketReceived(_, _))
+      .Times(data.size())
+      .WillRepeatedly(
+          [&](ArrayView<const uint8_t> received_data,
+              const DatagramConnection::Observer::PacketMetadata& metadata) {
+            received_packets.emplace_back(received_data.begin(),
+                                          received_data.end());
+            if (received_packets.size() == data.size()) {
+              recieve_event.Set();
+            }
+          });
+
+  conn1_->SendPackets(packets);
+
+  // Process the message queue to ensure the packet is sent.
+  Thread::Current()->ProcessMessages(0);
+  EXPECT_TRUE(send_event.Wait(TimeDelta::Millis(1000)));
+
+  ASSERT_TRUE(recieve_event.Wait(TimeDelta::Millis(1000)));
+  EXPECT_EQ(received_packets.size(), data.size());
+  for (size_t i = 0; i < data.size(); i++) {
+    EXPECT_EQ(received_packets[i], data[i]);
+  }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 TEST_F(DatagramConnectionTest, SendMultipleRtpPackets) {
@@ -373,6 +510,7 @@ TEST_F(DatagramConnectionTest, SendRtpPacketFailsWhenDtlsNotActive) {
   std::vector<PacketSendParameters> packets = {
       PacketSendParameters{.id = 1, .payload = data}};
   conn1_->SendPackets(packets);
+<<<<<<< HEAD
 }
 
 TEST_F(DatagramConnectionTest, NonRtpPacketsInSRTPModeAreDTLSProtected) {
@@ -407,6 +545,8 @@ TEST_F(DatagramConnectionTest, NonRtpPacketsInSRTPModeAreDTLSProtected) {
 
   loop_.Run();
   EXPECT_TRUE(callback_called);
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 TEST_F(DatagramConnectionTest, OnCandidateGathered) {
@@ -450,6 +590,7 @@ TEST_F(DatagramConnectionTest, DirectDtlsPacketsAreSent) {
   Connect();
   ASSERT_TRUE(
       WaitUntil([&]() { return conn1_->Writable() && conn2_->Writable(); }));
+<<<<<<< HEAD
 
   std::vector<uint8_t> data = {1, 2, 3, 4, 5};
   bool callback_called = false;
@@ -489,6 +630,36 @@ TEST_F(DatagramConnectionTest, DirectDtlsPacketsAreReceived) {
       loop_.Quit();
   };
 
+=======
+
+  std::vector<uint8_t> data = {1, 2, 3, 4, 5};
+  Event event;
+  EXPECT_CALL(*observer1_ptr_, OnSendOutcome(_))
+      .WillOnce([&](const SendOutcome& outcome) {
+        EXPECT_EQ(outcome.id, 1u);
+        EXPECT_EQ(outcome.status, SendOutcome::Status::kSuccess);
+        EXPECT_NE(outcome.send_time, Timestamp::MinusInfinity());
+        event.Set();
+      });
+  std::vector<PacketSendParameters> packets = {
+      PacketSendParameters{.id = 1, .payload = data}};
+  conn1_->SendPackets(packets);
+  // For direct DTLS, the sent packet should be larger than the data due to
+  // DTLS overhead.
+  EXPECT_GT(ice1_->last_sent_packet().size(), data.size());
+  ASSERT_TRUE(event.Wait(TimeDelta::Millis(1000)));
+}
+
+TEST_F(DatagramConnectionTest, DirectDtlsPacketsAreReceived) {
+  CreateConnections(WireProtocol::kDtls);
+  Connect();
+
+  ASSERT_TRUE(
+      WaitUntil([&]() { return conn1_->Writable() && conn2_->Writable(); }));
+
+  std::vector<uint8_t> data = {1, 2, 3, 4, 5};
+  Event receive_event;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   EXPECT_CALL(*observer2_ptr_, OnPacketReceived(_, _))
       .WillOnce(
           [&](std::span<const uint8_t> received_data,
@@ -497,22 +668,34 @@ TEST_F(DatagramConnectionTest, DirectDtlsPacketsAreReceived) {
             EXPECT_EQ(memcmp(received_data.data(), data.data(), data.size()),
                       0);
             EXPECT_NE(metadata.receive_time, Timestamp::Zero());
+<<<<<<< HEAD
             callbacks.packet_received = true;
             check_done();
           });
 
+=======
+            receive_event.Set();
+          });
+
+  Event send_event;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   EXPECT_CALL(*observer1_ptr_, OnSendOutcome(_))
       .WillOnce([&](const SendOutcome& outcome) {
         EXPECT_EQ(outcome.id, 1u);
         EXPECT_EQ(outcome.status, SendOutcome::Status::kSuccess);
         EXPECT_NE(outcome.send_time, Timestamp::MinusInfinity());
+<<<<<<< HEAD
         callbacks.send_outcome = true;
         check_done();
+=======
+        send_event.Set();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       });
 
   std::vector<PacketSendParameters> packets = {
       PacketSendParameters{.id = 1, .payload = data}};
   conn1_->SendPackets(packets);
+<<<<<<< HEAD
   loop_.Run();
   EXPECT_TRUE(callbacks.packet_received);
   EXPECT_TRUE(callbacks.send_outcome);
@@ -573,6 +756,12 @@ TEST_F(DatagramConnectionTest, UserSentPacketsTriggerOnSendOutcome) {
 
   conn1_->OnSentPacket(user_packet);
   EXPECT_TRUE(callback_called);
+=======
+  // Process the message queue to ensure the packet is sent.
+  Thread::Current()->ProcessMessages(0);
+  ASSERT_TRUE(receive_event.Wait(TimeDelta::Millis(1000)));
+  ASSERT_TRUE(send_event.Wait(TimeDelta::Millis(1000)));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 }  // namespace

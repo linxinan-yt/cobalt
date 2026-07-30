@@ -1,11 +1,20 @@
 # IdnaTestV2.txt
+<<<<<<< HEAD
 # Date: 2025-05-01, 19:36:55 GMT
 # © 2025 Unicode®, Inc.
+=======
+# Date: 2024-07-03, 22:06:44 GMT
+# © 2024 Unicode®, Inc.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 # Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
 # For terms of use and license, see https://www.unicode.org/terms_of_use.html
 #
 # Unicode IDNA Compatible Preprocessing for UTS #46
+<<<<<<< HEAD
 # Version: 17.0.0
+=======
+# Version: 16.0.0
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #
 # For documentation and usage, see https://www.unicode.org/reports/tr46
 #
@@ -4215,10 +4224,17 @@ xn--te28c.xn--isb286btrgo7w; 򩼗.\u07C7ᡖႳⴇ; [B2, B3, V7]; xn--te28c.xn--i
 \u200D􅍉.\u06B3\u0775; ; [B1, C2, V7]; xn--1ug39444n.xn--mkb20b; ; xn--3j78f.xn--mkb20b; [V7] # .ڳݵ
 xn--3j78f.xn--mkb20b; 􅍉.\u06B3\u0775; [V7]; xn--3j78f.xn--mkb20b; ; ;  # .ڳݵ
 xn--1ug39444n.xn--mkb20b; \u200D􅍉.\u06B3\u0775; [B1, C2, V7]; xn--1ug39444n.xn--mkb20b; ; ;  # .ڳݵ
+<<<<<<< HEAD
 𲤱⒛⾳．ꡦ⒈; 𲤱⒛音.ꡦ⒈; [V7]; xn--dth6033bzbvx.xn--tsh9439b; ; ;  # 𲤱⒛音.ꡦ⒈
 𲤱20.音.ꡦ1.; ; ; xn--20-9802c.xn--0w5a.xn--1-eg4e.; [A4_2]; ;  # 𲤱20.音.ꡦ1.
 xn--20-9802c.xn--0w5a.xn--1-eg4e.; 𲤱20.音.ꡦ1.; ; xn--20-9802c.xn--0w5a.xn--1-eg4e.; [A4_2]; ;  # 𲤱20.音.ꡦ1.
 xn--dth6033bzbvx.xn--tsh9439b; 𲤱⒛音.ꡦ⒈; [V7]; xn--dth6033bzbvx.xn--tsh9439b; ; ;  # 𲤱⒛音.ꡦ⒈
+=======
+𲤱⒛⾳．ꡦ⒈; 𲤱⒛音.ꡦ⒈; [V7]; xn--dth6033bzbvx.xn--tsh9439b; ; ;  # ⒛音.ꡦ⒈
+𲤱20.音.ꡦ1.; ; [V7]; xn--20-9802c.xn--0w5a.xn--1-eg4e.; [V7, A4_2]; ;  # 20.音.ꡦ1.
+xn--20-9802c.xn--0w5a.xn--1-eg4e.; 𲤱20.音.ꡦ1.; [V7]; xn--20-9802c.xn--0w5a.xn--1-eg4e.; [V7, A4_2]; ;  # 20.音.ꡦ1.
+xn--dth6033bzbvx.xn--tsh9439b; 𲤱⒛音.ꡦ⒈; [V7]; xn--dth6033bzbvx.xn--tsh9439b; ; ;  # ⒛音.ꡦ⒈
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 \u07DC８񳦓-｡򞲙𑁿𐩥\u09CD; \u07DC8񳦓-.򞲙𑁿𐩥\u09CD; [B2, B3, B5, B6, V3, V7]; xn--8--rve13079p.xn--b7b9842k42df776x; ; ;  # ߜ8-.𑁿𐩥্
 \u07DC8񳦓-。򞲙𑁿𐩥\u09CD; \u07DC8񳦓-.򞲙𑁿𐩥\u09CD; [B2, B3, B5, B6, V3, V7]; xn--8--rve13079p.xn--b7b9842k42df776x; ; ;  # ߜ8-.𑁿𐩥্
 xn--8--rve13079p.xn--b7b9842k42df776x; \u07DC8񳦓-.򞲙𑁿𐩥\u09CD; [B2, B3, B5, B6, V3, V7]; xn--8--rve13079p.xn--b7b9842k42df776x; ; ;  # ߜ8-.𑁿𐩥্
@@ -4398,6 +4414,7 @@ xn--o4c4837g2zvb.xn--5f70g; \u0E3A쩁𐹬.􋉳; [B1, V6, V7]; xn--o4c4837g2zvb.x
 ᡅ0\u200C。⎢󤨄; ᡅ0\u200C.⎢󤨄; [C1, V7]; xn--0-z6jy93b.xn--8lh28773l; ; xn--0-z6j.xn--8lh28773l; [V7] # ᡅ0.⎢
 xn--0-z6j.xn--8lh28773l; ᡅ0.⎢󤨄; [V7]; xn--0-z6j.xn--8lh28773l; ; ;  # ᡅ0.⎢
 xn--0-z6jy93b.xn--8lh28773l; ᡅ0\u200C.⎢󤨄; [C1, V7]; xn--0-z6jy93b.xn--8lh28773l; ; ;  # ᡅ0.⎢
+<<<<<<< HEAD
 𲮚９ꍩ\u17D3．\u200Dß; 𲮚9ꍩ\u17D3.\u200Dß; [C2]; xn--9-i0j5967eg3qz.xn--zca770n; ; xn--9-i0j5967eg3qz.ss; [] # 𲮚9ꍩ៓.ß
 𲮚9ꍩ\u17D3.\u200Dß; ; [C2]; xn--9-i0j5967eg3qz.xn--zca770n; ; xn--9-i0j5967eg3qz.ss; [] # 𲮚9ꍩ៓.ß
 𲮚9ꍩ\u17D3.\u200DSS; 𲮚9ꍩ\u17D3.\u200Dss; [C2]; xn--9-i0j5967eg3qz.xn--ss-l1t; ; xn--9-i0j5967eg3qz.ss; [] # 𲮚9ꍩ៓.ss
@@ -4411,6 +4428,19 @@ xn--9-i0j5967eg3qz.xn--zca770n; 𲮚9ꍩ\u17D3.\u200Dß; [C2]; xn--9-i0j5967eg3q
 𲮚９ꍩ\u17D3．\u200Dss; 𲮚9ꍩ\u17D3.\u200Dss; [C2]; xn--9-i0j5967eg3qz.xn--ss-l1t; ; xn--9-i0j5967eg3qz.ss; [] # 𲮚9ꍩ៓.ss
 𲮚9ꍩ\u17D3.\u200DSs; 𲮚9ꍩ\u17D3.\u200Dss; [C2]; xn--9-i0j5967eg3qz.xn--ss-l1t; ; xn--9-i0j5967eg3qz.ss; [] # 𲮚9ꍩ៓.ss
 𲮚９ꍩ\u17D3．\u200DSs; 𲮚9ꍩ\u17D3.\u200Dss; [C2]; xn--9-i0j5967eg3qz.xn--ss-l1t; ; xn--9-i0j5967eg3qz.ss; [] # 𲮚9ꍩ៓.ss
+=======
+𲮚９ꍩ\u17D3．\u200Dß; 𲮚9ꍩ\u17D3.\u200Dß; [C2, V7]; xn--9-i0j5967eg3qz.xn--zca770n; ; xn--9-i0j5967eg3qz.ss; [V7] # 9ꍩ៓.ß
+𲮚9ꍩ\u17D3.\u200Dß; ; [C2, V7]; xn--9-i0j5967eg3qz.xn--zca770n; ; xn--9-i0j5967eg3qz.ss; [V7] # 9ꍩ៓.ß
+𲮚9ꍩ\u17D3.\u200DSS; 𲮚9ꍩ\u17D3.\u200Dss; [C2, V7]; xn--9-i0j5967eg3qz.xn--ss-l1t; ; xn--9-i0j5967eg3qz.ss; [V7] # 9ꍩ៓.ss
+𲮚9ꍩ\u17D3.\u200Dss; ; [C2, V7]; xn--9-i0j5967eg3qz.xn--ss-l1t; ; xn--9-i0j5967eg3qz.ss; [V7] # 9ꍩ៓.ss
+xn--9-i0j5967eg3qz.ss; 𲮚9ꍩ\u17D3.ss; [V7]; xn--9-i0j5967eg3qz.ss; ; ;  # 9ꍩ៓.ss
+xn--9-i0j5967eg3qz.xn--ss-l1t; 𲮚9ꍩ\u17D3.\u200Dss; [C2, V7]; xn--9-i0j5967eg3qz.xn--ss-l1t; ; ;  # 9ꍩ៓.ss
+xn--9-i0j5967eg3qz.xn--zca770n; 𲮚9ꍩ\u17D3.\u200Dß; [C2, V7]; xn--9-i0j5967eg3qz.xn--zca770n; ; ;  # 9ꍩ៓.ß
+𲮚９ꍩ\u17D3．\u200DSS; 𲮚9ꍩ\u17D3.\u200Dss; [C2, V7]; xn--9-i0j5967eg3qz.xn--ss-l1t; ; xn--9-i0j5967eg3qz.ss; [V7] # 9ꍩ៓.ss
+𲮚９ꍩ\u17D3．\u200Dss; 𲮚9ꍩ\u17D3.\u200Dss; [C2, V7]; xn--9-i0j5967eg3qz.xn--ss-l1t; ; xn--9-i0j5967eg3qz.ss; [V7] # 9ꍩ៓.ss
+𲮚9ꍩ\u17D3.\u200DSs; 𲮚9ꍩ\u17D3.\u200Dss; [C2, V7]; xn--9-i0j5967eg3qz.xn--ss-l1t; ; xn--9-i0j5967eg3qz.ss; [V7] # 9ꍩ៓.ss
+𲮚９ꍩ\u17D3．\u200DSs; 𲮚9ꍩ\u17D3.\u200Dss; [C2, V7]; xn--9-i0j5967eg3qz.xn--ss-l1t; ; xn--9-i0j5967eg3qz.ss; [V7] # 9ꍩ៓.ss
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 ꗷ𑆀.\u075D𐩒; ; ; xn--ju8a625r.xn--hpb0073k; ; ;  # ꗷ𑆀.ݝ𐩒
 xn--ju8a625r.xn--hpb0073k; ꗷ𑆀.\u075D𐩒; ; xn--ju8a625r.xn--hpb0073k; ; ;  # ꗷ𑆀.ݝ𐩒
 ⒐≯-。︒򩑣-񞛠; ⒐≯-.︒򩑣-񞛠; [V3, V7]; xn----ogot9g.xn----n89hl0522az9u2a; ; ;  # ⒐≯-.︒-
@@ -5690,9 +5720,15 @@ xn--8c1a.xn--2ib8jv19e6413b; 舛.\u067D𞤴\u06BB\u200D; [B3, C2]; xn--8c1a.xn--
 4򭆥。\u0767≯; 4򭆥.\u0767≯; [B1, B3, V7]; xn--4-xn17i.xn--rpb459k; ; ;  # 4.ݧ≯
 4򭆥。\u0767>\u0338; 4򭆥.\u0767≯; [B1, B3, V7]; xn--4-xn17i.xn--rpb459k; ; ;  # 4.ݧ≯
 xn--4-xn17i.xn--rpb459k; 4򭆥.\u0767≯; [B1, B3, V7]; xn--4-xn17i.xn--rpb459k; ; ;  # 4.ݧ≯
+<<<<<<< HEAD
 𲔏𞫨񺿂硲．\u06AD; 𲔏𞫨񺿂硲.\u06AD; [B5, V7]; xn--lcz1610fn78gk609a.xn--gkb; ; ;  # 𲔏硲.ڭ
 𲔏𞫨񺿂硲.\u06AD; ; [B5, V7]; xn--lcz1610fn78gk609a.xn--gkb; ; ;  # 𲔏硲.ڭ
 xn--lcz1610fn78gk609a.xn--gkb; 𲔏𞫨񺿂硲.\u06AD; [B5, V7]; xn--lcz1610fn78gk609a.xn--gkb; ; ;  # 𲔏硲.ڭ
+=======
+𲔏𞫨񺿂硲．\u06AD; 𲔏𞫨񺿂硲.\u06AD; [B5, V7]; xn--lcz1610fn78gk609a.xn--gkb; ; ;  # 硲.ڭ
+𲔏𞫨񺿂硲.\u06AD; ; [B5, V7]; xn--lcz1610fn78gk609a.xn--gkb; ; ;  # 硲.ڭ
+xn--lcz1610fn78gk609a.xn--gkb; 𲔏𞫨񺿂硲.\u06AD; [B5, V7]; xn--lcz1610fn78gk609a.xn--gkb; ; ;  # 硲.ڭ
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 \u200C.\uFE08\u0666Ⴆ℮; \u200C.\u0666ⴆ℮; [B1, C1]; xn--0ug.xn--fib628k4li; ; .xn--fib628k4li; [B1, A4_2] # .٦ⴆ℮
 \u200C.\uFE08\u0666ⴆ℮; \u200C.\u0666ⴆ℮; [B1, C1]; xn--0ug.xn--fib628k4li; ; .xn--fib628k4li; [B1, A4_2] # .٦ⴆ℮
 .xn--fib628k4li; .\u0666ⴆ℮; [B1, X4_2]; .xn--fib628k4li; [B1, A4_2]; ;  # .٦ⴆ℮
@@ -5833,6 +5869,7 @@ xn--0ug7905g.xn-----h6e; \u200C𐺨.\u0859--; [B1, C1, V3, V6]; xn--0ug7905g.xn-
 xn--qlj1559dr224h.xn--skj; 𐋸󮘋ⴢ.ⴁ; [V7]; xn--qlj1559dr224h.xn--skj; ; ;  # 𐋸ⴢ.ⴁ
 xn--6nd5215jr2u0h.xn--skj; 𐋸󮘋Ⴢ.ⴁ; [V7]; xn--6nd5215jr2u0h.xn--skj; ; ;  # 𐋸Ⴢ.ⴁ
 xn--6nd5215jr2u0h.xn--8md; 𐋸󮘋Ⴢ.Ⴁ; [V7]; xn--6nd5215jr2u0h.xn--8md; ; ;  # 𐋸Ⴢ.Ⴁ
+<<<<<<< HEAD
 񗑿\uA806₄򩞆｡𲩧󠒹ς; 񗑿\uA8064򩞆.𲩧󠒹ς; [V7]; xn--4-w93ej7463a9io5a.xn--3xa51142bk3f0d; ; xn--4-w93ej7463a9io5a.xn--4xa31142bk3f0d;  # ꠆4.𲩧ς
 񗑿\uA8064򩞆。𲩧󠒹ς; 񗑿\uA8064򩞆.𲩧󠒹ς; [V7]; xn--4-w93ej7463a9io5a.xn--3xa51142bk3f0d; ; xn--4-w93ej7463a9io5a.xn--4xa31142bk3f0d;  # ꠆4.𲩧ς
 񗑿\uA8064򩞆。𲩧󠒹Σ; 񗑿\uA8064򩞆.𲩧󠒹σ; [V7]; xn--4-w93ej7463a9io5a.xn--4xa31142bk3f0d; ; ;  # ꠆4.𲩧σ
@@ -5841,6 +5878,16 @@ xn--4-w93ej7463a9io5a.xn--4xa31142bk3f0d; 񗑿\uA8064򩞆.𲩧󠒹σ; [V7]; xn--
 xn--4-w93ej7463a9io5a.xn--3xa51142bk3f0d; 񗑿\uA8064򩞆.𲩧󠒹ς; [V7]; xn--4-w93ej7463a9io5a.xn--3xa51142bk3f0d; ; ;  # ꠆4.𲩧ς
 񗑿\uA806₄򩞆｡𲩧󠒹Σ; 񗑿\uA8064򩞆.𲩧󠒹σ; [V7]; xn--4-w93ej7463a9io5a.xn--4xa31142bk3f0d; ; ;  # ꠆4.𲩧σ
 񗑿\uA806₄򩞆｡𲩧󠒹σ; 񗑿\uA8064򩞆.𲩧󠒹σ; [V7]; xn--4-w93ej7463a9io5a.xn--4xa31142bk3f0d; ; ;  # ꠆4.𲩧σ
+=======
+񗑿\uA806₄򩞆｡𲩧󠒹ς; 񗑿\uA8064򩞆.𲩧󠒹ς; [V7]; xn--4-w93ej7463a9io5a.xn--3xa51142bk3f0d; ; xn--4-w93ej7463a9io5a.xn--4xa31142bk3f0d;  # ꠆4.ς
+񗑿\uA8064򩞆。𲩧󠒹ς; 񗑿\uA8064򩞆.𲩧󠒹ς; [V7]; xn--4-w93ej7463a9io5a.xn--3xa51142bk3f0d; ; xn--4-w93ej7463a9io5a.xn--4xa31142bk3f0d;  # ꠆4.ς
+񗑿\uA8064򩞆。𲩧󠒹Σ; 񗑿\uA8064򩞆.𲩧󠒹σ; [V7]; xn--4-w93ej7463a9io5a.xn--4xa31142bk3f0d; ; ;  # ꠆4.σ
+񗑿\uA8064򩞆。𲩧󠒹σ; 񗑿\uA8064򩞆.𲩧󠒹σ; [V7]; xn--4-w93ej7463a9io5a.xn--4xa31142bk3f0d; ; ;  # ꠆4.σ
+xn--4-w93ej7463a9io5a.xn--4xa31142bk3f0d; 񗑿\uA8064򩞆.𲩧󠒹σ; [V7]; xn--4-w93ej7463a9io5a.xn--4xa31142bk3f0d; ; ;  # ꠆4.σ
+xn--4-w93ej7463a9io5a.xn--3xa51142bk3f0d; 񗑿\uA8064򩞆.𲩧󠒹ς; [V7]; xn--4-w93ej7463a9io5a.xn--3xa51142bk3f0d; ; ;  # ꠆4.ς
+񗑿\uA806₄򩞆｡𲩧󠒹Σ; 񗑿\uA8064򩞆.𲩧󠒹σ; [V7]; xn--4-w93ej7463a9io5a.xn--4xa31142bk3f0d; ; ;  # ꠆4.σ
+񗑿\uA806₄򩞆｡𲩧󠒹σ; 񗑿\uA8064򩞆.𲩧󠒹σ; [V7]; xn--4-w93ej7463a9io5a.xn--4xa31142bk3f0d; ; ;  # ꠆4.σ
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 󠆀\u0723。\u1DF4\u0775; \u0723.\u1DF4\u0775; [B1, V6]; xn--tnb.xn--5pb136i; ; ;  # ܣ.ᷴݵ
 xn--tnb.xn--5pb136i; \u0723.\u1DF4\u0775; [B1, V6]; xn--tnb.xn--5pb136i; ; ;  # ܣ.ᷴݵ
 𐹱\u0842𝪨｡𬼖Ⴑ\u200D; 𐹱\u0842𝪨.𬼖ⴑ\u200D; [B1, B6, C2]; xn--0vb1535kdb6e.xn--1ug742c5714c; ; xn--0vb1535kdb6e.xn--8kjz186s; [B1] # 𐹱ࡂ𝪨.𬼖ⴑ
@@ -6327,8 +6374,13 @@ xn----n50a258u.xn---1-up07j.; 䃚蟥-.-񽒘1.; [V3, V7]; xn----n50a258u.xn---1-u
 xn----n50a258u.xn----ecp33805f; 䃚蟥-.-񽒘⒈; [V3, V7]; xn----n50a258u.xn----ecp33805f; ; ;  # 䃚蟥-.-⒈
 𐹸䚵-ꡡ。⺇; 𐹸䚵-ꡡ.⺇; [B1]; xn----bm3an932a1l5d.xn--xvj; ; ;  # 𐹸䚵-ꡡ.⺇
 xn----bm3an932a1l5d.xn--xvj; 𐹸䚵-ꡡ.⺇; [B1]; xn----bm3an932a1l5d.xn--xvj; ; ;  # 𐹸䚵-ꡡ.⺇
+<<<<<<< HEAD
 𑄳。\u1ADC𐹻; 𑄳.\u1ADC𐹻; [B1, V6]; xn--v80d.xn--2rf1154i; ; ;  # 𑄳.᫜𐹻
 xn--v80d.xn--2rf1154i; 𑄳.\u1ADC𐹻; [B1, V6]; xn--v80d.xn--2rf1154i; ; ;  # 𑄳.᫜𐹻
+=======
+𑄳。\u1ADC𐹻; 𑄳.\u1ADC𐹻; [B1, B5, B6, V6, V7]; xn--v80d.xn--2rf1154i; ; ;  # 𑄳.𐹻
+xn--v80d.xn--2rf1154i; 𑄳.\u1ADC𐹻; [B1, B5, B6, V6, V7]; xn--v80d.xn--2rf1154i; ; ;  # 𑄳.𐹻
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 ≮𐹻.⒎𑂵\u06BA\u0602; ; [B1, V7]; xn--gdhx904g.xn--kfb18a325efm3s; ; ;  # ≮𐹻.⒎𑂵ں
 <\u0338𐹻.⒎𑂵\u06BA\u0602; ≮𐹻.⒎𑂵\u06BA\u0602; [B1, V7]; xn--gdhx904g.xn--kfb18a325efm3s; ; ;  # ≮𐹻.⒎𑂵ں
 ≮𐹻.7.𑂵\u06BA\u0602; ; [B1, V6, V7]; xn--gdhx904g.7.xn--kfb18an307d; ; ;  # ≮𐹻.7.𑂵ں

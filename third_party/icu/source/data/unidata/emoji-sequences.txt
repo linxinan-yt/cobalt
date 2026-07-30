@@ -1,11 +1,20 @@
 # emoji-sequences.txt
+<<<<<<< HEAD
 # Date: 2025-07-25, 17:54:32 GMT
 # © 2025 Unicode®, Inc.
+=======
+# Date: 2024-05-01, 21:25:24 GMT
+# © 2024 Unicode®, Inc.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 # Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
 # For terms of use and license, see https://www.unicode.org/terms_of_use.html
 #
 # Emoji Sequence Data for UTS #51
+<<<<<<< HEAD
 # Version: 17.0
+=======
+# Version: 16.0
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #
 # For documentation and usage, see https://www.unicode.org/reports/tr51
 #
@@ -303,8 +312,11 @@
 1FA83..1FA86  ; Basic_Emoji                  ; boomerang..nesting dolls                                       # E13.0  [4] (🪃..🪆)
 1FA87..1FA88  ; Basic_Emoji                  ; maracas..flute                                                 # E15.0  [2] (🪇..🪈)
 1FA89         ; Basic_Emoji                  ; harp                                                           # E16.0  [1] (🪉)
+<<<<<<< HEAD
 1FA8A         ; Basic_Emoji                  ; trombone                                                       # E17.0  [1] (🪊)
 1FA8E         ; Basic_Emoji                  ; treasure chest                                                 # E17.0  [1] (🪎)
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1FA8F         ; Basic_Emoji                  ; shovel                                                         # E16.0  [1] (🪏)
 1FA90..1FA95  ; Basic_Emoji                  ; ringed planet..banjo                                           # E12.0  [6] (🪐..🪕)
 1FA96..1FAA8  ; Basic_Emoji                  ; military helmet..rock                                          # E13.0 [19] (🪖..🪨)
@@ -318,8 +330,11 @@
 1FAC0..1FAC2  ; Basic_Emoji                  ; anatomical heart..people hugging                               # E13.0  [3] (🫀..🫂)
 1FAC3..1FAC5  ; Basic_Emoji                  ; pregnant man..person with crown                                # E14.0  [3] (🫃..🫅)
 1FAC6         ; Basic_Emoji                  ; fingerprint                                                    # E16.0  [1] (🫆)
+<<<<<<< HEAD
 1FAC8         ; Basic_Emoji                  ; hairy creature                                                 # E17.0  [1] (🫈)
 1FACD         ; Basic_Emoji                  ; orca                                                           # E17.0  [1] (🫍)
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1FACE..1FACF  ; Basic_Emoji                  ; moose..donkey                                                  # E15.0  [2] (🫎..🫏)
 1FAD0..1FAD6  ; Basic_Emoji                  ; blueberries..teapot                                            # E13.0  [7] (🫐..🫖)
 1FAD7..1FAD9  ; Basic_Emoji                  ; pouring liquid..jar                                            # E14.0  [3] (🫗..🫙)
@@ -329,8 +344,11 @@
 1FAE0..1FAE7  ; Basic_Emoji                  ; melting face..bubbles                                          # E14.0  [8] (🫠..🫧)
 1FAE8         ; Basic_Emoji                  ; shaking face                                                   # E15.0  [1] (🫨)
 1FAE9         ; Basic_Emoji                  ; face with bags under eyes                                      # E16.0  [1] (🫩)
+<<<<<<< HEAD
 1FAEA         ; Basic_Emoji                  ; distorted face                                                 # E17.0  [1] (🫪)
 1FAEF         ; Basic_Emoji                  ; fight cloud                                                    # E17.0  [1] (🫯)
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 1FAF0..1FAF6  ; Basic_Emoji                  ; hand with index finger and thumb crossed..heart hands          # E14.0  [7] (🫰..🫶)
 1FAF7..1FAF8  ; Basic_Emoji                  ; leftwards pushing hand..rightwards pushing hand                # E15.0  [2] (🫷..🫸)
 00A9 FE0F     ; Basic_Emoji                  ; copyright                                                      # E0.6   [1] (©️)
@@ -541,7 +559,11 @@
 1F6F0 FE0F    ; Basic_Emoji                  ; satellite                                                      # E0.7   [1] (🛰️)
 1F6F3 FE0F    ; Basic_Emoji                  ; passenger ship                                                 # E0.7   [1] (🛳️)
 
+<<<<<<< HEAD
 # Total elements: 1400
+=======
+# Total elements: 1393
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 

@@ -14,6 +14,11 @@
 -- limitations under the License.
 
 INCLUDE PERFETTO MODULE counters.intervals;
+<<<<<<< HEAD
+=======
+
+INCLUDE PERFETTO MODULE wattson.estimates;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 INCLUDE PERFETTO MODULE wattson.estimates;
 
@@ -21,9 +26,17 @@ INCLUDE PERFETTO MODULE wattson.estimates;
 -- slices. This macro recombines all the slices such that adjacent slices will
 -- always have different values. This means less slices to process, and from the
 -- UI perspective, the counter track will be displayed cleaner.
+<<<<<<< HEAD
 CREATE PERFETTO MACRO _get_continuous_estimates(rail ColumnName)
 RETURNS TableOrSubquery
 AS (
+=======
+CREATE PERFETTO MACRO _get_continuous_estimates(
+    rail ColumnName
+)
+RETURNS TableOrSubquery AS
+(
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   SELECT
     ts,
     dur,

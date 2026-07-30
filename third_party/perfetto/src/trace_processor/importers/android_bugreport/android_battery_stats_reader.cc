@@ -153,8 +153,12 @@ base::Status AndroidBatteryStatsReader::SendToSorter(
     std::chrono::nanoseconds event_ts,
     AndroidDumpstateEvent event) {
   std::optional<int64_t> trace_ts = context_->clock_tracker->ToTraceTime(
+<<<<<<< HEAD
       ClockId::Machine(protos::pbzero::ClockSnapshot::Clock::REALTIME),
       event_ts.count());
+=======
+      protos::pbzero::ClockSnapshot::Clock::REALTIME, event_ts.count());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   if (trace_ts) {
     stream_->Push(*trace_ts, std::move(event));
   }

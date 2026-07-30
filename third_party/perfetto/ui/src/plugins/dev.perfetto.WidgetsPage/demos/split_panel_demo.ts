@@ -13,10 +13,16 @@
 // limitations under the License.
 
 import m from 'mithril';
+<<<<<<< HEAD
 import {SplitPanel} from '../../../widgets/split_panel';
 import {EnumOption, renderWidgetShowcase} from '../widgets_page_utils';
 
 let splitValue = 50;
+=======
+import {Button} from '../../../widgets/button';
+import {SplitPanel, Tab} from '../../../widgets/split_panel';
+import {renderWidgetShowcase} from '../widgets_page_utils';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 export function renderSplitPanel(): m.Children {
   return [
@@ -25,7 +31,11 @@ export function renderSplitPanel(): m.Children {
       m('h1', 'SplitPanel'),
       m(
         'p',
+<<<<<<< HEAD
         'A simple resizable split panel with a draggable handle. Supports both horizontal and vertical layouts, with percentage or fixed-pixel sizing modes.',
+=======
+        'A resizable split panel container for dividing content into adjustable sections with a draggable divider.',
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       ),
     ),
     renderWidgetShowcase({
@@ -34,6 +44,7 @@ export function renderSplitPanel(): m.Children {
           '',
           {
             style: {
+<<<<<<< HEAD
               height: '300px',
               width: '500px',
               border: '1px solid var(--pf-color-border)',
@@ -105,6 +116,40 @@ export function renderSplitPanel(): m.Children {
         vertical: false,
         pixels: false,
         controlledPanel: new EnumOption('first', ['first', 'second'] as const),
+=======
+              height: '400px',
+              width: '400px',
+              border: 'solid 2px gray',
+            },
+          },
+          m(
+            SplitPanel,
+            {
+              leftHandleContent: [
+                opts.leftContent && m(Button, {icon: 'Menu'}),
+              ],
+              drawerContent: 'Drawer Content',
+              tabs:
+                opts.tabs &&
+                m(
+                  '.pf-split-panel__tabs',
+                  m(
+                    Tab,
+                    {active: true, hasCloseButton: opts.showCloseButtons},
+                    'Foo',
+                  ),
+                  m(Tab, {hasCloseButton: opts.showCloseButtons}, 'Bar'),
+                ),
+            },
+            'Main Content',
+          ),
+        );
+      },
+      initialOpts: {
+        leftContent: true,
+        tabs: true,
+        showCloseButtons: true,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       },
     }),
   ];

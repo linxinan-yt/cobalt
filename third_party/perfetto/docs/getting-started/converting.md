@@ -1127,7 +1127,11 @@ repeated callstacks or when you need binary mapping information, use
 [interned callstacks](/docs/reference/synthetic-track-event.md#callstacks)
 instead.
 
+<<<<<<< HEAD
 ### Python Example: Inline Callstacks
+=======
+### Python Example
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 Each frame includes a function name, and optionally a source file and line
 number.
@@ -1139,6 +1143,12 @@ your `trace_converter_template.py` script.
 <summary><b>Click to expand/collapse Python code</b></summary>
 
 ```python
+<<<<<<< HEAD
+=======
+    # Define a unique ID for this sequence of packets
+    TRUSTED_PACKET_SEQUENCE_ID = 7001
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     # Define a unique UUID for your custom track
     CALLSTACK_TRACK_UUID = 98765432
 
@@ -1231,6 +1241,7 @@ flamegraph of the callstacks:
 
 ![Inline Callstacks Area Select](/docs/images/inline-callstacks-flamegraph.png)
 
+<<<<<<< HEAD
 By default each callstack counts once in the flamegraph. To attribute a value
 to each occurrence instead (e.g. bytes allocated), see
 [Weighted Callstacks and Custom Measures](/docs/reference/synthetic-track-event.md#callstack-weights).
@@ -1323,12 +1334,18 @@ FROM metadata
 WHERE name GLOB 'trace_attribute.*';
 ```
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 ## Next Steps
 
 You've now seen how to convert custom timestamped data into Perfetto traces
 using Python and `TrackEvent`. With these techniques, you can represent slices,
+<<<<<<< HEAD
 counters, flows, track hierarchies, debug annotations, callstacks, and
 trace-level metadata.
+=======
+counters, flows, track hierarchies, debug annotations, and callstacks.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 Once you have your custom data in the Perfetto trace format (`.pftrace` file),
 you can:

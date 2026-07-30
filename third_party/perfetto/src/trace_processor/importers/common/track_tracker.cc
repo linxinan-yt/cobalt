@@ -78,6 +78,10 @@ TrackId TrackTracker::AddTrack(const tracks::BlueprintBase& blueprint,
     if (args) {
       args(inserter);
     }
+<<<<<<< HEAD
+=======
+    args_tracker_.Flush();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
   return id;
 }

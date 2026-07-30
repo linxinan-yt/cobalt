@@ -181,6 +181,19 @@ ky{
                 one{"{0} промилле"}
                 other{"{0} промилле"}
             }
+<<<<<<< HEAD
+=======
+            permillion{
+                dnam{"миллионго бөлүктөр"}
+                one{"миллионго {0} бөлүк"}
+                other{"миллионго {0} бөлүк"}
+            }
+            portion-per-1e9{
+                dnam{"мкг/л"}
+                one{"{0} мкг/л"}
+                other{"{0} мкг/л"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         consumption{
             liter-per-100-kilometer{
@@ -295,6 +308,12 @@ ky{
                 other{"{0} наносекунд"}
             }
             night{
+<<<<<<< HEAD
+=======
+                dnam{"түн"}
+                one{"{0}/түн"}
+                other{"{0}/түн"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 per{"{0}/түнүнө"}
             }
             quarter{
@@ -717,6 +736,11 @@ ky{
                 one{"{0} түйүн"}
                 other{"{0} түйүн"}
             }
+            light-speed{
+                dnam{"жарык"}
+                one{"{0} жарык"}
+                other{"{0} жарык"}
+            }
             meter-per-second{
                 dnam{"секундасына метр"}
                 one{"секундасына {0} метр"}
@@ -931,6 +955,11 @@ ky{
             percent{
                 dnam{"%"}
             }
+            portion-per-1e9{
+                dnam{"мкг/л"}
+                one{"{0} мкг/л"}
+                other{"{0} мкг/л"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -960,6 +989,12 @@ ky{
             }
             minute{
                 dnam{"мүн"}
+            }
+            night{
+                dnam{"түн"}
+                one{"{0}/түн"}
+                other{"{0}/түн"}
+                per{"{0}/түн"}
             }
             quarter{
                 one{"{0}/ч"}
@@ -1050,6 +1085,11 @@ ky{
             }
         }
         speed{
+            light-speed{
+                dnam{"жарык"}
+                one{"{0} жарык"}
+                other{"{0} жарык"}
+            }
             meter-per-second{
                 one{"{0} м/с"}
                 other{"{0} м/с"}
@@ -1258,6 +1298,17 @@ ky{
             permille{
                 dnam{"промилле"}
             }
+<<<<<<< HEAD
+=======
+            permillion{
+                dnam{"миллионго/бөлүк"}
+            }
+            portion-per-1e9{
+                dnam{"мкг/л"}
+                one{"{0} мкг/л"}
+                other{"{0} мкг/л"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         consumption{
             liter-per-100-kilometer{

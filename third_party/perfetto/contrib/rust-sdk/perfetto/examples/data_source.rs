@@ -21,9 +21,13 @@ use perfetto_sdk::{
         trace::{
             test_event::*,
             trace_packet::TracePacket,
+<<<<<<< HEAD
             track_event::debug_annotation::{
                 DebugAnnotation, DebugAnnotationNestedValue, NestedValueNestedType,
             },
+=======
+            track_event::debug_annotation::{DebugAnnotation, NestedValue, NestedValueNestedType},
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         },
     },
 };
@@ -53,6 +57,7 @@ struct DummyFields {
 impl DummyFields {
     fn decode(&mut self, data: &[u8]) -> &mut Self {
         use PbDecoderField::*;
+<<<<<<< HEAD
         const UINT32_ID: u32 = TestConfigDummyFieldsFieldNumber::FieldUint32 as u32;
         const INT32_ID: u32 = TestConfigDummyFieldsFieldNumber::FieldInt32 as u32;
         const UINT64_ID: u32 = TestConfigDummyFieldsFieldNumber::FieldUint64 as u32;
@@ -67,6 +72,22 @@ impl DummyFields {
         const SINT32_ID: u32 = TestConfigDummyFieldsFieldNumber::FieldSint32 as u32;
         const STRING_ID: u32 = TestConfigDummyFieldsFieldNumber::FieldString as u32;
         const BYTES_ID: u32 = TestConfigDummyFieldsFieldNumber::FieldBytes as u32;
+=======
+        const UINT32_ID: u32 = DummyFieldsFieldNumber::FieldUint32 as u32;
+        const INT32_ID: u32 = DummyFieldsFieldNumber::FieldInt32 as u32;
+        const UINT64_ID: u32 = DummyFieldsFieldNumber::FieldUint64 as u32;
+        const INT64_ID: u32 = DummyFieldsFieldNumber::FieldInt64 as u32;
+        const FIXED64_ID: u32 = DummyFieldsFieldNumber::FieldFixed64 as u32;
+        const SFIXED64_ID: u32 = DummyFieldsFieldNumber::FieldSfixed64 as u32;
+        const FIXED32_ID: u32 = DummyFieldsFieldNumber::FieldFixed32 as u32;
+        const SFIXED32_ID: u32 = DummyFieldsFieldNumber::FieldSfixed32 as u32;
+        const DOUBLE_ID: u32 = DummyFieldsFieldNumber::FieldDouble as u32;
+        const FLOAT_ID: u32 = DummyFieldsFieldNumber::FieldFloat as u32;
+        const SINT64_ID: u32 = DummyFieldsFieldNumber::FieldSint64 as u32;
+        const SINT32_ID: u32 = DummyFieldsFieldNumber::FieldSint32 as u32;
+        const STRING_ID: u32 = DummyFieldsFieldNumber::FieldString as u32;
+        const BYTES_ID: u32 = DummyFieldsFieldNumber::FieldBytes as u32;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         for item in PbDecoder::new(data) {
             match item.as_ref().unwrap_or_else(|e| panic!("Error: {}", e)) {
                 (UINT32_ID, Varint(v)) => self.field_uint32 = Some(*v as u32),
@@ -139,6 +160,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let producer_args = ProducerInitArgsBuilder::new().backends(Backends::SYSTEM);
     Producer::init(producer_args.build());
     let mut data_source = DataSource::new();
+<<<<<<< HEAD
     let setup_data = 1234;
     let test_configs: Arc<Mutex<[Option<TestConfig>; 8]>> =
         Arc::new(Mutex::new([None, None, None, None, None, None, None, None]));
@@ -150,6 +172,15 @@ fn main() -> Result<(), Box<dyn Error>> {
         .on_setup(move |inst_id, config, _| {
             let mut test_configs = test_configs_for_on_setup.lock().unwrap();
             let mut test_config = TestConfig::default();
+=======
+    let test_config = Arc::new(Mutex::new(TestConfig::default()));
+    let test_config_for_setup = Arc::clone(&test_config);
+    let setup_data = 1234;
+    let stop_data = 4321;
+    let data_source_args = DataSourceArgsBuilder::new()
+        .on_setup(move |inst_id, config| {
+            let mut test_config = test_config_for_setup.lock().unwrap();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             for item in PbDecoder::new(config) {
                 if let (FOR_TESTING_ID, PbDecoderField::Delimited(value)) =
                     item.unwrap_or_else(|e| panic!("Error: {}", e))
@@ -157,6 +188,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                     test_config.decode(value);
                 }
             }
+<<<<<<< HEAD
             test_configs[inst_id as usize] = Some(test_config);
             println!("OnSetup id: {} data: {}", inst_id, setup_data);
         })
@@ -171,6 +203,15 @@ fn main() -> Result<(), Box<dyn Error>> {
             let mut stop_guards = stop_guards_for_on_stop.lock().unwrap();
             stop_guards[inst_id as usize] = Some(args.postpone());
             println!("OnStop id: {}", inst_id);
+=======
+            println!("OnSetup id: {} data: {}", inst_id, setup_data);
+        })
+        .on_start(move |inst_id| {
+            println!("OnStart id: {} {:?}", inst_id, test_config.lock().unwrap());
+        })
+        .on_stop(move |inst_id| {
+            println!("OnStop id: {} data: {}", inst_id, stop_data);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         });
     data_source.register("com.example.custom_data_source", data_source_args.build())?;
     loop {
@@ -197,12 +238,20 @@ fn main() -> Result<(), Box<dyn Error>> {
                     .set_for_testing(|for_testing: &mut TestEvent| {
                         for_testing.set_str("This is a long string");
                         for_testing.set_counter(10);
+<<<<<<< HEAD
                         for_testing.set_payload(|payload: &mut TestEventTestPayload| {
+=======
+                        for_testing.set_payload(|payload: &mut TestPayload| {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                             payload.set_debug_annotations(
                                 |debug_annotation: &mut DebugAnnotation| {
                                     debug_annotation.set_name("This is a payload debug annotation");
                                     debug_annotation.set_nested_value(
+<<<<<<< HEAD
                                         |nested_value: &mut DebugAnnotationNestedValue| {
+=======
+                                        |nested_value: &mut NestedValue| {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                                             nested_value.set_nested_type(
                                                 NestedValueNestedType::Unspecified,
                                             );
@@ -219,6 +268,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                         });
                     });
             });
+<<<<<<< HEAD
             if let Some(stop_guard) = stop_guards.lock().unwrap()[inst_id as usize].take() {
                 ctx.add_packet(|packet: &mut TracePacket| {
                     packet
@@ -234,6 +284,9 @@ fn main() -> Result<(), Box<dyn Error>> {
                 // here and the behavior would be the same.
                 drop(stop_guard);
             }
+=======
+            ctx.flush(|| {});
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         });
         std::thread::sleep(std::time::Duration::from_secs(1));
     }

@@ -65,6 +65,7 @@ kxv{
             patternsShort{
                 currencyFormat{
                     1000{
+<<<<<<< HEAD
                         other{"¤0 h"}
                     }
                     10000{
@@ -137,6 +138,42 @@ kxv{
                     }
                     100000000000000{
                         other{"¤ 000 tri"}
+=======
+                        other{"¤0h"}
+                    }
+                    10000{
+                        other{"¤00h"}
+                    }
+                    100000{
+                        other{"¤000h"}
+                    }
+                    1000000{
+                        other{"¤0mi"}
+                    }
+                    10000000{
+                        other{"¤00mi"}
+                    }
+                    100000000{
+                        other{"¤000mi"}
+                    }
+                    1000000000{
+                        other{"¤0bi"}
+                    }
+                    10000000000{
+                        other{"¤00bi"}
+                    }
+                    100000000000{
+                        other{"¤000bi"}
+                    }
+                    1000000000000{
+                        other{"¤0tri"}
+                    }
+                    10000000000000{
+                        other{"¤00tri"}
+                    }
+                    100000000000000{
+                        other{"¤000tri"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     }
                 }
                 decimalFormat{

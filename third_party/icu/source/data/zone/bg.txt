@@ -1196,6 +1196,12 @@ bg{
         "Pacific:Honolulu"{
             ec{"Хонолулу"}
         }
+<<<<<<< HEAD
+=======
+        "Pacific:Kanton"{
+            ec{"Кантон"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Pacific:Kiritimati"{
             ec{"Киритимати"}
         }

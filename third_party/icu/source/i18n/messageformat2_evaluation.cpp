@@ -11,7 +11,10 @@
 
 #include "messageformat2_allocation.h"
 #include "messageformat2_evaluation.h"
+<<<<<<< HEAD
 #include "messageformat2_function_registry_internal.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "messageformat2_macros.h"
 #include "uvector.h" // U_ASSERT
 
@@ -29,7 +32,10 @@ using namespace data_model;
 ResolvedFunctionOption::ResolvedFunctionOption(ResolvedFunctionOption&& other) {
     name = std::move(other.name);
     value = std::move(other.value);
+<<<<<<< HEAD
     sourceIsLiteral = other.sourceIsLiteral;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 ResolvedFunctionOption::~ResolvedFunctionOption() {}
@@ -48,6 +54,7 @@ FunctionOptions::FunctionOptions(UVector&& optionsVector, UErrorCode& status) {
     options = moveVectorToArray<ResolvedFunctionOption>(optionsVector, status);
 }
 
+<<<<<<< HEAD
 // Returns false if option doesn't exist
 UBool FunctionOptions::wasSetFromLiteral(const UnicodeString& key) const {
     if (options == nullptr) {
@@ -63,6 +70,9 @@ UBool FunctionOptions::wasSetFromLiteral(const UnicodeString& key) const {
 }
 
 UBool FunctionOptions::getFunctionOption(std::u16string_view key, Formattable& option) const {
+=======
+UBool FunctionOptions::getFunctionOption(const UnicodeString& key, Formattable& option) const {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     if (options == nullptr) {
         U_ASSERT(functionOptionsLen == 0);
     }
@@ -76,7 +86,11 @@ UBool FunctionOptions::getFunctionOption(std::u16string_view key, Formattable& o
     return false;
 }
 
+<<<<<<< HEAD
 UnicodeString FunctionOptions::getStringFunctionOption(std::u16string_view key) const {
+=======
+UnicodeString FunctionOptions::getStringFunctionOption(const UnicodeString& key) const {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     Formattable option;
     if (getFunctionOption(key, option)) {
         if (option.getType() == UFMT_STRING) {
@@ -227,9 +241,16 @@ PrioritizedVariant::~PrioritizedVariant() {}
         errors.checkErrors(status);
     }
 
+<<<<<<< HEAD
     const Formattable* MessageContext::getGlobal(const VariableName& v,
                                                  UErrorCode& errorCode) const {
        return arguments.getArgument(v, errorCode);
+=======
+    const Formattable* MessageContext::getGlobal(const MessageFormatter& context,
+                                                 const VariableName& v,
+                                                 UErrorCode& errorCode) const {
+       return arguments.getArgument(context, v, errorCode);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 
     MessageContext::MessageContext(const MessageArguments& args,
@@ -319,14 +340,18 @@ PrioritizedVariant::~PrioritizedVariant() {}
         FunctionOptions opts;
         InternalValue* p = this;
         FunctionName selectorName = name;
+<<<<<<< HEAD
 
         bool operandSelect = false;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         while (std::holds_alternative<InternalValue*>(p->argument)) {
             if (p->name != selectorName) {
                 // Can only compose calls to the same selector
                 errorCode = U_ILLEGAL_ARGUMENT_ERROR;
                 return;
             }
+<<<<<<< HEAD
             // Very special case to detect something like:
             // .local $sel = {1 :integer select=exact} .local $bad = {$sel :integer} .match $bad 1 {{ONE}} * {{operand select {$bad}}}
             // This can be done better once function composition is fully implemented.
@@ -338,6 +363,8 @@ PrioritizedVariant::~PrioritizedVariant() {}
                 // error handling) and an error (with strict error handling).
                 operandSelect = true;
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             // First argument to mergeOptions takes precedence
             opts = opts.mergeOptions(std::move(p->options), errorCode);
             if (U_FAILURE(errorCode)) {
@@ -348,6 +375,7 @@ PrioritizedVariant::~PrioritizedVariant() {}
         }
         FormattedPlaceholder arg = std::move(*std::get_if<FormattedPlaceholder>(&p->argument));
 
+<<<<<<< HEAD
         // This condition can't be checked in the selector.
         // Effectively, there are two different kinds of "bad option" errors:
         // one that can be recovered from (used for select=$var) and one that
@@ -392,6 +420,17 @@ PrioritizedVariant::~PrioritizedVariant() {}
         return options.wasSetFromLiteral(UnicodeString("select"));
     }
 
+=======
+        selector->selectKey(std::move(arg), std::move(opts),
+                            keys, keysLen,
+                            prefs, prefsLen, errorCode);
+        if (U_FAILURE(errorCode)) {
+            errorCode = U_ZERO_ERROR;
+            errs.setSelectorError(selectorName, errorCode);
+        }
+    }
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     FormattedPlaceholder InternalValue::forceFormatting(DynamicErrors& errs, UErrorCode& errorCode) {
         if (U_FAILURE(errorCode)) {
             return {};
@@ -419,10 +458,13 @@ PrioritizedVariant::~PrioritizedVariant() {}
             return {};
         }
 
+<<<<<<< HEAD
         if (arg.isFallback()) {
             return arg;
         }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         // The fallback for a nullary function call is the function name
         UnicodeString fallback;
         if (arg.isNullOperand()) {
@@ -432,6 +474,7 @@ PrioritizedVariant::~PrioritizedVariant() {}
             fallback = arg.getFallback();
         }
 
+<<<<<<< HEAD
         // Very special case for :number select=foo and :integer select=foo
         // This check can't be done inside the function implementation because
         // it doesn't have a way to both signal an error and return usable output,
@@ -445,10 +488,15 @@ PrioritizedVariant::~PrioritizedVariant() {}
             // Ignore this warning
             errorCode = U_ZERO_ERROR;
         }
+=======
+        // Call the function with the argument
+        FormattedPlaceholder result = formatter->format(std::move(arg), std::move(options), errorCode);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         if (U_FAILURE(errorCode)) {
             if (errorCode == U_MF_OPERAND_MISMATCH_ERROR) {
                 errorCode = U_ZERO_ERROR;
                 errs.setOperandMismatchError(name, errorCode);
+<<<<<<< HEAD
             } else if (errorCode == U_MF_BAD_OPTION) {
                 errorCode = U_ZERO_ERROR;
                 errs.setBadOption(name, errorCode);
@@ -456,10 +504,17 @@ PrioritizedVariant::~PrioritizedVariant() {}
                 errorCode = U_ZERO_ERROR;
                 // Convey any other error generated by the formatter
                 // as a formatting error
+=======
+            } else {
+                errorCode = U_ZERO_ERROR;
+                // Convey any error generated by the formatter
+                // as a formatting error, except for operand mismatch errors
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 errs.setFormattingError(name, errorCode);
             }
         }
         // Ignore the output if any error occurred
+<<<<<<< HEAD
         // We don't ignore the output in the case of a Bad Option Error,
         // because of the select=bad case where we want both an error
         // and non-fallback output.
@@ -471,6 +526,12 @@ PrioritizedVariant::~PrioritizedVariant() {}
             // the output with a fallback
             errs.setRecoverableBadOption(name, errorCode);
         }
+=======
+        if (errs.hasFormattingError()) {
+            return FormattedPlaceholder(fallback);
+        }
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         return result;
     }
 

@@ -56,10 +56,13 @@ source_set("service") {
     "trace_buffer.h",
     "trace_buffer_v1.cc",
     "trace_buffer_v1.h",
+<<<<<<< HEAD
     "trace_buffer_v2.cc",
     "trace_buffer_v2.h",
     "tracing_service_endpoints_impl.cc",
     "tracing_service_endpoints_impl.h",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     "tracing_service_impl.cc",
     "tracing_service_impl.h",
     "tracing_service_session.cc",
@@ -166,7 +169,10 @@ perfetto_unittest_source_set("unittests") {
     "histogram_unittest.cc",
     "packet_stream_validator_unittest.cc",
     "trace_buffer_v1_unittest.cc",
+<<<<<<< HEAD
     "trace_buffer_v2_unittest.cc",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   ]
 
   if (enable_perfetto_zlib || enable_perfetto_zstd) {

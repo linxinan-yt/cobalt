@@ -215,9 +215,12 @@ class GeneratorImpl {
   base::StatusOr<std::string> IntervalIntersect(
       const StructuredQuery::IntervalIntersect::Decoder&);
 
+<<<<<<< HEAD
   base::StatusOr<std::string> FilterToIntervals(
       const StructuredQuery::ExperimentalFilterToIntervals::Decoder&);
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   base::StatusOr<std::string> Join(
       const StructuredQuery::ExperimentalJoin::Decoder&);
 
@@ -227,6 +230,7 @@ class GeneratorImpl {
   base::StatusOr<std::string> AddColumns(
       const StructuredQuery::ExperimentalAddColumns::Decoder&);
 
+<<<<<<< HEAD
   base::StatusOr<std::string> CreateSlices(
       const StructuredQuery::ExperimentalCreateSlices::Decoder&);
 
@@ -236,6 +240,8 @@ class GeneratorImpl {
   base::StatusOr<std::string> FilterIn(
       const StructuredQuery::ExperimentalFilterIn::Decoder&);
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   // Filtering.
   static base::StatusOr<std::string> Filters(RepeatedProto filters);
   static base::StatusOr<std::string> ExperimentalFilterGroup(
@@ -294,18 +300,26 @@ base::StatusOr<std::string> GeneratorImpl::Generate(
   StructuredQuery::Decoder root_query(state_[0].bytes);
   bool root_only_has_inner_query_and_operations =
       root_query.has_inner_query() && !root_query.has_table() &&
+<<<<<<< HEAD
       !root_query.has_experimental_time_range() &&
       !root_query.has_simple_slices() && !root_query.has_interval_intersect() &&
       !root_query.has_experimental_filter_to_intervals() &&
+=======
+      !root_query.has_simple_slices() && !root_query.has_interval_intersect() &&
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       !root_query.has_experimental_join() &&
       !root_query.has_experimental_union() && !root_query.has_sql() &&
       !root_query.has_inner_query_id() && !root_query.filters() &&
       !root_query.has_experimental_filter_group() &&
+<<<<<<< HEAD
       !root_query.has_group_by() && !root_query.select_columns() &&
       !root_query.has_experimental_add_columns() &&
       !root_query.has_experimental_create_slices() &&
       !root_query.has_experimental_counter_intervals() &&
       !root_query.has_experimental_filter_in();
+=======
+      !root_query.has_group_by() && !root_query.select_columns();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   std::string sql = "WITH ";
   size_t cte_count = 0;
@@ -325,10 +339,21 @@ base::StatusOr<std::string> GeneratorImpl::Generate(
     if (&state == &state_[0] && root_only_has_inner_query_and_operations) {
       continue;
     }
+<<<<<<< HEAD
     if (cte_count > 0) {
       sql += ",\n";
     }
     sql += state.table_name + " AS (\n" + IndentLines(state.sql, 2) + "\n)";
+=======
+    // Skip the root query if it's just a wrapper for inner_query + operations
+    if (&state == &state_[0] && root_only_has_inner_query_and_operations) {
+      continue;
+    }
+    if (cte_count > 0) {
+      sql += ", ";
+    }
+    sql += state.table_name + " AS (" + state.sql + ")";
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     cte_count++;
   }
 
@@ -336,9 +361,15 @@ base::StatusOr<std::string> GeneratorImpl::Generate(
   if (root_only_has_inner_query_and_operations) {
     // The root query is just wrapping an inner query with operations.
     // Apply those operations directly in the final SELECT.
+<<<<<<< HEAD
     sql += "\n" + state_[0].sql;
   } else {
     sql += "\nSELECT *\nFROM " + state_[0].table_name;
+=======
+    sql += " " + state_[0].sql;
+  } else {
+    sql += " SELECT * FROM " + state_[0].table_name;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
   return sql;
 }
@@ -367,10 +398,13 @@ base::StatusOr<std::string> GeneratorImpl::GenerateImpl() {
     } else if (q.has_interval_intersect()) {
       StructuredQuery::IntervalIntersect::Decoder ii(q.interval_intersect());
       ASSIGN_OR_RETURN(source, IntervalIntersect(ii));
+<<<<<<< HEAD
     } else if (q.has_experimental_filter_to_intervals()) {
       StructuredQuery::ExperimentalFilterToIntervals::Decoder fti(
           q.experimental_filter_to_intervals());
       ASSIGN_OR_RETURN(source, FilterToIntervals(fti));
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     } else if (q.has_experimental_join()) {
       StructuredQuery::ExperimentalJoin::Decoder join(q.experimental_join());
       ASSIGN_OR_RETURN(source, Join(join));
@@ -383,6 +417,7 @@ base::StatusOr<std::string> GeneratorImpl::GenerateImpl() {
       StructuredQuery::ExperimentalAddColumns::Decoder add_columns_decoder(
           q.experimental_add_columns());
       ASSIGN_OR_RETURN(source, AddColumns(add_columns_decoder));
+<<<<<<< HEAD
     } else if (q.has_experimental_create_slices()) {
       StructuredQuery::ExperimentalCreateSlices::Decoder create_slices_decoder(
           q.experimental_create_slices());
@@ -395,6 +430,8 @@ base::StatusOr<std::string> GeneratorImpl::GenerateImpl() {
       StructuredQuery::ExperimentalFilterIn::Decoder filter_in_decoder(
           q.experimental_filter_in());
       ASSIGN_OR_RETURN(source, FilterIn(filter_in_decoder));
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     } else if (q.has_sql()) {
       StructuredQuery::Sql::Decoder sql_source(q.sql());
       ASSIGN_OR_RETURN(source, SqlSource(sql_source));
@@ -430,7 +467,11 @@ base::StatusOr<std::string> GeneratorImpl::GenerateImpl() {
 
   // Assemble SQL clauses in standard evaluation order:
   // SELECT, FROM, WHERE, GROUP BY, ORDER BY, LIMIT, OFFSET.
+<<<<<<< HEAD
   std::string sql = "SELECT " + select + "\nFROM " + source;
+=======
+  std::string sql = "SELECT " + select + " FROM " + source;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   if (!filters.empty()) {
     sql += "\nWHERE " + filters;
   }
@@ -458,6 +499,28 @@ base::StatusOr<std::string> GeneratorImpl::GenerateImpl() {
                              q.offset());
     }
     sql += "\nOFFSET " + std::to_string(q.offset());
+  }
+  if (q.has_order_by()) {
+    StructuredQuery::OrderBy::Decoder order_by_decoder(q.order_by());
+    ASSIGN_OR_RETURN(std::string order_by, OrderBy(order_by_decoder));
+    sql += " " + order_by;
+  }
+  if (q.has_offset() && !q.has_limit()) {
+    return base::ErrStatus("OFFSET requires LIMIT to be specified");
+  }
+  if (q.has_limit()) {
+    if (q.limit() < 0) {
+      return base::ErrStatus("LIMIT must be non-negative, got %" PRId64,
+                             q.limit());
+    }
+    sql += " LIMIT " + std::to_string(q.limit());
+  }
+  if (q.has_offset()) {
+    if (q.offset() < 0) {
+      return base::ErrStatus("OFFSET must be non-negative, got %" PRId64,
+                             q.offset());
+    }
+    sql += " OFFSET " + std::to_string(q.offset());
   }
   return sql;
 }
@@ -641,6 +704,7 @@ base::StatusOr<std::string> GeneratorImpl::IntervalIntersect(
           col.c_str());
     }
 
+<<<<<<< HEAD
     // Check for duplicates (case-insensitive)
     std::string col_lower = col;
     std::transform(col_lower.begin(), col_lower.end(), col_lower.begin(),
@@ -650,6 +714,14 @@ base::StatusOr<std::string> GeneratorImpl::IntervalIntersect(
                              col.c_str());
     }
     seen_cols.insert(col_lower);
+=======
+    // Check for duplicates
+    if (seen_cols.count(col) > 0) {
+      return base::ErrStatus("Partition column '%s' is duplicated",
+                             col.c_str());
+    }
+    seen_cols.insert(col);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     partition_cols.push_back(col);
   }
 
@@ -661,10 +733,22 @@ base::StatusOr<std::string> GeneratorImpl::IntervalIntersect(
            NestedSource(*ii) + ")";
   }
 
+<<<<<<< HEAD
   sql += "\nSELECT ii.ts, ii.dur";
   // Add partition columns from ii
   for (const auto& col : partition_cols) {
     sql += ", ii." + col;
+=======
+  sql += "SELECT ii.ts, ii.dur";
+  // Add partition columns from ii
+  for (const auto& col : partition_cols) {
+    sql += ", ii." + col;
+  }
+  sql += ", iibase.*";
+  ii = interval.interval_intersect();
+  for (size_t i = 0; ii; ++ii, ++i) {
+    sql += ", iisource" + std::to_string(i) + ".*";
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   // Add renamed columns from iibase (base table gets _0 suffix)
@@ -677,6 +761,7 @@ base::StatusOr<std::string> GeneratorImpl::IntervalIntersect(
   // suffixes)
   ii = interval.interval_intersect();
   for (size_t i = 0; ii; ++ii, ++i) {
+<<<<<<< HEAD
     size_t suffix = i + 1;
     sql += ", source_" + std::to_string(suffix) + ".id AS id_" +
            std::to_string(suffix);
@@ -691,6 +776,8 @@ base::StatusOr<std::string> GeneratorImpl::IntervalIntersect(
   sql += "\nFROM _interval_intersect!((iibase";
   ii = interval.interval_intersect();
   for (size_t i = 0; ii; ++ii, ++i) {
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     sql += ", iisource" + std::to_string(i);
   }
 
@@ -702,6 +789,7 @@ base::StatusOr<std::string> GeneratorImpl::IntervalIntersect(
     }
     sql += partition_cols[i];
   }
+<<<<<<< HEAD
   sql += ")) ii\nJOIN iibase AS base_0 ON ii.id_0 = base_0.id";
 
   ii = interval.interval_intersect();
@@ -710,6 +798,14 @@ base::StatusOr<std::string> GeneratorImpl::IntervalIntersect(
     sql += "\nJOIN iisource" + std::to_string(i) + " AS source_" +
            std::to_string(suffix) + " ON ii.id_" + std::to_string(suffix) +
            " = source_" + std::to_string(suffix) + ".id";
+=======
+  sql += ")) ii JOIN iibase ON ii.id_0 = iibase.id";
+
+  ii = interval.interval_intersect();
+  for (size_t i = 0; ii; ++ii, ++i) {
+    sql += " JOIN iisource" + std::to_string(i) + " ON ii.id_" +
+           std::to_string(i + 1) + " = iisource" + std::to_string(i) + ".id";
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
   sql += ")";
 
@@ -1268,6 +1364,292 @@ base::StatusOr<std::string> GeneratorImpl::FilterIn(
   return sql;
 }
 
+base::StatusOr<std::string> GeneratorImpl::Join(
+    const StructuredQuery::ExperimentalJoin::Decoder& join) {
+  if (!join.has_left_query()) {
+    return base::ErrStatus("Join must specify a left query");
+  }
+  if (!join.has_right_query()) {
+    return base::ErrStatus("Join must specify a right query");
+  }
+  if (!join.has_equality_columns() && !join.has_freeform_condition()) {
+    return base::ErrStatus(
+        "Join must specify either equality_columns or freeform_condition");
+  }
+
+  std::string left_table = NestedSource(join.left_query());
+  std::string right_table = NestedSource(join.right_query());
+
+  std::string join_type_str;
+  switch (join.type()) {
+    case StructuredQuery::ExperimentalJoin::INNER:
+      join_type_str = "INNER";
+      break;
+    case StructuredQuery::ExperimentalJoin::LEFT:
+      join_type_str = "LEFT";
+      break;
+  }
+
+  std::string condition;
+  if (join.has_equality_columns()) {
+    StructuredQuery::ExperimentalJoin::EqualityColumns::Decoder eq_cols(
+        join.equality_columns());
+    if (!eq_cols.has_left_column()) {
+      return base::ErrStatus("EqualityColumns must specify a left column");
+    }
+    if (!eq_cols.has_right_column()) {
+      return base::ErrStatus("EqualityColumns must specify a right column");
+    }
+    condition = left_table + "." + eq_cols.left_column().ToStdString() + " = " +
+                right_table + "." + eq_cols.right_column().ToStdString();
+  } else {
+    StructuredQuery::ExperimentalJoin::FreeformCondition::Decoder free_cond(
+        join.freeform_condition());
+    if (!free_cond.has_left_query_alias()) {
+      return base::ErrStatus(
+          "FreeformCondition must specify a left query alias");
+    }
+    if (!free_cond.has_right_query_alias()) {
+      return base::ErrStatus(
+          "FreeformCondition must specify a right query alias");
+    }
+    if (!free_cond.has_sql_expression()) {
+      return base::ErrStatus("FreeformCondition must specify a sql expression");
+    }
+    std::string left_alias = free_cond.left_query_alias().ToStdString();
+    std::string right_alias = free_cond.right_query_alias().ToStdString();
+    std::string sql_expr = free_cond.sql_expression().ToStdString();
+
+    // Use aliases in the FROM clause
+    condition = sql_expr;
+    std::string sql = "(SELECT * FROM " + left_table + " AS " + left_alias +
+                      " " + join_type_str + " JOIN " + right_table + " AS " +
+                      right_alias + " ON " + condition + ")";
+    return sql;
+  }
+
+  std::string sql = "(SELECT * FROM " + left_table + " " + join_type_str +
+                    " JOIN " + right_table + " ON " + condition + ")";
+  return sql;
+}
+
+// Helper function to validate that all queries in a UNION have matching columns
+base::Status ValidateUnionColumns(
+    const std::vector<std::vector<std::string>>& query_columns) {
+  if (query_columns.empty() || query_columns[0].empty()) {
+    return base::OkStatus();
+  }
+
+  const auto& reference_cols = query_columns[0];
+  std::set<std::string> reference_set(reference_cols.begin(),
+                                      reference_cols.end());
+
+  for (size_t i = 1; i < query_columns.size(); ++i) {
+    if (query_columns[i].empty()) {
+      continue;
+    }
+
+    const auto& cols = query_columns[i];
+    if (cols.size() != reference_cols.size()) {
+      return base::ErrStatus(
+          "Union queries have different column counts (query %zu vs query 0)",
+          i);
+    }
+
+    std::set<std::string> cols_set(cols.begin(), cols.end());
+    if (cols_set != reference_set) {
+      return base::ErrStatus(
+          "Union queries have different column sets (query %zu vs query 0)", i);
+    }
+  }
+
+  return base::OkStatus();
+}
+
+base::StatusOr<std::string> GeneratorImpl::Union(
+    const StructuredQuery::ExperimentalUnion::Decoder& union_decoder) {
+  auto queries = union_decoder.queries();
+  if (!queries) {
+    return base::ErrStatus("Union must specify at least one query");
+  }
+
+  // Count the number of queries and collect column information for validation
+  size_t query_count = 0;
+  std::vector<std::vector<std::string>> query_columns;
+
+  for (auto it = queries; it; ++it) {
+    query_count++;
+    StructuredQuery::Decoder query(*it);
+
+    // Extract column names from select_columns if present
+    std::vector<std::string> cols;
+    if (auto select_cols = query.select_columns(); select_cols) {
+      for (auto col_it = select_cols; col_it; ++col_it) {
+        StructuredQuery::SelectColumn::Decoder column(*col_it);
+        std::string col_name;
+
+        // Use alias if present, otherwise use column name or expression
+        if (column.has_alias()) {
+          col_name = column.alias().ToStdString();
+        } else if (column.has_column_name_or_expression()) {
+          col_name = column.column_name_or_expression().ToStdString();
+        } else if (column.has_column_name()) {
+          col_name = column.column_name().ToStdString();
+        }
+
+        if (!col_name.empty()) {
+          cols.push_back(col_name);
+        }
+      }
+    }
+
+    query_columns.push_back(cols);
+  }
+
+  if (query_count < 2) {
+    return base::ErrStatus("Union must specify at least two queries");
+  }
+
+  // Validate that all queries have the same columns (if columns are specified)
+  RETURN_IF_ERROR(ValidateUnionColumns(query_columns));
+
+  // Build a local WITH clause to avoid CTE name conflicts with global scope.
+  // Similar to IntervalIntersect, we create local CTEs with unique names.
+  std::string sql = "(WITH ";
+  size_t idx = 0;
+  for (auto it = union_decoder.queries(); it; ++it, ++idx) {
+    if (idx > 0) {
+      sql += ", ";
+    }
+    sql += "union_query_" + std::to_string(idx) + " AS (SELECT * FROM " +
+           NestedSource(*it) + ")";
+  }
+
+  // Build the UNION/UNION ALL query
+  std::string union_keyword =
+      union_decoder.use_union_all() ? " UNION ALL " : " UNION ";
+  sql += " SELECT * FROM union_query_0";
+  for (size_t i = 1; i < query_count; ++i) {
+    sql += union_keyword + "SELECT * FROM union_query_" + std::to_string(i);
+  }
+  sql += ")";
+
+  return sql;
+}
+
+base::StatusOr<std::string> GeneratorImpl::AddColumns(
+    const StructuredQuery::ExperimentalAddColumns::Decoder& add_columns) {
+  // Validate required fields
+  if (!add_columns.has_core_query()) {
+    return base::ErrStatus("AddColumns must specify a core query");
+  }
+  if (!add_columns.has_input_query()) {
+    return base::ErrStatus("AddColumns must specify an input query");
+  }
+  if (!add_columns.has_equality_columns() &&
+      !add_columns.has_freeform_condition()) {
+    return base::ErrStatus(
+        "AddColumns must specify either equality_columns or "
+        "freeform_condition");
+  }
+
+  // Validate input_columns
+  auto input_columns = add_columns.input_columns();
+  if (!input_columns) {
+    return base::ErrStatus("AddColumns must specify at least one input column");
+  }
+  size_t column_count = 0;
+  for (auto it = input_columns; it; ++it) {
+    column_count++;
+  }
+  if (column_count == 0) {
+    return base::ErrStatus("AddColumns must specify at least one input column");
+  }
+
+  // Generate nested sources
+  std::string core_table = NestedSource(add_columns.core_query());
+  std::string input_table = NestedSource(add_columns.input_query());
+
+  // Build the SELECT clause with all core columns plus input columns
+  std::string select_clause = "core.*";
+  for (auto it = add_columns.input_columns(); it; ++it) {
+    StructuredQuery::SelectColumn::Decoder col_decoder(*it);
+
+    // Get the column name or expression
+    if (!col_decoder.has_column_name_or_expression()) {
+      return base::ErrStatus(
+          "SelectColumn must specify column_name_or_expression");
+    }
+    std::string col_expr =
+        col_decoder.column_name_or_expression().ToStdString();
+    if (col_expr.empty()) {
+      return base::ErrStatus("Input column name cannot be empty");
+    }
+
+    // Add the column with optional alias
+    select_clause += ", input." + col_expr;
+    if (col_decoder.has_alias()) {
+      std::string alias = col_decoder.alias().ToStdString();
+      if (!alias.empty()) {
+        select_clause += " AS " + alias;
+      }
+    }
+  }
+
+  // Build the join condition
+  std::string condition;
+  if (add_columns.has_equality_columns()) {
+    StructuredQuery::ExperimentalJoin::EqualityColumns::Decoder eq_cols(
+        add_columns.equality_columns());
+    if (!eq_cols.has_left_column()) {
+      return base::ErrStatus("EqualityColumns must specify a left column");
+    }
+    if (!eq_cols.has_right_column()) {
+      return base::ErrStatus("EqualityColumns must specify a right column");
+    }
+    condition = "core." + eq_cols.left_column().ToStdString() + " = input." +
+                eq_cols.right_column().ToStdString();
+  } else {
+    StructuredQuery::ExperimentalJoin::FreeformCondition::Decoder free_cond(
+        add_columns.freeform_condition());
+    if (!free_cond.has_left_query_alias()) {
+      return base::ErrStatus(
+          "FreeformCondition must specify a left query alias");
+    }
+    if (!free_cond.has_right_query_alias()) {
+      return base::ErrStatus(
+          "FreeformCondition must specify a right query alias");
+    }
+    if (!free_cond.has_sql_expression()) {
+      return base::ErrStatus("FreeformCondition must specify a sql expression");
+    }
+
+    std::string left_alias = free_cond.left_query_alias().ToStdString();
+    std::string right_alias = free_cond.right_query_alias().ToStdString();
+
+    // Validate that aliases match "core" and "input"
+    if (left_alias != "core") {
+      return base::ErrStatus(
+          "FreeformCondition left_query_alias must be 'core', got '%s'",
+          left_alias.c_str());
+    }
+    if (right_alias != "input") {
+      return base::ErrStatus(
+          "FreeformCondition right_query_alias must be 'input', got '%s'",
+          right_alias.c_str());
+    }
+
+    condition = free_cond.sql_expression().ToStdString();
+  }
+
+  // Generate the final SQL using LEFT JOIN to keep all core rows
+  std::string sql = "(SELECT " + select_clause + " FROM " + core_table +
+                    " AS core LEFT JOIN " + input_table + " AS input ON " +
+                    condition + ")";
+
+  return sql;
+}
+
 base::StatusOr<std::string> GeneratorImpl::ReferencedSharedQuery(
     protozero::ConstChars raw_id) {
   std::string id = raw_id.ToStdString();
@@ -1325,30 +1707,43 @@ base::StatusOr<std::string> GeneratorImpl::SingleFilter(
   }
 
   std::string sql = column_name + " " + op_str + " ";
+<<<<<<< HEAD
   bool multi_value = false;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   if (auto srhs = filter.string_rhs(); srhs) {
     sql += "'" + (*srhs++).ToStdString() + "'";
     for (; srhs; ++srhs) {
+<<<<<<< HEAD
       multi_value = true;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       sql += " OR " + column_name + " " + op_str + " '" +
              (*srhs).ToStdString() + "'";
     }
   } else if (auto drhs = filter.double_rhs(); drhs) {
     sql += std::to_string((*drhs++));
     for (; drhs; ++drhs) {
+<<<<<<< HEAD
       multi_value = true;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       sql += " OR " + column_name + " " + op_str + " " + std::to_string(*drhs);
     }
   } else if (auto irhs = filter.int64_rhs(); irhs) {
     sql += std::to_string(*irhs++);
     for (; irhs; ++irhs) {
+<<<<<<< HEAD
       multi_value = true;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       sql += " OR " + column_name + " " + op_str + " " + std::to_string(*irhs);
     }
   } else {
     return base::ErrStatus("Filter must specify a right-hand side");
   }
+<<<<<<< HEAD
 
   // When a filter has multiple RHS values they are ORed together. Wrap the
   // disjunction in parentheses so that surrounding ANDs (between filters) or
@@ -1357,6 +1752,8 @@ base::StatusOr<std::string> GeneratorImpl::SingleFilter(
   if (multi_value) {
     return "(" + sql + ")";
   }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   return sql;
 }
 
@@ -1625,6 +2022,7 @@ base::StatusOr<std::string> GeneratorImpl::AggregateToString(
     return std::string("COUNT(*)");
   }
 
+<<<<<<< HEAD
   if (op == StructuredQuery::GroupBy::Aggregate::CUSTOM) {
     if (!aggregate.has_custom_sql_expression()) {
       return base::ErrStatus(
@@ -1633,6 +2031,8 @@ base::StatusOr<std::string> GeneratorImpl::AggregateToString(
     return aggregate.custom_sql_expression().ToStdString();
   }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   if (!aggregate.has_column_name()) {
     return base::ErrStatus("Column name not specified for aggregation");
   }

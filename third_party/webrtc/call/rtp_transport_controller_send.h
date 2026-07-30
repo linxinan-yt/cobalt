@@ -52,6 +52,10 @@
 #include "modules/rtp_rtcp/include/rtp_rtcp_defines.h"
 #include "modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.h"
 #include "rtc_base/containers/flat_map.h"
+<<<<<<< HEAD
+=======
+#include "rtc_base/experiments/field_trial_parser.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "rtc_base/network_route.h"
 #include "rtc_base/rate_limiter.h"
 #include "rtc_base/task_utils/repeating_task.h"
@@ -155,13 +159,23 @@ class RtpTransportControllerSend final
   // Mimics callbacks for packets sent through this transport.
   void NotifyBweOfSentPacketForTesting(const RtpPacketToSend& rtp_packet);
 
+  // Mimics callbacks for packets sent through this transport.
+  void NotifyBweOfSentPacketForTesting(const RtpPacketToSend& rtp_packet);
+
  private:
   void MaybeCreateControllers() RTC_RUN_ON(worker_thread_);
   void HandleTransportPacketsFeedback(const TransportPacketsFeedback& feedback)
+<<<<<<< HEAD
       RTC_RUN_ON(worker_thread_);
   void ComputeStatsFromCongestionControlFeedback(
       const TransportPacketsFeedback& feedback) RTC_RUN_ON(worker_thread_);
   void UpdateNetworkAvailability() RTC_RUN_ON(worker_thread_);
+=======
+      RTC_RUN_ON(sequence_checker_);
+  void ComputeStatsFromCongestionControlFeedback(
+      const TransportPacketsFeedback& feedback) RTC_RUN_ON(sequence_checker_);
+  void UpdateNetworkAvailability() RTC_RUN_ON(sequence_checker_);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   void UpdateInitialConstraints(TargetRateConstraints new_contraints)
       RTC_RUN_ON(worker_thread_);
 
@@ -221,10 +235,17 @@ class RtpTransportControllerSend final
     int cumulative_lost = 0;
   };
   std::map<uint32_t, LossReport> last_report_blocks_
+<<<<<<< HEAD
       RTC_GUARDED_BY(worker_thread_);
   flat_map<uint32_t, ReceivedCongestionControlFeedbackStats>
       received_ccfb_stats_ RTC_GUARDED_BY(worker_thread_);
   Timestamp last_report_block_time_ RTC_GUARDED_BY(worker_thread_);
+=======
+      RTC_GUARDED_BY(sequence_checker_);
+  flat_map<uint32_t, ReceivedCongestionControlFeedbackStats>
+      received_ccfb_stats_ RTC_GUARDED_BY(sequence_checker_);
+  Timestamp last_report_block_time_ RTC_GUARDED_BY(sequence_checker_);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   NetworkControllerConfig initial_config_ RTC_GUARDED_BY(worker_thread_);
   StreamsConfig streams_config_ RTC_GUARDED_BY(worker_thread_);

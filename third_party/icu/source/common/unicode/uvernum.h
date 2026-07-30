@@ -53,13 +53,17 @@
  *  This value will change in the subsequent releases of ICU
  *  @stable ICU 2.4
  */
+<<<<<<< HEAD
 #define U_ICU_VERSION_MAJOR_NUM 78
+=======
+#define U_ICU_VERSION_MAJOR_NUM 77
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 /** The current ICU minor version as an integer.
  *  This value will change in the subsequent releases of ICU
  *  @stable ICU 2.6
  */
-#define U_ICU_VERSION_MINOR_NUM 2
+#define U_ICU_VERSION_MINOR_NUM 1
 
 /** The current ICU patchlevel version as an integer.
  *  This value will change in the subsequent releases of ICU
@@ -79,7 +83,11 @@
  *  This value will change in the subsequent releases of ICU
  *  @stable ICU 2.6
  */
+<<<<<<< HEAD
 #define U_ICU_VERSION_SUFFIX _78
+=======
+#define U_ICU_VERSION_SUFFIX _77
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 /**
  * \def U_DEF2_ICU_ENTRY_POINT_RENAME
@@ -132,7 +140,11 @@
  *  This value will change in the subsequent releases of ICU
  *  @stable ICU 2.4
  */
+<<<<<<< HEAD
 #define U_ICU_VERSION "78.2"
+=======
+#define U_ICU_VERSION "77.1"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 /**
  * The current ICU library major version number as a string, for library name suffixes.
@@ -145,13 +157,21 @@
  *
  * @stable ICU 2.6
  */
+<<<<<<< HEAD
 #define U_ICU_VERSION_SHORT "78"
+=======
+#define U_ICU_VERSION_SHORT "77"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 #ifndef U_HIDE_INTERNAL_API
 /** Data version in ICU4C.
  * @internal ICU 4.4 Internal Use Only
  **/
+<<<<<<< HEAD
 #define U_ICU_DATA_VERSION "78.2"
+=======
+#define U_ICU_DATA_VERSION "77.1"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #endif  /* U_HIDE_INTERNAL_API */
 
 /*===========================================================================

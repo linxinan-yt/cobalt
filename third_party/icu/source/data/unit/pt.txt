@@ -250,6 +250,12 @@ pt{
                 one{"{0} ponto base"}
                 other{"{0} pontos base"}
             }
+            portion-per-1e9{
+                dnam{"partes por bilhão"}
+                gender{"feminine"}
+                one{"{0} parte por bilhão"}
+                other{"{0} partes por bilhão"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -407,7 +413,14 @@ pt{
                 other{"{0} nanossegundos"}
             }
             night{
+<<<<<<< HEAD
                 gender{"feminine"}
+=======
+                dnam{"noites"}
+                gender{"feminine"}
+                one{"{0} noite"}
+                other{"{0} noites"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 per{"{0} por noite"}
             }
             quarter{
@@ -998,7 +1011,14 @@ pt{
                 dnam{"nós"}
             }
             light-speed{
+<<<<<<< HEAD
                 gender{"feminine"}
+=======
+                dnam{"luz"}
+                gender{"feminine"}
+                one{"{0} luz"}
+                other{"{0} luzes"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             meter-per-second{
                 dnam{"metros por segundo"}
@@ -1383,6 +1403,12 @@ pt{
             month{
                 dnam{"mês"}
             }
+            night{
+                dnam{"noites"}
+                one{"{0} noite"}
+                other{"{0} noites"}
+                per{"{0}/noite"}
+            }
             week{
                 dnam{"sem."}
             }
@@ -1537,6 +1563,11 @@ pt{
                 one{"{0}km/h"}
                 other{"{0}km/h"}
             }
+            light-speed{
+                dnam{"luz"}
+                one{"{0} luz"}
+                other{"{0} luzes"}
+            }
             meter-per-second{
                 dnam{"m/s"}
             }
@@ -1688,6 +1719,9 @@ pt{
             }
             permyriad{
                 dnam{"ponto base"}
+            }
+            portion-per-1e9{
+                dnam{"partes/bilhão"}
             }
         }
         consumption{

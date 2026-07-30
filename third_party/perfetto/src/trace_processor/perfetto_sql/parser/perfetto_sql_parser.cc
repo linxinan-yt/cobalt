@@ -658,10 +658,72 @@ bool PerfettoSqlParser::Impl::Next(
       break;
   }
 
+<<<<<<< HEAD
   // Every layer-0 offset the parser emits (node extents, spans, macro
   // rewrite call offsets) is relative to this position within the bound
   // source; callers that slice `stmt` add it back on.
   uint32_t stmt_doc_offset = CurrentStatementDocOffset(synq);
+=======
+  // Create a new CreateFunction statement
+  state->current_statement = PerfettoSqlParser::CreateFunction{
+      replace != 0,
+      FunctionPrototype{
+          std::string(name->ptr, name->n),
+          args ? std::move(args->inner)
+               : std::vector<sql_argument::ArgumentDefinition>{},
+      },
+      std::move(returns_res),
+      state->tokenizer.Substr(PerfettoSqlTokenToToken(*body_start),
+                              PerfettoSqlTokenToToken(*body_end),
+                              SqliteTokenizer::EndToken::kInclusive),
+      "",
+      std::nullopt,  // No target function for SQL functions
+  };
+}
+
+void OnPerfettoSqlCreateDelegatingFunction(PerfettoSqlParserState* state,
+                                           int replace,
+                                           PerfettoSqlToken* name,
+                                           PerfettoSqlArgumentList* args,
+                                           PerfettoSqlFnReturnType* returns,
+                                           PerfettoSqlToken* target_function,
+                                           PerfettoSqlToken* /*stmt_end*/) {
+  std::unique_ptr<PerfettoSqlArgumentList> args_deleter(args);
+  std::unique_ptr<PerfettoSqlFnReturnType> returns_deleter(returns);
+
+  // Validate the target function name is not empty
+  if (target_function->n == 0) {
+    state->ErrorAtToken("Target function name cannot be empty",
+                        *target_function);
+    return;
+  }
+
+  // Convert the return type
+  PerfettoSqlParser::CreateFunction::Returns returns_res;
+  returns_res.is_table = returns->is_table;
+  if (returns->is_table) {
+    returns_res.table_columns = std::move(returns->table_columns);
+  } else {
+    returns_res.scalar_type = returns->scalar_type;
+  }
+
+  // Create a new CreateFunction statement with intrinsic name
+  state->current_statement = PerfettoSqlParser::CreateFunction{
+      replace != 0,
+      FunctionPrototype{
+          std::string(name->ptr, name->n),
+          args ? std::move(args->inner)
+               : std::vector<sql_argument::ArgumentDefinition>{},
+      },
+      std::move(returns_res),
+      SqlSource::FromTraceProcessorImplementation(
+          ""),  // Empty SQL source for delegating functions
+      "",       // Empty description for now
+      std::string(target_function->ptr,
+                  target_function->n),  // Set target function name
+  };
+}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   MacroRewriteBuilder rb(synq, stmt, stmt_doc_offset, macros);
   auto root_src = rb.NodeSource(root);
@@ -690,7 +752,52 @@ void PerfettoSqlParser::Reset(SqlSource source) {
 PerfettoSqlParser::~PerfettoSqlParser() = default;
 
 bool PerfettoSqlParser::Next() {
+<<<<<<< HEAD
   return impl_->Next(statement_sql_);
+=======
+  PERFETTO_DCHECK(parser_state_->status.ok());
+
+  parser_state_->current_statement = std::nullopt;
+  statement_sql_ = std::nullopt;
+
+  if (!parser_state_->preprocessor.NextStatement()) {
+    parser_state_->status = parser_state_->preprocessor.status();
+    return false;
+  }
+  parser_state_->tokenizer.Reset(parser_state_->preprocessor.statement());
+
+  auto* parser = PerfettoSqlParseAlloc(malloc, parser_state_.get());
+  auto guard = base::OnScopeExit([&]() { PerfettoSqlParseFree(parser, free); });
+
+  enum { kEof, kSemicolon, kNone } eof = kNone;
+  for (Token token = parser_state_->tokenizer.Next();;
+       token = parser_state_->tokenizer.Next()) {
+    if (!parser_state_->status.ok()) {
+      return false;
+    }
+    if (token.IsTerminal()) {
+      if (eof == kNone) {
+        PerfettoSqlParse(parser, TK_SEMI, TokenToPerfettoSqlToken(token));
+        eof = kSemicolon;
+        continue;
+      }
+      if (eof == kSemicolon) {
+        PerfettoSqlParse(parser, 0, TokenToPerfettoSqlToken(token));
+        eof = kEof;
+        continue;
+      }
+      if (!parser_state_->current_statement) {
+        parser_state_->current_statement = SqliteSql{};
+      }
+      statement_sql_ = parser_state_->preprocessor.statement();
+      return true;
+    }
+    if (token.token_type == TK_SPACE || token.token_type == TK_COMMENT) {
+      continue;
+    }
+    PerfettoSqlParse(parser, token.token_type, TokenToPerfettoSqlToken(token));
+  }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 const PerfettoSqlParser::Statement& PerfettoSqlParser::statement() const {

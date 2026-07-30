@@ -61,7 +61,11 @@ U_CDECL_BEGIN
  * @see u_getUnicodeVersion
  * @stable ICU 2.0
  */
+<<<<<<< HEAD
 #define U_UNICODE_VERSION "17.0"
+=======
+#define U_UNICODE_VERSION "16.0"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 /**
  * \file
@@ -552,12 +556,23 @@ typedef enum UProperty {
      * @stable ICU 74
      */
     UCHAR_ID_COMPAT_MATH_CONTINUE=74,
+<<<<<<< HEAD
     /**
      * Binary property Modifier_Combining_Mark.
      * Used by the AMTRA algorithm in UAX #53.
      * @stable ICU 76
      */
     UCHAR_MODIFIER_COMBINING_MARK=75,
+=======
+#ifndef U_HIDE_DRAFT_API
+    /**
+     * Binary property Modifier_Combining_Mark.
+     * Used by the AMTRA algorithm in UAX #53.
+     * @draft ICU 76
+     */
+    UCHAR_MODIFIER_COMBINING_MARK=75,
+#endif  // U_HIDE_DRAFT_API
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #ifndef U_HIDE_DEPRECATED_API
     /**
      * One more than the last constant for binary Unicode properties.
@@ -680,12 +695,23 @@ typedef enum UProperty {
      * @stable ICU 75
      */
     UCHAR_IDENTIFIER_STATUS=0x1019,
+<<<<<<< HEAD
     /**
      * Enumerated property Indic_Conjunct_Break.
      * Used in the grapheme cluster break algorithm in UAX #29.
      * @stable ICU 76
      */
     UCHAR_INDIC_CONJUNCT_BREAK=0x101A,
+=======
+#ifndef U_HIDE_DRAFT_API
+    /**
+     * Enumerated property Indic_Conjunct_Break.
+     * Used in the grapheme cluster break algorithm in UAX #29.
+     * @draft ICU 76
+     */
+    UCHAR_INDIC_CONJUNCT_BREAK=0x101A,
+#endif  // U_HIDE_DRAFT_API
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #ifndef U_HIDE_DEPRECATED_API
     /**
      * One more than the last constant for enumerated/integer Unicode properties.
@@ -1981,6 +2007,7 @@ enum UBlockCode {
     /** @stable ICU 76 */
     UBLOCK_TULU_TIGALARI = 338, /*[11380]*/
 
+<<<<<<< HEAD
     // New blocks in Unicode 17.0.0
 
     /** @stable ICU 78 */
@@ -2000,6 +2027,8 @@ enum UBlockCode {
     /** @stable ICU 78 */
     UBLOCK_TOLONG_SIKI = 346, /*[11DB0]*/
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #ifndef U_HIDE_DEPRECATED_API
     /**
      * One more than the highest normal UBlockCode value.
@@ -2007,7 +2036,11 @@ enum UBlockCode {
      *
      * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
      */
+<<<<<<< HEAD
     UBLOCK_COUNT = 347,
+=======
+    UBLOCK_COUNT = 339,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #endif  // U_HIDE_DEPRECATED_API
 
     /** @stable ICU 2.0 */
@@ -2304,8 +2337,11 @@ typedef enum UJoiningGroup {
 
     U_JG_KASHMIRI_YEH,  /**< @stable ICU 76 */
 
+<<<<<<< HEAD
     U_JG_THIN_NOON,  /**< @stable ICU 78 */
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #ifndef U_HIDE_DEPRECATED_API
     /**
      * One more than the highest normal UJoiningGroup value.
@@ -2759,6 +2795,31 @@ typedef enum UIndicSyllabicCategory {
     /** @stable ICU 76 */
     U_INSC_REORDERING_KILLER,
 } UIndicSyllabicCategory;
+
+#ifndef U_HIDE_DRAFT_API
+/**
+ * Indic Conjunct Break constants.
+ *
+ * @see UCHAR_INDIC_CONJUNCT_BREAK
+ * @draft ICU 76
+ */
+typedef enum UIndicConjunctBreak {
+    /*
+    * Note: UIndicConjunctBreak constants are parsed by preparseucd.py.
+    * It matches lines like
+    *     U_INCB_<Unicode Indic_Conjunct_Break value name>
+    */
+
+    /** @draft ICU 76 */
+    U_INCB_NONE,
+    /** @draft ICU 76 */
+    U_INCB_CONSONANT,
+    /** @draft ICU 76 */
+    U_INCB_EXTEND,
+    /** @draft ICU 76 */
+    U_INCB_LINKER,
+} UIndicConjunctBreak;
+#endif  // U_HIDE_DRAFT_API
 
 /**
  * Indic Conjunct Break constants.

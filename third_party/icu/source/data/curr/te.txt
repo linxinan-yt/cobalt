@@ -1289,9 +1289,12 @@ te{
             one{"జాంబియన్ క్వాచా"}
             other{"జాంబియన్ క్వాచాలు"}
         }
+<<<<<<< HEAD
         ZWG{
             one{"జింబాబ్వేయన్ గోల్డ్"}
             other{"జింబాబ్వేయన్ గోల్డ్"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

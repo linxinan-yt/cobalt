@@ -855,7 +855,11 @@ WINDOW_MANAGER_WINDOW_CONTAINER_TABLE = Table(
         ),
         C(
             'base64_proto_id',
+<<<<<<< HEAD
             CppOptional(CppUint32()),
+=======
+            CppUint32(),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             cpp_access=CppAccess.READ_AND_LOW_PERF_WRITE,
             cpp_access_duration=CppAccessDuration.POST_FINALIZATION,
         ),
@@ -891,9 +895,13 @@ WINDOW_MANAGER_WINDOW_CONTAINER_TABLE = Table(
         ),
         C(
             'container_type',
+<<<<<<< HEAD
             CppOptional(CppString()),
             cpp_access=CppAccess.READ_AND_LOW_PERF_WRITE,
             cpp_access_duration=CppAccessDuration.POST_FINALIZATION,
+=======
+            CppString(),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         ),
         C(
             'name_override',

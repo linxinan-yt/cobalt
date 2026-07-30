@@ -2181,9 +2181,12 @@ el{
             one{"δολάριο Ζιμπάμπουε"}
             other{"δολάρια Ζιμπάμπουε"}
         }
+<<<<<<< HEAD
         ZWG{
             one{"Χρυσός της Ζιμπάμπουε"}
             other{"Χρυσός της Ζιμπάμπουε"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

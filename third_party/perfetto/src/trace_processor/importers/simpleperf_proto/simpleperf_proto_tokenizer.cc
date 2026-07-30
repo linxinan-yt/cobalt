@@ -16,7 +16,10 @@
 
 #include "src/trace_processor/importers/simpleperf_proto/simpleperf_proto_tokenizer.h"
 
+<<<<<<< HEAD
 #include <cstddef>
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include <cstdint>
 #include <cstring>
 #include <memory>
@@ -26,22 +29,32 @@
 
 #include "perfetto/base/status.h"
 #include "perfetto/ext/base/status_macros.h"
+<<<<<<< HEAD
 #include "perfetto/ext/base/status_or.h"
 #include "perfetto/ext/base/string_view.h"
 #include "perfetto/protozero/field.h"
 #include "perfetto/trace_processor/trace_blob_view.h"
 #include "src/trace_processor/importers/common/builtin_trace_importers.h"
 #include "src/trace_processor/importers/common/clock_tracker.h"
+=======
+#include "perfetto/ext/base/string_view.h"
+#include "perfetto/protozero/field.h"
+#include "perfetto/trace_processor/trace_blob_view.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "src/trace_processor/importers/common/mapping_tracker.h"
 #include "src/trace_processor/importers/common/virtual_memory_mapping.h"
 #include "src/trace_processor/importers/simpleperf_proto/simpleperf_proto_parser.h"
 #include "src/trace_processor/sorter/trace_sorter.h"
 #include "src/trace_processor/storage/trace_storage.h"
 #include "src/trace_processor/types/trace_processor_context.h"
+<<<<<<< HEAD
 #include "src/trace_processor/util/clock_synchronizer.h"
 #include "src/trace_processor/util/trace_type.h"
 
 #include "protos/perfetto/common/builtin_clock.pbzero.h"
+=======
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "protos/third_party/simpleperf/cmd_report_sample.pbzero.h"
 
 namespace perfetto::trace_processor::simpleperf_proto_importer {
@@ -65,6 +78,7 @@ base::Status SimpleperfProtoTokenizer::Parse(TraceBlobView blob) {
   reader_.PushBack(std::move(blob));
 
   for (;;) {
+<<<<<<< HEAD
     ParseResult result;
     switch (state_) {
       case State::kExpectingMagic: {
@@ -96,16 +110,52 @@ base::Status SimpleperfProtoTokenizer::OnPushDataToSorter() {
   if (state_ != State::kFinished) {
     return base::ErrStatus(
         "Unexpected end of simpleperf_proto file (ERR:tp-corrupt)");
+=======
+    switch (state_) {
+      case State::kExpectingMagic:
+        RETURN_IF_ERROR(ParseMagic());
+        break;
+
+      case State::kExpectingVersion:
+        RETURN_IF_ERROR(ParseVersion());
+        break;
+
+      case State::kExpectingRecordSize:
+        RETURN_IF_ERROR(ParseRecordSize());
+        break;
+
+      case State::kExpectingRecord:
+        RETURN_IF_ERROR(ParseRecord());
+        break;
+
+      case State::kFinished:
+        return base::OkStatus();
+    }
+  }
+}
+
+base::Status SimpleperfProtoTokenizer::NotifyEndOfFile() {
+  if (state_ != State::kFinished) {
+    return base::ErrStatus("Unexpected end of simpleperf_proto file");
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
   return base::OkStatus();
 }
 
+<<<<<<< HEAD
 base::StatusOr<SimpleperfProtoTokenizer::ParseResult>
 SimpleperfProtoTokenizer::ParseMagic() {
   auto iter = reader_.GetIterator();
   auto magic_data = iter.MaybeRead(kSimpleperfMagicSize);
   if (!magic_data) {
     return ParseResult::kNeedsMoreData;
+=======
+base::Status SimpleperfProtoTokenizer::ParseMagic() {
+  auto iter = reader_.GetIterator();
+  auto magic_data = iter.MaybeRead(kSimpleperfMagicSize);
+  if (!magic_data) {
+    return base::ErrStatus("Need more data");
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   if (std::memcmp(magic_data->data(), kSimpleperfMagic, kSimpleperfMagicSize) !=
@@ -115,6 +165,7 @@ SimpleperfProtoTokenizer::ParseMagic() {
 
   reader_.PopFrontUntil(iter.file_offset());
   state_ = State::kExpectingVersion;
+<<<<<<< HEAD
   return ParseResult::kOk;
 }
 
@@ -124,6 +175,16 @@ SimpleperfProtoTokenizer::ParseVersion() {
   auto version_data = iter.MaybeRead(kVersionSize);
   if (!version_data) {
     return ParseResult::kNeedsMoreData;
+=======
+  return base::OkStatus();
+}
+
+base::Status SimpleperfProtoTokenizer::ParseVersion() {
+  auto iter = reader_.GetIterator();
+  auto version_data = iter.MaybeRead(kVersionSize);
+  if (!version_data) {
+    return base::ErrStatus("Need more data");
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   uint16_t version = *reinterpret_cast<const uint16_t*>(version_data->data());
@@ -133,6 +194,7 @@ SimpleperfProtoTokenizer::ParseVersion() {
 
   reader_.PopFrontUntil(iter.file_offset());
   state_ = State::kExpectingRecordSize;
+<<<<<<< HEAD
   return ParseResult::kOk;
 }
 
@@ -142,6 +204,16 @@ SimpleperfProtoTokenizer::ParseRecordSize() {
   auto size_data = iter.MaybeRead(kRecordSizeSize);
   if (!size_data) {
     return ParseResult::kNeedsMoreData;
+=======
+  return base::OkStatus();
+}
+
+base::Status SimpleperfProtoTokenizer::ParseRecordSize() {
+  auto iter = reader_.GetIterator();
+  auto size_data = iter.MaybeRead(kRecordSizeSize);
+  if (!size_data) {
+    return base::ErrStatus("Need more data");
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   current_record_size_ = *reinterpret_cast<const uint32_t*>(size_data->data());
@@ -150,6 +222,7 @@ SimpleperfProtoTokenizer::ParseRecordSize() {
   if (current_record_size_ == 0) {
     // End of records marker
     state_ = State::kFinished;
+<<<<<<< HEAD
     return ParseResult::kOk;
   }
 
@@ -163,6 +236,20 @@ SimpleperfProtoTokenizer::ParseRecord() {
   auto record_data = iter.MaybeRead(current_record_size_);
   if (!record_data) {
     return ParseResult::kNeedsMoreData;
+=======
+    return base::OkStatus();
+  }
+
+  state_ = State::kExpectingRecord;
+  return base::OkStatus();
+}
+
+base::Status SimpleperfProtoTokenizer::ParseRecord() {
+  auto iter = reader_.GetIterator();
+  auto record_data = iter.MaybeRead(current_record_size_);
+  if (!record_data) {
+    return base::ErrStatus("Need more data");
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   using namespace perfetto::third_party::simpleperf::proto::pbzero;
@@ -194,7 +281,11 @@ SimpleperfProtoTokenizer::ParseRecord() {
 
     reader_.PopFrontUntil(iter.file_offset());
     state_ = State::kExpectingRecordSize;
+<<<<<<< HEAD
     return ParseResult::kOk;
+=======
+    return base::OkStatus();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   if (record.has_meta_info()) {
@@ -210,7 +301,11 @@ SimpleperfProtoTokenizer::ParseRecord() {
 
     reader_.PopFrontUntil(iter.file_offset());
     state_ = State::kExpectingRecordSize;
+<<<<<<< HEAD
     return ParseResult::kOk;
+=======
+    return base::OkStatus();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   if (record.has_lost()) {
@@ -220,7 +315,11 @@ SimpleperfProtoTokenizer::ParseRecord() {
     // Should emit a track event or stat to indicate data loss occurred.
     reader_.PopFrontUntil(iter.file_offset());
     state_ = State::kExpectingRecordSize;
+<<<<<<< HEAD
     return ParseResult::kOk;
+=======
+    return base::OkStatus();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   // Process timestamped records and Thread records (push to sorter)
@@ -243,6 +342,7 @@ SimpleperfProtoTokenizer::ParseRecord() {
   }
 
   // Create event with the record data and push to sorter
+<<<<<<< HEAD
   auto trace_ts = context_->clock_tracker->ToTraceTime(
       ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_MONOTONIC), ts);
   if (trace_ts) {
@@ -301,3 +401,16 @@ std::unique_ptr<TraceImporterBase> CreateSimpleperfProtoImporter() {
 }
 
 }  // namespace perfetto::trace_processor
+=======
+  SimpleperfProtoEvent event;
+  event.ts = ts;
+  event.record_data = std::move(*record_data);
+  stream_->Push(ts, std::move(event));
+
+  reader_.PopFrontUntil(iter.file_offset());
+  state_ = State::kExpectingRecordSize;
+  return base::OkStatus();
+}
+
+}  // namespace perfetto::trace_processor::simpleperf_proto_importer
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

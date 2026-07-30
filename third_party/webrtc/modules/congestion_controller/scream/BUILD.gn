@@ -99,6 +99,10 @@ rtc_library("scream_network_controller") {
   deps = [
     ":scream_v2",
     ":scream_v2_parameters",
+<<<<<<< HEAD
+=======
+    "../../../api:field_trials_view",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     "../../../api/environment",
     "../../../api/transport:network_control",
     "../../../api/units:data_rate",

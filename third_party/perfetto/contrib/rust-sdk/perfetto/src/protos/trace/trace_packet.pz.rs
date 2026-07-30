@@ -15,6 +15,7 @@
 // Manually generated with bindings for a limited set of TracePacket
 // fields to limit core proto bindings.
 
+<<<<<<< HEAD
 use crate::pb_enum;
 use crate::pb_msg;
 use crate::protos::trace::clock_snapshot::*;
@@ -50,4 +51,20 @@ pb_msg!(TracePacket {
     interned_data: InternedData, msg, 12,
     sequence_flags: u32, primitive, 13,
     trace_packet_defaults: TracePacketDefaults, msg, 59,
+=======
+use crate::pb_msg;
+use crate::protos::trace::clock_snapshot::*;
+use crate::protos::trace::interned_data::interned_data::*;
+use crate::protos::trace::test_event::*;
+use crate::protos::trace::track_event::track_event::*;
+
+pb_msg!(TracePacket {
+    timestamp: u64, primitive, 8,
+    timestamp_clock_id: u32, primitive, 58,
+    clock_snapshot: ClockSnapshot, msg, 6,
+    track_event: TrackEvent, msg, 11,
+    for_testing: TestEvent, msg, 900,
+    interned_data: InternedData, msg, 12,
+    sequence_flags: u32, primitive, 13,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 });

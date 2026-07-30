@@ -765,9 +765,12 @@ ur{
             one{"(کرنسی کی نامعلوم یونٹ)"}
             other{"(نامعلوم کرنسی)"}
         }
+<<<<<<< HEAD
         ZWG{
             one{"زمبابوے گولڈ"}
             other{"زمبابوے گولڈ"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

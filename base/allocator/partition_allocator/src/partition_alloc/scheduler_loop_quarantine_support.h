@@ -93,11 +93,22 @@ class PA_COMPONENT_EXPORT(PARTITION_ALLOC)
   PA_STACK_ALLOCATED();
 
  public:
+<<<<<<< HEAD
   PA_ALWAYS_INLINE ScopedSchedulerLoopQuarantineTaskScope() {
     active_ = internal::ThreadCache::IsInitialized();
     if (!active_) {
       return;
     }
+=======
+  PA_ALWAYS_INLINE ScopedSchedulerLoopQuarantineDisallowScanlessPurge() {
+    active_ = ThreadCache::IsInitialized();
+    if (!active_) {
+      return;
+    }
+
+    ThreadCache* tcache = ThreadCache::EnsureAndGet();
+    PA_CHECK(ThreadCache::IsValid(tcache));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     internal::ThreadCache* tcache =
         internal::ThreadCache::EnsureAndGetForQuarantine();
@@ -106,10 +117,20 @@ class PA_COMPONENT_EXPORT(PARTITION_ALLOC)
     tcache->GetSchedulerLoopQuarantineBranch().OnTaskStart();
   }
 
+<<<<<<< HEAD
   PA_ALWAYS_INLINE ~ScopedSchedulerLoopQuarantineTaskScope() {
     if (!active_) {
       return;
     }
+=======
+  PA_ALWAYS_INLINE ~ScopedSchedulerLoopQuarantineDisallowScanlessPurge() {
+    if (!active_) {
+      return;
+    }
+
+    ThreadCache* tcache = ThreadCache::EnsureAndGet();
+    PA_CHECK(ThreadCache::IsValid(tcache));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     internal::ThreadCache* tcache =
         internal::ThreadCache::EnsureAndGetForQuarantine();

@@ -28,6 +28,12 @@
 #include "build/build_config.h"
 #include "components/download/public/common/download_stats.h"
 #include "content/browser/about_url_loader_factory.h"
+<<<<<<< HEAD
+=======
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+#include "content/browser/attribution_reporting/attribution_manager.h"
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "content/browser/blob_storage/chrome_blob_storage_context.h"
 #include "content/browser/client_hints/client_hints.h"
 #include "content/browser/data_url_loader_factory.h"
@@ -343,9 +349,30 @@ std::unique_ptr<network::ResourceRequest> CreateResourceRequest(
           .IsSameOriginWith(request_info.common_params->url);
 
   new_request->storage_access_api_status =
+<<<<<<< HEAD
       is_storage_access_grant_eligible && is_same_origin_initiator
           ? net::StorageAccessApiStatus::kAccessViaAPI
           : net::StorageAccessApiStatus::kNone;
+=======
+      request_info.begin_params->storage_access_api_status;
+
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  WebContentsImpl* web_contents = static_cast<WebContentsImpl*>(
+      WebContents::FromFrameTreeNodeId(frame_tree_node->frame_tree_node_id()));
+  new_request->attribution_reporting_support =
+      web_contents ? web_contents->GetAttributionSupport()
+                   : AttributionManager::GetAttributionSupport(
+                         /*client_os_disabled=*/false);
+#else
+  new_request->attribution_reporting_support =
+      network::mojom::AttributionSupport::kNone;
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+
+  new_request->attribution_reporting_eligibility =
+      request_info.begin_params->impression.has_value()
+          ? network::mojom::AttributionReportingEligibility::kNavigationSource
+          : network::mojom::AttributionReportingEligibility::kUnset;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   new_request->shared_storage_writable_eligible =
       request_info.shared_storage_writable_eligible;

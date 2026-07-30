@@ -8,11 +8,19 @@ es{
                 "[import und-u-co-search]"
                 "&N<ñ<<<Ñ"
             }
+<<<<<<< HEAD
             Version{"48"}
         }
         standard{
             Sequence{"&N<ñ<<<Ñ"}
             Version{"48"}
+=======
+            Version{"47"}
+        }
+        standard{
+            Sequence{"&N<ñ<<<Ñ"}
+            Version{"47"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         traditional{
             Sequence{
@@ -20,7 +28,11 @@ es{
                 "&C<ch<<<Ch<<<CH"
                 "&l<ll<<<Ll<<<LL"
             }
+<<<<<<< HEAD
             Version{"48"}
+=======
+            Version{"47"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     }
 }

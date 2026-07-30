@@ -39,6 +39,7 @@ class DelayBasedCongestionControl {
            queue_delay_avg_ > params_.queue_delay_target.Get() / 2;
   }
 
+<<<<<<< HEAD
   // Returns false if the minimum queue delay has been above the drain threshold
   // for a prolonged time. This can happen if minimum possible latency has
   // increased, or queues has been filled for a longer period of time without
@@ -47,6 +48,25 @@ class DelayBasedCongestionControl {
     return min_queue_delay_above_threshold_start_.IsInfinite() ||
            (now - min_queue_delay_above_threshold_start_ <
             params_.queue_delay_drain_period.Get());
+=======
+  // Returns true if queue delay is detected, but it may be low and does not
+  // necessarily mean reference window should be reduced. From 4.2.2.1.
+  // (queue_qdelay >= queue_delay_target * 0.25)
+  bool IsQueueDelayDetected() const;
+
+  // Returns true if queue delay is detected and reference window should be
+  // reduced. From 4.2.2.1. (queue_qdelay >= queue_delay_target*0.5)
+  bool ShouldReduceReferenceWindow() const;
+
+  DataSize UpdateReferenceWindow(DataSize rew_window,
+                                 double ref_window_mss_ratio,
+                                 double virtual_alpha_lim) const;
+
+  double scale_increase() const {
+    return std::clamp(1 - queue_delay_avg_ / (params_.queue_delay_target.Get() *
+                                              params_.queue_delay_threshold),
+                      0.1, 1.0);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   // Resets queue delay estimates to start values.

@@ -23,6 +23,7 @@ pub mod builtin_clock;
 #[path = "data_source_descriptor.pz.rs"]
 pub mod data_source_descriptor;
 
+<<<<<<< HEAD
 /// `descriptor` protos.
 #[path = "descriptor.pz.rs"]
 pub mod descriptor;
@@ -31,6 +32,8 @@ pub mod descriptor;
 #[path = "semantic_type.pz.rs"]
 pub mod semantic_type;
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 /// `track_event_descriptor` protos.
 #[path = "track_event_descriptor.pz.rs"]
 pub mod track_event_descriptor;

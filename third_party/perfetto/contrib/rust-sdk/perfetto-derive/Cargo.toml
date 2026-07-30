@@ -1,8 +1,13 @@
 [package]
 edition = "2024"
 name = "perfetto-sdk-derive"
+<<<<<<< HEAD
 version = "1.0.0"
 authors = ["David Reveman <reveman@meta.com>"]
+=======
+version = "0.1.1"
+authors = ["David Reveman <dreveman@gmail.com>"]
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 description = "Procedural macros for Perfetto"
 readme = "README.md"
 keywords = [
@@ -22,7 +27,11 @@ default = ["vendored"]
 vendored = ["perfetto-sdk/vendored"]
 
 [dependencies]
+<<<<<<< HEAD
 perfetto-sdk = { path = "../perfetto", version = "1", default-features = false }
+=======
+perfetto-sdk = { path = "../perfetto", version = "0.1.1", default-features = false }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 syn = { version = "2", features = ["full"] }
 quote = "1.0.8"
 proc-macro2 = "1.0"

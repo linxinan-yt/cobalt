@@ -22,7 +22,10 @@
 #include "perfetto/protozero/field.h"
 #include "src/trace_processor/importers/proto/args_parser.h"
 #include "src/trace_processor/tables/winscope_tables_py.h"
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/viewcapture_args_parser.h
 #include "src/trace_processor/types/trace_processor_context.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/viewcapture_args_parser.h
 
 namespace perfetto::trace_processor::winscope {
 
@@ -34,12 +37,21 @@ class ViewCaptureArgsParser : public ArgsParser {
 
   ViewCaptureArgsParser(int64_t packet_timestamp,
                         ArgsTracker::BoundInserter& inserter,
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/viewcapture_args_parser.h
                         TraceProcessorContext& context,
                         PacketSequenceStateGeneration* sequence_state,
                         tables::ViewCaptureTable::RowReference* snapshot_row,
                         tables::ViewCaptureViewTable::RowReference* view_row);
   void AddInteger(Id flat_key, Id key, int64_t) override;
   void AddUnsignedInteger(Id flat_key, Id key, uint64_t) override;
+=======
+                        TraceStorage& storage,
+                        PacketSequenceStateGeneration* sequence_state,
+                        tables::ViewCaptureTable::RowReference* snapshot_row,
+                        tables::ViewCaptureViewTable::RowReference* view_row);
+  void AddInteger(const Key&, int64_t) override;
+  void AddUnsignedInteger(const Key&, uint64_t) override;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/viewcapture_args_parser.h
 
   base::FlatHashMap<StringId, IidToStringMap> flat_key_to_iid_args;
 
@@ -47,15 +59,22 @@ class ViewCaptureArgsParser : public ArgsParser {
   bool TryAddDeinternedString(const Key&, uint64_t);
   std::optional<protozero::ConstChars> TryDeinternString(const Key&, uint64_t);
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/viewcapture_args_parser.h
   template <uint32_t FieldNumber>
   std::optional<protozero::ConstChars> DeinternString(uint64_t);
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/viewcapture_args_parser.h
   template <uint32_t FieldNumber, typename RowRef>
   std::optional<protozero::ConstChars>
   DeinternString(uint64_t, RowRef*, void (RowRef::*setter)(StringPool::Id));
 
   const base::StringView ERROR_MSG{"STRING DE-INTERNING ERROR"};
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/viewcapture_args_parser.h
   TraceProcessorContext& context_;
+=======
+  TraceStorage& storage_;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/viewcapture_args_parser.h
   tables::ViewCaptureTable::RowReference* snapshot_row_;
   tables::ViewCaptureViewTable::RowReference* view_row_;
 };

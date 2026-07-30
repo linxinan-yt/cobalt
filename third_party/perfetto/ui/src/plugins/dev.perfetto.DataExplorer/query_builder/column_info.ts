@@ -12,8 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/column_info.ts
 import type {PerfettoSqlType} from '../../../trace_processor/perfetto_sql_type';
 import type {SqlColumn} from '../../dev.perfetto.SqlModules/sql_modules';
+=======
+import {perfettoSqlTypeToString} from '../../../trace_processor/perfetto_sql_type';
+import {SqlColumn} from '../../dev.perfetto.SqlModules/sql_modules';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/column_info.ts
 
 export interface ColumnInfo {
   name: string;
@@ -32,9 +37,27 @@ export function columnInfoFromSqlColumn(
 ): ColumnInfo {
   return {
     name: column.name,
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/column_info.ts
     type: column.type,
     description: column.description,
     checked,
+=======
+    type: perfettoSqlTypeToString(column.type),
+    checked,
+    column: column,
+  };
+}
+
+export function columnInfoFromName(
+  name: string,
+  checked: boolean = false,
+): ColumnInfo {
+  return {
+    name,
+    type: 'NA',
+    checked,
+    column: {name},
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/column_info.ts
   };
 }
 
@@ -44,9 +67,15 @@ export function newColumnInfo(
 ): ColumnInfo {
   const finalName = col.alias ?? col.name;
   return {
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/column_info.ts
     name: finalName,
     type: col.type,
     description: col.description,
+=======
+    name: col.alias ?? col.column.name,
+    type: perfettoSqlTypeToString(col.column.type),
+    column: col.column,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/column_info.ts
     alias: undefined,
     checked: checked ?? col.checked,
     typeUserModified: col.typeUserModified,

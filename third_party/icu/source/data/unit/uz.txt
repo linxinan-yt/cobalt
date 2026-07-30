@@ -198,6 +198,11 @@ uz{
                 one{"{0} promiriada"}
                 other{"{0} promiriada"}
             }
+            portion-per-1e9{
+                dnam{"qism/milliard"}
+                one{"{0} ta qism/milliard"}
+                other{"{0} ta qism/milliard"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -292,6 +297,12 @@ uz{
             nanosecond{
                 one{"{0} nanosoniya"}
                 other{"{0} nanosoniya"}
+            }
+            night{
+                dnam{"kecha"}
+                one{"{0} kecha"}
+                other{"{0} kecha"}
+                per{"{0}/kecha"}
             }
             second{
                 dnam{"soniya"}
@@ -824,6 +835,9 @@ uz{
                 one{"{0} metrik pint"}
                 other{"{0} metrik pint"}
             }
+            quart-imperial{
+                dnam{"imp.kvarta"}
+            }
         }
     }
     unitsNarrow{
@@ -871,6 +885,7 @@ uz{
                 one{"{0}ppm"}
                 other{"{0}ppm"}
             }
+<<<<<<< HEAD
             part-per-1e9{
                 dnam{"ppb"}
                 one{"{0}ppb"}
@@ -878,6 +893,12 @@ uz{
             }
             percent{
                 dnam{"%"}
+=======
+            portion-per-1e9{
+                dnam{"qism/milliard"}
+                one{"{0} ta qism/mlrd"}
+                other{"{0} ta qism/mlrd"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         consumption{
@@ -891,6 +912,12 @@ uz{
                 dnam{"mson"}
             }
             night{
+<<<<<<< HEAD
+=======
+                dnam{"kecha"}
+                one{"{0} kecha"}
+                other{"{0} kecha"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 per{"{0}/nkecha"}
             }
             quarter{
@@ -955,12 +982,15 @@ uz{
                 one{"{0} o.k."}
                 other{"{0} hp"}
             }
+<<<<<<< HEAD
         }
         pressure{
             ofhg{
                 one{"{0} Hg"}
                 other{"{0} Hg"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         speed{
             light-speed{
@@ -984,9 +1014,16 @@ uz{
                 one{"{0} mi³"}
                 other{"{0} mi³"}
             }
+            dessert-spoon-imperial{
+                one{"{0} imp. desert qoshiq"}
+                other{"{0} imp. desert qoshiq"}
+            }
             liter{
                 one{"{0}L"}
                 other{"{0}L"}
+            }
+            quart-imperial{
+                dnam{"imp.kvarta"}
             }
         }
     }
@@ -1113,6 +1150,11 @@ uz{
             }
             permyriad{
                 dnam{"promiriada"}
+            }
+            portion-per-1e9{
+                dnam{"qism/milliard"}
+                one{"{0} ta qism/mlrd"}
+                other{"{0} ta qism/mlrd"}
             }
         }
         consumption{

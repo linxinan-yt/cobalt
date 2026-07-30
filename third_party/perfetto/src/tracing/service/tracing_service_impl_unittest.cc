@@ -3190,7 +3190,11 @@ TEST_F(TracingServiceImplTest, NoFlushBeforeWriteIntoFile) {
   trace_config.add_data_sources()->mutable_config()->set_name("data_source");
   trace_config.set_write_into_file(true);
   trace_config.set_file_write_period_ms(10000);  // 10s
+<<<<<<< HEAD
   trace_config.set_write_flush_mode(TraceConfig::WRITE_FLUSH_DISABLED);
+=======
+  trace_config.set_no_flush_before_write_into_file(true);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   auto write_into_file_session_file = base::TempFile::Create();
   consumer->EnableTracing(
@@ -3219,7 +3223,11 @@ TEST_F(TracingServiceImplTest, NoFlushBeforeWriteIntoFile) {
 }
 
 TEST_F(TracingServiceImplTest, WriteIntoFileCloneSessionBeforeWrite) {
+<<<<<<< HEAD
   if (!PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER)) {
+=======
+  if (!base::flags::buffer_clone_preserve_read_iter) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     GTEST_SKIP() << "This test requires buffer_clone_preserve_read_iter=true";
   }
 
@@ -3315,7 +3323,11 @@ TEST_F(TracingServiceImplTest, WriteIntoFileCloneSessionBeforeWrite) {
 }
 
 TEST_F(TracingServiceImplTest, WriteIntoFileCloneSessionAfterWrite) {
+<<<<<<< HEAD
   if (!PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER)) {
+=======
+  if (!base::flags::buffer_clone_preserve_read_iter) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     GTEST_SKIP() << "This test requires buffer_clone_preserve_read_iter=true";
   }
 
@@ -3427,7 +3439,11 @@ TEST_F(TracingServiceImplTest, WriteIntoFileCloneSessionAfterWrite) {
 // session. This is test is needed, because we have a slightly different code
 // path when we clone the 'write_into_file' session.
 TEST_F(TracingServiceImplTest, WriteIntoFileCloneSessionLifecycleEvents) {
+<<<<<<< HEAD
   if (!PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER)) {
+=======
+  if (!base::flags::buffer_clone_preserve_read_iter) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     GTEST_SKIP() << "This test requires buffer_clone_preserve_read_iter=true";
   }
 
@@ -3542,8 +3558,11 @@ TEST_F(TracingServiceImplTest, WriteIntoFileCloneSessionLifecycleEvents) {
     consumer->Connect(svc.get());
     TraceConfig trace_config = create_trace_config_fn();
     trace_config.set_write_into_file(true);
+<<<<<<< HEAD
     // Large period so the periodic drain/flush timers don't race the clone.
     trace_config.set_file_write_period_ms(100000);  // 100s
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     consumer->EnableTracing(
         trace_config, base::ScopedFile(dup(write_into_file_session_file.fd())));
 

@@ -140,6 +140,10 @@ vi{
             permyriad{
                 other{"{0} phần vạn"}
             }
+            portion-per-1e9{
+                dnam{"phần tỷ"}
+                other{"{0} phần tỷ"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -200,6 +204,13 @@ vi{
             terabyte{
                 dnam{"terabyte"}
                 other{"{0} terabyte"}
+            }
+        }
+        duration{
+            night{
+                dnam{"đêm"}
+                other{"{0} đêm"}
+                per{"{0}/đêm"}
             }
         }
         electric{
@@ -734,6 +745,9 @@ vi{
             permyriad{
                 dnam{"‱"}
             }
+            portion-per-1e9{
+                other{"{0}ppb"}
+            }
         }
         digital{
             byte{
@@ -756,6 +770,11 @@ vi{
             }
             siemens{
                 other{"{0} S"}
+            }
+            night{
+                dnam{"đêm"}
+                other{"{0} đêm"}
+                per{"{0}/đêm"}
             }
         }
         energy{
@@ -959,6 +978,9 @@ vi{
             }
             permyriad{
                 dnam{"phần vạn"}
+            }
+            portion-per-1e9{
+                dnam{"phần tỷ"}
             }
         }
         consumption{

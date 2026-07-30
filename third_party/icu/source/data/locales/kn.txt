@@ -374,6 +374,13 @@ kn{
             }
         }
         gregorian{
+<<<<<<< HEAD
+=======
+            AmPmMarkers{
+                "AM",
+                "PM",
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             AmPmMarkersNarrow{
                 "a",
                 "p",
@@ -486,7 +493,17 @@ kn{
                 }
                 stand-alone{
                     abbreviated{
+                        am{"AM"}
                         midnight{"ಮಧ್ಯರಾತ್ರಿ"}
+                        pm{"PM"}
+                    }
+                    narrow{
+                        am{"AM"}
+                        pm{"PM"}
+                    }
+                    wide{
+                        am{"AM"}
+                        pm{"PM"}
                     }
                 }
             }
@@ -865,6 +882,12 @@ kn{
         dayperiod{
             dn{"AM/PM"}
         }
+<<<<<<< HEAD
+=======
+        dayperiod-narrow{
+            dn{"AM/PM"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         era{
             dn{"ಯುಗ"}
         }
@@ -885,6 +908,17 @@ kn{
                 }
             }
         }
+<<<<<<< HEAD
+=======
+        fri-narrow{
+            relativeTime{
+                past{
+                    one{"{0} ಶುಕ್ರವಾರದ ಹಿಂದೆ"}
+                    other{"{0} ಶುಕ್ರವಾರಗಳ ಹಿಂದೆ"}
+                }
+            }
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         hour{
             dn{"ಗಂಟೆ"}
             relative{
@@ -1212,6 +1246,20 @@ kn{
                 "[¥￥]",
                 "[₩￦]",
                 "[₹ {ರೂ}]",
+<<<<<<< HEAD
+=======
+            }
+        }
+        number{
+            lenient{
+                "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
+                "[,，﹐︐ ، ٫ 、﹑､︑]",
+                "[+＋﬩﹢⁺₊ ➕]",
+            }
+            stricter{
+                "[,，﹐︐ ٫]",
+                "[.．․﹒ ｡]",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
     }

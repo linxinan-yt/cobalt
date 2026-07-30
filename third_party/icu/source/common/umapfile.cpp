@@ -242,7 +242,10 @@ typedef HANDLE MemoryMap;
         pData->map = (char *)data + length;
         pData->pHeader=(const DataHeader *)data;
         pData->mapAddr = data;
+<<<<<<< HEAD
         pData->length = length;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #if U_PLATFORM == U_PF_IPHONE || U_PLATFORM == U_PF_ANDROID
     // Apparently supported from Android 23 and higher:
     //   https://github.com/ggml-org/llama.cpp/pull/3631

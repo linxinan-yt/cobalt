@@ -14,17 +14,21 @@ ie{
         de_CH{"sviss alt-german"}
         el{"grec"}
         en{"anglesi"}
+<<<<<<< HEAD
         en_AU{"australian anglesi"}
         en_CA{"canadian anglesi"}
         en_GB{"britannic anglesi"}
         en_US{"american anglesi"}
         eo{"Esperanto"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         es{"hispan"}
         es_419{"hispan del latin America"}
         es_ES{"europan hispan"}
         es_MX{"mexican hispan"}
         et{"estonian"}
         fa{"persian"}
+<<<<<<< HEAD
         fi{"finn"}
         fil{"filipinesi"}
         fr{"francesi"}
@@ -44,6 +48,15 @@ ie{
         ja{"japanesi"}
         jv{"javan"}
         ka{"georgian"}
+=======
+        fr{"francesi"}
+        fr_CH{"sviss francesi"}
+        hu{"hungarian"}
+        id{"indonesian"}
+        ie{"Interlingue"}
+        it{"italian"}
+        ja{"japanesi"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         ko{"korean"}
         lij{"ligurian"}
         lv{"lettonian"}
@@ -60,6 +73,7 @@ ie{
         sl{"slovenian"}
         sv{"sved"}
         sw{"swahili"}
+<<<<<<< HEAD
         th{"thai"}
         tr{"turc"}
         und{"ínconosset lingue"}
@@ -89,6 +103,23 @@ ie{
         Zmth{"matematic notation"}
         Zsye{"emoji"}
         Zsym{"simboles"}
+=======
+        tr{"turc"}
+        und{"ínconosset lingue"}
+        zh{"chinesi"}
+    }
+    Languages%menu{
+        zh{"chinesi, mandarin"}
+    }
+    Scripts{
+        Arab{"arabic"}
+        Cyrl{"cirillic"}
+        Hans{"simplificat"}
+        Hant{"traditional"}
+        Jpan{"japanesi"}
+        Kore{"korean"}
+        Latn{"latin"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         Zxxx{"ínscrit"}
         Zzzz{"ínconosset scritura"}
     }
@@ -98,6 +129,7 @@ ie{
     }
     Types{
         calendar{
+<<<<<<< HEAD
             buddhist{"buddhist calendare"}
             chinese{"chinesi calendare"}
             coptic{"coptic calendare"}
@@ -112,13 +144,19 @@ ie{
             chinese{"chinesi"}
             coptic{"coptic"}
             gregorian{"gregorian"}
+=======
+            gregorian{"gregorian calendare"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         collation{
             standard{"standard órdine"}
         }
+<<<<<<< HEAD
         collation%core{
             standard{"standard"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         numbers{
             latn{"occidental ciffres"}
         }

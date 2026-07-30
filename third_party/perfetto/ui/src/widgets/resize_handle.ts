@@ -33,16 +33,24 @@ export interface ResizeHandleAttrs extends HTMLAttrs {
 export class ResizeHandle implements m.ClassComponent<ResizeHandleAttrs> {
   private handleElement?: HTMLElement;
   private previousY: number | undefined;
+<<<<<<< HEAD
   private previousX: number | undefined;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   oncreate(vnode: m.VnodeDOM<ResizeHandleAttrs, this>) {
     this.handleElement = vnode.dom as HTMLElement;
   }
 
   private endDrag(attrs: ResizeHandleAttrs, pointerId: number) {
+<<<<<<< HEAD
     if (this.previousY !== undefined || this.previousX !== undefined) {
       this.previousY = undefined;
       this.previousX = undefined;
+=======
+    if (this.previousY !== undefined) {
+      this.previousY = undefined;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       this.handleElement!.releasePointerCapture(pointerId);
       attrs.onResizeEnd?.();
     }
@@ -61,14 +69,18 @@ export class ResizeHandle implements m.ClassComponent<ResizeHandleAttrs> {
     const isHorizontal = direction === 'horizontal';
 
     return m('.pf-resize-handle', {
+<<<<<<< HEAD
       class: isHorizontal
         ? 'pf-resize-handle--horizontal'
         : 'pf-resize-handle--vertical',
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       oncontextmenu: (e: Event) => {
         e.preventDefault();
       },
       onpointerdown: (e: PointerEvent) => {
         const offsetParent = this.handleElement?.offsetParent as HTMLElement;
+<<<<<<< HEAD
 
         if (isHorizontal) {
           const offsetLeft = offsetParent?.getBoundingClientRect().left ?? 0;
@@ -79,6 +91,11 @@ export class ResizeHandle implements m.ClassComponent<ResizeHandleAttrs> {
           const mouseOffsetY = e.clientY - offsetTop;
           this.previousY = mouseOffsetY;
         }
+=======
+        const offsetTop = offsetParent?.getBoundingClientRect().top ?? 0;
+        const mouseOffsetY = e.clientY - offsetTop;
+        this.previousY = mouseOffsetY;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
         this.handleElement!.setPointerCapture(e.pointerId);
         attrs.onResizeStart?.();
@@ -87,10 +104,16 @@ export class ResizeHandle implements m.ClassComponent<ResizeHandleAttrs> {
       },
       onpointermove: (e: MithrilEvent<PointerEvent>) => {
         const offsetParent = this.handleElement?.offsetParent as HTMLElement;
+<<<<<<< HEAD
+=======
+        const offsetTop = offsetParent?.getBoundingClientRect().top ?? 0;
+        const mouseOffsetY = e.clientY - offsetTop;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
         // We typically just resize some element when dragging the handle, so we
         // tell Mithril not to redraw after this event.
         e.redraw = false;
+<<<<<<< HEAD
 
         // Note: We don't check hasPointerCapture() here because pointer capture
         // already ensures we only receive move events during an active drag.
@@ -114,6 +137,14 @@ export class ResizeHandle implements m.ClassComponent<ResizeHandleAttrs> {
             attrs.onResizeAbsolute?.(mouseOffsetY);
             this.previousY = mouseOffsetY;
           }
+=======
+        if (
+          this.previousY !== undefined
+          // && this.handleElement!.hasPointerCapture(e.pointerId)
+        ) {
+          attrs.onResize(mouseOffsetY - this.previousY);
+          this.previousY = mouseOffsetY;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
       },
       onpointerup: (e: PointerEvent) => {

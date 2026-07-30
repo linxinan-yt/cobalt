@@ -288,12 +288,16 @@ private:
   IndianCalendar() = delete; // default constructor not implemented
 
 protected:
+<<<<<<< HEAD
   /**
    * @internal
    */
   int32_t getRelatedYearDifference() const override;
 
   // Default century.
+=======
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   DECLARE_OVERRIDE_SYSTEM_DEFAULT_CENTURY
 };
 

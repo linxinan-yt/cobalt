@@ -27,8 +27,16 @@ ak{
         "Africa:Cairo"{
             ec{"Kairo"}
         }
+<<<<<<< HEAD
         "Africa:Ceuta"{
             ec{"kiweta"}
+=======
+        "Africa:Casablanca"{
+            ec{"Kasablanka"}
+        }
+        "Africa:Ceuta"{
+            ec{"Kyuta"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "Africa:Conakry"{
             ec{"Kɔnakri"}
@@ -93,9 +101,12 @@ ak{
         "America:Campo_Grande"{
             ec{"Kampo Grande"}
         }
+<<<<<<< HEAD
         "America:Cancun"{
             ec{"Kankun"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Caracas"{
             ec{"Karakas"}
         }
@@ -105,6 +116,12 @@ ak{
         "America:Cayenne"{
             ec{"Kayiini"}
         }
+<<<<<<< HEAD
+=======
+        "America:Cayman"{
+            ec{"Kemanfo"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Chicago"{
             ec{"Kyikago"}
         }
@@ -337,7 +354,11 @@ ak{
             ec{"Aktau"}
         }
         "Asia:Aqtobe"{
+<<<<<<< HEAD
             ec{"Aatobe"}
+=======
+            ec{"Aktopɛ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "Asia:Bangkok"{
             ec{"Bankɔk"}
@@ -345,21 +366,36 @@ ak{
         "Asia:Beirut"{
             ec{"Bɛɛrut"}
         }
+<<<<<<< HEAD
+=======
+        "Asia:Calcutta"{
+            ec{"Kɔɔkata"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Asia:Chita"{
             ec{"Kyita"}
         }
         "Asia:Colombo"{
             ec{"Kolombo"}
         }
+<<<<<<< HEAD
+=======
+        "Asia:Damascus"{
+            ec{"Damaskɔso"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Asia:Dhaka"{
             ec{"Daka"}
         }
         "Asia:Hebron"{
             ec{"Hɛbrɔn"}
         }
+<<<<<<< HEAD
         "Asia:Irkutsk"{
             ec{"Yiikusk"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Asia:Jakarta"{
             ec{"Gyakaata"}
         }
@@ -429,9 +465,12 @@ ak{
         "Atlantic:Cape_Verde"{
             ec{"Kepvɛde"}
         }
+<<<<<<< HEAD
         "Atlantic:Faeroe"{
             ec{"Farosu"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Atlantic:Reykjavik"{
             ec{"Rɛɛkgyavik"}
         }
@@ -502,7 +541,11 @@ ak{
             ec{"Kyisinau"}
         }
         "Europe:Copenhagen"{
+<<<<<<< HEAD
             ec{"Kopehegan"}
+=======
+            ec{"Kɔpɛhangɛne"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "Europe:Dublin"{
             ec{"Dɔblin"}
@@ -517,9 +560,12 @@ ak{
         "Europe:Jersey"{
             ec{"Jɛɛsi"}
         }
+<<<<<<< HEAD
         "Europe:Kiev"{
             ec{"Kiivu"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Europe:Lisbon"{
             ec{"Lisbɔn"}
         }
@@ -528,7 +574,11 @@ ak{
         }
         "Europe:London"{
             ec{"Lɔndɔn"}
+<<<<<<< HEAD
             ld{"Engresi Awia Berɛ"}
+=======
+            ld{"Ingresi Awia Berɛ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "Europe:Luxembourg"{
             ec{"Lɛsembɛg"}
@@ -536,14 +586,25 @@ ak{
         "Europe:Malta"{
             ec{"Mɔɔta"}
         }
+<<<<<<< HEAD
+=======
+        "Europe:Monaco"{
+            ec{"Monako"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Europe:Moscow"{
             ec{"Mɔsko"}
         }
         "Europe:Podgorica"{
             ec{"Podgorika"}
         }
+<<<<<<< HEAD
         "Europe:Prague"{
             ec{"Prage"}
+=======
+        "Europe:Rome"{
+            ec{"Roma"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "Europe:Sarajevo"{
             ec{"Saragyevo"}
@@ -551,6 +612,12 @@ ak{
         "Europe:Skopje"{
             ec{"Skɔpgye"}
         }
+<<<<<<< HEAD
+=======
+        "Europe:Sofia"{
+            ec{"Sɔfia"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Europe:Stockholm"{
             ec{"Stɔkhɔm"}
         }
@@ -602,14 +669,27 @@ ak{
         "Pacific:Galapagos"{
             ec{"Galapagɔs"}
         }
+<<<<<<< HEAD
+=======
+        "Pacific:Guadalcanal"{
+            ec{"Guadaakanaa"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Pacific:Kwajalein"{
             ec{"Kwagyaleene"}
         }
         "Pacific:Majuro"{
+<<<<<<< HEAD
             ec{"Madwuro"}
         }
         "Pacific:Marquesas"{
             ec{"Maakesase Supᴐ"}
+=======
+            ec{"Magyuro"}
+        }
+        "Pacific:Marquesas"{
+            ec{"Maakesase"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "Pacific:Norfolk"{
             ec{"Nɔɔfɔk"}
@@ -626,9 +706,12 @@ ak{
         "Pacific:Truk"{
             ec{"Kyuuk"}
         }
+<<<<<<< HEAD
         "Pacific:Wake"{
             ec{"Wake Supᴐ"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "meta:Afghanistan"{
             ls{"Afganistan Berɛ"}
         }
@@ -642,7 +725,13 @@ ak{
             ls{"Afrika Anaafoɔ Susudua Berɛ"}
         }
         "meta:Africa_Western"{
+<<<<<<< HEAD
             ls{"Afrika Atɔeɛ Berɛ"}
+=======
+            ld{"Afrika Atɔeɛ Awia Berɛ"}
+            lg{"Afrika Atɔeɛ Berɛ"}
+            ls{"Afrika Atɔeɛ Susudua Berɛ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "meta:Alaska"{
             ld{"Alaska Awia Berɛ"}
@@ -751,7 +840,11 @@ ak{
             ls{"Brasilia Susudua Berɛ"}
         }
         "meta:Brunei"{
+<<<<<<< HEAD
             ls{"Brunei Berɛ"}
+=======
+            ls{"Brunei Darusalam Berɛ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "meta:Cape_Verde"{
             ld{"Kepvɛde Awia Berɛ"}
@@ -881,9 +974,12 @@ ak{
         "meta:Guyana"{
             ls{"Gayana Berɛ"}
         }
+<<<<<<< HEAD
         "meta:Hawaii"{
             ls{"Hawaii-Aleutian Susudua Berɛ"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "meta:Hawaii_Aleutian"{
             ld{"Hawaii-Aleutian Awia Berɛ"}
             lg{"Hawaii-Aleutian Berɛ"}
@@ -923,9 +1019,15 @@ ak{
             ls{"Iran Susudua Berɛ"}
         }
         "meta:Irkutsk"{
+<<<<<<< HEAD
             ld{"Yiikusk Awia Berɛ"}
             lg{"Yiikusk Berɛ"}
             ls{"Yiikusk Susudua Berɛ"}
+=======
+            ld{"Irkutsk Awia Berɛ"}
+            lg{"Irkutsk Berɛ"}
+            ls{"Irkutsk Susudua Berɛ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "meta:Israel"{
             ld{"Israel Awia Berɛ"}

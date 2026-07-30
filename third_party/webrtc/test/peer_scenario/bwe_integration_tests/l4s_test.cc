@@ -11,6 +11,7 @@
 #include <atomic>
 #include <cstdint>
 #include <map>
+#include <memory>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -29,6 +30,7 @@
 #include "api/scoped_refptr.h"
 #include "api/stats/rtc_stats_report.h"
 #include "api/test/network_emulation/network_emulation_interfaces.h"
+#include "api/test/network_emulation/network_queue.h"
 #include "api/test/network_emulation_manager.h"
 #include "api/transport/ecn_marking.h"
 #include "api/transport/stun.h"
@@ -139,6 +141,46 @@ class RtcpFeedbackCounter {
   int ce_ = 0;
 };
 
+<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
+=======
+scoped_refptr<const RTCStatsReport> GetStatsAndProcess(
+    PeerScenario& s,
+    PeerScenarioClient* client) {
+  auto stats_collector = make_ref_counted<MockRTCStatsCollectorCallback>();
+  client->pc()->GetStats(stats_collector.get());
+  s.ProcessMessages(TimeDelta::Millis(0));
+  RTC_CHECK(stats_collector->called());
+  return stats_collector->report();
+}
+
+std::optional<int64_t> GetPacketsSentWithEct1(
+    const scoped_refptr<const RTCStatsReport>& report) {
+  auto stats = report->GetStatsOfType<RTCOutboundRtpStreamStats>();
+  if (stats.empty()) {
+    return std::nullopt;
+  }
+  return stats[0]->packets_sent_with_ect1;
+}
+
+std::optional<int64_t> GetPacketsReceivedWithEct1(
+    const scoped_refptr<const RTCStatsReport>& report) {
+  auto stats = report->GetStatsOfType<RTCInboundRtpStreamStats>();
+  if (stats.empty()) {
+    return std::nullopt;
+  }
+  return stats[0]->packets_received_with_ect1;
+}
+
+std::optional<int64_t> GetPacketsReceivedWithCe(
+    const scoped_refptr<const RTCStatsReport>& report) {
+  auto stats = report->GetStatsOfType<RTCInboundRtpStreamStats>();
+  if (stats.empty()) {
+    return std::nullopt;
+  }
+  return stats[0]->packets_received_with_ce;
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
 TEST(L4STest, NegotiateAndUseCcfbIfEnabled) {
   PeerScenario s(*test_info_);
 
@@ -213,10 +255,17 @@ TEST(L4STest, NegotiateAndUseCcfbIfEnabled) {
   EXPECT_EQ(ret_node_feedback_counter.FeedbackAccordingToTransportCc(), 0);
 }
 
+<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
 TEST(L4STest, NoCcfbSentAfterRenegotiationAndCallerCachesLocalDescription) {
   // The caller supports CCFB, but the callee does not.
   // This test that the caller does not start sending CCFB after renegotiation
   // even if the local description is cached. The caller's local description
+=======
+TEST(L4STest, NoCcfbSentAfterRenegotiationAndCallerCachLocalDescription) {
+  // The caller supports CCFB, but the callee does not.
+  // This test that the caller does not start sending CCFB after renegotiation
+  // even if the local description is cached. The callers local description
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
   // will contain CCFB since it was used in the initial offer.
   PeerScenario s(*test_info_);
   PeerScenarioClient::Config caller_config;
@@ -287,7 +336,11 @@ TEST(L4STest, NoCcfbSentAfterRenegotiationAndCallerCachesLocalDescription) {
   std::string answer_str;
   caller->pc()->local_description()->ToString(&answer_str);
   ASSERT_FALSE(answer_str.empty());
+<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
   ASSERT_THAT(answer_str, ContainsRegex(ccfb_regex));
+=======
+  ASSERT_THAT(answer_str, HasSubstr("a=rtcp-fb:* ack ccfb\r\n"));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
 
   callee->CreateAndSetSdp(
       [&](SessionDescriptionInterface* /*munge_offer*/) {
@@ -295,7 +348,11 @@ TEST(L4STest, NoCcfbSentAfterRenegotiationAndCallerCachesLocalDescription) {
       },
       [&](std::string offer) {
         // Callee does not support ccfb and does not have it in the offer.
+<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
         ASSERT_THAT(offer, Not(ContainsRegex(ccfb_regex)));
+=======
+        ASSERT_THAT(offer, Not(HasSubstr("a=rtcp-fb:* ack ccfb\r\n")));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
         caller->SetRemoteDescription(
             offer, SdpType::kOffer, [&](RTCError error) {
               ASSERT_TRUE(error.ok());
@@ -321,6 +378,38 @@ TEST(L4STest, NoCcfbSentAfterRenegotiationAndCallerCachesLocalDescription) {
             transport_cc_callee);
 }
 
+<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
+=======
+#if !defined(WEBRTC_ANDROID)
+// TODO: bugs.webrtc.org/447037083 - for some reason a "fake" hardware
+// encoder/decoder is used on
+// https://ci.chromium.org/ui/p/webrtc/builders/try/android_arm64_rel
+// generic_decoder.cc: (line 306): Decoder implementation: DecoderInfo {
+// prefers_late_decoding = implementation_name = 'fake_decoder',
+// is_hardware_accelerated = true }
+// Figure out how to run libvpx instead.
+
+DataRate GetAvailableSendBitrate(
+    const scoped_refptr<const RTCStatsReport>& report) {
+  auto stats = report->GetStatsOfType<RTCIceCandidatePairStats>();
+  if (stats.empty()) {
+    return DataRate::Zero();
+  }
+  return DataRate::BitsPerSec(*stats[0]->available_outgoing_bitrate);
+}
+
+TimeDelta GetAverageRoundTripTime(
+    const scoped_refptr<const RTCStatsReport>& report) {
+  auto stats = report->GetStatsOfType<RTCIceCandidatePairStats>();
+  if (stats.empty() || (stats[0]->responses_received.value_or(0) == 0)) {
+    return TimeDelta::Zero();
+  }
+
+  return TimeDelta::Seconds(*stats[0]->total_round_trip_time /
+                            *stats[0]->responses_received);
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
 struct SupportRfc8888Params {
   bool caller_supports_rfc8888 = false;
   bool callee_supports_rfc8888 = false;
@@ -329,7 +418,11 @@ struct SupportRfc8888Params {
 
 class FeedbackFormatTest : public TestWithParam<SupportRfc8888Params> {};
 
+<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
 TEST_P(FeedbackFormatTest, AdaptToLinkCapacityWithoutEcn) {
+=======
+TEST_P(FeedbackFormatTest, DISABLED_AdaptToLinkCapacityWithoutEcn) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
   const SupportRfc8888Params& params = GetParam();
   PeerScenario s(*testing::UnitTest::GetInstance()->current_test_info());
 
@@ -393,15 +486,26 @@ TEST_P(FeedbackFormatTest, AdaptToLinkCapacityWithoutEcn) {
   DataRate caller_available_bwe =
       GetAvailableSendBitrate(GetStatsAndProcess(s, caller));
   EXPECT_GT(caller_available_bwe.kbps(), 150);
+<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
   EXPECT_LT(caller_available_bwe.kbps(), 300);
+=======
+  EXPECT_LT(caller_available_bwe.kbps(), 260);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
 
   DataRate callee_available_bwe =
       GetAvailableSendBitrate(GetStatsAndProcess(s, callee));
   EXPECT_GT(callee_available_bwe.kbps(), 150);
+<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
   EXPECT_LT(callee_available_bwe.kbps(), 300);
 
   EXPECT_LT(GetAverageRoundTripTime(GetStatsAndProcess(s, caller)),
             TimeDelta::Millis(250));
+=======
+  EXPECT_LT(callee_available_bwe.kbps(), 260);
+
+  EXPECT_LT(GetAverageRoundTripTime(GetStatsAndProcess(s, caller)),
+            TimeDelta::Millis(200));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
 
   if (params.caller_supports_rfc8888 && params.callee_supports_rfc8888) {
     EXPECT_GT(caller_feedback_counter.FeedbackAccordingToRfc8888(), 0);
@@ -431,6 +535,184 @@ INSTANTIATE_TEST_SUITE_P(
       return info.param.test_suffix;
     });
 
+<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
+=======
+struct SendMediaTestResult {
+  // Stats gathered at the end of the call.
+  scoped_refptr<const RTCStatsReport> caller_stats;
+};
+
+struct SendMediaTestParams {
+  bool use_dual_pi = false;
+  DataRate link_capacity;
+  TimeDelta one_way_delay;
+  std::map</*trial*/ std::string, /*group*/ std::string> field_trials;
+};
+
+// Sends audio and video from a caller to a callee with symmetric
+// uplink/downlink network.
+SendMediaTestResult SendMediaInOneDirection(const SendMediaTestParams params) {
+  PeerScenario s(*testing::UnitTest::GetInstance()->current_test_info());
+  PeerScenarioClient::Config config;
+  for (auto [trial, group] : params.field_trials) {
+    config.field_trials.Set(trial, group);
+  }
+  PeerScenarioClient* caller = s.CreateClient(config);
+  PeerScenarioClient* callee = s.CreateClient(config);
+
+  NetworkEmulationManager::SimulatedNetworkNode::Builder network_builder =
+      s.net()
+          ->NodeBuilder()
+          .capacity(params.link_capacity)
+          .delay_ms(params.one_way_delay.ms());
+  std::unique_ptr<NetworkQueueFactory> queue_factory;
+  if (params.use_dual_pi) {
+    queue_factory = std::make_unique<DualPi2NetworkQueueFactory>(
+        DualPi2NetworkQueue::Config({.target_delay = TimeDelta::Millis(10)}));
+    network_builder.queue_factory(*queue_factory);
+  }
+
+  EmulatedNetworkNode* caller_to_callee = network_builder.Build().node;
+  EmulatedNetworkNode* callee_to_caller = network_builder.Build().node;
+  s.net()->CreateRoute(caller->endpoint(), {caller_to_callee},
+                       callee->endpoint());
+  s.net()->CreateRoute(callee->endpoint(), {callee_to_caller},
+                       caller->endpoint());
+
+  auto signaling = s.ConnectSignaling(caller, callee, {caller_to_callee},
+                                      {callee_to_caller});
+  PeerScenarioClient::VideoSendTrackConfig video_conf;
+  video_conf.generator.squares_video->framerate = 30;
+  video_conf.generator.squares_video->width = 1280;
+  video_conf.generator.squares_video->height = 720;
+  caller->CreateAudio("AUDIO_1", {});
+  caller->CreateVideo("VIDEO_1", video_conf);
+
+  signaling.StartIceSignaling();
+  std::atomic<bool> offer_exchange_done(false);
+  signaling.NegotiateSdp([&](const SessionDescriptionInterface& answer) {
+    offer_exchange_done = true;
+  });
+  s.WaitAndProcess(&offer_exchange_done);
+  s.ProcessMessages(TimeDelta::Seconds(10));
+
+  SendMediaTestResult result;
+  result.caller_stats = GetStatsAndProcess(s, caller);
+  return result;
+}
+
+TEST(L4STest, CallerAdaptsToLinkCapacity600KbpsRtt100msNoEcnWithGoogCC) {
+  SendMediaTestParams params;
+  params.use_dual_pi = false;  // Simulated network will not support ECN.
+  params.link_capacity = DataRate::KilobitsPerSec(600);
+  params.one_way_delay = TimeDelta::Millis(50);
+  params.field_trials = {
+      {"WebRTC-RFC8888CongestionControlFeedback", "Enabled,offer:true"}};
+
+  SendMediaTestResult result = SendMediaInOneDirection(params);
+  DataRate available_bwe = GetAvailableSendBitrate(result.caller_stats);
+  EXPECT_GT(available_bwe, DataRate::KilobitsPerSec(500));
+  EXPECT_LT(available_bwe, DataRate::KilobitsPerSec(660));
+}
+
+TEST(L4STest, CallerAdaptsToLinkCapacity600KbpsRtt100msNoEcnWithScream) {
+  SendMediaTestParams params;
+  params.use_dual_pi = false;  // Simulated network will not support ECN.
+  params.link_capacity = DataRate::KilobitsPerSec(600);
+  params.one_way_delay = TimeDelta::Millis(50);
+  params.field_trials = {
+      {"WebRTC-RFC8888CongestionControlFeedback", "Enabled,offer:true"},
+      {"WebRTC-Bwe-ScreamV2", "Enabled"}};
+
+  SendMediaTestResult result = SendMediaInOneDirection(params);
+  DataRate available_bwe = GetAvailableSendBitrate(result.caller_stats);
+  // TODO: bugs.webrtc.org/447037083 - Investigate behaviour.
+  // Encoder rate increase slower than target rate. Once the encoder rate start
+  // increasing, target rate drops too much.
+  EXPECT_GT(available_bwe, DataRate::KilobitsPerSec(200));
+  EXPECT_LT(available_bwe, DataRate::KilobitsPerSec(800));
+}
+
+TEST(L4STest, CallerAdaptsToLinkCapacity600KbpsRtt100msEcnWithScream) {
+  SendMediaTestParams params;
+  params.use_dual_pi = true;  // Simulated network will support ECN.
+  params.link_capacity = DataRate::KilobitsPerSec(600);
+  params.one_way_delay = TimeDelta::Millis(50);
+  params.field_trials = {
+      {"WebRTC-RFC8888CongestionControlFeedback", "Enabled,offer:true"},
+      {"WebRTC-Bwe-ScreamV2", "Enabled"}};
+
+  SendMediaTestResult result = SendMediaInOneDirection(params);
+  DataRate available_bwe = GetAvailableSendBitrate(result.caller_stats);
+  EXPECT_GT(available_bwe, DataRate::KilobitsPerSec(350));
+  EXPECT_LT(available_bwe, DataRate::KilobitsPerSec(660));
+}
+
+TEST(L4STest, CallerAdaptsToLinkCapacity1000KbpsRtt100msEcnWithScream) {
+  SendMediaTestParams params;
+  params.use_dual_pi = true;  // Simulated network will support ECN.
+  params.link_capacity = DataRate::KilobitsPerSec(1000);
+  params.one_way_delay = TimeDelta::Millis(50);
+  params.field_trials = {
+      {"WebRTC-RFC8888CongestionControlFeedback", "Enabled,offer:true"},
+      {"WebRTC-Bwe-ScreamV2", "Enabled"}};
+
+  SendMediaTestResult result = SendMediaInOneDirection(params);
+  DataRate available_bwe = GetAvailableSendBitrate(result.caller_stats);
+  EXPECT_GT(available_bwe, DataRate::KilobitsPerSec(600));
+  EXPECT_LT(available_bwe, DataRate::KilobitsPerSec(1000));
+}
+
+TEST(L4STest, DISABLED_CallerAdaptsToLinkCapacity2MbpsRtt50msNoEcnWithScream) {
+  SendMediaTestParams params;
+  params.use_dual_pi = false;  // Simulated network will not support ECN.
+  params.link_capacity = DataRate::KilobitsPerSec(2000);
+  params.one_way_delay = TimeDelta::Millis(25);
+  params.field_trials = {
+      {"WebRTC-RFC8888CongestionControlFeedback", "Enabled,offer:true"},
+      {"WebRTC-Bwe-ScreamV2", "Enabled"}};
+
+  SendMediaTestResult result = SendMediaInOneDirection(params);
+  DataRate available_bwe = GetAvailableSendBitrate(result.caller_stats);
+  EXPECT_GT(available_bwe, DataRate::KilobitsPerSec(1600));
+  // TODO: bugs.webrtc.org/447037083 - Even if reference window is limited by
+  // seen data in flight, target rate can still increase due to that RTT
+  // decrease.
+  EXPECT_LE(available_bwe, DataRate::KilobitsPerSec(2600));
+}
+
+TEST(L4STest, CallerAdaptsToLinkCapacity2MbpsRtt50msEcnWithScream) {
+  SendMediaTestParams params;
+  params.use_dual_pi = true;  // Simulated network will support ECN.
+  params.link_capacity = DataRate::KilobitsPerSec(2000);
+  params.one_way_delay = TimeDelta::Millis(25);
+  params.field_trials = {
+      {"WebRTC-RFC8888CongestionControlFeedback", "Enabled,offer:true"},
+      {"WebRTC-Bwe-ScreamV2", "Enabled"}};
+
+  SendMediaTestResult result = SendMediaInOneDirection(params);
+  DataRate available_bwe = GetAvailableSendBitrate(result.caller_stats);
+  EXPECT_GT(available_bwe, DataRate::KilobitsPerSec(1500));
+  EXPECT_LT(available_bwe, DataRate::KilobitsPerSec(2100));
+}
+
+TEST(L4STest, CallerAdaptsToLinkCapacity2MbpsRtt50msNoEcnWithGoogCC) {
+  SendMediaTestParams params;
+  params.use_dual_pi = false;  // Simulated network will support ECN.
+  params.link_capacity = DataRate::KilobitsPerSec(2000);
+  params.one_way_delay = TimeDelta::Millis(25);
+  params.field_trials = {
+      {"WebRTC-RFC8888CongestionControlFeedback", "Enabled,offer:true"},
+  };
+
+  SendMediaTestResult result = SendMediaInOneDirection(params);
+  DataRate available_bwe = GetAvailableSendBitrate(result.caller_stats);
+  EXPECT_GT(available_bwe, DataRate::KilobitsPerSec(1000));
+  EXPECT_LT(available_bwe, DataRate::KilobitsPerSec(2600));
+}
+#endif
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
 TEST(L4STest, SendsEct1WithScream) {
   PeerScenario s(*test_info_);
   PeerScenarioClient::Config config;
@@ -586,6 +868,7 @@ TEST(L4STest, SendsEct1AfterRouteChangeEvenIfBleached) {
   EXPECT_GT(not_ect_count_cellular, 0);
 }
 
+<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
 TEST(L4STest, SendsEct1AfterRouteChangeFromTurnWithBleachingToDirect) {
   PeerScenario s(*test_info_);
 
@@ -601,11 +884,16 @@ TEST(L4STest, SendsEct1AfterRouteChangeFromTurnWithBleachingToDirect) {
   ice_server.username = ice_server_config.username;
   ice_server.password = ice_server_config.password;
 
+=======
+TEST(L4STest, RtcpSentAsEct1IfRtpWithEct1Received) {
+  PeerScenario s(*test_info_);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
   PeerScenarioClient::Config config;
   config.field_trials.Set("WebRTC-RFC8888CongestionControlFeedback",
                           "Enabled,offer:true");
   config.field_trials.Set("WebRTC-Bwe-ScreamV2", "Enabled");
   config.disable_encryption = true;
+<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
   config.endpoints = {{0, {.type = AdapterType::ADAPTER_TYPE_WIFI}}};
   config.rtc_config.servers.push_back(ice_server);
   PeerScenarioClient* caller = s.CreateClient(config);
@@ -691,12 +979,15 @@ TEST(L4STest, RtcpSentAsEct1IfRtpWithEct1Received) {
   config.field_trials.Set("WebRTC-RFC8888CongestionControlFeedback",
                           "Enabled,offer:true");
   config.field_trials.Set("WebRTC-Bwe-ScreamV2", "Enabled");
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
   PeerScenarioClient* caller = s.CreateClient(config);
   PeerScenarioClient* callee = s.CreateClient(config);
   EmulatedNetworkNode* caller_to_callee_node =
       s.net()->NodeBuilder().Build().node;
   EmulatedNetworkNode* callee_to_caller_node =
       s.net()->NodeBuilder().Build().node;
+<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
   // Callee is not sending media - Thus if Stun is ignored, most packets should
   // be RTCP. Negotiation is still done using not ECT.
   callee_to_caller_node->router()->SetWatcher(
@@ -708,6 +999,19 @@ TEST(L4STest, RtcpSentAsEct1IfRtpWithEct1Received) {
           ecn_count++;
         } else {
           not_ect_count++;
+=======
+  int rtcp_ecn_count = 0;
+  int rtcp_not_ect_count = 0;
+  callee_to_caller_node->router()->SetWatcher(
+      [&](const EmulatedIpPacket& packet) {
+        if (!IsRtcpPacket(packet.data)) {
+          return;
+        }
+        if (packet.ecn == EcnMarking::kEct1 || packet.ecn == EcnMarking::kCe) {
+          rtcp_ecn_count++;
+        } else {
+          rtcp_not_ect_count++;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
         }
       });
 
@@ -720,6 +1024,7 @@ TEST(L4STest, RtcpSentAsEct1IfRtpWithEct1Received) {
                      {callee_to_caller_node});
   s.ProcessMessages(TimeDelta::Seconds(1));
 
+<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
   // Feedback is sent every 25ms. Expect more than 20 feedback packets during
   // 1S.
   EXPECT_GT(ecn_count, 20);
@@ -729,6 +1034,13 @@ TEST(L4STest, RtcpSentAsEct1IfRtpWithEct1Received) {
 TEST(L4STest, RtcpSentAsNotEctIfRtpEcnBleached) {
   int rtcp_ecn_count = 0;
   int rtcp_not_ect_count = 0;
+=======
+  EXPECT_GT(rtcp_ecn_count, 0);
+  EXPECT_EQ(rtcp_not_ect_count, 0);
+}
+
+TEST(L4STest, RtcpSentAsNotEctIfRtpEcnBleached) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
   PeerScenario s(*test_info_);
   PeerScenarioClient::Config config;
   config.field_trials.Set("WebRTC-RFC8888CongestionControlFeedback",
@@ -742,6 +1054,11 @@ TEST(L4STest, RtcpSentAsNotEctIfRtpEcnBleached) {
       s.net()->NodeBuilder().config({.forward_ecn = false}).Build().node;
   EmulatedNetworkNode* callee_to_caller_node =
       s.net()->NodeBuilder().Build().node;
+<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
+=======
+  int rtcp_ecn_count = 0;
+  int rtcp_not_ect_count = 0;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
 
   callee_to_caller_node->router()->SetWatcher(
       [&](const EmulatedIpPacket& packet) {
@@ -756,7 +1073,11 @@ TEST(L4STest, RtcpSentAsNotEctIfRtpEcnBleached) {
       });
 
   PeerScenarioClient::VideoSendTrackConfig video_conf;
+<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
   video_conf.generator.squares_video->framerate = 30;
+=======
+  video_conf.generator.squares_video->framerate = 15;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
   caller->CreateAudio("AUDIO_1", AudioOptions());
   caller->CreateVideo("VIDEO_1", video_conf);
   s.SimpleConnection(caller, callee, {caller_to_callee_node},
@@ -767,6 +1088,7 @@ TEST(L4STest, RtcpSentAsNotEctIfRtpEcnBleached) {
   EXPECT_GT(rtcp_not_ect_count, 0);
 }
 
+<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
 #if !defined(WEBRTC_IOS)
 // TODO(bugs.webrtc.org/42225697): investigate why CcFbSendRateAdaptation fails
 // on iOS bots.
@@ -980,5 +1302,7 @@ INSTANTIATE_TEST_SUITE_P(L4STest,
                          });
 #endif  // !defined(WEBRTC_IOS)
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
 }  // namespace
 }  // namespace webrtc

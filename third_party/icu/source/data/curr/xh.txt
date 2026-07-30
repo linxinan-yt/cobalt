@@ -1281,9 +1281,12 @@ xh{
             one{"I-kwacha yaseZambia"}
             other{"I-kwacha yaseZambia"}
         }
+<<<<<<< HEAD
         ZWG{
             one{"IZimbabwean gold"}
             other{"IZimbabwean gold"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

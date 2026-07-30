@@ -245,7 +245,10 @@ TrackEventParser::TrackEventParser(
       callsite_id_key_id_(context_->storage->InternString("callsite_id")),
       end_callsite_id_key_id_(
           context_->storage->InternString("end_callsite_id")),
+<<<<<<< HEAD
       extension_parser_context_(extension_parser_context),
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       chrome_string_lookup_(context->storage.get()),
       active_chrome_processes_tracker_(context) {
   // Opt into DebugAnnotation handling: ParseMessage routes DebugAnnotation
@@ -406,7 +409,11 @@ void TrackEventParser::ParseChromeProcessDescriptor(
           : ProcessNamePriority::kChromeProcessLabel;
   context_->process_tracker->UpdateProcessName(upid, name_id, priority);
 
+<<<<<<< HEAD
   ArgsTracker::BoundInserter& process_args =
+=======
+  ArgsTracker::BoundInserter process_args =
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       context_->process_tracker->AddArgsToProcess(upid);
   // For identifying Chrome processes in system traces.
   process_args.AddArg(chrome_process_type_id_, Variadic::String(name_id));
@@ -498,8 +505,13 @@ DummyMemoryMapping* TrackEventParser::GetOrCreateInlineCallstackDummyMapping() {
   return inline_callstack_dummy_mapping_;
 }
 
+<<<<<<< HEAD
 void TrackEventParser::OnEventsFullyExtracted() {
   active_chrome_processes_tracker_.OnEventsFullyExtracted();
+=======
+void TrackEventParser::NotifyEndOfFile() {
+  active_chrome_processes_tracker_.NotifyEndOfFile();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 }  // namespace perfetto::trace_processor

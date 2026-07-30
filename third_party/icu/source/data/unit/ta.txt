@@ -507,6 +507,25 @@ ta{
                 one{"{0} பெர்மிரியட்"}
                 other{"{0} பெர்மிரியட்"}
             }
+            portion-per-1e9{
+                case{
+                    ablative{
+                        one{"{0} பார்ட்ஸ்/பில்லியனில்"}
+                        other{"{0} பார்ட்ஸ்/பில்லியனில்"}
+                    }
+                    accusative{
+                        one{"{0} பார்ட்ஸ்/பில்லியனை"}
+                        other{"{0} பார்ட்ஸ்/பில்லியனை"}
+                    }
+                    dative{
+                        one{"{0} பார்ட்ஸ்/பில்லியனுக்கு"}
+                        other{"{0} பார்ட்ஸ்/பில்லியனுக்கு"}
+                    }
+                }
+                dnam{"பார்ட்ஸ்/பில்லியன்"}
+                one{"{0} பார்ட்ஸ்/பில்லியன்"}
+                other{"{0} பார்ட்ஸ்/பில்லியன்"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -983,8 +1002,15 @@ ta{
                         other{"{0} இரவுகளுக்கு"}
                     }
                 }
+<<<<<<< HEAD
                 one{"{0} இரவு"}
                 other{"{0} இரவுகள்"}
+=======
+                dnam{"இரவுகள்"}
+                one{"{0} இரவு"}
+                other{"{0} இரவுகள்"}
+                per{"{0}/இரவு"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 case{
@@ -2321,6 +2347,10 @@ ta{
                         other{"{0} ஒளிவேகத்திற்கு"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"ஒளிவேகம்"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0} ஒளிவேகம்"}
                 other{"{0} ஒளிவேகம்"}
             }
@@ -2902,6 +2932,11 @@ ta{
             permyriad{
                 dnam{"‱"}
             }
+            portion-per-1e9{
+                dnam{"பா/பி"}
+                one{"{0} பா/பி"}
+                other{"{0} பா/பி"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -3021,8 +3056,15 @@ ta{
                 other{"{0}நா.செ."}
             }
             night{
+<<<<<<< HEAD
                 one{"{0} இ"}
                 other{"{0} இ"}
+=======
+                dnam{"இரவுகள்"}
+                one{"{0} இ"}
+                other{"{0} இ"}
+                per{"{0}/இரவு"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 dnam{"கா."}
@@ -3439,6 +3481,10 @@ ta{
                 other{"{0}நா."}
             }
             light-speed{
+<<<<<<< HEAD
+=======
+                dnam{"ஒளிவேகம்"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0}ஒ.வே"}
                 other{"{0}ஒ.வே"}
             }
@@ -3802,6 +3848,11 @@ ta{
             }
             permyriad{
                 dnam{"பெர்மிரியட்"}
+            }
+            portion-per-1e9{
+                dnam{"பார்ட்ஸ்/பில்லியன்"}
+                one{"{0} பார்ட்ஸ்/பில்லியன்"}
+                other{"{0} பார்ட்ஸ்/பில்லியன்"}
             }
         }
         consumption{

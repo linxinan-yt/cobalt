@@ -26,6 +26,10 @@
 #include "api/video/video_content_type.h"
 #include "api/video/video_frame.h"
 #include "api/video/video_sink_interface.h"
+<<<<<<< HEAD
+=======
+#include "api/video/video_timing.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "modules/video_coding/timing/timing.h"
 #include "rtc_base/thread_annotations.h"
 #include "video/timing/simulator/assembler.h"
@@ -61,7 +65,11 @@ class RenderingTracker : public AssembledFrameCallback,
   struct Config {
     uint32_t ssrc = 0;
     // Fixed render delay term added to the render timestamps.
+<<<<<<< HEAD
     TimeDelta render_delay = TimeDelta::PlusInfinity();
+=======
+    TimeDelta render_delay = TimeDelta::MinusInfinity();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   };
 
   RenderingTracker(const Environment& env,
@@ -80,8 +88,11 @@ class RenderingTracker : public AssembledFrameCallback,
   // any rendered frames to the `observer_`.
   void OnAssembledFrame(std::unique_ptr<EncodedFrame> assembled_frame) override;
 
+<<<<<<< HEAD
   void UpdateMaxRtt(TimeDelta max_rtt);
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
  private:
   struct VideoStreamBufferControllerObserverDecodableStats {
     TimeDelta jitter_buffer_delay = TimeDelta::Zero();
@@ -100,6 +111,10 @@ class RenderingTracker : public AssembledFrameCallback,
                         TimeDelta jitter_buffer_target_delay,
                         TimeDelta jitter_buffer_minimum_delay) override;
   void OnFrameBufferTimingsUpdated(int, int, int, int, int, int) override {}
+<<<<<<< HEAD
+=======
+  void OnTimingFrameInfoUpdated(const TimingFrameInfo&) override {}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // Implements `VideoSinkInterface<VideoFrame>`.
   void OnFrame(const VideoFrame& decoded_frame) override;
@@ -122,9 +137,15 @@ class RenderingTracker : public AssembledFrameCallback,
   // Stats state. This is needed since the stats and the decodable frame are
   // provided by the VSBC on different callbacks, but we want to log the
   // the corresponding information simultaneously to our callback.
+<<<<<<< HEAD
   std::optional<int> vsbc_frames_dropped_ RTC_GUARDED_BY(sequence_checker_);
   std::optional<VideoStreamBufferControllerObserverDecodableStats>
       vsbc_decodable_stats_ RTC_GUARDED_BY(sequence_checker_);
+=======
+  std::optional<int> vsbc_frames_dropped_;
+  std::optional<VideoStreamBufferControllerObserverDecodableStats>
+      vsbc_decodable_stats_;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // Outputs.
   RenderingTrackerEvents& observer_;

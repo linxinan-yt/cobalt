@@ -265,6 +265,12 @@ fr{
                 one{"{0} pour dix mille"}
                 other{"{0} pour dix mille"}
             }
+            portion-per-1e9{
+                dnam{"parts par milliard"}
+                gender{"feminine"}
+                one{"{0} part par milliard"}
+                other{"{0} parts par milliard"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -428,7 +434,14 @@ fr{
                 other{"{0} nanosecondes"}
             }
             night{
+<<<<<<< HEAD
                 gender{"feminine"}
+=======
+                dnam{"nuits"}
+                gender{"feminine"}
+                one{"{0} nuit"}
+                other{"{0} nuits"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 per{"{0} par nuit"}
             }
             quarter{
@@ -1053,7 +1066,14 @@ fr{
                 other{"{0} nœuds"}
             }
             light-speed{
+<<<<<<< HEAD
                 gender{"feminine"}
+=======
+                dnam{"lumière"}
+                gender{"feminine"}
+                one{"{0} lumière"}
+                other{"{0} lumière"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             meter-per-second{
                 dnam{"mètres par seconde"}
@@ -1418,6 +1438,10 @@ fr{
                 one{"{0}‱"}
                 other{"{0}‱"}
             }
+            portion-per-1e9{
+                one{"{0}ppb"}
+                other{"{0}ppb"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1530,8 +1554,15 @@ fr{
                 other{"{0}ns"}
             }
             night{
+<<<<<<< HEAD
                 one{"{0}nuit"}
                 other{"{0}nuits"}
+=======
+                dnam{"nuits"}
+                one{"{0}nuit"}
+                other{"{0}nuits"}
+                per{"{0}/nuit"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 dnam{"T"}
@@ -1884,6 +1915,11 @@ fr{
             knot{
                 one{"{0} nd"}
                 other{"{0} nd"}
+            }
+            light-speed{
+                dnam{"lumière"}
+                one{"{0} lumière"}
+                other{"{0} lumière"}
             }
             meter-per-second{
                 one{"{0} m/s"}

@@ -16,6 +16,7 @@ import m from 'mithril';
 import {MenuItem} from '../../../../../widgets/menu';
 import {Form} from '../../../../../widgets/form';
 import {TextInput} from '../../../../../widgets/text_input';
+<<<<<<< HEAD
 import type {SqlValue} from '../../../../../trace_processor/query_result';
 import {
   isQuantitativeType,
@@ -25,6 +26,17 @@ import type {SqlTableState} from '../state';
 import type {TableColumn} from '../table_column';
 import {sqlValueToSqliteString} from '../../../../../trace_processor/sql_utils';
 import {type Result, errResult, okResult} from '../../../../../base/result';
+=======
+import {SqlValue} from '../../../../../trace_processor/query_result';
+import {
+  isQuantitativeType,
+  PerfettoSqlType,
+} from '../../../../../trace_processor/perfetto_sql_type';
+import {SqlTableState} from '../state';
+import {TableColumn} from '../table_column';
+import {sqlValueToSqliteString} from '../../../../../trace_processor/sql_utils';
+import {Result, errResult, okResult} from '../../../../../base/result';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 type FilterParams = {
   op: string;

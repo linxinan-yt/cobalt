@@ -152,6 +152,7 @@ ko{
                 dnam{"몰"}
                 other{"{0}몰"}
             }
+<<<<<<< HEAD
             ofglucose{
                 dnam{"포도당"}
                 other{"{0}포도당"}
@@ -159,6 +160,10 @@ ko{
             part{
                 dnam{"분율"}
                 other{"{0}분율"}
+=======
+            portion-per-1e9{
+                other{"{0}ppb"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         consumption{
@@ -261,6 +266,11 @@ ko{
                 other{"{0}나노초"}
             }
             night{
+<<<<<<< HEAD
+=======
+                dnam{"박"}
+                other{"{0}박"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 per{"1박당 {0}"}
             }
             second{
@@ -849,6 +859,7 @@ ko{
         }
     }
     unitsNarrow{
+<<<<<<< HEAD
         angle{
             steradian{
                 other{"{0}sr"}
@@ -864,6 +875,11 @@ ko{
             }
             part{
                 other{"{0}part"}
+=======
+        concentr{
+            portion-per-1e9{
+                other{"{0}ppb"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         digital{
@@ -880,6 +896,11 @@ ko{
             }
             minute{
                 per{"{0}/분"}
+            }
+            night{
+                dnam{"박"}
+                other{"{0}박"}
+                per{"{0}/박"}
             }
             second{
                 per{"{0}/초"}
@@ -1065,7 +1086,11 @@ ko{
             part-per-1e6{
                 other{"{0}ppm"}
             }
+<<<<<<< HEAD
             part-per-1e9{
+=======
+            portion-per-1e9{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0}ppb"}
             }
         }

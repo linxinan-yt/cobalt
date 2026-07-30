@@ -35,6 +35,7 @@
 #include "perfetto/ext/base/status_or.h"
 #include "perfetto/ext/base/string_view.h"
 #include "perfetto/public/compiler.h"
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/core/dataframe/query_plan.h
 #include "src/trace_processor/core/dataframe/dataframe_register_cache.h"
 #include "src/trace_processor/core/dataframe/specs.h"
 #include "src/trace_processor/core/dataframe/types.h"
@@ -47,6 +48,14 @@
 #include "src/trace_processor/core/util/slab.h"
 #include "src/trace_processor/core/util/span.h"
 #include "src/trace_processor/core/util/type_set.h"
+=======
+#include "src/trace_processor/dataframe/impl/bytecode_core.h"
+#include "src/trace_processor/dataframe/impl/bytecode_registers.h"
+#include "src/trace_processor/dataframe/impl/slab.h"
+#include "src/trace_processor/dataframe/impl/types.h"
+#include "src/trace_processor/dataframe/specs.h"
+#include "src/trace_processor/dataframe/types.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/dataframe/impl/query_plan.h
 
 namespace perfetto::trace_processor::core::dataframe {
 

@@ -183,6 +183,11 @@ fo{
                 one{"{0} promyriad"}
                 other{"{0} promyriad"}
             }
+            portion-per-1e9{
+                dnam{"partar fyri hvørja milliard"}
+                one{"{0} part fyri hvørja milliard"}
+                other{"{0} partar fyri hvørja milliard"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -968,6 +973,7 @@ fo{
                 one{"{0}mol"}
                 other{"{0}mol"}
             }
+<<<<<<< HEAD
             part-per-1e6{
                 dnam{"pt./mill."}
                 one{"{0}pt./mill"}
@@ -978,6 +984,8 @@ fo{
                 one{"{0}part/mia."}
                 other{"{0}partar/mia."}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             percent{
                 dnam{"%"}
             }
@@ -986,11 +994,27 @@ fo{
                 one{"{0}‰"}
                 other{"{0}‰"}
             }
+<<<<<<< HEAD
+=======
+            permillion{
+                dnam{"pt./mill."}
+                one{"{0}pt./mill"}
+                other{"{0}pt./mill"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             permyriad{
                 dnam{"‱"}
                 one{"{0}‱"}
                 other{"{0}‱"}
             }
+<<<<<<< HEAD
+=======
+            portion-per-1e9{
+                dnam{"partar/mia."}
+                one{"{0}part/mia."}
+                other{"{0}partar/mia."}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         consumption{
             liter-per-100-kilometer{
@@ -1610,6 +1634,11 @@ fo{
                 dnam{"promyriad"}
                 one{"{0} ‱"}
                 other{"{0} ‱"}
+            }
+            portion-per-1e9{
+                dnam{"partar/milliard"}
+                one{"{0} part/mia."}
+                other{"{0} partar/mia."}
             }
         }
         consumption{

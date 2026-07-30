@@ -626,6 +626,26 @@ de{
                 one{"{0} pro Zehntausend"}
                 other{"{0} pro Zehntausend"}
             }
+            portion-per-1e9{
+                case{
+                    accusative{
+                        one{"{0} Milliardstel"}
+                        other{"{0} Milliardstel"}
+                    }
+                    dative{
+                        one{"{0} Milliardstel"}
+                        other{"{0} Milliardsteln"}
+                    }
+                    genitive{
+                        one{"{0} Milliardstels"}
+                        other{"{0} Milliardstel"}
+                    }
+                }
+                dnam{"Milliardstel"}
+                gender{"neuter"}
+                one{"{0} Milliardstel"}
+                other{"{0} Milliardstel"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1145,6 +1165,7 @@ de{
             night{
                 case{
                     accusative{
+<<<<<<< HEAD
                         one{"{0} Nacht"}
                         other{"{0} Übernachtungen"}
                     }
@@ -1159,6 +1180,23 @@ de{
                 }
                 gender{"feminine"}
                 one{"{0} Nacht"}
+=======
+                        one{"{0} Übernachtung"}
+                        other{"{0} Übernachtungen"}
+                    }
+                    dative{
+                        one{"{0} Übernachtung"}
+                        other{"{0} Übernachtungen"}
+                    }
+                    genitive{
+                        one{"{0} Übernachtung"}
+                        other{"{0} Übernachtungen"}
+                    }
+                }
+                dnam{"Übernachtungen"}
+                gender{"feminine"}
+                one{"{0} Übernachtung"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} Übernachtungen"}
                 per{"{0} pro Übernachtung"}
             }
@@ -3674,8 +3712,15 @@ de{
                 other{"{0} M"}
             }
             night{
+<<<<<<< HEAD
                 one{"{0}Nacht"}
                 other{"{0}Nächte"}
+=======
+                dnam{"Nächte"}
+                one{"{0}Nacht"}
+                other{"{0}Nächte"}
+                per{"{0}/Nacht"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 dnam{"Q"}
@@ -4055,6 +4100,11 @@ de{
             permyriad{
                 one{"{0} ‱"}
                 other{"{0} ‱"}
+            }
+            portion-per-1e9{
+                dnam{"Milliardstel"}
+                one{"{0} Milliardstel"}
+                other{"{0} Milliardstel"}
             }
         }
         consumption{

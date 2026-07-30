@@ -255,6 +255,12 @@ es{
                 one{"{0} por diez mil"}
                 other{"{0} por diez mil"}
             }
+            portion-per-1e9{
+                dnam{"partes por millardo"}
+                gender{"feminine"}
+                one{"{0} parte por millardo"}
+                other{"{0} partes por millardo"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -419,7 +425,14 @@ es{
                 other{"{0} nanosegundos"}
             }
             night{
+<<<<<<< HEAD
                 gender{"feminine"}
+=======
+                dnam{"noches"}
+                gender{"feminine"}
+                one{"{0} noche"}
+                other{"{0} noches"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 per{"{0} por noche"}
             }
             quarter{
@@ -1051,7 +1064,14 @@ es{
                 other{"{0} nudos"}
             }
             light-speed{
+<<<<<<< HEAD
                 gender{"feminine"}
+=======
+                dnam{"luz"}
+                gender{"feminine"}
+                one{"{0} luz"}
+                other{"{0} luz"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             meter-per-second{
                 dnam{"metros por segundo"}
@@ -1441,6 +1461,10 @@ es{
                 one{"{0}‱"}
                 other{"{0}‱"}
             }
+            portion-per-1e9{
+                one{"{0}ppb"}
+                other{"{0}ppb"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1557,8 +1581,15 @@ es{
                 other{"{0}ns"}
             }
             night{
+<<<<<<< HEAD
                 one{"{0}noche"}
                 other{"{0}noches"}
+=======
+                dnam{"noches"}
+                one{"{0}noche"}
+                other{"{0}noches"}
+                per{"{0}/noche"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 dnam{"trim"}
@@ -1966,6 +1997,10 @@ es{
                 other{"{0}kn"}
             }
             light-speed{
+<<<<<<< HEAD
+=======
+                dnam{"luz"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0}luz"}
                 other{"{0}luz"}
             }
@@ -2211,6 +2246,9 @@ es{
                 one{"{0} ‱"}
                 other{"{0} ‱"}
             }
+            portion-per-1e9{
+                dnam{"partes/millardo"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -2448,6 +2486,13 @@ es{
                 dnam{"de Hg"}
                 one{"{0} de Hg"}
                 other{"{0} de Hg"}
+            }
+        }
+        speed{
+            light-speed{
+                dnam{"luz"}
+                one{"{0} luz"}
+                other{"{0} luz"}
             }
         }
         speed{

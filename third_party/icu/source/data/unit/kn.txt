@@ -642,6 +642,30 @@ kn{
                 one{"{0} ಪರ್‌ಮಿರಿಯಾಡ್"}
                 other{"{0} ಪರ್‌ಮಿರಿಯಾಡ್‌"}
             }
+            portion-per-1e9{
+                case{
+                    accusative{
+                        one{"{0} ಪಾರ್ಟ್ಸ್ ಪರ್ ಬಿಲಿಯನ್ ಅನ್ನು"}
+                        other{"{0} ಪಾರ್ಟ್ಸ್ ಪರ್ ಬಿಲಿಯನ್ ಅನ್ನು"}
+                    }
+                    dative{
+                        one{"{0} ಪಾರ್ಟ್ಸ್ ಪರ್ ಬಿಲಿಯನ್‌ಗೆ"}
+                        other{"{0} ಪಾರ್ಟ್ಸ್ ಪರ್ ಬಿಲಿಯನ್‌ಗೆ"}
+                    }
+                    genitive{
+                        one{"{0} ಪಾರ್ಟ್ಸ್ ಪರ್ ಬಿಲಿಯನ್‌ನ"}
+                        other{"{0} ಪಾರ್ಟ್ಸ್ ಪರ್ ಬಿಲಿಯನ್‌ನ"}
+                    }
+                    locative{
+                        one{"{0} ಪಾರ್ಟ್ಸ್ ಪರ್ ಬಿಲಿಯನ್‌ನಲ್ಲಿ"}
+                        other{"{0} ಪಾರ್ಟ್ಸ್ ಪರ್ ಬಿಲಿಯನ್‌ನಲ್ಲಿ"}
+                    }
+                }
+                dnam{"ಪಾರ್ಟ್ಸ್ ಪರ್ ಬಿಲಿಯನ್"}
+                gender{"neuter"}
+                one{"{0} ಪಾರ್ಟ್ಸ್ ಪರ್ ಬಿಲಿಯನ್"}
+                other{"{0} ಪಾರ್ಟ್ಸ್ ಪರ್ ಬಿಲಿಯನ್"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -2732,6 +2756,7 @@ kn{
             millimeter-ofhg{
                 case{
                     accusative{
+<<<<<<< HEAD
                         one{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌ ಅನ್ನು"}
                         other{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌‌ಗಳನ್ನು"}
                     }
@@ -2746,6 +2771,22 @@ kn{
                     locative{
                         one{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌‌ನಲ್ಲಿ"}
                         other{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌‌ಗಳಲ್ಲಿ"}
+=======
+                        one{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌"}
+                        other{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌ಗಳು"}
+                    }
+                    dative{
+                        one{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌"}
+                        other{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌ಗಳು"}
+                    }
+                    genitive{
+                        one{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌"}
+                        other{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌ಗಳು"}
+                    }
+                    locative{
+                        one{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌"}
+                        other{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌ಗಳು"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     }
                 }
                 dnam{"ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌ಗಳು"}
@@ -2842,6 +2883,10 @@ kn{
                         other{"{0} ಲೈಟ್‌ನಲ್ಲಿ"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"ಲೈಟ್"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 gender{"neuter"}
                 one{"{0} ಲೈಟ್"}
                 other{"{0} ಲೈಟ್"}
@@ -3620,6 +3665,12 @@ kn{
             }
             night{
                 dnam{"ರಾತ್ರಿಗಳು"}
+<<<<<<< HEAD
+=======
+                one{"{0} ರಾತ್ರಿಯು"}
+                other{"{0} ರಾತ್ರಿಗಳು"}
+                per{"{0}/ರಾತ್ರಿಗೆ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 one{"{0} ತ್ರೈ"}
@@ -4006,6 +4057,11 @@ kn{
                 one{"{0}ನಾ"}
                 other{"{0}ನಾ"}
             }
+            light-speed{
+                dnam{"ಲೈಟ್"}
+                one{"{0} ಲೈಟ್"}
+                other{"{0} ಲೈಟ್"}
+            }
             meter-per-second{
                 one{"{0}ಮೀ/ಸೆ."}
                 other{"{0}ಮೀ/ಸೆ."}
@@ -4327,6 +4383,9 @@ kn{
             }
             permyriad{
                 dnam{"ಪರ್ಮಿರೈಡ್"}
+            }
+            portion-per-1e9{
+                dnam{"ಪಾರ್ಟ್ಸ್/ಬಿಲಿಯನ್"}
             }
         }
         consumption{
@@ -4713,6 +4772,11 @@ kn{
             }
             mile-scandinavian{
                 dnam{"ಸ್ಕ್ಯಾಂ.ಮೈ"}
+<<<<<<< HEAD
+=======
+                one{"{0} smi"}
+                other{"{0} smi"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             millimeter{
                 dnam{"ಮಿಮೀ"}

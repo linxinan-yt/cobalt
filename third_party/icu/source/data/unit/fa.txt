@@ -129,6 +129,11 @@ fa{
                 one{"{0} ده‌هزارم"}
                 other{"{0} ده‌هزارم"}
             }
+            portion-per-1e9{
+                dnam{"بخش در بیلیون"}
+                one{"{0} بخش در بیلیون"}
+                other{"{0} بخش در بیلیون"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -205,6 +210,12 @@ fa{
                 per{"{0} در ماه"}
             }
             night{
+<<<<<<< HEAD
+=======
+                dnam{"شب"}
+                one{"{0} شب"}
+                other{"{0} شب"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 per{"{0} در شب"}
             }
             quarter{
@@ -735,12 +746,17 @@ fa{
                 one{"{0}ppm"}
                 other{"{0}ppm"}
             }
+<<<<<<< HEAD
             part-per-1e9{
                 one{"{0}ppb"}
                 other{"{0}ppb"}
             }
             percent{
                 dnam{"٪"}
+=======
+            portion-per-1e9{
+                dnam{"بخش در بیلیون"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         consumption{
@@ -813,6 +829,12 @@ fa{
                 one{"{0}ns"}
                 other{"{0}ns"}
             }
+            night{
+                dnam{"شب"}
+                one{"{0} شب"}
+                other{"{0} شب"}
+                per{"{0}/شب"}
+            }
             quarter{
                 one{"{0}سه‌ماه"}
                 other{"{0}سه‌ماه"}
@@ -829,12 +851,15 @@ fa{
                 one{"{0}A"}
                 other{"{0}A"}
             }
+<<<<<<< HEAD
             coulomb{
                 dnam{"کولن"}
             }
             henry{
                 dnam{"هنری"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             milliampere{
                 dnam{"mA"}
                 one{"{0}mA"}
@@ -860,9 +885,12 @@ fa{
                 one{"{0}cal"}
                 other{"{0}cal"}
             }
+<<<<<<< HEAD
             calorie-it{
                 dnam{"کالری-IT"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             electronvolt{
                 dnam{"eV"}
                 one{"{0}eV"}
@@ -873,9 +901,12 @@ fa{
                 one{"{0}Cal"}
                 other{"{0}Cal"}
             }
+<<<<<<< HEAD
             gray{
                 dnam{"گری"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             joule{
                 one{"{0}J"}
                 other{"{0}J"}
@@ -1210,11 +1241,14 @@ fa{
                 dnam{"kn"}
                 one{"{0}kn"}
                 other{"{0}kn"}
+<<<<<<< HEAD
             }
             light-speed{
                 dnam{"نور"}
                 one{"{0}نوری"}
                 other{"{0}نوری"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             meter-per-second{
                 dnam{"m/s"}
@@ -1336,6 +1370,13 @@ fa{
                 dnam{"qt Imp"}
                 one{"{0}qt-Imp."}
                 other{"{0}qt-Imp."}
+<<<<<<< HEAD
+=======
+            }
+            tablespoon{
+                one{"{0} ق.غ.خ"}
+                other{"{0} ق.غ.خ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             teaspoon{
                 dnam{"ق.چ.خ"}
@@ -1551,6 +1592,9 @@ fa{
             }
             permyriad{
                 dnam{"ده‌هزارم"}
+            }
+            portion-per-1e9{
+                dnam{"بخش در بیلیون"}
             }
         }
         consumption{

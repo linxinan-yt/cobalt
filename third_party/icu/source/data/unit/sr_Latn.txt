@@ -538,6 +538,30 @@ sr_Latn{
             permyriad{
                 gender{"inanimate"}
             }
+            portion-per-1e9{
+                case{
+                    accusative{
+                        few{"{0} dela na milijardu"}
+                        one{"{0} deo na milijardu"}
+                        other{"{0} delova na milijardu"}
+                    }
+                    genitive{
+                        few{"{0} dela na milijardu"}
+                        one{"{0} dela na milijardu"}
+                        other{"{0} delova na milijardu"}
+                    }
+                    instrumental{
+                        few{"{0} dela na milijardu"}
+                        one{"{0} delom na milijardu"}
+                        other{"{0} delova na milijardu"}
+                    }
+                }
+                dnam{"delovi na milijardu"}
+                few{"{0} dela na milijardu"}
+                gender{"inanimate"}
+                one{"{0} deo na milijardu"}
+                other{"{0} delova na milijardu"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -593,6 +617,13 @@ sr_Latn{
         }
         coordinate{
             dnam{"strana sveta"}
+<<<<<<< HEAD
+=======
+            east{"{0} E"}
+            north{"{0} N"}
+            south{"{0} S"}
+            west{"{0} W"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         digital{
             bit{
@@ -995,6 +1026,14 @@ sr_Latn{
             }
             night{
                 case{
+<<<<<<< HEAD
+=======
+                    accusative{
+                        few{"{0} noći"}
+                        one{"{0} noć"}
+                        other{"{0} noći"}
+                    }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     genitive{
                         few{"{0} noći"}
                         one{"{0} noći"}
@@ -1006,7 +1045,16 @@ sr_Latn{
                         other{"{0} noći"}
                     }
                 }
+<<<<<<< HEAD
                 gender{"feminine"}
+=======
+                dnam{"noć"}
+                few{"{0} noći"}
+                gender{"feminine"}
+                one{"{0} noć"}
+                other{"{0} noći"}
+                per{"{0}/noć"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 case{
@@ -1363,6 +1411,14 @@ sr_Latn{
             }
             kilowatt-hour-per-100-kilometer{
                 case{
+<<<<<<< HEAD
+=======
+                    accusative{
+                        few{"{0} kilovat-sata na 100 kilometara"}
+                        one{"{0} kilovat-sat na 100 kilometara"}
+                        other{"{0} kilovat-sati na 100 kilometara"}
+                    }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     genitive{
                         few{"{0} kilovat-sata na 100 kilometara"}
                         one{"{0} kilovat-sata na 100 kilometara"}
@@ -1812,6 +1868,10 @@ sr_Latn{
                         other{"{0} tipografskih tačaka"}
                     }
                 }
+<<<<<<< HEAD
+=======
+                dnam{"tipografske tačke"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 few{"{0} tipografske tačke"}
                 gender{"feminine"}
                 one{"{0} tipografska tačka"}
@@ -2407,6 +2467,14 @@ sr_Latn{
             }
             light-speed{
                 case{
+<<<<<<< HEAD
+=======
+                    accusative{
+                        few{"{0} svetla"}
+                        one{"{0} svetlo"}
+                        other{"{0} svetala"}
+                    }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     genitive{
                         few{"{0} svetla"}
                         one{"{0} svetla"}
@@ -2418,7 +2486,15 @@ sr_Latn{
                         other{"{0} svetala"}
                     }
                 }
+<<<<<<< HEAD
                 gender{"neuter"}
+=======
+                dnam{"svetlo"}
+                few{"{0} svetla"}
+                gender{"neuter"}
+                one{"{0} svetlo"}
+                other{"{0} svetala"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             meter-per-second{
                 case{
@@ -2926,6 +3002,13 @@ sr_Latn{
                 one{"{0} m"}
                 other{"{0} m"}
             }
+            night{
+                dnam{"noć"}
+                few{"{0} noći"}
+                one{"{0} noć"}
+                other{"{0} noći"}
+                per{"{0}/noć"}
+            }
             quarter{
                 few{"{0} k"}
                 one{"{0} k"}
@@ -3003,10 +3086,18 @@ sr_Latn{
             }
         }
         speed{
+<<<<<<< HEAD
             beaufort{
                 few{"B {0}"}
                 one{"B {0}"}
                 other{"B {0}"}
+=======
+            light-speed{
+                dnam{"svetlo"}
+                few{"{0} svetla"}
+                one{"{0} svetlo"}
+                other{"{0} svetala"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         volume{
@@ -3107,6 +3198,9 @@ sr_Latn{
             }
             permille{
                 dnam{"promil"}
+            }
+            portion-per-1e9{
+                dnam{"delovi/milijarda"}
             }
         }
         consumption{

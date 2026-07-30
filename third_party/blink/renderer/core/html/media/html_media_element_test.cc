@@ -51,6 +51,12 @@
 #include "third_party/blink/renderer/platform/wtf/vector.h"
 #include "ui/gfx/geometry/size.h"
 
+#if BUILDFLAG(USE_STARBOARD_MEDIA)
+#include "base/test/scoped_feature_list.h"
+#include "third_party/blink/renderer/platform/network/mime/content_type.h"
+#include "third_party/blink/renderer/platform/network/mime/mime_type_registry.h"
+#endif  // BUILDFLAG(USE_STARBOARD_MEDIA)
+
 using ::testing::_;
 using ::testing::AnyNumber;
 using ::testing::NanSensitiveDoubleEq;
@@ -3139,6 +3145,7 @@ TEST_P(HTMLMediaElementTest, StartVideoWithDoubleTrackSelection) {
   }
 }
 
+<<<<<<< HEAD
 // crbug.com/497011407. AddTrack() crashed by invalid UTF-8.
 TEST_P(HTMLMediaElementTest, AddTrackCrash) {
   auto* element = Media();
@@ -3433,5 +3440,32 @@ TEST_P(HTMLMediaElementTest, MediaShouldBeOpaque_NetworkState) {
   SetNetworkState(WebMediaPlayer::kNetworkStateIdle);
   EXPECT_TRUE(MediaShouldBeOpaque());
 }
+=======
+#if BUILDFLAG(USE_STARBOARD_MEDIA)
+TEST(HTMLMediaElementTest, RejectsCobaltProgressiveSupportQueries) {
+  const ContentType progressive_type(
+      "video/mp4; codecs=\"avc1.42001E, mp4a.40.2\"");
+  const ContentType progressive_type_missing_whitespace(
+      "video/mp4; codecs=\"avc1.42001E,mp4a.40.2\"");
+  const ContentType adaptive_video_type(
+      "video/mp4; codecs=\"avc1.4d4015\"; framerate=30");
+  const ContentType adaptive_audio_type(
+      "audio/mp4; codecs=\"mp4a.40.2\"; channels=2");
+
+  EXPECT_EQ(HTMLMediaElement::GetSupportsType(progressive_type),
+              MIMETypeRegistry::kNotSupported);
+    // Reject progressive content types when the "codecs" parameter lacks
+    // whitespace.
+    EXPECT_EQ(
+        HTMLMediaElement::GetSupportsType(progressive_type_missing_whitespace),
+        MIMETypeRegistry::kNotSupported);
+    // Continue to support adaptive content types.
+    EXPECT_NE(HTMLMediaElement::GetSupportsType(adaptive_video_type),
+              MIMETypeRegistry::kNotSupported);
+    EXPECT_NE(HTMLMediaElement::GetSupportsType(adaptive_audio_type),
+              MIMETypeRegistry::kNotSupported);
+}
+#endif  // BUILDFLAG(USE_STARBOARD_MEDIA)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 }  // namespace blink

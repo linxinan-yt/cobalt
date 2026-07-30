@@ -76,6 +76,7 @@ $box-shadow-3: 0px 8px 16px var(--pf-color-box-shadow);
 
 @mixin focus {
   outline: 2px solid var(--pf-color-accent);
+<<<<<<< HEAD
 }
 
 @mixin transition($time: 0.1s) {
@@ -99,4 +100,6 @@ $box-shadow-3: 0px 8px 16px var(--pf-color-box-shadow);
   @include icon;
   @include hidden-while-fonts-loading;
   content: $content;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }

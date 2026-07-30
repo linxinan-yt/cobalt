@@ -39,6 +39,7 @@
 #include "base/task/sequence_manager/thread_controller_power_monitor.h"
 #endif
 
+
 namespace base::features {
 
 namespace {
@@ -53,6 +54,46 @@ std::atomic_bool g_is_reduce_ppms_enabled{false};
 
 // Alphabetical:
 
+<<<<<<< HEAD
+=======
+// When enabled, the compositor threads (including GPU) will be boosted to
+// kInteractive when not in input or loading scenarios.
+BASE_FEATURE(kBoostCompositorThreadsPriorityWhenIdle,
+             FEATURE_DISABLED_BY_DEFAULT);
+
+#if BUILDFLAG(IS_COBALT)
+BASE_FEATURE(kCobaltEnableModerateMemoryPressure,
+             "CobaltEnableModerateMemoryPressure",
+             FEATURE_DISABLED_BY_DEFAULT);
+
+BASE_FEATURE(kCobaltMemoryPressureCooldown,
+             "CobaltMemoryPressureCooldown",
+             FEATURE_DISABLED_BY_DEFAULT);
+
+BASE_FEATURE_PARAM(int,
+                   kCobaltMemoryPressureCooldownSeconds,
+                   &kCobaltMemoryPressureCooldown,
+                   "cooldown-seconds",
+                   60);
+
+// When enabled, image transfer cache entries bypass serialization and transfer
+// images directly to the GPU service thread in-process.
+BASE_FEATURE(kCobaltInProcessImageTransferCache,
+             "CobaltInProcessImageTransferCache",
+             FEATURE_DISABLED_BY_DEFAULT);
+
+BASE_FEATURE(kCobaltCCImageCacheLimitItems,
+             "CobaltCCImageCacheLimitItems",
+             FEATURE_DISABLED_BY_DEFAULT);
+
+BASE_FEATURE_PARAM(int,
+                   kCobaltCCImageCacheLimitItemsCount,
+                   &kCobaltCCImageCacheLimitItems,
+                   "cc_image_cache_limit_items",
+                   0);
+#endif  // BUILDFLAG(IS_COBALT)
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 // Controls caching within BASE_FEATURE_PARAM(). This is feature-controlled
 // so that ScopedFeatureList can disable it to turn off caching.
 BASE_FEATURE(kFeatureParamWithCache, FEATURE_ENABLED_BY_DEFAULT);

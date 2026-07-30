@@ -4,8 +4,14 @@
 
 package org.jni_zero;
 
+<<<<<<< HEAD
 public class TinySample {
     @NativeMethods
+=======
+
+public class TinySample {
+    @NativeMethods()
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     interface Natives {
         void foo(Object a, int b);
 

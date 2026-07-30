@@ -1227,8 +1227,11 @@ th{
         XXX{
             other{"(ไม่ทราบชื่อสกุลเงิน)"}
         }
+<<<<<<< HEAD
         ZWG{
             other{"ทองซิมบับเว"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

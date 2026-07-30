@@ -331,6 +331,14 @@ class U_I18N_API_CLASS MeasureUnitImpl : public UMemory {
      */
     uint64_t constantDenominator = 0;
 
+    /**
+     * Represents the unit constant denominator.
+     *
+     * NOTE:
+     *   if set to 0, it means that the constant is not set.
+     */
+    uint64_t constantDenominator = 0;
+
     // For calling serialize
     // TODO(icu-units#147): revisit serialization
     friend class number::impl::LongNameHandler;
@@ -348,6 +356,24 @@ struct MeasureUnitImplWithIndex : public UMemory {
     }
 };
 
+<<<<<<< HEAD
+=======
+// Export explicit template instantiations of MaybeStackArray, MemoryPool and
+// MaybeStackVector. This is required when building DLLs for Windows. (See
+// datefmt.h, collationiterator.h, erarules.h and others for similar examples.)
+#if U_PF_WINDOWS <= U_PLATFORM && U_PLATFORM <= U_PF_CYGWIN
+template class U_I18N_API MaybeStackArray<MeasureUnitImplWithIndex *, 8>;
+template class U_I18N_API MemoryPool<MeasureUnitImplWithIndex, 8>;
+template class U_I18N_API MaybeStackVector<MeasureUnitImplWithIndex, 8>;
+
+// Export an explicit template instantiation of the LocalPointer that is used as a
+// data member of MeasureUnitImpl.
+// (When building DLLs for Windows this is required.)
+template class U_I18N_API LocalPointerBase<MeasureUnitImpl>;
+template class U_I18N_API LocalPointer<MeasureUnitImpl>;
+#endif
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 U_NAMESPACE_END
 
 #endif /* #if !UCONFIG_NO_FORMATTING */

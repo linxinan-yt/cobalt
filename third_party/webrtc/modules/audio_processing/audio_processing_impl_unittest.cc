@@ -1047,7 +1047,11 @@ TEST(AudioProcessingImplTest, DoesNotFailProcessReverseStreamAfterApplyConfig) {
   StreamConfig stream_config(kSampleRateHz, kNumChannels);
 
   scoped_refptr<AudioProcessing> apm =
+<<<<<<< HEAD
       BuiltinAudioProcessingBuilder().Build(CreateTestEnvironment());
+=======
+      BuiltinAudioProcessingBuilder().Build(CreateEnvironment());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   apm->Initialize({{
       StreamConfig(16000, /*num_channels=*/1),
       StreamConfig(16000, /*num_channels=*/1),

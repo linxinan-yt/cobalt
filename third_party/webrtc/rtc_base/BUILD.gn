@@ -495,6 +495,12 @@ rtc_library("platform_thread") {
   deps = [
     ":checks",
     ":platform_thread_types",
+<<<<<<< HEAD
+=======
+    ":rtc_event",
+    ":timeutils",
+    "../api:sequence_checker",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     "//third_party/abseil-cpp/absl/functional:any_invocable",
     "//third_party/abseil-cpp/absl/strings:string_view",
   ]
@@ -1780,8 +1786,13 @@ rtc_library("ssl_adapter") {
     "//third_party/abseil-cpp/absl/base:nullability",
     "//third_party/abseil-cpp/absl/functional:any_invocable",
     "//third_party/abseil-cpp/absl/memory",
+<<<<<<< HEAD
     "//third_party/abseil-cpp/absl/strings:str_format",
     "//third_party/abseil-cpp/absl/strings:string_view",
+=======
+    "//third_party/abseil-cpp/absl/strings",
+    "//third_party/abseil-cpp/absl/strings:str_format",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   ]
 
   # If we are building the SSL library ourselves, we know it's BoringSSL.
@@ -1807,6 +1818,11 @@ rtc_library("testclient") {
     ":buffer",
     ":socket",
     ":socket_address",
+<<<<<<< HEAD
+=======
+    ":threading",
+    ":timeutils",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     "../api/transport:ecn_marking",
     "../api/units:time_delta",
     "../api/units:timestamp",
@@ -2082,6 +2098,7 @@ if (rtc_include_tests) {
         "../api/units:timestamp",
         "../test:create_test_environment",
         "../test:fileutils",
+<<<<<<< HEAD
         "../test:test_support",
         "system:file_wrapper",
         "//third_party/abseil-cpp/absl/strings:string_view",
@@ -2117,6 +2134,10 @@ if (rtc_include_tests) {
         ":threading",
         "../api:rtc_error_matchers",
         "../test:run_loop",
+=======
+        "../test:near_matcher",
+        "../test:test_main",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "../test:test_support",
         "../test:wait_until",
       ]
@@ -2238,7 +2259,10 @@ if (rtc_include_tests) {
         "../api:scoped_refptr",
         "../api/environment",
         "../api/numerics",
+<<<<<<< HEAD
         "../api/task_queue",
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "../api/transport:ecn_marking",
         "../api/units:data_rate",
         "../api/units:data_size",

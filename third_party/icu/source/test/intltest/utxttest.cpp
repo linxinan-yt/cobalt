@@ -1594,6 +1594,7 @@ void UTextTest::Ticket13344() {
 
     assertSuccess("UTextTest::Ticket13344-status", status);
     UTEXT_SETNATIVEINDEX(ut.getAlias(), 3);
+<<<<<<< HEAD
     assertEquals("UTextTest::Ticket13344-lead", 3, utext_getNativeIndex(ut.getAlias()));
     UTEXT_SETNATIVEINDEX(ut.getAlias(), 4);
     assertEquals("UTextTest::Ticket13344-trail", 3, utext_getNativeIndex(ut.getAlias()));
@@ -1606,6 +1607,20 @@ void UTextTest::Ticket13344() {
     assertEquals("UTextTest::Ticket13344-trail-2", 3, utext_getNativeIndex(ut.getAlias()));
     utext_setNativeIndex(ut.getAlias(), 5);
     assertEquals("UTextTest::Ticket13344-bmp-2", 5, utext_getNativeIndex(ut.getAlias()));
+=======
+    assertEquals("UTextTest::Ticket13344-lead", static_cast<int64_t>(3), utext_getNativeIndex(ut.getAlias()));
+    UTEXT_SETNATIVEINDEX(ut.getAlias(), 4);
+    assertEquals("UTextTest::Ticket13344-trail", static_cast<int64_t>(3), utext_getNativeIndex(ut.getAlias()));
+    UTEXT_SETNATIVEINDEX(ut.getAlias(), 5);
+    assertEquals("UTextTest::Ticket13344-bmp", static_cast<int64_t>(5), utext_getNativeIndex(ut.getAlias()));
+
+    utext_setNativeIndex(ut.getAlias(), 3);
+    assertEquals("UTextTest::Ticket13344-lead-2", static_cast<int64_t>(3), utext_getNativeIndex(ut.getAlias()));
+    utext_setNativeIndex(ut.getAlias(), 4);
+    assertEquals("UTextTest::Ticket13344-trail-2", static_cast<int64_t>(3), utext_getNativeIndex(ut.getAlias()));
+    utext_setNativeIndex(ut.getAlias(), 5);
+    assertEquals("UTextTest::Ticket13344-bmp-2", static_cast<int64_t>(5), utext_getNativeIndex(ut.getAlias()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 // ICU-21653 UText does not handle access callback that changes chunk size

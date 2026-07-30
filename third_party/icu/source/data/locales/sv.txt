@@ -1732,7 +1732,10 @@ sv{
             }
         }
         month-narrow{
+<<<<<<< HEAD
             dn{"m"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             relativeTime{
                 future{
                     one{"+{0} mån."}

@@ -306,12 +306,16 @@ static size_t SkipFlags(const std::string& fmt, size_t ix) {
   return ix;
 }
 
+<<<<<<< HEAD
 // Skips over a field width or precision specifier. If the specifier is the '*'
 // wildcard, sets `*is_star` to true: such specifiers consume an extra integer
 // argument from the payload that must be resolved at detokenization time.
 static size_t SkipAsteriskOrInteger(const std::string& fmt,
                                     size_t ix,
                                     bool* is_star) {
+=======
+static size_t SkipAsteriskOrInteger(const std::string& fmt, size_t ix) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   if (fmt[ix] == '*') {
     *is_star = true;
     return ix + 1;

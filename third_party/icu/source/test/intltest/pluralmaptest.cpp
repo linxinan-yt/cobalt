@@ -56,6 +56,7 @@ void PluralMapTest::runIndexedTest(int32_t index, UBool exec, const char* &name,
 }
 
 void PluralMapTest::TestToCategory() {
+<<<<<<< HEAD
     assertEquals("", PluralMapBase::OTHER, PluralMapBase::toCategory("other"));
     assertEquals("", PluralMapBase::ZERO, PluralMapBase::toCategory("zero"));
     assertEquals("", PluralMapBase::ONE, PluralMapBase::toCategory("one"));
@@ -66,6 +67,27 @@ void PluralMapTest::TestToCategory() {
     assertEquals("", PluralMapBase::FEW, PluralMapBase::toCategory(UnicodeString("few")));
     assertEquals("", PluralMapBase::MANY, PluralMapBase::toCategory(UnicodeString("many")));
     assertEquals("", PluralMapBase::NONE, PluralMapBase::toCategory(UnicodeString("Many")));
+=======
+    assertEquals("", static_cast<int32_t>(PluralMapBase::OTHER), PluralMapBase::toCategory("other"));
+    assertEquals("", static_cast<int32_t>(PluralMapBase::ZERO), PluralMapBase::toCategory("zero"));
+    assertEquals("", static_cast<int32_t>(PluralMapBase::ONE), PluralMapBase::toCategory("one"));
+    assertEquals("", static_cast<int32_t>(PluralMapBase::TWO), PluralMapBase::toCategory("two"));
+    assertEquals("", static_cast<int32_t>(PluralMapBase::FEW), PluralMapBase::toCategory("few"));
+    assertEquals("", static_cast<int32_t>(PluralMapBase::MANY), PluralMapBase::toCategory("many"));
+    assertEquals("", static_cast<int32_t>(PluralMapBase::NONE), PluralMapBase::toCategory("Many"));
+    assertEquals(
+            "",
+            static_cast<int32_t>(PluralMapBase::FEW),
+            PluralMapBase::toCategory(UnicodeString("few")));
+    assertEquals(
+            "",
+            static_cast<int32_t>(PluralMapBase::MANY),
+            PluralMapBase::toCategory(UnicodeString("many")));
+    assertEquals(
+            "",
+            static_cast<int32_t>(PluralMapBase::NONE),
+            PluralMapBase::toCategory(UnicodeString("Many")));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 void PluralMapTest::TestGetCategoryName() {
@@ -108,6 +130,7 @@ void PluralMapTest::TestIterate() {
     PluralMapBase::Category index = PluralMapBase::NONE;
     const UnicodeString *current = map.next(index);
     assertEquals("", "pickles", *current);
+<<<<<<< HEAD
     assertEquals("", PluralMapBase::OTHER, index);
     current = map.next(index);
     assertEquals("", "pickle", *current);
@@ -117,15 +140,32 @@ void PluralMapTest::TestIterate() {
     assertEquals("", PluralMapBase::FEW, index);
     current = map.next(index);
     assertEquals("", PluralMapBase::CATEGORY_COUNT, index);
+=======
+    assertEquals("", static_cast<int32_t>(PluralMapBase::OTHER), index);
+    current = map.next(index);
+    assertEquals("", "pickle", *current);
+    assertEquals("", static_cast<int32_t>(PluralMapBase::ONE), index);
+    current = map.next(index);
+    assertEquals("", "picklefew", *current);
+    assertEquals("", static_cast<int32_t>(PluralMapBase::FEW), index);
+    current = map.next(index);
+    assertEquals("", static_cast<int32_t>(PluralMapBase::CATEGORY_COUNT), index);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     assertTrue("", current == nullptr);
 
     PluralMapForPluralMapTest map2;
     index = PluralMapBase::NONE;
     current = map2.next(index);
     assertEquals("", "", *current);
+<<<<<<< HEAD
     assertEquals("", PluralMapBase::OTHER, index);
     current = map2.next(index);
     assertEquals("", PluralMapBase::CATEGORY_COUNT, index);
+=======
+    assertEquals("", static_cast<int32_t>(PluralMapBase::OTHER), index);
+    current = map2.next(index);
+    assertEquals("", static_cast<int32_t>(PluralMapBase::CATEGORY_COUNT), index);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     assertTrue("", current == nullptr);
 }
 

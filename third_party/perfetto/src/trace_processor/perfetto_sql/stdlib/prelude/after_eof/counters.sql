@@ -20,10 +20,15 @@
 -- performance metrics collected across CPUs, processes, threads, GPUs,
 -- and other contexts.
 
+<<<<<<< HEAD
 INCLUDE PERFETTO MODULE prelude.after_eof.views;
 
 -- Tracks containing counter-like events.
 CREATE PERFETTO VIEW counter_track(
+=======
+-- Tracks containing counter-like events.
+CREATE PERFETTO VIEW counter_track (
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- Unique identifier for this cpu counter track.
   id ID(track.id),
   -- Name of the track.
@@ -45,18 +50,31 @@ CREATE PERFETTO VIEW counter_track(
   -- the trace. For example: whether this track orginated from atrace, Chrome
   -- tracepoints etc.
   source_arg_set_id ARGSETID,
+<<<<<<< HEAD
   -- Machine identifier
   machine_id JOINID(machine.id),
+=======
+  -- Machine identifier, non-null for tracks on a remote machine.
+  machine_id LONG,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- The units of the counter. This column is rarely filled.
   unit STRING,
   -- The description for this track. For debugging purposes only.
   description STRING
+<<<<<<< HEAD
 )
 AS
 SELECT
   id,
   name,
   parent_id,
+=======
+) AS
+SELECT
+  id,
+  name,
+  NULL AS parent_id,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   type,
   dimension_arg_set_id,
   source_arg_set_id,
@@ -68,7 +86,11 @@ WHERE
   event_type = 'counter';
 
 -- Tracks containing counter-like events associated to a CPU.
+<<<<<<< HEAD
 CREATE PERFETTO TABLE cpu_counter_track(
+=======
+CREATE PERFETTO TABLE cpu_counter_track (
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- Unique identifier for this cpu counter track.
   id ID(track.id),
   -- Name of the track.
@@ -87,16 +109,25 @@ CREATE PERFETTO TABLE cpu_counter_track(
   -- the trace. For example: whether this track orginated from atrace, Chrome
   -- tracepoints etc.
   source_arg_set_id ARGSETID,
+<<<<<<< HEAD
   -- Machine identifier
   machine_id JOINID(machine.id),
+=======
+  -- Machine identifier, non-null for tracks on a remote machine.
+  machine_id LONG,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- The units of the counter. This column is rarely filled.
   unit STRING,
   -- The description for this track. For debugging purposes only.
   description STRING,
   -- The CPU that the track is associated with.
   cpu LONG
+<<<<<<< HEAD
 )
 AS
+=======
+) AS
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 SELECT
   ct.id,
   ct.name,
@@ -114,7 +145,11 @@ WHERE
   args.key = 'cpu';
 
 -- Tracks containing counter-like events associated to a GPU.
+<<<<<<< HEAD
 CREATE PERFETTO TABLE gpu_counter_track(
+=======
+CREATE PERFETTO TABLE gpu_counter_track (
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- Unique identifier for this gpu counter track.
   id ID(track.id),
   -- Name of the track.
@@ -133,18 +168,29 @@ CREATE PERFETTO TABLE gpu_counter_track(
   -- the trace. For example: whether this track orginated from atrace, Chrome
   -- tracepoints etc.
   source_arg_set_id ARGSETID,
+<<<<<<< HEAD
   -- Machine identifier
   machine_id JOINID(machine.id),
+=======
+  -- Machine identifier, non-null for tracks on a remote machine.
+  machine_id LONG,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- The units of the counter. This column is rarely filled.
   unit STRING,
   -- The description for this track. For debugging purposes only.
   description STRING,
+<<<<<<< HEAD
   -- The unique GPU identifier (ugpu) from the gpu table.
   ugpu LONG,
   -- The raw GPU number.
   gpu_id LONG
 )
 AS
+=======
+  -- The GPU that the track is associated with.
+  gpu_id LONG
+) AS
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 SELECT
   ct.id,
   ct.name,
@@ -154,16 +200,27 @@ SELECT
   ct.machine_id,
   ct.unit,
   ct.description,
+<<<<<<< HEAD
   extract_arg(ct.dimension_arg_set_id, 'ugpu') AS ugpu,
   extract_arg(ct.dimension_arg_set_id, 'gpu') AS gpu_id
+=======
+  args.int_value AS gpu_id
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 FROM counter_track AS ct
 JOIN args
   ON ct.dimension_arg_set_id = args.arg_set_id
 WHERE
+<<<<<<< HEAD
   args.key = 'ugpu';
 
 -- Tracks containing counter-like events associated to a process.
 CREATE PERFETTO TABLE process_counter_track(
+=======
+  args.key = 'gpu';
+
+-- Tracks containing counter-like events associated to a process.
+CREATE PERFETTO TABLE process_counter_track (
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- Unique identifier for this process counter track.
   id ID(track.id),
   -- Name of the track.
@@ -182,16 +239,25 @@ CREATE PERFETTO TABLE process_counter_track(
   -- the trace. For example: whether this track orginated from atrace, Chrome
   -- tracepoints etc.
   source_arg_set_id ARGSETID,
+<<<<<<< HEAD
   -- Machine identifier
   machine_id JOINID(machine.id),
+=======
+  -- Machine identifier, non-null for tracks on a remote machine.
+  machine_id LONG,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- The units of the counter. This column is rarely filled.
   unit STRING,
   -- The description for this track. For debugging purposes only.
   description STRING,
   -- The upid of the process that the track is associated with.
   upid LONG
+<<<<<<< HEAD
 )
 AS
+=======
+) AS
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 SELECT
   ct.id,
   ct.name,
@@ -209,7 +275,11 @@ WHERE
   args.key = 'upid';
 
 -- Tracks containing counter-like events associated to a thread.
+<<<<<<< HEAD
 CREATE PERFETTO TABLE thread_counter_track(
+=======
+CREATE PERFETTO TABLE thread_counter_track (
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- Unique identifier for this thread counter track.
   id ID(track.id),
   -- Name of the track.
@@ -228,16 +298,25 @@ CREATE PERFETTO TABLE thread_counter_track(
   -- the trace. For example: whether this track orginated from atrace, Chrome
   -- tracepoints etc.
   source_arg_set_id JOINID(track.id),
+<<<<<<< HEAD
   -- Machine identifier
   machine_id JOINID(machine.id),
+=======
+  -- Machine identifier, non-null for tracks on a remote machine.
+  machine_id LONG,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- The units of the counter. This column is rarely filled.
   unit STRING,
   -- The description for this track. For debugging purposes only.
   description STRING,
   -- The utid of the thread that the track is associated with.
   utid LONG
+<<<<<<< HEAD
 )
 AS
+=======
+) AS
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 SELECT
   ct.id,
   ct.name,
@@ -255,7 +334,11 @@ WHERE
   args.key = 'utid';
 
 -- Tracks containing counter-like events collected from Linux perf.
+<<<<<<< HEAD
 CREATE PERFETTO TABLE perf_counter_track(
+=======
+CREATE PERFETTO TABLE perf_counter_track (
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- Unique identifier for this thread counter track.
   id ID(track.id),
   -- Name of the track.
@@ -274,8 +357,13 @@ CREATE PERFETTO TABLE perf_counter_track(
   -- the trace. For example: whether this track orginated from atrace, Chrome
   -- tracepoints etc.
   source_arg_set_id ARGSETID,
+<<<<<<< HEAD
   -- Machine identifier
   machine_id JOINID(machine.id),
+=======
+  -- Machine identifier, non-null for tracks on a remote machine.
+  machine_id LONG,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- The units of the counter. This column is rarely filled.
   unit STRING,
   -- The description for this track. For debugging purposes only.
@@ -287,8 +375,12 @@ CREATE PERFETTO TABLE perf_counter_track(
   cpu LONG,
   -- Whether this counter is the sampling timebase for the session.
   is_timebase BOOL
+<<<<<<< HEAD
 )
 AS
+=======
+) AS
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 SELECT
   ct.id,
   ct.name,
@@ -306,7 +398,11 @@ WHERE
   ct.type IN ('perf_cpu_counter', 'perf_global_counter');
 
 -- Alias of the `counter` table.
+<<<<<<< HEAD
 CREATE PERFETTO VIEW counters(
+=======
+CREATE PERFETTO VIEW counters (
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   -- Alias of `counter.id`.
   id ID,
   -- Alias of `counter.ts`.
@@ -321,9 +417,17 @@ CREATE PERFETTO VIEW counters(
   name STRING,
   -- Legacy column, should no longer be used.
   unit STRING
+<<<<<<< HEAD
 )
 AS
 SELECT v.*, t.name, t.unit
+=======
+) AS
+SELECT
+  v.*,
+  t.name,
+  t.unit
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 FROM counter AS v
 JOIN counter_track AS t
   ON v.track_id = t.id

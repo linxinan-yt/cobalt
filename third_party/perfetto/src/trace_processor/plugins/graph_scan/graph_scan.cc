@@ -725,6 +725,7 @@ struct GraphScan : public sqlite::Function<GraphScan> {
 
 }  // namespace
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/graph_scan/graph_scan.cc
 namespace graph_scan {
 namespace {
 
@@ -756,6 +757,16 @@ void RegisterPlugin() {
       GraphScanPlugin::kPluginId, GraphScanPlugin::kDepIds.data(),
       GraphScanPlugin::kDepIds.size());
   base::ignore_result(reg);
+=======
+base::Status RegisterGraphScanFunctions(PerfettoSqlEngine& engine,
+                                        StringPool* pool) {
+  RETURN_IF_ERROR(
+      engine.RegisterFunction<GraphScan>(std::make_unique<GraphScan::UserData>(
+          GraphScan::UserData{&engine, pool})));
+  return engine.RegisterFunction<GraphAggregatingScan>(
+      std::make_unique<GraphAggregatingScan::UserData>(
+          GraphAggregatingScan::UserData{&engine, pool}));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/graph_scan.cc
 }
 
 }  // namespace graph_scan

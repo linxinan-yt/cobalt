@@ -207,6 +207,11 @@ ha{
                 one{"permyriad {0}"}
                 other{"permyriad {0}"}
             }
+            portion-per-1e9{
+                dnam{"sashi a cikin biliyan"}
+                one{"sashi {0} a cikin biliyan"}
+                other{"sashi {0} a cikin biliyan"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -340,6 +345,12 @@ ha{
                 dnam{"nanosekan"}
                 one{"nanosekan {0}"}
                 other{"nanosekans {0}"}
+            }
+            night{
+                dnam{"darare"}
+                one{"dare {0}"}
+                other{"darare {0}"}
+                per{"dare {0}"}
             }
             quarter{
                 dnam{"kwata-kwata"}
@@ -1219,6 +1230,11 @@ ha{
             permyriad{
                 dnam{"‱"}
             }
+            portion-per-1e9{
+                dnam{"sashi/biliyan"}
+                one{"sashi {0} a cikin biliyan"}
+                other{"sashi {0} a cikin biliyan"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1341,6 +1357,12 @@ ha{
             nanosecond{
                 one{"ns{0}"}
                 other{"ns{0}"}
+            }
+            night{
+                dnam{"darare"}
+                one{"dare {0}"}
+                other{"darare {0}"}
+                per{"dare {0}"}
             }
             quarter{
                 one{"kwt{0}"}
@@ -1798,6 +1820,11 @@ ha{
                 one{"kn{0}"}
                 other{"kn{0}"}
             }
+            light-speed{
+                dnam{"hsk"}
+                one{"hsk {0}"}
+                other{"hsk {0}"}
+            }
             meter-per-second{
                 dnam{"m/d"}
                 one{"m/d{0}"}
@@ -2143,6 +2170,11 @@ ha{
                 dnam{"permyriad"}
                 one{"‱{0}"}
                 other{"‱{0}"}
+            }
+            portion-per-1e9{
+                dnam{"sashi/biliyan"}
+                one{"sashi {0} a cikin biliyan"}
+                other{"sashi {0} a cikin biliyan"}
             }
         }
         consumption{

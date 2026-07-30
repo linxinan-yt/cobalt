@@ -76,7 +76,11 @@ NewTracePacketInternal(perfetto::TraceWriterBase* trace_writer,
       packet->set_timestamp(timestamp.value / ts_unit_multiplier);
       packet->set_timestamp_clock_id(
           ts_unit_multiplier == 1
+<<<<<<< HEAD
               ? PerfettoDsGetDefaultClockId()
+=======
+              ? static_cast<uint32_t>(PERFETTO_I_CLOCK_INCREMENTAL_UNDERNEATH)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
               : static_cast<uint32_t>(PERFETTO_TE_TIMESTAMP_TYPE_ABSOLUTE));
     }
   } else if (PERFETTO_LIKELY(timestamp.clock_id ==
@@ -100,9 +104,14 @@ void ResetIncrementalStateIfRequired(
   }
   incr_state->was_cleared = false;
 
+<<<<<<< HEAD
   const uint32_t default_clock = PerfettoDsGetDefaultClockId();
   auto sequence_timestamp = timestamp;
   if (timestamp.clock_id != default_clock &&
+=======
+  auto sequence_timestamp = timestamp;
+  if (timestamp.clock_id != PERFETTO_I_CLOCK_INCREMENTAL_UNDERNEATH &&
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       timestamp.clock_id != PERFETTO_TE_TIMESTAMP_TYPE_INCREMENTAL) {
     sequence_timestamp = TrackEventInternal::GetTraceTime();
   }
@@ -125,13 +134,21 @@ void ResetIncrementalStateIfRequired(
     auto track_defaults = defaults->set_track_event_defaults();
     track_defaults->set_track_uuid(thread_track_uuid);
 
+<<<<<<< HEAD
     if (tls_state.default_clock_id != default_clock) {
+=======
+    if (tls_state.default_clock_id != PERFETTO_I_CLOCK_INCREMENTAL_UNDERNEATH) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       perfetto::protos::pbzero::ClockSnapshot* clocks =
           packet->set_clock_snapshot();
       // Trace clock.
       perfetto::protos::pbzero::ClockSnapshot::Clock* trace_clock =
           clocks->add_clocks();
+<<<<<<< HEAD
       trace_clock->set_clock_id(default_clock);
+=======
+      trace_clock->set_clock_id(PERFETTO_I_CLOCK_INCREMENTAL_UNDERNEATH);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       trace_clock->set_timestamp(sequence_timestamp.value);
 
       if (PERFETTO_LIKELY(tls_state.default_clock_id ==

@@ -485,7 +485,31 @@ es_419{
         }
     }
     characterLabel{
+<<<<<<< HEAD
         box_drawing{"Cuadros de dibujo"}
+=======
+        african_scripts{"Símbolos de escritura de África"}
+        american_scripts{"Símbolos de escritura de América"}
+        animal{"animal"}
+        animals_nature{"naturaleza y animales"}
+        arrows{"flecha"}
+        body{"cuerpo"}
+        box_drawing{"Cuadro de dibujo"}
+        building{"edificio"}
+        consonantal_jamo{"Jamo consonántico"}
+        currency_symbols{"símbolos de monedas"}
+        dash_connector{"Guion/conector"}
+        digits{"dígitos"}
+        downwards_upwards_arrows{"Flechas hacia arriba y hacia abajo"}
+        european_scripts{"Símbolos de escritura de Europa"}
+        female{"femenino"}
+        flag{"bandera"}
+        flags{"banderas"}
+        format{"Formato"}
+        format_whitespace{"formato y espacio duro"}
+        full_width_form_variant{"Variantes de formato de ancho completo"}
+        geometric_shapes{"Formas geométricas"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         half_width_form_variant{"Variantes de formato de ancho medio"}
         hanzi_simplified{"Hanzi (simplificado)"}
         hanzi_traditional{"Hanzi (tradicional)"}
@@ -511,6 +535,17 @@ es_419{
         dayperiod{
             dn{"a.m./p.m."}
         }
+<<<<<<< HEAD
+=======
+        sun{
+            relativeTime{
+                future{
+                    one{"en {0} domingo"}
+                    other{"en {0} domingos"}
+                }
+            }
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         week-short{
             relative{
                 "-1"{"sem. pas."}

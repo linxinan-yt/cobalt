@@ -3,7 +3,11 @@
 // Generated using tools/cldr/cldr-to-icu/
 root{
     UCARules:process(uca_rules){"../unidata/UCARules.txt"}
+<<<<<<< HEAD
     Version{"48"}
+=======
+    Version{"47"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     collations{
         default{"standard"}
         emoji{
@@ -356,7 +360,11 @@ root{
                 "< 🐦‍🔥"
                 "<*🐸"
                 "<*🐊🐢🦎🐍🐲🐉🦕🦖"
+<<<<<<< HEAD
                 "<*🐳🐋🐬🫍🦭🐟🐠🐡🦈🐙🐚🪸🪼🦀🦞🦐🦑🦪"
+=======
+                "<*🐳🐋🐬🦭🐟🐠🐡🦈🐙🐚🪸🪼🦀🦞🦐🦑🦪"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 "<*🐌🦋🐛🐜🐝🪲🐞🦗🪳🕷🕸🦂🦟🪰🪱🦠"
                 "<*💐🌸💮🪷🏵🌹🥀🌺🌻🌼🌷🪻"
                 "<*🌱🪴🌲🌳🌴🌵🌾🌿☘🍀🍁🍂🍃🪹🪺🍄🪾"
@@ -390,7 +398,11 @@ root{
                 "<*👓🕶🥽🥼🦺👔👕👖🧣🧤🧥🧦👗👘🥻🩱🩲🩳👙👚🪭👛👜👝🛍🎒🩴👞👟🥾🥿👠👡🩰👢🪮👑👒🎩🎓🧢🪖⛑📿💄💍💎"
                 "<*🔇🔈🔉🔊📢📣📯🔔🔕"
                 "<*🎼🎵🎶🎙🎚🎛🎤🎧📻"
+<<<<<<< HEAD
                 "<*🎷🎺🪊🪗🎸🎹🎻🪕🥁🪘🪇🪈🪉"
+=======
+                "<*🎷🪗🎸🎹🎺🎻🪕🥁🪘🪇🪈🪉"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 "<*📱📲☎📞📟📠"
                 "<*🔋🪫🔌💻🖥🖨⌨🖱🖲💽💾💿📀🧮"
                 "<*🎥🎞📽🎬📺📷📸📹📼🔍🔎🕯💡🔦🏮🪔"
@@ -445,7 +457,11 @@ root{
                 "& 👨 << 🧔 <<🧔‍♂ <<🧔🏻‍♂ <<🧔🏼‍♂ <<🧔🏽‍♂ <<🧔🏾‍♂ <<🧔🏿‍♂ <<👱‍♂ <<👱🏻‍♂ <<👱🏼‍♂ <<👱🏽‍♂ <<👱🏾‍♂ <<👱🏿‍♂"
                 "& 👩 << 🧔‍♀ << 🧔🏻‍♀ << 🧔🏼‍♀ << 🧔🏽‍♀ << 🧔🏾‍♀ << 🧔🏿‍♀ << 👱‍♀ << 👱🏻‍♀ << 👱🏼‍♀ << 👱🏽‍♀ << 👱🏾‍♀ << 👱🏿‍♀"
             }
+<<<<<<< HEAD
             Version{"48"}
+=======
+            Version{"47"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         eor{
             Sequence{
@@ -985,7 +1001,11 @@ root{
                 "&ք"
                 "<և"
             }
+<<<<<<< HEAD
             Version{"48"}
+=======
+            Version{"47"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         private-unihan{
             Sequence{
@@ -1204,7 +1224,11 @@ root{
                 "&龜=\uFDD0龜"
                 "&龠=\uFDD0龠"
             }
+<<<<<<< HEAD
             Version{"48"}
+=======
+            Version{"47"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         search{
             Sequence{
@@ -1322,11 +1346,19 @@ root{
                 "&ᅳᅵ"
                 "=ᅴ"
             }
+<<<<<<< HEAD
             Version{"48"}
         }
         standard{
             Sequence{""}
             Version{"48"}
+=======
+            Version{"47"}
+        }
+        standard{
+            Sequence{""}
+            Version{"47"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     }
     depends:process(dependency){"ucadata.icu"}

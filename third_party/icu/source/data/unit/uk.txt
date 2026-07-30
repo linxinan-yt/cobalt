@@ -1119,6 +1119,46 @@ uk{
                 one{"{0} проміріад"}
                 other{"{0} проміріада"}
             }
+            portion-per-1e9{
+                case{
+                    accusative{
+                        few{"{0} частини на мільярд"}
+                        many{"{0} частин на мільярд"}
+                        one{"{0} частину на мільярд"}
+                        other{"{0} частини на мільярд"}
+                    }
+                    dative{
+                        few{"{0} частинам на мільярд"}
+                        many{"{0} частинам на мільярд"}
+                        one{"{0} частині на мільярд"}
+                        other{"{0} частини на мільярд"}
+                    }
+                    genitive{
+                        few{"{0} частин на мільярд"}
+                        many{"{0} частин на мільярд"}
+                        one{"{0} частини на мільярд"}
+                        other{"{0} частини на мільярд"}
+                    }
+                    instrumental{
+                        few{"{0} частинами на мільярд"}
+                        many{"{0} частинами на мільярд"}
+                        one{"{0} частиною на мільярд"}
+                        other{"{0} частини на мільярд"}
+                    }
+                    locative{
+                        few{"{0} частинах на мільярд"}
+                        many{"{0} частинах на мільярд"}
+                        one{"{0} частині на мільярд"}
+                        other{"{0} частини на мільярд"}
+                    }
+                }
+                dnam{"частини на мільярд"}
+                few{"{0} частини на мільярд"}
+                gender{"feminine"}
+                many{"{0} частин на мільярд"}
+                one{"{0} частина на мільярд"}
+                other{"{0} частини на мільярд"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -5606,6 +5646,7 @@ uk{
                 many{"{0}кар"}
                 one{"{0}кар"}
                 other{"{0}кар"}
+<<<<<<< HEAD
             }
             katal{
                 dnam{"кат"}
@@ -5613,6 +5654,8 @@ uk{
                 many{"{0}кат"}
                 one{"{0}кат"}
                 other{"{0}кат"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             milligram-ofglucose-per-deciliter{
                 few{"{0}мг/дл"}
@@ -5668,16 +5711,34 @@ uk{
                 other{"{0}%"}
             }
             permille{
+<<<<<<< HEAD
                 few{"{0}‰"}
                 many{"{0}‰"}
                 one{"{0}‰"}
                 other{"{0}‰"}
+=======
+                dnam{"‰"}
+            }
+            permillion{
+                dnam{"м.д."}
+                few{"{0}м.д."}
+                many{"{0}м.д."}
+                one{"{0}м.д."}
+                other{"{0}м.д."}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             permyriad{
                 few{"{0}‱"}
                 many{"{0}‱"}
                 one{"{0}‱"}
                 other{"{0}‱"}
+            }
+            portion-per-1e9{
+                dnam{"ч/млрд"}
+                few{"{0} ч/млрд"}
+                many{"{0} ч/млрд"}
+                one{"{0} ч/млрд"}
+                other{"{0} ч/млрд"}
             }
         }
         consumption{
@@ -6771,6 +6832,7 @@ uk{
                 many{"{0}гал."}
                 one{"{0}гал."}
                 other{"{0}гал."}
+                per{"{0}/гал"}
             }
             gallon-imperial{
                 dnam{"англ. гал."}
@@ -7110,12 +7172,32 @@ uk{
                 many{"{0} ‰"}
                 one{"{0} ‰"}
                 other{"{0} ‰"}
+<<<<<<< HEAD
+=======
+            }
+            permillion{
+                dnam{"м. д."}
+                few{"{0} м. д."}
+                many{"{0} м. д."}
+                one{"{0} м. д."}
+                other{"{0} м. д."}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             permyriad{
                 few{"{0} ‱"}
                 many{"{0} ‱"}
                 one{"{0} ‱"}
                 other{"{0} ‱"}
+<<<<<<< HEAD
+=======
+            }
+            portion-per-1e9{
+                dnam{"частини/млрд"}
+                few{"{0} част/млрд"}
+                many{"{0} част/млрд"}
+                one{"{0} част/млрд"}
+                other{"{0} част/млрд"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         consumption{

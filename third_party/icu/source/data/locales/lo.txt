@@ -900,7 +900,12 @@ lo{
                     1{"ຄ.ສ."}
                 }
                 abbreviated%variant{
+<<<<<<< HEAD
                     1{"ຍຸກ ຄ.ສ"}
+=======
+                    "ກ່ອນ ຄ.ສ.",
+                    "ຍຸກ ຄ.ສ",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
                 wide{
                     0{"ກ່ອນຄຣິດສັກກະລາດ"}

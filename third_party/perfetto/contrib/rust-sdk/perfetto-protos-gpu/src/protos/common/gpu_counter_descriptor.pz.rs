@@ -74,6 +74,7 @@ pb_enum!(GpuCounterDescriptorMeasureUnit {
     INSTRUCTION: 40,
 });
 
+<<<<<<< HEAD
 pb_enum!(GpuCounterSpecValueDirection {
     VALUE_DIRECTION_UNSPECIFIED: 0,
     VALUE_DIRECTION_BACKWARDS_LOOKING: 1,
@@ -99,6 +100,17 @@ pb_msg!(GpuCounterDescriptorGpuCounterGroupSpec {
 });
 
 pb_msg!(GpuCounterDescriptorGpuCounterBlock {
+=======
+pb_msg!(GpuCounterDescriptor {
+    specs: GpuCounterSpec, msg, 1,
+    blocks: GpuCounterBlock, msg, 2,
+    min_sampling_period_ns: u64, primitive, 3,
+    max_sampling_period_ns: u64, primitive, 4,
+    supports_instrumented_sampling: bool, primitive, 5,
+});
+
+pb_msg!(GpuCounterBlock {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     block_id: u32, primitive, 1,
     block_capacity: u32, primitive, 2,
     name: String, primitive, 3,
@@ -106,7 +118,11 @@ pb_msg!(GpuCounterDescriptorGpuCounterBlock {
     counter_ids: u32, primitive, 5,
 });
 
+<<<<<<< HEAD
 pb_msg!(GpuCounterDescriptorGpuCounterSpec {
+=======
+pb_msg!(GpuCounterSpec {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     counter_id: u32, primitive, 1,
     name: String, primitive, 2,
     description: String, primitive, 3,
@@ -116,5 +132,8 @@ pb_msg!(GpuCounterDescriptorGpuCounterSpec {
     denominator_units: GpuCounterDescriptorMeasureUnit, enum, 8,
     select_by_default: bool, primitive, 9,
     groups: GpuCounterDescriptorGpuCounterGroup, enum, 10,
+<<<<<<< HEAD
     value_direction: GpuCounterSpecValueDirection, enum, 11,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 });

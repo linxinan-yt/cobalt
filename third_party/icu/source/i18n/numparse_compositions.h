@@ -11,6 +11,16 @@
 
 U_NAMESPACE_BEGIN
 
+<<<<<<< HEAD
+=======
+// Export an explicit template instantiation of the MaybeStackArray that is used as a data member of ArraySeriesMatcher.
+// When building DLLs for Windows this is required even though no direct access to the MaybeStackArray leaks out of the i18n library.
+// (See digitlst.h, pluralaffix.h, datefmt.h, and others for similar examples.)
+#if U_PF_WINDOWS <= U_PLATFORM && U_PLATFORM <= U_PF_CYGWIN
+template class U_I18N_API MaybeStackArray<const numparse::impl::NumberParseMatcher*, 3>;
+#endif
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 namespace numparse::impl {
 
 /**

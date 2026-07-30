@@ -9,6 +9,12 @@ nso{
             patterns{
                 accountingFormat{"¤#,##0.00"}
             }
+<<<<<<< HEAD
+=======
+            symbols{
+                group{" "}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
     }
     calendar{
@@ -44,8 +50,11 @@ nso{
                 hms{"h:mm:ss a"}
                 hmsv{"h:mm:ss a v"}
                 hmv{"h:mm a v"}
+<<<<<<< HEAD
                 yMMMd{"d MMM y"}
                 yMd{"dd-MM-y"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 yw{
                     one{"'beke' 'ya' 'bo' w 'ya' Y"}
                     other{"'beke' 'ya' 'bo' w 'ya' Y"}
@@ -86,6 +95,7 @@ nso{
             }
             eras{
                 abbreviated{
+<<<<<<< HEAD
                     0{"BC"}
                     1{"AD"}
                 }
@@ -100,6 +110,22 @@ nso{
                 wide%variant{
                     0{"Before Common Era"}
                     1{"Common Era"}
+=======
+                    "BC",
+                    "AD",
+                }
+                abbreviated%variant{
+                    "BCE",
+                    "CE",
+                }
+                wide{
+                    "Before Christ",
+                    "Anno Domini",
+                }
+                wide%variant{
+                    "Before Common Era",
+                    "Common Era",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
             intervalFormats{
@@ -169,6 +195,7 @@ nso{
             monthNames{
                 format{
                     abbreviated{
+<<<<<<< HEAD
                         "Jan",
                         "Feb",
                         "Mat",
@@ -181,6 +208,20 @@ nso{
                         "Okt",
                         "Nof",
                         "Dis",
+=======
+                        "Phere",
+                        "Dibo",
+                        "Hlak",
+                        "Mora",
+                        "Mei",
+                        "June",
+                        "Mose",
+                        "Agosetose",
+                        "Lewe",
+                        "Dipha",
+                        "Diba",
+                        "Manth",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     }
                     wide{
                         "Janeware",
@@ -216,12 +257,15 @@ nso{
             }
             quarters{
                 format{
+<<<<<<< HEAD
                     abbreviated{
                         "Kotara 1",
                         "Kotara 2",
                         "Kotara 3",
                         "Kotara 4",
                     }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     wide{
                         "1st Kotara",
                         "2nd Kotara",
@@ -232,6 +276,7 @@ nso{
             }
         }
     }
+<<<<<<< HEAD
     fields{
         day{
             relative{
@@ -268,6 +313,13 @@ nso{
                 "1"{"ngwaga wo o tlago"}
             }
         }
+=======
+    delimiters{
+        alternateQuotationEnd{"”"}
+        alternateQuotationStart{"“"}
+        quotationEnd{"’"}
+        quotationStart{"‘"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
     measurementSystemNames{
         metric{"Metriki"}

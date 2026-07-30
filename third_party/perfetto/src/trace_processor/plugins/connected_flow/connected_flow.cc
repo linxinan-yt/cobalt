@@ -236,7 +236,10 @@ bool ConnectedFlow::Cursor::Run(const std::vector<SqlValue>& arguments) {
     return OnFailure(
         base::ErrStatus("invalid slice id %" PRId64, arguments[0].AsLong()));
   }
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/connected_flow/connected_flow.cc
   SliceId start_id = *maybe_start_id;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/table_functions/connected_flow.cc
 
   // Use cached graph if available, otherwise build a new one.
   FlowGraph graph = cached_flow_graph_.has_value()

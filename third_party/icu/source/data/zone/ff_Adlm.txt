@@ -1189,6 +1189,17 @@ ff_Adlm{
         "Pacific:Guam"{
             ec{"𞤘𞤵𞤱𞤢𞥄𞤥"}
         }
+<<<<<<< HEAD
+=======
+        "Pacific:Honolulu"{
+            sd{"𞤑𞤕𞤖"}
+            sg{"𞤑𞤖𞤖"}
+            ss{"𞤑𞤖𞤖"}
+        }
+        "Pacific:Kanton"{
+            ec{"𞤑𞤢𞤲𞤼𞤮𞤲"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Pacific:Kiritimati"{
             ec{"𞤑𞤭𞤪𞤭𞤼𞤭𞤥𞤢𞤼𞤭"}
         }

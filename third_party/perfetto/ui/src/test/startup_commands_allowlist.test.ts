@@ -14,7 +14,10 @@
 
 import {test, expect} from '@playwright/test';
 import {PerfettoTestHelper} from './perfetto_ui_test_helper';
-import {STARTUP_COMMAND_ALLOWLIST} from '../core/startup_command_allowlist';
+import {
+  STARTUP_COMMAND_ALLOWLIST,
+  isStartupCommandAllowed,
+} from '../core/startup_command_allowlist';
 
 interface CommandTestCase {
   id: string;
@@ -22,6 +25,10 @@ interface CommandTestCase {
   traceFile?: string;
   before?: () => Promise<void>;
   after?: () => Promise<void>;
+<<<<<<< HEAD
+=======
+  maskQueryDetails?: boolean;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   testName?: string; // Optional custom test name for unique identification
 }
 
@@ -267,6 +274,19 @@ const COMMAND_TEST_CASES: CommandTestCase[] = [
     traceFile: 'missing_track_names.pb', // Simple trace
   },
 ];
+
+test('macro commands are allowed correctly', async () => {
+  // Test isStartupCommandAllowed function with macro commands
+  expect(isStartupCommandAllowed('dev.perfetto.UserMacro.TestMacro')).toBe(
+    true,
+  );
+  expect(isStartupCommandAllowed('dev.perfetto.UserMacro.AnotherMacro')).toBe(
+    true,
+  );
+  expect(isStartupCommandAllowed('dev.perfetto.UserMacro.')).toBe(true); // Edge case: empty name
+  expect(isStartupCommandAllowed('dev.perfetto.UserMacro')).toBe(false); // Missing dot
+  expect(isStartupCommandAllowed('dev.perfetto.NotUserMacro.Test')).toBe(false); // Different prefix
+});
 
 test('all allowlisted commands have corresponding test cases', async () => {
   // Extract command IDs from allowlist and test cases

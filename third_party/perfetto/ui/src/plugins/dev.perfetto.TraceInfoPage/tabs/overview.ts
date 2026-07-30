@@ -13,12 +13,21 @@
 // limitations under the License.
 
 import m from 'mithril';
+<<<<<<< HEAD
+=======
+import {
+  LONG_NULL,
+  NUM_NULL,
+  STR_NULL,
+} from '../../../trace_processor/query_result';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {Icon} from '../../../widgets/icon';
 import {Tooltip} from '../../../widgets/tooltip';
 import {Section} from '../../../widgets/section';
 import {Card} from '../../../widgets/card';
 import {GridLayout} from '../../../widgets/grid_layout';
 import {EmptyState} from '../../../widgets/empty_state';
+<<<<<<< HEAD
 import {Callout} from '../../../widgets/callout';
 import {Intent} from '../../../widgets/common';
 import type {Trace} from '../../../public/trace';
@@ -36,14 +45,108 @@ import {
   type StatusCardConfig,
   createStatusCards,
 } from './overview_data';
+=======
+import {Trace} from '../../../public/trace';
+import {duration} from '../../../base/time';
+import {formatDuration} from '../../../components/time_utils';
+import type {TabKey} from '../utils';
+import {formatFileSize} from '../utils';
+
+export interface OverviewData {
+  // Status counts
+  importErrors: number;
+  traceErrors: number;
+  dataLosses: number;
+  uiLoadingErrorCount: number;
+  // Metrics
+  traceSizeBytes?: bigint;
+  traceType?: string;
+  traceUuid?: string;
+  durationNs?: duration;
+  schedDurationNs?: duration;
+  // System information
+  androidBuildFingerprint?: string;
+  systemName?: string;
+  systemMachine?: string;
+  systemRelease?: string;
+}
+
+export async function loadOverviewData(trace: Trace): Promise<OverviewData> {
+  // Load everything in a single query
+  // Note: _metadata_str and _metadata_int functions are created in the plugin
+  const result = await trace.engine.query(`
+    SELECT
+      -- Status card counts
+      (SELECT IFNULL(sum(value), 0) FROM stats WHERE severity = 'error' AND source = 'analysis') as import_errors,
+      (SELECT IFNULL(sum(value), 0) FROM stats WHERE severity = 'error' AND source = 'trace') as trace_errors,
+      (SELECT IFNULL(sum(value), 0) FROM stats WHERE severity = 'data_loss') as data_losses,
+      -- Metrics
+      _metadata_int('trace_size_bytes') as trace_size_bytes,
+      IFNULL(_metadata_str('trace_type'), 'Unknown') as trace_type,
+      IFNULL(_metadata_str('trace_uuid'), 'Not available') as trace_uuid,
+      _metadata_int('tracing_disabled_ns') - _metadata_int('tracing_started_ns') as duration_ns,
+      (SELECT max(ts) - min(ts) FROM sched) as sched_duration_ns,
+      -- System info
+      _metadata_str('system_name') as system_name,
+      _metadata_str('system_release') as system_release,
+      _metadata_str('system_machine') as system_machine,
+      _metadata_str('android_build_fingerprint') as android_build_fingerprint;
+  `);
+
+  const row = result.firstRow({
+    import_errors: NUM_NULL,
+    trace_errors: NUM_NULL,
+    data_losses: NUM_NULL,
+    trace_size_bytes: LONG_NULL,
+    trace_type: STR_NULL,
+    trace_uuid: STR_NULL,
+    duration_ns: LONG_NULL,
+    sched_duration_ns: LONG_NULL,
+    system_name: STR_NULL,
+    system_release: STR_NULL,
+    system_machine: STR_NULL,
+    android_build_fingerprint: STR_NULL,
+  });
+  return {
+    importErrors: row.import_errors ?? 0,
+    traceErrors: row.trace_errors ?? 0,
+    dataLosses: row.data_losses ?? 0,
+    uiLoadingErrorCount: trace.loadingErrors.length,
+    traceSizeBytes: row.trace_size_bytes ?? undefined,
+    traceType: row.trace_type ?? undefined,
+    traceUuid: row.trace_uuid ?? undefined,
+    durationNs: row.duration_ns ?? undefined,
+    schedDurationNs: row.sched_duration_ns ?? undefined,
+    androidBuildFingerprint: row.android_build_fingerprint ?? undefined,
+    systemName: row.system_name ?? undefined,
+    systemMachine: row.system_machine ?? undefined,
+    systemRelease: row.system_release ?? undefined,
+  };
+}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 export interface OverviewTabAttrs {
   trace: Trace;
   data: OverviewData;
+<<<<<<< HEAD
   diagnostics: ReadonlyArray<Diagnostic>;
   onTabChange(key: TabKey): void;
 }
 
+=======
+  onTabChange(key: TabKey): void;
+}
+
+interface StatusCardConfig {
+  title: string;
+  count: number;
+  severity: 'success' | 'danger' | 'warning';
+  icon: string;
+  helpText: string;
+  targetTab: TabKey;
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 interface MetricCardConfig {
   label: string;
   value: string | undefined;
@@ -62,6 +165,7 @@ export class OverviewTab implements m.ClassComponent<OverviewTabAttrs> {
           renderStatusCard(attrs, card),
         ),
       ),
+<<<<<<< HEAD
       m(
         Section,
         {
@@ -87,12 +191,15 @@ export class OverviewTab implements m.ClassComponent<OverviewTabAttrs> {
               ),
             ),
       ),
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       this.renderCardSection(
         'Trace Overview',
         'Key metadata and properties of the trace file',
         createTraceMetrics(attrs.trace, attrs.data).map((metric) =>
           renderMetricCard(metric),
         ),
+<<<<<<< HEAD
         {
           banner: attrs.data.traceCount > 1 && {
             icon: 'layers',
@@ -101,6 +208,8 @@ export class OverviewTab implements m.ClassComponent<OverviewTabAttrs> {
               'session-wide. See the "Traces" tab for per-trace details.',
           },
         },
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       ),
       this.renderCardSection(
         'System Information',
@@ -113,12 +222,15 @@ export class OverviewTab implements m.ClassComponent<OverviewTabAttrs> {
             icon: 'computer',
             title: 'No system information available',
           },
+<<<<<<< HEAD
           banner: attrs.data.machineCount > 1 && {
             icon: 'computer',
             text:
               'This session contains multiple machines; only the host ' +
               'machine is shown here. See the "Machines" tab for the others.',
           },
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         },
       ),
     );
@@ -128,6 +240,7 @@ export class OverviewTab implements m.ClassComponent<OverviewTabAttrs> {
     title: string,
     subtitle: string,
     cards: m.Children[],
+<<<<<<< HEAD
     options?: {
       emptyState?: {icon: string; title: string};
       banner?: {icon: string; text: string} | false;
@@ -151,6 +264,14 @@ export class OverviewTab implements m.ClassComponent<OverviewTabAttrs> {
       Section,
       {title, subtitle},
       banner,
+=======
+    options?: {emptyState?: {icon: string; title: string}},
+  ): m.Children {
+    const filteredCards = cards.filter(Boolean);
+    return m(
+      Section,
+      {title, subtitle},
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       filteredCards.length === 0 && options?.emptyState
         ? m(EmptyState, options.emptyState)
         : m(GridLayout, {}, ...filteredCards),
@@ -247,6 +368,54 @@ function renderMetricCard({
   );
 }
 
+<<<<<<< HEAD
+=======
+function createStatusCards(data: OverviewData): StatusCardConfig[] {
+  const statusCards: StatusCardConfig[] = [
+    {
+      title: 'Import Errors',
+      count: data.importErrors,
+      severity: data.importErrors === 0 ? 'success' : 'danger',
+      icon: data.importErrors === 0 ? 'check_circle' : 'error',
+      helpText:
+        'Errors encountered during trace import by the trace processor. These may indicate missing or corrupted data.',
+      targetTab: data.importErrors > 0 ? 'import_errors' : 'stats',
+    },
+    {
+      title: 'Trace Errors',
+      count: data.traceErrors,
+      severity: data.traceErrors === 0 ? 'success' : 'danger',
+      icon: data.traceErrors === 0 ? 'check_circle' : 'error',
+      helpText:
+        'Errors that occurred during trace recording. These indicate problems during data collection.',
+      targetTab: data.traceErrors > 0 ? 'trace_errors' : 'stats',
+    },
+    {
+      title: 'Data Losses',
+      count: data.dataLosses,
+      severity: data.dataLosses === 0 ? 'success' : 'warning',
+      icon: data.dataLosses === 0 ? 'check_circle' : 'warning',
+      helpText:
+        'Events that were dropped during trace recording due to buffer overflow or other issues.',
+      targetTab: data.dataLosses > 0 ? 'data_losses' : 'stats',
+    },
+  ];
+  // Optional UI loading errors card - only show if there are errors
+  if (data.uiLoadingErrorCount > 0) {
+    statusCards.push({
+      title: 'UI Loading Errors',
+      count: data.uiLoadingErrorCount,
+      severity: 'danger',
+      icon: 'error',
+      helpText:
+        'Errors that occurred in the UI while loading or processing the trace.',
+      targetTab: 'ui_loading_errors',
+    });
+  }
+  return statusCards;
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 function createTraceMetrics(
   trace: Trace,
   data: OverviewData,
@@ -256,14 +425,22 @@ function createTraceMetrics(
       label: 'Trace Size',
       value:
         data.traceSizeBytes !== undefined
+<<<<<<< HEAD
           ? formatFileSize(Number(data.traceSizeBytes))
+=======
+          ? formatFileSize(Number(data.traceSizeBytes)).formatted
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
           : undefined,
       help: 'Total size of the trace file on disk',
     },
     {
       label: 'Trace Type',
+<<<<<<< HEAD
       value:
         data.traceTypes.length > 0 ? data.traceTypes.join(', ') : 'Unknown',
+=======
+      value: data.traceType,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       help: 'Format of the trace file (proto, json, etc.)',
     },
     {
@@ -283,6 +460,7 @@ function createTraceMetrics(
       help: 'Duration from first to last scheduling event (max(ts) - min(ts) from sched)',
     },
     {
+<<<<<<< HEAD
       label: 'Recording Started',
       value: formatTraceStartWallClock(trace),
       help: "Wall-clock time recording began, from the trace's REALTIME clock",
@@ -295,11 +473,17 @@ function createTraceMetrics(
         data.traceCount > 1
           ? 'Session-wide identifier. Individual UUIDs are in the "Traces" tab.'
           : 'Unique identifier for this trace session',
+=======
+      label: 'Trace UUID',
+      value: data.traceUuid,
+      help: 'Unique identifier for this trace session',
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       wide: true,
     },
   ];
 }
 
+<<<<<<< HEAD
 // Renders the trace start as a wall-clock time, or undefined if the trace has
 // no REALTIME clock snapshot (in which case unixOffset is zero).
 function formatTraceStartWallClock(trace: Trace): string | undefined {
@@ -324,6 +508,8 @@ function formatTzOffset(tzOffMin: number): string {
   return `UTC${sign}${hh}:${mm}`;
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 function createSystemInfoMetrics(data: OverviewData): MetricCardConfig[] {
   return [
     {

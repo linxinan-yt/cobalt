@@ -275,6 +275,7 @@ kxv_Deva{
             }
             eras{
                 abbreviated{
+<<<<<<< HEAD
                     0{"बिसि"}
                     1{"ए-डि"}
                 }
@@ -289,6 +290,22 @@ kxv_Deva{
                 wide%variant{
                     0{"बिफोर कॉमन एरा"}
                     1{"कॉमन एरा"}
+=======
+                    "बिसि",
+                    "ए-डि",
+                }
+                abbreviated%variant{
+                    "बिसि-इ",
+                    "सि-इ",
+                }
+                wide{
+                    "बिफोर क्राइस्ट",
+                    "अन्नो डोमिनी",
+                }
+                wide%variant{
+                    "बिफोर कॉमन एरा",
+                    "कॉमन एरा",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
             intervalFormats{

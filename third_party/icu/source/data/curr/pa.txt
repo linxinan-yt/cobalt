@@ -813,9 +813,12 @@ pa{
             one{"(ਮੁਦਰਾ ਦੀ ਅਗਿਆਤ ਇਕਾਈ)"}
             other{"(ਅਗਿਆਤ ਮੁਦਰਾ)"}
         }
+<<<<<<< HEAD
         ZWG{
             one{"ਜ਼ਿੰਬਾਬਵੀ ਗੋਲਡ"}
             other{"ਜ਼ਿੰਬਾਬਵੀ ਗੋਲਡ"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

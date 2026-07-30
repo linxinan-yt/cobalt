@@ -684,10 +684,13 @@ or{
             one{"ସ୍ଵାଜି ଲିଲାଞ୍ଜେନି"}
             other{"ସ୍ଵାଜି ଇମାଲଞ୍ଜେନି"}
         }
+<<<<<<< HEAD
         XCG{
             one{"କ‍୍ୟାରବିଅନ୍‌ ଗିଲ୍ଡର୍‌"}
             other{"କ‍୍ୟାରବିଅନ୍‌ ଗିଲ୍ଡର୍‌"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         XOF{
             one{"ପଶ୍ଚିମ ଆଫ୍ରିକୀୟ CFA ଫ୍ରାଙ୍କ୍"}
             other{"ପଶ୍ଚିମ ଆଫ୍ରିକିୟ CFA ଫ୍ରାଙ୍କ୍"}
@@ -696,9 +699,12 @@ or{
             one{"(ମୁଦ୍ରାର ଅଜଣା ଏକକ)"}
             other{"(ଅଜଣା ମୁଦ୍ରା)"}
         }
+<<<<<<< HEAD
         ZWG{
             one{"ଜିମ୍ବାୱିଅନ୍‌ ଗୋଲ୍ଡ୍‌"}
             other{"ଜିମ୍ବାୱିଅନ୍‌ ଗୋଲ୍ଡ୍‌"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

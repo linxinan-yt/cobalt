@@ -594,48 +594,82 @@ public:
      */
     UBool equals(const UnicodeString& source, const UnicodeString& target) const;
 
+<<<<<<< HEAD
     /**
      * Creates a comparison function object that uses this collator.
      * Like <code>std::equal_to</code> but uses the collator instead of <code>operator==</code>.
      * @stable ICU 76
+=======
+#ifndef U_HIDE_DRAFT_API
+
+    /**
+     * Creates a comparison function object that uses this collator.
+     * Like <code>std::equal_to</code> but uses the collator instead of <code>operator==</code>.
+     * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
      */
     inline auto equal_to() const { return Predicate<std::equal_to, UCOL_EQUAL>(*this); }
 
     /**
      * Creates a comparison function object that uses this collator.
      * Like <code>std::greater</code> but uses the collator instead of <code>operator&gt;</code>.
+<<<<<<< HEAD
      * @stable ICU 76
+=======
+     * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
      */
     inline auto greater() const { return Predicate<std::equal_to, UCOL_GREATER>(*this); }
 
     /**
      * Creates a comparison function object that uses this collator.
      * Like <code>std::less</code> but uses the collator instead of <code>operator&lt;</code>.
+<<<<<<< HEAD
      * @stable ICU 76
+=======
+     * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
      */
     inline auto less() const { return Predicate<std::equal_to, UCOL_LESS>(*this); }
 
     /**
      * Creates a comparison function object that uses this collator.
      * Like <code>std::not_equal_to</code> but uses the collator instead of <code>operator!=</code>.
+<<<<<<< HEAD
      * @stable ICU 76
+=======
+     * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
      */
     inline auto not_equal_to() const { return Predicate<std::not_equal_to, UCOL_EQUAL>(*this); }
 
     /**
      * Creates a comparison function object that uses this collator.
      * Like <code>std::greater_equal</code> but uses the collator instead of <code>operator&gt;=</code>.
+<<<<<<< HEAD
      * @stable ICU 76
+=======
+     * @draft ICU 76
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
      */
     inline auto greater_equal() const { return Predicate<std::not_equal_to, UCOL_LESS>(*this); }
 
     /**
      * Creates a comparison function object that uses this collator.
      * Like <code>std::less_equal</code> but uses the collator instead of <code>operator&lt;=</code>.
+<<<<<<< HEAD
      * @stable ICU 76
      */
     inline auto less_equal() const { return Predicate<std::not_equal_to, UCOL_GREATER>(*this); }
 
+=======
+     * @draft ICU 76
+     */
+    inline auto less_equal() const { return Predicate<std::not_equal_to, UCOL_GREATER>(*this); }
+
+#endif  // U_HIDE_DRAFT_API
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #ifndef U_FORCE_HIDE_DEPRECATED_API
     /**
      * Determines the minimum strength that will be used in comparison or
@@ -1259,6 +1293,10 @@ private:
     static Collator* makeInstance(const Locale& desiredLocale,
                                   UErrorCode& status);
 
+<<<<<<< HEAD
+=======
+#ifndef U_HIDE_DRAFT_API
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     /**
      * Function object for performing comparisons using a Collator.
      * @internal
@@ -1297,6 +1335,10 @@ private:
         const Collator& collator;
         static constexpr Compare<UCollationResult> compare{};
     };
+<<<<<<< HEAD
+=======
+#endif  // U_HIDE_DRAFT_API
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 
 #if !UCONFIG_NO_SERVICE

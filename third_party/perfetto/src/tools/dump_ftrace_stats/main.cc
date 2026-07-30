@@ -18,6 +18,10 @@
 
 #include "perfetto/ext/base/dynamic_string_writer.h"
 #include "perfetto/ext/base/file_utils.h"
+<<<<<<< HEAD
+=======
+#include "perfetto/ext/base/fixed_string_writer.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "perfetto/ext/base/lock_free_task_runner.h"
 #include "perfetto/ext/base/string_splitter.h"
 #include "perfetto/ext/base/string_utils.h"
@@ -78,7 +82,11 @@ void DumpAllCpuStats() {
     base::StringSplitter splitter(std::move(text), '\n');
     base::DynamicStringWriter writer;
     while (splitter.Next()) {
+<<<<<<< HEAD
       writer.Clear();
+=======
+      base::FixedStringWriter writer(buffer, base::ArraySize(buffer));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       writer.AppendLiteral("C|");
       writer.AppendInt(getpid());
       writer.AppendLiteral("|");

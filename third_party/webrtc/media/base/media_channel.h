@@ -1057,6 +1057,7 @@ class VideoMediaReceiveChannelInterface : public MediaReceiveChannelInterface {
   // Clear recordable encoded frame callback for `ssrc`
   virtual void ClearRecordableEncodedFrameCallback(uint32_t ssrc) = 0;
   virtual bool GetStats(VideoMediaReceiveInfo* stats) = 0;
+<<<<<<< HEAD
   // Returns a callback that can be used to retrieve stats.
   // The purpose is to allow binding state as it exists on the signaling thread
   // to a callback that is run on the worker thread. This avoids race conditions
@@ -1064,6 +1065,8 @@ class VideoMediaReceiveChannelInterface : public MediaReceiveChannelInterface {
   // may be torn down asynchronously.
   virtual absl::AnyInvocable<std::optional<VideoMediaReceiveInfo>()>
   GetStatsTask() = 0;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   virtual bool AddDefaultRecvStreamForTesting(const StreamParams& sp) = 0;
   virtual void SetReceiveNonSenderRttEnabled(bool enabled) = 0;
 };

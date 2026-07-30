@@ -12,11 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/sources/table_source.scss
 @use "../../common" as *;
 
 .pf-stdlib-table-node {
   .pf-details-box {
     margin-bottom: 0.75rem;
+=======
+@import "../../common";
+
+.pf-stdlib-table-node {
+  .pf-details-box {
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1rem;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/sources/table_source.scss
   }
 }
 

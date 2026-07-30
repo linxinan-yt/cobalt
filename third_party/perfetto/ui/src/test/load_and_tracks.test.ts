@@ -69,9 +69,13 @@ test('mark', async () => {
   await page.keyboard.press('M');
   await pth.waitForPerfettoIdle();
 
+<<<<<<< HEAD
   await pth.waitForIdleAndScreenshot(`mark.png`, {
     locator: page.locator('.pf-timeline-page__timeline'),
   });
+=======
+  await pth.waitForIdleAndScreenshot(`mark.png`);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 });
 
 test('track expand and collapse', async () => {

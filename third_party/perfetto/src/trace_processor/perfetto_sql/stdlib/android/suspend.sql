@@ -37,6 +37,7 @@ WITH
     SELECT
       ts,
       dur,
+<<<<<<< HEAD
       coalesce(
         lead(ts) OVER (PARTITION BY t.machine_id ORDER BY ts),
         trace_end()
@@ -44,6 +45,9 @@ WITH
       - ts
       - dur AS duration_gap,
       t.machine_id
+=======
+      coalesce(lead(ts) OVER (ORDER BY ts), trace_end()) - ts - dur AS duration_gap
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     FROM track AS t
     JOIN slice AS s
       ON s.track_id = t.id
@@ -54,6 +58,7 @@ WITH
     SELECT
       ts,
       dur,
+<<<<<<< HEAD
       coalesce(
         lead(ts) OVER (PARTITION BY track.machine_id ORDER BY ts),
         trace_end()
@@ -61,6 +66,9 @@ WITH
       - ts
       - dur AS duration_gap,
       track.machine_id
+=======
+      coalesce(lead(ts) OVER (ORDER BY ts), trace_end()) - ts - dur AS duration_gap
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     FROM slice
     JOIN track
       ON slice.track_id = track.id
@@ -77,9 +85,23 @@ WITH
       )
   ),
   suspend_slice_pre_filter AS (
+<<<<<<< HEAD
     SELECT ts, dur, duration_gap, machine_id FROM suspend_slice_from_minimal
     UNION ALL
     SELECT ts, dur, duration_gap, machine_id FROM suspend_slice_latency
+=======
+    SELECT
+      ts,
+      dur,
+      duration_gap
+    FROM suspend_slice_from_minimal
+    UNION ALL
+    SELECT
+      ts,
+      dur,
+      duration_gap
+    FROM suspend_slice_latency
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   ),
   suspend_slice AS (
     -- Filter out all the slices that overlapped with the following slices.
@@ -88,6 +110,21 @@ WITH
     FROM suspend_slice_pre_filter
     WHERE
       duration_gap >= 0
+<<<<<<< HEAD
+=======
+  ),
+  awake_slice AS (
+    -- If we don't have any rows, use the trace bounds if bounds are defined.
+    SELECT
+      trace_start() AS ts,
+      trace_dur() AS dur
+    WHERE
+      (
+        SELECT
+          count(*)
+        FROM suspend_slice
+      ) = 0 AND dur > 0
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     UNION ALL
     -- This guarantees that if machine 0 has no suspend slices in the trace,
     -- that _intervals_fill_gaps will add an awake slice for the trace bounds.

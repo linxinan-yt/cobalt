@@ -1044,12 +1044,16 @@ FractionalPartSubstitution::FractionalPartSubstitution(int32_t _pos,
         }
     } else {
         // cast away const
+<<<<<<< HEAD
         NFRuleSet* rs = const_cast<NFRuleSet*>(getRuleSet());
         if (rs != nullptr) {
             rs->makeIntoFractionRuleSet();
         } else {
             status = U_PARSE_ERROR;
         }
+=======
+        const_cast<NFRuleSet*>(getRuleSet())->makeIntoFractionRuleSet();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }
 

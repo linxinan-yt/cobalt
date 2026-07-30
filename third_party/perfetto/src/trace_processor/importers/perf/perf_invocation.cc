@@ -96,6 +96,7 @@ base::StatusOr<RefPtr<PerfInvocation>> PerfInvocation::Builder::Build() {
     // recording was using leader sampling (this would require proper handling
     // of HEADER_GROUP_DESC). But this is fine since the samples will still be
     // attributed to the first counter in the group.
+<<<<<<< HEAD
     tables::ProfilerSessionTable::Row session_row;
     session_row.source = context_->storage->InternString("linux.perf");
     if (const char* unit = TimebaseUnit(entry.attr); unit) {
@@ -104,6 +105,10 @@ base::StatusOr<RefPtr<PerfInvocation>> PerfInvocation::Builder::Build() {
     auto perf_session_id = context_->storage->mutable_profiler_session_table()
                                ->Insert(session_row)
                                .id;
+=======
+    auto perf_session_id =
+        context_->storage->mutable_perf_session_table()->Insert({}).id;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     RefPtr<PerfEventAttr> attr(
         new PerfEventAttr(context_, perf_session_id, entry.attr));
     if (!first_attr) {
@@ -131,9 +136,15 @@ base::StatusOr<RefPtr<PerfInvocation>> PerfInvocation::Builder::Build() {
         !first_attr->id_offset_from_end().has_value()))) {
     return base::ErrStatus("No id offsets for multiple perf_event_attr");
   }
+<<<<<<< HEAD
   return RefPtr<PerfInvocation>(
       new PerfInvocation(context_, std::move(first_attr),
                          std::move(attrs_by_id), attr_with_ids_.size() == 1));
+=======
+  return RefPtr<PerfInvocation>(new PerfInvocation(context_, std::move(first_attr),
+                                                   std::move(attrs_by_id),
+                                                   attr_with_ids_.size() == 1));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 base::StatusOr<RefPtr<PerfEventAttr>> PerfInvocation::FindAttrForRecord(
@@ -168,8 +179,13 @@ base::StatusOr<RefPtr<PerfEventAttr>> PerfInvocation::FindAttrForRecord(
 }
 
 bool PerfInvocation::ReadEventId(const perf_event_header& header,
+<<<<<<< HEAD
                                  const TraceBlobView& payload,
                                  uint64_t& id) const {
+=======
+                              const TraceBlobView& payload,
+                              uint64_t& id) const {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   const PerfEventAttr& first = *attrs_by_id_.GetIterator().value();
   Reader reader(payload.copy());
 
@@ -202,8 +218,13 @@ void PerfInvocation::SetEventName(uint64_t event_id, std::string name) {
 }
 
 void PerfInvocation::SetEventName(uint32_t type,
+<<<<<<< HEAD
                                   uint64_t config,
                                   const std::string& name) {
+=======
+                               uint64_t config,
+                               const std::string& name) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   for (auto it = attrs_by_id_.GetIterator(); it; ++it) {
     if (it.value()->type() == type && it.value()->config() == config) {
       it.value()->set_event_name(name);
@@ -212,8 +233,13 @@ void PerfInvocation::SetEventName(uint32_t type,
 }
 
 void PerfInvocation::AddBuildId(int32_t pid,
+<<<<<<< HEAD
                                 std::string filename,
                                 BuildId build_id) {
+=======
+                             std::string filename,
+                             BuildId build_id) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   build_ids_.Insert({pid, std::move(filename)}, std::move(build_id));
 }
 
@@ -232,8 +258,14 @@ std::optional<BuildId> PerfInvocation::LookupBuildId(
 void PerfInvocation::SetCmdline(const std::vector<std::string>& args) {
   for (auto it = attrs_by_id_.GetIterator(); it; ++it) {
     auto session_id = it.value()->perf_session_id();
+<<<<<<< HEAD
     (*context_->storage->mutable_profiler_session_table())[session_id]
         .set_cmdline(context_->storage->InternString(
+=======
+    context_->storage->mutable_perf_session_table()
+        ->FindById(session_id)
+        ->set_cmdline(context_->storage->InternString(
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             base::StringView(base::Join(args, " "))));
   }
 }

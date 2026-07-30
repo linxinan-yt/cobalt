@@ -253,6 +253,7 @@ RTCError JsepTransport::SetRemoteJsepTransportDescription(
 }
 
 RTCError JsepTransport::AddRemoteCandidates(const Candidates& candidates) {
+<<<<<<< HEAD
   RTC_DCHECK_RUN_ON(&transport_sequence_);
   if (!remote_description_) {
     StringBuilder sb;
@@ -260,6 +261,14 @@ RTCError JsepTransport::AddRemoteCandidates(const Candidates& candidates) {
        << " is not ready to use the remote candidate because the "
           "remote description is not set.";
     return RTCError(RTCErrorType::INVALID_STATE, sb.Release());
+=======
+  RTC_DCHECK_RUN_ON(network_thread_);
+  if (!remote_description_) {
+    return RTCError(RTCErrorType::INVALID_STATE,
+                    mid() +
+                        " is not ready to use the remote candidate because the "
+                        "remote description is not set.");
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   for (const Candidate& candidate : candidates) {

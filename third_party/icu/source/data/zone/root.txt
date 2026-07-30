@@ -2,7 +2,11 @@
 // License & terms of use: http://www.unicode.org/copyright.html
 // Generated using tools/cldr/cldr-to-icu/
 root{
+<<<<<<< HEAD
     Version{"48"}
+=======
+    Version{"47"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     zoneStrings{
         "Africa:Asmera"{
             ec{"Asmara"}
@@ -100,12 +104,15 @@ root{
         "America:Merida"{
             ec{"Mérida"}
         }
+<<<<<<< HEAD
         "America:Mexico_City"{
             ec{"Ciudad de México"}
         }
         "America:Miquelon"{
             ec{"Saint-Pierre"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Noronha"{
             ec{"Fernando de Noronha"}
         }
@@ -147,9 +154,12 @@ root{
         }
         "Antarctica:DumontDUrville"{
             ec{"Dumont-d’Urville"}
+<<<<<<< HEAD
         }
         "Antarctica:Syowa"{
             ec{"Showa"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "Asia:Calcutta"{
             ec{"Kolkata"}
@@ -184,12 +194,15 @@ root{
         "Etc:UTC"{
             ss{"UTC"}
         }
+<<<<<<< HEAD
         "Europe:Busingen"{
             ec{"Büsingen"}
         }
         "Europe:Chisinau"{
             ec{"Chișinău"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Europe:Kiev"{
             ec{"Kyiv"}
         }

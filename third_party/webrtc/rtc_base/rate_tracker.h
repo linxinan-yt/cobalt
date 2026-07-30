@@ -33,7 +33,16 @@ class RateTracker {
   double ComputeRateForInterval(Timestamp current_time,
                                 TimeDelta interval) const;
 
+<<<<<<< HEAD
   double Rate(Timestamp current_time) const;
+=======
+  // Computes the average rate over the rate tracker's recording interval
+  // of bucket_milliseconds * bucket_count.
+  double Rate(Timestamp current_time) const {
+    return ComputeRateForInterval(
+        current_time, TimeDelta::Millis(bucket_milliseconds_) * bucket_count_);
+  }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // The total number of samples added.
   int64_t TotalSampleCount() const;

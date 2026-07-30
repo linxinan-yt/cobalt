@@ -150,8 +150,12 @@ export function parseUrlCommands(
 
 export class CommandManagerImpl implements CommandManager {
   private readonly registry = new Registry<Command>((cmd) => cmd.id);
+<<<<<<< HEAD
   private readonly macros = new Registry<string>((macroId) => macroId);
   private isExecutingStartupCommands = false;
+=======
+  private allowlistCheckFn: (id: string) => boolean = () => true;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   constructor(private omnibox: OmniboxManagerImpl) {}
 
@@ -173,9 +177,20 @@ export class CommandManagerImpl implements CommandManager {
     return this.registry.register(cmd);
   }
 
+<<<<<<< HEAD
   async runCommand(id: string, ...args: unknown[]): Promise<unknown> {
     if (this.isExecutingStartupCommands && !this.isStartupCommandAllowed(id)) {
       throw new StartupCommandNotAllowedError(id);
+=======
+  setAllowlistCheck(checkFn: (id: string) => boolean): void {
+    this.allowlistCheckFn = checkFn;
+  }
+
+  runCommand(id: string, ...args: unknown[]): unknown {
+    if (!this.allowlistCheckFn(id)) {
+      console.warn(`Command ${id} is not allowed in current execution context`);
+      return;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
     const cmd = this.registry.get(id);
     try {

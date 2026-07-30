@@ -245,8 +245,13 @@ private:
  */
 class U_COMMON_API_CLASS Normalizer2Impl : public UObject {
 public:
+<<<<<<< HEAD
     U_COMMON_API Normalizer2Impl() : normTrie(nullptr), fCanonIterData(nullptr) {}
     U_COMMON_API virtual ~Normalizer2Impl();
+=======
+    Normalizer2Impl() : normTrie(nullptr), fCanonIterData(nullptr) {}
+    virtual ~Normalizer2Impl();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     U_COMMON_API void init(const int32_t* inIndexes,
                            const UCPTrie* inTrie,
@@ -281,6 +286,7 @@ public:
             return UNORM_NO;
         }
     }
+<<<<<<< HEAD
     U_COMMON_API UBool isAlgorithmicNoNo(uint16_t norm16) const {
         return limitNoNo <= norm16 && norm16 < minMaybeNo;
     }
@@ -290,6 +296,11 @@ public:
     U_COMMON_API UBool isDecompYes(uint16_t norm16) const {
         return norm16 < minYesNo || minMaybeYes <= norm16;
     }
+=======
+    UBool isAlgorithmicNoNo(uint16_t norm16) const { return limitNoNo<=norm16 && norm16<minMaybeNo; }
+    UBool isCompNo(uint16_t norm16) const { return minNoNo<=norm16 && norm16<minMaybeNo; }
+    UBool isDecompYes(uint16_t norm16) const { return norm16<minYesNo || minMaybeYes<=norm16; }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     U_COMMON_API uint8_t getCC(uint16_t norm16) const {
         if(norm16>=MIN_NORMAL_MAYBE_YES) {
@@ -300,6 +311,7 @@ public:
         }
         return getCCFromNoNo(norm16);
     }
+<<<<<<< HEAD
     U_COMMON_API static uint8_t getCCFromNormalYesOrMaybe(uint16_t norm16) {
         return static_cast<uint8_t>(norm16 >> OFFSET_SHIFT);
     }
@@ -307,6 +319,15 @@ public:
         return norm16>=MIN_NORMAL_MAYBE_YES ? getCCFromNormalYesOrMaybe(norm16) : 0;
     }
     U_COMMON_API uint8_t getCCFromYesOrMaybeYesCP(UChar32 c) const {
+=======
+    static uint8_t getCCFromNormalYesOrMaybe(uint16_t norm16) {
+        return static_cast<uint8_t>(norm16 >> OFFSET_SHIFT);
+    }
+    static uint8_t getCCFromYesOrMaybeYes(uint16_t norm16) {
+        return norm16>=MIN_NORMAL_MAYBE_YES ? getCCFromNormalYesOrMaybe(norm16) : 0;
+    }
+    uint8_t getCCFromYesOrMaybeYesCP(UChar32 c) const {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         if (c < minCompNoMaybeCP) { return 0; }
         return getCCFromYesOrMaybeYes(getNorm16(c));
     }
@@ -380,6 +401,8 @@ public:
     U_COMMON_API uint16_t getFCD16FromNormData(UChar32 c) const;
 
     U_COMMON_API uint16_t getFCD16FromMaybeOrNonZeroCC(uint16_t norm16) const;
+
+    uint16_t getFCD16FromMaybeOrNonZeroCC(uint16_t norm16) const;
 
     /**
      * Gets the decomposition for one code point.

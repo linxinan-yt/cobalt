@@ -40,7 +40,10 @@ FUZZER_TARGETS = \
 		 collator_rulebased_fuzzer \
 		 converter_fuzzer date_format_fuzzer \
 		 date_time_pattern_generator_fuzzer \
+<<<<<<< HEAD
 		 decimal_format_symbols_fuzzer \
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 		 dtfmtsym_fuzzer \
 		 list_format_fuzzer locale_fuzzer \
 		 locale_morph_fuzzer \

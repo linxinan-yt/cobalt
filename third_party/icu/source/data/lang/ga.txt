@@ -569,7 +569,11 @@ ga{
         Egyh{"Éigipteach cliarúil"}
         Egyp{"Iairiglifí Éigipteacha"}
         Elba{"Elbasan"}
+<<<<<<< HEAD
         Ethi{"Aetóipice"}
+=======
+        Ethi{"Aetóipic"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         Geor{"Seoirseach"}
         Glag{"Glagalach"}
         Gonm{"Masaram Gondi"}

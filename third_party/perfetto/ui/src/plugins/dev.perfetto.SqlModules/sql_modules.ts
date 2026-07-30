@@ -12,9 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD
 import type {TableColumn} from '../../components/widgets/sql/table/table_column';
 import type {SqlTableDefinition} from '../../components/widgets/sql/table/table_description';
 import type {PerfettoSqlType} from '../../trace_processor/perfetto_sql_type';
+=======
+import {TableColumn} from '../../components/widgets/sql/table/table_column';
+import {SqlTableDescription} from '../../components/widgets/sql/table/table_description';
+import {PerfettoSqlType} from '../../trace_processor/perfetto_sql_type';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 // Handles the access to all of the Perfetto SQL modules accessible to Trace
 //  Processor.
@@ -35,6 +41,7 @@ export interface SqlModules {
   // Returns module that contains Perfetto SQL table/view if it was loaded in one of the Perfetto
   // SQL module.
   getModuleForTable(tableName: string): SqlModule | undefined;
+<<<<<<< HEAD
 
   // Returns true if the module is disabled due to missing data in the trace.
   isModuleDisabled(moduleName: string): boolean;
@@ -51,6 +58,8 @@ export interface SqlModules {
   // Safe to call multiple times - subsequent calls are no-ops.
   // Returns a promise that resolves when initialization is complete.
   ensureInitialized(): Promise<void>;
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 // Handles the access to a specific Perfetto SQL Package. Package consists of
@@ -150,6 +159,7 @@ export interface TableAndColumn {
 
   isEqual(o: TableAndColumn): boolean;
 }
+<<<<<<< HEAD
 
 // Returns true if a table should be considered disabled (no data).
 // Uses table-level availability when known, falls back to module-level.
@@ -164,3 +174,5 @@ export function isTableEffectivelyDisabled(
   const module = sqlModules.getModuleForTable(tableName);
   return module !== undefined && sqlModules.isModuleDisabled(module.includeKey);
 }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

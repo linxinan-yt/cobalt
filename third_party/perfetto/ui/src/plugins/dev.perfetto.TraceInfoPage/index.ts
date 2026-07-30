@@ -23,6 +23,17 @@ export default class implements PerfettoPlugin {
   static readonly id = 'dev.perfetto.TraceInfoPage';
 
   async onTraceLoad(trace: Trace): Promise<void> {
+    // Create helper functions for accessing metadata
+    await trace.engine.query(`
+      CREATE PERFETTO FUNCTION _metadata_str(key STRING)
+      RETURNS STRING AS
+      SELECT str_value FROM metadata WHERE name = $key;
+
+      CREATE PERFETTO FUNCTION _metadata_int(key STRING)
+      RETURNS LONG AS
+      SELECT int_value FROM metadata WHERE name = $key;
+    `);
+
     trace.pages.registerPage({
       route: '/info',
       render: (subpage) => m(TraceInfoPage, {trace, subpage: subpage}),
@@ -33,6 +44,16 @@ export default class implements PerfettoPlugin {
       href: '#!/info',
       icon: 'info',
       sortOrder: 15,
+<<<<<<< HEAD
+=======
+    });
+    trace.sidebar.addMenuItem({
+      section: 'current_trace',
+      text: 'Info and Stats',
+      href: '#!/info/stats',
+      icon: 'query_stats',
+      sortOrder: 23,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     });
 
     await maybeDisplayTraceDoctorTab(trace);

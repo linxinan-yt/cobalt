@@ -252,6 +252,7 @@ kxv_Telu{
             }
             eras{
                 abbreviated{
+<<<<<<< HEAD
                     0{"క్రీపూ"}
                     1{"క్రీశ"}
                 }
@@ -262,6 +263,18 @@ kxv_Telu{
                 wide%variant{
                     0{"ప్రస్తుత సకానికి పూర్వం"}
                     1{"ప్రస్తుత సకం"}
+=======
+                    "క్రీపూ",
+                    "క్రీశ",
+                }
+                wide{
+                    "క్రీన్తు వూర్వం",
+                    "క్రీస్తు సకం",
+                }
+                wide%variant{
+                    "ప్రస్తుత సకానికి పూర్వం",
+                    "ప్రస్తుత సకం",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
             intervalFormats{

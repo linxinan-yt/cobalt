@@ -1293,6 +1293,7 @@ HEAP_GRAPH_REFERENCE_TABLE = Table(
                 deobfuscation mapping was provided for it.'''
         }))
 
+<<<<<<< HEAD
 HEAP_GRAPH_PRIMITIVE_TABLE = Table(
     python_module=__file__,
     class_name='HeapGraphPrimitiveTable',
@@ -1377,6 +1378,8 @@ HEAP_GRAPH_PRIMITIVE_TABLE = Table(
                 '''Value for double fields.''',
         }))
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 AGGREGATE_PROFILE_TABLE = Table(
     python_module=__file__,
     class_name='AggregateProfileTable',
@@ -1646,7 +1649,11 @@ EXPERIMENTAL_FLAMEGRAPH_TABLE = Table(
 ALL_TABLES = [
     AGGREGATE_PROFILE_TABLE,
     AGGREGATE_SAMPLE_TABLE,
+<<<<<<< HEAD
     CHROME_STACK_SAMPLE_EXTRAS_TABLE,
+=======
+    CPU_PROFILE_STACK_SAMPLE_TABLE,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     EXPERIMENTAL_FLAMEGRAPH_TABLE,
     GPU_CONTEXT_TABLE,
     GPU_COUNTER_GROUP_TABLE,

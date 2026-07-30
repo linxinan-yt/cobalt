@@ -13,7 +13,11 @@
 namespace webrtc {
 
 // The timestamp is always in UTC.
+<<<<<<< HEAD
 const char* const kSourceTimestamp = "WebRTC source stamp 2026-07-27T04:06:41";
+=======
+const char* const kSourceTimestamp = "WebRTC source stamp 2025-11-06T04:12:50";
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 void LoadWebRTCVersionInRegister() {
   // Using volatile to instruct the compiler to not optimize `p` away even

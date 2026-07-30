@@ -2,6 +2,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+import("//components/optimization_guide/features.gni")
 import("//media/media_options.gni")
 import("//third_party/webrtc/webrtc.gni")
 
@@ -30,11 +31,19 @@ component("webrtc") {
   deps = [
     "//base",
     "//build:chromecast_buildflags",
+<<<<<<< HEAD
+=======
+    "//components/optimization_guide:machine_learning_tflite_buildflags",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     "//media",
     "//third_party/webrtc_overrides:webrtc_component",
   ]
 
+<<<<<<< HEAD
   if (!is_fuchsia) {
+=======
+  if (build_with_tflite_lib) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     deps += [ "//components/optimization_guide/core/inference:op_resolver" ]
   }
 

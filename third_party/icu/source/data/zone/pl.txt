@@ -84,6 +84,12 @@ pl{
         "America:Costa_Rica"{
             ec{"Kostaryka"}
         }
+<<<<<<< HEAD
+=======
+        "America:Cuiaba"{
+            ec{"Cuiabá"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Dominica"{
             ec{"Dominika"}
         }
@@ -105,6 +111,12 @@ pl{
         "America:Jamaica"{
             ec{"Jamajka"}
         }
+<<<<<<< HEAD
+=======
+        "America:Maceio"{
+            ec{"Maceió"}
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:Martinique"{
             ec{"Martynika"}
         }

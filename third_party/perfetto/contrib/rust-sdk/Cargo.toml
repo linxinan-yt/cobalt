@@ -1,3 +1,7 @@
 [workspace]
 resolver = "2"
+<<<<<<< HEAD
 members = ["docs-tests", "perfetto", "perfetto-derive", "perfetto-protos-gpu", "perfetto-protos-trace-processor", "perfetto-sys", "tracing-perfetto"]
+=======
+members = ["perfetto", "perfetto-derive", "perfetto-protos-gpu", "perfetto-sys"]
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

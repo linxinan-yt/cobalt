@@ -26,7 +26,11 @@
 #include "src/trace_processor/sqlite/sql_source.h"
 #include "test/gtest_and_gmock.h"
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/string_functions/sqlite3_str_split_unittest.cc
 namespace perfetto::trace_processor::string_functions {
+=======
+namespace perfetto::trace_processor {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/sqlite3_str_split_unittest.cc
 namespace {
 
 class Sqlite3StrSplitTest : public ::testing::Test {
@@ -94,4 +98,8 @@ TEST_F(Sqlite3StrSplitTest, SplitEmptyInput) {
 }
 
 }  // namespace
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/string_functions/sqlite3_str_split_unittest.cc
 }  // namespace perfetto::trace_processor::string_functions
+=======
+}  // namespace perfetto::trace_processor
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/sqlite3_str_split_unittest.cc

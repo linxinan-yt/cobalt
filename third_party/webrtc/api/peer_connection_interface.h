@@ -693,6 +693,7 @@ class RTC_EXPORT PeerConnectionInterface : public RefCountInterface {
     // https://github.com/w3c/webrtc-pc/issues/3072
     bool always_negotiate_data_channels = false;
 
+<<<<<<< HEAD
     // Number of SCTP streams to negotiate at SCTP connection establishment.
     // Chiefly useful for testing what happens when you run out.
     // This controls the announced_maximum_outgoing_streams parameter
@@ -703,6 +704,8 @@ class RTC_EXPORT PeerConnectionInterface : public RefCountInterface {
     // Option for origin trial / rollout.
     bool enable_sctp_snap = false;
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     //
     // Don't forget to update operator== if adding something.
     //

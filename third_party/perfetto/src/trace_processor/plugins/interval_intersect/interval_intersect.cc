@@ -398,6 +398,7 @@ IntervalIntersectPlugin::~IntervalIntersectPlugin() = default;
 
 }  // namespace
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/interval_intersect/interval_intersect.cc
 void RegisterPlugin() {
   static PluginRegistration reg(
       []() -> std::unique_ptr<PluginBase> {
@@ -407,6 +408,13 @@ void RegisterPlugin() {
       IntervalIntersectPlugin::kDepIds.data(),
       IntervalIntersectPlugin::kDepIds.size());
   base::ignore_result(reg);
+=======
+base::Status RegisterIntervalIntersectFunctions(PerfettoSqlEngine& engine,
+                                                StringPool* pool) {
+  return engine.RegisterFunction<IntervalIntersect>(
+      std::make_unique<IntervalIntersect::UserData>(
+          IntervalIntersect::UserData{&engine, pool}));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/interval_intersect.cc
 }
 
 }  // namespace perfetto::trace_processor::interval_intersect

@@ -15,6 +15,7 @@
  */
 
 #include "perfetto/ext/base/rt_mutex.h"
+#include "perfetto/ext/base/flags.h"
 
 #include "test/gtest_and_gmock.h"
 

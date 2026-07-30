@@ -73,15 +73,24 @@ doi{
             mole{
                 dnam{"मोल"}
             }
+<<<<<<< HEAD
             part-per-1e6{
                 dnam{"हिस्से फी दस लक्ख"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             percent{
                 dnam{"प्रतिशत/फीसदी"}
             }
             permille{
                 dnam{"फी ज्हार"}
             }
+<<<<<<< HEAD
+=======
+            permillion{
+                dnam{"हिस्से फी दस लक्ख"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             permyriad{
                 dnam{"फी दस ज्हार"}
             }
@@ -639,7 +648,11 @@ doi{
             mole{
                 dnam{"मोल"}
             }
+<<<<<<< HEAD
             part-per-1e6{
+=======
+            permillion{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 dnam{"हिफीदल"}
             }
         }
@@ -1101,15 +1114,24 @@ doi{
             mole{
                 dnam{"मोल"}
             }
+<<<<<<< HEAD
             part-per-1e6{
                 dnam{"हिस्से/दस लक्ख"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             percent{
                 dnam{"प्रतिशत/फीसदी"}
             }
             permille{
                 dnam{"फी ज्हार"}
             }
+<<<<<<< HEAD
+=======
+            permillion{
+                dnam{"हिस्से/दस लक्ख"}
+            }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         consumption{
             liter-per-100-kilometer{

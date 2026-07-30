@@ -13,7 +13,11 @@
 // limitations under the License.
 
 import m from 'mithril';
+<<<<<<< HEAD
 import type {Engine} from '../../trace_processor/engine';
+=======
+import {Engine} from '../../trace_processor/engine';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {NUM_NULL, STR} from '../../trace_processor/query_result';
 import {Icon} from '../../widgets/icon';
 import {Tooltip} from '../../widgets/tooltip';
@@ -23,6 +27,7 @@ import {Grid, GridCell, GridHeaderCell} from '../../widgets/grid';
 // All possible tab keys - single source of truth
 export const ALL_TAB_KEYS = [
   'overview',
+<<<<<<< HEAD
   'trace_doctor',
   'config',
   'android',
@@ -33,6 +38,14 @@ export const ALL_TAB_KEYS = [
   'trace_errors',
   'data_losses',
   'notices',
+=======
+  'config',
+  'android',
+  'machines',
+  'import_errors',
+  'trace_errors',
+  'data_losses',
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   'ui_loading_errors',
   'stats',
 ] as const;
@@ -53,12 +66,16 @@ export const statsSpec = {
   idx: STR,
   severity: STR,
   source: STR,
+<<<<<<< HEAD
   machineId: NUM_NULL,
   traceId: NUM_NULL,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 
 export type StatsSectionRow = typeof statsSpec;
 
+<<<<<<< HEAD
 export interface TraceInfo {
   readonly id: number;
   readonly traceIndex: number;
@@ -87,6 +104,8 @@ export async function getTraceInfos(
   return map;
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 // Generic error category interface
 export interface ErrorCategory {
   name: string;
@@ -107,12 +126,19 @@ export async function loadStatsWithFilter(
       cast(ifnull(idx, '') as text) as idx,
       description,
       severity,
+<<<<<<< HEAD
       source,
       machine_id as machineId,
       trace_id as traceId
     from stats
     where ${whereClause}
     order by trace_id, machine_id, name, idx
+=======
+      source
+    from stats
+    where ${whereClause}
+    order by name, idx
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   `);
 
   const stats: StatsSectionRow[] = [];
@@ -124,8 +150,11 @@ export async function loadStatsWithFilter(
       idx: iter.idx,
       severity: iter.severity,
       source: iter.source,
+<<<<<<< HEAD
       machineId: iter.machineId,
       traceId: iter.traceId,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     });
   }
 
@@ -152,10 +181,39 @@ export function groupByCategory(stats: StatsSectionRow[]): ErrorCategory[] {
   return Array.from(categoryMap.values());
 }
 
+<<<<<<< HEAD
 // Render an error category card
 export function renderErrorCategoryCard(
   category: ErrorCategory,
   severity: 'danger' | 'warning' | 'notice',
+=======
+// Format file size from bytes to human-readable string
+export function formatFileSize(bytes: bigint | number): {
+  formatted: string;
+  exact: string;
+} {
+  const numBytes = Number(bytes);
+  const exact = `${numBytes.toLocaleString()} bytes`;
+
+  let formatted: string;
+  if (numBytes >= 1024 * 1024 * 1024) {
+    formatted = `${(numBytes / (1024 * 1024 * 1024)).toFixed(2)} GB`;
+  } else if (numBytes >= 1024 * 1024) {
+    formatted = `${(numBytes / (1024 * 1024)).toFixed(2)} MB`;
+  } else if (numBytes >= 1024) {
+    formatted = `${(numBytes / 1024).toFixed(2)} KB`;
+  } else {
+    formatted = `${numBytes} bytes`;
+  }
+
+  return {formatted, exact};
+}
+
+// Render an error category card
+export function renderErrorCategoryCard(
+  category: ErrorCategory,
+  severity: 'danger' | 'warning',
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   icon: string,
 ): m.Children {
   const scrollToSection = () => {
@@ -218,6 +276,7 @@ function categoryToId(categoryName: string): string {
 // Render a category section with detailed breakdown
 export function renderCategorySection(
   category: ErrorCategory,
+<<<<<<< HEAD
   options?: {
     className?: string;
     isMultiTrace?: boolean;
@@ -237,11 +296,16 @@ export function renderCategorySection(
     {key: 'idx', header: m(GridHeaderCell, 'Index')},
     {key: 'value', header: m(GridHeaderCell, 'Count')},
   );
+=======
+  options?: {className?: string},
+): m.Children {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   return m(
     '',
     m('h3', {id: categoryToId(category.name)}, category.name),
     category.description && m('p', category.description),
     m(Grid, {
+<<<<<<< HEAD
       columns,
       rowData: category.entries.map((row) => {
         const cells = [];
@@ -257,6 +321,22 @@ export function renderCategorySection(
         );
         return cells;
       }),
+=======
+      columns: [
+        {
+          key: 'idx',
+          header: m(GridHeaderCell, 'Index'),
+        },
+        {
+          key: 'value',
+          header: m(GridHeaderCell, 'Count'),
+        },
+      ],
+      rowData: category.entries.map((row) => [
+        m(GridCell, row.idx !== '' ? row.idx : '-'),
+        m(GridCell, row.value !== null ? row.value : '-'),
+      ]),
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       className: options?.className,
     }),
   );

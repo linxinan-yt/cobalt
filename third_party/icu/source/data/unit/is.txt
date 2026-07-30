@@ -579,6 +579,26 @@ is{
                 one{"{0} permyriad"}
                 other{"{0} permyriad"}
             }
+            portion-per-1e9{
+                case{
+                    accusative{
+                        one{"{0} hluta á milljarð"}
+                        other{"{0} hluta á milljarð"}
+                    }
+                    dative{
+                        one{"{0} hluta á milljarð"}
+                        other{"{0} hlutum á milljarð"}
+                    }
+                    genitive{
+                        one{"{0} hluta á milljarð"}
+                        other{"{0} hluta á milljarð"}
+                    }
+                }
+                dnam{"hlutar á milljarð"}
+                gender{"masculine"}
+                one{"{0} hluti á milljarð"}
+                other{"{0} hlutar á milljarð"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1080,6 +1100,10 @@ is{
                 gender{"feminine"}
                 one{"{0} nótt"}
                 other{"{0} nætur"}
+<<<<<<< HEAD
+=======
+                per{"{0}/nótt"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 case{

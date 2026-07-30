@@ -469,7 +469,11 @@ ps{
                         "صفر",
                         "ربيع",
                         "ربيع II",
+<<<<<<< HEAD
                         "جماد I",
+=======
+                        "جماد",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                         "جماد ۲",
                         "رجب",
                         "شعبان",
@@ -677,6 +681,15 @@ ps{
         }
         era{
             dn{"دور"}
+<<<<<<< HEAD
+=======
+        }
+        era-narrow{
+            dn{"دور"}
+        }
+        era-short{
+            dn{"دور"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         fri{
             relative{
@@ -1154,6 +1167,22 @@ ps{
                 "[\\: ∶]",
             }
         }
+<<<<<<< HEAD
+=======
+        general{
+            lenient{
+                "[.．․﹒ 。｡︒]",
+                "['＇’ ՚ ᾽᾿ ʼ]",
+                "[%％﹪ ٪]",
+                "[‰ ؉]",
+                "[\$＄﹩]",
+                "[£￡ ₤]",
+                "[¥￥]",
+                "[₩￦]",
+                "[₹ {Rp} {Rs}₨]",
+            }
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",

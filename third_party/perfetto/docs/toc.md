@@ -91,6 +91,7 @@
 
   - [Visualization](#)
 
+<<<<<<< HEAD
     - [Perfetto UI](visualization/perfetto-ui.md) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
     - [Merging traces in the Perfetto UI](visualization/merging-traces.md) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
     - [Data Explorer](visualization/data-explorer.md) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
@@ -99,6 +100,11 @@
     - [Embedding the UI](visualization/embedding-the-ui.md) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
     - [Debug Tracks](analysis/debug-tracks.md) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
     - [Heap Dump Explorer](visualization/heap-dump-explorer.md) {.tag-android}
+=======
+      - [perfetto cmdline](reference/perfetto-cli.md)
+      - [heap_profile cmdline](reference/heap_profile-cli.md)
+      - [tracebox](reference/tracebox.md)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     - [Extending the UI](#)
 
@@ -150,6 +156,7 @@
 
     - [PerfettoSQL](#)
 
+<<<<<<< HEAD
       - [Prelude Tables](analysis/sql-tables.autogen) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
       - [Built-in Functions](analysis/builtin.md) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
       - [Stats Table](analysis/sql-stats.autogen) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
@@ -160,6 +167,27 @@
     - [Extension Server Protocol](visualization/extension-server-protocol.md) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
     - [Embedding API](visualization/embedding-api-reference.md) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
     - [Android Version Notes](reference/android-version-notes.md) {.tag-android}
+=======
+    - [SDK release process](contributing/sdk-releasing.md)
+    - [Python release process](contributing/python-releasing.md)
+    - [UI release process](visualization/perfetto-ui-release-process.md)
+    - [Chrome branches](contributing/chrome-branches.md)
+    - [SQLite upgrade guide](contributing/sqlite-upgrade-guide.md)
+
+    - [Design documents](#)
+      - [API and ABI surface](design-docs/api-and-abi.md)
+      - [Life of a tracing session](design-docs/life-of-a-tracing-session.md)
+      - [ProtoZero](design-docs/protozero.md)
+      - [Security model](design-docs/security-model.md)
+      - [Statsd Checkpoint Atoms](design-docs/checkpoint-atoms.md)
+      - [Batch Trace Processor](design-docs/batch-trace-processor.md)
+      - [Trace Processor Architecture](design-docs/trace-processor-architecture.md)
+      - [Heapprofd design](design-docs/heapprofd-design.md)
+      - [Heapprofd wire protocol](design-docs/heapprofd-wire-protocol.md)
+      - [Heapprofd sampling](design-docs/heapprofd-sampling.md)
+      - [Perfetto CI](design-docs/continuous-integration.md)
+      - [LockFreeTaskRunner](design-docs/lock-free-task-runner.md)
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   - [Advanced Topics](#)
 

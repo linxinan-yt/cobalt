@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # perfetto-sdk
 
 Safe and ergonomic Rust bindings for the
@@ -44,3 +45,8 @@ perfetto_sdk::track_event_instant!("rendering", "DrawFrame");
 | [`perfetto-sdk-sys`](https://crates.io/crates/perfetto-sdk-sys) | Low-level FFI bindings |
 | [`perfetto-sdk-derive`](https://crates.io/crates/perfetto-sdk-derive) | Proc macros for function tracing |
 | [`perfetto-sdk-protos-gpu`](https://crates.io/crates/perfetto-sdk-protos-gpu) | GPU event protobuf bindings |
+=======
+# perfetto
+
+Perfetto bindings for the Rust programming language.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

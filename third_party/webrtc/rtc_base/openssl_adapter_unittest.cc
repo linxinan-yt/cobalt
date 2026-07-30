@@ -25,11 +25,19 @@
 #include "rtc_base/socket.h"
 #include "rtc_base/socket_address.h"
 #include "rtc_base/ssl_certificate.h"
+<<<<<<< HEAD
 #include "rtc_base/ssl_stream_adapter.h"  // IWYU pragma: keep
 #include "rtc_base/strings/string_builder.h"
 #include "test/gmock.h"
 #include "test/gtest.h"
 #include "test/run_loop.h"
+=======
+#include "rtc_base/ssl_stream_adapter.h"           // IWYU pragma: keep
+#include "rtc_base/third_party/sigslot/sigslot.h"  // IWYU pragma: keep
+#include "rtc_base/thread.h"
+#include "test/gmock.h"
+#include "test/gtest.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "test/wait_until.h"  // IWYU pragma: keep
 
 namespace webrtc {
@@ -161,7 +169,11 @@ TEST(OpenSSLAdapterTest, TestBeginSSLBeforeConnection) {
 // build and run this test.
 TEST(OpenSSLAdaptorTest, TestRealSSLConnection) {
   PhysicalSocketServer socket_server;
+<<<<<<< HEAD
   test::RunLoop main_thread(&socket_server);
+=======
+  AutoSocketServerThread main_thread(&socket_server);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   constexpr absl::string_view kHostname = "webrtc.org";
   constexpr int kPort = 443;
@@ -199,8 +211,14 @@ TEST(OpenSSLAdaptorTest, TestRealSSLConnection) {
   EXPECT_TRUE(connect_result == 0 || ssl_adapter->IsBlocking());
 
   // Wait for SSL handshake to complete.
+<<<<<<< HEAD
   EXPECT_TRUE(WaitUntil([&] { return handler.IsSSLConnected(); },
                         {.timeout = kTimeout}))
+=======
+  EXPECT_THAT(WaitUntil([&] { return handler.IsSSLConnected(); },
+                        ::testing::IsTrue(), {.timeout = kTimeout}),
+              IsRtcOk())
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       << "SSL handshake failed. Socket state: " << ssl_adapter->GetState()
       << ", Has error: " << handler.HasError();
 

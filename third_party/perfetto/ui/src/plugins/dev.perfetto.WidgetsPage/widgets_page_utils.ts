@@ -64,9 +64,15 @@ export interface WidgetShowcaseAttrs<T extends Options> {
  * this component as using the component directly can be fiddly to get right
  * with the generics.
  */
+<<<<<<< HEAD
 class WidgetShowcase<T extends Options> implements m.ClassComponent<
   WidgetShowcaseAttrs<T>
 > {
+=======
+class WidgetShowcase<T extends Options>
+  implements m.ClassComponent<WidgetShowcaseAttrs<T>>
+{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   private options?: Options;
   private optionValues: Record<string, unknown> = {};
 

@@ -21,7 +21,10 @@ import {CpuFreqTrack} from './cpu_freq_track';
 import {Anchor} from '../../widgets/anchor';
 import {Icons} from '../../base/semantic_icons';
 import {Cpu} from '../../components/cpu';
+<<<<<<< HEAD
 import {getMachineCount} from '../../public/utils';
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 export default class implements PerfettoPlugin {
   static readonly id = 'dev.perfetto.CpuFreq';
@@ -37,13 +40,18 @@ export default class implements PerfettoPlugin {
         track.id AS freqTrackId,
         t2.id AS idleTrackId,
         cpu.ucpu AS ucpu,
+<<<<<<< HEAD
         track.machine_id AS machineId,
         machine.name AS machineName,
         machine.label_index AS machineLabelIndex,
+=======
+        IFNULL(track.machine_id, 0) AS machineId,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         track.cpu AS cpu
       FROM cpu_counter_track track
       JOIN cpu
         ON track.cpu = cpu.cpu
+<<<<<<< HEAD
        AND track.machine_id = cpu.machine_id
       LEFT JOIN cpu_counter_track t2
         ON track.cpu = t2.cpu
@@ -51,6 +59,13 @@ export default class implements PerfettoPlugin {
        AND t2.type = 'cpu_idle'
       LEFT JOIN machine
         ON machine.id = track.machine_id
+=======
+       AND IFNULL(track.machine_id, 0) = IFNULL(cpu.machine_id, 0)
+      LEFT JOIN cpu_counter_track t2
+        ON track.cpu = t2.cpu
+       AND IFNULL(track.machine_id, 0) = IFNULL(t2.machine_id, 0)
+       AND t2.type = 'cpu_idle'
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       WHERE
         track.type = 'cpu_frequency'
       ORDER BY ucpu
@@ -78,8 +93,11 @@ export default class implements PerfettoPlugin {
       const it = tracksResult.iter({
         freqTrackId: NUM,
         machineId: NUM,
+<<<<<<< HEAD
         machineName: STR_NULL,
         machineLabelIndex: NUM_NULL,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         cpu: NUM,
         ucpu: NUM,
         idleTrackId: NUM_NULL,
@@ -87,6 +105,7 @@ export default class implements PerfettoPlugin {
       it.valid();
       it.next()
     ) {
+<<<<<<< HEAD
       const {
         freqTrackId,
         idleTrackId,
@@ -96,6 +115,9 @@ export default class implements PerfettoPlugin {
         cpu,
         ucpu,
       } = it;
+=======
+      const {freqTrackId, idleTrackId, machineId, cpu, ucpu} = it;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       const uri = `/cpu_freq_cpu${ucpu}`;
 
       ctx.tracks.registerTrack({
@@ -132,7 +154,11 @@ export default class implements PerfettoPlugin {
 
       const trackNode = new TrackNode({
         uri,
+<<<<<<< HEAD
         name: `CPU ${new Cpu(ucpu, cpu, machineId, machineName ?? undefined, machineLabelIndex ?? undefined, numMachines).toString()} Frequency`,
+=======
+        name: `CPU ${new Cpu(ucpu, cpu, machineId).toString()} Frequency`,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       });
 
       group.addChildInOrder(trackNode);

@@ -121,6 +121,7 @@ nn{
                 dnam{"delar per million"}
                 one{"{0} del per million"}
                 other{"{0} delar per million"}
+<<<<<<< HEAD
             }
             part-per-1e9{
                 case{
@@ -132,6 +133,8 @@ nn{
                 dnam{"delar per milliard"}
                 one{"{0} del per milliard"}
                 other{"{0} delar per milliard"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         consumption{
@@ -718,7 +721,11 @@ nn{
             millimole-per-liter{
                 dnam{"mmol/l"}
             }
+<<<<<<< HEAD
             part-per-1e9{
+=======
+            portion-per-1e9{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 dnam{"delar/milliard"}
             }
         }

@@ -10,10 +10,15 @@ or{
         em{"ଦର୍ଶାଯାଇଥିବା ଇମୋଜି"}
         hc{"ଘଣ୍ଟା ଚକ୍ର (12 ବନାମ 24)"}
         lb{"ଲାଇନ୍‌ ବ୍ରେକ୍‌ ଷ୍ଟାଇଲ୍‌"}
+<<<<<<< HEAD
         lw{"ଶବ୍ଦଗୁଡ଼ିକ ଥିବା ଲାଇନ ବ୍ରେକ"}
         ms{"ମାପ ପଦ୍ଧତି"}
         numbers{"ସଂଖ୍ୟା"}
         ss{"Abbr ପରେ ଥିବା ବାକ୍ୟ"}
+=======
+        ms{"ମାପ ପଦ୍ଧତି"}
+        numbers{"ସଂଖ୍ୟା"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
     Languages{
         aa{"ଅଫାର୍"}
@@ -782,6 +787,7 @@ or{
             ducet{"ଡିଫଲ୍ଟ ୟୁନିକୋଡ୍‌ ସର୍ଟ୍‌ କ୍ରମ"}
             search{"ସାଧାରଣ ଉଦ୍ଦେଶ୍ୟ-ବିଶିଷ୍ଟ ସନ୍ଧାନ"}
             standard{"ଷ୍ଟାଣ୍ଡାର୍ଡ୍‌ ସର୍ଟ୍‌ କ୍ରମ"}
+<<<<<<< HEAD
         }
         collation%core{
             ducet{"ଡିଫଲ୍ଟ୍‌ ୟୁନିକୋଡ୍‌"}
@@ -792,6 +798,8 @@ or{
             default{"ଡିଫଲ୍ଟ୍‌"}
             emoji{"ଇମୋଜି"}
             text{"ଟେକ୍ସ୍‌ଟ୍‌"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         hc{
             h11{"12 ଘଣ୍ଟିଆ ପଦ୍ଧତି (0–11)"}

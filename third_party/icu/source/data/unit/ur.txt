@@ -230,6 +230,12 @@ ur{
                 one{"{0} پرمرئیڈ"}
                 other{"{0} پرمرئیڈ"}
             }
+            portion-per-1e9{
+                dnam{"اجزا فی بلین"}
+                gender{"masculine"}
+                one{"{0} جزو فی بلین"}
+                other{"{0} اجزا فی بلین"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -370,7 +376,14 @@ ur{
                 gender{"masculine"}
             }
             night{
+<<<<<<< HEAD
                 gender{"feminine"}
+=======
+                dnam{"راتیں"}
+                gender{"feminine"}
+                one{"{0} رات"}
+                other{"{0} راتیں"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 per{"{0} فی رات"}
             }
             quarter{
@@ -905,7 +918,14 @@ ur{
                 other{"{0} ناٹس"}
             }
             light-speed{
+<<<<<<< HEAD
                 gender{"feminine"}
+=======
+                dnam{"روشنی"}
+                gender{"feminine"}
+                one{"{0} روشنی"}
+                other{"{0} روشنی"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             meter-per-second{
                 gender{"masculine"}
@@ -1196,6 +1216,10 @@ ur{
             permyriad{
                 dnam{"‱"}
             }
+            portion-per-1e9{
+                one{"{0}ppb"}
+                other{"{0}ppb"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1233,6 +1257,12 @@ ur{
             month{
                 dnam{"مہینہ"}
                 per{"{0}/مہینہ"}
+            }
+            night{
+                dnam{"راتیں"}
+                one{"{0} رات"}
+                other{"{0} راتیں"}
+                per{"{0}/رات"}
             }
             quarter{
                 one{"{0}q"}
@@ -1415,6 +1445,11 @@ ur{
                 dnam{"km/hr"}
                 one{"{0}kph"}
                 other{"{0}kph"}
+            }
+            light-speed{
+                dnam{"روشنی"}
+                one{"{0} روشنی"}
+                other{"{0} روشنی"}
             }
             meter-per-second{
                 one{"{0}m/s"}
@@ -1619,6 +1654,9 @@ ur{
             }
             permyriad{
                 dnam{"پرمرئیڈ"}
+            }
+            portion-per-1e9{
+                dnam{"اجزا/بلین"}
             }
         }
         consumption{

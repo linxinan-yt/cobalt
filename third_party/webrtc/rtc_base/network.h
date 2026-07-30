@@ -191,6 +191,7 @@ class RTC_EXPORT NetworkManager : public DefaultLocalAddressProvider,
   MdnsResponderInterface* GetMdnsResponder() const override;
 
   virtual void set_vpn_list(const std::vector<NetworkMask>& /* vpn */) {}
+<<<<<<< HEAD
 
   // The implementation of the Subscribe methods is in the .cc file due
   // to linking issues with Chrome.
@@ -204,6 +205,14 @@ class RTC_EXPORT NetworkManager : public DefaultLocalAddressProvider,
   void SubscribeError(void* tag, absl::AnyInvocable<void()> callback);
   void UnsubscribeError(void* tag);
   void NotifyError() { error_callbacks_.Send(); }
+=======
+  // The implementation of the Subscribe methods is in the .cc file due
+  // to linking issues with Chrome.
+  void SubscribeNetworksChanged(absl::AnyInvocable<void()> callback);
+  void NotifyNetworksChanged() { SignalNetworksChanged(); }
+  void SubscribeError(absl::AnyInvocable<void()> callback);
+  void NotifyError() { SignalError(); }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
  private:
   CallbackList<> networks_changed_callbacks_;

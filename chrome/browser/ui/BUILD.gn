@@ -2281,6 +2281,14 @@ static_library("ui") {
     if (!is_official_build) {
       deps += [ "//chrome/browser/ui/webui/new_tab_page/foo:mojo_bindings" ]
     }
+
+    if (is_cobalt) {
+      deps -= [
+        "//services/on_device_model/public/cpp",
+        "//services/on_device_model/public/mojom",
+      ]
+      public_deps -= [ "//chrome/browser/ui/webui/on_device_internals" ]
+    }
   }
 
   if (enable_webui_ntp) {

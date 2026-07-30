@@ -44,11 +44,20 @@ om_KE{
             }
             eras{
                 abbreviated{
+<<<<<<< HEAD
                     0{"KD"}
                 }
                 abbreviated%variant{
                     0{"BCE"}
                     1{"KB"}
+=======
+                    "KD",
+                    "BA",
+                }
+                abbreviated%variant{
+                    "BCE",
+                    "KB",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }

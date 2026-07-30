@@ -31,6 +31,7 @@ CreateNeuralResidualEchoEstimator(const tflite::FlatBufferModel* model,
                                       op_resolver) {
   RTC_CHECK(op_resolver);
   return NeuralResidualEchoEstimatorImpl::Create(model, *op_resolver);
+<<<<<<< HEAD
 }
 
 absl_nonnull std::unique_ptr<NeuralResidualEchoEstimator>
@@ -43,6 +44,8 @@ CreateNeuralResidualEchoEstimatorAsync(
   return NeuralResidualEchoEstimatorImpl::CreateAsync(env.task_queue_factory(),
                                                       std::move(op_resolver),
                                                       std::move(model_handle));
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 }  // namespace webrtc

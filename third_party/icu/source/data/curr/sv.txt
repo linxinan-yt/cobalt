@@ -2371,9 +2371,12 @@ sv{
             one{"zaïrisk zaïre"}
             other{"zaïriska zaïre"}
         }
+<<<<<<< HEAD
         ZWG{
             one{"zimbabwiskt guld"}
             other{"zimbabwiskt guld"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

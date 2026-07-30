@@ -16,7 +16,10 @@
 
 #include "api/field_trials.h"
 #include "api/media_types.h"
+<<<<<<< HEAD
 #include "api/rtp_header_extension_id.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "api/rtp_parameters.h"
 #include "api/test/network_emulation/create_cross_traffic.h"
 #include "api/test/network_emulation/cross_traffic.h"
@@ -149,9 +152,15 @@ TEST(ReceiveSideCongestionControllerTest, SendsRfc8888FeedbackIfEnabled) {
       rtcp_sender;
   MockFunction<void(uint64_t, std::vector<uint32_t>)> remb_sender;
   SimulatedClock clock(123456);
+<<<<<<< HEAD
   ReceiveSideCongestionController controller(
       CreateTestEnvironment({.time = &clock}), rtcp_sender.AsStdFunction(),
       remb_sender.AsStdFunction());
+=======
+  ReceiveSideCongestionController controller(CreateEnvironment(&clock),
+                                             rtcp_sender.AsStdFunction(),
+                                             remb_sender.AsStdFunction());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   controller.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
 
   // Expect that RTCP feedback is sent.
@@ -177,9 +186,15 @@ TEST(ReceiveSideCongestionControllerTest,
       rtcp_sender;
   MockFunction<void(uint64_t, std::vector<uint32_t>)> remb_sender;
   SimulatedClock clock(123456);
+<<<<<<< HEAD
   ReceiveSideCongestionController controller(
       CreateTestEnvironment({.time = &clock}), rtcp_sender.AsStdFunction(),
       remb_sender.AsStdFunction());
+=======
+  ReceiveSideCongestionController controller(CreateEnvironment(&clock),
+                                             rtcp_sender.AsStdFunction(),
+                                             remb_sender.AsStdFunction());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   controller.SetPreferredRtcpCcAckType(RtcpFeedbackType::TRANSPORT_CC);
 
   // Expect that RTCP feedback is sent.
@@ -192,7 +207,11 @@ TEST(ReceiveSideCongestionControllerTest,
   EXPECT_CALL(remb_sender, Call).Times(0);
 
   RtpHeaderExtensionMap extensions;
+<<<<<<< HEAD
   extensions.Register<TransportSequenceNumber>(RtpHeaderExtensionId(1));
+=======
+  extensions.Register<TransportSequenceNumber>(1);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   RtpPacketReceived packet(&extensions);
   packet.set_arrival_time(clock.CurrentTime());
   packet.SetExtension<TransportSequenceNumber>(123);

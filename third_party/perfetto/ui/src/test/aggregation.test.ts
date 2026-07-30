@@ -52,6 +52,7 @@ test('sched', async () => {
     .filter({has: page.getByText('AVG', {exact: true})});
   await hdr.hover();
 
+<<<<<<< HEAD
   // Press the sort button to sort ascending.
   await hdr.getByRole('button', {name: 'Sort column'}).click();
   await pth.waitForIdleAndScreenshot('sort-by-wall-duration.png', {
@@ -67,13 +68,37 @@ test('sched', async () => {
   const hdrCount = page
     .getByRole('columnheader')
     .filter({has: page.getByText('Count', {exact: true})});
+=======
+  const hdr = page.getByRole('columnheader', {
+    name: 'avg_dur',
+    exact: true,
+  });
+  await hdr.hover();
+
+  // Press the sort button to sort ascending.
+  await hdr.getByRole('button', {name: 'Sort column'}).click();
+  await pth.waitForIdleAndScreenshot('sort-by-wall-duration.png');
+
+  // Press the button again to sort descending.
+  await hdr.getByRole('button', {name: 'Sort column'}).click();
+  await pth.waitForIdleAndScreenshot('sort-by-wall-duration-desc.png');
+
+  const hdrCount = page.getByRole('columnheader', {
+    name: 'occurrences',
+    exact: true,
+  });
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   await hdrCount.hover();
 
   // Press the sort button to sort ascending on this column.
   await hdrCount.getByRole('button', {name: 'Sort column'}).click();
+<<<<<<< HEAD
   await pth.waitForIdleAndScreenshot('sort-by-occurrences.png', {
     locator: drawerPanel,
   });
+=======
+  await pth.waitForIdleAndScreenshot('sort-by-occurrences.png');
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 });
 
 test('gpu counter', async () => {

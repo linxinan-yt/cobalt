@@ -14,17 +14,30 @@
  * limitations under the License.
  */
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/viewcapture_views_extractor.h
 #ifndef SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_VIEWCAPTURE_VIEWS_EXTRACTOR_H_
 #define SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_VIEWCAPTURE_VIEWS_EXTRACTOR_H_
 
 #include <vector>
 #include "protos/third_party/android/frameworks/base/proto/tracing/winscope/viewcapture.pbzero.h"
+=======
+#ifndef SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_VIEWCAPTURE_VIEWS_EXTRACTOR_H_
+#define SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_VIEWCAPTURE_VIEWS_EXTRACTOR_H_
+
+#include <vector>
+#include "protos/perfetto/trace/android/viewcapture.pbzero.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/viewcapture_views_extractor.h
 
 namespace perfetto::trace_processor::winscope::viewcapture {
 
 namespace {
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/viewcapture_views_extractor.h
 using SnapshotDecoder = com::android::internal::pbzero::ViewCapture::Decoder;
 using ViewDecoder = com::android::internal::pbzero::ViewCapture::View::Decoder;
+=======
+using SnapshotDecoder = protos::pbzero::ViewCapture::Decoder;
+using ViewDecoder = protos::pbzero::ViewCapture::View::Decoder;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/viewcapture_views_extractor.h
 }  // namespace
 
 std::vector<ViewDecoder> ExtractViewsTopToBottom(
@@ -32,4 +45,8 @@ std::vector<ViewDecoder> ExtractViewsTopToBottom(
 
 }  // namespace perfetto::trace_processor::winscope::viewcapture
 
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/viewcapture_views_extractor.h
 #endif  // SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_VIEWCAPTURE_VIEWS_EXTRACTOR_H_
+=======
+#endif  // SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_VIEWCAPTURE_VIEWS_EXTRACTOR_H_
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/viewcapture_views_extractor.h

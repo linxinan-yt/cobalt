@@ -238,6 +238,7 @@ pa{
             milligram-ofglucose-per-deciliter{
                 case{
                     oblique{
+<<<<<<< HEAD
                         one{"{0} ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤਿ ਡੈਸੀਲਿਟਰ"}
                         other{"{0} ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤਿ ਡੈਸੀਲਿਟਰ"}
                     }
@@ -246,6 +247,16 @@ pa{
                 gender{"masculine"}
                 one{"{0} ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤਿ ਡੈਸੀਲਿਟਰ"}
                 other{"{0} ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤਿ ਡੈਸੀਲਿਟਰ"}
+=======
+                        one{"{0} ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤੀ ਡੈਸੀਲਿਟਰ"}
+                        other{"{0} ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤੀ ਡੈਸੀਲਿਟਰ"}
+                    }
+                }
+                dnam{"ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤੀ ਡੈਸੀਲਿਟਰ"}
+                gender{"masculine"}
+                one{"{0} ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤੀ ਡੈਸੀਲਿਟਰ"}
+                other{"{0} ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤੀ ਡੈਸੀਲਿਟਰ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             millimole-per-liter{
                 case{
@@ -329,6 +340,18 @@ pa{
                 gender{"masculine"}
                 one{"{0} ਪ੍ਰਤੀ ਦਸ ਹਜ਼ਾਰ"}
                 other{"{0} ਪ੍ਰਤਿ ਦਸ ਹਜ਼ਾਰ"}
+            }
+            portion-per-1e9{
+                case{
+                    oblique{
+                        one{"{0} ਹਿੱਸਾ ਪ੍ਰਤੀ ਅਰਬ"}
+                        other{"{0} ਹਿੱਸਾ ਪ੍ਰਤੀ ਅਰਬ"}
+                    }
+                }
+                dnam{"ਹਿੱਸਾ ਪ੍ਰਤੀ ਅਰਬ"}
+                gender{"masculine"}
+                one{"{0} ਹਿੱਸਾ ਪ੍ਰਤੀ ਅਰਬ"}
+                other{"{0} ਹਿੱਸਾ ਪ੍ਰਤੀ ਅਰਬ"}
             }
         }
         consumption{
@@ -573,8 +596,22 @@ pa{
                 other{"{0} ਨੈਨੋਸਕਿੰਟ"}
             }
             night{
+<<<<<<< HEAD
                 gender{"feminine"}
                 per{"{0} ਪ੍ਰਤਿ ਰਾਤ"}
+=======
+                case{
+                    oblique{
+                        one{"{0} ਰਾਤ"}
+                        other{"{0} ਰਾਤਾਂ"}
+                    }
+                }
+                dnam{"ਰਾਤਾਂ"}
+                gender{"feminine"}
+                one{"{0} ਰਾਤ"}
+                other{"{0} ਰਾਤਾਂ"}
+                per{"{0} ਪ੍ਰਤੀ ਰਾਤ"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             quarter{
                 dnam{"ਤਿਮਾਹੀਆਂ"}
@@ -1363,7 +1400,20 @@ pa{
                 other{"{0} ਨੌਟ"}
             }
             light-speed{
+<<<<<<< HEAD
                 gender{"masculine"}
+=======
+                case{
+                    oblique{
+                        one{"{0} ਪ੍ਰਕਾਸ਼"}
+                        other{"{0} ਪ੍ਰਕਾਸ਼"}
+                    }
+                }
+                dnam{"ਪ੍ਰਕਾਸ਼"}
+                gender{"masculine"}
+                one{"{0} ਪ੍ਰਕਾਸ਼"}
+                other{"{0} ਪ੍ਰਕਾਸ਼"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             meter-per-second{
                 case{
@@ -1763,6 +1813,12 @@ pa{
                 dnam{"ਮਹੀਨਾ"}
                 per{"{0}/ਮ"}
             }
+            night{
+                dnam{"ਰਾਤਾਂ"}
+                one{"{0} ਰਾਤ"}
+                other{"{0} ਰਾਤਾਂ"}
+                per{"{0}/ਰਾਤ"}
+            }
             second{
                 per{"{0}/ਸਕਿੰ"}
             }
@@ -1922,9 +1978,22 @@ pa{
             }
         }
         speed{
+            kilometer-per-hour{
+                one{"{0} ਕਿ.ਮੀ./ਘੰ."}
+                other{"{0} ਕਿ.ਮੀ./ਘੰ."}
+            }
+            light-speed{
+                dnam{"ਪ੍ਰਕਾਸ਼"}
+                one{"{0} ਪ੍ਰਕਾਸ਼"}
+                other{"{0} ਪ੍ਰਕਾਸ਼"}
+            }
             meter-per-second{
                 one{"{0}ਮੀ/ਸ"}
                 other{"{0}ਮੀ/ਸ"}
+            }
+            mile-per-hour{
+                one{"{0} ਮੀਲ/ਘੰ."}
+                other{"{0} ਮੀਲ/ਘੰ."}
             }
         }
         temperature{
@@ -2198,6 +2267,9 @@ pa{
             }
             permyriad{
                 dnam{"ਪ੍ਰਤੀ ਦਸ ਹਜ਼ਾਰ"}
+            }
+            portion-per-1e9{
+                dnam{"ਹਿੱਸਾ/ਅਰਬ"}
             }
         }
         consumption{

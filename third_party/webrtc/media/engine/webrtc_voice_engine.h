@@ -259,6 +259,10 @@ class WebRtcVoiceSendChannel final : public MediaChannelUtil,
 
   bool SenderNackEnabled() const override;
   bool SenderNonSenderRttEnabled() const override;
+<<<<<<< HEAD
+=======
+  bool SendCodecHasNack() const override { return SenderNackEnabled(); }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
  private:
   bool SetOptions(const AudioOptions& options);

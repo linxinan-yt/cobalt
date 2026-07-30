@@ -1113,7 +1113,14 @@ if (rtc_include_tests) {
       "../../rtc_base:random",
       "../../system_wrappers",
       "../../test:create_test_field_trials",
+<<<<<<< HEAD
       "../../test:near_matcher",
+=======
+      "../../test:mock_transport",
+      "../../test:near_matcher",
+      "../../test:rtp_test_utils",
+      "../../test:run_loop",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       "../../test:test_support",
       "//third_party/abseil-cpp/absl/strings:string_view",
     ]

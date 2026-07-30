@@ -208,6 +208,11 @@ gl{
             permyriad{
                 dnam{"tanto por dez mil"}
             }
+            portion-per-1e9{
+                dnam{"partes por mil millóns"}
+                one{"{0} parte por mil millóns"}
+                other{"{0} partes por mil millóns"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -340,6 +345,12 @@ gl{
                 other{"{0} nanosegundos"}
             }
             night{
+<<<<<<< HEAD
+=======
+                dnam{"noites"}
+                one{"{0} noite"}
+                other{"{0} noites"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 per{"{0} por noite"}
             }
             quarter{
@@ -870,6 +881,11 @@ gl{
                 one{"{0} nó"}
                 other{"{0} nós"}
             }
+            light-speed{
+                dnam{"luz"}
+                one{"{0} luz"}
+                other{"{0} luz"}
+            }
             meter-per-second{
                 dnam{"metros por segundo"}
                 one{"{0} metro por segundo"}
@@ -1124,6 +1140,7 @@ gl{
             karat{
                 dnam{"kt"}
             }
+<<<<<<< HEAD
             katal{
                 one{"{0} kat"}
                 other{"{0} kat"}
@@ -1140,6 +1157,12 @@ gl{
             }
             part-per-1e9{
                 dnam{"ppmm"}
+=======
+            portion-per-1e9{
+                dnam{"ppmm"}
+                one{"{0} ppmm"}
+                other{"{0} ppmm"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         consumption{
@@ -1168,6 +1191,12 @@ gl{
                 one{"{0} m."}
                 other{"{0} m."}
                 per{"{0}/m."}
+            }
+            night{
+                dnam{"noites"}
+                one{"{0} noite"}
+                other{"{0} noites"}
+                per{"{0}/noite"}
             }
             quarter{
                 one{"{0} tr."}
@@ -1332,6 +1361,11 @@ gl{
                 one{"{0} nó"}
                 other{"{0} nós"}
             }
+            light-speed{
+                dnam{"luz"}
+                one{"{0} luz"}
+                other{"{0} luz"}
+            }
             mile-per-hour{
                 dnam{"mi/h"}
             }
@@ -1466,6 +1500,11 @@ gl{
             permyriad{
                 one{"{0} ‱"}
                 other{"{0} ‱"}
+            }
+            portion-per-1e9{
+                dnam{"partes/mil millóns"}
+                one{"{0} ppmm"}
+                other{"{0} ppmm"}
             }
         }
         consumption{

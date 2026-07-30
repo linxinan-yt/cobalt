@@ -21,6 +21,10 @@
 #include <memory>
 #include <utility>
 
+<<<<<<< HEAD
+=======
+#include "perfetto/ext/base/fnv_hash.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "perfetto/ext/base/murmur_hash.h"
 #include "perfetto/protozero/field.h"
 #include "perfetto/trace_processor/ref_counted.h"

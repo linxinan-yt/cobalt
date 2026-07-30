@@ -77,13 +77,18 @@ return ScopedJavaLocalRef<jobject>();
 return nullptr;
 ```
 
+<<<<<<< HEAD
 ## 5. Arrays
 
 ### Creating Object Arrays
+=======
+## 5. Replacing Unsafe Manual JNI Get method call with Safe Helpers
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 **Before:**
 
 ```cpp
+<<<<<<< HEAD
 jobjectArray j_strs = env->NewObjectArray(size, string_clazz, nullptr);
 ```
 
@@ -137,12 +142,31 @@ for (jsize i = 0; i < length; ++i) {
   ScopedJavaLocalRef<jstring> j_str = AdoptRef(env, static_cast<jstring>(env->GetObjectArrayElement(j_array, i)));
   std::string str = ConvertJavaStringToUTF8(env, j_str);
   // ...
+=======
+const void* MediaDrmBridge::GetMetrics(int* size) {
+  JNIEnv* env = AttachCurrentThread();
+  ScopedJavaLocalRef<jbyteArray> j_metrics = Java_MediaDrmBridge_getMetrics(env, j_media_drm_bridge_);
+  
+  // Unsafe: Manual pointer retrieval
+  jbyte* metrics_elements = env->GetByteArrayElements(j_metrics.obj(), nullptr);
+  jsize metrics_size = base::android::SafeGetArrayLength(env, j_metrics);
+  SB_DCHECK(metrics_elements);
+
+  metrics_.assign(metrics_elements, metrics_elements + metrics_size);
+
+  // Unsafe: Must remember to release, otherwise it leaks!
+  env->ReleaseByteArrayElements(j_metrics.obj(), metrics_elements, JNI_ABORT);
+  
+  *size = static_cast<int>(metrics_.size());
+  return metrics_.data();
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 ```
 
 **After:**
 
 ```cpp
+<<<<<<< HEAD
 for (auto str : strs.CreateView(env)) {
   std::string s = str.ConvertTo<std::string>(env);
   // ...
@@ -150,21 +174,53 @@ for (auto str : strs.CreateView(env)) {
 ```
 
 ### Primitive Arrays
+=======
+const void* MediaDrmBridge::GetMetrics(int* size) {
+  JNIEnv* env = AttachCurrentThread();
+  ScopedJavaLocalRef<jbyteArray> j_metrics = Java_MediaDrmBridge_getMetrics(env, j_media_drm_bridge_);
+  
+  // Safe: Automatically handles lifetime, copying, and release
+  base::android::JavaByteArrayToByteVector(env, j_metrics, &metrics_);
+  
+  *size = static_cast<int>(metrics_.size());
+  return metrics_.data();
+}
+```
+
+## 6. Replacing Unsafe Manual JNI Creation (New*) with Safe Helpers
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 **Before:**
 
 ```cpp
+<<<<<<< HEAD
 jbyteArray j_array = ...;
 jbyte* bytes = env->GetByteArrayElements(j_array, nullptr);
 jsize length = env->GetArrayLength(j_array);
 std::string_view sv(reinterpret_cast<char*>(bytes), length);
 // ...
 env->ReleaseByteArrayElements(j_array, bytes, JNI_ABORT);
+=======
+ScopedJavaLocalRef<jbyteArray> ToScopedJavaByteArray(JNIEnv* env, std::string_view data) {
+  // Unsafe: Raw NewByteArray call returns a raw local ref that can leak
+  jbyteArray j_array = env->NewByteArray(data.size());
+  if (!j_array) {
+    return nullptr;
+  }
+  
+  // Unsafe: Raw SetByteArrayRegion call
+  env->SetByteArrayRegion(j_array, 0, data.size(), reinterpret_cast<const jbyte*>(data.data()));
+  
+  // Must remember to wrap it before returning, but any early return above would have leaked j_array!
+  return ScopedJavaLocalRef<jbyteArray>(env, j_array);
+}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 ```
 
 **After:**
 
 ```cpp
+<<<<<<< HEAD
 ScopedJavaLocalRef<JArray<int8_t>> array = ...;
 JArrayView<int8_t> array_view = array.CreateView(env);
 std::string_view sv = array_view.as_string_view();
@@ -172,3 +228,10 @@ std::string_view sv = array_view.as_string_view();
 
 *(Note: `JArrayView` automatically releases the elements when it goes out of
 scope.)*
+=======
+ScopedJavaLocalRef<jbyteArray> ToScopedJavaByteArray(JNIEnv* env, std::string_view data) {
+  // Safe: ToJavaByteArray handles NewByteArray, SetByteArrayRegion, and ScopedJavaLocalRef wrapping in one shot
+  return base::android::ToJavaByteArray(env, data);
+}
+```
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

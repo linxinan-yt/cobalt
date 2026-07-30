@@ -462,6 +462,18 @@ fil{
                         "Biy",
                         "Sab",
                     }
+<<<<<<< HEAD
+=======
+                    narrow{
+                        "Lin",
+                        "Lun",
+                        "Mar",
+                        "Miy",
+                        "Huw",
+                        "Biy",
+                        "Sab",
+                    }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     wide{
                         "Linggo",
                         "Lunes",
@@ -482,6 +494,15 @@ fil{
                         "Biy",
                         "Sab",
                     }
+                    short{
+                        "Lin",
+                        "Lun",
+                        "Mar",
+                        "Miy",
+                        "Huw",
+                        "Biy",
+                        "Sab",
+                    }
                 }
             }
             dayPeriod{
@@ -491,6 +512,27 @@ fil{
                         evening1{"ng gabi"}
                         midnight{"hatinggabi"}
                         morning1{"ng umaga"}
+<<<<<<< HEAD
+=======
+                        morning2{"madaling-araw"}
+                        night1{"ng gabi"}
+                        noon{"tanghaling-tapat"}
+                    }
+                    narrow{
+                        afternoon1{"ng hapon"}
+                        evening1{"ng gabi"}
+                        midnight{"hatinggabi"}
+                        morning1{"ng umaga"}
+                        morning2{"madaling-araw"}
+                        night1{"ng gabi"}
+                        noon{"tanghaling-tapat"}
+                    }
+                    wide{
+                        afternoon1{"ng hapon"}
+                        evening1{"ng gabi"}
+                        midnight{"hatinggabi"}
+                        morning1{"ng umaga"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                         morning2{"madaling-araw"}
                         night1{"ng gabi"}
                         noon{"tanghaling-tapat"}
@@ -1405,6 +1447,22 @@ fil{
                 "[\\: ∶]",
             }
         }
+<<<<<<< HEAD
+=======
+        general{
+            lenient{
+                "[.．․﹒ 。｡︒]",
+                "['＇’ ՚ ᾽᾿ ʼ]",
+                "[%％﹪ ٪]",
+                "[‰ ؉]",
+                "[\$＄﹩]",
+                "[£￡ ₤]",
+                "[¥￥]",
+                "[₩￦]",
+                "[₹ {Rp} {Rs}₨]",
+            }
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",

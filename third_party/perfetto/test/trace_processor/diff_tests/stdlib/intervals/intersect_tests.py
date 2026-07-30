@@ -1135,6 +1135,7 @@ class IntervalsIntersect(TestSuite):
         4,2,"alpha"
         11,3,"gamma"
         """))
+<<<<<<< HEAD
 
   def test_counter_intervals_with_interval_intersect(self):
     return DiffTestBlueprint(
@@ -1383,3 +1384,5 @@ class IntervalsIntersect(TestSuite):
         120,20,2,10
         150,20,2,11
         """))
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

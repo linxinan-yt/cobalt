@@ -459,12 +459,15 @@ so{
         zxx{"Luuqad Looma Hayo"}
         zza{"Zaza"}
     }
+<<<<<<< HEAD
     Languages%core{
         ku{"Kurdish"}
     }
     Languages%extension{
         ku{"Kurmanji"}
     }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     Languages%long{
         zh_Hans{"Shiineeska Mandarin ee Rasmiga ah"}
         zh_Hant{"Af-Shiineeska Mandarin ee Qadiimiga ah"}

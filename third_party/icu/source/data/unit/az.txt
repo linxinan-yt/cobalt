@@ -185,6 +185,11 @@ az{
                 one{"{0} permiriada"}
                 other{"{0} permiriada"}
             }
+            portion-per-1e9{
+                dnam{"bir milyarda düşən hissə sayı"}
+                one{"bir milyarda düşən {0} hissə"}
+                other{"bir milyarda düşən {0} hissə"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -282,6 +287,12 @@ az{
                 dnam{"nanosaniyə"}
                 one{"{0} nanosaniyə"}
                 other{"{0} nanosaniyə"}
+            }
+            night{
+                dnam{"gecə"}
+                one{"{0} gecə"}
+                other{"{0} gecə"}
+                per{"{0}/gecə"}
             }
             second{
                 one{"{0} saniyə"}
@@ -694,6 +705,11 @@ az{
                 one{"{0} kilometr/saat"}
                 other{"{0} kilometr/saat"}
             }
+            light-speed{
+                dnam{"işıq"}
+                one{"{0} işıq"}
+                other{"{0} işıq"}
+            }
             meter-per-second{
                 one{"{0} metr/saniyə"}
                 other{"{0} metr/saniyə"}
@@ -941,8 +957,15 @@ az{
                 dnam{"dəq"}
             }
             night{
+<<<<<<< HEAD
                 one{"{0}gecə"}
                 other{"{0}gecə"}
+=======
+                dnam{"gecə"}
+                one{"{0}gecə"}
+                other{"{0}gecə"}
+                per{"{0}/gecə"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             second{
                 dnam{"san"}
@@ -1109,6 +1132,10 @@ az{
         }
         speed{
             light-speed{
+<<<<<<< HEAD
+=======
+                dnam{"işıq"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0}işıq"}
                 other{"{0}işıq"}
             }
@@ -1326,6 +1353,9 @@ az{
             }
             permyriad{
                 dnam{"permiriada"}
+            }
+            portion-per-1e9{
+                dnam{"hissə/milyard"}
             }
         }
         consumption{

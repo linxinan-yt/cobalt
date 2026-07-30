@@ -295,7 +295,11 @@ private:
     TextTrieMap fGNamesTrie;
     UBool fGNamesTrieFullyLoaded;
 
+<<<<<<< HEAD
     FixedString fTargetRegion;
+=======
+    CharString fTargetRegion;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     void initialize(const Locale& locale, UErrorCode& status);
     void cleanup();
@@ -407,6 +411,7 @@ TZGNCore::initialize(const Locale& locale, UErrorCode& status) {
     int32_t regionLen = static_cast<int32_t>(uprv_strlen(region));
     if (regionLen == 0) {
         CharString loc = ulocimp_addLikelySubtags(fLocale.getName(), status);
+<<<<<<< HEAD
         CharString tmp;
         ulocimp_getSubtags(loc.toStringPiece(), nullptr, nullptr, &tmp, nullptr, nullptr, status);
         if (U_FAILURE(status)) {
@@ -416,16 +421,24 @@ TZGNCore::initialize(const Locale& locale, UErrorCode& status) {
         fTargetRegion = tmp.toStringPiece();
         if (fTargetRegion.isEmpty() != tmp.isEmpty()) {
             status = U_MEMORY_ALLOCATION_ERROR;
+=======
+        ulocimp_getSubtags(loc.toStringPiece(), nullptr, nullptr, &fTargetRegion, nullptr, nullptr, status);
+        if (U_FAILURE(status)) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             cleanup();
             return;
         }
     } else {
+<<<<<<< HEAD
         fTargetRegion = {region, static_cast<std::string_view::size_type>(regionLen)};
         if (fTargetRegion.isEmpty()) {
             status = U_MEMORY_ALLOCATION_ERROR;
             cleanup();
             return;
         }
+=======
+        fTargetRegion.append(region, regionLen, status);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 
     // preload generic names for the default zone
@@ -1205,6 +1218,7 @@ TimeZoneGenericNames::createInstance(const Locale& locale, UErrorCode& status) {
             }
         }
         if (U_FAILURE(status)) {
+            delete instance;
             return nullptr;
         }
 

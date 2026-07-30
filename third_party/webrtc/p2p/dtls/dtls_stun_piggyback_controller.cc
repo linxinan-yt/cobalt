@@ -233,8 +233,32 @@ void DtlsStunPiggybackController::ReportDataPiggybacked(
   }
 }
 
+<<<<<<< HEAD
 void DtlsStunPiggybackController::ReportDtlsPacket(
     std::span<const uint8_t> data) {
+  RTC_DCHECK_RUN_ON(&sequence_checker_);
+
+  if (state_ == State::OFF || state_ == State::COMPLETE) {
+=======
+  if (!data.has_value() || data->empty()) {
+    return;
+  }
+  // Drop non-DTLS packets.
+  if (!IsDtlsPacket(*data)) {
+    RTC_LOG(LS_WARNING) << "Dropping non-DTLS data.";
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
+    return;
+  }
+
+  ReportDtlsPacket(*data);
+
+  // Forwards the data to the DTLS layer. Note that this will call
+  // ProcessDtlsPacket() again which does not change the state.
+  dtls_data_callback_(*data);
+}
+
+void DtlsStunPiggybackController::ReportDtlsPacket(
+    ArrayView<const uint8_t> data) {
   RTC_DCHECK_RUN_ON(&sequence_checker_);
 
   if (state_ == State::OFF || state_ == State::COMPLETE) {
@@ -255,6 +279,7 @@ void DtlsStunPiggybackController::ReportDtlsPacket(
     }
     handshake_messages_received_.push_back(hash);
   }
+<<<<<<< HEAD
 }
 
 void DtlsStunPiggybackController::CallCompleteCallback(bool success) {
@@ -266,6 +291,8 @@ void DtlsStunPiggybackController::CallCompleteCallback(bool success) {
     return;
   }
   std::move(piggyback_complete_callback_)(success);
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 }  // namespace webrtc

@@ -993,24 +993,31 @@ he{
             two{"לירות סוריות"}
         }
         TRY{
+            many{"לירות טורקיות"}
             one{"לירה טורקית חדשה"}
             other{"לירות טורקיות"}
             two{"לירות טורקיות"}
+<<<<<<< HEAD
         }
         XCG{
             one{"גילדר של הקריביים"}
             other{"גילדר של הקריביים"}
             two{"גילדר של הקריביים"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         XXX{
             one{"(מטבע שאינו ידוע)"}
             other{"(מטבע שאינו ידוע)"}
             two{"(מטבע שאינו ידוע)"}
         }
+<<<<<<< HEAD
         ZWG{
             one{"זהב של זימבבואה"}
             other{"זהב של זימבבואה"}
             two{"זהב של זימבבואה"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

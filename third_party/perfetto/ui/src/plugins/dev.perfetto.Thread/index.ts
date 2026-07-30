@@ -26,7 +26,11 @@ import {
   STR,
   STR_NULL,
 } from '../../trace_processor/query_result';
+<<<<<<< HEAD
 import {ensureExists} from '../../base/assert';
+=======
+import {assertExists} from '../../base/logging';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 async function listThreads(trace: Trace) {
   const query = `

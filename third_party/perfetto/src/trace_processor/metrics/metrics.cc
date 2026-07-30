@@ -41,7 +41,11 @@
 #include "perfetto/protozero/proto_utils.h"
 #include "perfetto/protozero/scattered_heap_buffer.h"
 #include "perfetto/trace_processor/basic_types.h"
+<<<<<<< HEAD
 #include "src/trace_processor/perfetto_sql/engine/perfetto_sql_connection.h"
+=======
+#include "src/trace_processor/perfetto_sql/engine/perfetto_sql_engine.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "src/trace_processor/sqlite/bindings/sqlite_result.h"
 #include "src/trace_processor/sqlite/bindings/sqlite_type.h"
 #include "src/trace_processor/sqlite/bindings/sqlite_value.h"
@@ -681,8 +685,13 @@ void RunMetric::Step(sqlite3_context* ctx, int argc, sqlite3_value** argv) {
                         metric_it->sql.c_str()));
   }
 
+<<<<<<< HEAD
   auto res = user_ctx->connection->Execute(
       SqlSource::FromMetricFile(subbed_sql, path));
+=======
+  auto res =
+      user_ctx->engine->Execute(SqlSource::FromMetricFile(subbed_sql, path));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   if (!res.status().ok()) {
     return sqlite::utils::SetError(ctx, res.status());
   }

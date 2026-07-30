@@ -97,8 +97,13 @@ ha{
                         other{"¤ 00D"}
                     }
                     100000{
+<<<<<<< HEAD
                         one{"¤ 000D"}
                         other{"¤ 000D"}
+=======
+                        one{"¤ 000K"}
+                        other{"¤ 000K"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     }
                     1000000000{
                         one{"¤ 0B"}
@@ -585,6 +590,33 @@ ha{
                 past{
                     one{"kwana {0} da ya gabata"}
                     other{"kwanaki {0} da suka gabata"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        day-narrow{
+            relativeTime{
+                future{
+                    one{"a cikin kwanaki {0}"}
+                    other{"a cikin kwanaki {0}"}
+                }
+                past{
+                    one{"kwana {0} da ya gabata"}
+                    other{"kwanaki {0} da suka gabata"}
+                }
+            }
+        }
+        day-short{
+            relativeTime{
+                future{
+                    one{"a cikin kwanaki {0}"}
+                    other{"a cikin kwanaki {0}"}
+                }
+                past{
+                    one{"kwana {0} da ya gabata"}
+                    other{"kwanaki {0} da suka gabata"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -611,6 +643,33 @@ ha{
                 past{
                     one{"Jumaʼa {0} da ta wuce"}
                     other{"Jumaʼa {0} da suka wuce"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        fri-narrow{
+            relativeTime{
+                future{
+                    one{"cikin Jumaʼa {0}"}
+                    other{"cikin Jumaʼa {0}"}
+                }
+                past{
+                    one{"Jumaʼa {0} da ta wuce"}
+                    other{"Jumaʼa {0} da suka wuce"}
+                }
+            }
+        }
+        fri-short{
+            relativeTime{
+                future{
+                    one{"cikin Jumaʼa {0}"}
+                    other{"cikin Jumaʼa {0}"}
+                }
+                past{
+                    one{"Jumaʼa {0} da ta wuce"}
+                    other{"Jumaʼa {0} da suka wuce"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -627,6 +686,33 @@ ha{
                 past{
                     one{"awa {0} da ta gabata"}
                     other{"awanni {0} da suka gabata"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        hour-narrow{
+            relativeTime{
+                future{
+                    one{"cikin awa {0}"}
+                    other{"cikin awanni {0}"}
+                }
+                past{
+                    one{"awa {0} da ta gabata"}
+                    other{"awanni {0} da suka gabata"}
+                }
+            }
+        }
+        hour-short{
+            relativeTime{
+                future{
+                    one{"cikin awa {0}"}
+                    other{"cikin awanni {0}"}
+                }
+                past{
+                    one{"awa {0} da ta gabata"}
+                    other{"awanni {0} da suka gabata"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -643,6 +729,33 @@ ha{
                 past{
                     one{"minti {0} da ya gabata"}
                     other{"mintuna {0} da suka gabata"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        minute-narrow{
+            relativeTime{
+                future{
+                    one{"cikin minti {0}"}
+                    other{"cikin mintuna {0}"}
+                }
+                past{
+                    one{"minti {0} da ya gabata"}
+                    other{"mintuna {0} da suka gabata"}
+                }
+            }
+        }
+        minute-short{
+            relativeTime{
+                future{
+                    one{"cikin minti {0}"}
+                    other{"cikin mintuna {0}"}
+                }
+                past{
+                    one{"minti {0} da ya gabata"}
+                    other{"mintuna {0} da suka gabata"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -660,6 +773,43 @@ ha{
                 past{
                     one{"Litinin {0} da ta gabata"}
                     other{"Litinin {0} da suka gabata"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        mon-narrow{
+            relative{
+                "-1"{"Litinin din da ta gabata"}
+                "0"{"wannan Litinin din"}
+                "1"{"Litinin mai zuwa"}
+            }
+            relativeTime{
+                future{
+                    one{"cikin Litinin {0}"}
+                    other{"cikin Litinin {0}"}
+                }
+                past{
+                    one{"Litinin {0} da ta gabata"}
+                    other{"Litinin {0} da suka gabata"}
+                }
+            }
+        }
+        mon-short{
+            relative{
+                "-1"{"Litinin din da ta gabata"}
+                "0"{"wannan Litinin din"}
+                "1"{"Litinin mai zuwa"}
+            }
+            relativeTime{
+                future{
+                    one{"cikin Litinin {0}"}
+                    other{"cikin Litinin {0}"}
+                }
+                past{
+                    one{"Litinin {0} da ta gabata"}
+                    other{"Litinin {0} da suka gabata"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -678,6 +828,17 @@ ha{
                 past{
                     one{"wata {0} da ya gabata"}
                     other{"watanni {0} da suka gabata"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        month-narrow{
+            relativeTime{
+                past{
+                    one{"wata {0} da ya gabata"}
+                    other{"watanni {0} da suka gabata"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -687,6 +848,13 @@ ha{
                     one{"a cikin watan {0}"}
                     other{"a cikin watan {0}"}
                 }
+<<<<<<< HEAD
+=======
+                past{
+                    one{"wata {0} da ya gabata"}
+                    other{"watanni {0} da suka gabata"}
+                }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         quarter{
@@ -704,6 +872,25 @@ ha{
                 past{
                     one{"kwata {0} da suka gabata"}
                     other{"kwata {0} da suka gabata"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        quarter-narrow{
+            relativeTime{
+                past{
+                    one{"kwata {0} da suka gabata"}
+                    other{"kwata {0} da suka gabata"}
+                }
+            }
+        }
+        quarter-short{
+            relativeTime{
+                past{
+                    one{"kwata {0} da suka gabata"}
+                    other{"kwata {0} da suka gabata"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -724,8 +911,29 @@ ha{
                 }
             }
         }
+<<<<<<< HEAD
         sat-short{
             relativeTime{
+=======
+        sat-narrow{
+            relativeTime{
+                future{
+                    one{"cikin Asabar {0}"}
+                    other{"cikin Asabar {0}"}
+                }
+                past{
+                    one{"Asabar {0} da ta wuce"}
+                    other{"Asabar {0} da suka wuce"}
+                }
+            }
+        }
+        sat-short{
+            relativeTime{
+                future{
+                    one{"cikin Asabar {0}"}
+                    other{"cikin Asabar {0}"}
+                }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 past{
                     one{"Asabar {0} da ta wuce"}
                     other{"Asabar {0} da suka wuce"}
@@ -745,6 +953,33 @@ ha{
                 past{
                     one{"dakika {0} da ta gabata"}
                     other{"dakiku {0} da suka gabata"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        second-narrow{
+            relativeTime{
+                future{
+                    one{"cikin dakika {0}"}
+                    other{"cikin dakiku {0}"}
+                }
+                past{
+                    one{"dakika {0} da ta gabata"}
+                    other{"dakiku {0} da suka gabata"}
+                }
+            }
+        }
+        second-short{
+            relativeTime{
+                future{
+                    one{"cikin dakika {0}"}
+                    other{"cikin dakiku {0}"}
+                }
+                past{
+                    one{"dakika {0} da ta gabata"}
+                    other{"dakiku {0} da suka gabata"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -762,6 +997,38 @@ ha{
                 past{
                     one{"Lahadi {0} da ta gabata"}
                     other{"Lahadi {0} da suka gabata"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        sun-narrow{
+            relative{
+                "-1"{"Lahadin da ya gabata"}
+                "0"{"wannan Lahadin"}
+                "1"{"Lahadi mai zuwa"}
+            }
+            relativeTime{
+                future{
+                    one{"cikin Lahadi {0}"}
+                    other{"cikin Lahadi {0}"}
+                }
+                past{
+                    one{"Lahadi {0} da ta gabata"}
+                    other{"Lahadi {0} da suka gabata"}
+                }
+            }
+        }
+        sun-short{
+            relativeTime{
+                future{
+                    one{"cikin Lahadi {0}"}
+                    other{"cikin Lahadi {0}"}
+                }
+                past{
+                    one{"Lahadi {0} da ta gabata"}
+                    other{"Lahadi {0} da suka gabata"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -786,6 +1053,33 @@ ha{
                 past{
                     one{"Alhamis {0} da ta gabata"}
                     other{"Alhamis {0} da suka gabata"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        thu-narrow{
+            relativeTime{
+                future{
+                    one{"cikin Alhamis {0}"}
+                    other{"cikin Alhamis {0}"}
+                }
+                past{
+                    one{"Alhamis {0} da ta gabata"}
+                    other{"Alhamis {0} da suka gabata"}
+                }
+            }
+        }
+        thu-short{
+            relativeTime{
+                future{
+                    one{"cikin Alhamis {0}"}
+                    other{"cikin Alhamis {0}"}
+                }
+                past{
+                    one{"Alhamis {0} da ta gabata"}
+                    other{"Alhamis {0} da suka gabata"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -803,6 +1097,33 @@ ha{
                 past{
                     one{"Talata {0} da ta gabata"}
                     other{"Talata {0} da suka gabata"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        tue-narrow{
+            relativeTime{
+                future{
+                    one{"cikin Talata {0}"}
+                    other{"cikin Talata {0}"}
+                }
+                past{
+                    one{"Talata {0} da ta gabata"}
+                    other{"Talata {0} da suka gabata"}
+                }
+            }
+        }
+        tue-short{
+            relativeTime{
+                future{
+                    one{"cikin Talata {0}"}
+                    other{"cikin Talata {0}"}
+                }
+                past{
+                    one{"Talata {0} da ta gabata"}
+                    other{"Talata {0} da suka gabata"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -820,6 +1141,33 @@ ha{
                 past{
                     one{"Laraba {0} da ta gabata"}
                     other{"Laraba {0} da suka gabata"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        wed-narrow{
+            relativeTime{
+                future{
+                    one{"cikin Laraba {0}"}
+                    other{"cikin Laraba {0}"}
+                }
+                past{
+                    one{"Laraba {0} da ta gabata"}
+                    other{"Laraba {0} da suka gabata"}
+                }
+            }
+        }
+        wed-short{
+            relativeTime{
+                future{
+                    one{"cikin Laraba {0}"}
+                    other{"cikin Laraba {0}"}
+                }
+                past{
+                    one{"Laraba {0} da ta gabata"}
+                    other{"Laraba {0} da suka gabata"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -847,6 +1195,17 @@ ha{
                 past{
                     one{"mako {0} da ya gabata"}
                     other{"mako {0} da ya gabata"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        week-short{
+            relativeTime{
+                past{
+                    one{"mako {0} da ya gabata"}
+                    other{"makonni {0} da suka gabata"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -877,6 +1236,25 @@ ha{
                 past{
                     one{"shekara {0} da ta gabata"}
                     other{"shekaru {0} da suka gabata"}
+<<<<<<< HEAD
+=======
+                }
+            }
+        }
+        year-narrow{
+            relativeTime{
+                past{
+                    one{"shekara {0} da ta gabata"}
+                    other{"shekaru {0} da suka gabata"}
+                }
+            }
+        }
+        year-short{
+            relativeTime{
+                past{
+                    one{"shekara {0} da ta gabata"}
+                    other{"shekaru {0} da suka gabata"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }

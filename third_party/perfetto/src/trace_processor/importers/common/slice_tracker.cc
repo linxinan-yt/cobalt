@@ -21,6 +21,7 @@
 #include <utility>
 
 #include "perfetto/base/logging.h"
+#include "perfetto/ext/base/murmur_hash.h"
 #include "src/trace_processor/importers/common/args_translation_table.h"
 #include "src/trace_processor/importers/common/import_logs_tracker.h"
 #include "src/trace_processor/importers/common/slice_tracker.h"
@@ -101,6 +102,7 @@ bool SliceTracker::PrepareStartSlice(TrackInfo& track_info,
   return MaybeCloseStack(track_info, timestamp, duration, overlap_out);
 }
 
+<<<<<<< HEAD
 void SliceTracker::LogMaxDepthExceeded(const SliceInfo& parent,
                                        StringId name,
                                        int64_t timestamp) {
@@ -108,6 +110,19 @@ void SliceTracker::LogMaxDepthExceeded(const SliceInfo& parent,
   StringId parent_name_id =
       parent.row.ToRowReference(slices).name().value_or(kNullStringId);
   StringId current_name_id = name.is_null() ? kNullStringId : name;
+=======
+std::optional<SliceId> SliceTracker::Scoped(int64_t timestamp,
+                                            TrackId track_id,
+                                            StringId category,
+                                            StringId raw_name,
+                                            int64_t duration,
+                                            SetArgsCallback args_callback) {
+  if (duration < 0) {
+    context_->import_logs_tracker->RecordParserError(
+        stats::slice_negative_duration, timestamp);
+    return std::nullopt;
+  }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   context_->import_logs_tracker->RecordParserLog(
       stats::slice_max_depth_exceeded, timestamp,
@@ -476,6 +491,7 @@ bool SliceTracker::MaybeCloseStack(TrackInfo& track_info,
   return true;
 }
 
+<<<<<<< HEAD
 void SliceTracker::StackPop(TrackInfo& track_info) {
   auto& stack = track_info.slice_stack;
   SliceInfo& info = stack.back();
@@ -484,6 +500,18 @@ void SliceTracker::StackPop(TrackInfo& track_info) {
     // commits whatever remains.
     MaybeAddTranslatableArgs(info);
     info.args.reset();
+=======
+int64_t SliceTracker::GetStackHash(const SlicesStack& stack) {
+  PERFETTO_DCHECK(!stack.empty());
+
+  const auto& slices = context_->storage->slice_table();
+
+  base::MurmurHashCombiner hash;
+  for (const auto& i : stack) {
+    auto ref = i.row.ToRowReference(slices);
+    hash.Combine(ref.category());
+    hash.Combine(ref.name());
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
   stack.pop_back();
 }

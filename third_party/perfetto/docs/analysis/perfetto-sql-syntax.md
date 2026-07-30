@@ -61,7 +61,11 @@ schemas, function arguments and return types:
 
 | Type | Description |
 |------|-------------|
+<<<<<<< HEAD
 | `LONG` | 64-bit signed integer |
+=======
+| `INT` | 64-bit signed integer |
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 | `DOUBLE` | Double precision floating-point number |
 | `BOOLEAN` | Boolean value (true/false) |
 | `STRING` | Text string |
@@ -71,10 +75,17 @@ schemas, function arguments and return types:
 | `ARGSETID` | An identifier for a set of arguments. This set can be obtained by joining with an `args` table on `arg_set_id` column. |
 | `ID` | An ID column for this table. Each table can have only one ID column, whose values should be unique and fit into `uint32`. |
 | `JOINID(table.column)` | A foreign key reference into a given table. `table` should exist, should have column named `column` of type `ID`. |
+<<<<<<< HEAD
 | `ID(table.column)` | A variant of the `ID` type, which is both primary key for this table and simultaneously is a foreign key reference into another table. Useful when a given table is based on a subset of rows from another table (e.g. `slice`). |
 
 ## Defining functions
 `CREATE PERFETTO FUNCTION` allows functions to be defined in SQL, which can be
+=======
+| `ID(table.column)` | A variant of the `ID` type, which is both primary key for this table and simultaneusly is a foreign key reference into another table. Useful when a given table is based on a subset of rows from another table (e.g. `slice`). |
+
+## Defining functions
+`CREATE PEFETTO FUNCTION` allows functions to be defined in SQL, which can be
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 either scalar (returning a single value) or table-value (returning a set of rows).
 The syntax is similar to the syntax in PostgreSQL or GoogleSQL:
 - Scalar: `CREATE PERFETTO FUNCTION function_name(arg_list) RETURNS return_type AS sql_select_statement;`

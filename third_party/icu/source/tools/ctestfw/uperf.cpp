@@ -189,8 +189,12 @@ void UPerfTest::init(UOption addOptions[], int32_t addOptionsCount,
     int32_t len = 0;
     if(fileName!=nullptr){
         //pre-flight
+<<<<<<< HEAD
         UErrorCode bufferStatus = U_ZERO_ERROR;
         ucbuf_resolveFileName(sourceDir, fileName, nullptr, &len, &bufferStatus);
+=======
+        ucbuf_resolveFileName(sourceDir, fileName, nullptr, &len, &status);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         resolvedFileName = static_cast<char*>(uprv_malloc(len));
         if(resolvedFileName==nullptr){
             status= U_MEMORY_ALLOCATION_ERROR;

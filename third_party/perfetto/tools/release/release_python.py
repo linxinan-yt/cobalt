@@ -30,10 +30,16 @@ NC = '\033[0m'  # No Color
 
 # Constants for paths. Assumes the script is run from the repository root.
 SETUP_PY_PATH = os.path.join('python', 'setup.py')
+<<<<<<< HEAD
 CHANGELOG_PATH = 'CHANGELOG'
 VENV_PYTHON = (
     os.path.abspath(os.path.join('.venv', 'bin', 'python')) if sys.platform
     != 'win32' else os.path.join('.venv', 'Scripts', 'python.exe'))
+=======
+VENV_PYTHON = os.path.join(
+    '.venv', 'bin', 'python') if sys.platform != 'win32' else os.path.join(
+        '.venv', 'Scripts', 'python.exe')
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 
 def info(msg: str) -> None:

@@ -1648,11 +1648,14 @@ be{
             one{"замбійская квача"}
             other{"замбійскай квачы"}
         }
+<<<<<<< HEAD
         ZWG{
             few{"зімбабвійскія залатыя"}
             many{"зімбабвійскіх залатых"}
             one{"зімбабвійскі залаты"}
             other{"зімбабвійскага залатога"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

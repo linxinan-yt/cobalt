@@ -131,7 +131,11 @@ uCharsToChars(char *target, int32_t targetLen, const char16_t *source, int32_t s
                     target[j + 1] = static_cast<char>(source[i]);
                 }
                 j+=2;
+<<<<<<< HEAD
             }else{
+=======
+            }else if(source[i-1]=='\\'){
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 target[j++] = static_cast<char>(source[i]);
             }
         }else if(source[i]=='\\'){

@@ -725,6 +725,10 @@ af{
             one{"euro"}
             other{"euro"}
         }
+        GTQ{
+            one{"Guatemalaanse kwetsal"}
+            other{"Guatemalaanse kwetsal"}
+        }
         INR{
             one{"Indiese roepee"}
             other{"Indiese roepee"}
@@ -753,9 +757,12 @@ af{
             one{"(onbekende geldeenheid)"}
             other{"(onbekende geldeenheid)"}
         }
+<<<<<<< HEAD
         ZWG{
             one{"Zimbabwiese goud"}
             other{"Zimbabwiese goud"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

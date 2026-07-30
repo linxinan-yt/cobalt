@@ -9,11 +9,14 @@ tk{
     ExemplarCharactersPunctuation{"[\\- ‑ – — , ; \\: ! ? . … ' \u0022“” ( ) \\[ \\] \\{ \\} § @ * / {\\&,} #]"}
     NumberElements{
         arabext{
+<<<<<<< HEAD
             patterns{
                 accountingFormat%alphaNextToNumber{"#,##0.00 ¤"}
                 accountingFormat%noCurrency{"#,##0.00"}
                 currencyFormat%alphaNextToNumber{"#,##0.00 ¤"}
             }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             symbols{
                 nan{"San däl"}
             }
@@ -712,7 +715,11 @@ tk{
                 GyMMM{"MMM y G"}
                 GyMMMEd{"E, d MMM, y G"}
                 GyMMMd{"d MMM, y G"}
+<<<<<<< HEAD
                 GyMd{"d.M.y G"}
+=======
+                GyMd{"d.M.y GGGGG"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 MEd{"E, d.M"}
                 MMMEd{"E, d MMM"}
                 MMMMEd{"d MMMM, E"}
@@ -1548,6 +1555,22 @@ tk{
                 "[\\: ∶]",
             }
         }
+<<<<<<< HEAD
+=======
+        general{
+            lenient{
+                "[.．․﹒ 。｡︒]",
+                "['＇’ ՚ ᾽᾿ ʼ]",
+                "[%％﹪ ٪]",
+                "[‰ ؉]",
+                "[\$＄﹩]",
+                "[£￡ ₤]",
+                "[¥￥]",
+                "[₩￦]",
+                "[₹ {Rp} {Rs}₨]",
+            }
+        }
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",

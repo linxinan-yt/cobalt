@@ -14,8 +14,13 @@
 U_NAMESPACE_BEGIN
 namespace number::impl {
 
+<<<<<<< HEAD
 // Exported as U_I18N_API_CLASS for tests
 class U_I18N_API_CLASS CurrencySymbols : public UMemory {
+=======
+// Exported as U_I18N_API for tests
+class U_I18N_API CurrencySymbols : public UMemory {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   public:
     CurrencySymbols() = default; // default constructor: leaves class in valid but undefined state
 

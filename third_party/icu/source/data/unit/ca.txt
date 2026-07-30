@@ -246,6 +246,12 @@ ca{
                 one{"{0} per deu mil"}
                 other{"{0} per deu mil"}
             }
+            portion-per-1e9{
+                dnam{"part per mil milions"}
+                gender{"masculine"}
+                one{"{0} part per mil milions"}
+                other{"{0} parts per mil milions"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -398,7 +404,14 @@ ca{
                 other{"{0} nanosegons"}
             }
             night{
+<<<<<<< HEAD
                 gender{"feminine"}
+=======
+                dnam{"nits"}
+                gender{"feminine"}
+                one{"{0} nit"}
+                other{"{0} nits"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 per{"{0} per nit"}
             }
             quarter{
@@ -993,9 +1006,16 @@ ca{
                 other{"{0} nusos"}
             }
             light-speed{
+<<<<<<< HEAD
                 gender{"feminine"}
                 one{"{0} llums"}
                 other{"{0} llums"}
+=======
+                dnam{"llum"}
+                gender{"feminine"}
+                one{"{0} llum"}
+                other{"{0} llum"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             meter-per-second{
                 dnam{"metres per segon"}
@@ -1322,7 +1342,12 @@ ca{
             night{
                 dnam{"nit"}
                 one{"{0}/nit"}
+<<<<<<< HEAD
                 other{"{0}/nits"}
+=======
+                other{"{0}/nit"}
+                per{"{0}/nit"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             year{
                 per{"{0}/any"}
@@ -1448,6 +1473,13 @@ ca{
                 other{"{0} llums"}
             }
         }
+        speed{
+            light-speed{
+                dnam{"llum"}
+                one{"{0} llum"}
+                other{"{0} llum"}
+            }
+        }
         temperature{
             fahrenheit{
                 one{"{0}°F"}
@@ -1566,6 +1598,9 @@ ca{
                 dnam{"per deu mil"}
                 one{"{0} ‱"}
                 other{"{0} ‱"}
+            }
+            portion-per-1e9{
+                dnam{"part/mil milions"}
             }
         }
         consumption{
@@ -1863,6 +1898,13 @@ ca{
                 dnam{"llum"}
                 one{"{0} llums"}
                 other{"{0} llums"}
+            }
+        }
+        speed{
+            light-speed{
+                dnam{"llum"}
+                one{"{0} llum"}
+                other{"{0} llum"}
             }
         }
         temperature{

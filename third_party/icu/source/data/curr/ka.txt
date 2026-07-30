@@ -1041,9 +1041,12 @@ ka{
             one{"(ვალუტის უცნობი ერთეული)"}
             other{"(უცნობი ვალუტა)"}
         }
+<<<<<<< HEAD
         ZWG{
             one{"ზიმბაბვეს გოლდი"}
             other{"ზიმბაბვეს გოლდი"}
         }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 }

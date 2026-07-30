@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <cstddef>
 #include <set>
+<<<<<<< HEAD
 #include <string>
 
 #include "api/environment/environment.h"
@@ -21,6 +22,12 @@
 #include "rtc_base/checks.h"
 #include "test/create_test_environment.h"
 #include "test/create_test_field_trials.h"
+=======
+
+#include "api/video_codecs/encoder_speed_controller.h"
+#include "api/video_codecs/video_codec.h"
+#include "rtc_base/checks.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "test/gtest.h"
 
 namespace webrtc {
@@ -40,25 +47,41 @@ using ::testing::Values;
 
 // Test that the number of speed levels increases with complexity.
 TEST(LibaomSpeedConfigFactoryTest, NumLevelsIncreaseWithComplexity) {
+<<<<<<< HEAD
   FieldTrials empty_trial = CreateTestFieldTrials("");
   LibaomSpeedConfigFactory factory_low(VideoCodecComplexity::kComplexityLow,
                                        VideoCodecMode::kRealtimeVideo);
   EncoderSpeedController::Config config_low =
       factory_low.GetSpeedConfig(640, 360, 3, empty_trial);
+=======
+  LibaomSpeedConfigFactory factory_low(VideoCodecComplexity::kComplexityLow,
+                                       VideoCodecMode::kRealtimeVideo);
+  EncoderSpeedController::Config config_low =
+      factory_low.GetSpeedConfig(640, 360, 3);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   LibaomSpeedConfigFactory factory_normal(
       VideoCodecComplexity::kComplexityNormal, VideoCodecMode::kRealtimeVideo);
   EncoderSpeedController::Config config_normal =
+<<<<<<< HEAD
       factory_normal.GetSpeedConfig(640, 360, 3, empty_trial);
+=======
+      factory_normal.GetSpeedConfig(640, 360, 3);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   LibaomSpeedConfigFactory factory_high(VideoCodecComplexity::kComplexityHigh,
                                         VideoCodecMode::kRealtimeVideo);
   EncoderSpeedController::Config config_high =
+<<<<<<< HEAD
       factory_high.GetSpeedConfig(640, 360, 3, empty_trial);
+=======
+      factory_high.GetSpeedConfig(640, 360, 3);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   LibaomSpeedConfigFactory factory_higher(
       VideoCodecComplexity::kComplexityHigher, VideoCodecMode::kRealtimeVideo);
   EncoderSpeedController::Config config_higher =
+<<<<<<< HEAD
       factory_higher.GetSpeedConfig(640, 360, 3, empty_trial);
 
   LibaomSpeedConfigFactory factory_max(VideoCodecComplexity::kComplexityMax,
@@ -66,6 +89,14 @@ TEST(LibaomSpeedConfigFactoryTest, NumLevelsIncreaseWithComplexity) {
 
   EncoderSpeedController::Config config_max =
       factory_max.GetSpeedConfig(640, 360, 3, empty_trial);
+=======
+      factory_higher.GetSpeedConfig(640, 360, 3);
+
+  LibaomSpeedConfigFactory factory_max(VideoCodecComplexity::kComplexityMax,
+                                       VideoCodecMode::kRealtimeVideo);
+  EncoderSpeedController::Config config_max =
+      factory_max.GetSpeedConfig(640, 360, 3);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   EXPECT_GE(config_normal.speed_levels.size(), config_low.speed_levels.size());
   EXPECT_GE(config_high.speed_levels.size(), config_normal.speed_levels.size());
@@ -77,8 +108,12 @@ TEST(LibaomSpeedConfigFactoryTest, NumLevelsIncreaseWithComplexity) {
 TEST(LibaomSpeedConfigFactoryTest, SpeedsAreMonotonic) {
   LibaomSpeedConfigFactory factory(VideoCodecComplexity::kComplexityMax,
                                    VideoCodecMode::kRealtimeVideo);
+<<<<<<< HEAD
   EncoderSpeedController::Config config =
       factory.GetSpeedConfig(1280, 720, 3, CreateTestFieldTrials(""));
+=======
+  EncoderSpeedController::Config config = factory.GetSpeedConfig(1280, 720, 3);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   for (const auto& level : config.speed_levels) {
     // Lower reference class index means more important, so speed should be
@@ -102,8 +137,12 @@ TEST(LibaomSpeedConfigFactoryTest, SpeedsAreMonotonic) {
 TEST(LibaomSpeedConfigFactoryTest, KeyAndMainSpeedsIncreaseBetweenLevels) {
   LibaomSpeedConfigFactory factory(VideoCodecComplexity::kComplexityMax,
                                    VideoCodecMode::kRealtimeVideo);
+<<<<<<< HEAD
   EncoderSpeedController::Config config =
       factory.GetSpeedConfig(1280, 720, 3, CreateTestFieldTrials(""));
+=======
+  EncoderSpeedController::Config config = factory.GetSpeedConfig(1280, 720, 3);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   for (size_t i = 0; i < config.speed_levels.size() - 1; ++i) {
     const auto& current_level = config.speed_levels[i];
@@ -140,21 +179,35 @@ TEST_P(LibaomSpeedConfigFactoryResolutionTest, GetSpeedConfigStartSpeedIndex) {
   const ResolutionParams& params = GetParam();
   LibaomSpeedConfigFactory factory(VideoCodecComplexity::kComplexityMax,
                                    VideoCodecMode::kRealtimeVideo);
+<<<<<<< HEAD
   EncoderSpeedController::Config config = factory.GetSpeedConfig(
       params.width, params.height, 3, CreateTestFieldTrials(""));
+=======
+  EncoderSpeedController::Config config =
+      factory.GetSpeedConfig(params.width, params.height, 3);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   int expected_index =
       std::max(0, static_cast<int>(config.speed_levels.size()) -
                       params.expected_start_index_offset);
   EXPECT_EQ(config.start_speed_index, expected_index);
 }
 
+<<<<<<< HEAD
 void CheckDistinctConfigs(LibaomSpeedConfigFactory& factory,
+=======
+void CheckDistinctConfigs(const LibaomSpeedConfigFactory& factory,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                           int num_temporal_layers) {
   RTC_DCHECK_GT(num_temporal_layers, 0);
   RTC_DCHECK_LE(num_temporal_layers, 3);
 
+<<<<<<< HEAD
   EncoderSpeedController::Config config = factory.GetSpeedConfig(
       640, 360, num_temporal_layers, CreateTestFieldTrials(""));
+=======
+  EncoderSpeedController::Config config =
+      factory.GetSpeedConfig(640, 360, num_temporal_layers);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   std::set<EncoderSpeedController::Config::SpeedLevel> unique_configs(
       config.speed_levels.begin(), config.speed_levels.end());
@@ -179,6 +232,7 @@ TEST(LibaomSpeedConfigFactoryTest, DistinctConfigs3Tl) {
   CheckDistinctConfigs(factory, 3);
 }
 
+<<<<<<< HEAD
 TEST(LibaomSpeedConfigFactoryTest, PropagatesPsnrExperimentSettings) {
   Environment env = CreateTestEnvironment(
       {.field_trials =
@@ -198,5 +252,7 @@ TEST(LibaomSpeedConfigFactoryTest, PropagatesPsnrExperimentSettings) {
   EXPECT_EQ(config.psnr_probing_settings->average_base_layer_ratio, 0.5);
 }
 
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }  // namespace
 }  // namespace webrtc

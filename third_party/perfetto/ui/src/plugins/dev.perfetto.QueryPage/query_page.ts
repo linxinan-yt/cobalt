@@ -32,6 +32,13 @@ import {Spinner} from '../../widgets/spinner';
 import {SplitPanel} from '../../widgets/split_panel';
 import {Tabs, type TabsTab} from '../../widgets/tabs';
 import {Stack, StackAuto} from '../../widgets/stack';
+<<<<<<< HEAD
+=======
+import {
+  CopyHelper,
+  CopyToClipboardButton,
+} from '../../widgets/copy_to_clipboard_button';
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 import {Anchor} from '../../widgets/anchor';
 import SqlModulesPlugin from '../dev.perfetto.SqlModules';
 import {TableList} from './table_list';
@@ -369,6 +376,33 @@ export class QueryPage implements m.ClassComponent<QueryPageAttrs> {
         },
         m(Spinner),
       );
+<<<<<<< HEAD
+=======
+    } else {
+      return [
+        queryResult.statementWithOutputCount > 1 &&
+          m(Box, [
+            m(Callout, {icon: 'warning', intent: Intent.None}, [
+              `${queryResult.statementWithOutputCount} out of ${queryResult.statementCount} `,
+              'statements returned a result. ',
+              'Only the results for the last statement are displayed.',
+            ]),
+          ]),
+        m(DataGrid, {
+          className: 'pf-query-page__results',
+          data: dataSource,
+          columns: queryResult.columns.map((c) => ({name: c})),
+          toolbarItemsLeft: m(
+            'span.pf-query-page__results-summary',
+            `Returned ${queryResult.totalRowCount.toLocaleString()} rows in ${queryTimeString}`,
+          ),
+          toolbarItemsRight: [
+            this.renderCopyButton(queryResult),
+            this.renderDownloadButton(queryResult),
+          ],
+        }),
+      ];
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 
     return m(TableList, {

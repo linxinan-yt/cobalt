@@ -90,7 +90,11 @@ class PerfEventAttr : public RefCounted {
     return id_offset_from_end_;
   }
 
+<<<<<<< HEAD
   tables::ProfilerSessionTable::Id perf_session_id() const {
+=======
+  tables::PerfSessionTable::Id perf_session_id() const {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     return perf_session_id_;
   }
 

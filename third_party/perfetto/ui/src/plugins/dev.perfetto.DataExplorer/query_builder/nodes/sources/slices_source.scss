@@ -12,7 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/sources/slices_source.scss
 @use "../../common" as *;
+=======
+@import "../../common";
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/sources/slices_source.scss
 
 .pf-slice-source-label {
   display: flex;
@@ -28,6 +32,10 @@
 
 .pf-slice-source-details {
   padding-top: 5px;
+<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/sources/slices_source.scss
   font-size: var(--pf-font-size-s);
+=======
+  font-size: var(--pf-exp-font-size-sm);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/sources/slices_source.scss
   color: var(--pf-color-text-lighter);
 }

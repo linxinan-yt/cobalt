@@ -788,11 +788,15 @@ bool IsSdpMungingAllowed(SdpMungingType sdp_munging_type,
       return true;
     case SdpMungingType::kNumberOfContents:
       return false;
+<<<<<<< HEAD
     case SdpMungingType::kSframe:
       return false;
     case SdpMungingType::kDataChannelSctpInit:
       return false;
     case SdpMungingType::kCryptex:
+=======
+    case kDataChannelSctpInit:
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       return false;
     default:
       // Handled below.

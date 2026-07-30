@@ -103,7 +103,10 @@ from diff_tests.parser.parsing.tests_sys_stats import ParsingSysStats
 from diff_tests.parser.parsing.tests_traced_stats import ParsingTracedStats
 from diff_tests.parser.perf_text.tests import PerfTextParser
 from diff_tests.parser.pprof.tests_pprof import PprofParser
+<<<<<<< HEAD
 from diff_tests.parser.collapsed_stack.tests_collapsed_stack import CollapsedStackParser
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 from diff_tests.parser.power.tests_battery_stats import BatteryStats
 from diff_tests.parser.power.tests_energy_breakdown import PowerEnergyBreakdown
 from diff_tests.parser.power.tests_entity_state_residency import EntityStateResidency
@@ -120,7 +123,10 @@ from diff_tests.parser.profiling.tests_llvm_symbolizer import ProfilingLlvmSymbo
 from diff_tests.parser.sched.tests import SchedParser
 from diff_tests.parser.simpleperf.tests import Simpleperf
 from diff_tests.parser.simpleperf_proto.tests import SimpleperfProtoParser
+<<<<<<< HEAD
 from diff_tests.parser.smaps.tests import SmapsParser
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 from diff_tests.parser.smoke.tests import Smoke
 from diff_tests.parser.smoke.tests_compute_metrics import SmokeComputeMetrics
 from diff_tests.parser.smoke.tests_json import SmokeJson
@@ -251,7 +257,10 @@ def fetch_all_diff_tests(
       SchedParser,
       Simpleperf,
       SimpleperfProtoParser,
+<<<<<<< HEAD
       SmapsParser,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       StdlibSched,
       Smoke,
       SmokeComputeMetrics,
@@ -293,8 +302,11 @@ def fetch_all_diff_tests(
       ArtMethodParser,
       PerfTextParser,
       PprofParser,
+<<<<<<< HEAD
       CollapsedStackParser,
       PrimesTraceParser,
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   ]
 
   metrics_tests = [

@@ -312,6 +312,13 @@ dsb{
                 other{"{0} źaseśinow promila"}
                 two{"{0} źaseśinje promila"}
             }
+            portion-per-1e9{
+                dnam{"miliardnina"}
+                few{"{0} miliardniny"}
+                one{"{0} miliardnina"}
+                other{"{0} miliardninow"}
+                two{"{0} miliardninje"}
+            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1567,7 +1574,11 @@ dsb{
             }
         }
         concentr{
+<<<<<<< HEAD
             part-per-1e9{
+=======
+            portion-per-1e9{
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 dnam{"n"}
                 few{"{0} n"}
                 one{"{0} n"}
@@ -1756,6 +1767,13 @@ dsb{
                 one{"{0} ‱"}
                 other{"{0} ‱"}
                 two{"{0} ‱"}
+            }
+            portion-per-1e9{
+                dnam{"nano"}
+                few{"{0} nano"}
+                one{"{0} nano"}
+                other{"{0} nano"}
+                two{"{0} nano"}
             }
         }
         consumption{

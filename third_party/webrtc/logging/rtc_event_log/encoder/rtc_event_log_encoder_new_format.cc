@@ -1386,7 +1386,11 @@ void RtcEventLogEncoderNewFormat::EncodeBweUpdateLossBased(
 }
 
 void RtcEventLogEncoderNewFormat::EncodeBweUpdateScream(
+<<<<<<< HEAD
     std::span<const RtcEventBweUpdateScream*> batch,
+=======
+    ArrayView<const RtcEventBweUpdateScream*> batch,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     rtclog2::EventStream* event_stream) {
   if (batch.empty())
     return;

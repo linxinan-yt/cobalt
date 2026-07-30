@@ -431,7 +431,11 @@ void DecimalQuantityTest::testMaxDigits() {
     assertEquals("Should trim, toPlainString", "76.54", dq.toPlainString());
     assertEquals("Should trim, toScientificString", "7.654E+1", dq.toScientificString());
     assertEquals("Should trim, toLong", 76LL, dq.toLong(true));
+<<<<<<< HEAD
     assertEquals("Should trim, toFractionLong", 54, dq.toFractionLong(false));
+=======
+    assertEquals("Should trim, toFractionLong", static_cast<int64_t>(54), static_cast<int64_t>(dq.toFractionLong(false)));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     assertEquals("Should trim, toDouble", 76.54, dq.toDouble());
     // To test DecNum output, check the round-trip.
     DecNum dn;

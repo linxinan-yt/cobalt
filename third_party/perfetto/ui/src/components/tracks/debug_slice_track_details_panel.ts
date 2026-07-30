@@ -21,7 +21,11 @@ import {getThreadState, type ThreadState} from '../sql_utils/thread_state';
 import {DurationWidget} from '../widgets/duration';
 import {Timestamp} from '../widgets/timestamp';
 import {
+<<<<<<< HEAD
   type SqlValue,
+=======
+  SqlValue,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   LONG,
   STR,
   NUM_NULL,
@@ -260,7 +264,11 @@ export class DebugSliceTrackDetailsPanel implements TrackEventDetailsPanel {
     ]);
   }
 
+<<<<<<< HEAD
   private renderArgsSection(args: ArgsDict) {
+=======
+  private renderArgsSection(args: Arg[]) {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     return m(Section, {title: 'Arguments'}, [
       m(Tree, renderArguments(this.trace, args)),
     ]);

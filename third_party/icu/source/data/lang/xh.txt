@@ -89,6 +89,7 @@ xh{
         pt_PT{"IsiPhuthukezi SasePortugal"}
         ro{"Isi-Romanian"}
         ru{"Isi-Russian"}
+<<<<<<< HEAD
         sa{"IsiSanskrit"}
         sd{"IsiSindhi"}
         si{"Isi-Sinhalese"}
@@ -103,6 +104,9 @@ xh{
         sw{"Isi-Swahili"}
         ta{"Isi-Tamil"}
         te{"Isi-Telegu"}
+=======
+        sq{"IsiAlbania"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         th{"Isi-Thai"}
         ti{"Isi-Tigrinya"}
         tk{"IsiTurkmen"}

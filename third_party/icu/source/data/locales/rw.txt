@@ -62,6 +62,7 @@ rw{
                 hms{"h:mm:ss a"}
                 hmsv{"h:mm:ss a v"}
                 hmv{"h:mm a v"}
+<<<<<<< HEAD
                 yM{"MM-y"}
                 yMEd{"E, dd-MM-y"}
                 yMMM{"MMM y"}
@@ -71,6 +72,10 @@ rw{
                 yMd{"dd-MM-y"}
                 yQQQ{"QQQ y"}
                 yQQQQ{"QQQQ y"}
+=======
+                yMMMd{"d MMMM y"}
+                yMd{"dd-MM-y"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             dayNames{
                 format{

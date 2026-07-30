@@ -50,6 +50,10 @@ namespace {
 using ::testing::_;
 using ::testing::ElementsAre;
 using ::testing::InSequence;
+<<<<<<< HEAD
+=======
+using ::testing::InvokeWithoutArgs;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 using ::testing::Mock;
 using ::testing::NiceMock;
 using ::testing::Pair;
@@ -1150,6 +1154,7 @@ TEST(FrameCadenceAdapterRealTimeTest, ScheduledRepeatAllowsForSlowEncode) {
     auto frame = CreateFrame();
     constexpr int kSleepMs = 400;
     constexpr TimeDelta kAllowedBelate = TimeDelta::Millis(151);
+<<<<<<< HEAD
     EXPECT_CALL(callback, OnFrame).WillRepeatedly([&, kAllowedBelate] {
       ++frame_counter;
       // Avoid the first OnFrame and sleep on the second.
@@ -1165,6 +1170,24 @@ TEST(FrameCadenceAdapterRealTimeTest, ScheduledRepeatAllowsForSlowEncode) {
         event.Set();
       }
     });
+=======
+    EXPECT_CALL(callback, OnFrame)
+        .WillRepeatedly(InvokeWithoutArgs([&, kAllowedBelate] {
+          ++frame_counter;
+          // Avoid the first OnFrame and sleep on the second.
+          if (frame_counter == 2) {
+            start_time = clock->CurrentTime();
+            Thread::SleepMs(kSleepMs);
+          } else if (frame_counter == 3) {
+            TimeDelta diff =
+                clock->CurrentTime() - (*start_time + TimeDelta::Millis(500));
+            RTC_LOG(LS_ERROR)
+                << "Difference in when frame should vs is appearing: " << diff;
+            EXPECT_LT(diff, kAllowedBelate);
+            event.Set();
+          }
+        }));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     adapter->OnFrame(frame);
   });
   event.Wait(Event::kForever);

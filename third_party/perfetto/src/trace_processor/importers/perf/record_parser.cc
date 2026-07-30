@@ -189,8 +189,17 @@ base::Status RecordParser::InternSample(Sample sample) {
   std::optional<CallsiteId> callsite_id = InternCallchain(
       upid, sample.callchain, sample.perf_invocation->needs_pc_adjustment());
 
+<<<<<<< HEAD
   // Update counters and create counter set.
   ASSIGN_OR_RETURN(std::vector<CounterId> counter_ids, UpdateCounters(sample));
+=======
+  auto session_id = sample.attr->perf_session_id();
+  context_->storage->mutable_perf_sample_table()->Insert(
+      {sample.trace_ts, utid, sample.cpu,
+       context_->storage->InternString(
+           ProfilePacketUtils::StringifyCpuMode(sample.cpu_mode)),
+       callsite_id, std::nullopt, session_id});
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   tables::ProfilerSampleTable::Row row;
   row.ts = sample.trace_ts;

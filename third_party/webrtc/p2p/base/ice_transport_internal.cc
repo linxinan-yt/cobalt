@@ -22,7 +22,10 @@
 #include "api/task_queue/task_queue_base.h"
 #include "api/units/time_delta.h"
 #include "p2p/base/p2p_constants.h"
+<<<<<<< HEAD
 #include "p2p/base/packet_transport_internal.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "rtc_base/checks.h"
 #include "rtc_base/net_helper.h"
 
@@ -236,8 +239,14 @@ RTCError IceConfig::IsValid() const {
   return RTCError::OK();
 }
 
+<<<<<<< HEAD
 IceTransportInternal::IceTransportInternal(TaskQueueBase* attached_queue)
     : PacketTransportInternal(attached_queue) {}
+=======
+IceTransportInternal::IceTransportInternal()
+    : role_conflict_trampoline_(this),
+      ice_transport_state_changed_trampoline_(this) {}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 IceTransportInternal::~IceTransportInternal() = default;
 
@@ -265,9 +274,14 @@ void IceTransportInternal::SubscribeRoleConflict(
 }
 
 void IceTransportInternal::SubscribeIceTransportStateChanged(
+<<<<<<< HEAD
     void* tag,
     absl::AnyInvocable<void(IceTransportInternal*)> callback) {
   ice_transport_state_changed_callbacks_.AddReceiver(tag, std::move(callback));
+=======
+    absl::AnyInvocable<void(IceTransportInternal*)> callback) {
+  ice_transport_state_changed_trampoline_.Subscribe(std::move(callback));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 }  // namespace webrtc

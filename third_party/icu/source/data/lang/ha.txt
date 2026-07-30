@@ -7,7 +7,10 @@ ha{
         cf{"Yanayin Kudi"}
         collation{"Tsarin Rabewa"}
         currency{"Kudin Kasa"}
+<<<<<<< HEAD
         em{"Gabatar da Imoji"}
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         hc{"Zagayen Awowi (12 da 24)"}
         lb{"Salo na Raba Layi"}
         lw{"Layi Zai Karye tsakanin Kalmomi"}
@@ -469,6 +472,14 @@ ha{
     }
     Languages%short{
         az{"Azeri"}
+<<<<<<< HEAD
+=======
+        en_GB{"Turanci (Biritaniya)"}
+        en_US{"Turanci (Amurka)"}
+    }
+    Languages%variant{
+        hi_Latn{"Harshen Hindi (Latin)"}
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
     Scripts{
         Adlm{"Adlam"}

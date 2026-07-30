@@ -48,6 +48,7 @@ MATCHER_P(IsOkAndHolds, matcher, "") {
 TEST(PerfInvocationTest, NoAttrBuildFails) {
   TraceProcessorContext context;
   context.storage.reset(new TraceStorage());
+<<<<<<< HEAD
   context.global_stats_tracker =
       std::make_unique<GlobalStatsTracker>(context.storage.get());
   context.machine_tracker.reset(
@@ -56,6 +57,8 @@ TEST(PerfInvocationTest, NoAttrBuildFails) {
       TraceProcessorContextPtr<TraceProcessorContext::TraceState>::MakeRoot(
           TraceProcessorContext::TraceState{TraceId{0}});
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   PerfInvocation::Builder builder(&context);
   EXPECT_FALSE(builder.Build().ok());
 }
@@ -63,6 +66,7 @@ TEST(PerfInvocationTest, NoAttrBuildFails) {
 TEST(PerfInvocationTest, OneAttrAndNoIdBuildSucceeds) {
   TraceProcessorContext context;
   context.storage.reset(new TraceStorage());
+<<<<<<< HEAD
   context.global_stats_tracker =
       std::make_unique<GlobalStatsTracker>(context.storage.get());
   context.machine_tracker.reset(
@@ -73,6 +77,10 @@ TEST(PerfInvocationTest, OneAttrAndNoIdBuildSucceeds) {
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
   PerfInvocation::Builder builder(&context);
   perf_event_attr attr{};
+=======
+  PerfInvocation::Builder builder(&context);
+  perf_event_attr attr;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   attr.sample_id_all = false;
   attr.sample_type = PERF_SAMPLE_CALLCHAIN | PERF_SAMPLE_CPU | PERF_SAMPLE_TIME;
   builder.AddAttrAndIds(attr, {1});
@@ -88,6 +96,7 @@ TEST(PerfInvocationTest, OneAttrAndNoIdBuildSucceeds) {
 TEST(PerfInvocationTest, MultipleAttrsAndNoIdBuildFails) {
   TraceProcessorContext context;
   context.storage.reset(new TraceStorage());
+<<<<<<< HEAD
   context.global_stats_tracker =
       std::make_unique<GlobalStatsTracker>(context.storage.get());
   context.machine_tracker.reset(
@@ -98,6 +107,10 @@ TEST(PerfInvocationTest, MultipleAttrsAndNoIdBuildFails) {
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
   PerfInvocation::Builder builder(&context);
   perf_event_attr attr{};
+=======
+  PerfInvocation::Builder builder(&context);
+  perf_event_attr attr;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   attr.sample_id_all = true;
   attr.sample_type = PERF_SAMPLE_CALLCHAIN | PERF_SAMPLE_CPU | PERF_SAMPLE_TIME;
   builder.AddAttrAndIds(attr, {1});
@@ -108,6 +121,7 @@ TEST(PerfInvocationTest, MultipleAttrsAndNoIdBuildFails) {
 TEST(PerfInvocationTest, MultipleIdsSameAttrAndNoIdCanExtractAttrFromRecord) {
   TraceProcessorContext context;
   context.storage.reset(new TraceStorage());
+<<<<<<< HEAD
   context.global_stats_tracker =
       std::make_unique<GlobalStatsTracker>(context.storage.get());
   context.machine_tracker.reset(
@@ -118,6 +132,10 @@ TEST(PerfInvocationTest, MultipleIdsSameAttrAndNoIdCanExtractAttrFromRecord) {
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
   PerfInvocation::Builder builder(&context);
   perf_event_attr attr{};
+=======
+  PerfInvocation::Builder builder(&context);
+  perf_event_attr attr;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   attr.sample_id_all = true;
   attr.sample_type = PERF_SAMPLE_IP | PERF_SAMPLE_CPU | PERF_SAMPLE_TIME;
   builder.AddAttrAndIds(attr, {1, 2, 3});
@@ -142,6 +160,7 @@ TEST(PerfInvocationTest, MultipleIdsSameAttrAndNoIdCanExtractAttrFromRecord) {
 TEST(PerfInvocationTest, NoCommonSampleIdAllBuildFails) {
   TraceProcessorContext context;
   context.storage.reset(new TraceStorage());
+<<<<<<< HEAD
   context.global_stats_tracker =
       std::make_unique<GlobalStatsTracker>(context.storage.get());
   context.machine_tracker.reset(
@@ -152,6 +171,10 @@ TEST(PerfInvocationTest, NoCommonSampleIdAllBuildFails) {
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
   PerfInvocation::Builder builder(&context);
   perf_event_attr attr{};
+=======
+  PerfInvocation::Builder builder(&context);
+  perf_event_attr attr;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   attr.sample_id_all = true;
   attr.sample_type = PERF_SAMPLE_IDENTIFIER;
   builder.AddAttrAndIds(attr, {1});
@@ -168,6 +191,7 @@ TEST(PerfInvocationTest, NoCommonSampleIdAllBuildFails) {
 TEST(PerfInvocationTest, NoCommonOffsetForSampleBuildFails) {
   TraceProcessorContext context;
   context.storage.reset(new TraceStorage());
+<<<<<<< HEAD
   context.global_stats_tracker =
       std::make_unique<GlobalStatsTracker>(context.storage.get());
   context.machine_tracker.reset(
@@ -178,6 +202,10 @@ TEST(PerfInvocationTest, NoCommonOffsetForSampleBuildFails) {
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
   PerfInvocation::Builder builder(&context);
   perf_event_attr attr{};
+=======
+  PerfInvocation::Builder builder(&context);
+  perf_event_attr attr;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   attr.sample_id_all = true;
   attr.sample_type = PERF_SAMPLE_IP | PERF_SAMPLE_ID;
   builder.AddAttrAndIds(attr, {1});
@@ -189,6 +217,7 @@ TEST(PerfInvocationTest, NoCommonOffsetForSampleBuildFails) {
 TEST(PerfInvocationTest, NoCommonOffsetForNonSampleBuildFails) {
   TraceProcessorContext context;
   context.storage.reset(new TraceStorage());
+<<<<<<< HEAD
   context.global_stats_tracker =
       std::make_unique<GlobalStatsTracker>(context.storage.get());
   context.machine_tracker.reset(
@@ -199,6 +228,10 @@ TEST(PerfInvocationTest, NoCommonOffsetForNonSampleBuildFails) {
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
   PerfInvocation::Builder builder(&context);
   perf_event_attr attr{};
+=======
+  PerfInvocation::Builder builder(&context);
+  perf_event_attr attr;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   attr.sample_id_all = true;
   attr.sample_type = PERF_SAMPLE_ID | PERF_SAMPLE_TID;
   builder.AddAttrAndIds(attr, {1});
@@ -212,6 +245,7 @@ TEST(PerfInvocationTest, NoCommonOffsetForNonSampleBuildFails) {
   EXPECT_FALSE(builder.Build().ok());
 }
 
+<<<<<<< HEAD
 TEST(PerfInvocationTest,
      NoCommonOffsetForNonSampleAndNoSampleIdAllBuildSucceeds) {
   TraceProcessorContext context;
@@ -226,6 +260,13 @@ TEST(PerfInvocationTest,
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
   PerfInvocation::Builder builder(&context);
   perf_event_attr attr{};
+=======
+TEST(PerfInvocationTest, NoCommonOffsetForNonSampleAndNoSampleIdAllBuildSucceeds) {
+  TraceProcessorContext context;
+  context.storage.reset(new TraceStorage());
+  PerfInvocation::Builder builder(&context);
+  perf_event_attr attr;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   attr.sample_id_all = false;
   attr.sample_type = PERF_SAMPLE_IDENTIFIER | PERF_SAMPLE_TID;
   builder.AddAttrAndIds(attr, {1});
@@ -237,6 +278,7 @@ TEST(PerfInvocationTest,
 TEST(PerfInvocationTest, MultiplesessionBuildSucceeds) {
   TraceProcessorContext context;
   context.storage.reset(new TraceStorage());
+<<<<<<< HEAD
   context.global_stats_tracker =
       std::make_unique<GlobalStatsTracker>(context.storage.get());
   context.machine_tracker.reset(
@@ -247,6 +289,10 @@ TEST(PerfInvocationTest, MultiplesessionBuildSucceeds) {
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
   PerfInvocation::Builder builder(&context);
   perf_event_attr attr{};
+=======
+  PerfInvocation::Builder builder(&context);
+  perf_event_attr attr;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   attr.sample_id_all = true;
   attr.sample_type = PERF_SAMPLE_IP | PERF_SAMPLE_ID;
   builder.AddAttrAndIds(attr, {1});
@@ -257,6 +303,7 @@ TEST(PerfInvocationTest, MultiplesessionBuildSucceeds) {
 TEST(PerfInvocationTest, FindAttrInRecordWithId) {
   TraceProcessorContext context;
   context.storage.reset(new TraceStorage());
+<<<<<<< HEAD
   context.global_stats_tracker =
       std::make_unique<GlobalStatsTracker>(context.storage.get());
   context.machine_tracker.reset(
@@ -267,6 +314,10 @@ TEST(PerfInvocationTest, FindAttrInRecordWithId) {
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
   PerfInvocation::Builder builder(&context);
   perf_event_attr attr{};
+=======
+  PerfInvocation::Builder builder(&context);
+  perf_event_attr attr;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   attr.sample_id_all = true;
   attr.sample_type = PERF_SAMPLE_IP | PERF_SAMPLE_ID;
   attr.read_format = 1;
@@ -302,6 +353,7 @@ TEST(PerfInvocationTest, FindAttrInRecordWithId) {
 TEST(PerfInvocationTest, FindAttrInRecordWithIdentifier) {
   TraceProcessorContext context;
   context.storage.reset(new TraceStorage());
+<<<<<<< HEAD
   context.global_stats_tracker =
       std::make_unique<GlobalStatsTracker>(context.storage.get());
   context.machine_tracker.reset(
@@ -312,6 +364,10 @@ TEST(PerfInvocationTest, FindAttrInRecordWithIdentifier) {
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
   PerfInvocation::Builder builder(&context);
   perf_event_attr attr{};
+=======
+  PerfInvocation::Builder builder(&context);
+  perf_event_attr attr;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   attr.sample_id_all = true;
   attr.sample_type = PERF_SAMPLE_IDENTIFIER | PERF_SAMPLE_IP;
   attr.read_format = 1;

@@ -30,8 +30,11 @@
 #include "protos/perfetto/trace/trace.pbzero.h"
 #include "src/trace_processor/importers/common/clock_tracker.h"
 #include "src/trace_processor/importers/common/global_args_tracker.h"
+<<<<<<< HEAD
 #include "src/trace_processor/importers/common/global_metadata_tracker.h"
 #include "src/trace_processor/importers/common/global_stats_tracker.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "src/trace_processor/importers/common/import_logs_tracker.h"
 #include "src/trace_processor/importers/common/machine_tracker.h"
 #include "src/trace_processor/importers/common/metadata_tracker.h"
@@ -40,10 +43,14 @@
 #include "src/trace_processor/sorter/trace_sorter.h"
 #include "src/trace_processor/storage/stats.h"
 #include "src/trace_processor/storage/trace_storage.h"
+<<<<<<< HEAD
 #include "src/trace_processor/trace_reader_registry.h"
 #include "src/trace_processor/types/trace_processor_context.h"
 #include "src/trace_processor/types/trace_processor_context_ptr.h"
 #include "src/trace_processor/util/clock_synchronizer.h"
+=======
+#include "src/trace_processor/types/trace_processor_context.h"
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "src/trace_processor/util/descriptors.h"
 #include "test/gtest_and_gmock.h"
 
@@ -59,6 +66,7 @@ constexpr auto BOOTTIME = protos::pbzero::BUILTIN_CLOCK_BOOTTIME;
 class ProtoTraceReaderTest : public ::testing::Test {
  public:
   ProtoTraceReaderTest() {
+<<<<<<< HEAD
     host_context_.storage = std::make_unique<TraceStorage>();
     host_context_.trace_state =
         TraceProcessorContextPtr<TraceProcessorContext::TraceState>::MakeRoot(
@@ -94,6 +102,22 @@ class ProtoTraceReaderTest : public ::testing::Test {
     host_context_.register_additional_proto_modules =
         &RegisterAdditionalModules;
     proto_trace_reader_ = std::make_unique<ProtoTraceReader>(&host_context_);
+=======
+    context_.storage = std::make_unique<TraceStorage>();
+    context_.machine_tracker =
+        std::make_unique<MachineTracker>(&context_, 0x1001);
+    context_.global_args_tracker =
+        std::make_unique<GlobalArgsTracker>(context_.storage.get());
+    context_.import_logs_tracker =
+        std::make_unique<ImportLogsTracker>(&context_, 1);
+    context_.clock_tracker = std::make_unique<ClockTracker>(
+        std::make_unique<ClockSynchronizerListenerImpl>(&context_));
+    context_.sorter = std::make_unique<TraceSorter>(
+        &context_, TraceSorter::SortingMode::kDefault);
+    context_.descriptor_pool_ = std::make_unique<DescriptorPool>();
+    context_.register_additional_proto_modules = &RegisterAdditionalModules;
+    proto_trace_reader_ = std::make_unique<ProtoTraceReader>(&context_);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   base::Status Tokenize() {

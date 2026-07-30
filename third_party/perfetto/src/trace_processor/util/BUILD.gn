@@ -125,10 +125,14 @@ source_set("blob") {
 }
 
 source_set("clock") {
+<<<<<<< HEAD
   sources = [
     "clock_synchronizer.cc",
     "clock_synchronizer.h",
   ]
+=======
+  sources = [ "clock_synchronizer.h" ]
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   deps = [
     "../../../gn:default_deps",
     "../../../include/perfetto/ext/base:base",
@@ -279,17 +283,35 @@ source_set("sql_argument") {
   ]
 }
 
+<<<<<<< HEAD
 source_set("owned_sql_value") {
   sources = [ "owned_sql_value.h" ]
+=======
+source_set("args_utils") {
+  sources = [
+    "args_utils.cc",
+    "args_utils.h",
+  ]
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   deps = [
     "../../../gn:default_deps",
     "../../../include/perfetto/base",
     "../../../include/perfetto/ext/base",
+<<<<<<< HEAD
     "../../../include/perfetto/trace_processor:basic_types",
   ]
 }
 
 source_set("args_utils") {
+=======
+    "../containers",
+    "../storage",
+    "../types",
+  ]
+}
+
+source_set("json_parser") {
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   sources = [
     "args_utils.cc",
     "args_utils.h",
@@ -379,6 +401,17 @@ source_set("json_value") {
     ":json_serializer",
     "../../../gn:default_deps",
     "../../../include/perfetto/base",
+    "../../../include/perfetto/ext/base",
+  ]
+}
+
+source_set("json_writer") {
+  sources = [
+    "json_writer.cc",
+    "json_writer.h",
+  ]
+  deps = [
+    "../../../gn:default_deps",
     "../../../include/perfetto/ext/base",
   ]
 }
@@ -489,8 +522,12 @@ source_set("unittests") {
     "galloping_search_unittest.cc",
     "glob_unittest.cc",
     "json_parser_unittest.cc",
+<<<<<<< HEAD
     "json_serializer_unittest.cc",
     "json_value_unittest.cc",
+=======
+    "json_writer_unittest.cc",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     "proto_profiler_unittest.cc",
     "proto_to_args_parser_unittest.cc",
     "protozero_to_json_unittests.cc",
@@ -514,8 +551,12 @@ source_set("unittests") {
     ":galloping_search",
     ":glob",
     ":json_parser",
+<<<<<<< HEAD
     ":json_serializer",
     ":json_value",
+=======
+    ":json_writer",
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     ":proto_profiler",
     ":proto_to_args_parser",
     ":protozero_to_json",

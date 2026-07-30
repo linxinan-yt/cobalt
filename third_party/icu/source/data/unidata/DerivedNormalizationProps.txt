@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 # DerivedNormalizationProps-17.0.0.txt
 # Date: 2025-01-27, 18:09:14 GMT
 # © 2025 Unicode®, Inc.
+=======
+# DerivedNormalizationProps-16.0.0.txt
+# Date: 2024-04-30, 21:48:18 GMT
+# © 2024 Unicode®, Inc.
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 # Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
 # For terms of use and license, see https://www.unicode.org/terms_of_use.html
 #
@@ -680,7 +686,11 @@ A7F8  ; FC_NFKC; 0127
 1F16C ; FC_NFKC; 006D 0072
 1F190 ; FC_NFKC; 0064 006A
 
+<<<<<<< HEAD
 # Total code points: 664
+=======
+# Total code points: 663
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -1754,7 +1764,11 @@ FFED..FFEE    ; NFKD_QC; N
 1FBF0..1FBF9  ; NFKD_QC; N
 2F800..2FA1D  ; NFKD_QC; N
 
+<<<<<<< HEAD
 # Total code points: 17086
+=======
+# Total code points: 17085
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -2165,7 +2179,11 @@ FFED..FFEE    ; NFKC_QC; N
 1FBF0..1FBF9  ; NFKC_QC; N
 2F800..2FA1D  ; NFKC_QC; N
 
+<<<<<<< HEAD
 # Total code points: 4965
+=======
+# Total code points: 4964
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -5449,7 +5467,10 @@ A7C7          ; NFKC_CF; A7C8
 A7C9          ; NFKC_CF; A7CA
 A7CB          ; NFKC_CF; 0264
 A7CC          ; NFKC_CF; A7CD
+<<<<<<< HEAD
 A7CE          ; NFKC_CF; A7CF
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7D0          ; NFKC_CF; A7D1
 A7D2          ; NFKC_CF; A7D3
 A7D4          ; NFKC_CF; A7D5
@@ -5457,7 +5478,10 @@ A7D6          ; NFKC_CF; A7D7
 A7D8          ; NFKC_CF; A7D9
 A7DA          ; NFKC_CF; A7DB
 A7DC          ; NFKC_CF; 019B
+<<<<<<< HEAD
 A7F1          ; NFKC_CF; 0073
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7F2          ; NFKC_CF; 0063
 A7F3          ; NFKC_CF; 0066
 A7F4          ; NFKC_CF; 0071
@@ -9178,7 +9202,11 @@ E0080..E00FF  ; NFKC_CF;
 E0100..E01EF  ; NFKC_CF;
 E01F0..E0FFF  ; NFKC_CF;
 
+<<<<<<< HEAD
 # Total code points: 10583
+=======
+# Total code points: 10554
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -11612,7 +11640,10 @@ A7C7          ; NFKC_SCF; A7C8
 A7C9          ; NFKC_SCF; A7CA
 A7CB          ; NFKC_SCF; 0264
 A7CC          ; NFKC_SCF; A7CD
+<<<<<<< HEAD
 A7CE          ; NFKC_SCF; A7CF
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7D0          ; NFKC_SCF; A7D1
 A7D2          ; NFKC_SCF; A7D3
 A7D4          ; NFKC_SCF; A7D5
@@ -11620,7 +11651,10 @@ A7D6          ; NFKC_SCF; A7D7
 A7D8          ; NFKC_SCF; A7D9
 A7DA          ; NFKC_SCF; A7DB
 A7DC          ; NFKC_SCF; 019B
+<<<<<<< HEAD
 A7F1          ; NFKC_SCF; 0073
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7F2          ; NFKC_SCF; 0063
 A7F3          ; NFKC_SCF; 0066
 A7F4          ; NFKC_SCF; 0071
@@ -15341,7 +15375,11 @@ E0080..E00FF  ; NFKC_SCF;
 E0100..E01EF  ; NFKC_SCF;
 E01F0..E0FFF  ; NFKC_SCF;
 
+<<<<<<< HEAD
 # Total code points: 10545
+=======
+# Total code points: 10516
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # ================================================
 
@@ -16111,7 +16149,10 @@ A7C2          ; Changes_When_NFKC_Casefolded
 A7C4..A7C7    ; Changes_When_NFKC_Casefolded
 A7C9          ; Changes_When_NFKC_Casefolded
 A7CB..A7CC    ; Changes_When_NFKC_Casefolded
+<<<<<<< HEAD
 A7CE          ; Changes_When_NFKC_Casefolded
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7D0          ; Changes_When_NFKC_Casefolded
 A7D2          ; Changes_When_NFKC_Casefolded
 A7D4          ; Changes_When_NFKC_Casefolded
@@ -16119,7 +16160,11 @@ A7D6          ; Changes_When_NFKC_Casefolded
 A7D8          ; Changes_When_NFKC_Casefolded
 A7DA          ; Changes_When_NFKC_Casefolded
 A7DC          ; Changes_When_NFKC_Casefolded
+<<<<<<< HEAD
 A7F1..A7F4    ; Changes_When_NFKC_Casefolded
+=======
+A7F2..A7F4    ; Changes_When_NFKC_Casefolded
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 A7F5          ; Changes_When_NFKC_Casefolded
 A7F8..A7F9    ; Changes_When_NFKC_Casefolded
 AB5C..AB5F    ; Changes_When_NFKC_Casefolded
@@ -16363,6 +16408,10 @@ E0080..E00FF  ; Changes_When_NFKC_Casefolded
 E0100..E01EF  ; Changes_When_NFKC_Casefolded
 E01F0..E0FFF  ; Changes_When_NFKC_Casefolded
 
+<<<<<<< HEAD
 # Total code points: 10583
+=======
+# Total code points: 10554
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 # EOF

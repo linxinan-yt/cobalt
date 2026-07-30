@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_proto_clone.h
 #ifndef SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_WINDOWMANAGER_PROTO_CLONE_H_
 #define SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_WINDOWMANAGER_PROTO_CLONE_H_
 
@@ -33,3 +34,22 @@ std::vector<uint8_t> CloneWindowContainerChildProtoPruningChildren(
 }  // namespace perfetto::trace_processor::winscope::windowmanager_proto_clone
 
 #endif  // SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_WINDOWMANAGER_PROTO_CLONE_H_
+=======
+#ifndef SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_WINDOWMANAGER_PROTO_CLONE_H_
+#define SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_WINDOWMANAGER_PROTO_CLONE_H_
+
+#include <vector>
+
+#include "protos/perfetto/trace/android/server/windowmanagerservice.pbzero.h"
+
+namespace perfetto::trace_processor::winscope::windowmanager_proto_clone {
+
+std::vector<uint8_t> CloneRootWindowContainerProtoPruningChildren(
+    const protos::pbzero::RootWindowContainerProto::Decoder&);
+std::vector<uint8_t> CloneWindowContainerChildProtoPruningChildren(
+    const protos::pbzero::WindowContainerChildProto::Decoder&);
+
+}  // namespace perfetto::trace_processor::winscope::windowmanager_proto_clone
+
+#endif  // SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_WINDOWMANAGER_PROTO_CLONE_H_
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_proto_clone.h

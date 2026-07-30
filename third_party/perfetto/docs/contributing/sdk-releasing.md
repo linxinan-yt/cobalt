@@ -111,6 +111,7 @@ git push origin vX.Y
    on https://luci-scheduler.appspot.com/jobs/perfetto . Wait for all the bots
    to have completed successfully and be back into the WAITING state.
 
+<<<<<<< HEAD
 4. **IMPORTANT**: Check out the release tag before running the packaging script:
 
 ```bash
@@ -129,6 +130,13 @@ git checkout vX.Y
       android-{arm,arm64,x86,x64}, mac-{amd64,arm64}, win-amd64
     - 2 SDK source zips: perfetto-cpp-sdk-src.zip, perfetto-c-sdk-src.zip
   - If one or more prebuilt zips are missing it means that one of the LUCI bots failed,
+=======
+8. Run `tools/release/package-prebuilts-for-github-release vX.Y`. It will pull the
+   prebuilts under `/tmp/perfetto-prebuilts-vX.Y`.
+  - There must be 10 zips in total: linux-{arm,arm64,amd64},
+    android-{arm,arm64,x86,x64}, mac-{amd64,arm64}, win-amd64.
+  - If one or more are missing it means that one of the LUCI bots failed,
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     check the logs (follow the "Task URL: " link) from the invocation log.
   - If this happens you'll need to respin a vX.(Y+1) release with the fix
     (look at the history v20.1, where a Windows failure required a respin).

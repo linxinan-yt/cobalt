@@ -141,7 +141,10 @@ void DateFormatTest::runIndexedTest( int32_t index, UBool exec, const char* &nam
     TESTCASE_AUTO(TestBogusLocale);
     TESTCASE_AUTO(TestLongLocale);
     TESTCASE_AUTO(TestChineseCalendar23043);
+<<<<<<< HEAD
     TESTCASE_AUTO(TestAmPmLengths23114);
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
     TESTCASE_AUTO_END;
 }
@@ -5964,6 +5967,7 @@ void DateFormatTest::TestChineseCalendar23043() {
   sdf.format(d, appendTo, nullptr, status);
   status.expectErrorAndReset(U_ILLEGAL_ARGUMENT_ERROR);
 }
+<<<<<<< HEAD
 
 void DateFormatTest::TestAmPmLengths23114() {
     IcuTestErrorCode status(*this, "TestAmPmLengths23114");
@@ -6036,6 +6040,8 @@ void DateFormatTest::TestAmPmLengths23114() {
     borrowedAmPm = dfs->getAmPmStrings(countAmPm, ignoredContext, DateFormatSymbols::NARROW);
     assertEquals("DateFormatSymbols narrow after set", u"am!", borrowedAmPm[0]);
 }
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 #endif /* #if !UCONFIG_NO_FORMATTING */
 

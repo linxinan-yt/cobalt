@@ -52,6 +52,11 @@ class SizeProfileComputer {
       return H::Combine(std::move(hasher), f.field_idx, f.type_name_);
     }
 
+    template <typename H>
+    friend H PerfettoHashValue(H hasher, const Field& f) {
+      return H::Combine(std::move(hasher), f.field_idx, f.type);
+    }
+
     uint32_t field_idx;
     std::string field_name_;
     std::string type_name_;

@@ -64,7 +64,10 @@
 #include "rtc_base/task_queue_for_test.h"
 #include "rtc_base/thread.h"
 #include "system_wrappers/include/metrics.h"
+<<<<<<< HEAD
 #include "test/create_test_environment.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "test/create_test_field_trials.h"
 #include "test/gmock.h"
 #include "test/gtest.h"
@@ -2940,6 +2943,38 @@ TEST_F(JsepTransportControllerTest, CustomRtpTransportFactory) {
   EXPECT_EQ(factory->audio_transport_, audio_rtp_transport);
   EXPECT_NE(nullptr, video_rtp_transport);
   EXPECT_EQ(factory->video_transport_, video_rtp_transport);
+}
+
+TEST_F(JsepTransportControllerTest, RtpTransportCountHistogramNoBundle) {
+  metrics::Reset();
+  CreateJsepTransportController(JsepTransportController::Config());
+  auto description = CreateSessionDescriptionWithoutBundle();
+  transport_controller_->SetLocalDescription(SdpType::kOffer, description.get(),
+                                             nullptr);
+  transport_controller_->SetRemoteDescription(
+      SdpType::kAnswer, description.get(), description.get());
+  EXPECT_METRIC_EQ(
+      1, metrics::NumSamples("WebRTC.PeerConnection.RtpTransportCount"));
+  // We expect 2 transports
+  EXPECT_METRIC_THAT(
+      metrics::Samples("WebRTC.PeerConnection.RtpTransportCount"),
+      ElementsAre(Pair(2, 1)));
+}
+
+TEST_F(JsepTransportControllerTest, RtpTransportCountHistogramWithBundleGroup) {
+  metrics::Reset();
+  CreateJsepTransportController(JsepTransportController::Config());
+  auto description = CreateSessionDescriptionWithBundleGroup();
+  transport_controller_->SetLocalDescription(SdpType::kOffer, description.get(),
+                                             nullptr);
+  transport_controller_->SetRemoteDescription(
+      SdpType::kAnswer, description.get(), description.get());
+  EXPECT_METRIC_EQ(
+      1, metrics::NumSamples("WebRTC.PeerConnection.RtpTransportCount"));
+  // We expect 1 transport
+  EXPECT_METRIC_THAT(
+      metrics::Samples("WebRTC.PeerConnection.RtpTransportCount"),
+      ElementsAre(Pair(1, 1)));
 }
 
 }  // namespace

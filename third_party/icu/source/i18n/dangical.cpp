@@ -27,6 +27,13 @@
 // Lazy Creation & Access synchronized by class CalendarCache with a mutex.
 static icu::CalendarCache *gWinterSolsticeCache = nullptr;
 static icu::CalendarCache *gNewYearCache = nullptr;
+<<<<<<< HEAD
+=======
+
+// gAstronomerTimeZone
+static icu::TimeZone *gAstronomerTimeZone = nullptr;
+static icu::UInitOnce gAstronomerTimeZoneInitOnce {};
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 // gAstronomerTimeZone
 static icu::TimeZone *gAstronomerTimeZone = nullptr;
@@ -152,6 +159,7 @@ const TimeZone* getAstronomerTimeZone(UErrorCode &status) {
     return gAstronomerTimeZone;
 }
 
+<<<<<<< HEAD
 ChineseCalendar::Setting DangiCalendar::getSetting(UErrorCode& status) const {
   return {
     getAstronomerTimeZone(status),
@@ -159,6 +167,36 @@ ChineseCalendar::Setting DangiCalendar::getSetting(UErrorCode& status) const {
   };
 }
 
+=======
+constexpr uint32_t kDangiRelatedYearDiff = -2333;
+
+int32_t DangiCalendar::getRelatedYear(UErrorCode &status) const
+{
+    int32_t year = get(UCAL_EXTENDED_YEAR, status);
+    if (U_FAILURE(status)) {
+        return 0;
+    }
+    if (uprv_add32_overflow(year, kDangiRelatedYearDiff, &year)) {
+        status = U_ILLEGAL_ARGUMENT_ERROR;
+        return 0;
+    }
+    return year;
+}
+
+void DangiCalendar::setRelatedYear(int32_t year)
+{
+    // set extended year
+    set(UCAL_EXTENDED_YEAR, year - kDangiRelatedYearDiff);
+}
+
+ChineseCalendar::Setting DangiCalendar::getSetting(UErrorCode& status) const {
+  return { DANGI_EPOCH_YEAR,
+    getAstronomerTimeZone(status),
+    &gWinterSolsticeCache, &gNewYearCache
+  };
+}
+
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 UOBJECT_DEFINE_RTTI_IMPLEMENTATION(DangiCalendar)
 
 U_NAMESPACE_END

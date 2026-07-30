@@ -11,8 +11,11 @@
 #include "modules/congestion_controller/scream/scream_network_controller.h"
 
 #include <algorithm>
+<<<<<<< HEAD
 #include <cmath>
 #include <memory>
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include <optional>
 #include <utility>
 
@@ -22,7 +25,10 @@
 #include "api/units/data_size.h"
 #include "api/units/time_delta.h"
 #include "api/units/timestamp.h"
+<<<<<<< HEAD
 #include "logging/rtc_event_log/events/rtc_event_remote_estimate.h"
+=======
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "modules/congestion_controller/scream/scream_v2.h"
 #include "rtc_base/checks.h"
 #include "rtc_base/logging.h"
@@ -34,6 +40,7 @@ ScreamNetworkController::ScreamNetworkController(NetworkControllerConfig config)
     : env_(config.env),
       params_(env_.field_trials()),
       default_pacing_window_(config.default_pacing_time_window),
+<<<<<<< HEAD
       allow_initial_bwe_before_media_(
           config.stream_based_config.enable_repeated_initial_probing),
       current_pacing_window_(config.default_pacing_time_window),
@@ -68,6 +75,17 @@ NetworkControlUpdate ScreamNetworkController::CreateFirstUpdate(Timestamp now) {
   padding_interval_end_time_ = Timestamp::MinusInfinity();
   if (allow_initial_bwe_before_media_) {
     initial_bwe_probe_end_time_ = now + params_.initial_probing_duration.Get();
+=======
+      current_pacing_window_(config.default_pacing_time_window),
+      scream_(std::in_place, env_),
+      target_rate_constraints_(config.constraints),
+      last_padding_interval_started_(Timestamp::Zero()) {
+  if (config.constraints.min_data_rate.has_value() ||
+      config.constraints.max_data_rate.has_value()) {
+    scream_->SetTargetBitrateConstraints(
+        config.constraints.min_data_rate.value_or(DataRate::Zero()),
+        config.constraints.max_data_rate.value_or(DataRate::PlusInfinity()));
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
   NetworkControlUpdate update = CreateUpdate(now);
 
@@ -157,6 +175,7 @@ NetworkControlUpdate ScreamNetworkController::OnReceivedPacket(
 
 NetworkControlUpdate ScreamNetworkController::OnStreamsConfig(
     StreamsConfig msg) {
+<<<<<<< HEAD
   RTC_LOG_IF(LS_VERBOSE, msg.max_total_allocated_bitrate.has_value())
       << "OnStreamsConfig: max_total_allocated_bitrate="
       << *msg.max_total_allocated_bitrate;
@@ -168,6 +187,9 @@ NetworkControlUpdate ScreamNetworkController::OnStreamsConfig(
       streams_config_.max_total_allocated_bitrate > DataRate::Zero()) {
     return CreateFirstUpdate(msg.at_time);
   }
+=======
+  streams_config_ = msg;
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   return NetworkControlUpdate();
 }
 
@@ -197,9 +219,14 @@ NetworkControlUpdate ScreamNetworkController::OnNetworkStateEstimate(
 
 NetworkControlUpdate ScreamNetworkController::OnTransportPacketsFeedback(
     TransportPacketsFeedback msg) {
+<<<<<<< HEAD
   scream_->OnTransportPacketsFeedback(msg);
   data_in_flight_ = msg.data_in_flight;
   return CreateUpdate(msg.feedback_time);
+=======
+  DataRate target_rate = scream_->OnTransportPacketsFeedback(msg);
+  return CreateUpdate(msg.feedback_time, target_rate, msg.smoothed_rtt);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 double ScreamNetworkController::CalculateCwndReduceRatio() const {
@@ -223,8 +250,13 @@ double ScreamNetworkController::CalculateCwndReduceRatio() const {
 
 NetworkControlUpdate ScreamNetworkController::CreateUpdate(Timestamp now) {
   NetworkControlUpdate update;
+<<<<<<< HEAD
   bool is_bandwidth_limited = !scream_->is_application_limited();
   double cwnd_reduce_ratio = CalculateCwndReduceRatio();
+=======
+  update.target_rate = target_rate_msg;
+  update.pacer_config = CreatePacerConfig(target_rate);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   if (scream_->target_rate() != reported_target_rate_ ||
       is_bandwidth_limited != reported_is_bandwidth_limited_ ||
@@ -246,6 +278,7 @@ NetworkControlUpdate ScreamNetworkController::CreateUpdate(Timestamp now) {
   return update;
 }
 
+<<<<<<< HEAD
 std::optional<PacerConfig> ScreamNetworkController::MaybeCreatePacerConfig(
     Timestamp now) {
   // Allow sending packets in larger bursts if some time has passed since last
@@ -308,6 +341,49 @@ std::optional<PacerConfig> ScreamNetworkController::MaybeCreatePacerConfig(
                                current_pacing_window_);
   }
   return std::nullopt;
+=======
+PacerConfig ScreamNetworkController::CreatePacerConfig(DataRate target_rate) {
+  constexpr double kPacingRateFactor = 1.5;
+  // Time window used for calculating pacing window if target rate is
+  // constrained by CE markings.
+  constexpr TimeDelta kReducedPacingWindow = TimeDelta::Millis(10);
+  // Threshold used for guessing if target rate is constrained due to CE
+  // marking.
+  constexpr double kL4sAlphaThreshold = 0.01;
+
+  DataRate max_needed_rate =
+      streams_config_.max_total_allocated_bitrate.value_or(DataRate::Zero());
+
+  DataRate padding_rate = DataRate::Zero();
+  Timestamp now = env_.clock().CurrentTime();
+  if (target_rate < max_needed_rate * kPacingRateFactor &&
+      target_rate < target_rate_constraints_.max_data_rate.value_or(
+                        DataRate::PlusInfinity())) {
+    // Periodically allow padding to be used to reach a target rate close to
+    // kPacingRateFactor*max_needed_rate.
+    if (params_.periodic_padding_interval->IsFinite() &&
+        (now - last_padding_interval_started_ >
+         params_.periodic_padding_interval.Get())) {
+      last_padding_interval_started_ = now;
+    }
+    if (now - last_padding_interval_started_ <
+        params_.periodic_padding_duration.Get()) {
+      padding_rate = target_rate;
+    }
+  }
+
+  if (current_pacing_window_ == default_pacing_window_ &&
+      target_rate < max_needed_rate &&
+      scream_->l4s_alpha() > kL4sAlphaThreshold) {
+    // Do stricter pacing if target rate is lower than what is needed and it
+    // seems like L4S is enabled. Note that once stricter pacing is enabled, it
+    // is not stopped.
+    current_pacing_window_ =
+        std::min(default_pacing_window_, kReducedPacingWindow);
+  }
+  return PacerConfig::Create(now, target_rate * kPacingRateFactor, padding_rate,
+                             current_pacing_window_);
+>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 }  // namespace webrtc
