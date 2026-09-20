@@ -42,7 +42,6 @@
 #include "modules/audio_processing/test/wav_based_simulator.h"
 #include "rtc_base/checks.h"
 #include "third_party/tflite/src/tensorflow/lite/kernels/register.h"
-#include "third_party/tflite/src/tensorflow/lite/model_builder.h"
 
 constexpr int kParameterNotSpecifiedValue = -10000;
 
@@ -790,25 +789,8 @@ EchoCanceller3Config ReadAec3ConfigFromJsonFile(absl::string_view filename) {
 }
 
 void SetDependencies(const SimulationSettings& settings,
-                     BuiltinAudioProcessingBuilder& builder,
-                     AudioProcessingBuilderState& builder_state) {
+                     BuiltinAudioProcessingBuilder& builder) {
   EchoCanceller3Config aec3_config;
-  std::optional<EchoCanceller3Config> aec3_multichannel_config;
-  if (settings.neural_echo_residual_estimator_model) {
-    tflite::ops::builtin::BuiltinOpResolver op_resolver;
-    builder_state.model = tflite::FlatBufferModel::BuildFromFile(
-        (*settings.neural_echo_residual_estimator_model).c_str());
-    RTC_CHECK(builder_state.model);
-    std::unique_ptr<NeuralResidualEchoEstimator> estimator =
-        CreateNeuralResidualEchoEstimator(builder_state.model.get(),
-                                          &op_resolver);
-    aec3_config = estimator->GetConfiguration(/*multi_channel=*/false);
-    aec3_multichannel_config =
-        estimator->GetConfiguration(/*multi_channel=*/true);
-    RTC_CHECK(estimator);
-    builder.SetNeuralResidualEchoEstimator(std::move(estimator));
-  }
-
   if (settings.aec_settings_filename) {
     if (settings.use_verbose_logging) {
       std::cout << "Reading AEC Parameters from JSON input." << std::endl;
@@ -826,7 +808,17 @@ void SetDependencies(const SimulationSettings& settings,
     }
     std::cout << Aec3ConfigToJsonString(aec3_config) << std::endl;
   }
-  builder.SetEchoCancellerConfig(aec3_config, aec3_multichannel_config);
+  builder.SetEchoCancellerConfig(
+      aec3_config, /*echo_canceller_multichannel_config=*/std::nullopt);
+
+  if (settings.neural_echo_residual_estimator_model) {
+    tflite::ops::builtin::BuiltinOpResolver op_resolver;
+    std::unique_ptr<NeuralResidualEchoEstimator> estimator =
+        CreateNeuralResidualEchoEstimator(
+            *settings.neural_echo_residual_estimator_model, &op_resolver);
+    RTC_CHECK(estimator);
+    builder.SetNeuralResidualEchoEstimator(std::move(estimator));
+  }
 
   if (settings.use_ed && *settings.use_ed) {
     builder.SetEchoDetector(CreateEchoDetector());
@@ -848,11 +840,9 @@ int RunSimulation(
 
   SimulationSettings settings = CreateSettings();
   PerformBasicParameterSanityChecks(settings);
-  AudioProcessingBuilderState ap_builder_state;
   if (builtin_builder_provided) {
     SetDependencies(settings,
-                    static_cast<BuiltinAudioProcessingBuilder&>(*ap_builder),
-                    ap_builder_state);
+                    static_cast<BuiltinAudioProcessingBuilder&>(*ap_builder));
   } else {
     CheckSettingsForBuiltinBuilderAreUnused(settings);
   }

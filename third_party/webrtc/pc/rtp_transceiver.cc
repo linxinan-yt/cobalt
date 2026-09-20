@@ -126,7 +126,7 @@ RtpTransceiver::RtpTransceiver(const Environment& env,
       codec_lookup_helper_(codec_lookup_helper) {
   RTC_DCHECK(media_type == MediaType::AUDIO || media_type == MediaType::VIDEO);
   RTC_DCHECK(context_);
-  RTC_DCHECK(context_->is_configured_for_media());
+  RTC_DCHECK(context_->media_engine());
   RTC_DCHECK(codec_lookup_helper_);
 }
 
@@ -148,7 +148,7 @@ RtpTransceiver::RtpTransceiver(
           std::move(header_extensions_to_negotiate)),
       on_negotiation_needed_(std::move(on_negotiation_needed)) {
   RTC_DCHECK(context_);
-  RTC_DCHECK(context_->is_configured_for_media());
+  RTC_DCHECK(context_->media_engine());
   RTC_DCHECK(media_type_ == MediaType::AUDIO ||
              media_type_ == MediaType::VIDEO);
   RTC_DCHECK_EQ(sender->media_type(), receiver->media_type());
@@ -360,7 +360,6 @@ void RtpTransceiver::PushNewMediaChannel() {
     return;
   }
   context()->worker_thread()->BlockingCall([&]() {
-    RTC_DCHECK_RUN_ON(context()->worker_thread());
     // Push down the new media_channel.
     auto* media_send_channel = channel_->media_send_channel();
     for (const auto& sender : senders_) {
@@ -379,7 +378,6 @@ void RtpTransceiver::DeleteChannel() {
   // Ensure that channel_ is not reachable via transceiver, but is deleted
   // only after clearing the references in senders_ and receivers_.
   context()->worker_thread()->BlockingCall([&]() {
-    RTC_DCHECK_RUN_ON(context()->worker_thread());
     auto channel_to_delete = std::move(channel_);
     // Clear the media channel reference from senders and receivers.
     for (const auto& sender : senders_) {
@@ -391,7 +389,6 @@ void RtpTransceiver::DeleteChannel() {
     // The channel is destroyed here, on the worker thread as it needs to
     // be.
     channel_to_delete.reset();
-    media_engine_ref_.reset();
   });
 }
 
@@ -476,16 +473,6 @@ MediaType RtpTransceiver::media_type() const {
 
 std::optional<std::string> RtpTransceiver::mid() const {
   return mid_;
-}
-
-// RTC_RUN_ON(context()->worker_thread())
-MediaEngineInterface* RtpTransceiver::media_engine() {
-  if (!media_engine_ref_) {
-    media_engine_ref_ =
-        std::make_unique<ConnectionContext::MediaEngineReference>(
-            scoped_refptr<ConnectionContext>(context_));
-  }
-  return media_engine_ref_->media_engine();
 }
 
 void RtpTransceiver::OnFirstPacketReceived() {
@@ -579,16 +566,6 @@ std::optional<RtpTransceiverDirection> RtpTransceiver::current_direction()
 
 std::optional<RtpTransceiverDirection> RtpTransceiver::fired_direction() const {
   return fired_direction_;
-}
-
-bool RtpTransceiver::receptive() const {
-  RTC_DCHECK_RUN_ON(thread_);
-  return receptive_;
-}
-
-void RtpTransceiver::set_receptive(bool receptive) {
-  RTC_DCHECK_RUN_ON(thread_);
-  receptive_ = receptive;
 }
 
 void RtpTransceiver::StopSendingAndReceiving() {
@@ -784,47 +761,28 @@ std::vector<RtpCodecCapability> RtpTransceiver::filtered_codec_preferences()
 
 std::vector<RtpHeaderExtensionCapability>
 RtpTransceiver::GetHeaderExtensionsToNegotiate() const {
-  RTC_DCHECK_RUN_ON(thread_);
   return header_extensions_to_negotiate_;
 }
 
-std::vector<RtpHeaderExtensionCapability> ModifyCapabilitiesAccordingToHeaders(
-    const std::vector<RtpHeaderExtensionCapability>& old_values,
-    const std::vector<RtpExtension>& extension_list) {
-  std::vector<RtpHeaderExtensionCapability> result;
-  result.reserve(old_values.size());
-  // Create new capability objects that start as a copy of the old values.
-  for (RtpHeaderExtensionCapability capability : old_values) {
-    auto negotiated = absl::c_find_if(
-        extension_list, [&capability](const RtpExtension& negotiated) {
-          return negotiated.uri == capability.uri;
-        });
-    // TODO(bugs.webrtc.org/7477): extend when header extensions support
-    // direction.
-    if (negotiated != extension_list.end()) {
-      capability.direction = RtpTransceiverDirection::kSendRecv;
-      capability.preferred_id = negotiated->id;
-      capability.preferred_encrypt = negotiated->encrypt;
-    } else {
-      capability.direction = RtpTransceiverDirection::kStopped;
-    }
-    result.push_back(capability);
-  }
-  return result;
-}
 std::vector<RtpHeaderExtensionCapability>
 RtpTransceiver::GetNegotiatedHeaderExtensions() const {
   RTC_DCHECK_RUN_ON(thread_);
-  return ModifyCapabilitiesAccordingToHeaders(header_extensions_to_negotiate_,
-                                              negotiated_header_extensions_);
-}
-
-std::vector<RtpHeaderExtensionCapability>
-RtpTransceiver::GetOfferedAndImplementedHeaderExtensions(
-    const MediaContentDescription* content) const {
-  RTC_DCHECK_RUN_ON(thread_);
-  return ModifyCapabilitiesAccordingToHeaders(header_extensions_to_negotiate_,
-                                              content->rtp_header_extensions());
+  std::vector<RtpHeaderExtensionCapability> result;
+  result.reserve(header_extensions_to_negotiate_.size());
+  for (const auto& ext : header_extensions_to_negotiate_) {
+    auto negotiated = absl::c_find_if(negotiated_header_extensions_,
+                                      [&ext](const RtpExtension& negotiated) {
+                                        return negotiated.uri == ext.uri;
+                                      });
+    RtpHeaderExtensionCapability capability(ext.uri);
+    // TODO(bugs.webrtc.org/7477): extend when header extensions support
+    // direction.
+    capability.direction = negotiated != negotiated_header_extensions_.end()
+                               ? RtpTransceiverDirection::kSendRecv
+                               : RtpTransceiverDirection::kStopped;
+    result.push_back(capability);
+  }
+  return result;
 }
 
 // Helper function to determine mandatory-to-negotiate extensions.
@@ -838,7 +796,6 @@ bool IsMandatoryHeaderExtension(const std::string& uri) {
 
 RTCError RtpTransceiver::SetHeaderExtensionsToNegotiate(
     ArrayView<const RtpHeaderExtensionCapability> header_extensions) {
-  RTC_DCHECK_RUN_ON(thread_);
   // https://w3c.github.io/webrtc-extensions/#dom-rtcrtptransceiver-setheaderextensionstonegotiate
   if (header_extensions.size() != header_extensions_to_negotiate_.size()) {
     return RTCError(RTCErrorType::INVALID_MODIFICATION,
@@ -877,24 +834,11 @@ void RtpTransceiver::OnNegotiationUpdate(
     const MediaContentDescription* content) {
   RTC_DCHECK_RUN_ON(thread_);
   RTC_DCHECK(content);
-  if (sdp_type == SdpType::kAnswer || sdp_type == SdpType::kPrAnswer) {
+  if (sdp_type == SdpType::kAnswer) {
     negotiated_header_extensions_ = content->rtp_header_extensions();
-    if (!env_.field_trials().IsDisabled(
+    if (env_.field_trials().IsEnabled(
             "WebRTC-HeaderExtensionNegotiateMemory")) {
       header_extensions_to_negotiate_ = GetNegotiatedHeaderExtensions();
-    }
-  } else if (sdp_type == SdpType::kOffer) {
-    if (!env_.field_trials().IsDisabled(
-            "WebRTC-HeaderExtensionNegotiateMemory")) {
-      header_extensions_for_rollback_ = header_extensions_to_negotiate_;
-      header_extensions_to_negotiate_ =
-          GetOfferedAndImplementedHeaderExtensions(content);
-    }
-  } else if (sdp_type == SdpType::kRollback) {
-    if (!env_.field_trials().IsDisabled(
-            "WebRTC-HeaderExtensionNegotiateMemory")) {
-      RTC_CHECK(!header_extensions_for_rollback_.empty());
-      header_extensions_to_negotiate_ = header_extensions_for_rollback_;
     }
   }
 }

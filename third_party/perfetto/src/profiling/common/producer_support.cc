@@ -45,7 +45,7 @@ std::optional<Package> FindInPackagesList(
     }
 
     if (pkg.uid == lookup_uid) {
-      return pkg;
+      return std::move(pkg);  // -Wreturn-std-move-in-c++11
     }
   }
   return std::nullopt;

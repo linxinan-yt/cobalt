@@ -52,7 +52,7 @@ void addDateForRgrTest(TestNode** root)
 /**
  * @bug 4029195
  */
-void Test4029195(void)
+void Test4029195() 
 {
     int32_t resultlength, resultlengthneeded;
     UChar  *fmdt, *todayS, *rt;
@@ -128,7 +128,7 @@ void Test4029195(void)
  * @bug 4056591
  * Verify the function of the [s|g]et2DigitYearStart() API.
  */
-void Test4056591(void)
+void Test4056591() 
 {
     int i;
     UCalendar *cal;
@@ -210,7 +210,7 @@ void Test4056591(void)
  * SimpleDateFormat does not properly parse date strings without delimiters
  * @bug 4059917
  */
-void Test4059917(void)
+void Test4059917() 
 {
     UDateFormat* def;
     UChar *myDate;
@@ -311,7 +311,7 @@ void aux917( UDateFormat *fmt, UChar* str)
 /**
  * @bug 4060212
  */
-void Test4060212(void)
+void Test4060212() 
 {
     int32_t pos;
     UCalendar *cal;
@@ -359,7 +359,7 @@ void Test4060212(void)
 /**
  * @bug 4061287
  */
-void Test4061287(void)
+void Test4061287() 
 {
     UBool ok;
     int32_t pos;
@@ -411,7 +411,7 @@ void Test4061287(void)
 /**
  * @bug 4073003
  */
-void Test4073003(void)
+void Test4073003() 
 {
     int32_t pos,i;
     UDate d,dd;
@@ -480,7 +480,7 @@ void Test4073003(void)
 /**
  * @bug 4162071
  **/
-void Test4162071(void)
+void Test4162071() 
 {
     int32_t pos;
     UDate x;

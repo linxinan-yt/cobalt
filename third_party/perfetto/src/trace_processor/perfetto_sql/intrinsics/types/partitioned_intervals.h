@@ -26,10 +26,6 @@
 #include "perfetto/trace_processor/basic_types.h"
 #include "src/trace_processor/containers/interval_intersector.h"
 
-namespace perfetto::trace_processor {
-class StringPool;
-}
-
 namespace perfetto::trace_processor::perfetto_sql {
 
 struct Partition {
@@ -45,12 +41,8 @@ using Partitions =
 
 struct PartitionedTable {
   static constexpr char kName[] = "INTERVAL_TREE_PARTITIONS";
-
-  struct UserData {
-    StringPool* pool;
-  };
-
   Partitions partitions_map;
+
   std::vector<std::string> partition_column_names;
 };
 

@@ -831,8 +831,7 @@ public:
     RelativeDateTimeFormatterTest() {
     }
 
-    void runIndexedTest(int32_t index, UBool exec, const char*& name, char* par = nullptr) override;
-
+    void runIndexedTest(int32_t index, UBool exec, const char *&name, char *par=0) override;
 private:
     void TestEnglish();
     void TestEnglishCaps();
@@ -1109,10 +1108,10 @@ void RelativeDateTimeFormatterTest::TestGetters() {
     // copy and assignment.
     RelativeDateTimeFormatter fmt2(fmt);
     fmt3 = fmt2;
-    assertEquals("style", static_cast<int32_t>(UDAT_STYLE_NARROW), fmt3.getFormatStyle());
+    assertEquals("style", (int32_t)UDAT_STYLE_NARROW, fmt3.getFormatStyle());
     assertEquals(
             "context",
-            static_cast<int32_t>(UDISPCTX_CAPITALIZATION_FOR_MIDDLE_OF_SENTENCE),
+            (int32_t)UDISPCTX_CAPITALIZATION_FOR_MIDDLE_OF_SENTENCE,
             fmt3.getCapitalizationContext());
     assertSuccess("", status);
 }

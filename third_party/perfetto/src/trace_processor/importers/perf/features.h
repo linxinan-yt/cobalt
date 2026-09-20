@@ -26,7 +26,7 @@
 
 #include "perfetto/base/status.h"
 #include "perfetto/ext/base/flat_hash_map.h"
-#include "perfetto/ext/base/murmur_hash.h"
+#include "perfetto/ext/base/fnv_hash.h"
 #include "perfetto/ext/base/status_or.h"
 #include "src/trace_processor/importers/perf/perf_event.h"
 
@@ -106,21 +106,20 @@ struct SimpleperfMetaInfo {
   struct EventTypeAndConfig {
     uint32_t type;
     uint64_t config;
-    bool operator==(const EventTypeAndConfig& other) const {
+    bool operator==(const EventTypeAndConfig& other) {
       return type == other.type && config == other.config;
     }
-    bool operator!=(const EventTypeAndConfig& other) const {
+    bool operator!=(const EventTypeAndConfig& other) {
       return !(*this == other);
     }
-    template <typename H>
-    friend H PerfettoHashValue(H h, const EventTypeAndConfig& o) {
-      return H::Combine(std::move(h), o.type, o.config);
-    }
+    struct Hasher {
+      size_t operator()(const EventTypeAndConfig& o) const {
+        return static_cast<size_t>(base::FnvHasher::Combine(o.config, o.type));
+      }
+    };
   };
   using EventName = std::string;
-  base::FlatHashMap<EventTypeAndConfig,
-                    EventName,
-                    base::MurmurHash<EventTypeAndConfig>>
+  base::FlatHashMap<EventTypeAndConfig, EventName, EventTypeAndConfig::Hasher>
       event_type_info;
 };
 

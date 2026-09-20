@@ -64,6 +64,7 @@ using ::testing::AllOf;
 using ::testing::ElementsAre;
 using ::testing::ElementsAreArray;
 using ::testing::Field;
+using ::testing::Invoke;
 using ::testing::NiceMock;
 using ::testing::Return;
 using ::testing::Values;
@@ -628,15 +629,15 @@ TEST_F(TestVp8Impl, KeepsTimestampOnReencode) {
   codec_settings_.legacy_conference_mode = true;
 
   EXPECT_CALL(*vpx, img_wrap(_, _, _, _, _, _))
-      .WillOnce([](vpx_image_t* img, vpx_img_fmt_t fmt, unsigned int d_w,
-                   unsigned int d_h, unsigned int /* stride_align */,
-                   unsigned char* img_data) {
+      .WillOnce(Invoke([](vpx_image_t* img, vpx_img_fmt_t fmt, unsigned int d_w,
+                          unsigned int d_h, unsigned int /* stride_align */,
+                          unsigned char* img_data) {
         img->fmt = fmt;
         img->d_w = d_w;
         img->d_h = d_h;
         img->img_data = img_data;
         return img;
-      });
+      }));
   EXPECT_EQ(WEBRTC_VIDEO_CODEC_OK,
             encoder.InitEncode(&codec_settings_,
                                VideoEncoder::Settings(kCapabilities, 1, 1000)));

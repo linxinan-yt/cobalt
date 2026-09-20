@@ -13,12 +13,7 @@
 // limitations under the License.
 
 import {Engine} from '../../trace_processor/engine';
-import {
-  LONG,
-  NUM,
-  NUM_NULL,
-  STR_NULL,
-} from '../../trace_processor/query_result';
+import {NUM, NUM_NULL, STR_NULL} from '../../trace_processor/query_result';
 import {fromNumNull} from '../../trace_processor/sql_utils';
 import {Upid} from './core_types';
 
@@ -27,7 +22,7 @@ import {Upid} from './core_types';
 
 export interface ProcessInfo {
   upid: Upid;
-  pid?: bigint;
+  pid?: number;
   name?: string;
   uid?: number;
   packageName?: string;
@@ -53,7 +48,7 @@ export async function getProcessInfo(
   `);
   const row = res.firstRow({
     upid: NUM,
-    pid: LONG,
+    pid: NUM,
     name: STR_NULL,
     uid: NUM_NULL,
     packageName: STR_NULL,
@@ -71,7 +66,7 @@ export async function getProcessInfo(
 
 function getDisplayName(
   name: string | undefined,
-  id: bigint | undefined,
+  id: number | undefined,
 ): string | undefined {
   if (name === undefined) {
     return id === undefined ? undefined : `${id}`;
@@ -81,7 +76,7 @@ function getDisplayName(
 
 export function getProcessName(info?: {
   name?: string;
-  pid?: bigint;
+  pid?: number;
 }): string | undefined {
   return getDisplayName(info?.name, info?.pid);
 }

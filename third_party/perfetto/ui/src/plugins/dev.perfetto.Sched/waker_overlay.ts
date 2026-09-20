@@ -24,7 +24,6 @@ import {
   getSchedWakeupInfo,
   SchedWakeupInfo,
 } from '../../components/sql_utils/sched';
-import {CanvasColors} from '../../public/canvas_colors';
 import {Selection, TrackEventSelection} from '../../public/selection';
 import {Trace} from '../../public/trace';
 import {Overlay, TrackBounds} from '../../public/track';
@@ -49,7 +48,6 @@ export class WakerOverlay implements Overlay {
     timescale: TimeScale,
     size: Size2D,
     renderedTracks: ReadonlyArray<TrackBounds>,
-    colors: CanvasColors,
   ): void {
     const selection = this.trace.selection.selection;
 
@@ -77,13 +75,7 @@ export class WakerOverlay implements Overlay {
     }
 
     // Draw the vertical line at the wakeup timestamp
-    drawVerticalLineAtTime(
-      canvasCtx,
-      timescale,
-      wakeup.wakeupTs,
-      size.height,
-      colors.COLOR_TIMELINE_OVERLAY,
-    );
+    this.drawWakeupLine(canvasCtx, timescale, size.height, wakeup.wakeupTs);
 
     // Draw the marker on the waker CPU track
     if (wakeup.wakerCpu !== undefined) {
@@ -93,7 +85,6 @@ export class WakerOverlay implements Overlay {
         renderedTracks,
         wakeup.wakeupTs,
         wakeup.wakerCpu,
-        colors.COLOR_TIMELINE_OVERLAY,
       );
     }
 
@@ -104,9 +95,6 @@ export class WakerOverlay implements Overlay {
       wakeup.wakeupTs,
       selection.trackUri,
       selection.ts,
-      colors.COLOR_TIMELINE_OVERLAY,
-      colors.COLOR_BACKGROUND,
-      colors.COLOR_TEXT,
     );
   }
 
@@ -131,13 +119,21 @@ export class WakerOverlay implements Overlay {
     return cache;
   }
 
+  private drawWakeupLine(
+    canvasCtx: CanvasRenderingContext2D,
+    timescale: TimeScale,
+    height: number,
+    wakeupTs: time,
+  ): void {
+    drawVerticalLineAtTime(canvasCtx, timescale, wakeupTs, height, `black`);
+  }
+
   private drawWakerMarker(
     canvasCtx: CanvasRenderingContext2D,
     timescale: TimeScale,
     renderedTracks: ReadonlyArray<TrackBounds>,
     wakeupTs: time,
     wakerCpu: number,
-    color: string,
   ): void {
     const wakerCpuTrackUri = uriForSchedTrack(wakerCpu);
     const wakerTrack = renderedTracks.find(
@@ -156,7 +152,7 @@ export class WakerOverlay implements Overlay {
     canvasCtx.beginPath();
     const yCenter = MARGIN + rectHeight / 2;
     canvasCtx.moveTo(wakeupPosPx, yCenter + DIAMOND_SIZE);
-    canvasCtx.fillStyle = color;
+    canvasCtx.fillStyle = 'black';
     canvasCtx.lineTo(wakeupPosPx + DIAMOND_SIZE * 0.75, yCenter);
     canvasCtx.lineTo(wakeupPosPx, yCenter - DIAMOND_SIZE);
     canvasCtx.lineTo(wakeupPosPx - DIAMOND_SIZE * 0.75, yCenter);
@@ -171,9 +167,6 @@ export class WakerOverlay implements Overlay {
     wakeupTs: time,
     wakedTrackUri: string,
     wakedSliceTs: time,
-    arrowColor: string,
-    backgroundColor: string,
-    textColor: string,
   ): void {
     const wakedTrack = renderedTracks.find(
       (track) => wakedTrackUri === track.node.uri,
@@ -198,7 +191,6 @@ export class WakerOverlay implements Overlay {
       MARGIN + rectHeight,
       latencyWidthPx,
       latencyWidthPx >= 20, // Only draw arrow heads if width is sufficient
-      arrowColor,
     );
 
     // Draw latency text if space permits
@@ -211,19 +203,17 @@ export class WakerOverlay implements Overlay {
       const textBgY = MARGIN + rectHeight - ARROW_HEIGHT;
 
       // Semi-transparent background for text
-      canvasCtx.globalAlpha = 0.7;
-      canvasCtx.fillStyle = backgroundColor;
+      canvasCtx.fillStyle = 'rgba(255,255,255,0.7)';
       canvasCtx.fillRect(
         textX - measured.width / 2 - 1,
         textBgY,
         measured.width + 2,
         ARROW_HEIGHT - 1, // Height adjusted to fit within arrow bounds
       );
-      canvasCtx.globalAlpha = 1.0;
 
       // Latency text
       canvasCtx.textBaseline = 'bottom';
-      canvasCtx.fillStyle = textColor;
+      canvasCtx.fillStyle = 'black';
       canvasCtx.textAlign = 'center';
       canvasCtx.fillText(displayText, textX, textY);
     }

@@ -367,8 +367,7 @@ class NatTcpTest : public ::testing::Test, public sigslot::has_slots<> {
   void OnCloseEvent(Socket* socket, int error) {}
 
   void ConnectEvents() {
-    server_->SubscribeReadEvent(
-        this, [this](Socket* socket) { OnAcceptEvent(socket); });
+    server_->SignalReadEvent.connect(this, &NatTcpTest::OnAcceptEvent);
     client_->SubscribeConnectEvent(
         [this](Socket* socket) { OnConnectEvent(socket); });
   }

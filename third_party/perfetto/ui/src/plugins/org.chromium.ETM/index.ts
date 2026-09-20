@@ -50,6 +50,6 @@ export default class implements PerfettoPlugin {
 
     const trackNode = new TrackNode({uri, name: title});
     group.addChildInOrder(trackNode);
-    trace.defaultWorkspace.addChildInOrder(group);
+    trace.workspace.addChildInOrder(group);
   }
 }

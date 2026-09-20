@@ -23,7 +23,6 @@
 #include "api/rtc_error.h"
 #include "api/test/rtc_error_matchers.h"
 #include "p2p/test/test_turn_server.h"
-#include "pc/peer_connection.h"
 #include "pc/test/fake_rtc_certificate_generator.h"
 #include "pc/test/integration_test_helpers.h"
 #include "rtc_base/socket_address.h"
@@ -166,14 +165,7 @@ class PeerConnectionPrAnswerSwitchTest
 };
 
 #ifdef WEBRTC_HAVE_SCTP
-TEST_F(PeerConnectionPrAnswerSwitchTest, DtlsRestartOneCalleeAtATime) {
-  // Keep these variables here to make sure they have a wider scope than the PC
-  // objects that may have unfinished async operations (see
-  // `SendOnDatachannelWhenConnectedCallback`) that depend on them when they
-  // (the PC objects), go out of scope.
-  std::atomic<int> caller_sent_on_dc(0);
-  std::atomic<int> callee2_sent_on_dc(0);
-
+TEST_F(PeerConnectionPrAnswerSwitchTest, DtlsRestartOneCalleAtATime) {
   auto callee2 = SetupCallee2AndDc(/* addTurn= */ false);
   std::unique_ptr<SessionDescriptionInterface> offer;
   callee()->SetReceivedSdpMunger(
@@ -191,6 +183,8 @@ TEST_F(PeerConnectionPrAnswerSwitchTest, DtlsRestartOneCalleeAtATime) {
   WaitConnectedAndDcOpen(/* prAnswer= */ true, caller(), callee());
   ASSERT_FALSE(HasFailure());
 
+  std::atomic<int> caller_sent_on_dc(0);
+  std::atomic<int> callee2_sent_on_dc(0);
   caller()->set_connection_change_callback([&](auto new_state) {
     SendOnDatachannelWhenConnectedCallback(caller(), "KESO", caller_sent_on_dc);
   });
@@ -253,7 +247,10 @@ TEST_F(PeerConnectionPrAnswerSwitchTest, SendMediaNoDataChannel) {
   ASSERT_FALSE(HasFailure());
 }
 
-TEST_F(PeerConnectionPrAnswerSwitchTest, MediaWithCcfbFirstThenTwcc) {
+// This test completes, but is disabled because feedback type switching
+// does not work yet.
+// TODO: issues.webrtc.org/448848876 - enable when underlying issue fixed.
+TEST_F(PeerConnectionPrAnswerSwitchTest, DISABLED_MediaWithCcfbFirstThenTwcc) {
   SetFieldTrials("WebRTC-RFC8888CongestionControlFeedback/Enabled,offer:true/");
   SetFieldTrials("Callee2",
                  "WebRTC-RFC8888CongestionControlFeedback/Disabled/");
@@ -282,20 +279,18 @@ TEST_F(PeerConnectionPrAnswerSwitchTest, MediaWithCcfbFirstThenTwcc) {
   media_expectations.CalleeExpectsSomeAudio();
   media_expectations.CalleeExpectsSomeVideo();
   ASSERT_TRUE(ExpectNewFrames(media_expectations));
-  PeerConnection* caller_pc_internal = caller()->pc_internal();
-  EXPECT_THAT(WaitUntil(
-                  [&] {
-                    return caller_pc_internal
-                        ->FeedbackAccordingToRfc8888CountForTesting();
-                  },
-                  Gt(0)),
-              IsRtcOk());
-  // There should be no transport-cc generated.
+  auto pc_internal = caller()->pc_internal();
   EXPECT_THAT(
-      caller_pc_internal->FeedbackAccordingToTransportCcCountForTesting(),
-      Eq(0));
-  // The final answer does TWCC and send audio and video.
-  second_callee->AddAudioVideoTracks();
+      WaitUntil(
+          [&] {
+            return pc_internal->FeedbackAccordingToRfc8888CountForTesting();
+          },
+          Gt(0)),
+      IsRtcOk());
+  // There should be no transport-cc generated.
+  EXPECT_THAT(pc_internal->FeedbackAccordingToTransportCcCountForTesting(),
+              Eq(0));
+  // The final answer does TWCC.
   second_callee->ReceiveSdpMessage(SdpType::kOffer, saved_offer);
   EXPECT_THAT(
       WaitUntil([&] { return caller()->SignalingStateStable(); }, IsTrue()),
@@ -303,32 +298,21 @@ TEST_F(PeerConnectionPrAnswerSwitchTest, MediaWithCcfbFirstThenTwcc) {
   WaitConnected(/* prAnswer= */ false, caller(), second_callee.get());
   ASSERT_FALSE(HasFailure());
 
-  int old_ccfb_count =
-      caller_pc_internal->FeedbackAccordingToRfc8888CountForTesting();
+  int old_ccfb_count = pc_internal->FeedbackAccordingToRfc8888CountForTesting();
   int old_twcc_count =
-      caller_pc_internal->FeedbackAccordingToTransportCcCountForTesting();
-  EXPECT_THAT(WaitUntil(
-                  [&] {
-                    return caller_pc_internal
-                        ->FeedbackAccordingToTransportCcCountForTesting();
-                  },
-                  Gt(old_twcc_count)),
-              IsRtcOk());
-  // These expects are easier to interpret than the WaitUntil log result.
+      pc_internal->FeedbackAccordingToTransportCcCountForTesting();
   EXPECT_THAT(
-      caller_pc_internal->FeedbackAccordingToTransportCcCountForTesting(),
-      Gt(old_twcc_count));
-  EXPECT_THAT(caller_pc_internal->FeedbackAccordingToRfc8888CountForTesting(),
+      WaitUntil(
+          [&] {
+            return pc_internal->FeedbackAccordingToTransportCcCountForTesting();
+          },
+          Gt(old_twcc_count)),
+      IsRtcOk());
+  // These expects are easier to interpret than the WaitUntil log result.
+  EXPECT_THAT(pc_internal->FeedbackAccordingToTransportCcCountForTesting(),
+              Gt(old_twcc_count));
+  EXPECT_THAT(pc_internal->FeedbackAccordingToRfc8888CountForTesting(),
               Eq(old_ccfb_count));
-
-  PeerConnection* second_callee_pc_internal = second_callee->pc_internal();
-  EXPECT_THAT(WaitUntil(
-                  [&] {
-                    return second_callee_pc_internal
-                        ->FeedbackAccordingToTransportCcCountForTesting();
-                  },
-                  Gt(0)),
-              IsRtcOk());
 }
 
 }  // namespace webrtc

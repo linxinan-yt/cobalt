@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 bs{
     units{
         acceleration{
@@ -40,7 +40,6 @@ bs{
         }
         area{
             acre{
-                dnam{"akeri"}
                 few{"{0} katastarska jutra"}
                 one{"{0} katastarsko jutro"}
                 other{"{0} katastarskih jutara"}
@@ -345,13 +344,6 @@ bs{
                 one{"{0} nanosekunda"}
                 other{"{0} nanosekundi"}
             }
-            night{
-                dnam{"noći"}
-                few{"{0} noći"}
-                one{"{0} noć"}
-                other{"{0} noći"}
-                per{"{0} po noći"}
-            }
             quarter{
                 dnam{"četvrtine"}
                 few{"{0} četvrtine"}
@@ -492,13 +484,13 @@ bs{
         graphics{
             dot-per-centimeter{
                 dnam{"tačaka po centimetru"}
-                few{"{0} dpcm"}
+                few{"{0} ppcm"}
                 one{"{0} tačka po centimetru"}
                 other{"{0} tačaka po centimetru"}
             }
             dot-per-inch{
                 dnam{"tačaka po inču"}
-                few{"{0} dpi"}
+                few{"{0} ppi"}
                 one{"{0} tačka po inču"}
                 other{"{0} tačaka po inču"}
             }
@@ -545,10 +537,10 @@ bs{
                 other{"{0} decimetara"}
             }
             earth-radius{
-                dnam{"radijus Zemlje"}
-                few{"{0} radijusa Zemlje"}
-                one{"{0} radijus Zemlje"}
-                other{"{0} radijusa Zemlje"}
+                dnam{"radijus zemlje"}
+                few{"{0} radijusa zemlje"}
+                one{"{0} radijus zemlje"}
+                other{"{0} radijus zemlje"}
             }
             foot{
                 few{"{0} stope"}
@@ -1113,14 +1105,6 @@ bs{
         }
     }
     unitsNarrow{
-        area{
-            acre{
-                dnam{"aker"}
-                few{"{0} ac"}
-                one{"{0} ac"}
-                other{"{0} ac"}
-            }
-        }
         concentr{
             permillion{
                 dnam{"ppm"}
@@ -1173,13 +1157,6 @@ bs{
             nanosecond{
                 dnam{"ns"}
             }
-            night{
-                dnam{"noći"}
-                few{"{0} noći"}
-                one{"{0} noć"}
-                other{"{0} noći"}
-                per{"{0}/noć"}
-            }
             second{
                 dnam{"sekunda"}
                 few{"{0} s"}
@@ -1195,7 +1172,6 @@ bs{
         }
         energy{
             calorie{
-                dnam{"cal"}
                 few{"{0} kal."}
                 one{"{0} kal."}
                 other{"{0} cal"}
@@ -1216,12 +1192,12 @@ bs{
                 dnam{"tačka"}
             }
             dot-per-centimeter{
-                few{"{0} dpcm"}
+                few{"{0} ppcm"}
                 one{"{0}dpcm"}
                 other{"{0} dpcm"}
             }
             dot-per-inch{
-                few{"{0} dpi"}
+                few{"{0} ppi"}
                 one{"{0}dpi"}
                 other{"{0} dpi"}
             }
@@ -1237,23 +1213,8 @@ bs{
             }
         }
         length{
-            foot{
-                dnam{"ft"}
-            }
-            inch{
-                dnam{"in"}
-            }
-            light-year{
-                dnam{"sg"}
-            }
             meter{
-                dnam{"m"}
-            }
-            mile{
-                dnam{"mi"}
-            }
-            yard{
-                dnam{"yd"}
+                dnam{"metar"}
             }
         }
         mass{
@@ -1264,7 +1225,6 @@ bs{
                 other{"{0} ct"}
             }
             grain{
-                dnam{"gr"}
                 few{"{0} gr"}
                 one{"{0} gr"}
                 other{"{0} gr"}
@@ -1298,41 +1258,11 @@ bs{
             }
         }
         volume{
-            centiliter{
-                dnam{"cl"}
-                few{"{0} cl"}
-                one{"{0} cl"}
-                other{"{0} cl"}
-            }
-            deciliter{
-                dnam{"dl"}
-                few{"{0} dl"}
-                one{"{0} dl"}
-                other{"{0} dl"}
-            }
-            hectoliter{
-                dnam{"hl"}
-            }
             liter{
                 dnam{"litar"}
                 few{"{0}l"}
                 one{"{0}l"}
                 other{"{0}l"}
-            }
-            megaliter{
-                dnam{"Ml"}
-            }
-            milliliter{
-                dnam{"ml"}
-                few{"{0} ml"}
-                one{"{0} ml"}
-                other{"{0} ml"}
-            }
-            quart-imperial{
-                dnam{"imp. kvart"}
-                few{"{0} imp. kvarta"}
-                one{"{0} imp. kvart"}
-                other{"{0} imp. kvarata"}
             }
             tablespoon{
                 dnam{"kšk."}
@@ -1377,9 +1307,9 @@ bs{
         area{
             acre{
                 dnam{"katastarska jutra"}
-                few{"{0} ac"}
-                one{"{0} ac"}
-                other{"{0} ac"}
+                few{"{0} kj"}
+                one{"{0} kj"}
+                other{"{0} kj"}
             }
             dunam{
                 dnam{"dunumi"}
@@ -1489,13 +1419,6 @@ bs{
             nanosecond{
                 dnam{"nanosekunde"}
             }
-            night{
-                dnam{"noći"}
-                few{"{0} noći"}
-                one{"{0} noć"}
-                other{"{0} noći"}
-                per{"{0}/noć"}
-            }
             quarter{
                 dnam{"čet."}
                 few{"{0} čet."}
@@ -1575,13 +1498,13 @@ bs{
             }
             dot-per-centimeter{
                 dnam{"dpcm"}
-                few{"{0} dpcm"}
+                few{"{0} ppcm"}
                 one{"{0} dpcm"}
                 other{"{0} dpcm"}
             }
             dot-per-inch{
                 dnam{"dpi"}
-                few{"{0} dpi"}
+                few{"{0} ppi"}
                 one{"{0} dpi"}
                 other{"{0} dpi"}
             }
@@ -1618,7 +1541,7 @@ bs{
                 other{"{0} sg"}
             }
             meter{
-                dnam{"m"}
+                dnam{"metri"}
             }
             mile{
                 dnam{"milje"}
@@ -1708,20 +1631,8 @@ bs{
             }
         }
         volume{
-            centiliter{
-                dnam{"cl"}
-                few{"{0} cl"}
-                one{"{0} cl"}
-                other{"{0} cl"}
-            }
             cup{
                 dnam{"šolje"}
-            }
-            deciliter{
-                dnam{"dl"}
-                few{"{0} dl"}
-                one{"{0} dl"}
-                other{"{0} dl"}
             }
             dessert-spoon{
                 dnam{"kš. des."}
@@ -1773,12 +1684,6 @@ bs{
                 other{"{0} b. gal"}
                 per{"{0}/b. gal"}
             }
-            hectoliter{
-                dnam{"hl"}
-                few{"{0} hl"}
-                one{"{0} hl"}
-                other{"{0} hl"}
-            }
             jigger{
                 dnam{"mala čašica"}
                 few{"{0} male čašice"}
@@ -1787,18 +1692,6 @@ bs{
             }
             liter{
                 dnam{"litri"}
-            }
-            megaliter{
-                dnam{"Ml"}
-                few{"{0} Ml"}
-                one{"{0} Ml"}
-                other{"{0} Ml"}
-            }
-            milliliter{
-                dnam{"ml"}
-                few{"{0} ml"}
-                one{"{0} ml"}
-                other{"{0} ml"}
             }
             pinch{
                 dnam{"prstohvat"}
@@ -1811,21 +1704,19 @@ bs{
             }
             quart-imperial{
                 dnam{"imp. kvarc"}
-                few{"{0} imp. kvarta"}
-                one{"{0} imp. kvart"}
-                other{"{0} imp. kvarata"}
+                few{"{0} imp. kvarca"}
+                one{"{0} imp. kvarc"}
+                other{"{0} imp. kvarca"}
             }
             tablespoon{
-                dnam{"kašike"}
                 few{"{0} kšk."}
                 one{"{0} kšk."}
-                other{"{0} kšk."}
+                other{"{0} tbsp"}
             }
             teaspoon{
-                dnam{"kšč."}
                 few{"{0} kšč."}
                 one{"{0} kšč."}
-                other{"{0} kšč."}
+                other{"{0} tsp"}
             }
         }
     }

@@ -20,8 +20,6 @@
 #include <array>
 #include <cstdlib>
 
-#include "perfetto/ext/base/sys_types.h"
-
 namespace perfetto {
 
 // Set that can store up to Size items of DataType.

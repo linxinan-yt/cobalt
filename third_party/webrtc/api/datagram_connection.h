@@ -37,8 +37,6 @@ class RTC_EXPORT DatagramConnection : public RefCountInterface {
     kDtlsSrtp,
   };
 
-  using PacketId = uint32_t;
-
   class Observer {
    public:
     virtual ~Observer() = default;
@@ -48,27 +46,15 @@ class RTC_EXPORT DatagramConnection : public RefCountInterface {
       Timestamp receive_time;
     };
     virtual void OnPacketReceived(ArrayView<const uint8_t> data,
-                                  PacketMetadata metadata) = 0;
+                                  PacketMetadata metadata) {
+      OnPacketReceived(data);
+    }
+    // TODO(crbug.com/443019066): Migrate to version containing metadata.
+    virtual void OnPacketReceived(ArrayView<const uint8_t> data) {}
 
-    // Notification of outcome of an earlier call to SendPacket.
-    struct SendOutcome {
-      PacketId id;
-
-      enum class Status {
-        kSuccess,
-        kNotSent,
-      };
-      Status status;
-      // Time sent on network.
-      Timestamp send_time = Timestamp::MinusInfinity();
-      // Actual UDP payload bytes sent on the network.
-      size_t bytes_sent = 0;
-    };
-    virtual void OnSendOutcome(SendOutcome send_outcome) {}
-
-    // TODO(crbug.com/443019066): Migrate to OnSendOutcome.
-    virtual void OnSendError() {}
-
+    // Notification of an asynchronous failure to an earlier call to SendPacket.
+    // TODO(crbug.com/443019066): Associate this with a specific send call.
+    virtual void OnSendError() = 0;
     // Notification of an error unrelated to sending. Observers should
     // check the current state of the connection.
     virtual void OnConnectionError() = 0;
@@ -90,18 +76,8 @@ class RTC_EXPORT DatagramConnection : public RefCountInterface {
                                        const uint8_t* digest,
                                        size_t digest_len,
                                        SSLRole ssl_role) = 0;
-  struct PacketSendParameters {
-    // Used to tie to async feedback of the sending outcome. No deduping is
-    // performed, the caller is responsible for ensuring uniqueness and handing
-    // rollovers.
-    PacketId id = 0;
-    ArrayView<const uint8_t> payload;
-  };
-
-  // Send a batch of packets on this connection. Listen to
-  // Observer::OnSendOutcome for notification of whether each was sent
-  // successfully.
-  virtual void SendPackets(ArrayView<PacketSendParameters> packets) = 0;
+  // SendPacket on this connection, returning whether the send succeeded.
+  virtual bool SendPacket(ArrayView<const uint8_t> data) = 0;
 
   // Initiate closing connection and releasing resources. Must be called before
   // destruction.

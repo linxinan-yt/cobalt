@@ -166,9 +166,7 @@ base::Status SqliteEngine::RegisterFunction(const char* name,
       sqlite3_create_function_v2(db_.get(), name, static_cast<int>(argc), flags,
                                  ctx, fn, nullptr, nullptr, destructor);
   if (ret != SQLITE_OK) {
-    return base::ErrStatus(
-        "Unable to register function with name %s: %s (SQLite error code: %d)",
-        name, sqlite3_errmsg(db_.get()), ret);
+    return base::ErrStatus("Unable to register function with name %s", name);
   }
   *fn_ctx_.Insert(std::make_pair(name, argc), ctx).first = ctx;
   return base::OkStatus();
@@ -187,10 +185,7 @@ base::Status SqliteEngine::RegisterAggregateFunction(
       sqlite3_create_function_v2(db_.get(), name, static_cast<int>(argc), flags,
                                  ctx, nullptr, step, final, destructor);
   if (ret != SQLITE_OK) {
-    return base::ErrStatus(
-        "Unable to register aggregate function with name %s: %s (SQLite error "
-        "code: %d)",
-        name, sqlite3_errmsg(db_.get()), ret);
+    return base::ErrStatus("Unable to register function with name %s", name);
   }
   return base::OkStatus();
 }
@@ -209,10 +204,7 @@ base::Status SqliteEngine::RegisterWindowFunction(const char* name,
       db_.get(), name, static_cast<int>(argc), flags, ctx, step, final, value,
       inverse, destructor);
   if (ret != SQLITE_OK) {
-    return base::ErrStatus(
-        "Unable to register window function with name %s: %s (SQLite error "
-        "code: %d)",
-        name, sqlite3_errmsg(db_.get()), ret);
+    return base::ErrStatus("Unable to register function with name %s", name);
   }
   return base::OkStatus();
 }
@@ -222,10 +214,7 @@ base::Status SqliteEngine::UnregisterFunction(const char* name, int argc) {
                                        SQLITE_UTF8, nullptr, nullptr, nullptr,
                                        nullptr, nullptr);
   if (ret != SQLITE_OK) {
-    return base::ErrStatus(
-        "Unable to unregister function with name %s: %s (SQLite error code: "
-        "%d)",
-        name, sqlite3_errmsg(db_.get()), ret);
+    return base::ErrStatus("Unable to unregister function with name %s", name);
   }
   fn_ctx_.Erase({name, argc});
   return base::OkStatus();

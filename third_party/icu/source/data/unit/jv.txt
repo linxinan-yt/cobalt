@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 jv{
     units{
         acceleration{
@@ -224,11 +224,6 @@ jv{
             nanosecond{
                 dnam{"nanodetik"}
                 other{"{0} nanodetik"}
-            }
-            night{
-                dnam{"wengi"}
-                other{"{0} wengi"}
-                per{"{0}/wengi"}
             }
             second{
                 dnam{"detik"}
@@ -526,10 +521,6 @@ jv{
                 dnam{"kilometer saben jam"}
                 other{"{0} kilometer saben jam"}
             }
-            light-speed{
-                dnam{"cahya"}
-                other{"{0} cahya"}
-            }
             meter-per-second{
                 dnam{"meter saben detik"}
                 other{"{0} meter saben detik"}
@@ -624,8 +615,7 @@ jv{
                 other{"{0} mililiter"}
             }
             pinch{
-                dnam{"jiwit"}
-                other{"{0} jiwit"}
+                dnam{"sak juwit"}
             }
             tablespoon{
                 dnam{"sendok mangan"}
@@ -677,9 +667,6 @@ jv{
             millisecond{
                 dnam{"mdtk"}
             }
-            night{
-                dnam{"wengi"}
-            }
             quarter{
                 other{"{0}seprapat"}
             }
@@ -705,11 +692,6 @@ jv{
                 other{"{0}tpi"}
             }
         }
-        light{
-            candela{
-                other{"{0} cd"}
-            }
-        }
         mass{
             tonne{
                 other{"{0}t"}
@@ -718,12 +700,6 @@ jv{
         power{
             horsepower{
                 other{"{0}dj"}
-            }
-        }
-        speed{
-            light-speed{
-                dnam{"cahya"}
-                other{"{0} cahya"}
             }
         }
         torque{
@@ -754,8 +730,7 @@ jv{
                 other{"{0}gallm"}
             }
             pinch{
-                dnam{"jiwit"}
-                other{"{0}jiwit"}
+                other{"{0}juwit"}
             }
             pint-metric{
                 other{"{0}mpt"}
@@ -940,11 +915,6 @@ jv{
                 dnam{"nanodtk"}
                 other{"{0} nd"}
             }
-            night{
-                dnam{"wengi"}
-                other{"{0} wengi"}
-                per{"{0}/wengi"}
-            }
             quarter{
                 dnam{"seprapat"}
                 other{"{0} seprapat"}
@@ -1082,6 +1052,7 @@ jv{
         light{
             candela{
                 dnam{"kandela"}
+                other{"{0} kandela"}
             }
             lux{
                 dnam{"luk"}
@@ -1153,10 +1124,6 @@ jv{
             knot{
                 dnam{"knot"}
                 other{"{0} knot"}
-            }
-            light-speed{
-                dnam{"cahya"}
-                other{"{0} cahya"}
             }
             meter-per-second{
                 dnam{"meter/dtk"}
@@ -1251,8 +1218,8 @@ jv{
                 per{"{0}/L"}
             }
             pinch{
-                dnam{"jiwit"}
-                other{"{0} jiwit"}
+                dnam{"juwit"}
+                other{"{0} sak juwit"}
             }
             pint{
                 dnam{"pin"}

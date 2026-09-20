@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 he{
     Currencies{
         ADP{
@@ -985,15 +985,20 @@ he{
             two{"לירות סוריות"}
         }
         TRY{
-            many{"לירות טורקיות"}
             one{"לירה טורקית חדשה"}
-            other{"לירות טורקיות"}
-            two{"לירות טורקיות"}
+            other{"לירות טורקיות חדשות"}
+            two{"לירות טורקיות חדשות"}
         }
         XXX{
             one{"(מטבע שאינו ידוע)"}
             other{"(מטבע שאינו ידוע)"}
             two{"(מטבע שאינו ידוע)"}
         }
+    }
+    CurrencyUnitPatterns{
+        many{"{0} {1}"}
+        one{"{0} {1}"}
+        other{"{0} {1}"}
+        two{"{0} {1}"}
     }
 }

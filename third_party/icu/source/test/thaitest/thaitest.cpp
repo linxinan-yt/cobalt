@@ -20,12 +20,6 @@
 #include "unicode/uniset.h"
 #include "unicode/ustring.h"
 
-using icu::BreakIterator;
-using icu::Locale;
-using icu::UCharCharacterIterator;
-using icu::UnicodeSet;
-using icu::UnicodeString;
-
 /*
  * This program takes a Unicode text file containing Thai text with
  * spaces inserted where the word breaks are. It computes a copy of
@@ -116,7 +110,7 @@ public:
     // fileName  - the path name of the file
     // charCount - set to the number of UChars read from the file
     // returns   - the address of the char16_t array containing the characters
-    static const char16_t *readFile(const char *fileName, int32_t &charCount);
+    static const char16_t *readFile(char *fileName, int32_t &charCount);
 
     // removes spaces form the input char16_t array:
     // spaces        - pointer to the input char16_t array
@@ -310,7 +304,7 @@ void ThaiWordbreakTest::foundInvalidBreak(int32_t br)
  * Read the text from a file. The text must start with a Unicode Byte
  * Order Mark (BOM) so that we know what order to read the bytes in.
  */
-const char16_t *ThaiWordbreakTest::readFile(const char *fileName, int32_t &charCount)
+const char16_t *ThaiWordbreakTest::readFile(char *fileName, int32_t &charCount)
 {
     FILE *f;
     int32_t fileSize;
@@ -322,7 +316,7 @@ const char16_t *ThaiWordbreakTest::readFile(const char *fileName, int32_t &charC
     
     if( f == nullptr ) {
         fprintf(stderr,"Couldn't open %s reason: %s \n", fileName, strerror(errno));
-        return nullptr;
+        return 0;
     }
     
     fseek(f, 0, SEEK_END);
@@ -330,11 +324,11 @@ const char16_t *ThaiWordbreakTest::readFile(const char *fileName, int32_t &charC
     
     fseek(f, 0, SEEK_SET);
     bufferChars = new char[fileSize];
-
-    if (bufferChars == nullptr) {
+    
+    if(bufferChars == 0) {
         fprintf(stderr,"Couldn't get memory for reading %s reason: %s \n", fileName, strerror(errno));
         fclose(f);
-        return nullptr;
+        return 0;
     }
     
     fread(bufferChars, sizeof(char), fileSize, f);
@@ -342,7 +336,7 @@ const char16_t *ThaiWordbreakTest::readFile(const char *fileName, int32_t &charC
         fprintf(stderr,"Couldn't read %s reason: %s \n", fileName, strerror(errno));
         fclose(f);
         delete[] bufferChars;
-        return nullptr;
+        return 0;
     }
     fclose(f);
     
@@ -352,9 +346,9 @@ const char16_t *ThaiWordbreakTest::readFile(const char *fileName, int32_t &charC
     
     charCount = myText.length();
     buffer = new char16_t[charCount];
-    if (buffer == nullptr) {
+    if(buffer == 0) {
         fprintf(stderr,"Couldn't get memory for reading %s reason: %s \n", fileName, strerror(errno));
-        return nullptr;
+        return 0;
     }
     
     myText.extract(1, myText.length(), buffer);
@@ -385,9 +379,9 @@ const char16_t *ThaiWordbreakTest::crunchSpaces(const char16_t *spaces, int32_t 
     nonSpaceCount = count - spaceCount;
     char16_t *noSpaces = new char16_t[nonSpaceCount];
 
-    if (noSpaces == nullptr) {
+    if (noSpaces == 0) {
         fprintf(stderr, "Couldn't allocate memory for the space stripped text.\n");
-        return nullptr;
+        return 0;
     }
 
     for (out = 0, i = 0; i < count; i += 1) {
@@ -445,7 +439,7 @@ int generateFile(const char16_t *chars, int32_t length) {
  */
 int main(int argc, char **argv)
 {
-    const char *fileName = "space.txt";
+    char *fileName = "space.txt";
     int arg = 1;
     UBool verbose = false;
     UBool generate = false;
@@ -474,7 +468,7 @@ int main(int argc, char **argv)
 
     spaces = ThaiWordbreakTest::readFile(fileName, spaceCount);
 
-    if (spaces == nullptr) {
+    if (spaces == 0) {
         return 1;
     }
     
@@ -484,7 +478,7 @@ int main(int argc, char **argv)
 
     noSpaces = ThaiWordbreakTest::crunchSpaces(spaces, spaceCount, nonSpaceCount);
 
-    if (noSpaces == nullptr) {
+    if (noSpaces == 0) {
         return 1;
     }
 
@@ -502,7 +496,7 @@ int main(int argc, char **argv)
  * word instance of a BreakIterator.
  */
 SpaceBreakIterator::SpaceBreakIterator(const char16_t *text, int32_t count)
-  : fBreakIter(nullptr), fText(text), fTextCount(count), fWordCount(0), fSpaceCount(0), fDone(false)
+  : fBreakIter(0), fText(text), fTextCount(count), fWordCount(0), fSpaceCount(0), fDone(false)
 {
     UCharCharacterIterator *iter = new UCharCharacterIterator(text, count);
     UErrorCode status = U_ZERO_ERROR;

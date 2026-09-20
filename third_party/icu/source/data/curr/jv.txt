@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 jv{
     Currencies{
         AED{
@@ -333,7 +333,7 @@ jv{
         }
         LSL{
             "LSL",
-            "Loti Lesotho",
+            "Lesotho Loti",
         }
         LYD{
             "LYD",
@@ -441,7 +441,7 @@ jv{
         }
         PHP{
             "₱",
-            "Peso Filipina",
+            "Piso Filipina",
         }
         PKR{
             "PKR",
@@ -646,13 +646,10 @@ jv{
     }
     CurrencyPlurals{
         LSL{
-            other{"Loti Lesotho"}
+            other{"Lesotho lotis"}
         }
         MAD{
             other{"Dirham Moroko"}
-        }
-        PHP{
-            other{"Peso Filipina"}
         }
     }
     CurrencyUnitPatterns{

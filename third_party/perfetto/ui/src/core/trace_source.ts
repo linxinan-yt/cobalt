@@ -13,7 +13,6 @@
 // limitations under the License.
 
 import {SerializedAppState} from './state_serialization_schema';
-import {TraceStream} from '../public/stream';
 
 interface CommonTraceProps {
   serializedAppState?: SerializedAppState;
@@ -26,7 +25,6 @@ export type TraceSource = CommonTraceProps &
     | TraceUrlSource
     | TraceHttpRpcSource
     | TraceMultipleFilesSource
-    | TraceStreamSource
   );
 
 export interface TraceFileSource {
@@ -42,11 +40,6 @@ export interface TraceMultipleFilesSource {
 export interface TraceUrlSource {
   readonly type: 'URL';
   readonly url: string;
-}
-
-export interface TraceStreamSource {
-  type: 'STREAM';
-  stream: TraceStream;
 }
 
 export interface TraceHttpRpcSource {

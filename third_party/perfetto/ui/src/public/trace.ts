@@ -50,8 +50,7 @@ export interface Trace extends App {
   readonly tabs: TabManager;
   readonly tracks: TrackManager;
   readonly selection: SelectionManager;
-  readonly currentWorkspace: Workspace;
-  readonly defaultWorkspace: Workspace;
+  readonly workspace: Workspace;
   readonly workspaces: WorkspaceManager;
   readonly traceInfo: TraceInfo;
   readonly statusbar: StatusbarManager;

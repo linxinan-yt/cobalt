@@ -35,10 +35,6 @@
 #include "usettest.h"
 
 extern IntlTest *createBytesTrieTest();
-#if !UCONFIG_NO_COLLATION
-extern IntlTest *createUColHeaderOnlyTest();
-#endif
-extern IntlTest *createUSetHeaderOnlyTest();
 extern IntlTest *createLocaleMatcherTest();
 static IntlTest *createLocalPointerTest();
 extern IntlTest *createUCharsTrieTest();
@@ -50,7 +46,6 @@ extern IntlTest *createPluralMapTest();
 #if !UCONFIG_NO_FORMATTING
 extern IntlTest *createStaticUnicodeSetsTest();
 #endif
-static IntlTest *createUHashTest();
 
 void IntlTestUtilities::runIndexedTest( int32_t index, UBool exec, const char* &name, char* par )
 {
@@ -85,11 +80,6 @@ void IntlTestUtilities::runIndexedTest( int32_t index, UBool exec, const char* &
 #endif
     TESTCASE_AUTO_CLASS(LocaleBuilderTest);
     TESTCASE_AUTO_CREATE_CLASS(LocaleMatcherTest);
-    TESTCASE_AUTO_CREATE_CLASS(UHashTest);
-#if !UCONFIG_NO_COLLATION
-    TESTCASE_AUTO_CREATE_CLASS(UColHeaderOnlyTest);
-#endif
-    TESTCASE_AUTO_CREATE_CLASS(USetHeaderOnlyTest);
     TESTCASE_AUTO_END;
 }
 
@@ -103,8 +93,8 @@ void ErrorCodeTest::runIndexedTest(int32_t index, UBool exec, const char* &name,
     }
 }
 
-static void RefPlusOne(UErrorCode &code) { code = static_cast<UErrorCode>(code + 1); }
-static void PtrPlusTwo(UErrorCode *code) { *code = static_cast<UErrorCode>(*code + 2); }
+static void RefPlusOne(UErrorCode &code) { code=(UErrorCode)(code+1); }
+static void PtrPlusTwo(UErrorCode *code) { *code=(UErrorCode)(*code+2); }
 
 void ErrorCodeTest::TestErrorCode() {
     ErrorCode errorCode;
@@ -212,19 +202,19 @@ void ErrorCodeTest::TestSubclass() {
 
 class IcuTestErrorCodeTestHelper : public IntlTest {
   public:
-    void errln(std::u16string_view message) override {
+    void errln( const UnicodeString &message ) override {
         test->assertFalse("Already saw an error", seenError);
         seenError = true;
-        test->assertEquals("Message for Error", std::u16string_view{expectedErrln}, message);
+        test->assertEquals("Message for Error", expectedErrln, message);
         if (expectedDataErr) {
             test->errln("Got non-data error, but expected data error");
         }
     }
 
-    void dataerrln(std::u16string_view message) override {
+    void dataerrln( const UnicodeString &message ) override {
         test->assertFalse("Already saw an error", seenError);
         seenError = true;
-        test->assertEquals("Message for Error", std::u16string_view{expectedErrln}, message);
+        test->assertEquals("Message for Error", expectedErrln, message);
         if (!expectedDataErr) {
             test->errln("Got data error, but expected non-data error");
         }
@@ -361,7 +351,7 @@ void LocalPointerTest::runIndexedTest(int32_t index, UBool exec, const char *&na
 // Exercise almost every LocalPointer and LocalPointerBase method.
 void LocalPointerTest::TestLocalPointer() {
     // constructor
-    LocalPointer<UnicodeString> s(new UnicodeString(static_cast<UChar32>(0x50005)));
+    LocalPointer<UnicodeString> s(new UnicodeString((UChar32)0x50005));
     // isNULL(), isValid(), operator==(), operator!=()
     if(s.isNull() || !s.isValid() || s==nullptr || !(s!=nullptr)) {
         errln("LocalPointer constructor or nullptr test failure");
@@ -372,7 +362,7 @@ void LocalPointerTest::TestLocalPointer() {
         errln("LocalPointer access failure");
     }
     // adoptInstead(), orphan()
-    s.adoptInstead(new UnicodeString(static_cast<char16_t>(0xfffc)));
+    s.adoptInstead(new UnicodeString((char16_t)0xfffc));
     if(s->length()!=1) {
         errln("LocalPointer adoptInstead(U+FFFC) failure");
     }
@@ -433,8 +423,8 @@ void moveFrom(T &dest, T &src) {
 }
 
 void LocalPointerTest::TestLocalPointerMoveSwap() {
-    UnicodeString* p1 = new UnicodeString(static_cast<char16_t>(0x61));
-    UnicodeString* p2 = new UnicodeString(static_cast<char16_t>(0x62));
+    UnicodeString *p1 = new UnicodeString((char16_t)0x61);
+    UnicodeString *p2 = new UnicodeString((char16_t)0x62);
     LocalPointer<UnicodeString> s1(p1);
     LocalPointer<UnicodeString> s2(p2);
     s1.swap(s2);
@@ -468,7 +458,7 @@ void LocalPointerTest::TestLocalPointerMoveSwap() {
 }
 
 void LocalPointerTest::TestLocalPointerStdUniquePtr() {
-    auto* ptr = new UnicodeString(static_cast<UChar32>(0x50005));
+    auto* ptr = new UnicodeString((UChar32)0x50005);
     // Implicit conversion operator
     std::unique_ptr<UnicodeString> s = LocalPointer<UnicodeString>(ptr);
     // Explicit move constructor
@@ -485,14 +475,14 @@ void LocalPointerTest::TestLocalArray() {
     // constructor
     LocalArray<UnicodeString> a(new UnicodeString[2]);
     // operator[]()
-    a[0].append(static_cast<char16_t>(0x61));
-    a[1].append(static_cast<UChar32>(0x60006));
+    a[0].append((char16_t)0x61);
+    a[1].append((UChar32)0x60006);
     if(a[0].length()!=1 || a[1].length()!=2) {
         errln("LocalArray access failure");
     }
     // adoptInstead()
     a.adoptInstead(new UnicodeString[4]);
-    a[3].append(static_cast<char16_t>(0x62)).append(static_cast<char16_t>(0x63)).reverse();
+    a[3].append((char16_t)0x62).append((char16_t)0x63).reverse();
     if(a[3].length()!=2 || a[3][1]!=0x62) {
         errln("LocalArray adoptInstead() failure");
     }
@@ -914,46 +904,4 @@ void EnumSetTest::TestEnumSet() {
     assertFalse(WHERE, flags.get(THING1));
     assertFalse(WHERE, flags.get(THING2));
     assertFalse(WHERE, flags.get(THING3));
-}
-
-/** UHashTest **/
-#include "uhash.h"
-#include <string_view>
-
-class UHashTest : public IntlTest {
-public:
-    UHashTest() = default;
-    virtual void runIndexedTest(int32_t index, UBool exec, const char*& name, char* par = nullptr) override;
-    void TestStringView();
-};
-
-static IntlTest* createUHashTest() {
-    return new UHashTest();
-}
-
-void UHashTest::runIndexedTest(int32_t index, UBool exec, const char*& name, char*  /*par*/) {
-    TESTCASE_AUTO_BEGIN;
-    TESTCASE_AUTO(TestStringView);
-    TESTCASE_AUTO_END;
-}
-
-void UHashTest::TestStringView() {
-    IcuTestErrorCode status(*this, "TestStringView");
-    LocalUHashtablePointer table(
-        uhash_open(uhash_hashIStringView, uhash_compareIStringView, nullptr, status));
-    if (status.errIfFailureAndReset("uhash_open") ||
-        !assertTrue("uhash_open", table.isValid())) {
-        return;
-    }
-
-    std::string_view key("aaa");
-    std::string_view value("bbb");
-
-    uhash_put(table.getAlias(), &key, &value, status);
-    if (status.errIfFailureAndReset("uhash_put")) return;
-
-    std::string_view lookup("AAA");
-
-    auto* result = static_cast<std::string_view*>(uhash_get(table.getAlias(), &lookup));
-    assertTrue("uhash_get", result == &value);
 }

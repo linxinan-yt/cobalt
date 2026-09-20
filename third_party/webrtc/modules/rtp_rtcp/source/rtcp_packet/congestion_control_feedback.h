@@ -28,13 +28,10 @@ namespace rtcp {
 class CongestionControlFeedback : public Rtpfb {
  public:
   struct PacketInfo {
-    bool received() const {
-      return arrival_time_offset != TimeDelta::MinusInfinity();
-    }
-
     uint32_t ssrc = 0;
     uint16_t sequence_number = 0;
-    //  Time offset from report timestamp.
+    //  Time offset from report timestamp. Minus infinity if the packet has not
+    //  been received.
     TimeDelta arrival_time_offset = TimeDelta::MinusInfinity();
     EcnMarking ecn = EcnMarking::kNotEct;
   };

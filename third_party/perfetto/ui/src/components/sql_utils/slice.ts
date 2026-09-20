@@ -20,6 +20,7 @@ import {
   LONG_NULL,
   NUM,
   NUM_NULL,
+  STR,
   STR_NULL,
 } from '../../trace_processor/query_result';
 import {
@@ -42,7 +43,7 @@ import {getProcessInfo, ProcessInfo} from './process';
 // Basic information about a slice.
 export interface SliceDetails {
   id: SliceSqlId;
-  name?: string;
+  name: string;
   ts: time;
   absTime?: string;
   dur: duration;
@@ -95,7 +96,7 @@ export async function getSliceFromConstraints(
     ${constraintsToQuerySuffix(constraints)}`);
   const it = query.iter({
     id: NUM,
-    name: STR_NULL,
+    name: STR,
     ts: LONG,
     dur: LONG,
     trackId: NUM,
@@ -123,7 +124,7 @@ export async function getSliceFromConstraints(
 
     result.push({
       id: asSliceSqlId(it.id),
-      name: it.name ?? undefined,
+      name: it.name,
       ts: Time.fromRaw(it.ts),
       dur: it.dur,
       trackId: it.trackId,

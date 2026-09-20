@@ -1,8 +1,9 @@
-# Test data for Person Name Data
-#  Copyright © 1991-2025 Unicode, Inc.
+# Test data for unit conversions
+#  Copyright © 1991-2023 Unicode, Inc.
 #  For terms of use, see http://www.unicode.org/copyright.html
-#  SPDX-License-Identifier: Unicode-3.0
+#  SPDX-License-Identifier: Unicode-DFS-2016
 #  CLDR data files are interpreted according to the LDML specification (http://unicode.org/reports/tr35/)
+#
 # CLDR person name formatting test data for: so
 #
 # Test lines have the following structure:
@@ -312,62 +313,67 @@ endName
 
 # nativeFull
 name ; title; Mudane
-name ; given; Bertram Wilberforce
-name ; given-informal; Bertie
-name ; given2; Henry Robert
-name ; surname-core; Wooster
+name ; given; Abdi Taban
+name ; given-informal; Shermake
+name ; given2; Nadifa Maxamed
+name ; surname-core; Iman
 name ; generation; Jr
 name ; credentials; MP
 name ; locale; so_AQ
 
-expectedResult; Wooster Mudane Bertram Wilberforce Henry Robert Jr, MP
+expectedResult; Iman Mudane Abdi Taban Nadifa Maxamed Jr, MP
 
 parameters; surnameFirst; long; referring; formal
 
-expectedResult; Mudane Bertram Wilberforce Henry Robert Wooster MP
+expectedResult; Mudane Abdi Taban Nadifa Maxamed Iman MP
 
 parameters; givenFirst; long; referring; formal
 
-expectedResult; Wooster, Bertram Wilberforce Henry Robert
+expectedResult; Iman, Abdi Taban Nadifa Maxamed
 
 parameters; sorting; long; referring; formal
 
-expectedResult; Bertram Wilberforce H. R. Wooster MP
+expectedResult; Abdi Taban N. M. Iman MP
 
 parameters; givenFirst; medium; referring; formal
 
-expectedResult; Wooster Bertram Wilberforce H. R. MP
+expectedResult; Iman Abdi Taban N. M. MP
 
 parameters; surnameFirst; medium; referring; formal
 
-expectedResult; Wooster, Bertram Wilberforce H. R.
+expectedResult; Iman, Abdi Taban N. M.
 
 parameters; sorting; medium; referring; formal
 
-expectedResult; Wooster, B. W. H. R.
+expectedResult; Iman, A. T. N. M.
 
 parameters; sorting; short; referring; formal
 
-expectedResult; B. W. H. R. Wooster
+expectedResult; A. T. N. M. Iman
 
 parameters; givenFirst; short; referring; formal
 
-expectedResult; Wooster B. W. H. R.
+expectedResult; Iman A. T. N. M.
 
 parameters; surnameFirst; short; referring; formal
 
-expectedResult; Wooster, Bertie
+expectedResult; Iman, Shermake
 
 parameters; sorting; long; referring; informal
 parameters; sorting; medium; referring; informal
 parameters; sorting; short; referring; informal
 
-expectedResult; Bertie Wooster
+expectedResult; Iman Shermake
+
+parameters; surnameFirst; long; referring; informal
+parameters; surnameFirst; medium; referring; informal
+
+expectedResult; Shermake Iman
 
 parameters; givenFirst; long; referring; informal
 parameters; givenFirst; medium; referring; informal
 
-expectedResult; Mudane Wooster
+expectedResult; Mudane Iman
 
 parameters; givenFirst; long; addressing; formal
 parameters; givenFirst; medium; addressing; formal
@@ -376,20 +382,15 @@ parameters; surnameFirst; long; addressing; formal
 parameters; surnameFirst; medium; addressing; formal
 parameters; surnameFirst; short; addressing; formal
 
-expectedResult; Wooster Bertie
-
-parameters; surnameFirst; long; referring; informal
-parameters; surnameFirst; medium; referring; informal
-
-expectedResult; Wooster B. W.
-
-parameters; surnameFirst; short; referring; informal
-
-expectedResult; Bertie W.
+expectedResult; Shermake I.
 
 parameters; givenFirst; short; referring; informal
 
-expectedResult; Bertie
+expectedResult; Iman A. T.
+
+parameters; surnameFirst; short; referring; informal
+
+expectedResult; Shermake
 
 parameters; givenFirst; long; addressing; informal
 parameters; givenFirst; medium; addressing; informal
@@ -398,35 +399,35 @@ parameters; surnameFirst; long; addressing; informal
 parameters; surnameFirst; medium; addressing; informal
 parameters; surnameFirst; short; addressing; informal
 
-expectedResult; BHW
+expectedResult; ANI
 
 parameters; givenFirst; long; monogram; formal
 
-expectedResult; WBH
+expectedResult; IAN
 
 parameters; surnameFirst; long; monogram; formal
 
-expectedResult; BW
-
-parameters; givenFirst; long; monogram; informal
-
-expectedResult; WB
+expectedResult; IS
 
 parameters; surnameFirst; long; monogram; informal
 
-expectedResult; B
+expectedResult; SI
 
-parameters; givenFirst; medium; monogram; informal
-parameters; givenFirst; short; monogram; informal
-parameters; surnameFirst; medium; monogram; informal
-parameters; surnameFirst; short; monogram; informal
+parameters; givenFirst; long; monogram; informal
 
-expectedResult; W
+expectedResult; I
 
 parameters; givenFirst; medium; monogram; formal
 parameters; givenFirst; short; monogram; formal
 parameters; surnameFirst; medium; monogram; formal
 parameters; surnameFirst; short; monogram; formal
+
+expectedResult; S
+
+parameters; givenFirst; medium; monogram; informal
+parameters; givenFirst; short; monogram; informal
+parameters; surnameFirst; medium; monogram; informal
+parameters; surnameFirst; short; monogram; informal
 
 endName
 

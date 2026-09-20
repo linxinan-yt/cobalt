@@ -26,6 +26,7 @@
 #include "rtc_base/network/sent_packet.h"
 #include "rtc_base/network_route.h"
 #include "rtc_base/socket.h"
+#include "rtc_base/third_party/sigslot/sigslot.h"
 
 namespace webrtc {
 
@@ -35,7 +36,7 @@ class CopyOnWriteBuffer;
 // but is accessible to internal classes in order to send and receive RTP and
 // RTCP packets belonging to a single RTP session. Additional convenience and
 // configuration methods are also provided.
-class RtpTransportInternal {
+class RtpTransportInternal : public sigslot::has_slots<> {
  public:
   virtual ~RtpTransportInternal() = default;
 

@@ -417,13 +417,7 @@ class Parsing(TestSuite):
   def test_android_log_counts(self):
     return DiffTestBlueprint(
         trace=DataPath('android_log.pb'),
-        query="""SELECT count(*) AS cnt FROM android_logs UNION ALL
-          SELECT count(*) AS cnt FROM android_logs WHERE prio = 3 UNION ALL
-          SELECT count(*) AS cnt FROM android_logs WHERE prio > 4 UNION ALL
-          SELECT count(*) AS cnt FROM android_logs WHERE tag = 'screen_toggled' UNION ALL
-          SELECT count(*) AS cnt FROM android_logs WHERE tag GLOB '*_pss' UNION ALL
-          SELECT count(*) AS cnt FROM android_logs WHERE msg GLOB '*i2c?write*' OR msg GLOB '*I2C?Write*' UNION ALL
-          SELECT count(*) AS cnt FROM android_logs WHERE ts >= 1510113924391 AND ts < 1512610021879;""",
+        query=Path('android_log_counts_test.sql'),
         out=Csv("""
         "cnt"
         2249

@@ -112,7 +112,7 @@ class BlockingCallMetricHandler implements MetricHandler {
         columns: ['name', 'ts', 'dur'],
       },
       columns: {ts: 'ts', dur: 'dur', name: 'name'},
-      rawColumns: ['name', 'ts', 'dur'],
+      argColumns: ['name', 'ts', 'dur'],
       title: trackName,
     };
   }
@@ -144,7 +144,7 @@ class BlockingCallMetricHandler implements MetricHandler {
     ctx: Trace,
     metricData: BlockingCallMetricData,
   ): Promise<
-    Pick<DebugSliceTrackArgs, 'data' | 'columns' | 'rawColumns' | 'title'>
+    Pick<DebugSliceTrackArgs, 'data' | 'columns' | 'argColumns' | 'title'>
   > {
     let row: Row = {
       frame_id: null,
@@ -156,20 +156,17 @@ class BlockingCallMetricHandler implements MetricHandler {
       ).firstRow({frame_id: LONG});
     } catch (e) {
       throw new Error(
-        `${e.message} caused by: No frame found for:
-          process: ${metricData.process}
-          CUJ: ${metricData.cujName}
-          blocking call: ${metricData.blockingCallName}`,
+        `${e.message} caused by: No frame found for the given process, CUJ and blocking call.`,
       );
     }
 
-    // Fetch the ts and dur for the extended frame boundary corresponding to the above frame_id.
+    // Fetch the ts and dur of the frame corresponding to the above frame_id.
     const frameWithMaxDurBlockingCallQuery = `
       SELECT
-        frame_id,
+        cast_string!(frame_id) AS frame_id,
         ts,
-        (ts_end - ts) AS dur
-      FROM _extended_frame_boundary
+        dur
+      FROM android_frames_layers
       WHERE frame_id = ${row.frame_id}
       `;
 
@@ -179,7 +176,7 @@ class BlockingCallMetricHandler implements MetricHandler {
         columns: ['frame_id', 'ts', 'dur'],
       },
       columns: {ts: 'ts', dur: 'dur', name: 'frame_id'},
-      rawColumns: ['frame_id', 'ts', 'dur'],
+      argColumns: ['frame_id', 'ts', 'dur'],
       title: 'Frame with max duration blocking call',
     };
   }

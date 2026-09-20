@@ -85,6 +85,7 @@ class AsyncTCPSocket : public AsyncTCPSocketBase {
  public:
   AsyncTCPSocket(const Environment& env,
                  absl_nonnull std::unique_ptr<Socket> socket);
+  ~AsyncTCPSocket() override = default;
 
   AsyncTCPSocket(const AsyncTCPSocket&) = delete;
   AsyncTCPSocket& operator=(const AsyncTCPSocket&) = delete;
@@ -118,5 +119,6 @@ class AsyncTcpListenSocket : public AsyncListenSocket {
 };
 
 }  //  namespace webrtc
+
 
 #endif  // RTC_BASE_ASYNC_TCP_SOCKET_H_

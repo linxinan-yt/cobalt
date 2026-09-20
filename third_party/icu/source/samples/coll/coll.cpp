@@ -46,7 +46,7 @@ const char gHelpString[] =
  *    on the command line by the user.
  */
 char const *opt_locale     = "en_US";
-char *opt_rules       = nullptr;
+char *opt_rules      = 0;
 UBool  opt_help       = false;
 UBool  opt_norm       = false;
 UBool  opt_french     = false;
@@ -57,7 +57,7 @@ UBool  opt_case       = false;
 int    opt_level      = 0;
 char const *opt_source     = "abc";
 char const *opt_target     = "abd";
-UCollator *collator   = nullptr;
+UCollator * collator  = 0;
 
 /** 
  * Definitions for the command line options
@@ -82,7 +82,7 @@ OptSpec opts[] = {
     {"-level",       OptSpec::NUM,    &opt_level},
     {"-help",        OptSpec::FLAG,   &opt_help},
     {"-?",           OptSpec::FLAG,   &opt_help},
-    {nullptr,        OptSpec::FLAG,   nullptr}
+    {0, OptSpec::FLAG, 0}
 };
 
 /**  
@@ -93,11 +93,11 @@ UBool processOptions(int argc, const char **argv, OptSpec opts[])
     for (int argNum = 1; argNum < argc; argNum ++) {
         const char *pArgName = argv[argNum];
         OptSpec *pOpt;
-        for (pOpt = opts; pOpt->name != nullptr; pOpt++) {
+        for (pOpt = opts;  pOpt->name != 0; pOpt ++) {
             if (strcmp(pOpt->name, pArgName) == 0) {
                 switch (pOpt->type) {
                 case OptSpec::FLAG:
-                    *static_cast<UBool*>(pOpt->pVar) = true;
+                    *(UBool *)(pOpt->pVar) = true;
                     break;
                 case OptSpec::STRING:
                     argNum ++;
@@ -106,7 +106,7 @@ UBool processOptions(int argc, const char **argv, OptSpec opts[])
 							    pOpt->name);
                         return false;
                     }
-                    *static_cast<const char**>(pOpt->pVar) = argv[argNum];
+                    *(const char **)(pOpt->pVar) = argv[argNum];
                     break;
                 case OptSpec::NUM:
                     argNum ++;
@@ -123,12 +123,12 @@ UBool processOptions(int argc, const char **argv, OptSpec opts[])
 								pOpt->name);
                         return false;
                     }
-                    *static_cast<int*>(pOpt->pVar) = i;
+                    *(int *)(pOpt->pVar) = i;
                 }
                 break;
             }
         }
-        if (pOpt->name == nullptr)
+        if (pOpt->name == 0)
         {
             fprintf(stderr, "Unrecognized option \"%s\"\n", pArgName);
             return false;
@@ -165,7 +165,7 @@ UBool processCollator()
     UErrorCode status = U_ZERO_ERROR;
 	char16_t rules[100];
 
-    if (opt_rules != nullptr) {
+    if (opt_rules != 0) {
 		u_unescape(opt_rules, rules, 100);
         collator = ucol_openRules(rules, -1, UCOL_OFF, UCOL_TERTIARY, 
 			                  nullptr, &status);

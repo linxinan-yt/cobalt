@@ -612,6 +612,8 @@ class FakeVoiceMediaSendChannel
   void SetReceiveNackEnabled(bool /* enabled */) {}
   void SetReceiveNonSenderRttEnabled(bool /* enabled */) {}
   bool SendCodecHasNack() const override { return false; }
+  void SetSendCodecChangedCallback(
+      absl::AnyInvocable<void()> /* callback */) override {}
   std::optional<Codec> GetSendCodec() const override;
 
   bool GetStats(VoiceMediaSendInfo* stats) override;
@@ -699,6 +701,11 @@ class FakeVideoMediaReceiveChannel
       std::function<void(const RecordableEncodedFrame&)> callback) override;
   void ClearRecordableEncodedFrameCallback(uint32_t ssrc) override;
   void RequestRecvKeyFrame(uint32_t ssrc) override;
+  void SetReceiverFeedbackParameters(
+      bool /* lntf_enabled */,
+      bool /* nack_enabled */,
+      RtcpMode /* rtcp_mode */,
+      std::optional<int> /* rtx_time */) override {}
   bool GetStats(VideoMediaReceiveInfo* info) override;
 
   bool AddDefaultRecvStreamForTesting(const StreamParams& /* sp */) override {
@@ -755,6 +762,8 @@ class FakeVideoMediaSendChannel
   void GenerateSendKeyFrame(uint32_t ssrc,
                             const std::vector<std::string>& rids) override;
   RtcpMode SendCodecRtcpMode() const override { return RtcpMode::kCompound; }
+  void SetSendCodecChangedCallback(
+      absl::AnyInvocable<void()> /* callback */) override {}
   void SetSsrcListChangedCallback(
       absl::AnyInvocable<void(const std::set<uint32_t>&)> /* callback */)
       override {}

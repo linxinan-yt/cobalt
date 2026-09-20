@@ -13,13 +13,10 @@
 // limitations under the License.
 
 import m from 'mithril';
-import {Icon} from './icon';
 
 export interface TabOption {
   readonly key: string;
   readonly title: string;
-  readonly leftIcon?: string | m.Children;
-  readonly rightIcon?: string | m.Children;
 }
 
 export interface TabStripAttrs {
@@ -32,25 +29,14 @@ export interface TabStripAttrs {
 export class TabStrip implements m.ClassComponent<TabStripAttrs> {
   view({attrs}: m.CVnode<TabStripAttrs>) {
     const {tabs, currentTabKey, onTabChange, className} = attrs;
+
     return m(
       '.pf-tabs',
       {className},
       m(
         '.pf-tabs__tabs',
         tabs.map((tab) => {
-          const {key, title, leftIcon, rightIcon} = tab;
-          const renderIcon = (
-            icon: string | m.Children | undefined,
-            className: string,
-          ) => {
-            if (icon === undefined) {
-              return undefined;
-            }
-            if (typeof icon === 'string') {
-              return m(Icon, {icon, className});
-            }
-            return m('.pf-tabs__tab-icon', {className}, icon);
-          };
+          const {key, title} = tab;
           return m(
             '.pf-tabs__tab',
             {
@@ -60,11 +46,7 @@ export class TabStrip implements m.ClassComponent<TabStripAttrs> {
                 onTabChange(key);
               },
             },
-            [
-              renderIcon(leftIcon, 'pf-tabs__tab-icon--left'),
-              m('span.pf-tabs__tab-title', title),
-              renderIcon(rightIcon, 'pf-tabs__tab-icon--right'),
-            ],
+            m('span.pf-tabs__tab-title', title),
           );
         }),
       ),

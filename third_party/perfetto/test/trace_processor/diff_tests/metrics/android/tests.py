@@ -389,60 +389,59 @@ class AndroidMetrics(TestSuite):
         wattson_app_startup_rails {
           metric_version: 4
           power_model_version: 1
-          is_crude_estimate: false
           period_info {
             period_id: 1
-            period_dur: 385136434
+            period_dur: 384847255
             cpu_subsystem {
-              estimated_mw: 4583.882324
-              estimated_mws: 1765.420166
+              estimated_mw: 4583.7715
+              estimated_mws: 1764.0519
               policy0 {
-                estimated_mw: 573.628662
-                estimated_mws: 220.925293
+                estimated_mw: 573.6028
+                estimated_mws: 220.74945
                 cpu0 {
-                  estimated_mw: 147.795715
-                  estimated_mws: 56.921513
+                  estimated_mw: 147.79527
+                  estimated_mws: 56.878605
                 }
                 cpu1 {
-                  estimated_mw: 128.964539
-                  estimated_mws: 49.668941
+                  estimated_mw: 128.95555
+                  estimated_mws: 49.62819
                 }
                 cpu2 {
-                  estimated_mw: 126.593117
-                  estimated_mws: 48.755619
+                  estimated_mw: 126.5788
+                  estimated_mws: 48.713505
                 }
                 cpu3 {
-                  estimated_mw: 170.275269
-                  estimated_mws: 65.579208
+                  estimated_mw: 170.27313
+                  estimated_mws: 65.52915
                 }
               }
               policy4 {
-                estimated_mw: 684.205200
-                estimated_mws: 263.512360
+                estimated_mw: 684.18835
+                estimated_mws: 263.308014
                 cpu4 {
-                  estimated_mw: 344.398224
-                  estimated_mws: 132.640305
+                  estimated_mw: 344.39563
+                  estimated_mws: 132.539703
                 }
                 cpu5 {
-                  estimated_mw: 339.806946
-                  estimated_mws: 130.872040
+                  estimated_mw: 339.7927
+                  estimated_mws: 130.768295
                 }
               }
               policy6 {
-                estimated_mw: 2163.280029
-                estimated_mws: 833.157959
+                estimated_mw: 2163.158
+                estimated_mws: 832.48541
                 cpu6 {
-                  estimated_mw: 1080.785522
-                  estimated_mws: 416.249878
+                  estimated_mw: 1080.6881
+                  estimated_mws: 415.89984
                 }
                 cpu7 {
-                  estimated_mw: 1082.494507
-                  estimated_mws: 416.908051
+                  estimated_mw: 1082.47
+                  estimated_mws: 416.585602
                 }
               }
               dsu_scu {
-                estimated_mw: 1162.768677
-                estimated_mws: 447.824585
+                estimated_mw: 1162.8224
+                estimated_mws: 447.50897
               }
             }
           }
@@ -457,104 +456,35 @@ class AndroidMetrics(TestSuite):
         wattson_trace_rails {
           metric_version: 4
           power_model_version: 1
-          is_crude_estimate: false
           period_info {
             period_id: 1
-            period_dur: 61793079818
+            period_dur: 61792677852
             cpu_subsystem {
-              estimated_mw: 42.123875
-              estimated_mws: 2602.963867
+              estimated_mw: 42.123608
+              estimated_mws: 2602.930420
               policy0 {
-                estimated_mw: 34.719143
-                estimated_mws: 2145.402832
+                estimated_mw: 34.71892
+                estimated_mws: 2145.375244
                 cpu0 {
-                  estimated_mw: 10.705154
-                  estimated_mws: 661.504456
+                  estimated_mw: 10.705099
+                  estimated_mws: 661.496704
                 }
                 cpu1 {
-                  estimated_mw: 8.315764
-                  estimated_mws: 513.856689
+                  estimated_mw: 8.315703
+                  estimated_mws: 513.849548
                 }
                 cpu2 {
-                  estimated_mw: 7.7776737
-                  estimated_mws: 480.606415
+                  estimated_mw: 7.7776227
+                  estimated_mws: 480.600128
                 }
                 cpu3 {
-                  estimated_mw: 7.9205513
-                  estimated_mws: 489.435272
+                  estimated_mw: 7.9204974
+                  estimated_mws: 489.428741
                 }
               }
               dsu_scu {
-                estimated_mw: 7.4047313
-                estimated_mws: 457.561157
-              }
-            }
-          }
-        }
-        """))
-
-  def test_wattson_trace_rails_wo_cpuidle(self):
-    return DiffTestBlueprint(
-        trace=DataPath('wattson_tk4_aot.pb'),
-        query=Metric("wattson_trace_rails"),
-        out=Csv("""
-        wattson_trace_rails {
-          metric_version: 4
-          power_model_version: 1
-          is_crude_estimate: true
-          period_info {
-            period_id: 1
-            period_dur: 16532191699
-            cpu_subsystem {
-              estimated_mw: 94.580833
-              estimated_mws: 1563.628418
-              policy0 {
-                estimated_mw: 48.416279
-                estimated_mws: 800.427185
-                cpu0 {
-                  estimated_mw: 11.371411
-                  estimated_mws: 187.994354
-                }
-                cpu1 {
-                  estimated_mw: 12.886018
-                  estimated_mws: 213.034119
-                }
-                cpu2 {
-                  estimated_mw: 12.652553
-                  estimated_mws: 209.174423
-                }
-                cpu3 {
-                  estimated_mw: 11.506296
-                  estimated_mws: 190.224289
-                }
-              }
-              policy4 {
-                estimated_mw: 22.661949
-                estimated_mws: 374.651703
-                cpu4 {
-                  estimated_mw: 9.433892
-                  estimated_mws: 155.962921
-                }
-                cpu5 {
-                  estimated_mw: 6.5253134
-                  estimated_mws: 107.877731
-                }
-                cpu6 {
-                  estimated_mw: 6.702744
-                  estimated_mws: 110.811043
-                }
-              }
-              policy7 {
-                estimated_mw: 19.993582
-                estimated_mws: 330.537750
-                cpu7 {
-                  estimated_mw: 19.993582
-                  estimated_mws: 330.537750
-                }
-              }
-              dsu_scu {
-                estimated_mw: 3.509021
-                estimated_mws: 58.011806
+                estimated_mw: 7.404684
+                estimated_mws: 457.555267
               }
             }
           }
@@ -587,36 +517,35 @@ class AndroidMetrics(TestSuite):
         wattson_markers_rails {
           metric_version: 4
           power_model_version: 1
-          is_crude_estimate: false
           period_info {
             period_id: 1
-            period_dur: 2031888905
+            period_dur: 2031871358
             cpu_subsystem {
-              estimated_mw: 46.541107
-              estimated_mws: 94.566360
+              estimated_mw: 46.540943
+              estimated_mws: 94.565208
               policy0 {
-                estimated_mw: 34.037655
-                estimated_mws: 69.160736
+                estimated_mw: 34.037483
+                estimated_mws: 69.159790
                 cpu0 {
-                  estimated_mw: 14.416669
-                  estimated_mws: 29.293070
+                  estimated_mw: 14.416655
+                  estimated_mws: 29.292788
                 }
                 cpu1 {
-                  estimated_mw: 6.641506
-                  estimated_mws: 13.494802
+                  estimated_mw: 6.641429
+                  estimated_mws: 13.494529
                 }
                 cpu2 {
-                  estimated_mw: 8.134805
-                  estimated_mws: 16.529020
+                  estimated_mw: 8.134797
+                  estimated_mws: 16.528862
                 }
                 cpu3 {
-                  estimated_mw: 4.844675
-                  estimated_mws: 9.843842
+                  estimated_mw: 4.8446035
+                  estimated_mws: 9.843612
                 }
               }
               dsu_scu {
-                estimated_mw: 12.503453
-                estimated_mws: 25.405626
+                estimated_mw: 12.503458
+                estimated_mws: 25.405418
               }
             }
           }

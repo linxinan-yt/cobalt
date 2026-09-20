@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 ps{
     units{
         acceleration{
@@ -294,18 +294,8 @@ ps{
                 one{"{0} لسيزه"}
                 other{"{0} لسيزې"}
             }
-            hour{
-                one{"{0} ساعت"}
-                other{"{0} h"}
-                per{"{0} په ساعت"}
-            }
             microsecond{
                 dnam{"مايکرو ثانيې"}
-            }
-            millisecond{
-                dnam{"ملی ثانیې"}
-                one{"{0} ملی ثانیه"}
-                other{"{0} ملی ثانیې"}
             }
             minute{
                 one{"{0} دقیقه"}
@@ -319,22 +309,16 @@ ps{
             nanosecond{
                 dnam{"نينو ثانيې"}
             }
-            night{
-                dnam{"شپي"}
-                one{"{0}/شپه"}
-                other{"{0}/شپه"}
-                per{"{0}/شپه"}
-            }
             quarter{
                 dnam{"ربعه"}
             }
             second{
-                one{"{0} ثانیه"}
+                one{"{0} s"}
                 other{"{0} ثانیې"}
                 per{"{0} هره ثانیه"}
             }
             week{
-                one{"{0} اونۍ"}
+                one{"اونۍ"}
                 other{"{0} اونۍ"}
                 per{"{0} په هره اونۍ کې"}
             }
@@ -928,11 +912,6 @@ ps{
         }
     }
     unitsNarrow{
-        concentr{
-            portion-per-1e9{
-                dnam{"p/b"}
-            }
-        }
         consumption{
             mile-per-gallon-imperial{
                 dnam{"mpg UK"}
@@ -950,11 +929,12 @@ ps{
                 one{"{0} ورځ"}
                 other{"{0}d"}
             }
-            hour{
-                dnam{"ساعت"}
+            decade{
+                one{"{0} لسیز"}
+                other{"{0} لسیز"}
             }
-            microsecond{
-                dnam{"μsec"}
+            hour{
+                dnam{"hr"}
             }
             minute{
                 dnam{"دقیق"}
@@ -966,12 +946,6 @@ ps{
                 one{"{0} m"}
                 other{"{0} m"}
             }
-            night{
-                dnam{"شپي"}
-                one{"{0}/شپه"}
-                other{"{0}/شپه"}
-                per{"{0}/شپه"}
-            }
             second{
                 one{"{0} s"}
                 other{"{0} s"}
@@ -981,7 +955,7 @@ ps{
                 other{"{0} w"}
             }
             year{
-                dnam{"کال"}
+                dnam{"yr"}
                 one{"{0} y"}
                 other{"{0} y"}
             }
@@ -1183,9 +1157,6 @@ ps{
             permyriad{
                 dnam{"زرمه"}
             }
-            portion-per-1e9{
-                dnam{"p/b"}
-            }
         }
         consumption{
             mile-per-gallon-imperial{
@@ -1242,9 +1213,6 @@ ps{
             hour{
                 dnam{"ساعتونه"}
             }
-            microsecond{
-                dnam{"μsecs"}
-            }
             minute{
                 dnam{"دقيقې"}
                 one{"{0} دقیقه"}
@@ -1255,12 +1223,6 @@ ps{
                 dnam{"مياشتې"}
                 one{"{0} m"}
                 other{"{0} mths"}
-            }
-            night{
-                dnam{"شپي"}
-                one{"{0}/شپه"}
-                other{"{0}/شپه"}
-                per{"{0}/شپه"}
             }
             second{
                 dnam{"ثانيې"}
@@ -1327,10 +1289,6 @@ ps{
             }
             dot-per-centimeter{
                 dnam{"dpcm"}
-            }
-            dot-per-inch{
-                one{"{0} ppi"}
-                other{"{0} dpi"}
             }
         }
         length{

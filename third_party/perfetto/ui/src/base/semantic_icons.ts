@@ -40,6 +40,7 @@ export class Icons {
   static readonly Star = 'star';
   static readonly ChangeTab = 'tab';
   static readonly Crashed = 'warning';
+  static readonly Chart = 'bar_chart';
   static readonly Change = 'change_circle';
   static readonly GoTo = 'arrow_forward';
   static readonly ContextMenuAlt = 'more_vert';
@@ -50,7 +51,6 @@ export class Icons {
   static readonly Check = 'check';
   static readonly Search = 'search';
   static readonly Save = 'save';
-  static readonly Undo = 'undo';
 
   // Page control
   static readonly NextPage = 'chevron_right';
@@ -63,12 +63,6 @@ export class Icons {
   static readonly SortDesc = 'arrow_downward';
   static readonly ResetState = 'restart_alt';
   static readonly Remove = 'clear';
-
-  // Data analysis
-  static readonly Analyze = 'analytics';
-  static readonly Chart = 'bar_chart';
-  static readonly Pivot = 'pivot_table_chart';
-  static readonly ApplyFunction = 'function';
 
   static readonly Play = 'play_arrow';
   static readonly Edit = 'edit';

@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 pt{
     units{
         acceleration{
@@ -187,7 +187,6 @@ pt{
             }
             milligram-ofglucose-per-deciliter{
                 dnam{"miligramas por decilitro"}
-                gender{"masculine"}
                 one{"{0} miligrama por decilitro"}
                 other{"{0} miligramas por decilitro"}
             }
@@ -223,12 +222,6 @@ pt{
                 gender{"masculine"}
                 one{"{0} ponto base"}
                 other{"{0} pontos base"}
-            }
-            portion-per-1e9{
-                dnam{"partes por bilhão"}
-                gender{"feminine"}
-                one{"{0} parte por bilhão"}
-                other{"{0} partes por bilhão"}
             }
         }
         consumption{
@@ -385,13 +378,6 @@ pt{
                 gender{"masculine"}
                 one{"{0} nanossegundo"}
                 other{"{0} nanossegundos"}
-            }
-            night{
-                dnam{"noites"}
-                gender{"feminine"}
-                one{"{0} noite"}
-                other{"{0} noites"}
-                per{"{0} por noite"}
             }
             quarter{
                 dnam{"trimestre"}
@@ -687,7 +673,6 @@ pt{
             }
             point{
                 dnam{"pontos tipográficos"}
-                gender{"masculine"}
                 one{"{0} ponto tipográfico"}
                 other{"{0} pontos"}
             }
@@ -886,7 +871,6 @@ pt{
             }
             millimeter-ofhg{
                 dnam{"milímetros de mercúrio"}
-                gender{"masculine"}
                 one{"{0} milímetro de mercúrio"}
                 other{"{0} milímetros de mercúrio"}
             }
@@ -905,7 +889,6 @@ pt{
         speed{
             beaufort{
                 dnam{"Beaufort"}
-                gender{"masculine"}
                 one{"{0} Beaufort"}
                 other{"{0} Beaufort"}
             }
@@ -917,12 +900,6 @@ pt{
             }
             knot{
                 dnam{"nós"}
-            }
-            light-speed{
-                dnam{"luz"}
-                gender{"feminine"}
-                one{"{0} luz"}
-                other{"{0} luzes"}
             }
             meter-per-second{
                 dnam{"metros por segundo"}
@@ -1292,12 +1269,6 @@ pt{
             month{
                 dnam{"mês"}
             }
-            night{
-                dnam{"noites"}
-                one{"{0} noite"}
-                other{"{0} noites"}
-                per{"{0}/noite"}
-            }
             week{
                 dnam{"sem."}
             }
@@ -1444,11 +1415,6 @@ pt{
                 one{"{0}km/h"}
                 other{"{0}km/h"}
             }
-            light-speed{
-                dnam{"luz"}
-                one{"{0} luz"}
-                other{"{0} luzes"}
-            }
             meter-per-second{
                 dnam{"m/s"}
             }
@@ -1590,9 +1556,6 @@ pt{
             permyriad{
                 dnam{"ponto base"}
             }
-            portion-per-1e9{
-                dnam{"partes/bilhão"}
-            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1688,12 +1651,6 @@ pt{
                 one{"{0} mês"}
                 other{"{0} meses"}
                 per{"{0}/mês"}
-            }
-            night{
-                dnam{"noites"}
-                one{"{0} noite"}
-                other{"{0} noites"}
-                per{"{0}/noite"}
             }
             quarter{
                 dnam{"trim."}
@@ -1912,11 +1869,6 @@ pt{
                 dnam{"nó"}
                 one{"{0} nó"}
                 other{"{0} nós"}
-            }
-            light-speed{
-                dnam{"luz"}
-                one{"{0} luz"}
-                other{"{0} luzes"}
             }
             meter-per-second{
                 dnam{"metros/seg"}

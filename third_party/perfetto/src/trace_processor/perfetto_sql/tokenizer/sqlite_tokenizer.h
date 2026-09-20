@@ -69,7 +69,7 @@ class SqliteTokenizer {
   // Returns the next SQL token.
   Token Next();
 
-  // Returns the next SQL token which is not of type TK_SPACE or TK_COMMENT.
+  // Returns the next SQL token which is not of type TK_SPACE.
   Token NextNonWhitespace();
 
   // Returns the next SQL token which is terminal.

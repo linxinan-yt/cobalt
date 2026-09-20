@@ -122,7 +122,7 @@ const char goodLatinUTF8[]    = {0x75, 0x77, 0};
 
 // Test open from source rules.
 // Run this in isolation to verify initialization.
-static void TestOpenFromSource(void) {
+static void TestOpenFromSource() {
     // No TEST_SETUP because that calls uspoof_open().
     UErrorCode status = U_ZERO_ERROR;
     const char *dataSrcDir;

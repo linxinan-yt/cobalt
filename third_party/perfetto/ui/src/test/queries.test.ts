@@ -98,11 +98,7 @@ test('query page', async () => {
     .nth(1)
     .dblclick();
   await pth.waitForPerfettoIdle();
-
-  // Get all rows, but filter for *only* those that have a 'cell' inside to
-  // avoid counting the header row.
-  const dataRows = page.getByRole('row').filter({
-    has: page.getByRole('cell'),
-  });
-  expect(await dataRows.count()).toEqual(2);
+  expect(
+    await page.locator('.pf-query-page .pf-data-grid tbody tr').count(),
+  ).toEqual(2);
 });

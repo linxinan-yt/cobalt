@@ -5296,8 +5296,6 @@ TEST_P(PerfettoApiTest, NoFlushFlag) {
   dsd_flush.set_track_event_descriptor_raw("DESC_");
   UpdateDataSource<FlushDataSource>(dsd_flush);
 
-  perfetto::test::SyncProducers();
-
   result = tracing_session->QueryServiceStateBlocking();
   ASSERT_TRUE(result.success);
   ASSERT_TRUE(state.ParseFromArray(result.service_state_data.data(),
@@ -6200,7 +6198,6 @@ TEST_P(PerfettoApiTest, TrackEventObserver_AsyncStop) {
     ~Observer() override = default;
 
     void OnStop(const perfetto::DataSourceBase::StopArgs& args) {
-      std::lock_guard<std::mutex> lock(mutex_);
       async_stop_closure_ = args.HandleStopAsynchronously();
     }
 
@@ -6209,16 +6206,10 @@ TEST_P(PerfettoApiTest, TrackEventObserver_AsyncStop) {
       EXPECT_TRUE(TRACE_EVENT_CATEGORY_ENABLED("foo"));
       TRACE_EVENT_INSTANT("foo", "FinalEvent");
       perfetto::TrackEvent::Flush();
-      std::function<void()> closure;
-      {
-        std::lock_guard<std::mutex> lock(mutex_);
-        closure = async_stop_closure_;
-      }
-      closure();
+      async_stop_closure_();
     }
 
    private:
-    std::mutex mutex_;
     std::function<void()> async_stop_closure_;
   };
 

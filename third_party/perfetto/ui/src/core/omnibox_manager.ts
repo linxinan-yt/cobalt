@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import {DisposableStack} from '../base/disposable_stack';
 import {OmniboxManager, PromptChoices} from '../public/omnibox';
 import {raf} from './raf_scheduler';
 
@@ -209,15 +208,13 @@ export class OmniboxManagerImpl implements OmniboxManager {
     this._statusMessageContainer = {};
   }
 
-  disablePrompts(): Disposable {
-    const trash = new DisposableStack();
-    if (this._promptsDisabled) {
-      return trash;
-    }
-    trash.defer(() => (this._promptsDisabled = false));
+  disablePrompts(): void {
     this._promptsDisabled = true;
     this.rejectPendingPrompt();
-    return trash;
+  }
+
+  enablePrompts(): void {
+    this._promptsDisabled = false;
   }
 
   private rejectPendingPrompt() {

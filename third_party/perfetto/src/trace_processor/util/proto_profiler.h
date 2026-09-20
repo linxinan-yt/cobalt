@@ -24,7 +24,6 @@
 #include <string>
 #include <vector>
 
-#include "perfetto/ext/base/murmur_hash.h"
 #include "perfetto/protozero/field.h"
 #include "perfetto/protozero/proto_decoder.h"
 #include "src/trace_processor/util/descriptors.h"
@@ -50,30 +49,25 @@ class SizeProfileComputer {
       return field_idx == other.field_idx && type == other.type;
     }
 
-    template <typename H>
-    friend H PerfettoHashValue(H hasher, const Field& f) {
-      return H::Combine(std::move(hasher), f.field_idx, f.type);
-    }
-
     uint32_t field_idx;
     uint32_t type;
     const FieldDescriptor* field_descriptor;
     const ProtoDescriptor* proto_descriptor;
   };
 
-  struct FieldPath {
-    std::vector<Field> fields;
+  using FieldPath = std::vector<Field>;
+  struct FieldPathHasher {
+    using argument_type = FieldPath;
+    using result_type = size_t;
 
-    bool operator==(const FieldPath& other) const {
-      return fields == other.fields;
-    }
-
-    template <typename H>
-    friend H PerfettoHashValue(H hasher, const FieldPath& p) {
-      for (const auto& field : p.fields) {
-        hasher = H::Combine(std::move(hasher), field);
+    result_type operator()(const argument_type& p) const {
+      size_t h = 0u;
+      for (auto v : p) {
+        h += (std::hash<uint32_t>{}(v.field_idx) +
+              std::hash<uint32_t>{}(v.type));
+        h = (h << 5) - h;
       }
-      return hasher;
+      return h;
     }
   };
 

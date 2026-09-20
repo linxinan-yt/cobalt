@@ -72,7 +72,7 @@ export function loadAndroidBugToolInfo(): Promise<TraceFromBuganizer> {
               file: files[0],
             });
           } else {
-            throw new Error('ABT: Got no attachments from extension');
+            throw new Error('Got no attachements from extension');
           }
           break;
         default:

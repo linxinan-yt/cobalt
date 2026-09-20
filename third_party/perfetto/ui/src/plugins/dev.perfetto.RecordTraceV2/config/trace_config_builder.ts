@@ -44,7 +44,7 @@ export class TraceConfigBuilder {
 
   // It has get-or-create semantics.
   addDataSource(name: string, targetBufId?: string): protos.IDataSourceConfig {
-    return getOrCreate(this.dataSources, name + targetBufId, () => ({
+    return getOrCreate(this.dataSources, name, () => ({
       targetBufId,
       config: {name},
     })).config;

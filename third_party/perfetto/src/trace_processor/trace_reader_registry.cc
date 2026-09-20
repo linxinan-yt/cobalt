@@ -43,7 +43,6 @@ bool RequiresZlibSupport(TraceType type) {
     case kNinjaLogTraceType:
     case kSystraceTraceType:
     case kPerfDataTraceType:
-    case kPprofTraceType:
     case kInstrumentsXmlTraceType:
     case kUnknownTraceType:
     case kJsonTraceType:
@@ -56,7 +55,6 @@ bool RequiresZlibSupport(TraceType type) {
     case kArtMethodTraceType:
     case kArtHprofTraceType:
     case kPerfTextTraceType:
-    case kSimpleperfProtoTraceType:
     case kTarTraceType:
       return false;
   }

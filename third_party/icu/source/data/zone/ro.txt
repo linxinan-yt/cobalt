@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 ro{
     zoneStrings{
         "Africa:Addis_Ababa"{
@@ -18,11 +18,17 @@ ro{
         "Africa:Sao_Tome"{
             ec{"Sao Tomé"}
         }
+        "America:Asuncion"{
+            ec{"Asunción"}
+        }
         "America:Bahia_Banderas"{
             ec{"Bahia Banderas"}
         }
         "America:Cancun"{
             ec{"Cancun"}
+        }
+        "America:Curacao"{
+            ec{"Curaçao"}
         }
         "America:Guadeloupe"{
             ec{"Guadelupa"}
@@ -44,6 +50,9 @@ ro{
         }
         "America:North_Dakota:New_Salem"{
             ec{"New Salem, Dakota de Nord"}
+        }
+        "America:Santa_Isabel"{
+            ec{"Santa Isabel"}
         }
         "America:St_Barthelemy"{
             ec{"Saint Barthélemy"}
@@ -168,6 +177,9 @@ ro{
         "Atlantic:St_Helena"{
             ec{"Sf. Elena"}
         }
+        "Australia:Currie"{
+            ec{"Currie"}
+        }
         "Etc:UTC"{
             ls{"Timpul universal coordonat"}
         }
@@ -235,11 +247,17 @@ ro{
         "Europe:Ulyanovsk"{
             ec{"Ulianovsk"}
         }
+        "Europe:Uzhgorod"{
+            ec{"Ujhorod"}
+        }
         "Europe:Vienna"{
             ec{"Viena"}
         }
         "Europe:Warsaw"{
             ec{"Varșovia"}
+        }
+        "Europe:Zaporozhye"{
+            ec{"Zaporoje"}
         }
         "Europe:Zurich"{
             ec{"Zürich"}
@@ -249,6 +267,9 @@ ro{
         }
         "Indian:Maldives"{
             ec{"Maldive"}
+        }
+        "Indian:Reunion"{
+            ec{"Réunion"}
         }
         "Pacific:Easter"{
             ec{"Insula Paștelui"}
@@ -439,6 +460,11 @@ ro{
             lg{"Ora Chinei"}
             ls{"Ora standard a Chinei"}
         }
+        "meta:Choibalsan"{
+            ld{"Ora de vară din Choibalsan"}
+            lg{"Ora din Choibalsan"}
+            ls{"Ora standard din Choibalsan"}
+        }
         "meta:Christmas"{
             ls{"Ora din Insula Christmas"}
         }
@@ -612,9 +638,6 @@ ro{
             lg{"Ora din Petropavlovsk-Kamciațki"}
             ls{"Ora standard din Petropavlovsk-Kamciațki"}
         }
-        "meta:Kazakhstan"{
-            ls{"Ora din Kazahstan"}
-        }
         "meta:Kazakhstan_Eastern"{
             ls{"Ora din Kazahstanul de Est"}
         }
@@ -645,6 +668,9 @@ ro{
             lg{"Ora din Lord Howe"}
             ls{"Ora standard din Lord Howe"}
         }
+        "meta:Macquarie"{
+            ls{"Ora din Macquarie"}
+        }
         "meta:Magadan"{
             ld{"Ora de vară din Magadan"}
             lg{"Ora din Magadan"}
@@ -669,6 +695,11 @@ ro{
         }
         "meta:Mawson"{
             ls{"Ora din Mawson"}
+        }
+        "meta:Mexico_Northwest"{
+            ld{"Ora de vară a Mexicului de nord-vest"}
+            lg{"Ora Mexicului de nord-vest"}
+            ls{"Ora standard a Mexicului de nord-vest"}
         }
         "meta:Mexico_Pacific"{
             ld{"Ora de vară a zonei Pacific mexicane"}

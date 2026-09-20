@@ -16,7 +16,7 @@ import m from 'mithril';
 import {findRef} from '../../base/dom_utils';
 import {assertUnreachable} from '../../base/logging';
 import {Trace} from '../../public/trace';
-import {Form, FormLabel, FormSection} from '../../widgets/form';
+import {Form, FormLabel} from '../../widgets/form';
 import {Select} from '../../widgets/select';
 import {TextInput} from '../../widgets/text_input';
 import {addDebugCounterTrack, addDebugSliceTrack} from './debug_tracks';
@@ -34,7 +34,7 @@ const TRACK_NAME_FIELD_REF = 'TRACK_NAME_FIELD';
 function chooseDefaultColumn(
   columns: ReadonlyArray<string>,
   name: string,
-): string | undefined {
+): string {
   // Search for exact match
   const exactMatch = columns.find((col) => col === name);
   if (exactMatch) return exactMatch;
@@ -48,7 +48,7 @@ function chooseDefaultColumn(
     return '0';
   }
 
-  return undefined;
+  return '';
 }
 
 type TrackType = 'slice' | 'counter';
@@ -68,7 +68,7 @@ export class AddDebugTrackMenu
 {
   private trackName = '';
   private trackType: TrackType = 'slice';
-  private readonly options: Partial<ConfigurationOptions>;
+  private readonly options: ConfigurationOptions;
 
   constructor({attrs}: m.Vnode<AddDebugTrackMenuAttrs>) {
     const columns = attrs.availableColumns;
@@ -80,7 +80,7 @@ export class AddDebugTrackMenu
       name: chooseDefaultColumn(columns, 'name'),
       value: chooseDefaultColumn(columns, 'value'),
       argSetId: chooseDefaultColumn(columns, 'arg_set_id'),
-      pivot: undefined,
+      pivot: '',
     };
   }
 
@@ -103,7 +103,6 @@ export class AddDebugTrackMenu
       {
         onSubmit: () => this.createTracks(attrs),
         submitLabel: 'Add Track',
-        cancelLabel: 'Cancel',
       },
       m(FormLabel, {for: 'track_name'}, 'Track name'),
       m(
@@ -119,17 +118,12 @@ export class AddDebugTrackMenu
             if (!e.target) return;
             this.trackName = (e.target as HTMLInputElement).value;
           },
-          placeholder: 'Enter track name...',
         },
         this.trackName,
       ),
       m(FormLabel, {for: 'track_type'}, 'Track type'),
       this.renderTrackTypeSelect(),
-      m(
-        FormSection,
-        {label: 'Column mapping'},
-        this.renderOptions(attrs.availableColumns),
-      ),
+      this.renderOptions(attrs.availableColumns),
     );
   }
 
@@ -169,92 +163,44 @@ export class AddDebugTrackMenu
 
   private renderSliceOptions(availableColumns: ReadonlyArray<string>) {
     return [
-      this.renderFormSelectInput('Timestamp column', 'ts', availableColumns),
-      this.renderFormSelectInput('Duration column', 'dur', [
-        '0',
+      this.renderFormSelectInput('ts', 'ts', availableColumns),
+      this.renderFormSelectInput('dur', 'dur', ['0', ...availableColumns]),
+      this.renderFormSelectInput('name', 'name', availableColumns),
+      this.renderFormSelectInput('arg_set_id', 'argSetId', [
+        '',
         ...availableColumns,
       ]),
-      this.renderFormSelectInput('Name column', 'name', availableColumns),
-      this.renderFormSelectInput(
-        'Arguments ID column (optional)',
-        'argSetId',
-        availableColumns,
-        {
-          optional: true,
-        },
-      ),
-      this.renderFormSelectInput(
-        'Pivot column (optional)',
-        'pivot',
-        availableColumns,
-        {
-          optional: true,
-        },
-      ),
+      this.renderFormSelectInput('pivot', 'pivot', ['', ...availableColumns]),
     ];
   }
 
   private renderCounterTrackOptions(availableColumns: ReadonlyArray<string>) {
     return [
-      this.renderFormSelectInput('Timestamp column', 'ts', availableColumns),
-      this.renderFormSelectInput('Value column', 'value', availableColumns),
-      this.renderFormSelectInput(
-        'Pivot column (optional)',
-        'pivot',
-        availableColumns,
-        {
-          optional: true,
-        },
-      ),
+      this.renderFormSelectInput('ts', 'ts', availableColumns),
+      this.renderFormSelectInput('value', 'value', availableColumns),
+      this.renderFormSelectInput('pivot', 'pivot', ['', ...availableColumns]),
     ];
   }
 
   private renderFormSelectInput<K extends keyof ConfigurationOptions>(
-    label: m.Children,
+    name: string,
     optionKey: K,
     options: ReadonlyArray<string>,
-    opts: Partial<{optional: boolean}> = {},
   ) {
-    const {optional} = opts;
     return [
-      m(FormLabel, {for: optionKey}, label),
+      m(FormLabel, {for: name}, name),
       m(
         Select,
         {
-          id: optionKey,
-          required: !optional,
+          id: name,
           oninput: (e: Event) => {
             if (!e.target) return;
-            const newValue = (e.target as HTMLSelectElement).value;
-            if (newValue === '') {
-              delete this.options[optionKey];
-            } else {
-              this.options[optionKey] = newValue;
-            }
+            this.options[optionKey] = (e.target as HTMLSelectElement).value;
           },
+          value: this.options[optionKey],
         },
-        optional
-          ? m(
-              'option',
-              {selected: this.options[optionKey] === undefined, value: ''},
-              '--None--',
-            )
-          : m(
-              'option',
-              {
-                selected: this.options[optionKey] === undefined,
-                value: '',
-                hidden: true,
-                disabled: true,
-              },
-              'Select a column...',
-            ),
         options.map((opt) =>
-          m(
-            'option',
-            {selected: this.options[optionKey] === opt, value: opt},
-            opt,
-          ),
+          m('option', {selected: this.options[optionKey] === opt}, opt),
         ),
       ),
     ];
@@ -276,7 +222,7 @@ export class AddDebugTrackMenu
             name: this.options.name,
           },
           argSetIdColumn: this.options.argSetId,
-          rawColumns: attrs.availableColumns,
+          argColumns: attrs.availableColumns,
           pivotOn: this.options.pivot,
         });
         break;

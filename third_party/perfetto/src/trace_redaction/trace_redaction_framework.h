@@ -29,7 +29,6 @@
 #include "perfetto/base/status.h"
 #include "src/trace_redaction/frame_cookie.h"
 #include "src/trace_redaction/process_thread_timeline.h"
-#include "src/trace_redaction/redactor_clock_converter.h"
 
 #include "protos/perfetto/trace/trace_packet.pbzero.h"
 
@@ -357,8 +356,6 @@ class Context {
   std::optional<SystemInfo> system_info;
 
   std::unique_ptr<SyntheticProcess> synthetic_process;
-
-  RedactorClockConverter clock_converter;
 };
 
 // Extracts low-level data from the trace and writes it into the context. The

@@ -14,6 +14,7 @@
 #include "dayperiodrules.h"
 
 #include "unicode/ures.h"
+#include "bytesinkutil.h"
 #include "charstr.h"
 #include "cstring.h"
 #include "ucln_in.h"
@@ -360,7 +361,9 @@ const DayPeriodRules *DayPeriodRules::getInstance(const Locale &locale, UErrorCo
     while (*name != '\0') {
         ruleSetNum = uhash_geti(data->localeToRuleSetNumMap, name);
         if (ruleSetNum == 0) {
-            CharString parent = ulocimp_getParent(name, errorCode);
+            CharString parent;
+            CharStringByteSink sink(&parent);
+            ulocimp_getParent(name, sink, &errorCode);
             if (parent.isEmpty()) {
                 // Saves a lookup in the hash table.
                 break;

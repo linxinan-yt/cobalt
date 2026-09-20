@@ -125,6 +125,8 @@ struct ConfigHelper {
   ConfigHelper(scoped_refptr<MockAudioMixer> audio_mixer,
                bool use_null_audio_processing)
       : audio_mixer_(audio_mixer) {
+    using ::testing::Invoke;
+
     AudioState::Config config;
     config.audio_mixer = audio_mixer_;
     config.audio_processing =
@@ -144,9 +146,9 @@ struct ConfigHelper {
     EXPECT_CALL(*channel_receive_, ResetReceiverCongestionControlObjects())
         .Times(1);
     EXPECT_CALL(*channel_receive_, SetReceiveCodecs(_))
-        .WillRepeatedly([](const std::map<int, SdpAudioFormat>& codecs) {
+        .WillRepeatedly(Invoke([](const std::map<int, SdpAudioFormat>& codecs) {
           EXPECT_THAT(codecs, ::testing::IsEmpty());
-        });
+        }));
 
     stream_config_.rtp.local_ssrc = kLocalSsrc;
     stream_config_.rtp.remote_ssrc = kRemoteSsrc;

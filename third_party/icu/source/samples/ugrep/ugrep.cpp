@@ -52,10 +52,11 @@ UBool      displayLineNum  = false;
 const char *fileName;      
 int         fileLen;              // Length, in UTF-16 Code Units.  
 
-char16_t *ucharBuf = nullptr; // Buffer, holds converted file.  (Simple minded program, always reads
-                              //   the whole file at once.
+char16_t   *ucharBuf = 0;         // Buffer, holds converted file.  (Simple minded program, always reads
+                                  //   the whole file at once.
 
-char *charBuf = nullptr; // Buffer, for original, unconverted file data.
+char       *charBuf = 0;          // Buffer, for original, unconverted file data.
+
 
 //
 //  Info regarding the line currently being processed
@@ -68,7 +69,7 @@ int      lineNum;
 //  Converter, used on output to convert Unicode data back to char *
 //             so that it will display in non-Unicode terminal windows.
 //
-UConverter *outConverter = nullptr;
+UConverter  *outConverter = 0;
 
 //
 //  Function forward declarations
@@ -277,7 +278,7 @@ void readFile(const char *name) {
     //  Open the file and determine its size.
     //
     FILE *file = fopen(name, "rb");
-    if (file == nullptr) {
+    if (file == 0 ) {
         fprintf(stderr, "ugrep: Could not open file \"%s\"\n", fileName);
         return;
     }
@@ -289,7 +290,7 @@ void readFile(const char *name) {
     //
     //   Read in the file
     //
-    charBuf = static_cast<char*>(realloc(charBuf, rawFileLen + 1)); // Need error checking...
+    charBuf    = (char *)realloc(charBuf, rawFileLen+1);   // Need error checking...
     int t = static_cast<int>(fread(charBuf, 1, rawFileLen, file));
     if (t != rawFileLen)  {
         fprintf(stderr, "Error reading file \"%s\"\n", fileName);
@@ -343,7 +344,7 @@ void readFile(const char *name) {
     };
     
     status = U_ZERO_ERROR;
-    ucharBuf = static_cast<char16_t*>(realloc(ucharBuf, (destCap + 1) * sizeof(char16_t)));
+    ucharBuf = (char16_t *)realloc(ucharBuf, (destCap+1) * sizeof(char16_t));
     ucnv_toUChars(conv,
         ucharBuf,           //  dest,
         destCap+1,
@@ -424,7 +425,7 @@ void printMatch() {
     UErrorCode         status       = U_ZERO_ERROR;
 
     // If we haven't already created a converter for output, do it now.
-    if (outConverter == nullptr) {
+    if (outConverter == 0) {
         outConverter = ucnv_open(nullptr, &status);
         if (U_FAILURE(status)) {
             fprintf(stderr, "ugrep:  Error opening default converter: \"%s\"\n",

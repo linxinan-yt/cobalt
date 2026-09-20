@@ -89,9 +89,12 @@ export class AggregationPanel
 
   private renderCell(value: SqlValue, colName: string, formatHint?: string) {
     if (formatHint === 'DURATION_NS' && typeof value === 'bigint') {
-      return Duration.humanise(value);
+      return m('span.pf-data-grid__cell--number', Duration.humanise(value));
     } else if (formatHint === 'PERCENT' && typeof value === 'number') {
-      return `${(value * 100).toFixed(2)}%`;
+      return m(
+        'span.pf-data-grid__cell--number',
+        `${(value * 100).toFixed(2)}%`,
+      );
     } else {
       return renderCell(value, colName);
     }

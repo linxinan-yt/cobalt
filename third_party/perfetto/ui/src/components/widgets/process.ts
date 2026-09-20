@@ -36,7 +36,7 @@ import {asUpid} from '../sql_utils/core_types';
 export function showProcessDetailsMenuItem(
   trace: Trace,
   upid: Upid,
-  pid?: bigint,
+  pid?: number,
 ): m.Children {
   return m(MenuItem, {
     icon: Icons.ExternalLink,
@@ -60,7 +60,7 @@ export function processRefMenuItems(
   info: {
     upid: Upid;
     name?: string;
-    pid?: bigint;
+    pid?: number;
   },
 ): m.Children {
   // We capture a copy to be able to pass it across async boundary to `onclick`.

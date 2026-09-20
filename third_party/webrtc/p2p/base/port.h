@@ -43,6 +43,7 @@
 #include "rtc_base/network.h"
 #include "rtc_base/network/received_packet.h"
 #include "rtc_base/network/sent_packet.h"
+#include "rtc_base/sigslot_trampoline.h"
 #include "rtc_base/socket_address.h"
 #include "rtc_base/system/rtc_export.h"
 #include "rtc_base/third_party/sigslot/sigslot.h"
@@ -263,9 +264,10 @@ class RTC_EXPORT Port : public PortInterface, public sigslot::has_slots<> {
   // are discovered that belong to port SignalAddressReady is fired.
   void SubscribeCandidateReadyCallback(
       absl::AnyInvocable<void(Port*, const Candidate&)> callback);
-  void NotifyCandidateReady(Port* port, const Candidate& candidate) {
-    SignalCandidateReady(port, candidate);
-  }
+  // Downstream code uses this signal. We will continue firing it along with the
+  // callback list. The signal can be deleted once all downstream usages are
+  // replaced with the new CallbackList implementation.
+  sigslot::signal2<Port*, const Candidate&> SignalCandidateReady;
   // Provides all of the above information in one handy object.
   const std::vector<Candidate>& Candidates() const override;
   // Fired when candidate discovery failed using certain server.
@@ -276,7 +278,7 @@ class RTC_EXPORT Port : public PortInterface, public sigslot::has_slots<> {
   // SignalPortComplete is sent when port completes the task of candidates
   // allocation.
   void SubscribePortComplete(absl::AnyInvocable<void(Port*)> callback);
-  void NotifyPortComplete(Port* port) { SignalPortComplete(port); }
+  sigslot::signal1<Port*> SignalPortComplete;
 
   // This signal sent when port fails to allocate candidates and this port
   // can't be used in establishing the connections. When port is in shared mode
@@ -284,7 +286,10 @@ class RTC_EXPORT Port : public PortInterface, public sigslot::has_slots<> {
   // this signal as other candidates might be usefull in establishing the
   // connection.
   void SubscribePortError(absl::AnyInvocable<void(Port*)> callback);
-  void NotifyPortError(Port* port) { SignalPortError(port); }
+  // Downstream code uses this signal. We will continue firing it along with the
+  // callback list. The signal can be deleted once all downstream usages are
+  // replaced with the new CallbackList implementation.
+  sigslot::signal1<Port*> SignalPortError;
 
   void SubscribePortDestroyed(
       std::function<void(PortInterface*)> callback) override;
@@ -449,6 +454,18 @@ class RTC_EXPORT Port : public PortInterface, public sigslot::has_slots<> {
   // then we will signal the client.
   void OnReadPacket(const ReceivedIpPacket& packet, ProtocolType proto);
 
+  [[deprecated(
+      "Use OnReadPacket(const ReceivedIpPacket& packet, ProtocolType "
+      "proto)")]] void
+  OnReadPacket(const char* data,
+               size_t size,
+               const SocketAddress& addr,
+               ProtocolType proto) {
+    OnReadPacket(ReceivedIpPacket::CreateFromLegacy(
+                     data, size, /*packet_time_us = */ -1, addr),
+                 proto);
+  }
+
   // If the given data comprises a complete and correct STUN message then the
   // return value is true, otherwise false. If the message username corresponds
   // with this port's username fragment, msg will contain the parsed STUN
@@ -581,18 +598,15 @@ class RTC_EXPORT Port : public PortInterface, public sigslot::has_slots<> {
 
   absl::AnyInvocable<void()> role_conflict_callback_ RTC_GUARDED_BY(thread_);
 
-  // Signals and trampolines. These will eventually be removed and replaced
-  // with straight CallbackLists (or simple callbacks).
-  // TODO: https://issues.webrtc.org/42222066 - replace and delete.
-  sigslot::signal2<Port*, const Candidate&> SignalCandidateReady;
-  sigslot::signal1<Port*> SignalPortComplete;
-  // Downstream code uses this signal. We will continue firing it along with the
-  // callback list. The signal can be deleted once all downstream usages are
-  // replaced with the new CallbackList implementation.
-  sigslot::signal1<Port*> SignalPortError;
-
   // Keep as the last member variable.
   WeakPtrFactory<Port> weak_factory_ RTC_GUARDED_BY(thread_);
+
+  SignalTrampoline<PortInterface, &PortInterface::SignalUnknownAddress>
+      unknown_address_trampoline_;
+  SignalTrampoline<PortInterface, &PortInterface::SignalReadPacket>
+      read_packet_trampoline_;
+  SignalTrampoline<PortInterface, &PortInterface::SignalSentPacket>
+      sent_packet_trampoline_;
 };
 
 }  //  namespace webrtc

@@ -26,7 +26,7 @@ interface CalloutAttrs extends HTMLAttrs {
   readonly intent?: Intent;
 
   // Adds a close button to the callout.
-  readonly dismissible?: boolean;
+  readonly dismissable?: boolean;
 
   // A callback to be invoked when the callout's close button is clicked.
   readonly onDismiss?: () => void;
@@ -38,10 +38,18 @@ export class Callout implements m.ClassComponent<CalloutAttrs> {
       icon,
       intent = Intent.None,
       className,
-      dismissible = false,
+      dismissable = false,
       onDismiss,
       ...htmlAttrs
     } = attrs;
+
+    const dismissButton =
+      dismissable &&
+      m(Button, {
+        icon: 'close',
+        onclick: onDismiss,
+        compact: true,
+      });
 
     return m(
       '.pf-callout',
@@ -50,14 +58,8 @@ export class Callout implements m.ClassComponent<CalloutAttrs> {
         ...htmlAttrs,
       },
       icon && m(Icon, {className: 'pf-left-icon', icon}),
-      m('span.pf-callout__content', children),
-      dismissible &&
-        m(Button, {
-          icon: 'close',
-          onclick: onDismiss,
-          compact: true,
-          title: 'Dismiss callout',
-        }),
+      m('span', children),
+      dismissButton,
     );
   }
 }

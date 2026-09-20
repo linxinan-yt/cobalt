@@ -44,7 +44,7 @@ bool SplitValueAndUnit(const std::string& arg, ValueUnit* out) {
 }
 
 bool ConvertValue(const std::string& arg,
-                  const std::vector<UnitMultipler>& units,
+                  std::vector<UnitMultipler> units,
                   uint64_t* out) {
   if (arg.empty()) {
     *out = 0;

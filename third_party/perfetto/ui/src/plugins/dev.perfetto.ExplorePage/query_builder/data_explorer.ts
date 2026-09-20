@@ -14,100 +14,83 @@
 
 import m from 'mithril';
 
+import {Icons} from '../../../base/semantic_icons';
 import {QueryResponse} from '../../../components/query_table/queries';
 import {
   DataGridDataSource,
-  FilterNull,
-  FilterValue,
+  FilterDefinition,
 } from '../../../components/widgets/data_grid/common';
 import {
   DataGrid,
   renderCell,
 } from '../../../components/widgets/data_grid/data_grid';
 import {SqlValue} from '../../../trace_processor/query_result';
-import {Button, ButtonVariant} from '../../../widgets/button';
+import {Button} from '../../../widgets/button';
 import {Callout} from '../../../widgets/callout';
 import {DetailsShell} from '../../../widgets/details_shell';
-import {Spinner} from '../../../widgets/spinner';
-import {Switch} from '../../../widgets/switch';
-import {TextParagraph} from '../../../widgets/text_paragraph';
-import {Query, QueryNode, isAQuery} from '../query_node';
-import {QueryService} from './query_service';
-import {Intent} from '../../../widgets/common';
-import {Icons} from '../../../base/semantic_icons';
 import {MenuItem, PopupMenu} from '../../../widgets/menu';
+import {TextParagraph} from '../../../widgets/text_paragraph';
+import {Query, QueryNode} from '../query_node';
+import {QueryService} from './query_service';
 
 import {findErrors} from './query_builder_utils';
 export interface DataExplorerAttrs {
   readonly queryService: QueryService;
   readonly node: QueryNode;
   readonly query?: Query | Error;
+  readonly executeQuery: boolean;
   readonly response?: QueryResponse;
   readonly dataSource?: DataGridDataSource;
-  readonly isQueryRunning: boolean;
-  readonly isAnalyzing: boolean;
+  readonly onQueryExecuted: (result: {
+    columns: string[];
+    error?: Error;
+    warning?: Error;
+    noDataWarning?: Error;
+  }) => void;
+  readonly onPositionChange: (pos: 'left' | 'right' | 'bottom') => void;
   readonly isFullScreen: boolean;
   readonly onFullScreenToggle: () => void;
-  readonly onExecute: () => void;
   readonly onchange?: () => void;
 }
 
 export class DataExplorer implements m.ClassComponent<DataExplorerAttrs> {
   view({attrs}: m.CVnode<DataExplorerAttrs>) {
     const errors = findErrors(attrs.query, attrs.response);
-    const statusText = this.getStatusText(attrs.query);
+    const statusText = this.getStatusText(attrs.query, attrs.response);
     const message = errors ? `Error: ${errors.message}` : statusText;
 
     return m(
       DetailsShell,
       {
         title: 'Query data',
-        fillHeight: true,
+        fillParent: true,
         buttons: this.renderMenu(attrs),
       },
       this.renderContent(attrs, message),
     );
   }
 
-  private getStatusText(query?: Query | Error): string | undefined {
+  private getStatusText(
+    query?: Query | Error,
+    response?: QueryResponse,
+  ): string | undefined {
     if (query === undefined) {
       return 'No data to display';
+    } else if (response === undefined) {
+      return 'Typing...';
     }
     return undefined;
   }
 
   private renderMenu(attrs: DataExplorerAttrs): m.Children {
-    const autoExecute = attrs.node.state.autoExecute ?? true;
-
-    const runButton =
-      !autoExecute &&
-      m(Button, {
-        label: 'Run Query',
-        icon: 'play_arrow',
-        intent: Intent.Primary,
-        variant: ButtonVariant.Filled,
-        disabled: !isAQuery(attrs.query) || !attrs.node.validate(),
-        onclick: () => attrs.onExecute(),
-      });
-
-    // Show "Queued..." when analyzing (validating query)
-    // Show spinner when actually executing the query
-    const statusIndicator =
-      attrs.isAnalyzing && !attrs.isQueryRunning
-        ? m('span.status-indicator', 'Queued...')
-        : attrs.isQueryRunning
-          ? m(Spinner)
-          : null;
-
-    const autoExecuteSwitch = m(Switch, {
-      label: 'Auto Execute',
-      checked: autoExecute,
-      onchange: (e: Event) => {
-        const target = e.target as HTMLInputElement;
-        attrs.node.state.autoExecute = target.checked;
-        attrs.onchange?.();
-      },
+    const fullScreenButton = m(Button, {
+      label: attrs.isFullScreen ? 'Exit full screen' : 'Full screen',
+      onclick: () => attrs.onFullScreenToggle(),
     });
+
+    if (attrs.isFullScreen) {
+      return fullScreenButton;
+    }
 
     const positionMenu = m(
       PopupMenu,
@@ -118,46 +101,27 @@ export class DataExplorer implements m.ClassComponent<DataExplorerAttrs> {
       },
       [
         m(MenuItem, {
-          label: attrs.isFullScreen ? 'Exit full screen' : 'Full screen',
-          onclick: () => attrs.onFullScreenToggle(),
+          label: 'Left',
+          onclick: () => attrs.onPositionChange('left'),
+        }),
+        m(MenuItem, {
+          label: 'Right',
+          onclick: () => attrs.onPositionChange('right'),
+        }),
+        m(MenuItem, {
+          label: 'Bottom',
+          onclick: () => attrs.onPositionChange('bottom'),
         }),
       ],
     );
 
-    return [runButton, statusIndicator, autoExecuteSwitch, positionMenu];
+    return [fullScreenButton, positionMenu];
   }
 
   private renderContent(
     attrs: DataExplorerAttrs,
     message?: string,
   ): m.Children {
-    // Show validation errors as callouts
-    if (!attrs.node.validate() && attrs.node.state.issues?.queryError) {
-      return m(
-        Callout,
-        {icon: 'info'},
-        attrs.node.state.issues.queryError.message,
-      );
-    }
-
-    // Show spinner overlay when query is running
-    if (attrs.isQueryRunning) {
-      return m(
-        '.pf-data-explorer-empty-state',
-        m(
-          '.pf-exp-query-running-spinner',
-          {
-            style: {
-              fontSize: '64px',
-            },
-          },
-          m(Spinner, {
-            easing: true,
-          }),
-        ),
-      );
-    }
-
     if (message) {
       return m(TextParagraph, {text: message});
     }
@@ -181,30 +145,10 @@ export class DataExplorer implements m.ClassComponent<DataExplorerAttrs> {
           columns: attrs.response.columns.map((c) => ({name: c})),
           data: attrs.dataSource,
           showFiltersInToolbar: true,
-          // We don't actually want the datagrid to display or apply any filters
-          // to the datasource itself, so we define this but fix it as an empty
-          // array.
-          filters: [],
-          onFilterAdd: (filter) => {
-            // These are the filters supported by the explore page currently.
-            const supportedOps = [
-              '=',
-              '!=',
-              '<',
-              '<=',
-              '>',
-              '>=',
-              'glob',
-              'is null',
-              'is not null',
-            ];
-            if (supportedOps.includes(filter.op)) {
-              attrs.node.state.filters = [
-                ...(attrs.node.state.filters ?? []),
-                filter as FilterValue | FilterNull,
-              ];
-              attrs.onchange?.();
-            }
+          filters: attrs.node.state.filters,
+          onFiltersChanged: (filters: ReadonlyArray<FilterDefinition>) => {
+            attrs.node.state.filters = [...filters];
+            attrs.onchange?.();
           },
           cellRenderer: (value: SqlValue, name: string) => {
             return renderCell(value, name);
@@ -212,28 +156,6 @@ export class DataExplorer implements m.ClassComponent<DataExplorerAttrs> {
         }),
       ];
     }
-
-    // Show a prominent execute button when query is ready but not executed
-    const autoExecute = attrs.node.state.autoExecute ?? true;
-    if (
-      !autoExecute &&
-      isAQuery(attrs.query) &&
-      !attrs.response &&
-      !attrs.isQueryRunning &&
-      !attrs.isAnalyzing
-    ) {
-      return m(
-        '.pf-data-explorer-empty-state',
-        m(Button, {
-          label: 'Run Query',
-          icon: 'play_arrow',
-          intent: Intent.Primary,
-          variant: ButtonVariant.Filled,
-          onclick: () => attrs.onExecute(),
-        }),
-      );
-    }
-
     return null;
   }
 }

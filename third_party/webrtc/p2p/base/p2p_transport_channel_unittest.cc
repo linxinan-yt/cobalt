@@ -301,7 +301,8 @@ bool HasRemoteAddress(const CandidatePairInterface* pair,
 // and that the result is what we expect.
 // Note that this class is a base class for use by other tests, who will provide
 // specialized test behavior.
-class P2PTransportChannelTestBase : public ::testing::Test {
+class P2PTransportChannelTestBase : public ::testing::Test,
+                                    public sigslot::has_slots<> {
  public:
   P2PTransportChannelTestBase()
       : vss_(new VirtualSocketServer()),
@@ -387,7 +388,7 @@ class P2PTransportChannelTestBase : public ::testing::Test {
     Candidate candidate;
   };
 
-  struct Endpoint {
+  struct Endpoint : public sigslot::has_slots<> {
     Endpoint()
         : role_(ICEROLE_UNKNOWN),
           role_conflict_(false),
@@ -5181,7 +5182,7 @@ TEST_F(P2PTransportChannelPingTest, TestIceRoleUpdatedOnRemovedPort) {
   // Make a fake signal to remove the ports in the p2ptransportchannel. then
   // change the ICE role and expect it to be updated.
   std::vector<PortInterface*> ports(1, conn->PortForTest());
-  ch.allocator_session()->NotifyPortsPruned(ch.allocator_session(), ports);
+  ch.allocator_session()->SignalPortsPruned(ch.allocator_session(), ports);
   ch.SetIceRole(ICEROLE_CONTROLLED);
   EXPECT_EQ(ICEROLE_CONTROLLED, conn->PortForTest()->GetIceRole());
 }

@@ -15,11 +15,7 @@
 import {assertExists} from '../../../base/logging';
 import {splitLinesNonEmpty} from '../../../base/string_utils';
 import protos from '../../../protos';
-import {
-  ADV_PROC_ASSOC_BUF_ID,
-  ADV_PROC_ASSOC_PROBE_ID,
-  PROC_STATS_DS_NAME,
-} from './advanced';
+import {ADV_PROC_ASSOC_PROBE_ID, PROC_STATS_DS_NAME} from './advanced';
 import {RecordProbe, RecordSubpage} from '../config/config_interfaces';
 import {TraceConfigBuilder} from '../config/trace_config_builder';
 import {TypedMultiselect} from './widgets/multiselect';
@@ -338,7 +334,7 @@ function polledProcStats(): RecordProbe {
     supportedPlatforms: ['ANDROID', 'LINUX', 'CHROME_OS'],
     settings,
     genConfig: function (tc: TraceConfigBuilder) {
-      const ds = tc.addDataSource(PROC_STATS_DS_NAME, ADV_PROC_ASSOC_BUF_ID);
+      const ds = tc.addDataSource(PROC_STATS_DS_NAME);
       // Because of the dependency on ADV_PROC_ASSOC_PROBE_ID, we expect
       // procThreadAssociation() to create the config first.
       const cfg = assertExists(ds.processStatsConfig);

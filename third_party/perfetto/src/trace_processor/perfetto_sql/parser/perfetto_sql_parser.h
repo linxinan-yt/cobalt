@@ -65,9 +65,6 @@ class PerfettoSqlParser {
     Returns returns;
     SqlSource sql;
     std::string description;
-    // Support for DELEGATES TO target_function syntax
-    std::optional<std::string>
-        target_function;  // Set when DELEGATES TO is used
   };
   // Indicates that the specified SQL was a CREATE PERFETTO TABLE statement
   // with the following parameters.

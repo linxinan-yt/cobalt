@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 mi{
     Keys{
         calendar{"Maramataka"}
@@ -28,7 +28,7 @@ mi{
         ann{"Ōporo"}
         anp{"Anahika"}
         ar{"Ārapi"}
-        ar_001{"Ārapi Moroki"}
+        ar_001{"Ārapi Moroko"}
         arn{"Mapūte"}
         arp{"Arapaho"}
         ars{"Arapika Nahāri"}
@@ -453,7 +453,6 @@ mi{
     }
     Languages%variant{
         ckb{"Kūrihi, Hōrani"}
-        hi_Latn{"Hīngarihi"}
     }
     Scripts{
         Adlm{"Atarama"}

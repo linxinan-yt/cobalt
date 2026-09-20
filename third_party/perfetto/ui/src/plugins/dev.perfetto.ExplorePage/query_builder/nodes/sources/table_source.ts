@@ -22,30 +22,23 @@ import {
   createSelectColumnsProto,
   QueryNodeState,
   NodeType,
-  createFinalColumns,
-  SourceNode,
-  nextNodeId,
 } from '../../../query_node';
 import {ColumnInfo, columnInfoFromSqlColumn} from '../../column_info';
 import protos from '../../../../../protos';
 import {TextParagraph} from '../../../../../widgets/text_paragraph';
 import {Button} from '../../../../../widgets/button';
 import {Trace} from '../../../../../public/trace';
-import {
-  createExperimentalFiltersProto,
-  renderFilterOperation,
-  UIFilter,
-} from '../../operations/filter';
+import {createFiltersProto, FilterOperation} from '../../operations/filter';
+import {FilterDefinition} from '../../../../../components/widgets/data_grid/common';
 import {closeModal, showModal} from '../../../../../widgets/modal';
 import {TableList} from '../../table_list';
 import {redrawModal} from '../../../../../widgets/modal';
-import {perfettoSqlTypeToString} from '../../../../../trace_processor/perfetto_sql_type';
+import {SourceNode} from '../../source_node';
 
 export interface TableSourceSerializedState {
   sqlTable?: string;
-  filters?: UIFilter[];
-  filterOperator?: 'AND' | 'OR';
-  comment?: string;
+  filters: FilterDefinition[];
+  customTitle?: string;
 }
 
 export interface TableSourceState extends QueryNodeState {
@@ -71,7 +64,7 @@ export function modalForTableSelection(
       title: 'Choose a table',
       content: () => {
         return m(
-          '.pf-exp-node-explorer-help',
+          '.pf-node-explorer-help',
           m(TableList, {
             sqlModules,
             onTableClick: (tableName: string) => {
@@ -100,24 +93,23 @@ export function modalForTableSelection(
   });
 }
 
-export class TableSourceNode implements SourceNode {
-  readonly nodeId: string;
+export class TableSourceNode extends SourceNode {
   readonly state: TableSourceState;
   readonly prevNodes: QueryNode[] = [];
   showColumns: boolean = false;
-  readonly finalCols: ColumnInfo[];
-  nextNodes: QueryNode[];
 
-  constructor(attrs: TableSourceState) {
-    this.nodeId = nextNodeId();
-    this.state = attrs;
-    this.state.onchange = attrs.onchange;
-    this.finalCols = createFinalColumns(
+  get sourceCols() {
+    return (
       this.state.sqlTable?.columns.map((c) =>
         columnInfoFromSqlColumn(c, true),
-      ) ?? [],
+      ) ?? []
     );
-    this.nextNodes = [];
+  }
+
+  constructor(attrs: TableSourceState) {
+    super(attrs);
+    this.state = attrs;
+    this.state.onchange = attrs.onchange;
 
     this.state.filters = attrs.filters ?? [];
   }
@@ -131,7 +123,8 @@ export class TableSourceNode implements SourceNode {
       trace: this.state.trace,
       sqlModules: this.state.sqlModules,
       sqlTable: this.state.sqlTable,
-      filters: this.state.filters?.map((f) => ({...f})),
+      filters: this.state.filters.map((f) => ({...f})),
+      customTitle: this.state.customTitle,
       onchange: this.state.onchange,
     };
     return new TableSourceNode(stateCopy);
@@ -169,26 +162,21 @@ export class TableSourceNode implements SourceNode {
                   return m(
                     'tr',
                     m('td', col.name),
-                    m('td', perfettoSqlTypeToString(col.type)),
+                    m('td', col.type.name),
                     m('td', col.description),
                   );
                 }),
               ),
             ),
         ),
-        renderFilterOperation(
-          this.state.filters,
-          this.state.filterOperator,
-          this.finalCols,
-          (newFilters) => {
-            this.state.filters = [...newFilters];
+        m(FilterOperation, {
+          filters: this.state.filters,
+          sourceCols: this.sourceCols,
+          onFiltersChanged: (newFilters: ReadonlyArray<FilterDefinition>) => {
+            this.state.filters = newFilters as FilterDefinition[];
             this.state.onchange?.();
           },
-          (operator) => {
-            this.state.filterOperator = operator;
-            this.state.onchange?.();
-          },
-        ),
+        }),
       );
     }
     return m(TextParagraph, 'No description available for this table.');
@@ -199,9 +187,12 @@ export class TableSourceNode implements SourceNode {
   }
 
   getTitle(): string {
-    return `${this.state.sqlTable?.name}`;
+    return this.state.customTitle ?? `Table ${this.state.sqlTable?.name}`;
   }
 
+  isMaterialised(): boolean {
+    return this.state.isExecuted === true && this.meterialisedAs !== undefined;
+  }
   getStructuredQuery(): protos.PerfettoSqlStructuredQuery | undefined {
     if (!this.validate()) return;
     if (!this.state.sqlTable) return;
@@ -213,16 +204,15 @@ export class TableSourceNode implements SourceNode {
     sq.table.moduleName = this.state.sqlTable.includeKey
       ? this.state.sqlTable.includeKey
       : undefined;
-    sq.table.columnNames = this.finalCols
+    sq.table.columnNames = this.sourceCols
       .filter((c) => c.checked)
       .map((c) => c.column.name);
 
-    const filtersProto = createExperimentalFiltersProto(
+    const filtersProto = createFiltersProto(
       this.state.filters,
-      this.finalCols,
-      this.state.filterOperator,
+      this.sourceCols,
     );
-    if (filtersProto) sq.experimentalFilterGroup = filtersProto;
+    if (filtersProto) sq.filters = filtersProto;
 
     const selectedColumns = createSelectColumnsProto(this);
     if (selectedColumns) sq.selectColumns = selectedColumns;
@@ -233,8 +223,7 @@ export class TableSourceNode implements SourceNode {
     return {
       sqlTable: this.state.sqlTable?.name,
       filters: this.state.filters,
-      filterOperator: this.state.filterOperator,
-      comment: this.state.comment,
+      customTitle: this.state.customTitle,
     };
   }
 

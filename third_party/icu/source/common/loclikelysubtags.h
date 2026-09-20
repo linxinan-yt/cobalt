@@ -19,7 +19,7 @@
 
 U_NAMESPACE_BEGIN
 
-struct LikelySubtagsData;
+struct XLikelySubtagsData;
 
 struct LocaleDistanceData {
     LocaleDistanceData() = default;
@@ -37,14 +37,15 @@ private:
     LocaleDistanceData &operator=(const LocaleDistanceData &) = delete;
 };
 
-class LikelySubtags final : public UMemory {
+// TODO(ICU-20777): Rename to just LikelySubtags.
+class XLikelySubtags final : public UMemory {
 public:
-    ~LikelySubtags();
+    ~XLikelySubtags();
 
     static constexpr int32_t SKIP_SCRIPT = 1;
 
     // VisibleForTesting
-    static const LikelySubtags *getSingleton(UErrorCode &errorCode);
+    static const XLikelySubtags *getSingleton(UErrorCode &errorCode);
 
     // VisibleForTesting
     LSR makeMaximizedLsrFrom(const Locale &locale,
@@ -71,9 +72,9 @@ public:
     const LocaleDistanceData &getDistanceData() const { return distanceData; }
 
 private:
-    LikelySubtags(LikelySubtagsData &data);
-    LikelySubtags(const LikelySubtags &other) = delete;
-    LikelySubtags &operator=(const LikelySubtags &other) = delete;
+    XLikelySubtags(XLikelySubtagsData &data);
+    XLikelySubtags(const XLikelySubtags &other) = delete;
+    XLikelySubtags &operator=(const XLikelySubtags &other) = delete;
 
     static void initLikelySubtags(UErrorCode &errorCode);
 
@@ -119,7 +120,7 @@ private:
     int32_t lsrsLength;
 #endif
 
-    // distance/matcher data: see comment in LikelySubtagsData::load()
+    // distance/matcher data: see comment in XLikelySubtagsData::load()
     LocaleDistanceData distanceData;
 };
 

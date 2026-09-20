@@ -32,7 +32,6 @@
 #include "pc/dtls_transport.h"
 #include "rtc_base/checks.h"
 #include "rtc_base/copy_on_write_buffer.h"
-#include "rtc_base/network/sent_packet.h"
 #include "rtc_base/rtc_certificate.h"
 #include "rtc_base/system/rtc_export.h"
 #include "rtc_base/thread_annotations.h"
@@ -59,7 +58,7 @@ class RTC_EXPORT DatagramConnectionInternal : public DatagramConnection,
                                const uint8_t* digest,
                                size_t digest_len,
                                SSLRole ssl_role) override;
-  void SendPackets(ArrayView<PacketSendParameters> packets) override;
+  bool SendPacket(ArrayView<const uint8_t> data) override;
 
   void Terminate(
       absl::AnyInvocable<void()> terminate_complete_callback) override;
@@ -76,8 +75,6 @@ class RTC_EXPORT DatagramConnectionInternal : public DatagramConnection,
 
   void OnDtlsPacket(CopyOnWriteBuffer packet, Timestamp receive_time);
 
-  void OnSentPacket(const SentPacketInfo& packet);
-
 #if RTC_DCHECK_IS_ON
   DtlsSrtpTransport* GetDtlsSrtpTransportForTesting() {
     return dtls_srtp_transport_.get();
@@ -85,23 +82,18 @@ class RTC_EXPORT DatagramConnectionInternal : public DatagramConnection,
 #endif
 
  private:
-  void DispatchSendOutcome(PacketId id, Observer::SendOutcome::Status status);
-  void SendSinglePacket(const PacketSendParameters& packet,
-                        bool last_packet_in_batch);
-
   enum class State { kActive, kTerminated };
   State current_state_ = State::kActive;
 
   const WireProtocol wire_protocol_;
-
-  // Must be before Transport types, to ensure it outlives them.
-  const std::unique_ptr<Observer> observer_;
 
   // Note the destruction order of these transport objects must be preserved.
   const std::unique_ptr<PortAllocator> port_allocator_;
   const std::unique_ptr<IceTransportInternal> transport_channel_;
   const scoped_refptr<DtlsTransport> dtls_transport_;
   const std::unique_ptr<DtlsSrtpTransport> dtls_srtp_transport_;
+
+  const std::unique_ptr<Observer> observer_;
 
   bool last_writable_state_ = false;
   const SequenceChecker sequence_checker_;

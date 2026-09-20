@@ -232,8 +232,6 @@ class RtpTransceiver : public RtpTransceiverInterface {
   // remote) after which the only valid reason to go back to null is rollback.
   void set_fired_direction(std::optional<RtpTransceiverDirection> direction);
 
-  void set_receptive(bool receptive);
-
   // According to JSEP rules for SetRemoteDescription, RtpTransceivers can be
   // reused only if they were added by AddTrack.
   void set_created_by_addtrack(bool created_by_addtrack) {
@@ -275,7 +273,6 @@ class RtpTransceiver : public RtpTransceiverInterface {
       RtpTransceiverDirection new_direction) override;
   std::optional<RtpTransceiverDirection> current_direction() const override;
   std::optional<RtpTransceiverDirection> fired_direction() const override;
-  bool receptive() const override;
   RTCError StopStandard() override;
   void StopInternal() override;
   RTCError SetCodecPreferences(ArrayView<RtpCodecCapability> codecs) override;
@@ -290,7 +287,6 @@ class RtpTransceiver : public RtpTransceiverInterface {
       const override;
   std::vector<RtpHeaderExtensionCapability> GetNegotiatedHeaderExtensions()
       const override;
-
   RTCError SetHeaderExtensionsToNegotiate(
       ArrayView<const RtpHeaderExtensionCapability> header_extensions) override;
 
@@ -305,7 +301,10 @@ class RtpTransceiver : public RtpTransceiverInterface {
                            const MediaContentDescription* content);
 
  private:
-  MediaEngineInterface* media_engine() RTC_RUN_ON(context()->worker_thread());
+  MediaEngineInterface* media_engine() const
+      RTC_RUN_ON(context()->worker_thread()) {
+    return context_->media_engine();
+  }
   ConnectionContext* context() const { return context_; }
   CodecVendor& codec_vendor() {
     return *codec_lookup_helper_->GetCodecVendor();
@@ -322,10 +321,6 @@ class RtpTransceiver : public RtpTransceiverInterface {
 
   RTCError UpdateCodecPreferencesCaches(
       const std::vector<RtpCodecCapability>& codecs);
-  // Helper function for handling extensions during O/A
-  std::vector<RtpHeaderExtensionCapability>
-  GetOfferedAndImplementedHeaderExtensions(
-      const MediaContentDescription* content) const;
 
   const Environment env_;
   // Enforce that this object is created, used and destroyed on one thread.
@@ -349,24 +344,18 @@ class RtpTransceiver : public RtpTransceiverInterface {
   bool created_by_addtrack_ = false;
   bool reused_for_addtrack_ = false;
   bool has_ever_been_used_to_send_ = false;
-  bool receptive_ RTC_GUARDED_BY(thread_) = false;
 
   // Accessed on both thread_ and the network thread. Considered safe
   // because all access on the network thread is within an invoke()
   // from thread_.
   std::unique_ptr<ChannelInterface> channel_ = nullptr;
-  std::unique_ptr<ConnectionContext::MediaEngineReference> media_engine_ref_
-      RTC_GUARDED_BY(context()->worker_thread());
   ConnectionContext* const context_;
   CodecLookupHelper* const codec_lookup_helper_;
   std::vector<RtpCodecCapability> codec_preferences_;
   std::vector<RtpCodecCapability> sendrecv_codec_preferences_;
   std::vector<RtpCodecCapability> sendonly_codec_preferences_;
   std::vector<RtpCodecCapability> recvonly_codec_preferences_;
-  std::vector<RtpHeaderExtensionCapability> header_extensions_to_negotiate_
-      RTC_GUARDED_BY(thread_);
-  std::vector<RtpHeaderExtensionCapability> header_extensions_for_rollback_
-      RTC_GUARDED_BY(thread_);
+  std::vector<RtpHeaderExtensionCapability> header_extensions_to_negotiate_;
 
   // `negotiated_header_extensions_` is read and written to on the signaling
   // thread from the SdpOfferAnswerHandler class (e.g.
@@ -389,7 +378,6 @@ PROXY_CONSTMETHOD0(RtpTransceiverDirection, direction)
 PROXY_METHOD1(RTCError, SetDirectionWithError, RtpTransceiverDirection)
 PROXY_CONSTMETHOD0(std::optional<RtpTransceiverDirection>, current_direction)
 PROXY_CONSTMETHOD0(std::optional<RtpTransceiverDirection>, fired_direction)
-PROXY_CONSTMETHOD0(bool, receptive)
 PROXY_METHOD0(RTCError, StopStandard)
 PROXY_METHOD0(void, StopInternal)
 PROXY_METHOD1(RTCError, SetCodecPreferences, ArrayView<RtpCodecCapability>)

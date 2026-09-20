@@ -83,17 +83,15 @@ export async function addVisualizedArgTracks(trace: Trace, argName: string) {
 
     // Find the thread slice track that corresponds with this trackID and insert
     // this track before it.
-    const threadSliceTrack = trace.currentWorkspace.flatTracks.find(
-      (trackNode) => {
-        if (!trackNode.uri) return false;
-        const track = trace.tracks.getTrack(trackNode.uri);
-        return (
-          track &&
-          track.tags?.kinds?.includes(SLICE_TRACK_KIND) &&
-          track.tags?.trackIds?.includes(trackId)
-        );
-      },
-    );
+    const threadSliceTrack = trace.workspace.flatTracks.find((trackNode) => {
+      if (!trackNode.uri) return false;
+      const track = trace.tracks.getTrack(trackNode.uri);
+      return (
+        track &&
+        track.tags?.kind === SLICE_TRACK_KIND &&
+        track.tags?.trackIds?.includes(trackId)
+      );
+    });
 
     const parentGroup = threadSliceTrack?.parent;
     if (parentGroup) {

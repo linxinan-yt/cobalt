@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 zh_Hant{
     %%Parent{"root"}
     AuxExemplarCharacters{
@@ -807,9 +807,9 @@ zh_Hant{
                 "Bhmmssz",
                 "Bhmmss",
                 "Bhmm",
-                "GyMMMEEEEd",
-                "GyMMMd",
-                "GyMMMd",
+                "GyMEEEEd",
+                "GyMd",
+                "GyMd",
                 "GyMd",
             }
             availableFormats{
@@ -967,9 +967,9 @@ zh_Hant{
                 "Bhmmssz",
                 "Bhmmss",
                 "Bhmm",
-                "yMMMEEEEd",
-                "yMMMd",
-                "yMMMd",
+                "yMEEEEd",
+                "yMd",
+                "yMd",
                 "yMd",
             }
             availableFormats{
@@ -1352,7 +1352,6 @@ zh_Hant{
                 GyMMM{"Gy年M月"}
                 GyMMMEd{"Gy年M月d日E"}
                 GyMMMd{"Gy年M月d日"}
-                GyMd{"GGGGG y/M/d"}
                 MMMEd{"M月d日E"}
                 y{"Gy年"}
                 yyyy{"Gy年"}
@@ -2104,31 +2103,13 @@ zh_Hant{
             }
         }
         dayOfYear{
-            dn{"該年第幾天"}
-        }
-        dayOfYear-narrow{
-            dn{"該年第幾天"}
-        }
-        dayOfYear-short{
-            dn{"該年第幾天"}
+            dn{"年天"}
         }
         dayperiod{
-            dn{"時段"}
-        }
-        dayperiod-narrow{
-            dn{"時段"}
-        }
-        dayperiod-short{
-            dn{"時段"}
+            dn{"上午/下午"}
         }
         era{
-            dn{"紀元"}
-        }
-        era-narrow{
-            dn{"紀元"}
-        }
-        era-short{
-            dn{"紀元"}
+            dn{"年代"}
         }
         fri{
             relative{
@@ -2159,12 +2140,6 @@ zh_Hant{
                 }
             }
         }
-        hour-narrow{
-            dn{"時"}
-        }
-        hour-short{
-            dn{"時"}
-        }
         minute{
             dn{"分鐘"}
             relative{
@@ -2178,12 +2153,6 @@ zh_Hant{
                     other{"{0} 分鐘前"}
                 }
             }
-        }
-        minute-narrow{
-            dn{"分"}
-        }
-        minute-short{
-            dn{"分"}
         }
         mon{
             relative{
@@ -2217,7 +2186,7 @@ zh_Hant{
             }
         }
         quarter{
-            dn{"季度"}
+            dn{"季"}
             relative{
                 "-1"{"上一季"}
                 "0"{"這一季"}
@@ -2339,31 +2308,13 @@ zh_Hant{
             }
         }
         weekOfMonth{
-            dn{"該月第幾週"}
-        }
-        weekOfMonth-narrow{
-            dn{"月週次"}
-        }
-        weekOfMonth-short{
-            dn{"月週次"}
+            dn{"週"}
         }
         weekday{
-            dn{"星期"}
-        }
-        weekday-narrow{
-            dn{"星期"}
-        }
-        weekday-short{
-            dn{"星期"}
+            dn{"週天"}
         }
         weekdayOfMonth{
-            dn{"該月第幾週"}
-        }
-        weekdayOfMonth-narrow{
-            dn{"該月第幾週"}
-        }
-        weekdayOfMonth-short{
-            dn{"該月第幾週"}
+            dn{"每月平日"}
         }
         year{
             dn{"年"}

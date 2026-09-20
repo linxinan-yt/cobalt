@@ -155,13 +155,13 @@ base::Status GeckoTraceTokenizer::NotifyEndOfFile() {
                     context_->storage->InternString(t["name"].asCString())}});
         added_metadata = true;
       }
-      std::optional<int64_t> converted = context_->clock_tracker->ToTraceTime(
-          protos::pbzero::ClockSnapshot::Clock::MONOTONIC, ts);
-      if (converted) {
-        stream_->Push(*converted,
-                      GeckoEvent{GeckoEvent::StackSample{
-                          t["tid"].asUInt(), callsites[stack_idx].id}});
-      }
+      ASSIGN_OR_RETURN(
+          int64_t converted,
+          context_->clock_tracker->ToTraceTime(
+              protos::pbzero::ClockSnapshot::Clock::MONOTONIC, ts));
+      stream_->Push(converted,
+                    GeckoEvent{GeckoEvent::StackSample{
+                        t["tid"].asUInt(), callsites[stack_idx].id}});
     }
   }
   return base::OkStatus();

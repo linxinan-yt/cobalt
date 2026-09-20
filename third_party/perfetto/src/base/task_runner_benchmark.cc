@@ -32,7 +32,7 @@ namespace {
 constexpr int kMatrixSize = 16;
 using Matrix = std::array<std::array<int, kMatrixSize>, kMatrixSize>;
 
-Matrix Rotate(const Matrix& m) {
+Matrix Rotate(Matrix m) {
   Matrix res;
   for (size_t r = 0; r < kMatrixSize; ++r) {
     for (size_t c = 0; c < kMatrixSize; ++c) {

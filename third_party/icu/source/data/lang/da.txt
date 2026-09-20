@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 da{
     Keys{
         calendar{"kalender"}
@@ -78,7 +78,6 @@ da{
         bin{"bini"}
         bkm{"kom"}
         bla{"siksika"}
-        blo{"anii"}
         bm{"bambara"}
         bn{"bengali"}
         bo{"tibetansk"}
@@ -303,7 +302,6 @@ da{
         kv{"komi"}
         kw{"cornisk"}
         kwk{"kwakʼwala"}
-        kxv{"kuvi"}
         ky{"kirgisisk"}
         la{"latin"}
         lad{"ladino"}
@@ -314,10 +312,8 @@ da{
         lez{"lezghian"}
         lg{"ganda"}
         li{"limburgsk"}
-        lij{"ligurisk"}
         lil{"lillooet"}
         lkt{"lakota"}
-        lmo{"lombardisk"}
         ln{"lingala"}
         lo{"lao"}
         lol{"mongo"}
@@ -330,6 +326,7 @@ da{
         lua{"luba-Lulua"}
         lui{"luiseno"}
         lun{"lunda"}
+        luo{"luo"}
         lus{"lushai"}
         luy{"luyana"}
         lv{"lettisk"}
@@ -362,7 +359,7 @@ da{
         moe{"innu-aimun"}
         moh{"mohawk"}
         mos{"mossi"}
-        mr{"marathi"}
+        mr{"marathisk"}
         ms{"malajisk"}
         mt{"maltesisk"}
         mua{"mundang"}
@@ -417,7 +414,7 @@ da{
         os{"ossetisk"}
         osa{"osage"}
         ota{"osmannisk tyrkisk"}
-        pa{"punjabi"}
+        pa{"punjabisk"}
         pag{"pangasinan"}
         pal{"pahlavi"}
         pam{"pampanga"}
@@ -510,7 +507,6 @@ da{
         swb{"comorisk"}
         syc{"klassisk syrisk"}
         syr{"syrisk"}
-        szl{"schlesisk"}
         ta{"tamil"}
         tce{"sydtutchone"}
         te{"telugu"}
@@ -557,10 +553,9 @@ da{
         und{"ukendt sprog"}
         ur{"urdu"}
         uz{"usbekisk"}
+        vai{"vai"}
         ve{"venda"}
-        vec{"venetiansk"}
         vi{"vietnamesisk"}
-        vmw{"makhuwa"}
         vo{"volapyk"}
         vot{"votisk"}
         vun{"vunjo"}
@@ -574,7 +569,6 @@ da{
         wuu{"wu-kinesisk"}
         xal{"kalmyk"}
         xh{"xhosa"}
-        xnr{"kangri"}
         xog{"soga"}
         yao{"yao"}
         yap{"yapese"}
@@ -851,6 +845,7 @@ da{
             phonebook{"sorteringsrækkefølge i telefonbøger"}
             phonetic{"fonetisk sorteringsrækkefølge"}
             pinyin{"pinyin-baseret sorteringsrækkefølge"}
+            reformed{"ny sorteringsrækkefølge"}
             search{"generel søgning"}
             searchjl{"sortér efter den første konsonant i hangul"}
             standard{"standardsorteringsrækkefølge"}

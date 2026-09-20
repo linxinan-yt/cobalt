@@ -66,11 +66,11 @@ public:
 		nLocales = locs;
 	}
 
-	void call(UErrorCode* status) override
+	virtual void call(UErrorCode* status)
 	{
         *status = U_ZERO_ERROR;
 
-        SimpleTimeZone unknownZone(-31415, UnicodeString("Etc/Unknown"));
+        SimpleTimeZone unknownZone(-31415, (UnicodeString)"Etc/Unknown");
         int32_t badDstOffset = -1234;
         int32_t badZoneOffset = -2345;
 
@@ -90,10 +90,11 @@ public:
         }
 
         // Set up rule equivalency test range
+        UDate low, high;
         cal->set(1900, UCAL_JANUARY, 1);
-        cal->getTime(*status);
+        low = cal->getTime(*status);
         cal->set(2040, UCAL_JANUARY, 1);
-        cal->getTime(*status);
+        high = cal->getTime(*status);
         if (U_FAILURE(*status)) {
             //errln("getTime failed");
             return;
@@ -151,7 +152,7 @@ public:
         // Run the roundtrip test
         for (int32_t locidx = 0; locidx < nLocales; locidx++) {
             for (int32_t patidx = 0; patidx < NUM_PATTERNS; patidx++) {
-                SimpleDateFormat* sdf = new SimpleDateFormat(UnicodeString(PATTERNS[patidx]), LOCALES[locidx], *status);
+                SimpleDateFormat *sdf = new SimpleDateFormat((UnicodeString)PATTERNS[patidx], LOCALES[locidx], *status);
                 if (U_FAILURE(*status)) {
                     //errcheckln(*status, (UnicodeString)"new SimpleDateFormat failed for pattern " +
                     //    PATTERNS[patidx] + " for locale " + LOCALES[locidx].getName() + " - " + u_errorName(*status));
@@ -206,7 +207,7 @@ public:
 
 	}
 
-	long getOperationsPerIteration() override
+	virtual long getOperationsPerIteration()
 	{
 		return NUM_PATTERNS * nLocales * 6;
 	}
@@ -221,7 +222,7 @@ public:
 
 	DateTimeRoundTripPerfTest(int32_t argc, const char* argv[], UErrorCode& status);
 	~DateTimeRoundTripPerfTest();
-	UPerfFunction* runIndexedTest(int32_t index, UBool exec, const char*& name, char* par) override;
+	virtual UPerfFunction* runIndexedTest(int32_t index, UBool exec,const char* &name, char* par);
 
 	UPerfFunction* RoundTripLocale1();
 	UPerfFunction* RoundTripLocale10();

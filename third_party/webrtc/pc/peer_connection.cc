@@ -88,7 +88,6 @@
 #include "pc/ice_server_parsing.h"
 #include "pc/jsep_transport_controller.h"
 #include "pc/legacy_stats_collector.h"
-#include "pc/media_session.h"
 #include "pc/rtc_stats_collector.h"
 #include "pc/rtp_receiver.h"
 #include "pc/rtp_receiver_proxy.h"
@@ -164,8 +163,8 @@ uint32_t ConvertIceTransportTypeToCandidateFilter(
   return CF_NONE;
 }
 
-IceCandidatePairType GetIceCandidatePairType(const Candidate& local,
-                                             const Candidate& remote) {
+IceCandidatePairType GetIceCandidatePairCounter(const Candidate& local,
+                                                const Candidate& remote) {
   if (local.is_local() && remote.is_local()) {
     bool local_hostname =
         !local.address().hostname().empty() && local.address().IsUnresolvedIP();
@@ -298,15 +297,9 @@ RTCErrorOr<PeerConnectionInterface::RTCConfiguration> ApplyConfiguration(
     const PeerConnectionInterface::RTCConfiguration& existing_configuration) {
   PeerConnectionInterface::RTCConfiguration modified_config =
       existing_configuration;
+  modified_config.servers = configuration.servers;
   modified_config.type = configuration.type;
   modified_config.crypto_options = configuration.crypto_options;
-  modified_config.always_negotiate_data_channels =
-      configuration.always_negotiate_data_channels;
-  modified_config.active_reset_srtp_params =
-      configuration.active_reset_srtp_params;
-
-  // ICE configuration.
-  modified_config.servers = configuration.servers;
   modified_config.ice_candidate_pool_size =
       configuration.ice_candidate_pool_size;
   modified_config.prune_turn_ports = configuration.prune_turn_ports;
@@ -326,10 +319,11 @@ RTCErrorOr<PeerConnectionInterface::RTCConfiguration> ApplyConfiguration(
       configuration.stun_candidate_keepalive_interval;
   modified_config.turn_customizer = configuration.turn_customizer;
   modified_config.network_preference = configuration.network_preference;
+  modified_config.active_reset_srtp_params =
+      configuration.active_reset_srtp_params;
   modified_config.turn_logging_id = configuration.turn_logging_id;
   modified_config.stable_writable_connection_ping_interval_ms =
       configuration.stable_writable_connection_ping_interval_ms;
-
   if (configuration != modified_config) {
     LOG_AND_RETURN_ERROR(RTCErrorType::INVALID_MODIFICATION,
                          "Modifying the configuration in an unsupported way.");
@@ -479,7 +473,6 @@ bool PeerConnectionInterface::RTCConfiguration::operator==(
     std::vector<NetworkMask> vpn_list;
     PortAllocatorConfig port_allocator_config;
     std::optional<TimeDelta> pacer_burst_interval;
-    bool always_negotiate_datachannel;
   };
   static_assert(sizeof(stuff_being_tested_for_equality) == sizeof(*this),
                 "Did you add something to RTCConfiguration and forget to "
@@ -541,8 +534,7 @@ bool PeerConnectionInterface::RTCConfiguration::operator==(
          port_allocator_config.min_port == o.port_allocator_config.min_port &&
          port_allocator_config.max_port == o.port_allocator_config.max_port &&
          port_allocator_config.flags == o.port_allocator_config.flags &&
-         pacer_burst_interval == o.pacer_burst_interval &&
-         always_negotiate_data_channels == o.always_negotiate_data_channels;
+         pacer_burst_interval == o.pacer_burst_interval;
 }
 
 bool PeerConnectionInterface::RTCConfiguration::operator!=(
@@ -627,9 +619,8 @@ PeerConnection::PeerConnection(
   if (call_ptr_) {
     worker_thread()->BlockingCall([this, tc = transport_controller_copy_] {
       RTC_DCHECK_RUN_ON(worker_thread());
-      if (context_->is_configured_for_media()) {
-        media_engine_ref_ =
-            std::make_unique<ConnectionContext::MediaEngineReference>(context_);
+      if (context_->media_engine()) {
+        context_->AddRefMediaEngine();
       }
       call_->SetPayloadTypeSuggester(tc);
     });
@@ -724,7 +715,9 @@ PeerConnection::~PeerConnection() {
     RTC_DCHECK_RUN_ON(worker_thread());
     worker_thread_safety_->SetNotAlive();
     call_.reset();
-    media_engine_ref_.reset();
+    if (context_->media_engine()) {
+      context_->ReleaseMediaEngine();
+    }
   });
 
   data_channel_controller_.PrepareForShutdown();
@@ -1591,8 +1584,8 @@ RTCError PeerConnection::SetConfiguration(
                          "SetLocalDescription.");
   }
 
-  // Create a new, configuration object whose peerconnection config
-  // will have been validated.
+  // Create a new, configuration object whose Ice config will have been
+  // validated..
   RTCErrorOr<RTCConfiguration> validated_config =
       ApplyConfiguration(configuration, configuration_);
   if (!validated_config.ok()) {
@@ -1729,26 +1722,22 @@ void PeerConnection::ReconfigureBandwidthEstimation(
 }
 
 void PeerConnection::SetAudioPlayout(bool playout) {
-  RTC_DCHECK(ConfiguredForMedia());
   if (!worker_thread()->IsCurrent()) {
     worker_thread()->BlockingCall(
         [this, playout] { SetAudioPlayout(playout); });
     return;
   }
-  RTC_DCHECK_RUN_ON(worker_thread());
-  auto audio_state = media_engine()->voice().GetAudioState();
+  auto audio_state = context_->media_engine()->voice().GetAudioState();
   audio_state->SetPlayout(playout);
 }
 
 void PeerConnection::SetAudioRecording(bool recording) {
-  RTC_DCHECK(ConfiguredForMedia());
   if (!worker_thread()->IsCurrent()) {
     worker_thread()->BlockingCall(
         [this, recording] { SetAudioRecording(recording); });
     return;
   }
-  RTC_DCHECK_RUN_ON(worker_thread());
-  auto audio_state = media_engine()->voice().GetAudioState();
+  auto audio_state = context_->media_engine()->voice().GetAudioState();
   audio_state->SetRecording(recording);
 }
 
@@ -1766,7 +1755,7 @@ void PeerConnection::AddAdaptationResource(scoped_refptr<Resource> resource) {
 }
 
 bool PeerConnection::ConfiguredForMedia() const {
-  return context_->is_configured_for_media();
+  return context_->media_engine();
 }
 
 bool PeerConnection::StartRtcEventLog(std::unique_ptr<RtcEventLogOutput> output,
@@ -2107,25 +2096,6 @@ void PeerConnection::ReportFirstConnectUsageMetrics() {
       // Rollback does not have SDP so can not be munged.
       break;
   }
-  bool negotiated_sctp_snap = false;
-  const SessionDescription* desc = nullptr;
-  if (local_description()->GetType() == SdpType::kAnswer) {
-    desc = local_description()->description();
-  } else if (remote_description()->GetType() == SdpType::kAnswer) {
-    desc = remote_description()->description();
-  }
-  if (desc) {
-    const ContentInfo* sctp_content = GetFirstDataContent(desc);
-    if (sctp_content && !sctp_content->rejected) {
-      const SctpDataContentDescription* sctp_desc =
-          sctp_content->media_description()->as_sctp();
-      if (sctp_desc) {
-        negotiated_sctp_snap |= sctp_desc->sctp_init().has_value();
-      }
-    }
-  }
-  RTC_HISTOGRAM_BOOLEAN("WebRTC.PeerConnection.NegotiatedSctpSnap",
-                        negotiated_sctp_snap);
 }
 
 void PeerConnection::ReportCloseUsageMetrics() {
@@ -2420,12 +2390,6 @@ void PeerConnection::SetSctpTransportName(std::string sctp_transport_name) {
   ClearStatsCache();
 }
 
-// RTC_RUN_ON(worker_thread())
-MediaEngineInterface* PeerConnection::media_engine() const {
-  RTC_DCHECK(media_engine_ref_);
-  return media_engine_ref_->media_engine();
-}
-
 std::optional<std::string> PeerConnection::sctp_mid() const {
   RTC_DCHECK_RUN_ON(signaling_thread());
   return sctp_mid_s_;
@@ -2634,9 +2598,8 @@ Call::Stats PeerConnection::GetCallStats() {
 }
 
 std::optional<AudioDeviceModule::Stats> PeerConnection::GetAudioDeviceStats() {
-  RTC_DCHECK_RUN_ON(worker_thread());
-  if (context_->is_configured_for_media()) {
-    return media_engine()->voice().GetAudioDeviceStats();
+  if (context_->media_engine()) {
+    return context_->media_engine()->voice().GetAudioDeviceStats();
   }
   return std::nullopt;
 }
@@ -2926,15 +2889,14 @@ void PeerConnection::ReportBestConnectionState(const TransportStats& stats) {
       if (local.protocol() == TCP_PROTOCOL_NAME ||
           (local.is_relay() && local.relay_protocol() == TCP_PROTOCOL_NAME)) {
         RTC_HISTOGRAM_ENUMERATION("WebRTC.PeerConnection.CandidatePairType_TCP",
-                                  GetIceCandidatePairType(local, remote),
+                                  GetIceCandidatePairCounter(local, remote),
                                   kIceCandidatePairMax);
       } else if (local.protocol() == UDP_PROTOCOL_NAME) {
         RTC_HISTOGRAM_ENUMERATION("WebRTC.PeerConnection.CandidatePairType_UDP",
-                                  GetIceCandidatePairType(local, remote),
+                                  GetIceCandidatePairCounter(local, remote),
                                   kIceCandidatePairMax);
       } else {
-        RTC_LOG(LS_WARNING) << "ReportBestConnectionState: No histogram for "
-                            << local.protocol();
+        RTC_CHECK_NOTREACHED();
       }
 
       // Increment the counter for IP type.

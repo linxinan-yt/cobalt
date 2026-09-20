@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-@import "common";
-@import "./graph/graph.scss";
-@import "./empty_graph.scss";
+@import "../../../assets/theme";
+@import "./data_explorer.scss";
+@import "./graph.scss";
 @import "./help.scss";
-@import "./graph/node_box.scss";
+@import "./node_box.scss";
 @import "./node_explorer.scss";
 @import "./operations/operation_component.scss";
 @import "./nodes/sources/slices_source.scss";
@@ -25,79 +25,68 @@
 @import "./nodes/modify_columns_node.scss";
 
 .pf-query-builder-layout {
+  display: grid;
+  grid-template-columns: 50% 50%;
   height: 100%;
 
-  // SplitPanel's main section needs to have the grid layout
-  .pf-split-panel__main {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    overflow: hidden;
+  &.no-selection {
+    grid-template-rows: auto 1fr;
+  }
+
+  &.selection {
+    grid-template-rows: 50% 50%;
   }
 
   .pf-qb-node-graph {
     grid-column: 1;
+    grid-row: 1;
     overflow: auto;
-    position: relative;
   }
 
   .pf-qb-explorer {
     grid-column: 2;
-    overflow: hidden;
-    width: 500px;
-    height: 100%;
-    transition:
-      width 0.3s ease,
-      border-left 0.3s ease;
+    grid-row: 1;
+    overflow: auto;
   }
 
-  .pf-qb-floating-controls {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-
-    .pf-button {
-      width: 60px;
-      height: 60px;
-      font-size: 28px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-
-      &:hover {
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-        transform: scale(1.05);
-      }
-    }
+  .pf-qb-viewer {
+    overflow: auto;
   }
 
-  .pf-qb-floating-warning {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background-color: var(--pf-color-danger);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: all 0.2s ease;
-
-    &:hover {
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-      transform: scale(1.05);
+  &.selection-left {
+    .pf-qb-viewer {
+      grid-column: 1;
+      grid-row: 2;
     }
-
-    .pf-qb-warning-icon {
-      color: white;
-      font-size: 28px;
-    }
-  }
-
-  &.explorer-collapsed {
     .pf-qb-explorer {
-      width: 0;
-      border-left: none;
-      overflow: hidden;
+      grid-row: 1 / span 2;
+    }
+  }
+
+  &.selection-right {
+    .pf-qb-viewer {
+      grid-column: 2;
+      grid-row: 2;
+    }
+    .pf-qb-node-graph {
+      grid-row: 1 / span 2;
+    }
+  }
+
+  &.selection-bottom {
+    .pf-qb-viewer {
+      grid-column: 1 / span 2;
+      grid-row: 2;
+    }
+  }
+  &.full-page {
+    .pf-qb-node-graph,
+    .pf-qb-explorer {
+      display: none;
+    }
+    .pf-qb-viewer {
+      grid-column: 1 / span 2;
+      grid-row: 1 / span 2;
     }
   }
 }

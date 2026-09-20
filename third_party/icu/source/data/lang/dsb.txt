@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 dsb{
     Keys{
         calendar{"kalender"}
@@ -54,7 +54,6 @@ dsb{
         bi{"bislamšćina"}
         bin{"binišćina"}
         bla{"siksikášćina"}
-        blo{"aniišćina"}
         bm{"bambara"}
         bn{"bengalšćina"}
         bo{"tibetšćina"}
@@ -175,7 +174,6 @@ dsb{
         iba{"ibanšćina"}
         ibb{"ibibiošćina"}
         id{"indonešćina"}
-        ie{"interlinguešćina"}
         ig{"igbo"}
         ii{"sichuan yi"}
         ik{"inupiak"}
@@ -230,7 +228,6 @@ dsb{
         kv{"komišćina"}
         kw{"kornišćina"}
         kwk{"kwakʼwalašćina"}
-        kxv{"kuvišćina"}
         ky{"kirgišćina"}
         la{"łatyńšćina"}
         lad{"ladinšćina"}
@@ -239,10 +236,8 @@ dsb{
         lez{"lezgianšćina"}
         lg{"gandšćina"}
         li{"limburšćina"}
-        lij{"liguriańšćina"}
         lil{"lillooetšćina"}
         lkt{"lakotšćina"}
-        lmo{"lombardišćina"}
         ln{"lingala"}
         lo{"laošćina"}
         lou{"Louisiana kreolšćina"}
@@ -253,6 +248,7 @@ dsb{
         lu{"luba-katanga"}
         lua{"luba-luluašćina"}
         lun{"lundašćina"}
+        luo{"luo"}
         lus{"mizošćina"}
         luy{"luhya"}
         lv{"letišćina"}
@@ -396,7 +392,6 @@ dsb{
         sw_CD{"kongojska swahilišćina"}
         swb{"comorianšćina"}
         syr{"syriacšćina"}
-        szl{"šlazyńšćina"}
         ta{"tamilšćina"}
         tce{"pódpołdnjowa tutchonšćina"}
         te{"telugšćina"}
@@ -436,10 +431,9 @@ dsb{
         und{"njeznata rěc"}
         ur{"urdušćina"}
         uz{"usbekšćina"}
+        vai{"vai"}
         ve{"vendašćina"}
-        vec{"venetišćina"}
         vi{"vietnamšćina"}
-        vmw{"makhuwašćina"}
         vo{"volapük"}
         vun{"vunjo"}
         wa{"walonšćina"}
@@ -450,7 +444,6 @@ dsb{
         wuu{"wu chinšćina"}
         xal{"kalmykšćina"}
         xh{"xhosa"}
-        xnr{"kangrišćina"}
         xog{"soga"}
         yav{"yangben"}
         ybb{"yembašćina"}

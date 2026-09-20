@@ -18,21 +18,15 @@ import {HTMLAttrs} from './common';
 export interface SectionAttrs extends HTMLAttrs {
   // The name of the section, displayed in the title bar
   title: string;
-  // Optional description/subtitle for the section
-  subtitle?: string;
 }
 
 export class Section implements m.ClassComponent<SectionAttrs> {
   view({attrs, children}: m.CVnode<SectionAttrs>) {
-    const {title, subtitle, ...htmlAttrs} = attrs;
+    const {title, ...htmlAttrs} = attrs;
     return m(
       'section.pf-section',
       htmlAttrs,
-      m(
-        'header',
-        m('h1', title),
-        subtitle && m('p.pf-section__subtitle', subtitle),
-      ),
+      m('header', m('h1', title)),
       m('article', children),
     );
   }

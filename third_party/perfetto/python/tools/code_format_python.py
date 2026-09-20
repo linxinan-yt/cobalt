@@ -54,10 +54,7 @@ class Yapf(CodeFormatterBase):
     return filtered
 
   def run_formatter(self, repo_root: str, check_only: bool, files: list[str]):
-    if sys.platform != 'win32':
-      tool = '.venv/bin/yapf'
-    else:
-      tool = '.venv/Scripts/yapf.exe'
+    tool = '.venv/bin/yapf'
     if not os.path.exists(tool):
       err = f'Cannot find ${tool}\nRun tools/install-build-deps'
       print(err, file=sys.stderr)

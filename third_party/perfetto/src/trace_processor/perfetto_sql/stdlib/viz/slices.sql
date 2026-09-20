@@ -20,8 +20,7 @@ INCLUDE PERFETTO MODULE graphs.scan;
 INCLUDE PERFETTO MODULE slices.with_context;
 
 CREATE PERFETTO MACRO _viz_slice_ancestor_agg(
-  inits TableOrSubquery,
-  nodes TableOrSubquery
+  inits TableOrSubquery
 )
 RETURNS TableOrSubquery
 AS
@@ -36,7 +35,7 @@ AS
   FROM _graph_aggregating_scan!(
     (
       SELECT id AS source_node_id, parent_id AS dest_node_id
-      FROM $nodes
+      FROM slice
       WHERE parent_id IS NOT NULL
     ),
     (SELECT id, dur, dur AS self_dur, 1 AS self_count FROM $inits),
@@ -49,10 +48,10 @@ AS
       )
       SELECT a.id, s.dur, s.dur - a.child_dur AS self_dur, 0 AS self_count
       FROM agg a
-      JOIN $nodes s USING (id)
+      JOIN slice s USING (id)
     )
   ) g
-  JOIN $nodes s USING (id)
+  JOIN slice s USING (id)
 );
 
 CREATE PERFETTO VIEW _viz_slices_for_ui_table AS

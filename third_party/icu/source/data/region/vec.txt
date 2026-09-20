@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 vec{
     Countries{
         001{"mondo"}
@@ -199,7 +199,7 @@ vec{
         MV{"Maldive"}
         MW{"Malawi"}
         MX{"Mèsego"}
-        MY{"Malèizia"}
+        MY{"Malezia"}
         MZ{"Mozanbigo"}
         NA{"Namibia"}
         NC{"Nova Caledonia"}

@@ -37,8 +37,7 @@ namespace profiling {
 
 Unwinder::Delegate::~Delegate() = default;
 
-Unwinder::Unwinder(Delegate* delegate,
-                   base::MaybeLockFreeTaskRunner* task_runner)
+Unwinder::Unwinder(Delegate* delegate, base::UnixTaskRunner* task_runner)
     : task_runner_(task_runner), delegate_(delegate) {
   ResetAndEnableUnwindstackCache();
   base::MaybeSetThreadName("stack-unwinding");

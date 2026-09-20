@@ -443,12 +443,7 @@ UI_DEPS = [
         'buildtools/mac/emsdk.tgz',
         'https://storage.googleapis.com/perfetto/emscripten-4.0.8-mac.tgz',
         '2682c43580ae2265b4c7f3c7963629f7f501eb24a8ffa01be0059f9f5b3b8cd0',
-        'darwin', 'arm64'),
-    Dependency(
-        'buildtools/mac/emsdk.tgz',
-        'https://storage.googleapis.com/perfetto/emscripten-4.0.8-mac-x64.tgz',
-        'e1b2e6d4797338ed884f9d8a8419f93fc42cfcdea5e8a8b29fe13c6fd3fe7f7a',
-        'darwin', 'x64'),
+        'darwin', 'all'),
     Dependency(
         'buildtools/linux64/emsdk.tgz',
         'https://storage.googleapis.com/perfetto/emscripten-4.0.8-linux.tgz',
@@ -700,30 +695,19 @@ def CheckPythonVenv():
   with open(PYTHON_STATUS_FILE, 'r') as f:
     actual = f.read()
   expected = HashLocalFile(PYTHON_REQUIREMENTS)
-  if expected != actual:
-    return False
-  # The venv can be invalidated if the version of python in the system is
-  # upgraded. Detect that by trying to find its own pip.
-  venv_python = os.path.join(PYTHON_VENV_BIN_DIR, 'python3')
-  cmd = [venv_python, '-c', 'import pip']
-  if subprocess.call(cmd, stderr=subprocess.DEVNULL) != 0:
-    logging.warning('The python venv is stale due an upgrade of the system ' +
-                    'python package and needs regeneration')
-    return False
-  return True
+  return expected == actual
 
 
 def InstallPythonVenv():
   venv_pip = os.path.join(PYTHON_VENV_BIN_DIR, 'pip3')
   cur_python_interpreter = sys.executable
-
-  shutil.rmtree(PYTHON_VENV_DIR, ignore_errors=True)
-  cmd = [cur_python_interpreter, '-m', 'venv', PYTHON_VENV_DIR]
-  logging.info(f'Installing python venv {" ".join(cmd)}')
-  subprocess.check_call(cmd)
+  if not os.path.exists(venv_pip):
+    cmd = [cur_python_interpreter, '-m', 'venv', PYTHON_VENV_DIR]
+    logging.info(f'Installing python venv {" ".join(cmd)}')
+    subprocess.check_call(cmd)
 
   cmd = [venv_pip, 'install', '-r', PYTHON_REQUIREMENTS]
-  logging.info(f'Updating python packages {" ".join(cmd)}')
+  logging.info(f'Updating pythong packages {" ".join(cmd)}')
   subprocess.check_call(cmd)
   with open(PYTHON_STATUS_FILE, 'w') as f:
     f.write(HashLocalFile(PYTHON_REQUIREMENTS))

@@ -151,7 +151,7 @@ struct CounterIntervals : public sqlite::Function<CounterIntervals> {
 
 base::Status RegisterCounterIntervalsFunctions(PerfettoSqlEngine& engine,
                                                StringPool* pool) {
-  return engine.RegisterFunction<CounterIntervals>(
+  return engine.RegisterSqliteFunction<CounterIntervals>(
       std::make_unique<CounterIntervals::UserData>(
           CounterIntervals::UserData{&engine, pool}));
 }

@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 af{
     durationUnits{
         hm{"hh:mm"}
@@ -179,11 +179,6 @@ af{
                 one{"{0} per tienduisend"}
                 other{"{0} per tienduisend"}
             }
-            portion-per-1e9{
-                dnam{"deeltjies per miljard"}
-                one{"{0} deeltjie per miljard"}
-                other{"{0} deeltjies per miljard"}
-            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -263,7 +258,7 @@ af{
         }
         duration{
             century{
-                dnam{"eeue"}
+                dnam{"eeu"}
                 one{"{0} eeu"}
                 other{"{0} eeue"}
             }
@@ -305,12 +300,6 @@ af{
                 dnam{"nanosekondes"}
                 one{"{0} nanosekonde"}
                 other{"{0} nanosekondes"}
-            }
-            night{
-                dnam{"nagte"}
-                one{"{0} nag"}
-                other{"{0} nagte"}
-                per{"{0} per nag"}
             }
             quarter{
                 dnam{"kwartale"}
@@ -747,11 +736,6 @@ af{
                 one{"{0} knoop"}
                 other{"{0} knope"}
             }
-            light-speed{
-                dnam{"lig"}
-                one{"{0} lig"}
-                other{"{0} lig"}
-            }
             meter-per-second{
                 dnam{"meter per sekonde"}
                 one{"{0} meter per sekonde"}
@@ -1063,11 +1047,6 @@ af{
             permyriad{
                 dnam{"‱"}
             }
-            portion-per-1e9{
-                dnam{"deeltjies/miljard"}
-                one{"{0}deeltjie/miljard"}
-                other{"{0}deeltjies/miljard"}
-            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1165,12 +1144,6 @@ af{
             nanosecond{
                 one{"{0}ns."}
                 other{"{0}ns."}
-            }
-            night{
-                dnam{"nagte"}
-                one{"{0} nag"}
-                other{"{0} nagte"}
-                per{"{0}/nag"}
             }
             week{
                 dnam{"w."}
@@ -1285,8 +1258,8 @@ af{
                 other{"{0}em"}
             }
             megapixel{
-                one{"{0} MP"}
-                other{"{0} MP"}
+                one{"{0}Mpx"}
+                other{"{0}Mpx"}
             }
             pixel{
                 dnam{"px"}
@@ -1320,7 +1293,6 @@ af{
                 other{"{0}vaam"}
             }
             foot{
-                dnam{"vt."}
                 one{"{0}vt."}
                 other{"{0}vt."}
             }
@@ -1541,11 +1513,6 @@ af{
             knot{
                 one{"{0}kn."}
                 other{"{0}kn."}
-            }
-            light-speed{
-                dnam{"lig"}
-                one{"{0} lig"}
-                other{"{0} lig"}
             }
             meter-per-second{
                 dnam{"m/s."}
@@ -1820,11 +1787,6 @@ af{
             permyriad{
                 dnam{"per tienduisend"}
             }
-            portion-per-1e9{
-                dnam{"deeltjies/miljard"}
-                one{"{0} deeltjie/miljard"}
-                other{"{0} deeltjies/miljard"}
-            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1916,12 +1878,6 @@ af{
                 one{"{0} ns."}
                 other{"{0} ns."}
             }
-            night{
-                dnam{"nagte"}
-                one{"{0} nag"}
-                other{"{0} nagte"}
-                per{"{0}/nag"}
-            }
             quarter{
                 dnam{"kw."}
                 one{"{0} kw."}
@@ -2008,8 +1964,8 @@ af{
             }
             megapixel{
                 dnam{"megapieksels"}
-                one{"{0} MP"}
-                other{"{0} MP"}
+                one{"{0} Mpx"}
+                other{"{0} Mpx"}
             }
             pixel{
                 dnam{"pieksels"}
@@ -2166,11 +2122,6 @@ af{
                 dnam{"kn."}
                 one{"{0} kn."}
                 other{"{0} kn."}
-            }
-            light-speed{
-                dnam{"lig"}
-                one{"{0} lig"}
-                other{"{0} lig"}
             }
             meter-per-second{
                 dnam{"meter/s."}

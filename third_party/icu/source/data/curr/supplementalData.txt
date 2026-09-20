@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 supplementalData:table(nofallback){
     CurrencyMap{
         AC{
@@ -1199,21 +1199,10 @@ supplementalData:table(nofallback){
         CW{
             {
                 from:intvector{
-                    405,
-                    -363122176,
-                }
-                id{"XCG"}
-            }
-            {
-                from:intvector{
                     299,
                     -1821388800,
                 }
                 id{"ANG"}
-                to:intvector{
-                    407,
-                    -1004256769,
-                }
             }
         }
         CX{
@@ -1957,7 +1946,7 @@ supplementalData:table(nofallback){
             {
                 from:intvector{
                     389,
-                    1785321856,
+                    1788921856,
                 }
                 id{"EUR"}
             }
@@ -1969,7 +1958,7 @@ supplementalData:table(nofallback){
                 id{"HRK"}
                 to:intvector{
                     389,
-                    -1300045441,
+                    -1296445441,
                 }
             }
             {
@@ -3960,21 +3949,10 @@ supplementalData:table(nofallback){
         SX{
             {
                 from:intvector{
-                    405,
-                    -363122176,
-                }
-                id{"XCG"}
-            }
-            {
-                from:intvector{
                     299,
                     -1821388800,
                 }
                 id{"ANG"}
-                to:intvector{
-                    407,
-                    -1004256769,
-                }
             }
         }
         SY{
@@ -4727,13 +4705,6 @@ supplementalData:table(nofallback){
         ZW{
             {
                 from:intvector{
-                    400,
-                    1286681600,
-                }
-                id{"ZWG"}
-            }
-            {
-                from:intvector{
                     288,
                     -1751148544,
                 }
@@ -4746,8 +4717,8 @@ supplementalData:table(nofallback){
                 }
                 id{"ZWL"}
                 to:intvector{
-                    401,
-                    -1428052993,
+                    288,
+                    -1664748545,
                 }
             }
             {

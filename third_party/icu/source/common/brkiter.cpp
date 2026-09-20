@@ -59,7 +59,7 @@ BreakIterator::buildInstance(const Locale& loc, const char *type, UErrorCode &st
 {
     char fnbuff[256];
     char ext[4]={'\0'};
-    CharString actual;
+    CharString actualLocale;
     int32_t size;
     const char16_t* brkfname = nullptr;
     UResourceBundle brkRulesStack;
@@ -85,7 +85,7 @@ BreakIterator::buildInstance(const Locale& loc, const char *type, UErrorCode &st
         // Get the actual string
         brkfname = ures_getString(brkName, &size, &status);
         U_ASSERT((size_t)size<sizeof(fnbuff));
-        if (static_cast<size_t>(size) >= sizeof(fnbuff)) {
+        if ((size_t)size>=sizeof(fnbuff)) {
             size=0;
             if (U_SUCCESS(status)) {
                 status = U_BUFFER_OVERFLOW_ERROR;
@@ -94,12 +94,12 @@ BreakIterator::buildInstance(const Locale& loc, const char *type, UErrorCode &st
 
         // Use the string if we found it
         if (U_SUCCESS(status) && brkfname) {
-            actual.append(ures_getLocaleInternal(brkName, &status), -1, status);
+            actualLocale.append(ures_getLocaleInternal(brkName, &status), -1, status);
 
             char16_t* extStart=u_strchr(brkfname, 0x002e);
             int len = 0;
             if (extStart != nullptr){
-                len = static_cast<int>(extStart - brkfname);
+                len = (int)(extStart-brkfname);
                 u_UCharsToChars(extStart+1, ext, sizeof(ext)); // nul terminates the buff
                 u_UCharsToChars(brkfname, fnbuff, len);
             }
@@ -123,9 +123,10 @@ BreakIterator::buildInstance(const Locale& loc, const char *type, UErrorCode &st
     if (U_SUCCESS(status) && result != nullptr) {
         U_LOCALE_BASED(locBased, *(BreakIterator*)result);
 
-        locBased.setLocaleIDs(ures_getLocaleByType(b, ULOC_VALID_LOCALE, &status),
-                              actual.data(), status);
-        LocaleBased::setLocaleID(loc.getName(), result->requestLocale, status);
+        locBased.setLocaleIDs(ures_getLocaleByType(b, ULOC_VALID_LOCALE, &status), 
+                              actualLocale.data());
+        uprv_strncpy(result->requestLocale, loc.getName(), ULOC_FULLNAME_CAPACITY);
+        result->requestLocale[ULOC_FULLNAME_CAPACITY-1] = 0; // always terminate
     }
 
     ures_close(b);
@@ -205,32 +206,26 @@ BreakIterator::getAvailableLocales(int32_t& count)
 
 BreakIterator::BreakIterator()
 {
+    *validLocale = *actualLocale = *requestLocale = 0;
 }
 
 BreakIterator::BreakIterator(const BreakIterator &other) : UObject(other) {
-    UErrorCode status = U_ZERO_ERROR;
-    U_LOCALE_BASED(locBased, *this);
-    locBased.setLocaleIDs(other.validLocale, other.actualLocale, status);
-    LocaleBased::setLocaleID(other.requestLocale, requestLocale, status);
-    U_ASSERT(U_SUCCESS(status));
+    uprv_strncpy(actualLocale, other.actualLocale, sizeof(actualLocale));
+    uprv_strncpy(validLocale, other.validLocale, sizeof(validLocale));
+    uprv_strncpy(requestLocale, other.requestLocale, sizeof(requestLocale));
 }
 
 BreakIterator &BreakIterator::operator =(const BreakIterator &other) {
     if (this != &other) {
-        UErrorCode status = U_ZERO_ERROR;
-        U_LOCALE_BASED(locBased, *this);
-        locBased.setLocaleIDs(other.validLocale, other.actualLocale, status);
-        LocaleBased::setLocaleID(other.requestLocale, requestLocale, status);
-        U_ASSERT(U_SUCCESS(status));
+        uprv_strncpy(actualLocale, other.actualLocale, sizeof(actualLocale));
+        uprv_strncpy(validLocale, other.validLocale, sizeof(validLocale));
+        uprv_strncpy(requestLocale, other.requestLocale, sizeof(requestLocale));
     }
     return *this;
 }
 
 BreakIterator::~BreakIterator()
 {
-    delete validLocale;
-    delete actualLocale;
-    delete requestLocale;
 }
 
 // ------------------------------------------
@@ -399,7 +394,7 @@ BreakIterator::createInstance(const Locale& loc, int32_t kind, UErrorCode& statu
         // revisit this in ICU 3.0 and clean it up/fix it/remove it.
         if (U_SUCCESS(status) && (result != nullptr) && *actualLoc.getName() != 0) {
             U_LOCALE_BASED(locBased, *result);
-            locBased.setLocaleIDs(actualLoc.getName(), actualLoc.getName(), status);
+            locBased.setLocaleIDs(actualLoc.getName(), actualLoc.getName());
         }
         return result;
     }
@@ -443,14 +438,17 @@ BreakIterator::makeInstance(const Locale& loc, int32_t kind, UErrorCode& status)
             UTRACE_ENTRY(UTRACE_UBRK_CREATE_LINE);
             uprv_strcpy(lb_lw, "line");
             UErrorCode kvStatus = U_ZERO_ERROR;
-            auto value = loc.getKeywordValue<CharString>("lb", kvStatus);
+            CharString value;
+            CharStringByteSink valueSink(&value);
+            loc.getKeywordValue("lb", valueSink, kvStatus);
             if (U_SUCCESS(kvStatus) && (value == "strict" || value == "normal" || value == "loose")) {
                 uprv_strcat(lb_lw, "_");
                 uprv_strcat(lb_lw, value.data());
             }
             // lw=phrase is only supported in Japanese and Korean
             if (uprv_strcmp(loc.getLanguage(), "ja") == 0 || uprv_strcmp(loc.getLanguage(), "ko") == 0) {
-                value = loc.getKeywordValue<CharString>("lw", kvStatus);
+                value.clear();
+                loc.getKeywordValue("lw", valueSink, kvStatus);
                 if (U_SUCCESS(kvStatus) && value == "phrase") {
                     uprv_strcat(lb_lw, "_");
                     uprv_strcat(lb_lw, value.data());
@@ -493,7 +491,6 @@ BreakIterator::makeInstance(const Locale& loc, int32_t kind, UErrorCode& status)
     }
 
     if (U_FAILURE(status)) {
-        delete result;
         return nullptr;
     }
 
@@ -502,25 +499,20 @@ BreakIterator::makeInstance(const Locale& loc, int32_t kind, UErrorCode& status)
 
 Locale
 BreakIterator::getLocale(ULocDataLocaleType type, UErrorCode& status) const {
-    if (U_FAILURE(status)) {
-        return Locale::getRoot();
-    }
     if (type == ULOC_REQUESTED_LOCALE) {
-        return requestLocale == nullptr ?
-            Locale::getRoot() : Locale(requestLocale->data());
+        return Locale(requestLocale);
     }
-    return LocaleBased::getLocale(validLocale, actualLocale, type, status);
+    U_LOCALE_BASED(locBased, *this);
+    return locBased.getLocale(type, status);
 }
 
 const char *
 BreakIterator::getLocaleID(ULocDataLocaleType type, UErrorCode& status) const {
-    if (U_FAILURE(status)) {
-        return nullptr;
-    }
     if (type == ULOC_REQUESTED_LOCALE) {
-        return requestLocale == nullptr ?  "" : requestLocale->data();
+        return requestLocale;
     }
-    return LocaleBased::getLocaleID(validLocale, actualLocale, type, status);
+    U_LOCALE_BASED(locBased, *this);
+    return locBased.getLocaleID(type, status);
 }
 
 
@@ -547,10 +539,8 @@ int32_t BreakIterator::getRuleStatusVec(int32_t *fillInVec, int32_t capacity, UE
 }
 
 BreakIterator::BreakIterator (const Locale& valid, const Locale& actual) {
-  UErrorCode status = U_ZERO_ERROR;
   U_LOCALE_BASED(locBased, (*this));
-  locBased.setLocaleIDs(valid.getName(), actual.getName(), status);
-  U_ASSERT(U_SUCCESS(status));
+  locBased.setLocaleIDs(valid, actual);
 }
 
 U_NAMESPACE_END

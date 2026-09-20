@@ -135,7 +135,7 @@ class FtraceConfigMuxer {
   // The Tracefs and ProtoTranslationTable
   // should outlive this instance.
   FtraceConfigMuxer(
-      Tracefs* tracefs,
+      Tracefs* ftrace,
       AtraceWrapper* atrace_wrapper,
       ProtoTranslationTable* table,
       SyscallTable syscalls,
@@ -285,7 +285,7 @@ class FtraceConfigMuxer {
   // so the filter can be updated before ds_configs_.
   bool SetSyscallEventFilter(const EventFilter& extra_syscalls);
 
-  Tracefs* tracefs_;
+  Tracefs* ftrace_;
   AtraceWrapper* atrace_wrapper_;
   ProtoTranslationTable* table_;
   SyscallTable syscalls_;

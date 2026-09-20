@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 chr{
     Keys{
         calendar{"ᏅᏙ ᏗᏎᏍᏗ"}
@@ -53,7 +53,6 @@ chr{
         bi{"ᏈᏍᎳᎹ"}
         bin{"ᏈᏂ"}
         bla{"ᏏᎩᏏᎧ"}
-        blo{"ᎠᏂᎵ"}
         bm{"ᏆᎻᏆᎳ"}
         bn{"ᏇᏂᎦᎳ"}
         bo{"ᏘᏇᏔᏂ"}
@@ -172,7 +171,6 @@ chr{
         iba{"ᎢᏆᏂ"}
         ibb{"ᎢᏈᏈᎣ"}
         id{"ᎢᏂᏙᏂᏏᎠ"}
-        ie{"ᏈᏖᎵᏆ"}
         ig{"ᎢᎦᎪ"}
         ii{"ᏏᏧᏩᏂ Ᏹ"}
         ikt{"ᏭᏕᎵᎬ ᎨᎾᏓ ᎢᏄᎩᏘᏚᏘ"}
@@ -225,7 +223,6 @@ chr{
         kv{"ᎪᎻ"}
         kw{"ᏎᎷᎭ"}
         kwk{"ᏆᏆᎳ"}
-        kxv{"ᎫᏈ"}
         ky{"ᎩᎵᏣᎢᏍ"}
         la{"ᎳᏘᏂ"}
         lad{"ᎳᏗᏃ"}
@@ -234,10 +231,8 @@ chr{
         lez{"ᎴᏏᎦᏂ"}
         lg{"ᎦᏂᏓ"}
         li{"ᎴᎹᏊᎵᏏ"}
-        lij{"ᎵᏇᎢᎠ"}
         lil{"ᎵᎶᎡᏘ"}
         lkt{"ᎳᎪᏓ"}
-        lmo{"ᎶᏆᏗ"}
         ln{"ᎵᏂᎦᎳ"}
         lo{"ᎳᎣ"}
         lou{"ᎷᏫᏏᎡᎾ ᎦᏬᏂᎯᏍᏗ"}
@@ -393,7 +388,6 @@ chr{
         sw_CD{"ᎧᏂᎪ ᏍᏩᎯᎵ"}
         swb{"ᎪᎼᎵᎠᏂ"}
         syr{"ᏏᎵᎠᎩ"}
-        szl{"ᏏᎴᏏᏂ"}
         ta{"ᏔᎻᎵ"}
         tce{"ᏧᎦᏃᏮ ᏚᏦᏁ"}
         te{"ᏖᎷᎦ"}
@@ -433,9 +427,7 @@ chr{
         uz{"ᎤᏍᏇᎩ"}
         vai{"ᏩᏱ"}
         ve{"ᏫᏂᏓ"}
-        vec{"ᏈᏂᏒᏂ"}
         vi{"ᏫᎡᏘᎾᎻᏍ"}
-        vmw{"ᎹᎱᏩ"}
         vo{"ᏬᎳᏊᎩ"}
         vun{"ᏭᎾᏦ"}
         wa{"ᏩᎷᎾ"}
@@ -446,7 +438,6 @@ chr{
         wuu{"Ꮽ ᏓᎶᏂᎨᏍᏛ"}
         xal{"ᎧᎳᎻᎧ"}
         xh{"ᏠᏌ"}
-        xnr{"ᎧᏈᎢ"}
         xog{"ᏐᎦ"}
         yav{"ᏰᎾᎦᏇᏂ"}
         ybb{"ᏰᎹᏋ"}
@@ -454,7 +445,6 @@ chr{
         yo{"ᏲᏄᏆ"}
         yrl{"ᏂᎾᎦᏚ"}
         yue{"ᎨᎾᏙᏂᏏ"}
-        za{"ᎱᎠᏂ"}
         zgh{"ᎠᏟᎶᏍᏗ ᎼᎶᎪ ᏔᎹᏏᏘ"}
         zh{"ᏓᎶᏂᎨ"}
         zh_Hans{"ᎠᎯᏗᎨ ᏓᎶᏂᎨ"}

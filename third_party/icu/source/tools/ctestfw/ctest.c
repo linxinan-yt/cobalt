@@ -181,9 +181,7 @@ static TestNode *createTestNode(const char* name, int32_t nameLen)
     newNode->sibling = NULL;
     newNode->child = NULL;
 
-    if (nameLen > 0) {
-        strncpy( newNode->name, name, nameLen );
-    }
+    strncpy( newNode->name, name, nameLen );
     newNode->name[nameLen] = 0;
 
     return  newNode;
@@ -653,27 +651,27 @@ static void go_offline_with_marker(const char *mrk) {
   }
 }
 
-static void go_offline(void) {
+static void go_offline() {
 	go_offline_with_marker(NULL);
 }
 
-static void go_offline_err(void) {
+static void go_offline_err() {
 	go_offline();
 }
 
-static void first_line_verbose(void) {
+static void first_line_verbose() {
     go_offline_with_marker("v");
 }
 
-static void first_line_err(void) {
+static void first_line_err() {
     go_offline_with_marker("!");
 }
 
-static void first_line_info(void) {
+static void first_line_info() {
     go_offline_with_marker("\"");
 }
 
-static void first_line_test(void) {
+static void first_line_test() {
 	fputs(" ", stdout);
 }
 

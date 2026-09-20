@@ -19,34 +19,31 @@
 
 #include "src/trace_processor/importers/proto/packet_sequence_state_generation.h"
 #include "src/trace_processor/importers/proto/winscope/viewcapture_args_parser.h"
-#include "src/trace_processor/importers/proto/winscope/winscope_context.h"
 #include "src/trace_processor/util/descriptors.h"
 #include "src/trace_processor/util/proto_to_args_parser.h"
 
-namespace perfetto::trace_processor::winscope {
+namespace perfetto::trace_processor {
+
+class TraceProcessorContext;
 
 class ViewCaptureParser {
  public:
-  explicit ViewCaptureParser(WinscopeContext*);
+  explicit ViewCaptureParser(TraceProcessorContext*);
   void Parse(int64_t timestamp,
              protozero::ConstBytes,
              PacketSequenceStateGeneration*);
 
  private:
-  void ParseView(
-      int64_t timestamp,
-      protozero::ConstBytes blob,
-      tables::ViewCaptureTable::Id,
-      PacketSequenceStateGeneration*,
-      std::unordered_map<int32_t, bool>& computed_visibility,
-      std::unordered_map<int32_t, tables::WinscopeTraceRectTable::Id>&
-          computed_rects);
+  void ParseView(int64_t timestamp,
+                 protozero::ConstBytes blob,
+                 tables::ViewCaptureTable::Id,
+                 PacketSequenceStateGeneration*);
 
   void AddDeinternedData(const ViewCaptureArgsParser&, uint32_t);
 
-  WinscopeContext* const context_;
+  TraceProcessorContext* const context_;
   util::ProtoToArgsParser args_parser_;
 };
-}  // namespace perfetto::trace_processor::winscope
+}  // namespace perfetto::trace_processor
 
 #endif  // SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_VIEWCAPTURE_PARSER_H_

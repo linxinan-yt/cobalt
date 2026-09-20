@@ -51,7 +51,6 @@ static void TestNarrowQuarters(void);
 static void TestExtraneousCharacters(void);
 static void TestParseTooStrict(void);
 static void TestHourCycle(void);
-static void TestLocaleNameCrash(void);
 
 void addDateForTest(TestNode** root);
 
@@ -77,10 +76,9 @@ void addDateForTest(TestNode** root)
     TESTCASE(TestExtraneousCharacters);
     TESTCASE(TestParseTooStrict);
     TESTCASE(TestHourCycle);
-    TESTCASE(TestLocaleNameCrash);
 }
 /* Testing the DateFormat API */
-static void TestDateFormat(void)
+static void TestDateFormat()
 {
     UDateFormat *def, *fr, *it, *de, *def1, *fr_pat;
     UDateFormat *any;
@@ -440,7 +438,7 @@ enum { kDateOrTimeOutMax = 96, kDateAndTimeOutMax = 192 };
 static const UDate minutesTolerance = 2 * 60.0 * 1000.0;
 static const UDate daysTolerance = 2 * 24.0 * 60.0 * 60.0 * 1000.0;
 
-static void TestRelativeDateFormat(void)
+static void TestRelativeDateFormat()
 {
     UDate today = 0.0;
     const UDateFormatStyle * stylePtr;
@@ -590,7 +588,7 @@ static void TestRelativeDateFormat(void)
 }
 
 /*Testing udat_getSymbols() and udat_setSymbols() and udat_countSymbols()*/
-static void TestSymbols(void)
+static void TestSymbols()
 {
     UDateFormat *def, *fr, *zhChiCal, *esMX;
     UErrorCode status = U_ZERO_ERROR;
@@ -864,7 +862,7 @@ free(pattern);
 /**
  * Test DateFormat(Calendar) API
  */
-static void TestDateFormatCalendar(void) {
+static void TestDateFormatCalendar() {
     UDateFormat *date=0, *time=0, *full=0;
     UCalendar *cal=0;
     UChar buf[256];
@@ -991,7 +989,7 @@ static void TestDateFormatCalendar(void) {
 /**
  * Test parsing two digit year against "YY" vs. "YYYY" patterns
  */
-static void TestCalendarDateParse(void) {
+static void TestCalendarDateParse() {
 
     int32_t result;
     UErrorCode ec = U_ZERO_ERROR;
@@ -1071,7 +1069,7 @@ static void TestCalendarDateParse(void) {
 
 
 /*INTERNAL FUNCTIONS USED*/
-static int getCurrentYear(void) {
+static int getCurrentYear() {
     static int currentYear = 0;
     if (currentYear == 0) {
         UErrorCode status = U_ZERO_ERROR;
@@ -1304,7 +1302,7 @@ static UBool _aux2ExtremeDates(UDateFormat* fmt, UDate small, UDate large,
  *  0.75*10^30, etc.  A logarithmic search will find 10^15, then 10^7.5
  *  and 10^22.5, etc.
  */
-static void TestExtremeDates(void) {
+static void TestExtremeDates() {
     UDateFormat *fmt;
     UErrorCode ec;
     UChar buf[256];
@@ -2089,8 +2087,8 @@ static void TestHourCycle(void) {
         // test some locales for which we have data
         u"en_US", u"Tuesday, March 16, 1943 at 3:45:32 PM",
         u"en_CA", u"Tuesday, March 16, 1943 at 3:45:32 p.m.",
-        u"en_GB", u"Tuesday, 16 March 1943 at 15:45:32",
-        u"en_AU", u"Tuesday, 16 March 1943 at 3:45:32 pm",
+        u"en_GB", u"Tuesday 16 March 1943 at 15:45:32",
+        u"en_AU", u"Tuesday 16 March 1943 at 3:45:32 pm",
         // test a couple locales for which we don't have specific locale files (we should still get the correct hour cycle)
         u"en_CO", u"Tuesday, March 16, 1943 at 3:45:32 PM",
         u"en_MX", u"Tuesday, March 16, 1943 at 3:45:32 PM",
@@ -2098,15 +2096,15 @@ static void TestHourCycle(void) {
         u"en_US@rg=GBzzzz", u"Tuesday, March 16, 1943 at 15:45:32",
         u"en_US@rg=CAzzzz", u"Tuesday, March 16, 1943 at 3:45:32 PM",
         u"en_CA@rg=USzzzz", u"Tuesday, March 16, 1943 at 3:45:32 p.m.",
-        u"en_GB@rg=USzzzz", u"Tuesday, 16 March 1943 at 3:45:32 pm",
-        u"en_GB@rg=CAzzzz", u"Tuesday, 16 March 1943 at 3:45:32 pm",
-        u"en_GB@rg=AUzzzz", u"Tuesday, 16 March 1943 at 3:45:32 pm",
+        u"en_GB@rg=USzzzz", u"Tuesday 16 March 1943 at 3:45:32 pm",
+        u"en_GB@rg=CAzzzz", u"Tuesday 16 March 1943 at 3:45:32 pm",
+        u"en_GB@rg=AUzzzz", u"Tuesday 16 March 1943 at 3:45:32 pm",
         // test that the hc ("hours") subtag does the right thing
         u"en_US@hours=h23", u"Tuesday, March 16, 1943 at 15:45:32",
-        u"en_GB@hours=h12", u"Tuesday, 16 March 1943 at 3:45:32 pm",
+        u"en_GB@hours=h12", u"Tuesday 16 March 1943 at 3:45:32 pm",
         // test that the rg and hc subtags do the right thing when used together
         u"en_US@rg=GBzzzz;hours=h12", u"Tuesday, March 16, 1943 at 3:45:32 PM",
-        u"en_GB@rg=USzzzz;hours=h23", u"Tuesday, 16 March 1943 at 15:45:32",
+        u"en_GB@rg=USzzzz;hours=h23", u"Tuesday 16 March 1943 at 15:45:32",
     };
     
     for (int32_t i = 0; i < UPRV_LENGTHOF(testCases); i += 2) {
@@ -2129,19 +2127,6 @@ static void TestHourCycle(void) {
             }
         }
     }
-}
-
-static void TestLocaleNameCrash(void) {
-    UErrorCode status = U_ZERO_ERROR;
-    UDateFormat icudf;
-
-    icudf = udat_open(UDAT_MEDIUM, UDAT_NONE, "notalanguage", NULL, 0, NULL, 0, &status);
-    if ( U_SUCCESS(status) ) {
-        log_verbose("Success: did not crash on udat_open(locale=\"notalanguage\")\n");
-    } else {
-        log_err("FAIL: didn't crash on udat_open(locale=\"notalanguage\"), but got %s.\n", u_errorName(status));
-    }
-    udat_close(icudf);
 }
 
 #endif /* #if !UCONFIG_NO_FORMATTING */

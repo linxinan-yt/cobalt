@@ -103,10 +103,6 @@ def main():
     module_dict = {
         'module_name':
             module_name,
-        'module_doc': {
-            'name': docs.module_doc.name,
-            'desc': docs.module_doc.desc,
-        } if docs.module_doc else None,
         'data_objects': [{
             'name':
                 table.name,

@@ -19,87 +19,91 @@
 #include "perfetto/base/logging.h"
 #include "perfetto/base/status.h"
 #include "perfetto/ext/base/status_macros.h"
+#include "perfetto/trace_processor/basic_types.h"
 #include "src/trace_processor/perfetto_sql/engine/perfetto_sql_engine.h"
-#include "src/trace_processor/sqlite/bindings/sqlite_function.h"
-#include "src/trace_processor/sqlite/bindings/sqlite_result.h"
-#include "src/trace_processor/sqlite/bindings/sqlite_type.h"
-#include "src/trace_processor/sqlite/bindings/sqlite_value.h"
+#include "src/trace_processor/perfetto_sql/intrinsics/functions/sql_function.h"
 #include "src/trace_processor/sqlite/sqlite_utils.h"
 
 namespace perfetto::trace_processor {
 
 namespace {
 
-struct Ln : public sqlite::Function<Ln> {
-  static constexpr char kName[] = "ln";
-  static constexpr int kArgCount = 1;
-
-  static void Step(sqlite3_context* ctx, int argc, sqlite3_value** argv) {
-    PERFETTO_DCHECK(argc == 1);
-    switch (sqlite::value::NumericType(argv[0])) {
-      case sqlite::Type::kInteger:
-      case sqlite::Type::kFloat: {
-        double value = sqlite::value::Double(argv[0]);
+struct Ln : public LegacySqlFunction {
+  static base::Status Run(Context*,
+                          size_t argc,
+                          sqlite3_value** argv,
+                          SqlValue& out,
+                          Destructors&) {
+    PERFETTO_CHECK(argc == 1);
+    switch (sqlite3_value_numeric_type(argv[0])) {
+      case SQLITE_INTEGER:
+      case SQLITE_FLOAT: {
+        double value = sqlite3_value_double(argv[0]);
         if (value > 0.0) {
-          return sqlite::result::Double(ctx, std::log(value));
+          out = SqlValue::Double(std::log(value));
         }
         break;
       }
-      case sqlite::Type::kNull:
-      case sqlite::Type::kText:
-      case sqlite::Type::kBlob:
+      case SqlValue::kNull:
+      case SqlValue::kString:
+      case SqlValue::kBytes:
         break;
     }
-    return sqlite::utils::ReturnNullFromFunction(ctx);
+
+    return base::OkStatus();
   }
 };
 
-struct Exp : public sqlite::Function<Exp> {
-  static constexpr char kName[] = "exp";
-  static constexpr int kArgCount = 1;
-
-  static void Step(sqlite3_context* ctx, int argc, sqlite3_value** argv) {
-    PERFETTO_DCHECK(argc == 1);
-    switch (sqlite::value::NumericType(argv[0])) {
-      case sqlite::Type::kInteger:
-      case sqlite::Type::kFloat:
-        return sqlite::result::Double(ctx,
-                                      std::exp(sqlite::value::Double(argv[0])));
-      case sqlite::Type::kNull:
-      case sqlite::Type::kText:
-      case sqlite::Type::kBlob:
+struct Exp : public LegacySqlFunction {
+  static base::Status Run(Context*,
+                          size_t argc,
+                          sqlite3_value** argv,
+                          SqlValue& out,
+                          Destructors&) {
+    PERFETTO_CHECK(argc == 1);
+    switch (sqlite3_value_numeric_type(argv[0])) {
+      case SQLITE_INTEGER:
+      case SQLITE_FLOAT:
+        out = SqlValue::Double(std::exp(sqlite3_value_double(argv[0])));
+        break;
+      case SqlValue::kNull:
+      case SqlValue::kString:
+      case SqlValue::kBytes:
         break;
     }
-    return sqlite::utils::ReturnNullFromFunction(ctx);
+
+    return base::OkStatus();
   }
 };
 
-struct Sqrt : public sqlite::Function<Sqrt> {
-  static constexpr char kName[] = "sqrt";
-  static constexpr int kArgCount = 1;
-
-  static void Step(sqlite3_context* ctx, int argc, sqlite3_value** argv) {
-    PERFETTO_DCHECK(argc == 1);
-    switch (sqlite::value::NumericType(argv[0])) {
-      case sqlite::Type::kInteger:
-      case sqlite::Type::kFloat:
-        return sqlite::result::Double(
-            ctx, std::sqrt(sqlite::value::Double(argv[0])));
-      case sqlite::Type::kNull:
-      case sqlite::Type::kText:
-      case sqlite::Type::kBlob:
+struct Sqrt : public LegacySqlFunction {
+  static base::Status Run(Context*,
+                          size_t argc,
+                          sqlite3_value** argv,
+                          SqlValue& out,
+                          Destructors&) {
+    PERFETTO_CHECK(argc == 1);
+    switch (sqlite3_value_numeric_type(argv[0])) {
+      case SQLITE_INTEGER:
+      case SQLITE_FLOAT:
+        out = SqlValue::Double(std::sqrt(sqlite3_value_double(argv[0])));
+        break;
+      case SqlValue::kNull:
+      case SqlValue::kString:
+      case SqlValue::kBytes:
         break;
     }
-    return sqlite::utils::ReturnNullFromFunction(ctx);
+
+    return base::OkStatus();
   }
 };
 
 }  // namespace
 
 base::Status RegisterMathFunctions(PerfettoSqlEngine& engine) {
-  RETURN_IF_ERROR(engine.RegisterFunction<Ln>(nullptr));
-  RETURN_IF_ERROR(engine.RegisterFunction<Exp>(nullptr));
-  return engine.RegisterFunction<Sqrt>(nullptr);
+  RETURN_IF_ERROR(engine.RegisterStaticFunction<Ln>("ln", 1, nullptr, true));
+  RETURN_IF_ERROR(engine.RegisterStaticFunction<Exp>("exp", 1, nullptr, true));
+  return engine.RegisterStaticFunction<Sqrt>("sqrt", 1, nullptr, true);
 }
 
 }  // namespace perfetto::trace_processor

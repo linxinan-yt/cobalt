@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 hu{
     Keys{
         calendar{"Naptár"}
@@ -79,7 +79,6 @@ hu{
         bin{"bini"}
         bkm{"kom"}
         bla{"siksika"}
-        blo{"anii"}
         bm{"bambara"}
         bn{"bangla"}
         bo{"tibeti"}
@@ -305,7 +304,6 @@ hu{
         kv{"komi"}
         kw{"korni"}
         kwk{"kwakʼwala"}
-        kxv{"kuvi"}
         ky{"kirgiz"}
         la{"latin"}
         lad{"ladino"}
@@ -332,6 +330,7 @@ hu{
         lua{"luba-lulua"}
         lui{"luiseno"}
         lun{"lunda"}
+        luo{"luo"}
         lus{"lushai"}
         luy{"lujia"}
         lv{"lett"}
@@ -560,10 +559,10 @@ hu{
         und{"ismeretlen nyelv"}
         ur{"urdu"}
         uz{"üzbég"}
+        vai{"vai"}
         ve{"venda"}
         vec{"velencei"}
         vi{"vietnámi"}
-        vmw{"makua"}
         vo{"volapük"}
         vot{"votják"}
         vun{"vunjo"}
@@ -577,7 +576,6 @@ hu{
         wuu{"wu kínai"}
         xal{"kalmük"}
         xh{"xhosza"}
-        xnr{"kangri"}
         xog{"szoga"}
         yao{"jaó"}
         yap{"japi"}
@@ -621,6 +619,7 @@ hu{
     Scripts{
         Adlm{"Adlam"}
         Aghb{"Kaukázusi albaniai"}
+        Arab{"Arab"}
         Aran{"Nasztalik"}
         Armi{"Birodalmi arámi"}
         Armn{"Örmény"}
@@ -671,6 +670,7 @@ hu{
         Hung{"Ómagyar"}
         Inds{"Indus"}
         Ital{"Régi olasz"}
+        Jamo{"Jamo"}
         Java{"Jávai"}
         Jpan{"Japán"}
         Kali{"Kajah li"}
@@ -745,6 +745,7 @@ hu{
         Tfng{"Berber"}
         Tglg{"Tagalog"}
         Thaa{"Thaana"}
+        Thai{"Thai"}
         Tibt{"Tibeti"}
         Ugar{"Ugari"}
         Vaii{"Vai"}
@@ -833,6 +834,7 @@ hu{
             phonebook{"Telefonkönyv sorrend"}
             phonetic{"Fonetikus rendezési sorrend"}
             pinyin{"Pinyin sorrend"}
+            reformed{"Átalakított rendezési elv"}
             search{"Általános célú keresés"}
             searchjl{"Keresés hangul kezdő mássalhangzó szerint"}
             standard{"Normál rendezési sorrend"}

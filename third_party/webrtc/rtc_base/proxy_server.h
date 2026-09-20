@@ -33,10 +33,10 @@ namespace webrtc {
 // class; children of ProxyServer implement WrapSocket appropriately to return
 // the correct protocol handler.
 
-class ProxyBinding {
+class ProxyBinding : public sigslot::has_slots<> {
  public:
   ProxyBinding(AsyncProxyServerSocket* in_socket, Socket* out_socket);
-  virtual ~ProxyBinding();
+  ~ProxyBinding() override;
 
   ProxyBinding(const ProxyBinding&) = delete;
   ProxyBinding& operator=(const ProxyBinding&) = delete;
@@ -74,13 +74,13 @@ class ProxyBinding {
       destroyed_trampoline_;
 };
 
-class ProxyServer {
+class ProxyServer : public sigslot::has_slots<> {
  public:
   ProxyServer(SocketFactory* int_factory,
               const SocketAddress& int_addr,
               SocketFactory* ext_factory,
               const SocketAddress& ext_ip);
-  virtual ~ProxyServer();
+  ~ProxyServer() override;
 
   ProxyServer(const ProxyServer&) = delete;
   ProxyServer& operator=(const ProxyServer&) = delete;
@@ -100,5 +100,6 @@ class ProxyServer {
 };
 
 }  //  namespace webrtc
+
 
 #endif  // RTC_BASE_PROXY_SERVER_H_

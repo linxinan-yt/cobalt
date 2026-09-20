@@ -233,10 +233,6 @@ enum SdpMungingType {
   kVideoCodecsAddedWithRawPacketization = 87,
   kVideoCodecsModifiedWithRawPacketization = 88,
   kVideoCodecsRtcpReducedSize = 89,
-  // DataChannel-related munging.
-  kDataChannelSctpInit = 100,
-  kDataChannelMaxMessageSize = 101,
-  kDataChannelSctpPort = 101,
   kMaxValue,
 };
 

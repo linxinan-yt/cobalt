@@ -17,6 +17,8 @@
 #ifndef SRC_TRACE_PROCESSOR_METRICS_METRICS_H_
 #define SRC_TRACE_PROCESSOR_METRICS_METRICS_H_
 
+#include <sqlite3.h>
+
 #include <cstddef>
 #include <cstdint>
 #include <optional>
@@ -33,11 +35,8 @@
 #include "perfetto/trace_processor/basic_types.h"
 #include "perfetto/trace_processor/trace_processor.h"
 #include "src/trace_processor/perfetto_sql/engine/perfetto_sql_engine.h"
+#include "src/trace_processor/perfetto_sql/intrinsics/functions/sql_function.h"
 #include "src/trace_processor/sqlite/bindings/sqlite_aggregate_function.h"
-#include "src/trace_processor/sqlite/bindings/sqlite_function.h"
-#include "src/trace_processor/sqlite/bindings/sqlite_result.h"
-#include "src/trace_processor/sqlite/bindings/sqlite_type.h"
-#include "src/trace_processor/sqlite/bindings/sqlite_value.h"
 #include "src/trace_processor/util/descriptors.h"
 
 #include "protos/perfetto/trace_processor/metrics_impl.pbzero.h"
@@ -150,46 +149,49 @@ int TemplateReplace(
     std::string* out);
 
 // Implements the NULL_IF_EMPTY SQL function.
-struct NullIfEmpty : public sqlite::Function<NullIfEmpty> {
-  static constexpr char kName[] = "null_if_empty";
-  static constexpr int kArgCount = 1;
-
-  static void Step(sqlite3_context* ctx, int argc, sqlite3_value** argv);
+struct NullIfEmpty : public LegacySqlFunction {
+  static base::Status Run(void* ctx,
+                          size_t argc,
+                          sqlite3_value** argv,
+                          SqlValue& out,
+                          Destructors&);
 };
 
 // Implements all the proto creation functions.
-struct BuildProto : public sqlite::Function<BuildProto> {
-  struct UserData {
+struct BuildProto : public LegacySqlFunction {
+  struct Context {
     TraceProcessor* tp;
     const DescriptorPool* pool;
     uint32_t descriptor_idx;
   };
-
-  static constexpr char kName[] = "build_proto";
-  static constexpr int kArgCount = -1;  // Variable arguments
-
-  static void Step(sqlite3_context* ctx, int argc, sqlite3_value** argv);
+  static base::Status Run(Context* ctx,
+                          size_t argc,
+                          sqlite3_value** argv,
+                          SqlValue& out,
+                          Destructors&);
 };
 
 // Implements the RUN_METRIC SQL function.
-struct RunMetric : public sqlite::Function<RunMetric> {
-  struct UserData {
+struct RunMetric : public LegacySqlFunction {
+  struct Context {
     PerfettoSqlEngine* engine;
     std::vector<SqlMetricFile>* metrics;
   };
-
-  static constexpr char kName[] = "run_metric";
-  static constexpr int kArgCount = -1;  // Variable arguments
-
-  static void Step(sqlite3_context* ctx, int argc, sqlite3_value** argv);
+  static constexpr bool kVoidReturn = true;
+  static base::Status Run(Context* ctx,
+                          size_t argc,
+                          sqlite3_value** argv,
+                          SqlValue& out,
+                          Destructors&);
 };
 
 // Implements the UNWRAP_METRIC_PROTO SQL function.
-struct UnwrapMetricProto : public sqlite::Function<UnwrapMetricProto> {
-  static constexpr char kName[] = "unwrap_metric_proto";
-  static constexpr int kArgCount = 2;
-
-  static void Step(sqlite3_context* ctx, int argc, sqlite3_value** argv);
+struct UnwrapMetricProto : public LegacySqlFunction {
+  static base::Status Run(Context* ctx,
+                          size_t argc,
+                          sqlite3_value** argv,
+                          SqlValue& out,
+                          Destructors&);
 };
 
 // These functions implement the RepeatedField SQL aggregate functions.

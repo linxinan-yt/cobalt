@@ -31,17 +31,14 @@
 
 namespace perfetto::trace_processor {
 
-class ClockSynchronizerListenerImpl;
 class ArgsTranslationTable;
 class ClockConverter;
-template <typename T>
-class ClockSynchronizer;
+class ClockTracker;
 class CpuTracker;
 class DescriptorPool;
 class EventTracker;
 class FlowTracker;
 class GlobalArgsTracker;
-class ImportLogsTracker;
 class MachineTracker;
 class MappingTracker;
 class MetadataTracker;
@@ -64,7 +61,6 @@ struct ProtoImporterModuleContext;
 struct TrackCompressorGroupIdxState;
 
 using MachineId = tables::MachineTable::Id;
-using ClockTracker = ClockSynchronizer<ClockSynchronizerListenerImpl>;
 
 class TraceProcessorContext {
  public:
@@ -142,8 +138,6 @@ class TraceProcessorContext {
   GlobalPtr<ForkedContextState> forked_context_state;
   GlobalPtr<ClockConverter> clock_converter;
   GlobalPtr<TrackCompressorGroupIdxState> track_group_idx_state;
-  GlobalPtr<StackProfileTracker> stack_profile_tracker;
-  GlobalPtr<Destructible> deobfuscation_tracker;  // DeobfuscationTracker
 
   // The registration function for additional proto modules.
   // This is populated by TraceProcessorImpl to allow for late registration of
@@ -175,7 +169,6 @@ class TraceProcessorContext {
 
   PerTracePtr<TraceState> trace_state;
   PerTracePtr<Destructible> content_analyzer;
-  PerTracePtr<ImportLogsTracker> import_logs_tracker;
 
   // Per-Machine State
   // =================
@@ -189,6 +182,7 @@ class TraceProcessorContext {
   PerMachinePtr<MappingTracker> mapping_tracker;
   PerMachinePtr<MachineTracker> machine_tracker;
   PerMachinePtr<CpuTracker> cpu_tracker;
+  PerMachinePtr<StackProfileTracker> stack_profile_tracker;
 
   // Per-Machine, Per-Trace State
   // ==========================
@@ -232,9 +226,14 @@ class TraceProcessorContext {
 class TraceProcessorContext::ForkedContextState {
  public:
   using TraceIdAndMachineId = std::pair<uint32_t, uint32_t>;
+  struct Hasher {
+    uint64_t operator()(const TraceIdAndMachineId& key) {
+      return base::MurmurHashCombine(key.first, key.second);
+    }
+  };
   base::FlatHashMap<TraceIdAndMachineId,
                     std::unique_ptr<TraceProcessorContext>,
-                    base::MurmurHash<TraceIdAndMachineId>>
+                    Hasher>
       trace_and_machine_to_context;
   base::FlatHashMap<uint32_t, TraceProcessorContext*> trace_to_context;
   base::FlatHashMap<uint32_t, TraceProcessorContext*> machine_to_context;

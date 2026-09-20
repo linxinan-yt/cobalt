@@ -27,10 +27,8 @@
 #include "api/packet_socket_factory.h"
 #include "api/test/mock_async_dns_resolver.h"
 #include "api/test/rtc_error_matchers.h"
-#include "api/transport/ecn_marking.h"
 #include "api/transport/stun.h"
 #include "api/units/time_delta.h"
-#include "api/units/timestamp.h"
 #include "p2p/base/basic_packet_socket_factory.h"
 #include "p2p/base/connection.h"
 #include "p2p/base/connection_info.h"
@@ -184,7 +182,7 @@ class TurnPortTestVirtualSocketServer : public VirtualSocketServer {
   using VirtualSocketServer::LookupBinding;
 };
 
-class TestConnectionWrapper {
+class TestConnectionWrapper : public sigslot::has_slots<> {
  public:
   explicit TestConnectionWrapper(Connection* conn) : connection_(conn) {
     conn->SubscribeDestroyed(this, [this](Connection* connection) {
@@ -192,7 +190,7 @@ class TestConnectionWrapper {
     });
   }
 
-  ~TestConnectionWrapper() {
+  ~TestConnectionWrapper() override {
     if (connection_) {
       connection_->UnsubscribeDestroyed(this);
     }
@@ -320,7 +318,6 @@ class TurnPortTest : public ::testing::Test,
     // This TURN port will be the controlling.
     turn_port_->SetIceRole(ICEROLE_CONTROLLING);
     turn_port_->SetIceTiebreaker(kTiebreakerDefault);
-    turn_port_->SetOption(Socket::OPT_RECV_ECN, 1);
     ConnectSignals();
 
     if (server_address.proto == PROTO_TLS) {
@@ -401,7 +398,6 @@ class TurnPortTest : public ::testing::Test,
     udp_port_->SetIceTiebreaker(kTiebreakerDefault);
     udp_port_->SubscribePortComplete(
         [this](Port* port) { OnUdpPortComplete(port); });
-    udp_port_->SetOption(Socket::OPT_RECV_ECN, 1);
   }
 
   void PrepareTurnAndUdpPorts(ProtocolType protocol_type) {
@@ -786,7 +782,7 @@ class TurnPortTest : public ::testing::Test,
                 IsRtcOk());
   }
 
-  void TestTurnSendData(ProtocolType protocol_type, bool expect_ecn_propagate) {
+  void TestTurnSendData(ProtocolType protocol_type) {
     PrepareTurnAndUdpPorts(protocol_type);
 
     // Create connections and send pings.
@@ -798,7 +794,8 @@ class TurnPortTest : public ::testing::Test,
     ASSERT_TRUE(conn2 != nullptr);
     conn1->RegisterReceivedPacketCallback(
         [&](Connection* connection, const ReceivedIpPacket& packet) {
-          turn_packets_.emplace_back(packet);
+          turn_packets_.push_back(
+              Buffer(packet.payload().data(), packet.payload().size()));
         });
 
     conn1->SubscribeDestroyed(this, [this](Connection* connection) {
@@ -806,7 +803,8 @@ class TurnPortTest : public ::testing::Test,
     });
     conn2->RegisterReceivedPacketCallback(
         [&](Connection* connection, const ReceivedIpPacket& packet) {
-          udp_packets_.emplace_back(packet);
+          udp_packets_.push_back(
+              Buffer(packet.payload().data(), packet.payload().size()));
         });
     conn2->SubscribeDestroyed(this, [this](Connection* connection) {
       OnConnectionSignalDestroyed(connection);
@@ -831,7 +829,6 @@ class TurnPortTest : public ::testing::Test,
       for (size_t j = 0; j < i + 1; ++j) {
         buf[j] = 0xFF - static_cast<unsigned char>(j);
       }
-      options.ect_1 = (i % 2 == 0);
       conn1->Send(buf, i + 1, options);
       conn2->Send(buf, i + 1, options);
       SIMULATED_WAIT(false, kSimulatedRtt, fake_clock_);
@@ -841,17 +838,9 @@ class TurnPortTest : public ::testing::Test,
     ASSERT_EQ(num_packets, turn_packets_.size());
     ASSERT_EQ(num_packets, udp_packets_.size());
     for (size_t i = 0; i < num_packets; ++i) {
-      EXPECT_EQ(i + 1, turn_packets_[i].payload.size());
-      EXPECT_EQ(i + 1, udp_packets_[i].payload.size());
-      EXPECT_EQ(turn_packets_[i].payload, udp_packets_[i].payload);
-      EXPECT_EQ(turn_packets_[i].payload, udp_packets_[i].payload);
-      if (expect_ecn_propagate && (i % 2 == 0)) {
-        EXPECT_EQ(turn_packets_[i].ecn, EcnMarking::kEct1);
-        EXPECT_EQ(udp_packets_[i].ecn, EcnMarking::kEct1);
-      } else {
-        EXPECT_EQ(turn_packets_[i].ecn, EcnMarking::kNotEct);
-        EXPECT_EQ(udp_packets_[i].ecn, EcnMarking::kNotEct);
-      }
+      EXPECT_EQ(i + 1, turn_packets_[i].size());
+      EXPECT_EQ(i + 1, udp_packets_[i].size());
+      EXPECT_EQ(turn_packets_[i], udp_packets_[i]);
     }
   }
 
@@ -881,12 +870,18 @@ class TurnPortTest : public ::testing::Test,
     ASSERT_TRUE(conn2 != nullptr);
     conn1->RegisterReceivedPacketCallback(
         [&](Connection* connection, const ReceivedIpPacket& packet) {
-          turn_packets_.emplace_back(packet);
+          turn_packets_.push_back(
+              Buffer(packet.payload().data(), packet.payload().size()));
         });
     conn1->SubscribeDestroyed(this, [this](Connection* connection) {
       OnConnectionSignalDestroyed(connection);
     });
 
+    conn2->RegisterReceivedPacketCallback(
+        [&](Connection* connection, const ReceivedIpPacket& packet) {
+          udp_packets_.push_back(
+              Buffer(packet.payload().data(), packet.payload().size()));
+        });
     conn2->SubscribeDestroyed(this, [this](Connection* connection) {
       OnConnectionSignalDestroyed(connection);
     });
@@ -920,24 +915,13 @@ class TurnPortTest : public ::testing::Test,
 
     // But the data should have arrived first.
     ASSERT_EQ(1ul, turn_packets_.size());
-    EXPECT_EQ(sizeof(buf), turn_packets_[0].payload.size());
+    EXPECT_EQ(sizeof(buf), turn_packets_[0].size());
 
     // The allocation is released at server.
     EXPECT_EQ(0U, turn_server_.server()->allocations().size());
   }
 
  protected:
-  struct Packet {
-    explicit Packet(const ReceivedIpPacket& packet)
-        : arrival_time(packet.arrival_time()),
-          ecn(packet.ecn()),
-          payload(Buffer(packet.payload().data(), packet.payload().size())) {}
-
-    std::optional<Timestamp> arrival_time;
-    EcnMarking ecn = EcnMarking::kNotEct;
-    Buffer payload;
-  };
-
   virtual PacketSocketFactory* socket_factory() { return &socket_factory_; }
 
   ScopedFakeClock fake_clock_;
@@ -961,8 +945,8 @@ class TurnPortTest : public ::testing::Test,
   bool udp_ready_ = false;
   bool test_finish_ = false;
   bool turn_refresh_success_ = false;
-  std::vector<Packet> turn_packets_;
-  std::vector<Packet> udp_packets_;
+  std::vector<Buffer> turn_packets_;
+  std::vector<Buffer> udp_packets_;
   AsyncSocketPacketOptions options;
   std::unique_ptr<TurnCustomizer> turn_customizer_;
   IceCandidateErrorEvent error_event_;
@@ -1741,11 +1725,13 @@ TEST_F(TurnPortTest, TestChannelBindGetErrorResponse) {
       IsRtcOk());
   // Verify that packets are allowed to be sent after a bind request error.
   // They'll just use a send indication instead.
+
   conn2->RegisterReceivedPacketCallback(
       [&](Connection* connection, const ReceivedIpPacket& packet) {
         // TODO(bugs.webrtc.org/345518625): Verify that the packet was
         // received unchanneled, not channeled.
-        udp_packets_.emplace_back(packet);
+        udp_packets_.push_back(
+            Buffer(packet.payload().data(), packet.payload().size()));
       });
   conn1->Send(data.data(), data.length(), options);
   EXPECT_THAT(WaitUntil([&] { return !udp_packets_.empty(); }, IsTrue(),
@@ -1759,7 +1745,7 @@ TEST_F(TurnPortTest, TestChannelBindGetErrorResponse) {
 TEST_F(TurnPortTest, TestTurnSendDataTurnUdpToUdp) {
   // Create ports and prepare addresses.
   CreateTurnPort(kTurnUsername, kTurnPassword, kTurnUdpProtoAddr);
-  TestTurnSendData(PROTO_UDP, /*expect_ecn_propagate=*/true);
+  TestTurnSendData(PROTO_UDP);
   EXPECT_EQ(UDP_PROTOCOL_NAME, turn_port_->Candidates()[0].relay_protocol());
 }
 
@@ -1768,7 +1754,7 @@ TEST_F(TurnPortTest, TestTurnSendDataTurnTcpToUdp) {
   turn_server_.AddInternalSocket(kTurnTcpIntAddr, PROTO_TCP);
   // Create ports and prepare addresses.
   CreateTurnPort(kTurnUsername, kTurnPassword, kTurnTcpProtoAddr);
-  TestTurnSendData(PROTO_TCP, /*expect_ecn_propagate=*/false);
+  TestTurnSendData(PROTO_TCP);
   EXPECT_EQ(TCP_PROTOCOL_NAME, turn_port_->Candidates()[0].relay_protocol());
 }
 
@@ -1776,7 +1762,7 @@ TEST_F(TurnPortTest, TestTurnSendDataTurnTcpToUdp) {
 TEST_F(TurnPortTest, TestTurnSendDataTurnTlsToUdp) {
   turn_server_.AddInternalSocket(kTurnTcpIntAddr, PROTO_TLS);
   CreateTurnPort(kTurnUsername, kTurnPassword, kTurnTlsProtoAddr);
-  TestTurnSendData(PROTO_TLS, /*expect_ecn_propagate=*/false);
+  TestTurnSendData(PROTO_TLS);
   EXPECT_EQ(TLS_PROTOCOL_NAME, turn_port_->Candidates()[0].relay_protocol());
 }
 
@@ -2009,8 +1995,7 @@ TEST_F(TurnPortTest, TestTurnCustomizerCount) {
   turn_server_.server()->SetStunMessageObserver(std::move(validator));
 
   CreateTurnPort(kTurnUsername, kTurnPassword, kTurnTlsProtoAddr);
-  // Don't expect ECN to be propagated via TCP
-  TestTurnSendData(PROTO_TLS, /*expect_ecn_propagate=*/false);
+  TestTurnSendData(PROTO_TLS);
   EXPECT_EQ(TLS_PROTOCOL_NAME, turn_port_->Candidates()[0].relay_protocol());
 
   // There should have been at least turn_packets_.size() calls to `customizer`.
@@ -2040,8 +2025,7 @@ TEST_F(TurnPortTest, TestTurnCustomizerDisallowChannelData) {
   turn_server_.server()->SetStunMessageObserver(std::move(validator));
 
   CreateTurnPort(kTurnUsername, kTurnPassword, kTurnTlsProtoAddr);
-  // Don't expect ECN to propagate via TCP.
-  TestTurnSendData(PROTO_TLS, /*expect_ecn_propagate=*/false);
+  TestTurnSendData(PROTO_TLS);
   EXPECT_EQ(TLS_PROTOCOL_NAME, turn_port_->Candidates()[0].relay_protocol());
 
   // There should have been at least turn_packets_.size() calls to `customizer`.
@@ -2071,8 +2055,7 @@ TEST_F(TurnPortTest, TestTurnCustomizerAddAttribute) {
   turn_server_.server()->SetStunMessageObserver(std::move(validator));
 
   CreateTurnPort(kTurnUsername, kTurnPassword, kTurnTlsProtoAddr);
-  // Don't expect ECN to be propagated via TCP
-  TestTurnSendData(PROTO_TLS, /*expect_ecn_propagate=*/false);
+  TestTurnSendData(PROTO_TLS);
   EXPECT_EQ(TLS_PROTOCOL_NAME, turn_port_->Candidates()[0].relay_protocol());
 
   // There should have been at least turn_packets_.size() calls to `customizer`.

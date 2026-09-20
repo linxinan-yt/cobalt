@@ -30,6 +30,7 @@
 #include "unicode/timezone.h"
 #include "unicode/utmscale.h"
 
+#include "bytesinkutil.h"
 #include "charstr.h"
 #include "cmemory.h"
 #include "ulocimp.h"
@@ -46,7 +47,6 @@
 #   define NOIME
 #   define NOMCX
 #include <windows.h>
-#include <typeinfo>
 
 U_NAMESPACE_BEGIN
 
@@ -104,7 +104,11 @@ static UErrorCode GetEquivalentWindowsLocaleName(const Locale& locale, UnicodeSt
     UErrorCode status = U_ZERO_ERROR;
 
     // Convert from names like "en_CA" and "de_DE@collation=phonebook" to "en-CA" and "de-DE-u-co-phonebk".
-    CharString asciiBCP47Tag = ulocimp_toLanguageTag(locale.getName(), false, status);
+    CharString asciiBCP47Tag;
+    {
+        CharStringByteSink sink(&asciiBCP47Tag);
+        ulocimp_toLanguageTag(locale.getName(), sink, false, &status);
+    }
 
     if (U_SUCCESS(status))
     {
@@ -252,7 +256,7 @@ UnicodeString &Win32DateFormat::format(Calendar &cal, UnicodeString &appendTo, F
         formatDate(&st_local, date);
         formatTime(&st_local, time);
 
-        if (typeid(cal) != typeid(*fCalendar)) {
+        if (strcmp(fCalendar->getType(), cal.getType()) != 0) {
             pattern = getTimeDateFormat(&cal, &fLocale, status);
         }
 
@@ -273,7 +277,7 @@ void Win32DateFormat::parse(const UnicodeString& /* text */, Calendar& /* cal */
 
 void Win32DateFormat::adoptCalendar(Calendar *newCalendar)
 {
-    if (fCalendar == nullptr || typeid(*fCalendar) != typeid(*newCalendar)) {
+    if (fCalendar == nullptr || strcmp(fCalendar->getType(), newCalendar->getType()) != 0) {
         UErrorCode status = U_ZERO_ERROR;
 
         if (fDateStyle != DateFormat::kNone && fTimeStyle != DateFormat::kNone) {
@@ -408,3 +412,4 @@ U_NAMESPACE_END
 #endif /* #if !UCONFIG_NO_FORMATTING */
 
 #endif // U_PLATFORM_USES_ONLY_WIN32_API
+

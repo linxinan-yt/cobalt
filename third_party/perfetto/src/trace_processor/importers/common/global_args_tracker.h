@@ -30,7 +30,8 @@
 #include "src/trace_processor/tables/metadata_tables_py.h"
 #include "src/trace_processor/types/variadic.h"
 
-namespace perfetto::trace_processor {
+namespace perfetto {
+namespace trace_processor {
 
 // Interns args into the storage from all ArgsTrackers across trace processor.
 // Note: most users will want to use ArgsTracker to push args to the strorage
@@ -107,7 +108,7 @@ class GlobalArgsTracker {
     base::MurmurHashCombiner combiner;
     for (const auto* it : valid) {
       const auto& arg = *it;
-      combiner.Combine(arg.key);
+      combiner.Combine(arg.key.raw_id());
       combiner.Combine(arg.value.type);
       // We don't hash arg.flat_key because it's a subsequence of arg.key.
       switch (arg.value.type) {
@@ -118,7 +119,7 @@ class GlobalArgsTracker {
           combiner.Combine(arg.value.uint_value);
           break;
         case Variadic::Type::kString:
-          combiner.Combine(arg.value.string_value);
+          combiner.Combine(arg.value.string_value.raw_id());
           break;
         case Variadic::Type::kReal:
           combiner.Combine(arg.value.real_value);
@@ -130,7 +131,7 @@ class GlobalArgsTracker {
           combiner.Combine(arg.value.bool_value);
           break;
         case Variadic::Type::kJson:
-          combiner.Combine(arg.value.json_value);
+          combiner.Combine(arg.value.json_value.raw_id());
           break;
         case Variadic::Type::kNull:
           combiner.Combine(0);
@@ -191,6 +192,7 @@ class GlobalArgsTracker {
   TraceStorage* storage_;
 };
 
-}  // namespace perfetto::trace_processor
+}  // namespace trace_processor
+}  // namespace perfetto
 
 #endif  // SRC_TRACE_PROCESSOR_IMPORTERS_COMMON_GLOBAL_ARGS_TRACKER_H_

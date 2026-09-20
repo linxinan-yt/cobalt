@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 lo{
     Countries{
         001{"ໂລກ"}
@@ -288,8 +288,8 @@ lo{
         VU{"ວານົວຕູ"}
         WF{"ວາລລິສ ແລະ ຟູຕູນາ"}
         WS{"ຊາມົວ"}
-        XA{"ສຳນຽງຊູໂດ"}
-        XB{"ຊູໂດບີດີ"}
+        XA{"Pseudo-Accents"}
+        XB{"Pseudo-Bidi"}
         XK{"ໂຄໂຊໂວ"}
         YE{"ເຢເມນ"}
         YT{"ມາຢັອດ"}

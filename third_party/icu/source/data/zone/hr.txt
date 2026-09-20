@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 hr{
     zoneStrings{
         "Africa:Addis_Ababa"{
@@ -18,8 +18,14 @@ hr{
         "Africa:Lome"{
             ec{"Lomé"}
         }
+        "Africa:Sao_Tome"{
+            ec{"São Tomé"}
+        }
         "America:Anguilla"{
             ec{"Angvila"}
+        }
+        "America:Asuncion"{
+            ec{"Asunción"}
         }
         "America:Bahia_Banderas"{
             ec{"Bahia Banderas"}
@@ -29,6 +35,9 @@ hr{
         }
         "America:Costa_Rica"{
             ec{"Kostarika"}
+        }
+        "America:Curacao"{
+            ec{"Curaçao"}
         }
         "America:Dominica"{
             ec{"Dominika"}
@@ -65,6 +74,9 @@ hr{
         }
         "America:Puerto_Rico"{
             ec{"Portoriko"}
+        }
+        "America:Santa_Isabel"{
+            ec{"Santa Isabel"}
         }
         "America:St_Barthelemy"{
             ec{"Saint Barthélemy"}
@@ -114,12 +126,6 @@ hr{
         "Asia:Kamchatka"{
             ec{"Kamčatka"}
         }
-        "Asia:Karachi"{
-            ec{"Karači"}
-        }
-        "Asia:Katmandu"{
-            ec{"Katmandu"}
-        }
         "Asia:Khandyga"{
             ec{"Handiga"}
         }
@@ -151,7 +157,7 @@ hr{
             ec{"Kizilorda"}
         }
         "Asia:Rangoon"{
-            ec{"Rangun"}
+            ec{"Rangoon"}
         }
         "Asia:Riyadh"{
             ec{"Rijad"}
@@ -161,9 +167,6 @@ hr{
         }
         "Asia:Sakhalin"{
             ec{"Sahalin"}
-        }
-        "Asia:Seoul"{
-            ec{"Seul"}
         }
         "Asia:Shanghai"{
             ec{"Šangaj"}
@@ -180,14 +183,8 @@ hr{
         "Asia:Tehran"{
             ec{"Teheran"}
         }
-        "Asia:Tokyo"{
-            ec{"Tokio"}
-        }
         "Asia:Ulaanbaatar"{
             ec{"Ulan Bator"}
-        }
-        "Asia:Urumqi"{
-            ec{"Urumči"}
         }
         "Asia:Yakutsk"{
             ec{"Jakutsk"}
@@ -199,10 +196,7 @@ hr{
             ec{"Erevan"}
         }
         "Atlantic:Azores"{
-            ec{"Azori"}
-        }
-        "Atlantic:Bermuda"{
-            ec{"Bermudi"}
+            ec{"Azorski otoci"}
         }
         "Atlantic:Canary"{
             ec{"Kanari"}
@@ -213,8 +207,8 @@ hr{
         "Atlantic:South_Georgia"{
             ec{"Južna Georgija"}
         }
-        "Atlantic:St_Helena"{
-            ec{"Sveta Helena"}
+        "Australia:Currie"{
+            ec{"Currie"}
         }
         "Etc:UTC"{
             ls{"koordinirano svjetsko vrijeme"}
@@ -300,6 +294,9 @@ hr{
         "Europe:Ulyanovsk"{
             ec{"Uljanovsk"}
         }
+        "Europe:Uzhgorod"{
+            ec{"Užgorod"}
+        }
         "Europe:Vatican"{
             ec{"Vatikan"}
         }
@@ -309,6 +306,9 @@ hr{
         "Europe:Warsaw"{
             ec{"Varšava"}
         }
+        "Europe:Zaporozhye"{
+            ec{"Zaporožje"}
+        }
         "Europe:Zurich"{
             ec{"Zürich"}
         }
@@ -317,6 +317,9 @@ hr{
         }
         "Indian:Mauritius"{
             ec{"Mauricijus"}
+        }
+        "Indian:Reunion"{
+            ec{"Réunion"}
         }
         "Pacific:Enderbury"{
             ec{"Enderbury"}
@@ -507,11 +510,16 @@ hr{
             lg{"kinesko vrijeme"}
             ls{"kinesko standardno vrijeme"}
         }
+        "meta:Choibalsan"{
+            ld{"choibalsansko ljetno vrijeme"}
+            lg{"choibalsansko vrijeme"}
+            ls{"choibalsansko standardno vrijeme"}
+        }
         "meta:Christmas"{
-            ls{"vrijeme Božićnog Otoka"}
+            ls{"vrijeme Božićnog otoka"}
         }
         "meta:Cocos"{
-            ls{"vrijeme Kokosovih Otoka"}
+            ls{"vrijeme Kokosovih otoka"}
         }
         "meta:Colombia"{
             ld{"kolumbijsko ljetno vrijeme"}
@@ -519,9 +527,9 @@ hr{
             ls{"kolumbijsko standardno vrijeme"}
         }
         "meta:Cook"{
-            ld{"Cookovi Otoci, polusatni pomak, ljetno vrijeme"}
-            lg{"vrijeme Cookovih Otoka"}
-            ls{"standardno vrijeme Cookovih Otoka"}
+            ld{"Cookovi otoci, polusatni pomak, ljetno vrijeme"}
+            lg{"vrijeme Cookovih otoka"}
+            ls{"standardno vrijeme Cookovih otoka"}
         }
         "meta:Cuba"{
             ld{"kubansko ljetno vrijeme"}
@@ -586,7 +594,7 @@ hr{
             ls{"vrijeme Francuske Gijane"}
         }
         "meta:French_Southern"{
-            ls{"vrijeme Francuskih Južnih Teritorija"}
+            ls{"vrijeme Francuskih južnih i antarktičkih teritorija"}
         }
         "meta:GMT"{
             ls{"univerzalno vrijeme"}
@@ -683,9 +691,6 @@ hr{
             lg{"Petropavlovsk-kamčatsko vrijeme"}
             ls{"Petropavlovsk-kamčatsko standardno vrijeme"}
         }
-        "meta:Kazakhstan"{
-            ls{"kazahstansko vrijeme"}
-        }
         "meta:Kazakhstan_Eastern"{
             ls{"istočnokazahstansko vrijeme"}
         }
@@ -724,6 +729,9 @@ hr{
             lg{"makaosko vrijeme"}
             ls{"standardno makaosko vrijeme"}
         }
+        "meta:Macquarie"{
+            ls{"vrijeme otoka Macquarie"}
+        }
         "meta:Magadan"{
             ld{"magadansko ljetno vrijeme"}
             lg{"magadansko vrijeme"}
@@ -748,6 +756,11 @@ hr{
         }
         "meta:Mawson"{
             ls{"mawsonsko vrijeme"}
+        }
+        "meta:Mexico_Northwest"{
+            ld{"sjeverozapadno meksičko ljetno vrijeme"}
+            lg{"sjeverozapadno meksičko vrijeme"}
+            ls{"sjeverozapadno meksičko standardno vrijeme"}
         }
         "meta:Mexico_Pacific"{
             ld{"meksičko pacifičko ljetno vrijeme"}
@@ -890,7 +903,7 @@ hr{
             ls{"singapursko vrijeme"}
         }
         "meta:Solomon"{
-            ls{"vrijeme Salomonovih Otoka"}
+            ls{"vrijeme Salomonskih Otoka"}
         }
         "meta:South_Georgia"{
             ls{"vrijeme Južne Georgije"}

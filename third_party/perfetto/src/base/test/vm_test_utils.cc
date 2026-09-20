@@ -97,8 +97,7 @@ bool IsMapped(void* start, size_t size) {
   ignore_result(page_size);
   return true;
 #else
-#if PERFETTO_BUILDFLAG(PERFETTO_OS_APPLE) || \
-    PERFETTO_BUILDFLAG(PERFETTO_OS_FREEBSD)
+#if PERFETTO_BUILDFLAG(PERFETTO_OS_APPLE)
   using PageState = char;
   static constexpr PageState kIncoreMask = MINCORE_INCORE;
 #else

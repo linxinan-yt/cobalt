@@ -1,9 +1,9 @@
 Name: C++ Signal/Slot Library
 Short Name: sigslot
-URL: https://sigslot.sourceforge.net/
+URL: http://sigslot.sourceforge.net/
 Version: N/A
 Date: 2018-07-09
-License: LicenseRef-Public-Domain-Sigslot
+License: Ignorable
 License File: LICENSE
 Update Mechanism: Static (https://crbug.com/419414421)
 Security Critical: yes

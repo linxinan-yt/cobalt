@@ -38,13 +38,13 @@ export default class implements PerfettoPlugin {
       ctx.tracks.registerTrack({
         uri,
         tags: {
-          kinds: [COUNTER_TRACK_KIND],
+          kind: COUNTER_TRACK_KIND,
           trackIds: [it.id],
         },
         renderer: new TraceProcessorCounterTrack(ctx, uri, {}, it.id, name),
       });
       const track = new TrackNode({uri, name, sortOrder: -20});
-      ctx.defaultWorkspace.addChildInOrder(track);
+      ctx.workspace.addChildInOrder(track);
     }
   }
 }

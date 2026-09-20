@@ -268,11 +268,6 @@ class ScopedRefcount {
 };
 }  // namespace task_runner_internal
 
-using MaybeLockFreeTaskRunner =
-    std::conditional_t<base::flags::use_lockfree_taskrunner,
-                       LockFreeTaskRunner,
-                       UnixTaskRunner>;
-
 }  // namespace base
 }  // namespace perfetto
 

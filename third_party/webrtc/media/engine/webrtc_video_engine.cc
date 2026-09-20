@@ -1681,14 +1681,6 @@ void WebRtcVideoSendChannel::FillSendCodecStats(
   // primary codec that is being used to send here.
   video_media_info->send_codecs.insert(std::make_pair(
       send_codec()->codec.id, send_codec()->codec.ToCodecParameters()));
-
-  for (const auto& it : send_codecs_) {
-    auto codec_param_it = video_media_info->send_codecs.find(it.codec.id);
-    if (codec_param_it == video_media_info->send_codecs.end()) {
-      video_media_info->send_codecs.insert(
-          std::make_pair(it.codec.id, it.codec.ToCodecParameters()));
-    }
-  }
 }
 
 void WebRtcVideoSendChannel::OnPacketSent(const SentPacketInfo& sent_packet) {
@@ -2524,19 +2516,6 @@ WebRtcVideoSendChannel::WebRtcVideoSendStream::GetPerLayerVideoSenderInfos(
     if (encoding_index_by_ssrc.find(ssrc) != encoding_index_by_ssrc.end()) {
       info.encoding_index = encoding_index_by_ssrc[ssrc];
     }
-    auto stream_config = std::find_if(
-        parameters_.config.rtp.stream_configs.begin(),
-        parameters_.config.rtp.stream_configs.end(),
-        [ssrc](auto stream_config) { return stream_config.ssrc == ssrc; });
-    if (stream_config != parameters_.config.rtp.stream_configs.end()) {
-      if (stream_config->payload_type != -1) {
-        info.codec_name = stream_config->payload_name;
-        info.codec_payload_type = stream_config->payload_type;
-      } else {
-        info.codec_name = "";
-        info.codec_payload_type = std::nullopt;
-      }
-    }
     info.active = IsActiveFromEncodings(
         !is_svc ? std::optional<uint32_t>(ssrc) : std::nullopt,
         rtp_parameters_.encodings);
@@ -2800,6 +2779,30 @@ WebRtcVideoReceiveChannel::~WebRtcVideoReceiveChannel() {
     delete kv.second;
 }
 
+void WebRtcVideoReceiveChannel::SetReceiverFeedbackParameters(
+    bool lntf_enabled,
+    bool nack_enabled,
+    RtcpMode rtcp_mode,
+    std::optional<int> rtx_time) {
+  RTC_DCHECK_RUN_ON(&thread_checker_);
+
+  // Update receive feedback parameters from new codec or RTCP mode.
+  for (auto& kv : receive_streams_) {
+    RTC_DCHECK(kv.second != nullptr);
+    kv.second->SetFeedbackParameters(lntf_enabled, nack_enabled, rtcp_mode,
+                                     rtx_time);
+  }
+  // Store for future creation of receive streams
+  rtp_config_.lntf.enabled = lntf_enabled;
+  if (nack_enabled) {
+    rtp_config_.nack.rtp_history_ms = kNackHistoryMs;
+  } else {
+    rtp_config_.nack.rtp_history_ms = 0;
+  }
+  rtp_config_.rtcp_mode = rtcp_mode;
+  // Note: There is no place in config to store rtx_time.
+}
+
 RtpParameters WebRtcVideoReceiveChannel::GetRtpReceiverParameters(
     uint32_t ssrc) const {
   RTC_DCHECK_RUN_ON(&thread_checker_);
@@ -2895,11 +2898,6 @@ bool WebRtcVideoReceiveChannel::GetChangedReceiverParameters(
   int flexfec_payload_type = mapped_codecs.front().flexfec_payload_type;
   if (flexfec_payload_type != recv_flexfec_payload_type_) {
     changed_params->flexfec_payload_type = flexfec_payload_type;
-  }
-
-  if (params.rtcp.reduced_size != recv_params_.rtcp.reduced_size) {
-    changed_params->rtcp_mode =
-        params.rtcp.reduced_size ? RtcpMode::kReducedSize : RtcpMode::kCompound;
   }
 
   return true;
@@ -3602,6 +3600,31 @@ bool WebRtcVideoReceiveChannel::WebRtcVideoReceiveStream::ReconfigureCodecs(
   return recreate_needed;
 }
 
+void WebRtcVideoReceiveChannel::WebRtcVideoReceiveStream::SetFeedbackParameters(
+    bool lntf_enabled,
+    bool nack_enabled,
+    RtcpMode rtcp_mode,
+    std::optional<int> rtx_time) {
+  RTC_DCHECK(stream_);
+
+  if (config_.rtp.rtcp_mode != rtcp_mode) {
+    config_.rtp.rtcp_mode = rtcp_mode;
+    stream_->SetRtcpMode(rtcp_mode);
+
+    flexfec_config_.rtcp_mode = rtcp_mode;
+    if (flexfec_stream_) {
+      flexfec_stream_->SetRtcpMode(rtcp_mode);
+    }
+  }
+
+  config_.rtp.lntf.enabled = lntf_enabled;
+  stream_->SetLossNotificationEnabled(lntf_enabled);
+
+  int nack_history_ms = nack_enabled ? rtx_time.value_or(kNackHistoryMs) : 0;
+  config_.rtp.nack.rtp_history_ms = nack_history_ms;
+  stream_->SetNackHistory(TimeDelta::Millis(nack_history_ms));
+}
+
 void WebRtcVideoReceiveChannel::WebRtcVideoReceiveStream::SetFlexFecPayload(
     int payload_type) {
   // TODO(bugs.webrtc.org/11993, tommi): See if it is better to always have a
@@ -3636,29 +3659,20 @@ void WebRtcVideoReceiveChannel::WebRtcVideoReceiveStream::SetFlexFecPayload(
 }
 
 void WebRtcVideoReceiveChannel::WebRtcVideoReceiveStream::SetReceiverParameters(
-    const ChangedReceiverParameters& changed_params) {
+    const ChangedReceiverParameters& params) {
   RTC_DCHECK(stream_);
   bool video_needs_recreation = false;
-  if (changed_params.codec_settings) {
-    video_needs_recreation = ReconfigureCodecs(*changed_params.codec_settings);
+  if (params.codec_settings) {
+    video_needs_recreation = ReconfigureCodecs(*params.codec_settings);
   }
 
-  if (changed_params.flexfec_payload_type) {
-    SetFlexFecPayload(*changed_params.flexfec_payload_type);
-  }
+  if (params.flexfec_payload_type)
+    SetFlexFecPayload(*params.flexfec_payload_type);
+
   if (video_needs_recreation) {
     RecreateReceiveStream();
   } else {
     RTC_DLOG_F(LS_INFO) << "No receive stream recreate needed.";
-  }
-  if (changed_params.rtcp_mode) {
-    RtcpMode rtcp_mode = *changed_params.rtcp_mode;
-    config_.rtp.rtcp_mode = rtcp_mode;
-    stream_->SetRtcpMode(rtcp_mode);
-    flexfec_config_.rtcp_mode = rtcp_mode;
-    if (flexfec_stream_) {
-      flexfec_stream_->SetRtcpMode(rtcp_mode);
-    }
   }
 }
 

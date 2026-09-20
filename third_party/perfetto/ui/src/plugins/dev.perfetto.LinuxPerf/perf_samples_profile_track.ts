@@ -24,32 +24,18 @@ import {Timestamp} from '../../components/widgets/timestamp';
 import {Time, time} from '../../base/time';
 import {Flamegraph, FLAMEGRAPH_STATE_SCHEMA} from '../../widgets/flamegraph';
 import {Trace} from '../../public/trace';
-import {SliceTrack} from '../../components/tracks/slice_track';
+import {DatasetSliceTrack} from '../../components/tracks/dataset_slice_track';
 import {SourceDataset} from '../../trace_processor/dataset';
 import {Stack} from '../../widgets/stack';
 
-// TODO(stevegolton): Dedupe this file with instruments_samples_profile_track.ts
+// TODO(stevegolton): Dedupe this file with instrument_samples_profile_track.ts
 
-export function createPerfCallsitesTrack(
+export function createProcessPerfSamplesProfileTrack(
   trace: Trace,
   uri: string,
-  upid?: number,
-  utid?: number,
-  sessionId?: number,
+  upid: number,
 ) {
-  const constraints = [];
-  if (upid !== undefined) {
-    constraints.push(`(upid = ${upid})`);
-  }
-  if (utid !== undefined) {
-    constraints.push(`(utid = ${utid})`);
-  }
-  if (sessionId !== undefined) {
-    constraints.push(`(perf_session_id = ${sessionId})`);
-  }
-  const trackConstraints = constraints.join(' AND ');
-
-  return SliceTrack.create({
+  return new DatasetSliceTrack({
     trace,
     uri,
     dataset: new SourceDataset({
@@ -62,19 +48,21 @@ export function createPerfCallsitesTrack(
        SELECT
           p.id,
           ts,
-          callsite_id AS callsiteId,
+          callsite_id as callsiteId,
           upid
-        FROM perf_sample AS p
-        JOIN thread USING (utid)
-        WHERE callsiteId IS NOT NULL
-          AND ${trackConstraints}
+        FROM perf_sample p
+        JOIN thread using (utid)
+        WHERE callsite_id IS NOT NULL
         ORDER BY ts
       `,
+      filter: {
+        col: 'upid',
+        eq: upid,
+      },
     }),
-    sliceName: () => 'Perf sample',
+    sliceName: () => 'Perf Sample',
     colorizer: (row) => getColorForSample(row.callsiteId),
     detailsPanel: (row) => {
-      // for callstack view when selecting a single sample
       const metrics = metricsFromTableOrSubquery(
         `
           (
@@ -86,17 +74,18 @@ export function createPerfCallsitesTrack(
               source_file || ':' || line_number as source_location,
               self_count
             from _callstacks_for_callsites!((
-              select ps.callsite_id
-              from perf_sample ps
+              select p.callsite_id
+              from perf_sample p
               join thread t using (utid)
-              where ps.ts = ${row.ts}
-                and ${trackConstraints}
+              where p.ts >= ${row.ts}
+                and p.ts <= ${row.ts}
+                and t.upid = ${upid}
             ))
           )
         `,
         [
           {
-            name: 'count',
+            name: 'Perf Samples',
             unit: '',
             columnName: 'self_count',
           },
@@ -106,7 +95,89 @@ export function createPerfCallsitesTrack(
         [
           {
             name: 'source_location',
-            displayName: 'Source location',
+            displayName: 'Source Location',
+            mergeAggregation: 'ONE_OR_SUMMARY',
+          },
+        ],
+      );
+      const serialization = {
+        schema: FLAMEGRAPH_STATE_SCHEMA,
+        state: Flamegraph.createDefaultState(metrics),
+      };
+      const flamegraph = new QueryFlamegraph(trace, metrics, serialization);
+      return {
+        render: () =>
+          renderDetailsPanel(trace, flamegraph, Time.fromRaw(row.ts)),
+        serialization,
+      };
+    },
+  });
+}
+
+export function createThreadPerfSamplesProfileTrack(
+  trace: Trace,
+  uri: string,
+  utid: number,
+) {
+  return new DatasetSliceTrack({
+    trace,
+    uri,
+    dataset: new SourceDataset({
+      schema: {
+        id: NUM,
+        ts: LONG,
+        callsiteId: NUM,
+      },
+      src: `
+        SELECT
+          p.id,
+          ts,
+          callsite_id as callsiteId,
+          utid
+        FROM perf_sample p
+        WHERE callsite_id IS NOT NULL
+        ORDER BY ts
+      `,
+      filter: {
+        col: 'utid',
+        eq: utid,
+      },
+    }),
+    sliceName: () => 'Perf Sample',
+    colorizer: (row) => getColorForSample(row.callsiteId),
+    detailsPanel: (row) => {
+      const metrics = metricsFromTableOrSubquery(
+        `
+          (
+            select
+              id,
+              parent_id as parentId,
+              name,
+              mapping_name,
+              source_file || ':' || line_number as source_location,
+              self_count
+            from _callstacks_for_callsites!((
+              select p.callsite_id
+              from perf_sample p
+              where p.ts >= ${row.ts}
+                and p.ts <= ${row.ts}
+                and p.utid = ${utid}
+            ))
+          )
+        `,
+        [
+          {
+            name: 'Perf Samples',
+            unit: '',
+            columnName: 'self_count',
+          },
+        ],
+        'include perfetto module linux.perf.samples',
+        [{name: 'mapping_name', displayName: 'Mapping'}],
+        [
+          {
+            name: 'source_location',
+            displayName: 'Source Location',
             mergeAggregation: 'ONE_OR_SUMMARY',
           },
         ],
@@ -135,11 +206,18 @@ function renderDetailsPanel(
     m(
       DetailsShell,
       {
-        fillHeight: true,
-        title: 'Perf sample',
+        fillParent: true,
+        title: 'Perf Samples',
         buttons: m(Stack, {orientation: 'horizontal', spacing: 'large'}, [
           m('span', [
-            `Timestamp: `,
+            `First timestamp: `,
+            m(Timestamp, {
+              trace,
+              ts,
+            }),
+          ]),
+          m('span', [
+            `Last timestamp: `,
             m(Timestamp, {
               trace,
               ts,

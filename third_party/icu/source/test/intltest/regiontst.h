@@ -39,7 +39,6 @@ public:
     void TestAvailableTerritories();
     void TestNoContainedRegions();
     void TestGroupingChildren();
-    void TestGetRegionForSupplementalDataMatch();
 
 private:
 

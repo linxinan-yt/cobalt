@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 zh{
     AuxExemplarCharacters{
         "[丐 丛 丫 乒 乓 乞 乳 亢 亩 亭 仂 仆 仑 仓 仗 伞 伪 伶 伺 佃 佣 侄 侈 侍 侣 侥 侮 俏 俐 俘 俭 俯 俺 倔 倘 倡 债 偎"
@@ -677,8 +677,8 @@ zh{
                 "HHmmss",
                 "HHmm",
                 "GyMMEEEEd",
-                "GyMMMd",
-                "GyMMMd",
+                "GyMd",
+                "GyMd",
                 "GyMd",
             }
             eras{
@@ -744,8 +744,8 @@ zh{
                 "HHmmss",
                 "HHmm",
                 "GyMMEEEEd",
-                "GyMMMd",
-                "GyMMMd",
+                "GyMd",
+                "GyMd",
                 "GyMd",
             }
             eras{
@@ -821,9 +821,9 @@ zh{
                 "HHmmssz",
                 "HHmmss",
                 "HHmm",
-                "GyMMMEEEEd",
-                "GyMMMd",
-                "GyMMMd",
+                "GyMEEEEd",
+                "GyMd",
+                "GyMd",
                 "GyMd",
             }
             availableFormats{
@@ -1022,9 +1022,9 @@ zh{
                 "HHmmssz",
                 "HHmmss",
                 "HHmm",
-                "yMMMEEEEd",
-                "yMMMd",
-                "yMMMd",
+                "yMEEEEd",
+                "yMd",
+                "yMd",
                 "yMd",
             }
             appendItems{
@@ -1417,9 +1417,9 @@ zh{
                 "HHmmssz",
                 "HHmmss",
                 "HHmm",
-                "GyMMMEEEEd",
-                "GyMMMd",
-                "GyMMMd",
+                "GyMMEEEEd",
+                "GyMMd",
+                "GyMMd",
                 "GyMd",
             }
             availableFormats{
@@ -1479,9 +1479,6 @@ zh{
                 MEd{"M-dE"}
                 MMM{"LLL"}
                 Md{"M-d"}
-                yyyyMEd{"Gy/M/dE"}
-                yyyyMMMEd{"Gy年M月d日E"}
-                yyyyMd{"Gy/M/d"}
             }
             eras{
                 abbreviated{
@@ -1542,9 +1539,9 @@ zh{
                 "HHmmssz",
                 "HHmmss",
                 "HHmm",
-                "GyMMMEEEEd",
-                "GyMMMd",
-                "GyMMMd",
+                "GyMEEEEd",
+                "GyMd",
+                "GyMd",
                 "GyMMdd",
             }
             availableFormats{
@@ -2432,13 +2429,7 @@ zh{
             dn{"月中周"}
         }
         weekday{
-            dn{"星期"}
-        }
-        weekday-narrow{
-            dn{"星期"}
-        }
-        weekday-short{
-            dn{"星期"}
+            dn{"工作日"}
         }
         weekdayOfMonth{
             dn{"月中日"}
@@ -2506,10 +2497,10 @@ zh{
                 "[%％﹪ ٪]",
                 "[‰ ؉]",
                 "[\$＄﹩]",
-                "[£￡ ₤]",
+                "[£ ₤]",
                 "[¥￥]",
                 "[₩￦]",
-                "[₹ {Rp} {Rs}₨]",
+                "[₹ ₨ {Rp} {Rs}]",
             }
         }
         number{

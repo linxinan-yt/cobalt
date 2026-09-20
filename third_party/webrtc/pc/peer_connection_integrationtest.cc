@@ -100,7 +100,6 @@ namespace webrtc {
 namespace {
 
 using ::testing::AtLeast;
-using ::testing::ByMove;
 using ::testing::Contains;
 using ::testing::Eq;
 using ::testing::Field;
@@ -1944,11 +1943,8 @@ TEST_P(PeerConnectionIntegrationTest,
   PeerConnectionDependencies caller_deps(nullptr);
   caller_deps.async_dns_resolver_factory = std::move(caller_resolver_factory);
 
-  // Create() will be called twice.
   EXPECT_CALL(*callee_resolver_factory, Create())
-      .WillOnce(Return(ByMove(std::move(callee_async_resolver))))
-      .WillOnce(
-          Return(ByMove(std::make_unique<NiceMock<MockAsyncDnsResolver>>())));
+      .WillOnce(Return(ByMove(std::move(callee_async_resolver))));
   PeerConnectionDependencies callee_deps(nullptr);
   callee_deps.async_dns_resolver_factory = std::move(callee_resolver_factory);
 
@@ -3655,7 +3651,7 @@ TEST_F(PeerConnectionIntegrationTestUnifiedPlan,
 }
 
 TEST_F(PeerConnectionIntegrationTestUnifiedPlan,
-       DISABLED_RenegotiateManyVideoTransceivers) {
+       RenegotiateManyVideoTransceivers) {
   OverrideLoggingLevelForTest(LS_WARNING);
 
   PeerConnectionInterface::RTCConfiguration config;
@@ -4145,14 +4141,16 @@ TEST_P(PeerConnectionIntegrationTest,
       std::make_unique<MockEncoderSelector>();
   std::optional<SdpVideoFormat> next_format;
   EXPECT_CALL(*encoder_selector, OnCurrentEncoder)
-      .WillOnce([&](const SdpVideoFormat& format) {
+      .WillOnce(Invoke([&](const SdpVideoFormat& format) {
         EXPECT_EQ(format.name, "VP8");
         next_format = SdpVideoFormat::VP9Profile0();
-      })
-      .WillOnce(
-          [&](const SdpVideoFormat& format) { EXPECT_EQ(format.name, "VP9"); });
+      }))
+      .WillOnce(Invoke([&](const SdpVideoFormat& format) {
+        EXPECT_EQ(format.name, "VP9");
+      }));
   EXPECT_CALL(*encoder_selector, OnAvailableBitrate)
-      .WillRepeatedly([&](const DataRate& rate) { return next_format; });
+      .WillRepeatedly(
+          Invoke([&](const DataRate& rate) { return next_format; }));
 
   sender->SetEncoderSelector(std::move(encoder_selector));
 

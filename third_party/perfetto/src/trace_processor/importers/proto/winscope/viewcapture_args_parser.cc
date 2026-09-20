@@ -21,26 +21,16 @@
 #include "protos/perfetto/trace/profiling/profile_common.pbzero.h"
 #include "src/trace_processor/importers/proto/packet_sequence_state_generation.h"
 
-namespace perfetto::trace_processor::winscope {
-
-namespace {
-using InternedString = protos::pbzero::InternedString;
-using ViewCaptureRow = tables::ViewCaptureTable::RowReference;
-using ViewRow = tables::ViewCaptureViewTable::RowReference;
-using ConstChars = protozero::ConstChars;
-}  // namespace
+namespace perfetto {
+namespace trace_processor {
 
 ViewCaptureArgsParser::ViewCaptureArgsParser(
     int64_t packet_timestamp,
     ArgsTracker::BoundInserter& inserter,
     TraceStorage& storage,
-    PacketSequenceStateGeneration* sequence_state,
-    ViewCaptureRow* snapshot_row,
-    ViewRow* view_row)
+    PacketSequenceStateGeneration* sequence_state)
     : ArgsParser(packet_timestamp, inserter, storage, sequence_state),
-      storage_{storage},
-      snapshot_row_(snapshot_row),
-      view_row_(view_row) {}
+      storage_{storage} {}
 
 void ViewCaptureArgsParser::AddInteger(const Key& key, int64_t value) {
   if (TryAddDeinternedString(key, static_cast<uint64_t>(value))) {
@@ -70,8 +60,9 @@ bool ViewCaptureArgsParser::TryAddDeinternedString(const Key& key,
   const auto deintern_val = TryDeinternString(key, iid);
 
   if (!deintern_val) {
-    ArgsParser::AddString(deintern_key_combined,
-                          ConstChars{ERROR_MSG.data(), ERROR_MSG.size()});
+    ArgsParser::AddString(
+        deintern_key_combined,
+        protozero::ConstChars{ERROR_MSG.data(), ERROR_MSG.size()});
     storage_.IncrementStats(
         stats::winscope_viewcapture_missing_interned_string_parse_errors);
     return false;
@@ -86,46 +77,57 @@ bool ViewCaptureArgsParser::TryAddDeinternedString(const Key& key,
   return true;
 }
 
-std::optional<ConstChars> ViewCaptureArgsParser::TryDeinternString(
+std::optional<protozero::ConstChars> ViewCaptureArgsParser::TryDeinternString(
     const Key& key,
     uint64_t iid) {
-  using protos::pbzero::InternedData;
   if (base::EndsWith(key.key, "class_name_iid")) {
-    return DeinternString<InternedData::kViewcaptureClassNameFieldNumber>(
-        iid, view_row_, &ViewRow::set_class_name);
+    auto* decoder =
+        seq_state()
+            ->LookupInternedMessage<
+                protos::pbzero::InternedData::kViewcaptureClassNameFieldNumber,
+                protos::pbzero::InternedString>(iid);
+    if (decoder) {
+      return protozero::ConstChars{
+          reinterpret_cast<const char*>(decoder->str().data),
+          decoder->str().size};
+    }
+  } else if (base::EndsWith(key.key, "package_name_iid")) {
+    auto* decoder =
+        seq_state()
+            ->LookupInternedMessage<protos::pbzero::InternedData::
+                                        kViewcapturePackageNameFieldNumber,
+                                    protos::pbzero::InternedString>(iid);
+    if (decoder) {
+      return protozero::ConstChars{
+          reinterpret_cast<const char*>(decoder->str().data),
+          decoder->str().size};
+    }
+  } else if (base::EndsWith(key.key, "view_id_iid")) {
+    auto* decoder =
+        seq_state()
+            ->LookupInternedMessage<
+                protos::pbzero::InternedData::kViewcaptureViewIdFieldNumber,
+                protos::pbzero::InternedString>(iid);
+    if (decoder) {
+      return protozero::ConstChars{
+          reinterpret_cast<const char*>(decoder->str().data),
+          decoder->str().size};
+    }
+  } else if (base::EndsWith(key.key, "window_name_iid")) {
+    auto* decoder =
+        seq_state()
+            ->LookupInternedMessage<
+                protos::pbzero::InternedData::kViewcaptureWindowNameFieldNumber,
+                protos::pbzero::InternedString>(iid);
+    if (decoder) {
+      return protozero::ConstChars{
+          reinterpret_cast<const char*>(decoder->str().data),
+          decoder->str().size};
+    }
   }
-  if (base::EndsWith(key.key, "package_name_iid")) {
-    return DeinternString<InternedData::kViewcapturePackageNameFieldNumber>(
-        iid, snapshot_row_, &ViewCaptureRow::set_package_name);
-  }
-  if (base::EndsWith(key.key, "view_id_iid")) {
-    return DeinternString<InternedData::kViewcaptureViewIdFieldNumber>(
-        iid, view_row_, &ViewRow::set_view_id);
-  }
-  if (base::EndsWith(key.key, "window_name_iid")) {
-    return DeinternString<InternedData::kViewcaptureWindowNameFieldNumber>(
-        iid, snapshot_row_, &ViewCaptureRow::set_window_name);
-  }
+
   return std::nullopt;
 }
 
-template <uint32_t FieldNumber, typename RowRef>
-std::optional<ConstChars> ViewCaptureArgsParser::DeinternString(
-    uint64_t iid,
-    RowRef* row,
-    void (RowRef::*setter)(StringPool::Id)) {
-  auto* decoder =
-      seq_state()->LookupInternedMessage<FieldNumber, InternedString>(iid);
-  if (!decoder) {
-    return std::nullopt;
-  }
-  auto blob = decoder->str();
-  auto chars = ConstChars{reinterpret_cast<const char*>(blob.data), blob.size};
-  if (row) {
-    base::StringView sv(chars);
-    (row->*setter)(storage_.mutable_string_pool()->InternString(sv));
-  }
-  return chars;
-}
-
-}  // namespace perfetto::trace_processor::winscope
+}  // namespace trace_processor
+}  // namespace perfetto

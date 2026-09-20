@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 ks{
     Currencies{
         ADP{
@@ -389,11 +389,11 @@ ks{
         }
         ILS{
             "₪",
-            "اِزرٲیِلی نٔوؠ شؠقٕل",
+            "اِزرٲیِلی نٔوۍ شؠقٕل",
         }
         INR{
             "₹",
-            "ہِندُستٲنؠ رۄپَے",
+            "ہِندُستٲنۍ رۄپَے",
         }
         IQD{
             "IQD",
@@ -665,7 +665,7 @@ ks{
         }
         PKR{
             "PKR",
-            "پاکِستٲنؠ رۄپَے",
+            "پاکِستٲنۍ رۄپَے",
         }
         PLN{
             "PLN",

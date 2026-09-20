@@ -12,11 +12,13 @@
 
 #include <algorithm>
 #include <array>
+#include <cstdarg>
 #include <cstdio>
 #include <functional>
 #include <map>
 #include <memory>
 #include <optional>
+#include <string>
 #include <utility>
 #include <vector>
 
@@ -36,6 +38,7 @@
 #include "modules/audio_processing/logging/apm_data_dumper.h"
 #include "rtc_base/checks.h"
 #include "rtc_base/logging.h"
+#include "third_party/tflite/src/tensorflow/lite/error_reporter.h"
 #include "third_party/tflite/src/tensorflow/lite/interpreter.h"
 #include "third_party/tflite/src/tensorflow/lite/interpreter_builder.h"
 #include "third_party/tflite/src/tensorflow/lite/kernels/kernel_util.h"
@@ -47,6 +50,21 @@ namespace {
 using ModelInputEnum = FeatureExtractor::ModelInputEnum;
 using ModelOutputEnum = FeatureExtractor::ModelOutputEnum;
 const std::array<int, 1> kSupportedFrameSizeSamples = {256};
+
+// A TFLite ErrorReporter that writes its messages to RTC_LOG.
+class LoggingErrorReporter : public tflite::ErrorReporter {
+  int Report(const char* format, va_list args) override {
+    char buffer[2048];
+    const int result = vsnprintf(buffer, sizeof(buffer), format, args);
+    RTC_LOG(LS_ERROR) << buffer;
+    return result;
+  }
+};
+
+tflite::ErrorReporter* DefaultLoggingErrorReporter() {
+  static LoggingErrorReporter* instance = new LoggingErrorReporter();
+  return instance;
+}
 
 // Field under which the ML-REE metadata is stored in a TFLite model.
 constexpr char kTfLiteMetadataKey[] = "REE_METADATA";
@@ -76,9 +94,12 @@ std::optional<audioproc::ReeModelMetadata> ReadModelMetadata(
 // former code by mocking.
 class TfLiteModelRunner : public NeuralResidualEchoEstimatorImpl::ModelRunner {
  public:
-  TfLiteModelRunner(std::unique_ptr<tflite::Interpreter> tflite_interpreter,
+  TfLiteModelRunner(std::string model_data,
+                    std::unique_ptr<tflite::FlatBufferModel> tflite_model,
+                    std::unique_ptr<tflite::Interpreter> tflite_interpreter,
                     audioproc::ReeModelMetadata metadata)
-      : input_tensor_size_(static_cast<int>(
+      : model_data_(std::move(model_data)),
+        input_tensor_size_(static_cast<int>(
             tflite::NumElements(tflite_interpreter->input_tensor(
                 static_cast<int>(ModelInputEnum::kMic))))),
         frame_size_(metadata.version() == 1 ? input_tensor_size_
@@ -89,6 +110,7 @@ class TfLiteModelRunner : public NeuralResidualEchoEstimatorImpl::ModelRunner {
         model_state_(tflite::NumElements(tflite_interpreter->input_tensor(
                          static_cast<int>(ModelInputEnum::kModelState))),
                      0.0f),
+        tflite_model_(std::move(tflite_model)),
         tflite_interpreter_(std::move(tflite_interpreter)) {
     for (const auto input_enum :
          {ModelInputEnum::kMic, ModelInputEnum::kLinearAecOutput,
@@ -184,6 +206,9 @@ class TfLiteModelRunner : public NeuralResidualEchoEstimatorImpl::ModelRunner {
   }
 
  private:
+  // Model data needs to be declared before `tflite_model_` to ensure that the
+  // data is destroyed after the tflite model.
+  const std::string model_data_;
 
   // Size of the input tensors.
   const int input_tensor_size_;
@@ -217,10 +242,13 @@ class TfLiteModelRunner : public NeuralResidualEchoEstimatorImpl::ModelRunner {
 
 std::unique_ptr<NeuralResidualEchoEstimatorImpl::ModelRunner>
 NeuralResidualEchoEstimatorImpl::LoadTfLiteModel(
-    const tflite::FlatBufferModel* model,
+    absl::string_view ml_ree_model_path,
     const tflite::OpResolver& op_resolver) {
+  std::string model_data;
+  auto model = tflite::FlatBufferModel::BuildFromFile(
+      std::string(ml_ree_model_path).c_str(), DefaultLoggingErrorReporter());
   if (!model) {
-    RTC_LOG(LS_ERROR) << "Nothing to load.";
+    RTC_LOG(LS_ERROR) << "Error loading model from " << ml_ree_model_path;
     return nullptr;
   }
   std::unique_ptr<tflite::Interpreter> interpreter;
@@ -247,7 +275,7 @@ NeuralResidualEchoEstimatorImpl::LoadTfLiteModel(
                       << static_cast<int>(ModelOutputEnum::kNumOutputs);
     return nullptr;
   }
-  auto metadata = ReadModelMetadata(model);
+  auto metadata = ReadModelMetadata(model.get());
   if (!metadata.has_value()) {
     RTC_LOG(LS_ERROR) << "Error reading model metadata";
     return nullptr;
@@ -257,14 +285,17 @@ NeuralResidualEchoEstimatorImpl::LoadTfLiteModel(
                       << " expected 1 or 2.";
     return nullptr;
   }
-  return std::make_unique<TfLiteModelRunner>(std::move(interpreter), *metadata);
+  return std::make_unique<TfLiteModelRunner>(std::move(model_data),
+                                             std::move(model),
+                                             std::move(interpreter), *metadata);
 }
 
 absl_nullable std::unique_ptr<NeuralResidualEchoEstimator>
-NeuralResidualEchoEstimatorImpl::Create(const tflite::FlatBufferModel* model,
+NeuralResidualEchoEstimatorImpl::Create(absl::string_view ml_ree_model_path,
                                         const tflite::OpResolver& op_resolver) {
   std::unique_ptr<ModelRunner> model_runner =
-      NeuralResidualEchoEstimatorImpl::LoadTfLiteModel(model, op_resolver);
+      NeuralResidualEchoEstimatorImpl::LoadTfLiteModel(ml_ree_model_path,
+                                                       op_resolver);
   if (!model_runner) {
     return nullptr;
   }

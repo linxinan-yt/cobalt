@@ -129,7 +129,6 @@ class SharedScreenCastStreamPrivate {
   std::vector<uint64_t> modifiers_;
 
   // PipeWire types
-  std::unique_ptr<PipeWireInitializer> pw_initializer_;
   struct pw_context* pw_context_ = nullptr;
   struct pw_core* pw_core_ = nullptr;
   struct pw_stream* pw_stream_ = nullptr;
@@ -439,7 +438,7 @@ bool SharedScreenCastStreamPrivate::StartScreenCastStream(
 
   pw_stream_node_id_ = stream_node_id;
 
-  pw_initializer_ = std::make_unique<PipeWireInitializer>();
+  pw_init(/*argc=*/nullptr, /*argc=*/nullptr);
 
   pw_main_loop_ = pw_thread_loop_new("pipewire-main-loop", nullptr);
 

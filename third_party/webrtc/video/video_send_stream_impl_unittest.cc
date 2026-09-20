@@ -76,6 +76,7 @@ using ::testing::AnyNumber;
 using ::testing::ElementsAreArray;
 using ::testing::Eq;
 using ::testing::Field;
+using ::testing::Invoke;
 using ::testing::Mock;
 using ::testing::NiceMock;
 using ::testing::Return;
@@ -163,9 +164,9 @@ class VideoSendStreamImplTest : public ::testing::Test {
         .WillRepeatedly(Return(&packet_router_));
     EXPECT_CALL(transport_controller_, CreateRtpVideoSender)
         .WillRepeatedly(Return(&rtp_video_sender_));
-    ON_CALL(rtp_video_sender_, IsActive()).WillByDefault([&]() {
+    ON_CALL(rtp_video_sender_, IsActive()).WillByDefault(Invoke([&]() {
       return rtp_sending_;
-    });
+    }));
     ON_CALL(rtp_video_sender_, SetSending)
         .WillByDefault(SaveArg<0>(&rtp_sending_));
   }
@@ -425,7 +426,7 @@ TEST_F(VideoSendStreamImplTest, UpdatesObserverOnConfigurationChange) {
   int min_transmit_bitrate_bps = 30000;
 
   EXPECT_CALL(bitrate_allocator_, AddObserver(vss_impl.get(), _))
-      .WillRepeatedly(
+      .WillRepeatedly(Invoke(
           [&](BitrateAllocatorObserver*, MediaStreamAllocationConfig config) {
             EXPECT_EQ(config.min_bitrate_bps,
                       static_cast<uint32_t>(min_transmit_bitrate_bps));
@@ -438,7 +439,7 @@ TEST_F(VideoSendStreamImplTest, UpdatesObserverOnConfigurationChange) {
                                               vga_stream.min_bitrate_bps));
             }
             EXPECT_EQ(config.enforce_min_bitrate, !kSuspend);
-          });
+          }));
 
   encoder_queue_->PostTask([&] {
     static_cast<VideoStreamEncoderInterface::EncoderSink*>(vss_impl.get())
@@ -492,7 +493,7 @@ TEST_F(VideoSendStreamImplTest, UpdatesObserverOnConfigurationChangeWithAlr) {
   int min_transmit_bitrate_bps = 400000;
 
   EXPECT_CALL(bitrate_allocator_, AddObserver(vss_impl.get(), _))
-      .WillRepeatedly(
+      .WillRepeatedly(Invoke(
           [&](BitrateAllocatorObserver*, MediaStreamAllocationConfig config) {
             EXPECT_EQ(config.min_bitrate_bps,
                       static_cast<uint32_t>(low_stream.min_bitrate_bps));
@@ -504,7 +505,7 @@ TEST_F(VideoSendStreamImplTest, UpdatesObserverOnConfigurationChangeWithAlr) {
                         static_cast<uint32_t>(min_transmit_bitrate_bps));
             }
             EXPECT_EQ(config.enforce_min_bitrate, !kSuspend);
-          });
+          }));
   encoder_queue_->PostTask([&] {
     static_cast<VideoStreamEncoderInterface::EncoderSink*>(vss_impl.get())
         ->OnEncoderConfigurationChanged(
@@ -548,8 +549,8 @@ TEST_F(VideoSendStreamImplTest,
   high_stream.bitrate_priority = 1;
 
   EXPECT_CALL(bitrate_allocator_, AddObserver(vss_impl.get(), _))
-      .WillRepeatedly([&](BitrateAllocatorObserver*,
-                          MediaStreamAllocationConfig config) {
+      .WillRepeatedly(Invoke([&](BitrateAllocatorObserver*,
+                                 MediaStreamAllocationConfig config) {
         EXPECT_EQ(config.min_bitrate_bps,
                   static_cast<uint32_t>(low_stream.min_bitrate_bps));
         EXPECT_EQ(config.max_bitrate_bps,
@@ -560,7 +561,7 @@ TEST_F(VideoSendStreamImplTest,
                     static_cast<uint32_t>(low_stream.target_bitrate_bps +
                                           1.25 * high_stream.min_bitrate_bps));
         }
-      });
+      }));
 
   encoder_queue_->PostTask([&] {
     static_cast<VideoStreamEncoderInterface::EncoderSink*>(vss_impl.get())
@@ -1028,13 +1029,14 @@ TEST_F(VideoSendStreamImplTest, DisablesPaddingOnPausedEncoder) {
 
   // Capture padding bitrate for testing.
   EXPECT_CALL(bitrate_allocator_, AddObserver(vss_impl.get(), _))
-      .WillRepeatedly(
+      .WillRepeatedly(Invoke(
           [&](BitrateAllocatorObserver*, MediaStreamAllocationConfig config) {
             padding_bitrate = config.pad_up_bitrate_bps;
-          });
+          }));
   // If observer is removed, no padding will be sent.
   EXPECT_CALL(bitrate_allocator_, RemoveObserver(vss_impl.get()))
-      .WillRepeatedly([&](BitrateAllocatorObserver*) { padding_bitrate = 0; });
+      .WillRepeatedly(
+          Invoke([&](BitrateAllocatorObserver*) { padding_bitrate = 0; }));
 
   EXPECT_CALL(rtp_video_sender_, OnEncodedImage)
       .WillRepeatedly(Return(

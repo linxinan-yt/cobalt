@@ -29,8 +29,7 @@
 #include "api/data_channel_event_observer_interface.h"
 #include "api/data_channel_interface.h"
 #include "api/dtls_transport_interface.h"
-#include "api/environment/environment.h"
-#include "api/environment/environment_factory.h"
+#include "api/field_trials.h"
 #include "api/field_trials_view.h"
 #include "api/jsep.h"
 #include "api/media_stream_interface.h"
@@ -66,6 +65,7 @@
 #include "rtc_base/ssl_certificate.h"
 #include "rtc_base/ssl_stream_adapter.h"
 #include "rtc_base/thread.h"
+#include "test/create_test_field_trials.h"
 
 namespace webrtc {
 
@@ -76,7 +76,6 @@ namespace webrtc {
 class FakePeerConnectionBase : public PeerConnectionInternal {
  public:
   // PeerConnectionInterface implementation.
-  FakePeerConnectionBase() : env_(CreateEnvironment()) {}
 
   scoped_refptr<StreamCollectionInterface> local_streams() override {
     return nullptr;
@@ -404,8 +403,7 @@ class FakePeerConnectionBase : public PeerConnectionInternal {
   }
   void DestroyDataChannelTransport(RTCError error) override {}
 
-  const Environment& env() const override { return env_; }
-  const FieldTrialsView& trials() const override { return env_.field_trials(); }
+  const FieldTrialsView& trials() const override { return field_trials_; }
 
   PayloadTypePicker& payload_type_picker() override {
     return payload_type_picker_;
@@ -414,7 +412,7 @@ class FakePeerConnectionBase : public PeerConnectionInternal {
   CandidateStatsList GetPooledCandidateStats() const override { return {}; }
 
  protected:
-  Environment env_;
+  FieldTrials field_trials_ = CreateTestFieldTrials();
   PayloadTypePicker payload_type_picker_;
 };
 

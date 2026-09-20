@@ -36,10 +36,3 @@ export function okResult<T>(value: T): OkResult<T>;
 export function okResult<T>(value?: T): OkResult<T | void> {
   return {ok: true, value};
 }
-
-export function unwrapResult<T>(result: Result<T>): T {
-  if (!result.ok) {
-    throw new Error(result.error);
-  }
-  return result.value;
-}

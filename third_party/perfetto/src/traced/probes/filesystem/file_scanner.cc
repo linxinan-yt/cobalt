@@ -87,9 +87,7 @@ void FileScanner::NextDirectory() {
   }
   current_directory_ = std::move(directory);
 
-  // Initialize the struct to keep msan happy: should not be a big deal in
-  // terms of performance since this is only done once per directory.
-  struct stat buf{};
+  struct stat buf;
   if (fstat(dirfd(current_dir_handle_.get()), &buf) != 0) {
     PERFETTO_DPLOG("fstat %s", current_directory_.c_str());
     current_dir_handle_.reset();

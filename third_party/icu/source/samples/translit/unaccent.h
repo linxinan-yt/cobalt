@@ -32,9 +32,9 @@ class UnaccentTransliterator : public Transliterator {
     /**
      * Implement Transliterator API
      */
-    void handleTransliterate(Replaceable& text,
-                             UTransPosition& index,
-                             UBool incremental) const override;
+    virtual void handleTransliterate(Replaceable& text,
+                                     UTransPosition& index,
+                                     UBool incremental) const;
 
  private:
 
@@ -83,7 +83,7 @@ public:
      * different class IDs.
      * @stable ICU 2.0
      */
-    UClassID getDynamicClassID() const override { return getStaticClassID(); };
+    virtual UClassID getDynamicClassID() const { return getStaticClassID(); };
 
 private:
 

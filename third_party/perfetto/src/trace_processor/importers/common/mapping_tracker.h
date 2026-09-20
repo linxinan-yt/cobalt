@@ -21,20 +21,18 @@
 #include <cstdint>
 #include <memory>
 #include <optional>
-#include <string>
 #include <vector>
 
 #include "perfetto/ext/base/flat_hash_map.h"
-#include "perfetto/ext/base/murmur_hash.h"
 #include "perfetto/ext/base/string_view.h"
 #include "src/trace_processor/importers/common/address_range.h"
-#include "src/trace_processor/importers/common/create_mapping_params.h"
 #include "src/trace_processor/importers/common/virtual_memory_mapping.h"
 #include "src/trace_processor/storage/trace_storage.h"
 #include "src/trace_processor/types/trace_processor_context.h"
 #include "src/trace_processor/util/build_id.h"
 
-namespace perfetto::trace_processor {
+namespace perfetto {
+namespace trace_processor {
 
 class JitCache;
 
@@ -106,7 +104,7 @@ class MappingTracker {
 
   base::FlatHashMap<CreateMappingParams,
                     VirtualMemoryMapping*,
-                    base::MurmurHash<CreateMappingParams>>
+                    CreateMappingParams::Hasher>
       interned_mappings_;
 
   struct NameAndBuildId {
@@ -119,14 +117,20 @@ class MappingTracker {
 
     bool operator!=(const NameAndBuildId& o) const { return !(*this == o); }
 
-    template <typename H>
-    friend H PerfettoHashValue(H h, const NameAndBuildId& o) {
-      return H::Combine(std::move(h), o.name, o.build_id);
-    }
+    struct Hasher {
+      size_t operator()(const NameAndBuildId& o) const {
+        base::FnvHasher hasher;
+        hasher.Update(o.name);
+        if (o.build_id) {
+          hasher.Update(*o.build_id);
+        }
+        return static_cast<size_t>(hasher.digest());
+      }
+    };
   };
   base::FlatHashMap<NameAndBuildId,
                     std::vector<VirtualMemoryMapping*>,
-                    base::MurmurHash<NameAndBuildId>>
+                    NameAndBuildId::Hasher>
       mappings_by_name_and_build_id_;
 
   base::FlatHashMap<UniquePid, AddressRangeMap<UserMemoryMapping*>>
@@ -137,6 +141,7 @@ class MappingTracker {
   base::FlatHashMap<UniquePid, AddressRangeMap<JitCache*>> jit_caches_;
 };
 
-}  // namespace perfetto::trace_processor
+}  // namespace trace_processor
+}  // namespace perfetto
 
 #endif  // SRC_TRACE_PROCESSOR_IMPORTERS_COMMON_MAPPING_TRACKER_H_

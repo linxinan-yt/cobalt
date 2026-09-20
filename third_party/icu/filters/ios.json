@@ -1224,7 +1224,6 @@
         "+/calendar/default",
         "+/calendar/gregorian",
         "+/calendar/generic",
-        "+/calendar/iso8601",
         "-/calendar/default/DateTimeSkeletons",
         "-/calendar/gregorian/DateTimeSkeletons",
         "-/calendar/generic/DateTimeSkeletons"

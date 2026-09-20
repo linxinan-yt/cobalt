@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 keyTypeData:table(nofallback){
     bcpTypeAlias{
         ca{
@@ -73,10 +73,7 @@ keyTypeData:table(nofallback){
     typeInfo{
         deprecated{
             co{
-                big5han{"true"}
                 direct{"true"}
-                gb2312{"true"}
-                reformed{"true"}
             }
         }
     }
@@ -448,7 +445,6 @@ keyTypeData:table(nofallback){
             xbc{""}
             xbd{""}
             xcd{""}
-            xcg{""}
             xdr{""}
             xeu{""}
             xfo{""}
@@ -475,7 +471,6 @@ keyTypeData:table(nofallback){
             zrn{""}
             zrz{""}
             zwd{""}
-            zwg{""}
             zwl{""}
             zwr{""}
         }
@@ -647,14 +642,12 @@ keyTypeData:table(nofallback){
             ethi{""}
             finance{""}
             fullwide{""}
-            gara{""}
             geor{""}
             gong{""}
             gonm{""}
             grek{""}
             greklow{""}
             gujr{""}
-            gukh{""}
             guru{""}
             hanidays{""}
             hanidec{""}
@@ -673,7 +666,6 @@ keyTypeData:table(nofallback){
             kawi{""}
             khmr{""}
             knda{""}
-            krai{""}
             lana{""}
             lanatham{""}
             laoo{""}
@@ -691,8 +683,6 @@ keyTypeData:table(nofallback){
             mroo{""}
             mtei{""}
             mymr{""}
-            mymrepka{""}
-            mymrpao{""}
             mymrshan{""}
             mymrtlng{""}
             nagm{""}
@@ -700,10 +690,8 @@ keyTypeData:table(nofallback){
             newa{""}
             nkoo{""}
             olck{""}
-            onao{""}
             orya{""}
             osma{""}
-            outlined{""}
             rohg{""}
             roman{""}
             romanlow{""}
@@ -714,7 +702,6 @@ keyTypeData:table(nofallback){
             sinh{""}
             sora{""}
             sund{""}
-            sunu{""}
             takr{""}
             talu{""}
             taml{""}

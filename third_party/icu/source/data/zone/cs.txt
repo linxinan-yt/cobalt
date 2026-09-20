@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 cs{
     zoneStrings{
         "Africa:Abidjan"{
@@ -39,6 +39,9 @@ cs{
         "Africa:Tripoli"{
             ec{"Tripolis"}
         }
+        "America:Asuncion"{
+            ec{"Asunción"}
+        }
         "America:Bahia"{
             ec{"Bahía"}
         }
@@ -59,6 +62,9 @@ cs{
         }
         "America:Costa_Rica"{
             ec{"Kostarika"}
+        }
+        "America:Curacao"{
+            ec{"Curaçao"}
         }
         "America:Dominica"{
             ec{"Dominika"}
@@ -92,6 +98,9 @@ cs{
         }
         "America:Puerto_Rico"{
             ec{"Portoriko"}
+        }
+        "America:Santa_Isabel"{
+            ec{"Santa Isabel"}
         }
         "America:Santarem"{
             ec{"Santarém"}
@@ -146,6 +155,9 @@ cs{
         }
         "Asia:Chita"{
             ec{"Čita"}
+        }
+        "Asia:Choibalsan"{
+            ec{"Čojbalsan"}
         }
         "Asia:Colombo"{
             ec{"Kolombo"}
@@ -297,6 +309,9 @@ cs{
         "Atlantic:St_Helena"{
             ec{"Svatá Helena"}
         }
+        "Australia:Currie"{
+            ec{"Currie"}
+        }
         "Etc:UTC"{
             ls{"koordinovaný světový čas"}
         }
@@ -379,6 +394,9 @@ cs{
         "Europe:Ulyanovsk"{
             ec{"Uljanovsk"}
         }
+        "Europe:Uzhgorod"{
+            ec{"Užhorod"}
+        }
         "Europe:Vatican"{
             ec{"Vatikán"}
         }
@@ -390,6 +408,9 @@ cs{
         }
         "Europe:Zagreb"{
             ec{"Záhřeb"}
+        }
+        "Europe:Zaporozhye"{
+            ec{"Záporoží"}
         }
         "Europe:Zurich"{
             ec{"Curych"}
@@ -414,6 +435,9 @@ cs{
         }
         "Indian:Mauritius"{
             ec{"Mauricius"}
+        }
+        "Indian:Reunion"{
+            ec{"Réunion"}
         }
         "Pacific:Chatham"{
             ec{"Chathamské ostrovy"}
@@ -649,6 +673,11 @@ cs{
             lg{"čínský čas"}
             ls{"čínský standardní čas"}
         }
+        "meta:Choibalsan"{
+            ld{"čojbalsanský letní čas"}
+            lg{"čojbalsanský čas"}
+            ls{"čojbalsanský standardní čas"}
+        }
         "meta:Christmas"{
             ls{"čas Vánočního ostrova"}
         }
@@ -818,9 +847,6 @@ cs{
             lg{"petropavlovsko-kamčatský čas"}
             ls{"petropavlovsko-kamčatský standardní čas"}
         }
-        "meta:Kazakhstan"{
-            ls{"kazachstánský čas"}
-        }
         "meta:Kazakhstan_Eastern"{
             ls{"východokazachstánský čas"}
         }
@@ -859,6 +885,9 @@ cs{
             lg{"Macajský čas"}
             ls{"Macajský standardní čas"}
         }
+        "meta:Macquarie"{
+            ls{"čas ostrova Macquarie"}
+        }
         "meta:Magadan"{
             ld{"magadanský letní čas"}
             lg{"magadanský čas"}
@@ -883,6 +912,11 @@ cs{
         }
         "meta:Mawson"{
             ls{"čas Mawsonovy stanice"}
+        }
+        "meta:Mexico_Northwest"{
+            ld{"severozápadní mexický letní čas"}
+            lg{"severozápadní mexický čas"}
+            ls{"severozápadní mexický standardní čas"}
         }
         "meta:Mexico_Pacific"{
             ld{"mexický pacifický letní čas"}

@@ -17,16 +17,17 @@
 #ifndef SRC_TRACE_PROCESSOR_IMPORTERS_COMMON_DEOBFUSCATION_MAPPING_TABLE_H_
 #define SRC_TRACE_PROCESSOR_IMPORTERS_COMMON_DEOBFUSCATION_MAPPING_TABLE_H_
 
-#include <cstddef>
 #include <cstdint>
 #include <optional>
 #include <string>
+#include <vector>
 
 #include "perfetto/ext/base/flat_hash_map.h"
-#include "perfetto/ext/base/murmur_hash.h"
+#include "perfetto/ext/base/string_view.h"
 #include "src/trace_processor/storage/trace_storage.h"
 
-namespace perfetto::trace_processor {
+namespace perfetto {
+namespace trace_processor {
 
 // Constains deobfuscation for Java class names and its members per |PackageId|.
 class DeobfuscationMappingTable {
@@ -71,7 +72,7 @@ class DeobfuscationMappingTable {
   struct PackageIdHash {
     std::size_t operator()(PackageId const& p) const noexcept {
       return static_cast<std::size_t>(
-          base::MurmurHashCombine(p.package_name, p.version_code));
+          base::FnvHasher::Combine(p.package_name, p.version_code));
     }
   };
 
@@ -95,6 +96,7 @@ class DeobfuscationMappingTable {
   std::optional<PackageId> default_package_id_;
 };
 
-}  // namespace perfetto::trace_processor
+}  // namespace trace_processor
+}  // namespace perfetto
 
 #endif  // SRC_TRACE_PROCESSOR_IMPORTERS_COMMON_DEOBFUSCATION_MAPPING_TABLE_H_

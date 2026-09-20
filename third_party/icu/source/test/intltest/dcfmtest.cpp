@@ -393,6 +393,8 @@ void DecimalFormatTest::execParseTest(int32_t lineNum,
         errln("file dcfmtest.txt, line %d: expected \"%s\", got \"%s\"",
             lineNum, expectedResults.data(), decimalResult.data());
     }
+    
+    return;
 }
 
 

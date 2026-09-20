@@ -94,7 +94,7 @@ enum {
     kFormatBufLen = 128
 };
 
-static void TestDateIntervalFormat(void)
+static void TestDateIntervalFormat()
 {
     const DateIntervalFormatTestItem * testItemPtr;
     UErrorCode status = U_ZERO_ERROR;
@@ -317,7 +317,7 @@ static const LocaleAndSkeletonItem locSkelItems[] = {
 
 enum { kSizeUBuf = 96, kSizeBBuf = 192 };
 
-static void TestFPos_SkelWithSeconds(void)
+static void TestFPos_SkelWithSeconds()
 {
 	const LocaleAndSkeletonItem * locSkelItemPtr;
 	for (locSkelItemPtr = locSkelItems; locSkelItemPtr->locale != NULL; locSkelItemPtr++) {
@@ -359,7 +359,7 @@ static void TestFPos_SkelWithSeconds(void)
     }
 }
 
-static void TestFormatToResult(void) {
+static void TestFormatToResult() {
     UErrorCode ec = U_ZERO_ERROR;
     UDateIntervalFormat* fmt = udtitvfmt_open("de", u"dMMMMyHHmm", -1, zoneGMT, -1, &ec);
     UFormattedDateInterval* fdi = udtitvfmt_openResult(&ec);
@@ -420,7 +420,7 @@ static void TestFormatToResult(void) {
     udtitvfmt_closeResult(fdi);
 }
 
-static void TestFormatCalendarToResult(void) {
+static void TestFormatCalendarToResult() {
     UErrorCode ec = U_ZERO_ERROR;
     UCalendar* ucal1 = ucal_open(zoneGMT, -1, "de", UCAL_DEFAULT, &ec);
     ucal_setMillis(ucal1, Date201009270800, &ec);

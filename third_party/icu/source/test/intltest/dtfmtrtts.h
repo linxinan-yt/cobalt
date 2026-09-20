@@ -51,8 +51,8 @@ public:
 static uint32_t randLong() {
     // The portable IntlTest::random() function has sufficient
     // resolution for a 16-bit value, but not for 32 bits.
-    return static_cast<uint32_t>(IntlTest::random() * (1 << 16)) |
-           (static_cast<uint32_t>(IntlTest::random() * (1 << 16)) << 16);
+    return ((uint32_t) (IntlTest::random() * (1<<16))) |
+          (((uint32_t) (IntlTest::random() * (1<<16))) << 16);
 }
 
 /**
@@ -60,7 +60,7 @@ static uint32_t randLong() {
  **/
 static double randFraction()
 {
-    return static_cast<double>(randLong()) / static_cast<double>(0xFFFFFFFF);
+    return (double)randLong() / (double)0xFFFFFFFF;
 }
 
 /**

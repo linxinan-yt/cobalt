@@ -15,12 +15,7 @@
 import {PerfettoPlugin} from '../../public/plugin';
 import {Trace} from '../../public/trace';
 import {getThreadOrProcUri} from '../../public/utils';
-import {
-  LONG_NULL,
-  NUM,
-  NUM_NULL,
-  STR,
-} from '../../trace_processor/query_result';
+import {NUM, NUM_NULL, STR} from '../../trace_processor/query_result';
 import ThreadPlugin from '../dev.perfetto.Thread';
 import {createPerfettoIndex} from '../../trace_processor/sql_utils';
 import {uuidv4Sql} from '../../base/uuid';
@@ -31,7 +26,7 @@ import {
 } from './process_scheduling_track';
 import {
   Config as ProcessSummaryTrackConfig,
-  PROCESS_SUMMARY_TRACK_KIND,
+  PROCESS_SUMMARY_TRACK,
   ProcessSummaryTrack,
 } from './process_summary_track';
 
@@ -44,6 +39,14 @@ export default class implements PerfettoPlugin {
   async onTraceLoad(ctx: Trace): Promise<void> {
     await this.addProcessTrackGroups(ctx);
     await this.addKernelThreadSummary(ctx);
+  }
+
+  private getCpuCountByMachine(ctx: Trace): number[] {
+    const cpuCountByMachine: number[] = [];
+    for (const c of ctx.traceInfo.cpus) {
+      cpuCountByMachine[c.machine] = (cpuCountByMachine[c.machine] ?? 0) + 1;
+    }
+    return cpuCountByMachine;
   }
 
   private async addProcessTrackGroups(ctx: Trace): Promise<void> {
@@ -65,16 +68,9 @@ export default class implements PerfettoPlugin {
     });
 
     const threads = ctx.plugins.getPlugin(ThreadPlugin).getThreadMap();
+    const cpuCountByMachine = this.getCpuCountByMachine(ctx);
     const result = await ctx.engine.query(`
       INCLUDE PERFETTO MODULE android.process_metadata;
-
-      WITH machine_cpu_counts AS (
-        SELECT
-          IFNULL(machine_id, 0) AS machine,
-          COUNT(*) AS cpu_count
-        FROM cpu
-        GROUP BY machine
-      )
 
       select *
       from (
@@ -102,13 +98,10 @@ export default class implements PerfettoPlugin {
               arg_set_id = process.arg_set_id and
               flat_key = 'chrome.process_label'
           ), '') as chromeProcessLabels,
-          ifnull(machine_id, 0) as machine,
-          IFNULL(machine_cpu_counts.cpu_count, 0) AS cpuCount
+          ifnull(machine_id, 0) as machine
         from _process_available_info_summary
         join process using(upid)
         left join android_process_metadata using(upid)
-        LEFT JOIN machine_cpu_counts
-          ON machine_cpu_counts.machine = IFNULL(machine_id, 0)
       )
       union all
       select *
@@ -124,26 +117,22 @@ export default class implements PerfettoPlugin {
           0 as isDebuggable,
           0 as isBootImageProfiling,
           '' as chromeProcessLabels,
-          ifnull(machine_id, 0) as machine,
-          IFNULL(machine_cpu_counts.cpu_count, 0) AS cpuCount
+          ifnull(machine_id, 0) as machine
         from _thread_available_info_summary
         join thread using (utid)
-        LEFT JOIN machine_cpu_counts
-          ON machine_cpu_counts.machine = IFNULL(machine_id, 0)
         where upid is null
       )
     `);
     const it = result.iter({
       upid: NUM_NULL,
       utid: NUM_NULL,
-      pid: LONG_NULL,
-      tid: LONG_NULL,
+      pid: NUM_NULL,
+      tid: NUM_NULL,
       hasSched: NUM_NULL,
       isDebuggable: NUM_NULL,
       isBootImageProfiling: NUM_NULL,
       chromeProcessLabels: STR,
       machine: NUM,
-      cpuCount: NUM,
     });
     for (; it.valid(); it.next()) {
       const upid = it.upid;
@@ -154,7 +143,7 @@ export default class implements PerfettoPlugin {
       const isDebuggable = Boolean(it.isDebuggable);
       const isBootImageProfiling = Boolean(it.isBootImageProfiling);
       const subtitle = it.chromeProcessLabels;
-      const cpuCount = it.cpuCount;
+      const machine = it.machine;
 
       // Group by upid if present else by utid.
       const pidForColor = pid ?? tid ?? upid ?? utid ?? 0;
@@ -178,10 +167,11 @@ export default class implements PerfettoPlugin {
           utid,
         };
 
+        const cpuCount = cpuCountByMachine[machine] ?? 0;
         ctx.tracks.registerTrack({
           uri,
           tags: {
-            kinds: [PROCESS_SCHEDULING_TRACK_KIND],
+            kind: PROCESS_SCHEDULING_TRACK_KIND,
           },
           chips,
           renderer: new ProcessSchedulingTrack(ctx, config, cpuCount, threads),
@@ -197,7 +187,7 @@ export default class implements PerfettoPlugin {
         ctx.tracks.registerTrack({
           uri,
           tags: {
-            kinds: [PROCESS_SUMMARY_TRACK_KIND],
+            kind: PROCESS_SUMMARY_TRACK,
           },
           chips,
           renderer: new ProcessSummaryTrack(ctx.engine, config),
@@ -255,7 +245,7 @@ export default class implements PerfettoPlugin {
     ctx.tracks.registerTrack({
       uri: '/kernel',
       tags: {
-        kinds: [PROCESS_SUMMARY_TRACK_KIND],
+        kind: PROCESS_SUMMARY_TRACK,
       },
       renderer: new ProcessSummaryTrack(ctx.engine, config),
     });

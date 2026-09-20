@@ -134,17 +134,6 @@ StreamResult StreamInterfaceChannel::Read(ArrayView<uint8_t> buffer,
   return SR_SUCCESS;
 }
 
-void StreamInterfaceChannel::SetNextPacketOptions(
-    const AsyncSocketPacketOptions& options) {
-  RTC_DCHECK_RUN_ON(&callback_sequence_);
-  next_packet_options_ = options;
-}
-
-void StreamInterfaceChannel::ClearNextPacketOptions() {
-  RTC_DCHECK_RUN_ON(&callback_sequence_);
-  next_packet_options_.reset();
-}
-
 StreamResult StreamInterfaceChannel::Write(ArrayView<const uint8_t> data,
                                            size_t& written,
                                            int& /* error */) {
@@ -157,10 +146,6 @@ StreamResult StreamInterfaceChannel::Write(ArrayView<const uint8_t> data,
   }
 
   AsyncSocketPacketOptions packet_options;
-  if (next_packet_options_) {
-    packet_options = std::move(*next_packet_options_);
-    next_packet_options_.reset();
-  }
   ice_transport_->SendPacket(reinterpret_cast<const char*>(data.data()),
                              data.size(), packet_options);
   written = data.size();
@@ -176,25 +161,18 @@ bool StreamInterfaceChannel::Flush() {
   return false;
 }
 
-bool StreamInterfaceChannel::OnPacketReceived(ArrayView<const uint8_t> data) {
+bool StreamInterfaceChannel::OnPacketReceived(const char* data, size_t size) {
   RTC_DCHECK_RUN_ON(&callback_sequence_);
   if (packets_.size() > 0) {
     RTC_LOG(LS_WARNING) << "Packet already in queue.";
   }
-  bool ret = packets_.WriteBack(reinterpret_cast<const char*>(data.data()),
-                                data.size(), nullptr);
+  bool ret = packets_.WriteBack(data, size, nullptr);
   if (!ret) {
     // Somehow we received another packet before the SSLStreamAdapter read the
     // previous one out of our temporary buffer. In this case, we'll log an
     // error and still signal the read event, hoping that it will read the
     // packet currently in packets_.
     RTC_LOG(LS_ERROR) << "Failed to write packet to queue.";
-  }
-  // If we use DTLS-in-STUN, the controller should be informed about incoming
-  // packets so it can acknowledge them.  Note that this packet may have been
-  // emitted by the controller.
-  if (dtls_stun_piggyback_controller_) {
-    dtls_stun_piggyback_controller_->ReportDtlsPacket(data);
   }
   FireEvent(SE_READ, 0);
   return ret;
@@ -215,10 +193,8 @@ DtlsTransportInternalImpl::DtlsTransportInternalImpl(
     const Environment& env,
     IceTransportInternal* ice_transport,
     const CryptoOptions& crypto_options,
-    SSLProtocolVersion max_version,
-    SslStreamFactory ssl_stream_factory)
-    : ssl_stream_factory_(ssl_stream_factory),
-      env_(env),
+    SSLProtocolVersion max_version)
+    : env_(env),
       component_(ice_transport->component()),
       ice_transport_(ice_transport),
       downward_(nullptr),
@@ -462,17 +438,10 @@ bool DtlsTransportInternalImpl::SetupDtls() {
       downward_ptr->SetDtlsStunPiggybackController(
           &dtls_stun_piggyback_controller_);
     }
-    if (ssl_stream_factory_) {
-      dtls_ = ssl_stream_factory_(
-          std::move(downward),
-          [this](SSLHandshakeError error) { OnDtlsHandshakeError(error); },
-          &env_.field_trials());
-    } else {
-      dtls_ = SSLStreamAdapter::Create(
-          std::move(downward),
-          [this](SSLHandshakeError error) { OnDtlsHandshakeError(error); },
-          &env_.field_trials());
-    }
+    dtls_ = SSLStreamAdapter::Create(
+        std::move(downward),
+        [this](SSLHandshakeError error) { OnDtlsHandshakeError(error); },
+        &env_.field_trials());
     if (!dtls_) {
       RTC_LOG(LS_ERROR) << ToString() << ": Failed to create DTLS adapter.";
       return false;
@@ -584,27 +553,13 @@ int DtlsTransportInternalImpl::SendPacket(
 
         return ice_transport_->SendPacket(data, size, options);
       } else {
-        downward_->SetNextPacketOptions(options);
         size_t written;
         int error;
-        // TODO(jonaso): Change the dtls_ interface so that it instead returns
-        // an encrypted packet, rather than calling the
-        // StreamInterfaceChannel::Write function. Such change would remove the
-        // need of the next_packet_options_.
-        StreamResult result = dtls_->Write(
-            MakeArrayView(reinterpret_cast<const uint8_t*>(data), size),
-            written, error);
-        if (result != SR_SUCCESS) {
-          // Explicitly clear the next packet options, in case no packet was
-          // sent.
-          downward_->ClearNextPacketOptions();
-          return -1;
-        }
-        // For DTLS, a SSL_Write operation will either send the entire data in a
-        // single record, or fail the entire send. See for example the
-        // documentation on SSL_write in boringssl/src/include/openssl/ssl.h
-        RTC_CHECK(written == size);
-        return static_cast<int>(size);
+        return (dtls_->WriteAll(
+                    MakeArrayView(reinterpret_cast<const uint8_t*>(data), size),
+                    written, error) == SR_SUCCESS)
+                   ? static_cast<int>(size)
+                   : -1;
       }
     case DtlsTransportState::kFailed:
       // Can't send anything when we're failed.
@@ -1036,7 +991,8 @@ bool DtlsTransportInternalImpl::HandleDtlsPacket(
     ArrayView<const uint8_t> payload) {
   // Pass to the StreamInterfaceChannel which ends up being passed to the DTLS
   // stack.
-  return downward_->OnPacketReceived(payload);
+  return downward_->OnPacketReceived(
+      reinterpret_cast<const char*>(payload.data()), payload.size());
 }
 
 void DtlsTransportInternalImpl::set_receiving(bool receiving) {

@@ -40,7 +40,7 @@ struct CompactArrays{\
     UNIT    * data; /*the real space to hold strings*/ \
     \
     ~CompactArrays(){free(index);free(data);} \
-    CompactArrays():count(0), index(nullptr), data(nullptr){ \
+    CompactArrays():data(nullptr), index(nullptr), count(0){ \
     index = (int32_t *) realloc(index, sizeof(int32_t)); \
     index[0] = 0; \
     } \
@@ -102,9 +102,9 @@ public:
     CmdKeyGen(UErrorCode, UCollator * col,DWORD win_langid, int32_t count, DataIndex * data,Func fn,int32_t)
         :col(col),win_langid(win_langid), count(count), data(data), fn(fn){}
 
-        long getOperationsPerIteration() override { return count; }
+        virtual long getOperationsPerIteration(){return count;}
 
-        void call(UErrorCode* status) override {
+        virtual void call(UErrorCode* status){
             for(int32_t i = 0; i< count; i++){
                 (this->*fn)(i);
             }
@@ -155,9 +155,9 @@ public:
             ucol_closeElements(iter);
         }
 
-        long getOperationsPerIteration() override { return exec_count ? exec_count : 1; }
+        virtual long getOperationsPerIteration(){return exec_count ? exec_count : 1;}
 
-        void call(UErrorCode* status) override {
+        virtual void call(UErrorCode* status){
             exec_count = 0;
             for(int32_t i = 0; i< count; i++){
                 (this->*fn)(status, i);
@@ -188,6 +188,7 @@ public:
 class CmdIterAll : public UPerfFunction {
     typedef	void (CmdIterAll::* Func)(UErrorCode* status);
     int32_t     count;
+    char16_t *     data;
     Func        fn;
     UCollationElements *iter;
     int32_t     exec_count;
@@ -199,7 +200,7 @@ public:
         ucol_closeElements(iter);
     }
     CmdIterAll(UErrorCode & status, UCollator * col, int32_t count,  char16_t * data, CALL call,int32_t,int32_t)
-        :count(count)
+        :count(count),data(data)
     {
         exec_count = 0;
         if (call == forward_null || call == backward_null) {
@@ -214,9 +215,9 @@ public:
             fn = &CmdIterAll::icu_backward_all;
         }
     }
-    long getOperationsPerIteration() override { return exec_count ? exec_count : 1; }
+    virtual long getOperationsPerIteration(){return exec_count ? exec_count : 1;}
 
-    void call(UErrorCode* status) override {
+    virtual void call(UErrorCode* status){
         (this->*fn)(status);
     }
 
@@ -296,7 +297,7 @@ struct CmdQsort : public UPerfFunction{
 
     static int icu_cmpkey (const void *a, const void *b){ 
         QCAST(); 
-        return strcmp(reinterpret_cast<char*>(da->icu_key), reinterpret_cast<char*>(db->icu_key));
+        return strcmp((char *) da->icu_key, (char *) db->icu_key); 
     }
 
 #if U_PLATFORM_HAS_WIN32_API
@@ -354,7 +355,7 @@ private:
     void *  backup; //copy source of base
 public:
     CmdQsort(UErrorCode & status,void *theBase, int32_t num, int32_t width, Func fn, int32_t,int32_t)
-        :fn(fn),num(num),width(width),backup(theBase){
+        :backup(theBase),num(num),width(width),fn(fn){
             base = malloc(num * width);
             time_empty(100, &status); // warm memory/cache
         }
@@ -378,18 +379,18 @@ public:
             return utimer_getDeltaSeconds(&start,&stop); // ms
         }
 
-        void call(UErrorCode* status) override {
+        virtual void call(UErrorCode* status){
             exec_count = 0;
             memcpy(base, backup, num * width);
             qsort(base, num, width, fn);
         }
-        double time(int32_t n, UErrorCode* status) override {
+        virtual double time(int32_t n, UErrorCode* status) {
             double t1 = time_empty(n,status);
             double t2 = UPerfFunction::time(n, status);
             return  t2-t1;// < 0 ? t2 : t2-t1;
         }
 
-        long getOperationsPerIteration() override { return exec_count ? exec_count : 1; }
+        virtual long getOperationsPerIteration(){ return exec_count?exec_count:1;}
 };
 int32_t CmdQsort::exec_count;
 
@@ -410,13 +411,13 @@ public:
         :col(col),win_langid(win_langid), count(count), rnd(rnd), ord(ord), fn(fn),exec_count(0){}
 
 
-        void call(UErrorCode* status) override {
+        virtual void call(UErrorCode* status){
             exec_count = 0;
             for(int32_t i = 0; i< count; i++){ // search all data
                 binary_search(i);
             }
         }
-        long getOperationsPerIteration() override { return exec_count ? exec_count : 1; }
+        virtual long getOperationsPerIteration(){ return exec_count?exec_count:1;}
 
         void binary_search(int32_t random)	{
             int low   = 0;
@@ -451,8 +452,7 @@ public:
         }
 
         int icu_cmpkey(int32_t i, int32_t j) {
-            return strcmp(reinterpret_cast<char*>(rnd[i].icu_key),
-                          reinterpret_cast<char*>(ord[j].icu_key));
+            return strcmp( (char *) rnd[i].icu_key, (char *) ord[j].icu_key );
         }
 
 #if U_PLATFORM_HAS_WIN32_API
@@ -581,7 +581,7 @@ public:
         int32_t opt_len = UPRV_LENGTHOF(options);
         enum {i, r,f,a,c,l,n,s};   // The buffer between the option items' order and their references
 
-        _remainingArgc = u_parseArgs(_remainingArgc, const_cast<char**>(argv), opt_len, options);
+        _remainingArgc = u_parseArgs(_remainingArgc, (char**)argv, opt_len, options);
 
         if (_remainingArgc < 0){
             status = U_ILLEGAL_ARGUMENT_ERROR;
@@ -684,7 +684,7 @@ public:
     temp++\
 
 
-    UPerfFunction* runIndexedTest(/*[in]*/int32_t index, /*[in]*/UBool exec, /*[out]*/const char*& name, /*[in]*/char* par = nullptr) override {
+    virtual UPerfFunction* runIndexedTest( /*[in]*/int32_t index, /*[in]*/UBool exec, /*[out]*/const char* &name, /*[in]*/ char* par = nullptr ){
         int temp = 0;
 
 #define TEST_KEYGEN(testname, func)\

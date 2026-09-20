@@ -419,13 +419,13 @@ de >> de-DE
 ** test: testAsymmetry
 
 @supported=mul, nl
-af >> mul # af => mul
+af >> nl # af => nl
 @supported=mul, af
 nl >> mul # but nl !=> af
 
 @favor=script
 @supported=mul, nl
-af >> mul
+af >> nl
 @supported=mul, af
 nl >> mul
 

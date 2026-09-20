@@ -1,19 +1,16 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 vec{
     Keys{
-        calendar{"lunaro"}
-        cf{"formà moneda"}
-        collation{"òrdane"}
-        currency{"moneda"}
-        hc{"sistema ore (12/24)"}
-        lb{"stile de cao de linea"}
-        ms{"sistema de mezurasion"}
+        cf{"Formà moneda"}
+        currency{"Moneda"}
+        hc{"Sistema ore (12/24)"}
+        lb{"Stile de cao de linea"}
+        ms{"Sistema de mezurasion"}
         numbers{"Nùmari"}
     }
     Languages{
-        aa{"afar"}
         ab{"abcazo"}
         ace{"acineze"}
         ada{"adangme"}
@@ -43,35 +40,27 @@ vec{
         ay{"aimar"}
         az{"azerbaijan"}
         ba{"bashkir"}
-        bal{"baluci"}
         ban{"balineze"}
         bas{"basa"}
         be{"beloruso"}
         bem{"benba"}
-        bew{"betawi"}
         bez{"bena"}
         bg{"bùlgaro"}
         bgc{"harianvi"}
-        bgn{"baluci osidentale"}
         bho{"bojpuri"}
         bi{"bizlama"}
         bin{"bini"}
         bla{"siksika"}
-        blo{"anii"}
-        blt{"tai dam"}
         bm{"banbara"}
         bn{"bangla"}
         bo{"tibetan"}
         br{"brètone"}
         brx{"bodo"}
         bs{"boznìago"}
-        bss{"akos"}
         bug{"bugineze"}
         byn{"blin"}
         ca{"catalan"}
-        cad{"cado"}
         cay{"cayuga"}
-        cch{"atsam"}
         ccp{"ciakma"}
         ce{"cecen"}
         ceb{"sebuan"}
@@ -83,7 +72,6 @@ vec{
         chp{"cìpejan"}
         chr{"cerokee"}
         chy{"ceyen"}
-        cic{"cìcasow"}
         ckb{"curdo sentrale"}
         clc{"cìlcotin"}
         co{"corso"}
@@ -164,8 +152,7 @@ vec{
         he{"ebràego"}
         hi{"hindi"}
         hil{"hiligheno"}
-        hmn{"mong"}
-        hnj{"mong novo"}
+        hmn{"hmong"}
         hr{"croà"}
         hsb{"alto sorabo"}
         ht{"haitian"}
@@ -178,7 +165,6 @@ vec{
         iba{"iban"}
         ibb{"ibibio"}
         id{"indonezian"}
-        ie{"interlengue"}
         ig{"igbo"}
         ii{"yi de Sichuan"}
         ikt{"inuktitut canadeze osidentale"}
@@ -194,7 +180,6 @@ vec{
         jmc{"machame"}
         jv{"javaneze"}
         ka{"jeorjan"}
-        kaa{"caracalpago"}
         kab{"cabil"}
         kac{"kachin"}
         kaj{"jju"}
@@ -203,7 +188,6 @@ vec{
         kcg{"tyap"}
         kde{"makonde"}
         kea{"caoverdian"}
-        ken{"keniang"}
         kfo{"koro"}
         kgp{"kaingang"}
         kha{"khasi"}
@@ -214,7 +198,7 @@ vec{
         kkj{"kako"}
         kl{"groelandeze"}
         kln{"kalenjin"}
-        km{"canbojan"}
+        km{"kmer"}
         kmb{"kinbundu"}
         kn{"canareze"}
         ko{"corean"}
@@ -233,10 +217,9 @@ vec{
         kv{"komi"}
         kw{"còrnego"}
         kwk{"Kwakwala"}
-        kxv{"kuvi"}
         ky{"kirghizo"}
         la{"latin"}
-        lad{"judezmo"}
+        lad{"ladin"}
         lag{"langi"}
         lb{"lusenburgheze"}
         lez{"lezghian"}
@@ -245,7 +228,6 @@ vec{
         lij{"lìguro"}
         lil{"liluet"}
         lkt{"lacota"}
-        lld{"ladin"}
         lmo{"lonbardo"}
         ln{"lingala"}
         lo{"lao"}
@@ -254,11 +236,10 @@ vec{
         lrc{"luri setentrionale"}
         lsm{"samia"}
         lt{"lituan"}
-        ltg{"letgalian"}
         lu{"luba katanga"}
         lua{"luba lulua"}
         lun{"lunda"}
-        luo{"doluó"}
+        luo{"luo"}
         lus{"mizo"}
         luy{"luja"}
         lv{"lètone"}
@@ -272,10 +253,9 @@ vec{
         mer{"meru"}
         mfe{"maurisian"}
         mg{"malgaso"}
-        mgh{"meeto"}
+        mgh{"makùa"}
         mgo{"meta"}
         mh{"marshaleze"}
-        mhn{"mòcheno"}
         mi{"maori"}
         mic{"micmac"}
         min{"minangkabau"}
@@ -329,9 +309,8 @@ vec{
         ojw{"ojibwa osidentale"}
         oka{"okanagan"}
         om{"oromo"}
-        or{"orija"}
+        or{"orìa"}
         os{"osètego"}
-        osa{"osage"}
         pa{"punjabi"}
         pag{"pangasinan"}
         pam{"panpanga"}
@@ -347,7 +326,6 @@ vec{
         pt_BR{"portogheze braziłian"}
         pt_PT{"portogheze europèo"}
         qu{"cuechua"}
-        quc{"kish"}
         raj{"rajastani"}
         rap{"rapanui"}
         rar{"rarotongan"}
@@ -373,7 +351,6 @@ vec{
         scn{"sisilian"}
         sco{"scoseze"}
         sd{"sindi"}
-        sdh{"curdo meridionale"}
         se{"sami setentrionale"}
         seh{"sena"}
         ses{"koyraboro seni"}
@@ -381,14 +358,10 @@ vec{
         shi{"tashelit"}
         shn{"shan"}
         si{"singaleze"}
-        sid{"sidamo"}
         sk{"zlovaco"}
-        skr{"saraiki"}
         sl{"zloven"}
         slh{"lushootseed meridionale"}
         sm{"samoan"}
-        sma{"sami meridionale"}
-        smj{"sami de’l Lule"}
         smn{"sami inarian"}
         sms{"sami skolt"}
         sn{"shona"}
@@ -398,17 +371,15 @@ vec{
         sr{"serbo"}
         srn{"sranan tongo"}
         ss{"zwati"}
-        ssy{"saho"}
         st{"soto meridionale"}
         str{"salish streto"}
         su{"sundaneze"}
         suk{"sukuma"}
         sv{"zvedeze"}
-        sw{"suaili"}
-        sw_CD{"suaili de’l Congo"}
+        sw{"swahili"}
+        sw_CD{"swahili de’l Congo"}
         swb{"comorian"}
         syr{"sirìago"}
-        szl{"silezian"}
         ta{"tamil"}
         tce{"tutchone meridionale"}
         te{"telugo"}
@@ -430,7 +401,6 @@ vec{
         tpi{"tok pisin"}
         tr{"turco"}
         trv{"taroko"}
-        trw{"torwali"}
         ts{"tsonga"}
         tt{"tàtaro"}
         ttm{"tutchone setentrionale"}
@@ -447,22 +417,20 @@ vec{
         und{"lengua desconoscùa"}
         ur{"urdu"}
         uz{"uzbego"}
+        vai{"vai"}
         ve{"venda"}
         vec{"veneto"}
         vi{"vietnameze"}
-        vmw{"macùa"}
         vo{"volapük"}
         vun{"vunjo"}
         wa{"valon"}
         wae{"walser"}
         wal{"wolaita"}
         war{"waray"}
-        wbp{"warlpiri"}
         wo{"wolof"}
         wuu{"wu"}
         xal{"kalmik"}
         xh{"xhosa"}
-        xnr{"kangri"}
         xog{"soga"}
         yav{"yangben"}
         ybb{"yenba"}
@@ -470,7 +438,6 @@ vec{
         yo{"yoruba"}
         yrl{"nengatu"}
         yue{"cantoneze"}
-        za{"zuan"}
         zgh{"tamazight standard de’l Maroco"}
         zh{"sineze"}
         zu{"zulu"}
@@ -524,7 +491,6 @@ vec{
         Cpmn{"sipro minòego"}
         Cprt{"siprioto"}
         Cyrl{"sirìlego"}
-        Cyrs{"zlavo de cieza antigo"}
         Deva{"devanàgari"}
         Diak{"dives akuru"}
         Dogr{"dogri"}
@@ -534,7 +500,6 @@ vec{
         Elba{"elbasan"}
         Elym{"elimàego"}
         Ethi{"etiòpego"}
-        Gara{"garay"}
         Geor{"jeorjan"}
         Glag{"glagolìtego"}
         Gong{"gunjala"}
@@ -543,7 +508,6 @@ vec{
         Gran{"granta"}
         Grek{"grego"}
         Gujr{"gujarati"}
-        Gukh{"gurung khema"}
         Guru{"gurmuki"}
         Hanb{"han co bopomofo"}
         Hang{"hangul"}
@@ -572,12 +536,9 @@ vec{
         Kits{"kitan celo"}
         Knda{"kanada"}
         Kore{"corean"}
-        Krai{"kirat rai"}
         Kthi{"kaiti"}
         Lana{"lana"}
         Laoo{"lao"}
-        Latf{"latin fraktur"}
-        Latg{"latin gaèlego"}
         Latn{"latin"}
         Lepc{"lepcha"}
         Limb{"linbu"}
@@ -611,7 +572,6 @@ vec{
         Nshu{"nushu"}
         Ogam{"ogam"}
         Olck{"ol ciki"}
-        Onao{"ol onal"}
         Orkh{"orcon"}
         Orya{"orija"}
         Osge{"osage"}
@@ -644,12 +604,8 @@ vec{
         Sora{"sora sonpeng"}
         Soyo{"soyonbo"}
         Sund{"sundaneze"}
-        Sunu{"sunuwar"}
         Sylo{"syloti nagri"}
         Syrc{"sirìago"}
-        Syre{"sirìago estrànjelo"}
-        Syrj{"sirìago osidentale"}
-        Syrn{"sirìago orientale"}
         Tagb{"tagbanwa"}
         Takr{"takri"}
         Tale{"tai le"}
@@ -665,9 +621,7 @@ vec{
         Tibt{"tibetan"}
         Tirh{"tiruta"}
         Tnsa{"tangsa"}
-        Todr{"todhri"}
         Toto{"toto"}
-        Tutg{"tigalari"}
         Ugar{"ugarìtego"}
         Vaii{"vai"}
         Vith{"beita kukju"}
@@ -692,46 +646,32 @@ vec{
     }
     Types{
         calendar{
-            buddhist{"lunaro budista"}
-            chinese{"lunaro sineze"}
-            coptic{"lunaro còptego"}
-            dangi{"lunaro dangi"}
-            ethiopic{"lunaro etiòpego"}
-            ethiopic-amete-alem{"lunaro etiòpego (amete alem)"}
-            gregorian{"lunaro gregorian"}
-            hebrew{"lunaro ebràego"}
-            islamic{"lunaro izlàmego"}
-            islamic-civil{"lunaro izlàmego (tabular)"}
-            islamic-umalqura{"lunaro izlàmego (Umm al-Qura)"}
-            iso8601{"lunaro ISO-8601"}
-            japanese{"lunaro japoneze"}
-            persian{"lunaro persian"}
-            roc{"lunaro mìnguo"}
+            gregorian{"calendaro gregorian"}
+            iso8601{"calendaro ISO-8601"}
         }
         cf{
-            account{"formà moneda contàbile"}
-            standard{"formà moneda standard"}
+            account{"Formà moneda contàbile"}
+            standard{"Formà moneda standard"}
         }
         collation{
-            ducet{"òrdane predefenìo Unicode"}
-            search{"reserca jenèrega"}
+            search{"Reserca jenèrega"}
             standard{"òrdane standard"}
         }
         hc{
-            h11{"sistema a 12 ore (0–11)"}
-            h12{"sistema a 12 ore (1–12)"}
-            h23{"sistema a 24 ore (0–23)"}
-            h24{"sistema a 12 ore (1–24)"}
+            h11{"Sistema a 12 ore (0–11)"}
+            h12{"Sistema a 12 ore (1–12)"}
+            h23{"Sistema a 24 ore (0–23)"}
+            h24{"Sistema a 12 ore (1–24)"}
         }
         lb{
-            loose{"cao de linea opsionale"}
-            normal{"cao de linea normale"}
-            strict{"cao de linea forsà"}
+            loose{"Cao de linea opsionale"}
+            normal{"Cao de linea normale"}
+            strict{"Cao de linea forsà"}
         }
         ms{
-            metric{"sistema mètrego"}
-            uksystem{"sistema inperiale"}
-            ussystem{"sistema meregan"}
+            metric{"Sistema mètrego"}
+            uksystem{"Sistema inperiale"}
+            ussystem{"Sistema meregan"}
         }
         numbers{
             arab{"Nùmari in indo àrabo"}

@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 sl{
     Keys{
         calendar{"koledar"}
@@ -74,7 +74,6 @@ sl{
         bik{"bikolski jezik"}
         bin{"edo"}
         bla{"siksika"}
-        blo{"anii"}
         bm{"bambarščina"}
         bn{"bengalščina"}
         bo{"tibetanščina"}
@@ -291,7 +290,6 @@ sl{
         kv{"komijščina"}
         kw{"kornijščina"}
         kwk{"kvakvala"}
-        kxv{"kuvi"}
         ky{"kirgiščina"}
         la{"latinščina"}
         lad{"ladinščina"}
@@ -302,10 +300,8 @@ sl{
         lez{"lezginščina"}
         lg{"ganda"}
         li{"limburščina"}
-        lij{"ligurščina"}
         lil{"lilovetščina"}
         lkt{"lakotščina"}
-        lmo{"lombardščina"}
         ln{"lingala"}
         lo{"laoščina"}
         lol{"mongo"}
@@ -318,6 +314,7 @@ sl{
         lua{"luba-lulua"}
         lui{"luisenščina"}
         lun{"lunda"}
+        luo{"luo"}
         lus{"mizojščina"}
         luy{"luhijščina"}
         lv{"latvijščina"}
@@ -492,7 +489,6 @@ sl{
         swb{"šikomor"}
         syc{"klasična sirščina"}
         syr{"sirščina"}
-        szl{"šlezijščina"}
         ta{"tamilščina"}
         tce{"južna tučonščina"}
         te{"telugijščina"}
@@ -540,9 +536,7 @@ sl{
         uz{"uzbeščina"}
         vai{"vajščina"}
         ve{"venda"}
-        vec{"beneščina"}
         vi{"vietnamščina"}
-        vmw{"makuva"}
         vo{"volapik"}
         vot{"votjaščina"}
         vun{"vunjo"}
@@ -556,7 +550,6 @@ sl{
         wuu{"wu-kitajščina"}
         xal{"kalmiščina"}
         xh{"koščina"}
-        xnr{"kangri"}
         xog{"sogščina"}
         yao{"jaojščina"}
         yap{"japščina"}
@@ -566,7 +559,6 @@ sl{
         yo{"jorubščina"}
         yrl{"nheengatu"}
         yue{"kantonščina"}
-        za{"džuangščina"}
         zap{"zapoteščina"}
         zbl{"znakovni jezik Bliss"}
         zen{"zenaščina"}
@@ -746,8 +738,6 @@ sl{
             indian{"indijanski koledar"}
             islamic{"islamski koledar"}
             islamic-civil{"islamski civilni koledar"}
-            islamic-rgsa{"islamski koledar ( Saudova Arabija, opazovalni)"}
-            islamic-tbla{"islamski koledar (tabelarni, astronomska epoha)"}
             islamic-umalqura{"islamski koledar Umm al-Qura"}
             iso8601{"koledar ISO-8601"}
             japanese{"japonski koledar"}
@@ -801,6 +791,7 @@ sl{
             phonebook{"razvrščanje po sistemu telefonskega imenika"}
             phonetic{"fonetično razvrščanje"}
             pinyin{"razvrščanje po sistemu pinjin"}
+            reformed{"reformirano razvrščanje"}
             search{"Splošno iskanje"}
             searchjl{"Iskanje po začetnem soglasniku hangul"}
             standard{"Standardno razvrščanje"}

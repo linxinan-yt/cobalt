@@ -15,26 +15,26 @@
 import {colorForCpu, colorForThread} from './colorizer';
 
 const PROCESS_A_THREAD_A = {
-  tid: 100n,
-  pid: 100n,
+  tid: 100,
+  pid: 100,
 };
 
 const PROCESS_A_THREAD_B = {
-  tid: 101n,
-  pid: 100n,
+  tid: 101,
+  pid: 100,
 };
 
 const PROCESS_B_THREAD_A = {
-  tid: 200n,
-  pid: 200n,
+  tid: 200,
+  pid: 200,
 };
 
 const PROCESS_UNK_THREAD_A = {
-  tid: 42n,
+  tid: 42,
 };
 
 const PROCESS_UNK_THREAD_B = {
-  tid: 42n,
+  tid: 42,
 };
 
 test('it gives threads colors by pid if present', () => {

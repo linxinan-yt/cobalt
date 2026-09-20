@@ -49,7 +49,6 @@ class DelayBasedCongestionControl {
   bool ShouldReduceReferenceWindow() const;
 
   DataSize UpdateReferenceWindow(DataSize rew_window,
-                                 double ref_window_mss_ratio,
                                  double virtual_alpha_lim) const;
 
   double scale_increase() const {

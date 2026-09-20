@@ -69,7 +69,6 @@ action("gen_buildflags") {
       (enable_perfetto_trace_processor && build_with_chromium)) {
     perfetto_local_symbolizer =
         "PERFETTO_BUILDFLAG_DEFINE_PERFETTO_OS_LINUX() || " +
-        "PERFETTO_BUILDFLAG_DEFINE_PERFETTO_OS_FREEBSD() || " +
         "PERFETTO_BUILDFLAG_DEFINE_PERFETTO_OS_MAC() ||" +
         "PERFETTO_BUILDFLAG_DEFINE_PERFETTO_OS_WIN()"
   } else {
@@ -108,7 +107,6 @@ action("gen_buildflags") {
     "PERFETTO_THREAD_SAFETY_ANNOTATIONS=$perfetto_thread_safety_annotations",
     "PERFETTO_ENABLE_WINSCOPE=$enable_perfetto_winscope",
     "PERFETTO_ENABLE_RT_MUTEX=$enable_perfetto_rt_mutex",
-    "PERFETTO_ENABLE_LOCKFREE_TASKRUNNER=$enable_perfetto_lockfree_taskrunner",
   ]
 
   rel_out_path = rebase_path(gen_header_path, "$root_build_dir")
@@ -233,7 +231,6 @@ protobuf_full_deps_allowlist = [
   "../src/protozero/filtering:filter_util",
   "../tools/*",
   "../src/tools/*",
-  "../contrib/rust-sdk/tools/*",
 ]
 
 group("protoc") {

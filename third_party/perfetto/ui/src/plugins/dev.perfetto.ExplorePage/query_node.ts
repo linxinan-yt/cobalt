@@ -14,12 +14,10 @@
 
 import protos from '../../protos';
 import m from 'mithril';
-import {SqlModules, SqlTable} from '../dev.perfetto.SqlModules/sql_modules';
 import {ColumnInfo, newColumnInfoList} from './query_builder/column_info';
-import {UIFilter} from './query_builder/operations/filter';
+import {FilterDefinition} from '../../components/widgets/data_grid/common';
 import {Engine} from '../../trace_processor/engine';
 import {NodeIssues} from './query_builder/node_issues';
-import {Trace} from '../../public/trace';
 
 let nodeCounter = 0;
 export function nextNodeId(): string {
@@ -33,71 +31,40 @@ export enum NodeType {
   kSqlSource,
 
   // Single node operations
+  kSubQuery,
   kAggregation,
   kModifyColumns,
-  kAddColumns,
-  kLimitAndOffset,
-  kSort,
 
   // Multi node operations
   kIntervalIntersect,
-  kUnion,
-  kMerge,
-}
-
-export function singleNodeOperation(type: NodeType): boolean {
-  switch (type) {
-    case NodeType.kAggregation:
-    case NodeType.kModifyColumns:
-    case NodeType.kAddColumns:
-    case NodeType.kLimitAndOffset:
-    case NodeType.kSort:
-      return true;
-    default:
-      return false;
-  }
-}
-
-// Actions that can be performed by nodes on the parent graph.
-// These are optional callbacks provided by the parent component.
-export interface NodeActions {
-  // Create and connect a table node to a target node's input port
-  onAddAndConnectTable?: (tableName: string, portIndex: number) => void;
 }
 
 // All information required to create a new node.
 export interface QueryNodeState {
-  prevNode?: QueryNode;
   prevNodes?: QueryNode[];
-  comment?: string;
-  trace?: Trace;
-  sqlModules?: SqlModules;
-  sqlTable?: SqlTable;
+  customTitle?: string;
 
   // Operations
-  filters?: UIFilter[];
-  filterOperator?: 'AND' | 'OR'; // How to combine filters (default: AND)
+  filters: FilterDefinition[];
 
   issues?: NodeIssues;
 
   onchange?: () => void;
 
-  // Actions that can be performed on the parent graph
-  actions?: NodeActions;
-
   // Caching
+  isExecuted?: boolean;
   hasOperationChanged?: boolean;
-
-  // Whether queries should automatically execute when this node changes.
-  // If false, the user must manually click "Run" to execute queries.
-  // Set by the node registry when the node is created.
-  autoExecute?: boolean;
 }
 
-export interface BaseNode {
+export interface QueryNode {
   readonly nodeId: string;
+  meterialisedAs?: string;
   readonly type: NodeType;
+  prevNodes?: QueryNode[];
   nextNodes: QueryNode[];
+
+  // Columns that are available in the source data.
+  readonly sourceCols: ColumnInfo[];
 
   // Columns that are available after applying all operations.
   readonly finalCols: ColumnInfo[];
@@ -108,33 +75,12 @@ export interface BaseNode {
 
   validate(): boolean;
   getTitle(): string;
-  nodeSpecificModify(): m.Child;
+  nodeSpecificModify(onExecute?: () => void): m.Child;
   nodeDetails?(): m.Child | undefined;
   clone(): QueryNode;
   getStructuredQuery(): protos.PerfettoSqlStructuredQuery | undefined;
+  isMaterialised(): boolean;
   serializeState(): object;
-  onPrevNodesUpdated?(): void;
-}
-
-export interface SourceNode extends BaseNode {}
-
-export interface ModificationNode extends BaseNode {
-  prevNode?: QueryNode;
-  // Optional input nodes that appear on the left side of the node
-  // (as opposed to prevNode which comes from above)
-  inputNodes?: (QueryNode | undefined)[];
-}
-
-export interface MultiSourceNode extends BaseNode {
-  prevNodes: QueryNode[];
-}
-
-export type QueryNode = SourceNode | ModificationNode | MultiSourceNode;
-
-export function notifyNextNodes(node: QueryNode) {
-  for (const nextNode of node.nextNodes) {
-    nextNode.onPrevNodesUpdated?.();
-  }
 }
 
 export interface Query {
@@ -163,8 +109,8 @@ export function createSelectColumnsProto(
   return selectedColumns;
 }
 
-export function createFinalColumns(sourceCols: ColumnInfo[]) {
-  return newColumnInfoList(sourceCols, true);
+export function createFinalColumns(node: QueryNode) {
+  return newColumnInfoList(node.sourceCols, true);
 }
 
 function getStructuredQueries(
@@ -181,19 +127,11 @@ function getStructuredQueries(
       return;
     }
     revStructuredQueries.push(curSq);
-
-    let prevNode: QueryNode | undefined;
-    if ('prevNode' in curNode) {
-      prevNode = curNode.prevNode;
-    } else if ('prevNodes' in curNode && curNode.prevNodes.length > 0) {
-      prevNode = curNode.prevNodes[0];
-    }
-
-    if (prevNode) {
-      if (!prevNode.validate()) {
+    if (curNode.prevNodes?.[0]) {
+      if (!curNode.prevNodes[0].validate()) {
         return;
       }
-      curNode = prevNode;
+      curNode = curNode.prevNodes[0];
     } else {
       curNode = undefined;
     }
@@ -211,6 +149,21 @@ export async function analyzeNode(
   node: QueryNode,
   engine: Engine,
 ): Promise<Query | undefined | Error> {
+  if (
+    node.state.isExecuted &&
+    !node.state.hasOperationChanged &&
+    node.type !== NodeType.kSqlSource
+  ) {
+    const sql: Query = {
+      sql: `SELECT * FROM ${node.meterialisedAs ?? ''}`,
+      textproto: '',
+      modules: [],
+      preambles: [],
+      columns: [],
+    };
+    return sql;
+  }
+
   const structuredQueries = getStructuredQueries(node);
   if (structuredQueries === undefined) return;
 
@@ -233,8 +186,20 @@ export async function analyzeNode(
     return Error('No textproto in structured query results');
   }
 
+  let finalSql = lastRes.sql;
+  if (materialise(node)) {
+    if (!node.meterialisedAs) {
+      node.meterialisedAs = `exp_${node.nodeId}`;
+    }
+    const createTableSql = `CREATE OR REPLACE PERFETTO TABLE ${
+      node.meterialisedAs ?? `exp_${node.nodeId}`
+    } AS \n${lastRes.sql}`;
+    const selectSql = `SELECT * FROM ${node.meterialisedAs ?? `exp_${node.nodeId}`}`;
+    finalSql = `${createTableSql};\n${selectSql}`;
+  }
+
   const sql: Query = {
-    sql: lastRes.sql,
+    sql: finalSql,
     textproto: lastRes.textproto ?? '',
     modules: lastRes.modules ?? [],
     preambles: lastRes.preambles ?? [],
@@ -245,14 +210,13 @@ export async function analyzeNode(
 
 export function setOperationChanged(node: QueryNode) {
   let curr: QueryNode | undefined = node;
-  const queue: QueryNode[] = [];
   while (curr) {
     if (curr.state.hasOperationChanged) {
-      // Already marked as changed, skip this branch
-      curr = queue.shift();
-      continue;
+      // Already marked as changed, and so are the children.
+      break;
     }
     curr.state.hasOperationChanged = true;
+    const queue: QueryNode[] = [];
     curr.nextNodes.forEach((child) => {
       queue.push(child);
     });
@@ -270,103 +234,9 @@ export function isAQuery(
   );
 }
 
-// ========================================
-// GRAPH CONNECTION OPERATIONS
-// ========================================
-// These functions encapsulate the bidirectional relationship management
-// between nodes, ensuring consistency when adding/removing connections.
-
-/**
- * Adds a connection from one node to another, updating both forward and
- * backward links. For multi-source nodes, adds to the specified port index.
- */
-export function addConnection(
-  fromNode: QueryNode,
-  toNode: QueryNode,
-  portIndex?: number,
-): void {
-  // Update forward link (fromNode -> toNode)
-  if (!fromNode.nextNodes.includes(toNode)) {
-    fromNode.nextNodes.push(toNode);
-  }
-
-  // Update backward link based on node type
-  if ('prevNode' in toNode && singleNodeOperation(toNode.type)) {
-    // ModificationNode
-    const modNode = toNode as ModificationNode;
-
-    // If portIndex is specified and node supports inputNodes
-    if (portIndex !== undefined && 'inputNodes' in modNode) {
-      // portIndex maps directly to inputNodes array
-      // portIndex=0 → inputNodes[0], portIndex=1 → inputNodes[1], etc.
-      if (!modNode.inputNodes) {
-        modNode.inputNodes = [];
-      }
-      // Expand array if needed
-      while (modNode.inputNodes.length <= portIndex) {
-        modNode.inputNodes.push(undefined);
-      }
-      modNode.inputNodes[portIndex] = fromNode;
-      modNode.onPrevNodesUpdated?.();
-    } else {
-      // Otherwise connect to prevNode (default single input from above)
-      modNode.prevNode = fromNode;
-    }
-  } else if ('prevNodes' in toNode && Array.isArray(toNode.prevNodes)) {
-    // MultiSourceNode - multiple inputs
-    const multiSourceNode = toNode as MultiSourceNode;
-
-    if (
-      portIndex !== undefined &&
-      portIndex < multiSourceNode.prevNodes.length
-    ) {
-      // Replace existing connection at this port
-      multiSourceNode.prevNodes[portIndex] = fromNode;
-    } else {
-      // Append to end (ignore portIndex if out of bounds)
-      multiSourceNode.prevNodes.push(fromNode);
-    }
-    multiSourceNode.onPrevNodesUpdated?.();
-  }
-}
-
-/**
- * Removes a connection from one node to another, cleaning up both forward
- * and backward links.
- */
-export function removeConnection(fromNode: QueryNode, toNode: QueryNode): void {
-  // Remove forward link (fromNode -> toNode)
-  const nextIndex = fromNode.nextNodes.indexOf(toNode);
-  if (nextIndex !== -1) {
-    fromNode.nextNodes.splice(nextIndex, 1);
-  }
-
-  // Remove backward link based on node type
-  if ('prevNode' in toNode && singleNodeOperation(toNode.type)) {
-    // ModificationNode
-    const modNode = toNode as ModificationNode;
-
-    // Check if it's in prevNode
-    if (modNode.prevNode === fromNode) {
-      modNode.prevNode = undefined;
-    }
-
-    // Also check if it's in inputNodes
-    if ('inputNodes' in modNode && modNode.inputNodes) {
-      const inputIndex = modNode.inputNodes.indexOf(fromNode);
-      if (inputIndex !== -1) {
-        modNode.inputNodes[inputIndex] = undefined;
-        modNode.onPrevNodesUpdated?.();
-      }
-    }
-  } else if ('prevNodes' in toNode && Array.isArray(toNode.prevNodes)) {
-    // MultiSourceNode - multiple inputs
-    const multiSourceNode = toNode as MultiSourceNode;
-    const prevIndex = multiSourceNode.prevNodes.indexOf(fromNode);
-    if (prevIndex !== -1) {
-      // Remove from array, compacting it (no undefined holes)
-      multiSourceNode.prevNodes.splice(prevIndex, 1);
-      multiSourceNode.onPrevNodesUpdated?.();
-    }
-  }
+function materialise(node: QueryNode): boolean {
+  return (
+    node.type !== NodeType.kSqlSource &&
+    node.type != NodeType.kIntervalIntersect
+  );
 }

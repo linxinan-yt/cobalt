@@ -22,11 +22,9 @@
 #include <cstdint>
 #include <optional>
 #include <string>
-#include <utility>
 #include <vector>
 
 #include "perfetto/ext/base/flat_hash_map.h"
-#include "perfetto/ext/base/murmur_hash.h"
 #include "perfetto/ext/base/string_view.h"
 #include "src/trace_processor/importers/common/address_range.h"
 #include "src/trace_processor/importers/common/create_mapping_params.h"
@@ -34,7 +32,8 @@
 #include "src/trace_processor/types/trace_processor_context.h"
 #include "src/trace_processor/util/build_id.h"
 
-namespace perfetto::trace_processor {
+namespace perfetto {
+namespace trace_processor {
 
 // TODO(carlscab): Reconsider whether jit is the best abstraction here. All we
 // really care is about mapping a `rel_pc` to a symbol (aka symbolization) and
@@ -77,12 +76,7 @@ class VirtualMemoryMapping {
   // `is_jitted()` same `rel_pc` values can return different mappings (as jitted
   // functions can be created and deleted over time.) So for such mappings the
   // returned `FrameId` should not be cached.
-  // Optionally accepts source_file and line_number for online symbolization.
-  FrameId InternFrame(
-      uint64_t rel_pc,
-      base::StringView function_name,
-      std::optional<base::StringView> source_file = std::nullopt,
-      std::optional<uint32_t> line_number = std::nullopt);
+  FrameId InternFrame(uint64_t rel_pc, base::StringView function_name);
 
   // Returns all frames ever created in this mapping for the given `rel_pc`.
   std::vector<FrameId> FindFrameIds(uint64_t rel_pc) const;
@@ -93,21 +87,11 @@ class VirtualMemoryMapping {
 
   TraceProcessorContext* context() const { return context_; }
 
-  // Helper to create a symbol table entry with source file and/or line number
-  // information. Returns the symbol_set_id that should be stored in the frame.
-  std::optional<uint32_t> CreateSymbol(
-      base::StringView function_name,
-      std::optional<base::StringView> source_file,
-      std::optional<uint32_t> line_number);
-
  private:
   friend class MappingTracker;
 
-  std::pair<FrameId, bool> InternFrameImpl(
-      uint64_t rel_pc,
-      base::StringView function_name,
-      std::optional<base::StringView> source_file,
-      std::optional<uint32_t> line_number);
+  std::pair<FrameId, bool> InternFrameImpl(uint64_t rel_pc,
+                                           base::StringView function_name);
 
   void SetJitCache(JitCache* jit_cache) { jit_cache_ = jit_cache; }
 
@@ -131,13 +115,14 @@ class VirtualMemoryMapping {
       return rel_pc == o.rel_pc && name_id == o.name_id;
     }
 
-    template <typename H>
-    friend H PerfettoHashValue(H h, const FrameKey& k) {
-      return H::Combine(std::move(h), k.rel_pc, k.name_id);
-    }
+    struct Hasher {
+      size_t operator()(const FrameKey& k) const {
+        return static_cast<size_t>(
+            base::FnvHasher::Combine(k.rel_pc, k.name_id.raw_id()));
+      }
+    };
   };
-  base::FlatHashMap<FrameKey, FrameId, base::MurmurHash<FrameKey>>
-      interned_frames_;
+  base::FlatHashMap<FrameKey, FrameId, FrameKey::Hasher> interned_frames_;
   base::FlatHashMap<uint64_t, std::vector<FrameId>> frames_by_rel_pc_;
 };
 
@@ -171,13 +156,10 @@ class DummyMemoryMapping : public VirtualMemoryMapping {
  public:
   ~DummyMemoryMapping() override;
 
-  // Interns a frame based solely on function name, source file, and optionally
-  // line number. This is useful for profilers that do not emit an address nor
-  // a mapping.
-  FrameId InternDummyFrame(
-      base::StringView function_name,
-      std::optional<base::StringView> source_file = std::nullopt,
-      std::optional<uint32_t> line_number = std::nullopt);
+  // Interns a frame based solely on function name and source file. This is
+  // useful for profilers that do not emit an address nor a mapping.
+  FrameId InternDummyFrame(base::StringView function_name,
+                           base::StringView source_file);
 
  private:
   friend class MappingTracker;
@@ -187,23 +169,24 @@ class DummyMemoryMapping : public VirtualMemoryMapping {
   struct DummyFrameKey {
     StringId function_name_id;
     StringId source_file_id;
-    std::optional<uint32_t> line_number;
 
     bool operator==(const DummyFrameKey& o) const {
       return function_name_id == o.function_name_id &&
-             source_file_id == o.source_file_id && line_number == o.line_number;
+             source_file_id == o.source_file_id;
     }
 
-    template <typename H>
-    friend H PerfettoHashValue(H h, const DummyFrameKey& k) {
-      return H::Combine(std::move(h), k.function_name_id, k.source_file_id,
-                        k.line_number);
-    }
+    struct Hasher {
+      size_t operator()(const DummyFrameKey& k) const {
+        return static_cast<size_t>(base::FnvHasher::Combine(
+            k.function_name_id.raw_id(), k.source_file_id.raw_id()));
+      }
+    };
   };
-  base::FlatHashMap<DummyFrameKey, FrameId, base::MurmurHash<DummyFrameKey>>
+  base::FlatHashMap<DummyFrameKey, FrameId, DummyFrameKey::Hasher>
       interned_dummy_frames_;
 };
 
-}  // namespace perfetto::trace_processor
+}  // namespace trace_processor
+}  // namespace perfetto
 
 #endif  // SRC_TRACE_PROCESSOR_IMPORTERS_COMMON_VIRTUAL_MEMORY_MAPPING_H_

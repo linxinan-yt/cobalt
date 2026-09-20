@@ -18,14 +18,14 @@
 class LocaleCreateCanonical : public UPerfFunction {
 public:
     LocaleCreateCanonical() {
-        testCases.emplace_back("en");
-        testCases.emplace_back("en-US");
-        testCases.emplace_back("ja-JP");
-        testCases.emplace_back("zh-Hant-CN");
-        testCases.emplace_back("hy-SU");
+        testCases.push_back("en");
+        testCases.push_back("en-US");
+        testCases.push_back("ja-JP");
+        testCases.push_back("zh-Hant-CN");
+        testCases.push_back("hy-SU");
     }
     ~LocaleCreateCanonical() {  }
-    void call(UErrorCode* /*status*/) override
+    virtual void call(UErrorCode* /* status */)
     {
         std::for_each(testCases.begin(), testCases.end(),
                       [](const std::string& s)
@@ -33,8 +33,8 @@ public:
                           Locale l = Locale::createCanonical(s.c_str());
                       });
     }
-    long getOperationsPerIteration() override { return testCases.size(); }
-    long getEventsPerIteration() override { return testCases.size(); }
+    virtual long getOperationsPerIteration() { return testCases.size(); }
+    virtual long getEventsPerIteration() { return testCases.size(); }
 private:
     std::vector<std::string> testCases;
 };
@@ -51,8 +51,8 @@ public:
     ~LocaleCanonicalizationPerfTest()
     {
     }
-    UPerfFunction* runIndexedTest(
-        int32_t index, UBool exec, const char*& name, char* par = nullptr) override;
+    virtual UPerfFunction* runIndexedTest(
+        int32_t index, UBool exec, const char *&name, char *par = nullptr);
 
 private:
     UPerfFunction* TestLocaleCreateCanonical()

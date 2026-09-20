@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 fa{
     units{
         acceleration{
@@ -109,11 +109,6 @@ fa{
                 one{"{0} ده‌هزارم"}
                 other{"{0} ده‌هزارم"}
             }
-            portion-per-1e9{
-                dnam{"بخش در بیلیون"}
-                one{"{0} بخش در بیلیون"}
-                other{"{0} بخش در بیلیون"}
-            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -188,12 +183,6 @@ fa{
             }
             month{
                 per{"{0} در ماه"}
-            }
-            night{
-                dnam{"شب"}
-                one{"{0} شب"}
-                other{"{0} شب"}
-                per{"{0} در شب"}
             }
             quarter{
                 one{"{0} سه‌ماهه"}
@@ -497,11 +486,9 @@ fa{
     unitsNarrow{
         acceleration{
             g-force{
+                dnam{"نیروی جاذبه"}
                 one{"{0}G"}
-                other{"{0}Gs"}
-            }
-            meter-per-square-second{
-                dnam{"m/s²"}
+                other{"{0}G"}
             }
         }
         angle{
@@ -520,8 +507,8 @@ fa{
         }
         area{
             acre{
-                one{"{0}ac"}
-                other{"{0}ac"}
+                one{"{0}جریب"}
+                other{"{0} جریب"}
             }
             dunam{
                 one{"{0}دونوم"}
@@ -543,7 +530,6 @@ fa{
                 per{"{0}/in²"}
             }
             square-kilometer{
-                dnam{"km²"}
                 one{"{0}km²"}
                 other{"{0}km²"}
             }
@@ -552,7 +538,6 @@ fa{
                 other{"{0}m²"}
             }
             square-mile{
-                dnam{"mi²"}
                 one{"{0} mi²"}
                 other{"{0} mi²"}
             }
@@ -632,9 +617,6 @@ fa{
                 one{"{0}ppm"}
                 other{"{0}ppm"}
             }
-            portion-per-1e9{
-                dnam{"بخش در بیلیون"}
-            }
         }
         consumption{
             mile-per-gallon-imperial{
@@ -699,15 +681,9 @@ fa{
                 one{"{0}ns"}
                 other{"{0}ns"}
             }
-            night{
-                dnam{"شب"}
-                one{"{0} شب"}
-                other{"{0} شب"}
-                per{"{0}/شب"}
-            }
             quarter{
-                one{"{0}سه‌ماه"}
-                other{"{0}سه‌ماه"}
+                one{"{0}فصل"}
+                other{"{0}فصل"}
             }
             second{
                 one{"{0}s"}
@@ -715,60 +691,10 @@ fa{
                 per{"{0}/ثانیه"}
             }
         }
-        electric{
-            ampere{
-                dnam{"amp"}
-                one{"{0}A"}
-                other{"{0}A"}
-            }
-            milliampere{
-                dnam{"mA"}
-                one{"{0}mA"}
-                other{"{0}mA"}
-            }
-            ohm{
-                one{"{0}Ω"}
-                other{"{0}Ω"}
-            }
-            volt{
-                one{"{0}V"}
-                other{"{0}V"}
-            }
-        }
         energy{
-            british-thermal-unit{
-                dnam{"BTU"}
-                one{"{0}Btu"}
-                other{"{0}Btu"}
-            }
-            calorie{
-                dnam{"cal"}
-                one{"{0}cal"}
-                other{"{0}cal"}
-            }
             electronvolt{
-                dnam{"eV"}
-                one{"{0}eV"}
-                other{"{0}eV"}
-            }
-            foodcalorie{
-                dnam{"Cal"}
-                one{"{0}Cal"}
-                other{"{0}Cal"}
-            }
-            joule{
-                one{"{0}J"}
-                other{"{0}J"}
-            }
-            kilojoule{
-                dnam{"kJ"}
-                one{"{0}kJ"}
-                other{"{0}kJ"}
-            }
-            kilowatt-hour{
-                dnam{"kWh"}
-                one{"{0}kWh"}
-                other{"{0}kWh"}
+                one{"{0}الکترون‌ولت"}
+                other{"{0}الکترون‌ولت"}
             }
         }
         force{
@@ -779,31 +705,12 @@ fa{
         }
         frequency{
             gigahertz{
-                dnam{"GHz"}
-                one{"{0}GHz"}
-                other{"{0}GHz"}
-            }
-            hertz{
-                dnam{"Hz"}
-                one{"{0}Hz"}
-                other{"{0}Hz"}
-            }
-            kilohertz{
-                dnam{"kHz"}
-                one{"{0}kHz"}
-                other{"{0}kHz"}
-            }
-            megahertz{
-                dnam{"MHz"}
-                one{"{0}MHz"}
-                other{"{0}MHz"}
+                dnam{"گ‌.هرتز"}
+                one{"{0} گ.هرتز"}
+                other{"{0} گ.هرتز"}
             }
         }
         graphics{
-            dot{
-                one{"{0}dot"}
-                other{"{0}dot"}
-            }
             dot-per-inch{
                 one{"{0}dpi"}
                 other{"{0}dpi"}
@@ -823,8 +730,9 @@ fa{
         }
         length{
             astronomical-unit{
-                one{"{0}au"}
-                other{"{0}au"}
+                dnam{"واحد نجومی"}
+                one{"{0}واحد نجومی"}
+                other{"{0}واحد نجومی"}
             }
             centimeter{
                 dnam{"cm"}
@@ -838,8 +746,8 @@ fa{
                 other{"{0}dm"}
             }
             fathom{
-                one{"{0}fth"}
-                other{"{0}fth"}
+                one{"{0}فاتوم"}
+                other{"{0}فاتوم"}
             }
             foot{
                 dnam{"ft"}
@@ -848,11 +756,10 @@ fa{
                 per{"{0}/ft"}
             }
             furlong{
-                one{"{0}fur"}
-                other{"{0}fur"}
+                one{"{0}فرلانگ"}
+                other{"{0}فرلانگ"}
             }
             inch{
-                dnam{"in"}
                 one{"{0}in"}
                 other{"{0}in"}
             }
@@ -863,7 +770,6 @@ fa{
                 per{"{0}‎/km"}
             }
             light-year{
-                dnam{"ly"}
                 one{"{0}ly"}
                 other{"{0}ly"}
             }
@@ -883,9 +789,6 @@ fa{
                 one{"{0}mi"}
                 other{"{0}mi"}
             }
-            mile-scandinavian{
-                dnam{"smi"}
-            }
             millimeter{
                 dnam{"mm"}
                 one{"{0}mm"}
@@ -897,13 +800,8 @@ fa{
                 other{"{0}nm"}
             }
             nautical-mile{
-                dnam{"nmi"}
-                one{"{0}nmi"}
-                other{"{0}nmi"}
-            }
-            parsec{
-                one{"{0}pc"}
-                other{"{0}pc"}
+                one{"{0}مایل دریایی"}
+                other{"{0}مایل دریایی"}
             }
             picometer{
                 dnam{"pm"}
@@ -911,14 +809,12 @@ fa{
                 other{"{0}pm"}
             }
             point{
-                dnam{"pts"}
-                one{"{0}pt"}
-                other{"{0}pt"}
+                one{"{0}پوینت"}
+                other{"{0}پوینت"}
             }
             solar-radius{
-                dnam{"R☉"}
-                one{"{0}R☉"}
-                other{"{0}R☉"}
+                one{"{0}شعاع خورشید"}
+                other{"{0}شعاع خورشید"}
             }
             yard{
                 dnam{"yd"}
@@ -932,23 +828,16 @@ fa{
                 other{"{0}CD"}
             }
             dalton{
-                dnam{"Da"}
                 one{"{0}Da"}
                 other{"{0}Da"}
             }
             earth-mass{
-                dnam{"M⊕"}
                 one{"{0}M⊕"}
                 other{"{0}M⊕"}
             }
             grain{
-                dnam{"gr"}
                 one{"{0}gr"}
                 other{"{0}gr"}
-            }
-            gram{
-                one{"{0}g"}
-                other{"{0}g"}
             }
             kilogram{
                 dnam{"kg"}
@@ -956,30 +845,28 @@ fa{
                 other{"{0}kg"}
             }
             microgram{
+                dnam{"میکروگرم"}
                 one{"{0}μg"}
                 other{"{0}μg"}
             }
             milligram{
+                dnam{"میلی‌گرم"}
                 one{"{0}mg"}
                 other{"{0}mg"}
             }
             ounce{
-                dnam{"oz"}
                 one{"{0}oz"}
                 other{"{0}oz"}
-                per{"{0}/oz"}
             }
             ounce-troy{
-                dnam{"oz t"}
-                one{"{0}oz t"}
-                other{"{0}oz t"}
+                one{"{0}اونس تروا"}
+                other{"{0}اونس تروا"}
             }
             pound{
                 one{"{0}lb"}
                 other{"{0}lb"}
             }
             solar-mass{
-                dnam{"M☉"}
                 one{"{0}M☉"}
                 other{"{0}M☉"}
             }
@@ -992,29 +879,19 @@ fa{
                 other{"{0}tn"}
             }
             tonne{
-                one{"{0}t"}
-                other{"{0}t"}
+                dnam{"تن متریک"}
+                one{"{0} تن"}
+                other{"{0} تن"}
             }
         }
         power{
-            gigawatt{
-                dnam{"GW"}
-                one{"{0}GW"}
-                other{"{0}GW"}
-            }
             horsepower{
-                dnam{"hp"}
                 one{"{0}hp"}
                 other{"{0}hp"}
             }
             kilowatt{
                 one{"{0}kW"}
                 other{"{0}kW"}
-            }
-            milliwatt{
-                dnam{"mW"}
-                one{"{0}mW"}
-                other{"{0}mW"}
             }
             watt{
                 one{"{0}W"}
@@ -1049,20 +926,13 @@ fa{
                 other{"{0}بوفورت"}
             }
             kilometer-per-hour{
-                dnam{"km/hr"}
-            }
-            knot{
-                dnam{"kn"}
-                one{"{0}kn"}
-                other{"{0}kn"}
+                dnam{"کیلومتر/ساعت"}
             }
             meter-per-second{
-                dnam{"m/s"}
                 one{"{0}m/s"}
                 other{"{0}m/s"}
             }
             mile-per-hour{
-                dnam{"mi/h"}
                 one{"{0}mph"}
                 other{"{0}mph"}
             }
@@ -1083,11 +953,6 @@ fa{
             acre-foot{
                 one{"{0}ac ft"}
                 other{"{0}ac ft"}
-            }
-            barrel{
-                dnam{"bbl"}
-                one{"{0}bbl"}
-                other{"{0}bbl"}
             }
             bushel{
                 one{"{0}bu"}
@@ -1117,27 +982,13 @@ fa{
                 one{"{0}mc"}
                 other{"{0}mc"}
             }
-            dessert-spoon{
-                dnam{"ق.دس.خ"}
-            }
-            dram{
-                dnam{"fl.dr."}
-                one{"{0}fl.dr."}
-                other{"{0}fl.dr."}
-            }
             fluid-ounce{
                 one{"{0}fl oz"}
                 other{"{0}fl oz"}
             }
             fluid-ounce-imperial{
-                dnam{"Imp fl oz"}
-                one{"{0}fl oz Im"}
-                other{"{0}fl oz Im"}
-            }
-            gallon-imperial{
-                one{"{0}galIm"}
-                other{"{0}galIm"}
-                per{"{0}/galIm"}
+                one{"{0}اونس سیال انگلیسی"}
+                other{"{0}اونس سیال انگلیسی"}
             }
             megaliter{
                 dnam{"ML"}
@@ -1162,16 +1013,10 @@ fa{
                 other{"{0}qt"}
             }
             quart-imperial{
-                dnam{"qt Imp"}
-                one{"{0}qt-Imp."}
-                other{"{0}qt-Imp."}
-            }
-            tablespoon{
-                one{"{0} ق.غ.خ"}
-                other{"{0} ق.غ.خ"}
+                one{"{0}کوارت انگلیسی"}
+                other{"{0} کورت انگلیسی"}
             }
             teaspoon{
-                dnam{"ق.چ.خ"}
                 one{"{0}ق.چ."}
                 other{"{0}ق.چ."}
             }
@@ -1228,8 +1073,8 @@ fa{
             }
             hectare{
                 dnam{"هکتار"}
-                one{"{0} هکتار"}
-                other{"{0} هکتار"}
+                one{"{0} هک"}
+                other{"{0} هک"}
             }
             square-centimeter{
                 one{"{0}‎ cm²"}
@@ -1362,9 +1207,6 @@ fa{
             permyriad{
                 dnam{"ده‌هزارم"}
             }
-            portion-per-1e9{
-                dnam{"بخش در بیلیون"}
-            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1476,16 +1318,10 @@ fa{
                 one{"{0} نانوثانیه"}
                 other{"{0} نانوثانیه"}
             }
-            night{
-                dnam{"شب"}
-                one{"{0} شب"}
-                other{"{0} شب"}
-                per{"{0}/شب"}
-            }
             quarter{
                 dnam{"سه‌ماه"}
-                one{"{0} سه‌ماه"}
-                other{"{0}سه‌ماه"}
+                one{"{0} فصل"}
+                other{"{0} فصل"}
                 per{"{0}/سه‌ماه"}
             }
             second{
@@ -1784,6 +1620,7 @@ fa{
                 dnam{"گرم"}
                 one{"{0} گرم"}
                 other{"{0} گرم"}
+                per{"{0} در گرم"}
             }
             kilogram{
                 dnam{"کیلوگرم"}
@@ -1792,7 +1629,6 @@ fa{
                 per{"{0}‎/kg"}
             }
             microgram{
-                dnam{"میکروگرم"}
                 one{"{0} میکروگرم"}
                 other{"{0} میکروگرم"}
             }
@@ -1812,6 +1648,7 @@ fa{
                 other{"{0} اونس تروا"}
             }
             pound{
+                dnam{"پوند"}
                 one{"{0} پوند"}
                 other{"{0} پوند"}
                 per{"{0} در پوند"}
@@ -1830,11 +1667,6 @@ fa{
                 dnam{"تن"}
                 one{"{0} تن"}
                 other{"{0} تن"}
-            }
-            tonne{
-                dnam{"تُن"}
-                one{"{0} تُن"}
-                other{"{0} تُن"}
             }
         }
         power{
@@ -2135,10 +1967,10 @@ fa{
             tablespoon{
                 dnam{"قاشق غ."}
                 one{"{0} ق.غ.خ"}
-                other{"{0} ق.غ.خ"}
+                other{"{0} قاشق غ."}
             }
             teaspoon{
-                dnam{"ق.چای‌خوری"}
+                dnam{"قاشق چ."}
                 one{"{0} ق.چ."}
                 other{"{0} ق.چ."}
             }

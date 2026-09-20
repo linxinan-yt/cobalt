@@ -26,7 +26,6 @@
 #include <vector>
 
 #include "absl/functional/any_invocable.h"
-#include "absl/strings/str_format.h"
 #include "absl/strings/string_view.h"
 #include "api/array_view.h"
 #include "api/field_trials_view.h"
@@ -172,22 +171,6 @@ int GetForceDtls13(const FieldTrialsView* field_trials) {
   return kForceDtls13Off;
 #endif  // DTLS1_3_VERSION
 }
-
-#ifdef OPENSSL_IS_BORINGSSL
-std::string GetOpenSslError() {
-  std::string error;
-  int64_t error_id;
-  const char* error_file;
-  int error_line;
-  while ((error_id = ERR_get_error_line(&error_file, &error_line)) != 0) {
-    char buf[ERR_ERROR_STRING_BUF_LEN];
-    ERR_error_string_n(error_id, buf, sizeof(buf));
-    absl::StrAppendFormat(&error, "\nOpenSSL error (file: %s, line: %d): %s",
-                          error_file, error_line, buf);
-  }
-  return error;
-}
-#endif
 
 }  // namespace
 
@@ -649,7 +632,6 @@ StreamResult OpenSSLStreamAdapter::Write(ArrayView<const uint8_t> data,
 
   int code = SSL_write(ssl_, data.data(), checked_cast<int>(data.size()));
   int ssl_error = SSL_get_error(ssl_, code);
-  MaybeSetTimeout();
   switch (ssl_error) {
     case SSL_ERROR_NONE:
       RTC_DLOG(LS_VERBOSE) << " -- success";
@@ -707,7 +689,6 @@ StreamResult OpenSSLStreamAdapter::Read(ArrayView<uint8_t> data,
 
   const int code = SSL_read(ssl_, data.data(), checked_cast<int>(data.size()));
   const int ssl_error = SSL_get_error(ssl_, code);
-  MaybeSetTimeout();
 
   switch (ssl_error) {
     case SSL_ERROR_NONE:
@@ -754,10 +735,9 @@ void OpenSSLStreamAdapter::FlushInput(unsigned int left) {
     // This should always succeed
     const int toread = (sizeof(buf) < left) ? sizeof(buf) : left;
     const int code = SSL_read(ssl_, buf, toread);
+
     const int ssl_error = SSL_get_error(ssl_, code);
     RTC_DCHECK(ssl_error == SSL_ERROR_NONE);
-
-    MaybeSetTimeout();
 
     if (ssl_error != SSL_ERROR_NONE) {
       RTC_DLOG(LS_VERBOSE) << " -- error " << code;
@@ -1016,7 +996,7 @@ int OpenSSLStreamAdapter::ContinueSSL() {
 }
 
 void OpenSSLStreamAdapter::MaybeSetTimeout() {
-  if (ssl_ != nullptr && !timeout_task_.Running()) {
+  if (ssl_ != nullptr) {
     struct timeval timeout;
     if (DTLSv1_get_timeout(ssl_, &timeout)) {
       int delay = timeout.tv_sec * 1000 + timeout.tv_usec / 1000;
@@ -1032,11 +1012,6 @@ void OpenSSLStreamAdapter::Error(absl::string_view context,
   RTC_DCHECK_RUN_ON(&callback_sequence_);
   RTC_LOG(LS_WARNING) << "OpenSSLStreamAdapter::Error(" << context << ", "
                       << err << ", " << static_cast<int>(alert) << ")";
-#ifdef OPENSSL_IS_BORINGSSL
-  if (err == SSL_ERROR_SSL) {
-    RTC_LOG(LS_WARNING) << "GetOpenSslError: " << GetOpenSslError();
-  }
-#endif
   state_ = SSL_ERROR;
   ssl_error_code_ = err;
   Cleanup(alert);

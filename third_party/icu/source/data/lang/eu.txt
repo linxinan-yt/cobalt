@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 eu{
     Keys{
         calendar{"Egutegia"}
@@ -64,7 +64,6 @@ eu{
         bi{"bislama"}
         bin{"edoera"}
         bla{"siksikera"}
-        blo{"aniiera"}
         bm{"bambarera"}
         bn{"bengalera"}
         bo{"tibetera"}
@@ -185,7 +184,7 @@ eu{
         iba{"ibanera"}
         ibb{"ibibioera"}
         id{"indonesiera"}
-        ie{"interlinguea"}
+        ie{"interlingue"}
         ig{"igboera"}
         ii{"Sichuango yiera"}
         ikt{"Kanada mendebaldeko inuitera"}
@@ -240,7 +239,6 @@ eu{
         kv{"komiera"}
         kw{"kornubiera"}
         kwk{"kwakwala"}
-        kxv{"kuvia"}
         ky{"kirgizera"}
         la{"latina"}
         lad{"ladinoa"}
@@ -252,7 +250,6 @@ eu{
         lij{"liguriera"}
         lil{"lillooetera"}
         lkt{"lakotera"}
-        lmo{"lombardiera"}
         ln{"lingala"}
         lo{"laosera"}
         lou{"Louisianako kreolera"}
@@ -408,7 +405,6 @@ eu{
         sw_CD{"Kongoko swahilia"}
         swb{"komoreera"}
         syr{"asiriera"}
-        szl{"silesiera"}
         ta{"tamilera"}
         tce{"hegoaldeko tutchoneera"}
         te{"telugua"}
@@ -452,7 +448,6 @@ eu{
         ve{"vendera"}
         vec{"veneziera"}
         vi{"vietnamera"}
-        vmw{"makhuwera"}
         vo{"volapük"}
         vun{"vunjoa"}
         wa{"valoniera"}
@@ -463,7 +458,6 @@ eu{
         wuu{"wu txinera"}
         xal{"kalmykera"}
         xh{"xhosera"}
-        xnr{"kangrera"}
         xog{"sogera"}
         yav{"yangbenera"}
         ybb{"yemba"}
@@ -471,7 +465,6 @@ eu{
         yo{"jorubera"}
         yrl{"nheengatua"}
         yue{"kantonera"}
-        za{"zhuangera"}
         zgh{"amazigera estandarra"}
         zh{"txinera"}
         zh_Hans{"txinera sinplifikatua"}
@@ -487,7 +480,7 @@ eu{
     }
     Languages%menu{
         yue{"Kantongo txinera"}
-        zh{"mandarina"}
+        zh{"mandarinera"}
     }
     Languages%short{
         en_GB{"Erresuma Batuko ingelesa"}
@@ -517,7 +510,7 @@ eu{
         Bugi{"buginera"}
         Buhd{"buhid"}
         Cakm{"txakma"}
-        Cans{"Kanadako aborigenen silabario bateratua"}
+        Cans{"Kanadiako aborigenen silabiko bateratua"}
         Cari{"kariera"}
         Cham{"txamera"}
         Cher{"txerokiarra"}
@@ -559,21 +552,21 @@ eu{
         Hrkt{"silabario japoniarrak"}
         Hung{"hungariera zaharra"}
         Ital{"italiera zaharra"}
-        Jamo{"jamoa"}
+        Jamo{"jamo-bihurketa"}
         Java{"javaniera"}
         Jpan{"japoniarra"}
         Kali{"kayah li"}
         Kana{"katakana"}
         Kawi{"kawi"}
         Khar{"kharoshthi"}
-        Khmr{"khmertarra"}
+        Khmr{"khemerarra"}
         Khoj{"khojkiera"}
         Kits{"khitanerako script txikiak"}
         Knda{"kanadarra"}
         Kore{"korearra"}
         Kthi{"kaithiera"}
         Lana{"lannera"}
-        Laoo{"laostarra"}
+        Laoo{"laosarra"}
         Latn{"latinoa"}
         Lepc{"leptxa"}
         Limb{"linbuera"}
@@ -591,7 +584,7 @@ eu{
         Mend{"mende"}
         Merc{"meroitiar etzana"}
         Mero{"meroitirra"}
-        Mlym{"malabartarra"}
+        Mlym{"malayalamarra"}
         Modi{"modiera"}
         Mong{"mongoliarra"}
         Mroo{"mroera"}
@@ -645,7 +638,7 @@ eu{
         Takr{"takriera"}
         Tale{"tai le"}
         Talu{"tai lue berria"}
-        Taml{"tamildarra"}
+        Taml{"tamilarra"}
         Tang{"tangutera"}
         Tavt{"tai viet"}
         Telu{"teluguarra"}
@@ -695,8 +688,6 @@ eu{
             indian{"Indiar egutegia"}
             islamic{"Egutegi islamiarra"}
             islamic-civil{"Egutegi islamiarra (taula-formakoa, garai zibilekoa)"}
-            islamic-rgsa{"Islamiar egutegia (Saudi Arabia, ikuspegiak)"}
-            islamic-tbla{"Islamiar egutegia (taula-formakoa, gai astronomikokoa)"}
             islamic-umalqura{"Egutegi islamiarra (Umm al-Qura)"}
             iso8601{"ISO-8601 egutegia"}
             japanese{"Japoniar egutegia"}
@@ -750,6 +741,7 @@ eu{
             phonebook{"Telefonoen zerrenda"}
             phonetic{"Ordenatzeko irizpide fonetikoa"}
             pinyin{"Pinyin hurrenkera"}
+            reformed{"Erreformaren araberako hurrenkera"}
             search{"Bilaketa orokorra"}
             searchjl{"Bilatu hangularen lehen kontsonantearen arabera"}
             standard{"Ordenatzeko irizpide estandarra"}
@@ -820,7 +812,7 @@ eu{
             jpanfin{"Finantzetarako zenbaki japoniarrak"}
             kali{"Kayah Li digituak"}
             kawi{"kawi digituak"}
-            khmr{"Digitu khmertarrak"}
+            khmr{"Digitu khemerarrak"}
             knda{"Digitu kannadarrak"}
             lana{"Tai Tham Hora digituak"}
             lanatham{"Tai Tham Tham digituak"}
@@ -833,7 +825,7 @@ eu{
             mathmono{"Zuriune bakarreko digitu matematikoak"}
             mathsanb{"Sans-Serif Bold digitu matematikoak"}
             mathsans{"Sans-Serif digitu matematikoak"}
-            mlym{"Digitu malabartarrak"}
+            mlym{"Digitu malayalamarrak"}
             modi{"Modi digituak"}
             mong{"Digitu mongoliarrak"}
             mroo{"Mro digituak"}
@@ -842,7 +834,7 @@ eu{
             mymrshan{"Shan digitu birmaniarrak"}
             mymrtlng{"Tai Laing digitu birmaniarrak"}
             nagm{"nag mundari digituak"}
-            native{"Digitu natiboak"}
+            native{"Zenbaki-sistema"}
             nkoo{"N’Ko digituak"}
             olck{"Ol Chiki digituak"}
             orya{"Digitu oriyarrak"}
@@ -858,8 +850,8 @@ eu{
             sund{"Digitu sundadarrak"}
             takr{"Digitu takriarrak"}
             talu{"Digitu tai lue berriak"}
-            taml{"Zenbaki tamildar tradizionalak"}
-            tamldec{"Digitu tamildarrak"}
+            taml{"Zenbaki tamilar tradizionalak"}
+            tamldec{"Digitu tamilarrak"}
             telu{"Digitu teluguarrak"}
             thai{"Digitu thailandiarrak"}
             tibt{"Digitu tibetarrak"}

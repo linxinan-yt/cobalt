@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 id{
     zoneStrings{
         "Africa:Algiers"{
@@ -41,6 +41,9 @@ id{
         }
         "America:North_Dakota:New_Salem"{
             ec{"New Salem, Dakota Utara"}
+        }
+        "America:Santa_Isabel"{
+            ec{"Santa Isabel"}
         }
         "Asia:Aqtau"{
             ec{"Aktau"}
@@ -83,6 +86,9 @@ id{
         }
         "Atlantic:South_Georgia"{
             ec{"Georgia Selatan"}
+        }
+        "Australia:Currie"{
+            ec{"Currie"}
         }
         "Etc:UTC"{
             ls{"Waktu Universal Terkoordinasi"}
@@ -129,6 +135,9 @@ id{
         "Europe:Rome"{
             ec{"Roma"}
         }
+        "Europe:Uzhgorod"{
+            ec{"Uzhhorod"}
+        }
         "Europe:Vatican"{
             ec{"Vatikan"}
         }
@@ -137,6 +146,9 @@ id{
         }
         "Europe:Warsaw"{
             ec{"Warsawa"}
+        }
+        "Europe:Zaporozhye"{
+            ec{"Zaporizhia"}
         }
         "Indian:Comoro"{
             ec{"Komoro"}
@@ -348,6 +360,11 @@ id{
             lg{"Waktu Tiongkok"}
             ls{"Waktu Standar Tiongkok"}
         }
+        "meta:Choibalsan"{
+            ld{"Waktu Musim Panas Choibalsan"}
+            lg{"Waktu Choibalsan"}
+            ls{"Waktu Standar Choibalsan"}
+        }
         "meta:Christmas"{
             ls{"Waktu Pulau Natal"}
         }
@@ -526,9 +543,6 @@ id{
             lg{"Waktu Petropavlovsk-Kamchatsky"}
             ls{"Waktu Standar Petropavlovsk-Kamchatsky"}
         }
-        "meta:Kazakhstan"{
-            ls{"Waktu Kazakhstan"}
-        }
         "meta:Kazakhstan_Eastern"{
             ls{"Waktu Kazakhstan Timur"}
         }
@@ -567,6 +581,9 @@ id{
             lg{"Waktu Makau"}
             ls{"Waktu Standar Makau"}
         }
+        "meta:Macquarie"{
+            ls{"Waktu Kepulauan Macquarie"}
+        }
         "meta:Magadan"{
             ld{"Waktu Musim Panas Magadan"}
             lg{"Waktu Magadan"}
@@ -591,6 +608,11 @@ id{
         }
         "meta:Mawson"{
             ls{"Waktu Mawson"}
+        }
+        "meta:Mexico_Northwest"{
+            ld{"Waktu Musim Panas Meksiko Barat Laut"}
+            lg{"Waktu Meksiko Barat Laut"}
+            ls{"Waktu Standar Meksiko Barat Laut"}
         }
         "meta:Mexico_Pacific"{
             ld{"Waktu Musim Panas Pasifik Meksiko"}

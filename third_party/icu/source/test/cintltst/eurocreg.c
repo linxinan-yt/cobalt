@@ -121,7 +121,7 @@ static const char convertersToCheck[][15] = {
 
 UBool isEuroAware(UConverter*);
 
-void TestEuroRegression(void)
+void TestEuroRegression()
 {
     int32_t i=0;
 

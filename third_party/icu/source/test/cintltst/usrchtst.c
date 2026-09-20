@@ -22,7 +22,7 @@
 #include "unicode/ustring.h"
 #include "ccolltst.h"
 #include "cmemory.h"
-#include "usrchdat.inc"
+#include "usrchdat.c"
 #include "unicode/ubrk.h"
 
 static UBool      TOCLOSE_ = true;

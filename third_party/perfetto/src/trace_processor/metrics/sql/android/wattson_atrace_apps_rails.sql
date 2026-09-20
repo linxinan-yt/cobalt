@@ -35,9 +35,8 @@ SELECT RUN_METRIC(
 DROP VIEW IF EXISTS wattson_atrace_apps_rails_output;
 CREATE PERFETTO VIEW wattson_atrace_apps_rails_output AS
 SELECT AndroidWattsonTimePeriodMetric(
-  'metric_version', metric_version,
-  'power_model_version', power_model_version,
-  'is_crude_estimate', is_crude_estimate,
+  'metric_version', 4,
+  'power_model_version', 1,
   'period_info', (
     SELECT RepeatedField(
       AndroidWattsonEstimateInfo(
@@ -51,5 +50,4 @@ SELECT AndroidWattsonTimePeriodMetric(
     FROM _estimate_subsystems_sum AS est
     JOIN android_jank_cuj AS cuj ON cuj.cuj_id = est.period_id
   )
-)
-FROM _wattson_rails_metric_metadata;
+);

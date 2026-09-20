@@ -45,6 +45,7 @@ describe('createGraphFromSql', () => {
 
     expect(nodeA!.type).toBe(NodeType.kSqlSource);
     expect((nodeA!.state as SqlSourceSerializedState).sql).toBe('SELECT 1');
+    expect((nodeA!.state as SqlSourceSerializedState).customTitle).toBe('a');
     expect(nodeA!.nextNodes).toEqual(['b']);
     expect(nodeA!.prevNodes).toEqual([]);
 
@@ -52,6 +53,7 @@ describe('createGraphFromSql', () => {
     expect((nodeB!.state as SqlSourceSerializedState).sql).toBe(
       'SELECT * FROM $a',
     );
+    expect((nodeB!.state as SqlSourceSerializedState).customTitle).toBe('b');
     expect(nodeB!.nextNodes).toEqual(['c']);
     expect(nodeB!.prevNodes).toEqual(['a']);
 
@@ -59,12 +61,16 @@ describe('createGraphFromSql', () => {
     expect((nodeC!.state as SqlSourceSerializedState).sql).toBe(
       'SELECT * FROM $b',
     );
+    expect((nodeC!.state as SqlSourceSerializedState).customTitle).toBe('c');
     expect(nodeC!.nextNodes).toEqual(['output']);
     expect(nodeC!.prevNodes).toEqual(['b']);
 
     expect(nodeOutput!.type).toBe(NodeType.kSqlSource);
     expect((nodeOutput!.state as SqlSourceSerializedState).sql).toBe(
       'SELECT * FROM $c',
+    );
+    expect((nodeOutput!.state as SqlSourceSerializedState).customTitle).toBe(
+      'output',
     );
     expect(nodeOutput!.nextNodes).toEqual([]);
     expect(nodeOutput!.prevNodes).toEqual(['c']);

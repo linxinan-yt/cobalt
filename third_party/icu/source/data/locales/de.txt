@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 de{
     AuxExemplarCharacters{"[áàăâåãā æ ç éèĕêëē ğ íìĭîïİī ı ñ óòŏôøō œ ş úùŭûū ÿ]"}
     ExemplarCharacters{"[aä b c d e f g h i j k l m n oö p q r s ß t uü v w x y z]"}
@@ -362,7 +362,6 @@ de{
                 "GGGGGyyMMdd",
             }
             availableFormats{
-                Bh{"h 'Uhr' B"}
                 Ed{"E, d."}
                 Ehm{"E h:mm a"}
                 Ehms{"E h:mm:ss a"}
@@ -377,7 +376,7 @@ de{
                 MMMMd{"d. MMMM"}
                 MMMd{"d. MMM"}
                 Md{"d.M."}
-                h{"h 'Uhr' B"}
+                h{"h a"}
                 hm{"h:mm a"}
                 hms{"h:mm:ss a"}
                 y{"y G"}
@@ -1110,9 +1109,6 @@ de{
         era-narrow{
             dn{"E"}
         }
-        era-short{
-            dn{"Ep."}
-        }
         fri{
             relative{
                 "-1"{"letzten Freitag"}
@@ -1302,7 +1298,6 @@ de{
             }
         }
         month-short{
-            dn{"Mon."}
             relativeTime{
                 past{
                     one{"vor {0} Monat"}
@@ -1660,6 +1655,9 @@ de{
         weekOfMonth{
             dn{"Woche des Monats"}
         }
+        weekOfMonth-narrow{
+            dn{"Wo. des Monats"}
+        }
         weekOfMonth-short{
             dn{"W/M"}
         }
@@ -1733,10 +1731,10 @@ de{
                 "[%％﹪ ٪]",
                 "[‰ ؉]",
                 "[\$＄﹩]",
-                "[£￡ ₤]",
+                "[£ ₤]",
                 "[¥￥]",
                 "[₩￦]",
-                "[₹ {Rp} {Rs}₨]",
+                "[₹ ₨ {Rp} {Rs}]",
             }
         }
         number{

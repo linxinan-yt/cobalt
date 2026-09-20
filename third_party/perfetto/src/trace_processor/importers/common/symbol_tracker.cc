@@ -29,9 +29,7 @@ SymbolTracker::SymbolTracker(TraceProcessorContext* context)
     : context_(context),
       mapping_table_(context->storage->stack_profile_mapping_table()) {}
 
-SymbolTracker::~SymbolTracker() = default;
-
-void SymbolTracker::NotifyEndOfFile() {
+SymbolTracker::~SymbolTracker() {
   const StringId kEmptyString = context_->storage->InternString("");
   for (auto frame = context_->storage->mutable_stack_profile_frame_table()
                         ->IterateRows();

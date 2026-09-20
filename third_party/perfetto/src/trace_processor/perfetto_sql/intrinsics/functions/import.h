@@ -17,22 +17,34 @@
 #ifndef SRC_TRACE_PROCESSOR_PERFETTO_SQL_INTRINSICS_FUNCTIONS_IMPORT_H_
 #define SRC_TRACE_PROCESSOR_PERFETTO_SQL_INTRINSICS_FUNCTIONS_IMPORT_H_
 
+#include <sqlite3.h>
+#include <string>
+#include <unordered_map>
+
+#include "perfetto/ext/base/flat_hash_map.h"
+#include "perfetto/trace_processor/trace_processor.h"
 #include "src/trace_processor/perfetto_sql/engine/perfetto_sql_engine.h"
-#include "src/trace_processor/sqlite/bindings/sqlite_function.h"
-#include "src/trace_processor/sqlite/bindings/sqlite_result.h"
-#include "src/trace_processor/sqlite/bindings/sqlite_type.h"
-#include "src/trace_processor/sqlite/bindings/sqlite_value.h"
+#include "src/trace_processor/perfetto_sql/intrinsics/functions/sql_function.h"
+#include "src/trace_processor/util/sql_modules.h"
 
-namespace perfetto::trace_processor {
+namespace perfetto {
+namespace trace_processor {
 
-struct Import : public sqlite::Function<Import> {
-  static constexpr char kName[] = "import";
-  static constexpr int kArgCount = 1;
+struct Import : public LegacySqlFunction {
+  struct Context {
+    PerfettoSqlEngine* engine;
+  };
 
-  using UserData = PerfettoSqlEngine;
-  static void Step(sqlite3_context* ctx, int argc, sqlite3_value** argv);
+  static constexpr bool kVoidReturn = true;
+
+  static base::Status Run(Context* ctx,
+                          size_t argc,
+                          sqlite3_value** argv,
+                          SqlValue& out,
+                          Destructors&);
 };
 
-}  // namespace perfetto::trace_processor
+}  // namespace trace_processor
+}  // namespace perfetto
 
 #endif  // SRC_TRACE_PROCESSOR_PERFETTO_SQL_INTRINSICS_FUNCTIONS_IMPORT_H_

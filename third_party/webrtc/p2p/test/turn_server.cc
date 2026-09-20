@@ -27,7 +27,6 @@
 #include "api/sequence_checker.h"
 #include "api/task_queue/pending_task_safety_flag.h"
 #include "api/task_queue/task_queue_base.h"
-#include "api/transport/ecn_marking.h"
 #include "api/transport/stun.h"
 #include "api/units/time_delta.h"
 #include "p2p/base/async_stun_tcp_socket.h"
@@ -40,7 +39,6 @@
 #include "rtc_base/ip_address.h"
 #include "rtc_base/logging.h"
 #include "rtc_base/message_digest.h"
-#include "rtc_base/net_helper.h"
 #include "rtc_base/network/received_packet.h"
 #include "rtc_base/socket.h"
 #include "rtc_base/socket_address.h"
@@ -122,8 +120,8 @@ void TurnServer::AddInternalServerSocket(
       ServerSocketInfo{.proto = protocol,
                        .ssl_adapter_factory = std::move(ssl_adapter_factory)});
   RTC_DCHECK(inserted);
-  iter->first->SubscribeReadEvent(
-      this, [this](Socket* socket) { OnNewInternalConnection(socket); });
+  iter->first->SignalReadEvent.connect(this,
+                                       &TurnServer::OnNewInternalConnection);
 }
 
 void TurnServer::SetExternalSocketFactory(PacketSocketFactory* factory,
@@ -182,12 +180,12 @@ void TurnServer::OnInternalPacket(AsyncPacketSocket* socket,
   uint16_t msg_type = GetBE16(packet.payload().data());
   if (!IsTurnChannelData(msg_type)) {
     // This is a STUN message.
-    HandleStunMessage(&conn, packet.payload(), packet.ecn());
+    HandleStunMessage(&conn, packet.payload());
   } else {
     // This is a channel message; let the allocation handle it.
     TurnServerAllocation* allocation = FindAllocation(&conn);
     if (allocation) {
-      allocation->HandleChannelData(packet.payload(), packet.ecn());
+      allocation->HandleChannelData(packet.payload());
     }
     if (stun_message_observer_ != nullptr) {
       stun_message_observer_->ReceivedChannelData(packet.payload());
@@ -196,8 +194,7 @@ void TurnServer::OnInternalPacket(AsyncPacketSocket* socket,
 }
 
 void TurnServer::HandleStunMessage(TurnServerConnection* conn,
-                                   ArrayView<const uint8_t> payload,
-                                   EcnMarking ecn) {
+                                   ArrayView<const uint8_t> payload) {
   RTC_DCHECK_RUN_ON(thread_);
   TurnMessage msg;
   ByteBufferReader buf(payload);
@@ -242,7 +239,7 @@ void TurnServer::HandleStunMessage(TurnServerConnection* conn,
   }
 
   if (!allocation && msg.type() == STUN_ALLOCATE_REQUEST) {
-    HandleAllocateRequest(conn, &msg, key, ecn);
+    HandleAllocateRequest(conn, &msg, key);
   } else if (allocation &&
              (msg.type() != STUN_ALLOCATE_REQUEST ||
               msg.transaction_id() == allocation->transaction_id())) {
@@ -255,7 +252,7 @@ void TurnServer::HandleStunMessage(TurnServerConnection* conn,
                         STUN_ERROR_REASON_WRONG_CREDENTIALS);
       return;
     }
-    allocation->HandleTurnMessage(&msg, ecn);
+    allocation->HandleTurnMessage(&msg);
   } else {
     // Allocation mismatch.
     SendErrorResponse(conn, &msg, STUN_ERROR_ALLOCATION_MISMATCH,
@@ -343,13 +340,12 @@ void TurnServer::HandleBindingRequest(TurnServerConnection* conn,
       STUN_ATTR_XOR_MAPPED_ADDRESS, conn->src());
   response.AddAttribute(std::move(mapped_addr_attr));
 
-  SendStun(conn, &response, EcnMarking::kNotEct);
+  SendStun(conn, &response);
 }
 
 void TurnServer::HandleAllocateRequest(TurnServerConnection* conn,
                                        const TurnMessage* msg,
-                                       absl::string_view key,
-                                       EcnMarking ecn) {
+                                       absl::string_view key) {
   // Check the parameters in the request.
   const StunUInt32Attribute* transport_attr =
       msg->GetUInt32(STUN_ATTR_REQUESTED_TRANSPORT);
@@ -371,7 +367,7 @@ void TurnServer::HandleAllocateRequest(TurnServerConnection* conn,
   // If the actual socket allocation fails, send an internal error.
   TurnServerAllocation* alloc = CreateAllocation(conn, proto, key);
   if (alloc) {
-    alloc->HandleTurnMessage(msg, ecn);
+    alloc->HandleTurnMessage(msg);
   } else {
     SendErrorResponse(conn, msg, STUN_ERROR_SERVER_ERROR,
                       "Failed to allocate socket");
@@ -429,7 +425,6 @@ TurnServerAllocation* TurnServer::CreateAllocation(TurnServerConnection* conn,
   if (!external_socket) {
     return nullptr;
   }
-  external_socket->SetOption(Socket::OPT_RECV_ECN, 1);
 
   // The Allocation takes ownership of the socket.
   TurnServerAllocation* allocation = new TurnServerAllocation(
@@ -448,7 +443,7 @@ void TurnServer::SendErrorResponse(TurnServerConnection* conn,
 
   RTC_LOG(LS_INFO) << "Sending error response, type=" << resp.type()
                    << ", code=" << code << ", reason=" << reason;
-  SendStun(conn, &resp, EcnMarking::kNotEct);
+  SendStun(conn, &resp);
 }
 
 void TurnServer::SendErrorResponseWithRealmAndNonce(TurnServerConnection* conn,
@@ -467,7 +462,7 @@ void TurnServer::SendErrorResponseWithRealmAndNonce(TurnServerConnection* conn,
       STUN_ATTR_NONCE, GenerateNonce(timestamp)));
   resp.AddAttribute(
       std::make_unique<StunByteStringAttribute>(STUN_ATTR_REALM, realm_));
-  SendStun(conn, &resp, EcnMarking::kNotEct);
+  SendStun(conn, &resp);
 }
 
 void TurnServer::SendErrorResponseWithAlternateServer(
@@ -479,12 +474,10 @@ void TurnServer::SendErrorResponseWithAlternateServer(
                     STUN_ERROR_REASON_TRY_ALTERNATE_SERVER, &resp);
   resp.AddAttribute(
       std::make_unique<StunAddressAttribute>(STUN_ATTR_ALTERNATE_SERVER, addr));
-  SendStun(conn, &resp, EcnMarking::kNotEct);
+  SendStun(conn, &resp);
 }
 
-void TurnServer::SendStun(TurnServerConnection* conn,
-                          StunMessage* msg,
-                          EcnMarking ecn) {
+void TurnServer::SendStun(TurnServerConnection* conn, StunMessage* msg) {
   RTC_DCHECK_RUN_ON(thread_);
   ByteBufferWriter buf;
   // Add a SOFTWARE attribute if one is set.
@@ -493,20 +486,12 @@ void TurnServer::SendStun(TurnServerConnection* conn,
         STUN_ATTR_SOFTWARE, software_));
   }
   msg->Write(&buf);
-  Send(conn, buf, ecn);
+  Send(conn, buf);
 }
 
-void TurnServer::Send(TurnServerConnection* conn,
-                      const ByteBufferWriter& buf,
-                      EcnMarking ecn) {
+void TurnServer::Send(TurnServerConnection* conn, const ByteBufferWriter& buf) {
   RTC_DCHECK_RUN_ON(thread_);
   AsyncSocketPacketOptions options;
-  // TODO: bugs.webrtc.org/453581251  - If we want to properly test with TURN,
-  // the server must copy `ecn`.
-  RTC_LOG_IF(LS_WARNING, ecn == EcnMarking::kCe)
-      << "TurnServer does not properly support forwarding "
-         "ECN.";
-  options.ect_1 = (ecn == EcnMarking::kEct1);
   conn->socket()->SendTo(buf.Data(), buf.Length(), conn->src(), options);
 }
 
@@ -591,8 +576,7 @@ std::string TurnServerAllocation::ToString() const {
   return ost.Release();
 }
 
-void TurnServerAllocation::HandleTurnMessage(const TurnMessage* msg,
-                                             EcnMarking ecn) {
+void TurnServerAllocation::HandleTurnMessage(const TurnMessage* msg) {
   RTC_DCHECK_RUN_ON(thread_);
   RTC_DCHECK(msg != nullptr);
   switch (msg->type()) {
@@ -603,7 +587,7 @@ void TurnServerAllocation::HandleTurnMessage(const TurnMessage* msg,
       HandleRefreshRequest(msg);
       break;
     case TURN_SEND_INDICATION:
-      HandleSendIndication(msg, ecn);
+      HandleSendIndication(msg);
       break;
     case TURN_CREATE_PERMISSION_REQUEST:
       HandleCreatePermissionRequest(msg);
@@ -673,8 +657,7 @@ void TurnServerAllocation::HandleRefreshRequest(const TurnMessage* msg) {
   SendResponse(&response);
 }
 
-void TurnServerAllocation::HandleSendIndication(const TurnMessage* msg,
-                                                EcnMarking ecn) {
+void TurnServerAllocation::HandleSendIndication(const TurnMessage* msg) {
   // Check mandatory attributes.
   const StunByteStringAttribute* data_attr = msg->GetByteString(STUN_ATTR_DATA);
   const StunAddressAttribute* peer_attr =
@@ -687,7 +670,7 @@ void TurnServerAllocation::HandleSendIndication(const TurnMessage* msg,
   // If a permission exists, send the data on to the peer.
   if (HasPermission(peer_attr->GetAddress().ipaddr())) {
     SendExternal(reinterpret_cast<char*>(data_attr->array_view().data()),
-                 data_attr->length(), peer_attr->GetAddress(), ecn);
+                 data_attr->length(), peer_attr->GetAddress());
   } else {
     RTC_LOG(LS_WARNING) << ToString()
                         << ": Received send indication without permission"
@@ -784,15 +767,14 @@ void TurnServerAllocation::HandleChannelBindRequest(const TurnMessage* msg) {
   SendResponse(&response);
 }
 
-void TurnServerAllocation::HandleChannelData(ArrayView<const uint8_t> payload,
-                                             EcnMarking ecn) {
+void TurnServerAllocation::HandleChannelData(ArrayView<const uint8_t> payload) {
   // Extract the channel number from the data.
   uint16_t channel_id = GetBE16(payload.data());
   auto channel = FindChannel(channel_id);
   if (channel != channels_.end()) {
     // Send the data to the peer address.
     SendExternal(payload.data() + TURN_CHANNEL_HEADER_SIZE,
-                 payload.size() - TURN_CHANNEL_HEADER_SIZE, channel->peer, ecn);
+                 payload.size() - TURN_CHANNEL_HEADER_SIZE, channel->peer);
   } else {
     RTC_LOG(LS_WARNING) << ToString()
                         << ": Received channel data for invalid channel, id="
@@ -810,7 +792,7 @@ void TurnServerAllocation::OnExternalPacket(AsyncPacketSocket* socket,
     buf.WriteUInt16(channel->id);
     buf.WriteUInt16(static_cast<uint16_t>(packet.payload().size()));
     buf.Write(ArrayView<const uint8_t>(packet.payload()));
-    server_->Send(&conn_, buf, packet.ecn());
+    server_->Send(&conn_, buf);
   } else if (!server_->enable_permission_checks_ ||
              HasPermission(packet.source_address().ipaddr())) {
     // No channel, but a permission exists. Send as a data indication.
@@ -819,7 +801,7 @@ void TurnServerAllocation::OnExternalPacket(AsyncPacketSocket* socket,
         STUN_ATTR_XOR_PEER_ADDRESS, packet.source_address()));
     msg.AddAttribute(std::make_unique<StunByteStringAttribute>(
         STUN_ATTR_DATA, packet.payload().data(), packet.payload().size()));
-    server_->SendStun(&conn_, &msg, packet.ecn());
+    server_->SendStun(&conn_, &msg);
   } else {
     RTC_LOG(LS_WARNING)
         << ToString() << ": Received external packet without permission, peer="
@@ -872,7 +854,7 @@ TurnServerAllocation::ChannelList::iterator TurnServerAllocation::FindChannel(
 void TurnServerAllocation::SendResponse(TurnMessage* msg) {
   // Success responses always have M-I.
   msg->AddMessageIntegrity(key_);
-  server_->SendStun(&conn_, msg, EcnMarking::kNotEct);
+  server_->SendStun(&conn_, msg);
 }
 
 void TurnServerAllocation::SendBadRequestResponse(const TurnMessage* req) {
@@ -887,15 +869,8 @@ void TurnServerAllocation::SendErrorResponse(const TurnMessage* req,
 
 void TurnServerAllocation::SendExternal(const void* data,
                                         size_t size,
-                                        const SocketAddress& peer,
-                                        EcnMarking ecn) {
+                                        const SocketAddress& peer) {
   AsyncSocketPacketOptions options;
-  // TODO: bugs.webrtc.org/453581251  - If we want to properly test with TURN,
-  // it must copy `ecn`.
-  RTC_LOG_IF(LS_WARNING, ecn == EcnMarking::kCe)
-      << "TurnServerAllocation does not properly support forwarding "
-         "ECN.";
-  options.ect_1 = (ecn == EcnMarking::kEct1);
   external_socket_->SendTo(data, size, peer, options);
 }
 

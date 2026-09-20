@@ -133,11 +133,9 @@ perfetto_unittest_source_set("unittests") {
     "../../protos/perfetto/config/ftrace:cpp",
     "../../protos/perfetto/trace:cpp",
     "../tracing/core",
-    "../tracing/test:test_support",
   ]
   sources = [
     "config_unittest.cc",
     "packet_writer_unittest.cc",
-    "perfetto_cmd_unittest.cc",
   ]
 }

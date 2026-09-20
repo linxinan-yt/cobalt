@@ -22,7 +22,6 @@
 #include <utility>
 
 #include "perfetto/ext/base/fnv_hash.h"
-#include "perfetto/ext/base/murmur_hash.h"
 #include "perfetto/protozero/field.h"
 #include "perfetto/trace_processor/ref_counted.h"
 #include "perfetto/trace_processor/trace_blob.h"
@@ -127,7 +126,7 @@ void AppWakelockModule::ParseWakelockBundle(int64_t ts, ConstBytes blob) {
 
   // The data source doesn't specify a cookie, packets should instead be matched
   // by their corresponding attributes. Use these to form a cookie for pairing.
-  std::size_t cookie = base::MurmurHashCombine(
+  std::size_t cookie = base::FnvHasher::Combine(
       info.tag().ToStdStringView(), info.flags(), info.owner_pid(),
       info.owner_uid(), info.work_uid());
 

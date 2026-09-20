@@ -89,7 +89,7 @@ export class CpuProfileSampleFlamegraphDetailsPanel
       m(
         DetailsShell,
         {
-          fillHeight: true,
+          fillParent: true,
           title: 'CPU Profile Samples',
           buttons: m(
             'span',

@@ -15,43 +15,33 @@
 
 INCLUDE PERFETTO MODULE android.suspend;
 
-INCLUDE PERFETTO MODULE counters.intervals;
-
-CREATE PERFETTO TABLE _kernel_wakelock_track AS
-SELECT
-  id,
-  name,
-  extract_arg(dimension_arg_set_id, 'wakelock_type') AS type
-FROM track AS t
-WHERE
-  type = 'android_kernel_wakelock';
-
 CREATE PERFETTO TABLE _android_kernel_wakelocks_base AS
 WITH
-  kernel_wakelock_counter AS (
+  raw AS (
     SELECT
-      *
-    FROM counter_leading_intervals!((
-        SELECT
-          id,
-          ts,
-          track_id,
-          value
-        FROM counter
-        WHERE track_id IN (SELECT id FROM _kernel_wakelock_track)
-    ))
+      -- Move back by one period here since our ts represents wakelock counts up
+      -- to that point, but counters project forward from their ts.
+      lag(ts) OVER (PARTITION BY track_id ORDER BY ts) AS ts,
+      ts AS next_ts,
+      name,
+      extract_arg(dimension_arg_set_id, 'wakelock_type') AS type,
+      value,
+      lag(value) OVER (PARTITION BY track_id ORDER BY ts) AS lag_value
+    FROM track AS t
+    JOIN counter AS c
+      ON t.id = c.track_id
+    WHERE
+      t.type = 'android_kernel_wakelock'
   )
 SELECT
   ts,
   ts AS original_ts,
-  dur,
+  next_ts - ts AS dur,
   name,
   hash(name) AS name_int,
   type,
-  next_value - value AS held_dur
-FROM kernel_wakelock_counter AS c
-JOIN _kernel_wakelock_track AS t
-  ON t.id = c.track_id;
+  value - lag_value AS held_dur
+FROM raw;
 
 CREATE VIRTUAL TABLE _android_kernel_wakelocks_joined USING span_join (_android_kernel_wakelocks_base partitioned name_int, android_suspend_state);
 

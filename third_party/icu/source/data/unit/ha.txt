@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 ha{
     units{
         acceleration{
@@ -35,7 +35,7 @@ ha{
                 other{"radians {0}"}
             }
             revolution{
-                dnam{"revolutions"}
+                dnam{"revolution"}
                 one{"revolution {0}"}
                 other{"revolutions {0}"}
             }
@@ -110,7 +110,7 @@ ha{
             10p12{"tera{0}"}
             10p15{"peta{0}"}
             10p18{"exa{0}"}
-            10p2{"hekto{0}"}
+            10p2{"hekta{0}"}
             10p3{"kilo{0}"}
             10p6{"mega{0}"}
             10p9{"giga{0}"}
@@ -181,11 +181,6 @@ ha{
             permyriad{
                 one{"permyriad {0}"}
                 other{"permyriad {0}"}
-            }
-            portion-per-1e9{
-                dnam{"sashi a cikin biliyan"}
-                one{"sashi {0} a cikin biliyan"}
-                other{"sashi {0} a cikin biliyan"}
             }
         }
         consumption{
@@ -321,12 +316,6 @@ ha{
                 dnam{"nanosekan"}
                 one{"nanosekan {0}"}
                 other{"nanosekans {0}"}
-            }
-            night{
-                dnam{"darare"}
-                one{"dare {0}"}
-                other{"darare {0}"}
-                per{"dare {0}"}
             }
             quarter{
                 dnam{"kwatoci"}
@@ -471,7 +460,7 @@ ha{
                 other{"{0} ayoyi a inci"}
             }
             em{
-                dnam{"typographic ems"}
+                dnam{"typographic em"}
                 one{"em {0}"}
                 other{"{0} ems"}
             }
@@ -563,7 +552,7 @@ ha{
                 other{"mil-mil {0}"}
             }
             mile-scandinavian{
-                dnam{"miles-scandinavian"}
+                dnam{"mile-scandinavian"}
                 one{"mile-scandinavian {0}"}
                 other{"miles-scandinavian {0}"}
             }
@@ -786,11 +775,6 @@ ha{
                 one{"knot {0}"}
                 other{"knots {0}"}
             }
-            light-speed{
-                dnam{"haske"}
-                one{"haske {0}"}
-                other{"haske {0}"}
-            }
             meter-per-second{
                 dnam{"mitoci a daƙiƙa"}
                 one{"mita a daƙiƙa {0}"}
@@ -815,7 +799,7 @@ ha{
             }
             generic{
                 one{"Digirin yanayi {0}"}
-                other{"digiri-digirin yanayi {0}"}
+                other{"digiri-digiri {0}"}
             }
             kelvin{
                 dnam{"kelvins"}
@@ -830,7 +814,7 @@ ha{
                 other{"newton-meters {0}"}
             }
             pound-force-foot{
-                dnam{"pound-force-feet"}
+                dnam{"pound-feet"}
                 one{"Pound-force-foot {0}"}
                 other{"pound-feet {0}"}
             }
@@ -907,19 +891,19 @@ ha{
                 other{"desilitoci {0}"}
             }
             dessert-spoon{
-                dnam{"dessert spoons"}
+                dnam{"dessert spoon"}
                 one{"dessert spoon {0}"}
-                other{"dessert spoons {0}"}
+                other{"dessert spoon {0}"}
             }
             dessert-spoon-imperial{
-                dnam{"Imp. dessert spoons"}
+                dnam{"Imp. dessert spoon"}
                 one{"Imp. dessert spoon {0}"}
-                other{"Imp. dessert spoons {0}"}
+                other{"Imp. dessert spoon {0}"}
             }
             dram{
-                dnam{"drams"}
+                dnam{"dram"}
                 one{"dram {0}"}
-                other{"drams {0}"}
+                other{"{0} dram"}
             }
             fluid-ounce{
                 dnam{"fluid ounces"}
@@ -978,9 +962,9 @@ ha{
                 other{"quarts {0}"}
             }
             quart-imperial{
-                dnam{"Imp. quarts"}
+                dnam{"Imp. quart"}
                 one{"Imp. quart {0}"}
-                other{"Imp. quarts {0}"}
+                other{"Imp. quart {0}"}
             }
             tablespoon{
                 dnam{"manyan cokula"}
@@ -1117,11 +1101,6 @@ ha{
             permyriad{
                 dnam{"‱"}
             }
-            portion-per-1e9{
-                dnam{"sashi/biliyan"}
-                one{"sashi {0} a cikin biliyan"}
-                other{"sashi {0} a cikin biliyan"}
-            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -1244,12 +1223,6 @@ ha{
             nanosecond{
                 one{"ns{0}"}
                 other{"ns{0}"}
-            }
-            night{
-                dnam{"darare"}
-                one{"dare {0}"}
-                other{"darare {0}"}
-                per{"dare {0}"}
             }
             quarter{
                 one{"kwt{0}"}
@@ -1659,11 +1632,6 @@ ha{
                 one{"kn{0}"}
                 other{"kn{0}"}
             }
-            light-speed{
-                dnam{"hsk"}
-                one{"hsk {0}"}
-                other{"hsk {0}"}
-            }
             meter-per-second{
                 dnam{"m/d"}
                 one{"m/d{0}"}
@@ -1981,11 +1949,6 @@ ha{
                 one{"‱{0}"}
                 other{"‱{0}"}
             }
-            portion-per-1e9{
-                dnam{"sashi/biliyan"}
-                one{"sashi {0} a cikin biliyan"}
-                other{"sashi {0} a cikin biliyan"}
-            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -2118,12 +2081,6 @@ ha{
                 dnam{"nanoseks"}
                 one{"ns {0}"}
                 other{"ns {0}"}
-            }
-            night{
-                dnam{"darare"}
-                one{"dare {0}"}
-                other{"darare {0}"}
-                per{"dare {0}"}
             }
             quarter{
                 dnam{"kwt"}
@@ -2552,11 +2509,6 @@ ha{
             knot{
                 one{"kn {0}"}
                 other{"kn {0}"}
-            }
-            light-speed{
-                dnam{"hsk"}
-                one{"hsk {0}"}
-                other{"hsk {0}"}
             }
             meter-per-second{
                 dnam{"mitoci/daƙ"}

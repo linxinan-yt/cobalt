@@ -46,7 +46,7 @@ private:
     int32_t options;
 
 public:
-    void call(UErrorCode* status) override {
+    virtual void call(UErrorCode* status){
         if(line_mode){
             if(uselen){
                 for(int32_t i = 0; i< numLines; i++){
@@ -67,7 +67,7 @@ public:
         }
 
     }
-    long getOperationsPerIteration() override {
+    virtual long getOperationsPerIteration(){
         if(line_mode){
             int32_t totalChars=0;
             for(int32_t i =0; i< numLines; i++){
@@ -117,7 +117,7 @@ private:
     int32_t options;
 
 public:
-    void call(UErrorCode* status) override {
+    virtual void call(UErrorCode* status){
         if(line_mode){
             if(uselen){
                 for(int32_t i = 0; i< numLines; i++){
@@ -136,7 +136,7 @@ public:
             }
         }
     }
-    long getOperationsPerIteration() override {
+    virtual long getOperationsPerIteration(){
         if(line_mode){
             int32_t totalChars=0;
             for(int32_t i =0; i< numLines; i++){
@@ -164,7 +164,7 @@ public:
         numLines = 0;
         uselen = _uselen;
         destLen = sourceLen*3;
-        pDest = static_cast<char16_t*>(malloc(destLen * U_SIZEOF_UCHAR));
+        pDest = (char16_t*) malloc(destLen * U_SIZEOF_UCHAR);
         src = source;
         srcLen = sourceLen;
         line_mode = false;
@@ -197,7 +197,7 @@ public:
 
     NormalizerPerformanceTest(int32_t argc, const char* argv[], UErrorCode& status);
     ~NormalizerPerformanceTest();
-    UPerfFunction* runIndexedTest(int32_t index, UBool exec, const char*& name, char* par = nullptr) override;
+    virtual UPerfFunction* runIndexedTest(int32_t index, UBool exec,const char* &name, char* par = nullptr);
     /* NFC performance */
     UPerfFunction* TestICU_NFC_NFD_Text();
     UPerfFunction* TestICU_NFC_NFC_Text();

@@ -1,9 +1,9 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 mr{
     Countries{
-        001{"जग"}
+        001{"विश्व"}
         002{"आफ्रिका"}
         003{"उत्तर अमेरिका"}
         005{"दक्षिण अमेरिका"}

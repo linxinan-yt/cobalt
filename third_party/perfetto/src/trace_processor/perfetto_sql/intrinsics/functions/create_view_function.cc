@@ -32,43 +32,57 @@
 
 namespace perfetto::trace_processor {
 
-void CreateViewFunction::Step(sqlite3_context* ctx,
-                              int argc,
-                              sqlite3_value** argv) {
-  PERFETTO_DCHECK(argc == 3);
+base::Status CreateViewFunction::Run(CreateViewFunction::Context* ctx,
+                                     size_t argc,
+                                     sqlite3_value** argv,
+                                     SqlValue&,
+                                     Destructors&) {
+  if (argc != 3) {
+    return base::ErrStatus(
+        "CREATE_VIEW_FUNCTION: invalid number of args; expected %u, received "
+        "%zu",
+        3u, argc);
+  }
 
-  auto* engine = GetUserData(ctx);
+  sqlite3_value* prototype_value = argv[0];
+  sqlite3_value* return_prototype_value = argv[1];
+  sqlite3_value* sql_defn_value = argv[2];
 
   // Type check all the arguments.
-  if (sqlite::value::Type(argv[0]) != sqlite::Type::kText) {
-    return sqlite::utils::SetError(ctx,
-                                   "CREATE_VIEW_FUNCTION: function prototype "
-                                   "(first argument) must be string");
-  }
-  if (sqlite::value::Type(argv[1]) != sqlite::Type::kText) {
-    return sqlite::utils::SetError(ctx,
-                                   "CREATE_VIEW_FUNCTION: return prototype "
-                                   "(second argument) must be string");
-  }
-  if (sqlite::value::Type(argv[2]) != sqlite::Type::kText) {
-    return sqlite::utils::SetError(
-        ctx,
-        "CREATE_VIEW_FUNCTION: SQL definition (third argument) must be string");
+  {
+    auto type_check = [prototype_value](sqlite3_value* value,
+                                        SqlValue::Type type, const char* desc) {
+      base::Status status = sqlite::utils::TypeCheckSqliteValue(value, type);
+      if (!status.ok()) {
+        return base::ErrStatus("CREATE_VIEW_FUNCTION[prototype=%s]: %s %s",
+                               sqlite3_value_text(prototype_value), desc,
+                               status.c_message());
+      }
+      return base::OkStatus();
+    };
+
+    RETURN_IF_ERROR(type_check(prototype_value, SqlValue::Type::kString,
+                               "function prototype (first argument)"));
+    RETURN_IF_ERROR(type_check(return_prototype_value, SqlValue::Type::kString,
+                               "return prototype (second argument)"));
+    RETURN_IF_ERROR(type_check(sql_defn_value, SqlValue::Type::kString,
+                               "SQL definition (third argument)"));
   }
 
   // Extract the arguments from the value wrappers.
-  const char* prototype_str = sqlite::value::Text(argv[0]);
-  const char* return_prototype_str = sqlite::value::Text(argv[1]);
-  const char* sql_defn_str = sqlite::value::Text(argv[2]);
+  auto extract_string = [](sqlite3_value* value) -> const char* {
+    return reinterpret_cast<const char*>(sqlite3_value_text(value));
+  };
+
+  const char* prototype_str = extract_string(prototype_value);
+  const char* return_prototype_str = extract_string(return_prototype_value);
+  const char* sql_defn_str = extract_string(sql_defn_value);
 
   static constexpr char kSqlTemplate[] =
       R"""(CREATE OR REPLACE PERFETTO FUNCTION %s RETURNS TABLE(%s) AS %s;)""";
 
   base::StringView function_name;
-  auto parse_status = ParseFunctionName(prototype_str, function_name);
-  if (!parse_status.ok()) {
-    return sqlite::utils::SetError(ctx, parse_status);
-  }
+  RETURN_IF_ERROR(ParseFunctionName(prototype_str, function_name));
 
   std::string function_name_str = function_name.ToStdString();
 
@@ -79,14 +93,9 @@ void CreateViewFunction::Step(sqlite3_context* ctx,
                                    return_prototype_str, sql_defn_str);
   formatted_sql.resize(size);
 
-  auto res = engine->Execute(
+  auto res = ctx->Execute(
       SqlSource::FromTraceProcessorImplementation(std::move(formatted_sql)));
-  if (!res.status().ok()) {
-    return sqlite::utils::SetError(ctx, res.status());
-  }
-
-  // CREATE_VIEW_FUNCTION returns no value (void function)
-  return sqlite::utils::ReturnVoidFromFunction(ctx);
+  return res.status();
 }
 
 }  // namespace perfetto::trace_processor

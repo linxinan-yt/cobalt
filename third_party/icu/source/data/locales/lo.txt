@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 lo{
     AuxExemplarCharacters{"[\u200B ໐ ໑ ໒ ໓ ໔ ໕ ໖ ໗ ໘ ໙]"}
     ExemplarCharacters{
@@ -152,7 +152,7 @@ lo{
                         other{"¤00 ພັນ"}
                     }
                     100000{
-                        other{"¤000 ພັນ"}
+                        other{"¤000 ກີບ"}
                     }
                     1000000{
                         other{"¤0 ລ້ານ"}
@@ -228,7 +228,7 @@ lo{
                         other{"00 ພັນ"}
                     }
                     100000{
-                        other{"000 ພັນ"}
+                        other{"000 ກີບ"}
                     }
                     1000000{
                         other{"0 ລ້ານ"}
@@ -663,7 +663,7 @@ lo{
                 "H ໂມງ m ນາທີ ss ວິນາທີ z",
                 "H:mm:ss",
                 "H:mm",
-                "EEEE, d MMMM y",
+                "EEEE ທີ d MMMM G y",
                 "d MMMM y",
                 "d MMM y",
                 "d/M/y",
@@ -782,7 +782,7 @@ lo{
                 }
                 stand-alone{
                     abbreviated{
-                        afternoon1{"ສວາຍ"}
+                        afternoon1{"ສວຍ"}
                         evening1{"ແລງ"}
                         midnight{"ທ່ຽງ​ຄືນ"}
                         morning1{"​ເຊົ້າ"}
@@ -794,6 +794,7 @@ lo{
                         evening1{"ແລງ"}
                         morning1{"​ເຊົ້າ"}
                         night1{"​ກາງ​ຄືນ"}
+                        noon{"ຕອນທ່ຽງ"}
                     }
                     wide{
                         midnight{"ທ່ຽງຄືນ"}
@@ -807,7 +808,7 @@ lo{
                     "ຄ.ສ.",
                 }
                 abbreviated%variant{
-                    "ກ່ອນ ຄ.ສ.",
+                    "ກ່ອນຍຸກ ຄ.ສ",
                     "ຍຸກ ຄ.ສ",
                 }
                 wide{
@@ -821,38 +822,38 @@ lo{
             }
             intervalFormats{
                 GyM{
-                    G{"M/G y – M/G y"}
-                    M{"M/y – M/G y"}
-                    y{"M/y – M/G y"}
+                    G{"GGGGG MM/y – GGGGG MM/y"}
+                    M{"GGGGG MM/y – MM/y"}
+                    y{"GGGGG MM/y – MM/y"}
                 }
                 GyMEd{
-                    G{"E, d/M/G y – E, d/M/G y"}
-                    M{"E, d/M/y – E, d/M/G y"}
-                    d{"E, d/M/G y – E, d/M/G y"}
-                    y{"E, d/M/G y – E, d/M/G y"}
+                    G{"GGGGG E, dd/MM/y – GGGGG E, dd/MM/y"}
+                    M{"GGGGG E, dd/MM/y – E, dd/MM/y"}
+                    d{"GGGGG E, dd/MM/y – E, dd/MM/y"}
+                    y{"GGGGG E, dd/MM/y – E, dd/MM/y"}
                 }
                 GyMMM{
-                    G{"MMM G y – MMM G y"}
-                    M{"MMM – MMM G y"}
-                    y{"MMM G y– MMM G y"}
+                    G{"G MM/y – G MM/y"}
+                    M{"G MM – MM/y"}
+                    y{"G MM/y – MM/y"}
                 }
                 GyMMMEd{
-                    G{"E, d MMM G y – E, d MMM G y"}
-                    M{"E, d MMM – E, d MMM G y"}
-                    d{"E, d MMM – E, d MMM G y"}
-                    y{"E, d MMM G y – E, d MMM G y"}
+                    G{"G E, dd/MM/y – G E, dd/MM/y"}
+                    M{"G E, dd/MM/y – E, dd/MM/y"}
+                    d{"G E, dd/MM/y – E, dd/MM/y"}
+                    y{"G E, dd/MM/y – E, dd/MM/y"}
                 }
                 GyMMMd{
-                    G{"d MMM G y – d MMM G y"}
-                    M{"d MMM – d MMM G y"}
-                    d{"d–d MMM G y"}
-                    y{"d MMM G y – d MMM G y"}
+                    G{"G dd/MM/y– G dd/MM/y"}
+                    M{"G dd/MM/y – dd/MM"}
+                    d{"G d–d/MM/y"}
+                    y{"G dd/MM/y – dd/MM/y"}
                 }
                 GyMd{
-                    G{"d/M/G y – d/M/G y"}
-                    M{"d/M/y – d/M/G y"}
-                    d{"d/M/y – d/M/G y"}
-                    y{"d/M/y – d/M/G y"}
+                    G{"GGGGG dd/MM/y – GGGGG dd/MM/y"}
+                    M{"GGGGG dd/MM/y – dd/MM/y"}
+                    d{"GGGGG dd/MM/y – dd/MM/y"}
+                    y{"GGGGG dd/MM/y – dd/MM/y"}
                 }
                 M{
                     M{"M–M"}

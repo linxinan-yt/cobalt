@@ -45,8 +45,7 @@
 #include <unistd.h>
 #endif
 
-#if PERFETTO_BUILDFLAG(PERFETTO_OS_APPLE) || \
-    PERFETTO_BUILDFLAG(PERFETTO_OS_FREEBSD)
+#if PERFETTO_BUILDFLAG(PERFETTO_OS_APPLE)
 #include <sys/ucred.h>
 #endif
 
@@ -237,7 +236,7 @@ SockaddrAny MakeSockAddr(SockFamily family, const std::string& socket_name) {
       addr.svm_family = AF_VSOCK;
       addr.svm_cid = *base::StringToUInt32(parts[0]);
       addr.svm_port = *base::StringToUInt32(parts[1]);
-#if PERFETTO_BUILDFLAG(PERFETTO_OS_ANDROID) && !defined(STARBOARD)
+#if PERFETTO_BUILDFLAG(PERFETTO_OS_ANDROID)
       if (IsVirtualized()) {
         // VM-to-VM VSOCK communication requires messages to be
         // routed through the host.
@@ -412,8 +411,7 @@ UnixSocketRaw::UnixSocketRaw(ScopedSocketHandle fd,
                              SockType type)
     : fd_(std::move(fd)), family_(family), type_(type) {
   PERFETTO_CHECK(fd_);
-#if PERFETTO_BUILDFLAG(PERFETTO_OS_APPLE) || \
-    PERFETTO_BUILDFLAG(PERFETTO_OS_FREEBSD)
+#if PERFETTO_BUILDFLAG(PERFETTO_OS_APPLE)
   const int no_sigpipe = 1;
   setsockopt(*fd_, SOL_SOCKET, SO_NOSIGPIPE, &no_sigpipe, sizeof(no_sigpipe));
 #endif
@@ -1042,8 +1040,7 @@ void UnixSocket::ReadPeerCredentialsPosix() {
   PERFETTO_CHECK(res == 0);
   peer_uid_ = user_cred.uid;
   peer_pid_ = user_cred.pid;
-#elif PERFETTO_BUILDFLAG(PERFETTO_OS_APPLE) || \
-    PERFETTO_BUILDFLAG(PERFETTO_OS_FREEBSD)
+#elif PERFETTO_BUILDFLAG(PERFETTO_OS_APPLE)
   struct xucred user_cred;
   socklen_t len = sizeof(user_cred);
   int res = getsockopt(sock_raw_.fd(), 0, LOCAL_PEERCRED, &user_cred, &len);

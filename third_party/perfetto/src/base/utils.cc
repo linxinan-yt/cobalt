@@ -27,20 +27,15 @@
 #if PERFETTO_BUILDFLAG(PERFETTO_OS_LINUX) ||   \
     PERFETTO_BUILDFLAG(PERFETTO_OS_ANDROID) || \
     PERFETTO_BUILDFLAG(PERFETTO_OS_APPLE) ||   \
-    PERFETTO_BUILDFLAG(PERFETTO_OS_FREEBSD) || \
     PERFETTO_BUILDFLAG(PERFETTO_OS_FUCHSIA)
 #include <limits.h>
 #include <stdlib.h>  // For _exit()
-#include <unistd.h>  // For getpagesize() and geteuid() & fork() & sysconf()
+#include <unistd.h>  // For getpagesize() and geteuid() & fork()
 #endif
 
 #if PERFETTO_BUILDFLAG(PERFETTO_OS_APPLE)
 #include <mach-o/dyld.h>
 #include <mach/vm_page_size.h>
-#endif
-
-#if PERFETTO_BUILDFLAG(PERFETTO_OS_FREEBSD)
-#include <sys/sysctl.h>
 #endif
 
 #if PERFETTO_BUILDFLAG(PERFETTO_OS_LINUX_BUT_NOT_QNX) || \
@@ -180,8 +175,6 @@ uint32_t GetSysPageSizeSlowpath() {
   page_size = static_cast<uint32_t>(page_size_int > 0 ? page_size_int : 4096);
 #elif PERFETTO_BUILDFLAG(PERFETTO_OS_APPLE)
   page_size = static_cast<uint32_t>(vm_page_size);
-#elif PERFETTO_BUILDFLAG(PERFETTO_OS_FREEBSD)
-  page_size = static_cast<uint32_t>(sysconf(_SC_PAGESIZE));
 #else
   page_size = 4096;
 #endif
@@ -215,7 +208,6 @@ void MaybeReleaseAllocatorMemToOS() {
 uid_t GetCurrentUserId() {
 #if PERFETTO_BUILDFLAG(PERFETTO_OS_LINUX) ||   \
     PERFETTO_BUILDFLAG(PERFETTO_OS_ANDROID) || \
-    PERFETTO_BUILDFLAG(PERFETTO_OS_FREEBSD) || \
     PERFETTO_BUILDFLAG(PERFETTO_OS_APPLE)
   return geteuid();
 #else
@@ -246,7 +238,6 @@ void UnsetEnv(const std::string& key) {
 void Daemonize(std::function<int()> parent_cb) {
 #if PERFETTO_BUILDFLAG(PERFETTO_OS_LINUX) ||   \
     PERFETTO_BUILDFLAG(PERFETTO_OS_ANDROID) || \
-    PERFETTO_BUILDFLAG(PERFETTO_OS_FREEBSD) || \
     (PERFETTO_BUILDFLAG(PERFETTO_OS_APPLE) &&  \
      !PERFETTO_BUILDFLAG(PERFETTO_OS_APPLE_TVOS))
   Pipe pipe = Pipe::Create(Pipe::kBothBlock);
@@ -311,18 +302,6 @@ std::string GetCurExecutablePath() {
   char buf[MAX_PATH];
   auto len = ::GetModuleFileNameA(nullptr /*current*/, buf, sizeof(buf));
   self_path = std::string(buf, len);
-#elif PERFETTO_BUILDFLAG(PERFETTO_OS_FREEBSD)
-  char buf[PATH_MAX];
-  int mib[4], ret;
-  size_t len = sizeof(buf);
-  mib[0] = CTL_KERN;
-  mib[1] = KERN_PROC;
-  mib[2] = KERN_PROC_PATHNAME;
-  mib[3] = -1;
-  ret = sysctl(mib, 4, buf, &len, NULL, 0);
-  PERFETTO_CHECK(ret == 0);
-  // This returns the full path; need to trim the executable
-  self_path = std::string(buf);
 #else
   PERFETTO_FATAL(
       "GetCurExecutableDir() not implemented on the current platform");

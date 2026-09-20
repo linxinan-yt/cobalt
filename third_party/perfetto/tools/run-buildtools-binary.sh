@@ -26,8 +26,6 @@ case "$(uname -s | tr '[A-Z]' '[a-z]')" in
     readonly OS="mac";;
   linux)
     readonly OS="linux64";;
-  freebsd)
-    readonly OS="freebsd64";;
   *)
     echo "Unsupported platform"
     exit 1

@@ -45,7 +45,6 @@ void TestUcalOpenBufferRead(void);
 void TestGetTimeZoneOffsetFromLocal(void);
 
 void TestFWWithISO8601(void);
-void TestFWwithRGSD(void);
 
 void addCalTest(TestNode** root);
 
@@ -72,7 +71,6 @@ void addCalTest(TestNode** root)
     addTest(root, &TestUcalOpenBufferRead, "tsformat/ccaltst/TestUcalOpenBufferRead");
     addTest(root, &TestGetTimeZoneOffsetFromLocal, "tsformat/ccaltst/TestGetTimeZoneOffsetFromLocal");
     addTest(root, &TestFWWithISO8601, "tsformat/ccaltst/TestFWWithISO8601");
-    addTest(root, &TestFWwithRGSD, "tsformat/ccaltst/TestFWwithRGSD");
     addTest(root, &TestGetIanaTimeZoneID, "tstformat/ccaltst/TestGetIanaTimeZoneID");
 }
 
@@ -101,9 +99,9 @@ static const UCalGetTypeTest ucalGetTypeTests[] = {
     { "th-TH-u-ca-gregory",      UCAL_DEFAULT,   "gregorian" },
     { "ja_JP@calendar=japanese", UCAL_GREGORIAN, "gregorian" },
     { "fr_CH",                   UCAL_DEFAULT,   "gregorian" },
-    { "fr_SA",                   UCAL_DEFAULT,   "gregorian" },
-    { "fr_CH@rg=sazzzz",         UCAL_DEFAULT,   "gregorian" },
-    { "fr_CH@rg=sa14",           UCAL_DEFAULT,   "gregorian" },
+    { "fr_SA",                   UCAL_DEFAULT,   "islamic-umalqura" },
+    { "fr_CH@rg=sazzzz",         UCAL_DEFAULT,   "islamic-umalqura" },
+    { "fr_CH@rg=sa14",           UCAL_DEFAULT,   "islamic-umalqura" },
     { "fr_CH@calendar=japanese;rg=sazzzz", UCAL_DEFAULT, "japanese" },
     { "fr_CH@rg=twcyi",          UCAL_DEFAULT,   "gregorian" }, // test for ICU-22364
     { "fr_CH@rg=ugw",            UCAL_DEFAULT,   "gregorian" }, // test for ICU-22364
@@ -114,7 +112,7 @@ static const UCalGetTypeTest ucalGetTypeTests[] = {
     { NULL, 0, NULL } /* terminator */
 };    
     
-static void TestCalendar(void)
+static void TestCalendar()
 {
     UCalendar *caldef = 0, *caldef2 = 0, *calfr = 0, *calit = 0, *calfrclone = 0;
     UEnumeration* uenum = NULL;
@@ -529,7 +527,7 @@ static void TestCalendar(void)
 /*------------------------------------------------------*/
 /*Testing the getMillis, setMillis, setDate and setDateTime functions extensively*/
 
-static void TestGetSetDateAPI(void)
+static void TestGetSetDateAPI()
 {
     UCalendar *caldef = 0, *caldef2 = 0, *caldef3 = 0;
     UChar tzID[4];
@@ -797,7 +795,7 @@ static void TestGetSetDateAPI(void)
 /**
  * Confirm the functioning of the calendar field related functions.
  */
-static void TestFieldGetSet(void)
+static void TestFieldGetSet()
 {
     UCalendar *cal = 0;
     UChar tzID[4];
@@ -957,7 +955,7 @@ static const TransitionItem transitionItems[] = {
 /**
  * Execute adding and rolling in Calendar extensively,
  */
-static void TestAddRollExtensive(void)
+static void TestAddRollExtensive()
 {
     const TransitionItem * itemPtr;
     UCalendar *cal = 0;
@@ -1151,7 +1149,7 @@ static void TestAddRollExtensive(void)
 
 /*------------------------------------------------------ */
 /*Testing the Limits for various Fields of Calendar*/
-static void TestGetLimits(void)
+static void TestGetLimits()
 {
     UCalendar *cal = 0;
     int32_t min, max, gr_min, le_max, ac_min, ac_max, val;
@@ -1247,7 +1245,7 @@ static void TestGetLimits(void)
  * Test that the days of the week progress properly when add is called repeatedly
  * for increments of 24 days.
  */
-static void TestDOWProgression(void)
+static void TestDOWProgression()
 {
     int32_t initialDOW, DOW, newDOW, expectedDOW;
     UCalendar *cal = 0;
@@ -1313,7 +1311,7 @@ static void TestDOWProgression(void)
 /**
  * Confirm that the offset between local time and GMT behaves as expected.
  */
-static void TestGMTvsLocal(void)
+static void TestGMTvsLocal()
 {
     log_verbose("\nTesting the offset between the GMT and local time\n");
     testZones(1999, 1, 1, 12, 0, 0);
@@ -1379,7 +1377,7 @@ static void testZones(int32_t yr, int32_t mo, int32_t dt, int32_t hr, int32_t mn
         log_err("ucal_get() failed: %s\n", u_errorName(status));
         goto cleanup;
     }
-    temp = (double)offset / 1000.0 / 60.0 / 60.0;
+    temp=(double)((double)offset / 1000.0 / 60.0 / 60.0);
     /*printf("offset for %s %f hr\n", austrdup(myDateFormat(datfor, date1)), temp);*/
        
     utc = ((ucal_get(cal, UCAL_HOUR_OF_DAY, &status) * 60 +
@@ -1553,7 +1551,7 @@ static void verify2(const char* msg, UCalendar* c, UDateFormat* dat, int32_t yea
         
 }
 
-void TestGregorianChange(void) {
+void TestGregorianChange() {
     static const UChar utc[] = { 0x45, 0x74, 0x63, 0x2f, 0x47, 0x4d, 0x54, 0 }; /* "Etc/GMT" */
     const int32_t dayMillis = 86400 * INT64_C(1000);    /* 1 day = 86400 seconds */
     UCalendar *cal;
@@ -1617,8 +1615,8 @@ void TestGregorianChange(void) {
     ucal_close(cal);
 }
 
-static void TestGetKeywordValuesForLocale(void) {
-#define PREFERRED_SIZE 25
+static void TestGetKeywordValuesForLocale() {
+#define PREFERRED_SIZE 26
 #define MAX_NUMBER_OF_KEYWORDS 5
     const char *PREFERRED[PREFERRED_SIZE][MAX_NUMBER_OF_KEYWORDS+1] = {
             { "root",        "gregorian", NULL, NULL, NULL, NULL },
@@ -1636,7 +1634,7 @@ static void TestGetKeywordValuesForLocale(void) {
             { "en@calendar=islamic",   "gregorian", NULL, NULL, NULL, NULL },
             { "zh_TW",       "gregorian", "roc", "chinese", NULL, NULL },
             { "ar_IR",       "persian", "gregorian", "islamic", "islamic-civil", "islamic-tbla" },
-            { "th@rg=SAZZZZ", "gregorian", "islamic-umalqura", "islamic", "islamic-rgsa", NULL },
+            { "th@rg=SAZZZZ", "islamic-umalqura", "gregorian", "islamic", "islamic-rgsa", NULL },
 
             // tests for ICU-22364
             { "zh_CN@rg=TW",           "gregorian", "chinese", NULL, NULL, NULL }, // invalid subdivision code
@@ -1648,8 +1646,9 @@ static void TestGetKeywordValuesForLocale(void) {
             { "zh_TW@rg=IT53",         "gregorian", NULL, NULL, NULL, NULL }, // two-digit subdivision code
             { "zh_TW@rg=AUnsw",        "gregorian", NULL, NULL, NULL, NULL }, // three-letter subdivision code
             { "zh_TW@rg=EE130",        "gregorian", NULL, NULL, NULL, NULL }, // three-digit subdivision code
+            { "zh_TW@rg=417zzzz",      "gregorian", NULL, NULL, NULL, NULL }, // three-digit region code
     };
-    const int32_t EXPECTED_SIZE[PREFERRED_SIZE] = { 1, 1, 1, 1, 2, 2, 2, 5, 5, 2, 2, 2, 1, 3, 5, 4, 2, 3, 3, 1, 1, 1, 1, 1, 1 };
+    const int32_t EXPECTED_SIZE[PREFERRED_SIZE] = { 1, 1, 1, 1, 2, 2, 2, 5, 5, 2, 2, 2, 1, 3, 5, 4, 2, 3, 3, 1, 1, 1, 1, 1, 1, 1 };
     UErrorCode status = U_ZERO_ERROR;
     int32_t i, size, j;
     UEnumeration *all, *pref;
@@ -1689,7 +1688,7 @@ static void TestGetKeywordValuesForLocale(void) {
             }
             
             if (!matchPref) {
-                log_err("FAIL: Preferred values for locale (%d) \"%s\" does not match expected.\n", i, loc);
+                log_err("FAIL: Preferred values for locale \"%s\" does not match expected.\n", loc);
                 break;
             }
             uenum_close(pref);
@@ -1817,7 +1816,7 @@ static const UChar logDateFormat[] = { 0x0045,0x0045,0x0045,0x0020,0x004D,0x004D
                                        0x0073,0x0073,0x002E,0x0053,0x0053,0x0053,0 }; /* "EEE MMM dd yyyy G HH:mm:ss.SSS" */
 enum { kFormattedDateMax = 2*UPRV_LENGTHOF(logDateFormat) };
 
-static void TestWeekend(void) {
+static void TestWeekend() {
     const TestWeekendDatesList * testDatesPtr = testDates;
     const TestDaysOfWeekList *   testDaysPtr = testDays;
     int32_t count, subCount;
@@ -1957,7 +1956,7 @@ static const TFDItem tfdItems[] = {
     { NULL,        NULL,           0.0,               0.0,              false,    0,   0,     0,      0,        0,          0 }  /* terminator */
 };
 
-void TestFieldDifference(void) {
+void TestFieldDifference() {
     const TFDItem * tfdItemPtr;
     for (tfdItemPtr = tfdItems; tfdItemPtr->timezone != NULL; tfdItemPtr++) {
         UErrorCode status = U_ZERO_ERROR;
@@ -2032,7 +2031,7 @@ void TestFieldDifference(void) {
     }
 }
 
-void TestAmbiguousWallTime(void) {
+void TestAmbiguousWallTime() {
     UErrorCode status = U_ZERO_ERROR;
     UChar tzID[32];
     UCalendar* ucal;
@@ -2163,7 +2162,7 @@ static const EraTestItem eraTestItems[] = {
 
 static const UChar zoneGMT[] = { 0x47,0x4D,0x54,0 };
 
-void TestAddRollEra0AndEraBounds(void) {
+void TestAddRollEra0AndEraBounds() {
     const EraTestItem * eraTestItemPtr;
     for (eraTestItemPtr = eraTestItems; eraTestItemPtr->locale != NULL; eraTestItemPtr++) {
         UErrorCode status = U_ZERO_ERROR;
@@ -2386,7 +2385,7 @@ static const TZTransitionItem tzTransitionItems[] = {
     { NULL,                 NULL,             0,         0, 0, false, false } /* terminator */
 };
 
-void TestGetTZTransition(void) {
+void TestGetTZTransition() {
     UErrorCode status = U_ZERO_ERROR;
     UCalendar * ucal = ucal_open(zoneGMT, -1, "en", UCAL_GREGORIAN, &status);
     if ( U_SUCCESS(status) ) {
@@ -2456,7 +2455,7 @@ static const UChar sBogusWithVariantCharacters[] = /* Bogus with Variant charact
     {0x48,0xE8,0x2113,0x2113,0xF4,0x20,0x57,0xF4,0x159,0x2113,0x3B4,0x00};
 #endif
 
-void TestGetWindowsTimeZoneID(void) {
+void TestGetWindowsTimeZoneID() {
     UErrorCode status;
     UChar winID[64];
     int32_t len;
@@ -2490,7 +2489,7 @@ void TestGetWindowsTimeZoneID(void) {
     }
 }
 
-void TestGetTimeZoneIDByWindowsID(void) {
+void TestGetTimeZoneIDByWindowsID() {
     UErrorCode status;
     UChar tzID[64];
     int32_t len;
@@ -2544,7 +2543,7 @@ void TestGetTimeZoneIDByWindowsID(void) {
 
 // The following currently assumes that Reiwa is the last known/valid era.
 // Filed ICU-20551 to generalize this when we have more time...
-void TestJpnCalAddSetNextEra(void) {
+void TestJpnCalAddSetNextEra() {
     UErrorCode status = U_ZERO_ERROR;
     UCalendar *jCal = ucal_open(NULL, 0, "ja_JP@calendar=japanese", UCAL_DEFAULT, &status);
     if ( U_FAILURE(status) ) {
@@ -2589,7 +2588,7 @@ void TestJpnCalAddSetNextEra(void) {
     }
 }
 
-void TestUcalOpenBufferRead(void) {
+void TestUcalOpenBufferRead() {
     // ICU-21004: The issue shows under valgrind or as an Address Sanitizer failure.
     UErrorCode status = U_ZERO_ERROR;
     // string length: 157 + 1 + 100 = 258
@@ -2603,7 +2602,7 @@ void TestUcalOpenBufferRead(void) {
  * Testing ucal_getTimeZoneOffsetFromLocal
  */
 void
-TestGetTimeZoneOffsetFromLocal(void) {
+TestGetTimeZoneOffsetFromLocal() {
     static const UChar utc[] = u"Etc/GMT";
 
     const int32_t HOUR = 60*60*1000;
@@ -2815,7 +2814,7 @@ TestGetTimeZoneOffsetFromLocal(void) {
 }
 
 void
-TestFWWithISO8601(void) {
+TestFWWithISO8601() {
     /* UCAL_SUNDAY is 1, UCAL_MONDAY is 2, ..., UCAL_SATURDAY is 7 */
     const char* LOCALES[] = {
         "",
@@ -2844,67 +2843,7 @@ TestFWWithISO8601(void) {
 }
 
 void
-TestFWwithRGSD(void) {
-    typedef struct {
-        const char* locale;
-        int32_t first_day_of_week;
-        int32_t minimal_days;
-    } TestData;
-    const TestData TESTDATA[] = {
-        // Region subtag is missing, so add likely subtags to get region.
-        {"en", UCAL_SUNDAY, 1},
-
-        // Explicit region subtag "US" is present.
-        {"en-US", UCAL_SUNDAY, 1},
-
-        // Explicit region subtag "DE" is present.
-        {"en-DE", UCAL_MONDAY, 4},
-
-        // Explicit region subtag "DE" is present, but there's also a valid
-        // region override to use "US".
-        {"en-DE-u-rg-uszzzz", UCAL_SUNDAY, 1},
-
-        // Explicit region subtag "DE" is present. The region override should be
-        // ignored, because "AA" is not a valid region.
-        {"en-DE-u-rg-aazzzz", UCAL_MONDAY, 4},
-
-        // Explicit region subtag "DE" is present. The region override should be
-        // ignored, because "001" is a macroregion.
-        {"en-DE-u-rg-001zzz", UCAL_MONDAY, 4},
-
-        // Region subtag is missing. The region override should be ignored, because
-        // "AA" is not a valid region.
-        {"en-u-rg-aazzzz", UCAL_SUNDAY, 1},
-
-        // Region subtag is missing. The region override should be ignored, because
-        // "001" is a macroregion.
-        {"en-u-rg-001zzz", UCAL_SUNDAY, 1},
-
-        {NULL, 0, 0},
-    };
-    for (int32_t i = 0; TESTDATA[i].locale != NULL; i++) {
-        UErrorCode status = U_ZERO_ERROR;
-        UCalendar* cal = ucal_open(NULL, 0, TESTDATA[i].locale, UCAL_DEFAULT, &status);
-        if (U_FAILURE(status)) {
-            log_err("ucal_open failed: TESTDATA[%d].locale = '%s'\n", i, TESTDATA[i].locale);
-            continue;
-        }
-        int32_t first_day_Of_week = ucal_getAttribute(cal, UCAL_FIRST_DAY_OF_WEEK);
-        if (first_day_Of_week != TESTDATA[i].first_day_of_week) {
-            log_err("First day of week of '%s' is %d but expected to be %d\n", TESTDATA[i].locale,
-                    first_day_Of_week, TESTDATA[i].first_day_of_week);
-        }
-        int32_t minimal_days = ucal_getAttribute(cal, UCAL_MINIMAL_DAYS_IN_FIRST_WEEK);
-        if (minimal_days != TESTDATA[i].minimal_days) {
-            log_err("Minimal days of a week of '%s' is %d but expected to be %d\n", TESTDATA[i].locale,
-                    minimal_days, TESTDATA[i].minimal_days);
-        }
-        ucal_close(cal);
-    }
-}
-
-void
-TestGetIanaTimeZoneID(void) {
+TestGetIanaTimeZoneID() {
     const UChar* UNKNOWN = u"Etc/Unknown";
     typedef struct {
         const UChar* id;
@@ -2921,7 +2860,7 @@ TestGetIanaTimeZoneID(void) {
         {u"Europe/Zaporozhye",  u"Europe/Kyiv"},
         {u"Etc/GMT-1",          u"Etc/GMT-1"},
         {u"Etc/GMT+20",         UNKNOWN},
-        {u"PST8PDT",            u"America/Los_Angeles"},
+        {u"PST8PDT",            u"PST8PDT"},
         {u"GMT-08:00",          UNKNOWN},
         {0,                     0}
     };

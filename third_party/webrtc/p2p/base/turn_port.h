@@ -36,7 +36,6 @@
 #include "rtc_base/dscp.h"
 #include "rtc_base/ip_address.h"
 #include "rtc_base/logging.h"
-#include "rtc_base/net_helper.h"
 #include "rtc_base/network/received_packet.h"
 #include "rtc_base/network/sent_packet.h"
 #include "rtc_base/socket.h"
@@ -275,9 +274,18 @@ class TurnPort : public Port {
   void OnAllocateError(int error_code, absl::string_view reason);
   void OnAllocateRequestTimeout();
 
-  void HandleDataIndication(const ReceivedIpPacket& packet);
-  void HandleChannelData(uint16_t channel_id, const ReceivedIpPacket& packet);
-  void DispatchPacket(const ReceivedIpPacket& packet, ProtocolType proto);
+  void HandleDataIndication(const char* data,
+                            size_t size,
+                            int64_t packet_time_us);
+  void HandleChannelData(uint16_t channel_id,
+                         const char* data,
+                         size_t size,
+                         int64_t packet_time_us);
+  void DispatchPacket(const char* data,
+                      size_t size,
+                      const SocketAddress& remote_addr,
+                      ProtocolType proto,
+                      int64_t packet_time_us);
 
   bool ScheduleRefresh(uint32_t lifetime);
   void SendRequest(StunRequest* request, int delay);

@@ -92,11 +92,11 @@ function renderArgKey(
   }
 }
 
-function renderArgValue({displayValue}: Arg): m.Children {
-  if (isWebLink(displayValue)) {
-    return renderWebLink(displayValue);
+function renderArgValue({value}: Arg): m.Children {
+  if (isWebLink(value)) {
+    return renderWebLink(value);
   } else {
-    return `${displayValue}`;
+    return `${value}`;
   }
 }
 

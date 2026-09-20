@@ -58,9 +58,6 @@ export interface PluginWrapper {
   // boot time.
   readonly enabled: boolean;
 
-  // Whether this is a core plugin (part of CORE_PLUGINS) or not.
-  readonly isCore: boolean;
-
   // Keeps track of whether this plugin is active. A plugin can be active even
   // if it's disabled, if another plugin depends on it.
   //
@@ -88,7 +85,7 @@ export class PluginManagerImpl {
 
   constructor(private readonly app: PluginAppInterface) {}
 
-  registerPlugin(desc: PerfettoPluginStatic<PerfettoPlugin>, isCore = false) {
+  registerPlugin(desc: PerfettoPluginStatic<PerfettoPlugin>) {
     const flagId = `plugin_${desc.id}`;
     const name = `Plugin: ${desc.id}`;
     const flag = featureFlags.register({
@@ -101,7 +98,6 @@ export class PluginManagerImpl {
       desc,
       enableFlag: flag,
       enabled: flag.get(),
-      isCore,
     });
   }
 
@@ -174,11 +170,6 @@ export class PluginManagerImpl {
   ): T {
     const plugin = this.registry.get(pluginDescriptor.id);
     return assertExists(plugin.traceContext).instance as T;
-  }
-
-  isCorePlugin(pluginId: string): boolean {
-    const plugin = this.registry.tryGet(pluginId);
-    return plugin?.isCore ?? false;
   }
 
   /**

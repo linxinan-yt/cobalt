@@ -519,6 +519,7 @@ AgcManagerDirect::~AgcManagerDirect() {}
 
 void AgcManagerDirect::Initialize() {
   RTC_DLOG(LS_INFO) << "AgcManagerDirect::Initialize";
+  data_dumper_->InitiateNewSetOfRecordings();
   for (size_t ch = 0; ch < channel_agcs_.size(); ++ch) {
     channel_agcs_[ch]->Initialize();
   }

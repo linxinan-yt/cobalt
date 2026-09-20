@@ -28,7 +28,6 @@
 #include "api/data_channel_event_observer_interface.h"
 #include "api/data_channel_interface.h"
 #include "api/dtls_transport_interface.h"
-#include "api/environment/environment.h"
 #include "api/field_trials_view.h"
 #include "api/jsep.h"
 #include "api/media_stream_interface.h"
@@ -327,7 +326,6 @@ class MockPeerConnectionInternal : public PeerConnectionInternal {
               (absl::string_view),
               (override));
   MOCK_METHOD(void, DestroyDataChannelTransport, (RTCError error), (override));
-  MOCK_METHOD(const Environment&, env, (), (const, override));
   MOCK_METHOD(const FieldTrialsView&, trials, (), (const, override));
 
   // PeerConnectionInternal

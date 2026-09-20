@@ -58,7 +58,7 @@ export default class implements PerfettoPlugin {
       if (!entityResidencyGroup) {
         const powerGroup = ctx.plugins
           .getPlugin(StandardGroupsPlugin)
-          .getOrCreateStandardGroup(ctx.defaultWorkspace, 'POWER');
+          .getOrCreateStandardGroup(ctx.workspace, 'POWER');
         entityResidencyGroup = new TrackNode({name: 'Entity Residency'});
         powerGroup.addChildInOrder(entityResidencyGroup);
       }
@@ -97,7 +97,7 @@ export default class implements PerfettoPlugin {
       ctx.tracks.registerTrack({
         uri,
         tags: {
-          kinds: [COUNTER_TRACK_KIND],
+          kind: COUNTER_TRACK_KIND,
           trackIds: [it.trackId],
           type: 'entity_state',
         },

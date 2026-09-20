@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 eu{
     AuxExemplarCharacters{"[áàăâåäãā æ éèĕêëē íìĭîïī óòŏôöøō œ úùŭûüū ÿ]"}
     Ellipsis{
@@ -364,7 +364,6 @@ eu{
                 Bhm{"B h:mm"}
                 Bhms{"B h:mm:s"}
                 EBhm{"E B h:mm"}
-                EBhms{"E B h:mm:ss"}
                 Ed{"d, EEEE"}
                 Ehm{"E h:mm a"}
                 Ehms{"E h:mm:ss a"}
@@ -689,12 +688,12 @@ eu{
                     "G.a.",
                 }
                 wide{
-                    "Kristo aurretik",
+                    "K.a.",
                     "Kristo ondoren",
                 }
                 wide%variant{
-                    "oraingo aroaren aurretik",
-                    "oraingo aroa",
+                    "Gure aroaren aurretik",
+                    "Gure aroa",
                 }
             }
             intervalFormats{

@@ -15,7 +15,14 @@
 import m from 'mithril';
 import {duration, Time, time} from '../../base/time';
 import {exists} from '../../base/utils';
-import {Grid, GridColumn, GridHeaderCell, GridCell} from '../../widgets/grid';
+import {
+  Grid,
+  GridBody,
+  GridDataCell,
+  GridHeader,
+  GridHeaderCell,
+  GridRow,
+} from '../../widgets/grid';
 import {DurationWidget} from '../../components/widgets/duration';
 import {Timestamp} from '../../components/widgets/timestamp';
 import {
@@ -30,7 +37,7 @@ import {GridLayout, GridLayoutColumn} from '../../widgets/grid_layout';
 import {Section} from '../../widgets/section';
 import {SqlRef} from '../../widgets/sql_ref';
 import {MultiParagraphText, TextParagraph} from '../../widgets/text_paragraph';
-import {Tree, TreeNode} from '../../widgets/tree';
+import {dictToTreeNodes, Tree} from '../../widgets/tree';
 import {
   buildScrollOffsetsGraph,
   getInputScrollDeltas,
@@ -255,93 +262,84 @@ export class ScrollDetailsPanel implements TrackEventDetailsPanel {
     }
   }
 
-  private renderMetricsDictionary(): m.Children {
-    return [
-      m(TreeNode, {
-        left: 'Total Finger Input Event Count',
-        right: this.metrics.inputEventCount,
-      }),
-      m(TreeNode, {
-        left: 'Total Vsyncs within Scrolling period',
-        right: this.metrics.frameCount,
-      }),
-      m(TreeNode, {
-        left: 'Total Chrome Presented Frames',
-        right: this.metrics.presentedFrameCount,
-      }),
-      m(TreeNode, {
-        left: 'Total Janky Frames',
-        right: this.metrics.jankyFrameCount,
-      }),
-      m(TreeNode, {
-        left: 'Number of Vsyncs Janky Frames were Delayed by',
-        right: this.metrics.missedVsyncs,
-      }),
+  private renderMetricsDictionary(): m.Child[] {
+    const metrics: {[key: string]: m.Child} = {};
+    metrics['Total Finger Input Event Count'] = this.metrics.inputEventCount;
+    metrics['Total Vsyncs within Scrolling period'] = this.metrics.frameCount;
+    metrics['Total Chrome Presented Frames'] = this.metrics.presentedFrameCount;
+    metrics['Total Janky Frames'] = this.metrics.jankyFrameCount;
+    metrics['Number of Vsyncs Janky Frames were Delayed by'] =
+      this.metrics.missedVsyncs;
 
-      this.metrics.jankyFramePercent !== undefined &&
-        m(TreeNode, {
-          left: 'Janky Frame Percentage (Total Janky Frames / Total Chrome Presented Frames)',
-          right: `${this.metrics.jankyFramePercent}%`,
-        }),
+    if (this.metrics.jankyFramePercent !== undefined) {
+      metrics[
+        'Janky Frame Percentage (Total Janky Frames / Total Chrome Presented Frames)'
+      ] = `${this.metrics.jankyFramePercent}%`;
+    }
 
-      this.metrics.startOffset !== undefined &&
-        m(TreeNode, {
-          left: 'Starting Offset',
-          right: this.metrics.startOffset,
-        }),
+    if (this.metrics.startOffset != undefined) {
+      metrics['Starting Offset'] = this.metrics.startOffset;
+    }
 
-      this.metrics.endOffset !== undefined &&
-        m(TreeNode, {
-          left: 'Ending Offset',
-          right: this.metrics.endOffset,
-        }),
+    if (this.metrics.endOffset != undefined) {
+      metrics['Ending Offset'] = this.metrics.endOffset;
+    }
 
-      this.metrics.startOffset !== undefined &&
-        this.metrics.endOffset !== undefined &&
-        m(TreeNode, {
-          left: 'Net Pixels Scrolled',
-          right: Math.abs(this.metrics.endOffset - this.metrics.startOffset),
-        }),
+    if (
+      this.metrics.startOffset != undefined &&
+      this.metrics.endOffset != undefined
+    ) {
+      metrics['Net Pixels Scrolled'] = Math.abs(
+        this.metrics.endOffset - this.metrics.startOffset,
+      );
+    }
 
-      this.metrics.totalPixelsScrolled !== undefined &&
-        m(TreeNode, {
-          left: 'Total Pixels Scrolled (all directions)',
-          right: this.metrics.totalPixelsScrolled,
-        }),
-    ];
+    if (this.metrics.totalPixelsScrolled != undefined) {
+      metrics['Total Pixels Scrolled (all directions)'] =
+        this.metrics.totalPixelsScrolled;
+    }
+
+    return dictToTreeNodes(metrics);
   }
 
   private getDelayTable(): m.Child {
     if (this.orderedJankSlices.length > 0) {
-      const columns: GridColumn[] = [
-        {key: 'cause', header: m(GridHeaderCell, 'Cause')},
-        {key: 'duration', header: m(GridHeaderCell, 'Duration')},
-        {key: 'delayedVsyncs', header: m(GridHeaderCell, 'Delayed Vsyncs')},
-      ];
-
-      const rows = this.orderedJankSlices.map((jankSlice) => [
+      return m(
+        Grid,
         m(
-          GridCell,
-          renderSliceRef({
-            trace: this.trace,
-            id: jankSlice.id,
-            trackUri: JANKS_TRACK_URI,
-            title: jankSlice.cause,
-          }),
+          GridHeader,
+          m(
+            GridRow,
+            m(GridHeaderCell, 'Cause'),
+            m(GridHeaderCell, 'Duration'),
+            m(GridHeaderCell, 'Delayed Vsyncs'),
+          ),
         ),
         m(
-          GridCell,
-          jankSlice.dur !== undefined
-            ? m(DurationWidget, {trace: this.trace, dur: jankSlice.dur})
-            : 'NULL',
+          GridBody,
+          this.orderedJankSlices.map((jankSlice) =>
+            m(
+              GridRow,
+              m(
+                GridDataCell,
+                renderSliceRef({
+                  trace: this.trace,
+                  id: jankSlice.id,
+                  trackUri: JANKS_TRACK_URI,
+                  title: jankSlice.cause,
+                }),
+              ),
+              m(
+                GridDataCell,
+                jankSlice.dur !== undefined
+                  ? m(DurationWidget, {trace: this.trace, dur: jankSlice.dur})
+                  : 'NULL',
+              ),
+              m(GridDataCell, jankSlice.delayVsync),
+            ),
+          ),
         ),
-        m(GridCell, {align: 'right'}, jankSlice.delayVsync ?? 'NULL'),
-      ]);
-
-      return m(Grid, {
-        columns,
-        rowData: rows,
-      });
+      );
     } else {
       return 'None';
     }
@@ -394,9 +392,16 @@ export class ScrollDetailsPanel implements TrackEventDetailsPanel {
   }
 
   render() {
-    if (this.data === undefined) {
+    if (this.data == undefined) {
       return m('h2', 'Loading');
     }
+
+    const details = dictToTreeNodes({
+      'Scroll ID': `${this.data.id}`,
+      'Start time': m(Timestamp, {trace: this.trace, ts: this.data.ts}),
+      'Duration': m(DurationWidget, {trace: this.trace, dur: this.data.dur}),
+      'SQL ID': m(SqlRef, {table: 'chrome_scrolls', id: this.id}),
+    });
 
     return m(
       DetailsShell,
@@ -407,28 +412,7 @@ export class ScrollDetailsPanel implements TrackEventDetailsPanel {
         GridLayout,
         m(
           GridLayoutColumn,
-          m(
-            Section,
-            {title: 'Details'},
-            m(Tree, [
-              m(TreeNode, {left: 'Scroll ID', right: `${this.data.id}`}),
-              m(TreeNode, {
-                left: 'Start time',
-                right: m(Timestamp, {trace: this.trace, ts: this.data.ts}),
-              }),
-              m(TreeNode, {
-                left: 'Duration',
-                right: m(DurationWidget, {
-                  trace: this.trace,
-                  dur: this.data.dur,
-                }),
-              }),
-              m(TreeNode, {
-                left: 'SQL ID',
-                right: m(SqlRef, {table: 'chrome_scrolls', id: this.id}),
-              }),
-            ]),
-          ),
+          m(Section, {title: 'Details'}, m(Tree, details)),
           m(
             Section,
             {title: 'Slice Metrics'},

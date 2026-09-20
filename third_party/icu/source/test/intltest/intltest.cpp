@@ -20,7 +20,6 @@
 #include <string.h>
 #include <cmath>
 #include <math.h>
-#include <string_view>
 
 #include "unicode/ctest.h" // for str_timeDelta
 #include "unicode/curramt.h"
@@ -68,7 +67,8 @@ static UBool noKnownIssues = false; // if true, don't emit known issues
 
 // [LIU] Just to get things working
 UnicodeString
-UCharToUnicodeString(char16_t c) { return {c}; }
+UCharToUnicodeString(char16_t c)
+{ return UnicodeString(c); }
 
 // [rtg] Just to get things working
 UnicodeString
@@ -106,7 +106,7 @@ Int64ToUnicodeString(int64_t num)
 #if defined(_MSC_VER)
     snprintf(buffer, sizeof(buffer), "%I64d", num);
 #else
-    snprintf(buffer, sizeof(buffer), "%lld", static_cast<long long>(num));
+    snprintf(buffer, sizeof(buffer), "%lld", (long long)num);
 #endif
     assert(danger == 'p');
 
@@ -211,7 +211,7 @@ UnicodeString _toString(const Formattable& f) {
         break;
     }
     default:
-        s = UnicodeString("Unknown Formattable type=") + static_cast<int32_t>(f.getType());
+        s = UnicodeString("Unknown Formattable type=") + (int32_t)f.getType();
         break;
     }
     return s;
@@ -222,9 +222,9 @@ UnicodeString _toString(const Formattable& f) {
  * + char* ambiguous. - liu
  */
 UnicodeString toString(const Formattable& f) {
-    UnicodeString s(static_cast<char16_t>(91)/*[*/);
+    UnicodeString s((char16_t)91/*[*/);
     s.append(_toString(f));
-    s.append(static_cast<char16_t>(0x5d)/*]*/);
+    s.append((char16_t)0x5d/*]*/);
     return s;
 }
 
@@ -232,7 +232,7 @@ UnicodeString toString(const Formattable& f) {
 
 // useful when operator+ won't cooperate
 UnicodeString toString(int32_t n) {
-    return UnicodeString() + static_cast<long>(n);
+    return UnicodeString() + (long)n;
 }
 
 
@@ -249,19 +249,19 @@ UnicodeString toString(const UnicodeSet& uniset, UErrorCode& status) {
 
 // stephen - cleaned up 05/05/99
 UnicodeString operator+(const UnicodeString& left, char num)
-{ return left + static_cast<long>(num); }
+{ return left + (long)num; }
 UnicodeString operator+(const UnicodeString& left, short num)
-{ return left + static_cast<long>(num); }
+{ return left + (long)num; }
 UnicodeString operator+(const UnicodeString& left, int num)
-{ return left + static_cast<long>(num); }
+{ return left + (long)num; }
 UnicodeString operator+(const UnicodeString& left, unsigned char num)
-{ return left + static_cast<unsigned long>(num); }
+{ return left + (unsigned long)num; }
 UnicodeString operator+(const UnicodeString& left, unsigned short num)
-{ return left + static_cast<unsigned long>(num); }
+{ return left + (unsigned long)num; }
 UnicodeString operator+(const UnicodeString& left, unsigned int num)
-{ return left + static_cast<unsigned long>(num); }
+{ return left + (unsigned long)num; }
 UnicodeString operator+(const UnicodeString& left, float num)
-{ return left + static_cast<double>(num); }
+{ return left + (double)num; }
 
 //------------------
 
@@ -385,7 +385,7 @@ IntlTest::prettify(const UnicodeString &source, UBool parseBackslash)
                 // Delete a backslash.
                 int32_t backslashCount = 0;
                 for (int32_t j=target.length()-1; j>=0; --j) {
-                    if (target.charAt(j) == static_cast<char16_t>(92)) {
+                    if (target.charAt(j) == (char16_t)92) {
                         ++backslashCount;
                     } else {
                         break;
@@ -502,13 +502,13 @@ IntlTest* IntlTest::gTest = nullptr;
 
 static int32_t execCount = 0;
 
-void it_log(std::u16string_view message)
+void it_log( UnicodeString message )
 {
     if (IntlTest::gTest)
         IntlTest::gTest->log( message );
 }
 
-void it_logln(std::u16string_view message)
+void it_logln( UnicodeString message )
 {
     if (IntlTest::gTest)
         IntlTest::gTest->logln( message );
@@ -520,13 +520,13 @@ void it_logln()
         IntlTest::gTest->logln();
 }
 
-void it_info(std::u16string_view message)
+void it_info( UnicodeString message )
 {
     if (IntlTest::gTest)
         IntlTest::gTest->info( message );
 }
 
-void it_infoln(std::u16string_view message)
+void it_infoln( UnicodeString message )
 {
     if (IntlTest::gTest)
         IntlTest::gTest->infoln( message );
@@ -544,46 +544,29 @@ void it_err()
         IntlTest::gTest->err();
 }
 
-void it_err(std::u16string_view message)
+void it_err( UnicodeString message )
 {
     if (IntlTest::gTest)
         IntlTest::gTest->err( message );
 }
 
-void it_errln(std::u16string_view message)
+void it_errln( UnicodeString message )
 {
     if (IntlTest::gTest)
         IntlTest::gTest->errln( message );
 }
 
-void it_dataerr(std::u16string_view message)
+void it_dataerr( UnicodeString message )
 {
     if (IntlTest::gTest)
         IntlTest::gTest->dataerr( message );
 }
 
-void it_dataerrln(std::u16string_view message)
+void it_dataerrln( UnicodeString message )
 {
     if (IntlTest::gTest)
         IntlTest::gTest->dataerrln( message );
 }
-
-void it_logln(const char* message) {
-    it_logln(UnicodeString(message));
-}
-
-void it_err(const char* message) {
-    it_err(UnicodeString(message));
-}
-
-void it_errln(const char* message) {
-    it_errln(UnicodeString(message));
-}
-
-void it_dataerrln(const char* message) {
-    it_dataerrln(UnicodeString(message));
-}
-
 
 IntlTest::IntlTest()
 {
@@ -714,7 +697,7 @@ UBool IntlTest::runTest( char* name, char* par, char *baseName )
     char* baseNameBuffer = nullptr;
 
     if(baseName == nullptr) {
-      baseNameBuffer = static_cast<char*>(malloc(1024));
+      baseNameBuffer = (char*)malloc(1024);
       baseName=baseNameBuffer;
       strcpy(baseName, "/");
     }
@@ -794,7 +777,7 @@ UBool IntlTest::runTestLoop( char* testname, char* par, char *baseName )
             if (!testname) {
                 run_this_test = true;
             }else{
-                run_this_test = static_cast<UBool>(strcmp(name, testname) == 0);
+                run_this_test = (UBool) (strcmp( name, testname ) == 0);
             }
         }
         if (run_this_test) {
@@ -802,7 +785,7 @@ UBool IntlTest::runTestLoop( char* testname, char* par, char *baseName )
             execCount++;
             char msg[256];
             snprintf(msg, sizeof(msg), "%s {", name);
-            LL_message(UnicodeString(msg), true);
+            LL_message(msg, true);
             UDate timeStart = uprv_getRawUTCtime();
             strcpy(saveBaseLoc,name);
             strcat(saveBaseLoc,"/");
@@ -834,7 +817,7 @@ UBool IntlTest::runTestLoop( char* testname, char* par, char *baseName )
                 if(!no_time) str_timeDelta(msg+strlen(msg),timeStop-timeStart);
                 lastTestFailed = false;
             }else{
-                snprintf(msg, sizeof(msg), "   } ERRORS (%li) in %s", static_cast<long>(errorCount - lastErrorCount), name);
+                snprintf(msg, sizeof(msg), "   } ERRORS (%li) in %s", (long)(errorCount-lastErrorCount), name);
                 if(!no_time) str_timeDelta(msg+strlen(msg),timeStop-timeStart);
 
                 for(int i=0;i<LL_indentlevel;i++) {
@@ -846,11 +829,11 @@ UBool IntlTest::runTestLoop( char* testname, char* par, char *baseName )
             }
             LL_indentlevel -= 3;
             if (lastTestFailed) {
-                LL_message({}, true);
+                LL_message( "", true);
             }
-            LL_message(UnicodeString(msg), true);
+            LL_message( msg, true);
             if (lastTestFailed) {
-                LL_message({}, true);
+                LL_message( "", true);
             }
             LL_indentlevel += 3;
         }
@@ -867,7 +850,7 @@ UBool IntlTest::runTestLoop( char* testname, char* par, char *baseName )
 /**
 * Adds given string to the log if we are in verbose mode.
 */
-void IntlTest::log(std::u16string_view message)
+void IntlTest::log( const UnicodeString &message )
 {
     if( verbose ) {
         LL_message( message, false );
@@ -878,7 +861,7 @@ void IntlTest::log(std::u16string_view message)
 * Adds given string to the log if we are in verbose mode. Adds a new line to
 * the given message.
 */
-void IntlTest::logln(std::u16string_view message)
+void IntlTest::logln( const UnicodeString &message )
 {
     if( verbose ) {
         LL_message( message, true );
@@ -888,14 +871,14 @@ void IntlTest::logln(std::u16string_view message)
 void IntlTest::logln()
 {
     if( verbose ) {
-        LL_message({}, true );
+        LL_message( "", true );
     }
 }
 
 /**
 * Unconditionally adds given string to the log.
 */
-void IntlTest::info(std::u16string_view message)
+void IntlTest::info( const UnicodeString &message )
 {
   LL_message( message, false );
 }
@@ -904,14 +887,14 @@ void IntlTest::info(std::u16string_view message)
 * Unconditionally adds given string to the log. Adds a new line to
 * the given message.
 */
-void IntlTest::infoln(std::u16string_view message)
+void IntlTest::infoln( const UnicodeString &message )
 {
   LL_message( message, true );
 }
 
 void IntlTest::infoln()
 {
-  LL_message({}, true );
+  LL_message( "", true );
 }
 
 int32_t IntlTest::IncErrorCount()
@@ -933,19 +916,19 @@ void IntlTest::err()
     IncErrorCount();
 }
 
-void IntlTest::err(std::u16string_view message)
+void IntlTest::err( const UnicodeString &message )
 {
     IncErrorCount();
     if (!no_err_msg) LL_message( message, false );
 }
 
-void IntlTest::errln(std::u16string_view message)
+void IntlTest::errln( const UnicodeString &message )
 {
     IncErrorCount();
     if (!no_err_msg) LL_message( message, true );
 }
 
-void IntlTest::dataerr(std::u16string_view message)
+void IntlTest::dataerr( const UnicodeString &message )
 {
     IncDataErrorCount();
 
@@ -956,7 +939,7 @@ void IntlTest::dataerr(std::u16string_view message)
     if (!no_err_msg) LL_message( message, false );
 }
 
-void IntlTest::dataerrln(std::u16string_view message)
+void IntlTest::dataerrln( const UnicodeString &message )
 {
     int32_t errCount = IncDataErrorCount();
     UnicodeString msg;
@@ -976,7 +959,7 @@ void IntlTest::dataerrln(std::u16string_view message)
     }
 }
 
-void IntlTest::errcheckln(UErrorCode status, std::u16string_view message) {
+void IntlTest::errcheckln(UErrorCode status, const UnicodeString &message ) {
     if (status == U_FILE_ACCESS_ERROR || status == U_MISSING_RESOURCE_ERROR) {
         dataerrln(message);
     } else {
@@ -1029,7 +1012,7 @@ UBool IntlTest::logKnownIssue(const char *ticket) {
   return logKnownIssue(ticket, UnicodeString());
 }
 
-UBool IntlTest::logKnownIssue(const char *ticket, std::u16string_view msg) {
+UBool IntlTest::logKnownIssue(const char *ticket, const UnicodeString &msg) {
   if(noKnownIssues) return false;
 
   char fullpath[2048];
@@ -1141,7 +1124,7 @@ UBool IntlTest::printKnownIssues()
 }
 
 
-void IntlTest::LL_message(std::u16string_view message, UBool newline)
+void IntlTest::LL_message( UnicodeString message, UBool newline )
 {
     // Synchronize this function.
     // All error messages generated by tests funnel through here.
@@ -1174,28 +1157,27 @@ void IntlTest::LL_message(std::u16string_view message, UBool newline)
     // stream out the indentation string first if necessary
     length = indent.extract(1, indent.length(), buffer, sizeof(buffer));
     if (length > 0) {
-        fwrite(buffer, sizeof(*buffer), length, static_cast<FILE*>(testoutfp));
+        fwrite(buffer, sizeof(*buffer), length, (FILE *)testoutfp);
     }
 
     // replace each LineFeed by the indentation string
-    UnicodeString us(message);
-    us.findAndReplace(UnicodeString(static_cast<char16_t>('\n')), indent);
+    message.findAndReplace(UnicodeString((char16_t)'\n'), indent);
 
     // stream out the message
-    length = us.extract(0, us.length(), buffer, sizeof(buffer));
+    length = message.extract(0, message.length(), buffer, sizeof(buffer));
     if (length > 0) {
         length = length > 30000 ? 30000 : length;
-        fwrite(buffer, sizeof(*buffer), length, static_cast<FILE*>(testoutfp));
+        fwrite(buffer, sizeof(*buffer), length, (FILE *)testoutfp);
     }
 
     if (newline) {
         char newLine = '\n';
-        fwrite(&newLine, sizeof(newLine), 1, static_cast<FILE*>(testoutfp));
+        fwrite(&newLine, sizeof(newLine), 1, (FILE *)testoutfp);
     }
 
     // A newline usually flushes the buffer, but
     // flush the message just in case of a core dump.
-    fflush(static_cast<FILE*>(testoutfp));
+    fflush((FILE *)testoutfp);
 }
 
 /**
@@ -1388,7 +1370,7 @@ main(int argc, char* argv[])
 
     {
 	const char *charsetFamily = "Unknown";
-        int32_t voidSize = static_cast<int32_t>(sizeof(void*));
+        int32_t voidSize = (int32_t)sizeof(void*);
         int32_t bits = voidSize * 8;
         if(U_CHARSET_FAMILY==U_ASCII_FAMILY) {
            charsetFamily="ASCII";
@@ -1463,8 +1445,8 @@ main(int argc, char* argv[])
 
     // initial check for the default converter
     errorCode = U_ZERO_ERROR;
-    cnv = ucnv_open(nullptr, &errorCode);
-    if (cnv != nullptr) {
+    cnv = ucnv_open(0, &errorCode);
+    if(cnv != 0) {
         // ok
         ucnv_close(cnv);
     } else {
@@ -1481,7 +1463,7 @@ main(int argc, char* argv[])
 
     // try more data
     cnv = ucnv_open(TRY_CNV_2, &errorCode);
-    if (cnv != nullptr) {
+    if(cnv != 0) {
         // ok
         ucnv_close(cnv);
     } else {
@@ -1495,7 +1477,7 @@ main(int argc, char* argv[])
         }
     }
 
-    UResourceBundle *rb = ures_open(nullptr, "en", &errorCode);
+    UResourceBundle *rb = ures_open(0, "en", &errorCode);
     ures_close(rb);
     if(U_FAILURE(errorCode)) {
         fprintf(stdout,
@@ -1554,7 +1536,7 @@ main(int argc, char* argv[])
 #endif
 
     free(_testDataPath);
-    _testDataPath = nullptr;
+    _testDataPath = 0;
 
     Locale lastDefaultLocale;
     if (originalLocale != lastDefaultLocale) {
@@ -1577,7 +1559,7 @@ main(int argc, char* argv[])
             fprintf(stdout, "\t*WARNING* some data-loading errors were ignored by the -w option.\n");
         }
     }else{
-        fprintf(stdout, "Errors in total: %ld.\n", static_cast<long>(major.getErrors()));
+        fprintf(stdout, "Errors in total: %ld.\n", (long)major.getErrors());
         major.printErrors();
 
         if(summary_file != nullptr) {
@@ -1585,7 +1567,7 @@ main(int argc, char* argv[])
           if( summf != nullptr) {
             char buf[10000];
             int32_t length = errorList.extract(0, errorList.length(), buf, sizeof(buf));
-            fwrite(buf, sizeof(*buf), length, summf);
+            fwrite(buf, sizeof(*buf), length, (FILE*)summf);
             fclose(summf);
           }
         }
@@ -1612,12 +1594,12 @@ main(int argc, char* argv[])
     }
     if(!no_time) {
       endTime = uprv_getRawUTCtime();
-      diffTime = static_cast<int32_t>(endTime - startTime);
+      diffTime = (int32_t)(endTime - startTime);
       printf("Elapsed Time: %02d:%02d:%02d.%03d\n",
-             (diffTime % U_MILLIS_PER_DAY) / U_MILLIS_PER_HOUR,
-             (diffTime % U_MILLIS_PER_HOUR) / U_MILLIS_PER_MINUTE,
-             (diffTime % U_MILLIS_PER_MINUTE) / U_MILLIS_PER_SECOND,
-             diffTime % U_MILLIS_PER_SECOND);
+             (int)((diffTime%U_MILLIS_PER_DAY)/U_MILLIS_PER_HOUR),
+             (int)((diffTime%U_MILLIS_PER_HOUR)/U_MILLIS_PER_MINUTE),
+             (int)((diffTime%U_MILLIS_PER_MINUTE)/U_MILLIS_PER_SECOND),
+             (int)(diffTime%U_MILLIS_PER_SECOND));
     }
 
     if(ctest_xml_fini())
@@ -1641,11 +1623,11 @@ const char* IntlTest::loadTestData(UErrorCode& err){
         directory = pathToDataDirectory();
 #endif
 
-        tdpath = static_cast<char*>(malloc(sizeof(char) * ((strlen(directory) * strlen(tdrelativepath)) + 100)));
+        tdpath = (char*) malloc(sizeof(char) *(( strlen(directory) * strlen(tdrelativepath)) + 100));
 
         if (tdpath == nullptr) {
             err = U_MEMORY_ALLOCATION_ERROR;
-            it_dataerrln(UnicodeString("Could not allocate memory for _testDataPath ") + u_errorName(err));
+            it_dataerrln((UnicodeString) "Could not allocate memory for _testDataPath " + u_errorName(err));
             return "";
         }
 
@@ -1660,7 +1642,7 @@ const char* IntlTest::loadTestData(UErrorCode& err){
 
         if (U_FAILURE(err)) {
             err = U_FILE_ACCESS_ERROR;
-            it_dataerrln(UnicodeString("Could not load testtypes.res in testdata bundle with path ") + tdpath + UnicodeString(" - ") + u_errorName(err));
+            it_dataerrln((UnicodeString)"Could not load testtypes.res in testdata bundle with path " + tdpath + (UnicodeString)" - " + u_errorName(err));
             return "";
         }
         ures_close(test);
@@ -1695,61 +1677,6 @@ const char *IntlTest::getSourceTestData(UErrorCode& /*err*/) {
                      "test" U_FILE_SEP_STRING "testdata" U_FILE_SEP_STRING;
     }
 #endif
-    return srcDataDir;
-}
-
-static bool fileExists(const char* fileName) {
-    // Test for `srcDataDir` existing by checking for `srcDataDir`/message2/valid-tests.json
-    U_ASSERT(fileName != nullptr);
-    FILE *f = fopen(fileName, "r");
-    if (f) {
-        fclose(f);
-        return true;
-    }
-    return false;
-}
-
-/**
- * Returns the path to icu/testdata/
- */
-const char *IntlTest::getSharedTestData(UErrorCode& err) {
-#define SOURCE_TARBALL_TOP U_TOPSRCDIR U_FILE_SEP_STRING ".." U_FILE_SEP_STRING
-#define REPO_TOP SOURCE_TARBALL_TOP ".." U_FILE_SEP_STRING
-#define FILE_NAME U_FILE_SEP_STRING "message2" U_FILE_SEP_STRING "valid-tests.json"
-    const char *srcDataDir = nullptr;
-    const char *testFile = nullptr;
-    if (U_SUCCESS(err)) {
-#ifdef U_TOPSRCDIR
-        // Try U_TOPSRCDIR/../testdata (source tarball)
-        srcDataDir = SOURCE_TARBALL_TOP "testdata" U_FILE_SEP_STRING;
-        testFile = SOURCE_TARBALL_TOP "testdata" FILE_NAME;
-        if (!fileExists(testFile)) {
-            // If that doesn't exist, try U_TOPSRCDIR/../../testdata (in-repo)
-            srcDataDir = REPO_TOP "testdata" U_FILE_SEP_STRING;
-            testFile = REPO_TOP "testdata" FILE_NAME;
-            if (!fileExists(testFile)) {
-                // If neither exists, return null
-                err = U_FILE_ACCESS_ERROR;
-                srcDataDir = nullptr;
-            }
-        }
-#else
-        // Try ../../../../testdata (if we're in icu/source/test/intltest)
-        // and ../../../../../../testdata (if we're in icu/source/test/intltest/Platform/(Debug|Release)
-#define TOP ".." U_FILE_SEP_STRING ".." U_FILE_SEP_STRING ".." U_FILE_SEP_STRING ".." U_FILE_SEP_STRING
-#define TOP_TOP ".." U_FILE_SEP_STRING ".." U_FILE_SEP_STRING TOP
-        srcDataDir = TOP "testdata" U_FILE_SEP_STRING;
-        testFile = TOP "testdata" FILE_NAME;
-        if (!fileExists(testFile)) {
-            srcDataDir = TOP_TOP "testdata" U_FILE_SEP_STRING;
-            testFile = TOP_TOP "testdata" FILE_NAME;
-            if (!fileExists(testFile)) {
-                err = U_FILE_ACCESS_ERROR;
-                srcDataDir = nullptr;
-            }
-        }
-#endif
-    }
     return srcDataDir;
 }
 
@@ -1905,12 +1832,12 @@ float IntlTest::random(int32_t* seedp) {
         *seedp=(RAND_IA*(*seedp)+RAND_IC) % RAND_M;
         iy=(*seedp);
     }
-    j = static_cast<int32_t>(1 + 97.0 * iy / RAND_M);
+    j=(int32_t)(1 + 97.0*iy/RAND_M);
     U_ASSERT(j>=1 && j<=97);
     iy=ir[j];
     *seedp=(RAND_IA*(*seedp)+RAND_IC) % RAND_M;
     ir[j]=(*seedp);
-    return static_cast<float>(iy) / RAND_M;
+    return (float) iy/RAND_M;
 }
 
 /**
@@ -1943,28 +1870,28 @@ void IntlTest::icu_rand::seed(uint32_t seed) {
 }
 
 uint32_t IntlTest::icu_rand::operator() () {
-    fLast = (static_cast<uint64_t>(fLast) * 48271UL) % 2147483647UL;
+    fLast = ((uint64_t)fLast * 48271UL) % 2147483647UL;
     return fLast;
 }
 
 uint32_t IntlTest::icu_rand::getSeed() {
-    return fLast;
+    return (uint32_t) fLast;
 }
 
 
 
 static inline char16_t toHex(int32_t i) {
-    return static_cast<char16_t>(i + (i < 10 ? 0x30 : (0x41 - 10)));
+    return (char16_t)(i + (i < 10 ? 0x30 : (0x41 - 10)));
 }
 
-static UnicodeString& escape(std::u16string_view s, UnicodeString& result) {
-    for (int32_t i=0; i<static_cast<int32_t>(s.length()); ++i) {
+static UnicodeString& escape(const UnicodeString& s, UnicodeString& result) {
+    for (int32_t i=0; i<s.length(); ++i) {
         char16_t c = s[i];
-        if (c <= static_cast<char16_t>(0x7F)) {
+        if (c <= (char16_t)0x7F) {
             result += c;
         } else {
-            result += static_cast<char16_t>(0x5c);
-            result += static_cast<char16_t>(0x75);
+            result += (char16_t)0x5c;
+            result += (char16_t)0x75;
             result += toHex((c >> 12) & 0xF);
             result += toHex((c >>  8) & 0xF);
             result += toHex((c >>  4) & 0xF);
@@ -2033,16 +1960,16 @@ UBool IntlTest::assertSuccess(const char* message, UErrorCode ec, UBool possible
 }
 
 UBool IntlTest::assertEquals(const char* message,
-                             std::u16string_view expected,
-                             std::u16string_view actual,
+                             const UnicodeString& expected,
+                             const UnicodeString& actual,
                              UBool possibleDataError) {
     if (expected != actual) {
         if (possibleDataError) {
-            dataerrln(UnicodeString("FAIL: ") + message + "; got " +
+            dataerrln((UnicodeString)"FAIL: " + message + "; got " +
                   prettify(actual) +
                   "; expected " + prettify(expected));
         } else {
-            errln(UnicodeString("FAIL: ") + message + "; got " +
+            errln((UnicodeString)"FAIL: " + message + "; got " +
                   prettify(actual) +
                   "; expected " + prettify(expected));
         }
@@ -2050,7 +1977,7 @@ UBool IntlTest::assertEquals(const char* message,
     }
 #ifdef VERBOSE_ASSERTIONS
     else {
-        logln(UnicodeString("Ok: ") + message + "; got " + prettify(actual));
+        logln((UnicodeString)"Ok: " + message + "; got " + prettify(actual));
     }
 #endif
     return true;
@@ -2062,47 +1989,31 @@ UBool IntlTest::assertEquals(const char* message,
     U_ASSERT(expected != nullptr);
     U_ASSERT(actual != nullptr);
     if (uprv_strcmp(expected, actual) != 0) {
-        errln(UnicodeString("FAIL: ") + message + "; got \"" +
+        errln((UnicodeString)"FAIL: " + message + "; got \"" +
               actual +
               "\"; expected \"" + expected + "\"");
         return false;
     }
 #ifdef VERBOSE_ASSERTIONS
     else {
-        logln(UnicodeString("Ok: ") + message + "; got \"" + actual + "\"");
+        logln((UnicodeString)"Ok: " + message + "; got \"" + actual + "\"");
     }
 #endif
     return true;
-}
-
-UBool IntlTest::assertEquals(const char* message, const char* expected,
-                             std::u16string_view actual, UBool possibleDataError) {
-    return assertEquals(
-        message,
-        UnicodeString(expected), actual,
-        possibleDataError);
-}
-
-UBool IntlTest::assertEquals(const char* message, std::u16string_view expected,
-                             const char* actual, UBool possibleDataError) {
-    return assertEquals(
-        message,
-        expected, UnicodeString(actual),
-        possibleDataError);
 }
 
 UBool IntlTest::assertEquals(const char* message,
                              int32_t expected,
                              int32_t actual) {
     if (expected != actual) {
-        errln(UnicodeString("FAIL: ") + message + "; got " +
+        errln((UnicodeString)"FAIL: " + message + "; got " +
               actual + "=0x" + toHex(actual) +
               "; expected " + expected + "=0x" + toHex(expected));
         return false;
     }
 #ifdef VERBOSE_ASSERTIONS
     else {
-        logln(UnicodeString("Ok: ") + message + "; got " + actual + "=0x" + toHex(actual));
+        logln((UnicodeString)"Ok: " + message + "; got " + actual + "=0x" + toHex(actual));
     }
 #endif
     return true;
@@ -2112,14 +2023,14 @@ UBool IntlTest::assertEquals(const char* message,
                              int64_t expected,
                              int64_t actual) {
     if (expected != actual) {
-        errln(UnicodeString("FAIL: ") + message + "; got int64 " +
+        errln((UnicodeString)"FAIL: " + message + "; got int64 " +
               Int64ToUnicodeString(actual) + 
               "; expected " + Int64ToUnicodeString(expected) );
         return false;
     }
 #ifdef VERBOSE_ASSERTIONS
     else {
-      logln(UnicodeString("Ok: ") + message + "; got int64 " + Int64ToUnicodeString(actual));
+      logln((UnicodeString)"Ok: " + message + "; got int64 " + Int64ToUnicodeString(actual));
     }
 #endif
     return true;
@@ -2130,14 +2041,14 @@ UBool IntlTest::assertEquals(const char* message,
                              double actual) {
     bool bothNaN = std::isnan(expected) && std::isnan(actual);
     if (expected != actual && !bothNaN) {
-        errln(UnicodeString("FAIL: ") + message + "; got " +
+        errln((UnicodeString)"FAIL: " + message + "; got " +
               actual + 
               "; expected " + expected);
         return false;
     }
 #ifdef VERBOSE_ASSERTIONS
     else {
-        logln(UnicodeString("Ok: ") + message + "; got " + actual);
+        logln((UnicodeString)"Ok: " + message + "; got " + actual);
     }
 #endif
     return true;
@@ -2147,14 +2058,14 @@ UBool IntlTest::assertEquals(const char* message,
                              UBool expected,
                              UBool actual) {
     if (expected != actual) {
-        errln(UnicodeString("FAIL: ") + message + "; got " +
+        errln((UnicodeString)"FAIL: " + message + "; got " +
               toString(actual) +
               "; expected " + toString(expected));
         return false;
     }
 #ifdef VERBOSE_ASSERTIONS
     else {
-      logln(UnicodeString("Ok: ") + message + "; got " + toString(actual));
+      logln((UnicodeString)"Ok: " + message + "; got " + toString(actual));
     }
 #endif
     return true;
@@ -2165,14 +2076,14 @@ UBool IntlTest::assertEquals(const char* message,
                              UErrorCode expected,
                              UErrorCode actual) {
     if (expected != actual) {
-        errln(UnicodeString("FAIL: ") + message + "; got " +
+        errln((UnicodeString)"FAIL: " + message + "; got " +
               u_errorName(actual) + 
               "; expected " + u_errorName(expected));
         return false;
     }
 #ifdef VERBOSE_ASSERTIONS
     else {
-        logln(UnicodeString("Ok: ") + message + "; got " + u_errorName(actual));
+        logln((UnicodeString)"Ok: " + message + "; got " + u_errorName(actual));
     }
 #endif
     return true;
@@ -2183,14 +2094,14 @@ UBool IntlTest::assertEquals(const char* message,
                              const UnicodeSet& actual) {
     IcuTestErrorCode status(*this, "assertEqualsUniSet");
     if (expected != actual) {
-        errln(UnicodeString("FAIL: ") + message + "; got " +
+        errln((UnicodeString)"FAIL: " + message + "; got " +
               toString(actual, status) +
               "; expected " + toString(expected, status));
         return false;
     }
 #ifdef VERBOSE_ASSERTIONS
     else {
-        logln(UnicodeString("Ok: ") + message + "; got " + toString(actual, status));
+        logln((UnicodeString)"Ok: " + message + "; got " + toString(actual, status));
     }
 #endif
     return true;
@@ -2198,17 +2109,17 @@ UBool IntlTest::assertEquals(const char* message,
 
 
 #if !UCONFIG_NO_FORMATTING
-UBool IntlTest::assertEqualFormattables(const char* message,
-                                        const Formattable& expected,
-                                        const Formattable& actual,
-                                        UBool possibleDataError) {
+UBool IntlTest::assertEquals(const char* message,
+                             const Formattable& expected,
+                             const Formattable& actual,
+                             UBool possibleDataError) {
     if (expected != actual) {
         if (possibleDataError) {
-            dataerrln(UnicodeString("FAIL: ") + message + "; got " +
+            dataerrln((UnicodeString)"FAIL: " + message + "; got " +
                   toString(actual) +
                   "; expected " + toString(expected));
         } else {
-            errln(UnicodeString("FAIL: ") + message + "; got " +
+            errln((UnicodeString)"FAIL: " + message + "; got " +
                   toString(actual) +
                   "; expected " + toString(expected));
         }
@@ -2216,7 +2127,7 @@ UBool IntlTest::assertEqualFormattables(const char* message,
     }
 #ifdef VERBOSE_ASSERTIONS
     else {
-        logln(UnicodeString("Ok: ") + message + "; got " + toString(actual));
+        logln((UnicodeString)"Ok: " + message + "; got " + toString(actual));
     }
 #endif
     return true;
@@ -2246,14 +2157,14 @@ UBool IntlTest::assertEquals(const char* message,
     if (expected != actual) {
         std::string expectedAsString = vectorToString(expected);
         std::string actualAsString = vectorToString(actual);
-        errln(UnicodeString("FAIL: ") + message +
+        errln((UnicodeString)"FAIL: " + message +
             "; got " + actualAsString.c_str() +
             "; expected " + expectedAsString.c_str());
         return false;
     }
 #ifdef VERBOSE_ASSERTIONS
     else {
-        logln(UnicodeString("Ok: ") + message + "; got " + vectorToString(actual).c_str());
+        logln((UnicodeString)"Ok: " + message + "; got " + vectorToString(actual).c_str());
     }
 #endif
     return true;
@@ -2263,13 +2174,13 @@ UBool IntlTest::assertNotEquals(const char* message,
                                 int32_t expectedNot,
                                 int32_t actual) {
     if (expectedNot == actual) {
-        errln(UnicodeString("FAIL: ") + message + "; got " + actual + "=0x" + toHex(actual) +
+        errln((UnicodeString)("FAIL: ") + message + "; got " + actual + "=0x" + toHex(actual) +
               "; expected != " + expectedNot);
         return false;
     }
 #ifdef VERBOSE_ASSERTIONS
     else {
-        logln(UnicodeString("Ok: ") + message + "; got " + actual + "=0x" + toHex(actual) +
+        logln((UnicodeString)("Ok: ") + message + "; got " + actual + "=0x" + toHex(actual) +
               " != " + expectedNot);
     }
 #endif
@@ -2288,19 +2199,19 @@ UBool IntlTest::assertEqualsNear(const char* message,
         return true;
     }
     if (std::isnan(delta) || std::isinf(delta)) {
-        errln(UnicodeString("FAIL: ") + message + "; nonsensical delta " + delta +
+        errln((UnicodeString)("FAIL: ") + message + "; nonsensical delta " + delta +
               " - delta may not be NaN or Inf. (Got " + actual + "; expected " + expected + ".)");
         return false;
     }
     double difference = std::abs(expected - actual);
     if (expected != actual && (difference > delta || std::isnan(difference))) {
-        errln(UnicodeString("FAIL: ") + message + "; got " + actual + "; expected " + expected +
+        errln((UnicodeString)("FAIL: ") + message + "; got " + actual + "; expected " + expected +
               "; acceptable delta " + delta);
         return false;
     }
 #ifdef VERBOSE_ASSERTIONS
     else {
-        logln(UnicodeString("Ok: ") + message + "; got " + actual);
+        logln((UnicodeString)("Ok: ") + message + "; got " + actual);
     }
 #endif
     return true;
@@ -2308,95 +2219,90 @@ UBool IntlTest::assertEqualsNear(const char* message,
 
 static char ASSERT_BUF[256];
 
-static const char* extractToAssertBuf(std::u16string_view message) {
+static const char* extractToAssertBuf(const UnicodeString& message) {
     UnicodeString buf;
     escape(message, buf);
-    buf.extract(0, 0x7FFFFFFF, ASSERT_BUF, sizeof(ASSERT_BUF) - 1, nullptr);
+    buf.extract(0, 0x7FFFFFFF, ASSERT_BUF, sizeof(ASSERT_BUF)-1, 0);
     ASSERT_BUF[sizeof(ASSERT_BUF)-1] = 0;
     return ASSERT_BUF;
 }
 
-UBool IntlTest::assertTrue(std::u16string_view message, UBool condition, UBool quiet, UBool possibleDataError) {
+UBool IntlTest::assertTrue(const UnicodeString& message, UBool condition, UBool quiet, UBool possibleDataError) {
     return assertTrue(extractToAssertBuf(message), condition, quiet, possibleDataError);
 }
 
-UBool IntlTest::assertFalse(std::u16string_view message, UBool condition, UBool quiet, UBool possibleDataError) {
+UBool IntlTest::assertFalse(const UnicodeString& message, UBool condition, UBool quiet, UBool possibleDataError) {
     return assertFalse(extractToAssertBuf(message), condition, quiet, possibleDataError);
 }
 
-UBool IntlTest::assertSuccess(std::u16string_view message, UErrorCode ec) {
+UBool IntlTest::assertSuccess(const UnicodeString& message, UErrorCode ec) {
     return assertSuccess(extractToAssertBuf(message), ec);
 }
 
-UBool IntlTest::assertEquals(std::u16string_view message,
-                             std::u16string_view expected,
-                             std::u16string_view actual,
+UBool IntlTest::assertEquals(const UnicodeString& message,
+                             const UnicodeString& expected,
+                             const UnicodeString& actual,
                              UBool possibleDataError) {
     return assertEquals(extractToAssertBuf(message), expected, actual, possibleDataError);
 }
 
-UBool IntlTest::assertEquals(std::u16string_view message,
+UBool IntlTest::assertEquals(const UnicodeString& message,
                              const char* expected,
                              const char* actual) {
     return assertEquals(extractToAssertBuf(message), expected, actual);
 }
-UBool IntlTest::assertEquals(std::u16string_view message,
+UBool IntlTest::assertEquals(const UnicodeString& message,
                              UBool expected,
                              UBool actual) {
     return assertEquals(extractToAssertBuf(message), expected, actual);
 }
-UBool IntlTest::assertEquals(std::u16string_view message,
+UBool IntlTest::assertEquals(const UnicodeString& message,
                              int32_t expected,
                              int32_t actual) {
     return assertEquals(extractToAssertBuf(message), expected, actual);
 }
-UBool IntlTest::assertEquals(std::u16string_view message,
+UBool IntlTest::assertEquals(const UnicodeString& message,
                              int64_t expected,
                              int64_t actual) {
     return assertEquals(extractToAssertBuf(message), expected, actual);
 }
-UBool IntlTest::assertEquals(std::u16string_view message,
+UBool IntlTest::assertEquals(const UnicodeString& message,
                              double expected,
                              double actual) {
     return assertEquals(extractToAssertBuf(message), expected, actual);
 }
-UBool IntlTest::assertEquals(std::u16string_view message,
+UBool IntlTest::assertEquals(const UnicodeString& message,
                              UErrorCode expected,
                              UErrorCode actual) {
     return assertEquals(extractToAssertBuf(message), expected, actual);
 }
-UBool IntlTest::assertEquals(std::u16string_view message,
+UBool IntlTest::assertEquals(const UnicodeString& message,
                              const UnicodeSet& expected,
                              const UnicodeSet& actual) {
     return assertEquals(extractToAssertBuf(message), expected, actual);
 }
-UBool IntlTest::assertEquals(std::u16string_view message,
+UBool IntlTest::assertEquals(const UnicodeString& message,
                              const std::vector<std::string>& expected,
                              const std::vector<std::string>& actual) {
     return assertEquals(extractToAssertBuf(message), expected, actual);
 }
-UBool IntlTest::assertNotEquals(std::u16string_view message,
+UBool IntlTest::assertNotEquals(const UnicodeString &message,
                                 int32_t expectedNot,
                                 int32_t actual) {
     return assertNotEquals(extractToAssertBuf(message), expectedNot, actual);
 }
-UBool IntlTest::assertEqualsNear(std::u16string_view message,
+UBool IntlTest::assertEqualsNear(const UnicodeString& message,
                                  double expected,
                                  double actual,
                                  double delta) {
     return assertEqualsNear(extractToAssertBuf(message), expected, actual, delta);
 }
 
-UBool IntlTest::assertEquals(std::u16string_view message, const char* expected,
-                             std::u16string_view actual, UBool possibleDataError) {
-    return assertEquals(message, UnicodeString(expected), actual, possibleDataError);
-}
-
 #if !UCONFIG_NO_FORMATTING
-UBool IntlTest::assertEqualFormattables(std::u16string_view message,
-                                        const Formattable& expected,
-                                        const Formattable& actual) {
-    return assertEqualFormattables(extractToAssertBuf(message), expected, actual);
+UBool IntlTest::assertEquals(const UnicodeString& message,
+                             const Formattable& expected,
+                             const Formattable& actual) {
+    return assertEquals(extractToAssertBuf(message), expected, actual);
 }
 #endif
 
@@ -2411,7 +2317,7 @@ const char* IntlTest::getProperty(const char* prop) {
     const char* val = nullptr;
     for (int32_t i = 0; i < numProps; i++) {
         int32_t plen = static_cast<int32_t>(uprv_strlen(prop));
-        if (static_cast<int32_t>(uprv_strlen(proplines[i])) > plen + 1
+        if ((int32_t)uprv_strlen(proplines[i]) > plen + 1
                 && proplines[i][plen] == '='
                 && uprv_strncmp(proplines[i], prop, plen) == 0) {
             val = &(proplines[i][plen+1]);
@@ -2456,7 +2362,7 @@ char16_t *IntlTest::ReadAndConvertFile(const char *fileName, int &ulen, const ch
     //  Open the file.
     //
     f = fopen(fileName, "rb");
-    if (f == nullptr) {
+    if (f == 0) {
         dataerrln("Error opening test data file %s\n", fileName);
         status = U_FILE_ACCESS_ERROR;
         return nullptr;
@@ -2531,7 +2437,7 @@ cleanUpAndReturn:
     if (U_FAILURE(status)) {
         errln("ucnv_toUChars: ICU Error \"%s\"\n", u_errorName(status));
         delete []retPtr;
-        retPtr = nullptr;
+        retPtr = 0;
         ulen   = 0;
     }
     return retPtr;

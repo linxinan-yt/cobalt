@@ -23,7 +23,14 @@ import {
   SliceTreeNode,
 } from '../../components/sql_utils/slice';
 import {asSliceSqlId, SliceSqlId} from '../../components/sql_utils/core_types';
-import {Grid, GridColumn, GridHeaderCell, GridCell} from '../../widgets/grid';
+import {
+  Grid,
+  GridBody,
+  GridDataCell,
+  GridHeader,
+  GridHeaderCell,
+  GridRow,
+} from '../../widgets/grid';
 import {TreeTable, TreeTableAttrs} from '../../components/widgets/treetable';
 import {LONG, NUM, STR} from '../../trace_processor/query_result';
 import {DetailsShell} from '../../widgets/details_shell';
@@ -50,7 +57,7 @@ function getPath(slice: SliceTreeNode): string[] {
   const result: string[] = [];
   let node: SliceTreeNode | undefined = slice;
   while (node.parent !== undefined) {
-    result.push(node.name ?? '[null]');
+    result.push(node.name);
     node = node.parent;
   }
   return result.reverse();
@@ -318,41 +325,55 @@ export class EventLatencySliceDetailsPanel implements TrackEventDetailsPanel {
     childWidgets.push(m(TextParagraph, {text: stageDetails.description}));
 
     if (this.relevantThreadTracks.length > 0) {
-      const columns: GridColumn[] = [
-        {key: 'relevantThread', header: m(GridHeaderCell, 'Relevant Thread')},
-        {key: 'description', header: m(GridHeaderCell, 'Description')},
-      ];
-
-      const rows = this.relevantThreadTracks.map((track, i) => {
-        let description = '';
-        if (i == 0 || track.thread != this.relevantThreadTracks[i - 1].thread) {
-          description = track.causeDescription;
-        }
-        return [
-          m(
-            GridCell,
-            getCauseLink(this.trace, track, this.tracksByTrackId, ts, dur),
-          ),
-          m(
-            GridCell,
-            description === ''
-              ? description
-              : m(TextParagraph, {text: description}),
-          ),
-        ];
-      });
-
       childWidgets.push(
-        m(Grid, {
-          columns,
-          rowData: rows,
-        }),
+        m(
+          Grid,
+          m(
+            GridHeader,
+            m(
+              GridRow,
+              m(GridHeaderCell, 'Relevant Thread'),
+              m(GridHeaderCell, 'Description'),
+            ),
+          ),
+          m(
+            GridBody,
+            this.relevantThreadTracks.map((track, i) => {
+              let description = '';
+              if (
+                i == 0 ||
+                track.thread != this.relevantThreadTracks[i - 1].thread
+              ) {
+                description = track.causeDescription;
+              }
+              return m(
+                GridRow,
+                m(
+                  GridDataCell,
+                  getCauseLink(
+                    this.trace,
+                    track,
+                    this.tracksByTrackId,
+                    ts,
+                    dur,
+                  ),
+                ),
+                m(
+                  GridDataCell,
+                  description === ''
+                    ? description
+                    : m(TextParagraph, {text: description}),
+                ),
+              );
+            }),
+          ),
+        ),
       );
     }
 
     return m(
       Section,
-      {title: this.isJankStage ? `Jank Cause: ${name}` : name ?? '[null]'},
+      {title: this.isJankStage ? `Jank Cause: ${name}` : name},
       childWidgets,
     );
   }
@@ -417,7 +438,7 @@ export class EventLatencySliceDetailsPanel implements TrackEventDetailsPanel {
       rows: [this.eventLatencyBreakdown],
       getChildren: (slice) => slice.children,
       columns: [
-        {name: 'Name', getData: (slice) => slice.name ?? '[null]'},
+        {name: 'Name', getData: (slice) => slice.name},
         {name: 'Duration', getData: (slice) => Duration.humanise(slice.dur)},
         {
           name: 'vs prev',

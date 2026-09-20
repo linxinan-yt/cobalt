@@ -21,7 +21,6 @@
 #include <utility>
 
 #include "perfetto/ext/base/flat_hash_map.h"
-#include "perfetto/ext/base/murmur_hash.h"
 #include "perfetto/trace_processor/trace_blob_view.h"
 #include "src/trace_processor/importers/proto/packet_analyzer.h"
 #include "src/trace_processor/types/trace_processor_context.h"
@@ -39,7 +38,7 @@ class ProtoContentAnalyzer : public PacketAnalyzer {
   using PathToSamplesMap =
       base::FlatHashMap<util::SizeProfileComputer::FieldPath,
                         Sample,
-                        base::MurmurHash<util::SizeProfileComputer::FieldPath>>;
+                        util::SizeProfileComputer::FieldPathHasher>;
   using SampleAnnotation = PacketAnalyzer::SampleAnnotation;
 
   struct SampleAnnotationHasher {
@@ -47,10 +46,10 @@ class ProtoContentAnalyzer : public PacketAnalyzer {
     using result_type = size_t;
 
     result_type operator()(const argument_type& p) const {
-      base::MurmurHashCombiner hash;
+      base::FnvHasher hash;
       for (auto v : p) {
-        hash.Combine(v.first);
-        hash.Combine(v.second);
+        hash.Update(v.first.raw_id());
+        hash.Update(v.second.raw_id());
       }
       return static_cast<size_t>(hash.digest());
     }

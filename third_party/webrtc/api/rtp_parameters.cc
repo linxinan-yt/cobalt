@@ -11,7 +11,6 @@
 
 #include <algorithm>
 #include <cstdint>
-#include <optional>
 #include <string>
 #include <tuple>
 #include <vector>
@@ -366,22 +365,4 @@ const std::vector<RtpExtension> RtpExtension::DeduplicateHeaderExtensions(
 
   return filtered;
 }
-
-bool RtpParameters::IsMixedCodec() const {
-  std::optional<std::optional<RtpCodec>> first_codec;
-  for (const RtpEncodingParameters& encoding : encodings) {
-    if (!encoding.active) {
-      continue;
-    }
-    if (!first_codec) {
-      first_codec = encoding.codec;
-      continue;
-    }
-    if (*first_codec != encoding.codec) {
-      return true;
-    }
-  }
-  return false;
-}
-
 }  // namespace webrtc

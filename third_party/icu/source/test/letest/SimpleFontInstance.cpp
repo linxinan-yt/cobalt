@@ -19,6 +19,10 @@
 #include "layout/LETypes.h"
 #include "layout/LEFontInstance.h"
 
+#ifndef USING_ICULEHB
+#include "CanonShaping.h"
+#endif
+
 #include "SimpleFontInstance.h"
 
 SimpleFontInstance::SimpleFontInstance(float pointSize, LEErrorCode &status)
@@ -28,8 +32,10 @@ SimpleFontInstance::SimpleFontInstance(float pointSize, LEErrorCode &status)
         return;
     }
 
-    fAscent = static_cast<le_int32>(yUnitsToPoints(2000.0));
-    fDescent = static_cast<le_int32>(yUnitsToPoints(600.0));
+    fAscent  = (le_int32) yUnitsToPoints(2000.0);
+    fDescent = (le_int32) yUnitsToPoints(600.0);
+
+    return;
 }
 
 SimpleFontInstance::~SimpleFontInstance()
@@ -37,9 +43,18 @@ SimpleFontInstance::~SimpleFontInstance()
     // nothing to do...
 }
 
-const void *SimpleFontInstance::getFontTable(LETag /*tableTag*/, size_t &length) const
+const void *SimpleFontInstance::getFontTable(LETag tableTag, size_t &length) const
 {
   length = -1; // unknown for this test.
+#ifndef USING_ICULEHB
+    if (tableTag == LE_GSUB_TABLE_TAG) {
+        return CanonShaping::glyphSubstitutionTable;
+    }
+    
+    if (tableTag == LE_GDEF_TABLE_TAG) {
+        return CanonShaping::glyphDefinitionTable;
+    }
+#endif
     return nullptr;
 }
 
@@ -95,7 +110,7 @@ LEGlyphID SimpleFontInstance::mapCharToGlyph(LEUnicode32 ch, const LECharMapper 
 
 LEGlyphID SimpleFontInstance::mapCharToGlyph(LEUnicode32 ch) const
 {
-    return static_cast<LEGlyphID>(ch);
+    return (LEGlyphID) ch;
 }
 
 float SimpleFontInstance::getXPixelsPerEm() const

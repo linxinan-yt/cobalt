@@ -15,6 +15,7 @@
 #include <cstdint>
 #include <functional>
 #include <memory>
+#include <optional>
 #include <string>
 #include <utility>
 #include <vector>
@@ -51,6 +52,7 @@
 #include "rtc_base/network.h"
 #include "rtc_base/network/received_packet.h"
 #include "rtc_base/network/sent_packet.h"
+#include "rtc_base/platform_thread_types.h"
 #include "rtc_base/socket.h"
 #include "rtc_base/socket_address.h"
 #include "rtc_base/ssl_certificate.h"
@@ -296,11 +298,8 @@ TurnPort::~TurnPort() {
 
   entries_.clear();
 
-  if (socket_) {
-    socket_->UnsubscribeSentPacket(this);
-    socket_->UnsubscribeConnect(this);
+  if (socket_)
     socket_->UnsubscribeCloseEvent(this);
-  }
 }
 
 void TurnPort::set_realm(absl::string_view realm) {
@@ -483,13 +482,9 @@ bool TurnPort::CreateTurnClientSocket() {
         });
   }
 
-  socket_->SubscribeReadyToSend(
-      this, [this](AsyncPacketSocket* socket) { OnReadyToSend(socket); });
+  socket_->SignalReadyToSend.connect(this, &TurnPort::OnReadyToSend);
 
-  socket_->SubscribeSentPacket(
-      this, [this](AsyncPacketSocket* socket, const SentPacketInfo& info) {
-        OnSentPacket(socket, info);
-      });
+  socket_->SignalSentPacket.connect(this, &TurnPort::OnSentPacket);
 
   // TCP port is ready to send stun requests after the socket is connected,
   // while UDP port is ready to do so once the socket is created.
@@ -757,17 +752,23 @@ bool TurnPort::HandleIncomingPacket(AsyncPacketSocket* socket,
         << ": Received TURN message while the TURN port is disconnected";
     return false;
   }
+
+  const char* data = reinterpret_cast<const char*>(packet.payload().data());
+  int size = packet.payload().size();
+  int64_t packet_time_us =
+      packet.arrival_time() ? packet.arrival_time()->us() : -1;
+
   // Check the message type, to see if is a Channel Data message.
   // The message will either be channel data, a TURN data indication, or
   // a response to a previous request.
   uint16_t msg_type = GetBE16(packet.payload().data());
   if (IsTurnChannelData(msg_type)) {
-    HandleChannelData(msg_type, packet);
+    HandleChannelData(msg_type, data, size, packet_time_us);
     return true;
   }
 
   if (msg_type == TURN_DATA_INDICATION) {
-    HandleDataIndication(packet);
+    HandleDataIndication(data, size, packet_time_us);
     return true;
   }
 
@@ -779,7 +780,7 @@ bool TurnPort::HandleIncomingPacket(AsyncPacketSocket* socket,
     return false;
   }
 
-  request_manager_.CheckResponse(packet.payload());
+  request_manager_.CheckResponse(data, size);
 
   return true;
 }
@@ -931,7 +932,7 @@ void TurnPort::OnAllocateError(int error_code, absl::string_view reason) {
   // port initialization. This way it will not be blocking other port
   // creation.
   thread()->PostTask(
-      SafeTask(task_safety_.flag(), [this] { NotifyPortError(this); }));
+      SafeTask(task_safety_.flag(), [this] { SignalPortError(this); }));
   std::string address = GetLocalAddress().HostAsSensitiveURIString();
   int port = GetLocalAddress().port();
   if (server_address_.proto == PROTO_TCP &&
@@ -1026,9 +1027,12 @@ void TurnPort::OnAllocateRequestTimeout() {
                   "TURN allocate request timed out.");
 }
 
-void TurnPort::HandleDataIndication(const ReceivedIpPacket& packet) {
+void TurnPort::HandleDataIndication(const char* data,
+                                    size_t size,
+                                    int64_t packet_time_us) {
   // Read in the message, and process according to RFC5766, Section 10.4.
-  ByteBufferReader buf(packet.payload());
+  ByteBufferReader buf(
+      MakeArrayView(reinterpret_cast<const uint8_t*>(data), size));
   TurnMessage msg;
   if (!msg.Read(&buf)) {
     RTC_LOG(LS_WARNING) << ToString()
@@ -1063,15 +1067,16 @@ void TurnPort::HandleDataIndication(const ReceivedIpPacket& packet) {
                            "peer address, addr: "
                         << ext_addr.ToSensitiveString();
   }
-  // Copy ECN and arrival time from the original packet.
-  ReceivedIpPacket unwrapped_packet =
-      ReceivedIpPacket(data_attr->array_view(), ext_addr, packet.arrival_time(),
-                       packet.ecn(), packet.decryption_info());
-  DispatchPacket(unwrapped_packet, PROTO_UDP);
+  // TODO(bugs.webrtc.org/14870): rebuild DispatchPacket to take an
+  // ArrayView<uint8_t>
+  DispatchPacket(reinterpret_cast<const char*>(data_attr->array_view().data()),
+                 data_attr->length(), ext_addr, PROTO_UDP, packet_time_us);
 }
 
 void TurnPort::HandleChannelData(uint16_t channel_id,
-                                 const ReceivedIpPacket& packet) {
+                                 const char* data,
+                                 size_t size,
+                                 int64_t packet_time_us) {
   // Read the message, and process according to RFC5766, Section 11.6.
   //    0                   1                   2                   3
   //    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -1087,8 +1092,8 @@ void TurnPort::HandleChannelData(uint16_t channel_id,
   //   +-------------------------------+
 
   // Extract header fields from the message.
-  uint16_t len = GetBE16(packet.payload().data() + 2);
-  if (len > packet.payload().size() - TURN_CHANNEL_HEADER_SIZE) {
+  uint16_t len = GetBE16(data + 2);
+  if (len > size - TURN_CHANNEL_HEADER_SIZE) {
     RTC_LOG(LS_WARNING) << ToString()
                         << ": Received TURN channel data message with "
                            "incorrect length, len: "
@@ -1105,15 +1110,19 @@ void TurnPort::HandleChannelData(uint16_t channel_id,
                         << channel_id;
     return;
   }
-  ReceivedIpPacket unwrapped_packet = ReceivedIpPacket(
-      packet.payload().subview(TURN_CHANNEL_HEADER_SIZE, len), entry->address(),
-      packet.arrival_time(), packet.ecn(), packet.decryption_info());
-  DispatchPacket(unwrapped_packet, PROTO_UDP);
+
+  DispatchPacket(data + TURN_CHANNEL_HEADER_SIZE, len, entry->address(),
+                 PROTO_UDP, packet_time_us);
 }
 
-void TurnPort::DispatchPacket(const ReceivedIpPacket& packet,
-                              ProtocolType proto) {
-  if (Connection* conn = GetConnection(packet.source_address())) {
+void TurnPort::DispatchPacket(const char* data,
+                              size_t size,
+                              const SocketAddress& remote_addr,
+                              ProtocolType proto,
+                              int64_t packet_time_us) {
+  ReceivedIpPacket packet = ReceivedIpPacket::CreateFromLegacy(
+      data, size, packet_time_us, remote_addr);
+  if (Connection* conn = GetConnection(remote_addr)) {
     conn->OnReadPacket(packet);
   } else {
     Port::OnReadPacket(packet, proto);

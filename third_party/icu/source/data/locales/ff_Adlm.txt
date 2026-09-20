@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 ff_Adlm{
     %%Parent{"root"}
     AuxExemplarCharacters{"[𞤾 𞤿 𞥀 𞥁 𞥂 𞥃]"}
@@ -2076,7 +2076,7 @@ ff_Adlm{
                     "𞤑𞤫𞤲𞥆𞤭𞤲 (𞥑𞥒𞥐𞥑-𞥑𞥒𞥐𞥔)",
                     "𞤘𞤫𞤲𞤳𞤭𞤴𞤵𞥅 (𞥑𞥒𞥐𞥔-𞥑𞥒𞥐𞥖)",
                     "𞤑𞤫𞤲𞥇𞤫𞤴 (𞥑𞥒𞥐𞥖-𞥑𞥒𞥐𞥗)",
-                    "𞤔𞤮𞥅𞤺𞤫𞤲 (𞥑𞥒𞥐𞥗-𞥑𞥒𞥑𞥑)",
+                    "𞤔𞤮𞥅𞤺𞤫𞤲 (𞥙𞥗𞥖-𞥙𞥗𞥘)",
                     "𞤑𞤫𞤲𞤪𞤭𞤴𞤢𞤳𞤵 (𞥑𞥒𞥑𞥑-𞥑𞥒𞥑𞥓)",
                     "𞤑𞤫𞤥𞤨𞤮𞥅 (𞥑𞥒𞥑𞥓-𞥑𞥒𞥑𞥙)",
                     "𞤔𞤮𞥅𞤳𞤭𞤴𞤵𞥅 (𞥑𞥒𞥑𞥙-𞥑𞥒𞥒𞥒)",

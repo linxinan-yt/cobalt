@@ -181,14 +181,13 @@ base::Status RecordParser::InternSample(Sample sample) {
     sample.callchain.push_back(Sample::Frame{sample.cpu_mode, *sample.ip});
   }
   std::optional<CallsiteId> callsite_id = InternCallchain(
-      upid, sample.callchain, sample.perf_invocation->needs_pc_adjustment());
+      upid, sample.callchain, sample.perf_session->needs_pc_adjustment());
 
-  auto session_id = sample.attr->perf_session_id();
   context_->storage->mutable_perf_sample_table()->Insert(
       {sample.trace_ts, utid, sample.cpu,
        context_->storage->InternString(
            ProfilePacketUtils::StringifyCpuMode(sample.cpu_mode)),
-       callsite_id, std::nullopt, session_id});
+       callsite_id, std::nullopt, sample.perf_session->perf_session_id()});
 
   return UpdateCounters(sample);
 }
@@ -255,7 +254,7 @@ base::Status RecordParser::ParseComm(Record record) {
 
   context_->process_tracker->UpdateThread(tid, pid);
   auto utid = context_->process_tracker->GetOrCreateThread(tid);
-  context_->process_tracker->UpdateThreadNameAndMaybeProcessName(
+  context_->process_tracker->UpdateThreadName(
       utid, context_->storage->InternString(base::StringView(comm)),
       ThreadNamePriority::kFtrace);
 
@@ -337,7 +336,7 @@ base::Status RecordParser::UpdateCounters(const Sample& sample) {
 base::Status RecordParser::UpdateCountersInReadGroups(const Sample& sample) {
   for (const auto& entry : sample.read_groups) {
     RefPtr<PerfEventAttr> attr =
-        sample.perf_invocation->FindAttrForEventId(*entry.event_id);
+        sample.perf_session->FindAttrForEventId(*entry.event_id);
     if (PERFETTO_UNLIKELY(!attr)) {
       return base::ErrStatus("No perf_event_attr for id %" PRIu64,
                              *entry.event_id);

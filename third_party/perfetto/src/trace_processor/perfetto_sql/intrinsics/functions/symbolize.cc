@@ -16,13 +16,13 @@
 
 #include "src/trace_processor/perfetto_sql/intrinsics/functions/symbolize.h"
 
+#include <sqlite3.h>
 #include <cstdint>
 #include <memory>
 #include <string>
 #include <utility>
 #include <vector>
 
-#include "perfetto/base/logging.h"
 #include "perfetto/base/status.h"
 #include "src/profiling/symbolizer/llvm_symbolizer.h"
 #include "src/profiling/symbolizer/llvm_symbolizer_c_api.h"
@@ -35,6 +35,8 @@
 #include "src/trace_processor/sqlite/bindings/sqlite_result.h"
 #include "src/trace_processor/sqlite/bindings/sqlite_value.h"
 #include "src/trace_processor/sqlite/sqlite_utils.h"
+#include "src/trace_processor/storage/trace_storage.h"
+#include "src/trace_processor/types/trace_processor_context.h"
 
 namespace perfetto::trace_processor::perfetto_sql {
 namespace {
@@ -61,7 +63,7 @@ struct Symbolize : public sqlite::Function<Symbolize> {
   static void Step(sqlite3_context* ctx, int argc, sqlite3_value** argv) {
     PERFETTO_DCHECK(argc == kArgCount);
     Symbolize::UserData* user_data = GetUserData(ctx);
-    auto* input = sqlite::value::Pointer<SymbolizationInput>(
+    SymbolizationInput* input = sqlite::value::Pointer<SymbolizationInput>(
         argv[0], SymbolizationInput::kName);
     if (!input) {
       return;
@@ -114,7 +116,7 @@ struct Symbolize : public sqlite::Function<Symbolize> {
 
 base::Status RegisterSymbolizeFunction(PerfettoSqlEngine& engine,
                                        StringPool* pool) {
-  return engine.RegisterFunction<Symbolize>(
+  return engine.RegisterSqliteFunction<Symbolize>(
       std::make_unique<Symbolize::UserData>(
           Symbolize::UserData{&engine, pool}));
 }

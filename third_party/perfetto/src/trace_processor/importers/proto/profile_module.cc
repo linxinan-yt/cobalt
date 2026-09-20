@@ -131,9 +131,9 @@ ModuleResult ProfileModule::TokenizeStreamingProfilePacket(
   // the current timestamp of the packet sequence.
   auto packet_ts =
       sequence_state->IncrementAndGetTrackEventTimeNs(/*delta_ns=*/0);
-  std::optional<int64_t> trace_ts = context_->clock_tracker->ToTraceTime(
+  base::StatusOr<int64_t> trace_ts = context_->clock_tracker->ToTraceTime(
       protos::pbzero::BUILTIN_CLOCK_MONOTONIC, packet_ts);
-  if (trace_ts)
+  if (trace_ts.ok())
     packet_ts = *trace_ts;
 
   // Increment the sequence's timestamp by all deltas.
@@ -338,11 +338,13 @@ void ProfileModule::ParseProfilePacket(
   for (auto it = packet.process_dumps(); it; ++it) {
     protos::pbzero::ProfilePacket::ProcessHeapSamples::Decoder entry(*it);
 
-    std::optional<int64_t> maybe_timestamp =
+    base::StatusOr<int64_t> maybe_timestamp =
         context_->clock_tracker->ToTraceTime(
             protos::pbzero::BUILTIN_CLOCK_MONOTONIC_COARSE,
             static_cast<int64_t>(entry.timestamp()));
-    if (!maybe_timestamp)
+
+    // ToTraceTime() increments the clock_sync_failure error stat in this case.
+    if (!maybe_timestamp.ok())
       continue;
 
     int64_t timestamp = *maybe_timestamp;

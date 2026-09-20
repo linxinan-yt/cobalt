@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 ti{
     Countries{
         001{"ዓለም"}
@@ -147,7 +147,6 @@ ti{
         IL{"እስራኤል"}
         IM{"ኣይል ኦፍ ማን"}
         IN{"ህንዲ"}
-        IO{"ብሪጣንያዊ ህንዳዊ ውቅያኖስ ግዝኣት"}
         IQ{"ዒራቕ"}
         IR{"ኢራን"}
         IS{"ኣይስላንድ"}
@@ -258,7 +257,7 @@ ti{
         SZ{"ኤስዋቲኒ"}
         TA{"ትሪስታን ዳ ኩንያ"}
         TC{"ደሴታት ቱርካትን ካይኮስን"}
-        TD{"ቻድ"}
+        TD{"ጫድ"}
         TF{"ፈረንሳዊ ደቡባዊ ግዝኣታት"}
         TG{"ቶጎ"}
         TH{"ታይላንድ"}
@@ -300,6 +299,7 @@ ti{
         ZZ{"ዘይተፈልጠ ዞባ"}
     }
     Countries%short{
+        GB{"ዩ.ኪ."}
         US{"ሕ.መ."}
     }
     Countries%variant{

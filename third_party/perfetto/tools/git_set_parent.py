@@ -8,12 +8,7 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(os.path.join(ROOT_DIR))
 
 #pylint: disable=wrong-import-position
-from python.tools.git_utils import (
-    run_git_command,
-    get_current_branch,
-    get_all_branches,
-    MAINLINE_BRANCHES,
-)
+from python.tools.git_utils import run_git_command, get_current_branch, get_all_branches
 #pylint: enable=wrong-import-position
 
 
@@ -37,7 +32,7 @@ def main():
   parent_branch = args.parent_branch
 
   all_branches = get_all_branches()
-  if parent_branch not in all_branches and parent_branch not in MAINLINE_BRANCHES:
+  if parent_branch not in all_branches:
     print(f"Error: Branch '{parent_branch}' does not exist.", file=sys.stderr)
     sys.exit(1)
 

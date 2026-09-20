@@ -27,11 +27,10 @@
 
 #include "perfetto/base/build_config.h"
 #include "perfetto/ext/base/event_fd.h"
-#include "perfetto/ext/base/lock_free_task_runner.h"
 #include "perfetto/ext/base/pipe.h"
 #include "perfetto/ext/base/scoped_file.h"
-#include "perfetto/ext/base/scoped_mmap.h"
 #include "perfetto/ext/base/thread_task_runner.h"
+#include "perfetto/ext/base/unix_task_runner.h"
 #include "perfetto/ext/base/uuid.h"
 #include "perfetto/ext/base/weak_ptr.h"
 #include "perfetto/ext/tracing/core/basic_types.h"
@@ -42,6 +41,10 @@
 #include "src/perfetto_cmd/packet_writer.h"
 
 namespace perfetto {
+
+// Directory for local state and temporary files. This is automatically
+// created by the system by setting setprop persist.traced.enable=1.
+extern const char* kStateDir;
 
 class PerfettoCmd : public Consumer {
  public:
@@ -72,8 +75,6 @@ class PerfettoCmd : public Consumer {
   void SignalCtrlC() { ctrl_c_evt_.Notify(); }
 
  private:
-  friend class PerfettoCmdlineUnitTest;
-
   struct SnapshotTriggerInfo;
 
   enum CloneThreadMode { kSingleExtraThread, kNewThreadPerRequest };
@@ -137,8 +138,6 @@ class PerfettoCmd : public Consumer {
 
 #if PERFETTO_BUILDFLAG(PERFETTO_OS_ANDROID)
   static base::ScopedFile CreateUnlinkedTmpFile();
-  static std::optional<TraceConfig> ParseTraceConfigFromMmapedTrace(
-      base::ScopedMmap mmapped_trace);
   void SaveTraceIntoIncidentOrCrash();
   void SaveOutputToIncidentTraceOrCrash();
   void ReportTraceToAndroidFrameworkOrCrash();
@@ -148,7 +147,7 @@ class PerfettoCmd : public Consumer {
   void LogTriggerEvents(PerfettoTriggerAtom atom,
                         const std::vector<std::string>& trigger_names);
 
-  base::MaybeLockFreeTaskRunner task_runner_;
+  base::UnixTaskRunner task_runner_;
 
   std::unique_ptr<perfetto::TracingService::ConsumerEndpoint>
       consumer_endpoint_;
@@ -184,7 +183,6 @@ class PerfettoCmd : public Consumer {
   std::string clone_name_;
   bool clone_for_bugreport_ = false;
   std::function<void()> on_session_cloned_;
-  bool cloned_session_was_write_into_file_ = false;
 
   // How long we expect to trace for or 0 if the trace is indefinite.
   uint32_t expected_duration_ms_ = 0;

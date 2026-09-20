@@ -64,15 +64,6 @@ rtc_library("callback_list") {
   ]
 }
 
-rtc_library("callback_list_with_locks") {
-  sources = [ "callback_list_with_locks.h" ]
-  deps = [
-    ":callback_list",
-    ":macromagic",
-    "synchronization:mutex",
-  ]
-}
-
 rtc_source_set("buffer") {
   visibility = [ "*" ]
   sources = [ "buffer.h" ]
@@ -319,8 +310,7 @@ rtc_library("rate_tracker") {
   ]
   deps = [
     ":checks",
-    "../api/units:time_delta",
-    "../api/units:timestamp",
+    ":timeutils",
   ]
 }
 
@@ -408,7 +398,6 @@ rtc_library("platform_thread") {
     ":rtc_event",
     ":timeutils",
     "../api:sequence_checker",
-    "//third_party/abseil-cpp/absl/functional:any_invocable",
     "//third_party/abseil-cpp/absl/strings:string_view",
   ]
 }
@@ -1077,8 +1066,6 @@ rtc_library("socket") {
   ]
   deps = [
     ":buffer",
-    ":callback_list",
-    ":callback_list_with_locks",
     ":checks",
     ":ip_address",
     ":net_helpers",
@@ -1728,7 +1715,6 @@ rtc_library("ssl_adapter") {
     "//third_party/abseil-cpp/absl/functional:any_invocable",
     "//third_party/abseil-cpp/absl/memory",
     "//third_party/abseil-cpp/absl/strings",
-    "//third_party/abseil-cpp/absl/strings:str_format",
   ]
 
   # If we are building the SSL library ourselves, we know it's BoringSSL.
@@ -1772,7 +1758,6 @@ rtc_library("testclient") {
     ":socket_address",
     ":threading",
     ":timeutils",
-    "../api/transport:ecn_marking",
     "../api/units:time_delta",
     "../api/units:timestamp",
     "../test:wait_until",
@@ -1862,7 +1847,6 @@ rtc_library("rtc_base_tests_utils") {
     "../api/environment",
     "../api/task_queue",
     "../api/task_queue:pending_task_safety_flag",
-    "../api/transport:ecn_marking",
     "../api/units:time_delta",
     "../api/units:timestamp",
     "memory:always_valid_pointer",
@@ -2071,7 +2055,6 @@ if (rtc_include_tests) {
         "../system_wrappers",
         "../test:create_test_environment",
         "../test:fileutils",
-        "../test:near_matcher",
         "../test:test_main",
         "../test:test_support",
         "../test:wait_until",
@@ -2191,7 +2174,6 @@ if (rtc_include_tests) {
         "../api:scoped_refptr",
         "../api/environment",
         "../api/numerics",
-        "../api/transport:ecn_marking",
         "../api/units:data_rate",
         "../api/units:data_size",
         "../api/units:frequency",

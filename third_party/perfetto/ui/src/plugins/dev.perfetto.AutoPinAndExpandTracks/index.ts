@@ -20,7 +20,6 @@ import {Track} from '../../public/track';
 import {z} from 'zod';
 import {assertIsInstance} from '../../base/logging';
 import {RouteArg} from '../../public/route_schema';
-import {arrayEquals} from '../../base/array_utils';
 
 const PLUGIN_ID = 'dev.perfetto.AutoPinAndExpandTracks';
 const SAVED_TRACKS_KEY = `${PLUGIN_ID}#savedPerfettoTracks`;
@@ -192,7 +191,7 @@ export default class AutoPinAndExpandTracks implements PerfettoPlugin {
   }
 
   private processUrlParameters(): void {
-    const localTracks = this.ctx.defaultWorkspace.flatTracks;
+    const localTracks = this.ctx.workspace.flatTracks;
     if (AutoPinAndExpandTracks.expandTracks.length > 0) {
       const expandRegexes = AutoPinAndExpandTracks.expandTracks.map(
         (prefix) => new RegExp('^' + prefix),
@@ -216,7 +215,7 @@ export default class AutoPinAndExpandTracks implements PerfettoPlugin {
   }
 
   private restoreTracks(tracks: ReadonlyArray<SavedPinnedTrack>) {
-    const localTracks = this.ctx.currentWorkspace.flatTracks.map((track) => ({
+    const localTracks = this.ctx.workspace.flatTracks.map((track) => ({
       savedTrack: this.toSavedTrack(track),
       track: track,
     }));
@@ -246,7 +245,7 @@ export default class AutoPinAndExpandTracks implements PerfettoPlugin {
 
   private getCurrentPinnedTracks() {
     const res = [];
-    for (const track of this.ctx.currentWorkspace.pinnedTracks) {
+    for (const track of this.ctx.workspace.pinnedTracks) {
       res.push(this.toSavedTrack(track));
     }
     return res;
@@ -312,7 +311,7 @@ export default class AutoPinAndExpandTracks implements PerfettoPlugin {
       track1.trackName === track2.trackName &&
       track1.groupName === track2.groupName &&
       track1.pluginId === track2.pluginId &&
-      compareTrackKinds(track1.kinds, track2.kinds) &&
+      track1.kind === track2.kind &&
       track1.isMainThread === track2.isMainThread
     ) {
       return Number.MAX_SAFE_INTEGER;
@@ -344,7 +343,7 @@ export default class AutoPinAndExpandTracks implements PerfettoPlugin {
       similarityScore += 30;
     }
 
-    if (compareTrackKinds(track1.kinds, track2.kinds)) {
+    if (track1.kind === track2.kind) {
       similarityScore += 20;
     }
 
@@ -369,24 +368,10 @@ export default class AutoPinAndExpandTracks implements PerfettoPlugin {
       groupName: groupName(trackNode),
       trackName: trackNode.name,
       pluginId: track?.pluginId,
-      kinds: track?.tags?.kinds,
+      kind: track?.tags?.kind,
       isMainThread: track?.chips?.includes('main thread') || false,
     };
   }
-}
-
-function compareTrackKinds(
-  a: ReadonlyArray<string> | undefined,
-  b: ReadonlyArray<string> | undefined,
-) {
-  // Both undefined - equal
-  if (a === undefined && b === undefined) return true;
-
-  // Only one undefined - not equal
-  if (a === undefined || b === undefined) return false;
-
-  // Both defined - compare array element-wise
-  return arrayEquals(a, b);
 }
 
 function getSavedState(): SavedState | undefined {
@@ -436,7 +421,7 @@ const SAVED_PINNED_TRACK_SCHEMA = z
     // Plugin used to create this track
     pluginId: z.string().optional(),
     // Kind of the track
-    kinds: z.array(z.string()).readonly().optional(),
+    kind: z.string().optional(),
     // If it's a thread track, it should be true in case it's a main thread track
     isMainThread: z.boolean(),
   })

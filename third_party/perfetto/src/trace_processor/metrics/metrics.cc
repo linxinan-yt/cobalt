@@ -31,6 +31,8 @@
 #include <utility>
 #include <vector>
 
+#include <sqlite3.h>
+
 #include "perfetto/base/logging.h"
 #include "perfetto/base/status.h"
 #include "perfetto/ext/base/status_macros.h"
@@ -42,9 +44,6 @@
 #include "perfetto/protozero/scattered_heap_buffer.h"
 #include "perfetto/trace_processor/basic_types.h"
 #include "src/trace_processor/perfetto_sql/engine/perfetto_sql_engine.h"
-#include "src/trace_processor/sqlite/bindings/sqlite_result.h"
-#include "src/trace_processor/sqlite/bindings/sqlite_type.h"
-#include "src/trace_processor/sqlite/bindings/sqlite_value.h"
 #include "src/trace_processor/sqlite/sql_source.h"
 #include "src/trace_processor/sqlite/sqlite_utils.h"
 #include "src/trace_processor/tp_metatrace.h"
@@ -54,7 +53,9 @@
 #include "protos/perfetto/trace_processor/metatrace_categories.pbzero.h"
 #include "protos/perfetto/trace_processor/metrics_impl.pbzero.h"
 
-namespace perfetto::trace_processor::metrics {
+namespace perfetto {
+namespace trace_processor {
+namespace metrics {
 
 namespace {
 
@@ -496,25 +497,25 @@ int TemplateReplace(
   return 0;
 }
 
-void NullIfEmpty::Step(sqlite3_context* ctx, int argc, sqlite3_value** argv) {
-  PERFETTO_DCHECK(argc == 1);
+base::Status NullIfEmpty::Run(void*,
+                              size_t argc,
+                              sqlite3_value** argv,
+                              SqlValue& out,
+                              Destructors&) {
+  // SQLite should enforce this for us.
+  PERFETTO_CHECK(argc == 1);
 
-  switch (sqlite::value::Type(argv[0])) {
-    case sqlite::Type::kNull:
-      return sqlite::utils::ReturnNullFromFunction(ctx);
-    case sqlite::Type::kBlob: {
-      if (sqlite::value::Bytes(argv[0]) == 0) {
-        return sqlite::utils::ReturnNullFromFunction(ctx);
-      }
-      return sqlite::result::TransientBytes(ctx, sqlite::value::Blob(argv[0]),
-                                            sqlite::value::Bytes(argv[0]));
-    }
-    case sqlite::Type::kInteger:
-    case sqlite::Type::kFloat:
-    case sqlite::Type::kText:
-      return sqlite::utils::SetError(
-          ctx, "NULL_IF_EMPTY: should only be called with bytes argument");
+  if (sqlite3_value_type(argv[0]) != SQLITE_BLOB) {
+    return base::ErrStatus(
+        "NULL_IF_EMPTY: should only be called with bytes argument");
   }
+
+  if (sqlite3_value_bytes(argv[0]) == 0) {
+    return base::OkStatus();
+  }
+
+  out = sqlite::utils::SqliteValueToSqlValue(argv[0]);
+  return base::OkStatus();
 }
 
 void RepeatedField::Step(sqlite3_context* ctx, int argc, sqlite3_value** argv) {
@@ -566,8 +567,11 @@ void RepeatedField::Final(sqlite3_context* ctx) {
     return;
   }
 
-  return sqlite::result::TransientBytes(ctx, raw.data(),
-                                        static_cast<int>(raw.size()));
+  std::unique_ptr<uint8_t[], base::FreeDeleter> data(
+      static_cast<uint8_t*>(malloc(raw.size())));
+  memcpy(data.get(), raw.data(), raw.size());
+  return sqlite::result::RawBytes(ctx, data.release(),
+                                  static_cast<int>(raw.size()), free);
 }
 
 // SQLite function implementation used to build a proto directly in SQL. The
@@ -578,31 +582,27 @@ void RepeatedField::Final(sqlite3_context* ctx) {
 // as byte blobs (as they were built recursively using this function).
 // The return value is the built proto or an error about why the proto could
 // not be built.
-void BuildProto::Step(sqlite3_context* ctx, int argc, sqlite3_value** argv) {
-  PERFETTO_DCHECK(argc >= 0);
-
-  auto* user_ctx = GetUserData(ctx);
-  const ProtoDescriptor& desc =
-      user_ctx->pool->descriptors()[user_ctx->descriptor_idx];
-
+base::Status BuildProto::Run(BuildProto::Context* ctx,
+                             size_t argc,
+                             sqlite3_value** argv,
+                             SqlValue& out,
+                             Destructors& destructors) {
+  const ProtoDescriptor& desc = ctx->pool->descriptors()[ctx->descriptor_idx];
   if (argc % 2 != 0) {
-    return sqlite::utils::SetError(
-        ctx, base::ErrStatus("Invalid number of args to %s BuildProto (got %d)",
-                             desc.full_name().c_str(), argc));
+    return base::ErrStatus("Invalid number of args to %s BuildProto (got %zu)",
+                           desc.full_name().c_str(), argc);
   }
 
-  ProtoBuilder builder(user_ctx->pool, &desc);
-  for (int i = 0; i < argc; i += 2) {
-    if (sqlite::value::Type(argv[i]) != sqlite::Type::kText) {
-      return sqlite::utils::SetError(ctx, "BuildProto: Invalid args");
+  ProtoBuilder builder(ctx->pool, &desc);
+  for (size_t i = 0; i < argc; i += 2) {
+    if (sqlite3_value_type(argv[i]) != SQLITE_TEXT) {
+      return base::ErrStatus("BuildProto: Invalid args");
     }
 
-    const char* key = sqlite::value::Text(argv[i]);
+    const char* key =
+        reinterpret_cast<const char*>(sqlite3_value_text(argv[i]));
     SqlValue value = sqlite::utils::SqliteValueToSqlValue(argv[i + 1]);
-    auto status = builder.AppendSqlValue(key, value);
-    if (!status.ok()) {
-      return sqlite::utils::SetError(ctx, status);
-    }
+    RETURN_IF_ERROR(builder.AppendSqlValue(key, value));
   }
 
   // Even if the message is empty, we don't return null here as we want the
@@ -611,120 +611,114 @@ void BuildProto::Step(sqlite3_context* ctx, int argc, sqlite3_value** argv) {
   if (raw.empty()) {
     // Passing nullptr to SQLite feels dangerous so just pass an empty string
     // and zero as the size so we don't deref nullptr accidentally somewhere.
-    return sqlite::result::StaticBytes(ctx, "", 0);
+    destructors.bytes_destructor = sqlite::utils::kSqliteStatic;
+    out = SqlValue::Bytes("", 0);
+    return base::OkStatus();
   }
 
-  return sqlite::result::TransientBytes(ctx, raw.data(),
-                                        static_cast<int>(raw.size()));
+  std::unique_ptr<uint8_t[], base::FreeDeleter> data(
+      static_cast<uint8_t*>(malloc(raw.size())));
+  memcpy(data.get(), raw.data(), raw.size());
+
+  destructors.bytes_destructor = free;
+  out = SqlValue::Bytes(data.release(), raw.size());
+  return base::OkStatus();
 }
 
-void RunMetric::Step(sqlite3_context* ctx, int argc, sqlite3_value** argv) {
-  PERFETTO_DCHECK(argc >= 0);
-
-  if (argc == 0 || sqlite::value::Type(argv[0]) != sqlite::Type::kText) {
-    return sqlite::utils::SetError(ctx, "RUN_METRIC: Invalid arguments");
+base::Status RunMetric::Run(RunMetric::Context* ctx,
+                            size_t argc,
+                            sqlite3_value** argv,
+                            SqlValue&,
+                            Destructors&) {
+  if (argc == 0 || sqlite3_value_type(argv[0]) != SQLITE_TEXT) {
+    return base::ErrStatus("RUN_METRIC: Invalid arguments");
   }
 
-  auto* user_ctx = GetUserData(ctx);
-  const char* path = sqlite::value::Text(argv[0]);
+  const char* path = reinterpret_cast<const char*>(sqlite3_value_text(argv[0]));
   auto metric_it = std::find_if(
-      user_ctx->metrics->begin(), user_ctx->metrics->end(),
+      ctx->metrics->begin(), ctx->metrics->end(),
       [path](const SqlMetricFile& metric) { return metric.path == path; });
-  if (metric_it == user_ctx->metrics->end()) {
-    return sqlite::utils::SetError(
-        ctx, base::ErrStatus("RUN_METRIC: Unknown filename provided %s", path));
+  if (metric_it == ctx->metrics->end()) {
+    return base::ErrStatus("RUN_METRIC: Unknown filename provided %s", path);
   }
 
   std::unordered_map<std::string, std::string> substitutions;
-  for (int i = 1; i < argc; i += 2) {
-    if (sqlite::value::Type(argv[i]) != sqlite::Type::kText) {
-      return sqlite::utils::SetError(ctx,
-                                     "RUN_METRIC: all keys must be strings");
+  for (size_t i = 1; i < argc; i += 2) {
+    if (sqlite3_value_type(argv[i]) != SQLITE_TEXT) {
+      return base::ErrStatus("RUN_METRIC: all keys must be strings");
     }
 
-    std::string key_str = sqlite::value::Text(argv[i]);
-    if (i + 1 >= argc) {
-      return sqlite::utils::SetError(ctx, "RUN_METRIC: missing value for key");
-    }
-
-    std::optional<std::string> value_str;
-    switch (sqlite::value::Type(argv[i + 1])) {
-      case sqlite::Type::kText:
-        value_str = sqlite::value::Text(argv[i + 1]);
-        break;
-      case sqlite::Type::kInteger:
-        value_str = std::to_string(sqlite::value::Int64(argv[i + 1]));
-        break;
-      case sqlite::Type::kFloat:
-        value_str = std::to_string(sqlite::value::Double(argv[i + 1]));
-        break;
-      case sqlite::Type::kNull:
-      case sqlite::Type::kBlob:
-        value_str = std::nullopt;
-        break;
-    }
+    std::optional<std::string> key_str = sqlite::utils::SqlValueToString(
+        sqlite::utils::SqliteValueToSqlValue(argv[i]));
+    std::optional<std::string> value_str = sqlite::utils::SqlValueToString(
+        sqlite::utils::SqliteValueToSqlValue(argv[i + 1]));
 
     if (!value_str) {
-      return sqlite::utils::SetError(
-          ctx, "RUN_METRIC: all values must be convertible to strings");
+      return base::ErrStatus(
+          "RUN_METRIC: all values must be convertible to strings");
     }
-    substitutions[key_str] = *value_str;
+    substitutions[*key_str] = *value_str;
   }
 
   std::string subbed_sql;
   int ret = TemplateReplace(metric_it->sql, substitutions, &subbed_sql);
   if (ret) {
-    return sqlite::utils::SetError(
-        ctx,
-        base::ErrStatus("RUN_METRIC: Error when performing substitutions: %s",
-                        metric_it->sql.c_str()));
+    return base::ErrStatus(
+        "RUN_METRIC: Error when performing substitutions: %s",
+        metric_it->sql.c_str());
   }
 
-  auto res =
-      user_ctx->engine->Execute(SqlSource::FromMetricFile(subbed_sql, path));
-  if (!res.status().ok()) {
-    return sqlite::utils::SetError(ctx, res.status());
-  }
-
-  // RUN_METRIC returns no value (void function)
-  return sqlite::utils::ReturnVoidFromFunction(ctx);
+  auto res = ctx->engine->Execute(SqlSource::FromMetricFile(subbed_sql, path));
+  return res.status();
 }
 
-void UnwrapMetricProto::Step(sqlite3_context* ctx,
-                             int argc,
-                             sqlite3_value** argv) {
-  PERFETTO_DCHECK(argc == 2);
-
-  if (sqlite::value::Type(argv[0]) != sqlite::Type::kBlob) {
-    return sqlite::utils::SetError(ctx,
-                                   "UNWRAP_METRIC_PROTO: proto is not a blob");
+base::Status UnwrapMetricProto::Run(Context*,
+                                    size_t argc,
+                                    sqlite3_value** argv,
+                                    SqlValue& out,
+                                    Destructors& destructors) {
+  if (argc != 2) {
+    return base::ErrStatus(
+        "UNWRAP_METRIC_PROTO: Expected exactly proto and message type as "
+        "arguments");
   }
 
-  if (sqlite::value::Type(argv[1]) != sqlite::Type::kText) {
-    return sqlite::utils::SetError(
-        ctx, "UNWRAP_METRIC_PROTO: message type is not string");
+  SqlValue proto = sqlite::utils::SqliteValueToSqlValue(argv[0]);
+  SqlValue message_type = sqlite::utils::SqliteValueToSqlValue(argv[1]);
+
+  if (proto.type != SqlValue::Type::kBytes) {
+    return base::ErrStatus("UNWRAP_METRIC_PROTO: proto is not a blob");
   }
 
-  const uint8_t* ptr =
-      static_cast<const uint8_t*>(sqlite::value::Blob(argv[0]));
-  size_t size = static_cast<size_t>(sqlite::value::Bytes(argv[0]));
+  if (message_type.type != SqlValue::Type::kString) {
+    return base::ErrStatus("UNWRAP_METRIC_PROTO: message type is not string");
+  }
+
+  const uint8_t* ptr = static_cast<const uint8_t*>(proto.AsBytes());
+  size_t size = proto.bytes_count;
   if (size == 0) {
-    return sqlite::result::StaticBytes(ctx, "", 0);
+    destructors.bytes_destructor = sqlite::utils::kSqliteStatic;
+    out = SqlValue::Bytes("", 0);
+    return base::OkStatus();
   }
 
-  const char* message_type = sqlite::value::Text(argv[1]);
   static constexpr uint32_t kMessageType =
       static_cast<uint32_t>(protozero::proto_utils::ProtoSchemaType::kMessage);
-  base::StatusOr<protozero::ConstBytes> bytes =
-      ValidateSingleNonEmptyMessage(ptr, size, kMessageType, message_type);
+  base::StatusOr<protozero::ConstBytes> bytes = ValidateSingleNonEmptyMessage(
+      ptr, size, kMessageType, message_type.AsString());
   if (!bytes.ok()) {
-    return sqlite::utils::SetError(ctx,
-                                   base::ErrStatus("UNWRAP_METRICS_PROTO: %s",
-                                                   bytes.status().c_message()));
+    return base::ErrStatus("UNWRAP_METRICS_PROTO: %s",
+                           bytes.status().c_message());
   }
 
-  return sqlite::result::TransientBytes(ctx, bytes->data,
-                                        static_cast<int>(bytes->size));
+  std::unique_ptr<uint8_t[], base::FreeDeleter> data(
+      static_cast<uint8_t*>(malloc(bytes->size)));
+  memcpy(data.get(), bytes->data, bytes->size);
+
+  destructors.bytes_destructor = free;
+  out = SqlValue::Bytes(data.release(), bytes->size);
+
+  return base::OkStatus();
 }
 
 base::Status ComputeMetrics(PerfettoSqlEngine* engine,
@@ -792,4 +786,6 @@ base::Status ComputeMetrics(PerfettoSqlEngine* engine,
   return base::OkStatus();
 }
 
-}  // namespace perfetto::trace_processor::metrics
+}  // namespace metrics
+}  // namespace trace_processor
+}  // namespace perfetto

@@ -131,7 +131,7 @@ void addNumForTest(TestNode** root)
 
 /* test Parse int 64 */
 
-static void TestInt64Parse(void)
+static void TestInt64Parse()
 {
 
     UErrorCode st = U_ZERO_ERROR;
@@ -171,10 +171,11 @@ static void TestInt64Parse(void)
     }
 
     unum_close(nf);
+    return;
 }
 
 /* test Number Format API */
-static void TestNumberFormat(void)
+static void TestNumberFormat()
 {
     UChar *result=NULL;
     UChar temp1[512];
@@ -1096,7 +1097,7 @@ static const ParseCurrencyItem parseCurrencyItems[] = {
     { NULL,    NULL,       NULL,        NULL,           0,             0, 0.0, 0,             0, 0.0, NULL  }
 };
 
-static void TestParseCurrency(void)
+static void TestParseCurrency()
 {
     const ParseCurrencyItem * itemPtr;
     for (itemPtr = parseCurrencyItems; itemPtr->locale != NULL; ++itemPtr) {
@@ -1207,7 +1208,7 @@ static const SpelloutParseTest spelloutParseTests[] = {
     { NULL,    NULL, NULL,        0,   0,  0, 0 } /* terminator */
 };
 
-static void TestSpelloutNumberParse(void)
+static void TestSpelloutNumberParse()
 {
     const SpelloutParseTest * testPtr;
     for (testPtr = spelloutParseTests; testPtr->testname != NULL; ++testPtr) {
@@ -1230,7 +1231,7 @@ static void TestSpelloutNumberParse(void)
     }
 }
 
-static void TestSignificantDigits(void)
+static void TestSignificantDigits()
 {
     UChar temp[128];
     int32_t resultlengthneeded;
@@ -1272,7 +1273,7 @@ static void TestSignificantDigits(void)
     unum_close(fmt);
 }
 
-static void TestSigDigRounding(void)
+static void TestSigDigRounding()
 {
     UErrorCode status = U_ZERO_ERROR;
     UChar expected[128];
@@ -1309,7 +1310,7 @@ static void TestSigDigRounding(void)
     unum_close(fmt);
 }
 
-static void TestNumberFormatPadding(void)
+static void TestNumberFormatPadding()
 {
     UChar *result=NULL;
     UChar temp1[512];
@@ -1432,7 +1433,7 @@ withinErr(double a, double b, double err) {
     return uprv_fabs(a - b) < uprv_fabs(a * err);
 }
 
-static void TestInt64Format(void) {
+static void TestInt64Format() {
     UChar temp1[512];
     UChar result[512];
     UNumberFormat *fmt;
@@ -1705,7 +1706,7 @@ static void test_fmt(UNumberFormat* fmt, UBool isDecimal) {
     }
 }
 
-static void TestNonExistentCurrency(void) {
+static void TestNonExistentCurrency() {
     UNumberFormat *format;
     UErrorCode status = U_ZERO_ERROR;
     UChar currencySymbol[8];
@@ -1729,7 +1730,7 @@ static void TestNonExistentCurrency(void) {
     unum_close(format);
 }
 
-static void TestRBNFFormat(void) {
+static void TestRBNFFormat() {
     UErrorCode status;
     UParseError perr;
     UChar pat[1024];
@@ -1839,7 +1840,7 @@ static void TestRBNFFormat(void) {
     }
 }
 
-static void TestRBNFRounding(void) {
+static void TestRBNFRounding() {
     UChar fmtbuf[FORMAT_BUF_CAPACITY];
     UChar expectedBuf[FORMAT_BUF_CAPACITY];
     int32_t len;
@@ -3034,7 +3035,7 @@ static void TestVariousStylesAndAttributes(void) {
 static const UChar currpat[]  = { 0xA4,0x23,0x2C,0x23,0x23,0x30,0x2E,0x30,0x30,0};
 static const UChar parsetxt[] = { 0x78,0x30,0x79,0x24,0 }; /* x0y$ */
 
-static void TestParseCurrPatternWithDecStyle(void) {
+static void TestParseCurrPatternWithDecStyle() {
     UErrorCode status = U_ZERO_ERROR;
     UNumberFormat *unumfmt = unum_open(UNUM_DECIMAL, NULL, 0, "en_US", NULL, &status);
     if (U_FAILURE(status)) {
@@ -3161,7 +3162,7 @@ static void TestFormatForFields(void) {
     }
 }
 
-static void Test12052_NullPointer(void) {
+static void Test12052_NullPointer() {
     UErrorCode status = U_ZERO_ERROR;
     static const UChar input[] = u"199a";
     UChar currency[200] = {0};

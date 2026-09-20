@@ -74,11 +74,9 @@ MacroProps NumberPropertyMapper::oldToNew(const DecimalFormatProperties& propert
             !properties.currencyPluralInfo.fPtr.isNull() ||
             !properties.currencyUsage.isNull() ||
             warehouse.affixProvider.get().hasCurrencySign());
-    CurrencyUnit currency;
-    UCurrencyUsage currencyUsage;
+    CurrencyUnit currency = resolveCurrency(properties, locale, status);
+    UCurrencyUsage currencyUsage = properties.currencyUsage.getOrDefault(UCURR_USAGE_STANDARD);
     if (useCurrency) {
-        currency = resolveCurrency(properties, locale, status);
-        currencyUsage = properties.currencyUsage.getOrDefault(UCURR_USAGE_STANDARD);
         // NOTE: Slicing is OK.
         macros.unit = currency; // NOLINT
     }
@@ -131,7 +129,6 @@ MacroProps NumberPropertyMapper::oldToNew(const DecimalFormatProperties& propert
     }
     Precision precision;
     if (!properties.currencyUsage.isNull()) {
-        U_ASSERT(useCurrency);
         precision = Precision::constructCurrency(currencyUsage).withCurrency(currency);
     } else if (roundingIncrement != 0.0) {
         if (PatternStringUtils::ignoreRoundingIncrement(roundingIncrement, maxFrac)) {
@@ -279,7 +276,7 @@ MacroProps NumberPropertyMapper::oldToNew(const DecimalFormatProperties& propert
         exportedProperties->maximumIntegerDigits = maxInt == -1 ? INT32_MAX : maxInt;
 
         Precision rounding_;
-        if (useCurrency && precision.fType == Precision::PrecisionType::RND_CURRENCY) {
+        if (precision.fType == Precision::PrecisionType::RND_CURRENCY) {
             rounding_ = precision.withCurrency(currency, status);
         } else {
             rounding_ = precision;

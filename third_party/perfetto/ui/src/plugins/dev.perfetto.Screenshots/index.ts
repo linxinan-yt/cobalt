@@ -40,7 +40,7 @@ export default class implements PerfettoPlugin {
         name: 'Screenshots',
         sortOrder: -60,
       });
-      ctx.defaultWorkspace.addChildInOrder(trackNode);
+      ctx.workspace.addChildInOrder(trackNode);
     }
   }
 }

@@ -357,7 +357,7 @@ struct IntervalIntersect : public sqlite::Function<IntervalIntersect> {
 
 base::Status RegisterIntervalIntersectFunctions(PerfettoSqlEngine& engine,
                                                 StringPool* pool) {
-  return engine.RegisterFunction<IntervalIntersect>(
+  return engine.RegisterSqliteFunction<IntervalIntersect>(
       std::make_unique<IntervalIntersect::UserData>(
           IntervalIntersect::UserData{&engine, pool}));
 }

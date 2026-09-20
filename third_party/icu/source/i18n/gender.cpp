@@ -25,6 +25,7 @@
 #include "unicode/ugender.h"
 #include "unicode/ures.h"
 
+#include "bytesinkutil.h"
 #include "charstr.h"
 #include "cmemory.h"
 #include "cstring.h"
@@ -107,7 +108,7 @@ const GenderInfo* GenderInfo::getInstance(const Locale& locale, UErrorCode& stat
   const char* key = locale.getName();
   {
     Mutex lock(&gGenderMetaLock);
-    result = static_cast<const GenderInfo*>(uhash_get(gGenderInfoCache, key));
+    result = (const GenderInfo*) uhash_get(gGenderInfoCache, key);
   }
   if (result) {
     return result;
@@ -123,7 +124,7 @@ const GenderInfo* GenderInfo::getInstance(const Locale& locale, UErrorCode& stat
   // favor the GenderInfo object that is already in the cache.
   {
     Mutex lock(&gGenderMetaLock);
-    GenderInfo* temp = static_cast<GenderInfo*>(uhash_get(gGenderInfoCache, key));
+    GenderInfo* temp = (GenderInfo*) uhash_get(gGenderInfoCache, key);
     if (temp) {
       result = temp;
     } else {
@@ -155,9 +156,11 @@ const GenderInfo* GenderInfo::loadInstance(const Locale& locale, UErrorCode& sta
     CharString parentLocaleName(curLocaleName, key_status);
     while (s == nullptr) {
       {
-          CharString tmp = ulocimp_getParent(parentLocaleName.data(), status);
-          if (tmp.isEmpty()) break;
-          parentLocaleName = std::move(tmp);
+        CharString tmp;
+        CharStringByteSink sink(&tmp);
+        ulocimp_getParent(parentLocaleName.data(), sink, &status);
+        if (tmp.isEmpty()) break;
+        parentLocaleName = std::move(tmp);
       }
       key_status = U_ZERO_ERROR;
       resLen = 0;

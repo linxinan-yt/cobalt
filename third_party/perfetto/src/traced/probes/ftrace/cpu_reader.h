@@ -24,6 +24,7 @@
 #include <set>
 
 #include "perfetto/base/flat_set.h"
+#include "perfetto/ext/base/flat_hash_map.h"
 #include "perfetto/ext/base/paged_memory.h"
 #include "perfetto/ext/base/scoped_file.h"
 #include "perfetto/ext/base/utils.h"
@@ -42,7 +43,6 @@ class FtraceDataSource;
 class LazyKernelSymbolizer;
 class ProtoTranslationTable;
 struct FtraceDataSourceConfig;
-struct GenericEventProtoDescriptors;
 
 namespace protos {
 namespace pbzero {
@@ -132,7 +132,8 @@ class CpuReader {
             CompactSchedBuffer* compact_sched_buf,
             bool compact_sched_enabled,
             uint64_t previous_bundle_end_ts,
-            const GenericEventProtoDescriptors* generic_pb_descriptors)
+            const base::FlatHashMap<uint32_t, std::vector<uint8_t>>*
+                generic_pb_descriptors)
         : trace_writer_(trace_writer),
           metadata_(metadata),
           symbolizer_(symbolizer),
@@ -186,7 +187,8 @@ class CpuReader {
     uint64_t initial_previous_bundle_end_ts_;
     // Keyed by proto field id within |FtraceEvent|.
     base::FlatSet<uint32_t> generic_descriptors_to_write_;
-    const GenericEventProtoDescriptors* generic_pb_descriptors_;
+    const base::FlatHashMap<uint32_t, std::vector<uint8_t>>*
+        generic_pb_descriptors_;
 
     TraceWriter::TracePacketHandle packet_;
     protos::pbzero::FtraceEventBundle* bundle_ = nullptr;

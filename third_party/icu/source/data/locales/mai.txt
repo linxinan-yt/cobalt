@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 mai{
     AuxExemplarCharacters{"[अ{अं}{अः} आ इ ई उ ऊ ऋ ऌ ॡ ए ऐ ओ औ]"}
     ExemplarCharacters{
@@ -128,6 +128,15 @@ mai{
                         "मंगल",
                         "बुध",
                         "गुरु",
+                        "शुक्र",
+                        "शनि",
+                    }
+                    short{
+                        "रवि",
+                        "सोम",
+                        "मंगल",
+                        "बुध",
+                        "बृहस्पति",
                         "शुक्र",
                         "शनि",
                     }

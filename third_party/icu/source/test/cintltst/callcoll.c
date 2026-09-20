@@ -739,7 +739,7 @@ void genericRulesStarter(const char *rules, const char * const s[], uint32_t siz
   genericRulesStarterWithResult(rules, s, size, UCOL_LESS);
 }
 
-static void TestTertiary(void)
+static void TestTertiary()
 {
     int32_t len,i;
     UCollator *myCollation;
@@ -764,7 +764,7 @@ static void TestTertiary(void)
     myCollation = 0;
 }
 
-static void TestPrimary(void)
+static void TestPrimary( )
 {
     int32_t len,i;
     UCollator *myCollation;
@@ -790,7 +790,7 @@ static void TestPrimary(void)
     myCollation = 0;
 }
 
-static void TestSecondary(void)
+static void TestSecondary()
 {
     int32_t i;
     int32_t len;
@@ -815,7 +815,7 @@ static void TestSecondary(void)
     myCollation = 0;
 }
 
-static void TestIdentical(void)
+static void TestIdentical()
 {
     int32_t i;
     int32_t len;
@@ -839,7 +839,7 @@ static void TestIdentical(void)
     myCollation = 0;
 }
 
-static void TestExtra(void)
+static void TestExtra()
 {
     int32_t i, j;
     int32_t len;
@@ -1173,7 +1173,7 @@ static void TestSurrogates(void)
  *
  */
 static void 
-TestInvalidRules(void){
+TestInvalidRules(){
 #define MAX_ERROR_STATES 2
 
     static const char* rulesArr[MAX_ERROR_STATES] = {
@@ -1219,7 +1219,7 @@ TestInvalidRules(void){
 }
 
 static void
-TestJitterbug1098(void){
+TestJitterbug1098(){
     UChar rule[1000];
     UCollator* c1 = NULL;
     UErrorCode status = U_ZERO_ERROR;

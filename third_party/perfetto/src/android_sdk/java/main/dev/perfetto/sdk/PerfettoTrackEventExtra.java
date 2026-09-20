@@ -26,6 +26,8 @@ import java.util.concurrent.atomic.AtomicLong;
  * @hide
  */
 final class PerfettoTrackEventExtra {
+  private static final AtomicLong sNamedTrackId = new AtomicLong();
+
   private final long mPtr;
 
   PerfettoTrackEventExtra(PerfettoNativeMemoryCleaner memoryCleaner) {
@@ -118,13 +120,11 @@ final class PerfettoTrackEventExtra {
     private final long mPtr;
     private final long mExtraPtr;
     private final String mName;
-    private final long mId;
 
-    NamedTrack(long id, String name, long parentUuid, PerfettoNativeMemoryCleaner memoryCleaner) {
-      mPtr = native_init(id, name, parentUuid);
+    NamedTrack(String name, long parentUuid, PerfettoNativeMemoryCleaner memoryCleaner) {
+      mPtr = native_init(sNamedTrackId.incrementAndGet(), name, parentUuid);
       mExtraPtr = native_get_extra_ptr(mPtr);
       mName = name;
-      mId = id;
       memoryCleaner.registerNativeAllocation(this, mPtr, native_delete());
     }
 

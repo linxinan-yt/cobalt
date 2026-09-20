@@ -20,9 +20,9 @@
 #include <optional>
 
 #include "src/trace_processor/importers/proto/args_parser.h"
-#include "src/trace_processor/tables/winscope_tables_py.h"
 
-namespace perfetto::trace_processor::winscope {
+namespace perfetto {
+namespace trace_processor {
 
 // Specialized args parser to de-intern ViewCapture strings
 class ViewCaptureArgsParser : public ArgsParser {
@@ -33,9 +33,7 @@ class ViewCaptureArgsParser : public ArgsParser {
   ViewCaptureArgsParser(int64_t packet_timestamp,
                         ArgsTracker::BoundInserter& inserter,
                         TraceStorage& storage,
-                        PacketSequenceStateGeneration* sequence_state,
-                        tables::ViewCaptureTable::RowReference* snapshot_row,
-                        tables::ViewCaptureViewTable::RowReference* view_row);
+                        PacketSequenceStateGeneration* sequence_state);
   void AddInteger(const Key&, int64_t) override;
   void AddUnsignedInteger(const Key&, uint64_t) override;
 
@@ -45,16 +43,11 @@ class ViewCaptureArgsParser : public ArgsParser {
   bool TryAddDeinternedString(const Key&, uint64_t);
   std::optional<protozero::ConstChars> TryDeinternString(const Key&, uint64_t);
 
-  template <uint32_t FieldNumber, typename RowRef>
-  std::optional<protozero::ConstChars>
-  DeinternString(uint64_t, RowRef*, void (RowRef::*setter)(StringPool::Id));
-
   const base::StringView ERROR_MSG{"STRING DE-INTERNING ERROR"};
   TraceStorage& storage_;
-  tables::ViewCaptureTable::RowReference* snapshot_row_;
-  tables::ViewCaptureViewTable::RowReference* view_row_;
 };
 
-}  // namespace perfetto::trace_processor::winscope
+}  // namespace trace_processor
+}  // namespace perfetto
 
 #endif  // SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_VIEWCAPTURE_ARGS_PARSER_H_

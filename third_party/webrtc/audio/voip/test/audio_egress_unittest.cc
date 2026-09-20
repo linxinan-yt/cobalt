@@ -40,6 +40,7 @@
 namespace webrtc {
 namespace {
 
+using ::testing::Invoke;
 using ::testing::NiceMock;
 using ::testing::Unused;
 
@@ -139,7 +140,7 @@ TEST_F(AudioEgressTest, ProcessAudioWithMute) {
     return true;
   };
 
-  EXPECT_CALL(transport_, SendRtp).WillRepeatedly(rtp_sent);
+  EXPECT_CALL(transport_, SendRtp).WillRepeatedly(Invoke(rtp_sent));
 
   egress_->SetMute(true);
 
@@ -177,7 +178,7 @@ TEST_F(AudioEgressTest, ProcessAudioWithSineWave) {
     return true;
   };
 
-  EXPECT_CALL(transport_, SendRtp).WillRepeatedly(rtp_sent);
+  EXPECT_CALL(transport_, SendRtp).WillRepeatedly(Invoke(rtp_sent));
 
   // Two 10 ms audio frames will result in rtp packet with ptime 20.
   for (size_t i = 0; i < kExpected * 2; i++) {
@@ -211,7 +212,7 @@ TEST_F(AudioEgressTest, SkipAudioEncodingAfterStopSend) {
     return true;
   };
 
-  EXPECT_CALL(transport_, SendRtp).WillRepeatedly(rtp_sent);
+  EXPECT_CALL(transport_, SendRtp).WillRepeatedly(Invoke(rtp_sent));
 
   // Two 10 ms audio frames will result in rtp packet with ptime 20.
   for (size_t i = 0; i < kExpected * 2; i++) {
@@ -287,7 +288,7 @@ TEST_F(AudioEgressTest, SendDTMF) {
     return true;
   };
 
-  EXPECT_CALL(transport_, SendRtp).WillRepeatedly(rtp_sent);
+  EXPECT_CALL(transport_, SendRtp).WillRepeatedly(Invoke(rtp_sent));
 
   // Two 10 ms audio frames will result in rtp packet with ptime 20.
   for (size_t i = 0; i < kExpected * 2; i++) {
@@ -312,7 +313,7 @@ TEST_F(AudioEgressTest, TestAudioInputLevelAndEnergyDuration) {
     return true;
   };
 
-  EXPECT_CALL(transport_, SendRtp).WillRepeatedly(rtp_sent);
+  EXPECT_CALL(transport_, SendRtp).WillRepeatedly(Invoke(rtp_sent));
 
   // Two 10 ms audio frames will result in rtp packet with ptime 20.
   for (size_t i = 0; i < kExpected * 2; i++) {

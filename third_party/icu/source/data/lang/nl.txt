@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 nl{
     Keys{
         calendar{"kalender"}
@@ -35,6 +35,7 @@ nl{
         afh{"Afrihili"}
         agq{"Aghem"}
         ain{"Aino"}
+        ajp{"Zuid-Levantijns-Arabisch"}
         ak{"Akan"}
         akk{"Akkadisch"}
         akz{"Alabama"}
@@ -93,7 +94,6 @@ nl{
         bjn{"Banjar"}
         bkm{"Kom"}
         bla{"Siksika"}
-        blo{"Anii"}
         bm{"Bambara"}
         bn{"Bengaals"}
         bo{"Tibetaans"}
@@ -221,6 +221,7 @@ nl{
         gmh{"Middelhoogduits"}
         gn{"Guaraní"}
         goh{"Oudhoogduits"}
+        gom{"Goa Konkani"}
         gon{"Gondi"}
         gor{"Gorontalo"}
         got{"Gothisch"}
@@ -330,7 +331,6 @@ nl{
         kv{"Komi"}
         kw{"Cornish"}
         kwk{"Kwakʼwala"}
-        kxv{"Kuvi"}
         ky{"Kirgizisch"}
         la{"Latijn"}
         lad{"Ladino"}
@@ -623,7 +623,6 @@ nl{
         vi{"Vietnamees"}
         vls{"West-Vlaams"}
         vmf{"Opperfrankisch"}
-        vmw{"Makhuwa"}
         vo{"Volapük"}
         vot{"Votisch"}
         vro{"Võro"}
@@ -639,7 +638,6 @@ nl{
         xal{"Kalmuks"}
         xh{"Xhosa"}
         xmf{"Mingreels"}
-        xnr{"Kangri"}
         xog{"Soga"}
         yao{"Yao"}
         yap{"Yapees"}
@@ -682,6 +680,7 @@ nl{
         Adlm{"Adlam"}
         Afak{"Defaka"}
         Aghb{"Kaukasisch Albanees"}
+        Ahom{"Ahom"}
         Arab{"Arabisch"}
         Aran{"Nastaliq"}
         Armi{"Keizerlijk Aramees"}
@@ -702,6 +701,7 @@ nl{
         Cakm{"Chakma"}
         Cans{"Verenigde Canadese Aboriginal-symbolen"}
         Cari{"Carisch"}
+        Cham{"Cham"}
         Cher{"Cherokee"}
         Chrs{"Chorasmisch"}
         Cirt{"Cirth"}
@@ -747,6 +747,7 @@ nl{
         Hung{"Oudhongaars"}
         Inds{"Indus"}
         Ital{"Oud-italisch"}
+        Jamo{"Jamo"}
         Java{"Javaans"}
         Jpan{"Japans"}
         Jurc{"Jurchen"}
@@ -785,6 +786,7 @@ nl{
         Merc{"Meroitisch cursief"}
         Mero{"Meroïtisch"}
         Mlym{"Malayalam"}
+        Modi{"Modi"}
         Mong{"Mongools"}
         Moon{"Moon"}
         Mroo{"Mro"}
@@ -853,6 +855,7 @@ nl{
         Tfng{"Tifinagh"}
         Tglg{"Tagalog"}
         Thaa{"Thaana"}
+        Thai{"Thai"}
         Tibt{"Tibetaans"}
         Tirh{"Tirhuta"}
         Tnsa{"Tangsa"}
@@ -897,8 +900,6 @@ nl{
             indian{"Indiase nationale kalender"}
             islamic{"Islamitische kalender"}
             islamic-civil{"Islamitische kalender (cyclisch)"}
-            islamic-rgsa{"Islamitische kalender (Saudi–Arabië)"}
-            islamic-tbla{"Islamitische kalender (epoche)"}
             islamic-umalqura{"Islamitische kalender (Umm al-Qura)"}
             iso8601{"ISO-8601-kalender"}
             japanese{"Japanse kalender"}
@@ -952,6 +953,7 @@ nl{
             phonebook{"Telefoonboeksorteervolgorde"}
             phonetic{"Fonetische sorteervolgorde"}
             pinyin{"Pinyinsorteervolgorde"}
+            reformed{"Herziene sorteervolgorde"}
             search{"algemeen zoeken"}
             searchjl{"Zoeken op eerste Hangul-medeklinker"}
             standard{"standaard sorteervolgorde"}

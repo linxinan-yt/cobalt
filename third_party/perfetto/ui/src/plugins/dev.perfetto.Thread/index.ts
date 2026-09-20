@@ -19,13 +19,7 @@ import {
   ThreadDesc,
   ThreadMap,
 } from '../dev.perfetto.Thread/threads';
-import {
-  LONG,
-  LONG_NULL,
-  NUM,
-  STR,
-  STR_NULL,
-} from '../../trace_processor/query_result';
+import {NUM, NUM_NULL, STR, STR_NULL} from '../../trace_processor/query_result';
 import {assertExists} from '../../base/logging';
 
 async function listThreads(trace: Trace) {
@@ -46,8 +40,8 @@ async function listThreads(trace: Trace) {
   const threads = new Map<number, ThreadDesc>();
   const it = result.iter({
     utid: NUM,
-    tid: LONG,
-    pid: LONG_NULL,
+    tid: NUM,
+    pid: NUM_NULL,
     threadName: STR,
     procName: STR_NULL,
     cmdline: STR_NULL,
@@ -80,7 +74,7 @@ async function listProcesses(trace: Trace) {
   const processMap = new Map<number, ProcessDesc>();
   const it = result.iter({
     upid: NUM,
-    pid: LONG,
+    pid: NUM,
     procName: STR_NULL,
     cmdline: STR_NULL,
   });

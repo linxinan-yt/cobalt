@@ -83,7 +83,7 @@ interface QueryTableAttrs {
   readonly query: string;
   readonly resp?: QueryResponse;
   readonly contextButtons?: m.Child[];
-  readonly fillHeight: boolean;
+  readonly fillParent: boolean;
 }
 
 export class QueryTable implements m.ClassComponent<QueryTableAttrs> {
@@ -111,7 +111,7 @@ export class QueryTable implements m.ClassComponent<QueryTableAttrs> {
   }
 
   view({attrs}: m.CVnode<QueryTableAttrs>) {
-    const {resp, query, contextButtons = [], fillHeight} = attrs;
+    const {resp, query, contextButtons = [], fillParent} = attrs;
 
     return m(
       DetailsShell,
@@ -120,7 +120,7 @@ export class QueryTable implements m.ClassComponent<QueryTableAttrs> {
         title: this.renderTitle(resp),
         description: query,
         buttons: this.renderButtons(query, contextButtons, resp),
-        fillHeight,
+        fillParent,
       },
       resp && this.dataSource && this.renderTableContent(resp, this.dataSource),
     );
@@ -197,7 +197,7 @@ export class QueryTable implements m.ClassComponent<QueryTableAttrs> {
       return m('.pf-query-panel__query-error', `SQL error: ${resp.error}`);
     }
 
-    const onTimelinePage =
+    const onViewerPage =
       Router.parseUrl(window.location.href).page === '/viewer';
 
     return m(DataGrid, {
@@ -213,7 +213,7 @@ export class QueryTable implements m.ClassComponent<QueryTableAttrs> {
         if (
           name === 'id' &&
           sliceId !== undefined &&
-          onTimelinePage &&
+          onViewerPage &&
           isSliceish(row)
         ) {
           return m(

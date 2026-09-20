@@ -39,7 +39,6 @@ class RtcEvent {
     AudioSendStreamConfig,
     BweUpdateDelayBased,
     BweUpdateLossBased,
-    BweUpdateScream,
     DtlsTransportState,
     DtlsWritableState,
     IceCandidatePairConfig,
@@ -53,6 +52,8 @@ class RtcEvent {
     RtpPacketOutgoing,
     VideoReceiveStreamConfig,
     VideoSendStreamConfig,
+    GenericPacketSent,
+    GenericPacketReceived,
     FrameDecoded,
     NetEqSetMinimumDelay,
     BeginV3Log = 0x2501580,
@@ -60,7 +61,7 @@ class RtcEvent {
     FakeEvent,  // For unit testing.
   };
 
-  RtcEvent() = default;
+  RtcEvent();
   RtcEvent(const RtcEvent&) = default;
   RtcEvent& operator=(const RtcEvent&) = delete;
   virtual ~RtcEvent() = default;
@@ -87,7 +88,7 @@ class RtcEvent {
   explicit RtcEvent(int64_t timestamp_us) : timestamp_us_(timestamp_us) {}
 
  private:
-  int64_t timestamp_us_ = 0;
+  int64_t timestamp_us_;
 };
 
 }  // namespace webrtc

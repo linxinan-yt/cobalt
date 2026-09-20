@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 root{
     Currencies{
         AUD{
@@ -78,10 +78,6 @@ root{
         XCD{
             "EC$",
             "XCD",
-        }
-        XCG{
-            "Cg.",
-            "XCG",
         }
         XOF{
             "F CFA",
@@ -205,7 +201,7 @@ root{
     CurrencyUnitPatterns{
         other{"{0} {1}"}
     }
-    Version{"47"}
+    Version{"44.1"}
     currencySpacing{
         afterCurrency{
             currencyMatch{"[[:^S:]&[:^Z:]]"}

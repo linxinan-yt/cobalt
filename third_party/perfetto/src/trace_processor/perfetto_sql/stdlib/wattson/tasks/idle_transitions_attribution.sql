@@ -56,14 +56,6 @@ WITH
       idle_group,
       min(ts) AS min
     FROM _ii_idle_tasks
-    WHERE
-      utid IN (
-        SELECT
-          utid
-        FROM thread
-        WHERE
-          is_idle
-      )
     GROUP BY
       idle_group
   ),
@@ -99,14 +91,6 @@ WITH
       idle_group,
       max(ts) AS min
     FROM _ii_idle_tasks
-    WHERE
-      utid IN (
-        SELECT
-          utid
-        FROM thread
-        WHERE
-          is_idle
-      )
     GROUP BY
       idle_group
   )

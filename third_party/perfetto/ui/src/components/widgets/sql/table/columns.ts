@@ -38,10 +38,6 @@ import {
   renderStandardCell,
 } from './render_cell_utils';
 import {SqlColumn, sqlColumnId, SqlExpression} from './sql_column';
-import {
-  PerfettoSqlType,
-  PerfettoSqlTypes,
-} from '../../../../trace_processor/perfetto_sql_type';
 
 function wrongTypeError(type: string, name: SqlColumn, value: SqlValue) {
   return renderError(
@@ -71,7 +67,6 @@ export interface IdColumnParams {
 export class StandardColumn implements TableColumn {
   constructor(
     public readonly column: SqlColumn,
-    public readonly type: PerfettoSqlType | undefined,
     private params?: StandardColumnParams,
   ) {}
 
@@ -85,8 +80,6 @@ export class StandardColumn implements TableColumn {
 }
 
 export class TimestampColumn implements TableColumn {
-  public readonly type = PerfettoSqlTypes.TIMESTAMP;
-
   constructor(
     public readonly trace: Trace,
     public readonly column: SqlColumn,
@@ -114,8 +107,6 @@ export class TimestampColumn implements TableColumn {
 }
 
 export class DurationColumn implements TableColumn {
-  public readonly type = PerfettoSqlTypes.DURATION;
-
   constructor(
     public readonly trace: Trace,
     public column: SqlColumn,
@@ -144,18 +135,11 @@ export class DurationColumn implements TableColumn {
 }
 
 export class SliceIdColumn implements TableColumn {
-  public readonly type: PerfettoSqlType;
-
   constructor(
     public readonly trace: Trace,
     public readonly column: SqlColumn,
     private params?: IdColumnParams,
-  ) {
-    this.type = {
-      kind: params?.type === 'id' ? 'id' : 'joinid',
-      source: {table: 'slice', column: 'id'},
-    };
-  }
+  ) {}
 
   renderCell(value: SqlValue, manager?: TableManager): RenderedCell {
     const id = value;
@@ -182,13 +166,7 @@ export class SliceIdColumn implements TableColumn {
       new Map<string, TableColumn>([
         ['ts', new TimestampColumn(this.trace, this.getChildColumn('ts'))],
         ['dur', new DurationColumn(this.trace, this.getChildColumn('dur'))],
-        [
-          'name',
-          new StandardColumn(
-            this.getChildColumn('name'),
-            PerfettoSqlTypes.STRING,
-          ),
-        ],
+        ['name', new StandardColumn(this.getChildColumn('name'))],
         [
           'parent_id',
           new SliceIdColumn(this.trace, this.getChildColumn('parent_id')),
@@ -208,11 +186,6 @@ export class SliceIdColumn implements TableColumn {
 }
 
 export class SchedIdColumn implements TableColumn {
-  public readonly type: PerfettoSqlType = {
-    kind: 'joinid',
-    source: {table: 'sched', column: 'id'},
-  };
-
   constructor(
     public readonly trace: Trace,
     public readonly column: SqlColumn,
@@ -242,11 +215,6 @@ export class SchedIdColumn implements TableColumn {
 }
 
 export class ThreadStateIdColumn implements TableColumn {
-  public readonly type: PerfettoSqlType = {
-    kind: 'joinid',
-    source: {table: 'thread_state', column: 'id'},
-  };
-
   constructor(
     public readonly trace: Trace,
     public readonly column: SqlColumn,
@@ -276,18 +244,11 @@ export class ThreadStateIdColumn implements TableColumn {
 }
 
 export class ThreadIdColumn implements TableColumn {
-  public readonly type: PerfettoSqlType;
-
   constructor(
     public readonly trace: Trace,
     public readonly column: SqlColumn,
     private params?: IdColumnParams,
-  ) {
-    this.type = {
-      kind: params?.type === 'id' ? 'id' : 'joinid',
-      source: {table: 'thread', column: 'id'},
-    };
-  }
+  ) {}
 
   renderCell(value: SqlValue, manager?: TableManager) {
     const utid = value;
@@ -316,17 +277,8 @@ export class ThreadIdColumn implements TableColumn {
     if (this.params?.type === 'id') return undefined;
     return async () =>
       new Map<string, TableColumn>([
-        [
-          'tid',
-          new StandardColumn(this.getChildColumn('tid'), PerfettoSqlTypes.INT),
-        ],
-        [
-          'name',
-          new StandardColumn(
-            this.getChildColumn('name'),
-            PerfettoSqlTypes.STRING,
-          ),
-        ],
+        ['tid', new StandardColumn(this.getChildColumn('tid'))],
+        ['name', new StandardColumn(this.getChildColumn('name'))],
         [
           'start_ts',
           new TimestampColumn(this.trace, this.getChildColumn('start_ts')),
@@ -338,10 +290,7 @@ export class ThreadIdColumn implements TableColumn {
         ['upid', new ProcessIdColumn(this.trace, this.getChildColumn('upid'))],
         [
           'is_main_thread',
-          new StandardColumn(
-            this.getChildColumn('is_main_thread'),
-            PerfettoSqlTypes.BOOLEAN,
-          ),
+          new StandardColumn(this.getChildColumn('is_main_thread')),
         ],
       ]);
   }
@@ -349,8 +298,8 @@ export class ThreadIdColumn implements TableColumn {
   initialColumns(): TableColumn[] {
     return [
       this,
-      new StandardColumn(this.getChildColumn('tid'), PerfettoSqlTypes.INT),
-      new StandardColumn(this.getChildColumn('name'), PerfettoSqlTypes.STRING),
+      new StandardColumn(this.getChildColumn('tid')),
+      new StandardColumn(this.getChildColumn('name')),
     ];
   }
 
@@ -368,18 +317,11 @@ export class ThreadIdColumn implements TableColumn {
 }
 
 export class ProcessIdColumn implements TableColumn {
-  public readonly type: PerfettoSqlType;
-
   constructor(
     public readonly trace: Trace,
     public readonly column: SqlColumn,
     private params?: IdColumnParams,
-  ) {
-    this.type = {
-      kind: params?.type === 'id' ? 'id' : 'joinid',
-      source: {table: 'process', column: 'id'},
-    };
-  }
+  ) {}
 
   renderCell(value: SqlValue, manager?: TableManager) {
     const upid = value;
@@ -408,17 +350,8 @@ export class ProcessIdColumn implements TableColumn {
     if (this.params?.type === 'id') return undefined;
     return async () =>
       new Map<string, TableColumn>([
-        [
-          'pid',
-          new StandardColumn(this.getChildColumn('pid'), PerfettoSqlTypes.INT),
-        ],
-        [
-          'name',
-          new StandardColumn(
-            this.getChildColumn('name'),
-            PerfettoSqlTypes.STRING,
-          ),
-        ],
+        ['pid', new StandardColumn(this.getChildColumn('pid'))],
+        ['name', new StandardColumn(this.getChildColumn('name'))],
         [
           'start_ts',
           new TimestampColumn(this.trace, this.getChildColumn('start_ts')),
@@ -433,10 +366,7 @@ export class ProcessIdColumn implements TableColumn {
         ],
         [
           'is_main_thread',
-          new StandardColumn(
-            this.getChildColumn('is_main_thread'),
-            PerfettoSqlTypes.BOOLEAN,
-          ),
+          new StandardColumn(this.getChildColumn('is_main_thread')),
         ],
       ]);
   }
@@ -444,8 +374,8 @@ export class ProcessIdColumn implements TableColumn {
   initialColumns(): TableColumn[] {
     return [
       this,
-      new StandardColumn(this.getChildColumn('pid'), PerfettoSqlTypes.INT),
-      new StandardColumn(this.getChildColumn('name'), PerfettoSqlTypes.STRING),
+      new StandardColumn(this.getChildColumn('pid')),
+      new StandardColumn(this.getChildColumn('name')),
     ];
   }
 
@@ -464,7 +394,6 @@ export class ProcessIdColumn implements TableColumn {
 
 class ArgColumn implements TableColumn<{type: SqlColumn}> {
   public readonly column: SqlColumn;
-  public readonly type: PerfettoSqlType | undefined = undefined;
   private id: string;
 
   constructor(
@@ -542,8 +471,6 @@ class ArgColumn implements TableColumn<{type: SqlColumn}> {
 }
 
 export class ArgSetIdColumn implements TableColumn {
-  public readonly type = PerfettoSqlTypes.ARG_SET_ID;
-
   constructor(public readonly column: SqlColumn) {}
 
   renderCell(value: SqlValue, tableManager: TableManager) {

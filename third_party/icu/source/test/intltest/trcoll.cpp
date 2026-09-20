@@ -18,7 +18,7 @@
 #include "sfwdchit.h"
 
 CollationTurkishTest::CollationTurkishTest()
-: myCollation(nullptr)
+: myCollation(0)
 {
     UErrorCode status = U_ZERO_ERROR;
     myCollation = Collator::createInstance(Locale("tr", "", ""),status);

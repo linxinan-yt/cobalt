@@ -12,13 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import {LONG, LONG_NULL, NUM, STR} from '../../trace_processor/query_result';
+import {NUM, STR} from '../../trace_processor/query_result';
 import {PerfettoPlugin} from '../../public/plugin';
 import {Trace} from '../../public/trace';
 import {TrackNode} from '../../public/workspace';
 import {SLICE_TRACK_KIND} from '../../public/track_kinds';
-import {SliceTrack} from '../../components/tracks/slice_track';
-import {SourceDataset} from '../../trace_processor/dataset';
+import {createQuerySliceTrack} from '../../components/tracks/query_slice_track';
 
 export default class implements PerfettoPlugin {
   static readonly id = 'com.android.GpuWorkPeriod';
@@ -57,27 +56,22 @@ export default class implements PerfettoPlugin {
     for (; it.valid(); it.next()) {
       const {trackId, gpuId, uid, packageName} = it;
       const uri = `/gpu_work_period_${gpuId}_${uid}`;
-      const track = await SliceTrack.createMaterialized({
+      const track = await createQuerySliceTrack({
         trace: ctx,
         uri,
-        dataset: new SourceDataset({
-          src: `
+        data: {
+          sqlSource: `
             select ts, dur, name
             from slice
             where track_id = ${trackId}
           `,
-          schema: {
-            ts: LONG,
-            dur: LONG_NULL,
-            name: STR,
-          },
-        }),
+        },
       });
       ctx.tracks.registerTrack({
         uri,
         tags: {
           trackIds: [trackId],
-          kinds: [SLICE_TRACK_KIND],
+          kind: SLICE_TRACK_KIND,
         },
         renderer: track,
       });
@@ -88,7 +82,7 @@ export default class implements PerfettoPlugin {
           isSummary: true,
         });
         workPeriodByGpu.set(gpuId, workPeriod);
-        ctx.defaultWorkspace.addChildInOrder(workPeriod);
+        ctx.workspace.addChildInOrder(workPeriod);
       }
       workPeriod.addChildInOrder(new TrackNode({name: packageName, uri: uri}));
     }

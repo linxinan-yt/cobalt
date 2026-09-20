@@ -34,10 +34,6 @@ export interface QueryCounterTrackArgs {
 
   // Optional: Display options for the counter track.
   readonly options?: Partial<CounterOptions>;
-
-  // Optional: Whether to materialize the query results. If omitted, we
-  // will materialize.
-  readonly materialize?: boolean;
 }
 
 export interface SqlDataSource {
@@ -67,36 +63,29 @@ export interface CounterColumnMapping {
  * convenient using the config.columns parameter.
  */
 export async function createQueryCounterTrack(args: QueryCounterTrackArgs) {
-  if (args.materialize === false) {
-    return new SqlTableCounterTrack(
-      args.trace,
-      args.uri,
-      wrapQueryForCounterTrack(args.data, args.columns),
-      args.options,
-    );
-  } else {
-    const tableName = `__query_counter_track_${sqlNameSafe(args.uri)}`;
-    await createPerfettoTableForTrack(
-      args.trace.engine,
-      tableName,
-      args.data,
-      args.columns,
-    );
-    return new SqlTableCounterTrack(
-      args.trace,
-      args.uri,
-      tableName,
-      args.options,
-    );
-  }
+  const tableName = `__query_counter_track_${sqlNameSafe(args.uri)}`;
+  await createPerfettoTableForTrack(
+    args.trace.engine,
+    tableName,
+    args.data,
+    args.columns,
+  );
+  return new SqlTableCounterTrack(
+    args.trace,
+    args.uri,
+    tableName,
+    args.options,
+  );
 }
 
-function wrapQueryForCounterTrack(
+async function createPerfettoTableForTrack(
+  engine: Engine,
+  tableName: string,
   data: SqlDataSource,
   columnMapping: Partial<CounterColumnMapping> = {},
 ) {
   const {ts = 'ts', value = 'value'} = columnMapping;
-  return `
+  const query = `
     with data as (
       ${data.sqlSource}
     )
@@ -106,19 +95,8 @@ function wrapQueryForCounterTrack(
     from data
     order by ts
   `;
-}
 
-async function createPerfettoTableForTrack(
-  engine: Engine,
-  tableName: string,
-  data: SqlDataSource,
-  columnMapping: Partial<CounterColumnMapping> = {},
-) {
-  return await createPerfettoTable({
-    engine,
-    name: tableName,
-    as: wrapQueryForCounterTrack(data, columnMapping),
-  });
+  return await createPerfettoTable({engine, name: tableName, as: query});
 }
 
 export class SqlTableCounterTrack extends BaseCounterTrack {

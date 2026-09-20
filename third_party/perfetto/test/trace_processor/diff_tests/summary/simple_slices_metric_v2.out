@@ -1,4 +1,3 @@
-bundle_id: "max_duration"
 row {
     values: {
         double_value: 100.0

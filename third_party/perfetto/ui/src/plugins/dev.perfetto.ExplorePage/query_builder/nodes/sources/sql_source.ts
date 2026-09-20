@@ -18,9 +18,6 @@ import {
   QueryNode,
   QueryNodeState,
   NodeType,
-  createFinalColumns,
-  MultiSourceNode,
-  nextNodeId,
 } from '../../../query_node';
 import {columnInfoFromName} from '../../column_info';
 import protos from '../../../../../protos';
@@ -31,48 +28,45 @@ import {
   queryHistoryStorage,
 } from '../../../../../components/widgets/query_history';
 import {Trace} from '../../../../../public/trace';
+import {SourceNode} from '../../source_node';
 
 import {ColumnInfo} from '../../column_info';
-import {UIFilter} from '../../operations/filter';
+import {FilterDefinition} from '../../../../../components/widgets/data_grid/common';
 
 export interface SqlSourceSerializedState {
   sql?: string;
-  filters?: UIFilter[];
-  comment?: string;
+  filters: FilterDefinition[];
+  customTitle?: string;
 }
 
 export interface SqlSourceState extends QueryNodeState {
   sql?: string;
   trace: Trace;
+  sourceCols?: ColumnInfo[];
 }
 
-export class SqlSourceNode implements MultiSourceNode {
-  readonly nodeId: string;
+export class SqlSourceNode extends SourceNode {
   readonly state: SqlSourceState;
   prevNodes: QueryNode[] = [];
-  finalCols: ColumnInfo[];
-  nextNodes: QueryNode[];
 
   constructor(attrs: SqlSourceState) {
-    this.nodeId = nextNodeId();
-    this.state = {
-      ...attrs,
-      // SQL source nodes require manual execution since users write SQL
-      autoExecute: attrs.autoExecute ?? false,
-    };
-    this.finalCols = createFinalColumns([]);
+    super(attrs);
+    this.state = attrs;
+    this.state.sourceCols = [];
     this.nextNodes = [];
-    this.prevNodes = attrs.prevNodes ?? [];
   }
 
   get type() {
     return NodeType.kSqlSource;
   }
 
+  get sourceCols() {
+    return this.state.sourceCols ?? [];
+  }
+
   setSourceColumns(columns: string[]) {
-    this.finalCols = createFinalColumns(
-      columns.map((c) => columnInfoFromName(c)),
-    );
+    this.state.sourceCols = columns.map((c) => columnInfoFromName(c));
+    this.finalCols = this.sourceCols;
     m.redraw();
   }
 
@@ -83,7 +77,8 @@ export class SqlSourceNode implements MultiSourceNode {
   clone(): QueryNode {
     const stateCopy: SqlSourceState = {
       sql: this.state.sql,
-      filters: this.state.filters ? [...this.state.filters] : undefined,
+      filters: [],
+      customTitle: this.state.customTitle,
       issues: this.state.issues,
       trace: this.state.trace,
     };
@@ -95,14 +90,18 @@ export class SqlSourceNode implements MultiSourceNode {
   }
 
   getTitle(): string {
-    return 'Sql source';
+    return this.state.customTitle ?? 'Sql source';
+  }
+
+  isMaterialised(): boolean {
+    return this.state.isExecuted === true && this.meterialisedAs !== undefined;
   }
 
   serializeState(): SqlSourceSerializedState {
     return {
       sql: this.state.sql,
       filters: this.state.filters,
-      comment: this.state.comment,
+      customTitle: this.state.customTitle,
     };
   }
 
@@ -112,7 +111,7 @@ export class SqlSourceNode implements MultiSourceNode {
     const sqlProto = new protos.PerfettoSqlStructuredQuery.Sql();
 
     if (this.state.sql) sqlProto.sql = this.state.sql;
-    sqlProto.columnNames = this.finalCols.map((c) => c.column.name);
+    sqlProto.columnNames = this.sourceCols.map((c) => c.column.name);
 
     for (const prevNode of this.prevNodes) {
       const dependency = new protos.PerfettoSqlStructuredQuery.Sql.Dependency();
@@ -128,7 +127,7 @@ export class SqlSourceNode implements MultiSourceNode {
     return sq;
   }
 
-  nodeSpecificModify(): m.Child {
+  nodeSpecificModify(onExecute: () => void): m.Child {
     const runQuery = (sql: string) => {
       this.state.sql = sql.trim();
       m.redraw();
@@ -154,8 +153,7 @@ export class SqlSourceNode implements MultiSourceNode {
           onExecute: (text: string) => {
             queryHistoryStorage.saveQuery(text);
             this.state.sql = text.trim();
-            // Note: Execution is now handled by the Run button in DataExplorer
-            // This callback only saves to query history and updates the SQL text
+            onExecute();
             m.redraw();
           },
           autofocus: true,

@@ -16,9 +16,11 @@
 
 #include <jni.h>
 
-#include "perfetto/ext/base/lock_free_task_runner.h"
 #include "perfetto/ext/traced/traced.h"
 #include "perfetto/tracing/default_socket.h"
+
+#include "perfetto/ext/base/unix_task_runner.h"
+
 #include "test/fake_producer.h"
 
 namespace {
@@ -26,17 +28,16 @@ namespace {
 static std::mutex g_mutex;
 
 // These variables are guarded by the above mutex.
-static perfetto::base::MaybeLockFreeTaskRunner* g_activity_tr = nullptr;
-static perfetto::base::MaybeLockFreeTaskRunner* g_service_tr = nullptr;
-static perfetto::base::MaybeLockFreeTaskRunner* g_isolated_service_tr = nullptr;
+static perfetto::base::UnixTaskRunner* g_activity_tr = nullptr;
+static perfetto::base::UnixTaskRunner* g_service_tr = nullptr;
+static perfetto::base::UnixTaskRunner* g_isolated_service_tr = nullptr;
 
 }  // namespace
 
 namespace perfetto {
 namespace {
 
-void ListenAndRespond(const std::string& name,
-                      base::MaybeLockFreeTaskRunner** tr) {
+void ListenAndRespond(const std::string& name, base::UnixTaskRunner** tr) {
   // Note that this lock is unlocked by a post task in the middle of the
   // function instead of at the end of this function.
   std::unique_lock<std::mutex> lock(g_mutex);
@@ -49,7 +50,7 @@ void ListenAndRespond(const std::string& name,
 
   // Post a task to unlock the mutex when the runner has started executing
   // tasks.
-  base::MaybeLockFreeTaskRunner task_runner;
+  base::UnixTaskRunner task_runner;
   task_runner.PostTask([tr, &lock, &task_runner]() {
     *tr = &task_runner;
     lock.unlock();

@@ -63,7 +63,6 @@ base::Status PopulateAllowlists::Build(Context* context) const {
   packet_mask.set(protos::pbzero::TracePacket::kTraceConfigFieldNumber);
   packet_mask.set(protos::pbzero::TracePacket::kTraceStatsFieldNumber);
   packet_mask.set(protos::pbzero::TracePacket::kTriggerFieldNumber);
-  packet_mask.set(protos::pbzero::TracePacket::kPerfSampleFieldNumber);
 
   // FTRACE EVENT NOTES
   //

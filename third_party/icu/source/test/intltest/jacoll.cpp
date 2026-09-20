@@ -19,7 +19,7 @@
 #include "sfwdchit.h"
 
 CollationKanaTest::CollationKanaTest()
-: myCollation(nullptr)
+: myCollation(0)
 {
     UErrorCode status = U_ZERO_ERROR;
     myCollation = Collator::createInstance(Locale::getJapan(), status);

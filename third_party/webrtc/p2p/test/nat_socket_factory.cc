@@ -263,12 +263,12 @@ class NATSocket : public Socket, public sigslot::has_slots<> {
     if (type_ == SOCK_STREAM && !server_addr_.IsNil() && !connected_) {
       HandleConnectReply();
     } else {
-      NotifyReadEvent(this);
+      SignalReadEvent(this);
     }
   }
   void OnWriteEvent(Socket* socket) {
     RTC_DCHECK(socket == socket_);
-    NotifyWriteEvent(this);
+    SignalWriteEvent(this);
   }
   void OnCloseEvent(Socket* socket, int error) {
     RTC_DCHECK(socket == socket_);
@@ -285,10 +285,8 @@ class NATSocket : public Socket, public sigslot::has_slots<> {
     if (result >= 0) {
       socket_->SubscribeConnectEvent(
           [this](Socket* socket) { OnConnectEvent(socket); });
-      socket_->SubscribeReadEvent(
-          this, [this](Socket* socket) { OnReadEvent(socket); });
-      socket_->SubscribeWriteEvent(
-          this, [this](Socket* socket) { OnWriteEvent(socket); });
+      socket_->SignalReadEvent.connect(this, &NATSocket::OnReadEvent);
+      socket_->SignalWriteEvent.connect(this, &NATSocket::OnWriteEvent);
       socket_->SubscribeCloseEvent(this, [this](Socket* socket, int error) {
         OnCloseEvent(socket, error);
       });

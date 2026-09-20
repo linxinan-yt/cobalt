@@ -597,7 +597,7 @@ Test_nfs4_cs_prep(void){
 
 
 
-static void TestBEAMWarning(void){
+static void TestBEAMWarning(){
     UErrorCode status = U_ZERO_ERROR;
     UParseError parseError;
     UStringPrepProfile* profile = NULL;

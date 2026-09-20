@@ -26,8 +26,6 @@
 
 #include "perfetto/base/status.h"
 #include "perfetto/ext/base/flat_hash_map.h"
-#include "perfetto/ext/base/hash.h"
-#include "perfetto/ext/base/murmur_hash.h"
 #include "src/trace_processor/sqlite/scoped_db.h"
 #include "src/trace_processor/sqlite/sql_source.h"
 
@@ -152,12 +150,15 @@ class SqliteEngine {
   sqlite3* db() const { return db_.get(); }
 
  private:
+  struct FnHasher {
+    size_t operator()(const std::pair<std::string, int>& x) const {
+      return base::FnvHasher::Combine(x.first, x.second);
+    }
+  };
+
   std::optional<uint32_t> GetErrorOffset() const;
 
-  base::FlatHashMap<std::pair<std::string, int>,
-                    void*,
-                    base::MurmurHash<std::pair<std::string, int>>>
-      fn_ctx_;
+  base::FlatHashMap<std::pair<std::string, int>, void*, FnHasher> fn_ctx_;
   ScopedDb db_;
 };
 

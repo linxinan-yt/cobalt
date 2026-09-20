@@ -1,4 +1,3 @@
-bundle_id: "memory_per_process"
 row: {
   values {
     double_value: 113012736.0

@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 am{
     ExemplarCharacters{
         "[ሀ ሁ ሂ ሃ ሄ ህ ሆ ለ ሉ ሊ ላ ሌ ል ሎ ሏ ሐ ሑ ሒ ሓ ሔ ሕ ሖ ሗ መ ሙ ሚ ማ ሜ ም ሞ ሟ ሠ ሡ ሢ ሣ ሤ ሥ ሦ"
@@ -232,9 +232,6 @@ am{
                     }
                 }
             }
-            symbols{
-                nan{"በቁጥር ሊገለጽ የማይችል"}
-            }
         }
         minimalPairs{
             case{
@@ -406,7 +403,7 @@ am{
                 "h:mm:ss a z",
                 "h:mm:ss a",
                 "h:mm a",
-                "EEEE d MMMM y",
+                "y MMMM d, EEEE",
                 "d MMMM y",
                 "d MMM y",
                 "dd/MM/y",
@@ -427,42 +424,28 @@ am{
                 "yMMdd",
             }
             availableFormats{
-                Bh{"B h"}
-                Bhm{"B h:mm"}
-                Bhms{"B h:mm:ss"}
-                EBhm{"E B h:mm"}
-                EBhms{"E B h:mm:ss"}
                 Ed{"E d"}
-                Ehm{"E a h:mm"}
-                Ehms{"E a h:mm:ss"}
                 Gy{"y G"}
                 GyMMM{"MMM y G"}
-                GyMMMEd{"E MMM d y G"}
-                GyMMMd{"MMM d y G"}
-                GyMd{"d/M/y GGGGG"}
+                GyMd{"M/d/y GGGGG"}
                 H{"H"}
-                MEd{"E፣ d/M"}
+                MEd{"E፣ M/d"}
                 MMMEd{"E፣ MMM d"}
                 MMMMEd{"E፣ MMMM d"}
                 MMMMW{
-                    one{"የMMMM Wኛ ሳምንት"}
-                    other{"የMMMM Wኛ ሳምንት"}
+                    one{"ሳምንት W የ MMMM"}
+                    other{"ሳምንት W የ MMMM"}
                 }
-                Md{"d/M"}
-                h{"a h"}
-                hm{"a h:mm"}
-                hms{"a h:mm:ss"}
+                Md{"M/d"}
                 yM{"M/y"}
                 yMEd{"E፣ d/M/y"}
                 yMMM{"MMM y"}
                 yMMMEd{"E፣ MMM d y"}
                 yMMMM{"MMMM y"}
-                yMMMd{"MMM d y"}
+                yMMMd{"d MMM y"}
                 yMd{"d/M/y"}
-                yw{
-                    one{"የY wኛ ሳምንት"}
-                    other{"የY wኛ ሳምንት"}
-                }
+                yQQQ{"QQQ y"}
+                yQQQQ{"QQQQ y"}
             }
             dayNames{
                 format{
@@ -527,13 +510,13 @@ am{
                 }
                 stand-alone{
                     abbreviated{
-                        afternoon1{"ከሰዓት"}
+                        afternoon1{"ከሰዓት በኋላ"}
                         evening1{"ምሽት"}
                         morning1{"ጥዋት"}
                         night1{"ሌሊት"}
                     }
                     narrow{
-                        afternoon1{"ከሰዓት"}
+                        afternoon1{"ከሰዓት በኋላ"}
                         am{"ጠ"}
                         evening1{"ማታ"}
                         morning1{"ጥዋት"}
@@ -546,6 +529,10 @@ am{
                 abbreviated{
                     "ዓ/ዓ",
                     "ዓ/ም",
+                }
+                abbreviated%variant{
+                    "ዓ/ዓ",
+                    "መዓ",
                 }
                 wide{
                     "ዓመተ ዓለም",
@@ -581,6 +568,7 @@ am{
                 }
                 GyMd{
                     G{"GGGGG d/M/y – GGGGG d/M/y"}
+                    M{"GGGGG d/M/y – d/M/y"}
                     d{"GGGGG d/M/y – d/M/y"}
                     y{"GGGGG d/M/y – d/M/y"}
                 }
@@ -1252,31 +1240,26 @@ am{
     listPattern{
         or{
             2{"{0} ወይም {1}"}
-            end{"{0} ወይም {1}"}
+            end{"{0}፣ ወይም {1}"}
             middle{"{0}፣ {1}"}
             start{"{0}፣ {1}"}
-        }
-        or-narrow{
-            end{"{0} ወይም {1}"}
-        }
-        or-short{
-            end{"{0} ወይም {1}"}
         }
         standard{
             2{"{0} እና {1}"}
-            end{"{0} እና {1}"}
+            end{"{0}፣ እና {1}"}
             middle{"{0}፣ {1}"}
             start{"{0}፣ {1}"}
         }
-        standard-short{
-            end{"{0} እና {1}"}
-        }
-        unit{
-            end{"{0} እና {1}"}
+        standard-narrow{
+            end{"{0}, እና {1}"}
         }
         unit-narrow{
-            2{"{0} እና {1}"}
-            end{"{0} እና {1}"}
+            2{"{0} {1}"}
+            end{"{0} {1}"}
+        }
+        unit-short{
+            2{"{0}፣ {1}"}
+            end{"{0}፣ {1}"}
         }
     }
     measurementSystemNames{
@@ -1284,11 +1267,49 @@ am{
         US{"ዩ ኤስ"}
         metric{"ሜትሪክ"}
     }
+    parse{
+        date{
+            lenient{
+                "[\\- ‑ . /]",
+                "[\\: ∶]",
+            }
+        }
+        general{
+            lenient{
+                "[.．․﹒ 。｡︒]",
+                "['＇’ ՚ ᾽᾿ ʼ]",
+                "[%％﹪ ٪]",
+                "[‰ ؉]",
+                "[\$＄﹩]",
+                "[£ ₤]",
+                "[¥￥]",
+                "[₩￦]",
+                "[₹ ₨ {Rp} {Rs}]",
+            }
+        }
+        number{
+            lenient{
+                "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
+                "[,，﹐︐ ، ٫ 、﹑､︑]",
+                "[+＋﬩﹢⁺₊ ➕]",
+            }
+            stricter{
+                "[,，﹐︐ ٫]",
+                "[.．․﹒ ｡]",
+            }
+        }
+    }
     personNames{
         nameOrderLocales{
             givenFirst{
                 "und",
                 "am",
+            }
+            surnameFirst{
+                "ko",
+                "vi",
+                "yue",
+                "zh",
             }
         }
     }

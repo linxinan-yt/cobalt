@@ -34,7 +34,6 @@
 #include "perfetto/trace_processor/ref_counted.h"
 #include "perfetto/trace_processor/trace_blob_view.h"
 #include "src/trace_processor/importers/common/clock_tracker.h"
-#include "src/trace_processor/importers/common/metadata_tracker.h"
 #include "src/trace_processor/importers/common/parser_types.h"
 #include "src/trace_processor/importers/ftrace/generic_ftrace_tracker.h"
 #include "src/trace_processor/importers/proto/packet_sequence_state_generation.h"
@@ -187,13 +186,9 @@ base::Status FtraceTokenizer::TokenizeFtraceBundle(
       uint64_t raw_ts = decoder.has_previous_bundle_end_timestamp()
                             ? decoder.previous_bundle_end_timestamp()
                             : decoder.last_read_event_timestamp();
-      std::optional<int64_t> timestamp_opt =
-          context_->clock_tracker->ToTraceTime(clock_id,
-                                               static_cast<int64_t>(raw_ts));
-      if (!timestamp_opt.has_value()) {
-        return base::ErrStatus("Failed to convert timestamp to trace time");
-      }
-      int64_t timestamp = *timestamp_opt;
+      int64_t timestamp = 0;
+      ASSIGN_OR_RETURN(timestamp, context_->clock_tracker->ToTraceTime(
+                                      clock_id, static_cast<int64_t>(raw_ts)));
 
       std::optional<SqlValue> curr_latest_timestamp =
           context_->metadata_tracker->GetMetadata(
@@ -290,11 +285,12 @@ void FtraceTokenizer::TokenizeFtraceEvent(
     return;
   }
 
-  std::optional<int64_t> timestamp = context_->clock_tracker->ToTraceTime(
+  auto timestamp = context_->clock_tracker->ToTraceTime(
       clock_id, static_cast<int64_t>(raw_timestamp));
   // ClockTracker will increment some error stats if it failed to convert the
   // timestamp so just return.
-  if (!timestamp.has_value()) {
+  if (!timestamp.ok()) {
+    DlogWithLimit(timestamp.status());
     return;
   }
   module_context_->PushFtraceEvent(
@@ -355,9 +351,10 @@ void FtraceTokenizer::TokenizeFtraceCompactSchedSwitch(
     event.next_pid = *npid_it;
     event.next_prio = *nprio_it;
 
-    std::optional<int64_t> timestamp =
+    auto timestamp =
         context_->clock_tracker->ToTraceTime(clock_id, event_timestamp);
-    if (!timestamp.has_value()) {
+    if (!timestamp.ok()) {
+      DlogWithLimit(timestamp.status());
       return;
     }
     module_context_->PushInlineSchedSwitch(cpu, *timestamp, event);
@@ -413,9 +410,10 @@ void FtraceTokenizer::TokenizeFtraceCompactSchedWaking(
       common_flags_it++;
     }
 
-    std::optional<int64_t> timestamp =
+    auto timestamp =
         context_->clock_tracker->ToTraceTime(clock_id, event_timestamp);
-    if (!timestamp.has_value()) {
+    if (!timestamp.ok()) {
+      DlogWithLimit(timestamp.status());
       return;
     }
     module_context_->PushInlineSchedWaking(cpu, *timestamp, event);
@@ -497,13 +495,14 @@ void FtraceTokenizer::TokenizeFtraceGpuWorkPeriod(
 
   // Enforce clock type for the event data to be CLOCK_MONOTONIC_RAW
   // as specified, to calculate the timestamp correctly.
-  std::optional<int64_t> timestamp = context_->clock_tracker->ToTraceTime(
+  auto timestamp = context_->clock_tracker->ToTraceTime(
       BuiltinClock::BUILTIN_CLOCK_MONOTONIC_RAW,
       static_cast<int64_t>(raw_timestamp));
 
   // ClockTracker will increment some error stats if it failed to convert the
   // timestamp so just return.
-  if (!timestamp.has_value()) {
+  if (!timestamp.ok()) {
+    DlogWithLimit(timestamp.status());
     return;
   }
   module_context_->PushFtraceEvent(

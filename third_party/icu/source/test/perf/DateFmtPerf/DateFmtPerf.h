@@ -61,7 +61,7 @@ public:
 	BreakItFunction(){num = -1;}
 	BreakItFunction(int a, bool b){num = a; wordIteration = b;}
 
-	void call(UErrorCode* status) override
+	virtual void call(UErrorCode * status)
 	{		
 		BreakIterator* boundary;
 
@@ -102,7 +102,7 @@ public:
 
 	}
 
-	long getOperationsPerIteration() override
+	virtual long getOperationsPerIteration()
 	{
 		if(wordIteration) return 125*num;
 		else return 355*num;
@@ -110,7 +110,7 @@ public:
 
 	void printUnicodeString(const UnicodeString &s) {
 		char charBuf[1000];
-		s.extract(0, s.length(), charBuf, sizeof(charBuf) - 1, nullptr);
+		s.extract(0, s.length(), charBuf, sizeof(charBuf)-1, 0);   
 		charBuf[sizeof(charBuf)-1] = 0;          
 		printf("%s", charBuf);
 	}
@@ -129,7 +129,7 @@ public:
 
 	// Print the given string to stdout (for debugging purposes)
 	void uprintf(const UnicodeString &str) {
-		char* buf = nullptr;
+		char *buf = 0;
 		int32_t len = str.length();
 		int32_t bufLen = len + 16;
 		int32_t actualLen;
@@ -161,7 +161,7 @@ public:
         strcpy(locale, loc);
 	}
 
-	void call(UErrorCode* status) override
+	virtual void call(UErrorCode* status)
 	{
 
 		UErrorCode status2 = U_ZERO_ERROR;		
@@ -208,14 +208,14 @@ public:
 		//u_cleanup();
 	}
 
-	long getOperationsPerIteration() override
+	virtual long getOperationsPerIteration()
 	{
 		return NUM_DATES * num;
 	}
 
 	// Print the given string to stdout (for debugging purposes)
 	void uprintf(const UnicodeString &str) {
-		char* buf = nullptr;
+		char *buf = 0;
 		int32_t len = str.length();
 		int32_t bufLen = len + 16;
 		int32_t actualLen;
@@ -250,7 +250,7 @@ public:
                 strcpy(locale, loc);
         }
 
-        void call(UErrorCode* /*status*/) override
+        virtual void call(UErrorCode* /* status */)
         {
 
                 Locale loc(locale);
@@ -263,7 +263,7 @@ public:
                 }
         }
 
-        long getOperationsPerIteration() override
+        virtual long getOperationsPerIteration()
         {
                 return num;
         }
@@ -289,9 +289,10 @@ public:
         strcpy(locale, loc);
         }
 
-        void call(UErrorCode* /*status*/) override
+        virtual void call(UErrorCode* /* status */)
         {
                 Locale loc(locale);
+                UErrorCode status2 = U_ZERO_ERROR;
                 DateFormat *fmt = DateFormat::createDateTimeInstance(
                             DateFormat::kShort, DateFormat::kFull, loc);
                 for(int j = 0; j < num; j++) {
@@ -301,7 +302,7 @@ public:
                 delete fmt;
         }
 
-        long getOperationsPerIteration() override
+        virtual long getOperationsPerIteration()
         {
                 return num;
         }
@@ -335,7 +336,7 @@ public:
         strcpy(locale, loc);
 	}
 
-	void call(UErrorCode* /*status*/) override
+	virtual void call(UErrorCode* /* status */)
 	{
 		UErrorCode status2 = U_ZERO_ERROR;		
 		Calendar *cal;
@@ -356,7 +357,7 @@ public:
                 delete cal;
 	}
 
-	long getOperationsPerIteration() override
+	virtual long getOperationsPerIteration()
 	{
 		return num;
 	}
@@ -390,7 +391,7 @@ public:
         strcpy(locale, loc);
 	}
 
-	void call(UErrorCode* /*status*/) override
+	virtual void call(UErrorCode* /* status */)
 	{
 		Locale loc(locale);
                 UnicodeString tzname("UTC");
@@ -400,7 +401,7 @@ public:
                 }
 	}
 
-	long getOperationsPerIteration() override
+	virtual long getOperationsPerIteration()
 	{
 		return num;
 	}
@@ -434,7 +435,7 @@ public:
         strcpy(locale, loc);
 	}
 
-	void call(UErrorCode* /*status*/) override
+	virtual void call(UErrorCode* /* status */)
 	{
 		UErrorCode status2 = U_ZERO_ERROR;		
 		Locale loc(locale);
@@ -445,7 +446,7 @@ public:
                 }
 	}
 
-	long getOperationsPerIteration() override
+	virtual long getOperationsPerIteration()
 	{
 		return num;
 	}
@@ -479,7 +480,7 @@ public:
         strcpy(locale, loc);
 	}
 
-	void call(UErrorCode* /*status*/) override
+	virtual void call(UErrorCode* /* status */)
 	{
 		UErrorCode status2 = U_ZERO_ERROR;		
 		Locale loc(locale);
@@ -492,7 +493,7 @@ public:
                 delete gen;
 	}
 
-	long getOperationsPerIteration() override
+	virtual long getOperationsPerIteration()
 	{
 		return num;
 	}
@@ -526,7 +527,7 @@ public:
         strcpy(locale, loc);
 	}
 
-	void call(UErrorCode* /*status*/) override
+	virtual void call(UErrorCode* /* status */)
 	{
 		UErrorCode status2 = U_ZERO_ERROR;		
 		Locale loc(locale);
@@ -540,7 +541,7 @@ public:
                 delete gen;
 	}
 
-	long getOperationsPerIteration() override
+	virtual long getOperationsPerIteration()
 	{
 		return num;
 	}
@@ -574,7 +575,7 @@ public:
         strcpy(locale, loc);
 	}
 
-	void call(UErrorCode* status2) override
+	virtual void call(UErrorCode* status2)
 	{
         Locale loc(locale);
         UErrorCode status = U_ZERO_ERROR;
@@ -632,23 +633,23 @@ public:
         case Formattable::kInt64:
             {
                 char buf[256];
-                sprintf(buf, "%dL", f.getLong());
+                sprintf(buf, "%ldL", f.getLong());
                 return UnicodeString(buf, "");
             }
         case Formattable::kString:
-            return UnicodeString(static_cast<char16_t>(U_DQUOTE)).append(f.getString()).append(static_cast<char16_t>(U_DQUOTE));
+            return UnicodeString((char16_t)U_DQUOTE).append(f.getString()).append((char16_t)U_DQUOTE);
         case Formattable::kArray:
             {
                 int32_t i, count;
                 const Formattable* array = f.getArray(count);
-                UnicodeString result(static_cast<char16_t>(U_LEFT_SQUARE_BRACKET));
+                UnicodeString result((char16_t)U_LEFT_SQUARE_BRACKET);
                 for (i=0; i<count; ++i) {
                     if (i > 0) {
-                        (result += static_cast<char16_t>(U_COMMA)) += static_cast<char16_t>(U_SPACE);
+                        (result += (char16_t)U_COMMA) += (char16_t)U_SPACE;
                     }
                     result += formattableToString(array[i]);
                 }
-                result += static_cast<char16_t>(U_RIGHT_SQUARE_BRACKET);
+                result += (char16_t)U_RIGHT_SQUARE_BRACKET;
                 return result;
             }
         default:
@@ -656,7 +657,7 @@ public:
         }
     }
 
-	long getOperationsPerIteration() override
+	virtual long getOperationsPerIteration()
 	{
 		return num;
 	}
@@ -664,7 +665,7 @@ public:
     // Print the given string to stdout using the UTF-8 converter (for debugging purposes only)
     void uprintf(const UnicodeString &str) {
         char stackBuffer[100];
-        char* buf = nullptr;
+        char *buf = 0;
 
         int32_t bufLen = str.extract(0, 0x7fffffff, stackBuffer, sizeof(stackBuffer), "UTF-8");
         if(bufLen < sizeof(stackBuffer)) {
@@ -703,10 +704,11 @@ class StdioNumFmtFunction : public UPerfFunction
       strcpy(locale, loc);
     }
 
-  void call(UErrorCode* status2) override
+  virtual void call(UErrorCode* status2)
   {
     Locale loc(locale);
-
+    UErrorCode status = U_ZERO_ERROR;
+        
     // Parse a string.  The string uses the digits '0' through '9'
     // and the decimal separator '.', standard in the US locale
 
@@ -735,7 +737,7 @@ class StdioNumFmtFunction : public UPerfFunction
     }
   }
  
-  long getOperationsPerIteration() override
+  virtual long getOperationsPerIteration()
   {
     return num;
   }
@@ -759,7 +761,7 @@ private:
 		for(uint32_t k=0;k<listSize;k++) {
 			collation_strings[k] = collation_strings_escaped[k].unescape();
 		}
-		UnicodeString shorty(static_cast<UChar32>(0x12345));
+		UnicodeString shorty((UChar32)0x12345);
 	}
 public:
 	
@@ -781,7 +783,7 @@ public:
 		init();
 	}
 
-	void call(UErrorCode* status2) override
+	virtual void call(UErrorCode* status2)
 	{
         uint32_t listSize = UPRV_LENGTHOF(collation_strings_escaped);
         UErrorCode status = U_ZERO_ERROR; 
@@ -801,7 +803,7 @@ public:
         delete coll; 
     }
 
-	long getOperationsPerIteration() override
+	virtual long getOperationsPerIteration()
 	{
 		return num;
 	}
@@ -815,7 +817,7 @@ public:
 
 	DateFormatPerfTest(int32_t argc, const char* argv[], UErrorCode& status);
 	~DateFormatPerfTest();
-	UPerfFunction* runIndexedTest(int32_t index, UBool exec, const char*& name, char* par) override;
+	virtual UPerfFunction* runIndexedTest(int32_t index, UBool exec,const char* &name, char* par);
 
 	UPerfFunction* DateFmt250();
 	UPerfFunction* DateFmt10000();

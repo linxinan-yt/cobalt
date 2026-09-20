@@ -15,6 +15,3 @@ ProtectHome=yes
 NoNewPrivileges=yes
 RestrictAddressFamilies=AF_UNIX
 SystemCallArchitectures=native
-
-[Install]
-WantedBy=multi-user.target

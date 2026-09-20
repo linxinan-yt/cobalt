@@ -38,6 +38,7 @@
 #include "perfetto/ext/base/string_view.h"
 #include "perfetto/public/compiler.h"
 #include "src/trace_processor/dataframe/impl/bytecode_core.h"
+#include "src/trace_processor/dataframe/impl/bytecode_instructions.h"
 #include "src/trace_processor/dataframe/impl/bytecode_registers.h"
 #include "src/trace_processor/dataframe/impl/slab.h"
 #include "src/trace_processor/dataframe/impl/types.h"
@@ -314,7 +315,9 @@ class QueryPlanBuilder {
 
   // Adds a new bytecode instruction of type T to the plan.
   template <typename T>
-  T& AddOpcode(RowCountModifier rc);
+  T& AddOpcode(RowCountModifier rc) {
+    return AddOpcode<T>(bytecode::Index<T>(), rc, T::kCost);
+  }
 
   // Adds a new bytecode instruction of type T with the given option value.
   template <typename T>

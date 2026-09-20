@@ -27,6 +27,7 @@ using rtcp::Nack;
 using ::testing::_;
 using ::testing::ElementsAre;
 using ::testing::ElementsAreArray;
+using ::testing::Invoke;
 using ::testing::make_tuple;
 using ::testing::MockFunction;
 using ::testing::UnorderedElementsAreArray;
@@ -135,20 +136,20 @@ TEST(RtcpPacketNackTest, CreateFragmented) {
 
   MockFunction<void(ArrayView<const uint8_t>)> callback;
   EXPECT_CALL(callback, Call(_))
-      .WillOnce([&](ArrayView<const uint8_t> packet) {
+      .WillOnce(Invoke([&](ArrayView<const uint8_t> packet) {
         Nack nack;
         EXPECT_TRUE(test::ParseSinglePacket(packet, &nack));
         EXPECT_EQ(kSenderSsrc, nack.sender_ssrc());
         EXPECT_EQ(kRemoteSsrc, nack.media_ssrc());
         EXPECT_THAT(nack.packet_ids(), ElementsAre(1, 100, 200));
-      })
-      .WillOnce([&](ArrayView<const uint8_t> packet) {
+      }))
+      .WillOnce(Invoke([&](ArrayView<const uint8_t> packet) {
         Nack nack;
         EXPECT_TRUE(test::ParseSinglePacket(packet, &nack));
         EXPECT_EQ(kSenderSsrc, nack.sender_ssrc());
         EXPECT_EQ(kRemoteSsrc, nack.media_ssrc());
         EXPECT_THAT(nack.packet_ids(), ElementsAre(300, 400));
-      });
+      }));
 
   EXPECT_TRUE(nack.Build(kBufferSize, callback.AsStdFunction()));
 }

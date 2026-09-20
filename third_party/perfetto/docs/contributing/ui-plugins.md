@@ -1647,13 +1647,6 @@ functionality gradually or providing options for advanced users. Feature flags
 are typically registered in the `onActivate` lifecycle hook using the
 `app.featureFlags` manager.
 
-> **Note**: Feature flags are best suited for gating new or experimental
-> features during development and rollout. They work well as temporary toggles
-> that have a plan to be removed once the feature is stable (either by making it
-> the default behavior or removing it entirely). If a feature needs ongoing user
-> configuration, consider using [Custom Settings](#custom-settings) instead, as
-> they provide a better user experience for permanent preferences.
-
 To register a feature flag, you provide `FlagSettings`:
 
 - `id` (string): A unique identifier for the flag (e.g.,
@@ -1681,40 +1674,39 @@ interact with the flag's state:
 **Example:**
 
 ```typescript
-import {Flag, FlagSettings} from '../../public/featureflag'; // Adjust path as needed
-import {App} from '../../public/app';
-import {PerfettoPlugin} from '../../public/plugin';
-import {Trace} from '../../public/trace';
+import {App, Flag, FlagSettings} from '../../public'; // Adjust path as needed
 
-export default class MyFeatureFlagPlugin implements PerfettoPlugin {
+export default class implements PerfettoPlugin {
   static readonly id = 'com.example.MyFeatureFlagPlugin';
-  private static enableExperimentalTracks: Flag;
+  private static myCoolFeatureFlag: Flag;
 
   static onActivate(app: App): void {
-    // Register a feature flag to control experimental tracks
-    this.enableExperimentalTracks = app.featureFlags.register({
-      id: `${this.id}#enableExperimentalTracks`,
-      name: 'Enable Experimental Memory Tracks',
+    const flagSettings: FlagSettings = {
+      id: `${this.id}#myCoolFeature`,
+      name: 'Enable My Cool Feature',
       defaultValue: false,
       description:
-        'Enables experimental memory analysis tracks that show detailed heap allocations and memory pressure events. These tracks are under active development.',
-      devOnly: true, // Only visible in development builds
-    });
+        'This flag enables a super cool experimental feature that does X, Y, and Z.',
+      devOnly: true, // Optional: only for dev builds
+    };
+    this.myCoolFeatureFlag = app.featureFlags.register(flagSettings);
 
-    // Register a command that's only available when the flag is enabled
-    if (this.enableExperimentalTracks.get()) {
-      app.commands.registerCommand({
-        id: `${this.id}#analyzeMemoryLeaks`,
-        name: 'Analyze potential memory leaks',
-        callback: () => console.log('Running experimental leak detection...'),
-      });
+    // You can immediately check its state or use it to gate other registrations
+    if (this.myCoolFeatureFlag.get()) {
+      console.log('My Cool Feature is enabled!');
+      // Register other components that depend on this flag
     }
   }
 
   async onTraceLoad(trace: Trace): Promise<void> {
-    // Only add experimental tracks if the feature flag is enabled
-    if (MyFeatureFlagPlugin.enableExperimentalTracks.get()) {
-      // ... add the track ...
+    // Example of using the flag later
+    if (MyFeatureFlagPlugin.myCoolFeatureFlag.get()) {
+      // Add tracks or tabs related to this feature
+      trace.sidebar.addMenuItem({
+        section: 'current_trace',
+        text: 'Cool Feature Action',
+        action: () => alert('Cool feature activated!'),
+      });
     }
   }
 }
@@ -1766,10 +1758,7 @@ the descriptor and provides methods to interact with the setting:
 **Example:**
 
 ```typescript
-import {Setting, SettingDescriptor} from '../../public/setting'; // Adjust path as needed
-import {App} from '../../public/app';
-import {PerfettoPlugin} from '../../public/plugin';
-import {Trace} from '../../public/trace';
+import {App, Setting, SettingDescriptor} from '../../public'; // Adjust path
 import {z} from 'zod';
 import m from 'mithril';
 
@@ -1780,24 +1769,25 @@ const MyComplexObjectSchema = z.object({
 });
 type MyComplexObject = z.infer<typeof MyComplexObjectSchema>;
 
-export default class MySettingsPlugin implements PerfettoPlugin {
+export default class implements PerfettoPlugin {
   static readonly id = 'com.example.MySettingsPlugin';
   private static simpleBooleanSetting: Setting<boolean>;
   private static complexObjectSetting: Setting<MyComplexObject>;
 
   static onActivate(app: App): void {
     // 1. A simple boolean setting
-    this.simpleBooleanSetting = app.settings.register({
+    const boolSettingDesc: SettingDescriptor<boolean> = {
       id: `${this.id}#enableSimpleFeature`,
       name: 'Enable Simple Feature',
       description: 'Toggles a basic feature on or off.',
       schema: z.boolean(),
       defaultValue: true,
       requiresReload: false,
-    });
+    };
+    this.simpleBooleanSetting = app.settings.register(boolSettingDesc);
 
     // 2. A more complex object-based setting with a custom renderer
-    this.complexObjectSetting = app.settings.register({
+    const complexSettingDesc: SettingDescriptor<MyComplexObject> = {
       id: `${this.id}#complexConfig`,
       name: 'Complex Configuration',
       description: 'Configure advanced options A and B.',
@@ -1829,7 +1819,8 @@ export default class MySettingsPlugin implements PerfettoPlugin {
           setting.isDefault ? m('span', ' (Default)') : null,
         ]);
       },
-    });
+    };
+    this.complexObjectSetting = app.settings.register(complexSettingDesc);
 
     // Using the setting value
     if (this.simpleBooleanSetting.get()) {
@@ -1841,12 +1832,7 @@ export default class MySettingsPlugin implements PerfettoPlugin {
     );
   }
 
-  async onTraceLoad(trace: Trace) {
-    // Use the setting in onTraceLoad
-    if (MySettingsPlugin.simpleBooleanSetting.get()) {
-      console.log('Simple feature is ON');
-    }
-  }
+  // ... other plugin methods
 }
 ```
 

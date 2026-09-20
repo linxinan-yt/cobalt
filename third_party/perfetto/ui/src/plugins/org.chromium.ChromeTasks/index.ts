@@ -13,7 +13,7 @@
 // limitations under the License.
 
 import {asUtid} from '../../components/sql_utils/core_types';
-import {LONG_NULL, NUM, STR_NULL} from '../../trace_processor/query_result';
+import {NUM, NUM_NULL, STR_NULL} from '../../trace_processor/query_result';
 import {Trace} from '../../public/trace';
 import {PerfettoPlugin} from '../../public/plugin';
 import {createChromeTasksThreadTrack} from './track';
@@ -71,11 +71,11 @@ export default class implements PerfettoPlugin {
     ).iter({
       processRank: NUM,
       processName: STR_NULL,
-      pid: LONG_NULL,
+      pid: NUM_NULL,
       upid: NUM,
       threadRank: NUM,
       threadName: STR_NULL,
-      tid: LONG_NULL,
+      tid: NUM_NULL,
       utid: NUM,
     });
 
@@ -90,7 +90,7 @@ export default class implements PerfettoPlugin {
       });
       const track = new TrackNode({uri, name});
       group.addChildInOrder(track);
-      ctx.defaultWorkspace.addChildInOrder(group);
+      ctx.workspace.addChildInOrder(group);
     }
   }
 }

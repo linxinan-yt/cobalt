@@ -209,7 +209,7 @@ static void pseudo_ucnv_close(UConverter * cnv)
 /*
  *   TestTraceAPI
  */
-static void TestTraceAPI(void) {
+static void TestTraceAPI() {
 
 
     UTraceEntry   *originalTEntryFunc;

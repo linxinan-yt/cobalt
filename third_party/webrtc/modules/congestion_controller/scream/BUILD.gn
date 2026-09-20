@@ -54,7 +54,6 @@ rtc_library("scream_v2") {
     "../../../api/units:data_size",
     "../../../api/units:time_delta",
     "../../../api/units:timestamp",
-    "../../../logging:rtc_event_bwe_update_scream",
     "../../../rtc_base:checks",
     "../../../rtc_base:logging",
     "../../../rtc_base/experiments:field_trial_parser",
@@ -68,7 +67,6 @@ rtc_library("scream_network_controller") {
   ]
   deps = [
     ":scream_v2",
-    ":scream_v2_parameters",
     "../../../api:field_trials_view",
     "../../../api/environment",
     "../../../api/transport:bandwidth_usage",

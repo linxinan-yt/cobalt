@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 it{
     Keys{
         calendar{"Calendario"}
@@ -92,7 +92,6 @@ it{
         bjn{"banjar"}
         bkm{"kom"}
         bla{"siksika"}
-        blo{"anii"}
         bm{"bambara"}
         bn{"bengalese"}
         bo{"tibetano"}
@@ -231,6 +230,7 @@ it{
         gmh{"tedesco medio alto"}
         gn{"guaraní"}
         goh{"tedesco antico alto"}
+        gom{"konkani goano"}
         gon{"gondi"}
         gor{"gorontalo"}
         got{"gotico"}
@@ -336,7 +336,6 @@ it{
         kv{"komi"}
         kw{"cornico"}
         kwk{"kwakʼwala"}
-        kxv{"kuvi"}
         ky{"kirghiso"}
         la{"latino"}
         lad{"giudeo-spagnolo"}
@@ -352,7 +351,6 @@ it{
         lil{"lillooet"}
         liv{"livone"}
         lkt{"lakota"}
-        lld{"ladino"}
         lmo{"lombardo"}
         ln{"lingala"}
         lo{"lao"}
@@ -367,6 +365,7 @@ it{
         lua{"luba-lulua"}
         lui{"luiseno"}
         lun{"lunda"}
+        luo{"luo"}
         lus{"lushai"}
         luy{"luyia"}
         lv{"lettone"}
@@ -625,12 +624,12 @@ it{
         und{"lingua imprecisata"}
         ur{"urdu"}
         uz{"uzbeco"}
+        vai{"vai"}
         ve{"venda"}
         vec{"veneto"}
         vep{"vepso"}
         vi{"vietnamita"}
         vls{"fiammingo occidentale"}
-        vmw{"macua"}
         vo{"volapük"}
         vot{"voto"}
         vro{"võro"}
@@ -646,7 +645,6 @@ it{
         xal{"kalmyk"}
         xh{"xhosa"}
         xmf{"mengrelio"}
-        xnr{"kangri"}
         xog{"soga"}
         yao{"yao (bantu)"}
         yap{"yapese"}
@@ -927,6 +925,7 @@ it{
             phonebook{"Ordinamento Elenco telefonico"}
             phonetic{"Ordinamento fonetico"}
             pinyin{"Ordinamento pinyin"}
+            reformed{"Ordinamento riformato"}
             search{"Ricerca generica"}
             searchjl{"Cerca per consonante hangul iniziale"}
             standard{"Ordinamento standard"}

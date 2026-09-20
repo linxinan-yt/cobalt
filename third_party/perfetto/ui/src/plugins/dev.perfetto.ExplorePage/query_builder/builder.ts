@@ -12,67 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// QUERY EXECUTION MODEL
-// ====================
-//
-// The Explore Page uses a two-phase execution model:
-//
-// PHASE 1: ANALYSIS (Validation)
-// ------------------------------
-// When a node's state changes:
-// 1. NodeExplorer.updateQuery() is called (debounced via AsyncLimiter)
-// 2. Calls analyzeNode() which sends structured queries to the engine
-// 3. Engine VALIDATES the query and returns generated SQL (doesn't execute)
-// 4. Returns a Query object: {sql, textproto, modules, preambles, columns}
-// 5. Calls onQueryAnalyzed() callback with the validated query
-//
-// PHASE 2: EXECUTION (Running)
-// ----------------------------
-// After analysis, execution happens based on node.state.autoExecute:
-// - If autoExecute = true (default): Query runs automatically
-// - If autoExecute = false: User must click "Run" button
-//
-// Auto-execute is set to FALSE for:
-// - SqlSourceNode: User writes SQL manually, should control execution
-// - IntervalIntersectNode: Multi-node operation, potentially expensive
-// - UnionNode: Multi-node operation, potentially expensive
-//
-// Execution flow:
-// 1. Builder.runQuery() is called (auto or manual)
-// 2. Calls queryService.runQuery() with the full SQL string
-// 3. SQL = modules + preambles + query.sql
-// 4. Creates InMemoryDataSource with results
-// 5. Updates node.state.issues with any errors/warnings
-// 6. For SqlSourceNode, updates available columns
-//
-// STATE MANAGEMENT
-// ---------------
-// - this.query: Current validated query (from analysis phase)
-// - this.queryExecuted: Flag to prevent duplicate execution
-// - this.response: Query results from execution
-// - this.dataSource: Wrapped data source for DataGrid display
-
 import m from 'mithril';
 import {classNames} from '../../../base/classnames';
-import {Button, ButtonVariant} from '../../../widgets/button';
-import {Icons} from '../../../base/semantic_icons';
-import {Intent} from '../../../widgets/common';
-import {Icon} from '../../../widgets/icon';
 
 import {SqlModules} from '../../dev.perfetto.SqlModules/sql_modules';
-import {QueryNode, Query, isAQuery, queryToRun} from '../query_node';
+import {QueryNode, Query, isAQuery, queryToRun, NodeType} from '../query_node';
 import {ExplorePageHelp} from './help';
 import {NodeExplorer} from './node_explorer';
-import {Graph} from './graph/graph';
+import {Graph} from './graph';
 import {Trace} from 'src/public/trace';
 import {DataExplorer} from './data_explorer';
 import {
-  SplitPanel,
-  SplitPanelDrawerVisibility,
-} from '../../../widgets/split_panel';
-import {
   DataGridDataSource,
   DataGridModel,
+  FilterDefinition,
 } from '../../../components/widgets/data_grid/common';
 import {InMemoryDataSource} from '../../../components/widgets/data_grid/in_memory_data_source';
 import {QueryResponse} from '../../../components/query_table/queries';
@@ -81,56 +34,49 @@ import {SqlSourceNode} from './nodes/sources/sql_source';
 import {QueryService} from './query_service';
 import {findErrors, findWarnings} from './query_builder_utils';
 import {NodeIssues} from './node_issues';
-import {UIFilter} from './operations/filter';
+import {NodeBoxLayout} from './node_box';
 
 export interface BuilderAttrs {
   readonly trace: Trace;
+
   readonly sqlModules: SqlModules;
-
-  readonly devMode?: boolean;
-
   readonly rootNodes: QueryNode[];
   readonly selectedNode?: QueryNode;
-  readonly nodeLayouts: Map<string, {x: number; y: number}>;
-
-  readonly onDevModeChange?: (enabled: boolean) => void;
-
-  // Add nodes.
-  readonly onAddSourceNode: (id: string) => void;
-  readonly onAddOperationNode: (id: string, node: QueryNode) => void;
+  readonly nodeLayouts: Map<string, NodeBoxLayout>;
 
   readonly onRootNodeCreated: (node: QueryNode) => void;
   readonly onNodeSelected: (node?: QueryNode) => void;
   readonly onDeselect: () => void;
-  readonly onNodeLayoutChange: (
-    nodeId: string,
-    layout: {x: number; y: number},
-  ) => void;
+  readonly onNodeLayoutChange: (nodeId: string, layout: NodeBoxLayout) => void;
 
-  readonly onDeleteNode: (node: QueryNode) => void;
+  // Add source nodes.
+  readonly onAddStdlibTableSource: () => void;
+  readonly onAddSlicesSource: () => void;
+  readonly onAddSqlSource: () => void;
+
+  // Add derived nodes.
+  readonly onAddAggregationNode: (node: QueryNode) => void;
+  readonly onAddModifyColumnsNode: (node: QueryNode) => void;
+  readonly onAddIntervalIntersectNode: (node: QueryNode) => void;
+
   readonly onClearAllNodes: () => void;
   readonly onDuplicateNode: (node: QueryNode) => void;
-  readonly onRemoveFilter: (node: QueryNode, filter: UIFilter) => void;
-  readonly onConnectionRemove: (fromNode: QueryNode, toNode: QueryNode) => void;
-
-  // Import / Export JSON
+  readonly onDeleteNode: (node: QueryNode) => void;
   readonly onImport: () => void;
-  readonly onExport: () => void;
-
   readonly onImportWithStatement: () => void;
+  readonly onExport: () => void;
+  readonly onRemoveFilter: (node: QueryNode, filter: FilterDefinition) => void;
 }
 
 export class Builder implements m.ClassComponent<BuilderAttrs> {
   private queryService: QueryService;
   private query?: Query | Error;
   private queryExecuted: boolean = false;
-  private isQueryRunning: boolean = false;
-  private isAnalyzing: boolean = false;
+  private tablePosition: 'left' | 'right' | 'bottom' = 'bottom';
   private previousSelectedNode?: QueryNode;
-  private isExplorerCollapsed: boolean = false;
+  private isNodeDataViewerFullScreen: boolean = false;
   private response?: QueryResponse;
   private dataSource?: DataGridDataSource;
-  private drawerVisibility = SplitPanelDrawerVisibility.VISIBLE;
 
   constructor({attrs}: m.Vnode<BuilderAttrs>) {
     this.queryService = new QueryService(attrs.trace.engine);
@@ -142,24 +88,30 @@ export class Builder implements m.ClassComponent<BuilderAttrs> {
       rootNodes,
       onNodeSelected,
       selectedNode,
+      onAddStdlibTableSource,
+      onAddSlicesSource,
+      onAddSqlSource,
       onClearAllNodes,
       sqlModules,
     } = attrs;
 
     if (selectedNode && selectedNode !== this.previousSelectedNode) {
+      if (selectedNode instanceof SqlSourceNode) {
+        this.tablePosition = 'left';
+      } else {
+        this.tablePosition = 'bottom';
+      }
       this.response = undefined;
       this.dataSource = undefined;
-      this.query = undefined;
-      this.queryExecuted = false;
-      this.isQueryRunning = false;
-      this.isAnalyzing = false;
     }
     this.previousSelectedNode = selectedNode;
 
     const layoutClasses =
       classNames(
         'pf-query-builder-layout',
-        this.isExplorerCollapsed && 'explorer-collapsed',
+        selectedNode ? 'selection' : 'no-selection',
+        selectedNode && `selection-${this.tablePosition}`,
+        this.isNodeDataViewerFullScreen && 'full-page',
       ) || '';
 
     const explorer = selectedNode
@@ -171,22 +123,23 @@ export class Builder implements m.ClassComponent<BuilderAttrs> {
           trace,
           node: selectedNode,
           resolveNode: (nodeId: string) => this.resolveNode(nodeId, rootNodes),
-          onQueryAnalyzed: (query: Query | Error) => {
+          onQueryAnalyzed: (
+            query: Query | Error,
+            reexecute = selectedNode.type !== NodeType.kSqlSource &&
+              selectedNode.type !== NodeType.kIntervalIntersect,
+          ) => {
             this.query = query;
-            const shouldAutoExecute = selectedNode.state.autoExecute ?? true;
-            if (isAQuery(this.query) && shouldAutoExecute) {
+            if (isAQuery(this.query) && reexecute) {
               this.queryExecuted = false;
               this.runQuery(selectedNode);
             }
           },
-          onAnalysisStateChange: (isAnalyzing: boolean) => {
-            this.isAnalyzing = isAnalyzing;
+          onExecute: () => {
+            this.queryExecuted = false;
+            this.runQuery(selectedNode);
+            m.redraw();
           },
           onchange: () => {},
-          isCollapsed: this.isExplorerCollapsed,
-          onToggleCollapse: () => {
-            this.isExplorerCollapsed = !this.isExplorerCollapsed;
-          },
         })
       : m(ExplorePageHelp, {
           sqlModules,
@@ -195,58 +148,19 @@ export class Builder implements m.ClassComponent<BuilderAttrs> {
             const sqlTable = sqlModules.getTable(tableName);
             if (!sqlTable) return;
 
-            const newNode = new TableSourceNode({
-              trace,
-              sqlModules,
-              sqlTable,
-              filters: [],
-            });
-            newNode.state.autoExecute = true;
-            onRootNodeCreated(newNode);
+            onRootNodeCreated(
+              new TableSourceNode({
+                trace,
+                sqlModules,
+                sqlTable,
+                filters: [],
+              }),
+            );
           },
         });
 
     return m(
-      SplitPanel,
-      {
-        className: layoutClasses,
-        visibility: selectedNode
-          ? this.drawerVisibility
-          : SplitPanelDrawerVisibility.COLLAPSED,
-        onVisibilityChange: (v) => {
-          this.drawerVisibility = v;
-        },
-        startingHeight: 300,
-        drawerContent: selectedNode
-          ? m(DataExplorer, {
-              queryService: this.queryService,
-              query: this.query,
-              node: selectedNode,
-              response: this.response,
-              dataSource: this.dataSource,
-              isQueryRunning: this.isQueryRunning,
-              isAnalyzing: this.isAnalyzing,
-              onchange: () => {},
-              isFullScreen:
-                this.drawerVisibility === SplitPanelDrawerVisibility.FULLSCREEN,
-              onFullScreenToggle: () => {
-                if (
-                  this.drawerVisibility ===
-                  SplitPanelDrawerVisibility.FULLSCREEN
-                ) {
-                  this.drawerVisibility = SplitPanelDrawerVisibility.VISIBLE;
-                } else {
-                  this.drawerVisibility = SplitPanelDrawerVisibility.FULLSCREEN;
-                }
-              },
-              onExecute: () => {
-                // Reset queryExecuted flag to allow re-execution after errors or config changes
-                this.queryExecuted = false;
-                this.runQuery(selectedNode);
-              },
-            })
-          : null,
-      },
+      `.${layoutClasses.split(' ').join('.')}`,
       m(
         '.pf-qb-node-graph',
         m(Graph, {
@@ -256,47 +170,76 @@ export class Builder implements m.ClassComponent<BuilderAttrs> {
           nodeLayouts: attrs.nodeLayouts,
           onNodeLayoutChange: attrs.onNodeLayoutChange,
           onDeselect: attrs.onDeselect,
-          onAddSourceNode: attrs.onAddSourceNode,
+          onAddStdlibTableSource,
+          onAddSlicesSource,
+          onAddSqlSource,
           onClearAllNodes,
           onDuplicateNode: attrs.onDuplicateNode,
-          onAddOperationNode: (id, node) => attrs.onAddOperationNode(id, node),
-          devMode: attrs.devMode,
-          onDevModeChange: attrs.onDevModeChange,
-          onDeleteNode: attrs.onDeleteNode,
-          onConnectionRemove: attrs.onConnectionRemove,
+          onAddAggregation: attrs.onAddAggregationNode,
+          onAddModifyColumns: attrs.onAddModifyColumnsNode,
+          onAddIntervalIntersect: attrs.onAddIntervalIntersectNode,
+          onDeleteNode: (node: QueryNode) => {
+            if (node.isMaterialised()) {
+              trace.engine.query(`DROP TABLE IF EXISTS ${node.meterialisedAs}`);
+            }
+            attrs.onDeleteNode(node);
+          },
           onImport: attrs.onImport,
           onImportWithStatement: attrs.onImportWithStatement,
           onExport: attrs.onExport,
           onRemoveFilter: attrs.onRemoveFilter,
         }),
-        selectedNode &&
-          m(
-            '.pf-qb-floating-controls',
-            !selectedNode.validate() &&
-              m(
-                '.pf-qb-floating-warning',
-                m(Icon, {
-                  icon: Icons.Warning,
-                  filled: true,
-                  className: 'pf-qb-warning-icon',
-                  title: `Invalid node: ${selectedNode.state.issues?.getTitle() ?? ''}`,
-                }),
-              ),
-            this.isExplorerCollapsed &&
-              m(Button, {
-                icon: Icons.GoBack,
-                title: 'Expand panel',
-                onclick: () => {
-                  this.isExplorerCollapsed = false;
-                },
-                variant: ButtonVariant.Filled,
-                rounded: true,
-                iconFilled: true,
-                intent: Intent.Primary,
-              }),
-          ),
       ),
       m('.pf-qb-explorer', explorer),
+      selectedNode &&
+        m(
+          '.pf-qb-viewer',
+          m(DataExplorer, {
+            queryService: this.queryService,
+            query: this.query,
+            node: selectedNode,
+            executeQuery: !this.queryExecuted,
+            response: this.response,
+            dataSource: this.dataSource,
+            onchange: () => {},
+            onQueryExecuted: ({
+              columns,
+              error,
+              warning,
+              noDataWarning,
+            }: {
+              columns: string[];
+              error?: Error;
+              warning?: Error;
+              noDataWarning?: Error;
+            }) => {
+              this.queryExecuted = true;
+
+              if (error || warning || noDataWarning) {
+                if (!selectedNode.state.issues) {
+                  selectedNode.state.issues = new NodeIssues();
+                }
+                selectedNode.state.issues.queryError = error;
+                selectedNode.state.issues.responseError = warning;
+                selectedNode.state.issues.dataError = noDataWarning;
+              } else {
+                selectedNode.state.issues = undefined;
+              }
+
+              if (selectedNode instanceof SqlSourceNode) {
+                selectedNode.onQueryExecuted(columns);
+              }
+            },
+            onPositionChange: (pos: 'left' | 'right' | 'bottom') => {
+              this.tablePosition = pos;
+            },
+            isFullScreen: this.isNodeDataViewerFullScreen,
+            onFullScreenToggle: () => {
+              this.isNodeDataViewerFullScreen =
+                !this.isNodeDataViewerFullScreen;
+            },
+          }),
+        ),
     );
   }
 
@@ -332,7 +275,6 @@ export class Builder implements m.ClassComponent<BuilderAttrs> {
       return;
     }
 
-    this.isQueryRunning = true;
     this.queryService.runQuery(queryToRun(this.query)).then((response) => {
       this.response = response;
       const ds = new InMemoryDataSource(this.response.rows);
@@ -373,7 +315,6 @@ export class Builder implements m.ClassComponent<BuilderAttrs> {
       if (node instanceof SqlSourceNode) {
         node.onQueryExecuted(this.response.columns);
       }
-      this.isQueryRunning = false;
       m.redraw();
     });
   }

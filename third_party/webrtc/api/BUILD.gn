@@ -342,7 +342,6 @@ rtc_library("jsep") {
     "../pc:session_description",
     "../pc:simulcast_description",
     "../pc:simulcast_sdp_serializer",
-    "../rtc_base:base64",
     "../rtc_base:checks",
     "../rtc_base:crypto_random",
     "../rtc_base:ip_address",
@@ -544,10 +543,12 @@ rtc_source_set("packet_socket_factory") {
   deps = [
     ":async_dns_resolver",
     "../rtc_base:async_packet_socket",
+    "../rtc_base:checks",
     "../rtc_base:socket_address",
     "../rtc_base:ssl",
     "../rtc_base/system:rtc_export",
     "environment",
+    "//third_party/abseil-cpp/absl/memory",
   ]
 }
 
@@ -1672,21 +1673,6 @@ if (rtc_include_tests) {
     ]
   }
 
-  rtc_library("mock_datagram_connection") {
-    visibility = [ "*" ]
-    testonly = true
-    sources = [ "test/mock_datagram_connection.h" ]
-    deps = [
-      ":array_view",
-      ":candidate",
-      ":datagram_connection",
-      "../p2p:transport_description",
-      "../rtc_base:refcount",
-      "//test:test_support",
-      "//testing/gmock",
-    ]
-  }
-
   rtc_library("mock_datagram_connection_observer") {
     visibility = [ "*" ]
     testonly = true
@@ -1790,7 +1776,6 @@ if (rtc_include_tests) {
       "video:rtp_video_frame_assembler_unittests",
       "video:video_frame",
       "video:video_frame_metadata_unittest",
-      "video/corruption_detection:corruption_detection_unittests",
       "video/corruption_detection:frame_instrumentation_data_reader_unittest",
       "video/corruption_detection:frame_instrumentation_data_unittest",
       "video/corruption_detection:frame_instrumentation_evaluation_unittest",
@@ -1824,8 +1809,6 @@ if (rtc_include_tests) {
       ":mock_audio_mixer",
       ":mock_audio_sink",
       ":mock_data_channel",
-      ":mock_datagram_connection",
-      ":mock_datagram_connection_observer",
       ":mock_dtmf_sender",
       ":mock_frame_decryptor",
       ":mock_frame_encryptor",

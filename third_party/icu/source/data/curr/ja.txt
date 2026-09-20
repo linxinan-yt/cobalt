@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 ja{
     Currencies{
         ADP{
@@ -841,7 +841,7 @@ ja{
         }
         RSD{
             "RSD",
-            "セルビア ディナール",
+            "ディナール (セルビア)",
         }
         RUB{
             "RUB",
@@ -1001,7 +1001,7 @@ ja{
         }
         UAH{
             "UAH",
-            "ウクライナ フリヴニャ",
+            "ウクライナ グリブナ",
         }
         UAK{
             "UAK",
@@ -1228,12 +1228,6 @@ ja{
         }
         JPY{
             other{"円"}
-        }
-        RSD{
-            other{"セルビア ディナール"}
-        }
-        UAH{
-            other{"ウクライナ フリヴニャ"}
         }
     }
     CurrencyUnitPatterns{

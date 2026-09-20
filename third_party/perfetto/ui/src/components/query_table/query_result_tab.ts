@@ -93,7 +93,7 @@ export class QueryResultTab implements Tab {
       trace: this.trace,
       query: this.args.query,
       resp: this.queryResponse,
-      fillHeight: true,
+      fillParent: true,
       contextButtons: [
         this.sqlViewName === undefined
           ? null
@@ -101,7 +101,7 @@ export class QueryResultTab implements Tab {
               PopupMenu,
               {
                 trigger: m(Button, {label: 'Show debug track'}),
-                position: PopupPosition.Top,
+                popupPosition: PopupPosition.Top,
               },
               m(AddDebugTrackMenu, {
                 trace: this.trace,

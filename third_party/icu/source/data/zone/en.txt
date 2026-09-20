@@ -1,19 +1,13 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 en{
     zoneStrings{
-        "Antarctica:Macquarie"{
-            ec{"Macquarie Island"}
-        }
         "Asia:Qostanay"{
             ec{"Kostanay"}
         }
         "Asia:Saigon"{
             ec{"Ho Chi Minh City"}
-        }
-        "Australia:Lord_Howe"{
-            ec{"Lord Howe Island"}
         }
         "Etc:UTC"{
             ls{"Coordinated Universal Time"}
@@ -27,25 +21,13 @@ en{
         "Europe:London"{
             ld{"British Summer Time"}
         }
-        "Indian:Christmas"{
-            ec{"Christmas Island"}
-        }
-        "Indian:Cocos"{
-            ec{"Cocos Islands"}
-        }
-        "Pacific:Easter"{
-            ec{"Easter Island"}
+        "Europe:Uzhgorod"{
+            ec{"Uzhhorod"}
         }
         "Pacific:Honolulu"{
             sd{"HDT"}
             sg{"HST"}
             ss{"HST"}
-        }
-        "Pacific:Norfolk"{
-            ec{"Norfolk Island"}
-        }
-        "Pacific:Wake"{
-            ec{"Wake Island"}
         }
         "meta:Acre"{
             ld{"Acre Summer Time"}
@@ -125,9 +107,9 @@ en{
             ls{"Anadyr Standard Time"}
         }
         "meta:Apia"{
-            ld{"Samoa Daylight Time"}
-            lg{"Samoa Time"}
-            ls{"Samoa Standard Time"}
+            ld{"Apia Daylight Time"}
+            lg{"Apia Time"}
+            ls{"Apia Standard Time"}
         }
         "meta:Aqtau"{
             ld{"Aqtau Summer Time"}
@@ -169,7 +151,7 @@ en{
         }
         "meta:Australia_Central"{
             ld{"Australian Central Daylight Time"}
-            lg{"Australian Central Time"}
+            lg{"Central Australia Time"}
             ls{"Australian Central Standard Time"}
         }
         "meta:Australia_CentralWestern"{
@@ -179,12 +161,12 @@ en{
         }
         "meta:Australia_Eastern"{
             ld{"Australian Eastern Daylight Time"}
-            lg{"Australian Eastern Time"}
+            lg{"Eastern Australia Time"}
             ls{"Australian Eastern Standard Time"}
         }
         "meta:Australia_Western"{
             ld{"Australian Western Daylight Time"}
-            lg{"Australian Western Time"}
+            lg{"Western Australia Time"}
             ls{"Australian Western Standard Time"}
         }
         "meta:Azerbaijan"{
@@ -214,7 +196,7 @@ en{
             ls{"Brasilia Standard Time"}
         }
         "meta:Brunei"{
-            ls{"Brunei Time"}
+            ls{"Brunei Darussalam Time"}
         }
         "meta:Cape_Verde"{
             ld{"Cape Verde Summer Time"}
@@ -242,6 +224,11 @@ en{
             lg{"China Time"}
             ls{"China Standard Time"}
         }
+        "meta:Choibalsan"{
+            ld{"Choibalsan Summer Time"}
+            lg{"Choibalsan Time"}
+            ls{"Choibalsan Standard Time"}
+        }
         "meta:Christmas"{
             ls{"Christmas Island Time"}
         }
@@ -254,7 +241,7 @@ en{
             ls{"Colombia Standard Time"}
         }
         "meta:Cook"{
-            ld{"Cook Islands Summer Time"}
+            ld{"Cook Islands Half Summer Time"}
             lg{"Cook Islands Time"}
             ls{"Cook Islands Standard Time"}
         }
@@ -267,10 +254,10 @@ en{
             ls{"Davis Time"}
         }
         "meta:DumontDUrville"{
-            ls{"Dumont d’Urville Time"}
+            ls{"Dumont-d’Urville Time"}
         }
         "meta:East_Timor"{
-            ls{"Timor-Leste Time"}
+            ls{"East Timor Time"}
         }
         "meta:Easter"{
             ld{"Easter Island Summer Time"}
@@ -331,11 +318,6 @@ en{
         }
         "meta:Gilbert_Islands"{
             ls{"Gilbert Islands Time"}
-        }
-        "meta:Greenland"{
-            ld{"Greenland Summer Time"}
-            lg{"Greenland Time"}
-            ls{"Greenland Standard Time"}
         }
         "meta:Greenland_Eastern"{
             ld{"East Greenland Summer Time"}
@@ -413,12 +395,9 @@ en{
             ls{"Japan Standard Time"}
         }
         "meta:Kamchatka"{
-            ld{"Kamchatka Summer Time"}
-            lg{"Kamchatka Time"}
-            ls{"Kamchatka Standard Time"}
-        }
-        "meta:Kazakhstan"{
-            ls{"Kazakhstan Time"}
+            ld{"Petropavlovsk-Kamchatski Summer Time"}
+            lg{"Petropavlovsk-Kamchatski Time"}
+            ls{"Petropavlovsk-Kamchatski Standard Time"}
         }
         "meta:Kazakhstan_Eastern"{
             ls{"East Kazakhstan Time"}
@@ -458,6 +437,9 @@ en{
             lg{"Macao Time"}
             ls{"Macao Standard Time"}
         }
+        "meta:Macquarie"{
+            ls{"Macquarie Island Time"}
+        }
         "meta:Magadan"{
             ld{"Magadan Summer Time"}
             lg{"Magadan Time"}
@@ -482,6 +464,11 @@ en{
         }
         "meta:Mawson"{
             ls{"Mawson Time"}
+        }
+        "meta:Mexico_Northwest"{
+            ld{"Northwest Mexico Daylight Time"}
+            lg{"Northwest Mexico Time"}
+            ls{"Northwest Mexico Standard Time"}
         }
         "meta:Mexico_Pacific"{
             ld{"Mexican Pacific Daylight Time"}
@@ -536,7 +523,7 @@ en{
             ls{"Fernando de Noronha Standard Time"}
         }
         "meta:North_Mariana"{
-            ls{"Northern Mariana Islands Time"}
+            ls{"North Mariana Islands Time"}
         }
         "meta:Novosibirsk"{
             ld{"Novosibirsk Summer Time"}
@@ -586,10 +573,10 @@ en{
             ls{"Pitcairn Time"}
         }
         "meta:Ponape"{
-            ls{"Pohnpei Time"}
+            ls{"Ponape Time"}
         }
         "meta:Pyongyang"{
-            ls{"North Korea Time"}
+            ls{"Pyongyang Time"}
         }
         "meta:Qyzylorda"{
             ld{"Qyzylorda Summer Time"}
@@ -613,9 +600,9 @@ en{
             ls{"Samara Standard Time"}
         }
         "meta:Samoa"{
-            ld{"American Samoa Daylight Time"}
-            lg{"American Samoa Time"}
-            ls{"American Samoa Standard Time"}
+            ld{"Samoa Daylight Time"}
+            lg{"Samoa Time"}
+            ls{"Samoa Standard Time"}
         }
         "meta:Seychelles"{
             ls{"Seychelles Time"}
@@ -639,9 +626,9 @@ en{
             ls{"Tahiti Time"}
         }
         "meta:Taipei"{
-            ld{"Taiwan Daylight Time"}
-            lg{"Taiwan Time"}
-            ls{"Taiwan Standard Time"}
+            ld{"Taipei Daylight Time"}
+            lg{"Taipei Time"}
+            ls{"Taipei Standard Time"}
         }
         "meta:Tajikistan"{
             ls{"Tajikistan Time"}

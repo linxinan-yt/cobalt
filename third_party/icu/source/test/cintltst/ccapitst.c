@@ -15,7 +15,6 @@
 ******************************************************************************
 */
 
-#include <stdalign.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -37,6 +36,9 @@
 #define NUM_CODEPAGE 1
 #define MAX_FILE_LEN 1024*20
 #define UCS_FILE_NAME_SIZE 512
+
+/* Similar to C++ alignof(type)  */
+#define ALIGNOF(type) offsetof (struct { char c; type member; }, member)
 
 /*returns an action other than the one provided*/
 #if !UCONFIG_NO_LEGACY_CONVERSION
@@ -236,7 +238,7 @@ static void ListNames(void) {
 }
 
 
-static void TestConvert(void)
+static void TestConvert() 
 {
 #if !UCONFIG_NO_LEGACY_CONVERSION
     char                myptr[4];
@@ -1148,7 +1150,7 @@ static void TestFlushCache(void) {
  * aliases map back to itself.  Check some hard-coded UTF-8 and
  * ISO_2022 aliases to make sure they work.
  */
-static void TestAlias(void) {
+static void TestAlias() {
     int32_t i, ncnv;
     UErrorCode status = U_ZERO_ERROR;
 
@@ -1336,7 +1338,7 @@ static void TestDuplicateAlias(void) {
 
 /* Test safe clone callback */
 
-static uint32_t    TSCC_nextSerial(void)
+static uint32_t    TSCC_nextSerial()
 {
     static uint32_t n = 1;
     
@@ -1487,7 +1489,7 @@ static void TSCC_print_log(TSCCContext *q, const char *name)
     }
 }
 
-static void TestConvertSafeCloneCallback(void)
+static void TestConvertSafeCloneCallback()
 {
     UErrorCode err = U_ZERO_ERROR;
     TSCCContext from1, to1;
@@ -1666,7 +1668,7 @@ containsAnyOtherByte(uint8_t *p, int32_t length, uint8_t b) {
     return false;
 }
 
-static void TestConvertSafeClone(void)
+static void TestConvertSafeClone()
 {
     /* one 'regular' & all the 'private stateful' converters */
     static const char *const names[] = {
@@ -1835,7 +1837,7 @@ static void TestConvertSafeClone(void)
             /* close the original immediately to make sure that the clone works by itself */
             ucnv_close(cnv);
 
-            if( actualSizes[idx] <= (bufferSizes[j] - (int32_t)alignof(UConverter)) &&
+            if( actualSizes[idx] <= (bufferSizes[j] - (int32_t)ALIGNOF(UConverter)) &&
                 err == U_SAFECLONE_ALLOCATED_WARNING
             ) {
                 log_err("ucnv_safeClone(%s) did a heap clone although the buffer was large enough\n", names[idx]);
@@ -1896,15 +1898,15 @@ static void TestConvertSafeClone(void)
     }
 
     log_verbose("ucnv_safeClone(): sizeof(UConverter)=%lu  max preflighted clone size=%d (%s)  U_CNV_SAFECLONE_BUFFERSIZE=%d\n",
-        sizeof(UConverter), maxBufferSize, maxName, U_CNV_SAFECLONE_BUFFERSIZE);
+        sizeof(UConverter), maxBufferSize, maxName, (int)U_CNV_SAFECLONE_BUFFERSIZE);
     if(maxBufferSize > U_CNV_SAFECLONE_BUFFERSIZE) {
         log_err("ucnv_safeClone(): max preflighted clone size=%d (%s) is larger than U_CNV_SAFECLONE_BUFFERSIZE=%d\n",
-            maxBufferSize, maxName, U_CNV_SAFECLONE_BUFFERSIZE);
+            maxBufferSize, maxName, (int)U_CNV_SAFECLONE_BUFFERSIZE);
     }
 }
 
 
-static void TestConvertClone(void)
+static void TestConvertClone()
 {
     /* one 'regular' & all the 'private stateful' converters */
     static const char *const names[] = {
@@ -2035,7 +2037,7 @@ static void TestConvertClone(void)
     }
 }
 
-static void TestCCSID(void) {
+static void TestCCSID() {
 #if !UCONFIG_NO_LEGACY_CONVERSION
     UConverter *cnv;
     UErrorCode errorCode;
@@ -2099,7 +2101,7 @@ TestJ932(void)
  *
  * Bug report and test code provided by Edward J. Batutis.
  */
-static void bug1(void)
+static void bug1()
 {
 #if !UCONFIG_NO_LEGACY_CONVERSION
    char char_in[CHUNK_SIZE+32];
@@ -2145,7 +2147,7 @@ static void bug1(void)
 }
 
 /* bug2: pre-flighting loop bug: simple overflow causes bug */
-static void bug2(void)
+static void bug2()
 {
     /* US-ASCII "1234567890" */
     static const char source[]={ 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39 };
@@ -2219,7 +2221,7 @@ static void bug2(void)
  * bug3: when the characters expand going from source to target codepage
  *       you get bug3 in addition to bug2
  */
-static void bug3(void)
+static void bug3()
 {
 #if !UCONFIG_NO_LEGACY_CONVERSION && !UCONFIG_ONLY_HTML_CONVERSION
     char char_in[CHUNK_SIZE*4];
@@ -2389,7 +2391,7 @@ convertExMultiStreaming(UConverter *srcCnv, UConverter *targetCnv,
                        7, testName, expectCode);
 }
 
-static void TestConvertEx(void) {
+static void TestConvertEx() {
 #if !UCONFIG_NO_LEGACY_CONVERSION
     static const uint8_t
     utf8[]={
@@ -2783,7 +2785,7 @@ static void testFromBadUTF8(UConverter *utf8Cnv, UConverter *cnv, const char *co
 }
 
 /* Test illegal UTF-8 input. */
-static void TestConvertExFromUTF8(void) {
+static void TestConvertExFromUTF8() {
     static const char *const converterNames[]={
 #if !UCONFIG_NO_LEGACY_CONVERSION
         "windows-1252",
@@ -2826,7 +2828,7 @@ static void TestConvertExFromUTF8(void) {
     ucnv_close(utf8Cnv);
 }
 
-static void TestConvertExFromUTF8_C5F0(void) {
+static void TestConvertExFromUTF8_C5F0() {
     static const char *const converterNames[]={
 #if !UCONFIG_NO_LEGACY_CONVERSION
         "windows-1251",
@@ -2912,7 +2914,7 @@ static void TestConvertExFromUTF8_C5F0(void) {
 }
 
 static void
-TestConvertAlgorithmic(void) {
+TestConvertAlgorithmic() {
 #if !UCONFIG_NO_LEGACY_CONVERSION
     static const uint8_t
     utf8[]={
@@ -3335,7 +3337,7 @@ cleanup:
 }
 
 static void
-TestEBCDICSwapLFNL(void) {
+TestEBCDICSwapLFNL() {
     static const struct {
         const char *name;
         UBool swap;
@@ -3360,7 +3362,7 @@ TestEBCDICSwapLFNL() {
 }
 #endif
 
-static void TestFromUCountPending(void){
+static void TestFromUCountPending(){
 #if !UCONFIG_NO_LEGACY_CONVERSION
     UErrorCode status = U_ZERO_ERROR;
 /*       const UChar expectedUnicode[] = { 0x20ac, 0x0005, 0x0006, 0x000b, 0xdbc4, 0xde34, 0xd84d, 0xdc56, 0xfffd}; */
@@ -3464,7 +3466,7 @@ static void TestFromUCountPending(void){
 }
 
 static void
-TestToUCountPending(void){
+TestToUCountPending(){
 #if !UCONFIG_NO_LEGACY_CONVERSION
     UErrorCode status = U_ZERO_ERROR;
     static const struct {
@@ -3662,7 +3664,7 @@ compareNames(const char **names) {
 }
 
 static void
-TestCompareNames(void) {
+TestCompareNames() {
     static const char *equalUTF8[]={ "=", "UTF-8", "utf_8", "u*T@f08", "Utf 8", NULL };
     static const char *equalIBM[]={ "=", "ibm-37", "IBM037", "i-B-m  00037", "ibm-0037", "IBM00037", NULL };
     static const char *lessMac[]={ "<", "macos-0_1-10.2", "macos-1-10.0.2", "macos-1-10.2", NULL };
@@ -3675,7 +3677,7 @@ TestCompareNames(void) {
 }
 
 static void
-TestSubstString(void) {
+TestSubstString() {
     static const UChar surrogate[1]={ 0xd900 };
     char buffer[16];
 
@@ -3766,7 +3768,7 @@ TestSubstString(void) {
 }
 
 static void
-InvalidArguments(void) {
+InvalidArguments() {
     UConverter *cnv;
     UErrorCode errorCode;
     char charBuffer[2] = {1, 1};
@@ -3819,7 +3821,7 @@ InvalidArguments(void) {
     ucnv_close(cnv);
 }
 
-static void TestGetName(void) {
+static void TestGetName() {
     static const char *const names[] = {
         "Unicode",                  "UTF-16",
         "UnicodeBigUnmarked",       "UTF-16BE",
@@ -3843,7 +3845,7 @@ static void TestGetName(void) {
     }
 }
 
-static void TestUTFBOM(void) {
+static void TestUTFBOM() {
     static const UChar a16[] = { 0x61 };
     static const char *const names[] = {
         "UTF-16",

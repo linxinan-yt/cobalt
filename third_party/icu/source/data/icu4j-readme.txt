@@ -26,15 +26,12 @@ In the following,
    
    *Windows*
     - Add ICU_DATA_BUILDTOOL_OPTS as a system environment variable with value "--include_uni_core_data"
-      set ICU_DATA_BUILDTOOL_OPTS=--include_uni_core_data
-    - Build %icu4c_root%\source\allinone\allinone.sln in Visual Studio
-      You can also do it from command line (adjust Platform if needed):
-      msbuild %icu4c_root%\source\allinone\allinone.sln /p:Configuration=Release /p:Platform=x64 /p:SkipUWP=true
+    - Build $icu4c_root\source\allinone\allinone.sln in Visual Studio
 
    For more instructions on downloading and building ICU4C,
    see the ICU4C readme at:
         https://htmlpreview.github.io/?https://github.com/unicode-org/icu/blob/main/icu4c/readme.html#HowToBuild
-        (Windows: build as 'x64, Release' otherwise you will have to set 'CFG' differently below.)
+        (Windows: build as 'x86, Release' otherwise you will have to set 'CFG' differently below.)
 
     *NOTE* You should do a full rebuild after any data changes.
     
@@ -46,13 +43,10 @@ platform.
 
 *Windows* 
 
-2a. On Developer Command Prompt for VS do
-       cd %icu4c_root%\source\data
-       nmake -f makedata.mak ICUMAKE=%icu4c_root%\source\data\ CFG=x64\Release JAR="%jdk_bin%\jar" ICU4J_ROOT=%icu4j_root% icu4j-data-install
+2a. On Developer Command Prompt for VS, cd to $icu4c_root\source\data.
 
-2b. Do
-       cd %icu4j_root%
-       .\extract-data-files.bat
+2b. On Developer Command Prompt for VS,
+        nmake -f makedata.mak ICUMAKE=$icu4c_root\source\data\ CFG=x86\Release JAR="$jdk_bin\jar" ICU4J_ROOT=$icu4j_root icu4j-data-install
 
        Continue with step 3 below, in Java:
 
@@ -69,11 +63,6 @@ platform.
         make JAR=$jdk_bin/jar ICU4J_ROOT=$icu4j_root icu4j-data-install
 
        (You can omit the JAR if it's just jar.)
-
-2e. Do
-       cd $icu4j_root
-       ./extract-data-files.sh
-
 
 	Continue with step 3, in Java:
 

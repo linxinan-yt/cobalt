@@ -10,15 +10,17 @@
 
 #include "modules/congestion_controller/scream/scream_network_controller.h"
 
-#include <algorithm>
+#include <memory>
 #include <optional>
 #include <utility>
 
+#include "api/transport/bandwidth_usage.h"
 #include "api/transport/network_control.h"
 #include "api/transport/network_types.h"
 #include "api/units/data_rate.h"
 #include "api/units/time_delta.h"
 #include "api/units/timestamp.h"
+#include "logging/rtc_event_log/events/rtc_event_bwe_update_delay_based.h"
 #include "modules/congestion_controller/scream/scream_v2.h"
 #include "rtc_base/logging.h"
 namespace webrtc {
@@ -27,12 +29,8 @@ static constexpr DataRate kDefaultStartRate = DataRate::KilobitsPerSec(300);
 
 ScreamNetworkController::ScreamNetworkController(NetworkControllerConfig config)
     : env_(config.env),
-      params_(env_.field_trials()),
-      default_pacing_window_(config.default_pacing_time_window),
-      current_pacing_window_(config.default_pacing_time_window),
       scream_(std::in_place, env_),
-      target_rate_constraints_(config.constraints),
-      last_padding_interval_started_(Timestamp::Zero()) {
+      target_rate_constraints_(config.constraints) {
   if (config.constraints.min_data_rate.has_value() ||
       config.constraints.max_data_rate.has_value()) {
     scream_->SetTargetBitrateConstraints(
@@ -106,7 +104,8 @@ NetworkControlUpdate ScreamNetworkController::OnReceivedPacket(
 
 NetworkControlUpdate ScreamNetworkController::OnStreamsConfig(
     StreamsConfig msg) {
-  streams_config_ = msg;
+  // TODO: bugs.webrtc.org/447037083 - Implement;
+  RTC_LOG_F(LS_INFO) << "Not implemented";
   return NetworkControlUpdate();
 }
 
@@ -139,6 +138,10 @@ NetworkControlUpdate ScreamNetworkController::OnNetworkStateEstimate(
 NetworkControlUpdate ScreamNetworkController::OnTransportPacketsFeedback(
     TransportPacketsFeedback msg) {
   DataRate target_rate = scream_->OnTransportPacketsFeedback(msg);
+
+  // TODO: bugs.webrtc.org/447037083 - Should we add separate event for Scream?
+  env_.event_log().Log(std::make_unique<RtcEventBweUpdateDelayBased>(
+      target_rate.bps(), BandwidthUsage::kBwNormal));
   return CreateUpdate(msg.feedback_time, target_rate, msg.smoothed_rtt);
 }
 
@@ -157,52 +160,20 @@ NetworkControlUpdate ScreamNetworkController::CreateUpdate(Timestamp now,
 
   NetworkControlUpdate update;
   update.target_rate = target_rate_msg;
-  update.pacer_config = CreatePacerConfig(target_rate);
+  update.pacer_config = GetPacerConfig(target_rate);
 
   return update;
 }
 
-PacerConfig ScreamNetworkController::CreatePacerConfig(DataRate target_rate) {
-  constexpr double kPacingRateFactor = 1.5;
-  // Time window used for calculating pacing window if target rate is
-  // constrained by CE markings.
-  constexpr TimeDelta kReducedPacingWindow = TimeDelta::Millis(10);
-  // Threshold used for guessing if target rate is constrained due to CE
-  // marking.
-  constexpr double kL4sAlphaThreshold = 0.01;
-
-  DataRate max_needed_rate =
-      streams_config_.max_total_allocated_bitrate.value_or(DataRate::Zero());
-
-  DataRate padding_rate = DataRate::Zero();
-  Timestamp now = env_.clock().CurrentTime();
-  if (target_rate < max_needed_rate * kPacingRateFactor &&
-      target_rate < target_rate_constraints_.max_data_rate.value_or(
-                        DataRate::PlusInfinity())) {
-    // Periodically allow padding to be used to reach a target rate close to
-    // kPacingRateFactor*max_needed_rate.
-    if (params_.periodic_padding_interval->IsFinite() &&
-        (now - last_padding_interval_started_ >
-         params_.periodic_padding_interval.Get())) {
-      last_padding_interval_started_ = now;
-    }
-    if (now - last_padding_interval_started_ <
-        params_.periodic_padding_duration.Get()) {
-      padding_rate = target_rate;
-    }
-  }
-
-  if (current_pacing_window_ == default_pacing_window_ &&
-      target_rate < max_needed_rate &&
-      scream_->l4s_alpha() > kL4sAlphaThreshold) {
-    // Do stricter pacing if target rate is lower than what is needed and it
-    // seems like L4S is enabled. Note that once stricter pacing is enabled, it
-    // is not stopped.
-    current_pacing_window_ =
-        std::min(default_pacing_window_, kReducedPacingWindow);
-  }
-  return PacerConfig::Create(now, target_rate * kPacingRateFactor, padding_rate,
-                             current_pacing_window_);
+PacerConfig ScreamNetworkController::GetPacerConfig(
+    DataRate target_rate) const {
+  const double kPacingRateFactor = 1.5;
+  // TODO: bugs.webrtc.org/447037083 - Currently, pacer will allow sending
+  // bursts of packets with a total size up to 40ms * pacing rate.
+  return {
+      .data_window = kPacingRateFactor * target_rate * TimeDelta::Seconds(1),
+      .time_window = TimeDelta::Seconds(1),
+  };
 }
 
 }  // namespace webrtc

@@ -35,6 +35,7 @@ namespace {
 
 using ::testing::_;
 using ::testing::InSequence;
+using ::testing::Invoke;
 using ::testing::Mock;
 using ::testing::Property;
 using ::testing::Ref;
@@ -308,13 +309,13 @@ TEST_F(RtcEventLogImplTest, StopOutputOnWriteFailure) {
 
   size_t number_of_encoded_events = 0;
   EXPECT_CALL(*encoder_ptr_, OnEncode(_))
-      .WillRepeatedly([this, &number_of_encoded_events]() {
+      .WillRepeatedly(Invoke([this, &number_of_encoded_events]() {
         ++number_of_encoded_events;
         if (number_of_encoded_events == kFailsWriteOnEventsCount) {
           output_ptr_->FailsNextWrite();
         }
         return std::string();
-      });
+      }));
 
   event_log_.StartLogging(std::move(output_), kOutputPeriod.ms());
 

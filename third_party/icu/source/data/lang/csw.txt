@@ -1,33 +1,18 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 csw{
-    Keys{
-        calendar{"ᐲᓯᒧᐊᓯᓇᐦᐃᑲᐣ"}
-    }
     Languages{
-        chr{"ᒉᕑᐅᑫᕀ"}
         csw{"ᓀᐦᐃᓇᐍᐏᐣ"}
-        en{"ᐊᑲᓈᓰᒧᐏᐣ"}
-        en_AU{"ᐊᑲᓈᓰᒧᐏᐣ (AU)"}
-        en_CA{"ᐊᑲᓈᓰᒧᐏᐣ (ᑳᓇᑕ)"}
-        en_GB{"ᐊᑲᓈᓰᒧᐏᐣ (GB)"}
-        en_US{"ᐊᑲᓈᓰᒧᐏᐣ (US)"}
-        fr{"ᐹᕽᐘᔦᓰᒧᐏᐣ"}
-        fr_CA{"ᐹᕽᐘᔦᓰᒧᐏᐣ (ᑳᓇᑕ)"}
-        fr_CH{"ᐹᕽᐘᔦᓰᒧᐏᐣ (CH)"}
-        he{"ᐦᐄᑊᕑᐅᐤ"}
-        mul{"ᒥᐦᒉᐟ ᐊᔭᒧᐏᓇ"}
-        und{"ᓇᒨᓇ ᐃᐦᑕᐟᐘᐣ ᐊᔭᒧᐏᐣ"}
+        en{"ᐊᑲᓇᓯᒧᐏᐣ"}
+        en_CA{"ᒧᓀᐅ ᐏᓂᓀᐤ ᐋᑲᓇᓯᓄᒯᐣ"}
     }
     Scripts{
-        Cans{"ᓀᐦᐃᔭᐘᓯᓇᐦᐃᑳᑌᐤ"}
-        Cher{"ᒉᕑᐅᑫᕀ"}
-        Latn{"ᐋᑲᓈᓰᒨᐏᐣ"}
+        Cans{"ᓀᐦᐃᔭᐊᐧᓯᓇᐦᐃᑳᑌᐤ"}
     }
     codePatterns{
         language{"ᐊᔭᒥᐏᐣ: {0}"}
-        script{"ᒪᓯᓇᐦᐃᑫᐏᐣ: {0}"}
-        territory{"ᓀᐦᐃᔭᐘᐣᑭᕀ: {0}"}
+        script{"ᒪᓯᓇᐦᐃᑫᐃᐧᐣ: {0}"}
+        territory{"ᓀᐦᐃᔭᐊᐧᐢᑭᕀ: {0}"}
     }
 }

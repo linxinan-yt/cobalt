@@ -27,7 +27,6 @@
 #include "pc/session_description.h"
 #include "rtc_base/checks.h"
 #include "rtc_base/logging.h"
-#include "system_wrappers/include/metrics.h"
 
 namespace webrtc {
 
@@ -316,8 +315,6 @@ void JsepTransportCollection::CommitTransports() {
   for (auto& transport : jsep_transports_by_name_) {
     transport.second->CommitPayloadTypes();
   }
-  RTC_HISTOGRAM_COUNTS_LINEAR("WebRTC.PeerConnection.RtpTransportCount",
-                              jsep_transports_by_name_.size(), 1, 49, 50);
   RTC_DCHECK(IsConsistent());
 }
 

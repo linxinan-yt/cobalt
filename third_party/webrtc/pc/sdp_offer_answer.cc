@@ -326,9 +326,6 @@ RTCError VerifyDirectionsInAnswer(const SessionDescription* local_offer,
   RTC_DCHECK(local_contents.size() == remote_contents.size());
 
   for (size_t i = 0; i < local_contents.size(); i++) {
-    if (remote_contents[i].rejected) {
-      continue;
-    }
     RtpTransceiverDirection local_direction =
         local_contents[i].media_description()->direction();
     RtpTransceiverDirection remote_direction =
@@ -1538,7 +1535,7 @@ void SdpOfferAnswerHandler::Initialize(
             RTC_DCHECK_RUN_ON(signaling_thread());
             transport_controller_s()->SetLocalCertificate(certificate);
           },
-          codec_lookup_helper, pc_->env());
+          codec_lookup_helper, pc_->trials());
 
   if (pc_->options()->disable_encryption) {
     RTC_LOG(LS_INFO)
@@ -1906,8 +1903,6 @@ RTCError SdpOfferAnswerHandler::ApplyLocalDescription(
           transceiver->set_current_direction(media_desc->direction());
           transceiver->set_fired_direction(media_desc->direction());
         }
-        transceiver->set_receptive(
-            RtpTransceiverDirectionHasRecv(media_desc->direction()));
       }
       pc_->RunWithObserver([&](auto observer) {
         for (const auto& transceiver : remove_list) {
@@ -2304,8 +2299,6 @@ void SdpOfferAnswerHandler::ApplyRemoteDescriptionUpdateTransceiverState(
         // OnTrack event, we must use the proxied transceiver.
         now_receiving_transceivers.push_back(transceiver_ext);
       }
-    } else {
-      transceiver->set_receptive(false);
     }
     // 2.2.8.1.9: If direction is "sendonly" or "inactive", and transceiver's
     // [[FiredDirection]] slot is either "sendrecv" or "recvonly", process the
@@ -3347,7 +3340,7 @@ RTCError SdpOfferAnswerHandler::Rollback(SdpType desc_type) {
     auto stable_state = transceivers_stable_state_pair.second;
 
     if (stable_state.did_set_fired_direction()) {
-      // If this rollback triggers going from not receiving to receiving again,
+      // If this rollback triggers going from not receiving to receving again,
       // we need to fire "ontrack".
       bool previously_fired_direction_is_recv =
           transceiver->fired_direction().has_value() &&
@@ -3360,16 +3353,9 @@ RTCError SdpOfferAnswerHandler::Rollback(SdpType desc_type) {
           currently_fired_direction_is_recv) {
         now_receiving_transceivers.push_back(transceiver);
       }
-
       transceiver->internal()->set_fired_direction(
           stable_state.fired_direction());
     }
-
-    // https://github.com/w3c/webrtc-pc/issues/3081
-    transceiver->internal()->set_receptive(
-        transceiver->internal()->current_direction() &&
-        RtpTransceiverDirectionHasRecv(
-            *transceiver->internal()->current_direction()));
 
     if (stable_state.remote_stream_ids()) {
       std::vector<scoped_refptr<MediaStreamInterface>> added_streams;
@@ -4587,13 +4573,6 @@ void SdpOfferAnswerHandler::GetOptionsForUnifiedPlanOffer(
     }
   }
 
-  // Add a datachannel m-line first if explicitly asked even when no data
-  // channels exist.
-  if (pc_->configuration()->always_negotiate_data_channels &&
-      !pc_->sctp_mid()) {
-    MaybeNegotiateSctp(session_options);
-  }
-
   // Next, look for transceivers that are newly added (that is, are not stopped
   // and not associated). Reuse media sections marked as recyclable first,
   // otherwise append to the end of the offer. New media sections should be
@@ -4624,30 +4603,28 @@ void SdpOfferAnswerHandler::GetOptionsForUnifiedPlanOffer(
   }
   // Lastly, add a m-section if we have requested local data channels and an
   // m section does not already exist.
-  if (!pc_->configuration()->always_negotiate_data_channels &&
-      !pc_->sctp_mid() && data_channel_controller()->HasDataChannels()) {
-    MaybeNegotiateSctp(session_options);
-  }
-}
-
-void SdpOfferAnswerHandler::MaybeNegotiateSctp(
-    MediaSessionOptions* session_options) {
-  // Attempt to recycle a stopped m-line.
-  // TODO(crbug.com/1442604): sctp_mid() should return the mid if one was
-  // ever created but rejected.
-  for (size_t i = 0; i < session_options->media_description_options.size();
-       i++) {
-    auto media_description = session_options->media_description_options[i];
-    if (media_description.type == MediaType::DATA &&
-        media_description.stopped) {
-      session_options->media_description_options[i] =
-          GetMediaDescriptionOptionsForActiveData(media_description.mid);
-      return;
+  if (!pc_->sctp_mid() && data_channel_controller()->HasDataChannels()) {
+    // Attempt to recycle a stopped m-line.
+    // TODO(crbug.com/1442604): sctp_mid() should return the mid if one was
+    // ever created but rejected.
+    bool recycled = false;
+    for (size_t i = 0; i < session_options->media_description_options.size();
+         i++) {
+      auto media_description = session_options->media_description_options[i];
+      if (media_description.type == MediaType::DATA &&
+          media_description.stopped) {
+        session_options->media_description_options[i] =
+            GetMediaDescriptionOptionsForActiveData(media_description.mid);
+        recycled = true;
+        break;
+      }
+    }
+    if (!recycled) {
+      session_options->media_description_options.push_back(
+          GetMediaDescriptionOptionsForActiveData(
+              mid_generator_.GenerateString()));
     }
   }
-  // Generate a new m-line.
-  session_options->media_description_options.push_back(
-      GetMediaDescriptionOptionsForActiveData(mid_generator_.GenerateString()));
 }
 
 void SdpOfferAnswerHandler::GetOptionsForAnswer(
@@ -5225,15 +5202,9 @@ RTCError SdpOfferAnswerHandler::PushdownMediaDescription(
             std::min(local_sctp_description->max_message_size(),
                      remote_sctp_description->max_message_size());
       }
-      RTCError error = pc_->StartSctpTransport(
-          {.local_port = local_sctp_description->port(),
-           .remote_port = remote_sctp_description->port(),
-           .max_message_size = max_message_size,
-           .local_init = local_sctp_description->sctp_init(),
-           .remote_init = remote_sctp_description->sctp_init()});
-      if (!error.ok()) {
-        return error;
-      }
+      pc_->StartSctpTransport({.local_port = local_sctp_description->port(),
+                               .remote_port = remote_sctp_description->port(),
+                               .max_message_size = max_message_size});
     }
   }
 
@@ -5843,7 +5814,7 @@ bool SdpOfferAnswerHandler::UpdatePayloadTypeDemuxingState(
 }
 
 bool SdpOfferAnswerHandler::ConfiguredForMedia() const {
-  return context_->is_configured_for_media();
+  return context_->media_engine();
 }
 
 }  // namespace webrtc

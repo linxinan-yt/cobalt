@@ -122,7 +122,7 @@ NamePrepTransform::NamePrepTransform(UParseError& parseError, UErrorCode& status
 
 
 UBool NamePrepTransform::isProhibited(UChar32 ch){ 
-    return ch != ASCII_SPACE;
+    return (UBool)(ch != ASCII_SPACE); 
 }
 
 NamePrepTransform::~NamePrepTransform(){

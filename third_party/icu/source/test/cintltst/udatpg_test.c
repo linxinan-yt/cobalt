@@ -30,7 +30,6 @@
 #if !UCONFIG_NO_FORMATTING
 
 #include <stdbool.h>
-#include <stdio.h> // for sprintf()
 
 #include "unicode/udat.h"
 #include "unicode/udatpg.h"
@@ -52,9 +51,7 @@ static void TestGetDefaultHourCycleOnEmptyInstance(void);
 static void TestEras(void);
 static void TestDateTimePatterns(void);
 static void TestRegionOverride(void);
-static void TestISO8601(void);
 
-    
 void addDateTimePatternGeneratorTest(TestNode** root) {
     TESTCASE(TestOpenClose);
     TESTCASE(TestUsage);
@@ -66,7 +63,6 @@ void addDateTimePatternGeneratorTest(TestNode** root) {
     TESTCASE(TestEras);
     TESTCASE(TestDateTimePatterns);
     TESTCASE(TestRegionOverride);
-    TESTCASE(TestISO8601);
 }
 
 /*
@@ -91,7 +87,7 @@ static const UChar sampleFormatted[] = {0x31, 0x30, 0x20, 0x6A, 0x75, 0x69, 0x6C
 static const UChar skeleton[]= {0x4d, 0x4d, 0x4d, 0x64, 0};  /* MMMd */
 static const UChar timeZoneGMT[] = { 0x0047, 0x004d, 0x0054, 0x0000 };  /* "GMT" */
 
-static void TestOpenClose(void) {
+static void TestOpenClose() {
     UErrorCode errorCode=U_ZERO_ERROR;
     UDateTimePatternGenerator *dtpg, *dtpg2;
     const UChar *s;
@@ -147,7 +143,7 @@ static const AppendItemNameData appendItemNameData[] = { /* for Finnish */
     { UDATPG_FIELD_COUNT,   {0}        }  /* terminator */
 };
 
-static void TestUsage(void) {
+static void TestUsage() {
     UErrorCode errorCode=U_ZERO_ERROR;
     UDateTimePatternGenerator *dtpg;
     const AppendItemNameData * appItemNameDataPtr;
@@ -258,7 +254,7 @@ static void TestUsage(void) {
     udatpg_close(dtpg);
 }
 
-static void TestBuilder(void) {
+static void TestBuilder() {
     UErrorCode errorCode=U_ZERO_ERROR;
     UDateTimePatternGenerator *dtpg;
     UDateTimePatternConflict conflict;
@@ -413,7 +409,7 @@ static const UChar patn_hpmm_a[]  = u"h.mm\u202Fa";
 static const UChar patn_Hpmm[]    = u"H.mm";
 static const UChar patn_hhpmm_a[] = u"hh.mm\u202Fa";
 
-static void TestOptions(void) {
+static void TestOptions() {
     const DTPtnGenOptionsData testData[] = {
         /*loc   skel       options                       expectedPattern */
         { "en", skel_Hmm,  UDATPG_MATCH_NO_OPTIONS,        patn_HHcmm   },
@@ -428,16 +424,6 @@ static void TestOptions(void) {
         { "da", skel_Hmm,  UDATPG_MATCH_HOUR_FIELD_LENGTH, patn_Hpmm    },
         { "da", skel_HHmm, UDATPG_MATCH_HOUR_FIELD_LENGTH, patn_HHpmm   },
         { "da", skel_hhmm, UDATPG_MATCH_HOUR_FIELD_LENGTH, patn_hhpmm_a },
-        
-        // tests for ICU-22669
-        { "zh_TW",           u"jjm",  UDATPG_MATCH_NO_OPTIONS,        u"ah:mm" },
-        { "zh_TW",           u"jjm",  UDATPG_MATCH_ALL_FIELDS_LENGTH, u"ahh:mm" },
-        { "zh_TW",           u"jjms", UDATPG_MATCH_NO_OPTIONS,        u"ah:mm:ss" },
-        { "zh_TW",           u"jjms", UDATPG_MATCH_ALL_FIELDS_LENGTH, u"ahh:mm:ss" },
-        { "zh_TW@hours=h23", u"jjm",  UDATPG_MATCH_NO_OPTIONS,        u"HH:mm" },
-        { "zh_TW@hours=h23", u"jjm",  UDATPG_MATCH_ALL_FIELDS_LENGTH, u"HH:mm" }, // (without the fix, we get "HH:m" here)
-        { "zh_TW@hours=h23", u"jjms", UDATPG_MATCH_NO_OPTIONS,        u"HH:mm:ss" },
-        { "zh_TW@hours=h23", u"jjms", UDATPG_MATCH_ALL_FIELDS_LENGTH, u"HH:mm:ss" },
     };
 
     int count = UPRV_LENGTHOF(testData);
@@ -475,7 +461,7 @@ typedef struct FieldDisplayNameData {
 } FieldDisplayNameData;
 enum { kFieldDisplayNameMax = 32, kFieldDisplayNameBytesMax  = 64};
 
-static void TestGetFieldDisplayNames(void) {
+static void TestGetFieldDisplayNames() {
     const FieldDisplayNameData testData[] = {
         /*loc      field                              width               expectedName */
         { "de",    UDATPG_QUARTER_FIELD,              UDATPG_WIDE,        "Quartal" },
@@ -542,7 +528,7 @@ typedef struct HourCycleData {
     UDateFormatHourCycle   expected;
 } HourCycleData;
 
-static void TestGetDefaultHourCycle(void) {
+static void TestGetDefaultHourCycle() {
     const HourCycleData testData[] = {
         /*loc      expected */
         { "ar_EG",    UDAT_HOUR_CYCLE_12 },
@@ -580,7 +566,7 @@ static void TestGetDefaultHourCycle(void) {
 }
 
 // Ensure that calling udatpg_getDefaultHourCycle on an empty instance doesn't call UPRV_UNREACHABLE_EXIT/abort.
-static void TestGetDefaultHourCycleOnEmptyInstance(void) {
+static void TestGetDefaultHourCycleOnEmptyInstance() {
     UErrorCode status = U_ZERO_ERROR;
     UDateTimePatternGenerator * dtpgen = udatpg_openEmpty(&status);
 
@@ -835,48 +821,6 @@ static void TestRegionOverride(void) {
             if (assertSuccess("Error using dtpg", &err)) {
                 assertIntEquals("Wrong hour cycle", testCases[i].expectedHourCycle, actualHourCycle);
                 assertUEquals("Wrong pattern", testCases[i].expectedPattern, actualPattern);
-            }
-        }
-        udatpg_close(dtpg);
-    }
-}
-
-static void TestISO8601(void) {
-    typedef struct TestCase {
-        const char* locale;
-        const UChar* skeleton;
-        const UChar* expectedPattern;
-    } TestCase;
-
-    const TestCase testCases[] = {
-        { "en_GB@calendar=iso8601;rg=uszzzz", u"EEEEyMMMMdjmm", u"y MMMM d, EEEE 'at' h:mm a" },
-        { "en_GB@calendar=iso8601;rg=uszzzz", u"EEEEyMMMMdHmm", u"y MMMM d, EEEE 'at' HH:mm" },
-        { "en_GB@calendar=iso8601;rg=uszzzz", u"Edjmm",         u"d, EEE, h:mm a" },
-        { "en_GB@calendar=iso8601;rg=uszzzz", u"EdHmm",         u"d, EEE, HH:mm" },
-
-        { "en_US@calendar=iso8601",           u"EEEEyMMMMdjmm", u"y MMMM d, EEEE 'at' h:mm a" },
-        { "en_US@calendar=iso8601",           u"EEEEyMMMMdHmm", u"y MMMM d, EEEE 'at' HH:mm" },
-        { "en_US@calendar=iso8601",           u"Edjmm",         u"d, EEE, h:mm a" },
-        { "en_US@calendar=iso8601",           u"EdHmm",         u"d, EEE, HH:mm" },
-
-        { "en_US",                            u"EEEEyMMMMdjmm", u"EEEE, MMMM d, y 'at' h:mm a" },
-        { "en_US",                            u"EEEEyMMMMdHmm", u"EEEE, MMMM d, y 'at' HH:mm" },
-        { "en_US",                            u"Edjmm",         u"d EEE, h:mm a" },
-        { "en_US",                            u"EdHmm",         u"d EEE, HH:mm" },
-    };
-
-    for (int32_t i = 0; i < UPRV_LENGTHOF(testCases); i++) {
-        UErrorCode err = U_ZERO_ERROR;
-        UDateTimePatternGenerator* dtpg = udatpg_open(testCases[i].locale, &err);
-
-        if (assertSuccess("Error creating dtpg", &err)) {
-            UChar actualPattern[200];
-
-            udatpg_getBestPatternWithOptions(dtpg, testCases[i].skeleton, -1, 0, actualPattern, UPRV_LENGTHOF(actualPattern), &err);
-            if (assertSuccess("Error getting best pattern", &err)) {
-                char errorMessage[200];
-                snprintf(errorMessage, UPRV_LENGTHOF(errorMessage), "Wrong pattern for %s and %s", testCases[i].locale, austrdup(testCases[i].skeleton));
-                assertUEquals(errorMessage, testCases[i].expectedPattern, actualPattern);
             }
         }
         udatpg_close(dtpg);

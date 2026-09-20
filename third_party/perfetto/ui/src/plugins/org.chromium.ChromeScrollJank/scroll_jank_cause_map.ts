@@ -140,9 +140,9 @@ export class ScrollJankCauseMap {
   }
 
   public static getEventLatencyDetails(
-    eventLatency: string | undefined,
+    eventLatency: string,
   ): EventLatencyStageDetails | undefined {
-    if (eventLatency && eventLatency in ScrollJankCauseMap.instance.causes) {
+    if (eventLatency in ScrollJankCauseMap.instance.causes) {
       return ScrollJankCauseMap.instance.causes[eventLatency];
     }
     return undefined;

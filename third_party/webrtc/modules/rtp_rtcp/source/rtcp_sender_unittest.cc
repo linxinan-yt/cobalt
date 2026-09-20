@@ -54,6 +54,7 @@ namespace {
 using ::testing::_;
 using ::testing::ElementsAre;
 using ::testing::Eq;
+using ::testing::Invoke;
 using ::testing::Property;
 using ::testing::SizeIs;
 
@@ -667,7 +668,7 @@ TEST_F(RtcpSenderTest, SendsTmmbnIfSetAndEmpty) {
 TEST_F(RtcpSenderTest, ByeMustBeLast) {
   MockTransport mock_transport;
   EXPECT_CALL(mock_transport, SendRtcp(_, _))
-      .WillOnce([](ArrayView<const uint8_t> data, ::testing::Unused) {
+      .WillOnce(Invoke([](ArrayView<const uint8_t> data, ::testing::Unused) {
         const uint8_t* next_packet = data.data();
         const uint8_t* const packet_end = data.data() + data.size();
         rtcp::CommonHeader packet;
@@ -684,7 +685,7 @@ TEST_F(RtcpSenderTest, ByeMustBeLast) {
         }
 
         return true;
-      });
+      }));
 
   // Re-configure rtcp_sender with mock_transport_
   RTCPSender::Configuration config = GetDefaultConfig();

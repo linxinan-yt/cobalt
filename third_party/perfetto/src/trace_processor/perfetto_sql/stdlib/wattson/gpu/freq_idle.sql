@@ -19,8 +19,6 @@ INCLUDE PERFETTO MODULE android.gpu.mali_power_state;
 
 INCLUDE PERFETTO MODULE intervals.intersect;
 
-INCLUDE PERFETTO MODULE wattson.device_infos;
-
 -- Gapless time slices of GPU freq from trace_start() to trace_end()
 CREATE PERFETTO TABLE _gapless_gpu_freq AS
 WITH
@@ -34,14 +32,9 @@ WITH
       next_gpu_freq AS next_freq,
       gpu_id
     FROM android_gpu_frequency
+    -- Use gpu_id1 since there are multiple gpu_id1 freqs for each gpu_id0 freq
     WHERE
-      gpu_id = (
-        SELECT
-          gpu_id
-        FROM _gpuid_map
-        JOIN _wattson_device
-          ON _gpuid_map.device = _wattson_device.name
-      )
+      gpu_id = 1
     UNION ALL
     SELECT
       ts,
@@ -52,13 +45,7 @@ WITH
       gpu_id
     FROM android_gpu_frequency
     WHERE
-      gpu_id = (
-        SELECT
-          gpu_id
-        FROM _gpuid_map
-        JOIN _wattson_device
-          ON _gpuid_map.device = _wattson_device.name
-      )
+      gpu_id = 1
   )
 SELECT
   *

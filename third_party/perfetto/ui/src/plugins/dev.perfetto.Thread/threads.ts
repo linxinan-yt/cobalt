@@ -14,9 +14,9 @@
 
 export interface ThreadDesc {
   utid: number;
-  tid: bigint;
+  tid: number;
   threadName: string;
-  pid?: bigint;
+  pid?: number;
   procName?: string;
   cmdline?: string;
 }
@@ -25,7 +25,7 @@ export type ThreadMap = ReadonlyMap<number, ThreadDesc>;
 
 export interface ProcessDesc {
   upid: number;
-  pid: bigint;
+  pid: number;
   procName?: string;
   cmdline?: string;
 }

@@ -679,7 +679,7 @@ static int getToken(const unsigned char** pz) {
   int t; /* Token type to return */
   do {
     z += sqlite3GetToken(z, &t);
-  } while (t == TK_SPACE || t == TK_COMMENT);
+  } while (t == TK_SPACE);
   if (t == TK_ID || t == TK_STRING || t == TK_JOIN_KW || t == TK_WINDOW ||
       t == TK_OVER || sqlite3ParserFallback(t) == TK_ID) {
     t = TK_ID;
@@ -770,7 +770,7 @@ int sqlite3GetToken(const unsigned char* z, int* tokenType) {
       if (z[1] == '-') {
         for (i = 2; (c = z[i]) != 0 && c != '\n'; i++) {
         }
-        *tokenType = TK_COMMENT;
+        *tokenType = TK_SPACE; /* IMP: R-22934-25134 */
         return i;
       } else if (z[1] == '>') {
         *tokenType = TK_PTR;
@@ -808,7 +808,7 @@ int sqlite3GetToken(const unsigned char* z, int* tokenType) {
       }
       if (c)
         i++;
-      *tokenType = TK_COMMENT;
+      *tokenType = TK_SPACE; /* IMP: R-22934-25134 */
       return i;
     }
     case CC_PERCENT: {
@@ -929,59 +929,31 @@ int sqlite3GetToken(const unsigned char* z, int* tokenType) {
 #ifndef SQLITE_OMIT_HEX_INTEGER
       if (z[0] == '0' && (z[1] == 'x' || z[1] == 'X') &&
           sqlite3Isxdigit(z[2])) {
-        for (i = 3; 1; i++) {
-          if (sqlite3Isxdigit(z[i]) == 0) {
-            if (z[i] == SQLITE_DIGIT_SEPARATOR) {
-              *tokenType = TK_QNUMBER;
-            } else {
-              break;
-            }
-          }
+        for (i = 3; sqlite3Isxdigit(z[i]); i++) {
         }
-      } else
-#endif
-      {
-        for (i = 0; 1; i++) {
-          if (sqlite3Isdigit(z[i]) == 0) {
-            if (z[i] == SQLITE_DIGIT_SEPARATOR) {
-              *tokenType = TK_QNUMBER;
-            } else {
-              break;
-            }
-          }
-        }
-#ifndef SQLITE_OMIT_FLOATING_POINT
-        if (z[i] == '.') {
-          if (*tokenType == TK_INTEGER)
-            *tokenType = TK_FLOAT;
-          for (i++; 1; i++) {
-            if (sqlite3Isdigit(z[i]) == 0) {
-              if (z[i] == SQLITE_DIGIT_SEPARATOR) {
-                *tokenType = TK_QNUMBER;
-              } else {
-                break;
-              }
-            }
-          }
-        }
-        if ((z[i] == 'e' || z[i] == 'E') &&
-            (sqlite3Isdigit(z[i + 1]) ||
-             ((z[i + 1] == '+' || z[i + 1] == '-') &&
-              sqlite3Isdigit(z[i + 2])))) {
-          if (*tokenType == TK_INTEGER)
-            *tokenType = TK_FLOAT;
-          for (i += 2; 1; i++) {
-            if (sqlite3Isdigit(z[i]) == 0) {
-              if (z[i] == SQLITE_DIGIT_SEPARATOR) {
-                *tokenType = TK_QNUMBER;
-              } else {
-                break;
-              }
-            }
-          }
-        }
-#endif
+        return i;
       }
+#endif
+      for (i = 0; sqlite3Isdigit(z[i]); i++) {
+      }
+#ifndef SQLITE_OMIT_FLOATING_POINT
+      if (z[i] == '.') {
+        i++;
+        while (sqlite3Isdigit(z[i])) {
+          i++;
+        }
+        *tokenType = TK_FLOAT;
+      }
+      if ((z[i] == 'e' || z[i] == 'E') &&
+          (sqlite3Isdigit(z[i + 1]) || ((z[i + 1] == '+' || z[i + 1] == '-') &&
+                                        sqlite3Isdigit(z[i + 2])))) {
+        i += 2;
+        while (sqlite3Isdigit(z[i])) {
+          i++;
+        }
+        *tokenType = TK_FLOAT;
+      }
+#endif
       while (IdChar(z[i])) {
         *tokenType = TK_ILLEGAL;
         i++;

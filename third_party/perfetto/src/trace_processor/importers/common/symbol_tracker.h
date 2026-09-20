@@ -40,8 +40,6 @@ class SymbolTracker {
   explicit SymbolTracker(TraceProcessorContext* context);
   ~SymbolTracker();
 
-  void NotifyEndOfFile();
-
   AddressRangeMap<std::string>& kernel_symbols() { return kernel_symbols_; }
   base::FlatHashMap<StringId, Dso>& dsos() { return dsos_; }
 

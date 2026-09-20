@@ -429,7 +429,7 @@ If you are using VS Code we suggest the following extensions:
 - [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
 - [clangd](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd)
 - [Native Debug](https://marketplace.visualstudio.com/items?itemName=webfreak.debug)
-- [GN Language Server](https://marketplace.visualstudio.com/items?itemName=msedge-dev.gnls)
+- [GNFormat](https://marketplace.visualstudio.com/items?itemName=persidskiy.vscode-gnformat)
 - [ESlint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)

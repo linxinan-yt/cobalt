@@ -17,14 +17,10 @@
 #ifndef SRC_TRACE_PROCESSOR_IMPORTERS_COMMON_JIT_CACHE_H_
 #define SRC_TRACE_PROCESSOR_IMPORTERS_COMMON_JIT_CACHE_H_
 
-#include <cstddef>
 #include <cstdint>
 #include <optional>
-#include <string>
-#include <utility>
 
 #include "perfetto/ext/base/flat_hash_map.h"
-#include "perfetto/ext/base/murmur_hash.h"
 #include "perfetto/ext/base/string_view.h"
 #include "perfetto/trace_processor/trace_blob_view.h"
 #include "src/trace_processor/importers/common/address_range.h"
@@ -34,7 +30,8 @@
 #include "src/trace_processor/tables/profiler_tables_py.h"
 #include "src/trace_processor/types/trace_processor_context.h"
 
-namespace perfetto::trace_processor {
+namespace perfetto {
+namespace trace_processor {
 
 class VirtualMemoryMapping;
 class UserMemoryMapping;
@@ -98,14 +95,14 @@ class JitCache {
   struct FrameKey {
     tables::StackProfileMappingTable::Id mapping_id;
     uint64_t rel_pc;
-
+    struct Hasher {
+      size_t operator()(const FrameKey& k) const {
+        return static_cast<size_t>(
+            base::FnvHasher::Combine(k.mapping_id.value, k.rel_pc));
+      }
+    };
     bool operator==(const FrameKey& other) const {
       return mapping_id == other.mapping_id && rel_pc == other.rel_pc;
-    }
-
-    template <typename H>
-    friend H PerfettoHashValue(H h, const FrameKey& k) {
-      return H::Combine(std::move(h), k.mapping_id, k.rel_pc);
     }
   };
 
@@ -123,8 +120,7 @@ class JitCache {
    private:
     const tables::JitCodeTable::Id jit_code_id_;
     const std::optional<uint32_t> symbol_set_id_;
-    base::FlatHashMap<FrameKey, FrameId, base::MurmurHash<FrameKey>>
-        interned_frames_;
+    base::FlatHashMap<FrameKey, FrameId, FrameKey::Hasher> interned_frames_;
   };
 
   StringId Base64Encode(const TraceBlobView& data);
@@ -134,10 +130,10 @@ class JitCache {
   const UniquePid upid_;
   const AddressRange range_;
   AddressRangeMap<JittedFunction> functions_;
-  base::FlatHashMap<FrameKey, FrameId, base::MurmurHash<FrameKey>>
-      unknown_frames_;
+  base::FlatHashMap<FrameKey, FrameId, FrameKey::Hasher> unknown_frames_;
 };
 
-}  // namespace perfetto::trace_processor
+}  // namespace trace_processor
+}  // namespace perfetto
 
 #endif  // SRC_TRACE_PROCESSOR_IMPORTERS_COMMON_JIT_CACHE_H_

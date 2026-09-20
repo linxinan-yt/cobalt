@@ -46,7 +46,6 @@
 #include "ucol_imp.h"
 #include "ucol_swp.h"
 #include "ucnv_bld.h"
-#include "udataswp.h"
 #include "sprpimpl.h"
 #include "rbbidata.h"
 
@@ -118,7 +117,7 @@ static void lots_of_mallocs()
 #endif
 
 #if !UCONFIG_NO_FILE_IO && !UCONFIG_NO_LEGACY_CONVERSION
-static void TestUDataOpen(void){
+static void TestUDataOpen(){
     UDataMemory *result;
     UErrorCode status=U_ZERO_ERROR;
     const char* memMap[][2]={
@@ -443,7 +442,7 @@ static const ICU_COMMON_Data_Header gEmptyHeader = {
 };
 
 
-static void TestUDataSetAppData(void){
+static void TestUDataSetAppData(){
 /*    UDataMemory      *dataItem;*/
 
     UErrorCode        status=U_ZERO_ERROR;
@@ -498,7 +497,7 @@ static void TestUDataSetAppData(void){
         dataItem = udata_open("appData1", "res", "te_IN", &status); **/
 }
 
-static char *safeGetICUDataDirectory(void) {
+static char *safeGetICUDataDirectory() {
     const char *dataDir = u_getDataDirectory();  /* Returned string vanashes with u_cleanup */
     char *retStr = NULL;
     if (dataDir != NULL) {
@@ -508,7 +507,7 @@ static char *safeGetICUDataDirectory(void) {
     return retStr;
 }
     
-static void TestUDataFileAccess(void){
+static void TestUDataFileAccess(){
     UErrorCode status;
     char            *icuDataDir;
     icuDataDir = safeGetICUDataDirectory();   /* save icu data dir, so we can put it back
@@ -645,7 +644,7 @@ isAcceptable3(void *context,
 }
 
 #if !UCONFIG_NO_FILE_IO && !UCONFIG_NO_LEGACY_CONVERSION
-static void TestUDataOpenChoiceDemo1(void) {
+static void TestUDataOpenChoiceDemo1() {
     UDataMemory *result;
     UErrorCode status=U_ZERO_ERROR;
 
@@ -745,7 +744,7 @@ isAcceptable(void *context,
 
 /* This test checks to see if the isAcceptable function is being called correctly. */
 
-static void TestUDataOpenChoiceDemo2(void) {
+static void TestUDataOpenChoiceDemo2() {
     UDataMemory *result;
     UErrorCode status=U_ZERO_ERROR;
     int i;
@@ -792,7 +791,7 @@ static void TestUDataOpenChoiceDemo2(void) {
     }
 }
 
-static void TestUDataGetInfo(void) {
+static void TestUDataGetInfo() {
 
     UDataMemory *result;
     /* UDataInfo cf. udata.h */
@@ -869,7 +868,7 @@ static void TestUDataGetInfo(void) {
     udata_close(result);
 }
 
-static void TestUDataGetMemory(void) {
+static void TestUDataGetMemory() {
 
     UDataMemory *result;
     const int32_t *table=NULL;
@@ -917,7 +916,7 @@ static void TestUDataGetMemory(void) {
 
 }
 
-static void TestErrorConditions(void){
+static void TestErrorConditions(){
 
     UDataMemory *result=NULL;
     UErrorCode status=U_ZERO_ERROR;
@@ -1034,7 +1033,7 @@ static void TestErrorConditions(void){
 }
 
 /* Test whether apps and ICU can each have their own root.res */
-static void TestAppData(void)
+static void TestAppData()
 {
     UResourceBundle *icu, *app;
     UResourceBundle *tmp = NULL;
@@ -1122,7 +1121,7 @@ static void TestAppData(void)
 }
 #endif
 
-static void TestICUDataName(void)
+static void TestICUDataName()
 {
     UVersionInfo icuVersion;
     char expectDataName[20];
@@ -1139,7 +1138,18 @@ static void TestICUDataName(void)
     switch(U_CHARSET_FAMILY)
     {
     case U_ASCII_FAMILY:
-          typeChar = U_IS_BIG_ENDIAN ? 'b' : 'l';
+          switch((int)U_IS_BIG_ENDIAN)
+          {
+          case 1:
+                typeChar = 'b';
+                break;
+          case 0:
+                typeChar = 'l';
+                break;
+          default:
+                log_err("Expected 1 or 0 for U_IS_BIG_ENDIAN, got %d!\n", (int)U_IS_BIG_ENDIAN);
+                /* return; */
+          }
           break;
     case U_EBCDIC_FAMILY:
         typeChar = 'e';
@@ -1621,7 +1631,7 @@ printErrorToString(void *context, const char *fmt, va_list args) {
 
 #if !UCONFIG_NO_FILE_IO && !UCONFIG_NO_LEGACY_CONVERSION
 static void
-TestSwapData(void) {
+TestSwapData() {
     char name[100];
     UDataSwapper *ds;
     UDataMemory *pData;
@@ -1737,7 +1747,7 @@ TestSwapData(void) {
 }
 #endif
 
-static void PointerTableOfContents(void) {
+static void PointerTableOfContents() {
     UDataMemory      *dataItem;
     UErrorCode        status=U_ZERO_ERROR;
        

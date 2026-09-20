@@ -43,7 +43,7 @@ void addUNumberRangeFormatterTest(TestNode** root) {
 #define CAPACITY 30
 
 
-static void TestExampleCode(void) {
+static void TestExampleCode() {
     // This is the example code given in unumberrangeformatter.h.
 
     // Setup:
@@ -77,7 +77,7 @@ static void TestExampleCode(void) {
 }
 
 
-static void TestFormattedValue(void) {
+static void TestFormattedValue() {
     UErrorCode ec = U_ZERO_ERROR;
     UNumberRangeFormatter* uformatter = unumrf_openForSkeletonWithCollapseAndIdentityFallback(
         u"K",
@@ -123,7 +123,7 @@ static void TestFormattedValue(void) {
 }
 
 
-static void TestSkeletonParseError(void) {
+static void TestSkeletonParseError() {
     UErrorCode ec = U_ZERO_ERROR;
     UNumberRangeFormatter* uformatter;
     UParseError perror;
@@ -160,7 +160,7 @@ static void TestSkeletonParseError(void) {
 }
 
 
-static void TestGetDecimalNumbers(void) {
+static void TestGetDecimalNumbers() {
     UErrorCode ec = U_ZERO_ERROR;
     UNumberRangeFormatter* uformatter = unumrf_openForSkeletonWithCollapseAndIdentityFallback(
         u"currency/USD",

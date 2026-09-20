@@ -53,6 +53,7 @@ export default class implements PerfettoPlugin {
     const it = result.iter({
       utid: NUM,
       upid: NUM_NULL,
+      tid: NUM_NULL,
       threadName: STR_NULL,
     });
     for (; it.valid(); it.next()) {
@@ -63,7 +64,7 @@ export default class implements PerfettoPlugin {
       ctx.tracks.registerTrack({
         uri,
         tags: {
-          kinds: [CPU_PROFILE_TRACK_KIND],
+          kind: CPU_PROFILE_TRACK_KIND,
           utid,
           ...(exists(upid) && {upid}),
         },
@@ -117,7 +118,7 @@ function createAreaSelectionTab(trace: Trace) {
 function computeCpuProfileFlamegraph(trace: Trace, selection: AreaSelection) {
   const utids = [];
   for (const trackInfo of selection.tracks) {
-    if (trackInfo?.tags?.kinds?.includes(CPU_PROFILE_TRACK_KIND)) {
+    if (trackInfo?.tags?.kind === CPU_PROFILE_TRACK_KIND) {
       utids.push(trackInfo.tags?.utid);
     }
   }

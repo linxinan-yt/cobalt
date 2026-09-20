@@ -40,13 +40,11 @@ TEST(AsyncTCPSocketTest, OnWriteEvent) {
   Socket& socket_ref = *socket;
   AsyncTCPSocketObserver observer;
   AsyncTCPSocket tcp_socket(webrtc::CreateTestEnvironment(), std::move(socket));
-  tcp_socket.SubscribeReadyToSend(&observer,
-                                  [&observer](AsyncPacketSocket* socket) {
-                                    observer.OnReadyToSend(socket);
-                                  });
+  tcp_socket.SignalReadyToSend.connect(&observer,
+                                       &AsyncTCPSocketObserver::OnReadyToSend);
 
   EXPECT_FALSE(observer.ready_to_send);
-  socket_ref.NotifyWriteEvent(&socket_ref);
+  socket_ref.SignalWriteEvent(&socket_ref);
   EXPECT_TRUE(observer.ready_to_send);
 }
 

@@ -17,12 +17,13 @@
 #ifndef SRC_TRACE_PROCESSOR_PERFETTO_SQL_INTRINSICS_FUNCTIONS_REPLACE_NUMBERS_FUNCTION_H_
 #define SRC_TRACE_PROCESSOR_PERFETTO_SQL_INTRINSICS_FUNCTIONS_REPLACE_NUMBERS_FUNCTION_H_
 
-#include <cstdint>
-#include <string>
+#include <sqlite3.h>
+#include <stdint.h>
 
 #include "perfetto/base/status.h"
 
-namespace perfetto::trace_processor {
+namespace perfetto {
+namespace trace_processor {
 
 class PerfettoSqlEngine;
 class TraceProcessorContext;
@@ -55,8 +56,8 @@ base::Status RegisterStripHexFunction(PerfettoSqlEngine* engine,
 
 // Implementation of __intrinsic_strip_hex function
 // Visible for testing
-std::string SqlStripHex(const std::string& input, int64_t min_repeated_digits);
-
-}  // namespace perfetto::trace_processor
+std::string SqlStripHex(std::string input, int64_t min_repeated_digits);
+}  // namespace trace_processor
+}  // namespace perfetto
 
 #endif  // SRC_TRACE_PROCESSOR_PERFETTO_SQL_INTRINSICS_FUNCTIONS_REPLACE_NUMBERS_FUNCTION_H_

@@ -18,7 +18,6 @@
 #include <memory>
 #include <string>
 
-#include "api/array_view.h"
 #include "api/environment/environment.h"
 #include "api/task_queue/pending_task_safety_flag.h"
 #include "api/task_queue/task_queue_base.h"
@@ -70,7 +69,7 @@ class StunRequestManager {
   // Determines whether the given message is a response to one of the
   // outstanding requests, and if so, processes it appropriately.
   bool CheckResponse(StunMessage* msg);
-  bool CheckResponse(ArrayView<const uint8_t> payload);
+  bool CheckResponse(const char* data, size_t size);
 
   // Called from a StunRequest when a timeout occurs.
   void OnRequestTimedOut(StunRequest* request);
@@ -82,8 +81,7 @@ class StunRequestManager {
   void SendPacket(const void* data, size_t size, StunRequest* request);
 
  private:
-  typedef std::map<std::string, std::unique_ptr<StunRequest>, std::less<>>
-      RequestMap;
+  typedef std::map<std::string, std::unique_ptr<StunRequest>> RequestMap;
 
   TaskQueueBase* const thread_;
   RequestMap requests_ RTC_GUARDED_BY(thread_);

@@ -34,8 +34,7 @@ class StringPool;
 //    creates a data structure allowing efficient lookups of rows by id.
 // TODO(lalitm): once we have some stability here, expand the comments
 // here.
-base::Status RegisterTypeBuilderFunctions(PerfettoSqlEngine& engine,
-                                          StringPool* pool);
+base::Status RegisterTypeBuilderFunctions(PerfettoSqlEngine& engine);
 
 }  // namespace perfetto::trace_processor
 

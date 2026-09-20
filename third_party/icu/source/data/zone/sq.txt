@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 sq{
     zoneStrings{
         "Africa:Abidjan"{
@@ -354,6 +354,9 @@ sq{
         "America:Punta_Arenas"{
             ec{"Punta-Arenas"}
         }
+        "America:Rainy_River"{
+            ec{"Lumi i Shirave"}
+        }
         "America:Rankin_Inlet"{
             ec{"Gryka Inlet"}
         }
@@ -362,6 +365,9 @@ sq{
         }
         "America:Rio_Branco"{
             ec{"Rio-Branko"}
+        }
+        "America:Santa_Isabel"{
+            ec{"Santa-Izabela"}
         }
         "America:Santo_Domingo"{
             ec{"Santo-Domingo"}
@@ -399,6 +405,9 @@ sq{
         "America:Thule"{
             ec{"Dhule"}
         }
+        "America:Thunder_Bay"{
+            ec{"Gjiri i Bubullimës"}
+        }
         "America:Tijuana"{
             ec{"Tihuana"}
         }
@@ -416,6 +425,9 @@ sq{
         }
         "America:Yakutat"{
             ec{"Jakutat"}
+        }
+        "America:Yellowknife"{
+            ec{"Jellounajf"}
         }
         "Antarctica:Casey"{
             ec{"Kejsi"}
@@ -476,6 +488,9 @@ sq{
         }
         "Asia:Chita"{
             ec{"Çita"}
+        }
+        "Asia:Choibalsan"{
+            ec{"Çoibalsan"}
         }
         "Asia:Colombo"{
             ec{"Kolombo"}
@@ -639,6 +654,9 @@ sq{
         "Australia:Broken_Hill"{
             ec{"Brokën-Hill"}
         }
+        "Australia:Currie"{
+            ec{"Kuri"}
+        }
         "Australia:Darwin"{
             ec{"Darvin"}
         }
@@ -781,6 +799,9 @@ sq{
         "Europe:Warsaw"{
             ec{"Varshavë"}
         }
+        "Europe:Zaporozhye"{
+            ec{"Zaporozhje"}
+        }
         "Europe:Zurich"{
             ec{"Zyrih"}
         }
@@ -825,6 +846,9 @@ sq{
         }
         "Pacific:Honolulu"{
             ec{"Honolulu"}
+        }
+        "Pacific:Johnston"{
+            ec{"Xhonston"}
         }
         "Pacific:Kiritimati"{
             ec{"Kiritimat"}
@@ -1048,6 +1072,11 @@ sq{
             lg{"Ora e Kinës"}
             ls{"Ora standarde e Kinës"}
         }
+        "meta:Choibalsan"{
+            ld{"Ora verore e Çoibalsanit"}
+            lg{"Ora e Çoibalsanit"}
+            ls{"Ora standarde e Çoibalsanit"}
+        }
         "meta:Christmas"{
             ls{"Ora e Ishullit të Krishtlindjeve"}
         }
@@ -1214,9 +1243,6 @@ sq{
             lg{"Ora e Petropavllovsk-Kamçatkës"}
             ls{"Ora standarde e Petropavllovsk-Kamçatkës"}
         }
-        "meta:Kazakhstan"{
-            ls{"Ora e Kazakistanit"}
-        }
         "meta:Kazakhstan_Eastern"{
             ls{"Ora e Kazakistanit Lindor"}
         }
@@ -1255,6 +1281,9 @@ sq{
             lg{"Ora e Makaos"}
             ls{"Ora standarde e Makaos"}
         }
+        "meta:Macquarie"{
+            ls{"Ora e Ishullit Makuari"}
+        }
         "meta:Magadan"{
             ld{"Ora verore e Magadanit"}
             lg{"Ora e Magadanit"}
@@ -1279,6 +1308,11 @@ sq{
         }
         "meta:Mawson"{
             ls{"Ora e Mausonit"}
+        }
+        "meta:Mexico_Northwest"{
+            ld{"Ora verore e Meksikës Veriperëndimore"}
+            lg{"Ora e Meksikës Veriperëndimore"}
+            ls{"Ora standarde e Meksikës Veriperëndimore"}
         }
         "meta:Mexico_Pacific"{
             ld{"Ora verore e Territoreve Meksikane të Bregut të Paqësorit"}

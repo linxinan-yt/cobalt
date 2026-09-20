@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 fr{
     zoneStrings{
         "Africa:Addis_Ababa"{
@@ -24,6 +24,9 @@ fr{
         "Africa:Ndjamena"{
             ec{"N’Djamena"}
         }
+        "Africa:Sao_Tome"{
+            ec{"São Tomé"}
+        }
         "Africa:Tripoli"{
             ec{"Tripoli (Libye)"}
         }
@@ -38,6 +41,9 @@ fr{
         }
         "America:Argentina:Ushuaia"{
             ec{"Ushuaïa"}
+        }
+        "America:Asuncion"{
+            ec{"Asunción"}
         }
         "America:Bahia_Banderas"{
             ec{"Bahia de Banderas"}
@@ -56,6 +62,9 @@ fr{
         }
         "America:Cuiaba"{
             ec{"Cuiabá"}
+        }
+        "America:Curacao"{
+            ec{"Curaçao"}
         }
         "America:Detroit"{
             ec{"Détroit"}
@@ -125,6 +134,9 @@ fr{
         }
         "America:Puerto_Rico"{
             ec{"Porto Rico"}
+        }
+        "America:Santa_Isabel"{
+            ec{"Santa Isabel"}
         }
         "America:Santarem"{
             ec{"Santarém"}
@@ -197,6 +209,9 @@ fr{
         }
         "Asia:Chita"{
             ec{"Tchita"}
+        }
+        "Asia:Choibalsan"{
+            ec{"Tchoïbalsan"}
         }
         "Asia:Damascus"{
             ec{"Damas"}
@@ -330,6 +345,9 @@ fr{
         "Australia:Adelaide"{
             ec{"Adélaïde"}
         }
+        "Australia:Currie"{
+            ec{"Currie"}
+        }
         "Etc:UTC"{
             ls{"temps universel coordonné"}
         }
@@ -388,6 +406,9 @@ fr{
         "Europe:Ulyanovsk"{
             ec{"Oulianovsk"}
         }
+        "Europe:Uzhgorod"{
+            ec{"Oujgorod"}
+        }
         "Europe:Vatican"{
             ec{"Le Vatican"}
         }
@@ -396,6 +417,9 @@ fr{
         }
         "Europe:Warsaw"{
             ec{"Varsovie"}
+        }
+        "Europe:Zaporozhye"{
+            ec{"Zaporojie"}
         }
         "Indian:Comoro"{
             ec{"Comores"}
@@ -613,6 +637,11 @@ fr{
             lg{"heure de la Chine"}
             ls{"heure normale de la Chine"}
         }
+        "meta:Choibalsan"{
+            ld{"heure d’été de Choibalsan"}
+            lg{"heure de Choibalsan"}
+            ls{"heure normale de Choibalsan"}
+        }
         "meta:Christmas"{
             ls{"heure de l’île Christmas"}
         }
@@ -779,9 +808,6 @@ fr{
             lg{"heure de Petropavlovsk-Kamchatski"}
             ls{"heure normale de Petropavlovsk-Kamchatski"}
         }
-        "meta:Kazakhstan"{
-            ls{"heure du Kazakhstan"}
-        }
         "meta:Kazakhstan_Eastern"{
             ls{"heure de l’Est du Kazakhstan"}
         }
@@ -812,6 +838,9 @@ fr{
             lg{"heure de Lord Howe"}
             ls{"heure normale de Lord Howe"}
         }
+        "meta:Macquarie"{
+            ls{"heure de l’île Macquarie"}
+        }
         "meta:Magadan"{
             ld{"heure d’été de Magadan"}
             lg{"heure de Magadan"}
@@ -836,6 +865,11 @@ fr{
         }
         "meta:Mawson"{
             ls{"heure de Mawson"}
+        }
+        "meta:Mexico_Northwest"{
+            ld{"heure d’été du Nord-Ouest du Mexique"}
+            lg{"heure du Nord-Ouest du Mexique"}
+            ls{"heure normale du Nord-Ouest du Mexique"}
         }
         "meta:Mexico_Pacific"{
             ld{"heure d’été du Pacifique mexicain"}

@@ -1,4 +1,4 @@
-// Copyright (C) 2025 The Android Open Source Project
+// Copyright (C) 2023 The Android Open Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,40 +20,31 @@ import {PerfettoPlugin} from '../../public/plugin';
 import {Trace} from '../../public/trace';
 
 export default class implements PerfettoPlugin {
-  static readonly id = 'com.android.AndroidBinderViz';
+  static readonly id = 'com.android.AndroidBinderVizPlugin';
 
   async onTraceLoad(ctx: Trace): Promise<void> {
-    await this.createBinderTransactionTrack(ctx, 'server', 'client');
-    await this.createBinderTransactionTrack(ctx, 'client', 'server');
-  }
-
-  async createBinderTransactionTrack(
-    ctx: Trace,
-    perspective: string,
-    oppositePerspective: string,
-  ) {
     const binderCounterBreakdowns = new BreakdownTracks({
       trace: ctx,
-      trackTitle: `Binder ${perspective} Transaction Counts`,
+      trackTitle: 'Binder Transaction Counts',
       modules: ['android.binder', 'android.binder_breakdown'],
       aggregationType: BreakdownTrackAggType.COUNT,
       aggregation: {
         columns: [
-          `${perspective}_process`,
-          `(IFNULL(interface, "unknown interface"))`,
-          `(IFNULL(method_name, "unknown method"))`,
-          `(${oppositePerspective}_process || ":" || ${oppositePerspective}_upid)`,
-          `(${oppositePerspective}_thread || ":" ||  ${oppositePerspective}_utid)`,
+          'server_process',
+          '(IFNULL(interface, "unknown"))',
+          '(IFNULL(method_name, "unknown"))',
+          '(client_process || ":" || client_upid)',
+          '(client_thread || ":" ||  client_utid)',
         ],
-        tsCol: `${oppositePerspective}_ts`,
-        durCol: `${oppositePerspective}_dur`,
+        tsCol: 'client_ts',
+        durCol: 'client_dur',
         tableName: 'android_binder_txns',
       },
       slice: {
         columns: ['aidl_name'],
         tableName: 'android_binder_txns',
-        tsCol: `${oppositePerspective}_ts`,
-        durCol: `${oppositePerspective}_dur`,
+        tsCol: 'client_ts',
+        durCol: 'client_dur',
       },
       pivots: {
         columns: ['reason_type', 'reason'],
@@ -69,8 +60,6 @@ export default class implements PerfettoPlugin {
       },
     });
 
-    ctx.defaultWorkspace.addChildInOrder(
-      await binderCounterBreakdowns.createTracks(),
-    );
+    ctx.workspace.addChildInOrder(await binderCounterBreakdowns.createTracks());
   }
 }

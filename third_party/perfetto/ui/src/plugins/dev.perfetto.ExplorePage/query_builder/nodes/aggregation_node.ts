@@ -19,8 +19,6 @@ import {
   nextNodeId,
   NodeType,
   createSelectColumnsProto,
-  notifyNextNodes,
-  ModificationNode,
 } from '../../query_node';
 import protos from '../../../../protos';
 import {
@@ -28,18 +26,13 @@ import {
   columnInfoFromName,
   newColumnInfoList,
 } from '../column_info';
-import {
-  createExperimentalFiltersProto,
-  renderFilterOperation,
-  UIFilter,
-} from '../operations/filter';
+import {createFiltersProto, FilterOperation} from '../operations/filter';
+import {FilterDefinition} from '../../../../components/widgets/data_grid/common';
 import {MultiselectInput} from '../../../../widgets/multiselect_input';
 import {Select} from '../../../../widgets/select';
 import {TextInput} from '../../../../widgets/text_input';
 import {Button} from '../../../../widgets/button';
-import {Card} from '../../../../widgets/card';
 import {NodeIssues} from '../node_issues';
-import {Icons} from '../../../../base/semantic_icons';
 
 export interface AggregationSerializedState {
   groupByColumns: {name: string; checked: boolean}[];
@@ -50,15 +43,14 @@ export interface AggregationSerializedState {
     isValid?: boolean;
     isEditing?: boolean;
   }[];
-  filters?: UIFilter[];
-  filterOperator?: 'AND' | 'OR';
-  comment?: string;
+  filters: FilterDefinition[];
+  customTitle?: string;
 }
 
 export interface AggregationNodeState extends QueryNodeState {
-  prevNode: QueryNode;
+  prevNodes?: QueryNode[];
   groupByColumns: ColumnInfo[];
-  aggregations: Aggregation[];
+  readonly aggregations: Aggregation[];
 }
 
 export interface Aggregation {
@@ -69,12 +61,19 @@ export interface Aggregation {
   isEditing?: boolean;
 }
 
-export class AggregationNode implements ModificationNode {
+export class AggregationNode implements QueryNode {
   readonly nodeId: string;
   readonly type = NodeType.kAggregation;
-  readonly prevNode: QueryNode;
+  readonly prevNodes?: QueryNode[];
   nextNodes: QueryNode[];
   readonly state: AggregationNodeState;
+  meterialisedAs?: string;
+
+  get sourceCols() {
+    return (
+      this.prevNodes?.[0]?.finalCols ?? this.prevNodes?.[0]?.sourceCols ?? []
+    );
+  }
 
   get finalCols(): ColumnInfo[] {
     const selected = this.state.groupByColumns.filter((c) => c.checked);
@@ -90,33 +89,16 @@ export class AggregationNode implements ModificationNode {
     this.nodeId = nextNodeId();
     this.state = {
       ...state,
-      groupByColumns: state.groupByColumns ?? [],
-      aggregations: state.aggregations ?? [],
     };
-    this.prevNode = state.prevNode;
+    this.prevNodes = state.prevNodes;
     this.nextNodes = [];
-    if (this.state.groupByColumns.length === 0) {
-      this.state.groupByColumns = newColumnInfoList(
-        this.prevNode.finalCols ?? [],
-        false,
-      );
+    if (!this.state.groupByColumns.length) {
+      this.state.groupByColumns = newColumnInfoList(this.sourceCols, false);
     }
-    const userOnChange = this.state.onchange;
-    this.state.onchange = () => {
-      notifyNextNodes(this);
-      userOnChange?.();
-    };
-  }
-
-  onPrevNodesUpdated() {
-    this.updateGroupByColumns();
   }
 
   updateGroupByColumns() {
-    const newGroupByColumns = newColumnInfoList(
-      this.prevNode.finalCols ?? [],
-      false,
-    );
+    const newGroupByColumns = newColumnInfoList(this.sourceCols, false);
     for (const oldCol of this.state.groupByColumns) {
       if (oldCol.checked) {
         const newCol = newGroupByColumns.find((c) => c.name === oldCol.name);
@@ -133,22 +115,22 @@ export class AggregationNode implements ModificationNode {
   }
 
   validate(): boolean {
-    // Clear any previous errors at the start of validation
     if (this.state.issues) {
-      this.state.issues.clear();
+      this.state.issues.queryError = undefined;
     }
-
-    if (this.prevNode === undefined) {
-      this.setValidationError('No input node connected');
+    if (!this.prevNodes || this.prevNodes.length === 0) {
+      if (!this.state.issues) this.state.issues = new NodeIssues();
+      this.state.issues.queryError = new Error(
+        'Aggregation node has no previous node',
+      );
       return false;
     }
-    if (!this.prevNode.validate()) {
-      this.setValidationError('Previous node is invalid');
+    if (!this.prevNodes[0].validate()) {
+      if (!this.state.issues) this.state.issues = new NodeIssues();
+      this.state.issues.queryError = new Error('Previous node is invalid');
       return false;
     }
-    const sourceColNames = new Set(
-      (this.prevNode.finalCols ?? []).map((c) => c.name),
-    );
+    const sourceColNames = new Set(this.sourceCols.map((c) => c.name));
     const missingCols: string[] = [];
     for (const col of this.state.groupByColumns) {
       if (col.checked && !sourceColNames.has(col.name)) {
@@ -157,14 +139,16 @@ export class AggregationNode implements ModificationNode {
     }
 
     if (missingCols.length > 0) {
-      this.setValidationError(
+      if (!this.state.issues) this.state.issues = new NodeIssues();
+      this.state.issues.queryError = new Error(
         `Group by columns ['${missingCols.join(', ')}'] not found in input`,
       );
       return false;
     }
 
     if (!this.state.groupByColumns.find((c) => c.checked)) {
-      this.setValidationError(
+      if (!this.state.issues) this.state.issues = new NodeIssues();
+      this.state.issues.queryError = new Error(
         'Aggregation node has no group by columns selected',
       );
       return false;
@@ -172,15 +156,8 @@ export class AggregationNode implements ModificationNode {
     return true;
   }
 
-  private setValidationError(message: string): void {
-    if (!this.state.issues) {
-      this.state.issues = new NodeIssues();
-    }
-    this.state.issues.queryError = new Error(message);
-  }
-
   getTitle(): string {
-    return 'Aggregation';
+    return this.state.customTitle ?? 'Aggregation';
   }
 
   nodeDetails?(): m.Child | undefined {
@@ -204,7 +181,7 @@ export class AggregationNode implements ModificationNode {
     }
 
     if (details.length === 0) {
-      return m('div', `No aggregation`);
+      return;
     }
     return m('.pf-aggregation-node-details', details);
   }
@@ -217,48 +194,46 @@ export class AggregationNode implements ModificationNode {
         aggregations: this.state.aggregations,
         onchange: this.state.onchange,
       }),
-      renderFilterOperation(
-        this.state.filters,
-        this.state.filterOperator,
-        this.finalCols,
-        (newFilters) => {
-          this.state.filters = [...newFilters];
+      m(FilterOperation, {
+        filters: this.state.filters,
+        sourceCols: this.finalCols,
+        onFiltersChanged: (newFilters: ReadonlyArray<FilterDefinition>) => {
+          this.state.filters = newFilters as FilterDefinition[];
           this.state.onchange?.();
         },
-        (operator) => {
-          this.state.filterOperator = operator;
-          this.state.onchange?.();
-        },
-      ),
+      }),
     );
   }
 
   clone(): QueryNode {
     const stateCopy: AggregationNodeState = {
-      prevNode: this.state.prevNode,
+      prevNodes: this.state.prevNodes,
       groupByColumns: newColumnInfoList(this.state.groupByColumns),
       aggregations: this.state.aggregations.map((a) => ({...a})),
-      filters: this.state.filters ? [...this.state.filters] : undefined,
+      filters: [],
+      customTitle: this.state.customTitle,
       onchange: this.state.onchange,
       issues: this.state.issues,
     };
     return new AggregationNode(stateCopy);
   }
 
+  isMaterialised(): boolean {
+    return this.state.isExecuted === true && this.meterialisedAs !== undefined;
+  }
+
   getStructuredQuery(): protos.PerfettoSqlStructuredQuery | undefined {
     if (!this.validate()) return;
-    const prevSq = this.prevNode.getStructuredQuery();
+
+    if (!this.prevNodes || this.prevNodes.length === 0) return;
+    const prevSq = this.prevNodes[0].getStructuredQuery();
     if (!prevSq) return undefined;
 
     const groupByProto = createGroupByProto(
       this.state.groupByColumns,
       this.state.aggregations,
     );
-    const filtersProto = createExperimentalFiltersProto(
-      this.state.filters,
-      this.finalCols,
-      this.state.filterOperator,
-    );
+    const filtersProto = createFiltersProto(this.state.filters, this.finalCols);
 
     // If the previous node already has an aggregation, we need to create a
     // subquery.
@@ -283,7 +258,7 @@ export class AggregationNode implements ModificationNode {
       const outerSq = new protos.PerfettoSqlStructuredQuery();
       outerSq.id = this.nodeId;
       outerSq.innerQuery = sq;
-      outerSq.experimentalFilterGroup = filtersProto;
+      outerSq.filters = filtersProto;
       return outerSq;
     }
 
@@ -291,7 +266,7 @@ export class AggregationNode implements ModificationNode {
   }
 
   resolveColumns() {
-    const sourceCols = this.prevNode.finalCols ?? [];
+    const sourceCols = this.sourceCols;
     this.state.groupByColumns.forEach((c) => {
       const sourceCol = sourceCols.find((s) => s.name === c.name);
       if (sourceCol) {
@@ -322,8 +297,7 @@ export class AggregationNode implements ModificationNode {
         isEditing: a.isEditing,
       })),
       filters: this.state.filters,
-      filterOperator: this.state.filterOperator,
-      comment: this.state.comment,
+      customTitle: this.state.customTitle,
     };
   }
 
@@ -346,7 +320,6 @@ export class AggregationNode implements ModificationNode {
     });
     return {
       ...state,
-      prevNode: undefined as unknown as QueryNode,
       groupByColumns,
       aggregations,
     };
@@ -467,7 +440,7 @@ class AggregationOperationComponent
       );
     };
 
-    const aggregationEditor = (agg: Aggregation): m.Child => {
+    const aggregationEditor = (agg: Aggregation, index: number): m.Child => {
       const columnOptions = attrs.groupByColumns.map((col) =>
         m(
           'option',
@@ -529,7 +502,15 @@ class AggregationOperationComponent
           value: agg.newColumnName,
         }),
         m(Button, {
-          icon: Icons.Check,
+          className: 'delete-button',
+          icon: 'delete',
+          onclick: () => {
+            attrs.aggregations.splice(index, 1);
+            attrs.onchange?.();
+          },
+        }),
+        m(Button, {
+          label: 'Done',
           className: 'is-primary',
           disabled: !agg.isValid,
           onclick: () => {
@@ -546,26 +527,15 @@ class AggregationOperationComponent
     const aggregationViewer = (agg: Aggregation, index: number): m.Child => {
       return m(
         '.pf-exp-aggregation-viewer',
-        m(
-          'span',
-          {
-            onclick: () => {
-              attrs.aggregations.forEach((a, i) => {
-                a.isEditing = i === index;
-              });
-              m.redraw();
-            },
+        {
+          onclick: () => {
+            attrs.aggregations.forEach((a, i) => {
+              a.isEditing = i === index;
+            });
+            m.redraw();
           },
-          `${agg.aggregationOp}(${agg.column?.name}) AS ${agg.newColumnName}`,
-        ),
-        m(Button, {
-          icon: Icons.Close,
-          onclick: (e: Event) => {
-            e.stopPropagation();
-            attrs.aggregations.splice(index, 1);
-            attrs.onchange?.();
-          },
-        }),
+        },
+        `${agg.aggregationOp}(${agg.column?.name}) AS ${agg.newColumnName}`,
       );
     };
 
@@ -580,7 +550,7 @@ class AggregationOperationComponent
       return [
         ...attrs.aggregations.map((agg, index) => {
           if (agg.isEditing) {
-            return aggregationEditor(agg);
+            return aggregationEditor(agg, index);
           } else {
             return aggregationViewer(agg, index);
           }
@@ -600,15 +570,15 @@ class AggregationOperationComponent
       ];
     };
 
-    return m(
-      '.pf-exp-query-operations',
-      m(Card, {}, [
+    return m('.pf-exp-query-operations', [
+      m(
+        '.pf-exp-section',
         m(
           '.pf-exp-operations-container',
           selectGroupByColumns(),
           m('.pf-exp-aggregations-list', aggregationsList()),
         ),
-      ]),
-    );
+      ),
+    ]);
   }
 }

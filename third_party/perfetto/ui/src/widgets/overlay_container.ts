@@ -17,19 +17,19 @@ import {classNames} from '../base/classnames';
 
 export interface OverlayContainerAttrs {
   // Fill parent container vertically.
-  readonly fillHeight?: boolean;
+  readonly fillParent?: boolean;
 }
 
 export class OverlayContainer
   implements m.ClassComponent<OverlayContainerAttrs>
 {
   view({attrs, children}: m.Vnode<OverlayContainerAttrs>) {
-    const {fillHeight = false} = attrs as OverlayContainerAttrs;
+    const {fillParent = false} = attrs as OverlayContainerAttrs;
     return m(
       '.pf-overlay-container',
       {
         className: classNames(
-          fillHeight && 'pf-overlay-container--fill-height',
+          fillParent && 'pf-overlay-container--fill-parent',
         ),
       },
       children,

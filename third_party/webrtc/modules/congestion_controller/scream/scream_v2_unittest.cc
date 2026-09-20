@@ -152,7 +152,7 @@ TEST(ScreamV2Test, ReferenceWindowIncreaseLessPerStepIfCeDetected) {
   EXPECT_GT(scream_1.ref_window(), scream_2.ref_window());
 }
 
-TEST(ScreamV2Test, ReferenceWindowIncreaseToDataInflight) {
+TEST(ScreamV2Test, ReferenceWindowIncreaseTo2xDataInflight) {
   SimulatedClock clock(Timestamp::Seconds(1'234));
   Environment env = CreateTestEnvironment({.time = &clock});
   ScreamV2 scream(env);
@@ -171,10 +171,10 @@ TEST(ScreamV2Test, ReferenceWindowIncreaseToDataInflight) {
     scream.OnTransportPacketsFeedback(feedback);
     clock.AdvanceTime(feedback_interval);
   }
-  // Target rate can increase up to 1.1 * data_in_flight + Max Segment Size(
+  // Target rate can increase up to 2 * data_in_flight + Max Segment Size(
   // default 1000 bytes) when no max target rate has been set.
   EXPECT_EQ(scream.ref_window(),
-            1.1 * feedback.data_in_flight + DataSize::Bytes(1000));
+            2 * feedback.data_in_flight + DataSize::Bytes(1000));
 }
 
 TEST(ScreamV2Test, CalculatesL4sAlpha) {
@@ -278,7 +278,7 @@ TEST(ScreamV2Test, AdaptsToEcnLinkCapacity1Mbps) {
   EXPECT_GT(result.min_rate_after_adaption, DataRate::KilobitsPerSec(650));
 
   EXPECT_LT(result.max_smoothed_rtt_after_adaptation,
-            TimeDelta::Millis(25 * 2 + 25));
+            TimeDelta::Millis(25 * 2 + 20));
 }
 
 TEST(ScreamV2Test, AdaptsToLossLinkCapacity5Mbps) {
@@ -291,25 +291,27 @@ TEST(ScreamV2Test, AdaptsToLossLinkCapacity5Mbps) {
 
   AdaptsToLinkCapacityResult result = RunAdaptToLinkCapacityTest(params);
 
-  EXPECT_LT(result.data_rate_after_adaption, DataRate::KilobitsPerSec(5400));
-  EXPECT_GT(result.data_rate_after_adaption, DataRate::KilobitsPerSec(2500));
-  EXPECT_LT(result.max_rate_after_adaption, DataRate::KilobitsPerSec(5400));
-  EXPECT_GT(result.min_rate_after_adaption, DataRate::KilobitsPerSec(2500));
+  EXPECT_LT(result.data_rate_after_adaption, DataRate::KilobitsPerSec(5200));
+  EXPECT_GT(result.data_rate_after_adaption, DataRate::KilobitsPerSec(4000));
+  EXPECT_LT(result.max_rate_after_adaption, DataRate::KilobitsPerSec(5200));
+  EXPECT_GT(result.min_rate_after_adaption, DataRate::KilobitsPerSec(3500));
 
   EXPECT_LT(result.max_smoothed_rtt_after_adaptation,
             TimeDelta::Millis(10 * 2 + 40));
 }
 
 TEST(ScreamV2Test, AdaptsToDelayLinkCapacity2Mbps) {
+  // TODO: bugs.webrtc.org/447037083  - investigate why target rate and rtt vary
+  // much more if `queue_delay_ms` is set to 10ms.
   AdaptsToLinkCapacityParams params{
-      .network_config = {.queue_delay_ms = 10,
+      .network_config = {.queue_delay_ms = 5,
                          .link_capacity = DataRate::KilobitsPerSec(2000)},
       .send_as_ect1 = false,  // Adapt only due to delay increase.
       .adaption_time = TimeDelta::Seconds(3)};
 
   AdaptsToLinkCapacityResult result = RunAdaptToLinkCapacityTest(params);
 
-  EXPECT_LT(result.data_rate_after_adaption, DataRate::KilobitsPerSec(2300));
+  EXPECT_LT(result.data_rate_after_adaption, DataRate::KilobitsPerSec(2100));
   EXPECT_GT(result.data_rate_after_adaption, DataRate::KilobitsPerSec(1700));
   EXPECT_LT(result.max_rate_after_adaption, DataRate::KilobitsPerSec(2300));
   EXPECT_GT(result.min_rate_after_adaption, DataRate::KilobitsPerSec(1700));

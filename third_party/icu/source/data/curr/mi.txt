@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 mi{
     Currencies{
         AED{
@@ -1043,7 +1043,7 @@ mi{
             other{"tāra Tirinaki Tōpako"}
         }
         TWD{
-            other{"tāra Taiwana Hou"}
+            other{"tāra Taiwana hou"}
         }
         TZS{
             other{"hereni Tānahia"}
@@ -1096,5 +1096,8 @@ mi{
         ZMW{
             other{"kwacha Tāmipia"}
         }
+    }
+    CurrencyUnitPatterns{
+        other{"{0} {1}"}
     }
 }

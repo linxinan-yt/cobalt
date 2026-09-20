@@ -1,11 +1,11 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 or{
     AuxExemplarCharacters{"[\u200C\u200D]"}
     ExemplarCharacters{
         "[଼ ଅ ଆ ଇ ଈ ଉ ଊ ଋ ଏ ଐ ଓ ଔ ଁ ଂ ଃ କ ଖ ଗ ଘ ଙ ଚ ଛ ଜ ଝ ଞ ଟ ଠ ଡ{ଡ଼} ଢ{ଢ଼} ଣ ତ ଥ ଦ ଧ"
-        " ନ ପ ଫ ବ ଭ ମ ଯୟ ର ଲ ଳ ଵ ୱ ଶ ଷ ସ ହ {କ୍ଷ} ା ି ୀ ୁ ୂ ୃ େ ୈ ୋ ୌ ୍]"
+        " ନ ପ ଫ ବ ଭ ମ ଯୟ ର ଲ ଳ ଵ ୱ ଶ ଷ ସ ହ ା ି ୀ ୁ ୂ ୃ େ ୈ ୋ ୌ ୍]"
     }
     ExemplarCharactersIndex{
         "[ଅ ଆ ଇ ଈ ଉ ଊ ଋ ଏ ଐ ଓ ଔ କ ଖ ଗ ଘ ଙ ଚ ଛ ଜ ଝ ଞ ଟ ଠ ଡ ଢ ଣ ତ ଥ ଦ ଧ ନ ପ ଫ ବ ଭ ମ ଯ ର"
@@ -300,40 +300,6 @@ or{
                 yyyyQQQQ{"QQQQ y G"}
             }
             intervalFormats{
-                GyM{
-                    G{"M/y GGGGG – M/y GGGGG"}
-                    M{"M/y – M/y GGGGG"}
-                    y{"M/y – M/y GGGGG"}
-                }
-                GyMEd{
-                    G{"E, M/d/y GGGGG – E, M/d/y GGGGG"}
-                    M{"E, M/d/y – E, M/d/y GGGGG"}
-                    d{"E, M/d/y – E, M/d/y GGGGG"}
-                    y{"E, M/d/y – E, M/d/y GGGGG"}
-                }
-                GyMMM{
-                    G{"MMM y G – MMM y G"}
-                    M{"MMM – MMM y G"}
-                    y{"MMM y – MMM y G"}
-                }
-                GyMMMEd{
-                    G{"E, MMM d, y G – E, MMM d, y G"}
-                    M{"E, MMM d – E, MMM d, y G"}
-                    d{"E, MMM d – E, MMM d, y G"}
-                    y{"E, MMM d, y – E, MMM d, y G"}
-                }
-                GyMMMd{
-                    G{"MMM d, y G – MMM d, y G"}
-                    M{"MMM d – MMM d, y G"}
-                    d{"MMM d – d, y G"}
-                    y{"MMM d, y – MMM d, y G"}
-                }
-                GyMd{
-                    G{"M/d/y GGGGG – M/d/y GGGGG"}
-                    M{"M/d/y – M/d/y GGGGG"}
-                    d{"M/d/y – M/d/y GGGGG"}
-                    y{"M/d/y – M/d/y GGGGG"}
-                }
                 M{
                     M{"M – M"}
                 }
@@ -434,7 +400,6 @@ or{
                 GyMMM{"MMM y G"}
                 GyMMMEd{"E, MMM d, y G"}
                 GyMMMd{"MMM d, y G"}
-                GyMd{"M/d/y G"}
                 MEd{"E, M/d"}
                 MMMEd{"E, MMM d"}
                 MMMMW{
@@ -499,7 +464,7 @@ or{
                     }
                     narrow{
                         am{"AM"}
-                        pm{"PM"}
+                        pm{"ଅପରାହ୍ନ"}
                     }
                 }
             }
@@ -522,92 +487,7 @@ or{
                 }
             }
             intervalFormats{
-                Gy{
-                    G{"y G – y G"}
-                    y{"y – y G"}
-                }
-                GyM{
-                    G{"M/y G – M/y G"}
-                    M{"M/y – M/y G"}
-                    y{"M/y – M/y G"}
-                }
-                GyMEd{
-                    G{"E, M/d/y G – E, M/d/y G"}
-                    M{"E, M/d/y – E, M/d/y G"}
-                    d{"E, M/d/y – E, M/d/y G"}
-                    y{"E, M/d/y – E, M/d/y G"}
-                }
-                GyMMM{
-                    G{"MMM y G – MMM y G"}
-                    M{"MMM – MMM y G"}
-                    y{"MMM y – MMM y G"}
-                }
-                GyMMMEd{
-                    G{"E, MMM d, y G – E, MMM d, y G"}
-                    M{"E, MMM d – E, MMM d, y G"}
-                    d{"E, MMM d – E, MMM d, y G"}
-                    y{"E, MMM d, y – E, MMM d, y G"}
-                }
-                GyMMMd{
-                    G{"MMM d, y G – MMM d, y G"}
-                    M{"MMM d – MMM d, y G"}
-                    d{"MMM d – d, y G"}
-                    y{"MMM d, y – MMM d, y G"}
-                }
-                GyMd{
-                    G{"M/d/y G – M/d/y G"}
-                    M{"M/d/y – M/d/y G"}
-                    d{"M/d/y G – M/d/y G"}
-                    y{"M/d/y – M/d/y G"}
-                }
-                MEd{
-                    M{"E, M/d – E, M/d"}
-                    d{"E, M/d – E, M/d"}
-                }
-                MMM{
-                    M{"MMM – MMM"}
-                }
-                MMMEd{
-                    M{"E, MMM d – E, MMM d"}
-                    d{"E, MMM d – E, MMM d"}
-                }
-                Md{
-                    M{"M/d – M/d"}
-                    d{"M/d – M/d"}
-                }
                 fallback{"{0} – {1}"}
-                yM{
-                    M{"M/y – M/y"}
-                    y{"M/y – M/y"}
-                }
-                yMEd{
-                    M{"E, M/d/y – E, M/d/y"}
-                    d{"E, M/d/y – E, M/d/y"}
-                    y{"E, M/d/y – E, M/d/y"}
-                }
-                yMMM{
-                    M{"MMM – MMM y"}
-                    y{"MMM y – MMM y"}
-                }
-                yMMMEd{
-                    M{"E, MMM d – E, MMM d, y"}
-                    d{"E, MMM d – E, MMM d, y"}
-                    y{"E, MMM d, y – E, MMM d, y"}
-                }
-                yMMMM{
-                    M{"MMMM – MMMM y"}
-                    y{"MMMM y – MMMM y"}
-                }
-                yMMMd{
-                    M{"MMM d – MMM d, y"}
-                    d{"MMM d – d, y"}
-                    y{"MMM d, y – MMM d, y"}
-                }
-                yMd{
-                    M{"M/d/y – M/d/y"}
-                    d{"M/d/y – M/d/y"}
-                    y{"M/d/y – M/d/y"}
-                }
             }
             monthNames{
                 format{
@@ -645,12 +525,6 @@ or{
             }
             quarters{
                 format{
-                    abbreviated{
-                        "Q1",
-                        "Q2",
-                        "3ୟ ତ୍ରୟମାସ",
-                        "4ର୍ଥ ତ୍ରୟମାସ",
-                    }
                     wide{
                         "1ମ ତ୍ରୟମାସ",
                         "2ୟ ତ୍ରୟମାସ",
@@ -676,60 +550,16 @@ or{
             }
             monthNames{
                 format{
-                    abbreviated{
-                        "ଚୈତ୍ର",
-                        "ବୈଶାଖ",
-                        "ଜ୍ୟେଷ୍ଠ",
-                        "ଆଷାଢ଼",
-                        "ଶ୍ରାବଣ",
-                        "ଭାଦ୍ରବ",
-                        "ଆଶ୍ଵିନ",
-                        "କାର୍ତ୍ତିକ",
-                        "ମାର୍ଗଶିର",
-                        "ପୌଷ",
-                        "ମାଘ",
-                        "ଫାଲଗୁନ",
-                    }
                     wide{
                         "ଚୈତ୍ର",
                         "ବୈଶାଖ",
-                        "ଜ୍ୟେଷ୍ଠ",
+                        "ଜ୍ୟୋଷ୍ଠ",
                         "ଆଷାଢ଼",
                         "ଶ୍ରାବଣ",
                         "ଭାଦ୍ରବ",
                         "ଆଶ୍ଵିନ",
                         "କାର୍ତ୍ତିକ",
-                        "ମାର୍ଗଶିର",
-                        "ପୌଷ",
-                        "ମାଘ",
-                        "ଫାଲଗୁନ",
-                    }
-                }
-                stand-alone{
-                    abbreviated{
-                        "ଚୈତ୍ର",
-                        "ବୈଶାଖ",
-                        "ଜ୍ୟେଷ୍ଠ",
-                        "ଆଷାଢ଼",
-                        "ଶ୍ରାବଣ",
-                        "ଭାଦ୍ରବ",
-                        "ଆଶ୍ଵିନ",
-                        "କାର୍ତ୍ତିକ",
-                        "ମାର୍ଗଶିର",
-                        "ପୌଷ",
-                        "ମାଘ",
-                        "ଫାଲଗୁନ",
-                    }
-                    wide{
-                        "ଚୈତ୍ର",
-                        "ବୈଶାଖ",
-                        "ଜ୍ୟେଷ୍ଠ",
-                        "ଆଷାଢ଼",
-                        "ଶ୍ରାବଣ",
-                        "ଭାଦ୍ରବ",
-                        "ଆଶ୍ଵିନ",
-                        "କାର୍ତ୍ତିକ",
-                        "ମାର୍ଗଶିର",
+                        "ଆଗ୍ରାହୟଣ",
                         "ପୌଷ",
                         "ମାଘ",
                         "ଫାଲଗୁନ",
@@ -852,13 +682,7 @@ or{
             dn{"ବ. ର ଦିନ"}
         }
         dayperiod{
-            dn{"AM/PM"}
-        }
-        dayperiod-narrow{
-            dn{"AM/PM"}
-        }
-        dayperiod-short{
-            dn{"AM/PM"}
+            dn{"ପୂର୍ବାହ୍ନ/ଅପରାହ୍ନ"}
         }
         era{
             dn{"ଯୁଗ"}
@@ -1049,7 +873,7 @@ or{
             dn{"ତ୍ରୟମାସ"}
             relative{
                 "-1"{"ଗତ ତ୍ରୟମାସ"}
-                "0"{"ଏହି ତ୍ରୟମାସ"}
+                "0"{"ଗତ ତ୍ରୟମାସ"}
                 "1"{"ଆଗାମୀ ତ୍ରୟମାସ"}
             }
             relativeTime{
@@ -1338,13 +1162,10 @@ or{
             dn{"ସ. ର ଦିନ"}
         }
         weekdayOfMonth{
-            dn{"ମାସର ସାପ୍ତାହିକ ଦିନ"}
-        }
-        weekdayOfMonth-narrow{
-            dn{"ମାସର ସାପ୍ତାହିକ ଦି."}
+            dn{"ସାପ୍ତାହିକ ଦିନର ମାସ"}
         }
         weekdayOfMonth-short{
-            dn{"ମାସର ସାପ୍ତାହିକ ଦି."}
+            dn{"ସା. ଦିନର ମା."}
         }
         year{
             dn{"ବର୍ଷ"}
@@ -1417,10 +1238,10 @@ or{
                 "[%％﹪ ٪]",
                 "[‰ ؉]",
                 "[\$＄﹩]",
-                "[£￡ ₤]",
+                "[£ ₤]",
                 "[¥￥]",
                 "[₩￦]",
-                "[₹ {ଟ.} {ଟଙ୍କା} {Rp} {Rs}₨]",
+                "[₹ ₨ {Rp} {Rs}]",
             }
         }
         number{

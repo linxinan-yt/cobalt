@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 yue{
     units{
         area{
@@ -23,12 +23,6 @@ yue{
         compound{
             per{"每 {1} {0}"}
         }
-        concentr{
-            portion-per-1e9{
-                dnam{"十億分點濃度"}
-                other{"{0} 十億分點濃度"}
-            }
-        }
         duration{
             century{
                 other{"{0} 個世紀"}
@@ -44,11 +38,6 @@ yue{
             }
             month{
                 per{"每月 {0}"}
-            }
-            night{
-                dnam{"晚"}
-                other{"{0} 晚"}
-                per{"{0}/晚"}
             }
             quarter{
                 per{"每季 {0}"}
@@ -133,10 +122,6 @@ yue{
             kilometer-per-hour{
                 other{"每小時 {0} 公里"}
             }
-            light-speed{
-                dnam{"光速"}
-                other{"{0} 光速"}
-            }
             meter-per-second{
                 other{"每秒 {0} 米"}
             }
@@ -174,22 +159,10 @@ yue{
         }
     }
     unitsNarrow{
-        concentr{
-            portion-per-1e9{
-                other{"{0}ppb"}
-            }
-        }
         digital{
             byte{
                 dnam{"B"}
                 other{"{0}B"}
-            }
-        }
-        duration{
-            night{
-                dnam{"晚"}
-                other{"{0}晚"}
-                per{"{0}/晚"}
             }
         }
         graphics{
@@ -238,10 +211,6 @@ yue{
         speed{
             kilometer-per-hour{
                 other{"每小時 {0} 公里"}
-            }
-            light-speed{
-                dnam{"光速"}
-                other{"{0}光速"}
             }
             meter-per-second{
                 other{"每秒 {0} 米"}
@@ -413,9 +382,6 @@ yue{
                 dnam{"點子"}
                 other{"{0} 點子"}
             }
-            portion-per-1e9{
-                dnam{"濃度/十億"}
-            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -482,11 +448,6 @@ yue{
             nanosecond{
                 dnam{"奈秒"}
                 other{"{0} 奈秒"}
-            }
-            night{
-                dnam{"晚"}
-                other{"{0} 晚"}
-                per{"{0}/晚"}
             }
             quarter{
                 dnam{"季"}
@@ -878,10 +839,6 @@ yue{
             knot{
                 dnam{"節"}
                 other{"{0} 節"}
-            }
-            light-speed{
-                dnam{"光速"}
-                other{"{0} 光速"}
             }
             meter-per-second{
                 dnam{"米/秒"}

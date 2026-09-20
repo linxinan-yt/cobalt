@@ -98,6 +98,7 @@ export function createFakeTraceImpl(args: FakeTraceImplArgs = {}) {
     end: Time.fromSeconds(10),
     unixOffset: Time.ZERO,
     tzOffMin: 0,
+    cpus: [],
     importErrors: 0,
     traceType: 'proto',
     hasFtrace: false,

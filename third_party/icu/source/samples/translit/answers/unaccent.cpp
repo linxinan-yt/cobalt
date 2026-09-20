@@ -9,18 +9,12 @@
 
 #include "unaccent.h"
 
-using icu::Replaceable;
-using icu::Transliterator;
-using icu::UnicodeString;
-
-UOBJECT_DEFINE_RTTI_IMPLEMENTATION(UnaccentTransliterator)
-
 /**
  * Constructor
  */
 UnaccentTransliterator::UnaccentTransliterator() :
-    normalizer("", UNORM_NFD),
-    Transliterator("Unaccent", nullptr) {
+    normalizer("", Normalizer::DECOMP),
+    Transliterator("Unaccent", 0) {
 }
 
 /**
@@ -35,13 +29,13 @@ UnaccentTransliterator::~UnaccentTransliterator() {
 char16_t UnaccentTransliterator::unaccent(char16_t c) const {
     UnicodeString str(c);
     UErrorCode status = U_ZERO_ERROR;
-    UnaccentTransliterator* t = const_cast<UnaccentTransliterator*>(this);
+    UnaccentTransliterator* t = (UnaccentTransliterator*)this;
 
     t->normalizer.setText(str, status);
     if (U_FAILURE(status)) {
         return c;
     }
-    return static_cast<char16_t>(t->normalizer.next());
+    return (char16_t) t->normalizer.next();
 }
 
 /**

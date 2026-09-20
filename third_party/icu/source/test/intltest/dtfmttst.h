@@ -270,9 +270,6 @@ public:
     void TestNumericFieldStrictParse();
     void TestHourCycle();
     void TestHCInLocale();
-    void TestBogusLocale();
-    void TestLongLocale();
-    void TestChineseCalendar23043();
 
 private:
     UBool showParse(DateFormat &format, const UnicodeString &formattedString);

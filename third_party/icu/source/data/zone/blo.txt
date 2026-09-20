@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 blo{
     zoneStrings{
         "Africa:Abidjan"{
@@ -444,6 +444,9 @@ blo{
         "America:New_York"{
             ec{"Niu Yɔrk"}
         }
+        "America:Nipigon"{
+            ec{"Nipigɔn"}
+        }
         "America:Noronha"{
             ec{"Norɔnya"}
         }
@@ -462,6 +465,9 @@ blo{
         "America:Panama"{
             ec{"Panamaa"}
         }
+        "America:Pangnirtung"{
+            ec{"Panyɩrtʊʊŋ"}
+        }
         "America:Paramaribo"{
             ec{"Paramariboo"}
         }
@@ -479,6 +485,9 @@ blo{
         }
         "America:Puerto_Rico"{
             ec{"Pɔrto Rikoo"}
+        }
+        "America:Rainy_River"{
+            ec{"Rɛɩni Riifa"}
         }
         "America:Rankin_Inlet"{
             ec{"Raŋkɩn Ɩnlɛɛtɩ"}
@@ -540,6 +549,9 @@ blo{
         "America:Thule"{
             ec{"Tuule"}
         }
+        "America:Thunder_Bay"{
+            ec{"Sanɖɛɛr Baɩ"}
+        }
         "America:Tijuana"{
             ec{"Tihuwana"}
         }
@@ -557,6 +569,9 @@ blo{
         }
         "America:Winnipeg"{
             ec{"Winipɛɛg"}
+        }
+        "America:Yellowknife"{
+            ec{"Yɛloonaɩf"}
         }
         "Antarctica:Casey"{
             ec{"Keesi"}
@@ -647,6 +662,9 @@ blo{
         }
         "Asia:Chita"{
             ec{"Shitaa"}
+        }
+        "Asia:Choibalsan"{
+            ec{"Koibalsaan"}
         }
         "Asia:Colombo"{
             ec{"Kolomboo"}
@@ -1053,6 +1071,9 @@ blo{
         "Europe:Ulyanovsk"{
             ec{"Ulyanɔɔf"}
         }
+        "Europe:Uzhgorod"{
+            ec{"Usgɔrɔɖ"}
+        }
         "Europe:Vaduz"{
             ec{"Faɖus"}
         }
@@ -1073,6 +1094,9 @@ blo{
         }
         "Europe:Zagreb"{
             ec{"Sagrɛb"}
+        }
+        "Europe:Zaporozhye"{
+            ec{"Sapɔrɔsɩyɛ"}
         }
         "Europe:Zurich"{
             ec{"Suriik"}
@@ -1145,6 +1169,9 @@ blo{
         }
         "Pacific:Guam"{
             ec{"Guwam"}
+        }
+        "Pacific:Johnston"{
+            ec{"Jɔnstɔn"}
         }
         "Pacific:Kanton"{
             ec{"Kantɔn"}
@@ -1367,6 +1394,11 @@ blo{
             lg{"Caɩna kaakɔŋkɔŋɔ̀"}
             ls{"Caɩna kaakɔŋkɔŋɔ̀ ɖeiɖei"}
         }
+        "meta:Choibalsan"{
+            ld{"Koibalsaan kaakɔŋkɔŋɔ̀ gafʊbaka"}
+            lg{"Koibalsaan kaakɔŋkɔŋɔ̀"}
+            ls{"Koibalsaan kaakɔŋkɔŋɔ̀ ɖeiɖei"}
+        }
         "meta:Christmas"{
             ls{"Nowɛl kaAtukǝltǝna kaakɔŋkɔŋɔ̀"}
         }
@@ -1529,9 +1561,6 @@ blo{
             lg{"Japaŋ kaakɔŋkɔŋɔ̀"}
             ls{"Japaŋ kaakɔŋkɔŋɔ̀ ɖeiɖei"}
         }
-        "meta:Kazakhstan"{
-            ls{"Kasastan kaakɔŋkɔŋɔ̀"}
-        }
         "meta:Kazakhstan_Eastern"{
             ls{"Kasastan gajakalaŋ kaakɔŋkɔŋɔ̀"}
         }
@@ -1570,6 +1599,9 @@ blo{
             lg{"Makawoo kaakɔŋkɔŋɔ̀"}
             ls{"Makawoo kaakɔŋkɔŋɔ̀ ɖeiɖei"}
         }
+        "meta:Macquarie"{
+            ls{"Makarii kaAtukǝltǝna kaakɔŋkɔŋɔ̀"}
+        }
         "meta:Magadan"{
             ld{"Magaɖan kaakɔŋkɔŋɔ̀ gafʊbaka"}
             lg{"Magaɖan kaakɔŋkɔŋɔ̀"}
@@ -1594,6 +1626,11 @@ blo{
         }
         "meta:Mawson"{
             ls{"Mɔsɔn kaakɔŋkɔŋɔ̀"}
+        }
+        "meta:Mexico_Northwest"{
+            ld{"Mɛsik gʊpɛnɛ na gɩteŋshilelaŋ kʊfɔɔ nɩ kaakɔŋkɔŋɔ̀ gafʊbaka"}
+            lg{"Mɛsik gʊpɛnɛ na gɩteŋshilelaŋ kʊfɔɔ nɩ kaakɔŋkɔŋɔ̀"}
+            ls{"Mɛsik gʊpɛnɛ na gɩteŋshilelaŋ kʊfɔɔ nɩ kaakɔŋkɔŋɔ̀ ɖeiɖei"}
         }
         "meta:Mexico_Pacific"{
             ld{"Mɛsik kapasifika kaakɔŋkɔŋɔ̀ gafʊbaka"}

@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 ky{
     Countries{
         001{"Дүйнө"}
@@ -119,7 +119,7 @@ ky{
         GB{"Улуу Британия"}
         GD{"Гренада"}
         GE{"Грузия"}
-        GF{"Франция Гвианасы"}
+        GF{"Француздук Гвиана"}
         GG{"Гернси"}
         GH{"Гана"}
         GI{"Гибралтар"}
@@ -154,7 +154,7 @@ ky{
         JE{"Жерси"}
         JM{"Ямайка"}
         JO{"Иордания"}
-        JP{"Жапония"}
+        JP{"Япония"}
         KE{"Кения"}
         KG{"Кыргызстан"}
         KH{"Камбоджа"}

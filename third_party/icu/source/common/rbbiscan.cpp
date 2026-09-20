@@ -289,9 +289,6 @@ UBool RBBIRuleScanner::doParseActions(int32_t action)
 
             // Terminate expression, leaves expression parse tree rooted in TOS node.
             fixOpStack(RBBINode::precStart);
-            if (U_FAILURE(*fRB->fStatus)) {
-                break;
-            }
 
             RBBINode *startExprNode  = fNodeStack[fNodeStackPtr-2];
             RBBINode *varRefNode     = fNodeStack[fNodeStackPtr-1];
@@ -315,11 +312,6 @@ UBool RBBIRuleScanner::doParseActions(int32_t action)
                 UErrorCode t = *fRB->fStatus;
                 *fRB->fStatus = U_ZERO_ERROR;
                 error(t);
-                // When adding $variableRef to the symbol table fail, Delete
-                // both nodes because deleting varRefNode will not delete
-                // RHSExprNode internally.
-                delete RHSExprNode;
-                delete varRefNode;
             }
 
             // Clean up the stack.
@@ -530,13 +522,7 @@ UBool RBBIRuleScanner::doParseActions(int32_t action)
             n = fNodeStack[fNodeStackPtr];
             uint32_t v = u_charDigitValue(fC.fChar);
             U_ASSERT(v < 10);
-            int64_t updated = static_cast<int64_t>(n->fVal)*10 + v;
-            // Avoid overflow n->fVal
-            if (updated > INT32_MAX) {
-                error(U_BRK_RULE_SYNTAX);
-                break;
-            }
-            n->fVal = static_cast<int32_t>(updated);
+            n->fVal = n->fVal*10 + v;
             break;
         }
 
@@ -748,7 +734,7 @@ void RBBIRuleScanner::findSetFor(const UnicodeString &s, RBBINode *node, Unicode
     // First check whether we've already cached a set for this string.
     // If so, just use the cached set in the new node.
     //   delete any set provided by the caller, since we own it.
-    el = static_cast<RBBISetTableEl*>(uhash_get(fSetTable, &s));
+    el = (RBBISetTableEl *)uhash_get(fSetTable, &s);
     if (el != nullptr) {
         delete setToAdopt;
         node->fLeftChild = el->val;
@@ -767,25 +753,15 @@ void RBBIRuleScanner::findSetFor(const UnicodeString &s, RBBINode *node, Unicode
             c = s.char32At(0);
             setToAdopt = new UnicodeSet(c, c);
         }
-        if (setToAdopt == nullptr) {
-            error(U_MEMORY_ALLOCATION_ERROR);
-            return;
-        }
     }
 
     //
     // Make a new uset node to refer to this UnicodeSet
     // This new uset node becomes the child of the caller's setReference node.
     //
-    UErrorCode localStatus = U_ZERO_ERROR;
-    RBBINode *usetNode    = new RBBINode(RBBINode::uset, localStatus);
+    RBBINode *usetNode    = new RBBINode(RBBINode::uset);
     if (usetNode == nullptr) {
-        localStatus = U_MEMORY_ALLOCATION_ERROR;
-    }
-    if (U_FAILURE(localStatus)) {
-        delete usetNode;
-        error(localStatus);
-        delete setToAdopt;
+        error(U_MEMORY_ALLOCATION_ERROR);
         return;
     }
     usetNode->fInputSet   = setToAdopt;
@@ -803,7 +779,7 @@ void RBBIRuleScanner::findSetFor(const UnicodeString &s, RBBINode *node, Unicode
     //
     // Add the new set to the set hash table.
     //
-    el = static_cast<RBBISetTableEl*>(uprv_malloc(sizeof(RBBISetTableEl)));
+    el      = (RBBISetTableEl *)uprv_malloc(sizeof(RBBISetTableEl));
     UnicodeString *tkey = new UnicodeString(s);
     if (tkey == nullptr || el == nullptr || setToAdopt == nullptr) {
         // Delete to avoid memory leak
@@ -820,6 +796,8 @@ void RBBIRuleScanner::findSetFor(const UnicodeString &s, RBBINode *node, Unicode
     el->key = tkey;
     el->val = usetNode;
     uhash_put(fSetTable, el->key, el, fRB->fStatus);
+
+    return;
 }
 
 
@@ -873,7 +851,7 @@ UChar32  RBBIRuleScanner::nextCharLL() {
     UChar32  ch;
 
     if (fNextIndex >= fRB->fRules.length()) {
-        return static_cast<UChar32>(-1);
+        return (UChar32)-1;
     }
     ch         = fRB->fRules.char32At(fNextIndex);
     if (U_IS_SURROGATE(ch)) {
@@ -948,9 +926,6 @@ void RBBIRuleScanner::nextChar(RBBIRuleChar &c) {
         }
     }
 
-    if (c.fChar == static_cast<UChar32>(-1)) {
-        return;
-    }
     if (fQuoteMode) {
         c.fEscaped = true;
     }
@@ -967,7 +942,7 @@ void RBBIRuleScanner::nextChar(RBBIRuleChar &c) {
             int32_t commentStart = fScanIndex;
             for (;;) {
                 c.fChar = nextCharLL();
-                if (c.fChar == static_cast<UChar32>(-1) || // EOF
+                if (c.fChar == (UChar32)-1 ||  // EOF
                     c.fChar == chCR     ||
                     c.fChar == chLF     ||
                     c.fChar == chNEL    ||
@@ -977,7 +952,7 @@ void RBBIRuleScanner::nextChar(RBBIRuleChar &c) {
                 fRB->fStrippedRules.setCharAt(i, u' ');
             }
         }
-        if (c.fChar == static_cast<UChar32>(-1)) {
+        if (c.fChar == (UChar32)-1) {
             return;
         }
 
@@ -1074,14 +1049,14 @@ void RBBIRuleScanner::parse() {
                 // Table row specified "escaped P" and the char is either 'p' or 'P'.
                 break;
             }
-            if (tableEl->fCharClass == 252 && fC.fChar == static_cast<UChar32>(-1)) {
+            if (tableEl->fCharClass == 252 && fC.fChar == (UChar32)-1)  {
                 // Table row specified eof and we hit eof on the input.
                 break;
             }
 
             if (tableEl->fCharClass >= 128 && tableEl->fCharClass < 240 &&   // Table specs a char class &&
                 fC.fEscaped == false &&                                      //   char is not escaped &&
-                fC.fChar != static_cast<UChar32>(-1)) {                      //   char is not EOF
+                fC.fChar != (UChar32)-1) {                                   //   char is not EOF
                 U_ASSERT((tableEl->fCharClass-128) < UPRV_LENGTHOF(fRuleSets));
                 if (fRuleSets[tableEl->fCharClass-128].contains(fC.fChar)) {
                     // Table row specified a character class, or set of characters,
@@ -1099,7 +1074,7 @@ void RBBIRuleScanner::parse() {
         // We've found the row of the state table that matches the current input
         //   character from the rules string.
         // Perform any action specified  by this row in the state table.
-        if (doParseActions(static_cast<int32_t>(tableEl->fAction)) == false) {
+        if (doParseActions((int32_t)tableEl->fAction) == false) {
             // Break out of the state machine loop if the
             //   the action signalled some kind of error, or
             //   the action was to exit, occurs on normal end-of-rules-input.
@@ -1200,7 +1175,7 @@ RBBINode  *RBBIRuleScanner::pushNewNode(RBBINode::NodeType  t) {
         return nullptr;
     }
     fNodeStackPtr++;
-    fNodeStack[fNodeStackPtr] = new RBBINode(t, *fRB->fStatus);
+    fNodeStack[fNodeStackPtr] = new RBBINode(t);
     if (fNodeStack[fNodeStackPtr] == nullptr) {
         *fRB->fStatus = U_MEMORY_ALLOCATION_ERROR;
     }
@@ -1224,6 +1199,7 @@ RBBINode  *RBBIRuleScanner::pushNewNode(RBBINode::NodeType  t) {
 //
 //------------------------------------------------------------------------------
 void RBBIRuleScanner::scanSet() {
+    UnicodeSet    *uset;
     ParsePosition  pos;
     int            startPos;
     int            i;
@@ -1235,12 +1211,12 @@ void RBBIRuleScanner::scanSet() {
     pos.setIndex(fScanIndex);
     startPos = fScanIndex;
     UErrorCode localStatus = U_ZERO_ERROR;
-    LocalPointer<UnicodeSet> uset(new UnicodeSet(), localStatus);
-    if (U_FAILURE(localStatus)) {
-        error(localStatus);
-        return;
+    uset = new UnicodeSet();
+    if (uset == nullptr) {
+        localStatus = U_MEMORY_ALLOCATION_ERROR;
+    } else {
+        uset->applyPatternIgnoreSpace(fRB->fRules, pos, fSymbolTable, localStatus);
     }
-    uset->applyPatternIgnoreSpace(fRB->fRules, pos, fSymbolTable, localStatus);
     if (U_FAILURE(localStatus)) {
         //  TODO:  Get more accurate position of the error from UnicodeSet's return info.
         //         UnicodeSet appears to not be reporting correctly at this time.
@@ -1248,22 +1224,20 @@ void RBBIRuleScanner::scanSet() {
             RBBIDebugPrintf("UnicodeSet parse position.ErrorIndex = %d\n", pos.getIndex());
         #endif
         error(localStatus);
+        delete uset;
         return;
     }
 
     // Verify that the set contains at least one code point.
     //
-    U_ASSERT(uset.isValid());
-    UnicodeSet tempSet(*uset);
-    // Use tempSet to handle the case that the UnicodeSet contains
-    // only string element, such as [{ab}] and treat it as empty set.
-    tempSet.removeAllStrings();
-    if (tempSet.isEmpty()) {
+    U_ASSERT(uset!=nullptr);
+    if (uset->isEmpty()) {
         // This set is empty.
         //  Make it an error, because it almost certainly is not what the user wanted.
         //  Also, avoids having to think about corner cases in the tree manipulation code
         //   that occurs later on.
         error(U_BRK_RULE_EMPTY_SET);
+        delete uset;
         return;
     }
 
@@ -1272,7 +1246,7 @@ void RBBIRuleScanner::scanSet() {
     //   Don't just set fScanIndex because the line/char positions maintained
     //   for error reporting would be thrown off.
     i = pos.getIndex();
-    for (;U_SUCCESS(*fRB->fStatus);) {
+    for (;;) {
         if (fNextIndex >= i) {
             break;
         }
@@ -1295,7 +1269,7 @@ void RBBIRuleScanner::scanSet() {
         //          character categories for run time engine.
         //     - Eliminates mulitiple instances of the same set.
         //     - Creates a new uset node if necessary (if this isn't a duplicate.)
-        findSetFor(n->fText, n, uset.orphan());
+        findSetFor(n->fText, n, uset);
     }
 
 }

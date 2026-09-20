@@ -20,6 +20,7 @@
 #include "p2p/base/packet_transport_internal.h"
 #include "p2p/base/port_allocator.h"
 #include "rtc_base/network_route.h"
+#include "rtc_base/third_party/sigslot/sigslot.h"
 #include "rtc_base/thread.h"
 
 namespace webrtc {
@@ -45,7 +46,7 @@ namespace webrtc {
 // same one where PortAllocatorSession runs, which is also identical to the
 // network thread of the ICE transport, as given by
 // P2PTransportChannel::thread().
-class BasicRegatheringController {
+class BasicRegatheringController : public sigslot::has_slots<> {
  public:
   struct Config {
     int regather_on_failed_networks_interval =
@@ -56,7 +57,7 @@ class BasicRegatheringController {
   BasicRegatheringController(const Config& config,
                              IceTransportInternal* ice_transport,
                              Thread* thread);
-  virtual ~BasicRegatheringController();
+  ~BasicRegatheringController() override;
   // TODO(qingsi): Remove this method after implementing a new signal in
   // P2PTransportChannel and reacting to that signal for the initial schedules
   // of regathering.

@@ -1,7 +1,7 @@
 Source: perfetto
-Section: utils
+Section: kernel
 Priority: optional
-Maintainer: Perfetto Team <perfetto-dev-team@google.com>
+Maintainer: Sami Kyostila <skyostil@google.com>
 Build-Depends:
   debhelper (>= 13),
   debhelper-compat (= 13),

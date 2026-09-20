@@ -82,10 +82,6 @@ interface LabelButtonAttrs extends CommonAttrs {
 
 export type ButtonAttrs = LabelButtonAttrs | IconButtonAttrs;
 
-function isLabelButtonAttrs(attrs: ButtonAttrs): attrs is LabelButtonAttrs {
-  return (attrs as LabelButtonAttrs).label !== undefined;
-}
-
 export class Button implements m.ClassComponent<ButtonAttrs> {
   view({attrs}: m.CVnode<ButtonAttrs>) {
     const {
@@ -103,7 +99,7 @@ export class Button implements m.ClassComponent<ButtonAttrs> {
       ...htmlAttrs
     } = attrs;
 
-    const label = isLabelButtonAttrs(attrs) ? attrs.label : undefined;
+    const label = 'label' in attrs ? attrs.label : undefined;
     const iconOnly = Boolean(icon && !label);
 
     const classes = classNames(

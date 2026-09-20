@@ -40,9 +40,6 @@ __declspec(dllimport) unsigned long __stdcall GetCurrentThreadId();
 #else
 #include <pthread.h>
 #endif
-#if PERFETTO_BUILDFLAG(PERFETTO_OS_FREEBSD)
-#include <pthread_np.h>
-#endif
 
 namespace perfetto {
 namespace base {
@@ -78,11 +75,6 @@ inline PlatformThreadId GetThreadId() {
 using PlatformThreadId = pid_t;
 inline PlatformThreadId GetThreadId() {
   return reinterpret_cast<int32_t>(pthread_self());
-}
-#elif PERFETTO_BUILDFLAG(PERFETTO_OS_FREEBSD)
-using PlatformThreadId = uint64_t;
-inline PlatformThreadId GetThreadId() {
-  return static_cast<uint64_t>(pthread_getthreadid_np());
 }
 #else  // Default to pthreads in case no OS is set.
 using PlatformThreadId = pthread_t;

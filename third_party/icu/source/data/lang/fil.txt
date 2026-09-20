@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 fil{
     Keys{
         calendar{"Kalendaryo"}
@@ -65,7 +65,6 @@ fil{
         bi{"Bislama"}
         bin{"Bini"}
         bla{"Siksika"}
-        blo{"Anii"}
         bm{"Bambara"}
         bn{"Bangla"}
         bo{"Tibetan"}
@@ -107,7 +106,6 @@ fil{
         dar{"Dargwa"}
         dav{"Taita"}
         de{"German"}
-        de_AT{"Austrian German"}
         de_CH{"Swiss High German"}
         dgr{"Dogrib"}
         dje{"Zarma"}
@@ -146,7 +144,7 @@ fil{
         frc{"Cajun French"}
         frr{"Hilagang Frisian"}
         fur{"Friulian"}
-        fy{"Western Frisian"}
+        fy{"Kanlurang Frisian"}
         ga{"Irish"}
         gaa{"Ga"}
         gag{"Gagauz"}
@@ -236,7 +234,6 @@ fil{
         kv{"Komi"}
         kw{"Cornish"}
         kwk{"Kwakʼwala"}
-        kxv{"Kuvi"}
         ky{"Kirghiz"}
         la{"Latin"}
         lad{"Ladino"}
@@ -245,7 +242,6 @@ fil{
         lez{"Lezghian"}
         lg{"Ganda"}
         li{"Limburgish"}
-        lij{"Ligurian"}
         lil{"Lillooet"}
         lkt{"Lakota"}
         lmo{"Lombard"}
@@ -362,7 +358,7 @@ fil{
         rwk{"Rwa"}
         sa{"Sanskrit"}
         sad{"Sandawe"}
-        sah{"Yakut"}
+        sah{"Sakha"}
         saq{"Samburu"}
         sat{"Santali"}
         sba{"Ngambay"}
@@ -405,7 +401,6 @@ fil{
         sw_CD{"Congo Swahili"}
         swb{"Comorian"}
         syr{"Syriac"}
-        szl{"Silesian"}
         ta{"Tamil"}
         tce{"Katimugang Tutchone"}
         te{"Telugu"}
@@ -447,9 +442,7 @@ fil{
         uz{"Uzbek"}
         vai{"Vai"}
         ve{"Venda"}
-        vec{"Venetian"}
         vi{"Vietnamese"}
-        vmw{"Makhuwa"}
         vo{"Volapük"}
         vun{"Vunjo"}
         wa{"Walloon"}
@@ -461,7 +454,6 @@ fil{
         wuu{"Wu Chinese"}
         xal{"Kalmyk"}
         xh{"Xhosa"}
-        xnr{"Kangri"}
         xog{"Soga"}
         yav{"Yangben"}
         ybb{"Yemba"}
@@ -469,7 +461,6 @@ fil{
         yo{"Yoruba"}
         yrl{"Nheengatu"}
         yue{"Cantonese"}
-        za{"Zhuang"}
         zgh{"Standard Moroccan Tamazight"}
         zh{"Chinese"}
         zh_Hans{"Pinasimpleng Chinese"}
@@ -525,6 +516,7 @@ fil{
         Hebr{"Hebrew"}
         Hira{"Hiragana"}
         Hrkt{"Japanese syllabaries"}
+        Jamo{"Jamo"}
         Jpan{"Japanese"}
         Kana{"Katakana"}
         Khmr{"Khmer"}
@@ -547,6 +539,7 @@ fil{
         Telu{"Telugu"}
         Tfng{"Tifinagh"}
         Thaa{"Thaana"}
+        Thai{"Thai"}
         Tibt{"Tibetan"}
         Vaii{"Vai"}
         Yiii{"Yi"}
@@ -577,8 +570,6 @@ fil{
             indian{"Pambansang Kalendaryong Indian"}
             islamic{"Kalendaryong Islam"}
             islamic-civil{"Kalendaryong Hijri (tabular, Civil epoch)"}
-            islamic-rgsa{"Kalendaryong Islamiko (Saudi Arabia, sighting)"}
-            islamic-tbla{"Kalendaryong Islamiko (tabular, astronomikal na epoch)"}
             islamic-umalqura{"Kalendaryong Hijri (Umm al-Qura)"}
             iso8601{"ISO-8601 na Kalendaryo"}
             japanese{"Kalendaryong Japanese"}
@@ -632,6 +623,7 @@ fil{
             phonebook{"Pagkakasunud-sunod ng Pag-uuri ng Phonebook"}
             phonetic{"Phonetic na Ayos ng Pag-uuri-uri"}
             pinyin{"Pagkakasunud-sunod ng Pag-uuri ng Pinyin"}
+            reformed{"Pagkakasunud-sunod ng Pag-uuri ng Na-reform"}
             search{"Pangkalahatang Paghahanap"}
             searchjl{"Maghanap Ayon sa Unang Katinig ng Hangul"}
             standard{"Karaniwang Pagkakasunud-sunod ng Ayos"}

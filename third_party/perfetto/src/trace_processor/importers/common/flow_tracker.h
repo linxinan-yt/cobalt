@@ -17,16 +17,15 @@
 #ifndef SRC_TRACE_PROCESSOR_IMPORTERS_COMMON_FLOW_TRACKER_H_
 #define SRC_TRACE_PROCESSOR_IMPORTERS_COMMON_FLOW_TRACKER_H_
 
-#include <cstddef>
-#include <cstdint>
-#include <vector>
+#include <stdint.h>
 
 #include "perfetto/ext/base/flat_hash_map.h"
-#include "perfetto/ext/base/murmur_hash.h"
+#include "src/trace_processor/importers/common/args_tracker.h"
 #include "src/trace_processor/storage/trace_storage.h"
 #include "src/trace_processor/types/trace_processor_context.h"
 
-namespace perfetto::trace_processor {
+namespace perfetto {
+namespace trace_processor {
 
 using FlowId = uint64_t;
 
@@ -81,7 +80,8 @@ class FlowTracker {
 
   struct V1FlowIdHasher {
     size_t operator()(const V1FlowId& c) const {
-      return base::MurmurHashCombine(c.source_id, c.cat, c.name);
+      return std::hash<uint64_t>{}(base::FnvHasher::Combine(
+          c.source_id, c.cat.raw_id(), c.name.raw_id()));
     }
   };
 
@@ -111,6 +111,7 @@ class FlowTracker {
   StringId cat_key_id_;
 };
 
-}  // namespace perfetto::trace_processor
+}  // namespace trace_processor
+}  // namespace perfetto
 
 #endif  // SRC_TRACE_PROCESSOR_IMPORTERS_COMMON_FLOW_TRACKER_H_

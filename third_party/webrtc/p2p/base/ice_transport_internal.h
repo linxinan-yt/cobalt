@@ -19,6 +19,7 @@
 #include <vector>
 
 #include "absl/functional/any_invocable.h"
+#include "absl/strings/string_view.h"
 #include "api/array_view.h"
 #include "api/candidate.h"
 #include "api/peer_connection_interface.h"
@@ -26,6 +27,7 @@
 #include "api/transport/enums.h"
 #include "api/units/time_delta.h"
 #include "p2p/base/candidate_pair_interface.h"
+#include "p2p/base/connection.h"
 #include "p2p/base/connection_info.h"
 #include "p2p/base/packet_transport_internal.h"
 #include "p2p/base/port.h"
@@ -273,6 +275,31 @@ class RTC_EXPORT IceTransportInternal : public PacketTransportInternal {
 
   virtual void SetIceRole(IceRole role) = 0;
 
+  // Default implementation in order to allow downstream usage deletion.
+  // TODO: bugs.webrtc.org/42224914 - Remove when all downstream overrides are
+  // gone.
+  virtual void SetIceTiebreaker(uint64_t /* tiebreaker */) {
+    RTC_CHECK_NOTREACHED();
+  }
+
+  virtual void SetIceCredentials(absl::string_view ice_ufrag,
+                                 absl::string_view ice_pwd);
+
+  virtual void SetRemoteIceCredentials(absl::string_view ice_ufrag,
+                                       absl::string_view ice_pwd);
+
+  // TODO: bugs.webrtc.org/367395350 - Make virtual when all downstream
+  // overrides are gone.
+  // Returns the current local ICE parameters.
+  virtual const IceParameters* local_ice_parameters() const {
+    RTC_CHECK_NOTREACHED();
+  }
+  // Returns the latest remote ICE parameters or nullptr if there are no remote
+  // ICE parameters yet.
+  virtual const IceParameters* remote_ice_parameters() const {
+    RTC_CHECK_NOTREACHED();
+  }
+
   // The ufrag and pwd in `ice_params` must be set
   // before candidate gathering can start.
   virtual void SetIceParameters(const IceParameters& ice_params) = 0;
@@ -305,6 +332,9 @@ class RTC_EXPORT IceTransportInternal : public PacketTransportInternal {
   // Returns RTT estimate over the currently active connection, or an empty
   // std::optional if there is none.
   virtual std::optional<int> GetRttEstimate() = 0;
+
+  // TODO(qingsi): Remove this method once Chrome does not depend on it anymore.
+  virtual const Connection* selected_connection() const = 0;
 
   // Returns the selected candidate pair, or an empty std::optional if there is
   // none.
@@ -364,6 +394,20 @@ class RTC_EXPORT IceTransportInternal : public PacketTransportInternal {
   }
   void SubscribeIceTransportStateChanged(
       absl::AnyInvocable<void(IceTransportInternal*)> callback);
+
+  // Invoked when the transport is being destroyed.
+  // This signal will be moved to "private" once Chromium
+  // usage has been modified.
+  sigslot::signal1<IceTransportInternal*> SignalDestroyed;
+  void NotifyDestroyed(IceTransportInternal* transport) {
+    SignalDestroyed(transport);
+  }
+  void SubscribeDestroyed(
+      absl::AnyInvocable<void(IceTransportInternal*)> callback);
+  void SubscribeDestroyed(
+      void* tag,
+      absl::AnyInvocable<void(IceTransportInternal*)> callback);
+  void UnsubscribeDestroyed(void* tag);
 
   // Invoked when remote dictionary has been updated,
   // i.e. modifications to attributes from remote ice agent has
@@ -426,6 +470,8 @@ class RTC_EXPORT IceTransportInternal : public PacketTransportInternal {
   SignalTrampoline<IceTransportInternal,
                    &IceTransportInternal::SignalIceTransportStateChanged>
       ice_transport_state_changed_trampoline_;
+  SignalTrampoline<IceTransportInternal, &IceTransportInternal::SignalDestroyed>
+      destroyed_trampoline_;
 };
 
 }  //  namespace webrtc

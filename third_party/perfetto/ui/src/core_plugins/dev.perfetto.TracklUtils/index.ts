@@ -52,7 +52,7 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
           return;
         }
 
-        const tracksWithUris = trace.currentWorkspace.flatTracksOrdered.filter(
+        const tracksWithUris = trace.workspace.flatTracksOrdered.filter(
           (track) => track.uri !== undefined,
         ) as ReadonlyArray<RequiredField<TrackNode, 'uri'>>;
         const track = await app.omnibox.prompt('Choose a track...', {
@@ -88,7 +88,7 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
       id: 'dev.perfetto.FindTrackByUri',
       name: 'Find track by URI',
       callback: async () => {
-        const tracksWithUris = ctx.currentWorkspace.flatTracksOrdered.filter(
+        const tracksWithUris = ctx.workspace.flatTracksOrdered.filter(
           (track) => track.uri !== undefined,
         ) as ReadonlyArray<RequiredField<TrackNode, 'uri'>>;
         const track = await ctx.omnibox.prompt('Choose a track...', {
@@ -107,7 +107,7 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
       name: 'Pin track by name',
       defaultHotkey: 'Shift+T',
       callback: async () => {
-        const tracksWithUris = ctx.currentWorkspace.flatTracksOrdered.filter(
+        const tracksWithUris = ctx.workspace.flatTracksOrdered.filter(
           (track) => track.uri !== undefined,
         ) as ReadonlyArray<RequiredField<TrackNode, 'uri'>>;
         const track = await ctx.omnibox.prompt('Choose a track...', {
@@ -121,13 +121,7 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
     ctx.commands.registerCommand({
       id: 'dev.perfetto.PinTracksByRegex',
       name: 'Pin tracks by regex',
-      callback: async (regexArg: unknown, nameOrPathArg: unknown) => {
-        const nameOrPath = await getNameOrPathFromArgOrPrompt(
-          ctx,
-          nameOrPathArg,
-        );
-        if (!nameOrPath) return;
-
+      callback: async (regexArg: unknown) => {
         const regex = await getRegexFromArgOrPrompt(
           ctx,
           regexArg,
@@ -135,25 +129,9 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
         );
         if (!regex) return;
 
-        const matchingTracks = ctx.currentWorkspace.flatTracks.filter((track) =>
-          testTrackWithRegex(track, regex, nameOrPath),
+        const matchingTracks = ctx.workspace.flatTracks.filter((track) =>
+          regex.test(track.name),
         );
-        matchingTracks.forEach((track) => track.pin());
-      },
-    });
-
-    ctx.commands.registerCommand({
-      id: `dev.perfetto.PinSliceTracksFromSqlQuery`,
-      name: 'Pin slice tracks from SQL query',
-      callback: async (queryArg: unknown) => {
-        const query = await getQueryFromArgOrPrompt(
-          ctx,
-          queryArg,
-          'select id from slice where...',
-        );
-        if (!query) return;
-
-        const matchingTracks = await resolveTracksFromSliceQuery(ctx, query);
         matchingTracks.forEach((track) => track.pin());
       },
     });
@@ -161,13 +139,7 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
     ctx.commands.registerCommand({
       id: 'dev.perfetto.ExpandTracksByRegex',
       name: 'Expand tracks by regex',
-      callback: async (regexArg: unknown, nameOrPathArg: unknown) => {
-        const nameOrPath = await getNameOrPathFromArgOrPrompt(
-          ctx,
-          nameOrPathArg,
-        );
-        if (!nameOrPath) return;
-
+      callback: async (regexArg: unknown) => {
         const regex = await getRegexFromArgOrPrompt(
           ctx,
           regexArg,
@@ -175,8 +147,8 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
         );
         if (!regex) return;
 
-        const matchingTracks = ctx.currentWorkspace.flatTracks.filter((track) =>
-          testTrackWithRegex(track, regex, nameOrPath),
+        const matchingTracks = ctx.workspace.flatTracks.filter((track) =>
+          regex.test(track.name),
         );
         matchingTracks.forEach((track) => track.expand());
       },
@@ -185,13 +157,7 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
     ctx.commands.registerCommand({
       id: 'dev.perfetto.CollapseTracksByRegex',
       name: 'Collapse tracks by regex',
-      callback: async (regexArg: unknown, nameOrPathArg: unknown) => {
-        const nameOrPath = await getNameOrPathFromArgOrPrompt(
-          ctx,
-          nameOrPathArg,
-        );
-        if (!nameOrPath) return;
-
+      callback: async (regexArg: unknown) => {
         const regex = await getRegexFromArgOrPrompt(
           ctx,
           regexArg,
@@ -199,8 +165,8 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
         );
         if (!regex) return;
 
-        const matchingTracks = ctx.currentWorkspace.flatTracks.filter((track) =>
-          testTrackWithRegex(track, regex, nameOrPath),
+        const matchingTracks = ctx.workspace.flatTracks.filter((track) =>
+          regex.test(track.name),
         );
         matchingTracks.forEach((track) => track.collapse());
       },
@@ -209,17 +175,7 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
     ctx.commands.registerCommand({
       id: 'dev.perfetto.CopyTracksToWorkspaceByRegex',
       name: 'Copy tracks to workspace by regex',
-      callback: async (
-        regexArg: unknown,
-        workspaceNameArg: unknown,
-        nameOrPathArg: unknown,
-      ) => {
-        const nameOrPath = await getNameOrPathFromArgOrPrompt(
-          ctx,
-          nameOrPathArg,
-        );
-        if (!nameOrPath) return;
-
+      callback: async (regexArg: unknown, workspaceNameArg: unknown) => {
         const regex = await getRegexFromArgOrPrompt(
           ctx,
           regexArg,
@@ -239,41 +195,9 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
           ctx.workspaces.createEmptyWorkspace(workspaceName);
 
         // Find matching tracks from current workspace
-        const matchingTracks = ctx.currentWorkspace.flatTracks.filter((track) =>
-          testTrackWithRegex(track, regex, nameOrPath),
+        const matchingTracks = ctx.workspace.flatTracks.filter((track) =>
+          regex.test(track.name),
         );
-
-        // Copy matching tracks to target workspace
-        matchingTracks.forEach((track) => {
-          targetWorkspace.addChildInOrder(track.clone(true));
-        });
-      },
-    });
-
-    ctx.commands.registerCommand({
-      id: 'dev.perfetto.CopySliceTracksToWorkspaceBySql',
-      name: 'Copy slice tracks to workspace from SQL query',
-      callback: async (queryArg: unknown, workspaceNameArg: unknown) => {
-        const query = await getQueryFromArgOrPrompt(
-          ctx,
-          queryArg,
-          'select id from slice where...',
-        );
-        if (!query) return;
-
-        const workspaceName =
-          typeof workspaceNameArg === 'string'
-            ? workspaceNameArg
-            : await ctx.omnibox.prompt('Enter workspace name...');
-        if (!workspaceName) return;
-
-        // Create or get the target workspace
-        const targetWorkspace =
-          ctx.workspaces.all.find((ws) => ws.title === workspaceName) ??
-          ctx.workspaces.createEmptyWorkspace(workspaceName);
-
-        // Find matching tracks from current workspace
-        const matchingTracks = await resolveTracksFromSliceQuery(ctx, query);
 
         // Copy matching tracks to target workspace
         matchingTracks.forEach((track) => {
@@ -285,17 +209,7 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
     ctx.commands.registerCommand({
       id: 'dev.perfetto.CopyTracksToWorkspaceByRegexWithAncestors',
       name: 'Copy tracks to workspace by regex (with ancestors)',
-      callback: async (
-        regexArg: unknown,
-        workspaceNameArg: unknown,
-        nameOrPathArg: unknown,
-      ) => {
-        const nameOrPath = await getNameOrPathFromArgOrPrompt(
-          ctx,
-          nameOrPathArg,
-        );
-        if (!nameOrPath) return;
-
+      callback: async (regexArg: unknown, workspaceNameArg: unknown) => {
         const regex = await getRegexFromArgOrPrompt(
           ctx,
           regexArg,
@@ -315,39 +229,9 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
           ctx.workspaces.createEmptyWorkspace(workspaceName);
 
         // Find matching tracks from current workspace
-        const matchingTracks = ctx.currentWorkspace.flatTracks.filter((track) =>
-          testTrackWithRegex(track, regex, nameOrPath),
+        const matchingTracks = ctx.workspace.flatTracks.filter((track) =>
+          regex.test(track.name),
         );
-
-        // Copy matching tracks with their ancestors to target workspace
-        copyTracksWithAncestors(matchingTracks, targetWorkspace);
-      },
-    });
-
-    ctx.commands.registerCommand({
-      id: 'dev.perfetto.CopySliceTracksToWorkspaceBySqlWithAncestors',
-      name: 'Copy slice tracks to workspace from SQL query (with ancestors)',
-      callback: async (queryArg: unknown, workspaceNameArg: unknown) => {
-        const query = await getQueryFromArgOrPrompt(
-          ctx,
-          queryArg,
-          'select id from slice where...',
-        );
-        if (!query) return;
-
-        const workspaceName =
-          typeof workspaceNameArg === 'string'
-            ? workspaceNameArg
-            : await ctx.omnibox.prompt('Enter workspace name...');
-        if (!workspaceName) return;
-
-        // Create or get the target workspace
-        const targetWorkspace =
-          ctx.workspaces.all.find((ws) => ws.title === workspaceName) ??
-          ctx.workspaces.createEmptyWorkspace(workspaceName);
-
-        // Find matching tracks from current workspace
-        const matchingTracks = await resolveTracksFromSliceQuery(ctx, query);
 
         // Copy matching tracks with their ancestors to target workspace
         copyTracksWithAncestors(matchingTracks, targetWorkspace);
@@ -471,61 +355,6 @@ async function getRegexFromArgOrPrompt(
   }
 }
 
-// Gets the name or path filtering option from command argument or user prompt.
-// Returns 'name' to match against track names, 'path' to match against full
-// track paths, or undefined if the argument is invalid.
-async function getNameOrPathFromArgOrPrompt(
-  ctx: Trace,
-  rawNameOrPath: unknown,
-): Promise<'name' | 'path' | undefined> {
-  if (rawNameOrPath === undefined) {
-    const prompt = await ctx.omnibox.prompt(
-      'Use track name or track path (default: track name)',
-      {
-        values: ['name', 'path'],
-        getName: (x) => (x === ' name' ? 'Track Name' : 'Track Path'),
-      },
-    );
-    // Always default to 'name' if prompt did not return anything.
-    if (prompt === 'name' || prompt === 'path') {
-      return prompt;
-    }
-    return 'name';
-  }
-  if (rawNameOrPath === 'name' || rawNameOrPath === 'path') {
-    return rawNameOrPath;
-  }
-  console.error('Unknown argument type for command, expected "name" or "path"');
-  return undefined;
-}
-
-// Helper function to get a sql query from an argument or prompt the user for
-// one. Returns null if the user cancels the prompt.
-async function getQueryFromArgOrPrompt(
-  ctx: Trace,
-  queryArg: unknown,
-  promptText: string,
-): Promise<string | null> {
-  const queryStr =
-    typeof queryArg === 'string'
-      ? queryArg
-      : await ctx.omnibox.prompt(promptText);
-  return queryStr || null;
-}
-
-// Tests if a track matches the given regex pattern based on nameOrPath setting.
-// Returns true if the track name (when nameOrPath is 'name') or full path
-// (when nameOrPath is 'path') matches the regex pattern.
-function testTrackWithRegex(
-  track: TrackNode,
-  regex: RegExp,
-  nameOrPath: 'name' | 'path',
-): boolean {
-  const testString =
-    nameOrPath === 'path' ? track.fullPath.join(' > ') : track.name;
-  return regex.test(testString);
-}
-
 // Copy tracks with their ancestor hierarchy preserved
 function copyTracksWithAncestors(
   tracks: ReadonlyArray<TrackNode>,
@@ -592,20 +421,4 @@ function copyTracksWithAncestors(
       }
     }
   }
-}
-
-async function resolveTracksFromSliceQuery(
-  ctx: Trace,
-  sliceQuery: string,
-): Promise<TrackNode[]> {
-  const result = await ctx.engine.query(sliceQuery);
-  const iter = result.iter({id: NUM});
-  const sliceIds = [];
-  for (; iter.valid(); iter.next()) {
-    sliceIds.push(iter.id);
-  }
-  const resolved = await ctx.selection.resolveSqlEvents('slice', sliceIds);
-  return resolved
-    .map((event) => ctx.currentWorkspace.getTrackByUri(event.trackUri))
-    .filter((track) => track !== undefined);
 }

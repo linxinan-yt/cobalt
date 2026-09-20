@@ -237,12 +237,12 @@ class SieveTest : public HowExpensiveTest {
 public:
   virtual ~SieveTest(){}
   SieveTest():HowExpensiveTest("SieveTest",__FILE__,__LINE__){}
-  int32_t run() override { return 0; } // dummy
-  int32_t runTest(double *subTime) override {
+  virtual int32_t run(){return 0;} // dummy
+  int32_t runTest(double *subTime) {
     *subTime = uprv_getSieveTime(nullptr);
     return U_LOTS_OF_TIMES;
   }
-  int32_t runTests(double* subTime, double* marginOfError) override {
+  virtual int32_t runTests(double *subTime, double *marginOfError) {
     *subTime = uprv_getSieveTime(marginOfError);
     return U_LOTS_OF_TIMES;
   }
@@ -256,8 +256,8 @@ public:
 #define OCStr(svc,ub,suffix,n) "Test_" # svc # ub # suffix # n
 #define OCRun(svc,ub,suffix) svc ## ub ## suffix
 // TODO: run away screaming
-#define OpenCloseTest(n, svc,suffix,c,a,d) class OCName(svc,_,Test_,suffix,n) : public HowExpensiveTest { public: OCName(svc,_,Test_,suffix,n)():HowExpensiveTest(OCStr(svc,_,suffix,n),__FILE__,__LINE__) c int32_t run() override { int32_t i; for(i=0;i<U_LOTS_OF_TIMES;i++){ OCRun(svc,_,close) (  OCRun(svc,_,suffix) a );  } return i; }   void warmup() override { OCRun(svc,_,close) ( OCRun(svc,_,suffix) a); } virtual ~ OCName(svc,_,Test_,suffix,n) () d };
-#define QuickTest(n,c,r,d)  class n : public HowExpensiveTest { public: n():HowExpensiveTest(#n,__FILE__,__LINE__) c int32_t run() override r virtual ~n () d };
+#define OpenCloseTest(n, svc,suffix,c,a,d) class OCName(svc,_,Test_,suffix,n) : public HowExpensiveTest { public: OCName(svc,_,Test_,suffix,n)():HowExpensiveTest(OCStr(svc,_,suffix,n),__FILE__,__LINE__) c int32_t run() { int32_t i; for(i=0;i<U_LOTS_OF_TIMES;i++){ OCRun(svc,_,close) (  OCRun(svc,_,suffix) a );  } return i; }   void warmup() { OCRun(svc,_,close) ( OCRun(svc,_,suffix) a); } virtual ~ OCName(svc,_,Test_,suffix,n) () d };
+#define QuickTest(n,c,r,d)  class n : public HowExpensiveTest { public: n():HowExpensiveTest(#n,__FILE__,__LINE__) c int32_t run() r virtual ~n () d };
 
 class NumTest : public HowExpensiveTest {
 private:
@@ -273,7 +273,7 @@ private:
   const char *fCStr;
   char name[100];
 public:
-  const char* getName() override {
+  virtual const char *getName() {
     if(name[0]==0) {
       sprintf(name,"%s:p=|%s|,str=|%s|",getClassName(),fCPat,fCStr);
     }
@@ -281,7 +281,7 @@ public:
   }
 protected:
   virtual UNumberFormat* initFmt() {
-    return unum_open(UNUM_PATTERN_DECIMAL, fPat.getTerminatedBuffer(), -1, TEST_LOCALE, nullptr, &setupStatus);
+    return unum_open(UNUM_PATTERN_DECIMAL, fPat.getTerminatedBuffer(), -1, TEST_LOCALE, 0, &setupStatus);
   }
   virtual const char *getClassName() {
     return "NumTest";
@@ -290,7 +290,7 @@ public:
   NumTest(const char *pat, const char *num, double expect, const char *FILE, int LINE)
     : HowExpensiveTest("(n/a)",FILE, LINE),
       fExpect(expect),
-      fFmt(nullptr),
+      fFmt(0),
       fPat(pat, -1, US_INV),
       fString(num,-1,US_INV),
       fStr(fString.getTerminatedBuffer()),
@@ -302,7 +302,7 @@ public:
   {
     name[0]=0;
   }
-  void warmup() override {
+  void warmup() {
     fFmt = initFmt();
     if(U_SUCCESS(setupStatus)) {
       double trial = unum_parseDouble(fFmt,fStr,fLen, nullptr, &setupStatus);
@@ -313,10 +313,11 @@ public:
       }
     }
   }
-  int32_t run() override {
+  int32_t run() {
+    double trial=0.0;
     int i;
     for(i=0;i<U_LOTS_OF_TIMES;i++){
-      unum_parse(fFmt,fStr,fLen, nullptr, &setupStatus);
+      trial = unum_parse(fFmt,fStr,fLen, nullptr, &setupStatus);
     }
     return i;
   }
@@ -333,7 +334,7 @@ private:
   int32_t fAttrValue;
   char name2[100];
 protected:
-  const char* getClassName() override {
+  virtual const char *getClassName() {
     sprintf(name2,"AttrNumTest:%d=%d", fAttr,fAttrValue);
     return name2;
   }
@@ -344,7 +345,7 @@ public:
       fAttrValue(newValue)
   {
   }
-  UNumberFormat* initFmt() override {
+  virtual UNumberFormat* initFmt() {
     UNumberFormat *fmt = NumTest::initFmt();
     unum_setAttribute(fmt, fAttr,fAttrValue);
     return fmt;
@@ -361,7 +362,7 @@ private:
   int32_t fAttrValue;
   char name2[100];
 protected:
-  const char* getClassName() override {
+  virtual const char *getClassName() {
     sprintf(name2,"NOXNumTest:%d=%d", fAttr,fAttrValue);
     return name2;
   }
@@ -372,7 +373,7 @@ public:
       fAttrValue(newValue) */
   {
   }
-  UNumberFormat* initFmt() override {
+  virtual UNumberFormat* initFmt() {
     UNumberFormat *fmt = NumTest::initFmt();
     //unum_setAttribute(fmt, fAttr,fAttrValue);
     return fmt;
@@ -400,7 +401,7 @@ private:
   const char *fCStr;
   char name[100];
 public:
-  const char* getName() override {
+  virtual const char *getName() {
     if(name[0]==0) {
       sprintf(name,"%s:p=|%s|,str=|%s|",getClassName(),fCPat,fCStr);
     }
@@ -408,7 +409,7 @@ public:
   }
 protected:
   virtual UNumberFormat* initFmt() {
-    return unum_open(UNUM_PATTERN_DECIMAL, fPat.getTerminatedBuffer(), -1, TEST_LOCALE, nullptr, &setupStatus);
+    return unum_open(UNUM_PATTERN_DECIMAL, fPat.getTerminatedBuffer(), -1, TEST_LOCALE, 0, &setupStatus);
   }
   virtual const char *getClassName() {
     return "NumFmtTest";
@@ -417,7 +418,7 @@ public:
   NumFmtTest(const char *pat, const char *num, double expect, const char *FILE, int LINE)
     : HowExpensiveTest("(n/a)",FILE, LINE),
       fExpect(expect),
-      fFmt(nullptr),
+      fFmt(0),
       fPat(pat, -1, US_INV),
       fString(num,-1,US_INV),
       fStr(fString.getTerminatedBuffer()),
@@ -429,7 +430,7 @@ public:
   {
     name[0]=0;
   }
-  void warmup() override {
+  void warmup() {
     fFmt = initFmt();
     char16_t buf[100];
     if(U_SUCCESS(setupStatus)) {
@@ -446,7 +447,7 @@ public:
       }
     }
   }
-  int32_t run() override {
+  int32_t run() {
     int32_t trial;
     int i;
     char16_t buf[100];
@@ -485,7 +486,7 @@ private:
   const char *fCStr;
   char name[100];
 public:
-  const char* getName() override {
+  virtual const char *getName() {
     if(name[0]==0) {
       sprintf(name,"%s:p=|%s|,str=|%s|",getClassName(),fCPat,fCStr);
     }
@@ -495,29 +496,29 @@ protected:
   virtual UNumberFormat* initFmt() {
     switch(fMode) {
     case kPattern:
-      return unum_open(UNUM_PATTERN_DECIMAL, fPat.getTerminatedBuffer(), -1, TEST_LOCALE, nullptr, &setupStatus);
+      return unum_open(UNUM_PATTERN_DECIMAL, fPat.getTerminatedBuffer(), -1, TEST_LOCALE, 0, &setupStatus);
     case kApplyPattern:
       {
-        UNumberFormat *fmt = unum_open(UNUM_DECIMAL, nullptr, -1, TEST_LOCALE, nullptr, &setupStatus);
+        UNumberFormat *fmt = unum_open(UNUM_DECIMAL, nullptr, -1, TEST_LOCALE, 0, &setupStatus);
         unum_applyPattern(fmt, false, fPat.getTerminatedBuffer(), -1, nullptr, &setupStatus);
         return fmt;
       }
     case kGroupOff:
       {
-        UNumberFormat *fmt = unum_open(UNUM_PATTERN_DECIMAL, fPat.getTerminatedBuffer(), -1, TEST_LOCALE, nullptr, &setupStatus);
+        UNumberFormat *fmt = unum_open(UNUM_PATTERN_DECIMAL, fPat.getTerminatedBuffer(), -1, TEST_LOCALE, 0, &setupStatus);
         unum_setAttribute(fmt, UNUM_GROUPING_USED, UNUM_NO);
         return fmt;
       }
     case kApplyGroupOff:
       {
-        UNumberFormat *fmt = unum_open(UNUM_DECIMAL, nullptr, -1, TEST_LOCALE, nullptr, &setupStatus);
+        UNumberFormat *fmt = unum_open(UNUM_DECIMAL, nullptr, -1, TEST_LOCALE, 0, &setupStatus);
         unum_applyPattern(fmt, false, fPat.getTerminatedBuffer(), -1, nullptr, &setupStatus);
         unum_setAttribute(fmt, UNUM_GROUPING_USED, UNUM_NO);
         return fmt;
       }
     default:
     case kDefault:
-      return unum_open(UNUM_DEFAULT, nullptr, -1, TEST_LOCALE, nullptr, &setupStatus);
+      return unum_open(UNUM_DEFAULT, nullptr, -1, TEST_LOCALE, 0, &setupStatus);
     }
   }
   virtual const char *getClassName() {
@@ -541,7 +542,7 @@ public:
     : HowExpensiveTest("(n/a)",FILE, LINE),
       fMode(mode),
       fExpect(expect),
-      fFmt(nullptr),
+      fFmt(0),
       fPat(pat, -1, US_INV),
       fString(num,-1,US_INV),
       fStr(fString.getTerminatedBuffer()),
@@ -553,7 +554,7 @@ public:
   {
     name[0]=0;
   }
-  void warmup() override {
+  void warmup() {
     fFmt = initFmt();
     char16_t buf[100];
     if(U_SUCCESS(setupStatus)) {
@@ -570,7 +571,7 @@ public:
       }
     }
   }
-  int32_t run() override {
+  int32_t run() {
     int32_t trial;
     int i;
     char16_t buf[100];
@@ -612,7 +613,7 @@ private:
   const char *fCStr;
   char name[100];
 public:
-  const char* getName() override {
+  virtual const char *getName() {
     if(name[0]==0) {
       sprintf(name,"%s:p=|%s|,str=|%s|,sp=|%s|",getClassName(),fCPat,fCStr, fExpect.data());
     }
@@ -623,7 +624,7 @@ protected:
     DecimalFormat *d = new DecimalFormat(setupStatus);
     UParseError pe;
     d->applyPattern(fPat, pe, setupStatus);
-    return reinterpret_cast<UNumberFormat*>(d);
+    return (UNumberFormat*) d;
   }
   virtual const char *getClassName() {
     return "NumFmtStringPieceTest";
@@ -632,7 +633,7 @@ public:
   NumFmtStringPieceTest(const char *pat, const char *num, const StringPiece& expect, const char *FILE, int LINE)
     : HowExpensiveTest("(n/a)",FILE, LINE),
       fExpect(expect),
-      fFmt(nullptr),
+      fFmt(0),
       fPat(pat, -1, US_INV),
       fString(num,-1,US_INV),
       fStr(fString.getTerminatedBuffer()),
@@ -644,12 +645,12 @@ public:
   {
     name[0]=0;
   }
-  void warmup() override {
+  void warmup() {
     fFmt = initFmt();
     UnicodeString buf;
     if(U_SUCCESS(setupStatus)) {
       buf.remove();
-      reinterpret_cast<const DecimalFormat*>(fFmt)->format(fExpect, buf, nullptr, setupStatus);
+      ((const DecimalFormat*)fFmt)->format(fExpect, buf, nullptr, setupStatus);
       if(!U_SUCCESS(setupStatus)
          || fString!=buf
          ) {
@@ -662,7 +663,7 @@ public:
     }
   }
 
-  int32_t run() override {
+  int32_t run() {
 #if U_DEBUG
     int32_t trial;
 #endif
@@ -671,7 +672,7 @@ public:
     if(U_SUCCESS(setupStatus)) {
       for(i=0;i<U_LOTS_OF_TIMES;i++){
         buf.remove();
-        reinterpret_cast<const DecimalFormat*>(fFmt)->format(fExpect, buf, nullptr, setupStatus);
+        ((const DecimalFormat*)fFmt)->format(fExpect, buf, nullptr, setupStatus);
       }
     }
     return i;
@@ -691,13 +692,13 @@ static char16_t strbeng[] = {0x09E8,0x09E8,0x09E8,0x09E8, 0 };
 UNumberFormat *NumParseTest_fmt;
 
 // TODO: de-uglify.
-QuickTest(NumParseTest,{    static char16_t pattern[] = { 0x23 };    NumParseTest_fmt = unum_open(UNUM_PATTERN_DECIMAL,         pattern,                    1,                    TEST_LOCALE,                    0,                    &setupStatus);  },{    int32_t i;    static char16_t str[] = { 0x31 };    for(i=0;i<U_LOTS_OF_TIMES;i++) {      unum_parse(NumParseTest_fmt,str,1,nullptr,&setupStatus);    }    return i;  },{unum_close(NumParseTest_fmt);})
+QuickTest(NumParseTest,{    static char16_t pattern[] = { 0x23 };    NumParseTest_fmt = unum_open(UNUM_PATTERN_DECIMAL,         pattern,                    1,                    TEST_LOCALE,                    0,                    &setupStatus);  },{    int32_t i;    static char16_t str[] = { 0x31 };double val;    for(i=0;i<U_LOTS_OF_TIMES;i++) {      val=unum_parse(NumParseTest_fmt,str,1,nullptr,&setupStatus);    }    return i;  },{unum_close(NumParseTest_fmt);})
 
-QuickTest(NumParseTestdot,{    static char16_t pattern[] = { 0x23 };    NumParseTest_fmt = unum_open(UNUM_PATTERN_DECIMAL,         pattern,                    1,                    TEST_LOCALE,                    0,                    &setupStatus);  },{    int32_t i;    for(i=0;i<U_LOTS_OF_TIMES;i++) {      unum_parse(NumParseTest_fmt,strdot,1,nullptr,&setupStatus);    }    return i;  },{unum_close(NumParseTest_fmt);})
-QuickTest(NumParseTestspc,{    static char16_t pattern[] = { 0x23 };    NumParseTest_fmt = unum_open(UNUM_PATTERN_DECIMAL,         pattern,                    1,                    TEST_LOCALE,                    0,                    &setupStatus);  },{    int32_t i;    for(i=0;i<U_LOTS_OF_TIMES;i++) {      unum_parse(NumParseTest_fmt,strspc,1,nullptr,&setupStatus);    }    return i;  },{unum_close(NumParseTest_fmt);})
-QuickTest(NumParseTestgrp,{    static char16_t pattern[] = { 0x23 };    NumParseTest_fmt = unum_open(UNUM_PATTERN_DECIMAL,         pattern,                    1,                    TEST_LOCALE,                    0,                    &setupStatus);  },{    int32_t i;    for(i=0;i<U_LOTS_OF_TIMES;i++) {      unum_parse(NumParseTest_fmt,strgrp,-1,nullptr,&setupStatus);    }    return i;  },{unum_close(NumParseTest_fmt);})
+QuickTest(NumParseTestdot,{    static char16_t pattern[] = { 0x23 };    NumParseTest_fmt = unum_open(UNUM_PATTERN_DECIMAL,         pattern,                    1,                    TEST_LOCALE,                    0,                    &setupStatus);  },{    int32_t i;  double val;    for(i=0;i<U_LOTS_OF_TIMES;i++) {      val=unum_parse(NumParseTest_fmt,strdot,1,nullptr,&setupStatus);    }    return i;  },{unum_close(NumParseTest_fmt);})
+QuickTest(NumParseTestspc,{    static char16_t pattern[] = { 0x23 };    NumParseTest_fmt = unum_open(UNUM_PATTERN_DECIMAL,         pattern,                    1,                    TEST_LOCALE,                    0,                    &setupStatus);  },{    int32_t i;    double val;    for(i=0;i<U_LOTS_OF_TIMES;i++) {      val=unum_parse(NumParseTest_fmt,strspc,1,nullptr,&setupStatus);    }    return i;  },{unum_close(NumParseTest_fmt);})
+QuickTest(NumParseTestgrp,{    static char16_t pattern[] = { 0x23 };    NumParseTest_fmt = unum_open(UNUM_PATTERN_DECIMAL,         pattern,                    1,                    TEST_LOCALE,                    0,                    &setupStatus);  },{    int32_t i;    double val;    for(i=0;i<U_LOTS_OF_TIMES;i++) {      val=unum_parse(NumParseTest_fmt,strgrp,-1,nullptr,&setupStatus);    }    return i;  },{unum_close(NumParseTest_fmt);})
 
-QuickTest(NumParseTestbeng,{    static char16_t pattern[] = { 0x23 };    NumParseTest_fmt = unum_open(UNUM_PATTERN_DECIMAL,         pattern,                    1,                    TEST_LOCALE,                    0,                    &setupStatus);  },{    int32_t i;    for(i=0;i<U_LOTS_OF_TIMES;i++) {      unum_parse(NumParseTest_fmt,strbeng,-1,nullptr,&setupStatus);    }    return i;  },{unum_close(NumParseTest_fmt);})
+QuickTest(NumParseTestbeng,{    static char16_t pattern[] = { 0x23 };    NumParseTest_fmt = unum_open(UNUM_PATTERN_DECIMAL,         pattern,                    1,                    TEST_LOCALE,                    0,                    &setupStatus);  },{    int32_t i;    double val;    for(i=0;i<U_LOTS_OF_TIMES;i++) {      val=unum_parse(NumParseTest_fmt,strbeng,-1,nullptr,&setupStatus);    }    return i;  },{unum_close(NumParseTest_fmt);})
 
 UDateFormat *DateFormatTest_fmt = nullptr;
 UDate sometime = 100000000.0;

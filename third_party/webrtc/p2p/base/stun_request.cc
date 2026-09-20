@@ -19,7 +19,6 @@
 #include <utility>
 #include <vector>
 
-#include "absl/strings/string_view.h"
 #include "api/array_view.h"
 #include "api/environment/environment.h"
 #include "api/sequence_checker.h"
@@ -191,24 +190,25 @@ bool StunRequestManager::empty() const {
   return requests_.empty();
 }
 
-bool StunRequestManager::CheckResponse(ArrayView<const uint8_t> payload) {
+bool StunRequestManager::CheckResponse(const char* data, size_t size) {
   RTC_DCHECK_RUN_ON(thread_);
   // Check the appropriate bytes of the stream to see if they match the
   // transaction ID of a response we are expecting.
 
-  if (payload.size() < 20)
+  if (size < 20)
     return false;
 
-  absl::string_view id(
-      reinterpret_cast<const char*>(payload.data()) + kStunTransactionIdOffset,
-      kStunTransactionIdLength);
+  std::string id;
+  id.append(data + kStunTransactionIdOffset, kStunTransactionIdLength);
+
   RequestMap::iterator iter = requests_.find(id);
   if (iter == requests_.end())
     return false;
 
   // Parse the STUN message and continue processing as usual.
 
-  ByteBufferReader buf(payload);
+  ByteBufferReader buf(
+      MakeArrayView(reinterpret_cast<const uint8_t*>(data), size));
   std::unique_ptr<StunMessage> response(iter->second->msg_->CreateNew());
   if (!response->Read(&buf)) {
     RTC_LOG(LS_WARNING) << "Failed to read STUN response " << hex_encode(id);

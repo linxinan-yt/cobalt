@@ -87,7 +87,7 @@ export default class implements PerfettoPlugin {
     const memoryGroupFn = () => {
       return ctx.plugins
         .getPlugin(StandardGroupsPlugin)
-        .getOrCreateStandardGroup(ctx.defaultWorkspace, 'MEMORY');
+        .getOrCreateStandardGroup(ctx.workspace, 'MEMORY');
     };
     const node = await addGlobalCounter(ctx, memoryGroupFn);
     await addGlobalAllocs(ctx, () => {
@@ -111,7 +111,7 @@ async function addGlobalCounter(ctx: Trace, parent: () => TrackNode) {
   ctx.tracks.registerTrack({
     uri,
     tags: {
-      kinds: [COUNTER_TRACK_KIND],
+      kind: COUNTER_TRACK_KIND,
       trackIds: [id],
     },
     renderer: new TraceProcessorCounterTrack(ctx, uri, {}, id, title),
@@ -141,7 +141,7 @@ async function addGlobalAllocs(ctx: Trace, parent: () => TrackNode) {
   ctx.tracks.registerTrack({
     uri,
     tags: {
-      kinds: [SLICE_TRACK_KIND],
+      kind: SLICE_TRACK_KIND,
       trackIds: ids,
     },
     renderer: await createTraceProcessorSliceTrack({

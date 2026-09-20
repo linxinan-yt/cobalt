@@ -13,7 +13,6 @@
 
 #include <cstddef>
 #include <cstdint>
-#include <functional>
 #include <memory>
 #include <optional>
 #include <string>
@@ -25,7 +24,6 @@
 #include "api/crypto/crypto_options.h"
 #include "api/dtls_transport_interface.h"
 #include "api/environment/environment.h"
-#include "api/field_trials_view.h"
 #include "api/rtc_error.h"
 #include "api/scoped_refptr.h"
 #include "api/sequence_checker.h"
@@ -65,15 +63,7 @@ class StreamInterfaceChannel : public StreamInterface {
   StreamInterfaceChannel& operator=(const StreamInterfaceChannel&) = delete;
 
   // Push in a packet; this gets pulled out from Read().
-  bool OnPacketReceived(ArrayView<const uint8_t> data);
-
-  // Sets the options for the next packet to be written to ice_transport,
-  // corresponding to the next Write() call. Safe since BoringSSL guarantees
-  // that "In DTLS ... a single call to |SSL_write| only ever writes a single
-  // record in a single packet" - see comment on SSL_write in
-  // third_party/boringssl/src/include/openssl/ssl.h.
-  void SetNextPacketOptions(const AsyncSocketPacketOptions& options);
-  void ClearNextPacketOptions();
+  bool OnPacketReceived(const char* data, size_t size);
 
   // Implementations of StreamInterface
   StreamState GetState() const override;
@@ -84,6 +74,7 @@ class StreamInterfaceChannel : public StreamInterface {
   StreamResult Write(ArrayView<const uint8_t> data,
                      size_t& written,
                      int& error) override;
+
   bool Flush() override;
 
  private:
@@ -92,8 +83,6 @@ class StreamInterfaceChannel : public StreamInterface {
       nullptr;  // owned by DtlsTransport
   StreamState state_ RTC_GUARDED_BY(callback_sequence_);
   BufferQueue packets_ RTC_GUARDED_BY(callback_sequence_);
-  std::optional<AsyncSocketPacketOptions> next_packet_options_
-      RTC_GUARDED_BY(callback_sequence_);
 };
 
 // This class provides a DTLS SSLStreamAdapter inside a TransportChannel-style
@@ -126,12 +115,6 @@ class StreamInterfaceChannel : public StreamInterface {
 // as the constructor.
 class DtlsTransportInternalImpl : public DtlsTransportInternal {
  public:
-  // For testing purposes only.
-  using SslStreamFactory = std::function<std::unique_ptr<SSLStreamAdapter>(
-      std::unique_ptr<StreamInterface>,
-      absl::AnyInvocable<void(SSLHandshakeError)> handshake_error_callback,
-      const FieldTrialsView* field_trials)>;
-
   // `ice_transport` is the ICE transport this DTLS transport is wrapping.  It
   // must outlive this DTLS transport.
   //
@@ -141,8 +124,7 @@ class DtlsTransportInternalImpl : public DtlsTransportInternal {
       const Environment& env,
       IceTransportInternal* ice_transport,
       const CryptoOptions& crypto_options,
-      SSLProtocolVersion max_version = SSL_PROTOCOL_DTLS_12,
-      SslStreamFactory ssl_stream_factory = nullptr);
+      SSLProtocolVersion max_version = SSL_PROTOCOL_DTLS_12);
 
   ~DtlsTransportInternalImpl() override;
 
@@ -286,7 +268,6 @@ class DtlsTransportInternalImpl : public DtlsTransportInternal {
                               const ReceivedIpPacket& packet)> callback);
   void PeriodicRetransmitDtlsPacketUntilDtlsConnected();
 
-  SslStreamFactory ssl_stream_factory_;
   const Environment env_;
   RTC_NO_UNIQUE_ADDRESS SequenceChecker thread_checker_;
 

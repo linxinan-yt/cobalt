@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 fa{
     Currencies{
         ADP{
@@ -97,7 +97,7 @@ fa{
         }
         BGN{
             "BGN",
-            "لو بلغارستان",
+            "لف بلغارستان",
         }
         BHD{
             "BHD",
@@ -353,7 +353,7 @@ fa{
         }
         ILS{
             "₪",
-            "شِکِل جدید اسرائیل",
+            "شقل جدید اسرائیل",
         }
         INR{
             "₹",
@@ -641,7 +641,7 @@ fa{
         }
         PLN{
             "PLN",
-            "زلوتی لهستان",
+            "زواتی لهستان",
         }
         PTE{
             "PTE",
@@ -945,7 +945,7 @@ fa{
         }
     }
     Currencies%narrow{
-        BYN{"Br"}
+        BYN{"р."}
     }
     Currencies%variant{
         RUB{"₽"}
@@ -954,18 +954,6 @@ fa{
         ARP{
             one{"پزوی آرژانتین (۱۹۸۳ تا ۱۹۸۵)"}
             other{"پزوی آرژانتین (۱۹۸۳ تا ۱۹۸۵)"}
-        }
-        BGN{
-            one{"لو بلغارستان"}
-            other{"لو بلغارستان"}
-        }
-        ILS{
-            one{"شِکِل جدید اسرائیل"}
-            other{"شِکِل جدید اسرائیل"}
-        }
-        PLN{
-            one{"زلوتی لهستان"}
-            other{"زلوتی لهستان"}
         }
         XAG{
             one{"اونس تروا نقره"}

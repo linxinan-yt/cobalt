@@ -41,7 +41,6 @@ private:
     void test_jConsistencyOddLocales();
     void testBestPattern();
     void testDateTimePatterns();
-    void testISO8601();
     void testRegionOverride();
 
     enum { kNumDateTimePatterns = 4 };

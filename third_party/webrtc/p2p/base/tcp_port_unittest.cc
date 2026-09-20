@@ -249,8 +249,7 @@ TEST_F(TCPPortTest, TCPPortNotDiscardedIfBoundToTemporaryIP) {
 class SentPacketCounter : public sigslot::has_slots<> {
  public:
   explicit SentPacketCounter(TCPPort* p) {
-    p->SubscribeSentPacket(
-        [this](const webrtc::SentPacketInfo& info) { OnSentPacket(info); });
+    p->SignalSentPacket.connect(this, &SentPacketCounter::OnSentPacket);
   }
 
   int sent_packets() const { return sent_packets_; }

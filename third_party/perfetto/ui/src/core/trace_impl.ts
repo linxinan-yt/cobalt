@@ -56,7 +56,6 @@ import {Setting, SettingDescriptor, SettingsManager} from '../public/settings';
 import {SettingsManagerImpl} from './settings_manager';
 import {MinimapManagerImpl} from './minimap_manager';
 import {isStartupCommandAllowed} from './startup_command_allowlist';
-import {TraceStream} from '../public/stream';
 
 /**
  * Handles the per-trace state of the UI
@@ -108,7 +107,7 @@ export class TraceContext implements Disposable {
     this.scrollHelper = new ScrollHelper(
       this.traceInfo,
       this.timeline,
-      this.workspaceMgr,
+      this.workspaceMgr.currentWorkspace,
       this.trackMgr,
     );
 
@@ -243,10 +242,27 @@ export class TraceImpl implements Trace {
       parseUrlCommands(ctx.appCtx.initialRouteArgs.startupCommands) ?? [];
     const settingsCommands = ctx.appCtx.startupCommandsSetting.get();
 
-    // Combine URL and settings commands - runtime allowlist checking will handle filtering
-    const allStartupCommands = [...urlCommands, ...settingsCommands];
+    // Filter commands through the allowlist if enforcement is enabled
+    const unfilteredCommands = [...urlCommands, ...settingsCommands];
     const enforceAllowlist =
       ctx.appCtx.enforceStartupCommandAllowlistSetting.get();
+
+    const allStartupCommands = enforceAllowlist
+      ? unfilteredCommands.filter((cmd) => isStartupCommandAllowed(cmd.id))
+      : unfilteredCommands;
+
+    // Log any filtered commands for debugging when enforcement is enabled
+    if (enforceAllowlist) {
+      const filteredOut = unfilteredCommands.filter(
+        (cmd) => !isStartupCommandAllowed(cmd.id),
+      );
+      if (filteredOut.length > 0) {
+        console.warn(
+          'The following startup commands were filtered out (not in allowlist):',
+          filteredOut.map((cmd) => `${cmd.id}(${cmd.args.join(', ')})`),
+        );
+      }
+    }
 
     // CommandManager is global. Here we intercept the registerCommand() because
     // we want any commands registered via the Trace interface to be
@@ -271,32 +287,18 @@ export class TraceImpl implements Trace {
         // - Trace data is fully accessible
         // - UI state has been restored from any saved workspace
         // - Commands can safely query trace data and modify UI state
-
-        // Set allowlist checking during startup if enforcement enabled
-        if (enforceAllowlist) {
-          ctx.appCtx.commandMgr.setAllowlistCheck(isStartupCommandAllowed);
-        }
-
-        try {
-          for (const command of allStartupCommands) {
-            try {
-              // Execute through proxy to access both global and trace-specific
-              // commands.
-              await ctx.appCtx.commandMgr.runCommand(
-                command.id,
-                ...command.args,
-              );
-            } catch (error) {
-              // TODO(stevegolton): Add a mechanism to notify users of startup
-              // command errors. This will involve creating a notification UX
-              // similar to VSCode where there are popups on the bottom right
-              // of the UI.
-              console.warn(`Startup command ${command.id} failed:`, error);
-            }
+        for (const command of allStartupCommands) {
+          try {
+            // Execute through proxy to access both global and trace-specific
+            // commands.
+            await ctx.appCtx.commandMgr.runCommand(command.id, ...command.args);
+          } catch (error) {
+            // TODO(stevegolton): Add a mechanism to notify users of startup
+            // command errors. This will involve creating a notification UX
+            // similar to VSCode where there are popups on the bottom right
+            // of the UI.
+            console.warn(`Startup command ${command.id} failed:`, error);
           }
-        } finally {
-          // Always restore default (allow all) behavior when done
-          ctx.appCtx.commandMgr.setAllowlistCheck(() => true);
         }
       },
     });
@@ -410,12 +412,8 @@ export class TraceImpl implements Trace {
     return this.traceCtx.tabMgr;
   }
 
-  get currentWorkspace() {
+  get workspace() {
     return this.traceCtx.workspaceMgr.currentWorkspace;
-  }
-
-  get defaultWorkspace() {
-    return this.traceCtx.workspaceMgr.defaultWorkspace;
   }
 
   get workspaces() {
@@ -506,23 +504,19 @@ export class TraceImpl implements Trace {
     this.appImpl.navigate(newHash);
   }
 
-  openTraceFromFile(file: File) {
-    return this.appImpl.openTraceFromFile(file);
+  openTraceFromFile(file: File): void {
+    this.appImpl.openTraceFromFile(file);
   }
 
   openTraceFromUrl(url: string, serializedAppState?: SerializedAppState) {
-    return this.appImpl.openTraceFromUrl(url, serializedAppState);
-  }
-
-  openTraceFromStream(stream: TraceStream) {
-    return this.appImpl.openTraceFromStream(stream);
+    this.appImpl.openTraceFromUrl(url, serializedAppState);
   }
 
   openTraceFromBuffer(
     args: OpenTraceArrayBufArgs,
     serializedAppState?: SerializedAppState,
-  ) {
-    return this.appImpl.openTraceFromBuffer(args, serializedAppState);
+  ): void {
+    this.appImpl.openTraceFromBuffer(args, serializedAppState);
   }
 
   closeCurrentTrace(): void {

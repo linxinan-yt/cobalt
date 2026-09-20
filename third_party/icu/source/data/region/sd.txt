@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 sd{
     Countries{
         001{"دنيا"}
@@ -117,7 +117,7 @@ sd{
         FR{"فرانس"}
         GA{"گبون"}
         GB{"برطانيہ"}
-        GD{"گريناڊا"}
+        GD{"گرينڊا"}
         GE{"جارجيا"}
         GF{"فرانسيسي گيانا"}
         GG{"گورنسي"}

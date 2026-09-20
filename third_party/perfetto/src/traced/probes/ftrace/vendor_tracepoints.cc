@@ -37,13 +37,13 @@ namespace {
 using EmptyTokenMode = ::perfetto::base::StringSplitter::EmptyTokenMode;
 
 std::vector<GroupAndName> DiscoverTracepoints(AtraceHalWrapper* hal,
-                                              Tracefs* tracefs,
+                                              Tracefs* ftrace,
                                               const std::string& category) {
-  tracefs->DisableAllEvents();
+  ftrace->DisableAllEvents();
   hal->EnableCategories({category});
 
   std::vector<GroupAndName> events;
-  for (const std::string& group_name : tracefs->ReadEnabledEvents()) {
+  for (const std::string& group_name : ftrace->ReadEnabledEvents()) {
     size_t pos = group_name.find('/');
     PERFETTO_CHECK(pos != std::string::npos);
     events.push_back(
@@ -51,7 +51,7 @@ std::vector<GroupAndName> DiscoverTracepoints(AtraceHalWrapper* hal,
   }
 
   hal->DisableAllCategories();
-  tracefs->DisableAllEvents();
+  ftrace->DisableAllEvents();
   return events;
 }
 
@@ -90,10 +90,10 @@ base::Status ParseEventLine(base::StringView line,
 }  // namespace
 
 std::map<std::string, std::vector<GroupAndName>>
-DiscoverVendorTracepointsWithHal(AtraceHalWrapper* hal, Tracefs* tracefs) {
+DiscoverVendorTracepointsWithHal(AtraceHalWrapper* hal, Tracefs* ftrace) {
   std::map<std::string, std::vector<GroupAndName>> results;
   for (const auto& category : hal->ListCategories()) {
-    results.emplace(category, DiscoverTracepoints(hal, tracefs, category));
+    results.emplace(category, DiscoverTracepoints(hal, ftrace, category));
   }
   return results;
 }
@@ -148,7 +148,7 @@ base::Status DiscoverVendorTracepointsWithFile(
 base::Status DiscoverAccessibleVendorTracepointsWithFile(
     const std::string& vendor_atrace_categories_path,
     std::map<std::string, std::vector<GroupAndName>>* categories_map,
-    Tracefs* tracefs) {
+    Tracefs* ftrace) {
   categories_map->clear();
   base::Status status = DiscoverVendorTracepointsWithFile(
       vendor_atrace_categories_path, categories_map);
@@ -159,8 +159,8 @@ base::Status DiscoverAccessibleVendorTracepointsWithFile(
   for (auto& it : *categories_map) {
     std::vector<GroupAndName>& events = it.second;
     events.erase(std::remove_if(events.begin(), events.end(),
-                                [tracefs](const GroupAndName& event) {
-                                  return !tracefs->IsEventAccessible(
+                                [ftrace](const GroupAndName& event) {
+                                  return !ftrace->IsEventAccessible(
                                       event.group(), event.name());
                                 }),
                  events.end());

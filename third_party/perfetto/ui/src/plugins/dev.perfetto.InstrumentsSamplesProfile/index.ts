@@ -15,12 +15,7 @@
 import {TrackData} from '../../components/tracks/track_data';
 import {Trace} from '../../public/trace';
 import {PerfettoPlugin} from '../../public/plugin';
-import {
-  LONG,
-  NUM,
-  NUM_NULL,
-  STR_NULL,
-} from '../../trace_processor/query_result';
+import {NUM, NUM_NULL, STR_NULL} from '../../trace_processor/query_result';
 import {assertExists} from '../../base/logging';
 import {
   createProcessInstrumentsSamplesProfileTrack,
@@ -63,7 +58,7 @@ export default class implements PerfettoPlugin {
       ctx.tracks.registerTrack({
         uri,
         tags: {
-          kinds: [INSTRUMENTS_SAMPLES_PROFILE_TRACK_KIND],
+          kind: INSTRUMENTS_SAMPLES_PROFILE_TRACK_KIND,
           upid,
         },
         renderer: createProcessInstrumentsSamplesProfileTrack(ctx, uri, upid),
@@ -91,7 +86,7 @@ export default class implements PerfettoPlugin {
     for (
       const it = tResult.iter({
         utid: NUM,
-        tid: LONG,
+        tid: NUM,
         threadName: STR_NULL,
         upid: NUM_NULL,
       });
@@ -107,7 +102,7 @@ export default class implements PerfettoPlugin {
       ctx.tracks.registerTrack({
         uri,
         tags: {
-          kinds: [INSTRUMENTS_SAMPLES_PROFILE_TRACK_KIND],
+          kind: INSTRUMENTS_SAMPLES_PROFILE_TRACK_KIND,
           utid,
           upid: upid ?? undefined,
         },
@@ -221,9 +216,7 @@ function getUpidsFromInstrumentsSampleAreaSelection(
   const upids = [];
   for (const trackInfo of currentSelection.tracks) {
     if (
-      trackInfo?.tags?.kinds?.includes(
-        INSTRUMENTS_SAMPLES_PROFILE_TRACK_KIND,
-      ) &&
+      trackInfo?.tags?.kind === INSTRUMENTS_SAMPLES_PROFILE_TRACK_KIND &&
       trackInfo.tags?.utid === undefined
     ) {
       upids.push(assertExists(trackInfo.tags?.upid));
@@ -238,9 +231,7 @@ function getUtidsFromInstrumentsSampleAreaSelection(
   const utids = [];
   for (const trackInfo of currentSelection.tracks) {
     if (
-      trackInfo?.tags?.kinds?.includes(
-        INSTRUMENTS_SAMPLES_PROFILE_TRACK_KIND,
-      ) &&
+      trackInfo?.tags?.kind === INSTRUMENTS_SAMPLES_PROFILE_TRACK_KIND &&
       trackInfo.tags?.utid !== undefined
     ) {
       utids.push(trackInfo.tags?.utid);

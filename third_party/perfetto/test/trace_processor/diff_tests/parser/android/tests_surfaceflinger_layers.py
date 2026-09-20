@@ -26,15 +26,14 @@ class SurfaceFlingerLayers(TestSuite):
         trace=Path('surfaceflinger_layers.textproto'),
         query="""
         SELECT
-          id, ts, has_invalid_elapsed_ts
+          id, ts
         FROM
-          surfaceflinger_layers_snapshot LIMIT 3;
+          surfaceflinger_layers_snapshot LIMIT 2;
         """,
         out=Csv("""
-        "id","ts","has_invalid_elapsed_ts"
-        0,2748300281655,0
-        1,2749500341063,0
-        2,2749700000000,1
+        "id","ts"
+        0,2748300281655
+        1,2749500341063
         """))
 
   def test_snapshot_args(self):
@@ -61,7 +60,7 @@ class SurfaceFlingerLayers(TestSuite):
         "displays[0].size.h","2400"
         "displays[0].size.w","1080"
         "displays[0].transform.type","0"
-        "elapsed_realtime_nanos","123"
+        "elapsed_realtime_nanos","2748300281655"
         "vsync_id","24766"
         "where","visibleRegionsDirty"
         """))

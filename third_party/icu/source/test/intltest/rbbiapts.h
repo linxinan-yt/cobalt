@@ -83,7 +83,6 @@ public:
     void TestRuleStatusVec();
 
     void TestBug2190();
-    void TestBug22580();
 
     void TestBoilerPlate();
 

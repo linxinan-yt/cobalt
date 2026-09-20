@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 en_GB{
     %%Parent{"en_001"}
     zoneStrings{
@@ -30,9 +30,6 @@ en_GB{
             sd{"WEST"}
             sg{"WET"}
             ss{"WET"}
-        }
-        "meta:Gulf"{
-            ss{"GST"}
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 ms{
     zoneStrings{
         "Africa:Cairo"{
@@ -24,6 +24,12 @@ ms{
         "America:Merida"{
             ec{"Merida"}
         }
+        "America:Rainy_River"{
+            ec{"Sungai Rainy"}
+        }
+        "America:Santa_Isabel"{
+            ec{"Santa Isabel"}
+        }
         "America:St_Barthelemy"{
             ec{"Saint Barthelemy"}
         }
@@ -41,6 +47,9 @@ ms{
         }
         "Asia:Singapore"{
             ec{"Singapura"}
+        }
+        "Australia:Currie"{
+            ec{"Currie"}
         }
         "Etc:UTC"{
             ls{"Waktu Universal Selaras"}
@@ -237,6 +246,11 @@ ms{
             lg{"Waktu China"}
             ls{"Waktu Piawai China"}
         }
+        "meta:Choibalsan"{
+            ld{"Waktu Musim Panas Choibalsan"}
+            lg{"Waktu Choibalsan"}
+            ls{"Waktu Piawai Choibalsan"}
+        }
         "meta:Christmas"{
             ls{"Waktu Pulau Christmas"}
         }
@@ -401,9 +415,6 @@ ms{
             lg{"Waktu Petropavlovsk-Kamchatski"}
             ls{"Waktu Piawai Petropavlovsk-Kamchatski"}
         }
-        "meta:Kazakhstan"{
-            ls{"Waktu Kazakhstan"}
-        }
         "meta:Kazakhstan_Eastern"{
             ls{"Waktu Kazakhstan Timur"}
         }
@@ -439,6 +450,9 @@ ms{
             lg{"Waktu Macao"}
             ls{"Waktu Piawai Macao"}
         }
+        "meta:Macquarie"{
+            ls{"Waktu Pulau Macquarie"}
+        }
         "meta:Magadan"{
             ld{"Waktu Musim Panas Magadan"}
             lg{"Waktu Magadan"}
@@ -464,6 +478,11 @@ ms{
         }
         "meta:Mawson"{
             ls{"Waktu Mawson"}
+        }
+        "meta:Mexico_Northwest"{
+            ld{"Waktu Siang Barat Laut Mexico"}
+            lg{"Waktu Barat Laut Mexico"}
+            ls{"Waktu Piawai Barat Laut Mexico"}
         }
         "meta:Mexico_Pacific"{
             ld{"Waktu Siang Pasifik Mexico"}

@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 so{
     AuxExemplarCharacters{"[a e i o p u v z]"}
     ExemplarCharacters{"[b c d f g h j k l m n q r s t w x y]"}
@@ -859,12 +859,21 @@ so{
                         "J",
                         "S",
                     }
+                    short{
+                        "Axd",
+                        "Isn",
+                        "Tldo",
+                        "Arbaco",
+                        "Khms",
+                        "Jmc",
+                        "Sbti",
+                    }
                 }
             }
             dayPeriod{
                 stand-alone{
-                    narrow{
-                        am{"GH"}
+                    abbreviated{
+                        am{"AM"}
                         pm{"GD"}
                     }
                     wide{
@@ -1006,18 +1015,18 @@ so{
                         "Dis",
                     }
                     wide{
-                        "Janaayo",
-                        "Febraayo",
-                        "Maarso",
-                        "Abriil",
-                        "Maayo",
-                        "Juun",
-                        "Luulyo",
-                        "Agosto",
-                        "Sebtembar",
-                        "Oktoobar",
-                        "Noofeembar",
-                        "Diseembar",
+                        "Bisha Koobaad",
+                        "Bisha Labaad",
+                        "Bisha Saddexaad",
+                        "Bisha Afraad",
+                        "Bisha Shanaad",
+                        "Bisha Lixaad",
+                        "Bisha Todobaad",
+                        "Bisha Sideedaad",
+                        "Bisha Sagaalaad",
+                        "Bisha Tobnaad",
+                        "Bisha Kow iyo Tobnaad",
+                        "Bisha Laba iyo Tobnaad",
                     }
                 }
                 stand-alone{
@@ -1040,9 +1049,9 @@ so{
                         "Febraayo",
                         "Maarso",
                         "Abriil",
-                        "Maayo",
+                        "May",
                         "Juun",
-                        "Luulyo",
+                        "Luuliyo",
                         "Ogosto",
                         "Sebteembar",
                         "Oktoobar",
@@ -1547,7 +1556,7 @@ so{
             }
         }
         quarter{
-            dn{"rubuc"}
+            dn{"Rubuc"}
             relative{
                 "-1"{"Rubucii hore"}
                 "0"{"Rubucan"}
@@ -1830,7 +1839,7 @@ so{
             dn{"mlnta-tdbdka bsha"}
         }
         year{
-            dn{"sannad"}
+            dn{"Sannad"}
             relative{
                 "-1"{"Sannadkii hore"}
                 "0"{"Sannadkan"}
@@ -1922,10 +1931,10 @@ so{
                 "[%％﹪ ٪]",
                 "[‰ ؉]",
                 "[\$＄﹩]",
-                "[£￡ ₤]",
+                "[£ ₤]",
                 "[¥￥]",
                 "[₩￦]",
-                "[₹ {Rp} {Rs}₨]",
+                "[₹ ₨ {Rp} {Rs}]",
             }
         }
         number{

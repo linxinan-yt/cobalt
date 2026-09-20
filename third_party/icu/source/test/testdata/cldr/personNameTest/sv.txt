@@ -1,8 +1,9 @@
-# Test data for Person Name Data
-#  Copyright © 1991-2025 Unicode, Inc.
+# Test data for unit conversions
+#  Copyright © 1991-2023 Unicode, Inc.
 #  For terms of use, see http://www.unicode.org/copyright.html
-#  SPDX-License-Identifier: Unicode-3.0
+#  SPDX-License-Identifier: Unicode-DFS-2016
 #  CLDR data files are interpreted according to the LDML specification (http://unicode.org/reports/tr35/)
+#
 # CLDR person name formatting test data for: sv
 #
 # Test lines have the following structure:
@@ -687,45 +688,45 @@ endName
 
 # foreignFull
 name ; title; Prof. dr.
-name ; given; Ada Cornelia
-name ; given-informal; Neele
-name ; given2; César Martín
-name ; surname-prefix; von
-name ; surname-core; Brühl
-name ; surname2; González Domingo
+name ; given; Ann-Christine
+name ; given-informal; Anki
+name ; given2; Eva Sofia
+name ; surname-prefix; van den
+name ; surname-core; Karlsson
+name ; surname2; Beck Strand
 name ; generation; jr.
 name ; credentials; med. dr. fil. dr. jur. dr.
 name ; locale; ko_AQ
 
-expectedResult; med. dr. fil. dr. jur. dr. Ada Cornelia César Martín von Brühl González Domingo
+expectedResult; med. dr. fil. dr. jur. dr. Ann-Christine Eva Sofia van den Karlsson Beck Strand
 
 parameters; givenFirst; long; referring; formal
 
-expectedResult; von Brühl, Prof. dr. Ada Cornelia César Martín, med. dr. fil. dr. jur. dr.
+expectedResult; van den Karlsson, Prof. dr. Ann-Christine Eva Sofia, med. dr. fil. dr. jur. dr.
 
 parameters; surnameFirst; long; referring; formal
 
-expectedResult; von Brühl, Ada Cornelia C M, med. dr. fil. dr. jur. dr.
+expectedResult; van den Karlsson, Ann-Christine E S, med. dr. fil. dr. jur. dr.
 
 parameters; surnameFirst; medium; referring; formal
 
-expectedResult; med. dr. fil. dr. jur. dr. Ada Cornelia C M von Brühl
+expectedResult; med. dr. fil. dr. jur. dr. Ann-Christine E S van den Karlsson
 
 parameters; givenFirst; medium; referring; formal
 
-expectedResult; von Brühl González Domingo, Ada Cornelia César Martín
+expectedResult; van den Karlsson Beck Strand, Ann-Christine Eva Sofia
 
 parameters; sorting; long; referring; formal
 
-expectedResult; von Brühl González Domingo, Ada Cornelia C M
+expectedResult; van den Karlsson Beck Strand, Ann-Christine E S
 
 parameters; sorting; medium; referring; formal
 
-expectedResult; von Brühl González Domingo, A C C M
+expectedResult; van den Karlsson Beck Strand, A C E S
 
 parameters; sorting; short; referring; formal
 
-expectedResult; Prof. dr. von Brühl
+expectedResult; Prof. dr. van den Karlsson
 
 parameters; givenFirst; long; addressing; formal
 parameters; givenFirst; medium; addressing; formal
@@ -734,15 +735,15 @@ parameters; surnameFirst; long; addressing; formal
 parameters; surnameFirst; medium; addressing; formal
 parameters; surnameFirst; short; addressing; formal
 
-expectedResult; von Brühl, A C C M
+expectedResult; van den Karlsson, A C E S
 
 parameters; surnameFirst; short; referring; formal
 
-expectedResult; A C C M von Brühl
+expectedResult; A C E S van den Karlsson
 
 parameters; givenFirst; short; referring; formal
 
-expectedResult; von Brühl, Neele
+expectedResult; van den Karlsson, Anki
 
 parameters; surnameFirst; long; referring; informal
 parameters; surnameFirst; medium; referring; informal
@@ -750,20 +751,20 @@ parameters; sorting; long; referring; informal
 parameters; sorting; medium; referring; informal
 parameters; sorting; short; referring; informal
 
-expectedResult; Neele von Brühl
+expectedResult; Anki van den Karlsson
 
 parameters; givenFirst; long; referring; informal
 parameters; givenFirst; medium; referring; informal
 
-expectedResult; von Brühl, A C
+expectedResult; van den Karlsson, A C
 
 parameters; surnameFirst; short; referring; informal
 
-expectedResult; Neele v B
+expectedResult; Anki v d K
 
 parameters; givenFirst; short; referring; informal
 
-expectedResult; Neele
+expectedResult; Anki
 
 parameters; givenFirst; long; addressing; informal
 parameters; givenFirst; medium; addressing; informal
@@ -772,27 +773,27 @@ parameters; surnameFirst; long; addressing; informal
 parameters; surnameFirst; medium; addressing; informal
 parameters; surnameFirst; short; addressing; informal
 
-expectedResult; ACV
+expectedResult; AEV
 
 parameters; givenFirst; long; monogram; formal
 parameters; givenFirst; medium; monogram; formal
 
-expectedResult; VAC
+expectedResult; VAE
 
 parameters; surnameFirst; long; monogram; formal
 parameters; surnameFirst; long; monogram; informal
 parameters; surnameFirst; medium; monogram; formal
 
-expectedResult; NV
+expectedResult; AV
 
 parameters; givenFirst; long; monogram; informal
 parameters; givenFirst; medium; monogram; informal
 
-expectedResult; VN
+expectedResult; VA
 
 parameters; surnameFirst; medium; monogram; informal
 
-expectedResult; N
+expectedResult; A
 
 parameters; givenFirst; short; monogram; informal
 parameters; surnameFirst; short; monogram; informal

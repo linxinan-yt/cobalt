@@ -127,7 +127,7 @@ class NATProxyServerSocket : public AsyncProxyServerSocket {
     BufferInput(false);
     NotifyConnectRequest(this, dest_addr);
     if (remainder) {
-      NotifyReadEvent(this);
+      SignalReadEvent(this);
     }
   }
 };

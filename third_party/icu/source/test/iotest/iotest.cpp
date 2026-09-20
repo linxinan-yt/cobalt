@@ -14,9 +14,6 @@
 *   created by: George Rhoten
 */
 
-#include <string.h>
-#include <stdlib.h>
-#include <string_view>
 
 #include "unicode/ustdio.h"
 #include "unicode/uclean.h"
@@ -31,6 +28,9 @@
 #include "unicode/tstdtmod.h"
 #include "putilimp.h"
 
+#include <string.h>
+#include <stdlib.h>
+
 class DataDrivenLogger : public TestLog {
     static const char* fgDataDir;
     static char *fgTestDataPath;
@@ -42,26 +42,23 @@ public:
             fgTestDataPath = nullptr;
         }
     }
-    virtual void errln(std::u16string_view message) override {
+    virtual void errln( const UnicodeString &message ) override {
         char buffer[4000];
-        UnicodeString us(message);
-        us.extract(0, us.length(), buffer, sizeof(buffer));
+        message.extract(0, message.length(), buffer, sizeof(buffer));
         buffer[3999] = 0; /* NUL terminate */
         log_err(buffer);
     }
 
-    virtual void logln(std::u16string_view message) override {
+    virtual void logln( const UnicodeString &message ) override {
         char buffer[4000];
-        UnicodeString us(message);
-        us.extract(0, us.length(), buffer, sizeof(buffer));
+        message.extract(0, message.length(), buffer, sizeof(buffer));
         buffer[3999] = 0; /* NUL terminate */
         log_info(buffer);
     }
 
-    virtual void dataerrln(std::u16string_view message) override {
+    virtual void dataerrln( const UnicodeString &message ) override {
         char buffer[4000];
-        UnicodeString us(message);
-        us.extract(0, us.length(), buffer, sizeof(buffer));
+        message.extract(0, message.length(), buffer, sizeof(buffer));
         buffer[3999] = 0; /* NUL terminate */
         log_data_err(buffer);
     }
@@ -146,7 +143,7 @@ public:
             directory = pathToDataDirectory();
 #endif
 
-            tdpath = static_cast<char*>(malloc(sizeof(char) * ((strlen(directory) * strlen(tdrelativepath)) + 100)));
+            tdpath = (char*) malloc(sizeof(char) *(( strlen(directory) * strlen(tdrelativepath)) + 100));
 
 
             /* u_getDataDirectory shoul return \source\data ... set the
@@ -187,12 +184,12 @@ uto64(const char16_t  *buffer)
         /* read the next digit */
         result *= 16u;
         if (!u_isxdigit(*buffer)) {
-            log_err("\\u%04X is not a valid hex digit for this test\n", *buffer);
+            log_err("\\u%04X is not a valid hex digit for this test\n", (char16_t)*buffer);
         }
         result += *buffer - 0x0030 - (*buffer >= 0x0041 ? (*buffer >= 0x0061 ? 39 : 7) : 0);
         buffer++;
     }
-    return static_cast<int64_t>(result);
+    return (int64_t)result;
 }
 #endif
 
@@ -919,12 +916,12 @@ int main(int argc, char* argv[])
     u_cleanup();
 
     endTime = uprv_getRawUTCtime();
-    diffTime = static_cast<int32_t>(endTime - startTime);
+    diffTime = (int32_t)(endTime - startTime);
     printf("Elapsed Time: %02d:%02d:%02d.%03d\n",
-        (diffTime % U_MILLIS_PER_DAY) / U_MILLIS_PER_HOUR,
-        (diffTime % U_MILLIS_PER_HOUR) / U_MILLIS_PER_MINUTE,
-        (diffTime % U_MILLIS_PER_MINUTE) / U_MILLIS_PER_SECOND,
-        diffTime % U_MILLIS_PER_SECOND);
+        (int)((diffTime%U_MILLIS_PER_DAY)/U_MILLIS_PER_HOUR),
+        (int)((diffTime%U_MILLIS_PER_HOUR)/U_MILLIS_PER_MINUTE),
+        (int)((diffTime%U_MILLIS_PER_MINUTE)/U_MILLIS_PER_SECOND),
+        (int)(diffTime%U_MILLIS_PER_SECOND));
 
     return nerrors;
 }

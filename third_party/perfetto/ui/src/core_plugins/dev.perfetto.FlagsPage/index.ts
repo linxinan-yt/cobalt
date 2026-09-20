@@ -28,8 +28,8 @@ export default class implements PerfettoPlugin {
       render: (subpage) => m(FlagsPage, {subpage}),
     });
     app.sidebar.addMenuItem({
-      section: 'settings',
-      sortOrder: 2,
+      section: 'support',
+      sortOrder: 3,
       text: 'Flags',
       href: '#!/flags',
       icon: 'emoji_flags',
@@ -38,14 +38,14 @@ export default class implements PerfettoPlugin {
     // Plugins page
     app.pages.registerPage({
       route: '/plugins',
-      render: (subpage) => m(PluginsPage, {subpage}),
+      render: () => m(PluginsPage),
     });
     app.sidebar.addMenuItem({
-      section: 'settings',
+      section: 'support',
       text: 'Plugins',
       href: '#!/plugins',
       icon: 'extension',
-      sortOrder: 3,
+      sortOrder: 9,
     });
   }
 }

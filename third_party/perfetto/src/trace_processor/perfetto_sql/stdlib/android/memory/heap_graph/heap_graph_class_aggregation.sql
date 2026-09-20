@@ -44,9 +44,7 @@ SELECT
   OR $obj_name GLOB 'float[[]*'
   OR $obj_name GLOB 'double[[]*'
   OR $obj_name GLOB 'boolean[[]*'
-  OR $obj_name GLOB 'android.util.*Array*'
-  OR $obj_name GLOB 'kotlinx.coroutines.*'
-  OR $obj_name GLOB 'kotlinx.atomicfu.*';
+  OR $obj_name GLOB 'android.util.*Array*';
 
 CREATE PERFETTO TABLE _heap_graph_dominator_tree_for_partition AS
 SELECT

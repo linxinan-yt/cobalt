@@ -23,8 +23,8 @@ export default class implements PerfettoPlugin {
 
   static onActivate(app: App) {
     app.sidebar.addMenuItem({
-      section: 'settings',
-      sortOrder: 1,
+      section: 'support',
+      sortOrder: 3,
       text: 'Settings',
       href: '#!/settings',
       icon: 'settings',
@@ -32,7 +32,7 @@ export default class implements PerfettoPlugin {
 
     app.pages.registerPage({
       route: '/settings',
-      render: (subpage) => m(SettingsPage, {subpage}),
+      render: () => m(SettingsPage),
     });
 
     app.commands.registerCommand({

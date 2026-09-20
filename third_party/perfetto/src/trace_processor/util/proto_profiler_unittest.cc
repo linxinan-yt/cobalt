@@ -51,7 +51,7 @@ TEST(ProtoProfiler, TestMessage) {
   std::vector<Item> got;
   for (auto sample = computer.GetNext(); sample; sample = computer.GetNext()) {
     std::vector<std::string> path;
-    for (const auto& field : computer.GetPath().fields) {
+    for (const auto& field : computer.GetPath()) {
       if (field.has_field_name())
         path.push_back(field.field_name());
       path.push_back(field.type_name());

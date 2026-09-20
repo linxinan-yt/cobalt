@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
 en_001{
     calendar{
         chinese{
@@ -274,7 +274,6 @@ en_001{
                         pm{"pm"}
                     }
                     narrow{
-                        am{"am"}
                         pm{"pm"}
                     }
                     wide{

@@ -17,7 +17,7 @@ import {makeColorScheme} from '../../components/colorizer';
 import {Trace} from '../../public/trace';
 import {SourceDataset} from '../../trace_processor/dataset';
 import {LONG, NUM, STR} from '../../trace_processor/query_result';
-import {SliceTrack} from '../../components/tracks/slice_track';
+import {DatasetSliceTrack} from '../../components/tracks/dataset_slice_track';
 import {ThreadSliceDetailsPanel} from '../../components/details/thread_slice_details_tab';
 
 const GREEN = makeColorScheme(new HSLColor('#4CAF50')); // Green 500
@@ -28,7 +28,7 @@ export function createExpectedFramesTrack(
   maxDepth: number,
   trackIds: ReadonlyArray<number>,
 ) {
-  return SliceTrack.create({
+  return new DatasetSliceTrack({
     trace,
     uri,
     initialMaxDepth: maxDepth,

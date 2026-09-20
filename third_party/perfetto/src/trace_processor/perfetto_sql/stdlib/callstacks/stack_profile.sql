@@ -90,7 +90,6 @@ SELECT
   s.source_file,
   coalesce(jsf.line, s.line_number) AS line_number,
   coalesce(jsf.col, 0) AS column_number,
-  s.inlined,
   c.callsite_id,
   c.is_leaf AS is_leaf_function_in_callsite_frame
 FROM _callstack_spc_raw_forest AS c
@@ -115,15 +114,7 @@ LEFT JOIN _callstack_spc_raw_forest AS p
 ORDER BY
   c._auto_id;
 
--- This index is used to efficiently join the callstack forest with the
--- sample data on callsite_id. This is a key operation in the
--- _callstacks_for_callsites and _callstacks_for_stack_profile_samples macros.
 CREATE PERFETTO INDEX _callstack_spc_index ON _callstack_spc_forest(callsite_id);
-
--- This index is necessary to optimize the leaf-finding query in
--- _callstacks_self_to_cumulative. Without this index, the anti-join on
--- parent_id can be very slow on large traces.
-CREATE PERFETTO INDEX _callstack_spc_parent_index ON _callstack_spc_forest(parent_id);
 
 CREATE PERFETTO MACRO _callstacks_for_stack_profile_samples(
     spc_samples TableOrSubquery
@@ -138,7 +129,6 @@ RETURNS TableOrSubquery AS
     m.name AS mapping_name,
     f.source_file,
     f.line_number,
-    f.inlined,
     f.is_leaf_function_in_callsite_frame
   FROM _tree_reachable_ancestors_or_self!(
     _callstack_spc_forest,
@@ -195,11 +185,12 @@ RETURNS TableOrSubquery AS
       FROM $callstacks
       WHERE parent_id IS NOT NULL
     ),
-  (
-    SELECT id, self_count AS cumulative_count
-    FROM $callstacks
-    WHERE id NOT IN (SELECT parent_id FROM $callstacks WHERE parent_id IS NOT NULL)
-  ),
+    (
+      SELECT p.id, p.self_count AS cumulative_count
+      FROM $callstacks p
+      LEFT JOIN $callstacks c ON c.parent_id = p.id
+      WHERE c.id IS NULL
+    ),
     (cumulative_count),
     (
       WITH agg AS (
