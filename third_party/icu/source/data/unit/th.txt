@@ -818,14 +818,9 @@ th{
                 other{"{0}นาโนวิ"}
             }
             night{
-<<<<<<< HEAD
+dnam{"คืน"}
                 other{"{0}คืน"}
-=======
-                dnam{"คืน"}
-                other{"{0}คืน"}
-                per{"{0}/คืน"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/คืน"}            }
             quarter{
                 other{"{0}ไตรมาส"}
             }
@@ -1185,11 +1180,7 @@ th{
                 other{"{0}นอต"}
             }
             light-speed{
-<<<<<<< HEAD
-=======
-                dnam{"แสง"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                other{"{0}แสง"}
+dnam{"แสง"}                other{"{0}แสง"}
             }
             meter-per-second{
                 dnam{"ม./วิ"}

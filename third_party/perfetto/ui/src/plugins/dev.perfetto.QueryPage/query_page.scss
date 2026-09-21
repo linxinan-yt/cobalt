@@ -17,8 +17,7 @@
   font-family: var(--pf-font-compact);
   position: relative;
 
-<<<<<<< HEAD
-  // The outer split panel needs to fill the container
+// The outer split panel needs to fill the container
   > .pf-split-panel {
     height: 100%;
   }
@@ -56,12 +55,7 @@
   }
 
   &__results {
-    height: 100%;
-=======
-  &__results {
-    max-height: 500px;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    height: 100%;  }
 
   &__results-summary {
     margin-left: 0.2em;

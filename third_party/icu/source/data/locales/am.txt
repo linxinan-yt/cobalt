@@ -458,18 +458,11 @@ am{
                 Bh{"B h"}
                 Bhm{"B h:mm"}
                 Bhms{"B h:mm:ss"}
-<<<<<<< HEAD
-                EBh{"E B h"}
+EBh{"E B h"}
                 EBhm{"E B h:mm"}
                 EBhms{"E B h:mm:ss"}
                 Ed{"E d"}
-                Eh{"E a h"}
-=======
-                EBhm{"E B h:mm"}
-                EBhms{"E B h:mm:ss"}
-                Ed{"E d"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                Ehm{"E a h:mm"}
+                Eh{"E a h"}                Ehm{"E a h:mm"}
                 Ehms{"E a h:mm:ss"}
                 Gy{"y G"}
                 GyM{"M/y G"}
@@ -490,11 +483,7 @@ am{
                 h{"a h"}
                 hm{"a h:mm"}
                 hms{"a h:mm:ss"}
-<<<<<<< HEAD
-                hv{"a h v"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                yM{"M/y"}
+hv{"a h v"}                yM{"M/y"}
                 yMEd{"E፣ d/M/y"}
                 yMMM{"MMM y"}
                 yMMMEd{"E፣ MMM d y"}
@@ -575,25 +564,15 @@ am{
                         night1{"ሌሊት"}
                     }
                     narrow{
-<<<<<<< HEAD
-=======
-                        afternoon1{"ከሰዓት"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                        am{"ጠ"}
+afternoon1{"ከሰዓት"}                        am{"ጠ"}
                         pm{"ከ"}
                     }
                 }
             }
             eras{
                 abbreviated{
-<<<<<<< HEAD
-                    0{"ዓ/ዓ"}
-                    1{"ዓ/ም"}
-=======
-                    "ዓ/ዓ",
-                    "ዓ/ም",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+"ዓ/ዓ",
+                    "ዓ/ም",                }
                 wide{
                     0{"ዓመተ ዓለም"}
                     1{"ዓመተ ምሕረት"}
@@ -1330,9 +1309,7 @@ am{
             middle{"{0}፣ {1}"}
             start{"{0}፣ {1}"}
         }
-<<<<<<< HEAD
-=======
-        standard-short{
+standard-short{
             end{"{0} እና {1}"}
         }
         unit{
@@ -1341,9 +1318,7 @@ am{
         unit-narrow{
             2{"{0} እና {1}"}
             end{"{0} እና {1}"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
     measurementSystemNames{
         UK{"ዩኬ"}
         US{"ዩ ኤስ"}

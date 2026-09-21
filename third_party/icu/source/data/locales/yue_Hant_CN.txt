@@ -17,12 +17,7 @@ yue_Hant_CN{
                 "{1} {0}",
                 "{1} {0}",
                 "{1} {0}",
-<<<<<<< HEAD
-                "{1} {0}",
-=======
-                "{1} {0}",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+"{1} {0}",            }
             DateTimeSkeletons{
                 "HHmmsszzzz",
                 "HHmmssz",

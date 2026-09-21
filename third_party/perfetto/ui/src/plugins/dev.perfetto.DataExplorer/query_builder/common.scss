@@ -12,31 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/common.scss
-@use "../../../assets/theme" as *;
-=======
 @import "../../../assets/theme";
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/common.scss
 
 // Common styles for inputs
 .pf-exp-input {
   width: 100%;
   padding: 0.75rem;
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/common.scss
-  border: 1px solid var(--pf-color-border);
-  border-radius: 4px;
-  font-size: 0.875rem;
-  transition: border-color 0.2s ease-in-out;
-  background: var(--pf-color-background);
-  color: inherit;
-=======
   margin-bottom: 1rem;
   border: 1px solid var(--pf-color-border);
   border-radius: 0.375rem;
   font-size: 1em;
   transition: border-color 0.2s ease-in-out;
   background: var(--pf-color-background);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/common.scss
 
   &:focus {
     border-color: var(--pf-color-primary);
@@ -50,10 +37,6 @@
   border-radius: 8px;
   background-color: var(--pf-color-background);
   box-shadow: 0 2px 4px var(--pf-color-box-shadow);
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/common.scss
-  width: fit-content;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/common.scss
   max-width: 300px;
   box-sizing: border-box;
 
@@ -68,37 +51,6 @@
 
 // Common editor style
 .pf-exp-editor {
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/common.scss
-  padding: 0.75rem;
-  border-radius: 4px;
-  border: 1px solid var(--pf-color-border);
-}
-
-// Shared styling for all round action buttons (undo/redo/add node/dashboard).
-.pf-qb-round-action-button {
-  width: 40px;
-  height: 40px;
-  font-size: var(--pf-font-size-xxl);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.2s ease;
-
-  &:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-}
-
-// Menu label with hotkey
-.pf-exp-menu-label-with-hotkey {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-
-  .pf-keycap {
-    opacity: 0.7;
-  }
-=======
   padding: 1rem;
   border-radius: 6px;
   border: 1px solid var(--pf-color-border);
@@ -111,5 +63,4 @@
   padding: 1rem;
   border: 1px solid var(--pf-color-border);
   border-radius: 8px;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/common.scss
 }

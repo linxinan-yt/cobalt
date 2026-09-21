@@ -689,22 +689,15 @@ km{
         PEN{
             other{"ញូវ៉ូសូល ប៉េរូ"}
         }
-<<<<<<< HEAD
-        XCG{
-            other{"ហ្គីលឌ័រការីបៀន"}
-=======
-        QAR{
+QAR{
             other{"រីយ៉ាលកាតា"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
+        XCG{
+            other{"ហ្គីលឌ័រការីបៀន"}        }
         XXX{
             other{"(រូបិយប័ណ្ណ​មិនស្គាល់)"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             other{"ហ្កូលស៊ីមបាវ៉េ"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

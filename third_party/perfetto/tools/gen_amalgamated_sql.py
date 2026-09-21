@@ -89,93 +89,27 @@ def main():
 
   sql_files = expand_inputs(args.inputs)
 
-<<<<<<< HEAD
-  # Soong cannot pass us a path to the Perfetto source directory, so when
+# Soong cannot pass us a path to the Perfetto source directory, so when
   # --root-dir is omitted we fall back to the longest common path. This
-  # fails on empty path, but it's a price worth paying to avoid hacks.
-=======
-  sql_files = []
-  if args.input_list_file:
-    with open(args.input_list_file, 'r', encoding='utf-8') as input_list_file:
-      for line in input_list_file.read().splitlines():
-        sql_files.append(line)
-  else:
-    sql_files = args.sql_files
-
-  # Unfortunately we cannot always pass this in as an arg as soong does not
-  # provide us a way to get the path to the Perfetto source directory. This
-  # fails on empty path but it's a price worth paying to have to use gross hacks
-  # in Soong.
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  root_dir = args.root_dir if args.root_dir else os.path.commonpath(sql_files)
+  # fails on empty path, but it's a price worth paying to avoid hacks.  root_dir = args.root_dir if args.root_dir else os.path.commonpath(sql_files)
 
   file_to_sql = {}
   for file_name in sql_files:
-<<<<<<< HEAD
-    with open(file_name, 'rb') as f:
-=======
-    with open(file_name, 'r', encoding='utf-8') as f:
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      relpath = os.path.relpath(file_name, root_dir)
+with open(file_name, 'r', encoding='utf-8') as f:      relpath = os.path.relpath(file_name, root_dir)
       # We've had bugs (e.g. b/264711057) when Soong's common path logic
       # ends up with a bunch of ../ prefixing the path: disallow any ../.
       assert '../' not in relpath, relpath
       relpath = relpath.replace('\\', '/')
       file_to_sql[relpath] = f.read()
 
-<<<<<<< HEAD
-  blob = pack_bundle(file_to_sql)
+blob = pack_bundle(file_to_sql)
   cpp_blob_emitter.emit_array(
       blob,
       args.output,
       symbol=cpp_blob_emitter.derive_symbol(args.output),
       namespace=args.namespace,
       include_guard=cpp_blob_emitter.derive_include_guard(
-          args.output, args.gen_dir))
-=======
-      # We've had bugs (e.g. b/264711057) when Soong's common path logic breaks
-      # and ends up with a bunch of ../ prefixing the path: disallow any ../
-      # as this should never be a valid in our C++ output.
-      assert '../' not in relpath
-      sql_outputs[relpath] = f.read()
-
-  with open(args.cpp_out, 'w+', encoding='utf-8') as output:
-    output.write(REPLACEMENT_HEADER)
-    output.write(NAMESPACE_BEGIN.format(args.namespace))
-
-    # Create the C++ variable for each SQL file.
-    for path, sql in sql_outputs.items():
-      variable = filename_to_variable(os.path.splitext(path)[0])
-      output.write('\nconst char {}[] = '.format(variable))
-      # MSVC doesn't like string literals that are individually longer than 16k.
-      # However it's still fine "if" "we" "concatenate" "many" "of" "them".
-      # This code splits the sql in string literals of ~1000 chars each.
-      line_groups = ['']
-      for line in sql.split('\n'):
-        line_groups[-1] += line + '\n'
-        if len(line_groups[-1]) > 1000:
-          line_groups.append('')
-
-      for line in line_groups:
-        output.write('R"_d3l1m1t3r_({})_d3l1m1t3r_"\n'.format(line))
-      output.write(';\n')
-
-    output.write(FILE_TO_SQL_STRUCT)
-
-    # Create mapping of filename to variable name for each variable.
-    output.write("\nconst FileToSql kFileToSql[] = {")
-    for path in sql_outputs.keys():
-      variable = filename_to_variable(os.path.splitext(path)[0])
-
-      # This is for Windows which has \ as a path separator.
-      path = path.replace("\\", "/")
-      output.write('\n  {{"{}", {}}},\n'.format(path, variable))
-    output.write("};\n")
-
-    output.write(NAMESPACE_END.format(args.namespace))
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  return 0
+          args.output, args.gen_dir))  return 0
 
 
 if __name__ == '__main__':

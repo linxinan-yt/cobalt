@@ -16,7 +16,6 @@
 
 #include "src/trace_redaction/collect_clocks.h"
 
-<<<<<<< HEAD
 #include <cstdint>
 
 #include "perfetto/base/logging.h"
@@ -28,17 +27,7 @@
 #include "src/trace_redaction/trace_redaction_framework.h"
 
 #include "protos/perfetto/trace/clock_snapshot.pbzero.h"
-#include "protos/perfetto/trace/trace_packet.pbzero.h"
-=======
-#include "perfetto/protozero/field.h"
-
-#include "perfetto/base/status.h"
-#include "perfetto/ext/base/status_macros.h"
-#include "src/trace_redaction/trace_redaction_framework.h"
-
-#include "protos/perfetto/trace/clock_snapshot.pbzero.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "protos/perfetto/trace/trace_packet_defaults.pbzero.h"
+#include "protos/perfetto/trace/trace_packet.pbzero.h"#include "protos/perfetto/trace/trace_packet_defaults.pbzero.h"
 
 using namespace perfetto::trace_processor;
 
@@ -74,17 +63,10 @@ base::Status CollectClocks::ParseClockSnapshot(
       packet.clock_snapshot());
 
   if (snapshot_decoder.has_primary_trace_clock()) {
-<<<<<<< HEAD
-    auto trace_clock =
+auto trace_clock =
         static_cast<uint32_t>(snapshot_decoder.primary_trace_clock());
     RETURN_IF_ERROR(
-        context->clock_converter.SetTraceClock(ClockId::Machine(trace_clock)));
-=======
-    int32_t trace_clock = snapshot_decoder.primary_trace_clock();
-    RETURN_IF_ERROR(context->clock_converter.SetTraceClock(
-        static_cast<int64_t>(trace_clock)));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+        context->clock_converter.SetTraceClock(ClockId::Machine(trace_clock)));  }
   for (auto clock_it = snapshot_decoder.clocks(); clock_it; clock_it++) {
     ASSIGN_OR_RETURN(ClockTimestamp clock_ts, ParseClock(clock_it->as_bytes()));
     clock_snapshot_.push_back(clock_ts);
@@ -113,12 +95,7 @@ base::Status CollectClocks::ParseTracePacketDefaults(
 
 base::StatusOr<ClockTimestamp> CollectClocks::ParseClock(
     protozero::ConstBytes clock_bytes) const {
-<<<<<<< HEAD
-  ClockTimestamp clock_ts(ClockId::Machine(0), 0);
-=======
-  ClockTimestamp clock_ts(0, 0);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  protos::pbzero::ClockSnapshot_Clock::Decoder clock_decoder(clock_bytes);
+ClockTimestamp clock_ts(ClockId::Machine(0), 0);  protos::pbzero::ClockSnapshot_Clock::Decoder clock_decoder(clock_bytes);
   if (!clock_decoder.has_clock_id()) {
     return base::ErrStatus("Could not find clock id in clock snapshot");
   }
@@ -126,12 +103,7 @@ base::StatusOr<ClockTimestamp> CollectClocks::ParseClock(
   if (!clock_decoder.has_timestamp()) {
     return base::ErrStatus("Could not find clock timestamp in clock snapshot");
   }
-<<<<<<< HEAD
-  return ClockTimestamp(ClockId::Machine(clock_decoder.clock_id()),
-=======
-  return ClockTimestamp(static_cast<int64_t>(clock_decoder.clock_id()),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                        static_cast<int64_t>(clock_decoder.timestamp()));
+return ClockTimestamp(ClockId::Machine(clock_decoder.clock_id()),                        static_cast<int64_t>(clock_decoder.timestamp()));
 }
 
 base::Status CollectClocks::OnTracePacketDefaults(
@@ -150,14 +122,8 @@ base::Status CollectClocks::OnTracePacketDefaults(
     }
     uint32_t perf_clock_id = trace_packet_defaults_decoder.timestamp_clock_id();
     context->clock_converter.SetDefaultDataSourceClock(
-<<<<<<< HEAD
-        RedactorClockConverter::DataSourceType::kPerfDataSource,
-        ClockId::Machine(perf_clock_id), trusted_sequence_id);
-=======
-        RedactorClockConverter::DataSourceType::kPerfDataSource, perf_clock_id,
-        trusted_sequence_id);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+RedactorClockConverter::DataSourceType::kPerfDataSource,
+        ClockId::Machine(perf_clock_id), trusted_sequence_id);  }
 
   return base::OkStatus();
 }

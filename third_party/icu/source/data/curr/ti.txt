@@ -643,14 +643,10 @@ ti{
             "EC$",
             "ምብራቕ ካሪብያን ዶላር",
         }
-<<<<<<< HEAD
-        XCG{
+XCG{
             "Cg.",
             "ካሪብያን ጊልደር",
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        XOF{
+        }        XOF{
             "F CFA",
             "ምዕራብ ኣፍሪቃ CFA ፍራንክ",
         }
@@ -674,14 +670,10 @@ ti{
             "ZMW",
             "ዛምብያዊ ኳቻ",
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             "ZWG",
             "ዚምባብወ ወርቂ",
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
     CurrencyPlurals{
         AED{
             one{"ኢማራት ዲርሃም"}
@@ -1287,14 +1279,10 @@ ti{
             one{"ምብራቕ ካሪብያን ዶላር"}
             other{"ምብራቕ ካሪብያን ዶላር"}
         }
-<<<<<<< HEAD
-        XCG{
+XCG{
             one{"ካሪብያን ጊልደር"}
             other{"ካሪብያን ጊልደር"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        XOF{
+        }        XOF{
             one{"ምዕራብ ኣፍሪቃ ሲኤፍኤ ፍራንክ"}
             other{"ምዕራብ ኣፍሪቃ CFA ፍራንክ"}
         }
@@ -1318,12 +1306,8 @@ ti{
             one{"ዛምብያዊ ኳቻ"}
             other{"ዛምብያዊ ኳቻ"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             one{"ዚምባብወ ወርቂ"}
             other{"ዚምባብወ ወርቂ"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

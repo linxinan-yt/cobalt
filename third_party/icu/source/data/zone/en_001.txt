@@ -24,18 +24,14 @@ en_001{
         "Atlantic:St_Helena"{
             ec{"St Helena"}
         }
-<<<<<<< HEAD
-=======
-        "Pacific:Enderbury"{
+"Pacific:Enderbury"{
             ec{"Enderbury"}
         }
         "Pacific:Honolulu"{
             sd{"∅∅∅"}
             sg{"∅∅∅"}
             ss{"∅∅∅"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "meta:Alaska"{
+        }        "meta:Alaska"{
             sd{"∅∅∅"}
             sg{"∅∅∅"}
             ss{"∅∅∅"}

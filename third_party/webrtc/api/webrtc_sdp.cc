@@ -138,14 +138,10 @@ const char kAttributeInactive[] = "inactive";
 const char kAttributeSctpPort[] = "sctp-port";
 const char kAttributeMaxMessageSize[] = "max-message-size";
 const int kDefaultSctpMaxMessageSize = 65536;
-<<<<<<< HEAD
 // 32 is a safe upper bound. Standard groups (FID, FEC-FR, SIM) use <= 3 SSRCs.
 // This allows a buffer for custom semantics while preventing resource
 // exhaustion.
 constexpr size_t kMaxSsrcsPerGroup = 32;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 // draft-hancke-tsvwg-snap
 const char kAttributeSctpSnap[] = "sctp-init";
 
@@ -225,15 +221,10 @@ bool IsTokenChar(char ch) {
          (ch >= 0x41 && ch <= 0x5a) || (ch >= 0x5e && ch <= 0x7e);
 }
 
-<<<<<<< HEAD
 void ReportSdpBandwidth(SdpBandwidthCategory category) {
   RTC_HISTOGRAM_ENUMERATION("WebRTC.PeerConnection.SdpBandwidth", category,
                             kSdpBandwidthMax);
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-struct SsrcInfo {
+}struct SsrcInfo {
   uint32_t ssrc_id;
   std::string cname;
   std::string stream_id;

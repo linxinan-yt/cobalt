@@ -81,13 +81,9 @@ rm{
         "Asia:Calcutta"{
             ec{"Calcutta"}
         }
-<<<<<<< HEAD
-        "Asia:Chita"{
+"Asia:Chita"{
             ec{"Tschita"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Asia:Dushanbe"{
+        }        "Asia:Dushanbe"{
             ec{"Duschanbe"}
         }
         "Asia:Hong_Kong"{
@@ -229,13 +225,9 @@ rm{
         "Europe:Rome"{
             ec{"Roma"}
         }
-<<<<<<< HEAD
-=======
-        "Europe:Tirane"{
+"Europe:Tirane"{
             ec{"Tirana"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Europe:Warsaw"{
+        }        "Europe:Warsaw"{
             ec{"Varsovia"}
         }
         "Europe:Zurich"{

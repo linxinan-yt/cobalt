@@ -21,12 +21,7 @@ import {GridLayout} from '../../widgets/grid_layout';
 import {Section} from '../../widgets/section';
 import {SqlRef} from '../../widgets/sql_ref';
 import {Tree, TreeNode} from '../../widgets/tree';
-<<<<<<< HEAD
 import type {Trace} from '../../public/trace';
-=======
-import {Trace} from '../../public/trace';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 export interface ColumnConfig {
   readonly displayName?: string;
 }

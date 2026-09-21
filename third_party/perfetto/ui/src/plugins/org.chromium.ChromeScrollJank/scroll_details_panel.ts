@@ -15,17 +15,12 @@
 import m from 'mithril';
 import {type duration, Time, type time} from '../../base/time';
 import {exists} from '../../base/utils';
-<<<<<<< HEAD
 import {
   Grid,
   type GridColumn,
   GridHeaderCell,
   GridCell,
-} from '../../widgets/grid';
-=======
-import {Grid, GridColumn, GridHeaderCell, GridCell} from '../../widgets/grid';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {DurationWidget} from '../../components/widgets/duration';
+} from '../../widgets/grid';import {DurationWidget} from '../../components/widgets/duration';
 import {Timestamp} from '../../components/widgets/timestamp';
 import {
   LONG,

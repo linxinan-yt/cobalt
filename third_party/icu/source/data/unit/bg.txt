@@ -347,13 +347,9 @@ bg{
                 other{"{0} наносекунди"}
             }
             night{
-<<<<<<< HEAD
-=======
-                dnam{"нощи"}
+dnam{"нощи"}
                 one{"{0} нощ"}
-                other{"{0} нощи"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                per{"{0} на нощ"}
+                other{"{0} нощи"}                per{"{0} на нощ"}
             }
             quarter{
                 dnam{"тримесечия"}
@@ -1219,8 +1215,7 @@ bg{
                 one{"{0}\u0022"}
                 other{"{0}\u0022"}
             }
-<<<<<<< HEAD
-        }
+}
         magnetic{
             tesla{
                 one{"{0} T"}
@@ -1229,10 +1224,7 @@ bg{
             weber{
                 one{"{0} Wb"}
                 other{"{0} Wb"}
-            }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            }        }
         mass{
             dalton{
                 dnam{"Da"}

@@ -16,11 +16,7 @@ pl{
                         few{"{0} przyspieszeniom ziemskim"}
                         many{"{0} przyspieszeniami ziemskimi"}
                         one{"przyspieszeniu ziemskiemu"}
-<<<<<<< HEAD
-=======
-                        other{"{0} przyspieszenia ziemskiego"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    }
+other{"{0} przyspieszenia ziemskiego"}                    }
                     genitive{
                         few{"{0} przyspieszeń ziemskich"}
                         many{"{0} przyspieszeń ziemskich"}
@@ -31,26 +27,18 @@ pl{
                         few{"{0} przyspieszeniami ziemskimi"}
                         many{"{0} przyspieszeniami ziemskimi"}
                         one{"przyspieszeniem ziemskim"}
-<<<<<<< HEAD
-=======
-                        other{"{0} przyspieszenia ziemskiego"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    }
+other{"{0} przyspieszenia ziemskiego"}                    }
                     locative{
                         few{"{0} przyspieszeniach ziemskich"}
                         many{"{0} przyspieszeniach ziemskich"}
                         one{"przyspieszeniu ziemskim"}
-<<<<<<< HEAD
-=======
-                        other{"{0} przyspieszenia ziemskiego"}
+other{"{0} przyspieszenia ziemskiego"}
                     }
                     vocative{
                         few{"{0} przyspieszenia ziemskie"}
                         many{"{0} przyspieszeń ziemskich"}
                         one{"przyspieszenie ziemskie"}
-                        other{"{0} przyspieszenia ziemskiego"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    }
+                        other{"{0} przyspieszenia ziemskiego"}                    }
                 }
                 dnam{"przyspieszenie ziemskie"}
                 few{"{0} przyspieszenia ziemskie"}
@@ -1690,20 +1678,12 @@ pl{
                         other{"{0} nocy"}
                     }
                 }
-<<<<<<< HEAD
-=======
-                dnam{"noce"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                few{"{0} noce"}
+dnam{"noce"}                few{"{0} noce"}
                 gender{"feminine"}
                 many{"{0} nocy"}
                 one{"{0} noc"}
                 other{"{0} nocy"}
-<<<<<<< HEAD
-=======
-                per{"{0}/noc"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+per{"{0}/noc"}            }
             quarter{
                 case{
                     accusative{

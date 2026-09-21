@@ -26,12 +26,7 @@
 #include <vector>
 
 #include "perfetto/base/logging.h"
-<<<<<<< HEAD
-#include "perfetto/ext/base/dynamic_string_writer.h"
-=======
-#include "perfetto/ext/base/fixed_string_writer.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "perfetto/ext/base/string_utils.h"
+#include "perfetto/ext/base/dynamic_string_writer.h"#include "perfetto/ext/base/string_utils.h"
 #include "perfetto/ext/base/string_view.h"
 #include "perfetto/protozero/field.h"
 #include "src/trace_processor/importers/common/args_tracker.h"
@@ -183,7 +178,6 @@ GpuEventParser::GpuEventParser(TraceProcessorContext* context)
                              "UNKNOWN_SEVERITY") /* must be last */}},
       vk_queue_submit_id_(context->storage->InternString("vkQueueSubmit")) {}
 
-<<<<<<< HEAD
 namespace {
 
 const char* MeasureUnitToString(int32_t unit) {
@@ -404,95 +398,7 @@ void GpuEventParser::InsertCustomCounterGroups(
     for (auto cid_it = group.counter_ids(); cid_it; ++cid_it) {
       uint32_t counter_id = *cid_it;
       auto* track_id_ptr = counter_id_to_track.Find(counter_id);
-      if (!track_id_ptr) {
-=======
-void GpuEventParser::TokenizeGpuCounterEvent(ConstBytes blob) {
-  GpuCounterEvent::Decoder event(blob);
-  if (!event.has_counter_descriptor()) {
-    return;
-  }
-  GpuCounterDescriptor::Decoder descriptor(event.counter_descriptor());
-  for (auto it = descriptor.specs(); it; ++it) {
-    GpuCounterDescriptor::GpuCounterSpec::Decoder spec(*it);
-    if (!spec.has_counter_id()) {
-      PERFETTO_ELOG("Counter spec missing counter id");
-      context_->storage->IncrementStats(stats::gpu_counters_invalid_spec);
-      continue;
-    }
-    if (!spec.has_name()) {
-      context_->storage->IncrementStats(stats::gpu_counters_invalid_spec);
-      continue;
-    }
-
-    auto counter_id = spec.counter_id();
-    auto name = spec.name();
-    if (!gpu_counter_state_.Find(counter_id)) {
-      auto desc = spec.description();
-
-      StringId unit_id = kNullStringId;
-      if (spec.has_numerator_units() || spec.has_denominator_units()) {
-        char buffer[1024];
-        base::FixedStringWriter unit(buffer, sizeof(buffer));
-        for (auto number = spec.numerator_units(); number; ++number) {
-          if (unit.pos()) {
-            unit.AppendChar(':');
-          }
-          unit.AppendInt(*number);
-        }
-        char sep = '/';
-        for (auto denom = spec.denominator_units(); denom; ++denom) {
-          unit.AppendChar(sep);
-          unit.AppendInt(*denom);
-          sep = ':';
-        }
-        unit_id = context_->storage->InternString(unit.GetStringView());
-      }
-
-      auto name_id = context_->storage->InternString(name);
-      auto desc_id = context_->storage->InternString(desc);
-      auto track_id = context_->track_tracker->InternTrack(
-          tracks::kGpuCounterBlueprint,
-          tracks::Dimensions(0 /* gpu_id */, name),
-          tracks::DynamicName(name_id),
-          [&, this](ArgsTracker::BoundInserter& inserter) {
-            inserter.AddArg(description_id_, Variadic::String(desc_id));
-          },
-          tracks::DynamicUnit(unit_id));
-      auto [cit, inserted] =
-          gpu_counter_state_.Insert(counter_id, GpuCounterState{track_id, {}});
-      PERFETTO_CHECK(inserted);
-      if (spec.has_groups()) {
-        for (auto group = spec.groups(); group; ++group) {
-          tables::GpuCounterGroupTable::Row row;
-          row.group_id = *group;
-          row.track_id = track_id;
-          context_->storage->mutable_gpu_counter_group_table()->Insert(row);
-        }
-      } else {
-        tables::GpuCounterGroupTable::Row row;
-        row.group_id = protos::pbzero::GpuCounterDescriptor::UNCLASSIFIED;
-        row.track_id = track_id;
-        context_->storage->mutable_gpu_counter_group_table()->Insert(row);
-      }
-    } else {
-      // Either counter spec was repeated or it came after counter data.
-      PERFETTO_ELOG("Duplicated counter spec found. (counter_id=%u, name=%s)",
-                    counter_id, name.ToStdString().c_str());
-      context_->storage->IncrementStats(stats::gpu_counters_invalid_spec);
-    }
-  }
-}
-
-void GpuEventParser::ParseGpuCounterEvent(int64_t ts, ConstBytes blob) {
-  GpuCounterEvent::Decoder event(blob);
-  for (auto it = event.counters(); it; ++it) {
-    GpuCounterEvent::GpuCounter::Decoder counter(*it);
-    if (counter.has_counter_id() &&
-        (counter.has_int_value() || counter.has_double_value())) {
-      auto* state = gpu_counter_state_.Find(counter.counter_id());
-      if (!state) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        continue;
+      if (!track_id_ptr) {        continue;
       }
       tables::GpuCounterGroupTable::Row row;
       row.group_id = group_id;
@@ -619,12 +525,7 @@ void GpuEventParser::InsertTrackForUninternedRenderStage(
   auto ugpu = context_->gpu_tracker->GetOrCreateGpu(gpu_id);
   auto factory = context_->track_compressor->CreateTrackFactory(
       kRenderStageBlueprint,
-<<<<<<< HEAD
-      tracks::Dimensions(ugpu.value, gpu_id, "id", hw_queue_id, kNullStringId),
-=======
-      tracks::Dimensions("id", hw_queue_id, kNullStringId),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      tracks::DynamicName(name),
+tracks::Dimensions(ugpu.value, gpu_id, "id", hw_queue_id, kNullStringId),      tracks::DynamicName(name),
       [&, this](ArgsTracker::BoundInserter& inserter) {
         inserter.AddArg(description_id_, Variadic::String(description));
       });
@@ -658,13 +559,7 @@ StringId GpuEventParser::ParseRenderSubpasses(
   if (!event.has_render_subpass_index_mask()) {
     return kNullStringId;
   }
-<<<<<<< HEAD
-  base::DynamicStringWriter writer;
-=======
-  char buf[256];
-  base::FixedStringWriter writer(buf, sizeof(buf));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  uint32_t bit_index = 0;
+base::DynamicStringWriter writer;  uint32_t bit_index = 0;
   bool first = true;
   for (auto it = event.render_subpass_index_mask(); it; ++it) {
     auto subpasses_bits = *it;
@@ -923,12 +818,7 @@ void GpuEventParser::ParseGpuRenderStageEvent(
     auto ugpu = context_->gpu_tracker->GetOrCreateGpu(gpu_id);
     TrackId track_id = context_->track_compressor->InternScoped(
         kRenderStageBlueprint,
-<<<<<<< HEAD
-        tracks::Dimensions(ugpu.value, gpu_id, base::StringView(source),
-=======
-        tracks::Dimensions(base::StringView(source),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                           static_cast<uint32_t>(hw_queue_id), dimension_name),
+tracks::Dimensions(ugpu.value, gpu_id, base::StringView(source),                           static_cast<uint32_t>(hw_queue_id), dimension_name),
         ts, static_cast<int64_t>(event.duration()),
         tracks::DynamicName(track_name),
         [&](ArgsTracker::BoundInserter& inserter) {

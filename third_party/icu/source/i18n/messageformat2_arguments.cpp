@@ -13,10 +13,6 @@
 #include "unicode/messageformat2_arguments.h"
 #include "unicode/messageformat2_data_model_names.h"
 #include "messageformat2_evaluation.h"
-<<<<<<< HEAD
-#include "messageformat2_function_registry_internal.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "uvector.h" // U_ASSERT
 
 U_NAMESPACE_BEGIN
@@ -30,22 +26,12 @@ namespace message2 {
 
     using Arguments = MessageArguments;
 
-<<<<<<< HEAD
-    const Formattable* Arguments::getArgument(const VariableName& arg,
-=======
-    const Formattable* Arguments::getArgument(const MessageFormatter& context,
-                                              const VariableName& arg,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                                              UErrorCode& errorCode) const {
+const Formattable* Arguments::getArgument(const MessageFormatter& context,
+                                              const VariableName& arg,                                              UErrorCode& errorCode) const {
         if (U_SUCCESS(errorCode)) {
             U_ASSERT(argsLen == 0 || arguments.isValid());
             for (int32_t i = 0; i < argsLen; i++) {
-<<<<<<< HEAD
-                UnicodeString normalized = StandardFunctions::normalizeNFC(argumentNames[i]);
-=======
-                UnicodeString normalized = context.normalizeNFC(argumentNames[i]);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                // arg already assumed to be normalized
+UnicodeString normalized = context.normalizeNFC(argumentNames[i]);                // arg already assumed to be normalized
                 if (normalized == arg) {
                     return &arguments[i];
                 }

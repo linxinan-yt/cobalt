@@ -24,16 +24,8 @@ U_NAMESPACE_BEGIN
 
 namespace numparse::impl {
 
-<<<<<<< HEAD
 // Exported as U_I18N_API_CLASS for tests
-class U_I18N_API_CLASS NumberParserImpl : public MutableMatcherCollection, public UMemory {
-=======
-namespace numparse::impl {
-
-// Exported as U_I18N_API for tests
-class U_I18N_API NumberParserImpl : public MutableMatcherCollection, public UMemory {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  public:
+class U_I18N_API_CLASS NumberParserImpl : public MutableMatcherCollection, public UMemory {  public:
     virtual ~NumberParserImpl();
 
     U_I18N_API static NumberParserImpl *createSimpleParser(const Locale& locale,

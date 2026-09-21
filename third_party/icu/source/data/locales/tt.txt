@@ -67,8 +67,7 @@ tt{
             patternsShort{
                 currencyFormat{
                     1000{
-<<<<<<< HEAD
-                        other{"0 мең ¤"}
+other{"0 мең ¤"}
                     }
                     10000{
                         other{"00 мең ¤"}
@@ -101,44 +100,7 @@ tt{
                         other{"00 трлн ¤"}
                     }
                     100000000000000{
-                        other{"000 трлн ¤"}
-=======
-                        other{"¤0 мең"}
-                    }
-                    10000{
-                        other{"¤00 мең"}
-                    }
-                    100000{
-                        other{"¤000 мең"}
-                    }
-                    1000000{
-                        other{"¤0 млн"}
-                    }
-                    10000000{
-                        other{"¤00 млн"}
-                    }
-                    100000000{
-                        other{"¤000 млн"}
-                    }
-                    1000000000{
-                        other{"¤0 млрд"}
-                    }
-                    10000000000{
-                        other{"¤00 млрд"}
-                    }
-                    100000000000{
-                        other{"¤000 млрд"}
-                    }
-                    1000000000000{
-                        other{"¤0 трлн"}
-                    }
-                    10000000000000{
-                        other{"¤00 трлн"}
-                    }
-                    100000000000000{
-                        other{"¤000 трлн"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    }
+                        other{"000 трлн ¤"}                    }
                 }
                 decimalFormat{
                     1000{
@@ -366,16 +328,12 @@ tt{
                 "{1}, {0}",
                 "{1}, {0}",
             }
-<<<<<<< HEAD
-            DateTimePatterns%relative{
+DateTimePatterns%relative{
                 "{1} {0}",
                 "{1} {0}",
                 "{1} {0}",
                 "{1} {0}",
-            }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            DateTimeSkeletons{
+            }            DateTimeSkeletons{
                 "Hmmsszzzz",
                 "Hmmssz",
                 "Hmmss",

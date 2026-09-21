@@ -385,27 +385,17 @@ WITH
     JOIN _wattson_device AS device
       ON v.device = device.name
   )
-<<<<<<< HEAD
-SELECT cpu, vote_by_freq FROM base ORDER BY cpu;
-=======
 SELECT
   cpu,
   vote_by_freq
 FROM base
 ORDER BY
   cpu;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 -- Device specific mapping to GPU ID
 CREATE PERFETTO TABLE _gpuid_map AS
 WITH
   data(device, gpu_id) AS (
-<<<<<<< HEAD
-    SELECT * FROM (VALUES ("Tensor G5", 0), ("Tensor", 1)) AS _values
-  )
-SELECT * FROM data;
-=======
-    SELECT
+SELECT
       *
     FROM (VALUES
       ("Tensor G5", 0),
@@ -414,4 +404,3 @@ SELECT * FROM data;
 SELECT
   *
 FROM data;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

@@ -72,20 +72,7 @@ zh_Hant{
                 dnam{"每公升毫莫耳"}
                 other{"每公升 {0} 毫莫耳"}
             }
-<<<<<<< HEAD
-            ofglucose{
-                dnam{"葡萄糖"}
-                other{"{0} 葡萄糖"}
-            }
-            part{
-                dnam{"比例"}
-                other{"{0} 比例"}
-            }
-            part-per-1e9{
-=======
-            portion-per-1e9{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                dnam{"十億分點濃度"}
+portion-per-1e9{                dnam{"十億分點濃度"}
                 other{"{0} 十億分點濃度"}
             }
         }
@@ -457,12 +444,7 @@ zh_Hant{
             part-per-1e6{
                 other{"{0}百萬分率"}
             }
-<<<<<<< HEAD
-            part-per-1e9{
-=======
-            portion-per-1e9{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                other{"{0}ppb"}
+part-per-1e9{                other{"{0}ppb"}
             }
         }
         consumption{
@@ -523,14 +505,9 @@ zh_Hant{
                 other{"{0}ns"}
             }
             night{
-<<<<<<< HEAD
+dnam{"夜"}
                 other{"{0}夜"}
-=======
-                dnam{"夜"}
-                other{"{0}夜"}
-                per{"{0}/夜"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/夜"}            }
         }
         electric{
             ampere{
@@ -1122,16 +1099,6 @@ zh_Hant{
             permille{
                 dnam{"千分比"}
             }
-<<<<<<< HEAD
-=======
-            permillion{
-                dnam{"百萬分率"}
-                other{"{0} 百萬分率"}
-            }
-            portion-per-1e9{
-                dnam{"濃度/十億"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         consumption{
             liter-per-100-kilometer{

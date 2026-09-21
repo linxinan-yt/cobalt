@@ -19,20 +19,11 @@
 use crate::pb_msg;
 
 pb_msg!(VulkanApiEvent {
-<<<<<<< HEAD
-    vk_debug_utils_object_name: VulkanApiEventVkDebugUtilsObjectName, msg, 1,
-    vk_queue_submit: VulkanApiEventVkQueueSubmit, msg, 2,
-});
-
-pb_msg!(VulkanApiEventVkQueueSubmit {
-=======
-    vk_debug_utils_object_name: VkDebugUtilsObjectName, msg, 1,
+vk_debug_utils_object_name: VkDebugUtilsObjectName, msg, 1,
     vk_queue_submit: VkQueueSubmit, msg, 2,
 });
 
-pb_msg!(VkQueueSubmit {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    duration_ns: u64, primitive, 1,
+pb_msg!(VkQueueSubmit {    duration_ns: u64, primitive, 1,
     pid: u32, primitive, 2,
     tid: u32, primitive, 3,
     vk_queue: u64, primitive, 4,
@@ -40,12 +31,7 @@ pb_msg!(VkQueueSubmit {
     submission_id: u32, primitive, 6,
 });
 
-<<<<<<< HEAD
-pb_msg!(VulkanApiEventVkDebugUtilsObjectName {
-=======
-pb_msg!(VkDebugUtilsObjectName {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    pid: u32, primitive, 1,
+pb_msg!(VkDebugUtilsObjectName {    pid: u32, primitive, 1,
     vk_device: u64, primitive, 2,
     object_type: i32, primitive, 3,
     object: u64, primitive, 4,

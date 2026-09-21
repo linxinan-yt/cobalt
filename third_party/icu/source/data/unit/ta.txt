@@ -1002,16 +1002,10 @@ ta{
                         other{"{0} இரவுகளுக்கு"}
                     }
                 }
-<<<<<<< HEAD
+dnam{"இரவுகள்"}
                 one{"{0} இரவு"}
                 other{"{0} இரவுகள்"}
-=======
-                dnam{"இரவுகள்"}
-                one{"{0} இரவு"}
-                other{"{0} இரவுகள்"}
-                per{"{0}/இரவு"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/இரவு"}            }
             quarter{
                 case{
                     ablative{
@@ -2347,11 +2341,7 @@ ta{
                         other{"{0} ஒளிவேகத்திற்கு"}
                     }
                 }
-<<<<<<< HEAD
-=======
-                dnam{"ஒளிவேகம்"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                one{"{0} ஒளிவேகம்"}
+dnam{"ஒளிவேகம்"}                one{"{0} ஒளிவேகம்"}
                 other{"{0} ஒளிவேகம்"}
             }
             meter-per-second{
@@ -3056,16 +3046,10 @@ ta{
                 other{"{0}நா.செ."}
             }
             night{
-<<<<<<< HEAD
+dnam{"இரவுகள்"}
                 one{"{0} இ"}
                 other{"{0} இ"}
-=======
-                dnam{"இரவுகள்"}
-                one{"{0} இ"}
-                other{"{0} இ"}
-                per{"{0}/இரவு"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/இரவு"}            }
             quarter{
                 dnam{"கா."}
                 one{"{0} கா."}
@@ -3481,11 +3465,7 @@ ta{
                 other{"{0}நா."}
             }
             light-speed{
-<<<<<<< HEAD
-=======
-                dnam{"ஒளிவேகம்"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                one{"{0}ஒ.வே"}
+dnam{"ஒளிவேகம்"}                one{"{0}ஒ.வே"}
                 other{"{0}ஒ.வே"}
             }
         }

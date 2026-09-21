@@ -18,11 +18,7 @@
 #include "messageformat2_allocation.h"
 #include "messageformat2_checker.h"
 #include "messageformat2_evaluation.h"
-<<<<<<< HEAD
-#include "messageformat2_function_registry_internal.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "messageformat2_macros.h"
+#include "messageformat2_function_registry_internal.h"#include "messageformat2_macros.h"
 
 
 U_NAMESPACE_BEGIN
@@ -40,7 +36,6 @@ static Formattable evalLiteral(const Literal& lit) {
 }
 
 // Assumes that `var` is a message argument; returns the argument's value.
-<<<<<<< HEAD
 [[nodiscard]] FormattedPlaceholder MessageFormatter::evalArgument(const UnicodeString& fallback,
                                                                   const VariableName& var,
                                                                   MessageContext& context,
@@ -56,23 +51,11 @@ static Formattable evalLiteral(const Literal& lit) {
                 fallbackToUse += DOLLAR;
                 fallbackToUse += var;
             }
-            return (FormattedPlaceholder(*val, fallbackToUse));
-=======
-[[nodiscard]] FormattedPlaceholder MessageFormatter::evalArgument(const VariableName& var, MessageContext& context, UErrorCode& errorCode) const {
-    if (U_SUCCESS(errorCode)) {
-        // The fallback for a variable name is itself.
-        UnicodeString str(DOLLAR);
-        str += var;
-        const Formattable* val = context.getGlobal(*this, var, errorCode);
-        if (U_SUCCESS(errorCode)) {
-            return (FormattedPlaceholder(*val, str));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            return (FormattedPlaceholder(*val, fallbackToUse));        }
     }
     return {};
 }
 
-<<<<<<< HEAD
 // Helper function to re-escape any escaped-char characters
 static UnicodeString reserialize(const UnicodeString& s) {
     UnicodeString result(PIPE);
@@ -107,20 +90,7 @@ static UnicodeString reserialize(const UnicodeString& s) {
                                                              const Environment& env,
                                                              const Operand& rand,
                                                              MessageContext& context,
-                                                             UErrorCode &status) const {
-=======
-// Returns the contents of the literal
-[[nodiscard]] FormattedPlaceholder MessageFormatter::formatLiteral(const Literal& lit) const {
-    // The fallback for a literal is itself.
-    return FormattedPlaceholder(evalLiteral(lit), lit.quoted());
-}
-
-[[nodiscard]] InternalValue* MessageFormatter::formatOperand(const Environment& env,
-                                                            const Operand& rand,
-                                                            MessageContext& context,
-                                                            UErrorCode &status) const {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    if (U_FAILURE(status)) {
+                                                             UErrorCode &status) const {    if (U_FAILURE(status)) {
         return {};
     }
 
@@ -138,32 +108,19 @@ static UnicodeString reserialize(const UnicodeString& s) {
 
         // NFC-normalize the variable name. See
         // https://github.com/unicode-org/message-format-wg/blob/main/spec/syntax.md#names-and-identifiers
-<<<<<<< HEAD
-        const VariableName normalized = StandardFunctions::normalizeNFC(var);
-=======
-        const VariableName normalized = normalizeNFC(var);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+const VariableName normalized = StandardFunctions::normalizeNFC(var);
         // Look up the variable in the environment
         if (env.has(normalized)) {
           // `var` is a local -- look it up
           const Closure& rhs = env.lookup(normalized);
           // Format the expression using the environment from the closure
-<<<<<<< HEAD
-          // The name of this local variable is the fallback for its RHS.
+// The name of this local variable is the fallback for its RHS.
           UnicodeString newFallback(DOLLAR);
           newFallback += var;
           return formatExpression(newFallback, rhs.getEnv(), rhs.getExpr(), context, status);
         }
         // Variable wasn't found in locals -- check if it's global
-        FormattedPlaceholder result = evalArgument(fallback, normalized, context, status);
-=======
-          return formatExpression(rhs.getEnv(), rhs.getExpr(), context, status);
-        }
-        // Variable wasn't found in locals -- check if it's global
-        FormattedPlaceholder result = evalArgument(normalized, context, status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        if (status == U_ILLEGAL_ARGUMENT_ERROR) {
+        FormattedPlaceholder result = evalArgument(fallback, normalized, context, status);        if (status == U_ILLEGAL_ARGUMENT_ERROR) {
             status = U_ZERO_ERROR;
             // Unbound variable -- set a resolution error
             context.getErrors().setUnresolvedVariable(var, status);
@@ -176,12 +133,7 @@ static UnicodeString reserialize(const UnicodeString& s) {
         return create<InternalValue>(InternalValue(std::move(result)), status);
     } else {
         U_ASSERT(rand.isLiteral());
-<<<<<<< HEAD
-        return create<InternalValue>(InternalValue(formatLiteral(fallback, rand.asLiteral())), status);
-=======
-        return create<InternalValue>(InternalValue(formatLiteral(rand.asLiteral())), status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+return create<InternalValue>(InternalValue(formatLiteral(fallback, rand.asLiteral())), status);    }
 }
 
 // Resolves a function's options
@@ -201,12 +153,7 @@ FunctionOptions MessageFormatter::resolveOptions(const Environment& env, const O
 
         // Options are fully evaluated before calling the function
         // Format the operand
-<<<<<<< HEAD
-        LocalPointer<InternalValue> rhsVal(formatOperand({}, env, v, context, status));
-=======
-        LocalPointer<InternalValue> rhsVal(formatOperand(env, v, context, status));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        if (U_FAILURE(status)) {
+LocalPointer<InternalValue> rhsVal(formatOperand({}, env, v, context, status));        if (U_FAILURE(status)) {
             return {};
         }
         // Note: this means option values are "eagerly" evaluated.
@@ -215,13 +162,8 @@ FunctionOptions MessageFormatter::resolveOptions(const Environment& env, const O
         FormattedPlaceholder optValue = rhsVal->forceFormatting(context.getErrors(), status);
         resolvedOpt.adoptInstead(create<ResolvedFunctionOption>
                                  (ResolvedFunctionOption(k,
-<<<<<<< HEAD
-                                                         optValue.asFormattable(),
-                                                         v.isLiteral()),
-=======
-                                                         optValue.asFormattable()),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                                  status));
+optValue.asFormattable(),
+                                                         v.isLiteral()),                                  status));
         if (U_FAILURE(status)) {
             return {};
         }
@@ -315,30 +257,16 @@ FunctionOptions MessageFormatter::resolveOptions(const Environment& env, const O
 }
 
 // Formats an expression using `globalEnv` for the values of variables
-<<<<<<< HEAD
-[[nodiscard]] InternalValue* MessageFormatter::formatExpression(const UnicodeString& fallback,
-                                                                const Environment& globalEnv,
-                                                                const Expression& expr,
-                                                                MessageContext& context,
-                                                                UErrorCode &status) const {
-=======
 [[nodiscard]] InternalValue* MessageFormatter::formatExpression(const Environment& globalEnv,
                                                                const Expression& expr,
                                                                MessageContext& context,
-                                                               UErrorCode &status) const {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    if (U_FAILURE(status)) {
+                                                               UErrorCode &status) const {    if (U_FAILURE(status)) {
         return {};
     }
 
     const Operand& rand = expr.getOperand();
     // Format the operand (formatOperand handles the case of a null operand)
-<<<<<<< HEAD
-    LocalPointer<InternalValue> randVal(formatOperand(fallback, globalEnv, rand, context, status));
-=======
-    LocalPointer<InternalValue> randVal(formatOperand(globalEnv, rand, context, status));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+LocalPointer<InternalValue> randVal(formatOperand(fallback, globalEnv, rand, context, status));
     FormattedPlaceholder maybeRand = randVal->takeArgument(status);
 
     if (!expr.isFunctionCall() && U_SUCCESS(status)) {
@@ -381,12 +309,7 @@ void MessageFormatter::formatPattern(MessageContext& context, const Environment&
         } else {
 	      // Format the expression
               LocalPointer<InternalValue> partVal(
-<<<<<<< HEAD
-                  formatExpression({}, globalEnv, part.contents(), context, status));
-=======
-                  formatExpression(globalEnv, part.contents(), context, status));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-              FormattedPlaceholder partResult = partVal->forceFormatting(context.getErrors(),
+formatExpression({}, globalEnv, part.contents(), context, status));              FormattedPlaceholder partResult = partVal->forceFormatting(context.getErrors(),
                                                                          status);
               // Force full evaluation, e.g. applying default formatters to
 	      // unformatted input (or formatting numbers as strings)
@@ -419,12 +342,7 @@ void MessageFormatter::resolveSelectors(MessageContext& context, const Environme
     // 2. For each expression exp of the message's selectors
     for (int32_t i = 0; i < dataModel.numSelectors(); i++) {
         // 2i. Let rv be the resolved value of exp.
-<<<<<<< HEAD
-        LocalPointer<InternalValue> rv(formatOperand({}, env, Operand(selectors[i]), context, status));
-=======
-        LocalPointer<InternalValue> rv(formatOperand(env, Operand(selectors[i]), context, status));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        if (rv->canSelect()) {
+LocalPointer<InternalValue> rv(formatOperand({}, env, Operand(selectors[i]), context, status));        if (rv->canSelect()) {
             // 2ii. If selection is supported for rv:
             // (True if this code has been reached)
         } else {
@@ -552,12 +470,7 @@ void MessageFormatter::resolvePreferences(MessageContext& context, UVector& res,
                 // 2ii(b)(a) Assert that key is a literal.
                 // (Not needed)
                 // 2ii(b)(b) Let `ks` be the resolved value of `key` in Unicode Normalization Form C.
-<<<<<<< HEAD
-                ks = StandardFunctions::normalizeNFC(key.asLiteral().unquoted());
-=======
-                ks = normalizeNFC(key.asLiteral().unquoted());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                // 2ii(b)(c) Append `ks` as the last element of the list `keys`.
+ks = StandardFunctions::normalizeNFC(key.asLiteral().unquoted());                // 2ii(b)(c) Append `ks` as the last element of the list `keys`.
                 ksP.adoptInstead(create<UnicodeString>(std::move(ks), status));
                 CHECK_ERROR(status);
                 keys->adoptElement(ksP.orphan(), status);
@@ -617,12 +530,7 @@ void MessageFormatter::filterVariants(const UVector& pref, UVector& vars, UError
             // 2i(c). Assert that `key` is a literal.
             // (Not needed)
             // 2i(d). Let `ks` be the resolved value of `key`.
-<<<<<<< HEAD
-            UnicodeString ks = StandardFunctions::normalizeNFC(key.asLiteral().unquoted());
-=======
-            UnicodeString ks = normalizeNFC(key.asLiteral().unquoted());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            // 2i(e). Let `matches` be the list of strings at index `i` of `pref`.
+UnicodeString ks = StandardFunctions::normalizeNFC(key.asLiteral().unquoted());            // 2i(e). Let `matches` be the list of strings at index `i` of `pref`.
             const UVector& matches = *(static_cast<UVector*>(pref[i])); // `matches` is a vector of strings
             // 2i(f). If `matches` includes `ks`
             if (vectorContains(matches, ks)) {
@@ -683,12 +591,7 @@ void MessageFormatter::sortVariants(const UVector& pref, UVector& vars, UErrorCo
                 // 5iii(c)(a). Assert that `key` is a literal.
                 // (Not needed)
                 // 5iii(c)(b). Let `ks` be the resolved value of `key`.
-<<<<<<< HEAD
-                UnicodeString ks = StandardFunctions::normalizeNFC(key.asLiteral().unquoted());
-=======
-                UnicodeString ks = normalizeNFC(key.asLiteral().unquoted());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                // 5iii(c)(c) Let matchpref be the integer position of ks in `matches`.
+UnicodeString ks = StandardFunctions::normalizeNFC(key.asLiteral().unquoted());                // 5iii(c)(c) Let matchpref be the integer position of ks in `matches`.
                 matchpref = vectorFind(matches, ks);
                 U_ASSERT(matchpref >= 0);
             }
@@ -772,12 +675,7 @@ UnicodeString MessageFormatter::formatToString(const MessageArguments& arguments
             formatPattern(context, *globalEnv, dataModel.getPattern(), status, result);
         } else {
             // Check for errors/warnings -- if so, then the result of pattern selection is the fallback value
-<<<<<<< HEAD
-            // See https://www.unicode.org/reports/tr35/tr35-messageFormat.html#pattern-selection
-=======
-            // See https://github.com/unicode-org/message-format-wg/blob/main/spec/formatting.md#pattern-selection
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            const DynamicErrors& err = context.getErrors();
+// See https://www.unicode.org/reports/tr35/tr35-messageFormat.html#pattern-selection            const DynamicErrors& err = context.getErrors();
             if (err.hasSyntaxError() || err.hasDataModelError()) {
                 result += REPLACEMENT;
             } else {
@@ -816,23 +714,13 @@ void MessageFormatter::check(MessageContext& context, const Environment& localEn
 
     // Check that variable is in scope
     const VariableName& var = rand.asVariable();
-<<<<<<< HEAD
-    UnicodeString normalized = StandardFunctions::normalizeNFC(var);
-=======
-    UnicodeString normalized = normalizeNFC(var);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+UnicodeString normalized = StandardFunctions::normalizeNFC(var);
     // Check local scope
     if (localEnv.has(normalized)) {
         return;
     }
     // Check global scope
-<<<<<<< HEAD
-    context.getGlobal(normalized, status);
-=======
-    context.getGlobal(*this, normalized, status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    if (status == U_ILLEGAL_ARGUMENT_ERROR) {
+context.getGlobal(normalized, status);    if (status == U_ILLEGAL_ARGUMENT_ERROR) {
         status = U_ZERO_ERROR;
         context.getErrors().setUnresolvedVariable(var, status);
     }
@@ -868,12 +756,7 @@ void MessageFormatter::checkDeclarations(MessageContext& context, Environment*& 
         // memoizing the value of localEnv up to this point
 
         // Add the LHS to the environment for checking the next declaration
-<<<<<<< HEAD
-        env = Environment::create(StandardFunctions::normalizeNFC(decl.getVariable()),
-=======
-        env = Environment::create(normalizeNFC(decl.getVariable()),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                                  Closure(rhs, *env),
+env = Environment::create(StandardFunctions::normalizeNFC(decl.getVariable()),                                  Closure(rhs, *env),
                                   env,
                                   status);
         CHECK_ERROR(status);

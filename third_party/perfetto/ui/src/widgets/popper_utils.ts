@@ -15,10 +15,5 @@
 import type {Modifier, StrictModifiers} from '@popperjs/core';
 
 export type CustomModifier =
-<<<<<<< HEAD
-  Modifier<'sameWidth', {}> | Modifier<'hideOnInvisible', {}>;
-=======
-  | Modifier<'sameWidth', {}>
-  | Modifier<'hideOnInvisible', {}>;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-export type ExtendedModifiers = StrictModifiers | CustomModifier;
+| Modifier<'sameWidth', {}>
+  | Modifier<'hideOnInvisible', {}>;export type ExtendedModifiers = StrictModifiers | CustomModifier;

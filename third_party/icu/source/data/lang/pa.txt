@@ -579,12 +579,7 @@ pa{
             islamic{"ਇਸਲਾਮੀ ਕੈਲੰਡਰ"}
             islamic-civil{"ਇਸਲਾਮੀ ਕੈਲੰਡਰ (ਸਾਰਨੀਬੱਧ, ਸਮਾਜਿਕ ਯੁੱਗ)"}
             islamic-rgsa{"ਇਸਲਾਮੀ ਕੈਲੰਡਰ (ਸਾਊਦੀ ਅਰਬ, ਚੰਨ ਦਿਖਣਾ)"}
-<<<<<<< HEAD
-            islamic-tbla{"ਇਸਲਾਮੀ ਕੈਲੰਡਰ (ਸਾਰਨੀਬੱਧ, ਖਗੋਲੀ ਯੁੱਗ)"}
-=======
-            islamic-tbla{"ਇਸਲਾਮੀ ਕੈਲੰਡਰ (ਟੇਬਲਰ, ਖਗੋਲੀ ਯੁੱਗ)"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            islamic-umalqura{"ਇਸਲਾਮੀ ਕੈਲੰਡਰ (ਅਮ ਅਲ-ਕੁਰਾ)"}
+islamic-tbla{"ਇਸਲਾਮੀ ਕੈਲੰਡਰ (ਸਾਰਨੀਬੱਧ, ਖਗੋਲੀ ਯੁੱਗ)"}            islamic-umalqura{"ਇਸਲਾਮੀ ਕੈਲੰਡਰ (ਅਮ ਅਲ-ਕੁਰਾ)"}
             iso8601{"(ISO-8601) ਕੈਲੰਡਰ"}
             japanese{"ਜਪਾਨੀ ਕੈਲੰਡਰ"}
             persian{"ਫ਼ਾਰਸੀ ਕੈਲੰਡਰ"}

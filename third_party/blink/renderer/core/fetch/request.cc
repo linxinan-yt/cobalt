@@ -171,13 +171,6 @@ FetchRequestData* CreateCopyOfFetchRequestDataForFetch(
   request->SetFetchPriorityHint(original->FetchPriorityHint());
   request->SetPriority(original->Priority());
   request->SetKeepalive(original->Keepalive());
-<<<<<<< HEAD
-=======
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-  request->SetBrowsingTopics(original->BrowsingTopics());
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-  request->SetAdAuctionHeaders(original->AdAuctionHeaders());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   request->SetSharedStorageWritable(original->SharedStorageWritable());
   request->SetIsHistoryNavigation(original->IsHistoryNavigation());
   request->SetIsReloadNavigation(original->IsReloadNavigation());
@@ -215,20 +208,9 @@ static bool AreAnyMembersPresent(const RequestInit* init) {
          init->hasReferrer() || init->hasReferrerPolicy() || init->hasMode() ||
          init->hasTargetAddressSpace() || init->hasCredentials() ||
          init->hasCache() || init->hasRedirect() || init->hasIntegrity() ||
-<<<<<<< HEAD
-         init->hasKeepalive() || init->hasAdAuctionHeaders() ||
+init->hasKeepalive() || init->hasAdAuctionHeaders() ||
          init->hasSharedStorageWritable() || init->hasPriority() ||
-         init->hasSignal() || init->hasDuplex() || init->hasPrivateToken() ||
-=======
-         init->hasKeepalive() ||
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-         init->hasBrowsingTopics() ||
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-         init->hasAdAuctionHeaders() || init->hasSharedStorageWritable() ||
-         init->hasPriority() || init->hasSignal() || init->hasDuplex() ||
-         init->hasPrivateToken() || init->hasAttributionReporting() ||
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-         init->hasRetryOptions();
+         init->hasSignal() || init->hasDuplex() || init->hasPrivateToken() ||         init->hasRetryOptions();
 }
 
 static BodyStreamBuffer* ExtractBody(ScriptState* script_state,
@@ -709,29 +691,6 @@ Request* Request::CreateRequestWithRequestOrString(
     request->SetRetryOptions(options);
   }
 
-<<<<<<< HEAD
-=======
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-  if (init->hasBrowsingTopics()) {
-    if (!execution_context->IsSecureContext()) {
-      exception_state.ThrowTypeError(
-          "browsingTopics: Topics operations are only available in secure "
-          "contexts.");
-      return nullptr;
-    }
-
-    request->SetBrowsingTopics(init->browsingTopics());
-
-    if (init->browsingTopics()) {
-      UseCounter::Count(execution_context,
-                        mojom::blink::WebFeature::kTopicsAPIFetch);
-      UseCounter::Count(execution_context,
-                        mojom::blink::WebFeature::kTopicsAPIAll);
-    }
-  }
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   if (init->hasAdAuctionHeaders()) {
     if (!execution_context->IsSecureContext()) {
       exception_state.ThrowDOMException(

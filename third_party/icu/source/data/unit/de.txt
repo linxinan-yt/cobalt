@@ -1165,23 +1165,7 @@ de{
             night{
                 case{
                     accusative{
-<<<<<<< HEAD
-                        one{"{0} Nacht"}
-                        other{"{0} Übernachtungen"}
-                    }
-                    dative{
-                        one{"{0} Nacht"}
-                        other{"{0} Übernachtungen"}
-                    }
-                    genitive{
-                        one{"{0} Nacht"}
-                        other{"{0} Übernachtungen"}
-                    }
-                }
-                gender{"feminine"}
-                one{"{0} Nacht"}
-=======
-                        one{"{0} Übernachtung"}
+one{"{0} Übernachtung"}
                         other{"{0} Übernachtungen"}
                     }
                     dative{
@@ -1195,9 +1179,7 @@ de{
                 }
                 dnam{"Übernachtungen"}
                 gender{"feminine"}
-                one{"{0} Übernachtung"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                other{"{0} Übernachtungen"}
+                one{"{0} Übernachtung"}                other{"{0} Übernachtungen"}
                 per{"{0} pro Übernachtung"}
             }
             quarter{
@@ -3712,16 +3694,10 @@ de{
                 other{"{0} M"}
             }
             night{
-<<<<<<< HEAD
+dnam{"Nächte"}
                 one{"{0}Nacht"}
                 other{"{0}Nächte"}
-=======
-                dnam{"Nächte"}
-                one{"{0}Nacht"}
-                other{"{0}Nächte"}
-                per{"{0}/Nacht"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/Nacht"}            }
             quarter{
                 dnam{"Q"}
                 one{"{0} Q"}

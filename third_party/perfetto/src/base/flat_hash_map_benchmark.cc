@@ -17,12 +17,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-<<<<<<< HEAD
-#include <optional>
-=======
-#include <functional>
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include <random>
+#include <optional>#include <random>
 #include <string>
 #include <string_view>
 #include <unordered_map>
@@ -33,12 +28,7 @@
 
 #include "perfetto/base/logging.h"
 #include "perfetto/ext/base/flat_hash_map.h"
-<<<<<<< HEAD
-#include "perfetto/ext/base/flat_hash_map_v1.h"
-=======
-#include "perfetto/ext/base/fnv_hash.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "perfetto/ext/base/hash.h"
+#include "perfetto/ext/base/flat_hash_map_v1.h"#include "perfetto/ext/base/hash.h"
 #include "perfetto/ext/base/murmur_hash.h"
 #include "perfetto/ext/base/scoped_file.h"
 
@@ -708,13 +698,8 @@ BENCHMARK_TEMPLATE(BM_HashMap_InsertDupeInts, RobinMap_Default);
 BENCHMARK_TEMPLATE(BM_HashMap_InsertDupeInts, FollyF14_Default);
 #endif
 
-<<<<<<< HEAD
 BENCHMARK_TEMPLATE(BM_HashMap_RandomIntsClear, Ours_Default);
 BENCHMARK_TEMPLATE(BM_HashMap_RandomIntsClear, OursV2_Default);
-=======
-BENCHMARK_TEMPLATE(BM_HashMap_RandomIntsClear, Ours_LinearProbing);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 // Heterogeneous lookup benchmarks
 template <typename MapType>
 void BM_HashMap_HeterogeneousLookup_String(benchmark::State& state) {
@@ -781,7 +766,6 @@ void BM_HashMap_RegularLookup_String(benchmark::State& state) {
                                       Counter::kIsIterationInvariantRate);
 }
 
-<<<<<<< HEAD
 // String benchmarks - each map uses its default hash function
 using Ours_String =
     Ours<std::string, uint64_t, base::MurmurHash<std::string>, LinearProbe>;
@@ -1009,13 +993,3 @@ BENCHMARK_TEMPLATE(BM_HashMap_EraseTombstoneStress, AbslFlatHashMap_Default);
 BENCHMARK_TEMPLATE(BM_HashMap_EraseTombstoneStress, RobinMap_Default);
 BENCHMARK_TEMPLATE(BM_HashMap_EraseTombstoneStress, FollyF14_Default);
 #endif
-=======
-using Ours_String_LinearProbing =
-    Ours<std::string, uint64_t, base::MurmurHash<std::string>, LinearProbe>;
-using StdUnorderedMap_String = std::unordered_map<std::string, uint64_t>;
-
-BENCHMARK_TEMPLATE(BM_HashMap_HeterogeneousLookup_String,
-                   Ours_String_LinearProbing);
-BENCHMARK_TEMPLATE(BM_HashMap_RegularLookup_String, Ours_String_LinearProbing);
-BENCHMARK_TEMPLATE(BM_HashMap_RegularLookup_String, StdUnorderedMap_String);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

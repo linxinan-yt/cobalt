@@ -30,8 +30,7 @@ yue{
             per{"每 {1} {0}"}
         }
         concentr{
-<<<<<<< HEAD
-            katal{
+katal{
                 dnam{"開特"}
                 other{"{0} 開特"}
             }
@@ -43,11 +42,7 @@ yue{
                 dnam{"等份"}
                 other{"{0} 等份"}
             }
-            part-per-1e9{
-=======
-            portion-per-1e9{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                dnam{"十億分點濃度"}
+            part-per-1e9{                dnam{"十億分點濃度"}
                 other{"{0} 十億分點濃度"}
             }
         }
@@ -252,32 +247,8 @@ yue{
         }
     }
     unitsNarrow{
-<<<<<<< HEAD
-        angle{
-            steradian{
-                dnam{"球面度"}
-                other{"{0} 球面度"}
-            }
-        }
-        concentr{
-            katal{
-                dnam{"開特"}
-                other{"{0} 開特"}
-            }
-            ofglucose{
-                dnam{"葡萄糖"}
-                other{"{0} 葡萄糖"}
-            }
-            part{
-                dnam{"等份"}
-                other{"{0} 等份"}
-            }
-            part-per-1e9{
-=======
-        concentr{
-            portion-per-1e9{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                other{"{0}ppb"}
+concentr{
+            portion-per-1e9{                other{"{0}ppb"}
             }
         }
         digital{
@@ -288,8 +259,7 @@ yue{
         }
         duration{
             night{
-<<<<<<< HEAD
-                other{"{0}晚"}
+other{"{0}晚"}
             }
         }
         electric{
@@ -331,13 +301,7 @@ yue{
         force{
             kilogram-force{
                 dnam{"公斤力"}
-                other{"{0} 公斤力"}
-=======
-                dnam{"晚"}
-                other{"{0}晚"}
-                per{"{0}/晚"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} 公斤力"}            }
         }
         graphics{
             dot-per-centimeter{
@@ -400,11 +364,7 @@ yue{
                 other{"每小時 {0} 公里"}
             }
             light-speed{
-<<<<<<< HEAD
-=======
-                dnam{"光速"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                other{"{0}光速"}
+dnam{"光速"}                other{"{0}光速"}
             }
             meter-per-second{
                 other{"每秒 {0} 米"}

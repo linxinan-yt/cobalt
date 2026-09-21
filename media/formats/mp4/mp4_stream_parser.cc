@@ -109,7 +109,6 @@ base::HeapArray<uint8_t> PrepareAACBuffer(
 }
 #endif  // BUILDFLAG(USE_PROPRIETARY_CODECS)
 
-<<<<<<< HEAD
 // Create a HdrMetadataTrack for attaching metadata to track samples. Returns
 // nullptr on failure.
 std::unique_ptr<HdrMetadataTrack> MakeMetadataTrack(
@@ -147,11 +146,7 @@ std::unique_ptr<HdrMetadataTrack> MakeMetadataTrack(
 
   return std::make_unique<HdrMetadataTrack>(
       metadata_track_id, it35_sample_entry.it35_prefix_type, render_track_ids);
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}  // namespace
+}}  // namespace
 
 MP4StreamParser::MP4StreamParser(
     std::optional<base::flat_set<int>> strict_audio_object_types,
@@ -210,18 +205,14 @@ void MP4StreamParser::Reset() {
   runs_.reset();
   moof_head_ = 0;
   mdat_tail_ = 0;
-<<<<<<< HEAD
-  for (auto& [track_id, metadata_track] : metadata_tracks_) {
+for (auto& [track_id, metadata_track] : metadata_tracks_) {
     metadata_track->Reset();
   }
-=======
 
 #if BUILDFLAG(USE_STARBOARD_MEDIA)
   scratch_frame_buf_.clear();
   scratch_frame_buf_.shrink_to_fit();
-#endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+#endif}
 
 void MP4StreamParser::Flush() {
   DCHECK_NE(state_, kWaitingForInit);
@@ -1253,15 +1244,11 @@ ParseResult MP4StreamParser::EnqueueSample(BufferQueueMap* buffers) {
   // Either both buffers should be empty or only one should be filled.
   CHECK(frame_buf.empty() || heap_frame_buf.empty());
 
-<<<<<<< HEAD
-=======
 #if BUILDFLAG(USE_STARBOARD_MEDIA)
   const size_t original_scratch_capacity = scratch_frame_buf_.capacity();
 #endif
 
-  const auto buffer_type = audio ? DemuxerStream::AUDIO : DemuxerStream::VIDEO;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  scoped_refptr<StreamParserBuffer> stream_buf;
+  const auto buffer_type = audio ? DemuxerStream::AUDIO : DemuxerStream::VIDEO;  scoped_refptr<StreamParserBuffer> stream_buf;
 
   if (auto* media_client = GetMediaClient()) {
     if (auto* alloc = media_client->GetMediaAllocator()) {

@@ -13,17 +13,6 @@
 // limitations under the License.
 
 import {
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/column_info_unittest.ts
-  type ColumnInfo,
-  columnInfoFromSqlColumn,
-  newColumnInfo,
-} from './column_info';
-import type {SqlColumn} from '../../dev.perfetto.SqlModules/sql_modules';
-import {
-  type PerfettoSqlType,
-  PerfettoSqlTypes,
-} from '../../../trace_processor/perfetto_sql_type';
-=======
   ColumnInfo,
   columnInfoFromSqlColumn,
   columnInfoFromName,
@@ -32,7 +21,6 @@ import {
 } from './column_info';
 import {SqlColumn} from '../../dev.perfetto.SqlModules/sql_modules';
 import {PerfettoSqlType} from '../../../trace_processor/perfetto_sql_type';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/column_info_unittest.ts
 
 describe('column_info utilities', () => {
   const stringType: PerfettoSqlType = {
@@ -55,14 +43,9 @@ describe('column_info utilities', () => {
       const result = columnInfoFromSqlColumn(sqlColumn);
 
       expect(result.name).toBe('id');
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/column_info_unittest.ts
-      expect(result.type).toEqual(PerfettoSqlTypes.INT);
-      expect(result.checked).toBe(false);
-=======
       expect(result.type).toBe('INT');
       expect(result.checked).toBe(false);
       expect(result.column).toBe(sqlColumn);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/column_info_unittest.ts
       expect(result.alias).toBeUndefined();
     });
 
@@ -75,14 +58,9 @@ describe('column_info utilities', () => {
       const result = columnInfoFromSqlColumn(sqlColumn, true);
 
       expect(result.name).toBe('name');
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/column_info_unittest.ts
-      expect(result.type).toEqual(PerfettoSqlTypes.STRING);
-      expect(result.checked).toBe(true);
-=======
       expect(result.type).toBe('STRING');
       expect(result.checked).toBe(true);
       expect(result.column).toBe(sqlColumn);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/column_info_unittest.ts
     });
 
     it('should handle timestamp type', () => {
@@ -94,9 +72,6 @@ describe('column_info utilities', () => {
       const result = columnInfoFromSqlColumn(sqlColumn, false);
 
       expect(result.name).toBe('ts');
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/column_info_unittest.ts
-      expect(result.type).toEqual(PerfettoSqlTypes.TIMESTAMP);
-=======
       expect(result.type).toBe('TIMESTAMP');
       expect(result.checked).toBe(false);
     });
@@ -126,7 +101,6 @@ describe('column_info utilities', () => {
 
       expect(result.name).toBe('');
       expect(result.type).toBe('NA');
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/column_info_unittest.ts
       expect(result.checked).toBe(false);
     });
   });
@@ -135,72 +109,43 @@ describe('column_info utilities', () => {
     it('should create new ColumnInfo preserving column info', () => {
       const original: ColumnInfo = {
         name: 'id',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/column_info_unittest.ts
-        checked: false,
-        type: intType,
-=======
         type: 'INTEGER',
         checked: false,
         column: {name: 'id', type: intType},
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/column_info_unittest.ts
       };
 
       const result = newColumnInfo(original);
 
       expect(result.name).toBe('id');
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/column_info_unittest.ts
-      expect(result.type).toEqual(PerfettoSqlTypes.INT);
-      expect(result.checked).toBe(false);
-      // column is now a copy with name updated (not same reference)
-      expect(result.name).toBe('id');
-      expect(result.type).toBe(intType);
-=======
       expect(result.type).toBe('INT');
       expect(result.checked).toBe(false);
       expect(result.column).toBe(original.column);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/column_info_unittest.ts
       expect(result.alias).toBeUndefined();
     });
 
     it('should use alias as name if present', () => {
       const original: ColumnInfo = {
         name: 'id',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/column_info_unittest.ts
-        checked: false,
-        type: intType,
-=======
         type: 'INTEGER',
         checked: false,
         column: {name: 'id', type: intType},
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/column_info_unittest.ts
         alias: 'identifier',
       };
 
       const result = newColumnInfo(original);
 
       expect(result.name).toBe('identifier');
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/column_info_unittest.ts
-      expect(result.type).toEqual(PerfettoSqlTypes.INT);
-      // column.name should also be replaced with the alias so child nodes see the aliased name
-      expect(result.name).toBe('identifier');
-=======
       expect(result.type).toBe('INT');
       expect(result.column.name).toBe('id');
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/column_info_unittest.ts
       expect(result.alias).toBeUndefined();
     });
 
     it('should override checked state when specified', () => {
       const original: ColumnInfo = {
         name: 'name',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/column_info_unittest.ts
-        checked: false,
-        type: stringType,
-=======
         type: 'STRING',
         checked: false,
         column: {name: 'name', type: stringType},
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/column_info_unittest.ts
       };
 
       const result = newColumnInfo(original, true);
@@ -212,14 +157,9 @@ describe('column_info utilities', () => {
     it('should preserve checked state when not overridden', () => {
       const original: ColumnInfo = {
         name: 'name',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/column_info_unittest.ts
-        checked: true,
-        type: stringType,
-=======
         type: 'STRING',
         checked: true,
         column: {name: 'name', type: stringType},
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/column_info_unittest.ts
       };
 
       const result = newColumnInfo(original);
@@ -230,14 +170,9 @@ describe('column_info utilities', () => {
     it('should handle undefined checked parameter', () => {
       const original: ColumnInfo = {
         name: 'ts',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/column_info_unittest.ts
-        checked: true,
-        type: timestampType,
-=======
         type: 'TIMESTAMP_NS',
         checked: true,
         column: {name: 'ts', type: timestampType},
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/column_info_unittest.ts
       };
 
       const result = newColumnInfo(original, undefined);
@@ -248,14 +183,9 @@ describe('column_info utilities', () => {
     it('should clear alias in new column', () => {
       const original: ColumnInfo = {
         name: 'id',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/column_info_unittest.ts
-        checked: false,
-        type: intType,
-=======
         type: 'INTEGER',
         checked: false,
         column: {name: 'id', type: intType},
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/column_info_unittest.ts
         alias: 'identifier',
       };
 
@@ -264,8 +194,6 @@ describe('column_info utilities', () => {
       expect(result.alias).toBeUndefined();
     });
   });
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/column_info_unittest.ts
-=======
 
   describe('newColumnInfoList', () => {
     it('should create new list preserving all columns', () => {
@@ -373,5 +301,4 @@ describe('column_info utilities', () => {
       expect(result[0].checked).toBe(true);
     });
   });
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/column_info_unittest.ts
 });

@@ -13,17 +13,9 @@
 // limitations under the License.
 
 import {HighPrecisionTimeSpan} from '../base/high_precision_time_span';
-<<<<<<< HEAD
 import type {time} from '../base/time';
 import type {ScrollToArgs} from '../public/scroll_helper';
-import type {WorkspaceManager} from '../public/workspace';
-=======
-import {time} from '../base/time';
-import {ScrollToArgs} from '../public/scroll_helper';
-import {TraceInfo} from '../public/trace_info';
-import {WorkspaceManager} from '../public/workspace';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {raf} from './raf_scheduler';
+import type {WorkspaceManager} from '../public/workspace';import {raf} from './raf_scheduler';
 import type {TimelineImpl} from './timeline';
 import type {TrackManagerImpl} from './track_manager';
 

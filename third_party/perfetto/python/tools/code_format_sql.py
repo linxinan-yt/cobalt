@@ -78,24 +78,12 @@ class SyntaqliteFmt(CodeFormatterBase):
     return filtered
 
   def run_formatter(self, repo_root: str, check_only: bool, files: list[str]):
-<<<<<<< HEAD
-    binary = _syntaqlite_binary(repo_root)
+binary = _syntaqlite_binary(repo_root)
     if not os.path.isfile(binary):
       print(
           f'syntaqlite binary not found at {binary}\n'
           'Run `tools/install-build-deps` to fetch it.',
-          file=sys.stderr)
-=======
-    if sys.platform != 'win32':
-      venv_py = '.venv/bin/python3'
-    else:
-      venv_py = '.venv/Scripts/python3.exe'
-    fmt_script = 'python/tools/format_sql.py'
-    if not os.path.exists(venv_py):
-      err = f'Cannot find ${venv_py}\nRun tools/install-build-deps'
-      print(err, file=sys.stderr)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      return 127
+          file=sys.stderr)      return 127
 
     out_dir = _resolve_out_dir(repo_root)
     if not out_dir:

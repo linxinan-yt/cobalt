@@ -2223,12 +2223,7 @@ supplementalData:table(nofallback){
             "islamic-tbla",
         }
     }
-<<<<<<< HEAD
-    cldrVersion{"48"}
-=======
-    cldrVersion{"47"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    codeMappings{
+cldrVersion{"48"}    codeMappings{
         {
             "AA",
             "958",
@@ -8081,11 +8076,7 @@ supplementalData:table(nofallback){
                 "Tirh",
                 "Tnsa",
                 "Todr",
-<<<<<<< HEAD
-                "Tols",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                "Toto",
+"Tols",                "Toto",
                 "Tutg",
                 "Ugar",
                 "Vaii",
@@ -12005,20 +11996,10 @@ supplementalData:table(nofallback){
                 "volume-sai",
                 "volume-to-jp",
                 "volume-koku",
-<<<<<<< HEAD
-                "concentr-part-per-1e9",
+"concentr-portion-per-1e9",
                 "mass-fun",
                 "duration-night",
-                "speed-light-speed",
-                "volume-fluid-ounce-metric",
-                "volume-cup-imperial",
-=======
-                "concentr-portion-per-1e9",
-                "mass-fun",
-                "duration-night",
-                "speed-light-speed",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                "speed-light-speed",            }
         }
         variant{
             deprecated{
@@ -12056,11 +12037,7 @@ supplementalData:table(nofallback){
                 "biscayan",
                 "biske",
                 "blasl",
-<<<<<<< HEAD
-                "bohairic",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                "bohoric",
+"bohairic",                "bohoric",
                 "boont",
                 "bornholm",
                 "cisaup",
@@ -12071,11 +12048,7 @@ supplementalData:table(nofallback){
                 "ekavsk",
                 "emodeng",
                 "fascia",
-<<<<<<< HEAD
-                "fayyumic",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                "fodom",
+"fayyumic",                "fodom",
                 "fonipa",
                 "fonkirsh",
                 "fonnapa",
@@ -12101,11 +12074,7 @@ supplementalData:table(nofallback){
                 "kleinsch",
                 "kociewie",
                 "kscor",
-<<<<<<< HEAD
-                "leidentr",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                "lemosin",
+"leidentr",                "lemosin",
                 "lengadoc",
                 "lipaw",
                 "ltg1929",
@@ -12320,13 +12289,7 @@ supplementalData:table(nofallback){
             primary{
                 scripts{"Arab"}
             }
-<<<<<<< HEAD
-        }
-        apd{
-            primary{
-                scripts{"Arab"}
-=======
-            secondary{
+secondary{
                 territories{
                     "IL",
                     "JO",
@@ -12334,9 +12297,7 @@ supplementalData:table(nofallback){
                     "PS",
                     "SY",
                     "TR",
-                }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                }            }
         }
         apd{
             primary{
@@ -12452,17 +12413,6 @@ supplementalData:table(nofallback){
                     "Latn",
                     "Arab",
                     "Cyrl",
-<<<<<<< HEAD
-=======
-                }
-                territories{"AZ"}
-            }
-            secondary{
-                territories{
-                    "IQ",
-                    "IR",
-                    "RU",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -12610,16 +12560,12 @@ supplementalData:table(nofallback){
             primary{
                 scripts{"Deva"}
             }
-<<<<<<< HEAD
-=======
-            secondary{
+secondary{
                 territories{
                     "IN",
                     "NP",
                 }
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            }        }
         bi{
             primary{
                 scripts{"Latn"}
@@ -12648,13 +12594,9 @@ supplementalData:table(nofallback){
         bjt{
             primary{
                 scripts{"Latn"}
-<<<<<<< HEAD
-=======
-            }
+}
             secondary{
-                territories{"SN"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                territories{"SN"}            }
         }
         bkm{
             primary{
@@ -12757,15 +12699,11 @@ supplementalData:table(nofallback){
             primary{
                 scripts{"Latn"}
             }
-<<<<<<< HEAD
-        }
+}
         bsq{
             primary{
                 scripts{"Latn"}
-            }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            secondary{
+            }            secondary{
                 scripts{"Bass"}
             }
         }
@@ -13049,13 +12987,9 @@ supplementalData:table(nofallback){
         csb{
             primary{
                 scripts{"Latn"}
-<<<<<<< HEAD
-=======
-            }
+}
             secondary{
-                territories{"PL"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                territories{"PL"}            }
         }
         csw{
             primary{
@@ -13265,111 +13199,13 @@ supplementalData:table(nofallback){
         en{
             primary{
                 scripts{"Latn"}
-<<<<<<< HEAD
-=======
-                territories{
-                    "AG",
-                    "AI",
-                    "AS",
-                    "AU",
-                    "BB",
-                    "BI",
-                    "BM",
-                    "BS",
-                    "BW",
-                    "BZ",
-                    "CA",
-                    "CC",
-                    "CK",
-                    "CM",
-                    "CQ",
-                    "CX",
-                    "DG",
-                    "DM",
-                    "ER",
-                    "FJ",
-                    "FK",
-                    "FM",
-                    "GB",
-                    "GD",
-                    "GG",
-                    "GH",
-                    "GI",
-                    "GM",
-                    "GS",
-                    "GU",
-                    "GY",
-                    "HK",
-                    "IE",
-                    "IM",
-                    "IN",
-                    "IO",
-                    "JE",
-                    "JM",
-                    "KE",
-                    "KI",
-                    "KN",
-                    "KY",
-                    "LC",
-                    "LR",
-                    "LS",
-                    "MG",
-                    "MH",
-                    "MP",
-                    "MS",
-                    "MT",
-                    "MU",
-                    "MW",
-                    "NA",
-                    "NF",
-                    "NG",
-                    "NR",
-                    "NU",
-                    "NZ",
-                    "PG",
-                    "PH",
-                    "PK",
-                    "PN",
-                    "PR",
-                    "PW",
-                    "RW",
-                    "SB",
-                    "SC",
-                    "SD",
-                    "SG",
-                    "SH",
-                    "SL",
-                    "SS",
-                    "SX",
-                    "SZ",
-                    "TC",
-                    "TK",
-                    "TO",
-                    "TT",
-                    "TV",
-                    "TZ",
-                    "UG",
-                    "UM",
-                    "US",
-                    "VC",
-                    "VG",
-                    "VI",
-                    "VU",
-                    "WS",
-                    "ZA",
-                    "ZM",
-                    "ZW",
-                }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             secondary{
                 scripts{
                     "Dsrt",
                     "Shaw",
                 }
-<<<<<<< HEAD
-=======
-                territories{
+territories{
                     "AC",
                     "AE",
                     "AR",
@@ -13421,9 +13257,7 @@ supplementalData:table(nofallback){
                     "TH",
                     "TR",
                     "YE",
-                }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                }            }
         }
         enm{
             primary{
@@ -13438,9 +13272,7 @@ supplementalData:table(nofallback){
         es{
             primary{
                 scripts{"Latn"}
-<<<<<<< HEAD
-=======
-                territories{
+territories{
                     "AR",
                     "BO",
                     "CL",
@@ -13479,9 +13311,7 @@ supplementalData:table(nofallback){
                     "PT",
                     "RO",
                     "US",
-                }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                }            }
         }
         esu{
             primary{
@@ -13537,15 +13367,11 @@ supplementalData:table(nofallback){
             }
             secondary{
                 scripts{"Adlm"}
-<<<<<<< HEAD
-=======
-                territories{
+territories{
                     "CM",
                     "GN",
                     "SN",
-                }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                }            }
         }
         ffm{
             primary{
@@ -13593,76 +13419,9 @@ supplementalData:table(nofallback){
         fr{
             primary{
                 scripts{"Latn"}
-<<<<<<< HEAD
-            }
+}
             secondary{
-                scripts{"Dupl"}
-=======
-                territories{
-                    "BE",
-                    "BF",
-                    "BI",
-                    "BJ",
-                    "BL",
-                    "CA",
-                    "CD",
-                    "CF",
-                    "CG",
-                    "CH",
-                    "CI",
-                    "CM",
-                    "DJ",
-                    "DZ",
-                    "FR",
-                    "GA",
-                    "GF",
-                    "GN",
-                    "GP",
-                    "GQ",
-                    "HT",
-                    "KM",
-                    "LU",
-                    "MA",
-                    "MC",
-                    "MF",
-                    "MG",
-                    "ML",
-                    "MQ",
-                    "MU",
-                    "NC",
-                    "NE",
-                    "PF",
-                    "PM",
-                    "RE",
-                    "RW",
-                    "SC",
-                    "SN",
-                    "TD",
-                    "TG",
-                    "TN",
-                    "VU",
-                    "WF",
-                    "YT",
-                }
-            }
-            secondary{
-                scripts{"Dupl"}
-                territories{
-                    "AT",
-                    "DE",
-                    "GB",
-                    "IT",
-                    "LB",
-                    "NL",
-                    "PT",
-                    "RO",
-                    "ST",
-                    "SY",
-                    "TF",
-                    "US",
-                }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                scripts{"Dupl"}            }
         }
         frc{
             primary{
@@ -13863,18 +13622,14 @@ supplementalData:table(nofallback){
         grc{
             primary{
                 scripts{"Grek"}
-<<<<<<< HEAD
-            }
+}
         }
         grr{
             primary{
                 scripts{"Arab"}
             }
             secondary{
-                scripts{"Tfng"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                scripts{"Tfng"}            }
         }
         grt{
             primary{
@@ -13931,16 +13686,12 @@ supplementalData:table(nofallback){
                 scripts{
                     "Latn",
                     "Arab",
-<<<<<<< HEAD
-=======
-                }
+}
             }
             secondary{
                 territories{
                     "NE",
-                    "NG",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+                    "NG",                }
             }
         }
         hai{
@@ -14509,16 +14260,8 @@ supplementalData:table(nofallback){
             primary{
                 scripts{"Latn"}
             }
-<<<<<<< HEAD
-        }
-        knn{
-            primary{
-                scripts{"Deva"}
-=======
-            secondary{
-                territories{"SN"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+secondary{
+                territories{"SN"}            }
         }
         knn{
             primary{
@@ -14544,12 +14287,6 @@ supplementalData:table(nofallback){
                     "Deva",
                     "Latn",
                 }
-<<<<<<< HEAD
-=======
-            }
-            secondary{
-                territories{"IN"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         kos{
@@ -14637,16 +14374,12 @@ supplementalData:table(nofallback){
                     "Latn",
                     "Arab",
                     "Cyrl",
-<<<<<<< HEAD
-=======
-                }
+}
             }
             secondary{
                 territories{
                     "SY",
-                    "TR",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+                    "TR",                }
             }
         }
         kum{
@@ -14726,13 +14459,9 @@ supplementalData:table(nofallback){
         la{
             primary{
                 scripts{"Latn"}
-<<<<<<< HEAD
-=======
-            }
+}
             secondary{
-                territories{"VA"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                territories{"VA"}            }
         }
         lab{
             primary{
@@ -14970,12 +14699,7 @@ supplementalData:table(nofallback){
         }
         lzh{
             primary{
-<<<<<<< HEAD
-                scripts{"Hant"}
-=======
-                scripts{"Hans"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+scripts{"Hant"}            }
         }
         lzz{
             primary{
@@ -15091,13 +14815,9 @@ supplementalData:table(nofallback){
         mfv{
             primary{
                 scripts{"Latn"}
-<<<<<<< HEAD
-=======
-            }
+}
             secondary{
-                territories{"SN"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                territories{"SN"}            }
         }
         mg{
             primary{
@@ -15249,9 +14969,7 @@ supplementalData:table(nofallback){
                 scripts{
                     "Latn",
                     "Arab",
-<<<<<<< HEAD
-=======
-                }
+}
                 territories{
                     "BN",
                     "MY",
@@ -15261,9 +14979,7 @@ supplementalData:table(nofallback){
             secondary{
                 territories{
                     "CC",
-                    "ID",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+                    "ID",                }
             }
         }
         mt{
@@ -15409,16 +15125,12 @@ supplementalData:table(nofallback){
             primary{
                 scripts{"Latn"}
             }
-<<<<<<< HEAD
-=======
-            secondary{
+secondary{
                 territories{
                     "MZ",
                     "ZW",
                 }
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            }        }
         nds{
             primary{
                 scripts{"Latn"}
@@ -15662,13 +15374,7 @@ supplementalData:table(nofallback){
         }
         pa{
             primary{
-<<<<<<< HEAD
-                scripts{"Guru"}
-            }
-            secondary{
-                scripts{"Arab"}
-=======
-                scripts{
+scripts{
                     "Guru",
                     "Arab",
                 }
@@ -15679,9 +15385,7 @@ supplementalData:table(nofallback){
                     "GB",
                     "IN",
                     "PK",
-                }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                }            }
         }
         pag{
             primary{
@@ -15748,20 +15452,12 @@ supplementalData:table(nofallback){
         }
         pi{
             primary{
-<<<<<<< HEAD
-                scripts{"Latn"}
+scripts{"Latn"}
             }
             secondary{
                 scripts{
                     "Deva",
-                    "Mymr",
-=======
-                scripts{"Mymr"}
-            }
-            secondary{
-                scripts{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    "Sinh",
+                    "Mymr",                    "Sinh",
                     "Deva",
                     "Thai",
                 }
@@ -15780,14 +15476,10 @@ supplementalData:table(nofallback){
         pl{
             primary{
                 scripts{"Latn"}
-<<<<<<< HEAD
-=======
-                territories{"PL"}
+territories{"PL"}
             }
             secondary{
-                territories{"GB"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                territories{"GB"}            }
         }
         pms{
             primary{
@@ -16009,30 +15701,6 @@ supplementalData:table(nofallback){
         ru{
             primary{
                 scripts{"Cyrl"}
-<<<<<<< HEAD
-=======
-                territories{
-                    "BY",
-                    "KG",
-                    "KZ",
-                    "RU",
-                    "UA",
-                }
-            }
-            secondary{
-                territories{
-                    "BG",
-                    "DE",
-                    "EE",
-                    "IL",
-                    "LT",
-                    "LV",
-                    "PL",
-                    "SJ",
-                    "TJ",
-                    "UZ",
-                }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         rue{
@@ -16330,13 +15998,9 @@ supplementalData:table(nofallback){
         snf{
             primary{
                 scripts{"Latn"}
-<<<<<<< HEAD
-=======
-            }
+}
             secondary{
-                territories{"SN"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                territories{"SN"}            }
         }
         snk{
             primary{
@@ -16635,16 +16299,6 @@ supplementalData:table(nofallback){
                     "Latn",
                     "Arab",
                     "Cyrl",
-<<<<<<< HEAD
-=======
-                }
-                territories{"TM"}
-            }
-            secondary{
-                territories{
-                    "AF",
-                    "IR",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
             }
         }
@@ -16680,10 +16334,6 @@ supplementalData:table(nofallback){
                     "Arab",
                     "Cyrl",
                 }
-<<<<<<< HEAD
-=======
-                territories{"AZ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
         }
         tmh{
@@ -16699,13 +16349,9 @@ supplementalData:table(nofallback){
         tnr{
             primary{
                 scripts{"Latn"}
-<<<<<<< HEAD
-=======
-            }
+}
             secondary{
-                territories{"SN"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                territories{"SN"}            }
         }
         to{
             primary{
@@ -16717,15 +16363,11 @@ supplementalData:table(nofallback){
                 scripts{"Latn"}
             }
         }
-<<<<<<< HEAD
-=======
-        toi{
+toi{
             secondary{
                 territories{"ZM"}
             }
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        tok{
+        }        tok{
             primary{
                 scripts{"Latn"}
             }
@@ -16888,9 +16530,7 @@ supplementalData:table(nofallback){
             primary{
                 scripts{"Latn"}
             }
-<<<<<<< HEAD
-=======
-            secondary{
+secondary{
                 territories{"AO"}
             }
         }
@@ -16901,9 +16541,7 @@ supplementalData:table(nofallback){
                     "CP",
                     "HM",
                 }
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            }        }
         unr{
             primary{
                 scripts{
@@ -16951,18 +16589,14 @@ supplementalData:table(nofallback){
             primary{
                 scripts{"Latn"}
             }
-<<<<<<< HEAD
-=======
-            secondary{
+secondary{
                 territories{
                     "BR",
                     "HR",
                     "IT",
                     "SI",
                 }
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            }        }
         vep{
             primary{
                 scripts{"Latn"}
@@ -17214,16 +16848,11 @@ supplementalData:table(nofallback){
         }
         yue{
             primary{
-<<<<<<< HEAD
-                scripts{"Hant"}
-=======
-                scripts{
+scripts{
                     "Hant",
                     "Hans",
                 }
-                territories{"MO"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                territories{"MO"}            }
             secondary{
                 scripts{"Hans"}
             }
@@ -17277,18 +16906,14 @@ supplementalData:table(nofallback){
                     "Latn",
                     "Phag",
                 }
-<<<<<<< HEAD
-=======
-                territories{
+territories{
                     "CA",
                     "ID",
                     "MY",
                     "TH",
                     "US",
                     "VN",
-                }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                }            }
         }
         zmi{
             primary{
@@ -19827,8 +19452,7 @@ supplementalData:table(nofallback){
             "en_CZ",
             "en_DE",
             "en_DK",
-<<<<<<< HEAD
-            "en_EE",
+"en_EE",
             "en_ES",
             "en_FI",
             "en_FR",
@@ -19836,15 +19460,7 @@ supplementalData:table(nofallback){
             "en_HU",
             "en_IT",
             "en_LT",
-            "en_LV",
-=======
-            "en_ES",
-            "en_FI",
-            "en_FR",
-            "en_HU",
-            "en_IT",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            "en_NL",
+            "en_LV",            "en_NL",
             "en_NO",
             "en_PL",
             "en_PT",
@@ -19852,11 +19468,7 @@ supplementalData:table(nofallback){
             "en_SE",
             "en_SI",
             "en_SK",
-<<<<<<< HEAD
-            "en_UA",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+"en_UA",        }
         en_IN{"hi_Latn"}
         es_419{
             "es_AR",
@@ -28150,13 +27762,9 @@ supplementalData:table(nofallback){
             fr{
                 officialStatus{"official"}
                 populationShareF:int{49330000}
-<<<<<<< HEAD
-            }
+}
             grr{
-                populationShareF:int{46260000}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                populationShareF:int{46260000}            }
             kab{
                 literacyShareF:int{49100000}
                 populationShareF:int{48780000}
@@ -29030,8 +28638,7 @@ supplementalData:table(nofallback){
                 61223200,
                 49759000,
                 57182552,
-<<<<<<< HEAD
-            }
+}
             ttc{
                 populationShareF:int{46270000}
             }
@@ -29044,10 +28651,7 @@ supplementalData:table(nofallback){
             }
             xin{
                 officialStatus{"official_regional"}
-                populationShareF:int{46270000}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                populationShareF:int{46270000}            }
         }
         GU{
             ch{
@@ -29782,13 +29386,9 @@ supplementalData:table(nofallback){
             }
             kk_Arab{
                 populationShareF:int{45340000}
-<<<<<<< HEAD
-            }
+}
             ku_Arab{
-                populationShareF:int{47560000}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                populationShareF:int{47560000}            }
             lki{
                 populationShareF:int{47760000}
             }
@@ -29886,12 +29486,7 @@ supplementalData:table(nofallback){
                 writingShareF:int{48500000}
             }
             pms{
-<<<<<<< HEAD
-                populationShareF:int{48110000}
-=======
-                populationShareF:int{46100000}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+populationShareF:int{48110000}            }
             rgn{
                 populationShareF:int{0}
             }
@@ -30482,13 +30077,9 @@ supplementalData:table(nofallback){
             fr{
                 officialStatus{"de_facto_official"}
                 populationShareF:int{49360000}
-<<<<<<< HEAD
-            }
+}
             mey{
-                populationShareF:int{47820000}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                populationShareF:int{47820000}            }
             rif{
                 populationShareF:int{48490000}
                 writingShareF:int{48500000}
@@ -30747,12 +30338,7 @@ supplementalData:table(nofallback){
             fil{
                 populationShareF:int{48310000}
             }
-<<<<<<< HEAD
-            nan_Hant{
-=======
-            nan{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                populationShareF:int{48370000}
+nan{                populationShareF:int{48370000}
             }
             pt{
                 officialStatus{"official"}
@@ -30813,13 +30399,9 @@ supplementalData:table(nofallback){
             }
             fr{
                 populationShareF:int{49130000}
-<<<<<<< HEAD
-            }
+}
             mey{
-                populationShareF:int{49870000}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                populationShareF:int{49870000}            }
             territoryF:intvector{
                 60304000,
                 49586000,
@@ -32818,12 +32400,7 @@ supplementalData:table(nofallback){
             kaa{
                 populationShareF:int{47100000}
             }
-<<<<<<< HEAD
-            ku_Cyrl{
-=======
-            ku{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                populationShareF:int{47400000}
+ku{                populationShareF:int{47400000}
             }
             ru{
                 populationShareF:int{49120000}
@@ -32877,13 +32454,9 @@ supplementalData:table(nofallback){
         TR{
             ab{
                 populationShareF:int{45480000}
-<<<<<<< HEAD
-            }
+}
             abq_Latn{
-                populationShareF:int{46150000}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                populationShareF:int{46150000}            }
             ady{
                 populationShareF:int{47390000}
             }

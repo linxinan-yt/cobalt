@@ -809,11 +809,7 @@ void EmbeddedWorkerInstance::BindCacheStorage(
   BindCacheStorageInternal();
 }
 
-<<<<<<< HEAD
-=======
-#if !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-void EmbeddedWorkerInstance::BindHidService(
+#if !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)void EmbeddedWorkerInstance::BindHidService(
     const url::Origin& origin,
     mojo::PendingReceiver<blink::mojom::HidService> receiver) {
   DCHECK_CURRENTLY_ON(BrowserThread::UI);
@@ -826,11 +822,7 @@ void EmbeddedWorkerInstance::BindHidService(
                        std::move(receiver));
   }
 }
-<<<<<<< HEAD
-=======
 #endif  // !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 #if !BUILDFLAG(IS_COBALT)
 void EmbeddedWorkerInstance::BindUsbService(
     const url::Origin& origin,

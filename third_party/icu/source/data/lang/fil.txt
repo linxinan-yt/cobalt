@@ -111,12 +111,8 @@ fil{
         dar{"Dargwa"}
         dav{"Taita"}
         de{"German"}
-<<<<<<< HEAD
-=======
-        de_AT{"Austrian German"}
-        de_CH{"Swiss High German"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        dgr{"Dogrib"}
+de_AT{"Austrian German"}
+        de_CH{"Swiss High German"}        dgr{"Dogrib"}
         dje{"Zarma"}
         doi{"Dogri"}
         dsb{"Lower Sorbian"}
@@ -243,12 +239,7 @@ fil{
         kw{"Cornish"}
         kwk{"Kwakʼwala"}
         kxv{"Kuvi"}
-<<<<<<< HEAD
-        ky{"Kyrgyz"}
-=======
-        ky{"Kirghiz"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        la{"Latin"}
+ky{"Kyrgyz"}        la{"Latin"}
         lad{"Ladino"}
         lag{"Langi"}
         lb{"Luxembourgish"}

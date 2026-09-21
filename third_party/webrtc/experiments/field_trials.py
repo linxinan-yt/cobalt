@@ -47,13 +47,9 @@ ACTIVE_FIELD_TRIALS: FrozenSet[FieldTrial] = frozenset([
     FieldTrial('WebRTC-Aec3BufferingMaxAllowedExcessRenderBlocksOverride',
                337900458,
                date(2024, 9, 1)),
-<<<<<<< HEAD
-    FieldTrial('WebRTC-Agc2MaxSpeechLevelExperimental',
+FieldTrial('WebRTC-Agc2MaxSpeechLevelExperimental',
                457791164,
-               date(2026, 12, 11)),
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    FieldTrial('WebRTC-Agc2SpeechLevelEstimatorExperimental',
+               date(2026, 12, 11)),    FieldTrial('WebRTC-Agc2SpeechLevelEstimatorExperimental',
                457791164,
                date(2026, 11, 5)),
     FieldTrial('WebRTC-ApmEnforce48kHzProcessingRate',

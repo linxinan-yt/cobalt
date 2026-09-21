@@ -32,15 +32,6 @@ _base_unittests_targets += [
   "src/base:unittests",
   "src/base/threading:unittests",
   "src/protozero:unittests",
-<<<<<<< HEAD
-=======
-  "src/shared_lib/track_event:unittests",
-  "src/tracing/core:unittests",
-  "src/tracing/service:unittests",
-  "src/tracing:unittests",
-  "src/profiling:unittests",
-  "src/profiling/symbolizer:unittests",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   "src/protovm:unittests",
 ]
 

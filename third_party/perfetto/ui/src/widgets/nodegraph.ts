@@ -12,11 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-<<<<<<< HEAD
-import './nodegraph.scss';
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-/**
+import './nodegraph.scss';/**
  * A component for displaying and interacting with a node-based graph.
  *
  * Features:
@@ -45,19 +41,12 @@ import './nodegraph.scss';
  *   onConnect: (newConnection) => {
  *     // Handle new connection
  *   },
-<<<<<<< HEAD
- *   onNodeMove: (nodeId, x, y) => {
- *     // Handle node position change (called when node is dropped)
-=======
- *   onNodeDrag: (nodeId, x, y) => {
- *     // Handle node position change
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
- *   },
+*   onNodeMove: (nodeId, x, y) => {
+ *     // Handle node position change (called when node is dropped) *   },
  * });
  * ```
  */
 import m from 'mithril';
-<<<<<<< HEAD
 import {Button, ButtonGroup, ButtonVariant} from './button';
 import {Icon} from './icon';
 import {PopupMenu} from './menu';
@@ -73,13 +62,6 @@ const DEFAULT_LABEL_MIN_HEIGHT = 30;
 // Labels can vary in height based on content, but this provides a reasonable
 // estimate for bounding box calculations when actual DOM measurements aren't available
 const TYPICAL_LABEL_HEIGHT = 100;
-=======
-import {Button, ButtonVariant} from './button';
-import {PopupMenu} from './menu';
-import {classNames} from '../base/classnames';
-import {Icons} from '../base/semantic_icons';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 interface Position {
   x: number;
   y: number;
@@ -96,11 +78,7 @@ export interface Connection {
 
 export interface NodeTitleBar {
   readonly title: m.Children;
-<<<<<<< HEAD
-  readonly icon?: string;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+readonly icon?: string;}
 
 export interface NodePort {
   readonly content?: m.Children;
@@ -124,8 +102,7 @@ export interface Node {
   readonly canDockTop?: boolean;
   readonly canDockBottom?: boolean;
   readonly contextMenuItems?: m.Children;
-<<<<<<< HEAD
-  readonly invalid?: boolean; // Whether this node is in an invalid state
+readonly invalid?: boolean; // Whether this node is in an invalid state
   readonly className?: string; // Extra CSS class(es) on the .pf-node element
 }
 
@@ -135,10 +112,7 @@ export interface Label {
   y: number;
   width: number; // Width of the label box (user can resize)
   content?: m.Children; // Content to render inside the label (optional, defaults to empty)
-  selectable?: boolean; // Whether clicking the label selects it (default: false, only shift+click works)
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  selectable?: boolean; // Whether clicking the label selects it (default: false, only shift+click works)}
 
 interface ConnectingState {
   nodeId: string;
@@ -159,15 +133,10 @@ interface UndockCandidate {
   renderY: number;
 }
 
-<<<<<<< HEAD
 interface UndockedNode {
   nodeId: string;
   parentId: string;
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-interface SelectionRect {
+}interface SelectionRect {
   startX: number;
   startY: number;
   currentX: number;
@@ -187,36 +156,27 @@ interface CanvasState {
   dockTarget: string | null; // Node being targeted for docking
   isDockZone: boolean; // Whether we're in valid dock position
   undockCandidate: UndockCandidate | null; // Tracks potential undock before threshold
-<<<<<<< HEAD
-  undockedNode: UndockedNode | null; // Node that was undocked (set when threshold exceeded)
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  hoveredPort: {
+undockedNode: UndockedNode | null; // Node that was undocked (set when threshold exceeded)  hoveredPort: {
     nodeId: string;
     portIndex: number;
     type: 'input' | 'output';
   } | null;
   selectionRect: SelectionRect | null; // Box selection state
   canvasMouseDownPos: Position;
-<<<<<<< HEAD
-  tempNodePositions: Map<string, Position>; // Temporary positions during drag
+tempNodePositions: Map<string, Position>; // Temporary positions during drag
   tempLabelPositions: Map<string, Position>; // Temporary label positions during drag
   tempLabelWidths: Map<string, number>; // Temporary label widths during resize
   draggedLabel: string | null; // ID of label being dragged
   labelDragStartPos: Position | null; // Position where label drag started
   resizingLabel: string | null; // ID of label being resized
   resizeStartWidth: number; // Width when resize started
-  resizeStartX: number; // Mouse X position when resize started
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  resizeStartX: number; // Mouse X position when resize started}
 
 export interface NodeGraphApi {
   autoLayout: () => void;
   recenter: () => void;
   findPlacementForNode: (node: Omit<Node, 'x' | 'y'>) => Position;
-<<<<<<< HEAD
-  panBy: (dx: number, dy: number) => void;
+panBy: (dx: number, dy: number) => void;
   /**
    * Zooms the canvas by the given delta factor.
    * @param deltaZoom - The zoom delta (e.g., 0.1 for 10% zoom in, -0.1 for 10% zoom out)
@@ -228,16 +188,12 @@ export interface NodeGraphApi {
    * Reset the canvas zoom level to the default (1.0) retaining the current
    * center point.
    */
-  resetZoom: () => void;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  resetZoom: () => void;}
 
 export interface NodeGraphAttrs {
   readonly nodes: ReadonlyArray<Node>;
   readonly connections: ReadonlyArray<Connection>;
-<<<<<<< HEAD
-  readonly labels?: ReadonlyArray<Label>;
+readonly labels?: ReadonlyArray<Label>;
   readonly onConnect?: (connection: Connection) => void;
   readonly onNodeMove?: (nodeId: string, x: number, y: number) => void;
   readonly onConnectionRemove?: (index: number) => void;
@@ -249,24 +205,13 @@ export interface NodeGraphAttrs {
   readonly onNodeSelect?: (nodeId: string) => void;
   // Called when a node or label is added to the current selection (multiselect).
   readonly onNodeAddToSelection?: (nodeId: string) => void;
-  // Called when a node or label is removed from the current selection.
-=======
-  readonly onConnect?: (connection: Connection) => void;
-  readonly onNodeDrag?: (nodeId: string, x: number, y: number) => void;
-  readonly onConnectionRemove?: (index: number) => void;
-  readonly onReady?: (api: NodeGraphApi) => void;
-  readonly selectedNodeIds?: ReadonlySet<string>;
-  readonly onNodeSelect?: (nodeId: string) => void;
-  readonly onNodeAddToSelection?: (nodeId: string) => void;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  readonly onNodeRemoveFromSelection?: (nodeId: string) => void;
+  // Called when a node or label is removed from the current selection.  readonly onNodeRemoveFromSelection?: (nodeId: string) => void;
   readonly onSelectionClear?: () => void;
   readonly onDock?: (
     parentId: string,
     childNode: Omit<Node, 'x' | 'y'>,
   ) => void;
-<<<<<<< HEAD
-  readonly onUndock?: (
+readonly onUndock?: (
     parentId: string,
     nodeId: string,
     x: number,
@@ -278,14 +223,7 @@ export interface NodeGraphAttrs {
   readonly onLabelRemove?: (labelId: string) => void;
   readonly hideControls?: boolean;
   readonly multiselect?: boolean; // Enable multi-node selection (default: true)
-  readonly contextMenuOnHover?: boolean; // Show context menu on hover (default: false)
-=======
-  readonly onUndock?: (parentId: string) => void;
-  readonly onNodeRemove?: (nodeId: string) => void;
-  readonly hideControls?: boolean;
-  readonly multiselect?: boolean; // Enable multi-node selection (default: true)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  readonly fillHeight?: boolean;
+  readonly contextMenuOnHover?: boolean; // Show context menu on hover (default: false)  readonly fillHeight?: boolean;
   readonly toolbarItems?: m.Children;
   readonly style?: Partial<CSSStyleDeclaration>;
 }
@@ -405,8 +343,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
     dockTarget: null,
     isDockZone: false,
     undockCandidate: null,
-<<<<<<< HEAD
-    undockedNode: null,
+undockedNode: null,
     hoveredPort: null,
     selectionRect: null,
     canvasMouseDownPos: {x: 0, y: 0},
@@ -475,19 +412,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
   let recenterApi: (() => void) | null = null;
   let resetZoom: (() => void) | null = null;
   let findPlacementForNodeApi:
-    ((newNode: Omit<Node, 'x' | 'y'>) => Position) | null = null;
-
-=======
-    hoveredPort: null,
-    selectionRect: null,
-    canvasMouseDownPos: {x: 0, y: 0},
-  };
-
-  let latestVnode: m.Vnode<NodeGraphAttrs> | null = null;
-  let canvasElement: HTMLElement | null = null;
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  const handleMouseMove = (e: PointerEvent) => {
+    ((newNode: Omit<Node, 'x' | 'y'>) => Position) | null = null;  const handleMouseMove = (e: PointerEvent) => {
     m.redraw();
     if (!latestVnode || !canvasElement) return;
     const vnode = latestVnode;
@@ -539,8 +464,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
       canvasState.selectionRect.currentY =
         canvasState.mousePos.transformedY ?? 0;
       m.redraw();
-<<<<<<< HEAD
-    } else if (canvasState.draggedLabel !== null) {
+} else if (canvasState.draggedLabel !== null) {
       // Handle label dragging - store temp position, don't call callback yet
       const newX =
         (canvasState.mousePos.transformedX ?? 0) - canvasState.dragOffset.x;
@@ -561,22 +485,11 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
 
       // Store temporary width during resize
       canvasState.tempLabelWidths.set(canvasState.resizingLabel, newWidth);
-      m.redraw();
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    } else if (canvasState.isPanning) {
+      m.redraw();    } else if (canvasState.isPanning) {
       // Pan the canvas
       const dx = e.clientX - canvasState.panStart.x;
       const dy = e.clientY - canvasState.panStart.y;
-<<<<<<< HEAD
-      panBy(dx, dy);
-=======
-      canvasState.panOffset = {
-        x: canvasState.panOffset.x + dx,
-        y: canvasState.panOffset.y + dy,
-      };
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      canvasState.panStart = {x: e.clientX, y: e.clientY};
+panBy(dx, dy);      canvasState.panStart = {x: e.clientX, y: e.clientY};
       m.redraw();
     } else if (canvasState.undockCandidate !== null) {
       // Check if we've exceeded the undock threshold
@@ -585,8 +498,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
       const distance = Math.sqrt(dx * dx + dy * dy);
 
       if (distance > UNDOCK_THRESHOLD) {
-<<<<<<< HEAD
-        // Exceeded threshold - call onUndock immediately so node becomes independent
+// Exceeded threshold - call onUndock immediately so node becomes independent
         const {onUndock} = vnode.attrs;
         const tempX =
           (canvasState.undockCandidate.startX -
@@ -619,26 +531,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
         };
 
         canvasState.undockCandidate = null;
-        m.redraw(); // Force update so nodes array regenerates
-=======
-        // Exceeded threshold - perform undock
-        const {onUndock, onNodeDrag} = vnode.attrs;
-        if (onUndock && onNodeDrag) {
-          onUndock(canvasState.undockCandidate.parentId);
-          onNodeDrag(
-            canvasState.undockCandidate.nodeId,
-            (canvasState.undockCandidate.startX -
-              canvasRect.left -
-              canvasState.panOffset.x) /
-              canvasState.zoom -
-              canvasState.dragOffset.x / canvasState.zoom,
-            canvasState.undockCandidate.renderY,
-          );
-          m.redraw(); // Force update so nodes array regenerates
-        }
-        canvasState.undockCandidate = null;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      }
+        m.redraw(); // Force update so nodes array regenerates      }
     } else if (canvasState.draggedNode !== null) {
       // Calculate new position relative to canvas container (accounting for pan and zoom)
       const newX =
@@ -650,8 +543,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
           canvasState.zoom -
         canvasState.dragOffset.y / canvasState.zoom;
 
-<<<<<<< HEAD
-      // Store current position internally
+// Store current position internally
       currentDragPosition = {x: newX, y: newY};
       canvasState.tempNodePositions.set(canvasState.draggedNode, {
         x: newX,
@@ -659,18 +551,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
       });
 
       // Check if we're in a dock zone (exclude the parent we just undocked from)
-      const {nodes} = vnode.attrs;
-=======
-      // ONLY move the dragged node itself
-      // Children follow automatically via render position calculation
-      const {onNodeDrag, nodes} = vnode.attrs;
-      if (onNodeDrag !== undefined) {
-        onNodeDrag(canvasState.draggedNode, newX, newY);
-      }
-
-      // Check if we're in a dock zone (exclude the parent we just undocked from)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      const draggedNode = nodes.find((n) => n.id === canvasState.draggedNode);
+      const {nodes} = vnode.attrs;      const draggedNode = nodes.find((n) => n.id === canvasState.draggedNode);
       if (draggedNode) {
         const dockInfo = findDockTarget(draggedNode, newX, newY, nodes);
         canvasState.dockTarget = dockInfo.targetNodeId;
@@ -686,12 +567,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
 
     // Handle box selection completion
     if (canvasState.selectionRect) {
-<<<<<<< HEAD
-      const {nodes = [], labels = []} = vnode.attrs;
-=======
-      const {nodes = []} = vnode.attrs;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      const rect = canvasState.selectionRect;
+const {nodes = [], labels = []} = vnode.attrs;      const rect = canvasState.selectionRect;
       const minX = Math.min(rect.startX, rect.currentX);
       const maxX = Math.max(rect.startX, rect.currentX);
       const minY = Math.min(rect.startY, rect.currentY);
@@ -712,22 +588,6 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
         );
       };
 
-<<<<<<< HEAD
-      // Helper to check if a label overlaps with selection rectangle
-      const labelOverlapsRect = (label: Label): boolean => {
-        const labelRight = label.x + label.width;
-        const labelBottom = label.y + DEFAULT_LABEL_MIN_HEIGHT;
-
-        return (
-          label.x < maxX &&
-          labelRight > minX &&
-          label.y < maxY &&
-          labelBottom > minY
-        );
-      };
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       // Find all nodes (including chained/docked nodes) that intersect with the selection rectangle
       const selectedInRect: string[] = [];
       nodes.forEach((node) => {
@@ -750,8 +610,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
         });
       });
 
-<<<<<<< HEAD
-      // Find all labels that intersect with the selection rectangle
+// Find all labels that intersect with the selection rectangle
       labels.forEach((label) => {
         if (labelOverlapsRect(label)) {
           selectedInRect.push(label.id);
@@ -763,16 +622,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
       selectedInRect.forEach((id) => {
         if (!canvasState.selectedNodes.has(id)) {
           if (onNodeAddToSelection !== undefined) {
-            onNodeAddToSelection(id);
-=======
-      // Add all selected nodes to selection
-      const {onNodeAddToSelection} = vnode.attrs;
-      selectedInRect.forEach((nodeId) => {
-        if (!canvasState.selectedNodes.has(nodeId)) {
-          if (onNodeAddToSelection !== undefined) {
-            onNodeAddToSelection(nodeId);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          }
+            onNodeAddToSelection(id);          }
         }
       });
 
@@ -797,24 +647,13 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
       }
     }
 
-<<<<<<< HEAD
-    // Check for collision and finalize drag (only for non-docked/undocked nodes)
+// Check for collision and finalize drag (only for non-docked/undocked nodes)
     if (canvasState.draggedNode !== null && !canvasState.isDockZone) {
       const {nodes = [], onNodeMove} = vnode.attrs;
       const draggedNode = nodes.find((n) => n.id === canvasState.draggedNode);
 
       // Only do overlap checking if NOT being docked
-      if (draggedNode) {
-=======
-    // Check for collision (only for non-docked nodes)
-    if (canvasState.draggedNode !== null) {
-      const {nodes = [], onNodeDrag} = vnode.attrs;
-      const draggedNode = nodes.find((n) => n.id === canvasState.draggedNode);
-
-      // Only do overlap checking if NOT being docked
-      if (draggedNode && !canvasState.isDockZone && onNodeDrag) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        // Get actual node dimensions from DOM
+      if (draggedNode) {        // Get actual node dimensions from DOM
         const dims = getNodeDimensions(draggedNode.id);
 
         // Calculate total height of the dragged node's chain
@@ -826,17 +665,10 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
 
         // Check if node (and its entire chain) overlaps with any other nodes
         if (
-<<<<<<< HEAD
-          currentDragPosition &&
+currentDragPosition &&
           checkNodeOverlap(
             currentDragPosition.x,
-            currentDragPosition.y,
-=======
-          checkNodeOverlap(
-            draggedNode.x,
-            draggedNode.y,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            draggedNode.id,
+            currentDragPosition.y,            draggedNode.id,
             nodes,
             dims.width,
             chainHeight,
@@ -844,21 +676,14 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
         ) {
           // Find nearest non-overlapping position
           const newPos = findNearestNonOverlappingPosition(
-<<<<<<< HEAD
-            currentDragPosition.x,
-            currentDragPosition.y,
-=======
-            draggedNode.x,
-            draggedNode.y,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            draggedNode.id,
+currentDragPosition.x,
+            currentDragPosition.y,            draggedNode.id,
             nodes,
             dims.width,
             chainHeight,
           );
           // Update to the non-overlapping position
-<<<<<<< HEAD
-          currentDragPosition = newPos;
+currentDragPosition = newPos;
           canvasState.tempNodePositions.set(draggedNode.id, newPos);
         }
       }
@@ -877,16 +702,11 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
             canvasState.draggedNode,
             currentDragPosition.x,
             currentDragPosition.y,
-          );
-=======
-          onNodeDrag(draggedNode.id, newPos.x, newPos.y);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+          );        }
       }
     }
 
-<<<<<<< HEAD
-    // Handle label callbacks with final values
+// Handle label callbacks with final values
     const {onLabelMove, onLabelResize} = vnode.attrs;
 
     if (canvasState.draggedLabel !== null) {
@@ -916,22 +736,14 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
 
     canvasState.draggedNode = null;
     dragStartPosition = null;
-    currentDragPosition = null;
-=======
-    canvasState.draggedNode = null;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    canvasState.connecting = null;
+    currentDragPosition = null;    canvasState.connecting = null;
     canvasState.hoveredPort = null;
     canvasState.isPanning = false;
     canvasState.dockTarget = null;
     canvasState.isDockZone = false;
     canvasState.undockCandidate = null;
-<<<<<<< HEAD
-    canvasState.undockedNode = null;
-    canvasState.tempNodePositions.clear();
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    m.redraw();
+canvasState.undockedNode = null;
+    canvasState.tempNodePositions.clear();    m.redraw();
   };
 
   // Helper to determine port type based on port index
@@ -978,8 +790,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
     nodes: ReadonlyArray<Node>,
     onConnectionRemove?: (index: number) => void,
   ) {
-<<<<<<< HEAD
-    const shortenLength = 16;
+const shortenLength = 16;
     const arrowheadLength = 4;
 
     // Cache all port positions at once for performance
@@ -1110,103 +921,14 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
           nodes,
         );
 
-        const pathData = createCurve(
-=======
-    // Clear existing paths
-    svg.innerHTML = '';
-
-    const shortenLength = 16;
-    const arrowheadLength = 4;
-
-    // Create arrow marker definition
-    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-
-    function createArrowheadMarker(
-      id: string,
-      color: string,
-    ): SVGMarkerElement {
-      const marker = document.createElementNS(
-        'http://www.w3.org/2000/svg',
-        'marker',
-      );
-      marker.setAttribute('id', id);
-      marker.setAttribute('viewBox', `0 0 ${arrowheadLength} 10`);
-      marker.setAttribute('refX', '0');
-      marker.setAttribute('refY', '5');
-      marker.setAttribute('markerWidth', `${arrowheadLength}`);
-      marker.setAttribute('markerHeight', '10');
-      marker.setAttribute('orient', 'auto');
-
-      const polygon = document.createElementNS(
-        'http://www.w3.org/2000/svg',
-        'polygon',
-      );
-      polygon.setAttribute('points', `0 2.5, ${arrowheadLength} 5, 0 7.5`);
-      polygon.setAttribute('fill', color);
-
-      marker.appendChild(polygon);
-
-      return marker;
-    }
-
-    const arrowhead = createArrowheadMarker(
-      'arrowhead',
-      'var(--pf-color-accent)',
-    );
-    defs.appendChild(arrowhead);
-
-    const arrowheadTemp = createArrowheadMarker(
-      'arrowhead-temp',
-      'var(--pf-color-text-muted)',
-    );
-    defs.appendChild(arrowheadTemp);
-
-    svg.appendChild(defs);
-
-    // Only render explicit connections (not implicit dock connections)
-    connections.forEach((conn, idx) => {
-      const from = getPortPosition(conn.fromNode, 'output', conn.fromPort);
-      const to = getPortPosition(conn.toNode, 'input', conn.toPort);
-
-      // Validate that both ports exist (return {x: 0, y: 0} if not found)
-      const fromValid = from.x !== 0 || from.y !== 0;
-      const toValid = to.x !== 0 || to.y !== 0;
-
-      if (!fromValid || !toValid) {
-        console.warn(
-          `Invalid connection: ${conn.fromNode}:${conn.fromPort} -> ${conn.toNode}:${conn.toPort}`,
-          !fromValid ? `(source port not found)` : `(target port not found)`,
-        );
-        return; // Skip rendering this connection
-      }
-
-      const path = document.createElementNS(
-        'http://www.w3.org/2000/svg',
-        'path',
-      );
-      path.setAttribute('class', 'pf-connection');
-
-      const fromPortType = getPortType(
-        conn.fromNode,
-        'output',
-        conn.fromPort,
-        nodes,
-      );
-      const toPortType = getPortType(conn.toNode, 'input', conn.toPort, nodes);
-
-      path.setAttribute(
-        'd',
-        createCurve(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          from.x,
+        const pathData = createCurve(          from.x,
           from.y,
           to.x,
           to.y,
           fromPortType,
           toPortType,
           shortenLength,
-<<<<<<< HEAD
-        );
+);
 
         const handlePointerDown = (e: PointerEvent) => {
           e.stopPropagation();
@@ -1253,52 +975,14 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
 
     // Build temp connection if connecting
     let tempConnectionPath = null;
-    if (canvasState.connecting) {
-=======
-        ),
-      );
-      path.setAttribute('marker-end', 'url(#arrowhead)');
-      path.style.pointerEvents = 'stroke';
-      path.style.cursor = 'pointer';
-
-      // Prevent canvas pan from starting when clicking connections
-      path.onpointerdown = (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-      };
-
-      path.onclick = (e) => {
-        e.stopPropagation();
-        if (onConnectionRemove !== undefined) {
-          onConnectionRemove(idx);
-        }
-      };
-      svg.appendChild(path);
-    });
-
-    // Render temp connection if connecting
-    if (canvasState.connecting) {
-      const path = document.createElementNS(
-        'http://www.w3.org/2000/svg',
-        'path',
-      );
-      path.setAttribute('class', 'pf-temp-connection');
-
-      // Convert screen coordinates to canvas content coordinates
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      const fromX = canvasState.connecting.transformedX;
+    if (canvasState.connecting) {      const fromX = canvasState.connecting.transformedX;
       const fromY = canvasState.connecting.transformedY;
       let toX = canvasState.mousePos.transformedX ?? 0;
       let toY = canvasState.mousePos.transformedY ?? 0;
 
-<<<<<<< HEAD
+// For temp connections, use the stored port type
       const fromPortType = canvasState.connecting.portType;
-=======
-      // For temp connections, use the stored port type
-      const fromPortType = canvasState.connecting.portType;
-      // The target end defaults to the opposite type for visual feedback
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      let toPortType: 'top' | 'left' | 'right' | 'bottom' =
+      // The target end defaults to the opposite type for visual feedback      let toPortType: 'top' | 'left' | 'right' | 'bottom' =
         fromPortType === 'top' || fromPortType === 'bottom' ? 'top' : 'left';
 
       if (
@@ -1307,28 +991,16 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
         canvasState.hoveredPort.type === 'input'
       ) {
         const {nodeId, portIndex, type} = canvasState.hoveredPort;
-<<<<<<< HEAD
-        const hoverPos = getPortPos(nodeId, type, portIndex);
-=======
-        const hoverPos = getPortPosition(nodeId, type, portIndex);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        if (hoverPos.x !== 0 || hoverPos.y !== 0) {
+const hoverPos = getPortPos(nodeId, type, portIndex);        if (hoverPos.x !== 0 || hoverPos.y !== 0) {
           toX = hoverPos.x;
           toY = hoverPos.y;
           toPortType = getPortType(nodeId, type, portIndex, nodes);
         }
       }
 
-<<<<<<< HEAD
-      tempConnectionPath = m('path', {
+tempConnectionPath = m('path', {
         'class': 'pf-temp-connection',
-        'd': createCurve(
-=======
-      path.setAttribute(
-        'd',
-        createCurve(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          fromX,
+        'd': createCurve(          fromX,
           fromY,
           toX,
           toY,
@@ -1336,8 +1008,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
           toPortType,
           shortenLength,
         ),
-<<<<<<< HEAD
-        'marker-end': `url(#arrowhead-${instanceId})`,
+'marker-end': `url(#arrowhead-${instanceId})`,
       });
     }
 
@@ -1349,14 +1020,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
       m('defs', [arrowheadMarker(markerId)]),
       m('g', connectionPaths),
       tempConnectionPath,
-    ]);
-=======
-      );
-      path.setAttribute('marker-end', 'url(#arrowhead-temp)');
-      svg.appendChild(path);
-    }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    ]);  }
 
   function getPortPosition(
     nodeId: string,
@@ -1370,26 +1034,16 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
         ? `[data-node="${nodeId}"] .pf-port[data-port="${portType}-${portIndex}"]`
         : `[data-node="${nodeId}"] [data-port="${portType}-${portIndex}"] .pf-port`;
 
-<<<<<<< HEAD
-    // Scope to this NodeGraph instance to avoid matching elements from other
+// Scope to this NodeGraph instance to avoid matching elements from other
     // instances (e.g. hidden tabs with the same node IDs).
     const scope = ensureExists(canvasElement);
     const portElement = scope.querySelector(selector);
-=======
-    const portElement = document.querySelector(selector);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     if (portElement) {
       const nodeElement = portElement.closest('.pf-node') as HTMLElement | null;
       if (nodeElement !== null) {
         // Check if node is in a dock chain (flexbox positioning)
         const chainContainer = nodeElement.closest(
-<<<<<<< HEAD
-          '.pf-node-wrapper',
-=======
-          '.pf-dock-chain',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        ) as HTMLElement | null;
+'.pf-node-wrapper',        ) as HTMLElement | null;
 
         let nodeLeft: number;
         let nodeTop: number;
@@ -1497,13 +1151,8 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
   }
 
   function getNodeDimensions(nodeId: string): {width: number; height: number} {
-<<<<<<< HEAD
-    const scope = ensureExists(canvasElement);
-    const nodeElement = scope.querySelector(`[data-node="${nodeId}"]`);
-=======
-    const nodeElement = document.querySelector(`[data-node="${nodeId}"]`);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    if (nodeElement) {
+const scope = ensureExists(canvasElement);
+    const nodeElement = scope.querySelector(`[data-node="${nodeId}"]`);    if (nodeElement) {
       const rect = nodeElement.getBoundingClientRect();
       // Divide by zoom to get canvas content space dimensions
       return {
@@ -1627,11 +1276,6 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
   function autoLayoutGraph(
     nodes: ReadonlyArray<Node>,
     connections: ReadonlyArray<Connection>,
-<<<<<<< HEAD
-    onNodeMove: ((nodeId: string, x: number, y: number) => void) | undefined,
-=======
-    onNodeDrag: ((nodeId: string, x: number, y: number) => void) | undefined,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   ) {
     // Build a map from any node ID (including nodes in chains) to its root node ID
     const nodeIdToRootId = new Map<string, string>();
@@ -1712,14 +1356,8 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
       let currentY = 50;
       layer.forEach((nodeId) => {
         const node = nodes.find((n) => n.id === nodeId);
-<<<<<<< HEAD
-        if (node && onNodeMove) {
-          onNodeMove(node.id, currentX, currentY);
-=======
-        if (node && onNodeDrag) {
+if (node && onNodeDrag) {
           onNodeDrag(node.id, currentX, currentY);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
           // Calculate height of entire chain
           const chain = getChain(node);
           let chainHeight = 0;
@@ -1739,8 +1377,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
     m.redraw();
   }
 
-<<<<<<< HEAD
-  function autofit(
+function autofit(
     nodes: ReadonlyArray<Node>,
     labels: ReadonlyArray<Label>,
     canvas: HTMLElement,
@@ -1770,13 +1407,6 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
       maxX = Math.max(maxX, label.x + label.width);
       maxY = Math.max(maxY, label.y + TYPICAL_LABEL_HEIGHT);
     });
-=======
-  function autofit(nodes: ReadonlyArray<Node>, canvas: HTMLElement) {
-    if (nodes.length === 0) return;
-
-    const {minX, minY, maxX, maxY} = getNodesBoundingBox(nodes, true);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     // Calculate bounding box dimensions
     const boundingWidth = maxX - minX;
     const boundingHeight = maxY - minY;
@@ -1788,12 +1418,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
     const bufferFactor = 0.9; // Use 90% of viewport to leave 10% buffer
     const zoomX = (canvasRect.width * bufferFactor) / boundingWidth;
     const zoomY = (canvasRect.height * bufferFactor) / boundingHeight;
-<<<<<<< HEAD
-    const newZoom = Math.max(0.1, Math.min(1.0, Math.min(zoomX, zoomY)));
-=======
-    const newZoom = Math.max(0.1, Math.min(5.0, Math.min(zoomX, zoomY)));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+const newZoom = Math.max(0.1, Math.min(5.0, Math.min(zoomX, zoomY)));
     // Calculate the scaled bounding box dimensions
     const scaledWidth = boundingWidth * newZoom;
     const scaledHeight = boundingHeight * newZoom;
@@ -1842,22 +1467,12 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
         x: mouseX - canvasX * newZoom,
         y: mouseY - canvasY * newZoom,
       };
-<<<<<<< HEAD
-    } else if (e.shiftKey) {
+} else if (e.shiftKey) {
       // Emulate horizontal scroll while shift held
       panBy(-e.deltaY, 0);
     } else {
       // Pan the canvas based on wheel delta
-      panBy(-e.deltaX, -e.deltaY);
-=======
-    } else {
-      // Pan the canvas based on wheel delta
-      canvasState.panOffset = {
-        x: canvasState.panOffset.x - e.deltaX,
-        y: canvasState.panOffset.y - e.deltaY,
-      };
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+      panBy(-e.deltaX, -e.deltaY);    }
 
     m.redraw();
   };
@@ -1872,11 +1487,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
       isDockTarget: boolean;
       rootNode?: Node;
       multiselect: boolean;
-<<<<<<< HEAD
-      contextMenuOnHover: boolean;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    },
+contextMenuOnHover: boolean;    },
   ): m.Vnode {
     const {
       id,
@@ -1887,8 +1498,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
       hue,
       accentBar,
       contextMenuItems,
-<<<<<<< HEAD
-      invalid,
+invalid,
       className: nodeClassName,
     } = node;
     const {
@@ -1898,13 +1508,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
       rootNode,
       multiselect,
       contextMenuOnHover,
-    } = options;
-=======
-    } = node;
-    const {isDockedChild, hasDockedChild, isDockTarget, rootNode, multiselect} =
-      options;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    const {connections = [], onConnect, nodes = []} = vnode.attrs;
+    } = options;    const {connections = [], onConnect, nodes = []} = vnode.attrs;
 
     // Separate ports by direction
     const topInputs = inputs.filter((p) => p.direction === 'top');
@@ -1918,20 +1522,15 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
       hasDockedChild && 'pf-has-docked-child',
       isDockTarget && 'pf-dock-target',
       accentBar && 'pf-node--has-accent-bar',
-<<<<<<< HEAD
-      invalid && 'pf-invalid',
-      nodeClassName,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    );
+invalid && 'pf-invalid',
+      nodeClassName,    );
 
     // Helper to render a port
     const renderPort = (
       port: NodePort,
       portIndex: number,
       portType: 'input' | 'output',
-<<<<<<< HEAD
-      forceConnected?: boolean,
+forceConnected?: boolean,
     ) => {
       const portId = `${portType}-${portIndex}`;
       const cssClass = classNames(
@@ -1939,23 +1538,12 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
         `pf-port-${port.direction}`,
         (forceConnected ||
           isPortConnected(id, portType, portIndex, connections)) &&
-          'pf-connected',
-=======
-    ) => {
-      const portId = `${portType}-${portIndex}`;
-      const cssClass = classNames(
-        'pf-port',
-        portType === 'input' ? 'pf-input' : 'pf-output',
-        `pf-port-${port.direction}`,
-        isPortConnected(id, portType, portIndex, connections) && 'pf-connected',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        canvasState.connecting &&
+          'pf-connected',        canvasState.connecting &&
           canvasState.connecting.nodeId === id &&
           canvasState.connecting.portIndex === portIndex &&
           canvasState.connecting.type === portType &&
           'pf-active',
-<<<<<<< HEAD
-        port.contextMenuItems !== undefined && 'pf-port--with-context-menu',
+port.contextMenuItems !== undefined && 'pf-port--with-context-menu',
       );
 
       const portElement = m('.pf-port', {
@@ -2018,34 +1606,15 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
               canvasState.connecting &&
               canvasState.connecting.type === 'output'
             ) {
-              // Input port receiving connection
-=======
-      );
-
-      const portElement = m(
-        `.pf-port.pf-${portType}.pf-port-${port.direction}`,
-        {
-          'data-port': portId,
-          'class': cssClass,
-          'onpointerdown': (e: PointerEvent) => {
-            e.stopPropagation();
-            if (portType === 'input') {
-              // Input port - check for existing connection
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-              const existingConnIdx = connections.findIndex(
+              // Input port receiving connection              const existingConnIdx = connections.findIndex(
                 (conn) => conn.toNode === id && conn.toPort === portIndex,
               );
               if (existingConnIdx !== -1) {
-<<<<<<< HEAD
-=======
-                const existingConn = connections[existingConnIdx];
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 const {onConnectionRemove} = vnode.attrs;
                 if (onConnectionRemove !== undefined) {
                   onConnectionRemove(existingConnIdx);
                 }
-<<<<<<< HEAD
-              }
+}
               const connection = {
                 fromNode: canvasState.connecting.nodeId,
                 fromPort: canvasState.connecting.portIndex,
@@ -2063,81 +1632,6 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
           }
         },
       });
-=======
-                const outputPos = getPortPosition(
-                  existingConn.fromNode,
-                  'output',
-                  existingConn.fromPort,
-                );
-                canvasState.connecting = {
-                  nodeId: existingConn.fromNode,
-                  portIndex: existingConn.fromPort,
-                  type: 'output',
-                  portType: getPortType(
-                    existingConn.fromNode,
-                    'output',
-                    existingConn.fromPort,
-                    nodes,
-                  ),
-                  x: 0,
-                  y: 0,
-                  transformedX: outputPos.x,
-                  transformedY: outputPos.y,
-                };
-                m.redraw();
-              }
-            } else {
-              // Output port - start connection
-              const portPos = getPortPosition(id, portType, portIndex);
-              canvasState.connecting = {
-                nodeId: id,
-                portIndex,
-                type: portType,
-                portType: port.direction,
-                x: 0,
-                y: 0,
-                transformedX: portPos.x,
-                transformedY: portPos.y,
-              };
-            }
-          },
-          'onpointerup': (e: PointerEvent) => {
-            e.stopPropagation();
-            if (portType === 'input') {
-              if (
-                canvasState.connecting &&
-                canvasState.connecting.type === 'output'
-              ) {
-                // Input port receiving connection
-                const existingConnIdx = connections.findIndex(
-                  (conn) => conn.toNode === id && conn.toPort === portIndex,
-                );
-                if (existingConnIdx !== -1) {
-                  const {onConnectionRemove} = vnode.attrs;
-                  if (onConnectionRemove !== undefined) {
-                    onConnectionRemove(existingConnIdx);
-                  }
-                }
-                const connection = {
-                  fromNode: canvasState.connecting.nodeId,
-                  fromPort: canvasState.connecting.portIndex,
-                  toNode: id,
-                  toPort: portIndex,
-                };
-                if (onConnect !== undefined) {
-                  onConnect(connection);
-                }
-                canvasState.connecting = null;
-              }
-            } else if (portType === 'output') {
-              // Clear connecting state if releasing on output port without completing connection
-              canvasState.connecting = null;
-            }
-          },
-        },
-      );
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
       // Wrap with PopupMenu if contextMenuItems exist
       if (port.contextMenuItems !== undefined) {
         return m(PopupMenu, {trigger: portElement}, port.contextMenuItems);
@@ -2145,9 +1639,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
       return portElement;
     };
 
-<<<<<<< HEAD
-=======
-    const isPositioned = (node: Node | Omit<Node, 'x' | 'y'>): node is Node => {
+const isPositioned = (node: Node | Omit<Node, 'x' | 'y'>): node is Node => {
       return (node as Node).x !== undefined && (node as Node).y !== undefined;
     };
 
@@ -2156,10 +1648,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
           left: `${node.x}px`,
           top: `${node.y}px`,
         }
-      : undefined;
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    const style = hue !== undefined ? {'--pf-node-hue': `${hue}`} : undefined;
+      : undefined;    const style = hue !== undefined ? {'--pf-node-hue': `${hue}`} : undefined;
 
     return m(
       '.pf-node',
@@ -2169,11 +1658,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
         'class': classes,
         'style': {
           ...style,
-<<<<<<< HEAD
-=======
-          ...position,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        },
+...position,        },
         'onpointerdown': (e: PointerEvent) => {
           if ((e.target as HTMLElement).closest('.pf-port')) {
             return;
@@ -2194,9 +1679,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
                 onNodeAddToSelection(id);
               }
             }
-<<<<<<< HEAD
-
-            // Focus the canvas element to ensure keyboard events (like Delete) are captured
+// Focus the canvas element to ensure keyboard events (like Delete) are captured
             if (canvasElement) {
               canvasElement.focus();
             }
@@ -2216,10 +1699,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
             // Focus the canvas for keyboard events (Delete, etc.)
             if (canvasElement) {
               canvasElement.focus();
-            }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            return;
+            }            return;
           }
 
           // Check if this is a chained node (not root)
@@ -2253,8 +1733,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
 
           canvasState.draggedNode = id;
 
-<<<<<<< HEAD
-          // Store initial drag position for batching
+// Store initial drag position for batching
           // Check if node has x,y properties (root nodes) vs docked children (no x,y)
           if ('x' in node && 'y' in node) {
             dragStartPosition = {nodeId: id, x: node.x, y: node.y};
@@ -2270,16 +1749,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
           // Focus the canvas element to ensure keyboard events (like Delete) are captured
           if (canvasElement) {
             canvasElement.focus();
-          }
-
-=======
-          const {onNodeSelect} = vnode.attrs;
-          if (onNodeSelect !== undefined) {
-            onNodeSelect(id);
-          }
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+          }          const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
           canvasState.dragOffset = {
             x: e.clientX - rect.left,
             y: e.clientY - rect.top,
@@ -2290,12 +1760,8 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
         // Render node title if it exists
         titleBar !== undefined &&
           m('.pf-node-header', [
-<<<<<<< HEAD
-            titleBar.icon !== undefined &&
-              m(Icon, {icon: titleBar.icon, className: 'pf-node-title-icon'}),
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            m('.pf-node-title', titleBar.title),
+titleBar.icon !== undefined &&
+              m(Icon, {icon: titleBar.icon, className: 'pf-node-title-icon'}),            m('.pf-node-title', titleBar.title),
             contextMenuItems !== undefined &&
               m(
                 PopupMenu,
@@ -2303,11 +1769,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
                   trigger: m(Button, {
                     rounded: true,
                     icon: Icons.ContextMenuAlt,
-<<<<<<< HEAD
-                    className: contextMenuOnHover ? 'pf-show-on-hover' : '',
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                  }),
+className: contextMenuOnHover ? 'pf-show-on-hover' : '',                  }),
                 },
                 contextMenuItems,
               ),
@@ -2318,11 +1780,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
           contextMenuItems !== undefined &&
           m(
             '.pf-node-context-menu',
-<<<<<<< HEAD
-            {className: contextMenuOnHover ? 'pf-show-on-hover' : ''},
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            m(
+{className: contextMenuOnHover ? 'pf-show-on-hover' : ''},            m(
               PopupMenu,
               {
                 trigger: m(Button, {
@@ -2335,19 +1793,11 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
           ),
 
         // Top input ports (if not docked child)
-<<<<<<< HEAD
-        topInputs.map((port) => {
-          const portIndex = inputs.indexOf(port);
-          return renderPort(port, portIndex, 'input');
-        }),
-=======
-        !isDockedChild &&
+!isDockedChild &&
           topInputs.map((port) => {
             const portIndex = inputs.indexOf(port);
             return renderPort(port, portIndex, 'input');
           }),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
         m('.pf-node-body', [
           content !== undefined &&
             m(
@@ -2386,8 +1836,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
         ]),
 
         // Bottom output ports (if no docked child below)
-<<<<<<< HEAD
-        bottomOutputs.map((port) => {
+bottomOutputs.map((port) => {
           const portIndex = outputs.indexOf(port);
           return renderPort(port, portIndex, 'output');
         }),
@@ -2518,15 +1967,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
             },
           },
           m(Icon, {icon: 'close'}),
-        ),
-=======
-        !hasDockedChild &&
-          bottomOutputs.map((port) => {
-            const portIndex = outputs.indexOf(port);
-            return renderPort(port, portIndex, 'output');
-          }),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      ],
+        ),      ],
     );
   }
 
@@ -2538,17 +1979,12 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
       document.addEventListener('pointerup', handleMouseUp);
       canvasElement.addEventListener('wheel', handleWheel, {passive: false});
 
-<<<<<<< HEAD
-      const {
+const {
         connections = [],
         nodes = [],
         onConnectionRemove,
         onReady,
       } = vnode.attrs;
-=======
-      const {connections, nodes, onConnectionRemove, onReady} = vnode.attrs;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
       // Render connections after DOM is ready
       const svg = vnode.dom.querySelector('svg');
       if (svg) {
@@ -2561,8 +1997,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
       }
 
       // Create auto-layout function that uses actual DOM dimensions
-<<<<<<< HEAD
-      autoLayoutApi = () => {
+autoLayoutApi = () => {
         const {nodes = [], connections = [], onNodeMove} = vnode.attrs;
         autoLayoutGraph(nodes, connections, onNodeMove);
       };
@@ -2578,26 +2013,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
       };
 
       // Find a non-overlapping position for a new node
-      findPlacementForNodeApi = (newNode: Omit<Node, 'x' | 'y'>): Position => {
-=======
-      const autoLayout = () => {
-        const {nodes = [], connections = [], onNodeDrag} = vnode.attrs;
-        autoLayoutGraph(nodes, connections, onNodeDrag);
-      };
-
-      // Create recenter function that brings all nodes into view
-      const recenter = () => {
-        const {nodes = []} = vnode.attrs;
-        const canvas = vnode.dom as HTMLElement;
-        autofit(nodes, canvas);
-      };
-
-      // Find a non-overlapping position for a new node
-      const findPlacementForNode = (
-        newNode: Omit<Node, 'x' | 'y'>,
-      ): Position => {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        if (latestVnode === null || canvasElement === null) {
+      findPlacementForNodeApi = (newNode: Omit<Node, 'x' | 'y'>): Position => {        if (latestVnode === null || canvasElement === null) {
           return {x: 0, y: 0};
         }
 
@@ -2625,8 +2041,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
         tempContainer.style.visibility = 'hidden';
         canvas.appendChild(tempContainer);
 
-<<<<<<< HEAD
-        // Render the node into the temporary container with animation disabled
+// Render the node into the temporary container with animation disabled
         m.render(
           tempContainer,
           m(
@@ -2667,49 +2082,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
                     ),
                 ]),
               ],
-            ),
-=======
-        // Render the node into the temporary container
-        m.render(
-          tempContainer,
-          m(
-            '.pf-node',
-            {
-              'data-node': tempNode.id,
-              'style': {
-                ...(tempNode.hue !== undefined
-                  ? {'--pf-node-hue': `${tempNode.hue}`}
-                  : {}),
-              },
-            },
-            [
-              tempNode.titleBar &&
-                m('.pf-node-header', [
-                  m('.pf-node-title', tempNode.titleBar.title),
-                ]),
-              m('.pf-node-body', [
-                tempNode.content !== undefined &&
-                  m('.pf-node-content', tempNode.content),
-                tempNode.inputs
-                  ?.filter((p) => p.direction === 'left')
-                  .map((port) =>
-                    m('.pf-port-row.pf-port-input', [
-                      m('.pf-port'),
-                      port.content,
-                    ]),
-                  ),
-                tempNode.outputs
-                  ?.filter((p) => p.direction === 'right')
-                  .map((port) =>
-                    m('.pf-port-row.pf-port-output', [
-                      port.content,
-                      m('.pf-port'),
-                    ]),
-                  ),
-              ]),
-            ],
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          ),
+            ),          ),
         );
 
         // Get dimensions from the rendered element
@@ -2728,14 +2101,8 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
 
         // Find non-overlapping position starting from center
         const finalPos = findNearestNonOverlappingPosition(
-<<<<<<< HEAD
-          centerX - dims.width / 2,
-          centerY - dims.height / 2,
-=======
-          centerX,
-          centerY,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          tempNode.id,
+centerX - dims.width / 2,
+          centerY - dims.height / 2,          tempNode.id,
           nodes,
           dims.width,
           chainHeight,
@@ -2744,8 +2111,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
         return finalPos;
       };
 
-<<<<<<< HEAD
-      // Reset zoom to 100% (1.0x) around canvas center
+// Reset zoom to 100% (1.0x) around canvas center
       resetZoom = () => {
         if (!canvasElement) return;
 
@@ -2784,28 +2150,17 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
           panBy,
           zoomBy,
           resetZoom,
-        });
-=======
-      // Provide API to parent
-      if (onReady) {
-        onReady({autoLayout, recenter, findPlacementForNode});
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      }
+        });      }
     },
 
     onupdate: (vnode: m.VnodeDOM<NodeGraphAttrs>) => {
       latestVnode = vnode;
-<<<<<<< HEAD
-      const {
+const {
         connections = [],
         nodes = [],
         onConnectionRemove,
         onReady,
       } = vnode.attrs;
-=======
-      const {connections = [], nodes = [], onConnectionRemove} = vnode.attrs;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
       // Re-render connections when component updates
       const svg = vnode.dom.querySelector('svg');
       if (svg) {
@@ -2816,9 +2171,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
           onConnectionRemove,
         );
       }
-<<<<<<< HEAD
-
-      // Call onReady after every render cycle so parent can perform
+// Call onReady after every render cycle so parent can perform
       // post-render actions like recentering
       if (
         onReady !== undefined &&
@@ -2835,10 +2188,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
           zoomBy,
           resetZoom,
         });
-      }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    },
+      }    },
 
     onremove: (vnode: m.VnodeDOM<NodeGraphAttrs>) => {
       document.removeEventListener('pointermove', handleMouseMove);
@@ -2851,14 +2201,9 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
       const {
         nodes,
         selectedNodeIds = new Set<string>(),
-<<<<<<< HEAD
+hideControls = false,
         multiselect = true,
-        contextMenuOnHover = false,
-=======
-        hideControls = false,
-        multiselect = true,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        fillHeight,
+        contextMenuOnHover = false,        fillHeight,
       } = vnode.attrs;
 
       // Sync internal state with prop
@@ -2927,22 +2272,15 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
           },
           onkeydown: (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
-<<<<<<< HEAD
-              // Deselect all nodes and labels
+// Deselect all nodes and labels
               const hasSelection = canvasState.selectedNodes.size > 0;
-              if (hasSelection) {
-=======
-              // Deselect all nodes with Escape key
-              if (canvasState.selectedNodes.size > 0) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                const {onSelectionClear} = vnode.attrs;
+              if (hasSelection) {                const {onSelectionClear} = vnode.attrs;
                 if (onSelectionClear !== undefined) {
                   onSelectionClear();
                 }
               }
             } else if (e.key === 'Delete' || e.key === 'Backspace') {
-<<<<<<< HEAD
-              const {onNodeRemove, onLabelRemove, labels = []} = vnode.attrs;
+const {onNodeRemove, onLabelRemove, labels = []} = vnode.attrs;
 
               if (canvasState.selectedNodes.size > 0) {
                 // Flatten all nodes including docked nodes (via 'next' property)
@@ -2967,21 +2305,12 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
                     onNodeRemove(id);
                   } else if (labelIds.has(id) && onLabelRemove !== undefined) {
                     onLabelRemove(id);
-                  }
-=======
-              const {onNodeRemove} = vnode.attrs;
-              if (canvasState.selectedNodes.size > 0 && onNodeRemove) {
-                // Delete all selected nodes
-                canvasState.selectedNodes.forEach((nodeId) => {
-                  onNodeRemove(nodeId);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                });
+                  }                });
               }
             }
           },
           style: {
-<<<<<<< HEAD
-            backgroundSize: (() => {
+backgroundSize: (() => {
               const minPixelSpacing = 10;
               let gridSize = 20;
               while (gridSize * canvasState.zoom < minPixelSpacing) {
@@ -3002,17 +2331,11 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
               const x = canvasState.panOffset.x - size / 2;
               const y = canvasState.panOffset.y - size / 2;
               return `${x}px ${y}px`;
-            })(),
-=======
-            backgroundSize: `${20 * canvasState.zoom}px ${20 * canvasState.zoom}px`,
-            backgroundPosition: `${canvasState.panOffset.x}px ${canvasState.panOffset.y}px`,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            ...vnode.attrs.style,
+            })(),            ...vnode.attrs.style,
           },
         },
         [
-<<<<<<< HEAD
-          (vnode.attrs.toolbarItems !== undefined ||
+(vnode.attrs.toolbarItems !== undefined ||
             !vnode.attrs.hideControls) &&
             m('.pf-nodegraph-controls', [
               vnode.attrs.toolbarItems,
@@ -3049,41 +2372,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
                   variant: ButtonVariant.Filled,
                   onclick: () => zoomBy(-0.2),
                 }),
-              ),
-=======
-          // Control buttons (can be hidden via hideControls prop)
-          !hideControls &&
-            m('.pf-nodegraph-controls', [
-              vnode.attrs.toolbarItems,
-              m(Button, {
-                label: 'Auto Layout',
-                icon: 'account_tree',
-                variant: ButtonVariant.Filled,
-                onclick: () => {
-                  const {
-                    nodes = [],
-                    connections = [],
-                    onNodeDrag,
-                  } = vnode.attrs;
-                  autoLayoutGraph(nodes, connections, onNodeDrag);
-                },
-              }),
-              m(Button, {
-                label: 'Fit to Screen',
-                icon: 'center_focus_strong',
-                variant: ButtonVariant.Filled,
-                onclick: (e: PointerEvent) => {
-                  const {nodes = []} = vnode.attrs;
-                  const canvas = (e.currentTarget as HTMLElement).closest(
-                    '.pf-canvas',
-                  );
-                  if (canvas) {
-                    autofit(nodes, canvas as HTMLElement);
-                  }
-                },
-              }),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            ]),
+              ),            ]),
 
           // Container for nodes and SVG that gets transformed
           m(
@@ -3115,8 +2404,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
                   const chain = getChain(node);
                   const isChainRoot = chain.length > 1;
 
-<<<<<<< HEAD
-                  // Check if we have a temp position for this node (during drag)
+// Check if we have a temp position for this node (during drag)
                   const tempPos = canvasState.tempNodePositions.get(id);
                   const renderPos = tempPos || {x: node.x, y: node.y};
 
@@ -3132,20 +2420,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
                         className: classNames(
                           canvasState.draggedNode === id &&
                             'pf-node-wrapper--dragging',
-                        ),
-=======
-                  // Use node's x,y directly (it's a root node)
-                  const renderPos = {x: node.x, y: node.y};
-
-                  // If this is a chain root, wrap all chain nodes in flex container
-                  if (isChainRoot) {
-                    return m(
-                      '.pf-dock-chain',
-                      {
-                        key: `chain-${id}`,
-                        style: `left: ${renderPos.x}px; top: ${renderPos.y}px; z-index: ${canvasState.draggedNode === id ? 1000 : 10}`,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                      },
+                        ),                      },
                       chain.map((chainNode) => {
                         const cIsDockedChild = 'x' in chainNode === false;
                         const cHasDockedChild = chainNode.next !== undefined;
@@ -3159,8 +2434,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
                           isDockTarget: cIsDockTarget,
                           rootNode: node,
                           multiselect,
-<<<<<<< HEAD
-                          contextMenuOnHover,
+contextMenuOnHover,
                         });
                       }),
                     );
@@ -3195,31 +2469,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
               // Render all labels
               (vnode.attrs.labels ?? []).map((label: Label) => {
                 return renderLabel(label, vnode);
-              }),
-=======
-                        });
-                      }),
-                    );
-                  }
-
-                  // Render standalone node (not part of a chain)
-                  const isDockTarget =
-                    canvasState.dockTarget === id && canvasState.isDockZone;
-
-                  // Wrap renderNode result with positioning
-                  const nodeVnode = renderNode(node, vnode, {
-                    isDockedChild: false,
-                    hasDockedChild: false,
-                    isDockTarget,
-                    rootNode: undefined,
-                    multiselect,
-                  });
-
-                  return nodeVnode;
-                })
-                .filter((vnode) => vnode !== null),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            ],
+              }),            ],
           ),
         ],
       );

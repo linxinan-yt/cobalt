@@ -731,12 +731,8 @@ zu{
             one{"i-West African CFA Franc"}
             other{"i-West African CFA francs"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             one{"Zimbabwean gold"}
             other{"Zimbabwean gold"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

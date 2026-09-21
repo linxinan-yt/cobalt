@@ -271,14 +271,7 @@ class RTCStatsCollector {
       RTCStatsReport* report) const;
   void ProduceVideoRTPStreamStats_s(Timestamp timestamp,
                                     const RtpTransceiverStatsInfo& stats,
-<<<<<<< HEAD
-                                    const Call::Stats& call_stats,
-=======
-                                    RTCStatsReport* report) const;
-  void ProduceVideoRTPStreamStats_n(Timestamp timestamp,
-                                    const RtpTransceiverStatsInfo& stats,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                                    RTCStatsReport* report) const;
+const Call::Stats& call_stats,                                    RTCStatsReport* report) const;
   // Produces `RTCTransportStats`.
   void ProduceTransportStats_s(
       Timestamp timestamp,

@@ -4,8 +4,7 @@
 kok_Latn{
     %%Parent{"root"}
     Countries{
-<<<<<<< HEAD
-        001{"sonvsar"}
+001{"sonvsar"}
         002{"Afrika"}
         003{"Ut’tor Amerika"}
         005{"Dokxinn Amerika"}
@@ -304,20 +303,5 @@ kok_Latn{
     }
     Countries%variant{
         NZ{"Aoteroa"}
-        TL{"Udent Timor"}
-=======
-        CN{"Chin"}
-        CY{"Siprus"}
-        DE{"Jermon"}
-        EG{"Ejipt"}
-        ES{"Ispania"}
-        FR{"Frans"}
-        GR{"Gres"}
-        IN{"Bharot"}
-        IT{"Italia"}
-        LY{"Libia"}
-        MK{"Ut’tor Masedonia"}
-        RU{"Roxya"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        TL{"Udent Timor"}    }
 }

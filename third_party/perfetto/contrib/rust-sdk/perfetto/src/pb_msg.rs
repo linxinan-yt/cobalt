@@ -41,15 +41,10 @@ impl PbMsgWriter {
     pub fn new() -> Self {
         Self::default()
     }
-<<<<<<< HEAD
-
-    /// Returns reference to internal stream writer.
+/// Returns reference to internal stream writer.
     pub fn stream_writer(&self) -> &StreamWriter {
         &self.writer
-    }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+    }}
 
 // The number of bytes reserved by this implementation to encode a protobuf type
 // 2 field size as var-int. Keep this in sync with kMessageLengthFieldSize in

@@ -25,11 +25,7 @@ interface CommandTestCase {
   traceFile?: string;
   before?: () => Promise<void>;
   after?: () => Promise<void>;
-<<<<<<< HEAD
-=======
-  maskQueryDetails?: boolean;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  testName?: string; // Optional custom test name for unique identification
+maskQueryDetails?: boolean;  testName?: string; // Optional custom test name for unique identification
 }
 
 // Test cases for each startup command

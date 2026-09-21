@@ -1574,12 +1574,7 @@ dsb{
             }
         }
         concentr{
-<<<<<<< HEAD
-            part-per-1e9{
-=======
-            portion-per-1e9{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                dnam{"n"}
+portion-per-1e9{                dnam{"n"}
                 few{"{0} n"}
                 one{"{0} n"}
                 other{"{0} n"}

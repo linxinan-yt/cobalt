@@ -518,8 +518,7 @@ typedef enum UScriptCode {
       /** @stable ICU 76 */
       USCRIPT_TULU_TIGALARI                 = 207, /* Tutg */
 
-<<<<<<< HEAD
-      /** @stable ICU 78 */
+/** @stable ICU 78 */
       USCRIPT_BERIA_ERFE                    = 208, /* Berf */
       /** @stable ICU 78 */
       USCRIPT_SIDETIC                       = 209, /* Sidt */
@@ -528,23 +527,14 @@ typedef enum UScriptCode {
       /** @stable ICU 78 */
       USCRIPT_TOLONG_SIKI                   = 211, /* Tols */
       /** @stable ICU 78 */
-      USCRIPT_TRADITIONAL_HAN_WITH_LATIN    = 212, /* Hntl */
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#ifndef U_HIDE_DEPRECATED_API
+      USCRIPT_TRADITIONAL_HAN_WITH_LATIN    = 212, /* Hntl */#ifndef U_HIDE_DEPRECATED_API
     /**
      * One more than the highest normal UScriptCode value.
      * The highest value is available via u_getIntPropertyMaxValue(UCHAR_SCRIPT).
      *
      * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
      */
-<<<<<<< HEAD
-    USCRIPT_CODE_LIMIT    = 213
-=======
-    USCRIPT_CODE_LIMIT    = 208
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#endif  // U_HIDE_DEPRECATED_API
+USCRIPT_CODE_LIMIT    = 213#endif  // U_HIDE_DEPRECATED_API
 } UScriptCode;
 
 /**

@@ -1383,9 +1383,7 @@ gl{
                 "[\\: ∶]",
             }
         }
-<<<<<<< HEAD
-=======
-        general{
+general{
             lenient{
                 "[.．․﹒ 。｡︒]",
                 "['＇’ ՚ ᾽᾿ ʼ]",
@@ -1397,9 +1395,7 @@ gl{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        number{
+        }        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ، ٫ 、﹑､︑]",

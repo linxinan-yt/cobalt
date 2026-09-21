@@ -327,13 +327,7 @@ void MediaDevicesDispatcherHost::CloseFocusWindowOfOpportunity(
 void MediaDevicesDispatcherHost::ProduceSubCaptureTargetId(
     media::mojom::SubCaptureTargetType type,
     ProduceSubCaptureTargetIdCallback callback) {
-<<<<<<< HEAD
-  CHECK_CURRENTLY_ON(BrowserThread::IO, base::NotFatalUntil::M152);
-=======
-#if BUILDFLAG(ENABLE_SCREEN_CAPTURE)
-  DCHECK_CURRENTLY_ON(BrowserThread::IO);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+CHECK_CURRENTLY_ON(BrowserThread::IO, base::NotFatalUntil::M152);
   GetUIThreadTaskRunner({})->PostTaskAndReplyWithResult(
       FROM_HERE,
       base::BindOnce(

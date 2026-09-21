@@ -12,18 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/aggregation_node.scss
-@use "../common" as *;
-
-.pf-aggregation-node-details {
-  padding-top: 5px;
-  font-size: var(--pf-font-size-s);
-=======
 @import "../common";
 
 .pf-aggregation-node-details {
   padding-top: 5px;
   font-size: var(--pf-exp-font-size-sm);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/aggregation_node.scss
   color: var(--pf-color-text-lighter);
 }

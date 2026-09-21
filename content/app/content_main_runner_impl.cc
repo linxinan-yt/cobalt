@@ -286,14 +286,9 @@ void LoadV8SnapshotFile(const base::CommandLine& command_line) {
 
 #if defined(ADDRESS_SANITIZER)
 NO_SANITIZE("address")
-<<<<<<< HEAD
 void AsanProcessInfoCB(const char* reason,
                        bool* should_exit_cleanly,
-                       bool* should_abort) {
-=======
-void AsanProcessInfoCB(const char*, bool*) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  auto* cmd_line = base::CommandLine::ForCurrentProcess();
+                       bool* should_abort) {  auto* cmd_line = base::CommandLine::ForCurrentProcess();
 #if BUILDFLAG(IS_WIN)
   std::string cmd_string = base::WideToUTF8(cmd_line->GetCommandLineString());
 #else
@@ -301,18 +296,6 @@ void AsanProcessInfoCB(const char*, bool*) {
 #endif
   base::debug::AsanService::GetInstance()->Log("\nCommand line: `%s`\n",
                                                cmd_string.c_str());
-<<<<<<< HEAD
-=======
-}
-#endif  // defined(ADDRESS_SANITIZER)
-
-void LoadV8SnapshotIfNeeded(const base::CommandLine& command_line,
-                            const std::string& process_type) {
-#if defined(V8_USE_EXTERNAL_STARTUP_DATA)
-  if (ShouldLoadV8Snapshot(command_line, process_type))
-    LoadV8SnapshotFile(command_line);
-#endif  // V8_USE_EXTERNAL_STARTUP_DATA
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 #endif  // defined(ADDRESS_SANITIZER)
 

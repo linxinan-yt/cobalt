@@ -15,7 +15,6 @@
 import m from 'mithril';
 import {parseAndPrintTree} from '../../../base/perfetto_sql_lang/language';
 import {Editor} from '../../../widgets/editor';
-<<<<<<< HEAD
 import {EnumOption, renderWidgetShowcase} from '../widgets_page_utils';
 import {CodeSnippet} from '../../../widgets/code_snippet';
 
@@ -66,50 +65,13 @@ class EditorDemo implements m.ClassComponent {
             text: `m(Editor, {
   language: 'perfetto-sql',
   fillHeight: true,
-  readonly: false,
-=======
-import {renderWidgetShowcase} from '../widgets_page_utils';
-import {CodeSnippet} from '../../../widgets/code_snippet';
-
-export function renderEditor(): m.Children {
-  return [
-    m(
-      '.pf-widget-intro',
-      m('h1', 'Editor'),
-      m('p', [
-        'A code editor component with syntax highlighting, powered by CodeMirror. ',
-        'Supports basic Perfetto SQL syntax highlighting.',
-      ]),
-    ),
-
-    renderWidgetShowcase({
-      renderWidget: () =>
-        m(Editor, {
-          language: 'perfetto-sql',
-          fillHeight: true,
-          onUpdate: (text) => {
-            parseAndPrintTree(text);
-          },
-        }),
-    }),
-
-    m('.pf-widget-doc-section', [
-      m('h2', 'Basic Usage'),
-      m(
-        'p',
-        m(CodeSnippet, {
-          text: `m(Editor, {
-  language: 'perfetto-sql',  // or 'sql', 'typescript', etc.
-  fillHeight: true,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  initialText: 'SELECT * FROM slice',
+  readonly: false,  initialText: 'SELECT * FROM slice',
   onUpdate: (text) => {
     // Handle text changes
     console.log('Editor content:', text);
   },
 })`,
-<<<<<<< HEAD
-            language: 'typescript',
+language: 'typescript',
           }),
         ),
       ]),
@@ -132,26 +94,4 @@ export function renderEditor(): m.Children {
 }
 
 export function renderEditor(): m.Children {
-  return m(EditorDemo);
-=======
-          language: 'typescript',
-        }),
-      ),
-    ]),
-
-    m('.pf-widget-doc-section', [
-      m('h2', 'Key Features'),
-      m('ul', [
-        m('li', [
-          m('strong', 'Syntax Highlighting: '),
-          'Language-specific syntax highlighting for Perfetto SQL',
-        ]),
-        m('li', [
-          m('strong', 'Keyboard Shortcuts: '),
-          'Standard editor shortcuts (Ctrl+Z for undo, Ctrl+F for find, Ctrl+Enter to execute, etc.)',
-        ]),
-      ]),
-    ]),
-  ];
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  return m(EditorDemo);}

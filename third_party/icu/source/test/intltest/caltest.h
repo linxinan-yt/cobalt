@@ -363,11 +363,7 @@ public: // package
 
     void TestChineseCalendarComputeMonthStart();
     void Test22633HebrewLargeNegativeDay();
-<<<<<<< HEAD
-    void Test23069HebrewHanukkah();
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+void Test23069HebrewHanukkah();
     void RunChineseCalendarInTemporalLeapYearTest(Calendar* cal);
     void RunIslamicCalendarInTemporalLeapYearTest(Calendar* cal);
     void Run366DaysIsLeapYearCalendarInTemporalLeapYearTest(Calendar* cal);

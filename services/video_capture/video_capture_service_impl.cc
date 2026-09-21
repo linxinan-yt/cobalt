@@ -12,15 +12,9 @@
 #include "base/task/single_thread_task_runner.h"
 #include "base/task/thread_pool.h"
 #include "build/build_config.h"
-<<<<<<< HEAD
 #include "gpu/config/gpu_driver_bug_workarounds.h"
 #include "gpu/ipc/client/gpu_channel_observer.h"
-#include "media/capture/video/create_video_capture_device_factory.h"
-=======
-#include "gpu/ipc/client/client_shared_image_interface.h"
-#include "media/capture/video/fake_video_capture_device_factory.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "media/capture/video/video_capture_buffer_pool.h"
+#include "media/capture/video/create_video_capture_device_factory.h"#include "media/capture/video/video_capture_buffer_pool.h"
 #include "media/capture/video/video_capture_buffer_tracker.h"
 #include "media/capture/video/video_capture_system_impl.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
@@ -459,7 +453,11 @@ void VideoCaptureServiceImpl::LazyInitializeDeviceFactory() {
   // The task runner passed to CreateFactory is used for things that need to
   // happen on a "UI thread equivalent", e.g. obtaining screen rotation on
   // Chrome OS.
-<<<<<<< HEAD
+#if BUILDFLAG(IS_COBALT)
+  // Cobalt doesn't support media capture.
+  std::unique_ptr<media::VideoCaptureDeviceFactory> media_device_factory =
+      nullptr;
+#else   // BUILDFLAG(IS_COBALT)
   gpu::GpuDriverBugWorkarounds* gpu_workarounds_ptr = nullptr;
 #if BUILDFLAG(ENABLE_GPU_CHANNEL_MEDIA_CAPTURE)
   gpu::GpuDriverBugWorkarounds gpu_workarounds;
@@ -480,17 +478,7 @@ void VideoCaptureServiceImpl::LazyInitializeDeviceFactory() {
   std::unique_ptr<media::VideoCaptureDeviceFactory> media_device_factory =
       media::CreateVideoCaptureDeviceFactory(ui_task_runner_,
                                              gpu_workarounds_ptr);
-=======
-#if BUILDFLAG(IS_COBALT)
-  // Cobalt doesn't support media capture.
-  std::unique_ptr<media::VideoCaptureDeviceFactory> media_device_factory =
-      nullptr;
-#else   // BUILDFLAG(IS_COBALT)
-  std::unique_ptr<media::VideoCaptureDeviceFactory> media_device_factory =
-      media::CreateVideoCaptureDeviceFactory(ui_task_runner_);
 #endif  // BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   auto video_capture_system = std::make_unique<media::VideoCaptureSystemImpl>(
       std::move(media_device_factory));
 

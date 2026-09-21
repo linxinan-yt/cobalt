@@ -276,13 +276,9 @@ ne{
                 other{"{0} न्यानोसेकेन्ड"}
             }
             night{
-<<<<<<< HEAD
-=======
-                dnam{"रात"}
+dnam{"रात"}
                 one{"{0} रात"}
-                other{"{0} रात"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                per{"{0} प्रति रात"}
+                other{"{0} रात"}                per{"{0} प्रति रात"}
             }
             quarter{
                 dnam{"क्वाटर"}
@@ -946,17 +942,6 @@ ne{
                 one{"{0}‰"}
                 other{"{0}‰"}
             }
-<<<<<<< HEAD
-=======
-            permillion{
-                one{"{0}ppm"}
-                other{"{0}ppm"}
-            }
-            portion-per-1e9{
-                one{"{0}ppb"}
-                other{"{0}ppb"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         consumption{
             liter-per-kilometer{
@@ -1028,16 +1013,10 @@ ne{
                 other{"{0}मि.से."}
             }
             night{
-<<<<<<< HEAD
+dnam{"रात"}
                 one{"{0}रात"}
                 other{"{0}रात"}
-=======
-                dnam{"रात"}
-                one{"{0}रात"}
-                other{"{0}रात"}
-                per{"{0}/रात"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/रात"}            }
             quarter{
                 per{"{0} /q"}
             }
@@ -1281,9 +1260,7 @@ ne{
                 one{"{0} km/h"}
                 other{"{0} km/h"}
             }
-<<<<<<< HEAD
-=======
-            light-speed{
+light-speed{
                 dnam{"प्रकाश"}
                 one{"{0}प्रकाश"}
                 other{"{0}प्रकाशा"}
@@ -1291,9 +1268,7 @@ ne{
             mile-per-hour{
                 one{"{0} mi/h"}
                 other{"{0} mi/h"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            }        }
         temperature{
             celsius{
                 dnam{"°से"}

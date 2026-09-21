@@ -17,23 +17,16 @@
 #ifndef SRC_TRACE_PROCESSOR_UTIL_ARGS_UTILS_H_
 #define SRC_TRACE_PROCESSOR_UTIL_ARGS_UTILS_H_
 
-<<<<<<< HEAD
 #include <cstddef>
 #include <cstdint>
 #include <limits>
 #include <memory>
 #include <optional>
 #include <string>
-#include <string_view>
-=======
-#include <memory>
-#include <string>
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include <utility>
+#include <string_view>#include <utility>
 #include <vector>
 
 #include "perfetto/base/status.h"
-<<<<<<< HEAD
 #include "perfetto/ext/base/flat_hash_map.h"
 #include "src/trace_processor/containers/null_term_string_view.h"
 #include "src/trace_processor/containers/string_pool.h"
@@ -43,13 +36,6 @@
 #include "src/trace_processor/types/variadic.h"
 
 namespace perfetto::trace_processor {
-=======
-#include "src/trace_processor/types/variadic.h"
-
-namespace perfetto::trace_processor {
-class TraceStorage;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 class ArgSet;
 
 class ArgNode {
@@ -112,7 +98,6 @@ class ArgSet {
   ArgNode root_;
 };
 
-<<<<<<< HEAD
 // A reusable cursor for looking up args by arg_set_id and key.
 // This avoids creating a new cursor for each lookup.
 class ArgExtractor {
@@ -214,10 +199,6 @@ inline Variadic GetArgValue(const TraceStorage& storage, uint32_t row_index) {
       break;
   }
   return v;
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}  // namespace perfetto::trace_processor
+}}  // namespace perfetto::trace_processor
 
 #endif  // SRC_TRACE_PROCESSOR_UTIL_ARGS_UTILS_H_

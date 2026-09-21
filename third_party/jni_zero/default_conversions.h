@@ -17,14 +17,8 @@
 
 namespace jni_zero {
 
-<<<<<<< HEAD
 // Conversion from a Java object to a std::optional.
-// A null Java reference results in std::nullopt.
-=======
-#if defined(__cpp_concepts) && __cpp_concepts >= 201907L
-// Allow conversions using std::optional by wrapping non-optional conversions.
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-template <internal::IsOptional T>
+// A null Java reference results in std::nullopt.template <internal::IsOptional T>
 inline T FromJniType(JNIEnv* env, const JavaRef<jobject>& j_object) {
   if (!j_object) {
     return std::nullopt;

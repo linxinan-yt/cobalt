@@ -183,12 +183,7 @@ std::optional<UniqueTid> GenericKernelParser::GetUtidForState(int64_t ts,
         is_invalid_order |= state == TaskStateEnum::TASK_STATE_RUNNING &&
                             prev_state_id == running_string_id_;
         if (is_invalid_order) {
-<<<<<<< HEAD
-          context_->stats_tracker->IncrementStats(
-=======
-          context_->storage->IncrementStats(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-              stats::generic_task_state_invalid_order);
+context_->stats_tracker->IncrementStats(              stats::generic_task_state_invalid_order);
           return std::nullopt;
         }
         utid = *utid_opt;

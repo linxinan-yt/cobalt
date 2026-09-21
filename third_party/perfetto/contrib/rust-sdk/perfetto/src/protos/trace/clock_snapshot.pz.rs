@@ -32,20 +32,11 @@ pb_enum!(ClockBuiltinClocks {
 });
 
 pb_msg!(ClockSnapshot {
-<<<<<<< HEAD
-    clocks: ClockSnapshotClock, msg, 1,
+clocks: ClockSnapshotClock, msg, 1,
     primary_trace_clock: BuiltinClock, enum, 2,
 });
 
-pb_msg!(ClockSnapshotClock {
-=======
-    clocks: Clock, msg, 1,
-    primary_trace_clock: BuiltinClock, enum, 2,
-});
-
-pb_msg!(Clock {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    clock_id: u32, primitive, 1,
+pb_msg!(ClockSnapshotClock {    clock_id: u32, primitive, 1,
     timestamp: u64, primitive, 2,
     is_incremental: bool, primitive, 3,
     unit_multiplier_ns: u64, primitive, 4,

@@ -8,34 +8,18 @@ ak{
         collation{"Nyiyie Kwan"}
         currency{"Sika"}
         hc{"Dɔnhwere Nkɔmmaeɛ (12 anaa 24)"}
-<<<<<<< HEAD
-        lb{"Line Break Nhyehyɛeɛ Ketee"}
+lb{"Line Break Nhyehyɛeɛ"}
         ms{"Nsusudeɛ Sestɛm"}
-        numbers{"Nɔma"}
-=======
-        lb{"Line Break Nhyehyɛeɛ"}
-        ms{"Nsusudeɛ Sestɛm"}
-        numbers{"Nɛma"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        numbers{"Nɛma"}    }
     Languages{
         af{"Afrikaans"}
         ak{"Akan"}
-<<<<<<< HEAD
-        am{"Amariki"}
-=======
-        am{"Amarik"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        ar{"Arabeke"}
+am{"Amariki"}        ar{"Arabeke"}
         ar_001{"Arabeke Kasa Nhyehyɛeɛ Foforɔ"}
         as{"Asamese"}
         ast{"Asturiani"}
         az{"Asabegyanni"}
-<<<<<<< HEAD
-        bal{"Balukyi"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        be{"Belarus kasa"}
+bal{"Balukyi"}        be{"Belarus kasa"}
         bg{"Bɔlgeria kasa"}
         bgc{"Harianvi"}
         bho{"Bopuri"}
@@ -57,21 +41,13 @@ ak{
         de_CH{"Swisalande Gyaaman"}
         doi{"Dɔgri"}
         dsb{"Sɔɔbia a ɛwɔ fam"}
-<<<<<<< HEAD
-        ee{"Ayigbe"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        el{"Greek kasa"}
+ee{"Ayigbe"}        el{"Greek kasa"}
         en{"Borɔfo"}
         en_GB{"Ngresi Borɔfo"}
         en_US{"Amɛrika Borɔfo"}
         eo{"Esperanto"}
         es{"Spain kasa"}
-<<<<<<< HEAD
-=======
-        es_419{"Spain kasa (Laaten Amɛrika)"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        et{"Estonia kasa"}
+es_419{"Spain kasa (Laaten Amɛrika)"}        et{"Estonia kasa"}
         eu{"Baske"}
         fa{"Pɛɛhyia kasa"}
         ff{"Fula kasa"}
@@ -286,21 +262,13 @@ ak{
             islamic-civil{"Higyiri Kalɛnda (tabula, sivil epokyi"}
             islamic-umalqura{"Higyiri Kalɛnda (Ummm al-Kura)"}
             iso8601{"ISO-8601 Kalɛnna"}
-<<<<<<< HEAD
-            japanese{"Gyapanfoɔ Kalɛnna"}
+japanese{"Gyapanfoɔ Kalɛnna"}
             persian{"Pɛɛsiafoɔ Kalɛnda"}
             roc{"Minguo Kalɛnda"}
         }
         calendar%core{
             gregorian{"Gregorian"}
-        }
-=======
-            japanese{"Gyapanfoɔ Kalɛnda"}
-            persian{"Pɛɛsiafoɔ Kalɛnda"}
-            roc{"Minguo Kalɛnda"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        cf{
+        }        cf{
             account{"Sika Nkotabuo Fɔmate"}
             standard{"Sika Fɔmate Susudua"}
         }
@@ -309,19 +277,12 @@ ak{
             search{"Daa-Botaeɛ Adehwehwɛ"}
             standard{"Nyiyie Kwan Susudua"}
         }
-<<<<<<< HEAD
-        collation%core{
+collation%core{
             standard{"Susudua"}
         }
         hc{
             h11{"Nnɔnhwere 12 Sestɛm (0–11)"}
-            h12{"Nnɔnhwere 12 Sestɛm (1–12)"}
-=======
-        hc{
-            h11{"Nnɔnhwere 12 Sestɛm (0–11)"}
-            h12{"Nnɔnhwere 12 Sestɛm (1–12"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            h23{"Nnɔnhwere 24 Sestɛm (0–23)"}
+            h12{"Nnɔnhwere 12 Sestɛm (1–12)"}            h23{"Nnɔnhwere 24 Sestɛm (0–23)"}
             h24{"Nnɔnhwere 24 Sestɛm (0–24)"}
         }
         lb{
@@ -381,11 +342,7 @@ ak{
         compatibility{"{0} — kɔmpatebiliti"}
         enclosed{"{0} — ɛnkloso"}
         extended{"{0} — ɛstɛndɛde"}
-<<<<<<< HEAD
-=======
-        facing-left{"{0} rehwɛ bɛnkum"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        facing-right{"{0} rehwɛ nifa"}
+facing-left{"{0} rehwɛ bɛnkum"}        facing-right{"{0} rehwɛ nifa"}
         historic{"{0} — histɔrike"}
         miscellaneous{"{0} — mɛsɛleniɔso"}
         other{"{0} — afoforɔ"}

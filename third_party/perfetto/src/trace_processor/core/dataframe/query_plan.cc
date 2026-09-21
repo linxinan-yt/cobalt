@@ -1491,14 +1491,7 @@ void QueryPlanBuilder::AddLinearFilterEqBytecode(
 
 template <typename T>
 T& QueryPlanBuilder::AddOpcode(RowCountModifier rc) {
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/core/dataframe/query_plan.cc
-  return AddOpcode<T>(i::Index<T>(), rc, T::kCost);
-}
-
-}  // namespace perfetto::trace_processor::core::dataframe
-=======
   return AddOpcode<T>(bytecode::Index<T>(), rc, T::kCost);
 }
 
 }  // namespace perfetto::trace_processor::dataframe::impl
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/dataframe/impl/query_plan.cc

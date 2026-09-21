@@ -12,11 +12,6 @@ ur{
                 "<<\u0651<<\u0658<<\u0653"
                 "&[last tertiary ignorable]<<<\u0610<<<\u0611<<<\u0613<<<\u0612<<<\u0614"
             }
-<<<<<<< HEAD
-            Version{"48"}
-=======
-            Version{"47"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+Version{"48"}        }
     }
 }

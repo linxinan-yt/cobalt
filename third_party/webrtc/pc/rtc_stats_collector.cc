@@ -1876,15 +1876,8 @@ void RTCStatsCollector::ProduceRTPStreamStats_s(
     }
 
     if (stats.media_type == MediaType::AUDIO) {
-<<<<<<< HEAD
-      ProduceAudioRTPStreamStats_s(timestamp, stats, call_stats,
-                                   audio_device_stats, report);
-=======
-      ProduceAudioRTPStreamStats_n(timestamp, stats, report);
-    } else if (stats.media_type == MediaType::VIDEO) {
-      ProduceVideoRTPStreamStats_n(timestamp, stats, report);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    } else {
+ProduceAudioRTPStreamStats_s(timestamp, stats, call_stats,
+                                   audio_device_stats, report);    } else {
       RTC_DCHECK_EQ(stats.media_type, MediaType::VIDEO);
       ProduceVideoRTPStreamStats_s(timestamp, stats, call_stats, report);
     }
@@ -1894,12 +1887,8 @@ void RTCStatsCollector::ProduceRTPStreamStats_s(
 void RTCStatsCollector::ProduceAudioRTPStreamStats_s(
     Timestamp timestamp,
     const RtpTransceiverStatsInfo& stats,
-<<<<<<< HEAD
-    const Call::Stats& call_stats,
-    const std::optional<AudioDeviceModule::Stats>& audio_device_stats,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    RTCStatsReport* report) const {
+const Call::Stats& call_stats,
+    const std::optional<AudioDeviceModule::Stats>& audio_device_stats,    RTCStatsReport* report) const {
   RTC_DCHECK_RUN_ON(signaling_thread_);
   RTC_DCHECK(stats.mid);
   RTC_DCHECK(stats.transport_name);
@@ -1930,16 +1919,9 @@ void RTCStatsCollector::ProduceAudioRTPStreamStats_s(
     // Inbound.
     std::unique_ptr<RTCInboundRtpStreamStats> inbound_audio =
         CreateInboundAudioStreamStats(
-<<<<<<< HEAD
-            *stats.track_media_info_map->voice_media_info(),
+*stats.track_media_info_map->voice_media_info(),
             voice_receiver_info, transport_id, mid, timestamp, report);
-    AppendCallStats(call_stats, *inbound_audio);
-=======
-            *stats.track_media_info_map.voice_media_info(), voice_receiver_info,
-            transport_id, mid, timestamp, report);
-    AppendCallStats(call_stats_, *inbound_audio);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    // TODO(hta): This lookup should look for the sender, not the track.
+    AppendCallStats(call_stats, *inbound_audio);    // TODO(hta): This lookup should look for the sender, not the track.
     auto track_id = stats.track_media_info_map->GetReceiverTrackIdBySsrc(
         voice_receiver_info.ssrc(), MediaType::AUDIO);
     if (track_id.has_value()) {
@@ -2017,12 +1999,7 @@ void RTCStatsCollector::ProduceAudioRTPStreamStats_s(
     for (const auto& report_block_data : voice_sender_info.report_block_datas) {
       report->AddStats(ProduceRemoteInboundRtpStreamStats(
           transport_id, report_block_data, MediaType::AUDIO,
-<<<<<<< HEAD
-          audio_outbound_rtps, *report, call_stats,
-=======
-          audio_outbound_rtps, *report, call_stats_,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          stats_timestamp_with_environment_clock_));
+audio_outbound_rtps, *report, call_stats,          stats_timestamp_with_environment_clock_));
     }
   }
 }
@@ -2030,11 +2007,7 @@ void RTCStatsCollector::ProduceAudioRTPStreamStats_s(
 void RTCStatsCollector::ProduceVideoRTPStreamStats_s(
     Timestamp timestamp,
     const RtpTransceiverStatsInfo& stats,
-<<<<<<< HEAD
-    const Call::Stats& call_stats,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    RTCStatsReport* report) const {
+const Call::Stats& call_stats,    RTCStatsReport* report) const {
   RTC_DCHECK_RUN_ON(signaling_thread_);
   RTC_DCHECK(stats.mid);
   RTC_DCHECK(stats.transport_name);
@@ -2062,24 +2035,13 @@ void RTCStatsCollector::ProduceVideoRTPStreamStats_s(
     }
     std::unique_ptr<RTCInboundRtpStreamStats> inbound_video =
         CreateInboundRTPStreamStatsFromVideoReceiverInfo(
-<<<<<<< HEAD
-            transport_id, mid, *stats.track_media_info_map->video_media_info(),
+transport_id, mid, *stats.track_media_info_map->video_media_info(),
             video_receiver_info, timestamp, report);
     AppendCallStats(call_stats, *inbound_video);
     auto track_id = stats.track_media_info_map->GetReceiverTrackIdBySsrc(
         video_receiver_info.ssrc(), MediaType::VIDEO);
     if (track_id.has_value()) {
-      inbound_video->track_identifier = *track_id;
-=======
-            transport_id, mid, *stats.track_media_info_map.video_media_info(),
-            video_receiver_info, timestamp, report);
-    AppendCallStats(call_stats_, *inbound_video);
-    scoped_refptr<VideoTrackInterface> video_track =
-        stats.track_media_info_map.GetVideoTrack(video_receiver_info);
-    if (video_track) {
-      inbound_video->track_identifier = video_track->id();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+      inbound_video->track_identifier = *track_id;    }
     auto* inbound_video_ptr = report->TryAddStats(std::move(inbound_video));
     if (!inbound_video_ptr) {
       RTC_LOG(LS_ERROR)
@@ -2146,12 +2108,7 @@ void RTCStatsCollector::ProduceVideoRTPStreamStats_s(
     for (const auto& report_block_data : video_sender_info.report_block_datas) {
       report->AddStats(ProduceRemoteInboundRtpStreamStats(
           transport_id, report_block_data, MediaType::VIDEO,
-<<<<<<< HEAD
-          video_outbound_rtps, *report, call_stats,
-=======
-          video_outbound_rtps, *report, call_stats_,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          stats_timestamp_with_environment_clock_));
+video_outbound_rtps, *report, call_stats,          stats_timestamp_with_environment_clock_));
     }
   }
 }

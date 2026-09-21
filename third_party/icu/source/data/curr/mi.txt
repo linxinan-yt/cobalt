@@ -1107,11 +1107,7 @@ mi{
         ZMW{
             other{"kwacha Tāmipia"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             other{"Kino Tāone o Timuwawe"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

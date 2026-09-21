@@ -71,15 +71,9 @@ template("wasm_lib") {
       "-s",
       "STACK_SIZE=2MB",
       "-s",
-<<<<<<< HEAD
-
-      # Required for the Module.instantiateWasm hook used by
+# Required for the Module.instantiateWasm hook used by
       # wasm_engine_proxy.ts to share a precompiled Module across workers.
-      "WASM_ASYNC_COMPILATION=1",
-=======
-      "WASM_ASYNC_COMPILATION=0",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      "-s",
+      "WASM_ASYNC_COMPILATION=1",      "-s",
       "EXPORTED_RUNTIME_METHODS=" + _exports,
 
       # Reduces global namespace pollution.

@@ -178,13 +178,9 @@ sw{
                 other{"millisekunde {0}"}
             }
             night{
-<<<<<<< HEAD
-=======
-                dnam{"usiku"}
+dnam{"usiku"}
                 one{"usiku {0}"}
-                other{"usiku {0}"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                per{"{0} kila usiku"}
+                other{"usiku {0}"}                per{"{0} kila usiku"}
             }
         }
         electric{
@@ -659,12 +655,7 @@ sw{
             part-per-1e6{
                 dnam{"ppm"}
             }
-<<<<<<< HEAD
-            part-per-1e9{
-=======
-            portion-per-1e9{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                dnam{"sehemu kwa kila bilioni"}
+part-per-1e9{                dnam{"sehemu kwa kila bilioni"}
             }
         }
         consumption{

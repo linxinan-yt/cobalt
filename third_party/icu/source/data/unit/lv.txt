@@ -1511,18 +1511,11 @@ lv{
                         zero{"{0} nakšu"}
                     }
                 }
-<<<<<<< HEAD
+dnam{"naktis"}
                 gender{"feminine"}
                 one{"{0} nakts"}
                 other{"{0} naktis"}
-=======
-                dnam{"naktis"}
-                gender{"feminine"}
-                one{"{0} nakts"}
-                other{"{0} naktis"}
-                per{"{0}/nakts"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                zero{"{0} nakšu"}
+                per{"{0}/nakts"}                zero{"{0} nakšu"}
             }
             quarter{
                 case{
@@ -3427,11 +3420,7 @@ lv{
                         zero{"{0} gaismas"}
                     }
                 }
-<<<<<<< HEAD
-=======
-                dnam{"gaisma"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                gender{"feminine"}
+dnam{"gaisma"}                gender{"feminine"}
                 one{"{0} gaisma"}
                 other{"{0} gaismas"}
                 zero{"{0} gaismas"}
@@ -4111,8 +4100,7 @@ lv{
             }
         }
         concentr{
-<<<<<<< HEAD
-            ofglucose{
+ofglucose{
                 dnam{"Glc"}
                 one{"{0} Glc"}
                 other{"{0} Glc"}
@@ -4122,12 +4110,7 @@ lv{
                 dnam{"daļa"}
                 one{"{0} daļa"}
                 other{"{0} daļa"}
-                zero{"{0} daļu"}
-=======
-            portion-per-1e9{
-                dnam{"miljarddaļas"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                zero{"{0} daļu"}            }
         }
         duration{
             hour{

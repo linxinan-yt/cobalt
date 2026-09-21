@@ -61,11 +61,7 @@ kk{
         bin{"бини тілі"}
         bla{"сиксика тілі"}
         blo{"ании тілі"}
-<<<<<<< HEAD
-        blt{"тай дам тілі"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        bm{"бамбара тілі"}
+blt{"тай дам тілі"}        bm{"бамбара тілі"}
         bn{"бенгал тілі"}
         bo{"тибет тілі"}
         bqi{"бахтияр тілі"}
@@ -251,11 +247,7 @@ kk{
         lij{"лигур тілі"}
         lil{"лиллуэт тілі"}
         lkt{"лакота тілі"}
-<<<<<<< HEAD
-        lld{"ладин тілі"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        lmo{"ломбард тілі"}
+lld{"ладин тілі"}        lmo{"ломбард тілі"}
         ln{"лингала тілі"}
         lo{"лаос тілі"}
         lou{"креоль тілі (Луизиана)"}

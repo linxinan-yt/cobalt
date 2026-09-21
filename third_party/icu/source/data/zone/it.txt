@@ -27,12 +27,7 @@ it{
         "Africa:Mogadishu"{
             ec{"Mogadiscio"}
         }
-<<<<<<< HEAD
-        "Africa:Tunis"{
-            ec{"Tunisi"}
-        }
-=======
-        "Africa:Ndjamena"{
+"Africa:Ndjamena"{
             ec{"N’Djamena"}
         }
         "Africa:Tunis"{
@@ -43,9 +38,7 @@ it{
         }
         "America:Bogota"{
             ec{"Bogotá"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Cayenne"{
+        }        "America:Cayenne"{
             ec{"Caienna"}
         }
         "America:Guadeloupe"{
@@ -75,13 +68,9 @@ it{
         "America:Puerto_Rico"{
             ec{"Portorico"}
         }
-<<<<<<< HEAD
-=======
-        "America:Santarem"{
+"America:Santarem"{
             ec{"Santarém"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Sao_Paulo"{
+        }        "America:Sao_Paulo"{
             ec{"San Paolo"}
         }
         "America:St_Barthelemy"{
@@ -257,13 +246,9 @@ it{
         "Europe:Stockholm"{
             ec{"Stoccolma"}
         }
-<<<<<<< HEAD
-=======
-        "Europe:Tirane"{
+"Europe:Tirane"{
             ec{"Tirana"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Europe:Vatican"{
+        }        "Europe:Vatican"{
             ec{"Città del Vaticano"}
         }
         "Europe:Warsaw"{

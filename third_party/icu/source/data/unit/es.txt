@@ -425,15 +425,10 @@ es{
                 other{"{0} nanosegundos"}
             }
             night{
-<<<<<<< HEAD
-                gender{"feminine"}
-=======
-                dnam{"noches"}
+dnam{"noches"}
                 gender{"feminine"}
                 one{"{0} noche"}
-                other{"{0} noches"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                per{"{0} por noche"}
+                other{"{0} noches"}                per{"{0} por noche"}
             }
             quarter{
                 dnam{"trimestres"}
@@ -1064,15 +1059,10 @@ es{
                 other{"{0} nudos"}
             }
             light-speed{
-<<<<<<< HEAD
-                gender{"feminine"}
-=======
-                dnam{"luz"}
+dnam{"luz"}
                 gender{"feminine"}
                 one{"{0} luz"}
-                other{"{0} luz"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} luz"}            }
             meter-per-second{
                 dnam{"metros por segundo"}
                 gender{"masculine"}
@@ -1581,16 +1571,10 @@ es{
                 other{"{0}ns"}
             }
             night{
-<<<<<<< HEAD
+dnam{"noches"}
                 one{"{0}noche"}
                 other{"{0}noches"}
-=======
-                dnam{"noches"}
-                one{"{0}noche"}
-                other{"{0}noches"}
-                per{"{0}/noche"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/noche"}            }
             quarter{
                 dnam{"trim"}
                 one{"{0}trim"}
@@ -1997,11 +1981,7 @@ es{
                 other{"{0}kn"}
             }
             light-speed{
-<<<<<<< HEAD
-=======
-                dnam{"luz"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                one{"{0}luz"}
+dnam{"luz"}                one{"{0}luz"}
                 other{"{0}luz"}
             }
             meter-per-second{

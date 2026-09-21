@@ -14,7 +14,6 @@
 
 import {TimeSpan} from '../base/time';
 import {exists} from '../base/utils';
-<<<<<<< HEAD
 import type {Engine} from '../trace_processor/engine';
 import {NUM} from '../trace_processor/query_result';
 import type {Trace} from './trace';
@@ -26,10 +25,6 @@ export async function getMachineCount(engine: Engine): Promise<number> {
   const res = await engine.query(`select count(*) as cnt from machine`);
   return res.firstRow({cnt: NUM}).cnt;
 }
-=======
-import {Trace} from './trace';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 export function getTrackName(
   args: Partial<{
     name: string | null;
@@ -154,7 +149,6 @@ export async function getTimeSpanOfSelectionOrVisibleWindow(
   }
 }
 
-<<<<<<< HEAD
 export function maybeMachineLabel(
   labelIndex?: number,
   machineName?: string | null,
@@ -172,10 +166,4 @@ export function maybeMachineLabel(
   if (machineName !== undefined && machineName !== null && machineName !== '') {
     return ` (${machineName})`;
   }
-  return ` (machine ${labelIndex})`;
-=======
-export function maybeMachineLabel(machine?: number): string {
-  const m = machine ?? 0;
-  return m > 0 ? ` (machine ${m})` : '';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  return ` (machine ${labelIndex})`;}

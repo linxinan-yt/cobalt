@@ -130,17 +130,6 @@ Resource* PreloadRequest::Start(Document* document) {
     UseCounter::Count(document, WebFeature::kSharedStorageAPI_Image_Attribute);
   }
 
-<<<<<<< HEAD
-=======
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-  bool browsing_topics =
-      browsing_topics_eligible_ && RuntimeEnabledFeatures::TopicsAPIEnabled() &&
-      document->domWindow()->IsSecureContext() &&
-      !document->domWindow()->GetSecurityOrigin()->IsOpaque();
-  resource_request.SetBrowsingTopics(browsing_topics);
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   ResourceLoaderOptions options(document->domWindow()->GetCurrentWorld());
   options.initiator_info = initiator_info;
   FetchParameters params(std::move(resource_request), options);

@@ -1357,12 +1357,8 @@ hu{
             one{"jugoszláv konvertibilis dinár (1990–1992)"}
             other{"jugoszláv konvertibilis dinár (1990–1992)"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             one{"zimbabwei arany"}
             other{"zimbabwei arany"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

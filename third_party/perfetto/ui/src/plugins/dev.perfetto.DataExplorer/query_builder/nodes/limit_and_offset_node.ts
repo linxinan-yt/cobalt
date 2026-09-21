@@ -14,49 +14,6 @@
 
 import m from 'mithril';
 import {
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/limit_and_offset_node.ts
-  type QueryNode,
-  nextNodeId,
-  NodeType,
-  type NodeContext,
-} from '../../query_node';
-import type {ColumnInfo} from '../column_info';
-import type protos from '../../../../protos';
-import {StructuredQueryBuilder} from '../structured_query_builder';
-import {setValidationError} from '../node_issues';
-import {InlineField} from '../widgets';
-import type {NodeDetailsAttrs, NodeModifyAttrs} from '../../node_types';
-import {createErrorSections} from '../widgets';
-import {loadNodeDoc} from '../node_doc_loader';
-
-// Serializable node configuration.
-export interface LimitAndOffsetNodeAttrs {
-  limit?: number;
-  offset?: number;
-}
-
-export class LimitAndOffsetNode implements QueryNode {
-  readonly nodeId: string;
-  readonly type = NodeType.kLimitAndOffset;
-  primaryInput?: QueryNode;
-  nextNodes: QueryNode[];
-  readonly attrs: LimitAndOffsetNodeAttrs;
-  readonly context: NodeContext;
-
-  constructor(attrs: LimitAndOffsetNodeAttrs, context: NodeContext) {
-    this.nodeId = nextNodeId();
-    this.attrs = {
-      ...attrs,
-      limit: attrs.limit ?? 10,
-      offset: attrs.offset ?? 0,
-    };
-    this.context = context;
-    this.nextNodes = [];
-  }
-
-  get sourceCols(): ColumnInfo[] {
-    return this.primaryInput?.finalCols ?? [];
-=======
   QueryNode,
   QueryNodeState,
   nextNodeId,
@@ -91,7 +48,6 @@ export class LimitAndOffsetNode implements ModificationNode {
 
   get sourceCols(): ColumnInfo[] {
     return this.prevNode?.finalCols ?? [];
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/limit_and_offset_node.ts
   }
 
   get finalCols(): ColumnInfo[] {
@@ -102,124 +58,6 @@ export class LimitAndOffsetNode implements ModificationNode {
     return 'Limit and Offset';
   }
 
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/limit_and_offset_node.ts
-  nodeDetails(): NodeDetailsAttrs {
-    const hasOffset = this.attrs.offset !== undefined && this.attrs.offset > 0;
-    const limitText = `Limit: ${this.attrs.limit ?? 10}`;
-    const offsetText = hasOffset ? `, Offset: ${this.attrs.offset}` : '';
-
-    return {
-      content: m('div', limitText + offsetText),
-    };
-  }
-
-  nodeSpecificModify(): NodeModifyAttrs {
-    const sections: NodeModifyAttrs['sections'] = [
-      ...createErrorSections(this),
-    ];
-
-    // Limit and Offset inline fields
-    sections.push({
-      content: m(
-        '.pf-limit-offset-list',
-        m(InlineField, {
-          label: 'Limit',
-          icon: 'filter_list',
-          value: this.attrs.limit?.toString() ?? '10',
-          placeholder: 'Number of rows',
-          type: 'number',
-          validate: (value: string) => {
-            const parsed = parseInt(value.trim(), 10);
-            return !isNaN(parsed) && parsed >= 0;
-          },
-          errorMessage: 'Must be a non-negative integer',
-          onchange: (value: string) => {
-            const parsed = parseInt(value.trim(), 10);
-            // Save the parsed value if valid, otherwise keep current value
-            this.attrs.limit =
-              !isNaN(parsed) && parsed >= 0 ? parsed : this.attrs.limit;
-            this.context.onchange?.();
-          },
-        }),
-        m(InlineField, {
-          label: 'Offset',
-          icon: 'skip_next',
-          value: this.attrs.offset?.toString() ?? '0',
-          placeholder: 'Number of rows to skip',
-          type: 'number',
-          validate: (value: string) => {
-            const parsed = parseInt(value.trim(), 10);
-            return !isNaN(parsed) && parsed >= 0;
-          },
-          errorMessage: 'Must be a non-negative integer',
-          onchange: (value: string) => {
-            const parsed = parseInt(value.trim(), 10);
-            // Save the parsed value if valid, otherwise keep current value
-            this.attrs.offset =
-              !isNaN(parsed) && parsed >= 0 ? parsed : this.attrs.offset;
-            this.context.onchange?.();
-          },
-        }),
-      ),
-    });
-
-    return {
-      info: 'Limits the number of rows returned and optionally skips rows. Use LIMIT to cap results and OFFSET to skip the first N rows. Useful for pagination or sampling data.',
-      sections,
-    };
-  }
-
-  nodeInfo(): m.Children {
-    return loadNodeDoc('limit_and_offset');
-  }
-
-  validate(): boolean {
-    // Clear any previous errors at the start of validation
-    if (this.context.issues) {
-      this.context.issues.clear();
-    }
-
-    if (this.primaryInput === undefined) {
-      setValidationError(this.context, 'No input node connected');
-      return false;
-    }
-
-    if (!this.primaryInput.validate()) {
-      setValidationError(this.context, 'Previous node is invalid');
-      return false;
-    }
-
-    return true;
-  }
-
-  clone(): QueryNode {
-    return new LimitAndOffsetNode(
-      {
-        limit: this.attrs.limit,
-        offset: this.attrs.offset,
-      },
-      this.context,
-    );
-  }
-
-  getStructuredQuery(): protos.PerfettoSqlStructuredQuery | undefined {
-    if (this.primaryInput === undefined) return undefined;
-
-    const hasLimit = this.attrs.limit !== undefined && this.attrs.limit >= 0;
-    const hasOffset = this.attrs.offset !== undefined && this.attrs.offset > 0;
-
-    if (!hasLimit && !hasOffset) {
-      // No limit/offset - return passthrough to maintain reference chain
-      return StructuredQueryBuilder.passthrough(this.primaryInput, this.nodeId);
-    }
-
-    return StructuredQueryBuilder.withLimitOffset(
-      this.primaryInput,
-      this.attrs.limit,
-      this.attrs.offset,
-      this.nodeId,
-    );
-=======
   nodeDetails(): m.Child {
     const hasLimit = this.state.limit !== undefined && this.state.limit > 0;
     const hasOffset = this.state.offset !== undefined && this.state.offset > 0;
@@ -307,6 +145,5 @@ export class LimitAndOffsetNode implements ModificationNode {
       ...state,
       prevNode: undefined as unknown as QueryNode,
     };
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/limit_and_offset_node.ts
   }
 }

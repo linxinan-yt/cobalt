@@ -14,19 +14,11 @@
  * limitations under the License.
  */
 
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/viewcapture_views_extractor_unittest.cc
-#include "src/trace_processor/plugins/winscope_importer/viewcapture_views_extractor.h"
-
-#include <vector>
-
-#include "src/trace_processor/plugins/winscope_importer/viewcapture_test_utils.h"
-=======
 #include "src/trace_processor/importers/proto/winscope/viewcapture_views_extractor.h"
 
 #include <vector>
 
 #include "src/trace_processor/importers/proto/winscope/viewcapture_test_utils.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/viewcapture_views_extractor_unittest.cc
 #include "test/gtest_and_gmock.h"
 
 namespace perfetto::trace_processor::winscope::viewcapture::test {
@@ -35,12 +27,7 @@ namespace {
 
 void CheckExtractionTopToBottom(const std::string& snapshot,
                                 const std::vector<int32_t> expected) {
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/viewcapture_views_extractor_unittest.cc
-  com::android::internal::pbzero::ViewCapture::Decoder snapshot_decoder(
-      snapshot);
-=======
   protos::pbzero::ViewCapture::Decoder snapshot_decoder(snapshot);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/viewcapture_views_extractor_unittest.cc
   const auto& result = ExtractViewsTopToBottom(snapshot_decoder);
 
   std::vector<int32_t> layer_ids;

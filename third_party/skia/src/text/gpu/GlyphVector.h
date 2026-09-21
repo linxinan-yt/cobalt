@@ -147,8 +147,7 @@ public:
     // the sub runs.
     int unflattenSize() const { return Size(fGlyphs.size()); }
 
-<<<<<<< HEAD
-    SkPackedGlyphID getPackedGlyphID(int index) const {
+SkPackedGlyphID getPackedGlyphID(int index) const {
         SkASSERT(index >= 0 && index < this->glyphCount());
         if (this->hasBackendData()) {
             return fGetGlyphID(fGlyphs[index].data());
@@ -156,10 +155,6 @@ public:
             return *reinterpret_cast<const SkPackedGlyphID*>(fGlyphs[index].data());
         }
     }
-=======
-    void packedGlyphIDToGlyph(StrikeCache* cache, skgpu::MaskFormat format);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     SkStrikePromise& strikePromise() { return fStrikePromise; }
     const SkStrikePromise& strikePromise() const { return fStrikePromise; }
 

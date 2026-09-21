@@ -450,12 +450,7 @@ public:
      *         IDs.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_I18N_API virtual UClassID getDynamicClassID() const override;
-=======
-    virtual UClassID getDynamicClassID() const override;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API virtual UClassID getDynamicClassID() const override;
     /**
      * Returns the class ID for this class. This is useful only for comparing to
      * a return value from getDynamicClassID(). For example:
@@ -467,12 +462,7 @@ public:
      * @return The class ID for all objects of this class.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_I18N_API static UClassID getStaticClassID();
-=======
-    static UClassID U_EXPORT2 getStaticClassID();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+static UClassID U_EXPORT2 getStaticClassID();
 #ifndef U_HIDE_DEPRECATED_API
     /**
      * Do not use this method: The caller and the ICU library might use different heaps.

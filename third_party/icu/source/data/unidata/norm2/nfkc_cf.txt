@@ -12,12 +12,7 @@
 # and reformatted into syntax for the gennorm2 Normalizer2 data generator tool.
 # Use this file as the third gennorm2 input file after nfc.txt and nfkc.txt.
 
-<<<<<<< HEAD
 * Unicode 17.0.0
-=======
-* Unicode 16.0.0
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 0041>0061
 0042>0062
 0043>0063
@@ -2469,22 +2464,14 @@ A7C7>A7C8
 A7C9>A7CA
 A7CB>0264
 A7CC>A7CD
-<<<<<<< HEAD
-A7CE>A7CF
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-A7D0>A7D1
+A7CE>A7CFA7D0>A7D1
 A7D2>A7D3
 A7D4>A7D5
 A7D6>A7D7
 A7D8>A7D9
 A7DA>A7DB
 A7DC>019B
-<<<<<<< HEAD
-A7F1>0073
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-A7F2>0063
+A7F1>0073A7F2>0063
 A7F3>0066
 A7F4>0071
 A7F5>A7F6

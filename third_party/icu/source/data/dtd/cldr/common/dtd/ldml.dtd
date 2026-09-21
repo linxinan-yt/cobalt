@@ -42,12 +42,7 @@ CLDR data files are interpreted according to the LDML specification (http://unic
 <!ATTLIST version number CDATA #REQUIRED >
     <!--@MATCH:regex/\$Revision.*\$-->
     <!--@METADATA-->
-<<<<<<< HEAD
-<!ATTLIST version cldrVersion CDATA #FIXED "48" >
-=======
-<!ATTLIST version cldrVersion CDATA #FIXED "47" >
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    <!--@MATCH:any-->
+<!ATTLIST version cldrVersion CDATA #FIXED "48" >    <!--@MATCH:any-->
     <!--@VALUE-->
 <!ATTLIST version draft (approved | contributed | provisional | unconfirmed | true | false) #IMPLIED >
     <!--@METADATA-->
@@ -68,12 +63,8 @@ CLDR data files are interpreted according to the LDML specification (http://unic
     <!--@MATCH:validity/locale-for-names-->
 <!ATTLIST language alt NMTOKENS #IMPLIED >
     <!--@MATCH:literal/long, secondary, short, variant, menu, official-->
-<<<<<<< HEAD
 <!ATTLIST language menu NMTOKENS #IMPLIED >
-    <!--@MATCH:literal/core, extension-->
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-<!ATTLIST language draft (approved | contributed | provisional | unconfirmed | true | false) #IMPLIED >
+    <!--@MATCH:literal/core, extension--><!ATTLIST language draft (approved | contributed | provisional | unconfirmed | true | false) #IMPLIED >
     <!--@METADATA-->
     <!--@DEPRECATED:true, false-->
 <!ATTLIST language references CDATA #IMPLIED >

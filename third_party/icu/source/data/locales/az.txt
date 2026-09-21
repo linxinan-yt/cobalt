@@ -21,12 +21,6 @@ az{
         }
         arabext{
             patterns{
-<<<<<<< HEAD
-                accountingFormat%alphaNextToNumber{"#,##0.00 ¤"}
-                accountingFormat%noCurrency{"#,##0.00"}
-                currencyFormat%alphaNextToNumber{"#,##0.00 ¤"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 decimalFormat{"standart onluq kəsr0.###"}
             }
             symbols{
@@ -1225,9 +1219,7 @@ az{
                 "[\\: ∶]",
             }
         }
-<<<<<<< HEAD
-=======
-        general{
+general{
             lenient{
                 "[.．․﹒ 。｡︒]",
                 "['＇’ ՚ ᾽᾿ ʼ]",
@@ -1239,9 +1231,7 @@ az{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        number{
+        }        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ، ٫ 、﹑､︑]",

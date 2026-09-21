@@ -181,12 +181,7 @@ export default class implements PerfettoPlugin {
           ]);
         },
         tags: {kinds: [ANDROID_LOGS_TRACK_KIND]},
-<<<<<<< HEAD
-        renderer: createAndroidLogTrack(ctx, summaryUri),
-=======
-        renderer: createAndroidLogTrack(ctx, uri),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      });
+renderer: createAndroidLogTrack(ctx, summaryUri),      });
 
       const rootGroup = new TrackNode({
         name: 'Android logs',
@@ -194,9 +189,7 @@ export default class implements PerfettoPlugin {
         isSummary: true,
         collapsed: true,
       });
-<<<<<<< HEAD
-
-      const sortedProcesses = [...byProcess.entries()].sort(
+const sortedProcesses = [...byProcess.entries()].sort(
         ([, a], [, b]) => b.logCount - a.logCount,
       );
 
@@ -243,11 +236,7 @@ export default class implements PerfettoPlugin {
         rootGroup.addChildInOrder(processGroup);
       }
 
-      ctx.defaultWorkspace.addChildInOrder(rootGroup);
-=======
-      ctx.defaultWorkspace.addChildInOrder(track);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+      ctx.defaultWorkspace.addChildInOrder(rootGroup);    }
 
     const androidLogsTabUri = 'perfetto.AndroidLog#tab';
 

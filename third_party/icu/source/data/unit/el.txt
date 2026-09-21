@@ -2015,11 +2015,7 @@ el{
                         other{"{0} φωτός"}
                     }
                 }
-<<<<<<< HEAD
-=======
-                dnam{"φως"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                gender{"neuter"}
+dnam{"φως"}                gender{"neuter"}
                 one{"{0} φως"}
                 other{"{0} φως"}
             }
@@ -2771,12 +2767,8 @@ el{
             }
             light-speed{
                 dnam{"φώς"}
-<<<<<<< HEAD
-=======
-                one{"{0} φως"}
-                other{"{0} φως"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+one{"{0} φως"}
+                other{"{0} φως"}            }
             meter-per-second{
                 dnam{"μ./δ."}
                 one{"{0} μ./δ."}

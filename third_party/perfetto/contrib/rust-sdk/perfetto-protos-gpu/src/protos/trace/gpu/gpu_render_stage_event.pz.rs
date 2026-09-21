@@ -30,8 +30,7 @@ pb_enum!(InternedGraphicsContextApi {
     OPEN_GL: 1,
     VULKAN: 2,
     OPEN_CL: 3,
-<<<<<<< HEAD
-    CUDA: 4,
+CUDA: 4,
     HIP: 5,
 });
 
@@ -45,10 +44,7 @@ pb_msg!(InternedComputeKernel {
     name: String, primitive, 2,
     demangled_name: String, primitive, 3,
     arch: String, primitive, 4,
-    args: GpuRenderStageEventExtraComputeArg, msg, 5,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-});
+    args: GpuRenderStageEventExtraComputeArg, msg, 5,});
 
 pb_msg!(InternedGpuRenderStageSpecification {
     iid: u64, primitive, 1,
@@ -72,60 +68,33 @@ pb_msg!(GpuRenderStageEvent {
     context: u64, primitive, 5,
     render_target_handle: u64, primitive, 8,
     submission_id: u32, primitive, 10,
-<<<<<<< HEAD
-    extra_data: GpuRenderStageEventExtraData, msg, 6,
-=======
-    extra_data: ExtraData, msg, 6,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    render_pass_handle: u64, primitive, 9,
+extra_data: GpuRenderStageEventExtraData, msg, 6,    render_pass_handle: u64, primitive, 9,
     render_pass_instance_id: u64, primitive, 16,
     render_subpass_index_mask: u64, primitive, 15,
     command_buffer_handle: u64, primitive, 12,
-<<<<<<< HEAD
-    name: String, primitive, 17,
+name: String, primitive, 17,
     name_iid: u64, primitive, 20,
     event_wait_ids: u64, primitive, 18,
     kernel_iid: u64, primitive, 19,
     launch: GpuRenderStageEventComputeKernelLaunch, msg, 21,
-    specifications: GpuRenderStageEventSpecifications, msg, 7,
-=======
-    specifications: Specifications, msg, 7,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    hw_queue_id: i32, primitive, 3,
+    specifications: GpuRenderStageEventSpecifications, msg, 7,    hw_queue_id: i32, primitive, 3,
     stage_id: i32, primitive, 4,
 });
 
-<<<<<<< HEAD
 pb_msg!(GpuRenderStageEventSpecifications {
     context_spec: GpuRenderStageEventSpecificationsContextSpec, msg, 1,
     hw_queue: GpuRenderStageEventSpecificationsDescription, msg, 2,
     stage: GpuRenderStageEventSpecificationsDescription, msg, 3,
 });
 
-pb_msg!(GpuRenderStageEventSpecificationsDescription {
-=======
-pb_msg!(Specifications {
-    context_spec: ContextSpec, msg, 1,
-    hw_queue: Description, msg, 2,
-    stage: Description, msg, 3,
-});
-
-pb_msg!(Description {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    name: String, primitive, 1,
+pb_msg!(GpuRenderStageEventSpecificationsDescription {    name: String, primitive, 1,
     description: String, primitive, 2,
 });
 
-<<<<<<< HEAD
-pb_msg!(GpuRenderStageEventSpecificationsContextSpec {
-=======
-pb_msg!(ContextSpec {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    context: u64, primitive, 1,
+pb_msg!(GpuRenderStageEventSpecificationsContextSpec {    context: u64, primitive, 1,
     pid: i32, primitive, 2,
 });
 
-<<<<<<< HEAD
 pb_msg!(GpuRenderStageEventComputeKernelLaunch {
     grid_size: GpuRenderStageEventDim3, msg, 1,
     workgroup_size: GpuRenderStageEventDim3, msg, 2,
@@ -148,10 +117,6 @@ pb_msg!(GpuRenderStageEventDim3 {
     z: u32, primitive, 3,
 });
 
-pb_msg!(GpuRenderStageEventExtraData {
-=======
-pb_msg!(ExtraData {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    name: String, primitive, 1,
+pb_msg!(GpuRenderStageEventExtraData {    name: String, primitive, 1,
     value: String, primitive, 2,
 });

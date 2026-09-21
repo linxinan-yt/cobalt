@@ -100,7 +100,6 @@ class BinaryProto:
 
 
 @dataclass
-<<<<<<< HEAD
 class Zip:
   """A zip archive trace assembled from the given members.
 
@@ -140,10 +139,7 @@ class ExpectedError:
   contains: str
 
 
-@dataclass
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-class SimpleperfProto:
+@dataclassclass SimpleperfProto:
   """Represents a simpleperf_proto binary file with inline generation."""
   records: List[str]  # List of textproto strings for Record messages
 
@@ -234,16 +230,11 @@ class DiffTestBlueprint:
   def is_trace_simpleperf_proto(self):
     return isinstance(self.trace, SimpleperfProto)
 
-<<<<<<< HEAD
-  def is_trace_zip(self):
+def is_trace_zip(self):
     return isinstance(self.trace, Zip)
 
   def is_trace_tar(self):
-    return isinstance(self.trace, Tar)
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  def is_query_file(self):
+    return isinstance(self.trace, Tar)  def is_query_file(self):
     return isinstance(self.query, Path)
 
   def is_metric(self):

@@ -1387,11 +1387,7 @@ cy{
                 zero{"{0} cilometr yr awr"}
             }
             light-speed{
-<<<<<<< HEAD
-=======
-                dnam{"golau"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                few{"golau"}
+dnam{"golau"}                few{"golau"}
                 many{"golau"}
                 one{"golau"}
                 other{"{0} golau"}
@@ -2066,19 +2062,11 @@ cy{
                 zero{"{0}m"}
             }
             night{
-<<<<<<< HEAD
-=======
-                dnam{"nosau"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                few{"{0}noson"}
+dnam{"nosau"}                few{"{0}noson"}
                 many{"{0}noson"}
                 one{"{0}noson"}
                 other{"{0}noson"}
-<<<<<<< HEAD
-=======
-                per{"{0}/noson"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                two{"{0}noson"}
+per{"{0}/noson"}                two{"{0}noson"}
                 zero{"{0} noson"}
             }
             quarter{
@@ -2755,11 +2743,7 @@ cy{
                 zero{"{0}not"}
             }
             light-speed{
-<<<<<<< HEAD
-=======
-                dnam{"golau"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                few{"{0} golau"}
+dnam{"golau"}                few{"{0} golau"}
                 many{"{0} golau"}
                 one{"{0} golau"}
                 other{"{0} golau"}

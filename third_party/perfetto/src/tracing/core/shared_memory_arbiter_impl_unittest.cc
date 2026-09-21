@@ -272,7 +272,6 @@ TEST_P(SharedMemoryArbiterImplTest, UseShmemEmulation) {
       arbiter_->shmem_abi_for_testing()->GetChunkState(page_idx, chunk_idx));
 }
 
-<<<<<<< HEAD
 // Verifies that ScrapeEmulatedSharedMemoryBuffer commits the scraped chunks
 // via the producer endpoint and leaves the chunk state untouched (the writer
 // still owns it).
@@ -502,11 +501,7 @@ TEST_P(SharedMemoryArbiterImplTest, ScrapeEmulatedSharedMemoryBufferSplits) {
       {kWriterId, kTargetBuffer}};
   arbiter_->ScrapeEmulatedSharedMemoryBuffer(buffer_for_writers);
   EXPECT_EQ(total_moves, kNumPages);
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-// Check that we can create up to many TraceWriter(s).
+}// Check that we can create up to many TraceWriter(s).
 TEST_P(SharedMemoryArbiterImplTest, WriterIDsAllocation) {
   constexpr size_t kBigWriterCount = (1 << 12);
   static_assert(kBigWriterCount < kMaxWriterID);

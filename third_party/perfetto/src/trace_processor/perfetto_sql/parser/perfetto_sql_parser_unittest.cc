@@ -314,7 +314,6 @@ TEST_F(PerfettoSqlParserTest, CreatePerfettoFunctionIntrinsicError) {
   ASSERT_FALSE(Parse(res).status().ok());
 }
 
-<<<<<<< HEAD
 TEST_F(PerfettoSqlParserTest, CreatePerfettoFunctionVariadicDelegate) {
   // Variadic arguments should work in delegate functions
   auto res = SqlSource::FromExecuteQuery(
@@ -373,11 +372,7 @@ TEST_F(PerfettoSqlParserTest, CreatePerfettoFunctionVariadicNotLastError) {
   ASSERT_FALSE(parsed.status().ok());
   EXPECT_THAT(parsed.status().message(),
               testing::HasSubstr("Variadic argument must be the last"));
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-TEST_F(PerfettoSqlParserTest, IncludePerfettoTrivial) {
+}TEST_F(PerfettoSqlParserTest, IncludePerfettoTrivial) {
   auto res =
       SqlSource::FromExecuteQuery("include perfetto module cheese.bre_ad;");
   ASSERT_THAT(*Parse(res), testing::ElementsAre(Include{"cheese.bre_ad"}));

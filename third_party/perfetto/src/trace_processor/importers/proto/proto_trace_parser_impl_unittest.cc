@@ -40,13 +40,9 @@
 #include "src/trace_processor/importers/common/event_tracker.h"
 #include "src/trace_processor/importers/common/flow_tracker.h"
 #include "src/trace_processor/importers/common/global_args_tracker.h"
-<<<<<<< HEAD
 #include "src/trace_processor/importers/common/global_metadata_tracker.h"
 #include "src/trace_processor/importers/common/global_stats_tracker.h"
-#include "src/trace_processor/importers/common/gpu_tracker.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "src/trace_processor/importers/common/import_logs_tracker.h"
+#include "src/trace_processor/importers/common/gpu_tracker.h"#include "src/trace_processor/importers/common/import_logs_tracker.h"
 #include "src/trace_processor/importers/common/machine_tracker.h"
 #include "src/trace_processor/importers/common/mapping_tracker.h"
 #include "src/trace_processor/importers/common/metadata_tracker.h"
@@ -248,18 +244,12 @@ class ProtoTraceParserTest : public ::testing::Test {
     context_.track_tracker = std::make_unique<TrackTracker>(&context_);
     context_.global_args_tracker =
         std::make_unique<GlobalArgsTracker>(context_.storage.get());
-<<<<<<< HEAD
-    context_.global_metadata_tracker =
+context_.global_metadata_tracker =
         std::make_unique<GlobalMetadataTracker>(context_.storage.get());
     context_.global_stats_tracker =
         std::make_unique<GlobalStatsTracker>(context_.storage.get());
     context_.import_logs_tracker =
-        std::make_unique<ImportLogsTracker>(&context_, TraceId(1));
-=======
-    context_.import_logs_tracker =
-        std::make_unique<ImportLogsTracker>(&context_, 1);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    context_.mapping_tracker.reset(new MappingTracker(&context_));
+        std::make_unique<ImportLogsTracker>(&context_, TraceId(1));    context_.mapping_tracker.reset(new MappingTracker(&context_));
     context_.trace_state =
         TraceProcessorContextPtr<TraceProcessorContext::TraceState>::MakeRoot(
             TraceProcessorContext::TraceState{TraceId(0)});
@@ -280,8 +270,7 @@ class ProtoTraceParserTest : public ::testing::Test {
     context_.slice_tracker = std::make_unique<SliceTracker>(&context_);
     context_.slice_translation_table =
         std::make_unique<SliceTranslationTable>(storage_);
-<<<<<<< HEAD
-    context_.trace_time_state = std::make_unique<TraceTimeState>(
+context_.trace_time_state = std::make_unique<TraceTimeState>(
         ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_BOOTTIME));
     primary_sync_ = std::make_unique<ClockSynchronizer>(
         context_.trace_time_state.get(),
@@ -290,14 +279,7 @@ class ProtoTraceParserTest : public ::testing::Test {
         &context_, primary_sync_.get(), /*is_primary=*/true);
     context_.stats_tracker = std::make_unique<StatsTracker>(&context_);
     context_.profiler_sample_tracker =
-        std::make_unique<ProfilerSampleTracker>(&context_);
-    context_.trace_diagnostics_tracker =
-        std::make_unique<TraceDiagnosticsTracker>(&context_);
-=======
-    context_.clock_tracker = std::make_unique<ClockTracker>(
-        std::make_unique<ClockSynchronizerListenerImpl>(&context_));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    context_.flow_tracker = std::make_unique<FlowTracker>(&context_);
+        std::make_unique<ProfilerSampleTracker>(&context_);    context_.flow_tracker = std::make_unique<FlowTracker>(&context_);
     context_.sorter = std::make_unique<TraceSorter>(
         &context_, TraceSorter::SortingMode::kFullSort);
     context_.descriptor_pool_ = std::make_unique<DescriptorPool>();
@@ -359,12 +341,7 @@ class ProtoTraceParserTest : public ::testing::Test {
     bool found = false;
     for (cursor.Execute(); !cursor.Eof(); cursor.Next()) {
       EXPECT_EQ(cursor.flat_key(), key_id);
-<<<<<<< HEAD
-      if (GetArgValue(*storage_, cursor) == value) {
-=======
-      if (storage_->GetArgValue(cursor.ToRowNumber().row_number()) == value) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        found = true;
+if (GetArgValue(*storage_, cursor) == value) {        found = true;
         break;
       }
     }

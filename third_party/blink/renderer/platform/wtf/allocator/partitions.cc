@@ -184,9 +184,6 @@ void Partitions::InitializeArrayBufferPartition() {
   CHECK(initialized_);
   CHECK(!ArrayBufferPartitionInitialized());
 
-<<<<<<< HEAD
-
-=======
 #if BUILDFLAG(IS_COBALT) && PA_BUILDFLAG(USE_PARTITION_ALLOC_AS_MALLOC)
   // Upstream Chromium isolates ArrayBuffers in a separate partition primarily
   // to place them inside the 64-bit V8 virtual memory cage / sandbox and to
@@ -203,9 +200,7 @@ void Partitions::InitializeArrayBufferPartition() {
 #endif
 
   // BackupRefPtr disallowed because it will prevent allocations from being 16B
-  // aligned as required by ArrayBufferContents.
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  static base::NoDestructor<partition_alloc::PartitionAllocator>
+  // aligned as required by ArrayBufferContents.  static base::NoDestructor<partition_alloc::PartitionAllocator>
       array_buffer_allocator([]() {
         partition_alloc::PartitionOptions opts;
         // When the V8 virtual memory cage is enabled, the ArrayBuffer
@@ -242,11 +237,6 @@ void Partitions::DumpMemoryStats(
   // accessed only on the main thread.
   DCHECK(IsMainThread());
 
-<<<<<<< HEAD
-  const bool populate_discardable_bytes =
-      !is_light_dump ||
-      base::FeatureList::IsEnabled(kPartitionsDumpPopulateDiscardableBytes);
-=======
 #if BUILDFLAG(IS_COBALT) && PA_BUILDFLAG(USE_PARTITION_ALLOC_AS_MALLOC)
   // When reusing the main PartitionAlloc instance for buffers and array
   // buffers, memory statistics for those allocations are already tracked and
@@ -256,8 +246,10 @@ void Partitions::DumpMemoryStats(
     return;
   }
 #endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
+  const bool populate_discardable_bytes =
+      !is_light_dump ||
+      base::FeatureList::IsEnabled(kPartitionsDumpPopulateDiscardableBytes);
   if (auto* fast_malloc_partition = FastMallocPartition()) {
     fast_malloc_partition->DumpStats("fast_malloc", is_light_dump,
                                      populate_discardable_bytes,

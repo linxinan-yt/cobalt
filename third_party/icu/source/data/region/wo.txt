@@ -85,11 +85,7 @@ wo{
         CN{"Siin"}
         CO{"Kolombi"}
         CP{"Ile Clipperton"}
-<<<<<<< HEAD
-        CQ{"Guernsey Pound"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        CR{"Kosta Rika"}
+CQ{"Guernsey Pound"}        CR{"Kosta Rika"}
         CU{"Kuba"}
         CV{"Kabo Werde"}
         CW{"Kursawo"}

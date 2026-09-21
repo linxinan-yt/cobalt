@@ -1044,16 +1044,7 @@ void PartitionRoot::Init(PartitionOptions opts) {
     scheduler_loop_quarantine_for_advanced_memory_safety_checks_.Configure(
         scheduler_loop_quarantine_root_,
         opts.scheduler_loop_quarantine_for_advanced_memory_safety_checks_config);
-<<<<<<< HEAD
-    settings_.scheduler_loop_quarantine_thread_local_config =
-=======
-#if BUILDFLAG(IS_COBALT)
-    settings.scheduler_loop_quarantine_global_config =
-        opts.scheduler_loop_quarantine_global_config;
-#endif  // BUILDFLAG(IS_COBALT)
-    settings.scheduler_loop_quarantine_thread_local_config =
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        opts.scheduler_loop_quarantine_thread_local_config;
+settings_.scheduler_loop_quarantine_thread_local_config =        opts.scheduler_loop_quarantine_thread_local_config;
 
 #if PA_BUILDFLAG(HAS_MEMORY_TAGGING)
     settings_.memory_tagging_enabled_ =

@@ -23,13 +23,8 @@
 #include "components/network_hints/renderer/web_prescient_networking_impl.h"
 #include "components/surface_embed/renderer/create_plugin.h"
 #include "components/web_cache/renderer/web_cache_impl.h"
-<<<<<<< HEAD
 #include "content/common/pseudonymization_salt.h"
-#include "content/common/skia_utils.h"
-=======
-#include "build/buildflag.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "content/public/common/content_switches.h"
+#include "content/common/skia_utils.h"#include "content/public/common/content_switches.h"
 #include "content/public/common/pseudonymization_util.h"
 #include "content/public/common/web_identity.h"
 #include "content/public/renderer/render_frame.h"

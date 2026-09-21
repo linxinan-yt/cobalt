@@ -30,13 +30,9 @@ gd{
         "America:Aruba"{
             ec{"Arùba"}
         }
-<<<<<<< HEAD
-=======
-        "America:Belem"{
+"America:Belem"{
             ec{"Belém"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Belize"{
+        }        "America:Belize"{
             ec{"A’ Bheilìs"}
         }
         "America:Cayman"{
@@ -45,13 +41,9 @@ gd{
         "America:Costa_Rica"{
             ec{"Costa Rìcea"}
         }
-<<<<<<< HEAD
-=======
-        "America:Cuiaba"{
+"America:Cuiaba"{
             ec{"Cuiabá"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Dominica"{
+        }        "America:Dominica"{
             ec{"Doiminicea"}
         }
         "America:El_Salvador"{
@@ -105,16 +97,12 @@ gd{
         "America:Resolute"{
             ec{"Qausuittuq"}
         }
-<<<<<<< HEAD
-=======
-        "America:Santarem"{
+"America:Santarem"{
             ec{"Santarém"}
         }
         "America:Sao_Paulo"{
             ec{"São Paulo"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:St_Barthelemy"{
+        }        "America:St_Barthelemy"{
             ec{"Saint Barthélemy"}
         }
         "America:St_Kitts"{

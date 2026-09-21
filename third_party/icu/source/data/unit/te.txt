@@ -355,13 +355,9 @@ te{
                 other{"{0} నానోసెకన్లు"}
             }
             night{
-<<<<<<< HEAD
-=======
-                dnam{"రాత్రి"}
+dnam{"రాత్రి"}
                 one{"{0} రాత్రి"}
-                other{"{0} రాత్రులు"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                per{"ఒక రాత్రికి {0}"}
+                other{"{0} రాత్రులు"}                per{"ఒక రాత్రికి {0}"}
             }
             quarter{
                 dnam{"క్వార్టర్లు"}
@@ -1229,16 +1225,10 @@ te{
                 other{"{0}నె"}
             }
             night{
-<<<<<<< HEAD
+dnam{"రాత్రులు"}
                 one{"{0}రాత్రి"}
                 other{"{0}రాత్రులు"}
-=======
-                dnam{"రాత్రులు"}
-                one{"{0}రాత్రి"}
-                other{"{0}రాత్రులు"}
-                per{"రాత్రికి {0}"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"రాత్రికి {0}"}            }
             quarter{
                 one{"{0}క్వా"}
                 other{"{0}క్వా"}

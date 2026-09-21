@@ -53,13 +53,9 @@ std::string VideoStream::ToString() const {
     ss << ", scale_down_to: " << scale_resolution_down_to->width << "x"
        << scale_resolution_down_to->height;
   }
-<<<<<<< HEAD
-  if (scalability_mode.has_value()) {
+if (scalability_mode.has_value()) {
     ss << ", scalability_mode: " << ScalabilityModeToString(*scalability_mode);
-  }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  ss << '}';
+  }  ss << '}';
   return ss.Release();
 }
 

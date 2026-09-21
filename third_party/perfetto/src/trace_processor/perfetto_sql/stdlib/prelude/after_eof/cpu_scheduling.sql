@@ -19,16 +19,10 @@
 -- This module provides tables and views for analyzing CPU scheduling behavior,
 -- including scheduling slices, thread states, and CPU information.
 
-<<<<<<< HEAD
 INCLUDE PERFETTO MODULE prelude.after_eof.views;
 
 -- Contains information about the CPUs on the device this trace was taken on.
-CREATE PERFETTO VIEW cpu(
-=======
--- Contains information about the CPUs on the device this trace was taken on.
-CREATE PERFETTO VIEW cpu (
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  -- Unique identifier for this CPU. Identical to |ucpu|, prefer using |ucpu|
+CREATE PERFETTO VIEW cpu(  -- Unique identifier for this CPU. Identical to |ucpu|, prefer using |ucpu|
   -- instead.
   id ID,
   -- Unique identifier for this CPU. Isn't equal to |cpu| for remote machines
@@ -40,27 +34,16 @@ CREATE PERFETTO VIEW cpu (
   cluster_id LONG,
   -- A string describing this core.
   processor STRING,
-<<<<<<< HEAD
-  -- Machine identifier
-  machine_id JOINID(machine.id),
-=======
-  -- Machine identifier, non-null for CPUs on a remote machine.
-  machine_id LONG,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  -- Capacity of a CPU of a device, a metric which indicates the
+-- Machine identifier
+  machine_id JOINID(machine.id),  -- Capacity of a CPU of a device, a metric which indicates the
   -- relative performance of a CPU on a device
   -- For details see:
   -- https://www.kernel.org/doc/Documentation/devicetree/bindings/arm/cpu-capacity.txt
   capacity LONG,
   -- Extra key/value pairs associated with this cpu.
   arg_set_id ARGSETID
-<<<<<<< HEAD
 )
-AS
-=======
-) AS
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-SELECT
+ASSELECT
   id,
   id AS ucpu,
   cpu,
@@ -75,12 +58,7 @@ WHERE
 
 -- Contains the frequency values that the CPUs on the device are capable of
 -- running at.
-<<<<<<< HEAD
-CREATE PERFETTO VIEW cpu_available_frequencies(
-=======
-CREATE PERFETTO VIEW cpu_available_frequencies (
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  -- Unique identifier for this cpu frequency.
+CREATE PERFETTO VIEW cpu_available_frequencies (  -- Unique identifier for this cpu frequency.
   id ID,
   -- The CPU for this frequency, meaningful only in single machine traces.
   -- For multi-machine, join with the `cpu` table on `ucpu` to get the CPU
@@ -92,20 +70,6 @@ CREATE PERFETTO VIEW cpu_available_frequencies (
   -- traces). For multi-machine, join with the `cpu` table on `ucpu` to get the
   -- CPU identifier of each machine.
   ucpu LONG
-<<<<<<< HEAD
-)
-AS
-SELECT id, ucpu AS cpu, freq, ucpu FROM __intrinsic_cpu_freq;
-
--- Contains scheduling slices with kernel thread scheduling information.
--- These slices are collected when the Linux "ftrace" data source is used with
--- the "sched/switch" and "sched/wakeup*" events enabled.
---
--- The rows in this view will always have a matching row in the |thread_state|
--- table with |thread_state.state| = 'Running'
-CREATE PERFETTO VIEW sched(
-  -- Unique identifier for this scheduling slice.
-=======
 ) AS
 SELECT
   id,
@@ -121,9 +85,7 @@ FROM __intrinsic_cpu_freq;
 -- The rows in this table will always have a matching row in the |thread_state|
 -- table with |thread_state.state| = 'Running'
 CREATE PERFETTO VIEW sched_slice (
-  --  Unique identifier for this scheduling slice.
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  id ID,
+  --  Unique identifier for this scheduling slice.  id ID,
   -- The timestamp at the start of the slice.
   ts TIMESTAMP,
   -- The duration of the slice.
@@ -146,17 +108,11 @@ CREATE PERFETTO VIEW sched_slice (
   -- The kernel priority that the thread ran at.
   priority LONG,
   -- The unique CPU identifier that the slice executed on.
-<<<<<<< HEAD
-  ucpu LONG,
+ucpu LONG,
   -- Legacy column, should no longer be used.
   ts_end LONG
 )
-AS
-=======
-  ucpu LONG
-) AS
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-SELECT
+ASSELECT
   id,
   ts,
   dur,
@@ -164,8 +120,7 @@ SELECT
   utid,
   end_state,
   priority,
-<<<<<<< HEAD
-  ucpu,
+ucpu,
   ts + dur AS ts_end
 FROM __intrinsic_sched_slice;
 
@@ -190,48 +145,12 @@ CREATE PERFETTO VIEW sched_slice(
 )
 AS
 SELECT id, ts, dur, cpu, utid, end_state, priority, ucpu FROM sched;
-=======
-  ucpu
-FROM __intrinsic_sched_slice;
-
--- Shorter alias for table `sched_slice`.
-CREATE PERFETTO VIEW sched (
-  -- Alias for `sched_slice.id`.
-  id ID,
-  -- Alias for `sched_slice.ts`.
-  ts TIMESTAMP,
-  -- Alias for `sched_slice.dur`.
-  dur DURATION,
-  -- Alias for `sched_slice.cpu`.
-  cpu LONG,
-  -- Alias for `sched_slice.utid`.
-  utid JOINID(thread.id),
-  -- Alias for `sched_slice.end_state`.
-  end_state STRING,
-  -- Alias for `sched_slice.priority`.
-  priority LONG,
-  -- Alias for `sched_slice.ucpu`.
-  ucpu LONG,
-  -- Legacy column, should no longer be used.
-  ts_end LONG
-) AS
-SELECT
-  *,
-  ts + dur AS ts_end
-FROM sched_slice;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 -- This table contains the scheduling state of every thread on the system during
 -- the trace.
 --
 -- The rows in this table which have |state| = 'Running', will have a
 -- corresponding row in the |sched_slice| table.
-<<<<<<< HEAD
-CREATE PERFETTO VIEW thread_state(
-=======
-CREATE PERFETTO VIEW thread_state (
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  -- Unique identifier for this thread state.
+CREATE PERFETTO VIEW thread_state (  -- Unique identifier for this thread state.
   id ID,
   -- The timestamp at the start of the slice.
   ts TIMESTAMP,
@@ -257,15 +176,9 @@ CREATE PERFETTO VIEW thread_state (
   -- Whether the wakeup was from interrupt context or process context.
   irq_context LONG,
   -- The unique CPU identifier that the thread executed on.
-<<<<<<< HEAD
-  ucpu JOINID(cpu.id)
+ucpu JOINID(cpu.id)
 )
-AS
-=======
-  ucpu LONG
-) AS
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-SELECT
+ASSELECT
   id,
   ts,
   dur,

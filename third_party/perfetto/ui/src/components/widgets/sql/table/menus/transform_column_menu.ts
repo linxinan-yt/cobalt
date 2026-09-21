@@ -17,7 +17,6 @@ import {MenuItem} from '../../../../../widgets/menu';
 import {Form, FormLabel} from '../../../../../widgets/form';
 import {TextInput} from '../../../../../widgets/text_input';
 import {Icons} from '../../../../../base/semantic_icons';
-<<<<<<< HEAD
 import type {
   TableColumn,
   RenderedCell,
@@ -40,30 +39,7 @@ import {createTableColumn, PrintArgsColumn} from '../columns';
 type Transform = {
   apply: (trace: Trace, column: SqlColumn, ...params: string[]) => TableColumn;
   parameters?: TransformParameter[];
-  requiredType?: PerfettoSqlType;
-=======
-import {TableColumn, RenderedCell, TableManager} from '../table_column';
-import {SqlTableState} from '../state';
-import {
-  PerfettoSqlType,
-  PerfettoSqlTypes,
-  typesEqual,
-} from '../../../../../trace_processor/perfetto_sql_type';
-import {createTableColumn} from '../create_column';
-import {SqlColumn, SqlExpression} from '../sql_column';
-import {SqlValue} from '../../../../../trace_processor/query_result';
-import {uuidv4} from '../../../../../base/uuid';
-import {range} from '../../../../../base/array_utils';
-
-type Transform = {
-  // The SQL expresssion to apply.
-  expression: (colExpr: string, ...params: string[]) => string;
-  // Optional parameters for the transform
-  parameters?: TransformParameter[];
-  requiredType?: PerfettoSqlType;
-  resultType: PerfettoSqlType;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-};
+  requiredType?: PerfettoSqlType;};
 
 type TransformParameter = {
   name: string;
@@ -72,39 +48,6 @@ type TransformParameter = {
   validate?: (value: string) => boolean;
 };
 
-<<<<<<< HEAD
-// Helper function to create a transform from a SQL expression.
-function fromExpression(
-  exprFn: (col: string, ...params: string[]) => string,
-  resultType: PerfettoSqlType,
-): (trace: Trace, column: SqlColumn, ...params: string[]) => TableColumn {
-  return (trace: Trace, column: SqlColumn, ...params: string[]) => {
-    const sqlExpr = new SqlExpression(
-      (cols: string[]) => exprFn(cols[0], ...params),
-      [column],
-    );
-    return createTableColumn({
-      trace,
-      column: sqlExpr,
-      type: resultType,
-    });
-  };
-}
-
-const TRANSFORMS = {
-  'length': {
-    apply: fromExpression((col) => `length(${col})`, PerfettoSqlTypes.INT),
-    requiredType: PerfettoSqlTypes.STRING,
-  },
-  'substring': {
-    apply: fromExpression(
-      (col, start, length) =>
-        length
-          ? `substr(${col}, ${start}, ${length})`
-          : `substr(${col}, ${start})`,
-      PerfettoSqlTypes.STRING,
-    ),
-=======
 const TRANSFORMS = {
   'length': {
     expression: (col) => `length(${col})`,
@@ -117,9 +60,7 @@ const TRANSFORMS = {
         return `substr(${col}, ${start}, ${length})`;
       }
       return `substr(${col}, ${start})`;
-    },
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    parameters: [
+    },    parameters: [
       {
         name: 'start',
         placeholder: '1-based, can be negative (optional)',
@@ -145,79 +86,48 @@ const TRANSFORMS = {
       },
     ],
     requiredType: PerfettoSqlTypes.STRING,
-<<<<<<< HEAD
-  },
+},
   'extract regex': {
     apply: fromExpression(
       (col, pattern) => `regexp_extract(${col}, '${pattern}')`,
       PerfettoSqlTypes.STRING,
-    ),
-=======
-    resultType: PerfettoSqlTypes.STRING,
-  },
-  'extract regex': {
-    expression: (col, pattern) => `regexp_extract(${col}, '${pattern}')`,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    parameters: [
+    ),    parameters: [
       {
         name: 'pattern',
         placeholder: 'regex pattern (e.g., \\d+)',
       },
     ],
     requiredType: PerfettoSqlTypes.STRING,
-<<<<<<< HEAD
-  },
+},
   'strip prefix': {
     apply: fromExpression(
       (col, prefix) =>
         `CASE WHEN ${col} GLOB '${prefix}*' THEN substr(${col}, ${prefix.length + 1}) ELSE ${col} END`,
       PerfettoSqlTypes.STRING,
-    ),
-=======
-    resultType: PerfettoSqlTypes.STRING,
-  },
-  'strip prefix': {
-    expression: (col, prefix) =>
-      `CASE WHEN ${col} GLOB '${prefix}*' THEN substr(${col}, ${prefix.length + 1}) ELSE ${col} END`,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    parameters: [
+    ),    parameters: [
       {
         name: 'prefix',
         placeholder: 'prefix to remove',
       },
     ],
     requiredType: PerfettoSqlTypes.STRING,
-<<<<<<< HEAD
-  },
+},
   'strip suffix': {
     apply: fromExpression(
       (col, suffix) =>
         `CASE WHEN ${col} GLOB '*${suffix}' THEN substr(${col}, 1, length(${col}) - ${suffix.length}) ELSE ${col} END`,
       PerfettoSqlTypes.STRING,
-    ),
-=======
-    resultType: PerfettoSqlTypes.STRING,
-  },
-  'strip suffix': {
-    expression: (col, suffix) =>
-      `CASE WHEN ${col} GLOB '*${suffix}' THEN substr(${col}, 1, length(${col}) - ${suffix.length}) ELSE ${col} END`,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    parameters: [
+    ),    parameters: [
       {
         name: 'suffix',
         placeholder: 'suffix to remove',
       },
     ],
     requiredType: PerfettoSqlTypes.STRING,
-<<<<<<< HEAD
-  },
+},
   'print_args': {
     apply: (_trace: Trace, column: SqlColumn) => new PrintArgsColumn(column),
-    requiredType: PerfettoSqlTypes.ARG_SET_ID,
-=======
-    resultType: PerfettoSqlTypes.STRING,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  },
+    requiredType: PerfettoSqlTypes.ARG_SET_ID,  },
 } satisfies Record<string, Transform>;
 
 type TransformType = keyof typeof TRANSFORMS;
@@ -235,45 +145,18 @@ export class TransformColumn implements TableColumn {
     },
   ) {
     this.column = args.transformed.column;
-<<<<<<< HEAD
-    this.type = args.transformed.type;
-=======
-    this.type = TRANSFORMS[args.transformType].resultType;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+this.type = args.transformed.type;  }
 
   getTitle(): string | undefined {
     return this.args.transformed.getTitle?.();
   }
 
-<<<<<<< HEAD
-  renderCell(value: SqlValue, context?: RenderCellContext): RenderedCell {
+renderCell(value: SqlValue, context?: RenderCellContext): RenderedCell {
     return this.args.transformed.renderCell(value, context);
   }
 
   listDerivedColumns(context: ListColumnsContext) {
-    return this.args.transformed.listDerivedColumns?.(context);
-=======
-  renderCell(
-    value: SqlValue,
-    tableManager?: TableManager,
-    supportingValues?: {} | undefined,
-  ): RenderedCell {
-    return this.args.transformed.renderCell(
-      value,
-      tableManager,
-      supportingValues,
-    );
-  }
-
-  supportingColumns() {
-    return this.args.transformed.supportingColumns?.() || (() => {});
-  }
-
-  listDerivedColumns(manager: TableManager) {
-    return this.args.transformed.listDerivedColumns?.(manager);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    return this.args.transformed.listDerivedColumns?.(context);  }
 
   getColumnSpecificMenuItems(args: {
     replaceColumn: (column: TableColumn) => void;
@@ -311,17 +194,7 @@ function applyTransform(args: {
   state: SqlTableState;
 }): TableColumn {
   const transform: Transform = TRANSFORMS[args.transformType];
-<<<<<<< HEAD
-
-  return new TransformColumn({
-    source: args.column,
-    transformed: transform.apply(
-      args.state.trace,
-      args.column.column,
-      ...args.values,
-    ),
-=======
-  const values = args.values;
+const values = args.values;
   const transformExpression = (cols: string[]) =>
     transform.expression(cols[0], ...values);
 
@@ -331,9 +204,7 @@ function applyTransform(args: {
       trace: args.state.trace,
       column: new SqlExpression(transformExpression, [args.column.column]),
       type: transform.resultType,
-    }),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    state: args.state,
+    }),    state: args.state,
     transformType: args.transformType,
     transformParams: args.values,
   });
@@ -348,14 +219,9 @@ interface TransformMenuItemAttrs {
   formSubmitLabel: string;
 }
 
-<<<<<<< HEAD
-class ConfigureTransformMenu implements m.ClassComponent<TransformMenuItemAttrs> {
-=======
 class ConfigureTransformMenu
   implements m.ClassComponent<TransformMenuItemAttrs>
-{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  private paramState: {value: string; error: boolean}[] = [];
+{  private paramState: {value: string; error: boolean}[] = [];
   private readonly uuid = uuidv4();
 
   view({attrs}: m.Vnode<TransformMenuItemAttrs>) {

@@ -10,12 +10,6 @@
 
 #include "base/containers/lru_cache.h"
 #include "base/memory/scoped_refptr.h"
-<<<<<<< HEAD
-=======
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-#include "content/browser/attribution_reporting/attribution_suitable_context.h"
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "content/browser/loader/keep_alive_url_loader.h"
 #include "content/common/content_export.h"
 #include "content/public/browser/weak_document_ptr.h"
@@ -134,18 +128,6 @@ class CONTENT_EXPORT KeepAliveURLLoaderService {
     // by `OnDidCommitNavigation()`.
     scoped_refptr<PolicyContainerHost> policy_container_host;
 
-<<<<<<< HEAD
-=======
-    // Attribution responses might be processed from keep alive requests. For
-    // them to be processed, the request must have been sent from a suitable
-    // context and information from that context is needed. Upon
-    // NavigationRequest::DidCommitNavigation(), if the context is suitable,
-    // the `attribution_context` is created.
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-    std::optional<AttributionSuitableContext> attribution_context;
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     // On NavigationRequest::DidCommitNavigation(), this field is set to the
     // network isolation key of the committed RenderFrameHostImpl.
     net::NetworkIsolationKey network_isolation_key;

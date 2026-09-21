@@ -1175,16 +1175,10 @@ component("base") {
   # Used by metrics/crc32
   deps += [ "//third_party/zlib" ]
 
-<<<<<<< HEAD
-  deps += [
-    "logging/rust_logger",
-    "//third_party/rust/serde_json_lenient/v0_2/wrapper",
-  ]
-=======
-  if (!(is_cobalt && is_partner_toolchain)) {
+if (!(is_cobalt && is_partner_toolchain)) {
     # NaCl does not support Rust.
     deps += [
-      ":rust_logger",
+      "logging/rust_logger",
       "//third_party/rust/serde_json_lenient/v0_2/wrapper",
     ]
   }
@@ -1192,8 +1186,6 @@ component("base") {
   if (is_cobalt_hermetic_build) {
     deps += [ "//starboard/common" ]
   }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   # `raw_ptr` cannot be made a component due to CRT symbol issues.
   # Its gateway to being a component is through `//base`, so we have
   # to provide the appropriate `#define` here.
@@ -1866,8 +1858,7 @@ component("base") {
     public_deps += [ "allocator/partition_allocator:allocator_shim" ]
   }
 
-<<<<<<< HEAD
-  if (use_asan_backup_ref_ptr) {
+if (use_asan_backup_ref_ptr) {
     # To make `source_set("asan_raw_ptr_service")` only a part of `base`,
     # use `deps` to make only `base` depend on it. This causes a few
     # unittests have `//nogncheck`.
@@ -1882,7 +1873,8 @@ component("base") {
     if (use_asan_backup_ref_ptr_v2) {
       all_dependent_configs += [ ":asan_raw_ptr_service_v2_config" ]
     }
-=======
+  }
+
   if (is_cobalt && is_partner_toolchain) {
     sources -= [
       "logging/rust_log_integration.cc",
@@ -1941,9 +1933,7 @@ component("base") {
     ]
 
     # Find a way to fix the offending customizations instead.
-    configs -= [ "//build/config/compiler:prevent_unsafe_narrowing" ]
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    configs -= [ "//build/config/compiler:prevent_unsafe_narrowing" ]  }
 
   # Windows.
   if (is_win) {
@@ -4269,7 +4259,7 @@ test("base_unittests") {
     "//base/test:test_shared_library",
     "//testing/buildbot/filters:base_unittests_filters",
   ]
-<<<<<<< HEAD
+}
 
   if (is_win || is_linux) {
     data_deps += [ "//base/allocator:system_allocator_test_helper" ]
@@ -4278,12 +4268,7 @@ test("base_unittests") {
 
   if (is_asan) {
     sources += [ "memory/raw_ptr_asan_unittest.cc" ]
-  }
-
-=======
-  }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  if (is_ios) {
+  }  if (is_ios) {
     deps += [ "//base/test:test_shared_library_ios+bundle" ]
   }
 
@@ -4433,10 +4418,7 @@ test("base_unittests") {
     deps += [ ":stack_canary_linux_unittests" ]
   }
 
-<<<<<<< HEAD
-  sources += [ "test/tracing/test_trace_processor_example_unittest.cc" ]
-=======
-  if (is_starboard) {
+if (is_starboard) {
     sources -= [
       "debug/stack_trace_unittest.cc",
       "files/file_path_watcher_unittest.cc",
@@ -4475,10 +4457,8 @@ test("base_unittests") {
   }
 
   if (!is_cobalt_hermetic_build) {
-    sources += [ "test/test_trace_processor_example_unittest.cc" ]
+    sources += [ "test/tracing/test_trace_processor_example_unittest.cc" ]
   }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   if (is_posix) {
     sources += [
       "files/dir_reader_posix_unittest.cc",

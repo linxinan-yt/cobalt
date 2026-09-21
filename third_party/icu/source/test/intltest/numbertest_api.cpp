@@ -6218,24 +6218,7 @@ void NumberFormatterApiTest::TestPortionFormat() {
         double inputValue;
         UnicodeString expectedOutput;
     } testCases[]{
-<<<<<<< HEAD
-        {"part-per-1e9", "en-US", 1, "1 part per billion"},
-        {"part-per-1e9", "en-US", 2, "2 parts per billion"},
-        {"part-per-1e9", "en-US", 1000000, "1,000,000 parts per billion"},
-        {"part-per-1e9", "de-DE", 1000000, "1.000.000 Milliardstel"},
-        {"part-per-1e1", "en-US", 1, "1 part per 10"},
-        {"part-per-1e2", "en-US", 1, "1 part per 100"},
-        {"part-per-1e3", "en-US", 1, "1 part per 1000"},
-        {"part-per-1e4", "en-US", 1, "1 part per 10000"},
-        {"part-per-1e5", "en-US", 1, "1 part per 100000"},
-        {"part-per-1e6", "en-US", 1, "1 part per million"},
-        {"part-per-1e7", "en-US", 1, "1 part per 10000000"},
-        {"part-per-1e8", "en-US", 1, "1 part per 100000000"},
-    };
-
-    for (auto testCase : testCases) {
-=======
-        {"portion-per-1e9", "en-US", 1, "1 part per billion"},
+{"portion-per-1e9", "en-US", 1, "1 part per billion"},
         {"portion-per-1e9", "en-US", 2, "2 parts per billion"},
         {"portion-per-1e9", "en-US", 1000000, "1,000,000 parts per billion"},
         {"portion-per-1e9", "de-DE", 1000000, "1.000.000 Milliardstel"},
@@ -6253,20 +6236,13 @@ void NumberFormatterApiTest::TestPortionFormat() {
         if (uprv_strcmp(testCase.unitIdentifier, "portion-per-1e9") != 0) {
             logKnownIssue("CLDR-18274", "The data for portion-per-XYZ is not determined yet.");
             continue;
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        MeasureUnit unit = MeasureUnit::forIdentifier(testCase.unitIdentifier, status);
+        }        MeasureUnit unit = MeasureUnit::forIdentifier(testCase.unitIdentifier, status);
         LocalizedNumberFormatter lnf =
             NumberFormatter::withLocale(Locale::forLanguageTag(testCase.locale, status))
                 .unit(unit)
                 .unitWidth(UNumberUnitWidth::UNUM_UNIT_WIDTH_FULL_NAME);
         UnicodeString actualOutput = lnf.formatDouble(testCase.inputValue, status).toString(status);
-<<<<<<< HEAD
-        assertEquals("test part format", testCase.expectedOutput, actualOutput);
-=======
-        assertEquals("test portion format", testCase.expectedOutput, actualOutput);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+assertEquals("test portion format", testCase.expectedOutput, actualOutput);    }
 }
 
 void NumberFormatterApiTest::testIssue22378() {

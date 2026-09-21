@@ -62,12 +62,7 @@ class RTC_EXPORT DatagramConnectionInternal : public DatagramConnection,
                                const uint8_t* digest,
                                size_t digest_len,
                                SSLRole ssl_role) override;
-<<<<<<< HEAD
-  void SendPackets(std::span<PacketSendParameters> packets) override;
-=======
-  void SendPackets(ArrayView<PacketSendParameters> packets) override;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+void SendPackets(std::span<PacketSendParameters> packets) override;
   void Terminate(
       absl::AnyInvocable<void()> terminate_complete_callback) override;
 
@@ -85,16 +80,11 @@ class RTC_EXPORT DatagramConnectionInternal : public DatagramConnection,
 
   void OnSentPacket(const SentPacketInfo& packet);
 
-<<<<<<< HEAD
-  absl::string_view IceUsernameFragment() override {
+absl::string_view IceUsernameFragment() override {
     return ice_username_fragment_;
   }
 
-  absl::string_view IcePassword() override { return ice_password_; }
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#if RTC_DCHECK_IS_ON
+  absl::string_view IcePassword() override { return ice_password_; }#if RTC_DCHECK_IS_ON
   DtlsSrtpTransport* GetDtlsSrtpTransportForTesting() {
     return dtls_srtp_transport_.get();
   }
@@ -120,10 +110,6 @@ class RTC_EXPORT DatagramConnectionInternal : public DatagramConnection,
   const scoped_refptr<DtlsTransport> dtls_transport_;
   const std::unique_ptr<DtlsSrtpTransport> dtls_srtp_transport_;
 
-<<<<<<< HEAD
-=======
-  bool last_writable_state_ = false;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   const SequenceChecker sequence_checker_;
   bool last_writable_state_ RTC_GUARDED_BY(sequence_checker_) = false;
 

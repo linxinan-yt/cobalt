@@ -19,36 +19,21 @@
 #[path = "gpu_counter_event.pz.rs"]
 pub mod gpu_counter_event;
 
-<<<<<<< HEAD
 /// `gpu_interned_data` protos.
 #[path = "gpu_interned_data.pz.rs"]
-pub mod gpu_interned_data;
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-/// `gpu_log` protos.
+pub mod gpu_interned_data;/// `gpu_log` protos.
 #[path = "gpu_log.pz.rs"]
 pub mod gpu_log;
 
-<<<<<<< HEAD
 /// `gpu_mem_event` protos.
 #[path = "gpu_mem_event.pz.rs"]
-pub mod gpu_mem_event;
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-/// `gpu_render_stage_event` protos.
+pub mod gpu_mem_event;/// `gpu_render_stage_event` protos.
 #[path = "gpu_render_stage_event.pz.rs"]
 pub mod gpu_render_stage_event;
 
-<<<<<<< HEAD
 /// `gpu_track_event` protos.
 #[path = "gpu_track_event.pz.rs"]
-pub mod gpu_track_event;
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-/// `vulkan_api_event` protos.
+pub mod gpu_track_event;/// `vulkan_api_event` protos.
 #[path = "vulkan_api_event.pz.rs"]
 pub mod vulkan_api_event;
 

@@ -114,11 +114,7 @@ if (rtc_include_tests) {
     deps = [
       ":corruption_detection_settings_generator",
       ":filter_settings",
-<<<<<<< HEAD
-=======
-      "../../:field_trials",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      "../../../test:test_support",
+"../../:field_trials",      "../../../test:test_support",
     ]
   }
 

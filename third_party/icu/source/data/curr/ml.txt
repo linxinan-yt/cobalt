@@ -1557,12 +1557,8 @@ ml{
             one{"സിംബാബ്‌വെ ഡോളർ"}
             other{"സിംബാബ്‌വെ ഡോളേഴ്സ്"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             one{"സിംബാബ്‌വെയൻ ഗോൾഡ്"}
             other{"സിംബാബ്‌വെയൻ ഗോൾഡ്"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

@@ -3,11 +3,6 @@
 # found in the LICENSE file.
 """Helpers to parse content of xml files."""
 
-<<<<<<< HEAD
-=======
-import typing
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 from collections.abc import Iterator
 import html
 import typing

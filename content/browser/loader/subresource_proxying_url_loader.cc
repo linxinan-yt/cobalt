@@ -4,15 +4,7 @@
 
 #include "content/browser/loader/subresource_proxying_url_loader.h"
 
-<<<<<<< HEAD
-#include "mojo/public/cpp/bindings/message.h"
-=======
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-#include "content/browser/browsing_topics/browsing_topics_url_loader_interceptor.h"
-#include "content/browser/interest_group/ad_auction_url_loader_interceptor.h"
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "services/network/public/cpp/shared_url_loader_factory.h"
+#include "mojo/public/cpp/bindings/message.h"#include "services/network/public/cpp/shared_url_loader_factory.h"
 #include "services/network/public/mojom/early_hints.mojom.h"
 
 namespace content {
@@ -29,25 +21,6 @@ SubresourceProxyingURLLoader::SubresourceProxyingURLLoader(
       forwarding_client_(std::move(client)) {
   DCHECK(network_loader_factory);
 
-<<<<<<< HEAD
-=======
-  CHECK(resource_request_.browsing_topics ||
-        resource_request_.ad_auction_headers);
-
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-  if (resource_request_.browsing_topics) {
-    interceptors_.push_back(
-        std::make_unique<BrowsingTopicsURLLoaderInterceptor>(
-            document, resource_request_));
-  }
-
-  if (resource_request_.ad_auction_headers) {
-    interceptors_.push_back(std::make_unique<AdAuctionURLLoaderInterceptor>(
-        document, resource_request_));
-  }
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   // Make a copy of `resource_request`, because we may need to modify the
   // request.
   network::ResourceRequest new_resource_request = resource_request;

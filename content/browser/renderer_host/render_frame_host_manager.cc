@@ -1458,26 +1458,8 @@ void RenderFrameHostManager::UnloadOldFrame(
         base::debug::DumpWithoutCrashing();
       }
 
-<<<<<<< HEAD
-      auto stored_page = CollectPage(std::move(old_render_frame_host),
-                                     focused_frame_tree_node_id);
-=======
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
-      // If the outermost main frame is about to enter bfcache, log UMA metrics
-      // about how many same-site fenced frames are in the viewport.
-      if (old_render_frame_host->IsOutermostMainFrame()) {
-        auto* monitor =
-            PageUserData<FencedFrameViewportMonitor>::GetOrCreateForPage(
-                old_render_frame_host->GetPage());
-        if (monitor) {
-          monitor->OnPrimaryPageEnteringBFCache();
-        }
-      }
-#endif
-
-      auto stored_page = CollectPage(std::move(old_render_frame_host));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      auto entry =
+auto stored_page = CollectPage(std::move(old_render_frame_host),
+                                     focused_frame_tree_node_id);      auto entry =
           std::make_unique<BackForwardCacheImpl::Entry>(std::move(stored_page));
       // Ensures RenderViewHosts are not reused while they are in the cache.
       for (const auto& rvh : entry->render_view_hosts()) {

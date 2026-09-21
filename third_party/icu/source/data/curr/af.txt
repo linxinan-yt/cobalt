@@ -757,12 +757,8 @@ af{
             one{"(onbekende geldeenheid)"}
             other{"(onbekende geldeenheid)"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             one{"Zimbabwiese goud"}
             other{"Zimbabwiese goud"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

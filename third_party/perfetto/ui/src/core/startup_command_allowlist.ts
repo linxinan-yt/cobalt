@@ -46,9 +46,6 @@ export const STARTUP_COMMAND_ALLOWLIST: string[] = [
 ];
 
 // Create a set for faster lookups of exact matches
-<<<<<<< HEAD
-export const STARTUP_COMMAND_ALLOWLIST_SET = new Set(STARTUP_COMMAND_ALLOWLIST);
-=======
 const STARTUP_COMMAND_ALLOWLIST_SET = new Set(STARTUP_COMMAND_ALLOWLIST);
 
 /**
@@ -69,4 +66,3 @@ export function isStartupCommandAllowed(commandId: string): boolean {
 
   return false;
 }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

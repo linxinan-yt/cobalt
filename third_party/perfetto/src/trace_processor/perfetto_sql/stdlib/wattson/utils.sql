@@ -43,7 +43,6 @@ AS (
 
 -- DSU dependency policy
 CREATE PERFETTO MACRO _dsu_dep()
-<<<<<<< HEAD
 RETURNS Expr
 AS 255;
 
@@ -133,7 +132,3 @@ AS (
     $p7 != -1 AND $p7 = $target
   )
 );
-=======
-RETURNS Expr AS
-255;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

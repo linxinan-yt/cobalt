@@ -17,10 +17,7 @@
 .pf-settings-page {
   &__plugin-section {
     margin-bottom: 32px;
-<<<<<<< HEAD
-=======
-
-    &:last-child {
+&:last-child {
       margin-bottom: 0;
     }
   }
@@ -39,8 +36,6 @@
     flex-direction: row;
     gap: 6px;
     justify-content: space-between;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     &:last-child {
       margin-bottom: 0;
     }
@@ -55,44 +50,13 @@
     }
   }
 
-<<<<<<< HEAD
-  &__plugin-title {
+&__plugin-title {
     font-size: var(--pf-font-size-xl);
     font-weight: 600;
     margin: 0 0 16px 0;
     padding: 8px 12px;
     background: var(--pf-minimal-background);
-    border-radius: 4px;
-=======
-  &__details {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  &__setting-id {
-    font-size: 0.7em;
-    color: var(--pf-color-text-muted);
-    font-family: var(--pf-font-monospace);
-    margin-bottom: 6px;
-  }
-
-  &__description {
-    font-size: smaller;
-    white-space: pre-line;
-  }
-
-  &__link-button {
-    visibility: hidden;
-  }
-
-  &__controls {
-    display: flex;
-    flex-direction: row;
-    column-gap: 12px;
-    align-items: center;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    border-radius: 4px;  }
 
   &__complex-error {
     display: flex;

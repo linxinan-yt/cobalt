@@ -76,11 +76,6 @@ export class PluginManagerImpl {
   private orderedPlugins: Array<PluginWrapper> = [];
   constructor(private readonly defaultPluginIds: ReadonlyArray<string>) {}
 
-<<<<<<< HEAD
-=======
-  constructor(private readonly app: PluginAppInterface) {}
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   registerPlugin(desc: PerfettoPluginStatic<PerfettoPlugin>, isCore = false) {
     const flagId = `plugin_${desc.id}`;
     const name = `Plugin: ${desc.id}`;

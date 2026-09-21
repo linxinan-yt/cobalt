@@ -32,13 +32,8 @@ RtpPacketSimulator::RtpPacketSimulator(const Environment& env)
       rtp_header_extension_map_(
           ParsedRtcEventLog::GetDefaultHeaderExtensionMap()) {}
 
-<<<<<<< HEAD
 RtpPacketSimulator::SimulatedPacket
-RtpPacketSimulator::SimulateRtpPacketReceived(
-=======
-RtpPacketReceived RtpPacketSimulator::SimulateRtpPacketReceived(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    const LoggedRtpPacket& logged_packet) const {
+RtpPacketSimulator::SimulateRtpPacketReceived(    const LoggedRtpPacket& logged_packet) const {
   RtpPacketReceived rtp_packet(&rtp_header_extension_map_);
   rtp_packet.set_arrival_time(env_.clock().CurrentTime());
 
@@ -67,8 +62,7 @@ RtpPacketReceived RtpPacketSimulator::SimulateRtpPacketReceived(
       logged_packet.dependency_descriptor_wire_format);
 
   // Payload and padding.
-<<<<<<< HEAD
-  size_t payload_size = logged_packet.total_length -
+size_t payload_size = logged_packet.total_length -
                         logged_packet.header_length - header.paddingLength;
   std::vector<uint8_t> payload(payload_size, 0u);  // Zero initialize.
   bool has_rtx_osn = logged_packet.rtx_original_sequence_number.has_value();
@@ -83,13 +77,7 @@ RtpPacketReceived RtpPacketSimulator::SimulateRtpPacketReceived(
       ByteWriter<uint16_t>::WriteBigEndian(payload.data(), rtx_osn);
     }
   }
-  rtp_packet.SetPayload(payload);
-=======
-  rtp_packet.AllocatePayload(logged_packet.total_length -
-                             logged_packet.header_length -
-                             header.paddingLength);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  rtp_packet.SetPadding(header.paddingLength);
+  rtp_packet.SetPayload(payload);  rtp_packet.SetPadding(header.paddingLength);
 
   return {.rtp_packet = rtp_packet, .has_rtx_osn = has_rtx_osn};
 }

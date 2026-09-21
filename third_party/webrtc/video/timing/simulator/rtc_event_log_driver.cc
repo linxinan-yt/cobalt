@@ -13,7 +13,6 @@
 #include <cstdint>
 #include <memory>
 #include <optional>
-<<<<<<< HEAD
 #include <set>
 #include <utility>
 
@@ -23,16 +22,7 @@
 #include "absl/functional/any_invocable.h"
 #include "absl/strings/string_view.h"
 #include "api/environment/environment_factory.h"
-#include "api/environment/force_test_environment.h"
-=======
-#include <utility>
-
-#include "absl/base/nullability.h"
-#include "absl/functional/any_invocable.h"
-#include "absl/strings/string_view.h"
-#include "api/environment/environment_factory.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "api/field_trials.h"
+#include "api/environment/force_test_environment.h"#include "api/field_trials.h"
 #include "api/sequence_checker.h"
 #include "api/task_queue/task_queue_factory.h"
 #include "api/units/time_delta.h"
@@ -43,7 +33,6 @@
 #include "modules/rtp_rtcp/source/rtp_packet_received.h"
 #include "rtc_base/checks.h"
 #include "rtc_base/logging.h"
-<<<<<<< HEAD
 #include "test/time_controller/simulated_time_task_queue_controller.h"
 #include "video/timing/simulator/rtp_packet_simulator.h"
 #include "video/timing/simulator/rtt_simulator.h"
@@ -94,44 +83,11 @@ RtcEventLogDriver::RtcEventLogDriver(
       parsed_log_.video_recv_configs(),
       [this](const auto& config) { OnLoggedVideoRecvConfig(config); });
 
-  // RTP video packet events (media + RTX).
-=======
-#include "test/time_controller/simulated_time_controller.h"
-
-namespace webrtc::video_timing_simulator {
-
-RtcEventLogDriver::RtcEventLogDriver(
-    const ParsedRtcEventLog* absl_nonnull parsed_log,
-    absl::string_view field_trials_string,
-    RtcEventLogDriver::StreamInterfaceFactory stream_factory)
-    : time_controller_(
-          std::make_unique<GlobalSimulatedTimeController>(Timestamp::Zero())),
-      env_(CreateEnvironment(
-          std::make_unique<webrtc::FieldTrials>(field_trials_string),
-          time_controller_->GetClock(),
-          time_controller_->GetTaskQueueFactory())),
-      parsed_log_(*parsed_log),
-      stream_factory_(std::move(stream_factory)),
-      prev_log_timestamp_(std::nullopt),
-      simulator_queue_(time_controller_->GetTaskQueueFactory()->CreateTaskQueue(
-          "simulator_queue",
-          TaskQueueFactory::Priority::NORMAL)),
-      packet_simulator_(env_) {
-  RTC_DCHECK(stream_factory_) << "stream_factory must be provided";
-
-  // Config events.
-  processor_.AddEvents(
-      parsed_log_.video_recv_configs(),
-      [&](const auto& config) { OnLoggedVideoRecvConfig(config); });
-
-  // Video packet events.
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  for (const auto& stream : parsed_log_.incoming_rtp_packets_by_ssrc()) {
+  // RTP video packet events (media + RTX).  for (const auto& stream : parsed_log_.incoming_rtp_packets_by_ssrc()) {
     bool is_video = parsed_log_.GetMediaType(
                         stream.ssrc, PacketDirection::kIncomingPacket) ==
                     ParsedRtcEventLog::MediaType::VIDEO;
-<<<<<<< HEAD
-    if (!is_video) {
+if (!is_video) {
       continue;
     }
     processor_.AddEvents(stream.incoming_packets, [this](const auto& packet) {
@@ -171,19 +127,7 @@ RtcEventLogDriver::RtcEventLogDriver(
       [this](const auto& packet) {
         OnLoggedRtcpPacketExtendedReportsIncoming(packet);
       },
-      PacketDirection::kIncomingPacket);
-=======
-    bool is_rtx = parsed_log_.incoming_rtx_ssrcs().contains(stream.ssrc);
-    // TODO: b/423646186 - Handle RTX.
-    if (!is_video || is_rtx) {
-      continue;
-    }
-    processor_.AddEvents(stream.incoming_packets, [&](const auto& packet) {
-      OnLoggedRtpPacketIncoming(packet);
-    });
-  }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+      PacketDirection::kIncomingPacket);}
 
 RtcEventLogDriver::~RtcEventLogDriver() = default;
 
@@ -193,43 +137,22 @@ void RtcEventLogDriver::Simulate() {
 
   // Attempt to get straggling frames out by advancing time a little bit after
   // the last logged event.
-<<<<<<< HEAD
-  time_controller_.AdvanceTime(kShutdownAdvanceTimeSlack);
-=======
-  time_controller_->AdvanceTime(kShutdownAdvanceTimeSlack);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+time_controller_.AdvanceTime(kShutdownAdvanceTimeSlack);
   // Tear down on the queue.
   bool done = false;
   simulator_queue_->PostTask([this, &done]() {
     RTC_DCHECK_RUN_ON(simulator_queue_.get());
-<<<<<<< HEAD
-    TeardownOnQueue();
+TeardownOnQueue();
     done = true;
   });
   time_controller_.AdvanceTime(TimeDelta::Zero());
-  RTC_DCHECK(done);
-=======
-    for (auto& stream : streams_) {
-      stream.second->Close();
-    }
-    streams_.clear();
-    done = true;
-  });
-  time_controller_->Wait([&done]() { return done; });
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  RTC_DCHECK(done);}
 
 void RtcEventLogDriver::AdvanceTime(Timestamp log_timestamp) {
   if (!prev_log_timestamp_) {
     // For the first event, set the clock in absolute terms.
     prev_log_timestamp_ = log_timestamp;
-<<<<<<< HEAD
-    time_controller_.AdvanceTime(log_timestamp - env_.clock().CurrentTime());
-=======
-    time_controller_->AdvanceTime(log_timestamp - env_.clock().CurrentTime());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    RTC_DCHECK_EQ(env_.clock().CurrentTime(), log_timestamp);
+time_controller_.AdvanceTime(log_timestamp - env_.clock().CurrentTime());    RTC_DCHECK_EQ(env_.clock().CurrentTime(), log_timestamp);
     return;
   }
   TimeDelta duration = log_timestamp - *prev_log_timestamp_;
@@ -240,12 +163,7 @@ void RtcEventLogDriver::AdvanceTime(Timestamp log_timestamp) {
         << " (simulated_ts=" << env_.clock().CurrentTime() << ")";
     return;
   }
-<<<<<<< HEAD
-  time_controller_.AdvanceTime(duration);
-=======
-  time_controller_->AdvanceTime(duration);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+time_controller_.AdvanceTime(duration);}
 
 void RtcEventLogDriver::HandleEvent(Timestamp log_timestamp,
                                     absl::AnyInvocable<void() &&> handler) {
@@ -266,8 +184,7 @@ void RtcEventLogDriver::HandleEvent(Timestamp log_timestamp,
 void RtcEventLogDriver::OnLoggedVideoRecvConfig(
     const webrtc::LoggedVideoRecvConfig& config) {
   uint32_t ssrc = config.config.remote_ssrc;
-<<<<<<< HEAD
-  uint32_t rtx_ssrc = config.config.rtx_ssrc;
+uint32_t rtx_ssrc = config.config.rtx_ssrc;
   HandleEvent(config.log_time(), [this, ssrc, rtx_ssrc]() {
     RTC_DCHECK_RUN_ON(simulator_queue_.get());
 
@@ -309,32 +226,14 @@ void RtcEventLogDriver::OnLoggedVideoRecvConfig(
     receiving_streams_[ssrc] = streams_[ssrc].get();
     if (rtx_ssrc != 0) {
       receiving_streams_[rtx_ssrc] = streams_[ssrc].get();
-    }
-=======
-  HandleEvent(config.log_time(), [this, ssrc]() {
-    RTC_DCHECK_RUN_ON(simulator_queue_.get());
-    RTC_LOG(LS_INFO) << "OnLoggedVideoRecvConfig for ssrc=" << ssrc
-                     << " (simulated_ts=" << env_.clock().CurrentTime() << ")";
-    if (auto it = streams_.find(ssrc); it != streams_.end()) {
-      RTC_LOG(LS_WARNING) << "Video receive stream for ssrc=" << ssrc
-                          << " already existed. Overwriting it."
-                          << " (simulated_ts=" << env_.clock().CurrentTime()
-                          << ")";
-      it->second->Close();
-    }
-    std::unique_ptr<StreamInterface> stream = stream_factory_(env_, ssrc);
-    RTC_DCHECK(stream);
-    streams_[ssrc] = std::move(stream);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  });
+    }  });
 }
 
 void RtcEventLogDriver::OnLoggedRtpPacketIncoming(
     const webrtc::LoggedRtpPacketIncoming& packet) {
   HandleEvent(packet.log_time(), [this, packet]() {
     RTC_DCHECK_RUN_ON(simulator_queue_.get());
-<<<<<<< HEAD
-    uint32_t ssrc = packet.rtp.header.ssrc;
+uint32_t ssrc = packet.rtp.header.ssrc;
     if (auto it = receiving_streams_.find(ssrc);
         it != receiving_streams_.end()) {
       RtpPacketSimulator::SimulatedPacket simulated_packet =
@@ -344,25 +243,12 @@ void RtcEventLogDriver::OnLoggedRtpPacketIncoming(
       RTC_DCHECK_EQ(env_.clock().CurrentTime(), packet.log_time());
       it->second->InsertSimulatedPacket(simulated_packet);
     } else if (!all_known_ssrcs_.contains(ssrc)) {
-      RTC_LOG(LS_WARNING) << "Received packet for unknown ssrc=" << ssrc
-=======
-    if (auto it = streams_.find(packet.rtp.header.ssrc); it != streams_.end()) {
-      RtpPacketReceived rtp_packet =
-          packet_simulator_.SimulateRtpPacketReceived(packet.rtp);
-      RTC_DCHECK_EQ(rtp_packet.arrival_time(), packet.log_time());
-      RTC_DCHECK_EQ(env_.clock().CurrentTime(), packet.log_time());
-      it->second->InsertPacket(rtp_packet);
-    } else {
-      RTC_LOG(LS_WARNING) << "Received packet for unknown ssrc="
-                          << packet.rtp.header.ssrc
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                          << " (simulated_ts=" << env_.clock().CurrentTime()
+      RTC_LOG(LS_WARNING) << "Received packet for unknown ssrc=" << ssrc                          << " (simulated_ts=" << env_.clock().CurrentTime()
                           << ")";
     }
   });
 }
 
-<<<<<<< HEAD
 void RtcEventLogDriver::OnLoggedRtcpPacketSenderReportOutgoing(
     const LoggedRtcpPacketSenderReport& packet) {
   HandleEvent(packet.log_time(), [this, packet]() {
@@ -419,8 +305,4 @@ void RtcEventLogDriver::TeardownOnQueue() {
   receiving_streams_.clear();
   streams_.clear();
   rtt_simulator_.reset();
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}  // namespace webrtc::video_timing_simulator
+}}  // namespace webrtc::video_timing_simulator

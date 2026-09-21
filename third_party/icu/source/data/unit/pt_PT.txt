@@ -80,12 +80,7 @@ pt_PT{
                 one{"{0} milimole por litro"}
                 other{"{0} milimoles por litro"}
             }
-<<<<<<< HEAD
-            part-per-1e9{
-=======
-            portion-per-1e9{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                dnam{"partes por mil milhões"}
+part-per-1e9{                dnam{"partes por mil milhões"}
                 one{"{0} parte por mil milhões"}
                 other{"{0} partes por mil milhões"}
             }
@@ -276,16 +271,10 @@ pt_PT{
             karat{
                 dnam{"quilates"}
             }
-<<<<<<< HEAD
-            part-per-1e9{
-                dnam{"ppmm"}
-=======
-            portion-per-1e9{
+portion-per-1e9{
                 dnam{"ppmm"}
                 one{"{0} ppmm"}
-                other{"{0} ppmm"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} ppmm"}            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -449,12 +438,7 @@ pt_PT{
             millimole-per-liter{
                 dnam{"milimole/litro"}
             }
-<<<<<<< HEAD
-            part-per-1e9{
-=======
-            portion-per-1e9{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                dnam{"partes/mil milhões"}
+portion-per-1e9{                dnam{"partes/mil milhões"}
                 one{"{0} ppmm"}
                 other{"{0} ppmm"}
             }

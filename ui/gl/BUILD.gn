@@ -240,14 +240,8 @@ component("gl") {
   }
 
   if (use_ozone) {
-<<<<<<< HEAD
-    if (!is_fuchsia) {
-      if (!use_static_angle || is_chromeos) {
-=======
-    if (!is_fuchsia && !is_cobalt_hermetic_build) {
-      if (!use_static_angle) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        data_deps += [
+if (!is_fuchsia && !is_cobalt_hermetic_build) {
+      if (!use_static_angle || is_chromeos) {        data_deps += [
           "//third_party/angle:libEGL",
           "//third_party/angle:libGLESv2",
         ]

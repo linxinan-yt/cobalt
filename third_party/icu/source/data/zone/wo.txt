@@ -28,14 +28,9 @@ wo{
             ls{"Afrique du Sud"}
         }
         "meta:Africa_Western"{
-<<<<<<< HEAD
-            ls{"Waxtu sowwu Afrique"}
-=======
-            ld{"Afrique du sowwu jant"}
+ld{"Afrique du sowwu jant"}
             lg{"Waxtu sowwu Afrique"}
-            ls{"Waxtu buñ miin ci sowwu Afrique"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Waxtu buñ miin ci sowwu Afrique"}        }
         "meta:Alaska"{
             ld{"Waxtu bëccëg ci Alaska"}
             lg{"Waxtu Alaska"}
@@ -273,12 +268,6 @@ wo{
         "meta:Guyana"{
             ls{"Waxtu Guyana"}
         }
-<<<<<<< HEAD
-        "meta:Hawaii"{
-            ls{"Waxtu buñ jagleel Hawaii-Aleutian"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "meta:Hawaii_Aleutian"{
             ld{"Waxtu bëccëg bu Hawaii-Aleutian"}
             lg{"Waxtu Hawaii-Aleutian"}

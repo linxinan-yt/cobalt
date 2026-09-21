@@ -272,13 +272,8 @@ class RTC_EXPORT Port : public PortInterface {
       const void* tag,
       absl::AnyInvocable<void(Port*, const Candidate&)> callback);
   void NotifyCandidateReady(Port* port, const Candidate& candidate) {
-<<<<<<< HEAD
-    RTC_DCHECK_RUN_ON(thread_);
-    candidate_ready_callback_list_.Send(this, candidate);
-=======
-    SignalCandidateReady(port, candidate);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+RTC_DCHECK_RUN_ON(thread_);
+    candidate_ready_callback_list_.Send(this, candidate);  }
   // Provides all of the above information in one handy object.
   const std::vector<Candidate>& Candidates() const override;
   // Fired when candidate discovery failed using certain server.
@@ -290,35 +285,23 @@ class RTC_EXPORT Port : public PortInterface {
 
   // SignalPortComplete is sent when port completes the task of candidates
   // allocation.
-<<<<<<< HEAD
-  void SubscribePortComplete(const void* tag,
+void SubscribePortComplete(const void* tag,
                              absl::AnyInvocable<void(Port*)> callback);
   void NotifyPortComplete(Port* port) {
     RTC_DCHECK_RUN_ON(thread_);
     port_complete_callback_list_.Send(this);
   }
-=======
-  void SubscribePortComplete(absl::AnyInvocable<void(Port*)> callback);
-  void NotifyPortComplete(Port* port) { SignalPortComplete(port); }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   // This signal sent when port fails to allocate candidates and this port
   // can't be used in establishing the connections. When port is in shared mode
   // and port fails to allocate one of the candidates, port shouldn't send
   // this signal as other candidates might be usefull in establishing the
   // connection.
-<<<<<<< HEAD
-  void SubscribePortError(const void* tag,
+void SubscribePortError(const void* tag,
                           absl::AnyInvocable<void(Port*)> callback);
   void NotifyPortError(Port* port) {
     RTC_DCHECK_RUN_ON(thread_);
     port_error_callback_list_.Send(this);
   }
-=======
-  void SubscribePortError(absl::AnyInvocable<void(Port*)> callback);
-  void NotifyPortError(Port* port) { SignalPortError(port); }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   void SubscribePortDestroyed(
       const void* tag,
       std::function<void(PortInterface*)> callback) override;

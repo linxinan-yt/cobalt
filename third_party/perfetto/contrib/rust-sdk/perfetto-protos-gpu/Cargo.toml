@@ -1,14 +1,8 @@
 [package]
 edition = "2024"
 name = "perfetto-sdk-protos-gpu"
-<<<<<<< HEAD
 version = "1.0.2"
-authors = ["David Reveman <reveman@meta.com>"]
-=======
-version = "0.1.1"
-authors = ["David Reveman <dreveman@gmail.com>"]
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-description = "Extra protobuf bindings for GPU events"
+authors = ["David Reveman <reveman@meta.com>"]description = "Extra protobuf bindings for GPU events"
 readme = "README.md"
 keywords = [
     "tracing",
@@ -24,12 +18,7 @@ default = ["vendored"]
 vendored = ["perfetto-sdk/vendored"]
 
 [dependencies]
-<<<<<<< HEAD
-perfetto-sdk = { path = "../perfetto", version = "1", default-features = false }
-=======
-perfetto-sdk = { path = "../perfetto", version = "0.1.1", default-features = false }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-paste = "1"
+perfetto-sdk = { path = "../perfetto", version = "1", default-features = false }paste = "1"
 
 [[example]]
 name = "gpu_counters"

@@ -468,17 +468,6 @@ he{
             }
         }
         gregorian{
-<<<<<<< HEAD
-=======
-            AmPmMarkers{
-                "AM",
-                "PM",
-            }
-            AmPmMarkersNarrow{
-                "AM",
-                "PM",
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             DateTimePatterns{
                 "H:mm:ss zzzz",
                 "H:mm:ss z",
@@ -1376,36 +1365,11 @@ he{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"בעוד יום שישי אחד ({0})"}
-=======
-                    one{"בעוד יום שישי אחד {0}"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"בעוד {0} ימי שישי"}
+one{"בעוד יום שישי אחד {0}"}                    other{"בעוד {0} ימי שישי"}
                     two{"בעוד {0} ימי שישי"}
                 }
                 past{
-<<<<<<< HEAD
-                    one{"לפני יום שישי אחד ({0})"}
-=======
-                    one{"לפני יום שישי אחד {0}"}
-                    other{"לפני {0} ימי שישי"}
-                    two{"לפני {0} ימי שישי"}
-                }
-            }
-        }
-        fri-narrow{
-            relativeTime{
-                future{
-                    many{"בעוד {0} ימי ו׳"}
-                    one{"בעוד יום ו׳ אחד {0}"}
-                    other{"בעוד {0} ימי ו׳"}
-                    two{"בעוד {0} ימי ו׳"}
-                }
-                past{
-                    one{"לפני יום ו׳ אחד {0}"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"לפני {0} ימי שישי"}
+one{"לפני יום שישי אחד ({0})"}                    other{"לפני {0} ימי שישי"}
                     two{"לפני {0} ימי שישי"}
                 }
             }
@@ -1434,8 +1398,7 @@ he{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    many{"בעוד {0} ימי ו׳"}
+many{"בעוד {0} ימי ו׳"}
                     one{"בעוד יום ו׳ אחד ({0})"}
                     other{"בעוד {0} ימי ו׳"}
                     two{"בעוד {0} ימי ו׳"}
@@ -1444,18 +1407,7 @@ he{
                     many{"לפני {0} ימי ו׳"}
                     one{"לפני יום ו׳ אחד ({0})"}
                     other{"לפני {0} ימי ו׳"}
-                    two{"לפני {0} ימי ו׳"}
-=======
-                    one{"בעוד יום שישי אחד {0}"}
-                    other{"בעוד {0} ימי שישי"}
-                    two{"בעוד {0} ימי שישי"}
-                }
-                past{
-                    one{"לפני יום שישי אחד {0}"}
-                    other{"לפני {0} ימי שישי"}
-                    two{"לפני {0} ימי שישי"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+                    two{"לפני {0} ימי ו׳"}                }
             }
         }
         hour{
@@ -1704,31 +1656,15 @@ he{
                     two{"בעוד {0} שבתות"}
                 }
                 past{
-<<<<<<< HEAD
-                    one{"לפני שבת אחת ({0})"}
-=======
-                    one{"לפני שבת אחת {0}"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"לפני {0} שבתות"}
+one{"לפני שבת אחת ({0})"}                    other{"לפני {0} שבתות"}
                     two{"לפני {0} שבתות"}
                 }
             }
         }
         sat-narrow{
             relativeTime{
-<<<<<<< HEAD
-                future{
-                    one{"בעוד שבת אחת ({0})"}
-                    other{"בעוד {0} שבתות"}
-                    two{"בעוד {0} שבתות"}
-                }
-                past{
-                    one{"לפני שבת אחת ({0})"}
-=======
-                past{
-                    one{"לפני שבת אחת {0}"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"לפני {0} שבתות"}
+past{
+                    one{"לפני שבת אחת {0}"}                    other{"לפני {0} שבתות"}
                     two{"לפני {0} שבתות"}
                 }
             }
@@ -1740,19 +1676,13 @@ he{
                 "1"{"שבת הבאה"}
             }
             relativeTime{
-<<<<<<< HEAD
-                future{
+future{
                     one{"בעוד שבת אחת ({0})"}
                     other{"בעוד {0} שבתות"}
                     two{"בעוד {0} שבתות"}
                 }
                 past{
-                    one{"לפני שבת אחת ({0})"}
-=======
-                past{
-                    one{"לפני שבת אחת {0}"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"לפני {0} שבתות"}
+                    one{"לפני שבת אחת ({0})"}                    other{"לפני {0} שבתות"}
                     two{"לפני {0} שבתות"}
                 }
             }
@@ -1828,8 +1758,7 @@ he{
         sun-narrow{
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    many{"בעוד {0} ימי א׳"}
+many{"בעוד {0} ימי א׳"}
                     one{"בעוד יום א׳ אחד ({0})"}
                     other{"בעוד {0} ימי א׳"}
                     two{"בעוד {0} ימי א׳"}
@@ -1839,14 +1768,7 @@ he{
                     one{"לפני יום א׳ אחד ({0})"}
                     other{"לפני {0} ימי א׳"}
                     two{"לפני {0} ימי א׳"}
-                }
-=======
-                    one{"בעוד יום ראשון {0}"}
-                    other{"בעוד {0} ימי ראשון"}
-                    two{"בעוד {0} ימי א׳"}
-                }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                }            }
         }
         sun-short{
             relative{
@@ -2190,9 +2112,7 @@ he{
                 "[\\: ∶]",
             }
         }
-<<<<<<< HEAD
-=======
-        general{
+general{
             lenient{
                 "[.．․﹒ 。｡︒]",
                 "['＇’ ՚ ᾽᾿ ʼ]",
@@ -2204,9 +2124,7 @@ he{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        number{
+        }        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ، ٫ 、﹑､︑]",

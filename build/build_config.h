@@ -273,12 +273,6 @@
 #define BUILDFLAG_INTERNAL_IS_OZONE() (0)
 #endif
 
-<<<<<<< HEAD
-#if __PTRAUTH__
-#define BUILDFLAG_INTERNAL_ARCH_CPU_PTRAUTH() (1)
-#else
-#define BUILDFLAG_INTERNAL_ARCH_CPU_PTRAUTH() (0)
-=======
 #if defined(ENABLE_BUILDFLAG_IS_COBALT)
 #define BUILDFLAG_INTERNAL_IS_COBALT() (1)
 #else
@@ -366,8 +360,12 @@
 #define BUILDFLAG_INTERNAL_IS_PARTNER_TOOLCHAIN() (1)
 #else
 #define BUILDFLAG_INTERNAL_IS_PARTNER_TOOLCHAIN() (0)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #endif
+
+#if __PTRAUTH__
+#define BUILDFLAG_INTERNAL_ARCH_CPU_PTRAUTH() (1)
+#else
+#define BUILDFLAG_INTERNAL_ARCH_CPU_PTRAUTH() (0)#endif
 
 // Compiler detection. Note: clang masquerades as GCC on POSIX and as MSVC on
 // Windows.

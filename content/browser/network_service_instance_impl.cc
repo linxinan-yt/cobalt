@@ -790,7 +790,6 @@ base::CallbackListSubscription RegisterNetworkServiceProcessGoneHandler(
   return GetProcessGoneHandlersList().Add(std::move(handler));
 }
 
-<<<<<<< HEAD
 void AddNetworkServiceProcessObserver(NetworkServiceProcessObserver* observer) {
   DCHECK_CURRENTLY_ON(BrowserThread::UI);
   if (!g_observed_network_service) {
@@ -809,11 +808,7 @@ void RemoveNetworkServiceProcessObserver(
   g_observed_network_service->RemoveObserver(observer);
 }
 
-#if BUILDFLAG(IS_CHROMEOS)
-=======
-#if BUILDFLAG(IS_CHROMEOS) || BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-net::NetworkChangeNotifier* GetNetworkChangeNotifier() {
+#if BUILDFLAG(IS_CHROMEOS) || BUILDFLAG(IS_COBALT)net::NetworkChangeNotifier* GetNetworkChangeNotifier() {
   return BrowserMainLoop::GetInstance()->network_change_notifier();
 }
 #endif

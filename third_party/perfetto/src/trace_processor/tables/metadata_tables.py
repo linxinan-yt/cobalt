@@ -1124,19 +1124,10 @@ TRACE_IMPORT_LOGS_TABLE = Table(
     class_name='TraceImportLogsTable',
     sql_name='__intrinsic_trace_import_logs',
     columns=[
-<<<<<<< HEAD
-        C('trace_id', CppTableId(TRACE_FILE_TABLE)),
+C('trace_id', CppTableId(TRACE_FILE_TABLE)),
         C('ts', CppOptional(CppInt64())),
         C('byte_offset', CppOptional(CppInt64())),
-        C('stat_key', CppInt64()),
-=======
-        C('trace_id', CppUint32()),
-        C('ts', CppOptional(CppInt64())),
-        C('byte_offset', CppOptional(CppInt64())),
-        C('severity', CppString()),
-        C('name', CppString()),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        C(
+        C('stat_key', CppInt64()),        C(
             'arg_set_id',
             CppOptional(CppUint32()),
             cpp_access=CppAccess.READ_AND_LOW_PERF_WRITE,
@@ -1155,12 +1146,8 @@ ALL_TABLES = [
     EXP_MISSING_CHROME_PROC_TABLE,
     FILEDESCRIPTOR_TABLE,
     FTRACE_EVENT_TABLE,
-<<<<<<< HEAD
-    GPU_TABLE,
-    INTERRUPT_MAPPING_TABLE,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    TRACE_IMPORT_LOGS_TABLE,
+GPU_TABLE,
+    INTERRUPT_MAPPING_TABLE,    TRACE_IMPORT_LOGS_TABLE,
     MACHINE_TABLE,
     METADATA_TABLE,
     STATS_TABLE,

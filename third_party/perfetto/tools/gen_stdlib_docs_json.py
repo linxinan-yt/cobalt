@@ -103,122 +103,12 @@ def main():
     with open(args.json_out, 'w', encoding='utf-8') as f:
       json.dump(output_data, f, indent=None if args.minify else 2)
 
-<<<<<<< HEAD
-    return 0
+return 0
   except Exception as e:
     print(f"Error generating docs JSON: {e}", file=sys.stderr)
     import traceback
     traceback.print_exc()
     return 1
-=======
-    docs = parse_file(
-        path,
-        sql,
-        options=DocParseOptions(enforce_every_column_set_is_documented=True),
-    )
-
-    # Some modules (i.e `deprecated`) should not generate docs.
-    if not docs:
-      continue
-
-    if len(docs.errors) > 0:
-      for e in docs.errors:
-        print(e)
-      return 1
-
-    module_dict = {
-        'module_name':
-            module_name,
-        'module_doc': {
-            'name': docs.module_doc.name,
-            'desc': docs.module_doc.desc,
-        } if docs.module_doc else None,
-        'data_objects': [{
-            'name':
-                table.name,
-            'desc':
-                table.desc,
-            'summary_desc':
-                _summary_desc(table.desc),
-            'type':
-                table.type,
-            'cols': [{
-                'name': col_name,
-                'type': col.long_type,
-                'desc': col.description,
-                'table': _long_type_to_table(col.long_type)[0],
-                'column': _long_type_to_table(col.long_type)[1],
-            } for (col_name, col) in table.cols.items()]
-        } for table in docs.table_views],
-        'functions': [{
-            'name': function.name,
-            'desc': function.desc,
-            'summary_desc': _summary_desc(function.desc),
-            'args': [{
-                'name': arg_name,
-                'type': arg.long_type,
-                'desc': arg.description,
-                'table': _long_type_to_table(arg.long_type)[0],
-                'column': _long_type_to_table(arg.long_type)[1],
-            } for (arg_name, arg) in function.args.items()],
-            'return_type': function.return_type,
-            'return_desc': function.return_desc,
-        } for function in docs.functions],
-        'table_functions': [{
-            'name':
-                function.name,
-            'desc':
-                function.desc,
-            'summary_desc':
-                _summary_desc(function.desc),
-            'args': [{
-                'name': arg_name,
-                'type': arg.long_type,
-                'desc': arg.description,
-                'table': _long_type_to_table(arg.long_type)[0],
-                'column': _long_type_to_table(arg.long_type)[1],
-            } for (arg_name, arg) in function.args.items()],
-            'cols': [{
-                'name': col_name,
-                'type': col.long_type,
-                'table': _long_type_to_table(col.long_type)[0],
-                'column': _long_type_to_table(col.long_type)[1],
-                'desc': col.description
-            } for (col_name, col) in function.cols.items()]
-        } for function in docs.table_functions],
-        'macros': [{
-            'name':
-                macro.name,
-            'desc':
-                macro.desc,
-            'summary_desc':
-                _summary_desc(macro.desc),
-            'return_desc':
-                macro.return_desc,
-            'return_type':
-                macro.return_type,
-            'args': [{
-                'name': arg_name,
-                'type': arg.long_type,
-                'desc': arg.description,
-                'table': _long_type_to_table(arg.long_type)[0],
-                'column': _long_type_to_table(arg.long_type)[1],
-            } for (arg_name, arg) in macro.args.items()],
-        } for macro in docs.macros],
-    }
-    packages[package_name].append(module_dict)
-
-  packages_list = [{
-      "name": name,
-      "modules": modules
-  } for name, modules in packages.items()]
-
-  with open(args.json_out, 'w+') as f:
-    json.dump(packages_list, f, indent=None if args.minify else 4)
-
-  return 0
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 
 if __name__ == '__main__':
   sys.exit(main())

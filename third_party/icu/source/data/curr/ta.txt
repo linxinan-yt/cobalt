@@ -1277,12 +1277,8 @@ ta{
             one{"ஸாம்பியன் குவாச்சா"}
             other{"ஸாம்பியன் குவாச்சாக்கள்"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             one{"ஜிம்பாப்வே தங்கம்"}
             other{"ஜிம்பாப்வே தங்கம்"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

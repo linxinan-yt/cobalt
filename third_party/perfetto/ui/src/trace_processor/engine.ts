@@ -573,14 +573,9 @@ export abstract class EngineBase implements Engine, Disposable {
     rpc.request = TPM.TPM_QUERY_STREAMING;
     rpc.queryArgs = new protos.QueryArgs();
     rpc.queryArgs.sqlQuery = sqlQuery;
-<<<<<<< HEAD
-    rpc.queryArgs.tag = tag;
-=======
-    if (tag) {
+if (tag) {
       rpc.queryArgs.tag = tag;
-    }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    this.pendingQueries.push(result);
+    }    this.pendingQueries.push(result);
     this.rpcSendRequest(rpc);
   }
 
@@ -612,19 +607,11 @@ export abstract class EngineBase implements Engine, Disposable {
   async query(sqlQuery: string, tag?: string): Promise<QueryResult> {
     const queryLog = this.logQueryStart(sqlQuery, tag);
     try {
-<<<<<<< HEAD
-      const result = createQueryResult({query: sqlQuery, tag});
+const result = createQueryResult({query: sqlQuery, tag});
       this.streamingQuery(result, sqlQuery, tag);
       const resolvedResult = await result;
       queryLog.success = true;
-      queryLog.elapsedTimeMs = resolvedResult.elapsedTimeMs();
-=======
-      const result = createQueryResult({query: sqlQuery});
-      this.streamingQuery(result, sqlQuery, tag);
-      const resolvedResult = await result;
-      queryLog.success = true;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      return resolvedResult;
+      queryLog.elapsedTimeMs = resolvedResult.elapsedTimeMs();      return resolvedResult;
     } catch (e) {
       // Replace the error's stack trace with the one from here
       // Note: It seems only V8 can trace the stack up the promise chain, so its

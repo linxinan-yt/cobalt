@@ -13,12 +13,7 @@
 // limitations under the License.
 
 import {DisposableStack} from '../base/disposable_stack';
-<<<<<<< HEAD
 import {type Bounds2D, Rect2D, Vector2D} from '../base/geom';
-=======
-import {Bounds2D, Rect2D, Vector2D} from '../base/geom';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 export interface VirtualScrollHelperZoneConfig {
   overdrawPx: number;
 

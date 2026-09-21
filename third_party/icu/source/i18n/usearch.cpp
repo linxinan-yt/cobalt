@@ -152,8 +152,6 @@ inline int32_t getCE(const UStringSearch *strsrch, uint32_t sourcece)
 }
 
 /**
-<<<<<<< HEAD
-=======
 * Allocate a memory and returns nullptr if it failed.
 * Internal method, status assumed to be a success.
 * @param size to allocate
@@ -171,9 +169,7 @@ inline void * allocateMemory(uint32_t size, UErrorCode *status)
     return result;
 }
 
-/**
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-* Adds a uint32_t value to a destination array.
+/*** Adds a uint32_t value to a destination array.
 * Creates a new array if we run out of space. The caller will have to
 * manually deallocate the newly allocated array.
 * destination not to be nullptr and has at least size destinationCapacity.
@@ -195,8 +191,7 @@ inline int32_t * addTouint32_tArray(int32_t    *destination,
                                     uint32_t    increments,
                                     UErrorCode *status)
 {
-<<<<<<< HEAD
-    if (U_FAILURE(*status)) {
+if (U_FAILURE(*status)) {
         return destination;
     }
     if (offset >= *destinationCapacity) {
@@ -204,17 +199,7 @@ inline int32_t * addTouint32_tArray(int32_t    *destination,
         int32_t* temp = static_cast<int32_t*>(uprv_malloc(sizeof(int32_t) * newlength));
         if (temp == nullptr) {
             *status = U_MEMORY_ALLOCATION_ERROR;
-            return destination;
-=======
-    uint32_t newlength = *destinationlength;
-    if (offset + 1 == newlength) {
-        newlength += increments;
-        int32_t* temp = static_cast<int32_t*>(allocateMemory(
-                                         sizeof(int32_t) * newlength, status));
-        if (U_FAILURE(*status)) {
-            return nullptr;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            return destination;        }
         uprv_memcpy(temp, destination, sizeof(int32_t) * (size_t)offset);
         if (destOnHeap) {
             uprv_free(destination);
@@ -249,8 +234,7 @@ inline int64_t * addTouint64_tArray(int64_t    *destination,
                                     uint32_t    increments,
                                     UErrorCode *status)
 {
-<<<<<<< HEAD
-    if (U_FAILURE(*status)) {
+if (U_FAILURE(*status)) {
         return destination;
     }
     if (offset >= *destinationCapacity) {
@@ -258,18 +242,7 @@ inline int64_t * addTouint64_tArray(int64_t    *destination,
         int64_t* temp = static_cast<int64_t*>(uprv_malloc(sizeof(int64_t) * newlength));
         if (temp == nullptr) {
             *status = U_MEMORY_ALLOCATION_ERROR;
-            return destination;
-=======
-    uint32_t newlength = *destinationlength;
-    if (offset + 1 == newlength) {
-        newlength += increments;
-        int64_t* temp = static_cast<int64_t*>(allocateMemory(
-                                         sizeof(int64_t) * newlength, status));
-
-        if (U_FAILURE(*status)) {
-            return nullptr;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            return destination;        }
         uprv_memcpy(temp, destination, sizeof(int64_t) * (size_t)offset);
         if (destOnHeap) {
             uprv_free(destination);

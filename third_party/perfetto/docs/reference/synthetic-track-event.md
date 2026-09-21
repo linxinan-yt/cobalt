@@ -1121,7 +1121,6 @@ the following output:
 
 ![Interned Callstacks](/docs/images/synthetic-track-event-interned-callstack.png)
 
-<<<<<<< HEAD
 ## Enriching Events with Additional Data
 
 Beyond a name and a timestamp, each event can carry extra data: weights that
@@ -1332,11 +1331,7 @@ flamegraph changes, as `RenderOutput` allocates many more objects than
 ![Callstacks by Objects](/docs/images/synthetic-track-event-callstack-objects.png)
 
 As with `callstack_weight`, only samples which actually have that argument are
-included in the measure.
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-### Linking Related Events with Correlation IDs
+included in the measure.### Linking Related Events with Correlation IDs
 
 Correlation IDs provide a way to visually link slices that are part of the same
 logical operation, even when they are not causally connected. Unlike flows,

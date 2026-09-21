@@ -11,9 +11,7 @@
 #include <string_view>
 #include <unordered_map>
 
-<<<<<<< HEAD
 #include "base/compiler_specific.h"
-=======
 #if BUILDFLAG(IS_COBALT)
 #include "base/containers/flat_map.h"
 #include "base/posix/eintr_wrapper.h"
@@ -22,9 +20,7 @@
 #include "base/strings/string_util.h"
 #endif
 
-#include "base/files/file_util.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "base/files/scoped_file.h"
+#include "base/files/file_util.h"#include "base/files/scoped_file.h"
 #include "base/format_macros.h"
 #include "base/logging.h"
 #include "base/memory/page_size.h"
@@ -111,9 +107,6 @@ bool ReadProcMaps(std::string* proc_maps) {
   return true;
 }
 
-<<<<<<< HEAD
-bool ParseProcMaps(std::string_view input,
-=======
 #if BUILDFLAG(IS_COBALT)
 
 bool ParseProcMaps(const std::string& input,
@@ -123,7 +116,7 @@ bool ParseProcMaps(const std::string& input,
 
   // Use SplitStringPiece to avoid heap allocations for every line.
   std::vector<std::string_view> lines = base::SplitStringPiece(
-      input, "\n", base::TRIM_WHITESPACE, base::SPLIT_WANT_ALL);
+      input, "\n", base::TRIM_WHICE, base::SPLIT_WANT_ALL);
 
   for (size_t i = 0; i < lines.size(); ++i) {
     // Due to splitting on '\n' the last line should be empty.
@@ -308,9 +301,7 @@ std::optional<SmapsRollup> ReadAndParseSmapsRollup() {
 
 #else  // !BUILDFLAG(IS_COBALT)
 
-bool ParseProcMaps(const std::string& input,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                   std::vector<MappedMemoryRegion>* regions_out) {
+bool ParseProcMaps(std::string_view input,                   std::vector<MappedMemoryRegion>* regions_out) {
   CHECK(regions_out);
   std::vector<MappedMemoryRegion> regions;
 

@@ -198,16 +198,10 @@ auto RunNetworkService(
       /*delay_initialization_until_set_client=*/true);
 }
 
-<<<<<<< HEAD
+#if !BUILDFLAG(IS_COBALT)
 auto RunDevToolsMediaEncodingService(
     mojo::PendingReceiver<
-        devtools_media_encoding_service::mojom::DevToolsMediaEncodingService>
-=======
-#if !BUILDFLAG(IS_COBALT)
-auto RunAuctionWorkletService(
-    mojo::PendingReceiver<auction_worklet::mojom::AuctionWorkletService>
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        receiver) {
+        devtools_media_encoding_service::mojom::DevToolsMediaEncodingService>        receiver) {
   return std::make_unique<DevToolsMediaEncodingServiceImpl>(std::move(receiver));
 }
 #endif  // !BUILDFLAG(IS_COBALT)
@@ -417,14 +411,10 @@ void RegisterIOThreadServices(mojo::ServiceFactory& services) {
 }
 
 void RegisterMainThreadServices(mojo::ServiceFactory& services) {
-<<<<<<< HEAD
-  services.Add(RunDevToolsMediaEncodingService);
-=======
+services.Add(RunDevToolsMediaEncodingService);
 #if !BUILDFLAG(IS_COBALT)
   services.Add(RunAuctionWorkletService);
-#endif  // !BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  services.Add(RunAudio);
+#endif  // !BUILDFLAG(IS_COBALT)  services.Add(RunAudio);
 
 #if !BUILDFLAG(IS_COBALT)
   services.Add(RunDataDecoder);

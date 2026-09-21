@@ -34,13 +34,8 @@ plurals:table(nofallback){
         ckb{"set7"}
         cs{"set27"}
         csw{"set5"}
-<<<<<<< HEAD
-        cv{"set14"}
-        cy{"set39"}
-=======
-        cy{"set38"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        da{"set8"}
+cv{"set14"}
+        cy{"set39"}        da{"set8"}
         de{"set3"}
         doi{"set1"}
         dsb{"set26"}
@@ -61,12 +56,7 @@ plurals:table(nofallback){
         fr{"set20"}
         fur{"set7"}
         fy{"set3"}
-<<<<<<< HEAD
-        ga{"set35"}
-=======
-        ga{"set34"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        gd{"set24"}
+ga{"set35"}        gd{"set24"}
         gl{"set3"}
         gsw{"set7"}
         gu{"set1"}
@@ -183,11 +173,7 @@ plurals:table(nofallback){
         seh{"set7"}
         ses{"set0"}
         sg{"set0"}
-<<<<<<< HEAD
-        sgs{"set32"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        sh{"set19"}
+sgs{"set32"}        sh{"set19"}
         shi{"set17"}
         si{"set4"}
         sk{"set27"}
@@ -243,8 +229,7 @@ plurals:table(nofallback){
         zu{"set1"}
     }
     locales_ordinals{
-<<<<<<< HEAD
-        af{"set40"}
+af{"set40"}
         am{"set40"}
         an{"set40"}
         ar{"set40"}
@@ -353,116 +338,7 @@ plurals:table(nofallback){
         vi{"set42"}
         yue{"set40"}
         zh{"set40"}
-        zu{"set40"}
-=======
-        af{"set39"}
-        am{"set39"}
-        an{"set39"}
-        ar{"set39"}
-        as{"set61"}
-        ast{"set39"}
-        az{"set59"}
-        bal{"set41"}
-        be{"set44"}
-        bg{"set39"}
-        blo{"set53"}
-        bn{"set61"}
-        bs{"set39"}
-        ca{"set57"}
-        ce{"set39"}
-        cs{"set39"}
-        cy{"set63"}
-        da{"set39"}
-        de{"set39"}
-        dsb{"set39"}
-        el{"set39"}
-        en{"set54"}
-        es{"set39"}
-        et{"set39"}
-        eu{"set39"}
-        fa{"set39"}
-        fi{"set39"}
-        fil{"set41"}
-        fr{"set41"}
-        fy{"set39"}
-        ga{"set41"}
-        gd{"set56"}
-        gl{"set39"}
-        gsw{"set39"}
-        gu{"set60"}
-        he{"set39"}
-        hi{"set60"}
-        hr{"set39"}
-        hsb{"set39"}
-        hu{"set42"}
-        hy{"set41"}
-        ia{"set39"}
-        id{"set39"}
-        in{"set39"}
-        is{"set39"}
-        it{"set48"}
-        iw{"set39"}
-        ja{"set39"}
-        ka{"set50"}
-        kk{"set47"}
-        km{"set39"}
-        kn{"set39"}
-        ko{"set39"}
-        kw{"set52"}
-        ky{"set39"}
-        lij{"set49"}
-        lld{"set48"}
-        lo{"set41"}
-        lt{"set39"}
-        lv{"set39"}
-        mk{"set58"}
-        ml{"set39"}
-        mn{"set39"}
-        mo{"set41"}
-        mr{"set55"}
-        ms{"set41"}
-        my{"set39"}
-        nb{"set39"}
-        ne{"set43"}
-        nl{"set39"}
-        no{"set39"}
-        or{"set62"}
-        pa{"set39"}
-        pl{"set39"}
-        prg{"set39"}
-        ps{"set39"}
-        pt{"set39"}
-        ro{"set41"}
-        root{"set39"}
-        ru{"set39"}
-        sc{"set48"}
-        scn{"set48"}
-        sd{"set39"}
-        sh{"set39"}
-        si{"set39"}
-        sk{"set39"}
-        sl{"set39"}
-        sq{"set51"}
-        sr{"set39"}
-        sv{"set40"}
-        sw{"set39"}
-        ta{"set39"}
-        te{"set39"}
-        th{"set39"}
-        tk{"set46"}
-        tl{"set41"}
-        tpi{"set39"}
-        tr{"set39"}
-        uk{"set45"}
-        ur{"set39"}
-        uz{"set39"}
-        vec{"set48"}
-        vi{"set41"}
-        yue{"set39"}
-        zh{"set39"}
-        zu{"set39"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        zu{"set40"}    }
     rules{
         set0{
             other{
@@ -797,8 +673,7 @@ plurals:table(nofallback){
             }
         }
         set32{
-<<<<<<< HEAD
-            few{
+few{
                 "n != 2 and n % 10 = 2..9 and n % 100 != 11..19 @integer 3~9, 22~29, "
                 "32, 102, 1002, … @decimal 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 22.0, 1"
                 "02.0, 1002.0, …"
@@ -816,10 +691,7 @@ plurals:table(nofallback){
             }
             two{"n = 2 @integer 2 @decimal 2.0, 2.00, 2.000, 2.0000"}
         }
-        set33{
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            few{
+        set33{            few{
                 "n % 10 = 3..4,9 and n % 100 != 10..19,70..79,90..99 @integer 3, 4, 9"
                 ", 23, 24, 29, 33, 34, 39, 43, 44, 49, 103, 1003, … @decimal 3.0, 4.0"
                 ", 9.0, 23.0, 24.0, 29.0, 33.0, 34.0, 103.0, 1003.0, …"
@@ -1146,10 +1018,7 @@ plurals:table(nofallback){
                 "00000, 1000000, …"
             }
         }
-<<<<<<< HEAD
-        set61{
-=======
-        set6{
+set6{
             one{
                 "n = 0..1 or n = 11..99 @integer 0, 1, 11~24 @decimal 0.0, 1.0, 11.0,"
                 " 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 2"
@@ -1160,9 +1029,7 @@ plurals:table(nofallback){
                 "1~0.9, 1.1~1.7, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0, …"
             }
         }
-        set60{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            few{"n = 4 @integer 4"}
+        set60{            few{"n = 4 @integer 4"}
             many{"n = 6 @integer 6"}
             one{"n = 1 @integer 1"}
             other{" @integer 0, 5, 7~20, 100, 1000, 10000, 100000, 1000000, …"}

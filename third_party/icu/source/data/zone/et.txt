@@ -18,15 +18,7 @@ et{
         "Africa:Khartoum"{
             ec{"Hartum"}
         }
-<<<<<<< HEAD
-        "Africa:Mogadishu"{
-            ec{"Muqdisho"}
-        }
-        "America:Bahia_Banderas"{
-            ec{"Bahia Banderas"}
-        }
-=======
-        "Africa:Lome"{
+"Africa:Lome"{
             ec{"Lomé"}
         }
         "Africa:Mogadishu"{
@@ -61,9 +53,7 @@ et{
         }
         "America:Eirunepe"{
             ec{"Eirunepé"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Havana"{
+        }        "America:Havana"{
             ec{"Havanna"}
         }
         "America:Mexico_City"{
@@ -78,16 +68,12 @@ et{
         "America:North_Dakota:New_Salem"{
             ec{"New Salem, Põhja-Dakota"}
         }
-<<<<<<< HEAD
-=======
-        "America:Santarem"{
+"America:Santarem"{
             ec{"Santarém"}
         }
         "America:Sao_Paulo"{
             ec{"São Paulo"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:St_Barthelemy"{
+        }        "America:St_Barthelemy"{
             ec{"Saint-Barthélemy"}
         }
         "America:St_Johns"{

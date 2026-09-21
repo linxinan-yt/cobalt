@@ -16,8 +16,7 @@ en_IN{
             "VEF",
             "Venezuelan Bolívar",
         }
-<<<<<<< HEAD
-        XCG{
+XCG{
             "Cg.",
             "Caribbean Guilder",
         }
@@ -29,19 +28,7 @@ en_IN{
         }
         KGS{
             one{"Kyrgyzstani Som"}
-            other{"Kyrgyzstani Soms"}
-=======
-        VES{
-            "VES",
-            "VEF",
-        }
-    }
-    CurrencyPlurals{
-        KGS{
-            one{"Kyrgyzstani som"}
-            other{"Kyrgyzstani soms"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            other{"Kyrgyzstani Soms"}        }
         KZT{
             one{"Kazakhstani Tenge"}
             other{"Kazakhstani Tenges"}
@@ -67,8 +54,7 @@ en_IN{
             other{"Venezuelan bolívars"}
         }
         VES{
-<<<<<<< HEAD
-            one{"Venezuelan Bolívar"}
+one{"Venezuelan Bolívar"}
             other{"Venezuelan Bolívars"}
         }
         XCG{
@@ -77,11 +63,6 @@ en_IN{
         }
         ZWG{
             one{"Zimbabwean Gold"}
-            other{"Zimbabwean Gold"}
-=======
-            one{"VEF"}
-            other{"VEF"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            other{"Zimbabwean Gold"}        }
     }
 }

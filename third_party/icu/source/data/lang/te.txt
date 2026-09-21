@@ -773,12 +773,7 @@ te{
             ethiopic-amete-alem{"ఇథియోపియన్ అమెటె ఆలెమ్ క్యాలెండర్"}
             gregorian{"గ్రేగోరియన్ క్యాలెండర్"}
             hebrew{"హీబ్రూ క్యాలెండర్"}
-<<<<<<< HEAD
-            indian{"భారతదేశ జాతీయ క్యాలెండర్"}
-=======
-            indian{"భారతీయ జాతీయ క్యాలెండర్"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            islamic{"ఇస్లామిక్ క్యాలెండర్"}
+indian{"భారతీయ జాతీయ క్యాలెండర్"}            islamic{"ఇస్లామిక్ క్యాలెండర్"}
             islamic-civil{"ఇస్లామిక్-సివిల్ క్యాలెండర్"}
             islamic-rgsa{"ఇస్లామిక్ క్యాలెండర్ (సౌదీ అరేబియా)"}
             islamic-tbla{"ఇస్లామిక్ క్యాలెండర్"}

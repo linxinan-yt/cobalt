@@ -208,11 +208,7 @@ void CalendarTest::runIndexedTest( int32_t index, UBool exec, const char* &name,
     TESTCASE_AUTO(Test22633RollTwiceGetTimeOverflow);
 
     TESTCASE_AUTO(Test22633HebrewLargeNegativeDay);
-<<<<<<< HEAD
-    TESTCASE_AUTO(Test23069HebrewHanukkah);
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    TESTCASE_AUTO(Test22730JapaneseOverflow);
+TESTCASE_AUTO(Test23069HebrewHanukkah);    TESTCASE_AUTO(Test22730JapaneseOverflow);
     TESTCASE_AUTO(Test22730CopticOverflow);
     TESTCASE_AUTO(Test22962ComputeJulianDayOverflow);
 
@@ -5898,12 +5894,7 @@ void CalendarTest::TestChineseCalendarComputeMonthStart() {  // ICU-22639
     UErrorCode status = U_ZERO_ERROR;
 
     // An extended year for which hasLeapMonthBetweenWinterSolstices is true.
-<<<<<<< HEAD
-    constexpr int32_t eyear = 2006;
-=======
-    constexpr int32_t eyear = 4643;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    constexpr int64_t monthStart = 2453764;
+constexpr int32_t eyear = 4643;    constexpr int64_t monthStart = 2453764;
 
     LocalPointer<Calendar> calendar(
         Calendar::createInstance(Locale("en_US@calendar=chinese"), status),
@@ -5936,7 +5927,6 @@ void CalendarTest::Test22633HebrewLargeNegativeDay() {
     calendar->get(UCAL_HOUR, status);
     assertEquals("status return without hang", status, U_ILLEGAL_ARGUMENT_ERROR);
 }
-<<<<<<< HEAD
 void CalendarTest::Test23069HebrewHanukkah() {
     // Based on Hanukkah data in
     // https://en.wikipedia.org/wiki/Jewish_and_Israeli_holidays_2000%E2%80%932050
@@ -6047,9 +6037,6 @@ void CalendarTest::Test23069HebrewHanukkah() {
         }
     }
 }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 void CalendarTest::Test22730JapaneseOverflow() {
     UErrorCode status = U_ZERO_ERROR;
     LocalPointer<Calendar> calendar(

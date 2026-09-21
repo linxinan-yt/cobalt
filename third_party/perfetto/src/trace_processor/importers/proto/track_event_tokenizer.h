@@ -57,33 +57,10 @@ class TrackEventTokenizer {
                                TraceProcessorContext*,
                                TrackEventTracker*);
 
-<<<<<<< HEAD
-  ModuleResult TokenizeRangeOfInterestPacket(const TokenizePacketArgs& args);
+ModuleResult TokenizeRangeOfInterestPacket(const TokenizePacketArgs& args);
   ModuleResult TokenizeTrackDescriptorPacket(const TokenizePacketArgs& args);
   ModuleResult TokenizeThreadDescriptorPacket(const TokenizePacketArgs& args);
   ModuleResult TokenizeTrackEventPacket(const TokenizePacketArgs& args);
-=======
-  ModuleResult TokenizeRangeOfInterestPacket(
-      RefPtr<PacketSequenceStateGeneration> state,
-      const protos::pbzero::TracePacket_Decoder&,
-      TraceBlobView* packet,
-      int64_t packet_timestamp);
-  ModuleResult TokenizeTrackDescriptorPacket(
-      RefPtr<PacketSequenceStateGeneration> state,
-      const protos::pbzero::TracePacket_Decoder&,
-      TraceBlobView* packet,
-      int64_t packet_timestamp);
-  ModuleResult TokenizeThreadDescriptorPacket(
-      RefPtr<PacketSequenceStateGeneration> state,
-      const protos::pbzero::TracePacket_Decoder&,
-      TraceBlobView* packet);
-  ModuleResult TokenizeTrackEventPacket(
-      RefPtr<PacketSequenceStateGeneration> state,
-      const protos::pbzero::TracePacket_Decoder&,
-      TraceBlobView* packet,
-      int64_t packet_timestamp);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
  private:
   void TokenizeThreadDescriptor(PacketSequenceStateGeneration& state,
                                 const protos::pbzero::ThreadDescriptor_Decoder&,
@@ -104,12 +81,7 @@ class TrackEventTokenizer {
       PacketSequenceStateGeneration& state);
 
   // Helper to record tokenization errors with packet offset
-<<<<<<< HEAD
-  void RecordTokenizationLog(size_t stat_key, TraceBlobView* packet);
-=======
-  void RecordTokenizationError(size_t stat_key, TraceBlobView* packet);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  // Helper to record tokenization errors with track_uuid arg
+void RecordTokenizationError(size_t stat_key, TraceBlobView* packet);  // Helper to record tokenization errors with track_uuid arg
   void RecordTokenizationErrorWithTrackUuid(size_t stat_key,
                                             uint64_t track_uuid,
                                             TraceBlobView* packet);

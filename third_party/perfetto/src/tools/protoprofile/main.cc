@@ -19,11 +19,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <cstdio>
-<<<<<<< HEAD
-#include <optional>
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include <string>
+#include <optional>#include <string>
 #include <unordered_map>
 #include <vector>
 
@@ -37,11 +33,7 @@
 #include "perfetto/protozero/scattered_heap_buffer.h"
 #include "src/trace_processor/importers/proto/android_extension.descriptor.h"
 #include "src/trace_processor/importers/proto/trace.descriptor.h"
-<<<<<<< HEAD
-#include "src/trace_processor/util/decompressor.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "src/trace_processor/util/descriptors.h"
+#include "src/trace_processor/util/decompressor.h"#include "src/trace_processor/util/descriptors.h"
 #include "src/trace_processor/util/proto_profiler.h"
 #include "src/trace_processor/util/trace_type.h"
 

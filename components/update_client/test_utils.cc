@@ -4,12 +4,9 @@
 
 #include "components/update_client/test_utils.h"
 
-<<<<<<< HEAD
 #include <string_view>
-=======
-#include "build/build_config.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
+#include "build/build_config.h"
 #include "base/base_paths.h"
 #include "base/files/file_path.h"
 #include "base/files/file_util.h"

@@ -92,12 +92,7 @@ class RtcEventLogEncoderNewFormat final : public RtcEventLogEncoder {
   void EncodeBweUpdateLossBased(
       std::span<const RtcEventBweUpdateLossBased*> batch,
       rtclog2::EventStream* event_stream);
-<<<<<<< HEAD
-  void EncodeBweUpdateScream(std::span<const RtcEventBweUpdateScream*> batch,
-=======
-  void EncodeBweUpdateScream(ArrayView<const RtcEventBweUpdateScream*> batch,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                             rtclog2::EventStream* event_stream);
+void EncodeBweUpdateScream(std::span<const RtcEventBweUpdateScream*> batch,                             rtclog2::EventStream* event_stream);
   void EncodeDtlsTransportState(
       std::span<const RtcEventDtlsTransportState*> batch,
       rtclog2::EventStream* event_stream);

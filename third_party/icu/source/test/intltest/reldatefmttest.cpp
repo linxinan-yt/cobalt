@@ -1109,18 +1109,11 @@ void RelativeDateTimeFormatterTest::TestGetters() {
     // copy and assignment.
     RelativeDateTimeFormatter fmt2(fmt);
     fmt3 = fmt2;
-<<<<<<< HEAD
-    assertEquals("style", UDAT_STYLE_NARROW, fmt3.getFormatStyle());
-    assertEquals("context", UDISPCTX_CAPITALIZATION_FOR_MIDDLE_OF_SENTENCE,
-                 fmt3.getCapitalizationContext());
-=======
-    assertEquals("style", static_cast<int32_t>(UDAT_STYLE_NARROW), fmt3.getFormatStyle());
+assertEquals("style", static_cast<int32_t>(UDAT_STYLE_NARROW), fmt3.getFormatStyle());
     assertEquals(
             "context",
             static_cast<int32_t>(UDISPCTX_CAPITALIZATION_FOR_MIDDLE_OF_SENTENCE),
-            fmt3.getCapitalizationContext());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    assertSuccess("", status);
+            fmt3.getCapitalizationContext());    assertSuccess("", status);
 }
 
 void RelativeDateTimeFormatterTest::TestCombineDateAndTime() {

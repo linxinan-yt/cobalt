@@ -1060,12 +1060,7 @@ TEST_F(WebRtcVideoEngineTest, ReceiveBufferSizeViaFieldTrial) {
   ChangeFieldTrials("WebRTC-ReceiveBufferSize", "size_bytes:10000");
   std::unique_ptr<VideoMediaReceiveChannelInterface> receive_channel =
       engine_->CreateReceiveChannel(env_, call_.get(), GetMediaConfig(),
-<<<<<<< HEAD
-                                    CryptoOptions());
-=======
-                                    VideoOptions(), CryptoOptions());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  FakeNetworkInterface network(env_);
+CryptoOptions());  FakeNetworkInterface network(env_);
   receive_channel->SetInterface(&network);
   EXPECT_EQ(10000, network.recvbuf_size());
   receive_channel->SetInterface(nullptr);
@@ -1077,12 +1072,7 @@ TEST_F(WebRtcVideoEngineTest, TooHighReceiveBufferSizeViaFieldTrial) {
   ChangeFieldTrials("WebRTC-ReceiveBufferSize", "size_bytes:10000001");
   std::unique_ptr<VideoMediaReceiveChannelInterface> receive_channel =
       engine_->CreateReceiveChannel(env_, call_.get(), GetMediaConfig(),
-<<<<<<< HEAD
-                                    CryptoOptions());
-=======
-                                    VideoOptions(), CryptoOptions());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  FakeNetworkInterface network(env_);
+CryptoOptions());  FakeNetworkInterface network(env_);
   receive_channel->SetInterface(&network);
   EXPECT_EQ(kVideoRtpRecvBufferSize, network.recvbuf_size());
   receive_channel->SetInterface(nullptr);
@@ -1093,12 +1083,7 @@ TEST_F(WebRtcVideoEngineTest, TooLowReceiveBufferSizeViaFieldTrial) {
   ChangeFieldTrials("WebRTC-ReceiveBufferSize", "size_bytes:9999");
   std::unique_ptr<VideoMediaReceiveChannelInterface> receive_channel =
       engine_->CreateReceiveChannel(env_, call_.get(), GetMediaConfig(),
-<<<<<<< HEAD
-                                    CryptoOptions());
-=======
-                                    VideoOptions(), CryptoOptions());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  FakeNetworkInterface network(env_);
+CryptoOptions());  FakeNetworkInterface network(env_);
   receive_channel->SetInterface(&network);
   EXPECT_EQ(kVideoRtpRecvBufferSize, network.recvbuf_size());
   receive_channel->SetInterface(nullptr);
@@ -2821,13 +2806,7 @@ class WebRtcVideoChannelTest : public WebRtcVideoEngineTest {
     fake_call_ = std::make_unique<FakeCall>(env_);
     send_channel_ = engine_->CreateSendChannel(
         env_, fake_call_.get(), GetMediaConfig(), VideoOptions(),
-<<<<<<< HEAD
-        CryptoOptions(), video_bitrate_allocator_factory_.get(), nullptr,
-        nullptr);
-    receive_channel_ = engine_->CreateReceiveChannel(
-        env_, fake_call_.get(), GetMediaConfig(), CryptoOptions());
-=======
-        CryptoOptions(), video_bitrate_allocator_factory_.get());
+CryptoOptions(), video_bitrate_allocator_factory_.get());
     receive_channel_ =
         engine_->CreateReceiveChannel(env_, fake_call_.get(), GetMediaConfig(),
                                       VideoOptions(), CryptoOptions());
@@ -2835,9 +2814,7 @@ class WebRtcVideoChannelTest : public WebRtcVideoEngineTest {
         [receive_channel =
              receive_channel_.get()](const std::set<uint32_t>& choices) {
           receive_channel->ChooseReceiverReportSsrc(choices);
-        });
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    send_channel_->OnReadyToSend(true);
+        });    send_channel_->OnReadyToSend(true);
     receive_channel_->SetReceive(true);
     last_ssrc_ = 123;
     send_parameters_.codecs = engine_->LegacySendCodecs();
@@ -3480,25 +3457,6 @@ TEST_F(WebRtcVideoChannelTest, RtcpIsCompoundByDefault) {
   EXPECT_EQ(RtcpMode::kCompound, stream->GetConfig().rtp.rtcp_mode);
 }
 
-<<<<<<< HEAD
-=======
-TEST_F(WebRtcVideoChannelTest, LossNotificationIsDisabledByDefault) {
-  TestLossNotificationState(false);
-}
-
-class WebRtcVideoChannelWithRtcpLossNotificationTest
-    : public WebRtcVideoChannelTest {
- public:
-  WebRtcVideoChannelWithRtcpLossNotificationTest()
-      : WebRtcVideoChannelTest("WebRTC-RtcpLossNotification/Enabled/") {}
-};
-
-TEST_F(WebRtcVideoChannelWithRtcpLossNotificationTest,
-       LossNotificationIsEnabledByFieldTrial) {
-  TestLossNotificationState(true);
-}
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 TEST_F(WebRtcVideoChannelTest, NackIsEnabledByDefault) {
   AssignDefaultCodec();
   VerifyCodecHasDefaultFeedbackParams(*default_codec_, false);
@@ -9317,12 +9275,7 @@ TEST_F(WebRtcVideoChannelWithMixedCodecSimulcastTest,
       send_channel_->SetRtpSendParameters(last_ssrc_, rtp_parameters).ok());
   rtp_parameters = send_channel_->GetRtpSendParameters(last_ssrc_);
   rtp_parameters.encodings[2].scalability_mode = "L2T1";
-<<<<<<< HEAD
-  RTCError error =
-=======
-  webrtc::RTCError error =
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      send_channel_->SetRtpSendParameters(last_ssrc_, rtp_parameters);
+webrtc::RTCError error =      send_channel_->SetRtpSendParameters(last_ssrc_, rtp_parameters);
   EXPECT_FALSE(error.ok());
   EXPECT_EQ(RTCErrorType::UNSUPPORTED_OPERATION, error.type());
   // UNSUPPORTED_OPERATION could also indicate mixed-codec rejection; verify the

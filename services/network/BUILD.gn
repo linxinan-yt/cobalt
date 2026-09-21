@@ -364,11 +364,7 @@ component("network_service") {
     "//components/content_settings/core/common",
     "//components/cookie_config",
     "//components/domain_reliability",
-<<<<<<< HEAD
-    "//components/enterprise/buildflags",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    "//components/network_session_configurator/browser",
+"//components/enterprise/buildflags",    "//components/network_session_configurator/browser",
     "//components/network_session_configurator/common",
     "//components/os_crypt/async/common",
     "//components/prefs",
@@ -394,12 +390,7 @@ component("network_service") {
     "//services/network/public/mojom",
     "//services/network/public/proto",
     "//services/network/shared_storage",
-<<<<<<< HEAD
-    "//services/network/trust_tokens",
-=======
-    "//services/network/tpcd/metadata:manager",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    "//services/service_manager/public/cpp",
+"//services/network/tpcd/metadata:manager",    "//services/service_manager/public/cpp",
     "//services/service_manager/public/mojom",
     "//third_party/liburlpattern",
     "//third_party/re2",

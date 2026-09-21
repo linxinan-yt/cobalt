@@ -456,18 +456,11 @@ struct EnumTraits<media::mojom::RendererType, ::media::RendererType> {
       case media::mojom::RendererType::kContentEmbedderDefined:
         return ::media::RendererType::kContentEmbedderDefined;
       case media::mojom::RendererType::kTest:
-<<<<<<< HEAD
-        return ::media::RendererType::kTest;
-=======
-        *output = ::media::RendererType::kTest;
-        return true;
+return ::media::RendererType::kTest;
 #if BUILDFLAG(USE_STARBOARD_MEDIA)
       case media::mojom::RendererType::kStarboard:
-        *output = ::media::RendererType::kStarboard;
-        return true;
-#endif  // BUILDFLAG(USE_STARBOARD_MEDIA)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        return ::media::RendererType::kStarboard;
+#endif  // BUILDFLAG(USE_STARBOARD_MEDIA)    }
 
     NOTREACHED();
   }
@@ -517,18 +510,11 @@ struct EnumTraits<media::mojom::DemuxerType, ::media::DemuxerType> {
       case media::mojom::DemuxerType::kStreamProviderDemuxer:
         return ::media::DemuxerType::kStreamProviderDemuxer;
       case media::mojom::DemuxerType::kManifestDemuxer:
-<<<<<<< HEAD
-        return ::media::DemuxerType::kManifestDemuxer;
-=======
-        *output = ::media::DemuxerType::kManifestDemuxer;
-        return true;
+return ::media::DemuxerType::kManifestDemuxer;
 #if BUILDFLAG(IS_IOS_TVOS) && BUILDFLAG(USE_STARBOARD_MEDIA)
       case media::mojom::DemuxerType::kUrlPlayerDemuxer:
-        *output = ::media::DemuxerType::kUrlPlayerDemuxer;
-        return true;
-#endif  // BUILDFLAG(IS_IOS_TVOS) && BUILDFLAG(USE_STARBOARD_MEDIA)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        return ::media::DemuxerType::kUrlPlayerDemuxer;
+#endif  // BUILDFLAG(IS_IOS_TVOS) && BUILDFLAG(USE_STARBOARD_MEDIA)    }
 
     NOTREACHED();
   }

@@ -209,12 +209,8 @@ my{
                 GyMMMEd{"G y MMM d၊ E"}
                 GyMMMd{"G d MMM y"}
                 GyMd{"GGGGG y/M/d"}
-<<<<<<< HEAD
-                Hv{"v HH'h'"}
-                MEd{"MM-dd၊ E"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                MMMEd{"MMM d E"}
+Hv{"v HH'h'"}
+                MEd{"MM-dd၊ E"}                MMMEd{"MMM d E"}
                 MMMMEd{"MMMM d Eနေ့"}
                 Md{"d/M"}
                 h{"a h"}
@@ -347,8 +343,7 @@ my{
                 EBhm{"E B h:mm"}
                 EBhms{"E B h:mm:ss"}
                 Ed{"d ရက် E"}
-<<<<<<< HEAD
-                Eh{"E a h"}
+Eh{"E a h"}
                 Ehm{"E a h:mm"}
                 Ehms{"E a h:mm:ss"}
                 GyMEd{"G y-MM-dd၊ E"}
@@ -356,16 +351,7 @@ my{
                 GyMd{"G y/M/d"}
                 Hmsv{"v HH:mm:ss"}
                 Hmv{"v HH:mm"}
-                Hv{"v HH"}
-=======
-                Ehm{"E a h:mm"}
-                Ehms{"E a h:mm:ss"}
-                GyMMMEd{"G y/ MMM d/ E"}
-                GyMd{"G y/M/d"}
-                Hmsv{"v HH:mm:ss"}
-                Hmv{"v HH:mm"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                MEd{"d/M E"}
+                Hv{"v HH"}                MEd{"d/M E"}
                 MMMEd{"MMM d E"}
                 MMMMEd{"MMMM d E"}
                 MMMMW{
@@ -377,11 +363,7 @@ my{
                 hms{"a h:mm:ss"}
                 hmsv{"v a h:mm:ss"}
                 hmv{"v a h:mm"}
-<<<<<<< HEAD
-                hv{"v a h"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                yMEd{"d/M/y E"}
+hv{"v a h"}                yMEd{"d/M/y E"}
                 yMMMEd{"y MMM d E"}
                 yMd{"d/M/y"}
                 yw{
@@ -1044,9 +1026,7 @@ my{
                 "[\\: ∶]",
             }
         }
-<<<<<<< HEAD
-=======
-        general{
+general{
             lenient{
                 "[.．․﹒ 。｡︒]",
                 "['＇’ ՚ ᾽᾿ ʼ]",
@@ -1058,9 +1038,7 @@ my{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        number{
+        }        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ، ٫ 、﹑､︑]",

@@ -386,9 +386,7 @@ no{
                 one{"{0} promille"}
                 other{"{0} promille"}
             }
-<<<<<<< HEAD
-=======
-            permillion{
+permillion{
                 case{
                     genitive{
                         one{"{0} del per millions"}
@@ -399,9 +397,7 @@ no{
                 gender{"masculine"}
                 one{"{0} del per million"}
                 other{"{0} deler per million"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            permyriad{
+            }            permyriad{
                 case{
                     genitive{
                         one{"{0} promyriades"}
@@ -718,11 +714,7 @@ no{
                         other{"{0} netters"}
                     }
                 }
-<<<<<<< HEAD
-=======
-                dnam{"netter"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                gender{"masculine"}
+dnam{"netter"}                gender{"masculine"}
                 one{"{0} natt"}
                 other{"{0} netter"}
                 per{"{0} per natt"}
@@ -1637,11 +1629,7 @@ no{
                         other{"{0} lys'"}
                     }
                 }
-<<<<<<< HEAD
-=======
-                dnam{"lys"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                gender{"neuter"}
+dnam{"lys"}                gender{"neuter"}
                 one{"{0} lys"}
                 other{"{0} lys"}
             }
@@ -2071,8 +2059,7 @@ no{
                 one{"{0}mol"}
                 other{"{0}mol"}
             }
-<<<<<<< HEAD
-            ofglucose{
+ofglucose{
                 dnam{"Glk"}
                 one{"{0} Glk"}
                 other{"{0} Glk"}
@@ -2080,19 +2067,7 @@ no{
             part{
                 dnam{"del"}
                 one{"{0} del"}
-                other{"{0} del"}
-=======
-            percent{
-                dnam{"%"}
-                one{"{0}%"}
-                other{"{0}%"}
-            }
-            permille{
-                dnam{"‰"}
-                one{"{0}‰"}
-                other{"{0}‰"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} del"}            }
             part-per-1e6{
                 one{"{0}ppm"}
                 other{"{0}ppm"}
@@ -2116,14 +2091,10 @@ no{
                 dnam{"‱"}
                 one{"{0}‱"}
                 other{"{0}‱"}
-<<<<<<< HEAD
-=======
-            }
+}
             portion-per-1e9{
                 one{"{0}ppb"}
-                other{"{0}ppb"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0}ppb"}            }
         }
         consumption{
             liter-per-100-kilometer{
@@ -2504,11 +2475,7 @@ no{
                 other{"{0}kn"}
             }
             light-speed{
-<<<<<<< HEAD
-=======
-                dnam{"lys"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                one{"{0}lys"}
+dnam{"lys"}                one{"{0}lys"}
                 other{"{0}lys"}
             }
             meter-per-second{
@@ -3149,12 +3116,7 @@ no{
             }
             pinch{
                 dnam{"klype"}
-<<<<<<< HEAD
-                one{"{0} klype"}
-=======
-                one{"{0} klyper"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                other{"{0} klyper"}
+one{"{0} klype"}                other{"{0} klyper"}
             }
             pint{
                 dnam{"pint"}

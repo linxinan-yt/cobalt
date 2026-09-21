@@ -125,12 +125,7 @@ ak{
         }
         CNY{
             "CN¥",
-<<<<<<< HEAD
-            "Kyaena yuan",
-=======
-            "kyaena yuan",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+"kyaena yuan",        }
         COP{
             "COP",
             "Kolombia peso",
@@ -659,14 +654,10 @@ ak{
             "EC$",
             "Karibine Apueeɛ dɔla",
         }
-<<<<<<< HEAD
-        XCG{
+XCG{
             "Cg.",
             "Karibiafoᴐ giida",
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        XOF{
+        }        XOF{
             "AAS",
             "Afrika Atɔeɛ Sefa",
         }

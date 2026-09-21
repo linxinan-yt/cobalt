@@ -232,15 +232,8 @@ base::Status ArtMethodTokenizer::ParseRecord(uint32_t tid,
       evt.action = ArtMethodEvent::kExit;
       break;
   }
-<<<<<<< HEAD
-  std::optional<int64_t> ts =
-      context_->clock_tracker->ConvertDefaultClockToTraceTime((ts_ + ts_delta) *
-                                                              1000);
-=======
-  std::optional<int64_t> ts = context_->clock_tracker->ToTraceTime(
-      protos::pbzero::BUILTIN_CLOCK_MONOTONIC, (ts_ + ts_delta) * 1000);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  if (ts) {
+std::optional<int64_t> ts = context_->clock_tracker->ToTraceTime(
+      protos::pbzero::BUILTIN_CLOCK_MONOTONIC, (ts_ + ts_delta) * 1000);  if (ts) {
     stream_->Push(*ts, evt);
   }
   return base::OkStatus();

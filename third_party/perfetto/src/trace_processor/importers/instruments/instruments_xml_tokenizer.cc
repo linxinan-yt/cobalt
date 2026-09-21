@@ -16,13 +16,8 @@
 
 #include "src/trace_processor/importers/instruments/instruments_xml_tokenizer.h"
 
-<<<<<<< HEAD
-=======
 #include "perfetto/ext/base/murmur_hash.h"
-#include "src/trace_processor/importers/instruments/row_parser.h"
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include <expat.h>
+#include "src/trace_processor/importers/instruments/row_parser.h"#include <expat.h>
 #include <algorithm>
 #include <cctype>
 #include <cinttypes>
@@ -159,8 +154,7 @@ class InstrumentsXmlTokenizer::Impl {
  public:
   explicit Impl(TraceProcessorContext* context)
       : context_(context),
-<<<<<<< HEAD
-        parser_(nullptr),
+parser_(nullptr),
         has_data_(false),
         clock_(ClockId::TraceFile(context->trace_id().value)),
         stream_(context->sorter->CreateStream(
@@ -168,25 +162,7 @@ class InstrumentsXmlTokenizer::Impl {
   ~Impl() {
     if (parser_) {
       XML_ParserFree(parser_);
-    }
-=======
-        parser_(XML_ParserCreate(nullptr)),
-        stream_(context->sorter->CreateStream(
-            std::make_unique<RowParser>(context, data_))) {
-    XML_SetElementHandler(parser_, ElementStart, ElementEnd);
-    XML_SetCharacterDataHandler(parser_, CharacterData);
-    XML_SetUserData(parser_, this);
-
-    static constexpr std::string_view kSubsystem =
-        "dev.perfetto.instruments_clock";
-    clock_ = static_cast<ClockTracker::ClockId>(
-        base::MurmurHashValue(kSubsystem) | 0x80000000);
-
-    // Use the above clock if we can, in case there is no other trace and
-    // no clock sync events.
-    context_->clock_tracker->SetTraceTimeClock(clock_);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    }  }
 
   base::Status Parse(TraceBlobView view) {
     // Create parser on first call
@@ -504,12 +480,7 @@ class InstrumentsXmlTokenizer::Impl {
 
   std::optional<int64_t> ToTraceTimestamp(int64_t time) {
     std::optional<int64_t> trace_ts =
-<<<<<<< HEAD
-        context_->clock_tracker->ConvertDefaultClockToTraceTime(time);
-=======
-        context_->clock_tracker->ToTraceTime(clock_, time);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    if (PERFETTO_LIKELY(trace_ts.has_value())) {
+context_->clock_tracker->ToTraceTime(clock_, time);    if (PERFETTO_LIKELY(trace_ts.has_value())) {
       latest_timestamp_ = std::max(latest_timestamp_, *trace_ts);
     }
     return trace_ts;

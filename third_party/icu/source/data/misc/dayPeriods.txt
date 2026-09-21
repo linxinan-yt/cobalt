@@ -1046,9 +1046,7 @@ dayPeriods:table(nofallback){
         set19{
             afternoon1{
                 before{"18:00"}
-<<<<<<< HEAD
-=======
-                from{"12:00"}
+from{"12:00"}
             }
             evening1{
                 before{"24:00"}
@@ -1143,9 +1141,7 @@ dayPeriods:table(nofallback){
         }
         set22{
             afternoon1{
-                before{"18:00"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                from{"14:00"}
+                before{"18:00"}                from{"14:00"}
             }
             evening1{
                 before{"22:00"}

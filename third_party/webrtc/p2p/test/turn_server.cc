@@ -183,21 +183,11 @@ void TurnServer::OnInternalPacket(AsyncPacketSocket* socket,
   uint16_t msg_type = GetBE16(payload);
   if (!IsTurnChannelData(msg_type)) {
     // This is a STUN message.
-<<<<<<< HEAD
-    HandleStunMessage(&conn, payload, packet.ecn());
-=======
-    HandleStunMessage(&conn, packet.payload(), packet.ecn());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  } else {
+HandleStunMessage(&conn, payload, packet.ecn());  } else {
     // This is a channel message; let the allocation handle it.
     TurnServerAllocation* allocation = FindAllocation(&conn);
     if (allocation) {
-<<<<<<< HEAD
-      allocation->HandleChannelData(payload, packet.ecn());
-=======
-      allocation->HandleChannelData(packet.payload(), packet.ecn());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+allocation->HandleChannelData(payload, packet.ecn());    }
     if (stun_message_observer_ != nullptr) {
       stun_message_observer_->ReceivedChannelData(payload);
     }
@@ -205,12 +195,7 @@ void TurnServer::OnInternalPacket(AsyncPacketSocket* socket,
 }
 
 void TurnServer::HandleStunMessage(TurnServerConnection* conn,
-<<<<<<< HEAD
-                                   std::span<const uint8_t> payload,
-=======
-                                   ArrayView<const uint8_t> payload,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                                   EcnMarking ecn) {
+std::span<const uint8_t> payload,                                   EcnMarking ecn) {
   RTC_DCHECK_RUN_ON(thread_);
   TurnMessage msg;
   ByteBufferReader buf(payload);
@@ -791,12 +776,7 @@ void TurnServerAllocation::HandleChannelBindRequest(const TurnMessage* msg) {
   SendResponse(&response);
 }
 
-<<<<<<< HEAD
-void TurnServerAllocation::HandleChannelData(std::span<const uint8_t> payload,
-=======
-void TurnServerAllocation::HandleChannelData(ArrayView<const uint8_t> payload,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                                             EcnMarking ecn) {
+void TurnServerAllocation::HandleChannelData(std::span<const uint8_t> payload,                                             EcnMarking ecn) {
   // Extract the channel number from the data.
   uint16_t channel_id = GetBE16(payload);
   auto channel = FindChannel(channel_id);
@@ -820,12 +800,7 @@ void TurnServerAllocation::OnExternalPacket(AsyncPacketSocket* socket,
     ByteBufferWriter buf;
     buf.WriteUInt16(channel->id);
     buf.WriteUInt16(static_cast<uint16_t>(packet.payload().size()));
-<<<<<<< HEAD
-    buf.Write(std::span<const uint8_t>(packet.payload()));
-=======
-    buf.Write(ArrayView<const uint8_t>(packet.payload()));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    server_->Send(&conn_, buf, packet.ecn());
+buf.Write(std::span<const uint8_t>(packet.payload()));    server_->Send(&conn_, buf, packet.ecn());
   } else if (!server_->enable_permission_checks_ ||
              HasPermission(packet.source_address().ipaddr())) {
     // No channel, but a permission exists. Send as a data indication.
@@ -833,12 +808,7 @@ void TurnServerAllocation::OnExternalPacket(AsyncPacketSocket* socket,
     msg.AddAttribute(std::make_unique<StunXorAddressAttribute>(
         STUN_ATTR_XOR_PEER_ADDRESS, packet.source_address()));
     msg.AddAttribute(std::make_unique<StunByteStringAttribute>(
-<<<<<<< HEAD
-        STUN_ATTR_DATA, packet.payload()));
-=======
-        STUN_ATTR_DATA, packet.payload().data(), packet.payload().size()));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    server_->SendStun(&conn_, &msg, packet.ecn());
+STUN_ATTR_DATA, packet.payload()));    server_->SendStun(&conn_, &msg, packet.ecn());
   } else {
     RTC_LOG(LS_WARNING)
         << ToString() << ": Received external packet without permission, peer="

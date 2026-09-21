@@ -108,26 +108,12 @@ TrackEventTokenizer::TrackEventTokenizer(
 }
 
 ModuleResult TrackEventTokenizer::TokenizeRangeOfInterestPacket(
-<<<<<<< HEAD
-    const TokenizePacketArgs& args) {
-=======
-    RefPtr<PacketSequenceStateGeneration> /*state*/,
-    const protos::pbzero::TracePacket::Decoder& packet,
-    TraceBlobView* packet_blob,
-    int64_t /*packet_timestamp*/) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  protos::pbzero::TrackEventRangeOfInterest::Decoder range_of_interest(
+const TokenizePacketArgs& args) {  protos::pbzero::TrackEventRangeOfInterest::Decoder range_of_interest(
       args.field
           .Cast<protos::pbzero::TracePacket::kTrackEventRangeOfInterest>());
   if (!range_of_interest.has_start_us()) {
-<<<<<<< HEAD
-    RecordTokenizationLog(stats::track_event_range_of_interest_missing_start_us,
-                          args.packet);
-=======
-    RecordTokenizationError(
-        stats::track_event_range_of_interest_missing_start_us, packet_blob);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    return ModuleResult::Handled();
+RecordTokenizationLog(stats::track_event_range_of_interest_missing_start_us,
+                          args.packet);    return ModuleResult::Handled();
   }
   track_event_tracker_->set_range_of_interest_us(range_of_interest.start_us());
   context_->metadata_tracker->SetMetadata(
@@ -137,15 +123,7 @@ ModuleResult TrackEventTokenizer::TokenizeRangeOfInterestPacket(
 }
 
 ModuleResult TrackEventTokenizer::TokenizeTrackDescriptorPacket(
-<<<<<<< HEAD
-    const TokenizePacketArgs& args) {
-=======
-    RefPtr<PacketSequenceStateGeneration> state,
-    const protos::pbzero::TracePacket::Decoder& packet,
-    TraceBlobView* packet_blob,
-    int64_t packet_timestamp) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  using TrackDescriptorProto = protos::pbzero::TrackDescriptor;
+const TokenizePacketArgs& args) {  using TrackDescriptorProto = protos::pbzero::TrackDescriptor;
   using Reservation = TrackEventTracker::DescriptorTrackReservation;
   TrackDescriptorProto::Decoder track(
       args.field.Cast<protos::pbzero::TracePacket::kTrackDescriptor>());
@@ -153,14 +131,8 @@ ModuleResult TrackEventTokenizer::TokenizeTrackDescriptorPacket(
   Reservation reservation;
 
   if (!track.has_uuid()) {
-<<<<<<< HEAD
-    context_->import_logs_tracker->RecordTokenizationLog(
-        stats::track_descriptor_missing_uuid, args.packet->offset());
-=======
-    context_->import_logs_tracker->RecordTokenizationError(
-        stats::track_descriptor_missing_uuid, packet_blob->offset());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    return ModuleResult::Handled();
+context_->import_logs_tracker->RecordTokenizationLog(
+        stats::track_descriptor_missing_uuid, args.packet->offset());    return ModuleResult::Handled();
   }
 
   if (track.has_parent_uuid()) {
@@ -182,24 +154,16 @@ ModuleResult TrackEventTokenizer::TokenizeTrackDescriptorPacket(
         reservation.ordering = Reservation::ChildTracksOrdering::kExplicit;
         break;
       default:
-<<<<<<< HEAD
-        context_->import_logs_tracker->RecordTokenizationLog(
+context_->import_logs_tracker->RecordTokenizationLog(
             stats::track_descriptor_invalid_child_ordering,
-            args.packet->offset(),
-=======
-        context_->import_logs_tracker->RecordTokenizationError(
-            stats::track_descriptor_invalid_child_ordering,
-            packet_blob->offset(),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            [this, &track](ArgsTracker::BoundInserter& inserter) {
+            args.packet->offset(),            [this, &track](ArgsTracker::BoundInserter& inserter) {
               inserter.AddArg(track_uuid_key_id_,
                               Variadic::UnsignedInteger(track.uuid()));
               inserter.AddArg(child_order_key_id_,
                               Variadic::Integer(track.child_ordering()));
             });
         return ModuleResult::Handled();
-<<<<<<< HEAD
-    }
+}
   }
 
   if (track.has_process_ordering()) {
@@ -220,10 +184,7 @@ ModuleResult TrackEventTokenizer::TokenizeTrackDescriptorPacket(
         break;
       case TrackDescriptorProto::THREAD_ORDERING_EXPLICIT:
         reservation.thread_ordering = Reservation::ThreadOrdering::kExplicit;
-        break;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        break;    }
   }
 
   if (track.has_sibling_order_rank()) {
@@ -279,14 +240,8 @@ ModuleResult TrackEventTokenizer::TokenizeTrackDescriptorPacket(
     protos::pbzero::ThreadDescriptor::Decoder thread(track.thread());
 
     if (!thread.has_pid() || !thread.has_tid()) {
-<<<<<<< HEAD
-      context_->import_logs_tracker->RecordTokenizationLog(
-          stats::track_descriptor_thread_missing_pid_tid, args.packet->offset(),
-=======
-      context_->import_logs_tracker->RecordTokenizationError(
-          stats::track_descriptor_thread_missing_pid_tid, packet_blob->offset(),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          [&](ArgsTracker::BoundInserter& inserter) {
+context_->import_logs_tracker->RecordTokenizationLog(
+          stats::track_descriptor_thread_missing_pid_tid, args.packet->offset(),          [&](ArgsTracker::BoundInserter& inserter) {
             inserter.AddArg(track_uuid_key_id_,
                             Variadic::UnsignedInteger(track.uuid()));
           });
@@ -322,14 +277,8 @@ ModuleResult TrackEventTokenizer::TokenizeTrackDescriptorPacket(
     protos::pbzero::ProcessDescriptor::Decoder process(track.process());
 
     if (!process.has_pid()) {
-<<<<<<< HEAD
-      context_->import_logs_tracker->RecordTokenizationLog(
-          stats::track_descriptor_process_missing_pid, args.packet->offset(),
-=======
-      context_->import_logs_tracker->RecordTokenizationError(
-          stats::track_descriptor_process_missing_pid, packet_blob->offset(),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          [&](ArgsTracker::BoundInserter& inserter) {
+context_->import_logs_tracker->RecordTokenizationLog(
+          stats::track_descriptor_process_missing_pid, args.packet->offset(),          [&](ArgsTracker::BoundInserter& inserter) {
             inserter.AddArg(track_uuid_key_id_,
                             Variadic::UnsignedInteger(track.uuid()));
           });
@@ -427,42 +376,22 @@ ModuleResult TrackEventTokenizer::TokenizeTrackDescriptorPacket(
 }  // namespace perfetto::trace_processor
 
 ModuleResult TrackEventTokenizer::TokenizeThreadDescriptorPacket(
-<<<<<<< HEAD
-    const TokenizePacketArgs& args) {
+const TokenizePacketArgs& args) {
   if (PERFETTO_UNLIKELY(!args.decoder.has_trusted_packet_sequence_id())) {
     context_->import_logs_tracker->RecordTokenizationLog(
-        stats::thread_descriptor_missing_sequence_id, args.packet->offset());
-=======
-    RefPtr<PacketSequenceStateGeneration> state,
-    const protos::pbzero::TracePacket::Decoder& packet,
-    TraceBlobView* packet_blob) {
-  if (PERFETTO_UNLIKELY(!packet.has_trusted_packet_sequence_id())) {
-    context_->import_logs_tracker->RecordTokenizationError(
-        stats::thread_descriptor_missing_sequence_id, packet_blob->offset());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    return ModuleResult::Handled();
+        stats::thread_descriptor_missing_sequence_id, args.packet->offset());    return ModuleResult::Handled();
   }
 
   // TrackEvents will be ignored while incremental state is invalid. As a
   // consequence, we should also ignore any ThreadDescriptors received in this
   // state. Otherwise, any delta-encoded timestamps would be calculated
-<<<<<<< HEAD
-  // incorrectly once we move out of the packet loss state. Instead, wait
+// incorrectly once we move out of the packet loss state. Instead, wait
   // until the first subsequent descriptor after incremental state is
   // cleared.
   if (!args.state->IsIncrementalStateValid()) {
     RecordTokenizationErrorWithSeqId(
         stats::thread_descriptor_skipped_incremental_state_invalid,
-        args.decoder.trusted_packet_sequence_id(), args.packet);
-=======
-  // incorrectly once we move out of the packet loss state. Instead, wait until
-  // the first subsequent descriptor after incremental state is cleared.
-  if (!state->IsIncrementalStateValid()) {
-    RecordTokenizationErrorWithSeqId(
-        stats::thread_descriptor_skipped_incremental_state_invalid,
-        packet.trusted_packet_sequence_id(), packet_blob);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    return ModuleResult::Handled();
+        args.decoder.trusted_packet_sequence_id(), args.packet);    return ModuleResult::Handled();
   }
 
   protos::pbzero::ThreadDescriptor::Decoder thread(
@@ -487,21 +416,10 @@ void TrackEventTokenizer::TokenizeThreadDescriptor(
 }
 
 ModuleResult TrackEventTokenizer::TokenizeTrackEventPacket(
-<<<<<<< HEAD
-    const TokenizePacketArgs& args) {
+const TokenizePacketArgs& args) {
   if (PERFETTO_UNLIKELY(!args.decoder.has_trusted_packet_sequence_id())) {
     context_->import_logs_tracker->RecordTokenizationLog(
-        stats::track_event_missing_sequence_id, args.packet->offset());
-=======
-    RefPtr<PacketSequenceStateGeneration> state,
-    const protos::pbzero::TracePacket::Decoder& packet,
-    TraceBlobView* packet_blob,
-    int64_t packet_timestamp) {
-  if (PERFETTO_UNLIKELY(!packet.has_trusted_packet_sequence_id())) {
-    context_->import_logs_tracker->RecordTokenizationError(
-        stats::track_event_missing_sequence_id, packet_blob->offset());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    return ModuleResult::Handled();
+        stats::track_event_missing_sequence_id, args.packet->offset());    return ModuleResult::Handled();
   }
 
   protos::pbzero::TrackEvent::Decoder event(
@@ -521,8 +439,7 @@ ModuleResult TrackEventTokenizer::TokenizeTrackEventPacket(
   if (event.has_timestamp_delta_us()) {
     // Delta timestamps require a valid ThreadDescriptor packet since the last
     // packet loss.
-<<<<<<< HEAD
-    if (!track_event->timestamps_valid()) {
+if (!track_event->timestamps_valid()) {
       RecordTokenizationErrorWithSeqId(
           stats::track_event_skipped_timestamp_delta_without_valid_state,
           args.decoder.trusted_packet_sequence_id(),
@@ -539,39 +456,7 @@ ModuleResult TrackEventTokenizer::TokenizeTrackEventPacket(
   } else if (args.decoder.has_timestamp()) {
     timestamp = args.ts;
   } else {
-    context_->import_logs_tracker->RecordTokenizationLog(
-=======
-    if (!state->track_event_timestamps_valid()) {
-      RecordTokenizationErrorWithSeqId(
-          stats::track_event_skipped_timestamp_delta_without_valid_state,
-          packet.trusted_packet_sequence_id(), &data.trace_packet_data.packet);
-      return ModuleResult::Handled();
-    }
-    timestamp = state->IncrementAndGetTrackEventTimeNs(
-        event.timestamp_delta_us() * 1000);
-
-    // Legacy TrackEvent timestamp fields are in MONOTONIC domain. Adjust to
-    // trace time if we have a clock snapshot.
-    std::optional<int64_t> trace_ts = context_->clock_tracker->ToTraceTime(
-        protos::pbzero::BUILTIN_CLOCK_MONOTONIC, timestamp);
-    if (trace_ts)
-      timestamp = *trace_ts;
-  } else if (int64_t ts_absolute_us = event.timestamp_absolute_us()) {
-    // One-off absolute timestamps don't affect delta computation.
-    timestamp = ts_absolute_us * 1000;
-
-    // Legacy TrackEvent timestamp fields are in MONOTONIC domain. Adjust to
-    // trace time if we have a clock snapshot.
-    std::optional<int64_t> trace_ts = context_->clock_tracker->ToTraceTime(
-        protos::pbzero::BUILTIN_CLOCK_MONOTONIC, timestamp);
-    if (trace_ts)
-      timestamp = *trace_ts;
-  } else if (packet.has_timestamp()) {
-    timestamp = packet_timestamp;
-  } else {
-    context_->import_logs_tracker->RecordTokenizationError(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        stats::track_event_missing_timestamp,
+    context_->import_logs_tracker->RecordTokenizationLog(        stats::track_event_missing_timestamp,
         data.trace_packet_data.packet.offset());
     return ModuleResult::Handled();
   }
@@ -610,19 +495,11 @@ ModuleResult TrackEventTokenizer::TokenizeTrackEventPacket(
   if (event.has_thread_time_delta_us()) {
     // Delta timestamps require a valid ThreadDescriptor packet since the last
     // packet loss.
-<<<<<<< HEAD
-    if (!track_event->timestamps_valid()) {
+if (!track_event->timestamps_valid()) {
       RecordTokenizationErrorWithSeqId(
           stats::track_event_skipped_thread_time_delta_without_valid_state,
           args.decoder.trusted_packet_sequence_id(),
-          &data.trace_packet_data.packet);
-=======
-    if (!state->track_event_timestamps_valid()) {
-      RecordTokenizationErrorWithSeqId(
-          stats::track_event_skipped_thread_time_delta_without_valid_state,
-          packet.trusted_packet_sequence_id(), &data.trace_packet_data.packet);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      return ModuleResult::Handled();
+          &data.trace_packet_data.packet);      return ModuleResult::Handled();
     }
     data.thread_timestamp = track_event->IncrementAndGetTrackEventThreadTimeNs(
         base::SaturatingMultiply(event.thread_time_delta_us(), 1000));
@@ -635,21 +512,12 @@ ModuleResult TrackEventTokenizer::TokenizeTrackEventPacket(
   if (event.has_thread_instruction_count_delta()) {
     // Delta timestamps require a valid ThreadDescriptor packet since the last
     // packet loss.
-<<<<<<< HEAD
-    if (!track_event->timestamps_valid()) {
+if (!track_event->timestamps_valid()) {
       RecordTokenizationErrorWithSeqId(
           stats::
               track_event_skipped_thread_instruction_delta_without_valid_state,
           args.decoder.trusted_packet_sequence_id(),
-          &data.trace_packet_data.packet);
-=======
-    if (!state->track_event_timestamps_valid()) {
-      RecordTokenizationErrorWithSeqId(
-          stats::
-              track_event_skipped_thread_instruction_delta_without_valid_state,
-          packet.trusted_packet_sequence_id(), &data.trace_packet_data.packet);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      return ModuleResult::Handled();
+          &data.trace_packet_data.packet);      return ModuleResult::Handled();
     }
     data.thread_instruction_count =
         track_event->IncrementAndGetTrackEventThreadInstructionCount(
@@ -667,14 +535,8 @@ ModuleResult TrackEventTokenizer::TokenizeTrackEventPacket(
     } else if (defaults && defaults->has_track_uuid()) {
       track_uuid = defaults->track_uuid();
     } else {
-<<<<<<< HEAD
-      RecordTokenizationLog(stats::track_event_counter_missing_track_uuid,
-                            &data.trace_packet_data.packet);
-=======
-      RecordTokenizationError(stats::track_event_counter_missing_track_uuid,
-                              &data.trace_packet_data.packet);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      return ModuleResult::Handled();
+RecordTokenizationLog(stats::track_event_counter_missing_track_uuid,
+                            &data.trace_packet_data.packet);      return ModuleResult::Handled();
     }
 
     if (!event.has_counter_value() && !event.has_double_counter_value()) {
@@ -714,27 +576,15 @@ ModuleResult TrackEventTokenizer::TokenizeTrackEventPacket(
 
   size_t index = 0;
   const protozero::RepeatedFieldIterator<uint64_t> kEmptyIterator;
-<<<<<<< HEAD
-  uint32_t seq_id = args.decoder.trusted_packet_sequence_id();
+uint32_t seq_id = args.decoder.trusted_packet_sequence_id();
   if (!AddExtraCounterValues(
-          *args.state, data, index, event.extra_counter_values(),
-=======
-  uint32_t seq_id = packet.trusted_packet_sequence_id();
-  if (!AddExtraCounterValues(
-          *state, data, index, event.extra_counter_values(),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          event.extra_counter_track_uuids(),
+          *args.state, data, index, event.extra_counter_values(),          event.extra_counter_track_uuids(),
           defaults ? defaults->extra_counter_track_uuids() : kEmptyIterator,
           seq_id, &data.trace_packet_data.packet)) {
     return ModuleResult::Handled();
   }
   if (!AddExtraCounterValues(
-<<<<<<< HEAD
-          *args.state, data, index, event.extra_double_counter_values(),
-=======
-          *state, data, index, event.extra_double_counter_values(),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          event.extra_double_counter_track_uuids(),
+*args.state, data, index, event.extra_double_counter_values(),          event.extra_double_counter_track_uuids(),
           defaults ? defaults->extra_double_counter_track_uuids()
                    : kEmptyIterator,
           seq_id, &data.trace_packet_data.packet)) {
@@ -816,26 +666,14 @@ base::Status TrackEventTokenizer::TokenizeLegacySampleEvent(
     if (!profile_or.ok()) {
       continue;
     }
-<<<<<<< HEAD
-    const V8Profile& profile = *profile_or;
+const V8Profile& profile = *profile_or;
     if (profile.start_time.has_value()) {
       std::optional<int64_t> ts = context_->clock_tracker->ToTraceTime(
           ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_MONOTONIC),
           *profile.start_time * 1000);
       if (ts) {
         v8_tracker_->SetStartTsForSessionAndPid(
-            legacy.unscoped_id(), static_cast<uint32_t>(thread.pid()), *ts);
-=======
-    const auto& val = *opt_val;
-    if (val.isMember("startTime")) {
-      std::optional<int64_t> ts = context_->clock_tracker->ToTraceTime(
-          protos::pbzero::BUILTIN_CLOCK_MONOTONIC,
-          val["startTime"].asInt64() * 1000);
-      if (ts) {
-        v8_tracker_->SetStartTsForSessionAndPid(
-            legacy.unscoped_id(), static_cast<uint32_t>(state.pid()), *ts);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      } else {
+            legacy.unscoped_id(), static_cast<uint32_t>(thread.pid()), *ts);      } else {
         return base::ErrStatus(
             "v8 legacy profile: failed to convert startTime to trace time");
       }
@@ -872,29 +710,16 @@ base::Status TrackEventTokenizer::TokenizeLegacySampleEvent(
   return base::OkStatus();
 }
 
-<<<<<<< HEAD
-void TrackEventTokenizer::RecordTokenizationLog(size_t stat_key,
-                                                TraceBlobView* packet) {
-  context_->import_logs_tracker->RecordTokenizationLog(stat_key,
-                                                       packet->offset());
-=======
 void TrackEventTokenizer::RecordTokenizationError(size_t stat_key,
                                                   TraceBlobView* packet) {
   context_->import_logs_tracker->RecordTokenizationError(stat_key,
-                                                         packet->offset());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+                                                         packet->offset());}
 
 void TrackEventTokenizer::RecordTokenizationErrorWithTrackUuid(
     size_t stat_key,
     uint64_t track_uuid,
     TraceBlobView* packet) {
-<<<<<<< HEAD
-  context_->import_logs_tracker->RecordTokenizationLog(
-=======
-  context_->import_logs_tracker->RecordTokenizationError(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      stat_key, packet->offset(),
+context_->import_logs_tracker->RecordTokenizationLog(      stat_key, packet->offset(),
       [this, track_uuid](ArgsTracker::BoundInserter& inserter) {
         inserter.AddArg(track_uuid_key_id_,
                         Variadic::UnsignedInteger(track_uuid));
@@ -905,12 +730,7 @@ void TrackEventTokenizer::RecordTokenizationErrorWithSeqId(
     size_t stat_key,
     uint32_t packet_sequence_id,
     TraceBlobView* packet) {
-<<<<<<< HEAD
-  context_->import_logs_tracker->RecordTokenizationLog(
-=======
-  context_->import_logs_tracker->RecordTokenizationError(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      stat_key, packet->offset(),
+context_->import_logs_tracker->RecordTokenizationLog(      stat_key, packet->offset(),
       [this, packet_sequence_id](ArgsTracker::BoundInserter& inserter) {
         inserter.AddArg(packet_sequence_id_key_id_,
                         Variadic::UnsignedInteger(packet_sequence_id));

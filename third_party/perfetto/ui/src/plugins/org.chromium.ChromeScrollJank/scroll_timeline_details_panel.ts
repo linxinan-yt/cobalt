@@ -32,56 +32,11 @@ import {
   stdlibRef,
 } from './utils';
 import {
-<<<<<<< HEAD
-  EVENT_LATENCY_TRACK,
+EVENT_LATENCY_TRACK,
   SCROLL_TIMELINE_TRACK,
   SCROLL_TIMELINE_V4_TRACK,
 } from './tracks';
 import {SCROLL_TIMELINE_TABLE_DEFINITION} from './scroll_timeline_model';
-=======
-  DurationColumn,
-  StandardColumn,
-  TimestampColumn,
-} from '../../components/widgets/sql/table/columns';
-import {PerfettoSqlTypes} from '../../trace_processor/perfetto_sql_type';
-
-function createPluginSliceIdColumn(
-  trace: Trace,
-  trackUri: string,
-  name: string,
-): TableColumn {
-  const col = new StandardColumn(name, undefined);
-  col.renderCell = (value: SqlValue, tableManager: TableManager) => {
-    if (value === null || typeof value !== 'bigint') {
-      return renderStandardCell(value, name, tableManager);
-    }
-    return {
-      content: renderSliceRef({
-        trace: trace,
-        id: Number(value),
-        trackUri: trackUri,
-        title: `${value}`,
-      }),
-    };
-  };
-  return col;
-}
-
-function createScrollTimelineTableColumns(
-  trace: Trace,
-  trackUri: string,
-): TableColumn[] {
-  return [
-    createPluginSliceIdColumn(trace, trackUri, 'id'),
-    new StandardColumn('scroll_update_id', PerfettoSqlTypes.INT),
-    new TimestampColumn(trace, 'ts'),
-    new DurationColumn(trace, 'dur'),
-    new StandardColumn('name', PerfettoSqlTypes.STRING),
-    new StandardColumn('classification', PerfettoSqlTypes.STRING),
-  ];
-}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 export class ScrollTimelineDetailsPanel implements TrackEventDetailsPanel {
   // Information about the scroll update.
   private scrollUpdateData?: {

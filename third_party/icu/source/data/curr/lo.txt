@@ -1228,11 +1228,7 @@ lo{
         XXX{
             other{"(ສະກຸນເງິນທີ່ບໍ່ຮູ້ຈັກ)"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             other{"ຊິມບັບວຽນ ໂກລ"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

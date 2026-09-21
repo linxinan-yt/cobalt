@@ -422,14 +422,8 @@ android_blocking_calls_cuj_metric {
     }
   }
   cuj {
-<<<<<<< HEAD
-    id: 5
-    name: "CUJ_WITH_NESTED_HANDLER"
-=======
-    id: 4
-    name: "CUJ_WITH_TOP_LEVEL_SLICES"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    process {
+id: 5
+    name: "CUJ_WITH_NESTED_HANDLER"    process {
       name: "com.google.android.nested.handlers"
       uid: 10005
       pid: 5000

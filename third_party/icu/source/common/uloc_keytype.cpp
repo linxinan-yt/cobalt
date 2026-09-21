@@ -47,13 +47,6 @@ struct LocExtKeyData : public icu::UMemory {
 struct LocExtType : public icu::UMemory {
     std::string_view legacyId;
     std::string_view bcpId;
-<<<<<<< HEAD
-=======
-};
-
-struct TypeAlias : public icu::UMemory {
-    std::string_view from;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 
 struct TypeAlias : public icu::UMemory {
@@ -318,12 +311,7 @@ initFromResourceBundle(UErrorCode& sts) {
                                             fromBuf->getAlias(),
                                             fromBuf->getAlias() + fromView.length(),
                                             ':', '/');
-<<<<<<< HEAD
-                                    alias->from = {fromBuf->data(), fromView.length()};
-=======
-                                    alias->from = fromBuf->toStringPiece();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                                }
+alias->from = {fromBuf->data(), fromView.length()};                                }
                             }
                             uhash_put(typeDataMap, &alias->from, t, &sts);
                         }

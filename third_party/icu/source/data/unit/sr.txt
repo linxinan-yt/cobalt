@@ -790,14 +790,10 @@ sr{
         }
         coordinate{
             dnam{"страна света"}
-<<<<<<< HEAD
-=======
-            east{"{0} E"}
+east{"{0} E"}
             north{"{0} N"}
             south{"{0} S"}
-            west{"{0} W"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            west{"{0} W"}        }
         digital{
             bit{
                 case{
@@ -1301,19 +1297,11 @@ sr{
                         other{"{0} ноћи"}
                     }
                 }
-<<<<<<< HEAD
-=======
-                dnam{"ноћ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                few{"{0} ноћи"}
+dnam{"ноћ"}                few{"{0} ноћи"}
                 gender{"feminine"}
                 one{"{0} ноћ"}
                 other{"{0} ноћи"}
-<<<<<<< HEAD
-=======
-                per{"{0}/ноћ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+per{"{0}/ноћ"}            }
             quarter{
                 case{
                     accusative{
@@ -2243,11 +2231,7 @@ sr{
                         other{"{0} типографских тачака"}
                     }
                 }
-<<<<<<< HEAD
-=======
-                dnam{"типографске тачке"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                few{"{0} типографске тачке"}
+dnam{"типографске тачке"}                few{"{0} типографске тачке"}
                 gender{"feminine"}
                 one{"{0} типографска тачка"}
                 other{"{0} типографских тачака"}
@@ -2948,11 +2932,7 @@ sr{
                         other{"{0} светала"}
                     }
                 }
-<<<<<<< HEAD
-=======
-                dnam{"светло"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                few{"{0} светла"}
+dnam{"светло"}                few{"{0} светла"}
                 gender{"neuter"}
                 one{"{0} светло"}
                 other{"{0} светала"}
@@ -3612,19 +3592,16 @@ sr{
             }
         }
         speed{
-<<<<<<< HEAD
-            beaufort{
+beaufort{
                 few{"B {0}"}
                 one{"B {0}"}
                 other{"B {0}"}
-=======
+            }
             light-speed{
                 dnam{"светло"}
                 few{"{0} светла"}
                 one{"{0} светло"}
-                other{"{0} светала"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} светала"}            }
         }
         volume{
             fluid-ounce-imperial{

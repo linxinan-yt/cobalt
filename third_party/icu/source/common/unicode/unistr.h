@@ -1966,8 +1966,6 @@ public:
    * @stable ICU 2.0
    */
   inline UBool isBogus() const;
-<<<<<<< HEAD
-
 #ifndef U_HIDE_DRAFT_API
 private:
   // These type aliases are private; there is no guarantee that they will remain
@@ -2003,9 +2001,6 @@ public:
    */
   unspecified_reverse_iterator rend() const { return std::u16string_view(*this).rend(); }
 #endif  // U_HIDE_DRAFT_API
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   //========================================
   // Write operations
   //========================================
@@ -3195,20 +3190,11 @@ public:
    */
   const char16_t *getTerminatedBuffer();
 
-<<<<<<< HEAD
-=======
-#ifndef U_HIDE_DRAFT_API
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   /**
    * Converts to a std::u16string_view.
    *
    * @return a string view of the contents of this string
-<<<<<<< HEAD
-   * @stable ICU 76
-=======
-   * @draft ICU 76
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-   */
+* @stable ICU 76   */
   inline operator std::u16string_view() const {
     return {getBuffer(), static_cast<std::u16string_view::size_type>(length())};
   }
@@ -3221,12 +3207,7 @@ public:
    * about char16_t vs. wchar_t become clearer.
    *
    * @return a string view of the contents of this string
-<<<<<<< HEAD
-   * @stable ICU 76
-=======
-   * @draft ICU 76
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-   */
+* @stable ICU 76   */
   inline operator std::wstring_view() const {
     const char16_t *p = getBuffer();
 #ifdef U_ALIASING_BARRIER
@@ -3235,10 +3216,6 @@ public:
     return { reinterpret_cast<const wchar_t *>(p), (std::wstring_view::size_type)length() };
   }
 #endif  // U_SIZEOF_WCHAR_T
-<<<<<<< HEAD
-=======
-#endif  // U_HIDE_DRAFT_API
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   //========================================
   // Constructors
@@ -4354,10 +4331,6 @@ private:
 U_COMMON_API UnicodeString U_EXPORT2
 operator+ (const UnicodeString &s1, const UnicodeString &s2);
 
-<<<<<<< HEAD
-=======
-#ifndef U_HIDE_DRAFT_API
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 /**
  * Creates a new UnicodeString from the concatenation of a UnicodeString and `s2`
  * which is, or which is implicitly convertible to,
@@ -4366,8 +4339,7 @@ operator+ (const UnicodeString &s1, const UnicodeString &s2);
  * @param s1 The string to be copied to the new one.
  * @param s2 The string view to be copied to the new string, after s1.
  * @return UnicodeString(s1).append(s2)
-<<<<<<< HEAD
- * @stable ICU 76
+* @stable ICU 76
  */
 template<
     typename US, typename S,
@@ -4375,16 +4347,6 @@ template<
 inline UnicodeString operator+(const US &s1, const S &s2) {
   return unistr_internalConcat(s1, internal::toU16StringView(s2));
 }
-=======
- * @draft ICU 76
- */
-template<typename S, typename = std::enable_if_t<ConvertibleToU16StringView<S>>>
-inline UnicodeString operator+(const UnicodeString &s1, const S &s2) {
-  return unistr_internalConcat(s1, internal::toU16StringView(s2));
-}
-#endif  // U_HIDE_DRAFT_API
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 #ifndef U_FORCE_HIDE_INTERNAL_API
 /** @internal */
 U_COMMON_API UnicodeString U_EXPORT2

@@ -19,12 +19,7 @@ import {Intent} from '../../widgets/common';
 import {Icon} from '../../widgets/icon';
 import {Tooltip} from '../../widgets/tooltip';
 import {ALL_CATEGORIES, getFlowCategories} from '../../core/flow_types';
-<<<<<<< HEAD
 import type {TraceImpl} from '../../core/trace_impl';
-=======
-import {TraceImpl} from '../../core/trace_impl';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 export interface FlowEventsAreaSelectedPanelAttrs {
   trace: TraceImpl;
 }

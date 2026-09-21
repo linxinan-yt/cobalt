@@ -743,13 +743,8 @@ void SocketTest::DeleteInReadCallbackInternal(const IPAddress& loopback) {
   SocketDeleter deleter(std::move(socket2));
   socket1->SubscribeReadEvent(
       &deleter, [&deleter](Socket* socket) { deleter.Delete(socket); });
-<<<<<<< HEAD
-  EXPECT_TRUE(WaitUntil([&] { return deleter.deleted(); }));
-=======
-  EXPECT_THAT(WaitUntil([&] { return deleter.deleted(); }, ::testing::IsTrue()),
-              IsRtcOk());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+EXPECT_THAT(WaitUntil([&] { return deleter.deleted(); }, ::testing::IsTrue()),
+              IsRtcOk());}
 
 void SocketTest::SocketServerWaitInternal(const IPAddress& loopback) {
   StreamSink sink;

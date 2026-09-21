@@ -111,13 +111,8 @@ private:
     void TestStringIterator();
     void TestElementIterator();
 
-<<<<<<< HEAD
-    void TestToPatternOutput();
-    void TestParseErrors();
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-private:
+void TestToPatternOutput();
+    void TestParseErrors();private:
 
     UBool toPatternAux(UChar32 start, UChar32 end);
     

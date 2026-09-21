@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-<<<<<<< HEAD
 import type m from 'mithril';
 import type {duration, time} from '../base/time';
 import type {Size2D, VerticalBounds} from '../base/geom';
@@ -34,21 +33,6 @@ export interface SnapPoint {
   /** The timestamp to snap to */
   time: time;
 }
-=======
-import m from 'mithril';
-import {duration, time} from '../base/time';
-import {Size2D, VerticalBounds} from '../base/geom';
-import {TimeScale} from '../base/time_scale';
-import {HighPrecisionTimeSpan} from '../base/high_precision_time_span';
-import {ColorScheme} from '../base/color_scheme';
-import {TrackEventDetailsPanel} from './details_panel';
-import {TrackEventDetails, TrackEventSelection} from './selection';
-import {SourceDataset} from '../trace_processor/dataset';
-import {TrackNode} from './workspace';
-import {CanvasColors} from './canvas_colors';
-import {z} from 'zod';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 export interface TrackFilterCriteria {
   readonly name: string;
 
@@ -142,16 +126,11 @@ export interface TrackRenderContext extends TrackContext {
    * Semantic colors which can vary depending on the current theme.
    */
   readonly colors: CanvasColors;
-<<<<<<< HEAD
-
-  /**
+/**
    * A high-performance renderer for drawing rectangles and billboards.
    * Uses WebGL when available, with Canvas 2D fallback.
    */
-  readonly renderer: Renderer;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  readonly renderer: Renderer;}
 
 // A definition of a track, including a renderer implementation and metadata.
 export interface Track {

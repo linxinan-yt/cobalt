@@ -326,12 +326,7 @@ base::Status WriteDimension(
             dimension_value.type);
       }
       const char* dimension_str = dimension_value.string_value;
-<<<<<<< HEAD
-      hasher->Combine(base::StringView(dimension_str));
-=======
-      hasher->Combine(dimension_str);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      dimension->set_string_value(dimension_str);
+hasher->Combine(base::StringView(dimension_str));      dimension->set_string_value(dimension_str);
       break;
     }
     case TraceMetricV2Spec::INT64: {
@@ -391,12 +386,7 @@ base::Status WriteDimension(
         dimension->set_double_value(dim_value);
       } else if (dimension_value.type == SqlValue::kString) {
         const char* dimension_str = dimension_value.string_value;
-<<<<<<< HEAD
-        hasher->Combine(base::StringView(dimension_str));
-=======
-        hasher->Combine(dimension_str);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        dimension->set_string_value(dimension_str);
+hasher->Combine(dimension_str);        dimension->set_string_value(dimension_str);
       } else if (dimension_value.type == SqlValue::kBytes) {
         return base::ErrStatus(
             "Received bytes for dimension '%s' in metric or bundle '%s': this "
@@ -712,19 +702,14 @@ base::Status CreateQueriesAndComputeMetrics(TraceProcessor* processor,
     }
 
     PerfettoSqlStructuredQuery::Decoder query(first_spec.query());
-<<<<<<< HEAD
-    // The sql.column_names field documents what columns the SQL query itself
+// The sql.column_names field documents what columns the SQL query itself
     // returns (before structured query transformations). We can only validate
     // this when there are no transformations that modify the output schema:
     // - group_by transforms columns into group keys + aggregates
     // - select_columns transforms columns via selection/aliasing/expressions
     // Other operations (filters, order_by, limit, offset) preserve columns.
     if (query.has_sql() && !query.has_group_by() &&
-        !query.has_select_columns()) {
-=======
-    if (query.has_sql()) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      PerfettoSqlStructuredQuery::Sql::Decoder sql_query(query.sql());
+        !query.has_select_columns()) {      PerfettoSqlStructuredQuery::Sql::Decoder sql_query(query.sql());
       if (sql_query.has_column_names()) {
         std::set<std::string> actual_column_names;
         for (uint32_t i = 0; i < query_it.ColumnCount(); ++i) {

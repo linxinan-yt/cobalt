@@ -19,11 +19,7 @@
 #include <vector>
 
 #include "api/audio/audio_processing.h"
-<<<<<<< HEAD
-=======
-#include "api/environment/environment_factory.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "modules/audio_coding/neteq/tools/input_audio_file.h"
+#include "api/environment/environment_factory.h"#include "modules/audio_coding/neteq/tools/input_audio_file.h"
 #include "modules/audio_processing/agc2/agc2_testing_common.h"
 #include "modules/audio_processing/agc2/input_volume_controller.h"
 #include "modules/audio_processing/audio_buffer.h"

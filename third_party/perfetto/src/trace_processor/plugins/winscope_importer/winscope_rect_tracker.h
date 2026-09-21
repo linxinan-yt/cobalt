@@ -23,11 +23,7 @@
 
 #include "perfetto/ext/base/flat_hash_map.h"
 #include "perfetto/ext/base/murmur_hash.h"
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/winscope_rect_tracker.h
-#include "src/trace_processor/plugins/winscope_importer/winscope_geometry.h"
-=======
 #include "src/trace_processor/importers/proto/winscope/winscope_geometry.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/winscope_rect_tracker.h
 #include "src/trace_processor/tables/winscope_tables_py.h"
 #include "src/trace_processor/types/trace_processor_context.h"
 

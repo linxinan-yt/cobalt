@@ -112,31 +112,21 @@ reference.
 
 ### `bundle` (recommended)
 
-<<<<<<< HEAD
 **`bundle` is the recommended entry point for symbolization and
 deobfuscation.** It packages the trace together with its native symbols
 and ProGuard/R8 mappings into a single self-contained TAR, which is the
 right artifact to share with teammates, attach to bugs, or archive for
 later analysis. Prefer `bundle` over `symbolize`/`deobfuscate` unless you
 have a specific reason not to.
-=======
-`~/traceconv profile [input proto file]`
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 ```bash
 ./traceconv bundle trace.perfetto-trace trace.bundle.tar
 
-<<<<<<< HEAD
 # Provide extra symbol search paths or explicit ProGuard maps:
 ./traceconv bundle \
   --symbol-paths /path/to/symbols1,/path/to/symbols2 \
   --proguard-map com.example.app=/path/to/mapping.txt \
   trace.perfetto-trace trace.bundle.tar
 ```
-=======
-`~/traceconv profile [input proto file] --perf`
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 `bundle`-specific options:
 
 - `--symbol-paths PATH1,PATH2,...` — additional paths to search for

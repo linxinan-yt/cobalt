@@ -21,11 +21,7 @@
 #include "absl/algorithm/container.h"
 #include "absl/strings/match.h"
 #include "absl/strings/string_view.h"
-<<<<<<< HEAD
-#include "api/crypto/crypto_options.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "api/environment/environment.h"
+#include "api/crypto/crypto_options.h"#include "api/environment/environment.h"
 #include "api/field_trials_view.h"
 #include "api/media_types.h"
 #include "api/rtc_error.h"
@@ -34,11 +30,7 @@
 #include "api/rtp_transceiver_direction.h"
 #include "api/sctp_transport_interface.h"
 #include "api/transport/sctp_transport_factory_interface.h"
-<<<<<<< HEAD
-#include "call/payload_type.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "media/base/codec.h"
+#include "call/payload_type.h"#include "media/base/codec.h"
 #include "media/base/media_constants.h"
 #include "media/base/media_engine.h"
 #include "media/base/rid_description.h"
@@ -1336,15 +1328,10 @@ RTCError MediaSessionDescriptionFactory::AddDataContentForOffer(
           current_content->media_description()->as_sctp();
       RTC_DCHECK(current_data_description);
       data->set_sctp_init(current_data_description->sctp_init());
-<<<<<<< HEAD
-    } else {
-=======
-    }
+}
     if (!data->sctp_init().has_value()) {
       // Create a sctp-init on subsequent offers even if the remote side
-      // has not negotiated one previously.
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      data->set_sctp_init(sctp_factory_->GenerateConnectionToken(env_));
+      // has not negotiated one previously.      data->set_sctp_init(sctp_factory_->GenerateConnectionToken(env_));
     }
   }
 
@@ -1593,13 +1580,8 @@ RTCError MediaSessionDescriptionFactory::AddDataContentForAnswer(
           RTC_DCHECK(current_data_description);
           data_answer->as_sctp()->set_sctp_init(
               current_data_description->sctp_init());
-<<<<<<< HEAD
-        } else {
-=======
-        }
-        if (!data_answer->as_sctp()->sctp_init().has_value()) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          data_answer->as_sctp()->set_sctp_init(
+}
+        if (!data_answer->as_sctp()->sctp_init().has_value()) {          data_answer->as_sctp()->set_sctp_init(
               sctp_factory_->GenerateConnectionToken(env_));
         }
       }

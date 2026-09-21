@@ -42,12 +42,7 @@ class RtpPacketSimulator {
   // Notably, the simulated arrival time is taken from `env_.clock()` and not
   // from `logged_packet.log_time()`. This allows the caller to provide its own
   // clock offset, that might be different from the logged time base.
-<<<<<<< HEAD
-  SimulatedPacket SimulateRtpPacketReceived(
-=======
-  RtpPacketReceived SimulateRtpPacketReceived(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      const LoggedRtpPacket& logged_packet) const;
+SimulatedPacket SimulateRtpPacketReceived(      const LoggedRtpPacket& logged_packet) const;
 
  private:
   const Environment env_;

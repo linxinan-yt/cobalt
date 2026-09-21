@@ -216,12 +216,7 @@ const FlagArray* GetBitmaskVersion(VersionNumber version = VersionNumber{4,
 
 void WriteGfpFlag(uint64_t value,
                   std::optional<VersionNumber> version,
-<<<<<<< HEAD
-                  base::DynamicStringWriter* writer) {
-=======
-                  base::FixedStringWriter* writer) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  // On all kernel versions if this flag is not set, return GFP_NOWAIT.
+base::DynamicStringWriter* writer) {  // On all kernel versions if this flag is not set, return GFP_NOWAIT.
   if (value == 0) {
     writer->AppendString("GFP_NOWAIT");
     return;

@@ -16,16 +16,9 @@ import './section.scss';
 import m from 'mithril';
 import type {HTMLAttrs} from './common';
 
-<<<<<<< HEAD
 export interface SectionAttrs extends Omit<HTMLAttrs, 'title'> {
   // The content of the section header (string or custom content)
-  title: string | m.Children;
-=======
-export interface SectionAttrs extends HTMLAttrs {
-  // The name of the section, displayed in the title bar
-  title: string;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  // Optional description/subtitle for the section
+  title: string | m.Children;  // Optional description/subtitle for the section
   subtitle?: string;
 }
 
@@ -37,12 +30,7 @@ export class Section implements m.ClassComponent<SectionAttrs> {
       htmlAttrs,
       m(
         'header',
-<<<<<<< HEAD
-        typeof title === 'string' ? m('h1', title) : title,
-=======
-        m('h1', title),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        subtitle && m('p.pf-section__subtitle', subtitle),
+typeof title === 'string' ? m('h1', title) : title,        subtitle && m('p.pf-section__subtitle', subtitle),
       ),
       m('article', children),
     );

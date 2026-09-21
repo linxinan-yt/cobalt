@@ -12,16 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-<<<<<<< HEAD
 import type m from 'mithril';
 import type {YMode} from '../../components/tracks/counter_track';
 import type {TopLevelTrackGroup, TrackGroupSchema} from './types';
-=======
-import m from 'mithril';
-import {CounterOptions} from '../../components/tracks/base_counter_track';
-import {TopLevelTrackGroup, TrackGroupSchema} from './types';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 type CounterMode = YMode;
 
 type DescriptionRenderer = () => m.Children;
@@ -34,11 +27,7 @@ interface CounterTrackTypeSchema {
   readonly group: string | TrackGroupSchema | undefined;
   readonly shareYAxis?: true;
   readonly mode?: CounterMode;
-<<<<<<< HEAD
-  readonly unit?: string;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+readonly unit?: string;
   /**
    * Optional function to provide a rich description renderer for the track.
    *

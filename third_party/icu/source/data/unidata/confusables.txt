@@ -1,21 +1,10 @@
 # confusables.txt
-<<<<<<< HEAD
 # Date: 2025-07-22, 05:49:37 GMT
-# © 2025 Unicode®, Inc.
-=======
-# Date: 2024-08-14, 23:39:57 GMT
-# © 2024 Unicode®, Inc.
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-# Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+# © 2025 Unicode®, Inc.# Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
 # For terms of use and license, see https://www.unicode.org/terms_of_use.html
 #
 # Unicode Security Mechanisms for UTS #39
-<<<<<<< HEAD
-# Version: 17.0.0
-=======
-# Version: 16.0.0
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#
+# Version: 17.0.0#
 # For documentation and usage, see https://www.unicode.org/reports/tr39
 #
 05AD ;	0596 ;	MA	# ( ֭ → ֖ ) HEBREW ACCENT DEHI → HEBREW ACCENT TIPEHA	# 
@@ -1095,11 +1084,7 @@ A714 ;	02EB ;	MA	#* ( ꜔ → ˫ ) MODIFIER LETTER MID LEFT-STEM TONE BAR → MO
 25E6 ;	00B0 ;	MA	#* ( ◦ → ° ) WHITE BULLET → DEGREE SIGN	# →∘→
 
 235C ;	00B0 0332 ;	MA	#* ( ⍜ → °̲ ) APL FUNCTIONAL SYMBOL CIRCLE UNDERBAR → DEGREE SIGN, COMBINING LOW LINE	# →○̲→
-<<<<<<< HEAD
 10ED0 ;	00B0 0332 ;	MA	#* ( 𐻐 → °̲ ) ARABIC BIBLICAL END OF VERSE → DEGREE SIGN, COMBINING LOW LINE	# →⍜→→○̲→
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 2364 ;	00B0 0308 ;	MA	#* ( ⍤ → °̈ ) APL FUNCTIONAL SYMBOL JOT DIAERESIS → DEGREE SIGN, COMBINING DIAERESIS	# →◦̈→→∘̈→
 
 2103 ;	00B0 0043 ;	MA	#* ( ℃ → °C ) DEGREE CELSIUS → DEGREE SIGN, LATIN CAPITAL LETTER C	# 
@@ -1524,12 +1509,8 @@ A9CF ;	0662 ;	MA	# ( ꧏ → ‎٢‎ ) JAVANESE PANGRANGKEP → ARABIC-INDIC DI
 335A ;	0032 70B9 ;	MA	#* ( ㍚ → 2点 ) IDEOGRAPHIC TELEGRAPH SYMBOL FOR HOUR TWO → DIGIT TWO, CJK UNIFIED IDEOGRAPH-70B9	# 
 
 1D206 ;	0033 ;	MA	#* ( 𝈆 → 3 ) GREEK VOCAL NOTATION SYMBOL-7 → DIGIT THREE	# 
-<<<<<<< HEAD
 0969 ;	0033 ;	MA	# ( ३ → 3 ) DEVANAGARI DIGIT THREE → DIGIT THREE	# →૩→
-0AE9 ;	0033 ;	MA	# ( ૩ → 3 ) GUJARATI DIGIT THREE → DIGIT THREE	# 
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-1CCF3 ;	0033 ;	MA	# ( 𜳳 → 3 ) OUTLINED DIGIT THREE → DIGIT THREE	# 
+0AE9 ;	0033 ;	MA	# ( ૩ → 3 ) GUJARATI DIGIT THREE → DIGIT THREE	#1CCF3 ;	0033 ;	MA	# ( 𜳳 → 3 ) OUTLINED DIGIT THREE → DIGIT THREE	# 
 1D7D1 ;	0033 ;	MA	# ( 𝟑 → 3 ) MATHEMATICAL BOLD DIGIT THREE → DIGIT THREE	# 
 1D7DB ;	0033 ;	MA	# ( 𝟛 → 3 ) MATHEMATICAL DOUBLE-STRUCK DIGIT THREE → DIGIT THREE	# 
 1D7E5 ;	0033 ;	MA	# ( 𝟥 → 3 ) MATHEMATICAL SANS-SERIF DIGIT THREE → DIGIT THREE	# 
@@ -6223,14 +6204,9 @@ FE19 ;	2D57 ;	MA	#* ( ︙ → ⵗ ) PRESENTATION FORM FOR VERTICAL HORIZONTAL EL
 11CB2 ;	11CAA ;	MA	# ( 𑲲 → 𑲪 ) MARCHEN VOWEL SIGN U → MARCHEN SUBJOINED LETTER RA	# 
 
 1734 ;	1715 ;	MA	# ( ᜴ → ᜕ ) HANUNOO SIGN PAMUDPOD → TAGALOG SIGN PAMUDPOD	# 
-<<<<<<< HEAD
-=======
-
 1081 ;	1002 103E ;	MA	# ( ႁ → ဂှ ) MYANMAR LETTER SHAN HA → MYANMAR LETTER GA, MYANMAR CONSONANT SIGN MEDIAL HA	# 
 
-1000 ;	1002 102C ;	MA	# ( က → ဂာ ) MYANMAR LETTER KA → MYANMAR LETTER GA, MYANMAR VOWEL SIGN AA	# 
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+1000 ;	1002 102C ;	MA	# ( က → ဂာ ) MYANMAR LETTER KA → MYANMAR LETTER GA, MYANMAR VOWEL SIGN AA	#
 1070 ;	1003 103E ;	MA	# ( ၰ → ဃှ ) MYANMAR LETTER EASTERN PWO KAREN GHWA → MYANMAR LETTER GHA, MYANMAR CONSONANT SIGN MEDIAL HA	# 
 
 1066 ;	1015 103E ;	MA	# ( ၦ → ပှ ) MYANMAR LETTER WESTERN PWO KAREN PWA → MYANMAR LETTER PA, MYANMAR CONSONANT SIGN MEDIAL HA	# 
@@ -9953,7 +9929,6 @@ FACE ;	9F9C ;	MA	# ( 龜 → 龜 ) CJK COMPATIBILITY IDEOGRAPH-FACE → CJK UNIF
 
 2FD5 ;	9FA0 ;	MA	#* ( ⿕ → 龠 ) KANGXI RADICAL FLUTE → CJK UNIFIED IDEOGRAPH-9FA0	# 
 
-<<<<<<< HEAD
 0CDC ;	0C5C ;	MA	# ( ೜ → ౜ ) KANNADA ARCHAIC SHRII → TELUGU ARCHAIC SHRII	# 
 
 1DE8 ;	1ADA ;	MA	# ( ᷨ → ᫚ ) COMBINING LATIN SMALL LETTER B → COMBINING FLAT SIGN	# 
@@ -10014,7 +9989,3 @@ A7CF ;	A7CE ;	MA	# ( ꟏ → ꟎ ) LATIN SMALL LETTER PHARYNGEAL VOICED FRICATIV
 6138 ;	2B73F ;	MA	# ( 愸 → 𫜿 ) CJK UNIFIED IDEOGRAPH-6138 → CJK UNIFIED IDEOGRAPH-2B73F	# 
 
 # total: 6565
-=======
-# total: 6355
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-

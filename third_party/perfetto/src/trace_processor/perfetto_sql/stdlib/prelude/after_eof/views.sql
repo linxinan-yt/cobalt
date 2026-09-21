@@ -181,26 +181,13 @@ CREATE PERFETTO VIEW thread(
   is_main_thread BOOL,
   -- Boolean indicating if this thread is a kernel idle thread.
   is_idle BOOL,
-<<<<<<< HEAD
-  -- Machine identifier
+-- Machine identifier
   machine_id JOINID(machine.id),
   -- Extra args for this thread.
   arg_set_id ARGSETID
 )
 AS
 SELECT id AS utid, * FROM __intrinsic_thread;
-=======
-  -- Machine identifier, non-null for threads on a remote machine.
-  machine_id LONG,
-  -- Extra args for this thread.
-  arg_set_id ARGSETID
-) AS
-SELECT
-  id AS utid,
-  *
-FROM __intrinsic_thread;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 -- Contains information of processes seen during the trace.
 CREATE PERFETTO VIEW process(
   -- The id of the process. Prefer using `upid` instead.

@@ -707,13 +707,9 @@ vec{
             japanese{"lunaro japoneze"}
             persian{"lunaro persian"}
             roc{"lunaro mìnguo"}
-<<<<<<< HEAD
-        }
+}
         calendar%core{
-            gregorian{"gregorian"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            gregorian{"gregorian"}        }
         cf{
             account{"formà moneda contàbile"}
             standard{"formà moneda standard"}

@@ -3,12 +3,7 @@
 // Generated using tools/cldr/cldr-to-icu/
 
 {
-<<<<<<< HEAD
-    "cldrVersion": "48",
-=======
-    "cldrVersion": "47",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    "aliases": {
+"cldrVersion": "48",    "aliases": {
         "ars": "ar_SA",
         "az_AZ": "az_Latn_AZ",
         "bs_BA": "bs_Latn_BA",
@@ -23,11 +18,7 @@
         "iw": "he",
         "iw_IL": "he_IL",
         "ks_IN": "ks_Arab_IN",
-<<<<<<< HEAD
-        "ku_SY": "ku_Latn_SY",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "kxv_IN": "kxv_Latn_IN",
+"ku_SY": "ku_Latn_SY",        "kxv_IN": "kxv_Latn_IN",
         "mni_IN": "mni_Beng_IN",
         "mo": "ro",
         "no_NO": "no",
@@ -203,11 +194,7 @@
         "es_VE": "es_419",
         "ff_Adlm": "root",
         "hi_Latn": "en_IN",
-<<<<<<< HEAD
-        "kk_Arab": "root",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "kok_Latn": "root",
+"kk_Arab": "root",        "kok_Latn": "root",
         "ks_Deva": "root",
         "kxv_Deva": "root",
         "kxv_Orya": "root",

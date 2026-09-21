@@ -59,12 +59,7 @@ AsyncTCPSocketBase::AsyncTCPSocketBase(
   inbuf_.EnsureCapacity(kMinimumRecvSize);
 
   socket_->SubscribeConnectEvent(
-<<<<<<< HEAD
-      this, [this](Socket* socket) { OnConnectEvent(socket); });
-=======
-      [this](Socket* socket) { OnConnectEvent(socket); });
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  socket_->SubscribeReadEvent(this,
+this, [this](Socket* socket) { OnConnectEvent(socket); });  socket_->SubscribeReadEvent(this,
                               [this](Socket* socket) { OnReadEvent(socket); });
   socket_->SubscribeWriteEvent(
       this, [this](Socket* socket) { OnWriteEvent(socket); });

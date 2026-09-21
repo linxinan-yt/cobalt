@@ -50,12 +50,8 @@
 #include "third_party/blink/renderer/core/html/canvas/canvas_performance_monitor.h"
 #include "third_party/blink/renderer/core/html/canvas/canvas_rendering_context.h"
 #include "third_party/blink/renderer/core/html/canvas/canvas_rendering_context_host.h"
-<<<<<<< HEAD
-#include "third_party/blink/renderer/core/html/canvas/element_image.h"
-=======
 #include "build/buildflag.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "third_party/blink/renderer/core/html/canvas/html_canvas_element.h"
+#include "third_party/blink/renderer/core/html/canvas/element_image.h"#include "third_party/blink/renderer/core/html/canvas/html_canvas_element.h"
 #include "third_party/blink/renderer/core/html/canvas/image_data.h"
 #include "third_party/blink/renderer/core/html/canvas/text_cluster.h"
 #include "third_party/blink/renderer/core/html/canvas/text_metrics.h"
@@ -124,8 +120,6 @@ class MemoryManagedPaintCanvas;
 
 namespace {
 
-<<<<<<< HEAD
-=======
 #if !BUILDFLAG(IS_COBALT)
 wgpu::TextureFormat AsDawnType(const viz::SharedImageFormat& format) {
   // NOTE: Canvas2D can be only RGBA_8888, BGRA_8888, or F16.
@@ -140,8 +134,6 @@ wgpu::TextureFormat AsDawnType(const viz::SharedImageFormat& format) {
   }
 }
 #endif  // !BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 bool IsContextProviderValid() {
   base::WeakPtr<WebGraphicsContext3DProviderWrapper> context_provider_wrapper =
       SharedGpuContext::ContextProviderWrapper();
@@ -179,9 +171,7 @@ BaseRenderingContext2D::BaseRenderingContext2D(
 void BaseRenderingContext2D::ResetInternal() {
   Canvas2DRecorderContext::ResetInternal();
 
-<<<<<<< HEAD
-=======
-  // If a WebGPU transfer texture exists, we must destroy it immediately. We
+// If a WebGPU transfer texture exists, we must destroy it immediately. We
   // can't allow it to continue to exist, as it would be subject to Javascript
   // garbage-collection and could vanish any time Oilpan runs a sweep. Normally
   // it's okay for Oilpan to delete GPUTextures, since Dawn maintains its own
@@ -192,9 +182,7 @@ void BaseRenderingContext2D::ResetInternal() {
     webgpu_access_texture_->destroy();
     webgpu_access_texture_ = nullptr;
   }
-#endif  // !BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+#endif  // !BUILDFLAG(IS_COBALT)}
 
 CanvasRenderingContext2DSettings* BaseRenderingContext2D::getContextAttributes()
     const {
@@ -758,13 +746,9 @@ void BaseRenderingContext2D::Trace(Visitor* visitor) const {
   visitor->Trace(dispatch_context_lost_event_timer_);
   visitor->Trace(dispatch_context_restored_event_timer_);
   visitor->Trace(try_restore_context_event_timer_);
-<<<<<<< HEAD
-=======
 #if !BUILDFLAG(IS_COBALT)
   visitor->Trace(webgpu_access_texture_);
-#endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  CanvasRenderingContext::Trace(visitor);
+#endif  CanvasRenderingContext::Trace(visitor);
   Canvas2DRecorderContext::Trace(visitor);
 }
 
@@ -1396,9 +1380,6 @@ void BaseRenderingContext2D::setFontVariantCaps(
 UniqueFontSelector* BaseRenderingContext2D::GetFontSelector() const {
   return nullptr;
 }
-<<<<<<< HEAD
-=======
-
 #if !BUILDFLAG(IS_COBALT)
 V8GPUTextureFormat BaseRenderingContext2D::getTextureFormat() const {
   return FromDawnEnum(AsDawnType(GetSharedImageFormat()));
@@ -1626,10 +1607,7 @@ void BaseRenderingContext2D::transferBackFromGPUTexture(
   WillDraw(SkIRect::MakeXYWH(0, 0, Width(), Height()),
            CanvasPerformanceMonitor::DrawType::kOther);
 }
-#endif  // !BUILDFLAG(IS_COBALT)
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-int BaseRenderingContext2D::LayerCount() const {
+#endif  // !BUILDFLAG(IS_COBALT)int BaseRenderingContext2D::LayerCount() const {
   return Canvas2DRecorderContext::LayerCount();
 }
 

@@ -22,16 +22,9 @@ import {GridLayout, GridLayoutColumn} from '../../widgets/grid_layout';
 import {Section} from '../../widgets/section';
 import {SqlRef} from '../../widgets/sql_ref';
 import {Tree, TreeNode} from '../../widgets/tree';
-<<<<<<< HEAD
 import {asUpid, type Upid} from '../../components/sql_utils/core_types';
 import type {Trace} from '../../public/trace';
 import type {TrackEventDetailsPanel} from '../../public/details_panel';
-=======
-import {asUpid, Upid} from '../../components/sql_utils/core_types';
-import {Trace} from '../../public/trace';
-import {TrackEventDetailsPanel} from '../../public/details_panel';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 interface Data {
   startupId: number;
   eventName: string;

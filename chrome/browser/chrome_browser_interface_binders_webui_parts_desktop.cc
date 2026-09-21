@@ -541,43 +541,19 @@ void PopulateChromeWebUIFrameBindersPartsDesktop(
 
   RegisterWebUIControllerInterfaceBinder<::mojom::PageHandlerFactory,
                                          WebAppInternalsUI>(map);
-<<<<<<< HEAD
-  RegisterWebUIControllerInterfaceBinder<::iwa_dev::mojom::PageHandlerFactory,
+RegisterWebUIControllerInterfaceBinder<::iwa_dev::mojom::PageHandlerFactory,
                                          IwaDevUI>(map);
   if (base::FeatureList::IsEnabled(multistep_filter::kMultistepFilter)) {
     RegisterWebUIControllerInterfaceBinder<
         multistep_filter_internals::mojom::PageHandlerFactory,
         multistep_filter_internals::MultistepFilterInternalsUI>(map);
   }
-=======
-#if !BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  if (base::FeatureList::IsEnabled(
+#if !BUILDFLAG(IS_COBALT)  if (base::FeatureList::IsEnabled(
           optimization_guide::features::kOptimizationGuideOnDeviceModel)) {
     RegisterWebUIControllerInterfaceBinder<
         on_device_internals::mojom::PageHandlerFactory,
         on_device_internals::OnDeviceInternalsUI>(map);
   }
-<<<<<<< HEAD
-=======
-#endif  // !BUILDFLAG(IS_COBALT)
-  if (base::FeatureList::IsEnabled(privacy_sandbox::kRelatedWebsiteSetsDevUI)) {
-    RegisterWebUIControllerInterfaceBinder<
-        related_website_sets::mojom::RelatedWebsiteSetsPageHandler,
-        privacy_sandbox_internals::PrivacySandboxInternalsUI>(map);
-  }
-
-  if (base::FeatureList::IsEnabled(privacy_sandbox::kPrivateStateTokensDevUI)) {
-    RegisterWebUIControllerInterfaceBinder<
-        private_state_tokens::mojom::PrivateStateTokensPageHandler,
-        privacy_sandbox_internals::PrivacySandboxInternalsUI>(map);
-  }
-
-  RegisterWebUIControllerInterfaceBinder<
-      privacy_sandbox::dialog::mojom::BaseDialogPageHandlerFactory,
-      privacy_sandbox::BaseDialogUI>(map);
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   RegisterWebUIControllerInterfaceBinder<
       guest_contents::mojom::GuestContentsHost, WebUIBrowserUI>(map);
 

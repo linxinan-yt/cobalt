@@ -1,21 +1,10 @@
 # emoji-zwj-sequences.txt
-<<<<<<< HEAD
 # Date: 2025-01-08, 04:57:12 GMT
-# © 2025 Unicode®, Inc.
-=======
-# Date: 2024-08-14, 23:51:54 GMT
-# © 2024 Unicode®, Inc.
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-# Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+# © 2025 Unicode®, Inc.# Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
 # For terms of use and license, see https://www.unicode.org/terms_of_use.html
 #
 # Emoji ZWJ Sequences for UTS #51
-<<<<<<< HEAD
-# Version: 17.0
-=======
-# Version: 16.0
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#
+# Version: 17.0#
 # For documentation and usage, see https://www.unicode.org/reports/tr51
 #
 # Format:

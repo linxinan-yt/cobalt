@@ -12,7 +12,6 @@
 
 ##############################################################################
 # Keep the following in sync with the version - see common/unicode/uvernum.h
-<<<<<<< HEAD
 U_ICUDATA_NAME=icudt78
 ##############################################################################
 !IF "$(UWP)" == "UWP"
@@ -20,18 +19,7 @@ U_ICUDATA_NAME=icudt78
 U_ICUDATA_NAME=icudt78
 !ENDIF
 U_ICUDATA_ENDIAN_SUFFIX=l
-UNICODE_VERSION=17.0
-=======
-U_ICUDATA_NAME=icudt77
-##############################################################################
-!IF "$(UWP)" == "UWP"
-# Optionally change the name of the data file for the UWP version.
-U_ICUDATA_NAME=icudt77
-!ENDIF
-U_ICUDATA_ENDIAN_SUFFIX=l
-UNICODE_VERSION=16.0
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ICU_LIB_TARGET=$(DLL_OUTPUT)\$(U_ICUDATA_NAME).dll
+UNICODE_VERSION=17.0ICU_LIB_TARGET=$(DLL_OUTPUT)\$(U_ICUDATA_NAME).dll
 
 #  ICUMAKE
 #     Must be provided by whoever runs this makefile.

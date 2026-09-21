@@ -1045,8 +1045,7 @@ ps{
         }
     }
     unitsNarrow{
-<<<<<<< HEAD
-        area{
+area{
             square-foot{
                 dnam{"ft²"}
                 one{"{0}ft²"}
@@ -1074,13 +1073,7 @@ ps{
                 other{"{0} برخه"}
             }
             part-per-1e9{
-                dnam{"ppb"}
-=======
-        concentr{
-            portion-per-1e9{
-                dnam{"p/b"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                dnam{"ppb"}            }
         }
         consumption{
             mile-per-gallon{

@@ -1202,9 +1202,7 @@ ko{
                         evening1{"저녁"}
                         midnight{"자정"}
                         morning1{"아침"}
-<<<<<<< HEAD
-=======
-                        morning2{"오전"}
+morning2{"오전"}
                         night1{"밤"}
                         noon{"정오"}
                     }
@@ -1221,9 +1219,7 @@ ko{
                         afternoon1{"오후"}
                         evening1{"저녁"}
                         midnight{"자정"}
-                        morning1{"아침"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                        morning2{"오전"}
+                        morning1{"아침"}                        morning2{"오전"}
                         night1{"밤"}
                         noon{"정오"}
                     }
@@ -2234,9 +2230,7 @@ ko{
                 "[\\: ∶]",
             }
         }
-<<<<<<< HEAD
-=======
-        general{
+general{
             lenient{
                 "[.．․﹒ 。｡︒]",
                 "['＇’ ՚ ᾽᾿ ʼ]",
@@ -2248,9 +2242,7 @@ ko{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        number{
+        }        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ، ٫ 、﹑､︑]",

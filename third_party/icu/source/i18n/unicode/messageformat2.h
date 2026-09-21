@@ -51,12 +51,7 @@ namespace message2 {
      * @internal ICU 75 technology preview
      * @deprecated This API is for technology preview only.
      */
-<<<<<<< HEAD
-    class U_I18N_API_CLASS MessageFormatter : public UObject {
-=======
-    class U_I18N_API MessageFormatter : public UObject {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        // Note: This class does not currently inherit from the existing
+class U_I18N_API_CLASS MessageFormatter : public UObject {        // Note: This class does not currently inherit from the existing
         // `Format` class.
     public:
         /**
@@ -66,23 +61,13 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API MessageFormatter& operator=(MessageFormatter&&) noexcept;
-=======
-        MessageFormatter& operator=(MessageFormatter&&) noexcept;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        /**
+U_I18N_API MessageFormatter& operator=(MessageFormatter&&) noexcept;        /**
          * Destructor.
          *
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API virtual ~MessageFormatter();
-=======
-        virtual ~MessageFormatter();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API virtual ~MessageFormatter();
         /**
          * Formats the message to a string, using the data model that was previously set or parsed,
          * and the given `arguments` object.
@@ -97,12 +82,7 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API UnicodeString formatToString(const MessageArguments& arguments, UErrorCode& status);
-=======
-        UnicodeString formatToString(const MessageArguments& arguments, UErrorCode &status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+UnicodeString formatToString(const MessageArguments& arguments, UErrorCode &status);
         /**
          * Not yet implemented; formats the message to a `FormattedMessage` object,
          * using the data model that was previously set or parsed,
@@ -118,12 +98,7 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API FormattedMessage format(const MessageArguments& arguments, UErrorCode& status) const {
-=======
-        FormattedMessage format(const MessageArguments& arguments, UErrorCode &status) const {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            (void) arguments;
+U_I18N_API FormattedMessage format(const MessageArguments& arguments, UErrorCode& status) const {            (void) arguments;
             if (U_SUCCESS(status)) {
                 status = U_UNSUPPORTED_ERROR;
             }
@@ -138,12 +113,7 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API const Locale& getLocale() const { return locale; }
-=======
-        const Locale& getLocale() const { return locale; }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API const Locale& getLocale() const { return locale; }
         /**
          * Serializes the data model as a string in MessageFormat 2.0 syntax.
          *
@@ -153,12 +123,7 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API UnicodeString getPattern() const;
-=======
-        UnicodeString getPattern() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API UnicodeString getPattern() const;
         /**
          * Accesses the data model referred to by this
          * `MessageFormatter` object.
@@ -168,12 +133,7 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API const MFDataModel& getDataModel() const;
-=======
-        const MFDataModel& getDataModel() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API const MFDataModel& getDataModel() const;
         /**
          * Used in conjunction with the
          * MessageFormatter::Builder::setErrorHandlingBehavior() method.
@@ -205,12 +165,7 @@ namespace message2 {
          *
          * Not copyable or movable.
          */
-<<<<<<< HEAD
-        class U_I18N_API_CLASS Builder : public UObject {
-=======
-        class U_I18N_API Builder : public UObject {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        private:
+class U_I18N_API_CLASS Builder : public UObject {        private:
             friend class MessageFormatter;
 
             // The pattern to be parsed to generate the formatted message
@@ -244,12 +199,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API Builder& setLocale(const Locale& locale);
-=======
-            Builder& setLocale(const Locale& locale);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API Builder& setLocale(const Locale& locale);            /**
              * Sets the pattern (contents of the message) and parses it
              * into a data model. If a data model was
              * previously set, it is removed.
@@ -264,14 +214,9 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API Builder& setPattern(const UnicodeString& pattern,
+U_I18N_API Builder& setPattern(const UnicodeString& pattern,
                                            UParseError& parseError,
-                                           UErrorCode& status);
-=======
-            Builder& setPattern(const UnicodeString& pattern, UParseError& parseError, UErrorCode& status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+                                           UErrorCode& status);            /**
              * Sets a custom function registry.
              *
              * @param functionRegistry Reference to the function registry to use.
@@ -284,12 +229,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API Builder& setFunctionRegistry(const MFFunctionRegistry& functionRegistry);
-=======
-            Builder& setFunctionRegistry(const MFFunctionRegistry& functionRegistry);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API Builder& setFunctionRegistry(const MFFunctionRegistry& functionRegistry);            /**
              * Sets a data model. If a pattern was previously set, it is removed.
              *
              * @param dataModel Data model to format. Passed by move.
@@ -298,12 +238,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API Builder& setDataModel(MFDataModel&& dataModel);
-=======
-            Builder& setDataModel(MFDataModel&& dataModel);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API Builder& setDataModel(MFDataModel&& dataModel);            /**
              * Set the error handling behavior for this formatter.
              *
              * "Strict" error behavior means that that formatting methods
@@ -332,12 +267,7 @@ namespace message2 {
              * @internal ICU 76 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API Builder& setErrorHandlingBehavior(UMFErrorHandlingBehavior type);
-=======
-            Builder& setErrorHandlingBehavior(UMFErrorHandlingBehavior type);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+Builder& setErrorHandlingBehavior(UMFErrorHandlingBehavior type);            /**
              * Constructs a new immutable MessageFormatter using the pattern or data model
              * that was previously set, and the locale (if it was previously set)
              * or default locale (otherwise).
@@ -351,12 +281,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API MessageFormatter build(UErrorCode& status) const;
-=======
-            MessageFormatter build(UErrorCode& status) const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API MessageFormatter build(UErrorCode& status) const;            /**
              * Default constructor.
              * Returns a Builder with the default locale and with no
              * data model or pattern set. Either `setPattern()`
@@ -367,23 +292,13 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API Builder(UErrorCode& status);
-=======
-            Builder(UErrorCode& status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API Builder(UErrorCode& status);            /**
              * Destructor.
              *
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API virtual ~Builder();
-=======
-            virtual ~Builder();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }; // class MessageFormatter::Builder
+U_I18N_API virtual ~Builder();        }; // class MessageFormatter::Builder
 
         // TODO: Shouldn't be public; only used for testing
         /**
@@ -394,12 +309,7 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API const UnicodeString& getNormalizedPattern() const { return normalizedInput; }
-=======
-        const UnicodeString& getNormalizedPattern() const { return normalizedInput; }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API const UnicodeString& getNormalizedPattern() const { return normalizedInput; }
     private:
         friend class Builder;
         friend class Checker;
@@ -429,14 +339,9 @@ namespace message2 {
 
         // Formatting methods
 
-<<<<<<< HEAD
-        [[nodiscard]] FormattedPlaceholder formatLiteral(const UnicodeString&, const data_model::Literal&) const;
-=======
-        // Used for normalizing variable names and keys for comparison
+// Used for normalizing variable names and keys for comparison
         UnicodeString normalizeNFC(const UnicodeString&) const;
-        [[nodiscard]] FormattedPlaceholder formatLiteral(const data_model::Literal&) const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        void formatPattern(MessageContext&, const Environment&, const data_model::Pattern&, UErrorCode&, UnicodeString&) const;
+        [[nodiscard]] FormattedPlaceholder formatLiteral(const data_model::Literal&) const;        void formatPattern(MessageContext&, const Environment&, const data_model::Pattern&, UErrorCode&, UnicodeString&) const;
         // Evaluates a function call
         // Dispatches on argument type
         [[nodiscard]] InternalValue* evalFunctionCall(FormattedPlaceholder&& argument,
@@ -449,8 +354,7 @@ namespace message2 {
                                                      MessageContext& context,
                                                      UErrorCode& status) const;
         // Formats an expression that appears in a pattern or as the definition of a local variable
-<<<<<<< HEAD
-        [[nodiscard]] InternalValue* formatExpression(const UnicodeString&,
+[[nodiscard]] InternalValue* formatExpression(const UnicodeString&,
                                                       const Environment&,
                                                       const data_model::Expression&,
                                                       MessageContext&,
@@ -464,17 +368,7 @@ namespace message2 {
         [[nodiscard]] FormattedPlaceholder evalArgument(const UnicodeString&,
                                                         const data_model::VariableName&,
                                                         MessageContext&,
-                                                        UErrorCode&) const;
-=======
-        [[nodiscard]] InternalValue* formatExpression(const Environment&,
-                                                     const data_model::Expression&,
-                                                     MessageContext&,
-                                                     UErrorCode&) const;
-        [[nodiscard]] FunctionOptions resolveOptions(const Environment& env, const OptionMap&, MessageContext&, UErrorCode&) const;
-        [[nodiscard]] InternalValue* formatOperand(const Environment&, const data_model::Operand&, MessageContext&, UErrorCode&) const;
-        [[nodiscard]] FormattedPlaceholder evalArgument(const data_model::VariableName&, MessageContext&, UErrorCode&) const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        void formatSelectors(MessageContext& context, const Environment& env, UErrorCode &status, UnicodeString& result) const;
+                                                        UErrorCode&) const;        void formatSelectors(MessageContext& context, const Environment& env, UErrorCode &status, UnicodeString& result) const;
 
         // Function registry methods
         bool hasCustomMFFunctionRegistry() const {
@@ -548,13 +442,8 @@ namespace message2 {
         // The default is false.
         bool signalErrors = false;
 
-<<<<<<< HEAD
-=======
-        // Used for implementing normalizeNFC()
-        const Normalizer2* nfcNormalizer = nullptr;
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }; // class MessageFormatter
+// Used for implementing normalizeNFC()
+        const Normalizer2* nfcNormalizer = nullptr;    }; // class MessageFormatter
 
 } // namespace message2
 

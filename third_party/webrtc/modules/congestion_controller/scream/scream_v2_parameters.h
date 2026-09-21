@@ -133,8 +133,7 @@ struct ScreamV2Parameters {
   // even of no streams have been configured.
   FieldTrialParameter<TimeDelta> initial_probing_duration;
 
-<<<<<<< HEAD
-  // Factor multiplied by the current target rate to decide the pacing rate.
+// Factor multiplied by the current target rate to decide the pacing rate.
   FieldTrialParameter<double> pacing_factor;
   // Minimum pacing rate relative to received_rate.
   FieldTrialParameter<double> pacing_rate_received_factor;
@@ -164,23 +163,7 @@ struct ScreamV2Parameters {
   // Minimum pacing delay before starting cwnd pushback reduction.
   FieldTrialParameter<TimeDelta> min_pacing_delay_for_pushback;
   // Maximum pacing delay for full cwnd pushback reduction.
-  FieldTrialParameter<TimeDelta> max_pacing_delay_for_pushback;
-=======
-  // Use all packets when calculating `queue_delay_average`. This is per default
-  // true. This is in contrast with
-  // https://datatracker.ietf.org/doc/draft-johansson-ccwg-rfc8298bis-screamv2/
-  // that specifies that only the last packet reported in a feedback packet
-  // received every min(virtual_rtt, smoothed rtt) is used.
-  FieldTrialParameter<bool> use_all_packets_when_calculating_queue_delay;
-
-  // Padding is periodically used in order to increase target rate even if a
-  // stream does not produce a high enough rate.
-  FieldTrialParameter<TimeDelta> periodic_padding_interval;
-
-  // Duration padding is used when periodic padding start.
-  FieldTrialParameter<TimeDelta> periodic_padding_duration;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-};
+  FieldTrialParameter<TimeDelta> max_pacing_delay_for_pushback;};
 
 }  // namespace webrtc
 #endif  // MODULES_CONGESTION_CONTROLLER_SCREAM_SCREAM_V2_PARAMETERS_H_

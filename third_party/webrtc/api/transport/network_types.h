@@ -177,13 +177,9 @@ struct RTC_EXPORT PacketResult {
 
   SentPacket sent_packet;
   Timestamp receive_time = Timestamp::PlusInfinity();
-<<<<<<< HEAD
-  // Delta from when feedback was sent and the packet was received. Can be used
+// Delta from when feedback was sent and the packet was received. Can be used
   // for calculating round trip time per packet.
-  std::optional<TimeDelta> arrival_time_offset;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  // Ecn marking from the feedback report how this packet was received.
+  std::optional<TimeDelta> arrival_time_offset;  // Ecn marking from the feedback report how this packet was received.
   EcnMarking ecn = EcnMarking::kNotEct;
 
   // Indicates if packet was sent with ECN marking 'ect1'.

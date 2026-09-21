@@ -9,22 +9,12 @@ de{
                 "&OE<<ö<<<Ö"
                 "&UE<<ü<<<Ü"
             }
-<<<<<<< HEAD
-            Version{"48"}
-=======
-            Version{"47"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+Version{"48"}        }
         search{
             Sequence{
                 "[import und-u-co-search]"
                 "[import de-u-co-phonebk]"
             }
-<<<<<<< HEAD
-            Version{"48"}
-=======
-            Version{"47"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+Version{"48"}        }
     }
 }

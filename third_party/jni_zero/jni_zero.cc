@@ -6,7 +6,6 @@
 
 #include <sys/prctl.h>
 
-<<<<<<< HEAD
 #include <algorithm>
 #include <array>
 #include <cassert>
@@ -16,16 +15,7 @@
 #include "third_party/jni_zero/jni_methods.h"
 #include "third_party/jni_zero/jni_zero_internal.h"
 #include "third_party/jni_zero/logging.h"
-#include "third_party/jni_zero/system_jni_unchecked_exceptions/ClassLoader_jni.h"
-
-=======
-#include "build/build_config.h"
-#include "third_party/jni_zero/generate_jni/JniInit_jni.h"
-#include "third_party/jni_zero/jni_methods.h"
-#include "third_party/jni_zero/jni_zero_internal.h"
-#include "third_party/jni_zero/logging.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#if defined(JNI_ZERO_MULTIPLEXING_ENABLED)
+#include "third_party/jni_zero/system_jni_unchecked_exceptions/ClassLoader_jni.h"#if defined(JNI_ZERO_MULTIPLEXING_ENABLED)
 extern const int64_t kJniZeroHashWhole;
 extern const int64_t kJniZeroHashPriority;
 #endif
@@ -60,31 +50,10 @@ LeakedJavaGlobalRef<JClassLoader> g_class_loader = nullptr;
 
 void (*g_exception_handler_callback)(JNIEnv*) = nullptr;
 
-<<<<<<< HEAD
 jclass DefaultClassResolver(JNIEnv* env, const char* class_name) {
   JNI_ZERO_DCHECK(g_class_loader);
   auto j_class_name = jni_zero::AdoptRef(env, env->NewStringUTF(class_name));
-  return g_class_loader->loadClass(env, j_class_name).Release();
-=======
-/* Cobalt specific hack to move Java classes to a custom namespace.
-   For every class org.chromium.foo moves them to cobalt.org.chromium.foo
-   This works around link-time conflicts when building the final
-   package against other Chromium release artifacts. */
-jclass GetClassInternal(JNIEnv* env,
-                        const char* class_name,
-                        const char* split_name) {
-  jclass clazz;
-  if (g_class_resolver != nullptr) {
-    clazz = g_class_resolver(env, class_name, split_name);
-  } else {
-    clazz = env->FindClass(class_name);
-  }
-  if (ClearException(env) || !clazz) {
-    JNI_ZERO_FLOG("Failed to find class %s", class_name);
-  }
-  return clazz;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  return g_class_loader->loadClass(env, j_class_name).Release();}
 
 jclass GetClassGlobalRef(JNIEnv* env, jobject obj) {
   return static_cast<jclass>(env->NewGlobalRef(env->GetObjectClass(obj)));
@@ -403,10 +372,6 @@ jclass LazyGetClass(JNIEnv* env,
 }
 
 }  // namespace internal
-<<<<<<< HEAD
 }  // namespace jni_zero
 
 DEFINE_JNI(JniZero)
-=======
-}  // namespace jni_zero
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

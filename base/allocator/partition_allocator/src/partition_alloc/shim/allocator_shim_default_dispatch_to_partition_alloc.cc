@@ -1094,8 +1094,7 @@ void ConfigurePartitions(
   // another partition will have the thread cache enabled, by calling
   // EnableThreadCacheIfSupported().
 
-<<<<<<< HEAD
-  opts.thread_cache = partition_alloc::PartitionOptions::kDisabled;
+opts.thread_cache = partition_alloc::PartitionOptions::kDisabled;
   opts.backup_ref_ptr = enable_brp
                             ? partition_alloc::PartitionOptions::kEnabled
                             : partition_alloc::PartitionOptions::kDisabled;
@@ -1122,63 +1121,6 @@ void ConfigurePartitions(
       enable_strict_free_size_check
           ? partition_alloc::PartitionOptions::kEnabled
           : partition_alloc::PartitionOptions::kDisabled;
-=======
-#if BUILDFLAG(IS_COBALT)
-  // If the initial PartitionRoot already matches the required options, skip
-  // re-creating the root allocator to avoid duplicate PartitionRoot overhead.
-  if (SettingsMatch(
-          current_root, enable_brp, brp_extra_extras_size,
-          enable_memory_tagging, memory_tagging_reporting_mode,
-          scheduler_loop_quarantine_global_config,
-          scheduler_loop_quarantine_thread_local_config,
-          eventually_zero_freed_memory)) {
-    if (distribution == BucketDistribution::kDenser) {
-      current_root->SwitchToDenserBucketDistribution();
-    }
-
-    PA_CHECK(!g_roots_finalized.exchange(true));  // Ensure configured once.
-    return;
-  }
-#endif  // BUILDFLAG(IS_COBALT)
-
-  // We've been bitten before by using a static local when initializing a
-  // partition. For synchronization, static local variables call into the
-  // runtime on Windows, which may not be ready to handle it, if the path is
-  // invoked on an allocation during the runtime initialization.
-  // ConfigurePartitions() is invoked explicitly from Chromium code, so this
-  // shouldn't bite us here. Mentioning just in case we move this code earlier.
-  static partition_alloc::internal::base::NoDestructor<
-      partition_alloc::PartitionAllocator>
-      new_main_allocator([&] {
-        partition_alloc::PartitionOptions opts;
-        // The caller of ConfigurePartitions() will decide whether this or
-        // another partition will have the thread cache enabled, by calling
-        // EnableThreadCacheIfSupported().
-        opts.thread_cache = partition_alloc::PartitionOptions::kDisabled;
-        opts.backup_ref_ptr =
-            enable_brp ? partition_alloc::PartitionOptions::kEnabled
-                       : partition_alloc::PartitionOptions::kDisabled;
-        opts.backup_ref_ptr_extra_extras_size = brp_extra_extras_size;
-        opts.eventually_zero_freed_memory =
-            eventually_zero_freed_memory
-                ? partition_alloc::PartitionOptions::kEnabled
-                : partition_alloc::PartitionOptions::kDisabled;
-        opts.scheduler_loop_quarantine_global_config =
-            scheduler_loop_quarantine_global_config;
-        opts.scheduler_loop_quarantine_thread_local_config =
-            scheduler_loop_quarantine_thread_local_config;
-        opts.scheduler_loop_quarantine_for_advanced_memory_safety_checks_config =
-            scheduler_loop_quarantine_for_advanced_memory_safety_checks_config;
-        opts.memory_tagging = {
-            .enabled = enable_memory_tagging
-                           ? partition_alloc::PartitionOptions::kEnabled
-                           : partition_alloc::PartitionOptions::kDisabled,
-            .reporting_mode = memory_tagging_reporting_mode};
-        return opts;
-      }());
-  partition_alloc::PartitionRoot* new_root = new_main_allocator->root();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   static std::array<partition_alloc::internal::base::NoDestructor<
                         partition_alloc::PartitionAllocator>,
                     kNumPartitions>

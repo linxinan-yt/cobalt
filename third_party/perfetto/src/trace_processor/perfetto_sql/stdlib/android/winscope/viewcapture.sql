@@ -25,20 +25,13 @@ CREATE PERFETTO VIEW android_viewcapture(
   package_name STRING,
   -- Window name deinterned from proto message
   window_name STRING
-<<<<<<< HEAD
-)
-AS
-SELECT id, ts, arg_set_id, package_name, window_name
-=======
 ) AS
 SELECT
   id,
   ts,
   arg_set_id,
   package_name,
-  window_name
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-FROM __intrinsic_viewcapture;
+  window_nameFROM __intrinsic_viewcapture;
 
 -- Android viewcapture view (from android.viewcapture data source).
 CREATE PERFETTO VIEW android_viewcapture_view(
@@ -62,13 +55,8 @@ CREATE PERFETTO VIEW android_viewcapture_view(
   class_name STRING,
   -- Trace rect id
   trace_rect_id LONG
-<<<<<<< HEAD
 )
-AS
-=======
-) AS
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-SELECT
+ASSELECT
   id,
   snapshot_id,
   arg_set_id,

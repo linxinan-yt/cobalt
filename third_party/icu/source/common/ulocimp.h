@@ -55,7 +55,6 @@ uloc_getCurrentCountryID(const char* oldID);
 U_CFUNC const char* 
 uloc_getCurrentLanguageID(const char* oldID);
 
-<<<<<<< HEAD
 U_COMMON_API std::optional<std::string_view>
 ulocimp_toBcpKeyWithFallback(std::string_view keyword);
 
@@ -68,109 +67,50 @@ ulocimp_toLegacyKeyWithFallback(std::string_view keyword);
 U_COMMON_API std::optional<std::string_view>
 ulocimp_toLegacyTypeWithFallback(std::string_view keyword, std::string_view value);
 
-U_COMMON_API icu::CharString
-=======
-U_EXPORT std::optional<std::string_view>
-ulocimp_toBcpKeyWithFallback(std::string_view keyword);
-
-U_EXPORT std::optional<std::string_view>
-ulocimp_toBcpTypeWithFallback(std::string_view keyword, std::string_view value);
-
-U_EXPORT std::optional<std::string_view>
-ulocimp_toLegacyKeyWithFallback(std::string_view keyword);
-
-U_EXPORT std::optional<std::string_view>
-ulocimp_toLegacyTypeWithFallback(std::string_view keyword, std::string_view value);
-
-U_EXPORT icu::CharString
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_getKeywords(std::string_view localeID,
+U_COMMON_API icu::CharStringulocimp_getKeywords(std::string_view localeID,
                     char prev,
                     bool valuesToo,
                     UErrorCode& status);
 
-<<<<<<< HEAD
-U_COMMON_API void
-=======
-U_EXPORT void
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_getKeywords(std::string_view localeID,
+U_EXPORT voidulocimp_getKeywords(std::string_view localeID,
                     char prev,
                     icu::ByteSink& sink,
                     bool valuesToo,
                     UErrorCode& status);
 
-<<<<<<< HEAD
-U_COMMON_API icu::CharString
-ulocimp_getName(std::string_view localeID,
-                UErrorCode& err);
-
-U_COMMON_API void
-=======
 U_EXPORT icu::CharString
 ulocimp_getName(std::string_view localeID,
                 UErrorCode& err);
 
-U_EXPORT void
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_getName(std::string_view localeID,
+U_EXPORT voidulocimp_getName(std::string_view localeID,
                 icu::ByteSink& sink,
                 UErrorCode& err);
 
-<<<<<<< HEAD
 U_COMMON_API icu::CharString
 ulocimp_getBaseName(std::string_view localeID,
                     UErrorCode& err);
 
-U_COMMON_API void
-=======
-U_EXPORT icu::CharString
-ulocimp_getBaseName(std::string_view localeID,
-                    UErrorCode& err);
-
-U_EXPORT void
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_getBaseName(std::string_view localeID,
+U_COMMON_API voidulocimp_getBaseName(std::string_view localeID,
                     icu::ByteSink& sink,
                     UErrorCode& err);
 
-<<<<<<< HEAD
 U_COMMON_API icu::CharString
 ulocimp_canonicalize(std::string_view localeID,
                      UErrorCode& err);
 
-U_COMMON_API void
-=======
-U_EXPORT icu::CharString
-ulocimp_canonicalize(std::string_view localeID,
-                     UErrorCode& err);
-
-U_EXPORT void
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_canonicalize(std::string_view localeID,
+U_COMMON_API voidulocimp_canonicalize(std::string_view localeID,
                      icu::ByteSink& sink,
                      UErrorCode& err);
 
-<<<<<<< HEAD
-U_COMMON_API icu::CharString
-=======
-U_EXPORT icu::CharString
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_getKeywordValue(const char* localeID,
+U_EXPORT icu::CharStringulocimp_getKeywordValue(const char* localeID,
                         std::string_view keywordName,
                         UErrorCode& status);
 
-<<<<<<< HEAD
-U_COMMON_API void
-=======
-U_EXPORT void
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_getKeywordValue(const char* localeID,
+U_EXPORT voidulocimp_getKeywordValue(const char* localeID,
                         std::string_view keywordName,
                         icu::ByteSink& sink,
                         UErrorCode& status);
 
-<<<<<<< HEAD
 U_COMMON_API icu::CharString
 ulocimp_getLanguage(std::string_view localeID, UErrorCode& status);
 
@@ -183,44 +123,18 @@ ulocimp_getRegion(std::string_view localeID, UErrorCode& status);
 U_COMMON_API icu::CharString
 ulocimp_getVariant(std::string_view localeID, UErrorCode& status);
 
-U_COMMON_API void
-=======
-U_EXPORT icu::CharString
-ulocimp_getLanguage(std::string_view localeID, UErrorCode& status);
-
-U_EXPORT icu::CharString
-ulocimp_getScript(std::string_view localeID, UErrorCode& status);
-
-U_EXPORT icu::CharString
-ulocimp_getRegion(std::string_view localeID, UErrorCode& status);
-
-U_EXPORT icu::CharString
-ulocimp_getVariant(std::string_view localeID, UErrorCode& status);
-
-U_EXPORT void
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_setKeywordValue(std::string_view keywordName,
+U_COMMON_API voidulocimp_setKeywordValue(std::string_view keywordName,
                         std::string_view keywordValue,
                         icu::CharString& localeID,
                         UErrorCode& status);
 
-<<<<<<< HEAD
-U_COMMON_API int32_t
-=======
-U_EXPORT int32_t
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_setKeywordValue(std::string_view keywords,
+U_COMMON_API int32_tulocimp_setKeywordValue(std::string_view keywords,
                         std::string_view keywordName,
                         std::string_view keywordValue,
                         icu::ByteSink& sink,
                         UErrorCode& status);
 
-<<<<<<< HEAD
-U_COMMON_API void
-=======
-U_EXPORT void
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_getSubtags(
+U_COMMON_API voidulocimp_getSubtags(
         std::string_view localeID,
         icu::CharString* language,
         icu::CharString* script,
@@ -229,12 +143,7 @@ ulocimp_getSubtags(
         const char** pEnd,
         UErrorCode& status);
 
-<<<<<<< HEAD
-U_COMMON_API void
-=======
-U_EXPORT void
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_getSubtags(
+U_EXPORT voidulocimp_getSubtags(
         std::string_view localeID,
         icu::ByteSink* language,
         icu::ByteSink* script,
@@ -262,29 +171,15 @@ ulocimp_getSubtags(
             status);
 }
 
-<<<<<<< HEAD
-U_COMMON_API icu::CharString
-ulocimp_getParent(const char* localeID,
-                  UErrorCode& err);
-
-U_COMMON_API void
-=======
 U_EXPORT icu::CharString
 ulocimp_getParent(const char* localeID,
                   UErrorCode& err);
 
-U_EXPORT void
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_getParent(const char* localeID,
+U_EXPORT voidulocimp_getParent(const char* localeID,
                   icu::ByteSink& sink,
                   UErrorCode& err);
 
-<<<<<<< HEAD
-U_COMMON_API icu::CharString
-=======
-U_EXPORT icu::CharString
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_toLanguageTag(const char* localeID,
+U_EXPORT icu::CharStringulocimp_toLanguageTag(const char* localeID,
                       bool strict,
                       UErrorCode& status);
 
@@ -307,22 +202,12 @@ ulocimp_toLanguageTag(const char* localeID,
  *
  * @internal ICU 64
  */
-<<<<<<< HEAD
-U_COMMON_API void
-=======
-U_EXPORT void
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_toLanguageTag(const char* localeID,
+U_COMMON_API voidulocimp_toLanguageTag(const char* localeID,
                       icu::ByteSink& sink,
                       bool strict,
                       UErrorCode& err);
 
-<<<<<<< HEAD
-U_COMMON_API icu::CharString
-=======
-U_EXPORT icu::CharString
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_forLanguageTag(const char* langtag,
+U_COMMON_API icu::CharStringulocimp_forLanguageTag(const char* langtag,
                        int32_t tagLen,
                        int32_t* parsedLength,
                        UErrorCode& status);
@@ -353,12 +238,7 @@ ulocimp_forLanguageTag(const char* langtag,
  *                  failed.
  * @internal ICU 63
  */
-<<<<<<< HEAD
-U_COMMON_API void
-=======
-U_EXPORT void
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_forLanguageTag(const char* langtag,
+U_EXPORT voidulocimp_forLanguageTag(const char* langtag,
                        int32_t tagLen,
                        icu::ByteSink& sink,
                        int32_t* parsedLength,
@@ -384,20 +264,11 @@ ulocimp_forLanguageTag(const char* langtag,
  *     The region code found, empty if none found.
  * @internal ICU 57
  */
-<<<<<<< HEAD
-U_COMMON_API icu::CharString
-ulocimp_getRegionForSupplementalData(const char *localeID, bool inferRegion,
-                                     UErrorCode& status);
-
-U_COMMON_API icu::CharString
-=======
 U_EXPORT icu::CharString
 ulocimp_getRegionForSupplementalData(const char *localeID, bool inferRegion,
                                      UErrorCode& status);
 
-U_EXPORT icu::CharString
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_addLikelySubtags(const char* localeID,
+U_EXPORT icu::CharStringulocimp_addLikelySubtags(const char* localeID,
                          UErrorCode& status);
 
 /**
@@ -429,21 +300,11 @@ ulocimp_addLikelySubtags(const char* localeID,
  * or the localeId is not well-formed, the error code is U_ILLEGAL_ARGUMENT_ERROR.
  * @internal ICU 64
  */
-<<<<<<< HEAD
-U_COMMON_API void
-=======
-U_EXPORT void
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_addLikelySubtags(const char* localeID,
+U_COMMON_API voidulocimp_addLikelySubtags(const char* localeID,
                          icu::ByteSink& sink,
                          UErrorCode& err);
 
-<<<<<<< HEAD
-U_COMMON_API icu::CharString
-=======
-U_EXPORT icu::CharString
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_minimizeSubtags(const char* localeID,
+U_COMMON_API icu::CharStringulocimp_minimizeSubtags(const char* localeID,
                         bool favorScript,
                         UErrorCode& status);
 
@@ -477,12 +338,7 @@ ulocimp_minimizeSubtags(const char* localeID,
  * or the localeId is not well-formed, the error code is U_ILLEGAL_ARGUMENT_ERROR.
  * @internal ICU 64
  */
-<<<<<<< HEAD
-U_COMMON_API void
-=======
-U_EXPORT void
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_minimizeSubtags(const char* localeID,
+U_COMMON_API voidulocimp_minimizeSubtags(const char* localeID,
                         icu::ByteSink& sink,
                         bool favorScript,
                         UErrorCode& err);
@@ -529,7 +385,6 @@ ultag_isVariantSubtags(const char* s, int32_t len);
 const char*
 ultag_getTKeyStart(const char* localeID);
 
-<<<<<<< HEAD
 U_COMMON_API std::optional<std::string_view>
 ulocimp_toBcpKey(std::string_view key);
 
@@ -547,28 +402,7 @@ U_COMMON_API const char* const*
 ulocimp_getKnownCanonicalizedLocaleForTest(int32_t& length);
 
 // Return true if the value is already canonicalized.
-U_COMMON_API bool
-=======
-U_EXPORT std::optional<std::string_view>
-ulocimp_toBcpKey(std::string_view key);
-
-U_EXPORT std::optional<std::string_view>
-ulocimp_toLegacyKey(std::string_view key);
-
-U_EXPORT std::optional<std::string_view>
-ulocimp_toBcpType(std::string_view key, std::string_view type);
-
-U_EXPORT std::optional<std::string_view>
-ulocimp_toLegacyType(std::string_view key, std::string_view type);
-
-/* Function for testing purpose */
-U_EXPORT const char* const*
-ulocimp_getKnownCanonicalizedLocaleForTest(int32_t& length);
-
-// Return true if the value is already canonicalized.
-U_EXPORT bool
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-ulocimp_isCanonicalizedLocaleForTest(const char* localeName);
+U_COMMON_API boolulocimp_isCanonicalizedLocaleForTest(const char* localeName);
 
 #ifdef __cplusplus
 U_NAMESPACE_BEGIN

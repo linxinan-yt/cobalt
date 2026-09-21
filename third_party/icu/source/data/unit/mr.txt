@@ -1654,18 +1654,11 @@ mr{
                         other{"{0} रात्रीस"}
                     }
                 }
-<<<<<<< HEAD
+dnam{"रात्री"}
                 gender{"feminine"}
                 one{"रात्र"}
                 other{"{0} रात्री"}
-=======
-                dnam{"रात्री"}
-                gender{"feminine"}
-                one{"रात्र"}
-                other{"{0} रात्री"}
-                per{"{0}/रात्र"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/रात्र"}            }
             quarter{
                 case{
                     ablative{
@@ -3594,12 +3587,6 @@ mr{
                     locative{
                         one{"{0} पास्कलशी"}
                         other{"{0} पास्कलचा"}
-<<<<<<< HEAD
-=======
-                    }
-                    oblique{
-                        one{"{0} पास्कल"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     }
                 }
                 dnam{"पास्काल"}
@@ -4409,22 +4396,11 @@ mr{
                 one{"{0}ppm"}
                 other{"{0}ppm"}
             }
-<<<<<<< HEAD
-            part-per-1e9{
-                one{"{0} भाग/अब्ज"}
-                other{"{0} भाग/अब्ज"}
-            }
-            percent{
-                dnam{"%"}
-            }
-=======
-            portion-per-1e9{
+portion-per-1e9{
                 dnam{"भाग/अब्ज"}
                 one{"{0} भाग/अब्ज"}
                 other{"{0} भाग/अब्ज"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            }        }
         consumption{
             mile-per-gallon{
                 one{"{0}mpg"}
@@ -4568,31 +4544,10 @@ mr{
                 one{"{0}Btu"}
                 other{"{0}Btu"}
             }
-<<<<<<< HEAD
-            calorie-it{
-                dnam{"कॅल-IT"}
-                one{"{0} कॅल-IT"}
-                other{"{0} कॅल-IT"}
-            }
-            gray{
-                dnam{"ग्रे"}
-                one{"{0} ग्रे"}
-                other{"{0} ग्रेज"}
-            }
-            kilocalorie{
-                dnam{"किकॅल"}
-            }
-            sievert{
-                dnam{"सिव्ह"}
-                one{"{0} सिव्ह"}
-                other{"{0} सिव्ह"}
-=======
-            kilocalorie{
+kilocalorie{
                 dnam{"किकॅल"}
                 one{"{0} किकॅ"}
-                other{"{0} किकॅ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} किकॅ"}            }
         }
         force{
             kilowatt-hour-per-100-kilometer{
@@ -5156,13 +5111,9 @@ mr{
             calorie{
                 dnam{"कॅ"}
             }
-<<<<<<< HEAD
-            calorie-it{
+calorie-it{
                 dnam{"कॅल-IT"}
-            }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            electronvolt{
+            }            electronvolt{
                 dnam{"इलेक्ट्रॉनव्होल्ट"}
             }
             foodcalorie{

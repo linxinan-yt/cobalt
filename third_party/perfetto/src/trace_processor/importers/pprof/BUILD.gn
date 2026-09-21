@@ -27,9 +27,5 @@ source_set("pprof") {
     "../../tables:tables_python",
     "../../types:types",
     "../../util:build_id",
-<<<<<<< HEAD
-    "../../util:trace_type",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  ]
+"../../util:trace_type",  ]
 }

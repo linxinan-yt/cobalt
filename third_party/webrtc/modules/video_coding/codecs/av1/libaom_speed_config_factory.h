@@ -9,11 +9,7 @@
 #ifndef MODULES_VIDEO_CODING_CODECS_AV1_LIBAOM_SPEED_CONFIG_FACTORY_H_
 #define MODULES_VIDEO_CODING_CODECS_AV1_LIBAOM_SPEED_CONFIG_FACTORY_H_
 
-<<<<<<< HEAD
-#include "api/field_trials_view.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "api/video_codecs/encoder_speed_controller.h"
+#include "api/field_trials_view.h"#include "api/video_codecs/encoder_speed_controller.h"
 #include "api/video_codecs/video_codec.h"
 
 namespace webrtc {
@@ -23,18 +19,11 @@ class LibaomSpeedConfigFactory {
   LibaomSpeedConfigFactory(VideoCodecComplexity complexity,
                            VideoCodecMode mode);
 
-<<<<<<< HEAD
-  EncoderSpeedController::Config GetSpeedConfig(
+EncoderSpeedController::Config GetSpeedConfig(
       int width,
       int height,
       int num_temporal_layers,
       const FieldTrialsView& field_trials);
-=======
-  EncoderSpeedController::Config GetSpeedConfig(int width,
-                                                int height,
-                                                int num_temporal_layers) const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
  private:
   const VideoCodecComplexity complexity_;
   const VideoCodecMode mode_;

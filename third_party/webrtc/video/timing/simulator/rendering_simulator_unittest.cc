@@ -11,27 +11,17 @@
 #include "video/timing/simulator/rendering_simulator.h"
 
 #include <memory>
-<<<<<<< HEAD
 #include <optional>
 
 #include "absl/algorithm/container.h"
 #include "absl/strings/string_view.h"
-#include "api/numerics/samples_stats_counter.h"
-=======
-
-#include "absl/strings/string_view.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "api/units/data_size.h"
+#include "api/numerics/samples_stats_counter.h"#include "api/units/data_size.h"
 #include "api/units/time_delta.h"
 #include "api/units/timestamp.h"
 #include "logging/rtc_event_log/rtc_event_log_parser.h"
 #include "test/gmock.h"
 #include "test/gtest.h"
-<<<<<<< HEAD
-#include "video/timing/simulator/frame_base.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "video/timing/simulator/test/parsed_rtc_event_log_from_resources.h"
+#include "video/timing/simulator/frame_base.h"#include "video/timing/simulator/test/parsed_rtc_event_log_from_resources.h"
 
 namespace webrtc::video_timing_simulator {
 namespace {
@@ -39,20 +29,14 @@ namespace {
 using ::testing::AllOf;
 using ::testing::Eq;
 using ::testing::Field;
-<<<<<<< HEAD
 using ::testing::IsEmpty;
 using ::testing::Matcher;
 using ::testing::Ne;
-using ::testing::Optional;
-=======
-using ::testing::Matcher;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-using ::testing::SizeIs;
+using ::testing::Optional;using ::testing::SizeIs;
 
 using Frame = RenderingSimulator::Frame;
 using Stream = RenderingSimulator::Stream;
 
-<<<<<<< HEAD
 TEST(RenderingSimulatorFrameTest, BufferDurationsAndMarginsForInTimeFrame) {
   RenderingSimulator::Frame frame{
       .first_packet_arrival_timestamp = Timestamp::Zero(),
@@ -268,11 +252,7 @@ TEST(RenderingSimulatorStreamTest, Margins) {
   EXPECT_THAT(
       stream.RenderedMarginDeficitMs().GetTimedSamples(),
       ElementsAre(Field(&SamplesStatsCounter::StatsSample::value, Eq(-5))));
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-Matcher<const Frame&> EqualsFrame(const Frame& expected) {
+}Matcher<const Frame&> EqualsFrame(const Frame& expected) {
   return AllOf(
       Field("num_packets", &Frame::num_packets, Eq(expected.num_packets)),
       Field("size", &Frame::size, Eq(expected.size)),
@@ -314,12 +294,7 @@ Matcher<const Frame&> EqualsFrame(const Frame& expected) {
             Eq(expected.jitter_buffer_delay)));
 }
 
-<<<<<<< HEAD
-=======
-// TODO: b/423646186 - Add tests for logs with losses.
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-TEST(RenderingSimulatorTest, VideoRecvVp8) {
+// TODO: b/423646186 - Add tests for logs with losses.TEST(RenderingSimulatorTest, VideoRecvVp8) {
   std::unique_ptr<ParsedRtcEventLog> parsed_log =
       ParsedRtcEventLogFromResources("video_recv_vp8_pt96");
 
@@ -405,24 +380,13 @@ TEST(RenderingSimulatorTest, VideoRecvVp9) {
            // Frame timestamps.
            .assembled_timestamp = Timestamp::Millis(98768284),
            .render_timestamp = Timestamp::Millis(98768325),
-<<<<<<< HEAD
-           .decoded_timestamp = Timestamp::Micros(98768315253),
+.decoded_timestamp = Timestamp::Micros(98768315253),
            .rendered_timestamp = Timestamp::Micros(98768315253),
            // Jitter buffer state.
            .frames_dropped = 0,
            .jitter_buffer_minimum_delay = TimeDelta::Micros(26604),
            .jitter_buffer_target_delay = TimeDelta::Micros(26604),
-           .jitter_buffer_delay = TimeDelta::Micros(41253)}));
-=======
-           .decoded_timestamp = Timestamp::Micros(98768315261),
-           .rendered_timestamp = Timestamp::Micros(98768315261),
-           // Jitter buffer state.
-           .frames_dropped = 0,
-           .jitter_buffer_minimum_delay = TimeDelta::Micros(26611),
-           .jitter_buffer_target_delay = TimeDelta::Micros(26611),
-           .jitter_buffer_delay = TimeDelta::Micros(41261)}));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+           .jitter_buffer_delay = TimeDelta::Micros(41253)}));}
 
 TEST(RenderingSimulatorTest, VideoRecvAv1) {
   std::unique_ptr<ParsedRtcEventLog> parsed_log =
@@ -463,23 +427,12 @@ TEST(RenderingSimulatorTest, VideoRecvAv1) {
            // Frame timestamps.
            .assembled_timestamp = Timestamp::Millis(98868790),
            .render_timestamp = Timestamp::Millis(98868822),
-<<<<<<< HEAD
-           .decoded_timestamp = Timestamp::Micros(98868811530),
-           .rendered_timestamp = Timestamp::Micros(98868811530),
-=======
-           .decoded_timestamp = Timestamp::Micros(98868811531),
-           .rendered_timestamp = Timestamp::Micros(98868811531),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-           // Jitter buffer state.
+.decoded_timestamp = Timestamp::Micros(98868811531),
+           .rendered_timestamp = Timestamp::Micros(98868811531),           // Jitter buffer state.
            .frames_dropped = 0,
            .jitter_buffer_minimum_delay = TimeDelta::Micros(23864),
            .jitter_buffer_target_delay = TimeDelta::Micros(23864),
-<<<<<<< HEAD
-           .jitter_buffer_delay = TimeDelta::Micros(36530)}));
-=======
-           .jitter_buffer_delay = TimeDelta::Micros(36531)}));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+.jitter_buffer_delay = TimeDelta::Micros(36531)}));}
 
 TEST(RenderingSimulatorTest, VideoRecvSequentialJoinVp8Vp9Av1) {
   std::unique_ptr<ParsedRtcEventLog> parsed_log =
@@ -498,7 +451,6 @@ TEST(RenderingSimulatorTest, VideoRecvSequentialJoinVp8Vp9Av1) {
                                 Field(&Stream::frames, SizeIs(361)))));
 }
 
-<<<<<<< HEAD
 // This log starts experiencing packet losses after half the duration.
 TEST(RenderingSimulatorTest, VideoRecvVp8Lossy) {
   std::unique_ptr<ParsedRtcEventLog> parsed_log =
@@ -559,9 +511,5 @@ TEST(RenderingSimulatorTest, VideoRecvVp8Lossy) {
            .jitter_buffer_minimum_delay = TimeDelta::Micros(213371),
            .jitter_buffer_target_delay = TimeDelta::Micros(213371),
            .jitter_buffer_delay = TimeDelta::Micros(221242)}));
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}  // namespace
+}}  // namespace
 }  // namespace webrtc::video_timing_simulator

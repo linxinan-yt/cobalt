@@ -146,8 +146,7 @@ class BlockingCallMetricHandler implements MetricHandler {
     ctx: Trace,
     metricData: BlockingCallMetricData,
   ): Promise<
-<<<<<<< HEAD
-    | Pick<DebugSliceTrackArgs, 'data' | 'columns' | 'rawColumns' | 'title'>
+| Pick<DebugSliceTrackArgs, 'data' | 'columns' | 'rawColumns' | 'title'>
     | undefined
   > {
     const result = await this.getFrameIdWithMaxDurationBlockingCall(
@@ -158,26 +157,7 @@ class BlockingCallMetricHandler implements MetricHandler {
       console.warn(
         `No frame found for: process=${metricData.process},` +
           ` CUJ=${metricData.cujName},` +
-          ` blocking_call=${metricData.blockingCallName}`,
-=======
-    Pick<DebugSliceTrackArgs, 'data' | 'columns' | 'rawColumns' | 'title'>
-  > {
-    let row: Row = {
-      frame_id: null,
-    };
-
-    try {
-      row = (
-        await this.getFrameIdWithMaxDurationBlockingCall(ctx, metricData)
-      ).firstRow({frame_id: LONG});
-    } catch (e) {
-      throw new Error(
-        `${e.message} caused by: No frame found for:
-          process: ${metricData.process}
-          CUJ: ${metricData.cujName}
-          blocking call: ${metricData.blockingCallName}`,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      );
+          ` blocking_call=${metricData.blockingCallName}`,      );
       return undefined;
     }
     const row = result.firstRow({frame_id: LONG});

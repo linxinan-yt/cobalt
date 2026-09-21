@@ -66,24 +66,10 @@ QuicChromiumPacketReader::QuicChromiumPacketReader(
 
 QuicChromiumPacketReader::~QuicChromiumPacketReader() = default;
 
-<<<<<<< HEAD
-// Do not start a new read if the reader is already busy (either waiting
-// for a socket read to complete, or processing buffered packets from a
-// previous batch). During these states, `read_pending_` remains true to
-// protect `read_buffer_` from being overwritten and corrupting
-// unprocessed packets in `pending_datagrams_`.
-// We can safely return because when the pending read or processing
-// completes, the loop will automatically resume and call StartReading()
-// again.
-void QuicChromiumPacketReader::StartReading() {
-  if (read_pending_) {
-    return;
-  }
-=======
 #if BUILDFLAG(IS_COBALT)
 int QuicChromiumPacketReader::StartReadingMultiplePackets() {
   for (;;) {
-if (read_pending_)
+    if (read_pending_)
       return OK;
 
     if (num_packets_read_ == 0)
@@ -189,7 +175,18 @@ void QuicChromiumPacketReader::OnReadMultiplePacketComplete(int result) {
 
 #endif
 
+// Do not start a new read if the reader is already busy (either waiting
+// for a socket read to complete, or processing buffered packets from a
+// previous batch). During these states, `read_pending_` remains true to
+// protect `read_buffer_` from being overwritten and corrupting
+// unprocessed packets in `pending_datagrams_`.
+// We can safely return because when the pending read or processing
+// completes, the loop will automatically resume and call StartReading()
+// again.
 void QuicChromiumPacketReader::StartReading() {
+  if (read_pending_) {
+    return;
+  }
 #if BUILDFLAG(IS_COBALT)
   if (try_reading_multiple_packets_) {
     int rv = StartReadingMultiplePackets();
@@ -207,8 +204,6 @@ void QuicChromiumPacketReader::StartReading() {
     }
   }
 #endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   for (;;) {
 
     if (num_packets_read_ == 0)

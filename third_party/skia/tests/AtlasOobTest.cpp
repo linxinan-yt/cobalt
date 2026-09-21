@@ -168,15 +168,10 @@ static void run_atlas_oob_test(skiatest::Reporter* reporter, SkCanvas* canvas) {
 }
 
 #if defined(SK_GANESH)
-<<<<<<< HEAD
 DEF_GANESH_TEST_FOR_RENDERING_CONTEXTS(Atlas_Oob_ganesh,
                                        reporter,
                                        ctxInfo,
-                                       CtsEnforcement::kApiLevel_202604) {
-=======
-DEF_GANESH_TEST_FOR_RENDERING_CONTEXTS(Atlas_Oob_ganesh, reporter, ctxInfo, CtsEnforcement::kNextRelease) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    auto dContext = ctxInfo.directContext();
+                                       CtsEnforcement::kApiLevel_202604) {    auto dContext = ctxInfo.directContext();
     SkImageInfo info = SkImageInfo::MakeN32Premul(1024, 1024);
     auto surface = SkSurfaces::RenderTarget(dContext, skgpu::Budgeted::kNo, info);
     if (!surface) return;
@@ -189,15 +184,10 @@ DEF_GANESH_TEST_FOR_RENDERING_CONTEXTS(Atlas_Oob_ganesh, reporter, ctxInfo, CtsE
 #endif // defined(SK_GANESH)
 
 #if defined(SK_GRAPHITE)
-<<<<<<< HEAD
 DEF_GRAPHITE_TEST_FOR_RENDERING_CONTEXTS(Atlas_Oob_graphite,
                                          reporter,
                                          context,
-                                         CtsEnforcement::kApiLevel_202604) {
-=======
-DEF_GRAPHITE_TEST_FOR_RENDERING_CONTEXTS(Atlas_Oob_graphite, reporter, context, CtsEnforcement::kNextRelease) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    using namespace skgpu::graphite;
+                                         CtsEnforcement::kApiLevel_202604) {    using namespace skgpu::graphite;
     std::unique_ptr<Recorder> recorder = context->makeRecorder();
     SkImageInfo info = SkImageInfo::MakeN32Premul(1024, 1024);
     auto surface = SkSurfaces::RenderTarget(recorder.get(), info);

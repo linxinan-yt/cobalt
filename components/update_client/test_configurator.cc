@@ -45,11 +45,6 @@
 
 namespace update_client {
 namespace {
-<<<<<<< HEAD
-=======
-
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 std::vector<GURL> MakeDefaultUrls() {
   return std::vector<GURL>{
       GURL(absl::StrFormat("%s://%s%s", kPostInterceptScheme,

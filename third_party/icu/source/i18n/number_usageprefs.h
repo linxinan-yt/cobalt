@@ -61,8 +61,6 @@ class UsagePrefsHandler : public MicroPropsGenerator, public UMemory {
     const MicroPropsGenerator *fParent;
 };
 
-<<<<<<< HEAD
-=======
 } // namespace number::impl
 
 // Export explicit template instantiations of LocalPointerBase and LocalPointer.
@@ -76,10 +74,7 @@ template class U_I18N_API LocalPointerBase<ComplexUnitsConverter>;
 template class U_I18N_API LocalPointer<ComplexUnitsConverter>;
 #endif
 
-namespace number::impl {
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-/**
+namespace number::impl {/**
  * A MicroPropsGenerator which converts a measurement from one MeasureUnit to
  * another. In particular, the output MeasureUnit may be a mixed unit. (The
  * input unit may not be a mixed unit.)

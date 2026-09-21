@@ -153,35 +153,11 @@ export class WasmTraceAnalyzer implements TraceAnalyzer {
   async analyze(
     file: File,
     onProgress: (progress: number) => void,
-<<<<<<< HEAD
-  ): Promise<FileAnalysis> {
+): Promise<FileAnalysis> {
     using engine = newTokenizeOnlyEngine();
     await parseStream(engine, new TraceFileStream(file), (n) =>
       onProgress(n / file.size),
-    );
-=======
-  ): Promise<TraceAnalysisResult> {
-    using engine = new WasmEngineProxy(uuidv4());
-    engine.resetTraceProcessor({
-      tokenizeOnly: true,
-      cropTrackEvents: false,
-      ingestFtraceInRawTable: false,
-      analyzeTraceProtoContent: false,
-      ftraceDropUntilAllCpusValid: false,
-      forceFullSort: false,
-    });
-    const stream = new TraceFileStream(file);
-    for (;;) {
-      const res = await stream.readChunk();
-      onProgress(res.bytesRead / file.size);
-      await engine.parse(res.data);
-      if (res.eof) {
-        await engine.notifyEof();
-        break;
-      }
-    }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    const result = await engine.query(`
+    );    const result = await engine.query(`
         SELECT trace_type
         FROM __intrinsic_trace_file
         WHERE is_container = 0

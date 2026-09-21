@@ -15,12 +15,7 @@
 
 INCLUDE PERFETTO MODULE android.frames.timeline;
 
-<<<<<<< HEAD
-INCLUDE PERFETTO MODULE android.cujs.base;
-=======
 INCLUDE PERFETTO MODULE android.cujs.cujs_base;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 -- Table tracking all jank CUJs information.
 CREATE PERFETTO TABLE android_sysui_jank_cujs(
   -- Unique incremental ID for each CUJ.
@@ -92,8 +87,7 @@ SELECT
   max(end_frame_ts_end) AS ts_end,
   (max(end_frame_ts_end) - min(start_frame_ts)) AS dur,
   CASE
-<<<<<<< HEAD
-    WHEN EXISTS (
+WHEN EXISTS (
       SELECT 1
       FROM _cuj_state_markers AS csm
       WHERE
@@ -101,21 +95,7 @@ SELECT
         AND csm.marker_type = 'cancel'
     ) THEN 'canceled'
     WHEN EXISTS (
-      SELECT 1
-=======
-    WHEN EXISTS(
-      SELECT
-        1
-      FROM _cuj_state_markers AS csm
-      WHERE
-        csm.cuj_id = cuj.cuj_id AND csm.marker_type = 'cancel'
-    )
-    THEN 'canceled'
-    WHEN EXISTS(
-      SELECT
-        1
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      FROM _cuj_state_markers AS csm
+      SELECT 1      FROM _cuj_state_markers AS csm
       WHERE
         csm.cuj_id = cuj.cuj_id
         AND csm.marker_type = 'end'
@@ -127,16 +107,10 @@ SELECT
   cuj_events.begin_vsync,
   cuj_events.end_vsync
 FROM _jank_cujs_slices AS cuj
-<<<<<<< HEAD
-JOIN _cuj_instant_events AS cuj_events USING (cuj_id)
-JOIN cuj_frame_boundary AS boundary USING (cuj_id)
-=======
 JOIN _cuj_instant_events AS cuj_events
   USING (cuj_id)
 JOIN cuj_frame_boundary AS boundary
-  USING (cuj_id)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-JOIN android_frames_choreographer_do_frame AS do_frame
+  USING (cuj_id)JOIN android_frames_choreographer_do_frame AS do_frame
   ON do_frame_id = do_frame.id
 WHERE
   -- Filter only jank CUJs.
@@ -199,12 +173,7 @@ CREATE PERFETTO TABLE android_sysui_latency_cujs(
 )
 AS
 SELECT
-<<<<<<< HEAD
-  row_number() OVER (ORDER BY ts, slice.id) AS cuj_id,
-=======
-  row_number() OVER (ORDER BY ts) AS cuj_id,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  process.upid AS upid,
+row_number() OVER (ORDER BY ts, slice.id) AS cuj_id,  process.upid AS upid,
   process.name AS process_name,
   slice.name AS cuj_slice_name,
   -- Extracts "CUJ_NAME" from "L<CUJ_NAME>"
@@ -213,8 +182,7 @@ SELECT
   ts,
   ts + dur AS ts_end,
   dur,
-<<<<<<< HEAD
-  CASE
+CASE
     WHEN EXISTS (
       SELECT 1
       FROM _latency_cuj_markers AS m
@@ -235,18 +203,7 @@ FROM slice
 JOIN process_track
   ON slice.track_id = process_track.id
 JOIN process USING (upid)
-WHERE
-=======
-  'completed' AS state
-FROM slice
-JOIN process_track
-  ON slice.track_id = process_track.id
-JOIN process
-  USING (upid)
-WHERE
-  -- TODO(b/447577048): Add filtering support for completed/canceled latency CUJs.
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  slice.name GLOB 'L<*>'
+WHERE  slice.name GLOB 'L<*>'
   AND dur > 0;
 
 -- Table tracking all jank/latency CUJs information.
@@ -290,7 +247,6 @@ CREATE PERFETTO TABLE android_jank_latency_cujs(
   end_vsync LONG,
   -- Type of CUJ, i.e. jank or latency.
   cuj_type STRING
-<<<<<<< HEAD
 )
 AS
 WITH
@@ -327,22 +283,3 @@ SELECT
   end_vsync,
   cuj_type
 FROM combined_cujs;
-=======
-) AS
-SELECT
-  *,
-  "jank" AS cuj_type,
-  cuj_id AS id
-FROM android_sysui_jank_cujs
-UNION ALL
-SELECT
-  *,
-  -- upid is used as the ui_thread as it's the tid of the main thread.
-  upid AS ui_thread,
-  NULL AS layer_id,
-  NULL AS begin_vsync,
-  NULL AS end_vsync,
-  "latency" AS cuj_type,
-  cuj_id AS id
-FROM android_sysui_latency_cujs;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

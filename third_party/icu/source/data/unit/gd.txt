@@ -475,18 +475,11 @@ gd{
                 two{"{0} nano-diog"}
             }
             night{
-<<<<<<< HEAD
+dnam{"oidhche"}
                 few{"{0} oidhcheannan"}
                 one{"{0} oidhche"}
                 other{"{0} oidhche"}
-=======
-                dnam{"oidhche"}
-                few{"{0} oidhcheannan"}
-                one{"{0} oidhche"}
-                other{"{0} oidhche"}
-                per{"{0}/oidhche"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                two{"{0} oidhche"}
+                per{"{0}/oidhche"}                two{"{0} oidhche"}
             }
             quarter{
                 dnam{"cairteal"}
@@ -1922,11 +1915,7 @@ gd{
                 two{"{0}ns"}
             }
             night{
-<<<<<<< HEAD
-=======
-                dnam{"oidhche"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                few{"{0}oidh."}
+dnam{"oidhche"}                few{"{0}oidh."}
                 one{"{0}oidh."}
                 other{"{0}oidh."}
                 per{"{0}/oidh."}
@@ -2649,11 +2638,7 @@ gd{
                 two{"{0}kn"}
             }
             light-speed{
-<<<<<<< HEAD
-=======
-                dnam{"solas"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                few{"{0}solas."}
+dnam{"solas"}                few{"{0}solas."}
                 one{"{0}sholas"}
                 other{"{0}solas"}
                 two{"{0}sholas"}

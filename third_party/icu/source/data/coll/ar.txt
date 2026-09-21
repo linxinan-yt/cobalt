@@ -9,12 +9,7 @@ ar{
                 "&ت<<ة<<<ﺔ<<<ﺓ"
                 "&ي<<ى<<<ﯨ<<<ﯩ<<<ﻰ<<<ﻯ<<<ﲐ<<<ﱝ"
             }
-<<<<<<< HEAD
-            Version{"48"}
-=======
-            Version{"47"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+Version{"48"}        }
         standard{
             Sequence{
                 "[reorder Arab]"
@@ -401,11 +396,6 @@ ar{
                 "‎&ۓ‎=ﮰ‎=ﮱ"
                 "‎&ۀ‎=ﮤ‎=ﮥ"
             }
-<<<<<<< HEAD
-            Version{"48"}
-=======
-            Version{"47"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+Version{"48"}        }
     }
 }

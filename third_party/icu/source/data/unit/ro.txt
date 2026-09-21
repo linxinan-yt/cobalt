@@ -7,16 +7,9 @@ ro{
             g-force{
                 case{
                     genitive{
-<<<<<<< HEAD
-                        few{"{0} forțe g"}
+few{"{0} forțe g"}
                         one{"unei forțe g"}
-                        other{"{0} de forțe g"}
-=======
-                        few{"{0} forță g"}
-                        one{"unei forțe g"}
-                        other{"{0} forță g"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    }
+                        other{"{0} de forțe g"}                    }
                 }
                 few{"{0} forțe g"}
                 gender{"feminine"}
@@ -854,11 +847,7 @@ ro{
                 gender{"feminine"}
                 one{"{0}/noapte"}
                 other{"{0} de nopți"}
-<<<<<<< HEAD
-=======
-                per{"{0}/noapte"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+per{"{0}/noapte"}            }
             quarter{
                 case{
                     genitive{
@@ -1957,10 +1946,7 @@ ro{
                 other{"{0} de noduri"}
             }
             light-speed{
-<<<<<<< HEAD
-                gender{"feminine"}
-=======
-                case{
+case{
                     genitive{
                         few{"{0} lumină"}
                         one{"{0} lumină"}
@@ -1971,9 +1957,7 @@ ro{
                 few{"{0} lumină"}
                 gender{"feminine"}
                 one{"{0} lumină"}
-                other{"{0} lumină"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} lumină"}            }
             meter-per-second{
                 case{
                     genitive{
@@ -2672,8 +2656,7 @@ ro{
                 one{"{0} mol"}
                 other{"{0} moli"}
             }
-<<<<<<< HEAD
-            ofglucose{
+ofglucose{
                 dnam{"Glc"}
             }
             part{
@@ -2682,11 +2665,7 @@ ro{
                 one{"{0} parte"}
                 other{"{0} de părți"}
             }
-            part-per-1e9{
-=======
-            portion-per-1e9{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                dnam{"părți/miliard"}
+            part-per-1e9{                dnam{"părți/miliard"}
             }
         }
         consumption{

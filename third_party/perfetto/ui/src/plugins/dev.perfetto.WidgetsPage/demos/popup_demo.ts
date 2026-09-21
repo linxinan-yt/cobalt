@@ -35,37 +35,6 @@ function lorem() {
   return m('', {style: {width: '200px'}}, text);
 }
 
-<<<<<<< HEAD
-=======
-function ControlledPopup() {
-  let popupOpen = false;
-
-  return {
-    view: function () {
-      return m(
-        Popup,
-        {
-          trigger: m(Button, {
-            label: `${popupOpen ? 'Close' : 'Open'} Popup`,
-            onclick: () => {
-              popupOpen = true;
-            },
-          }),
-          isOpen: popupOpen,
-          onChange: (shouldOpen: boolean) => (popupOpen = shouldOpen),
-        },
-        m(Button, {
-          label: 'Close Popup',
-          onclick: () => {
-            popupOpen = false;
-          },
-        }),
-      );
-    },
-  };
-}
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 export function renderPopup(): m.Children {
   return [
     m(
@@ -84,12 +53,7 @@ export function renderPopup(): m.Children {
         m(
           Popup,
           {
-<<<<<<< HEAD
-            trigger: m(Button, {label: 'Toggle popup'}),
-=======
-            trigger: m(Button, {label: 'Toggle Popup'}),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            ...rest,
+trigger: m(Button, {label: 'Toggle Popup'}),            ...rest,
           },
           lorem(),
         ),
@@ -105,12 +69,7 @@ export function renderPopup(): m.Children {
       },
     }),
 
-<<<<<<< HEAD
-    renderDocSection('Controlled Popup', [
-=======
-    renderDocSection('Controlled Popups', [
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      m('p', [
+renderDocSection('Controlled Popups', [      m('p', [
         `The open/close state of a controlled popup is passed in via
       the 'isOpen' attribute. This means we can get open or close the popup
       from wherever we like. E.g. from a button inside the popup.
@@ -123,27 +82,8 @@ export function renderPopup(): m.Children {
     ]),
 
     renderWidgetShowcase({
-<<<<<<< HEAD
-      renderWidget: ({isOpen}) =>
-        m(
-          Popup,
-          {
-            trigger: m(Button, {
-              disabled: true,
-              label: `Popup is ${isOpen ? 'open' : 'closed'}`,
-            }),
-            isOpen,
-          },
-          lorem(),
-        ),
-      initialOpts: {
-        isOpen: false,
-      },
-=======
-      renderWidget: (opts) => m(ControlledPopup, opts),
-      initialOpts: {},
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }),
+renderWidget: (opts) => m(ControlledPopup, opts),
+      initialOpts: {},    }),
 
     renderDocSection('Nested Popups', [
       m('p', [`Popups can be nested inside other popups. Here is an example.`]),
@@ -154,12 +94,7 @@ export function renderPopup(): m.Children {
         m(
           Popup,
           {
-<<<<<<< HEAD
-            trigger: m(Button, {label: 'Toggle nested popup'}),
-=======
-            trigger: m(Button, {label: 'Open the popup'}),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          },
+trigger: m(Button, {label: 'Open the popup'}),          },
           m(ButtonBar, [
             m(
               PopupMenu,
@@ -169,13 +104,6 @@ export function renderPopup(): m.Children {
               m(MenuItem, {label: 'Option 1'}),
               m(MenuItem, {label: 'Option 2'}),
             ),
-<<<<<<< HEAD
-=======
-            m(Button, {
-              label: 'Done',
-              dismissPopup: true,
-            }),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
           ]),
         ),
     }),

@@ -41,13 +41,7 @@ import {
   FLAMEGRAPH_STATE_SCHEMA,
   type FlamegraphOptionalAction,
 } from '../../widgets/flamegraph';
-<<<<<<< HEAD
-import type {SqlTableDefinition} from '../../components/widgets/sql/table/table_description';
-=======
-import {SqlTableDescription} from '../../components/widgets/sql/table/table_description';
-import {StandardColumn} from '../../components/widgets/sql/table/columns';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {PerfettoSqlTypes} from '../../trace_processor/perfetto_sql_type';
+import type {SqlTableDefinition} from '../../components/widgets/sql/table/table_description';import {PerfettoSqlTypes} from '../../trace_processor/perfetto_sql_type';
 import {Stack} from '../../widgets/stack';
 import {Anchor} from '../../widgets/anchor';
 import {Icon} from '../../widgets/icon';
@@ -659,109 +653,14 @@ async function downloadPprof(trace: Trace, upid: number, ts: time) {
     return;
   }
   const blob = await trace.getTraceFile();
-<<<<<<< HEAD
-  // This is only reachable for heapprofd-based profiles (native heap and
+// This is only reachable for heapprofd-based profiles (native heap and
   // Java heap samples), which are both allocator profiles for traceconv.
   await convertTraceToPprofAndDownload(
     blob,
     'alloc',
     pid.firstRow({pid: NUM}).pid,
     ts,
-  );
-=======
-  convertTraceToPprofAndDownload(blob, pid.firstRow({pid: NUM}).pid, ts);
-}
-
-function getHeapGraphObjectReferencesView(
-  isDominator: boolean,
-): SqlTableDescription {
-  return {
-    name: `_heap_graph${tableModifier(isDominator)}object_references`,
-    columns: [
-      new StandardColumn('path_hash', PerfettoSqlTypes.STRING),
-      new StandardColumn('outgoing_reference_count', PerfettoSqlTypes.INT),
-      new StandardColumn('class_name', PerfettoSqlTypes.STRING),
-      new StandardColumn('self_size', PerfettoSqlTypes.INT),
-      new StandardColumn('native_size', PerfettoSqlTypes.INT),
-      new StandardColumn('heap_type', PerfettoSqlTypes.STRING),
-      new StandardColumn('root_type', PerfettoSqlTypes.STRING),
-      new StandardColumn('reachable', PerfettoSqlTypes.BOOLEAN),
-    ],
-  };
-}
-
-function getHeapGraphIncomingReferencesView(
-  isDominator: boolean,
-): SqlTableDescription {
-  return {
-    name: `_heap_graph${tableModifier(isDominator)}incoming_references`,
-    columns: [
-      new StandardColumn('path_hash', PerfettoSqlTypes.STRING),
-      new StandardColumn('class_name', PerfettoSqlTypes.STRING),
-      new StandardColumn('field_name', PerfettoSqlTypes.STRING),
-      new StandardColumn('field_type_name', PerfettoSqlTypes.STRING),
-      new StandardColumn('self_size', PerfettoSqlTypes.INT),
-      new StandardColumn('native_size', PerfettoSqlTypes.INT),
-      new StandardColumn('heap_type', PerfettoSqlTypes.STRING),
-      new StandardColumn('root_type', PerfettoSqlTypes.STRING),
-      new StandardColumn('reachable', PerfettoSqlTypes.BOOLEAN),
-    ],
-  };
-}
-
-function getHeapGraphOutgoingReferencesView(
-  isDominator: boolean,
-): SqlTableDescription {
-  return {
-    name: `_heap_graph${tableModifier(isDominator)}outgoing_references`,
-    columns: [
-      new StandardColumn('path_hash', PerfettoSqlTypes.STRING),
-      new StandardColumn('class_name', PerfettoSqlTypes.STRING),
-      new StandardColumn('field_name', PerfettoSqlTypes.STRING),
-      new StandardColumn('field_type_name', PerfettoSqlTypes.STRING),
-      new StandardColumn('self_size', PerfettoSqlTypes.INT),
-      new StandardColumn('native_size', PerfettoSqlTypes.INT),
-      new StandardColumn('heap_type', PerfettoSqlTypes.STRING),
-      new StandardColumn('root_type', PerfettoSqlTypes.STRING),
-      new StandardColumn('reachable', PerfettoSqlTypes.BOOLEAN),
-    ],
-  };
-}
-
-function getHeapGraphRetainingObjectCountsView(
-  isDominator: boolean,
-): SqlTableDescription {
-  return {
-    name: `_heap_graph${tableModifier(isDominator)}retaining_object_counts`,
-    columns: [
-      new StandardColumn('class_name', PerfettoSqlTypes.STRING),
-      new StandardColumn('count', PerfettoSqlTypes.INT),
-      new StandardColumn('total_size', PerfettoSqlTypes.INT),
-      new StandardColumn('total_native_size', PerfettoSqlTypes.INT),
-      new StandardColumn('heap_type', PerfettoSqlTypes.STRING),
-      new StandardColumn('root_type', PerfettoSqlTypes.STRING),
-      new StandardColumn('reachable', PerfettoSqlTypes.BOOLEAN),
-    ],
-  };
-}
-
-function getHeapGraphRetainedObjectCountsView(
-  isDominator: boolean,
-): SqlTableDescription {
-  return {
-    name: `_heap_graph${tableModifier(isDominator)}retained_object_counts`,
-    columns: [
-      new StandardColumn('class_name', PerfettoSqlTypes.STRING),
-      new StandardColumn('count', PerfettoSqlTypes.INT),
-      new StandardColumn('total_size', PerfettoSqlTypes.INT),
-      new StandardColumn('total_native_size', PerfettoSqlTypes.INT),
-      new StandardColumn('heap_type', PerfettoSqlTypes.STRING),
-      new StandardColumn('root_type', PerfettoSqlTypes.STRING),
-      new StandardColumn('reachable', PerfettoSqlTypes.BOOLEAN),
-    ],
-  };
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  );}
 
 function getHeapGraphDuplicateObjectsView(
   isDominator: boolean,
@@ -769,20 +668,11 @@ function getHeapGraphDuplicateObjectsView(
   return {
     name: `_heap_graph${tableModifier(isDominator)}duplicate_objects`,
     columns: [
-<<<<<<< HEAD
-      {column: 'class_name', type: PerfettoSqlTypes.STRING},
-      {column: 'path_count', type: PerfettoSqlTypes.INT},
-      {column: 'object_count', type: PerfettoSqlTypes.INT},
-      {column: 'total_size', type: PerfettoSqlTypes.INT},
-      {column: 'total_native_size', type: PerfettoSqlTypes.INT},
-=======
-      new StandardColumn('class_name', PerfettoSqlTypes.STRING),
+new StandardColumn('class_name', PerfettoSqlTypes.STRING),
       new StandardColumn('path_count', PerfettoSqlTypes.INT),
       new StandardColumn('object_count', PerfettoSqlTypes.INT),
       new StandardColumn('total_size', PerfettoSqlTypes.INT),
-      new StandardColumn('total_native_size', PerfettoSqlTypes.INT),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    ],
+      new StandardColumn('total_native_size', PerfettoSqlTypes.INT),    ],
   };
 }
 

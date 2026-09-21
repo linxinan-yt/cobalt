@@ -24,49 +24,6 @@
 #include "src/trace_processor/util/trace_type.h"
 
 namespace perfetto::trace_processor {
-<<<<<<< HEAD
-=======
-namespace {
-const char kNoZlibErr[] =
-    "Cannot open compressed trace. zlib not enabled in the build config";
-
-bool RequiresZlibSupport(TraceType type) {
-  switch (type) {
-    case kGzipTraceType:
-    case kAndroidBugreportTraceType:
-    case kCtraceTraceType:
-    case kZipFile:
-      return true;
-
-    case kNinjaLogTraceType:
-    case kSystraceTraceType:
-    case kPerfDataTraceType:
-    case kPprofTraceType:
-    case kInstrumentsXmlTraceType:
-    case kUnknownTraceType:
-    case kJsonTraceType:
-    case kFuchsiaTraceType:
-    case kProtoTraceType:
-    case kSymbolsTraceType:
-    case kAndroidLogcatTraceType:
-    case kAndroidDumpstateTraceType:
-    case kGeckoTraceType:
-    case kArtMethodTraceType:
-    case kArtHprofTraceType:
-    case kPerfTextTraceType:
-    case kSimpleperfProtoTraceType:
-    case kTarTraceType:
-      return false;
-  }
-  PERFETTO_FATAL("For GCC");
-}
-}  // namespace
-
-void TraceReaderRegistry::RegisterFactory(TraceType trace_type,
-                                          Factory factory) {
-  PERFETTO_CHECK(factories_.Insert(trace_type, std::move(factory)).second);
-}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 base::StatusOr<std::unique_ptr<ChunkedTraceReader>>
 TraceReaderRegistry::CreateTraceReader(TraceImporterId id,

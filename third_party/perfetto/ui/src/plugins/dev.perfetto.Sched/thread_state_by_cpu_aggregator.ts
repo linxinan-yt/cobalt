@@ -13,7 +13,6 @@
 // limitations under the License.
 
 import {Duration} from '../../base/time';
-<<<<<<< HEAD
 import type {BarChartData} from '../../components/aggregation';
 import {
   type Aggregation,
@@ -24,20 +23,7 @@ import {
 } from '../../components/aggregation_adapter';
 import type {AreaSelection} from '../../public/selection';
 import {THREAD_STATE_TRACK_KIND} from '../../public/track_kinds';
-import type {Engine} from '../../trace_processor/engine';
-=======
-import {BarChartData, ColumnDef, Sorting} from '../../components/aggregation';
-import {
-  Aggregation,
-  Aggregator,
-  createIITable,
-  selectTracksAndGetDataset,
-} from '../../components/aggregation_adapter';
-import {AreaSelection} from '../../public/selection';
-import {THREAD_STATE_TRACK_KIND} from '../../public/track_kinds';
-import {Engine} from '../../trace_processor/engine';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {
+import type {Engine} from '../../trace_processor/engine';import {
   LONG,
   NUM,
   NUM_NULL,
@@ -45,14 +31,10 @@ import {
   STR_NULL,
 } from '../../trace_processor/query_result';
 import {colorForThreadState} from './common';
-<<<<<<< HEAD
 import {
   formatDurationValue,
   formatPercentValue,
 } from '../../components/aggregation_panel';
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 export class ThreadStateByCpuAggregator implements Aggregator {
   readonly id = 'thread_state_by_cpu_aggregation';
 
@@ -92,16 +74,7 @@ export class ThreadStateByCpuAggregator implements Aggregator {
             thread.name as thread_name,
             thread.tid,
             tstate.state as state,
-<<<<<<< HEAD
-            utid,
-            ucpu,
-            dur,
-            dur * 1.0 / sum(dur) OVER () as fraction_of_total
-          from (${iiTable.name}) tstate
-          join thread using (utid)
-          left join process using (upid)
-=======
-            ucpu,
+ucpu,
             sum(tstate.dur) AS total_dur,
             sum(tstate.dur) / count() as avg_dur,
             count() as occurrences,
@@ -109,9 +82,7 @@ export class ThreadStateByCpuAggregator implements Aggregator {
           from (${iiTable.name}) tstate
           join thread using (utid)
           left join process using (upid)
-          group by utid, state, ucpu
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        `);
+          group by utid, state, ucpu        `);
 
         const query = `
           select
@@ -129,12 +100,7 @@ export class ThreadStateByCpuAggregator implements Aggregator {
         });
 
         const states: BarChartData[] = [];
-<<<<<<< HEAD
-        for (; it.valid(); it.next()) {
-=======
-        for (let i = 0; it.valid(); ++i, it.next()) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          const name = it.state ?? 'Unknown';
+for (; it.valid(); it.next()) {          const name = it.state ?? 'Unknown';
           states.push({
             title: `${name}: ${Duration.humanise(it.totalDur)}`,
             value: Number(it.totalDur),
@@ -150,8 +116,7 @@ export class ThreadStateByCpuAggregator implements Aggregator {
     };
   }
 
-<<<<<<< HEAD
-  getGridConfig(): AggregatorGridConfig {
+getGridConfig(): AggregatorGridConfig {
     return {
       schema: {
         process_name: {title: 'Process', columnType: 'text'},
@@ -193,67 +158,11 @@ export class ThreadStateByCpuAggregator implements Aggregator {
           {id: 'dur_avg', field: 'dur', function: 'AVG'},
         ],
       },
-    };
-=======
-  getColumnDefinitions(): ColumnDef[] {
-    return [
-      {
-        title: 'Process',
-        columnId: 'process_name',
-      },
-      {
-        title: 'PID',
-        columnId: 'pid',
-      },
-      {
-        title: 'Thread',
-        columnId: 'thread_name',
-      },
-      {
-        title: 'TID',
-        columnId: 'tid',
-      },
-      {
-        title: 'CPU',
-        columnId: 'ucpu',
-      },
-      {
-        title: 'State',
-        columnId: 'state',
-      },
-      {
-        title: 'Wall duration',
-        formatHint: 'DURATION_NS',
-        columnId: 'total_dur',
-        sum: true,
-      },
-      {
-        title: 'Wall duration %',
-        formatHint: 'PERCENT',
-        columnId: 'percent_of_total',
-      },
-      {
-        title: 'Avg Wall duration',
-        formatHint: 'DURATION_NS',
-        columnId: 'avg_dur',
-      },
-      {
-        title: 'Occurrences',
-        columnId: 'occurrences',
-        sum: true,
-      },
-    ];
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    };  }
 
   getTabName() {
     return 'Thread States by CPU';
   }
-<<<<<<< HEAD
-=======
-
-  getDefaultSorting(): Sorting {
+getDefaultSorting(): Sorting {
     return {column: 'total_dur', direction: 'DESC'};
-  }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  }}

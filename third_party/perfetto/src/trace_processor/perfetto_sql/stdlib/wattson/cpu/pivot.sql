@@ -164,8 +164,7 @@ JOIN _stats_cpu1
 JOIN _stats_cpu2
   ON _stats_cpu2._auto_id = base.id_2
 JOIN _stats_cpu3
-<<<<<<< HEAD
-  ON _stats_cpu3._auto_id = base.id_3
+ON _stats_cpu3._auto_id = base.id_3
 JOIN _stats_cpu4
   ON _stats_cpu4._auto_id = base.id_4
 JOIN _stats_cpu5
@@ -181,19 +180,6 @@ JOIN _arm_l3_rates
 JOIN _gapless_suspend_slices AS suspend
   ON suspend._auto_id = base.id_10
 CROSS JOIN _deepest_idle AS deepest;
-=======
-  ON _stats_cpu3._auto_id = base.cpu3_id
--- Get CPU power curves for CPUs that aren't always present
-LEFT JOIN _stats_cpu4
-  ON _stats_cpu4._auto_id = base.cpu4_id
-LEFT JOIN _stats_cpu5
-  ON _stats_cpu5._auto_id = base.cpu5_id
-LEFT JOIN _stats_cpu6
-  ON _stats_cpu6._auto_id = base.cpu6_id
-LEFT JOIN _stats_cpu7
-  ON _stats_cpu7._auto_id = base.cpu7_id;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 -- Does calculations for CPUs that are independent of other CPUs or frequencies
 -- This is the last generic table before going to device specific table calcs
 CREATE PERFETTO TABLE _w_independent_cpus_calc AS

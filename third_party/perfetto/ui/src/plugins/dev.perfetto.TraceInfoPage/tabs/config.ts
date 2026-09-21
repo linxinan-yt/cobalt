@@ -13,7 +13,6 @@
 // limitations under the License.
 
 import m from 'mithril';
-<<<<<<< HEAD
 import type {Engine} from '../../../trace_processor/engine';
 import {
   NUM_NULL,
@@ -33,23 +32,11 @@ export interface ConfigEntry {
 }
 
 export interface ConfigData {
-  readonly configs: ReadonlyArray<ConfigEntry>;
-=======
-import {Engine} from '../../../trace_processor/engine';
-import {UNKNOWN} from '../../../trace_processor/query_result';
-import {Section} from '../../../widgets/section';
-import {CodeSnippet} from '../../../widgets/code_snippet';
-import {EmptyState} from '../../../widgets/empty_state';
-
-export interface ConfigData {
-  configText?: string;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  readonly configs: ReadonlyArray<ConfigEntry>;}
 
 export async function loadConfigData(engine: Engine): Promise<ConfigData> {
   const configResult = await engine.query(`
-<<<<<<< HEAD
-    INCLUDE PERFETTO MODULE std.traceinfo.trace;
+INCLUDE PERFETTO MODULE std.traceinfo.trace;
     SELECT
       trace_id as traceId,
       extract_metadata_for_trace(trace_id, 'trace_config_pbtxt') as configText,
@@ -77,23 +64,7 @@ export async function loadConfigData(engine: Engine): Promise<ConfigData> {
     });
   }
 
-  return {configs};
-=======
-    SELECT str_value as value
-    FROM metadata
-    WHERE name = 'trace_config_pbtxt'
-  `);
-
-  if (configResult.numRows() > 0) {
-    const configIter = configResult.firstRow({value: UNKNOWN});
-    return {
-      configText: String(configIter.value),
-    };
-  }
-
-  return {};
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  return {configs};}
 
 export interface ConfigTabAttrs {
   data: ConfigData;
@@ -101,8 +72,7 @@ export interface ConfigTabAttrs {
 
 export class ConfigTab implements m.ClassComponent<ConfigTabAttrs> {
   view({attrs}: m.CVnode<ConfigTabAttrs>) {
-<<<<<<< HEAD
-    const configs = attrs.data.configs;
+const configs = attrs.data.configs;
     if (configs.length === 0) {
       return m(
         '.pf-trace-info-page__tab-content',
@@ -150,24 +120,6 @@ export class ConfigTab implements m.ClassComponent<ConfigTabAttrs> {
                 : 'config.txtpb',
           }),
         );
-      }),
-=======
-    return m(
-      '.pf-trace-info-page__tab-content',
-      m(
-        Section,
-        {
-          title: 'Trace Configuration',
-          subtitle: 'TraceConfig protobuf used to record this trace',
-        },
-        attrs.data.configText
-          ? m(CodeSnippet, {text: attrs.data.configText, language: 'prototext'})
-          : m(EmptyState, {
-              icon: 'settings',
-              title: 'No trace configuration available',
-            }),
-      ),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    );
+      }),    );
   }
 }

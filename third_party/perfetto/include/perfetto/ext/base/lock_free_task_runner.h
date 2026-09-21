@@ -269,12 +269,7 @@ class ScopedRefcount {
 }  // namespace task_runner_internal
 
 using MaybeLockFreeTaskRunner =
-<<<<<<< HEAD
-    std::conditional_t<PERFETTO_FLAGS(USE_LOCKFREE_TASKRUNNER),
-=======
-    std::conditional_t<base::flags::use_lockfree_taskrunner,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                       LockFreeTaskRunner,
+std::conditional_t<PERFETTO_FLAGS(USE_LOCKFREE_TASKRUNNER),                       LockFreeTaskRunner,
                        UnixTaskRunner>;
 
 }  // namespace base

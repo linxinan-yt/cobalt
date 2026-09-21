@@ -24,12 +24,7 @@ ca{
         "Africa:Monrovia"{
             ec{"Monròvia"}
         }
-<<<<<<< HEAD
-        "Africa:Tripoli"{
-            ec{"Trípoli"}
-        }
-=======
-        "Africa:Ndjamena"{
+"Africa:Ndjamena"{
             ec{"N’Djamena"}
         }
         "Africa:Tripoli"{
@@ -46,9 +41,7 @@ ca{
         }
         "America:Belem"{
             ec{"Belém"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Blanc-Sablon"{
+        }        "America:Blanc-Sablon"{
             ec{"Blanc Sablon"}
         }
         "America:Bogota"{
@@ -63,9 +56,7 @@ ca{
         "America:Cayman"{
             ec{"Caiman"}
         }
-<<<<<<< HEAD
-=======
-        "America:Cordoba"{
+"America:Cordoba"{
             ec{"Córdoba"}
         }
         "America:Cuiaba"{
@@ -76,9 +67,7 @@ ca{
         }
         "America:Maceio"{
             ec{"Maceió"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Martinique"{
+        }        "America:Martinique"{
             ec{"Martinica"}
         }
         "America:Mexico_City"{
@@ -99,16 +88,12 @@ ca{
         "America:Panama"{
             ec{"Panamà"}
         }
-<<<<<<< HEAD
-=======
-        "America:Santarem"{
+"America:Santarem"{
             ec{"Santarém"}
         }
         "America:Sao_Paulo"{
             ec{"São Paulo"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Scoresbysund"{
+        }        "America:Scoresbysund"{
             ec{"Scoresbysund"}
         }
         "America:St_Barthelemy"{
@@ -384,14 +369,9 @@ ca{
             ls{"Hora estàndard de l’Àfrica meridional"}
         }
         "meta:Africa_Western"{
-<<<<<<< HEAD
-            ls{"Hora de l’Àfrica occidental"}
-=======
-            ld{"Hora d’estiu de l’Àfrica occidental"}
+ld{"Hora d’estiu de l’Àfrica occidental"}
             lg{"Hora de l’Àfrica occidental"}
-            ls{"Hora estàndard de l’Àfrica occidental"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Hora estàndard de l’Àfrica occidental"}        }
         "meta:Alaska"{
             ld{"Hora d’estiu d’Alaska"}
             lg{"Hora d’Alaska"}

@@ -38,17 +38,9 @@
 #include "components/services/storage/public/mojom/service_worker_database.mojom-forward.h"
 #include "content/browser/back_forward_cache/back_forward_cache_can_store_document_result.h"
 #include "content/browser/bad_message.h"
-<<<<<<< HEAD
 #include "content/browser/connection_allowlist_utils.h"
 #include "content/browser/renderer_host/local_network_access_util.h"
-#include "content/browser/security/cpsp/child_process_security_policy_impl.h"
-=======
-#include "content/browser/child_process_security_policy_impl.h"
-#include "content/browser/storage_partition_impl.h"
-#include "content/browser/renderer_host/back_forward_cache_can_store_document_result.h"
-#include "content/browser/renderer_host/private_network_access_util.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "content/browser/service_worker/payment_handler_support.h"
+#include "content/browser/security/cpsp/child_process_security_policy_impl.h"#include "content/browser/service_worker/payment_handler_support.h"
 #include "content/browser/service_worker/service_worker_client.h"
 #include "content/browser/service_worker/service_worker_consts.h"
 #include "content/browser/service_worker/service_worker_container_host.h"
@@ -465,12 +457,7 @@ void ServiceWorkerVersion::SetStatus(Status status) {
     // event handlers. This is limited to platforms that support extensions.
     context_->usb_delegate_observer()->UpdateHasEventHandlers(
         registration_id_, has_usb_event_handlers_);
-<<<<<<< HEAD
-#endif  // !BUILDFLAG(IS_ANDROID) || BUILDFLAG(IS_DESKTOP_ANDROID)
-=======
-#endif  // !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  } else if (status == REDUNDANT) {
+#endif  // (!BUILDFLAG(IS_ANDROID) || BUILDFLAG(IS_DESKTOP_ANDROID)) && !BUILDFLAG(IS_COBALT)  } else if (status == REDUNDANT) {
     embedded_worker_->OnWorkerVersionDoomed();
 
     // Drop the remote reference to tell the storage system that the worker

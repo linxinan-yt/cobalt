@@ -689,11 +689,7 @@ da{
                         other{"{0} nætters"}
                     }
                 }
-<<<<<<< HEAD
-=======
-                dnam{"nætter"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                gender{"common"}
+dnam{"nætter"}                gender{"common"}
                 one{"{0} nat"}
                 other{"{0} nætter"}
                 per{"{0} pr. nat"}
@@ -2067,16 +2063,10 @@ da{
                 other{"{0}ns"}
             }
             night{
-<<<<<<< HEAD
+dnam{"nætter"}
                 one{"{0}nat"}
                 other{"{0}nætter"}
-=======
-                dnam{"nætter"}
-                one{"{0}nat"}
-                other{"{0}nætter"}
-                per{"{0}/nat"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/nat"}            }
             quarter{
                 dnam{"kvartal"}
                 per{"{0}/kvt."}
@@ -2116,12 +2106,7 @@ da{
             }
             kilowatt-hour-per-100-kilometer{
                 dnam{"kWh/100 km"}
-<<<<<<< HEAD
-                one{"{0} kWh/100 km"}
-=======
-                one{"{0}kWh/100km"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                other{"{0} kWh/100 km"}
+one{"{0}kWh/100km"}                other{"{0} kWh/100 km"}
             }
             newton{
                 dnam{"N"}
@@ -2615,16 +2600,9 @@ da{
         }
         pressure{
             inch-ofhg{
-<<<<<<< HEAD
-                dnam{"tommer Hg"}
-                one{"{0} tomme Hg"}
-                other{"{0} tommer Hg"}
-=======
-                dnam{"″ Hg"}
+dnam{"″ Hg"}
                 one{"{0} ″ Hg"}
-                other{"{0} ″ Hg"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} ″ Hg"}            }
             millimeter-ofhg{
                 dnam{"mmHg"}
                 one{"{0} mmHg"}

@@ -332,13 +332,9 @@ af{
                 other{"{0} nanosekondes"}
             }
             night{
-<<<<<<< HEAD
-=======
-                dnam{"nagte"}
+dnam{"nagte"}
                 one{"{0} nag"}
-                other{"{0} nagte"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                per{"{0} per nag"}
+                other{"{0} nagte"}                per{"{0} per nag"}
             }
             quarter{
                 dnam{"kwartale"}
@@ -1392,14 +1388,10 @@ af{
                 one{"{0}em"}
                 other{"{0}em"}
             }
-<<<<<<< HEAD
-=======
-            megapixel{
+megapixel{
                 one{"{0} MP"}
                 other{"{0} MP"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            pixel{
+            }            pixel{
                 dnam{"px"}
                 one{"{0}px"}
                 other{"{0}px"}
@@ -1428,16 +1420,12 @@ af{
             }
             foot{
                 dnam{"vt."}
-<<<<<<< HEAD
-=======
-                one{"{0}vt."}
+one{"{0}vt."}
                 other{"{0}vt."}
             }
             furlong{
                 one{"{0}fur"}
-                other{"{0}fur"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0}fur"}            }
             inch{
                 one{"{0}″"}
                 other{"{0}″"}
@@ -2095,12 +2083,8 @@ af{
             }
             megapixel{
                 dnam{"megapieksels"}
-<<<<<<< HEAD
-=======
-                one{"{0} MP"}
-                other{"{0} MP"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+one{"{0} MP"}
+                other{"{0} MP"}            }
             pixel{
                 dnam{"pieksels"}
             }

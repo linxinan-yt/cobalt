@@ -523,24 +523,15 @@ message MediaControlAction {
   int32 tab_id = 2 [features = { field_presence: EXPLICIT }];
 
   reserved 1;
-<<<<<<< HEAD
 }
 
 // Loads the given URLs and extracts content from them.
 message LoadAndExtractContentAction {
-  repeated string urls = 1;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  repeated string urls = 1;}
 
 // All of the actions that can be taken.
 // Only one of these is allowed per action.
-<<<<<<< HEAD
-// Next ID: 25
-=======
-// Next ID: 23
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-message Action {
+// Next ID: 25message Action {
 
   oneof action {
     ClickAction click = 1;
@@ -586,14 +577,9 @@ message Action {
     MediaControlAction media_control = 21;
 
     AttemptFormFillingAction attempt_form_filling = 22;
-<<<<<<< HEAD
+LoadAndExtractContentAction load_and_extract_content = 23;
 
-    LoadAndExtractContentAction load_and_extract_content = 23;
-
-    AttemptOtpFillingAction attempt_otp_filling = 24;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    AttemptOtpFillingAction attempt_otp_filling = 24;  }
 }
 
 // Container for any type of metadata that is associated with a task.
@@ -603,21 +589,14 @@ message TaskMetadata {
 }
 
 // Metadata related to action security.
-<<<<<<< HEAD
-// Next ID: 3
-=======
-// Next ID: 2
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-message SecurityMetadata {
+// Next ID: 3message SecurityMetadata {
   // If the server predicted that new mainframe origins may be navigated to as a
   // result of the current task turn, those are given here.
   //
   // These origins, if any, are added to the set of all writeable origins kept
   // by the Chrome browser process.
   repeated string added_writable_mainframe_origins = 1;
-<<<<<<< HEAD
-
-  // If set, this config will be used to determine which locations the agent
+// If set, this config will be used to determine which locations the agent
   // may visit and what resources and capabilities are available.
   // This field is only respected the first turn if it is received; any
   // subsequent turns' values are ignored.
@@ -649,14 +628,7 @@ message ScreenshotCollectionOptions {
 }
 
 // A single set of actions to be taken by Chrome. The response is ActionsResult.
-// Next ID: 6
-=======
-}
-
-// A single set of actions to be taken by Chrome. The response is ActionsResult.
-// Next ID: 5
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-message Actions {
+// Next ID: 6message Actions {
   // The actions to be taken by Chrome.
   repeated Action actions = 1;
 
@@ -673,13 +645,8 @@ message Actions {
 
   // Metadata that is associated with a task.
   TaskMetadata task_metadata = 4 [features = { field_presence: EXPLICIT }];
-<<<<<<< HEAD
-
-  // Options for screenshot collection.
-  ScreenshotCollectionOptions screenshot_options = 5 [features = { field_presence: EXPLICIT }];
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+// Options for screenshot collection.
+  ScreenshotCollectionOptions screenshot_options = 5 [features = { field_presence: EXPLICIT }];}
 
 // Information about a chrome window.
 // Next ID: 5
@@ -753,9 +720,7 @@ message TabObservation {
 
     // The page crashed.
     TAB_OBSERVATION_PAGE_CRASHED = 3;
-<<<<<<< HEAD
-
-    // A generic error has occurred.
+// A generic error has occurred.
     TAB_OBSERVATION_UNKNOWN_ERROR = 4;
 
     // The web contents of the tab changed so the tab observation was abandoned.
@@ -788,10 +753,7 @@ message TabObservation {
     SCREENSHOT_TIMEOUT = 1;
 
     // Fetching the screenshot encountered an unspecified error.
-    SCREENSHOT_ERROR = 2;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    SCREENSHOT_ERROR = 2;  }
 }
 
 // All relevant state in chrome after the actions are taken or an error has

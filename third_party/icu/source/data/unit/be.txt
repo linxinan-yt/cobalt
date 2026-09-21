@@ -479,11 +479,7 @@ be{
                 other{"{0} нанасекунды"}
             }
             night{
-<<<<<<< HEAD
-=======
-                dnam{"ночы"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                few{"{0} ночы"}
+dnam{"ночы"}                few{"{0} ночы"}
                 many{"{0} начэй"}
                 one{"{0} ноч"}
                 other{"{0} ночы"}
@@ -1524,16 +1520,11 @@ be{
         }
         duration{
             night{
-<<<<<<< HEAD
-=======
-                dnam{"ночы"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                few{"{0} ночы"}
+dnam{"ночы"}                few{"{0} ночы"}
                 many{"{0} начэй"}
                 one{"{0} ноч"}
                 other{"{0} ночы"}
-<<<<<<< HEAD
-            }
+}
         }
         electric{
             coulomb{
@@ -1562,11 +1553,7 @@ be{
                 few{"{0} См"}
                 many{"{0} См"}
                 one{"{0} См"}
-                other{"{0} См"}
-=======
-                per{"{0}/ноч"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} См"}            }
         }
         energy{
             becquerel{
@@ -2105,12 +2092,7 @@ be{
             }
             night{
                 dnam{"ночы"}
-<<<<<<< HEAD
-                few{"{0} ночы"}
-=======
-                few{"{0} ноч"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                many{"{0} начэй"}
+few{"{0} ночы"}                many{"{0} начэй"}
                 one{"{0} ноч"}
                 other{"{0} ночы"}
                 per{"{0}/ноч"}

@@ -164,11 +164,7 @@ namespace message2 {
 	void parseToken(const std::u16string_view&, UErrorCode&);
 	void parseTokenWithWhitespace(const std::u16string_view&, UErrorCode&);
         bool nextIs(const std::u16string_view&) const;
-<<<<<<< HEAD
-	UnicodeString parseNameChars(UnicodeString&, UErrorCode&);
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-	UnicodeString parseName(UErrorCode&);
+UnicodeString parseNameChars(UnicodeString&, UErrorCode&);	UnicodeString parseName(UErrorCode&);
         UnicodeString parseIdentifier(UErrorCode&);
         UnicodeString parseDigits(UErrorCode&);
 	VariableName parseVariableName(UErrorCode&);

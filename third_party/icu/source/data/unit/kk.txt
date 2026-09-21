@@ -1065,16 +1065,10 @@ kk{
                 dnam{"сағ"}
             }
             night{
-<<<<<<< HEAD
+dnam{"түн"}
                 one{"{0}түн"}
                 other{"{0}түн"}
-=======
-                dnam{"түн"}
-                one{"{0}түн"}
-                other{"{0}түн"}
-                per{"{0}/түн"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/түн"}            }
             week{
                 dnam{"ап."}
                 per{"{0}/апта"}

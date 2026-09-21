@@ -2756,8 +2756,7 @@ kn{
             millimeter-ofhg{
                 case{
                     accusative{
-<<<<<<< HEAD
-                        one{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌ ಅನ್ನು"}
+one{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌ ಅನ್ನು"}
                         other{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌‌ಗಳನ್ನು"}
                     }
                     dative{
@@ -2770,24 +2769,7 @@ kn{
                     }
                     locative{
                         one{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌‌ನಲ್ಲಿ"}
-                        other{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌‌ಗಳಲ್ಲಿ"}
-=======
-                        one{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌"}
-                        other{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌ಗಳು"}
-                    }
-                    dative{
-                        one{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌"}
-                        other{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌ಗಳು"}
-                    }
-                    genitive{
-                        one{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌"}
-                        other{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌ಗಳು"}
-                    }
-                    locative{
-                        one{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌"}
-                        other{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌ಗಳು"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    }
+                        other{"{0} ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌‌ಗಳಲ್ಲಿ"}                    }
                 }
                 dnam{"ಮರ್ಕ್ಯುರಿ ಮಿಲಿಮೀಟರ್‌ಗಳು"}
                 gender{"neuter"}
@@ -2883,11 +2865,7 @@ kn{
                         other{"{0} ಲೈಟ್‌ನಲ್ಲಿ"}
                     }
                 }
-<<<<<<< HEAD
-=======
-                dnam{"ಲೈಟ್"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                gender{"neuter"}
+dnam{"ಲೈಟ್"}                gender{"neuter"}
                 one{"{0} ಲೈಟ್"}
                 other{"{0} ಲೈಟ್"}
             }
@@ -3665,13 +3643,9 @@ kn{
             }
             night{
                 dnam{"ರಾತ್ರಿಗಳು"}
-<<<<<<< HEAD
-=======
-                one{"{0} ರಾತ್ರಿಯು"}
+one{"{0} ರಾತ್ರಿಯು"}
                 other{"{0} ರಾತ್ರಿಗಳು"}
-                per{"{0}/ರಾತ್ರಿಗೆ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/ರಾತ್ರಿಗೆ"}            }
             quarter{
                 one{"{0} ತ್ರೈ"}
                 other{"{0}ತ್ರೈ"}
@@ -4772,11 +4746,6 @@ kn{
             }
             mile-scandinavian{
                 dnam{"ಸ್ಕ್ಯಾಂ.ಮೈ"}
-<<<<<<< HEAD
-=======
-                one{"{0} smi"}
-                other{"{0} smi"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             }
             millimeter{
                 dnam{"ಮಿಮೀ"}

@@ -45,18 +45,13 @@
 
 #include <gtest/gtest.h>
 
-<<<<<<< HEAD
 #include <openssl/mem.h>
 
 #include "../internal.h"
 
 
 BSSL_NAMESPACE_BEGIN
-namespace {
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-static pid_t WaitpidEINTR(pid_t pid, int *out_status, int options) {
+namespace {static pid_t WaitpidEINTR(pid_t pid, int *out_status, int options) {
   pid_t ret;
   do {
     ret = waitpid(pid, out_status, options);

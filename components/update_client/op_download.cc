@@ -101,18 +101,13 @@ void DownloadComplete(
     const std::string& id,
     scoped_refptr<CrxDownloader> crx_downloader,
     scoped_refptr<Cancellation> cancellation,
-<<<<<<< HEAD
-    base::RepeatingCallback<void(base::DictValue)> event_adder,
-=======
-    base::RepeatingCallback<void(base::Value::Dict)> event_adder,
+base::RepeatingCallback<void(base::Value::Dict)> event_adder,
 #if defined(IN_MEMORY_UPDATES)
     const std::string* crx_str,
 #endif
 #if BUILDFLAG(IS_STARBOARD)
     base::OnceCallback<void(base::expected<OperationResult, CategorizedError>)>
-#else
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    base::OnceCallback<void(base::expected<base::FilePath, CategorizedError>)>
+#else    base::OnceCallback<void(base::expected<base::FilePath, CategorizedError>)>
 #endif
         callback,
     const CrxDownloader::Result& download_result) {
@@ -166,8 +161,6 @@ void DownloadComplete(
 #endif
 }
 
-<<<<<<< HEAD
-=======
 void HandleAvailableSpace(
     scoped_refptr<Configurator> config,
     const std::string& id,
@@ -256,10 +249,7 @@ void HandleAvailableSpace(
 #else
                      event_adder, std::move(callback))));
 #endif
-}
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}  // namespace
+}}  // namespace
 
 base::OnceClosure DownloadOperation(
     scoped_refptr<Configurator> config,
@@ -285,8 +275,7 @@ base::OnceClosure DownloadOperation(
   state_tracker.Run(ComponentState::kDownloading);
   auto cancellation = base::MakeRefCounted<Cancellation>();
   progress_callback.Run(-1, -1);
-<<<<<<< HEAD
-  scoped_refptr<CrxDownloader> crx_downloader =
+scoped_refptr<CrxDownloader> crx_downloader =
       config->GetCrxDownloaderFactory()->MakeCrxDownloader(
           config->GetProdId(),
           CanDoBackgroundDownload(is_foreground,
@@ -300,35 +289,7 @@ base::OnceClosure DownloadOperation(
   cancellation->OnCancel(crx_downloader->StartDownload(
       urls, hash,
       base::BindOnce(&DownloadComplete, id, crx_downloader, cancellation,
-                     event_adder, std::move(callback))));
-=======
-  base::ThreadPool::PostTaskAndReplyWithResult(
-      FROM_HERE, kTaskTraits,
-      base::BindOnce(
-          [](base::RepeatingCallback<int64_t(const base::FilePath&)>
-                 get_available_space) {
-            base::ScopedTempDir temp_dir;
-            return CreateScopedTempDirectory(temp_dir)
-                       ? get_available_space.Run(temp_dir.GetPath())
-                       : int64_t{0};
-          },
-          get_available_space),
-      base::BindOnce(&HandleAvailableSpace, config, id, cancellation,
-                     is_foreground, urls, size, hash,
-                     base::BindRepeating(
-                         [](CrxDownloader::ProgressCallback progress_callback,
-                            int64_t file_size, int64_t downloaded_bytes,
-                            int64_t /*content_length*/) {
-                           progress_callback.Run(downloaded_bytes, file_size);
-                         },
-                         progress_callback, size),
-                     event_adder,
-#if defined(IN_MEMORY_UPDATES)
-                     crx_str,
-#endif
-                     std::move(callback)));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  return base::BindOnce(&Cancellation::Cancel, cancellation);
+                     event_adder, std::move(callback))));  return base::BindOnce(&Cancellation::Cancel, cancellation);
 }
 
 }  // namespace update_client

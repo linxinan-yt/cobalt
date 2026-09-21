@@ -1127,12 +1127,7 @@ sc{
                 one{"{0}ppm"}
                 other{"{0}ppm"}
             }
-<<<<<<< HEAD
-            part-per-1e9{
-=======
-            portion-per-1e9{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                one{"{0}ppb"}
+portion-per-1e9{                one{"{0}ppb"}
                 other{"{0}ppb"}
             }
         }
@@ -1866,12 +1861,7 @@ sc{
                 one{"{0} mmol/l"}
                 other{"{0} mmol/l"}
             }
-<<<<<<< HEAD
-            part-per-1e9{
-=======
-            portion-per-1e9{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                dnam{"partes/milliardu"}
+portion-per-1e9{                dnam{"partes/milliardu"}
             }
         }
         consumption{

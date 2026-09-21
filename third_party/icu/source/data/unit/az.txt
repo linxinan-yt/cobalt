@@ -957,16 +957,10 @@ az{
                 dnam{"dəq"}
             }
             night{
-<<<<<<< HEAD
+dnam{"gecə"}
                 one{"{0}gecə"}
                 other{"{0}gecə"}
-=======
-                dnam{"gecə"}
-                one{"{0}gecə"}
-                other{"{0}gecə"}
-                per{"{0}/gecə"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/gecə"}            }
             second{
                 dnam{"san"}
             }
@@ -1132,11 +1126,7 @@ az{
         }
         speed{
             light-speed{
-<<<<<<< HEAD
-=======
-                dnam{"işıq"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                one{"{0}işıq"}
+dnam{"işıq"}                one{"{0}işıq"}
                 other{"{0}işıq"}
             }
             meter-per-second{

@@ -1047,8 +1047,7 @@ as{
             }
         }
         force{
-<<<<<<< HEAD
-            kilogram-force{
+kilogram-force{
                 dnam{"কিঃগ্ৰাঃবঃ"}
                 one{"{0} কিঃগ্ৰাঃবঃ"}
                 other{"{0} কিঃগ্ৰাঃবঃ"}
@@ -1056,15 +1055,9 @@ as{
             kilowatt-hour-per-100-kilometer{
                 one{"{0}kWh/100km"}
                 other{"{0} kWh/100km"}
-=======
-            kilowatt-hour-per-100-kilometer{
-                one{"{0}kWh/100km"}
-                other{"{0} kWh/100km"}
             }
             newton{
-                dnam{"N"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                dnam{"N"}            }
         }
         graphics{
             dot{
@@ -1149,11 +1142,7 @@ as{
                 other{"{0} km/h"}
             }
             light-speed{
-<<<<<<< HEAD
-=======
-                dnam{"আলোক"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                one{"{0}আলোক"}
+dnam{"আলোক"}                one{"{0}আলোক"}
                 other{"{0}আলোক"}
             }
         }

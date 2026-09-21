@@ -31,16 +31,11 @@
     PERFETTO_BUILDFLAG(PERFETTO_OS_FUCHSIA)
 #include <limits.h>
 #include <stdlib.h>  // For _exit()
-<<<<<<< HEAD
 #endif
 
 #if !PERFETTO_BUILDFLAG(PERFETTO_OS_WIN)
 // For isatty(), getpagesize(), geteuid(), fork() & sysconf().
-#include <unistd.h>
-=======
-#include <unistd.h>  // For getpagesize() and geteuid() & fork() & sysconf()
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#endif
+#include <unistd.h>#endif
 
 #if PERFETTO_BUILDFLAG(PERFETTO_OS_APPLE)
 #include <mach-o/dyld.h>

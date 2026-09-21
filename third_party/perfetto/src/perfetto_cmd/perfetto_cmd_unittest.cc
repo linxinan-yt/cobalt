@@ -23,11 +23,7 @@
 #include "perfetto/ext/base/temp_file.h"
 #include "src/perfetto_cmd/packet_writer.h"
 
-<<<<<<< HEAD
-#include "protos/perfetto/common/trace_attributes.gen.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "protos/perfetto/config/trace_config.gen.h"
+#include "protos/perfetto/common/trace_attributes.gen.h"#include "protos/perfetto/config/trace_config.gen.h"
 #include "protos/perfetto/trace/test_event.gen.h"
 #include "protos/perfetto/trace/trace_packet.gen.h"
 
@@ -35,8 +31,7 @@ namespace perfetto {
 
 class PerfettoCmdlineUnitTest : public ::testing::Test {
  protected:
-<<<<<<< HEAD
-  static std::optional<int> ParseCmdline(PerfettoCmd* cmd,
+static std::optional<int> ParseCmdline(PerfettoCmd* cmd,
                                          std::vector<std::string> args) {
     // getopt() expects a null-terminated argv (argv[argc] == nullptr).
     std::vector<char*> argv;
@@ -52,11 +47,7 @@ class PerfettoCmdlineUnitTest : public ::testing::Test {
 
   static const TraceConfig* GetTraceConfig(const PerfettoCmd& cmd) {
     return cmd.trace_config_.get();
-  }
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#if PERFETTO_BUILDFLAG(PERFETTO_OS_ANDROID)
+  }#if PERFETTO_BUILDFLAG(PERFETTO_OS_ANDROID)
   static std::optional<TraceConfig> ParseTraceConfigFromMmapedTrace(
       base::ScopedMmap mmapped_trace) {
     return PerfettoCmd::ParseTraceConfigFromMmapedTrace(
@@ -67,7 +58,6 @@ class PerfettoCmdlineUnitTest : public ::testing::Test {
 
 namespace {
 
-<<<<<<< HEAD
 TEST_F(PerfettoCmdlineUnitTest, AddAttributeParsesAndStoresAttributes) {
   base::TempFile out_file = base::TempFile::Create();
   PerfettoCmd cmd;
@@ -129,11 +119,7 @@ TEST_F(PerfettoCmdlineUnitTest, AddAttributeRejectsEmptyArgument) {
                           "--add-attribute", ""});
   ASSERT_TRUE(res.has_value());
   EXPECT_EQ(*res, 1);
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#if PERFETTO_BUILDFLAG(PERFETTO_OS_ANDROID)
+}#if PERFETTO_BUILDFLAG(PERFETTO_OS_ANDROID)
 
 // Copied from src/perfetto_cmd/packet_writer_unittest.cc
 template <typename F>

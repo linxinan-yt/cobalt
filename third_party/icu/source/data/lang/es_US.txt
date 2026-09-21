@@ -61,13 +61,9 @@ es_US{
         tyv{"tuviniano"}
         wal{"wolayta"}
         xnr{"dogrí"}
-<<<<<<< HEAD
-    }
+}
     Languages%extension{
-        ku{"kurdo kurmanyi"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        ku{"kurdo kurmanyi"}    }
     Languages%variant{
         ug{"uigur variante"}
     }

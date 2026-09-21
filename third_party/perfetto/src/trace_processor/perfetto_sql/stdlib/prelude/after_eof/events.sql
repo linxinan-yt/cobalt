@@ -20,21 +20,11 @@
 -- events and slices including ftrace events, graphics frames, GPU events,
 -- and frame timeline information.
 
-<<<<<<< HEAD
-INCLUDE PERFETTO MODULE prelude.after_eof.views;
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
--- Contains all the ftrace events in the trace. This table exists only for
+INCLUDE PERFETTO MODULE prelude.after_eof.views;-- Contains all the ftrace events in the trace. This table exists only for
 -- debugging purposes and should not be relied on in production usecases (i.e.
 -- metrics, standard library etc). Note also that this table might be empty if
 -- raw ftrace parsing has been disabled.
-<<<<<<< HEAD
-CREATE PERFETTO VIEW ftrace_event(
-=======
-CREATE PERFETTO VIEW ftrace_event (
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  -- Unique identifier for this ftrace event.
+CREATE PERFETTO VIEW ftrace_event(  -- Unique identifier for this ftrace event.
   id ID,
   -- The timestamp of this event.
   ts TIMESTAMP,
@@ -53,11 +43,6 @@ CREATE PERFETTO VIEW ftrace_event (
   common_flags LONG,
   -- The unique CPU identifier that this event was emitted on.
   ucpu LONG
-<<<<<<< HEAD
-)
-AS
-SELECT id, ts, name, ucpu AS cpu, utid, arg_set_id, common_flags, ucpu
-=======
 ) AS
 SELECT
   id,
@@ -67,18 +52,11 @@ SELECT
   utid,
   arg_set_id,
   common_flags,
-  ucpu
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-FROM __intrinsic_ftrace_event;
+  ucpuFROM __intrinsic_ftrace_event;
 
 -- This table is deprecated. Use `ftrace_event` instead which contains the same
 -- rows; this table is simply a (badly named) alias.
-<<<<<<< HEAD
-CREATE PERFETTO VIEW raw(
-=======
-CREATE PERFETTO VIEW raw (
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  -- Unique identifier for this raw event.
+CREATE PERFETTO VIEW raw (  -- Unique identifier for this raw event.
   id ID,
   -- The timestamp of this event.
   ts TIMESTAMP,
@@ -98,23 +76,13 @@ CREATE PERFETTO VIEW raw (
   common_flags LONG,
   -- The unique CPU identifier that this event was emitted on.
   ucpu LONG
-<<<<<<< HEAD
-)
-AS
-SELECT * FROM ftrace_event;
-
--- Table containing graphics frame events on Android.
-CREATE PERFETTO VIEW frame_slice(
-=======
 ) AS
 SELECT
   *
 FROM ftrace_event;
 
 -- Table containing graphics frame events on Android.
-CREATE PERFETTO VIEW frame_slice (
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  -- Alias of `slice.id`.
+CREATE PERFETTO VIEW frame_slice (  -- Alias of `slice.id`.
   id ID(slice.id),
   -- Alias of `slice.ts`.
   ts TIMESTAMP,
@@ -142,13 +110,7 @@ CREATE PERFETTO VIEW frame_slice (
   acquire_to_latch_time LONG,
   -- The time between latch and present for this buffer and layer.
   latch_to_present_time LONG
-<<<<<<< HEAD
-)
-AS
-=======
-) AS
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-SELECT
+) ASSELECT
   s.id,
   s.ts,
   s.dur,
@@ -170,12 +132,7 @@ WHERE
   t.type = 'graphics_frame_event';
 
 -- Table containing graphics frame events on Android.
-<<<<<<< HEAD
-CREATE PERFETTO VIEW gpu_slice(
-=======
-CREATE PERFETTO VIEW gpu_slice (
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  -- Alias of `slice.id`.
+CREATE PERFETTO VIEW gpu_slice (  -- Alias of `slice.id`.
   id ID(slice.id),
   -- Alias of `slice.ts`.
   ts TIMESTAMP,
@@ -216,17 +173,11 @@ CREATE PERFETTO VIEW gpu_slice (
   -- The id of the process.
   upid JOINID(process.id),
   -- Render subpasses.
-<<<<<<< HEAD
-  render_subpasses STRING,
+render_subpasses STRING,
   -- Render stage category (0=OTHER, 1=GRAPHICS, 2=COMPUTE).
   render_stage_category LONG
 )
-AS
-=======
-  render_subpasses STRING
-) AS
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-SELECT
+ASSELECT
   s.id,
   s.ts,
   s.dur,
@@ -247,13 +198,8 @@ SELECT
   extract_arg(s.arg_set_id, 'submission_id') AS submission_id,
   extract_arg(s.arg_set_id, 'hw_queue_id') AS hw_queue_id,
   extract_arg(s.arg_set_id, 'upid') AS upid,
-<<<<<<< HEAD
-  extract_arg(s.arg_set_id, 'render_subpasses') AS render_subpasses,
-  extract_arg(s.arg_set_id, 'render_stage_category') AS render_stage_category
-=======
-  extract_arg(s.arg_set_id, 'render_subpasses') AS render_subpasses
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-FROM slice AS s
+extract_arg(s.arg_set_id, 'render_subpasses') AS render_subpasses,
+  extract_arg(s.arg_set_id, 'render_stage_category') AS render_stage_categoryFROM slice AS s
 JOIN track AS t
   ON s.track_id = t.id
 WHERE
@@ -261,12 +207,7 @@ WHERE
 
 -- This table contains information on the expected timeline of either a display
 -- frame or a surface frame.
-<<<<<<< HEAD
-CREATE PERFETTO TABLE expected_frame_timeline_slice(
-=======
-CREATE PERFETTO TABLE expected_frame_timeline_slice (
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  -- Alias of `slice.id`.
+CREATE PERFETTO TABLE expected_frame_timeline_slice(  -- Alias of `slice.id`.
   id ID(slice.id),
   -- Alias of `slice.ts`.
   ts TIMESTAMP,
@@ -292,13 +233,7 @@ CREATE PERFETTO TABLE expected_frame_timeline_slice (
   upid JOINID(process.id),
   -- Layer name if this is a surface frame.
   layer_name STRING
-<<<<<<< HEAD
-)
-AS
-=======
-) AS
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-SELECT
+) ASSELECT
   s.id,
   s.ts,
   s.dur,
@@ -323,12 +258,7 @@ ORDER BY
 -- This table contains information on the actual timeline and additional
 -- analysis related to the performance of either a display frame or a surface
 -- frame.
-<<<<<<< HEAD
-CREATE PERFETTO TABLE actual_frame_timeline_slice(
-=======
-CREATE PERFETTO TABLE actual_frame_timeline_slice (
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  -- Alias of `slice.id`.
+CREATE PERFETTO TABLE actual_frame_timeline_slice (  -- Alias of `slice.id`.
   id ID(slice.id),
   -- Alias of `slice.ts`.
   ts TIMESTAMP,
@@ -370,8 +300,7 @@ CREATE PERFETTO TABLE actual_frame_timeline_slice (
   -- Jank tag based on jank type, used for slice visualization.
   jank_tag STRING,
   -- Jank tag (experimental) based on jank type, used for slice visualization.
-<<<<<<< HEAD
-  jank_tag_experimental STRING,
+jank_tag_experimental STRING,
   -- Jank severity score.
   jank_score DOUBLE,
   -- The number of surfaceframes that were latched unsignaled and displayed
@@ -384,12 +313,7 @@ CREATE PERFETTO TABLE actual_frame_timeline_slice (
   -- attempt.
   latched_fence_state STRING
 )
-AS
-=======
-  jank_tag_experimental STRING
-) AS
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-SELECT
+ASSELECT
   s.id,
   s.ts,
   s.dur,
@@ -410,16 +334,11 @@ SELECT
   extract_arg(s.arg_set_id, 'Jank severity type') AS jank_severity_type,
   extract_arg(s.arg_set_id, 'Prediction type') AS prediction_type,
   extract_arg(s.arg_set_id, 'Jank tag') AS jank_tag,
-<<<<<<< HEAD
-  extract_arg(s.arg_set_id, 'Jank tag (experimental)') AS jank_tag_experimental,
+extract_arg(s.arg_set_id, 'Jank tag (experimental)') AS jank_tag_experimental,
   extract_arg(s.arg_set_id, 'Jank Severity Score') AS jank_score,
   extract_arg(s.arg_set_id, 'Latched unsignaled count') AS latched_unsignaled_count,
   extract_arg(s.arg_set_id, 'Addressable unsignaled latch count') AS addressable_unsignaled_latch_count,
-  extract_arg(s.arg_set_id, 'Latched fence state') AS latched_fence_state
-=======
-  extract_arg(s.arg_set_id, 'Jank tag (experimental)') AS jank_tag_experimental
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-FROM slice AS s
+  extract_arg(s.arg_set_id, 'Latched fence state') AS latched_fence_stateFROM slice AS s
 JOIN process_track AS t
   ON s.track_id = t.id
 WHERE

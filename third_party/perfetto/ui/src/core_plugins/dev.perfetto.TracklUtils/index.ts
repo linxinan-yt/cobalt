@@ -68,17 +68,7 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
       id: 'dev.perfetto.FindTrackByName',
       name: 'Find track by name',
       callback: async () => {
-<<<<<<< HEAD
-        const tracksWithUris = ctx.currentWorkspace.flatTracksOrdered.filter(
-=======
-        const trace = app.trace;
-        if (!trace) {
-          return;
-        }
-
-        const tracksWithUris = trace.currentWorkspace.flatTracksOrdered.filter(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          (track) => track.uri !== undefined,
+const tracksWithUris = ctx.currentWorkspace.flatTracksOrdered.filter(          (track) => track.uri !== undefined,
         ) as ReadonlyArray<RequiredField<TrackNode, 'uri'>>;
         const track = await ctx.omnibox.prompt('Choose a track...', {
           values: tracksWithUris,
@@ -158,16 +148,10 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
         );
         if (!regex) return;
 
-<<<<<<< HEAD
-        const matchingTracks = findTracksMatchingRegex(
+const matchingTracks = findTracksMatchingRegex(
           ctx.currentWorkspace,
           regex,
-          nameOrPath,
-=======
-        const matchingTracks = ctx.currentWorkspace.flatTracks.filter((track) =>
-          testTrackWithRegex(track, regex, nameOrPath),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        );
+          nameOrPath,        );
         matchingTracks.forEach((track) => track.pin());
       },
     });
@@ -205,16 +189,10 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
         );
         if (!regex) return;
 
-<<<<<<< HEAD
-        const matchingTracks = findTracksMatchingRegex(
+const matchingTracks = findTracksMatchingRegex(
           ctx.currentWorkspace,
           regex,
-          nameOrPath,
-=======
-        const matchingTracks = ctx.currentWorkspace.flatTracks.filter((track) =>
-          testTrackWithRegex(track, regex, nameOrPath),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        );
+          nameOrPath,        );
         matchingTracks.forEach((track) => track.expand());
       },
     });
@@ -236,16 +214,10 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
         );
         if (!regex) return;
 
-<<<<<<< HEAD
-        const matchingTracks = findTracksMatchingRegex(
+const matchingTracks = findTracksMatchingRegex(
           ctx.currentWorkspace,
           regex,
-          nameOrPath,
-=======
-        const matchingTracks = ctx.currentWorkspace.flatTracks.filter((track) =>
-          testTrackWithRegex(track, regex, nameOrPath),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        );
+          nameOrPath,        );
         matchingTracks.forEach((track) => track.collapse());
       },
     });
@@ -283,16 +255,10 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
           ctx.workspaces.createEmptyWorkspace(workspaceName);
 
         // Find matching tracks from current workspace
-<<<<<<< HEAD
-        const matchingTracks = findTracksMatchingRegex(
+const matchingTracks = findTracksMatchingRegex(
           ctx.currentWorkspace,
           regex,
-          nameOrPath,
-=======
-        const matchingTracks = ctx.currentWorkspace.flatTracks.filter((track) =>
-          testTrackWithRegex(track, regex, nameOrPath),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        );
+          nameOrPath,        );
 
         // Copy matching tracks to target workspace
         matchingTracks.forEach((track) => {
@@ -366,16 +332,10 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
           ctx.workspaces.createEmptyWorkspace(workspaceName);
 
         // Find matching tracks from current workspace
-<<<<<<< HEAD
-        const matchingTracks = findTracksMatchingRegex(
+const matchingTracks = findTracksMatchingRegex(
           ctx.currentWorkspace,
           regex,
-          nameOrPath,
-=======
-        const matchingTracks = ctx.currentWorkspace.flatTracks.filter((track) =>
-          testTrackWithRegex(track, regex, nameOrPath),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        );
+          nameOrPath,        );
 
         // Copy matching tracks with their ancestors to target workspace
         copyTracksWithAncestors(matchingTracks, targetWorkspace);
@@ -601,7 +561,6 @@ async function getQueryFromArgOrPrompt(
   return queryStr || null;
 }
 
-<<<<<<< HEAD
 // DFS the workspace, returning all tracks matching the regex against `name` or
 // full `path`. Headless nodes are never returned as matches: they have no
 // header in the rendered tree and no `uri`, so operating on one directly (e.g.
@@ -622,21 +581,7 @@ function findTracksMatchingRegex(
     node.children.forEach(visit);
   };
   workspace.tracks.children.forEach(visit);
-  return matches;
-=======
-// Tests if a track matches the given regex pattern based on nameOrPath setting.
-// Returns true if the track name (when nameOrPath is 'name') or full path
-// (when nameOrPath is 'path') matches the regex pattern.
-function testTrackWithRegex(
-  track: TrackNode,
-  regex: RegExp,
-  nameOrPath: 'name' | 'path',
-): boolean {
-  const testString =
-    nameOrPath === 'path' ? track.fullPath.join(' > ') : track.name;
-  return regex.test(testString);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  return matches;}
 
 // Copy tracks with their ancestor hierarchy preserved
 function copyTracksWithAncestors(

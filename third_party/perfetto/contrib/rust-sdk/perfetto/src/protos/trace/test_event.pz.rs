@@ -24,8 +24,7 @@ pb_msg!(TestEvent {
     seq_value: u32, primitive, 2,
     counter: u64, primitive, 3,
     is_last: bool, primitive, 4,
-<<<<<<< HEAD
-    payload: TestEventTestPayload, msg, 5,
+payload: TestEventTestPayload, msg, 5,
     protovm_patch: TestEventProtoVmPatch, msg, 6,
     protovm_incremental_state: TestEventProtoVmIncrementalState, msg, 7,
 });
@@ -56,16 +55,7 @@ pb_msg!(TestEventProtoVmMessageProtoVmSubmessage {
 
 pb_msg!(TestEventTestPayload {
     str: String, primitive, 1,
-    nested: TestEventTestPayload, msg, 2,
-=======
-    payload: TestPayload, msg, 5,
-});
-
-pb_msg!(TestPayload {
-    str: String, primitive, 1,
-    nested: TestPayload, msg, 2,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    single_string: String, primitive, 4,
+    nested: TestEventTestPayload, msg, 2,    single_string: String, primitive, 4,
     single_int: i32, primitive, 5,
     repeated_ints: i32, primitive, 6,
     remaining_nesting_depth: u32, primitive, 3,

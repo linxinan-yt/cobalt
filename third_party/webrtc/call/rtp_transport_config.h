@@ -38,12 +38,7 @@ struct RtpTransportConfig {
 
   // Time window used for calculating how send packets are paced.
   TimeDelta default_pacing_time_window = PacerConfig::kDefaultTimeInterval;
-<<<<<<< HEAD
-
-  TaskQueueBase* const worker_thread;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-};
+TaskQueueBase* const worker_thread;};
 }  // namespace webrtc
 
 #endif  // CALL_RTP_TRANSPORT_CONFIG_H_

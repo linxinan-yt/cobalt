@@ -45,13 +45,9 @@ ga{
         "America:Aruba"{
             ec{"Arúba"}
         }
-<<<<<<< HEAD
-=======
-        "America:Bahia_Banderas"{
+"America:Bahia_Banderas"{
             ec{"Bahia Banderas"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Barbados"{
+        }        "America:Barbados"{
             ec{"Barbadós"}
         }
         "America:Belize"{
@@ -102,13 +98,9 @@ ga{
         "America:Puerto_Rico"{
             ec{"Pórtó Ríce"}
         }
-<<<<<<< HEAD
-=======
-        "America:Sao_Paulo"{
+"America:Sao_Paulo"{
             ec{"São Paulo"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:St_Barthelemy"{
+        }        "America:St_Barthelemy"{
             ec{"Saint Barthélemy"}
         }
         "America:St_Kitts"{
@@ -270,13 +262,9 @@ ga{
         "Atlantic:St_Helena"{
             ec{"San Héilin"}
         }
-<<<<<<< HEAD
-        "Australia:Lord_Howe"{
+"Australia:Lord_Howe"{
             ec{"Oileán an Tiarna Howe"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Etc:UTC"{
+        }        "Etc:UTC"{
             ls{"Am Uilíoch Lárnach"}
         }
         "Etc:Unknown"{

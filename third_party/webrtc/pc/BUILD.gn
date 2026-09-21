@@ -257,12 +257,8 @@ rtc_library("jsep_transport_collection") {
     "../rtc_base/containers:flat_map",
     "../rtc_base/system:no_unique_address",
     "../system_wrappers:metrics",
-<<<<<<< HEAD
-    "//third_party/abseil-cpp/absl/algorithm:container",
-    "//third_party/abseil-cpp/absl/functional:any_invocable",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    "//third_party/abseil-cpp/absl/strings:string_view",
+"//third_party/abseil-cpp/absl/algorithm:container",
+    "//third_party/abseil-cpp/absl/functional:any_invocable",    "//third_party/abseil-cpp/absl/strings:string_view",
   ]
 }
 
@@ -362,17 +358,11 @@ rtc_library("media_session") {
     "../api:rtp_header_extension_id",
     "../api:rtp_parameters",
     "../api:rtp_transceiver_direction",
-<<<<<<< HEAD
-    "../api:sctp_transport_interface",
+"../api:sctp_transport_interface",
     "../api/crypto:options",
     "../api/environment",
     "../api/transport:sctp_transport_factory_interface",
-    "../call:payload_type",
-=======
-    "../api/environment",
-    "../api/transport:sctp_transport_factory_interface",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    "../media:codec",
+    "../call:payload_type",    "../media:codec",
     "../media:media_constants",
     "../media:media_engine",
     "../media:rid_description",
@@ -2397,11 +2387,7 @@ if (rtc_include_tests && !build_with_chromium) {
       "../test:test_support",
       "../test:wait_until",
       "../test/pc/sctp:fake_sctp_transport",
-<<<<<<< HEAD
-      "../test/time_controller",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      "//third_party/abseil-cpp/absl/algorithm:container",
+"../test/time_controller",      "//third_party/abseil-cpp/absl/algorithm:container",
       "//third_party/abseil-cpp/absl/functional:any_invocable",
       "//third_party/abseil-cpp/absl/memory",
       "//third_party/abseil-cpp/absl/strings",

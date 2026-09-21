@@ -2034,11 +2034,7 @@ lt{
                 many{"{0} nakties"}
                 one{"{0} naktis"}
                 other{"{0} naktų"}
-<<<<<<< HEAD
-=======
-                per{"{0}/nakt."}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+per{"{0}/nakt."}            }
             quarter{
                 case{
                     accusative{

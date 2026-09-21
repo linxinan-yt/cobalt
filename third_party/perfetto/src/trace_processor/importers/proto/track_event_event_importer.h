@@ -27,12 +27,7 @@
 
 #include "perfetto/base/logging.h"
 #include "perfetto/base/status.h"
-<<<<<<< HEAD
-#include "perfetto/ext/base/dynamic_string_writer.h"
-=======
-#include "perfetto/ext/base/fixed_string_writer.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "perfetto/ext/base/status_macros.h"
+#include "perfetto/ext/base/dynamic_string_writer.h"#include "perfetto/ext/base/status_macros.h"
 #include "perfetto/ext/base/status_or.h"
 #include "perfetto/ext/base/string_utils.h"
 #include "perfetto/ext/base/string_view.h"
@@ -47,22 +42,12 @@
 #include "src/trace_processor/importers/common/cpu_tracker.h"
 #include "src/trace_processor/importers/common/event_tracker.h"
 #include "src/trace_processor/importers/common/flow_tracker.h"
-<<<<<<< HEAD
-#include "src/trace_processor/importers/common/gpu_tracker.h"
-
-#include "protos/perfetto/trace/gpu/gpu_track_event.pbzero.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "src/trace_processor/importers/common/mapping_tracker.h"
 #include "src/trace_processor/importers/common/parser_types.h"
 #include "src/trace_processor/importers/common/process_tracker.h"
 #include "src/trace_processor/importers/common/stack_profile_tracker.h"
-<<<<<<< HEAD
 #include "src/trace_processor/importers/common/state_tracker.h"
-#include "src/trace_processor/importers/common/stats_tracker.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "src/trace_processor/importers/common/synthetic_tid.h"
+#include "src/trace_processor/importers/common/stats_tracker.h"#include "src/trace_processor/importers/common/synthetic_tid.h"
 #include "src/trace_processor/importers/common/track_tracker.h"
 #include "src/trace_processor/importers/common/tracks.h"
 #include "src/trace_processor/importers/common/tracks_common.h"
@@ -287,13 +272,8 @@ class TrackEventEventImporter {
               category_iids[0])) {
         category_id = *id;
       } else {
-<<<<<<< HEAD
-        base::DynamicStringWriter writer;
-=======
-        char buffer[32];
-        base::FixedStringWriter writer(buffer, sizeof(buffer));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        writer.AppendLiteral("unknown(");
+char buffer[32];
+        base::FixedStringWriter writer(buffer, sizeof(buffer));        writer.AppendLiteral("unknown(");
         writer.AppendUnsignedInt(category_iids[0]);
         writer.AppendChar(')');
         category_id = storage_->InternString(writer.GetStringView());
@@ -1461,22 +1441,14 @@ class TrackEventEventImporter {
                        Variadic::Integer(*legacy_trace_source_id_));
     }
 
-<<<<<<< HEAD
-    log_errors(ParseCallstack());
-
-    ArgsParser args_writer(ts_, *inserter, *storage_,
-                           *context_->process_tracker, sequence_state_,
-=======
-    // Parse callstack if present
+// Parse callstack if present
     // For end events, use end_callsite_id key; otherwise use callsite_id key
     StringId callstack_key = event_.type() == TrackEvent::TYPE_SLICE_END
                                  ? parser_->end_callsite_id_key_id_
                                  : parser_->callsite_id_key_id_;
     log_errors(ParseCallstack(inserter, callstack_key));
 
-    ArgsParser args_writer(ts_, *inserter, *storage_, sequence_state_,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                           /*support_json=*/true);
+    ArgsParser args_writer(ts_, *inserter, *storage_, sequence_state_,                           /*support_json=*/true);
     int unknown_extensions = 0;
     log_errors(parser_->args_parser_.ParseMessage(
         blob_, ".perfetto.protos.TrackEvent", &parser_->reflect_fields_,

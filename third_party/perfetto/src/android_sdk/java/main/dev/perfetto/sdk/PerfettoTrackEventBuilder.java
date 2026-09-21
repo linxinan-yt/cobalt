@@ -370,8 +370,7 @@ public final class PerfettoTrackEventBuilder {
     return this;
   }
 
-<<<<<<< HEAD
-  /**
+/**
    * Emits this event on {@code track}, a (possibly nested) named track. The
    * descriptor for each level of the chain is emitted once per sequence; the
    * native side derives the per-level uuids. The handle owns its native track
@@ -411,12 +410,7 @@ public final class PerfettoTrackEventBuilder {
    * TrackDescriptor).
    */
   private PerfettoTrackEventBuilder usingNamedTrack(
-          long id, String name, long parentUuid, boolean isNameStatic) {
-=======
-  /** Adds the events to a named track instead of the thread track where the event occurred. */
-  public PerfettoTrackEventBuilder usingNamedTrack(long id, String name, long parentUuid) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    if (!mIsCategoryEnabled) {
+          long id, String name, long parentUuid, boolean isNameStatic) {    if (!mIsCategoryEnabled) {
       return this;
     }
     if (mIsDebug) {
@@ -424,14 +418,8 @@ public final class PerfettoTrackEventBuilder {
     }
 
     NamedTrack track = mObjectsCache.mNamedTrackCache.get(name.hashCode());
-<<<<<<< HEAD
-    if (track == null || !track.getName().equals(name) || track.isNameStatic() != isNameStatic) {
-      track = new NamedTrack(id, name, parentUuid, isNameStatic, mNativeMemoryCleaner);
-=======
-    if (track == null || !track.getName().equals(name)) {
-      track = new NamedTrack(id, name, parentUuid, mNativeMemoryCleaner);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      mObjectsCache.mNamedTrackCache.put(name.hashCode(), track);
+if (track == null || !track.getName().equals(name) || track.isNameStatic() != isNameStatic) {
+      track = new NamedTrack(id, name, parentUuid, isNameStatic, mNativeMemoryCleaner);      mObjectsCache.mNamedTrackCache.put(name.hashCode(), track);
     }
     addPerfettoPointerToExtra(track);
     return this;
@@ -441,8 +429,7 @@ public final class PerfettoTrackEventBuilder {
    * Adds the events to a process scoped named track instead of the thread track where the event
    * occurred.
    */
-<<<<<<< HEAD
-  public PerfettoTrackEventBuilder usingProcessNamedTrack(
+public PerfettoTrackEventBuilder usingProcessNamedTrack(
           long id, @CompileTimeConstant String name) {
       if (!mIsCategoryEnabled) {
           return this;
@@ -459,22 +446,13 @@ public final class PerfettoTrackEventBuilder {
     if (!mIsCategoryEnabled) {
       return this;
     }
-    return usingNamedTrackWithDynamicName(id, name, PerfettoTrace.getProcessTrackUuid());
-=======
-  public PerfettoTrackEventBuilder usingProcessNamedTrack(long id, String name) {
-    if (!mIsCategoryEnabled) {
-      return this;
-    }
-    return usingNamedTrack(id, name, PerfettoTrace.getProcessTrackUuid());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    return usingNamedTrackWithDynamicName(id, name, PerfettoTrace.getProcessTrackUuid());  }
 
   /**
    * Adds the events to a thread scoped named track instead of the thread track where the event
    * occurred.
    */
-<<<<<<< HEAD
-  public PerfettoTrackEventBuilder usingThreadNamedTrack(
+public PerfettoTrackEventBuilder usingThreadNamedTrack(
           long id, @CompileTimeConstant String name, long tid) {
       if (!mIsCategoryEnabled) {
           return this;
@@ -491,15 +469,7 @@ public final class PerfettoTrackEventBuilder {
     if (!mIsCategoryEnabled) {
       return this;
     }
-    return usingNamedTrackWithDynamicName(id, name, PerfettoTrace.getThreadTrackUuid(tid));
-=======
-  public PerfettoTrackEventBuilder usingThreadNamedTrack(long id, String name, long tid) {
-    if (!mIsCategoryEnabled) {
-      return this;
-    }
-    return usingNamedTrack(id, name, PerfettoTrace.getThreadTrackUuid(tid));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    return usingNamedTrackWithDynamicName(id, name, PerfettoTrace.getThreadTrackUuid(tid));  }
 
   /** Adds the events to a counter track instead. This is required for setting counter values. */
   public PerfettoTrackEventBuilder usingCounterTrack(

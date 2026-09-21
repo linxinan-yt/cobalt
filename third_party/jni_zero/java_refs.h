@@ -28,7 +28,6 @@
 #include "third_party/jni_zero/jni_export.h"
 #include "third_party/jni_zero/logging.h"
 
-<<<<<<< HEAD
 // Forward declaration of template class that contains @CalledByNative methods.
 // Must live in a custom / unique namespace to ensure it doesn't collide with
 // namespaces used from @JniType strings.
@@ -172,34 +171,6 @@ using ::jni_zero::internal::JArray;
 #define _JNI_ZERO_JArray_DEFINED
 
 namespace jni_zero {
-=======
-#if BUILDFLAG(IS_COBALT)
-#if !defined(JNI_ZERO_ENABLE_COMPAT_API)
-#define JNI_ZERO_ENABLE_COMPAT_API 1
-#endif  // !defined(JNI_ZERO_ENABLE_COMPAT_API)
-#else   // BUILDFLAG(IS_COBALT)
-#if !defined(JNI_ZERO_ENABLE_COMPAT_API)
-#define JNI_ZERO_ENABLE_COMPAT_API 0
-#endif  // !defined(JNI_ZERO_ENABLE_COMPAT_API)
-#endif  // BUILDFLAG(IS_COBALT)
-
-namespace jni_zero {
-
-namespace internal {
-#if BUILDFLAG(IS_COBALT)
-#if defined(__cpp_concepts) && __cpp_concepts >= 201907L
-template <typename T>
-concept IsJobject =
-    std::derived_from<std::remove_pointer_t<T>, std::remove_pointer_t<jobject>>;
-#endif  // defined(__cpp_concepts) && __cpp_concepts >= 201907L
-#else   // BUILDFLAG(IS_COBALT)
-template <typename T>
-concept IsJobject =
-    std::derived_from<std::remove_pointer_t<T>, std::remove_pointer_t<jobject>>;
-#endif  // BUILDFLAG(IS_COBALT)
-}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 // Creates a new local reference frame, in which at least a given number of
 // local references can be created. Note that local references already created
 // in previous local frames are still valid in the current local frame.

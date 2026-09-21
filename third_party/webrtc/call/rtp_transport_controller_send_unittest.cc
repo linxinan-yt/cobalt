@@ -23,18 +23,10 @@
 #include "modules/rtp_rtcp/include/rtp_rtcp_defines.h"
 #include "modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.h"
 #include "rtc_base/containers/flat_map.h"
-<<<<<<< HEAD
 #include "test/create_test_environment.h"
 #include "test/gmock.h"
 #include "test/gtest.h"
 #include "test/run_loop.h"
-=======
-#include "rtc_base/thread.h"
-#include "test/create_test_environment.h"
-#include "test/gmock.h"
-#include "test/gtest.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 namespace webrtc {
 namespace {
 
@@ -109,16 +101,10 @@ rtcp::CongestionControlFeedback GenerateFeedback(
 
 TEST(RtpTransportControllerSendTest,
      IgnoresFeedbackForReportedReceivedPacketThatWereNotSent) {
-<<<<<<< HEAD
-  test::RunLoop main_thread;
+test::RunLoop main_thread;
   RtpTransportControllerSend transport(
       {.env = CreateTestEnvironment(),
-       .worker_thread = main_thread.task_queue()});
-=======
-  AutoThread main_thread;
-  RtpTransportControllerSend transport({.env = CreateTestEnvironment()});
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  transport.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
+       .worker_thread = main_thread.task_queue()});  transport.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
   PacketSender sender(transport);
   sender.SimulateSentPackets({.ssrc = 123,
                               .first_sequence_number = 111,
@@ -145,16 +131,10 @@ TEST(RtpTransportControllerSendTest,
      AccumulatesNumberOfReportedReceivedPacketsPerSsrcPerEcnMarkingType) {
   constexpr uint32_t kSsrc1 = 1'000;
   constexpr uint32_t kSsrc2 = 2'000;
-<<<<<<< HEAD
-  test::RunLoop main_thread;
+test::RunLoop main_thread;
   RtpTransportControllerSend transport(
       {.env = CreateTestEnvironment(),
-       .worker_thread = main_thread.task_queue()});
-=======
-  AutoThread main_thread;
-  RtpTransportControllerSend transport({.env = CreateTestEnvironment()});
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  transport.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
+       .worker_thread = main_thread.task_queue()});  transport.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
 
   PacketSender sender(transport);
   sender.SimulateSentPackets(
@@ -197,16 +177,10 @@ TEST(RtpTransportControllerSendTest,
 }
 
 TEST(RtpTransportControllerSendTest, CalculatesNumberOfBleachedPackets) {
-<<<<<<< HEAD
-  test::RunLoop main_thread;
+test::RunLoop main_thread;
   RtpTransportControllerSend transport(
       {.env = CreateTestEnvironment(),
-       .worker_thread = main_thread.task_queue()});
-=======
-  AutoThread main_thread;
-  RtpTransportControllerSend transport({.env = CreateTestEnvironment()});
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  transport.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
+       .worker_thread = main_thread.task_queue()});  transport.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
   PacketSender sender(transport);
 
   // Packets send as ect1 and received without ect1 are the bleached packets.
@@ -239,16 +213,10 @@ TEST(RtpTransportControllerSendTest, CalculatesNumberOfBleachedPackets) {
 
 TEST(RtpTransportControllerSendTest,
      AccumulatesNumberOfReportedLostAndRecoveredPackets) {
-<<<<<<< HEAD
-  test::RunLoop main_thread;
+test::RunLoop main_thread;
   RtpTransportControllerSend transport(
       {.env = CreateTestEnvironment(),
-       .worker_thread = main_thread.task_queue()});
-=======
-  AutoThread main_thread;
-  RtpTransportControllerSend transport({.env = CreateTestEnvironment()});
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  transport.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
+       .worker_thread = main_thread.task_queue()});  transport.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
 
   PacketSender sender(transport);
   sender.SimulateSentPackets({.first_sequence_number = 1, .num_packets = 30});
@@ -293,16 +261,10 @@ TEST(RtpTransportControllerSendTest,
 
 TEST(RtpTransportControllerSendTest,
      DoesNotCountGapsInSequenceNumberBetweenReportsAsLoss) {
-<<<<<<< HEAD
-  test::RunLoop main_thread;
+test::RunLoop main_thread;
   RtpTransportControllerSend transport(
       {.env = CreateTestEnvironment(),
-       .worker_thread = main_thread.task_queue()});
-=======
-  AutoThread main_thread;
-  RtpTransportControllerSend transport({.env = CreateTestEnvironment()});
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  transport.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
+       .worker_thread = main_thread.task_queue()});  transport.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
 
   PacketSender sender(transport);
   sender.SimulateSentPackets({.first_sequence_number = 1, .num_packets = 30});

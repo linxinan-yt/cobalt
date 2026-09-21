@@ -36,14 +36,8 @@ API Usage:
 
 - When returning or passing a null `JavaRef`, use `nullptr` rather than calling
   a constructor.
-<<<<<<< HEAD
 - Prefer type-safe `JArray<JFoo>` over `jobjectArray` / `JArray<jobject>`, as
-  well as for other array types (`JArray<T>` over `jTArray`).
-=======
-- Prefer `JArray<jobject>` over `jobjectArray`, as well as for other array types
-  (`JArray<*>` over `j*Array`)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-- Use the `jni_zero::` namespace instead of the `base::android::` aliases (e.g.
+  well as for other array types (`JArray<T>` over `jTArray`).- Use the `jni_zero::` namespace instead of the `base::android::` aliases (e.g.
   for `*JavaRef`, and `AttachBaseContext()`)
 - To call static Java methods, do not call the `Java_Clazz_method()` functions
   directly. Call them through their typed wrappers: `ClazzJni::method()`
@@ -51,7 +45,6 @@ API Usage:
 - To call member functions given a `JavaRef<jobject>`, use `Java_Clazz_method()`
 - To call member functions given a `JavaRef<JFoo>`, use `foo->method()`
 
-<<<<<<< HEAD
 Creation and ownership of Java counterparts:
 
 - A native object owns a Java class if it creates it via JNI.
@@ -61,11 +54,7 @@ Creation and ownership of Java counterparts:
   counterpart.
   - E.g.: "This class creates and owns its Java counterpart, and holds a strong
     JNI global reference to it. When this is destroyed, it must call
-    clearNativePtr to prevent Java from calling back into destroyed memory."
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-Defining native entry point methods:
+    clearNativePtr to prevent Java from calling back into destroyed memory."Defining native entry point methods:
 
 - Use the signatures from the examples within the generated `_jni.h` files
 - Omit the `JNIEnv*` parameter if it will be unused.
@@ -77,7 +66,6 @@ Defining native entry point methods:
 - Parameters and return types that may be `null` must be annotated as
   `@Nullable` to avoid a runtime null-check.
 - A Java class owns a native object if it creates it via JNI.
-<<<<<<< HEAD
 - If a Java class owns a native object, ensure that there is an `onDestroy()`
   method that calls `delete` via JNI, and sets the field `0`.
 - Add a comment explaining the ownership and lifecycle of the class and its C++
@@ -85,14 +73,6 @@ Defining native entry point methods:
   - E.g.: "This class is created and owned by its C++ counterpart. It holds a
     reference to it in the field mNativePtr, which the C++ counterpart must set
     to 0 when it is destroyed by calling clearNativePtr."
-=======
-- A native object owns a Java class if it creates it via JNI.
-- If a Java class owns a native object, ensure that there is an `onDestroy()`
-  method that calls `delete` via JNI, and sets the field `0`.
-- If a native object owns a Java object, ensure that its destructor sets the
-  Java object's native pointer field to 0 from its destructor.
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 ## Guidance for @JniType
 
 - Search all .h files for `FromJniType` or `ToJniType` to discover which types
@@ -119,13 +99,9 @@ Defining native entry point methods:
 - Use `.As<JFoo>()` to convert from `JavaRef<jobject>` to a specific generated
   type.
 - Convert `ScopedJavaLocalRef<jobject>()` (empty constructor) to `nullptr`.
-<<<<<<< HEAD
 - Use type-safe jobjects for generics and arrays:
   - Generics: `jni_zero::ScopedJavaLocalRef<JList<JBar>> bars;`
   - Arrays: `jni_zero::ScopedJavaLocalRef<JArray<JBaz>> baz;`
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 #### 2. Method Calls
 
 - **Instance Methods**: Replace `Java_MyClass_method(env, ref, ...)` with
@@ -169,8 +145,4 @@ Build all affected `.cc` and `.java` files using `autoninja`:
 autoninja -C {OUTPUT_DIR} ../../path/to/foo.cc^ ../../path/to/Foo.java^
 ```
 
-<<<<<<< HEAD
 *Note: Use the specified `OUTPUT_DIR` (typically `out/Default` or `out/Debug`).*
-=======
-*Note: Use the specified `OUTPUT_DIR` (typically `out/Default` or `out/Debug`).*
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

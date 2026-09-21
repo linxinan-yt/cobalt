@@ -6,12 +6,7 @@
 // Corporation and others.  All Rights Reserved.
 //---------------------------------------------------------
 // Build tool: com.ibm.icu.dev.tool.currency.NumericCodeData
-<<<<<<< HEAD
-// Build date: 2025-09-12T03:45:59Z
-=======
-// Build date: 2024-09-06T21:46:10Z
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-//---------------------------------------------------------
+// Build date: 2025-09-12T03:45:59Z//---------------------------------------------------------
 // >> !!! >>   THIS IS A MACHINE-GENERATED FILE   << !!! <<
 // >> !!! >>>            DO NOT EDIT             <<< !!! <<
 //---------------------------------------------------------

@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-<<<<<<< HEAD
 import './styles.scss';
 import {addWattsonThreadTrack} from './wattson_thread_utils';
 import type {App} from '../../public/app';
@@ -27,31 +26,7 @@ import type {Engine} from '../../trace_processor/engine';
 import SchedPlugin from '../dev.perfetto.Sched';
 import {SourceDataset} from '../../trace_processor/dataset';
 import {LONG, LONG_NULL, NUM, STR} from '../../trace_processor/query_result';
-import type {RouteArgs} from '../../public/route_schema';
-=======
-import m, {Vnode} from 'mithril';
-
-import {createAggregationTab} from '../../components/aggregation_adapter';
-import {
-  BaseCounterTrack,
-  CounterOptions,
-} from '../../components/tracks/base_counter_track';
-import {SliceTrack} from '../../components/tracks/slice_track';
-import {PerfettoPlugin} from '../../public/plugin';
-import {Trace} from '../../public/trace';
-import {SLICE_TRACK_KIND} from '../../public/track_kinds';
-import {TrackNode} from '../../public/workspace';
-import {Engine} from '../../trace_processor/engine';
-import {SourceDataset} from '../../trace_processor/dataset';
-import {
-  LONG,
-  LONG_NULL,
-  NUM,
-  STR,
-  STR_NULL,
-} from '../../trace_processor/query_result';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {WattsonEstimateSelectionAggregator} from './estimate_aggregator';
+import type {RouteArgs} from '../../public/route_schema';import {WattsonEstimateSelectionAggregator} from './estimate_aggregator';
 import {
   WattsonCpuPackageSelectionAggregator,
   WattsonGpuPackageSelectionAggregator,
@@ -63,13 +38,7 @@ import {
   GPUSS_ESTIMATE_TRACK_KIND,
   TPUSS_ESTIMATE_TRACK_KIND,
 } from './track_kinds';
-<<<<<<< HEAD
 import {createCpuWarnings, missingWattsonCpuConfigs} from './warning';
-=======
-import SchedPlugin from '../dev.perfetto.Sched';
-import {linkify} from '../../widgets/anchor';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 const WINDOW_MAP: Record<string, string> = {
   perfetto_wattson_markers: 'markers',
   perfetto_wattson_trace: 'trace',
@@ -80,8 +49,7 @@ const WINDOW_MAP: Record<string, string> = {
 export default class Wattson implements PerfettoPlugin {
   static readonly id = `org.kernel.Wattson`;
   static readonly dependencies = [SchedPlugin];
-<<<<<<< HEAD
-  public static windowsOfInterest = new Set<string>();
+public static windowsOfInterest = new Set<string>();
 
   static onActivate(_app: App, args: RouteArgs): void {
     const metrics: string[] = [];
@@ -109,16 +77,6 @@ export default class Wattson implements PerfettoPlugin {
     const missingEvents = markersSupported
       ? await missingWattsonCpuConfigs(ctx.engine)
       : [];
-=======
-
-  async onTraceLoad(ctx: Trace): Promise<void> {
-    const markersSupported = await hasWattsonMarkersSupport(ctx.engine);
-    const cpuSupported = await hasWattsonCpuSupport(ctx.engine);
-    const gpuSupported = await hasWattsonGpuSupport(ctx.engine);
-    const missingEvents = await hasWattsonSufficientCPUConfigs(ctx.engine);
-    const realCpuIdleCounters = await hasCpuIdleCounters(ctx.engine);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     // Short circuit if Wattson is not supported for this Perfetto trace
     if (!(markersSupported || cpuSupported || gpuSupported || tpuSupported)) {
       return;
@@ -135,12 +93,7 @@ export default class Wattson implements PerfettoPlugin {
     if (markersSupported) {
       await addWattsonMarkersElements(ctx, group);
     }
-<<<<<<< HEAD
-    if (cpuSupported || markersSupported) {
-=======
-    if (cpuSupported) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      await addWattsonCpuElements(
+if (cpuSupported) {      await addWattsonCpuElements(
         ctx,
         group,
         missingEvents,
@@ -302,16 +255,7 @@ async function hasWattsonMarkersSupport(engine: Engine): Promise<boolean> {
 async function hasWattsonCpuSupport(engine: Engine): Promise<boolean> {
   const result = await engine.query(`
     INCLUDE PERFETTO MODULE wattson.device_infos;
-<<<<<<< HEAD
-    SELECT
-      EXISTS (SELECT 1 FROM _wattson_device) as device,
-      EXISTS (SELECT 1 FROM cpu_counter_track WHERE type = 'cpu_frequency') as freq,
-      EXISTS (SELECT 1 FROM cpu_counter_track WHERE type = 'cpu_idle') as idle
-  `);
-  const row = result.firstRow({device: NUM, freq: NUM, idle: NUM});
-  return !!row.device && !!row.freq && !!row.idle;
-=======
-    SELECT COUNT(*) as numRows FROM _wattson_device
+SELECT COUNT(*) as numRows FROM _wattson_device
     `,
     `
     INCLUDE PERFETTO MODULE linux.cpu.frequency;
@@ -327,9 +271,7 @@ async function hasWattsonCpuSupport(engine: Engine): Promise<boolean> {
     if (checkValue.firstRow({numRows: NUM}).numRows === 0) return false;
   }
 
-  return true;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  return true;}
 
 async function hasWattsonGpuSupport(engine: Engine): Promise<boolean> {
   const result = await engine.query(`
@@ -380,15 +322,6 @@ async function addWattsonMarkersElements(ctx: Trace, group: TrackNode) {
   group.addChildInOrder(new TrackNode({uri, name: 'Wattson markers window'}));
 }
 
-<<<<<<< HEAD
-async function addWattsonCpuElements(
-  ctx: Trace,
-  group: TrackNode,
-  missingEvents: string[],
-  hasCpuIdleCounters: boolean,
-) {
-  const warningDesc = createCpuWarnings(missingEvents, hasCpuIdleCounters);
-=======
 function createCpuWarnings(
   missingEvents: string[],
   realCpuIdleCounters: boolean,
@@ -409,8 +342,6 @@ function createCpuWarnings(
       ),
     );
   }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   if (!realCpuIdleCounters) {
     if (warningMsg.length > 0) {
       warningMsg.push(m('hr'));
@@ -438,8 +369,7 @@ async function addWattsonCpuElements(
 
   // CPUs estimate as part of CPU subsystem
   const estimateSuffix = `${hasCpuIdleCounters ? '' : ' crude'} estimate`;
-<<<<<<< HEAD
-  const cpuResult = await ctx.engine.query(
+const cpuResult = await ctx.engine.query(
     `SELECT cpu FROM cpu WHERE machine_id = 0`,
   );
   const it = cpuResult.iter({cpu: NUM});
@@ -452,37 +382,12 @@ async function addWattsonCpuElements(
       renderer: makeWattsonEstimateTrack(ctx, uri, queryKey, `CpuSubsystem`),
       tags: {
         kinds: [CPUSS_ESTIMATE_TRACK_KIND],
-        wattson: `CPU${it.cpu}`,
-=======
-  const schedPlugin = ctx.plugins.getPlugin(SchedPlugin);
-  const schedCpus = schedPlugin.schedCpus;
-  for (const cpu of schedCpus) {
-    const queryKey = `cpu${cpu.ucpu}_mw`;
-    const uri = `/wattson/cpu_subsystem_estimate_cpu${cpu.ucpu}`;
-    ctx.tracks.registerTrack({
-      uri,
-      description: () => warningDesc,
-      renderer: new WattsonSubsystemEstimateTrack(
-        ctx,
-        uri,
-        queryKey,
-        `CpuSubsystem`,
-      ),
-      tags: {
-        kinds: [CPUSS_ESTIMATE_TRACK_KIND],
-        wattson: `CPU${cpu.ucpu}`,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      },
+        wattson: `CPU${it.cpu}`,      },
     });
     group.addChildInOrder(
       new TrackNode({
         uri,
-<<<<<<< HEAD
-        name: `Cpu${it.cpu}${estimateSuffix}`,
-=======
-        name: `Cpu${cpu.toString()}${estimateSuffix}`,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      }),
+name: `Cpu${it.cpu}${estimateSuffix}`,      }),
     );
   }
 

@@ -162,8 +162,7 @@ ModuleResult ProfileModule::TokenizeStreamingProfilePacket(
   protos::pbzero::StreamingProfilePacket::Decoder decoder(
       streaming_profile_packet.data, streaming_profile_packet.size);
 
-<<<<<<< HEAD
-  // We have to resolve the timestamps of a StreamingProfilePacket during
+// We have to resolve the timestamps of a StreamingProfilePacket during
   // tokenization. If we did this during parsing instead, the tokenization of a
   // subsequent ThreadDescriptor with a new reference timestamp would cause us
   // to later calculate timestamps based on the wrong reference value during
@@ -177,30 +176,7 @@ ModuleResult ProfileModule::TokenizeStreamingProfilePacket(
   if (PERFETTO_UNLIKELY(packet_ts < 0)) {
     context_->import_logs_tracker->RecordTokenizationLog(
         stats::streaming_profile_invalid_timestamp, packet->offset());
-    return ModuleResult::Handled();
-=======
-  // We have to resolve the reference timestamp of a StreamingProfilePacket
-  // during tokenization. If we did this during parsing instead, the
-  // tokenization of a subsequent ThreadDescriptor with a new reference
-  // timestamp would cause us to later calculate timestamps based on the wrong
-  // reference value during parsing. Since StreamingProfilePackets only need to
-  // be sorted correctly with respect to process/thread metadata events (so that
-  // pid/tid are resolved correctly during parsing), we forward the packet as a
-  // whole through the sorter, using the "root" timestamp of the packet, i.e.
-  // the current timestamp of the packet sequence.
-  auto packet_ts =
-      sequence_state->IncrementAndGetTrackEventTimeNs(/*delta_ns=*/0);
-  std::optional<int64_t> trace_ts = context_->clock_tracker->ToTraceTime(
-      protos::pbzero::BUILTIN_CLOCK_MONOTONIC, packet_ts);
-  if (trace_ts)
-    packet_ts = *trace_ts;
-
-  // Increment the sequence's timestamp by all deltas.
-  for (auto timestamp_it = decoder.timestamp_delta_us(); timestamp_it;
-       ++timestamp_it) {
-    sequence_state->IncrementAndGetTrackEventTimeNs(*timestamp_it * 1000);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    return ModuleResult::Handled();  }
 
   std::optional<int64_t> trace_ts = context_->clock_tracker->ToTraceTime(
       ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_MONOTONIC), packet_ts);
@@ -470,21 +446,11 @@ void ProfileModule::ParseProfilePacket(
   for (auto it = packet.process_dumps(); it; ++it) {
     protos::pbzero::ProfilePacket::ProcessHeapSamples::Decoder entry(*it);
 
-<<<<<<< HEAD
-    // End of the window: the state this dump represents.
-    std::optional<int64_t> maybe_window_end =
-=======
-    std::optional<int64_t> maybe_timestamp =
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        context_->clock_tracker->ToTraceTime(
+// End of the window: the state this dump represents.
+    std::optional<int64_t> maybe_window_end =        context_->clock_tracker->ToTraceTime(
             ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_MONOTONIC_COARSE),
             static_cast<int64_t>(entry.timestamp()));
-<<<<<<< HEAD
-    if (!maybe_window_end)
-=======
-    if (!maybe_timestamp)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      continue;
+if (!maybe_window_end)      continue;
 
     int64_t window_end = *maybe_window_end;
 

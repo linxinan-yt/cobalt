@@ -12,14 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-<<<<<<< HEAD
 import type {SqlValue} from '../../../../trace_processor/query_result';
-import type {PerfettoSqlType} from '../../../../trace_processor/perfetto_sql_type';
-=======
-import {SqlValue} from '../../../../trace_processor/query_result';
-import {PerfettoSqlType} from '../../../../trace_processor/perfetto_sql_type';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {renderStandardCell} from './render_cell_utils';
+import type {PerfettoSqlType} from '../../../../trace_processor/perfetto_sql_type';import {renderStandardCell} from './render_cell_utils';
 import type {SqlColumn} from './sql_column';
 import type {TableColumn, TableManager} from './table_column';
 

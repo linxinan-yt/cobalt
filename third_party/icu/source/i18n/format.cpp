@@ -99,16 +99,10 @@ Format&
 Format::operator=(const Format& that)
 {
     if (this != &that) {
-<<<<<<< HEAD
-        actualLocale = that.actualLocale;
-        validLocale = that.validLocale;
-=======
-        UErrorCode status = U_ZERO_ERROR;
+UErrorCode status = U_ZERO_ERROR;
         U_LOCALE_BASED(locBased, *this);
         locBased.setLocaleIDs(that.validLocale, that.actualLocale, status);
-        U_ASSERT(U_SUCCESS(status));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        U_ASSERT(U_SUCCESS(status));    }
     return *this;
 }
 
@@ -215,16 +209,8 @@ Format::getLocaleID(ULocDataLocaleType type, UErrorCode& status) const {
 
 void
 Format::setLocaleIDs(const char* valid, const char* actual) {
-<<<<<<< HEAD
-    actualLocale = Locale(actual);
-    validLocale = Locale(valid);
-=======
-    U_LOCALE_BASED(locBased, *this);
-    UErrorCode status = U_ZERO_ERROR;
-    locBased.setLocaleIDs(valid, actual, status);
-    U_ASSERT(U_SUCCESS(status));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+actualLocale = Locale(actual);
+    validLocale = Locale(valid);}
 
 U_NAMESPACE_END
 

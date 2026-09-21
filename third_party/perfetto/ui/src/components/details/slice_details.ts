@@ -180,28 +180,7 @@ export function renderDetails(
           {
             trigger: m(Anchor, slice.name),
           },
-<<<<<<< HEAD
-          renderMatchingSlicesMenu(trace, slice),
-=======
-          m(MenuItem, {
-            label: 'Slices with the same name',
-            onclick: () => {
-              extensions.addLegacySqlTableTab(trace, {
-                table: assertExists(getSqlTableDescription(trace, 'slice')),
-                filters: [
-                  {
-                    op: (cols) =>
-                      slice.name === undefined
-                        ? `${cols[0]} IS NULL`
-                        : `${cols[0]} = ${sqliteString(slice.name)}`,
-                    columns: ['name'],
-                  },
-                ],
-              });
-            },
-          }),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        ),
+renderMatchingSlicesMenu(trace, slice),        ),
       }),
       m(TreeNode, {
         left: 'Category',

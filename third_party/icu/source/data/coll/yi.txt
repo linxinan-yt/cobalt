@@ -16,11 +16,6 @@ yi{
                 "&ש<שׂ"
                 "&[before 1]ת<תּ"
             }
-<<<<<<< HEAD
-            Version{"48"}
-=======
-            Version{"47"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+Version{"48"}        }
     }
 }

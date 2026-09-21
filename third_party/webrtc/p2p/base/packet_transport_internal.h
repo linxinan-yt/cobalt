@@ -130,13 +130,7 @@ class RTC_EXPORT PacketTransportInternal {
   virtual ~PacketTransportInternal();
 
  protected:
-<<<<<<< HEAD
-  explicit PacketTransportInternal(TaskQueueBase* attached_queue = nullptr);
-=======
-  PacketTransportInternal();
-  virtual ~PacketTransportInternal();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+explicit PacketTransportInternal(TaskQueueBase* attached_queue = nullptr);
   void NotifyPacketReceived(const ReceivedIpPacket& packet);
   void NotifyOnClose();
 

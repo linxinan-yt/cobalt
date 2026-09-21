@@ -52,138 +52,12 @@ import {StatusbarManagerImpl} from './statusbar_manager';
 import type {SettingDescriptor} from '../public/settings';
 import type {SettingsManagerImpl} from './settings_manager';
 import {MinimapManagerImpl} from './minimap_manager';
-<<<<<<< HEAD
 import {InitialPageManagerImpl} from './initial_page_manager';
 import type {TraceStream} from '../public/stream';
 import type {OmniboxModeDescriptor} from '../public/omnibox';
 import type {SidePanelManagerImpl} from './side_panel_manager';
 import type {SidePanelTabDescriptor} from '../public/side_panel';
 import type {Route} from '../public/app';
-=======
-import {isStartupCommandAllowed} from './startup_command_allowlist';
-import {TraceStream} from '../public/stream';
-
-/**
- * Handles the per-trace state of the UI
- * There is an instance of this class per each trace loaded, and typically
- * between 0 and 1 instances in total (% brief moments while we swap traces).
- * 90% of the app state live here, including the Engine.
- * This is the underlying storage for AppImpl, which instead has one instance
- * per trace per plugin.
- */
-export class TraceContext implements Disposable {
-  private readonly pluginInstances = new Map<string, TraceImpl>();
-  readonly appCtx: AppContext;
-  readonly engine: EngineBase;
-  readonly omniboxMgr = new OmniboxManagerImpl();
-  readonly searchMgr: SearchManagerImpl;
-  readonly selectionMgr: SelectionManagerImpl;
-  readonly tabMgr = new TabManagerImpl();
-  readonly timeline: TimelineImpl;
-  readonly traceInfo: TraceInfoImpl;
-  readonly trackMgr = new TrackManagerImpl();
-  readonly workspaceMgr = new WorkspaceManagerImpl();
-  readonly noteMgr = new NoteManagerImpl();
-  readonly flowMgr: FlowManager;
-  readonly pluginSerializableState = createStore<{[key: string]: {}}>({});
-  readonly scrollHelper: ScrollHelper;
-  readonly trash = new DisposableStack();
-  readonly onTraceReady = new EvtSource<void>();
-  readonly statusbarMgr = new StatusbarManagerImpl();
-  readonly minimapManager = new MinimapManagerImpl();
-
-  // List of errors that were encountered while loading the trace by the TS
-  // code. These are on top of traceInfo.importErrors, which is a summary of
-  // what TraceProcessor reports on the stats table at import time.
-  readonly loadingErrors: string[] = [];
-
-  constructor(gctx: AppContext, engine: EngineBase, traceInfo: TraceInfoImpl) {
-    this.appCtx = gctx;
-    this.engine = engine;
-    this.trash.use(engine);
-    this.traceInfo = traceInfo;
-
-    this.timeline = new TimelineImpl(
-      traceInfo,
-      this.appCtx.timestampFormat,
-      this.appCtx.durationPrecision,
-      this.appCtx.timezoneOverride,
-    );
-
-    this.scrollHelper = new ScrollHelper(
-      this.traceInfo,
-      this.timeline,
-      this.workspaceMgr,
-      this.trackMgr,
-    );
-
-    this.selectionMgr = new SelectionManagerImpl(
-      this.engine,
-      this.timeline,
-      this.trackMgr,
-      this.noteMgr,
-      this.scrollHelper,
-      this.onSelectionChange.bind(this),
-    );
-
-    this.noteMgr.onNoteDeleted = (noteId) => {
-      if (
-        this.selectionMgr.selection.kind === 'note' &&
-        this.selectionMgr.selection.id === noteId
-      ) {
-        this.selectionMgr.clearSelection();
-      }
-    };
-
-    this.flowMgr = new FlowManager(
-      engine.getProxy('FlowManager'),
-      this.trackMgr,
-      this.selectionMgr,
-    );
-
-    this.searchMgr = new SearchManagerImpl({
-      timeline: this.timeline,
-      trackManager: this.trackMgr,
-      engine: this.engine,
-      workspace: this.workspaceMgr.currentWorkspace,
-      onResultStep: this.onResultStep.bind(this),
-    });
-  }
-
-  // This method wires up changes to selection to side effects on search and
-  // tabs. This is to avoid entangling too many dependencies between managers.
-  private onSelectionChange(selection: Selection, opts: SelectionOpts) {
-    const {clearSearch = true, switchToCurrentSelectionTab = true} = opts;
-    if (clearSearch) {
-      this.searchMgr.reset();
-    }
-    if (switchToCurrentSelectionTab && selection.kind !== 'empty') {
-      this.tabMgr.showCurrentSelectionTab();
-    }
-
-    this.flowMgr.updateFlows(selection);
-  }
-
-  private onResultStep(searchResult: SearchResult) {
-    this.selectionMgr.selectSearchResult(searchResult);
-  }
-
-  // Gets or creates an instance of TraceImpl backed by the current TraceContext
-  // for the given plugin.
-  forPlugin(pluginId: string) {
-    return getOrCreate(this.pluginInstances, pluginId, () => {
-      const appForPlugin = this.appCtx.forPlugin(pluginId);
-      return new TraceImpl(appForPlugin, this);
-    });
-  }
-
-  // Called by AppContext.closeCurrentTrace().
-  [Symbol.dispose]() {
-    this.trash.dispose();
-  }
-}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 /**
  * This implementation provides the plugin access to trace related resources,
  * such as the engine and the store. This exists for the whole duration a plugin
@@ -242,8 +116,7 @@ export class TraceImpl implements Trace, Disposable {
       this.onSelectionChange.bind(this),
     );
 
-<<<<<<< HEAD
-    this.notes.onNoteDeleted = (noteId) => {
+this.notes.onNoteDeleted = (noteId) => {
       if (
         this.selection.selection.kind === 'note' &&
         this.selection.selection.id === noteId
@@ -264,33 +137,7 @@ export class TraceImpl implements Trace, Disposable {
       engine: this.engine,
       workspace: this.workspaces.currentWorkspace,
       onResultStep: this.onResultStep.bind(this),
-    });
-
-=======
-    // Intercept the registerTrack() method to inject the pluginId into tracks.
-    this.trackMgrProxy = createProxy(ctx.trackMgr, {
-      registerTrack(trackDesc: Track): Disposable {
-        return ctx.trackMgr.registerTrack({...trackDesc, pluginId});
-      },
-    });
-
-    // CRITICAL ORDER: URL commands MUST execute before settings commands!
-    // This ordering has subtle but important implications:
-    // - URL commands are trace-specific and should establish initial state
-    // - Settings commands are user preferences that should override URL defaults
-    // - Changing this order could break trace sharing and user customization
-    // DO NOT REORDER without understanding the full impact!
-    const urlCommands =
-      parseUrlCommands(ctx.appCtx.initialRouteArgs.startupCommands) ?? [];
-    const settingsCommands = ctx.appCtx.startupCommandsSetting.get();
-
-    // Combine URL and settings commands - runtime allowlist checking will handle filtering
-    const allStartupCommands = [...urlCommands, ...settingsCommands];
-    const enforceAllowlist =
-      ctx.appCtx.enforceStartupCommandAllowlistSetting.get();
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    // CommandManager is global. Here we intercept the registerCommand() because
+    });    // CommandManager is global. Here we intercept the registerCommand() because
     // we want any commands registered via the Trace interface to be
     // unregistered when the trace unloads (before a new trace is loaded) to
     // avoid ending up with duplicate commands.
@@ -300,54 +147,10 @@ export class TraceImpl implements Trace, Disposable {
         this.trash.use(disposable);
         return disposable;
       },
-<<<<<<< HEAD
-      registerMacro: (macro, source) => {
+registerMacro: (macro, source) => {
         const disposable = app.commands.registerMacro(macro, source);
         this.trash.use(disposable);
-        return disposable;
-=======
-
-      hasStartupCommands(): boolean {
-        return allStartupCommands.length > 0;
-      },
-
-      async runStartupCommands(): Promise<void> {
-        // Execute startup commands in trace context after everything is ready.
-        // This simulates user actions taken after trace load is complete,
-        // including any saved app state restoration. At this point:
-        // - All plugins have loaded and registered their commands
-        // - Trace data is fully accessible
-        // - UI state has been restored from any saved workspace
-        // - Commands can safely query trace data and modify UI state
-
-        // Set allowlist checking during startup if enforcement enabled
-        if (enforceAllowlist) {
-          ctx.appCtx.commandMgr.setAllowlistCheck(isStartupCommandAllowed);
-        }
-
-        try {
-          for (const command of allStartupCommands) {
-            try {
-              // Execute through proxy to access both global and trace-specific
-              // commands.
-              await ctx.appCtx.commandMgr.runCommand(
-                command.id,
-                ...command.args,
-              );
-            } catch (error) {
-              // TODO(stevegolton): Add a mechanism to notify users of startup
-              // command errors. This will involve creating a notification UX
-              // similar to VSCode where there are popups on the bottom right
-              // of the UI.
-              console.warn(`Startup command ${command.id} failed:`, error);
-            }
-          }
-        } finally {
-          // Always restore default (allow all) behavior when done
-          ctx.appCtx.commandMgr.setAllowlistCheck(() => true);
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      },
+        return disposable;      },
     });
 
     // Likewise, remove all trace-scoped sidebar entries when the trace unloads.
@@ -466,72 +269,8 @@ export class TraceImpl implements Trace, Disposable {
     return this.workspaces.currentWorkspace;
   }
 
-<<<<<<< HEAD
-  get defaultWorkspace() {
-    return this.workspaces.defaultWorkspace;
-=======
-  get timeline() {
-    return this.traceCtx.timeline;
-  }
-
-  get tracks() {
-    return this.trackMgrProxy;
-  }
-
-  get tabs() {
-    return this.traceCtx.tabMgr;
-  }
-
-  get currentWorkspace() {
-    return this.traceCtx.workspaceMgr.currentWorkspace;
-  }
-
-  get defaultWorkspace() {
-    return this.traceCtx.workspaceMgr.defaultWorkspace;
-  }
-
-  get workspaces() {
-    return this.traceCtx.workspaceMgr;
-  }
-
-  get search() {
-    return this.traceCtx.searchMgr;
-  }
-
-  get selection() {
-    return this.traceCtx.selectionMgr;
-  }
-
-  get traceInfo(): TraceInfoImpl {
-    return this.traceCtx.traceInfo;
-  }
-
-  get statusbar(): StatusbarManagerImpl {
-    return this.traceCtx.statusbarMgr;
-  }
-
-  get notes() {
-    return this.traceCtx.noteMgr;
-  }
-
-  get flows() {
-    return this.traceCtx.flowMgr;
-  }
-
-  get loadingErrors(): ReadonlyArray<string> {
-    return this.traceCtx.loadingErrors;
-  }
-
-  addLoadingError(err: string) {
-    this.traceCtx.loadingErrors.push(err);
-  }
-
-  // App interface implementation.
-
-  get pluginId(): string {
-    return this.appImpl.pluginId;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+get defaultWorkspace() {
+    return this.workspaces.defaultWorkspace;  }
 
   get commands(): CommandManagerImpl {
     return this.commandMgrProxy;
@@ -579,8 +318,7 @@ export class TraceImpl implements Trace, Disposable {
     this.app.navigate(newHash);
   }
 
-<<<<<<< HEAD
-  getCurrentRoute(): Route {
+getCurrentRoute(): Route {
     return this.app.getCurrentRoute();
   }
 
@@ -593,31 +331,13 @@ export class TraceImpl implements Trace, Disposable {
   }
 
   openTraceFromStream(stream: TraceStream) {
-    return this.app.openTraceFromStream(stream);
-=======
-  openTraceFromFile(file: File) {
-    return this.appImpl.openTraceFromFile(file);
-  }
-
-  openTraceFromUrl(url: string, serializedAppState?: SerializedAppState) {
-    return this.appImpl.openTraceFromUrl(url, serializedAppState);
-  }
-
-  openTraceFromStream(stream: TraceStream) {
-    return this.appImpl.openTraceFromStream(stream);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    return this.app.openTraceFromStream(stream);  }
 
   openTraceFromBuffer(
     args: OpenTraceArrayBufArgs,
     serializedAppState?: SerializedAppState,
   ) {
-<<<<<<< HEAD
-    return this.app.openTraceFromBuffer(args, serializedAppState);
-=======
-    return this.appImpl.openTraceFromBuffer(args, serializedAppState);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+return this.appImpl.openTraceFromBuffer(args, serializedAppState);  }
 
   closeCurrentTrace(): void {
     this.app.closeCurrentTrace();

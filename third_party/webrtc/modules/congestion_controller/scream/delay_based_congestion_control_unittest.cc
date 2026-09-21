@@ -116,25 +116,13 @@ TEST(DelayBasedCongestionControlTest, ResetQueueDelay) {
   ASSERT_EQ(delay_controller.queue_delay(), TimeDelta::PlusInfinity());
 
   TransportPacketsFeedback feedback =
-<<<<<<< HEAD
-      feedback_generator.ProcessUntilNextFeedback(DataRate::KilobitsPerSec(150),
+feedback_generator.ProcessUntilNextFeedback(DataRate::KilobitsPerSec(150),
                                                   clock);
   delay_controller.Update(ParseScreamFeedback(feedback), /*alr=*/false);
   // RTT is still increasing or equal to the last feedback.
   EXPECT_GE(delay_controller.rtt(), last_smoothed_rtt);
   // But queue delay should be lower.
-  EXPECT_LT(delay_controller.queue_delay(), queue_delay_before_reset);
-=======
-      feedback_generator.ProcessUntilNextFeedback(send_rate, clock);
-  delay_controller.OnTransportPacketsFeedback(feedback);
-
-  ASSERT_EQ(delay_controller.queue_delay(), TimeDelta::Millis(0));
-  EXPECT_EQ(
-      delay_controller.UpdateReferenceWindow(
-          ref_window, /*ref_window_mss_ratio=*/1.0, /*virtual_alpha_lim=*/1.0),
-      ref_window);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  EXPECT_LT(delay_controller.queue_delay(), queue_delay_before_reset);}
 
 TEST(DelayBasedCongestionControlTest,
      IsQueueDrainedInTimeReturnFalseIfLongOverUse) {
@@ -155,18 +143,9 @@ TEST(DelayBasedCongestionControlTest,
             DataRate::KilobitsPerSec(150), clock);
     delay_controller.Update(ParseScreamFeedback(feedback), /*alr=*/false);
   }
-<<<<<<< HEAD
-  EXPECT_LT(clock.CurrentTime(), start_time + TimeDelta::Seconds(30));
+EXPECT_LT(clock.CurrentTime(), start_time + TimeDelta::Seconds(30));
   EXPECT_GT(clock.CurrentTime(), start_time + TimeDelta::Seconds(10));
-  EXPECT_FALSE(delay_controller.IsQueueDrainedInTime(clock.CurrentTime()));
-=======
-  DataSize ref_window = send_rate * smoothed_rtt;
-  DataSize updated_ref_window = delay_controller.UpdateReferenceWindow(
-      ref_window, /*ref_window_mss_ratio=*/1.0, /*virtual_alpha_lim=*/1.0);
-  EXPECT_LT(updated_ref_window, 0.98 * ref_window);
-  EXPECT_GE(updated_ref_window, 0.5 * ref_window);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  EXPECT_FALSE(delay_controller.IsQueueDrainedInTime(clock.CurrentTime()));}
 
 TEST(DelayBasedCongestionControlTest,
      RefWindowScaleFactorDueToMinAverageQueueDelay) {
@@ -300,8 +279,7 @@ TEST(DelayBasedCongestionControlTest, RttDecaysSlowerInAlr) {
     controller.Update(ParseScreamFeedback(msg), alr);
   };
 
-<<<<<<< HEAD
-  // Establish initial smoothed RTT of 200ms.
+// Establish initial smoothed RTT of 200ms.
   feed_feedback(delay_controller_alr, TimeDelta::Millis(200), /*alr=*/false);
   feed_feedback(delay_controller_no_alr, TimeDelta::Millis(200), /*alr=*/false);
 
@@ -366,26 +344,7 @@ TEST(DelayBasedCongestionControlTest, RttIncreasesSlowerInAlr) {
   // no_alr: 200 * 0.125 + 100 * 0.875 = 112.5ms
   // alr: 200 * (1/128) + 100 * (127/128) = 100.78125ms
   EXPECT_NEAR(delay_controller_no_alr.rtt().ms<double>(), 112.5, 0.1);
-  EXPECT_NEAR(delay_controller_alr.rtt().ms<double>(), 100.8, 0.1);
-=======
-  DataRate send_rate = DataRate::KilobitsPerSec(2000);
-  delay_controller.SetMinDelayBasedBwe(send_rate);
-  TimeDelta smoothed_rtt;
-  for (int i = 0; i < 10; ++i) {
-    // Send faster than link capacity to build a queue.
-    TransportPacketsFeedback feedback =
-        feedback_generator.ProcessUntilNextFeedback(send_rate, clock);
-    delay_controller.OnTransportPacketsFeedback(feedback);
-    smoothed_rtt = feedback.smoothed_rtt;
-  }
-  DataSize ref_window = send_rate * smoothed_rtt;
-  // Despite the queue delay, the reference window will not be decreased to a
-  // value that would cause the target rate to be below the minimum.
-  DataSize updated_ref_window = delay_controller.UpdateReferenceWindow(
-      ref_window, /*ref_window_mss_ratio=*/1.0, /*virtual_alpha_lim=*/1.0);
-  EXPECT_EQ(updated_ref_window, ref_window);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  EXPECT_NEAR(delay_controller_alr.rtt().ms<double>(), 100.8, 0.1);}
 
 // TODO: bugs.webrtc.org/447037083 - add tests for clock drift in feedback NTP
 // time.

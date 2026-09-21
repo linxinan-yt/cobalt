@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-<<<<<<< HEAD
 import type {Trace} from '../../public/trace';
 import type {PerfettoPlugin} from '../../public/plugin';
 import {TrackNode} from '../../public/workspace';
@@ -24,14 +23,6 @@ import {
   STR_NULL,
 } from '../../trace_processor/query_result';
 import {getMachineCount, maybeMachineLabel} from '../../public/utils';
-=======
-import {Trace} from '../../public/trace';
-import {PerfettoPlugin} from '../../public/plugin';
-import {TrackNode} from '../../public/workspace';
-import {LONG, NUM, STR, STR_NULL} from '../../trace_processor/query_result';
-import {maybeMachineLabel} from '../../public/utils';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 function stripPathFromExecutable(path: string) {
   if (path[0] === '/') {
     return path.split('/').slice(-1)[0];
@@ -43,11 +34,7 @@ function stripPathFromExecutable(path: string) {
 function getThreadDisplayName(
   threadName: string | undefined,
   tid: bigint | number,
-<<<<<<< HEAD
-  machineLabel: string = '',
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-) {
+machineLabel: string = '',) {
   if (threadName) {
     return `${stripPathFromExecutable(threadName)} ${tid}${machineLabel}`;
   } else {
@@ -191,17 +178,9 @@ export default class implements PerfettoPlugin {
           thread.name as threadName,
           sum_running_dur as sumRunningDur,
           slice_count as sliceCount,
-<<<<<<< HEAD
-          stack_sample_count as stackSampleCount,
+stack_sample_count as stackSampleCount,
           ifnull(extract_arg(thread.arg_set_id, 'thread_sort_index_hint'), 0) as threadSortIndexHint,
-          machine_id as machine
-=======
-          perf_sample_count as perfSampleCount,
-          instruments_sample_count as instrumentsSampleCount,
-          ifnull(extract_arg(thread.arg_set_id, 'thread_sort_index_hint'), 0) as threadSortIndexHint,
-          ifnull(machine_id, 0) as machine
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        from _thread_available_info_summary
+          machine_id as machine        from _thread_available_info_summary
         join thread using (utid)
         where upid is null
       )
@@ -243,13 +222,7 @@ export default class implements PerfettoPlugin {
         left join machine m on m.id = threadGroups.machine
         order by
           threadSortIndexHint asc,
-<<<<<<< HEAD
-          stackSampleCount desc,
-=======
-          perfSampleCount desc,
-          instrumentsSampleCount desc,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          sumRunningDur desc,
+stackSampleCount desc,          sumRunningDur desc,
           sliceCount desc,
           threadName asc,
           utid asc

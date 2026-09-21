@@ -59,12 +59,7 @@ WEBRTC_ONLY_DEPS = [
     'src/third_party',
     'src/third_party/grpc/src',
     'src/third_party/gtest-parallel',
-<<<<<<< HEAD
-    'src/third_party/pipewire/linux-amd64',
-=======
-    'src/third_party/pipewire-1.4/linux-amd64',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    'src/tools',
+'src/third_party/pipewire-1.4/linux-amd64',    'src/tools',
 ]
 
 WEBRTC_URL = 'https://webrtc.googlesource.com/src'

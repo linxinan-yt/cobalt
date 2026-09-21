@@ -339,13 +339,9 @@ so{
                 other{"{0} nanoseken"}
             }
             night{
-<<<<<<< HEAD
-=======
-                dnam{"habeeno"}
+dnam{"habeeno"}
                 one{"{0} habeen"}
-                other{"{0} habeeno"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                per{"{0} halkii habeen"}
+                other{"{0} habeeno"}                per{"{0} halkii habeen"}
             }
             quarter{
                 dnam{"Rubucyo"}
@@ -548,11 +544,7 @@ so{
                 other{"{0} dsimitir"}
             }
             fathom{
-<<<<<<< HEAD
-=======
-                dnam{"fathoms"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                one{"{0} fathom"}
+dnam{"fathoms"}                one{"{0} fathom"}
                 other{"{0} fathoms"}
             }
             foot{
@@ -562,11 +554,7 @@ so{
                 per{"{0} fiitkiiba"}
             }
             furlong{
-<<<<<<< HEAD
-=======
-                dnam{"furlongs"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                one{"{0} furlong"}
+dnam{"furlongs"}                one{"{0} furlong"}
                 other{"{0} furlongs"}
             }
             inch{
@@ -648,19 +636,11 @@ so{
         }
         light{
             candela{
-<<<<<<< HEAD
-=======
-                dnam{"candela"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                one{"{0} candela"}
+dnam{"candela"}                one{"{0} candela"}
                 other{"{0} candela"}
             }
             lumen{
-<<<<<<< HEAD
-=======
-                dnam{"lumen"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                one{"{0} lumen"}
+dnam{"lumen"}                one{"{0} lumen"}
                 other{"{0} lumen"}
             }
             lux{
@@ -743,11 +723,7 @@ so{
                 other{"{0} cufka qorraxda"}
             }
             stone{
-<<<<<<< HEAD
-=======
-                dnam{"dhagaxo"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                one{"{0} dhagax"}
+dnam{"dhagaxo"}                one{"{0} dhagax"}
                 other{"{0} dhagaxo"}
             }
             ton{
@@ -1085,22 +1061,13 @@ so{
                 one{"{0}ppm"}
                 other{"{0}ppm#"}
             }
-<<<<<<< HEAD
-            part-per-1e9{
-=======
-            portion-per-1e9{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                dnam{"qb"}
+part-per-1e9{                dnam{"qb"}
                 one{"{0}qb"}
                 other{"{0}qb"}
             }
-<<<<<<< HEAD
-            percent{
+percent{
                 dnam{"%"}
-            }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            }        }
         consumption{
             liter-per-100-kilometer{
                 dnam{"L/100km"}
@@ -1146,16 +1113,10 @@ so{
                 other{"{0}b"}
             }
             night{
-<<<<<<< HEAD
+dnam{"habeeno"}
                 one{"{0}habeen"}
                 other{"{0}habeeno"}
-=======
-                dnam{"habeeno"}
-                one{"{0}habeen"}
-                other{"{0}habeeno"}
-                per{"{0}/habeen"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/habeen"}            }
             quarter{
                 dnam{"Rubac"}
             }
@@ -1303,11 +1264,7 @@ so{
                 other{"{0}nt"}
             }
             light-speed{
-<<<<<<< HEAD
-=======
-                dnam{"nal"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                one{"{0}nal"}
+dnam{"nal"}                one{"{0}nal"}
                 other{"{0}nal"}
             }
         }

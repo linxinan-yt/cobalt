@@ -7,11 +7,7 @@ ii{
     }
     Languages{
         ar{"ꀊꇁꀨꉙ"}
-<<<<<<< HEAD
-=======
-        ar_001{"ꀊꇁꀨꉙ（ꋧꃅ）"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        de{"ꄓꇩꉙ"}
+ar_001{"ꀊꇁꀨꉙ（ꋧꃅ）"}        de{"ꄓꇩꉙ"}
         en{"ꑱꇩꉙ"}
         es{"ꑭꀠꑸꉙ"}
         fr{"ꃔꇩꉙ"}

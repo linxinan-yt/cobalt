@@ -159,18 +159,7 @@ class CONTENT_EXPORT StoragePartition {
   virtual HostZoomLevelContext* GetHostZoomLevelContext() = 0;
   virtual ZoomLevelDelegate* GetZoomLevelDelegate() = 0;
   virtual PlatformNotificationContext* GetPlatformNotificationContext() = 0;
-<<<<<<< HEAD
-  virtual BrowsingTopicsSiteDataManager* GetBrowsingTopicsSiteDataManager() = 0;
-=======
-  virtual InterestGroupManager* GetInterestGroupManager() = 0;
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-  virtual BrowsingTopicsSiteDataManager* GetBrowsingTopicsSiteDataManager() = 0;
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-  virtual AttributionDataModel* GetAttributionDataModel() = 0;
-  virtual PrivateAggregationDataModel* GetPrivateAggregationDataModel() = 0;
-  virtual CookieDeprecationLabelManager* GetCookieDeprecationLabelManager() = 0;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#if BUILDFLAG(ENABLE_LIBRARY_CDMS)
+virtual BrowsingTopicsSiteDataManager* GetBrowsingTopicsSiteDataManager() = 0;#if BUILDFLAG(ENABLE_LIBRARY_CDMS)
   virtual CdmStorageDataModel* GetCdmStorageDataModel() = 0;
 #endif  // BUILDFLAG(ENABLE_LIBRARY_CDMS)
   virtual network::mojom::DeviceBoundSessionManager*

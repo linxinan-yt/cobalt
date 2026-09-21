@@ -374,14 +374,10 @@ kn{
             }
         }
         gregorian{
-<<<<<<< HEAD
-=======
-            AmPmMarkers{
+AmPmMarkers{
                 "AM",
                 "PM",
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            AmPmMarkersNarrow{
+            }            AmPmMarkersNarrow{
                 "a",
                 "p",
             }
@@ -882,13 +878,9 @@ kn{
         dayperiod{
             dn{"AM/PM"}
         }
-<<<<<<< HEAD
-=======
-        dayperiod-narrow{
+dayperiod-narrow{
             dn{"AM/PM"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        era{
+        }        era{
             dn{"ಯುಗ"}
         }
         fri{
@@ -908,18 +900,14 @@ kn{
                 }
             }
         }
-<<<<<<< HEAD
-=======
-        fri-narrow{
+fri-narrow{
             relativeTime{
                 past{
                     one{"{0} ಶುಕ್ರವಾರದ ಹಿಂದೆ"}
                     other{"{0} ಶುಕ್ರವಾರಗಳ ಹಿಂದೆ"}
                 }
             }
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        hour{
+        }        hour{
             dn{"ಗಂಟೆ"}
             relative{
                 "0"{"ಈ ಗಂಟೆ"}
@@ -1246,9 +1234,7 @@ kn{
                 "[¥￥]",
                 "[₩￦]",
                 "[₹ {ರೂ}]",
-<<<<<<< HEAD
-=======
-            }
+}
         }
         number{
             lenient{
@@ -1258,9 +1244,7 @@ kn{
             }
             stricter{
                 "[,，﹐︐ ٫]",
-                "[.．․﹒ ｡]",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                "[.．․﹒ ｡]",            }
         }
     }
     personNames{

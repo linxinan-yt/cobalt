@@ -4,8 +4,7 @@
 kok_Latn{
     %%Parent{"root"}
     Languages{
-<<<<<<< HEAD
-        af{"Afrikaans"}
+af{"Afrikaans"}
         ak{"Akan"}
         am{"Amharic"}
         ar{"Arbi"}
@@ -206,22 +205,7 @@ kok_Latn{
         Cyrl{"Cyrili"}
         Deva{"Devanagari"}
         Grek{"Grik"}
-        Hebr{"Hebrev"}
-=======
-        ar{"Arbi"}
-        el{"Grik"}
-        en{"Inglix"}
-        es{"Ispanhol"}
-        fr{"Fransez"}
-        kn{"Kon’nodd"}
-        kok{"Konknni"}
-        mr{"Moratthi"}
-        zh{"Chini"}
-    }
-    Scripts{
-        Deva{"Devanagari"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        Latn{"Romi"}
+        Hebr{"Hebrev"}        Latn{"Romi"}
     }
     codePatterns{
         language{"Bhas: {0}"}

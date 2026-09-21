@@ -1314,12 +1314,8 @@ nl{
             one{"Troy ounce platina"}
             other{"Troy ounces platina"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             one{"Zimbabwe Gold"}
             other{"Zimbabwe Gold"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

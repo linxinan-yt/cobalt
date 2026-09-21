@@ -222,12 +222,7 @@ void JapaneseCalendar::handleComputeFields(int32_t julianDay, UErrorCode& status
     //Calendar::timeToFields(theTime, quick, status);
     GregorianCalendar::handleComputeFields(julianDay, status);
     int32_t year = internalGet(UCAL_EXTENDED_YEAR); // Gregorian year
-<<<<<<< HEAD
-    int32_t eraCode = gJapaneseEraRules->getEraCode(year, internalGetMonth(status) + 1, internalGet(UCAL_DAY_OF_MONTH), status);
-=======
-    int32_t eraIdx = gJapaneseEraRules->getEraIndex(year, internalGetMonth(status) + 1, internalGet(UCAL_DAY_OF_MONTH), status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+int32_t eraCode = gJapaneseEraRules->getEraCode(year, internalGetMonth(status) + 1, internalGet(UCAL_DAY_OF_MONTH), status);
     int32_t startYear = gJapaneseEraRules->getStartYear(eraCode, status) - 1;
     if (U_FAILURE(status)) {
         return;
@@ -299,12 +294,7 @@ int32_t JapaneseCalendar::getActualMaximum(UCalendarDateFields field, UErrorCode
     if (U_FAILURE(status)) {
         return 0; // error case... any value
     }
-<<<<<<< HEAD
-    if (era == gJapaneseEraRules->getMaxEraCode()) { // max known era, not gCurrentEra
-=======
-    if (era == gJapaneseEraRules->getNumberOfEras() - 1) { // max known era, not gCurrentEra
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        // TODO: Investigate what value should be used here - revisit after 4.0.
+if (era == gJapaneseEraRules->getMaxEraCode()) { // max known era, not gCurrentEra        // TODO: Investigate what value should be used here - revisit after 4.0.
         return handleGetLimit(UCAL_YEAR, UCAL_LIMIT_MAXIMUM);
     }
     int32_t nextEraStart[3] = { 0,0,0 };

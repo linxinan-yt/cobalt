@@ -32,7 +32,6 @@ import {EmptyState} from '../../widgets/empty_state';
 import {Popup} from '../../widgets/popup';
 import {Box} from '../../widgets/box';
 import {Anchor} from '../../widgets/anchor';
-<<<<<<< HEAD
 import {Icon} from '../../widgets/icon';
 import {Icons} from '../../base/semantic_icons';
 import {GateDetector, renderSegments} from '../../base/mithril_utils';
@@ -40,9 +39,6 @@ import {findRef} from '../../base/dom_utils';
 import {Callout} from '../../widgets/callout';
 
 const SEARCH_BOX_REF = 'plugin-search-box';
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 enum SortOrder {
   Name = 'name',
   Slowest = 'slowest',
@@ -96,8 +92,6 @@ function sortText(sortOrder: SortOrder) {
 export interface PluginsPageAttrs {
   readonly subpage?: string;
 }
-<<<<<<< HEAD
-
 export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
   private filterText: string = '';
   private readonly dependenciesByPluginId: ReadonlyMap<
@@ -128,15 +122,7 @@ export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
     }
     this.dependenciesByPluginId = dependencies;
     this.dependantsByPluginId = dependants;
-  }
-
-=======
-
-export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
-  private filterText: string = '';
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  view({attrs}: m.Vnode<PluginsPageAttrs>): m.Children {
+  }  view({attrs}: m.Vnode<PluginsPageAttrs>): m.Children {
     const pluginManager = AppImpl.instance.plugins;
     const registeredPlugins = pluginManager.getAllPlugins();
     const needsRestart = registeredPlugins.some((p) => {
@@ -149,29 +135,8 @@ export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
 
     const isFiltering = this.filterText !== '';
     const filteredPlugins = isFiltering
-<<<<<<< HEAD
-      ? fuzzySearch(
-          sorted,
-          [
-            (p: PluginWrapper) => p.desc.id,
-            (p: PluginWrapper) => p.desc.description ?? '',
-          ],
-          this.filterText,
-        ).map((res) => ({
-          item: res.item,
-          idSegments: res.segments[0],
-          descriptionSegments: res.segments[1],
-        }))
-      : sorted.map((item) => ({
-          item,
-          idSegments: item.desc.id,
-          descriptionSegments: item.desc.description?.trim(),
-        }));
-=======
-      ? finder.find(this.filterText)
-      : sorted.map((item) => ({item, segments: []}));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    const subpage = decodeURIComponent(attrs.subpage ?? '');
+? finder.find(this.filterText)
+      : sorted.map((item) => ({item, segments: []}));    const subpage = decodeURIComponent(attrs.subpage ?? '');
 
     const page = m(
       SettingsShell,
@@ -262,8 +227,7 @@ export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
         filteredPlugins.length > 0
           ? m(
               CardStack,
-<<<<<<< HEAD
-              filteredPlugins.map(
+filteredPlugins.map(
                 ({item: plugin, idSegments, descriptionSegments}) => {
                   return this.renderPluginCard(
                     plugin,
@@ -272,16 +236,7 @@ export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
                     descriptionSegments,
                   );
                 },
-              ),
-=======
-              filteredPlugins.map(({item: plugin}) => {
-                return this.renderPluginCard(
-                  plugin,
-                  subpage === `/${plugin.desc.id}`,
-                );
-              }),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            )
+              ),            )
           : this.renderEmptyState(isFiltering),
       ),
     );
@@ -335,8 +290,7 @@ export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
   private renderPluginCard(
     plugin: PluginWrapper,
     focused: boolean,
-<<<<<<< HEAD
-    idSegments?: readonly FuzzySegment[] | string,
+idSegments?: readonly FuzzySegment[] | string,
     descriptionSegments?: readonly FuzzySegment[] | string,
   ): m.Children {
     const loadTime = plugin.traceContext?.loadTimeMs;
@@ -352,45 +306,7 @@ export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
       className: classNames(
         'pf-plugins-page__card',
         plugin.enableFlag.get() && 'pf-plugins-page__card--enabled',
-        isExperimental && 'pf-plugins-page__card--experimental',
-=======
-  ): m.Children {
-    const loadTime = plugin.traceContext?.loadTimeMs;
-    return m(
-      Card,
-      {
-        id: plugin.desc.id,
-        className: classNames(
-          'pf-plugins-page__card',
-          plugin.active && 'pf-plugins-page__card--active',
-          plugin.enableFlag.get() && 'pf-plugins-page__card--enabled',
-          focused && 'pf-plugins-page__card--focused',
-        ),
-        key: plugin.desc.id,
-      },
-      m(
-        '.pf-plugins-page__details',
-        m(
-          Stack,
-          {
-            orientation: 'horizontal',
-            gap: 'small',
-            className: 'pf-plugins-page__label-row',
-          },
-          m('h1', plugin.desc.id),
-          m(
-            '.pf-plugins-page__link-button',
-            m(Anchor, {
-              href: `#!/plugins/${encodeURIComponent(plugin.desc.id)}`,
-              icon: 'link',
-              title: 'Link to this plugin',
-            }),
-          ),
-        ),
-        plugin.desc.description &&
-          m('.pf-plugins-page__description', plugin.desc.description),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      ),
+        isExperimental && 'pf-plugins-page__card--experimental',      ),
       title: renderSegments(idSegments ?? plugin.desc.id),
       linkHref: `#!/plugins/${encodeURIComponent(plugin.desc.id)}`,
       description: [

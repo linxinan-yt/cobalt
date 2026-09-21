@@ -20,11 +20,6 @@
 #include <cstddef>
 #include <cstdint>
 
-<<<<<<< HEAD
-=======
-#include "perfetto/ext/base/flat_hash_map.h"
-#include "perfetto/ext/base/fnv_hash.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "perfetto/ext/base/small_vector.h"
 #include "src/trace_processor/core/dataframe/dataframe.h"
 #include "src/trace_processor/importers/common/global_args_tracker.h"
@@ -306,27 +301,9 @@ class ArgsTracker {
     return AddArgsTo(context_->storage->mutable_cpu_table(), id);
   }
 
-<<<<<<< HEAD
-  BoundInserter AddArgsTo(tables::GpuTable::Id id) {
+BoundInserter AddArgsTo(tables::GpuTable::Id id) {
     return AddArgsTo(context_->storage->mutable_gpu_table(), id);
   }
-=======
-  BoundInserter AddArgsTo(tables::TraceImportLogsTable::Id id) {
-    return AddArgsTo(context_->storage->mutable_trace_import_logs_table(), id);
-  }
-
-  // Returns a CompactArgSet which contains the args inserted into this
-  // ArgsTracker. Requires that every arg in this tracker was inserted for the
-  // "arg_set_id" column given by |column| at the given |row_number|.
-  //
-  // Note that this means the args stored in this tracker will *not* be flushed
-  // into the tables: it is the callers responsibility to ensure this happens if
-  // necessary.
-  CompactArgSet ToCompactArgSet(const dataframe::Dataframe&,
-                                uint32_t column,
-                                uint32_t row_number) &&;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   BoundInserter AddArgsTo(tables::TraceImportLogsTable::Id id) {
     return AddArgsTo(context_->storage->mutable_trace_import_logs_table(), id);
   }
@@ -350,18 +327,6 @@ class ArgsTracker {
   }
 
   TraceProcessorContext* context_ = nullptr;
-<<<<<<< HEAD
-=======
-
-  using ArrayKeyTuple = std::tuple<void* /*ptr*/,
-                                   uint32_t /*col*/,
-                                   uint32_t /*row*/,
-                                   StringId /*key*/>;
-  base::FlatHashMap<ArrayKeyTuple,
-                    size_t /*next_index*/,
-                    base::MurmurHash<ArrayKeyTuple>>
-      array_indexes_;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 };
 
 }  // namespace perfetto::trace_processor

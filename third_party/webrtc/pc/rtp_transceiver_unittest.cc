@@ -380,10 +380,6 @@ TEST_F(RtpTransceiverUnifiedPlanTest, StopSetsDirection) {
   scoped_refptr<RtpTransceiver> transceiver =
       CreateTransceiver(sender, receiver);
 
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   EXPECT_EQ(RtpTransceiverDirection::kInactive, transceiver->direction());
   EXPECT_FALSE(transceiver->current_direction());
   transceiver->StopStandard();
@@ -867,15 +863,7 @@ TEST_F(RtpTransceiverTestForHeaderExtensions,
 TEST_F(RtpTransceiverTestForHeaderExtensions,
        NoNegotiatedHdrExtsWithChannelWithoutNegotiation) {
   const std::string content_name("my_mid");
-<<<<<<< HEAD
-  transceiver_->set_mid(content_name);
-  auto mock_channel = std::make_unique<NiceMock<MockChannelInterface>>();
-  // Raw ptr for updating expectations later since `mock_channel` will be moved
-  // to `SetChannel`.
-=======
-  auto mock_channel = std::make_unique<NiceMock<MockChannelInterface>>();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  EXPECT_CALL(*mock_channel, media_type())
+auto mock_channel = std::make_unique<NiceMock<MockChannelInterface>>();  EXPECT_CALL(*mock_channel, media_type())
       .WillRepeatedly(Return(MediaType::AUDIO));
   EXPECT_CALL(*mock_channel, mid()).WillRepeatedly(ReturnRef(content_name));
   EXPECT_CALL(*mock_channel, SetRtpTransport(_)).WillRepeatedly(Return(true));
@@ -896,12 +884,7 @@ TEST_F(RtpTransceiverTestForHeaderExtensions,
 
 TEST_F(RtpTransceiverTestForHeaderExtensions, ReturnsNegotiatedHdrExts) {
   const std::string content_name("my_mid");
-<<<<<<< HEAD
-  transceiver_->set_mid(content_name);
-=======
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  auto mock_channel = std::make_unique<NiceMock<MockChannelInterface>>();
+transceiver_->set_mid(content_name);  auto mock_channel = std::make_unique<NiceMock<MockChannelInterface>>();
   EXPECT_CALL(*mock_channel, media_type())
       .WillRepeatedly(Return(MediaType::AUDIO));
   EXPECT_CALL(*mock_channel, voice_media_send_channel())
@@ -927,22 +910,13 @@ TEST_F(RtpTransceiverTestForHeaderExtensions, ReturnsNegotiatedHdrExts) {
                                 RtpTransceiverDirection::kStopped),
                           Field(&RtpHeaderExtensionCapability::direction,
                                 RtpTransceiverDirection::kStopped)));
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   ClearChannel();
 }
 
 TEST_F(RtpTransceiverTestForHeaderExtensions,
        ReturnsNegotiatedHdrExtsOnPrAnswer) {
   const std::string content_name("my_mid");
-<<<<<<< HEAD
-  transceiver_->set_mid(content_name);
-=======
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  auto mock_channel = std::make_unique<NiceMock<MockChannelInterface>>();
+transceiver_->set_mid(content_name);  auto mock_channel = std::make_unique<NiceMock<MockChannelInterface>>();
   EXPECT_CALL(*mock_channel, media_type())
       .WillRepeatedly(Return(MediaType::AUDIO));
   EXPECT_CALL(*mock_channel, voice_media_send_channel())
@@ -950,25 +924,13 @@ TEST_F(RtpTransceiverTestForHeaderExtensions,
   EXPECT_CALL(*mock_channel, mid()).WillRepeatedly(ReturnRef(content_name));
   EXPECT_CALL(*mock_channel, SetRtpTransport(_)).WillRepeatedly(Return(true));
 
-<<<<<<< HEAD
-  RtpHeaderExtensions extensions = {
+RtpHeaderExtensions extensions = {
       RtpExtension("uri1", RtpHeaderExtensionId(1)),
-      RtpExtension("uri2", RtpHeaderExtensionId(2))};
-=======
-  RtpHeaderExtensions extensions = {RtpExtension("uri1", 1),
-                                    RtpExtension("uri2", 2)};
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  AudioContentDescription description;
+      RtpExtension("uri2", RtpHeaderExtensionId(2))};  AudioContentDescription description;
   description.set_rtp_header_extensions(extensions);
   transceiver_->OnNegotiationUpdate(SdpType::kPrAnswer, &description);
 
-<<<<<<< HEAD
-  transceiver_->SetChannelForTest(std::move(mock_channel));
-=======
-  transceiver_->SetChannel(std::move(mock_channel),
-                           [](const std::string&) { return nullptr; });
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+transceiver_->SetChannelForTest(std::move(mock_channel));
   EXPECT_THAT(transceiver_->GetNegotiatedHeaderExtensions(),
               ElementsAre(Field(&RtpHeaderExtensionCapability::direction,
                                 RtpTransceiverDirection::kSendRecv),
@@ -978,44 +940,24 @@ TEST_F(RtpTransceiverTestForHeaderExtensions,
                                 RtpTransceiverDirection::kStopped),
                           Field(&RtpHeaderExtensionCapability::direction,
                                 RtpTransceiverDirection::kStopped)));
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   ClearChannel();
 }
 
 TEST_F(RtpTransceiverTestForHeaderExtensions,
        AnswerCanUseOtherHdrExtensionsThanPrAnswer) {
   const std::string content_name("my_mid");
-<<<<<<< HEAD
-  transceiver_->set_mid(content_name);
-  auto mock_channel = std::make_unique<NiceMock<MockChannelInterface>>();
-
-=======
-  auto mock_channel = std::make_unique<NiceMock<MockChannelInterface>>();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  EXPECT_CALL(*mock_channel, media_type())
+transceiver_->set_mid(content_name);
+  auto mock_channel = std::make_unique<NiceMock<MockChannelInterface>>();  EXPECT_CALL(*mock_channel, media_type())
       .WillRepeatedly(Return(MediaType::AUDIO));
   EXPECT_CALL(*mock_channel, voice_media_send_channel())
       .WillRepeatedly(Return(nullptr));
   EXPECT_CALL(*mock_channel, mid()).WillRepeatedly(ReturnRef(content_name));
   EXPECT_CALL(*mock_channel, SetRtpTransport(_)).WillRepeatedly(Return(true));
-<<<<<<< HEAD
-
-  transceiver_->SetChannelForTest(std::move(mock_channel));
+transceiver_->SetChannelForTest(std::move(mock_channel));
 
   AudioContentDescription description_pr_answer;
   description_pr_answer.set_rtp_header_extensions(
-      {RtpExtension("uri1", RtpHeaderExtensionId(1))});
-=======
-  transceiver_->SetChannel(std::move(mock_channel),
-                           [](const std::string&) { return nullptr; });
-
-  AudioContentDescription description_pr_answer;
-  description_pr_answer.set_rtp_header_extensions({RtpExtension("uri1", 1)});
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  transceiver_->OnNegotiationUpdate(SdpType::kPrAnswer, &description_pr_answer);
+      {RtpExtension("uri1", RtpHeaderExtensionId(1))});  transceiver_->OnNegotiationUpdate(SdpType::kPrAnswer, &description_pr_answer);
 
   EXPECT_THAT(transceiver_->GetNegotiatedHeaderExtensions(),
               ElementsAre(Field(&RtpHeaderExtensionCapability::direction,
@@ -1029,13 +971,8 @@ TEST_F(RtpTransceiverTestForHeaderExtensions,
 
   AudioContentDescription description_answer;
   description_answer.set_rtp_header_extensions(
-<<<<<<< HEAD
-      {RtpExtension("uri1", RtpHeaderExtensionId(1)),
-       RtpExtension("uri2", RtpHeaderExtensionId(2))});
-=======
-      {RtpExtension("uri1", 1), RtpExtension("uri2", 2)});
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  transceiver_->OnNegotiationUpdate(SdpType::kAnswer, &description_answer);
+{RtpExtension("uri1", RtpHeaderExtensionId(1)),
+       RtpExtension("uri2", RtpHeaderExtensionId(2))});  transceiver_->OnNegotiationUpdate(SdpType::kAnswer, &description_answer);
 
   EXPECT_THAT(transceiver_->GetNegotiatedHeaderExtensions(),
               ElementsAre(Field(&RtpHeaderExtensionCapability::direction,
@@ -1052,15 +989,9 @@ TEST_F(RtpTransceiverTestForHeaderExtensions,
 
 TEST_F(RtpTransceiverTestForHeaderExtensions,
        ReturnsNegotiatedHdrExtsSecondTime) {
-<<<<<<< HEAD
-  RtpHeaderExtensions extensions = {
+RtpHeaderExtensions extensions = {
       RtpExtension("uri1", RtpHeaderExtensionId(1)),
-      RtpExtension("uri2", RtpHeaderExtensionId(2))};
-=======
-  RtpHeaderExtensions extensions = {RtpExtension("uri1", 1),
-                                    RtpExtension("uri2", 2)};
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  AudioContentDescription description;
+      RtpExtension("uri2", RtpHeaderExtensionId(2))};  AudioContentDescription description;
   description.set_rtp_header_extensions(extensions);
   transceiver_->OnNegotiationUpdate(SdpType::kAnswer, &description);
 

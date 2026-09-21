@@ -6,11 +6,7 @@ License: BSD-3-Clause
 License File: LICENSE
 Shipped: yes
 Security Critical: yes
-<<<<<<< HEAD
-Update Mechanism: Manual
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-Mitigated: CVE-2022-2294
+Update Mechanism: ManualMitigated: CVE-2022-2294
 CVE-2022-2294: Fixed by https://crbug.com/40060120.
 
 Description:

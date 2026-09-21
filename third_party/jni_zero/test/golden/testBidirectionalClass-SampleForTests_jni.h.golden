@@ -734,16 +734,9 @@ static ::jni_zero::ScopedJavaLocalRef<jobject> Java_SampleForTests_Constructor(
 
 static ::jni_zero::ScopedJavaLocalRef<jobject> Java_SampleForTests_addStructA(
     JNIEnv* env,
-<<<<<<< HEAD
-    const ::jni_zero::JavaRef<jobject>& obj,
+const ::jni_zero::JavaRef<jobject>& obj,
     const ::jni_zero::JavaRef<jobject>& a,
-    const ::jni_zero::JavaRef<jobject>& b) {
-=======
-    const jni_zero::JavaRef<jobject>& obj,
-    const jni_zero::JavaRef<jobject>& a,
-    const jni_zero::JavaRef<jobject>& b) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  static std::atomic<jmethodID> cached_method_id(nullptr);
+    const ::jni_zero::JavaRef<jobject>& b) {  static std::atomic<jmethodID> cached_method_id(nullptr);
   jclass clazz = org_jni_1zero_SampleForTests_clazz(env);
   CHECK_CLAZZ(env, obj.obj(), clazz, nullptr);
   ::jni_zero::internal::JniJavaCallContext<true> call_context;
@@ -810,46 +803,8 @@ static std::string Java_SampleForTests_getFirstString(
 
 static ::jni_zero::ScopedJavaLocalRef<jthrowable> Java_SampleForTests_getThrowable(
     JNIEnv* env,
-<<<<<<< HEAD
-    const ::jni_zero::JavaRef<jobject>& obj,
-    const ::jni_zero::JavaRef<jthrowable>& arg0) {
-=======
-    JniIntWrapper a) {
-  static std::atomic<jmethodID> cached_method_id(nullptr);
-  jclass clazz = org_jni_1zero_SampleForTests_clazz(env);
-  CHECK_CLAZZ(env, clazz, clazz, nullptr);
-  jni_zero::internal::JniJavaCallContext<true> call_context;
-  call_context.Init<jni_zero::MethodID::TYPE_STATIC>(
-      env,
-      clazz,
-      "getInnerEnum",
-      "(I)Lorg/jni_zero/extrapackage/ImportsTinySample;",
-      &cached_method_id);
-  auto _ret = env->CallStaticObjectMethod(clazz, call_context.method_id(), as_jint(a));
-  return jni_zero::ScopedJavaLocalRef<jobject>::Adopt(env, _ret);
-}
-
-static jni_zero::ScopedJavaLocalRef<jobject> Java_SampleForTests_getInnerInterface(JNIEnv* env) {
-  static std::atomic<jmethodID> cached_method_id(nullptr);
-  jclass clazz = org_jni_1zero_SampleForTests_clazz(env);
-  CHECK_CLAZZ(env, clazz, clazz, nullptr);
-  jni_zero::internal::JniJavaCallContext<true> call_context;
-  call_context.Init<jni_zero::MethodID::TYPE_STATIC>(
-      env,
-      clazz,
-      "getInnerInterface",
-      "()Lorg/jni_zero/SampleForTests$InnerInterface;",
-      &cached_method_id);
-  auto _ret = env->CallStaticObjectMethod(clazz, call_context.method_id());
-  return jni_zero::ScopedJavaLocalRef<jobject>::Adopt(env, _ret);
-}
-
-static jni_zero::ScopedJavaLocalRef<jthrowable> Java_SampleForTests_getThrowable(
-    JNIEnv* env,
-    const jni_zero::JavaRef<jobject>& obj,
-    const jni_zero::JavaRef<jthrowable>& arg0) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  static std::atomic<jmethodID> cached_method_id(nullptr);
+const ::jni_zero::JavaRef<jobject>& obj,
+    const ::jni_zero::JavaRef<jthrowable>& arg0) {  static std::atomic<jmethodID> cached_method_id(nullptr);
   jclass clazz = org_jni_1zero_SampleForTests_clazz(env);
   CHECK_CLAZZ(env, obj.obj(), clazz, nullptr);
   ::jni_zero::internal::JniJavaCallContext<true> call_context;

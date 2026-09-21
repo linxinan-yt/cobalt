@@ -167,12 +167,7 @@ base::Status PerfTextTraceTokenizer::Parse(TraceBlobView blob) {
     evt.callsite_id = *parent_callsite;
 
     std::optional<int64_t> trace_ts = context_->clock_tracker->ToTraceTime(
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/perf_text/perf_text_trace_tokenizer.cc
-        ClockId::Machine(protos::pbzero::ClockSnapshot::Clock::MONOTONIC),
-        sample->ts);
-=======
         protos::pbzero::ClockSnapshot::Clock::MONOTONIC, sample->ts);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/perf_text/perf_text_trace_tokenizer.cc
     if (trace_ts) {
       stream_->Push(*trace_ts, evt);
     }

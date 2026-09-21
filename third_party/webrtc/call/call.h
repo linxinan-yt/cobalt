@@ -34,11 +34,7 @@
 #include "call/video_receive_stream.h"
 #include "call/video_send_stream.h"
 #include "modules/congestion_controller/rtp/congestion_controller_feedback_stats.h"
-<<<<<<< HEAD
-=======
-#include "rtc_base/checks.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "rtc_base/containers/flat_map.h"
+#include "rtc_base/checks.h"#include "rtc_base/containers/flat_map.h"
 #include "rtc_base/network/sent_packet.h"
 #include "video/config/video_encoder_config.h"
 

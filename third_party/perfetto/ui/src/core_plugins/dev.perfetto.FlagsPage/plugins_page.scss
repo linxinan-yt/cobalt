@@ -32,37 +32,6 @@
     gap: 6px;
     justify-content: space-between;
     border-left: solid 3px transparent;
-<<<<<<< HEAD
-=======
-    color: var(--pf-color-text-muted);
-
-    &--active {
-      border-left: solid 3px var(--pf-color-success);
-    }
-
-    &--enabled {
-      color: unset;
-    }
-
-    &--focused {
-      background-color: color-mix(
-        in srgb,
-        var(--pf-color-highlight) 70%,
-        transparent
-      );
-      animation: highlight-flash 1s ease-out;
-    }
-  }
-
-  &__details {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  &__description {
-    font-size: smaller;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   &__controls {
@@ -72,8 +41,7 @@
     align-items: center;
   }
 
-<<<<<<< HEAD
-  &__deps {
+&__deps {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -115,30 +83,5 @@
 
   &__warning {
     margin-bottom: 8px;
-    font-weight: 600;
-=======
-  &__link-button {
-    visibility: hidden;
-  }
-}
-
-.pf-card:hover .pf-plugins-page__link-button {
-  visibility: visible;
-}
-
-@keyframes highlight-flash {
-  0% {
-    background-color: transparent;
-  }
-  30% {
-    background-color: var(--pf-color-highlight);
-  }
-  100% {
-    background-color: color-mix(
-      in srgb,
-      var(--pf-color-highlight) 70%,
-      transparent
-    );
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    font-weight: 600;  }
 }

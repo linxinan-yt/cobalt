@@ -24,12 +24,8 @@ from compat import xrange
 
 EXCLUDED_FILES = [
     'src/trace_processor/perfetto_sql/preprocessor/preprocessor_grammar.h',
-<<<<<<< HEAD
-    'src/trace_processor/perfetto_sql/syntaqlite/syntaqlite_perfetto.h',
-=======
-    'src/trace_processor/perfetto_sql/grammar/perfettosql_grammar.h',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    'contrib/rust-sdk/perfetto-sys/wrapper.h',
+'src/trace_processor/perfetto_sql/grammar/perfettosql_grammar.h',
+    'src/trace_processor/perfetto_sql/syntaqlite/syntaqlite_perfetto.h',    'contrib/rust-sdk/perfetto-sys/wrapper.h',
 ]
 
 

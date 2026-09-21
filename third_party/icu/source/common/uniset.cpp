@@ -979,12 +979,7 @@ void UnicodeSet::_add(const UnicodeString& s) {
         setToBogus();
         return;
     }
-<<<<<<< HEAD
-    strings_->sortedInsert(t.orphan(), compareUnicodeString, ec);
-=======
-    strings_->sortedInsert(t, compareUnicodeString, ec);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    if (U_FAILURE(ec)) {
+strings_->sortedInsert(t.orphan(), compareUnicodeString, ec);    if (U_FAILURE(ec)) {
         setToBogus();
     }
 }

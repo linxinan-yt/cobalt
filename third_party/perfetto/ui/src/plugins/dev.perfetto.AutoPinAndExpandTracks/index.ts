@@ -18,14 +18,8 @@ import type {Trace} from '../../public/trace';
 import type {PerfettoPlugin} from '../../public/plugin';
 import type {Track} from '../../public/track';
 import {z} from 'zod';
-<<<<<<< HEAD
 import {ensureIsInstance} from '../../base/assert';
-import type {RouteArg, RouteArgs} from '../../public/route_schema';
-=======
-import {assertIsInstance} from '../../base/logging';
-import {RouteArg} from '../../public/route_schema';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {arrayEquals} from '../../base/array_utils';
+import type {RouteArg, RouteArgs} from '../../public/route_schema';import {arrayEquals} from '../../base/array_utils';
 
 const PLUGIN_ID = 'dev.perfetto.AutoPinAndExpandTracks';
 const SAVED_TRACKS_KEY = `${PLUGIN_ID}#savedPerfettoTracks`;
@@ -374,12 +368,7 @@ export default class AutoPinAndExpandTracks implements PerfettoPlugin {
       trackName: trackNode.name,
       pluginId: track?.pluginId,
       kinds: track?.tags?.kinds,
-<<<<<<< HEAD
-      isMainThread: trackNode.chips?.includes('main thread') || false,
-=======
-      isMainThread: track?.chips?.includes('main thread') || false,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    };
+isMainThread: track?.chips?.includes('main thread') || false,    };
   }
 }
 

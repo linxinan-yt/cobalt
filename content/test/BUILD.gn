@@ -10,12 +10,8 @@ import("//build/config/ui.gni")
 import("//build/nocompile.gni")
 import("//components/guest_view/buildflags/buildflags.gni")
 import("//components/viz/common/debugger/viz_debugger.gni")
-<<<<<<< HEAD
 import("//components/vrp_flags/features.gni")
-=======
-import("//content/browser/devtools/features.gni")
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import("//content/common/features.gni")
+import("//content/browser/devtools/features.gni")import("//content/common/features.gni")
 import("//content/public/common/features.gni")
 import("//device/vr/buildflags/buildflags.gni")
 import("//extensions/buildflags/buildflags.gni")
@@ -2101,20 +2097,15 @@ test("content_browsertests") {
     deps += [ "//components/variations" ]
   }
 
-<<<<<<< HEAD
+if (is_cobalt) {
+    deps -= [ "//device/bluetooth:mocks" ]
+  }
+
   data_deps = [
     "//content/shell:pak",
     "//mojo/public/js:bindings_lite",
     "//url/mojom:url_mojom_scheme_host_port_js_data_deps",
   ]
-=======
-  if (is_cobalt) {
-    deps -= [ "//device/bluetooth:mocks" ]
-  }
-
-  data_deps = [ "//content/shell:pak" ]
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   data = [
     "data/",
     "//media/test/data/",
@@ -3316,13 +3307,14 @@ test("content_unittests") {
     ]
   }
 
-<<<<<<< HEAD
-  if (!is_ios) {
+if (!is_ios) {
     sources += [
       # Most ContentSettingsTypes are not registered on iOS so these
       # tests cannot run.
       "../browser/permissions/permission_service_impl_unittest.cc",
-=======
+    ]
+  }
+
   if (!enable_devtools_backend) {
     sources -= [
       "../browser/devtools/devtools_background_services_context_impl_unittest.cc",
@@ -3332,9 +3324,7 @@ test("content_unittests") {
       "../browser/devtools/protocol/tracing_handler_unittest.cc",
       "../browser/devtools/protocol_unittest.cc",
       "../browser/devtools/request_body_collector_unittest.cc",
-      "../browser/devtools/shared_storage_worklet_devtools_agent_host_unittest.cc",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    ]
+      "../browser/devtools/shared_storage_worklet_devtools_agent_host_unittest.cc",    ]
   }
 
   configs += [ "//build/config:precompiled_headers" ]
@@ -3522,18 +3512,16 @@ test("content_unittests") {
     ]
   }
 
-<<<<<<< HEAD
-  if (enable_smart_card) {
+if (enable_smart_card) {
     sources +=
         [ "../browser/smart_card/emulation/smart_card_emulation_unittest.cc" ]
     deps += [ "//content/browser/smart_card/emulation" ]
-=======
+  }
+
   if (!enable_devtools_backend) {
     deps -= [
       "//content/browser/devtools:devtools_background_services_proto",
-    ]
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    ]  }
 
   if (enable_nocompile_tests) {
     deps += [ ":content_nocompile_tests" ]
@@ -3559,16 +3547,11 @@ test("content_unittests") {
     ]
   }
 
-<<<<<<< HEAD
-=======
-  # Platforms where sqlite_dev_shell is defined.
+# Platforms where sqlite_dev_shell is defined.
   if ((is_win || is_mac || is_linux || is_chromeos) && enable_privacy_sandbox_apis) {
     sources += [ "../browser/attribution_reporting/attribution_storage_sql_query_plans_unittest.cc" ]
     deps += [ "../browser/attribution_reporting:sqlite_test_utils" ]
-  }
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  if (is_mac) {
+  }  if (is_mac) {
     data_deps += [ "//device/fido/strings:fido_test_strings" ]
   }
 

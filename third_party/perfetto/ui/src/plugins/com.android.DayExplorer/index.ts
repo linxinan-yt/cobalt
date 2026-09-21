@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-<<<<<<< HEAD
 import m from 'mithril';
 import {uuidv4} from '../../base/uuid';
 import type {Trace} from '../../public/trace';
@@ -51,33 +50,7 @@ export default class DayExplorerPlugin implements PerfettoPlugin {
   private migrateDayExplorerPluginState(init: unknown): DayExplorerPluginState {
     const result = DAY_EXPLORER_PLUGIN_STATE_SCHEMA.safeParse(init);
     return result.data ?? {};
-  }
-
-=======
-import {uuidv4} from '../../base/uuid';
-import {Trace} from '../../public/trace';
-import StandardGroupsPlugin from '../dev.perfetto.StandardGroups';
-import {PerfettoPlugin} from '../../public/plugin';
-import {createQueryCounterTrack} from '../../components/tracks/query_counter_track';
-import {TrackNode} from '../../public/workspace';
-import {STR, LONG, LONG_NULL} from '../../trace_processor/query_result';
-import {SourceDataset} from '../../trace_processor/dataset';
-import {AreaSelection, areaSelectionsEqual} from '../../public/selection';
-import {Flamegraph} from '../../widgets/flamegraph';
-import {
-  metricsFromTableOrSubquery,
-  QueryFlamegraph,
-} from '../../components/query_flamegraph';
-import SupportPlugin from '../com.android.AndroidLongBatterySupport';
-
-const DAY_EXPLORER_TRACK_KIND = 'day_explorer_counter_track';
-
-export default class implements PerfettoPlugin {
-  static readonly id = 'com.android.DayExplorer';
-  static readonly dependencies = [StandardGroupsPlugin, SupportPlugin];
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  private support(ctx: Trace) {
+  }  private support(ctx: Trace) {
     return ctx.plugins.getPlugin(SupportPlugin);
   }
 
@@ -143,14 +116,7 @@ export default class implements PerfettoPlugin {
     query: string,
   ): Promise<TrackNode> {
     const uri = `/day_explorer_${uuidv4()}`;
-<<<<<<< HEAD
-    const renderer = await CounterTrack.createMaterialized({
-      trace: ctx,
-      uri,
-      sqlSource: query,
-      yRangeSharingKey: groupKey,
-=======
-    const renderer = await createQueryCounterTrack({
+const renderer = await createQueryCounterTrack({
       trace: ctx,
       uri,
       data: {
@@ -162,9 +128,7 @@ export default class implements PerfettoPlugin {
       },
       options: {
         yRangeSharingKey: groupKey,
-      },
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    });
+      },    });
 
     ctx.tracks.registerTrack({
       uri,
@@ -182,12 +146,7 @@ export default class implements PerfettoPlugin {
 
   private createDayExplorerFlameGraphPanel(trace: Trace) {
     let previousSelection: AreaSelection | undefined;
-<<<<<<< HEAD
-    let flamegraphMetrics: ReadonlyArray<QueryFlamegraphMetric> | undefined;
-=======
-    let flamegraph: QueryFlamegraph | undefined;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    return {
+let flamegraph: QueryFlamegraph | undefined;    return {
       id: 'day_explorer_flamegraph_selection',
       name: 'Day Explorer Flamegraph',
       render: (selection: AreaSelection) => {
@@ -196,8 +155,7 @@ export default class implements PerfettoPlugin {
           !areaSelectionsEqual(previousSelection, selection);
         previousSelection = selection;
         if (selectionChanged) {
-<<<<<<< HEAD
-          flamegraphMetrics = this.computeDayExplorerFlameGraph(selection);
+flamegraphMetrics = this.computeDayExplorerFlameGraph(selection);
         }
         if (flamegraphMetrics === undefined) {
           return undefined;
@@ -215,29 +173,13 @@ export default class implements PerfettoPlugin {
               });
             },
           }),
-        };
-=======
-          flamegraph = this.computeDayExplorerFlameGraph(trace, selection);
-        }
-
-        if (flamegraph === undefined) {
-          return undefined;
-        }
-
-        return {isLoading: false, content: flamegraph.render()};
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      },
+        };      },
     };
   }
 
-<<<<<<< HEAD
-  private computeDayExplorerFlameGraph(
+private computeDayExplorerFlameGraph(
     currentSelection: AreaSelection,
-  ): ReadonlyArray<QueryFlamegraphMetric> | undefined {
-=======
-  computeDayExplorerFlameGraph(trace: Trace, currentSelection: AreaSelection) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    // The flame graph will be shown when any day explorer track is in the area
+  ): ReadonlyArray<QueryFlamegraphMetric> | undefined {    // The flame graph will be shown when any day explorer track is in the area
     // selection. The selection is used to filter by time, but not by track. All
     // day explorer tracks are considered for the graph.
     let hasDayExplorer = false;
@@ -250,14 +192,8 @@ export default class implements PerfettoPlugin {
     if (!hasDayExplorer) {
       return undefined;
     }
-<<<<<<< HEAD
-    const metrics = metricsFromTableOrSubquery({
-      tableOrSubquery: `
-=======
-    const metrics = metricsFromTableOrSubquery(
-      `
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        (
+const metrics = metricsFromTableOrSubquery({
+      tableOrSubquery: `        (
           WITH
             total_energy AS (
               SELECT track_id, parent_id, display_name, SUM(energy_uws) AS energy_uws
@@ -284,26 +220,7 @@ export default class implements PerfettoPlugin {
           FROM with_child
         )
       `,
-<<<<<<< HEAD
-      tableMetrics: [
-        {
-          name: 'Energy',
-          unit: 'mWs',
-          columnName: 'self_count',
-        },
-      ],
-      nameColumnLabel: 'Component',
-    });
-    const store = ensureExists(this.store);
-    store.edit((draft) => {
-      draft.areaSelectionFlamegraphState = Flamegraph.updateState(
-        draft.areaSelectionFlamegraphState,
-        metrics,
-      );
-    });
-    return metrics;
-=======
-      [
+[
         {
           name: 'Energy mWs',
           unit: '',
@@ -313,9 +230,7 @@ export default class implements PerfettoPlugin {
     );
     return new QueryFlamegraph(trace, metrics, {
       state: Flamegraph.createDefaultState(metrics),
-    });
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    });  }
 
   async addDayExplorerUsage(
     ctx: Trace,
@@ -382,13 +297,6 @@ export default class implements PerfettoPlugin {
   }
 
   async onTraceLoad(ctx: Trace): Promise<void> {
-<<<<<<< HEAD
-    this.store = ctx.mountStore(DayExplorerPlugin.id, (init) =>
-      this.migrateDayExplorerPluginState(init),
-    );
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     const support = this.support(ctx);
     const features = await support.features(ctx.engine);
 

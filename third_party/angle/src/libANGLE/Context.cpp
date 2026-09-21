@@ -4179,17 +4179,14 @@ Extensions Context::generateSupportedExtensions() const
         }
     }
 
-<<<<<<< HEAD
 // Disable the explicit context extension if the entry points are not compiled.
 #if !defined(ANGLE_ENABLE_EXPLICIT_CONTEXT)
     supportedExtensions.explicitContextANGLE = false;
 #endif
-=======
+
 #if defined(ENABLE_BUILDFLAG_IS_COBALT) && defined(__ANDROID__)
     supportedExtensions.EGLImageExternalOES = true;
 #endif  // defined(ENABLE_BUILDFLAG_IS_COBALT) && defined(__ANDROID__)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     return supportedExtensions;
 }
 

@@ -31,33 +31,18 @@ import {
 } from '../trace_processor/query_result';
 import {
   Flamegraph,
-<<<<<<< HEAD
-  type FlamegraphAddableMetric,
+type FlamegraphAddableMetric,
   type FlamegraphPropertyDefinition,
   type FlamegraphQueryData,
   type FlamegraphState,
   type FlamegraphView,
   type FlamegraphOptionalAction,
-  type FlamegraphOptionalMarker,
-=======
-  FlamegraphPropertyDefinition,
-  FlamegraphQueryData,
-  FlamegraphState,
-  FlamegraphView,
-  FlamegraphOptionalAction,
-  FlamegraphOptionalMarker,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-} from '../widgets/flamegraph';
+  type FlamegraphOptionalMarker,} from '../widgets/flamegraph';
 import type {Trace} from '../public/trace';
 import {sqliteString} from '../base/string_utils';
-<<<<<<< HEAD
 import {parseUserFilterRegex} from '../widgets/flamegraph_regex';
 import {SharedAsyncDisposable} from '../base/shared_disposable';
 import {Monitor} from '../base/monitor';
-=======
-import {SharedAsyncDisposable} from '../base/shared_disposable';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 export interface QueryFlamegraphColumn {
   // The name of the column in SQL.
   readonly name: string;
@@ -212,35 +197,17 @@ export class QueryFlamegraph implements AsyncDisposable {
   private readonly dependencies: ReadonlyArray<
     SharedAsyncDisposable<AsyncDisposable>
   >;
-<<<<<<< HEAD
-  private lastAttrs?: QueryFlamegraphAttrs;
+private lastAttrs?: QueryFlamegraphAttrs;
   private monitor = new Monitor([
     () => this.lastAttrs?.metrics,
     () => this.lastAttrs?.state,
   ]);
 
   constructor(
-    private readonly trace: Trace,
-=======
-
-  constructor(
-    private readonly trace: Trace,
-    private readonly metrics: ReadonlyArray<QueryFlamegraphMetric>,
-    private state: QueryFlamegraphState,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    dependencies: ReadonlyArray<AsyncDisposable> = [],
+    private readonly trace: Trace,    dependencies: ReadonlyArray<AsyncDisposable> = [],
   ) {
     this.dependencies = dependencies.map((d) => SharedAsyncDisposable.wrap(d));
   }
-<<<<<<< HEAD
-=======
-
-  async [Symbol.asyncDispose](): Promise<void> {
-    for (const dependency of this.dependencies ?? []) {
-      await dependency[Symbol.asyncDispose]?.();
-    }
-  }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   async [Symbol.asyncDispose](): Promise<void> {
     for (const dependency of this.dependencies ?? []) {
@@ -253,26 +220,9 @@ export class QueryFlamegraph implements AsyncDisposable {
     this.lastAttrs = attrs;
     if (this.monitor.ifStateChanged()) {
       this.data = undefined;
-<<<<<<< HEAD
-      if (metrics && state) {
+if (metrics && state) {
         this.fetchData(metrics, state);
-      }
-=======
-      this.queryLimiter.schedule(async () => {
-        this.data = undefined;
-        // Clone all the dependencies to make sure the the are not dropped while
-        // this function is running, adding them to the trash to make sure they
-        // are disposed after this function returns, but note this won't
-        // actually drop the tables unless this class instances have also been
-        // disposed due to the SharedAsyncDisposable logic.
-        await using trash = new AsyncDisposableStack();
-        for (const dependency of this.dependencies ?? []) {
-          trash.use(dependency.clone());
-        }
-        this.data = await computeFlamegraphTree(engine, metric, state.state);
-      });
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+      }    }
     return m(Flamegraph, {
       metrics: metrics ?? [],
       data: this.data,
@@ -590,8 +540,7 @@ async function computeFlamegraphTree(
           displayName: a.displayName,
           value,
           isVisible: a.isVisible ? a.isVisible(value) : true,
-<<<<<<< HEAD
-          isAggregatable: false,
+isAggregatable: false,
         });
       }
     }
@@ -608,12 +557,6 @@ async function computeFlamegraphTree(
         });
       }
     }
-=======
-        });
-      }
-    }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     // Evaluate marker
     let marker: string | undefined;
     if (

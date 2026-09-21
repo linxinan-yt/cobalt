@@ -30,11 +30,7 @@ source_set("common") {
     "../../base",
     "../../protozero",
     "../../trace_processor:lib",
-<<<<<<< HEAD
-    "../../trace_processor/util:decompressor",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    "../../trace_processor/util:descriptors",
+"../../trace_processor/util:decompressor",    "../../trace_processor/util:descriptors",
     "../../trace_processor/util:proto_profiler",
     "../../trace_processor/util:trace_type",
   ]

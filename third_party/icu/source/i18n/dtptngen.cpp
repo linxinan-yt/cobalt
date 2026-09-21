@@ -853,12 +853,7 @@ DateTimePatternGenerator::addICUPatterns(const Locale& locale, UErrorCode& statu
         
         if (U_SUCCESS(status)) {
             UnicodeString conflictingPattern;
-<<<<<<< HEAD
-            addPatternWithOptionalSkeleton(pattern, nullptr, false, conflictingPattern, status);
-=======
-            addPatternWithSkeleton(pattern, nullptr, false, conflictingPattern, status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+addPatternWithOptionalSkeleton(pattern, nullptr, false, conflictingPattern, status);        }
     }
 }
 

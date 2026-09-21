@@ -16,15 +16,10 @@
 
 #include "src/trace_processor/importers/proto/deobfuscation_tracker.h"
 
-<<<<<<< HEAD
 #include <cstddef>
 #include <cstdint>
 #include <optional>
-#include <set>
-=======
-#include <optional>
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include <string>
+#include <set>#include <string>
 #include <unordered_set>
 #include <vector>
 
@@ -35,11 +30,7 @@
 #include "perfetto/protozero/field.h"
 #include "perfetto/trace_processor/trace_blob.h"
 #include "protos/perfetto/trace/profiling/deobfuscation.pbzero.h"
-<<<<<<< HEAD
-#include "src/trace_processor/core/dataframe/specs.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "src/trace_processor/importers/common/stack_profile_tracker.h"
+#include "src/trace_processor/core/dataframe/specs.h"#include "src/trace_processor/importers/common/stack_profile_tracker.h"
 #include "src/trace_processor/importers/proto/heap_graph_tracker.h"
 #include "src/trace_processor/storage/trace_storage.h"
 #include "src/trace_processor/tables/metadata_tables_py.h"
@@ -57,7 +48,6 @@ using ::protozero::ConstBytes;
 using JavaFrameMap = base::
     FlatHashMap<NameInPackage, base::FlatSet<FrameId>, NameInPackage::Hasher>;
 
-<<<<<<< HEAD
 // Returns true if `line` falls within the optional range [start, end].
 // Missing bounds are treated as unbounded (always match).
 bool LineInRange(uint32_t line,
@@ -70,11 +60,7 @@ bool LineInRange(uint32_t line,
     return false;
   }
   return true;
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-std::vector<FrameId> JavaFramesForName(const JavaFrameMap& java_frames_for_name,
+}std::vector<FrameId> JavaFramesForName(const JavaFrameMap& java_frames_for_name,
                                        NameInPackage name) {
   if (const auto* frames = java_frames_for_name.Find(name); frames) {
     return {frames->begin(), frames->end()};
@@ -109,22 +95,12 @@ void DeobfuscationTracker::BuildJavaFrameMaps(
 
     // Extract package from mapping
     const MappingId mapping_id = frame_it.mapping();
-<<<<<<< HEAD
-    const auto mapping = mapping_table[mapping_id];
+const auto mapping = mapping_table[mapping_id];
     const base::StringView mapping_name =
         context_->storage->GetString(mapping.name());
 
     std::optional<std::string> package =
         PackageFromLocation(context_->global_stats_tracker.get(), mapping_name);
-=======
-    const auto mapping = mapping_table.FindById(mapping_id);
-    const base::StringView mapping_name =
-        context_->storage->GetString(mapping->name());
-
-    std::optional<std::string> package =
-        PackageFromLocation(context_->storage.get(), mapping_name);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     if (package) {
       // Found package from mapping path
       StringId package_id =
@@ -147,12 +123,7 @@ void DeobfuscationTracker::AddDeobfuscationMapping(ConstBytes blob) {
   packets_.emplace_back(TraceBlob::CopyFrom(blob.data, blob.size));
 }
 
-<<<<<<< HEAD
-void DeobfuscationTracker::OnEventsFullyExtracted() {
-=======
-void DeobfuscationTracker::NotifyEndOfFile() {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  // Maps (name, package) -> set of FrameIds for deobfuscation
+void DeobfuscationTracker::OnEventsFullyExtracted() {  // Maps (name, package) -> set of FrameIds for deobfuscation
   JavaFrameMap java_frames_for_name;
 
   // Frames needing package guessing (temporary during EOF processing)
@@ -186,8 +157,7 @@ void DeobfuscationTracker::DeobfuscateProfiles(
   if (!opt_package_name_id && !opt_memfd_id)
     return;
 
-<<<<<<< HEAD
-  // Collect all method mappings with line info for inline support.
+// Collect all method mappings with line info for inline support.
   // Key: merged_obfuscated_id (e.g., "a.b") -> vector of mappings
   struct MethodMappingInfo {
     StringId deobfuscated_name;
@@ -199,21 +169,13 @@ void DeobfuscationTracker::DeobfuscateProfiles(
 
   for (auto class_it = deobfuscation_mapping.obfuscated_classes(); class_it;
        ++class_it) {
-    ObfuscatedClass::Decoder cls(*class_it);
-=======
-  for (auto class_it = deobfuscation_mapping.obfuscated_classes(); class_it;
-       ++class_it) {
-    ObfuscatedClass::Decoder cls(*class_it);
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    for (auto member_it = cls.obfuscated_methods(); member_it; ++member_it) {
+    ObfuscatedClass::Decoder cls(*class_it);    for (auto member_it = cls.obfuscated_methods(); member_it; ++member_it) {
       ObfuscatedMember::Decoder member(*member_it);
 
       std::string merged_obfuscated = cls.obfuscated_name().ToStdString() +
                                       "." +
                                       member.obfuscated_name().ToStdString();
-<<<<<<< HEAD
-      StringId merged_obfuscated_id =
+StringId merged_obfuscated_id =
           context_->storage->InternString(base::StringView(merged_obfuscated));
 
       std::string merged_deobfuscated =
@@ -344,38 +306,7 @@ void DeobfuscationTracker::DeobfuscateProfiles(
           }
           rr.set_deobfuscated_name(
               context_->storage->InternString(base::StringView(ambiguous_str)));
-        }
-=======
-      auto merged_obfuscated_id = context_->storage->string_pool().GetId(
-          base::StringView(merged_obfuscated));
-      if (!merged_obfuscated_id)
-        continue;
-
-      std::string merged_deobfuscated =
-          FullyQualifiedDeobfuscatedName(cls, member);
-
-      std::vector<tables::StackProfileFrameTable::Id> frames;
-      if (opt_package_name_id) {
-        const std::vector<tables::StackProfileFrameTable::Id> pkg_frames =
-            JavaFramesForName(java_frames_for_name,
-                              {*merged_obfuscated_id, *opt_package_name_id});
-        frames.insert(frames.end(), pkg_frames.begin(), pkg_frames.end());
-      }
-      if (opt_memfd_id) {
-        const std::vector<tables::StackProfileFrameTable::Id> memfd_frames =
-            JavaFramesForName(java_frames_for_name,
-                              {*merged_obfuscated_id, *opt_memfd_id});
-        frames.insert(frames.end(), memfd_frames.begin(), memfd_frames.end());
-      }
-
-      for (tables::StackProfileFrameTable::Id frame_id : frames) {
-        auto* frames_tbl =
-            context_->storage->mutable_stack_profile_frame_table();
-        auto rr = *frames_tbl->FindById(frame_id);
-        rr.set_deobfuscated_name(context_->storage->InternString(
-            base::StringView(merged_deobfuscated)));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      }
+        }      }
     }
   }
 }
@@ -483,31 +414,19 @@ void DeobfuscationTracker::GuessPackageForCallsite(
     std::unordered_set<FrameId>& frames_needing_package_guess) {
   const auto& process_table = context_->storage->process_table();
 
-<<<<<<< HEAD
-  auto process = process_table[upid];
-
-  if (!process.android_appid().has_value()) {
-=======
-  auto process = process_table.FindById(upid);
+auto process = process_table.FindById(upid);
   if (!process.has_value()) {
     return;
   }
 
-  if (!process->android_appid().has_value()) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    return;
+  if (!process->android_appid().has_value()) {    return;
   }
 
   // Find package from package_list_table
   std::optional<StringId> package;
   for (auto it = context_->storage->package_list_table().IterateRows(); it;
        ++it) {
-<<<<<<< HEAD
-    if (it.uid() == *process.android_appid()) {
-=======
-    if (it.uid() == *process->android_appid()) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      package = it.package_name();
+if (it.uid() == *process->android_appid()) {      package = it.package_name();
       break;
     }
   }
@@ -519,44 +438,25 @@ void DeobfuscationTracker::GuessPackageForCallsite(
   // Walk callsite chain and assign package to frames that need it
   const auto& callsite_table =
       context_->storage->stack_profile_callsite_table();
-<<<<<<< HEAD
-  std::optional<tables::StackProfileCallsiteTable::Id> current_id = callsite_id;
-  while (current_id.has_value()) {
-    auto callsite = callsite_table[*current_id];
-    const FrameId frame_id = callsite.frame_id();
-=======
-  auto callsite = callsite_table.FindById(callsite_id);
+auto callsite = callsite_table.FindById(callsite_id);
   while (callsite.has_value()) {
     const FrameId frame_id = callsite->frame_id();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     // Check if this frame needs package guessing
     if (frames_needing_package_guess.count(frame_id) != 0) {
       // Add frame to map with guessed package
-<<<<<<< HEAD
-      auto frame = context_->storage->stack_profile_frame_table()[frame_id];
-      NameInPackage nip{frame.name(), *package};
-=======
-      auto frame =
+auto frame =
           context_->storage->stack_profile_frame_table().FindById(frame_id);
-      NameInPackage nip{frame->name(), *package};
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      java_frames_for_name[nip].insert(frame_id);
+      NameInPackage nip{frame->name(), *package};      java_frames_for_name[nip].insert(frame_id);
 
       // Remove from set (package now known)
       frames_needing_package_guess.erase(frame_id);
     }
 
-<<<<<<< HEAD
-    current_id = callsite.parent_id();
-=======
-    auto parent_id = callsite->parent_id();
+auto parent_id = callsite->parent_id();
     callsite.reset();
     if (parent_id.has_value()) {
       callsite = callsite_table.FindById(*parent_id);
-    }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    }  }
 }
 
 void DeobfuscationTracker::GuessPackages(
@@ -573,8 +473,7 @@ void DeobfuscationTracker::GuessPackages(
                             frames_needing_package_guess);
   }
 
-<<<<<<< HEAD
-  const auto& profiler_sample_table =
+const auto& profiler_sample_table =
       context_->storage->profiler_sample_table();
   const auto& task_context_table =
       context_->storage->profiler_task_context_table();
@@ -604,21 +503,6 @@ void DeobfuscationTracker::GuessPackages(
     }
     GuessPackageForCallsite(java_frames_for_name, upid, *callsite_id,
                             frames_needing_package_guess);
-  }
-=======
-  const auto& perf_sample_table = context_->storage->perf_sample_table();
-  for (auto sample = perf_sample_table.IterateRows(); sample; ++sample) {
-    auto thread = context_->storage->thread_table().FindById(
-        tables::ThreadTable::Id(sample.utid()));
-    if (!thread || !thread->upid().has_value() ||
-        !sample.callsite_id().has_value()) {
-      continue;
-    }
-    GuessPackageForCallsite(
-        java_frames_for_name, tables::ProcessTable::Id(*thread->upid()),
-        *sample.callsite_id(), frames_needing_package_guess);
-  }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  }}
 
 }  // namespace perfetto::trace_processor

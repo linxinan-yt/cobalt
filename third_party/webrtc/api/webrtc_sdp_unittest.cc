@@ -2804,7 +2804,6 @@ TEST_F(WebRtcSdpTest, DeserializeSdpWithSctpDataChannelsWithSctpColonPort) {
       MatchesCurrentDescriptionNoCandidates(SdpDeserialize(sdp_with_data)));
 }
 
-<<<<<<< HEAD
 TEST_F(WebRtcSdpTest, DeserializeSdpWithNegativeSctpPort) {
   std::string sdp = kSdpString;
   sdp.append(kSdpSctpDataChannelStringWithSctpColonPort);
@@ -2839,11 +2838,7 @@ TEST_F(WebRtcSdpTest, DeserializeSdpWithStringSctpPort) {
       SdpDeserialize(sdp, &error);
   ASSERT_THAT(output, IsNull());
   EXPECT_EQ(error.line, "a=sctp-port:webrtc");
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-TEST_F(WebRtcSdpTest, DeserializeSdpWithSctpDataChannelsWithSctpInit) {
+}TEST_F(WebRtcSdpTest, DeserializeSdpWithSctpDataChannelsWithSctpInit) {
   bool use_sctpmap = false;
   AddSctpDataChannel(use_sctpmap);
 

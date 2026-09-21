@@ -14,12 +14,7 @@
 
 import m from 'mithril';
 import {LONG, NUM, STR, STR_NULL} from '../../trace_processor/query_result';
-<<<<<<< HEAD
-import type {Trace} from '../../public/trace';
-=======
-import {Trace} from '../../public/trace';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {SliceTrack} from '../../components/tracks/slice_track';
+import type {Trace} from '../../public/trace';import {SliceTrack} from '../../components/tracks/slice_track';
 import {SourceDataset} from '../../trace_processor/dataset';
 import {makeColorScheme} from '../../components/colorizer';
 import {HSLColor} from '../../base/color';
@@ -159,45 +154,7 @@ export function createAndroidLogTrack(trace: Trace, uri: string) {
   return SliceTrack.create({
     trace,
     uri,
-<<<<<<< HEAD
-    dataset: new SourceDataset({src: LOGS_SQL, schema: LOGS_SCHEMA}),
-=======
-    rootTableName: 'android_logs',
-    dataset: new SourceDataset({
-      src: `
-        select
-          id,
-          ts,
-          prio,
-          utid,
-          tag,
-          msg,
-          CASE
-            WHEN prio <= 3 THEN 0
-            WHEN prio = 4 THEN 1
-            WHEN prio = 5 THEN 2
-            WHEN prio = 6 THEN 3
-            WHEN prio = 7 THEN 4
-            ELSE -1
-          END as depth
-        from android_logs
-        order by ts
-        -- android_logs aren't guaranteed to be ordered by ts, but this is a
-        -- requirements for SliceTrack's mipmap operator to work 
-        -- correctly, so we must explicitly sort them above.
-      `,
-      schema: {
-        id: NUM,
-        ts: LONG,
-        prio: NUM,
-        utid: NUM,
-        depth: NUM,
-        tag: STR_NULL,
-        msg: STR_NULL,
-      },
-    }),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    initialMaxDepth: 4,
+dataset: new SourceDataset({src: LOGS_SQL, schema: LOGS_SCHEMA}),    initialMaxDepth: 4,
     colorizer: (row) => PRIO_TO_COLOR[row.prio] ?? DEFAULT_PRIO_COLOR,
     tooltip: (slice) => [m('', m('b', slice.row.tag)), m('', slice.row.msg)],
     // All log events are instant events, render them as a little box rather

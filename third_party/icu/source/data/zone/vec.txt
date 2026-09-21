@@ -613,13 +613,9 @@ vec{
         "Pacific:Guadalcanal"{
             ec{"Ìzola Guadalcanal"}
         }
-<<<<<<< HEAD
-=======
-        "Pacific:Kanton"{
+"Pacific:Kanton"{
             ec{"Atolo Canton"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Pacific:Kiritimati"{
+        }        "Pacific:Kiritimati"{
             ec{"Atolo Kiritimati"}
         }
         "Pacific:Kosrae"{

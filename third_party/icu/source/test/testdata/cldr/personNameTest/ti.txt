@@ -119,10 +119,6 @@ name ; locale; ti_AQ
 
 expectedResult; ኣድለር፣ ኣይሪን
 
-<<<<<<< HEAD
-parameters; sorting; long; referring; formal
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 parameters; sorting; long; referring; informal
 parameters; sorting; medium; referring; formal
 parameters; sorting; medium; referring; informal
@@ -489,10 +485,6 @@ name ; locale; ja_AQ
 
 expectedResult; ሙለር፣ ካቲ
 
-<<<<<<< HEAD
-parameters; sorting; long; referring; formal
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 parameters; sorting; long; referring; informal
 parameters; sorting; medium; referring; formal
 parameters; sorting; medium; referring; informal
@@ -607,20 +599,9 @@ expectedResult; ዛዚሊያ ሃ. ስቶበር
 parameters; givenFirst; medium; referring; formal
 
 expectedResult; ስቶበር ዛ. ሃ.
-<<<<<<< HEAD
-
 parameters; surnameFirst; short; referring; formal
 
-expectedResult; ስቶበር፣ ዛዚሊያ
-
-=======
-
-parameters; surnameFirst; short; referring; formal
-
-expectedResult; ስቶበር, ዛዚሊያ
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-parameters; sorting; long; referring; informal
+expectedResult; ስቶበር፣ ዛዚሊያparameters; sorting; long; referring; informal
 parameters; sorting; medium; referring; informal
 
 expectedResult; ዛ. ሃ. ስቶበር

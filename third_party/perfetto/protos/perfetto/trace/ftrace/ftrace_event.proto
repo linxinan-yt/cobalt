@@ -747,8 +747,7 @@ message FtraceEvent {
     DrmSchedJobQueueFtraceEvent drm_sched_job_queue = 593;
     DrmSchedJobRunFtraceEvent drm_sched_job_run = 594;
     DrmSchedJobUnschedulableFtraceEvent drm_sched_job_unschedulable = 595;
-<<<<<<< HEAD
-    FwtpPerfettoCounterFtraceEvent fwtp_perfetto_counter = 596;
+FwtpPerfettoCounterFtraceEvent fwtp_perfetto_counter = 596;
     ScsiDispatchCmdErrorFtraceEvent scsi_dispatch_cmd_error = 597;
     ScsiDispatchCmdTimeoutFtraceEvent scsi_dispatch_cmd_timeout = 598;
     ScsiEhWakeupFtraceEvent scsi_eh_wakeup = 599;
@@ -767,8 +766,5 @@ message FtraceEvent {
     PanelSettingsLiteFtraceEvent panel_settings_lite = 612;
     DpuDispDpuLineUnderrunFtraceEvent dpu_disp_dpu_line_underrun = 613;
     PsciDomainIdleExitFtraceEvent psci_domain_idle_exit = 614;
-    PsciDomainIdleEnterFtraceEvent psci_domain_idle_enter = 615;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    PsciDomainIdleEnterFtraceEvent psci_domain_idle_enter = 615;  }
 }

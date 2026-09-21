@@ -23,23 +23,10 @@ import {
 } from '../../trace_processor/query_result';
 import ThreadPlugin from '../dev.perfetto.Thread';
 import {
-<<<<<<< HEAD
-  type Config,
+type Config,
   SLICE_TRACK_SUMMARY_KIND,
   GroupSummaryTrack,
 } from './group_summary_track';
-=======
-  Config as ProcessSchedulingTrackConfig,
-  PROCESS_SCHEDULING_TRACK_KIND,
-  ProcessSchedulingTrack,
-} from './process_scheduling_track';
-import {
-  Config as ProcessSummaryTrackConfig,
-  PROCESS_SUMMARY_TRACK_KIND,
-  ProcessSummaryTrack,
-} from './process_summary_track';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 // This plugin is responsible for adding summary tracks for process and thread
 // groups.
 export default class implements PerfettoPlugin {
@@ -48,11 +35,7 @@ export default class implements PerfettoPlugin {
 
   async onTraceLoad(ctx: Trace): Promise<void> {
     await this.addProcessTrackGroups(ctx);
-<<<<<<< HEAD
-=======
-    await this.addKernelThreadSummary(ctx);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+await this.addKernelThreadSummary(ctx);  }
 
   private async addProcessTrackGroups(ctx: Trace): Promise<void> {
     const threads = ctx.plugins.getPlugin(ThreadPlugin).getThreadMap();
@@ -61,20 +44,11 @@ export default class implements PerfettoPlugin {
 
       WITH machine_cpu_counts AS (
         SELECT
-<<<<<<< HEAD
-          machine_id AS machine,
-=======
-          IFNULL(machine_id, 0) AS machine,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          COUNT(*) AS cpu_count
+IFNULL(machine_id, 0) AS machine,          COUNT(*) AS cpu_count
         FROM cpu
         GROUP BY machine
       )
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      select *
+IFNULL(machine_id, 0) AS machine,      select *
       from (
         select
           _process_available_info_summary.upid,
@@ -100,22 +74,12 @@ export default class implements PerfettoPlugin {
               arg_set_id = process.arg_set_id and
               flat_key = 'chrome.process_label'
           ), '') as chromeProcessLabels,
-<<<<<<< HEAD
-          machine_id as machine,
-=======
-          ifnull(machine_id, 0) as machine,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          IFNULL(machine_cpu_counts.cpu_count, 0) AS cpuCount
+ifnull(machine_id, 0) as machine,          IFNULL(machine_cpu_counts.cpu_count, 0) AS cpuCount
         from _process_available_info_summary
         join process using(upid)
         left join android_process_metadata using(upid)
         LEFT JOIN machine_cpu_counts
-<<<<<<< HEAD
-          ON machine_cpu_counts.machine = machine_id
-=======
-          ON machine_cpu_counts.machine = IFNULL(machine_id, 0)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      )
+ON machine_cpu_counts.machine = IFNULL(machine_id, 0)      )
       union all
       select *
       from (
@@ -130,21 +94,11 @@ export default class implements PerfettoPlugin {
           0 as isDebuggable,
           0 as isBootImageProfiling,
           '' as chromeProcessLabels,
-<<<<<<< HEAD
-          machine_id as machine,
-=======
-          ifnull(machine_id, 0) as machine,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          IFNULL(machine_cpu_counts.cpu_count, 0) AS cpuCount
+ifnull(machine_id, 0) as machine,          IFNULL(machine_cpu_counts.cpu_count, 0) AS cpuCount
         from _thread_available_info_summary
         join thread using (utid)
         LEFT JOIN machine_cpu_counts
-<<<<<<< HEAD
-          ON machine_cpu_counts.machine = machine_id
-=======
-          ON machine_cpu_counts.machine = IFNULL(machine_id, 0)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        where upid is null
+ON machine_cpu_counts.machine = IFNULL(machine_id, 0)        where upid is null
       )
     `);
     const it = result.iter({
@@ -205,8 +159,7 @@ export default class implements PerfettoPlugin {
         renderer: track,
       });
 
-<<<<<<< HEAD
-      // TODO(stevegolton): Probably add these when we create the process group
+// TODO(stevegolton): Probably add these when we create the process group
       // node to begin with.
       const trackNode = ctx.defaultWorkspace.getTrackByUri(uri);
       if (trackNode) {
@@ -214,89 +167,4 @@ export default class implements PerfettoPlugin {
         trackNode.chips = chips;
       }
     }
-  }
-=======
-        ctx.tracks.registerTrack({
-          uri,
-          tags: {
-            kinds: [PROCESS_SCHEDULING_TRACK_KIND],
-          },
-          chips,
-          renderer: new ProcessSchedulingTrack(ctx, config, cpuCount, threads),
-          subtitle,
-        });
-      } else {
-        const config: ProcessSummaryTrackConfig = {
-          pidForColor,
-          upid,
-          utid,
-        };
-
-        ctx.tracks.registerTrack({
-          uri,
-          tags: {
-            kinds: [PROCESS_SUMMARY_TRACK_KIND],
-          },
-          chips,
-          renderer: new ProcessSummaryTrack(ctx.engine, config),
-          subtitle,
-        });
-      }
-    }
-  }
-
-  private async addKernelThreadSummary(ctx: Trace): Promise<void> {
-    const {engine} = ctx;
-
-    // Identify kernel threads if this is a linux system trace, and sufficient
-    // process information is available. Kernel threads are identified by being
-    // children of kthreadd (always pid 2).
-    // The query will return the kthreadd process row first, which must exist
-    // for any other kthreads to be returned by the query.
-    // TODO(rsavitski): figure out how to handle the idle process (swapper),
-    // which has pid 0 but appears as a distinct process (with its own comm) on
-    // each cpu. It'd make sense to exclude its thread state track, but still
-    // put process-scoped tracks in this group.
-    const result = await engine.query(`
-      select
-        t.utid, p.upid, (case p.pid when 2 then 1 else 0 end) isKthreadd
-      from
-        thread t
-        join process p using (upid)
-        left join process parent on (p.parent_upid = parent.upid)
-        join
-          (select true from metadata m
-             where (m.name = 'system_name' and m.str_value = 'Linux')
-           union
-           select 1 from (select true from sched limit 1))
-      where
-        p.pid = 2 or parent.pid = 2
-      order by isKthreadd desc
-    `);
-
-    const it = result.iter({
-      utid: NUM,
-      upid: NUM,
-    });
-
-    // Not applying kernel thread grouping.
-    if (!it.valid()) {
-      return;
-    }
-
-    const config: ProcessSummaryTrackConfig = {
-      pidForColor: 2,
-      upid: it.upid,
-      utid: it.utid,
-    };
-
-    ctx.tracks.registerTrack({
-      uri: '/kernel',
-      tags: {
-        kinds: [PROCESS_SUMMARY_TRACK_KIND],
-      },
-      renderer: new ProcessSummaryTrack(ctx.engine, config),
-    });
-  }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  }}

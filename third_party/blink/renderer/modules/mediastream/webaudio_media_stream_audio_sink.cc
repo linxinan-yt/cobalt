@@ -41,16 +41,10 @@ WebAudioMediaStreamAudioSink::WebAudioMediaStreamAudioSink(
                    media::ChannelLayoutConfig::Stereo(),
 #endif // BUILDFLAG(USE_STARBOARD_MEDIA)
                    context_sample_rate,
-<<<<<<< HEAD
-                   render_quantum_frames) {
-=======
-                   kWebAudioRenderBufferSize)
-{
+render_quantum_frames) {
 #if BUILDFLAG(USE_STARBOARD_MEDIA)
   LOG(INFO) << "WebAudioMediaStreamAudioSink: sink_params=" << sink_params_.AsHumanReadableString();
-#endif // BUILDFLAG(USE_STARBOARD_MEDIA)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  CHECK(sink_params_.IsValid());
+#endif // BUILDFLAG(USE_STARBOARD_MEDIA)  CHECK(sink_params_.IsValid());
   CHECK_GT(platform_buffer_duration_, base::TimeDelta());
 
   // Connect the source provider to the track as a sink.

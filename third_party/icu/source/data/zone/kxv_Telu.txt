@@ -1164,13 +1164,9 @@ kxv_Telu{
         "Pacific:Efate"{
             ec{"ఇఫేట్"}
         }
-<<<<<<< HEAD
-        "Pacific:Enderbury"{
+"Pacific:Enderbury"{
             ec{"కాంటన్"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Pacific:Fakaofo"{
+        }        "Pacific:Fakaofo"{
             ec{"ఫాకోఫో"}
         }
         "Pacific:Fiji"{
@@ -1191,13 +1187,9 @@ kxv_Telu{
         "Pacific:Guam"{
             ec{"గ్వామ్"}
         }
-<<<<<<< HEAD
-=======
-        "Pacific:Kanton"{
+"Pacific:Kanton"{
             ec{"కాంటన్"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Pacific:Kiritimati"{
+        }        "Pacific:Kiritimati"{
             ec{"కిరీటిమాటి"}
         }
         "Pacific:Kosrae"{
@@ -1279,14 +1271,9 @@ kxv_Telu{
             ls{"దక్షిణ ఆఫ్రికా ప్రామాణిక సమయం"}
         }
         "meta:Africa_Western"{
-<<<<<<< HEAD
-            ls{"పశ్చిమ ఆఫ్రికా సమయం"}
-=======
-            ld{"పశ్చిమ ఆఫ్రికా వేసవి సమయం"}
+ld{"పశ్చిమ ఆఫ్రికా వేసవి సమయం"}
             lg{"పశ్చిమ ఆఫ్రికా సమయం"}
-            ls{"పశ్చిమ ఆఫ్రికా ప్రామాణిక సమయం"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"పశ్చిమ ఆఫ్రికా ప్రామాణిక సమయం"}        }
         "meta:Alaska"{
             ld{"అలాస్కా పగటి వెలుతురు సమయం"}
             lg{"అలాస్కా సమయం"}
@@ -1524,13 +1511,9 @@ kxv_Telu{
         "meta:Guyana"{
             ls{"గయానా సమయం"}
         }
-<<<<<<< HEAD
-        "meta:Hawaii"{
+"meta:Hawaii"{
             ls{"హవాయ్-అల్యూషియన్ ప్రామాణిక సమయం"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "meta:Hawaii_Aleutian"{
+        }        "meta:Hawaii_Aleutian"{
             ld{"హవాయ్-అల్యూషియన్ పగటి వెలుతురు సమయం"}
             lg{"హవాయ్-అల్యూషియన్ సమయం"}
             ls{"హవాయ్-అల్యూషియన్ ప్రామాణిక సమయం"}

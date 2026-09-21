@@ -24,13 +24,9 @@ ie{
             ordinal{
                 other{"Li {0}-im edition"}
             }
-<<<<<<< HEAD
-=======
-            plural{
+plural{
                 other{"{0} dies"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            }        }
         minimumGroupingDigits{"2"}
     }
     calendar{
@@ -71,19 +67,13 @@ ie{
                 GyMMMEd{"E d MMM y G"}
                 GyMMMd{"d MMM y G"}
                 GyMd{"d.M.y G"}
-<<<<<<< HEAD
-                H{"H 'h'."}
+H{"H 'h'."}
                 Hv{"HH 'h'. 'de' v"}
-                MEd{"E d.M"}
-                MMMEd{"E d MMM"}
-=======
                 MEd{"E d.M"}
                 MMMEd{"E d MMM"}
                 MMMMW{
                     other{"W-'im' 'semane' 'de' MMMM"}
-                }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                MMMMd{"d MMMM"}
+                }                MMMMd{"d MMMM"}
                 MMMd{"d MMM"}
                 Md{"d.M"}
                 d{"d."}
@@ -96,13 +86,9 @@ ie{
                 yMd{"d.M.y"}
                 yQQQ{"QQQ y"}
                 yQQQQ{"QQQQ y"}
-<<<<<<< HEAD
-=======
-                yw{
+yw{
                     other{"w-'im' 'semane' 'de' Y"}
-                }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                }            }
             dayNames{
                 format{
                     abbreviated{
@@ -155,23 +141,7 @@ ie{
             }
             eras{
                 abbreviated{
-<<<<<<< HEAD
-                    0{"a.C."}
-                    1{"e.C."}
-                }
-                abbreviated%variant{
-                    0{"a.e.c."}
-                    1{"e.c."}
-                }
-                wide{
-                    0{"ante Crist"}
-                    1{"era Cristan"}
-                }
-                wide%variant{
-                    0{"ante era comun"}
-                    1{"era comun"}
-=======
-                    "a.C.",
+"a.C.",
                     "e.C.",
                 }
                 abbreviated%variant{
@@ -184,9 +154,7 @@ ie{
                 }
                 wide%variant{
                     "ante era comun",
-                    "era comun",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+                    "era comun",                }
             }
             intervalFormats{
                 H{
@@ -198,12 +166,7 @@ ie{
                 d{
                     d{"d. – d."}
                 }
-<<<<<<< HEAD
-                fallback{"{0} til {1}"}
-=======
-                fallback{"{0} til {1}"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                y{
+fallback{"{0} til {1}"}                y{
                     y{"y – y"}
                 }
             }
@@ -254,8 +217,7 @@ ie{
                         "D",
                     }
                 }
-<<<<<<< HEAD
-            }
+}
             quarters{
                 format{
                     wide{
@@ -264,10 +226,7 @@ ie{
                         "3-m trimestre",
                         "4-m trimestre",
                     }
-                }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                }            }
         }
     }
     delimiters{
@@ -281,16 +240,10 @@ ie{
             dn{"die"}
             relative{
                 "-1"{"yer"}
-<<<<<<< HEAD
-                "-2"{"anteyer"}
+"-2"{"anteyer"}
                 "0"{"hodie"}
                 "1"{"deman"}
-                "2"{"posdeman"}
-=======
-                "0"{"hodie"}
-                "1"{"deman"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                "2"{"posdeman"}            }
         }
         day-narrow{
             dn{"d"}
@@ -318,8 +271,7 @@ ie{
         }
         month{
             dn{"mensu"}
-<<<<<<< HEAD
-            relative{
+relative{
                 "-1"{"ultim mensu"}
                 "0"{"ho-mensu"}
                 "1"{"sequent mensu"}
@@ -329,20 +281,13 @@ ie{
             dn{"mn"}
         }
         month-short{
-            dn{"mn."}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            dn{"mn."}        }
         quarter{
             dn{"trimestre"}
         }
-<<<<<<< HEAD
-        quarter-narrow{
+quarter-narrow{
             dn{"tr"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        second{
+        }        second{
             dn{"seconde"}
         }
         second-narrow{
@@ -354,8 +299,7 @@ ie{
         week{
             dn{"semane"}
         }
-<<<<<<< HEAD
-        week-narrow{
+week-narrow{
             dn{"sem"}
         }
         week-short{
@@ -363,10 +307,7 @@ ie{
         }
         weekday{
             dn{"die del semane"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        year{
+        }        year{
             dn{"annu"}
             relative{
                 "-1"{"ultim annu"}

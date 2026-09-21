@@ -238,26 +238,14 @@ pa{
             milligram-ofglucose-per-deciliter{
                 case{
                     oblique{
-<<<<<<< HEAD
-                        one{"{0} ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤਿ ਡੈਸੀਲਿਟਰ"}
-                        other{"{0} ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤਿ ਡੈਸੀਲਿਟਰ"}
-                    }
-                }
-                dnam{"ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤਿ ਡੈਸੀਲਿਟਰ"}
-                gender{"masculine"}
-                one{"{0} ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤਿ ਡੈਸੀਲਿਟਰ"}
-                other{"{0} ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤਿ ਡੈਸੀਲਿਟਰ"}
-=======
-                        one{"{0} ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤੀ ਡੈਸੀਲਿਟਰ"}
+one{"{0} ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤੀ ਡੈਸੀਲਿਟਰ"}
                         other{"{0} ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤੀ ਡੈਸੀਲਿਟਰ"}
                     }
                 }
                 dnam{"ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤੀ ਡੈਸੀਲਿਟਰ"}
                 gender{"masculine"}
                 one{"{0} ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤੀ ਡੈਸੀਲਿਟਰ"}
-                other{"{0} ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤੀ ਡੈਸੀਲਿਟਰ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} ਮਿਲੀਗ੍ਰਾਮ ਪ੍ਰਤੀ ਡੈਸੀਲਿਟਰ"}            }
             millimole-per-liter{
                 case{
                     oblique{
@@ -596,11 +584,7 @@ pa{
                 other{"{0} ਨੈਨੋਸਕਿੰਟ"}
             }
             night{
-<<<<<<< HEAD
-                gender{"feminine"}
-                per{"{0} ਪ੍ਰਤਿ ਰਾਤ"}
-=======
-                case{
+case{
                     oblique{
                         one{"{0} ਰਾਤ"}
                         other{"{0} ਰਾਤਾਂ"}
@@ -610,9 +594,7 @@ pa{
                 gender{"feminine"}
                 one{"{0} ਰਾਤ"}
                 other{"{0} ਰਾਤਾਂ"}
-                per{"{0} ਪ੍ਰਤੀ ਰਾਤ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0} ਪ੍ਰਤੀ ਰਾਤ"}            }
             quarter{
                 dnam{"ਤਿਮਾਹੀਆਂ"}
                 gender{"feminine"}
@@ -1400,10 +1382,7 @@ pa{
                 other{"{0} ਨੌਟ"}
             }
             light-speed{
-<<<<<<< HEAD
-                gender{"masculine"}
-=======
-                case{
+case{
                     oblique{
                         one{"{0} ਪ੍ਰਕਾਸ਼"}
                         other{"{0} ਪ੍ਰਕਾਸ਼"}
@@ -1412,9 +1391,7 @@ pa{
                 dnam{"ਪ੍ਰਕਾਸ਼"}
                 gender{"masculine"}
                 one{"{0} ਪ੍ਰਕਾਸ਼"}
-                other{"{0} ਪ੍ਰਕਾਸ਼"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} ਪ੍ਰਕਾਸ਼"}            }
             meter-per-second{
                 case{
                     oblique{

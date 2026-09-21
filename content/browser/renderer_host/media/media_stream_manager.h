@@ -422,18 +422,14 @@ class CONTENT_EXPORT MediaStreamManager
       const base::UnguessableToken& session_id,
       const std::optional<gfx::Rect>& region_capture_rect);
 
-<<<<<<< HEAD
-  void OpenNativeScreenCapturePicker(
+void OpenNativeScreenCapturePicker(
       DesktopMediaID::Type type,
       base::OnceCallback<void(DesktopMediaID::Id)> created_callback,
       base::OnceCallback<void(webrtc::DesktopCapturer::Source)> picker_callback,
       base::OnceCallback<void()> cancel_callback,
       base::OnceCallback<void()> error_callback);
 
-#if BUILDFLAG(ENABLE_SCREEN_CAPTURE)
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  // Determines whether the captured surface (tab/window) should be focused.
+#if BUILDFLAG(ENABLE_SCREEN_CAPTURE)  // Determines whether the captured surface (tab/window) should be focused.
   // This can be called at most once, and only within the first 1s of the
   // capture session being initiated. If a call with |focus=false| is not
   // executed within this time period, the captured surface *is* focused.

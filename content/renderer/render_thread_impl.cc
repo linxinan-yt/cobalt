@@ -300,16 +300,6 @@ bool IsBackgrounded(std::optional<base::Process::Priority> process_priority) {
   }
 }
 
-<<<<<<< HEAD
-// Helper function to update the content and media clients when the
-// GpuChannelHost may have been updated.
-void OnPotentialNewGpuChannelHost(gpu::GpuChannelHost* host) {
-  if (host) {
-    RenderMediaClient::SetGpuFeatureInfo(host->gpu_feature_info());
-    GetContentClient()->SetGpuInfo(host->gpu_info());
-  } else {
-    RenderMediaClient::SetGpuFeatureInfo(gpu::GpuFeatureInfo());
-=======
 #if BUILDFLAG(IS_COBALT)
 bool IsCriticalAllowedInForeground() {
   static const bool kAllowCriticalInForeground =
@@ -319,12 +309,14 @@ bool IsCriticalAllowedInForeground() {
 }
 #endif  // BUILDFLAG(IS_COBALT)
 
-perfetto::StaticString ProcessPriorityToString(
-    std::optional<base::Process::Priority> priority) {
-  if (!priority) {
-    return "Unknown";
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+// Helper function to update the content and media clients when the
+// GpuChannelHost may have been updated.
+void OnPotentialNewGpuChannelHost(gpu::GpuChannelHost* host) {
+  if (host) {
+    RenderMediaClient::SetGpuFeatureInfo(host->gpu_feature_info());
+    GetContentClient()->SetGpuInfo(host->gpu_info());
+  } else {
+    RenderMediaClient::SetGpuFeatureInfo(gpu::GpuFeatureInfo());  }
 }
 
 }  // namespace
@@ -644,14 +636,8 @@ void RenderThreadImpl::Init() {
   base::DiscardableMemoryAllocator::SetInstance(
       discardable_memory_allocator_.get());
 
-<<<<<<< HEAD
-#if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
-  ChildProcess::current()->SetIOThreadType(base::ThreadType::kPresentation);
-=======
-#if BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_COBALT_HERMETIC_BUILD) || BUILDFLAG(IS_CHROMEOS)
-  ChildProcess::current()->SetIOThreadType(base::ThreadType::kDisplayCritical);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#endif
+#if (BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_COBALT_HERMETIC_BUILD)) || BUILDFLAG(IS_CHROMEOS)
+  ChildProcess::current()->SetIOThreadType(base::ThreadType::kPresentation);#endif
 
   process_foregrounded_count_ = 0;
 
@@ -1740,57 +1726,6 @@ void RenderThreadImpl::OnRendererForegrounded() {
   process_foregrounded_count_++;
 }
 
-<<<<<<< HEAD
-=======
-void RenderThreadImpl::OnMemoryPressure(
-    base::MemoryPressureLevel memory_pressure_level) {
-  TRACE_EVENT(
-      "memory", "RenderThreadImpl::OnMemoryPressure",
-      [&](perfetto::EventContext ctx) {
-        auto* event = ctx.event<perfetto::protos::pbzero::ChromeTrackEvent>();
-        auto* data = event->set_chrome_memory_pressure_notification();
-        data->set_level(base::trace_event::MemoryPressureLevelToTraceEnum(
-            memory_pressure_level));
-      });
-
-  v8::MemoryPressureLevel v8_memory_pressure_level =
-      static_cast<v8::MemoryPressureLevel>(memory_pressure_level);
-
-#if !BUILDFLAG(ALLOW_CRITICAL_MEMORY_PRESSURE_HANDLING_IN_FOREGROUND)
-  // In order to reduce performance impact, translate critical level to
-  // moderate level for foreground renderer.
-#if BUILDFLAG(IS_COBALT)
-  if (!IsCriticalAllowedInForeground() && !RendererIsHidden() &&
-      v8_memory_pressure_level == v8::MemoryPressureLevel::kCritical)
-    v8_memory_pressure_level = v8::MemoryPressureLevel::kModerate;
-#else
-  if (!RendererIsHidden() &&
-      v8_memory_pressure_level == v8::MemoryPressureLevel::kCritical)
-    v8_memory_pressure_level = v8::MemoryPressureLevel::kModerate;
-#endif  // BUILDFLAG(IS_COBALT)
-#endif  // !BUILDFLAG(ALLOW_CRITICAL_MEMORY_PRESSURE_HANDLING_IN_FOREGROUND)
-
-  if (base::FeatureList::IsEnabled(
-          features::kForwardMemoryPressureToBlinkIsolates)) {
-    blink::MemoryPressureNotificationToAllIsolates(v8_memory_pressure_level);
-  }
-
-  if (blink_platform_impl_) {
-    blink::WebMemoryPressureListener::OnMemoryPressure(memory_pressure_level);
-  }
-  if (memory_pressure_level == base::MEMORY_PRESSURE_LEVEL_CRITICAL) {
-    discardable_memory_allocator_->ReleaseFreeMemory();
-
-    // Do not call into blink if it is not initialized.
-    if (blink_platform_impl_) {
-      // Purge Skia font cache, resource cache, and image filter.
-      SkGraphics::PurgeAllCaches();
-    }
-  }
-  ::partition_alloc::MemoryReclaimer::Instance()->ReclaimAll();
-}
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 void RenderThreadImpl::OnRendererInterfaceReceiver(
     mojo::PendingAssociatedReceiver<mojom::Renderer> receiver) {
   DCHECK(!renderer_receiver_.is_bound());

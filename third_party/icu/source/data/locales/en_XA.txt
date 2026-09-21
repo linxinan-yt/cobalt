@@ -10,12 +10,7 @@ en_XA{
         buddhist{
             eras{
                 abbreviated{
-<<<<<<< HEAD
-                    0{"[ƁÉ one]"}
-=======
-                    "[ƁÉ one]",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+"[ƁÉ one]",                }
             }
         }
         chinese{
@@ -40,15 +35,6 @@ en_XA{
                 "{1}, {0}",
                 "{1}, {0}",
             }
-<<<<<<< HEAD
-            DateTimePatterns%relative{
-                "[{1} 'åţ' {0} 'one' 'two']",
-                "[{1} 'åţ' {0} 'one' 'two']",
-                "{1}, {0}",
-                "{1}, {0}",
-            }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             DateTimeSkeletons{
                 "ahmmsszzzz",
                 "ahmmssz",
@@ -64,20 +50,12 @@ en_XA{
                 Bhm{"[h:mm B 'one']"}
                 Bhms{"[h:mm:ss B 'one' 'two']"}
                 E{"[ccc 'one']"}
-<<<<<<< HEAD
-                EBh{"[E h B 'one']"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                EBhm{"[E h:mm B 'one' 'two']"}
+EBh{"[E h B 'one']"}                EBhm{"[E h:mm B 'one' 'two']"}
                 EBhms{"[E h:mm:ss B 'one' 'two']"}
                 EHm{"[E HH:mm 'one' 'two']"}
                 EHms{"[E HH:mm:ss 'one' 'two']"}
                 Ed{"[d E 'one']"}
-<<<<<<< HEAD
-                Eh{"[E h a 'one']"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                Ehm{"[E h:mm a 'one' 'two']"}
+Eh{"[E h a 'one']"}                Ehm{"[E h:mm a 'one' 'two']"}
                 Ehms{"[E h:mm:ss a 'one' 'two']"}
                 Gy{"[r(U) 'one']"}
                 GyMMM{"[MMM r 'one']"}
@@ -89,11 +67,7 @@ en_XA{
                 H{"[HH 'one']"}
                 Hm{"[HH:mm 'one']"}
                 Hms{"[HH:mm:ss 'one' 'two']"}
-<<<<<<< HEAD
-                Hv{"[HH'ĥ' v 'one' 'two']"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                M{"[L 'one']"}
+Hv{"[HH'ĥ' v 'one' 'two']"}                M{"[L 'one']"}
                 MEd{"[E, M/d 'one']"}
                 MMM{"[LLL 'one']"}
                 MMMEd{"[E, MMM d 'one' 'two']"}
@@ -108,11 +82,7 @@ en_XA{
                 h{"[h a 'one']"}
                 hm{"[h:mm a 'one']"}
                 hms{"[h:mm:ss a 'one' 'two']"}
-<<<<<<< HEAD
-                hv{"[h a v 'one']"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                ms{"[mm:ss 'one']"}
+hv{"[h a v 'one']"}                ms{"[mm:ss 'one']"}
                 y{"[r(U) 'one']"}
                 yyyy{"[r(U) 'one']"}
                 yyyyM{"[M/r 'one']"}
@@ -314,19 +284,6 @@ en_XA{
                 }
             }
         }
-<<<<<<< HEAD
-        coptic{
-            eras{
-                abbreviated{
-                    1{"[ÅṀ one]"}
-                }
-                wide{
-                    1{"[Åññö Ṁåŕţýŕûɱ one two]"}
-                }
-            }
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         generic{
             DateTimePatterns{
                 "h:mm:ss a zzzz",
@@ -336,12 +293,7 @@ en_XA{
                 "[EEEE, MMMM d, y G 'one' 'two' 'three']",
                 "[MMMM d, y G 'one' 'two']",
                 "[MMM d, y G 'one' 'two']",
-<<<<<<< HEAD
-                "[M/d/y G 'one' 'two']",
-=======
-                "[M/d/y GGGGG 'one' 'two']",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                "[{1}, {0} 'one' 'two']",
+"[M/d/y GGGGG 'one' 'two']",                "[{1}, {0} 'one' 'two']",
                 "[{1}, {0} 'one' 'two']",
                 "[{1}, {0} 'one' 'two']",
                 "[{1}, {0} 'one' 'two']",
@@ -353,16 +305,12 @@ en_XA{
                 "[{1}, {0} 'one' 'two']",
                 "[{1}, {0} 'one' 'two']",
             }
-<<<<<<< HEAD
-            DateTimePatterns%relative{
+DateTimePatterns%relative{
                 "[{1} 'åţ' {0} 'one' 'two']",
                 "[{1} 'åţ' {0} 'one' 'two']",
                 "[{1}, {0} 'one' 'two']",
                 "[{1}, {0} 'one' 'two']",
-            }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            DateTimeSkeletons{
+            }            DateTimeSkeletons{
                 "ahmmsszzzz",
                 "ahmmssz",
                 "ahmmss",
@@ -390,17 +338,12 @@ en_XA{
                 Bhm{"[h:mm B 'one']"}
                 Bhms{"[h:mm:ss B 'one' 'two']"}
                 E{"[ccc 'one']"}
-<<<<<<< HEAD
-                EBh{"[E h B 'one']"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                EBhm{"[E h:mm B 'one' 'two']"}
+EBh{"[E h B 'one']"}                EBhm{"[E h:mm B 'one' 'two']"}
                 EBhms{"[E h:mm:ss B 'one' 'two']"}
                 EHm{"[E HH:mm 'one' 'two']"}
                 EHms{"[E HH:mm:ss 'one' 'two']"}
                 Ed{"[d E 'one']"}
-<<<<<<< HEAD
-                Eh{"[E h a 'one']"}
+Eh{"[E h a 'one']"}
                 Ehm{"[E h:mm a 'one' 'two']"}
                 Ehms{"[E h:mm:ss a 'one' 'two']"}
                 Gy{"[y G 'one']"}
@@ -413,20 +356,7 @@ en_XA{
                 H{"[HH 'one']"}
                 Hm{"[HH:mm 'one']"}
                 Hms{"[HH:mm:ss 'one' 'two']"}
-                Hv{"[HH'ĥ' v 'one' 'two']"}
-=======
-                Ehm{"[E h:mm a 'one' 'two']"}
-                Ehms{"[E h:mm:ss a 'one' 'two']"}
-                Gy{"[y G 'one']"}
-                GyMMM{"[MMM y G 'one' 'two']"}
-                GyMMMEd{"[E, MMM d, y G 'one' 'two']"}
-                GyMMMd{"[MMM d, y G 'one' 'two']"}
-                GyMd{"[M/d/y GGGGG 'one' 'two']"}
-                H{"[HH 'one']"}
-                Hm{"[HH:mm 'one']"}
-                Hms{"[HH:mm:ss 'one' 'two']"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                M{"[L 'one']"}
+                Hv{"[HH'ĥ' v 'one' 'two']"}                M{"[L 'one']"}
                 MEd{"[E, M/d 'one']"}
                 MMM{"[LLL 'one']"}
                 MMMEd{"[E, MMM d 'one' 'two']"}
@@ -437,30 +367,16 @@ en_XA{
                 h{"[h a 'one']"}
                 hm{"[h:mm a 'one']"}
                 hms{"[h:mm:ss a 'one' 'two']"}
-<<<<<<< HEAD
-                hv{"[h a v 'one']"}
-                ms{"[mm:ss 'one']"}
-                y{"[y G 'one']"}
-                yyyy{"[y G 'one']"}
-                yyyyM{"[M/y G 'one']"}
-                yyyyMEd{"[E, M/d/y G 'one' 'two']"}
-=======
+hv{"[h a v 'one']"}
                 ms{"[mm:ss 'one']"}
                 y{"[y G 'one']"}
                 yyyy{"[y G 'one']"}
                 yyyyM{"[M/y GGGGG 'one' 'two']"}
-                yyyyMEd{"[E, M/d/y GGGGG 'one' 'two']"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                yyyyMMM{"[MMM y G 'one' 'two']"}
+                yyyyMEd{"[E, M/d/y GGGGG 'one' 'two']"}                yyyyMMM{"[MMM y G 'one' 'two']"}
                 yyyyMMMEd{"[E, MMM d, y G 'one' 'two']"}
                 yyyyMMMM{"[MMMM y G 'one' 'two']"}
                 yyyyMMMd{"[MMM d, y G 'one' 'two']"}
-<<<<<<< HEAD
-                yyyyMd{"[M/d/y G 'one' 'two']"}
-=======
-                yyyyMd{"[M/d/y GGGGG 'one' 'two']"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                yyyyQQQ{"[QQQ y G 'one' 'two']"}
+yyyyMd{"[M/d/y GGGGG 'one' 'two']"}                yyyyQQQ{"[QQQ y G 'one' 'two']"}
                 yyyyQQQQ{"[QQQQ y G 'one' 'two']"}
             }
             intervalFormats{
@@ -478,18 +394,7 @@ en_XA{
                     y{"[y – y G 'one' 'two']"}
                 }
                 GyM{
-<<<<<<< HEAD
-                    G{"[M/y G – M/y G 'one' 'two']"}
-                    M{"[M/y – M/y G 'one' 'two']"}
-                    y{"[M/y – M/y G 'one' 'two']"}
-                }
-                GyMEd{
-                    G{"[E, M/d/y G – E, M/d/y G 'one' 'two' 'three']"}
-                    M{"[E, M/d/y – E, M/d/y G 'one' 'two' 'three']"}
-                    d{"[E, M/d/y – E, M/d/y G 'one' 'two' 'three']"}
-                    y{"[E, M/d/y – E, M/d/y G 'one' 'two' 'three']"}
-=======
-                    G{"[M/y GGGGG – M/y GGGGG 'one' 'two' 'three']"}
+G{"[M/y GGGGG – M/y GGGGG 'one' 'two' 'three']"}
                     M{"[M/y – M/y GGGGG 'one' 'two' 'three']"}
                     y{"[M/y – M/y GGGGG 'one' 'two' 'three']"}
                 }
@@ -497,9 +402,7 @@ en_XA{
                     G{"[E, M/d/y GGGGG – E, M/d/y GGGGG 'one' 'two' 'three' 'four']"}
                     M{"[E, M/d/y – E, M/d/y GGGGG 'one' 'two' 'three']"}
                     d{"[E, M/d/y – E, M/d/y GGGGG 'one' 'two' 'three']"}
-                    y{"[E, M/d/y – E, M/d/y GGGGG 'one' 'two' 'three']"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+                    y{"[E, M/d/y – E, M/d/y GGGGG 'one' 'two' 'three']"}                }
                 GyMMM{
                     G{"[MMM y G – MMM y G 'one' 'two' 'three']"}
                     M{"[MMM – MMM y G 'one' 'two']"}
@@ -518,18 +421,10 @@ en_XA{
                     y{"[MMM d, y – MMM d, y G 'one' 'two' 'three']"}
                 }
                 GyMd{
-<<<<<<< HEAD
-                    G{"[M/d/y G – M/d/y G 'one' 'two' 'three']"}
-                    M{"[M/d/y – M/d/y G 'one' 'two' 'three']"}
-                    d{"[M/d/y – M/d/y G 'one' 'two' 'three']"}
-                    y{"[M/d/y – M/d/y G 'one' 'two' 'three']"}
-=======
-                    G{"[M/d/y GGGGG – M/d/y GGGGG 'one' 'two' 'three']"}
+G{"[M/d/y GGGGG – M/d/y GGGGG 'one' 'two' 'three']"}
                     M{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}
                     d{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}
-                    y{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+                    y{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}                }
                 H{
                     H{"[HH – HH 'one' 'two']"}
                 }
@@ -592,24 +487,13 @@ en_XA{
                     y{"[y – y G 'one' 'two']"}
                 }
                 yM{
-<<<<<<< HEAD
-                    M{"[M/y – M/y G 'one' 'two']"}
-                    y{"[M/y – M/y G 'one' 'two']"}
-                }
-                yMEd{
-                    M{"[E, M/d/y – E, M/d/y G 'one' 'two' 'three']"}
-                    d{"[E, M/d/y – E, M/d/y G 'one' 'two' 'three']"}
-                    y{"[E, M/d/y – E, M/d/y G 'one' 'two' 'three']"}
-=======
-                    M{"[M/y – M/y GGGGG 'one' 'two' 'three']"}
+M{"[M/y – M/y GGGGG 'one' 'two' 'three']"}
                     y{"[M/y – M/y GGGGG 'one' 'two' 'three']"}
                 }
                 yMEd{
                     M{"[E, M/d/y – E, M/d/y GGGGG 'one' 'two' 'three']"}
                     d{"[E, M/d/y – E, M/d/y GGGGG 'one' 'two' 'three']"}
-                    y{"[E, M/d/y – E, M/d/y GGGGG 'one' 'two' 'three']"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+                    y{"[E, M/d/y – E, M/d/y GGGGG 'one' 'two' 'three']"}                }
                 yMMM{
                     M{"[MMM – MMM y G 'one' 'two']"}
                     y{"[MMM y – MMM y G 'one' 'two' 'three']"}
@@ -629,16 +513,9 @@ en_XA{
                     y{"[MMM d, y – MMM d, y G 'one' 'two' 'three']"}
                 }
                 yMd{
-<<<<<<< HEAD
-                    M{"[M/d/y – M/d/y G 'one' 'two' 'three']"}
-                    d{"[M/d/y – M/d/y G 'one' 'two' 'three']"}
-                    y{"[M/d/y – M/d/y G 'one' 'two' 'three']"}
-=======
-                    M{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}
+M{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}
                     d{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}
-                    y{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+                    y{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}                }
             }
         }
         gregorian{
@@ -679,16 +556,12 @@ en_XA{
                 "[{1}, {0} 'one' 'two']",
                 "[{1}, {0} 'one' 'two']",
             }
-<<<<<<< HEAD
-            DateTimePatterns%relative{
+DateTimePatterns%relative{
                 "[{1} 'åţ' {0} 'one' 'two']",
                 "[{1} 'åţ' {0} 'one' 'two']",
                 "[{1}, {0} 'one' 'two']",
                 "[{1}, {0} 'one' 'two']",
-            }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            DateTimeSkeletons{
+            }            DateTimeSkeletons{
                 "[ahmmsszzzz 'one' 'two']",
                 "[ahmmssz 'one' 'two']",
                 "[ahmmss 'one']",
@@ -716,28 +589,17 @@ en_XA{
                 Bhm{"[h:mm B 'one']"}
                 Bhms{"[h:mm:ss B 'one' 'two']"}
                 E{"[ccc 'one']"}
-<<<<<<< HEAD
-                EBh{"[E h B 'one']"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                EBhm{"[E h:mm B 'one' 'two']"}
+EBh{"[E h B 'one']"}                EBhm{"[E h:mm B 'one' 'two']"}
                 EBhms{"[E h:mm:ss B 'one' 'two']"}
                 EHm{"[E HH:mm 'one' 'two']"}
                 EHms{"[E HH:mm:ss 'one' 'two']"}
                 Ed{"[d E 'one']"}
-<<<<<<< HEAD
-                Eh{"[E h a 'one']"}
+Eh{"[E h a 'one']"}
                 Ehm{"[E h:mm a 'one' 'two']"}
                 Ehms{"[E h:mm:ss a 'one' 'two']"}
                 Gy{"[y G 'one']"}
                 GyM{"[M/y G 'one']"}
-                GyMEd{"[E, M/d/y G 'one' 'two']"}
-=======
-                Ehm{"[E h:mm a 'one' 'two']"}
-                Ehms{"[E h:mm:ss a 'one' 'two']"}
-                Gy{"[y G 'one']"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                GyMMM{"[MMM y G 'one' 'two']"}
+                GyMEd{"[E, M/d/y G 'one' 'two']"}                GyMMM{"[MMM y G 'one' 'two']"}
                 GyMMMEd{"[E, MMM d, y G 'one' 'two']"}
                 GyMMMd{"[MMM d, y G 'one' 'two']"}
                 GyMd{"[M/d/y G 'one' 'two']"}
@@ -746,10 +608,6 @@ en_XA{
                 Hms{"[HH:mm:ss 'one' 'two']"}
                 Hmsv{"[HH:mm:ss v 'one' 'two']"}
                 Hmv{"[HH:mm v 'one' 'two']"}
-<<<<<<< HEAD
-                Hv{"[HH'ĥ' v 'one' 'two']"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 M{"[L 'one']"}
                 MEd{"[E, M/d 'one']"}
                 MMM{"[LLL 'one']"}
@@ -767,11 +625,7 @@ en_XA{
                 hms{"[h:mm:ss a 'one' 'two']"}
                 hmsv{"[h:mm:ss a v 'one' 'two']"}
                 hmv{"[h:mm a v 'one' 'two']"}
-<<<<<<< HEAD
-                hv{"[h a v 'one']"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                ms{"[mm:ss 'one']"}
+hv{"[h a v 'one']"}                ms{"[mm:ss 'one']"}
                 y{"[y 'one']"}
                 yM{"[M/y 'one']"}
                 yMEd{"[E, M/d/y 'one' 'two']"}
@@ -891,27 +745,7 @@ en_XA{
             }
             eras{
                 abbreviated{
-<<<<<<< HEAD
-                    0{"[ƁÇ one]"}
-                    1{"[ÅÐ one]"}
-                }
-                abbreviated%variant{
-                    0{"[ƁÇÉ one]"}
-                    1{"[ÇÉ one]"}
-                }
-                narrow{
-                    0{"[Ɓ one]"}
-                    1{"[Å one]"}
-                }
-                wide{
-                    0{"[Ɓéƒöŕé Çĥŕîšţ one two]"}
-                    1{"[Åññö Ðöɱîñî one two]"}
-                }
-                wide%variant{
-                    0{"[Ɓéƒöŕé Çöɱɱöñ Éŕå one two three]"}
-                    1{"[Çöɱɱöñ Éŕå one two]"}
-=======
-                    "[ƁÇ one]",
+"[ƁÇ one]",
                     "[ÅÐ one]",
                 }
                 abbreviated%variant{
@@ -928,9 +762,7 @@ en_XA{
                 }
                 wide%variant{
                     "[Ɓéƒöŕé Çöɱɱöñ Éŕå one two three]",
-                    "[Çöɱɱöñ Éŕå one two]",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+                    "[Çöɱɱöñ Éŕå one two]",                }
             }
             intervalFormats{
                 Bh{
@@ -1219,12 +1051,7 @@ en_XA{
             }
             eras{
                 abbreviated{
-<<<<<<< HEAD
-                    0{"[ÅṀ one]"}
-=======
-                    "[ÅṀ one]",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+0{"[ÅṀ one]"}                }
             }
             intervalFormats{
                 M{
@@ -1399,12 +1226,7 @@ en_XA{
                 "[EEEE, MMMM d, y G 'one' 'two' 'three']",
                 "[MMMM d, y G 'one' 'two']",
                 "[MMM d, y G 'one' 'two']",
-<<<<<<< HEAD
-                "[M/d/y G 'one' 'two']",
-=======
-                "[M/d/y GGGGG 'one' 'two']",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                "{1}, {0}",
+"[M/d/y GGGGG 'one' 'two']",                "{1}, {0}",
                 "{1}, {0}",
                 "{1}, {0}",
                 "{1}, {0}",
@@ -1414,20 +1236,10 @@ en_XA{
                 E{"[ccc 'one']"}
                 Ed{"[d E 'one']"}
                 Gy{"[y G 'one']"}
-<<<<<<< HEAD
-                GyM{"[M/y G 'one']"}
-                GyMEd{"[E, M/d/y G 'one' 'two']"}
-                GyMMM{"[MMM y G 'one' 'two']"}
+GyMMM{"[MMM y G 'one' 'two']"}
                 GyMMMEd{"[E, MMM d, y G 'one' 'two']"}
                 GyMMMd{"[MMM d, y G 'one' 'two']"}
-                GyMd{"[M/d/y G 'one' 'two']"}
-=======
-                GyMMM{"[MMM y G 'one' 'two']"}
-                GyMMMEd{"[E, MMM d, y G 'one' 'two']"}
-                GyMMMd{"[MMM d, y G 'one' 'two']"}
-                GyMd{"[M/d/y GGGGG 'one' 'two']"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                M{"[L 'one']"}
+                GyMd{"[M/d/y GGGGG 'one' 'two']"}                M{"[L 'one']"}
                 MEd{"[E, M/d 'one']"}
                 MMM{"[LLL 'one']"}
                 MMMEd{"[E, MMM d 'one' 'two']"}
@@ -1437,38 +1249,22 @@ en_XA{
                 d{"[d 'one']"}
                 y{"[y G 'one']"}
                 yyyy{"[y G 'one']"}
-<<<<<<< HEAD
-                yyyyM{"[M/y G 'one']"}
-                yyyyMEd{"[E, M/d/y G 'one' 'two']"}
-=======
-                yyyyM{"[M/y GGGGG 'one' 'two']"}
-                yyyyMEd{"[E, M/d/y GGGGG 'one' 'two']"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                yyyyMMM{"[MMM y G 'one' 'two']"}
+yyyyM{"[M/y GGGGG 'one' 'two']"}
+                yyyyMEd{"[E, M/d/y GGGGG 'one' 'two']"}                yyyyMMM{"[MMM y G 'one' 'two']"}
                 yyyyMMMEd{"[E, MMM d, y G 'one' 'two']"}
                 yyyyMMMM{"[MMMM y G 'one' 'two']"}
                 yyyyMMMd{"[MMM d, y G 'one' 'two']"}
-<<<<<<< HEAD
-                yyyyMd{"[M/d/y G 'one' 'two']"}
-=======
-                yyyyMd{"[M/d/y GGGGG 'one' 'two']"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                yyyyQQQ{"[QQQ y G 'one' 'two']"}
+yyyyMd{"[M/d/y GGGGG 'one' 'two']"}                yyyyQQQ{"[QQQ y G 'one' 'two']"}
                 yyyyQQQQ{"[QQQQ y G 'one' 'two']"}
             }
             eras{
                 abbreviated{
-<<<<<<< HEAD
-                    0{"[ÅĤ one]"}
+0{"[ÅĤ one]"}
                     1{"[ƁĤ one]"}
                 }
                 wide{
                     0{"[Åññö Ĥéĝîŕåé one two]"}
-                    1{"[Ɓéƒöŕé Ĥîĵŕåĥ one two]"}
-=======
-                    "[ÅĤ one]",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+                    1{"[Ɓéƒöŕé Ĥîĵŕåĥ one two]"}                }
             }
             monthNames{
                 stand-alone{
@@ -1513,8 +1309,7 @@ en_XA{
                 "[MMMM d, y G 'one' 'two']",
                 "[MMM d, y G 'one' 'two']",
                 "[M/d/y GGGGG 'one' 'two']",
-<<<<<<< HEAD
-                "[{1}, {0} 'one' 'two']",
+"[{1}, {0} 'one' 'two']",
                 "[{1} 'åţ' {0} 'one' 'two']",
                 "[{1} 'åţ' {0} 'one' 'two']",
                 "[{1}, {0} 'one' 'two']",
@@ -1530,15 +1325,7 @@ en_XA{
                 "[{1} 'åţ' {0} 'one' 'two']",
                 "[{1} 'åţ' {0} 'one' 'two']",
                 "[{1}, {0} 'one' 'two']",
-                "[{1}, {0} 'one' 'two']",
-=======
-                "{1}, {0}",
-                "{1}, {0}",
-                "{1}, {0}",
-                "{1}, {0}",
-                "{1}, {0}",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                "[{1}, {0} 'one' 'two']",            }
             DateTimeSkeletons{
                 "ahmmsszzzz",
                 "ahmmssz",
@@ -1549,8 +1336,7 @@ en_XA{
                 "[GyMMMd 'one']",
                 "[GGGGGyMd 'one' 'two']",
             }
-<<<<<<< HEAD
-            availableFormats{
+availableFormats{
                 E{"[ccc 'one']"}
                 EEEEd{"[EEEE d 'one']"}
                 Ed{"[d E 'one']"}
@@ -1664,21 +1450,12 @@ en_XA{
                     d{"[M/d/y – M/d/y G 'one' 'two' 'three']"}
                     y{"[M/d/y – M/d/y G 'one' 'two' 'three']"}
                 }
-            }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            }        }
         roc{
             eras{
                 abbreviated{
-<<<<<<< HEAD
-                    0{"[Ɓ·Ŕ·Ö·Ç· one two]"}
-                    1{"[Ṁîñĝûö one]"}
-=======
-                    "[Ɓ·Ŕ·Ö·Ç· one two]",
-                    "[Ṁîñĝûö one]",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+"[Ɓ·Ŕ·Ö·Ç· one two]",
+                    "[Ṁîñĝûö one]",                }
             }
         }
     }

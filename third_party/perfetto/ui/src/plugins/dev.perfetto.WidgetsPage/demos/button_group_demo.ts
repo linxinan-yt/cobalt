@@ -16,12 +16,7 @@ import m from 'mithril';
 import {Icons} from '../../../base/semantic_icons';
 import {
   Button,
-<<<<<<< HEAD
-  type ButtonAttrs,
-=======
-  ButtonAttrs,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  ButtonGroup,
+type ButtonAttrs,  ButtonGroup,
   ButtonVariant,
 } from '../../../widgets/button';
 import {Intent} from '../../../widgets/common';

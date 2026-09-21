@@ -36,17 +36,14 @@
 #include "third_party/blink/renderer/platform/graphics/canvas_snapshot_info.h"
 #include "third_party/blink/renderer/platform/timer.h"
 
-<<<<<<< HEAD
-namespace gfx {
-class Size;
-}
-=======
 #if BUILDFLAG(USE_STARBOARD_MEDIA)
 #include "third_party/blink/public/platform/web_media_player_client.h"
 #include "third_party/blink/renderer/platform/bindings/exception_state.h"
-#endif // BUILDFLAG(USE_STARBOARD_MEDIA)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
+#endif  // BUILDFLAG(USE_STARBOARD_MEDIA)
 
+namespace gfx {
+class Size;
+}
 namespace blink {
 
 class ImageBitmapOptions;
@@ -190,8 +187,7 @@ class CORE_EXPORT HTMLVideoElement final
     return visibility_tracker_.Get();
   }
 
-<<<<<<< HEAD
-  // HTMLMediaElement overrides.
+// HTMLMediaElement overrides.
   void OnCdmAttached(const media::CdmConfig& cdm_config) final;
 
   void RequestSaveVideoFrame() final;
@@ -199,7 +195,7 @@ class CORE_EXPORT HTMLVideoElement final
   bool poster_deferred_for_lazy_load_for_tests() const {
     return poster_deferred_for_lazy_load_;
   }
-=======
+
 #if BUILDFLAG(USE_STARBOARD_MEDIA)
   void SetMaxVideoCapabilities(const String& max_video_capabilities, ExceptionState& exception_state);
 
@@ -209,8 +205,6 @@ class CORE_EXPORT HTMLVideoElement final
 
   bool HasMaxVideoCapabilities() const { return !max_video_capabilities_.empty(); }
 #endif // BUILDFLAG(USE_STARBOARD_MEDIA)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
  protected:
   // EventTarget overrides.
   void AddedEventListener(const AtomicString& event_type,

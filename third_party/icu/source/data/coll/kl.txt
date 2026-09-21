@@ -8,12 +8,7 @@ kl{
                 "[import und-u-co-search]"
                 "[import kl-u-co-standard]"
             }
-<<<<<<< HEAD
-            Version{"48"}
-=======
-            Version{"47"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+Version{"48"}        }
         standard{
             Sequence{
                 "&D<<đ<<<Đ<<ð<<<Ð"
@@ -23,11 +18,6 @@ kl{
                 "&Y<<ü<<<Ü<<ű<<<Ű"
                 "&[before 1]ǀ<æ<<<Æ<<ä<<<Ä<<ę<<<Ę<ø<<<Ø<<ö<<<Ö<<ő<<<Ő<<œ<<<Œ<å<<<Å"
             }
-<<<<<<< HEAD
-            Version{"48"}
-=======
-            Version{"47"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+Version{"48"}        }
     }
 }

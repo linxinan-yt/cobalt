@@ -690,18 +690,14 @@ uk{
                     abbreviated{
                         afternoon1{"дня"}
                         evening1{"вечора"}
-<<<<<<< HEAD
-=======
-                        midnight{"ночі"}
+midnight{"ночі"}
                         morning1{"ранку"}
                         night1{"ночі"}
                         noon{"дня"}
                     }
                     narrow{
                         afternoon1{"дня"}
-                        evening1{"вечора"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                        midnight{"ночі"}
+                        evening1{"вечора"}                        midnight{"ночі"}
                         morning1{"ранку"}
                         night1{"ночі"}
                         noon{"дня"}
@@ -2120,9 +2116,7 @@ uk{
                 "[\\: ∶]",
             }
         }
-<<<<<<< HEAD
-=======
-        general{
+general{
             lenient{
                 "[.．․﹒ 。｡︒]",
                 "['＇’ ՚ ᾽᾿ ʼ]",
@@ -2134,9 +2128,7 @@ uk{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        number{
+        }        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ، ٫ 、﹑､︑]",

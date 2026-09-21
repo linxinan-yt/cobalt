@@ -15,13 +15,9 @@ hr{
         "Africa:Djibouti"{
             ec{"Džibuti"}
         }
-<<<<<<< HEAD
-=======
-        "Africa:Lome"{
+"Africa:Lome"{
             ec{"Lomé"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Anguilla"{
+        }        "America:Anguilla"{
             ec{"Angvila"}
         }
         "America:Bahia_Banderas"{
@@ -315,13 +311,9 @@ hr{
         "Indian:Mauritius"{
             ec{"Mauricijus"}
         }
-<<<<<<< HEAD
-=======
-        "Pacific:Enderbury"{
+"Pacific:Enderbury"{
             ec{"Enderbury"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Pacific:Fiji"{
+        }        "Pacific:Fiji"{
             ec{"Fidži"}
         }
         "Pacific:Honolulu"{

@@ -29,8 +29,6 @@
 
 U_NAMESPACE_BEGIN
 
-<<<<<<< HEAD
-=======
 /// @cond DOXYGEN_IGNORE
 // Export an explicit template instantiation of the LocalPointer that is used as a
 // data member of various MessageFormatDataModel classes.
@@ -43,10 +41,7 @@ template class U_I18N_API LocalPointerBase<message2::Formattable>;
 template class U_I18N_API LocalArray<UnicodeString>;
 template class U_I18N_API LocalArray<message2::Formattable>;
 #endif
-/// @endcond
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-namespace message2 {
+/// @endcondnamespace message2 {
 
     class MessageFormatter;
 
@@ -61,12 +56,7 @@ namespace message2 {
      * @internal ICU 75 technology preview
      * @deprecated This API is for technology preview only.
      */
-<<<<<<< HEAD
-    class U_I18N_API_CLASS MessageArguments : public UObject {
-=======
-    class U_I18N_API MessageArguments : public UObject {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    public:
+class U_I18N_API_CLASS MessageArguments : public UObject {    public:
         /**
          * Message arguments constructor, which takes a map and returns a container
          * of arguments that can be passed to a `MessageFormatter`.
@@ -78,12 +68,7 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API MessageArguments(const std::map<UnicodeString, Formattable>& args, UErrorCode& status) {
-=======
-        MessageArguments(const std::map<UnicodeString, Formattable>& args, UErrorCode& status) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            if (U_FAILURE(status)) {
+MessageArguments(const std::map<UnicodeString, Formattable>& args, UErrorCode& status) {            if (U_FAILURE(status)) {
                 return;
             }
             argumentNames = LocalArray<UnicodeString>(new UnicodeString[argsLen = static_cast<int32_t>(args.size())]);
@@ -106,44 +91,24 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API MessageArguments& operator=(MessageArguments&&) noexcept;
-=======
-        MessageArguments& operator=(MessageArguments&&) noexcept;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        /**
+MessageArguments& operator=(MessageArguments&&) noexcept;        /**
          * Default constructor.
          * Returns an empty arguments mapping.
          *
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API MessageArguments() = default;
-=======
-        MessageArguments() = default;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        /**
+U_I18N_API MessageArguments() = default;        /**
          * Destructor.
          *
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API virtual ~MessageArguments();
+U_I18N_API virtual ~MessageArguments();
     private:
         friend class MessageContext;
 
-        const Formattable* getArgument(const data_model::VariableName&,
-=======
-        virtual ~MessageArguments();
-    private:
-        friend class MessageContext;
-
-        const Formattable* getArgument(const MessageFormatter&,
-                                       const data_model::VariableName&,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                                       UErrorCode&) const;
+        const Formattable* getArgument(const data_model::VariableName&,                                       UErrorCode&) const;
 
         // Avoids using Hashtable so that code constructing a Hashtable
         // doesn't have to appear in this header file

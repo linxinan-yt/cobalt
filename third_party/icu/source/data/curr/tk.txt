@@ -1296,12 +1296,8 @@ tk{
             one{"zambiýa kwaçasy"}
             other{"zambiýa kwaçasy"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             one{"Zimbabwe altyny"}
             other{"Zimbabwe altyny"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

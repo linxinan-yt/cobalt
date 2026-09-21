@@ -168,9 +168,7 @@ om{
                         "H",
                         "Q",
                     }
-<<<<<<< HEAD
-=======
-                    wide{
+wide{
                         "Fulbaana",
                         "Guraandhala",
                         "Sadaasa",
@@ -184,9 +182,7 @@ om{
                         "Adoolessa",
                         "Hagayya",
                         "Qaam’ee",
-                    }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+                    }                }
             }
         }
         generic{
@@ -415,27 +411,6 @@ om{
                         "Dil",
                         "Wix",
                         "Kib",
-<<<<<<< HEAD
-=======
-                        "Rob",
-                        "Kam",
-                        "Jim",
-                        "San",
-                    }
-                    narrow{
-                        "D",
-                        "W",
-                        "K",
-                        "R",
-                        "K",
-                        "J",
-                        "S",
-                    }
-                    short{
-                        "Dil",
-                        "Wix",
-                        "Kib",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                         "Rob",
                         "Kam",
                         "Jim",
@@ -447,47 +422,6 @@ om{
                         "Kibxata",
                         "Roobii",
                         "Kamisa",
-<<<<<<< HEAD
-=======
-                        "Jimaata",
-                        "Sanbata",
-                    }
-                }
-                stand-alone{
-                    abbreviated{
-                        "Dil",
-                        "Wix",
-                        "Kib",
-                        "Rob",
-                        "Kam",
-                        "Jim",
-                        "San",
-                    }
-                    narrow{
-                        "D",
-                        "W",
-                        "K",
-                        "R",
-                        "K",
-                        "J",
-                        "S",
-                    }
-                    short{
-                        "Dil",
-                        "Wix",
-                        "Kib",
-                        "Rob",
-                        "Kam",
-                        "Jim",
-                        "San",
-                    }
-                    wide{
-                        "Dilbata",
-                        "Wiixata",
-                        "Kibxata",
-                        "Roobii",
-                        "Kamisa",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                         "Jimaata",
                         "Sanbata",
                     }
@@ -506,27 +440,7 @@ om{
             }
             eras{
                 abbreviated{
-<<<<<<< HEAD
-                    0{"DhKD"}
-                    1{"BA"}
-                }
-                abbreviated%variant{
-                    0{"BWD"}
-                    1{"BW"}
-                }
-                narrow{
-                    0{"Dh"}
-                    1{"B"}
-                }
-                wide{
-                    0{"Dhaloota Kiristoos Dura"}
-                    1{"Bara Araaraa"}
-                }
-                wide%variant{
-                    0{"Bara Waloo Dura"}
-                    1{"Bara Waloo"}
-=======
-                    "DhKD",
+"DhKD",
                     "BA",
                 }
                 abbreviated%variant{
@@ -547,9 +461,7 @@ om{
                 }
                 wide%variant{
                     "Bara Waloo Dura",
-                    "Bara Waloo",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+                    "Bara Waloo",                }
             }
             intervalFormats{
                 Gy{
@@ -599,25 +511,17 @@ om{
                 }
                 MMMEd{
                     M{"E, MMM d – E, MMM d"}
-<<<<<<< HEAD
-=======
-                    d{"MMM d, E – MMM d, E"}
+d{"MMM d, E – MMM d, E"}
                 }
                 MMMd{
-                    M{"MMM d – MMM d"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+                    M{"MMM d – MMM d"}                }
                 Md{
                     M{"M/d – M/d"}
                     d{"M/d – M/d"}
                 }
                 h{
                     a{"h a – h a "}
-<<<<<<< HEAD
-=======
-                    h{"h–h a"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+h{"h–h a"}                }
                 hm{
                     a{"h:mm a – h:mm a"}
                     h{"h:mm–h:mm a"}
@@ -734,9 +638,7 @@ om{
                         "O",
                         "S",
                         "M",
-<<<<<<< HEAD
-=======
-                    }
+}
                     wide{
                         "Amajjii",
                         "Guraandhala",
@@ -749,9 +651,7 @@ om{
                         "Fulbaana",
                         "Onkoloolessa",
                         "Sadaasa",
-                        "Mudde",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    }
+                        "Mudde",                    }
                 }
             }
             quarters{
@@ -767,9 +667,7 @@ om{
                         "Kurmaana 2ffaa",
                         "Kurmaana 3ffaa",
                         "Kurmaana 4ffaa",
-<<<<<<< HEAD
-=======
-                    }
+}
                 }
                 stand-alone{
                     abbreviated{
@@ -782,9 +680,7 @@ om{
                         "Kurmaana 1ffaa",
                         "Kurmaana 2ffaa",
                         "Kurmaana 3ffaa",
-                        "Kurmaana 4ffaa",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    }
+                        "Kurmaana 4ffaa",                    }
                 }
             }
         }
@@ -809,16 +705,12 @@ om{
             }
         }
         day-narrow{
-<<<<<<< HEAD
-=======
-            dn{"guyyaa"}
+dn{"guyyaa"}
             relative{
                 "-1"{"kaleessa"}
                 "0"{"har’a"}
                 "1"{"boru"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            relativeTime{
+            }            relativeTime{
                 future{
                     one{"g {0} keessatti"}
                     other{"g {0} keessatti"}
@@ -829,12 +721,7 @@ om{
                 }
             }
         }
-<<<<<<< HEAD
-        dayOfYear{
-            dn{"guyyaa waggaa"}
-        }
-=======
-        day-short{
+day-short{
             dn{"guyyaa"}
             relative{
                 "-1"{"kaleessa"}
@@ -857,20 +744,13 @@ om{
         }
         dayOfYear-narrow{
             dn{"guyyaa kan wg."}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        dayOfYear-short{
+        }        dayOfYear-short{
             dn{"guyyaa kan wg."}
         }
         dayperiod{
             dn{"WD/WB"}
         }
-<<<<<<< HEAD
-        era{
-            dn{"bara"}
-        }
-=======
-        dayperiod-narrow{
+dayperiod-narrow{
             dn{"WD/WB"}
         }
         dayperiod-short{
@@ -884,9 +764,7 @@ om{
         }
         era-short{
             dn{"bara"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        fri{
+        }        fri{
             relative{
                 "-1"{"Jimaata darbe"}
                 "0"{"Jimaata kana"}
@@ -955,13 +833,9 @@ om{
         }
         hour-narrow{
             dn{"sa"}
-<<<<<<< HEAD
-=======
-            relative{
+relative{
                 "0"{"sa’aatii kana"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            relativeTime{
+            }            relativeTime{
                 future{
                     one{"h {0} keessatti"}
                     other{"h {0} keessatti"}
@@ -974,13 +848,9 @@ om{
         }
         hour-short{
             dn{"sa."}
-<<<<<<< HEAD
-=======
-            relative{
+relative{
                 "0"{"sa’aatii kana"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            relativeTime{
+            }            relativeTime{
                 future{
                     one{"sa. {0} keessatti"}
                     other{"sa. {0} keessatti"}
@@ -1006,13 +876,9 @@ om{
         }
         minute-narrow{
             dn{"dq"}
-<<<<<<< HEAD
-=======
-            relative{
+relative{
                 "0"{"daqiiqaa kana"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            relativeTime{
+            }            relativeTime{
                 future{
                     one{"d {0} keessatti"}
                     other{"d {0} keessatti"}
@@ -1110,15 +976,11 @@ om{
         }
         month-narrow{
             dn{"ji"}
-<<<<<<< HEAD
-=======
-            relative{
+relative{
                 "-1"{"ji. darbe"}
                 "0"{"ji. kana"}
                 "1"{"ji. dhufu"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            relativeTime{
+            }            relativeTime{
                 future{
                     one{"ji {0} keessatti"}
                     other{"ji {0} keessatti"}
@@ -1270,13 +1132,9 @@ om{
         }
         second-narrow{
             dn{"sek"}
-<<<<<<< HEAD
-=======
-            relative{
+relative{
                 "0"{"amma"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            relativeTime{
+            }            relativeTime{
                 future{
                     one{"s {0} keessatti"}
                     other{"s {0} keessatti"}
@@ -1289,13 +1147,9 @@ om{
         }
         second-short{
             dn{"sek."}
-<<<<<<< HEAD
-=======
-            relative{
+relative{
                 "0"{"amma"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            relativeTime{
+            }            relativeTime{
                 future{
                     one{"sek. {0} keessatti"}
                     other{"sek. {0} keessatti"}
@@ -1531,16 +1385,12 @@ om{
         }
         week-narrow{
             dn{"tr"}
-<<<<<<< HEAD
-=======
-            relative{
+relative{
                 "-1"{"tr. darbe"}
                 "0"{"tr. kana"}
                 "1"{"tr. dhufu"}
             }
-            relativePeriod{"torban {0}"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            relativeTime{
+            relativePeriod{"torban {0}"}            relativeTime{
                 future{
                     one{"w {0} keessatti"}
                     other{"w {0} keessatti"}
@@ -1558,11 +1408,7 @@ om{
                 "0"{"tr. kana"}
                 "1"{"tr. dhufu"}
             }
-<<<<<<< HEAD
-=======
-            relativePeriod{"torban {0}"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            relativeTime{
+relativePeriod{"torban {0}"}            relativeTime{
                 future{
                     one{"tr. {0} keessatti"}
                     other{"tr. {0} keessatti"}
@@ -1585,25 +1431,17 @@ om{
         weekday{
             dn{"guyyaa kan torbee"}
         }
-<<<<<<< HEAD
-=======
-        weekday-narrow{
+weekday-narrow{
             dn{"guyyaa kan tr."}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        weekday-short{
+        }        weekday-short{
             dn{"guyyaa kan tr."}
         }
         weekdayOfMonth{
             dn{"guyyaatorbee kan ji’aa"}
         }
-<<<<<<< HEAD
-=======
-        weekdayOfMonth-narrow{
+weekdayOfMonth-narrow{
             dn{"gytr. kan ji."}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        weekdayOfMonth-short{
+        }        weekdayOfMonth-short{
             dn{"gytr. kan ji."}
         }
         year{
@@ -1626,15 +1464,11 @@ om{
         }
         year-narrow{
             dn{"wg"}
-<<<<<<< HEAD
-=======
-            relative{
+relative{
                 "-1"{"wg. darbe"}
                 "0"{"wg. kana"}
                 "1"{"wg. dhufu"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            relativeTime{
+            }            relativeTime{
                 future{
                     one{"w {0} keessatti"}
                     other{"w {0} keessatti"}
@@ -1666,13 +1500,9 @@ om{
         zone{
             dn{"zoonii yeroo"}
         }
-<<<<<<< HEAD
-=======
-        zone-narrow{
+zone-narrow{
             dn{"zoonii"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        zone-short{
+        }        zone-short{
             dn{"zoonii"}
         }
     }

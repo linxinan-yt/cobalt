@@ -958,20 +958,9 @@ void UDPSocketPosix::ReadWatcher::OnFileCanReadWithoutBlocking(int) {
   TRACE_EVENT(NetTracingCategory(),
               "UDPSocketPosix::ReadWatcher::OnFileCanReadWithoutBlocking");
   if (!socket_->read_callback_.is_null()) {
-<<<<<<< HEAD
-    socket_->DidCompleteRead();
+socket_->DidCompleteRead();
   } else if (!socket_->read_multiple_callback_.is_null()) {
-    socket_->DidCompleteMultipleRead();
-=======
-#if BUILDFLAG(ENABLE_MULTI_PACKETS_PER_CALL_QUIC_OPTIMIZATIONS)
-    if(socket_->results_) {
-      socket_->DidCompleteMultiplePacketRead();
-      return;
-    }
-#endif
-    socket_->DidCompleteRead();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    socket_->DidCompleteMultipleRead();  }
 }
 
 void UDPSocketPosix::WriteWatcher::OnFileCanWriteWithoutBlocking(int) {
@@ -1034,7 +1023,6 @@ void UDPSocketPosix::DidCompleteRead() {
   }
 }
 
-<<<<<<< HEAD
 void UDPSocketPosix::DidCompleteMultipleRead() {
   CHECK(!read_multiple_callback_.is_null());
 
@@ -1049,20 +1037,6 @@ void UDPSocketPosix::DidCompleteMultipleRead() {
     DoReadMultipleCallback(std::move(result));
   }
 }
-=======
-#if BUILDFLAG(ENABLE_MULTI_PACKETS_PER_CALL_QUIC_OPTIMIZATIONS)
-void UDPSocketPosix::DidCompleteMultiplePacketRead() {
-  int result = InternalReadMultiplePackets(results_);
-  if (result != ERR_IO_PENDING) {
-    results_ = nullptr;
-    bool ok = read_socket_watcher_.StopWatchingFileDescriptor();
-    DCHECK(ok);
-    DoReadCallback(result);
-  }
-}
-#endif  // BUILDFLAG(ENABLE_MULTI_PACKETS_PER_CALL_QUIC_OPTIMIZATIONS)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 void UDPSocketPosix::LogRead(int result,
                              const char* bytes,
                              socklen_t addr_len,

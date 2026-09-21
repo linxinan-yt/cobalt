@@ -24,14 +24,10 @@ namespace perfetto::shlib {
 namespace {
 
 using perfetto::internal::TrackEventInternal;
-<<<<<<< HEAD
 // All interned string messages for track events must have this field number
 // structure.
 static constexpr uint32_t kInternedStringIidFieldNumber = 1;
 static constexpr uint32_t kInternedStringNameFieldNumber = 2;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 protos::pbzero::TrackEvent::Type EventType(int32_t type) {
   using Type = protos::pbzero::TrackEvent::Type;
   auto enum_type = static_cast<PerfettoTeType>(type);
@@ -44,23 +40,14 @@ protos::pbzero::TrackEvent::Type EventType(int32_t type) {
       return Type::TYPE_INSTANT;
     case PERFETTO_TE_TYPE_COUNTER:
       return Type::TYPE_COUNTER;
-<<<<<<< HEAD
-    case PERFETTO_TE_TYPE_STATE:
-      return Type::TYPE_STATE;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+case PERFETTO_TE_TYPE_STATE:
+      return Type::TYPE_STATE;  }
   return Type::TYPE_UNSPECIFIED;
 }
 
 // Appends the fields described by `fields` to `msg`.
-<<<<<<< HEAD
 void AppendHlProtoFields(TrackEventIncrementalState* incr,
-                         protozero::Message* msg,
-=======
-void AppendHlProtoFields(protozero::Message* msg,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                         PerfettoTeHlProtoField* const* fields) {
+                         protozero::Message* msg,                         PerfettoTeHlProtoField* const* fields) {
   for (PerfettoTeHlProtoField* const* p = fields; *p != nullptr; p++) {
     switch ((*p)->type) {
       case PERFETTO_TE_HL_PROTO_TYPE_CSTR: {
@@ -68,8 +55,7 @@ void AppendHlProtoFields(protozero::Message* msg,
         msg->AppendString(field->header.id, field->str);
         break;
       }
-<<<<<<< HEAD
-      case PERFETTO_TE_HL_PROTO_TYPE_CSTR_INTERNED: {
+case PERFETTO_TE_HL_PROTO_TYPE_CSTR_INTERNED: {
         auto field = reinterpret_cast<PerfettoTeHlProtoFieldCstrInterned*>(*p);
         PERFETTO_DCHECK(field->interned_type_id != 0);
         if (field->interned_type_id) {
@@ -88,10 +74,7 @@ void AppendHlProtoFields(protozero::Message* msg,
         }
         // If interned_type_id is zero, this is a user error, we drop the packet
         break;
-      }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      case PERFETTO_TE_HL_PROTO_TYPE_BYTES: {
+      }      case PERFETTO_TE_HL_PROTO_TYPE_BYTES: {
         auto field = reinterpret_cast<PerfettoTeHlProtoFieldBytes*>(*p);
         msg->AppendBytes(field->header.id, field->buf, field->len);
         break;
@@ -100,12 +83,7 @@ void AppendHlProtoFields(protozero::Message* msg,
         auto field = reinterpret_cast<PerfettoTeHlProtoFieldNested*>(*p);
         auto* nested =
             msg->BeginNestedMessage<protozero::Message>(field->header.id);
-<<<<<<< HEAD
-        AppendHlProtoFields(incr, nested, field->fields);
-=======
-        AppendHlProtoFields(nested, field->fields);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        break;
+AppendHlProtoFields(incr, nested, field->fields);        break;
       }
       case PERFETTO_TE_HL_PROTO_TYPE_VARINT: {
         auto field = reinterpret_cast<PerfettoTeHlProtoFieldVarInt*>(*p);
@@ -288,8 +266,7 @@ void WriteTrackEvent(TrackEventIncrementalState* incr,
 
   for (const auto* it = extra_data; *it != nullptr; it++) {
     const struct PerfettoTeHlExtra& extra = **it;
-<<<<<<< HEAD
-    if (extra.type == PERFETTO_TE_HL_EXTRA_TYPE_CORRELATION_ID) {
+if (extra.type == PERFETTO_TE_HL_EXTRA_TYPE_CORRELATION_ID) {
       event->set_correlation_id(
           reinterpret_cast<const struct PerfettoTeHlExtraCorrelationId&>(extra)
               .id);
@@ -302,23 +279,14 @@ void WriteTrackEvent(TrackEventIncrementalState* incr,
   }
 
   for (const auto* it = extra_data; *it != nullptr; it++) {
-    const struct PerfettoTeHlExtra& extra = **it;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    if (extra.type == PERFETTO_TE_HL_EXTRA_TYPE_PROTO_FIELDS) {
+    const struct PerfettoTeHlExtra& extra = **it;    if (extra.type == PERFETTO_TE_HL_EXTRA_TYPE_PROTO_FIELDS) {
       const auto* fields =
           reinterpret_cast<const struct PerfettoTeHlExtraProtoFields&>(extra)
               .fields;
-<<<<<<< HEAD
-      AppendHlProtoFields(incr, event, fields);
-=======
-      AppendHlProtoFields(event, fields);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+AppendHlProtoFields(incr, event, fields);    }
   }
 }
 
-<<<<<<< HEAD
 // Emits (once per sequence) the track descriptor for the named track described
 // by `track` (its `header` is ignored) and returns the derived track uuid.
 uint64_t EmitNamedTrack(uint64_t parent_uuid,
@@ -327,26 +295,14 @@ uint64_t EmitNamedTrack(uint64_t parent_uuid,
                         perfetto::TraceWriterBase* trace_writer) {
   uint64_t uuid = parent_uuid;
   uuid ^= PerfettoFnv1a(track.name, strlen(track.name));
-  uuid ^= track.id;
-=======
-uint64_t EmitNamedTrack(uint64_t parent_uuid,
-                        const char* name,
-                        uint64_t id,
-                        perfetto::shlib::TrackEventIncrementalState* incr_state,
-                        perfetto::TraceWriterBase* trace_writer) {
-  uint64_t uuid = parent_uuid;
-  uuid ^= PerfettoFnv1a(name, strlen(name));
-  uuid ^= id;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  if (incr_state->seen_track_uuids.insert(uuid).second) {
+  uuid ^= track.id;  if (incr_state->seen_track_uuids.insert(uuid).second) {
     auto packet = trace_writer->NewTracePacket();
     auto* track_descriptor = packet->set_track_descriptor();
     track_descriptor->set_uuid(uuid);
     if (parent_uuid) {
       track_descriptor->set_parent_uuid(parent_uuid);
     }
-<<<<<<< HEAD
-    if (track.is_name_static) {
+if (track.is_name_static) {
       track_descriptor->set_static_name(track.name);
     } else {
       track_descriptor->set_name(track.name);
@@ -373,11 +329,7 @@ uint64_t EmitNamedTrack(uint64_t parent_uuid,
         track_descriptor->set_sibling_merge_key_int(
             track.sibling_merge_key_int);
       }
-    }
-=======
-    track_descriptor->set_name(name);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    }  }
   return uuid;
 }
 
@@ -402,11 +354,6 @@ uint64_t EmitProtoTrack(uint64_t uuid,
     auto packet = trace_writer->NewTracePacket();
     auto* track_descriptor = packet->set_track_descriptor();
     track_descriptor->set_uuid(uuid);
-<<<<<<< HEAD
-    AppendHlProtoFields(incr_state, track_descriptor, fields);
-=======
-    AppendHlProtoFields(track_descriptor, fields);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
   return uuid;
 }
@@ -422,12 +369,7 @@ uint64_t EmitProtoTrackWithParentUuid(
     auto* track_descriptor = packet->set_track_descriptor();
     track_descriptor->set_uuid(uuid);
     track_descriptor->set_parent_uuid(parent_uuid);
-<<<<<<< HEAD
-    AppendHlProtoFields(incr_state, track_descriptor, fields);
-=======
-    AppendHlProtoFields(track_descriptor, fields);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+AppendHlProtoFields(incr_state, track_descriptor, fields);  }
   return uuid;
 }
 
@@ -508,12 +450,7 @@ void InstanceOp(internal::DataSourceType* ds,
               .value;
     } else if (extra.type == PERFETTO_TE_HL_EXTRA_TYPE_COUNTER_DOUBLE) {
       double_counter =
-<<<<<<< HEAD
-          reinterpret_cast<const struct PerfettoTeHlExtraCounterDouble&>(extra)
-=======
-          reinterpret_cast<const struct PerfettoTeHlExtraCounterInt64&>(extra)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-              .value;
+reinterpret_cast<const struct PerfettoTeHlExtraCounterDouble&>(extra)              .value;
     } else if (extra.type == PERFETTO_TE_HL_EXTRA_TYPE_NO_INTERN) {
       use_interning = false;
     } else if (extra.type == PERFETTO_TE_HL_EXTRA_TYPE_FLUSH) {
@@ -554,18 +491,12 @@ void InstanceOp(internal::DataSourceType* ds,
   } else if (std::holds_alternative<const PerfettoTeHlExtraNamedTrack*>(
                  track)) {
     auto* named_track = std::get<const PerfettoTeHlExtraNamedTrack*>(track);
-<<<<<<< HEAD
-    PerfettoTeHlNestedTrackNamed named{};
+PerfettoTeHlNestedTrackNamed named{};
     named.name = named_track->name;
     named.id = named_track->id;
     named.is_name_static = named_track->is_name_static;
     track_uuid = EmitNamedTrack(named_track->parent_uuid, named, incr_state,
-                                trace_writer);
-=======
-    track_uuid = EmitNamedTrack(named_track->parent_uuid, named_track->name,
-                                named_track->id, incr_state, trace_writer);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  } else if (std::holds_alternative<const PerfettoTeHlExtraProtoTrack*>(
+                                trace_writer);  } else if (std::holds_alternative<const PerfettoTeHlExtraProtoTrack*>(
                  track)) {
     auto* proto_track = std::get<const PerfettoTeHlExtraProtoTrack*>(track);
     track_uuid = EmitProtoTrack(proto_track->uuid, proto_track->fields,
@@ -585,13 +516,7 @@ void InstanceOp(internal::DataSourceType* ds,
         case PERFETTO_TE_HL_NESTED_TRACK_TYPE_NAMED: {
           auto* named_track =
               reinterpret_cast<PerfettoTeHlNestedTrackNamed*>(*tp);
-<<<<<<< HEAD
-          uuid = EmitNamedTrack(uuid, *named_track, incr_state, trace_writer);
-=======
-          uuid = EmitNamedTrack(uuid, named_track->name, named_track->id,
-                                incr_state, trace_writer);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        } break;
+uuid = EmitNamedTrack(uuid, *named_track, incr_state, trace_writer);        } break;
         case PERFETTO_TE_HL_NESTED_TRACK_TYPE_PROCESS: {
           uuid = perfetto_te_process_track_uuid;
         } break;

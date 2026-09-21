@@ -63,27 +63,14 @@ class RenderingTrackerTest : public SimulatedTimeTestFixture {
       RTC_DCHECK_RUN_ON(queue_ptr_);
       rendering_tracker_ = std::make_unique<RenderingTracker>(
           env_,
-<<<<<<< HEAD
-          RenderingTracker::Config{.ssrc = EncodedFrameBuilderGenerator::kSsrc,
+RenderingTracker::Config{.ssrc = EncodedFrameBuilderGenerator::kSsrc,
                                    .render_delay = TimeDelta::Millis(10)},
           std::make_unique<VCMTiming>(&env_.clock(), env_.field_trials(),
-                                      /*render_delay=*/TimeDelta::Millis(10)),
-=======
-          RenderingTracker::Config{
-              .ssrc = EncodedFrameBuilderGenerator::kSsrc,
-              .render_delay = TimeDelta::Millis(10)},
-          std::make_unique<VCMTiming>(&env_.clock(), env_.field_trials()),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          &rendering_tracker_events_);
+                                      /*render_delay=*/TimeDelta::Millis(10)),          &rendering_tracker_events_);
       rendering_tracker_->SetDecodedFrameIdCallback(&decoded_frame_id_cb_);
     });
   }
-<<<<<<< HEAD
-  ~RenderingTrackerTest() override {
-=======
-  ~RenderingTrackerTest() {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    SendTask([this]() {
+~RenderingTrackerTest() override {    SendTask([this]() {
       RTC_DCHECK_RUN_ON(queue_ptr_);
       rendering_tracker_.reset();
     });

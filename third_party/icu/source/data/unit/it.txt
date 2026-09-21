@@ -415,15 +415,10 @@ it{
                 other{"{0} nanosecondi"}
             }
             night{
-<<<<<<< HEAD
-                gender{"feminine"}
-=======
-                dnam{"notti"}
+dnam{"notti"}
                 gender{"feminine"}
                 one{"{0} notte"}
-                other{"{0} notti"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                per{"{0} a notte"}
+                other{"{0} notti"}                per{"{0} a notte"}
             }
             quarter{
                 dnam{"trimestri"}
@@ -1032,15 +1027,8 @@ it{
                 other{"{0} nodi"}
             }
             light-speed{
-<<<<<<< HEAD
-                dnam{"luce"}
-                gender{"feminine"}
-=======
-                gender{"feminine"}
-                one{"{0} alla velocità della luce"}
-                other{"{0} alla velocità della luce"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+dnam{"luce"}
+                gender{"feminine"}            }
             meter-per-second{
                 dnam{"metri al secondo"}
                 gender{"masculine"}
@@ -1410,21 +1398,13 @@ it{
                 one{"{0}ppm"}
                 other{"{0}ppm"}
             }
-<<<<<<< HEAD
-            part-per-1e9{
+part-per-1e9{
                 one{"{0}ppb"}
                 other{"{0}ppb"}
             }
             percent{
                 dnam{"%"}
-            }
-=======
-            portion-per-1e9{
-                one{"{0}ppb"}
-                other{"{0}ppb"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            }        }
         consumption{
             liter-per-kilometer{
                 one{"{0}L/km"}
@@ -1990,10 +1970,6 @@ it{
                 other{"{0}kn"}
             }
             light-speed{
-<<<<<<< HEAD
-                dnam{"luce"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 one{"{0}l"}
                 other{"{0}l"}
             }
@@ -2511,11 +2487,7 @@ it{
                 other{"Bft {0}"}
             }
             light-speed{
-<<<<<<< HEAD
-                dnam{"luce"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                one{"{0} luce"}
+dnam{"luce"}                one{"{0} luce"}
                 other{"{0} luce"}
             }
         }

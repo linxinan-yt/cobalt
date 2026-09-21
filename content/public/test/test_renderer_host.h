@@ -153,18 +153,11 @@ class RenderFrameHostTester {
   virtual RenderFrameHost* AppendFencedFrame() = 0;
 #endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 
-<<<<<<< HEAD
-  // Creates the HidService and binds `receiver`.
-  virtual void CreateHidServiceForTesting(
-      mojo::PendingReceiver<blink::mojom::HidService> receiever) = 0;
-=======
 #if !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)
   // Creates the HidService and binds `receiver`.
   virtual void CreateHidServiceForTesting(
       mojo::PendingReceiver<blink::mojom::HidService> receiever) = 0;
 #endif  // !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 #if !BUILDFLAG(IS_COBALT)
   // Creates the WebUsbService and binds `receiver`.
   virtual void CreateWebUsbServiceForTesting(

@@ -311,21 +311,7 @@ void HangWatcher::SetDelegate(Delegate* delegate) {
 // Enables the HangWatcher. When disabled, the HangWatcher thread should not be
 // started. Enabled by default only on platforms where the generated data is
 // used, to avoid unnecessary overhead.
-<<<<<<< HEAD
 BASE_FEATURE(kEnableHangWatcher, HangWatcherFeatureDefault());
-=======
-BASE_FEATURE(kEnableHangWatcher,
-#if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_CHROMEOS) || \
-    BUILDFLAG(IS_LINUX)
-             FEATURE_ENABLED_BY_DEFAULT
-#elif BUILDFLAG(IS_COBALT)
-             FEATURE_ENABLED_BY_DEFAULT
-#else
-             FEATURE_DISABLED_BY_DEFAULT
-#endif
-);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 // Enable HangWatcher on the GPU process.
 BASE_FEATURE(kEnableHangWatcherOnGpuProcess, HangWatcherFeatureDefault());
 
@@ -535,7 +521,6 @@ WatchHangsInScope::~WatchHangsInScope() {
   state->DecrementNestingLevel();
 }
 
-<<<<<<< HEAD
 namespace {
 
 // Returns the effective log level to use, given `emit_crashes` and
@@ -568,7 +553,7 @@ LoggingLevel GetLoggingLevel(bool emit_crashes,
 }
 
 }  // namespace
-=======
+
 #if BUILDFLAG(IS_COBALT)
 LoggingLevel GetConfiguredLoggingLevel(HangWatcher::Delegate* delegate,
                                        HangWatcher::ThreadType thread_type) {
@@ -623,8 +608,6 @@ void HangWatcher::UpdateConfiguration() {
       std::memory_order_relaxed);
 }
 #endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 // static
 void HangWatcher::InitializeOnMainThread(ProcessType process_type,
                                          bool emit_crashes) {

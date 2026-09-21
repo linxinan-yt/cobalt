@@ -311,14 +311,8 @@ zh_Hant_HK{
                 dnam{"百萬分比"}
                 other{"{0} ppm"}
             }
-<<<<<<< HEAD
-            part-per-1e9{
-                dnam{"ppb"}
-=======
-            portion-per-1e9{
-                dnam{"濃度/十億"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+part-per-1e9{
+                dnam{"ppb"}            }
         }
         consumption{
             liter-per-100-kilometer{

@@ -13,11 +13,7 @@
 #include <algorithm>
 #include <vector>
 
-<<<<<<< HEAD
-#include "api/transport/ecn_marking.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "api/units/data_rate.h"
+#include "api/transport/ecn_marking.h"#include "api/units/data_rate.h"
 #include "api/units/time_delta.h"
 #include "api/units/timestamp.h"
 
@@ -125,7 +121,6 @@ PacerConfig PacerConfig::Create(Timestamp at_time,
   return pacer_config;
 }
 
-<<<<<<< HEAD
 bool TransportPacketsFeedback::HasPacketWithEcnCe() const {
   for (const PacketResult& fb : packet_feedbacks) {
     if (fb.ecn == EcnMarking::kCe) {
@@ -133,8 +128,4 @@ bool TransportPacketsFeedback::HasPacketWithEcnCe() const {
     }
   }
   return false;
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}  // namespace webrtc
+}}  // namespace webrtc

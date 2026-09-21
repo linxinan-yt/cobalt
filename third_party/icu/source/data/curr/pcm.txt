@@ -1056,12 +1056,8 @@ pcm{
             one{"Zámbiá kwácha"}
             other{"Zámbiá kwáchas"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             one{"Zimbábwẹn Gọ́ld"}
             other{"Zimbábwẹn Gọ́ld"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

@@ -16,15 +16,6 @@
 #include "build/buildflag.h"
 #include "cc/input/browser_controls_state.h"
 #include "content/browser/renderer_host/stored_page.h"
-<<<<<<< HEAD
-=======
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
-#include "content/browser/fenced_frame/fenced_frame_url_mapping.h"  // nogncheck
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-#include "content/browser/shared_storage/shared_storage_saved_query_data.h"
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "content/common/content_export.h"
 #include "content/common/navigation_client.mojom.h"
 #include "content/public/browser/page.h"
@@ -165,18 +156,14 @@ class CONTENT_EXPORT PageImpl : public Page {
 
   void SetContentsMimeType(std::string mime_type);
 
-<<<<<<< HEAD
-=======
-  void OnTextAutosizerPageInfoChanged(
+void OnTextAutosizerPageInfoChanged(
       blink::mojom::TextAutosizerPageInfoPtr page_info);
 
   blink::mojom::TextAutosizerPageInfo text_autosizer_page_info() const {
     return text_autosizer_page_info_;
   }
 
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  FencedFrameURLMapping& fenced_frame_urls_map() {
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)  FencedFrameURLMapping& fenced_frame_urls_map() {
     return fenced_frame_urls_map_;
   }
 #endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
@@ -365,36 +352,6 @@ class CONTENT_EXPORT PageImpl : public Page {
   FencedFrameURLMapping fenced_frame_urls_map_;
 #endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 
-<<<<<<< HEAD
-=======
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-  // If `blink::features::kSharedStorageSelectURLLimit` is enabled, the number
-  // of bits of entropy remaining in this pageload's overall budget for calls to
-  // `sharedStorage.selectURL()`. Calls from all sites on this page are
-  // charged to this budget. `select_url_overall_budget_` is not renewed until
-  // `this` is destroyed, and it does not rely on any assumptions about when
-  // specifically `this` is destroyed (e.g. during navigation or not).
-  std::optional<double> select_url_overall_budget_;
-
-  // If `blink::features::kSharedStorageSelectURLLimit` is enabled, the maximum
-  // number of bits of entropy in a single site's budget.
-  std::optional<double> select_url_max_bits_per_site_;
-
-  // A map of sites to the number bits of entropy remaining in the site's
-  // budget for calls to `sharedStorage.selectURL()` during this pageload.
-  // `select_url_per_site_budget_` is not cleared until `this` is destroyed,
-  // and it does not rely on any assumptions about when specifically `this` is
-  // destroyed (e.g. during navigation or not). Used only if
-  // `blink::features::kSharedStorageSelectURLLimit` is enabled.
-  base::flat_map<net::SchemefulSite, double> select_url_per_site_budget_;
-
-  // A map of tuples (origin, worklet script URL, operation name, query name) to
-  // the index returned for the corresponding `sharedStorage.selectURL()` query.
-  base::flat_map<std::tuple<url::Origin, GURL, std::string, std::u16string>,
-                 SharedStorageSavedQueryData>
-      select_url_saved_query_index_results_;
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // This class is owned by the main RenderFrameHostImpl and it's safe to keep a
   // reference to it.

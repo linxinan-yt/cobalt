@@ -270,13 +270,9 @@ tt{
         "America:Costa_Rica"{
             ec{"Коста-Рика"}
         }
-<<<<<<< HEAD
-        "America:Coyhaique"{
+"America:Coyhaique"{
             ec{"Куяйкә"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Creston"{
+        }        "America:Creston"{
             ec{"Крестон"}
         }
         "America:Cuiaba"{
@@ -1169,13 +1165,9 @@ tt{
         "Pacific:Efate"{
             ec{"Эфате"}
         }
-<<<<<<< HEAD
-        "Pacific:Enderbury"{
+"Pacific:Enderbury"{
             ec{"Кантон"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Pacific:Fakaofo"{
+        }        "Pacific:Fakaofo"{
             ec{"Факаофо"}
         }
         "Pacific:Fiji"{
@@ -1196,13 +1188,9 @@ tt{
         "Pacific:Guam"{
             ec{"Гуам"}
         }
-<<<<<<< HEAD
-=======
-        "Pacific:Kanton"{
+"Pacific:Kanton"{
             ec{"Кантон"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Pacific:Kiritimati"{
+        }        "Pacific:Kiritimati"{
             ec{"Киритимати"}
         }
         "Pacific:Kosrae"{
@@ -1289,14 +1277,9 @@ tt{
             ls{"Көньяк Африка вакыты"}
         }
         "meta:Africa_Western"{
-<<<<<<< HEAD
-            ls{"Көнбатыш Африка вакыты"}
-=======
-            ld{"Көнбатыш Африка җәйге вакыты"}
+ld{"Көнбатыш Африка җәйге вакыты"}
             lg{"Көнбатыш Африка вакыты"}
-            ls{"Көнбатыш Африка стандарт вакыты"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Көнбатыш Африка стандарт вакыты"}        }
         "meta:Alaska"{
             ld{"Аляска җәйге вакыты"}
             lg{"Аляска вакыты"}
@@ -1539,13 +1522,9 @@ tt{
         "meta:Guyana"{
             ls{"Гайана вакыты"}
         }
-<<<<<<< HEAD
-        "meta:Hawaii"{
+"meta:Hawaii"{
             ls{"Гавай-Алеут стандарт вакыты"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "meta:Hawaii_Aleutian"{
+        }        "meta:Hawaii_Aleutian"{
             ld{"Гавай-Алеут җәйге вакыты"}
             lg{"Гавай-Алеут вакыты"}
             ls{"Гавай-Алеут стандарт вакыты"}

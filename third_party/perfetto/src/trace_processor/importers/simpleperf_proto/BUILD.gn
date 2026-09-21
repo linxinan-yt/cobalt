@@ -24,20 +24,12 @@ source_set("simpleperf_proto") {
     "../../../../gn:default_deps",
     "../../../../include/perfetto/ext/base:base",
     "../../../../include/perfetto/protozero:protozero",
-<<<<<<< HEAD
-    "../../../../protos/perfetto/common:zero",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    "../../../../protos/third_party/simpleperf:zero",
+"../../../../protos/perfetto/common:zero",    "../../../../protos/third_party/simpleperf:zero",
     "../../importers/common:common",
     "../../sorter",
     "../../storage",
     "../../tables:tables_python",
     "../../types",
     "../../util:trace_blob_view_reader",
-<<<<<<< HEAD
-    "../../util:trace_type",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  ]
+"../../util:trace_type",  ]
 }

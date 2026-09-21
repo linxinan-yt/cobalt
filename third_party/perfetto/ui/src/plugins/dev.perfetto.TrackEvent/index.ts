@@ -31,7 +31,6 @@ import {createTraceProcessorStateTrack} from '../dev.perfetto.TraceProcessorTrac
 import {TraceProcessorCounterTrack} from '../dev.perfetto.TraceProcessorTrack/trace_processor_counter_track';
 import {getTrackName} from '../../public/utils';
 import {ThreadSliceDetailsPanel} from '../../components/details/thread_slice_details_tab';
-<<<<<<< HEAD
 import {FLAMEGRAPH_STATE_SCHEMA} from '../../widgets/flamegraph';
 import {CallstackDetailsSection} from '../dev.perfetto.TraceProcessorTrack/callstack_details_section';
 import type {Store} from '../../base/store';
@@ -45,133 +44,6 @@ import {
   GroupSummaryTrack,
 } from '../dev.perfetto.ProcessSummary/group_summary_track';
 import {TrackEventCallstackFlamegraphTab} from './track_event_callstack_flamegraph';
-=======
-import {AreaSelection, areaSelectionsEqual} from '../../public/selection';
-import {
-  metricsFromTableOrSubquery,
-  QueryFlamegraph,
-} from '../../components/query_flamegraph';
-import {Flamegraph} from '../../widgets/flamegraph';
-import {CallstackDetailsSection} from './callstack_details_section';
-
-function createTrackEventDetailsPanel(trace: Trace) {
-  return () =>
-    new ThreadSliceDetailsPanel(trace, {
-      rightSections: [new CallstackDetailsSection(trace)],
-    });
-}
-
-function createTrackEventCallstackFlamegraphTab(trace: Trace) {
-  let previousSelection: undefined | AreaSelection;
-  let flamegraph: undefined | QueryFlamegraph;
-  return {
-    id: 'track_event_callstack_flamegraph',
-    name: 'Track Event Callstacks',
-    render(selection: AreaSelection) {
-      const changed =
-        previousSelection === undefined ||
-        !areaSelectionsEqual(previousSelection, selection);
-      if (changed) {
-        flamegraph = computeTrackEventCallstackFlamegraph(trace, selection);
-        previousSelection = selection;
-      }
-      if (flamegraph === undefined) {
-        return undefined;
-      }
-      return {isLoading: false, content: flamegraph.render()};
-    },
-  };
-}
-
-function computeTrackEventCallstackFlamegraph(
-  trace: Trace,
-  selection: AreaSelection,
-) {
-  const trackIds = [];
-  for (const trackInfo of selection.tracks) {
-    if (trackInfo?.tags?.trackEvent === true) {
-      const tids = trackInfo.tags.trackIds;
-      if (tids) {
-        trackIds.push(...tids);
-      }
-    }
-  }
-  if (trackIds.length === 0) {
-    return undefined;
-  }
-  const metrics = metricsFromTableOrSubquery(
-    `
-      (
-        with relevant_slices as (
-          select id
-          from _interval_intersect_single!(
-            ${selection.start},
-            ${selection.end},
-            (
-              select
-                id,
-                ts,
-                -- We do this instead of filtering out negative durations
-                -- because we still want to include begin callsites for
-                -- incomplete slices. The code below will take care of
-                -- only looking at begin callsites for such slices.
-                max(dur, 0) as dur
-              from slice
-              where track_id in (${trackIds.join()})
-            )
-          )
-        )
-        select
-          id,
-          parent_id as parentId,
-          name,
-          mapping_name,
-          source_file || ':' || line_number as source_location,
-          self_count
-        from _callstacks_for_callsites!((
-          select extract_arg(arg_set_id, 'callsite_id') as callsite_id
-          from relevant_slices
-          join slice using (id)
-          where ts >= ${selection.start}
-            and ts <= ${selection.end}
-            and track_id in (${trackIds.join(',')})
-          union all
-          select extract_arg(arg_set_id, 'end_callsite_id') as callsite_id
-          from relevant_slices
-          join slice using (id)
-          where ts + dur >= ${selection.start}
-            and ts + dur <= ${selection.end}
-            and dur > 0
-            and extract_arg(arg_set_id, 'end_callsite_id') is not null
-        ))
-      )
-    `,
-    [
-      {
-        name: 'Samples',
-        unit: '',
-        columnName: 'self_count',
-      },
-    ],
-    `
-     include perfetto module callstacks.stack_profile;
-     include perfetto module intervals.intersect;
-    `,
-    [{name: 'mapping_name', displayName: 'Mapping'}],
-    [
-      {
-        name: 'source_location',
-        displayName: 'Source Location',
-        mergeAggregation: 'ONE_OR_SUMMARY',
-      },
-    ],
-  );
-  return new QueryFlamegraph(trace, metrics, {
-    state: Flamegraph.createDefaultState(metrics),
-  });
-}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 function createTrackEventDetailsPanel(trace: Trace) {
   return () =>
     new ThreadSliceDetailsPanel(trace, {
@@ -395,24 +267,16 @@ export default class TrackEventPlugin implements PerfettoPlugin {
             upid: upid ?? undefined,
             utid: utid ?? undefined,
             trackEvent: true,
-<<<<<<< HEAD
-            hasCallstacks: hasCallstacks === 1,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          },
+hasCallstacks: hasCallstacks === 1,          },
           renderer: await createTraceProcessorSliceTrack({
             trace: ctx,
             uri,
             trackIds,
             detailsPanel: createTrackEventDetailsPanel(ctx),
-<<<<<<< HEAD
-            depthTableName:
+depthTableName:
               trackIds.length > 1
                 ? '__trackevent_track_layout_depth'
-                : undefined,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          }),
+                : undefined,          }),
         });
       } else {
         // Summary track with no data but has children - use SliceTrackSummary
@@ -462,24 +326,9 @@ export default class TrackEventPlugin implements PerfettoPlugin {
       trackIdToTrackNode.set(trackIds[0], node);
     }
 
-<<<<<<< HEAD
-    const store = ensureExists(this.store);
+// Register area selection tab for callstack flamegraph
     ctx.selection.registerAreaSelectionTab(
-      new TrackEventCallstackFlamegraphTab(
-        ctx,
-        () => store.state.areaSelectionFlamegraphState,
-        (state) => {
-          store.edit((draft) => {
-            draft.areaSelectionFlamegraphState = state;
-          });
-        },
-      ),
-=======
-    // Register area selection tab for callstack flamegraph
-    ctx.selection.registerAreaSelectionTab(
-      createTrackEventCallstackFlamegraphTab(ctx),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    );
+      createTrackEventCallstackFlamegraphTab(ctx),    );
   }
 
   private findParentTrackNode(

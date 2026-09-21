@@ -13,14 +13,8 @@
 // limitations under the License.
 
 import {SliceTrack} from '../../components/tracks/slice_track';
-<<<<<<< HEAD
 import type {PerfettoPlugin} from '../../public/plugin';
-import type {Trace} from '../../public/trace';
-=======
-import {PerfettoPlugin} from '../../public/plugin';
-import {Trace} from '../../public/trace';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {TrackNode} from '../../public/workspace';
+import type {Trace} from '../../public/trace';import {TrackNode} from '../../public/workspace';
 import {SourceDataset} from '../../trace_processor/dataset';
 import {LONG, LONG_NULL, STR} from '../../trace_processor/query_result';
 

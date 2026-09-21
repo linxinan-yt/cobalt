@@ -419,12 +419,7 @@ public:
      * @return   The current UTC time in milliseconds.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_I18N_API static UDate U_EXPORT2 getNow();
-=======
-    static UDate U_EXPORT2 getNow();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API static UDate U_EXPORT2 getNow();
     /**
      * Gets this Calendar's time as milliseconds. May involve recalculation of time due
      * to previous calls to set time field values. The time specified is non-local UTC
@@ -862,12 +857,7 @@ public:
      * @return   The time zone object associated with this calendar.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_I18N_API const TimeZone& getTimeZone() const;
-=======
-    const TimeZone& getTimeZone() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API const TimeZone& getTimeZone() const;
     /**
      * Returns the time zone owned by this calendar. The caller owns the returned object
      * and must delete it when done.  After this call, the new time zone associated
@@ -876,12 +866,7 @@ public:
      * @return   The time zone object which was associated with this calendar.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_I18N_API TimeZone* orphanTimeZone();
-=======
-    TimeZone* orphanTimeZone();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API TimeZone* orphanTimeZone();
     /**
      * Queries if the current date for this Calendar is in Daylight Savings Time.
      *
@@ -912,12 +897,7 @@ public:
      * @return   True tells that date/time interpretation is to be lenient.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_I18N_API UBool isLenient() const;
-=======
-    UBool isLenient() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API UBool isLenient() const;
     /**
      * Sets the behavior for handling wall time repeating multiple times
      * at negative time zone offset transitions. For example, 1:30 AM on
@@ -949,12 +929,7 @@ public:
      * @see #setRepeatedWallTimeOption
      * @stable ICU 49
      */
-<<<<<<< HEAD
-    U_I18N_API UCalendarWallTimeOption getRepeatedWallTimeOption() const;
-=======
-    UCalendarWallTimeOption getRepeatedWallTimeOption() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API UCalendarWallTimeOption getRepeatedWallTimeOption() const;
     /**
      * Sets the behavior for handling skipped wall time at positive time zone offset
      * transitions. For example, 2:30 AM on March 13, 2011 in US Eastern time (America/New_York)
@@ -988,12 +963,7 @@ public:
      * @see #setSkippedWallTimeOption
      * @stable ICU 49
      */
-<<<<<<< HEAD
-    U_I18N_API UCalendarWallTimeOption getSkippedWallTimeOption() const;
-=======
-    UCalendarWallTimeOption getSkippedWallTimeOption() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API UCalendarWallTimeOption getSkippedWallTimeOption() const;
     /**
      * Sets what the first day of the week is; e.g., Sunday in US, Monday in France.
      *
@@ -1009,12 +979,7 @@ public:
      * @return   The first day of the week.
      * @deprecated ICU 2.6 use the overload with error code
      */
-<<<<<<< HEAD
-    U_I18N_API EDaysOfWeek getFirstDayOfWeek() const;
-=======
-    EDaysOfWeek getFirstDayOfWeek() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#endif  /* U_HIDE_DEPRECATED_API */
+U_I18N_API EDaysOfWeek getFirstDayOfWeek() const;#endif  /* U_HIDE_DEPRECATED_API */
 
     /**
      * Gets what the first day of the week is; e.g., Sunday in US, Monday in France.
@@ -1045,12 +1010,7 @@ public:
      * @return   The minimal days required in the first week of the year.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_I18N_API uint8_t getMinimalDaysInFirstWeek() const;
-=======
-    uint8_t getMinimalDaysInFirstWeek() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API uint8_t getMinimalDaysInFirstWeek() const;
 #ifndef U_FORCE_HIDE_DEPRECATED_API
     /**
      * Gets the minimum value for the given time field. e.g., for Gregorian
@@ -1273,12 +1233,7 @@ public:
      * resolving of time into time fields.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_I18N_API void clear();
-=======
-    void clear();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API void clear();
     /**
      * Clears the value in the given time field, both making it unset and assigning it a
      * value of zero. This field value will be determined during the next resolving of
@@ -1305,12 +1260,7 @@ public:
      *           same class ID. Objects of other classes have different class IDs.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_I18N_API virtual UClassID getDynamicClassID() const override = 0;
-=======
-    virtual UClassID getDynamicClassID() const override = 0;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+virtual UClassID getDynamicClassID() const override = 0;
     /**
      * Returns the calendar type name string for this Calendar object.
      * The returned string is the legacy ICU calendar attribute value,
@@ -1399,12 +1349,7 @@ public:
      * this calendar system, false otherwise.
      * @stable ICU 4.4
      */
-<<<<<<< HEAD
-    U_I18N_API virtual UBool isWeekend() const;
-=======
-    virtual UBool isWeekend() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API virtual UBool isWeekend() const;
     /**
      * Returns true if the date is in a leap year. Recalculate the current time
      * field values if the time value has been changed by a call to * setTime().
@@ -1460,12 +1405,7 @@ public:
      *
      * @stable ICU 73
      */
-<<<<<<< HEAD
-    U_I18N_API virtual void setTemporalMonthCode(const char* temporalMonth, UErrorCode& status);
-=======
-    virtual void setTemporalMonthCode(const char* temporalMonth, UErrorCode& status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API virtual void setTemporalMonthCode(const char* temporalMonth, UErrorCode& status);
 protected:
 
      /**
@@ -1607,31 +1547,20 @@ protected:
      * @return       The value for the given time field.
      * @internal
      */
-<<<<<<< HEAD
-    U_I18N_API inline int32_t internalGet(UCalendarDateFields field) const { return fFields[field]; }
-=======
-    inline int32_t internalGet(UCalendarDateFields field) const {return fFields[field];}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API inline int32_t internalGet(UCalendarDateFields field) const { return fFields[field]; }
     /**
      * The year in this calendar is counting from 1 backward if the era is 0.
      * @return The year in era 0 of this calendar is counting backward from 1.
      * @internal
      */
-<<<<<<< HEAD
-    U_I18N_API virtual bool isEra0CountingBackward() const { return false; }
+U_I18N_API virtual bool isEra0CountingBackward() const { return false; }
 
     /**
      * Related year difference.
      * @return The difference in Related year.
      * @internal
      */
-    U_I18N_API virtual int32_t getRelatedYearDifference() const;
-
-=======
-    virtual bool isEra0CountingBackward() const { return false; }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#endif  /* U_HIDE_INTERNAL_API */
+    U_I18N_API virtual int32_t getRelatedYearDifference() const;#endif  /* U_HIDE_INTERNAL_API */
 
     /**
      * Use this function instead of internalGet(UCAL_MONTH). The implementation
@@ -1642,12 +1571,7 @@ protected:
      * @return       The value for the UCAL_MONTH.
      * @internal
      */
-<<<<<<< HEAD
-    U_I18N_API virtual int32_t internalGetMonth(UErrorCode& status) const;
-=======
-    virtual int32_t internalGetMonth(UErrorCode& status) const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API virtual int32_t internalGetMonth(UErrorCode& status) const;
     /**
      * Use this function instead of internalGet(UCAL_MONTH, defaultValue). The implementation
      * check the timestamp of UCAL_MONTH and UCAL_ORDINAL_MONTH and use the
@@ -1661,12 +1585,7 @@ protected:
      * @return       The value for the UCAL_MONTH.
      * @internal
      */
-<<<<<<< HEAD
-    U_I18N_API virtual int32_t internalGetMonth(int32_t defaultValue, UErrorCode& status) const;
-=======
-    virtual int32_t internalGetMonth(int32_t defaultValue, UErrorCode& status) const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API virtual int32_t internalGetMonth(int32_t defaultValue, UErrorCode& status) const;
 #ifndef U_HIDE_DEPRECATED_API
     /**
      * Sets the value for a given time field.  This is a fast internal method for
@@ -1762,16 +1681,10 @@ protected:
      * day of the given month and year
      * @internal
      */
-<<<<<<< HEAD
-    U_I18N_API virtual int64_t handleComputeMonthStart(int32_t eyear,
+U_I18N_API virtual int64_t handleComputeMonthStart(int32_t eyear,
                                                        int32_t month,
                                                        UBool useMonth,
                                                        UErrorCode& status) const = 0;
-=======
-    virtual int64_t handleComputeMonthStart(int32_t eyear, int32_t month,
-                                            UBool useMonth, UErrorCode& status) const  = 0;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     /**
      * Return the number of days in the given month of the given extended
      * year of this calendar system.  Subclasses should override this
@@ -1779,14 +1692,9 @@ protected:
      * implementation than the default implementation in Calendar.
      * @internal
      */
-<<<<<<< HEAD
-    U_I18N_API virtual int32_t handleGetMonthLength(int32_t extendedYear,
+U_I18N_API virtual int32_t handleGetMonthLength(int32_t extendedYear,
                                                     int32_t month,
                                                     UErrorCode& status) const;
-=======
-    virtual int32_t handleGetMonthLength(int32_t extendedYear, int32_t month, UErrorCode& status) const ;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     /**
      * Return the number of days in the given extended year of this
      * calendar system.  Subclasses should override this method if they can
@@ -1794,12 +1702,7 @@ protected:
      * default implementation in Calendar.
      * @internal
      */
-<<<<<<< HEAD
-    U_I18N_API virtual int32_t handleGetYearLength(int32_t eyear, UErrorCode& status) const;
-=======
-    virtual int32_t handleGetYearLength(int32_t eyear, UErrorCode& status) const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API virtual int32_t handleGetYearLength(int32_t eyear, UErrorCode& status) const;
     /**
      * Return the extended year defined by the current fields.  This will
      * use the UCAL_EXTENDED_YEAR field or the UCAL_YEAR and supra-year fields (such
@@ -1809,12 +1712,7 @@ protected:
      * @return the extended year
      * @internal
      */
-<<<<<<< HEAD
-    U_I18N_API virtual int32_t handleGetExtendedYear(UErrorCode& status) = 0;
-=======
-    virtual int32_t handleGetExtendedYear(UErrorCode& status) = 0;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API virtual int32_t handleGetExtendedYear(UErrorCode& status) = 0;
     /**
      * Subclasses may override this.  This method calls
      * handleGetMonthLength() to obtain the calendar-specific month
@@ -1824,12 +1722,7 @@ protected:
      * @return julian day specified by calendar fields.
      * @internal
      */
-<<<<<<< HEAD
-    U_I18N_API virtual int32_t handleComputeJulianDay(UCalendarDateFields bestField, UErrorCode& status);
-=======
-    virtual int32_t handleComputeJulianDay(UCalendarDateFields bestField, UErrorCode &status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API virtual int32_t handleComputeJulianDay(UCalendarDateFields bestField, UErrorCode& status);
     /**
      * Subclasses must override this to convert from week fields
      * (YEAR_WOY and WEEK_OF_YEAR) to an extended year in the case
@@ -1838,14 +1731,9 @@ protected:
      * @return the extended year, UCAL_EXTENDED_YEAR
      * @internal
      */
-<<<<<<< HEAD
-    U_I18N_API virtual int32_t handleGetExtendedYearFromWeekFields(int32_t yearWoy,
+U_I18N_API virtual int32_t handleGetExtendedYearFromWeekFields(int32_t yearWoy,
                                                                    int32_t woy,
                                                                    UErrorCode& status);
-=======
-    virtual int32_t handleGetExtendedYearFromWeekFields(int32_t yearWoy, int32_t woy, UErrorCode& status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     /**
      * Validate a single field of this calendar.  Subclasses should
      * override this method to validate any calendar-specific fields.
@@ -1862,12 +1750,7 @@ protected:
      * @return the julian day
      * @internal
      */
-<<<<<<< HEAD
-    U_I18N_API int32_t computeJulianDay(UErrorCode& status);
-=======
-    int32_t computeJulianDay(UErrorCode &status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API int32_t computeJulianDay(UErrorCode& status);
     /**
      * Compute the milliseconds in the day from the fields.  This is a
      * value from 0 to 23:59:59.999 inclusive, unless fields are out of
@@ -2010,12 +1893,7 @@ protected:
      * @return     the current time without recomputing.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_I18N_API UDate internalGetTime() const { return fTime; }
-=======
-    UDate internalGetTime() const { return fTime; }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API UDate internalGetTime() const { return fTime; }
     /**
      * Set the current time without affecting flags or fields.
      *
@@ -2122,13 +2000,7 @@ protected:
      *          when this function fails.
      * @internal
      */
-<<<<<<< HEAD
-    U_I18N_API virtual int32_t getDefaultMonthInYear(int32_t eyear, UErrorCode& status);
-=======
-    virtual int32_t getDefaultMonthInYear(int32_t eyear, UErrorCode& status);
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+virtual int32_t getDefaultMonthInYear(int32_t eyear, UErrorCode& status);
     /**
      * Called by computeJulianDay.  Returns the default day (1-based) for the month,
      * taking currently-set year and era into account.  Defaults to 1 for Gregorian.
@@ -2138,12 +2010,7 @@ protected:
      *          when this function fails.
      * @internal
      */
-<<<<<<< HEAD
-    U_I18N_API virtual int32_t getDefaultDayInMonth(int32_t eyear, int32_t month, UErrorCode& status);
-=======
-    virtual int32_t getDefaultDayInMonth(int32_t eyear, int32_t month, UErrorCode& status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API virtual int32_t getDefaultDayInMonth(int32_t eyear, int32_t month, UErrorCode& status);
     //-------------------------------------------------------------------------
     // Protected utility methods for use by subclasses.  These are very handy
     // for implementing add, roll, and computeFields.
@@ -2262,12 +2129,7 @@ protected:
      * returns the local DOW, valid range 0..6
      * @internal
      */
-<<<<<<< HEAD
-    U_I18N_API int32_t getLocalDOW(UErrorCode& status);
-=======
-    int32_t getLocalDOW(UErrorCode& status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#endif  /* U_HIDE_INTERNAL_API */
+U_I18N_API int32_t getLocalDOW(UErrorCode& status);#endif  /* U_HIDE_INTERNAL_API */
 
 private:
 
@@ -2476,22 +2338,12 @@ private:
      * @return   Day number from 1..7 (SUN..SAT).
      * @internal
      */
-<<<<<<< HEAD
-    U_I18N_API static uint8_t julianDayToDayOfWeek(int32_t julian);
-#endif  /* U_HIDE_INTERNAL_API */
-
- private:
-    Locale validLocale;
-    Locale actualLocale;
-=======
-    static uint8_t julianDayToDayOfWeek(int32_t julian);
+static uint8_t julianDayToDayOfWeek(int32_t julian);
 #endif  /* U_HIDE_INTERNAL_API */
 
  private:
     CharString* validLocale = nullptr;
     CharString* actualLocale = nullptr;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
  public:
 #if !UCONFIG_NO_SERVICE
     /**
@@ -2505,12 +2357,7 @@ private:
      * @return a StringEnumeration over the locales available at the time of the call
      * @internal
      */
-<<<<<<< HEAD
-    U_I18N_API static StringEnumeration* getAvailableLocales();
-=======
-    static StringEnumeration* getAvailableLocales();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API static StringEnumeration* getAvailableLocales();
     /**
      * Register a new Calendar factory.  The factory will be adopted.
      * INTERNAL in 2.6

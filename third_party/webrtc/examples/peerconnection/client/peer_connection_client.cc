@@ -64,12 +64,7 @@ void PeerConnectionClient::InitSocketSignals() {
   control_socket_->SubscribeConnectEvent(
       this, [this](webrtc::Socket* socket) { OnConnect(socket); });
   hanging_get_->SubscribeConnectEvent(
-<<<<<<< HEAD
-      this, [this](webrtc::Socket* socket) { OnHangingGetConnect(socket); });
-=======
-      [this](webrtc::Socket* socket) { OnHangingGetConnect(socket); });
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  control_socket_->SubscribeReadEvent(
+this, [this](webrtc::Socket* socket) { OnHangingGetConnect(socket); });  control_socket_->SubscribeReadEvent(
       this, [this](webrtc::Socket* socket) { OnRead(socket); });
   hanging_get_->SubscribeReadEvent(
       this, [this](webrtc::Socket* socket) { OnHangingGetRead(socket); });

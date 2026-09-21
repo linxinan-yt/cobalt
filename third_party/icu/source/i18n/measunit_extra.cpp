@@ -583,16 +583,10 @@ public:
           this->fType = TYPE_INITIAL_COMPOUND_PART;
       } else if (fMatch < kSimpleUnitOffset) {
           this->fType = TYPE_POWER_PART;
-<<<<<<< HEAD
-      } else if (fMatch < kAliasOffset) {
+} else if (fMatch < kAliasOffset) {
           this->fType = TYPE_SIMPLE_UNIT;
       } else {
-          this->fType = TYPE_ALIAS;
-=======
-      } else {
-          this->fType = TYPE_SIMPLE_UNIT;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      }
+          this->fType = TYPE_ALIAS;      }
   }
 
   static Token constantToken(StringPiece str, UErrorCode &status) {
@@ -616,11 +610,7 @@ public:
       TYPE_POWER_PART,
       TYPE_SIMPLE_UNIT,
       TYPE_CONSTANT_DENOMINATOR,
-<<<<<<< HEAD
-      TYPE_ALIAS,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  };
+TYPE_ALIAS,  };
 
   // Calling getType() is invalid, resulting in an assertion failure, if Token
   // value isn't positive.
@@ -666,15 +656,10 @@ public:
         return fMatch - kSimpleUnitOffset;
     }
 
-<<<<<<< HEAD
-    int32_t getAliasIndex() const {
+int32_t getAliasIndex() const {
         U_ASSERT(getType() == TYPE_ALIAS);
         return static_cast<int32_t>(fMatch - kAliasOffset);
-    }
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    // TODO: Consider moving this to a separate utility class.
+    }    // TODO: Consider moving this to a separate utility class.
     // Utility function to parse a string into an unsigned long value.
     // The value must be a positive integer within the range [1, INT64_MAX].
     // The input can be in integer or scientific notation.
@@ -796,14 +781,10 @@ public:
             }
 
             if (singleUnitOrConstant.isConstantDenominator()) {
-<<<<<<< HEAD
-                if (result.constantDenominator > 0) {
+if (result.constantDenominator > 0) {
                     status = kUnitIdentifierSyntaxError;
                     return result;
-                }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                result.constantDenominator = singleUnitOrConstant.getConstantDenominator();
+                }                result.constantDenominator = singleUnitOrConstant.getConstantDenominator();
                 result.complexity = UMEASURE_UNIT_COMPOUND;
                 continue;
             }
@@ -963,8 +944,7 @@ private:
             return {};
         }
 
-<<<<<<< HEAD
-        // Handles the case where the alias replacement begins with "per-".
+// Handles the case where the alias replacement begins with "per-".
         // For example:
         //    if the alias is "permeter" and the replacement is "per-meter".
         // NOTE: This case does not currently exist in CLDR, but this code anticipates possible future
@@ -975,11 +955,7 @@ private:
             if (U_FAILURE(status)) {
                 return {};
             }
-        }
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        fJustSawPer = false;
+        }        fJustSawPer = false;
 
         if (atStart) {
             // Identifiers optionally start with "per-".
@@ -1072,14 +1048,9 @@ private:
                 singleUnitResult.index = token.getSimpleUnitIndex();
                 break;
 
-<<<<<<< HEAD
-            case Token::TYPE_ALIAS:
+case Token::TYPE_ALIAS:
                 processAlias(token, status);
-                break;
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            default:
+                break;            default:
                 status = kUnitIdentifierSyntaxError;
                 return {};
             }
@@ -1100,8 +1071,7 @@ private:
         }
 
         return SingleUnitOrConstant::singleUnitValue(singleUnitResult);
-<<<<<<< HEAD
-    }
+}
 
   private:
     /**
@@ -1140,10 +1110,7 @@ private:
         fSource = StringPiece(fModifiedSource.data(), fModifiedSource.length());
         fIndex = 0;
 
-        return;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        return;    }
 };
 
 // Sorting function wrapping SingleUnitImpl::compareTo for use with uprv_sortArray.
@@ -1585,15 +1552,10 @@ void MeasureUnitImpl::serialize(UErrorCode &status) {
     if (U_FAILURE(status)) {
         return;
     }
-<<<<<<< HEAD
-    this->identifier = result.toStringPiece();
+this->identifier = result.toStringPiece();
     if (this->identifier.isEmpty() != result.isEmpty()) {
         status = U_MEMORY_ALLOCATION_ERROR;
-    }
-=======
-    this->identifier = CharString(result, status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+    }}
 
 MeasureUnit MeasureUnitImpl::build(UErrorCode &status) && {
     this->serialize(status);
@@ -1621,37 +1583,17 @@ MeasureUnit MeasureUnit::withPrefix(UMeasurePrefix prefix,
 }
 
 uint64_t MeasureUnit::getConstantDenominator(UErrorCode &status) const {
-<<<<<<< HEAD
-    // TODO(ICU-23219)
-    auto measureUnitImpl = MeasureUnitImpl::forMeasureUnitMaybeCopy(*this, status);
-=======
-    auto complexity = this->getComplexity(status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    if (U_FAILURE(status)) {
+// TODO(ICU-23219)
+    auto measureUnitImpl = MeasureUnitImpl::forMeasureUnitMaybeCopy(*this, status);    if (U_FAILURE(status)) {
         return 0;
     }
 
-<<<<<<< HEAD
-    auto complexity = measureUnitImpl.complexity;
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    if (complexity != UMEASURE_UNIT_SINGLE && complexity != UMEASURE_UNIT_COMPOUND) {
+auto complexity = measureUnitImpl.complexity;    if (complexity != UMEASURE_UNIT_SINGLE && complexity != UMEASURE_UNIT_COMPOUND) {
         status = U_ILLEGAL_ARGUMENT_ERROR;
         return 0;
     }
 
-<<<<<<< HEAD
-
-    return measureUnitImpl.constantDenominator;
-=======
-    if (this->fImpl == nullptr) {
-        return 0;
-    }
-
-    return this->fImpl->constantDenominator;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+return measureUnitImpl.constantDenominator;}
 
 MeasureUnit MeasureUnit::withConstantDenominator(uint64_t denominator, UErrorCode &status) const {
     // To match the behavior of the Java API, we do not allow a constant denominator
@@ -1719,14 +1661,8 @@ MeasureUnit MeasureUnit::product(const MeasureUnit& other, UErrorCode& status) c
         impl.appendSingleUnit(*otherImpl.singleUnits[i], status);
     }
 
-<<<<<<< HEAD
-    uint64_t currentConstatDenominator = impl.constantDenominator;
-    uint64_t otherConstantDenominator = otherImpl.constantDenominator;
-=======
-    uint64_t currentConstatDenominator = this->getConstantDenominator(status);
+uint64_t currentConstatDenominator = this->getConstantDenominator(status);
     uint64_t otherConstantDenominator = other.getConstantDenominator(status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     // TODO: we can also multiply the constant denominators instead of returning an error.
     if (currentConstatDenominator != 0 && otherConstantDenominator != 0) {
         // There is only `one` constant denominator in a compound unit.

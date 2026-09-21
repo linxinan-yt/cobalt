@@ -966,21 +966,13 @@ ms{
             }
         }
         dayOfYear{
-<<<<<<< HEAD
-            dn{"hari dalam tahun"}
-        }
-        dayOfYear-short{
-            dn{"hari dlm thn"}
-=======
-            dn{"Hari dalam Tahun"}
+dn{"Hari dalam Tahun"}
         }
         dayOfYear-narrow{
             dn{"Hari dlm Thn"}
         }
         dayOfYear-short{
-            dn{"Hari dlm Thn"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            dn{"Hari dlm Thn"}        }
         dayperiod{
             dn{"PG/PTG"}
         }
@@ -1397,37 +1389,22 @@ ms{
             }
         }
         weekOfMonth{
-<<<<<<< HEAD
-            dn{"minggu dalam bulan"}
-        }
-        weekOfMonth-narrow{
-            dn{"mgu dlm bln"}
-        }
-        weekOfMonth-short{
-            dn{"minggu dlm bln"}
-=======
-            dn{"Minggu dalam Bulan"}
+dn{"Minggu dalam Bulan"}
         }
         weekOfMonth-narrow{
             dn{"Minggu dalam Bulan"}
         }
         weekOfMonth-short{
-            dn{"Minggu dlm bulan"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            dn{"Minggu dlm bulan"}        }
         weekday{
             dn{"Hari dalam Minggu"}
         }
         weekdayOfMonth{
             dn{"Hari dalam Bulan"}
         }
-<<<<<<< HEAD
-=======
-        weekdayOfMonth-narrow{
+weekdayOfMonth-narrow{
             dn{"Hari dlm bln"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        weekdayOfMonth-short{
+        }        weekdayOfMonth-short{
             dn{"Hari dlm bln"}
         }
         year{
@@ -1504,9 +1481,7 @@ ms{
                 "[\\: ∶]",
             }
         }
-<<<<<<< HEAD
-=======
-        general{
+general{
             lenient{
                 "[.．․﹒ 。｡︒]",
                 "['＇’ ՚ ᾽᾿ ʼ]",
@@ -1518,9 +1493,7 @@ ms{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        number{
+        }        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ، ٫ 、﹑､︑]",

@@ -38,11 +38,7 @@
 #include "rtc_base/socket_server.h"
 #include "rtc_base/strings/string_builder.h"
 #include "rtc_base/thread.h"
-<<<<<<< HEAD
-#include "test/create_test_environment.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "test/create_test_field_trials.h"
+#include "test/create_test_environment.h"#include "test/create_test_field_trials.h"
 #include "test/gmock.h"
 #include "test/gtest.h"
 #include "test/run_loop.h"
@@ -74,18 +70,10 @@ class PeerConnectionHeaderExtensionTest
                                           RtpHeaderExtensionId(3),
                                           RtpTransceiverDirection::kRecvOnly),
              RtpHeaderExtensionCapability("uri4",
-<<<<<<< HEAD
-                                          RtpHeaderExtensionId(4),
+RtpHeaderExtensionId(4),
                                           RtpTransceiverDirection::kSendRecv),
              RtpHeaderExtensionCapability("encrypted_uri",
-                                          RtpHeaderExtensionId(5),
-=======
-                                          4,
-                                          RtpTransceiverDirection::kSendRecv),
-             RtpHeaderExtensionCapability("encrypted_uri",
-                                          5,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                                          /* preferred_encrypt= */ true,
+                                          RtpHeaderExtensionId(5),                                          /* preferred_encrypt= */ true,
                                           RtpTransceiverDirection::kStopped)}) {
   }
 

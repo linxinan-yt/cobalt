@@ -492,12 +492,7 @@ endName
 
 # foreignGS
 name ; given; ಕ್ಯಾಥಿ
-<<<<<<< HEAD
-name ; surname; ಮುಲ್ಲರ್
-=======
-name ; surname; ಮಲ್ಲರ್
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-name ; locale; ja_AQ
+name ; surname; ಮುಲ್ಲರ್name ; locale; ja_AQ
 
 expectedResult; ಮುಲ್ಲರ್, ಕ್ಯಾಥಿ
 

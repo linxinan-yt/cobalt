@@ -59,28 +59,6 @@ class DummyFrontendChannel : public protocol::FrontendChannel {
 class InspectorEmulationAgentTest : public testing::Test {};
 
 TEST_F(InspectorEmulationAgentTest, ModifiesAcceptHeader) {
-<<<<<<< HEAD
-=======
-#if BUILDFLAG(ENABLE_DAV1D_DECODER)
-  String expected_default =
-      "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8";
-  String expected_no_webp =
-      "image/avif,image/apng,image/svg+xml,image/*,*/*;q=0.8";
-  String expected_no_webp_and_avif =
-      "image/apng,image/svg+xml,image/*,*/*;q=0.8";
-  String expected_no_avif =
-      "image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8";
-#else
-  String expected_default =
-      "image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8";
-  String expected_no_webp = "image/apng,image/svg+xml,image/*,*/*;q=0.8";
-  String expected_no_webp_and_avif =
-      "image/apng,image/svg+xml,image/*,*/*;q=0.8";
-  String expected_no_avif =
-      "image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8";
-#endif
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   HashSet<String> disabled_types;
 
   EXPECT_EQ(InspectorEmulationAgent::OverrideAcceptImageHeader(&disabled_types),

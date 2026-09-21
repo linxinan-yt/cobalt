@@ -209,12 +209,7 @@ class RTC_EXPORT UDPPort : public Port {
       absl::string_view reason);
 
   // Sends STUN requests to the server.
-<<<<<<< HEAD
-  void SendStunRequest(std::span<const uint8_t> data, StunRequest* req);
-=======
-  void SendStunRequest(const void* data, size_t size, StunRequest* req);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+void SendStunRequest(std::span<const uint8_t> data, StunRequest* req);
   // TODO(mallinaht): Move this up to Port when SignalAddressReady is
   // changed to SignalPortReady.
   void MaybeSetPortCompleteOrError();

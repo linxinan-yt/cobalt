@@ -737,8 +737,7 @@ ha{
             one{"Pula na Batsuwana"}
             other{"Pula na Batsuwana"}
         }
-<<<<<<< HEAD
-        BYN{
+BYN{
             one{"Ruble na Belarus"}
             other{"Ruble na Belarus"}
         }
@@ -750,13 +749,10 @@ ha{
             one{"Franc na Suwizalan"}
             other{"Franc na Suwizilan"}
         }
-=======
         CNH{
             one{"yuwan na ƙasar Sin (na wajen ƙasa)"}
             other{"yuwan na ƙasar Sin (na wajen ƙasa)"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        CUP{
+        }        CUP{
             one{"peso na ƙasar Cuba"}
             other{"Peso na ƙasar Kuba"}
         }
@@ -824,14 +820,10 @@ ha{
             one{"quetzal na ƙasar Guatemala"}
             other{"Quetzal na ƙasar Guatemala"}
         }
-<<<<<<< HEAD
-=======
-        HKD{
+HKD{
             one{"dalar Hong Kong"}
             other{"Dalar Hong Kong"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        HNL{
+        }        HNL{
             one{"lempira na ƙasar Honduras"}
             other{"Lempira na ƙasar Honduras"}
         }
@@ -963,24 +955,17 @@ ha{
             one{"Kina na ƙasar Papua New Guinea"}
             other{"Kina na ƙasar Papua New Guinea"}
         }
-<<<<<<< HEAD
-        PHP{
+PHP{
             one{"Peso na ƙasar Philippine"}
             other{"Peso na ƙasar Philippine"}
         }
-        PLN{
-            one{"zloty na Polan"}
-            other{"zloty na Polan"}
-=======
         PKR{
             one{"rupee na ƙasar Pakistan"}
             other{"Rupee na ƙasar Pakistan"}
         }
         PLN{
             one{"kuɗin Polan"}
-            other{"kuɗaɗen Polan"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            other{"kuɗaɗen Polan"}        }
         RON{
             one{"Leu na Romania"}
             other{"Leu na Romania"}
@@ -1022,14 +1007,8 @@ ha{
             other{"Leone na Saliyo"}
         }
         SLL{
-<<<<<<< HEAD
-            one{"Leone na Saliyo (1964—2022)"}
-            other{"Leone na Saliyo (1964—2022)"}
-=======
-            one{"Kuɗin Saliyo (1964—2022)"}
-            other{"Kuɗin Saliyo (1964—2022)"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+one{"Kuɗin Saliyo (1964—2022)"}
+            other{"Kuɗin Saliyo (1964—2022)"}        }
         SSP{
             one{"fam na Kudancin Sudan"}
             other{"Fam na Kudancin Sudan"}
@@ -1070,14 +1049,10 @@ ha{
             one{"peso na ƙasar Uruguay"}
             other{"Peso na ƙasar Uruguay"}
         }
-<<<<<<< HEAD
-=======
-        UZS{
+UZS{
             one{"som na ƙasar Uzbekistan"}
             other{"Som na ƙasar Uzbekistan"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        VND{
+        }        VND{
             one{"Dong na ƙasar Vietnam"}
             other{"Dong na ƙasar Vietnam"}
         }
@@ -1097,8 +1072,7 @@ ha{
             one{"riyal ɗin Yemen"}
             other{"Riyal ɗin Yemen"}
         }
-<<<<<<< HEAD
-        ZAR{
+ZAR{
             one{"Rand na Afirka ta Kudu"}
             other{"Rand na Afirka ta Kudu"}
         }
@@ -1109,8 +1083,5 @@ ha{
         ZWG{
             one{"Zinaren Zimbabwe"}
             other{"Zinaren Zimbabwe"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

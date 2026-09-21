@@ -7,26 +7,15 @@ ti{
         cf{"ቅርጺ ባጤራ"}
         collation{"ስርዓት ምድላው"}
         currency{"ባጤራ"}
-<<<<<<< HEAD
-        em{"ኣቀራርባ ኢሞጂ"}
+em{"ኣቀራርባ ኢሞጂ"}
         hc{"ዑደት ሰዓት (12 ኣንጻር 24)"}
         lb{"ቅዲ ምብታኽ መስመር"}
-        lw{"መስመር ምብታኽ ኣብ ውሽጢ ቃላት"}
-=======
-        hc{"ዑደት ሰዓት (12 ኣንጻር 24)"}
-        lb{"ቅዲ ምብታኽ መስመር"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        ms{"ስርዓት መለክዒ"}
+        lw{"መስመር ምብታኽ ኣብ ውሽጢ ቃላት"}        ms{"ስርዓት መለክዒ"}
         numbers{"ቁጽርታት"}
         ss{"ምቁራጽ ሓረግ ድሕሪ ኣሕጽሮተ ቃል"}
     }
     Languages{
-<<<<<<< HEAD
-        aa{"ዓፋር"}
-=======
-        aa{"አፋር"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        ab{"ኣብካዝኛ"}
+aa{"ዓፋር"}        ab{"ኣብካዝኛ"}
         ace{"ኣቸኒዝኛ"}
         ada{"ኣዳንግሜ"}
         ady{"ኣዲጊ"}
@@ -79,19 +68,11 @@ ti{
         brx{"ቦዶ"}
         bs{"ቦዝንኛ"}
         bss{"ኣኮስ"}
-<<<<<<< HEAD
-        bua{"ቡርያትኛ"}
+bua{"ቡርያትኛ"}
         bug{"ቡጊንኛ"}
         byn{"ብሊን"}
         ca{"ካታላን"}
-        cad{"ካዶ"}
-=======
-        bug{"ቡጊንኛ"}
-        byn{"ብሊን"}
-        ca{"ካታላን"}
-        cad{"ካድዶ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        cay{"ካዩጋ"}
+        cad{"ካዶ"}        cay{"ካዩጋ"}
         cch{"ኣትሳም"}
         ccp{"ቻክማ"}
         ce{"ቸቸንይና"}
@@ -105,12 +86,7 @@ ti{
         chr{"ቸሮኪ"}
         chy{"ሻያን"}
         cic{"ቺካሳው"}
-<<<<<<< HEAD
-        ckb{"ኩርዲሽ ሶራኒ"}
-=======
-        ckb{"ማእከላይ ኩርዲሽ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        clc{"ቺልኮቲን"}
+ckb{"ማእከላይ ኩርዲሽ"}        clc{"ቺልኮቲን"}
         co{"ኮርስኛ"}
         cop{"ቁብጥኛ"}
         crg{"ሚቺፍ"}
@@ -118,12 +94,7 @@ ti{
         crk{"ክሪ ቆላታት"}
         crl{"ሰሜናዊ ምብራቕ ክሪ"}
         crm{"ሙስ ክሪ"}
-<<<<<<< HEAD
-        crr{"ኣልጎንክኛ ካሮሊና"}
-=======
-        crr{"ካሮሊና አልጎንጉያኛ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        cs{"ቸክኛ"}
+crr{"ኣልጎንክኛ ካሮሊና"}        cs{"ቸክኛ"}
         csw{"ክሪ ረግረግ"}
         cu{"ቤተ-ክርስትያን ስላቭኛ"}
         cv{"ቹቫሽኛ"}
@@ -150,8 +121,7 @@ ti{
         eka{"ኤካጁክ"}
         el{"ግሪኽኛ"}
         en{"እንግሊዝኛ"}
-<<<<<<< HEAD
-        en_AU{"ኣውስትራልያዊ እንግሊዝኛ"}
+en_AU{"ኣውስትራልያዊ እንግሊዝኛ"}
         en_CA{"ካናዳዊ እንግሊዝኛ"}
         en_GB{"ብሪጣንያዊ እንግሊዝኛ"}
         en_US{"ኣመሪካዊ እንግሊዝኛ"}
@@ -159,13 +129,7 @@ ti{
         es{"ስጳንኛ"}
         es_419{"ላቲን ኣመሪካዊ ስጳንኛ"}
         es_ES{"ስጳንኛ (ኤውሮጳዊ)"}
-        es_MX{"ስጳንኛ ሜክሲኮ"}
-=======
-        eo{"ኤስፐራንቶ"}
-        es{"ስጳንኛ"}
-        es_ES{"ስጳንኛ (ኤውሮጳዊ)"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        et{"ኤስቶንኛ"}
+        es_MX{"ስጳንኛ ሜክሲኮ"}        et{"ኤስቶንኛ"}
         eu{"ባስክኛ"}
         ewo{"ኤዎንዶ"}
         fa{"ፋርስኛ"}
@@ -242,11 +206,7 @@ ti{
         kcg{"ታያፕ"}
         kde{"ማኮንደ"}
         kea{"ክርዮል ኬፕ ቨርድኛ"}
-<<<<<<< HEAD
-        kek{"ቄቅቺ"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        ken{"ኬንያንግ"}
+kek{"ቄቅቺ"}        ken{"ኬንያንግ"}
         kfo{"ኮሮ"}
         kgp{"ካይንጋንግ"}
         kha{"ካሲ"}
@@ -296,12 +256,7 @@ ti{
         lrc{"ሰሜናዊ ሉሪ"}
         lsm{"ሳምያ"}
         lt{"ሊትዌንኛ"}
-<<<<<<< HEAD
-        ltg{"ላትጋልኛ"}
-=======
-        ltg{"ላትጋላዊ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        lu{"ሉባ-ካታንጋ"}
+ltg{"ላትጋላዊ"}        lu{"ሉባ-ካታንጋ"}
         lua{"ሉባ-ሉልዋ"}
         lun{"ሉንዳ"}
         luo{"ሉኦ"}
@@ -425,20 +380,11 @@ ti{
         seh{"ሰና"}
         ses{"ኮይራቦሮ ሰኒ"}
         sg{"ሳንጎ"}
-<<<<<<< HEAD
-        sgs{"ሳሞጂትኛ"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        sh{"ሰርቦ-ክሮኤሽያኛ"}
+sgs{"ሳሞጂትኛ"}        sh{"ሰርቦ-ክሮኤሽያኛ"}
         shi{"ታቸልሂት"}
         shn{"ሻን"}
         si{"ሲንሃላ"}
-<<<<<<< HEAD
-        sid{"ሲዳሞ"}
-=======
-        sid{"ሲዳመኛ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        sk{"ስሎቫክኛ"}
+sid{"ሲዳመኛ"}        sk{"ስሎቫክኛ"}
         sl{"ስሎቬንኛ"}
         slh{"ደቡባዊ ሉሹትሲድ"}
         sm{"ሳሞእኛ"}
@@ -450,12 +396,7 @@ ti{
         snk{"ሶኒንከ"}
         so{"ሶማሊ"}
         sq{"ኣልባንኛ"}
-<<<<<<< HEAD
-        sr{"ሰርብኛ"}
-=======
-        sr{"ሰርቢያኛ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        srn{"ስራናን ቶንጎ"}
+sr{"ሰርቢያኛ"}        srn{"ስራናን ቶንጎ"}
         ss{"ስዋዚ"}
         ssy{"ሳሆ"}
         st{"ደቡባዊ ሶቶ"}
@@ -466,14 +407,8 @@ ti{
         sw{"ስዋሂሊ"}
         sw_CD{"ስዋሂሊ ኮንጎ"}
         swb{"ኮሞርኛ"}
-<<<<<<< HEAD
-        syr{"ሶርይኛ"}
-        szl{"ሲለዝኛ"}
-=======
-        syr{"ሶርያኛ"}
-        szl{"ሲሌሲያን"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        ta{"ታሚል"}
+syr{"ሶርያኛ"}
+        szl{"ሲሌሲያን"}        ta{"ታሚል"}
         tce{"ደቡባዊ ታትቾን"}
         te{"ተሉጉ"}
         tem{"ቲምኔ"}
@@ -494,12 +429,7 @@ ti{
         tpi{"ቶክ ፒሲን"}
         tr{"ቱርክኛ"}
         trv{"ታሮኮ"}
-<<<<<<< HEAD
-        trw{"ቶርዋሊ"}
-=======
-        trw{"ቶርዋሊኛ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        ts{"ሶንጋ"}
+trw{"ቶርዋሊኛ"}        ts{"ሶንጋ"}
         tt{"ታታር"}
         ttm{"ሰሜናዊ ታትቾን"}
         tum{"ተምቡካ"}
@@ -532,12 +462,7 @@ ti{
         wuu{"ቻይናዊ ዉ"}
         xal{"ካልምይክ"}
         xh{"ኮሳ"}
-<<<<<<< HEAD
-        xnr{"ካንግሪ"}
-=======
-        xnr{"ካንጋሪኛ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        xog{"ሶጋ"}
+xnr{"ካንጋሪኛ"}        xog{"ሶጋ"}
         yav{"ያንግበን"}
         ybb{"የምባ"}
         yi{"ይሁድኛ"}
@@ -573,11 +498,7 @@ ti{
         az{"ኣዘሪ"}
     }
     Languages%variant{
-<<<<<<< HEAD
-=======
-        ckb{"ኩርዲሽ፣ ሶራኒ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        hi_Latn{"ሂንግሊሽ"}
+ckb{"ኩርዲሽ፣ ሶራኒ"}        hi_Latn{"ሂንግሊሽ"}
     }
     Scripts{
         Adlm{"አድላም"}
@@ -662,8 +583,7 @@ ti{
             persian{"ናይ ፋርስ ዓውደ ኣዋርሕ"}
             roc{"ናይ ሪፓብሊክ ቻይና ዓውደ ኣዋርሕ"}
         }
-<<<<<<< HEAD
-        calendar%core{
+calendar%core{
             buddhist{"ቡድሃ"}
             chinese{"ቻይናዊ"}
             coptic{"ቅብጣዊ"}
@@ -679,27 +599,19 @@ ti{
             japanese{"ጃፓናዊ"}
             persian{"ፋርስ"}
             roc{"ሪፓብሊክ ቻይና"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        cf{
+        }        cf{
             account{"ቅርጺ ባጤራ ሕሳብ"}
             standard{"መደበኛ ቅርጺ ባጤራ"}
         }
-<<<<<<< HEAD
-        cf%core{
+cf%core{
             account{"ሕሳብ"}
             standard{"መደበኛ"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        collation{
+        }        collation{
             ducet{"ነባሪ ዩኒኮድ ስርዓት ምድላው"}
             search{"ሓፈሻዊ-ዕላማ ምድላይ"}
             standard{"መደበኛ ምድላው ስርዓት"}
         }
-<<<<<<< HEAD
-        collation%core{
+collation%core{
             ducet{"ነባሪ ዩኒኮድ"}
             search{"ምድላይ"}
             standard{"መደበኛ"}
@@ -708,31 +620,23 @@ ti{
             default{"ነባሪ"}
             emoji{"ኢሞጂ"}
             text{"ጽሑፍ"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        hc{
+        }        hc{
             h11{"ስርዓት 12 ሰዓታት (0–11)"}
             h12{"ስርዓት 12 ሰዓታት (1–12)"}
             h23{"ናይ 24 ሰዓታት ስርዓት (0–23)"}
             h24{"ናይ 24 ሰዓታት ስርዓት (1–24)"}
         }
-<<<<<<< HEAD
-        hc%core{
+hc%core{
             h11{"12 (0–11)"}
             h12{"12 (1–12)"}
             h23{"24 (0–23)"}
             h24{"24 (1–24)"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        lb{
+        }        lb{
             loose{"ልሕሉሕ መስመር ምብታኽ ቅዲ"}
             normal{"ንቡር ቅዲ ምብታኽ መስመር"}
             strict{"ቅዲ ስጡም መስመር ምብታኽ"}
         }
-<<<<<<< HEAD
-        lb%core{
+lb%core{
             loose{"ልሕሉሕ"}
             normal{"ንቡር"}
             strict{"ስጡም"}
@@ -742,23 +646,16 @@ ti{
             keepall{"ኩሉ ሓልዎ"}
             normal{"ንቡር"}
             phrase{"ብሓረጋት ምሓዝ"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        ms{
+        }        ms{
             metric{"ሜትሪክ ስርዓት"}
             uksystem{"ስርዓተ መለክዒ ሃጸያዊ"}
             ussystem{"ስርዓት መለክዒ ኣሜሪካ"}
         }
-<<<<<<< HEAD
-        ms%core{
+ms%core{
             metric{"ሜትሪክ"}
             uksystem{"ዓባይ ብሪጣንያ"}
             ussystem{"ኣሜሪካ"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        numbers{
+        }        numbers{
             arab{"ዓረብ-ህንዳዊ ኣሃዛት"}
             arabext{"ዝተዘርግሐ ኣሃዛት ዓረብ-ህንዳዊ"}
             armn{"ኣርመንያዊ ቁጽርታት"}
@@ -800,14 +697,10 @@ ti{
             tibt{"ናይ ትቤቲ ኣሃዛት"}
             vaii{"ቫይ ኣሃዛት"}
         }
-<<<<<<< HEAD
-        ss%core{
+ss%core{
             none{"ጠፊኡ"}
             standard{"በሪሑ"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
     Variants{
         1959ACAD{"ኣካዳምያዊ"}
     }

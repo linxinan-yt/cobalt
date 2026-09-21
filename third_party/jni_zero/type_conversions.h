@@ -30,14 +30,10 @@ namespace jni_zero {
   "_jni.h one."
 
 namespace internal {
-<<<<<<< HEAD
-=======
 #if BUILDFLAG(IS_COBALT)
 #if defined(__cpp_concepts) && __cpp_concepts >= 201907L
 template <typename T>
 concept IsJavaRef = std::is_base_of_v<JavaRef<jobject>, T>;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 template <typename T>
 concept HasReserve = requires(T t) { t.reserve(0); };
 
@@ -173,12 +169,7 @@ inline T FromJniType(JNIEnv* env, const JavaRef<jobject>& obj) {
   static_assert(sizeof(T) == 0, JNI_ZERO_CONVERSION_FAILED_MSG("FromJniType"));
 }
 
-<<<<<<< HEAD
-// Base template that is resolved only when other specializations are missing.
-=======
-#if defined(__cpp_concepts) && __cpp_concepts >= 201907L
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-template <typename T>
+#if defined(__cpp_concepts) && __cpp_concepts >= 201907Ltemplate <typename T>
   requires(!internal::HasSpecificSpecialization<T>)
 inline ScopedJavaLocalRef<jobject> ToJniType(JNIEnv* env, const T& obj) {
   static_assert(sizeof(T) == 0, JNI_ZERO_CONVERSION_FAILED_MSG("ToJniType"));
@@ -202,8 +193,6 @@ inline ScopedJavaLocalRef<jobject> ToJniType(JNIEnv* env, T obj) {
 }
 #endif
 
-<<<<<<< HEAD
-=======
 #if BUILDFLAG(IS_COBALT)
 #if defined(__cpp_concepts) && __cpp_concepts >= 201907L
 template <typename T>
@@ -228,10 +217,7 @@ inline ScopedJavaLocalRef<jobject> ToJniType(JNIEnv* env, const T& val) {
   // for catching coding errors?
   static_assert(sizeof(T) == 0, "Type does not require conversion.");
 }
-#endif  // BUILDFLAG(IS_COBALT)
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-// Allow conversions using pointers by wrapping non-pointer conversions.
+#endif  // BUILDFLAG(IS_COBALT)// Allow conversions using pointers by wrapping non-pointer conversions.
 // Cannot live in default_conversions.h because we want code to be able to
 // specialize it.
 template <typename T>
@@ -252,14 +238,7 @@ inline ScopedJavaLocalRef<jobject> ToJniType(JNIEnv* env, T* value) {
   "If this error is from a non-generated call, ensure that there "       \
   "exists an #include for jni_zero/default_conversions.h."
 
-<<<<<<< HEAD
-// Base template that is resolved only when other specializations are missing.
-=======
-// Convert from an stl container to a Java array. Uses ToJniType() on each
-// element.
-#if defined(__cpp_concepts) && __cpp_concepts >= 201907L
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-template <typename T>
+// Base template that is resolved only when other specializations are missing.template <typename T>
 inline ScopedJavaLocalRef<jobjectArray> ToJniArray(JNIEnv* env,
                                                    const T& obj,
                                                    jclass array_class) {

@@ -15,9 +15,7 @@ no{
         "Africa:Dar_es_Salaam"{
             ec{"Dar-es-Salaam"}
         }
-<<<<<<< HEAD
-=======
-        "Africa:El_Aaiun"{
+"Africa:El_Aaiun"{
             ec{"El Aaiún"}
         }
         "Africa:Lome"{
@@ -28,17 +26,13 @@ no{
         }
         "America:Argentina:Tucuman"{
             ec{"Tucumán"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Bahia_Banderas"{
+        }        "America:Bahia_Banderas"{
             ec{"Bahía Banderas"}
         }
         "America:Cayman"{
             ec{"Caymanøyene"}
         }
-<<<<<<< HEAD
-=======
-        "America:Cordoba"{
+"America:Cordoba"{
             ec{"Córdoba"}
         }
         "America:Cuiaba"{
@@ -46,9 +40,7 @@ no{
         }
         "America:Maceio"{
             ec{"Maceió"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Mexico_City"{
+        }        "America:Mexico_City"{
             ec{"Mexico by"}
         }
         "America:North_Dakota:Beulah"{
@@ -60,16 +52,12 @@ no{
         "America:North_Dakota:New_Salem"{
             ec{"New Salem, Nord-Dakota"}
         }
-<<<<<<< HEAD
-=======
-        "America:Santarem"{
+"America:Santarem"{
             ec{"Santarém"}
         }
         "America:Sao_Paulo"{
             ec{"São Paulo"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:St_Barthelemy"{
+        }        "America:St_Barthelemy"{
             ec{"Saint-Barthélemy"}
         }
         "Asia:Aqtau"{

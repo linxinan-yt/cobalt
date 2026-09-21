@@ -2173,15 +2173,7 @@ zh_Hant{
         }
         dayOfYear{
             dn{"該年第幾天"}
-<<<<<<< HEAD
-        }
-        dayperiod{
-            dn{"時段"}
-        }
-        era{
-            dn{"紀元"}
-=======
-        }
+}
         dayOfYear-narrow{
             dn{"該年第幾天"}
         }
@@ -2204,9 +2196,7 @@ zh_Hant{
             dn{"紀元"}
         }
         era-short{
-            dn{"紀元"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            dn{"紀元"}        }
         fri{
             relative{
                 "-1"{"上週五"}
@@ -2236,13 +2226,9 @@ zh_Hant{
                 }
             }
         }
-<<<<<<< HEAD
-=======
-        hour-narrow{
+hour-narrow{
             dn{"時"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        hour-short{
+        }        hour-short{
             dn{"時"}
         }
         minute{
@@ -2259,13 +2245,9 @@ zh_Hant{
                 }
             }
         }
-<<<<<<< HEAD
-=======
-        minute-narrow{
+minute-narrow{
             dn{"分"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        minute-short{
+        }        minute-short{
             dn{"分"}
         }
         mon{
@@ -2424,23 +2406,14 @@ zh_Hant{
         weekOfMonth{
             dn{"該月第幾週"}
         }
-<<<<<<< HEAD
-=======
-        weekOfMonth-narrow{
+weekOfMonth-narrow{
             dn{"月週次"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        weekOfMonth-short{
+        }        weekOfMonth-short{
             dn{"月週次"}
         }
         weekday{
             dn{"星期"}
-<<<<<<< HEAD
-        }
-        weekdayOfMonth{
-            dn{"該月第幾週"}
-=======
-        }
+}
         weekday-narrow{
             dn{"星期"}
         }
@@ -2454,9 +2427,7 @@ zh_Hant{
             dn{"該月第幾週"}
         }
         weekdayOfMonth-short{
-            dn{"該月第幾週"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            dn{"該月第幾週"}        }
         year{
             dn{"年"}
             relative{

@@ -50,16 +50,6 @@ describe('NodeIssues', () => {
       expect(issues.hasIssues()).toBe(true);
     });
 
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_issues_unittest.ts
-    it('should return true when executionError exists', () => {
-      const issues = new NodeIssues();
-      issues.executionError = new Error('Execution error');
-
-      expect(issues.hasIssues()).toBe(true);
-    });
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_issues_unittest.ts
     it('should return true when multiple issues exist', () => {
       const issues = new NodeIssues();
       issues.queryError = new Error('Query error');
@@ -105,18 +95,6 @@ describe('NodeIssues', () => {
       expect(result).toBe('Data Error: Invalid data format\n');
     });
 
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_issues_unittest.ts
-    it('should format executionError correctly', () => {
-      const issues = new NodeIssues();
-      issues.executionError = new Error('Materialization failed');
-
-      const result = issues.getTitle();
-
-      expect(result).toBe('Execution Error: Materialization failed\n');
-    });
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_issues_unittest.ts
     it('should format warnings correctly', () => {
       const issues = new NodeIssues();
       issues.warnings = [
@@ -163,19 +141,11 @@ describe('NodeIssues', () => {
   });
 
   describe('clear', () => {
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_issues_unittest.ts
-    it('should clear validation errors and warnings but not executionError', () => {
-=======
     it('should clear all errors and warnings', () => {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_issues_unittest.ts
       const issues = new NodeIssues();
       issues.queryError = new Error('Query error');
       issues.responseError = new Error('Response error');
       issues.dataError = new Error('Data error');
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_issues_unittest.ts
-      issues.executionError = new Error('Execution error');
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_issues_unittest.ts
       issues.warnings = [new Error('Warning 1'), new Error('Warning 2')];
 
       issues.clear();
@@ -184,14 +154,7 @@ describe('NodeIssues', () => {
       expect(issues.responseError).toBeUndefined();
       expect(issues.dataError).toBeUndefined();
       expect(issues.warnings).toEqual([]);
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_issues_unittest.ts
-      // executionError should NOT be cleared by clear()
-      expect(issues.executionError).toBeDefined();
-      expect(issues.executionError?.message).toBe('Execution error');
-      expect(issues.hasIssues()).toBe(true);
-=======
       expect(issues.hasIssues()).toBe(false);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_issues_unittest.ts
     });
 
     it('should work when called multiple times', () => {
@@ -201,11 +164,7 @@ describe('NodeIssues', () => {
       issues.clear();
       issues.clear();
 
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_issues_unittest.ts
-      expect(issues.queryError).toBeUndefined();
-=======
       expect(issues.hasIssues()).toBe(false);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_issues_unittest.ts
     });
 
     it('should allow adding new issues after clearing', () => {
@@ -229,29 +188,6 @@ describe('NodeIssues', () => {
     });
   });
 
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_issues_unittest.ts
-  describe('clearExecutionError', () => {
-    it('should clear only executionError', () => {
-      const issues = new NodeIssues();
-      issues.queryError = new Error('Query error');
-      issues.executionError = new Error('Execution error');
-
-      issues.clearExecutionError();
-
-      expect(issues.executionError).toBeUndefined();
-      expect(issues.queryError).toBeDefined();
-      expect(issues.hasIssues()).toBe(true);
-    });
-
-    it('should work when executionError is undefined', () => {
-      const issues = new NodeIssues();
-
-      expect(() => issues.clearExecutionError()).not.toThrow();
-    });
-  });
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_issues_unittest.ts
   describe('integration tests', () => {
     it('should maintain consistent state through lifecycle', () => {
       const issues = new NodeIssues();

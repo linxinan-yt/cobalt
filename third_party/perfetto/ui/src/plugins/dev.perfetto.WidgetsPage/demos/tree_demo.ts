@@ -43,13 +43,9 @@ export function renderTree(): m.Children {
       ),
     ),
     renderWidgetShowcase({
-<<<<<<< HEAD
-      initialOpts: {
+initialOpts: {
         bordered: false,
-      },
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      renderWidget: (opts) =>
+      },      renderWidget: (opts) =>
         m(
           Tree,
           opts,

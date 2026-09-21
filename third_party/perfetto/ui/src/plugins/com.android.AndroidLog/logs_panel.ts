@@ -18,19 +18,10 @@ import {DetailsShell} from '../../widgets/details_shell';
 import {Timestamp} from '../../components/widgets/timestamp';
 import type {Engine} from '../../trace_processor/engine';
 import {LONG, NUM, NUM_NULL, STR} from '../../trace_processor/query_result';
-<<<<<<< HEAD
 import {
   escapeQuery,
   escapeSearchQuery,
-  escapeRegexQuery,
-=======
-import {Monitor} from '../../base/monitor';
-import {AsyncLimiter} from '../../base/async_limiter';
-import {
-  escapeQuery,
-  escapeSearchQuery,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-} from '../../trace_processor/query_utils';
+  escapeRegexQuery,} from '../../trace_processor/query_utils';
 import {Select} from '../../widgets/select';
 import {
   type MultiSelectDiff,
@@ -42,14 +33,8 @@ import {Button} from '../../widgets/button';
 import {TextInput} from '../../widgets/text_input';
 import {
   Grid,
-<<<<<<< HEAD
-  type GridColumn,
-  type GridRow,
-=======
-  GridColumn,
-  GridRow,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  GridHeaderCell,
+type GridColumn,
+  type GridRow,  GridHeaderCell,
   GridCell,
 } from '../../widgets/grid';
 import {classNames} from '../../base/classnames';
@@ -65,11 +50,7 @@ const ROW_H = 24;
 export interface LogFilteringCriteria {
   readonly minimumLevel: number;
   readonly tags: string[];
-<<<<<<< HEAD
-  readonly isTagRegex?: boolean;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  readonly textEntry: string;
+readonly isTagRegex?: boolean;  readonly textEntry: string;
   readonly hideNonMatching: boolean;
   readonly machineExcludeList: number[];
 }
@@ -91,11 +72,7 @@ interface Pagination {
 
 interface LogEntries {
   readonly offset: number;
-<<<<<<< HEAD
-  readonly ids: number[];
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  readonly machineIds: number[];
+readonly ids: number[];  readonly machineIds: number[];
   readonly timestamps: time[];
   readonly pids: bigint[];
   readonly tids: bigint[];
@@ -109,14 +86,9 @@ interface LogEntries {
 
 export class LogPanel implements m.ClassComponent<LogPanelAttrs> {
   private readonly trace: Trace;
-<<<<<<< HEAD
-  private readonly executor = new AtomicTaskQueue();
+private readonly executor = new AtomicTaskQueue();
   private readonly viewQuery = new AsyncMemo<AsyncDisposable>(this.executor);
-  private readonly entriesQuery = new AsyncMemo<LogEntries>(this.executor);
-=======
-  private entries?: LogEntries;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  private pagination: Pagination = {
+  private readonly entriesQuery = new AsyncMemo<LogEntries>(this.executor);  private pagination: Pagination = {
     offset: 0,
     count: 0,
   };
@@ -131,17 +103,10 @@ export class LogPanel implements m.ClassComponent<LogPanelAttrs> {
   }
 
   view({attrs}: m.CVnode<LogPanelAttrs>) {
-<<<<<<< HEAD
-    const visibleSpan = attrs.trace.timeline.visibleWindow.toTimeSpan();
+const visibleSpan = attrs.trace.timeline.visibleWindow.toTimeSpan();
     const filters = attrs.filterStore.state;
     const pagination = this.pagination;
     const engine = attrs.trace.engine;
-=======
-    if (this.rowsMonitor.ifStateChanged()) {
-      this.scheduleDataReload(attrs);
-    }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     // Query 1: Create the filtered_logs table (no staleOn = always-fresh)
     const viewResult = this.viewQuery.use({
       key: {filters},
@@ -194,8 +159,7 @@ export class LogPanel implements m.ClassComponent<LogPanelAttrs> {
           store: attrs.filterStore,
         }),
       },
-<<<<<<< HEAD
-      this.renderGrid(attrs.trace, entries, attrs.cache),
+this.renderGrid(attrs.trace, entries, attrs.cache),
     );
   }
 
@@ -259,68 +223,13 @@ export class LogPanel implements m.ClassComponent<LogPanelAttrs> {
       });
     } else {
       return null;
-    }
-=======
-      m(Grid, {
-        className: 'pf-logs-panel',
-        columns,
-        rowData: {
-          data: this.renderRows(hasMachineIds, hasProcessNames),
-          total: this.entries?.totalEvents ?? 0,
-          offset: this.entries?.offset ?? 0,
-          onLoadData: (offset, count) => {
-            this.pagination = {offset, count};
-            this.scheduleDataReload(attrs);
-          },
-        },
-        virtualization: {
-          rowHeightPx: ROW_H,
-        },
-        fillHeight: true,
-        onRowHover: (rowIndex) => {
-          // Calculate the actual row index from virtualization offset
-          const actualIndex = rowIndex - (this.entries?.offset ?? 0);
-          const timestamp = this.entries?.timestamps[actualIndex];
-          if (timestamp !== undefined) {
-            attrs.trace.timeline.hoverCursorTimestamp = timestamp;
-          }
-        },
-        onRowOut: () => {
-          attrs.trace.timeline.hoverCursorTimestamp = undefined;
-        },
-      }),
-    );
-  }
-
-  private scheduleDataReload(attrs: LogPanelAttrs) {
-    const visibleSpan = attrs.trace.timeline.visibleWindow.toTimeSpan();
-    const filterStateChanged = this.filterMonitor.ifStateChanged();
-    const filterStoreState = attrs.filterStore.state;
-    const engine = attrs.trace.engine;
-    const pagination = this.pagination;
-
-    this.queryLimiter.schedule(async () => {
-      if (filterStateChanged) {
-        await updateLogView(engine, filterStoreState);
-      }
-
-      this.entries = await updateLogEntries(engine, visibleSpan, pagination);
-    });
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    }  }
 
   private renderRows(
     entries: LogEntries,
     hasMachineIds: boolean | undefined,
     hasProcessNames: boolean | undefined,
   ): ReadonlyArray<GridRow> {
-<<<<<<< HEAD
-=======
-    if (!this.entries) {
-      return [];
-    }
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     const trace = this.trace;
     const ids = entries.ids;
     const machineIds = entries.machineIds;
@@ -333,22 +242,12 @@ export class LogPanel implements m.ClassComponent<LogPanelAttrs> {
     const processNames = entries.processName;
 
     const rows: GridRow[] = [];
-<<<<<<< HEAD
-    for (let i = 0; i < entries.timestamps.length; i++) {
-=======
-    for (let i = 0; i < this.entries.timestamps.length; i++) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      const priority = priorities[i];
+for (let i = 0; i < entries.timestamps.length; i++) {      const priority = priorities[i];
       const priorityLetter = LOG_PRIORITIES[priority][0];
       const ts = timestamps[i];
       const eventId = ids[i];
       const priorityClass = `pf-logs-panel__row--${classForPriority(priority)}`;
-<<<<<<< HEAD
-      const isHighlighted = entries.isHighlighted[i];
-=======
-      const isHighlighted = this.entries.isHighlighted[i];
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      const className = classNames(
+const isHighlighted = entries.isHighlighted[i];      const className = classNames(
         priorityClass,
         isHighlighted && 'pf-logs-panel__row--highlighted',
       );
@@ -356,8 +255,7 @@ export class LogPanel implements m.ClassComponent<LogPanelAttrs> {
       const row = [
         hasMachineIds &&
           m(GridCell, {className, align: 'right'}, machineIds[i]),
-<<<<<<< HEAD
-        m(
+m(
           GridCell,
           {
             className,
@@ -373,11 +271,7 @@ export class LogPanel implements m.ClassComponent<LogPanelAttrs> {
             }),
           },
           m(Timestamp, {trace, ts}),
-        ),
-=======
-        m(GridCell, {className}, m(Timestamp, {trace, ts})),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        m(GridCell, {className, align: 'right'}, String(pids[i])),
+        ),        m(GridCell, {className, align: 'right'}, String(pids[i])),
         m(GridCell, {className, align: 'right'}, String(tids[i])),
         m(GridCell, {className}, priorityLetter || '?'),
         hasProcessNames && m(GridCell, {className}, processNames[i]),
@@ -480,12 +374,7 @@ interface FilterByTextWidgetAttrs {
 
 class FilterByTextWidget implements m.ClassComponent<FilterByTextWidgetAttrs> {
   view({attrs}: m.Vnode<FilterByTextWidgetAttrs>) {
-<<<<<<< HEAD
-    const icon = attrs.hideNonMatching ? Icons.Filter : Icons.FilterOff;
-=======
-    const icon = attrs.hideNonMatching ? 'filter_alt' : 'filter_alt_off';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    const tooltip = attrs.hideNonMatching
+const icon = attrs.hideNonMatching ? Icons.Filter : Icons.FilterOff;    const tooltip = attrs.hideNonMatching
       ? 'Show all logs and highlight matches'
       : 'Show only matching logs';
     return m(Button, {
@@ -579,12 +468,7 @@ export class LogsFilters implements m.ClassComponent<LogsFiltersAttrs> {
 
     return m(PopupMultiSelect, {
       label: 'Filter by machine',
-<<<<<<< HEAD
-      icon: Icons.Filter,
-=======
-      icon: 'filter_list_alt',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      position: PopupPosition.Top,
+icon: Icons.Filter,      position: PopupPosition.Top,
       options,
       onChange: (diffs: MultiSelectDiff[]) => {
         const newList = new Set<number>(machineExcludeList);

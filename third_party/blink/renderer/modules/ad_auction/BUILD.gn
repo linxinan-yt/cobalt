@@ -4,19 +4,6 @@
 
 import("//third_party/blink/renderer/modules/modules.gni")
 
-<<<<<<< HEAD
-blink_modules_sources("ad_auction") {
-  sources = [
-    "ads.cc",
-    "ads.h",
-    "navigator_auction.cc",
-    "navigator_auction.h",
-    "protected_audience.cc",
-    "protected_audience.h",
-  ]
-
-  deps = [ "//third_party/blink/renderer/core" ]
-=======
 if (enable_privacy_sandbox_apis) {
   blink_modules_sources("ad_auction") {
     sources = [
@@ -52,6 +39,4 @@ if (enable_privacy_sandbox_apis) {
       "//third_party/blink/renderer/platform:test_support",
       "//url",
     ]
-  }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  }}

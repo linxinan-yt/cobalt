@@ -725,39 +725,6 @@ struct GraphScan : public sqlite::Function<GraphScan> {
 
 }  // namespace
 
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/graph_scan/graph_scan.cc
-namespace graph_scan {
-namespace {
-
-class GraphScanPlugin : public Plugin<GraphScanPlugin> {
- public:
-  ~GraphScanPlugin() override;
-
-  void RegisterFunctions(PerfettoSqlConnection* connection,
-                         std::vector<FunctionRegistration>& out) override {
-    StringPool* pool = trace_context_->storage->mutable_string_pool();
-    out.push_back(MakeFunctionRegistration<GraphScan>(
-        std::make_unique<GraphScan::UserData>(
-            GraphScan::UserData{connection, pool})));
-    out.push_back(MakeFunctionRegistration<GraphAggregatingScan>(
-        std::make_unique<GraphAggregatingScan::UserData>(
-            GraphAggregatingScan::UserData{connection, pool})));
-  }
-};
-
-GraphScanPlugin::~GraphScanPlugin() = default;
-
-}  // namespace
-
-void RegisterPlugin() {
-  static PluginRegistration reg(
-      []() -> std::unique_ptr<PluginBase> {
-        return std::make_unique<GraphScanPlugin>();
-      },
-      GraphScanPlugin::kPluginId, GraphScanPlugin::kDepIds.data(),
-      GraphScanPlugin::kDepIds.size());
-  base::ignore_result(reg);
-=======
 base::Status RegisterGraphScanFunctions(PerfettoSqlEngine& engine,
                                         StringPool* pool) {
   RETURN_IF_ERROR(
@@ -766,7 +733,6 @@ base::Status RegisterGraphScanFunctions(PerfettoSqlEngine& engine,
   return engine.RegisterFunction<GraphAggregatingScan>(
       std::make_unique<GraphAggregatingScan::UserData>(
           GraphAggregatingScan::UserData{&engine, pool}));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/graph_scan.cc
 }
 
 }  // namespace graph_scan

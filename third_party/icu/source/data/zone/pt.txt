@@ -60,20 +60,8 @@ pt{
         "America:Cayenne"{
             ec{"Caiena"}
         }
-<<<<<<< HEAD
-        "America:Coyhaique"{
-            ec{"Coihaique"}
-=======
-        "America:Cordoba"{
-            ec{"Córdoba"}
-        }
-        "America:Cuiaba"{
-            ec{"Cuiabá"}
-        }
-        "America:Eirunepe"{
-            ec{"Eirunepé"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+"America:Coyhaique"{
+            ec{"Coihaique"}        }
         "America:Grenada"{
             ec{"Granada"}
         }
@@ -122,15 +110,6 @@ pt{
         "America:Puerto_Rico"{
             ec{"Porto Rico"}
         }
-<<<<<<< HEAD
-=======
-        "America:Santarem"{
-            ec{"Santarém"}
-        }
-        "America:Sao_Paulo"{
-            ec{"São Paulo"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "America:St_Barthelemy"{
             ec{"São Bartolomeu"}
         }

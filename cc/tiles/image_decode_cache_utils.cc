@@ -7,11 +7,7 @@
 
 #include "cc/tiles/image_decode_cache_utils.h"
 
-<<<<<<< HEAD
 #include "base/byte_size.h"
-#include "build/build_config.h"
-=======
-#include "base/byte_count.h"
 #include "build/build_config.h"
 
 #if BUILDFLAG(IS_COBALT)
@@ -26,8 +22,6 @@
 #include "third_party/skia/include/core/SkBitmap.h"
 #include "third_party/skia/include/core/SkImageInfo.h"
 #include "third_party/skia/include/core/SkPixmap.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 #if !BUILDFLAG(IS_ANDROID)
 #include "base/system/sys_info.h"
 #endif
@@ -37,27 +31,6 @@ namespace cc {
 // static
 size_t ImageDecodeCacheUtils::GetWorkingSetBytesForImageDecode(
     bool for_renderer) {
-<<<<<<< HEAD
-  base::ByteSize decoded_image_working_set_budget = base::MiBU(128);
-=======
-#if BUILDFLAG(IS_COBALT)
-  static const base::ByteCount cobalt_decoded_image_working_set_budget = []() {
-    base::ByteCount budget = base::MiB(128);
-    auto* command_line = base::CommandLine::ForCurrentProcess();
-    if (command_line->HasSwitch(switches::kDecodedImageWorkingSetBudgetBytes)) {
-      std::string value = command_line->GetSwitchValueASCII(
-          switches::kDecodedImageWorkingSetBudgetBytes);
-      int64_t parsed_value;
-      if (base::StringToInt64(value, &parsed_value) && parsed_value >= 0) {
-        budget = base::ByteCount(parsed_value);
-      }
-    }
-    return budget;
-  }();
-  return cobalt_decoded_image_working_set_budget.InBytesUnsigned();
-#else
-  base::ByteCount decoded_image_working_set_budget = base::MiB(128);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #if !BUILDFLAG(IS_ANDROID)
   if (for_renderer) {
     const bool using_low_memory_policy = base::SysInfo::IsLowEndDevice();
@@ -72,13 +45,7 @@ size_t ImageDecodeCacheUtils::GetWorkingSetBytesForImageDecode(
     }
   }
 #endif  // !BUILDFLAG(IS_ANDROID)
-<<<<<<< HEAD
-  return decoded_image_working_set_budget.InBytes();
-=======
-  return decoded_image_working_set_budget.InBytesUnsigned();
-#endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+return decoded_image_working_set_budget.InBytes();}
 
 #if BUILDFLAG(IS_COBALT)
 // static

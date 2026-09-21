@@ -799,11 +799,11 @@ source_set("unit_tests") {
     ]
   }
 
-<<<<<<< HEAD
-  # Installed App is excluded on iOS (see sub_modules above).
+# Installed App is excluded on iOS (see sub_modules above).
   if (!is_ios) {
     sources += [ "installedapp/installed_app_controller_test.cc" ]
-=======
+  }
+
   if (is_cobalt) {
     sources -= filter_include(sources, [ "mediarecorder/*" ])
     sources += [
@@ -815,9 +815,7 @@ source_set("unit_tests") {
   if (!use_webrtc_peer_connection) {
     _filtered_sources = filter_exclude(sources, [ "peerconnection/*" ])
     sources = []
-    sources = _filtered_sources
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    sources = _filtered_sources  }
 
   configs += [
     "//third_party/blink/renderer:config",

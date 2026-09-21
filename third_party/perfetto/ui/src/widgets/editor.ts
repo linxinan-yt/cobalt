@@ -28,16 +28,10 @@ import m from 'mithril';
 import {removeFalsyValues} from '../base/array_utils';
 import {assertUnreachable} from '../base/assert';
 import {perfettoSql} from '../base/perfetto_sql_lang/language';
-<<<<<<< HEAD
 import type {HTMLAttrs} from './common';
 import {classNames} from '../base/classnames';
 
 type EditorLanguage = 'perfetto-sql' | 'javascript';
-=======
-import {HTMLAttrs} from './common';
-import {classNames} from '../base/classnames';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 export interface EditorAttrs extends HTMLAttrs {
   // Content of the editor. If defined, the editor operates in controlled mode,
   // otherwise it operates in uncontrolled mode.
@@ -57,13 +51,8 @@ export interface EditorAttrs extends HTMLAttrs {
   // Whether the editor should fill the height of its container.
   readonly fillHeight?: boolean;
 
-<<<<<<< HEAD
-  // Whether the editor content is readonly.
-  readonly readonly?: boolean;
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  // Callback for the Ctrl/Cmd + Enter key binding.
+// Whether the editor content is readonly.
+  readonly readonly?: boolean;  // Callback for the Ctrl/Cmd + Enter key binding.
   onExecute?: (text: string) => void;
 
   // Callback for the Ctrl/Cmd + S key binding.

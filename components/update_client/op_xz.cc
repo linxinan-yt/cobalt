@@ -41,13 +41,8 @@ void Done(const OperationResult& in_file_result,
 #else
 void Done(base::OnceCallback<
               void(base::expected<base::FilePath, CategorizedError>)> callback,
-<<<<<<< HEAD
-          base::RepeatingCallback<void(base::DictValue)> event_adder,
-=======
 #endif
-          base::RepeatingCallback<void(base::Value::Dict)> event_adder,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          const base::FilePath& out_file,
+          base::RepeatingCallback<void(base::DictValue)> event_adder,          const base::FilePath& out_file,
           bool success) {
   const auto result =
       success ? base::expected<base::FilePath, CategorizedError>(out_file)
@@ -75,35 +70,6 @@ void Done(base::OnceCallback<
   base::ThreadPool::PostTaskAndReply(
       FROM_HERE, kTaskTraits,
       base::BindOnce(
-<<<<<<< HEAD
-          [](const base::FilePath& out_file) {
-            DeleteFileAndEmptyParentDirectory(out_file);
-          },
-          out_file),
-      std::move(done));
-=======
-          std::move(callback),
-#if BUILDFLAG(IS_STARBOARD)
-          [&]() -> base::expected<OperationResult, CategorizedError> {
-            if (success) {
-              OperationResult out_result = in_file_result;
-#if !defined(IN_MEMORY_UPDATES)
-              out_result.response = out_file;
-#endif
-              return out_result;
-            }
-#else
-          [&]() -> base::expected<base::FilePath, CategorizedError> {
-            if (success) {
-              return out_file;
-            }
-            DeleteFileAndEmptyParentDirectory(out_file);
-#endif  // BUILDFLAG(IS_STARBOARD)
-            return base::unexpected<CategorizedError>(
-                {.category = ErrorCategory::kUnpack,
-                 .code = static_cast<int>(UnpackerError::kXzFailed)});
-          }()));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 }  // namespace
@@ -112,9 +78,7 @@ base::OnceClosure XzOperation(
     std::unique_ptr<Unzipper> unzipper,
     base::RepeatingCallback<void(base::DictValue)> event_adder,
     base::RepeatingCallback<void(ComponentState)> state_tracker,
-<<<<<<< HEAD
-    bool /*is_foreground*/,
-=======
+bool /*is_foreground*/,
 #if BUILDFLAG(IS_STARBOARD)
     const OperationResult& in_file_result,
     base::OnceCallback<void(base::expected<OperationResult, CategorizedError>)>
@@ -128,9 +92,7 @@ base::OnceClosure XzOperation(
   const base::FilePath& in_file = in_file_result.response;
   base::FilePath dest_file = in_file.DirName().AppendUTF8("decoded_xz");
 #endif  // defined(IN_MEMORY_UPDATES)
-#else
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    const base::FilePath& in_file,
+#else    const base::FilePath& in_file,
     base::OnceCallback<void(base::expected<base::FilePath, CategorizedError>)>
         callback) {
   // `is_foreground` is unused right now since XZ is primarily used in

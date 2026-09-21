@@ -82,15 +82,10 @@
 #include "third_party/blink/renderer/modules/media/audio/audio_renderer_sink_cache.h"
 #include "third_party/blink/renderer/modules/media_controls/media_controls_impl.h"
 #include "third_party/blink/renderer/modules/mediasource/media_source_registry_impl.h"
-<<<<<<< HEAD
 #include "third_party/blink/renderer/modules/mediastream/user_media_request_provider_impl.h"
-#include "third_party/blink/renderer/modules/peerconnection/peer_connection_tracker.h"
-=======
 #if BUILDFLAG(USE_WEBRTC_PEER_CONNECTION)
 #include "third_party/blink/renderer/modules/peerconnection/peer_connection_tracker.h"  // nogncheck
-#endif  // BUILDFLAG(USE_WEBRTC_PEER_CONNECTION)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "third_party/blink/renderer/modules/presentation/presentation.h"
+#endif  // BUILDFLAG(USE_WEBRTC_PEER_CONNECTION)#include "third_party/blink/renderer/modules/presentation/presentation.h"
 #include "third_party/blink/renderer/modules/push_messaging/push_messaging_client.h"
 #include "third_party/blink/renderer/modules/remoteplayback/html_media_element_remote_playback.h"
 #include "third_party/blink/renderer/modules/remoteplayback/remote_playback.h"
@@ -335,13 +330,8 @@ void ModulesInitializer::InitWorkerInspectorAgentSession(
     WorkerGlobalScope* worker_global_scope) const {
 #if BUILDFLAG(ENABLE_DEVTOOLS_BACKEND)
   session->CreateAndAppend<InspectorIndexedDBAgent>(
-<<<<<<< HEAD
-      /*inspected_frames=*/nullptr, worker_global_scope);
-=======
-      /*inspected_frames=*/nullptr, worker_global_scope, session->V8Session());
-#endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+/*inspected_frames=*/nullptr, worker_global_scope, session->V8Session());
+#endif}
 
 void ModulesInitializer::OnClearWindowObjectInMainWorld(
     Document& document,

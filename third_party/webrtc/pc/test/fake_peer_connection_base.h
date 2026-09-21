@@ -80,11 +80,7 @@ class FakePeerConnectionBase : public PeerConnectionInternal {
  public:
   // PeerConnectionInterface implementation.
   FakePeerConnectionBase() : env_(CreateEnvironment()) {}
-<<<<<<< HEAD
-  explicit FakePeerConnectionBase(const Environment& env) : env_(env) {}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+explicit FakePeerConnectionBase(const Environment& env) : env_(env) {}
   PLAN_B_ONLY scoped_refptr<StreamCollectionInterface> local_streams()
       override {
     return nullptr;

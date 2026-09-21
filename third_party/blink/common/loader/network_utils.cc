@@ -37,23 +37,7 @@ bool AlwaysAccessNetwork(
 }
 
 const char* ImageAcceptHeader() {
-<<<<<<< HEAD
-#if BUILDFLAG(ENABLE_JXL_DECODER) && BUILDFLAG(ENABLE_DAV1D_DECODER)
-  if (base::FeatureList::IsEnabled(features::kJXLImageFormat)) {
-    return "image/jxl,image/avif,image/webp,image/apng,image/svg+xml,image/*,*/"
-           "*;q=0.8";
-  }
-  return "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8";
-#elif BUILDFLAG(ENABLE_JXL_DECODER)
-  if (base::FeatureList::IsEnabled(features::kJXLImageFormat)) {
-    return "image/jxl,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8";
-  }
-  return "image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8";
-#elif BUILDFLAG(ENABLE_DAV1D_DECODER)
-=======
-#if BUILDFLAG(ENABLE_DAV1D_DECODER)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  return "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8";
+#if BUILDFLAG(ENABLE_DAV1D_DECODER)  return "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8";
 #else
   return "image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8";
 #endif

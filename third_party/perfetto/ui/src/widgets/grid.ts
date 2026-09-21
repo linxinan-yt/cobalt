@@ -15,23 +15,13 @@
 import './grid.scss';
 import m from 'mithril';
 import {classNames} from '../base/classnames';
-<<<<<<< HEAD
-import {isEmptyVnodes, type MithrilEvent} from '../base/mithril_utils';
-=======
-import {MithrilEvent} from '../base/mithril_utils';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {Icons} from '../base/semantic_icons';
+import {isEmptyVnodes, type MithrilEvent} from '../base/mithril_utils';import {Icons} from '../base/semantic_icons';
 import {exists} from '../base/utils';
 import {Button} from './button';
 import {MenuItem, PopupMenu} from './menu';
 import {PopupPosition} from './popup';
 import {VirtualScrollHelper} from './virtual_scroll_helper';
-<<<<<<< HEAD
 import type {HTMLAttrs} from './common';
-=======
-import {HTMLAttrs} from './common';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 const DEFAULT_ROW_HEIGHT = 24;
 const COL_WIDTH_INITIAL_MAX_PX = 600;
 const COL_WIDTH_MIN_PX = 50;
@@ -72,16 +62,11 @@ export interface GridHeaderCellAttrs extends m.Attributes {
   readonly onSort?: (direction: SortDirection) => void;
   readonly menuItems?: m.Children;
   readonly subContent?: m.Children;
-<<<<<<< HEAD
-  readonly hintSortDirection?: SortDirection;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+readonly hintSortDirection?: SortDirection;}
 
 export class GridHeaderCell implements m.ClassComponent<GridHeaderCellAttrs> {
   view({attrs, children}: m.Vnode<GridHeaderCellAttrs>) {
-<<<<<<< HEAD
-    const {
+const {
       sort,
       onSort,
       menuItems,
@@ -103,23 +88,7 @@ export class GridHeaderCell implements m.ClassComponent<GridHeaderCellAttrs> {
       const sortIconDirection: SortDirection | undefined = (() => {
         if (!sort) return hintSortDirection;
         return sort;
-      })();
-
-=======
-    const {sort, onSort, menuItems, subContent, ...htmlAttrs} = attrs;
-
-    const renderSortButton = () => {
-      if (!onSort) return undefined;
-
-      const nextDirection: SortDirection = (() => {
-        if (!sort) return 'ASC';
-        if (sort === 'ASC') return 'DESC';
-        if (sort === 'DESC') return 'ASC';
-        return 'ASC';
-      })();
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      return m(Button, {
+      })();      return m(Button, {
         className: classNames(
           'pf-grid-header-cell__sort-button',
           !sort && 'pf-grid-cell--hint',
@@ -127,12 +96,7 @@ export class GridHeaderCell implements m.ClassComponent<GridHeaderCellAttrs> {
         ),
         ariaLabel: 'Sort column',
         rounded: true,
-<<<<<<< HEAD
-        icon: sortIconDirection === 'DESC' ? Icons.SortDesc : Icons.SortAsc,
-=======
-        icon: sort === 'DESC' ? Icons.SortDesc : Icons.SortAsc,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        onclick: (e: MouseEvent) => {
+icon: sortIconDirection === 'DESC' ? Icons.SortDesc : Icons.SortAsc,        onclick: (e: MouseEvent) => {
           onSort(nextDirection);
           e.stopPropagation();
         },
@@ -140,22 +104,12 @@ export class GridHeaderCell implements m.ClassComponent<GridHeaderCellAttrs> {
     };
 
     const renderMenu = () => {
-<<<<<<< HEAD
-      if (isEmptyVnodes(menuItems)) return undefined;
-=======
-      if (menuItems === undefined) return undefined;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      return m(
+if (isEmptyVnodes(menuItems)) return undefined;      return m(
         PopupMenu,
         {
           trigger: m(Button, {
-<<<<<<< HEAD
-            className: 'pf-visible-on-hover pf-grid-header-cell__menu-button',
-=======
-            className:
-              'pf-visible-on-hover pf-grid-header-cell__menu-button pf-grid--no-measure',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            icon: Icons.ContextMenuAlt,
+className:
+              'pf-visible-on-hover pf-grid-header-cell__menu-button pf-grid--no-measure',            icon: Icons.ContextMenuAlt,
             rounded: true,
             ariaLabel: 'Column menu',
           }),
@@ -164,30 +118,20 @@ export class GridHeaderCell implements m.ClassComponent<GridHeaderCellAttrs> {
       );
     };
 
-<<<<<<< HEAD
-    const nextSortDirection: SortDirection = (() => {
+const nextSortDirection: SortDirection = (() => {
       if (!sort) return hintSortDirection || 'ASC';
       return sort === 'ASC' ? 'DESC' : 'ASC';
-    })();
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    return m(
+    })();    return m(
       '.pf-grid-header-cell',
       {
         ...htmlAttrs,
-<<<<<<< HEAD
-        role: 'columnheader',
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      },
+role: 'columnheader',      },
       [
         m(
           '.pf-grid-header-cell__main-content',
           m(
             '.pf-grid-header-cell__title',
-<<<<<<< HEAD
-            {
+{
               onclick: onSort
                 ? (e: MouseEvent) => {
                     onSort(nextSortDirection);
@@ -195,10 +139,7 @@ export class GridHeaderCell implements m.ClassComponent<GridHeaderCellAttrs> {
                   }
                 : undefined,
               style: onSort ? {cursor: 'pointer'} : undefined,
-            },
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            m('.pf-grid-header-cell__title-wrapper', children),
+            },            m('.pf-grid-header-cell__title-wrapper', children),
             renderSortButton(),
           ),
           renderMenu(),
@@ -216,15 +157,11 @@ export interface GridCellAttrs extends HTMLAttrs {
   readonly nullish?: boolean;
   readonly padding?: boolean;
   readonly wrap?: boolean;
-<<<<<<< HEAD
-  readonly label?: string;
+readonly label?: string;
   readonly indent?: number;
   readonly chevron?: 'expanded' | 'collapsed' | 'leaf';
   readonly onChevronClick?: () => void;
-  readonly actionButtons?: m.Children;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  readonly actionButtons?: m.Children;}
 
 export class GridCell implements m.ClassComponent<GridCellAttrs> {
   view({attrs, children}: m.Vnode<GridCellAttrs>) {
@@ -235,8 +172,7 @@ export class GridCell implements m.ClassComponent<GridCellAttrs> {
       className,
       padding = true,
       wrap,
-<<<<<<< HEAD
-      indent,
+indent,
       chevron,
       onChevronClick,
       actionButtons,
@@ -300,52 +236,18 @@ export class GridCell implements m.ClassComponent<GridCellAttrs> {
         ...htmlAttrs,
         className: classNames(
           className,
-          chevron ? 'pf-grid-cell--align-left' : `pf-grid-cell--align-${align}`,
-=======
-      ...rest
-    } = attrs;
-
-    const cell = m(
-      '.pf-grid-cell',
-      {
-        ...rest,
-        className: classNames(
-          className,
-          align && `pf-grid-cell--align-${align}`,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          padding && 'pf-grid-cell--padded',
+          chevron ? 'pf-grid-cell--align-left' : `pf-grid-cell--align-${align}`,          padding && 'pf-grid-cell--padded',
           nullish && 'pf-grid-cell--nullish',
           wrap && 'pf-grid-cell--wrap',
         ),
-<<<<<<< HEAD
-        role: 'cell',
+role: 'cell',
       },
       renderIndent(),
       renderChevron(),
       m('.pf-grid-cell__content', children),
       !isEmptyVnodes(cellActions) &&
         m('.pf-grid-cell__actions.pf-visible-on-hover', cellActions),
-    );
-=======
-      },
-      children,
-    );
-
-    if (Boolean(menuItems)) {
-      return m(
-        PopupMenu,
-        {
-          trigger: cell,
-          isContextMenu: true,
-          position: PopupPosition.Bottom,
-        },
-        menuItems,
-      );
-    } else {
-      return cell;
-    }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    );  }
 }
 
 /**
@@ -357,8 +259,7 @@ export type GridRow = ReadonlyArray<m.Children>;
  * Column definition for Grid.
  */
 export interface GridColumn {
-<<<<<<< HEAD
-  // A unique key identifying this column - used to store cached column widths
+// A unique key identifying this column - used to store cached column widths
   // and for reordering callbacks.
   readonly key: string;
 
@@ -383,16 +284,7 @@ export interface GridColumn {
   readonly thickRightBorder?: boolean;
 
   // Content to put in the column header.
-  readonly header?: m.Children;
-=======
-  readonly key: string;
-  readonly maxInitialWidthPx?: number;
-  readonly header?: m.Children;
-  readonly minWidth?: number;
-  readonly thickRightBorder?: boolean;
-  readonly reorderable?: {readonly handle: string};
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  readonly header?: m.Children;}
 
 /**
  * Partial row data for virtual scrolling with paginated data.
@@ -440,7 +332,6 @@ export interface GridApi {
 /**
  * Attributes for the Grid component.
  */
-<<<<<<< HEAD
 /**
  * Configuration for the Grid component.
  * Grid is a low-level presentation component - consumers must wrap content
@@ -565,25 +456,12 @@ export interface GridAttrs {
    *   const newOrder = reorderArray(columnOrder, from, to, position);
    *   setColumnOrder(newOrder);
    * }
-   */
-=======
-export interface GridAttrs {
-  readonly columns: ReadonlyArray<GridColumn>;
-  readonly rowData: GridRowData;
-  readonly virtualization?: GridVirtualization;
-  readonly fillHeight?: boolean;
-  readonly className?: string;
-  readonly onRowHover?: (rowIndex: number) => void;
-  readonly onRowOut?: () => void;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  readonly onColumnReorder?: (
+   */  readonly onColumnReorder?: (
     from: string | number | undefined,
     to: string | number | undefined,
     position: ReorderPosition,
   ) => void;
-<<<<<<< HEAD
-
-  /**
+/**
    * Callback fired when the grid is fully initialized.
    * Receives an API object for programmatic control of the grid.
    * Use this to access methods like autoFitColumn() and autoFitAllColumns().
@@ -608,11 +486,7 @@ export interface GridAttrs {
    *   title: 'No data available',
    * })
    */
-  readonly emptyState?: m.Children;
-=======
-  readonly onReady?: (api: GridApi) => void;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  readonly emptyState?: m.Children;}
 
 /**
  * Grid is a purely presentational component that renders tabular data with
@@ -721,7 +595,6 @@ function isPartialRowData(rowData: GridRowData): rowData is PartialRowData {
   return !Array.isArray(rowData);
 }
 
-<<<<<<< HEAD
 type ColumnAutosizeState = 'header-only' | 'sized';
 
 export class Grid implements m.ClassComponent<GridAttrs> {
@@ -831,28 +704,14 @@ export class Grid implements m.ClassComponent<GridAttrs> {
       e.clipboardData?.setData('text/plain', tsvData);
       e.preventDefault();
     }
-  }
-=======
-export class Grid implements m.ClassComponent<GridAttrs> {
-  private sizedColumns: Set<string> = new Set();
-  private renderBounds?: {rowStart: number; rowEnd: number};
-  private columnDragState: Map<
-    string,
-    {count: number; position: ReorderPosition}
-  > = new Map();
-  private fieldToId: Map<string, number> = new Map();
-  private nextId = 0;
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  private getColumnId(field: string): number {
+  }  private getColumnId(field: string): number {
     if (!this.fieldToId.has(field)) {
       this.fieldToId.set(field, this.nextId++);
     }
     return this.fieldToId.get(field)!;
   }
 
-<<<<<<< HEAD
-  private setColumnWidth(
+private setColumnWidth(
     gridDom: HTMLElement,
     columnKey: string,
     widthPx: number,
@@ -864,11 +723,7 @@ export class Grid implements m.ClassComponent<GridAttrs> {
   private clearColumnWidth(gridDom: HTMLElement, columnKey: string): void {
     const columnId = this.getColumnId(columnKey);
     gridDom.style.setProperty(`--pf-grid-col-${columnId}`, 'fit-content');
-  }
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  view({attrs}: m.Vnode<GridAttrs>) {
+  }  view({attrs}: m.Vnode<GridAttrs>) {
     const {
       columns,
       rowData,
@@ -895,18 +750,12 @@ export class Grid implements m.ClassComponent<GridAttrs> {
     const isVirtualized = virtualization !== undefined;
     const rowHeight = virtualization?.rowHeightPx ?? DEFAULT_ROW_HEIGHT;
 
-<<<<<<< HEAD
-    // Check if any columns are reorderable
-    const hasReorderableColumns = columns.some((c) => c.reorderable);
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    // Render the grid structure inline
+// Check if any columns are reorderable
+    const hasReorderableColumns = columns.some((c) => c.reorderable);    // Render the grid structure inline
     return m(
       '.pf-grid',
       {
-<<<<<<< HEAD
-        className: classNames(
+className: classNames(
           fillHeight && 'pf-grid--fill-height',
           className,
           this.dragState && 'pf-grid--dragging',
@@ -955,13 +804,7 @@ export class Grid implements m.ClassComponent<GridAttrs> {
               this.dragState = undefined;
               m.redraw();
             }
-          : undefined,
-=======
-        className: classNames(fillHeight && 'pf-grid--fill-height', className),
-        ref: 'scroll-container',
-        role: 'table',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      },
+          : undefined,      },
       m(
         '.pf-grid__header',
         m(
@@ -970,12 +813,7 @@ export class Grid implements m.ClassComponent<GridAttrs> {
             role: 'row',
           },
           columns.map((column) => {
-<<<<<<< HEAD
-            return this.renderHeaderCell(column);
-=======
-            return this.renderHeaderCell(column, attrs.onColumnReorder);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          }),
+return this.renderHeaderCell(column, attrs.onColumnReorder);          }),
         ),
       ),
       isVirtualized
@@ -988,13 +826,9 @@ export class Grid implements m.ClassComponent<GridAttrs> {
             attrs,
           )
         : this.renderGridBody(columns, rows, attrs),
-<<<<<<< HEAD
-      totalRows === 0 &&
+totalRows === 0 &&
         attrs.emptyState !== undefined &&
-        m('.pf-grid__empty-state', attrs.emptyState),
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    );
+        m('.pf-grid__empty-state', attrs.emptyState),    );
   }
 
   private renderVirtualizedGridBody(
@@ -1050,8 +884,7 @@ export class Grid implements m.ClassComponent<GridAttrs> {
     );
   }
 
-<<<<<<< HEAD
-  oncreate({attrs, dom}: m.VnodeDOM<GridAttrs, this>) {
+oncreate({attrs, dom}: m.VnodeDOM<GridAttrs, this>) {
     const {virtualization, columns, rowData, onReady} = attrs;
 
     // Add copy event handler for spreadsheet-friendly formatting
@@ -1128,117 +961,13 @@ export class Grid implements m.ClassComponent<GridAttrs> {
                 Math.max(width, minWidthPx),
               );
             }
-          }
-=======
-  oncreate(vnode: m.VnodeDOM<GridAttrs, this>) {
-    const {virtualization, columns, rowData} = vnode.attrs;
-
-    // Extract rows from rowData
-    const rows = isPartialRowData(rowData) ? rowData.data : rowData;
-
-    if (rows.length > 0) {
-      // Check if there are new columns that need sizing
-      const newColumns = columns.filter(
-        (column) => !this.sizedColumns.has(column.key),
-      );
-
-      if (newColumns.length > 0) {
-        this.measureAndApplyWidths(
-          vnode.dom as HTMLElement,
-          newColumns.map((col) => {
-            const {
-              key,
-              minWidth = COL_WIDTH_MIN_PX,
-              maxInitialWidthPx = COL_WIDTH_INITIAL_MAX_PX,
-            } = col;
-
-            return {
-              key,
-              minWidth,
-              maxWidth: maxInitialWidthPx,
-            };
-          }),
-        );
-      }
-    }
-
-    // Only set up virtual scrolling if virtualization is enabled
-    if (virtualization === undefined) {
-      return;
-    }
-
-    const rowHeight = virtualization.rowHeightPx;
-    const onLoadData = isPartialRowData(rowData)
-      ? rowData.onLoadData
-      : undefined;
-
-    const scrollContainer: HTMLElement = (vnode.dom as HTMLElement)!;
-    const slider: HTMLElement = (vnode.dom as HTMLElement).querySelector(
-      '[ref="slider"]',
-    )!;
-
-    new VirtualScrollHelper(slider, scrollContainer, [
-      {
-        overdrawPx: 500,
-        tolerancePx: 250,
-        callback: (rect) => {
-          const rowStart = Math.floor(rect.top / rowHeight);
-          const rowCount = Math.ceil(rect.height / rowHeight);
-          this.renderBounds = {rowStart, rowEnd: rowStart + rowCount};
-          m.redraw();
-        },
-      },
-      {
-        overdrawPx: 2000,
-        tolerancePx: 1000,
-        callback: (rect) => {
-          const rowStart = Math.floor(rect.top / rowHeight);
-          const rowEnd = Math.ceil(rect.bottom / rowHeight);
-          if (onLoadData !== undefined) {
-            onLoadData(rowStart, rowEnd - rowStart);
-          }
-          m.redraw();
-        },
-      },
-    ]);
-
-    // Call onReady callback with imperative API
-    if (vnode.attrs.onReady) {
-      vnode.attrs.onReady({
-        autoFitColumn: (columnKey: string) => {
-          const gridDom = vnode.dom as HTMLElement;
-          const column = columns.find((c) => c.key === columnKey);
-          if (!column) return;
-
-          this.measureAndApplyWidths(gridDom, [
-            {
-              key: column.key,
-              minWidth: column.minWidth ?? COL_WIDTH_MIN_PX,
-              maxWidth: Infinity,
-            },
-          ]);
-          m.redraw();
-        },
-        autoFitAllColumns: () => {
-          const gridDom = vnode.dom as HTMLElement;
-          this.measureAndApplyWidths(
-            gridDom,
-            columns.map((column) => ({
-              key: column.key,
-              minWidth: column.minWidth ?? COL_WIDTH_MIN_PX,
-              maxWidth: Infinity,
-            })),
-          );
-          m.redraw();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        },
+          }        },
       });
     }
   }
 
   onupdate(vnode: m.VnodeDOM<GridAttrs, this>) {
-<<<<<<< HEAD
-    const {columns} = vnode.attrs;
+const {columns} = vnode.attrs;
     this.maybeAutosizeColumns(vnode.dom as HTMLElement, columns);
   }
 
@@ -1344,100 +1073,7 @@ export class Grid implements m.ClassComponent<GridAttrs> {
 
     gridClone.remove();
 
-    return new Map(columnKeyWidthTuples);
-=======
-    const {columns, rowData} = vnode.attrs;
-
-    // Extract rows from rowData
-    const rows = isPartialRowData(rowData) ? rowData.data : rowData;
-
-    if (rows.length > 0) {
-      // Check if there are new columns that need sizing
-      const newColumns = columns.filter(
-        (column) => !this.sizedColumns.has(column.key),
-      );
-
-      if (newColumns.length > 0) {
-        this.measureAndApplyWidths(
-          vnode.dom as HTMLElement,
-          newColumns.map((col) => {
-            const {
-              key,
-              minWidth = COL_WIDTH_MIN_PX,
-              maxInitialWidthPx = COL_WIDTH_INITIAL_MAX_PX,
-            } = col;
-
-            return {
-              key,
-              minWidth,
-              maxWidth: maxInitialWidthPx,
-            };
-          }),
-        );
-      }
-    }
-  }
-
-  private measureAndApplyWidths(
-    gridDom: HTMLElement,
-    columns: ReadonlyArray<{
-      readonly key: string;
-      readonly minWidth: number;
-      readonly maxWidth: number;
-    }>,
-  ): void {
-    const gridClone = gridDom.cloneNode(true) as HTMLElement;
-    gridDom.appendChild(gridClone);
-
-    // Hide any elements that are not part of the measurement - these are
-    // elements with class .pf-grid--no-measure
-    const noMeasureElements = gridClone.querySelectorAll(
-      '.pf-grid--no-measure',
-    );
-    noMeasureElements.forEach((el) => {
-      (el as HTMLElement).style.display = 'none';
-    });
-
-    // Now read the actual widths (this will cause a reflow)
-    // Find all the cells in this column (header + data rows)
-    const allCells = gridClone.querySelectorAll(`.pf-grid__cell-container`);
-
-    // Only continue if we have more cells than just the header
-    if (allCells.length <= columns.length) {
-      gridClone.remove();
-      return;
-    }
-
-    columns.forEach((column) => {
-      const columnId = this.getColumnId(column.key);
-
-      // Clear the existing width to allow natural sizing
-      gridClone.style.setProperty(`--pf-grid-col-${columnId}`, 'fit-content');
-
-      // Find all the cells in this column
-      const cellsInThisColumn = Array.from(allCells).filter(
-        (cell) => (cell as HTMLElement).dataset['columnId'] === `${columnId}`,
-      );
-
-      const widths = cellsInThisColumn.map((c) => {
-        return c.scrollWidth;
-      });
-      const maxCellWidth = Math.max(...widths);
-      const unboundedWidth = maxCellWidth + CELL_PADDING_PX;
-      const width = Math.min(
-        column.maxWidth,
-        Math.max(column.minWidth, unboundedWidth),
-      );
-
-      gridDom.style.setProperty(`--pf-grid-col-${columnId}`, `${width}px`);
-
-      // Store the width
-      this.sizedColumns.add(column.key);
-    });
-
-    gridClone.remove();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    return new Map(columnKeyWidthTuples);  }
 
   private renderRows(
     columns: ReadonlyArray<GridColumn>,
@@ -1459,8 +1095,7 @@ export class Grid implements m.ClassComponent<GridAttrs> {
       (_, i) => rowStart + i,
     );
 
-<<<<<<< HEAD
-    // Generate a list of rows that should be rendered
+// Generate a list of rows that should be rendered
     const renderableRows = indices.map((rowIndex) => {
       const relativeIndex = rowIndex - rowOffset;
       const row =
@@ -1471,18 +1106,7 @@ export class Grid implements m.ClassComponent<GridAttrs> {
     });
 
     const renderedRows = renderableRows
-      .map(([rowIndex, row]) => {
-=======
-    return indices
-      .map((rowIndex) => {
-        const relativeIndex = rowIndex - rowOffset;
-        const row =
-          relativeIndex >= 0 && relativeIndex < rows.length
-            ? rows[relativeIndex]
-            : undefined;
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        if (row !== undefined) {
+      .map(([rowIndex, row]) => {        if (row !== undefined) {
           return m(
             '.pf-grid__row',
             {
@@ -1501,11 +1125,7 @@ export class Grid implements m.ClassComponent<GridAttrs> {
               return this.renderCell(
                 children,
                 columnId,
-<<<<<<< HEAD
-                column.key,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                column.thickRightBorder,
+column.key,                column.thickRightBorder,
               );
             }),
           );
@@ -1521,9 +1141,7 @@ export class Grid implements m.ClassComponent<GridAttrs> {
         }
       })
       .filter(exists);
-<<<<<<< HEAD
-
-    if (!this.hasRenderedBodyRows) {
+if (!this.hasRenderedBodyRows) {
       // Check if any rows have content in them so we know when to trigger our
       // initial column autosize
       const hasContent = renderableRows.some(
@@ -1535,10 +1153,7 @@ export class Grid implements m.ClassComponent<GridAttrs> {
       }
     }
 
-    return renderedRows;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    return renderedRows;  }
 
   private renderAllRows(
     columns: ReadonlyArray<GridColumn>,
@@ -1546,13 +1161,9 @@ export class Grid implements m.ClassComponent<GridAttrs> {
     onRowHover?: (rowIndex: number) => void,
     onRowOut?: () => void,
   ): m.Children {
-<<<<<<< HEAD
-    if (rows.length > 0) {
+if (rows.length > 0) {
       this.hasRenderedBodyRows = true;
-    }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    return rows.map((row, rowIndex) => {
+    }    return rows.map((row, rowIndex) => {
       return m(
         '.pf-grid__row',
         {
@@ -1565,17 +1176,12 @@ export class Grid implements m.ClassComponent<GridAttrs> {
           const children = row[index];
           const columnId = this.getColumnId(column.key);
 
-<<<<<<< HEAD
-          return this.renderCell(
+return this.renderCell(
             children,
             columnId,
             column.key,
             column.thickRightBorder,
-          );
-=======
-          return this.renderCell(children, columnId, column.thickRightBorder);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }),
+          );        }),
       );
     });
   }
@@ -1583,46 +1189,25 @@ export class Grid implements m.ClassComponent<GridAttrs> {
   private renderCell(
     children: m.Children,
     columnId: number,
-<<<<<<< HEAD
-    columnKey: string,
-    thickRightBorder?: boolean,
-  ): m.Children {
-    // Check if this column is the drag target (findColumnAtX already filters by handle)
-    const isDragTarget =
-      this.dragState &&
-      this.dragState.targetKey === columnKey &&
-      this.dragState.fromKey !== columnKey;
-
-=======
-    thickRightBorder?: boolean,
-  ): m.Children {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    return m(
+thickRightBorder?: boolean,
+  ): m.Children {    return m(
       '.pf-grid__cell-container',
       {
         'style': {
           width: `var(--pf-grid-col-${columnId})`,
         },
-<<<<<<< HEAD
+'role': 'cell',
         'data-column-id': columnId,
         'className': classNames(
           thickRightBorder && 'pf-grid__cell-container--border-right-thick',
           isDragTarget &&
-            `pf-grid__cell-container--drag-over-${this.dragState!.position}`,
-=======
-        'role': 'cell',
-        'data-column-id': columnId,
-        'className': classNames(
-          thickRightBorder && 'pf-grid__cell-container--border-right-thick',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        ),
+            `pf-grid__cell-container--drag-over-${this.dragState!.position}`,        ),
       },
       children,
     );
   }
 
-<<<<<<< HEAD
-  private renderHeaderCell(column: GridColumn): m.Children {
+private renderHeaderCell(column: GridColumn): m.Children {
     const {
       key,
       reorderable,
@@ -1634,18 +1219,6 @@ export class Grid implements m.ClassComponent<GridAttrs> {
 
     const columnId = this.getColumnId(column.key);
     const isFixedWidth = exists(widthPx);
-=======
-  private renderHeaderCell(
-    column: GridColumn,
-    onColumnReorder?: (
-      from: string | number | undefined,
-      to: string | number | undefined,
-      position: ReorderPosition,
-    ) => void,
-  ): m.Children {
-    const columnId = this.getColumnId(column.key);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     const renderResizeHandle = () => {
       return m('.pf-grid__resize-handle', {
         onpointerdown: (e: MouseEvent) => {
@@ -1669,21 +1242,14 @@ export class Grid implements m.ClassComponent<GridAttrs> {
 
           const handlePointerMove = (e: MouseEvent) => {
             const delta = e.clientX - startX;
-<<<<<<< HEAD
-            const minWidth = column.minWidthPx ?? COL_WIDTH_MIN_PX;
-            const newWidth = Math.max(minWidth, startWidth + delta);
-            this.setColumnWidth(gridDom, column.key, newWidth);
-=======
-            const minWidth = column.minWidth ?? COL_WIDTH_MIN_PX;
+const minWidth = column.minWidth ?? COL_WIDTH_MIN_PX;
             const newWidth = Math.max(minWidth, startWidth + delta);
 
             // Set the css variable for the column being resized
             gridDom.style.setProperty(
               `--pf-grid-col-${columnId}`,
               `${newWidth}px`,
-            );
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          };
+            );          };
 
           const handlePointerUp = () => {
             document.removeEventListener('pointermove', handlePointerMove);
@@ -1709,46 +1275,26 @@ export class Grid implements m.ClassComponent<GridAttrs> {
 
           if (gridDom === null) return;
 
-<<<<<<< HEAD
-          const width = this.measureColumns(gridDom, [column.key]).get(
-            column.key,
-          )!;
-          this.setColumnWidth(gridDom, column.key, Math.max(width, minWidthPx));
-=======
-          this.measureAndApplyWidths(gridDom, [
+this.measureAndApplyWidths(gridDom, [
             {
               key: column.key,
               minWidth: column.minWidth ?? COL_WIDTH_MIN_PX,
               // No max - columns can grow as wide as needed on double-click
               maxWidth: Infinity,
             },
-          ]);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        },
+          ]);        },
       });
     };
 
-<<<<<<< HEAD
-    const reorderHandle = reorderable?.reorderGroup;
-
-    // Check if this column is the drag target
-    const isDragTarget =
-      this.dragState &&
-      this.dragState.targetKey === key &&
-      this.dragState.fromKey !== key;
-=======
-    const reorderHandle = column.reorderable?.handle;
+const reorderHandle = column.reorderable?.handle;
     const dragOverState = this.columnDragState.get(column.key) ?? {
       count: 0,
       position: 'after' as ReorderPosition,
     };
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     return m(
       '.pf-grid__cell-container',
       {
-<<<<<<< HEAD
-        'data-column-id': columnId,
+'data-column-id': columnId,
         'data-column-key': key,
         'key': key,
         'style': {
@@ -1775,93 +1321,6 @@ export class Grid implements m.ClassComponent<GridAttrs> {
         },
       },
       header,
-      !isFixedWidth && renderResizeHandle(),
-=======
-        'role': 'columnheader',
-        'ariaLabel': column.key,
-        'data-column-id': columnId,
-        'key': column.key,
-        'style': {
-          width: `var(--pf-grid-col-${columnId})`,
-        },
-        'draggable': column.reorderable !== undefined,
-        'className': classNames(
-          column.thickRightBorder &&
-            'pf-grid__cell-container--border-right-thick',
-          dragOverState.count > 0 && 'pf-grid__cell-container--drag-over',
-          dragOverState.count > 0 &&
-            `pf-grid__cell-container--drag-over-${dragOverState.position}`,
-        ),
-        'ondragstart': (e: MithrilEvent<DragEvent>) => {
-          if (!reorderHandle) return;
-          e.redraw = false;
-          e.dataTransfer!.setData(
-            reorderHandle,
-            JSON.stringify({key: column.key}),
-          );
-        },
-        'ondragenter': (e: MithrilEvent<DragEvent>) => {
-          if (reorderHandle && e.dataTransfer!.types.includes(reorderHandle)) {
-            const state = this.columnDragState.get(column.key) ?? {
-              count: 0,
-              position: 'after' as ReorderPosition,
-            };
-            this.columnDragState.set(column.key, {
-              ...state,
-              count: state.count + 1,
-            });
-          }
-        },
-        'ondragleave': (e: MithrilEvent<DragEvent>) => {
-          if (reorderHandle && e.dataTransfer!.types.includes(reorderHandle)) {
-            const state = this.columnDragState.get(column.key);
-            if (state) {
-              this.columnDragState.set(column.key, {
-                ...state,
-                count: state.count - 1,
-              });
-            }
-          }
-        },
-        'ondragover': (e: MithrilEvent<DragEvent>) => {
-          e.preventDefault();
-          if (reorderHandle && e.dataTransfer!.types.includes(reorderHandle)) {
-            e.dataTransfer!.dropEffect = 'move';
-            const target = e.currentTarget as HTMLElement;
-            const rect = target.getBoundingClientRect();
-            const position: ReorderPosition =
-              e.clientX < rect.left + rect.width / 2 ? 'before' : 'after';
-            const state = this.columnDragState.get(column.key) ?? {
-              count: 0,
-              position: 'after' as ReorderPosition,
-            };
-            if (state.position !== position) {
-              this.columnDragState.set(column.key, {...state, position});
-            }
-          } else {
-            e.dataTransfer!.dropEffect = 'none';
-          }
-        },
-        'ondrop': (e: MithrilEvent<DragEvent>) => {
-          this.columnDragState.set(column.key, {count: 0, position: 'after'});
-          if (reorderHandle && onColumnReorder) {
-            const data = e.dataTransfer!.getData(reorderHandle);
-            if (data) {
-              e.preventDefault();
-              const {key: from} = JSON.parse(data);
-              const to = column.key;
-              const target = e.currentTarget as HTMLElement;
-              const rect = target.getBoundingClientRect();
-              const position =
-                e.clientX < rect.left + rect.width / 2 ? 'before' : 'after';
-              onColumnReorder(from, to, position);
-            }
-          }
-        },
-      },
-      column.header ?? column.key,
-      renderResizeHandle(),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    );
+      !isFixedWidth && renderResizeHandle(),    );
   }
 }

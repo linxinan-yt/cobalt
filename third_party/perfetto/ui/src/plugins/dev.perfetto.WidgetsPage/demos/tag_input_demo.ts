@@ -21,19 +21,11 @@ function TagInputDemo() {
   let tagInputValue: string = '';
 
   return {
-<<<<<<< HEAD
-    view: (vnode: m.Vnode<{leftIcon?: string}>) => {
+view: (vnode: m.Vnode<{leftIcon?: string}>) => {
       return m(TagInput, {
         tags,
         value: tagInputValue,
-        leftIcon: vnode.attrs.leftIcon,
-=======
-    view: () => {
-      return m(TagInput, {
-        tags,
-        value: tagInputValue,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        onTagAdd: (tag) => {
+        leftIcon: vnode.attrs.leftIcon,        onTagAdd: (tag) => {
           tags.push(tag);
           tagInputValue = '';
         },
@@ -59,18 +51,12 @@ export function renderTagInput(): m.Children {
       ),
     ),
     renderWidgetShowcase({
-<<<<<<< HEAD
-      renderWidget: ({leftIcon}) =>
+renderWidget: ({leftIcon}) =>
         m(TagInputDemo, {
           leftIcon: leftIcon ? 'search' : undefined,
         }),
       initialOpts: {
         leftIcon: true,
-      },
-=======
-      renderWidget: () => m(TagInputDemo),
-      initialOpts: {},
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }),
+      },    }),
   ];
 }

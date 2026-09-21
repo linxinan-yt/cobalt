@@ -20,9 +20,5 @@ use crate::pb_msg;
 
 pb_msg!(Screenshot {
     jpg_image: String, primitive, 1,
-<<<<<<< HEAD
-    pam_image: String, primitive, 2,
-    ppm_image: String, primitive, 3,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-});
+pam_image: String, primitive, 2,
+    ppm_image: String, primitive, 3,});

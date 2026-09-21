@@ -783,9 +783,7 @@ zh{
                 "GyMMMd",
                 "GyMMMd",
                 "GyMd",
-<<<<<<< HEAD
-=======
-            }
+}
             eras{
                 abbreviated{
                     "埃历前",
@@ -794,9 +792,7 @@ zh{
                 wide{
                     "埃塞俄比亚历前",
                     "埃塞俄比亚历",
-                }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                }            }
             monthNames{
                 format{
                     abbreviated{
@@ -2442,16 +2438,12 @@ zh{
         }
         weekday{
             dn{"星期"}
-<<<<<<< HEAD
-=======
-        }
+}
         weekday-narrow{
             dn{"星期"}
         }
         weekday-short{
-            dn{"星期"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            dn{"星期"}        }
         weekdayOfMonth{
             dn{"月中日"}
         }
@@ -2511,9 +2503,7 @@ zh{
                 "[\\: ∶]",
             }
         }
-<<<<<<< HEAD
-=======
-        general{
+general{
             lenient{
                 "[.．․﹒ 。｡︒]",
                 "['＇’ ՚ ᾽᾿ ʼ]",
@@ -2525,9 +2515,7 @@ zh{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        number{
+        }        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ، ٫ 、﹑､︑]",

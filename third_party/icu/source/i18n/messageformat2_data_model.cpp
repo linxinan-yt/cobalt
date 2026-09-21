@@ -18,12 +18,7 @@ U_NAMESPACE_BEGIN
 
 namespace message2 {
 
-<<<<<<< HEAD
-namespace data_model {
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-// Implementation
+namespace data_model {// Implementation
 
 //------------------ SelectorKeys
 
@@ -839,23 +834,12 @@ MFDataModel::MFDataModel(const MFDataModel& other) : body(Pattern()) {
         const Variant* otherVariants = other.getVariantsInternal();
         int32_t numSelectors = other.numSelectors();
         int32_t numVariants = other.numVariants();
-<<<<<<< HEAD
-        LocalArray<VariableName> copiedSelectors(copyArray(otherSelectors, numSelectors, localErrorCode), localErrorCode);
-        LocalArray<Variant> copiedVariants(copyArray(otherVariants, numVariants, localErrorCode), localErrorCode);
-=======
-        VariableName* copiedSelectors = copyArray(otherSelectors, numSelectors, localErrorCode);
-        Variant* copiedVariants = copyArray(otherVariants, numVariants, localErrorCode);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        if (U_FAILURE(localErrorCode)) {
+LocalArray<VariableName> copiedSelectors(copyArray(otherSelectors, numSelectors, localErrorCode), localErrorCode);
+        LocalArray<Variant> copiedVariants(copyArray(otherVariants, numVariants, localErrorCode), localErrorCode);        if (U_FAILURE(localErrorCode)) {
             bogus = true;
             return;
         }
-<<<<<<< HEAD
-        body = Matcher(copiedSelectors.orphan(), numSelectors, copiedVariants.orphan(), numVariants);
-=======
-        body = Matcher(copiedSelectors, numSelectors, copiedVariants, numVariants);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+body = Matcher(copiedSelectors.orphan(), numSelectors, copiedVariants.orphan(), numVariants);    }
 
     bindingsLen = other.bindingsLen;
     if (bindingsLen > 0) {
@@ -927,12 +911,7 @@ MFDataModel::Builder::~Builder() {
         delete bindings;
     }
 }
-<<<<<<< HEAD
-
-} // namespace data_model
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-} // namespace message2
+} // namespace data_model} // namespace message2
 
 U_NAMESPACE_END
 

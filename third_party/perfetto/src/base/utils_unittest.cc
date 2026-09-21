@@ -418,7 +418,6 @@ TEST(UtilsTest, OpenFstreamAlwaysBinaryMode) {
 }
 #endif
 
-<<<<<<< HEAD
 TEST(UtilsTest, SaturatingAdd) {
   constexpr int64_t kMax = std::numeric_limits<int64_t>::max();
   constexpr int64_t kMin = std::numeric_limits<int64_t>::min();
@@ -467,10 +466,6 @@ TEST(UtilsTest, SaturatingMultiply) {
   EXPECT_EQ(SaturatingMultiply(kMax, -2), kMin);
   EXPECT_EQ(SaturatingMultiply(-9223372036854776, 1000), kMin);
   EXPECT_EQ(SaturatingMultiply(1000, -9223372036854776), kMin);
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}  // namespace
+}}  // namespace
 }  // namespace base
 }  // namespace perfetto

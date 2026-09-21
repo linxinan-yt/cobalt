@@ -512,7 +512,6 @@ stacks, timestamps, process/thread identifiers, CPU number, and event names.
 
     ![](/docs/images/perf-profile-in-ui.png)
 
-<<<<<<< HEAD
 **External Resources:**
 
 - **`perf-script` man page:** `man perf-script` (or search online, e.g.,
@@ -521,11 +520,7 @@ stacks, timestamps, process/thread identifiers, CPU number, and event names.
   [perf Wiki (kernel.org)](https://perf.wiki.kernel.org/index.php/Main_Page)
 - **Brendan Gregg's `perf` examples:**
   [Brendan Gregg's perf page](https://www.brendangregg.com/perf.html) (Contains
-  many examples of `perf script` usage, especially for flame graphs)
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-## Simpleperf proto format
+  many examples of `perf script` usage, especially for flame graphs)## Simpleperf proto format
 
 **Description:** Simpleperf is Android's profiling tool built on top of the
 Linux perf framework. The "Simpleperf proto format" refers to the binary

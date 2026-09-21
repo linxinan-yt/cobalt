@@ -743,11 +743,7 @@ kok{
             }
             light-speed{
                 dnam{"प्रकाश"}
-<<<<<<< HEAD
-                one{"{0} प्रकाश"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                other{"{0} प्रकाश"}
+one{"{0} प्रकाश"}                other{"{0} प्रकाश"}
             }
             meter-per-second{
                 dnam{"मीटर प्रती सेकंद"}
@@ -1561,11 +1557,7 @@ kok{
         speed{
             light-speed{
                 dnam{"प्रकाश"}
-<<<<<<< HEAD
-                one{"{0} प्रकाश"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                other{"{0} प्रकाश"}
+one{"{0} प्रकाश"}                other{"{0} प्रकाश"}
             }
             meter-per-second{
                 one{"{0} मी/से"}
@@ -2231,11 +2223,7 @@ kok{
             }
             light-speed{
                 dnam{"प्रकाश"}
-<<<<<<< HEAD
-                one{"{0} प्रकाश"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                other{"{0} प्रकाश"}
+one{"{0} प्रकाश"}                other{"{0} प्रकाश"}
             }
             meter-per-second{
                 dnam{"मी/से"}

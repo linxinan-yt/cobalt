@@ -114,12 +114,7 @@ hr{
         FJ{"Fidži"}
         FK{"Falklandski Otoci (Malvini)"}
         FM{"Mikronezija"}
-<<<<<<< HEAD
-        FO{"Farski Otoci"}
-=======
-        FO{"Ovčji Otoci"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        FR{"Francuska"}
+FO{"Farski Otoci"}        FR{"Francuska"}
         GA{"Gabon"}
         GB{"Ujedinjeno Kraljevstvo"}
         GD{"Grenada"}

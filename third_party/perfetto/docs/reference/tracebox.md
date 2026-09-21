@@ -87,18 +87,13 @@ The following applets are available:
 `traced_probes`
 :    Probes for system-wide tracing (ftrace, /proc pollers).
 
-<<<<<<< HEAD
 `traced_relay`
 :    Relays trace data to a remote tracing service. Used to extend a tracing
      session across machines; see
      [Multi-machine architecture](/docs/deployment/multi-machine-architecture.md)
      for the design and
      [Multi-machine recording](/docs/learning-more/multi-machine-tracing.md)
-     for setup.
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-`traced_perf`
+     for setup.`traced_perf`
 :    Perf-based CPU profiling data source.
 
 `perfetto`

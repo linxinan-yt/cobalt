@@ -1036,16 +1036,10 @@ bn{
                 other{"{0}ns"}
             }
             night{
-<<<<<<< HEAD
+dnam{"রাত্রি"}
                 one{"{0}রাত্রি"}
                 other{"{0}রাত্রি"}
-=======
-                dnam{"রাত্রি"}
-                one{"{0}রাত্রি"}
-                other{"{0}রাত্রি"}
-                per{"{0}/রাত্রি"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/রাত্রি"}            }
             quarter{
                 one{"{0}ত্রৈমাসিক"}
                 other{"{0}ত্রৈমাসিক"}

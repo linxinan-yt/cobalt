@@ -7,13 +7,7 @@
 
 #include <stddef.h>
 
-<<<<<<< HEAD
-#include "base/byte_size.h"
-=======
-#include "base/byte_count.h"
-#include "base/feature_list.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "base/system/sys_info.h"
+#include "base/byte_size.h"#include "base/system/sys_info.h"
 #include "build/build_config.h"
 #include "ui/gfx/geometry/size.h"
 

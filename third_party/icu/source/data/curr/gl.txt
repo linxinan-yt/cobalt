@@ -1616,12 +1616,8 @@ gl{
             one{"kwacha zambiano"}
             other{"kwachas zambianos"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             one{"ouro de Zimbabwe"}
             other{"ouro de Zimbabwe"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

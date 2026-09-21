@@ -14,12 +14,8 @@
 #include <stdio.h>
 #include <string.h>
 
-<<<<<<< HEAD
 #include <array>
-#include <map>
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include <string_view>
+#include <map>#include <string_view>
 #include <unordered_map>
 
 #include "unicode/utypes.h"
@@ -118,12 +114,8 @@ UnicodeSetTest::runIndexedTest(int32_t index, UBool exec,
     TESTCASE_AUTO(TestRangeIterator);
     TESTCASE_AUTO(TestStringIterator);
     TESTCASE_AUTO(TestElementIterator);
-<<<<<<< HEAD
-    TESTCASE_AUTO(TestToPatternOutput);
-    TESTCASE_AUTO(TestParseErrors);
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    TESTCASE_AUTO_END;
+TESTCASE_AUTO(TestToPatternOutput);
+    TESTCASE_AUTO(TestParseErrors);    TESTCASE_AUTO_END;
 }
 
 static const char NOT[] = "%%%%";
@@ -4654,8 +4646,6 @@ void UnicodeSetTest::TestElementIterator() {
     // begin() & end() return USetElementIterator for which explicit APIs are tested via USet
     // in a header-only unit test file.
 }
-<<<<<<< HEAD
-
 void UnicodeSetTest::TestToPatternOutput() {
     for (const auto &[expression, expected] :
         std::vector<std::pair<std::u16string_view, std::u16string_view>>{
@@ -4781,5 +4771,3 @@ void UnicodeSetTest::TestParseErrors() {
         }
     }
 }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

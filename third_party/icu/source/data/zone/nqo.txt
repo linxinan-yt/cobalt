@@ -1166,13 +1166,9 @@ nqo{
         "Pacific:Efate"{
             ec{"ߋߝߊߕߋ߫"}
         }
-<<<<<<< HEAD
-        "Pacific:Enderbury"{
+"Pacific:Enderbury"{
             ec{"ߞߊ߲ߕߐ߲߫"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Pacific:Fakaofo"{
+        }        "Pacific:Fakaofo"{
             ec{"ߝߞߊߏߝߏ߫"}
         }
         "Pacific:Fiji"{
@@ -1193,13 +1189,9 @@ nqo{
         "Pacific:Guam"{
             ec{"ߜ߭ߎߥߊ߲߫"}
         }
-<<<<<<< HEAD
-=======
-        "Pacific:Kanton"{
+"Pacific:Kanton"{
             ec{"ߞߊ߲ߕߐ߲߫"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Pacific:Kiritimati"{
+        }        "Pacific:Kiritimati"{
             ec{"ߞߙߌߕߌߡߊߕߌ߫"}
         }
         "Pacific:Kosrae"{
@@ -1629,13 +1621,9 @@ nqo{
         "meta:Guyana"{
             ls{"ߜ߭ߎߦߣߊ߫ ߕߎ߬ߡߊ߬ߘߊ"}
         }
-<<<<<<< HEAD
-        "meta:Hawaii"{
+"meta:Hawaii"{
             ls{"ߤߥߊߦ - ߊߟߋߦߎߕߌߦߊ߲߫ ߕߎ߬ߡߘߊ߬ ߛߎߡߊ߲ߘߊ߲ߕߊ"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "meta:Hawaii_Aleutian"{
+        }        "meta:Hawaii_Aleutian"{
             ld{"ߤߥߊߦ - ߊߟߋߦߎߕߌߦߊ߲߫ ߕߟߋ߬ߡߊ߬ ߕߎߡߘߊ"}
             lg{"ߤߥߊߦ - ߊߟߋߦߎߕߌߦߊ߲߫ ߕߎ߬ߡߊ߬ߘߊ"}
             ls{"ߤߥߊߦ - ߊߟߋߦߎߕߌߦߊ߲߫ ߕߎ߬ߡߘߊ߬ ߛߎߡߊ߲ߘߊ߲ߕߊ"}

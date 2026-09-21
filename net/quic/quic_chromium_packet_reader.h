@@ -102,10 +102,8 @@ class NET_EXPORT_PRIVATE QuicChromiumPacketReader {
   scoped_refptr<IOBufferWithSize> read_buffer_;
   NetLogWithSource net_log_;
 
-<<<<<<< HEAD
-  base::circular_deque<DatagramMetadata> pending_datagrams_;
+base::circular_deque<DatagramMetadata> pending_datagrams_;
 
-=======
 #if BUILDFLAG(IS_COBALT)
   // Static flag to remember when ReadMultiplePackets has ever returned
   // ERR_NOT_IMPLEMENTED
@@ -115,9 +113,7 @@ class NET_EXPORT_PRIVATE QuicChromiumPacketReader {
   Socket::ReadPacketResults read_results_;
 #endif
 
-  // Note: This has to remain the last member of the class.
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  base::WeakPtrFactory<QuicChromiumPacketReader> weak_factory_{this};
+  // Note: This has to remain the last member of the class.  base::WeakPtrFactory<QuicChromiumPacketReader> weak_factory_{this};
 };
 
 }  // namespace net

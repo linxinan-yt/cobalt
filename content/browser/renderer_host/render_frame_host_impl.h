@@ -208,13 +208,8 @@
 
 #if BUILDFLAG(IS_ANDROID)
 #include "base/containers/id_map.h"
-<<<<<<< HEAD
-#else
-=======
-#include "content/browser/webauth/webauth_request_security_checker.h"
 #elif !BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "third_party/blink/public/mojom/hid/hid.mojom-forward.h"
+#include "content/browser/webauth/webauth_request_security_checker.h"#include "third_party/blink/public/mojom/hid/hid.mojom-forward.h"
 #endif
 
 #if BUILDFLAG(IS_ANDROID) || (BUILDFLAG(IS_IOS) && !BUILDFLAG(IS_IOS_TVOS))
@@ -2127,22 +2122,14 @@ class CONTENT_EXPORT RenderFrameHostImpl
   void GetFileSystemAccessManager(
       mojo::PendingReceiver<blink::mojom::FileSystemAccessManager> receiver);
 
-<<<<<<< HEAD
-=======
-#if !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   void GetHidService(mojo::PendingReceiver<blink::mojom::HidService> receiver);
 
 #if !BUILDFLAG(IS_COBALT)
   void BindSerialService(
       mojo::PendingReceiver<blink::mojom::SerialService> receiver);
-<<<<<<< HEAD
+#endif
   void BindModelContextHost(
       mojo::PendingReceiver<blink::mojom::ModelContextHost> receiver);
-=======
-#endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 #if BUILDFLAG(IS_CHROMEOS)
   void GetSmartCardService(
       mojo::PendingReceiver<blink::mojom::SmartCardService> receiver);

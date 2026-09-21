@@ -17,7 +17,6 @@
 #include "absl/strings/string_view.h"
 #include "api/environment/environment.h"
 #include "api/units/time_delta.h"
-<<<<<<< HEAD
 #include "api/units/timestamp.h"
 #include "logging/rtc_event_log/rtc_event_log_parser.h"
 #include "modules/rtp_rtcp/source/ntp_time_util.h"
@@ -31,20 +30,11 @@
 #include "system_wrappers/include/ntp_time.h"
 #include "test/gmock.h"
 #include "test/gtest.h"
-#include "video/timing/simulator/rtp_packet_simulator.h"
-=======
-#include "logging/rtc_event_log/rtc_event_log_parser.h"
-#include "modules/rtp_rtcp/source/rtp_packet_received.h"
-#include "rtc_base/checks.h"
-#include "test/gmock.h"
-#include "test/gtest.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "video/timing/simulator/test/parsed_rtc_event_log_builder.h"
+#include "video/timing/simulator/rtp_packet_simulator.h"#include "video/timing/simulator/test/parsed_rtc_event_log_builder.h"
 
 namespace webrtc::video_timing_simulator {
 namespace {
 
-<<<<<<< HEAD
 using ::testing::Eq;
 using ::testing::Field;
 
@@ -59,28 +49,13 @@ constexpr uint16_t kRtxOsn = 823;
 
 constexpr uint32_t kSenderSsrc = 123456;
 constexpr uint32_t kReceiverSsrc = 987654;
-=======
-using ::testing::_;
-
-constexpr absl::string_view kEmptyFieldTrialsString = "";
-constexpr uint32_t kSsrc1 = 123456;
-constexpr uint32_t kSsrc2 = 456789;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 class MockRtcEventLogDriverStream : public RtcEventLogDriver::StreamInterface {
  public:
   MOCK_METHOD(void,
-<<<<<<< HEAD
-              InsertSimulatedPacket,
+InsertSimulatedPacket,
               (const RtpPacketSimulator::SimulatedPacket& simulated_packet),
               (override));
-  MOCK_METHOD(void, UpdateMaxRtt, (TimeDelta max_rtt), (override));
-=======
-              InsertPacket,
-              (const RtpPacketReceived& rtp_packet),
-              (override));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  MOCK_METHOD(void, Close, (), (override));
+  MOCK_METHOD(void, UpdateMaxRtt, (TimeDelta max_rtt), (override));  MOCK_METHOD(void, Close, (), (override));
 };
 
 class MockRtcEventLogDriverStreamFactory {
@@ -123,12 +98,7 @@ class MockRtcEventLogDriverStreamFactory {
 class RtcEventLogDriverTest : public ::testing::Test {
  protected:
   auto BuildStreamFactory() {
-<<<<<<< HEAD
-    return [this](Environment env, uint32_t ssrc, uint32_t rtx_ssrc) {
-=======
-    return [this](Environment env, uint32_t ssrc) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      return stream_factory_.Create(env, ssrc);
+return [this](Environment env, uint32_t ssrc, uint32_t rtx_ssrc) {      return stream_factory_.Create(env, ssrc);
     };
   }
 
@@ -139,21 +109,14 @@ class RtcEventLogDriverTest : public ::testing::Test {
 TEST_F(RtcEventLogDriverTest, EmptyLogDoesNotCreateStreams) {
   std::unique_ptr<ParsedRtcEventLog> parsed_log = parsed_log_builder_.Build();
 
-<<<<<<< HEAD
-  RtcEventLogDriver driver(RtcEventLogDriver::Config(), parsed_log.get(),
-                           kEmptyFieldTrialsString, BuildStreamFactory());
-=======
-  RtcEventLogDriver driver(parsed_log.get(), kEmptyFieldTrialsString,
-                           BuildStreamFactory());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  driver.Simulate();
+RtcEventLogDriver driver(RtcEventLogDriver::Config(), parsed_log.get(),
+                           kEmptyFieldTrialsString, BuildStreamFactory());  driver.Simulate();
 
   EXPECT_EQ(stream_factory_.NumStreamsCreated(), 0);
 }
 
 TEST_F(RtcEventLogDriverTest, LoggedVideoRecvConfigCreatesStream) {
-<<<<<<< HEAD
-  parsed_log_builder_.LogVideoRecvConfig(kSsrc1, kRtxSsrc1);
+parsed_log_builder_.LogVideoRecvConfig(kSsrc1, kRtxSsrc1);
   std::unique_ptr<ParsedRtcEventLog> parsed_log = parsed_log_builder_.Build();
 
   RtcEventLogDriver driver(RtcEventLogDriver::Config(), parsed_log.get(),
@@ -170,21 +133,13 @@ TEST_F(RtcEventLogDriverTest,
   std::unique_ptr<ParsedRtcEventLog> parsed_log = parsed_log_builder_.Build();
 
   RtcEventLogDriver driver(RtcEventLogDriver::Config{.ssrc_filter = {kSsrc1}},
-                           parsed_log.get(), kEmptyFieldTrialsString,
-=======
-  parsed_log_builder_.LogVideoRecvConfig(kSsrc1);
-  std::unique_ptr<ParsedRtcEventLog> parsed_log = parsed_log_builder_.Build();
-
-  RtcEventLogDriver driver(parsed_log.get(), kEmptyFieldTrialsString,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                           BuildStreamFactory());
+                           parsed_log.get(), kEmptyFieldTrialsString,                           BuildStreamFactory());
   EXPECT_CALL(*stream_factory_.stream1_ptr_, Close());
   driver.Simulate();
 
   EXPECT_EQ(stream_factory_.NumStreamsCreated(), 1);
 }
 
-<<<<<<< HEAD
 TEST_F(RtcEventLogDriverTest,
        LoggedVideoRecvConfigDoesNotCreateStreamIfNotIncludedInSsrcFilter) {
   parsed_log_builder_.LogVideoRecvConfig(kSsrc1, kRtxSsrc1);
@@ -204,24 +159,13 @@ TEST_F(RtcEventLogDriverTest, LoggedVideoRecvConfigsCreateStreams) {
   std::unique_ptr<ParsedRtcEventLog> parsed_log = parsed_log_builder_.Build();
 
   RtcEventLogDriver driver(RtcEventLogDriver::Config(), parsed_log.get(),
-                           kEmptyFieldTrialsString, BuildStreamFactory());
-=======
-TEST_F(RtcEventLogDriverTest, LoggedVideoRecvConfigsCreateStreams) {
-  parsed_log_builder_.LogVideoRecvConfig(kSsrc1);
-  parsed_log_builder_.LogVideoRecvConfig(kSsrc2);
-  std::unique_ptr<ParsedRtcEventLog> parsed_log = parsed_log_builder_.Build();
-
-  RtcEventLogDriver driver(parsed_log.get(), kEmptyFieldTrialsString,
-                           BuildStreamFactory());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  EXPECT_CALL(*stream_factory_.stream1_ptr_, Close());
+                           kEmptyFieldTrialsString, BuildStreamFactory());  EXPECT_CALL(*stream_factory_.stream1_ptr_, Close());
   EXPECT_CALL(*stream_factory_.stream2_ptr_, Close());
   driver.Simulate();
 
   EXPECT_EQ(stream_factory_.NumStreamsCreated(), 2);
 }
 
-<<<<<<< HEAD
 class CountingRtcEventLogDriverStreamFactoryFactory {
  public:
   auto BuildStreamFactory() {
@@ -270,16 +214,7 @@ TEST_F(RtcEventLogDriverTest, FirstLoggedEventSetsSimulationClock) {
   std::unique_ptr<ParsedRtcEventLog> parsed_log = parsed_log_builder_.Build();
 
   RtcEventLogDriver driver(RtcEventLogDriver::Config(), parsed_log.get(),
-                           kEmptyFieldTrialsString, BuildStreamFactory());
-=======
-TEST_F(RtcEventLogDriverTest, FirstLoggedEventSetsSimulationClock) {
-  parsed_log_builder_.LogVideoRecvConfig(kSsrc1);
-  std::unique_ptr<ParsedRtcEventLog> parsed_log = parsed_log_builder_.Build();
-
-  RtcEventLogDriver driver(parsed_log.get(), kEmptyFieldTrialsString,
-                           BuildStreamFactory());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  driver.Simulate();
+                           kEmptyFieldTrialsString, BuildStreamFactory());  driver.Simulate();
 
   EXPECT_EQ(driver.GetCurrentTimeForTesting(),
             parsed_log_builder_.CurrentTime() +
@@ -287,24 +222,13 @@ TEST_F(RtcEventLogDriverTest, FirstLoggedEventSetsSimulationClock) {
 }
 
 TEST_F(RtcEventLogDriverTest, LoggedEventAdvancesSimulationClock) {
-<<<<<<< HEAD
-  parsed_log_builder_.LogVideoRecvConfig(kSsrc1, kRtxSsrc1);
+parsed_log_builder_.LogVideoRecvConfig(kSsrc1, kRtxSsrc1);
   parsed_log_builder_.AdvanceTime(TimeDelta::Millis(50));
   parsed_log_builder_.LogVideoRecvConfig(kSsrc2, kRtxSsrc2);
   std::unique_ptr<ParsedRtcEventLog> parsed_log = parsed_log_builder_.Build();
 
   RtcEventLogDriver driver(RtcEventLogDriver::Config(), parsed_log.get(),
-                           kEmptyFieldTrialsString, BuildStreamFactory());
-=======
-  parsed_log_builder_.LogVideoRecvConfig(kSsrc1);
-  parsed_log_builder_.AdvanceTime(TimeDelta::Millis(50));
-  parsed_log_builder_.LogVideoRecvConfig(kSsrc2);
-  std::unique_ptr<ParsedRtcEventLog> parsed_log = parsed_log_builder_.Build();
-
-  RtcEventLogDriver driver(parsed_log.get(), kEmptyFieldTrialsString,
-                           BuildStreamFactory());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  driver.Simulate();
+                           kEmptyFieldTrialsString, BuildStreamFactory());  driver.Simulate();
 
   EXPECT_EQ(driver.GetCurrentTimeForTesting(),
             parsed_log_builder_.CurrentTime() +
@@ -312,8 +236,7 @@ TEST_F(RtcEventLogDriverTest, LoggedEventAdvancesSimulationClock) {
 }
 
 TEST_F(RtcEventLogDriverTest, LoggedRtpPacketIncomingInsertsPacketIntoStream) {
-<<<<<<< HEAD
-  parsed_log_builder_.LogVideoRecvConfig(kSsrc1, kRtxSsrc1);
+parsed_log_builder_.LogVideoRecvConfig(kSsrc1, kRtxSsrc1);
   parsed_log_builder_.LogRtpPacketIncoming(kSsrc1);
   std::unique_ptr<ParsedRtcEventLog> parsed_log = parsed_log_builder_.Build();
 
@@ -334,34 +257,17 @@ TEST_F(RtcEventLogDriverTest,
       InsertSimulatedPacket(
           Field(&RtpPacketSimulator::SimulatedPacket::has_rtx_osn, Eq(true))));
   RtcEventLogDriver driver(RtcEventLogDriver::Config(), parsed_log.get(),
-                           kEmptyFieldTrialsString, BuildStreamFactory());
-=======
-  parsed_log_builder_.LogVideoRecvConfig(kSsrc1);
-  parsed_log_builder_.LogRtpPacketIncoming(kSsrc1);
-  std::unique_ptr<ParsedRtcEventLog> parsed_log = parsed_log_builder_.Build();
-
-  EXPECT_CALL(*stream_factory_.stream1_ptr_, InsertPacket(_));
-  RtcEventLogDriver driver(parsed_log.get(), kEmptyFieldTrialsString,
-                           BuildStreamFactory());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  driver.Simulate();
+                           kEmptyFieldTrialsString, BuildStreamFactory());  driver.Simulate();
 }
 
 TEST_F(RtcEventLogDriverTest,
        LoggedRtpPacketIncomingsInsertsPacketsIntoStreams) {
-<<<<<<< HEAD
-  parsed_log_builder_.LogVideoRecvConfig(kSsrc1, kRtxSsrc1);
-  parsed_log_builder_.LogVideoRecvConfig(kSsrc2, kRtxSsrc2);
-=======
-  parsed_log_builder_.LogVideoRecvConfig(kSsrc1);
-  parsed_log_builder_.LogVideoRecvConfig(kSsrc2);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  parsed_log_builder_.LogRtpPacketIncoming(kSsrc1);
+parsed_log_builder_.LogVideoRecvConfig(kSsrc1, kRtxSsrc1);
+  parsed_log_builder_.LogVideoRecvConfig(kSsrc2, kRtxSsrc2);  parsed_log_builder_.LogRtpPacketIncoming(kSsrc1);
   parsed_log_builder_.LogRtpPacketIncoming(kSsrc2);
   std::unique_ptr<ParsedRtcEventLog> parsed_log = parsed_log_builder_.Build();
 
-<<<<<<< HEAD
-  EXPECT_CALL(*stream_factory_.stream1_ptr_, InsertSimulatedPacket);
+EXPECT_CALL(*stream_factory_.stream1_ptr_, InsertSimulatedPacket);
   EXPECT_CALL(*stream_factory_.stream2_ptr_, InsertSimulatedPacket);
   RtcEventLogDriver driver(RtcEventLogDriver::Config(), parsed_log.get(),
                            kEmptyFieldTrialsString, BuildStreamFactory());
@@ -493,14 +399,7 @@ TEST_F(RtcEventLogDriverTest, ReceiverCalculatesRttFromIncomingXr) {
               UpdateMaxRtt(TimeDelta::Millis(100)));
   EXPECT_CALL(*stream_factory_.stream1_ptr_, Close());
   RtcEventLogDriver driver(RtcEventLogDriver::Config(), parsed_log.get(),
-                           kEmptyFieldTrialsString, BuildStreamFactory());
-=======
-  EXPECT_CALL(*stream_factory_.stream1_ptr_, InsertPacket(_));
-  EXPECT_CALL(*stream_factory_.stream2_ptr_, InsertPacket(_));
-  RtcEventLogDriver driver(parsed_log.get(), kEmptyFieldTrialsString,
-                           BuildStreamFactory());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  driver.Simulate();
+                           kEmptyFieldTrialsString, BuildStreamFactory());  driver.Simulate();
 }
 
 }  // namespace

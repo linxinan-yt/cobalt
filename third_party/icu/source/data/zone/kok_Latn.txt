@@ -4,8 +4,7 @@
 kok_Latn{
     %%Parent{"root"}
     zoneStrings{
-<<<<<<< HEAD
-        "Asia:Calcutta"{
+"Asia:Calcutta"{
             ec{"Kolkata, Bombaim, Ponnji"}
         }
         "Etc:UTC"{
@@ -18,14 +17,6 @@ kok_Latn{
             ls{"Greenwich Promann Vell"}
         }
         regionFormat{"{0} Vell"}
-        regionFormatDaylight{"{0} Dis-uzvadd Vachovp Vell"}
-=======
-        "meta:GMT"{
-            ls{"Greenwich Mean Time"}
-        }
-        regionFormat{"{0} Vell"}
-        regionFormatDaylight{"{0} Dis-uzvadd vachovp Vell"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        regionFormatStandard{"{0} Promann Vell"}
+        regionFormatDaylight{"{0} Dis-uzvadd Vachovp Vell"}        regionFormatStandard{"{0} Promann Vell"}
     }
 }

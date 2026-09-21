@@ -31,21 +31,9 @@ abstract class WattsonBasePackageSelectionAggregator implements Aggregator {
   abstract readonly id: string;
   private scaleNumericData: boolean = false;
 
-<<<<<<< HEAD
-  probe(area: AreaSelection): Aggregation | undefined {
+probe(area: AreaSelection): Aggregation | undefined {
     const probeResult = this.doProbe(area);
     if (probeResult === undefined) return undefined;
-=======
-  probe(area: AreaSelection) {
-    const selectedCpus: number[] = [];
-    for (const trackInfo of area.tracks) {
-      if (trackInfo?.tags?.kinds?.includes(CPU_SLICE_TRACK_KIND)) {
-        exists(trackInfo.tags.cpu) && selectedCpus.push(trackInfo.tags.cpu);
-      }
-    }
-    if (selectedCpus.length === 0) return undefined;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     return {
       prepareData: async (engine: Engine) => {
         await engine.query(`drop view if exists ${this.id};`);

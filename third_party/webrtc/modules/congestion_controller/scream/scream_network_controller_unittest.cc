@@ -34,12 +34,7 @@ using ::testing::Field;
 using ::testing::Lt;
 using ::testing::Optional;
 
-<<<<<<< HEAD
-constexpr double kPacingFactor = 1.1;
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-TEST(ScreamControllerTest, CanConstruct) {
+constexpr double kPacingFactor = 1.1;TEST(ScreamControllerTest, CanConstruct) {
   SimulatedClock clock(Timestamp::Seconds(1'234));
   Environment env = CreateTestEnvironment({.time = &clock});
   NetworkControllerConfig config(env);
@@ -62,12 +57,7 @@ TEST(ScreamControllerTest, OnNetworkAvailabilityUpdatesTargetRateAndPacerRate) {
   EXPECT_EQ(update.target_rate->target_rate, config.constraints.starting_rate);
   ASSERT_TRUE(update.pacer_config);
   EXPECT_EQ(update.pacer_config->data_window,
-<<<<<<< HEAD
-            *config.constraints.starting_rate * kPacingFactor *
-=======
-            *config.constraints.starting_rate * 1.5 *
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                PacerConfig::kDefaultTimeInterval);
+*config.constraints.starting_rate * kPacingFactor *                PacerConfig::kDefaultTimeInterval);
 }
 
 TEST(ScreamControllerTest,
@@ -90,12 +80,7 @@ TEST(ScreamControllerTest,
   EXPECT_GT(update.target_rate->target_rate, DataRate::KilobitsPerSec(100));
   ASSERT_TRUE(update.pacer_config);
   EXPECT_EQ(update.pacer_config->data_window,
-<<<<<<< HEAD
-            update.target_rate->target_rate * kPacingFactor *
-=======
-            update.target_rate->target_rate * 1.5 *
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                PacerConfig::kDefaultTimeInterval);
+update.target_rate->target_rate * kPacingFactor *                PacerConfig::kDefaultTimeInterval);
 }
 
 TEST(ScreamControllerTest,
@@ -135,12 +120,7 @@ TEST(ScreamControllerTest,
             route_change.constraints.starting_rate);
   ASSERT_TRUE(update.pacer_config);
   EXPECT_EQ(update.pacer_config->data_window,
-<<<<<<< HEAD
-            *route_change.constraints.starting_rate * kPacingFactor *
-=======
-            *route_change.constraints.starting_rate * 1.5 *
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                PacerConfig::kDefaultTimeInterval);
+*route_change.constraints.starting_rate * kPacingFactor *                PacerConfig::kDefaultTimeInterval);
 }
 
 TEST(ScreamControllerTest, TargetRateRampsUptoTargetConstraints) {
@@ -177,7 +157,6 @@ TEST(ScreamControllerTest, TargetRateRampsUptoTargetConstraints) {
   EXPECT_EQ(update.target_rate->target_rate, DataRate::KilobitsPerSec(200));
 }
 
-<<<<<<< HEAD
 void TestRouteChangeWithoutBweRestart(
     TimeDelta initial_queue_delay,
     TimeDelta queue_delay_after_route_change) {
@@ -298,11 +277,7 @@ TEST(ScreamControllerTest, TargetRateLimitedByRemoteBitrateReport) {
       EXPECT_EQ(update.target_rate->target_rate, DataRate::KilobitsPerSec(500));
     }
   }
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-TEST(ScreamControllerTest, PacingWindowReducedIfCeCongestedStreamsConfigured) {
+}TEST(ScreamControllerTest, PacingWindowReducedIfCeCongestedStreamsConfigured) {
   SimulatedClock clock(Timestamp::Seconds(1'234));
   Environment env = CreateTestEnvironment({.time = &clock});
   CcFeedbackGenerator feedback_generator({
@@ -321,15 +296,10 @@ TEST(ScreamControllerTest, PacingWindowReducedIfCeCongestedStreamsConfigured) {
   DataRate send_rate = DataRate::KilobitsPerSec(500);
   for (int i = 0; i < 20; ++i) {
     TransportPacketsFeedback feedback =
-<<<<<<< HEAD
-        feedback_generator.ProcessUntilNextFeedback(
+feedback_generator.ProcessUntilNextFeedback(
             send_rate, clock, [&](const SentPacket& packet) {
               scream_controller.OnSentPacket(packet);
-            });
-=======
-        feedback_generator.ProcessUntilNextFeedback(send_rate, clock);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    update = scream_controller.OnTransportPacketsFeedback(feedback);
+            });    update = scream_controller.OnTransportPacketsFeedback(feedback);
     if (update.target_rate.has_value()) {
       send_rate = update.target_rate->target_rate;
     }
@@ -337,19 +307,10 @@ TEST(ScreamControllerTest, PacingWindowReducedIfCeCongestedStreamsConfigured) {
   EXPECT_THAT(update.pacer_config,
               Optional(Field(&PacerConfig::time_window,
                              Lt(PacerConfig::kDefaultTimeInterval))));
-<<<<<<< HEAD
 }
 
 TEST(ScreamControllerTest,
-     PacingWindowReducedIfDelayCongestedStreamsConfigured) {
-=======
-  EXPECT_GT(send_rate, DataRate::KilobitsPerSec(500));
-}
-
-TEST(ScreamControllerTest,
-     PacingWindowNotReducedIfDelayCongestedStreamsConfigured) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  SimulatedClock clock(Timestamp::Seconds(1'234));
+     PacingWindowReducedIfDelayCongestedStreamsConfigured) {  SimulatedClock clock(Timestamp::Seconds(1'234));
   Environment env = CreateTestEnvironment({.time = &clock});
   CcFeedbackGenerator feedback_generator(
       {.network_config = {.link_capacity = DataRate::KilobitsPerSec(900)},
@@ -364,8 +325,7 @@ TEST(ScreamControllerTest,
 
   NetworkControlUpdate update;
   DataRate send_rate = DataRate::KilobitsPerSec(500);
-<<<<<<< HEAD
-  for (int i = 0; i < 30; ++i) {
+for (int i = 0; i < 30; ++i) {
     TransportPacketsFeedback feedback =
         feedback_generator.ProcessUntilNextFeedback(
             send_rate, clock, [&](const SentPacket& packet) {
@@ -402,13 +362,7 @@ TEST(ScreamControllerTest, PacingWindowNotReducedIfNotCongested) {
         feedback_generator.ProcessUntilNextFeedback(
             send_rate, clock, [&](const SentPacket& packet) {
               scream_controller.OnSentPacket(packet);
-            });
-=======
-  for (int i = 0; i < 20; ++i) {
-    TransportPacketsFeedback feedback =
-        feedback_generator.ProcessUntilNextFeedback(send_rate, clock);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    update = scream_controller.OnTransportPacketsFeedback(feedback);
+            });    update = scream_controller.OnTransportPacketsFeedback(feedback);
     if (update.target_rate.has_value()) {
       send_rate = update.target_rate->target_rate;
     }
@@ -421,52 +375,27 @@ TEST(ScreamControllerTest, PacingWindowNotReducedIfNotCongested) {
 TEST(ScreamControllerTest, InitiallyPaddingIsAllowedToReachNeededRate) {
   SimulatedClock clock(Timestamp::Seconds(1'234));
   Environment env = CreateTestEnvironment({.time = &clock});
-<<<<<<< HEAD
-  NetworkControllerConfig config(env);
-  ScreamNetworkController scream_controller(config);
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  CcFeedbackGenerator feedback_generator(
+NetworkControllerConfig config(env);
+  ScreamNetworkController scream_controller(config);  CcFeedbackGenerator feedback_generator(
       {.network_config = {.queue_delay_ms = 10,
                           .link_capacity = DataRate::KilobitsPerSec(5000)},
        .send_as_ect1 = true});
-<<<<<<< HEAD
-  StreamsConfig streams_config;
+StreamsConfig streams_config;
   streams_config.max_total_allocated_bitrate = DataRate::KilobitsPerSec(1000);
   scream_controller.OnStreamsConfig(streams_config);
   NetworkControlUpdate update = scream_controller.OnNetworkAvailability(
       {.at_time = clock.CurrentTime(), .network_available = true});
-=======
-
-  NetworkControllerConfig config(env);
-  ScreamNetworkController scream_controller(config);
-
-  StreamsConfig streams_config;
-  streams_config.max_total_allocated_bitrate = DataRate::KilobitsPerSec(1000);
-  scream_controller.OnStreamsConfig(streams_config);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   DataRate send_rate = DataRate::KilobitsPerSec(50);
   DataRate target_rate = DataRate::Zero();
   bool padding_set = false;
-<<<<<<< HEAD
-  Timestamp padding_stop = Timestamp::Zero();
+Timestamp padding_stop = Timestamp::Zero();
   Timestamp start_time = clock.CurrentTime();
   while (clock.CurrentTime() < start_time + TimeDelta::Seconds(1)) {
     TransportPacketsFeedback feedback =
         feedback_generator.ProcessUntilNextFeedback(
             send_rate, clock,
             [&](SentPacket packet) { scream_controller.OnSentPacket(packet); });
-    update = scream_controller.OnTransportPacketsFeedback(feedback);
-=======
-  Timestamp start_time = clock.CurrentTime();
-  while (clock.CurrentTime() < start_time + TimeDelta::Seconds(1)) {
-    TransportPacketsFeedback feedback =
-        feedback_generator.ProcessUntilNextFeedback(send_rate, clock);
-    NetworkControlUpdate update =
-        scream_controller.OnTransportPacketsFeedback(feedback);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    if (update.pacer_config.has_value()) {
+    update = scream_controller.OnTransportPacketsFeedback(feedback);    if (update.pacer_config.has_value()) {
       if (update.pacer_config->pad_rate() != DataRate::Zero()) {
         padding_set = true;
         // Set the send rate equal to the padding rate.
@@ -478,20 +407,15 @@ TEST(ScreamControllerTest, InitiallyPaddingIsAllowedToReachNeededRate) {
         EXPECT_LT(
             update.pacer_config->pad_rate(),
             update.target_rate->target_rate + DataRate::KilobitsPerSec(1));
-<<<<<<< HEAD
-      } else if (padding_set && padding_stop.IsZero()) {
-        padding_stop = clock.CurrentTime();
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      }
+} else if (padding_set && padding_stop.IsZero()) {
+        padding_stop = clock.CurrentTime();      }
     }
     if (update.target_rate) {
       target_rate = update.target_rate->target_rate;
     }
   }
   EXPECT_TRUE(padding_set);
-<<<<<<< HEAD
-  // Target rate should reach max needed rate.
+// Target rate should reach max needed rate.
   EXPECT_GE(target_rate, (*streams_config.max_total_allocated_bitrate));
   // But not much more, since seen data in flight should limit the target rate
   // increase.
@@ -598,24 +522,14 @@ TEST(ScreamControllerTest, PaddingStopIfNetworkCongested) {
 
   EXPECT_LT(result.target_rate, DataRate::KilobitsPerSec(750));
   // Padding should stop when congestion is detected.
-  EXPECT_LT(result.padding_stop - result.padding_start, TimeDelta::Seconds(1));
-=======
-  // Target rate should reach pacing rate factor * max needed rate.
-  EXPECT_GE(target_rate, 1.5 * (*streams_config.max_total_allocated_bitrate));
-  // But not much more, since seen data in flight should limit the target rate
-  // increase.
-  EXPECT_LE(target_rate,
-            1.5 * 1.5 * (*streams_config.max_total_allocated_bitrate));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  EXPECT_LT(result.padding_stop - result.padding_start, TimeDelta::Seconds(1));}
 
 TEST(ScreamControllerTest, PeriodicallyAllowPadding) {
   SimulatedClock clock(Timestamp::Seconds(1'234));
   Environment env = CreateTestEnvironment({.time = &clock});
   CcFeedbackGenerator feedback_generator(
       {.network_config = {.queue_delay_ms = 10,
-<<<<<<< HEAD
-                          .link_capacity = DataRate::KilobitsPerSec(15000)},
+.link_capacity = DataRate::KilobitsPerSec(15000)},
        .send_as_ect1 = true});
 
   NetworkControllerConfig config(env);
@@ -1013,53 +927,7 @@ TEST(ScreamControllerTest, CwndReduceRatioSetToOneWhenCongestionWindowIsFull) {
 
   NetworkControlUpdate update = scream_controller.OnSentPacket(sent_packet);
   ASSERT_TRUE(update.target_rate.has_value());
-  EXPECT_EQ(update.target_rate->cwnd_reduce_ratio, 1.0);
-=======
-                          .link_capacity = DataRate::KilobitsPerSec(5000)},
-       .send_as_ect1 = true});
-
-  NetworkControllerConfig config(env);
-  ScreamNetworkController scream_controller(config);
-
-  StreamsConfig streams_config;
-  streams_config.max_total_allocated_bitrate = DataRate::KilobitsPerSec(1000);
-  scream_controller.OnStreamsConfig(streams_config);
-
-  Timestamp padding_start_1 = Timestamp::Zero();
-  Timestamp padding_start_2 = Timestamp::Zero();
-  Timestamp padding_stop = Timestamp::Zero();
-  Timestamp start_time = clock.CurrentTime();
-  while (clock.CurrentTime() < start_time + TimeDelta::Seconds(20)) {
-    // Use a fixed send rate. This should mean that Scream cant increase target
-    // rate to 1Mbit/S.
-    TransportPacketsFeedback feedback =
-        feedback_generator.ProcessUntilNextFeedback(
-            /*send_rate=*/DataRate::KilobitsPerSec(50), clock);
-    NetworkControlUpdate update =
-        scream_controller.OnTransportPacketsFeedback(feedback);
-    if (update.pacer_config.has_value()) {
-      if (update.pacer_config->pad_rate() != DataRate::Zero()) {
-        if (padding_start_1.IsZero()) {
-          padding_start_1 = clock.CurrentTime();
-        }
-        if (!padding_stop.IsZero() && padding_start_2.IsZero()) {
-          padding_start_2 = clock.CurrentTime();
-        }
-      } else {
-        if (padding_stop.IsZero()) {
-          padding_stop = clock.CurrentTime();
-        }
-      }
-    }
-  }
-  TimeDelta padding_duration = padding_stop - padding_start_1;
-  TimeDelta time_betwee_padding = padding_start_2 - padding_stop;
-  EXPECT_GT(padding_duration, TimeDelta::Millis(900));
-  EXPECT_LT(padding_duration, TimeDelta::Millis(1100));
-  EXPECT_GT(time_betwee_padding, TimeDelta::Millis(8900));
-  EXPECT_LT(time_betwee_padding, TimeDelta::Millis(11000));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  EXPECT_EQ(update.target_rate->cwnd_reduce_ratio, 1.0);}
 
 }  // namespace
 }  // namespace webrtc

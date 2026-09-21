@@ -1,9 +1,5 @@
 // © 2024 and later: Unicode, Inc. and others.
-<<<<<<< HEAD
 // License & terms of use: https://www.unicode.org/copyright.html
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 #include "unicode/utypes.h"
 
 #if !UCONFIG_NO_NORMALIZATION
@@ -12,12 +8,7 @@
 
 #if !UCONFIG_NO_MF2
 
-<<<<<<< HEAD
-#include "unicode/gregocal.h"
-=======
-#include "unicode/calendar.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "messageformat2test.h"
+#include "unicode/gregocal.h"#include "messageformat2test.h"
 
 using namespace icu::message2;
 
@@ -166,25 +157,14 @@ void TestMessageFormat2::testAPISimple() {
         .setLocale(locale)
         .build(errorCode);
 
-<<<<<<< HEAD
-    GregorianCalendar cal(errorCode);
+GregorianCalendar cal(errorCode);
    // Sunday, October 28, 2136 8:39:12 AM PST
     cal.set(2136, Calendar::OCTOBER, 28, 8, 39, 12);
 
     argsBuilder.clear();
     DateInfo dateInfo = { cal.getTime(errorCode),
                           "Pacific Standard Time" };
-    argsBuilder["today"] = message2::Formattable(std::move(dateInfo));
-=======
-    Calendar* cal(Calendar::createInstance(errorCode)); 
-   // Sunday, October 28, 2136 8:39:12 AM PST
-    cal->set(2136, Calendar::OCTOBER, 28, 8, 39, 12);
-    UDate date = cal->getTime(errorCode);
-
-    argsBuilder.clear();
-    argsBuilder["today"] = message2::Formattable::forDate(date);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    args = MessageArguments(argsBuilder, errorCode);
+    argsBuilder["today"] = message2::Formattable(std::move(dateInfo));    args = MessageArguments(argsBuilder, errorCode);
     result = mf.formatToString(args, errorCode);
     assertEquals("testAPI", "Today is Sunday, October 28, 2136.", result);
 
@@ -206,11 +186,6 @@ void TestMessageFormat2::testAPISimple() {
         .build(errorCode);
     result = mf.formatToString(args, errorCode);
     assertEquals("testAPI", "Maria added 12 photos to her album.", result);
-<<<<<<< HEAD
-=======
-
-    delete cal;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 // Design doc example, with more details

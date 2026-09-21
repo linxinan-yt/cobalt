@@ -13,7 +13,6 @@
 // limitations under the License.
 
 import m from 'mithril';
-<<<<<<< HEAD
 import {DataGrid} from '../../../components/widgets/datagrid/datagrid';
 import type {ColumnSchema} from '../../../components/widgets/datagrid/datagrid_schema';
 import type {Row, SqlValue} from '../../../trace_processor/query_result';
@@ -211,41 +210,7 @@ export function renderDataGrid(app: App): m.Children {
       engine: app.trace.engine,
       ...SLICE_SQL_SCHEMA,
     });
-  }
-
-=======
-import {
-  DataGrid,
-  DataGridAttrs,
-} from '../../../components/widgets/data_grid/data_grid';
-import {SQLDataSource} from '../../../components/widgets/data_grid/sql_data_source';
-import {Engine} from '../../../trace_processor/engine';
-import {renderDocSection, renderWidgetShowcase} from '../widgets_page_utils';
-import {App} from '../../../public/app';
-import {languages} from '../sample_data';
-import {MenuItem} from '../../../widgets/menu';
-import {Anchor} from '../../../widgets/anchor';
-import {Button, ButtonVariant} from '../../../widgets/button';
-import {EmptyState} from '../../../widgets/empty_state';
-
-type QueryDataGridAttrs = Omit<DataGridAttrs, 'data'> & {
-  readonly query: string;
-  readonly engine: Engine;
-};
-
-function QueryDataGrid(vnode: m.Vnode<QueryDataGridAttrs>) {
-  const dataSource = new SQLDataSource(vnode.attrs.engine, vnode.attrs.query);
-
-  return {
-    view({attrs}: m.Vnode<QueryDataGridAttrs>) {
-      return m(DataGrid, {...attrs, data: dataSource});
-    },
-  };
-}
-
-export function renderDataGrid(app: App): m.Children {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  return [
+  }  return [
     m(
       '.pf-widget-intro',
       m('h1', 'DataGrid'),
@@ -253,8 +218,7 @@ export function renderDataGrid(app: App): m.Children {
         'DataGrid is an opinionated data table and analysis tool designed for exploring ',
         'and analyzing SQL-like data with built-in sorting, filtering, and aggregation features. It is based on ',
         m(Anchor, {href: '#!/widgets/grid'}, 'Grid'),
-<<<<<<< HEAD
-        ' but unlike the grid component is specifically opinionated about the types of data it can receive.',
+' but unlike the grid component is specifically opinionated about the types of data it can receive.',
       ]),
       m('p', [
         'This example demonstrates a schema with multiple related tables: ',
@@ -274,16 +238,11 @@ export function renderDataGrid(app: App): m.Children {
           {href: '#!/widgets/datagrid-playground'},
           'DataGrid Playground',
         ),
-        ' for an interactive editor where you can define and test your own DataGrid configs.',
-=======
-        ' but unlike the grid component is specifically opinionated about the types of data it can receive',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      ]),
+        ' for an interactive editor where you can define and test your own DataGrid configs.',      ]),
     ),
 
     renderWidgetShowcase({
-<<<<<<< HEAD
-      renderWidget: ({emulateError, ...rest}) => {
+renderWidget: ({emulateError, ...rest}) => {
         if (!employeeErrorDataSource) {
           employeeErrorDataSource = new ErrorEmulatingDataSource(
             new InMemoryDataSource(EMPLOYEE_DATA),
@@ -304,76 +263,11 @@ export function renderDataGrid(app: App): m.Children {
         disablePivotControls: false,
         disableColumnControls: false,
         disableFilterControls: false,
-        emulateError: false,
-=======
-      renderWidget: ({
-        readonlyFilters,
-        readonlySorting,
-        aggregation,
-        demoToolbarItems,
-        ...rest
-      }) =>
-        m(DataGrid, {
-          ...rest,
-          toolbarItemsLeft: demoToolbarItems
-            ? m(Button, {
-                label: 'Left Action',
-                variant: ButtonVariant.Filled,
-              })
-            : undefined,
-          toolbarItemsRight: demoToolbarItems
-            ? m(Button, {
-                label: 'Right Action',
-                variant: ButtonVariant.Filled,
-              })
-            : undefined,
-          fillHeight: true,
-          filters: readonlyFilters ? [] : undefined,
-          sorting: readonlySorting ? {direction: 'UNSORTED'} : undefined,
-          columns: [
-            {
-              name: 'id',
-              title: 'ID',
-              aggregation: aggregation ? 'COUNT' : undefined,
-              headerMenuItems: m(MenuItem, {
-                label: 'Log column name',
-                icon: 'info',
-                onclick: () => console.log('Column: id'),
-              }),
-            },
-            {
-              name: 'lang',
-              title: 'Language',
-            },
-            {
-              name: 'year',
-              title: 'Year',
-            },
-            {
-              name: 'creator',
-              title: 'Creator',
-            },
-            {
-              name: 'typing',
-              title: 'Typing',
-            },
-          ],
-          data: languages,
-        }),
-      initialOpts: {
-        showFiltersInToolbar: true,
-        readonlyFilters: false,
-        readonlySorting: false,
-        aggregation: false,
-        showResetButton: false,
-        demoToolbarItems: false,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      },
+        emulateError: false,      },
       noPadding: true,
     }),
 
-<<<<<<< HEAD
-    renderDocSection('Schema-Based Column Definition', [
+renderDocSection('Schema-Based Column Definition', [
       m(
         'p',
         'DataGrid uses a schema-based approach for column definitions. ' +
@@ -703,79 +597,3 @@ const EMPLOYEE_DATA: Row[] = [
     'skills.css': 7,
   },
 ];
-=======
-    renderDocSection('DataGrid + SqlDataSource', [
-      m(
-        'p',
-        'A DataGrid example using a data source that fetches data dynamically from trace processor.',
-      ),
-    ]),
-
-    renderWidgetShowcase({
-      renderWidget: ({
-        readonlyFilters,
-        readonlySorting,
-        aggregation,
-        ...rest
-      }) => {
-        const trace = app.trace;
-        if (trace) {
-          return m(QueryDataGrid, {
-            ...rest,
-            engine: trace.engine,
-            query: `
-              SELECT
-                ts.id as id,
-                dur,
-                state,
-                thread.name as thread_name,
-                dur,
-                io_wait,
-                ucpu
-              FROM thread_state ts
-              JOIN thread USING(utid)
-            `,
-            fillHeight: true,
-            filters: readonlyFilters ? [] : undefined,
-            sorting: readonlySorting ? {direction: 'UNSORTED'} : undefined,
-            columns: [
-              {
-                name: 'id',
-                title: 'ID',
-                aggregation: aggregation ? 'COUNT' : undefined,
-              },
-              {
-                name: 'dur',
-                title: 'Duration',
-                aggregation: aggregation ? 'SUM' : undefined,
-              },
-              {name: 'state', title: 'State'},
-              {name: 'thread_name', title: 'Thread'},
-              {name: 'ucpu', title: 'CPU'},
-              {name: 'io_wait', title: 'IO Wait'},
-            ],
-          });
-        } else {
-          return m(
-            EmptyState,
-            {
-              style: {
-                height: '100%',
-              },
-              icon: 'search_off',
-            },
-            'Load a trace to start',
-          );
-        }
-      },
-      initialOpts: {
-        showFiltersInToolbar: true,
-        readonlyFilters: false,
-        readonlySorting: false,
-        aggregation: false,
-      },
-      noPadding: true,
-    }),
-  ];
-}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

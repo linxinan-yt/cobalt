@@ -497,14 +497,10 @@ or{
                     narrow{
                         am{"AM"}
                         pm{"PM"}
-<<<<<<< HEAD
-                    }
+}
                     wide{
                         am{"AM"}
-                        pm{"PM"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    }
+                        pm{"PM"}                    }
                 }
             }
             eras{
@@ -652,14 +648,8 @@ or{
                     abbreviated{
                         "Q1",
                         "Q2",
-<<<<<<< HEAD
-                        "Q3",
-                        "Q4",
-=======
-                        "3ୟ ତ୍ରୟମାସ",
-                        "4ର୍ଥ ତ୍ରୟମାସ",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    }
+"Q3",
+                        "Q4",                    }
                     wide{
                         "1ମ ତ୍ରୟମାସ",
                         "2ୟ ତ୍ରୟମାସ",
@@ -695,9 +685,7 @@ or{
                         "ଆଶ୍ଵିନ",
                         "କାର୍ତ୍ତିକ",
                         "ମାର୍ଗଶିର",
-<<<<<<< HEAD
-=======
-                        "ପୌଷ",
+"ପୌଷ",
                         "ମାଘ",
                         "ଫାଲଗୁନ",
                     }
@@ -740,9 +728,7 @@ or{
                         "ଭାଦ୍ରବ",
                         "ଆଶ୍ଵିନ",
                         "କାର୍ତ୍ତିକ",
-                        "ମାର୍ଗଶିର",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                        "ପୌଷ",
+                        "ମାର୍ଗଶିର",                        "ପୌଷ",
                         "ମାଘ",
                         "ଫାଲଗୁନ",
                     }
@@ -865,16 +851,12 @@ or{
         }
         dayperiod{
             dn{"AM/PM"}
-<<<<<<< HEAD
-=======
-        }
+}
         dayperiod-narrow{
             dn{"AM/PM"}
         }
         dayperiod-short{
-            dn{"AM/PM"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            dn{"AM/PM"}        }
         era{
             dn{"ଯୁଗ"}
         }
@@ -1354,12 +1336,6 @@ or{
         }
         weekdayOfMonth{
             dn{"ମାସର ସାପ୍ତାହିକ ଦିନ"}
-<<<<<<< HEAD
-=======
-        }
-        weekdayOfMonth-narrow{
-            dn{"ମାସର ସାପ୍ତାହିକ ଦି."}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         weekdayOfMonth-short{
             dn{"ମାସର ସାପ୍ତାହିକ ଦି."}

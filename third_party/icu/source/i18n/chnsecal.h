@@ -247,10 +247,6 @@ class U_I18N_API ChineseCalendar : public Calendar {
   virtual int32_t getActualMaximum(UCalendarDateFields field, UErrorCode& status) const override;
 
   struct Setting {
-<<<<<<< HEAD
-=======
-      int32_t epochYear;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       const TimeZone* zoneAstroCalc;
       CalendarCache** winterSolsticeCache;
       CalendarCache** newYearCache;

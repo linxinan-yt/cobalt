@@ -1932,19 +1932,13 @@ getTrail:
                                 converterData->myConverterArray[cs0],
                                 sourceChar, &value,
                                 useFallback, MBCS_OUTPUT_2);
-<<<<<<< HEAD
-                    // Only accept DBCS char (abs(len2) == 2).
+// Only accept DBCS char (abs(len2) == 2).
                     // With EUC-JP table for JIS X 208, half-width Kana
                     // represented with DBCS starting with 0x8E has to be
                     // filtered out so that they can be converted with
                     // hwkana_fb table.
                     if ((len2 == 2 && ((value & 0xFF00) != 0x8E00)) || (len2 == -2 && len == 0)) {
-                        value &= 0x7F7F;
-=======
-                    if(len2 == 2 || (len2 == -2 && len == 0)) {  /* only accept DBCS: abs(len)==2 */
-                        value = _2022FromSJIS(value);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                        if(value != 0) {
+                        value &= 0x7F7F;                        if(value != 0) {
                             targetValue = value;
                             len = len2;
                             cs = cs0;
@@ -2336,21 +2330,10 @@ getTrailByte:
                         if (leadIsOk && trailIsOk) {
                             ++mySource;
                             tmpSourceChar = (mySourceChar << 8) | trailByte;
-<<<<<<< HEAD
-                            {
+{
                                 /* Copy before we modify tmpSourceChar so toUnicodeCallback() sees the correct bytes. */
                                 mySourceChar = tmpSourceChar;
-                                if (cs == JISX208 || cs == KSC5601) {
-=======
-                            if(cs == JISX208) {
-                                _2022ToSJIS(static_cast<uint8_t>(mySourceChar), trailByte, tempBuf);
-                                mySourceChar = tmpSourceChar;
-                            } else {
-                                /* Copy before we modify tmpSourceChar so toUnicodeCallback() sees the correct bytes. */
-                                mySourceChar = tmpSourceChar;
-                                if (cs == KSC5601) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                                    tmpSourceChar += 0x8080;  /* = _2022ToGR94DBCS(tmpSourceChar) */
+                                if (cs == JISX208 || cs == KSC5601) {                                    tmpSourceChar += 0x8080;  /* = _2022ToGR94DBCS(tmpSourceChar) */
                                 }
                                 tempBuf[0] = static_cast<char>(tmpSourceChar >> 8);
                                 tempBuf[1] = static_cast<char>(tmpSourceChar);

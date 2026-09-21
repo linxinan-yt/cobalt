@@ -21,10 +21,6 @@
 #include <vector>
 
 #include "absl/base/attributes.h"
-<<<<<<< HEAD
-=======
-#include "api/array_view.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "api/field_trials_view.h"
 #include "api/rtp_packet_sender.h"
 #include "api/transport/network_types.h"
@@ -117,11 +113,7 @@ class PacingController {
     // a packet "debt" that correspond to approximately the send rate during the
     // burst interval.
     TimeDelta send_burst_interval = PacerConfig::kDefaultTimeInterval;
-<<<<<<< HEAD
-    std::optional<PacerConfig> initial_pacer_config;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  };
+std::optional<PacerConfig> initial_pacer_config;  };
 
   static Configuration DefaultConfiguration() { return Configuration{}; }
 
@@ -252,10 +244,6 @@ class PacingController {
   const bool pace_audio_;
   const bool ignore_transport_overhead_;
   const bool fast_retransmissions_;
-<<<<<<< HEAD
-=======
-  const bool keyframe_flushing_;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   DataSize transport_overhead_per_packet_;
   TimeDelta send_burst_interval_;
 

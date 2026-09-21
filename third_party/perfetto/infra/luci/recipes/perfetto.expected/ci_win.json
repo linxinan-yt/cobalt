@@ -437,13 +437,8 @@
     "name": "Artifact upload.gsutil upload (3)",
     "~followup_annotations": [
       "@@@STEP_NEST_LEVEL@1@@@",
-<<<<<<< HEAD
-      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe@@@"
-=======
-      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb@@@",
-      "@@@SET_BUILD_PROPERTY@gsutil_urls@{\"Artifact upload|gsutil upload\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (2)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (3)\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb\"}@@@"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    ]
+"@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb@@@",
+      "@@@SET_BUILD_PROPERTY@gsutil_urls@{\"Artifact upload|gsutil upload\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (2)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (3)\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb\"}@@@"    ]
   },
   {
     "cmd": [
@@ -455,12 +450,7 @@
       "----",
       "cp",
       "[CACHE]\\builder\\perfetto\\out\\windows-amd64\\trace_processor_shell.exe.pdb",
-<<<<<<< HEAD
-      "gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb"
-=======
-      "gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe.pdb"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    ],
+"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe.pdb"    ],
     "cwd": "[CACHE]\\builder\\perfetto",
     "infra_step": true,
     "luci_context": {
@@ -475,19 +465,11 @@
         "hostname": "rdbhost"
       }
     },
-<<<<<<< HEAD
-    "name": "Artifact upload.gsutil upload (3)",
-    "~followup_annotations": [
-      "@@@STEP_NEST_LEVEL@1@@@",
-      "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb@@@"
-=======
-    "name": "Artifact upload.gsutil upload (4)",
+"name": "Artifact upload.gsutil upload (4)",
     "~followup_annotations": [
       "@@@STEP_NEST_LEVEL@1@@@",
       "@@@STEP_LINK@gsutil.upload@https://storage.cloud.google.com/perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe.pdb@@@",
-      "@@@SET_BUILD_PROPERTY@gsutil_urls@{\"Artifact upload|gsutil upload\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (2)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (3)\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (4)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe.pdb\"}@@@"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    ]
+      "@@@SET_BUILD_PROPERTY@gsutil_urls@{\"Artifact upload|gsutil upload\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (2)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe\", \"Artifact upload|gsutil upload (3)\": \"gs://perfetto-luci-artifacts//windows-amd64/trace_processor_shell.exe.pdb\", \"Artifact upload|gsutil upload (4)\": \"gs://perfetto-luci-artifacts/latest/windows-amd64/trace_processor_shell.exe.pdb\"}@@@"    ]
   },
   {
     "cmd": [

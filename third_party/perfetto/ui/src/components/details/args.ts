@@ -121,16 +121,9 @@ function renderArgKey(
   }
 }
 
-<<<<<<< HEAD
 function renderArgValue(value: ArgValue): m.Children {
   if (isWebLink(value)) {
-    return renderWebLink(value);
-=======
-function renderArgValue({displayValue}: Arg): m.Children {
-  if (isWebLink(displayValue)) {
-    return renderWebLink(displayValue);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  } else {
+    return renderWebLink(value);  } else {
     return `${displayValue}`;
   }
 }

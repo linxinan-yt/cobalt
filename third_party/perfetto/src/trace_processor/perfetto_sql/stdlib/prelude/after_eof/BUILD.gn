@@ -21,19 +21,11 @@ perfetto_sql_source_set("after_eof") {
     "counters.sql",
     "cpu_scheduling.sql",
     "events.sql",
-<<<<<<< HEAD
-    "gpu.sql",
+"gpu.sql",
     "memory.sql",
     "slices.sql",
     "stack_samples.sql",
-    "state.sql",
-=======
-    "indexes.sql",
-    "memory.sql",
-    "slices.sql",
-    "tables_views.sql",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    "tracks.sql",
+    "state.sql",    "tracks.sql",
     "views.sql",
   ]
 }

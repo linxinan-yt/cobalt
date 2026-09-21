@@ -1475,7 +1475,6 @@ BASE_FEATURE(kReduceGpuPriorityOnBackground, base::FEATURE_DISABLED_BY_DEFAULT);
 // Screen Capture API support for Android.
 // This should not be enabled unless ENABLE_SCREEN_CAPTURE is on, otherwise
 // it won't work.
-<<<<<<< HEAD
 // Enabled by Finch depending on form factor.
 BASE_FEATURE(kUserMediaScreenCapturing, base::FEATURE_DISABLED_BY_DEFAULT);
 
@@ -1484,20 +1483,10 @@ BASE_FEATURE(kUserMediaScreenCapturing, base::FEATURE_DISABLED_BY_DEFAULT);
 BASE_FEATURE(kTextClassifierTimeout, base::FEATURE_DISABLED_BY_DEFAULT);
 const base::FeatureParam<int> kTextClassifierTimeoutMs{&kTextClassifierTimeout,
                                                        "timeout_ms", 200};
-=======
-BASE_FEATURE(kUserMediaScreenCapturing,
-#if BUILDFLAG(ENABLE_SCREEN_CAPTURE)
-             base::FEATURE_ENABLED_BY_DEFAULT
-#else
-             base::FEATURE_DISABLED_BY_DEFAULT
-#endif  // BUILDFLAG(ENABLE_SCREEN_CAPTURE)
-);
 
 BASE_FEATURE(kDoNotGenerateChromiumA11yTree,
              BUILDFLAG(IS_COBALT) ? base::FEATURE_ENABLED_BY_DEFAULT
-                                  : base::FEATURE_DISABLED_BY_DEFAULT);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#endif  // BUILDFLAG(IS_ANDROID)
+                                  : base::FEATURE_DISABLED_BY_DEFAULT);#endif  // BUILDFLAG(IS_ANDROID)
 
 #if BUILDFLAG(IS_MAC)
 // Enables backgrounding hidden renderers on Mac.

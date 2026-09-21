@@ -163,8 +163,6 @@ class U_I18N_API PlusSignMatcher : public SymbolMatcher {
     bool fAllowTrailing;
 };
 
-<<<<<<< HEAD
-
 // Exported as U_I18N_API for tests
 class U_I18N_API ApproximatelySignMatcher : public SymbolMatcher {
   public:
@@ -179,11 +177,7 @@ class U_I18N_API ApproximatelySignMatcher : public SymbolMatcher {
 
   private:
     bool fAllowTrailing;
-};
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-} // namespace numparse::impl
+};} // namespace numparse::impl
 U_NAMESPACE_END
 
 #endif //__NUMPARSE_SYMBOLS_H__

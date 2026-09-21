@@ -23,10 +23,7 @@
 #include <string>
 #include <vector>
 
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/connected_flow/connected_flow_impl.h
-=======
 #include "perfetto/base/logging.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/table_functions/connected_flow.h
 #include "perfetto/ext/base/flat_hash_map.h"
 #include "perfetto/trace_processor/basic_types.h"
 #include "src/trace_processor/core/dataframe/specs.h"

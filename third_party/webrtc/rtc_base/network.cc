@@ -331,7 +331,6 @@ MdnsResponderInterface* NetworkManager::GetMdnsResponder() const {
   return nullptr;
 }
 
-<<<<<<< HEAD
 NetworkManager::NetworkManager(NetworksChangedCallback callback) {
   RTC_CHECK(callback.callback != nullptr);
   networks_changed_callbacks_.AddReceiver(callback.removal_tag,
@@ -359,17 +358,7 @@ void NetworkManager::SubscribeError(void* tag,
 }
 
 void NetworkManager::UnsubscribeError(void* tag) {
-  error_callbacks_.RemoveReceivers(tag);
-=======
-void NetworkManager::SubscribeNetworksChanged(
-    absl::AnyInvocable<void()> callback) {
-  networks_changed_trampoline_.Subscribe(std::move(callback));
-}
-
-void NetworkManager::SubscribeError(absl::AnyInvocable<void()> callback) {
-  error_trampoline_.Subscribe(std::move(callback));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  error_callbacks_.RemoveReceivers(tag);}
 
 NetworkManagerBase::NetworkManagerBase()
     : enumeration_permission_(NetworkManager::ENUMERATION_ALLOWED) {}

@@ -723,16 +723,12 @@ def gen_cpp_blob_header(target: GnParser.Target):
   label = BazelLabel(
       get_bazel_label_name(target.name), 'perfetto_cpp_blob_header')
   label.comment = target.name
-<<<<<<< HEAD
-  script_path = re.sub(r'^//', '', target.script)
+script_path = re.sub(r'^//', '', target.script)
   bazel_script_label = script_to_bazel_label.get(script_path)
   assert bazel_script_label, (
       'No Bazel py_binary mapping found for %s. Add an entry to '
       'script_to_bazel_label in gen_cpp_blob_header.' % script_path)
-  label.script = bazel_script_label
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  label.deps += [':' + get_bazel_label_name(x.name) for x in target.deps]
+  label.script = bazel_script_label  label.deps += [':' + get_bazel_label_name(x.name) for x in target.deps]
   label.deps += [
       gn_utils.label_to_path(src)
       for src in target.inputs

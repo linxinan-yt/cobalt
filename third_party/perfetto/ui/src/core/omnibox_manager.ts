@@ -13,16 +13,11 @@
 // limitations under the License.
 
 import {DisposableStack} from '../base/disposable_stack';
-<<<<<<< HEAD
 import type {
   OmniboxManager,
   OmniboxModeDescriptor,
   PromptChoices,
-} from '../public/omnibox';
-=======
-import {OmniboxManager, PromptChoices} from '../public/omnibox';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {raf} from './raf_scheduler';
+} from '../public/omnibox';import {raf} from './raf_scheduler';
 
 export enum OmniboxMode {
   Search,
@@ -229,8 +224,7 @@ export class OmniboxManagerImpl implements OmniboxManager {
     this._promptsDisabled = true;
     this.rejectPendingPrompt();
     return trash;
-<<<<<<< HEAD
-  }
+}
 
   get activeRegisteredMode(): OmniboxModeDescriptor | undefined {
     return this._activeRegisteredMode;
@@ -272,10 +266,7 @@ export class OmniboxManagerImpl implements OmniboxManager {
     this._focusOmniboxNextRender = focus;
     this._omniboxSelectionIndex = 0;
     this._text = '';
-    this.rejectPendingPrompt();
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    this.rejectPendingPrompt();  }
 
   private rejectPendingPrompt() {
     if (this._pendingPrompt) {

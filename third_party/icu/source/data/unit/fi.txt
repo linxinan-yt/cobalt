@@ -1176,11 +1176,7 @@ fi{
                         other{"{0} yötä"}
                     }
                 }
-<<<<<<< HEAD
-=======
-                dnam{"yöt"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                one{"{0} yö"}
+dnam{"yöt"}                one{"{0} yö"}
                 other{"{0} yötä"}
                 per{"{0} / yö"}
             }
@@ -3417,16 +3413,10 @@ fi{
                 other{"{0}ns"}
             }
             night{
-<<<<<<< HEAD
+dnam{"yöt"}
                 one{"{0}yö"}
                 other{"{0}yöt"}
-=======
-                dnam{"yöt"}
-                one{"{0}yö"}
-                other{"{0}yöt"}
-                per{"{0}/yö"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/yö"}            }
             second{
                 dnam{"s"}
                 one{"{0}s"}

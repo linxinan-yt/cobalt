@@ -56,13 +56,7 @@ class CollectClocks : public CollectPrimitive {
       const protos::pbzero::TracePacket::Decoder& packet,
       Context* context) const;
 
-<<<<<<< HEAD
-  mutable std::vector<ClockTimestamp> clock_snapshot_;
-=======
-  mutable std::vector<RedactorClockSynchronizer::ClockTimestamp>
-      clock_snapshot_;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-};
+mutable std::vector<ClockTimestamp> clock_snapshot_;};
 
 }  // namespace perfetto::trace_redaction
 

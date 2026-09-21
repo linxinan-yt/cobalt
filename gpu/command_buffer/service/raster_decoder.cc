@@ -24,12 +24,7 @@
 #include "base/debug/crash_logging.h"
 #include "base/functional/bind.h"
 #include "base/logging.h"
-<<<<<<< HEAD
-#include "base/memory/aligned_memory.h"
-=======
-#include "base/memory/ptr_util.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "base/memory/raw_ptr.h"
+#include "base/memory/aligned_memory.h"#include "base/memory/raw_ptr.h"
 #include "base/memory/ref_counted.h"
 #include "base/memory/weak_ptr.h"
 #include "base/metrics/histogram_functions.h"
@@ -153,8 +148,6 @@ namespace {
 
 base::AtomicSequenceNumber g_raster_decoder_id;
 
-<<<<<<< HEAD
-=======
 #if BUILDFLAG(IS_COBALT)
 // An ImageProvider that resolves cc::PaintImages directly from the GPU
 // ServiceTransferCache using the transfer cache IDs collected during
@@ -208,10 +201,7 @@ BASE_FEATURE(kGpuYieldRasterization, base::FEATURE_DISABLED_BY_DEFAULT);
 const base::FeatureParam<int> kGpuYieldRasterizationOpCount(
     &kGpuYieldRasterization,
     "gpu_yield_rasterization_op_count",
-    500);
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-// This class prevents any GL errors that occur when it is in scope from
+    500);// This class prevents any GL errors that occur when it is in scope from
 // being reported to the client.
 class ScopedGLErrorSuppressor {
  public:
@@ -839,26 +829,16 @@ class RasterDecoderImpl final : public RasterDecoder,
                              GLboolean visible,
                              GLfloat hdr_headroom,
                              const volatile GLbyte* key);
-<<<<<<< HEAD
-  void DoRasterCHROMIUM(GLuint raster_shm_id,
+void DoRasterCHROMIUM(GLuint raster_shm_id,
                         GLuint raster_shm_offset,
                         GLuint raster_shm_size,
                         GLuint font_shm_id,
                         GLuint font_shm_offset,
                         GLuint font_shm_size);
-=======
-  error::Error DoRasterCHROMIUM(GLuint raster_shm_id,
-                                GLuint raster_shm_offset,
-                                GLuint raster_shm_size,
-                                GLuint font_shm_id,
-                                GLuint font_shm_offset,
-                                GLuint font_shm_size);
 #if BUILDFLAG(IS_COBALT)
-  error::Error DoRasterCHROMIUMInProcess(
+  void DoRasterCHROMIUMInProcess(
       std::unique_ptr<InProcessRasterPayload> payload);
-#endif  // BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  void DoEndRasterCHROMIUM();
+#endif  // BUILDFLAG(IS_COBALT)  void DoEndRasterCHROMIUM();
   void DoFlushTileRasterGraphiteCommandsCHROMIUM();
   void DoCreateTransferCacheEntryINTERNAL(GLuint entry_type,
                                           GLuint entry_id,
@@ -3178,10 +3158,7 @@ void RasterDecoderImpl::DoRasterCHROMIUM(GLuint raster_shm_id,
 
     paint_buffer = paint_buffer.subspan(skip);
   }
-<<<<<<< HEAD
-=======
-
-  return error::kNoError;
+return error::kNoError;
 }
 
 #if BUILDFLAG(IS_COBALT)
@@ -3279,9 +3256,7 @@ error::Error RasterDecoderImpl::HandleRasterCHROMIUM(
   GLuint font_shm_offset = static_cast<GLuint>(c.font_shm_offset);
   GLuint font_shm_size = static_cast<GLuint>(c.font_shm_size);
   return DoRasterCHROMIUM(raster_shm_id, raster_shm_offset, raster_shm_size,
-                          font_shm_id, font_shm_offset, font_shm_size);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+                          font_shm_id, font_shm_offset, font_shm_size);}
 
 void RasterDecoderImpl::DoEndRasterCHROMIUM() {
   TRACE_EVENT0("gpu", "RasterDecoderImpl::DoEndRasterCHROMIUM");

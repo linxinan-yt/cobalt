@@ -740,15 +740,9 @@ void OS::FreeAddressSpaceReservation(AddressSpaceReservation reservation) {
 // static
 // Need to disable CFI_ICALL due to the indirect call to memfd_create.
 DISABLE_CFI_ICALL
-<<<<<<< HEAD
 std::optional<SharedMemoryHandle> OS::CreateSharedMemoryHandleForTesting(
     size_t size) {
-#if V8_OS_LINUX && !V8_OS_ANDROID
-=======
-PlatformSharedMemoryHandle OS::CreateSharedMemoryHandleForTesting(size_t size) {
-#if V8_OS_LINUX && !V8_OS_ANDROID && !BUILDFLAG(IS_STARBOARD)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  // Use memfd_create if available, otherwise mkstemp.
+#if V8_OS_LINUX && !V8_OS_ANDROID && !BUILDFLAG(IS_STARBOARD)  // Use memfd_create if available, otherwise mkstemp.
   using memfd_create_t = int (*)(const char*, unsigned int);
   memfd_create_t memfd_create =
       reinterpret_cast<memfd_create_t>(dlsym(RTLD_DEFAULT, "memfd_create"));

@@ -2,12 +2,7 @@
 // License & terms of use: http://www.unicode.org/copyright.html
 // Generated using tools/cldr/cldr-to-icu/
 units:table(nofallback){
-<<<<<<< HEAD
-    cldrVersion{"48"}
-=======
-    cldrVersion{"47"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    convertUnits{
+cldrVersion{"48"}    convertUnits{
         acre{
             factor{"ft2_to_m2 * 43560"}
             systems{"ussystem uksystem"}

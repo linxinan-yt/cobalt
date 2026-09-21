@@ -617,14 +617,10 @@ sr_Latn{
         }
         coordinate{
             dnam{"strana sveta"}
-<<<<<<< HEAD
-=======
-            east{"{0} E"}
+east{"{0} E"}
             north{"{0} N"}
             south{"{0} S"}
-            west{"{0} W"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            west{"{0} W"}        }
         digital{
             bit{
                 case{
@@ -1026,15 +1022,11 @@ sr_Latn{
             }
             night{
                 case{
-<<<<<<< HEAD
-=======
-                    accusative{
+accusative{
                         few{"{0} noći"}
                         one{"{0} noć"}
                         other{"{0} noći"}
-                    }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    genitive{
+                    }                    genitive{
                         few{"{0} noći"}
                         one{"{0} noći"}
                         other{"{0} noći"}
@@ -1045,17 +1037,12 @@ sr_Latn{
                         other{"{0} noći"}
                     }
                 }
-<<<<<<< HEAD
-                gender{"feminine"}
-=======
-                dnam{"noć"}
+dnam{"noć"}
                 few{"{0} noći"}
                 gender{"feminine"}
                 one{"{0} noć"}
                 other{"{0} noći"}
-                per{"{0}/noć"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/noć"}            }
             quarter{
                 case{
                     genitive{
@@ -1411,15 +1398,11 @@ sr_Latn{
             }
             kilowatt-hour-per-100-kilometer{
                 case{
-<<<<<<< HEAD
-=======
-                    accusative{
+accusative{
                         few{"{0} kilovat-sata na 100 kilometara"}
                         one{"{0} kilovat-sat na 100 kilometara"}
                         other{"{0} kilovat-sati na 100 kilometara"}
-                    }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    genitive{
+                    }                    genitive{
                         few{"{0} kilovat-sata na 100 kilometara"}
                         one{"{0} kilovat-sata na 100 kilometara"}
                         other{"{0} kilovat-sati na 100 kilometara"}
@@ -1868,11 +1851,7 @@ sr_Latn{
                         other{"{0} tipografskih tačaka"}
                     }
                 }
-<<<<<<< HEAD
-=======
-                dnam{"tipografske tačke"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                few{"{0} tipografske tačke"}
+dnam{"tipografske tačke"}                few{"{0} tipografske tačke"}
                 gender{"feminine"}
                 one{"{0} tipografska tačka"}
                 other{"{0} tipografskih tačaka"}
@@ -2467,15 +2446,11 @@ sr_Latn{
             }
             light-speed{
                 case{
-<<<<<<< HEAD
-=======
-                    accusative{
+accusative{
                         few{"{0} svetla"}
                         one{"{0} svetlo"}
                         other{"{0} svetala"}
-                    }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    genitive{
+                    }                    genitive{
                         few{"{0} svetla"}
                         one{"{0} svetla"}
                         other{"{0} svetala"}
@@ -2486,16 +2461,11 @@ sr_Latn{
                         other{"{0} svetala"}
                     }
                 }
-<<<<<<< HEAD
-                gender{"neuter"}
-=======
-                dnam{"svetlo"}
+dnam{"svetlo"}
                 few{"{0} svetla"}
                 gender{"neuter"}
                 one{"{0} svetlo"}
-                other{"{0} svetala"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} svetala"}            }
             meter-per-second{
                 case{
                     genitive{
@@ -3086,19 +3056,10 @@ sr_Latn{
             }
         }
         speed{
-<<<<<<< HEAD
-            beaufort{
+beaufort{
                 few{"B {0}"}
                 one{"B {0}"}
-                other{"B {0}"}
-=======
-            light-speed{
-                dnam{"svetlo"}
-                few{"{0} svetla"}
-                one{"{0} svetlo"}
-                other{"{0} svetala"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"B {0}"}            }
         }
         volume{
             fluid-ounce-imperial{

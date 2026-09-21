@@ -15,12 +15,7 @@ vars = {
   # chromium waterfalls. More info at: crbug.com/570091.
   'checkout_configuration': 'default',
   'checkout_instrumented_libraries': 'checkout_linux and checkout_configuration == "default"',
-<<<<<<< HEAD
-  'chromium_revision': 'b3ad71d6b53f01722388f219b51af6435bee2655',
-=======
-  'chromium_revision': '3b68194da0f652b90f3bcf3a61f6672e7991af52',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+'chromium_revision': 'b3ad71d6b53f01722388f219b51af6435bee2655',
   # Fetch the prebuilt binaries for llvm-cov and llvm-profdata. Needed to
   # process the raw profiles produced by instrumented targets (built with
   # the gn arg 'use_clang_coverage').
@@ -39,12 +34,7 @@ vars = {
 
   # By default, download the fuchsia sdk from the public sdk directory.
   'fuchsia_sdk_cipd_prefix': 'fuchsia/sdk/core/',
-<<<<<<< HEAD
-  'fuchsia_version': 'version:32.20260625.4.1',
-=======
-  'fuchsia_version': 'version:29.20251023.3.1',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  # By default, download the fuchsia images from the fuchsia GCS bucket.
+'fuchsia_version': 'version:32.20260625.4.1',  # By default, download the fuchsia images from the fuchsia GCS bucket.
   'fuchsia_images_bucket': 'fuchsia',
   'checkout_fuchsia': False,
   # Since the images are hundreds of MB, default to only downloading the image
@@ -60,12 +50,7 @@ vars = {
   # reclient CIPD package version
   'reclient_version': 're_client_version:0.185.0.db415f21-gomaip',
   # siso CIPD package version.
-<<<<<<< HEAD
-  'siso_version': 'git_revision:24b80aff540b202a88417f9f93b0dc86229eca7a',
-=======
-  'siso_version': 'git_revision:91909dc02061c88edd084ca23f4293716b1626b3',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+'siso_version': 'git_revision:24b80aff540b202a88417f9f93b0dc86229eca7a',
   # ninja CIPD package.
   'ninja_package': 'infra/3pp/tools/ninja/',
 
@@ -83,39 +68,21 @@ vars = {
 
 deps = {
   'src/build':
-<<<<<<< HEAD
-    'https://chromium.googlesource.com/chromium/src/build@3e1e94361a492574eaeb681f411ec07c646fd774',
+'https://chromium.googlesource.com/chromium/src/build@3e1e94361a492574eaeb681f411ec07c646fd774',
   'src/buildtools':
-    'https://chromium.googlesource.com/chromium/src/buildtools@2d3628028f9b45c97269ee6bd40e3d65eee1ed0e',
-=======
-    'https://chromium.googlesource.com/chromium/src/build@afca68d9c90771bdd2365e2d5bee188159828448',
-  'src/buildtools':
-    'https://chromium.googlesource.com/chromium/src/buildtools@628cf12465dae2a157524a23608a58b525d30623',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  # Gradle 6.6.1. Used for testing Android Studio project generation for WebRTC.
+    'https://chromium.googlesource.com/chromium/src/buildtools@2d3628028f9b45c97269ee6bd40e3d65eee1ed0e',  # Gradle 6.6.1. Used for testing Android Studio project generation for WebRTC.
   'src/examples/androidtests/third_party/gradle': {
     'url': 'https://chromium.googlesource.com/external/github.com/gradle/gradle.git@f2d1fb54a951d8b11d25748e4711bec8d128d7e3',
     'condition': 'checkout_android',
   },
   'src/ios': {
-<<<<<<< HEAD
-    'url': 'https://chromium.googlesource.com/chromium/src/ios@3d106a734019d9383d5ed0ed07ddba83c567c9b9',
+'url': 'https://chromium.googlesource.com/chromium/src/ios@3d106a734019d9383d5ed0ed07ddba83c567c9b9',
     'condition': 'checkout_ios',
   },
   'src/testing':
     'https://chromium.googlesource.com/chromium/src/testing@6b9129a147595a55f8e5610236f05ae0fe1a8bb6',
   'src/third_party':
     'https://chromium.googlesource.com/chromium/src/third_party@6282fd7d3e9a766f8ff80018867f13825b3305ab',
-=======
-    'url': 'https://chromium.googlesource.com/chromium/src/ios@6bcbdd237f0b7af1da494ca67211fd8c1622edbc',
-    'condition': 'checkout_ios',
-  },
-  'src/testing':
-    'https://chromium.googlesource.com/chromium/src/testing@4fae11c737c58fd1d713baa6db0db710c2210a2c',
-  'src/third_party':
-    'https://chromium.googlesource.com/chromium/src/third_party@76a491938a550c36e06b08bfe3bcf71729e3d9d0',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   'src/buildtools/third_party/mold/cipd': {
       'packages': [
           {
@@ -130,12 +97,7 @@ deps = {
     'packages': [
       {
         'package': 'gn/gn/linux-${{arch}}',
-<<<<<<< HEAD
-        'version': 'git_revision:8d35b83847d1bf61bad0b8176a8aab6afc052ae1',
-=======
-        'version': 'git_revision:a0c5124a50608595a9aadebc4297e854ebd32c53',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      }
+'version': 'git_revision:a0c5124a50608595a9aadebc4297e854ebd32c53',      }
     ],
     'dep_type': 'cipd',
     'condition': 'checkout_linux',
@@ -144,12 +106,7 @@ deps = {
     'packages': [
       {
         'package': 'gn/gn/mac-${{arch}}',
-<<<<<<< HEAD
-        'version': 'git_revision:8d35b83847d1bf61bad0b8176a8aab6afc052ae1',
-=======
-        'version': 'git_revision:a0c5124a50608595a9aadebc4297e854ebd32c53',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      }
+'version': 'git_revision:a0c5124a50608595a9aadebc4297e854ebd32c53',      }
     ],
     'dep_type': 'cipd',
     'condition': 'checkout_mac',
@@ -158,12 +115,7 @@ deps = {
     'packages': [
       {
         'package': 'gn/gn/windows-amd64',
-<<<<<<< HEAD
-        'version': 'git_revision:8d35b83847d1bf61bad0b8176a8aab6afc052ae1',
-=======
-        'version': 'git_revision:a0c5124a50608595a9aadebc4297e854ebd32c53',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      }
+'version': 'git_revision:a0c5124a50608595a9aadebc4297e854ebd32c53',      }
     ],
     'dep_type': 'cipd',
     'condition': 'checkout_win',
@@ -188,8 +140,7 @@ deps = {
     'objects': [
       {
         # The Android libclang_rt.builtins libraries are currently only included in the Linux clang package.
-<<<<<<< HEAD
-        'object_name': 'Linux_x64/clang-llvmorg-23-init-19482-g53d18800-1.tar.xz',
+'object_name': 'Linux_x64/clang-llvmorg-23-init-19482-g53d18800-1.tar.xz',
         'sha256sum': 'e22e06c05fe1657f48f988b15804b8226e691addb00abba5b984a5c99ac98c42',
         'size_bytes': 59093892,
         'generation': 1781627382446731,
@@ -339,161 +290,7 @@ deps = {
         'object_name': 'Win/llvmobjdump-llvmorg-23-init-19482-g53d18800-1.tar.xz',
         'sha256sum': '7ea19d03f21ef59d2e511af8d9cccff20ea72deb54923557173bb46a64244fa7',
         'size_bytes': 5934284,
-        'generation': 1781627409787893,
-=======
-        'object_name': 'Linux_x64/clang-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': 'ffec41dcf83423532ea5cf11662b212d167b7a872b58bc4f731507d9b8fd1b7a',
-        'size_bytes': 56109980,
-        'generation': 1761337932156611,
-        'condition': '(host_os == "linux" or checkout_android) and non_git_source',
-      },
-      {
-        'object_name': 'Linux_x64/clang-tidy-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': 'b7e9a0644956ea65a327b337f78d093fdf8ef10394cffd47e2777d0fc3eb8d97',
-        'size_bytes': 14230956,
-        'generation': 1761337932193057,
-        'condition': 'host_os == "linux" and checkout_clang_tidy and non_git_source',
-      },
-      {
-        'object_name': 'Linux_x64/clangd-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': 'a03330b69e92764a8861cb5cc0a3ad6a2514fe69f1474797f6ca46456e8a8cb6',
-        'size_bytes': 14426688,
-        'generation': 1761337932232398,
-        'condition': 'host_os == "linux" and checkout_clangd and non_git_source',
-      },
-      {
-        'object_name': 'Linux_x64/llvm-code-coverage-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': '327248b52b5160ddf440e0355d7abd5817d5144fc49a69a234bc7dd7174ae4b8',
-        'size_bytes': 2292772,
-        'generation': 1761337932297003,
-        'condition': 'host_os == "linux" and checkout_clang_coverage_tools and non_git_source',
-      },
-      {
-        'object_name': 'Linux_x64/llvmobjdump-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': '875b27a1b78f3b5ee97894cf3efa6faa9be5de646075f9fe1cceb8903405ffe5',
-        'size_bytes': 5703936,
-        'generation': 1761337932232851,
-        'condition': '((checkout_linux or checkout_mac or checkout_android) and host_os == "linux") and non_git_source',
-      },
-      {
-        'object_name': 'Mac/clang-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': '3644769a80f6fbd182643a6cb9554e7270b5b571f62d546130f8786c5d47b581',
-        'size_bytes': 53974704,
-        'generation': 1761337933985979,
-        'condition': 'host_os == "mac" and host_cpu == "x64"',
-      },
-      {
-        'object_name': 'Mac/clang-mac-runtime-library-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': '5843537eae828493dbf3cea4f5ed0a014329ef3d48c0b65825848f377a7f7e93',
-        'size_bytes': 1010116,
-        'generation': 1761337941802663,
-        'condition': 'checkout_mac and not host_os == "mac"',
-      },
-      {
-        'object_name': 'Mac/clang-tidy-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': 'a512248b32bf96356264d0004c483c31f9db0649e53ca2cf159db6283e97ec8b',
-        'size_bytes': 14292684,
-        'generation': 1761337933988162,
-        'condition': 'host_os == "mac" and host_cpu == "x64" and checkout_clang_tidy',
-      },
-      {
-        'object_name': 'Mac/clangd-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': '3caffede54b9f16cf846b06caab23bd6fd71043ed68bb2b866bf2f37cc60c071',
-        'size_bytes': 15805316,
-        'generation': 1761337934002952,
-        'condition': 'host_os == "mac" and host_cpu == "x64" and checkout_clangd',
-      },
-      {
-        'object_name': 'Mac/llvm-code-coverage-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': '03da082317c7d2fa540b83f9d14f29ef0f42a7671c26e416a8d74c9fd37f4f43',
-        'size_bytes': 2335124,
-        'generation': 1761337934119552,
-        'condition': 'host_os == "mac" and host_cpu == "x64" and checkout_clang_coverage_tools',
-      },
-      {
-        'object_name': 'Mac/llvmobjdump-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': '37284075951953ebe8b273856b87148b596a7eb75ae619669c7cec0eb2fa72bd',
-        'size_bytes': 5599068,
-        'generation': 1761337933999423,
-        'condition': 'host_os == "mac" and host_cpu == "x64"',
-      },
-      {
-        'object_name': 'Mac_arm64/clang-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': '9ccaa556dd7b4478fa9a90ed82b8c78dd2cc337e055e13654ee26d517760cdce',
-        'size_bytes': 45058144,
-        'generation': 1761337943479305,
-        'condition': 'host_os == "mac" and host_cpu == "arm64"',
-      },
-      {
-        'object_name': 'Mac_arm64/clang-tidy-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': 'b9c37a6417648f9d4ccf8fbe4afb5448ef708c8e61291204d3ce4654c8427c15',
-        'size_bytes': 12282788,
-        'generation': 1761337943478346,
-        'condition': 'host_os == "mac" and host_cpu == "arm64" and checkout_clang_tidy',
-      },
-      {
-        'object_name': 'Mac_arm64/clangd-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': 'dd0afd0386ea01f328db0d04841e53ad0740b691cd0744226223537de7fae38a',
-        'size_bytes': 12677444,
-        'generation': 1761337943476703,
-        'condition': 'host_os == "mac" and host_cpu == "arm64" and checkout_clangd',
-      },
-      {
-        'object_name': 'Mac_arm64/llvm-code-coverage-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': 'd426d5ac2159f94e8e3e8edb923cc465bd7969ad6df0a337aa923adcf52a1be3',
-        'size_bytes': 1967576,
-        'generation': 1761337943522567,
-        'condition': 'host_os == "mac" and host_cpu == "arm64" and checkout_clang_coverage_tools',
-      },
-      {
-        'object_name': 'Mac_arm64/llvmobjdump-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': 'a0ef0f87d8796dbf5d0ecec65b688a9afa8054c9a7bb620e32179555de2ded67',
-        'size_bytes': 5347212,
-        'generation': 1761337943489457,
-        'condition': 'host_os == "mac" and host_cpu == "arm64"',
-      },
-      {
-        'object_name': 'Win/clang-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': 'a3b528676d56cfb2c3df9b771ce75e2edc73346905416c81576710d20b6ae02c',
-        'size_bytes': 48228992,
-        'generation': 1761337953371073,
-        'condition': 'host_os == "win"',
-      },
-      {
-        'object_name': 'Win/clang-tidy-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': '5adfd4ec4b905f283b54d1f0f7969b21f3f82bc7d02dc430054cbe6ebb769387',
-        'size_bytes': 14192380,
-        'generation': 1761337953407064,
-        'condition': 'host_os == "win" and checkout_clang_tidy',
-      },
-      {
-        'object_name': 'Win/clang-win-runtime-library-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': '1fad7810f49dba86ff46334813f3bd7d26771cf72a9ad0d8785442a83c823f27',
-        'size_bytes': 2517344,
-        'generation': 1761337961187718,
-        'condition': 'checkout_win and not host_os == "win"',
-      },
-      {
-        'object_name': 'Win/clangd-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': '7160a3896b95a0a2c20fe4a7d7a64aea65ff833fa296d73b28cd238ae71e16b6',
-        'size_bytes': 14604224,
-        'generation': 1761337953407009,
-        'condition': 'host_os == "win" and checkout_clangd',
-      },
-      {
-        'object_name': 'Win/llvm-code-coverage-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': 'a873ab24e0b65523965ce4e27d74ba3eee447f262e72ba690d1eb98a76959dc6',
-        'size_bytes': 2378244,
-        'generation': 1761337953490821,
-        'condition': 'host_os == "win" and checkout_clang_coverage_tools',
-      },
-      {
-        'object_name': 'Win/llvmobjdump-llvmorg-22-init-12326-g8a5f1533-1.tar.xz',
-        'sha256sum': 'c9ab59eb04490e9df3a477d354516c2ee16ca9fa456698b5ca99f689325a34ef',
-        'size_bytes': 5706036,
-        'generation': 1761337953424721,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        'condition': '(checkout_linux or checkout_mac or checkout_android) and host_os == "win"',
+        'generation': 1781627409787893,        'condition': '(checkout_linux or checkout_mac or checkout_android) and host_os == "win"',
       },
     ]
   },
@@ -504,8 +301,7 @@ deps = {
     'bucket': 'chromium-browser-clang',
     'objects': [
       {
-<<<<<<< HEAD
-        'object_name': 'Linux_x64/rust-toolchain-b998449636a48e2c4a362809085b600a0174e1f2-5-llvmorg-23-init-19482-g53d18800.tar.xz',
+'object_name': 'Linux_x64/rust-toolchain-b998449636a48e2c4a362809085b600a0174e1f2-5-llvmorg-23-init-19482-g53d18800.tar.xz',
         'sha256sum': '1753392d6fe791a5ce743bfc70f45e151ee27bcccede516fb221b023f2c06a05',
         'size_bytes': 274786408,
         'generation': 1783367871911099,
@@ -529,35 +325,7 @@ deps = {
         'object_name': 'Win/rust-toolchain-b998449636a48e2c4a362809085b600a0174e1f2-5-llvmorg-23-init-19482-g53d18800.tar.xz',
         'sha256sum': 'dfa5db1cef7e75fd4d3ea5827f0c5eff3543d55d9d9982f806154e8d6b05950a',
         'size_bytes': 415992772,
-        'generation': 1783367883448269,
-=======
-        'object_name': 'Linux_x64/rust-toolchain-ab925646fae038b02bd462cd328ae9eef1639236-1-llvmorg-22-init-12326-g8a5f1533.tar.xz',
-        'sha256sum': '5328ade0c0423d46e4c0adee3c450f7591a2a0d43f6b75ba3380664c1d330029',
-        'size_bytes': 139811332,
-        'generation': 1761588638046533,
-        'condition': 'host_os == "linux" and non_git_source',
-      },
-      {
-        'object_name': 'Mac/rust-toolchain-ab925646fae038b02bd462cd328ae9eef1639236-1-llvmorg-22-init-12326-g8a5f1533.tar.xz',
-        'sha256sum': '5dde3a3290de03eaa1a95663cd27806d968db32e10982626f206747346dfaaa3',
-        'size_bytes': 133675660,
-        'generation': 1761588639737647,
-        'condition': 'host_os == "mac" and host_cpu == "x64"',
-      },
-      {
-        'object_name': 'Mac_arm64/rust-toolchain-ab925646fae038b02bd462cd328ae9eef1639236-1-llvmorg-22-init-12326-g8a5f1533.tar.xz',
-        'sha256sum': 'c9e7bcfafa17993c6f600b793b2a81e106c4d9fb5a35e0dd02d4b761a81c1922',
-        'size_bytes': 121330332,
-        'generation': 1761588641355703,
-        'condition': 'host_os == "mac" and host_cpu == "arm64"',
-      },
-      {
-        'object_name': 'Win/rust-toolchain-ab925646fae038b02bd462cd328ae9eef1639236-1-llvmorg-22-init-12326-g8a5f1533.tar.xz',
-        'sha256sum': '0fa51fc7c08697dfe39de8291136da146d48cd51e497674472afcfd9dcc38d95',
-        'size_bytes': 197215156,
-        'generation': 1761588643038978,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        'condition': 'host_os == "win"',
+        'generation': 1783367883448269,        'condition': 'host_os == "win"',
       },
     ],
   },
@@ -565,8 +333,7 @@ deps = {
   'src/third_party/clang-format/script':
     'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/clang/tools/clang-format.git@6eddfb5ec5f92127a531eda66c568d3a11e7ec11',
   'src/third_party/compiler-rt/src':
-<<<<<<< HEAD
-    'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/compiler-rt.git@65b1f193f33193b0321493965edbb7acb7170a09',
+'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/compiler-rt.git@65b1f193f33193b0321493965edbb7acb7170a09',
   'src/third_party/libc++/src':
     'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libcxx.git@5abc7f839700f0f17338434e1c1c6a8c87c00c11',
   'src/third_party/libc++abi/src':
@@ -575,18 +342,6 @@ deps = {
     'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libc.git@6acdd35440c04fc8b4664a59425de82aa5a800bb',
   'src/third_party/libunwind/src':
     'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libunwind.git@7ccfbebd65a02a0a3a2f86a61139c5f306678dfb',
-=======
-    'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/compiler-rt.git@8ad803659a32bacfb1a776654900105ea343f408',
-  'src/third_party/libc++/src':
-    'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libcxx.git@ddfdbbc1ab109b4fc6171f3d8c38faf4586701d2',
-  'src/third_party/libc++abi/src':
-    'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libcxxabi.git@eb87541772bf2b25422d95f7e3bf8ef3d782b5ef',
-  'src/third_party/llvm-libc/src':
-    'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libc.git@22f5bdc45e1660c48f46d252c9b81a16a67b4515',
-  'src/third_party/libunwind/src':
-    'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libunwind.git@14b9dee79c12dd8cdd3d662ee0be49200c6d9b71',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   'src/third_party/test_fonts/test_fonts': {
       'dep_type': 'gcs',
       'condition': 'non_git_source',
@@ -648,12 +403,7 @@ deps = {
       'packages': [
           {
               'package': 'chromium/third_party/android_build_tools/aapt2',
-<<<<<<< HEAD
-              'version': '7tEuuB92wV8xh54fCO0bRk_6FS_7XtsBl9LB5Tf5d0AC',
-=======
-              'version': 's6POXpUalcnuPehDsORiojCpgbNXT4LYq7DVUYgsfxEC',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          },
+'version': '7tEuuB92wV8xh54fCO0bRk_6FS_7XtsBl9LB5Tf5d0AC',          },
       ],
       'condition': 'checkout_android',
       'dep_type': 'cipd',
@@ -685,12 +435,7 @@ deps = {
       'packages': [
           {
                'package': 'chromium/third_party/android_build_tools/error_prone',
-<<<<<<< HEAD
-               'version': 'UXPQGFDgRKIPBtMqYAE1Jo4hZAe1cMHdpiAnAkAe2d4C',
-=======
-               'version': 'kry2CHb61PolJGv6-kGYaX1ouLzLSrmBYuzNpHHIbasC',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          },
+'version': 'UXPQGFDgRKIPBtMqYAE1Jo4hZAe1cMHdpiAnAkAe2d4C',          },
       ],
       'condition': 'checkout_android',
       'dep_type': 'cipd',
@@ -711,12 +456,7 @@ deps = {
       'packages': [
           {
                'package': 'chromium/third_party/android_build_tools/lint',
-<<<<<<< HEAD
-               'version': 'C2o_3MkaGmeKe2bFFEgYKJAc6tCV7_2PN4w83zWVAkAC',
-=======
-               'version': '7LpbK-QwQxOOn7upeZRDjXWMwqFVn1j32Cxtf9Db2EoC',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          },
+'version': 'C2o_3MkaGmeKe2bFFEgYKJAc6tCV7_2PN4w83zWVAkAC',          },
       ],
       'condition': 'checkout_android and non_git_source',
       'dep_type': 'cipd',
@@ -746,20 +486,11 @@ deps = {
   },
 
   'src/third_party/boringssl/src':
-<<<<<<< HEAD
-    'https://boringssl.googlesource.com/boringssl.git@8daf854545e60454740b3c2286de391bcf8b1685',
+'https://boringssl.googlesource.com/boringssl.git@8daf854545e60454740b3c2286de391bcf8b1685',
   'src/third_party/breakpad/breakpad':
     'https://chromium.googlesource.com/breakpad/breakpad.git@9aebd3d8ef5a246deb2c929b5666aaba160ebce6',
   'src/third_party/catapult':
-    'https://chromium.googlesource.com/catapult.git@6146421e05bbedf9d9f0fe94f16afdbfb6b8fef1',
-=======
-    'https://boringssl.googlesource.com/boringssl.git@027492ce55497b9846cb5457dcdf9930538498d1',
-  'src/third_party/breakpad/breakpad':
-    'https://chromium.googlesource.com/breakpad/breakpad.git@d0b41ca2a38c7b14c4b7853254eb5bf3b4039691',
-  'src/third_party/catapult':
-    'https://chromium.googlesource.com/catapult.git@f0abb82c5a706a7cb2457a76dc7bd7aba20c2c3f',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  'src/third_party/ced/src': {
+    'https://chromium.googlesource.com/catapult.git@6146421e05bbedf9d9f0fe94f16afdbfb6b8fef1',  'src/third_party/ced/src': {
     'url': 'https://chromium.googlesource.com/external/github.com/google/compact_enc_det.git@d127078cedef9c6642cbe592dacdd2292b50bb19',
   },
   'src/third_party/colorama/src':
@@ -771,40 +502,21 @@ deps = {
   'src/third_party/crc32c/src':
     'https://chromium.googlesource.com/external/github.com/google/crc32c.git@2bbb3be42e20a0e6c0f7b39dc07dc863d9ffbc07',
   'src/third_party/depot_tools':
-<<<<<<< HEAD
-    'https://chromium.googlesource.com/chromium/tools/depot_tools.git@020e532ce1cf45f00a76f85c8c1c650b6b7cd867',
-=======
-    'https://chromium.googlesource.com/chromium/tools/depot_tools.git@ba27c7d48d01e6d92bd858882202655d7b1d6b4a',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  'src/third_party/ffmpeg':
+'https://chromium.googlesource.com/chromium/tools/depot_tools.git@020e532ce1cf45f00a76f85c8c1c650b6b7cd867',  'src/third_party/ffmpeg':
     'https://chromium.googlesource.com/chromium/third_party/ffmpeg.git@ad41607c61898cf7150e0fb20fe4bbabd44922a3',
   'src/third_party/flatbuffers/src':
-<<<<<<< HEAD
-    'https://chromium.googlesource.com/external/github.com/google/flatbuffers.git@a86afae9399bbe631d1ea0783f8816e780e236cc',
+'https://chromium.googlesource.com/external/github.com/google/flatbuffers.git@a86afae9399bbe631d1ea0783f8816e780e236cc',
   'src/third_party/grpc/src': {
-    'url': 'https://chromium.googlesource.com/external/github.com/grpc/grpc.git@821431bfcd741572855cbec3f49c97b955f04b38',
-=======
-    'https://chromium.googlesource.com/external/github.com/google/flatbuffers.git@187240970746d00bbd26b0f5873ed54d2477f9f3',
-  'src/third_party/grpc/src': {
-    'url': 'https://chromium.googlesource.com/external/github.com/grpc/grpc.git@24b25a0baa72a658cc37d1db28f77513a9670ea2',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  },
+    'url': 'https://chromium.googlesource.com/external/github.com/grpc/grpc.git@821431bfcd741572855cbec3f49c97b955f04b38',  },
   # Used for embedded builds. CrOS & Linux use the system version.
   'src/third_party/fontconfig/src': {
       'url': 'https://chromium.googlesource.com/external/fontconfig.git@d62c2ab268d1679335daa8fb0ea6970f35224a76',
       'condition': 'checkout_linux',
   },
   'src/third_party/freetype/src':
-<<<<<<< HEAD
-    'https://chromium.googlesource.com/chromium/src/third_party/freetype2.git@5336c0d4da22a13dab3389eb153b12672fdf841c',
+'https://chromium.googlesource.com/chromium/src/third_party/freetype2.git@5336c0d4da22a13dab3389eb153b12672fdf841c',
   'src/third_party/harfbuzz/src':
-    'https://chromium.googlesource.com/external/github.com/harfbuzz/harfbuzz.git@28f4dc622fef010dab12f4275ac195b5d4a4a704',
-=======
-    'https://chromium.googlesource.com/chromium/src/third_party/freetype2.git@fc9cc5038e05edceec3d0f605415540ac76163e9',
-  'src/third_party/harfbuzz-ng/src':
-    'https://chromium.googlesource.com/external/github.com/harfbuzz/harfbuzz.git@7d936359a27abb2d7cb14ecc102463bb15c11843',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  'src/third_party/google_benchmark/src': {
+    'https://chromium.googlesource.com/external/github.com/harfbuzz/harfbuzz.git@28f4dc622fef010dab12f4275ac195b5d4a4a704',  'src/third_party/google_benchmark/src': {
     'url': 'https://chromium.googlesource.com/external/github.com/google/benchmark.git@8abf1e701fbd88c8170f48fe0558247e2e5f8e7d',
   },
   'src/third_party/libpfm4/src':
@@ -819,12 +531,7 @@ deps = {
   'src/third_party/googletest/src':
     'https://chromium.googlesource.com/external/github.com/google/googletest.git@4fe3307fb2d9f86d19777c7eb0e4809e9694dde7',
   'src/third_party/icu': {
-<<<<<<< HEAD
-    'url': 'https://chromium.googlesource.com/chromium/deps/icu.git@d578f2e8b7bd5938e21cfb6bf15c079e0aa5b738',
-=======
-    'url': 'https://chromium.googlesource.com/chromium/deps/icu.git@a86a32e67b8d1384b33f8fa48c83a6079b86f8cd',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  },
+'url': 'https://chromium.googlesource.com/chromium/deps/icu.git@d578f2e8b7bd5938e21cfb6bf15c079e0aa5b738',  },
   'src/third_party/jdk/current': {
       'packages': [
           {
@@ -859,12 +566,7 @@ deps = {
       'packages': [
           {
               'package': 'chromium/third_party/kotlin_stdlib',
-<<<<<<< HEAD
-              'version': 'DocPldjdm5FyfKMDpAFvsrlGmn8HfHXKHNE_kxIH0gQC',
-=======
-              'version': 'VoYkKFyaLcNc-5mLxvP0V9aerif2c7S4nU5XlW4pmUsC',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          },
+'version': 'VoYkKFyaLcNc-5mLxvP0V9aerif2c7S4nU5XlW4pmUsC',          },
       ],
       'condition': 'checkout_android',
       'dep_type': 'cipd',
@@ -874,12 +576,7 @@ deps = {
       'packages': [
           {
               'package': 'chromium/third_party/kotlinc',
-<<<<<<< HEAD
-              'version': 'CNW8t-Mi3vb2lw4BgSM89qgSiuY8XNJLp2eR6K8aLZ0C',
-=======
-              'version': 'chp__Zw61CfK2ZPIjPpMWFiyLRdOhsrG2f4I-NA23hYC',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          },
+'version': 'CNW8t-Mi3vb2lw4BgSM89qgSiuY8XNJLp2eR6K8aLZ0C',          },
       ],
       'condition': 'checkout_android',
       'dep_type': 'cipd',
@@ -887,54 +584,29 @@ deps = {
   'src/third_party/libFuzzer/src':
     'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/compiler-rt/lib/fuzzer.git@3f386be62e362fa50284ebd24262966f1a93798e',
   'src/third_party/fuzztest/src':
-<<<<<<< HEAD
-    'https://chromium.googlesource.com/external/github.com/google/fuzztest.git@b8aad153e1ab48ce5fed363a5645aafe495c98bd',
+'https://chromium.googlesource.com/external/github.com/google/fuzztest.git@b8aad153e1ab48ce5fed363a5645aafe495c98bd',
   'src/third_party/libprotobuf-mutator/src':
     Var('chromium_git') + '/external/github.com/google/libprotobuf-mutator.git@c1c950eae0440c3808f2b8bd7c57d0c6a42c1a90',
   'src/third_party/libjpeg_turbo':
-    'https://chromium.googlesource.com/chromium/deps/libjpeg_turbo.git@640f254ad0fa03f6b1f29f89b7dd9366f2f6e533',
-=======
-    'https://chromium.googlesource.com/external/github.com/google/fuzztest.git@7406afb783ff5e7f3a1a66aebb81090622716412',
-  'src/third_party/libjpeg_turbo':
-    'https://chromium.googlesource.com/chromium/deps/libjpeg_turbo.git@6383cf609c1f63c18af0f59b2738caa0c6c7e379',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  'src/third_party/libsrtp':
+    'https://chromium.googlesource.com/chromium/deps/libjpeg_turbo.git@640f254ad0fa03f6b1f29f89b7dd9366f2f6e533',  'src/third_party/libsrtp':
     'https://chromium.googlesource.com/chromium/deps/libsrtp.git@cd5d177bf1fde755ddb4c7f0d9ff7693f8b49e5e',
   'src/third_party/dav1d/libdav1d':
-<<<<<<< HEAD
-    'https://chromium.googlesource.com/external/github.com/videolan/dav1d.git@c150ba6c9b9be0956330a9ddfee33ad88f2b1bc5',
+'https://chromium.googlesource.com/external/github.com/videolan/dav1d.git@c150ba6c9b9be0956330a9ddfee33ad88f2b1bc5',
   'src/third_party/libaom/source/libaom':
-    'https://aomedia.googlesource.com/aom.git@43f2b6a99000057184332c8c2dd4bedc19fdec6f',
-=======
-    'https://chromium.googlesource.com/external/github.com/videolan/dav1d.git@fcbc3d1b93f91c709293ed9faea8b7cbcac9030b',
-  'src/third_party/libaom/source/libaom':
-    'https://aomedia.googlesource.com/aom.git@2664d1646afeb76d8a0c78c1505d2e3873f8fd92',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  'src/third_party/libgav1/src':
+    'https://aomedia.googlesource.com/aom.git@43f2b6a99000057184332c8c2dd4bedc19fdec6f',  'src/third_party/libgav1/src':
     Var('chromium_git') + '/codecs/libgav1.git' + '@' + 'c1deec657b32b911920c78e078cfd089faa77200',
   'src/third_party/libunwindstack': {
       'url': 'https://chromium.googlesource.com/chromium/src/third_party/libunwindstack.git@333fcafb91bd3830c5ef814c071ff73df9cdc976',
       'condition': 'checkout_android',
   },
   'src/third_party/perfetto':
-<<<<<<< HEAD
-    Var('chromium_git') + '/external/github.com/google/perfetto.git' + '@' + 'a4ff4fb84994d9f317026307e921a5b8870ece08',
+Var('chromium_git') + '/external/github.com/google/perfetto.git' + '@' + 'a4ff4fb84994d9f317026307e921a5b8870ece08',
   'src/third_party/protobuf-javascript/src':
     Var('chromium_git') + '/external/github.com/protocolbuffers/protobuf-javascript' + '@' + 'e6d763860001ba1a76a63adcff5efb12b1c96024',
   'src/third_party/libvpx/source/libvpx':
     'https://chromium.googlesource.com/webm/libvpx.git@8592391cdb3ef142c56d835788d71d6d4de36a63',
   'src/third_party/libyuv':
-    'https://chromium.googlesource.com/libyuv/libyuv.git@5d03bf9bab5693ccf692f18b538d8d9c00387c73',
-=======
-    Var('chromium_git') + '/external/github.com/google/perfetto.git' + '@' + '6eb276c7b0e27b8e30ccf709e6ef74c510387664',
-  'src/third_party/protobuf-javascript/src':
-    Var('chromium_git') + '/external/github.com/protocolbuffers/protobuf-javascript' + '@' + 'e6d763860001ba1a76a63adcff5efb12b1c96024',
-  'src/third_party/libvpx/source/libvpx':
-    'https://chromium.googlesource.com/webm/libvpx.git@4c1801be20dd53900d2a7cd74f6fc91a9ae353be',
-  'src/third_party/libyuv':
-    'https://chromium.googlesource.com/libyuv/libyuv.git@900da61d3cadba86ec593c8226de736b5e6b2c43',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  'src/third_party/lss': {
+    'https://chromium.googlesource.com/libyuv/libyuv.git@5d03bf9bab5693ccf692f18b538d8d9c00387c73',  'src/third_party/lss': {
     'url': 'https://chromium.googlesource.com/linux-syscall-support.git@29164a80da4d41134950d76d55199ea33fbb9613',
     'condition': 'checkout_android or checkout_linux',
   },
@@ -956,25 +628,15 @@ deps = {
     'https://chromium.googlesource.com/external/github.com/cisco/openh264@a8e04adb69c79757da014007d4694684a64c7b74',
 
   'src/third_party/re2/src':
-<<<<<<< HEAD
-    'https://chromium.googlesource.com/external/github.com/google/re2.git@972a15cedd008d846f1a39b2e88ce48d7f166cbd',
+'https://chromium.googlesource.com/external/github.com/google/re2.git@972a15cedd008d846f1a39b2e88ce48d7f166cbd',
 
   'src/third_party/sframe/src':
     Var('chromium_git') + '/external/github.com/cisco/sframe' + '@' + 'b14090904433bed0d4ec3f875b9b39f3e0555930',
-=======
-    'https://chromium.googlesource.com/external/github.com/google/re2.git@e7aec5985072c1dbe735add802653ef4b36c231a',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   'src/third_party/r8/cipd': {
       'packages': [
           {
               'package': 'chromium/third_party/r8',
-<<<<<<< HEAD
-              'version': 'YZ8NmCeYkjS2-KZCRLM1T-Fndg4-DDY9Mo7XrVIMgOwC',
-=======
-              'version': '3A0uZvq8LrIIZeII_zFzkAuMPqaM3mScrW5zP36SZx8C',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          },
+'version': '3A0uZvq8LrIIZeII_zFzkAuMPqaM3mScrW5zP36SZx8C',          },
       ],
       'condition': 'checkout_android',
       'dep_type': 'cipd',
@@ -986,12 +648,7 @@ deps = {
       'packages': [
           {
               'package': 'chromium/third_party/r8',
-<<<<<<< HEAD
-              'version': 'DVH4goXudQ_5x7Anis0boVW2UGuqrsVsIp8Y2qhOTfIC',
-=======
-              'version': 'Uc4rt_n8kBmr9cA6KpB3ZC0PhMXeXQQLzIPM6Z4cMnoC',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          },
+'version': 'DVH4goXudQ_5x7Anis0boVW2UGuqrsVsIp8Y2qhOTfIC',          },
       ],
       'condition': 'checkout_android',
       'dep_type': 'cipd',
@@ -1001,12 +658,7 @@ deps = {
     'condition': 'checkout_android',
   },
   'src/tools':
-<<<<<<< HEAD
-    'https://chromium.googlesource.com/chromium/src/tools@81bf183239da4978482b2a66459ad59498e5cb71',
-=======
-    'https://chromium.googlesource.com/chromium/src/tools@4aec1e7217766790a6c2682fefd9dd55a20e67be',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+'https://chromium.googlesource.com/chromium/src/tools@81bf183239da4978482b2a66459ad59498e5cb71',
   'src/third_party/espresso': {
       'packages': [
           {
@@ -1044,12 +696,7 @@ deps = {
     'packages': [
       {
           'package': 'chromium/third_party/androidx',
-<<<<<<< HEAD
-          'version': 'cexAepk7foVr7cQ1m4QSc7D_3IzZLxwJPJXXPBObB0IC',
-=======
-          'version': 'Aa2GuIHAxnljx-7EAdN6_OYIH-TpKPMiyZiklB0VWx0C',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      },
+'version': 'cexAepk7foVr7cQ1m4QSc7D_3IzZLxwJPJXXPBObB0IC',      },
     ],
     'condition': 'checkout_android and non_git_source',
     'dep_type': 'cipd',
@@ -1059,12 +706,7 @@ deps = {
       'packages': [
           {
                'package': 'chromium/third_party/android_build_tools/manifest_merger',
-<<<<<<< HEAD
-               'version': 'VfGVhdp3v-SH4w0iyv6tTpQeiAEx6Oyyc19B5AW4_BQC',
-=======
-               'version': 'azPKDAdow3ik056DnDj-FtxnardYxFBRZ2_dtGLui3sC',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          },
+'version': 'azPKDAdow3ik056DnDj-FtxnardYxFBRZ2_dtGLui3sC',          },
       ],
       'condition': 'checkout_android',
       'dep_type': 'cipd',
@@ -1131,12 +773,7 @@ deps = {
   },
 
   'src/third_party/tflite/src':
-<<<<<<< HEAD
-    Var('chromium_git') + '/external/github.com/tensorflow/tensorflow.git' + '@' + 'a12cd7d36bb3dbae1dd7a4b572643084bc62f6e1',
-=======
-    Var('chromium_git') + '/external/github.com/tensorflow/tensorflow.git' + '@' + 'de0a1418db517f22f9a68e602ceed0f49258c04a',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+Var('chromium_git') + '/external/github.com/tensorflow/tensorflow.git' + '@' + 'de0a1418db517f22f9a68e602ceed0f49258c04a',
   'src/third_party/turbine/cipd': {
       'packages': [
           {
@@ -1149,20 +786,14 @@ deps = {
   },
 
   'src/third_party/zstd/src': {
-<<<<<<< HEAD
-    'url': Var('chromium_git') + '/external/github.com/facebook/zstd.git' + '@' + '5233c58e6ca0b1c4c6b353ad79649191ed195bdc',
-=======
-    'url': Var('chromium_git') + '/external/github.com/facebook/zstd.git' + '@' + 'a25c1fc96f431e69abea38f52cb31e6bc074e9f1',
-    'condition': 'checkout_android',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  },
+'url': Var('chromium_git') + '/external/github.com/facebook/zstd.git' + '@' + 'a25c1fc96f431e69abea38f52cb31e6bc074e9f1',
+    'condition': 'checkout_android',  },
 
   'src/tools/luci-go': {
       'packages': [
         {
           'package': 'infra/tools/luci/cas/${{platform}}',
-<<<<<<< HEAD
-          'version': 'git_revision:2a7debf61d7c6904fec529caf5b0da3222ad7a1f',
+'version': 'git_revision:2a7debf61d7c6904fec529caf5b0da3222ad7a1f',
         },
         {
           'package': 'infra/tools/luci/isolate/${{platform}}',
@@ -1170,19 +801,7 @@ deps = {
         },
         {
           'package': 'infra/tools/luci/swarming/${{platform}}',
-          'version': 'git_revision:2a7debf61d7c6904fec529caf5b0da3222ad7a1f',
-=======
-          'version': 'git_revision:91e1062e0934a2e58027eae7419bc61aef5e64dd',
-        },
-        {
-          'package': 'infra/tools/luci/isolate/${{platform}}',
-          'version': 'git_revision:91e1062e0934a2e58027eae7419bc61aef5e64dd',
-        },
-        {
-          'package': 'infra/tools/luci/swarming/${{platform}}',
-          'version': 'git_revision:91e1062e0934a2e58027eae7419bc61aef5e64dd',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+          'version': 'git_revision:2a7debf61d7c6904fec529caf5b0da3222ad7a1f',        }
       ],
       'dep_type': 'cipd',
   },
@@ -1190,14 +809,8 @@ deps = {
   'src/third_party/pipewire-1.4/linux-amd64': {
     'packages': [
       {
-<<<<<<< HEAD
-        'package': 'chromium/third_party/pipewire/linux-amd64',
-        'version': 'WccKnxvPRn8TBwQ4FUxoHaZRKvHXh0qJjODccy3gPTAC',
-=======
-        'package': 'chromium/third_party/pipewire-1.4/linux-amd64',
-        'version': 'xAD2XsckE3TvjGoQxWHeV7wkJ_L-XVDOUJhqK91yIYgC',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      },
+'package': 'chromium/third_party/pipewire-1.4/linux-amd64',
+        'version': 'xAD2XsckE3TvjGoQxWHeV7wkJ_L-XVDOUJhqK91yIYgC',      },
       {
         'package': 'chromium/third_party/wireplumber/linux-amd64',
         'version': 'yfe349C2e6pWCcu7DaSPJHNWdwDbNP9FfSQoV9j6A5UC',
@@ -1212,29 +825,16 @@ deps = {
       'packages': [
           {
               'package': 'chromium/third_party/android_deps/autorolled',
-<<<<<<< HEAD
-              'version': 'LpeK30X42ew5Q-AKB5TCEST0ZUydJ-EVqds0qAt1Db8C',
-=======
-              'version': 'qQA44X3iq06cTKfEuhK5xlsxMqThcV26-TpTMNrH2eoC',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          },
+'version': 'qQA44X3iq06cTKfEuhK5xlsxMqThcV26-TpTMNrH2eoC',          },
       ],
       'condition': 'checkout_android and non_git_source',
       'dep_type': 'cipd',
   },
   'src/third_party/pthreadpool/src':
-<<<<<<< HEAD
-    Var('chromium_git') + '/external/github.com/google/pthreadpool.git' + '@' + '02460584c6092e527c8b89f7df4de143d70e801f',
+Var('chromium_git') + '/external/github.com/google/pthreadpool.git' + '@' + '02460584c6092e527c8b89f7df4de143d70e801f',
 
   'src/third_party/xnnpack/src':
     Var('chromium_git') + '/external/github.com/google/XNNPACK.git' + '@' + 'd9ff5bf36955f97c657013272acd3a46d696b301',
-=======
-    Var('chromium_git') + '/external/github.com/google/pthreadpool.git' + '@' + 'd90cd6f1493e09d12c407243f7f331a8cda55efb',
-
-  'src/third_party/xnnpack/src':
-    Var('chromium_git') + '/external/github.com/google/XNNPACK.git' + '@' + 'b69a4cf83011bc1247f2be2857966c54736592d0',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   'src/third_party/farmhash/src':
     Var('chromium_git') + '/external/github.com/google/farmhash.git' + '@' + '816a4ae622e964763ca0862d9dbd19324a1eaf45',
 
@@ -1242,18 +842,10 @@ deps = {
     Var('chromium_git') + '/external/github.com/google/ruy.git' + '@' + '2af88863614a8298689cc52b1a47b3fcad7be835',
 
   'src/third_party/cpuinfo/src':
-<<<<<<< HEAD
-    Var('chromium_git') + '/external/github.com/pytorch/cpuinfo.git' + '@' + 'ea6b9f1bb6e1001d8b21574d5bc78ddef62e499d',
+Var('chromium_git') + '/external/github.com/pytorch/cpuinfo.git' + '@' + 'ea6b9f1bb6e1001d8b21574d5bc78ddef62e499d',
 
   'src/third_party/eigen3/src':
     Var('chromium_git') + '/external/gitlab.com/libeigen/eigen.git' + '@' + '4035ffe2c9fd07ddcd53177ec753db5ef2261c04',
-=======
-    Var('chromium_git') + '/external/github.com/pytorch/cpuinfo.git' + '@' + '0d5985d60de2512a2130eede846fc755cb222dc8',
-
-  'src/third_party/eigen3/src':
-    Var('chromium_git') + '/external/gitlab.com/libeigen/eigen.git' + '@' + '2aa2ff29002d070aa0f5aa86c06bf93e3bb7eff8',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   'src/third_party/fp16/src':
     Var('chromium_git') + '/external/github.com/Maratyszcza/FP16.git' + '@' + '782eea126dc5c755827be751a099eb01826175cf',
 

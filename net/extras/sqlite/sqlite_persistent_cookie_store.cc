@@ -30,11 +30,7 @@
 #include "base/thread_annotations.h"
 #include "base/time/time.h"
 #include "base/timer/elapsed_timer.h"
-<<<<<<< HEAD
-#include "base/trace_event/trace_event.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "base/types/optional_ref.h"
+#include "base/trace_event/trace_event.h"#include "base/types/optional_ref.h"
 #include "base/values.h"
 #include "build/build_config.h"
 #include "crypto/sha2.h"
@@ -528,16 +524,13 @@ class SQLitePersistentCookieStore::Backend
   // Crypto instance, or nullptr if encryption is disabled.
   std::unique_ptr<CookieCryptoDelegate> crypto_;
 
-<<<<<<< HEAD
-  // If true, LoadAndNotifyInBackground has not yet been called.
+// If true, LoadAndNotifyInBackground has not yet been called.
   bool first_load_and_notify_in_background_ = true;
-=======
+
 #if BUILDFLAG(IS_COBALT)
   // Timer for the total load time of the cookie database.
   std::unique_ptr<base::ElapsedTimer> load_timer_;
-#endif  // BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-};
+#endif  // BUILDFLAG(IS_COBALT)};
 
 namespace {
 
@@ -1555,20 +1548,16 @@ void SQLitePersistentCookieStore::Backend::BackgroundDeleteAllInList(
 void SQLitePersistentCookieStore::Backend::FinishedLoadingCookies(
     LoadedCallback loaded_callback,
     bool success) {
-<<<<<<< HEAD
-  TRACE_EVENT("loading",
+TRACE_EVENT("loading",
               "SQLitePersistentCookieStore::Backend::FinishedLoadingCookies",
               perfetto::Flow::FromPointer(this));
-=======
 #if BUILDFLAG(IS_COBALT)
   if (load_timer_) {
     UMA_HISTOGRAM_TIMES("Cobalt.Storage.Cookie.LoadDuration",
                         load_timer_->Elapsed());
     load_timer_.reset();
   }
-#endif  // BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  PostClientTask(FROM_HERE,
+#endif  // BUILDFLAG(IS_COBALT)  PostClientTask(FROM_HERE,
                  base::BindOnce(&Backend::NotifyLoadCompleteInForeground, this,
                                 std::move(loaded_callback), success));
 }

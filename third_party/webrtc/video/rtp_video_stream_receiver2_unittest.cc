@@ -207,12 +207,7 @@ class RtpVideoStreamReceiver2Test : public ::testing::Test,
                                                 /*raw_payload=*/false);
     ON_CALL(mock_transport_, SendRtcp)
         .WillByDefault(
-<<<<<<< HEAD
-            [this](std::span<const uint8_t> packet, ::testing::Unused) {
-=======
-            [this](ArrayView<const uint8_t> packet, ::testing::Unused) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-              return rtcp_packet_parser_.Parse(packet);
+[this](std::span<const uint8_t> packet, ::testing::Unused) {              return rtcp_packet_parser_.Parse(packet);
             });
   }
 

@@ -24,8 +24,6 @@
 
 namespace update_client {
 
-<<<<<<< HEAD
-=======
 namespace {
 
 // The sequence of calls is:
@@ -173,60 +171,28 @@ void CacheLookupDone(
 }
 #endif  // !defined(IN_MEMORY_UPDATES)
 
-}  // namespace
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-base::OnceClosure PuffOperation(
+}  // namespacebase::OnceClosure PuffOperation(
     scoped_refptr<CrxCache> crx_cache,
     scoped_refptr<Patcher> patcher,
     base::RepeatingCallback<void(base::DictValue)> event_adder,
     base::RepeatingCallback<void(ComponentState)> state_tracker,
     const std::string& old_hash,
     const std::string& output_hash,
-<<<<<<< HEAD
-    bool is_foreground,
-=======
 #if BUILDFLAG(IS_STARBOARD)
     const OperationResult& patch_operation_result,
     base::OnceCallback<void(base::expected<OperationResult, CategorizedError>)>
-#else
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    const base::FilePath& patch_file,
+#else    const base::FilePath& patch_file,
     base::OnceCallback<void(base::expected<base::FilePath, CategorizedError>)>
 #endif
         callback) {
-<<<<<<< HEAD
-  base::MakeRefCounted<DeltaPatchOperation>(
+base::MakeRefCounted<DeltaPatchOperation>(
       crx_cache, event_adder, state_tracker, old_hash,
       base::File::FLAG_CREATE_ALWAYS | base::File::FLAG_WRITE |
           base::File::FLAG_WIN_EXCLUSIVE_WRITE | base::File::FLAG_NO_FOLLOW,
       output_hash, puffin::P_OK, patch_file, protocol_request::kEventPuff,
       is_foreground, std::move(callback))
       ->Operation(
-          base::BindOnce(&Patcher::PatchPuffPatch, patcher, is_foreground));
-=======
-#if defined(IN_MEMORY_UPDATES)
-  LOG(ERROR) << "Puffin delta patching Operation not supported with Cobalt IN_MEMORY_UPDATES";
-  PatchDone(std::move(callback), event_adder,
-            base::unexpected<CategorizedError>(
-                {.category = ErrorCategory::kUnpack,
-                 .code = static_cast<int>(UnpackerError::kDeltaOperationFailure)}));
-  return base::DoNothing();
-#else
-#if BUILDFLAG(IS_STARBOARD)
-  const base::FilePath& patch_file = patch_operation_result.response;
-#endif
-  state_tracker.Run(ComponentState::kPatching);
-  crx_cache->GetByHash(
-      old_hash,
-      base::BindOnce(&CacheLookupDone, event_adder, patcher, patch_file,
-#if BUILDFLAG(IS_STARBOARD)
-                     patch_file.DirName(), output_hash, patch_operation_result, std::move(callback)));
-#else
-                     patch_file.DirName(), output_hash, std::move(callback)));
-#endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  return base::DoNothing();
+          base::BindOnce(&Patcher::PatchPuffPatch, patcher, is_foreground));  return base::DoNothing();
 #endif  // defined(IN_MEMORY_UPDATES)
 }
 

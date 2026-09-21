@@ -45,15 +45,7 @@
 #include "components/subresource_filter/core/common/test_ruleset_creator.h"
 #include "components/subresource_filter/core/common/test_ruleset_utils.h"
 #include "components/viz/common/frame_sinks/copy_output_result.h"
-<<<<<<< HEAD
-=======
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-#include "content/browser/aggregation_service/aggregation_service.h"
-#include "content/browser/attribution_reporting/attribution_manager.h"
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "content/browser/in_memory_federated_permission_context.h"
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)#include "content/browser/in_memory_federated_permission_context.h"
 #endif
 #include "content/browser/renderer_host/frame_tree.h"
 #include "content/browser/renderer_host/frame_tree_node.h"
@@ -801,29 +793,6 @@ void WebTestControlHost::ResetBrowserAfterWebTest() {
         browser_context->GetDefaultStoragePartition();
     storage_partition->GetCookieManagerForBrowserProcess()->DeleteCookies(
         network::mojom::CookieDeletionFilter::New(), base::DoNothing());
-<<<<<<< HEAD
-=======
-
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-    if (auto* attribution_manager =
-            AttributionManager::FromBrowserContext(browser_context)) {
-      attribution_manager->ClearData(
-          /*delete_begin=*/base::Time::Min(), /*delete_end=*/base::Time::Max(),
-          /*filter=*/StoragePartition::StorageKeyMatcherFunction(),
-          /*filter_builder=*/nullptr,
-          /*delete_rate_limit_data=*/true,
-          /*done=*/base::DoNothing());
-    }
-
-    if (auto* aggregation_service =
-            AggregationService::GetService(browser_context)) {
-      aggregation_service->ClearData(
-          /*delete_begin=*/base::Time::Min(), /*delete_end=*/base::Time::Max(),
-          /*filter=*/StoragePartition::StorageKeyMatcherFunction(),
-          /*done=*/base::DoNothing());
-    }
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
 
   ui::SelectFileDialog::SetFactory(nullptr);

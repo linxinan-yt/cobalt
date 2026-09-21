@@ -162,11 +162,7 @@ en_GB{
     calendar{
         generic{
             availableFormats{
-<<<<<<< HEAD
-                GyMEd{"E, d/M/y G"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                GyMMMEEEEd{"EEEE, d MMM y G"}
+GyMEd{"E, d/M/y G"}                GyMMMEEEEd{"EEEE, d MMM y G"}
                 MEd{"E dd/MM"}
                 MMMEEEEd{"EEEE d MMM"}
                 MMMEd{"E d MMM"}
@@ -226,14 +222,9 @@ en_GB{
                 "yMMdd",
             }
             availableFormats{
-<<<<<<< HEAD
+GyMd{"dd/MM/y G"}
                 GyMEd{"E, d/M/y G"}
-                GyMMMEEEEd{"EEEE, d MMM y G"}
-=======
-                GyMMMEEEEd{"EEEE, d MMM y G"}
-                GyMd{"dd/MM/y G"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                MEd{"E dd/MM"}
+                GyMMMEEEEd{"EEEE, d MMM y G"}                MEd{"E dd/MM"}
                 MMMEEEEd{"EEEE d MMM"}
                 MMMEd{"E d MMM"}
                 MMMMEEEEd{"EEEE d MMMM"}
@@ -282,8 +273,7 @@ en_GB{
         }
         islamic{
             availableFormats{
-<<<<<<< HEAD
-                GyMEd{"E, d/M/y G"}
+GyMEd{"E, d/M/y G"}
             }
         }
         japanese{
@@ -316,16 +306,7 @@ en_GB{
                 yyyyMEEEEd{"EEEE, d MMMM y G"}
                 yyyyMEd{"E, d/M/y GGGGG"}
                 yyyyMMMEEEEd{"EEEE, d MMMM y G"}
-                yyyyMd{"d/M/y GGGGG"}
-=======
-                Ed{"E d"}
-                GyMMMEEEEd{"EEEE, d MMM y G"}
-                M{"LL"}
-                yyyyM{"MM/y GGGGG"}
-                yyyyMMMEEEEd{"EEEE, d MMM y G"}
-                yyyyMMMMEEEEd{"EEEE, d MMMM y G"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                yyyyMd{"d/M/y GGGGG"}            }
         }
     }
     personNames{

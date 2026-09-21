@@ -265,14 +265,8 @@ class RTC_EXPORT PortAllocatorSession {
   // destroyed if no connection is using them.
   virtual void PruneAllPorts() {}
 
-<<<<<<< HEAD
-  void SubscribePortReady(
-      void* tag,
-=======
-  // This function has to be non-inlined due to usage in Chrome.
-  void SubscribePortReady(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      absl::AnyInvocable<void(PortAllocatorSession*, PortInterface*)> callback);
+void SubscribePortReady(
+      void* tag,      absl::AnyInvocable<void(PortAllocatorSession*, PortInterface*)> callback);
   void NotifyPortReady(PortAllocatorSession* session, PortInterface* port) {
     port_ready_callbacks_.Send(session, port);
   }
@@ -285,12 +279,7 @@ class RTC_EXPORT PortAllocatorSession {
       void* tag,
       absl::AnyInvocable<void(PortAllocatorSession*,
                               const std::vector<PortInterface*>&)> callback) {
-<<<<<<< HEAD
-    ports_pruned_callbacks_.AddReceiver(tag, std::move(callback));
-=======
-    ports_pruned_callbacks_.AddReceiver(std::move(callback));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+ports_pruned_callbacks_.AddReceiver(tag, std::move(callback));  }
   void NotifyPortsPruned(PortAllocatorSession* session,
                          const std::vector<PortInterface*>& ports) {
     ports_pruned_callbacks_.Send(session, ports);
@@ -300,12 +289,7 @@ class RTC_EXPORT PortAllocatorSession {
       void* tag,
       absl::AnyInvocable<void(PortAllocatorSession*,
                               const std::vector<Candidate>&)> callback) {
-<<<<<<< HEAD
-    candidates_ready_callbacks_.AddReceiver(tag, std::move(callback));
-=======
-    candidates_ready_callbacks_.AddReceiver(std::move(callback));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+candidates_ready_callbacks_.AddReceiver(tag, std::move(callback));  }
   void NotifyCandidatesReady(PortAllocatorSession* session,
                              const std::vector<Candidate>& candidates) {
     candidates_ready_callbacks_.Send(session, candidates);
@@ -315,51 +299,26 @@ class RTC_EXPORT PortAllocatorSession {
       void* tag,
       absl::AnyInvocable<void(PortAllocatorSession*,
                               const IceCandidateErrorEvent&)> callback) {
-<<<<<<< HEAD
-    candidate_error_callbacks_.AddReceiver(tag, std::move(callback));
-=======
-    candidate_error_callbacks_.AddReceiver(std::move(callback));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+candidate_error_callbacks_.AddReceiver(tag, std::move(callback));  }
   void NotifyCandidateError(PortAllocatorSession* session,
                             const IceCandidateErrorEvent& event) {
     candidate_error_callbacks_.Send(session, event);
   }
   // Candidates should be signaled to be removed when the port that generated
   // the candidates is removed.
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   void SubscribeCandidatesRemoved(
       void* tag,
       absl::AnyInvocable<void(PortAllocatorSession*,
                               const std::vector<Candidate>&)> callback) {
-<<<<<<< HEAD
-    candidates_removed_callbacks_.AddReceiver(tag, std::move(callback));
+candidates_removed_callbacks_.AddReceiver(tag, std::move(callback));
   }
   void NotifyCandidatesRemoved(PortAllocatorSession* session,
                                const std::vector<Candidate>& candidates) {
     candidates_removed_callbacks_.Send(session, candidates);
-  }
-
-=======
-    candidates_removed_callbacks_.AddReceiver(std::move(callback));
-  }
-  void NotifyCandidatesRemoved(PortAllocatorSession* session,
-                               const std::vector<Candidate>& candidates) {
-    candidates_removed_callbacks_.Send(session, candidates);
-  }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  void SubscribeCandidatesAllocationDone(
+  }  void SubscribeCandidatesAllocationDone(
       void* tag,
       absl::AnyInvocable<void(PortAllocatorSession*)> callback) {
-<<<<<<< HEAD
-    candidates_allocation_done_callbacks_.AddReceiver(tag, std::move(callback));
-=======
-    candidates_allocation_done_callbacks_.AddReceiver(std::move(callback));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+candidates_allocation_done_callbacks_.AddReceiver(tag, std::move(callback));  }
   void NotifyCandidatesAllocationDone(PortAllocatorSession* session) {
     candidates_allocation_done_callbacks_.Send(session);
   }
@@ -368,12 +327,7 @@ class RTC_EXPORT PortAllocatorSession {
       void* tag,
       absl::AnyInvocable<void(PortAllocatorSession*, IceRegatheringReason)>
           callback) {
-<<<<<<< HEAD
-    ice_regathering_callbacks_.AddReceiver(tag, std::move(callback));
-=======
-    ice_regathering_callbacks_.AddReceiver(std::move(callback));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+ice_regathering_callbacks_.AddReceiver(tag, std::move(callback));  }
   void NotifyIceRegathering(PortAllocatorSession* session,
                             IceRegatheringReason reason) {
     ice_regathering_callbacks_.Send(session, reason);

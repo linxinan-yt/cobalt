@@ -511,12 +511,7 @@ tk{
             dot-per-centimeter{
                 dnam{"santimetr başyna nokat"}
                 one{"santimetr başyna {0} nokat"}
-<<<<<<< HEAD
-                other{"{0} nokat santimetr başyna"}
-=======
-                other{"santimetr başyna {0} nokat"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+other{"santimetr başyna {0} nokat"}            }
             dot-per-inch{
                 dnam{"nokat dýuým başyna"}
                 one{"{0} nokat dýuým başyna"}

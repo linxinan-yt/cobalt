@@ -940,12 +940,7 @@ TraceBufferV1::TraceBufferV1(CloneCtor, const TraceBufferV1& src)
   //    old behavior.
   // 2. To support properly cloning of write_into_file sessions (b/382209797).
   index_ = ChunkMap(src.index_);
-<<<<<<< HEAD
-  if constexpr (!PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER)) {
-=======
-  if (!base::flags::buffer_clone_preserve_read_iter) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    for (auto& kv : index_) {
+if constexpr (!PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER)) {    for (auto& kv : index_) {
       ChunkMeta& chunk_meta = kv.second;
       chunk_meta.num_fragments_read = 0;
       chunk_meta.cur_fragment_offset = 0;

@@ -1,9 +1,5 @@
 // © 2024 and later: Unicode, Inc. and others.
-<<<<<<< HEAD
 // License & terms of use: https://www.unicode.org/copyright.html
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 #include "unicode/utypes.h"
 
 #if !UCONFIG_NO_NORMALIZATION
@@ -44,12 +40,7 @@ static UErrorCode getExpectedRuntimeErrorFromString(const std::string& errorName
         return U_MF_OPERAND_MISMATCH_ERROR;
     }
     if (errorName == "bad-option") {
-<<<<<<< HEAD
-        return U_MF_BAD_OPTION;
-=======
-        return U_MF_FORMATTING_ERROR;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+return U_MF_BAD_OPTION;    }
     if (errorName == "unknown-function") {
         return U_MF_UNKNOWN_FUNCTION_ERROR;
     }
@@ -120,19 +111,10 @@ static bool setArguments(TestMessageFormat2& t,
                     return false; // For now, boolean and null arguments are unsupported
                 }
             } else {
-<<<<<<< HEAD
-                // Null argument -- not supported
-                return false;
-            }
-        } else {
-            t.logln("name is null");
-=======
-               schemaError = true;
+schemaError = true;
                break;
             }
-        } else {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            schemaError = true;
+        } else {            schemaError = true;
             break;
         }
     }
@@ -154,11 +136,7 @@ static bool setArguments(TestMessageFormat2& t,
 static void runValidTest(TestMessageFormat2& icuTest,
                          const std::string& testName,
                          const std::string& defaultError,
-<<<<<<< HEAD
-                         bool anyError,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                         const json& j,
+bool anyError,                         const json& j,
                          IcuTestErrorCode& errorCode) {
     auto j_object = j.template get<json::object_t>();
     std::string messageText;
@@ -216,29 +194,17 @@ static void runValidTest(TestMessageFormat2& icuTest,
         if (errorType.length() <= 0) {
             errorType = errors[0]["name"];
         }
-<<<<<<< HEAD
 //        // See TODO(options); ignore these tests for now
 //        if (errorType == "bad-option") {
 //            return;
-//        }
-=======
-        // See TODO(options); ignore these tests for now
-        if (errorType == "bad-option") {
-            return;
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        test.setExpectedError(getExpectedRuntimeErrorFromString(errorType));
+//        }        test.setExpectedError(getExpectedRuntimeErrorFromString(errorType));
         expectedError = true;
     } else if (defaultError.length() > 0) {
         test.setExpectedError(getExpectedRuntimeErrorFromString(defaultError));
         expectedError = true;
-<<<<<<< HEAD
-    } else if (anyError) {
+} else if (anyError) {
         test.setExpectedAnyError();
-        expectedError = true;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        expectedError = true;    }
 
     // If no expected result and no error, then set the test builder to expect success
     if (j_object["exp"].is_null() && !expectedError) {
@@ -283,20 +249,13 @@ static void runTestsFromJsonFile(TestMessageFormat2& t,
 
     // Some files have an expected error
     std::string defaultError;
-<<<<<<< HEAD
-    bool anyError = false;
+bool anyError = false;
     if (!j_object["defaultTestProperties"].is_null()
         && !j_object["defaultTestProperties"]["expErrors"].is_null()) {
         auto expErrors = j_object["defaultTestProperties"]["expErrors"];
         // If expErrors is a boolean "true", that means we expect all tests
         // to emit errors but we don't care which ones.
-        anyError = expErrors.is_boolean() && expErrors.template get<bool>();
-=======
-    if (!j_object["defaultTestProperties"].is_null()
-        && !j_object["defaultTestProperties"]["expErrors"].is_null()) {
-        auto expErrors = j_object["defaultTestProperties"]["expErrors"];
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        // expErrors might also be a boolean, in which case we ignore it --
+        anyError = expErrors.is_boolean() && expErrors.template get<bool>();        // expErrors might also be a boolean, in which case we ignore it --
         // so we have to check if it's an array
         if (expErrors.is_array()) {
             auto expErrorsObj = expErrors.template get<std::vector<json>>();
@@ -313,18 +272,10 @@ static void runTestsFromJsonFile(TestMessageFormat2& t,
         for (auto iter = tests.begin(); iter != tests.end(); ++iter) {
             makeTestName(testName, sizeof(testName), fileName, ++testNum);
             t.logln(testName);
-<<<<<<< HEAD
-            // Use error_handler_t::ignore because of the patch to allow lone surrogates
+// Use error_handler_t::ignore because of the patch to allow lone surrogates
             t.logln(u_str(iter->dump(-1, ' ', false, nlohmann::detail::error_handler_t::ignore)));
 
-            runValidTest(t, testName, defaultError, anyError, *iter, errorCode);
-=======
-
-            t.logln(u_str(iter->dump()));
-
-            runValidTest(t, testName, defaultError, *iter, errorCode);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            runValidTest(t, testName, defaultError, anyError, *iter, errorCode);        }
     } else {
         // Test doesn't follow schema -- probably an error
         t.logln("Warning: no tests in filename: ");
@@ -351,11 +302,7 @@ void TestMessageFormat2::jsonTestsFromFiles(IcuTestErrorCode& errorCode) {
 
     // Do valid spec tests
     runTestsFromJsonFile(*this, "spec/syntax.json", errorCode);
-<<<<<<< HEAD
-    runTestsFromJsonFile(*this, "spec/fallback.json", errorCode);
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+runTestsFromJsonFile(*this, "spec/fallback.json", errorCode);
     // Uncomment when test functions are implemented in the registry
     // See https://unicode-org.atlassian.net/browse/ICU-22907
     // runTestsFromJsonFile(*this, "spec/pattern-selection.json", errorCode);
@@ -369,13 +316,9 @@ void TestMessageFormat2::jsonTestsFromFiles(IcuTestErrorCode& errorCode) {
     runTestsFromJsonFile(*this, "spec/functions/time.json", errorCode);
 
     // Other tests (non-spec)
-<<<<<<< HEAD
-=======
-    // TODO: Delete this file after https://github.com/unicode-org/message-format-wg/pull/904
+// TODO: Delete this file after https://github.com/unicode-org/message-format-wg/pull/904
     // lands and the tests here are updated from the spec repo
-    runTestsFromJsonFile(*this, "normalization.json", errorCode);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    // TODO: https://github.com/unicode-org/message-format-wg/pull/902 will
+    runTestsFromJsonFile(*this, "normalization.json", errorCode);    // TODO: https://github.com/unicode-org/message-format-wg/pull/902 will
     // move the bidi tests into the spec
     runTestsFromJsonFile(*this, "bidi.json", errorCode);
     runTestsFromJsonFile(*this, "more-functions.json", errorCode);
@@ -407,22 +350,14 @@ void TestMessageFormat2::jsonTestsFromFiles(IcuTestErrorCode& errorCode) {
     // (This applies to the expected output for all the U_DUPLICATE_DECLARATION_ERROR tests)
     runTestsFromJsonFile(*this, "duplicate-declarations.json", errorCode);
 
-<<<<<<< HEAD
-=======
-    // TODO(options):
+// TODO(options):
     // Bad options. The spec is unclear about this
     // -- see https://github.com/unicode-org/message-format-wg/issues/738
-    // The current behavior is to set a U_MF_FORMATTING_ERROR for any invalid options.
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    runTestsFromJsonFile(*this, "invalid-options.json", errorCode);
+    // The current behavior is to set a U_MF_FORMATTING_ERROR for any invalid options.    runTestsFromJsonFile(*this, "invalid-options.json", errorCode);
 
     runTestsFromJsonFile(*this, "syntax-errors-end-of-input.json", errorCode);
     runTestsFromJsonFile(*this, "syntax-errors-diagnostics.json", errorCode);
-<<<<<<< HEAD
-=======
-    runTestsFromJsonFile(*this, "invalid-number-literals-diagnostics.json", errorCode);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    runTestsFromJsonFile(*this, "syntax-errors-diagnostics-multiline.json", errorCode);
+runTestsFromJsonFile(*this, "invalid-number-literals-diagnostics.json", errorCode);    runTestsFromJsonFile(*this, "syntax-errors-diagnostics-multiline.json", errorCode);
 
     // ICU4J tests
     runTestsFromJsonFile(*this, "icu-test-functions.json", errorCode);

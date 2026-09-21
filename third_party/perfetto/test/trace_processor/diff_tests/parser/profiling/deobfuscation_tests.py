@@ -13,12 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-<<<<<<< HEAD
-from python.generators.diff_tests.testing import Path, DataPath, TextProto
-=======
-from python.generators.diff_tests.testing import Path, DataPath
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-from python.generators.diff_tests.testing import Csv
+from python.generators.diff_tests.testing import Path, DataPath, TextProtofrom python.generators.diff_tests.testing import Csv
 from python.generators.diff_tests.testing import DiffTestBlueprint
 from python.generators.diff_tests.testing import TestSuite
 
@@ -55,9 +50,7 @@ class Deobfuscation(TestSuite):
         "cnt"
         839
         """))
-<<<<<<< HEAD
-
-  def test_art_oome_stack_sample_deobfuscation(self):
+def test_art_oome_stack_sample_deobfuscation(self):
     return DiffTestBlueprint(
         trace=TextProto(r"""
         packet {
@@ -141,5 +134,3 @@ class Deobfuscation(TestSuite):
         "hwe.a","com.google.classtwo.bar"
         "hye.a","com.google.classone.foo"
         """))
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

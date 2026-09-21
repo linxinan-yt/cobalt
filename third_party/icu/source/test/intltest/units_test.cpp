@@ -367,8 +367,7 @@ void UnitsTest::testConverter() {
         {"meter-per-10", "foot", 1.0, 0.328084},
         {"meter", "foot-per-10", 1.0, 32.8084},
         {"meter", "foot-per-100", 1.0, 328.084},
-<<<<<<< HEAD
-        {"part", "part-per-1000", 1.0, 1000},
+{"part", "part-per-1000", 1.0, 1000},
         {"part", "part-per-10000", 1.0, 10000},
         {"part", "part-per-100000", 1.0, 100000},
         {"part", "part-per-1000000", 1.0, 1000000},
@@ -377,20 +376,7 @@ void UnitsTest::testConverter() {
         {"part-per-1000", "part", 1.0, 0.001},
         {"part-per-10000", "part", 1.0, 0.0001},
         {"part-per-100000", "part", 1.0, 0.00001},
-        {"part-per-1000000", "part", 1.0, 0.000001},
-=======
-        {"portion", "portion-per-1000", 1.0, 1000},
-        {"portion", "portion-per-10000", 1.0, 10000},
-        {"portion", "portion-per-100000", 1.0, 100000},
-        {"portion", "portion-per-1000000", 1.0, 1000000},
-        {"portion-per-10", "portion", 1.0, 0.1},
-        {"portion-per-100", "portion", 1.0, 0.01},
-        {"portion-per-1000", "portion", 1.0, 0.001},
-        {"portion-per-10000", "portion", 1.0, 0.0001},
-        {"portion-per-100000", "portion", 1.0, 0.00001},
-        {"portion-per-1000000", "portion", 1.0, 0.000001},
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        {"mile-per-hour", "meter-per-second", 1.0, 0.44704},
+        {"part-per-1000000", "part", 1.0, 0.000001},        {"mile-per-hour", "meter-per-second", 1.0, 0.44704},
         {"mile-per-100-hour", "meter-per-100-second", 1.0, 0.44704},
         {"mile-per-hour", "meter-per-100-second", 1.0, 44.704},
         {"mile-per-100-hour", "meter-per-second", 1.0, 0.0044704},
@@ -1205,17 +1191,11 @@ void UnitsTest::testUnitsConstantsDenomenator() {
     } testCases[]{
         {"meter-per-1000", 1000},
         {"liter-per-1000-kiloliter", 1000},
-<<<<<<< HEAD
-        {"meter-per-100-kilometer", 100},
-=======
-        {"meter-per-100-kilometer", 100}, // Failing: ICU-23045
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        {"liter-per-kilometer", 0},
+{"meter-per-100-kilometer", 100}, // Failing: ICU-23045        {"liter-per-kilometer", 0},
         {"second-per-1000-minute", 1000},
         {"gram-per-1000-kilogram", 1000},
         {"meter-per-100", 100},
-<<<<<<< HEAD
-        {"part-per-1", 1},
+{"part-per-1", 1},
         {"part-per-2", 2},
         {"part-per-3", 3},
         {"part-per-4", 4},
@@ -1266,60 +1246,6 @@ void UnitsTest::testUnitsConstantsDenomenator() {
         {"part-per-1E10", 10000000000},
         {"part-per-1e18", 1000000000000000000},
         {"part-per-1E18", 1000000000000000000},
-=======
-        {"portion-per-1", 1},
-        {"portion-per-2", 2},
-        {"portion-per-3", 3},
-        {"portion-per-4", 4},
-        {"portion-per-5", 5},
-        {"portion-per-6", 6},
-        {"portion-per-7", 7},
-        {"portion-per-8", 8},
-        {"portion-per-9", 9},
-
-        // Test for constant denominators that are powers of 10
-        {"portion-per-10", 10},
-        {"portion-per-100", 100},
-        {"portion-per-1000", 1000},
-        {"portion-per-10000", 10000},
-        {"portion-per-100000", 100000},
-        {"portion-per-1000000", 1000000},
-        {"portion-per-10000000", 10000000},
-        {"portion-per-100000000", 100000000},
-        {"portion-per-1000000000", 1000000000}, // Failing: ICU-23045
-        {"portion-per-10000000000", 10000000000},
-        {"portion-per-100000000000", 100000000000},
-        {"portion-per-1000000000000", 1000000000000},
-        {"portion-per-10000000000000", 10000000000000},
-        {"portion-per-100000000000000", 100000000000000},
-        {"portion-per-1000000000000000", 1000000000000000},
-        {"portion-per-10000000000000000", 10000000000000000},
-        {"portion-per-100000000000000000", 100000000000000000},
-        {"portion-per-1000000000000000000", 1000000000000000000},
-        {"portion-per-1e3-kilometer", 1000},
-
-        // Test for constant denominators that are represented as scientific notation
-        // numbers.
-        {"portion-per-1e1", 10},
-        {"portion-per-1E1", 10},
-        {"portion-per-1e2", 100},
-        {"portion-per-1E2", 100},
-        {"portion-per-1e3", 1000},
-        {"portion-per-1E3", 1000},
-        {"portion-per-1e4", 10000},
-        {"portion-per-1E4", 10000},
-        {"portion-per-1e5", 100000},
-        {"portion-per-1E5", 100000},
-        {"portion-per-1e6", 1000000},
-        {"portion-per-1E6", 1000000},
-        {"portion-per-1e9", 1000000000}, // Failing: ICU-23045
-        {"portion-per-1E9", 1000000000}, // Failing: ICU-23045
-        {"portion-per-1e10", 10000000000},
-        {"portion-per-1E10", 10000000000},
-        {"portion-per-1e18", 1000000000000000000},
-        {"portion-per-1E18", 1000000000000000000},
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
         // Test for constant denominators that are randomly selected.
         {"liter-per-12345-kilometer", 12345},
         {"per-1000-kilometer", 1000},
@@ -1332,18 +1258,13 @@ void UnitsTest::testUnitsConstantsDenomenator() {
     };
 
     for (const auto &testCase : testCases) {
-<<<<<<< HEAD
-=======
-        if (uprv_strcmp(testCase.source, "portion-per-1000000000") == 0 ||
+if (uprv_strcmp(testCase.source, "portion-per-1000000000") == 0 ||
             uprv_strcmp(testCase.source, "portion-per-1e9") == 0 ||
             uprv_strcmp(testCase.source, "portion-per-1E9") == 0 ||
             uprv_strcmp(testCase.source, "meter-per-100-kilometer") == 0) {
             logKnownIssue("ICU-23045", "Incorrect constant denominator for certain unit identifiers");
             continue;
-        }
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        MeasureUnit unit = MeasureUnit::forIdentifier(testCase.source, status);
+        }        MeasureUnit unit = MeasureUnit::forIdentifier(testCase.source, status);
         if (status.errIfFailureAndReset("forIdentifier(\"%s\")", testCase.source)) {
             continue;
         }
@@ -1359,8 +1280,7 @@ void UnitsTest::testUnitsConstantsDenomenator() {
         }
 
         if (constant != testCase.expectedConstant) {
-<<<<<<< HEAD
-            CharString msg;
+CharString msg;
             msg.append("getConstantDenominator (\"", status);
             msg.append(testCase.source, status);
             msg.append("\")", status);
@@ -1374,14 +1294,7 @@ void UnitsTest::testUnitsConstantsDenomenator() {
             msg.append(testCase.source, status);
             msg.append("\")", status);
             assertEquals(msg.data(), UMEASURE_UNIT_COMPOUND, complexity);
-            status.reset();
-=======
-            assertTrue("getConstantDenominator(\"%s\")", false);
-        }
-        if (constant != 0) {
-            assertEquals("getComplexity(\"%s\")", UMEASURE_UNIT_COMPOUND, complexity);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            status.reset();        }
     }
 }
 
@@ -1396,14 +1309,8 @@ void UnitsTest::testMeasureUnit_withConstantDenominator() {
     } testCases[]{
         {"meter-per-second", 100, UMEASURE_UNIT_COMPOUND},
         {"meter-per-100-second", 0, UMEASURE_UNIT_COMPOUND},
-<<<<<<< HEAD
-        {"part", 100, UMEASURE_UNIT_COMPOUND},
+{"part", 100, UMEASURE_UNIT_COMPOUND},
         {"part-per-100", 0, UMEASURE_UNIT_SINGLE},
-=======
-        {"portion", 100, UMEASURE_UNIT_COMPOUND},
-        {"portion-per-100", 0, UMEASURE_UNIT_SINGLE},
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     };
 
     for (auto testCase : testCases) {
@@ -1427,29 +1334,7 @@ void UnitsTest::testMeasureUnit_withConstantDenominator() {
             continue;
         }
 
-<<<<<<< HEAD
-        CharString msg;
-        if (actualConstantDenominator != testCase.constantDenominator) {
-            msg.clear();
-            msg.append("getConstantDenominator (\"", status);
-            msg.append(testCase.source, status);
-            msg.append("\")", status);
-            assertTrue(msg.data(), false);
-            status.reset();
-        }
-        msg.clear();
-        msg.append("getComplexity (\"", status);
-        msg.append(testCase.source, status);
-        msg.append("\")", status);
-        assertEquals(msg.data(), testCase.expectedComplexity, actualComplexity);
-        status.reset();
-    }
-
-    // Test for invalid constant denominator
-    auto unit = MeasureUnit::forIdentifier("part", status);
-    if (status.errIfFailureAndReset("forIdentifier(\"part\")")) {
-=======
-        if (actualConstantDenominator != testCase.constantDenominator) {
+if (actualConstantDenominator != testCase.constantDenominator) {
             assertTrue("getConstantDenominator(\"%s\")", false);
         }
         assertEquals("getComplexity(\"%s\")", testCase.expectedComplexity, actualComplexity);
@@ -1457,20 +1342,13 @@ void UnitsTest::testMeasureUnit_withConstantDenominator() {
 
     // Test for invalid constant denominator
     auto unit = MeasureUnit::forIdentifier("portion", status);
-    if (status.errIfFailureAndReset("forIdentifier(\"portion\")")) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        return;
+    if (status.errIfFailureAndReset("forIdentifier(\"portion\")")) {        return;
     }
 
     uint64_t denominator = LONG_MAX;
     denominator++;
     unit = unit.withConstantDenominator(denominator, status);
-<<<<<<< HEAD
-    assertTrue("There is a failure caused by withConstantDenominator(\"part\")", status.isFailure());
-=======
-    assertTrue("There is a failure caused by withConstantDenominator(\"portion\")", status.isFailure());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    status.reset();
+assertTrue("There is a failure caused by withConstantDenominator(\"portion\")", status.isFailure());    status.reset();
 }
 
 void UnitsTest::testUnitsConstantsDenomenator_getIdentifier() {
@@ -1504,18 +1382,12 @@ void UnitsTest::testUnitsConstantsDenomenator_getIdentifier() {
         }
 
         auto actualIdentifier = unit.getIdentifier();
-<<<<<<< HEAD
-
-        CharString msg;
+CharString msg;
         msg.append("getIdentifier (\"", status);
         msg.append(testCase.source, status);
         msg.append("\")", status);
         assertEquals(msg.data(), testCase.expectedIdentifier, actualIdentifier);
-        status.reset();
-=======
-        assertEquals(" getIdentifier(\"%s\")", testCase.expectedIdentifier, actualIdentifier);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        status.reset();    }
 }
 
 #endif /* #if !UCONFIG_NO_FORMATTING */

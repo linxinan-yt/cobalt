@@ -14,32 +14,19 @@
  * limitations under the License.
  */
 
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_hierarchy_walker.cc
-#include "src/trace_processor/plugins/winscope_importer/windowmanager_hierarchy_walker.h"
-=======
 #include "src/trace_processor/importers/proto/winscope/windowmanager_hierarchy_walker.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_hierarchy_walker.cc
 
 #include <string>
 
 #include "perfetto/ext/base/status_macros.h"
 #include "perfetto/ext/base/string_utils.h"
 #include "perfetto/protozero/proto_decoder.h"
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_hierarchy_walker.cc
-#include "protos/third_party/android/frameworks/base/proto/tracing/winscope/view/displayinfo.pbzero.h"
-#include "protos/third_party/android/frameworks/base/proto/tracing/winscope/view/windowlayoutparams.pbzero.h"
-#include "protos/third_party/android/frameworks/base/proto/tracing/winscope/windowmanager.pbzero.h"
-#include "protos/third_party/android/frameworks/native/tracing/winscope/common/rect.pbzero.h"
-#include "src/trace_processor/containers/string_pool.h"
-#include "src/trace_processor/plugins/winscope_importer/windowmanager_proto_clone.h"
-=======
 #include "protos/perfetto/trace/android/graphics/rect.pbzero.h"
 #include "protos/perfetto/trace/android/view/displayinfo.pbzero.h"
 #include "protos/perfetto/trace/android/view/windowlayoutparams.pbzero.h"
 #include "protos/perfetto/trace/android/windowmanager.pbzero.h"
 #include "src/trace_processor/containers/string_pool.h"
 #include "src/trace_processor/importers/proto/winscope/windowmanager_proto_clone.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_hierarchy_walker.cc
 
 namespace perfetto::trace_processor::winscope {
 
@@ -60,26 +47,6 @@ WindowManagerHierarchyWalker::WindowManagerHierarchyWalker(StringPool* pool)
       kWindowStateId(pool_->InternString("WindowState")),
       kWindowContainerId(pool_->InternString("WindowContainer")) {}
 
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_hierarchy_walker.cc
-WindowManagerHierarchyWalker::ExtractResult
-WindowManagerHierarchyWalker::ExtractWindowContainers(
-    const com::android::internal::pbzero::WindowManagerTraceEntry::Decoder&
-        entry) {
-  com::android::internal::pbzero::WindowManagerServiceDumpProto::Decoder
-      service(entry.window_manager_service());
-  com::android::internal::pbzero::RootWindowContainerProto::Decoder root(
-      service.root_window_container());
-
-  std::vector<ExtractedWindowContainer> result;
-  auto status = ParseRootWindowContainer(root, &result);
-
-  return ExtractResult{std::move(result), !status.ok()};
-}
-
-base::Status WindowManagerHierarchyWalker::ParseRootWindowContainer(
-    const com::android::internal::pbzero::RootWindowContainerProto::Decoder&
-        root,
-=======
 base::StatusOr<
     std::vector<WindowManagerHierarchyWalker::ExtractedWindowContainer>>
 WindowManagerHierarchyWalker::ExtractWindowContainers(
@@ -98,21 +65,14 @@ WindowManagerHierarchyWalker::ExtractWindowContainers(
 
 base::Status WindowManagerHierarchyWalker::ParseRootWindowContainer(
     const protos::pbzero::RootWindowContainerProto::Decoder& root,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_hierarchy_walker.cc
     std::vector<ExtractedWindowContainer>* result) {
   if (!root.has_window_container()) {
     return base::ErrStatus(kErrorMessageMissingField);
   }
 
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_hierarchy_walker.cc
-  com::android::internal::pbzero::WindowContainerProto::Decoder
-      window_container(root.window_container());
-  com::android::internal::pbzero::IdentifierProto::Decoder identifier(
-=======
   protos::pbzero::WindowContainerProto::Decoder window_container(
       root.window_container());
   protos::pbzero::IdentifierProto::Decoder identifier(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_hierarchy_walker.cc
       window_container.identifier());
 
   auto tokenAndTitle = ParseIdentifierProto(identifier);
@@ -132,27 +92,6 @@ base::Status WindowManagerHierarchyWalker::ParseRootWindowContainer(
 }
 
 base::Status WindowManagerHierarchyWalker::ParseWindowContainerChildren(
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_hierarchy_walker.cc
-    const com::android::internal::pbzero::WindowContainerProto::Decoder&
-        window_container,
-    int32_t parent_token,
-    std::vector<ExtractedWindowContainer>* result) {
-  bool has_parse_error = false;
-  uint32_t index = 0;
-  for (auto it = window_container.children(); it; ++it) {
-    com::android::internal::pbzero::WindowContainerChildProto::Decoder child(
-        *it);
-    auto status =
-        ParseWindowContainerChildProto(child, parent_token, index, result);
-    if (!status.ok()) {
-      has_parse_error = true;
-    }
-    ++index;
-  }
-  if (has_parse_error) {
-    return base::ErrStatus(kErrorMessageMissingField);
-  }
-=======
     const protos::pbzero::WindowContainerProto::Decoder& window_container,
     int32_t parent_token,
     std::vector<ExtractedWindowContainer>* result) {
@@ -163,17 +102,11 @@ base::Status WindowManagerHierarchyWalker::ParseWindowContainerChildren(
         ParseWindowContainerChildProto(child, parent_token, index, result));
     ++index;
   }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_hierarchy_walker.cc
   return base::OkStatus();
 }
 
 base::Status WindowManagerHierarchyWalker::ParseWindowContainerChildProto(
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_hierarchy_walker.cc
-    const com::android::internal::pbzero::WindowContainerChildProto::Decoder&
-        child,
-=======
     const protos::pbzero::WindowContainerChildProto::Decoder& child,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_hierarchy_walker.cc
     int32_t parent_token,
     uint32_t child_index,
     std::vector<ExtractedWindowContainer>* result) {
@@ -205,16 +138,6 @@ base::Status WindowManagerHierarchyWalker::ParseWindowContainerChildProto(
 }
 
 base::Status WindowManagerHierarchyWalker::ParseWindowContainerProto(
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_hierarchy_walker.cc
-    const com::android::internal::pbzero::WindowContainerChildProto::Decoder&
-        child,
-    int32_t parent_token,
-    uint32_t child_index,
-    std::vector<ExtractedWindowContainer>* result) {
-  com::android::internal::pbzero::WindowContainerProto::Decoder
-      window_container(child.window_container());
-  com::android::internal::pbzero::IdentifierProto::Decoder identifier(
-=======
     const protos::pbzero::WindowContainerChildProto::Decoder& child,
     int32_t parent_token,
     uint32_t child_index,
@@ -222,7 +145,6 @@ base::Status WindowManagerHierarchyWalker::ParseWindowContainerProto(
   protos::pbzero::WindowContainerProto::Decoder window_container(
       child.window_container());
   protos::pbzero::IdentifierProto::Decoder identifier(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_hierarchy_walker.cc
       window_container.identifier());
 
   auto tokenAndTitle = ParseIdentifierProto(identifier);
@@ -241,22 +163,6 @@ base::Status WindowManagerHierarchyWalker::ParseWindowContainerProto(
 }
 
 base::Status WindowManagerHierarchyWalker::ParseDisplayContentProto(
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_hierarchy_walker.cc
-    const com::android::internal::pbzero::WindowContainerChildProto::Decoder&
-        child,
-    int32_t parent_token,
-    uint32_t child_index,
-    std::vector<ExtractedWindowContainer>* result) {
-  com::android::internal::pbzero::DisplayContentProto::Decoder display_content(
-      child.display_content());
-  com::android::internal::pbzero::DisplayAreaProto::Decoder display_area(
-      display_content.root_display_area());
-  com::android::internal::pbzero::DisplayInfoProto::Decoder display_info(
-      display_content.display_info());
-  com::android::internal::pbzero::WindowContainerProto::Decoder
-      window_container(display_area.window_container());
-  com::android::internal::pbzero::IdentifierProto::Decoder identifier(
-=======
     const protos::pbzero::WindowContainerChildProto::Decoder& child,
     int32_t parent_token,
     uint32_t child_index,
@@ -270,7 +176,6 @@ base::Status WindowManagerHierarchyWalker::ParseDisplayContentProto(
   protos::pbzero::WindowContainerProto::Decoder window_container(
       display_area.window_container());
   protos::pbzero::IdentifierProto::Decoder identifier(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_hierarchy_walker.cc
       window_container.identifier());
 
   if (!identifier.has_hash_code()) {
@@ -305,18 +210,6 @@ base::Status WindowManagerHierarchyWalker::ParseDisplayContentProto(
 }
 
 base::Status WindowManagerHierarchyWalker::ParseDisplayAreaProto(
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_hierarchy_walker.cc
-    const com::android::internal::pbzero::WindowContainerChildProto::Decoder&
-        child,
-    int32_t parent_token,
-    uint32_t child_index,
-    std::vector<ExtractedWindowContainer>* result) {
-  com::android::internal::pbzero::DisplayAreaProto::Decoder display_area(
-      child.display_area());
-  com::android::internal::pbzero::WindowContainerProto::Decoder
-      window_container(display_area.window_container());
-  com::android::internal::pbzero::IdentifierProto::Decoder identifier(
-=======
     const protos::pbzero::WindowContainerChildProto::Decoder& child,
     int32_t parent_token,
     uint32_t child_index,
@@ -325,7 +218,6 @@ base::Status WindowManagerHierarchyWalker::ParseDisplayAreaProto(
   protos::pbzero::WindowContainerProto::Decoder window_container(
       display_area.window_container());
   protos::pbzero::IdentifierProto::Decoder identifier(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_hierarchy_walker.cc
       window_container.identifier());
 
   if (!identifier.has_hash_code()) {
@@ -350,29 +242,6 @@ base::Status WindowManagerHierarchyWalker::ParseDisplayAreaProto(
 }
 
 base::Status WindowManagerHierarchyWalker::ParseTaskProto(
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_hierarchy_walker.cc
-    const com::android::internal::pbzero::WindowContainerChildProto::Decoder&
-        child,
-    int32_t parent_token,
-    uint32_t child_index,
-    std::vector<ExtractedWindowContainer>* result) {
-  com::android::internal::pbzero::TaskProto::Decoder task(child.task());
-  com::android::internal::pbzero::WindowContainerProto::Decoder
-      task_window_container(task.window_container());
-
-  com::android::internal::pbzero::TaskFragmentProto::Decoder task_fragment(
-      task.task_fragment());
-  com::android::internal::pbzero::WindowContainerProto::Decoder
-      task_fragment_window_container(task_fragment.window_container());
-
-  com::android::internal::pbzero::WindowContainerProto::Decoder&
-      window_container =
-          task.has_task_fragment() && task_fragment.has_window_container()
-              ? task_fragment_window_container
-              : task_window_container;
-
-  com::android::internal::pbzero::IdentifierProto::Decoder identifier(
-=======
     const protos::pbzero::WindowContainerChildProto::Decoder& child,
     int32_t parent_token,
     uint32_t child_index,
@@ -392,7 +261,6 @@ base::Status WindowManagerHierarchyWalker::ParseTaskProto(
           : task_window_container;
 
   protos::pbzero::IdentifierProto::Decoder identifier(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_hierarchy_walker.cc
       window_container.identifier());
 
   auto tokenAndTitle = ParseIdentifierProto(identifier);
@@ -415,11 +283,7 @@ base::Status WindowManagerHierarchyWalker::ParseTaskProto(
       window_container.visible(), std::nullopt, name_override,
       std::move(pruned_proto), kTaskId});
 
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_hierarchy_walker.cc
-  com::android::internal::pbzero::WindowContainerProto::Decoder&
-=======
   protos::pbzero::WindowContainerProto::Decoder&
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_hierarchy_walker.cc
       window_container_with_children =
           task_fragment_window_container.has_children()
               ? task_fragment_window_container
@@ -430,19 +294,6 @@ base::Status WindowManagerHierarchyWalker::ParseTaskProto(
 }
 
 base::Status WindowManagerHierarchyWalker::ParseActivityRecordProto(
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_hierarchy_walker.cc
-    const com::android::internal::pbzero::WindowContainerChildProto::Decoder&
-        child,
-    int32_t parent_token,
-    uint32_t child_index,
-    std::vector<ExtractedWindowContainer>* result) {
-  com::android::internal::pbzero::ActivityRecordProto::Decoder activity(
-      child.activity());
-  com::android::internal::pbzero::WindowTokenProto::Decoder window_token(
-      activity.window_token());
-  com::android::internal::pbzero::WindowContainerProto::Decoder
-      window_container(window_token.window_container());
-=======
     const protos::pbzero::WindowContainerChildProto::Decoder& child,
     int32_t parent_token,
     uint32_t child_index,
@@ -452,7 +303,6 @@ base::Status WindowManagerHierarchyWalker::ParseActivityRecordProto(
       activity.window_token());
   protos::pbzero::WindowContainerProto::Decoder window_container(
       window_token.window_container());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_hierarchy_walker.cc
 
   if (!window_token.has_hash_code()) {
     return base::ErrStatus(kErrorMessageMissingField);
@@ -475,17 +325,6 @@ base::Status WindowManagerHierarchyWalker::ParseActivityRecordProto(
 }
 
 base::Status WindowManagerHierarchyWalker::ParseWindowTokenProto(
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_hierarchy_walker.cc
-    const com::android::internal::pbzero::WindowContainerChildProto::Decoder&
-        child,
-    int32_t parent_token,
-    uint32_t child_index,
-    std::vector<ExtractedWindowContainer>* result) {
-  com::android::internal::pbzero::WindowTokenProto::Decoder window_token(
-      child.window_token());
-  com::android::internal::pbzero::WindowContainerProto::Decoder
-      window_container(window_token.window_container());
-=======
     const protos::pbzero::WindowContainerChildProto::Decoder& child,
     int32_t parent_token,
     uint32_t child_index,
@@ -493,7 +332,6 @@ base::Status WindowManagerHierarchyWalker::ParseWindowTokenProto(
   protos::pbzero::WindowTokenProto::Decoder window_token(child.window_token());
   protos::pbzero::WindowContainerProto::Decoder window_container(
       window_token.window_container());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_hierarchy_walker.cc
 
   if (!window_token.has_hash_code()) {
     return base::ErrStatus(kErrorMessageMissingField);
@@ -514,25 +352,6 @@ base::Status WindowManagerHierarchyWalker::ParseWindowTokenProto(
 }
 
 base::Status WindowManagerHierarchyWalker::ParseWindowStateProto(
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_hierarchy_walker.cc
-    const com::android::internal::pbzero::WindowContainerChildProto::Decoder&
-        child,
-    int32_t parent_token,
-    uint32_t child_index,
-    std::vector<ExtractedWindowContainer>* result) {
-  com::android::internal::pbzero::WindowStateProto::Decoder window_state(
-      child.window());
-  com::android::internal::pbzero::WindowContainerProto::Decoder
-      window_container(window_state.window_container());
-  com::android::internal::pbzero::IdentifierProto::Decoder identifier(
-      window_container.identifier());
-  com::android::internal::pbzero::WindowLayoutParamsProto::Decoder attributes(
-      window_state.attributes());
-  com::android::internal::pbzero::WindowFramesProto::Decoder window_frames(
-      window_state.window_frames());
-  com::android::internal::pbzero::RectProto::Decoder frame(
-      window_frames.frame());
-=======
     const protos::pbzero::WindowContainerChildProto::Decoder& child,
     int32_t parent_token,
     uint32_t child_index,
@@ -547,7 +366,6 @@ base::Status WindowManagerHierarchyWalker::ParseWindowStateProto(
   protos::pbzero::WindowFramesProto::Decoder window_frames(
       window_state.window_frames());
   protos::pbzero::RectProto::Decoder frame(window_frames.frame());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_hierarchy_walker.cc
 
   auto tokenAndTitle = ParseIdentifierProto(identifier);
   RETURN_IF_ERROR(tokenAndTitle.status());
@@ -583,18 +401,6 @@ base::Status WindowManagerHierarchyWalker::ParseWindowStateProto(
 }
 
 base::Status WindowManagerHierarchyWalker::ParseTaskFragmentProto(
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_hierarchy_walker.cc
-    const com::android::internal::pbzero::WindowContainerChildProto::Decoder&
-        child,
-    int32_t parent_token,
-    uint32_t child_index,
-    std::vector<ExtractedWindowContainer>* result) {
-  com::android::internal::pbzero::TaskFragmentProto::Decoder task_fragment(
-      child.task_fragment());
-  com::android::internal::pbzero::WindowContainerProto::Decoder
-      window_container(task_fragment.window_container());
-  com::android::internal::pbzero::IdentifierProto::Decoder identifier(
-=======
     const protos::pbzero::WindowContainerChildProto::Decoder& child,
     int32_t parent_token,
     uint32_t child_index,
@@ -604,7 +410,6 @@ base::Status WindowManagerHierarchyWalker::ParseTaskFragmentProto(
   protos::pbzero::WindowContainerProto::Decoder window_container(
       task_fragment.window_container());
   protos::pbzero::IdentifierProto::Decoder identifier(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_hierarchy_walker.cc
       window_container.identifier());
 
   auto tokenAndTitle = ParseIdentifierProto(identifier);
@@ -624,12 +429,7 @@ base::Status WindowManagerHierarchyWalker::ParseTaskFragmentProto(
 
 base::StatusOr<WindowManagerHierarchyWalker::TokenAndTitle>
 WindowManagerHierarchyWalker::ParseIdentifierProto(
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_hierarchy_walker.cc
-    const com::android::internal::pbzero::IdentifierProto::Decoder&
-        identifier) {
-=======
     const protos::pbzero::IdentifierProto::Decoder& identifier) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_hierarchy_walker.cc
   if (!identifier.has_title() || !identifier.has_hash_code()) {
     return base::ErrStatus(kErrorMessageMissingField);
   }

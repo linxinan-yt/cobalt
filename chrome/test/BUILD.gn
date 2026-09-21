@@ -1304,9 +1304,7 @@ source_set("platform_browser_tests") {
     ]
   }
 
-<<<<<<< HEAD
-=======
-  if (enable_extensions_core) {
+if (enable_extensions_core) {
     sources += [
       "../browser/extensions/api/alarms/alarms_apitest.cc",
       "../browser/extensions/api/bookmarks/bookmarks_apitest.cc",
@@ -1488,10 +1486,7 @@ source_set("platform_browser_tests") {
       sources += [ "../browser/extensions/api/mdns/mdns_apitest.cc" ]
       deps += [ "../browser/media/router:test_support" ]
     }
-  }  # enable_extensions_core
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  if (enable_pdf) {
+  }  # enable_extensions_core  if (enable_pdf) {
     deps += [
       "//chrome/browser/pdf:pdf_extension_test_utils",
       "//extensions/browser/mime_handler",

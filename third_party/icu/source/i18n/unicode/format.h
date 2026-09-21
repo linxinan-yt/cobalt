@@ -298,14 +298,8 @@ protected:
                                        UParseError& parseError);
 
  private:
-<<<<<<< HEAD
-    Locale actualLocale;
-    Locale validLocale;
-=======
-    CharString* actualLocale = nullptr;
-    CharString* validLocale = nullptr;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-};
+Locale actualLocale;
+    Locale validLocale;};
 
 U_NAMESPACE_END
 

@@ -51,12 +51,7 @@ source_set("track_event") {
     "serialization.h",
     "track_event.cc",
   ]
-<<<<<<< HEAD
-  configs += [ "..:shlib_impl_config" ]
-=======
-  defines = [ "PERFETTO_SHLIB_SDK_IMPLEMENTATION" ]
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+configs += [ "..:shlib_impl_config" ]}
 
 perfetto_unittest_source_set("unittests") {
   testonly = true

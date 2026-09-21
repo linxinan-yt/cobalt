@@ -1561,12 +1561,7 @@ void CalendarRegressionTest::Test13745()
         errln("%s:%d Failure setting INT32_MAX+1 change on calendar: %s\n", __FILE__, __LINE__, u_errorName(status));
         return;
     }
-<<<<<<< HEAD
-    assertEquals("getGregorianChange()", INT32_MAX * MILLIS_IN_DAY, cal->getGregorianChange());
-=======
-    assertEquals("getGregorianChange()", static_cast<double>(INT32_MAX) * MILLIS_IN_DAY, cal->getGregorianChange());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+assertEquals("getGregorianChange()", static_cast<double>(INT32_MAX) * MILLIS_IN_DAY, cal->getGregorianChange());
     // test underflow
     cal->setGregorianChange((static_cast<double>(INT32_MIN) - 1.0) * MILLIS_IN_DAY, status);
     if(U_FAILURE(status)) {

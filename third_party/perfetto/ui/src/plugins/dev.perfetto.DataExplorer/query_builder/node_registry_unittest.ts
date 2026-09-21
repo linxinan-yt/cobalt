@@ -12,18 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-import {
-  NodeRegistry,
-  type NodeDescriptor,
-  type PreCreateContext,
-  type PreCreateState,
-} from './node_registry';
-import {type QueryNode, NodeType} from '../query_node';
-=======
 import {NodeRegistry, NodeDescriptor, PreCreateContext} from './node_registry';
 import {QueryNode, NodeType, QueryNodeState} from '../query_node';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
 
 describe('NodeRegistry', () => {
   function createMockNode(nodeId: string): QueryNode {
@@ -32,26 +22,6 @@ describe('NodeRegistry', () => {
       type: NodeType.kTable,
       nextNodes: [],
       finalCols: [],
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-      attrs: {},
-      context: {},
-      validate: () => true,
-      getTitle: () => 'Test',
-      nodeSpecificModify: () => null,
-      nodeDetails: () => ({content: null}),
-      nodeInfo: () => null,
-      clone: () => createMockNode(nodeId),
-      getStructuredQuery: () => undefined,
-    } as QueryNode;
-  }
-
-  // Default required fields for test descriptors (nodeType, deserialize).
-  const defaults = {
-    nodeType: NodeType.kTable,
-    deserialize: () => createMockNode('mock'),
-  };
-
-=======
       state: {},
       validate: () => true,
       getTitle: () => 'Test',
@@ -62,24 +32,15 @@ describe('NodeRegistry', () => {
     } as QueryNode;
   }
 
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
   describe('register', () => {
     it('should register a node descriptor', () => {
       const registry = new NodeRegistry();
       const descriptor: NodeDescriptor = {
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        ...defaults,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
         name: 'Test Node',
         description: 'A test node',
         icon: 'test-icon',
         type: 'source',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        factory: (_state: PreCreateState) => createMockNode('test'),
-=======
         factory: (_state: QueryNodeState) => createMockNode('test'),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
       };
 
       registry.register('test-node', descriptor);
@@ -91,33 +52,18 @@ describe('NodeRegistry', () => {
     it('should allow registering multiple nodes', () => {
       const registry = new NodeRegistry();
       const descriptor1: NodeDescriptor = {
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        ...defaults,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
         name: 'Node 1',
         description: 'First node',
         icon: 'icon1',
         type: 'source',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        factory: (_state: PreCreateState) => createMockNode('node1'),
-      };
-      const descriptor2: NodeDescriptor = {
-        ...defaults,
-=======
         factory: (_state: QueryNodeState) => createMockNode('node1'),
       };
       const descriptor2: NodeDescriptor = {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
         name: 'Node 2',
         description: 'Second node',
         icon: 'icon2',
         type: 'modification',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        factory: (_state: PreCreateState) => createMockNode('node2'),
-=======
         factory: (_state: QueryNodeState) => createMockNode('node2'),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
       };
 
       registry.register('node1', descriptor1);
@@ -130,33 +76,18 @@ describe('NodeRegistry', () => {
     it('should overwrite existing registration with same id', () => {
       const registry = new NodeRegistry();
       const descriptor1: NodeDescriptor = {
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        ...defaults,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
         name: 'Node 1',
         description: 'First node',
         icon: 'icon1',
         type: 'source',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        factory: (_state: PreCreateState) => createMockNode('node1'),
-      };
-      const descriptor2: NodeDescriptor = {
-        ...defaults,
-=======
         factory: (_state: QueryNodeState) => createMockNode('node1'),
       };
       const descriptor2: NodeDescriptor = {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
         name: 'Node 1 Updated',
         description: 'Updated node',
         icon: 'icon1-updated',
         type: 'source',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        factory: (_state: PreCreateState) => createMockNode('node1-updated'),
-=======
         factory: (_state: QueryNodeState) => createMockNode('node1-updated'),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
       };
 
       registry.register('node1', descriptor1);
@@ -171,33 +102,21 @@ describe('NodeRegistry', () => {
       const registry = new NodeRegistry();
       const preCreate = async (_context: PreCreateContext) => ({});
       const descriptor: NodeDescriptor = {
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        ...defaults,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
         name: 'Advanced Node',
         description: 'Node with optional fields',
         icon: 'advanced-icon',
         type: 'multisource',
         hotkey: 'ctrl+a',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        preCreate,
-        factory: (_state: PreCreateState) => createMockNode('advanced'),
-=======
         devOnly: true,
         preCreate,
         factory: (_state: QueryNodeState) => createMockNode('advanced'),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
       };
 
       registry.register('advanced-node', descriptor);
 
       const retrieved = registry.get('advanced-node');
       expect(retrieved?.hotkey).toBe('ctrl+a');
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-=======
       expect(retrieved?.devOnly).toBe(true);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
       expect(retrieved?.preCreate).toBe(preCreate);
     });
   });
@@ -214,19 +133,11 @@ describe('NodeRegistry', () => {
     it('should return registered descriptor', () => {
       const registry = new NodeRegistry();
       const descriptor: NodeDescriptor = {
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        ...defaults,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
         name: 'Test Node',
         description: 'A test node',
         icon: 'test-icon',
         type: 'source',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        factory: (_state: PreCreateState) => createMockNode('test'),
-=======
         factory: (_state: QueryNodeState) => createMockNode('test'),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
       };
 
       registry.register('test-node', descriptor);
@@ -239,19 +150,11 @@ describe('NodeRegistry', () => {
     it('should handle special characters in id', () => {
       const registry = new NodeRegistry();
       const descriptor: NodeDescriptor = {
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        ...defaults,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
         name: 'Special Node',
         description: 'Node with special id',
         icon: 'special-icon',
         type: 'source',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        factory: (_state: PreCreateState) => createMockNode('special'),
-=======
         factory: (_state: QueryNodeState) => createMockNode('special'),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
       };
 
       registry.register('node:with:special-chars_123', descriptor);
@@ -273,47 +176,25 @@ describe('NodeRegistry', () => {
     it('should return all registered nodes', () => {
       const registry = new NodeRegistry();
       const descriptor1: NodeDescriptor = {
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        ...defaults,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
         name: 'Node 1',
         description: 'First node',
         icon: 'icon1',
         type: 'source',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        factory: (_state: PreCreateState) => createMockNode('node1'),
-      };
-      const descriptor2: NodeDescriptor = {
-        ...defaults,
-=======
         factory: (_state: QueryNodeState) => createMockNode('node1'),
       };
       const descriptor2: NodeDescriptor = {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
         name: 'Node 2',
         description: 'Second node',
         icon: 'icon2',
         type: 'modification',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        factory: (_state: PreCreateState) => createMockNode('node2'),
-      };
-      const descriptor3: NodeDescriptor = {
-        ...defaults,
-=======
         factory: (_state: QueryNodeState) => createMockNode('node2'),
       };
       const descriptor3: NodeDescriptor = {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
         name: 'Node 3',
         description: 'Third node',
         icon: 'icon3',
         type: 'multisource',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        factory: (_state: PreCreateState) => createMockNode('node3'),
-=======
         factory: (_state: QueryNodeState) => createMockNode('node3'),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
       };
 
       registry.register('node1', descriptor1);
@@ -331,19 +212,11 @@ describe('NodeRegistry', () => {
     it('should return tuples of [id, descriptor]', () => {
       const registry = new NodeRegistry();
       const descriptor: NodeDescriptor = {
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        ...defaults,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
         name: 'Test Node',
         description: 'A test node',
         icon: 'test-icon',
         type: 'source',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        factory: (_state: PreCreateState) => createMockNode('test'),
-=======
         factory: (_state: QueryNodeState) => createMockNode('test'),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
       };
 
       registry.register('test-node', descriptor);
@@ -358,33 +231,18 @@ describe('NodeRegistry', () => {
     it('should reflect updates when node is re-registered', () => {
       const registry = new NodeRegistry();
       const descriptor1: NodeDescriptor = {
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        ...defaults,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
         name: 'Node 1',
         description: 'First node',
         icon: 'icon1',
         type: 'source',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        factory: (_state: PreCreateState) => createMockNode('node1'),
-      };
-      const descriptor2: NodeDescriptor = {
-        ...defaults,
-=======
         factory: (_state: QueryNodeState) => createMockNode('node1'),
       };
       const descriptor2: NodeDescriptor = {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
         name: 'Node 1 Updated',
         description: 'Updated node',
         icon: 'icon1-updated',
         type: 'source',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        factory: (_state: PreCreateState) => createMockNode('node1-updated'),
-=======
         factory: (_state: QueryNodeState) => createMockNode('node1-updated'),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
       };
 
       registry.register('node1', descriptor1);
@@ -399,260 +257,6 @@ describe('NodeRegistry', () => {
     });
   });
 
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-  describe('getAllowedChildrenFor', () => {
-    it('should return default allowed children when node has no override', () => {
-      const registry = new NodeRegistry();
-      registry.register('source', {
-        ...defaults,
-        nodeType: NodeType.kTable,
-        name: 'Source',
-        description: 'A source',
-        icon: 'icon',
-        type: 'source',
-        factory: () => createMockNode('s'),
-      });
-      registry.register('filter', {
-        ...defaults,
-        nodeType: NodeType.kFilter,
-        name: 'Filter',
-        description: 'A filter',
-        icon: 'icon',
-        type: 'modification',
-        factory: () => createMockNode('f'),
-      });
-      registry.setDefaultAllowedChildren(['filter']);
-
-      const result = registry.getAllowedChildrenFor(NodeType.kTable);
-
-      expect(result).toEqual(['filter']);
-    });
-
-    it('should return per-node override when set', () => {
-      const registry = new NodeRegistry();
-      registry.register('source', {
-        ...defaults,
-        nodeType: NodeType.kTable,
-        name: 'Source',
-        description: 'A source',
-        icon: 'icon',
-        type: 'source',
-        allowedChildren: ['filter'],
-        factory: () => createMockNode('s'),
-      });
-      registry.register('filter', {
-        ...defaults,
-        nodeType: NodeType.kFilter,
-        name: 'Filter',
-        description: 'A filter',
-        icon: 'icon',
-        type: 'modification',
-        factory: () => createMockNode('f'),
-      });
-      registry.setDefaultAllowedChildren(['filter', 'sort']);
-
-      const result = registry.getAllowedChildrenFor(NodeType.kTable);
-
-      expect(result).toEqual(['filter']);
-    });
-
-    it('should return empty array when override is empty', () => {
-      const registry = new NodeRegistry();
-      registry.register('source', {
-        ...defaults,
-        nodeType: NodeType.kTable,
-        name: 'Source',
-        description: 'A source',
-        icon: 'icon',
-        type: 'source',
-        allowedChildren: [],
-        factory: () => createMockNode('s'),
-      });
-      registry.setDefaultAllowedChildren(['filter']);
-
-      const result = registry.getAllowedChildrenFor(NodeType.kTable);
-
-      expect(result).toEqual([]);
-    });
-  });
-
-  describe('isConnectionAllowed', () => {
-    it('should allow connection when child type is in allowed list', () => {
-      const registry = new NodeRegistry();
-      registry.register('source', {
-        ...defaults,
-        nodeType: NodeType.kTable,
-        name: 'Source',
-        description: 'A source',
-        icon: 'icon',
-        type: 'source',
-        factory: () => createMockNode('s'),
-      });
-      registry.register('filter', {
-        ...defaults,
-        nodeType: NodeType.kFilter,
-        name: 'Filter',
-        description: 'A filter',
-        icon: 'icon',
-        type: 'modification',
-        factory: () => createMockNode('f'),
-      });
-      registry.setDefaultAllowedChildren(['filter']);
-
-      expect(
-        registry.isConnectionAllowed(NodeType.kTable, NodeType.kFilter),
-      ).toBe(true);
-    });
-
-    it('should block connection when child type is not in allowed list', () => {
-      const registry = new NodeRegistry();
-      registry.register('source', {
-        ...defaults,
-        nodeType: NodeType.kTable,
-        name: 'Source',
-        description: 'A source',
-        icon: 'icon',
-        type: 'source',
-        allowedChildren: ['filter'],
-        factory: () => createMockNode('s'),
-      });
-      registry.register('filter', {
-        ...defaults,
-        nodeType: NodeType.kFilter,
-        name: 'Filter',
-        description: 'A filter',
-        icon: 'icon',
-        type: 'modification',
-        factory: () => createMockNode('f'),
-      });
-      registry.register('sort', {
-        ...defaults,
-        nodeType: NodeType.kSort,
-        name: 'Sort',
-        description: 'A sort',
-        icon: 'icon',
-        type: 'modification',
-        factory: () => createMockNode('so'),
-      });
-
-      expect(
-        registry.isConnectionAllowed(NodeType.kTable, NodeType.kSort),
-      ).toBe(false);
-    });
-
-    it('should block all connections when allowed children is empty', () => {
-      const registry = new NodeRegistry();
-      registry.register('source', {
-        ...defaults,
-        nodeType: NodeType.kTable,
-        name: 'Source',
-        description: 'A source',
-        icon: 'icon',
-        type: 'source',
-        allowedChildren: [],
-        factory: () => createMockNode('s'),
-      });
-      registry.register('filter', {
-        ...defaults,
-        nodeType: NodeType.kFilter,
-        name: 'Filter',
-        description: 'A filter',
-        icon: 'icon',
-        type: 'modification',
-        factory: () => createMockNode('f'),
-      });
-
-      expect(
-        registry.isConnectionAllowed(NodeType.kTable, NodeType.kFilter),
-      ).toBe(false);
-    });
-
-    it('should block connection for unregistered child type', () => {
-      const registry = new NodeRegistry();
-      registry.register('source', {
-        ...defaults,
-        nodeType: NodeType.kTable,
-        name: 'Source',
-        description: 'A source',
-        icon: 'icon',
-        type: 'source',
-        factory: () => createMockNode('s'),
-      });
-      registry.setDefaultAllowedChildren(['filter']);
-
-      // kFilter is not registered, only listed as allowed
-      expect(
-        registry.isConnectionAllowed(NodeType.kTable, NodeType.kFilter),
-      ).toBe(false);
-    });
-  });
-
-  describe('validateAllowedChildren', () => {
-    it('should pass when all references are valid', () => {
-      const registry = new NodeRegistry();
-      registry.register('source', {
-        ...defaults,
-        nodeType: NodeType.kTable,
-        name: 'Source',
-        description: 'A source',
-        icon: 'icon',
-        type: 'source',
-        allowedChildren: ['filter'],
-        factory: () => createMockNode('s'),
-      });
-      registry.register('filter', {
-        ...defaults,
-        nodeType: NodeType.kFilter,
-        name: 'Filter',
-        description: 'A filter',
-        icon: 'icon',
-        type: 'modification',
-        factory: () => createMockNode('f'),
-      });
-      registry.setDefaultAllowedChildren(['filter']);
-
-      expect(() => registry.validateAllowedChildren()).not.toThrow();
-    });
-
-    it('should throw when per-node allowedChildren references unregistered ID', () => {
-      const registry = new NodeRegistry();
-      registry.register('source', {
-        ...defaults,
-        nodeType: NodeType.kTable,
-        name: 'Source',
-        description: 'A source',
-        icon: 'icon',
-        type: 'source',
-        allowedChildren: ['nonexistent_node'],
-        factory: () => createMockNode('s'),
-      });
-
-      expect(() => registry.validateAllowedChildren()).toThrow(
-        /Node 'source' allowedChildren references unregistered node ID: 'nonexistent_node'/,
-      );
-    });
-
-    it('should throw when default allowedChildren references unregistered ID', () => {
-      const registry = new NodeRegistry();
-      registry.register('source', {
-        ...defaults,
-        nodeType: NodeType.kTable,
-        name: 'Source',
-        description: 'A source',
-        icon: 'icon',
-        type: 'source',
-        factory: () => createMockNode('s'),
-      });
-      registry.setDefaultAllowedChildren(['ghost_node']);
-
-      expect(() => registry.validateAllowedChildren()).toThrow(
-        /Default allowedChildren references unregistered node ID: 'ghost_node'/,
-      );
-    });
-  });
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
   describe('integration tests', () => {
     it('should handle full lifecycle of node registration', () => {
       const registry = new NodeRegistry();
@@ -662,19 +266,11 @@ describe('NodeRegistry', () => {
 
       // Register first node
       const descriptor1: NodeDescriptor = {
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        ...defaults,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
         name: 'Source Node',
         description: 'A source node',
         icon: 'source-icon',
         type: 'source',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        factory: (_state: PreCreateState) => createMockNode('source'),
-=======
         factory: (_state: QueryNodeState) => createMockNode('source'),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
       };
       registry.register('source-node', descriptor1);
       expect(registry.list().length).toBe(1);
@@ -682,19 +278,11 @@ describe('NodeRegistry', () => {
 
       // Register second node
       const descriptor2: NodeDescriptor = {
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        ...defaults,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
         name: 'Modify Node',
         description: 'A modification node',
         icon: 'modify-icon',
         type: 'modification',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        factory: (_state: PreCreateState) => createMockNode('modify'),
-=======
         factory: (_state: QueryNodeState) => createMockNode('modify'),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
       };
       registry.register('modify-node', descriptor2);
       expect(registry.list().length).toBe(2);
@@ -702,19 +290,11 @@ describe('NodeRegistry', () => {
 
       // Update first node
       const descriptor1Updated: NodeDescriptor = {
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        ...defaults,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
         name: 'Source Node Updated',
         description: 'Updated source node',
         icon: 'source-icon-updated',
         type: 'source',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/node_registry_unittest.ts
-        factory: (_state: PreCreateState) => createMockNode('source-updated'),
-=======
         factory: (_state: QueryNodeState) => createMockNode('source-updated'),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/node_registry_unittest.ts
       };
       registry.register('source-node', descriptor1Updated);
       expect(registry.list().length).toBe(2);

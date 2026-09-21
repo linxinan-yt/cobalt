@@ -44,14 +44,8 @@ PERFETTO_PB_MSG_DECL(perfetto_protos_LogMessage);
 PERFETTO_PB_MSG_DECL(perfetto_protos_Screenshot);
 PERFETTO_PB_MSG_DECL(perfetto_protos_SourceLocation);
 PERFETTO_PB_MSG_DECL(perfetto_protos_TaskExecution);
-<<<<<<< HEAD
 PERFETTO_PB_MSG_DECL(perfetto_protos_TrackEvent_InlineCallstack);
-PERFETTO_PB_MSG_DECL(perfetto_protos_TrackEvent_InlineCallstack_Frame);
-=======
-PERFETTO_PB_MSG_DECL(perfetto_protos_TrackEvent_Callstack);
-PERFETTO_PB_MSG_DECL(perfetto_protos_TrackEvent_Callstack_Frame);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-PERFETTO_PB_MSG_DECL(perfetto_protos_TrackEvent_LegacyEvent);
+PERFETTO_PB_MSG_DECL(perfetto_protos_TrackEvent_InlineCallstack_Frame);PERFETTO_PB_MSG_DECL(perfetto_protos_TrackEvent_LegacyEvent);
 
 PERFETTO_PB_ENUM_IN_MSG(perfetto_protos_TrackEvent, Type){
     PERFETTO_PB_ENUM_IN_MSG_ENTRY(perfetto_protos_TrackEvent,
@@ -195,12 +189,7 @@ PERFETTO_PB_FIELD(perfetto_protos_TrackEvent,
                   54);
 PERFETTO_PB_FIELD(perfetto_protos_TrackEvent,
                   MSG,
-<<<<<<< HEAD
-                  perfetto_protos_TrackEvent_InlineCallstack,
-=======
-                  perfetto_protos_TrackEvent_Callstack,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                  callstack,
+perfetto_protos_TrackEvent_InlineCallstack,                  callstack,
                   55);
 PERFETTO_PB_FIELD(perfetto_protos_TrackEvent,
                   VARINT,
@@ -208,15 +197,11 @@ PERFETTO_PB_FIELD(perfetto_protos_TrackEvent,
                   callstack_iid,
                   56);
 PERFETTO_PB_FIELD(perfetto_protos_TrackEvent,
-<<<<<<< HEAD
-                  FIXED64,
+FIXED64,
                   double,
                   callstack_weight,
                   57);
-PERFETTO_PB_FIELD(perfetto_protos_TrackEvent,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                  MSG,
+PERFETTO_PB_FIELD(perfetto_protos_TrackEvent,                  MSG,
                   perfetto_protos_DebugAnnotation,
                   debug_annotations,
                   4);
@@ -433,7 +418,6 @@ PERFETTO_PB_FIELD(perfetto_protos_TrackEvent_LegacyEvent,
                   tid_override,
                   19);
 
-<<<<<<< HEAD
 PERFETTO_PB_MSG(perfetto_protos_TrackEvent_InlineCallstack);
 PERFETTO_PB_FIELD(perfetto_protos_TrackEvent_InlineCallstack,
                   MSG,
@@ -442,37 +426,15 @@ PERFETTO_PB_FIELD(perfetto_protos_TrackEvent_InlineCallstack,
                   1);
 
 PERFETTO_PB_MSG(perfetto_protos_TrackEvent_InlineCallstack_Frame);
-PERFETTO_PB_FIELD(perfetto_protos_TrackEvent_InlineCallstack_Frame,
-=======
-PERFETTO_PB_MSG(perfetto_protos_TrackEvent_Callstack);
-PERFETTO_PB_FIELD(perfetto_protos_TrackEvent_Callstack,
-                  MSG,
-                  perfetto_protos_TrackEvent_Callstack_Frame,
-                  frames,
-                  1);
-
-PERFETTO_PB_MSG(perfetto_protos_TrackEvent_Callstack_Frame);
-PERFETTO_PB_FIELD(perfetto_protos_TrackEvent_Callstack_Frame,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                  STRING,
+PERFETTO_PB_FIELD(perfetto_protos_TrackEvent_InlineCallstack_Frame,                  STRING,
                   const char*,
                   function_name,
                   1);
-<<<<<<< HEAD
-PERFETTO_PB_FIELD(perfetto_protos_TrackEvent_InlineCallstack_Frame,
-=======
-PERFETTO_PB_FIELD(perfetto_protos_TrackEvent_Callstack_Frame,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                  STRING,
+PERFETTO_PB_FIELD(perfetto_protos_TrackEvent_Callstack_Frame,                  STRING,
                   const char*,
                   source_file,
                   2);
-<<<<<<< HEAD
-PERFETTO_PB_FIELD(perfetto_protos_TrackEvent_InlineCallstack_Frame,
-=======
-PERFETTO_PB_FIELD(perfetto_protos_TrackEvent_Callstack_Frame,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                  VARINT,
+PERFETTO_PB_FIELD(perfetto_protos_TrackEvent_InlineCallstack_Frame,                  VARINT,
                   uint32_t,
                   line_number,
                   3);

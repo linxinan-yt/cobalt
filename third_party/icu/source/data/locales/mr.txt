@@ -631,14 +631,8 @@ mr{
                     1{"इ. स."}
                 }
                 abbreviated%variant{
-<<<<<<< HEAD
-                    0{"ई. पू. युग"}
-                    1{"ख्रि. यु."}
-=======
-                    "ई. पू. युग",
-                    "ख्रि. यु.",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+0{"ई. पू. युग"}
+                    1{"ख्रि. यु."}                }
                 wide{
                     0{"ईसवीसनपूर्व"}
                     1{"ईसवीसन"}
@@ -1714,9 +1708,7 @@ mr{
                 "[\\: ∶]",
             }
         }
-<<<<<<< HEAD
-=======
-        general{
+general{
             lenient{
                 "[.．․﹒ 。｡︒]",
                 "['＇’ ՚ ᾽᾿ ʼ]",
@@ -1728,9 +1720,7 @@ mr{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        number{
+        }        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ، ٫ 、﹑､︑]",

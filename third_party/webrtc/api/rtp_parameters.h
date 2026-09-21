@@ -901,9 +901,7 @@ struct RTC_EXPORT RtpParameters {
   // If at least two active encodings have different codec values
   // (including one being unset and another set), this is considered mixed.
   bool IsMixedCodec() const;
-<<<<<<< HEAD
-
-  template <typename Sink>
+template <typename Sink>
   friend void AbslStringify(Sink& sink, const RtpParameters& p) {
     sink.Append("{");
     absl::Format(&sink, "transaction_id: '%s', ", p.transaction_id);
@@ -918,10 +916,7 @@ struct RTC_EXPORT RtpParameters {
                    DegradationPreferenceToString(*p.degradation_preference));
     }
     sink.Append("}");
-  }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-};
+  }};
 
 }  // namespace webrtc
 

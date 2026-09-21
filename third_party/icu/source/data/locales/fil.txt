@@ -462,9 +462,7 @@ fil{
                         "Biy",
                         "Sab",
                     }
-<<<<<<< HEAD
-=======
-                    narrow{
+narrow{
                         "Lin",
                         "Lun",
                         "Mar",
@@ -472,9 +470,7 @@ fil{
                         "Huw",
                         "Biy",
                         "Sab",
-                    }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    wide{
+                    }                    wide{
                         "Linggo",
                         "Lunes",
                         "Martes",
@@ -512,9 +508,7 @@ fil{
                         evening1{"ng gabi"}
                         midnight{"hatinggabi"}
                         morning1{"ng umaga"}
-<<<<<<< HEAD
-=======
-                        morning2{"madaling-araw"}
+morning2{"madaling-araw"}
                         night1{"ng gabi"}
                         noon{"tanghaling-tapat"}
                     }
@@ -531,9 +525,7 @@ fil{
                         afternoon1{"ng hapon"}
                         evening1{"ng gabi"}
                         midnight{"hatinggabi"}
-                        morning1{"ng umaga"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                        morning2{"madaling-araw"}
+                        morning1{"ng umaga"}                        morning2{"madaling-araw"}
                         night1{"ng gabi"}
                         noon{"tanghaling-tapat"}
                     }
@@ -1447,9 +1439,7 @@ fil{
                 "[\\: ∶]",
             }
         }
-<<<<<<< HEAD
-=======
-        general{
+general{
             lenient{
                 "[.．․﹒ 。｡︒]",
                 "['＇’ ՚ ᾽᾿ ʼ]",
@@ -1461,9 +1451,7 @@ fil{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        number{
+        }        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ، ٫ 、﹑､︑]",

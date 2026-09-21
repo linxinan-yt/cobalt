@@ -737,26 +737,13 @@ my{
                 other{"{0}°"}
             }
         }
-<<<<<<< HEAD
-        concentr{
-            ofglucose{
-                dnam{"Glc"}
-            }
-            part{
-                dnam{"ပတ်"}
-                other{"{0} ပတ်"}
-            }
-            part-per-1e9{
-=======
-        area{
+area{
             square-centimeter{
                 dnam{"cm²"}
             }
         }
         concentr{
-            portion-per-1e9{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                other{"{0}ppb"}
+            portion-per-1e9{                other{"{0}ppb"}
             }
         }
         consumption{
@@ -890,11 +877,7 @@ my{
         }
         speed{
             light-speed{
-<<<<<<< HEAD
-=======
-                dnam{"အလင်း"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                other{"{0}အလင်း"}
+dnam{"အလင်း"}                other{"{0}အလင်း"}
             }
         }
         volume{

@@ -160,35 +160,11 @@ std::optional<ProguardMember> ParseMember(std::string line) {
 
   auto paren_idx = deobfuscated_name.find('(');
   if (paren_idx != std::string::npos) {
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/util/deobfuscation/deobfuscator.cc
-    result.type = ProguardMemberType::kMethod;
-
-    // Parse R8 format: "1:3:void foo():10:12" or "1:3:void foo():10"
-    // type_name may be "1:3:void" (with obfuscated line range prefix)
-    // deobfuscated_name may be "foo():10:12" (with source line suffix)
-
-    // Extract obfuscated line range from type_name prefix (e.g., "1:3:void")
-    // Count colons to find the pattern X:Y:type
-    size_t first_colon = type_name.find(':');
-    if (first_colon != std::string::npos) {
-      size_t second_colon = type_name.find(':', first_colon + 1);
-      if (second_colon != std::string::npos) {
-        // Has obfuscated line range: "1:3:void"
-        std::string obf_range = type_name.substr(0, second_colon);
-        auto parsed = ParseLineRange(obf_range);
-        if (parsed) {
-          result.obfuscated_line_start = parsed->first;
-          result.obfuscated_line_end = parsed->second;
-        }
-        type_name = type_name.substr(second_colon + 1);
-      }
-=======
     member_type = ProguardMemberType::kMethod;
     deobfuscated_name.resize(paren_idx);
     auto colon_idx = type_name.find(':');
     if (colon_idx != std::string::npos) {
       type_name = type_name.substr(colon_idx + 1);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/profiling/deobfuscator.cc
     }
 
     // Extract source line range from deobfuscated_name suffix

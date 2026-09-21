@@ -65,14 +65,8 @@ CREATE PERFETTO MACRO counter_leading_intervals(
 --     Value for the leading row.
 -- delta_value DOUBLE
 --     Delta to the *lagging* row - note that this is not the same thing as (next_value - value).
-<<<<<<< HEAD
-RETURNS TableOrSubquery
-AS (
-=======
 RETURNS TableOrSubquery AS
-(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  SELECT
+(  SELECT
     c0 AS id,
     c1 AS ts,
     c2 AS dur,

@@ -395,17 +395,10 @@ URLLoader::URLLoader(
       resource_scheduler_client_(context.GetResourceSchedulerClient()),
       keepalive_statistics_recorder_(std::move(keepalive_statistics_recorder)),
       fetch_window_id_(request.fetch_window_id),
-<<<<<<< HEAD
-      local_network_access_interceptor_(request,
+local_network_access_interceptor_(request,
                                         GetClientSecurityState(),
                                         options_),
-=======
-      private_network_access_interceptor_(request,
-                                          GetClientSecurityState(),
-                                          options_),
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      trust_token_interceptor_(TrustTokenUrlLoaderInterceptor::MaybeCreate(
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)      trust_token_interceptor_(TrustTokenUrlLoaderInterceptor::MaybeCreate(
           std::move(trust_token_helper_factory))),
 #endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
       shared_dictionary_checker_(std::move(shared_dictionary_checker)),
@@ -1275,68 +1268,53 @@ void URLLoader::ContinueOnResponseStarted() {
   }
 
   if (!(options_ & mojom::kURLLoadOptionReadAndDiscardBody)) {
-<<<<<<< HEAD
-    if (!response_body_stream_.is_valid()) {
+if (!response_body_stream_.is_valid()) {
       MojoCreateDataPipeOptions options;
       options.struct_size = sizeof(MojoCreateDataPipeOptions);
       options.flags = MOJO_CREATE_DATA_PIPE_FLAG_NONE;
       options.element_num_bytes = 1;
+#if BUILDFLAG(IS_COBALT)
+      // Dynamic allocation for Cobalt to save memory on low-end TVs.
+      // Video/audio streams get the large buffer; images and APIs get 128 KB.
+      bool is_media_stream = (request_destination_ == mojom::RequestDestination::kVideo ||
+                              request_destination_ == mojom::RequestDestination::kAudio);
+      // YouTube TV specific: check for /videoplayback URL path
+      if (!is_media_stream) {
+        is_media_stream = (url_request_->url().path() == "/videoplayback");
+      }
+      // General MSE: check for standard video/audio mime-types or YouTube's custom UMP format
+      if (!is_media_stream && response_ && !response_->mime_type.empty()) {
+        const std::string& mime = response_->mime_type;
+        is_media_stream = (base::StartsWith(mime, "video/", base::CompareCase::SENSITIVE) ||
+                           base::StartsWith(mime, "audio/", base::CompareCase::SENSITIVE) ||
+                           mime == "application/vnd.yt-ump");
+      }
+      if (base::FeatureList::IsEnabled(features::kCobaltDynamicMojoPipeSizing)) {
+        int configured_size = is_media_stream
+                                  ? features::kCobaltDynamicMojoPipeSizingMediaSize.Get()
+                                  : features::kCobaltDynamicMojoPipeSizingSubresourceSize.Get();
+        if (configured_size > 0) {
+          options.capacity_num_bytes = static_cast<uint32_t>(configured_size);
+        } else {
+          options.capacity_num_bytes = GetDataPipeDefaultAllocationSize(
+              DataPipeAllocationSize::kLargerSizeIfPossible);
+        }
+      } else {
+        options.capacity_num_bytes = GetDataPipeDefaultAllocationSize(
+            DataPipeAllocationSize::kLargerSizeIfPossible);
+      }
+
+#else
       options.capacity_num_bytes = GetDataPipeDefaultAllocationSize(
           DataPipeAllocationSize::kLargerSizeIfPossible);
+#endif  // BUILDFLAG(IS_COBALT)
       MojoResult result = mojo::CreateDataPipe(&options, response_body_stream_,
                                                consumer_handle_);
       if (result != MOJO_RESULT_OK) {
         NotifyCompleted(net::ERR_INSUFFICIENT_RESOURCES);
         return;
       }
-      CHECK(consumer_handle_.is_valid());
-=======
-    MojoCreateDataPipeOptions options;
-    options.struct_size = sizeof(MojoCreateDataPipeOptions);
-    options.flags = MOJO_CREATE_DATA_PIPE_FLAG_NONE;
-    options.element_num_bytes = 1;
-#if BUILDFLAG(IS_COBALT)
-    // Dynamic allocation for Cobalt to save memory on low-end TVs.
-    // Video/audio streams get the large buffer; images and APIs get 128 KB.
-    bool is_media_stream = (request_destination_ == mojom::RequestDestination::kVideo ||
-                            request_destination_ == mojom::RequestDestination::kAudio);
-    // YouTube TV specific: check for /videoplayback URL path
-    if (!is_media_stream) {
-      is_media_stream = (url_request_->url().path() == "/videoplayback");
-    }
-    // General MSE: check for standard video/audio mime-types or YouTube's custom UMP format
-    if (!is_media_stream && response_ && !response_->mime_type.empty()) {
-      const std::string& mime = response_->mime_type;
-      is_media_stream = (base::StartsWith(mime, "video/", base::CompareCase::SENSITIVE) ||
-                         base::StartsWith(mime, "audio/", base::CompareCase::SENSITIVE) ||
-                         mime == "application/vnd.yt-ump");
-    }
-    if (base::FeatureList::IsEnabled(features::kCobaltDynamicMojoPipeSizing)) {
-      int configured_size = is_media_stream
-                                ? features::kCobaltDynamicMojoPipeSizingMediaSize.Get()
-                                : features::kCobaltDynamicMojoPipeSizingSubresourceSize.Get();
-      if (configured_size > 0) {
-        options.capacity_num_bytes = static_cast<uint32_t>(configured_size);
-      } else {
-        options.capacity_num_bytes = GetDataPipeDefaultAllocationSize(
-            DataPipeAllocationSize::kLargerSizeIfPossible);
-      }
-    } else {
-      options.capacity_num_bytes = GetDataPipeDefaultAllocationSize(
-          DataPipeAllocationSize::kLargerSizeIfPossible);
-    }
-
-#else
-    options.capacity_num_bytes = GetDataPipeDefaultAllocationSize(
-        DataPipeAllocationSize::kLargerSizeIfPossible);
-#endif  // BUILDFLAG(IS_COBALT)
-    MojoResult result =
-        mojo::CreateDataPipe(&options, response_body_stream_, consumer_handle_);
-    if (result != MOJO_RESULT_OK) {
-      NotifyCompleted(net::ERR_INSUFFICIENT_RESOURCES);
-      return;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+      CHECK(consumer_handle_.is_valid());    }
     CHECK(response_body_stream_.is_valid());
     peer_closed_handle_watcher_.Watch(
         response_body_stream_.get(), MOJO_HANDLE_SIGNAL_PEER_CLOSED,

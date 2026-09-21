@@ -287,30 +287,20 @@ declare_args() {
   # Enables the use of priority-inheritance mutexes via PTHREAD_PRIO_INHERIT
   # or wrapper around PI Futexes (dependant on OS).
   # Note that on Android platform (non-standalone) builds this flag is ignored
-<<<<<<< HEAD
-  # and RtFutex is always used unconditionally.
-=======
-  # and Android flags "use_rt_mutex", "use_rt_futex" are used instead (perfetto_flags.aconfig)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  # This is disabled in chromium, because the BPF-sandbox allows PI-futex only
+# and Android flags "use_rt_mutex", "use_rt_futex" are used instead (perfetto_flags.aconfig)  # This is disabled in chromium, because the BPF-sandbox allows PI-futex only
   # when a field-trial is enabled, which is incompatible with a build time flag.
   enable_perfetto_rt_mutex =
       !is_wasm && (perfetto_build_standalone || is_perfetto_build_generator) &&
       !build_with_chromium
 
-<<<<<<< HEAD
-  # This flag enables the use of inotify on AF_UNIX sockets to re-connect when
+# This flag enables the use of inotify on AF_UNIX sockets to re-connect when
   # the server disconnects. Disabled in chromium as inotify is not allowed by
   # Chrome's seccomp sandbox (b/470556120).
   # On Android platform (non-standalone) builds this flag is ignored. The flag
   # "use_unix_socket_inotify" is used instead (see perfetto_flags.aconfig).
   enable_perfetto_sock_inotify =
       !is_wasm && (perfetto_build_standalone || is_perfetto_build_generator) &&
-      !build_with_chromium
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  # This flag is used for the migration of UnixTaskRunner -> LockFreeTaskRunner.
+      !build_with_chromium  # This flag is used for the migration of UnixTaskRunner -> LockFreeTaskRunner.
   # It determines whether MaybeLockFreeTaskRunner is backed by UnixTaskRunner
   # or the newer LockFreeTaskRunner.
   # UnixTaskRunner is the battle-tested original TaskRunner implementaiton used

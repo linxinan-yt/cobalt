@@ -36,15 +36,10 @@ import {findRef, toHTMLElement} from '../base/dom_utils';
 import type {Rect2D, Size2D} from '../base/geom';
 import {ensureExists} from '../base/assert';
 import {VirtualCanvas} from '../base/virtual_canvas';
-<<<<<<< HEAD
 import {WebGLRenderer} from '../base/gl/webgl_renderer';
 import {Canvas2DRenderer} from '../base/canvas2d_renderer';
 import type {Renderer} from '../base/renderer';
 import type {HTMLAttrs} from './common';
-=======
-import {HTMLAttrs} from './common';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 const CANVAS_CONTAINER_REF = 'canvas-container';
 const CANVAS_OVERDRAW_PX = 300;
 const CANVAS_TOLERANCE_PX = 100;
@@ -75,7 +70,6 @@ export interface VirtualOverlayCanvasDrawContext {
 
 export type Overflow = 'hidden' | 'visible' | 'auto';
 
-<<<<<<< HEAD
 // Imperative handle for controlling a VirtualOverlayCanvas. Handed to the
 // parent via the `onMount` callback.
 export interface VirtualOverlayCanvasApi {
@@ -85,11 +79,7 @@ export interface VirtualOverlayCanvasApi {
   // Set the scroll position of the scrolling container. Either axis may be
   // omitted to leave it unchanged. The browser clamps to the valid range.
   scrollTo(opts: {x?: number; y?: number}): void;
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-export interface VirtualOverlayCanvasAttrs extends HTMLAttrs {
+}export interface VirtualOverlayCanvasAttrs extends HTMLAttrs {
   // Additional class names applied to the root element.
   readonly className?: string;
 
@@ -109,30 +99,17 @@ export interface VirtualOverlayCanvasAttrs extends HTMLAttrs {
   // Default: false.
   readonly disableCanvasRedrawOnMithrilUpdates?: boolean;
 
-<<<<<<< HEAD
-  // Called when the canvas is mounted. The passed api object exposes
+// Called when the canvas is mounted. The passed api object exposes
   // imperative methods for controlling the canvas. Any returned disposable
   // will be disposed of when the component is removed.
   onMount?(api: VirtualOverlayCanvasApi): Disposable | void;
-=======
-  // Called when the canvas is mounted. The passed redrawCanvas() function can
-  // be called to redraw the canvas synchronously at any time. Any returned
-  // disposable will be disposed of when the component is removed.
-  onMount?(redrawCanvas: () => void): Disposable | void;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   // Override styles from base interface, only allowing object type styles
   // rather than strings.
   style?: Partial<CSSStyleDeclaration>;
-<<<<<<< HEAD
-
-  // Enable a second canvas for WebGL rendering. When enabled, webglCanvas and
+// Enable a second canvas for WebGL rendering. When enabled, webglCanvas and
   // webglCtx will be provided in the draw context.
   // Default: false.
-  readonly enableWebGL?: boolean;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  readonly enableWebGL?: boolean;}
 
 function getScrollAxesFromOverflow(x: Overflow, y: Overflow) {
   if (x === 'auto' && y === 'auto') {

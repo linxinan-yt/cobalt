@@ -171,19 +171,12 @@ def _find_owning_class(parsed_classes, match):
 
 
 # Does not handle doubly-nested classes.
-<<<<<<< HEAD
 def _parse_java_classes(contents,
                         expected_name,
                         package_prefix=None,
                         package_prefix_filter=None,
                         is_javap=False):
-  package = _parse_package(contents, require=not is_javap)
-=======
-def _parse_java_classes(contents, package_prefix, package_prefix_filter):
-  package = _parse_package(contents).replace('.', '/')
-  outer_class = None
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  null_marked = False
+  package = _parse_package(contents, require=not is_javap)  null_marked = False
   parsed_classes = []
   for m in _find_iter_with_note(_CLASSES_REGEX, contents):
     preamble, class_name, generics_str = m.groups()
@@ -218,9 +211,7 @@ def _parse_java_classes(contents, package_prefix, package_prefix_filter):
             f'Found class "{class_name}" but expected "{expected_name}".')
 
       null_marked = contents.find('@NullMarked', 0, m.start(2)) != -1
-<<<<<<< HEAD
-
-      if package_prefix and common.should_prefix_package(
+if package_prefix and common.should_prefix_package(
           java_class.package_with_dots, package_prefix_filter):
         java_class = java_class.make_prefixed(package_prefix)
       end_idx = len(contents)
@@ -231,13 +222,7 @@ def _parse_java_classes(contents, package_prefix, package_prefix_filter):
           package_prefix_filter=package_prefix_filter)
       if not is_javap:
         for c in _parse_imports(contents, m.end()):
-          type_resolver.add_import(c)
-=======
-      if package_prefix and common.should_prefix_package(
-          outer_class.package_with_dots, package_prefix_filter):
-        outer_class = outer_class.make_prefixed(package_prefix)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    else:
+          type_resolver.add_import(c)    else:
       outer_class = parsed_classes[0]
       type_resolver = outer_class.type_resolver
       java_class = type_resolver.java_class.make_nested(class_name)
@@ -666,39 +651,19 @@ def _sort_jni(parsed_classes):
     c.fields.sort()
     c.non_proxy_methods.sort()
 
-<<<<<<< HEAD
-
 def parse_java_file_data(filename, contents, *, package_prefix,
                          package_prefix_filter,
                          allow_private_called_by_natives):
   contents = _remove_comments(contents)
-=======
-  outer_class, nested_classes, null_marked = _parse_java_classes(
-      contents, package_prefix, package_prefix_filter)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   expected_name = os.path.splitext(os.path.basename(filename))[0]
   parsed_classes = _parse_java_classes(contents, expected_name, package_prefix,
                                        package_prefix_filter)
 
-<<<<<<< HEAD
-  if not parsed_classes:
+if not parsed_classes:
     raise ParseError('No classes found.')
 
   outer_class = parsed_classes[0]
   type_resolver = outer_class.type_resolver
-=======
-  type_resolver = java_types.TypeResolver(
-      outer_class,
-      null_marked=null_marked,
-      package_prefix=package_prefix,
-      package_prefix_filter=package_prefix_filter)
-  for java_class in _parse_imports(contents):
-    type_resolver.add_import(java_class)
-  for java_class in nested_classes:
-    type_resolver.add_nested_class(java_class)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   parsed_proxy_natives = _parse_proxy_natives(type_resolver, contents)
   jni_namespace = _parse_jni_namespace(contents)
 

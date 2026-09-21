@@ -67,12 +67,7 @@ ii{
                 "G y MMMM dꑍ,EEEE",
                 "G y MMMM dꑍ",
                 "G y MMM dꑍ",
-<<<<<<< HEAD
-                "G y-MM-dd",
-=======
-                "GGGGG y-MM-dd",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                "{1} {0}",
+"GGGGG y-MM-dd",                "{1} {0}",
                 "{1} {0}",
                 "{1} {0}",
                 "{1} {0}",

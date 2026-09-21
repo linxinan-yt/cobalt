@@ -270,13 +270,9 @@ TEST(CodecVendorTest, GetNegotiatedCodecsForAnswerWithCollision) {
 }
 
 TEST(CodecVendorMergeTest, BasicTestSetup) {
-<<<<<<< HEAD
-  if (CreateTestFieldTrials().IsEnabled("WebRTC-PayloadTypesInTransport")) {
+if (CreateTestFieldTrials().IsEnabled("WebRTC-PayloadTypesInTransport")) {
     GTEST_SKIP();
-  }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  CodecList reference_codecs;
+  }  CodecList reference_codecs;
   const std::string mid = "mid";
   CodecList merged_codecs;
   FakePayloadTypeSuggester pt_suggester;
@@ -286,24 +282,15 @@ TEST(CodecVendorMergeTest, BasicTestSetup) {
 }
 
 TEST(CodecVendorMergeTest, IdenticalListsMergeWithNoChange) {
-<<<<<<< HEAD
-  if (CreateTestFieldTrials().IsEnabled("WebRTC-PayloadTypesInTransport")) {
+if (CreateTestFieldTrials().IsEnabled("WebRTC-PayloadTypesInTransport")) {
     GTEST_SKIP();
-  }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  CodecList reference_codecs;
+  }  CodecList reference_codecs;
   const std::string mid = "mid";
   CodecList merged_codecs;
   FakePayloadTypeSuggester pt_suggester;
   Codec some_codec = CreateVideoCodec(97, "foo");
-<<<<<<< HEAD
-  RTCErrorOr<PayloadType> pt_or_error =
-      pt_suggester.SuggestPayloadType(mid, some_codec, false);
-=======
-  auto pt_or_error = pt_suggester.SuggestPayloadType(mid, some_codec);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  ASSERT_THAT(pt_or_error.value(), Eq(97));
+RTCErrorOr<PayloadType> pt_or_error =
+      pt_suggester.SuggestPayloadType(mid, some_codec, false);  ASSERT_THAT(pt_or_error.value(), Eq(97));
   reference_codecs.push_back(some_codec);
   merged_codecs.push_back(some_codec);
   RTCError error =
@@ -314,24 +301,15 @@ TEST(CodecVendorMergeTest, IdenticalListsMergeWithNoChange) {
 }
 
 TEST(CodecVendorMergeTest, MergeRenumbersAdditionalCodecs) {
-<<<<<<< HEAD
-  if (CreateTestFieldTrials().IsEnabled("WebRTC-PayloadTypesInTransport")) {
+if (CreateTestFieldTrials().IsEnabled("WebRTC-PayloadTypesInTransport")) {
     GTEST_SKIP();
-  }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  CodecList reference_codecs;
+  }  CodecList reference_codecs;
   const std::string mid = "mid";
   CodecList merged_codecs;
   FakePayloadTypeSuggester pt_suggester;
   Codec some_codec = CreateVideoCodec(97, "foo");
-<<<<<<< HEAD
-  RTCErrorOr<PayloadType> pt_or_error =
-      pt_suggester.SuggestPayloadType(mid, some_codec, false);
-=======
-  auto pt_or_error = pt_suggester.SuggestPayloadType(mid, some_codec);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  ASSERT_THAT(pt_or_error.value(), Eq(97));
+RTCErrorOr<PayloadType> pt_or_error =
+      pt_suggester.SuggestPayloadType(mid, some_codec, false);  ASSERT_THAT(pt_or_error.value(), Eq(97));
   merged_codecs.push_back(some_codec);
   // Use the same PT for a reference codec. This should be renumbered.
   Codec some_other_codec = CreateVideoCodec(97, "bar");
@@ -355,13 +333,9 @@ TEST(CodecVendorMergeTest, MergeRenumbersAdditionalCodecs) {
 }
 
 TEST(CodecVendorMergeTest, MergeRenumbersRedCodecArgument) {
-<<<<<<< HEAD
-  if (CreateTestFieldTrials().IsEnabled("WebRTC-PayloadTypesInTransport")) {
+if (CreateTestFieldTrials().IsEnabled("WebRTC-PayloadTypesInTransport")) {
     GTEST_SKIP();
-  }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  CodecList reference_codecs;
+  }  CodecList reference_codecs;
   const std::string mid = "mid";
   CodecList merged_codecs;
   FakePayloadTypeSuggester pt_suggester;
@@ -372,12 +346,7 @@ TEST(CodecVendorMergeTest, MergeRenumbersRedCodecArgument) {
   reference_codecs.push_back(some_codec);
   Codec red_codec = CreateAudioCodec(101, "red", 8000, 1);
   ASSERT_EQ(red_codec.GetResiliencyType(), Codec::ResiliencyType::kRed);
-<<<<<<< HEAD
-  red_codec.SetParam(kCodecParamNotInNameValueFormat, "102/102");
-=======
-  red_codec.params[kCodecParamNotInNameValueFormat] = "102/102";
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  reference_codecs.push_back(red_codec);
+red_codec.SetParam(kCodecParamNotInNameValueFormat, "102/102");  reference_codecs.push_back(red_codec);
   // Merging should add the RED codec with parameter 100/100
   RTCError error =
       MergeCodecsForTesting(reference_codecs, mid, merged_codecs, pt_suggester);
@@ -392,13 +361,9 @@ TEST(CodecVendorMergeTest, MergeRenumbersRedCodecArgument) {
 }
 
 TEST(CodecVendorMergeTest, MergeRenumbersRedCodecArgumentAndMerges) {
-<<<<<<< HEAD
-  if (CreateTestFieldTrials().IsEnabled("WebRTC-PayloadTypesInTransport")) {
+if (CreateTestFieldTrials().IsEnabled("WebRTC-PayloadTypesInTransport")) {
     GTEST_SKIP();
-  }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  CodecList reference_codecs;
+  }  CodecList reference_codecs;
   const std::string mid = "mid";
   CodecList merged_codecs;
   FakePayloadTypeSuggester pt_suggester;
@@ -409,18 +374,10 @@ TEST(CodecVendorMergeTest, MergeRenumbersRedCodecArgumentAndMerges) {
   reference_codecs.push_back(some_codec);
   Codec red_codec = CreateAudioCodec(101, "red", 8000, 1);
   ASSERT_EQ(red_codec.GetResiliencyType(), Codec::ResiliencyType::kRed);
-<<<<<<< HEAD
-  red_codec.SetParam(kCodecParamNotInNameValueFormat, "102/102");
+red_codec.SetParam(kCodecParamNotInNameValueFormat, "102/102");
   reference_codecs.push_back(red_codec);
   // Push the same red codec into `merged_codecs` with the 100 id
-  red_codec.SetParam(kCodecParamNotInNameValueFormat, "100/100");
-=======
-  red_codec.params[kCodecParamNotInNameValueFormat] = "102/102";
-  reference_codecs.push_back(red_codec);
-  // Push the same red codec into `merged_codecs` with the 100 id
-  red_codec.params[kCodecParamNotInNameValueFormat] = "100/100";
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  merged_codecs.push_back(red_codec);
+  red_codec.SetParam(kCodecParamNotInNameValueFormat, "100/100");  merged_codecs.push_back(red_codec);
   // Merging should note the duplication and not add another codec.
   RTCError error =
       MergeCodecsForTesting(reference_codecs, mid, merged_codecs, pt_suggester);
@@ -435,25 +392,16 @@ TEST(CodecVendorMergeTest, MergeRenumbersRedCodecArgumentAndMerges) {
 }
 
 TEST(CodecVendorMergeTest, MergeWithBrokenReferenceRedErrors) {
-<<<<<<< HEAD
-  if (CreateTestFieldTrials().IsEnabled("WebRTC-PayloadTypesInTransport")) {
+if (CreateTestFieldTrials().IsEnabled("WebRTC-PayloadTypesInTransport")) {
     GTEST_SKIP();
-  }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  CodecList reference_codecs;
+  }  CodecList reference_codecs;
   const std::string mid = "mid";
   CodecList merged_codecs;
   FakePayloadTypeSuggester pt_suggester;
   Codec some_codec = CreateAudioCodec(100, "foo", 8000, 1);
   Codec red_codec = CreateAudioCodec(101, "red", 8000, 1);
   // Adds a RED codec that refers to codec 102, which does not exist.
-<<<<<<< HEAD
-  red_codec.SetParam(kCodecParamNotInNameValueFormat, "100/102");
-=======
-  red_codec.params[kCodecParamNotInNameValueFormat] = "100/102";
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  reference_codecs.push_back(some_codec);
+red_codec.SetParam(kCodecParamNotInNameValueFormat, "100/102");  reference_codecs.push_back(some_codec);
   reference_codecs.push_back(red_codec);
   // The bogus RED codec should result in an error return.
   RTCError error =
@@ -462,7 +410,6 @@ TEST(CodecVendorMergeTest, MergeWithBrokenReferenceRedErrors) {
   EXPECT_THAT(error.type(), Eq(RTCErrorType::INTERNAL_ERROR));
 }
 
-<<<<<<< HEAD
 TEST(CodecVendorMergeTest, MergeWithCollisionPicksFromTop) {
   if (CreateTestFieldTrials().IsEnabled("WebRTC-PayloadTypesInTransport")) {
     GTEST_SKIP();
@@ -521,9 +468,5 @@ TEST(CodecVendorTest, ModifyVideoCodecsReplacesCodec) {
 
   // Check that the second codec is NOT changed.
   EXPECT_THAT(new_send_codecs.codecs(), Contains(second_codec));
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}  // namespace
+}}  // namespace
 }  // namespace webrtc

@@ -160,17 +160,12 @@ class MEDIA_EXPORT AudioManagerAndroid : public AudioManagerBase {
       const std::string& device_id,
       const LogCallback& log_callback) override;
 
-<<<<<<< HEAD
-  void SetMute(JNIEnv* env, bool muted);
-=======
 #if BUILDFLAG(USE_STARBOARD_MEDIA)
   void PreStartStream(const base::UnguessableToken& session_id,
                       const AudioParameters& params) override;
 #endif
 
-  void SetMute(JNIEnv* env, jboolean muted);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+  void SetMute(JNIEnv* env, bool muted);
   // Called by the Java `AudioManagerAndroid` when the Bluetooth SCO state
   // changes. Note that this is called on the main thread.
   void OnScoStateChanged(JNIEnv* env, bool state);

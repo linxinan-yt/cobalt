@@ -19,11 +19,7 @@
 use crate::pb_enum;
 use crate::pb_msg;
 use crate::protos::common::builtin_clock::*;
-<<<<<<< HEAD
-use crate::protos::common::semantic_type::*;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-use crate::protos::config::data_source_config::*;
+use crate::protos::common::semantic_type::*;use crate::protos::config::data_source_config::*;
 use crate::protos::config::priority_boost::priority_boost_config::*;
 
 pb_enum!(TraceConfigLockdownModeOperation {
@@ -43,7 +39,6 @@ pb_enum!(TraceConfigStatsdLogging {
     STATSD_LOGGING_DISABLED: 2,
 });
 
-<<<<<<< HEAD
 pb_enum!(TraceConfigWriteFlushMode {
     WRITE_FLUSH_UNSPECIFIED: 0,
     WRITE_FLUSH_AUTO: 1,
@@ -55,11 +50,7 @@ pb_enum!(TraceConfigFFlushMode {
     FFLUSH_UNSPECIFIED: 0,
     FFLUSH_DISABLED: 1,
     FFLUSH_ENABLED: 2,
-});
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-pb_enum!(TraceFilterStringFilterPolicy {
+});pb_enum!(TraceFilterStringFilterPolicy {
     SFP_UNSPECIFIED: 0,
     SFP_MATCH_REDACT_GROUPS: 1,
     SFP_ATRACE_MATCH_REDACT_GROUPS: 2,
@@ -81,7 +72,6 @@ pb_enum!(BufferConfigFillPolicy {
     DISCARD: 2,
 });
 
-<<<<<<< HEAD
 pb_enum!(BufferConfigExperimentalMode {
     MODE_UNSPECIFIED: 0,
     TRACE_BUFFER_V2: 1,
@@ -91,42 +81,23 @@ pb_enum!(BufferConfigExperimentalMode {
 pb_msg!(TraceConfig {
     buffers: TraceConfigBufferConfig, msg, 1,
     data_sources: TraceConfigDataSource, msg, 2,
-    builtin_data_sources: TraceConfigBuiltinDataSource, msg, 20,
-=======
-pb_msg!(TraceConfig {
-    buffers: BufferConfig, msg, 1,
-    data_sources: DataSource, msg, 2,
-    builtin_data_sources: BuiltinDataSource, msg, 20,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    duration_ms: u32, primitive, 3,
+    builtin_data_sources: TraceConfigBuiltinDataSource, msg, 20,    duration_ms: u32, primitive, 3,
     prefer_suspend_clock_for_duration: bool, primitive, 36,
     enable_extra_guardrails: bool, primitive, 4,
     lockdown_mode: TraceConfigLockdownModeOperation, enum, 5,
-<<<<<<< HEAD
-    producers: TraceConfigProducerConfig, msg, 6,
-    statsd_metadata: TraceConfigStatsdMetadata, msg, 7,
-=======
-    producers: ProducerConfig, msg, 6,
-    statsd_metadata: StatsdMetadata, msg, 7,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    write_into_file: bool, primitive, 8,
+producers: TraceConfigProducerConfig, msg, 6,
+    statsd_metadata: TraceConfigStatsdMetadata, msg, 7,    write_into_file: bool, primitive, 8,
     output_path: String, primitive, 29,
     file_write_period_ms: u32, primitive, 9,
     max_file_size_bytes: u64, primitive, 10,
-<<<<<<< HEAD
-    guardrail_overrides: TraceConfigGuardrailOverrides, msg, 11,
-=======
-    guardrail_overrides: GuardrailOverrides, msg, 11,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    deferred_start: bool, primitive, 12,
+guardrail_overrides: TraceConfigGuardrailOverrides, msg, 11,    deferred_start: bool, primitive, 12,
     flush_period_ms: u32, primitive, 13,
     flush_timeout_ms: u32, primitive, 14,
     data_source_stop_timeout_ms: u32, primitive, 23,
     notify_traceur: bool, primitive, 16,
     bugreport_score: i32, primitive, 30,
     bugreport_filename: String, primitive, 38,
-<<<<<<< HEAD
-    trigger_config: TraceConfigTriggerConfig, msg, 17,
+trigger_config: TraceConfigTriggerConfig, msg, 17,
     activate_triggers: String, primitive, 18,
     incremental_state_config: TraceConfigIncrementalStateConfig, msg, 21,
     allow_user_build_tracing: bool, primitive, 19,
@@ -153,54 +124,20 @@ pb_msg!(TraceConfigNote {
     value: String, primitive, 2,
 });
 
-pb_msg!(TraceConfigSessionSemaphore {
-=======
-    trigger_config: TriggerConfig, msg, 17,
-    activate_triggers: String, primitive, 18,
-    incremental_state_config: IncrementalStateConfig, msg, 21,
-    allow_user_build_tracing: bool, primitive, 19,
-    unique_session_name: String, primitive, 22,
-    compression_type: TraceConfigCompressionType, enum, 24,
-    incident_report_config: IncidentReportConfig, msg, 25,
-    statsd_logging: TraceConfigStatsdLogging, enum, 31,
-    trace_uuid_msb: i64, primitive, 27,
-    trace_uuid_lsb: i64, primitive, 28,
-    trace_filter: TraceFilter, msg, 33,
-    android_report_config: AndroidReportConfig, msg, 34,
-    cmd_trace_start_delay: CmdTraceStartDelay, msg, 35,
-    session_semaphores: SessionSemaphore, msg, 39,
-    priority_boost: PriorityBoostConfig, msg, 40,
-    exclusive_prio: u32, primitive, 41,
-    no_flush_before_write_into_file: bool, primitive, 42,
-});
-
-pb_msg!(SessionSemaphore {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    name: String, primitive, 1,
+pb_msg!(TraceConfigSessionSemaphore {    name: String, primitive, 1,
     max_other_session_count: u64, primitive, 2,
 });
 
-<<<<<<< HEAD
-pb_msg!(TraceConfigCmdTraceStartDelay {
-=======
-pb_msg!(CmdTraceStartDelay {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    min_delay_ms: u32, primitive, 1,
+pb_msg!(CmdTraceStartDelay {    min_delay_ms: u32, primitive, 1,
     max_delay_ms: u32, primitive, 2,
 });
 
-<<<<<<< HEAD
-pb_msg!(TraceConfigAndroidReportConfig {
-=======
-pb_msg!(AndroidReportConfig {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    reporter_service_package: String, primitive, 1,
+pb_msg!(TraceConfigAndroidReportConfig {    reporter_service_package: String, primitive, 1,
     reporter_service_class: String, primitive, 2,
     skip_report: bool, primitive, 3,
     use_pipe_in_framework_for_testing: bool, primitive, 4,
 });
 
-<<<<<<< HEAD
 pb_msg!(TraceConfigTraceFilter {
     bytecode: String, primitive, 1,
     bytecode_v2: String, primitive, 2,
@@ -221,34 +158,13 @@ pb_msg!(TraceConfigTraceFilterStringFilterRule {
     semantic_type: SemanticType, enum, 5,
 });
 
-pb_msg!(TraceConfigIncidentReportConfig {
-=======
-pb_msg!(TraceFilter {
-    bytecode: String, primitive, 1,
-    bytecode_v2: String, primitive, 2,
-    string_filter_chain: StringFilterChain, msg, 3,
-});
-
-pb_msg!(StringFilterChain {
-    rules: StringFilterRule, msg, 1,
-});
-
-pb_msg!(StringFilterRule {
-    policy: TraceFilterStringFilterPolicy, enum, 1,
-    regex_pattern: String, primitive, 2,
-    atrace_payload_starts_with: String, primitive, 3,
-});
-
-pb_msg!(IncidentReportConfig {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    destination_package: String, primitive, 1,
+pb_msg!(TraceConfigIncidentReportConfig {    destination_package: String, primitive, 1,
     destination_class: String, primitive, 2,
     privacy_level: i32, primitive, 3,
     skip_incidentd: bool, primitive, 5,
     skip_dropbox: bool, primitive, 4,
 });
 
-<<<<<<< HEAD
 pb_msg!(TraceConfigIncrementalStateConfig {
     clear_period_ms: u32, primitive, 1,
 });
@@ -260,64 +176,29 @@ pb_msg!(TraceConfigTriggerConfig {
     trigger_timeout_ms: u32, primitive, 3,
 });
 
-pb_msg!(TraceConfigTriggerConfigTrigger {
-=======
-pb_msg!(IncrementalStateConfig {
-    clear_period_ms: u32, primitive, 1,
-});
-
-pb_msg!(TriggerConfig {
-    trigger_mode: TriggerConfigTriggerMode, enum, 1,
-    use_clone_snapshot_if_available: bool, primitive, 5,
-    triggers: Trigger, msg, 2,
-    trigger_timeout_ms: u32, primitive, 3,
-});
-
-pb_msg!(Trigger {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    name: String, primitive, 1,
+pb_msg!(TraceConfigTriggerConfigTrigger {    name: String, primitive, 1,
     producer_name_regex: String, primitive, 2,
     stop_delay_ms: u32, primitive, 3,
     max_per_24_h: u32, primitive, 4,
     skip_probability: f64, primitive, 5,
 });
 
-<<<<<<< HEAD
-pb_msg!(TraceConfigGuardrailOverrides {
-=======
-pb_msg!(GuardrailOverrides {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    max_upload_per_day_bytes: u64, primitive, 1,
+pb_msg!(TraceConfigGuardrailOverrides {    max_upload_per_day_bytes: u64, primitive, 1,
     max_tracing_buffer_size_kb: u32, primitive, 2,
 });
 
-<<<<<<< HEAD
-pb_msg!(TraceConfigStatsdMetadata {
-=======
-pb_msg!(StatsdMetadata {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    triggering_alert_id: i64, primitive, 1,
+pb_msg!(TraceConfigStatsdMetadata {    triggering_alert_id: i64, primitive, 1,
     triggering_config_uid: i32, primitive, 2,
     triggering_config_id: i64, primitive, 3,
     triggering_subscription_id: i64, primitive, 4,
 });
 
-<<<<<<< HEAD
-pb_msg!(TraceConfigProducerConfig {
-=======
-pb_msg!(ProducerConfig {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    producer_name: String, primitive, 1,
+pb_msg!(TraceConfigProducerConfig {    producer_name: String, primitive, 1,
     shm_size_kb: u32, primitive, 2,
     page_size_kb: u32, primitive, 3,
 });
 
-<<<<<<< HEAD
-pb_msg!(TraceConfigBuiltinDataSource {
-=======
-pb_msg!(BuiltinDataSource {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    disable_clock_snapshotting: bool, primitive, 1,
+pb_msg!(TraceConfigBuiltinDataSource {    disable_clock_snapshotting: bool, primitive, 1,
     disable_trace_config: bool, primitive, 2,
     disable_system_info: bool, primitive, 3,
     disable_service_events: bool, primitive, 4,
@@ -325,34 +206,18 @@ pb_msg!(BuiltinDataSource {
     snapshot_interval_ms: u32, primitive, 6,
     prefer_suspend_clock_for_snapshot: bool, primitive, 7,
     disable_chunk_usage_histograms: bool, primitive, 8,
-<<<<<<< HEAD
-    disable_extension_descriptors: bool, primitive, 9,
+disable_extension_descriptors: bool, primitive, 9,
 });
 
-pb_msg!(TraceConfigDataSource {
-=======
-});
-
-pb_msg!(DataSource {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    config: DataSourceConfig, msg, 1,
+pb_msg!(TraceConfigDataSource {    config: DataSourceConfig, msg, 1,
     producer_name_filter: String, primitive, 2,
     producer_name_regex_filter: String, primitive, 3,
     machine_name_filter: String, primitive, 4,
 });
 
-<<<<<<< HEAD
-pb_msg!(TraceConfigBufferConfig {
-=======
-pb_msg!(BufferConfig {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    size_kb: u32, primitive, 1,
+pb_msg!(TraceConfigBufferConfig {    size_kb: u32, primitive, 1,
     fill_policy: BufferConfigFillPolicy, enum, 4,
     transfer_on_clone: bool, primitive, 5,
     clear_before_clone: bool, primitive, 6,
-<<<<<<< HEAD
-    name: String, primitive, 7,
-    experimental_mode: BufferConfigExperimentalMode, enum, 8,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-});
+name: String, primitive, 7,
+    experimental_mode: BufferConfigExperimentalMode, enum, 8,});

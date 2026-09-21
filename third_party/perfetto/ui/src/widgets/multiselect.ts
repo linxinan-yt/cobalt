@@ -51,21 +51,12 @@ export interface MultiSelectAttrs {
 }
 
 export type PopupMultiSelectAttrs = MultiSelectAttrs & {
-<<<<<<< HEAD
-  readonly intent?: Intent;
+readonly intent?: Intent;
   readonly compact?: boolean;
   readonly icon?: string;
   readonly label: string;
   readonly variant?: ButtonVariant;
-  readonly position?: PopupPosition;
-=======
-  intent?: Intent;
-  compact?: boolean;
-  icon?: string;
-  label: string;
-  position?: PopupPosition;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-};
+  readonly position?: PopupPosition;};
 
 // A component which shows a list of items with checkboxes, allowing the user to
 // select from the list which ones they want to be selected.
@@ -248,18 +239,13 @@ export class MultiSelect implements m.ClassComponent<MultiSelectAttrs> {
 // a list.
 export class PopupMultiSelect implements m.ClassComponent<PopupMultiSelectAttrs> {
   view({attrs}: m.CVnode<PopupMultiSelectAttrs>) {
-<<<<<<< HEAD
-    const {
+const {
       icon,
       position = PopupPosition.Auto,
       intent,
       compact,
       variant,
     } = attrs;
-=======
-    const {icon, position = PopupPosition.Auto, intent, compact} = attrs;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     return m(
       Popup,
       {

@@ -45,11 +45,7 @@
 #include "src/trace_processor/importers/common/clock_tracker.h"
 #include "src/trace_processor/importers/common/event_tracker.h"
 #include "src/trace_processor/importers/common/import_logs_tracker.h"
-<<<<<<< HEAD
-#include "src/trace_processor/importers/common/machine_tracker.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "src/trace_processor/importers/common/metadata_tracker.h"
+#include "src/trace_processor/importers/common/machine_tracker.h"#include "src/trace_processor/importers/common/metadata_tracker.h"
 #include "src/trace_processor/importers/common/parser_types.h"
 #include "src/trace_processor/importers/common/process_tracker.h"
 #include "src/trace_processor/importers/common/stats_tracker.h"
@@ -405,12 +401,7 @@ base::Status ProtoTraceReader::ParsePacket(TraceBlobView packet) {
         PacketAnalyzer::Get(context_)->ProcessPacket(packet, annotation);
       }
       scoped_state->needs_incremental_state_skipped++;
-<<<<<<< HEAD
-      context_->import_logs_tracker->RecordTokenizationLog(
-=======
-      context_->import_logs_tracker->RecordTokenizationError(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          stats::packet_skipped_seq_needs_incremental_state_invalid,
+context_->import_logs_tracker->RecordTokenizationLog(          stats::packet_skipped_seq_needs_incremental_state_invalid,
           packet.offset(),
           [this, seq_id](ArgsTracker::BoundInserter& inserter) {
             inserter.AddArg(packet_sequence_id_key_id_,
@@ -499,12 +490,7 @@ base::Status ProtoTraceReader::TimestampTokenizeAndPushToSorter(
       // TODO(eseckler): Set timestamp_clock_id and emit ClockSnapshots in
       // chrome and then remove this.
       auto trace_ts = context_->clock_tracker->ToTraceTime(
-<<<<<<< HEAD
-          ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_MONOTONIC), timestamp);
-=======
-          protos::pbzero::BUILTIN_CLOCK_MONOTONIC, timestamp);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      if (trace_ts)
+ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_MONOTONIC), timestamp);      if (trace_ts)
         timestamp = *trace_ts;
     } else if (timestamp_clock_id) {
       // If the TracePacket specifies a non-zero clock-id, translate the
@@ -528,33 +514,12 @@ base::Status ProtoTraceReader::TimestampTokenizeAndPushToSorter(
       } else {
         converted_clock_id = ClockId::Machine(timestamp_clock_id);
       }
-<<<<<<< HEAD
-      auto resolution =
+auto resolution =
           ResolveTimestampToTraceTime(converted_clock_id, &timestamp, &packet);
       if (resolution == ClockResolution::kDeferred ||
           resolution == ClockResolution::kDropped) {
         return base::OkStatus();
-      }
-=======
-      auto trace_ts = context_->clock_tracker->ToTraceTime(
-          converted_clock_id, timestamp, packet.offset());
-      if (!trace_ts) {
-        // We need to switch to full sorting mode to ensure that packets with
-        // missing timestamp are handled correctly. Don't save the packet unless
-        // switching to full sorting mode succeeded.
-        if (!received_eof_ && context_->sorter->SetSortingMode(
-                                  TraceSorter::SortingMode::kFullSort)) {
-          eof_deferred_packets_.push_back(std::move(packet));
-          return base::OkStatus();
-        }
-        // We don't return an error here as it will cause the trace to stop
-        // parsing. Instead, we rely on the stat increment (which happened
-        // automatically in ToTraceTime) to inform the user about the error.
-        return base::OkStatus();
-      }
-      timestamp = *trace_ts;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+      }    }
   } else {
     timestamp = std::max(latest_timestamp_, context_->sorter->max_timestamp());
   }
@@ -612,12 +577,7 @@ void ProtoTraceReader::HandleIncrementalStateCleared(
     const protos::pbzero::TracePacket::Decoder& packet_decoder,
     const TraceBlobView& packet) {
   if (PERFETTO_UNLIKELY(!packet_decoder.has_trusted_packet_sequence_id())) {
-<<<<<<< HEAD
-    context_->import_logs_tracker->RecordTokenizationLog(
-=======
-    context_->import_logs_tracker->RecordTokenizationError(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        stats::incremental_state_cleared_missing_sequence_id, packet.offset());
+context_->import_logs_tracker->RecordTokenizationLog(        stats::incremental_state_cleared_missing_sequence_id, packet.offset());
     return;
   }
   GetIncrementalStateForPacketSequence(
@@ -660,12 +620,7 @@ void ProtoTraceReader::HandlePreviousPacketDropped(
     const protos::pbzero::TracePacket::Decoder& packet_decoder,
     const TraceBlobView& packet) {
   if (PERFETTO_UNLIKELY(!packet_decoder.has_trusted_packet_sequence_id())) {
-<<<<<<< HEAD
-    context_->import_logs_tracker->RecordTokenizationLog(
-=======
-    context_->import_logs_tracker->RecordTokenizationError(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        stats::previous_packet_dropped_missing_sequence_id, packet.offset());
+context_->import_logs_tracker->RecordTokenizationLog(        stats::previous_packet_dropped_missing_sequence_id, packet.offset());
     return;
   }
   GetIncrementalStateForPacketSequence(
@@ -700,12 +655,7 @@ void ProtoTraceReader::ParseTracePacketDefaults(
     const protos::pbzero::TracePacket_Decoder& packet_decoder,
     TraceBlobView trace_packet_defaults) {
   if (PERFETTO_UNLIKELY(!packet_decoder.has_trusted_packet_sequence_id())) {
-<<<<<<< HEAD
-    context_->import_logs_tracker->RecordTokenizationLog(
-=======
-    context_->import_logs_tracker->RecordTokenizationError(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        stats::trace_packet_defaults_missing_sequence_id,
+context_->import_logs_tracker->RecordTokenizationLog(        stats::trace_packet_defaults_missing_sequence_id,
         trace_packet_defaults.offset());
     return;
   }
@@ -719,12 +669,7 @@ void ProtoTraceReader::ParseInternedData(
     const protos::pbzero::TracePacket::Decoder& packet_decoder,
     TraceBlobView interned_data) {
   if (PERFETTO_UNLIKELY(!packet_decoder.has_trusted_packet_sequence_id())) {
-<<<<<<< HEAD
-    context_->import_logs_tracker->RecordTokenizationLog(
-=======
-    context_->import_logs_tracker->RecordTokenizationError(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        stats::interned_data_missing_sequence_id, interned_data.offset());
+context_->import_logs_tracker->RecordTokenizationLog(        stats::interned_data_missing_sequence_id, interned_data.offset());
     return;
   }
 
@@ -735,12 +680,7 @@ void ProtoTraceReader::ParseInternedData(
   // they could otherwise be associated with the wrong generation in the state.
   if (!state->IsIncrementalStateValid()) {
     uint32_t seq_id = packet_decoder.trusted_packet_sequence_id();
-<<<<<<< HEAD
-    context_->import_logs_tracker->RecordTokenizationLog(
-=======
-    context_->import_logs_tracker->RecordTokenizationError(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        stats::interned_data_skipped_incremental_state_invalid,
+context_->import_logs_tracker->RecordTokenizationLog(        stats::interned_data_skipped_incremental_state_invalid,
         interned_data.offset(),
         [this, seq_id](ArgsTracker::BoundInserter& inserter) {
           inserter.AddArg(packet_sequence_id_key_id_,
@@ -863,7 +803,6 @@ PERFETTO_NO_INLINE base::Status ProtoTraceReader::ResolveAdoptedMachine(
   return base::OkStatus();
 }
 
-<<<<<<< HEAD
 PERFETTO_NO_INLINE base::Status ProtoTraceReader::CreateRemoteMachineReader(
     uint32_t machine_id,
     std::unique_ptr<ProtoTraceReader>* out) {
@@ -878,36 +817,7 @@ PERFETTO_NO_INLINE base::Status ProtoTraceReader::CreateRemoteMachineReader(
       return base::ErrStatus(
           "perfetto_manifest: machines: trace has a packet from undeclared "
           "machine id %u",
-          machine_id);
-=======
-  std::optional<int64_t> trace_time_from_snapshot =
-      context_->clock_tracker->ToTraceTimeFromSnapshot(clock_timestamps);
-
-  // Add the all the clock snapshots to the clock snapshot table.
-  std::optional<int64_t> trace_ts_for_check;
-  for (const auto& clock_timestamp : clock_timestamps) {
-    // If the clock is incremental, we need to use 0 to map correctly to
-    // |absolute_timestamp|.
-    int64_t ts_to_convert =
-        clock_timestamp.clock.is_incremental ? 0 : clock_timestamp.timestamp;
-    // Even if we have trace time from snapshot, we still run ToTraceTime to
-    // optimise future conversions. Don't pass byte_offset since we expect
-    // failures here (e.g., non-monotonic clocks).
-    auto opt_trace_ts = context_->clock_tracker->ToTraceTime(
-        clock_timestamp.clock.id, ts_to_convert);
-
-    int64_t trace_ts_value;
-    if (!opt_trace_ts) {
-      // This can happen if |AddSnapshot| failed to resolve this clock, e.g. if
-      // clock is not monotonic. Try to fetch trace time from snapshot.
-      if (!trace_time_from_snapshot) {
-        continue;
-      }
-      trace_ts_value = *trace_time_from_snapshot;
-    } else {
-      trace_ts_value = *opt_trace_ts;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+          machine_id);    }
     raw_machine_id = *mapped;
   }
   auto* machine_context =
@@ -926,7 +836,6 @@ PERFETTO_NO_INLINE base::Status ProtoTraceReader::CreateRemoteMachineReader(
   return base::OkStatus();
 }
 
-<<<<<<< HEAD
 base::Status ProtoTraceReader::CheckManifestSingleMachine() {
   if (context_->has_machine_override()) {
     return base::ErrStatus(
@@ -943,26 +852,7 @@ base::Status ProtoTraceReader::CheckManifestSingleMachine() {
         "machines. Remove the `clocks` override and let the trace's own "
         "remote clock snapshots align the machines; if you need to anchor a "
         "specific embedded machine, split it into its own file and override "
-        "that.");
-=======
-    // Double check that all the clocks in this snapshot resolve to the same
-    // trace timestamp value.
-    PERFETTO_DCHECK(!trace_ts_for_check ||
-                    trace_ts_value == trace_ts_for_check.value());
-    trace_ts_for_check = trace_ts_value;
-
-    tables::ClockSnapshotTable::Row row;
-    row.ts = trace_ts_value;
-    row.clock_id = static_cast<int64_t>(clock_timestamp.clock.id);
-    row.clock_value =
-        clock_timestamp.timestamp * clock_timestamp.clock.unit_multiplier_ns;
-    row.clock_name = GetBuiltinClockNameOrNull(clock_timestamp.clock.id);
-    row.snapshot_id = *snapshot_id;
-    row.machine_id = context_->machine_id();
-
-    context_->storage->mutable_clock_snapshot_table()->Insert(row);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+        "that.");  }
   return base::OkStatus();
 }
 

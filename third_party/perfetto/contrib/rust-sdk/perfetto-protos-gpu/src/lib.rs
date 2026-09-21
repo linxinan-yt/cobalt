@@ -12,12 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-<<<<<<< HEAD
-#![doc = include_str!("../README.md")]
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-/// Re-export pb_msg macro from this crate.
+#![doc = include_str!("../README.md")]/// Re-export pb_msg macro from this crate.
 pub use perfetto_sdk::pb_msg;
 
 /// Re-export pb_msg_ext macro from this crate.

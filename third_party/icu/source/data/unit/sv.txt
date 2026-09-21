@@ -694,11 +694,7 @@ sv{
                         other{"{0} nätters"}
                     }
                 }
-<<<<<<< HEAD
-=======
-                dnam{"nätter"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                gender{"common"}
+dnam{"nätter"}                gender{"common"}
                 one{"{0} natt"}
                 other{"{0} nätter"}
                 per{"{0} per natt"}
@@ -1221,14 +1217,8 @@ sv{
                     }
                 }
                 gender{"common"}
-<<<<<<< HEAD
-                one{"{0} punkt"}
-                other{"{0} punkter"}
-=======
-                one{"{0} pkt"}
-                other{"{0} pkt"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+one{"{0} pkt"}
+                other{"{0} pkt"}            }
             solar-radius{
                 dnam{"solradier"}
                 gender{"common"}
@@ -1605,10 +1595,7 @@ sv{
                 other{"{0} kilometer per timme"}
             }
             light-speed{
-<<<<<<< HEAD
-                gender{"neuter"}
-=======
-                case{
+case{
                     genitive{
                         one{"{0} ljus"}
                         other{"{0} ljus"}
@@ -1617,9 +1604,7 @@ sv{
                 dnam{"ljus"}
                 gender{"neuter"}
                 one{"{0} ljus"}
-                other{"{0} ljus"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} ljus"}            }
             meter-per-second{
                 case{
                     genitive{

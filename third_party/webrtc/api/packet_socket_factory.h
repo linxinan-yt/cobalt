@@ -84,9 +84,7 @@ class RTC_EXPORT PacketSocketFactory {
 
   virtual std::unique_ptr<AsyncDnsResolverInterface>
   CreateAsyncDnsResolver() = 0;
-<<<<<<< HEAD
-
-  // TODO(issues.webrtc.org/42225835):
+// TODO(issues.webrtc.org/42225835):
   // Make pure virtual once downstream is updated
   virtual std::unique_ptr<AsyncPacketSocket> CreateClientUdpSocket(
       const Environment& env,
@@ -97,10 +95,7 @@ class RTC_EXPORT PacketSocketFactory {
       const PacketSocketTcpOptions& options) {
     RTC_DCHECK_NOTREACHED();
     return nullptr;
-  }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-};
+  }};
 
 }  //  namespace webrtc
 

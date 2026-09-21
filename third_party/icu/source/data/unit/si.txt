@@ -290,16 +290,10 @@ si{
                 other{"නැනෝතත්පර {0}"}
             }
             night{
-<<<<<<< HEAD
+dnam{"රාත්‍රිය"}
                 one{"{0} රාත්‍රිය"}
                 other{"රාත්‍රිය {0}"}
-=======
-                dnam{"රාත්‍රිය"}
-                one{"{0} රාත්‍රිය"}
-                other{"රාත්‍රිය {0}"}
-                per{"{0}/රාත්‍රිය"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/රාත්‍රිය"}            }
             quarter{
                 one{"කාල {0}"}
                 other{"කාල {0}"}
@@ -787,11 +781,7 @@ si{
                 other{"නාවික සැතපුම් {0}"}
             }
             light-speed{
-<<<<<<< HEAD
-=======
-                dnam{"ආලෝකය"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                one{"{0} ආලෝකය"}
+dnam{"ආලෝකය"}                one{"{0} ආලෝකය"}
                 other{"ආලෝකය {0}"}
             }
             meter-per-second{

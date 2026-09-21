@@ -39,8 +39,6 @@ const LIGHT_GREEN_100 = makeColorScheme(new HSLColor('#DCEDC8'));
 const PINK_500 = makeColorScheme(new HSLColor('#F515E0'));
 const PINK_200 = makeColorScheme(new HSLColor('#F48FB1'));
 const WHITE_200 = makeColorScheme(new HSLColor('#F5F5F5'));
-<<<<<<< HEAD
-
 const JANK_TYPE_DESCRIPTIONS: Record<string, string> = {
   'App Deadline Missed':
     'The application failed to finish rendering the frame within its deadline.',
@@ -71,9 +69,6 @@ const JANK_TYPE_DESCRIPTIONS: Record<string, string> = {
     'The frame was not presented on time due to an active display power state transition.',
   'Unknown Jank': 'The frame was not presented on time due to unknown reasons.',
 };
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 export function createActualFramesTrack(
   trace: Trace,
   uri: string,
@@ -171,13 +166,7 @@ function getColorSchemeForJank(
         return LIGHT_GREEN_100;
       case 'No Jank': // should not happen
         return GREEN_200;
-<<<<<<< HEAD
-      case 'Non-perceivable Jank':
-=======
-      case 'Non Animating': // should not happen
-      case 'Display not ON':
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        return WHITE_200;
+case 'Non-perceivable Jank':        return WHITE_200;
       default:
         return PINK_200;
     }
@@ -194,13 +183,9 @@ function getColorSchemeForJank(
         return LIGHT_GREEN_500;
       case 'No Jank':
         return GREEN_500;
-<<<<<<< HEAD
-      case 'Non-perceivable Jank':
-=======
+case 'Non-perceivable Jank':
       case 'Non Animating':
-      case 'Display not ON':
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        return WHITE_200;
+      case 'Display not ON':        return WHITE_200;
       default:
         return PINK_500;
     }

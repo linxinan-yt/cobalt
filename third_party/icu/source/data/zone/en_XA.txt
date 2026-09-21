@@ -3,13 +3,9 @@
 // Generated using tools/cldr/cldr-to-icu/
 en_XA{
     zoneStrings{
-<<<<<<< HEAD
-        "America:Mexico_City"{
+"America:Mexico_City"{
             ec{"[Ṁéẋîçö Çîţý one two]"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:St_Barthelemy"{
+        }        "America:St_Barthelemy"{
             ec{"[Šţ· Ɓåŕţĥéļéɱý one two]"}
         }
         "America:St_Johns"{
@@ -27,69 +23,17 @@ en_XA{
         "America:St_Vincent"{
             ec{"[Šţ· Ṽîñçéñţ one two]"}
         }
-<<<<<<< HEAD
-        "Antarctica:Casey"{
-            ec{"[Çåšéý Šţåţîöñ one two]"}
-        }
-        "Antarctica:DumontDUrville"{
-            ec{"[Ðûɱöñţ ð’Ûŕṽîļļé Šţåţîöñ one two three]"}
-        }
-        "Antarctica:Macquarie"{
-            ec{"[Ṁåçǫûåŕîé Îšļåñð one two three]"}
-        }
-        "Antarctica:Mawson"{
-            ec{"[Ṁåŵšöñ Šţåţîöñ one two]"}
-        }
-        "Antarctica:McMurdo"{
-            ec{"[ṀçṀûŕðö Šţåţîöñ one two three]"}
-        }
-        "Antarctica:Palmer"{
-            ec{"[Þåļɱéŕ Ļåñð one two]"}
-        }
-        "Antarctica:Rothera"{
-            ec{"[Ŕöţĥéŕå Šţåţîöñ one two three]"}
-        }
-        "Antarctica:Syowa"{
-            ec{"[Šĥöŵå Šţåţîöñ one two]"}
-        }
-        "Antarctica:Troll"{
-            ec{"[Ţŕöļļ Šţåţîöñ one two]"}
-        }
-        "Antarctica:Vostok"{
-            ec{"[Ṽöšţöķ Šţåţîöñ one two]"}
-        }
-        "Asia:Aqtau"{
-            ec{"[Åķţåû one]"}
-=======
-        "Antarctica:Macquarie"{
+"Antarctica:Macquarie"{
             ec{"[Ṁåçǫûåŕîé Îšļåñð one two three]"}
         }
         "Asia:Aqtau"{
-            ec{"[Åǫţåû one]"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ec{"[Åǫţåû one]"}        }
         "Asia:Qostanay"{
             ec{"[Ķöšţåñåý one two]"}
         }
-<<<<<<< HEAD
-        "Asia:Qyzylorda"{
-            ec{"[Ķýžýļöŕðå one two]"}
-        }
-        "Asia:Saigon"{
+"Asia:Saigon"{
             ec{"[Ĥö Çĥî Ṁîñĥ Çîţý one two three]"}
-        }
-        "Atlantic:Canary"{
-            ec{"[Çåñåŕîéš one two]"}
-        }
-        "Atlantic:Faeroe"{
-            ec{"[Ƒåŕöéš one]"}
-        }
-=======
-        "Asia:Saigon"{
-            ec{"[Ĥö Çĥî Ṁîñĥ Çîţý one two three]"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Atlantic:St_Helena"{
+        }        "Atlantic:St_Helena"{
             ec{"[Šţ· Ĥéļéñå one two]"}
         }
         "Australia:Lord_Howe"{
@@ -99,32 +43,22 @@ en_XA{
             ls{"[Çööŕðîñåţéð Ûñîṽéŕšåļ Ţîɱé one two three]"}
         }
         "Etc:Unknown"{
-<<<<<<< HEAD
-            ec{"[Ûñķñöŵñ Ļöçåţîöñ one two three]"}
-=======
-            ec{"[Ûñķñöŵñ Çîţý one two]"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+ec{"[Ûñķñöŵñ Ļöçåţîöñ one two three]"}        }
         "Europe:Dublin"{
             ld{"[Îŕîšĥ Šţåñðåŕð Ţîɱé one two three]"}
         }
         "Europe:London"{
             ld{"[Ɓŕîţîšĥ Šûɱɱéŕ Ţîɱé one two three]"}
         }
-<<<<<<< HEAD
-        "Indian:Chagos"{
+"Indian:Chagos"{
             ec{"[Çĥåĝöš Åŕçĥîþéļåĝö one two three]"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Indian:Christmas"{
+        }        "Indian:Christmas"{
             ec{"[Çĥŕîšţɱåš Îšļåñð one two three]"}
         }
         "Indian:Cocos"{
             ec{"[Çöçöš Îšļåñðš one two]"}
         }
-<<<<<<< HEAD
-        "Indian:Comoro"{
+"Indian:Comoro"{
             ec{"[Çöɱöŕöš one two]"}
         }
         "Indian:Kerguelen"{
@@ -149,27 +83,13 @@ en_XA{
             ec{"[Ṁåŕǫûéšåš Îšļåñðš one two three]"}
         }
         "Pacific:Midway"{
-            ec{"[Ṁîðŵåý Åţöļļ one two]"}
-=======
-        "Pacific:Easter"{
-            ec{"[Éåšţéŕ Îšļåñð one two]"}
-        }
-        "Pacific:Honolulu"{
-            sd{"[ĤÐŢ one]"}
-            sg{"[ĤŠŢ one]"}
-            ss{"[ĤŠŢ one]"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ec{"[Ṁîðŵåý Åţöļļ one two]"}        }
         "Pacific:Norfolk"{
             ec{"[Ñöŕƒöļķ Îšļåñð one two]"}
         }
-<<<<<<< HEAD
-        "Pacific:Pitcairn"{
+"Pacific:Pitcairn"{
             ec{"[Þîţçåîŕñ Îšļåñðš one two three]"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Pacific:Wake"{
+        }        "Pacific:Wake"{
             ec{"[Ŵåķé Îšļåñð one two]"}
         }
         "meta:Acre"{
@@ -190,14 +110,9 @@ en_XA{
             ls{"[Šöûţĥ Åƒŕîçå Šţåñðåŕð Ţîɱé one two three]"}
         }
         "meta:Africa_Western"{
-<<<<<<< HEAD
-            ls{"[Ŵéšţ Åƒŕîçå Ţîɱé one two three]"}
-=======
-            ld{"[Ŵéšţ Åƒŕîçå Šûɱɱéŕ Ţîɱé one two three]"}
+ld{"[Ŵéšţ Åƒŕîçå Šûɱɱéŕ Ţîɱé one two three]"}
             lg{"[Ŵéšţ Åƒŕîçå Ţîɱé one two three]"}
-            ls{"[Ŵéšţ Åƒŕîçå Šţåñðåŕð Ţîɱé one two three]"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"[Ŵéšţ Åƒŕîçå Šţåñðåŕð Ţîɱé one two three]"}        }
         "meta:Alaska"{
             ld{"[Åļåšķå Ðåýļîĝĥţ Ţîɱé one two three]"}
             lg{"[Åļåšķå Ţîɱé one two]"}
@@ -485,13 +400,6 @@ en_XA{
         "meta:Guyana"{
             ls{"[Ĝûýåñå Ţîɱé one two]"}
         }
-<<<<<<< HEAD
-        "meta:Hawaii"{
-            ls{"[Ĥåŵåîî‐Åļéûţîåñ Šţåñðåŕð Ţîɱé one two three four]"}
-            ss{"[ĤŠŢ one]"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "meta:Hawaii_Aleutian"{
             ld{"[Ĥåŵåîî‐Åļéûţîåñ Ðåýļîĝĥţ Ţîɱé one two three four]"}
             lg{"[Ĥåŵåîî‐Åļéûţîåñ Ţîɱé one two three]"}
@@ -506,16 +414,9 @@ en_XA{
             ls{"[Ĥöñĝ Ķöñĝ Šţåñðåŕð Ţîɱé one two three]"}
         }
         "meta:Hovd"{
-<<<<<<< HEAD
-            ld{"[Ķĥöṽð Šûɱɱéŕ Ţîɱé one two three]"}
+ld{"[Ķĥöṽð Šûɱɱéŕ Ţîɱé one two three]"}
             lg{"[Ķĥöṽð Ţîɱé one two]"}
-            ls{"[Ķĥöṽð Šţåñðåŕð Ţîɱé one two three]"}
-=======
-            ld{"[Ĥöṽð Šûɱɱéŕ Ţîɱé one two three]"}
-            lg{"[Ĥöṽð Ţîɱé one two]"}
-            ls{"[Ĥöṽð Šţåñðåŕð Ţîɱé one two three]"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"[Ķĥöṽð Šţåñðåŕð Ţîɱé one two three]"}        }
         "meta:India"{
             ls{"[Îñðîå Šţåñðåŕð Ţîɱé one two three]"}
         }
@@ -734,16 +635,9 @@ en_XA{
             ls{"[Ñöŕţĥ Ķöŕéå Ţîɱé one two three]"}
         }
         "meta:Qyzylorda"{
-<<<<<<< HEAD
-            ld{"[Ķýžýļöŕðå Šûɱɱéŕ Ţîɱé one two three]"}
-            lg{"[Ķýžýļöŕðå Ţîɱé one two]"}
-            ls{"[Ķýžýļöŕðå Šţåñðåŕð Ţîɱé one two three]"}
-=======
-            ld{"[Ǫýžýļöŕðå Šûɱɱéŕ Ţîɱé one two three]"}
+ld{"[Ǫýžýļöŕðå Šûɱɱéŕ Ţîɱé one two three]"}
             lg{"[Ǫýžýļöŕðå Ţîɱé one two]"}
-            ls{"[Ǫýžýļöŕðå Šţåñðåŕð Ţîɱé one two three]"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"[Ǫýžýļöŕðå Šţåñðåŕð Ţîɱé one two three]"}        }
         "meta:Reunion"{
             ls{"[Ŕéûñîöñ Ţîɱé one two]"}
         }
@@ -805,14 +699,6 @@ en_XA{
         "meta:Truk"{
             ls{"[Çĥûûķ Ţîɱé one two]"}
         }
-<<<<<<< HEAD
-        "meta:Turkey"{
-            ld{"[Ţüŕķîýé Šûɱɱéŕ Ţîɱé one two three]"}
-            lg{"[Ţüŕķîýé Ţîɱé one two]"}
-            ls{"[Ţüŕķîýé Šţåñðåŕð Ţîɱé one two three]"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "meta:Turkmenistan"{
             ld{"[Ţûŕķɱéñîšţåñ Šûɱɱéŕ Ţîɱé one two three]"}
             lg{"[Ţûŕķɱéñîšţåñ Ţîɱé one two three]"}

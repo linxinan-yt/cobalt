@@ -152,12 +152,7 @@ class ScreamV2 {
   // `allow_ref_window_i_update_` is set to true if `ref_window_` has increased
   // since `ref_window_i_` was last set.
   bool allow_ref_window_i_update_ = true;
-<<<<<<< HEAD
-
-  double last_ref_window_increase_scale_factor_ = 1.0;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+double last_ref_window_increase_scale_factor_ = 1.0;
   // `l4s_alpha_` tracks the average fraction of ECN-CE marked data units per
   // Round-Trip Time.
   double l4s_alpha_ = 0.0;

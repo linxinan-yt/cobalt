@@ -1,14 +1,8 @@
 # Commands and Macros
 
-<<<<<<< HEAD
 This page covers how to automate common Perfetto UI tasks using commands,
 startup commands, and macros. For an overview of all ways to extend the UI, see
 [Extending the UI](/docs/visualization/extending-the-ui.md).
-=======
-This page covers how to automate common Perfetto UI tasks to speed up your trace
-analysis workflow using commands, startup commands, and macros.
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 ## Running commands
 
 Commands are individual UI actions — pin a track, run a query, create a debug
@@ -34,10 +28,6 @@ Startup commands are a JSON array of command objects:
 ]
 ```
 
-<<<<<<< HEAD
-Commands execute in order. These affect only the UI display — the trace file
-is unchanged.
-=======
 #### Notes
 
 - Commands execute in the order specified
@@ -90,8 +80,6 @@ values:
   must come first in the command sequence.
 
 ## Startup Command Examples
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 ### Pin important tracks automatically
 
 ```json
@@ -117,20 +105,12 @@ values:
 ]
 ```
 
-<<<<<<< HEAD
-### Use Perfetto SQL modules in debug tracks
-
-When your query uses Perfetto modules, include the module first as a separate
-command:
-=======
 ### Debug tracks using Perfetto modules
 
 When your query uses Perfetto modules (like `android.screen_state` or
 `android.memory.lmk`), you must include the module first as a separate command.
 **Important: The module include command must come before the query that uses
 it.**
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 ```json
 [
   {
@@ -147,8 +127,6 @@ it.**
 ]
 ```
 
-<<<<<<< HEAD
-=======
 Another example with memory LMK events:
 
 ```json
@@ -166,10 +144,7 @@ Another example with memory LMK events:
     ]
   }
 ]
-```
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-Debug tracks visualize SQL query results on the timeline. The query must return:
+```Debug tracks visualize SQL query results on the timeline. The query must return:
 
 - `ts` (timestamp)
 - For slice tracks: `dur` (duration)
@@ -283,7 +258,6 @@ This macro creates a workspace to isolate memory-related tracks:
 This macro helps identify performance bottlenecks:
 
 ```json
-<<<<<<< HEAD
 [
   {
     "id": "user.example.FindLatency",
@@ -309,32 +283,7 @@ This macro helps identify performance bottlenecks:
       }
     ]
   }
-]
-=======
-{
-  "Find Latency": [
-    {
-      "id": "dev.perfetto.PinTracksByRegex",
-      "args": [".*CPU.*"]
-    },
-    {
-      "id": "dev.perfetto.RunQueryAndShowTab",
-      "args": [
-        "SELECT thread.name, COUNT(*) as blocks, SUM(dur)/1000000 as total_ms FROM thread_state JOIN thread USING(utid) WHERE state = 'D' GROUP BY thread.name ORDER BY total_ms DESC LIMIT 10"
-      ]
-    },
-    {
-      "id": "dev.perfetto.AddDebugSliceTrackWithPivot",
-      "args": [
-        "SELECT ts, 'blocked' as name, thread.name as thread_name, dur FROM thread_state JOIN thread USING (utid) WHERE state IN ('R', 'D+') AND dur > 5000000",
-        "thread_name",
-        "Long Waits (>5ms)"
-      ]
-    }
-  ]
-}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-```
+]```
 
 ## Combining with trace recording
 

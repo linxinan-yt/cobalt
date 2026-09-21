@@ -780,10 +780,6 @@ void SetDependencies(const SimulationSettings& settings,
                      BuiltinAudioProcessingBuilder& builder,
                      AudioProcessingBuilderState& builder_state) {
   EchoCanceller3Config aec3_config;
-<<<<<<< HEAD
-=======
-  std::optional<EchoCanceller3Config> aec3_multichannel_config;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   if (settings.neural_echo_residual_estimator_model) {
     tflite::ops::builtin::BuiltinOpResolver op_resolver;
     builder_state.model = tflite::FlatBufferModel::BuildFromFile(
@@ -792,13 +788,9 @@ void SetDependencies(const SimulationSettings& settings,
     std::unique_ptr<NeuralResidualEchoEstimator> estimator =
         CreateNeuralResidualEchoEstimator(builder_state.model.get(),
                                           &op_resolver);
-<<<<<<< HEAD
-=======
-    aec3_config = estimator->GetConfiguration(/*multi_channel=*/false);
+aec3_config = estimator->GetConfiguration(/*multi_channel=*/false);
     aec3_multichannel_config =
-        estimator->GetConfiguration(/*multi_channel=*/true);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    RTC_CHECK(estimator);
+        estimator->GetConfiguration(/*multi_channel=*/true);    RTC_CHECK(estimator);
     builder.SetNeuralResidualEchoEstimator(std::move(estimator));
   }
 
@@ -819,12 +811,7 @@ void SetDependencies(const SimulationSettings& settings,
     }
     std::cout << Aec3ConfigToJsonString(aec3_config) << std::endl;
   }
-<<<<<<< HEAD
-  builder.SetEchoCancellerConfig(aec3_config, std::nullopt);
-=======
-  builder.SetEchoCancellerConfig(aec3_config, aec3_multichannel_config);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+builder.SetEchoCancellerConfig(aec3_config, std::nullopt);
   if (settings.use_ed && *settings.use_ed) {
     builder.SetEchoDetector(CreateEchoDetector());
   }

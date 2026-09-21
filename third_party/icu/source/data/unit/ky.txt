@@ -181,19 +181,6 @@ ky{
                 one{"{0} промилле"}
                 other{"{0} промилле"}
             }
-<<<<<<< HEAD
-=======
-            permillion{
-                dnam{"миллионго бөлүктөр"}
-                one{"миллионго {0} бөлүк"}
-                other{"миллионго {0} бөлүк"}
-            }
-            portion-per-1e9{
-                dnam{"мкг/л"}
-                one{"{0} мкг/л"}
-                other{"{0} мкг/л"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         consumption{
             liter-per-100-kilometer{
@@ -308,13 +295,9 @@ ky{
                 other{"{0} наносекунд"}
             }
             night{
-<<<<<<< HEAD
-=======
-                dnam{"түн"}
+dnam{"түн"}
                 one{"{0}/түн"}
-                other{"{0}/түн"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                per{"{0}/түнүнө"}
+                other{"{0}/түн"}                per{"{0}/түнүнө"}
             }
             quarter{
                 dnam{"чейрек"}
@@ -1298,17 +1281,6 @@ ky{
             permille{
                 dnam{"промилле"}
             }
-<<<<<<< HEAD
-=======
-            permillion{
-                dnam{"миллионго/бөлүк"}
-            }
-            portion-per-1e9{
-                dnam{"мкг/л"}
-                one{"{0} мкг/л"}
-                other{"{0} мкг/л"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         consumption{
             liter-per-100-kilometer{

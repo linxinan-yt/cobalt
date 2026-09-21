@@ -650,7 +650,6 @@ TEST_F(AudioEncoderCopyRedTest, AvoidRedundantNonSpeechEncoding) {
   EXPECT_EQ(encoded_.size(), 5u + 100u + 200u);
 }
 
-<<<<<<< HEAD
 TEST_F(AudioEncoderCopyRedTest, SingleRedundantPathNoIteratorUnderflow) {
   const int primary_payload_type = red_payload_type_ + 1;
   AudioEncoder::EncodedInfo info;
@@ -679,11 +678,7 @@ TEST_F(AudioEncoderCopyRedTest, SingleRedundantPathNoIteratorUnderflow) {
   EXPECT_EQ(encoded_info_.payload_type, red_payload_type_);
   EXPECT_EQ(encoded_info_.redundant[0].payload_type, primary_payload_type);
   EXPECT_EQ(encoded_info_.redundant[1].payload_type, primary_payload_type);
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#if GTEST_HAS_DEATH_TEST && !defined(WEBRTC_ANDROID)
+}#if GTEST_HAS_DEATH_TEST && !defined(WEBRTC_ANDROID)
 
 // This test fixture tests various error conditions that makes the
 // AudioEncoderCng die via CHECKs.

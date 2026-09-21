@@ -11,52 +11,32 @@ import("test/test_resources.gni")
 
 if (rtc_enable_protobuf) {
   rtc_library("simulator") {
-<<<<<<< HEAD
-    # Cannot be testonly because it is used in downstream production code.
-=======
-    # TODO: b/423646186 - Remove testonly when time controller is not testonly.
-    testonly = true
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    sources = [
+# Cannot be testonly because it is used in downstream production code.    sources = [
       "assembler.cc",
       "assembler.h",
       "decodability_simulator.cc",
       "decodability_simulator.h",
       "decodability_tracker.cc",
       "decodability_tracker.h",
-<<<<<<< HEAD
-      "frame_base.h",
+"frame_base.h",
       "log_classifiers.cc",
       "log_classifiers.h",
       "receiver.cc",
-      "receiver.h",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      "rendering_simulator.cc",
+      "receiver.h",      "rendering_simulator.cc",
       "rendering_simulator.h",
       "rendering_tracker.cc",
       "rendering_tracker.h",
-<<<<<<< HEAD
-      "results_base.h",
+"results_base.h",
       "rtc_event_log_driver.cc",
       "rtc_event_log_driver.h",
       "rtcp_rtt_calculator.cc",
-      "rtcp_rtt_calculator.h",
-=======
-      "rtc_event_log_driver.cc",
-      "rtc_event_log_driver.h",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      "rtp_packet_simulator.cc",
+      "rtcp_rtt_calculator.h",      "rtp_packet_simulator.cc",
       "rtp_packet_simulator.h",
       "rtt_simulator.cc",
       "rtt_simulator.h",
       "stream_base.h",
     ]
     deps = [
-<<<<<<< HEAD
-=======
-      "../../../api:array_view",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       "../../../api:field_trials",
       "../../../api:rtp_headers",
       "../../../api:rtp_packet_info",
@@ -67,12 +47,8 @@ if (rtc_enable_protobuf) {
       "../../../api:transport_api",
       "../../../api/environment",
       "../../../api/environment:environment_factory",
-<<<<<<< HEAD
-      "../../../api/environment:force_test_environment",
-      "../../../api/numerics",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      "../../../api/task_queue",
+"../../../api/environment:force_test_environment",
+      "../../../api/numerics",      "../../../api/task_queue",
       "../../../api/task_queue:pending_task_safety_flag",
       "../../../api/units:data_size",
       "../../../api/units:time_delta",
@@ -81,40 +57,23 @@ if (rtc_enable_protobuf) {
       "../../../api/video:frame_buffer",
       "../../../api/video:video_frame",
       "../../../api/video:video_rtp_headers",
-<<<<<<< HEAD
-      "../../../api/video/timing:video_jitter_timing_factory",
+"../../../api/video/timing:video_jitter_timing_factory",
       "../../../api/video/timing:video_jitter_timing_interface",
       "../../../call:rtp_interfaces",
-      "../../../call:rtp_receiver",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      "../../../call:video_receive_stream_api",
+      "../../../call:rtp_receiver",      "../../../call:video_receive_stream_api",
       "../../../logging:rtc_event_log_parser",
       "../../../logging:rtc_event_rtp_rtcp",
       "../../../logging:rtc_event_video",
-<<<<<<< HEAD
-      "../../../modules:module_api",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      "../../../modules/rtp_rtcp",
+"../../../modules:module_api",      "../../../modules/rtp_rtcp",
       "../../../modules/rtp_rtcp:ntp_time_util",
       "../../../modules/rtp_rtcp:rtp_rtcp_format",
-<<<<<<< HEAD
-      "../../../modules/video_coding:nack_requester",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      "../../../modules/video_coding/timing:timing_module",
+"../../../modules/video_coding:nack_requester",      "../../../modules/video_coding/timing:timing_module",
       "../../../rtc_base:checks",
       "../../../rtc_base:logging",
       "../../../rtc_base:macromagic",
       "../../../rtc_base:rtc_numerics",
-<<<<<<< HEAD
-      "../../../system_wrappers",
-      "../../../test/time_controller:simulated_time_task_queue_controller",
-=======
-      "../../../test/time_controller",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      "../../../video",
+"../../../system_wrappers",
+      "../../../test/time_controller:simulated_time_task_queue_controller",      "../../../video",
       "../../../video:task_queue_frame_decode_scheduler",
       "../../../video:video_stream_buffer_controller",
       "../../../video/render:incoming_video_stream",
@@ -124,11 +83,7 @@ if (rtc_enable_protobuf) {
       "//third_party/abseil-cpp/absl/container:flat_hash_set",
       "//third_party/abseil-cpp/absl/container:inlined_vector",
       "//third_party/abseil-cpp/absl/functional:any_invocable",
-<<<<<<< HEAD
-      "//third_party/abseil-cpp/absl/hash",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      "//third_party/abseil-cpp/absl/strings:string_view",
+"//third_party/abseil-cpp/absl/hash",      "//third_party/abseil-cpp/absl/strings:string_view",
     ]
   }
 
@@ -154,8 +109,7 @@ if (rtc_enable_protobuf) {
         "assembler_unittest.cc",
         "decodability_simulator_unittest.cc",
         "decodability_tracker_unittest.cc",
-<<<<<<< HEAD
-        "frame_base_unittest.cc",
+"frame_base_unittest.cc",
         "log_classifiers_unittest.cc",
         "receiver_unittest.cc",
         "rendering_simulator_unittest.cc",
@@ -166,12 +120,6 @@ if (rtc_enable_protobuf) {
         "rtp_packet_simulator_unittest.cc",
         "rtt_simulator_unittest.cc",
         "stream_base_unittest.cc",
-=======
-        "rendering_simulator_unittest.cc",
-        "rendering_tracker_unittest.cc",
-        "rtc_event_log_driver_unittest.cc",
-        "rtp_packet_simulator_unittest.cc",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
       ]
       deps = [
         ":simulator",
@@ -179,11 +127,14 @@ if (rtc_enable_protobuf) {
         "../../../api:rtp_packet_info",
         "../../../api:sequence_checker",
         "../../../api/environment",
-<<<<<<< HEAD
-        "../../../api/numerics",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "../../../api/transport/rtp:dependency_descriptor",
+        "../../../api/numerics",      ]
+      deps = [
+        ":simulator",
+        "../../../api:rtp_headers",
+        "../../../api:rtp_packet_info",
+        "../../../api:sequence_checker",
+        "../../../api/environment",
+"../../../api/numerics",        "../../../api/transport/rtp:dependency_descriptor",
         "../../../api/units:data_size",
         "../../../api/units:time_delta",
         "../../../api/units:timestamp",
@@ -198,8 +149,7 @@ if (rtc_enable_protobuf) {
         "../../../rtc_base:macromagic",
         "../../../system_wrappers",
         "../../../test:create_test_environment",
-<<<<<<< HEAD
-        "../../../test:near_matcher",
+"../../../test:near_matcher",
         "../../../test:test_support",
         "test",
         "//third_party/abseil-cpp/absl/algorithm:container",
@@ -208,18 +158,7 @@ if (rtc_enable_protobuf) {
       ]
       data = VIDEO_TIMING_SIMULATOR_TEST_RESOURCES
       if (is_ios) {
-        deps += [ "test:video_timing_simulator_test_resources_bundle_data" ]
-=======
-        "../../../test:test_support",
-        "test",
-        "//third_party/abseil-cpp/absl/functional:any_invocable",
-        "//third_party/abseil-cpp/absl/strings:string_view",
-      ]
-      data = test_resources
-      if (is_ios) {
-        deps += [ ":simulator_tests_bundle_data" ]
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      }
+        deps += [ "test:video_timing_simulator_test_resources_bundle_data" ]      }
     }
   }
 }

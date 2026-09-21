@@ -28,11 +28,7 @@ rtc_library("speech_level_estimator") {
   deps = [
     ":common",
     "..:apm_logging",
-<<<<<<< HEAD
-=======
-    "../../../api:array_view",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    "../../../api:field_trials_view",
+"../../../api:array_view",    "../../../api:field_trials_view",
     "../../../api/audio:audio_processing",
     "../../../rtc_base:checks",
     "../../../rtc_base:logging",
@@ -301,17 +297,9 @@ rtc_library("speech_level_estimator_experimental_unittest") {
   configs += [ "..:apm_debug_dump" ]
 }
 
-<<<<<<< HEAD
 rtc_library("speech_level_estimator_unittest_test") {
   testonly = true
-  sources = [ "speech_level_estimator_unittest.cc" ]
-=======
-  sources = [
-    "speech_level_estimator_experimental_unittest.cc",
-    "speech_level_estimator_unittest.cc",
-  ]
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  deps = [
+  sources = [ "speech_level_estimator_unittest.cc" ]  deps = [
     ":common",
     ":speech_level_estimator",
     "..:apm_logging",

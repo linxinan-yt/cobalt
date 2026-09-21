@@ -23,17 +23,7 @@
 // include this dependency themselves
 #include "components/unified_consent/pref_names.h"
 #include "content/public/browser/render_widget_host_view.h"
-<<<<<<< HEAD
 #include "third_party/skia/include/core/SkBitmap.h"
-=======
-
-#if BUILDFLAG(BUILD_WITH_TFLITE_LIB)
-#include "chrome/browser/permissions/prediction_service/language_detection_observer.h"
-#include "components/content_extraction/content/browser/inner_text.h"
-#include "components/passage_embeddings/passage_embeddings_types.h"  // nogncheck
-#endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 class PredictionServiceRequest;
 class Profile;
 

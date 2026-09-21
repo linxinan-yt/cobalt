@@ -522,53 +522,7 @@ base::Status GeckoTraceTokenizer::OnPushDataToSorter() {
       ProcessLegacySamples(t, callsites);
     }
 
-<<<<<<< HEAD
-    ProcessMarkers(t, strings, profile_or->category_names);
-=======
-    const auto& stacks = t["stackTable"];
-    const auto& stacks_schema = stacks["schema"];
-    uint32_t prefix_index = stacks_schema["prefix"].asUInt();
-    uint32_t frame_index = stacks_schema["frame"].asUInt();
-    for (const auto& frame : stacks["data"]) {
-      const auto& prefix = frame[prefix_index];
-      std::optional<CallsiteId> prefix_id;
-      uint32_t depth = 0;
-      if (!prefix.isNull()) {
-        const auto& c = callsites[prefix.asUInt()];
-        prefix_id = c.id;
-        depth = c.depth + 1;
-      }
-      CallsiteId cid = context_->stack_profile_tracker->InternCallsite(
-          prefix_id, frame_ids[frame[frame_index].asUInt()], depth);
-      callsites.push_back({cid, depth});
-    }
-
-    const auto& samples = t["samples"];
-    const auto& samples_schema = samples["schema"];
-    uint32_t stack_index = samples_schema["stack"].asUInt();
-    uint32_t time_index = samples_schema["time"].asUInt();
-    bool added_metadata = false;
-    for (const auto& sample : samples["data"]) {
-      uint32_t stack_idx = sample[stack_index].asUInt();
-      auto ts =
-          static_cast<int64_t>(sample[time_index].asDouble() * 1000 * 1000);
-      if (!added_metadata) {
-        stream_->Push(
-            ts, GeckoEvent{GeckoEvent::ThreadMetadata{
-                    t["tid"].asUInt(), t["pid"].asUInt(),
-                    context_->storage->InternString(t["name"].asCString())}});
-        added_metadata = true;
-      }
-      std::optional<int64_t> converted = context_->clock_tracker->ToTraceTime(
-          protos::pbzero::ClockSnapshot::Clock::MONOTONIC, ts);
-      if (converted) {
-        stream_->Push(*converted,
-                      GeckoEvent{GeckoEvent::StackSample{
-                          t["tid"].asUInt(), callsites[stack_idx].id}});
-      }
-    }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+ProcessMarkers(t, strings, profile_or->category_names);  }
   return base::OkStatus();
 }
 

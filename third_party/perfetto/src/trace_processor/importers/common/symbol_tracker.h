@@ -40,12 +40,7 @@ class SymbolTracker {
   explicit SymbolTracker(TraceProcessorContext* context);
   ~SymbolTracker();
 
-<<<<<<< HEAD
-  void OnEventsFullyExtracted();
-=======
-  void NotifyEndOfFile();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+void OnEventsFullyExtracted();
   AddressRangeMap<std::string>& kernel_symbols() { return kernel_symbols_; }
   base::FlatHashMap<StringId, Dso>& dsos() { return dsos_; }
 

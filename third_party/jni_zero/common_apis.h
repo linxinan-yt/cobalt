@@ -57,34 +57,26 @@ JNI_ZERO_COMPONENT_BUILD_EXPORT ScopedJavaLocalRef<jobject> ListSet(
     const JavaRef<jobject>& list,
     int32_t idx,
     const JavaRef<jobject>& value);
-<<<<<<< HEAD
 // Helper that calls ToJniType on the value before calling ListSet.
-template <typename V>
-  requires(!IsJavaRef<V>)
-=======
-// Use ToJniType on the value.
 #if BUILDFLAG(IS_COBALT)
 template <typename V
 #if !defined(__cpp_concepts) || __cpp_concepts < 201907L
-          , std::enable_if_t<!internal::IsJavaRef<V>, int> = 0
+          , std::enable_if_t<!IsJavaRef<V>, int> = 0
 #endif  // !defined(__cpp_concepts) || __cpp_concepts < 201907L
           >
 #if defined(__cpp_concepts) && __cpp_concepts >= 201907L
-  requires(!internal::IsJavaRef<V>)
+  requires(!IsJavaRef<V>)
 #endif  // defined(__cpp_concepts) && __cpp_concepts >= 201907L
 #else   // BUILDFLAG(IS_COBALT)
 template <typename V>
-  requires(!internal::IsJavaRef<V>)
-#endif  // BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-inline ScopedJavaLocalRef<jobject> ListSet(JNIEnv* env,
+  requires(!IsJavaRef<V>)
+#endif  // BUILDFLAG(IS_COBALT)inline ScopedJavaLocalRef<jobject> ListSet(JNIEnv* env,
                                            const JavaRef<jobject>& list,
                                            int32_t idx,
                                            const V& value) {
   return ListSet(env, list, idx, ToJniType(env, value));
 }
 
-<<<<<<< HEAD
 //
 // java.util.Collection
 //
@@ -97,31 +89,7 @@ template <typename V>
   requires(!IsJavaRef<V>)
 inline ScopedJavaLocalRef<jobject>
 CollectionAdd(JNIEnv* env, const JavaRef<jobject>& collection, const V& value) {
-  return CollectionAdd(env, collection, ToJniType(env, value));
-=======
-JNI_ZERO_COMPONENT_BUILD_EXPORT void ListAdd(JNIEnv* env,
-                                             const JavaRef<jobject>& list,
-                                             const JavaRef<jobject>& value);
-// Use ToJniType on the value.
-#if BUILDFLAG(IS_COBALT)
-template <typename V
-#if !defined(__cpp_concepts) || __cpp_concepts < 201907L
-          , std::enable_if_t<!internal::IsJavaRef<V>, int> = 0
-#endif  // !defined(__cpp_concepts) || __cpp_concepts < 201907L
-          >
-#if defined(__cpp_concepts) && __cpp_concepts >= 201907L
-  requires(!internal::IsJavaRef<V>)
-#endif  // defined(__cpp_concepts) && __cpp_concepts >= 201907L
-#else   // BUILDFLAG(IS_COBALT)
-template <typename V>
-  requires(!internal::IsJavaRef<V>)
-#endif  // BUILDFLAG(IS_COBALT)
-inline ScopedJavaLocalRef<jobject> ListAdd(JNIEnv* env,
-                                           const JavaRef<jobject>& list,
-                                           const V& value) {
-  return ListAdd(env, list, ToJniType(env, value));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  return CollectionAdd(env, collection, ToJniType(env, value));}
 
 JNI_ZERO_COMPONENT_BUILD_EXPORT bool CollectionRemove(
     JNIEnv* env,
@@ -153,27 +121,20 @@ JNI_ZERO_COMPONENT_BUILD_EXPORT ScopedJavaLocalRef<jobject> MapPut(
     const JavaRef<jobject>& key,
     const JavaRef<jobject>& value);
 
-<<<<<<< HEAD
 // Helper that calls ToJniType on the key and value before calling MapPut.
-template <typename K, typename V>
-  requires(!IsJavaRef<K> || !IsJavaRef<V>)
-=======
-// Use ToJniType on the key/value.
 #if BUILDFLAG(IS_COBALT)
 template <typename K, typename V
 #if !defined(__cpp_concepts) || __cpp_concepts < 201907L
-          , std::enable_if_t<!internal::IsJavaRef<K> && !internal::IsJavaRef<V>, int> = 0
+          , std::enable_if_t<!IsJavaRef<K> || !IsJavaRef<V>, int> = 0
 #endif  // !defined(__cpp_concepts) || __cpp_concepts < 201907L
           >
 #if defined(__cpp_concepts) && __cpp_concepts >= 201907L
-  requires(!internal::IsJavaRef<K> && !internal::IsJavaRef<V>)
+  requires(!IsJavaRef<K> || !IsJavaRef<V>)
 #endif  // defined(__cpp_concepts) && __cpp_concepts >= 201907L
 #else   // BUILDFLAG(IS_COBALT)
 template <typename K, typename V>
-  requires(!internal::IsJavaRef<K> && !internal::IsJavaRef<V>)
-#endif  // BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-inline ScopedJavaLocalRef<jobject> MapPut(JNIEnv* env,
+  requires(!IsJavaRef<K> || !IsJavaRef<V>)
+#endif  // BUILDFLAG(IS_COBALT)inline ScopedJavaLocalRef<jobject> MapPut(JNIEnv* env,
                                           const JavaRef<jobject>& map,
                                           const K& key,
                                           const V& value) {

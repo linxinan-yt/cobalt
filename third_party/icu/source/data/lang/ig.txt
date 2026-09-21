@@ -7,11 +7,7 @@ ig{
         cf{"Ụsọrọ egọ"}
         collation{"Ụsọrọ Nhazị"}
         currency{"Egọ"}
-<<<<<<< HEAD
-        em{"Ngosiputa Emoji"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        hc{"Okịrịkịrị Awa (12 vs 24)"}
+em{"Ngosiputa Emoji"}        hc{"Okịrịkịrị Awa (12 vs 24)"}
         lb{"Akara akanka nkwụsị"}
         lw{"Nkwụsị Ahịrị n’ime Okwu"}
         ms{"Ụsọrọ Mmeshọ"}
@@ -30,32 +26,17 @@ ig{
         ak{"Akan"}
         ale{"Aleut"}
         alt{"Southern Altai"}
-<<<<<<< HEAD
-        am{"Asụsụ Amariikị"}
-=======
-        am{"Amariikị"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        an{"Aragonisị"}
+am{"Amariikị"}        an{"Aragonisị"}
         ann{"Obolo"}
         anp{"Angika"}
         apc{"apcc"}
-<<<<<<< HEAD
-        ar{"Asụsụ Arabiikị"}
-=======
-        ar{"Arabiikị"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        ar_001{"Ụdị Arabiikị nke oge a"}
+ar{"Arabiikị"}        ar_001{"Ụdị Arabiikị nke oge a"}
         arn{"Mapuche"}
         arp{"Arapaho"}
         ars{"Najdi Arabikị"}
         as{"Asụsụ Asamisị"}
         asa{"Asụ"}
-<<<<<<< HEAD
-        ast{"Asụsụ Asturianị"}
-=======
-        ast{"Asturianị"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        atj{"Atikamekw"}
+ast{"Asụsụ Asturianị"}        atj{"Atikamekw"}
         av{"Avarịk"}
         awa{"Awadhi"}
         ay{"Aymara"}
@@ -499,16 +480,12 @@ ig{
         zxx{"Enweghị asụsụ dịnaya"}
         zza{"Zaza"}
     }
-<<<<<<< HEAD
-    Languages%core{
+Languages%core{
         ku{"Asụsụ Kurdish"}
     }
     Languages%extension{
         ku{"Asụsụ Kurmanji"}
-    }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    Languages%long{
+    }    Languages%long{
         zh_Hans{"Asụsụ Mandarin Chaịniiz dị mfe"}
         zh_Hant{"Asụsụ ọdịnala Mandarin Chaịniiz"}
     }
@@ -735,8 +712,7 @@ ig{
             japanese{"Kalenda Japanese"}
             persian{"Kalenda Persian"}
             roc{"Kalenda repụblic nke China"}
-<<<<<<< HEAD
-        }
+}
         calendar%core{
             buddhist{"Onye ụka Buda"}
             chinese{"China"}
@@ -751,10 +727,7 @@ ig{
             islamic-umalqura{"Hijri (Umm al-Qura)"}
             japanese{"Japanese"}
             persian{"Persian"}
-            roc{"Minguo"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            roc{"Minguo"}        }
         cf{
             account{"Ụsọrọ akantụ egọ"}
             standard{"Ụsọrọ egọ nzụgbe"}
@@ -785,16 +758,12 @@ ig{
             h12{"Ụsọrọ Okịrịkịrị awa iri na abụọ (0–12)"}
             h23{"Ụsọrọ Okịrịkịrị (0–23)"}
             h24{"Ụsọrọ Okịrịkịrị (1–24)"}
-<<<<<<< HEAD
-        }
+}
         hc%core{
             h11{"12 (0–11)"}
             h12{"12 (1–12)"}
             h23{"24 (0–23)"}
-            h24{"24 (1–24)"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            h24{"24 (1–24)"}        }
         lb{
             loose{"Akara akanka nkwụsị esịghị ịke"}
             normal{"Akara akanka nkwụsị kwesịrị"}
@@ -912,14 +881,10 @@ ig{
             vaii{"Ọnụ ọgụgụ Vai"}
             wara{"Ọnụ ọgụgụ Warang Citi"}
             wcho{"Ọnụ ọgụgụ Wancho"}
-<<<<<<< HEAD
-        }
+}
         ss%core{
             none{"Mgbanyụ"}
-            standard{"Mgbanye"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            standard{"Mgbanye"}        }
     }
     characterLabelPattern{
         facing-left{"{0} na-eche ihu aka ekpe"}

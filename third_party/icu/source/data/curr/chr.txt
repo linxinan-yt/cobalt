@@ -684,12 +684,8 @@ chr{
             one{"(ᏄᏬᎵᏍᏛᎾ ᎠᏕᎳ)"}
             other{"(ᏄᏬᎵᏍᏛᎾ ᎠᏕᎳ)"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             one{"ᏏᎻᏆᏇᎠᏂ ᎠᏕᎳ"}
             other{"ᏏᎻᏆᏇᎠᏂ ᎠᏕᎳ"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

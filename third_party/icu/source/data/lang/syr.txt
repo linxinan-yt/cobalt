@@ -116,14 +116,8 @@ syr{
             gregorian{"ܣܘܪܓܕܐ ܓܪܝܓܘܪܝܐ"}
             hebrew{"ܣܘܪܓܕܐ ܝܗܘܕܝܐ"}
             indian{"ܣܘܪܓܕܐ ܐܘܡܬܢܝܐ ܗܢܕܘܝܐ"}
-<<<<<<< HEAD
-            islamic{"ܣܘܪܓܕܐ ܡܫܠܡܢܐ"}
-            islamic-civil{"ܣܘܪܓܕܐ ܡܫܠܡܢܐ ܡܕܝܢܝܐ"}
-=======
-            islamic{"ܣܘܪܓܕܐ ܡܫܠܡܢܝܐ"}
-            islamic-civil{"ܣܘܪܓܕܐ ܡܫܠܡܢܝܐ ܡܕܝܢܝܐ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            iso8601{"ܣܘܪܓܕܐ ISO-8601"}
+islamic{"ܣܘܪܓܕܐ ܡܫܠܡܢܝܐ"}
+            islamic-civil{"ܣܘܪܓܕܐ ܡܫܠܡܢܝܐ ܡܕܝܢܝܐ"}            iso8601{"ܣܘܪܓܕܐ ISO-8601"}
             japanese{"ܣܘܪܓܕܐ ܝܦܢܝܐ"}
             persian{"ܣܘܪܓܕܐ ܦܪܣܝܐ"}
             roc{"ܣܘܪܓܕܐ ܡܝܢܓܘ"}

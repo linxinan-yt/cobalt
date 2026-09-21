@@ -52,16 +52,11 @@ ee{
             ss{"SAST"}
         }
         "meta:Africa_Western"{
-<<<<<<< HEAD
-            ls{"West Africa game"}
-=======
-            ld{"West Africa dzomeŋɔli gaƒoƒo me"}
+ld{"West Africa dzomeŋɔli gaƒoƒo me"}
             lg{"West Africa game"}
             ls{"West Africa nutome gaƒoƒo me"}
             sd{"WAST"}
-            sg{"WAT"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            ss{"WAT"}
+            sg{"WAT"}            ss{"WAT"}
         }
         "meta:Alaska"{
             ld{"Alaska kele gaƒoƒo me"}

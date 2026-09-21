@@ -44,17 +44,10 @@ import {DurationPrecision, TimestampFormat} from '../../public/timeline';
 import {getTimeSpanOfSelectionOrVisibleWindow} from '../../public/utils';
 import type {Workspace} from '../../public/workspace';
 import {showModal} from '../../widgets/modal';
-<<<<<<< HEAD
 import {ensureExists} from '../../base/assert';
 import type {Setting} from '../../public/settings';
 import {toggleHelp} from '../../frontend/help_modal';
 import {legacyMacrosConfigSchema} from './legacy_macros_schema';
-=======
-import {assertExists} from '../../base/logging';
-import {Setting} from '../../public/settings';
-import {toggleHelp} from '../../frontend/help_modal';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 const QUICKSAVE_LOCALSTORAGE_KEY = 'quicksave';
 
 const SQL_STATS = `
@@ -134,17 +127,11 @@ function getOrPromptForTimestamp(tsRaw: unknown): time | undefined {
   return promptForTimestamp('Enter a timestamp');
 }
 
-<<<<<<< HEAD
 // Type alias for macro array (inferred from the shared schema)
 const macrosConfigSchema = z.array(macroSchema);
 type MacrosConfig = z.infer<typeof macrosConfigSchema>;
 
 type LegacyMacrosConfig = z.infer<typeof legacyMacrosConfigSchema>;
-=======
-const macroSchema = z.record(z.array(commandInvocationSchema));
-type MacroConfig = z.infer<typeof macroSchema>;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 export default class CoreCommands implements PerfettoPlugin {
   static readonly id = 'dev.perfetto.CoreCommands';
   static readonly dependencies = [QueryPagePlugin];
@@ -183,8 +170,7 @@ export default class CoreCommands implements PerfettoPlugin {
       });
     }
 
-<<<<<<< HEAD
-    ctx.commands.registerCommand({
+ctx.commands.registerCommand({
       id: 'dev.perfetto.NameTab',
       name: 'Rename current browser tab',
       callback: async () => {
@@ -200,15 +186,7 @@ export default class CoreCommands implements PerfettoPlugin {
       schema: macrosConfigSchema,
     });
     CoreCommands.macrosSetting = ctx.settings.register({
-      id: 'perfetto.CoreCommands#Macros',
-=======
-    const macroSettingsEditor = new JsonSettingsEditor<MacroConfig>({
-      schema: macroSchema,
-    });
-    CoreCommands.macrosSetting = ctx.settings.register({
-      id: 'perfetto.CoreCommands#UserDefinedMacros',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      name: 'Macros',
+      id: 'perfetto.CoreCommands#Macros',      name: 'Macros',
       description:
         'Custom command macros that execute multiple commands in sequence',
       schema: macrosConfigSchema,
@@ -217,8 +195,7 @@ export default class CoreCommands implements PerfettoPlugin {
       render: (setting) => macroSettingsEditor.render(setting),
     });
 
-<<<<<<< HEAD
-    // Register the legacy macros setting (dictionary format) - deprecated
+// Register the legacy macros setting (dictionary format) - deprecated
     CoreCommands.legacyMacrosSetting = ctx.settings.register({
       id: 'perfetto.CoreCommands#UserDefinedMacros',
       name: 'Macros (Legacy)',
@@ -255,11 +232,7 @@ export default class CoreCommands implements PerfettoPlugin {
         }),
       );
       CoreCommands.macrosSetting.set(migratedMacros);
-    }
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    const input = document.createElement('input');
+    }    const input = document.createElement('input');
     input.classList.add('trace_file');
     input.setAttribute('type', 'file');
     input.setAttribute('multiple', 'multiple');
@@ -296,20 +269,11 @@ export default class CoreCommands implements PerfettoPlugin {
     const app = AppImpl.instance;
 
     // Rgister macros from settings first.
-<<<<<<< HEAD
-    const settingMacros = ensureExists(CoreCommands.macrosSetting).get();
-    for (const macro of settingMacros) {
-      ctx.commands.registerMacro(macro);
-    }
-=======
-    registerMacros(ctx, assertExists(CoreCommands.macrosSetting).get());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+registerMacros(ctx, assertExists(CoreCommands.macrosSetting).get());
     // Register the macros from extras at onTraceReady (the latest time
     // possible).
     ctx.onTraceReady.addListener(async (_) => {
-<<<<<<< HEAD
-      // Await the promises: we've tried to be async as long as possible but
+// Await the promises: we've tried to be async as long as possible but
       // now we need the extras to be loaded.
       const macros = await app.macros();
       for (const macro of macros) {
@@ -317,20 +281,7 @@ export default class CoreCommands implements PerfettoPlugin {
       }
     });
 
-    const queryPlugin = ctx.plugins.getPlugin(QueryPagePlugin);
-
-=======
-      // Await the promise: we've tried to be async as long as possible but
-      // now we need the extras to be loaded.
-      await app.extraLoadingPromise;
-      registerMacros(
-        ctx,
-        app.extraMacros.reduce((acc, macro) => ({...acc, ...macro}), {}),
-      );
-    });
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    ctx.commands.registerCommand({
+    const queryPlugin = ctx.plugins.getPlugin(QueryPagePlugin);    ctx.commands.registerCommand({
       id: 'dev.perfetto.RunQueryAllProcesses',
       name: 'Run query: All processes',
       callback: () => {

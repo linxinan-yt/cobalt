@@ -35,12 +35,6 @@
 
 namespace update_client {
 
-<<<<<<< HEAD
-class ZucchiniOperationTest : public ::testing::TestWithParam<bool> {
- public:
-  bool IsForeground() const { return GetParam(); }
-
-=======
 #if BUILDFLAG(IS_STARBOARD)
 // Starboard's ZucchiniOperation takes an OperationResult and completes with one.
 // This overload adapts the upstream call sites in this file (which pass a
@@ -68,10 +62,9 @@ base::OnceClosure ZucchiniOperation(
 }
 #endif
 
-
-class ZucchiniOperationTest : public testing::Test {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
- private:
+class ZucchiniOperationTest : public ::testing::TestWithParam<bool> {
+ public:
+  bool IsForeground() const { return GetParam(); } private:
   // env_ must be constructed before sequence_checker_.
   base::test::TaskEnvironment env_;
 

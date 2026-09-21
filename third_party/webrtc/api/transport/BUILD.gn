@@ -94,15 +94,7 @@ rtc_library("goog_cc") {
 rtc_source_set("sctp_transport_factory_interface") {
   visibility = [ "*" ]
   sources = [ "sctp_transport_factory_interface.h" ]
-<<<<<<< HEAD
-  deps = [ "../environment" ]
-=======
-  deps = [
-    "..:field_trials_view",
-    "../../api/environment",
-  ]
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+deps = [ "../environment" ]}
 
 rtc_library("stun_types") {
   visibility = [ "*" ]

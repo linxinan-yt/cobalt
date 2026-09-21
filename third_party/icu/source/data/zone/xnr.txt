@@ -64,12 +64,7 @@ xnr{
             ec{"डूआला"}
         }
         "Africa:El_Aaiun"{
-<<<<<<< HEAD
-            ec{"अल आइयून"}
-=======
-            ec{"अल आइयून<"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+ec{"अल आइयून"}        }
         "Africa:Freetown"{
             ec{"फ़्रीटाउन"}
         }
@@ -1167,12 +1162,6 @@ xnr{
         "Pacific:Efate"{
             ec{"एफ़ेट"}
         }
-<<<<<<< HEAD
-        "Pacific:Enderbury"{
-            ec{"कैंटन"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Pacific:Fakaofo"{
             ec{"फ़ाकाओफ़ो"}
         }
@@ -1194,13 +1183,9 @@ xnr{
         "Pacific:Guam"{
             ec{"गुआम"}
         }
-<<<<<<< HEAD
-=======
-        "Pacific:Kanton"{
+"Pacific:Kanton"{
             ec{"कैंटन"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Pacific:Kiritimati"{
+        }        "Pacific:Kiritimati"{
             ec{"किरीतिमाति"}
         }
         "Pacific:Kosrae"{

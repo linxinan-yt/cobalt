@@ -1851,11 +1851,6 @@ void AudioProcessingImpl::InitializeEchoController() {
   submodules_.echo_controller.reset();
   capture_.linear_aec_output.reset();
   submodules_.post_filter.reset();
-<<<<<<< HEAD
-=======
-  submodules_.echo_control_mobile.reset();
-  aecm_render_signal_queue_.reset();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   bool use_echo_controller =
       NeedEchoController(config_, !!echo_control_factory_);
@@ -1904,36 +1899,6 @@ void AudioProcessingImpl::InitializeEchoController() {
 
     return;
   }
-<<<<<<< HEAD
-=======
-
-  if (!(config_.echo_canceller.enabled && config_.echo_canceller.mobile_mode)) {
-    return;
-  }
-
-  // Create and activate AECM.
-  size_t max_element_size =
-      std::max(static_cast<size_t>(1),
-               kMaxAllowedValuesOfSamplesPerBand *
-                   EchoControlMobileImpl::NumCancellersRequired(
-                       num_output_channels(), num_reverse_channels()));
-
-  std::vector<int16_t> template_queue_element(max_element_size);
-
-  aecm_render_signal_queue_.reset(
-      new SwapQueue<std::vector<int16_t>, RenderQueueItemVerifier<int16_t>>(
-          kMaxNumFramesToBuffer, template_queue_element,
-          RenderQueueItemVerifier<int16_t>(max_element_size)));
-
-  aecm_render_queue_buffer_.resize(max_element_size);
-  aecm_capture_queue_buffer_.resize(max_element_size);
-
-  submodules_.echo_control_mobile.reset(new EchoControlMobileImpl());
-
-  submodules_.echo_control_mobile->Initialize(proc_split_sample_rate_hz(),
-                                              num_reverse_channels(),
-                                              num_output_channels());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 void AudioProcessingImpl::InitializeGainController1() {

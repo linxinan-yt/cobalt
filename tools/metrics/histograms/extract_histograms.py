@@ -14,10 +14,6 @@ import datetime
 import itertools
 import logging
 import re
-<<<<<<< HEAD
-=======
-import sys
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 from typing import Optional, TypedDict
 import xml.dom.minidom
 
@@ -89,12 +85,7 @@ class EnumDict(TypedDict, total=False):
 
   name: str
   type: Optional[str]
-<<<<<<< HEAD
-  buckets: list[BucketDict]
-=======
-  buckets: list[_BucketDict]
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  summary: str
+buckets: list[BucketDict]  summary: str
 
 
 # TODO: crbug.com/443050753 - Rename CapCase names to using snake_case.

@@ -1,33 +1,18 @@
 Name: icu
 URL: https://github.com/unicode-org/icu
-<<<<<<< HEAD
 Version: 78-2
-CPEPrefix: cpe:/a:icu-project:international_components_for_unicode:78.2
-=======
-Version: 77-1
-CPEPrefix: cpe:/a:icu-project:international_components_for_unicode:77.1
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-License: MIT
+CPEPrefix: cpe:/a:icu-project:international_components_for_unicode:78.2License: MIT
 License File: LICENSE
 Security Critical: yes
 Update Mechanism: Manual (https://crbug.com/494114589)
 Shipped: yes
 
 Description:
-<<<<<<< HEAD
 This directory contains the source code of ICU 78.2 for C/C++.
 
 A. How to update ICU
 
-1. Run "scripts/update.sh <version>" (e.g. '78.2').
-=======
-This directory contains the source code of ICU 77.1 for C/C++.
-
-A. How to update ICU
-
-1. Run "scripts/update.sh <version>" (e.g. 77-1).
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-   This will download ICU from the upstream git repository.
+1. Run "scripts/update.sh <version>" (e.g. '78.2').   This will download ICU from the upstream git repository.
    It does preserve Chrome-specific build files and
    converter files. (see section C)
 
@@ -175,12 +160,7 @@ D. Local Modifications
    the upstream copy and Google's internal copy for source/data
 
   - patches/chromium-data.patch: Google's internal ICU locale changes, exported
-<<<<<<< HEAD
-    for use in Chromium. See http://shortn/_IpKvBUaQ4V
-=======
-    for use in Chromium.
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+for use in Chromium. See http://shortn/_IpKvBUaQ4V
   - patches/locale1.patch: Minor fixes for Korean
 
   - patches/name_5_langs.patch: add the native names of 5 languages not currently
@@ -258,7 +238,6 @@ D. Local Modifications
   - https://bugs.chromium.org/p/chromium/issues/detail?id=1473422
   - https://unicode-org.atlassian.net/browse/ICU-22541
 
-<<<<<<< HEAD
 9. Patch string storage size to 300000
     patches/pkgdata_string_storage.patch
     Patch already landed in upstream an should be included in future releases.
@@ -288,14 +267,3 @@ D. Local Modifications
 13. Missing long name in iso8601 calendar.
     https://unicode-org.atlassian.net/browse/ICU-23262
   - patches/missing_iso8601_resource.patch
-=======
-11. Patch unnecessary uses of the virtual keyword.
-    patches/unnecessary_virtual_specifier.patch
-  - https://issues.chromium.org/issues/403236787
-  - https://patch-diff.githubusercontent.com/raw/unicode-org/icu/pull/3489.diff
-
-12. Patch incorrect call to front().
-  - patches/uloc.patch
-  - https://g-issues.chromium.org/issues/451657601
-  - https://patch-diff.githubusercontent.com/raw/unicode-org/icu/pull/3752.diff
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

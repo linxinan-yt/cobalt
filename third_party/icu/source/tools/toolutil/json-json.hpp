@@ -7757,38 +7757,20 @@ class lexer : public lexer_base<BasicJsonType>
                                     }
                                     else
                                     {
-<<<<<<< HEAD
-                                        // ICU PATCH - See ICU-23090
-                                        codepoint = codepoint1;
-=======
-                                        error_message = "invalid string: surrogate U+D800..U+DBFF must be followed by U+DC00..U+DFFF";
-                                        return token_type::parse_error;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                                    }
+// ICU PATCH - See ICU-23090
+                                        codepoint = codepoint1;                                    }
                                 }
                                 else
                                 {
-<<<<<<< HEAD
-                                    // ICU PATCH - See ICU-23090
-                                    codepoint = codepoint1;
-=======
-                                    error_message = "invalid string: surrogate U+D800..U+DBFF must be followed by U+DC00..U+DFFF";
-                                    return token_type::parse_error;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                                }
+// ICU PATCH - See ICU-23090
+                                        codepoint = codepoint1;                                }
                             }
                             else
                             {
                                 if (JSON_HEDLEY_UNLIKELY(0xDC00 <= codepoint1 && codepoint1 <= 0xDFFF))
                                 {
-<<<<<<< HEAD
-                                    // ICU PATCH - See ICU-23090
-                                    codepoint = codepoint1;
-=======
-                                    error_message = "invalid string: surrogate U+DC00..U+DFFF must follow U+D800..U+DBFF";
-                                    return token_type::parse_error;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                                }
+// ICU PATCH - See ICU-23090
+                                    codepoint = codepoint1;                                }
                             }
 
                             // result of the above calculation yields a proper codepoint

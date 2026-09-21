@@ -16,7 +16,6 @@
 // Invoked by contrib/rust-sdk/tools/gen_rust_protos
 // DO NOT EDIT.
 
-<<<<<<< HEAD
 use crate::pb_enum;
 use crate::pb_msg;
 
@@ -51,13 +50,3 @@ pb_msg!(GpuCounterConfigInstrumentedSamplingConfigActivityNameFilter {
     name_glob: String, primitive, 1,
     name_base: ActivityNameFilterNameBase, enum, 2,
 });
-=======
-use crate::pb_msg;
-
-pb_msg!(GpuCounterConfig {
-    counter_period_ns: u64, primitive, 1,
-    counter_ids: u32, primitive, 2,
-    instrumented_sampling: bool, primitive, 3,
-    fix_gpu_clock: bool, primitive, 4,
-});
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

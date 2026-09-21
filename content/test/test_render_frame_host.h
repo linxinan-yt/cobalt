@@ -123,16 +123,10 @@ class TestRenderFrameHost : public RenderFrameHostImpl,
 #endif
   void ResetLocalFrame() override;
 
-<<<<<<< HEAD
-  void CreateHidServiceForTesting(
-      mojo::PendingReceiver<blink::mojom::HidService> receiver) override;
-=======
 #if !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)
   void CreateHidServiceForTesting(
       mojo::PendingReceiver<blink::mojom::HidService> receiver) override;
 #endif  // !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   void SendNavigate(int nav_entry_id,
                     bool did_create_new_entry,
                     const GURL& url);

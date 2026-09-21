@@ -121,7 +121,6 @@ export class AggregationPanel implements m.ClassComponent<AggregationPanelAttrs>
   }
 }
 
-<<<<<<< HEAD
 export function filterTypeForFormatHint(
   formatHint: string | undefined,
 ): ColumnType | undefined {
@@ -184,15 +183,6 @@ export function formatPercentValue(value: SqlValue): string {
     return `${(value * 100).toFixed(2)}%`;
   } else {
     return String(value);
-=======
-  private renderCell(value: SqlValue, colName: string, formatHint?: string) {
-    if (formatHint === 'DURATION_NS' && typeof value === 'bigint') {
-      return Duration.humanise(value);
-    } else if (formatHint === 'PERCENT' && typeof value === 'number') {
-      return `${(value * 100).toFixed(2)}%`;
-    } else {
-      return renderCell(value, colName);
-    }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   }
+}  }
 }

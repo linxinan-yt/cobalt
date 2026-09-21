@@ -728,18 +728,10 @@ ms{
             gregorian{"Kalendar Gregory"}
             hebrew{"Kalendar Ibrani"}
             indian{"Kalendar Kebangsaan India"}
-<<<<<<< HEAD
-            islamic{"Kalendar Hijrah"}
-            islamic-civil{"Kalendar Hijrah (jadual, zaman sivil)"}
-            islamic-rgsa{"Kalendar Islam (Arab Saudi, cerapan)"}
-            islamic-tbla{"Kalendar Hijrah (jadual, zaman astronomi)"}
-=======
-            islamic{"Kalendar Islam"}
+islamic{"Kalendar Islam"}
             islamic-civil{"Kalendar Sivil Islam"}
             islamic-rgsa{"Kalendar Islam (Arab Saudi, cerapan)"}
-            islamic-tbla{"Kalendar Islam (jadual, zaman astronomi)"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            islamic-umalqura{"Kalendar Islam (Umm Al-Quran)"}
+            islamic-tbla{"Kalendar Islam (jadual, zaman astronomi)"}            islamic-umalqura{"Kalendar Islam (Umm Al-Quran)"}
             iso8601{"Kalendar Gregorian (Tahun Pertama)"}
             japanese{"Kalendar Jepun"}
             persian{"Kalendar Parsi"}

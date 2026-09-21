@@ -70,13 +70,8 @@ bool StructTraits<media::mojom::VideoDecoderConfigDataView,
 
   output->set_level(input.level());
   output->set_aspect_ratio(aspect_ratio);
-<<<<<<< HEAD
-  output->set_hdr_metadata(hdr_metadata);
+output->set_hdr_metadata(hdr_metadata);
   output->set_spatial_format(spatial_format);
-=======
-
-  if (hdr_metadata)
-    output->set_hdr_metadata(hdr_metadata.value());
 
 #if BUILDFLAG(USE_STARBOARD_MEDIA)
   std::string mime_type;
@@ -88,8 +83,6 @@ bool StructTraits<media::mojom::VideoDecoderConfigDataView,
 
   if (!output->IsValidConfig())
     return false;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   return true;
 }
 

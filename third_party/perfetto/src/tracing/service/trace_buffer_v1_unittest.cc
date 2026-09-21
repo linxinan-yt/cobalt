@@ -1899,12 +1899,7 @@ TEST_F(TraceBufferTest, MissingPacketsOnSequence) {
 // the read iterators on clone. This will be deprecated once the
 // buffer_clone_preserve_read_iter flag rollout sticks. See b/448604718.
 TEST_F(TraceBufferTest, Clone_NoFragments_NoPreserveReadIter) {
-<<<<<<< HEAD
-  if (PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER))
-=======
-  if (base::flags::buffer_clone_preserve_read_iter)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    GTEST_SKIP() << "This test requires buffer_clone_preserve_read_iter=false";
+if (PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER))    GTEST_SKIP() << "This test requires buffer_clone_preserve_read_iter=false";
 
   const char kNumWriters = 3;
   for (char num_pre_reads = 0; num_pre_reads < kNumWriters; num_pre_reads++) {
@@ -1940,12 +1935,7 @@ TEST_F(TraceBufferTest, Clone_NoFragments_NoPreserveReadIter) {
 }
 
 TEST_F(TraceBufferTest, Clone_NoFragments_PreserveReadIter) {
-<<<<<<< HEAD
-  if (!PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER))
-=======
-  if (!base::flags::buffer_clone_preserve_read_iter)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    GTEST_SKIP() << "This test requires buffer_clone_preserve_read_iter=true";
+if (!PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER))    GTEST_SKIP() << "This test requires buffer_clone_preserve_read_iter=true";
 
   ResetBuffer(4096);
   ASSERT_EQ(32u, CreateChunk(ProducerID(1), WriterID(1), ChunkID(0))
@@ -2008,12 +1998,7 @@ TEST_F(TraceBufferTest, Clone_FragmentsOutOfOrder) {
   // Verify that in the new behavior (buffer_clone_preserve_read_iter=true)
   // If we read a fragment from the original buffer, the cloned buffer will
   // continue from the updated position.
-<<<<<<< HEAD
-  if (!PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER))
-=======
-  if (!base::flags::buffer_clone_preserve_read_iter)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    return;
+if (!PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER))    return;
 
   // Consume one packet from the original buffer.
   trace_buffer()->BeginRead();

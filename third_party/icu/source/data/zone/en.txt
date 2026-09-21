@@ -3,8 +3,7 @@
 // Generated using tools/cldr/cldr-to-icu/
 en{
     zoneStrings{
-<<<<<<< HEAD
-        "America:Mexico_City"{
+"America:Mexico_City"{
             ec{"Mexico City"}
         }
         "Antarctica:Casey"{
@@ -39,13 +38,7 @@ en{
         }
         "Asia:Aqtau"{
             ec{"Aktau"}
-        }
-=======
-        "Antarctica:Macquarie"{
-            ec{"Macquarie Island"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Asia:Qostanay"{
+        }        "Asia:Qostanay"{
             ec{"Kostanay"}
         }
         "Asia:Qyzylorda"{
@@ -54,16 +47,12 @@ en{
         "Asia:Saigon"{
             ec{"Ho Chi Minh City"}
         }
-<<<<<<< HEAD
-        "Atlantic:Canary"{
+"Atlantic:Canary"{
             ec{"Canaries"}
         }
         "Atlantic:Faeroe"{
             ec{"Faroes"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Australia:Lord_Howe"{
+        }        "Australia:Lord_Howe"{
             ec{"Lord Howe Island"}
         }
         "Etc:UTC"{
@@ -78,20 +67,8 @@ en{
         "Europe:London"{
             ld{"British Summer Time"}
         }
-<<<<<<< HEAD
-        "Indian:Chagos"{
-            ec{"Chagos Archipelago"}
-=======
-        "Indian:Christmas"{
-            ec{"Christmas Island"}
-        }
-        "Indian:Cocos"{
-            ec{"Cocos Islands"}
-        }
-        "Pacific:Easter"{
-            ec{"Easter Island"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+"Indian:Chagos"{
+            ec{"Chagos Archipelago"}        }
         "Indian:Christmas"{
             ec{"Christmas Island"}
         }

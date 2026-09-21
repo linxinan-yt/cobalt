@@ -253,26 +253,14 @@ hi{
             milligram-ofglucose-per-deciliter{
                 case{
                     oblique{
-<<<<<<< HEAD
-                        one{"{0} मिलीग्राम प्रति डेसीलीटर"}
+one{"{0} मिलीग्राम प्रति डेसीलीटर"}
                         other{"{0} मिलीग्राम प्रति डेसीलीटर"}
                     }
                 }
                 dnam{"मिलीग्राम प्रति डेसीलीटर"}
                 gender{"masculine"}
                 one{"{0} मिलीग्राम प्रति डेसीलीटर"}
-                other{"{0} मिलीग्राम प्रति डेसीलीटर"}
-=======
-                        one{"{0} मिलिग्राम प्रति डेसीलीटर"}
-                        other{"{0} मिलिग्राम प्रति डेसीलीटर"}
-                    }
-                }
-                dnam{"मिलिग्राम प्रति डेसीलीटर"}
-                gender{"masculine"}
-                one{"{0} मिलिग्राम प्रति डेसीलीटर"}
-                other{"{0} मिलिग्राम प्रति डेसीलीटर"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} मिलीग्राम प्रति डेसीलीटर"}            }
             millimole-per-liter{
                 case{
                     oblique{
@@ -645,10 +633,7 @@ hi{
                 other{"{0} नैनो सेकंड"}
             }
             night{
-<<<<<<< HEAD
-                gender{"feminine"}
-=======
-                case{
+case{
                     oblique{
                         one{"{0} रात"}
                         other{"{0} रातें"}
@@ -657,9 +642,7 @@ hi{
                 dnam{"रातें"}
                 gender{"feminine"}
                 one{"{0} रात"}
-                other{"{0} रातें"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                per{"{0} प्रति रात"}
+                other{"{0} रातें"}                per{"{0} प्रति रात"}
             }
             quarter{
                 case{
@@ -1535,10 +1518,7 @@ hi{
                 other{"{0} किलोमीटर प्रति घंटा"}
             }
             light-speed{
-<<<<<<< HEAD
-                gender{"feminine"}
-=======
-                case{
+case{
                     oblique{
                         one{"{0} लाइट"}
                         other{"{0} लाइट"}
@@ -1547,9 +1527,7 @@ hi{
                 dnam{"लाइट"}
                 gender{"feminine"}
                 one{"{0} लाइट"}
-                other{"{0} लाइट"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} लाइट"}            }
             meter-per-second{
                 case{
                     oblique{
@@ -2066,16 +2044,10 @@ hi{
                 other{"{0} नैनो से"}
             }
             night{
-<<<<<<< HEAD
+dnam{"रातें"}
                 one{"{0}रात"}
                 other{"{0}रातें"}
-=======
-                dnam{"रातें"}
-                one{"{0}रात"}
-                other{"{0}रातें"}
-                per{"{0}/रात"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/रात"}            }
             second{
                 one{"{0} से"}
                 other{"{0} से"}
@@ -2271,9 +2243,7 @@ hi{
                 one{"{0} किमी/घं"}
                 other{"{0} किमी/घं"}
             }
-<<<<<<< HEAD
-=======
-            light-speed{
+light-speed{
                 dnam{"लाइट"}
                 one{"{0} लाइट"}
                 other{"{0} लाइट"}
@@ -2281,9 +2251,7 @@ hi{
             meter-per-second{
                 one{"{0} मी/से"}
                 other{"{0}मी॰/से॰"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            mile-per-hour{
+            }            mile-per-hour{
                 one{"{0} मीप्रघं"}
                 other{"{0} मीप्रघं"}
             }
@@ -2591,15 +2559,6 @@ hi{
             permille{
                 dnam{"प्रति हज़ार"}
             }
-<<<<<<< HEAD
-=======
-            permillion{
-                dnam{"हिस्सा प्रति दस लाख"}
-            }
-            portion-per-1e9{
-                dnam{"पार्ट्स/बिलियन"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         consumption{
             liter-per-100-kilometer{

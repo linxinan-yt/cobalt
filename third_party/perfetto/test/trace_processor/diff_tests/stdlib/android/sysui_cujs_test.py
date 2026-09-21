@@ -50,8 +50,7 @@ class SystemUICujs(TestSuite):
         """,
         out=Csv("""
         "cuj_id","upid","process_name","cuj_slice_name","cuj_name","slice_id","ts","ts_end","dur","state"
-<<<<<<< HEAD
-        1,1,"com.android.systemui","L<IGNORED_CUJ_1>","IGNORED_CUJ_1",59,150000000,155000000,5000000,"completed"
+1,1,"com.android.systemui","L<IGNORED_CUJ_1>","IGNORED_CUJ_1",59,150000000,155000000,5000000,"completed"
         2,1,"com.android.systemui","L<IGNORED_CUJ_2>","IGNORED_CUJ_2",64,156000000,160000000,4000000,"completed"
         """))
 
@@ -68,9 +67,4 @@ class SystemUICujs(TestSuite):
         "cuj_name","state"
         "CUJ_CANCELED","canceled"
         "CUJ_COMPLETED","completed"
-        "CUJ_TIMEOUT","timeout"
-=======
-        1,1,"com.android.systemui","L<IGNORED_CUJ_1>","IGNORED_CUJ_1",53,150000000,155000000,5000000,"completed"
-        2,1,"com.android.systemui","L<IGNORED_CUJ_2>","IGNORED_CUJ_2",58,156000000,160000000,4000000,"completed"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        """))
+        "CUJ_TIMEOUT","timeout"        """))

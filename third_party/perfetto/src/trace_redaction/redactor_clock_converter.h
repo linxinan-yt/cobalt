@@ -29,22 +29,6 @@
 
 namespace perfetto::trace_redaction {
 
-<<<<<<< HEAD
-class RedactorClockSynchronizerListenerImpl
-    : public perfetto::trace_processor::ClockSynchronizerListener {
- public:
-  RedactorClockSynchronizerListenerImpl();
-
-  base::Status OnClockSyncCacheMiss() override;
-
-  base::Status OnInvalidClockSnapshot() override;
-};
-
-using RedactorClockSynchronizer = trace_processor::ClockSynchronizer;
-using SequenceId = uint32_t;
-using ClockId = trace_processor::ClockId;
-using ClockTimestamp = trace_processor::ClockTimestamp;
-=======
 class RedactorClockSynchronizerListenerImpl {
  public:
   using Synchronizer = perfetto::trace_processor::ClockSynchronizer<
@@ -79,8 +63,6 @@ using RedactorClockSynchronizer = perfetto::trace_processor::ClockSynchronizer<
 using SequenceId = uint32_t;
 using ClockId = RedactorClockSynchronizer::ClockId;
 using ClockTimestamp = RedactorClockSynchronizer::ClockTimestamp;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 // This class handles conversions between different clocks for trace redactor.
 //
 // This class is a wrapper for trace_processor::ClockSynchronizer with the
@@ -154,11 +136,7 @@ class RedactorClockConverter {
   base::StatusOr<ClockId> GetGlobalDefaultDataSourceClock(
       const DataSourceType& clock_type) const;
 
-<<<<<<< HEAD
-  perfetto::trace_processor::TraceTimeState trace_time_state_;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  mutable RedactorClockSynchronizer clock_synchronizer_;
+perfetto::trace_processor::TraceTimeState trace_time_state_;  mutable RedactorClockSynchronizer clock_synchronizer_;
   std::optional<ClockId> primary_trace_clock_;
   base::FlatHashMap<SequenceId, SequenceClocks> seq_to_default_clocks_;
 };

@@ -346,13 +346,9 @@ et{
                 other{"{0} nanosekundit"}
             }
             night{
-<<<<<<< HEAD
-=======
-                dnam{"ööd"}
+dnam{"ööd"}
                 one{"{0} öö"}
-                other{"{0} ööd"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                per{"{0} öö kohta"}
+                other{"{0} ööd"}                per{"{0} öö kohta"}
             }
             quarter{
                 dnam{"kvartalid"}

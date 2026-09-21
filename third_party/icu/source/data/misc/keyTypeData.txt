@@ -77,14 +77,10 @@ keyTypeData:table(nofallback){
                 direct{"true"}
                 gb2312{"true"}
                 reformed{"true"}
-<<<<<<< HEAD
-            }
+}
             hc{
                 c12{"true"}
-                c24{"true"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                c24{"true"}            }
         }
     }
     typeMap{

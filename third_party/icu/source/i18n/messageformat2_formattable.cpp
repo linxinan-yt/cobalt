@@ -11,12 +11,8 @@
 
 #include "unicode/messageformat2_formattable.h"
 #include "unicode/smpdtfmt.h"
-<<<<<<< HEAD
 #include "messageformat2_allocation.h"
-#include "messageformat2_function_registry_internal.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "messageformat2_macros.h"
+#include "messageformat2_function_registry_internal.h"#include "messageformat2_macros.h"
 
 #include "limits.h"
 
@@ -42,10 +38,6 @@ namespace message2 {
 
     Formattable::Formattable(const Formattable& other) {
         contents = other.contents;
-<<<<<<< HEAD
-=======
-        holdsDate = other.holdsDate;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     }
 
     Formattable Formattable::forDecimal(std::string_view number, UErrorCode &status) {
@@ -63,12 +55,7 @@ namespace message2 {
 
     UFormattableType Formattable::getType() const {
         if (std::holds_alternative<double>(contents)) {
-<<<<<<< HEAD
-            return UFMT_DOUBLE;
-=======
-            return holdsDate ? UFMT_DATE : UFMT_DOUBLE;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+return UFMT_DOUBLE;        }
         if (std::holds_alternative<int64_t>(contents)) {
             return UFMT_INT64;
         }
@@ -88,13 +75,9 @@ namespace message2 {
             }
             }
         }
-<<<<<<< HEAD
-        if (isDate()) {
+if (isDate()) {
             return UFMT_DATE;
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        if (std::holds_alternative<const FormattableObject*>(contents)) {
+        }        if (std::holds_alternative<const FormattableObject*>(contents)) {
             return UFMT_OBJECT;
         }
         return UFMT_ARRAY;
@@ -243,18 +226,13 @@ namespace message2 {
         return df.orphan();
     }
 
-<<<<<<< HEAD
-=======
-    void formatDateWithDefaults(const Locale& locale, UDate date, UnicodeString& result, UErrorCode& errorCode) {
+void formatDateWithDefaults(const Locale& locale, UDate date, UnicodeString& result, UErrorCode& errorCode) {
         CHECK_ERROR(errorCode);
 
         LocalPointer<DateFormat> df(defaultDateTimeInstance(locale, errorCode));
         CHECK_ERROR(errorCode);
         df->format(date, result, 0, errorCode);
-    }
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    // Called when output is required and the contents are an unevaluated `Formattable`;
+    }    // Called when output is required and the contents are an unevaluated `Formattable`;
     // formats the source `Formattable` to a string with defaults, if it can be
     // formatted with a default formatter
     static FormattedPlaceholder formatWithDefaults(const Locale& locale, const FormattedPlaceholder& input, UErrorCode& status) {
@@ -282,16 +260,9 @@ namespace message2 {
         switch (type) {
         case UFMT_DATE: {
             UnicodeString result;
-<<<<<<< HEAD
-            const DateInfo* dateInfo = toFormat.getDate(status);
+const DateInfo* dateInfo = toFormat.getDate(status);
             U_ASSERT(U_SUCCESS(status));
-            formatDateWithDefaults(locale, *dateInfo, result, status);
-=======
-            UDate d = toFormat.getDate(status);
-            U_ASSERT(U_SUCCESS(status));
-            formatDateWithDefaults(locale, d, result, status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            return FormattedPlaceholder(input, FormattedValue(std::move(result)));
+            formatDateWithDefaults(locale, *dateInfo, result, status);            return FormattedPlaceholder(input, FormattedValue(std::move(result)));
         }
         case UFMT_DOUBLE: {
             double d = toFormat.getDouble(status);

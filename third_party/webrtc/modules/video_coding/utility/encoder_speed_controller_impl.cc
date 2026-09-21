@@ -15,11 +15,7 @@
 #include <optional>
 
 #include "api/units/time_delta.h"
-<<<<<<< HEAD
-#include "api/units/timestamp.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "api/video_codecs/encoder_speed_controller.h"
+#include "api/units/timestamp.h"#include "api/video_codecs/encoder_speed_controller.h"
 #include "rtc_base/checks.h"
 #include "rtc_base/logging.h"
 
@@ -50,14 +46,9 @@ constexpr double kQpFilterAlpha = 0.2;
 // factor in order to not over-react.
 constexpr double kKeyframeEncodeTimeCompensator = 3.5;
 
-<<<<<<< HEAD
 // If the current speed index (or any faster) has a min PSNR gain factor,
 // re-check every (N * psnr probing interval) that the gain is still there.
-constexpr int kPsnrGainRecheckingFactor = 5;
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}  // namespace
+constexpr int kPsnrGainRecheckingFactor = 5;}  // namespace
 
 EncoderSpeedControllerImpl::EncoderSpeedControllerImpl(
     const Config& config,
@@ -68,13 +59,8 @@ EncoderSpeedControllerImpl::EncoderSpeedControllerImpl(
       num_samples_(0),
       slow_filtered_encode_time_ms_(0),
       fast_filtered_encode_time_ms_(0),
-<<<<<<< HEAD
-      filtered_qp_(0),
+filtered_qp_(0),
       last_psnr_probe_(Timestamp::MinusInfinity()) {}
-=======
-      filtered_qp_(0) {}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 std::unique_ptr<webrtc::EncoderSpeedController>
 EncoderSpeedControllerImpl::Create(
     const webrtc::EncoderSpeedController::Config& config,
@@ -109,8 +95,7 @@ EncoderSpeedControllerImpl::Create(
     }
   }
 
-<<<<<<< HEAD
-  if (config.psnr_probing_settings) {
+if (config.psnr_probing_settings) {
     if (config.psnr_probing_settings->sampling_interval.IsInfinite() ||
         config.psnr_probing_settings->sampling_interval.us() <= 0) {
       RTC_LOG(LS_WARNING)
@@ -118,11 +103,7 @@ EncoderSpeedControllerImpl::Create(
           << config.psnr_probing_settings->sampling_interval;
       return nullptr;
     }
-  }
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  if (start_frame_interval.IsInfinite() || start_frame_interval.us() <= 0) {
+  }  if (start_frame_interval.IsInfinite() || start_frame_interval.us() <= 0) {
     RTC_LOG(LS_WARNING)
         << "EncoderSpeedController: Invalid start frame interval: "
         << start_frame_interval;
@@ -138,18 +119,13 @@ void EncoderSpeedControllerImpl::ResetStats() {
   slow_filtered_encode_time_ms_ = 0;
   fast_filtered_encode_time_ms_ = 0;
   filtered_qp_ = 0;
-<<<<<<< HEAD
-
-  if (last_psnr_gain_check_.has_value() &&
+if (last_psnr_gain_check_.has_value() &&
       current_speed_index_ > last_psnr_gain_check_->speed_level) {
     // We have moved to a faster speed than what the last PSNR gain check was
     // performed at - no need for further re-checks of the gain until the speed
     // is decreased again.
     last_psnr_gain_check_.reset();
-  }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  }}
 
 void EncoderSpeedControllerImpl::IncreaseSpeed() {
   if (static_cast<size_t>(current_speed_index_) <
@@ -181,8 +157,7 @@ EncoderSpeedControllerImpl::GetEncodeSettings(
     EncoderSpeedController::FrameEncodingInfo frame_info) {
   RTC_CHECK(frame_interval_.IsFinite());
   EncodeSettings settings;
-<<<<<<< HEAD
-  settings.speed = config_.speed_levels[current_speed_index_]
+settings.speed = config_.speed_levels[current_speed_index_]
                        .speeds[static_cast<int>(frame_info.reference_type)];
   settings.baseline_comparison_speed = std::nullopt;
   settings.calculate_psnr = false;
@@ -263,53 +238,25 @@ EncoderSpeedControllerImpl::GetEncodeSettings(
       }
     }
   }
-=======
-  const Config::SpeedLevel& current_level =
-      config_.speed_levels[current_speed_index_];
-
-  settings.speed =
-      current_level.speeds[static_cast<int>(frame_info.reference_type)];
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   return settings;
 }
 
 void EncoderSpeedControllerImpl::OnEncodedFrame(
-<<<<<<< HEAD
-    EncoderSpeedController::EncodeResults results,
-    std::optional<EncodeResults> baseline_results) {
-=======
-    EncoderSpeedController::EncodeResults results) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  double encode_tims_ms = results.encode_time.us() / 1000.0;
+EncoderSpeedController::EncodeResults results,
+    std::optional<EncodeResults> baseline_results) {  double encode_tims_ms = results.encode_time.us() / 1000.0;
   if (results.frame_info.reference_type == ReferenceClass::kKey) {
     encode_tims_ms /= kKeyframeEncodeTimeCompensator;
   }
 
-<<<<<<< HEAD
-  const bool is_repeat_frame =
+const bool is_repeat_frame =
       results.frame_info.is_repeat_frame &&
       results.frame_info.reference_type != ReferenceClass::kKey;
 
-  if (num_samples_ == 0) {
-=======
-  if (num_samples_ == 0) {
-    if (results.frame_info.is_repeat_frame) {
-      RTC_LOG(LS_WARNING) << "EncoderSpeedController: Try to start "
-                             "measurements with a repeat frame.";
-      return;
-    }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    slow_filtered_encode_time_ms_ = encode_tims_ms;
+  if (num_samples_ == 0) {    slow_filtered_encode_time_ms_ = encode_tims_ms;
     fast_filtered_encode_time_ms_ = encode_tims_ms;
     filtered_qp_ = results.qp;
     ++num_samples_;
-<<<<<<< HEAD
-  } else if (!is_repeat_frame) {
-=======
-  } else if (!results.frame_info.is_repeat_frame) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    // Add encode time measurement to filtered members. Don't count repeat
+} else if (!is_repeat_frame) {    // Add encode time measurement to filtered members. Don't count repeat
     // frames as they have artificially low complexity due to zero movement.
     ++num_samples_;
     slow_filtered_encode_time_ms_ =
@@ -322,8 +269,7 @@ void EncoderSpeedControllerImpl::OnEncodedFrame(
         (kQpFilterAlpha * results.qp) + ((1 - kQpFilterAlpha) * filtered_qp_);
   }
 
-<<<<<<< HEAD
-  if (baseline_results.has_value()) {
+if (baseline_results.has_value()) {
     // Results from a PSNR probe have arrived!
     last_psnr_probe_ = results.frame_info.timestamp;
     RTC_LOG(LS_VERBOSE)
@@ -386,16 +332,7 @@ void EncoderSpeedControllerImpl::OnEncodedFrame(
                !PsnrProbeRequiredForNextSlowerSpeed()) {
       // Headroom exists to reduce speed, and no PSNR requirement present.
       DecreaseSpeed();
-    }
-=======
-  if (ShouldIncreaseSpeed()) {
-    // Using too much resources or QP is good enough, try to increase the speed.
-    IncreaseSpeed();
-  } else if (ShouldDecreaseSpeed()) {
-    // Headroom exists to reduce speed.
-    DecreaseSpeed();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    }  }
 }
 
 bool EncoderSpeedControllerImpl::ShouldIncreaseSpeed() const {
@@ -437,12 +374,7 @@ bool EncoderSpeedControllerImpl::ShouldIncreaseSpeed() const {
   return false;
 }
 
-<<<<<<< HEAD
-bool EncoderSpeedControllerImpl::ShouldDecreaseSpeedDisregardingPsnr() const {
-=======
-bool EncoderSpeedControllerImpl::ShouldDecreaseSpeed() const {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  if (current_speed_index_ <= 0) {
+bool EncoderSpeedControllerImpl::ShouldDecreaseSpeedDisregardingPsnr() const {  if (current_speed_index_ <= 0) {
     // Already at slowest speed.
     return false;
   }
@@ -469,8 +401,6 @@ bool EncoderSpeedControllerImpl::ShouldDecreaseSpeed() const {
 
   return false;
 }
-<<<<<<< HEAD
-
 // Returns true if the next slower speed requires a PSNR check.
 bool EncoderSpeedControllerImpl::PsnrProbeRequiredForNextSlowerSpeed() const {
   return current_speed_index_ > 0 &&
@@ -508,7 +438,4 @@ bool EncoderSpeedControllerImpl::ShouldRecheckPsnrGain(
 
   return (current_time - last_psnr_gain_check_->timestamp) >=
          rechecking_interval - avg_base_layer_frame_interval;
-}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}  // namespace webrtc
+}}  // namespace webrtc

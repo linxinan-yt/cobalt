@@ -16,17 +16,6 @@
 #include "unicode/locid.h"
 #include "unicode/uobject.h"
 
-<<<<<<< HEAD
-=======
-/**
- * Macro to declare a locale LocaleBased wrapper object for the given
- * object, which must have two members named `validLocale' and
- * `actualLocale' of which are pointers to the internal icu::CharString.
- */
-#define U_LOCALE_BASED(varname, objname) \
-  LocaleBased varname((objname).validLocale, (objname).actualLocale)
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 U_NAMESPACE_BEGIN
 
 class CharString;
@@ -42,15 +31,6 @@ class U_COMMON_API LocaleBased : public UMemory {
  public:
 
     /**
-<<<<<<< HEAD
-=======
-     * Construct a LocaleBased wrapper around the two pointers.  These
-     * will be aliased for the lifetime of this object.
-     */
-    inline LocaleBased(CharString*& validAlias, CharString*& actualAlias);
-
-    /**
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
      * Return locale meta-data for the service object wrapped by this
      * object.  Either the valid or the actual locale may be
      * retrieved.
@@ -60,14 +40,8 @@ class U_COMMON_API LocaleBased : public UMemory {
      * @param status input-output error code
      * @return the indicated locale
      */
-<<<<<<< HEAD
-    static const Locale& getLocale(
-        const Locale& valid, const Locale& actual,
-=======
-    static Locale getLocale(
-        const CharString* valid, const CharString* actual,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        ULocDataLocaleType type, UErrorCode& status);
+static const Locale& getLocale(
+        const Locale& valid, const Locale& actual,        ULocDataLocaleType type, UErrorCode& status);
 
     /**
      * Return the locale ID for the service object wrapped by this
@@ -80,59 +54,9 @@ class U_COMMON_API LocaleBased : public UMemory {
      * @return the indicated locale ID
      */
     static const char* getLocaleID(
-<<<<<<< HEAD
-        const Locale& valid, const Locale& actual,
+const Locale& valid, const Locale& actual,
         ULocDataLocaleType type, UErrorCode& status);
 
-};
-
-=======
-        const CharString* valid, const CharString* actual,
-        ULocDataLocaleType type, UErrorCode& status);
-
-    /**
-     * Set the locale meta-data for the service object wrapped by this
-     * object.  If either parameter is zero, it is ignored.
-     * @param valid the ID of the valid locale
-     * @param actual the ID of the actual locale
-     */
-    void setLocaleIDs(const char* valid, const char* actual, UErrorCode& status);
-    void setLocaleIDs(const CharString* valid, const CharString* actual, UErrorCode& status);
-
-    static void setLocaleID(const char* id, CharString*& dest, UErrorCode& status);
-    static void setLocaleID(const CharString* id, CharString*& dest, UErrorCode& status);
-
-    static bool equalIDs(const CharString* left, const CharString* right);
-
- private:
-
-    void setValidLocaleID(const CharString* id, UErrorCode& status);
-    void setActualLocaleID(const CharString* id, UErrorCode& status);
-    void setValidLocaleID(const char* id, UErrorCode& status);
-    void setActualLocaleID(const char* id, UErrorCode& status);
-
-    CharString*& valid;
-    CharString*& actual;
-};
-
-inline LocaleBased::LocaleBased(CharString*& validAlias, CharString*& actualAlias) :
-    valid(validAlias), actual(actualAlias) {
-}
-
-inline void LocaleBased::setValidLocaleID(const CharString* id, UErrorCode& status) {
-    setLocaleID(id, valid, status);
-}
-inline void LocaleBased::setActualLocaleID(const CharString* id, UErrorCode& status) {
-    setLocaleID(id, actual, status);
-}
-inline void LocaleBased::setValidLocaleID(const char* id, UErrorCode& status) {
-    setLocaleID(id, valid, status);
-}
-inline void LocaleBased::setActualLocaleID(const char* id, UErrorCode& status) {
-    setLocaleID(id, actual, status);
-}
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-U_NAMESPACE_END
+};U_NAMESPACE_END
 
 #endif

@@ -277,12 +277,7 @@ TEST_F(ProtoToArgsParserTest, PackedEncodingWithoutDescriptorPackedFlag) {
   ASSERT_OK(pool.AddFromFileDescriptorSet(kTestMessagesDescriptor.data(),
                                           kTestMessagesDescriptor.size()));
 
-<<<<<<< HEAD
-  ProtoToArgsParser parser(pool, string_pool_);
-=======
-  ProtoToArgsParser parser(pool);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  ASSERT_OK(parser.ParseMessage(
+ProtoToArgsParser parser(pool, string_pool_);  ASSERT_OK(parser.ParseMessage(
       protozero::ConstBytes{binary_proto.data(), binary_proto.size()},
       ".protozero.test.protos.EveryField", nullptr, *this));
   EXPECT_THAT(args(),

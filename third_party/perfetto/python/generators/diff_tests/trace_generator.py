@@ -26,14 +26,8 @@ from typing import Any, IO, List, Optional, Union
 from google.protobuf import text_format
 
 from python.generators.diff_tests.testing import (DataPath, Path,
-<<<<<<< HEAD
-                                                  SimpleperfProto, Tar,
-                                                  TextProto, TraceInjector, Zip)
-=======
-                                                  SimpleperfProto, TextProto,
-                                                  TraceInjector)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-from python.generators.diff_tests.utils import ProtoManager
+SimpleperfProto, Tar,
+                                                  TextProto, TraceInjector, Zip)from python.generators.diff_tests.utils import ProtoManager
 
 ROOT_DIR = os.path.dirname(
     os.path.dirname(
@@ -250,8 +244,7 @@ def generate_trace_file(test_case: Any, trace_descriptor_path: str,
     gen_trace_file.write(proto.SerializeToString())
     gen_trace_file.flush()
 
-<<<<<<< HEAD
-  elif test_case.blueprint.is_trace_zip():
+elif test_case.blueprint.is_trace_zip():
     gen_trace_file = tempfile.NamedTemporaryFile(delete=False)
     trace_generator.serialize_zip_trace(test_case.blueprint,
                                         test_case.blueprint.trace,
@@ -261,11 +254,7 @@ def generate_trace_file(test_case: Any, trace_descriptor_path: str,
     gen_trace_file = tempfile.NamedTemporaryFile(delete=False)
     trace_generator.serialize_tar_trace(test_case.blueprint,
                                         test_case.blueprint.trace,
-                                        gen_trace_file)
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  elif test_case.blueprint.is_trace_simpleperf_proto():
+                                        gen_trace_file)  elif test_case.blueprint.is_trace_simpleperf_proto():
     gen_trace_file = tempfile.NamedTemporaryFile(delete=False)
     # Simpleperf is a separate format, so use a dedicated generator with
     # the simpleperf descriptor instead of the general Perfetto trace extensions.

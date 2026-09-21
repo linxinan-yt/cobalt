@@ -692,12 +692,8 @@ uz{
             one{"(noma’lum valyuta)"}
             other{"(noma’lum valyuta)"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             one{"Zimbabve oltini"}
             other{"Zimbabve oltini"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

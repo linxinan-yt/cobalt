@@ -38,26 +38,13 @@ struct CreatedFunction : public sqlite::Function<CreatedFunction> {
 
   static constexpr char* kName = nullptr;
   static constexpr int kArgCount = -1;
-<<<<<<< HEAD
-
-  // sqlite::Function implementation
+// sqlite::Function implementation
   static void Step(sqlite3_context* ctx, int argc, sqlite3_value** argv);
 
   // Glue code for PerfettoSqlConnection.
   static std::unique_ptr<UserData> MakeContext(PerfettoSqlConnection*);
   static bool IsValid(UserData*);
-  static void Reset(UserData*, PerfettoSqlConnection*);
-=======
-
-  // sqlite::Function implementation
-  static void Step(sqlite3_context* ctx, int argc, sqlite3_value** argv);
-
-  // Glue code for PerfettoSqlEngine.
-  static std::unique_ptr<UserData> MakeContext(PerfettoSqlEngine*);
-  static bool IsValid(UserData*);
-  static void Reset(UserData*, PerfettoSqlEngine*);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  static base::Status Prepare(UserData*,
+  static void Reset(UserData*, PerfettoSqlConnection*);  static base::Status Prepare(UserData*,
                               FunctionPrototype,
                               sql_argument::Type return_type,
                               SqlSource sql);

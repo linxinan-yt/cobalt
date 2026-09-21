@@ -68,12 +68,8 @@
 #include "perfetto/ext/base/clock_snapshots.h"
 #include "perfetto/ext/base/file_utils.h"
 #include "perfetto/ext/base/flags.h"
-<<<<<<< HEAD
 #include "perfetto/ext/base/flat_hash_map.h"
-#include "perfetto/ext/base/fnv_hash.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "perfetto/ext/base/metatrace.h"
+#include "perfetto/ext/base/fnv_hash.h"#include "perfetto/ext/base/metatrace.h"
 #include "perfetto/ext/base/periodic_task.h"
 #include "perfetto/ext/base/regex.h"
 #include "perfetto/ext/base/scoped_file.h"
@@ -115,7 +111,6 @@
 #include "src/tracing/service/random.h"
 #include "src/tracing/service/trace_buffer.h"
 #include "src/tracing/service/trace_buffer_v1.h"
-<<<<<<< HEAD
 #include "src/tracing/service/trace_buffer_v2.h"
 #include "src/tracing/service/tracing_service_endpoints_impl.h"
 #include "src/tracing/service/tracing_service_session.h"
@@ -126,9 +121,6 @@
 #if PERFETTO_BUILDFLAG(PERFETTO_ZSTD)
 #include "src/tracing/service/zstd_compressor.h"
 #endif
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 #include "protos/perfetto/common/builtin_clock.gen.h"
 #include "protos/perfetto/common/builtin_clock.pbzero.h"
 #include "protos/perfetto/common/system_info.pbzero.h"
@@ -1233,8 +1225,7 @@ base::Status TracingServiceImpl::EnableTracing(ConsumerEndpointImpl* consumer,
         buffer_cfg.fill_policy() == TraceConfig::BufferConfig::DISCARD
             ? TraceBuffer::kDiscard
             : TraceBuffer::kOverwrite;
-<<<<<<< HEAD
-    std::unique_ptr<TraceBuffer> new_buffer;
+std::unique_ptr<TraceBuffer> new_buffer;
     switch (buffer_cfg.experimental_mode()) {
       case TraceConfig::BufferConfig::TRACE_BUFFER_V2:
         new_buffer = TraceBufferV2::Create(buf_size, policy);
@@ -1243,12 +1234,7 @@ base::Status TracingServiceImpl::EnableTracing(ConsumerEndpointImpl* consumer,
         new_buffer = TraceBufferV1::Create(buf_size, policy);
         break;
     }
-    auto it_and_inserted = buffers_.emplace(global_id, std::move(new_buffer));
-=======
-    auto it_and_inserted =
-        buffers_.emplace(global_id, TraceBufferV1::Create(buf_size, policy));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    PERFETTO_DCHECK(it_and_inserted.second);  // buffers_.count(global_id) == 0.
+    auto it_and_inserted = buffers_.emplace(global_id, std::move(new_buffer));    PERFETTO_DCHECK(it_and_inserted.second);  // buffers_.count(global_id) == 0.
     std::unique_ptr<TraceBuffer>& trace_buffer = it_and_inserted.first->second;
     if (!trace_buffer) {
       did_allocate_all_buffers = false;
@@ -1559,13 +1545,8 @@ void TracingServiceImpl::StartTracing(TracingSessionID tsid) {
   // Start the periodic drain tasks if we should to save the trace into a file.
   if (tracing_session->config.write_into_file()) {
     bool async_flush_buffers_before_read =
-<<<<<<< HEAD
-        tracing_session->flush_strategy ==
-        TracingSession::FlushStrategy::kOnWrite;
-=======
-        !tracing_session->config.no_flush_before_write_into_file();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    weak_runner_.PostDelayedTask(
+tracing_session->flush_strategy ==
+        TracingSession::FlushStrategy::kOnWrite;    weak_runner_.PostDelayedTask(
         [this, tsid, async_flush_buffers_before_read] {
           ReadBuffersIntoFile(tsid, async_flush_buffers_before_read);
         },
@@ -2116,11 +2097,7 @@ void TracingServiceImpl::DisableTracingNotifyConsumerAndFlushFile(
 
   if (tracing_session->write_into_file) {
     tracing_session->write_period_ms = 0;
-<<<<<<< HEAD
-    tracing_session->should_emit_stats = true;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    // Buffers are scraped, no need to flush before reading into file.
+tracing_session->should_emit_stats = true;    // Buffers are scraped, no need to flush before reading into file.
     ReadBuffersIntoFile(tracing_session->id,
                         /* async_flush_buffers_before_read = */ false);
   }
@@ -2619,32 +2596,19 @@ bool TracingServiceImpl::ReadBuffersIntoFile(
               WriteIntoFile(tracing_session, std::move(packets));
         } while (has_more && !stop_writing_into_file);
 
-<<<<<<< HEAD
-        if (stop_writing_into_file || tracing_session->write_period_ms == 0) {
+if (stop_writing_into_file || tracing_session->write_period_ms == 0) {
           // Ensure all data was written to the file before we close it.
-          base::FlushFile(tracing_session->write_into_file.get());
-=======
-        // Ensure all data was written to the file.
-        base::FlushFile(tracing_session->write_into_file.get());
-
-        if (stop_writing_into_file || tracing_session->write_period_ms == 0) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          tracing_session->write_into_file.reset();
+          base::FlushFile(tracing_session->write_into_file.get());          tracing_session->write_into_file.reset();
           tracing_session->write_period_ms = 0;
           if (tracing_session->state == TracingSession::STARTED)
             DisableTracing(tsid);
           return;
         }
 
-<<<<<<< HEAD
-        if (tracing_session->fflush_post_write) {
+if (tracing_session->fflush_post_write) {
           // Ensure all data was written to the file.
           base::FlushFile(tracing_session->write_into_file.get());
-        }
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        weak_runner_.PostDelayedTask(
+        }        weak_runner_.PostDelayedTask(
             [this, tsid, async_flush_buffers_before_read] {
               ReadBuffersIntoFile(tsid, async_flush_buffers_before_read);
             },
@@ -4660,13 +4624,8 @@ base::Status TracingServiceImpl::FlushAndCloneSession(
   // Therefore, if the 'buffer_clone_preserve_read_iter' flag is false, we
   // ignore the file to make the new logic behave like the old logic.
   bool clone_session_write_into_file =
-<<<<<<< HEAD
-      PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER) &&
+PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER) &&
       session->write_into_file;
-=======
-      base::flags::buffer_clone_preserve_read_iter && session->write_into_file;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   if (clone_session_write_into_file) {
     if (!args.output_file_fd) {
       return PERFETTO_SVC_ERR(
@@ -4713,19 +4672,14 @@ base::Status TracingServiceImpl::FlushAndCloneSession(
     const auto buf_size = buf->size();
     const auto buf_type = buf->buf_type();
     std::unique_ptr<TraceBuffer> old_buf = std::move(buf);
-<<<<<<< HEAD
-    switch (buf_type) {
+switch (buf_type) {
       case TraceBuffer::kV1:
         buf = TraceBufferV1::Create(buf_size, buf_policy);
         break;
       case TraceBuffer::kV2:
         buf = TraceBufferV2::Create(buf_size, buf_policy);
         break;
-    }
-=======
-    buf = TraceBufferV1::Create(buf_size, buf_policy);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    if (!buf) {
+    }    if (!buf) {
       // This is extremely rare but could happen on 32-bit. If the new buffer
       // allocation failed, put back the buffer where it was and fail the clone.
       // We cannot leave the original tracing session buffer-less as it would
@@ -4897,19 +4851,14 @@ bool TracingServiceImpl::DoCloneBuffers(const TracingSession& src,
       const auto buf_size = src_buf->size();
       const auto buf_type = src_buf->buf_type();
       new_buf = std::move(src_buf);
-<<<<<<< HEAD
-      switch (buf_type) {
+switch (buf_type) {
         case TraceBuffer::kV1:
           src_buf = TraceBufferV1::Create(buf_size, buf_policy);
           break;
         case TraceBuffer::kV2:
           src_buf = TraceBufferV2::Create(buf_size, buf_policy);
           break;
-      }
-=======
-      src_buf = TraceBufferV1::Create(buf_size, buf_policy);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      if (!src_buf) {
+      }      if (!src_buf) {
         // If the allocation fails put the buffer back and let the code below
         // handle the failure gracefully.
         src_buf = std::move(new_buf);
@@ -5054,9 +5003,6 @@ base::Status TracingServiceImpl::FinishCloneSession(
   return base::OkStatus();
 }
 
-<<<<<<< HEAD
-}  // namespace tracing_service
-=======
 bool TracingServiceImpl::TracingSession::IsCloneAllowed(uid_t clone_uid) const {
   if (clone_uid == 0)
     return true;  // Root is always allowed to clone everything.
@@ -5821,7 +5767,4 @@ void TracingServiceImpl::RelayEndpointImpl::SyncClocks(
 
 void TracingServiceImpl::RelayEndpointImpl::Disconnect() {
   service_->DisconnectRelayClient(relay_client_id_);
-}
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}  // namespace perfetto
+}}  // namespace perfetto

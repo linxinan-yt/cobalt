@@ -1,14 +1,8 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
 // Generated using tools/cldr/cldr-to-icu/
-<<<<<<< HEAD:third_party/icu/source/data/locales/shn_TH.txt
-shn_TH{
-    calendar{
-        default{"buddhist"}
-=======
 ti_ER{
     Languages{
         sr{"ሰርብኛ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/icu/source/data/lang/ti_ER.txt
     }
 }

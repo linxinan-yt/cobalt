@@ -86,8 +86,7 @@ ig{
             }
         }
         concentr{
-<<<<<<< HEAD
-            katal{
+katal{
                 dnam{"katals"}
                 other{"{0} katals"}
             }
@@ -98,11 +97,7 @@ ig{
                 dnam{"akụkụ gasị"}
                 other{"{0} akụkụ gasị"}
             }
-            part-per-1e9{
-=======
-            portion-per-1e9{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                dnam{"akụkụ kwa ijeri"}
+            portion-per-1e9{                dnam{"akụkụ kwa ijeri"}
                 other{"{0} akụkụ kwa ijeri"}
             }
         }
@@ -116,23 +111,15 @@ ig{
             century{
                 dnam{"Ọtụtụ nari afọ"}
                 other{"{0} Ọtụtụ nari afọ"}
-<<<<<<< HEAD
-=======
-            }
+}
             day{
                 dnam{"Ọtụtụ Ubochi"}
-                other{"{0} Ọtụtụ Ubochi"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} Ọtụtụ Ubochi"}            }
             decade{
                 dnam{"Ọtụtụ afọ iri"}
                 other{"{0} Ọtụtụ afọ iri"}
             }
             hour{
-<<<<<<< HEAD
-=======
-                dnam{"Ọtụtụ awa"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} Ọtụtụ awa"}
             }
             minute{
@@ -146,12 +133,8 @@ ig{
                 per{"{0} kwa Ọnwa"}
             }
             night{
-<<<<<<< HEAD
-=======
-                dnam{"Ọtụtụ abali"}
-                other{"{0} Ọtụtụ abali"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                per{"{0} kwa abali"}
+dnam{"Ọtụtụ abali"}
+                other{"{0} Ọtụtụ abali"}                per{"{0} kwa abali"}
             }
             quarter{
                 dnam{"Nkeji Nkeano"}
@@ -175,8 +158,7 @@ ig{
             year{
                 dnam{"Ọtụtụ Afọ"}
                 other{"{0} Ọtụtụ Afọ"}
-<<<<<<< HEAD
-            }
+}
         }
         electric{
             ampere{
@@ -206,10 +188,7 @@ ig{
                 other{"{0} siemens"}
             }
             volt{
-                other{"{0} volt"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} volt"}            }
         }
         energy{
             becquerel{
@@ -490,8 +469,7 @@ ig{
                 dnam{"Beaufort"}
                 other{"Beaufort {0}"}
             }
-<<<<<<< HEAD
-            kilometer-per-hour{
+kilometer-per-hour{
                 dnam{"kilometers per hour"}
                 other{"{0} kilometers per hour"}
             }
@@ -499,19 +477,17 @@ ig{
                 dnam{"knots"}
                 other{"{0} knots"}
             }
+            light-speed{
+                dnam{"ìhè"}
+                other{"{0} ìhè"}
+            }
             meter-per-second{
                 dnam{"meters per second"}
                 other{"{0} meters per second"}
             }
             mile-per-hour{
                 dnam{"miles per hour"}
-                other{"{0} miles per hour"}
-=======
-            light-speed{
-                dnam{"ìhè"}
-                other{"{0} ìhè"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} miles per hour"}            }
         }
         volume{
             acre-foot{
@@ -688,29 +664,17 @@ ig{
             part-per-1e6{
                 other{"{0}ppm"}
             }
-<<<<<<< HEAD
-            part-per-1e9{
-=======
-            portion-per-1e9{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                dnam{"akụkụ/ijeri"}
+portion-per-1e9{                dnam{"akụkụ/ijeri"}
             }
         }
         duration{
             day{
                 dnam{"Ubochi"}
-<<<<<<< HEAD
+other{"{0} Ọtụtụ Ubochi"}
             }
             hour{
                 dnam{"awa"}
-=======
-                other{"{0} Ọtụtụ Ubochi"}
-            }
-            hour{
-                dnam{"awa"}
-                other{"{0} awa"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} awa"}            }
             microsecond{
                 dnam{"μsec"}
                 other{"{0}μs"}
@@ -719,14 +683,9 @@ ig{
                 other{"{0}ns"}
             }
             night{
-<<<<<<< HEAD
+dnam{"Ọtụtụ abali"}
                 other{"{0}Ọtụtụ abali"}
-=======
-                dnam{"Ọtụtụ abali"}
-                other{"{0}Ọtụtụ abali"}
-                per{"{0}/abali"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/abali"}            }
             quarter{
                 other{"{0}q"}
             }
@@ -790,18 +749,11 @@ ig{
                 other{"{0}ntụpọ"}
             }
             dot-per-centimeter{
-<<<<<<< HEAD
+dnam{"dpcm"}
                 other{"{0}dpcm"}
             }
             dot-per-inch{
-=======
-                dnam{"dpcm"}
-                other{"{0}dpcm"}
-            }
-            dot-per-inch{
-                dnam{"dpi"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                other{"{0}dpi"}
+                dnam{"dpi"}                other{"{0}dpi"}
             }
             em{
                 other{"{0}em"}
@@ -812,8 +764,7 @@ ig{
             pixel{
                 other{"{0}px"}
             }
-<<<<<<< HEAD
-        }
+}
         length{
             foot{
                 dnam{"feet"}
@@ -922,120 +873,15 @@ ig{
             ofhg{
                 dnam{"nke Hg"}
                 other{"{0}nke Hg"}
-            }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            }        }
         speed{
             beaufort{
                 other{"B{0}"}
             }
-<<<<<<< HEAD
-            kilometer-per-hour{
-                dnam{"km/hr"}
-                other{"{0}km/h"}
-            }
-            knot{
-                other{"{0}kn"}
-            }
-            light-speed{
-                other{"{0}ìhè"}
-            }
-            meter-per-second{
-                dnam{"meters/sec"}
-                other{"{0}m/s"}
-            }
-            mile-per-hour{
-                dnam{"mi/hr"}
-                other{"{0}mph"}
-            }
-        }
-        volume{
-            acre-foot{
-                dnam{"acre ft"}
-            }
-            barrel{
-                dnam{"barel"}
-                other{"{0}bbl"}
-            }
-            cubic-foot{
-                dnam{"feet³"}
-            }
-            cubic-yard{
-                dnam{"yards³"}
-            }
-            cup{
-                dnam{"iko"}
-            }
-            dessert-spoon{
-                dnam{"dsp"}
-                other{"{0}dsp"}
-            }
-            dessert-spoon-imperial{
-                dnam{"dsp Imp"}
-                other{"{0}dsp-Imp"}
-            }
-            dram{
-                dnam{"fl.dr."}
-                other{"{0}fl.dr."}
-            }
-            drop{
-                dnam{"dr"}
-                other{"{0}dr"}
-            }
-            fluid-ounce{
-                dnam{"fl oz"}
-                other{"{0}fl oz"}
-            }
-            fluid-ounce-imperial{
-                other{"{0}fl oz Im"}
-            }
-            gallon{
-                dnam{"gal"}
-                other{"{0}gal"}
-                per{"{0}/gal"}
-            }
-            gallon-imperial{
-                other{"{0}gal-Im"}
-                per{"{0}/galIm"}
-            }
-            jigger{
-                other{"{0}jigger"}
-            }
-            liter{
-                other{"{0} L"}
-            }
-            pinch{
-                dnam{"pn"}
-                other{"{0}pn"}
-            }
-            pint{
-                dnam{"pint"}
-            }
-            pint-metric{
-                dnam{"pt"}
-            }
-            quart{
-                dnam{"qts"}
-                other{"{0}qt"}
-            }
-            quart-imperial{
-                dnam{"Imp. quarts"}
-                other{"{0}qt-Imp."}
-            }
-            tablespoon{
-                other{"{0}tbsp"}
-            }
-            teaspoon{
-                other{"{0}tsp"}
-            }
-=======
-            light-speed{
+light-speed{
                 dnam{"ìhè"}
                 other{"{0}ìhè"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            }        }
     }
     unitsShort{
         acceleration{
@@ -1066,19 +912,14 @@ ig{
                 dnam{"ihe"}
                 other{"{0} ihe"}
             }
-<<<<<<< HEAD
-            ofglucose{
+ofglucose{
                 dnam{"Glc"}
             }
             part{
                 dnam{"akụkụ"}
                 other{"{0} akụkụ"}
             }
-            part-per-1e9{
-=======
-            portion-per-1e9{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                dnam{"akụkụ/ijeri"}
+            part-per-1e9{                dnam{"akụkụ/ijeri"}
             }
         }
         duration{
@@ -1104,15 +945,11 @@ ig{
             week{
                 other{"{0} wks"}
             }
-<<<<<<< HEAD
-        }
+}
         electric{
             milliampere{
                 dnam{"milliamp"}
-            }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            }        }
         energy{
             calorie-it{
                 dnam{"cal-IT"}
@@ -1145,8 +982,7 @@ ig{
                 other{"{0} nki"}
             }
         }
-<<<<<<< HEAD
-        length{
+length{
             earth-radius{
                 dnam{"okirikiri ụwa"}
             }
@@ -1216,16 +1052,11 @@ ig{
         speed{
             kilometer-per-hour{
                 dnam{"km/hour"}
-            }
-=======
-        speed{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            light-speed{
+            }            light-speed{
                 dnam{"ìhè"}
                 other{"{0} ìhè"}
             }
-<<<<<<< HEAD
-            meter-per-second{
+meter-per-second{
                 dnam{"meters/sec"}
             }
             mile-per-hour{
@@ -1259,14 +1090,7 @@ ig{
             }
             dram{
                 dnam{"dram"}
-                other{"{0} dram"}
-=======
-        }
-        volume{
-            dessert-spoon{
-                dnam{"ngaji mégharia onu"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} dram"}            }
             drop{
                 dnam{"ntụsà"}
                 other{"{0} ntụsà"}

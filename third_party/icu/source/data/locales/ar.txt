@@ -26,18 +26,14 @@ ar{
             }
         }
         arabext{
-<<<<<<< HEAD
-            patterns{
+patterns{
                 accountingFormat%noCurrency{"؜#,##0.00;(؜#,##0.00)"}
                 currencyFormat%alphaNextToNumber{"‏#,##0.00 ¤;‏-#,##0.00 ¤"}
             }
             rationalFormats{
                 integerAndRationalPattern{"{1} {0}"}
                 rationalPattern{"{1}⁄{0}"}
-            }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            symbols{
+            }            symbols{
                 nan{"ليس رقمًا"}
             }
         }

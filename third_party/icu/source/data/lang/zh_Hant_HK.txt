@@ -111,14 +111,9 @@ zh_Hant_HK{
         }
         collation{
             dictionary{"詞典排序"}
-<<<<<<< HEAD
-        }
+}
         collation%core{
-            dictionary{"詞典"}
-=======
-            gb2312han{"簡體中文排序 (GB2312)"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            dictionary{"詞典"}        }
         ms{
             uksystem{"英制"}
             ussystem{"美制"}

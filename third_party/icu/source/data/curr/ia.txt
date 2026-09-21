@@ -1309,12 +1309,8 @@ ia{
             one{"rial yemeni"}
             other{"riales yemeni"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             one{"auro de Zimbwabwe"}
             other{"auros de Zimbwabwe"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

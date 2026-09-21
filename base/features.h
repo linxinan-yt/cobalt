@@ -16,8 +16,6 @@ namespace base::features {
 // alongside the definition of their values in the .cc file.
 
 // Alphabetical:
-<<<<<<< HEAD
-=======
 BASE_EXPORT BASE_DECLARE_FEATURE(kBoostCompositorThreadsPriorityWhenIdle);
 
 #if BUILDFLAG(IS_COBALT)
@@ -42,10 +40,7 @@ BASE_EXPORT BASE_DECLARE_FEATURE_PARAM(int,
 // and parameter.
 BASE_EXPORT BASE_DECLARE_FEATURE(kCobaltCCImageCacheLimitItems);
 BASE_EXPORT BASE_DECLARE_FEATURE_PARAM(int, kCobaltCCImageCacheLimitItemsCount);
-#endif  // BUILDFLAG(IS_COBALT)
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-BASE_EXPORT BASE_DECLARE_FEATURE(kFeatureParamWithCache);
+#endif  // BUILDFLAG(IS_COBALT)BASE_EXPORT BASE_DECLARE_FEATURE(kFeatureParamWithCache);
 
 BASE_EXPORT BASE_DECLARE_FEATURE(kFastFilePathIsParent);
 

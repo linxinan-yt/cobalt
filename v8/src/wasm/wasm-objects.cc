@@ -1202,8 +1202,6 @@ DirectHandle<JSArrayBuffer> WasmMemoryObject::ChangeArrayBufferResizability(
   return RefreshBuffer(isolate, memory_object, std::move(backing_store));
 }
 
-<<<<<<< HEAD
-=======
 MaybeDirectHandle<WasmMemoryMapDescriptor>
 WasmMemoryMapDescriptor::NewFromAnonymous(Isolate* isolate, size_t length) {
 // This method is used by experimental_wasm_memory_control and is not enabled by default.
@@ -1328,10 +1326,7 @@ bool WasmMemoryMapDescriptor::UnmapDescriptor() {
 #else
   return false;
 #endif
-}
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-// static
+}// static
 MaybeDirectHandle<WasmGlobalObject> WasmGlobalObject::New(
     Isolate* isolate, DirectHandle<WasmTrustedInstanceData> trusted_data,
     MaybeDirectHandle<WasmGlobalObject::BufferType> maybe_buffer,

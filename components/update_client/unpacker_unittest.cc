@@ -104,13 +104,8 @@ TEST_P(UnpackerTest, UnpackFullCrx) {
   loop.Run();
 }
 
-<<<<<<< HEAD
-TEST_P(UnpackerTest, UnpackFileNotFound) {
-=======
 #if !defined(IN_MEMORY_UPDATES)
-TEST_F(UnpackerTest, UnpackFileNotFound) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  SEQUENCE_CHECKER(sequence_checker);
+TEST_P(UnpackerTest, UnpackFileNotFound) {  SEQUENCE_CHECKER(sequence_checker);
   base::RunLoop loop;
 #if BUILDFLAG(IS_STARBOARD)
   OperationResult op_result2;
@@ -122,16 +117,9 @@ TEST_F(UnpackerTest, UnpackFileNotFound) {
 #else
   Unpacker::Unpack(
       "jebgalgnebhfojomionfpkfelancnnkf", "UnpackerTest",
-<<<<<<< HEAD
-      base::ToVector(jebg_hash), GetTestFilePath("file_not_found.crx"), nullptr,
-      crx_file::VerifierFormat::CRX3, IsForeground(),
-=======
-      std::vector<uint8_t>(std::begin(jebg_hash), std::end(jebg_hash)),
-      GetTestFilePath("file_not_found.crx"), nullptr,
+base::ToVector(jebg_hash), GetTestFilePath("file_not_found.crx"), nullptr,
 #endif
-      crx_file::VerifierFormat::CRX3,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      base::BindLambdaForTesting([&](const Unpacker::Result& result) {
+      crx_file::VerifierFormat::CRX3, IsForeground(),      base::BindLambdaForTesting([&](const Unpacker::Result& result) {
         DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker);
         EXPECT_EQ(result.error, UnpackerError::kInvalidFile);
         EXPECT_EQ(result.extended_error,
@@ -167,13 +155,8 @@ TEST_P(UnpackerTest, UnpackFileHashMismatch) {
       "jebgalgnebhfojomionfpkfelancnnkf", "UnpackerTest",
       base::ToVector(abag_hash),
       GetTestFilePath("jebgalgnebhfojomionfpkfelancnnkf.crx"), nullptr,
-<<<<<<< HEAD
-      crx_file::VerifierFormat::CRX3, IsForeground(),
-=======
 #endif
-      crx_file::VerifierFormat::CRX3,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      base::BindLambdaForTesting([&](const Unpacker::Result& result) {
+      crx_file::VerifierFormat::CRX3, IsForeground(),      base::BindLambdaForTesting([&](const Unpacker::Result& result) {
         DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker);
         EXPECT_EQ(result.error, UnpackerError::kInvalidFile);
         EXPECT_EQ(result.extended_error,

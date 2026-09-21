@@ -3,8 +3,7 @@
 // Generated using tools/cldr/cldr-to-icu/
 kok_Latn{
     %%Parent{"root"}
-<<<<<<< HEAD
-    AuxExemplarCharacters{"[áàăâåäā æ éèĕëē íìĭîïī óòŏöō œ úùŭûüū ÿ]"}
+AuxExemplarCharacters{"[áàăâåäā æ éèĕëē íìĭîïī óòŏöō œ úùŭûüū ÿ]"}
     ExemplarCharacters{"[aã b cç d eêẽ f g h iĩ j k l m nñ oôõø p q r s t u v w x y z]"}
     ExemplarCharactersPunctuation{
         "[\\- ‐‑ – — , ; \\: ! ? . … '‘’ \u0022“” « » ( ) \\[ \\] § @ * / \\& # † ‡ ′"
@@ -16,31 +15,15 @@ kok_Latn{
                 accountingFormat%alphaNextToNumber{"¤ #,##,##0.00"}
                 accountingFormat%noCurrency{"#,##,##0.00"}
                 currencyFormat%alphaNextToNumber{"¤ #,##,##0.00"}
-                currencyFormat%noCurrency{"#,##,##0.00"}
-=======
-    AuxExemplarCharacters{"[áàăâåäā æ éèĕëē íìĭîïī óòŏöøō œ úùŭûüū ÿ]"}
-    ExemplarCharacters{"[aã b cç d eêẽ f g h iĩ j k l m nñ oôõ p q r s t u v w x y z]"}
-    ExemplarCharactersPunctuation{"[\\- ‐‑ – — , ; \\: ! ? . … '‘’ \u0022“” ( ) \\[ \\] § @ * / \\& # † ‡ ′ ″]"}
-    NumberElements{
-        deva{
-            patterns{
-                currencyFormat{"¤#,##,##0.00"}
-                decimalFormat{"#,##,##0.###"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                currencyFormat%noCurrency{"#,##,##0.00"}            }
         }
         latn{
             patterns{
-<<<<<<< HEAD
-                accountingFormat%alphaNextToNumber{"¤ #,##,##0.00"}
+accountingFormat%alphaNextToNumber{"¤ #,##,##0.00"}
                 accountingFormat%noCurrency{"#,##,##0.00"}
                 currencyFormat{"¤#,##,##0.00"}
                 currencyFormat%alphaNextToNumber{"¤ #,##,##0.00"}
-                currencyFormat%noCurrency{"#,##,##0.00"}
-=======
-                currencyFormat{"¤#,##,##0.00"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                decimalFormat{"#,##,##0.###"}
+                currencyFormat%noCurrency{"#,##,##0.00"}                decimalFormat{"#,##,##0.###"}
             }
             patternsLong{
                 decimalFormat{
@@ -121,8 +104,7 @@ kok_Latn{
                         other{"¤0hoz'.'nikh'.'"}
                     }
                 }
-<<<<<<< HEAD
-                currencyFormat%alphaNextToNumber{
+currencyFormat%alphaNextToNumber{
                     1000{
                         other{"¤ 0hoz"}
                     }
@@ -159,10 +141,7 @@ kok_Latn{
                     100000000000000{
                         other{"¤ 0hoz'.'nikh'.'"}
                     }
-                }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                decimalFormat{
+                }                decimalFormat{
                     1000{
                         other{"0hoz"}
                     }
@@ -202,8 +181,7 @@ kok_Latn{
                 }
             }
         }
-<<<<<<< HEAD
-        minimalPairs{
+minimalPairs{
             ordinal{
                 other{"{0}vya uzvya vatten voch."}
             }
@@ -211,10 +189,7 @@ kok_Latn{
                 one{"{0} vantto"}
                 other{"{0} vantte"}
             }
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
     calendar{
         generic{
             DateTimePatterns{
@@ -238,8 +213,7 @@ kok_Latn{
                 "{1}, {0}",
                 "{1}, {0}",
             }
-<<<<<<< HEAD
-            DateTimePatterns%relative{
+DateTimePatterns%relative{
                 "{1}, {0} 'vaztam'",
                 "{1}, {0} 'vaztam'",
                 "{1}, {0}",
@@ -257,22 +231,12 @@ kok_Latn{
                 Ehm{"E a h:mm "}
                 Ehms{"E a h:mm:ss"}
                 GyM{"M-y G"}
-                GyMEd{"E, d-M-y G"}
-=======
-            availableFormats{
-                Ehms{"E a h:mm:ss"}
-                Gy{"y G"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                GyMMM{"MMM y G"}
+                GyMEd{"E, d-M-y G"}                GyMMM{"MMM y G"}
                 GyMMMEd{"E, d MMM, y G"}
                 GyMMMd{"d MMM, y G"}
                 GyMd{"d-M-y GGGGG"}
-<<<<<<< HEAD
-                H{"HH'v'"}
-                Hv{"HH'v' v"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                MEd{"E, d-M"}
+H{"HH'v'"}
+                Hv{"HH'v' v"}                MEd{"E, d-M"}
                 MMMEd{"E, d MMM"}
                 MMMMd{"d MMMM"}
                 MMMd{"d MMM"}
@@ -280,11 +244,7 @@ kok_Latn{
                 h{"a h"}
                 hm{"a h:mm"}
                 hms{"a h:mm:ss"}
-<<<<<<< HEAD
-                hv{"a h 'vaztam' v"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                y{"y G"}
+hv{"a h 'vaztam' v"}                y{"y G"}
                 yyyy{"y G"}
                 yyyyM{"M-y GGGGG"}
                 yyyyMEd{"E, d-M-y GGGGG"}
@@ -298,18 +258,10 @@ kok_Latn{
             }
             intervalFormats{
                 Bh{
-<<<<<<< HEAD
-                    B{"B h – B h 'vaztam'"}
-                    h{"h – h B"}
+h{"h – h B"}
                 }
                 Bhm{
-=======
-                    h{"h – h B"}
-                }
-                Bhm{
-                    B{"h:mm B – h:mm B"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    h{"h:mm – h:mm B"}
+                    B{"h:mm B – h:mm B"}                    h{"h:mm – h:mm B"}
                     m{"h:mm – h:mm B"}
                 }
                 Gy{
@@ -449,14 +401,10 @@ kok_Latn{
                 "sokallim",
                 "sanje",
             }
-<<<<<<< HEAD
-            AmPmMarkersNarrow{
+AmPmMarkersNarrow{
                 "a",
                 "p",
-            }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            DateTimePatterns{
+            }            DateTimePatterns{
                 "a h:mm:ss zzzz",
                 "a h:mm:ss z",
                 "a h:mm:ss",
@@ -477,8 +425,7 @@ kok_Latn{
                 "{1}, {0}",
                 "{1}, {0}",
             }
-<<<<<<< HEAD
-            DateTimePatterns%relative{
+DateTimePatterns%relative{
                 "{1}, {0} 'vaztam'",
                 "{1}, {0} 'vaztam'",
                 "{1}, {0}",
@@ -495,55 +442,22 @@ kok_Latn{
                 Ehm{"E a h:mm"}
                 Ehms{"E a h:mm:ss"}
                 GyM{"M/y G"}
-                GyMEd{"E, d-M-y G"}
-=======
-            availableFormats{
-                Bh{"B h"}
-                Bhm{"B h:mm"}
-                Bhms{"B h:mm:ss"}
-                EBhm{"E B h:mm"}
-                EBhms{"E B h:mm:ss"}
-                Ehm{"E a h:mm"}
-                Ehms{"E a h:mm:ss"}
-                Gy{"y G"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                GyMMM{"MMM y G"}
+                GyMEd{"E, d-M-y G"}                GyMMM{"MMM y G"}
                 GyMMMEd{"E, d MMM, y G"}
                 GyMMMd{"d MMM, y G"}
                 GyMd{"d-M-y G"}
-<<<<<<< HEAD
-                H{"HH'v'"}
-                Hv{"HH'v' v"}
-                MEd{"dd-MM, E"}
+MEd{"dd-MM, E"}
                 MMMEd{"E, d MMM"}
-                MMMMW{
-                    one{"MMMM -'acho' 'suman' W"}
-=======
-                MEd{"dd-MM, E"}
-                MMMEd{"E, d MMM"}
-                MMMMW{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"MMMM -'acho' 'suman' W"}
+                MMMMW{                    other{"MMMM -'acho' 'suman' W"}
                 }
                 MMMMd{"d MMMM"}
                 MMMd{"d MMM"}
                 Md{"d/M"}
-<<<<<<< HEAD
-                h{"a h 'vaztam'"}
-=======
-                h{"a h"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                hm{"a h:mm"}
+h{"a h 'vaztam'"}                hm{"a h:mm"}
                 hms{"a h:mm:ss"}
                 hmsv{"a h:mm:ss v"}
                 hmv{"a h:mm v"}
-<<<<<<< HEAD
-                hv{"a h 'vaztam' v"}
-                yM{"M/y"}
-=======
-                yM{"M-y"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                yMEd{"E, d-M-y"}
+yM{"M-y"}                yMEd{"E, d-M-y"}
                 yMMM{"MMM y"}
                 yMMMEd{"E, d MMM, y"}
                 yMMMM{"MMMM y"}
@@ -552,11 +466,7 @@ kok_Latn{
                 yQQQ{"QQQ y"}
                 yQQQQ{"QQQQ y"}
                 yw{
-<<<<<<< HEAD
-                    one{"Y -'acho' 'suman' w"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"Y -'acho' 'suman' w"}
+one{"Y -'acho' 'suman' w"}                    other{"Y -'acho' 'suman' w"}
                 }
             }
             dayNames{
@@ -570,9 +480,7 @@ kok_Latn{
                         "Suk",
                         "Son",
                     }
-<<<<<<< HEAD
-=======
-                    narrow{
+narrow{
                         "A",
                         "S",
                         "M",
@@ -580,9 +488,7 @@ kok_Latn{
                         "B",
                         "S",
                         "S",
-                    }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    short{
+                    }                    short{
                         "Ai",
                         "Sm",
                         "Mg",
@@ -614,8 +520,7 @@ kok_Latn{
                 }
             }
             dayPeriod{
-<<<<<<< HEAD
-                format{
+format{
                     abbreviated{
                         afternoon1{"donpar"}
                         evening1{"sanj"}
@@ -659,31 +564,13 @@ kok_Latn{
                         evening1{"sanje"}
                         midnight{"modhyanrat"}
                         morning1{"sokallim"}
-                        night1{"rati"}
-=======
-                stand-alone{
-                    wide{
-                        am{"sokallim"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                        pm{"sanje"}
+                        night1{"rati"}                        pm{"sanje"}
                     }
                 }
             }
             eras{
                 abbreviated{
-<<<<<<< HEAD
-                    0{"KA"}
-                    1{"AD"}
-                }
-                narrow{
-                    0{"K"}
-                    1{"A"}
-                }
-                wide{
-                    0{"Krista Adim"}
-                    1{"Anno Domini"}
-=======
-                    "KA",
+"KA",
                     "AD",
                 }
                 narrow{
@@ -696,33 +583,21 @@ kok_Latn{
                 }
                 wide%variant{
                     "KA",
-                    "AD",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+                    "AD",                }
             }
             intervalFormats{
                 Bh{
-<<<<<<< HEAD
-                    B{"B h 'vaztam' – B h 'vaztam'"}
-                    h{"B h – h 'vaztam'"}
-=======
-                    B{"B h – B h"}
-                    h{"B h – h"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+B{"B h – B h"}
+                    h{"B h – h"}                }
                 Bhm{
                     B{"B h:mm – B h:mm"}
                     h{"B h:mm – h:mm"}
                     m{"B h:mm–h:mm"}
                 }
-<<<<<<< HEAD
-=======
-                Gy{
+Gy{
                     G{"y G – y G"}
                     y{"y – y G"}
-                }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                GyM{
+                }                GyM{
                     G{"M/y G – M/y G"}
                     M{"M/y – M/y G"}
                     y{"M/y – M/y G"}
@@ -757,12 +632,7 @@ kok_Latn{
                     y{"d/M/y – d/M/y G"}
                 }
                 H{
-<<<<<<< HEAD
-                    H{"HH–HH'v'"}
-=======
-                    H{"HH – HH"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+H{"HH – HH"}                }
                 Hm{
                     H{"HH:mm – HH:mm"}
                     m{"HH:mm – HH:mm"}
@@ -772,12 +642,7 @@ kok_Latn{
                     m{"HH:mm – HH:mm v"}
                 }
                 Hv{
-<<<<<<< HEAD
-                    H{"HH–HH'v' v"}
-=======
-                    H{"HH – HH v"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+H{"HH – HH v"}                }
                 M{
                     M{"M – M"}
                 }
@@ -804,14 +669,8 @@ kok_Latn{
                     d{"d – d"}
                 }
                 h{
-<<<<<<< HEAD
-                    a{"a h 'vaztam' – a h 'vaztam'"}
-                    h{"a h–h 'vaztam'"}
-=======
-                    a{"a h – a h"}
-                    h{"a h–h"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+a{"a h – a h"}
+                    h{"a h–h"}                }
                 hm{
                     a{"a h:mm – a h:mm"}
                     h{"a h:mm–h:mm"}
@@ -823,14 +682,8 @@ kok_Latn{
                     m{"a h:mm–h:mm v"}
                 }
                 hv{
-<<<<<<< HEAD
-                    a{"a h 'vaztam' – a h 'vaztam' v"}
-                    h{"a h–h 'vaztam' v"}
-=======
-                    a{"a h – a h v"}
-                    h{"a h–h v"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+a{"a h – a h v"}
+                    h{"a h–h v"}                }
                 y{
                     y{"y – y"}
                 }
@@ -883,9 +736,7 @@ kok_Latn{
                         "Nov",
                         "Dez",
                     }
-<<<<<<< HEAD
-=======
-                    narrow{
+narrow{
                         "J",
                         "F",
                         "M",
@@ -898,9 +749,7 @@ kok_Latn{
                         "O",
                         "N",
                         "D",
-                    }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    wide{
+                    }                    wide{
                         "Janer",
                         "Febrer",
                         "Mars",
@@ -944,8 +793,7 @@ kok_Latn{
                         "1lem timhoinallem",
                         "2rem timhoinallem",
                         "3rem timhoinallem",
-<<<<<<< HEAD
-                        "4them timhoinallem",
+"4tem timhoinallem",
                     }
                 }
                 stand-alone{
@@ -953,11 +801,7 @@ kok_Latn{
                         "1lem timhoinallem",
                         "2rem timhoinallem",
                         "3rem timhoinallem",
-                        "4them timhoinallem",
-=======
-                        "4tem timhoinallem",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    }
+                        "4tem timhoinallem",                    }
                 }
             }
         }
@@ -972,18 +816,9 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} disan"}
-                    other{"{0} disanim"}
+other{"{0} disanim"}
                 }
-                past{
-                    one{"{0} dis adim"}
-=======
-                    other{"{0} disanim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} dis adim"}
+                past{                    other{"{0} dis adim"}
                 }
             }
         }
@@ -996,30 +831,14 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0}disan"}
-                    other{"{0}disanim"}
+other{"{0}disanim"}
                 }
-                past{
-                    one{"{0}d adim"}
-=======
-                    other{"{0}disanim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0}d adim"}
+                past{                    other{"{0}d adim"}
                 }
             }
         }
         day-short{
-<<<<<<< HEAD
-            relativeTime{
-                future{
-                    one{"{0} disan"}
-                    other{"{0} disanim"}
-                }
-=======
-            dn{"dis"}
+dn{"dis"}
             relative{
                 "-1"{"kal"}
                 "0"{"aiz"}
@@ -1031,9 +850,7 @@ kok_Latn{
                 }
                 past{
                     other{"{0} dis adim"}
-                }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                }            }
         }
         dayOfYear{
             dn{"vorsacho dis"}
@@ -1041,15 +858,7 @@ kok_Latn{
         dayOfYear-narrow{
             dn{"vorsacho d."}
         }
-<<<<<<< HEAD
-        dayperiod{
-            dn{"AM/PM"}
-        }
-        era{
-            dn{"yug"}
-        }
-=======
-        dayOfYear-short{
+dayOfYear-short{
             dn{"vorsacho dis"}
         }
         dayperiod{
@@ -1069,9 +878,7 @@ kok_Latn{
         }
         era-short{
             dn{"yug"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        fri{
+        }        fri{
             relative{
                 "-1"{"fattlo Sukrar"}
                 "0"{"ho Sukrar"}
@@ -1079,18 +886,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Sukraran"}
+one{"{0} Sukraran"}
                     other{"{0} Sukraranim"}
                 }
                 past{
-                    one{"{0} Sukrar adim"}
-=======
-                    other{"{0} Sukraranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Sukraram adim"}
+                    one{"{0} Sukrar adim"}                    other{"{0} Sukraram adim"}
                 }
             }
         }
@@ -1102,18 +902,9 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Sukraran"}
-                    other{"{0} Sukraranim"}
+other{"{0} Sukraranim"}
                 }
-                past{
-                    one{"{0} Su adim"}
-=======
-                    other{"{0} Sukraranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Su adim"}
+                past{                    other{"{0} Su adim"}
                 }
             }
         }
@@ -1125,18 +916,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Sukraran"}
+one{"{0} Sukraran"}
                     other{"{0} Sukraranim"}
                 }
                 past{
-                    one{"{0} Suk. adim"}
-=======
-                    other{"{0} Sukraranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Suk. adim"}
+                    one{"{0} Suk. adim"}                    other{"{0} Suk. adim"}
                 }
             }
         }
@@ -1147,66 +931,37 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} voran"}
+one{"{0} voran"}
                     other{"{0} voranim"}
                 }
                 past{
-                    one{"{0} vor adim"}
-=======
-                    other{"{0} voranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} voram adim"}
+                    one{"{0} vor adim"}                    other{"{0} voram adim"}
                 }
             }
         }
         hour-narrow{
-<<<<<<< HEAD
-            relativeTime{
+relativeTime{
                 future{
                     one{"{0}voran"}
                     other{"{0}voranim"}
                 }
                 past{
-                    one{"{0}vor adim"}
-=======
-            dn{"vor"}
-            relative{
-                "0"{"hem vor"}
-            }
-            relativeTime{
-                future{
-                    other{"{0}voranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0}voram adim"}
+                    one{"{0}vor adim"}                    other{"{0}voram adim"}
                 }
             }
         }
         hour-short{
-<<<<<<< HEAD
+dn{"vor"}
+            relative{
+                "0"{"hem vor"}
+            }
             relativeTime{
                 future{
                     one{"{0} voran"}
                     other{"{0} voranim"}
                 }
                 past{
-                    one{"{0} vor adim"}
-=======
-            dn{"vor"}
-            relative{
-                "0"{"hem vor"}
-            }
-            relativeTime{
-                future{
-                    other{"{0} voranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} voram adim"}
+                    one{"{0} vor adim"}                    other{"{0} voram adim"}
                 }
             }
         }
@@ -1217,18 +972,9 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} mintan"}
-                    other{"{0} mintanim"}
+other{"{0} mintanim"}
                 }
-                past{
-                    one{"{0} minut adim"}
-=======
-                    other{"{0} mintanim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} mintam adim"}
+                past{                    other{"{0} mintam adim"}
                 }
             }
         }
@@ -1239,18 +985,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0}mintan"}
+one{"{0}mintan"}
                     other{"{0}min"}
                 }
                 past{
-                    one{"{0}min adim"}
-=======
-                    other{"{0}min"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0}min adim"}
+                    one{"{0}min adim"}                    other{"{0}min adim"}
                 }
             }
         }
@@ -1261,18 +1000,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} mintan"}
+one{"{0} mintan"}
                     other{"{0} min."}
                 }
                 past{
-                    one{"{0} min. adim"}
-=======
-                    other{"{0} min."}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} min. adim"}
+                    one{"{0} min. adim"}                    other{"{0} min. adim"}
                 }
             }
         }
@@ -1284,18 +1016,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Somaran"}
+one{"{0} Somaran"}
                     other{"{0} Somaranim"}
                 }
                 past{
-                    one{"{0} Somar adim"}
-=======
-                    other{"{0} Somaranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Somaram adim"}
+                    one{"{0} Somar adim"}                    other{"{0} Somaram adim"}
                 }
             }
         }
@@ -1307,18 +1032,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Somaran"}
+one{"{0} Somaran"}
                     other{"{0} Somaranim"}
                 }
                 past{
-                    one{"{0} Sm adim"}
-=======
-                    other{"{0} Somaranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Sm adim"}
+                    one{"{0} Sm adim"}                    other{"{0} Sm adim"}
                 }
             }
         }
@@ -1330,18 +1048,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Somaran"}
+one{"{0} Somaran"}
                     other{"{0} Somaranim"}
                 }
                 past{
-                    one{"{0} Som. adim"}
-=======
-                    other{"{0} Somaranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Som. adim"}
+                    one{"{0} Som. adim"}                    other{"{0} Som. adim"}
                 }
             }
         }
@@ -1354,18 +1065,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} mhoinean"}
+one{"{0} mhoinean"}
                     other{"{0} mhoineanim"}
                 }
                 past{
-                    one{"{0} mhoino adim"}
-=======
-                    other{"{0} mhoineanim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} mhoine adim"}
+                    one{"{0} mhoino adim"}                    other{"{0} mhoine adim"}
                 }
             }
         }
@@ -1378,18 +1082,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0}mhoinean"}
+one{"{0}mhoinean"}
                     other{"{0}mhoineanim"}
                 }
                 past{
-                    one{"{0}mh adim"}
-=======
-                    other{"{0}mhoineanim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0}mh adim"}
+                    one{"{0}mh adim"}                    other{"{0}mh adim"}
                 }
             }
         }
@@ -1402,18 +1099,9 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} mhoinean"}
-                    other{"{0} mhoineanim"}
+other{"{0} mhoineanim"}
                 }
-                past{
-                    one{"{0} mho. adim"}
-=======
-                    other{"{0} mhoineanim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} mho. adim"}
+                past{                    other{"{0} mho. adim"}
                 }
             }
         }
@@ -1426,18 +1114,9 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} timhoinallean"}
-                    other{"{0} timhoinalleanim"}
+other{"{0} timhoinalleanim"}
                 }
-                past{
-                    one{"{0} timhoinallem adim"}
-=======
-                    other{"{0} timhoinalleanim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} timhoinalle adim"}
+                past{                    other{"{0} timhoinalle adim"}
                 }
             }
         }
@@ -1450,18 +1129,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0}timhoinallean"}
+one{"{0}timhoinallean"}
                     other{"{0}timhoinalleanim"}
                 }
                 past{
-                    one{"{0}timh adim"}
-=======
-                    other{"{0}timhoinalleanim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0}timh adim"}
+                    one{"{0}timh adim"}                    other{"{0}timh adim"}
                 }
             }
         }
@@ -1474,18 +1146,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} timhoinallean"}
+one{"{0} timhoinallean"}
                     other{"{0} timhoinalleanim"}
                 }
                 past{
-                    one{"{0} timho. adim"}
-=======
-                    other{"{0} timhoinalleanim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} timho. adim"}
+                    one{"{0} timho. adim"}                    other{"{0} timho. adim"}
                 }
             }
         }
@@ -1497,18 +1162,9 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Sonvaran"}
-                    other{"{0} Sonvaranim"}
+other{"{0} Sonvaranim"}
                 }
-                past{
-                    one{"{0} Sonvar adim"}
-=======
-                    other{"{0} Sonvaranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Sonvaram adim"}
+                past{                    other{"{0} Sonvaram adim"}
                 }
             }
         }
@@ -1520,18 +1176,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Sonvaran"}
+one{"{0} Sonvaran"}
                     other{"{0} Sonvaranim"}
                 }
                 past{
-                    one{"{0} Sn adim"}
-=======
-                    other{"{0} Sonvaranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Sn adim"}
+                    one{"{0} Sn adim"}                    other{"{0} Sn adim"}
                 }
             }
         }
@@ -1543,18 +1192,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Sonvaran"}
+one{"{0} Sonvaran"}
                     other{"{0} Sonvaranim"}
                 }
                 past{
-                    one{"{0} Son. adim"}
-=======
-                    other{"{0} Sonvaranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Son. adim"}
+                    one{"{0} Son. adim"}                    other{"{0} Son. adim"}
                 }
             }
         }
@@ -1565,66 +1207,37 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} sekondan"}
+one{"{0} sekondan"}
                     other{"{0} sekondanim"}
                 }
                 past{
-                    one{"{0} sekond adim"}
-=======
-                    other{"{0} sekondanim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} sekond adim"}
+                    one{"{0} sekond adim"}                    other{"{0} sekond adim"}
                 }
             }
         }
         second-narrow{
             dn{"sek"}
-<<<<<<< HEAD
-            relativeTime{
-                future{
-                    one{"{0}sekondan"}
-                    other{"{0}sekondanim"}
-                }
-                past{
-                    one{"{0}sek adim"}
-=======
-            relative{
+relative{
                 "0"{"atam"}
             }
             relativeTime{
                 future{
                     other{"{0}sekondanim"}
                 }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0}sek adim"}
+                past{                    other{"{0}sek adim"}
                 }
             }
         }
         second-short{
             dn{"sek."}
-<<<<<<< HEAD
-            relativeTime{
-                future{
-                    one{"{0} sekondan"}
-                    other{"{0} sekondanim"}
-                }
-                past{
-                    one{"{0} sek. adim"}
-=======
-            relative{
+relative{
                 "0"{"atam"}
             }
             relativeTime{
                 future{
                     other{"{0} sekondanim"}
                 }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} sek. adim"}
+                past{                    other{"{0} sek. adim"}
                 }
             }
         }
@@ -1636,18 +1249,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Aitaran"}
+one{"{0} Aitaran"}
                     other{"{0} Aitaranim"}
                 }
                 past{
-                    one{"{0} Aitar adim"}
-=======
-                    other{"{0} Aitaranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Aitaram adim"}
+                    one{"{0} Aitar adim"}                    other{"{0} Aitaram adim"}
                 }
             }
         }
@@ -1659,18 +1265,9 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Aitaran"}
-                    other{"{0} Aitaranim"}
+other{"{0} Aitaranim"}
                 }
-                past{
-                    one{"{0} Ai adim"}
-=======
-                    other{"{0} Aitaranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Ai adim"}
+                past{                    other{"{0} Ai adim"}
                 }
             }
         }
@@ -1682,18 +1279,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Aitaran"}
+one{"{0} Aitaran"}
                     other{"{0} Aitaranim"}
                 }
                 past{
-                    one{"{0} Ait. adim"}
-=======
-                    other{"{0} Aitaranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Ait. adim"}
+                    one{"{0} Ait. adim"}                    other{"{0} Ait. adim"}
                 }
             }
         }
@@ -1705,18 +1295,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Birestaran"}
+one{"{0} Birestaran"}
                     other{"{0} Birestaranim"}
                 }
                 past{
-                    one{"{0} Birestar adim"}
-=======
-                    other{"{0} Birestaranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Birestaram adim"}
+                    one{"{0} Birestar adim"}                    other{"{0} Birestaram adim"}
                 }
             }
         }
@@ -1728,18 +1311,9 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Birestaran"}
-                    other{"{0} Birestaranim"}
+other{"{0} Birestaranim"}
                 }
-                past{
-                    one{"{0} Br adim"}
-=======
-                    other{"{0} Birestaranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Br adim"}
+                past{                    other{"{0} Br adim"}
                 }
             }
         }
@@ -1751,18 +1325,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Birestaran"}
+one{"{0} Birestaran"}
                     other{"{0} Birestaranim"}
                 }
                 past{
-                    one{"{0} Bre. adim"}
-=======
-                    other{"{0} Birestaranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Bre. adim"}
+                    one{"{0} Bre. adim"}                    other{"{0} Bre. adim"}
                 }
             }
         }
@@ -1774,18 +1341,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Mongllaran"}
+one{"{0} Mongllaran"}
                     other{"{0} Mongllaranim"}
                 }
                 past{
-                    one{"{0} Mongllar adim"}
-=======
-                    other{"{0} Mongllaranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Mongllaram adim"}
+                    one{"{0} Mongllar adim"}                    other{"{0} Mongllaram adim"}
                 }
             }
         }
@@ -1797,18 +1357,9 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Mongllaran"}
-                    other{"{0} Mongllaranim"}
+other{"{0} Mongllaranim"}
                 }
-                past{
-                    one{"{0} Mg adim"}
-=======
-                    other{"{0} Mongllaranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Mg adim"}
+                past{                    other{"{0} Mg adim"}
                 }
             }
         }
@@ -1820,18 +1371,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Mongllaran"}
+one{"{0} Mongllaran"}
                     other{"{0} Mongllaranim"}
                 }
                 past{
-                    one{"{0} Mon. adim"}
-=======
-                    other{"{0} Mongllaranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Mon. adim"}
+                    one{"{0} Mon. adim"}                    other{"{0} Mon. adim"}
                 }
             }
         }
@@ -1843,18 +1387,9 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Budhvaran"}
-                    other{"{0} Budhvaranim"}
+other{"{0} Budhvaranim"}
                 }
-                past{
-                    one{"{0} Budhvar adim"}
-=======
-                    other{"{0} Budhvaranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Budhvaram adim"}
+                past{                    other{"{0} Budhvaram adim"}
                 }
             }
         }
@@ -1866,18 +1401,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Budhvaran"}
+one{"{0} Budhvaran"}
                     other{"{0} Budhvaranim"}
                 }
                 past{
-                    one{"{0} Bu adim"}
-=======
-                    other{"{0} Budhvaranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Bu adim"}
+                    one{"{0} Bu adim"}                    other{"{0} Bu adim"}
                 }
             }
         }
@@ -1889,18 +1417,11 @@ kok_Latn{
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} Budhvaran"}
+one{"{0} Budhvaran"}
                     other{"{0} Budhvaranim"}
                 }
                 past{
-                    one{"{0} Bud. adim"}
-=======
-                    other{"{0} Budhvaranim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} Bud. adim"}
+                    one{"{0} Bud. adim"}                    other{"{0} Bud. adim"}
                 }
             }
         }
@@ -1914,18 +1435,9 @@ kok_Latn{
             relativePeriod{"{0} cho suman"}
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} sumanan"}
-                    other{"{0} sumananim"}
+other{"{0} sumananim"}
                 }
-                past{
-                    one{"{0} suman adim"}
-=======
-                    other{"{0} sumananim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} suman adim"}
+                past{                    other{"{0} suman adim"}
                 }
             }
         }
@@ -1939,30 +1451,16 @@ kok_Latn{
             relativePeriod{"{0} cho sum"}
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0}sumanan"}
+one{"{0}sumanan"}
                     other{"{0}sumananim"}
                 }
                 past{
-                    one{"{0}sum adim"}
-=======
-                    other{"{0}sumananim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0}sum adim"}
+                    one{"{0}sum adim"}                    other{"{0}sum adim"}
                 }
             }
         }
         week-short{
-<<<<<<< HEAD
-            relativeTime{
-                future{
-                    one{"{0} sumanan"}
-                    other{"{0} sumananim"}
-                }
-=======
-            dn{"suman"}
+dn{"suman"}
             relative{
                 "-1"{"fattlo suman"}
                 "0"{"ho suman"}
@@ -1975,9 +1473,7 @@ kok_Latn{
                 }
                 past{
                     other{"{0} suman adim"}
-                }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                }            }
         }
         weekOfMonth{
             dn{"mhoineacho suman"}
@@ -1985,136 +1481,76 @@ kok_Latn{
         weekOfMonth-narrow{
             dn{"mhoineacho sum."}
         }
-<<<<<<< HEAD
-=======
-        weekOfMonth-short{
+weekOfMonth-short{
             dn{"mhoineacho suman"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        weekday{
+        }        weekday{
             dn{"sumanacho dis"}
         }
         weekday-narrow{
             dn{"sumanacho d."}
         }
-<<<<<<< HEAD
-        weekdayOfMonth{
+weekdayOfMonth{
             dn{"mhoineant disacho prosong"}
         }
         weekdayOfMonth-narrow{
             dn{"mhoineant disacho prosong"}
         }
         weekdayOfMonth-short{
-            dn{"mhoineant disacho prosong"}
-=======
-        weekday-short{
-            dn{"sumanacho dis"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            dn{"mhoineant disacho prosong"}        }
         year{
             dn{"voros"}
             relative{
-<<<<<<< HEAD
-                "-1"{"porum"}
-                "0"{"ondum"}
-=======
-                "-1"{"fattlem voros"}
-                "0"{"hem voros"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                "1"{"fuddlem voros"}
+"-1"{"fattlem voros"}
+                "0"{"hem voros"}                "1"{"fuddlem voros"}
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} vorsan"}
+one{"{0} vorsan"}
                     other{"{0} vorsanim"}
                 }
                 past{
-                    one{"{0} voros adim"}
-=======
-                    other{"{0} vorsanim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} vorsam adim"}
+                    one{"{0} voros adim"}                    other{"{0} vorsam adim"}
                 }
             }
         }
         year-narrow{
-<<<<<<< HEAD
-            relative{
-                "-1"{"porum"}
-                "0"{"ondum"}
-=======
-            dn{"voros"}
+dn{"voros"}
             relative{
                 "-1"{"fattlem voros"}
-                "0"{"hem voros"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                "1"{"fuddlem voros"}
+                "0"{"hem voros"}                "1"{"fuddlem voros"}
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0}vorsan"}
-                    other{"{0}vorsanim"}
+other{"{0}vorsanim"}
                 }
-                past{
-                    one{"{0}voros adim"}
-=======
-                    other{"{0}vorsanim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0}vorsam adim"}
+                past{                    other{"{0}vorsam adim"}
                 }
             }
         }
         year-short{
-<<<<<<< HEAD
-            relative{
-                "-1"{"porum"}
-                "0"{"ondum"}
-=======
-            dn{"voros"}
+dn{"voros"}
             relative{
                 "-1"{"fattlem voros"}
-                "0"{"hem voros"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                "1"{"fuddlem voros"}
+                "0"{"hem voros"}                "1"{"fuddlem voros"}
             }
             relativeTime{
                 future{
-<<<<<<< HEAD
-                    one{"{0} vorsan"}
-                    other{"{0} vorsanim"}
+other{"{0} vorsanim"}
                 }
-                past{
-                    one{"{0} voros adim"}
-=======
-                    other{"{0} vorsanim"}
-                }
-                past{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    other{"{0} vorsam adim"}
+                past{                    other{"{0} vorsam adim"}
                 }
             }
         }
         zone{
             dn{"vell kxetr"}
         }
-<<<<<<< HEAD
-=======
-        zone-narrow{
+zone-narrow{
             dn{"kxetr"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        zone-short{
+        }        zone-short{
             dn{"kxetr"}
         }
     }
-<<<<<<< HEAD
-    listPattern{
+listPattern{
         or{
             2{"{0} vo {1}"}
             end{"{0}, vo {1}"}
@@ -2215,7 +1651,4 @@ kok_Latn{
         parameterDefault{
             formality{"informal"}
         }
-    }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+    }}

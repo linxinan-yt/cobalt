@@ -73,15 +73,11 @@
 #include "testing/gtest/include/gtest/gtest.h"
 #include "url/gurl.h"
 
-<<<<<<< HEAD
 #if BUILDFLAG(IS_WIN)
 #include <windows.h>
 
 #include "base/win/windows_types.h"
 #endif  // BUILDFLAG(IS_WIN)
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 namespace update_client {
 namespace {
 
@@ -2315,12 +2311,8 @@ TEST_F(UpdateClientTest, OneCrxInstallError) {
       scoped_refptr<MockInstaller> installer =
           base::MakeRefCounted<MockInstaller>();
 
-<<<<<<< HEAD
-=======
 #if !BUILDFLAG(IS_STARBOARD)
-      EXPECT_CALL(*installer, OnUpdateError(_)).Times(0);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      EXPECT_CALL(*installer, DoInstall(_));
+      EXPECT_CALL(*installer, OnUpdateError(_)).Times(0);      EXPECT_CALL(*installer, DoInstall(_));
       EXPECT_CALL(*installer, GetInstalledFile(_)).Times(0);
       EXPECT_CALL(*installer, Uninstall()).Times(0);
 #endif
@@ -5363,17 +5355,11 @@ TEST_F(UpdateClientTest, ActionRun_NoUpdate) {
 #else
     Unpacker::Unpack(
         "gjpmebpgbhcamgdgjcmnjfhggjpgcimm", "UpdateClientTest",
-<<<<<<< HEAD
-        base::ToVector(gjpm_hash), GetTestFilePath("runaction_test_win.crx3"),
-=======
-        std::vector<uint8_t>(std::begin(gjpm_hash), std::end(gjpm_hash)),
-        GetTestFilePath("runaction_test_win.crx3"),
+base::ToVector(gjpm_hash), GetTestFilePath("runaction_test_win.crx3"),
 #endif
 #if BUILDFLAG(IS_STARBOARD) && defined(IN_MEMORY_UPDATES)
         base::MakeRefCounted<UnzipCobaltFactory>()
-#else
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        base::MakeRefCounted<UnzipChromiumFactory>(
+#else        base::MakeRefCounted<UnzipChromiumFactory>(
             base::BindRepeating(&unzip::LaunchInProcessUnzipper))
 #endif
             ->Create(),

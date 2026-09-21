@@ -27,13 +27,8 @@
 #include "net/base/network_handle.h"
 #include "net/base/sockaddr_storage.h"
 #include "net/log/net_log_with_source.h"
-<<<<<<< HEAD
-#include "net/socket/datagram_client_socket.h"
-=======
 #include "net/net_buildflags.h"
-#include "net/socket/socket.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "net/socket/datagram_socket.h"
+#include "net/socket/socket.h"#include "net/socket/datagram_socket.h"
 #include "net/socket/diff_serv_code_point.h"
 #include "net/socket/socket_descriptor.h"
 #include "net/socket/socket_tag.h"
@@ -111,8 +106,7 @@ class NET_EXPORT UDPSocketPosix {
   // has been connected.
   int Read(IOBuffer* buf, int buf_len, CompletionOnceCallback callback);
 
-<<<<<<< HEAD
-  // Reads multiple datagrams from a connected socket.
+// Reads multiple datagrams from a connected socket.
   //
   // NOTE: When UDP GRO (Generic Receive Offload) is enabled on
   // Linux/Android/ChromeOS, the kernel can coalesce incoming UDP datagrams into
@@ -127,17 +121,6 @@ class NET_EXPORT UDPSocketPosix {
       size_t maximum_packet_size,
       base::OnceCallback<void(base::expected<DatagramsMetadata, Error>)>
           callback);
-=======
-#if BUILDFLAG(ENABLE_MULTI_PACKETS_PER_CALL_QUIC_OPTIMIZATIONS)
-  // Reads multiple packets from the socket.
-  // Only usable from the client-side of a UDP socket, after the socket
-  // has been connected.
-  int ReadMultiplePackets(Socket::ReadPacketResults* results,
-                          int read_buffer_size,
-                          CompletionOnceCallback callback);
-#endif  // BUILDFLAG(ENABLE_MULTI_PACKETS_PER_CALL_QUIC_OPTIMIZATIONS)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   // Writes to the socket.
   // Only usable from the client-side of a UDP socket, after the socket
   // has been connected.
@@ -407,18 +390,11 @@ class NET_EXPORT UDPSocketPosix {
   void DoWriteCallback(int rv);
 
   void DidCompleteRead();
-<<<<<<< HEAD
-  void DidCompleteMultipleRead();
+void DidCompleteMultipleRead();
   void OnFallbackReadComplete(
       base::OnceCallback<void(base::expected<DatagramsMetadata, Error>)>
           callback,
-      int rv);
-=======
-#if BUILDFLAG(ENABLE_MULTI_PACKETS_PER_CALL_QUIC_OPTIMIZATIONS)
-  void DidCompleteMultiplePacketRead();
-#endif  // BUILDFLAG(ENABLE_MULTI_PACKETS_PER_CALL_QUIC_OPTIMIZATIONS)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  void DidCompleteWrite();
+      int rv);  void DidCompleteWrite();
 
   // Handles stats and logging. |result| is the number of bytes transferred, on
   // success, or the net error code on failure. On success, LogRead takes in a

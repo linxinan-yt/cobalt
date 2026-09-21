@@ -20,25 +20,10 @@ import {
 } from '@playwright/test';
 import fs from 'fs';
 import path from 'path';
-<<<<<<< HEAD
 import type {IdleDetectorWindow} from '../frontend/idle_detector_interface';
 import {ensureExists} from '../base/assert';
 import type {Size2D} from '../base/geom';
 import type {AppImpl} from '../core/app_impl';
-=======
-import {IdleDetectorWindow} from '../frontend/idle_detector_interface';
-import {assertExists} from '../base/logging';
-import {Size2D} from '../base/geom';
-import {AppImpl} from '../core/app_impl';
-
-// Define the locators for elements you always want to mask.
-const GLOBAL_MASKS: ((page: Page) => Locator)[] = [
-  // Hide the footer when running integration tests, as the version code and the
-  // tiny text with pending queries can fail the screenshot diff test.
-  (page) => page.locator('.pf-sidebar__footer'),
-];
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 export class PerfettoTestHelper {
   private cachedSidebarSize?: Size2D;
 

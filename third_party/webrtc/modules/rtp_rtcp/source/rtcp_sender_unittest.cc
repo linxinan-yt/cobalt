@@ -669,12 +669,7 @@ TEST_F(RtcpSenderTest, SendsTmmbnIfSetAndEmpty) {
 TEST_F(RtcpSenderTest, ByeMustBeLast) {
   MockTransport mock_transport;
   EXPECT_CALL(mock_transport, SendRtcp(_, _))
-<<<<<<< HEAD
-      .WillOnce([](std::span<const uint8_t> data, ::testing::Unused) {
-=======
-      .WillOnce([](ArrayView<const uint8_t> data, ::testing::Unused) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        const uint8_t* next_packet = data.data();
+.WillOnce([](std::span<const uint8_t> data, ::testing::Unused) {        const uint8_t* next_packet = data.data();
         const uint8_t* const packet_end = data.data() + data.size();
         rtcp::CommonHeader packet;
         while (next_packet < packet_end) {

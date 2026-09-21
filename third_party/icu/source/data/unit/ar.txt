@@ -554,20 +554,14 @@ ar{
             }
             night{
                 dnam{"ليالي"}
-<<<<<<< HEAD
-                gender{"feminine"}
-                per{"{0} في الليلة"}
-=======
-                few{"{0} ليالٍ"}
+few{"{0} ليالٍ"}
                 gender{"feminine"}
                 many{"{0} ليلةً"}
                 one{"ليلة"}
                 other{"{0} ليلة"}
                 per{"{0} في الليلة"}
                 two{"ليلتان"}
-                zero{"{0} ليلة"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                zero{"{0} ليلة"}            }
             quarter{
                 dnam{"أرباع"}
                 few{"{0} أرباع سنوية"}
@@ -1577,8 +1571,7 @@ ar{
                 other{"{0} مغ/ديسيل"}
                 two{"{0} مغ/ديسيل"}
                 zero{"{0} مغ/ديسيل"}
-<<<<<<< HEAD
-            }
+}
             ofglucose{
                 dnam{"سكّري"}
                 few{"{0} سكّري"}
@@ -1595,10 +1588,7 @@ ar{
                 one{"{0} جزء"}
                 other{"{0} جزء"}
                 two{"جزآن"}
-                zero{"{0} جزء"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                zero{"{0} جزء"}            }
             percent{
                 dnam{"٪"}
             }
@@ -1729,19 +1719,11 @@ ar{
                 dnam{"شهر"}
             }
             night{
-<<<<<<< HEAD
-=======
-                dnam{"ليلة"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                few{"{0} ل"}
+dnam{"ليلة"}                few{"{0} ل"}
                 many{"{0} ل"}
                 one{"{0} ل"}
                 other{"{0} ل"}
-<<<<<<< HEAD
-=======
-                per{"{0}/ل"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                two{"{0} ل"}
+per{"{0}/ل"}                two{"{0} ل"}
                 zero{"{0} ل"}
             }
             quarter{
@@ -2458,9 +2440,7 @@ ar{
                 two{"{0}؉"}
                 zero{"{0}؉"}
             }
-<<<<<<< HEAD
-=======
-            permillion{
+permillion{
                 dnam{"جزء/مليون"}
                 few{"{0} جزء/مليون"}
                 many{"{0} جزء/مليون"}
@@ -2477,9 +2457,7 @@ ar{
                 other{"{0} جزء/مليار"}
                 two{"جزآن/مليار"}
                 zero{"{0} جزء/مليار"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            }        }
         consumption{
             liter-per-100-kilometer{
                 dnam{"لتر/‏١٠٠ كم"}

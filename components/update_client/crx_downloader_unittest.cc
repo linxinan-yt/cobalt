@@ -200,15 +200,10 @@ void CrxDownloaderTest::AddResponse(const GURL& url,
     auto head = network::mojom::URLResponseHead::New();
     head->content_length = data.size();
     network::URLLoaderCompletionStatus status(net_error);
-<<<<<<< HEAD
-    status.decoded_body_length = base::ByteSize(data.size());
-=======
-    status.decoded_body_length = data.size();
+status.decoded_body_length = base::ByteSize(data.size());
 #if BUILDFLAG(IS_STARBOARD)
     config_->test_url_loader_factory()->AddResponse(url, std::move(head), data, status);
-#else
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    test_url_loader_factory_.AddResponse(url, std::move(head), data, status);
+#else    test_url_loader_factory_.AddResponse(url, std::move(head), data, status);
 #endif
     return;
   }

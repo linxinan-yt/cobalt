@@ -693,16 +693,12 @@ am{
             one{"ቼክ ሪፐብሊክ ኮሩና"}
             other{"ቼክ ሪፐብሊክ ኮሮና"}
         }
-<<<<<<< HEAD
-        XCG{
+XCG{
             one{"የካሪቢያን ጊልደር"}
             other{"የካሪቢያን ጊልደር"}
         }
         ZWG{
             one{"የዚምባብዌ ወርቅ"}
             other{"የዚምባብዌ ወርቅ"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

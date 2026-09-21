@@ -54,18 +54,7 @@
 #include "src/trace_processor/types/trace_processor_context.h"
 #include "src/trace_processor/types/variadic.h"
 #include "src/trace_processor/util/args_utils.h"
-<<<<<<< HEAD
 #include "src/trace_processor/util/json_value.h"
-=======
-
-#if PERFETTO_BUILDFLAG(PERFETTO_TP_JSON)
-#include <json/config.h>
-#include <json/reader.h>
-#include <json/value.h>
-#include <json/writer.h>
-#endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 namespace perfetto::trace_processor::json {
 
 namespace {
@@ -546,27 +535,14 @@ class JsonExporter {
       for (auto it = arg_table.IterateRows(); it; ++it) {
         ArgSetId set_id = it.arg_set_id();
         if (set_id != cur_args_set_id) {
-<<<<<<< HEAD
-          args_sets_.Insert(cur_args_set_id, ArgNodeToJson(arg_set.root()));
-=======
-          args_sets_[cur_args_set_id] = ArgNodeToJson(arg_set.root());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          arg_set = ArgSet();
+args_sets_.Insert(cur_args_set_id, ArgNodeToJson(arg_set.root()));          arg_set = ArgSet();
           cur_args_set_id = set_id;
         }
         arg_set.AppendArg(storage->GetString(it.key()),
-<<<<<<< HEAD
-                          GetArgValue(*storage_, it.row_number().row_number()));
+GetArgValue(*storage_, it.row_number().row_number()));
       }
       if (cur_args_set_id != std::numeric_limits<uint32_t>::max()) {
-        args_sets_.Insert(cur_args_set_id, ArgNodeToJson(arg_set.root()));
-=======
-                          storage_->GetArgValue(it.row_number().row_number()));
-      }
-      if (cur_args_set_id != std::numeric_limits<uint32_t>::max()) {
-        args_sets_[cur_args_set_id] = ArgNodeToJson(arg_set.root());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      }
+        args_sets_.Insert(cur_args_set_id, ArgNodeToJson(arg_set.root()));      }
       PostprocessArgs();
     }
 
@@ -618,34 +594,17 @@ class JsonExporter {
       PERFETTO_FATAL("Not reached");  // For gcc.
     }
 
-<<<<<<< HEAD
-    Dom ArgNodeToJson(const ArgNode& node) {
-=======
-    Json::Value ArgNodeToJson(const ArgNode& node) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      switch (node.GetType()) {
+Dom ArgNodeToJson(const ArgNode& node) {      switch (node.GetType()) {
         case ArgNode::Type::kPrimitive:
           return VariadicToJson(node.GetPrimitiveValue());
         case ArgNode::Type::kArray: {
-<<<<<<< HEAD
-          Dom result(Type::kArray);
+Dom result(Type::kArray);
           for (const auto& child : node.GetArray()) {
-            result.Append(ArgNodeToJson(child));
-=======
-          Json::Value result(Json::arrayValue);
-          for (const auto& child : node.GetArray()) {
-            result.append(ArgNodeToJson(child));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          }
+            result.Append(ArgNodeToJson(child));          }
           return result;
         }
         case ArgNode::Type::kDict: {
-<<<<<<< HEAD
-          Dom result(Type::kObject);
-=======
-          Json::Value result(Json::objectValue);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          for (const auto& [key, value] : node.GetDict()) {
+Dom result(Type::kObject);          for (const auto& [key, value] : node.GetDict()) {
             result[key] = ArgNodeToJson(value);
           }
           return result;

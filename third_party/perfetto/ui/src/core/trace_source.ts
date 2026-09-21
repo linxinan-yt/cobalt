@@ -12,14 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-<<<<<<< HEAD
 import type {SerializedAppState} from './state_serialization_schema';
 import type {TraceStream} from '../public/stream';
-=======
-import {SerializedAppState} from './state_serialization_schema';
-import {TraceStream} from '../public/stream';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 interface CommonTraceProps {
   serializedAppState?: SerializedAppState;
 }

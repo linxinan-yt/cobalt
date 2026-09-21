@@ -273,11 +273,7 @@ public:
     void TestBogusLocale();
     void TestLongLocale();
     void TestChineseCalendar23043();
-<<<<<<< HEAD
-    void TestAmPmLengths23114();
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+void TestAmPmLengths23114();
 private:
     UBool showParse(DateFormat &format, const UnicodeString &formattedString);
 

@@ -85,11 +85,7 @@ tt{
         CN{"Кытай"}
         CO{"Колумбия"}
         CP{"Клиппертон утравы"}
-<<<<<<< HEAD
-        CQ{"Сарк"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        CR{"Коста-Рика"}
+CQ{"Сарк"}        CR{"Коста-Рика"}
         CU{"Куба"}
         CV{"Кабо-Верде"}
         CW{"Кюрасао"}

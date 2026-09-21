@@ -11,10 +11,4 @@ src:*sqlite3.c
 # Same problem, in libprotobuf's DiskSourceTree::OpenDiskFile -> fstat().
 fun:*OpenDiskFile*
 
-<<<<<<< HEAD
-# Same problem, in libunwindstack's MemoryFileAtOffset::Init -> fstat().
-=======
-# Failure is being caused by MSAN not correctly realising that fstat initializes
-# stat buffer.
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-fun:_ZN11unwindstack18MemoryFileAtOffset4InitERKNSt4__Cr12basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEmm
+# Same problem, in libunwindstack's MemoryFileAtOffset::Init -> fstat().fun:_ZN11unwindstack18MemoryFileAtOffset4InitERKNSt4__Cr12basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEmm

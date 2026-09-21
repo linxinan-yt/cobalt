@@ -437,21 +437,13 @@ component("main_frame_counter") {
 
 # See comment at the top of //content/BUILD.gn for how this works.
 group("for_content_tests") {
-<<<<<<< HEAD
-  visibility = [ "//content/test/*" ]
-=======
-  visibility = [
-    "//content/services/auction_worklet:tests",
-    "//content/test/*",
-  ]
+visibility = [ "//content/test/*" ]
   if (is_cobalt) {
     visibility += [
       "//cobalt/testing:*",
       "//cobalt/testing/browser_tests:*",
     ]
-  }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  if (!is_component_build) {
+  }  if (!is_component_build) {
     public_deps = [ ":common" ]
   }
 }

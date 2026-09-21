@@ -391,20 +391,6 @@ void AgentSchedulingGroup::CreateFrame(mojom::CreateFrameParamsPtr params) {
       std::move(params->policy_container), params->is_for_nested_main_frame);
 }
 
-<<<<<<< HEAD
-=======
-void AgentSchedulingGroup::CreateSharedStorageWorkletService(
-    mojo::PendingReceiver<blink::mojom::SharedStorageWorkletService> receiver,
-    blink::mojom::WorkletGlobalScopeCreationParamsPtr
-        global_scope_creation_params) {
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-  blink::WebSharedStorageWorkletThread::Start(
-      agent_group_scheduler_->DefaultTaskRunner(), std::move(receiver),
-      std::move(global_scope_creation_params));
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-}
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 void AgentSchedulingGroup::BindAssociatedInterfaces(
     mojo::PendingAssociatedRemote<mojom::AgentSchedulingGroupHost> remote_host,
     mojo::PendingAssociatedReceiver<mojom::RouteProvider>

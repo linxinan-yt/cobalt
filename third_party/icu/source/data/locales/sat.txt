@@ -89,21 +89,12 @@ sat{
             }
             eras{
                 abbreviated{
-<<<<<<< HEAD
-                    0{"ᱵᱤ ᱥᱤ"}
-                    1{"ᱤᱥᱣᱤ"}
-                }
-                abbreviated%variant{
-                    0{"ᱵᱤ ᱥᱤ ᱤ"}
-=======
-                    "ᱵᱤ ᱥᱤ",
+"ᱵᱤ ᱥᱤ",
                     "ᱤᱥᱣᱤ",
                 }
                 abbreviated%variant{
                     "ᱵᱤ ᱥᱤ ᱤ",
-                    "ᱤᱥᱣᱤ",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+                    "ᱤᱥᱣᱤ",                }
             }
             monthNames{
                 format{

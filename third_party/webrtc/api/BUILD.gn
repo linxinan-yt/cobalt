@@ -1703,22 +1703,14 @@ if (rtc_include_tests) {
     testonly = true
     sources = [ "test/mock_datagram_connection.h" ]
     deps = [
-<<<<<<< HEAD
-=======
-      ":array_view",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      ":candidate",
+":array_view",      ":candidate",
       ":datagram_connection",
       "../p2p:transport_description",
       "../rtc_base:refcount",
       "//test:test_support",
       "//testing/gmock",
-<<<<<<< HEAD
-      "//third_party/abseil-cpp/absl/functional:any_invocable",
-      "//third_party/abseil-cpp/absl/strings:string_view",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    ]
+"//third_party/abseil-cpp/absl/functional:any_invocable",
+      "//third_party/abseil-cpp/absl/strings:string_view",    ]
   }
 
   rtc_library("mock_datagram_connection_observer") {

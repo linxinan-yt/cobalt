@@ -14,20 +14,7 @@
 
 U_NAMESPACE_BEGIN
 
-<<<<<<< HEAD
-class U_I18N_API_CLASS EraRules : public UMemory {
-=======
-// Export an explicit template instantiation of LocalMemory used as a data member of EraRules.
-// When building DLLs for Windows this is required even though no direct access leaks out of the i18n library.
-// See digitlst.h, pluralaffix.h, datefmt.h, and others for similar examples.
-#if U_PF_WINDOWS <= U_PLATFORM && U_PLATFORM <= U_PF_CYGWIN
-template class U_I18N_API LocalPointerBase<int32_t>;
-template class U_I18N_API LocalMemory<int32_t>;
-#endif
-
-class U_I18N_API EraRules : public UMemory {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-public:
+class U_I18N_API_CLASS EraRules : public UMemory {public:
     U_I18N_API ~EraRules();
 
     U_I18N_API static EraRules* createInstance(const char* calType,

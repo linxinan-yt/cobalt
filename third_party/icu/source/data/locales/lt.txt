@@ -730,9 +730,7 @@ lt{
                 d{
                     d{"dd–dd"}
                 }
-<<<<<<< HEAD
-=======
-                h{
+h{
                     a{"h a – h a"}
                 }
                 hv{
@@ -754,9 +752,7 @@ lt{
                     M{"y MMM d, E – MMM d, E"}
                     d{"y MMM d, E – MMM d, E"}
                     y{"y MMM d, E – y MMM d, E"}
-                }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                yMMMM{
+                }                yMMMM{
                     M{"y LLLL–LLLL"}
                     y{"y LLLL – y LLLL"}
                 }
@@ -1838,9 +1834,7 @@ lt{
                 "[\\: ∶]",
             }
         }
-<<<<<<< HEAD
-=======
-        general{
+general{
             lenient{
                 "[.．․﹒ 。｡︒]",
                 "['＇’ ՚ ᾽᾿ ʼ]",
@@ -1852,9 +1846,7 @@ lt{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        number{
+        }        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ، ٫ 、﹑､︑]",

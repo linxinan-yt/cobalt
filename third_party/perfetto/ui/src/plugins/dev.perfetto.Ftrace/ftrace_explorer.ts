@@ -31,8 +31,7 @@ import {
 import {PopupPosition} from '../../widgets/popup';
 import {
   Grid,
-<<<<<<< HEAD
-  type GridColumn,
+type GridColumn,
   GridHeaderCell,
   GridCell,
   type GridRow,
@@ -78,34 +77,14 @@ interface FtraceExplorerAttrs {
   readonly excludeList: ReadonlyArray<string>;
   readonly onExcludeListChange: (excludeList: ReadonlyArray<string>) => void;
   // How events are scoped by cpu, and whether the scope is settable.
-  readonly cpuFilter: FtraceCpuFilter;
-=======
-  GridColumn,
-  GridHeaderCell,
-  GridCell,
-  GridRow,
-} from '../../widgets/grid';
-import {FtraceFilter, FtraceStat} from './common';
-
-const ROW_H = 24;
-
-interface FtraceExplorerAttrs {
-  readonly cache: FtraceExplorerCache;
-  readonly filterStore: Store<FtraceFilter>;
-  readonly trace: Trace;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  readonly cpuFilter: FtraceCpuFilter;}
 
 interface FtraceEvent {
   readonly id: number;
   readonly ts: time;
   readonly name: string;
   readonly cpu: number;
-<<<<<<< HEAD
-  readonly ucpu: number;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  readonly thread: string | null;
+readonly ucpu: number;  readonly thread: string | null;
   readonly process: string | null;
   readonly args: string;
 }
@@ -158,32 +137,13 @@ export class FtraceExplorer implements m.ClassComponent<FtraceExplorerAttrs> {
     offset: 0,
     count: 0,
   };
-<<<<<<< HEAD
-
-  // Query slots for declarative data fetching
+// Query slots for declarative data fetching
   private readonly executor = new AtomicTaskQueue();
   private readonly countSlot = new AsyncMemo<number>(this.executor);
   private readonly eventsSlot = new AsyncMemo<FtracePanelData>(this.executor);
 
   constructor({attrs}: m.CVnode<FtraceExplorerAttrs>) {
     this.trace = attrs.trace;
-=======
-  private readonly filterAndWindowStateMonitor: Monitor;
-  private readonly queryLimiter = new AsyncLimiter();
-
-  // A cache of the data we have most recently loaded from our store
-  private data?: FtracePanelData;
-  private numEvents: number = 0;
-
-  constructor({attrs}: m.CVnode<FtraceExplorerAttrs>) {
-    this.trace = attrs.trace;
-    this.filterAndWindowStateMonitor = new Monitor([
-      () => attrs.trace.timeline.visibleWindow.toTimeSpan().start,
-      () => attrs.trace.timeline.visibleWindow.toTimeSpan().end,
-      () => attrs.filterStore.state,
-    ]);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     if (attrs.cache.state === 'blank') {
       getFtraceCounters(attrs.trace.engine)
         .then((counters) => {
@@ -203,8 +163,7 @@ export class FtraceExplorer implements m.ClassComponent<FtraceExplorerAttrs> {
   }
 
   view({attrs}: m.CVnode<FtraceExplorerAttrs>) {
-<<<<<<< HEAD
-    const {start, end} =
+const {start, end} =
       attrs.bounds ?? attrs.trace.timeline.visibleWindow.toTimeSpan();
     const filters: FtraceEventFilters = {
       excludeEvents: attrs.excludeList,
@@ -234,30 +193,17 @@ export class FtraceExplorer implements m.ClassComponent<FtraceExplorerAttrs> {
           end,
           filters,
         ),
-    });
-
-=======
-    this.filterAndWindowStateMonitor.ifStateChanged(() => {
-      this.scheduleDataReload(attrs, true);
-    });
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    const columns: GridColumn[] = [
+    });    const columns: GridColumn[] = [
       {key: 'id', header: m(GridHeaderCell, 'ID')},
       {key: 'timestamp', header: m(GridHeaderCell, 'Timestamp')},
       {key: 'name', header: m(GridHeaderCell, 'Name')},
       {key: 'cpu', header: m(GridHeaderCell, 'CPU')},
       {key: 'process', header: m(GridHeaderCell, 'Process')},
-<<<<<<< HEAD
-      {
+{
         key: 'args',
         header: m(GridHeaderCell, 'Args'),
         maxInitialWidthPx: Infinity,
-      },
-=======
-      {key: 'args', header: m(GridHeaderCell, 'Args')},
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    ];
+      },    ];
 
     return m(
       DetailsShell,
@@ -270,21 +216,11 @@ export class FtraceExplorer implements m.ClassComponent<FtraceExplorerAttrs> {
         className: 'pf-ftrace-explorer',
         columns,
         rowData: {
-<<<<<<< HEAD
-          data: this.renderData(data, cpuByUcpu),
+data: this.renderData(data, cpuByUcpu),
           total: numEvents ?? 0,
           offset: data?.offset ?? 0,
           onLoadData: (offset, count) => {
-            this.pagination = {offset, count};
-=======
-          data: this.renderData(),
-          total: this.numEvents,
-          offset: this.data?.offset ?? 0,
-          onLoadData: (offset, count) => {
-            this.pagination = {offset, count};
-            this.scheduleDataReload(attrs, false);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          },
+            this.pagination = {offset, count};          },
         },
         virtualization: {
           rowHeightPx: ROW_H,
@@ -292,14 +228,8 @@ export class FtraceExplorer implements m.ClassComponent<FtraceExplorerAttrs> {
         fillHeight: true,
         onRowHover: (rowIndex) => {
           // Calculate the actual row index from virtualization offset
-<<<<<<< HEAD
-          const actualIndex = rowIndex - (data?.offset ?? 0);
-          const event = data?.events[actualIndex];
-=======
-          const actualIndex = rowIndex - (this.data?.offset ?? 0);
-          const event = this.data?.events[actualIndex];
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          if (event) {
+const actualIndex = rowIndex - (data?.offset ?? 0);
+          const event = data?.events[actualIndex];          if (event) {
             attrs.trace.timeline.hoverCursorTimestamp = event.ts;
           }
         },
@@ -310,8 +240,7 @@ export class FtraceExplorer implements m.ClassComponent<FtraceExplorerAttrs> {
     );
   }
 
-<<<<<<< HEAD
-  private renderData(
+private renderData(
     data: FtracePanelData | undefined,
     cpuByUcpu: ReadonlyMap<number, Cpu>,
   ): ReadonlyArray<GridRow> {
@@ -320,51 +249,12 @@ export class FtraceExplorer implements m.ClassComponent<FtraceExplorerAttrs> {
     }
 
     return data.events.map((event) => {
-      const {ts, name, cpu, ucpu, process, args, id} = event;
-=======
-  private scheduleDataReload(
-    {filterStore, trace}: FtraceExplorerAttrs,
-    filterOrTimeWindowChanged: boolean,
-  ): void {
-    const {offset, count} = this.pagination;
-    const {start, end} = trace.timeline.visibleWindow.toTimeSpan();
-    const excludeList = filterStore.state.excludeList;
-
-    this.queryLimiter.schedule(async () => {
-      if (filterOrTimeWindowChanged) {
-        this.numEvents = await fetchFtraceEventCount(
-          trace.engine,
-          start,
-          end,
-          excludeList,
-        );
-      }
-      this.data = await fetchFtraceEvents(
-        trace.engine,
-        offset,
-        count,
-        start,
-        end,
-        excludeList,
-      );
-    });
-  }
-
-  private renderData(): ReadonlyArray<GridRow> {
-    if (!this.data) {
-      return [];
-    }
-
-    return this.data.events.map((event) => {
-      const {ts, name, cpu, process, args, id} = event;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      const color = materialColorScheme(name).base.cssString;
+      const {ts, name, cpu, ucpu, process, args, id} = event;      const color = materialColorScheme(name).base.cssString;
       const cpuLabel = cpuByUcpu.get(ucpu)?.toString() ?? String(cpu);
 
       return [
         m(GridCell, {align: 'right'}, id),
-<<<<<<< HEAD
-        m(
+m(
           GridCell,
           {
             menuItems: m(MenuItem, {
@@ -379,11 +269,7 @@ export class FtraceExplorer implements m.ClassComponent<FtraceExplorerAttrs> {
             }),
           },
           m(Timestamp, {trace: this.trace, ts}),
-        ),
-=======
-        m(GridCell, m(Timestamp, {trace: this.trace, ts})),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        m(
+        ),        m(
           GridCell,
           m(
             '.pf-ftrace-namebox',
@@ -391,28 +277,12 @@ export class FtraceExplorer implements m.ClassComponent<FtraceExplorerAttrs> {
             name,
           ),
         ),
-<<<<<<< HEAD
-        m(GridCell, cpuLabel),
-=======
-        m(GridCell, {align: 'right'}, cpu),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        m(GridCell, process ?? ''),
+m(GridCell, {align: 'right'}, cpu),        m(GridCell, process ?? ''),
         m(GridCell, args),
       ];
     });
   }
 
-<<<<<<< HEAD
-=======
-  private renderTitle() {
-    if (this.data) {
-      return `Ftrace Events (${this.numEvents})`;
-    } else {
-      return 'Ftrace Events';
-    }
-  }
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   private renderFilterPanel(attrs: FtraceExplorerAttrs) {
     const {cpuFilter} = attrs;
 
@@ -455,20 +325,11 @@ export class FtraceExplorer implements m.ClassComponent<FtraceExplorerAttrs> {
       }),
     );
 
-<<<<<<< HEAD
-    const eventFilterButton = m(PopupMultiSelect, {
+const eventFilterButton = m(PopupMultiSelect, {
       label: 'Events',
       icon: Icons.Filter,
       position: PopupPosition.Top,
-      options: eventOptions,
-=======
-    return m(PopupMultiSelect, {
-      label: 'Filter',
-      icon: 'filter_list_alt',
-      position: PopupPosition.Top,
-      options,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      onChange: (diffs: MultiSelectDiff[]) => {
+      options: eventOptions,      onChange: (diffs: MultiSelectDiff[]) => {
         const next = new Set<string>(attrs.excludeList);
         diffs.forEach(({checked, id}) => {
           if (checked) {
@@ -524,7 +385,6 @@ export class FtraceExplorer implements m.ClassComponent<FtraceExplorerAttrs> {
   }
 }
 
-<<<<<<< HEAD
 // Builds the shared WHERE clause for the ftrace_event queries.
 function ftraceWhere(
   filters: FtraceEventFilters,
@@ -539,16 +399,11 @@ function ftraceWhere(
     `ftrace_event.ucpu in (${includeSql})`,
     `ts >= ${start} and ts <= ${end}`,
   ].join(' and ');
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-async function fetchFtraceEventCount(
+}async function fetchFtraceEventCount(
   engine: Engine,
   start: time,
   end: time,
-<<<<<<< HEAD
-  filters: FtraceEventFilters,
+filters: FtraceEventFilters,
 ): Promise<number> {
   const queryRes = await engine.query(`
     select count(id) as numEvents
@@ -568,32 +423,6 @@ async function queryFtraceEvents(
   const limitClause = pagination
     ? `limit ${pagination.count} offset ${pagination.offset}`
     : '';
-=======
-  excludeList: ReadonlyArray<string>,
-): Promise<number> {
-  const excludeListSql = excludeList.map((s) => `'${s}'`).join(',');
-
-  const queryRes = await engine.query(`
-    select count(id) as numEvents
-    from ftrace_event
-    where
-      ftrace_event.name not in (${excludeListSql}) and
-      ts >= ${start} and ts <= ${end}
-    `);
-  return queryRes.firstRow({numEvents: NUM}).numEvents;
-}
-
-async function fetchFtraceEvents(
-  engine: Engine,
-  offset: number,
-  count: number,
-  start: time,
-  end: time,
-  excludeList: ReadonlyArray<string>,
-): Promise<FtracePanelData> {
-  const excludeListSql = excludeList.map((s) => `'${s}'`).join(',');
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   const queryRes = await engine.query(`
     select
       ftrace_event.id as id,
@@ -633,8 +462,7 @@ async function fetchFtraceEvents(
       args: it.args,
     });
   }
-<<<<<<< HEAD
-  return events;
+return events;
 }
 
 async function fetchFtraceEvents(
@@ -658,8 +486,4 @@ async function fetchAllFtraceEvents(
   end: time,
   filters: FtraceEventFilters,
 ): Promise<FtraceEvent[]> {
-  return queryFtraceEvents(engine, start, end, filters);
-=======
-  return {events, offset};
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  return queryFtraceEvents(engine, start, end, filters);}

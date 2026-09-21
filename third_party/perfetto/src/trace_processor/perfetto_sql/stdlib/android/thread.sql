@@ -53,22 +53,12 @@ SELECT
 
 -- Per <process, thread_name_prefix> stats of threads created in a process
 CREATE PERFETTO FUNCTION _android_thread_creation_spam_per_thread(
-<<<<<<< HEAD
-  -- Maximum duration between creating and destroying a thread before their the
-  -- thread creation event is considered. If NULL, considers all thread creations.
-  max_thread_dur DOUBLE,
-  -- Sliding window duration for counting the thread creations. Each window
-  -- starts at the first thread creation per <process, thread_name_prefix>.
-  sliding_window_dur DOUBLE
-=======
-    -- Maximum duration between creating and destroying a thread before their the
+-- Maximum duration between creating and destroying a thread before their the
     -- thread creation event is considered. If NULL, considers all thread creations.
     max_thread_dur DOUBLE,
     -- Sliding window duration for counting the thread creations. Each window
     -- starts at the first thread creation per <process, thread_name_prefix>.
-    sliding_window_dur DOUBLE
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-)
+    sliding_window_dur DOUBLE)
 RETURNS TABLE(
   -- Process name creating threads.
   process_name STRING,
@@ -86,27 +76,10 @@ WITH
       upid,
       process.name AS process_name,
       android_standardize_thread_name(thread.name) AS thread_name_prefix,
-<<<<<<< HEAD
-      count(thread.start_ts) OVER (
-        PARTITION BY
-          upid,
-          android_standardize_thread_name(thread.name)
-        ORDER BY thread.start_ts
-        RANGE BETWEEN CURRENT ROW AND cast_int!($sliding_window_dur) FOLLOWING
-      ) AS count
-=======
-      count(thread.start_ts) OVER (PARTITION BY upid, android_standardize_thread_name(thread.name) ORDER BY thread.start_ts RANGE BETWEEN CURRENT ROW AND cast_int!($sliding_window_dur) FOLLOWING) AS count
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    FROM thread
+count(thread.start_ts) OVER (PARTITION BY upid, android_standardize_thread_name(thread.name) ORDER BY thread.start_ts RANGE BETWEEN CURRENT ROW AND cast_int!($sliding_window_dur) FOLLOWING) AS count    FROM thread
     JOIN process USING (upid)
     WHERE
-<<<<<<< HEAD
-      ($max_thread_dur AND (thread.end_ts - thread.start_ts) <= $max_thread_dur)
-      OR $max_thread_dur IS NULL
-  )
-SELECT process_name, upid, thread_name_prefix, max(count) AS max_count_per_sec
-=======
-      (
+(
         $max_thread_dur AND (
           thread.end_ts - thread.start_ts
         ) <= $max_thread_dur
@@ -117,9 +90,7 @@ SELECT
   process_name,
   upid,
   thread_name_prefix,
-  max(count) AS max_count_per_sec
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-FROM x
+  max(count) AS max_count_per_secFROM x
 GROUP BY
   upid,
   thread_name_prefix
@@ -130,58 +101,25 @@ ORDER BY
 
 -- Per process stats of threads created in a process
 CREATE PERFETTO FUNCTION _android_thread_creation_spam_per_process(
-<<<<<<< HEAD
-  -- Maximum duration between creating and destroying a thread before their
-  -- thread creation event is considered. If NULL, considers all thread creations.
-  max_thread_dur DOUBLE,
-  -- Sliding window duration for counting the thread creations. Each window
-  -- starts at the first thread creation per <process>.
-  sliding_window_dur DOUBLE
-)
-RETURNS TABLE(
-=======
-    -- Maximum duration between creating and destroying a thread before their
+-- Maximum duration between creating and destroying a thread before their
     -- thread creation event is considered. If NULL, considers all thread creations.
     max_thread_dur DOUBLE,
     -- Sliding window duration for counting the thread creations. Each window
     -- starts at the first thread creation per <process>.
     sliding_window_dur DOUBLE
 )
-RETURNS TABLE (
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  -- Process name creating threads.
+RETURNS TABLE (  -- Process name creating threads.
   process_name STRING,
   -- Unique process pid creating threads.
   upid JOINID(process.id),
   -- Max number of threads created within a time window.
   max_count_per_sec LONG
-<<<<<<< HEAD
-)
-AS
-=======
-) AS
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-WITH
+) ASWITH
   x AS (
     SELECT
       upid,
       process.name AS process_name,
-<<<<<<< HEAD
-      count(thread.start_ts) OVER (
-        PARTITION BY
-          upid
-        ORDER BY thread.start_ts
-        RANGE BETWEEN CURRENT ROW AND cast_int!($sliding_window_dur) FOLLOWING
-      ) AS count
-    FROM thread
-    JOIN process USING (upid)
-    WHERE
-      ($max_thread_dur AND (thread.end_ts - thread.start_ts) <= $max_thread_dur)
-      OR $max_thread_dur IS NULL
-  )
-SELECT process_name, upid, max(count) AS max_count_per_sec
-=======
-      count(thread.start_ts) OVER (PARTITION BY upid ORDER BY thread.start_ts RANGE BETWEEN CURRENT ROW AND cast_int!($sliding_window_dur) FOLLOWING) AS count
+count(thread.start_ts) OVER (PARTITION BY upid ORDER BY thread.start_ts RANGE BETWEEN CURRENT ROW AND cast_int!($sliding_window_dur) FOLLOWING) AS count
     FROM thread
     JOIN process
       USING (upid)
@@ -196,9 +134,7 @@ SELECT process_name, upid, max(count) AS max_count_per_sec
 SELECT
   process_name,
   upid,
-  max(count) AS max_count_per_sec
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-FROM x
+  max(count) AS max_count_per_secFROM x
 GROUP BY
   upid
 HAVING

@@ -341,7 +341,6 @@ TEST_F(ProcessTrackerTest, NamespacedThreadMissingProcess) {
   // In this test, we just verify the function returns false.
 }
 
-<<<<<<< HEAD
 // Characterization tests pinning the tid -> utid lookup semantics (bare and
 // pid-qualified lookups, tid/pid recycling, resurrection). A failure here is a
 // real behavioral change, not a test to be "fixed".
@@ -643,9 +642,5 @@ TEST_F(ProcessTrackerTest, IsThreadAliveTruthTable) {
   // (3) explicit end -> dead.
   context.process_tracker->EndThread(1000, /*tid=*/31);
   ASSERT_FALSE(context.process_tracker->IsThreadAlive(worker));
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}  // namespace
+}}  // namespace
 }  // namespace perfetto::trace_processor

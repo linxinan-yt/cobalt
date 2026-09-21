@@ -2838,9 +2838,7 @@ class CONTENT_EXPORT WebContentsImpl
   WindowOpenDisposition original_window_open_disposition_ =
       WindowOpenDisposition::UNKNOWN;
 
-<<<<<<< HEAD
-=======
-  // If this window was opened as a new partitioned popin this will contain the
+// If this window was opened as a new partitioned popin this will contain the
   // properties needed to setup partitioning which aligns with the opener.
   // See https://explainers-by-googlers.github.io/partitioned-popins/
   std::optional<PartitionedPopinOpenerProperties>
@@ -2865,10 +2863,7 @@ class CONTENT_EXPORT WebContentsImpl
   // page load and stores it in the primary main frame's PageUserData. Metrics
   // are logged via UMA every time the PageUserData is destroyed.
   std::unique_ptr<FencedFrameViewportObserver> fenced_frame_viewport_observer_;
-#endif
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#if BUILDFLAG(IS_ANDROID)
+#endif#if BUILDFLAG(IS_ANDROID)
   bool supports_forward_transition_animation_ = true;
 #endif  // !BUILDFLAG(IS_ANDROID)
 

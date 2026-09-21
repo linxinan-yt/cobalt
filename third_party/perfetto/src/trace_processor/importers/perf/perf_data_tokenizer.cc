@@ -248,14 +248,8 @@ PerfDataTokenizer::ParseAttrs() {
 
   ASSIGN_OR_RETURN(perf_invocation_, builder.Build());
   if (perf_invocation_->HasPerfClock()) {
-<<<<<<< HEAD
-    context_->clock_tracker->SetGlobalClock(
-        ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_PERF));
-=======
-    RETURN_IF_ERROR(context_->clock_tracker->SetTraceTimeClock(
-        protos::pbzero::BUILTIN_CLOCK_PERF));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+RETURN_IF_ERROR(context_->clock_tracker->SetTraceTimeClock(
+        protos::pbzero::BUILTIN_CLOCK_PERF));  }
   parsing_state_ = ParsingState::kSeekRecords;
   return ParsingResult::kSuccess;
 }
@@ -360,15 +354,7 @@ std::optional<int64_t> PerfDataTokenizer::ExtractTraceTimestamp(
   if (!ReadTime(record, time)) {
     return std::nullopt;
   }
-<<<<<<< HEAD
-  if (!time || *time == 0) {
-    // Record has no timestamp - return nullopt to signal it should be buffered
-    return std::nullopt;
-  }
-  return context_->clock_tracker->ToTraceTime(record.attr->clock_id(),
-                                              static_cast<int64_t>(*time));
-=======
-  // TODO(449973773): `*time > 0` is a temporary hack to work around the fact
+// TODO(449973773): `*time > 0` is a temporary hack to work around the fact
   // that some perf record types which actually don't have a timestamp. They
   // should have been procesed during tokenization time (e.g. MMAP/MMAP2/COMM)
   // but were incorrectly written to be handled with at parsing time. So by
@@ -382,15 +368,11 @@ std::optional<int64_t> PerfDataTokenizer::ExtractTraceTimestamp(
   if (PERFETTO_LIKELY(trace_ts.has_value())) {
     latest_timestamp_ = std::max(latest_timestamp_, *trace_ts);
   }
-  return trace_ts;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  return trace_ts;}
 
 void PerfDataTokenizer::MaybePushRecord(Record record) {
   std::optional<int64_t> trace_ts = ExtractTraceTimestamp(record);
-<<<<<<< HEAD
-
-  // Track minimum timestamp for records without timestamps
+// Track minimum timestamp for records without timestamps
   if (trace_ts) {
     min_timestamp_ = std::min(min_timestamp_.value_or(*trace_ts), *trace_ts);
   }
@@ -416,13 +398,7 @@ void PerfDataTokenizer::MaybePushRecord(Record record) {
   pending_records_without_timestamp_.clear();
 
   // Now push the current record.
-  stream_->Push(*trace_ts, std::move(record));
-=======
-  if (trace_ts) {
-    stream_->Push(*trace_ts, std::move(record));
-  }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  stream_->Push(*trace_ts, std::move(record));}
 
 base::StatusOr<PerfDataTokenizer::ParsingResult>
 PerfDataTokenizer::ParseFeatureSections() {

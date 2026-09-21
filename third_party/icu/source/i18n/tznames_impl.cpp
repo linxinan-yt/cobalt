@@ -715,25 +715,21 @@ private:
         for (int32_t i = 0; i < UTZNM_INDEX_COUNT; i++) {
             const char16_t* name = fNames[i];
             if (name != nullptr) {
-<<<<<<< HEAD
-                LocalMemory<ZNameInfo> nameinfo(static_cast<ZNameInfo*>(uprv_malloc(sizeof(ZNameInfo))));
+LocalMemory<ZNameInfo> nameinfo(static_cast<ZNameInfo*>(uprv_malloc(sizeof(ZNameInfo))));
                 if (nameinfo.isNull()) {
-=======
-                ZNameInfo* nameinfo = static_cast<ZNameInfo*>(uprv_malloc(sizeof(ZNameInfo)));
-                if (nameinfo == nullptr) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                     status = U_MEMORY_ALLOCATION_ERROR;
                     return;
                 }
                 nameinfo->mzID = mzID;
                 nameinfo->tzID = tzID;
                 nameinfo->type = getTZNameType(static_cast<UTimeZoneNameTypeIndex>(i));
-<<<<<<< HEAD
-                trie.put(name, nameinfo.orphan(), status); // trie.put() takes ownership of the key
-=======
-                trie.put(name, nameinfo, status); // trie.put() takes ownership of the key
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                if (U_FAILURE(status)) {
+                trie.put(name, nameinfo.orphan(), status); // trie.put() takes ownership of the key                    status = U_MEMORY_ALLOCATION_ERROR;
+                    return;
+                }
+                nameinfo->mzID = mzID;
+                nameinfo->tzID = tzID;
+                nameinfo->type = getTZNameType(static_cast<UTimeZoneNameTypeIndex>(i));
+trie.put(name, nameinfo.orphan(), status); // trie.put() takes ownership of the key                if (U_FAILURE(status)) {
                     return;
                 }
             }
@@ -2158,38 +2154,20 @@ TZDBTimeZoneNames::TZDBTimeZoneNames(const Locale& locale)
     if (regionLen == 0) {
         UErrorCode status = U_ZERO_ERROR;
         CharString loc = ulocimp_addLikelySubtags(fLocale.getName(), status);
-<<<<<<< HEAD
-        CharString tmp;
+CharString tmp;
         ulocimp_getSubtags(loc.toStringPiece(), nullptr, nullptr, &tmp, nullptr, nullptr, status);
         fRegion = tmp.toStringPiece();
-        U_ASSERT(fRegion.isEmpty() == tmp.isEmpty());
-=======
-        ulocimp_getSubtags(loc.toStringPiece(), nullptr, nullptr, &fRegion, nullptr, nullptr, status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        if (U_SUCCESS(status)) {
+        U_ASSERT(fRegion.isEmpty() == tmp.isEmpty());        if (U_SUCCESS(status)) {
             useWorld = false;
         }
     } else {
-<<<<<<< HEAD
-        fRegion = {region, static_cast<std::string_view::size_type>(regionLen)};
+fRegion = {region, static_cast<std::string_view::size_type>(regionLen)};
         U_ASSERT(!fRegion.isEmpty());
         useWorld = false;
     }
     if (useWorld) {
         fRegion = "001";
-        U_ASSERT(!fRegion.isEmpty());
-=======
-        UErrorCode status = U_ZERO_ERROR;
-        fRegion.append(region, regionLen, status);
-        U_ASSERT(U_SUCCESS(status));
-        useWorld = false;
-    }
-    if (useWorld) {
-        UErrorCode status = U_ZERO_ERROR;
-        fRegion.append("001", status);
-        U_ASSERT(U_SUCCESS(status));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        U_ASSERT(!fRegion.isEmpty());    }
 }
 
 TZDBTimeZoneNames::~TZDBTimeZoneNames() {
@@ -2266,12 +2244,7 @@ TZDBTimeZoneNames::find(const UnicodeString& text, int32_t start, uint32_t types
         return nullptr;
     }
 
-<<<<<<< HEAD
-    TZDBNameSearchHandler handler(types, fRegion.data());
-=======
-    TZDBNameSearchHandler handler(types, fRegion.toStringPiece());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    gTZDBNamesTrie->search(text, start, (TextTrieMapSearchResultHandler *)&handler, status);
+TZDBNameSearchHandler handler(types, fRegion.data());    gTZDBNamesTrie->search(text, start, (TextTrieMapSearchResultHandler *)&handler, status);
     if (U_FAILURE(status)) {
         return nullptr;
     }

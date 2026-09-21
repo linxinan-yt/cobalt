@@ -34,12 +34,8 @@
 #include "base/debug/task_trace.h"
 #include "base/functional/callback.h"
 #include "base/immediate_crash.h"
-<<<<<<< HEAD
 #include "base/logging/logging_settings.h"
-#include "base/logging/rust_logger/lib.rs.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "base/no_destructor.h"
+#include "base/logging/rust_logger/lib.rs.h"#include "base/no_destructor.h"
 #include "base/path_service.h"
 #include "base/pending_task.h"
 #include "base/posix/eintr_wrapper.h"
@@ -571,13 +567,8 @@ bool BaseInitLoggingImpl(const LoggingSettings& settings) {
 
 #if !BUILDFLAG(IS_STARBOARD) || defined(SB_IS_DEFAULT_TC)
   // Connects Rust logging with the //base logging functionality.
-<<<<<<< HEAD
-  internal::init_rust_logging();
-=======
-  internal::init_rust_log_crate();
+internal::init_rust_log_crate();
 #endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   // Ignore file options unless logging to file is set.
   if ((g_logging_destination & LOG_TO_FILE) == 0) {
     return true;

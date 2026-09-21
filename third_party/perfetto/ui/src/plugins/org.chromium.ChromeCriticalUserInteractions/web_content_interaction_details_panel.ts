@@ -37,14 +37,8 @@ import {GridLayout, GridLayoutColumn} from '../../widgets/grid_layout';
 import {Section} from '../../widgets/section';
 import {SqlRef} from '../../widgets/sql_ref';
 import {Tree, TreeNode} from '../../widgets/tree';
-<<<<<<< HEAD
 import type {TrackEventDetailsPanel} from '../../public/details_panel';
 import type {Trace} from '../../public/trace';
-=======
-import {TrackEventDetailsPanel} from '../../public/details_panel';
-import {Trace} from '../../public/trace';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 interface Data {
   ts: time;
   dur: duration;
@@ -121,17 +115,13 @@ export class WebContentInteractionPanel implements TrackEventDetailsPanel {
               }),
               m(TreeNode, {left: 'Renderer Upid', right: this.data.upid}),
               m(TreeNode, {
-<<<<<<< HEAD
-=======
-                left: 'Total duration of all events',
+left: 'Total duration of all events',
                 right: m(DurationWidget, {
                   trace: this.trace,
                   dur: this.data.totalDurationMs,
                 }),
               }),
-              m(TreeNode, {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                left: 'SQL ID',
+              m(TreeNode, {                left: 'SQL ID',
                 right: m(SqlRef, {
                   table: 'chrome_web_content_interactions',
                   id: this.id,

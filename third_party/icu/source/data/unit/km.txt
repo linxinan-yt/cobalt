@@ -117,21 +117,10 @@ km{
                 dnam{"ផ្នែកក្នុងមួយលាន"}
                 other{"{0} ផ្នែកក្នុងមួយលាន"}
             }
-<<<<<<< HEAD
-            part-per-1e9{
+portion-per-1e9{
                 dnam{"ផ្នែកក្នុងមួយប៊ីលាន"}
                 other{"{0} ផ្នែកក្នុងមួយប៊ីលាន"}
-            }
-            percent{
-                other{"{0} ភាគរយ"}
-            }
-=======
-            portion-per-1e9{
-                dnam{"ផ្នែកក្នុងមួយប៊ីលាន"}
-                other{"{0} ផ្នែកក្នុងមួយប៊ីលាន"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            }        }
         consumption{
             liter-per-100-kilometer{
                 dnam{"លីត្រក្នុង 100 គីឡូម៉ែត្រ"}
@@ -227,12 +216,8 @@ km{
                 other{"{0} ណាណូវិនាទី"}
             }
             night{
-<<<<<<< HEAD
-=======
-                dnam{"យប់"}
-                other{"{0} យប់"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                per{"{0} ក្នុងមួយយប់"}
+dnam{"យប់"}
+                other{"{0} យប់"}                per{"{0} ក្នុងមួយយប់"}
             }
             second{
                 per{"{0} ក្នុង​មួយ​វិនាទី"}
@@ -753,15 +738,11 @@ km{
             }
         }
         duration{
-<<<<<<< HEAD
-=======
-            night{
+night{
                 dnam{"យប់"}
                 other{"{0} យប់"}
                 per{"{0}/យប់"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            quarter{
+            }            quarter{
                 other{"{0} ត្រី"}
             }
         }

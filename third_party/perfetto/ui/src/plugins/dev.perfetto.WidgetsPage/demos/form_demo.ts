@@ -15,7 +15,6 @@
 import m from 'mithril';
 import {Icons} from '../../../base/semantic_icons';
 import {Button, ButtonVariant} from '../../../widgets/button';
-<<<<<<< HEAD
 import {Checkbox} from '../../../widgets/checkbox';
 import {Form, FormGrid, FormLabel, FormSection} from '../../../widgets/form';
 import {Popup} from '../../../widgets/popup';
@@ -23,16 +22,6 @@ import {Select} from '../../../widgets/select';
 import {Switch} from '../../../widgets/switch';
 import {TextInput} from '../../../widgets/text_input';
 import {renderDocSection, renderWidgetShowcase} from '../widgets_page_utils';
-=======
-import {Form, FormLabel, FormSection} from '../../../widgets/form';
-import {MenuItem, PopupMenu} from '../../../widgets/menu';
-import {Select} from '../../../widgets/select';
-import {TextInput} from '../../../widgets/text_input';
-import {renderDocSection, renderWidgetShowcase} from '../widgets_page_utils';
-import {Checkbox} from '../../../widgets/checkbox';
-import {Switch} from '../../../widgets/switch';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 function renderFormContent(
   id: string,
   options: {
@@ -105,8 +94,7 @@ function renderFormContent(
         id: `${id}-switch`,
       }),
     ),
-<<<<<<< HEAD
-    m(
+m(
       FormSection,
       {label: 'Grid Section'},
       m(
@@ -122,10 +110,7 @@ function renderFormContent(
           placeholder: 'Doe',
         }),
       ),
-    ),
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  );
+    ),  );
 }
 
 export function renderForm(): m.Children {
@@ -163,30 +148,20 @@ export function renderForm(): m.Children {
     renderWidgetShowcase({
       renderWidget: () =>
         m(
-<<<<<<< HEAD
-          Popup,
-=======
-          PopupMenu,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          {
+Popup,          {
             trigger: m(Button, {
               label: 'Click me',
               icon: Icons.ContextMenu,
               variant: ButtonVariant.Filled,
             }),
           },
-<<<<<<< HEAD
-          renderFormContent('popup-form'),
-=======
-          m(
+m(
             MenuItem,
             {
               label: 'Open form...',
             },
             renderFormContent('popup-form'),
-          ),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        ),
+          ),        ),
     }),
   ];
 }

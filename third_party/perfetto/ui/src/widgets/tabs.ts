@@ -14,7 +14,6 @@
 
 import './tabs.scss';
 import m from 'mithril';
-<<<<<<< HEAD
 import {classNames} from '../base/classnames';
 import {Gate, isEmptyVnodes} from '../base/mithril_utils';
 import {Button} from './button';
@@ -23,15 +22,10 @@ import {Icons} from '../base/semantic_icons';
 import {PopupMenu} from './menu';
 import {PopupPosition} from './popup';
 import {maybeUndefined} from '../base/utils';
-=======
-import {Icon} from './icon';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 export interface TabsTab {
   // Unique identifier for the tab.
   readonly key: string;
-<<<<<<< HEAD
-  // Content to display in the tab handle.
+// Content to display in the tab handle.
   readonly title: m.Children;
   // Content to display when this tab is active.
   readonly content: m.Children;
@@ -41,13 +35,7 @@ export interface TabsTab {
   readonly leftIcon?: string | m.Children;
   // Optional menu items to show in a dropdown menu on the tab.
   // When provided, a menu button appears on hover.
-  readonly menuItems?: m.Children;
-=======
-  readonly title: string;
-  readonly leftIcon?: string | m.Children;
-  readonly rightIcon?: string | m.Children;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  readonly menuItems?: m.Children;}
 
 export interface TabsAttrs {
   // The tabs to display.
@@ -81,7 +69,6 @@ export interface TabsAttrs {
   readonly className?: string;
 }
 
-<<<<<<< HEAD
 interface TabHandleAttrs {
   readonly active?: boolean;
   readonly hasCloseButton?: boolean;
@@ -266,20 +253,12 @@ export class Tabs implements m.ClassComponent<TabsAttrs> {
     } = attrs;
 
     // Get active tab key (controlled or uncontrolled)
-    const activeKey = activeTabKey ?? this.internalActiveTab ?? tabs[0]?.key;
-
-=======
-export class TabStrip implements m.ClassComponent<TabStripAttrs> {
-  view({attrs}: m.CVnode<TabStripAttrs>) {
-    const {tabs, currentTabKey, onTabChange, className} = attrs;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    return m(
+    const activeKey = activeTabKey ?? this.internalActiveTab ?? tabs[0]?.key;    return m(
       '.pf-tabs',
       {className},
       m(
         '.pf-tabs__tabs',
-<<<<<<< HEAD
-        tabs.map((tab, index) => {
+tabs.map((tab, index) => {
           const isDragTarget = this.dropTargetKey === tab.key;
           const showDropBefore =
             isDragTarget &&
@@ -296,25 +275,7 @@ export class TabStrip implements m.ClassComponent<TabStripAttrs> {
             this.dropTargetKey === tabs[index]?.key &&
             this.dropPosition === 'before' &&
             this.draggedKey !== prevTab.key &&
-            this.draggedKey !== tab.key;
-
-=======
-        tabs.map((tab) => {
-          const {key, title, leftIcon, rightIcon} = tab;
-          const renderIcon = (
-            icon: string | m.Children | undefined,
-            className: string,
-          ) => {
-            if (icon === undefined) {
-              return undefined;
-            }
-            if (typeof icon === 'string') {
-              return m(Icon, {icon, className});
-            }
-            return m('.pf-tabs__tab-icon', {className}, icon);
-          };
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          return m(
+            this.draggedKey !== tab.key;          return m(
             '.pf-tabs__tab-wrapper',
             {
               key: tab.key,
@@ -325,8 +286,7 @@ export class TabStrip implements m.ClassComponent<TabStripAttrs> {
                 this.draggedKey === tab.key && 'pf-tabs__tab-wrapper--dragging',
               ),
             },
-<<<<<<< HEAD
-            m(
+m(
               TabHandle,
               {
                 active: tab.key === activeKey,
@@ -409,15 +369,7 @@ export class TabStrip implements m.ClassComponent<TabStripAttrs> {
                 },
               },
               tab.title,
-            ),
-=======
-            [
-              renderIcon(leftIcon, 'pf-tabs__tab-icon--left'),
-              m('span.pf-tabs__tab-title', title),
-              renderIcon(rightIcon, 'pf-tabs__tab-icon--right'),
-            ],
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          );
+            ),          );
         }),
         newTabContent ??
           (onNewTab &&

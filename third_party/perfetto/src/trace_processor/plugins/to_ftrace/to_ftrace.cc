@@ -28,24 +28,14 @@
 #include "perfetto/base/compiler.h"
 #include "perfetto/base/logging.h"
 #include "perfetto/base/status.h"
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/to_ftrace/to_ftrace.cc
-#include "perfetto/ext/base/dynamic_string_writer.h"
-#include "perfetto/ext/base/string_view.h"
-#include "perfetto/ext/base/utils.h"
-=======
 #include "perfetto/ext/base/fixed_string_writer.h"
 #include "perfetto/ext/base/string_view.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/to_ftrace.cc
 #include "perfetto/public/compiler.h"
 #include "src/trace_processor/containers/null_term_string_view.h"
 #include "src/trace_processor/core/dataframe/specs.h"
 #include "src/trace_processor/core/plugin/plugin.h"
 #include "src/trace_processor/importers/common/system_info_tracker.h"
 #include "src/trace_processor/importers/ftrace/ftrace_descriptors.h"
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/to_ftrace/to_ftrace.cc
-#include "src/trace_processor/perfetto_sql/engine/perfetto_sql_connection.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/to_ftrace.cc
 #include "src/trace_processor/sqlite/bindings/sqlite_result.h"
 #include "src/trace_processor/sqlite/bindings/sqlite_type.h"
 #include "src/trace_processor/sqlite/bindings/sqlite_value.h"
@@ -97,11 +87,7 @@ class ArgsSerializer {
                  tables::ArgTable::ConstCursor*,
                  NullTermStringView event_name,
                  std::vector<std::optional<uint32_t>>* field_id_to_arg_index,
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/to_ftrace/to_ftrace.cc
-                 base::DynamicStringWriter*);
-=======
                  base::FixedStringWriter*);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/to_ftrace.cc
 
   void SerializeArgs();
 
@@ -196,11 +182,7 @@ class ArgsSerializer {
 
   uint32_t start_row_ = 0;
 
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/to_ftrace/to_ftrace.cc
-  base::DynamicStringWriter* writer_ = nullptr;
-=======
   base::FixedStringWriter* writer_ = nullptr;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/to_ftrace.cc
 };
 
 ArgsSerializer::ArgsSerializer(
@@ -209,11 +191,7 @@ ArgsSerializer::ArgsSerializer(
     tables::ArgTable::ConstCursor* cursor,
     NullTermStringView event_name,
     std::vector<std::optional<uint32_t>>* field_id_to_arg_index,
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/to_ftrace/to_ftrace.cc
-    base::DynamicStringWriter* writer)
-=======
     base::FixedStringWriter* writer)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/to_ftrace.cc
     : storage_(context->storage.get()),
       context_(context),
       cursor_(cursor),
@@ -740,12 +718,9 @@ SystraceSerializer::ScopedCString SystraceSerializer::SerializeToString(
     uint32_t raw_row) {
   const auto& raw = storage_->ftrace_event_table();
 
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/to_ftrace/to_ftrace.cc
-=======
   char line[4096];
   base::FixedStringWriter writer(line, sizeof(line));
 
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/to_ftrace.cc
   auto row = raw[raw_row];
   StringId event_name_id = row.name();
   NullTermStringView event_name = storage_->GetString(event_name_id);
@@ -776,11 +751,7 @@ SystraceSerializer::ScopedCString SystraceSerializer::SerializeToString(
 }
 
 void SystraceSerializer::SerializePrefix(uint32_t raw_row,
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/to_ftrace/to_ftrace.cc
-                                         base::DynamicStringWriter* writer) {
-=======
                                          base::FixedStringWriter* writer) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/to_ftrace.cc
   const auto& raw = storage_->ftrace_event_table();
   const auto& cpu_table = storage_->cpu_table();
 

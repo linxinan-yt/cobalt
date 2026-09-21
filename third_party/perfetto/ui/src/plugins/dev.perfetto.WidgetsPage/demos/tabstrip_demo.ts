@@ -13,15 +13,10 @@
 // limitations under the License.
 
 import m from 'mithril';
-<<<<<<< HEAD
 import {Anchor} from '../../../widgets/anchor';
 import {Callout} from '../../../widgets/callout';
 import {Intent} from '../../../widgets/common';
-import {TabStrip} from '../../../widgets/tab_strip';
-=======
-import {TabStrip} from '../../../widgets/tabs';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {renderWidgetShowcase} from '../widgets_page_utils';
+import {TabStrip} from '../../../widgets/tab_strip';import {renderWidgetShowcase} from '../widgets_page_utils';
 
 let currentTab: string = 'foo';
 
@@ -34,17 +29,13 @@ export function renderTabStrip(): m.Children {
         'p',
         'A horizontal tab navigation component for switching between different views or sections.',
       ),
-<<<<<<< HEAD
-      m(
+m(
         Callout,
         {intent: Intent.Warning, icon: 'warning'},
         'Deprecated: use the ',
         m(Anchor, {href: '#!/widgets/tabs'}, 'Tabs'),
         ' widget instead, which supports close buttons, renaming, reordering, and a new tab button.',
-      ),
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    ),
+      ),    ),
     renderWidgetShowcase({
       renderWidget: () => {
         return m(TabStrip, {

@@ -84,16 +84,10 @@ def init(ctx):
     step_config = mojo.step_config(ctx, step_config)
     step_config = rust.step_config(ctx, step_config)
     step_config = simple.step_config(ctx, step_config)
-<<<<<<< HEAD
-    step_config = typescript_all.step_config(ctx, step_config)
+step_config = typescript_all.step_config(ctx, step_config)
+    step_config = cobalt.step_config(ctx, step_config)
     if reclient.enabled(ctx):
         step_config = reclient.step_config(ctx, step_config)
-=======
-    step_config = cobalt.step_config(ctx, step_config)
-    if reproxy.enabled(ctx):
-        step_config = reproxy.step_config(ctx, step_config)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     step_config = denylist.step_config(ctx, step_config)
 
     step_config = __disable_remote(ctx, step_config)
@@ -104,12 +98,8 @@ def init(ctx):
     filegroups.update(host.filegroups(ctx))
     filegroups.update(rust.filegroups(ctx))
     filegroups.update(simple.filegroups(ctx))
-<<<<<<< HEAD
-    filegroups.update(typescript_all.filegroups(ctx))
-=======
+filegroups.update(typescript_all.filegroups(ctx))
     filegroups.update(cobalt.filegroups(ctx))
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     handlers = {}
     handlers.update(blink_all.handlers)
     handlers.update(host.handlers)

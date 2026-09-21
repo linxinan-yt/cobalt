@@ -44,17 +44,12 @@ base::OnceClosure InstallOperation(
     const std::vector<uint8_t>& pk_hash,
     scoped_refptr<CrxInstaller> installer,
     std::unique_ptr<CrxInstaller::InstallParams> install_params,
-<<<<<<< HEAD
     bool is_foreground,
-    base::RepeatingCallback<void(base::DictValue)> event_adder,
-=======
 #if BUILDFLAG(IS_STARBOARD)
     PersistedData* metadata,
     const std::string& next_version,
 #endif
-    base::RepeatingCallback<void(base::Value::Dict)> event_adder,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    base::RepeatingCallback<void(ComponentState)> state_tracker,
+    base::RepeatingCallback<void(base::Value::Dict)> event_adder,    base::RepeatingCallback<void(ComponentState)> state_tracker,
     CrxInstaller::ProgressCallback progress_callback,
     base::OnceCallback<void(const CrxInstaller::Result&)>
         install_result_callback,

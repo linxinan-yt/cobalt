@@ -71,12 +71,7 @@ class StunRequestManager {
   // Determines whether the given message is a response to one of the
   // outstanding requests, and if so, processes it appropriately.
   bool CheckResponse(StunMessage* msg);
-<<<<<<< HEAD
-  bool CheckResponse(std::span<const uint8_t> payload);
-=======
-  bool CheckResponse(ArrayView<const uint8_t> payload);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+bool CheckResponse(std::span<const uint8_t> payload);
   // Called from a StunRequest when a timeout occurs.
   void OnRequestTimedOut(StunRequest* request);
 

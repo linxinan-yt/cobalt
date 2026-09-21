@@ -73,14 +73,9 @@ export interface MultiselectInputAttrs extends HTMLAttrs {
   readonly placeholder?: string;
 }
 
-<<<<<<< HEAD
-export class MultiselectInput implements m.ClassComponent<MultiselectInputAttrs> {
-=======
 export class MultiselectInput
   implements m.ClassComponent<MultiselectInputAttrs>
-{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  private currentTextValue = '';
+{  private currentTextValue = '';
   private selectedItemIndex = 0;
   private popupIsOpen = false;
 
@@ -124,8 +119,7 @@ export class MultiselectInput
             },
             onblur: () => {
               this.popupIsOpen = false;
-<<<<<<< HEAD
-            },
+},
             onkeydown: (ev: KeyboardEvent) => {
               const filteredOptions = this.filterOptions(attrs);
 
@@ -172,58 +166,7 @@ export class MultiselectInput
                   ev.preventDefault();
                 }
               }
-            },
-=======
-            },
-            onkeydown: (ev: KeyboardEvent) => {
-              const filteredOptions = this.filterOptions(attrs);
-
-              if (ev.key === 'Escape') {
-                // Blur the input, which will close the popup via onblur
-                (ev.target as HTMLInputElement).blur();
-                ev.preventDefault();
-              } else if (ev.key === 'Enter') {
-                if (filteredOptions.length > 0) {
-                  const option = filteredOptions[this.selectedItemIndex];
-                  const alreadyAdded = selectedOptions.includes(option.key);
-                  if (alreadyAdded) {
-                    attrs.onOptionRemove(option.key);
-                  } else {
-                    attrs.onOptionAdd(option.key);
-                  }
-                  this.currentTextValue = '';
-                }
-                ev.preventDefault();
-              } else if (ev.key === 'ArrowUp') {
-                if (filteredOptions.length > 0) {
-                  this.selectedItemIndex = Math.max(
-                    0,
-                    this.selectedItemIndex - 1,
-                  );
-                }
-                ev.preventDefault();
-              } else if (ev.key === 'ArrowDown') {
-                if (filteredOptions.length > 0) {
-                  this.selectedItemIndex = Math.min(
-                    filteredOptions.length - 1,
-                    this.selectedItemIndex + 1,
-                  );
-                }
-                ev.preventDefault();
-              } else if (ev.key === 'Backspace') {
-                if (
-                  this.currentTextValue === '' &&
-                  selectedOptions.length > 0
-                ) {
-                  attrs.onOptionRemove(
-                    selectedOptions[selectedOptions.length - 1],
-                  );
-                  ev.preventDefault();
-                }
-              }
-            },
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            oninput: (ev: InputEvent) => {
+            },            oninput: (ev: InputEvent) => {
               const el = ev.target as HTMLInputElement;
               this.currentTextValue = el.value;
               this.selectedItemIndex = 0;
@@ -240,12 +183,7 @@ export class MultiselectInput
 
     const filtered = this.filterOptions(attrs);
     if (filtered.length === 0) {
-<<<<<<< HEAD
-      return m(EmptyState, {title: 'No results found'});
-=======
-      return m(EmptyState, {title: 'No results found', icon: 'search_off'});
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+return m(EmptyState, {title: 'No results found', icon: 'search_off'});    }
 
     return m(
       '.pf-multiselect-input__scroller',

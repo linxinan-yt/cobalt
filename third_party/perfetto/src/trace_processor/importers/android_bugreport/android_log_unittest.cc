@@ -70,8 +70,7 @@ class AndroidLogReaderTest : public ::testing::Test {
  public:
   AndroidLogReaderTest() {
     context_.storage = std::make_unique<TraceStorage>();
-<<<<<<< HEAD
-    context_.machine_tracker =
+context_.machine_tracker =
         std::make_unique<MachineTracker>(&context_, kDefaultMachineId);
     context_.global_metadata_tracker =
         std::make_unique<GlobalMetadataTracker>(context_.storage.get());
@@ -90,18 +89,7 @@ class AndroidLogReaderTest : public ::testing::Test {
     context_.clock_tracker = std::make_unique<ClockTracker>(
         &context_, primary_sync_.get(), /*is_primary=*/true);
     context_.clock_tracker->SetGlobalClock(
-        ClockId::Machine(protos::pbzero::ClockSnapshot::Clock::REALTIME));
-=======
-    std::unique_ptr<ClockSynchronizerListenerImpl> clock_tracker_listener =
-        std::make_unique<ClockSynchronizerListenerImpl>(&context_);
-    context_.clock_tracker =
-        std::make_unique<ClockTracker>(std::move(clock_tracker_listener));
-    context_.metadata_tracker =
-        std::make_unique<MetadataTracker>(context_.storage.get());
-    context_.clock_tracker->SetTraceTimeClock(
-        protos::pbzero::ClockSnapshot::Clock::REALTIME);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    context_.sorter = std::make_unique<TraceSorter>(
+        ClockId::Machine(protos::pbzero::ClockSnapshot::Clock::REALTIME));    context_.sorter = std::make_unique<TraceSorter>(
         &context_, TraceSorter::SortingMode::kDefault);
   }
 

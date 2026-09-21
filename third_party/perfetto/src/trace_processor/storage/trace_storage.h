@@ -1188,134 +1188,9 @@ class TraceStorage {
   // One entry for each unique string in the trace.
   StringPool string_pool_;
 
-<<<<<<< HEAD
-=======
-  // Stats about parsing the trace.
-  StatsMap stats_{};
-
-  // Extra data extracted from the trace. Includes:
-  // * metadata from chrome and benchmarking infrastructure
-  // * descriptions of android packages
-  tables::MetadataTable metadata_table_{&string_pool_};
-
-  // Contains the build flags of the trace. The values are resolved - i.e. if
-  // they depend on other flags, the final value is stored here.
-  tables::BuildFlagsTable build_flags_table_{&string_pool_};
-
-  tables::ModulesTable modules_table_{&string_pool_};
-
-  tables::TraceImportLogsTable trace_import_logs_table_{&string_pool_};
-
-  // Contains data from all the clock snapshots in the trace.
-  tables::ClockSnapshotTable clock_snapshot_table_{&string_pool_};
-
-  // Metadata for tracks.
-  tables::TrackTable track_table_{&string_pool_};
-  tables::ThreadStateTable thread_state_table_{&string_pool_};
-
-  // Track tables for counter events.
-  tables::GpuCounterGroupTable gpu_counter_group_table_{&string_pool_};
-
-  // Args for all other tables.
-  tables::ArgTable arg_table_{&string_pool_};
-
-  // Information about all the threads and processes in the trace.
-  tables::ThreadTable thread_table_{&string_pool_};
-  tables::ProcessTable process_table_{&string_pool_};
-  tables::FiledescriptorTable filedescriptor_table_{&string_pool_};
-
-  // Slices coming from userspace events (e.g. Chromium TRACE_EVENT macros).
-  tables::SliceTable slice_table_{&string_pool_};
-
-  // Flow events from userspace events (e.g. Chromium TRACE_EVENT macros).
-  tables::FlowTable flow_table_{&string_pool_};
-
-  // Slices from CPU scheduling data.
-  tables::SchedSliceTable sched_slice_table_{&string_pool_};
-
-  tables::SpuriousSchedWakeupTable spurious_sched_wakeup_table_{&string_pool_};
-
-  // Additional attributes for virtual track slices (sub-type of
-  // NestableSlices).
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   VirtualTrackSlices virtual_track_slices_;
   SqlStats sql_stats_;
 
-<<<<<<< HEAD
-=======
-  tables::ChromeRawTable chrome_raw_table_{&string_pool_};
-  tables::FtraceEventTable ftrace_event_table_{&string_pool_};
-
-  tables::MachineTable machine_table_{&string_pool_};
-
-  tables::CpuTable cpu_table_{&string_pool_};
-
-  tables::CpuFreqTable cpu_freq_table_{&string_pool_};
-
-  tables::AndroidLogTable android_log_table_{&string_pool_};
-
-  tables::AndroidDumpstateTable android_dumpstate_table_{&string_pool_};
-
-  tables::AndroidKeyEventsTable android_key_events_table_{&string_pool_};
-  tables::AndroidMotionEventsTable android_motion_events_table_{&string_pool_};
-  tables::AndroidInputEventDispatchTable android_input_event_dispatch_table_{
-      &string_pool_};
-
-  tables::StackProfileMappingTable stack_profile_mapping_table_{&string_pool_};
-  tables::StackProfileFrameTable stack_profile_frame_table_{&string_pool_};
-  tables::StackProfileCallsiteTable stack_profile_callsite_table_{
-      &string_pool_};
-  tables::HeapProfileAllocationTable heap_profile_allocation_table_{
-      &string_pool_};
-  tables::CpuProfileStackSampleTable cpu_profile_stack_sample_table_{
-      &string_pool_};
-  tables::PerfSessionTable perf_session_table_{&string_pool_};
-  tables::PerfSampleTable perf_sample_table_{&string_pool_};
-  tables::InstrumentsSampleTable instruments_sample_table_{&string_pool_};
-  tables::PackageListTable package_list_table_{&string_pool_};
-  tables::AndroidGameInterventionListTable
-      android_game_intervention_list_table_{&string_pool_};
-  tables::ProfilerSmapsTable profiler_smaps_table_{&string_pool_};
-
-  tables::TraceFileTable trace_file_table_{&string_pool_};
-
-  // Symbol tables (mappings from frames to symbol names)
-  tables::SymbolTable symbol_table_{&string_pool_};
-  tables::HeapGraphObjectTable heap_graph_object_table_{&string_pool_};
-  tables::HeapGraphClassTable heap_graph_class_table_{&string_pool_};
-  tables::HeapGraphReferenceTable heap_graph_reference_table_{&string_pool_};
-  tables::AggregateProfileTable aggregate_profile_table_{&string_pool_};
-  tables::AggregateSampleTable aggregate_sample_table_{&string_pool_};
-
-  tables::VulkanMemoryAllocationsTable vulkan_memory_allocations_table_{
-      &string_pool_};
-
-  // Metadata for memory snapshot.
-  tables::MemorySnapshotTable memory_snapshot_table_{&string_pool_};
-  tables::ProcessMemorySnapshotTable process_memory_snapshot_table_{
-      &string_pool_};
-  tables::MemorySnapshotNodeTable memory_snapshot_node_table_{&string_pool_};
-  tables::MemorySnapshotEdgeTable memory_snapshot_edge_table_{&string_pool_};
-
-  // AndroidNetworkPackets tables
-  tables::AndroidNetworkPacketsTable android_network_packets_table_{
-      &string_pool_};
-
-  // V8 tables
-  tables::V8IsolateTable v8_isolate_table_{&string_pool_};
-  tables::V8JsScriptTable v8_js_script_table_{&string_pool_};
-  tables::V8WasmScriptTable v8_wasm_script_table_{&string_pool_};
-  tables::V8JsFunctionTable v8_js_function_table_{&string_pool_};
-  tables::V8JsCodeTable v8_js_code_table_{&string_pool_};
-  tables::V8InternalCodeTable v8_internal_code_table_{&string_pool_};
-  tables::V8WasmCodeTable v8_wasm_code_table_{&string_pool_};
-  tables::V8RegexpCodeTable v8_regexp_code_table_{&string_pool_};
-
-  // Jit tables
-  tables::JitCodeTable jit_code_table_{&string_pool_};
-  tables::JitFrameTable jit_frame_table_{&string_pool_};
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   // ETM tables
   // Indexed by tables::EtmV4ConfigurationTable::Id
   std::vector<std::unique_ptr<Destructible>> etm_v4_configuration_data_;
@@ -1327,73 +1202,10 @@ class TraceStorage {
   // Indexed by heap_graph_object_data.array_data_id
   std::vector<HprofArrayBlob> hprof_array_blobs_;
 
-<<<<<<< HEAD
-  // Aligned storage for all table dataframes.
+// Aligned storage for all table dataframes.
   alignas(
       dataframe::Dataframe) char tables_storage_[tables::kTableCount *
                                                  sizeof(dataframe::Dataframe)];
-=======
-  // Winscope tables
-  tables::InputMethodClientsTable inputmethod_clients_table_{&string_pool_};
-  tables::InputMethodManagerServiceTable inputmethod_manager_service_table_{
-      &string_pool_};
-  tables::InputMethodServiceTable inputmethod_service_table_{&string_pool_};
-  tables::SurfaceFlingerLayersSnapshotTable
-      surfaceflinger_layers_snapshot_table_{&string_pool_};
-  tables::SurfaceFlingerDisplayTable surfaceflinger_display_table_{
-      &string_pool_};
-  tables::SurfaceFlingerLayerTable surfaceflinger_layer_table_{&string_pool_};
-  tables::SurfaceFlingerTransactionsTable surfaceflinger_transactions_table_{
-      &string_pool_};
-  tables::SurfaceFlingerTransactionTable surfaceflinger_transaction_table_{
-      &string_pool_};
-  tables::SurfaceFlingerTransactionFlagTable
-      surfaceflinger_transaction_flag_table_{&string_pool_};
-  tables::ViewCaptureTable viewcapture_table_{&string_pool_};
-  tables::ViewCaptureViewTable viewcapture_view_table_{&string_pool_};
-  tables::ViewCaptureInternedDataTable viewcapture_interned_data_table_{
-      &string_pool_};
-  tables::WindowManagerTable windowmanager_table_{&string_pool_};
-  tables::WindowManagerWindowContainerTable
-      windowmanager_windowcontainer_table_{&string_pool_};
-  tables::WindowManagerShellTransitionsTable
-      window_manager_shell_transitions_table_{&string_pool_};
-  tables::WindowManagerShellTransitionHandlersTable
-      window_manager_shell_transition_handlers_table_{&string_pool_};
-  tables::WindowManagerShellTransitionParticipantsTable
-      window_manager_shell_transition_participants_table_{&string_pool_};
-  tables::WindowManagerShellTransitionProtosTable
-      window_manager_shell_transition_protos_table_{&string_pool_};
-  tables::ProtoLogTable protolog_table_{&string_pool_};
-  tables::WinscopeTraceRectTable winscope_trace_rect_table_{&string_pool_};
-  tables::WinscopeRectTable winscope_rect_table_{&string_pool_};
-  tables::WinscopeFillRegionTable winscope_fill_region_table_{&string_pool_};
-  tables::WinscopeTransformTable winscope_transform_table_{&string_pool_};
-
-  tables::ExperimentalProtoPathTable experimental_proto_path_table_{
-      &string_pool_};
-  tables::ExperimentalProtoContentTable experimental_proto_content_table_{
-      &string_pool_};
-
-  tables::ExpMissingChromeProcTable
-      experimental_missing_chrome_processes_table_{&string_pool_};
-
-  mutable tables::ArgTable::Cursor args_cursor_{arg_table_.CreateCursor({
-      dataframe::FilterSpec{
-          tables::ArgTable::ColumnIndex::arg_set_id,
-          0,
-          dataframe::Eq{},
-          std::nullopt,
-      },
-      dataframe::FilterSpec{
-          tables::ArgTable::ColumnIndex::key,
-          1,
-          dataframe::Eq{},
-          std::nullopt,
-      },
-  })};
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   // The below array allow us to map between enums and their string
   // representations.
   std::array<StringId, Variadic::kMaxType + 1> variadic_type_ids_;
@@ -1436,42 +1248,4 @@ template <>
 struct std::hash<::perfetto::trace_processor::tables::JitCodeTable_Id>
     : std::hash<::perfetto::trace_processor::BaseId> {};
 
-<<<<<<< HEAD
-=======
-template <>
-struct std::hash<
-    ::perfetto::trace_processor::tables::StackProfileFrameTable::Row> {
-  using argument_type =
-      ::perfetto::trace_processor::tables::StackProfileFrameTable::Row;
-  using result_type = size_t;
-
-  result_type operator()(const argument_type& r) const {
-    return std::hash<std::optional<::perfetto::trace_processor::StringId>>{}(
-               r.name) ^
-           std::hash<std::optional<::perfetto::trace_processor::MappingId>>{}(
-               r.mapping) ^
-           std::hash<int64_t>{}(r.rel_pc);
-  }
-};
-
-template <>
-struct std::hash<
-    ::perfetto::trace_processor::tables::StackProfileMappingTable::Row> {
-  using argument_type =
-      ::perfetto::trace_processor::tables::StackProfileMappingTable::Row;
-  using result_type = size_t;
-
-  result_type operator()(const argument_type& r) const {
-    return std::hash<std::optional<::perfetto::trace_processor::StringId>>{}(
-               r.build_id) ^
-           std::hash<int64_t>{}(r.exact_offset) ^
-           std::hash<int64_t>{}(r.start_offset) ^
-           std::hash<int64_t>{}(r.start) ^ std::hash<int64_t>{}(r.end) ^
-           std::hash<int64_t>{}(r.load_bias) ^
-           std::hash<std::optional<::perfetto::trace_processor::StringId>>{}(
-               r.name);
-  }
-};
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #endif  // SRC_TRACE_PROCESSOR_STORAGE_TRACE_STORAGE_H_

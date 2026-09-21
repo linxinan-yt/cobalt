@@ -21,15 +21,7 @@ en_CA{
         "America:St_Vincent"{
             ec{"Saint Vincent"}
         }
-<<<<<<< HEAD
-        "Atlantic:St_Helena"{
-            ec{"Saint Helena"}
-        }
-        "meta:French_Southern"{
-            ls{"French Southern and Antarctic Time"}
-        }
-=======
-        "Asia:Rangoon"{
+"Asia:Rangoon"{
             ec{"Rangoon"}
         }
         "Atlantic:St_Helena"{
@@ -155,29 +147,11 @@ en_CA{
         }
         "meta:Nepal"{
             ss{"NPT"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "meta:Newfoundland"{
+        }        "meta:Newfoundland"{
             sd{"NDT"}
             sg{"NT"}
             ss{"NST"}
         }
-<<<<<<< HEAD
-=======
-        "meta:Noronha"{
-            sg{"FNT"}
-        }
-        "meta:Pakistan"{
-            ss{"PKT"}
-        }
-        "meta:Paraguay"{
-            sd{"PYST"}
-            sg{"PYT"}
-        }
-        "meta:Peru"{
-            sg{"PET"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "meta:Pierre_Miquelon"{
             ld{"Saint-Pierre-et-Miquelon Daylight Time"}
             lg{"Saint-Pierre-et-Miquelon Time"}
@@ -186,21 +160,6 @@ en_CA{
             sg{"PMT"}
             ss{"PMST"}
         }
-<<<<<<< HEAD
-=======
-        "meta:Samoa"{
-            ld{"Samoan Time"}
-            lg{"American Samoa Time"}
-            ls{"American Samoa Standard Time"}
-        }
-        "meta:Uruguay"{
-            sd{"UYST"}
-            ss{"UYT"}
-        }
-        "meta:Venezuela"{
-            ss{"VET"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "meta:Wallis"{
             ls{"Wallis and Futuna Time"}
         }

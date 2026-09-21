@@ -365,13 +365,7 @@ class VideoReceiveStream2
   std::vector<std::unique_ptr<EncodedFrame>> buffered_encoded_frames_
       RTC_GUARDED_BY(decode_sequence_checker_);
 
-<<<<<<< HEAD
-  std::unique_ptr<FrameInstrumentationEvaluation> frame_evaluator_;
-=======
-  std::unique_ptr<FrameInstrumentationEvaluation> frame_evaluator_
-      RTC_GUARDED_BY(decode_callback_race_checker_);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+std::unique_ptr<FrameInstrumentationEvaluation> frame_evaluator_;
   // Used to signal destruction to potentially pending tasks.
   ScopedTaskSafety task_safety_;
 

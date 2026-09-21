@@ -870,8 +870,6 @@ void OnSecurePaymentConfirmationAvailabilityResponse(
   resolver->Resolve(V8SecurePaymentConfirmationAvailability(
       ToV8SecurePaymentConfirmationAvailabilityEnum(result)));
 }
-<<<<<<< HEAD
-
 void OnGetSecurePaymentConfirmationCapabilitiesComplete(
     std::unique_ptr<ScopedPromiseResolver> scoped_resolver,
     const Vector<payments::mojom::blink::SecurePaymentConfirmationCapabilityPtr>
@@ -892,12 +890,7 @@ void OnGetSecurePaymentConfirmationCapabilitiesComplete(
       });
 
   resolver->Resolve(std::move(results));
-}
-
-=======
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}  // namespace
+}}  // namespace
 
 // static
 ScriptPromise<V8SecurePaymentConfirmationAvailability>
@@ -928,8 +921,7 @@ PaymentRequest::securePaymentConfirmationAvailability(
 #if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
   CredentialManagerProxy::From(script_state)
       ->SecurePaymentConfirmationService()
-<<<<<<< HEAD
-      ->SecurePaymentConfirmationAvailability(BindOnce(
+->SecurePaymentConfirmationAvailability(BindOnce(
           &OnSecurePaymentConfirmationAvailabilityResponse,
           std::make_unique<ScopedPromiseResolver>(
               resolver,
@@ -979,17 +971,6 @@ PaymentRequest::getSecurePaymentConfirmationCapabilities(
           std::make_unique<ScopedPromiseResolver>(
               resolver,
               ScopedPromiseResolver::ConnectionType::kPaymentConfirmation)));
-=======
-      ->SecurePaymentConfirmationAvailability(
-          BindOnce(&OnSecurePaymentConfirmationAvailabilityResponse,
-                   std::make_unique<ScopedPromiseResolver>(resolver)));
-#else
-  resolver->Resolve(V8SecurePaymentConfirmationAvailability(
-      V8SecurePaymentConfirmationAvailability::Enum::
-          kUnavailableFeatureNotEnabled));
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   return promise;
 }
 

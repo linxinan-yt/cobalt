@@ -142,7 +142,6 @@ pub fn pb_zigzag_decode64(value: u64) -> i64 {
     ((value >> 1) ^ mask) as i64
 }
 
-<<<<<<< HEAD
 /// Parse packed varints from raw bytes.
 ///
 /// Protobuf uses "packed encoding" for repeated scalar fields (enums, integers).
@@ -171,11 +170,7 @@ pub fn pb_parse_packed_varints(data: &[u8]) -> Vec<u64> {
         offset += size;
     }
     result
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-/// Converts `value` to fixed32.
+}/// Converts `value` to fixed32.
 pub fn pb_float_to_fixed32(value: f32) -> u32 {
     u32::from_ne_bytes(value.to_ne_bytes())
 }
@@ -229,9 +224,7 @@ mod tests {
         assert_eq!(pb_zigzag_encode64(82783), 165566);
         assert_eq!(pb_zigzag_decode64(165566), 82783);
     }
-<<<<<<< HEAD
-
-    #[test]
+#[test]
     fn parse_packed_varints() {
         // Empty data
         assert_eq!(pb_parse_packed_varints(&[]), vec![]);
@@ -257,7 +250,4 @@ mod tests {
         assert_eq!(pb_parse_packed_varints(&[0xac, 0x02, 0x90, 0x03]), vec![
             300, 400
         ]);
-    }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+    }}

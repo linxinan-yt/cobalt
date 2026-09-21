@@ -630,7 +630,6 @@ void TestRenderFrameHost::SimulateCommitProcessed(
       same_document);
 }
 
-<<<<<<< HEAD
 void TestRenderFrameHost::SimulateOnSameDocumentCommitProcessed(
     const base::UnguessableToken& navigation_token,
     bool should_replace_current_entry,
@@ -644,18 +643,11 @@ void TestRenderFrameHost::SetPrefetchedSignedExchangeCacheForTesting(
   prefetched_signed_exchange_cache_ = std::move(cache);
 }
 
-=======
-#if !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-void TestRenderFrameHost::CreateHidServiceForTesting(
+#if !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)void TestRenderFrameHost::CreateHidServiceForTesting(
     mojo::PendingReceiver<blink::mojom::HidService> receiver) {
   RenderFrameHostImpl::GetHidService(std::move(receiver));
 }
-<<<<<<< HEAD
-=======
 #endif  // !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 #if !BUILDFLAG(IS_COBALT)
 void TestRenderFrameHost::CreateWebUsbServiceForTesting(
     mojo::PendingReceiver<blink::mojom::WebUsbService> receiver) {

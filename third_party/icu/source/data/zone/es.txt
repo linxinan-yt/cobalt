@@ -66,9 +66,7 @@ es{
         "America:Anguilla"{
             ec{"Anguila"}
         }
-<<<<<<< HEAD
-=======
-        "America:Araguaina"{
+"America:Araguaina"{
             ec{"Araguaína"}
         }
         "America:Argentina:Rio_Gallegos"{
@@ -76,9 +74,7 @@ es{
         }
         "America:Argentina:Tucuman"{
             ec{"Tucumán"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Bahia"{
+        }        "America:Bahia"{
             ec{"Bahía"}
         }
         "America:Belem"{
@@ -147,13 +143,9 @@ es{
         "America:Rio_Branco"{
             ec{"Río Branco"}
         }
-<<<<<<< HEAD
-=======
-        "America:Santarem"{
+"America:Santarem"{
             ec{"Santarém"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Santiago"{
+        }        "America:Santiago"{
             ec{"Santiago de Chile"}
         }
         "America:St_Barthelemy"{

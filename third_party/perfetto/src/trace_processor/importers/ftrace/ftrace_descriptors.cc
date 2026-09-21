@@ -24,12 +24,7 @@ namespace perfetto {
 namespace trace_processor {
 namespace {
 
-<<<<<<< HEAD
-std::array<FtraceMessageDescriptor, 616> descriptors{{
-=======
-std::array<FtraceMessageDescriptor, 596> descriptors{{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    {nullptr, 0, {}},
+std::array<FtraceMessageDescriptor, 616> descriptors{{    {nullptr, 0, {}},
     {nullptr, 0, {}},
     {nullptr, 0, {}},
     {
@@ -6634,8 +6629,7 @@ std::array<FtraceMessageDescriptor, 596> descriptors{{
             {"seqno", ProtoSchemaType::kUint64},
         },
     },
-<<<<<<< HEAD
-    {
+{
         "fwtp_perfetto_counter",
         5,
         {
@@ -6882,10 +6876,7 @@ std::array<FtraceMessageDescriptor, 596> descriptors{{
             {"state", ProtoSchemaType::kUint32},
             {"s2idle", ProtoSchemaType::kUint32},
         },
-    },
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}};
+    },}};
 
 }  // namespace
 

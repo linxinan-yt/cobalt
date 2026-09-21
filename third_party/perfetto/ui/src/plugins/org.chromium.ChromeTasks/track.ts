@@ -12,16 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-<<<<<<< HEAD
 import type {Utid} from '../../components/sql_utils/core_types';
 import {SliceTrack} from '../../components/tracks/slice_track';
-import type {Trace} from '../../public/trace';
-=======
-import {Utid} from '../../components/sql_utils/core_types';
-import {SliceTrack} from '../../components/tracks/slice_track';
-import {Trace} from '../../public/trace';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {ChromeTasksDetailsPanel} from './details';
+import type {Trace} from '../../public/trace';import {ChromeTasksDetailsPanel} from './details';
 import {LONG, NUM, STR} from '../../trace_processor/query_result';
 import {SourceDataset} from '../../trace_processor/dataset';
 

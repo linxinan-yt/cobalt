@@ -24,13 +24,8 @@ import {
   nativeKeyboardLayoutMap,
   NotSupportedError,
 } from '../base/keyboard_layout_map';
-<<<<<<< HEAD
-import {KeyMapping} from '../base/wasd_key_mapping';
-=======
 import {KeyMapping} from './timeline_page/wasd_navigation_handler';
 import {raf} from '../core/raf_scheduler';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 export function toggleHelp(): void {
   AppImpl.instance.analytics.logEvent('User Actions', 'Show help');
   return showModal({

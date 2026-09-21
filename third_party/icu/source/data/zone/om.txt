@@ -25,14 +25,9 @@ om{
             ls{"Sa’aatii Istaandaardii Afrikaa Kibbaa"}
         }
         "meta:Africa_Western"{
-<<<<<<< HEAD
-            ls{"Sa’aatii Afrikaa Dhihaa"}
-=======
-            ld{"Sa’aatii Bonaa Afrikaa Dhihaa"}
+ld{"Sa’aatii Bonaa Afrikaa Dhihaa"}
             lg{"Sa’aatii Afrikaa Dhihaa"}
-            ls{"Sa’aatii Istaandaardii Afrikaa Dhihaa"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Sa’aatii Istaandaardii Afrikaa Dhihaa"}        }
         "meta:Alaska"{
             ld{"Sa’aatii Guyyaa Alaaskaa"}
             lg{"Sa’aatii Alaaskaa"}
@@ -294,14 +289,10 @@ om{
         "meta:Guyana"{
             ls{"Sa’aatii Guyaanaa"}
         }
-<<<<<<< HEAD
-        "meta:Hawaii"{
+"meta:Hawaii"{
             ls{"Sa’aatii Istaandaardii Haawayi-Alewutiyan"}
             ss{"HAS"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "meta:Hawaii_Aleutian"{
+        }        "meta:Hawaii_Aleutian"{
             ld{"Sa’aatii Guyyaa Haawayi-Alewutiyan"}
             lg{"Sa’aatii Haawayi-Alewutiyan"}
             ls{"Sa’aatii Istaandaardii Haawayi-Alewutiyan"}

@@ -600,8 +600,6 @@ declare_args() {
   enable_partition_lock_priority_inheritance =
       is_android && (current_cpu == "x64" || current_cpu == "arm64")
 }
-<<<<<<< HEAD
-
 declare_args() {
   # Enables the zero segment in user-space in PartitionAlloc. This segment is
   # similar to Mach-O's __PAGEZERO segment in that it ensures that a certain
@@ -646,6 +644,3 @@ use_checked_span = !(is_asan || is_ubsan || is_tsan) && use_partition_alloc &&
 # support.
 checked_span_has_metadata_support =
     use_checked_span && enable_backup_ref_ptr_support && false
-=======
-}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

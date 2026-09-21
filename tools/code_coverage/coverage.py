@@ -821,7 +821,6 @@ def _ValidateCurrentPlatformIsSupported():
                                                    supported_platforms)
 
 
-<<<<<<< HEAD
 def _GetBuildArgsPath():
   """Returns the path to the args.gn file in the build directory.
 
@@ -834,41 +833,6 @@ def _GetBuildArgsPath():
                     BUILD_DIR)
     return None
   return build_args_path
-=======
-def _ProcessGnFile(file_path, args_dict, processed_files):
-  """Recursively processes a .gn file and its imports."""
-  if file_path in processed_files:
-    return
-  processed_files.add(file_path)
-
-  if not os.path.exists(file_path):
-    return
-
-  with open(file_path, 'r') as f:
-    for line in f:
-      line_without_comment = line.split('#')[0].strip()
-      if not line_without_comment:
-        continue
-
-      match = re.match(r'import\("([^"]+)"\)', line_without_comment)
-      if match:
-        import_path_str = match.group(1)
-        if import_path_str.startswith('//'):
-          import_path = os.path.join(SRC_ROOT_PATH, import_path_str[2:])
-        else:
-          import_path = os.path.join(
-              os.path.dirname(file_path), import_path_str)
-
-        _ProcessGnFile(import_path, args_dict, processed_files)
-        continue
-
-      key_value_pair = line_without_comment.split('=')
-      if len(key_value_pair) == 2:
-        key = key_value_pair[0].strip()
-        value = key_value_pair[1].strip().strip('"')
-        args_dict[key] = value
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 
 def _GetBuildArgs():
   """Parses args.gn file and its imports and returns results as a dictionary.
@@ -881,19 +845,9 @@ def _GetBuildArgs():
     return _BUILD_ARGS
 
   _BUILD_ARGS = {}
-<<<<<<< HEAD
   build_args_path = _GetBuildArgsPath()
   if not build_args_path:
     return _BUILD_ARGS
-
-  with open(build_args_path) as build_args_file:
-    build_args_lines = build_args_file.readlines()
-=======
-  build_args_path = os.path.join(BUILD_DIR, 'args.gn')
-  assert os.path.exists(build_args_path), ('"%s" is not a build directory, '
-                                           'missing args.gn file.' % BUILD_DIR)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   processed_files = set()
   _ProcessGnFile(build_args_path, _BUILD_ARGS, processed_files)
 
@@ -995,38 +949,8 @@ def _GetBinaryPathForWebTests():
     assert False, 'This platform is not supported for web tests.'
 
 
-<<<<<<< HEAD
 @telemetry_utils.tracer.start_as_current_span(
-    'coverage.py._GenerateCoverageReport')
-=======
-def _GetComponentMappings(component_mappings_file):
-  """Returns a dictionary of component mappings.
-
-  If a local file is provided, it is loaded directly. Otherwise, the mapping
-  is fetched from a GCP URL, attempting to use gcloud for authentication.
-  """
-  if component_mappings_file:
-    component_mappings = json.load(component_mappings_file)
-    component_mappings_file.close()
-    return component_mappings
-
-  try:
-    gcloud_token_command = ['gcloud', 'auth', 'print-access-token']
-    token = subprocess.check_output(gcloud_token_command,
-                                    stderr=subprocess.PIPE).strip()
-    req = Request(
-        COMPONENT_MAPPING_URL,
-        headers={'Authorization': 'Bearer ' + token.decode('utf-8')})
-    return json.load(urlopen(req))
-  except (subprocess.CalledProcessError, OSError, URLError) as e:
-    logging.warning(
-        'Could not get gcloud auth token. Falling back to unauthenticated '
-        'request. This may fail if the bucket is not public. Error: %s', e)
-    return json.load(urllib.request.urlopen(COMPONENT_MAPPING_URL))
-
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-def _GenerateCoverageReport(args, binary_paths, profdata_file_path,
+    'coverage.py._GenerateCoverageReport')def _GenerateCoverageReport(args, binary_paths, profdata_file_path,
                             absolute_filter_paths):
   """Generate the coverage report in the supported format."""
   assert args.format in [

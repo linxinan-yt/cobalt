@@ -765,11 +765,7 @@ kok{
             one{"झिंबाब्वेचें भांगर"}
             other{"झिंबाब्वेचें भांगर"}
         }
-<<<<<<< HEAD
-=======
-        ZMW{
+ZMW{
             other{"झांबियन क्वाचास"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

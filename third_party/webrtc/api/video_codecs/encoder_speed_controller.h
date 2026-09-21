@@ -17,11 +17,7 @@
 #include <vector>
 
 #include "api/units/time_delta.h"
-<<<<<<< HEAD
 #include "api/units/timestamp.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 namespace webrtc {
 
 // Utility class intended to help dynamically find the optimal speed settings to
@@ -44,8 +40,7 @@ class EncoderSpeedController {
     kNoneReference  // A frame not used as reference sub subsequent frames.
   };
   struct Config {
-<<<<<<< HEAD
-    struct PsnrProbingSettings {
+struct PsnrProbingSettings {
       enum class Mode {
         // Sample one base layer frame every `sampling_interval`, and sample
         // both alternatives when doing PSNR probing.
@@ -65,11 +60,7 @@ class EncoderSpeedController {
     // The PSNR settings to used. If not set, PSNR gain levels must not be
     // present in the speed levels. Do not populate if the encoder does not
     // support calculating PSNR.
-    std::optional<PsnrProbingSettings> psnr_probing_settings;
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    // Represents an assignable speed level, with specific speeds for one or
+    std::optional<PsnrProbingSettings> psnr_probing_settings;    // Represents an assignable speed level, with specific speeds for one or
     // more temporal layers.
     struct SpeedLevel {
       // The actual speed levels (values of the integers below) are
@@ -82,8 +73,7 @@ class EncoderSpeedController {
 
       // Don't use this speed level if the average QP is lower than `min_qp`.
       std::optional<int> min_qp;
-<<<<<<< HEAD
-      // Minimum PSNR gain required to go from the previous speed level to this
+// Minimum PSNR gain required to go from the previous speed level to this
       // one, or nullopt if no PSNR calculation is required. This value must
       // not be set unless the encoder is capable of encoding a frame twice.
       struct PsnrComparison {
@@ -95,10 +85,7 @@ class EncoderSpeedController {
         // the PSNR for `base_layer_speed`.
         double psnr_threshold;
       };
-      std::optional<PsnrComparison> min_psnr_gain;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    };
+      std::optional<PsnrComparison> min_psnr_gain;    };
     // Ordered vector of speed levels, start with the slowest speed (lower
     // effort) and the increasing the average speed for each entry.
     std::vector<SpeedLevel> speed_levels;
@@ -114,31 +101,23 @@ class EncoderSpeedController {
     // True iff the frame is a repeat of the previous frame (e.g. the frames
     // used during quality convergence of a variable fps screenshare feed).
     bool is_repeat_frame;
-<<<<<<< HEAD
-    // The capture time of the frame.
+// The capture time of the frame.
     // TODO: webrtc:443906251 - Remove default value once downstream usage
     // is updated.
-    Timestamp timestamp = Timestamp::MinusInfinity();
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  };
+    Timestamp timestamp = Timestamp::MinusInfinity();  };
 
   // Output from the controller, indicates which speed the encoder should be
   // configured with given the frame info that was submitted.
   struct EncodeSettings {
     // Speed the encoder should use for this frame.
     int speed;
-<<<<<<< HEAD
-    // If set, the encoder should encode this frame twice. FIRST with a speed of
+// If set, the encoder should encode this frame twice. FIRST with a speed of
     // `baseline_comparison_speed` and SECONDLY at speed `speed`. The two
     // results should then both be provided in `OnEncodedFrame()`.
     std::optional<int> baseline_comparison_speed;
     // If true, the encoder should calculate the PSNR for this frame - including
     // the second encoding if `baseline_comparison_speed` is set.
-    bool calculate_psnr;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  };
+    bool calculate_psnr;  };
 
   // Data the controller should be fed with after a frame has been encoded,
   // providing info about the resulting encoding.
@@ -149,12 +128,8 @@ class EncoderSpeedController {
     TimeDelta encode_time;
     // The _average_ frame QP of the encoded frame.
     int qp;
-<<<<<<< HEAD
-    // If set, the PSNR of the reconstructed frame vs the original raw frame.
-    std::optional<double> psnr;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    // The frame encoding info - same as what was originally given as argument
+// If set, the PSNR of the reconstructed frame vs the original raw frame.
+    std::optional<double> psnr;    // The frame encoding info - same as what was originally given as argument
     // to `GetEncodingSettings()`.
     FrameEncodingInfo frame_info;
   };
@@ -176,8 +151,7 @@ class EncoderSpeedController {
   // thereafter be configured with requested settings.
   virtual EncodeSettings GetEncodeSettings(FrameEncodingInfo frame_info) = 0;
 
-<<<<<<< HEAD
-  // TODO: webrtc:443906251 - Remove once downstream usage is gone.
+// TODO: webrtc:443906251 - Remove once downstream usage is gone.
   [[deprecated(
       "Use OnEncodedFrame(EncodeResults, std::optional<EncodeResults>)")]]
   virtual void OnEncodedFrame(EncodeResults results) {
@@ -189,12 +163,7 @@ class EncoderSpeedController {
   // parameter should be set with the results corresponding to those settings.
   virtual void OnEncodedFrame(
       EncodeResults results,
-      std::optional<EncodeResults> baseline_results) = 0;
-=======
-  // Should be called after each frame has completed encoding.
-  virtual void OnEncodedFrame(EncodeResults results) = 0;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-};
+      std::optional<EncodeResults> baseline_results) = 0;};
 
 }  // namespace webrtc
 

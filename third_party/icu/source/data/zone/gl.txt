@@ -51,9 +51,7 @@ gl{
         "America:Anguilla"{
             ec{"Anguila"}
         }
-<<<<<<< HEAD
-=======
-        "America:Araguaina"{
+"America:Araguaina"{
             ec{"Araguaína"}
         }
         "America:Argentina:Rio_Gallegos"{
@@ -61,9 +59,7 @@ gl{
         }
         "America:Argentina:Tucuman"{
             ec{"Tucumán"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Bahia"{
+        }        "America:Bahia"{
             ec{"Baía"}
         }
         "America:Cayenne"{
@@ -72,20 +68,14 @@ gl{
         "America:Cayman"{
             ec{"Illas Caimán"}
         }
-<<<<<<< HEAD
-        "America:Coyhaique"{
-            ec{"Coihaique"}
-=======
-        "America:Cordoba"{
+"America:Cordoba"{
             ec{"Córdoba"}
         }
         "America:Cuiaba"{
             ec{"Cuiabá"}
         }
         "America:Eirunepe"{
-            ec{"Eirunepé"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ec{"Eirunepé"}        }
         "America:El_Salvador"{
             ec{"O Salvador"}
         }
@@ -146,16 +136,12 @@ gl{
         "America:Rio_Branco"{
             ec{"Río Branco"}
         }
-<<<<<<< HEAD
-=======
-        "America:Santarem"{
+"America:Santarem"{
             ec{"Santarém"}
         }
         "America:Sao_Paulo"{
             ec{"São Paulo"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:St_Barthelemy"{
+        }        "America:St_Barthelemy"{
             ec{"Saint Barthélemy"}
         }
         "America:St_Johns"{
@@ -434,14 +420,9 @@ gl{
             ec{"Tahití"}
         }
         "meta:Acre"{
-<<<<<<< HEAD
-            ld{"hora de verán de Acre"}
+ld{"hora de verán de Acre"}
             lg{"hora de Acre"}
-            ls{"hora estándar de Acre"}
-=======
-            lg{"hora de Acre"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"hora estándar de Acre"}        }
         "meta:Afghanistan"{
             ls{"hora de Afganistán"}
         }

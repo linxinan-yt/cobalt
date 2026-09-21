@@ -4,16 +4,12 @@
 en_IN{
     %%Parent{"en_001"}
     zoneStrings{
-<<<<<<< HEAD
-=======
-        "Asia:Hovd"{
+"Asia:Hovd"{
             ec{"Khovd"}
         }
         "Asia:Qyzylorda"{
             ec{"Kyzylorda"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "meta:Gulf"{
+        }        "meta:Gulf"{
             ss{"GST"}
         }
         "meta:Hovd"{

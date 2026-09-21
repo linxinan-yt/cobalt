@@ -1100,11 +1100,7 @@ is{
                 gender{"feminine"}
                 one{"{0} nótt"}
                 other{"{0} nætur"}
-<<<<<<< HEAD
-=======
-                per{"{0}/nótt"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+per{"{0}/nótt"}            }
             quarter{
                 case{
                     accusative{

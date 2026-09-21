@@ -270,13 +270,9 @@ tg{
         "America:Costa_Rica"{
             ec{"Коста Рика"}
         }
-<<<<<<< HEAD
-        "America:Coyhaique"{
+"America:Coyhaique"{
             ec{"Койҳайке"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Creston"{
+        }        "America:Creston"{
             ec{"Крестон"}
         }
         "America:Cuiaba"{
@@ -1172,12 +1168,6 @@ tg{
         "Pacific:Efate"{
             ec{"Эфате"}
         }
-<<<<<<< HEAD
-        "Pacific:Enderbury"{
-            ec{"Кантон"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         "Pacific:Fakaofo"{
             ec{"Факаофо"}
         }
@@ -1199,13 +1189,9 @@ tg{
         "Pacific:Guam"{
             ec{"Гуам"}
         }
-<<<<<<< HEAD
-=======
-        "Pacific:Kanton"{
+"Pacific:Kanton"{
             ec{"Кантон"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Pacific:Kiritimati"{
+        }        "Pacific:Kiritimati"{
             ec{"Киритимати"}
         }
         "Pacific:Kosrae"{
@@ -1287,14 +1273,9 @@ tg{
             ls{"Вақти стандартии Африқои Ҷанубӣ"}
         }
         "meta:Africa_Western"{
-<<<<<<< HEAD
-            ls{"Вақти Африқои Ғарбӣ"}
-=======
-            ld{"Вақти тобистонаи Африқои Ғарбӣ"}
+ld{"Вақти тобистонаи Африқои Ғарбӣ"}
             lg{"Вақти Африқои Ғарбӣ"}
-            ls{"Вақти стандартии Африқои Ғарбӣ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Вақти стандартии Африқои Ғарбӣ"}        }
         "meta:Alaska"{
             ld{"Вақти рӯзонаи Аляска"}
             lg{"Вақти Аляска"}
@@ -1532,13 +1513,9 @@ tg{
         "meta:Guyana"{
             ls{"Вақти Гайана"}
         }
-<<<<<<< HEAD
-        "meta:Hawaii"{
+"meta:Hawaii"{
             ls{"Вақти стандартии Ҳавайӣ-Алеутӣ"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "meta:Hawaii_Aleutian"{
+        }        "meta:Hawaii_Aleutian"{
             ld{"Вақти рӯзонаи Ҳавайӣ-Алеутӣ"}
             lg{"Вақти Ҳавайӣ-Алеутӣ"}
             ls{"Вақти стандартии Ҳавайӣ-Алеутӣ"}

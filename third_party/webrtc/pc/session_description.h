@@ -419,12 +419,7 @@ class SctpDataContentDescription final : public MediaContentDescription {
         port_(o.port_),
         max_message_size_(o.max_message_size_),
         sctp_init_(o.sctp_init_) {}
-<<<<<<< HEAD
-  MediaType type() const override { return MediaType::DATA; }
-=======
-  webrtc::MediaType type() const override { return webrtc::MediaType::DATA; }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  SctpDataContentDescription* as_sctp() override { return this; }
+webrtc::MediaType type() const override { return webrtc::MediaType::DATA; }  SctpDataContentDescription* as_sctp() override { return this; }
   const SctpDataContentDescription* as_sctp() const override { return this; }
 
   bool has_codecs() const override { return false; }

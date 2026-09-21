@@ -88,15 +88,7 @@ void SubresourceProxyingURLLoaderService::CreateLoaderAndStart(
 
   if (!PrefetchURLLoaderServiceContext::IsPrefetchRequest(
           resource_request_in) &&
-<<<<<<< HEAD
-      !resource_request_in.browsing_topics) {
-=======
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-      !resource_request_in.browsing_topics &&
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-      !resource_request_in.ad_auction_headers) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    loader_factory_receivers_.ReportBadMessage(
+!resource_request_in.browsing_topics) {    loader_factory_receivers_.ReportBadMessage(
         "Unexpected `resource_request_in` in "
         "SubresourceProxyingURLLoaderService::CreateLoaderAndStart(): it's not "
         "a prefetch or browsing_topics request.");
@@ -104,16 +96,7 @@ void SubresourceProxyingURLLoaderService::CreateLoaderAndStart(
   }
 
   if (PrefetchURLLoaderServiceContext::IsPrefetchRequest(resource_request_in) &&
-<<<<<<< HEAD
-      resource_request_in.browsing_topics) {
-=======
-      (
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-       resource_request_in.browsing_topics ||
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-       resource_request_in.ad_auction_headers)) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    loader_factory_receivers_.ReportBadMessage(
+resource_request_in.browsing_topics) {    loader_factory_receivers_.ReportBadMessage(
         "Unexpected `resource_request_in` in "
         "SubresourceProxyingURLLoaderService::CreateLoaderAndStart(): prefetch "
         "cannot be set at the same time with browsing_topics.");

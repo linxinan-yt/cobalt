@@ -52,12 +52,8 @@ class Config:
   chrome_extensions: str
   test_extensions: str
   winscope_extensions: str
-<<<<<<< HEAD
-  gpu_extensions: str
-  gpu_interned_data_extensions: str
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  simpleperf_descriptor: str
+gpu_extensions: str
+  gpu_interned_data_extensions: str  simpleperf_descriptor: str
   keep_input: bool
   print_slowest_tests: bool
   jobs: int = 0  # Number of parallel jobs. 0 means use all available CPUs.

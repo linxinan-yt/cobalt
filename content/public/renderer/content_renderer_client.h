@@ -479,9 +479,7 @@ class CONTENT_EXPORT ContentRendererClient {
   CreateCastStreamingResourceProvider();
 #endif
 
-<<<<<<< HEAD
-=======
-  // Creates a WebLinkPreviewTriggerer if an embedder wants to observe events
+// Creates a WebLinkPreviewTriggerer if an embedder wants to observe events
   // and trigger preview. It is allowed to return nullptr.
   //
   // See blink::WebLinkPreviewTriggerer for more details.
@@ -493,9 +491,7 @@ class CONTENT_EXPORT ContentRendererClient {
   // as MojoRenderer from cobalt_content_renderer_client.cc.
   virtual void GetStarboardRendererFactoryTraits(
       media::RendererFactoryTraits* renderer_factory_traits);
-#endif // BUILDFLAG(USE_STARBOARD_MEDIA)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-};
+#endif // BUILDFLAG(USE_STARBOARD_MEDIA)};
 
 }  // namespace content
 

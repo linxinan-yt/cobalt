@@ -101,8 +101,4 @@ class ProxyServer {
 
 }  //  namespace webrtc
 
-<<<<<<< HEAD
 #endif  // RTC_BASE_PROXY_SERVER_H_
-=======
-#endif  // RTC_BASE_PROXY_SERVER_H_
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

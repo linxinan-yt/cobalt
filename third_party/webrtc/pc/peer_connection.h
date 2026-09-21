@@ -622,14 +622,8 @@ class PeerConnection : public PeerConnectionInternal,
 
   MediaEngineInterface* media_engine() const RTC_RUN_ON(worker_thread());
 
-<<<<<<< HEAD
-  absl::AnyInvocable<void(const CopyOnWriteBuffer& packet,
-                          int64_t packet_time_us) const>
-=======
-  std::function<void(const webrtc::CopyOnWriteBuffer& packet,
-                     int64_t packet_time_us)>
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  InitializeRtcpCallback();
+absl::AnyInvocable<void(const CopyOnWriteBuffer& packet,
+                          int64_t packet_time_us) const>  InitializeRtcpCallback();
 
   absl::AnyInvocable<void(const RtpPacketReceived& parsed_packet) const>
   InitializeUnDemuxablePacketHandler();

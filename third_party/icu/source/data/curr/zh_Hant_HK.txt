@@ -275,13 +275,10 @@ zh_Hant_HK{
         LTL{
             other{"立陶宛里塔"}
         }
-<<<<<<< HEAD
-        ZWG{
-            other{"津布巴韋金"}
-=======
-        XOF{
+XOF{
             other{"西非法郎"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
+        ZWG{
+            other{"津布巴韋金"}        }
     }
 }

@@ -2138,11 +2138,7 @@ sl{
                         two{"{0} nočeh"}
                     }
                 }
-<<<<<<< HEAD
-=======
-                dnam{"noči"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                few{"{0} noči"}
+dnam{"noči"}                few{"{0} noči"}
                 gender{"feminine"}
                 one{"{0} noč"}
                 other{"{0} noči"}
@@ -3653,11 +3649,7 @@ sl{
                         two{"{0} točkah"}
                     }
                 }
-<<<<<<< HEAD
-=======
-                dnam{"točke"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                few{"{0} točke"}
+dnam{"točke"}                few{"{0} točke"}
                 gender{"feminine"}
                 one{"{0} točka"}
                 other{"{0} točk"}
@@ -4764,11 +4756,7 @@ sl{
                         two{"{0} svetlobah"}
                     }
                 }
-<<<<<<< HEAD
-=======
-                dnam{"svetloba"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                few{"{0} svetlobe"}
+dnam{"svetloba"}                few{"{0} svetlobe"}
                 gender{"feminine"}
                 one{"{0} svetloba"}
                 other{"{0} svetlob"}
@@ -5626,18 +5614,11 @@ sl{
                 dnam{"mesec"}
             }
             night{
-<<<<<<< HEAD
+dnam{"noči"}
                 few{"{0} n"}
                 one{"{0} n"}
                 other{"{0} n"}
-=======
-                dnam{"noči"}
-                few{"{0} n"}
-                one{"{0} n"}
-                other{"{0} n"}
-                per{"{0}/noč"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                two{"{0} n"}
+                per{"{0}/noč"}                two{"{0} n"}
             }
             quarter{
                 few{"{0} čl."}
@@ -5679,12 +5660,7 @@ sl{
             }
             em{
                 few{"{0} emi"}
-<<<<<<< HEAD
-                one{"{0} em"}
-=======
-                one{"{0} emov"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                other{"{0} emov"}
+one{"{0} em"}                other{"{0} emov"}
                 two{"{0} ema"}
             }
         }
@@ -6008,12 +5984,7 @@ sl{
             }
             em{
                 few{"{0} emi"}
-<<<<<<< HEAD
-                one{"{0} em"}
-=======
-                one{"{0} emov"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                other{"{0} emov"}
+one{"{0} em"}                other{"{0} emov"}
                 two{"{0} ema"}
             }
         }

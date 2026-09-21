@@ -100,8 +100,6 @@ constexpr net::NetworkTrafficAnnotationTag
     )");
 
 const int kReadBufferSize = 8 * 1024;
-<<<<<<< HEAD
-=======
 #if BUILDFLAG(IS_COBALT)
 // On living room devices (e.g. Android TV), short pauses (15-45s) between user
 // interactions are standard. Because TCP keep-alive maintains NAT state every
@@ -109,9 +107,7 @@ const int kReadBufferSize = 8 * 1024;
 const int kDefaultConnectionAtRiskOfLossSeconds = 60;
 #else
 const int kDefaultConnectionAtRiskOfLossSeconds = 10;
-#endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-const int kHungIntervalSeconds = 10;
+#endifconst int kHungIntervalSeconds = 10;
 
 // Default initial value for HTTP/2 SETTINGS.
 const uint32_t kDefaultInitialHeaderTableSize = 4096;

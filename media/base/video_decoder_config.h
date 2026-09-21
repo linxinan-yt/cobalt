@@ -166,19 +166,16 @@ class MEDIA_EXPORT VideoDecoderConfig {
   // useful for decryptors that decrypts an encrypted stream to a clear stream.
   void SetIsEncrypted(bool is_encrypted);
 
-<<<<<<< HEAD
-  void set_spatial_format(const VideoSpatialFormat& spatial_format) {
+void set_spatial_format(const VideoSpatialFormat& spatial_format) {
     spatial_format_ = spatial_format;
   }
   const VideoSpatialFormat& spatial_format() const { return spatial_format_; }
-=======
+
 #if BUILDFLAG(USE_STARBOARD_MEDIA)
   // Mime_type string of the config.
   void set_mime_type(std::string_view mime_type) { mime_type_ = mime_type; }
   const std::string& mime_type() const { return mime_type_; }
 #endif  // BUILDFLAG(USE_STARBOARD_MEDIA)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
  private:
   VideoCodec codec_ = VideoCodec::kUnknown;
   VideoCodecProfile profile_ = VIDEO_CODEC_PROFILE_UNKNOWN;

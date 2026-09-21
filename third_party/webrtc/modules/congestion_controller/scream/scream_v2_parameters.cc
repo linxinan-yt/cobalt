@@ -18,8 +18,7 @@
 namespace webrtc {
 
 ScreamV2Parameters::ScreamV2Parameters(const FieldTrialsView& trials)
-<<<<<<< HEAD
-    : min_ref_window("MinRefWindow", DataSize::Bytes(1000)),
+: min_ref_window("MinRefWindow", DataSize::Bytes(1000)),
       l4s_avg_g_up("L4sAvgGUp", 1.0 / 8.0),
       l4s_avg_g_down("L4sAvgGDown", 1.0 / 128.0),
       rtts_with_loss_before_backoff("RttsWithLossBeforeBackoff", 3),
@@ -27,13 +26,7 @@ ScreamV2Parameters::ScreamV2Parameters(const FieldTrialsView& trials)
 
       smoothed_rtt_avg_g("SmoothedRttAvgG", 1.0 / 8.0),
       smoothed_rtt_avg_in_alr_g("SmoothedRttAvgInAlrG", 1.0 / 128.0),
-      max_segment_size("MaxSegmentSize", DataSize::Bytes(1280)),
-=======
-    : min_ref_window("MinRefWindow", DataSize::Bytes(3000)),
-      l4s_avg_g("L4sAvgG", 1.0 / 16.0),
-      max_segment_size("MaxSegmentSize", DataSize::Bytes(1000)),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      bytes_in_flight_head_room("BytesInFlightHeadRoom", 1.1),
+      max_segment_size("MaxSegmentSize", DataSize::Bytes(1280)),      bytes_in_flight_head_room("BytesInFlightHeadRoom", 1.1),
       beta_loss("BetaLoss", 0.7),
       post_congestion_delay_rtts("PostCongestionDelayRtts", 100),
       multiplicative_increase_factor("MultiplicativeIncreaseFactor", 0.02),
@@ -57,8 +50,7 @@ ScreamV2Parameters::ScreamV2Parameters(const FieldTrialsView& trials)
       base_delay_window_length("BaseDelayWindowLength", 10),
       base_delay_history_update_interval("BaseDelayHistoryUpdateInterval",
                                          TimeDelta::Minutes(1)),
-<<<<<<< HEAD
-      queue_delay_target("QDelayTarget", TimeDelta::Millis(60)),
+queue_delay_target("QDelayTarget", TimeDelta::Millis(60)),
       queue_delay_drain_threshold("QDelayDrainThreshold", TimeDelta::Millis(5)),
       queue_delay_drain_period("QDelayDrainPeriod", TimeDelta::Seconds(20)),
       queue_delay_drain_rtts("QDelayDrainRtts", 5),
@@ -88,20 +80,7 @@ ScreamV2Parameters::ScreamV2Parameters(const FieldTrialsView& trials)
                    &lossless_rtts_before_clear,
 
                    &smoothed_rtt_avg_g,
-                   &smoothed_rtt_avg_in_alr_g,
-=======
-      queue_delay_target("QDelayTarget", TimeDelta::Millis(100)),
-      queue_delay_increased_threshold("QDelayIncreasedThreshold", 0.25),
-      queue_delay_threshold("QDelayThreshold", 0.5),
-      use_all_packets_when_calculating_queue_delay(
-          "UseAllPacketsWhenCalculatingQDelay",
-          true),
-      periodic_padding_interval("PeriodicPadding", TimeDelta::Seconds(10)),
-      periodic_padding_duration("PaddingDuration", TimeDelta::Seconds(1)) {
-  ParseFieldTrial({&min_ref_window,
-                   &l4s_avg_g,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                   &max_segment_size,
+                   &smoothed_rtt_avg_in_alr_g,                   &max_segment_size,
                    &bytes_in_flight_head_room,
                    &beta_loss,
                    &post_congestion_delay_rtts,
@@ -109,8 +88,7 @@ ScreamV2Parameters::ScreamV2Parameters(const FieldTrialsView& trials)
                    &virtual_rtt,
                    &backoff_scale_factor_close_to_ref_window_i,
                    &number_of_rtts_between_reset_ref_window_i_on_congestion,
-<<<<<<< HEAD
-                   &ref_window_overhead_min,
+&ref_window_overhead_min,
                    &ref_window_overhead_max,
                    &queue_delay_avg_g,
                    &delay_min_and_latency_diff_avg_g,
@@ -134,21 +112,7 @@ ScreamV2Parameters::ScreamV2Parameters(const FieldTrialsView& trials)
                    &alr_threshold,
                    &received_rate_window,
                    &min_pacing_delay_for_pushback,
-                   &max_pacing_delay_for_pushback},
-=======
-                   &data_in_flight_limit,
-                   &max_data_in_flight_limit_compensation,
-                   &queue_delay_avg_g,
-                   &base_delay_window_length,
-                   &base_delay_history_update_interval,
-                   &queue_delay_target,
-                   &queue_delay_increased_threshold,
-                   &queue_delay_threshold,
-                   &use_all_packets_when_calculating_queue_delay,
-                   &periodic_padding_interval,
-                   &periodic_padding_duration},
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                  trials.Lookup("WebRTC-Bwe-ScreamV2"));
+                   &max_pacing_delay_for_pushback},                  trials.Lookup("WebRTC-Bwe-ScreamV2"));
 }
 
 }  // namespace webrtc

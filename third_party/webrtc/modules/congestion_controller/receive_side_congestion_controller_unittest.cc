@@ -16,11 +16,7 @@
 
 #include "api/field_trials.h"
 #include "api/media_types.h"
-<<<<<<< HEAD
-#include "api/rtp_header_extension_id.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "api/rtp_parameters.h"
+#include "api/rtp_header_extension_id.h"#include "api/rtp_parameters.h"
 #include "api/test/network_emulation/create_cross_traffic.h"
 #include "api/test/network_emulation/cross_traffic.h"
 #include "api/units/data_rate.h"
@@ -152,16 +148,9 @@ TEST(ReceiveSideCongestionControllerTest, SendsRfc8888FeedbackIfEnabled) {
       rtcp_sender;
   MockFunction<void(uint64_t, std::vector<uint32_t>)> remb_sender;
   SimulatedClock clock(123456);
-<<<<<<< HEAD
-  ReceiveSideCongestionController controller(
+ReceiveSideCongestionController controller(
       CreateTestEnvironment({.time = &clock}), rtcp_sender.AsStdFunction(),
-      remb_sender.AsStdFunction());
-=======
-  ReceiveSideCongestionController controller(CreateEnvironment(&clock),
-                                             rtcp_sender.AsStdFunction(),
-                                             remb_sender.AsStdFunction());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  controller.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
+      remb_sender.AsStdFunction());  controller.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
 
   // Expect that RTCP feedback is sent.
   EXPECT_CALL(rtcp_sender, Call)
@@ -186,16 +175,9 @@ TEST(ReceiveSideCongestionControllerTest,
       rtcp_sender;
   MockFunction<void(uint64_t, std::vector<uint32_t>)> remb_sender;
   SimulatedClock clock(123456);
-<<<<<<< HEAD
-  ReceiveSideCongestionController controller(
+ReceiveSideCongestionController controller(
       CreateTestEnvironment({.time = &clock}), rtcp_sender.AsStdFunction(),
-      remb_sender.AsStdFunction());
-=======
-  ReceiveSideCongestionController controller(CreateEnvironment(&clock),
-                                             rtcp_sender.AsStdFunction(),
-                                             remb_sender.AsStdFunction());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  controller.SetPreferredRtcpCcAckType(RtcpFeedbackType::TRANSPORT_CC);
+      remb_sender.AsStdFunction());  controller.SetPreferredRtcpCcAckType(RtcpFeedbackType::TRANSPORT_CC);
 
   // Expect that RTCP feedback is sent.
   EXPECT_CALL(rtcp_sender, Call)
@@ -207,12 +189,7 @@ TEST(ReceiveSideCongestionControllerTest,
   EXPECT_CALL(remb_sender, Call).Times(0);
 
   RtpHeaderExtensionMap extensions;
-<<<<<<< HEAD
-  extensions.Register<TransportSequenceNumber>(RtpHeaderExtensionId(1));
-=======
-  extensions.Register<TransportSequenceNumber>(1);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  RtpPacketReceived packet(&extensions);
+extensions.Register<TransportSequenceNumber>(RtpHeaderExtensionId(1));  RtpPacketReceived packet(&extensions);
   packet.set_arrival_time(clock.CurrentTime());
   packet.SetExtension<TransportSequenceNumber>(123);
   controller.OnReceivedPacket(packet, MediaType::VIDEO);

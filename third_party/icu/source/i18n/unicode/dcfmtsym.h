@@ -459,22 +459,12 @@ public:
      * Returns that pattern stored in currency info. Internal API for use by NumberFormat API.
      * @internal
      */
-<<<<<<< HEAD
-    U_I18N_API inline const char16_t* getCurrencyPattern() const;
-=======
-    inline const char16_t* getCurrencyPattern() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API inline const char16_t* getCurrencyPattern() const;
     /**
      * Returns the numbering system with which this DecimalFormatSymbols was initialized.
      * @internal
      */
-<<<<<<< HEAD
-    U_I18N_API inline const char* getNumberingSystemName() const;
-=======
-    inline const char* getNumberingSystemName() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#endif  /* U_HIDE_INTERNAL_API */
+U_I18N_API inline const char* getNumberingSystemName() const;#endif  /* U_HIDE_INTERNAL_API */
 
 private:
     /**
@@ -516,14 +506,8 @@ private:
 
     Locale locale;
 
-<<<<<<< HEAD
-    Locale actualLocale;
-    Locale validLocale;
-=======
-    CharString* actualLocale = nullptr;
-    CharString* validLocale = nullptr;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    const char16_t* currPattern = nullptr;
+CharString* actualLocale = nullptr;
+    CharString* validLocale = nullptr;    const char16_t* currPattern = nullptr;
 
     UnicodeString currencySpcBeforeSym[UNUM_CURRENCY_SPACING_COUNT];
     UnicodeString currencySpcAfterSym[UNUM_CURRENCY_SPACING_COUNT];

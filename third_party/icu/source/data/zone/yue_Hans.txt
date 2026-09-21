@@ -1197,13 +1197,9 @@ yue_Hans{
         "Pacific:Honolulu"{
             ec{"檀香山"}
         }
-<<<<<<< HEAD
-=======
-        "Pacific:Kanton"{
+"Pacific:Kanton"{
             ec{"坎顿"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Pacific:Kiritimati"{
+        }        "Pacific:Kiritimati"{
             ec{"基里地马地岛"}
         }
         "Pacific:Kosrae"{

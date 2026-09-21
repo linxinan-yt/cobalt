@@ -73,18 +73,10 @@ xnr{
             patternsShort{
                 currencyFormat{
                     1000{
-<<<<<<< HEAD
-                        other{"¤0 हजार"}
+other{"¤0 हज़ार"}
                     }
                     10000{
-                        other{"¤00 हजार"}
-=======
-                        other{"¤0 हज़ार"}
-                    }
-                    10000{
-                        other{"¤00 हज़ार"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    }
+                        other{"¤00 हज़ार"}                    }
                     100000{
                         other{"¤0 लख"}
                     }
@@ -116,8 +108,7 @@ xnr{
                         other{"¤00 नील"}
                     }
                 }
-<<<<<<< HEAD
-                currencyFormat%alphaNextToNumber{
+currencyFormat%alphaNextToNumber{
                     1000{
                         other{"¤ 0 हजार"}
                     }
@@ -154,10 +145,7 @@ xnr{
                     100000000000000{
                         other{"¤ 00 नील"}
                     }
-                }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                decimalFormat{
+                }                decimalFormat{
                     1000{
                         other{"0 हजार"}
                     }
@@ -544,12 +532,7 @@ xnr{
         indian{
             eras{
                 abbreviated{
-<<<<<<< HEAD
-                    0{"सक"}
-=======
-                    "सक",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+"सक",                }
             }
             monthNames{
                 format{

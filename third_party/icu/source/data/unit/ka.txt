@@ -192,9 +192,7 @@ ka{
                 one{"{0} პრომილე"}
                 other{"{0} პრომილე"}
             }
-<<<<<<< HEAD
-=======
-            permillion{
+permillion{
                 dnam{"ნაწილი მილიონზე"}
                 one{"{0} ნაწილი მილიონზე"}
                 other{"{0} ნაწილი მილიონზე"}
@@ -203,9 +201,7 @@ ka{
                 dnam{"ნაწილი მილიარდზე"}
                 one{"{0} ნაწილი მილიარდზე"}
                 other{"{0} ნაწილი მილიარდზე"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            }        }
         consumption{
             liter-per-100-kilometer{
                 dnam{"ლიტრი 100 კილომეტრში"}
@@ -1462,12 +1458,7 @@ ka{
             part-per-1e6{
                 dnam{"ნაწილი/მილიონზე"}
             }
-<<<<<<< HEAD
-            part-per-1e9{
-=======
-            portion-per-1e9{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                dnam{"ნაწილი/მილიარდზე"}
+portion-per-1e9{                dnam{"ნაწილი/მილიარდზე"}
                 one{"{0} ნ/მ"}
                 other{"{0} ნ/მ"}
             }

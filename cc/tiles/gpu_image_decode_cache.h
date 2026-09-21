@@ -568,17 +568,13 @@ class CC_EXPORT GpuImageDecodeCache
   bool ExceedsCacheLimits() const EXCLUSIVE_LOCKS_REQUIRED(lock_);
   void ReduceCacheUsageLocked() EXCLUSIVE_LOCKS_REQUIRED(lock_);
 
-<<<<<<< HEAD
-=======
-  void InsertTransferCacheEntry(
+void InsertTransferCacheEntry(
       const ClientImageTransferCacheEntry& image_entry,
       ImageData* image_data) EXCLUSIVE_LOCKS_REQUIRED(lock_);
 #if BUILDFLAG(IS_COBALT)
   void OnInProcessImageTransferCompleted(
       scoped_refptr<ImageData> image_data);
-#endif  // BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  bool NeedsDarkModeFilter(const DrawImage& draw_image, ImageData* image_data);
+#endif  // BUILDFLAG(IS_COBALT)  bool NeedsDarkModeFilter(const DrawImage& draw_image, ImageData* image_data);
   void DecodeImageAndGenerateDarkModeFilterIfNecessary(
       const DrawImage& draw_image,
       ImageData* image_data,
@@ -747,10 +743,6 @@ class CC_EXPORT GpuImageDecodeCache
   std::vector<uint32_t> ids_pending_unlock_;
   std::vector<uint32_t> ids_pending_deletion_;
 
-<<<<<<< HEAD
-=======
-  std::unique_ptr<base::AsyncMemoryPressureListenerRegistration>
-      memory_pressure_listener_registration_;
 #if BUILDFLAG(IS_COBALT)
   // `weak_ptr_factory_.GetWeakPtr()` must be called on the sequence that
   // created the factory (the compositor thread) to avoid sequence checker
@@ -758,9 +750,7 @@ class CC_EXPORT GpuImageDecodeCache
   // threads to safely copy and pass it to in-process image transfer completion
   // callbacks.
   base::WeakPtr<GpuImageDecodeCache> weak_ptr_;
-#endif  // BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  base::WeakPtrFactory<GpuImageDecodeCache> weak_ptr_factory_{this};
+#endif  // BUILDFLAG(IS_COBALT)  base::WeakPtrFactory<GpuImageDecodeCache> weak_ptr_factory_{this};
 };
 
 }  // namespace cc

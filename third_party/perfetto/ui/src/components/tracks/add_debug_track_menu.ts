@@ -14,17 +14,10 @@
 
 import m from 'mithril';
 import {findRef} from '../../base/dom_utils';
-<<<<<<< HEAD
 import {assertUnreachable} from '../../base/assert';
 import type {Trace} from '../../public/trace';
 import {Form, FormGrid, FormLabel, FormSection} from '../../widgets/form';
-import {RadioGroup} from '../../widgets/radio_group';
-=======
-import {assertUnreachable} from '../../base/logging';
-import {Trace} from '../../public/trace';
-import {Form, FormLabel, FormSection} from '../../widgets/form';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {Select} from '../../widgets/select';
+import {RadioGroup} from '../../widgets/radio_group';import {Select} from '../../widgets/select';
 import {TextInput} from '../../widgets/text_input';
 import {addDebugCounterTrack, addDebugSliceTrack} from './debug_tracks';
 
@@ -89,11 +82,7 @@ export class AddDebugTrackMenu implements m.ClassComponent<AddDebugTrackMenuAttr
       value: chooseDefaultColumn(columns, 'value'),
       argSetId: chooseDefaultColumn(columns, 'arg_set_id'),
       pivot: undefined,
-<<<<<<< HEAD
-      color: '', // Empty string means "from slice name"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    };
+color: '', // Empty string means "from slice name"    };
   }
 
   oncreate({dom}: m.VnodeDOM<AddDebugTrackMenuAttrs>) {
@@ -140,33 +129,12 @@ export class AddDebugTrackMenu implements m.ClassComponent<AddDebugTrackMenuAttr
         this.trackName,
       ),
       m(FormLabel, {for: 'track_type'}, 'Track type'),
-<<<<<<< HEAD
-      m(
+m(
         RadioGroup,
         {
           fillWidth: true,
           selectedValue: this.trackType,
-          onValueChange: (value) => (this.trackType = value as TrackType),
-=======
-      this.renderTrackTypeSelect(),
-      m(
-        FormSection,
-        {label: 'Column mapping'},
-        this.renderOptions(attrs.availableColumns),
-      ),
-    );
-  }
-
-  private renderTrackTypeSelect() {
-    return m(
-      Select,
-      {
-        id: 'track_type',
-        oninput: (e: Event) => {
-          if (!e.target) return;
-          this.trackType = (e.target as HTMLSelectElement).value as TrackType;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        },
+          onValueChange: (value) => (this.trackType = value as TrackType),        },
         [
           m(RadioGroup.Button, {value: 'slice'}, 'Slice Track'),
           m(RadioGroup.Button, {value: 'counter'}, 'Counter Track'),
@@ -192,8 +160,7 @@ export class AddDebugTrackMenu implements m.ClassComponent<AddDebugTrackMenuAttr
   }
 
   private renderSliceOptions(availableColumns: ReadonlyArray<string>) {
-<<<<<<< HEAD
-    return m(
+return m(
       FormGrid,
       this.renderFormSelectInput('Timestamp *', 'ts', availableColumns),
       this.renderFormSelectInput('Duration *', 'dur', [
@@ -208,34 +175,7 @@ export class AddDebugTrackMenu implements m.ClassComponent<AddDebugTrackMenuAttr
       this.renderFormSelectInput('Pivot on', 'pivot', availableColumns, {
         optional: true,
       }),
-    );
-=======
-    return [
-      this.renderFormSelectInput('Timestamp column', 'ts', availableColumns),
-      this.renderFormSelectInput('Duration column', 'dur', [
-        '0',
-        ...availableColumns,
-      ]),
-      this.renderFormSelectInput('Name column', 'name', availableColumns),
-      this.renderFormSelectInput(
-        'Arguments ID column (optional)',
-        'argSetId',
-        availableColumns,
-        {
-          optional: true,
-        },
-      ),
-      this.renderFormSelectInput(
-        'Pivot column (optional)',
-        'pivot',
-        availableColumns,
-        {
-          optional: true,
-        },
-      ),
-    ];
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    );  }
 
   private renderCounterTrackOptions(availableColumns: ReadonlyArray<string>) {
     return m(
@@ -250,8 +190,7 @@ export class AddDebugTrackMenu implements m.ClassComponent<AddDebugTrackMenuAttr
 
   private renderColorSelect(availableColumns: ReadonlyArray<string>) {
     return [
-<<<<<<< HEAD
-      m(FormLabel, {for: 'color'}, 'Color'),
+m(FormLabel, {for: 'color'}, 'Color'),
       m(
         Select,
         {
@@ -268,19 +207,7 @@ export class AddDebugTrackMenu implements m.ClassComponent<AddDebugTrackMenuAttr
         ),
         availableColumns.map((col) =>
           m('option', {selected: this.options.color === col, value: col}, col),
-        ),
-=======
-      this.renderFormSelectInput('Timestamp column', 'ts', availableColumns),
-      this.renderFormSelectInput('Value column', 'value', availableColumns),
-      this.renderFormSelectInput(
-        'Pivot column (optional)',
-        'pivot',
-        availableColumns,
-        {
-          optional: true,
-        },
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      ),
+        ),      ),
     ];
   }
 

@@ -56,11 +56,8 @@ base::Status RegisterStripHexFunction(PerfettoSqlConnection* connection,
 // Implementation of __intrinsic_strip_hex function
 // Visible for testing
 std::string SqlStripHex(const std::string& input, int64_t min_repeated_digits);
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/string_functions/replace_numbers_function.h
-=======
 
 }  // namespace perfetto::trace_processor
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/perfetto_sql/intrinsics/functions/replace_numbers_function.h
 
 }  // namespace perfetto::trace_processor
 

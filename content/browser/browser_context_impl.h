@@ -42,12 +42,8 @@ class BrowsingDataRemoverImpl;
 class DownloadManager;
 #if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 class InMemoryFederatedPermissionContext;
-<<<<<<< HEAD
-class NavigationStateKeepAlive;
-=======
 #endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-class PermissionController;
+class NavigationStateKeepAlive;class PermissionController;
 class PrefetchService;
 class StoragePartitionImplMap;
 

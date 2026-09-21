@@ -27,7 +27,6 @@ import {
   RAW_PREFIX,
   DebugSliceTrackDetailsPanel,
 } from './debug_slice_track_details_panel';
-<<<<<<< HEAD
 import {getColorForSlice} from '../colorizer';
 import {CounterTrack} from './counter_track';
 
@@ -35,13 +34,6 @@ export interface CounterColumnMapping {
   readonly ts: string;
   readonly value: string;
 }
-=======
-import {
-  CounterColumnMapping,
-  SqlTableCounterTrack,
-} from './query_counter_track';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 export interface SqlDataSource {
   // SQL source selecting the necessary data.
   readonly sqlSource: string;

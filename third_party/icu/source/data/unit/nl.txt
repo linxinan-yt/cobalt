@@ -404,15 +404,10 @@ nl{
                 other{"{0} nanoseconden"}
             }
             night{
-<<<<<<< HEAD
-                gender{"common"}
-=======
-                dnam{"nachten"}
+dnam{"nachten"}
                 gender{"common"}
                 one{"{0} nacht"}
-                other{"{0} nachten"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                per{"{0} per nacht"}
+                other{"{0} nachten"}                per{"{0} per nacht"}
             }
             quarter{
                 dnam{"kwartaal"}
@@ -1011,15 +1006,10 @@ nl{
                 other{"{0} knopen"}
             }
             light-speed{
-<<<<<<< HEAD
-                gender{"neuter"}
-=======
-                dnam{"licht"}
+dnam{"licht"}
                 gender{"neuter"}
                 one{"{0} licht"}
-                other{"{0} licht"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} licht"}            }
             meter-per-second{
                 dnam{"meter per seconde"}
                 gender{"common"}
@@ -1409,11 +1399,7 @@ nl{
         }
         speed{
             light-speed{
-<<<<<<< HEAD
-=======
-                dnam{"licht"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                one{"{0}licht"}
+dnam{"licht"}                one{"{0}licht"}
                 other{"{0}licht"}
             }
         }

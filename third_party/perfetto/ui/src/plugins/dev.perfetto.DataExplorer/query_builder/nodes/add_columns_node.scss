@@ -12,10 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/add_columns_node.scss
-// List of added columns in add columns node
-.pf-added-columns-list {
-=======
 @import "../common";
 
 .pf-modify-columns-node {
@@ -104,7 +100,6 @@
 }
 
 .pf-exp-if-component {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/modify_columns_node.scss
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -112,10 +107,6 @@
   padding-bottom: 8px;
 }
 
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_builder/nodes/add_columns_node.scss
-.pf-section-spacer {
-  margin-top: 8px;
-=======
 .pf-exp-if-clause,
 .pf-exp-else-clause {
   display: flex;
@@ -143,5 +134,4 @@
   font-family: var(--pf-font-family-monospace);
   font-style: italic;
   color: var(--pf-text-color-light);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_builder/nodes/modify_columns_node.scss
 }

@@ -17,7 +17,6 @@
 #ifndef SRC_TRACE_REDACTION_PRUNE_PERF_EVENTS_H_
 #define SRC_TRACE_REDACTION_PRUNE_PERF_EVENTS_H_
 
-<<<<<<< HEAD
 #include <cstdint>
 #include <memory>
 #include <optional>
@@ -25,12 +24,7 @@
 
 #include "perfetto/base/status.h"
 #include "perfetto/protozero/field.h"
-#include "protos/perfetto/trace/trace_packet.pbzero.h"
-=======
-#include <memory>
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "src/trace_redaction/filtering.h"
+#include "protos/perfetto/trace/trace_packet.pbzero.h"#include "src/trace_redaction/filtering.h"
 #include "src/trace_redaction/trace_redaction_framework.h"
 
 namespace perfetto::trace_redaction {
@@ -48,12 +42,7 @@ class PrunePerfEvents : public TransformPrimitive {
  private:
   base::Status OnPerfSample(const Context& context,
                             uint64_t ts,
-<<<<<<< HEAD
-                            std::optional<uint32_t> trace_packet_clock_id,
-=======
-                            std::optional<int64_t> trace_packet_clock_id,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                            std::optional<int64_t> trusted_packet_sequence_id,
+std::optional<int64_t> trace_packet_clock_id,                            std::optional<int64_t> trusted_packet_sequence_id,
                             protozero::Field& field,
                             protos::pbzero::TracePacket* message) const;
 

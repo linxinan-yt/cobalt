@@ -558,14 +558,8 @@ mk{
                 "HH:mm",
                 "EEEE, d MMMM y 'г'.",
                 "d MMMM y 'г'.",
-<<<<<<< HEAD
-                "d MMM y 'г'.",
-                "d.M.y 'г'.",
-=======
-                "d.M.y 'г'.",
-                "d.M.yy",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                "{1}, {0}",
+"d.M.y 'г'.",
+                "d.M.yy",                "{1}, {0}",
                 "{1}, {0}",
                 "{1}, {0}",
                 "{1}, {0}",
@@ -598,21 +592,13 @@ mk{
                 Ehm{"E h:mm a"}
                 Ehms{"E h:mm:ss a"}
                 Gy{"y 'г'. G"}
-<<<<<<< HEAD
-                GyM{"M.y 'г'. G"}
-                GyMEd{"E, d.M.y 'г'. G"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                GyMMM{"MMM y 'г'. G"}
+GyM{"M.y 'г'. G"}
+                GyMEd{"E, d.M.y 'г'. G"}                GyMMM{"MMM y 'г'. G"}
                 GyMMMEd{"E, d MMM y 'г'. G"}
                 GyMMMd{"d MMM y 'г'. G"}
                 GyMd{"d.M.y 'г'. G"}
-<<<<<<< HEAD
-                H{"H"}
-                Hv{"HH 'ч'. v"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                MEd{"E, d.M"}
+H{"H"}
+                Hv{"HH 'ч'. v"}                MEd{"E, d.M"}
                 MMMEd{"E, d MMM"}
                 MMMMEd{"E, d MMMM"}
                 MMMMW{
@@ -716,26 +702,14 @@ mk{
             }
             eras{
                 abbreviated{
-<<<<<<< HEAD
-                    0{"пр. н. е."}
-                    1{"н. е."}
-=======
-                    "пр. н. е.",
-                    "н. е.",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+0{"пр. н. е."}
+                    1{"н. е."}                }
                 wide{
                     0{"пред нашата ера"}
                     1{"од нашата ера"}
                 }
                 wide%variant{
-<<<<<<< HEAD
-                    1{"нашата ера"}
-=======
-                    "пр. н. е.",
-                    "нашата ера",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+1{"нашата ера"}                }
             }
             intervalFormats{
                 Bh{
@@ -1868,9 +1842,7 @@ mk{
                 "[\\: ∶]",
             }
         }
-<<<<<<< HEAD
-=======
-        general{
+general{
             lenient{
                 "[.．․﹒ 。｡︒]",
                 "['＇’ ՚ ᾽᾿ ʼ]",
@@ -1882,9 +1854,7 @@ mk{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        number{
+        }        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ، ٫ 、﹑､︑]",

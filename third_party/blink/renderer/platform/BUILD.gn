@@ -2949,24 +2949,14 @@ blink_fuzzer_test("web_icon_sizes_fuzzer") {
 }
 
 if (enable_dav1d_decoder) {
-<<<<<<< HEAD
-  # Fuzzer for blink::AVIFImageDecoder
+# Fuzzer for blink::AVIFImageDecoder
   blink_fuzzer_test("blink_avif_decoder_fuzzer") {
     sources = [ "image-decoders/avif/avif_image_decoder_fuzzer.cc" ]
-    deps = [
-=======
-  # Fuzzer for blink::CrabbyAVIFImageDecoder
-  fuzzer_test("blink_crabbyavif_decoder_fuzzer") {
-    sources = [ "image-decoders/avif/crabbyavif_image_decoder_fuzzer.cc" ]
-    deps = [
-      ":blink_fuzzer_test_support",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      ":blink_image_decoder_fuzzer_test_support",
+    deps = [      ":blink_image_decoder_fuzzer_test_support",
       ":platform",
     ]
     seed_corpuses = [ "//third_party/blink/web_tests/images/resources/avif" ]
-<<<<<<< HEAD
-    libfuzzer_options = [
+libfuzzer_options = [
       # Large AVIF images can take a while to decode under ASAN (especially when
       # they are fuzzer generated). The default timeout is 25 seconds.
       "timeout_per_input=50",
@@ -2991,11 +2981,7 @@ if (enable_jxl_decoder) {
       # Large JXL images can take a while to decode under ASAN (especially when
       # they are fuzzer generated). The default timeout is 25 seconds.
       "timeout_per_input=50",
-    ]
-=======
-    libfuzzer_options = [ "rss_limit_mb=8192" ]
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    additional_configs = [ "//third_party/blink/renderer:inside_blink" ]
+    ]    additional_configs = [ "//third_party/blink/renderer:inside_blink" ]
   }
 }
 

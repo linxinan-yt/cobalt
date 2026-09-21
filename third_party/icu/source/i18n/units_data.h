@@ -32,8 +32,7 @@ class ConversionRateInfo : public UMemory {
     ConversionRateInfo() {}
     ConversionRateInfo(StringPiece sourceUnit, StringPiece baseUnit, StringPiece factor,
                        StringPiece offset, UErrorCode &status)
-<<<<<<< HEAD
-        : sourceUnit(sourceUnit), baseUnit(baseUnit), factor(factor), offset(offset),
+: sourceUnit(sourceUnit), baseUnit(baseUnit), factor(factor), offset(offset),
           specialMappingName(), systems() {
         if (this->sourceUnit.isEmpty() != sourceUnit.empty() ||
             this->baseUnit.isEmpty() != baseUnit.empty() ||
@@ -47,22 +46,7 @@ class ConversionRateInfo : public UMemory {
     FixedString factor;
     FixedString offset;
     FixedString specialMappingName; // the name of a special mapping used instead of factor + optional offset.
-    FixedString systems;
-=======
-        : sourceUnit(), baseUnit(), factor(), offset(), specialMappingName() {
-        this->sourceUnit.append(sourceUnit, status);
-        this->baseUnit.append(baseUnit, status);
-        this->factor.append(factor, status);
-        this->offset.append(offset, status);
-    }
-    CharString sourceUnit;
-    CharString baseUnit;
-    CharString factor;
-    CharString offset;
-    CharString specialMappingName; // the name of a special mapping used instead of factor + optional offset.
-    CharString systems;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-};
+    FixedString systems;};
 
 /**
  * Returns ConversionRateInfo for all supported conversions.

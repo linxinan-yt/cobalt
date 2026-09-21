@@ -41,10 +41,6 @@
 #include "src/trace_processor/importers/common/clock_tracker.h"
 #include "src/trace_processor/importers/common/cpu_tracker.h"
 #include "src/trace_processor/importers/common/event_tracker.h"
-<<<<<<< HEAD
-#include "src/trace_processor/importers/common/gpu_tracker.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "src/trace_processor/importers/common/import_logs_tracker.h"
 #include "src/trace_processor/importers/common/machine_tracker.h"
 #include "src/trace_processor/importers/common/metadata_tracker.h"
@@ -652,7 +648,6 @@ void SystemProbesParser::ParseCpuIdleStats(int64_t ts, ConstBytes blob) {
   }
 }
 
-<<<<<<< HEAD
 void SystemProbesParser::ParseSlabInfo(int64_t ts, ConstBytes blob) {
   protos::pbzero::SysStats::SlabInfo::Decoder slab(blob);
 
@@ -680,11 +675,7 @@ void SystemProbesParser::ParseSlabInfo(int64_t ts, ConstBytes blob) {
                 Variadic::UnsignedInteger(slab.pages_per_slab()))
         .AddArg(num_slabs_id_, Variadic::UnsignedInteger(slab.num_slabs()));
   }
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-void SystemProbesParser::ParseProcessTree(int64_t ts, ConstBytes blob) {
+}void SystemProbesParser::ParseProcessTree(int64_t ts, ConstBytes blob) {
   protos::pbzero::ProcessTree::Decoder ps(blob);
 
   base::FlatSet<uint32_t> kthread_pids;
@@ -760,14 +751,8 @@ void SystemProbesParser::ParseProcessTree(int64_t ts, ConstBytes blob) {
     UniquePid pupid = context_->process_tracker->GetOrCreateProcess(ppid);
     UniquePid upid = context_->process_tracker->GetOrCreateProcess(pid);
 
-<<<<<<< HEAD
-    context_->process_tracker->SetProcessParent(upid, pupid, ts);
-=======
-    upid = context_->process_tracker->UpdateProcessWithParent(
-        upid, pupid, /*associate_main_thread=*/true);
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    context_->process_tracker->SetProcessMetadata(upid, argv0, joined_cmdline);
+upid = context_->process_tracker->UpdateProcessWithParent(
+        upid, pupid, /*associate_main_thread=*/true);    context_->process_tracker->SetProcessMetadata(upid, argv0, joined_cmdline);
 
     // perfetto v50+: additionally, if we know that the "cmdline" contents are
     // coming from the main thread's name ("comm"), then set the thread name as
@@ -791,12 +776,7 @@ void SystemProbesParser::ParseProcessTree(int64_t ts, ConstBytes blob) {
     // note: early kernel threads can have an age of zero (at tick resolution)
     if (proc.has_process_start_from_boot()) {
       std::optional<int64_t> start_ts = context_->clock_tracker->ToTraceTime(
-<<<<<<< HEAD
-          ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_BOOTTIME),
-=======
-          protos::pbzero::BUILTIN_CLOCK_BOOTTIME,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          static_cast<int64_t>(proc.process_start_from_boot()));
+ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_BOOTTIME),          static_cast<int64_t>(proc.process_start_from_boot()));
       if (start_ts) {
         context_->process_tracker->SetStartTsIfUnset(upid, *start_ts);
       }
@@ -837,12 +817,7 @@ void SystemProbesParser::ParseProcessTree(int64_t ts, ConstBytes blob) {
       }
       if (!context_->process_tracker->UpdateNamespacedThread(
               tgid, tid, std::move(nstid))) {
-<<<<<<< HEAD
-        context_->import_logs_tracker->RecordParserLog(
-=======
-        context_->import_logs_tracker->RecordParserError(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            stats::namespaced_thread_missing_process, ts);
+context_->import_logs_tracker->RecordParserLog(            stats::namespaced_thread_missing_process, ts);
       }
     }
   }

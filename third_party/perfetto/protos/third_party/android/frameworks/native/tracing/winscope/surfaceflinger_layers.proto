@@ -295,15 +295,6 @@ message LayerProto {
 
   // "True" corner radii of the layer computed by SurfaceFlinger.
   optional CornerRadiiProto effective_radii = 67;
-<<<<<<< HEAD:third_party/perfetto/protos/third_party/android/frameworks/native/tracing/winscope/surfaceflinger_layers.proto
-
-  // Reported corner radii of the layer.
-  optional CornerRadiiProto reported_radii = 68;
-
-  // Flag indicating if client-drawn radii are disabled.
-  optional bool disable_client_drawn_radii = 69;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/protos/perfetto/trace/android/surfaceflinger_layers.proto
 }
 
 message PositionProto {

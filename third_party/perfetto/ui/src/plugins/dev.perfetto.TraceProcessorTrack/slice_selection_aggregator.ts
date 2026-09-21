@@ -12,21 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-<<<<<<< HEAD
 import m from 'mithril';
 import {AsyncDisposableStack} from '../../base/disposable_stack';
-import {Icons} from '../../base/semantic_icons';
-=======
-import {AsyncDisposableStack} from '../../base/disposable_stack';
-import {ColumnDef, Sorting} from '../../components/aggregation';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {
+import {Icons} from '../../base/semantic_icons';import {
   type Aggregation,
   type Aggregator,
   type AggregatorGridConfig,
   createIITable,
 } from '../../components/aggregation_adapter';
-<<<<<<< HEAD
 import type {AreaSelection} from '../../public/selection';
 import type {Trace} from '../../public/trace';
 import type {Track} from '../../public/track';
@@ -36,13 +29,7 @@ import {
   SourceDataset,
   UnionDatasetWithLineage,
 } from '../../trace_processor/dataset';
-import type {Engine} from '../../trace_processor/engine';
-=======
-import {AreaSelection} from '../../public/selection';
-import {Dataset, createUnionDataset} from '../../trace_processor/dataset';
-import {Engine} from '../../trace_processor/engine';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {
+import type {Engine} from '../../trace_processor/engine';import {
   LONG,
   NUM,
   NUM_NULL,
@@ -90,8 +77,7 @@ const SLICELIKE_SPEC = {
 export class SliceSelectionAggregator implements Aggregator {
   readonly id = 'slice_aggregation';
 
-<<<<<<< HEAD
-  private readonly trace: Trace;
+private readonly trace: Trace;
   // Store track-to-dataset mapping for lineage resolution
   private trackDatasetMap?: Map<Dataset, Track>;
   // Store union datasets for lineage resolution
@@ -118,36 +104,14 @@ export class SliceSelectionAggregator implements Aggregator {
       }
     }
 
-    if (sliceTracks.length === 0 && slicelikeTracks.length === 0) {
-=======
-  probe(area: AreaSelection): Aggregation | undefined {
-    const sliceDatasets: Array<Dataset<typeof SLICE_WITH_PARENT_SPEC>> = [];
-    const slicelikeDatasets: Array<Dataset<typeof SLICELIKE_SPEC>> = [];
-
-    // Pick tracks we can aggregate, sorting them into slice and slicelike
-    // buckets
-    for (const track of area.tracks) {
-      const dataset = track.renderer.getDataset?.();
-      if (!dataset) continue;
-
-      if (dataset.implements(SLICE_WITH_PARENT_SPEC)) {
-        sliceDatasets.push(dataset);
-      } else if (dataset.implements(SLICELIKE_SPEC)) {
-        slicelikeDatasets.push(dataset);
-      }
-    }
-
-    if (sliceDatasets.length === 0 && slicelikeDatasets.length === 0) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      return undefined;
+    if (sliceTracks.length === 0 && slicelikeTracks.length === 0) {      return undefined;
     }
 
     return {
       prepareData: async (engine: Engine) => {
         const unionQueries: string[] = [];
         await using trash = new AsyncDisposableStack();
-<<<<<<< HEAD
-        this.trackDatasetMap = new Map();
+this.trackDatasetMap = new Map();
 
         if (sliceTracks.length > 0) {
           const {query, unionDataset, trackDatasetMap} =
@@ -177,50 +141,18 @@ export class SliceSelectionAggregator implements Aggregator {
           this.slicelikeUnionDataset = unionDataset;
           for (const [dataset, track] of trackDatasetMap.entries()) {
             this.trackDatasetMap.set(dataset, track);
-          }
-=======
-
-        if (sliceDatasets.length > 0) {
-          const query = await this.buildSliceQuery(
-            engine,
-            createUnionDataset(sliceDatasets).optimize(),
-            area,
-            trash,
-          );
-          unionQueries.push(query);
-        }
-
-        if (slicelikeDatasets.length > 0) {
-          const query = await this.buildSlicelikeQuery(
-            engine,
-            createUnionDataset(slicelikeDatasets).optimize(),
-            area,
-            trash,
-          );
-          unionQueries.push(query);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+          }        }
 
         await engine.query(`
           CREATE OR REPLACE PERFETTO TABLE ${this.id} AS
           SELECT
-<<<<<<< HEAD
-            json_object('id', id, 'groupid', __groupid, 'partition', __partition) as id_with_lineage,
-            name,
-            dur,
-            self_dur,
-            arg_set_id
-          FROM (${unionQueries.join(' UNION ALL ')})
-=======
-            name,
+name,
             SUM(dur) AS total_dur,
             SUM(dur) / COUNT() AS avg_dur,
             COUNT() AS occurrences,
             SUM(self_dur) AS total_self_dur
           FROM (${unionQueries.join(' UNION ALL ')})
-          GROUP BY name
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        `);
+          GROUP BY name        `);
 
         return {tableName: this.id};
       },
@@ -229,8 +161,7 @@ export class SliceSelectionAggregator implements Aggregator {
 
   private async buildSliceQuery(
     engine: Engine,
-<<<<<<< HEAD
-    tracks: Track[],
+tracks: Track[],
     area: AreaSelection,
     trash: AsyncDisposableStack,
   ): Promise<{
@@ -263,17 +194,7 @@ export class SliceSelectionAggregator implements Aggregator {
     // Create interval-intersect table for time filtering
     const iiTable = await createIITable(
       engine,
-      new SourceDataset({src: `(${sql})`, schema: iiQuerySchema}),
-=======
-    sliceTracks: Dataset<typeof SLICE_WITH_PARENT_SPEC>,
-    area: AreaSelection,
-    trash: AsyncDisposableStack,
-  ): Promise<string> {
-    const iiTable = await createIITable(
-      engine,
-      sliceTracks,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      area.start,
+      new SourceDataset({src: `(${sql})`, schema: iiQuerySchema}),      area.start,
       area.end,
     );
     trash.use(iiTable);
@@ -292,8 +213,7 @@ export class SliceSelectionAggregator implements Aggregator {
     });
     trash.use(childDurTable);
 
-<<<<<<< HEAD
-    return {
+return {
       query: `
         SELECT
           id,
@@ -309,25 +229,11 @@ export class SliceSelectionAggregator implements Aggregator {
       `,
       unionDataset,
       trackDatasetMap,
-    };
-=======
-    return `
-      SELECT
-        id,
-        name,
-        ts,
-        dur,
-        dur - COALESCE(child_dur, 0) AS self_dur
-      FROM ${iiTable.name}
-      LEFT JOIN ${childDurTable.name} USING(id)
-    `;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    };  }
 
   private async buildSlicelikeQuery(
     engine: Engine,
-<<<<<<< HEAD
-    tracks: Track[],
+tracks: Track[],
     area: AreaSelection,
     trash: AsyncDisposableStack,
   ): Promise<{
@@ -360,40 +266,12 @@ export class SliceSelectionAggregator implements Aggregator {
     // Create interval-intersect table for time filtering
     const iiTable = await createIITable(
       engine,
-      new SourceDataset({src: `(${sql})`, schema: iiQuerySchema}),
-=======
-    slicelikeTracks: Dataset<typeof SLICELIKE_SPEC>,
-    area: AreaSelection,
-    trash: AsyncDisposableStack,
-  ): Promise<string> {
-    const iiTable = await createIITable(
-      engine,
-      slicelikeTracks,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      area.start,
+      new SourceDataset({src: `(${sql})`, schema: iiQuerySchema}),      area.start,
       area.end,
     );
     trash.use(iiTable);
 
-<<<<<<< HEAD
-    return {
-      query: `
-        SELECT
-          id,
-          name,
-          ts,
-          dur,
-          dur AS self_dur,
-          arg_set_id,
-          __groupid,
-          __partition
-        FROM ${iiTable.name}
-      `,
-      unionDataset,
-      trackDatasetMap,
-    };
-=======
-    return `
+return `
       SELECT
         id,
         name,
@@ -401,9 +279,7 @@ export class SliceSelectionAggregator implements Aggregator {
         dur,
         dur AS self_dur
       FROM ${iiTable.name}
-    `;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    `;  }
 
   getTabName() {
     return 'Slices';

@@ -23,34 +23,6 @@ static_assert(ARCH_CPU_LITTLE_ENDIAN);
 
 namespace base {
 
-<<<<<<< HEAD
-=======
-#if BUILDFLAG(IS_STARBOARD) && !defined(SB_IS_DEFAULT_TC)
-namespace {
-template <typename To, typename From>
-  requires(sizeof(To) == sizeof(From) && std::is_trivially_copyable_v<To> &&
-           std::is_trivially_copyable_v<From>)
-inline constexpr To BitCast(const From& from) {
-  To to;
-#if defined(__clang__) || defined(__GNUC__)
-  __builtin_memcpy(&to, &from, sizeof(to));
-#else
-  std::memcpy(&to, &from, sizeof(to));
-#endif
-  return to;
-}
-}  // namespace
-#endif
-
-// Returns a value with all bytes in |x| swapped, i.e. reverses the endianness.
-// TODO(pkasting): Once C++23 is available, replace with std::byteswap.
-template <class T>
-  requires(std::is_integral_v<T>)
-[[nodiscard]] inline constexpr T ByteSwap(T value) {
-  return internal::SwapBytes(value);
-}
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 // Returns a uint8_t with the value in `bytes` interpreted as the native endian
 // encoding of the integer for the machine.
 //
@@ -638,16 +610,11 @@ inline constexpr std::array<uint8_t, 8u> I64ToLittleEndian(int64_t val) {
 // memory, such as when stored in shared-memory (or passed through IPC) as a
 // byte buffer.
 inline constexpr std::array<uint8_t, 4u> FloatToLittleEndian(float val) {
-<<<<<<< HEAD
-  return numerics_internal::ToLittleEndian(std::bit_cast<uint32_t>(val));
-=======
 #if !BUILDFLAG(IS_STARBOARD) || defined(SB_IS_DEFAULT_TC)
-  return internal::ToLittleEndian(std::bit_cast<uint32_t>(val));
+  return numerics_internal::ToLittleEndian(std::bit_cast<uint32_t>(val));
 #else
-  return internal::ToLittleEndian(BitCast<uint32_t>(val));
-#endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  return numerics_internal::ToLittleEndian(BitCast<uint32_t>(val));
+#endif}
 // Returns a byte array holding the value of a double encoded as the
 // little-endian encoding of the number.
 //
@@ -657,16 +624,11 @@ inline constexpr std::array<uint8_t, 4u> FloatToLittleEndian(float val) {
 // memory, such as when stored in shared-memory (or passed through IPC) as a
 // byte buffer.
 inline constexpr std::array<uint8_t, 8u> DoubleToLittleEndian(double val) {
-<<<<<<< HEAD
-  return numerics_internal::ToLittleEndian(std::bit_cast<uint64_t>(val));
-=======
 #if !BUILDFLAG(IS_STARBOARD) || defined(SB_IS_DEFAULT_TC)
-  return internal::ToLittleEndian(std::bit_cast<uint64_t>(val));
+  return numerics_internal::ToLittleEndian(std::bit_cast<uint64_t>(val));
 #else
-  return internal::ToLittleEndian(BitCast<uint64_t>(val));
-#endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  return numerics_internal::ToLittleEndian(BitCast<uint64_t>(val));
+#endif}
 
 // Returns a byte array holding the value of a uint8_t encoded as the big-endian
 // encoding of the integer.
@@ -765,17 +727,8 @@ inline constexpr std::array<uint8_t, 8u> I64ToBigEndian(int64_t val) {
 // IPC) as a byte buffer. Use the little-endian encoding for storing and reading
 // from storage.
 inline constexpr std::array<uint8_t, 4u> FloatToBigEndian(float val) {
-<<<<<<< HEAD
-  return numerics_internal::ToLittleEndian(
-      std::byteswap(std::bit_cast<uint32_t>(val)));
-=======
-#if !BUILDFLAG(IS_STARBOARD) || defined(SB_IS_DEFAULT_TC)
-  return internal::ToLittleEndian(ByteSwap(std::bit_cast<uint32_t>(val)));
-#else
-  return internal::ToLittleEndian(ByteSwap(BitCast<uint32_t>(val)));
-#endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+return numerics_internal::ToLittleEndian(
+      std::byteswap(std::bit_cast<uint32_t>(val)));}
 // Returns a byte array holding the value of a double encoded as the big-endian
 // encoding of the number.
 //
@@ -785,17 +738,13 @@ inline constexpr std::array<uint8_t, 4u> FloatToBigEndian(float val) {
 // IPC) as a byte buffer. Use the little-endian encoding for storing and reading
 // from storage.
 inline constexpr std::array<uint8_t, 8u> DoubleToBigEndian(double val) {
-<<<<<<< HEAD
+#if !BUILDFLAG(IS_STARBOARD) || defined(SB_IS_DEFAULT_TC)
   return numerics_internal::ToLittleEndian(
       std::byteswap(std::bit_cast<uint64_t>(val)));
-=======
-#if !BUILDFLAG(IS_STARBOARD) || defined(SB_IS_DEFAULT_TC)
-  return internal::ToLittleEndian(ByteSwap(std::bit_cast<uint64_t>(val)));
 #else
-  return internal::ToLittleEndian(ByteSwap(BitCast<uint64_t>(val)));
-#endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  return numerics_internal::ToLittleEndian(
+      std::byteswap(BitCast<uint64_t>(val)));
+#endif}
 
 }  // namespace base
 

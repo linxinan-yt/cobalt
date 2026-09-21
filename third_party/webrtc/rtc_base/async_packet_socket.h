@@ -87,16 +87,7 @@ class RTC_EXPORT AsyncPacketSocket {
     STATE_CONNECTED
   };
 
-<<<<<<< HEAD
-  AsyncPacketSocket() = default;
-=======
-  AsyncPacketSocket()
-      : connect_trampoline_(this),
-        sent_packet_trampoline_(this),
-        ready_to_send_trampoline_(this),
-        address_ready_trampoline_(this) {}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  virtual ~AsyncPacketSocket();
+AsyncPacketSocket() = default;  virtual ~AsyncPacketSocket();
 
   AsyncPacketSocket(const AsyncPacketSocket&) = delete;
   AsyncPacketSocket& operator=(const AsyncPacketSocket&) = delete;
@@ -153,8 +144,7 @@ class RTC_EXPORT AsyncPacketSocket {
   void DeregisterReceivedPacketCallback();
 
   // Emitted each time a packet is sent.
-<<<<<<< HEAD
-  void SubscribeSentPacket(
+void SubscribeSentPacket(
       void* tag,
       absl::AnyInvocable<void(AsyncPacketSocket*, const SentPacketInfo&)>
           callback);
@@ -175,68 +165,23 @@ class RTC_EXPORT AsyncPacketSocket {
     ready_to_send_callbacks_.RemoveReceivers(tag);
   }
   void NotifyReadyToSend(AsyncPacketSocket* socket) {
-    ready_to_send_callbacks_.Send(socket);
-=======
-  sigslot::signal2<AsyncPacketSocket*, const SentPacketInfo&> SignalSentPacket;
-  void SubscribeSentPacket(
-      void* tag,
-      absl::AnyInvocable<void(AsyncPacketSocket*, const SentPacketInfo&)>
-          callback) {
-    sent_packet_trampoline_.Subscribe(tag, std::move(callback));
-  }
-  void UnsubscribeSentPacket(void* tag) {
-    sent_packet_trampoline_.Unsubscribe(tag);
-  }
-  void NotifySentPacket(AsyncPacketSocket* socket, const SentPacketInfo& info) {
-    SignalSentPacket(socket, info);
-  }
-
-  // Emitted when the socket is currently able to send.
-  sigslot::signal1<AsyncPacketSocket*> SignalReadyToSend;
-  void SubscribeReadyToSend(
-      void* tag,
-      absl::AnyInvocable<void(AsyncPacketSocket*)> callback) {
-    ready_to_send_trampoline_.Subscribe(tag, std::move(callback));
-  }
-  void UnsubscribeReadyToSend(void* tag) {
-    ready_to_send_trampoline_.Unsubscribe(tag);
-  }
-  void NotifyReadyToSend(AsyncPacketSocket* socket) {
-    SignalReadyToSend(socket);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    ready_to_send_callbacks_.Send(socket);  }
 
   // Emitted after address for the socket is allocated, i.e. binding
   // is finished. State of the socket is changed from BINDING to BOUND
   // (for UDP sockets).
-<<<<<<< HEAD
-=======
-  sigslot::signal2<AsyncPacketSocket*, const SocketAddress&> SignalAddressReady;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   void SubscribeAddressReady(
       void* tag,
       absl::AnyInvocable<void(AsyncPacketSocket*, const SocketAddress&)>
           callback) {
-<<<<<<< HEAD
-    address_ready_callbacks_.AddReceiver(tag, std::move(callback));
+address_ready_callbacks_.AddReceiver(tag, std::move(callback));
   }
   void UnsubscribeAddressReady(void* tag) {
     address_ready_callbacks_.RemoveReceivers(tag);
   }
   void NotifyAddressReady(AsyncPacketSocket* socket,
                           const SocketAddress& address) {
-    address_ready_callbacks_.Send(socket, address);
-=======
-    address_ready_trampoline_.Subscribe(tag, std::move(callback));
-  }
-  void UnsubscribeAddressReady(void* tag) {
-    address_ready_trampoline_.Unsubscribe(tag);
-  }
-  void NotifyAddressReady(AsyncPacketSocket* socket,
-                          const SocketAddress& address) {
-    SignalAddressReady(socket, address);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    address_ready_callbacks_.Send(socket, address);  }
 
   // Emitted for client TCP sockets when state is changed from
   // CONNECTING to CONNECTED.
@@ -270,24 +215,12 @@ class RTC_EXPORT AsyncPacketSocket {
       RTC_GUARDED_BY(&network_checker_);
   absl::AnyInvocable<void(AsyncPacketSocket*, const ReceivedIpPacket&)>
       received_packet_callback_ RTC_GUARDED_BY(&network_checker_);
-<<<<<<< HEAD
-  CallbackList<AsyncPacketSocket*> connect_callbacks_;
+CallbackList<AsyncPacketSocket*> connect_callbacks_;
   CallbackList<AsyncPacketSocket*, const SentPacketInfo&>
       sent_packet_callbacks_;
   CallbackList<AsyncPacketSocket*> ready_to_send_callbacks_;
   CallbackList<AsyncPacketSocket*, const SocketAddress&>
-      address_ready_callbacks_;
-=======
-  SignalTrampoline<AsyncPacketSocket, &AsyncPacketSocket::SignalConnect>
-      connect_trampoline_;
-  SignalTrampoline<AsyncPacketSocket, &AsyncPacketSocket::SignalSentPacket>
-      sent_packet_trampoline_;
-  SignalTrampoline<AsyncPacketSocket, &AsyncPacketSocket::SignalReadyToSend>
-      ready_to_send_trampoline_;
-  SignalTrampoline<AsyncPacketSocket, &AsyncPacketSocket::SignalAddressReady>
-      address_ready_trampoline_;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-};
+      address_ready_callbacks_;};
 
 // Listen socket, producing an AsyncPacketSocket when a peer connects.
 class RTC_EXPORT AsyncListenSocket {
@@ -297,12 +230,7 @@ class RTC_EXPORT AsyncListenSocket {
     kBound,
   };
 
-<<<<<<< HEAD
-  AsyncListenSocket() = default;
-=======
-  AsyncListenSocket() : new_connection_trampoline_(this) {}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  virtual ~AsyncListenSocket() = default;
+AsyncListenSocket() = default;  virtual ~AsyncListenSocket() = default;
 
   // Returns current state of the socket.
   virtual State GetState() const = 0;
@@ -311,16 +239,11 @@ class RTC_EXPORT AsyncListenSocket {
   // socket is not bound yet (GetState() returns kBinding).
   virtual SocketAddress GetLocalAddress() const = 0;
 
-<<<<<<< HEAD
-=======
-  sigslot::signal2<AsyncListenSocket*, AsyncPacketSocket*> SignalNewConnection;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   void SubscribeNewConnection(
       void* tag,
       absl::AnyInvocable<void(AsyncListenSocket*, AsyncPacketSocket*)>
           callback) {
-<<<<<<< HEAD
-    new_connection_callbacks_.AddReceiver(tag, std::move(callback));
+new_connection_callbacks_.AddReceiver(tag, std::move(callback));
   }
   void UnsubscribeNewConnection(void* tag) {
     new_connection_callbacks_.RemoveReceivers(tag);
@@ -332,23 +255,7 @@ class RTC_EXPORT AsyncListenSocket {
 
  private:
   CallbackList<AsyncListenSocket*, AsyncPacketSocket*>
-      new_connection_callbacks_;
-=======
-    new_connection_trampoline_.Subscribe(tag, std::move(callback));
-  }
-  void UnsubscribeNewConnection(void* tag) {
-    new_connection_trampoline_.Unsubscribe(tag);
-  }
-  void NotifyNewConnection(AsyncListenSocket* listen_socket,
-                           AsyncPacketSocket* packet_socket) {
-    SignalNewConnection(listen_socket, packet_socket);
-  }
-
- private:
-  SignalTrampoline<AsyncListenSocket, &AsyncListenSocket::SignalNewConnection>
-      new_connection_trampoline_;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-};
+      new_connection_callbacks_;};
 
 void CopySocketInformationToPacketInfo(size_t packet_size_bytes,
                                        const AsyncPacketSocket& socket_from,

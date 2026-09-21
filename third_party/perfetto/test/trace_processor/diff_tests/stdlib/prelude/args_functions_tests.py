@@ -62,8 +62,7 @@ class ArgsFunctions(TestSuite):
         "Event","value1",42,3.250000,"[NULL]"
         """))
 
-<<<<<<< HEAD
-  def test_display_value(self):
+def test_display_value(self):
     return DiffTestBlueprint(
         trace=TextProto(r"""
         packet {
@@ -123,11 +122,7 @@ class ArgsFunctions(TestSuite):
         "debug.pointer_val","pointer","0xbeef"
         "debug.bool_true","bool","true"
         "debug.bool_false","bool","false"
-        """))
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  def test__intrinsic_arg_set_to_json_simple(self):
+        """))  def test__intrinsic_arg_set_to_json_simple(self):
     return DiffTestBlueprint(
         trace=TextProto(r"""
         packet {

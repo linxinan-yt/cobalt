@@ -28,9 +28,5 @@ pb_enum!(BuiltinClock {
     BUILTIN_CLOCK_BOOTTIME: 6,
     BUILTIN_CLOCK_TSC: 9,
     BUILTIN_CLOCK_PERF: 10,
-<<<<<<< HEAD
-    BUILTIN_CLOCK_TRACE_FILE: 11,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    BUILTIN_CLOCK_MAX_ID: 63,
+BUILTIN_CLOCK_TRACE_FILE: 11,    BUILTIN_CLOCK_MAX_ID: 63,
 });

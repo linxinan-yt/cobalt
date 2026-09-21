@@ -89,13 +89,9 @@ void AwFieldTrials::RegisterFeatureOverrides(base::FeatureList* feature_list) {
   aw_feature_overrides.DisableFeature(
       blink::features::kEnforceNoopenerOnBlobURLNavigation);
 
-<<<<<<< HEAD
-  // DISABLED_TEMPORARY: https://crbug.com/40593023
-=======
 #if BUILDFLAG(ENABLE_VALIDATING_COMMAND_DECODER)
-  // Disable the passthrough on WebView.
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  aw_feature_overrides.DisableFeature(
+  // DISABLED_TEMPORARY: https://crbug.com/40593023
+  // Disable the passthrough on WebView.  aw_feature_overrides.DisableFeature(
       ::features::kDefaultPassthroughCommandDecoder);
 #endif
 

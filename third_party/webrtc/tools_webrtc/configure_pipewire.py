@@ -19,12 +19,7 @@ def _get_pipewire_dir():
     script_dir = os.path.dirname(os.path.realpath(__file__))
     src_dir = os.path.dirname(script_dir)
 
-<<<<<<< HEAD
-    pipewire_dir = os.path.join(src_dir, 'third_party', 'pipewire',
-=======
-    pipewire_dir = os.path.join(src_dir, 'third_party', 'pipewire-1.4',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                                'linux-amd64')
+pipewire_dir = os.path.join(src_dir, 'third_party', 'pipewire-1.4',                                'linux-amd64')
 
     return pipewire_dir
 

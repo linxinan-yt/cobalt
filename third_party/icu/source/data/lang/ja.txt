@@ -95,12 +95,7 @@ ja{
         bjn{"バンジャル語"}
         bkm{"コム語"}
         bla{"シクシカ語"}
-<<<<<<< HEAD
-        blo{"アニ語 (ベナン)"}
-=======
-        blo{"アニ語 (blo)"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        bm{"バンバラ語"}
+blo{"アニ語 (ベナン)"}        bm{"バンバラ語"}
         bn{"ベンガル語"}
         bo{"チベット語"}
         bpy{"ビシュヌプリヤ・マニプリ語"}

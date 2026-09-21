@@ -16,28 +16,17 @@
 
 #include "src/trace_processor/importers/common/clock_tracker.h"
 
-<<<<<<< HEAD
 #include <algorithm>
 #include <cstddef>
-#include <cstdint>
-=======
-#include <cstdint>
-#include <ctime>
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include <optional>
+#include <cstdint>#include <optional>
 
 #include "perfetto/base/logging.h"
 #include "perfetto/base/status.h"
-<<<<<<< HEAD
 #include "perfetto/ext/base/status_macros.h"
 #include "perfetto/ext/base/status_or.h"
 #include "perfetto/public/compiler.h"
 #include "src/trace_processor/importers/common/args_tracker.h"
-#include "src/trace_processor/importers/common/global_stats_tracker.h"
-=======
-#include "src/trace_processor/importers/common/args_tracker.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "src/trace_processor/importers/common/import_logs_tracker.h"
+#include "src/trace_processor/importers/common/global_stats_tracker.h"#include "src/trace_processor/importers/common/import_logs_tracker.h"
 #include "src/trace_processor/importers/common/metadata_tracker.h"
 #include "src/trace_processor/storage/metadata.h"
 #include "src/trace_processor/storage/stats.h"
@@ -45,8 +34,6 @@
 #include "src/trace_processor/types/trace_processor_context.h"
 #include "src/trace_processor/types/variadic.h"
 #include "src/trace_processor/util/clock_synchronizer.h"
-<<<<<<< HEAD
-
 #include "protos/perfetto/common/builtin_clock.pbzero.h"
 
 namespace perfetto::trace_processor {
@@ -55,23 +42,14 @@ namespace perfetto::trace_processor {
 
 ClockTracker::ClockTracker(TraceProcessorContext* context,
                            ClockSynchronizer* sync,
-                           bool is_primary)
-=======
-
-namespace perfetto::trace_processor {
-
-ClockSynchronizerListenerImpl::ClockSynchronizerListenerImpl(
-    TraceProcessorContext* context)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    : context_(context),
+                           bool is_primary)    : context_(context),
       source_clock_id_key_(context->storage->InternString("source_clock_id")),
       target_clock_id_key_(context->storage->InternString("target_clock_id")),
       source_timestamp_key_(context->storage->InternString("source_timestamp")),
       source_sequence_id_key_(
           context->storage->InternString("source_sequence_id")),
       target_sequence_id_key_(
-<<<<<<< HEAD
-          context->storage->InternString("target_sequence_id")),
+context->storage->InternString("target_sequence_id")),
       sync_(sync),
       machine_id_(context->machine_id().value),
       own_file_id_(context->trace_id().value),
@@ -425,88 +403,6 @@ base::Status ClockSynchronizerListenerImpl::OnClockSyncCacheMiss() {
 base::Status ClockSynchronizerListenerImpl::OnInvalidClockSnapshot() {
   context_->global_stats_tracker->IncrementStats(
       std::nullopt, std::nullopt, stats::invalid_clock_snapshots);
-  return base::OkStatus();
-=======
-          context->storage->InternString("target_sequence_id")) {}
-
-base::Status ClockSynchronizerListenerImpl::OnClockSyncCacheMiss() {
-  context_->storage->IncrementStats(stats::clock_sync_cache_miss);
-  return base::OkStatus();
-}
-
-base::Status ClockSynchronizerListenerImpl::OnInvalidClockSnapshot() {
-  context_->storage->IncrementStats(stats::invalid_clock_snapshots);
-  return base::OkStatus();
-}
-
-base::Status ClockSynchronizerListenerImpl::OnTraceTimeClockIdChanged(
-    ClockSynchronizerBase::ClockId clock_id) {
-  context_->metadata_tracker->SetMetadata(metadata::trace_time_clock_id,
-                                          Variadic::Integer(clock_id));
-  return base::OkStatus();
-}
-
-base::Status ClockSynchronizerListenerImpl::OnSetTraceTimeClock(
-    ClockSynchronizerBase::ClockId clock_id) {
-  context_->metadata_tracker->SetMetadata(metadata::trace_time_clock_id,
-                                          Variadic::Integer(clock_id));
-  return base::OkStatus();
-}
-
-void ClockSynchronizerListenerImpl::RecordConversionError(
-    ClockSynchronizerBase::ErrorType error_type,
-    ClockSynchronizerBase::ClockId source_clock_id,
-    ClockSynchronizerBase::ClockId target_clock_id,
-    int64_t source_timestamp,
-    std::optional<size_t> byte_offset) {
-  size_t stat_key;
-  switch (error_type) {
-    case ClockSynchronizerBase::ErrorType::kUnknownSourceClock:
-      stat_key = stats::clock_sync_failure_unknown_source_clock;
-      break;
-    case ClockSynchronizerBase::ErrorType::kUnknownTargetClock:
-      stat_key = stats::clock_sync_failure_unknown_target_clock;
-      break;
-    case ClockSynchronizerBase::ErrorType::kNoPath:
-      stat_key = stats::clock_sync_failure_no_path;
-      break;
-    case ClockSynchronizerBase::ErrorType::kOk:
-      PERFETTO_FATAL("RecordConversionError called with kOk");
-      return;
-  }
-  auto args = [&](ArgsTracker::BoundInserter& inserter) {
-    if (ClockTracker::IsSequenceClock(static_cast<uint32_t>(source_clock_id))) {
-      auto [seq_id, seq_clock_id] =
-          ClockTracker::ExtractSequenceClockId(source_clock_id);
-      inserter.AddArg(source_sequence_id_key_,
-                      Variadic::UnsignedInteger(seq_id));
-      inserter.AddArg(source_clock_id_key_, Variadic::Integer(seq_clock_id));
-    } else {
-      inserter.AddArg(source_clock_id_key_, Variadic::Integer(source_clock_id));
-    }
-    inserter.AddArg(source_timestamp_key_, Variadic::Integer(source_timestamp));
-    if (ClockTracker::IsSequenceClock(static_cast<uint32_t>(target_clock_id))) {
-      auto [seq_id, seq_clock_id] =
-          ClockTracker::ExtractSequenceClockId(target_clock_id);
-      inserter.AddArg(target_sequence_id_key_,
-                      Variadic::UnsignedInteger(seq_id));
-      inserter.AddArg(target_clock_id_key_, Variadic::Integer(seq_clock_id));
-    } else {
-      inserter.AddArg(target_clock_id_key_, Variadic::Integer(target_clock_id));
-    }
-  };
-  if (byte_offset) {
-    context_->import_logs_tracker->RecordTokenizationError(stat_key,
-                                                           *byte_offset, args);
-  } else {
-    context_->import_logs_tracker->RecordAnalysisError(stat_key, args);
-  }
-}
-
-// Returns true if this is a local host, false otherwise.
-bool ClockSynchronizerListenerImpl::IsLocalHost() {
-  return !context_->machine_id();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  return base::OkStatus();}
 
 }  // namespace perfetto::trace_processor

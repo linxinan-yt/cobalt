@@ -33,12 +33,11 @@
 #include "services/resource_coordinator/public/cpp/memory_instrumentation/memory_instrumentation_features.h"
 #include "third_party/abseil-cpp/absl/strings/ascii.h"
 
-<<<<<<< HEAD
 #if BUILDFLAG(IS_ANDROID)
 #include "base/android/library_loader/anchor_functions.h"
 #include "base/android/library_loader/anchor_functions_buildflags.h"
 #endif  // BUILDFLAG(IS_ANDROID)
-=======
+
 #if BUILDFLAG(COBALT_DETAILED_MEMORY_METRICS)
 #include <atomic>
 
@@ -53,8 +52,6 @@
 #include "third_party/abseil-cpp/absl/strings/numbers.h"
 #include "third_party/abseil-cpp/absl/strings/string_view.h"
 #endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 // Symbol with virtual address of the start of ELF header of the current binary.
 extern char __ehdr_start;
 
@@ -532,14 +529,18 @@ uint32_t CountMappings(base::ProcessId pid) {
   return newline_characters;
 }
 
-<<<<<<< HEAD
 // Get values from smaps_rollup for the current process.
 void GetSmapsRollup(base::ByteSize* pss, base::ByteSize* swap_pss) {
   auto value = base::debug::ReadAndParseSmapsRollup();
   if (!value) {
     *pss = base::ByteSize(0);
     *swap_pss = base::ByteSize(0);
-=======
+    return;
+  }
+  *pss = value->pss;
+  *swap_pss = value->swap_pss;
+}
+
 #if BUILDFLAG(COBALT_DETAILED_MEMORY_METRICS)
 #if !BUILDFLAG(IS_ANDROID)
 struct LibChrobaltMem {
@@ -560,9 +561,7 @@ void GetSmapsRollup(base::ProcessId pid,
       (pid == base::kNullProcessId ? "self" : base::NumberToString(pid)) +
       "/smaps";
   base::ScopedFILE smaps_file(fopen(file_name.c_str(), "r"));
-  if (!smaps_file) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    return;
+  if (!smaps_file) {    return;
   }
 
   char line[kMaxLineSize];
@@ -875,15 +874,10 @@ bool OSMetrics::FillOSMemoryDump(base::ProcessHandle handle,
     dump->mappings_count = CountMappings(handle);
   }
   if (flags.Has(mojom::MemDumpFlags::MEM_DUMP_PSS)) {
-<<<<<<< HEAD
-    base::ByteSize pss, swap_pss;
-=======
-    base::ByteCount pss, swap_pss;
+base::ByteSize pss, swap_pss;
 #if BUILDFLAG(COBALT_DETAILED_MEMORY_METRICS)
     GetSmapsRollup(handle, &pss, &swap_pss);
-#else
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    GetSmapsRollup(&pss, &swap_pss);
+#else    GetSmapsRollup(&pss, &swap_pss);
 #endif
     dump->pss_kb = pss.InKiB();
     dump->swap_pss_kb = swap_pss.InKiB();

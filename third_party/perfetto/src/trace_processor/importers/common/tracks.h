@@ -56,8 +56,7 @@ constexpr auto SliceBlueprint(const char type[],
       name,
       UnitBlueprintT::Unknown{},
       description,
-<<<<<<< HEAD
-  };
+};
 }
 
 // Creates a blueprint for a state track.
@@ -81,10 +80,7 @@ constexpr auto StateBlueprint(const char type[],
       },
       name,
       UnitBlueprintT::Unknown{},
-      description,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  };
+      description,  };
 }
 
 // Creates a blueprint for a counter track.

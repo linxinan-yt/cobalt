@@ -323,12 +323,7 @@ class ChannelReceive : public ChannelReceiveInterface,
   // frame.
   int64_t capture_start_ntp_time_ms_ RTC_GUARDED_BY(ts_stats_lock_);
 
-<<<<<<< HEAD
-  AudioDeviceModule* const audio_device_module_;
-=======
-  AudioDeviceModule* audio_device_module_;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  std::atomic<float> output_gain_;
+AudioDeviceModule* audio_device_module_;  std::atomic<float> output_gain_;
 
   PacketRouter* const packet_router_;
 
@@ -388,8 +383,7 @@ void ChannelReceive::OnReceivedPayloadData(std::span<const uint8_t> payload,
     return;
   }
 
-<<<<<<< HEAD
-  if (payload.empty()) {
+if (payload.empty()) {
     return;
   }
 
@@ -399,33 +393,7 @@ void ChannelReceive::OnReceivedPayloadData(std::span<const uint8_t> payload,
                            RtpPacketInfo(header, receive_time)) != NetEq::kOK) {
     RTC_DLOG(LS_ERROR) << "ChannelReceive::OnReceivedPayloadData() unable to "
                           "insert packet into NetEq; PT = "
-                       << static_cast<int>(header.payloadType);
-=======
-  // Push the incoming payload (parsed and ready for decoding) into NetEq.
-  if (!payload.empty()) {
-    MutexLock lock(&neteq_mutex_);
-    if (neteq_->InsertPacket(rtpHeader, payload,
-                             RtpPacketInfo(rtpHeader, receive_time)) !=
-        NetEq::kOK) {
-      RTC_DLOG(LS_ERROR) << "ChannelReceive::OnReceivedPayloadData() unable to "
-                            "insert packet into NetEq; PT = "
-                         << static_cast<int>(rtpHeader.payloadType);
-      return;
-    }
-  }
-
-  if (nack_tracker_) {
-    TimeDelta round_trip_time =
-        rtp_rtcp_->LastRtt().value_or(TimeDelta::Zero());
-    nack_tracker_->UpdateLastReceivedPacket(rtpHeader.sequenceNumber,
-                                            rtpHeader.timestamp);
-    std::vector<uint16_t> nack_list =
-        nack_tracker_->GetNackList(round_trip_time.ms());
-    if (!nack_list.empty()) {
-      rtp_rtcp_->SendNACK(nack_list.data(), nack_list.size());
-    }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+                       << static_cast<int>(header.payloadType);  }
 }
 
 void ChannelReceive::InitFrameTransformerDelegate(
@@ -645,11 +613,7 @@ ChannelReceive::ChannelReceive(
       capture_start_ntp_time_ms_(-1),
       audio_device_module_(audio_device_module),
       output_gain_(1.0f),
-<<<<<<< HEAD
-      packet_router_(packet_router),
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      frame_decryptor_(frame_decryptor),
+packet_router_(packet_router),      frame_decryptor_(frame_decryptor),
       crypto_options_(crypto_options),
       absolute_capture_time_interpolator_(&env_.clock()) {
   RTC_DCHECK(audio_device_module);
@@ -696,14 +660,10 @@ void ChannelReceive::StopPlayout() {
   if (nack_tracker_) {
     nack_tracker_->Reset();
   }
-<<<<<<< HEAD
 }
 
 uint32_t ChannelReceive::remote_ssrc() const {
-  return remote_ssrc_;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  return remote_ssrc_;}
 
 std::optional<std::pair<int, SdpAudioFormat>> ChannelReceive::GetReceiveCodec()
     const {
@@ -749,17 +709,13 @@ void ChannelReceive::OnRtpPacket(const RtpPacketReceived& packet) {
   packet_copy.set_payload_type_frequency(it->second);
   if (nack_tracker_) {
     nack_tracker_->UpdateSampleRate(it->second);
-<<<<<<< HEAD
-    nack_tracker_->UpdateLastReceivedPacket(packet.SequenceNumber(),
+nack_tracker_->UpdateLastReceivedPacket(packet.SequenceNumber(),
                                             packet.Timestamp());
     std::vector<uint16_t> nack_list =
         nack_tracker_->GetNackList(rtp_rtcp_->LastRtt());
     if (!nack_list.empty()) {
       rtp_rtcp_->SendNACK(nack_list.data(), nack_list.size());
-    }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    }  }
 
   rtp_receive_statistics_->OnRtpPacket(packet_copy);
 
@@ -889,26 +845,6 @@ double ChannelReceive::GetTotalOutputDuration() const {
 void ChannelReceive::SetChannelOutputVolumeScaling(float scaling) {
   RTC_DCHECK_RUN_ON(&worker_thread_checker_);
   output_gain_.store(scaling);
-<<<<<<< HEAD
-=======
-}
-
-void ChannelReceive::RegisterReceiverCongestionControlObjects(
-    PacketRouter* packet_router) {
-  RTC_DCHECK_RUN_ON(&worker_thread_checker_);
-  RTC_DCHECK(packet_router);
-  RTC_DCHECK(!packet_router_);
-  constexpr bool remb_candidate = false;
-  packet_router->AddReceiveRtpModule(rtp_rtcp_.get(), remb_candidate);
-  packet_router_ = packet_router;
-}
-
-void ChannelReceive::ResetReceiverCongestionControlObjects() {
-  RTC_DCHECK_RUN_ON(&worker_thread_checker_);
-  RTC_DCHECK(packet_router_);
-  packet_router_->RemoveReceiveRtpModule(rtp_rtcp_.get());
-  packet_router_ = nullptr;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 ChannelReceiveStatistics ChannelReceive::GetRTCPStatistics() const {
@@ -979,13 +915,8 @@ void ChannelReceive::SetNACKStatus(bool enable, int max_packets) {
   if (enable) {
     rtp_receive_statistics_->SetMaxReorderingThreshold(remote_ssrc_,
                                                        max_packets);
-<<<<<<< HEAD
-    nack_tracker_ = std::make_unique<NackTracker>(max_packets);
-=======
-    nack_tracker_ = std::make_unique<NackTracker>(env_.field_trials());
-    nack_tracker_->SetMaxNackListSize(max_packets);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  } else {
+nack_tracker_ = std::make_unique<NackTracker>(env_.field_trials());
+    nack_tracker_->SetMaxNackListSize(max_packets);  } else {
     rtp_receive_statistics_->SetMaxReorderingThreshold(
         remote_ssrc_, kDefaultMaxReorderingThreshold);
     nack_tracker_.reset();

@@ -389,12 +389,7 @@ class AndroidMetrics(TestSuite):
         wattson_app_startup_rails {
           metric_version: 4
           power_model_version: 1
-<<<<<<< HEAD
-          is_crude_estimate: 0
-=======
-          is_crude_estimate: false
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          period_info {
+is_crude_estimate: false          period_info {
             period_id: 1
             period_dur: 385136434
             cpu_subsystem {
@@ -461,12 +456,7 @@ class AndroidMetrics(TestSuite):
         wattson_trace_rails {
           metric_version: 4
           power_model_version: 1
-<<<<<<< HEAD
-          is_crude_estimate: 0
-=======
-          is_crude_estimate: false
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          period_info {
+is_crude_estimate: 0          period_info {
             period_id: 1
             period_dur: 61793079818
             cpu_subsystem {
@@ -509,23 +499,12 @@ class AndroidMetrics(TestSuite):
         wattson_trace_rails {
           metric_version: 4
           power_model_version: 1
-<<<<<<< HEAD
-          is_crude_estimate: 1
-=======
-          is_crude_estimate: true
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          period_info {
+is_crude_estimate: true          period_info {
             period_id: 1
             period_dur: 16532191699
             cpu_subsystem {
-<<<<<<< HEAD
-              estimated_mw: 138.959335
-              estimated_mws: 2297.302246
-=======
-              estimated_mw: 94.580833
-              estimated_mws: 1563.628418
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-              policy0 {
+estimated_mw: 138.959335
+              estimated_mws: 2297.302246              policy0 {
                 estimated_mw: 48.416279
                 estimated_mws: 800.427185
                 cpu0 {
@@ -570,14 +549,8 @@ class AndroidMetrics(TestSuite):
                 }
               }
               dsu_scu {
-<<<<<<< HEAD
-                estimated_mw: 47.887524
-                estimated_mws: 791.685730
-=======
-                estimated_mw: 3.509021
-                estimated_mws: 58.011806
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-              }
+estimated_mw: 47.887524
+                estimated_mws: 791.685730              }
             }
           }
         }
@@ -609,12 +582,7 @@ class AndroidMetrics(TestSuite):
         wattson_markers_rails {
           metric_version: 4
           power_model_version: 1
-<<<<<<< HEAD
-          is_crude_estimate: 0
-=======
-          is_crude_estimate: false
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          period_info {
+is_crude_estimate: false          period_info {
             period_id: 1
             period_dur: 2031888905
             cpu_subsystem {

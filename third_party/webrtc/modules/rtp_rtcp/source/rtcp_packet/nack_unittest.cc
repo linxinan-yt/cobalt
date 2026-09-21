@@ -135,23 +135,13 @@ TEST(RtcpPacketNackTest, CreateFragmented) {
 
   MockFunction<void(std::span<const uint8_t>)> callback;
   EXPECT_CALL(callback, Call(_))
-<<<<<<< HEAD
-      .WillOnce([&](std::span<const uint8_t> packet) {
-=======
-      .WillOnce([&](ArrayView<const uint8_t> packet) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        Nack nack;
+.WillOnce([&](std::span<const uint8_t> packet) {        Nack nack;
         EXPECT_TRUE(test::ParseSinglePacket(packet, &nack));
         EXPECT_EQ(kSenderSsrc, nack.sender_ssrc());
         EXPECT_EQ(kRemoteSsrc, nack.media_ssrc());
         EXPECT_THAT(nack.packet_ids(), ElementsAre(1, 100, 200));
       })
-<<<<<<< HEAD
-      .WillOnce([&](std::span<const uint8_t> packet) {
-=======
-      .WillOnce([&](ArrayView<const uint8_t> packet) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        Nack nack;
+.WillOnce([&](std::span<const uint8_t> packet) {        Nack nack;
         EXPECT_TRUE(test::ParseSinglePacket(packet, &nack));
         EXPECT_EQ(kSenderSsrc, nack.sender_ssrc());
         EXPECT_EQ(kRemoteSsrc, nack.media_ssrc());

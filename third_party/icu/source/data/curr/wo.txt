@@ -611,14 +611,10 @@ wo{
             "EC$",
             "East Caribbean Dollar",
         }
-<<<<<<< HEAD
-        XCG{
+XCG{
             "Cg.",
             "Gildiye Karayib",
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        XOF{
+        }        XOF{
             "F CFA",
             "Franc CFA bu Afrik Sowwu-jant",
         }
@@ -642,14 +638,10 @@ wo{
             "ZMW",
             "Zambian Kwacha",
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             "ZWG",
             "Zimbabwean ZiG",
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
     Currencies%narrow{
         CLP{"Vote $"}
         HUF{"Vote Ft"}
@@ -701,12 +693,7 @@ wo{
         BHD{
             other{"Bahraini dinars"}
         }
-<<<<<<< HEAD
-        BMD{
-            other{"Bermudan dollars"}
-        }
-=======
-        BIF{
+BIF{
             other{"Burundian francs"}
         }
         BMD{
@@ -714,9 +701,7 @@ wo{
         }
         BND{
             other{"Brunei dollars"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        BOB{
+        }        BOB{
             other{"Bolivian bolivianos"}
         }
         BRL{
@@ -725,25 +710,17 @@ wo{
         BSD{
             other{"Bahamian dollars"}
         }
-<<<<<<< HEAD
-=======
-        BTN{
+BTN{
             other{"Bhutanese ngultrums"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        BWP{
+        }        BWP{
             other{"Botswanan pulas"}
         }
         BYN{
             other{"Belarusian rubles"}
         }
-<<<<<<< HEAD
-=======
-        BZD{
+BZD{
             other{"Belize dollars"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        CAD{
+        }        CAD{
             other{"Canadian dollars"}
         }
         CDF{
@@ -764,13 +741,9 @@ wo{
         COP{
             other{"Colombian pesos"}
         }
-<<<<<<< HEAD
-=======
-        CRC{
+CRC{
             other{"Costa Rican colóns"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        CUC{
+        }        CUC{
             other{"Cuban convertible pesos"}
         }
         CUP{
@@ -797,26 +770,14 @@ wo{
         EGP{
             other{"Egyptian pounds"}
         }
-<<<<<<< HEAD
-        ETB{
-            other{"Ethiopian birrs"}
-        }
-        FJD{
-            other{"Fijian dollars"}
-        }
-        FKP{
-            other{"Falkland Islands pounds"}
-=======
-        ERN{
+ERN{
             other{"Eritrean nakfas"}
         }
         ETB{
             other{"Ethiopian birrs"}
         }
         EUR{
-            other{"euro"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            other{"euro"}        }
         FJD{
             other{"Fijian dollars"}
         }
@@ -826,13 +787,9 @@ wo{
         GBP{
             other{"Pound yu Grànd Brëtaañ"}
         }
-<<<<<<< HEAD
-=======
-        GEL{
+GEL{
             other{"Georgian laris"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        GHS{
+        }        GHS{
             other{"Ghanaian cedis"}
         }
         GIP{
@@ -892,25 +849,17 @@ wo{
         JPY{
             other{"Yen yu Sapoŋ"}
         }
-<<<<<<< HEAD
-=======
-        KES{
+KES{
             other{"Kenyan shillings"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        KGS{
+        }        KGS{
             other{"Kyrgystani soms"}
         }
         KHR{
             other{"Cambodian riels"}
         }
-<<<<<<< HEAD
-=======
-        KMF{
+KMF{
             other{"Comorian francs"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        KPW{
+        }        KPW{
             other{"North Korean won"}
         }
         KRW{
@@ -931,13 +880,9 @@ wo{
         LBP{
             other{"Lebanese pounds"}
         }
-<<<<<<< HEAD
-=======
-        LKR{
+LKR{
             other{"Sri Lankan rupees"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        LRD{
+        }        LRD{
             other{"Liberian dollars"}
         }
         LSL{
@@ -946,13 +891,9 @@ wo{
         LYD{
             other{"Libyan dinars"}
         }
-<<<<<<< HEAD
-=======
-        MAD{
+MAD{
             other{"Moroccan dirhams"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        MDL{
+        }        MDL{
             other{"Moldovan lei"}
         }
         MGA{
@@ -973,9 +914,7 @@ wo{
         MRU{
             other{"Mauritanian ouguiyas"}
         }
-<<<<<<< HEAD
-=======
-        MUR{
+MUR{
             other{"Mauritian rupees"}
         }
         MVR{
@@ -983,9 +922,7 @@ wo{
         }
         MWK{
             other{"Malawian kwachas"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        MXN{
+        }        MXN{
             other{"Mexican pesos"}
         }
         MYR{
@@ -1006,13 +943,9 @@ wo{
         NOK{
             other{"Norwegian kroner"}
         }
-<<<<<<< HEAD
-=======
-        NPR{
+NPR{
             other{"Nepalese rupees"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        NZD{
+        }        NZD{
             other{"New Zealand dollars"}
         }
         OMR{
@@ -1027,16 +960,12 @@ wo{
         PGK{
             other{"Papua New Guinean kina"}
         }
-<<<<<<< HEAD
-=======
-        PHP{
+PHP{
             other{"Philippine pesos"}
         }
         PKR{
             other{"Pakistani rupees"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        PLN{
+        }        PLN{
             other{"Polish zlotys"}
         }
         PYG{
@@ -1072,13 +1001,9 @@ wo{
         SEK{
             other{"Swedish kronor"}
         }
-<<<<<<< HEAD
-=======
-        SGD{
+SGD{
             other{"Singapore dollars"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        SHP{
+        }        SHP{
             other{"St. Helena pounds"}
         }
         SLE{
@@ -1105,13 +1030,9 @@ wo{
         SZL{
             other{"Swazi emalangeni"}
         }
-<<<<<<< HEAD
-=======
-        THB{
+THB{
             other{"Thai baht"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        TJS{
+        }        TJS{
             other{"Tajikistani somonis"}
         }
         TMT{
@@ -1123,13 +1044,9 @@ wo{
         TOP{
             other{"Tongan paʻanga"}
         }
-<<<<<<< HEAD
-=======
-        TRY{
+TRY{
             other{"Turkish Lira"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        TTD{
+        }        TTD{
             other{"Trinidad & Tobago dollars"}
         }
         TWD{
@@ -1171,30 +1088,15 @@ wo{
         XCD{
             other{"East Caribbean dollars"}
         }
-<<<<<<< HEAD
-        XCG{
+XCG{
             other{"Gildiye Karayib"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        XOF{
+        }        XOF{
             other{"Franc CFA yu Afrik Sowwu-jant"}
         }
         XPF{
             other{"CFP francs"}
         }
-<<<<<<< HEAD
-        ZAR{
-            other{"South African rand"}
-        }
-        ZMW{
-            other{"Zambian kwachas"}
-        }
-        ZWG{
-            other{"Zimbabwean ZiG"}
-        }
-=======
-        XXX{
+XXX{
             other{"(xaalis buñ xamul)"}
         }
         YER{
@@ -1206,6 +1108,7 @@ wo{
         ZMW{
             other{"Zambian kwachas"}
         }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        ZWG{
+            other{"Zimbabwean ZiG"}
+        }    }
 }

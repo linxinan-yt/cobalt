@@ -76,18 +76,12 @@ gpu::ContextResult TestInProcessContextProvider::BindToCurrentSequence() {
   } else {
     raster_context_ = std::make_unique<gpu::RasterInProcessContext>();
     auto result = raster_context_->Initialize(
-<<<<<<< HEAD
-        holder->task_executor(), holder->gpu_service()->gr_shader_cache(),
+holder->task_executor(), holder->gpu_service()->gr_shader_cache(),
         use_shader_cache_shm_count_);
-=======
-        holder->task_executor(), /*enable_gpu_rasterization=*/is_gpu_raster,
-        holder->gpu_service()->gr_shader_cache(), use_shader_cache_shm_count_);
 
 // TODO(sherryzy): Investigate why this ContextResult check fails
 // specifically in single-process-test mode.
-#if !BUILDFLAG(IS_STARBOARD)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    CHECK_EQ(result, gpu::ContextResult::kSuccess);
+#if !BUILDFLAG(IS_STARBOARD)    CHECK_EQ(result, gpu::ContextResult::kSuccess);
 #else
     (void)result;
 #endif  // BUILDFLAG(IS_STARBOARD)

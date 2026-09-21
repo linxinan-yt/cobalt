@@ -121,20 +121,12 @@ class CORE_EXPORT ContextMenuController
 
   // Returns whether a Context Menu was actually shown. Changing this is not
   // recommended.
-<<<<<<< HEAD
-  bool ShowContextMenu(LocalFrame*,
+bool ShowContextMenu(LocalFrame*,
                        const PhysicalOffset&,
                        ui::mojom::blink::MenuSourceType);
   virtual bool ShowContextMenu(LocalFrame*,
                                const PhysicalOffset&,
-                               ui::mojom::blink::MenuSourceType,
-=======
-  bool ShowContextMenu(LocalFrame*, const PhysicalOffset&, WebMenuSourceType);
-  virtual bool ShowContextMenu(LocalFrame*,
-                               const PhysicalOffset&,
-                               WebMenuSourceType,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                               const MouseEvent* mouse_event);
+                               ui::mojom::blink::MenuSourceType,                               const MouseEvent* mouse_event);
 
   bool ShouldShowContextMenuFromTouch(const ContextMenuData&);
 

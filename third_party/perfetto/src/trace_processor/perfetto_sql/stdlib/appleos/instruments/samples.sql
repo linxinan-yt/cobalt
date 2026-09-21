@@ -27,14 +27,7 @@ ORDER BY
 -- This index is added to optimize the creation of the
 -- appleos_instruments_samples_summary_tree table by speeding up the
 -- leaf-finding query in _callstacks_self_to_cumulative.
-<<<<<<< HEAD
-CREATE PERFETTO INDEX _appleos_instruments_raw_callstacks_parent_id_idx ON _appleos_instruments_raw_callstacks(
-  parent_id
-);
-=======
 CREATE PERFETTO INDEX _appleos_instruments_raw_callstacks_parent_id_idx ON _appleos_instruments_raw_callstacks(parent_id);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 -- Table summarising the callstacks captured during all
 -- instruments samples in the trace.
 --

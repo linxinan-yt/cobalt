@@ -13,7 +13,6 @@
 // limitations under the License.
 
 import m from 'mithril';
-<<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.WidgetsPage/demos/copyable_link_demo.ts
 import {CopyableLink} from '../../../widgets/copyable_link';
 import {renderWidgetShowcase} from '../widgets_page_utils';
 
@@ -34,27 +33,7 @@ export function renderCopyableLink(): m.Children {
           url: 'https://perfetto.dev/docs/',
         }),
       initialOpts: {
-        noicon: false,
-========
-import {Checkbox} from '../../../widgets/checkbox';
-import {renderWidgetShowcase} from '../widgets_page_utils';
-
-export function renderCheckbox(): m.Children {
-  return [
-    m(
-      '.pf-widget-intro',
-      m('h1', 'Checkbox'),
-      m(
-        'p',
-        'A standard checkbox input for binary on/off selections with optional labels and disabled state.',
-      ),
-    ),
-    renderWidgetShowcase({
-      renderWidget: (opts) => m(Checkbox, {label: 'Checkbox', ...opts}),
-      initialOpts: {
-        disabled: false,
->>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.WidgetsPage/demos/checkbox_demo.ts
-      },
+        noicon: false,      },
     }),
   ];
 }

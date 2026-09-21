@@ -24,7 +24,6 @@ import type {
   SqlTable,
   SqlTableFunction,
 } from './sql_modules';
-<<<<<<< HEAD
 import type {SqlTableDefinition} from '../../components/widgets/sql/table/table_description';
 import type {TableColumn} from '../../components/widgets/sql/table/table_column';
 import type {Trace} from '../../public/trace';
@@ -53,18 +52,6 @@ async function runDataCheck(trace: Trace, sql: string): Promise<boolean> {
     return false;
   }
 }
-=======
-import {SqlTableDescription} from '../../components/widgets/sql/table/table_description';
-import {TableColumn} from '../../components/widgets/sql/table/table_column';
-import {Trace} from '../../public/trace';
-import {
-  parsePerfettoSqlTypeFromString,
-  PerfettoSqlType,
-} from '../../trace_processor/perfetto_sql_type';
-import {unwrapResult} from '../../base/result';
-import {createTableColumn} from '../../components/widgets/sql/table/create_column';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 export class SqlModulesImpl implements SqlModules {
   readonly packages: SqlPackage[];
   private disabledModules: Set<string> = new Set();
@@ -79,8 +66,7 @@ export class SqlModulesImpl implements SqlModules {
     this.startInit = () => this.computeDisabledModules(trace, docs);
   }
 
-<<<<<<< HEAD
-  ensureInitialized(): Promise<void> {
+ensureInitialized(): Promise<void> {
     if (this.initPromise === undefined) {
       this.initPromise = this.startInit();
     }
@@ -211,11 +197,7 @@ export class SqlModulesImpl implements SqlModules {
 
   getDisabledModules(): ReadonlySet<string> {
     return this.disabledModules;
-  }
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  getTable(tableName: string): SqlTable | undefined {
+  }  getTable(tableName: string): SqlTable | undefined {
     for (const p of this.packages) {
       const t = p.getTable(tableName);
       if (t !== undefined) {
@@ -429,12 +411,8 @@ class SqlTableImpl implements SqlTable {
     this.includeKey = includeKey;
     this.description = docs.desc;
     this.type = docs.type;
-<<<<<<< HEAD
-    this.importance = docs.importance ?? undefined;
-    this.dataCheckSql = docs.data_check_sql ?? undefined;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    this.columns = docs.cols.map(
+this.importance = docs.importance ?? undefined;
+    this.dataCheckSql = docs.data_check_sql ?? undefined;    this.columns = docs.cols.map(
       (json) => new StdlibColumnImpl(json, this.name),
     );
   }
@@ -480,12 +458,7 @@ class StdlibFunctionArgImpl implements SqlArgument {
   }
 }
 
-<<<<<<< HEAD
-export const ARG_OR_COL_SCHEMA = z.object({
-=======
-const ARG_OR_COL_SCHEMA = z.object({
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  name: z.string(),
+export const ARG_OR_COL_SCHEMA = z.object({  name: z.string(),
   type: z.string(),
   desc: z.string(),
   table: z.string().nullable(),

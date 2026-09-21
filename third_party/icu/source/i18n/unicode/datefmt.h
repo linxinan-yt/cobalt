@@ -518,12 +518,7 @@ public:
      * @return A date/time formatter which the caller owns.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_I18N_API static DateFormat* U_EXPORT2 createInstance();
-=======
-    static DateFormat* U_EXPORT2 createInstance();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API static DateFormat* U_EXPORT2 createInstance();
     /**
      * Creates a time formatter with the given formatting style for the given
      * locale.
@@ -659,12 +654,7 @@ public:
      * numeric processing is lenient.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_I18N_API virtual UBool isLenient() const;
-=======
-    virtual UBool isLenient() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+virtual UBool isLenient() const;
     /**
      * Specifies whether date/time parsing is to be lenient.  With
      * lenient parsing, the parser may use heuristics to interpret inputs that
@@ -692,12 +682,7 @@ public:
      * Returns whether date/time parsing in the encapsulated Calendar object processing is lenient.
      * @stable ICU 53
      */
-<<<<<<< HEAD
-    U_I18N_API virtual UBool isCalendarLenient() const;
-=======
-    virtual UBool isCalendarLenient() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API virtual UBool isCalendarLenient() const;
     /**
      * Specifies whether encapsulated Calendar date/time parsing is to be lenient.  With
      * lenient parsing, the parser may use heuristics to interpret inputs that
@@ -718,12 +703,7 @@ public:
      * @return the calendar associated with this date/time formatter.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_I18N_API virtual const Calendar* getCalendar() const;
-=======
-    virtual const Calendar* getCalendar() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+virtual const Calendar* getCalendar() const;
     /**
      * Set the calendar to be used by this date format. Initially, the default
      * calendar for the specified or default locale is used.  The caller should
@@ -750,12 +730,7 @@ public:
      * @return the number formatter which this date/time formatter uses.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_I18N_API virtual const NumberFormat* getNumberFormat() const;
-=======
-    virtual const NumberFormat* getNumberFormat() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API virtual const NumberFormat* getNumberFormat() const;
     /**
      * Allows you to set the number formatter.  The caller should
      * not delete the NumberFormat object after it is adopted by this call.
@@ -776,12 +751,7 @@ public:
      * @return the time zone associated with the calendar of DateFormat.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_I18N_API virtual const TimeZone& getTimeZone() const;
-=======
-    virtual const TimeZone& getTimeZone() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API virtual const TimeZone& getTimeZone() const;
     /**
      * Sets the time zone for the calendar of this DateFormat object. The caller
      * no longer owns the TimeZone object and should not delete it after this call.

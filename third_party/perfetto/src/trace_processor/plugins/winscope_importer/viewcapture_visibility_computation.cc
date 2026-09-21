@@ -14,11 +14,7 @@
  * limitations under the License.
  */
 
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/viewcapture_visibility_computation.cc
-#include "src/trace_processor/plugins/winscope_importer/viewcapture_visibility_computation.h"
-=======
 #include "src/trace_processor/importers/proto/winscope/viewcapture_visibility_computation.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/viewcapture_visibility_computation.cc
 
 namespace perfetto::trace_processor::winscope::viewcapture {
 
@@ -34,25 +30,10 @@ VisibilityComputation::VisibilityComputation(
 
 std::unordered_map<int32_t, bool> VisibilityComputation::Compute() {
   std::unordered_map<int32_t, bool> computed_visibility;
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/viewcapture_visibility_computation.cc
-  std::unordered_map<int32_t, bool> visibility_flag_set;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/viewcapture_visibility_computation.cc
   for (auto it = views_top_to_bottom_.begin(); it != views_top_to_bottom_.end();
        it++) {
     const auto& view = *it;
     auto node_id = view.id();
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/viewcapture_visibility_computation.cc
-
-    auto visibility_set = view.visibility() == IS_VISIBLE;
-    auto parent = visibility_flag_set.find(view.parent_id());
-    if (visibility_set && parent != visibility_flag_set.end()) {
-      visibility_set = parent->second;
-    }
-    visibility_flag_set[node_id] = visibility_set;
-
-    auto is_visible = visibility_set && view.width() > 0 && view.height() > 0;
-=======
     auto is_visible = view.visibility() == IS_VISIBLE;
 
     auto parent = computed_visibility.find(view.parent_id());
@@ -60,7 +41,6 @@ std::unordered_map<int32_t, bool> VisibilityComputation::Compute() {
       is_visible = parent->second;
     }
 
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/viewcapture_visibility_computation.cc
     computed_visibility[node_id] = is_visible;
   }
   return computed_visibility;

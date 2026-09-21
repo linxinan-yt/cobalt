@@ -220,11 +220,7 @@ am{
         hax{"ደቡባዊ ሃይዳ"}
         he{"ዕብራይስጥ"}
         hi{"ሕንድኛ"}
-<<<<<<< HEAD
-=======
-        hi_Latn{"ሕንድኛ (ላቲን)"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        hil{"ሂሊጋይኖን"}
+hi_Latn{"ሕንድኛ (ላቲን)"}        hil{"ሂሊጋይኖን"}
         hmn{"ህሞንግ"}
         hr{"ክሮሽያንኛ"}
         hsb{"የላይኛው ሶርቢያንኛ"}

@@ -12,23 +12,14 @@
 
 #include <memory>
 
-<<<<<<< HEAD
 #include "absl/algorithm/container.h"
 #include "api/numerics/samples_stats_counter.h"
 #include "api/units/data_size.h"
-#include "api/units/time_delta.h"
-=======
-#include "api/units/data_size.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "api/units/timestamp.h"
+#include "api/units/time_delta.h"#include "api/units/timestamp.h"
 #include "logging/rtc_event_log/rtc_event_log_parser.h"
 #include "test/gmock.h"
 #include "test/gtest.h"
-<<<<<<< HEAD
-#include "video/timing/simulator/frame_base.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "video/timing/simulator/test/parsed_rtc_event_log_from_resources.h"
+#include "video/timing/simulator/frame_base.h"#include "video/timing/simulator/test/parsed_rtc_event_log_from_resources.h"
 
 namespace webrtc::video_timing_simulator {
 namespace {
@@ -38,16 +29,11 @@ using ::testing::ElementsAre;
 using ::testing::Eq;
 using ::testing::Field;
 using ::testing::Matcher;
-<<<<<<< HEAD
-using ::testing::Ne;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-using ::testing::SizeIs;
+using ::testing::Ne;using ::testing::SizeIs;
 
 using Frame = DecodabilitySimulator::Frame;
 using Stream = DecodabilitySimulator::Stream;
 
-<<<<<<< HEAD
 TEST(DecodabilitySimulatorFrameTest, UndecodableDuration) {
   DecodabilitySimulator::Frame frame{
       .assembled_timestamp = Timestamp::Millis(0),
@@ -72,11 +58,7 @@ TEST(DecodabilitySimulatorStreamTest, UndecodableDurationMs) {
   EXPECT_THAT(
       stream.UndecodableDurationMs().GetTimedSamples(),
       ElementsAre(Field(&SamplesStatsCounter::StatsSample::value, Eq(4))));
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-Matcher<const Frame&> EqualsFrame(const Frame& expected) {
+}Matcher<const Frame&> EqualsFrame(const Frame& expected) {
   return AllOf(
       Field("num_packets", &Frame::num_packets, Eq(expected.num_packets)),
       Field("size", &Frame::size, Eq(expected.size)),
@@ -88,22 +70,12 @@ Matcher<const Frame&> EqualsFrame(const Frame& expected) {
             Eq(expected.decodable_timestamp)));
 }
 
-<<<<<<< HEAD
-=======
-// TODO: b/423646186 - Add tests for logs with losses.
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-TEST(DecodabilitySimulatorTest, VideoRecvVp8) {
+// TODO: b/423646186 - Add tests for logs with losses.TEST(DecodabilitySimulatorTest, VideoRecvVp8) {
   std::unique_ptr<ParsedRtcEventLog> parsed_log =
       ParsedRtcEventLogFromResources("video_recv_vp8_pt96");
 
-<<<<<<< HEAD
-  DecodabilitySimulator::Config config;
-  DecodabilitySimulator simulator(config);
-=======
-  DecodabilitySimulator simulator;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  DecodabilitySimulator::Results results = simulator.Simulate(*parsed_log);
+DecodabilitySimulator::Config config;
+  DecodabilitySimulator simulator(config);  DecodabilitySimulator::Results results = simulator.Simulate(*parsed_log);
 
   ASSERT_THAT(results.streams, SizeIs(1));
   const auto& stream = results.streams.front();
@@ -125,13 +97,8 @@ TEST(DecodabilitySimulatorTest, VideoRecvVp9) {
   std::unique_ptr<ParsedRtcEventLog> parsed_log =
       ParsedRtcEventLogFromResources("video_recv_vp9_pt98");
 
-<<<<<<< HEAD
-  DecodabilitySimulator::Config config;
-  DecodabilitySimulator simulator(config);
-=======
-  DecodabilitySimulator simulator;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  DecodabilitySimulator::Results results = simulator.Simulate(*parsed_log);
+DecodabilitySimulator::Config config;
+  DecodabilitySimulator simulator(config);  DecodabilitySimulator::Results results = simulator.Simulate(*parsed_log);
 
   ASSERT_THAT(results.streams, SizeIs(1));
   const auto& stream = results.streams.front();
@@ -153,13 +120,8 @@ TEST(DecodabilitySimulatorTest, VideoRecvAv1) {
   std::unique_ptr<ParsedRtcEventLog> parsed_log =
       ParsedRtcEventLogFromResources("video_recv_av1_pt45");
 
-<<<<<<< HEAD
-  DecodabilitySimulator::Config config;
-  DecodabilitySimulator simulator(config);
-=======
-  DecodabilitySimulator simulator;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  DecodabilitySimulator::Results results = simulator.Simulate(*parsed_log);
+DecodabilitySimulator::Config config;
+  DecodabilitySimulator simulator(config);  DecodabilitySimulator::Results results = simulator.Simulate(*parsed_log);
 
   ASSERT_THAT(results.streams, SizeIs(1));
   const auto& stream = results.streams.front();
@@ -182,13 +144,8 @@ TEST(DecodabilitySimulatorTest, VideoRecvSequentialJoinVp8Vp9Av1) {
   std::unique_ptr<ParsedRtcEventLog> parsed_log =
       ParsedRtcEventLogFromResources("video_recv_sequential_join_vp8_vp9_av1");
 
-<<<<<<< HEAD
-  DecodabilitySimulator::Config config;
-  DecodabilitySimulator simulator(config);
-=======
-  DecodabilitySimulator simulator;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  DecodabilitySimulator::Results results = simulator.Simulate(*parsed_log);
+DecodabilitySimulator::Config config;
+  DecodabilitySimulator simulator(config);  DecodabilitySimulator::Results results = simulator.Simulate(*parsed_log);
 
   EXPECT_THAT(results.streams,
               ElementsAre(AllOf(Field(&Stream::ssrc, Eq(2827012235)),
@@ -199,7 +156,6 @@ TEST(DecodabilitySimulatorTest, VideoRecvSequentialJoinVp8Vp9Av1) {
                                 Field(&Stream::frames, SizeIs(361)))));
 }
 
-<<<<<<< HEAD
 // This log starts experiencing packet losses after half the duration.
 TEST(DecodabilitySimulatorTest, VideoRecvVp8Lossy) {
   std::unique_ptr<ParsedRtcEventLog> parsed_log =
@@ -237,9 +193,5 @@ TEST(DecodabilitySimulatorTest, VideoRecvVp8Lossy) {
                         .unwrapped_rtp_timestamp = 2607363343,
                         .assembled_timestamp = Timestamp::Millis(821457158),
                         .decodable_timestamp = Timestamp::Millis(821457158)}));
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}  // namespace
+}}  // namespace
 }  // namespace webrtc::video_timing_simulator

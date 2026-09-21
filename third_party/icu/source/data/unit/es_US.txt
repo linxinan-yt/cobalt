@@ -16,18 +16,14 @@ es_US{
             10p-30{"quecto {0}"}
         }
         concentr{
-<<<<<<< HEAD
-            katal{
+katal{
                 dnam{"katal"}
             }
             part{
                 dnam{"partes por millón"}
                 one{"{0} parte por millón"}
                 other{"{0} partes por millón"}
-            }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            percent{
+            }            percent{
                 dnam{"por ciento"}
             }
             permille{
@@ -151,10 +147,6 @@ es_US{
                 other{"Escala Beaufort {0}"}
             }
             light-speed{
-<<<<<<< HEAD
-                one{"{0} de luces"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} luces"}
             }
         }
@@ -234,16 +226,12 @@ es_US{
                 dnam{"a"}
                 one{"{0}a"}
                 other{"{0}a"}
-<<<<<<< HEAD
-            }
+}
         }
         electric{
             farad{
                 one{"{0} F"}
-                other{"{0}F"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0}F"}            }
         }
         energy{
             calorie-it{
@@ -256,17 +244,13 @@ es_US{
                 other{"{0}th US"}
             }
         }
-<<<<<<< HEAD
-        force{
+force{
             kilogram-force{
                 dnam{"kp"}
                 one{"{0} kp"}
                 other{"{0} kp"}
             }
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        length{
+        }        length{
             fathom{
                 dnam{"braza"}
             }
@@ -431,10 +415,6 @@ es_US{
                 other{"{0} nudos"}
             }
             light-speed{
-<<<<<<< HEAD
-                one{"{0} de luces"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 other{"{0} de luces"}
             }
         }

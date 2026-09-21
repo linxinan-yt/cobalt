@@ -1596,12 +1596,8 @@ is{
             one{"sambísk kvaka"}
             other{"sambískar kvökur"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             one{"simbabveskt gold"}
             other{"simbabveskt gold"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

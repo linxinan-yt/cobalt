@@ -28,18 +28,11 @@
 #include "src/trace_processor/storage/trace_storage.h"
 #include "src/trace_processor/types/trace_processor_context.h"
 
-<<<<<<< HEAD
 namespace perfetto::protos::pbzero {
 class Callstack_Decoder;
 }  // namespace perfetto::protos::pbzero
 
-namespace perfetto::trace_processor {
-
-=======
-namespace perfetto::trace_processor {
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-class DummyMemoryMapping;
+namespace perfetto::trace_processor {class DummyMemoryMapping;
 class TraceProcessorContext;
 class VirtualMemoryMapping;
 
@@ -53,8 +46,7 @@ class StackProfileSequenceState final
   virtual ~StackProfileSequenceState() override;
 
   // Returns `nullptr`if non could be found.
-<<<<<<< HEAD
-  VirtualMemoryMapping* FindOrInsertMapping(
+VirtualMemoryMapping* FindOrInsertMapping(
       PacketSequenceStateGeneration* state,
       uint64_t iid);
   std::optional<CallsiteId> FindOrInsertCallstack(
@@ -89,24 +81,7 @@ class StackProfileSequenceState final
       std::optional<UniquePid> upid,
       uint64_t iid);
   std::optional<FrameId> FindOrInsertFrame(PacketSequenceStateGeneration* state,
-                                           std::optional<UniquePid> upid,
-=======
-  VirtualMemoryMapping* FindOrInsertMapping(uint64_t iid);
-  std::optional<CallsiteId> FindOrInsertCallstack(std::optional<UniquePid> upid,
-                                                  uint64_t iid);
-
- private:
-  std::optional<base::StringView> LookupInternedBuildId(uint64_t iid);
-  std::optional<base::StringView> LookupInternedMappingPath(uint64_t iid);
-  std::optional<base::StringView> LookupInternedFunctionName(uint64_t iid);
-  std::optional<base::StringView> LookupInternedSourcePath(uint64_t iid);
-
-  // Returns `nullptr`if non could be found.
-  VirtualMemoryMapping* FindOrInsertMappingImpl(std::optional<UniquePid> upid,
-                                                uint64_t iid);
-  std::optional<FrameId> FindOrInsertFrame(std::optional<UniquePid> upid,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                                           uint64_t iid);
+                                           std::optional<UniquePid> upid,                                           uint64_t iid);
 
   TraceProcessorContext* const context_;
   DummyMemoryMapping* dummy_mapping_for_interned_frames_ = nullptr;

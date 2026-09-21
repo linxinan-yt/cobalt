@@ -84,13 +84,9 @@ pl{
         "America:Costa_Rica"{
             ec{"Kostaryka"}
         }
-<<<<<<< HEAD
-=======
-        "America:Cuiaba"{
+"America:Cuiaba"{
             ec{"Cuiabá"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Dominica"{
+        }        "America:Dominica"{
             ec{"Dominika"}
         }
         "America:El_Salvador"{
@@ -111,13 +107,9 @@ pl{
         "America:Jamaica"{
             ec{"Jamajka"}
         }
-<<<<<<< HEAD
-=======
-        "America:Maceio"{
+"America:Maceio"{
             ec{"Maceió"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Martinique"{
+        }        "America:Martinique"{
             ec{"Martynika"}
         }
         "America:Merida"{

@@ -127,18 +127,15 @@
 #include "ui/ozone/public/surface_factory_ozone.h"
 #endif  // BUILDFLAG(IS_OZONE)
 
-<<<<<<< HEAD
 #if BUILDFLAG(ENABLE_VRP_FLAGS)
 #include "components/vrp_flags/vrp_flags.h"       // nogncheck
 #include "components/vrp_flags/vrp_flags_impl.h"  // nogncheck
 #endif                                            // BUILDFLAG(ENABLE_VRP_FLAGS)
-=======
+
 #if BUILDFLAG(IS_COBALT)
 #include "ui/gl/gl_display.h"
 #include "ui/gl/gl_surface_egl.h"
 #endif  // BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 namespace viz {
 
 namespace {
@@ -1233,10 +1230,6 @@ void GpuServiceImpl::OnForegrounded() {
 }
 
 void GpuServiceImpl::OnForegroundedOnMainThread() {
-<<<<<<< HEAD
-  if (priority_changed_callback_) {
-    priority_changed_callback_.Run(base::Process::Priority::kUserBlocking);
-=======
 #if BUILDFLAG(IS_COBALT)
   // Re-initialize the EGL display and default offscreen surface before servicing
   // any channel establishment requests. On background cleanup, the display is
@@ -1285,10 +1278,8 @@ void GpuServiceImpl::OnForegroundedOnMainThread() {
   }
 #endif
 
-  if (visibility_changed_callback_) {
-    visibility_changed_callback_.Run(true);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    if (gpu_preferences_.enable_gpu_benchmarking_extension) {
+  if (priority_changed_callback_) {
+    priority_changed_callback_.Run(base::Process::Priority::kUserBlocking);    if (gpu_preferences_.enable_gpu_benchmarking_extension) {
       ++gpu_info_.visibility_callback_call_count;
       UpdateGPUInfoGL();
     }

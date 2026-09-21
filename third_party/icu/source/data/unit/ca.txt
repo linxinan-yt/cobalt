@@ -404,15 +404,10 @@ ca{
                 other{"{0} nanosegons"}
             }
             night{
-<<<<<<< HEAD
-                gender{"feminine"}
-=======
-                dnam{"nits"}
+dnam{"nits"}
                 gender{"feminine"}
                 one{"{0} nit"}
-                other{"{0} nits"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                per{"{0} per nit"}
+                other{"{0} nits"}                per{"{0} per nit"}
             }
             quarter{
                 dnam{"trimestres"}
@@ -1006,17 +1001,10 @@ ca{
                 other{"{0} nusos"}
             }
             light-speed{
-<<<<<<< HEAD
-                gender{"feminine"}
-                one{"{0} llums"}
-                other{"{0} llums"}
-=======
-                dnam{"llum"}
+dnam{"llum"}
                 gender{"feminine"}
                 one{"{0} llum"}
-                other{"{0} llum"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} llum"}            }
             meter-per-second{
                 dnam{"metres per segon"}
                 gender{"masculine"}
@@ -1342,13 +1330,8 @@ ca{
             night{
                 dnam{"nit"}
                 one{"{0}/nit"}
-<<<<<<< HEAD
-                other{"{0}/nits"}
-=======
-                other{"{0}/nit"}
-                per{"{0}/nit"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+other{"{0}/nit"}
+                per{"{0}/nit"}            }
             year{
                 per{"{0}/any"}
             }

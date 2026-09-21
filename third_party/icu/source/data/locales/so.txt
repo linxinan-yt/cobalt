@@ -875,9 +875,7 @@ so{
                         "J",
                         "S",
                     }
-<<<<<<< HEAD
-=======
-                }
+}
             }
             dayPeriod{
                 stand-alone{
@@ -888,9 +886,7 @@ so{
                     wide{
                         am{"GH"}
                         pm{"GD"}
-                    }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+                    }                }
             }
             eras{
                 abbreviated{

@@ -36,11 +36,7 @@ export function renderButtonDemo(): m.Children {
         rightIcon,
         showAsGrid,
         showInlineWithText,
-<<<<<<< HEAD
-        tooltip,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        ...rest
+tooltip,        ...rest
       }) =>
         showAsGrid
           ? m(
@@ -62,41 +58,19 @@ export function renderButtonDemo(): m.Children {
                     label: variant,
                     variant,
                     intent,
-<<<<<<< HEAD
-                    tooltip: tooltip ? 'Tooltip text' : undefined,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                  });
+tooltip: tooltip ? 'Tooltip text' : undefined,                  });
                 });
               }),
             )
-<<<<<<< HEAD
-          : (() => {
-              const button = m(Button, {
-=======
-          : m('', [
-              showInlineWithText && 'Inline ',
-              m(Button, {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                icon: icon ? 'send' : undefined,
+: (() => {
+              const button = m(Button, {                icon: icon ? 'send' : undefined,
                 rightIcon: rightIcon ? 'arrow_forward' : undefined,
                 label: (label ? 'Button' : undefined) as string,
                 onclick: () => console.log('button pressed'),
-<<<<<<< HEAD
-                tooltip: tooltip ? 'Tooltip text' : undefined,
-                ...rest,
-              });
-              return showInlineWithText
-                ? m('span', 'Inline ', button, ' text')
-                : button;
-            })(),
-=======
-                ...rest,
+...rest,
               }),
               showInlineWithText && ' text',
-            ]),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      initialOpts: {
+            ]),      initialOpts: {
         label: true,
         icon: true,
         rightIcon: false,
@@ -112,11 +86,7 @@ export function renderButtonDemo(): m.Children {
         showAsGrid: false,
         showInlineWithText: false,
         rounded: false,
-<<<<<<< HEAD
-        tooltip: false,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      },
+tooltip: false,      },
     }),
 
     m('.pf-widget-doc-section', [
@@ -190,12 +160,7 @@ m(Button, {label: 'Danger', intent: Intent.Danger})`,
         ]),
         m('li', [
           m('strong', 'Button Groups: '),
-<<<<<<< HEAD
-          'Group related buttons with ButtonGroup',
-=======
-          'Group related buttons with ButtonGroup or SegmentedButtons',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        ]),
+'Group related buttons with ButtonGroup or SegmentedButtons',        ]),
       ]),
     ]),
   ];

@@ -14,12 +14,7 @@
 
 import m from 'mithril';
 import {HotkeyGlyphs} from '../../../widgets/hotkey_glyphs';
-<<<<<<< HEAD
-import type {Hotkey} from '../../../base/hotkeys';
-=======
-import {Hotkey} from '../../../base/hotkeys';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {EnumOption, renderWidgetShowcase} from '../widgets_page_utils';
+import type {Hotkey} from '../../../base/hotkeys';import {EnumOption, renderWidgetShowcase} from '../widgets_page_utils';
 
 export function renderHotkey(): m.Children {
   return [

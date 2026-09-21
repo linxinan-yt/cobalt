@@ -118,14 +118,8 @@ void U_I18N_API addSingleFactorConstant(StringPiece baseStr, int32_t power, Sign
 struct ConversionRate : public UMemory {
     const MeasureUnitImpl source;
     const MeasureUnitImpl target;
-<<<<<<< HEAD
-    FixedString specialSource;
-    FixedString specialTarget;
-=======
-    CharString specialSource;
-    CharString specialTarget;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    double factorNum = 1;
+FixedString specialSource;
+    FixedString specialTarget;    double factorNum = 1;
     double factorDen = 1;
     double sourceOffset = 0;
     double targetOffset = 0;

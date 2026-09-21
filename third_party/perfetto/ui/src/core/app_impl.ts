@@ -14,7 +14,6 @@
 
 import {AsyncLimiter} from '../base/async_limiter';
 import {defer} from '../base/deferred';
-<<<<<<< HEAD
 import {ensureExists, assertTrue} from '../base/assert';
 import {ServiceWorkerController} from '../frontend/service_worker_controller';
 import type {App, Route} from '../public/app';
@@ -31,25 +30,7 @@ import {
   type CommandInvocation,
   CommandManagerImpl,
   type Macro,
-} from './command_manager';
-=======
-import {assertExists, assertTrue} from '../base/logging';
-import {createProxy, getOrCreate} from '../base/utils';
-import {ServiceWorkerController} from '../frontend/service_worker_controller';
-import {App} from '../public/app';
-import {SqlPackage} from '../public/extra_sql_packages';
-import {FeatureFlagManager, FlagSettings} from '../public/feature_flag';
-import {PageHandler} from '../public/page';
-import {Raf} from '../public/raf';
-import {RouteArg, RouteArgs} from '../public/route_schema';
-import {Setting, SettingDescriptor, SettingsManager} from '../public/settings';
-import {TraceStream} from '../public/stream';
-import {DurationPrecision, TimestampFormat} from '../public/timeline';
-import {NewEngineMode} from '../trace_processor/engine';
-import {AnalyticsInternal, initAnalytics} from './analytics_impl';
-import {CommandInvocation, CommandManagerImpl} from './command_manager';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {featureFlags} from './feature_flags';
+} from './command_manager';import {featureFlags} from './feature_flags';
 import {loadTrace} from './load_trace';
 import {OmniboxManagerImpl} from './omnibox_manager';
 import {PageManagerImpl} from './page_manager';
@@ -120,27 +101,10 @@ export class AppImpl implements App {
   // The current active trace (if any).
   private _activeTrace: TraceImpl | undefined;
 
-<<<<<<< HEAD
-  // Extra SQL packages injected from extensions.
+// Extra SQL packages injected from extensions.
   private _sqlPackagesPromises = new Array<
     Promise<ReadonlyArray<SqlPackage>>
   >();
-=======
-  // This is normally empty and is injected with Base64-encoded protobuf
-  // descriptor sets via is_internal_user.js.
-  extraParsingDescriptors: string[] = [];
-
-  // This is normally empty and is injected with extra google-internal macros
-  // via is_internal_user.js
-  extraMacros: Record<string, CommandInvocation[]>[] = [];
-
-  // Promise which is resolved when extra loading is completed.
-  extrasLoadingDeferred = defer<undefined>();
-
-  // The currently open trace.
-  currentTrace?: TraceContext;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   // Protobuf descriptor sets as Base64-encoded strings injected from extensions.
   private _protoDescriptorsPromises = new Array<
     Promise<ReadonlyArray<string>>
@@ -226,17 +190,12 @@ export class AppImpl implements App {
     return this._isInternalUser;
   }
 
-<<<<<<< HEAD
-  setIsInternalUser(promise: Promise<boolean>) {
+setIsInternalUser(promise: Promise<boolean>) {
     promise.then((value) => {
       this._isInternalUser = value;
       localStorage.setItem('isInternalUser', value ? '1' : '0');
       raf.scheduleFullRedraw();
-=======
-  set isInternalUser(value: boolean) {
-    localStorage.setItem('isInternalUser', value ? '1' : '0');
-    this._isInternalUser = value;
-    raf.scheduleFullRedraw();
+    });
   }
 }
 
@@ -294,9 +253,7 @@ export class AppImpl implements App {
           ...pageHandler,
           pluginId,
         });
-      },
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    });
+      },    });
 
     this.settingsMgrProxy = createProxy(this.appCtx.settingsManager, {
       register<T>(setting: SettingDescriptor<T>): Setting<T> {
@@ -313,9 +270,7 @@ export class AppImpl implements App {
     return raf;
   }
 
-<<<<<<< HEAD
-=======
-  get httpRpc() {
+get httpRpc() {
     return this.appCtx.httpRpc;
   }
 
@@ -325,10 +280,7 @@ export class AppImpl implements App {
 
   get settings(): SettingsManager {
     return this.settingsMgrProxy;
-  }
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  get featureFlags(): FeatureFlagManager {
+  }  get featureFlags(): FeatureFlagManager {
     return {
       register: (settings: FlagSettings) => featureFlags.register(settings),
     };
@@ -362,10 +314,7 @@ export class AppImpl implements App {
   }
 
   private async openTrace(src: TraceSource): Promise<TraceImpl> {
-<<<<<<< HEAD
-    const result = defer<TraceImpl>();
-=======
-    if (src.type === 'ARRAY_BUFFER' && src.buffer instanceof Uint8Array) {
+if (src.type === 'ARRAY_BUFFER' && src.buffer instanceof Uint8Array) {
       // Even though the type of `buffer` is ArrayBuffer, it's possible to
       // accidentally pass a Uint8Array here, because the interface of
       // Uint8Array is compatible with ArrayBuffer. That can cause subtle bugs
@@ -382,8 +331,6 @@ export class AppImpl implements App {
         src = {...src, buffer: src.buffer.slice().buffer};
       }
     }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
     const result = defer<TraceImpl>();
 
     // Rationale for asyncLimiter: openTrace takes several seconds and involves
@@ -392,23 +339,12 @@ export class AppImpl implements App {
     // they will mess up the state of registries. So once we start, we must
     // complete trace loading (we don't bother supporting cancellations. If the
     // user is too bothered, they can reload the tab).
-<<<<<<< HEAD
-    await this.openTraceAsyncLimiter.schedule(async () => {
+await this.openTraceAsyncLimiter.schedule(async () => {
       // Wait for extras parsing descriptors to be loaded
       // via is_internal_user.js. This prevents a race condition where
       // trace loading would otherwise begin before this data is available.
       this.closeCurrentTrace();
-      this.isLoadingTrace = true;
-=======
-    await this.appCtx.openTraceAsyncLimiter.schedule(async () => {
-      // Wait for extras parsing descriptors to be loaded
-      // via is_internal_user.js. This prevents a race condition where
-      // trace loading would otherwise begin before this data is available.
-      await this.extraLoadingPromise;
-      this.appCtx.closeCurrentTrace();
-      this.appCtx.isLoadingTrace = true;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      try {
+      this.isLoadingTrace = true;      try {
         // loadTrace() in trace_loader.ts will do the following:
         // - Create a new engine.
         // - Pump the data from the TraceSource into the engine.
@@ -423,10 +359,6 @@ export class AppImpl implements App {
         // loadTrace to be finished before setting it because some internal
         // implementation details of loadTrace() rely on that trace to be current
         // to work properly (mainly the router hash uuid).
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         result.resolve(trace);
       } catch (error) {
         result.reject(error);
@@ -435,11 +367,7 @@ export class AppImpl implements App {
         raf.scheduleFullRedraw();
       }
     });
-<<<<<<< HEAD
-    return result;
-=======
-
-    return result;
+return result;
   }
 
   // Called by trace_loader.ts soon after it has created a new TraceImpl.
@@ -487,9 +415,7 @@ export class AppImpl implements App {
   // This is necessary to avoid circular dependencies between trace_impl.ts
   // and app_impl.ts.
   get __appCtxForTrace() {
-    return this.appCtx;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    return this.appCtx;  }
 
   navigate(newHash: string): void {
     Router.navigate(newHash);

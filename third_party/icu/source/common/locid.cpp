@@ -31,16 +31,10 @@
 ******************************************************************************
 */
 
-<<<<<<< HEAD
 #include <cstddef>
 #include <optional>
 #include <string_view>
-#include <type_traits>
-=======
-#include <optional>
-#include <string_view>
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include <utility>
+#include <type_traits>#include <utility>
 
 #include "unicode/bytestream.h"
 #include "unicode/locid.h"
@@ -1961,10 +1955,6 @@ Locale& Locale::init(const char* localeID, UBool canonicalize)
 /*This function initializes a Locale from a C locale ID*/
 Locale& Locale::init(StringPiece localeID, UBool canonicalize)
 {
-<<<<<<< HEAD
-=======
-    fIsBogus = false;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     /* Free our current storage */
     Nest& nest = payload.emplace<Nest>();
 
@@ -1980,26 +1970,6 @@ Locale& Locale::init(StringPiece localeID, UBool canonicalize)
         int32_t length;
         UErrorCode err;
 
-<<<<<<< HEAD
-        const auto parse = [canonicalize](std::string_view localeID,
-                                          char* name,
-                                          int32_t nameCapacity,
-                                          UErrorCode& status) {
-            return ByteSinkUtil::viaByteSinkToTerminatedChars(
-                name, nameCapacity,
-                [&](ByteSink& sink, UErrorCode& status) {
-                    if (canonicalize) {
-                        ulocimp_canonicalize(localeID, sink, status);
-                    } else {
-                        ulocimp_getName(localeID, sink, status);
-                    }
-                },
-                status);
-        };
-=======
-        /* preset all fields to empty */
-        language[0] = script[0] = country[0] = 0;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
         const auto parse = [canonicalize](std::string_view localeID,
                                           char* name,
@@ -2020,8 +1990,7 @@ Locale& Locale::init(StringPiece localeID, UBool canonicalize)
         // "canonicalize" the locale ID to ICU/Java format
         char* fullName = nest.baseName;
         err = U_ZERO_ERROR;
-<<<<<<< HEAD
-        length = parse(localeID, fullName, sizeof Nest::baseName, err);
+length = parse(localeID, fullName, sizeof Nest::baseName, err);
 
         FixedString fullNameBuffer;
         if (err == U_BUFFER_OVERFLOW_ERROR || length >= static_cast<int32_t>(sizeof Nest::baseName)) {
@@ -2029,20 +1998,7 @@ Locale& Locale::init(StringPiece localeID, UBool canonicalize)
             if (!fullNameBuffer.reserve(length + 1)) {
                 break; // error: out of memory
             }
-            fullName = fullNameBuffer.getAlias();
-=======
-        length = parse(localeID, fullName, sizeof fullNameBuffer, err);
-
-        if (err == U_BUFFER_OVERFLOW_ERROR || length >= static_cast<int32_t>(sizeof(fullNameBuffer))) {
-            U_ASSERT(baseName == nullptr);
-            /*Go to heap for the fullName if necessary*/
-            char* newFullName = static_cast<char*>(uprv_malloc(sizeof(char) * (length + 1)));
-            if (newFullName == nullptr) {
-                break; // error: out of memory
-            }
-            fullName = newFullName;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            err = U_ZERO_ERROR;
+            fullName = fullNameBuffer.getAlias();            err = U_ZERO_ERROR;
             length = parse(localeID, fullName, length + 1, err);
         }
         if(U_FAILURE(err) || err == U_STRING_NOT_TERMINATED_WARNING) {
@@ -2080,12 +2036,7 @@ Locale& Locale::init(StringPiece localeID, UBool canonicalize)
         }
         bool hasKeywords = at != nullptr && uprv_strchr(at + 1, '=') != nullptr;
 
-<<<<<<< HEAD
-        if (fieldLen[0] >= ULOC_LANG_CAPACITY)
-=======
-        if (fieldLen[0] >= static_cast<int32_t>(sizeof(language)))
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        {
+if (fieldLen[0] >= ULOC_LANG_CAPACITY)        {
             break; // error: the language field is too long
         }
 
@@ -2113,15 +2064,11 @@ Locale& Locale::init(StringPiece localeID, UBool canonicalize)
         if (fieldLen[variantField] > 0) {
             /* We have a variant */
             variantBegin = static_cast<int32_t>(field[variantField] - fullName);
-<<<<<<< HEAD
-        } else if (hasKeywords) {
+} else if (hasKeywords) {
             // The original computation of variantBegin leaves it equal to the length
             // of fullName if there is no variant.  It should instead be
             // the length of the baseName.
-            variantBegin = static_cast<int32_t>(at - fullName);
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            variantBegin = static_cast<int32_t>(at - fullName);        }
 
         if (!hasKeywords && Nest::fits(length, language, script, region)) {
             U_ASSERT(fullName == nest.baseName);
@@ -2185,47 +2132,6 @@ Locale& Locale::init(StringPiece localeID, UBool canonicalize)
     return *this;
 }
 
-<<<<<<< HEAD
-=======
-/*
- * Set up the base name.
- * If there are no key words, it's exactly the full name.
- * If key words exist, it's the full name truncated at the '@' character.
- * Need to set up both at init() and after setting a keyword.
- */
-void
-Locale::initBaseName(UErrorCode &status) {
-    if (U_FAILURE(status)) {
-        return;
-    }
-    U_ASSERT(baseName==nullptr || baseName==fullName);
-    const char *atPtr = uprv_strchr(fullName, '@');
-    const char *eqPtr = uprv_strchr(fullName, '=');
-    if (atPtr && eqPtr && atPtr < eqPtr) {
-        // Key words exist.
-        int32_t baseNameLength = static_cast<int32_t>(atPtr - fullName);
-        char* newBaseName = static_cast<char*>(uprv_malloc(baseNameLength + 1));
-        if (newBaseName == nullptr) {
-            status = U_MEMORY_ALLOCATION_ERROR;
-            return;
-        }
-        baseName = newBaseName;
-        uprv_strncpy(baseName, fullName, baseNameLength);
-        baseName[baseNameLength] = 0;
-
-        // The original computation of variantBegin leaves it equal to the length
-        // of fullName if there is no variant.  It should instead be
-        // the length of the baseName.
-        if (variantBegin > baseNameLength) {
-            variantBegin = baseNameLength;
-        }
-    } else {
-        baseName = fullName;
-    }
-}
-
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 int32_t
 Locale::hashCode() const
 {
@@ -2274,12 +2180,7 @@ Locale::addLikelySubtags(UErrorCode& status) {
         return;
     }
 
-<<<<<<< HEAD
-    CharString maximizedLocaleID = ulocimp_addLikelySubtags(getName(), status);
-=======
-    CharString maximizedLocaleID = ulocimp_addLikelySubtags(fullName, status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+CharString maximizedLocaleID = ulocimp_addLikelySubtags(getName(), status);
     if (U_FAILURE(status)) {
         if (status == U_MEMORY_ALLOCATION_ERROR) {
             setToBogus();
@@ -2303,12 +2204,7 @@ Locale::minimizeSubtags(bool favorScript, UErrorCode& status) {
         return;
     }
 
-<<<<<<< HEAD
-    CharString minimizedLocaleID = ulocimp_minimizeSubtags(getName(), favorScript, status);
-=======
-    CharString minimizedLocaleID = ulocimp_minimizeSubtags(fullName, favorScript, status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+CharString minimizedLocaleID = ulocimp_minimizeSubtags(getName(), favorScript, status);
     if (U_FAILURE(status)) {
         if (status == U_MEMORY_ALLOCATION_ERROR) {
             setToBogus();
@@ -2399,12 +2295,7 @@ Locale::toLanguageTag(ByteSink& sink, UErrorCode& status) const
         return;
     }
 
-<<<<<<< HEAD
-    ulocimp_toLanguageTag(getName(), sink, /*strict=*/false, status);
-=======
-    ulocimp_toLanguageTag(fullName, sink, /*strict=*/false, status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+ulocimp_toLanguageTag(getName(), sink, /*strict=*/false, status);}
 
 Locale U_EXPORT2
 Locale::createFromName (const char *name)
@@ -2635,15 +2526,8 @@ Locale::getLocaleCache()
 
 class KeywordEnumeration : public StringEnumeration {
 protected:
-<<<<<<< HEAD
-    FixedString keywords;
-private:
-    int32_t length;
-=======
-    CharString keywords;
-private:
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    const char *current;
+CharString keywords;
+private:    const char *current;
     static const char fgClassID;
 
 public:
@@ -2651,27 +2535,16 @@ public:
     virtual UClassID getDynamicClassID() const override { return getStaticClassID(); }
 public:
     KeywordEnumeration(const char *keys, int32_t keywordLen, int32_t currentIndex, UErrorCode &status)
-<<<<<<< HEAD
-        : keywords(), length(keywordLen), current(nullptr) {
-=======
-        : keywords(), current(keywords.data()) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        if(U_SUCCESS(status) && keywordLen != 0) {
+: keywords(), length(keywordLen), current(nullptr) {        if(U_SUCCESS(status) && keywordLen != 0) {
             if(keys == nullptr || keywordLen < 0) {
                 status = U_ILLEGAL_ARGUMENT_ERROR;
             } else {
-<<<<<<< HEAD
-                keywords = {keys, static_cast<std::string_view::size_type>(length)};
+keywords = {keys, static_cast<std::string_view::size_type>(length)};
                 if (keywords.isEmpty()) {
                     status = U_MEMORY_ALLOCATION_ERROR;
                 } else {
                     current = keywords.data() + currentIndex;
-                }
-=======
-                keywords.append(keys, keywordLen, status);
-                current = keywords.data() + currentIndex;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                }            }
         }
     }
 
@@ -2681,12 +2554,7 @@ public:
     {
         UErrorCode status = U_ZERO_ERROR;
         return new KeywordEnumeration(
-<<<<<<< HEAD
-                keywords.data(), length,
-=======
-                keywords.data(), keywords.length(),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                static_cast<int32_t>(current - keywords.data()), status);
+keywords.data(), keywords.length(),                static_cast<int32_t>(current - keywords.data()), status);
     }
 
     virtual int32_t count(UErrorCode& status) const override {
@@ -2848,12 +2716,7 @@ Locale::getKeywordValue(StringPiece keywordName, ByteSink& sink, UErrorCode& sta
         return;
     }
 
-<<<<<<< HEAD
-    ulocimp_getKeywordValue(getName(), keywordName, sink, status);
-=======
-    ulocimp_getKeywordValue(fullName, keywordName, sink, status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+ulocimp_getKeywordValue(getName(), keywordName, sink, status);}
 
 void
 Locale::getUnicodeKeywordValue(StringPiece keywordName,
@@ -2898,8 +2761,7 @@ Locale::setKeywordValue(StringPiece keywordName,
         status = U_ZERO_ERROR;
     }
 
-<<<<<<< HEAD
-    CharString localeID(getName(), -1, status);
+CharString localeID(getName(), -1, status);
     ulocimp_setKeywordValue(keywordName, keywordValue, localeID, status);
     if (U_FAILURE(status)) {
         if (status == U_MEMORY_ALLOCATION_ERROR) {
@@ -2969,55 +2831,7 @@ Locale::setKeywordValue(StringPiece keywordName,
                     return;
                 }
             }
-        }
-=======
-    int32_t length = static_cast<int32_t>(uprv_strlen(fullName));
-    int32_t capacity = fullName == fullNameBuffer ? ULOC_FULLNAME_CAPACITY : length + 1;
-
-    const char* start = locale_getKeywordsStart(fullName);
-    int32_t offset = start == nullptr ? length : start - fullName;
-
-    for (;;) {
-        // Remove -1 from the capacity so that this function can guarantee NUL termination.
-        CheckedArrayByteSink sink(fullName + offset, capacity - offset - 1);
-
-        int32_t reslen = ulocimp_setKeywordValue(
-            {fullName + offset, static_cast<std::string_view::size_type>(length - offset)},
-            keywordName,
-            keywordValue,
-            sink,
-            status);
-
-        if (status == U_BUFFER_OVERFLOW_ERROR) {
-            capacity = reslen + offset + 1;
-            char* newFullName = static_cast<char*>(uprv_malloc(capacity));
-            if (newFullName == nullptr) {
-                status = U_MEMORY_ALLOCATION_ERROR;
-                return;
-            }
-            uprv_memcpy(newFullName, fullName, length + 1);
-            if (fullName != fullNameBuffer) {
-                if (baseName == fullName) {
-                    baseName = newFullName; // baseName should not point to freed memory.
-                }
-                // if fullName is already on the heap, need to free it.
-                uprv_free(fullName);
-            }
-            fullName = newFullName;
-            status = U_ZERO_ERROR;
-            continue;
-        }
-
-        if (U_FAILURE(status)) { return; }
-        u_terminateChars(fullName, capacity, reslen + offset, &status);
-        break;
-    }
-
-    if (baseName == fullName) {
-        // May have added the first keyword, meaning that the fullName is no longer also the baseName.
-        initBaseName(status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }
 
 void

@@ -118,9 +118,7 @@ DrainableIOBuffer::~DrainableIOBuffer() {
 GrowableIOBuffer::GrowableIOBuffer() = default;
 
 void GrowableIOBuffer::SetCapacity(int capacity) {
-<<<<<<< HEAD
-=======
-  CHECK_GE(capacity, 0);
+CHECK_GE(capacity, 0);
 
 // Calling reallocate with size 0 and a non-null pointer causes memory leaks
 // on many platforms, since it may return nullptr while also not deallocating
@@ -133,10 +131,7 @@ void GrowableIOBuffer::SetCapacity(int capacity) {
     offset_ = 0;
     return;
   }
-#endif
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  // The span will be set again in `set_offset()`. Need to clear raw pointers to
+#endif  // The span will be set again in `set_offset()`. Need to clear raw pointers to
   // the data before reallocating the buffer.
   ClearSpan();
 

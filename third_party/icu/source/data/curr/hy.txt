@@ -704,26 +704,15 @@ hy{
             one{"գանայական սեդի"}
             other{"գանայական սեդի"}
         }
-<<<<<<< HEAD
-        XCG{
+XCG{
             one{"կարիբյան գուլդեն"}
-            other{"կարիբյան գուլդեն"}
-=======
-        THB{
-            one{"թաիլանդական բահտ"}
-            other{"թաիլանդական բահտ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            other{"կարիբյան գուլդեն"}        }
         XXX{
             one{"(անհայտ արժույթ)"}
             other{"(անհայտ արժույթ)"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             one{"Զիմբաբվեի ոսկի"}
             other{"Զիմբաբվեի ոսկի"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

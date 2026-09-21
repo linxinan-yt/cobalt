@@ -130,18 +130,10 @@ pb_msg!(BeginImplFrameArgs {
     state: BeginImplFrameArgsState, enum, 3,
     current_args: BeginFrameArgs, msg, 4,
     last_args: BeginFrameArgs, msg, 5,
-<<<<<<< HEAD
-    timestamps_in_us: BeginImplFrameArgsTimestampsInUs, msg, 6,
+timestamps_in_us: BeginImplFrameArgsTimestampsInUs, msg, 6,
 });
 
-pb_msg!(BeginImplFrameArgsTimestampsInUs {
-=======
-    timestamps_in_us: TimestampsInUs, msg, 6,
-});
-
-pb_msg!(TimestampsInUs {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    interval_delta: i64, primitive, 1,
+pb_msg!(BeginImplFrameArgsTimestampsInUs {    interval_delta: i64, primitive, 1,
     now_to_deadline_delta: i64, primitive, 2,
     frame_time_to_now_delta: i64, primitive, 3,
     frame_time_to_deadline_delta: i64, primitive, 4,
@@ -165,20 +157,11 @@ pb_msg!(BeginFrameArgs {
 });
 
 pb_msg!(ChromeCompositorStateMachine {
-<<<<<<< HEAD
-    major_state: ChromeCompositorStateMachineMajorState, msg, 1,
+major_state: ChromeCompositorStateMachineMajorState, msg, 1,
     minor_state: ChromeCompositorStateMachineMinorState, msg, 2,
 });
 
-pb_msg!(ChromeCompositorStateMachineMinorState {
-=======
-    major_state: MajorState, msg, 1,
-    minor_state: MinorState, msg, 2,
-});
-
-pb_msg!(MinorState {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    commit_count: i32, primitive, 1,
+pb_msg!(ChromeCompositorStateMachineMinorState {    commit_count: i32, primitive, 1,
     current_frame_number: i32, primitive, 2,
     last_frame_number_submit_performed: i32, primitive, 3,
     last_frame_number_draw_performed: i32, primitive, 4,
@@ -225,12 +208,7 @@ pb_msg!(MinorState {
     processing_paint_worklets_for_pending_tree: bool, primitive, 46,
 });
 
-<<<<<<< HEAD
-pb_msg!(ChromeCompositorStateMachineMajorState {
-=======
-pb_msg!(MajorState {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    next_action: ChromeCompositorSchedulerAction, enum, 1,
+pb_msg!(MajorState {    next_action: ChromeCompositorSchedulerAction, enum, 1,
     begin_impl_frame_state: MajorStateBeginImplFrameState, enum, 2,
     begin_main_frame_state: MajorStateBeginMainFrameState, enum, 3,
     layer_tree_frame_sink_state: MajorStateLayerTreeFrameSinkState, enum, 4,

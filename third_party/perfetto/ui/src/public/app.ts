@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-<<<<<<< HEAD
 import type {Analytics} from './analytics';
 import type {CommandManager} from './commands';
 import type {FeatureFlagManager} from './feature_flag';
@@ -37,21 +36,6 @@ export interface Route {
   fragment: string;
   args: RouteArgs;
 }
-=======
-import {RouteArg, RouteArgs} from './route_schema';
-import {CommandManager} from './command';
-import {OmniboxManager} from './omnibox';
-import {SidebarManager} from './sidebar';
-import {Analytics} from './analytics';
-import {PluginManager} from './plugin';
-import {Trace} from './trace';
-import {PageManager} from './page';
-import {FeatureFlagManager} from './feature_flag';
-import {Raf} from './raf';
-import {SettingsManager} from './settings';
-import {TraceStream} from './stream';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 /**
  * The API endpoint to interact programmatically with the UI before a trace has
  * been loaded. This is passed to plugins' OnActivate().
@@ -107,15 +91,10 @@ export interface App {
    */
   navigate(newHash: string): void;
 
-<<<<<<< HEAD
-  /**
+/**
    * Returns the route/page we're on.
    */
-  getCurrentRoute(): Route;
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  openTraceFromFile(file: File): Promise<Trace>;
+  getCurrentRoute(): Route;  openTraceFromFile(file: File): Promise<Trace>;
   openTraceFromUrl(url: string): Promise<Trace>;
   openTraceFromStream(stream: TraceStream): Promise<Trace>;
   openTraceFromBuffer(args: {

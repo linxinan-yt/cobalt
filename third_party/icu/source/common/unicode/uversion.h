@@ -125,10 +125,6 @@ typedef uint8_t UVersionInfo[U_MAX_VERSION_LENGTH];
         U_NAMESPACE_USE
 #   endif
 
-<<<<<<< HEAD
-=======
-#ifndef U_FORCE_HIDE_DRAFT_API
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 /**
  * \def U_HEADER_NESTED_NAMESPACE
  * Nested namespace used inside U_ICU_NAMESPACE for header-only APIs.
@@ -139,12 +135,7 @@ typedef uint8_t UVersionInfo[U_MAX_VERSION_LENGTH];
  * this is always "header". Header-only types are not marked for export,
  * which on Windows already avoids callers linking with library instantiations.
  *
-<<<<<<< HEAD
- * @stable ICU 76
-=======
- * @draft ICU 76
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
- * @see U_HEADER_ONLY_NAMESPACE
+* @stable ICU 76 * @see U_HEADER_ONLY_NAMESPACE
  */
 
 /**
@@ -154,17 +145,10 @@ typedef uint8_t UVersionInfo[U_MAX_VERSION_LENGTH];
  * "U_ICU_NAMESPACE::header" or "U_ICU_NAMESPACE::internal",
  * see U_HEADER_NESTED_NAMESPACE for details.
  *
-<<<<<<< HEAD
- * @stable ICU 76
+* @stable ICU 76
  */
 
-#ifndef U_FORCE_HIDE_DRAFT_API
-=======
- * @draft ICU 76
- */
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-/**
+#ifndef U_FORCE_HIDE_DRAFT_API/**
  * \def U_ICU_NAMESPACE_OR_INTERNAL
  * Namespace used for header-only APIs that used to be regular C++ APIs.
  * Different when used inside ICU to prevent public use of internal instantiations.
@@ -173,7 +157,6 @@ typedef uint8_t UVersionInfo[U_MAX_VERSION_LENGTH];
  *
  * @draft ICU 77
  */
-<<<<<<< HEAD
 #endif  // U_FORCE_HIDE_DRAFT_API
 
 // The first test is the same as for defining U_EXPORT for Windows.
@@ -192,19 +175,9 @@ typedef uint8_t UVersionInfo[U_MAX_VERSION_LENGTH];
 #   define U_HEADER_NESTED_NAMESPACE header
 #   define U_ICU_NAMESPACE_OR_INTERNAL U_ICU_NAMESPACE
 #endif
-=======
-
-#define U_HEADER_NESTED_NAMESPACE header
-#define U_ICU_NAMESPACE_OR_INTERNAL U_ICU_NAMESPACE
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 #define U_HEADER_ONLY_NAMESPACE U_ICU_NAMESPACE::U_HEADER_NESTED_NAMESPACE
 
 namespace U_HEADER_ONLY_NAMESPACE {}
-<<<<<<< HEAD
-=======
-#endif  // U_FORCE_HIDE_DRAFT_API
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 #endif /* __cplusplus */
 

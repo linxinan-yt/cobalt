@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-<<<<<<< HEAD
 import("../../gn/perfetto.gni")
 
 # Makes the public ABI headers annotate symbols for shared library usage
@@ -33,19 +32,11 @@ config("shlib_impl_config") {
 }
 
 source_set("for_testing") {
-  configs += [ ":shlib_impl_config" ]
-=======
-source_set("for_testing") {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  deps = [
+  configs += [ ":shlib_impl_config" ]  deps = [
     "../../gn:default_deps",
     "../../include/perfetto/public",
   ]
   sources = [ "reset_for_testing.h" ]
-<<<<<<< HEAD
-=======
-  defines = [ "PERFETTO_SHLIB_SDK_IMPLEMENTATION" ]
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 source_set("shared_lib") {
@@ -87,8 +78,6 @@ shared_library("libperfetto_c") {
   public_configs = [ ":shlib_config" ]
   public_deps = [ "../../include/perfetto/public" ]
 }
-<<<<<<< HEAD
-
 # This is only used by the Bazel build (see //BUILD), where it gets mapped to a
 # cc_library exposing the C public headers without linking the implementation.
 # We skip it in other configurations because an empty static_library has no
@@ -98,5 +87,3 @@ if (is_perfetto_build_generator) {
     public_deps = [ "../../include/perfetto/public" ]
   }
 }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

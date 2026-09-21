@@ -1228,11 +1228,7 @@ id{
         YUD{
             other{"Dinar Keras Yugoslavia"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             other{"emas Zimbabwe"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

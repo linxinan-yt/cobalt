@@ -17,12 +17,6 @@ ceb{
         }
         "Europe:London"{
             ld{"British Summer Time"}
-<<<<<<< HEAD
-=======
-        }
-        "Pacific:Enderbury"{
-            ec{"Enderbury"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "meta:Afghanistan"{
             ls{"Oras sa Afghanistan"}
@@ -34,36 +28,21 @@ ceb{
             ls{"Oras sa East Africa"}
         }
         "meta:Africa_Southern"{
-<<<<<<< HEAD
-            ls{"South Africa Standard Time"}
-        }
-        "meta:Africa_Western"{
-            ls{"Oras sa West Africa"}
-=======
-            ls{"Standard nga Oras sa South Africa"}
+ls{"Standard nga Oras sa South Africa"}
         }
         "meta:Africa_Western"{
             ld{"Oras sa Ting-init sa West Africa"}
             lg{"Oras sa West Africa"}
-            ls{"Standard nga Oras sa West Africa"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa West Africa"}        }
         "meta:Alaska"{
             ld{"Daylight nga Oras sa Alaska"}
             lg{"Oras sa Alaska"}
             ls{"Standard nga Oras sa Alaska"}
         }
         "meta:Amazon"{
-<<<<<<< HEAD
-            ld{"Amazon Summer Time"}
+ld{"Oras sa Ting-init sa Amazon"}
             lg{"Oras sa Amazon"}
-            ls{"Amazon Standard Time"}
-=======
-            ld{"Oras sa Ting-init sa Amazon"}
-            lg{"Oras sa Amazon"}
-            ls{"Standard nga Oras sa Amazon"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Amazon"}        }
         "meta:America_Central"{
             ld{"Central Daylight Time"}
             lg{"Central Time"}
@@ -85,32 +64,7 @@ ceb{
             ls{"Standard nga Oras sa Pasipiko"}
         }
         "meta:Apia"{
-<<<<<<< HEAD
-            ld{"Samoa Daylight Time"}
-            lg{"Oras sa Apia"}
-            ls{"Samoa Standard Time"}
-        }
-        "meta:Arabian"{
-            ld{"Arabian Daylight Time"}
-            lg{"Oras sa Arabia"}
-            ls{"Arabian Standard Time"}
-        }
-        "meta:Argentina"{
-            ld{"Argentina Summer Time"}
-            lg{"Oras sa Argentina"}
-            ls{"Argentina Standard Time"}
-        }
-        "meta:Argentina_Western"{
-            ld{"Western Argentina Summer Time"}
-            lg{"Oras sa Western Argentina"}
-            ls{"Western Argentina Standard Time"}
-        }
-        "meta:Armenia"{
-            ld{"Armenia Summer Time"}
-            lg{"Oras sa Armenia"}
-            ls{"Armenia Standard Time"}
-=======
-            ld{"Daylight nga Oras sa Apia"}
+ld{"Daylight nga Oras sa Apia"}
             lg{"Oras sa Apia"}
             ls{"Standard nga Oras sa Apia"}
         }
@@ -132,51 +86,14 @@ ceb{
         "meta:Armenia"{
             ld{"Oras sa Ting-init sa Armenia"}
             lg{"Oras sa Armenia"}
-            ls{"Standard nga Oras sa Armenia"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Armenia"}        }
         "meta:Atlantic"{
             ld{"Daylight nga Oras sa Atlantic"}
             lg{"Oras sa Atlantic"}
             ls{"Standard nga Oras sa Atlantic"}
         }
         "meta:Australia_Central"{
-<<<<<<< HEAD
-            ld{"Australian Central Daylight Time"}
-            lg{"Oras sa Central Australia"}
-            ls{"Australian Central Standard Time"}
-        }
-        "meta:Australia_CentralWestern"{
-            ld{"Australian Central Western Daylight Time"}
-            lg{"Oras sa Central Western Australia"}
-            ls{"Australian Central Western Standard Time"}
-        }
-        "meta:Australia_Eastern"{
-            ld{"Australian Eastern Daylight Time"}
-            lg{"Oras sa Eastern Australia"}
-            ls{"Australian Eastern Standard Time"}
-        }
-        "meta:Australia_Western"{
-            ld{"Australian Western Daylight Time"}
-            lg{"Oras sa Western Australia"}
-            ls{"Australian Western Standard Time"}
-        }
-        "meta:Azerbaijan"{
-            ld{"Azerbaijan Summer Time"}
-            lg{"Oras sa Azerbaijan"}
-            ls{"Azerbaijan Standard Time"}
-        }
-        "meta:Azores"{
-            ld{"Azores Summer Time"}
-            lg{"Oras sa Azores"}
-            ls{"Azores Standard Time"}
-        }
-        "meta:Bangladesh"{
-            ld{"Bangladesh Summer Time"}
-            lg{"Oras sa Bangladesh"}
-            ls{"Bangladesh Standard Time"}
-=======
-            ld{"Daylight nga Oras sa Central Australia"}
+ld{"Daylight nga Oras sa Central Australia"}
             lg{"Oras sa Central Australia"}
             ls{"Standard nga Oras sa Central Australia"}
         }
@@ -208,9 +125,7 @@ ceb{
         "meta:Bangladesh"{
             ld{"Oras sa Ting-init sa Bangladesh"}
             lg{"Oras sa Bangladesh"}
-            ls{"Standard nga Oras sa Bangladesh"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Bangladesh"}        }
         "meta:Bhutan"{
             ls{"Oras sa Bhutan"}
         }
@@ -218,44 +133,14 @@ ceb{
             ls{"Oras sa Bolivia"}
         }
         "meta:Brasilia"{
-<<<<<<< HEAD
-            ld{"Brasilia Summer Time"}
+ld{"Oras sa Ting-init sa Brasilia"}
             lg{"Oras sa Brasilia"}
-            ls{"Brasilia Standard Time"}
-=======
-            ld{"Oras sa Ting-init sa Brasilia"}
-            lg{"Oras sa Brasilia"}
-            ls{"Standard nga Oras sa Brasilia"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Brasilia"}        }
         "meta:Brunei"{
             ls{"Oras sa Brunei Darussalam"}
         }
         "meta:Cape_Verde"{
-<<<<<<< HEAD
-            ld{"Cape Verde Summer Time"}
-            lg{"Oras sa Cape Verde"}
-            ls{"Cape Verde Standard Time"}
-        }
-        "meta:Chamorro"{
-            ls{"Chamorro Standard Time"}
-        }
-        "meta:Chatham"{
-            ld{"Chatham Daylight Time"}
-            lg{"Oras sa Chatham"}
-            ls{"Chatham Standard Time"}
-        }
-        "meta:Chile"{
-            ld{"Chile Summer Time"}
-            lg{"Oras sa Chile"}
-            ls{"Chile Standard Time"}
-        }
-        "meta:China"{
-            ld{"China Daylight Time"}
-            lg{"Oras sa China"}
-            ls{"China Standard Time"}
-=======
-            ld{"Oras sa Ting-init sa Cape Verde"}
+ld{"Oras sa Ting-init sa Cape Verde"}
             lg{"Oras sa Cape Verde"}
             ls{"Standard nga Oras sa Cape Verde"}
         }
@@ -275,9 +160,7 @@ ceb{
         "meta:China"{
             ld{"Daylight nga Oras sa China"}
             lg{"Oras sa China"}
-            ls{"Standard nga Oras sa China"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa China"}        }
         "meta:Christmas"{
             ls{"Oras sa Christmas Island"}
         }
@@ -285,22 +168,7 @@ ceb{
             ls{"Oras sa Cocos Islands"}
         }
         "meta:Colombia"{
-<<<<<<< HEAD
-            ld{"Colombia Summer Time"}
-            lg{"Oras sa Colombia"}
-            ls{"Colombia Standard Time"}
-        }
-        "meta:Cook"{
-            ld{"Cook Islands Summer Time"}
-            lg{"Oras sa Cook Islands"}
-            ls{"Cook Islands Standard Time"}
-        }
-        "meta:Cuba"{
-            ld{"Cuba Daylight Time"}
-            lg{"Oras sa Cuba"}
-            ls{"Cuba Standard Time"}
-=======
-            ld{"Oras sa Ting-init sa Colombia"}
+ld{"Oras sa Ting-init sa Colombia"}
             lg{"Oras sa Colombia"}
             ls{"Standard nga Oras sa Colombia"}
         }
@@ -312,9 +180,7 @@ ceb{
         "meta:Cuba"{
             ld{"Daylight nga Oras sa Cuba"}
             lg{"Oras sa Cuba"}
-            ls{"Standard nga Oras sa Cuba"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Cuba"}        }
         "meta:Davis"{
             ls{"Oras sa Davis"}
         }
@@ -325,60 +191,26 @@ ceb{
             ls{"Oras sa East Timor"}
         }
         "meta:Easter"{
-<<<<<<< HEAD
-            ld{"Easter Island Summer Time"}
+ld{"Oras sa Ting-init sa Easter Island"}
             lg{"Oras sa Easter Island"}
-            ls{"Easter Island Standard Time"}
-=======
-            ld{"Oras sa Ting-init sa Easter Island"}
-            lg{"Oras sa Easter Island"}
-            ls{"Standard nga Oras sa Easter Island"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Easter Island"}        }
         "meta:Ecuador"{
             ls{"Oras sa Ecuador"}
         }
         "meta:Europe_Central"{
-<<<<<<< HEAD
-            ld{"Central European Summer Time"}
-            lg{"Oras sa Central Europe"}
-            ls{"Central European Standard Time"}
-        }
-        "meta:Europe_Eastern"{
-            ld{"Eastern European Summer Time"}
-            lg{"Oras sa Eastern Europe"}
-            ls{"Eastern European Standard Time"}
-=======
-            ld{"Oras sa Ting-init sa Central Europe"}
+ld{"Oras sa Ting-init sa Central Europe"}
             lg{"Oras sa Central Europe"}
             ls{"Standard nga Oras sa Central Europe"}
         }
         "meta:Europe_Eastern"{
             ld{"Oras sa Ting-init sa Eastern Europe"}
             lg{"Oras sa Eastern Europe"}
-            ls{"Standard nga Oras sa Eastern Europe"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Eastern Europe"}        }
         "meta:Europe_Further_Eastern"{
             ls{"Oras sa Further-eastern Europe"}
         }
         "meta:Europe_Western"{
-<<<<<<< HEAD
-            ld{"Western European Summer Time"}
-            lg{"Oras sa Western Europe"}
-            ls{"Western European Standard Time"}
-        }
-        "meta:Falkland"{
-            ld{"Falkland Islands Summer Time"}
-            lg{"Oras sa Falkland Islands"}
-            ls{"Falkland Islands Standard Time"}
-        }
-        "meta:Fiji"{
-            ld{"Fiji Summer Time"}
-            lg{"Oras sa Fiji"}
-            ls{"Fiji Standard Time"}
-=======
-            ld{"Oras sa Ting-init sa Western Europe"}
+ld{"Oras sa Ting-init sa Western Europe"}
             lg{"Oras sa Western Europe"}
             ls{"Standard nga Oras sa Western Europe"}
         }
@@ -390,9 +222,7 @@ ceb{
         "meta:Fiji"{
             ld{"Oras sa Ting-init sa Fiji"}
             lg{"Oras sa Fiji"}
-            ls{"Standard nga Oras sa Fiji"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Fiji"}        }
         "meta:French_Guiana"{
             ls{"Oras sa French Guiana"}
         }
@@ -409,34 +239,14 @@ ceb{
             ls{"Oras sa Gambier"}
         }
         "meta:Georgia"{
-<<<<<<< HEAD
-            ld{"Georgia Summer Time"}
+ld{"Oras sa Ting-init sa Georgia"}
             lg{"Oras sa Georgia"}
-            ls{"Georgia Standard Time"}
-=======
-            ld{"Oras sa Ting-init sa Georgia"}
-            lg{"Oras sa Georgia"}
-            ls{"Standard nga Oras sa Georgia"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Georgia"}        }
         "meta:Gilbert_Islands"{
             ls{"Oras sa Gilbert Islands"}
         }
         "meta:Greenland_Eastern"{
-<<<<<<< HEAD
-            ld{"East Greenland Summer Time"}
-            lg{"Oras sa East Greenland"}
-            ls{"East Greenland Standard Time"}
-        }
-        "meta:Greenland_Western"{
-            ld{"West Greenland Summer Time"}
-            lg{"Oras sa West Greenland"}
-            ls{"West Greenland Standard Time"}
-        }
-        "meta:Gulf"{
-            ls{"Gulf Standard Time"}
-=======
-            ld{"Oras sa Ting-init sa East Greenland"}
+ld{"Oras sa Ting-init sa East Greenland"}
             lg{"Oras sa East Greenland"}
             ls{"Standard nga Oras sa East Greenland"}
         }
@@ -446,9 +256,7 @@ ceb{
             ls{"Standard nga Oras sa West Greenland"}
         }
         "meta:Gulf"{
-            ls{"Standard nga Oras sa Gulf"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Gulf"}        }
         "meta:Guyana"{
             ls{"Oras sa Guyana"}
         }
@@ -456,25 +264,7 @@ ceb{
             ls{"Hawaii-Aleutian Standard Time"}
         }
         "meta:Hawaii_Aleutian"{
-<<<<<<< HEAD
-            ld{"Hawaii-Aleutian Daylight Time"}
-            lg{"Oras sa Hawaii-Aleutian"}
-            ls{"Hawaii-Aleutian Standard Time"}
-        }
-        "meta:Hong_Kong"{
-            ld{"Hong Kong Summer Time"}
-            lg{"Oras sa Hong Kong"}
-            ls{"Hong Kong Standard Time"}
-        }
-        "meta:Hovd"{
-            ld{"Khovd Summer Time"}
-            lg{"Oras sa Hovd"}
-            ls{"Khovd Standard Time"}
-        }
-        "meta:India"{
-            ls{"India Standard Time"}
-=======
-            ld{"Daylight nga Oras sa Hawaii-Aleutian"}
+ld{"Daylight nga Oras sa Hawaii-Aleutian"}
             lg{"Oras sa Hawaii-Aleutian"}
             ls{"Standard nga Oras sa Hawaii-Aleutian"}
         }
@@ -489,9 +279,7 @@ ceb{
             ls{"Standard nga Oras sa Hovd"}
         }
         "meta:India"{
-            ls{"Standard nga Oras sa India"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa India"}        }
         "meta:Indian_Ocean"{
             ls{"Oras sa Indian Ocean"}
         }
@@ -508,27 +296,7 @@ ceb{
             ls{"Oras sa Western Indonesia"}
         }
         "meta:Iran"{
-<<<<<<< HEAD
-            ld{"Iran Daylight Time"}
-            lg{"Oras sa Iran"}
-            ls{"Iran Standard Time"}
-        }
-        "meta:Irkutsk"{
-            ld{"Irkutsk Summer Time"}
-            lg{"Oras sa Irkutsk"}
-            ls{"Irkutsk Standard Time"}
-        }
-        "meta:Israel"{
-            ld{"Israel Daylight Time"}
-            lg{"Oras sa Israel"}
-            ls{"Israel Standard Time"}
-        }
-        "meta:Japan"{
-            ld{"Japan Daylight Time"}
-            lg{"Oras sa Japan"}
-            ls{"Japan Standard Time"}
-=======
-            ld{"Daylight nga Oras sa Iran"}
+ld{"Daylight nga Oras sa Iran"}
             lg{"Oras sa Iran"}
             ls{"Standard nga Oras sa Iran"}
         }
@@ -545,9 +313,7 @@ ceb{
         "meta:Japan"{
             ld{"Daylight nga Oras sa Japan"}
             lg{"Oras sa Japan"}
-            ls{"Standard nga Oras sa Japan"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Japan"}        }
         "meta:Kazakhstan"{
             ls{"Oras sa Kazakhstan"}
         }
@@ -558,30 +324,16 @@ ceb{
             ls{"Oras sa West Kazakhstan"}
         }
         "meta:Korea"{
-<<<<<<< HEAD
-            ld{"Korean Daylight Time"}
+ld{"Daylight nga Oras sa Korea"}
             lg{"Oras sa Korea"}
-            ls{"Korean Standard Time"}
-=======
-            ld{"Daylight nga Oras sa Korea"}
-            lg{"Oras sa Korea"}
-            ls{"Standard nga Oras sa Korea"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Korea"}        }
         "meta:Kosrae"{
             ls{"Oras sa Kosrae"}
         }
         "meta:Krasnoyarsk"{
-<<<<<<< HEAD
-            ld{"Krasnoyarsk Summer Time"}
+ld{"Oras sa Ting-init sa Krasnoyarsk"}
             lg{"Oras sa Krasnoyarsk"}
-            ls{"Krasnoyarsk Standard Time"}
-=======
-            ld{"Oras sa Ting-init sa Krasnoyarsk"}
-            lg{"Oras sa Krasnoyarsk"}
-            ls{"Standard nga Oras sa Krasnoyarsk"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Krasnoyarsk"}        }
         "meta:Kyrgystan"{
             ls{"Oras sa Kyrgyzstan"}
         }
@@ -589,26 +341,14 @@ ceb{
             ls{"Oras sa Line Islands"}
         }
         "meta:Lord_Howe"{
-<<<<<<< HEAD
-            ld{"Lord Howe Daylight Time"}
-            lg{"Oras sa Lord Howe"}
-            ls{"Lord Howe Standard Time"}
-        }
-        "meta:Magadan"{
-            ld{"Magadan Summer Time"}
-            lg{"Oras sa Magadan"}
-            ls{"Magadan Standard Time"}
-=======
-            ld{"Daylight nga Oras sa Lord Howe"}
+ld{"Daylight nga Oras sa Lord Howe"}
             lg{"Oras sa Lord Howe"}
             ls{"Standard nga Oras sa Lord Howe"}
         }
         "meta:Magadan"{
             ld{"Oras sa Ting-init sa Magadan"}
             lg{"Oras sa Magadan"}
-            ls{"Standard nga Oras sa Magadan"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Magadan"}        }
         "meta:Malaysia"{
             ls{"Oras sa Malaysia"}
         }
@@ -622,36 +362,14 @@ ceb{
             ls{"Oras sa Marshall Islands"}
         }
         "meta:Mauritius"{
-<<<<<<< HEAD
-            ld{"Mauritius Summer Time"}
+ld{"Oras sa Ting-init sa Mauritius"}
             lg{"Oras sa Mauritius"}
-            ls{"Mauritius Standard Time"}
-=======
-            ld{"Oras sa Ting-init sa Mauritius"}
-            lg{"Oras sa Mauritius"}
-            ls{"Standard nga Oras sa Mauritius"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Mauritius"}        }
         "meta:Mawson"{
             ls{"Oras sa Mawson"}
         }
         "meta:Mexico_Pacific"{
-<<<<<<< HEAD
-            ld{"Mexican Pacific Daylight Time"}
-            lg{"Oras sa Mexican Pacific"}
-            ls{"Mexican Pacific Standard Time"}
-        }
-        "meta:Mongolia"{
-            ld{"Ulaanbaatar Summer Time"}
-            lg{"Oras sa Ulaanbaatar"}
-            ls{"Ulaanbaatar Standard Time"}
-        }
-        "meta:Moscow"{
-            ld{"Moscow Summer Time"}
-            lg{"Oras sa Moscow"}
-            ls{"Moscow Standard Time"}
-=======
-            ld{"Daylight nga Oras sa Mexican Pacific"}
+ld{"Daylight nga Oras sa Mexican Pacific"}
             lg{"Oras sa Mexican Pacific"}
             ls{"Standard nga Oras sa Mexican Pacific"}
         }
@@ -663,9 +381,7 @@ ceb{
         "meta:Moscow"{
             ld{"Oras sa Ting-init sa Moscow"}
             lg{"Oras sa Moscow"}
-            ls{"Standard nga Oras sa Moscow"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Moscow"}        }
         "meta:Myanmar"{
             ls{"Oras sa Myanmar"}
         }
@@ -676,22 +392,7 @@ ceb{
             ls{"Oras sa Nepal"}
         }
         "meta:New_Caledonia"{
-<<<<<<< HEAD
-            ld{"New Caledonia Summer Time"}
-            lg{"Oras sa New Caledonia"}
-            ls{"New Caledonia Standard Time"}
-        }
-        "meta:New_Zealand"{
-            ld{"New Zealand Daylight Time"}
-            lg{"Oras sa New Zealand"}
-            ls{"New Zealand Standard Time"}
-        }
-        "meta:Newfoundland"{
-            ld{"Newfoundland Daylight Time"}
-            lg{"Oras sa Newfoundland"}
-            ls{"Newfoundland Standard Time"}
-=======
-            ld{"Oras sa Ting-init sa New Caledonia"}
+ld{"Oras sa Ting-init sa New Caledonia"}
             lg{"Oras sa New Caledonia"}
             ls{"Standard nga Oras sa New Caledonia"}
         }
@@ -703,39 +404,12 @@ ceb{
         "meta:Newfoundland"{
             ld{"Daylight nga Oras sa Newfoundland"}
             lg{"Oras sa Newfoundland"}
-            ls{"Standard nga Oras sa Newfoundland"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Newfoundland"}        }
         "meta:Niue"{
             ls{"Oras sa Niue"}
         }
         "meta:Norfolk"{
-<<<<<<< HEAD
-            ld{"Norfolk Island Daylight Time"}
-            lg{"Oras sa Norfolk Island"}
-            ls{"Norfolk Island Standard Time"}
-        }
-        "meta:Noronha"{
-            ld{"Fernando de Noronha Summer Time"}
-            lg{"Oras sa Fernando de Noronha"}
-            ls{"Fernando de Noronha Standard Time"}
-        }
-        "meta:Novosibirsk"{
-            ld{"Novosibirsk Summer Time"}
-            lg{"Oras sa Novosibirsk"}
-            ls{"Novosibirsk Standard Time"}
-        }
-        "meta:Omsk"{
-            ld{"Omsk Summer Time"}
-            lg{"Oras sa Omsk"}
-            ls{"Omsk Standard Time"}
-        }
-        "meta:Pakistan"{
-            ld{"Pakistan Summer Time"}
-            lg{"Oras sa Pakistan"}
-            ls{"Pakistan Standard Time"}
-=======
-            ld{"Daylight nga Oras sa Norfolk Island"}
+ld{"Daylight nga Oras sa Norfolk Island"}
             lg{"Oras sa Norfolk Island"}
             ls{"Standard nga Oras sa Norfolk Island"}
         }
@@ -757,9 +431,7 @@ ceb{
         "meta:Pakistan"{
             ld{"Oras sa Ting-init sa Pakistan"}
             lg{"Oras sa Pakistan"}
-            ls{"Standard nga Oras sa Pakistan"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Pakistan"}        }
         "meta:Palau"{
             ls{"Oras sa Palau"}
         }
@@ -767,22 +439,7 @@ ceb{
             ls{"Oras sa Papua New Guinea"}
         }
         "meta:Paraguay"{
-<<<<<<< HEAD
-            ld{"Paraguay Summer Time"}
-            lg{"Oras sa Paraguay"}
-            ls{"Paraguay Standard Time"}
-        }
-        "meta:Peru"{
-            ld{"Peru Summer Time"}
-            lg{"Oras sa Peru"}
-            ls{"Peru Standard Time"}
-        }
-        "meta:Philippines"{
-            ld{"Philippine Summer Time"}
-            lg{"Oras sa Pilipinas"}
-            ls{"Philippine Standard Time"}
-=======
-            ld{"Oras sa Ting-init sa Paraguay"}
+ld{"Oras sa Ting-init sa Paraguay"}
             lg{"Oras sa Paraguay"}
             ls{"Standard nga Oras sa Paraguay"}
         }
@@ -794,23 +451,14 @@ ceb{
         "meta:Philippines"{
             ld{"Oras sa Ting-init sa Pilipinas"}
             lg{"Oras sa Pilipinas"}
-            ls{"Standard nga Oras sa Pilipinas"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Pilipinas"}        }
         "meta:Phoenix_Islands"{
             ls{"Oras sa Phoenix Islands"}
         }
         "meta:Pierre_Miquelon"{
-<<<<<<< HEAD
-            ld{"St. Pierre & Miquelon Daylight Time"}
+ld{"Daylight nga Oras sa St. Pierre & Miquelon"}
             lg{"Oras sa St. Pierre & Miquelon"}
-            ls{"St. Pierre & Miquelon Standard Time"}
-=======
-            ld{"Daylight nga Oras sa St. Pierre & Miquelon"}
-            lg{"Oras sa St. Pierre & Miquelon"}
-            ls{"Standard nga Oras sa St. Pierre & Miquelon"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa St. Pierre & Miquelon"}        }
         "meta:Pitcairn"{
             ls{"Oras sa Pitcairn"}
         }
@@ -827,36 +475,19 @@ ceb{
             ls{"Oras sa Rothera"}
         }
         "meta:Sakhalin"{
-<<<<<<< HEAD
-            ld{"Sakhalin Summer Time"}
-            lg{"Oras sa Sakhalin"}
-            ls{"Sakhalin Standard Time"}
-        }
-        "meta:Samoa"{
-            ld{"American Samoa Daylight Time"}
-            lg{"Oras sa Samoa"}
-            ls{"American Samoa Standard Time"}
-=======
-            ld{"Oras sa Ting-init sa Sakhalin"}
+ld{"Oras sa Ting-init sa Sakhalin"}
             lg{"Oras sa Sakhalin"}
             ls{"Standard nga Oras sa Sakhalin"}
         }
         "meta:Samoa"{
             ld{"Daylight nga Oras sa Samoa"}
             lg{"Oras sa Samoa"}
-            ls{"Standard nga Oras sa Samoa"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Samoa"}        }
         "meta:Seychelles"{
             ls{"Oras sa Seychelles"}
         }
         "meta:Singapore"{
-<<<<<<< HEAD
-            ls{"Singapore Standard Time"}
-=======
-            ls{"Standard nga Oras sa Singapore"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+ls{"Standard nga Oras sa Singapore"}        }
         "meta:Solomon"{
             ls{"Oras sa Solomon Islands"}
         }
@@ -873,16 +504,9 @@ ceb{
             ls{"Oras sa Tahiti"}
         }
         "meta:Taipei"{
-<<<<<<< HEAD
-            ld{"Taiwan Daylight Time"}
-            lg{"Oras sa Taiwan"}
-            ls{"Taiwan Standard Time"}
-=======
-            ld{"Daylight nga Oras sa Taipei"}
+ld{"Daylight nga Oras sa Taipei"}
             lg{"Oras sa Taipei"}
-            ls{"Standard nga Oras sa Taipei"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Taipei"}        }
         "meta:Tajikistan"{
             ls{"Oras sa Tajikistan"}
         }
@@ -890,50 +514,21 @@ ceb{
             ls{"Oras sa Tokelau"}
         }
         "meta:Tonga"{
-<<<<<<< HEAD
-            ld{"Tonga Summer Time"}
+ld{"Oras sa Ting-init sa Tonga"}
             lg{"Oras sa Tonga"}
-            ls{"Tonga Standard Time"}
-=======
-            ld{"Oras sa Ting-init sa Tonga"}
-            lg{"Oras sa Tonga"}
-            ls{"Standard nga Oras sa Tonga"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Tonga"}        }
         "meta:Truk"{
             ls{"Oras sa Chuuk"}
         }
         "meta:Turkmenistan"{
-<<<<<<< HEAD
-            ld{"Turkmenistan Summer Time"}
+ld{"Oras sa Ting-init sa Turkmenistan"}
             lg{"Oras sa Turkmenistan"}
-            ls{"Turkmenistan Standard Time"}
-=======
-            ld{"Oras sa Ting-init sa Turkmenistan"}
-            lg{"Oras sa Turkmenistan"}
-            ls{"Standard nga Oras sa Turkmenistan"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Turkmenistan"}        }
         "meta:Tuvalu"{
             ls{"Oras sa Tuvalu"}
         }
         "meta:Uruguay"{
-<<<<<<< HEAD
-            ld{"Uruguay Summer Time"}
-            lg{"Oras sa Uruguay"}
-            ls{"Uruguay Standard Time"}
-        }
-        "meta:Uzbekistan"{
-            ld{"Uzbekistan Summer Time"}
-            lg{"Oras sa Uzbekistan"}
-            ls{"Uzbekistan Standard Time"}
-        }
-        "meta:Vanuatu"{
-            ld{"Vanuatu Summer Time"}
-            lg{"Oras sa Vanuatu"}
-            ls{"Vanuatu Standard Time"}
-=======
-            ld{"Oras sa Ting-init sa Uruguay"}
+ld{"Oras sa Ting-init sa Uruguay"}
             lg{"Oras sa Uruguay"}
             ls{"Standard nga Oras sa Uruguay"}
         }
@@ -945,33 +540,19 @@ ceb{
         "meta:Vanuatu"{
             ld{"Oras sa Ting-init sa Vanuatu"}
             lg{"Oras sa Vanuatu"}
-            ls{"Standard nga Oras sa Vanuatu"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Vanuatu"}        }
         "meta:Venezuela"{
             ls{"Oras sa Venezuela"}
         }
         "meta:Vladivostok"{
-<<<<<<< HEAD
-            ld{"Vladivostok Summer Time"}
-            lg{"Oras sa Vladivostok"}
-            ls{"Vladivostok Standard Time"}
-        }
-        "meta:Volgograd"{
-            ld{"Volgograd Summer Time"}
-            lg{"Oras sa Volgograd"}
-            ls{"Volgograd Standard Time"}
-=======
-            ld{"Oras sa Ting-init sa Vladivostok"}
+ld{"Oras sa Ting-init sa Vladivostok"}
             lg{"Oras sa Vladivostok"}
             ls{"Standard nga Oras sa Vladivostok"}
         }
         "meta:Volgograd"{
             ld{"Oras sa Ting-init sa Volgograd"}
             lg{"Oras sa Volgograd"}
-            ls{"Standard nga Oras sa Volgograd"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Volgograd"}        }
         "meta:Vostok"{
             ls{"Oras sa Vostok"}
         }
@@ -982,26 +563,14 @@ ceb{
             ls{"Oras sa Wallis & Futuna"}
         }
         "meta:Yakutsk"{
-<<<<<<< HEAD
-            ld{"Yakutsk Summer Time"}
-            lg{"Oras sa Yakutsk"}
-            ls{"Yakutsk Standard Time"}
-        }
-        "meta:Yekaterinburg"{
-            ld{"Yekaterinburg Summer Time"}
-            lg{"Oras sa Yekaterinburg"}
-            ls{"Yekaterinburg Standard Time"}
-=======
-            ld{"Oras sa Ting-init sa Yakutsk"}
+ld{"Oras sa Ting-init sa Yakutsk"}
             lg{"Oras sa Yakutsk"}
             ls{"Standard nga Oras sa Yakutsk"}
         }
         "meta:Yekaterinburg"{
             ld{"Oras sa Ting-init sa Yekaterinburg"}
             lg{"Oras sa Yekaterinburg"}
-            ls{"Standard nga Oras sa Yekaterinburg"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ls{"Standard nga Oras sa Yekaterinburg"}        }
         "meta:Yukon"{
             ls{"Oras sa Yukon"}
         }

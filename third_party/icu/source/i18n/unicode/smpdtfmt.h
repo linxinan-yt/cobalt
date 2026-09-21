@@ -710,12 +710,7 @@ public:
      * with this date-time formatter.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_I18N_API virtual const DateFormatSymbols* getDateFormatSymbols() const;
-=======
-    virtual const DateFormatSymbols* getDateFormatSymbols() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API virtual const DateFormatSymbols* getDateFormatSymbols() const;
     /**
      * Set the date/time formatting symbols.  The caller no longer owns the
      * DateFormatSymbols object and should not delete it after making this call.
@@ -742,12 +737,7 @@ public:
      * @return          The class ID for all objects of this class.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_I18N_API static UClassID getStaticClassID();
-=======
-    static UClassID U_EXPORT2 getStaticClassID();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+static UClassID U_EXPORT2 getStaticClassID();
     /**
      * Returns a unique class ID POLYMORPHICALLY. Pure virtual override. This
      * method is to implement a simple version of RTTI, since not all C++
@@ -759,12 +749,7 @@ public:
      *                  other classes have different class IDs.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_I18N_API virtual UClassID getDynamicClassID() const override;
-=======
-    virtual UClassID getDynamicClassID() const override;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API virtual UClassID getDynamicClassID() const override;
     /**
      * Set the calendar to be used by this date format. Initially, the default
      * calendar for the specified or default locale is used.  The caller should
@@ -798,12 +783,7 @@ public:
      * @return the time zone format associated with this date/time formatter.
      * @internal ICU 49 technology preview
      */
-<<<<<<< HEAD
-    U_I18N_API virtual const TimeZoneFormat* getTimeZoneFormat() const;
-=======
-    virtual const TimeZoneFormat* getTimeZoneFormat() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API virtual const TimeZoneFormat* getTimeZoneFormat() const;
     /**
      * Set a particular UDisplayContext value in the formatter, such as
      * UDISPCTX_CAPITALIZATION_FOR_STANDALONE. Note: For getContext, see
@@ -885,12 +865,7 @@ public:
      * @return   locale in this simple date formatter
      * @internal ICU 4.0
      */
-<<<<<<< HEAD
-    U_I18N_API const Locale& getSmpFmtLocale() const;
-=======
-    const Locale& getSmpFmtLocale() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#endif  /* U_HIDE_INTERNAL_API */
+U_I18N_API const Locale& getSmpFmtLocale() const;#endif  /* U_HIDE_INTERNAL_API */
 
 private:
     friend class DateFormat;

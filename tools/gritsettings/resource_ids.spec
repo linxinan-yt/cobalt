@@ -1793,20 +1793,18 @@
     "messages": [10120],
   },
 
-<<<<<<< HEAD
-  "<(SHARED_INTERMEDIATE_DIR)/chrome/browser/resources/webui_toolbar_shared/resources.grd": {
+"<(SHARED_INTERMEDIATE_DIR)/chrome/browser/resources/webui_toolbar_shared/resources.grd": {
     "META": {"sizes": {"includes": [100]}},
     "includes": [10140],
   },
 
+  "cobalt/shell/shell_resources.grd": {
+    "includes": [31500],
+  },
+
   "<(SHARED_INTERMEDIATE_DIR)/THIS_IS_A_PLACEHOLDER.grd": {
     "META": {"sizes": {"includes": [800]}},
-    "includes": [12000],
-=======
-  "cobalt/shell/shell_resources.grd": {
-    "includes": [31500]
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  },
+    "includes": [12000],  },
 
   # END "everything else" section.
   # Everything but chrome/, components/, content/, and ios/

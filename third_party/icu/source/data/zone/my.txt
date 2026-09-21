@@ -1196,13 +1196,9 @@ my{
         "Pacific:Honolulu"{
             ec{"ဟိုနိုလူလူ"}
         }
-<<<<<<< HEAD
-=======
-        "Pacific:Kanton"{
+"Pacific:Kanton"{
             ec{"ကန်တွန်"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Pacific:Kiritimati"{
+        }        "Pacific:Kiritimati"{
             ec{"ခရိဒီမတီ"}
         }
         "Pacific:Kosrae"{

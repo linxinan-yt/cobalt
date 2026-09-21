@@ -79,8 +79,6 @@
 typedef void* SockOptArg;
 #endif  // WEBRTC_POSIX
 
-<<<<<<< HEAD
-=======
 #if defined(STARBOARD)
 
 int64_t GetSocketRecvTimestamp(int socket) {
@@ -122,10 +120,7 @@ int64_t GetSocketRecvTimestamp(int socket) {
 int64_t GetSocketRecvTimestamp(int /* socket */) {
   return -1;
 }
-#endif
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#if defined(WEBRTC_WIN)
+#endif#if defined(WEBRTC_WIN)
 typedef char* SockOptArg;
 #endif
 

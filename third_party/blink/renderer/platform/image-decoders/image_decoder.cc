@@ -53,16 +53,11 @@
 #include "ui/gfx/skia_span_util.h"
 
 #if BUILDFLAG(ENABLE_DAV1D_DECODER)
-<<<<<<< HEAD
 #include "third_party/blink/renderer/platform/image-decoders/avif/avif_image_decoder.h"
 #endif
 
 #if BUILDFLAG(ENABLE_JXL_DECODER)
-#include "third_party/blink/renderer/platform/image-decoders/jxl/jxl_image_decoder.h"
-=======
-#include "third_party/blink/renderer/platform/image-decoders/avif/crabbyavif_image_decoder.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#endif
+#include "third_party/blink/renderer/platform/image-decoders/jxl/jxl_image_decoder.h"#endif
 
 namespace blink {
 
@@ -223,12 +218,7 @@ String SniffMimeTypeInternal(scoped_refptr<SegmentReader> reader) {
     return "image/bmp";
   }
 #if BUILDFLAG(ENABLE_DAV1D_DECODER)
-<<<<<<< HEAD
-  if (AVIFImageDecoder::MatchesAVIFSignature(fast_reader)) {
-=======
-  if (CrabbyAVIFImageDecoder::MatchesAVIFSignature(fast_reader)) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    return "image/avif";
+if (AVIFImageDecoder::MatchesAVIFSignature(fast_reader)) {    return "image/avif";
   }
 #endif
 #if BUILDFLAG(ENABLE_JXL_DECODER)
@@ -339,15 +329,9 @@ std::unique_ptr<ImageDecoder> ImageDecoder::CreateByMimeType(
     decoder = std::make_unique<ICOImageDecoder>(alpha_option, color_behavior,
                                                 max_decoded_bytes);
   } else if (mime_type == "image/bmp" || mime_type == "image/x-xbitmap") {
-<<<<<<< HEAD
-    decoder =
+decoder =
         CreateBmpImageDecoder(alpha_option, high_bit_depth_decoding_option,
-                              color_behavior, max_decoded_bytes);
-=======
-    decoder = std::make_unique<BMPImageDecoder>(alpha_option, color_behavior,
-                                                max_decoded_bytes);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#if BUILDFLAG(ENABLE_DAV1D_DECODER)
+                              color_behavior, max_decoded_bytes);#if BUILDFLAG(ENABLE_DAV1D_DECODER)
   } else if (mime_type == "image/avif") {
     decoder = std::make_unique<AVIFImageDecoder>(
         alpha_option, high_bit_depth_decoding_option, color_behavior, aux_image,

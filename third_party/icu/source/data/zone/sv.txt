@@ -18,12 +18,7 @@ sv{
         "Africa:El_Aaiun"{
             ec{"El-Aaiún"}
         }
-<<<<<<< HEAD
-        "America:Cayman"{
-            ec{"Caymanöarna"}
-        }
-=======
-        "Africa:Lome"{
+"Africa:Lome"{
             ec{"Lomé"}
         }
         "Africa:Ndjamena"{
@@ -55,17 +50,13 @@ sv{
         }
         "America:Eirunepe"{
             ec{"Eirunepé"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Havana"{
+        }        "America:Havana"{
             ec{"Havanna"}
         }
         "America:Jujuy"{
             ec{"San Salvador de Jujuy"}
         }
-<<<<<<< HEAD
-=======
-        "America:Maceio"{
+"America:Maceio"{
             ec{"Maceió"}
         }
         "America:Mazatlan"{
@@ -79,9 +70,7 @@ sv{
         }
         "America:Sao_Paulo"{
             ec{"São Paulo"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:St_Barthelemy"{
+        }        "America:St_Barthelemy"{
             ec{"Saint-Barthélemy"}
         }
         "America:St_Johns"{
@@ -281,12 +270,6 @@ sv{
         }
         "Pacific:Honolulu"{
             ec{"Honolulu"}
-<<<<<<< HEAD
-=======
-            sd{"Honolulusommartid"}
-            sg{"Honolulutid"}
-            ss{"Honolulunormaltid"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         "Pacific:Marquesas"{
             ec{"Marquesasöarna"}

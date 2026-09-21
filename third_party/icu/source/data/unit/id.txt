@@ -273,12 +273,8 @@ id{
                 other{"{0} nanodetik"}
             }
             night{
-<<<<<<< HEAD
-=======
-                dnam{"malam"}
-                other{"{0} malam"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                per{"{0} per malam"}
+dnam{"malam"}
+                other{"{0} malam"}                per{"{0} per malam"}
             }
             quarter{
                 dnam{"kuartal"}

@@ -61,22 +61,6 @@ WinscopeModule::WinscopeModule(ProtoImporterModuleContext* module_context,
       android_input_event_parser_(context),
       viewcapture_parser_(&context_),
       windowmanager_parser_(&context_) {
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/winscope_module.cc
-  RegisterForField(FrameworksNativeWinscopeTracePacket::
-                       kSurfaceflingerLayersSnapshotFieldNumber);
-  RegisterForField(FrameworksNativeWinscopeTracePacket::
-                       kSurfaceflingerTransactionsFieldNumber);
-  RegisterForField(
-      FrameworksBaseWinscopeTracePacket::kShellTransitionFieldNumber);
-  RegisterForField(
-      FrameworksBaseWinscopeTracePacket::kShellHandlerMappingsFieldNumber);
-  RegisterForField(
-      FrameworksNativeWinscopeTracePacket::kProtologMessageFieldNumber);
-  RegisterForField(
-      FrameworksNativeWinscopeTracePacket::kProtologViewerConfigFieldNumber);
-  RegisterForField(
-      FrameworksNativeWinscopeTracePacket::kWinscopeExtensionsFieldNumber);
-=======
   context->descriptor_pool_->AddFromFileDescriptorSet(
       kWinscopeDescriptor.data(), kWinscopeDescriptor.size());
   RegisterForField(TracePacket::kSurfaceflingerLayersSnapshotFieldNumber);
@@ -86,7 +70,6 @@ WinscopeModule::WinscopeModule(ProtoImporterModuleContext* module_context,
   RegisterForField(TracePacket::kProtologMessageFieldNumber);
   RegisterForField(TracePacket::kProtologViewerConfigFieldNumber);
   RegisterForField(TracePacket::kWinscopeExtensionsFieldNumber);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/winscope_module.cc
 }
 
 ModuleResult WinscopeModule::TokenizePacket(const TokenizePacketArgs& args) {
@@ -150,51 +133,6 @@ void WinscopeModule::ParseField(const ParseFieldArgs& args) {
 void WinscopeModule::ParseWinscopeExtensionsData(protozero::ConstBytes blob,
                                                  int64_t timestamp,
                                                  const TracePacketData& data) {
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/winscope_module.cc
-  // WinscopeExtensions is purely a carrier of extension fields: walk them
-  // all in wire order and dispatch on the field id.
-  protozero::ProtoDecoder decoder(blob);
-  for (protozero::Field f = decoder.ReadField(); f.valid();
-       f = decoder.ReadField()) {
-    TypedProtoField field(f);
-    switch (field.id()) {
-      case FrameworksBaseWinscopeExtensions::kInputmethodClientsFieldNumber:
-        ParseInputMethodClientsData(
-            timestamp,
-            field
-                .Cast<FrameworksBaseWinscopeExtensions::kInputmethodClients>());
-        return;
-      case FrameworksBaseWinscopeExtensions::
-          kInputmethodManagerServiceFieldNumber:
-        ParseInputMethodManagerServiceData(
-            timestamp, field.Cast<FrameworksBaseWinscopeExtensions::
-                                      kInputmethodManagerService>());
-        return;
-      case FrameworksBaseWinscopeExtensions::kInputmethodServiceFieldNumber:
-        ParseInputMethodServiceData(
-            timestamp,
-            field
-                .Cast<FrameworksBaseWinscopeExtensions::kInputmethodService>());
-        return;
-      case FrameworksBaseWinscopeExtensions::kViewcaptureFieldNumber:
-        viewcapture_parser_.Parse(
-            timestamp,
-            field.Cast<FrameworksBaseWinscopeExtensions::kViewcapture>(),
-            data.sequence_state.get());
-        return;
-      case FrameworksNativeWinscopeExtensions::kAndroidInputEventFieldNumber:
-        android_input_event_parser_.ParseAndroidInputEvent(
-            timestamp,
-            field.Cast<
-                FrameworksNativeWinscopeExtensions::kAndroidInputEvent>());
-        return;
-      case FrameworksBaseWinscopeExtensions::kWindowmanagerFieldNumber:
-        windowmanager_parser_.Parse(
-            timestamp,
-            field.Cast<FrameworksBaseWinscopeExtensions::kWindowmanager>());
-        return;
-    }
-=======
   WinscopeExtensionsImpl::Decoder decoder(blob.data, blob.size);
 
   if (auto field =
@@ -223,7 +161,6 @@ void WinscopeModule::ParseWinscopeExtensionsData(protozero::ConstBytes blob,
                  decoder.Get(WinscopeExtensionsImpl::kWindowmanagerFieldNumber);
              field.valid()) {
     windowmanager_parser_.Parse(timestamp, field.as_bytes());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/winscope_module.cc
   }
 }
 
@@ -315,11 +252,7 @@ void WinscopeModule::ParseInputMethodServiceData(int64_t timestamp,
   }
 }
 
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/winscope_module.cc
-void WinscopeModule::OnEventsFullyExtracted() {
-=======
 void WinscopeModule::NotifyEndOfFile() {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/winscope_module.cc
   context_.shell_transitions_tracker_.Flush();
 }
 

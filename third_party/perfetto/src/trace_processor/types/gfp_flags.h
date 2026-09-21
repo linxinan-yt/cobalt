@@ -19,12 +19,7 @@
 
 #include <optional>
 
-<<<<<<< HEAD
-#include "perfetto/ext/base/dynamic_string_writer.h"
-=======
-#include "perfetto/ext/base/fixed_string_writer.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "src/trace_processor/types/version_number.h"
+#include "perfetto/ext/base/dynamic_string_writer.h"#include "src/trace_processor/types/version_number.h"
 
 namespace perfetto {
 namespace trace_processor {
@@ -34,12 +29,7 @@ namespace trace_processor {
 // flag.
 void WriteGfpFlag(uint64_t value,
                   std::optional<VersionNumber> version,
-<<<<<<< HEAD
-                  base::DynamicStringWriter* writer);
-=======
-                  base::FixedStringWriter* writer);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+base::DynamicStringWriter* writer);
 }  // namespace trace_processor
 }  // namespace perfetto
 

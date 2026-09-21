@@ -12,8 +12,7 @@ en_IN{
                 decimalFormat{"#,##,##0.###"}
                 percentFormat{"#,##,##0%"}
             }
-<<<<<<< HEAD
-            patternsLong{
+patternsLong{
                 decimalFormat{
                     1000{
                         one{"0 thousand"}
@@ -22,12 +21,7 @@ en_IN{
                     10000{
                         one{"00 thousand"}
                         other{"00 thousand"}
-                    }
-=======
-            patternsShort{
-                currencyFormat{
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                    100000{
+                    }                    100000{
                         one{"0 lakh"}
                         other{"0 lakh"}
                     }

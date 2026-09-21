@@ -60,8 +60,7 @@ CopticCalendar::getType() const
 int32_t
 CopticCalendar::handleGetExtendedYear(UErrorCode& status)
 {
-<<<<<<< HEAD
-    if (U_FAILURE(status)) {
+if (U_FAILURE(status)) {
         return 0;
     }
     if (newerField(UCAL_EXTENDED_YEAR, UCAL_YEAR) == UCAL_EXTENDED_YEAR) {
@@ -76,67 +75,7 @@ CopticCalendar::handleGetExtendedYear(UErrorCode& status)
         return internalGet(UCAL_YEAR, 1); // Default to year 1
     }
     status = U_ILLEGAL_ARGUMENT_ERROR;
-    return 0;
-=======
-    if (U_FAILURE(status)) {
-        return 0;
-    }
-    if (newerField(UCAL_EXTENDED_YEAR, UCAL_YEAR) == UCAL_EXTENDED_YEAR) {
-        return internalGet(UCAL_EXTENDED_YEAR, 1); // Default to year 1
-    }
-    // The year defaults to the epoch start, the era to CE
-    int32_t era = internalGet(UCAL_ERA, CE);
-    if (era == BCE) {
-        return 1 - internalGet(UCAL_YEAR, 1); // Convert to extended year
-    }
-    if (era == CE){
-        return internalGet(UCAL_YEAR, 1); // Default to year 1
-    }
-    status = U_ILLEGAL_ARGUMENT_ERROR;
-    return 0;
-}
-
-void
-CopticCalendar::handleComputeFields(int32_t julianDay, UErrorCode& status)
-{
-    int32_t eyear, month, day, era, year;
-    jdToCE(julianDay, getJDEpochOffset(), eyear, month, day, status);
-    if (U_FAILURE(status)) return;
-
-    if (eyear <= 0) {
-        era = BCE;
-        year = 1 - eyear;
-    } else {
-        era = CE;
-        year = eyear;
-    }
-
-    internalSet(UCAL_EXTENDED_YEAR, eyear);
-    internalSet(UCAL_ERA, era);
-    internalSet(UCAL_YEAR, year);
-    internalSet(UCAL_MONTH, month);
-    internalSet(UCAL_ORDINAL_MONTH, month);
-    internalSet(UCAL_DATE, day);
-    internalSet(UCAL_DAY_OF_YEAR, (30 * month) + day);
-}
-
-constexpr uint32_t kCopticRelatedYearDiff = 284;
-
-int32_t CopticCalendar::getRelatedYear(UErrorCode &status) const
-{
-    int32_t year = get(UCAL_EXTENDED_YEAR, status);
-    if (U_FAILURE(status)) {
-        return 0;
-    }
-    return year + kCopticRelatedYearDiff;
-}
-
-void CopticCalendar::setRelatedYear(int32_t year)
-{
-    // set extended year
-    set(UCAL_EXTENDED_YEAR, year - kCopticRelatedYearDiff);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+    return 0;}
 
 IMPL_SYSTEM_DEFAULT_CENTURY(CopticCalendar, "@calendar=coptic")
 
@@ -150,7 +89,6 @@ int32_t CopticCalendar::extendedYearToEra(int32_t extendedYear) const {
     return extendedYear <= 0 ? BCE : CE;
 }
 
-<<<<<<< HEAD
 int32_t CopticCalendar::extendedYearToYear(int32_t extendedYear) const {
     return extendedYear <= 0 ? 1 - extendedYear : extendedYear;
 }
@@ -163,12 +101,7 @@ int32_t
 CopticCalendar::getRelatedYearDifference() const {
     constexpr int32_t kCopticCalendarRelatedYearDifference = 284;
     return kCopticCalendarRelatedYearDifference;
-}
-
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-U_NAMESPACE_END
+}U_NAMESPACE_END
 
 #endif /* #if !UCONFIG_NO_FORMATTING */
 //eof

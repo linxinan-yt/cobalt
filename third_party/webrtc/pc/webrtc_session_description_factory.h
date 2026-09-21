@@ -18,11 +18,7 @@
 #include <string>
 
 #include "absl/functional/any_invocable.h"
-<<<<<<< HEAD
-#include "absl/strings/string_view.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "api/environment/environment.h"
+#include "absl/strings/string_view.h"#include "api/environment/environment.h"
 #include "api/jsep.h"
 #include "api/peer_connection_interface.h"
 #include "api/rtc_error.h"

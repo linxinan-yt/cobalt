@@ -181,14 +181,10 @@ ig{
             AmPmMarkersAbbr{
                 "N’ụtụtụ",
                 "N’abalị",
-<<<<<<< HEAD
-=======
-            }
+}
             AmPmMarkersNarrow{
                 "N’ụtụtụ",
-                "N’abalị",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                "N’abalị",            }
             DateTimePatterns{
                 "HH:mm:ss zzzz",
                 "HH:mm:ss z",
@@ -292,22 +288,12 @@ ig{
             }
             eras{
                 abbreviated{
-<<<<<<< HEAD
-                    0{"BC"}
-                    1{"AD"}
-                }
-                abbreviated%variant{
-                    0{"BCE"}
-                    1{"CE"}
-=======
-                    "BC",
+"BC",
                     "AD",
                 }
                 abbreviated%variant{
                     "BCE",
-                    "CE",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+                    "CE",                }
                 narrow%variant{
                     0{"BCE"}
                     1{"CE"}
@@ -326,29 +312,14 @@ ig{
                     M{"M – M"}
                 }
                 MEd{
-<<<<<<< HEAD
-                    d{"E, M/d – E, M/d"}
-=======
-                    M{"MM-dd, E – MM-dd, E"}
-                    d{"E, M/d – E, M/d"}
-                }
-                MMM{
-                    M{"MMM – MMM"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                }
+M{"MM-dd, E – MM-dd, E"}
+                    d{"E, M/d – E, M/d"}                }
                 MMM{
                     M{"MMM – MMM"}
                 }
                 Md{
                     M{"M/d – M/d"}
                     d{"M/d – M/d"}
-<<<<<<< HEAD
-=======
-                }
-                h{
-                    a{"h a – h a"}
-                    h{"h–h a"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
                 }
                 hm{
                     a{"h:mm a – h:mm a"}
@@ -537,16 +508,12 @@ ig{
         }
         era{
             dn{"Oge"}
-<<<<<<< HEAD
-=======
-        }
+}
         era-narrow{
             dn{"Oge"}
         }
         era-short{
-            dn{"Oge"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            dn{"Oge"}        }
         fri{
             relative{
                 "-1"{"Ụbọchị faraịde gara aga"}
@@ -623,9 +590,7 @@ ig{
                 "-1"{"Ọnwa gara aga"}
                 "0"{"Ọnwa a"}
                 "1"{"Ọnwa na-abịa"}
-<<<<<<< HEAD
-=======
-            }
+}
         }
         month-narrow{
             relative{
@@ -638,9 +603,7 @@ ig{
             relative{
                 "-1"{"Ọnwa gara aga"}
                 "0"{"Ọnwa a"}
-                "1"{"Ọnwa na-abịa"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                "1"{"Ọnwa na-abịa"}            }
         }
         quarter{
             dn{"Ọnwa atọ n’afọ"}
@@ -657,9 +620,7 @@ ig{
                     other{"Nkejị keanọ {0} gara aga"}
                 }
             }
-<<<<<<< HEAD
-=======
-        }
+}
         quarter-narrow{
             relativeTime{
                 future{
@@ -678,9 +639,7 @@ ig{
                 past{
                     other{"Nkejị keanọ {0} gara aga"}
                 }
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            }        }
         sat{
             relative{
                 "-1"{"ụbọchị Satụde gara aga"}
@@ -717,13 +676,9 @@ ig{
                 "0"{"ụgbụa"}
             }
         }
-<<<<<<< HEAD
-=======
-        second-narrow{
+second-narrow{
             dn{"sekọnd"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        second-short{
+        }        second-short{
             dn{"sekọnd"}
         }
         sun{
@@ -840,15 +795,11 @@ ig{
             }
         }
         year-narrow{
-<<<<<<< HEAD
-=======
-            relative{
+relative{
                 "-1"{"Afọ gara aga"}
                 "0"{"Afọ a"}
                 "1"{"afọ na-abịa"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            relativeTime{
+            }            relativeTime{
                 past{
                     other{"Afọ {0} gara aga"}
                 }
@@ -870,18 +821,14 @@ ig{
             2{"{0} ma ọ bụ {1}"}
             end{"{0}, ma ọ bụ {1}"}
         }
-<<<<<<< HEAD
-=======
-        or-narrow{
+or-narrow{
             2{"{0} ma ọ bụ {1}"}
             end{"{0}, ma ọ bụ {1}"}
         }
         or-short{
             2{"{0} ma ọ bụ {1}"}
             end{"{0}, ma ọ bụ {1}"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        standard{
+        }        standard{
             2{"{0} na {1}"}
             end{"{0}, na {1}"}
         }
@@ -889,14 +836,10 @@ ig{
             2{"{0}, {1}"}
             end{"{0}, {1}"}
         }
-<<<<<<< HEAD
-=======
-        unit{
+unit{
             2{"{0}, {1}"}
             end{"{0}, {1}"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        unit-narrow{
+        }        unit-narrow{
             2{"{0} {1}"}
             end{"{0} {1}"}
         }

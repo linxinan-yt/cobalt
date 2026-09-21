@@ -44,8 +44,6 @@ class CodePointMatcher : public NumberParseMatcher, public UMemory {
     UChar32 fCp;
 };
 
-<<<<<<< HEAD
-=======
 } // namespace numparse::impl
 
 // Export a explicit template instantiations of MaybeStackArray, MemoryPool and CompactUnicodeString.
@@ -60,8 +58,6 @@ template class U_I18N_API numparse::impl::CompactUnicodeString<4>;
 #endif
 
 namespace numparse::impl {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 struct AffixTokenMatcherSetupData {
     const CurrencySymbols& currencySymbols;
     const DecimalFormatSymbols& dfs;

@@ -44,17 +44,13 @@ export default class implements PerfettoPlugin {
       href: '#!/info',
       icon: 'info',
       sortOrder: 15,
-<<<<<<< HEAD
-=======
-    });
+});
     trace.sidebar.addMenuItem({
       section: 'current_trace',
       text: 'Info and Stats',
       href: '#!/info/stats',
       icon: 'query_stats',
-      sortOrder: 23,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    });
+      sortOrder: 23,    });
 
     await maybeDisplayTraceDoctorTab(trace);
   }

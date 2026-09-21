@@ -13,12 +13,7 @@
 // limitations under the License.
 
 import m from 'mithril';
-<<<<<<< HEAD
-import type {Engine} from '../../../trace_processor/engine';
-=======
-import {Engine} from '../../../trace_processor/engine';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {NUM_NULL, STR_NULL} from '../../../trace_processor/query_result';
+import type {Engine} from '../../../trace_processor/engine';import {NUM_NULL, STR_NULL} from '../../../trace_processor/query_result';
 import {Section} from '../../../widgets/section';
 import {Grid, GridCell, GridHeaderCell} from '../../../widgets/grid';
 
@@ -26,11 +21,7 @@ import {Grid, GridCell, GridHeaderCell} from '../../../widgets/grid';
 const machineRowSpec = {
   id: NUM_NULL,
   rawId: NUM_NULL,
-<<<<<<< HEAD
-  name: STR_NULL,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  sysname: STR_NULL,
+name: STR_NULL,  sysname: STR_NULL,
   release: STR_NULL,
   version: STR_NULL,
   arch: STR_NULL,
@@ -52,11 +43,7 @@ export async function loadMachinesData(engine: Engine): Promise<MachinesData> {
     select
       id,
       raw_id as rawId,
-<<<<<<< HEAD
-      name,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      sysname,
+name,      sysname,
       release,
       version,
       arch,
@@ -75,11 +62,7 @@ export async function loadMachinesData(engine: Engine): Promise<MachinesData> {
     machines.push({
       id: iter.id,
       rawId: iter.rawId,
-<<<<<<< HEAD
-      name: iter.name,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      sysname: iter.sysname,
+name: iter.name,      sysname: iter.sysname,
       release: iter.release,
       version: iter.version,
       arch: iter.arch,

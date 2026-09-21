@@ -890,16 +890,9 @@ mk{
                 other{"{0} јазли"}
             }
             light-speed{
-<<<<<<< HEAD
-                dnam{"светлосна"}
+dnam{"светлосна"}
                 one{"{0} светлосна"}
-                other{"{0} светлосни"}
-=======
-                dnam{"светлина"}
-                one{"{0} светлина"}
-                other{"{0} светлини"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} светлосни"}            }
             meter-per-second{
                 dnam{"метри во секунда"}
                 one{"{0} метар во секунда"}
@@ -1232,16 +1225,10 @@ mk{
                 per{"{0}/м."}
             }
             night{
-<<<<<<< HEAD
+dnam{"ноќи"}
                 one{"{0} н."}
                 other{"{0} н."}
-=======
-                dnam{"ноќи"}
-                one{"{0} н."}
-                other{"{0} н."}
-                per{"{0}/ноќ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/ноќ"}            }
             quarter{
                 dnam{"т."}
                 one{"{0} т."}
@@ -1342,16 +1329,9 @@ mk{
                 dnam{"km/hr"}
             }
             light-speed{
-<<<<<<< HEAD
-                dnam{"светлосна"}
+dnam{"светлосна"}
                 one{"{0} светлосна"}
-                other{"{0} светлосни"}
-=======
-                dnam{"светлина"}
-                one{"{0} светлина"}
-                other{"{0} светлини"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} светлосни"}            }
             meter-per-second{
                 dnam{"m/s"}
             }
@@ -1747,16 +1727,9 @@ mk{
                 dnam{"км/час"}
             }
             light-speed{
-<<<<<<< HEAD
-                dnam{"светлосна"}
+dnam{"светлосна"}
                 one{"{0} светлосна"}
-                other{"{0} светлосни"}
-=======
-                dnam{"светлина"}
-                one{"{0} светлина"}
-                other{"{0} светлини"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} светлосни"}            }
             meter-per-second{
                 dnam{"метри/сек"}
             }

@@ -1332,11 +1332,7 @@ hr{
                 gender{"feminine"}
                 one{"{0} noć"}
                 other{"{0} noći"}
-<<<<<<< HEAD
-=======
-                per{"{0}/noć"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+per{"{0}/noć"}            }
             quarter{
                 case{
                     accusative{
@@ -2899,12 +2895,7 @@ hr{
                     }
                     instrumental{
                         few{"{0} milimetra živina stupca"}
-<<<<<<< HEAD
-                        one{"{0} milimetrom živina stupca"}
-=======
-                        one{"{0} milimetar živina stupca"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                        other{"{0} milimetara živina stupca"}
+one{"{0} milimetrom živina stupca"}                        other{"{0} milimetara živina stupca"}
                     }
                 }
                 dnam{"milimetri živina stupca"}
@@ -3002,11 +2993,7 @@ hr{
                         other{"{0} svjetala"}
                     }
                 }
-<<<<<<< HEAD
-=======
-                dnam{"svjetlo"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                few{"{0} svjetla"}
+dnam{"svjetlo"}                few{"{0} svjetla"}
                 gender{"neuter"}
                 one{"{0} svjetlo"}
                 other{"{0} svjetala"}
@@ -3560,8 +3547,7 @@ hr{
                 one{"{0} mol"}
                 other{"{0} mola"}
             }
-<<<<<<< HEAD
-            ofglucose{
+ofglucose{
                 dnam{"Glc"}
                 few{"{0} Glc"}
                 one{"{0} Glc"}
@@ -3571,12 +3557,7 @@ hr{
                 dnam{"dio"}
                 few{"{0} dijela"}
                 one{"{0} dio"}
-                other{"{0} dijelova"}
-=======
-            portion-per-1e9{
-                dnam{"dijelovi/milijarda"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} dijelova"}            }
         }
         consumption{
             liter-per-100-kilometer{

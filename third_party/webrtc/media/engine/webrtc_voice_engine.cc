@@ -556,29 +556,8 @@ void WebRtcVoiceEngine::Init() {
   adm_helpers::Init(adm());
 
   // Set default engine options.
-<<<<<<< HEAD
-  AudioOptions options = CreateDefaultAudioOptions();
+AudioOptions options = CreateDefaultAudioOptions();
   ApplyOptions(options);
-=======
-  {
-    AudioOptions options;
-    options.echo_cancellation = true;
-    options.auto_gain_control = true;
-#if defined(WEBRTC_IOS)
-    // On iOS, VPIO provides built-in NS.
-    options.noise_suppression = false;
-#else
-    options.noise_suppression = true;
-#endif
-    options.highpass_filter = true;
-    options.stereo_swapping = false;
-    options.audio_jitter_buffer_max_packets = 200;
-    options.audio_jitter_buffer_fast_accelerate = false;
-    options.audio_jitter_buffer_min_delay_ms = 0;
-    ApplyOptions(options);
-  }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   // Connect the ADM to our audio path. It's important to do this after applying
   // the configuration so that the audio callback receives calls with the
   // correct init options already applied.

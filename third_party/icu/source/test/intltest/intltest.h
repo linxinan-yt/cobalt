@@ -416,36 +416,22 @@ public:
                                   const Formattable& actual, UBool possibleDataError=false);
     UBool assertEqualFormattables(std::u16string_view message, const Formattable& expected,
                                   const Formattable& actual);
-<<<<<<< HEAD
 #endif
 #endif
-=======
-#endif
-#endif
-    UBool assertNotEquals(const char* message, int32_t expectedNot, int32_t actual);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    UBool assertTrue(std::u16string_view message, UBool condition, UBool quiet=false, UBool possibleDataError=false);
+    UBool assertNotEquals(const char* message, int32_t expectedNot, int32_t actual);    UBool assertTrue(std::u16string_view message, UBool condition, UBool quiet=false, UBool possibleDataError=false);
     UBool assertFalse(std::u16string_view message, UBool condition, UBool quiet=false, UBool possibleDataError=false);
     UBool assertSuccess(std::u16string_view message, UErrorCode ec);
     UBool assertEquals(std::u16string_view message, std::u16string_view expected,
                        std::u16string_view actual, UBool possibleDataError=false);
     UBool assertEquals(std::u16string_view message, const char* expected, const char* actual);
-<<<<<<< HEAD
-=======
-    UBool assertEquals(std::u16string_view message, UBool expected, UBool actual);
+UBool assertEquals(std::u16string_view message, UBool expected, UBool actual);
     UBool assertEquals(std::u16string_view message, int32_t expected, int32_t actual);
-    UBool assertEquals(std::u16string_view message, int64_t expected, int64_t actual);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    UBool assertEquals(std::u16string_view message, double expected, double actual);
+    UBool assertEquals(std::u16string_view message, int64_t expected, int64_t actual);    UBool assertEquals(std::u16string_view message, double expected, double actual);
 
     // for disambiguation
     UBool assertEquals(std::u16string_view message, const char* expected,
                        std::u16string_view actual, UBool possibleDataError=false);
 
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     /**
      * Asserts that two doubles are equal to within a positive delta. Returns
      * false if they are not.
@@ -466,11 +452,7 @@ public:
 #endif
     UBool assertEquals(std::u16string_view message,
         const std::vector<std::string>& expected, const std::vector<std::string>& actual);
-<<<<<<< HEAD
-=======
-    UBool assertNotEquals(std::u16string_view message, int32_t expectedNot, int32_t actual);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+UBool assertNotEquals(std::u16string_view message, int32_t expectedNot, int32_t actual);
     virtual void runIndexedTest( int32_t index, UBool exec, const char* &name, char* par = nullptr ); // override !
 
     virtual UBool runTestLoop( char* testname, char* par, char *baseName );

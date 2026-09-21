@@ -15,13 +15,7 @@
 import m from 'mithril';
 import {Time} from '../../base/time';
 import {renderArguments} from '../../components/details/args';
-<<<<<<< HEAD
-import {type ArgsDict, parseArgs} from '../../components/sql_utils/args';
-=======
-import {Arg} from '../../components/sql_utils/args';
-import {asArgId} from '../../components/sql_utils/core_types';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {Timestamp} from '../../components/widgets/timestamp';
+import {type ArgsDict, parseArgs} from '../../components/sql_utils/args';import {Timestamp} from '../../components/widgets/timestamp';
 import type {TrackEventDetailsPanel} from '../../public/details_panel';
 import type {Trace} from '../../public/trace';
 import {NUM_NULL, STR} from '../../trace_processor/query_result';
@@ -111,21 +105,7 @@ export class FtraceEventDetailsPanel implements TrackEventDetailsPanel {
       args: STR,
     });
 
-<<<<<<< HEAD
-    if (res !== undefined && res.arg_set_id !== null) {
+if (res !== undefined && res.arg_set_id !== null) {
       this.args = parseArgs(res.args);
-    }
-=======
-    const args: Arg[] = [];
-    for (; it.valid(); it.next()) {
-      args.push({
-        id: asArgId(it.id),
-        flatKey: it.flatKey,
-        key: it.key,
-        displayValue: it.displayValue ?? 'NULL',
-      });
-    }
-    this.args = args;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    }  }
 }

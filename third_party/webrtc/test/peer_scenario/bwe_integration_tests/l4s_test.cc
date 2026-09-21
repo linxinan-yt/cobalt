@@ -141,8 +141,6 @@ class RtcpFeedbackCounter {
   int ce_ = 0;
 };
 
-<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
-=======
 scoped_refptr<const RTCStatsReport> GetStatsAndProcess(
     PeerScenario& s,
     PeerScenarioClient* client) {
@@ -180,7 +178,6 @@ std::optional<int64_t> GetPacketsReceivedWithCe(
   return stats[0]->packets_received_with_ce;
 }
 
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
 TEST(L4STest, NegotiateAndUseCcfbIfEnabled) {
   PeerScenario s(*test_info_);
 
@@ -255,17 +252,10 @@ TEST(L4STest, NegotiateAndUseCcfbIfEnabled) {
   EXPECT_EQ(ret_node_feedback_counter.FeedbackAccordingToTransportCc(), 0);
 }
 
-<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
-TEST(L4STest, NoCcfbSentAfterRenegotiationAndCallerCachesLocalDescription) {
-  // The caller supports CCFB, but the callee does not.
-  // This test that the caller does not start sending CCFB after renegotiation
-  // even if the local description is cached. The caller's local description
-=======
 TEST(L4STest, NoCcfbSentAfterRenegotiationAndCallerCachLocalDescription) {
   // The caller supports CCFB, but the callee does not.
   // This test that the caller does not start sending CCFB after renegotiation
   // even if the local description is cached. The callers local description
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
   // will contain CCFB since it was used in the initial offer.
   PeerScenario s(*test_info_);
   PeerScenarioClient::Config caller_config;
@@ -336,11 +326,7 @@ TEST(L4STest, NoCcfbSentAfterRenegotiationAndCallerCachLocalDescription) {
   std::string answer_str;
   caller->pc()->local_description()->ToString(&answer_str);
   ASSERT_FALSE(answer_str.empty());
-<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
-  ASSERT_THAT(answer_str, ContainsRegex(ccfb_regex));
-=======
   ASSERT_THAT(answer_str, HasSubstr("a=rtcp-fb:* ack ccfb\r\n"));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
 
   callee->CreateAndSetSdp(
       [&](SessionDescriptionInterface* /*munge_offer*/) {
@@ -348,11 +334,7 @@ TEST(L4STest, NoCcfbSentAfterRenegotiationAndCallerCachLocalDescription) {
       },
       [&](std::string offer) {
         // Callee does not support ccfb and does not have it in the offer.
-<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
-        ASSERT_THAT(offer, Not(ContainsRegex(ccfb_regex)));
-=======
         ASSERT_THAT(offer, Not(HasSubstr("a=rtcp-fb:* ack ccfb\r\n")));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
         caller->SetRemoteDescription(
             offer, SdpType::kOffer, [&](RTCError error) {
               ASSERT_TRUE(error.ok());
@@ -378,8 +360,6 @@ TEST(L4STest, NoCcfbSentAfterRenegotiationAndCallerCachLocalDescription) {
             transport_cc_callee);
 }
 
-<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
-=======
 #if !defined(WEBRTC_ANDROID)
 // TODO: bugs.webrtc.org/447037083 - for some reason a "fake" hardware
 // encoder/decoder is used on
@@ -409,7 +389,6 @@ TimeDelta GetAverageRoundTripTime(
                             *stats[0]->responses_received);
 }
 
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
 struct SupportRfc8888Params {
   bool caller_supports_rfc8888 = false;
   bool callee_supports_rfc8888 = false;
@@ -418,11 +397,7 @@ struct SupportRfc8888Params {
 
 class FeedbackFormatTest : public TestWithParam<SupportRfc8888Params> {};
 
-<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
-TEST_P(FeedbackFormatTest, AdaptToLinkCapacityWithoutEcn) {
-=======
 TEST_P(FeedbackFormatTest, DISABLED_AdaptToLinkCapacityWithoutEcn) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
   const SupportRfc8888Params& params = GetParam();
   PeerScenario s(*testing::UnitTest::GetInstance()->current_test_info());
 
@@ -486,26 +461,15 @@ TEST_P(FeedbackFormatTest, DISABLED_AdaptToLinkCapacityWithoutEcn) {
   DataRate caller_available_bwe =
       GetAvailableSendBitrate(GetStatsAndProcess(s, caller));
   EXPECT_GT(caller_available_bwe.kbps(), 150);
-<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
-  EXPECT_LT(caller_available_bwe.kbps(), 300);
-=======
   EXPECT_LT(caller_available_bwe.kbps(), 260);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
 
   DataRate callee_available_bwe =
       GetAvailableSendBitrate(GetStatsAndProcess(s, callee));
   EXPECT_GT(callee_available_bwe.kbps(), 150);
-<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
-  EXPECT_LT(callee_available_bwe.kbps(), 300);
-
-  EXPECT_LT(GetAverageRoundTripTime(GetStatsAndProcess(s, caller)),
-            TimeDelta::Millis(250));
-=======
   EXPECT_LT(callee_available_bwe.kbps(), 260);
 
   EXPECT_LT(GetAverageRoundTripTime(GetStatsAndProcess(s, caller)),
             TimeDelta::Millis(200));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
 
   if (params.caller_supports_rfc8888 && params.callee_supports_rfc8888) {
     EXPECT_GT(caller_feedback_counter.FeedbackAccordingToRfc8888(), 0);
@@ -535,8 +499,6 @@ INSTANTIATE_TEST_SUITE_P(
       return info.param.test_suffix;
     });
 
-<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
-=======
 struct SendMediaTestResult {
   // Stats gathered at the end of the call.
   scoped_refptr<const RTCStatsReport> caller_stats;
@@ -712,7 +674,6 @@ TEST(L4STest, CallerAdaptsToLinkCapacity2MbpsRtt50msNoEcnWithGoogCC) {
 }
 #endif
 
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
 TEST(L4STest, SendsEct1WithScream) {
   PeerScenario s(*test_info_);
   PeerScenarioClient::Config config;
@@ -868,138 +829,19 @@ TEST(L4STest, SendsEct1AfterRouteChangeEvenIfBleached) {
   EXPECT_GT(not_ect_count_cellular, 0);
 }
 
-<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
-TEST(L4STest, SendsEct1AfterRouteChangeFromTurnWithBleachingToDirect) {
-  PeerScenario s(*test_info_);
-
-  EmulatedTURNServerConfig turn_config;
-  turn_config.client_config.type = AdapterType::ADAPTER_TYPE_WIFI;
-  turn_config.peer_config.type = AdapterType::ADAPTER_TYPE_WIFI;
-  EmulatedTURNServerInterface* turn_server =
-      s.net()->CreateTURNServer(turn_config);
-
-  auto ice_server_config = turn_server->GetIceServerConfig();
-  PeerConnectionInterface::IceServer ice_server;
-  ice_server.urls.push_back(ice_server_config.url);
-  ice_server.username = ice_server_config.username;
-  ice_server.password = ice_server_config.password;
-
-=======
 TEST(L4STest, RtcpSentAsEct1IfRtpWithEct1Received) {
   PeerScenario s(*test_info_);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
   PeerScenarioClient::Config config;
   config.field_trials.Set("WebRTC-RFC8888CongestionControlFeedback",
                           "Enabled,offer:true");
   config.field_trials.Set("WebRTC-Bwe-ScreamV2", "Enabled");
   config.disable_encryption = true;
-<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
-  config.endpoints = {{0, {.type = AdapterType::ADAPTER_TYPE_WIFI}}};
-  config.rtc_config.servers.push_back(ice_server);
-  PeerScenarioClient* caller = s.CreateClient(config);
-  PeerScenarioClient* callee = s.CreateClient(config);
-
-  // TURN routes for Caller.
-  // Route via a node that will not forward ECN markings to simulate TURN
-  // server bleaching. The route also has longer delay to test that packets will
-  // be delivered out of order when switching to a direct route.
-  s.net()->CreateRoute(
-      caller->endpoint(0),
-      {s.net()->NodeBuilder().delay_ms(50).Build().node,
-       s.net()->NodeBuilder().config({.forward_ecn = false}).Build().node},
-      turn_server->GetClientEndpoint());
-  s.net()->CreateRoute(turn_server->GetClientEndpoint(),
-                       {s.net()->NodeBuilder().Build().node},
-                       caller->endpoint(0));
-
-  // TURN routes for Callee.
-  s.net()->CreateRoute(callee->endpoint(0),
-                       {s.net()->NodeBuilder().Build().node},
-                       turn_server->GetClientEndpoint());
-  s.net()->CreateRoute(turn_server->GetClientEndpoint(),
-                       {s.net()->NodeBuilder().Build().node},
-                       callee->endpoint(0));
-
-  auto signaling =
-      s.ConnectSignaling(caller, callee, {s.net()->NodeBuilder().Build().node},
-                         {s.net()->NodeBuilder().Build().node});
-
-  PeerScenarioClient::VideoSendTrackConfig video_conf;
-  video_conf.generator.squares_video->framerate = 15;
-  caller->CreateVideo("VIDEO_1", video_conf);
-  signaling.StartIceSignaling();
-
-  std::atomic<bool> offer_exchange_done(false);
-  signaling.NegotiateSdp([&](const SessionDescriptionInterface& answer) {
-    offer_exchange_done = true;
-  });
-  ASSERT_TRUE(s.WaitAndProcess(&offer_exchange_done));
-  ASSERT_TRUE(offer_exchange_done);
-
-  /// Run simulation with the TURN route
-  s.ProcessMessages(TimeDelta::Seconds(5));
-  scoped_refptr<const RTCStatsReport> callee_stats =
-      GetStatsAndProcess(s, callee);
-  ASSERT_GT(GetPacketsReceived(callee_stats), 0);
-  EXPECT_LT(GetAverageRoundTripTime(callee_stats), TimeDelta::Millis(90));
-
-  // Create a direct route from caller to callee and callee to caller.
-  EmulatedNetworkNode* caller_to_direct_node =
-      s.net()->NodeBuilder().delay_ms(0).Build().node;
-  s.net()->CreateRoute(caller->endpoint(0), {caller_to_direct_node},
-                       callee->endpoint(0));
-  int ect1_count_direct = 0;
-  int not_ect_count_direct = 0;
-  caller_to_direct_node->router()->SetWatcher(
-      [&](const EmulatedIpPacket& packet) {
-        if (!IsRtpPacket(packet.data))
-          return;
-        if (packet.ecn == EcnMarking::kEct1) {
-          ++ect1_count_direct;
-        } else if (packet.ecn == EcnMarking::kNotEct) {
-          ++not_ect_count_direct;
-        }
-      });
-  s.net()->CreateRoute(callee->endpoint(0),
-                       {s.net()->NodeBuilder().Build().node},
-                       caller->endpoint(0));
-
-  s.ProcessMessages(TimeDelta::Seconds(10));
-  // Expect that eventually, caller switches to sending packets with ect1 on the
-  // direct route.
-  EXPECT_GT(ect1_count_direct, 0);
-  EXPECT_EQ(not_ect_count_direct, 0);
-}
-
-TEST(L4STest, RtcpSentAsEct1IfRtpWithEct1Received) {
-  int ecn_count = 0;
-  int not_ect_count = 0;
-  PeerScenario s(*test_info_);
-  PeerScenarioClient::Config config;
-  config.field_trials.Set("WebRTC-RFC8888CongestionControlFeedback",
-                          "Enabled,offer:true");
-  config.field_trials.Set("WebRTC-Bwe-ScreamV2", "Enabled");
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
   PeerScenarioClient* caller = s.CreateClient(config);
   PeerScenarioClient* callee = s.CreateClient(config);
   EmulatedNetworkNode* caller_to_callee_node =
       s.net()->NodeBuilder().Build().node;
   EmulatedNetworkNode* callee_to_caller_node =
       s.net()->NodeBuilder().Build().node;
-<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
-  // Callee is not sending media - Thus if Stun is ignored, most packets should
-  // be RTCP. Negotiation is still done using not ECT.
-  callee_to_caller_node->router()->SetWatcher(
-      [&](const EmulatedIpPacket& packet) {
-        if (StunMessage::ValidateFingerprint(packet.data)) {
-          return;
-        }
-        if (packet.ecn == EcnMarking::kEct1 || packet.ecn == EcnMarking::kCe) {
-          ecn_count++;
-        } else {
-          not_ect_count++;
-=======
   int rtcp_ecn_count = 0;
   int rtcp_not_ect_count = 0;
   callee_to_caller_node->router()->SetWatcher(
@@ -1011,7 +853,6 @@ TEST(L4STest, RtcpSentAsEct1IfRtpWithEct1Received) {
           rtcp_ecn_count++;
         } else {
           rtcp_not_ect_count++;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
         }
       });
 
@@ -1024,23 +865,11 @@ TEST(L4STest, RtcpSentAsEct1IfRtpWithEct1Received) {
                      {callee_to_caller_node});
   s.ProcessMessages(TimeDelta::Seconds(1));
 
-<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
-  // Feedback is sent every 25ms. Expect more than 20 feedback packets during
-  // 1S.
-  EXPECT_GT(ecn_count, 20);
-  EXPECT_LT(not_ect_count, 10);
-}
-
-TEST(L4STest, RtcpSentAsNotEctIfRtpEcnBleached) {
-  int rtcp_ecn_count = 0;
-  int rtcp_not_ect_count = 0;
-=======
   EXPECT_GT(rtcp_ecn_count, 0);
   EXPECT_EQ(rtcp_not_ect_count, 0);
 }
 
 TEST(L4STest, RtcpSentAsNotEctIfRtpEcnBleached) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
   PeerScenario s(*test_info_);
   PeerScenarioClient::Config config;
   config.field_trials.Set("WebRTC-RFC8888CongestionControlFeedback",
@@ -1054,11 +883,8 @@ TEST(L4STest, RtcpSentAsNotEctIfRtpEcnBleached) {
       s.net()->NodeBuilder().config({.forward_ecn = false}).Build().node;
   EmulatedNetworkNode* callee_to_caller_node =
       s.net()->NodeBuilder().Build().node;
-<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
-=======
   int rtcp_ecn_count = 0;
   int rtcp_not_ect_count = 0;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
 
   callee_to_caller_node->router()->SetWatcher(
       [&](const EmulatedIpPacket& packet) {
@@ -1073,11 +899,7 @@ TEST(L4STest, RtcpSentAsNotEctIfRtpEcnBleached) {
       });
 
   PeerScenarioClient::VideoSendTrackConfig video_conf;
-<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
-  video_conf.generator.squares_video->framerate = 30;
-=======
   video_conf.generator.squares_video->framerate = 15;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
   caller->CreateAudio("AUDIO_1", AudioOptions());
   caller->CreateVideo("VIDEO_1", video_conf);
   s.SimpleConnection(caller, callee, {caller_to_callee_node},
@@ -1088,221 +910,5 @@ TEST(L4STest, RtcpSentAsNotEctIfRtpEcnBleached) {
   EXPECT_GT(rtcp_not_ect_count, 0);
 }
 
-<<<<<<< HEAD:third_party/webrtc/test/peer_scenario/bwe_integration_tests/l4s_test.cc
-#if !defined(WEBRTC_IOS)
-// TODO(bugs.webrtc.org/42225697): investigate why CcFbSendRateAdaptation fails
-// on iOS bots.
-enum class TestVariant { kCcfbWithGoogCc, kCcfbWithScreamV2 };
-
-// These tests that the bitrate used by Congestion Control feedback is reduced
-// at extremely low available bandwidths. If the sender stops utilizing the
-// capacity, the bitrate may increase again.
-class CcFbSendRateAdaptation : public TestWithParam<TestVariant> {
- protected:
-  struct TestParticipants {
-    PeerScenarioClient* caller;
-    PeerScenarioClient* callee;
-    EmulatedNetworkNode* caller_to_callee;
-    EmulatedNetworkNode* callee_to_caller;
-    std::optional<PeerScenarioClient::AudioSendTrack> caller_audio;
-  };
-
-  TestParticipants SetupSendAudioOnLowCapacityUplink(
-      PeerScenario& s,
-      TestVariant variant,
-      bool caller_sends_audio = true) {
-    PeerScenarioClient::Config caller_config;
-    PeerScenarioClient::Config callee_config;
-
-    if (variant == TestVariant::kCcfbWithGoogCc) {
-      caller_config.field_trials.Set(
-          "WebRTC-RFC8888CongestionControlFeedback",
-          "Enabled,offer:true,feedback_fraction:0.1");
-      callee_config.field_trials.Set("WebRTC-RFC8888CongestionControlFeedback",
-                                     "Enabled,feedback_fraction:0.1");
-    } else if (variant == TestVariant::kCcfbWithScreamV2) {
-      caller_config.field_trials.Set(
-          "WebRTC-RFC8888CongestionControlFeedback",
-          "Enabled,offer:true,feedback_fraction:0.1");
-      caller_config.field_trials.Set("WebRTC-Bwe-ScreamV2", "Enabled");
-      callee_config.field_trials.Set("WebRTC-RFC8888CongestionControlFeedback",
-                                     "Enabled,feedback_fraction:0.1");
-      callee_config.field_trials.Set("WebRTC-Bwe-ScreamV2", "Enabled");
-    }
-
-    PeerScenarioClient* caller = s.CreateClient(caller_config);
-    PeerScenarioClient* callee = s.CreateClient(callee_config);
-
-    EmulatedNetworkNode* caller_to_callee = s.net()
-                                                ->NodeBuilder()
-                                                .capacity_kbps(50)
-                                                .delay_ms(50)
-                                                .packet_queue_length(20)
-                                                .Build()
-                                                .node;
-    EmulatedNetworkNode* callee_to_caller =
-        s.net()->NodeBuilder().delay_ms(50).capacity_kbps(100000).Build().node;
-
-    std::optional<PeerScenarioClient::AudioSendTrack> caller_audio;
-    // Caller maybe sends AUDIO only, but wants to receive VIDEO from callee.
-    if (caller_sends_audio) {
-      caller_audio = caller->CreateAudio("AUDIO", AudioOptions());
-      RtpParameters caller_audio_params = caller_audio->sender->GetParameters();
-      for (auto& encoding : caller_audio_params.encodings) {
-        // Adaptive frame length allow audio to adapt to BWE.
-        encoding.adaptive_ptime = true;
-      }
-      caller_audio->sender->SetParameters(caller_audio_params);
-    } else {
-      RTCErrorOr<scoped_refptr<RtpTransceiverInterface>> audio_transceiver =
-          caller->pc()->AddTransceiver(MediaType::AUDIO);
-      RTC_CHECK(audio_transceiver.ok());
-      audio_transceiver.value()->SetDirectionWithError(
-          RtpTransceiverDirection::kRecvOnly);
-    }
-    RTCErrorOr<scoped_refptr<RtpTransceiverInterface>> transceiver =
-        caller->pc()->AddTransceiver(MediaType::VIDEO);
-    RTC_CHECK(transceiver.ok());
-    transceiver.value()->SetDirectionWithError(
-        RtpTransceiverDirection::kRecvOnly);
-
-    // Callee sends AUDIO and VIDEO.
-    PeerScenarioClient::VideoSendTrackConfig video_conf;
-    video_conf.generator.squares_video->framerate = 30;
-    video_conf.generator.squares_video->width = 1280;
-    video_conf.generator.squares_video->height = 720;
-    callee->CreateVideo("VIDEO", video_conf);
-    PeerScenarioClient::AudioSendTrack callee_audio =
-        callee->CreateAudio("AUDIO", AudioOptions());
-    RtpParameters callee_audio_params = callee_audio.sender->GetParameters();
-    for (auto& encoding : callee_audio_params.encodings) {
-      encoding.adaptive_ptime = true;
-    }
-    callee_audio.sender->SetParameters(callee_audio_params);
-
-    s.SimpleConnection(caller, callee, {caller_to_callee}, {callee_to_caller});
-
-    // Allow 10S for BWE convergence and leaving ALR.
-    s.ProcessMessages(TimeDelta::Seconds(10));
-
-    if (caller_sends_audio) {
-      EXPECT_THAT(GetAvailableSendBitrate(GetStatsAndProcess(s, caller)).kbps(),
-                  AllOf(Ge(20), Lt(80)));
-    }
-
-    // Callee has unlimited capacity (100 Mbps). BWE should be high, but due to
-    // very infrequent feedback, we can not expect it to adapt very fast.
-    EXPECT_THAT(GetAvailableSendBitrate(GetStatsAndProcess(s, callee)).kbps(),
-                Gt(500));
-
-    return TestParticipants{
-        .caller = caller,
-        .callee = callee,
-        .caller_to_callee = caller_to_callee,
-        .callee_to_caller = callee_to_caller,
-        .caller_audio = caller_audio,
-    };
-  }
-};
-
-TEST_P(CcFbSendRateAdaptation, RtcpRateReducedWhenLinkIsUtilized) {
-  const TestVariant variant = GetParam();
-  PeerScenario s(*testing::UnitTest::GetInstance()->current_test_info());
-
-  TestParticipants setup = SetupSendAudioOnLowCapacityUplink(s, variant);
-
-  Timestamp start_time = s.net()->Now();
-  std::atomic<int64_t> total_rtcp_bytes = 0;
-  setup.caller_to_callee->router()->SetWatcher(
-      [&](const EmulatedIpPacket& packet) {
-        if (IsRtcpPacket(packet.data)) {
-          total_rtcp_bytes += packet.ip_packet_size();
-        }
-      });
-  s.ProcessMessages(TimeDelta::Seconds(10));
-  TimeDelta duration = s.net()->Now() - start_time;
-
-  DataRate average_rtcp_bitrate =
-      DataSize::Bytes(total_rtcp_bytes.load()) / duration;
-  RTC_LOG(LS_INFO) << "Average RTCP traffic bitrate: " << average_rtcp_bitrate;
-
-  // Allow RTCP to take up to 15% of the link capacity. (Feedback, NACK and SR
-  // RR)
-  EXPECT_LT(average_rtcp_bitrate, DataRate::KilobitsPerSec(50) * 0.15);
-}
-
-TEST_P(CcFbSendRateAdaptation, RtcpRateIncreaseWhenAudioStopSending) {
-  const TestVariant variant = GetParam();
-  PeerScenario s(*testing::UnitTest::GetInstance()->current_test_info());
-
-  TestParticipants setup = SetupSendAudioOnLowCapacityUplink(s, variant);
-
-  // Stop sending audio. Bwe should enter ALR and thus allow more RTCP traffic.
-  EXPECT_TRUE(setup.caller_audio->sender->SetTrack(nullptr));
-
-  Timestamp start_time = s.net()->Now();
-  std::atomic<int64_t> total_rtcp_bytes = 0;
-  setup.caller_to_callee->router()->SetWatcher(
-      [&](const EmulatedIpPacket& packet) {
-        if (IsRtcpPacket(packet.data)) {
-          total_rtcp_bytes += packet.ip_packet_size();
-        }
-      });
-
-  s.ProcessMessages(TimeDelta::Seconds(15));
-  TimeDelta duration = s.net()->Now() - start_time;
-
-  DataRate average_rtcp_bitrate =
-      DataSize::Bytes(total_rtcp_bytes.load()) / duration;
-  RTC_LOG(LS_INFO) << "Average RTCP traffic bitrate when audio sender stops: "
-                   << average_rtcp_bitrate;
-
-  EXPECT_GT(average_rtcp_bitrate, DataRate::KilobitsPerSec(50) * 0.15);
-}
-
-TEST_P(CcFbSendRateAdaptation, RtcpRateHigherWhenCallerNeverSendsMedia) {
-  const TestVariant variant = GetParam();
-  PeerScenario s(*testing::UnitTest::GetInstance()->current_test_info());
-
-  TestParticipants setup = SetupSendAudioOnLowCapacityUplink(
-      s, variant, /*caller_sends_audio=*/false);
-
-  Timestamp start_time = s.net()->Now();
-  std::atomic<int64_t> total_rtcp_bytes = 0;
-  setup.caller_to_callee->router()->SetWatcher(
-      [&](const EmulatedIpPacket& packet) {
-        if (IsRtcpPacket(packet.data)) {
-          total_rtcp_bytes += packet.ip_packet_size();
-        }
-      });
-  s.ProcessMessages(TimeDelta::Seconds(10));
-  TimeDelta duration = s.net()->Now() - start_time;
-
-  DataRate average_rtcp_bitrate =
-      DataSize::Bytes(total_rtcp_bytes.load()) / duration;
-  RTC_LOG(LS_INFO)
-      << "Average RTCP traffic bitrate when caller does not send media: "
-      << average_rtcp_bitrate;
-
-  EXPECT_GT(average_rtcp_bitrate, DataRate::KilobitsPerSec(50) * 0.15);
-}
-
-INSTANTIATE_TEST_SUITE_P(L4STest,
-                         CcFbSendRateAdaptation,
-                         testing::Values(TestVariant::kCcfbWithGoogCc,
-                                         TestVariant::kCcfbWithScreamV2),
-                         [](const testing::TestParamInfo<TestVariant>& info) {
-                           switch (info.param) {
-                             case TestVariant::kCcfbWithGoogCc:
-                               return "CcfbWithGoogCc";
-                             case TestVariant::kCcfbWithScreamV2:
-                               return "CcfbWithScreamV2";
-                           }
-                           RTC_CHECK_NOTREACHED();
-                         });
-#endif  // !defined(WEBRTC_IOS)
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/webrtc/test/peer_scenario/tests/l4s_test.cc
 }  // namespace
 }  // namespace webrtc

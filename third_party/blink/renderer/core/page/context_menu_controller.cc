@@ -452,7 +452,6 @@ bool ContextMenuController::ShouldShowContextMenuFromTouch(
          !data.selected_text.empty();
 }
 
-<<<<<<< HEAD
 bool ContextMenuController::ShowContextMenu(
     LocalFrame* frame,
     const PhysicalOffset& point,
@@ -464,20 +463,7 @@ bool ContextMenuController::ShowContextMenu(
     LocalFrame* frame,
     const PhysicalOffset& point,
     ui::mojom::blink::MenuSourceType source_type,
-    const MouseEvent* mouse_event) {
-=======
-bool ContextMenuController::ShowContextMenu(LocalFrame* frame,
-                                            const PhysicalOffset& point,
-                                            WebMenuSourceType source_type) {
-  return ShowContextMenu(frame, point, source_type, nullptr);
-}
-
-bool ContextMenuController::ShowContextMenu(LocalFrame* frame,
-                                            const PhysicalOffset& point,
-                                            WebMenuSourceType source_type,
-                                            const MouseEvent* mouse_event) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  // Displaying the context menu in this function is a big hack as we don't
+    const MouseEvent* mouse_event) {  // Displaying the context menu in this function is a big hack as we don't
   // have context, i.e. whether this is being invoked via a script or in
   // response to user input (Mouse event WM_RBUTTONDOWN,
   // Keyboard events KeyVK_APPS, Shift+F10). Check if this is being invoked

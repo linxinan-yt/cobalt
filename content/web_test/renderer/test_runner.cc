@@ -315,12 +315,8 @@ class TestRunnerBindings final : public gin::Wrappable<TestRunnerBindings> {
   void ForceNextWebGLContextCreationToFail();
   #if !BUILDFLAG(IS_COBALT)
   void GetBluetoothManualChooserEvents(v8::Local<v8::Function> callback);
-<<<<<<< HEAD
-  gin::Dictionary GetClipboardReadState(v8::Isolate* isolate);
-=======
-  #endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  void GetManifestThen(v8::Local<v8::Function> callback);
+#endif
+  gin::Dictionary GetClipboardReadState(v8::Isolate* isolate);  void GetManifestThen(v8::Local<v8::Function> callback);
   std::string GetWritableDirectory();
   void InsertStyleSheet(const std::string& source_code);
   void UpdateAllLifecyclePhasesAndComposite();
@@ -686,17 +682,13 @@ gin::ObjectTemplateBuilder TestRunnerBindings::GetObjectTemplateBuilder(
       // Returns the events recorded since the last call to this function.
       .SetMethod("getBluetoothManualChooserEvents",
                  &TestRunnerBindings::GetBluetoothManualChooserEvents)
-<<<<<<< HEAD
+#endif
       // Returns the clipboard read tracking state from the mock clipboard host.
       // The returned object has boolean properties: readTextCalled,
       // readHtmlCalled, readUnsanitizedCustomFormatCalled,
       // readAvailableFormatsCalled.
       .SetMethod("getClipboardReadState",
-                 &TestRunnerBindings::GetClipboardReadState)
-=======
-#endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      .SetMethod("getManifestThen", &TestRunnerBindings::GetManifestThen)
+                 &TestRunnerBindings::GetClipboardReadState)      .SetMethod("getManifestThen", &TestRunnerBindings::GetManifestThen)
       // Returns the absolute path to a directory this test can write data in.
       // This returns the path to a fresh empty directory every time this method
       // is called. Additionally when this method is called any previously

@@ -27,22 +27,15 @@ import {resolveTableDefinition} from '../widgets/sql/table/columns';
 import type {Trace} from '../../public/trace';
 import {MenuItem, PopupMenu} from '../../widgets/menu';
 import {addEphemeralTab} from './add_ephemeral_tab';
-<<<<<<< HEAD
 import type {Tab} from '../../public/tab';
 import {
   type Filter,
   Filters,
   renderFilters,
-} from '../widgets/sql/table/filters';
-=======
-import {Tab} from '../../public/tab';
-import {Filter, Filters, renderFilters} from '../widgets/sql/table/filters';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {PivotTableState} from '../widgets/sql/pivot_table/pivot_table_state';
+} from '../widgets/sql/table/filters';import {PivotTableState} from '../widgets/sql/pivot_table/pivot_table_state';
 import type {TableColumn} from '../widgets/sql/table/table_column';
 import {PivotTable} from '../widgets/sql/pivot_table/pivot_table';
 import {pivotId} from '../widgets/sql/pivot_table/ids';
-<<<<<<< HEAD
 import {BarChart} from '../widgets/charts/bar_chart';
 import {SQLBarChartLoader} from '../widgets/charts/bar_chart_loader';
 import {HistogramSvg} from '../widgets/charts_svg/histogram_svg';
@@ -51,14 +44,7 @@ import {sqlColumnId, type SqlColumn} from '../widgets/sql/table/sql_column';
 import {buildSqlQuery} from '../widgets/sql/table/query_builder';
 import {uuidv4} from '../../base/uuid';
 import {StandardFilters} from '../widgets/sql/table/filters';
-import {type TabOption, TabStrip} from '../../widgets/tab_strip';
-=======
-import {SqlBarChart, SqlBarChartState} from '../widgets/charts/sql_bar_chart';
-import {SqlHistogram, SqlHistogramState} from '../widgets/charts/sql_histogram';
-import {sqlColumnId} from '../widgets/sql/table/sql_column';
-import {TabOption, TabStrip} from '../../widgets/tabs';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {Gate} from '../../base/mithril_utils';
+import {type TabOption, TabStrip} from '../../widgets/tab_strip';import {Gate} from '../../base/mithril_utils';
 import {isQuantitativeType} from '../../trace_processor/perfetto_sql_type';
 
 export interface AddSqlTableTabParams {
@@ -113,14 +99,8 @@ class SqlTableTab implements Tab {
   private selectedTab: string;
 
   private pivots: PivotTableState[] = [];
-<<<<<<< HEAD
-  private barCharts: BarChartTabState[] = [];
+private barCharts: BarChartTabState[] = [];
   private histograms: HistogramTabState[] = [];
-=======
-  private barCharts: SqlBarChartState[] = [];
-  private histograms: SqlHistogramState[] = [];
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   private getTableButtons() {
     const range = this.tableState.getDisplayedRange();
     const rowCount = this.tableState.getTotalRowCount();
@@ -209,25 +189,13 @@ class SqlTableTab implements Tab {
         label: 'Add bar chart',
         icon: Icons.Chart,
         onclick: () => {
-<<<<<<< HEAD
-          const uuid = uuidv4();
-          const columnName = sqlColumnId(column.column);
-          const state: BarChartTabState = {
-            uuid,
-            column: column.column,
-            columnName,
-          };
-          this.selectedTab = uuid;
-=======
-          const state = new SqlBarChartState({
+const state = new SqlBarChartState({
             trace: this.tableState.trace,
             sqlSource: this.tableState.config.name,
             column: column.column,
             filters: this.tableState.filters,
           });
-          this.selectedTab = state.uuid;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          this.barCharts.push(state);
+          this.selectedTab = state.uuid;          this.barCharts.push(state);
         },
       }),
       (column.type === undefined ? true : isQuantitativeType(column.type)) &&
@@ -235,25 +203,13 @@ class SqlTableTab implements Tab {
           label: 'Add histogram',
           icon: Icons.Chart,
           onclick: () => {
-<<<<<<< HEAD
-            const uuid = uuidv4();
-            const columnName = sqlColumnId(column.column);
-            const state: HistogramTabState = {
-              uuid,
-              column: column.column,
-              columnName,
-            };
-            this.selectedTab = uuid;
-=======
-            const state = new SqlHistogramState({
+const state = new SqlHistogramState({
               trace: this.tableState.trace,
               sqlSource: this.tableState.config.name,
               column: column.column,
               filters: this.tableState.filters,
             });
-            this.selectedTab = state.uuid;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            this.histograms.push(state);
+            this.selectedTab = state.uuid;            this.histograms.push(state);
           },
         }),
     );
@@ -285,11 +241,7 @@ class SqlTableTab implements Tab {
         }),
         content: m(PivotTable, {
           state: pivot,
-<<<<<<< HEAD
-          getSelectableColumns: () => getSelectableColumns(this.tableState),
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          extraRowButton: (node) =>
+getSelectableColumns: () => getSelectableColumns(this.tableState),          extraRowButton: (node) =>
             // Do not show any buttons for root as it doesn't have any filters anyway.
             !node.isRoot() &&
             m(
@@ -319,8 +271,7 @@ class SqlTableTab implements Tab {
     }
 
     for (const chart of this.barCharts) {
-<<<<<<< HEAD
-      // Build query with current filters
+// Build query with current filters
       const query = buildSqlQuery({
         table: this.tableState.config.name,
         filters: this.tableState.filters.get(),
@@ -346,45 +297,16 @@ class SqlTableTab implements Tab {
         rightIcon: m(Button, {
           icon: Icons.Close,
           onclick: () => {
-            chart.loader?.dispose();
-=======
-      tabs.push({
-        key: chart.uuid,
-        title: `Bar chart: ${sqlColumnId(chart.args.column)}`,
-        rightIcon: m(Button, {
-          icon: Icons.Close,
-          onclick: () => {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            this.barCharts = this.barCharts.filter(
+            chart.loader?.dispose();            this.barCharts = this.barCharts.filter(
               (c) => c.uuid !== chart.uuid,
             );
           },
         }),
-<<<<<<< HEAD
-        content: m(BarChart, {
-          data: result.data,
-          orientation: 'horizontal',
-          dimensionLabel: chart.columnName,
-          measureLabel: 'Count',
-          fillParent: true,
-          onBrush: (labels) => {
-            this.tableState.filters.addFilter(
-              StandardFilters.valueIsOneOf(
-                chart.column,
-                labels.map((l) => (l === '(null)' ? null : l)),
-              ),
-            );
-          },
-        }),
-=======
-        content: m(SqlBarChart, {state: chart}),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      });
+content: m(SqlBarChart, {state: chart}),      });
     }
 
     for (const histogram of this.histograms) {
-<<<<<<< HEAD
-      // Build query with current filters
+// Build query with current filters
       const query = buildSqlQuery({
         table: this.tableState.config.name,
         filters: this.tableState.filters.get(),
@@ -409,31 +331,17 @@ class SqlTableTab implements Tab {
         rightIcon: m(Button, {
           icon: Icons.Close,
           onclick: () => {
-            histogram.loader?.dispose();
-=======
-      tabs.push({
-        key: histogram.uuid,
-        title: `Histogram: ${sqlColumnId(histogram.args.column)}`,
-        rightIcon: m(Button, {
-          icon: Icons.Close,
-          onclick: () => {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            this.histograms = this.histograms.filter(
+            histogram.loader?.dispose();            this.histograms = this.histograms.filter(
               (h) => h.uuid !== histogram.uuid,
             );
           },
         }),
-<<<<<<< HEAD
-        content: m(HistogramSvg, {
+content: m(HistogramSvg, {
           fillParent: true,
           data: result.data,
           xAxisLabel: histogram.columnName,
           yAxisLabel: 'Count',
-        }),
-=======
-        content: m(SqlHistogram, {state: histogram}),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      });
+        }),      });
     }
 
     // Fall back to the table view if the selected tab was closed.

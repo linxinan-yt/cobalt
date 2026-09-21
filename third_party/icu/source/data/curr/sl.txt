@@ -2113,14 +2113,10 @@ sl{
             other{"zambijskih kvač"}
             two{"zambijski kvači"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             few{"zimbabvejska zlata"}
             one{"zimbabvejsko zlato"}
             other{"zimbabvejsko zlato"}
             two{"zimbabvejska zlata"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

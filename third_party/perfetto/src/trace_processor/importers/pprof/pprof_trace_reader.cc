@@ -19,11 +19,7 @@
 #include <algorithm>
 #include <cstddef>
 #include <cstdint>
-<<<<<<< HEAD
-#include <memory>
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include <optional>
+#include <memory>#include <optional>
 #include <string>
 #include <vector>
 
@@ -33,11 +29,7 @@
 #include "perfetto/protozero/proto_utils.h"
 #include "perfetto/trace_processor/trace_blob_view.h"
 #include "src/trace_processor/importers/common/address_range.h"
-<<<<<<< HEAD
-#include "src/trace_processor/importers/common/builtin_trace_importers.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "src/trace_processor/importers/common/create_mapping_params.h"
+#include "src/trace_processor/importers/common/builtin_trace_importers.h"#include "src/trace_processor/importers/common/create_mapping_params.h"
 #include "src/trace_processor/importers/common/mapping_tracker.h"
 #include "src/trace_processor/importers/common/stack_profile_tracker.h"
 #include "src/trace_processor/importers/common/virtual_memory_mapping.h"
@@ -45,14 +37,9 @@
 #include "src/trace_processor/tables/profiler_tables_py.h"
 #include "src/trace_processor/types/trace_processor_context.h"
 #include "src/trace_processor/util/build_id.h"
-<<<<<<< HEAD
 #include "src/trace_processor/util/trace_type.h"
 
-#include "perfetto/protozero/proto_decoder.h"
-=======
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "protos/third_party/pprof/profile.pbzero.h"
+#include "perfetto/protozero/proto_decoder.h"#include "protos/third_party/pprof/profile.pbzero.h"
 
 namespace perfetto::third_party::perftools::profiles::pbzero {
 using Profile = ::perfetto::third_party::perftools::profiles::pbzero::Profile;
@@ -84,8 +71,7 @@ PprofTraceReader::~PprofTraceReader() = default;
 
 base::Status PprofTraceReader::Parse(TraceBlobView blob) {
   buffer_.insert(buffer_.end(), blob.data(), blob.data() + blob.size());
-<<<<<<< HEAD
-  parsed_any_data_ = true;
+parsed_any_data_ = true;
   return base::OkStatus();
 }
 
@@ -105,19 +91,7 @@ base::Status PprofTraceReader::OnPushDataToSorter() {
   // Clear buffer for idempotency
   buffer_.clear();
 
-  return status;
-=======
-  return base::OkStatus();
-}
-
-base::Status PprofTraceReader::NotifyEndOfFile() {
-  if (buffer_.empty()) {
-    return base::ErrStatus("Empty pprof data");
-  }
-
-  return ParseProfile();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  return status;}
 
 base::Status PprofTraceReader::ParseProfile() {
   using namespace perfetto::third_party::perftools::profiles::pbzero;
@@ -300,12 +274,7 @@ base::Status PprofTraceReader::ParseProfile() {
     // Link the frame to the symbol set if we created any symbols
     if (has_symbols) {
       auto* frames = storage->mutable_stack_profile_frame_table();
-<<<<<<< HEAD
-      auto frame_row = (*frames)[frame_id];
-=======
-      auto frame_row = *frames->FindById(frame_id);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      frame_row.set_symbol_set_id(symbol_set_id);
+auto frame_row = *frames->FindById(frame_id);      frame_row.set_symbol_set_id(symbol_set_id);
     }
   }
 
@@ -388,7 +357,6 @@ base::Status PprofTraceReader::ParseProfile() {
   return base::OkStatus();
 }
 
-<<<<<<< HEAD
 namespace {
 
 bool IsPprofProfile(const uint8_t* data, size_t size) {
@@ -473,8 +441,4 @@ PprofImporter::~PprofImporter() = default;
 
 std::unique_ptr<TraceImporterBase> CreatePprofImporter() {
   return std::make_unique<PprofImporter>();
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}  // namespace perfetto::trace_processor
+}}  // namespace perfetto::trace_processor

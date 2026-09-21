@@ -665,28 +665,17 @@ TEST_F(RtpVp9RefFinderTest, StashedFramesDoNotWrapTl0Backwards) {
 }
 
 TEST_F(RtpVp9RefFinderTest, TemporalIndexTooHighDropsFrame) {
-<<<<<<< HEAD
-  Insert(Frame().Pid(0).SidAndTid(0, kMaxTemporalStreams).AsKeyFrame());
-=======
-  // kMaxTemporalLayers is 5.
-  Insert(Frame().Pid(0).SidAndTid(0, 5).AsKeyFrame());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  EXPECT_THAT(frames_, SizeIs(0));
+Insert(Frame().Pid(0).SidAndTid(0, kMaxTemporalStreams).AsKeyFrame());  EXPECT_THAT(frames_, SizeIs(0));
 
   // Using a GoF frame type.
   GofInfoVP9 ss;
   ss.SetGofInfoVP9(kTemporalStructureMode1);
-<<<<<<< HEAD
-  Insert(Frame()
+Insert(Frame()
              .Pid(1)
              .SidAndTid(0, kMaxTemporalStreams)
              .Tl0(0)
              .AsKeyFrame()
-             .Gof(&ss));
-=======
-  Insert(Frame().Pid(1).SidAndTid(0, 5).Tl0(0).AsKeyFrame().Gof(&ss));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  EXPECT_THAT(frames_, SizeIs(0));
+             .Gof(&ss));  EXPECT_THAT(frames_, SizeIs(0));
 }
 
 TEST_F(RtpVp9RefFinderTest, SpatialIndexTooHighDropsFrame) {
@@ -705,7 +694,6 @@ TEST_F(RtpVp9RefFinderTest, SpatialIndexTooHighDropsFrame) {
   EXPECT_THAT(frames_, SizeIs(0));
 }
 
-<<<<<<< HEAD
 TEST_F(RtpVp9RefFinderTest, FlexibleModeTooManyReferencesDropsFrame) {
   Insert(Frame().Pid(0).SidAndTid(0, 0).AsKeyFrame());
   EXPECT_THAT(frames_, SizeIs(1));
@@ -758,8 +746,4 @@ TEST_F(RtpVp9RefFinderTest, GofUpSwitchMultipleRefs) {
   Insert(Frame().Pid(2).SidAndTid(0, 2).Tl0(0));
   EXPECT_THAT(frames_, SizeIs(3));
   EXPECT_THAT(frames_, HasFrameWithIdAndRefs(10, {5}));
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}  // namespace webrtc
+}}  // namespace webrtc

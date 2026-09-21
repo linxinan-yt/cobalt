@@ -12,14 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-<<<<<<< HEAD
 import type {RecordProbe, RecordSubpage} from '../config/config_interfaces';
-import type {TraceConfigBuilder} from '../config/trace_config_builder';
-=======
-import {RecordProbe, RecordSubpage} from '../config/config_interfaces';
-import {TraceConfigBuilder} from '../config/trace_config_builder';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {Toggle} from './widgets/toggle';
+import type {TraceConfigBuilder} from '../config/trace_config_builder';import {Toggle} from './widgets/toggle';
 import {Textarea} from './widgets/textarea';
 import {splitLinesNonEmpty} from '../../../base/string_utils';
 import {Slider} from './widgets/slider';

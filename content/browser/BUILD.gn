@@ -2814,12 +2814,8 @@ source_set("browser") {
       "renderer_host/render_widget_host_view_ios.mm",
       "renderer_host/web_menu_runner_ios.h",
       "renderer_host/web_menu_runner_ios.mm",
-<<<<<<< HEAD
-      "speech/tts_ios.mm",
-=======
-      "web_contents/web_contents_impl_ios.mm",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      "web_contents/web_contents_view_ios.h",
+"speech/tts_ios.mm",
+      "web_contents/web_contents_impl_ios.mm",      "web_contents/web_contents_view_ios.h",
       "web_contents/web_contents_view_ios.mm",
     ]
 
@@ -3669,15 +3665,15 @@ source_set("browser") {
     deps += [ "//ash/constants" ]
   }
 
-<<<<<<< HEAD
-  if (enable_vrp_flags) {
+if (enable_vrp_flags) {
     sources += [
       "vrp_flags/vrp_flags_factory_impl.cc",
       "vrp_flags/vrp_flags_factory_impl.h",
     ]
     deps += [ "//components/vrp_flags" ]
     public_deps += [ "//components/vrp_flags:mojom" ]
-=======
+  }
+
   # If in the future privacy sandbox components are removed from the code base, ignore this if block.
   if (!enable_privacy_sandbox_apis) {
     _filtered_sources =
@@ -3800,9 +3796,7 @@ source_set("browser") {
     deps -= [
       "//content/browser/devtools:devtools_background_services_proto",
       "//content/browser/devtools:protocol_sources",
-    ]
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    ]  }
 }
 
 if (is_android) {

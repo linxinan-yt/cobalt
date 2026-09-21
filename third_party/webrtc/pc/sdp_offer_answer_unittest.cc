@@ -2120,8 +2120,7 @@ TEST_F(SdpOfferAnswerTest, SctpInitDisabled) {
   auto pc2 = CreatePeerConnection("WebRTC-Sctp-Snap/Disabled/");
   EXPECT_TRUE(pc1->pc()->CreateDataChannelOrError("dc", nullptr).ok());
   auto offer = pc1->CreateOfferAndSetAsLocal();
-<<<<<<< HEAD
-  ASSERT_THAT(offer, NotNull());
+ASSERT_THAT(offer, NotNull());
 
   {
     auto& contents = offer->description()->contents();
@@ -2160,10 +2159,6 @@ TEST_F(SdpOfferAnswerTest, SctpInitWithConfig) {
   EXPECT_TRUE(pc1->pc()->CreateDataChannelOrError("dc", nullptr).ok());
   auto offer = pc1->CreateOfferAndSetAsLocal();
   ASSERT_THAT(offer, NotNull());
-=======
-  ASSERT_NE(offer, nullptr);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   {
     auto& contents = offer->description()->contents();
     ASSERT_EQ(contents.size(), 1u);
@@ -2171,22 +2166,12 @@ TEST_F(SdpOfferAnswerTest, SctpInitWithConfig) {
     ASSERT_TRUE(media_description);
     auto* sctp_description = media_description->as_sctp();
     ASSERT_TRUE(sctp_description);
-<<<<<<< HEAD
-    EXPECT_TRUE(sctp_description->sctp_init());
-=======
-    EXPECT_FALSE(sctp_description->sctp_init());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+EXPECT_TRUE(sctp_description->sctp_init());  }
 
   RTCError error;
   EXPECT_TRUE(pc2->SetRemoteDescription(std::move(offer)));
   auto answer = pc2->CreateAnswerAndSetAsLocal();
-<<<<<<< HEAD
-  ASSERT_THAT(answer, NotNull());
-=======
-  ASSERT_NE(answer, nullptr);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+ASSERT_THAT(answer, NotNull());
   {
     auto& contents = answer->description()->contents();
     ASSERT_EQ(contents.size(), 1u);
@@ -2194,12 +2179,7 @@ TEST_F(SdpOfferAnswerTest, SctpInitWithConfig) {
     ASSERT_TRUE(media_description);
     auto* sctp_description = media_description->as_sctp();
     ASSERT_TRUE(sctp_description);
-<<<<<<< HEAD
-    EXPECT_TRUE(sctp_description->sctp_init());
-=======
-    EXPECT_FALSE(sctp_description->sctp_init());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+EXPECT_TRUE(sctp_description->sctp_init());  }
 
   EXPECT_TRUE(pc1->SetRemoteDescription(std::move(answer)));
 }
@@ -2209,12 +2189,7 @@ TEST_F(SdpOfferAnswerTest, SctpInitWithTrial) {
   auto pc2 = CreatePeerConnection("WebRTC-Sctp-Snap/Enabled/");
   EXPECT_TRUE(pc1->pc()->CreateDataChannelOrError("dc", nullptr).ok());
   auto offer = pc1->CreateOfferAndSetAsLocal();
-<<<<<<< HEAD
-  ASSERT_THAT(offer, NotNull());
-=======
-  ASSERT_NE(offer, nullptr);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+ASSERT_THAT(offer, NotNull());
   {
     auto& contents = offer->description()->contents();
     ASSERT_EQ(contents.size(), 1u);
@@ -2228,12 +2203,7 @@ TEST_F(SdpOfferAnswerTest, SctpInitWithTrial) {
   RTCError error;
   EXPECT_TRUE(pc2->SetRemoteDescription(std::move(offer)));
   auto answer = pc2->CreateAnswerAndSetAsLocal();
-<<<<<<< HEAD
-  ASSERT_THAT(answer, NotNull());
-=======
-  ASSERT_NE(answer, nullptr);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+ASSERT_THAT(answer, NotNull());
   {
     auto& contents = answer->description()->contents();
     ASSERT_EQ(contents.size(), 1u);
@@ -2272,12 +2242,7 @@ TEST_F(SdpOfferAnswerTest, AnswerNoSctpInitInOffer) {
 
   EXPECT_TRUE(pc->SetRemoteDescription(std::move(desc)));
   auto answer = pc->CreateAnswerAndSetAsLocal();
-<<<<<<< HEAD
-  ASSERT_THAT(answer, NotNull());
-=======
-  ASSERT_NE(answer, nullptr);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  EXPECT_TRUE(answer->ToString(&sdp));
+ASSERT_THAT(answer, NotNull());  EXPECT_TRUE(answer->ToString(&sdp));
 
   auto& contents = answer->description()->contents();
   ASSERT_EQ(contents.size(), 1u);
@@ -2309,8 +2274,6 @@ TEST_F(SdpOfferAnswerTest, AnswerNonBase64SctpInit) {
   auto desc = CreateSessionDescription(SdpType::kOffer, sdp);
   EXPECT_EQ(desc, nullptr);
 }
-<<<<<<< HEAD
-
 TEST_F(SdpOfferAnswerTest,
        AnswerFromNewPeerAfterProvisionalAnswerFailsSnapSctpInit) {
   auto pc1 = CreatePeerConnection("WebRTC-Sctp-Snap/Enabled/");
@@ -2417,10 +2380,7 @@ TEST_F(SdpOfferAnswerTest, SubsequentOfferDoesNotNegotiateSctpInit) {
     sctp_description->set_sctp_init(example_init);
   }
   EXPECT_FALSE(pc1->SetRemoteDescription(std::move(reoffer)));
-}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#endif  // WEBRTC_HAVE_SCTP
+}#endif  // WEBRTC_HAVE_SCTP
 
 class SdpOfferAnswerDirectionTest
     : public SdpOfferAnswerTest,

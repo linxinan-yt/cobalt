@@ -1059,11 +1059,7 @@ qu{
         ZMW{
             other{"Kwacha zambiano"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             other{"Zimbabuemanta quri"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

@@ -741,12 +741,7 @@ TEST_F(SdpMungingTest, RemoveContentRejected) {
   std::unique_ptr<SessionDescriptionInterface> offer = pc->CreateOffer();
   auto& contents = offer->description()->contents();
   ASSERT_THAT(contents, SizeIs(1));
-<<<<<<< HEAD
-  std::string name = contents[0].mid();
-=======
-  auto name = contents[0].mid();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  EXPECT_TRUE(offer->description()->RemoveContentByName(contents[0].mid()));
+auto name = contents[0].mid();  EXPECT_TRUE(offer->description()->RemoveContentByName(contents[0].mid()));
   std::string sdp;
   offer->ToString(&sdp);
   auto modified_offer = CreateSessionDescription(
@@ -1081,8 +1076,7 @@ TEST_F(SdpMungingTest, VideoCodecsModifiedWithRawPacketization) {
   ASSERT_THAT(media_description, Not(IsNull()));
   std::vector<Codec> codecs = media_description->codecs();
   ASSERT_THAT(codecs, Not(SizeIs(0)));
-<<<<<<< HEAD
-  codecs[0].packetization = "raw";
+codecs[0].packetization = "raw";
   media_description->set_codecs(codecs);
   RTCError error;
   EXPECT_TRUE(pc->SetLocalDescription(std::move(offer), &error));
@@ -1102,10 +1096,7 @@ TEST_F(SdpMungingTest, VideoCodecsModifiedWithRawPacketization_Redesign) {
   auto* media_description = contents[0].media_description();
   ASSERT_THAT(media_description, Not(IsNull()));
   std::vector<Codec> codecs = media_description->codecs();
-  ASSERT_THAT(codecs, Not(SizeIs(0)));
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  codecs[0].packetization = "raw";
+  ASSERT_THAT(codecs, Not(SizeIs(0)));  codecs[0].packetization = "raw";
   media_description->set_codecs(codecs);
   RTCError error;
   EXPECT_TRUE(pc->SetLocalDescription(std::move(offer), &error));
@@ -1662,7 +1653,6 @@ TEST_F(SdpMungingTest, SctpInit) {
       ElementsAre(Pair(SdpMungingType::kDataChannelSctpInit, 1)));
 }
 
-<<<<<<< HEAD
 TEST_F(SdpMungingTest, SctpInitAndIceUfrag) {
   auto pc = CreatePeerConnection("WebRTC-Sctp-Snap/Enabled/");
   EXPECT_TRUE(pc->CreateDataChannel("dc"));
@@ -1693,11 +1683,7 @@ TEST_F(SdpMungingTest, SctpInitAndIceUfrag) {
   EXPECT_THAT(
       metrics::Samples("WebRTC.PeerConnection.SdpMunging.Offer.Initial"),
       ElementsAre(Pair(SdpMungingType::kDataChannelSctpInit, 1)));
-}
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-TEST_F(SdpMungingTest, MaxMessageSize) {
+}TEST_F(SdpMungingTest, MaxMessageSize) {
   auto pc = CreatePeerConnection();
   EXPECT_TRUE(pc->CreateDataChannel("dc"));
   auto offer = pc->CreateOffer();

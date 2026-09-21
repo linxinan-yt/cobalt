@@ -8,13 +8,6 @@
 // *
 // ***************************************************************************
 icuver:table(nofallback){
-<<<<<<< HEAD
-    CLDRVersion{"48"}
+CLDRVersion{"48"}
     DataVersion{"78.2.0.0"}
-    ICUVersion{"78.2.0.0"}
-=======
-    CLDRVersion{"47"}
-    DataVersion{"77.1.0.0"}
-    ICUVersion{"77.1.0.0"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+    ICUVersion{"78.2.0.0"}}

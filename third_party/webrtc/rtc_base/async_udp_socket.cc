@@ -57,15 +57,11 @@ AsyncUDPSocket::AsyncUDPSocket(const Environment& env,
                               [this](Socket* socket) { OnReadEvent(socket); });
   socket_->SubscribeWriteEvent(
       this, [this](Socket* socket) { OnWriteEvent(socket); });
-<<<<<<< HEAD
-  // need to forward that also for UDP case (DTLS) once the SSL handshake is
+// need to forward that also for UDP case (DTLS) once the SSL handshake is
   // finished
 
   socket_->SubscribeConnectEvent(
-      this, [this](Socket* socket) { OnConnectEvent(socket); });
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+      this, [this](Socket* socket) { OnConnectEvent(socket); });}
 
 SocketAddress AsyncUDPSocket::GetLocalAddress() const {
   return socket_->GetLocalAddress();

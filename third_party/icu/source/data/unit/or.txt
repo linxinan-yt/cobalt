@@ -317,13 +317,9 @@ or{
                 other{"{0} ନାନୋସେକେଣ୍ଡ"}
             }
             night{
-<<<<<<< HEAD
-=======
-                dnam{"ରାତି"}
+dnam{"ରାତି"}
                 one{"{0} ରାତି"}
-                other{"{0} ରାତି"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                per{"{0} ପ୍ରତି ରାତି"}
+                other{"{0} ରାତି"}                per{"{0} ପ୍ରତି ରାତି"}
             }
             quarter{
                 one{"{0} କ୍ୱାର୍ଟର୍"}
@@ -1463,11 +1459,7 @@ or{
                 other{"{0} କପ"}
             }
             cup-metric{
-<<<<<<< HEAD
-=======
-                dnam{"mcup"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                one{"{0}mc"}
+dnam{"mcup"}                one{"{0}mc"}
                 other{"{0}mc"}
             }
             deciliter{
@@ -1954,12 +1946,8 @@ or{
         length{
             astronomical-unit{
                 dnam{"ଆୟୁ"}
-<<<<<<< HEAD
-=======
-                one{"{0} au"}
-                other{"{0} au"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+one{"{0} au"}
+                other{"{0} au"}            }
             centimeter{
                 dnam{"ସେମି"}
                 one{"{0} ସେମି"}
@@ -2036,12 +2024,8 @@ or{
             }
             nautical-mile{
                 dnam{"ନୌମି"}
-<<<<<<< HEAD
-=======
-                one{"{0} nmi"}
-                other{"{0} nmi"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+one{"{0} nmi"}
+                other{"{0} nmi"}            }
             parsec{
                 dnam{"ପାରସେକ୍"}
                 one{"{0} ପିସି"}
@@ -2296,12 +2280,8 @@ or{
             }
             cubic-yard{
                 dnam{"ୟାର୍ଡ୍³"}
-<<<<<<< HEAD
-=======
-                one{"{0} yd³"}
-                other{"{0} yd³"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+one{"{0} yd³"}
+                other{"{0} yd³"}            }
             cup{
                 dnam{"କପ୍"}
                 one{"{0} କ"}
@@ -2368,12 +2348,8 @@ or{
             }
             pint-metric{
                 dnam{"ମେପା"}
-<<<<<<< HEAD
-=======
-                one{"{0} mpt"}
-                other{"{0} mpt"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+one{"{0} mpt"}
+                other{"{0} mpt"}            }
             quart{
                 dnam{"କ୍ଵାର୍ଟ୍"}
                 one{"{0} କ୍ଵାର୍ଟ୍"}
@@ -2386,12 +2362,8 @@ or{
             }
             teaspoon{
                 dnam{"ଛୋଟ ଚାମଚ"}
-<<<<<<< HEAD
-=======
-                one{"{0} tsp"}
-                other{"{0} tsp"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+one{"{0} tsp"}
+                other{"{0} tsp"}            }
         }
     }
 }

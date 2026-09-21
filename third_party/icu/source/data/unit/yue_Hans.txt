@@ -31,22 +31,9 @@ yue_Hans{
             per{"每 {1} {0}"}
         }
         concentr{
-<<<<<<< HEAD
-            katal{
+katal{
                 dnam{"开特"}
-                other{"{0} 开特"}
-=======
-            portion-per-1e9{
-                dnam{"十亿分点浓度"}
-                other{"{0} 十亿分点浓度"}
-            }
-        }
-        consumption{
-            liter-per-100-kilometer{
-                dnam{"每 100 公里公升"}
-                other{"每 100 公里 {0} 公升"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} 开特"}            }
             ofglucose{
                 dnam{"葡萄糖"}
                 other{"{0} 葡萄糖"}
@@ -268,8 +255,7 @@ yue_Hans{
             }
         }
         concentr{
-<<<<<<< HEAD
-            katal{
+katal{
                 dnam{"开特"}
                 other{"{0} 开特"}
             }
@@ -282,17 +268,7 @@ yue_Hans{
                 other{"{0} 等份"}
             }
             part-per-1e9{
-                other{"{0}ppb"}
-=======
-            portion-per-1e9{
-                other{"{0}ppb"}
-            }
-        }
-        consumption{
-            liter-per-100-kilometer{
-                dnam{"升/100公里"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0}ppb"}            }
         }
         digital{
             byte{

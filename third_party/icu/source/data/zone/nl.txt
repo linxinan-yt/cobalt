@@ -15,31 +15,9 @@ nl{
         "Africa:Sao_Tome"{
             ec{"Sao Tomé"}
         }
-<<<<<<< HEAD
-        "America:Cancun"{
+"America:Cancun"{
             ec{"Cancun"}
-        }
-=======
-        "America:Argentina:Rio_Gallegos"{
-            ec{"Río Gallegos"}
-        }
-        "America:Argentina:Tucuman"{
-            ec{"Tucumán"}
-        }
-        "America:Belem"{
-            ec{"Belém"}
-        }
-        "America:Cancun"{
-            ec{"Cancun"}
-        }
-        "America:Cordoba"{
-            ec{"Córdoba"}
-        }
-        "America:Cuiaba"{
-            ec{"Cuiabá"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Lower_Princes"{
+        }        "America:Lower_Princes"{
             ec{"Beneden Prinsen Kwartier"}
         }
         "America:Mexico_City"{
@@ -54,13 +32,9 @@ nl{
         "America:North_Dakota:New_Salem"{
             ec{"New Salem, Noord-Dakota"}
         }
-<<<<<<< HEAD
-=======
-        "America:Sao_Paulo"{
+"America:Sao_Paulo"{
             ec{"São Paulo"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:St_Barthelemy"{
+        }        "America:St_Barthelemy"{
             ec{"Saint-Barthélemy"}
         }
         "America:St_Johns"{
@@ -241,13 +215,9 @@ nl{
         "Europe:Prague"{
             ec{"Praag"}
         }
-<<<<<<< HEAD
-=======
-        "Europe:Tirane"{
+"Europe:Tirane"{
             ec{"Tirana"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Europe:Vatican"{
+        }        "Europe:Vatican"{
             ec{"Vaticaanstad"}
         }
         "Europe:Vienna"{
@@ -604,14 +574,10 @@ nl{
         }
         "meta:Guyana"{
             ls{"Guyaanse tijd"}
-<<<<<<< HEAD
-        }
+}
         "meta:Hawaii"{
             ls{"Hawaii-Aleoetische standaardtijd"}
-            ss{"HAST"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ss{"HAST"}        }
         "meta:Hawaii_Aleutian"{
             ld{"Hawaii-Aleoetische zomertijd"}
             lg{"Hawaii-Aleoetische tijd"}

@@ -117,9 +117,6 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
     // tvOS supports multiple types of input events from the Remote, including
     // the clickpad (touch surface), the clickpad ring (directional control),
     // and various physical buttons.
-<<<<<<< HEAD
-    [self addSwipeAndPanGestureRecognizers];
-=======
 #if BUILDFLAG(IS_COBALT)
     _gameControllers = [[NSMutableSet alloc] init];
     NSNotificationCenter* notifications = [NSNotificationCenter defaultCenter];
@@ -138,9 +135,7 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
     }
 #else
     [self addSwipeAndPanGestureRecognizers];
-#endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+#endif  }
   return self;
 }
 
@@ -230,8 +225,6 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
   }
 }
 
-<<<<<<< HEAD
-=======
 #if BUILDFLAG(IS_COBALT)
 - (void)removeSwipeAndPanGestureRecognizers {
   NSMutableArray<UIGestureRecognizer*>* toRemove = [NSMutableArray array];
@@ -245,10 +238,7 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
     [self removeGestureRecognizer:recognizer];
   }
 }
-#endif
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-// Helper method to add swipe gestures for `direction`.
+#endif// Helper method to add swipe gestures for `direction`.
 - (void)addSwipeGestureRecognizerWithDirection:
     (UISwipeGestureRecognizerDirection)direction {
   UISwipeGestureRecognizer* swipeGesture = [[UISwipeGestureRecognizer alloc]
@@ -318,12 +308,8 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
       _selectWillShowKeyboard = YES;
       return YES;
     }
-<<<<<<< HEAD
-    // Reset `_selectWillShowKeyboard` to NO. If a previous press was
-    // cancelled, the flag could remain YES.
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    _selectWillShowKeyboard = NO;
+// Reset `_selectWillShowKeyboard` to NO. If a previous press was
+    // cancelled, the flag could remain YES.    _selectWillShowKeyboard = NO;
   } else if (type == blink::WebInputEvent::Type::kKeyUp) {
     if (_selectWillShowKeyboard) {
       _selectWillShowKeyboard = NO;
@@ -336,40 +322,24 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
   return NO;
 }
 
-<<<<<<< HEAD
 // Returns the set of unhanlded UIPress events to propagate to `super`.
 - (NSSet<UIPress*>*)handlePresses:(NSSet<UIPress*>*)presses
                          withType:(blink::WebInputEvent::Type)type {
-  NSMutableSet<UIPress*>* unhandled = [NSMutableSet set];
-=======
-// Returns YES if events are handled. Otherwise, NO to allow the event
-// to propagate to `super`.
-- (BOOL)handlePresses:(NSSet<UIPress*>*)presses
-             withType:(blink::WebInputEvent::Type)type {
-  // If any of `presses` is not handled, set `needToHandleInFramework`.
-  BOOL needToHandleInFramework = NO;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  for (UIPress* press in presses) {
+  NSMutableSet<UIPress*>* unhandled = [NSMutableSet set];  for (UIPress* press in presses) {
     RemoteButton button = remoteButtonFromPressType(press.type);
     if (button == kNone) {
       // Since UIPress has key information from the physical keyboard,
       // NativeWebKeyboardEvent is built with it in `sendKeyboardEvent`.
-<<<<<<< HEAD
-      // If `press` is not handled in `sendKeyboardEvent`, it's
+// If `press` is not handled in `sendKeyboardEvent`, it's
       // added in `unhandled`.
       if (![self sendKeyboardEvent:press eventType:type]) {
         [unhandled addObject:press];
-      }
-=======
-      needToHandleInFramework |= ![self sendKeyboardEvent:press eventType:type];
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      continue;
+      }      continue;
     }
     if (button == kSelect && [self handleSelectPressWithType:type]) {
       continue;
     }
-<<<<<<< HEAD
-    if (![self sendKeyEventWithRemoteButton:button eventType:type]) {
+if (![self sendKeyEventWithRemoteButton:button eventType:type]) {
       [unhandled addObject:press];
       continue;
     }
@@ -378,28 +348,10 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
       [unhandled addObject:press];
     }
   }
-  return unhandled;
-=======
-    needToHandleInFramework |= ![self sendKeyEventWithRemoteButton:button
-                                                         eventType:type];
-    if (press.type == UIPressTypeMenu) {
-      // Pass `UIPressTypeMenu` to the framework to manage app suspension.
-      needToHandleInFramework = YES;
-    }
-  }
-  return !needToHandleInFramework;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  return unhandled;}
 
 - (void)pressesBegan:(NSSet<UIPress*>*)presses
            withEvent:(UIPressesEvent*)event {
-<<<<<<< HEAD
-  NSSet<UIPress*>* unhandled =
-      [self handlePresses:presses
-                 withType:blink::WebInputEvent::Type::kKeyDown];
-  if (unhandled.count > 0) {
-    [super pressesBegan:unhandled withEvent:event];
-=======
 #if BUILDFLAG(IS_COBALT)
   // A button press does not implicitly cancel an in-progress gamepad touch
   // sequence, so cancel it explicitly here before dispatching the key event.
@@ -407,26 +359,18 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
     [self touchCancelled];
   }
 #endif
-  BOOL handled = [self handlePresses:presses
-                            withType:blink::WebInputEvent::Type::kKeyDown];
-  if (!handled) {
-    [super pressesBegan:presses withEvent:event];
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+  NSSet<UIPress*>* unhandled =
+      [self handlePresses:presses
+                 withType:blink::WebInputEvent::Type::kKeyDown];
+  if (unhandled.count > 0) {
+    [super pressesBegan:unhandled withEvent:event];  }
 }
 
 - (void)pressesEnded:(NSSet<UIPress*>*)presses
            withEvent:(UIPressesEvent*)event {
-<<<<<<< HEAD
-  NSSet<UIPress*>* unhandled =
+NSSet<UIPress*>* unhandled =
       [self handlePresses:presses withType:blink::WebInputEvent::Type::kKeyUp];
-  if (unhandled.count > 0) {
-=======
-  BOOL handled = [self handlePresses:presses
-                            withType:blink::WebInputEvent::Type::kKeyUp];
-  if (!handled) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    [super pressesEnded:presses withEvent:event];
+  if (unhandled.count > 0) {    [super pressesEnded:presses withEvent:event];
   }
 }
 

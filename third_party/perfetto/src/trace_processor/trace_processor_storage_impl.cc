@@ -31,18 +31,11 @@
 #include "perfetto/ext/base/uuid.h"
 #include "perfetto/trace_processor/basic_types.h"
 #include "src/trace_processor/forwarding_trace_parser.h"
-<<<<<<< HEAD
 #include "src/trace_processor/importers/common/builtin_trace_importers.h"
 #include "src/trace_processor/importers/common/clock_tracker.h"
 #include "src/trace_processor/importers/common/event_tracker.h"
 #include "src/trace_processor/importers/common/global_metadata_tracker.h"
-#include "src/trace_processor/importers/common/global_stats_tracker.h"
-=======
-#include "src/trace_processor/importers/common/clock_tracker.h"
-#include "src/trace_processor/importers/common/event_tracker.h"
-#include "src/trace_processor/importers/common/metadata_tracker.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "src/trace_processor/importers/common/process_tracker.h"
+#include "src/trace_processor/importers/common/global_stats_tracker.h"#include "src/trace_processor/importers/common/process_tracker.h"
 #include "src/trace_processor/importers/common/slice_tracker.h"
 #include "src/trace_processor/importers/common/stack_profile_tracker.h"
 #include "src/trace_processor/importers/common/symbol_tracker.h"
@@ -83,11 +76,7 @@ base::Status WrapParseError(const base::Status& status) {
 
 TraceProcessorStorageImpl::TraceProcessorStorageImpl(const Config& cfg)
     : context_(TraceProcessorContext::CreateRootContext(cfg)) {
-<<<<<<< HEAD
-  context()->reader_registry->Register(CreateProtoImporter());
-  context()->reader_registry->Register(CreateSymbolsImporter());
-=======
-  context()->reader_registry->RegisterTraceReader<ProtoTraceReader>(
+context()->reader_registry->RegisterTraceReader<ProtoTraceReader>(
       kProtoTraceType);
   context()->reader_registry->RegisterTraceReader<ProtoTraceReader>(
       kSymbolsTraceType);
@@ -95,9 +84,7 @@ TraceProcessorStorageImpl::TraceProcessorStorageImpl(const Config& cfg)
     context_.descriptor_pool_->AddFromFileDescriptorSet(
         reinterpret_cast<const uint8_t*>(raw_bytes.data()), raw_bytes.size(),
         {}, true);
-  }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  }}
 
 TraceProcessorStorageImpl::~TraceProcessorStorageImpl() {}
 
@@ -197,13 +184,8 @@ void TraceProcessorStorageImpl::OnEventsFullyExtracted() {
   }
   auto& machines = context()->forked_context_state->machine_to_context;
   for (auto it = machines.GetIterator(); it; ++it) {
-<<<<<<< HEAD
-    it.value()->symbol_tracker->OnEventsFullyExtracted();
-    it.value()->process_tracker->OnEventsFullyExtracted();
-=======
-    it.value()->symbol_tracker->NotifyEndOfFile();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+it.value()->symbol_tracker->OnEventsFullyExtracted();
+    it.value()->process_tracker->OnEventsFullyExtracted();  }
   auto& all = context()->forked_context_state->trace_and_machine_to_context;
   for (auto it = all.GetIterator(); it; ++it) {
     it.value()->file_io_tracker->OnEventsFullyExtracted();

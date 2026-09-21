@@ -14,11 +14,7 @@
  * limitations under the License.
  */
 
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/viewcapture_views_extractor.cc
-#include "src/trace_processor/plugins/winscope_importer/viewcapture_views_extractor.h"
-=======
 #include "src/trace_processor/importers/proto/winscope/viewcapture_views_extractor.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/viewcapture_views_extractor.cc
 
 #include <unordered_map>
 #include <utility>

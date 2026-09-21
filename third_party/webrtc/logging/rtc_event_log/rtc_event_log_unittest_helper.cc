@@ -245,12 +245,7 @@ std::unique_ptr<RtcEventFrameDecoded> EventGenerator::NewFrameDecodedEvent(
   const int height = prng_.Rand(kMinHeight, kMaxHeight);
   const VideoCodecType codec = kCodecList[prng_.Rand(0, kNumCodecTypes - 1)];
   const uint8_t qp = prng_.Rand<uint8_t>();
-<<<<<<< HEAD
-  return Create<RtcEventFrameDecoded>(render_time.ms(), ssrc, width, height,
-=======
-  return Create<RtcEventFrameDecoded>(render_time_ms, ssrc, width, height,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                                      codec, qp);
+return Create<RtcEventFrameDecoded>(render_time.ms(), ssrc, width, height,                                      codec, qp);
 }
 
 std::unique_ptr<RtcEventProbeClusterCreated>
@@ -611,17 +606,12 @@ std::unique_ptr<RtcEventRtpPacketIncoming> EventGenerator::NewRtpPacketIncoming(
   RandomizeRtpPacket(payload_size, padding_size, ssrc, extension_map,
                      &rtp_packet, all_configured_exts);
 
-<<<<<<< HEAD
-  std::optional<uint16_t> rtx_osn = std::nullopt;
+std::optional<uint16_t> rtx_osn = std::nullopt;
   if (prng_.Rand(0, 9) == 0) {
     rtx_osn = prng_.Rand(
         0u, static_cast<uint32_t>(std::numeric_limits<uint16_t>::max()));
   }
-  return Create<RtcEventRtpPacketIncoming>(rtp_packet, rtx_osn);
-=======
-  return Create<RtcEventRtpPacketIncoming>(rtp_packet);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  return Create<RtcEventRtpPacketIncoming>(rtp_packet, rtx_osn);}
 
 std::unique_ptr<RtcEventRtpPacketOutgoing> EventGenerator::NewRtpPacketOutgoing(
     uint32_t ssrc,
@@ -650,18 +640,13 @@ std::unique_ptr<RtcEventRtpPacketOutgoing> EventGenerator::NewRtpPacketOutgoing(
                      &rtp_packet, all_configured_exts);
 
   int probe_cluster_id = prng_.Rand(0, 100000);
-<<<<<<< HEAD
-  std::optional<uint16_t> rtx_osn = std::nullopt;
+std::optional<uint16_t> rtx_osn = std::nullopt;
   if (prng_.Rand(0, 9) == 0) {
     rtx_osn = prng_.Rand(
         0u, static_cast<uint32_t>(std::numeric_limits<uint16_t>::max()));
   }
   return Create<RtcEventRtpPacketOutgoing>(rtp_packet, probe_cluster_id,
-                                           rtx_osn);
-=======
-  return Create<RtcEventRtpPacketOutgoing>(rtp_packet, probe_cluster_id);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+                                           rtx_osn);}
 
 RtpHeaderExtensionMap EventGenerator::NewRtpHeaderExtensionMap(
     bool configure_all,
@@ -1125,14 +1110,10 @@ void EventVerifier::VerifyLoggedRtpPacketOutgoing(
   VerifyLoggedRtpHeader(original_event, logged_event.rtp.header);
   VerifyLoggedDependencyDescriptor(
       original_event, logged_event.rtp.dependency_descriptor_wire_format);
-<<<<<<< HEAD
-  if (encoding_type_ == RtcEventLog::EncodingType::NewFormat) {
+if (encoding_type_ == RtcEventLog::EncodingType::NewFormat) {
     EXPECT_EQ(original_event.rtx_original_sequence_number(),
               logged_event.rtp.rtx_original_sequence_number);
-  }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  }}
 
 void EventVerifier::VerifyLoggedRtcpPacketIncoming(
     const RtcEventRtcpPacketIncoming& original_event,

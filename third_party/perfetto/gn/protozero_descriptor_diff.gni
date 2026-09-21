@@ -15,13 +15,7 @@
 import("perfetto.gni")
 
 template("protozero_descriptor_diff") {
-<<<<<<< HEAD
-  if (build_with_chromium ||
-      (perfetto_build_with_embedder && !is_perfetto_build_generator)) {
-=======
-  if (build_with_chromium) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    name = "${target_name}_gen"
+if (build_with_chromium) {    name = "${target_name}_gen"
   } else {
     name = "${target_name}"
   }
@@ -39,12 +33,7 @@ template("protozero_descriptor_diff") {
     binary_rebased_path = "./" + rebase_path(binary_path, root_build_dir)
 
     deps = [
-<<<<<<< HEAD
-      "${perfetto_root_path}/src/protozero/descriptor_diff:protozero_descriptor_diff($host_toolchain)",
-=======
-      "${perfetto_root_path}/src/protozero/descriptor_diff:protozero_descriptor_diff",
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      invoker.minuend_descriptor_target,
+"${perfetto_root_path}/src/protozero/descriptor_diff:protozero_descriptor_diff($host_toolchain)",      invoker.minuend_descriptor_target,
       invoker.subtrahend_descriptor_target,
     ]
     script = "${perfetto_root_path}/gn/run_binary.py"

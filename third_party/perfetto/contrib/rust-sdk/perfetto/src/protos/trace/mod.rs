@@ -19,14 +19,9 @@
 #[path = "clock_snapshot.pz.rs"]
 pub mod clock_snapshot;
 
-<<<<<<< HEAD
 /// `extension_descriptor` protos.
 #[path = "extension_descriptor.pz.rs"]
-pub mod extension_descriptor;
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-/// `interned_data` protos.
+pub mod extension_descriptor;/// `interned_data` protos.
 pub mod interned_data;
 
 /// `profiling` protos.

@@ -34,7 +34,6 @@ PLAYWRIGHT_IMAGE = 'perfetto-playwright'
 PLAYWRIGHT_DOCKERFILE = os.path.join(UI_DIR, 'playwright', 'Dockerfile')
 
 
-<<<<<<< HEAD
 def get_playwright_version():
   """Get the installed Playwright version."""
   result = subprocess.run(
@@ -137,24 +136,6 @@ def run_native(args):
 
   # Install the chromium through playwright
   subprocess.check_call(['./pnpm', 'exec', 'playwright', 'install', 'chromium'], cwd=UI_DIR)
-=======
-def main():
-  parser = argparse.ArgumentParser()
-  parser.add_argument(
-      '--interactive',
-      '-i',
-      action='store_true',
-      help='Run in interactive mode')
-  parser.add_argument(
-      '--rebaseline', '-r', action='store_true', help='Rebaseline screenshots')
-  parser.add_argument('--out', help='out directory')
-  parser.add_argument('--no-build', action='store_true')
-  parser.add_argument('--no-depscheck', action='store_true')
-  parser.add_argument('--workers', help='Number of playwright workers to use')
-  parser.add_argument('filters', nargs='*')
-  args = parser.parse_args()
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   cmd = ['./pnpm', 'exec', 'playwright', 'test']
   if args.interactive:
     if args.rebaseline:
@@ -175,14 +156,10 @@ def main():
     out_rel_path = os.path.relpath(args.out, UI_DIR)
     env['OUT_DIR'] = out_rel_path
     dev_server_args += ['--out', out_rel_path]
-<<<<<<< HEAD
-=======
-  if args.no_build:
+if args.no_build:
     dev_server_args += ['--no-build']
   if args.no_depscheck:
-    dev_server_args += ['--no-depscheck']
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  env['DEV_SERVER_ARGS'] = ' '.join(dev_server_args)
+    dev_server_args += ['--no-depscheck']  env['DEV_SERVER_ARGS'] = ' '.join(dev_server_args)
   os.chdir(UI_DIR)
   os.execve(cmd[0], cmd, env)
 

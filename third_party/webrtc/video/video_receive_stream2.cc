@@ -654,9 +654,7 @@ void VideoReceiveStream2::CalculateCorruptionScore(
     FrameInstrumentationData frame_instrumentation_data,
     VideoContentType content_type) {
   RTC_DCHECK_RUNS_SERIALIZED(&decode_callback_race_checker_);
-<<<<<<< HEAD
-
-  if (post_decode_queue_) {
+if (post_decode_queue_) {
     // Set the max number of pending post decode tasks very conservative since
     // each one has a refcounted VideoFrame.
     constexpr int kMaxPendingPostDecodeFrames = 2;
@@ -688,12 +686,7 @@ void VideoReceiveStream2::CalculateCorruptionScore(
     // Do the frame evaluation synchronously.
     frame_evaluator_->OnInstrumentedFrame(std::move(frame_instrumentation_data),
                                           frame, content_type);
-  }
-=======
-  frame_evaluator_->OnInstrumentedFrame(frame_instrumentation_data, frame,
-                                        content_type);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  }}
 
 bool VideoReceiveStream2::SetBaseMinimumPlayoutDelayMs(int delay_ms) {
   RTC_DCHECK_RUN_ON(&worker_sequence_checker_);

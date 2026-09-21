@@ -159,23 +159,7 @@ class TraceProcessorImpl : public TraceProcessor,
 
   bool IsRootMetricField(const std::string& metric_name);
 
-<<<<<<< HEAD
-  void CacheBoundsAndBuildTable();
-=======
-  static std::unique_ptr<PerfettoSqlEngine> InitPerfettoSqlEngine(
-      TraceProcessorContext* context,
-      TraceStorage* storage,
-      const Config& config,
-      DataframeSharedStorage* dataframe_shared_storage,
-      const std::vector<SqlPackage>&,
-      std::vector<metrics::SqlMetricFile>& sql_metrics,
-      const DescriptorPool* metrics_descriptor_pool,
-      std::unordered_map<std::string, std::string>* proto_fn_name_to_path,
-      TraceProcessor*,
-      bool notify_eof_called,
-      std::pair<int64_t, int64_t> cached_trace_bounds);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+void CacheBoundsAndBuildTable();
   struct InitPerfettoSqlConnectionArgs {
     TraceProcessorContext* context;
     TraceStorage* storage;
@@ -236,17 +220,12 @@ class TraceProcessorImpl : public TraceProcessor,
   // tables are finalized and reused in RestoreInitialTables to avoid
   // iterating over finalized dataframes.
   std::pair<int64_t, int64_t> cached_trace_bounds_ = {0, 0};
-<<<<<<< HEAD
-
-  // Tracks the sum of mutations across all tables used by
+// Tracks the sum of mutations across all tables used by
   // CacheBoundsAndBuildTable to avoid recomputing bounds when unchanged.
   uint64_t bounds_tables_mutations_ = 0;
 
   // Auto-incrementing counter for generating unique summarizer ids.
-  uint32_t next_summarizer_id_ = 0;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-};
+  uint32_t next_summarizer_id_ = 0;};
 
 }  // namespace perfetto::trace_processor
 

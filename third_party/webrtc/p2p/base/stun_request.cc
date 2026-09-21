@@ -21,10 +21,6 @@
 #include <vector>
 
 #include "absl/strings/string_view.h"
-<<<<<<< HEAD
-=======
-#include "api/array_view.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "api/environment/environment.h"
 #include "api/sequence_checker.h"
 #include "api/task_queue/pending_task_safety_flag.h"
@@ -216,12 +212,7 @@ bool StunRequestManager::empty() const {
   return requests_.empty();
 }
 
-<<<<<<< HEAD
-bool StunRequestManager::CheckResponse(std::span<const uint8_t> payload) {
-=======
-bool StunRequestManager::CheckResponse(ArrayView<const uint8_t> payload) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  RTC_DCHECK_RUN_ON(thread_);
+bool StunRequestManager::CheckResponse(std::span<const uint8_t> payload) {  RTC_DCHECK_RUN_ON(thread_);
   // Check the appropriate bytes of the stream to see if they match the
   // transaction ID of a response we are expecting.
 

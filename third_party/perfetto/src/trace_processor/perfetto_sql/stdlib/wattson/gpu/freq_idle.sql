@@ -21,7 +21,6 @@ INCLUDE PERFETTO MODULE intervals.intersect;
 
 INCLUDE PERFETTO MODULE wattson.device_infos;
 
-<<<<<<< HEAD
 INCLUDE PERFETTO MODULE wattson.utils;
 
 -- GPU power state which is analogous to CPU idle state
@@ -43,11 +42,7 @@ FROM slice AS s
 JOIN track AS t
   ON s.track_id = t.id
 WHERE
-  t.name = 'powervr_gpu_power_state';
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
--- Gapless time slices of GPU freq from trace_start() to trace_end()
+  t.name = 'powervr_gpu_power_state';-- Gapless time slices of GPU freq from trace_start() to trace_end()
 CREATE PERFETTO TABLE _gapless_gpu_freq AS
 WITH
   nominal_freqs AS (
@@ -61,16 +56,9 @@ WITH
       gpu_id
     FROM android_gpu_frequency
     WHERE
-<<<<<<< HEAD
-      gpu_id
-      = (
-        SELECT gpu_id
-=======
-      gpu_id = (
+gpu_id = (
         SELECT
-          gpu_id
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        FROM _gpuid_map
+          gpu_id        FROM _gpuid_map
         JOIN _wattson_device
           ON _gpuid_map.device = _wattson_device.name
       )
@@ -84,16 +72,9 @@ WITH
       gpu_id
     FROM android_gpu_frequency
     WHERE
-<<<<<<< HEAD
-      gpu_id
-      = (
-        SELECT gpu_id
-=======
-      gpu_id = (
+gpu_id = (
         SELECT
-          gpu_id
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        FROM _gpuid_map
+          gpu_id        FROM _gpuid_map
         JOIN _wattson_device
           ON _gpuid_map.device = _wattson_device.name
       )

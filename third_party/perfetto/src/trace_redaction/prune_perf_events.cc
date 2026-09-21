@@ -16,7 +16,6 @@
 
 #include "src/trace_redaction/prune_perf_events.h"
 
-<<<<<<< HEAD
 #include <cstdint>
 #include <optional>
 #include <string>
@@ -33,19 +32,6 @@
 
 #include "protos/perfetto/trace/profiling/profile_packet.pbzero.h"
 #include "protos/perfetto/trace/trace_packet.pbzero.h"
-=======
-#include "perfetto/protozero/field.h"
-#include "perfetto/protozero/scattered_heap_buffer.h"
-
-#include "perfetto/base/logging.h"
-#include "perfetto/base/status.h"
-#include "perfetto/ext/base/status_macros.h"
-#include "src/trace_redaction/proto_util.h"
-#include "src/trace_redaction/trace_redaction_framework.h"
-
-#include "protos/perfetto/trace/profiling/profile_packet.pbzero.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 using namespace perfetto::trace_processor;
 namespace perfetto::trace_redaction {
 
@@ -62,12 +48,7 @@ base::Status PrunePerfEvents::Transform(const Context& context,
   std::optional<int64_t> trace_packet_clock_id;
   std::optional<int64_t> trusted_packet_sequence_id;
   if (PERFETTO_UNLIKELY(packet_decoder.has_timestamp_clock_id())) {
-<<<<<<< HEAD
-    // A clock id was overridden for the packet.
-=======
-    // A clock id was overriden for the packet.
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    trace_packet_clock_id =
+// A clock id was overridden for the packet.    trace_packet_clock_id =
         static_cast<int64_t>(packet_decoder.timestamp_clock_id());
   } else {
     // No clock if provided, we need to use the trace defaults. Find the
@@ -107,12 +88,7 @@ base::Status PrunePerfEvents::Transform(const Context& context,
 base::Status PrunePerfEvents::OnPerfSample(
     const Context& context,
     uint64_t ts,
-<<<<<<< HEAD
-    std::optional<uint32_t> trace_packet_clock_id,
-=======
-    std::optional<int64_t> trace_packet_clock_id,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    std::optional<int64_t> trusted_packet_sequence_id,
+std::optional<int64_t> trace_packet_clock_id,    std::optional<int64_t> trusted_packet_sequence_id,
     protozero::Field& perf_sample_field,
     protos::pbzero::TracePacket* message) const {
   protos::pbzero::PerfSample::Decoder decoder(perf_sample_field.as_bytes());
@@ -148,12 +124,7 @@ base::Status PrunePerfEvents::OnPerfSample(
                       static_cast<uint32_t>(trusted_packet_sequence_id.value()),
                       RedactorClockConverter::DataSourceType::kPerfDataSource));
   } else {
-<<<<<<< HEAD
-    clock_id = ClockId::Machine(trace_packet_clock_id.value());
-=======
-    clock_id = trace_packet_clock_id.value();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+clock_id = ClockId::Machine(trace_packet_clock_id.value());  }
 
   ASSIGN_OR_RETURN(trace_ts,
                    context.clock_converter.ConvertToTrace(clock_id, ts));

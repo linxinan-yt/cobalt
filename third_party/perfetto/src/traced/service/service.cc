@@ -23,11 +23,7 @@
 #include "perfetto/ext/base/file_utils.h"
 #include "perfetto/ext/base/getopt.h"
 #include "perfetto/ext/base/lock_free_task_runner.h"
-<<<<<<< HEAD
-#include "perfetto/ext/base/scoped_mmap.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "perfetto/ext/base/string_utils.h"
+#include "perfetto/ext/base/scoped_mmap.h"#include "perfetto/ext/base/string_utils.h"
 #include "perfetto/ext/base/unix_socket.h"
 #include "perfetto/ext/base/utils.h"
 #include "perfetto/ext/base/version.h"

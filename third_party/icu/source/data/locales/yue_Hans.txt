@@ -234,9 +234,7 @@ yue_Hans{
                 "{1} {0}",
                 "{1} {0}",
             }
-<<<<<<< HEAD
-=======
-            DateTimeSkeletons{
+DateTimeSkeletons{
                 "HHmmsszzzz",
                 "HHmmssz",
                 "HHmmss",
@@ -245,9 +243,7 @@ yue_Hans{
                 "GyMMMd",
                 "GyMMMd",
                 "GyMd",
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            availableFormats{
+            }            availableFormats{
                 Ed{"d日（E）"}
                 Gy{"Gy年"}
                 GyMMM{"Gy年M月"}
@@ -1058,13 +1054,9 @@ yue_Hans{
                 "yMMMd",
                 "yMMMd",
                 "yMd",
-<<<<<<< HEAD
-=======
-            }
+}
             appendItems{
-                Timezone{"{1}{0}"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                Timezone{"{1}{0}"}            }
             availableFormats{
                 Bh{"Bh点"}
                 Bhm{"Bh:mm"}
@@ -1371,9 +1363,7 @@ yue_Hans{
                 "{1} {0}",
                 "{1} {0}",
             }
-<<<<<<< HEAD
-=======
-            DateTimeSkeletons{
+DateTimeSkeletons{
                 "HHmmsszzzz",
                 "HHmmssz",
                 "HHmmss",
@@ -1382,9 +1372,7 @@ yue_Hans{
                 "GyMMMd",
                 "GyMMMd",
                 "GyMd",
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            eras{
+            }            eras{
                 abbreviated{
                     0{"创世纪元"}
                 }
@@ -1451,9 +1439,7 @@ yue_Hans{
                 "{1} {0}",
                 "{1} {0}",
             }
-<<<<<<< HEAD
-=======
-            DateTimeSkeletons{
+DateTimeSkeletons{
                 "HHmmsszzzz",
                 "HHmmssz",
                 "HHmmss",
@@ -1462,9 +1448,7 @@ yue_Hans{
                 "GyMMMd",
                 "GyMMMd",
                 "GyMd",
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            availableFormats{
+            }            availableFormats{
                 Ed{"d日（E）"}
                 Gy{"Gy年"}
                 GyMMM{"Gy年M月"}
@@ -1537,9 +1521,7 @@ yue_Hans{
                 "{1} {0}",
                 "{1} {0}",
             }
-<<<<<<< HEAD
-=======
-            DateTimeSkeletons{
+DateTimeSkeletons{
                 "HHmmsszzzz",
                 "HHmmssz",
                 "HHmmss",
@@ -1548,9 +1530,7 @@ yue_Hans{
                 "GyMMMd",
                 "GyMMMd",
                 "GyyMMdd",
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            availableFormats{
+            }            availableFormats{
                 Ed{"d日（E）"}
                 Gy{"Gy年"}
                 GyMMM{"Gy年M月"}
@@ -1856,9 +1836,7 @@ yue_Hans{
                 "{1} {0}",
                 "{1} {0}",
             }
-<<<<<<< HEAD
-=======
-            DateTimeSkeletons{
+DateTimeSkeletons{
                 "HHmmsszzzz",
                 "HHmmssz",
                 "HHmmss",
@@ -1867,9 +1845,7 @@ yue_Hans{
                 "GyMMMd",
                 "GyMMMd",
                 "GyyMd",
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            availableFormats{
+            }            availableFormats{
                 Ed{"d日（E）"}
                 Gy{"Gy年"}
                 GyMMM{"Gy年M月"}

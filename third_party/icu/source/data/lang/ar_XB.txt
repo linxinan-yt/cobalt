@@ -17,37 +17,21 @@ ar_XB{
         currency{"؜‮Currency‬؜"}
         d0{"؜‮Transform‬؜ ؜‮Destination‬؜"}
         dx{"؜‮Dictionary‬؜ ؜‮Break‬؜ ؜‮Exclusions‬؜"}
-<<<<<<< HEAD
-        em{"؜‮Emoji‬؜ ؜‮Presentation‬؜"}
-=======
-        em{"؜‮Emoji‬؜ ؜‮Presentation‬؜ ؜‮Style‬؜"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        fw{"؜‮First‬؜ ؜‮day‬؜ ؜‮of‬؜ ؜‮week‬؜"}
+em{"؜‮Emoji‬؜ ؜‮Presentation‬؜ ؜‮Style‬؜"}        fw{"؜‮First‬؜ ؜‮day‬؜ ؜‮of‬؜ ؜‮week‬؜"}
         h0{"؜‮Mixed‬؜-؜‮in‬؜"}
         hc{"؜‮Hour‬؜ ؜‮Cycle‬؜ (12 ؜‮vs‬؜ 24)"}
         i0{"؜‮Input‬؜ ؜‮Method‬؜"}
         k0{"؜‮Keyboard‬؜"}
         kv{"؜‮Highest‬؜ ؜‮Ignored‬؜"}
-<<<<<<< HEAD
-        lb{"؜‮CJK‬؜ ؜‮Line‬؜ ؜‮Break‬؜"}
-        lw{"؜‮Line‬؜ ؜‮Breaks‬؜ ؜‮within‬؜ ؜‮Words‬؜"}
-=======
-        lb{"؜‮Line‬؜ ؜‮Break‬؜ ؜‮Style‬؜"}
-        lw{"؜‮Line‬؜ ؜‮Breaks‬؜ ؜‮In‬؜ ؜‮Words‬؜ ؜‮Setting‬؜"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        m0{"؜‮Transform‬؜ ؜‮Rules‬؜"}
+lb{"؜‮CJK‬؜ ؜‮Line‬؜ ؜‮Break‬؜"}
+        lw{"؜‮Line‬؜ ؜‮Breaks‬؜ ؜‮within‬؜ ؜‮Words‬؜"}        m0{"؜‮Transform‬؜ ؜‮Rules‬؜"}
         ms{"؜‮Measurement‬؜ ؜‮System‬؜"}
         mu{"؜‮Measurement‬؜ ؜‮Unit‬؜"}
         numbers{"؜‮Numbers‬؜"}
         rg{"؜‮Region‬؜ ؜‮For‬؜ ؜‮Supplemental‬؜ ؜‮Data‬؜"}
         s0{"؜‮Transform‬؜ ؜‮Source‬؜"}
         sd{"؜‮Region‬؜ ؜‮Subdivision‬؜"}
-<<<<<<< HEAD
-        ss{"؜‮Sentence‬؜ ؜‮Break‬؜ ؜‮After‬؜ ؜‮Abbr‬؜."}
-=======
-        ss{"؜‮Sentence‬؜ ؜‮Break‬؜ ؜‮Suppressions‬؜ ؜‮Type‬؜"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        t{"؜‮Transform‬؜"}
+ss{"؜‮Sentence‬؜ ؜‮Break‬؜ ؜‮Suppressions‬؜ ؜‮Type‬؜"}        t{"؜‮Transform‬؜"}
         t0{"؜‮Machine‬؜ ؜‮Translated‬؜"}
         timezone{"؜‮Time‬؜ ؜‮Zone‬؜"}
         va{"؜‮Locale‬؜ ؜‮Variant‬؜"}
@@ -337,11 +321,7 @@ ar_XB{
         kcg{"؜‮Tyap‬؜"}
         kde{"؜‮Makonde‬؜"}
         kea{"؜‮Kabuverdianu‬؜"}
-<<<<<<< HEAD
-        kek{"؜‮Qʼeqchiʼ‬؜"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        ken{"؜‮Kenyang‬؜"}
+kek{"؜‮Qʼeqchiʼ‬؜"}        ken{"؜‮Kenyang‬؜"}
         kfo{"؜‮Koro‬؜"}
         kg{"؜‮Kongo‬؜"}
         kgp{"؜‮Kaingang‬؜"}
@@ -635,12 +615,7 @@ ar_XB{
         tig{"؜‮Tigre‬؜"}
         tiv{"؜‮Tiv‬؜"}
         tk{"؜‮Turkmen‬؜"}
-<<<<<<< HEAD
-        tkl{"؜‮Tokelauan‬؜"}
-=======
-        tkl{"؜‮Tokelau‬؜"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        tkr{"؜‮Tsakhur‬؜"}
+tkl{"؜‮Tokelau‬؜"}        tkr{"؜‮Tsakhur‬؜"}
         tl{"؜‮Tagalog‬؜"}
         tlh{"؜‮Klingon‬؜"}
         tli{"؜‮Tlingit‬؜"}
@@ -723,8 +698,7 @@ ar_XB{
         zxx{"؜‮No‬؜ ؜‮linguistic‬؜ ؜‮content‬؜"}
         zza{"؜‮Zaza‬؜"}
     }
-<<<<<<< HEAD
-    Languages%core{
+Languages%core{
         ckb{"؜‮Kurdish‬؜"}
         ku{"؜‮Kurdish‬؜"}
         sdh{"؜‮Kurdish‬؜"}
@@ -733,10 +707,7 @@ ar_XB{
         ckb{"؜‮Central‬؜"}
         ku{"؜‮Kurmanji‬؜"}
         sdh{"؜‮Southern‬؜"}
-    }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    Languages%long{
+    }    Languages%long{
         cr{"؜‮Woods‬؜ ؜‮Cree‬؜"}
         zh{"؜‮Mandarin‬؜ ؜‮Chinese‬؜"}
         zh_Hans{"؜‮Simplified‬؜ ؜‮Mandarin‬؜ ؜‮Chinese‬؜"}
@@ -762,20 +733,12 @@ ar_XB{
         en_US{"؜‮US‬؜ ؜‮English‬؜"}
     }
     Languages%variant{
-<<<<<<< HEAD
-        bqi{"؜‮Luri‬؜ ؜‮Bakhtiari‬؜"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        ckb{"؜‮Kurdish‬؜, ؜‮Sorani‬؜"}
+bqi{"؜‮Luri‬؜ ؜‮Bakhtiari‬؜"}        ckb{"؜‮Kurdish‬؜, ؜‮Sorani‬؜"}
         hi_Latn{"؜‮Hinglish‬؜"}
         ky{"؜‮Kirghiz‬؜"}
         my{"؜‮Myanmar‬؜ ؜‮Language‬؜"}
-<<<<<<< HEAD
-        oka{"؜‮Colville‬؜ ؜‮Salish‬؜"}
-        pi{"؜‮Pāli‬؜"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        ps{"؜‮Pushto‬؜"}
+oka{"؜‮Colville‬؜ ؜‮Salish‬؜"}
+        pi{"؜‮Pāli‬؜"}        ps{"؜‮Pushto‬؜"}
         ug{"؜‮Uighur‬؜"}
     }
     Scripts{
@@ -793,11 +756,7 @@ ar_XB{
         Bass{"؜‮Bassa‬؜ ؜‮Vah‬؜"}
         Batk{"؜‮Batak‬؜"}
         Beng{"؜‮Bangla‬؜"}
-<<<<<<< HEAD
-        Berf{"؜‮Beria‬؜ ؜‮Erfe‬؜"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        Bhks{"؜‮Bhaiksuki‬؜"}
+Berf{"؜‮Beria‬؜ ؜‮Erfe‬؜"}        Bhks{"؜‮Bhaiksuki‬؜"}
         Blis{"؜‮Blissymbols‬؜"}
         Bopo{"؜‮Bopomofo‬؜"}
         Brah{"؜‮Brahmi‬؜"}
@@ -941,11 +900,7 @@ ar_XB{
         Shaw{"؜‮Shavian‬؜"}
         Shrd{"؜‮Sharada‬؜"}
         Sidd{"؜‮Siddham‬؜"}
-<<<<<<< HEAD
-        Sidt{"؜‮Sidetic‬؜"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        Sind{"؜‮Khudawadi‬؜"}
+Sidt{"؜‮Sidetic‬؜"}        Sind{"؜‮Khudawadi‬؜"}
         Sinh{"؜‮Sinhala‬؜"}
         Sogd{"؜‮Sogdian‬؜"}
         Sogo{"؜‮Old‬؜ ؜‮Sogdian‬؜"}
@@ -965,11 +920,7 @@ ar_XB{
         Taml{"؜‮Tamil‬؜"}
         Tang{"؜‮Tangut‬؜"}
         Tavt{"؜‮Tai‬؜ ؜‮Viet‬؜"}
-<<<<<<< HEAD
-        Tayo{"؜‮Tai‬؜ ؜‮Yo‬؜"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        Telu{"؜‮Telugu‬؜"}
+Tayo{"؜‮Tai‬؜ ؜‮Yo‬؜"}        Telu{"؜‮Telugu‬؜"}
         Teng{"؜‮Tengwar‬؜"}
         Tfng{"؜‮Tifinagh‬؜"}
         Tglg{"؜‮Tagalog‬؜"}
@@ -979,11 +930,7 @@ ar_XB{
         Tirh{"؜‮Tirhuta‬؜"}
         Tnsa{"؜‮Tangsa‬؜"}
         Todr{"؜‮Todhri‬؜"}
-<<<<<<< HEAD
-        Tols{"؜‮Tolong‬؜ ؜‮Siki‬؜"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        Toto{"؜‮Toto‬؜"}
+Tols{"؜‮Tolong‬؜ ؜‮Siki‬؜"}        Toto{"؜‮Toto‬؜"}
         Tutg{"؜‮Tulu‬؜-؜‮Tigalari‬؜"}
         Ugar{"؜‮Ugaritic‬؜"}
         Vaii{"؜‮Vai‬؜"}
@@ -1033,17 +980,11 @@ ar_XB{
             islamic-rgsa{"؜‮Hijri‬؜ ؜‮Calendar‬؜ (؜‮Saudi‬؜ ؜‮Arabia‬؜, ؜‮sighting‬؜)"}
             islamic-tbla{"؜‮Hijri‬؜ ؜‮Calendar‬؜ (؜‮tabular‬؜, ؜‮astronomical‬؜ ؜‮epoch‬؜)"}
             islamic-umalqura{"؜‮Hijri‬؜ ؜‮Calendar‬؜ (؜‮Umm‬؜ ؜‮al‬؜-؜‮Qura‬؜)"}
-<<<<<<< HEAD
-            iso8601{"؜‮Gregorian‬؜ ؜‮Calendar‬؜ (؜‮ISO‬؜ 8601 ؜‮Weeks‬؜)"}
-=======
-            iso8601{"؜‮ISO‬؜-8601 ؜‮Calendar‬؜"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            japanese{"؜‮Japanese‬؜ ؜‮Calendar‬؜"}
+iso8601{"؜‮Gregorian‬؜ ؜‮Calendar‬؜ (؜‮ISO‬؜ 8601 ؜‮Weeks‬؜)"}            japanese{"؜‮Japanese‬؜ ؜‮Calendar‬؜"}
             persian{"؜‮Persian‬؜ ؜‮Calendar‬؜"}
             roc{"؜‮Minguo‬؜ ؜‮Calendar‬؜"}
         }
-<<<<<<< HEAD
-        calendar%core{
+calendar%core{
             buddhist{"؜‮Buddhist‬؜"}
             chinese{"؜‮Chinese‬؜"}
             coptic{"؜‮Coptic‬؜"}
@@ -1062,21 +1003,14 @@ ar_XB{
             japanese{"؜‮Japanese‬؜"}
             persian{"؜‮Persian‬؜"}
             roc{"؜‮Minguo‬؜"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        cf{
+        }        cf{
             account{"؜‮Accounting‬؜ ؜‮Currency‬؜ ؜‮Format‬؜"}
             standard{"؜‮Standard‬؜ ؜‮Currency‬؜ ؜‮Format‬؜"}
         }
-<<<<<<< HEAD
-        cf%core{
+cf%core{
             account{"؜‮Accounting‬؜"}
             standard{"؜‮Standard‬؜"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        colAlternate{
+        }        colAlternate{
             non-ignorable{"؜‮Sort‬؜ ؜‮Symbols‬؜"}
             shifted{"؜‮Sort‬؜ ؜‮Ignoring‬؜ ؜‮Symbols‬؜"}
         }
@@ -1116,19 +1050,11 @@ ar_XB{
             tertiary{"؜‮Sort‬؜ ؜‮Accents‬؜/؜‮Case‬؜/؜‮Width‬؜"}
         }
         collation{
-<<<<<<< HEAD
-=======
-            big5han{"؜‮Traditional‬؜ ؜‮Chinese‬؜ ؜‮Sort‬؜ ؜‮Order‬؜ - ؜‮Big‬؜5"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            compat{"؜‮Previous‬؜ ؜‮Sort‬؜ ؜‮Order‬؜, ؜‮for‬؜ ؜‮compatibility‬؜"}
+big5han{"؜‮Traditional‬؜ ؜‮Chinese‬؜ ؜‮Sort‬؜ ؜‮Order‬؜ - ؜‮Big‬؜5"}            compat{"؜‮Previous‬؜ ؜‮Sort‬؜ ؜‮Order‬؜, ؜‮for‬؜ ؜‮compatibility‬؜"}
             dictionary{"؜‮Dictionary‬؜ ؜‮Sort‬؜ ؜‮Order‬؜"}
             ducet{"؜‮Default‬؜ ؜‮Unicode‬؜ ؜‮Sort‬؜ ؜‮Order‬؜"}
             emoji{"؜‮Emoji‬؜ ؜‮Sort‬؜ ؜‮Order‬؜"}
             eor{"؜‮European‬؜ ؜‮Ordering‬؜ ؜‮Rules‬؜"}
-<<<<<<< HEAD
-=======
-            gb2312han{"؜‮Simplified‬؜ ؜‮Chinese‬؜ ؜‮Sort‬؜ ؜‮Order‬؜ - ؜‮GB‬؜2312"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
             phonebook{"؜‮Phonebook‬؜ ؜‮Sort‬؜ ؜‮Order‬؜"}
             phonetic{"؜‮Phonetic‬؜ ؜‮Sort‬؜ ؜‮Order‬؜"}
             pinyin{"؜‮Pinyin‬؜ ؜‮Sort‬؜ ؜‮Order‬؜"}
@@ -1140,8 +1066,7 @@ ar_XB{
             unihan{"؜‮Radical‬؜-؜‮Stroke‬؜ ؜‮Sort‬؜ ؜‮Order‬؜"}
             zhuyin{"؜‮Zhuyin‬؜ ؜‮Sort‬؜ ؜‮Order‬؜"}
         }
-<<<<<<< HEAD
-        collation%core{
+collation%core{
             compat{"؜‮Compatibility‬؜"}
             dictionary{"؜‮Dictionary‬؜"}
             ducet{"؜‮Default‬؜ ؜‮Unicode‬؜"}
@@ -1157,10 +1082,7 @@ ar_XB{
             traditional{"؜‮Traditional‬؜"}
             unihan{"؜‮Radical‬؜-؜‮Stroke‬؜"}
             zhuyin{"؜‮Zhuyin‬؜"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        d0{
+        }        d0{
             accents{"؜‮To‬؜ ؜‮Accented‬؜ ؜‮Characters‬؜ ؜‮From‬؜ ؜‮ASCII‬؜ ؜‮Sequence‬؜"}
             ascii{"؜‮To‬؜ ؜‮ASCII‬؜"}
             casefold{"؜‮To‬؜ ؜‮Casefolded‬؜"}
@@ -1186,8 +1108,7 @@ ar_XB{
             zawgyi{"؜‮To‬؜ ؜‮Zawgyi‬؜ ؜‮Myanmar‬؜ ؜‮Encoding‬؜"}
         }
         em{
-<<<<<<< HEAD
-            default{"؜‮Default‬؜ ؜‮Presentation‬؜ ؜‮For‬؜ ؜‮Emoji‬؜"}
+default{"؜‮Default‬؜ ؜‮Presentation‬؜ ؜‮For‬؜ ؜‮Emoji‬؜"}
             emoji{"؜‮Emoji‬؜ ؜‮Presentation‬؜ ؜‮For‬؜ ؜‮Emoji‬؜"}
             text{"؜‮Text‬؜ ؜‮Presentation‬؜ ؜‮For‬؜ ؜‮Emoji‬؜"}
         }
@@ -1203,31 +1124,7 @@ ar_XB{
             sun{"؜‮First‬؜ ؜‮day‬؜ ؜‮of‬؜ ؜‮week‬؜: ؜‮Sunday‬؜"}
             thu{"؜‮First‬؜ ؜‮day‬؜ ؜‮of‬؜ ؜‮week‬؜: ؜‮Thursday‬؜"}
             tue{"؜‮First‬؜ ؜‮day‬؜ ؜‮of‬؜ ؜‮week‬؜: ؜‮Tuesday‬؜"}
-            wed{"؜‮First‬؜ ؜‮day‬؜ ؜‮of‬؜ ؜‮week‬؜: ؜‮Wednesday‬؜"}
-=======
-            default{
-                "؜‮Use‬؜ ؜‮Default‬؜ ؜‮Presentation‬؜ ؜‮For‬؜ ؜‮Emoji‬؜ ؜‮Characters‬"
-                "؜"
-            }
-            emoji{
-                "؜‮Prefer‬؜ ؜‮Emoji‬؜ ؜‮Presentation‬؜ ؜‮For‬؜ ؜‮Emoji‬؜ ؜‮Characters"
-                "‬؜"
-            }
-            text{
-                "؜‮Prefer‬؜ ؜‮Text‬؜ ؜‮Presentation‬؜ ؜‮For‬؜ ؜‮Emoji‬؜ ؜‮Characters‬"
-                "؜"
-            }
-        }
-        fw{
-            fri{"؜‮First‬؜ ؜‮Day‬؜ ؜‮of‬؜ ؜‮Week‬؜ ؜‮Is‬؜ ؜‮Friday‬؜"}
-            mon{"؜‮First‬؜ ؜‮Day‬؜ ؜‮of‬؜ ؜‮Week‬؜ ؜‮Is‬؜ ؜‮Monday‬؜"}
-            sat{"؜‮First‬؜ ؜‮Day‬؜ ؜‮of‬؜ ؜‮Week‬؜ ؜‮Is‬؜ ؜‮Saturday‬؜"}
-            sun{"؜‮First‬؜ ؜‮Day‬؜ ؜‮of‬؜ ؜‮Week‬؜ ؜‮Is‬؜ ؜‮Sunday‬؜"}
-            thu{"؜‮First‬؜ ؜‮Day‬؜ ؜‮of‬؜ ؜‮Week‬؜ ؜‮Is‬؜ ؜‮Thursday‬؜"}
-            tue{"؜‮First‬؜ ؜‮Day‬؜ ؜‮of‬؜ ؜‮Week‬؜ ؜‮Is‬؜ ؜‮Tuesday‬؜"}
-            wed{"؜‮First‬؜ ؜‮Day‬؜ ؜‮of‬؜ ؜‮Week‬؜ ؜‮Is‬؜ ؜‮Wednesday‬؜"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            wed{"؜‮First‬؜ ؜‮day‬؜ ؜‮of‬؜ ؜‮week‬؜: ؜‮Wednesday‬؜"}        }
         h0{
             hybrid{"؜‮Hybrid‬؜"}
         }
@@ -1237,16 +1134,12 @@ ar_XB{
             h23{"24 ؜‮Hour‬؜ ؜‮System‬؜ (0–23)"}
             h24{"24 ؜‮Hour‬؜ ؜‮System‬؜ (1–24)"}
         }
-<<<<<<< HEAD
-        hc%core{
+hc%core{
             h11{"12 (0–11)"}
             h12{"12 (1–12)"}
             h23{"24 (0–23)"}
             h24{"24 (1–24)"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        i0{
+        }        i0{
             handwrit{"؜‮Handwriting‬؜ ؜‮Input‬؜ ؜‮Method‬؜"}
             pinyin{"؜‮Pinyin‬؜ ؜‮Input‬؜ ؜‮Method‬؜"}
             und{"؜‮Unspecified‬؜ ؜‮Input‬؜ ؜‮Method‬؜"}
@@ -1298,8 +1191,7 @@ ar_XB{
                 "n‬؜-؜‮currency‬؜ ؜‮symbols‬؜"
             }
         }
-<<<<<<< HEAD
-        kv%core{
+kv%core{
             currency{"؜‮Shift‬؜ ؜‮Spaces‬؜, ؜‮punctuation‬؜, ؜‮all‬؜ ؜‮symbols‬؜"}
             punct{"؜‮Shift‬؜ ؜‮spaces‬؜, ؜‮punctuation‬؜"}
             space{"؜‮Shift‬؜ ؜‮spaces‬؜, ؜‮punctuation‬؜"}
@@ -1307,38 +1199,27 @@ ar_XB{
                 "؜‮Shift‬؜ ؜‮spaces‬؜, ؜‮punctuation‬؜, ؜‮non‬؜-؜‮currency‬؜ ؜‮symbol"
                 "s‬؜"
             }
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        lb{
+        }        lb{
             loose{"؜‮Loose‬؜ ؜‮Line‬؜ ؜‮Break‬؜ ؜‮Style‬؜"}
             normal{"؜‮Normal‬؜ ؜‮Line‬؜ ؜‮Break‬؜ ؜‮Style‬؜"}
             strict{"؜‮Strict‬؜ ؜‮Line‬؜ ؜‮Break‬؜ ؜‮Style‬؜"}
         }
-<<<<<<< HEAD
-        lb%core{
+lb%core{
             loose{"؜‮Loose‬؜"}
             normal{"؜‮Normal‬؜"}
             strict{"؜‮Strict‬؜"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        lw{
+        }        lw{
             breakall{"؜‮Allow‬؜ ؜‮Line‬؜ ؜‮Breaks‬؜ ؜‮In‬؜ ؜‮All‬؜ ؜‮Words‬؜"}
             keepall{"؜‮Prevent‬؜ ؜‮Line‬؜ ؜‮Breaks‬؜ ؜‮In‬؜ ؜‮All‬؜ ؜‮Words‬؜"}
             normal{"؜‮Normal‬؜ ؜‮Line‬؜ ؜‮Breaks‬؜ ؜‮For‬؜ ؜‮Words‬؜"}
             phrase{"؜‮Prevent‬؜ ؜‮Line‬؜ ؜‮Breaks‬؜ ؜‮In‬؜ ؜‮Phrases‬؜"}
         }
-<<<<<<< HEAD
-        lw%core{
+lw%core{
             breakall{"؜‮Break‬؜ ؜‮all‬؜"}
             keepall{"؜‮Keep‬؜ ؜‮all‬؜"}
             normal{"؜‮Normal‬؜"}
             phrase{"؜‮Keep‬؜ ؜‮in‬؜ ؜‮phrases‬؜"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        m0{
+        }        m0{
             aethiopi{"؜‮Encylopedia‬؜ ؜‮Aethiopica‬؜ ؜‮Transliteration‬؜"}
             alaloc{"؜‮US‬؜ ؜‮ALA‬؜-؜‮LOC‬؜ ؜‮Transliteration‬؜"}
             betamets{"؜‮Beta‬؜ ؜‮Maṣāḥǝft‬؜ ؜‮Transliteration‬؜"}
@@ -1389,15 +1270,11 @@ ar_XB{
             uksystem{"؜‮Imperial‬؜ ؜‮Measurement‬؜ ؜‮System‬؜"}
             ussystem{"؜‮US‬؜ ؜‮Measurement‬؜ ؜‮System‬؜"}
         }
-<<<<<<< HEAD
-        ms%core{
+ms%core{
             metric{"؜‮Metric‬؜"}
             uksystem{"؜‮UK‬؜"}
             ussystem{"؜‮US‬؜"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        mu{
+        }        mu{
             celsius{"؜‮Celsius‬؜"}
             fahrenhe{"؜‮Fahrenheit‬؜"}
             kelvin{"؜‮Kelvin‬؜"}
@@ -1498,17 +1375,12 @@ ar_XB{
             tibt{"؜‮Tibetan‬؜ ؜‮Digits‬؜"}
             tirh{"؜‮Tirhuta‬؜ ؜‮Digits‬؜"}
             tnsa{"؜‮Tangsa‬؜ ؜‮Digits‬؜"}
-<<<<<<< HEAD
-            tols{"؜‮Tolong‬؜ ؜‮Siki‬؜ ؜‮Digits‬؜"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            traditional{"؜‮Traditional‬؜ ؜‮Numerals‬؜"}
+tols{"؜‮Tolong‬؜ ؜‮Siki‬؜ ؜‮Digits‬؜"}            traditional{"؜‮Traditional‬؜ ؜‮Numerals‬؜"}
             vaii{"؜‮Vai‬؜ ؜‮Digits‬؜"}
             wara{"؜‮Warang‬؜ ؜‮Citi‬؜ ؜‮Digits‬؜"}
             wcho{"؜‮Wancho‬؜ ؜‮Digits‬؜"}
         }
-<<<<<<< HEAD
-        numbers%core{
+numbers%core{
             arabext{"؜‮Extended‬؜ ؜‮Arabic‬؜-؜‮Indic‬؜"}
             armnlow{"؜‮Armenian‬؜ ؜‮lowercase‬؜"}
             finance{"؜‮Financial‬؜"}
@@ -1543,10 +1415,7 @@ ar_XB{
             segment{"؜‮Segmented‬؜"}
             tamldec{"؜‮Modern‬؜ ؜‮Tamil‬؜"}
             traditional{"؜‮Traditional‬؜ ؜‮numerals‬؜"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        s0{
+        }        s0{
             accents{"؜‮From‬؜ ؜‮Accented‬؜ ؜‮Characters‬؜ ؜‮To‬؜ ؜‮ASCII‬؜ ؜‮Sequence‬؜"}
             ascii{"؜‮From‬؜ ؜‮ASCII‬؜"}
             hex{"؜‮From‬؜ ؜‮Hexadecimal‬؜ ؜‮Codes‬؜"}
@@ -1562,40 +1431,28 @@ ar_XB{
                 "iations‬؜"
             }
         }
-<<<<<<< HEAD
-        ss%core{
+ss%core{
             none{"؜‮Off‬؜"}
             standard{"؜‮On‬؜"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        t0{
+        }        t0{
             und{"؜‮Unspecified‬؜ ؜‮Machine‬؜ ؜‮Translation‬؜"}
         }
         va{
             posix{"؜‮POSIX‬؜ ؜‮Compliant‬؜ ؜‮Locale‬؜"}
         }
-<<<<<<< HEAD
-        va%core{
+va%core{
             posix{"؜‮POSIX‬؜ ؜‮variant‬؜"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
     Types%short{
         numbers{
             arabext{"؜‮X‬؜ ؜‮Arabic‬؜-؜‮Indic‬؜ ؜‮Digits‬؜"}
         }
     }
-<<<<<<< HEAD
-    Types%variant{
+Types%variant{
         calendar{
             iso8601{"؜‮ISO‬؜ 8601 ؜‮Weeks‬؜"}
         }
-    }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    Variants{
+    }    Variants{
         1606NICT{"؜‮Late‬؜ ؜‮Middle‬؜ ؜‮French‬؜ ؜‮to‬؜ 1606"}
         1694ACAD{"؜‮Early‬؜ ؜‮Modern‬؜ ؜‮French‬؜"}
         1901{"؜‮Traditional‬؜ ؜‮German‬؜ ؜‮orthography‬؜"}
@@ -1634,12 +1491,7 @@ ar_XB{
         OSOJS{"؜‮Oseacco‬؜/؜‮Osojane‬؜ ؜‮dialect‬؜"}
         OXENDICT{"؜‮Oxford‬؜ ؜‮English‬؜ ؜‮Dictionary‬؜ ؜‮spelling‬؜"}
         PAMAKA{"؜‮Pamaka‬؜ ؜‮dialect‬؜"}
-<<<<<<< HEAD
-        PINYIN{"؜‮Pinyin‬؜ ؜‮romanization‬؜"}
-=======
-        PINYIN{"؜‮Pinyin‬؜ ؜‮Romanization‬؜"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        POLYTON{"؜‮Polytonic‬؜"}
+PINYIN{"؜‮Pinyin‬؜ ؜‮Romanization‬؜"}        POLYTON{"؜‮Polytonic‬؜"}
         POSIX{"؜‮Computer‬؜"}
         REVISED{"؜‮Revised‬؜ ؜‮Orthography‬؜"}
         RIGIK{"؜‮Classic‬؜ ؜‮Volapük‬؜"}
@@ -1654,12 +1506,7 @@ ar_XB{
         UCRCOR{"؜‮Unified‬؜ ؜‮Revised‬؜ ؜‮Orthography‬؜"}
         UNIFON{"؜‮Unifon‬؜ ؜‮phonetic‬؜ ؜‮alphabet‬؜"}
         VALENCIA{"؜‮Valencian‬؜"}
-<<<<<<< HEAD
-        WADEGILE{"؜‮Wade‬؜-؜‮Giles‬؜ ؜‮romanization‬؜"}
-=======
-        WADEGILE{"؜‮Wade‬؜-؜‮Giles‬؜ ؜‮Romanization‬؜"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+WADEGILE{"؜‮Wade‬؜-؜‮Giles‬؜ ؜‮Romanization‬؜"}    }
     characterLabelPattern{
         all{"{0} — ؜‮all‬؜"}
         category-list{"{0}: {1}"}

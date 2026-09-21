@@ -81,10 +81,5 @@ void DeobfuscationModule::BuildMappingTableIncremental(
         std::move(members));
   }
 }
-<<<<<<< HEAD
-=======
-
 void DeobfuscationModule::NotifyEndOfFile() {}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 }  // namespace perfetto::trace_processor

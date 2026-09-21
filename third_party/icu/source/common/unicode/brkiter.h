@@ -148,22 +148,12 @@ public:
      * will return distinct unequal values.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_COMMON_API virtual UClassID getDynamicClassID() const override = 0;
-=======
-    virtual UClassID getDynamicClassID() const override = 0;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+virtual UClassID getDynamicClassID() const override = 0;
     /**
      * Return a CharacterIterator over the text being analyzed.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_COMMON_API virtual CharacterIterator& getText() const = 0;
-=======
-    virtual CharacterIterator& getText() const = 0;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_COMMON_API virtual CharacterIterator& getText() const = 0;
     /**
       *  Get a UText for the text being analyzed.
       *  The returned UText is a shallow clone of the UText used internally
@@ -237,58 +227,33 @@ public:
      * @return The offset of the beginning of the text, zero.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_COMMON_API virtual int32_t first() = 0;
-=======
-    virtual int32_t first() = 0;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+virtual int32_t first() = 0;
     /**
      * Set the iterator position to the index immediately BEYOND the last character in the text being scanned.
      * @return The index immediately BEYOND the last character in the text being scanned.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_COMMON_API virtual int32_t last() = 0;
-=======
-    virtual int32_t last() = 0;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_COMMON_API virtual int32_t last() = 0;
     /**
      * Set the iterator position to the boundary preceding the current boundary.
      * @return The character index of the previous text boundary or DONE if all
      * boundaries have been returned.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_COMMON_API virtual int32_t previous() = 0;
-=======
-    virtual int32_t previous() = 0;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_COMMON_API virtual int32_t previous() = 0;
     /**
      * Advance the iterator to the boundary following the current boundary.
      * @return The character index of the next text boundary or DONE if all
      * boundaries have been returned.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_COMMON_API virtual int32_t next() = 0;
-=======
-    virtual int32_t next() = 0;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_COMMON_API virtual int32_t next() = 0;
     /**
      * Return character index of the current iterator position within the text.
      * @return The boundary most recently returned.
      * @stable ICU 2.0
      */
-<<<<<<< HEAD
-    U_COMMON_API virtual int32_t current() const = 0;
-=======
-    virtual int32_t current() const = 0;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_COMMON_API virtual int32_t current() const = 0;
     /**
      * Advance the iterator to the first boundary following the specified offset.
      * The value returned is always greater than the offset or
@@ -561,12 +526,7 @@ public:
      *   must be closed by an explicit call to the destructor (not delete).
      * @deprecated ICU 52. Always delete the BreakIterator.
      */
-<<<<<<< HEAD
-    U_COMMON_API inline UBool isBufferClone();
-=======
-    inline UBool isBufferClone();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_COMMON_API inline UBool isBufferClone();
 #endif /* U_HIDE_DEPRECATED_API */
 
 #if !UCONFIG_NO_SERVICE
@@ -610,12 +570,7 @@ public:
      * @return a StringEnumeration over the locales available at the time of the call
      * @stable ICU 2.4
      */
-<<<<<<< HEAD
-    U_COMMON_API static StringEnumeration* U_EXPORT2 getAvailableLocales();
-=======
-    static StringEnumeration* U_EXPORT2 getAvailableLocales();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#endif
+U_COMMON_API static StringEnumeration* U_EXPORT2 getAvailableLocales();#endif
 
     /**
      * Returns the locale for this break iterator. Two flavors are available: valid and
@@ -685,17 +640,10 @@ protected:
 
 private:
 
-<<<<<<< HEAD
-    Locale actualLocale;
-    Locale validLocale;
-    Locale requestLocale;
-=======
-    /** @internal (private) */
+/** @internal (private) */
     CharString* actualLocale = nullptr;
     CharString* validLocale = nullptr;
-    CharString* requestLocale = nullptr;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-};
+    CharString* requestLocale = nullptr;};
 
 #ifndef U_HIDE_DEPRECATED_API
 

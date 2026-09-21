@@ -21,25 +21,6 @@ let pth: PerfettoTestHelper;
 let page: Page;
 
 // Locate the header cell with the given column name.
-<<<<<<< HEAD
-function locateHeaderCells(text?: string): Locator {
-  const columnHeaders = page.getByRole('columnheader');
-  if (text === undefined) {
-    return columnHeaders;
-  } else {
-    return columnHeaders.filter({has: page.getByText(text, {exact: true})});
-  }
-}
-
-// Locate the data cells, optionally filtered by text.
-function locateDataCells(text?: string): Locator {
-  const cells = page.getByRole('cell');
-  if (text === undefined) {
-    return cells;
-  } else {
-    return cells.filter({has: page.getByText(text, {exact: true})});
-  }
-=======
 function locateHeaderCells(label?: string): Locator {
   return page.getByRole('columnheader', {name: label, exact: true});
 }
@@ -47,28 +28,17 @@ function locateHeaderCells(label?: string): Locator {
 // Locate the data cells, optionally filtered by text.
 function locateDataCells(label?: string): Locator {
   return page.getByRole('cell', {name: label, exact: true});
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+}}
 
 async function clickColumnContextMenu(headerName?: string) {
   const cell = locateHeaderCells(headerName);
   await cell.hover(); // Hover to reveal the menu button.
-<<<<<<< HEAD
-  await cell.getByRole('button', {name: 'Column menu'}).click();
-=======
-  cell.getByRole('button', {name: 'Column menu'}).click();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+await cell.getByRole('button', {name: 'Column menu'}).click();}
 
 async function clickCellContextMenu(text?: string) {
   const cell = locateDataCells(text).nth(0);
-<<<<<<< HEAD
-  await cell.hover(); // Hover to reveal the menu button.
-  await cell.getByRole('button', {name: 'Cell menu'}).click();
-=======
-  await cell.click({button: 'right'});
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+await cell.hover(); // Hover to reveal the menu button.
+  await cell.getByRole('button', {name: 'Cell menu'}).click();}
 
 test.beforeEach(async ({browser}, _testInfo) => {
   page = await browser.newPage();
@@ -83,12 +53,7 @@ test('slices with same name', async () => {
   await page
     .locator('.pf-details-shell a.pf-anchor', {hasText: sliceName})
     .click();
-<<<<<<< HEAD
-  await pth.clickMenuItem('Slices with the same name (across trace)');
-=======
-  await pth.clickMenuItem('Slices with the same name');
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  await clickColumnContextMenu('id');
+await pth.clickMenuItem('Slices with the same name (across trace)');  await clickColumnContextMenu('id');
   await pth.clickMenuItem('Sort: lowest first');
   await pth.waitForIdleAndScreenshot(`slices-with-same-name.png`, {
     locator: page.locator('.pf-drawer-panel__drawer'),
@@ -116,12 +81,7 @@ test('Table interactions', async () => {
 
   // Sort the table by dur in descending order. Note that we must explicitly exclude
   // the "thread_dur" column, as it also contains "dur" in its name.
-<<<<<<< HEAD
-  await clickColumnContextMenu('dur');
-=======
-  clickColumnContextMenu('dur');
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  await pth.clickMenuItem('Sort: highest first');
+await clickColumnContextMenu('dur');  await pth.clickMenuItem('Sort: highest first');
   await pth.waitForIdleAndScreenshot(`slices-table-sorted.png`, {
     locator: page.locator('.pf-drawer-panel__drawer'),
   });

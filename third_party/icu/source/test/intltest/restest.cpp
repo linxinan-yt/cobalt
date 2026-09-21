@@ -313,12 +313,7 @@ ResourceBundleTest::TestConstruction()
     char *versionID1 = new char[1+strlen(version1)]; // + 1 for zero byte
     char *versionID2 = new char[1+ strlen(version2)]; // + 1 for zero byte
 
-<<<<<<< HEAD
-    strcpy(versionID1, "48.0");  // hardcoded, please change if the default.txt file or ResourceBundle::kVersionSeparater is changed.
-=======
-    strcpy(versionID1, "45.0");  // hardcoded, please change if the default.txt file or ResourceBundle::kVersionSeparater is changed.
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+strcpy(versionID1, "48.0");  // hardcoded, please change if the default.txt file or ResourceBundle::kVersionSeparater is changed.
     strcpy(versionID2, "55.0");  // hardcoded, please change if the te_IN.txt file or ResourceBundle::kVersionSeparater is changed.
 
     logln(UnicodeString("getVersionNumber on default.txt returned ") + version1);

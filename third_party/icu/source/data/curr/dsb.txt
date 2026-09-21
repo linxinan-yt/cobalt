@@ -1907,14 +1907,10 @@ dsb{
             other{"sambiskich kwachow"}
             two{"sambiskej kwaše"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             few{"simbabwiske złota"}
             one{"simbabwiske złoto"}
             other{"simbabwiskich złotow"}
             two{"simbabwiskej złośe"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

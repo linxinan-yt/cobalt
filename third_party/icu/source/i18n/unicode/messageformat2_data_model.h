@@ -53,10 +53,6 @@ static inline std::vector<T> toStdVector(const T* arr, int32_t len) {
 
 namespace message2 {
     class Checker;
-<<<<<<< HEAD
-=======
-    class MFDataModel;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     class MessageFormatter;
     class Parser;
     class Serializer;
@@ -66,11 +62,7 @@ namespace message2 {
         class Binding;
         class Literal;
         class Operator;
-<<<<<<< HEAD
-        class MFDataModel;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+class MFDataModel;
       /**
          * The `Literal` class corresponds to the `literal` nonterminal in the MessageFormat 2 grammar,
          * https://github.com/unicode-org/message-format-wg/blob/main/spec/message.abnf and the
@@ -204,50 +196,6 @@ namespace message2 {
             /* const */ bool thisIsQuoted = false;
             /* const */ UnicodeString contents;
         };
-<<<<<<< HEAD
-=======
-  } // namespace data_model
-} // namespace message2
-
-/// @cond DOXYGEN_IGNORE
-// Export an explicit template instantiation of the LocalPointer that is used as a
-// data member of various MFDataModel classes.
-// (When building DLLs for Windows this is required.)
-// (See measunit_impl.h, datefmt.h, collationiterator.h, erarules.h and others
-// for similar examples.)
-#if U_PF_WINDOWS <= U_PLATFORM && U_PLATFORM <= U_PF_CYGWIN
-template class U_I18N_API LocalPointerBase<message2::data_model::Literal>;
-template class U_I18N_API LocalArray<message2::data_model::Literal>;
-#endif
-#if defined(U_REAL_MSVC)
-#pragma warning(pop)
-#endif
-/// @endcond
-
-U_NAMESPACE_END
-
-/// @cond DOXYGEN_IGNORE
-// Export an explicit template instantiation of the std::variants and std::optionals
-// that are used as a data member of various MFDataModel classes.
-// (When building DLLs for Windows this is required.)
-// (See measunit_impl.h, datefmt.h, collationiterator.h, erarules.h and others
-// for similar examples.)
-#if U_PF_WINDOWS <= U_PLATFORM && U_PLATFORM <= U_PF_CYGWIN
-#if defined(U_REAL_MSVC) && defined(_MSVC_STL_VERSION)
-struct U_I18N_API std::_Nontrivial_dummy_type;
-template class U_I18N_API std::_Variant_storage_<false, icu::UnicodeString, icu::message2::data_model::Literal>;
-#endif
-template class U_I18N_API std::variant<icu::UnicodeString, icu::message2::data_model::Literal>;
-template class U_I18N_API std::optional<std::variant<icu::UnicodeString, icu::message2::data_model::Literal>>;
-template class U_I18N_API std::optional<icu::message2::data_model::Literal>;
-#endif
-/// @endcond
-
-U_NAMESPACE_BEGIN
-
-namespace message2 {
-  namespace data_model {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
         /**
          * The `Operand` class corresponds to the `operand` nonterminal in the MessageFormat 2 grammar,
@@ -263,12 +211,7 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        class U_I18N_API_CLASS Operand : public UObject {
-=======
-        class U_I18N_API Operand : public UObject {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        public:
+class U_I18N_API_CLASS Operand : public UObject {        public:
             /**
              * Determines if this operand represents a variable.
              *
@@ -277,12 +220,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API UBool isVariable() const;
-=======
-            UBool isVariable() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API UBool isVariable() const;            /**
              * Determines if this operand represents a literal.
              *
              * @return True if and only if the operand is a literal.
@@ -290,12 +228,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API UBool isLiteral() const;
-=======
-            UBool isLiteral() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API UBool isLiteral() const;            /**
              * Determines if this operand is the null operand.
              *
              * @return True if and only if the operand is the null operand.
@@ -303,12 +236,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API virtual UBool isNull() const;
-=======
-            virtual UBool isNull() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API virtual UBool isNull() const;            /**
              * Returns a reference to this operand's variable name.
              * Precondition: isVariable()
              *
@@ -317,12 +245,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API const UnicodeString& asVariable() const;
-=======
-            const UnicodeString& asVariable() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API const UnicodeString& asVariable() const;            /**
              * Returns a reference to this operand's literal contents.
              * Precondition: isLiteral()
              *
@@ -331,24 +254,14 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API const Literal& asLiteral() const;
-=======
-            const Literal& asLiteral() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API const Literal& asLiteral() const;            /**
              * Default constructor.
              * Creates a null Operand.
              *
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API Operand() : contents(std::nullopt) {}
-=======
-            Operand() : contents(std::nullopt) {}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API Operand() : contents(std::nullopt) {}            /**
              * Variable operand constructor.
              *
              * @param v The variable name; an operand corresponding
@@ -357,12 +270,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API explicit Operand(const UnicodeString& v) : contents(VariableName(v)) {}
-=======
-            explicit Operand(const UnicodeString& v) : contents(VariableName(v)) {}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API explicit Operand(const UnicodeString& v) : contents(VariableName(v)) {}            /**
              * Literal operand constructor.
              *
              * @param l The literal to use for this operand; an operand
@@ -371,12 +279,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API explicit Operand(const Literal& l) : contents(l) {}
-=======
-            explicit Operand(const Literal& l) : contents(l) {}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API explicit Operand(const Literal& l) : contents(l) {}            /**
              * Non-member swap function.
              * @param o1 will get o2's contents
              * @param o2 will get o1's contents
@@ -384,12 +287,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API friend inline void swap(Operand& o1, Operand& o2) noexcept {
-=======
-            friend inline void swap(Operand& o1, Operand& o2) noexcept {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                using std::swap;
+U_I18N_API friend inline void swap(Operand& o1, Operand& o2) noexcept {                using std::swap;
                 (void) o1;
                 (void) o2;
                 swap(o1.contents, o2.contents);
@@ -400,34 +298,19 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API virtual Operand& operator=(Operand) noexcept;
-=======
-            virtual Operand& operator=(Operand) noexcept;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API virtual Operand& operator=(Operand) noexcept;            /**
              * Copy constructor.
              *
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API Operand(const Operand&);
-=======
-            Operand(const Operand&);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API Operand(const Operand&);            /**
              * Destructor.
              *
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API virtual ~Operand();
-=======
-            virtual ~Operand();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        private:
+U_I18N_API virtual ~Operand();        private:
             std::optional<std::variant<VariableName, Literal>> contents;
         }; // class Operand
 
@@ -446,12 +329,7 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        class U_I18N_API_CLASS Key : public UObject {
-=======
-        class U_I18N_API Key : public UObject {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        public:
+class U_I18N_API_CLASS Key : public UObject {        public:
             /**
              * Determines if this is a wildcard key
              *
@@ -460,12 +338,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API UBool isWildcard() const { return !contents.has_value(); }
-=======
-            UBool isWildcard() const { return !contents.has_value(); }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API UBool isWildcard() const { return !contents.has_value(); }            /**
              * Returns the contents of this key as a literal.
              * Precondition: !isWildcard()
              *
@@ -474,35 +347,20 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API const Literal& asLiteral() const;
-=======
-            const Literal& asLiteral() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API const Literal& asLiteral() const;            /**
              * Copy constructor.
              *
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API Key(const Key& other) : contents(other.contents) {}
-=======
-            Key(const Key& other) : contents(other.contents) {}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API Key(const Key& other) : contents(other.contents) {}            /**
              * Wildcard constructor; constructs a Key representing the
              * catchall or wildcard key, '*'.
              *
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API Key() : contents(std::nullopt) {}
-=======
-            Key() : contents(std::nullopt) {}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API Key() : contents(std::nullopt) {}            /**
              * Literal key constructor.
              *
              * @param lit A Literal to use for this key. The result matches the
@@ -511,12 +369,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API explicit Key(const Literal& lit) : contents(lit) {}
-=======
-            explicit Key(const Literal& lit) : contents(lit) {}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API explicit Key(const Literal& lit) : contents(lit) {}            /**
              * Non-member swap function.
              * @param k1 will get k2's contents
              * @param k2 will get k1's contents
@@ -524,12 +377,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API friend inline void swap(Key& k1, Key& k2) noexcept {
-=======
-            friend inline void swap(Key& k1, Key& k2) noexcept {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                using std::swap;
+friend inline void swap(Key& k1, Key& k2) noexcept {                using std::swap;
 
                 swap(k1.contents, k2.contents);
             }
@@ -539,12 +387,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API Key& operator=(Key) noexcept;
-=======
-            Key& operator=(Key) noexcept;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API Key& operator=(Key) noexcept;            /**
              * Less than operator. Compares the literal of `this` with the literal of `other`.
              * This method is used in representing the mapping from key lists to patterns
              * in a message with variants, and is not expected to be useful otherwise.
@@ -557,12 +400,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API bool operator<(const Key& other) const;
-=======
-            bool operator<(const Key& other) const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API bool operator<(const Key& other) const;            /**
              * Equality operator. Compares the literal of `this` with the literal of `other`.
              * This method is used in representing the mapping from key lists to patterns
              * in a message with variants, and is not expected to be useful otherwise.
@@ -575,47 +413,16 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API bool operator==(const Key& other) const;
-=======
-            bool operator==(const Key& other) const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API bool operator==(const Key& other) const;            /**
              * Destructor.
              *
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API virtual ~Key();
+U_I18N_API virtual ~Key();
         private:
             /* const */ std::optional<Literal> contents;
-        }; // class Key
-
-=======
-            virtual ~Key();
-        private:
-            /* const */ std::optional<Literal> contents;
-        }; // class Key
-  } // namespace data_model
-} // namespace message2
-
-/// @cond DOXYGEN_IGNORE
-// Export an explicit template instantiation of the LocalPointer that is used as a
-// data member of various MFDataModel classes.
-// (When building DLLs for Windows this is required.)
-// (See measunit_impl.h, datefmt.h, collationiterator.h, erarules.h and others
-// for similar examples.)
-#if U_PF_WINDOWS <= U_PLATFORM && U_PLATFORM <= U_PF_CYGWIN
-template class U_I18N_API LocalPointerBase<message2::data_model::Key>;
-template class U_I18N_API LocalArray<message2::data_model::Key>;
-#endif
-/// @endcond
-
-namespace message2 {
-  namespace data_model {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        /**
+        }; // class Key        /**
          * The `SelectorKeys` class represents the key list for a single variant.
          * It corresponds to the `keys` array in the `Variant` interface
          * defined in https://github.com/unicode-org/message-format-wg/blob/main/spec/data-model.md#messages
@@ -625,12 +432,7 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        class U_I18N_API_CLASS SelectorKeys : public UObject {
-=======
-        class U_I18N_API SelectorKeys : public UObject {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        public:
+class U_I18N_API_CLASS SelectorKeys : public UObject {        public:
             /**
              * Returns the underlying list of keys.
              *
@@ -641,12 +443,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API std::vector<Key> getKeys() const {
-=======
-            std::vector<Key> getKeys() const {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                return toStdVector<Key>(keys.getAlias(), len);
+std::vector<Key> getKeys() const {                return toStdVector<Key>(keys.getAlias(), len);
             }
             /**
              * The mutable `SelectorKeys::Builder` class allows the key list to be constructed
@@ -724,24 +521,14 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API bool operator<(const SelectorKeys& other) const;
-=======
-            bool operator<(const SelectorKeys& other) const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API bool operator<(const SelectorKeys& other) const;            /**
              * Default constructor.
              * Puts the SelectorKeys into a valid but undefined state.
              *
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API SelectorKeys() : len(0) {}
-=======
-            SelectorKeys() : len(0) {}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+SelectorKeys() : len(0) {}            /**
              * Non-member swap function.
              * @param s1 will get s2's contents
              * @param s2 will get s1's contents
@@ -749,12 +536,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API friend inline void swap(SelectorKeys& s1, SelectorKeys& s2) noexcept {
-=======
-            friend inline void swap(SelectorKeys& s1, SelectorKeys& s2) noexcept {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                using std::swap;
+U_I18N_API friend inline void swap(SelectorKeys& s1, SelectorKeys& s2) noexcept {                using std::swap;
 
                 swap(s1.len, s2.len);
                 swap(s1.keys, s2.keys);
@@ -765,34 +547,19 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API SelectorKeys(const SelectorKeys& other);
-=======
-            SelectorKeys(const SelectorKeys& other);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API SelectorKeys(const SelectorKeys& other);            /**
              * Assignment operator.
              *
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API SelectorKeys& operator=(SelectorKeys other) noexcept;
-=======
-            SelectorKeys& operator=(SelectorKeys other) noexcept;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API SelectorKeys& operator=(SelectorKeys other) noexcept;            /**
              * Destructor.
              *
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API virtual ~SelectorKeys();
-=======
-            virtual ~SelectorKeys();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        private:
+U_I18N_API virtual ~SelectorKeys();        private:
             friend class Builder;
             friend class message2::Checker;
             friend class message2::MessageFormatter;
@@ -805,14 +572,6 @@ namespace message2 {
             SelectorKeys(const UVector& ks, UErrorCode& status);
         }; // class SelectorKeys
 
-<<<<<<< HEAD
-=======
-
-    } // namespace data_model
-
-
-    namespace data_model {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         class Operator;
 
         /**
@@ -901,64 +660,22 @@ namespace message2 {
             /* const */ UnicodeString name;
             /* const */ Operand rand;
         }; // class Option
-<<<<<<< HEAD
-
-=======
-    } // namespace data_model
-} // namespace message2
-
-  /// @cond DOXYGEN_IGNORE
-// Export an explicit template instantiation of the LocalPointer that is used as a
-// data member of various MFDataModel classes.
-// (When building DLLs for Windows this is required.)
-// (See measunit_impl.h, datefmt.h, collationiterator.h, erarules.h and others
-// for similar examples.)
-#if U_PF_WINDOWS <= U_PLATFORM && U_PLATFORM <= U_PF_CYGWIN
-template class U_I18N_API LocalPointerBase<message2::data_model::Option>;
-template class U_I18N_API LocalArray<message2::data_model::Option>;
-#endif
-/// @endcond
-
-namespace message2 {
-  namespace data_model {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         // Internal only
         #ifndef U_IN_DOXYGEN
         // Options
         // This is a wrapper class around a vector of options that provides lookup operations
-<<<<<<< HEAD
-        class U_I18N_API_CLASS OptionMap : public UObject {
+class U_I18N_API_CLASS OptionMap : public UObject {
         public:
             U_I18N_API int32_t size() const;
             // Needs to take an error code b/c an earlier copy might have failed
             U_I18N_API const Option& getOption(int32_t, UErrorCode&) const;
-            U_I18N_API friend inline void swap(OptionMap& m1, OptionMap& m2) noexcept {
-=======
-        class U_I18N_API OptionMap : public UObject {
-        public:
-            int32_t size() const;
-            // Needs to take an error code b/c an earlier copy might have failed
-            const Option& getOption(int32_t, UErrorCode&) const;
-            friend inline void swap(OptionMap& m1, OptionMap& m2) noexcept {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                using std::swap;
+            U_I18N_API friend inline void swap(OptionMap& m1, OptionMap& m2) noexcept {                using std::swap;
 
                 swap(m1.bogus, m2.bogus);
                 swap(m1.options, m2.options);
                 swap(m1.len, m2.len);
             }
-<<<<<<< HEAD
-            U_I18N_API OptionMap() : len(0) {}
-            U_I18N_API OptionMap(const OptionMap&);
-            U_I18N_API OptionMap& operator=(OptionMap);
-            U_I18N_API std::vector<Option> getOptions() const {
-                return toStdVector<Option>(options.getAlias(), len);
-            }
-            U_I18N_API OptionMap(const UVector&, UErrorCode&);
-            U_I18N_API OptionMap(Option*, int32_t);
-            U_I18N_API virtual ~OptionMap();
-=======
-            OptionMap() : len(0) {}
+OptionMap() : len(0) {}
             OptionMap(const OptionMap&);
             OptionMap& operator=(OptionMap);
             std::vector<Option> getOptions() const {
@@ -967,8 +684,6 @@ namespace message2 {
             OptionMap(const UVector&, UErrorCode&);
             OptionMap(Option*, int32_t);
             virtual ~OptionMap();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
             class U_I18N_API Builder : public UObject {
                 private:
                     UVector* options;
@@ -999,21 +714,7 @@ namespace message2 {
         }; // class OptionMap
         #endif
 
-<<<<<<< HEAD
-        /**
-=======
-  } // namespace data_model
-} // namespace message2
-
-U_NAMESPACE_END
-
-U_NAMESPACE_BEGIN
-
-namespace message2 {
-  namespace data_model {
-      /**
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-         * The `Operator` class corresponds to the `FunctionRef` type in the
+/**         * The `Operator` class corresponds to the `FunctionRef` type in the
          * `Expression` interface defined in
          * https://github.com/unicode-org/message-format-wg/blob/main/spec/data-model.md#patterns
          *
@@ -1183,10 +884,7 @@ namespace message2 {
             /* const */ FunctionName name;
             /* const */ OptionMap options;
         }; // class Operator
-<<<<<<< HEAD
-
-=======
-  } // namespace data_model
+} // namespace data_model
 } // namespace message2
 
 U_NAMESPACE_END
@@ -1205,9 +903,7 @@ template class U_I18N_API std::optional<icu::message2::data_model::Operator>;
 U_NAMESPACE_BEGIN
 
 namespace message2 {
-  namespace data_model {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      // Internal only
+  namespace data_model {      // Internal only
       typedef enum UMarkupType {
           UMARKUP_OPEN = 0,
           UMARKUP_CLOSE,
@@ -1442,12 +1138,7 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        class U_I18N_API_CLASS Expression : public UObject {
-=======
-        class U_I18N_API Expression : public UObject {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        public:
+class U_I18N_API_CLASS Expression : public UObject {        public:
             /**
              * Checks if this expression is an annotation
              * with no operand.
@@ -1458,12 +1149,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API UBool isStandaloneAnnotation() const;
-=======
-            UBool isStandaloneAnnotation() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API UBool isStandaloneAnnotation() const;            /**
              * Checks if this expression has a function
              * annotation (with or without an operand).
              *
@@ -1473,12 +1159,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API UBool isFunctionCall() const;
-=======
-            UBool isFunctionCall() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API UBool isFunctionCall() const;            /**
              * Accesses the function
              * annotating this expression.
              * If !(isFunctionCall()), sets
@@ -1491,12 +1172,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API const Operator* getOperator(UErrorCode& status) const;
-=======
-            const Operator* getOperator(UErrorCode& status) const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API const Operator* getOperator(UErrorCode& status) const;            /**
              * Accesses the operand of this expression.
              *
              * @return A reference to the operand of this expression,
@@ -1505,12 +1181,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API const Operand& getOperand() const;
-=======
-            const Operand& getOperand() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API const Operand& getOperand() const;            /**
              * Gets the attributes of this expression
              *
              * @return A vector of attributes
@@ -1518,12 +1189,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API std::vector<Option> getAttributes() const { return attributes.getOptions(); }
-=======
-            std::vector<Option> getAttributes() const { return attributes.getOptions(); }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API std::vector<Option> getAttributes() const { return attributes.getOptions(); }            /**
              * The mutable `Expression::Builder` class allows the operator to be constructed
              * incrementally.
              *
@@ -1622,12 +1288,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API friend inline void swap(Expression& e1, Expression& e2) noexcept {
-=======
-            friend inline void swap(Expression& e1, Expression& e2) noexcept {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                using std::swap;
+friend inline void swap(Expression& e1, Expression& e2) noexcept {                using std::swap;
 
                 swap(e1.rator, e2.rator);
                 swap(e1.rand, e2.rand);
@@ -1639,46 +1300,26 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API Expression(const Expression& other);
-=======
-            Expression(const Expression& other);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API Expression(const Expression& other);            /**
              * Assignment operator.
              *
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API Expression& operator=(Expression) noexcept;
-=======
-            Expression& operator=(Expression) noexcept;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API Expression& operator=(Expression) noexcept;            /**
              * Default constructor.
              * Puts the Expression into a valid but undefined state.
              *
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API Expression();
-=======
-            Expression();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API Expression();            /**
              * Destructor.
              *
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API virtual ~Expression();
-=======
-            virtual ~Expression();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        private:
+U_I18N_API virtual ~Expression();        private:
             friend class message2::Serializer;
 
             /*
@@ -1703,26 +1344,6 @@ namespace message2 {
             /* const */ OptionMap attributes;
             const OptionMap& getAttributesInternal() const { return attributes; }
         }; // class Expression
-<<<<<<< HEAD
-=======
-  } // namespace data_model
-} // namespace message2
-
-/// @cond DOXYGEN_IGNORE
-// Export an explicit template instantiation of the LocalPointer that is used as a
-// data member of various MFDataModel classes.
-// (When building DLLs for Windows this is required.)
-// (See measunit_impl.h, datefmt.h, collationiterator.h, erarules.h and others
-// for similar examples.)
-#if U_PF_WINDOWS <= U_PLATFORM && U_PLATFORM <= U_PF_CYGWIN
-template class U_I18N_API LocalPointerBase<message2::data_model::Expression>;
-template class U_I18N_API LocalArray<message2::data_model::Expression>;
-#endif
-/// @endcond
-
-namespace message2 {
-  namespace data_model {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
       class Pattern;
 
@@ -1737,12 +1358,7 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        class U_I18N_API_CLASS PatternPart : public UObject {
-=======
-        class PatternPart : public UObject {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        public:
+class U_I18N_API_CLASS PatternPart : public UObject {        public:
             /**
              * Checks if the part is a text part.
              *
@@ -1751,12 +1367,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API UBool isText() const { return std::holds_alternative<UnicodeString>(piece); }
-=======
-            UBool isText() const { return std::holds_alternative<UnicodeString>(piece); }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API UBool isText() const { return std::holds_alternative<UnicodeString>(piece); }            /**
              * Checks if the part is a markup part.
              *
              * @return True if and only if this is a markup part.
@@ -1764,12 +1375,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API UBool isMarkup() const { return std::holds_alternative<Markup>(piece); }
-=======
-            UBool isMarkup() const { return std::holds_alternative<Markup>(piece); }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API UBool isMarkup() const { return std::holds_alternative<Markup>(piece); }            /**
              * Checks if the part is an expression part.
              *
              * @return True if and only if this is an expression part.
@@ -1777,12 +1383,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API UBool isExpression() const { return std::holds_alternative<Expression>(piece); }
-=======
-            UBool isExpression() const { return std::holds_alternative<Expression>(piece); }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API UBool isExpression() const { return std::holds_alternative<Expression>(piece); }            /**
              * Accesses the expression of the part.
              * Precondition: isExpression()
              *
@@ -1791,12 +1392,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API const Expression& contents() const;
-=======
-            const Expression& contents() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API const Expression& contents() const;            /**
              * Accesses the expression of the part.
              * Precondition: isMarkup()
              *
@@ -1805,12 +1401,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API const Markup& asMarkup() const;
-=======
-            const Markup& asMarkup() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API const Markup& asMarkup() const;            /**
              * Accesses the text contents of the part.
              * Precondition: isText()
              *
@@ -1819,12 +1410,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API const UnicodeString& asText() const;
-=======
-            const UnicodeString& asText() const;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API const UnicodeString& asText() const;            /**
              * Non-member swap function.
              * @param p1 will get p2's contents
              * @param p2 will get p1's contents
@@ -1832,12 +1418,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API friend inline void swap(PatternPart& p1, PatternPart& p2) noexcept {
-=======
-            friend inline void swap(PatternPart& p1, PatternPart& p2) noexcept {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                using std::swap;
+friend inline void swap(PatternPart& p1, PatternPart& p2) noexcept {                using std::swap;
 
                 swap(p1.piece, p2.piece);
             }
@@ -1847,34 +1428,19 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API PatternPart(const PatternPart& other);
-=======
-            PatternPart(const PatternPart& other);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API PatternPart(const PatternPart& other);            /**
              * Assignment operator.
              *
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API PatternPart& operator=(PatternPart) noexcept;
-=======
-            PatternPart& operator=(PatternPart) noexcept;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API PatternPart& operator=(PatternPart) noexcept;            /**
              * Destructor.
              *
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API virtual ~PatternPart();
-=======
-            virtual ~PatternPart();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API virtual ~PatternPart();            /**
              * Text part constructor. Returns a text pattern part
              * with text `t`.
              *
@@ -1883,12 +1449,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API explicit PatternPart(const UnicodeString& t) : piece(t) {}
-=======
-            explicit PatternPart(const UnicodeString& t) : piece(t) {}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API explicit PatternPart(const UnicodeString& t) : piece(t) {}            /**
              * Expression part constructor. Returns an Expression pattern
              * part with expression `e`.
              *
@@ -1897,12 +1458,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API explicit PatternPart(Expression&& e) : piece(e) {}
-=======
-            explicit PatternPart(Expression&& e) : piece(e) {}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API explicit PatternPart(Expression&& e) : piece(e) {}            /**
              * Markup part constructor. Returns a Markup pattern
              * part with markup `m`
              *
@@ -1911,49 +1467,18 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API explicit PatternPart(Markup&& m) : piece(m) {}
-=======
-            explicit PatternPart(Markup&& m) : piece(m) {}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API explicit PatternPart(Markup&& m) : piece(m) {}            /**
              * Default constructor.
              * Puts the PatternPart into a valid but undefined state.
              *
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API PatternPart() = default;
-=======
-            PatternPart() = default;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        private:
+U_I18N_API PatternPart() = default;        private:
             friend class Pattern;
 
             std::variant<UnicodeString, Expression, Markup> piece;
         }; // class PatternPart
-<<<<<<< HEAD
-
-=======
-  } // namespace data_model
-} // namespace message2
-
-  /// @cond DOXYGEN_IGNORE
-// Export an explicit template instantiation of the LocalPointer that is used as a
-// data member of various MFDataModel classes.
-// (When building DLLs for Windows this is required.)
-// (See measunit_impl.h, datefmt.h, collationiterator.h, erarules.h and others
-// for similar examples.)
-#if U_PF_WINDOWS <= U_PLATFORM && U_PLATFORM <= U_PF_CYGWIN
-template class U_I18N_API LocalPointerBase<message2::data_model::PatternPart>;
-template class U_I18N_API LocalArray<message2::data_model::PatternPart>;
-#endif
-/// @endcond
-
-namespace message2 {
-  namespace data_model {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          *  A `Pattern` is a sequence of formattable parts.
          * It corresponds to the `Pattern` interface
@@ -1964,23 +1489,13 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        class U_I18N_API_CLASS Pattern : public UObject {
-=======
-        class U_I18N_API Pattern : public UObject {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        private:
+class U_I18N_API_CLASS Pattern : public UObject {        private:
             friend class PatternPart;
 
         public:
-<<<<<<< HEAD
-            #ifndef U_IN_DOXYGEN
+#ifndef U_IN_DOXYGEN
             struct U_I18N_API Iterator;
-            #endif
-=======
-            struct Iterator;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+            #endif            /**
              * Returns the parts of this pattern
              *
              * @return A forward iterator of variants. Each element is either a string (text part)
@@ -1989,12 +1504,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API Iterator begin() const {
-=======
-            Iterator begin() const {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                return Iterator(this, 0);
+Iterator begin() const {                return Iterator(this, 0);
             }
             /**
              * Returns a special value to mark the end of iteration
@@ -2005,12 +1515,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API Iterator end() const {
-=======
-            Iterator end() const {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                return Iterator(this, len);
+U_I18N_API Iterator end() const {                return Iterator(this, len);
             }
             /**
              * The mutable `Pattern::Builder` class allows the pattern to be
@@ -2104,12 +1609,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API Pattern() : parts(LocalArray<PatternPart>()) {}
-=======
-            Pattern() : parts(LocalArray<PatternPart>()) {}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API Pattern() : parts(LocalArray<PatternPart>()) {}            /**
              * Non-member swap function.
              * @param p1 will get p2's contents
              * @param p2 will get p1's contents
@@ -2117,12 +1617,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API friend inline void swap(Pattern& p1, Pattern& p2) noexcept {
-=======
-            friend inline void swap(Pattern& p1, Pattern& p2) noexcept {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                using std::swap;
+U_I18N_API friend inline void swap(Pattern& p1, Pattern& p2) noexcept {                using std::swap;
 
                 swap(p1.bogus, p2.bogus);
                 swap(p1.len, p2.len);
@@ -2134,34 +1629,19 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API Pattern(const Pattern& other);
-=======
-            Pattern(const Pattern& other);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API Pattern(const Pattern& other);            /**
              * Assignment operator
              *
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API Pattern& operator=(Pattern) noexcept;
-=======
-            Pattern& operator=(Pattern) noexcept;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            /**
+U_I18N_API Pattern& operator=(Pattern) noexcept;            /**
              * Destructor.
              *
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-<<<<<<< HEAD
-            U_I18N_API virtual ~Pattern();
-=======
-            virtual ~Pattern();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API virtual ~Pattern();
             /**
              *  The `Pattern::Iterator` class provides an iterator over the formattable
              * parts of a pattern.
@@ -2347,13 +1827,6 @@ namespace message2 {
             /* const */ SelectorKeys k;
             /* const */ Pattern p;
         }; // class Variant
-<<<<<<< HEAD
-
-=======
-    } // namespace data_model
-
-        namespace data_model {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          *  A `Binding` pairs a variable name with an expression.
          * It corresponds to the `Declaration` interface
@@ -2405,12 +1878,8 @@ namespace message2 {
              *
              * @return True if this binding represents a variable and expression;
              *         false if it represents a variable plus an annotation.
-<<<<<<< HEAD
-             * @internal ICU 78 technology preview
-             * @deprecated This API is for technology preview only.
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-             */
+* @internal ICU 78 technology preview
+             * @deprecated This API is for technology preview only.             */
             UBool isLocal() const { return local; }
             /**
              * Constructor.
@@ -2490,48 +1959,13 @@ namespace message2 {
             bool hasAnnotation() const { return !local && (annotation != nullptr); }
             void updateAnnotation();
         }; // class Binding
-<<<<<<< HEAD
-
-    // Internal only
+// Internal only
 
     #ifndef U_IN_DOXYGEN
     class U_I18N_API_CLASS Matcher : public UObject {
     public:
         U_I18N_API Matcher& operator=(Matcher);
-        U_I18N_API Matcher(const Matcher&);
-=======
-    } // namespace data_model
-} // namespace message2
-
-  /// @cond DOXYGEN_IGNORE
-// Export an explicit template instantiation of the LocalPointer that is used as a
-// data member of various MFDataModel classes.
-// (When building DLLs for Windows this is required.)
-// (See measunit_impl.h, datefmt.h, collationiterator.h, erarules.h and others
-// for similar examples.)
-#if U_PF_WINDOWS <= U_PLATFORM && U_PLATFORM <= U_PF_CYGWIN
-template class U_I18N_API LocalPointerBase<message2::data_model::Variant>;
-template class U_I18N_API LocalPointerBase<message2::data_model::Binding>;
-template class U_I18N_API LocalArray<message2::data_model::Variant>;
-template class U_I18N_API LocalArray<message2::data_model::Binding>;
-#endif
-/// @endcond
-
-namespace message2 {
-    using namespace data_model;
-
-
-    // Internal only
-
-    class MFDataModel;
-
-    #ifndef U_IN_DOXYGEN
-    class Matcher : public UObject {
-    public:
-        Matcher& operator=(Matcher);
-        Matcher(const Matcher&);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        /**
+        U_I18N_API Matcher(const Matcher&);        /**
          * Non-member swap function.
          * @param m1 will get m2's contents
          * @param m2 will get m1's contents
@@ -2539,12 +1973,7 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API friend inline void swap(Matcher& m1, Matcher& m2) noexcept {
-=======
-        friend inline void swap(Matcher& m1, Matcher& m2) noexcept {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            using std::swap;
+friend inline void swap(Matcher& m1, Matcher& m2) noexcept {            using std::swap;
 
             if (m1.bogus) {
                 m2.bogus = true;
@@ -2559,12 +1988,7 @@ namespace message2 {
             swap(m1.variants, m2.variants);
             swap(m1.numVariants, m2.numVariants);
         }
-<<<<<<< HEAD
-        U_I18N_API virtual ~Matcher();
-=======
-        virtual ~Matcher();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    private:
+virtual ~Matcher();    private:
 
         friend class MFDataModel;
 
@@ -2586,9 +2010,6 @@ namespace message2 {
         int32_t numVariants = 0;
     }; // class Matcher
     #endif
-<<<<<<< HEAD
-
-=======
 } // namespace message2
 
 U_NAMESPACE_END
@@ -2609,9 +2030,7 @@ template class U_I18N_API std::variant<icu::message2::Matcher,icu::message2::dat
 
 U_NAMESPACE_BEGIN
 
-namespace message2 {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    // -----------------------------------------------------------------------
+namespace message2 {    // -----------------------------------------------------------------------
     // Public MFDataModel class
 
     /**
@@ -2630,12 +2049,7 @@ namespace message2 {
      * @internal ICU 75 technology preview
      * @deprecated This API is for technology preview only.
      */
-<<<<<<< HEAD
-    class U_I18N_API_CLASS MFDataModel : public UMemory {
-=======
-    class U_I18N_API MFDataModel : public UMemory {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        /*
+class U_I18N_API_CLASS MFDataModel : public UMemory {        /*
           Classes that represent nodes in the data model are nested inside the
           `MFDataModel` class.
 
@@ -2678,12 +2092,7 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API std::vector<Binding> getLocalVariables() const {
-=======
-        std::vector<Binding> getLocalVariables() const {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            std::vector<Binding> result;
+U_I18N_API std::vector<Binding> getLocalVariables() const {            std::vector<Binding> result;
             if (!bogus) {
                 return toStdVector<Binding>(bindings.getAlias(), bindingsLen);
             }
@@ -2697,12 +2106,7 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API std::vector<VariableName> getSelectors() const {
-=======
-        std::vector<VariableName> getSelectors() const {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            if (std::holds_alternative<Pattern>(body)) {
+U_I18N_API std::vector<VariableName> getSelectors() const {            if (std::holds_alternative<Pattern>(body)) {
                 return {};
             }
             const Matcher* match = std::get_if<Matcher>(&body);
@@ -2717,12 +2121,7 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API std::vector<Variant> getVariants() const {
-=======
-        std::vector<Variant> getVariants() const {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            // Return empty vector if no variants
+U_I18N_API std::vector<Variant> getVariants() const {            // Return empty vector if no variants
             if (std::holds_alternative<Pattern>(body)) {
                 return {};
             }
@@ -2740,13 +2139,7 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API const Pattern& getPattern() const;
-=======
-        const Pattern& getPattern() const;
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        /**
+U_I18N_API const Pattern& getPattern() const;        /**
          * The mutable `MFDataModel::Builder` class allows the data model to be
          * constructed incrementally.
          *
@@ -2754,10 +2147,6 @@ namespace message2 {
          * @deprecated This API is for technology preview only.
          */
         class U_I18N_API Builder;
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         /**
          * Default constructor.
          * Puts the MFDataModel into a valid but undefined state.
@@ -2765,12 +2154,7 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API MFDataModel();
-=======
-        MFDataModel();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        /**
+U_I18N_API MFDataModel();        /**
          * Non-member swap function.
          * @param m1 will get m2's contents
          * @param m2 will get m1's contents
@@ -2778,12 +2162,7 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API friend inline void swap(MFDataModel& m1, MFDataModel& m2) noexcept {
-=======
-        friend inline void swap(MFDataModel& m1, MFDataModel& m2) noexcept {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            using std::swap;
+friend inline void swap(MFDataModel& m1, MFDataModel& m2) noexcept {            using std::swap;
 
             if (m1.bogus) {
                 m2.bogus = true;
@@ -2803,34 +2182,19 @@ namespace message2 {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API MFDataModel& operator=(MFDataModel) noexcept;
-=======
-        MFDataModel& operator=(MFDataModel) noexcept;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        /**
+U_I18N_API MFDataModel& operator=(MFDataModel) noexcept;        /**
          * Copy constructor.
          *
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API MFDataModel(const MFDataModel& other);
-=======
-        MFDataModel(const MFDataModel& other);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        /**
+U_I18N_API MFDataModel(const MFDataModel& other);        /**
          * Destructor.
          *
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-<<<<<<< HEAD
-        U_I18N_API virtual ~MFDataModel();
-=======
-        virtual ~MFDataModel();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API virtual ~MFDataModel();
         /**
          * The mutable `MFDataModel::Builder` class allows the data model to be
          * constructed incrementally. Builder is not copyable or movable.
@@ -2949,16 +2313,9 @@ namespace message2 {
         }; // class Builder
 
     private:
-<<<<<<< HEAD
-        friend class message2::Checker;
+friend class message2::Checker;
         friend class message2::MessageFormatter;
         friend class message2::Serializer;
-=======
-        friend class Checker;
-        friend class MessageFormatter;
-        friend class Serializer;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
         Pattern empty; // Provided so that `getPattern()` can return a result
                        // if called on a selectors message
         bool hasPattern() const { return std::holds_alternative<Pattern>(body); }
@@ -2991,12 +2348,7 @@ namespace message2 {
 
         MFDataModel(const Builder& builder, UErrorCode&) noexcept;
     }; // class MFDataModel
-<<<<<<< HEAD
-  } // namespace data_model
-=======
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-} // namespace message2
+} // namespace data_model} // namespace message2
 
 U_NAMESPACE_END
 

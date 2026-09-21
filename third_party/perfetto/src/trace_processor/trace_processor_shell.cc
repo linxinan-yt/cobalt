@@ -14,13 +14,9 @@
  * limitations under the License.
  */
 
-<<<<<<< HEAD
 #include "perfetto/ext/trace_processor/trace_processor_shell.h"
 
-=======
-#include <algorithm>
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include <cctype>
+#include <algorithm>#include <cctype>
 #include <cerrno>
 #include <cstddef>
 #include <cstdio>
@@ -52,11 +48,7 @@
 #include "perfetto/trace_processor/basic_types.h"
 #include "perfetto/trace_processor/metatrace_config.h"
 #include "perfetto/trace_processor/read_trace.h"
-<<<<<<< HEAD
-=======
-#include "perfetto/trace_processor/trace_blob.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "perfetto/trace_processor/trace_processor.h"
+#include "perfetto/trace_processor/trace_blob.h"#include "perfetto/trace_processor/trace_processor.h"
 #include "src/trace_processor/read_trace_internal.h"
 #include "src/trace_processor/rpc/rpc.h"
 #include "src/trace_processor/rpc/stdiod.h"
@@ -105,9 +97,6 @@
 namespace perfetto::trace_processor {
 
 namespace {
-<<<<<<< HEAD
-=======
-
 #if PERFETTO_BUILDFLAG(PERFETTO_TP_LINENOISE)
 
 bool EnsureDir(const std::string& path) {
@@ -708,8 +697,6 @@ metatrace::MetatraceCategories ParseMetatraceCategories(std::string s) {
   }
   return result;
 }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 struct CommandLineOptions {
   std::string trace_file_path;
 
@@ -1352,8 +1339,7 @@ class DefaultPlatformInterface : public TraceProcessorShell::PlatformInterface {
  public:
   ~DefaultPlatformInterface() override;
 
-<<<<<<< HEAD
-  Config DefaultConfig() const override { return {}; }
+Config DefaultConfig() const override { return {}; }
 
   base::Status OnTraceProcessorCreated(TraceProcessor*) override {
     return base::OkStatus();
@@ -1372,565 +1358,10 @@ class DefaultPlatformInterface : public TraceProcessorShell::PlatformInterface {
     args.allow_perfetto_ui_links = true;
     args.cache_downloads = true;
     return ReadTraceUnfinalized(trace_processor, path.c_str(),
-                                progress_callback, args);
-=======
-base::Status LoadTrace(TraceProcessor* trace_processor,
-                       const std::string& trace_file_path,
-                       double* size_mb) {
-  base::Status read_status = ReadTraceUnfinalized(
-      trace_processor, trace_file_path.c_str(), [&size_mb](size_t parsed_size) {
-        *size_mb = static_cast<double>(parsed_size) / 1E6;
-        fprintf(stderr, "\rLoading trace: %.2f MB\r", *size_mb);
-      });
-  if (!read_status.ok()) {
-    return base::ErrStatus("Could not read trace file (path: %s): %s",
-                           trace_file_path.c_str(), read_status.c_message());
-  }
-
-  bool is_proto_trace = false;
-  {
-    auto it = trace_processor->ExecuteQuery(
-        "SELECT str_value FROM metadata WHERE name = 'trace_type'");
-    if (it.Next() && it.Get(0).type == SqlValue::kString) {
-      if (std::string_view(it.Get(0).AsString()) == "proto") {
-        is_proto_trace = true;
-      }
-    }
-  }
-
-  std::unique_ptr<profiling::Symbolizer> symbolizer =
-      profiling::MaybeLocalSymbolizer(profiling::GetPerfettoBinaryPath(), {},
-                                      getenv("PERFETTO_SYMBOLIZER_MODE"));
-  if (symbolizer) {
-    if (is_proto_trace) {
-      trace_processor->Flush();
-      profiling::SymbolizeDatabase(
-          trace_processor, symbolizer.get(),
-          [trace_processor](const std::string& trace_proto) {
-            std::unique_ptr<uint8_t[]> buf(new uint8_t[trace_proto.size()]);
-            memcpy(buf.get(), trace_proto.data(), trace_proto.size());
-            auto status =
-                trace_processor->Parse(std::move(buf), trace_proto.size());
-            if (!status.ok()) {
-              PERFETTO_DFATAL_OR_ELOG("Failed to parse: %s",
-                                      status.message().c_str());
-              return;
-            }
-          });
-    } else {
-      // TODO(lalitm): support symbolization for non-proto traces.
-      PERFETTO_ELOG("Skipping symbolization for non-proto trace");
-    }
-  }
-  auto maybe_map = profiling::GetPerfettoProguardMapPath();
-  if (!maybe_map.empty()) {
-    if (is_proto_trace) {
-      trace_processor->Flush();
-      profiling::ReadProguardMapsToDeobfuscationPackets(
-          maybe_map, [trace_processor](const std::string& trace_proto) {
-            std::unique_ptr<uint8_t[]> buf(new uint8_t[trace_proto.size()]);
-            memcpy(buf.get(), trace_proto.data(), trace_proto.size());
-            auto status =
-                trace_processor->Parse(std::move(buf), trace_proto.size());
-            if (!status.ok()) {
-              PERFETTO_DFATAL_OR_ELOG("Failed to parse: %s",
-                                      status.message().c_str());
-              return;
-            }
-          });
-    } else {
-      // TODO(lalitm): support deobfuscation for non-proto traces.
-      PERFETTO_ELOG("Skipping deobfuscation for non-proto trace");
-    }
-  }
-  return trace_processor->NotifyEndOfFile();
-}
-
-base::Status RunQueries(TraceProcessor* trace_processor,
-                        const std::string& queries,
-                        bool expect_output) {
-  if (expect_output) {
-    return RunQueriesAndPrintResult(trace_processor, queries, stdout);
-  }
-  return RunQueriesWithoutOutput(trace_processor, queries);
-}
-
-base::Status RunQueriesFromFile(TraceProcessor* trace_processor,
-                                const std::string& query_file_path,
-                                bool expect_output) {
-  std::string queries;
-  if (!base::ReadFile(query_file_path, &queries)) {
-    return base::ErrStatus("Unable to read file %s", query_file_path.c_str());
-  }
-  return RunQueries(trace_processor, queries, expect_output);
-}
-
-base::Status ParseSingleMetricExtensionPath(bool dev,
-                                            const std::string& raw_extension,
-                                            MetricExtension& parsed_extension) {
-  // We cannot easily use ':' as a path separator because windows paths can have
-  // ':' in them (e.g. C:\foo\bar).
-  std::vector<std::string> parts = base::SplitString(raw_extension, "@");
-  if (parts.size() != 2 || parts[0].length() == 0 || parts[1].length() == 0) {
-    return base::ErrStatus(
-        "--metric-extension-dir must be of format disk_path@virtual_path");
-  }
-
-  parsed_extension.SetDiskPath(std::move(parts[0]));
-  parsed_extension.SetVirtualPath(std::move(parts[1]));
-
-  if (parsed_extension.virtual_path() == "/") {
-    if (!dev) {
-      return base::ErrStatus(
-          "Local development features must be enabled (using the "
-          "--dev flag) to override built-in metrics");
-    }
-    parsed_extension.SetVirtualPath("");
-  }
-
-  if (parsed_extension.virtual_path() == "shell/") {
-    return base::Status(
-        "Cannot have 'shell/' as metric extension virtual path.");
-  }
-  return base::OkStatus();
-}
-
-base::Status CheckForDuplicateMetricExtension(
-    const std::vector<MetricExtension>& metric_extensions) {
-  std::unordered_set<std::string> disk_paths;
-  std::unordered_set<std::string> virtual_paths;
-  for (const auto& extension : metric_extensions) {
-    auto ret = disk_paths.insert(extension.disk_path());
-    if (!ret.second) {
-      return base::ErrStatus(
-          "Another metric extension is already using disk path %s",
-          extension.disk_path().c_str());
-    }
-    ret = virtual_paths.insert(extension.virtual_path());
-    if (!ret.second) {
-      return base::ErrStatus(
-          "Another metric extension is already using virtual path %s",
-          extension.virtual_path().c_str());
-    }
-  }
-  return base::OkStatus();
-}
-
-base::Status ParseMetricExtensionPaths(
-    bool dev,
-    const std::vector<std::string>& raw_metric_extensions,
-    std::vector<MetricExtension>& metric_extensions) {
-  for (const auto& raw_extension : raw_metric_extensions) {
-    metric_extensions.push_back({});
-    RETURN_IF_ERROR(ParseSingleMetricExtensionPath(dev, raw_extension,
-                                                   metric_extensions.back()));
-  }
-  return CheckForDuplicateMetricExtension(metric_extensions);
-}
-
-base::Status IncludeSqlPackage(TraceProcessor* trace_processor,
-                               std::string root,
-                               bool allow_override) {
-  // Remove trailing slash
-  if (root.back() == '/')
-    root.resize(root.length() - 1);
-
-  if (!base::FileExists(root))
-    return base::ErrStatus("Directory %s does not exist.", root.c_str());
-
-  // Get package name
-  size_t last_slash = root.rfind('/');
-  if (last_slash == std::string::npos) {
-    return base::ErrStatus("Package path must point to a directory: %s",
-                           root.c_str());
-  }
-
-  std::string package_name = root.substr(last_slash + 1);
-
-  std::vector<std::string> paths;
-  RETURN_IF_ERROR(base::ListFilesRecursive(root, paths));
-  sql_modules::NameToPackage modules;
-  for (const auto& path : paths) {
-    if (base::GetFileExtension(path) != ".sql") {
-      continue;
-    }
-
-    std::string path_no_extension = path.substr(0, path.rfind('.'));
-    if (path_no_extension.find('.') != std::string_view::npos) {
-      PERFETTO_ELOG("Skipping module %s as it contains a dot in its path.",
-                    path_no_extension.c_str());
-      continue;
-    }
-
-    std::string filename = root + "/" + path;
-    std::string file_contents;
-    if (!base::ReadFile(filename, &file_contents)) {
-      return base::ErrStatus("Cannot read file %s", filename.c_str());
-    }
-
-    std::string import_key =
-        package_name + "." + sql_modules::GetIncludeKey(path);
-    modules.Insert(package_name, {})
-        .first->push_back({import_key, file_contents});
-  }
-  for (auto module_it = modules.GetIterator(); module_it; ++module_it) {
-    RETURN_IF_ERROR(trace_processor->RegisterSqlPackage(
-        {/*name=*/module_it.key(),
-         /*files=*/module_it.value(),
-         /*allow_override=*/allow_override}));
-  }
-  return base::OkStatus();
-}
-
-base::Status LoadOverridenStdlib(TraceProcessor* trace_processor,
-                                 std::string root) {
-  // Remove trailing slash
-  if (root.back() == '/') {
-    root.resize(root.length() - 1);
-  }
-
-  if (!base::FileExists(root)) {
-    return base::ErrStatus("Directory '%s' does not exist.", root.c_str());
-  }
-
-  std::vector<std::string> paths;
-  RETURN_IF_ERROR(base::ListFilesRecursive(root, paths));
-  sql_modules::NameToPackage packages;
-  for (const auto& path : paths) {
-    if (base::GetFileExtension(path) != ".sql") {
-      continue;
-    }
-    std::string filename = root + "/" + path;
-    std::string module_file;
-    if (!base::ReadFile(filename, &module_file)) {
-      return base::ErrStatus("Cannot read file '%s'", filename.c_str());
-    }
-    std::string module_name = sql_modules::GetIncludeKey(path);
-    std::string package_name = sql_modules::GetPackageName(module_name);
-    packages.Insert(package_name, {})
-        .first->push_back({module_name, module_file});
-  }
-  for (auto package = packages.GetIterator(); package; ++package) {
-    trace_processor->RegisterSqlPackage({/*name=*/package.key(),
-                                         /*files=*/package.value(),
-                                         /*allow_override=*/true});
-  }
-
-  return base::OkStatus();
-}
-
-base::Status LoadMetricExtensionProtos(TraceProcessor* trace_processor,
-                                       const std::string& proto_root,
-                                       const std::string& mount_path,
-                                       google::protobuf::DescriptorPool& pool) {
-  if (!base::FileExists(proto_root)) {
-    return base::ErrStatus(
-        "Directory %s does not exist. Metric extension directory must contain "
-        "a 'sql/' and 'protos/' subdirectory.",
-        proto_root.c_str());
-  }
-  std::vector<std::string> proto_files;
-  RETURN_IF_ERROR(base::ListFilesRecursive(proto_root, proto_files));
-
-  google::protobuf::FileDescriptorSet parsed_protos;
-  for (const auto& file_path : proto_files) {
-    if (base::GetFileExtension(file_path) != ".proto")
-      continue;
-    auto* file_desc = parsed_protos.add_file();
-    ParseToFileDescriptorProto(proto_root + file_path, file_desc);
-    file_desc->set_name(mount_path + file_path);
-  }
-
-  std::vector<uint8_t> serialized_filedescset;
-  serialized_filedescset.resize(parsed_protos.ByteSizeLong());
-  parsed_protos.SerializeToArray(
-      serialized_filedescset.data(),
-      static_cast<int>(serialized_filedescset.size()));
-
-  // Extend the pool for any subsequent reflection-based operations
-  // (e.g. output json)
-  ExtendPoolWithBinaryDescriptor(
-      pool, serialized_filedescset.data(),
-      static_cast<int>(serialized_filedescset.size()), {});
-  return trace_processor->ExtendMetricsProto(serialized_filedescset.data(),
-                                             serialized_filedescset.size());
-}
-
-base::Status LoadMetricExtensionSql(TraceProcessor* trace_processor,
-                                    const std::string& sql_root,
-                                    const std::string& mount_path) {
-  if (!base::FileExists(sql_root)) {
-    return base::ErrStatus(
-        "Directory %s does not exist. Metric extension directory must contain "
-        "a 'sql/' and 'protos/' subdirectory.",
-        sql_root.c_str());
-  }
-
-  std::vector<std::string> sql_files;
-  RETURN_IF_ERROR(base::ListFilesRecursive(sql_root, sql_files));
-  for (const auto& file_path : sql_files) {
-    if (base::GetFileExtension(file_path) != ".sql")
-      continue;
-    std::string file_contents;
-    if (!base::ReadFile(sql_root + file_path, &file_contents)) {
-      return base::ErrStatus("Cannot read file %s", file_path.c_str());
-    }
-    RETURN_IF_ERROR(
-        trace_processor->RegisterMetric(mount_path + file_path, file_contents));
-  }
-  return base::OkStatus();
-}
-
-base::Status LoadMetricExtension(TraceProcessor* trace_processor,
-                                 const MetricExtension& extension,
-                                 google::protobuf::DescriptorPool& pool) {
-  const std::string& disk_path = extension.disk_path();
-  const std::string& virtual_path = extension.virtual_path();
-
-  if (!base::FileExists(disk_path)) {
-    return base::ErrStatus("Metric extension directory %s does not exist",
-                           disk_path.c_str());
-  }
-
-  // Note: Proto files must be loaded first, because we determine whether an SQL
-  // file is a metric or not by checking if the name matches a field of the root
-  // TraceMetrics proto.
-  RETURN_IF_ERROR(
-      LoadMetricExtensionProtos(trace_processor, disk_path + "protos/",
-                                kMetricProtoRoot + virtual_path, pool));
-  RETURN_IF_ERROR(LoadMetricExtensionSql(trace_processor, disk_path + "sql/",
-                                         virtual_path));
-
-  return base::OkStatus();
-}
-
-base::Status PopulateDescriptorPool(
-    google::protobuf::DescriptorPool& pool,
-    const std::vector<MetricExtension>& metric_extensions) {
-  // TODO(b/182165266): There is code duplication here with trace_processor_impl
-  // SetupMetrics. This will be removed when we switch the output formatter to
-  // use internal DescriptorPool.
-  std::vector<std::string> skip_prefixes;
-  skip_prefixes.reserve(metric_extensions.size());
-  for (const auto& ext : metric_extensions) {
-    skip_prefixes.push_back(kMetricProtoRoot + ext.virtual_path());
-  }
-  ExtendPoolWithBinaryDescriptor(pool, kMetricsDescriptor.data(),
-                                 kMetricsDescriptor.size(), skip_prefixes);
-  ExtendPoolWithBinaryDescriptor(pool, kAllChromeMetricsDescriptor.data(),
-                                 kAllChromeMetricsDescriptor.size(),
-                                 skip_prefixes);
-  ExtendPoolWithBinaryDescriptor(pool, kAllWebviewMetricsDescriptor.data(),
-                                 kAllWebviewMetricsDescriptor.size(),
-                                 skip_prefixes);
-  return base::OkStatus();
-}
-
-base::Status LoadMetrics(TraceProcessor* trace_processor,
-                         const std::string& raw_metric_names,
-                         google::protobuf::DescriptorPool& pool,
-                         std::vector<MetricNameAndPath>& name_and_path) {
-  std::vector<std::string> split;
-  for (base::StringSplitter ss(raw_metric_names, ','); ss.Next();) {
-    split.emplace_back(ss.cur_token());
-  }
-
-  // For all metrics which are files, register them and extend the metrics
-  // proto.
-  for (const std::string& metric_or_path : split) {
-    // If there is no extension, we assume it is a builtin metric.
-    auto ext_idx = metric_or_path.rfind('.');
-    if (ext_idx == std::string::npos) {
-      name_and_path.emplace_back(
-          MetricNameAndPath{metric_or_path, std::nullopt});
-      continue;
-    }
-
-    std::string no_ext_path = metric_or_path.substr(0, ext_idx);
-
-    // The proto must be extended before registering the metric.
-    base::Status status =
-        ExtendMetricsProto(trace_processor, no_ext_path + ".proto", &pool);
-    if (!status.ok()) {
-      return base::ErrStatus("Unable to extend metrics proto %s: %s",
-                             metric_or_path.c_str(), status.c_message());
-    }
-
-    status = RegisterMetric(trace_processor, no_ext_path + ".sql");
-    if (!status.ok()) {
-      return base::ErrStatus("Unable to register metric %s: %s",
-                             metric_or_path.c_str(), status.c_message());
-    }
-    name_and_path.emplace_back(
-        MetricNameAndPath{BaseName(no_ext_path), no_ext_path});
-  }
-  return base::OkStatus();
-}
-
-MetricV1OutputFormat ParseMetricV1OutputFormat(
-    const CommandLineOptions& options) {
-  if (!options.query_file_path.empty())
-    return MetricV1OutputFormat::kNone;
-  if (options.metric_v1_output == "binary")
-    return MetricV1OutputFormat::kBinaryProto;
-  if (options.metric_v1_output == "json")
-    return MetricV1OutputFormat::kJson;
-  return MetricV1OutputFormat::kTextProto;
-}
-
-base::Status LoadMetricsAndExtensionsSql(
-    TraceProcessor* trace_processor,
-    const std::vector<MetricNameAndPath>& metrics,
-    const std::vector<MetricExtension>& extensions) {
-  for (const MetricExtension& extension : extensions) {
-    const std::string& disk_path = extension.disk_path();
-    const std::string& virtual_path = extension.virtual_path();
-
-    RETURN_IF_ERROR(LoadMetricExtensionSql(trace_processor, disk_path + "sql/",
-                                           virtual_path));
-  }
-
-  for (const MetricNameAndPath& metric : metrics) {
-    // Ignore builtin metrics.
-    if (!metric.no_ext_path.has_value())
-      continue;
-    RETURN_IF_ERROR(
-        RegisterMetric(trace_processor, metric.no_ext_path.value() + ".sql"));
-  }
-  return base::OkStatus();
-}
-
-void PrintShellUsage() {
-  PERFETTO_ELOG(R"(
-Available commands:
-.quit, .q         Exit the shell.
-.help             This text.
-.dump FILE        Export the trace as a sqlite database.
-.read FILE        Executes the queries in the FILE.
-.reset            Destroys all tables/view created by the user.
-.load-metrics-sql Reloads SQL from extension and custom metric paths
-                  specified in command line args.
-.run-metrics      Runs metrics specified in command line args
-                  and prints the result.
-.width WIDTH      Changes the column width of interactive query
-                  output.
-)");
-}
-
-struct InteractiveOptions {
-  uint32_t column_width;
-  MetricV1OutputFormat metric_v1_format;
-  std::vector<MetricExtension> extensions;
-  std::vector<MetricNameAndPath> metrics;
-  const google::protobuf::DescriptorPool* pool;
+                                progress_callback, args);  }
 };
 
-base::Status StartInteractiveShell(TraceProcessor* trace_processor,
-                                   const InteractiveOptions& options) {
-  SetupLineEditor();
-
-  uint32_t column_width = options.column_width;
-  for (;;) {
-    ScopedLine line = GetLine("> ");
-    if (!line)
-      break;
-    if (strcmp(line.get(), "") == 0) {
-      printf("If you want to quit either type .q or press CTRL-D (EOF)\n");
-      continue;
-    }
-    if (line.get()[0] == '.') {
-      char command[32] = {};
-      char arg[1024] = {};
-      sscanf(line.get() + 1, "%31s %1023s", command, arg);
-      if (strcmp(command, "quit") == 0 || strcmp(command, "q") == 0) {
-        break;
-      }
-      if (strcmp(command, "help") == 0) {
-        PrintShellUsage();
-      } else if (strcmp(command, "dump") == 0 && strlen(arg)) {
-        if (!ExportTraceToDatabase(trace_processor, arg).ok())
-          PERFETTO_ELOG("Database export failed");
-      } else if (strcmp(command, "reset") == 0) {
-        trace_processor->RestoreInitialTables();
-      } else if (strcmp(command, "read") == 0 && strlen(arg)) {
-        base::Status status = RunQueriesFromFile(trace_processor, arg, true);
-        if (!status.ok()) {
-          PERFETTO_ELOG("%s", status.c_message());
-        }
-      } else if (strcmp(command, "width") == 0 && strlen(arg)) {
-        std::optional<uint32_t> width = base::CStringToUInt32(arg);
-        if (!width) {
-          PERFETTO_ELOG("Invalid column width specified");
-          continue;
-        }
-        column_width = *width;
-      } else if (strcmp(command, "load-metrics-sql") == 0) {
-        base::Status status = LoadMetricsAndExtensionsSql(
-            trace_processor, options.metrics, options.extensions);
-        if (!status.ok()) {
-          PERFETTO_ELOG("%s", status.c_message());
-        }
-      } else if (strcmp(command, "run-metrics") == 0) {
-        if (options.metrics.empty()) {
-          PERFETTO_ELOG("No metrics specified on command line");
-          continue;
-        }
-
-        base::Status status = RunMetrics(trace_processor, options.metrics,
-                                         options.metric_v1_format);
-        if (!status.ok()) {
-          fprintf(stderr, "%s\n", status.c_message());
-        }
-      } else {
-        PrintShellUsage();
-      }
-      continue;
-    }
-
-    base::TimeNanos t_start = base::GetWallTimeNs();
-    auto it = trace_processor->ExecuteQuery(line.get());
-    PrintQueryResultInteractively(&it, t_start, column_width);
-  }
-  return base::OkStatus();
-}
-
-base::Status MaybeWriteMetatrace(TraceProcessor* trace_processor,
-                                 const std::string& metatrace_path) {
-  if (metatrace_path.empty()) {
-    return base::OkStatus();
-  }
-  std::vector<uint8_t> serialized;
-  RETURN_IF_ERROR(trace_processor->DisableAndReadMetatrace(&serialized));
-
-  auto file = base::OpenFile(metatrace_path, O_CREAT | O_RDWR | O_TRUNC, 0600);
-  if (!file)
-    return base::ErrStatus("Unable to open metatrace file");
-
-  auto res = base::WriteAll(*file, serialized.data(), serialized.size());
-  if (res < 0)
-    return base::ErrStatus("Error while writing metatrace file");
-  return base::OkStatus();
-}
-
-base::Status MaybeUpdateSqlPackages(TraceProcessor* trace_processor,
-                                    const CommandLineOptions& options) {
-  if (!options.override_stdlib_path.empty()) {
-    if (!options.dev)
-      return base::ErrStatus("Overriding stdlib requires --dev flag");
-
-    auto status =
-        LoadOverridenStdlib(trace_processor, options.override_stdlib_path);
-    if (!status.ok())
-      return base::ErrStatus("Couldn't override stdlib: %s",
-                             status.c_message());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
-};
-
-<<<<<<< HEAD
-DefaultPlatformInterface::~DefaultPlatformInterface() = default;
-=======
-  if (!options.override_sql_package_paths.empty()) {
+if (!options.override_sql_package_paths.empty()) {
     for (const auto& override_sql_package_path :
          options.override_sql_package_paths) {
       auto status =
@@ -2106,7 +1537,7 @@ base::Status TraceProcessorMain(int argc, char** argv) {
       spec_content.emplace_back();
       if (!base::ReadFile(s, &spec_content.back())) {
         return base::ErrStatus("Unable to read summary spec file %s",
-                               s.c_str());
+                               s.c_message());
       }
     }
 
@@ -2241,8 +1672,6 @@ base::Status TraceProcessorMain(int argc, char** argv) {
 
   return base::OkStatus();
 }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 }  // namespace
 
 TraceProcessorShell::TraceProcessorShell(

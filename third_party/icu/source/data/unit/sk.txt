@@ -2168,20 +2168,12 @@ sk{
                         other{"{0} nociach"}
                     }
                 }
-<<<<<<< HEAD
-=======
-                dnam{"noci"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                few{"{0} noci"}
+dnam{"noci"}                few{"{0} noci"}
                 gender{"feminine"}
                 many{"{0} noci"}
                 one{"{0} noc"}
                 other{"{0} nocí"}
-<<<<<<< HEAD
-=======
-                per{"{0}/noc"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+per{"{0}/noc"}            }
             quarter{
                 case{
                     accusative{
@@ -5612,8 +5604,7 @@ sk{
                 per{"{0}/t."}
             }
         }
-<<<<<<< HEAD
-        energy{
+energy{
             calorie-it{
                 dnam{"cal-IT"}
             }
@@ -5624,17 +5615,7 @@ sk{
                 few{"{0} kp"}
                 many{"{0} kp"}
                 one{"{0} kp"}
-                other{"{0} kp"}
-=======
-        force{
-            kilowatt-hour-per-100-kilometer{
-                dnam{"kWh/100 km"}
-                few{"{0} kWh/100 km"}
-                many{"{0} kWh/100 km"}
-                one{"{0} kWh/100 km"}
-                other{"{0} kWh/100 km"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                other{"{0} kp"}            }
         }
         graphics{
             dot{
@@ -5919,17 +5900,13 @@ sk{
             }
         }
         force{
-<<<<<<< HEAD
-            kilogram-force{
+kilogram-force{
                 dnam{"kp"}
                 few{"{0} kp"}
                 many{"{0} kp"}
                 one{"{0} kp"}
                 other{"{0} kp"}
-            }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            kilowatt-hour-per-100-kilometer{
+            }            kilowatt-hour-per-100-kilometer{
                 dnam{"kWh/100 km"}
                 few{"{0} kWh/100 km"}
                 many{"{0} kWh/100 km"}

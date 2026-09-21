@@ -80,13 +80,8 @@ void SizeProfileComputer::Reset(const uint8_t* ptr, size_t size) {
   protozero::ProtoDecoder decoder(ptr, size);
   const ProtoDescriptor* descriptor = &pool_->descriptors()[root_message_idx_];
   state_stack_.push_back(State{descriptor, decoder, size, 0});
-<<<<<<< HEAD
-  field_path_.fields.emplace_back(0, /* field_name= */ "",
-                                  GetFieldTypeName(descriptor->full_name()));
-=======
-  field_path_.fields.emplace_back(0, nullptr, root_message_idx_, descriptor);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+field_path_.fields.emplace_back(0, /* field_name= */ "",
+                                  GetFieldTypeName(descriptor->full_name()));}
 
 std::optional<size_t> SizeProfileComputer::GetNext() {
   std::optional<size_t> result;
@@ -137,35 +132,18 @@ std::optional<size_t> SizeProfileComputer::GetNext() {
 
       protozero::ProtoDecoder decoder(field.data(), field.size());
       const ProtoDescriptor* descriptor = &pool_->descriptors()[*message_idx];
-<<<<<<< HEAD
-      field_path_.fields.emplace_back(
-          field.id(), field_descriptor->name(),
-          GetFieldTypeName(descriptor->full_name()));
-      state_stack_.push_back(State{descriptor, decoder, field.size(), 0U});
-      return GetNext();
-    }
-    field_path_.fields.emplace_back(field.id(), field_descriptor->name(),
-                                    GetLeafTypeName(field_descriptor->type()));
-=======
-      field_path_.fields.emplace_back(field.id(), field_descriptor,
+field_path_.fields.emplace_back(field.id(), field_descriptor,
                                       *message_idx, descriptor);
       state_stack_.push_back(State{descriptor, decoder, field.size(), 0U});
       return GetNext();
     }
     field_path_.fields.emplace_back(field.id(), field_descriptor,
-                                    field_descriptor->type(), nullptr);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    result.emplace(field_size);
+                                    field_descriptor->type(), nullptr);    result.emplace(field_size);
     return result;
   }
   if (state.unknown) {
-<<<<<<< HEAD
-    field_path_.fields.emplace_back(uint32_t(-1), /* field_name= */ "",
-                                    /* type_name= */ "");
-=======
-    field_path_.fields.emplace_back(uint32_t(-1), nullptr, 0U, nullptr);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    result.emplace(state.unknown);
+field_path_.fields.emplace_back(uint32_t(-1), /* field_name= */ "",
+                                    /* type_name= */ "");    result.emplace(state.unknown);
     state.unknown = 0;
     return result;
   }

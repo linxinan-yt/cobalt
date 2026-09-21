@@ -252,14 +252,10 @@ const int32_t SCRIPT_PROPS[] = {
     0x11BC4 | EXCLUSION,  // Sunu
     0x105C2 | EXCLUSION,  // Todr
     0x11392 | EXCLUSION,  // Tutg
-<<<<<<< HEAD
-    0x16EA1 | EXCLUSION | CASED,  // Berf
+0x16EA1 | EXCLUSION | CASED,  // Berf
     0x10950 | EXCLUSION | RTL,  // Sidt
     0x1E6D5 | EXCLUSION | LB_LETTERS,  // Tayo
-    0x11DC6 | EXCLUSION,  // Tols
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    // End copy-paste from parsescriptmetadata.py
+    0x11DC6 | EXCLUSION,  // Tols    // End copy-paste from parsescriptmetadata.py
 };
 
 int32_t getScriptProps(UScriptCode script) {

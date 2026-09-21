@@ -18,20 +18,9 @@ export const SIDEBAR_SECTIONS = {
     title: 'Current Trace',
     summary: 'Actions on the current trace',
   },
-<<<<<<< HEAD
-  trace_files: {
+trace_files: {
     title: 'New Trace',
-    summary: 'Open or record a new trace',
-  },
-  settings: {
-    title: 'Settings',
-    summary: 'Preferences and configuration',
-=======
-  example_traces: {
-    title: 'Example Traces',
-    summary: 'Open an example trace',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  },
+    summary: 'Open or record a new trace',  },
   settings: {
     title: 'Settings',
     summary: 'Preferences and configuration',

@@ -1229,16 +1229,12 @@ ar{
             two{"(عملة غير معروفة)"}
             zero{"(عملة غير معروفة)"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             few{"ذهب زيمبابوي"}
             many{"ذهب زيمبابوي"}
             one{"ذهب زيمبابوي"}
             other{"ذهب زيمبابوي"}
             two{"ذهب زيمبابوي"}
             zero{"ذهب زيمبابوي"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

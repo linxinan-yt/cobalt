@@ -233,12 +233,7 @@ class SentPacketCounter {
  public:
   explicit SentPacketCounter(TCPPort* p) {
     p->SubscribeSentPacket(
-<<<<<<< HEAD
-        this, [this](const SentPacketInfo& info) { OnSentPacket(info); });
-=======
-        [this](const webrtc::SentPacketInfo& info) { OnSentPacket(info); });
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+[this](const webrtc::SentPacketInfo& info) { OnSentPacket(info); });  }
 
   int sent_packets() const { return sent_packets_; }
 

@@ -1336,16 +1336,10 @@ chr{
                 other{"{0}ᎾᏃ"}
             }
             night{
-<<<<<<< HEAD
+dnam{"ᏚᎵᏏᏂᏒ"}
                 one{"{0}ᎤᏒ"}
                 other{"{0}ᏚᎵᏏᏂᏒ"}
-=======
-                dnam{"ᏚᎵᏏᏂᏒ"}
-                one{"{0}ᎤᏒ"}
-                other{"{0}ᏚᎵᏏᏂᏒ"}
-                per{"{0}/ᎤᏒ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/ᎤᏒ"}            }
             quarter{
                 one{"{0}Ꭿ"}
                 other{"{0}Ꭿ"}
@@ -1770,11 +1764,7 @@ chr{
                 other{"{0}kn"}
             }
             light-speed{
-<<<<<<< HEAD
-=======
-                dnam{"ᎠᏨᏍᏗ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                one{"{0}ᎠᏨᏍᏗ"}
+dnam{"ᎠᏨᏍᏗ"}                one{"{0}ᎠᏨᏍᏗ"}
                 other{"{0}ᎠᏨᏍᏗ"}
             }
             meter-per-second{

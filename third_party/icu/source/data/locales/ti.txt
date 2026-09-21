@@ -362,11 +362,7 @@ ti{
                 GyMMMEd{"E፣ d MMM y G"}
                 GyMMMd{"MMM d, y G"}
                 GyMd{"M/d/y GGGGG"}
-<<<<<<< HEAD
-                Hv{"HHሰ v"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                MEd{"E፣ d/M"}
+Hv{"HHሰ v"}                MEd{"E፣ d/M"}
                 MMMEd{"E, MMM d"}
                 MMMMd{"d MMMM"}
                 MMMMdd{"dd MMMM"}
@@ -812,11 +808,7 @@ ti{
             }
             availableFormats{
                 Ed{"d E"}
-<<<<<<< HEAD
-                GyMEd{"G y-MM-dd፣ E"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                GyMMMd{"MMM d, y G"}
+GyMEd{"G y-MM-dd፣ E"}                GyMMMd{"MMM d, y G"}
                 GyMd{"M/d/y GGGGG"}
                 MMMEd{"E, MMM d"}
                 MMMMd{"MMMM d"}
@@ -1334,16 +1326,9 @@ ti{
             givenFirst-short-referring-formal{"{given-initial} {given2-initial} {surname}"}
             givenFirst-short-referring-informal{"{given-informal} {surname-initial}"}
             sorting-long-referring-formal{"{surname-core}፣ {given} {given2} {surname-prefix}"}
-<<<<<<< HEAD
-            sorting-long-referring-informal{"{surname}፣ {given-informal}"}
+sorting-long-referring-informal{"{surname}፣ {given-informal}"}
             sorting-medium-referring-formal{"{surname-core}፣ {given} {given2-initial} {surname-prefix}"}
-            sorting-medium-referring-informal{"{surname}፣ {given-informal}"}
-=======
-            sorting-long-referring-informal{"{surname}, {given-informal}"}
-            sorting-medium-referring-formal{"{surname-core}, {given} {given2-initial} {surname-prefix}"}
-            sorting-medium-referring-informal{"{surname}, {given-informal}"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            sorting-short-referring-formal{"{surname-core}፣ {given} {given2} {surname-prefix}"}
+            sorting-medium-referring-informal{"{surname}፣ {given-informal}"}            sorting-short-referring-formal{"{surname-core}፣ {given} {given2} {surname-prefix}"}
             sorting-short-referring-informal{"{surname-core}፣ {given} {given2} {surname-prefix}"}
             surnameFirst-long-addressing-formal{"{title} {surname}"}
             surnameFirst-long-addressing-informal{"{given-informal}"}

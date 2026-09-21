@@ -14,13 +14,8 @@
 
 import m from 'mithril';
 import {classNames} from '../../base/classnames';
-<<<<<<< HEAD
 import type {App} from '../../public/app';
-import {renderAccordion} from './demos/accordion_demo';
-=======
-import {App} from '../../public/app';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {anchor} from './demos/anchor_demo';
+import {renderAccordion} from './demos/accordion_demo';import {anchor} from './demos/anchor_demo';
 import {renderButtonDemo} from './demos/button_demo';
 import {renderButtonGroupDemo} from './demos/button_group_demo';
 import {renderCallout} from './demos/callout_demo';
@@ -31,7 +26,6 @@ import {renderChip} from './demos/chip_demo';
 import {renderCodeSnippet} from './demos/code_snippet_demo';
 import {renderCopyableLink} from './demos/copyable_link_demo';
 import {cursorTooltip} from './demos/cursor_tooltip_demo';
-<<<<<<< HEAD
 import {renderDataGrid as renderDataGridDemo} from './demos/datagrid_demo';
 import {renderDataGrid as renderDataGridPlayground} from './demos/datagrid_playground';
 import {renderDrawerPanel} from './demos/drawer_panel_demo';
@@ -40,15 +34,7 @@ import {renderEmptyState} from './demos/empty_state_demo';
 import {renderForm} from './demos/form_demo';
 import {renderFuzzyDemo} from './demos/fuzzy_demo';
 import {renderGrid} from './demos/grid_demo';
-import {renderCharts} from './demos/charts_demo';
-=======
-import {renderDataGrid} from './demos/datagrid_demo';
-import {renderEditor} from './demos/editor_demo';
-import {renderEmptyState} from './demos/empty_state_demo';
-import {renderForm} from './demos/form_demo';
-import {renderGrid} from './demos/grid_demo';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {renderHotkey} from './demos/hotkey_demo';
+import {renderCharts} from './demos/charts_demo';import {renderHotkey} from './demos/hotkey_demo';
 import {renderIcon} from './demos/icon_demo';
 import {renderMenu} from './demos/menu_demo';
 import {renderMiddleEllipsis} from './demos/middle_ellipsis_demo';
@@ -58,7 +44,6 @@ import {renderNodeGraph} from './demos/nodegraph_demo';
 import {renderPopup} from './demos/popup_demo';
 import {popupMenuDemo} from './demos/popup_menu_demo';
 import {renderPortal} from './demos/portal_demo';
-<<<<<<< HEAD
 import {renderResizeHandle} from './demos/resize_handle_demo';
 import {radioGroup} from './demos/radio_group_demo';
 import {renderSelect} from './demos/select_demo';
@@ -66,15 +51,7 @@ import {renderSpinner} from './demos/spinner_demo';
 import {renderSplitPanel} from './demos/split_panel_demo';
 import {renderCombobox} from './demos/combobox_demo';
 import {renderSwitch} from './demos/switch_demo';
-import {renderTabs} from './demos/tabs_demo';
-=======
-import {segmentedButtons} from './demos/segmented_buttons_demo';
-import {renderSelect} from './demos/select_demo';
-import {renderSpinner} from './demos/spinner_demo';
-import {renderSplitPanel} from './demos/split_panel_demo';
-import {renderSwitch} from './demos/switch_demo';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {renderTabStrip} from './demos/tabstrip_demo';
+import {renderTabs} from './demos/tabs_demo';import {renderTabStrip} from './demos/tabstrip_demo';
 import {renderTagInput} from './demos/tag_input_demo';
 import {renderTextInput} from './demos/text_input_demo';
 import {renderTextParagraph} from './demos/text_paragraph_demo';
@@ -82,37 +59,25 @@ import {renderTooltip} from './demos/tooltip_demo';
 import {renderTrackShell} from './demos/track_shell_demo';
 import {renderTree} from './demos/tree_demo';
 import {renderTreeTable} from './demos/treetable_demo';
-<<<<<<< HEAD
-=======
-import {renderVegaView} from './demos/vega_view_demo';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {renderVirtualCanvas} from './demos/virtual_canvas_demo';
+import {renderVegaView} from './demos/vega_view_demo';import {renderVirtualCanvas} from './demos/virtual_canvas_demo';
 
 interface WidgetSection {
   readonly id: string;
   readonly label: string;
   readonly view: (app: App) => m.Children;
-<<<<<<< HEAD
-  // If set, the content area drops its max-width and fills the screen. Useful
+// If set, the content area drops its max-width and fills the screen. Useful
   // for pages showing wide, interactive widgets (e.g. DataGrid).
   readonly fullWidth?: boolean;
 }
 
 const WIDGET_SECTIONS: WidgetSection[] = [
-  {id: 'accordion', label: 'Accordion', view: renderAccordion},
-=======
-}
-
-const WIDGET_SECTIONS: WidgetSection[] = [
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  {id: 'anchor', label: 'Anchor', view: anchor},
+  {id: 'accordion', label: 'Accordion', view: renderAccordion},  {id: 'anchor', label: 'Anchor', view: anchor},
   {id: 'button', label: 'Button', view: renderButtonDemo},
   {id: 'button-group', label: 'ButtonGroup', view: renderButtonGroupDemo},
   {id: 'callout', label: 'Callout', view: renderCallout},
   {id: 'card-stack', label: 'CardStack', view: cardStack},
   {id: 'card', label: 'Card', view: renderCard},
-<<<<<<< HEAD
-  {id: 'charts', label: 'Charts', view: renderCharts},
+{id: 'charts', label: 'Charts', view: renderCharts},
   {id: 'checkbox', label: 'Checkbox', view: renderCheckbox},
   {id: 'chip', label: 'Chip', view: renderChip},
   {id: 'codesnippet', label: 'CodeSnippet', view: renderCodeSnippet},
@@ -130,19 +95,7 @@ const WIDGET_SECTIONS: WidgetSection[] = [
   {id: 'editor', label: 'Editor', view: renderEditor},
   {id: 'emptystate', label: 'EmptyState', view: renderEmptyState},
   {id: 'form', label: 'Form', view: renderForm},
-  {id: 'fuzzy-search', label: 'Fuzzy Search', view: renderFuzzyDemo},
-=======
-  {id: 'checkbox', label: 'Checkbox', view: renderCheckbox},
-  {id: 'chip', label: 'Chip', view: renderChip},
-  {id: 'codesnippet', label: 'CodeSnippet', view: renderCodeSnippet},
-  {id: 'copyablelink', label: 'CopyableLink', view: renderCopyableLink},
-  {id: 'cursor-tooltip', label: 'CursorTooltip', view: cursorTooltip},
-  {id: 'datagrid', label: 'DataGrid', view: renderDataGrid},
-  {id: 'editor', label: 'Editor', view: renderEditor},
-  {id: 'emptystate', label: 'EmptyState', view: renderEmptyState},
-  {id: 'form', label: 'Form', view: renderForm},
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  {id: 'grid', label: 'Grid', view: renderGrid},
+  {id: 'fuzzy-search', label: 'Fuzzy Search', view: renderFuzzyDemo},  {id: 'grid', label: 'Grid', view: renderGrid},
   {id: 'hotkey', label: 'Hotkey', view: renderHotkey},
   {id: 'icon', label: 'Icon', view: renderIcon},
   {id: 'menu', label: 'Menu', view: renderMenu},
@@ -153,22 +106,13 @@ const WIDGET_SECTIONS: WidgetSection[] = [
   {id: 'popup', label: 'Popup', view: renderPopup},
   {id: 'popup-menu', label: 'PopupMenu', view: popupMenuDemo},
   {id: 'portal', label: 'Portal', view: renderPortal},
-<<<<<<< HEAD
-  {id: 'resize-handle', label: 'ResizeHandle', view: renderResizeHandle},
+{id: 'resize-handle', label: 'ResizeHandle', view: renderResizeHandle},
   {id: 'radio-group', label: 'RadioGroup', view: radioGroup},
   {id: 'select', label: 'Select', view: renderSelect},
   {id: 'spinner', label: 'Spinner', view: renderSpinner},
   {id: 'split-panel', label: 'SplitPanel', view: renderSplitPanel},
   {id: 'switch', label: 'Switch', view: renderSwitch},
-  {id: 'tabs', label: 'Tabs', view: renderTabs},
-=======
-  {id: 'segmented-buttons', label: 'SegmentedButtons', view: segmentedButtons},
-  {id: 'select', label: 'Select', view: renderSelect},
-  {id: 'spinner', label: 'Spinner', view: renderSpinner},
-  {id: 'split-panel', label: 'Split Panel', view: renderSplitPanel},
-  {id: 'switch', label: 'Switch', view: renderSwitch},
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  {id: 'tabstrip', label: 'TabStrip', view: renderTabStrip},
+  {id: 'tabs', label: 'Tabs', view: renderTabs},  {id: 'tabstrip', label: 'TabStrip', view: renderTabStrip},
   {id: 'taginput', label: 'TagInput', view: renderTagInput},
   {id: 'textinput', label: 'TextInput', view: renderTextInput},
   {id: 'textparagraph', label: 'TextParagraph', view: renderTextParagraph},
@@ -176,11 +120,7 @@ const WIDGET_SECTIONS: WidgetSection[] = [
   {id: 'trackshell', label: 'TrackShell', view: renderTrackShell},
   {id: 'tree', label: 'Tree', view: renderTree},
   {id: 'treetable', label: 'TreeTable', view: renderTreeTable},
-<<<<<<< HEAD
-=======
-  {id: 'vegaview', label: 'VegaView', view: renderVegaView},
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  {id: 'virtualcanvas', label: 'VirtualCanvas', view: renderVirtualCanvas},
+{id: 'vegaview', label: 'VegaView', view: renderVegaView},  {id: 'virtualcanvas', label: 'VirtualCanvas', view: renderVirtualCanvas},
 ];
 
 export interface WidgetsPageAttrs {
@@ -219,8 +159,7 @@ export class WidgetsPage implements m.ClassComponent<WidgetsPageAttrs> {
       // Main content area
       m(
         '.pf-widgets-page__content-container',
-<<<<<<< HEAD
-        {
+{
           key: currentSection ? currentSection.id : 'no-section',
           className: classNames(
             currentSection?.fullWidth &&
@@ -234,13 +173,7 @@ export class WidgetsPage implements m.ClassComponent<WidgetsPageAttrs> {
               currentSection?.fullWidth &&
                 'pf-widgets-page__content--full-width',
             ),
-          },
-=======
-        {key: currentSection ? currentSection.id : 'no-section'},
-        m(
-          '.pf-widgets-page__content',
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          currentSection
+          },          currentSection
             ? currentSection.view(attrs.app)
             : m(
                 '.pf-widget-intro',

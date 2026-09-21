@@ -38,14 +38,10 @@ source_set("common") {
     "flow_tracker.h",
     "global_args_tracker.cc",
     "global_args_tracker.h",
-<<<<<<< HEAD
-    "global_metadata_tracker.cc",
+"global_metadata_tracker.cc",
     "global_metadata_tracker.h",
     "gpu_tracker.cc",
-    "gpu_tracker.h",
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    "import_logs_tracker.cc",
+    "gpu_tracker.h",    "import_logs_tracker.cc",
     "import_logs_tracker.h",
     "jit_cache.cc",
     "jit_cache.h",

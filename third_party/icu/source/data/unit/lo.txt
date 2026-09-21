@@ -733,14 +733,10 @@ lo{
             permille{
                 dnam{"‰"}
             }
-<<<<<<< HEAD
-=======
-            portion-per-1e9{
+portion-per-1e9{
                 dnam{"ສ່ວນ/ພັນລ້ານສ່ວນ"}
                 other{"{0}ppb"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            }        }
         consumption{
             liter-per-100-kilometer{
                 other{"{0} ລ / 100 ກມ"}
@@ -760,15 +756,11 @@ lo{
             }
             millisecond{
                 dnam{"ມລວ"}
-<<<<<<< HEAD
-=======
-            }
+}
             night{
                 dnam{"ຄືນ"}
                 other{"{0} ຄືນ"}
-                per{"{0}/ຄືນ"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/ຄືນ"}            }
             week{
                 dnam{"ອທ."}
             }
@@ -974,15 +966,6 @@ lo{
             permille{
                 dnam{"ຕໍ່ພັນ"}
             }
-<<<<<<< HEAD
-=======
-            permillion{
-                dnam{"ພາດ/ລ້ານ"}
-            }
-            portion-per-1e9{
-                dnam{"ສ່ວນ/ພັນລ້ານສ່ວນ"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         }
         consumption{
             liter-per-100-kilometer{

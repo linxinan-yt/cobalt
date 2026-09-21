@@ -499,8 +499,7 @@ source_set("base") {
     ]
   }
 
-<<<<<<< HEAD
-  if (is_android) {
+if (is_android) {
     sources += [
       "android_overlay_config.cc",
       "android_overlay_config.h",
@@ -508,8 +507,6 @@ source_set("base") {
     ]
   }
 
-  if (is_android) {
-=======
   if (is_cobalt && use_starboard_media) {
     sources += [
       "starboard/demuxer_memory_limit_starboard.cc",
@@ -529,9 +526,7 @@ source_set("base") {
       "//starboard:starboard_group",
       "//starboard/common",
     ]
-  } else if (is_android) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    sources += [ "demuxer_memory_limit_android.cc" ]
+  } else if (is_android) {    sources += [ "demuxer_memory_limit_android.cc" ]
   } else if (is_castos) {
     sources += [ "demuxer_memory_limit_cast.cc" ]
   } else {

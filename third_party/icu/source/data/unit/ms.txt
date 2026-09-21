@@ -255,12 +255,8 @@ ms{
                 other{"{0} nanosaat"}
             }
             night{
-<<<<<<< HEAD
-=======
-                dnam{"malam"}
-                other{"{0} malam"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                per{"{0} setiap malam"}
+dnam{"malam"}
+                other{"{0} malam"}                per{"{0} setiap malam"}
             }
             quarter{
                 dnam{"suku"}
@@ -930,15 +926,11 @@ ms{
             day{
                 other{"{0} h"}
             }
-<<<<<<< HEAD
-=======
-            night{
+night{
                 dnam{"malam"}
                 other{"{0} malam"}
                 per{"{0}/malam"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            second{
+            }            second{
                 other{"{0} s"}
             }
             year{

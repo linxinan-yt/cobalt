@@ -35,14 +35,8 @@ namespace perfetto::trace_processor {
 class ClockSynchronizerListenerImpl;
 class ArgsTranslationTable;
 class ClockConverter;
-<<<<<<< HEAD
 class ClockSynchronizer;
-class ClockTracker;
-=======
-template <typename T>
-class ClockSynchronizer;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-class CpuTracker;
+class ClockTracker;class CpuTracker;
 class GpuTracker;
 class UserTracker;
 class DescriptorPool;
@@ -51,12 +45,8 @@ class FileIoTracker;
 class FlowTracker;
 class BlobPacketWriter;
 class GlobalArgsTracker;
-<<<<<<< HEAD
 class GlobalMetadataTracker;
-class GlobalStatsTracker;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-class ImportLogsTracker;
+class GlobalStatsTracker;class ImportLogsTracker;
 class MachineTracker;
 class MappingTracker;
 class MetadataTracker;
@@ -91,12 +81,7 @@ class PerfTracker;
 }  // namespace perf_importer
 
 using MachineId = tables::MachineTable::Id;
-<<<<<<< HEAD
 using TraceId = tables::TraceFileTable::Id;
-=======
-using ClockTracker = ClockSynchronizer<ClockSynchronizerListenerImpl>;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 class TraceProcessorContext {
  public:
   template <typename T>
@@ -202,14 +187,9 @@ class TraceProcessorContext {
   GlobalPtr<TraceManifestState> trace_manifest_state;
   GlobalPtr<TrackCompressorGroupIdxState> track_group_idx_state;
   GlobalPtr<StackProfileTracker> stack_profile_tracker;
-<<<<<<< HEAD
-  GlobalPtr<ProfilerSampleTracker> profiler_sample_tracker;
+GlobalPtr<ProfilerSampleTracker> profiler_sample_tracker;
   GlobalPtr<Destructible> deobfuscation_tracker;  // DeobfuscationTracker
   GlobalPtr<BlobPacketWriter> blob_packet_writer;
-=======
-  GlobalPtr<Destructible> deobfuscation_tracker;  // DeobfuscationTracker
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   // The registration function for additional proto modules.
   // This is populated by TraceProcessorImpl to allow for late registration of
   // modules.
@@ -246,11 +226,7 @@ class TraceProcessorContext {
   PerTracePtr<TraceState> trace_state;
   PerTracePtr<Destructible> content_analyzer;
   PerTracePtr<ImportLogsTracker> import_logs_tracker;
-<<<<<<< HEAD
-  PerTracePtr<TraceDiagnosticsTracker> trace_diagnostics_tracker;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+PerTracePtr<TraceDiagnosticsTracker> trace_diagnostics_tracker;
   // Per-Machine State
   // =================
   //
@@ -262,12 +238,8 @@ class TraceProcessorContext {
   PerMachinePtr<MappingTracker> mapping_tracker;
   PerMachinePtr<MachineTracker> machine_tracker;
   PerMachinePtr<CpuTracker> cpu_tracker;
-<<<<<<< HEAD
-  PerMachinePtr<GpuTracker> gpu_tracker;
+PerMachinePtr<GpuTracker> gpu_tracker;
   PerMachinePtr<UserTracker> user_tracker;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   // Per-Machine, Per-Trace State
   // ==========================
   //
@@ -329,12 +301,7 @@ class TraceProcessorContext {
 
 class TraceProcessorContext::ForkedContextState {
  public:
-<<<<<<< HEAD
-  using TraceIdAndMachineId = std::pair<uint32_t, int64_t>;
-=======
-  using TraceIdAndMachineId = std::pair<uint32_t, uint32_t>;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  base::FlatHashMap<TraceIdAndMachineId,
+using TraceIdAndMachineId = std::pair<uint32_t, int64_t>;  base::FlatHashMap<TraceIdAndMachineId,
                     std::unique_ptr<TraceProcessorContext>,
                     base::MurmurHash<TraceIdAndMachineId>>
       trace_and_machine_to_context;

@@ -39,22 +39,11 @@ import {
 } from './thread_state';
 import {asSliceSqlId} from '../sql_utils/core_types';
 import {DurationWidget} from '../widgets/duration';
-<<<<<<< HEAD
 import {Grid, GridCell, GridHeaderCell} from '../../widgets/grid';
 import {ensureIsInstance} from '../../base/assert';
 import type {Trace} from '../../public/trace';
 import type {TrackEventDetailsPanel} from '../../public/details_panel';
-import type {TrackEventSelection} from '../../public/selection';
-=======
-import {SliceRef} from '../widgets/slice';
-import {Grid, GridCell, GridHeaderCell} from '../../widgets/grid';
-import {getSqlTableDescription} from '../widgets/sql/table/sql_table_registry';
-import {assertExists, assertIsInstance} from '../../base/logging';
-import {Trace} from '../../public/trace';
-import {TrackEventDetailsPanel} from '../../public/details_panel';
-import {TrackEventSelection} from '../../public/selection';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {extensions} from '../extensions';
+import type {TrackEventSelection} from '../../public/selection';import {extensions} from '../extensions';
 import {TraceImpl} from '../../core/trace_impl';
 import {renderSliceArguments} from './slice_args';
 import {SLICE_TABLE} from '../widgets/sql/table_definitions';
@@ -241,12 +230,7 @@ export class ThreadSliceDetailsPanel implements TrackEventDetailsPanel {
     // Rationale for the assertIsInstance: ThreadSliceDetailsPanel requires a
     // TraceImpl (because of flows) but here we must take a Trace interface,
     // because this track is exposed to plugins (which see only Trace).
-<<<<<<< HEAD
-    this.trace = ensureIsInstance(trace, TraceImpl);
-=======
-    this.trace = assertIsInstance(trace, TraceImpl);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    this.attrs = attrs ?? {};
+this.trace = ensureIsInstance(trace, TraceImpl);    this.attrs = attrs ?? {};
   }
 
   async load(selection: TrackEventSelection) {
@@ -318,11 +302,7 @@ export class ThreadSliceDetailsPanel implements TrackEventDetailsPanel {
     slice: SliceDetails,
     additionalSections?: m.Children,
   ): m.Children {
-<<<<<<< HEAD
-    const distribution = this.renderDistribution(slice);
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    const precFlows = this.renderPrecedingFlows(slice);
+const distribution = this.renderDistribution(slice);    const precFlows = this.renderPrecedingFlows(slice);
     const followingFlows = this.renderFollowingFlows(slice);
     const args =
       hasArgs(slice.args) &&
@@ -331,29 +311,19 @@ export class ThreadSliceDetailsPanel implements TrackEventDetailsPanel {
         {title: 'Arguments'},
         m(Tree, renderSliceArguments(trace, slice.args)),
       );
-<<<<<<< HEAD
-    if (
+if (
       distribution !== undefined ||
       precFlows !== undefined ||
       followingFlows !== undefined ||
       args !== undefined ||
       additionalSections !== undefined
-    ) {
-=======
-    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-    if (precFlows ?? followingFlows ?? args ?? additionalSections) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      return m(
+    ) {      return m(
         GridLayoutColumn,
         precFlows,
         followingFlows,
         args,
         additionalSections,
-<<<<<<< HEAD
-        distribution,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      );
+distribution,      );
     } else {
       return undefined;
     }
@@ -380,17 +350,9 @@ export class ThreadSliceDetailsPanel implements TrackEventDetailsPanel {
           rowData: inFlows.map((flow) => [
             m(
               GridCell,
-<<<<<<< HEAD
-              m(TrackEventRef, {
+m(SliceRef, {
                 trace: this.trace,
-                table: 'slice',
-                id: flow.begin.sliceId,
-=======
-              m(SliceRef, {
-                trace: this.trace,
-                id: asSliceSqlId(flow.begin.sliceId),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                name: flow.begin.sliceChromeCustomName ?? flow.begin.sliceName,
+                id: asSliceSqlId(flow.begin.sliceId),                name: flow.begin.sliceChromeCustomName ?? flow.begin.sliceName,
               }),
             ),
             m(
@@ -430,17 +392,9 @@ export class ThreadSliceDetailsPanel implements TrackEventDetailsPanel {
           rowData: outFlows.map((flow) => [
             m(
               GridCell,
-<<<<<<< HEAD
-              m(TrackEventRef, {
+m(SliceRef, {
                 trace: this.trace,
-                table: 'slice',
-                id: flow.end.sliceId,
-=======
-              m(SliceRef, {
-                trace: this.trace,
-                id: asSliceSqlId(flow.end.sliceId),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                name: flow.end.sliceChromeCustomName ?? flow.end.sliceName,
+                id: asSliceSqlId(flow.end.sliceId),                name: flow.end.sliceChromeCustomName ?? flow.end.sliceName,
               }),
             ),
             m(

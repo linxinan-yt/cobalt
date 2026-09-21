@@ -81,31 +81,15 @@ ProxyBinding::ProxyBinding(AsyncProxyServerSocket* int_socket,
       this, [this](Socket* socket) { OnInternalRead(socket); });
   int_socket_->SubscribeWriteEvent(
       this, [this](Socket* socket) { OnInternalWrite(socket); });
-<<<<<<< HEAD
-  int_socket_->SubscribeCloseEvent(this, [this](Socket* socket, int error) {
-    OnInternalClose(socket, error);
-  });
-  ext_socket_->SubscribeConnectEvent(
-      this, [this](Socket* socket) { OnExternalConnect(socket); });
-=======
-  int_socket_->SubscribeCloseEvent(
+int_socket_->SubscribeCloseEvent(
       [this](Socket* socket, int error) { OnInternalClose(socket, error); });
   ext_socket_->SubscribeConnectEvent(
-      [this](Socket* socket) { OnExternalConnect(socket); });
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  ext_socket_->SubscribeReadEvent(
+      [this](Socket* socket) { OnExternalConnect(socket); });  ext_socket_->SubscribeReadEvent(
       this, [this](Socket* socket) { OnExternalRead(socket); });
   ext_socket_->SubscribeWriteEvent(
       this, [this](Socket* socket) { OnExternalWrite(socket); });
-<<<<<<< HEAD
-  ext_socket_->SubscribeCloseEvent(this, [this](Socket* socket, int error) {
-    OnExternalClose(socket, error);
-  });
-=======
-  ext_socket_->SubscribeCloseEvent(
-      [this](Socket* socket, int error) { OnExternalClose(socket, error); });
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+ext_socket_->SubscribeCloseEvent(
+      [this](Socket* socket, int error) { OnExternalClose(socket, error); });}
 
 ProxyBinding::~ProxyBinding() = default;
 

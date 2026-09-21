@@ -14,21 +14,12 @@
  * limitations under the License.
  */
 
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_parser.h
-#ifndef SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_WINDOWMANAGER_PARSER_H_
-#define SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_WINDOWMANAGER_PARSER_H_
-
-#include "src/trace_processor/importers/proto/args_parser.h"
-#include "src/trace_processor/plugins/winscope_importer/windowmanager_hierarchy_walker.h"
-#include "src/trace_processor/plugins/winscope_importer/winscope_context.h"
-=======
 #ifndef SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_WINDOWMANAGER_PARSER_H_
 #define SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_WINDOWMANAGER_PARSER_H_
 
 #include "src/trace_processor/importers/proto/args_parser.h"
 #include "src/trace_processor/importers/proto/winscope/windowmanager_hierarchy_walker.h"
 #include "src/trace_processor/importers/proto/winscope/winscope_context.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_parser.h
 #include "src/trace_processor/tables/winscope_tables_py.h"
 #include "src/trace_processor/util/descriptors.h"
 #include "src/trace_processor/util/proto_to_args_parser.h"
@@ -41,15 +32,8 @@ class WindowManagerParser {
   void Parse(int64_t timestamp, protozero::ConstBytes blob);
 
  private:
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_parser.h
-  tables::WindowManagerTable::Id InsertSnapshotRow(
-      int64_t timestamp,
-      com::android::internal::pbzero::WindowManagerTraceEntry::Decoder&
-          entry_decoder);
-=======
   tables::WindowManagerTable::Id InsertSnapshotRow(int64_t timestamp,
                                                    protozero::ConstBytes blob);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_parser.h
   void InsertWindowContainerRows(
       int64_t timestamp,
       tables::WindowManagerTable::Id snapshot_id,
@@ -71,8 +55,4 @@ class WindowManagerParser {
 };
 }  // namespace perfetto::trace_processor::winscope
 
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/plugins/winscope_importer/windowmanager_parser.h
-#endif  // SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_WINDOWMANAGER_PARSER_H_
-=======
 #endif  // SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_WINDOWMANAGER_PARSER_H_
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/trace_processor/importers/proto/winscope/windowmanager_parser.h

@@ -129,17 +129,12 @@ source_set("unit_tests") {
   }
 
   if (enable_dav1d_decoder) {
-<<<<<<< HEAD
-    sources += [ "avif/avif_image_decoder_test.cc" ]
+sources += [ "avif/avif_image_decoder_test.cc" ]
   }
 
   if (enable_jxl_decoder) {
     sources += [ "jxl/jxl_image_decoder_test.cc" ]
-    deps += [ "//third_party/rust/jxl/v0_4/wrapper:jxl_rs" ]
-=======
-    sources += [ "avif/crabbyavif_image_decoder_test.cc" ]
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    deps += [ "//third_party/rust/jxl/v0_4/wrapper:jxl_rs" ]  }
 
   # TODO(crbug.com/40031409): Fix code that adds exit-time destructors and
   # enable the diagnostic by removing this line.

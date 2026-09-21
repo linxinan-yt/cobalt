@@ -63,12 +63,7 @@ class DeobfuscationTracker : public Destructible {
   }
 
   void AddDeobfuscationMapping(protozero::ConstBytes blob);
-<<<<<<< HEAD
-  void OnEventsFullyExtracted();
-=======
-  void NotifyEndOfFile();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+void OnEventsFullyExtracted();
  private:
   using JavaFrameMap = base::
       FlatHashMap<NameInPackage, base::FlatSet<FrameId>, NameInPackage::Hasher>;

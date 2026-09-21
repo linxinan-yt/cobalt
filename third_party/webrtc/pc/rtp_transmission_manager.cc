@@ -287,15 +287,9 @@ RtpTransmissionManager::CreateAndAddTransceiver(
   // another sender.
   // Allow receiver IDs to conflict since those come from remote SDP (which
   // could be invalid, but should not cause a crash).
-<<<<<<< HEAD
-  RTC_DCHECK(!FindSenderById(sender_id));
+RTC_DCHECK(!FindSenderById(sender_id));
   std::vector<RtpHeaderExtensionCapability> header_extensions =
-      std::move(header_extensions_to_negotiate);
-=======
-  RTC_DCHECK(!FindSenderById(sender->id()));
-  std::vector<RtpHeaderExtensionCapability> header_extensions;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  if (!env_.field_trials().IsDisabled(
+      std::move(header_extensions_to_negotiate);  if (!env_.field_trials().IsDisabled(
           "WebRTC-HeaderExtensionNegotiateMemory")) {
     // If we have already negotiated header extensions for this type,
     // and it is not stopped,

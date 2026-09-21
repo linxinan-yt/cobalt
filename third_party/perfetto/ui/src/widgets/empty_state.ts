@@ -16,12 +16,7 @@ import './empty_state.scss';
 import m from 'mithril';
 import {classNames} from '../base/classnames';
 import {Icons} from '../base/semantic_icons';
-<<<<<<< HEAD
-import type {HTMLAttrs} from './common';
-=======
-import {HTMLAttrs} from './common';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {Icon} from './icon';
+import type {HTMLAttrs} from './common';import {Icon} from './icon';
 
 export interface EmptyStateAttrs extends HTMLAttrs {
   // Which material icon to show.
@@ -44,18 +39,7 @@ export interface EmptyStateAttrs extends HTMLAttrs {
 // actions for things you might want to do next (e.g. clear a search box).
 export class EmptyState implements m.ClassComponent<EmptyStateAttrs> {
   view({attrs, children}: m.Vnode<EmptyStateAttrs, this>): void | m.Children {
-<<<<<<< HEAD
-    const {icon = Icons.NoData, title, className, fillHeight, ...rest} = attrs;
-=======
-    const {
-      icon = Icons.Search, // Icon defaults to the search symbol
-      title,
-      className,
-      fillHeight,
-      ...rest
-    } = attrs;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    return m(
+const {icon = Icons.NoData, title, className, fillHeight, ...rest} = attrs;    return m(
       '.pf-empty-state',
       {
         className: classNames(

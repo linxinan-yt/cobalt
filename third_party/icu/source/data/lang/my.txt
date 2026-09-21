@@ -174,11 +174,7 @@ my{
         hax{"တောင် ဟိုင်ဒါ"}
         he{"ဟီဘရူး"}
         hi{"ဟိန္ဒီ"}
-<<<<<<< HEAD
-=======
-        hi_Latn{"ဟိန္ဒီ (လက်တင်)"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        hil{"ဟီလီဂေနွန်"}
+hi_Latn{"ဟိန္ဒီ (လက်တင်)"}        hil{"ဟီလီဂေနွန်"}
         hmn{"မုံ"}
         hr{"ခရိုအေးရှား"}
         hsb{"ဆက္ကဆိုနီ"}

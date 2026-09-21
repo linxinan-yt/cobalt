@@ -1092,12 +1092,7 @@ cv{
             ec{"Тирана"}
         }
         "Europe:Ulyanovsk"{
-<<<<<<< HEAD
-            ec{"Чӗмпӗр"}
-=======
-            ec{"Ульяновск"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+ec{"Чӗмпӗр"}        }
         "Europe:Vaduz"{
             ec{"Вадуц"}
         }
@@ -1197,13 +1192,9 @@ cv{
         "Pacific:Guam"{
             ec{"Гуам"}
         }
-<<<<<<< HEAD
-=======
-        "Pacific:Kanton"{
+"Pacific:Kanton"{
             ec{"Кантон"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Pacific:Kiritimati"{
+        }        "Pacific:Kiritimati"{
             ec{"Киритимати"}
         }
         "Pacific:Kosrae"{
@@ -1540,13 +1531,9 @@ cv{
             ld{"Китай ҫуллахи вӑхӑчӗ"}
             lg{"Китай вӑхӑчӗ"}
             ls{"Китай стандартлӑ вӑхӑчӗ"}
-<<<<<<< HEAD
-            sd{"CST China DST"}
+sd{"CST China DST"}
             sg{"CST China"}
-            ss{"CST China"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            ss{"CST China"}        }
         "meta:Christmas"{
             ls{"Раштав утравӗ вӑхӑчӗ"}
             ss{"CXT"}
@@ -1859,18 +1846,14 @@ cv{
             sg{"LHST"}
             ss{"LHST"}
         }
-<<<<<<< HEAD
-        "meta:Macau"{
+"meta:Macau"{
             ld{"Макао ҫуллахи вӑхӑчӗ"}
             lg{"Макао вӑхӑчӗ"}
             ls{"Макао стандартлӑ вӑхӑчӗ"}
             sd{"MST Macao DST"}
             sg{"MST Macao"}
             ss{"MST Macao"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "meta:Magadan"{
+        }        "meta:Magadan"{
             ld{"Магадан ҫуллахи вӑхӑчӗ"}
             lg{"Магадан вӑхӑчӗ"}
             ls{"Магадан стандартлӑ вӑхӑчӗ"}
@@ -1904,11 +1887,7 @@ cv{
         }
         "meta:Mawson"{
             ls{"Моусон вӑхӑчӗ"}
-<<<<<<< HEAD
-            ss{"MAWT"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+ss{"MAWT"}        }
         "meta:Mexico_Pacific"{
             ld{"Мексика Лӑпкӑ океан ҫуллахи вӑхӑчӗ"}
             lg{"Мексика Лӑпкӑ океан вӑхӑчӗ"}

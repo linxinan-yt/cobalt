@@ -17,41 +17,23 @@
 #ifndef SRC_SHARED_LIB_TRACK_EVENT_DS_H_
 #define SRC_SHARED_LIB_TRACK_EVENT_DS_H_
 
-<<<<<<< HEAD
 #include <atomic>
 #include <cstdint>
 #include <string>
-=======
-#include <cstdint>
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 #include "perfetto/base/flat_set.h"
 #include "perfetto/ext/base/flat_hash_map.h"
 #include "perfetto/protozero/scattered_heap_buffer.h"
 #include "perfetto/public/abi/track_event_abi.h"
-<<<<<<< HEAD
 #include "perfetto/tracing/core/forward_decls.h"
 #include "perfetto/tracing/data_source.h"
 #include "perfetto/tracing/internal/data_source_internal.h"
-#include "perfetto/tracing/internal/data_source_type.h"
-=======
-#include "perfetto/tracing/data_source.h"
-#include "protos/perfetto/common/data_source_descriptor.gen.h"
-#include "protos/perfetto/config/track_event/track_event_config.gen.h"
-#include "protos/perfetto/trace/interned_data/interned_data.pbzero.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "src/shared_lib/track_event/category_impl.h"
+#include "perfetto/tracing/internal/data_source_type.h"#include "src/shared_lib/track_event/category_impl.h"
 #include "src/shared_lib/track_event/global_state.h"
 #include "src/shared_lib/track_event/intern_map.h"
 
-<<<<<<< HEAD
 #include "protos/perfetto/common/data_source_descriptor.gen.h"  // IWYU pragma: keep
 #include "protos/perfetto/config/track_event/track_event_config.gen.h"
-#include "protos/perfetto/trace/interned_data/interned_data.pbzero.h"
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-namespace perfetto::shlib {
+#include "protos/perfetto/trace/interned_data/interned_data.pbzero.h"namespace perfetto::shlib {
 
 struct TrackEventIncrementalState {
   // A heap-allocated message for storing newly seen interned data while we are
@@ -70,9 +52,7 @@ struct TrackEventIncrementalState {
   // state.
   base::FlatHashMap<std::string, bool> dynamic_categories;
   InternMap iids;
-<<<<<<< HEAD
-
-  // Clears the incremental state without destroying and recreating this object.
+// Clears the incremental state without destroying and recreating this object.
   // This allows reusing allocated memory in hash maps and other data structures
   // instead of deallocating and reallocating them.
   void Clear() {
@@ -82,10 +62,7 @@ struct TrackEventIncrementalState {
     seen_track_uuids.clear();
     dynamic_categories.Clear();
     iids.Clear();
-  }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-};
+  }};
 
 struct TrackEventTlsState {
   template <typename TraceContext>
@@ -103,12 +80,7 @@ struct TrackEventTlsState {
     }
     if (disable_incremental_timestamps) {
       if (timestamp_unit_multiplier == 1) {
-<<<<<<< HEAD
-        default_clock_id = PerfettoDsGetDefaultClockId();
-=======
-        default_clock_id = PERFETTO_I_CLOCK_INCREMENTAL_UNDERNEATH;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      } else {
+default_clock_id = PERFETTO_I_CLOCK_INCREMENTAL_UNDERNEATH;      } else {
         default_clock_id = PERFETTO_TE_TIMESTAMP_TYPE_ABSOLUTE;
       }
     } else {
@@ -122,17 +94,12 @@ struct TrackEventTlsState {
 struct TrackEventDataSourceTraits : public perfetto::DefaultDataSourceTraits {
   using IncrementalStateType = TrackEventIncrementalState;
   using TlsStateType = TrackEventTlsState;
-<<<<<<< HEAD
-
-  // Clear the incremental state without destroying and recreating it. This
+// Clear the incremental state without destroying and recreating it. This
   // allows reusing allocated memory in hash maps.
   static bool ClearIncrementalState(TrackEventIncrementalState* incr_state) {
     incr_state->Clear();
     return true;
-  }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-};
+  }};
 
 class TrackEvent
     : public perfetto::DataSource<TrackEvent, TrackEventDataSourceTraits> {

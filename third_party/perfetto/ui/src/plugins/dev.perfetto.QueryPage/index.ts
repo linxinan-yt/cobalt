@@ -359,12 +359,7 @@ export default class QueryPagePlugin implements PerfettoPlugin {
       text: 'Query (SQL)',
       href: '#!/query',
       icon: 'database',
-<<<<<<< HEAD
-      sortOrder: 21,
-=======
-      sortOrder: 20,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    });
+sortOrder: 21,    });
 
     trace.tabs.registerTab({
       uri: 'dev.perfetto.QueryPage',
@@ -420,23 +415,6 @@ export default class QueryPagePlugin implements PerfettoPlugin {
         getTitle() {
           return 'Query Page Results';
         },
-<<<<<<< HEAD
-      },
-    });
-=======
-        onResizeStart: () => {
-          this.editorHeight = this.editorElement!.clientHeight;
-        },
-      }),
-      attrs.executedQuery === undefined
-        ? null
-        : m(QueryTable, {
-            trace: attrs.trace,
-            query: attrs.executedQuery,
-            resp: attrs.queryResult,
-            fillHeight: false,
-          }),
-    );
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+},
+    });  }
 }

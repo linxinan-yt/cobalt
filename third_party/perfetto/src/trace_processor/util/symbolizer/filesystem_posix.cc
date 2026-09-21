@@ -17,12 +17,8 @@
 #include "src/trace_processor/util/symbolizer/filesystem.h"
 
 #include "perfetto/base/build_config.h"
-<<<<<<< HEAD:third_party/perfetto/src/trace_processor/util/symbolizer/filesystem_posix.cc
-#include "perfetto/base/compiler.h"
-=======
 #include "build/build_config.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/src/profiling/symbolizer/filesystem_posix.cc
-
+#include "perfetto/base/compiler.h"
 #if !PERFETTO_BUILDFLAG(PERFETTO_OS_WIN)
 #if PERFETTO_BUILDFLAG(PERFETTO_LOCAL_SYMBOLIZER)
 #if !BUILDFLAG(IS_COBALT_HERMETIC_BUILD)

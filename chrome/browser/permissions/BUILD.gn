@@ -189,23 +189,8 @@ source_set("permissions") {
       "//chrome/browser/ash/app_mode/web_app",
       "//chrome/browser/ash/shimless_rma",
     ]
-<<<<<<< HEAD
-    if (use_cups) {
-      deps += [ "//chrome/browser/printing" ]
-=======
-  }
-
-  if (build_with_tflite_lib) {
-    sources += [
-      "prediction_service/passage_embedder_delegate.cc",
-      "prediction_service/passage_embedder_delegate.h",
-      "prediction_service/prediction_model_handler_provider_factory.cc",
-      "prediction_service/prediction_model_handler_provider_factory.h",
-    ]
-    if (!is_android) {
-      deps += [ "//third_party/tflite_support" ]
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+if (use_cups) {
+      deps += [ "//chrome/browser/printing" ]    }
   }
 
   if (!is_android) {

@@ -512,35 +512,11 @@ fr_CA{
             }
         }
         concentr{
-<<<<<<< HEAD
-            katal{
-                one{"{0}kat"}
-                other{"{0}kat"}
-            }
-            ofglucose{
-                one{"{0}Glc"}
-                other{"{0}Glc"}
-            }
-            part{
-                one{"{0}part"}
-                other{"{0}parts"}
-            }
-            part-per-1e9{
-                one{"{0}pp10⁹"}
-                other{"{0}pp10⁹"}
-            }
-            percent{
-                one{"{0}%"}
-                other{"{0}%"}
-            }
-=======
-            portion-per-1e9{
+portion-per-1e9{
                 dnam{"p.p. 10⁹"}
                 one{"{0}pp10⁹"}
                 other{"{0}pp10⁹"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        }
+            }        }
         digital{
             gigabit{
                 one{"{0}Gb"}

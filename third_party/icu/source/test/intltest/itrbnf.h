@@ -165,12 +165,8 @@ public:
     void TestParseRuleDescriptorOverflow23002();
     void TestInfiniteRecursion();
     void testOmissionReplacementWithPluralRules();
-<<<<<<< HEAD
-    void TestNullDereferenceWRITE23149();
+void TestNullDereferenceWRITE23149();
     void TestNullDereferenceREAD23184();
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 protected:
     virtual void doTest(RuleBasedNumberFormat* formatter, const char* const testData[][2], UBool testParsing);
     virtual void doLenientParseTest(RuleBasedNumberFormat* formatter, const char* testData[][2]);

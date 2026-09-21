@@ -18,21 +18,6 @@
 
 namespace blink {
 
-<<<<<<< HEAD
-MemoryPressureListenerRegistration::MemoryPressureListenerRegistration(
-    base::Location location,
-    base::MemoryPressureListenerTag tag,
-    base::MemoryPressureListener* listener)
-    : registration_(std::in_place, location, tag, listener) {}
-
-MemoryPressureListenerRegistration::~MemoryPressureListenerRegistration() {
-  CHECK(!registration_);
-}
-
-void MemoryPressureListenerRegistration::Dispose() {
-  registration_.reset();
-}
-=======
 #if BUILDFLAG(IS_COBALT)
 namespace {
 const char* MemoryPressureLevelToString(base::MemoryPressureLevel level) {
@@ -48,8 +33,20 @@ const char* MemoryPressureLevelToString(base::MemoryPressureLevel level) {
 }
 }  // namespace
 #endif  // BUILDFLAG(IS_COBALT)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
+MemoryPressureListenerRegistration::MemoryPressureListenerRegistration(
+    base::Location location,
+    base::MemoryPressureListenerTag tag,
+    base::MemoryPressureListener* listener)
+    : registration_(std::in_place, location, tag, listener) {}
+
+MemoryPressureListenerRegistration::~MemoryPressureListenerRegistration() {
+  CHECK(!registration_);
+}
+
+void MemoryPressureListenerRegistration::Dispose() {
+  registration_.reset();
+}
 // static
 bool MemoryPressureListenerRegistry::is_low_end_device_ = false;
 
@@ -87,48 +84,4 @@ void MemoryPressureListenerRegistry::SetIsLowEndDeviceForTesting(
   is_low_end_device_ = is_low_end_device;
 }
 
-<<<<<<< HEAD
-=======
-// static
-MemoryPressureListenerRegistry& MemoryPressureListenerRegistry::Instance() {
-  DEFINE_THREAD_SAFE_STATIC_LOCAL(
-      CrossThreadPersistent<MemoryPressureListenerRegistry>, external,
-      (MakeGarbageCollected<MemoryPressureListenerRegistry>()));
-  return *external.Get();
-}
-
-MemoryPressureListenerRegistry::MemoryPressureListenerRegistry() = default;
-
-void MemoryPressureListenerRegistry::RegisterClient(
-    MemoryPressureListener* client) {
-  DCHECK(IsMainThread());
-  DCHECK(client);
-  DCHECK(!clients_.Contains(client));
-  clients_.insert(client);
-}
-
-void MemoryPressureListenerRegistry::UnregisterClient(
-    MemoryPressureListener* client) {
-  DCHECK(IsMainThread());
-  clients_.erase(client);
-}
-
-void MemoryPressureListenerRegistry::OnMemoryPressure(
-    base::MemoryPressureLevel level) {
-  TRACE_EVENT1("blink", "MemoryPressureListenerRegistry::onMemoryPressure",
-               "level", level);
-#if BUILDFLAG(IS_COBALT)
-  LOG(INFO) << "Blink handling OnMemoryPressure, level: " << level
-            << " (" << MemoryPressureLevelToString(level) << ")";
-#endif  // BUILDFLAG(IS_COBALT)
-  CHECK(IsMainThread());
-  for (auto& client : clients_)
-    client->OnMemoryPressure(level);
-}
-
-void MemoryPressureListenerRegistry::Trace(Visitor* visitor) const {
-  visitor->Trace(clients_);
-}
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }  // namespace blink

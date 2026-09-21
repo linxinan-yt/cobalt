@@ -395,8 +395,7 @@ export default class implements PerfettoPlugin {
     const fallbackTracks = await discoverFallbackTracks(ctx, numMachines);
     const allTracks = [...apiTracks, ...fallbackTracks];
 
-<<<<<<< HEAD
-    const processGroups = ctx.plugins.getPlugin(ProcessThreadGroupsPlugin);
+const processGroups = ctx.plugins.getPlugin(ProcessThreadGroupsPlugin);
     const gpuGroupByUpid = new Map<number, TrackNode>();
     const subGroupByKey = new Map<string, TrackNode>();
     const processInfoByUpid = new Map<
@@ -408,20 +407,7 @@ export default class implements PerfettoPlugin {
         processInfoByUpid.set(t.upid, {
           pid: t.pid,
           processName: t.processName,
-        });
-=======
-    const it = results.iter({
-      upid: NUM_NULL,
-      pid: LONG_NULL,
-      name: STR_NULL,
-    });
-
-    // For each upid, create a GpuPidTrack.
-    for (; it.valid(); it.next()) {
-      if (it.upid == null) {
-        continue;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      }
+        });      }
     }
 
     for (const t of allTracks) {
@@ -435,9 +421,7 @@ export default class implements PerfettoPlugin {
           detailsPanel: () => new ThreadSliceDetailsPanel(ctx),
         }),
       });
-<<<<<<< HEAD
-
-      let processGroup = processGroups.getGroupForProcess(t.upid);
+let processGroup = processGroups.getGroupForProcess(t.upid);
       if (processGroup === undefined) {
         const info = processInfoByUpid.get(t.upid)!;
         const displayName = getProcessDisplayName(info.processName, info.pid);
@@ -487,14 +471,6 @@ export default class implements PerfettoPlugin {
           name: t.leafName,
           sortOrder: t.leafSortOrder,
         }),
-      );
-=======
-      const track = new TrackNode({
-        uri,
-        name: `GPU ${processName}`,
-      });
-      ctx.defaultWorkspace.addChildInOrder(track);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+      );    }
   }
 }

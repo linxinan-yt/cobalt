@@ -12,12 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-<<<<<<< HEAD
 @use "../../assets/theme" as *;
-=======
-@import "../../assets/theme";
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 .pf-trace-info-page {
   overflow-y: auto;
   overflow-x: hidden;
@@ -50,12 +45,7 @@
 
   &__subtitle {
     color: var(--pf-color-text-muted);
-<<<<<<< HEAD
-    font-size: var(--pf-font-size-l);
-=======
-    font-size: 16px;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    line-height: 1.5;
+font-size: var(--pf-font-size-l);    line-height: 1.5;
   }
 
   // Tab content area
@@ -63,20 +53,13 @@
     padding: 16px 28px 24px;
   }
 
-<<<<<<< HEAD
-  &__banner {
+&__banner {
     margin-bottom: 16px;
   }
 
   // Category section headings
   &__category-heading {
-    font-size: var(--pf-font-size-xl);
-=======
-  // Category section headings
-  &__category-heading {
-    font-size: 18px;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    font-weight: 600;
+    font-size: var(--pf-font-size-xl);    font-weight: 600;
     margin-top: 24px;
     margin-bottom: 4px;
     color: var(--pf-color-text);
@@ -85,12 +68,7 @@
   }
 
   &__category-description {
-<<<<<<< HEAD
-    font-size: var(--pf-font-size-m);
-=======
-    font-size: 15px;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    color: var(--pf-color-text-muted);
+font-size: var(--pf-font-size-m);    color: var(--pf-color-text-muted);
     margin-top: 2px;
     margin-bottom: 12px;
     line-height: 1.5;
@@ -98,13 +76,8 @@
 
   // Cards (shared base styles)
   &__metric-card,
-<<<<<<< HEAD
-  &__status-card,
-  &__diagnostic-card {
-=======
-  &__status-card {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    padding: 12px;
+&__status-card,
+  &__diagnostic-card {    padding: 12px;
     min-height: 110px;
     display: flex;
     flex-direction: column;
@@ -132,14 +105,9 @@
     border-left: 4px solid var(--pf-color-danger);
   }
 
-<<<<<<< HEAD
-  &__status-card--notice {
+&__status-card--notice {
     border-left: 4px solid var(--pf-color-primary);
-  }
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  &__status-card--clickable {
+  }  &__status-card--clickable {
     cursor: pointer;
     transition:
       transform 0.1s ease-in-out,
@@ -173,12 +141,7 @@
   // Card labels (titles)
   &__status-title,
   &__metric-label {
-<<<<<<< HEAD
-    font-size: var(--pf-font-size-s);
-=======
-    font-size: 12px;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    font-weight: 500;
+font-size: var(--pf-font-size-s);    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: var(--pf-color-text);
@@ -197,12 +160,7 @@
   }
 
   &__metric-value {
-<<<<<<< HEAD
-    font-size: var(--pf-font-size-xl);
-=======
-    font-size: 18px;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    font-weight: 500;
+font-size: var(--pf-font-size-xl);    font-weight: 500;
     line-height: 1.4;
     word-break: break-word;
   }
@@ -218,24 +176,14 @@
   }
 
   &__status-link-icon {
-<<<<<<< HEAD
-    font-size: var(--pf-font-size-xxl);
-=======
-    font-size: 20px;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+font-size: var(--pf-font-size-xxl);  }
 
   // Args rendering (import errors detail)
   &__args {
     display: flex;
     flex-direction: column;
     gap: 4px;
-<<<<<<< HEAD
-    font-size: var(--pf-font-size-s);
-=======
-    font-size: 13px;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+font-size: var(--pf-font-size-s);  }
 
   &__arg-item {
     line-height: 1.4;
@@ -249,19 +197,13 @@
   &__arg-value {
     font-family: var(--pf-font-monospace);
     color: var(--pf-color-text-muted);
-<<<<<<< HEAD
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+white-space: pre-wrap;
+    overflow-wrap: anywhere;  }
 
   // Logs grid with virtualization
   &__logs-grid {
     max-height: 500px;
-<<<<<<< HEAD
-
-    // These logs render multi-line, variable-height content. The default cell
+// These logs render multi-line, variable-height content. The default cell
     // content is styled for single-line text: its `height: 100%` mis-resolves
     // to a fraction of the row and clips content with `overflow: hidden`. Let
     // the content size to itself and center it so each entry renders in full
@@ -343,19 +285,11 @@
     letter-spacing: 0.5px;
     font-size: var(--pf-font-size-s);
     color: var(--pf-color-accent);
-    margin-bottom: 6px;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    margin-bottom: 6px;  }
 
   // Help icon
   &__help-icon {
-<<<<<<< HEAD
-    font-size: var(--pf-font-size-m);
-=======
-    font-size: 14px;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    margin-left: 6px;
+font-size: var(--pf-font-size-m);    margin-left: 6px;
     color: var(--pf-color-text-muted);
     opacity: 0.6;
     cursor: default;
@@ -383,60 +317,17 @@
   }
 
   &__loading-error-number {
-<<<<<<< HEAD
-    font-size: var(--pf-font-size-m);
-=======
-    font-size: 14px;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    font-weight: 600;
+font-size: var(--pf-font-size-m);    font-weight: 600;
     color: var(--pf-color-text-muted);
     flex-shrink: 0;
   }
 
   &__loading-error-text {
-<<<<<<< HEAD
-    font-size: var(--pf-font-size-s);
-=======
-    font-size: 13px;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    line-height: 1.5;
+font-size: var(--pf-font-size-s);    line-height: 1.5;
     color: var(--pf-color-text);
     word-break: break-word;
   }
 
-<<<<<<< HEAD
-=======
-  // Stats tab table
-  &__stats-table {
-    width: 100%;
-    border-spacing: 4px 1px;
-    margin: 0;
-  }
-
-  &__stats-table-head-cell {
-    padding-bottom: 5px;
-    font-weight: 500;
-  }
-
-  &__stats-table-row:nth-child(odd) &__stats-table-cell {
-    background-color: color_hover(transparent);
-  }
-
-  &__stats-table-cell {
-    font-family: var(--pf-font-monospace);
-    font-size: 12px;
-    padding: 5px;
-    word-break: break-all;
-    white-space: pre-wrap;
-    vertical-align: top;
-  }
-
-  &__stats-table-cell--name {
-    font-weight: 800;
-    min-width: 150px;
-  }
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   // Stats section wrapper
   &__stats-section {
     margin: 0;
@@ -454,12 +345,7 @@
     padding: 0 28px;
 
     .pf-tabs__tab {
-<<<<<<< HEAD
-      font-size: var(--pf-font-size-l);
-=======
-      font-size: 16px;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      font-weight: 500;
+font-size: var(--pf-font-size-l);      font-weight: 500;
       padding: 14px 18px;
     }
   }
@@ -480,12 +366,7 @@
       padding: 0;
 
       h1 {
-<<<<<<< HEAD
-        font-size: var(--pf-font-size-xxl);
-=======
-        font-size: 20px;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        font-weight: 600;
+font-size: var(--pf-font-size-xxl);        font-weight: 600;
         color: var(--pf-color-text);
         letter-spacing: -0.01em;
         margin-bottom: 4px;
@@ -493,12 +374,7 @@
     }
 
     .pf-section__subtitle {
-<<<<<<< HEAD
-      font-size: var(--pf-font-size-m);
-=======
-      font-size: 15px;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      color: var(--pf-color-text-muted);
+font-size: var(--pf-font-size-m);      color: var(--pf-color-text-muted);
       line-height: 1.4;
       margin: 0;
     }
@@ -510,18 +386,10 @@
 
   // Override pf-grid styling for larger fonts
   &__tab-content .pf-grid {
-<<<<<<< HEAD
-    font-size: var(--pf-font-size-m);
+font-size: var(--pf-font-size-m);
 
     .pf-grid-header-cell {
-      font-size: var(--pf-font-size-m);
-=======
-    font-size: 15px;
-
-    .pf-grid-header-cell {
-      font-size: 15px;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      font-weight: 600;
+      font-size: var(--pf-font-size-m);      font-weight: 600;
 
       .pf-grid-header-cell__title-wrapper {
         padding: 10px 12px;
@@ -529,17 +397,11 @@
     }
 
     .pf-grid-cell {
-<<<<<<< HEAD
-      font-size: var(--pf-font-size-m);
-=======
-      font-size: 15px;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      padding: 10px 12px;
+font-size: var(--pf-font-size-m);      padding: 10px 12px;
     }
   }
 
-<<<<<<< HEAD
-  // Dense key/value grids (metadata, stats), tightened back up from the
+// Dense key/value grids (metadata, stats), tightened back up from the
   // larger-font pf-grid override above.
   &__tab-content &__dense-grid.pf-grid {
     font-size: var(--pf-font-size-s);
@@ -561,11 +423,7 @@
     .pf-grid-cell.pf-trace-info-page__grid-key {
       font-weight: 700;
     }
-  }
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  // Override pf-grid-layout for consistent card layout
+  }  // Override pf-grid-layout for consistent card layout
   &__tab-content .pf-grid-layout {
     margin-bottom: 0;
     gap: 16px;
@@ -573,23 +431,13 @@
 
   // Override pf-code-snippet styling
   &__tab-content .pf-code-snippet pre code {
-<<<<<<< HEAD
-    font-size: var(--pf-font-size-m);
-=======
-    font-size: 14px;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    line-height: 1.5;
+font-size: var(--pf-font-size-m);    line-height: 1.5;
   }
 
   // Generic heading overrides for category sections
   // These are used in utils.ts renderCategorySection
   &__tab-content h3 {
-<<<<<<< HEAD
-    font-size: var(--pf-font-size-xl);
-=======
-    font-size: 18px;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    font-weight: 600;
+font-size: var(--pf-font-size-xl);    font-weight: 600;
     margin-top: 24px;
     margin-bottom: 4px;
     color: var(--pf-color-text);
@@ -598,19 +446,12 @@
   }
 
   &__tab-content p {
-<<<<<<< HEAD
-    font-size: var(--pf-font-size-m);
-=======
-    font-size: 15px;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    color: var(--pf-color-text-muted);
+font-size: var(--pf-font-size-m);    color: var(--pf-color-text-muted);
     margin-top: 2px;
     margin-bottom: 12px;
     line-height: 1.5;
   }
 }
-<<<<<<< HEAD
-
 // ============================================================================
 // Shared Trace Doctor atoms: the small "Trace config issue" header and its
 // mini score bar. Emitted by renderCardHeader()/renderMiniBar() and reused by
@@ -734,5 +575,3 @@
     overflow: hidden;
   }
 }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

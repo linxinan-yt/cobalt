@@ -27,13 +27,6 @@
 // Lazy Creation & Access synchronized by class CalendarCache with a mutex.
 static icu::CalendarCache *gWinterSolsticeCache = nullptr;
 static icu::CalendarCache *gNewYearCache = nullptr;
-<<<<<<< HEAD
-=======
-
-// gAstronomerTimeZone
-static icu::TimeZone *gAstronomerTimeZone = nullptr;
-static icu::UInitOnce gAstronomerTimeZoneInitOnce {};
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
 // gAstronomerTimeZone
 static icu::TimeZone *gAstronomerTimeZone = nullptr;
@@ -159,15 +152,6 @@ const TimeZone* getAstronomerTimeZone(UErrorCode &status) {
     return gAstronomerTimeZone;
 }
 
-<<<<<<< HEAD
-ChineseCalendar::Setting DangiCalendar::getSetting(UErrorCode& status) const {
-  return {
-    getAstronomerTimeZone(status),
-    &gWinterSolsticeCache, &gNewYearCache
-  };
-}
-
-=======
 constexpr uint32_t kDangiRelatedYearDiff = -2333;
 
 int32_t DangiCalendar::getRelatedYear(UErrorCode &status) const
@@ -194,10 +178,7 @@ ChineseCalendar::Setting DangiCalendar::getSetting(UErrorCode& status) const {
     getAstronomerTimeZone(status),
     &gWinterSolsticeCache, &gNewYearCache
   };
-}
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-UOBJECT_DEFINE_RTTI_IMPLEMENTATION(DangiCalendar)
+}UOBJECT_DEFINE_RTTI_IMPLEMENTATION(DangiCalendar)
 
 U_NAMESPACE_END
 

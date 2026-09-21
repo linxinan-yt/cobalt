@@ -104,15 +104,10 @@ PipeWireInitializer::PipeWireInitializer() {
 
 RTC_NO_SANITIZE("cfi-icall")
 PipeWireInitializer::~PipeWireInitializer() {
-<<<<<<< HEAD
-  PipeWireVersion pw_client_version =
+PipeWireVersion pw_client_version =
       PipeWireVersion::Parse(pw_get_library_version());
   if (pw_client_version >= kReentrantDeinitMinVersion) {
     pw_deinit();
-  }
-=======
-  pw_deinit();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  }}
 
 }  // namespace webrtc

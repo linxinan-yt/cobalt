@@ -112,16 +112,11 @@
 #include "sandbox/win/src/sandbox.h"
 #endif
 
-<<<<<<< HEAD
 #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_LINUX)
 #include "services/webnn/public/cpp/webnn_sandbox_init.h"
 #endif
 
-#if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
-=======
-#if BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_STARBOARD) || BUILDFLAG(IS_CHROMEOS)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "content/child/sandboxed_process_thread_type_handler.h"
+#if BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_STARBOARD) || BUILDFLAG(IS_CHROMEOS)#include "content/child/sandboxed_process_thread_type_handler.h"
 #include "content/common/gpu_pre_sandbox_hook_linux.h"
 #include "sandbox/policy/linux/sandbox_linux.h"
 #include "sandbox/policy/sandbox_type.h"

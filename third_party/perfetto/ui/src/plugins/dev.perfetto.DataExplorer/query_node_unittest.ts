@@ -16,13 +16,6 @@ import {
   nextNodeId,
   NodeType,
   singleNodeOperation,
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_node_unittest.ts
-  type Query,
-  type QueryNode,
-} from './query_node';
-import {queryToRun, isAQuery} from './query_builder/query_builder_utils';
-import {notifyNextNodes} from './query_builder/graph_utils';
-=======
   createSelectColumnsProto,
   createFinalColumns,
   queryToRun,
@@ -35,7 +28,6 @@ import {notifyNextNodes} from './query_builder/graph_utils';
 } from './query_node';
 import {ColumnInfo} from './query_builder/column_info';
 import {PerfettoSqlType} from '../../trace_processor/perfetto_sql_type';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_node_unittest.ts
 
 describe('query_node utilities', () => {
   describe('nextNodeId', () => {
@@ -74,8 +66,6 @@ describe('query_node utilities', () => {
     });
   });
 
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_node_unittest.ts
-=======
   describe('createSelectColumnsProto', () => {
     const stringType: PerfettoSqlType = {kind: 'string'};
     const intType: PerfettoSqlType = {kind: 'int'};
@@ -226,22 +216,12 @@ describe('query_node utilities', () => {
     });
   });
 
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_node_unittest.ts
   describe('queryToRun', () => {
     it('should handle undefined query', () => {
       const result = queryToRun(undefined);
       expect(result).toBe('N/A');
     });
 
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_node_unittest.ts
-    it('should return the SQL string', () => {
-      const query: Query = {
-        sql: 'SELECT * FROM table',
-        textproto: '',
-        standaloneSql: '',
-      };
-      expect(queryToRun(query)).toBe('SELECT * FROM table');
-=======
     it('should format query with modules', () => {
       const query: Query = {
         sql: 'SELECT * FROM table',
@@ -301,35 +281,19 @@ describe('query_node utilities', () => {
       const result = queryToRun(query);
 
       expect(result).toBe('SELECT * FROM table');
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_node_unittest.ts
     });
   });
 
   describe('setOperationChanged', () => {
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_node_unittest.ts
-    function createMockNode(nodeId: string): QueryNode {
-=======
     function createMockNode(
       nodeId: string,
       state: QueryNodeState = {},
     ): QueryNode {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_node_unittest.ts
       return {
         nodeId,
         type: NodeType.kTable,
         nextNodes: [],
         finalCols: [],
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_node_unittest.ts
-        context: {},
-        validate: () => true,
-        getTitle: () => 'Test',
-        nodeSpecificModify: () => null,
-        nodeDetails: () => ({content: null}),
-        nodeInfo: () => null,
-        clone: () => createMockNode(nodeId),
-        getStructuredQuery: () => undefined,
-        attrs: {},
-=======
         state,
         validate: () => true,
         getTitle: () => 'Test',
@@ -337,28 +301,10 @@ describe('query_node utilities', () => {
         clone: () => createMockNode(nodeId, state),
         getStructuredQuery: () => undefined,
         serializeState: () => ({}),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_node_unittest.ts
       } as QueryNode;
     }
 
     it('should mark node as changed', () => {
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_node_unittest.ts
-      const node = createMockNode('node1');
-      node.context.hasOperationChanged = false;
-
-      node.context.hasOperationChanged = true;
-
-      expect(node.context.hasOperationChanged).toBe(true);
-    });
-
-    it('should mark node as changed', () => {
-      const node1 = createMockNode('node1');
-      const node2 = createMockNode('node2');
-      const node3 = createMockNode('node3');
-      node1.context.hasOperationChanged = false;
-      node2.context.hasOperationChanged = false;
-      node3.context.hasOperationChanged = false;
-=======
       const state: QueryNodeState = {hasOperationChanged: false};
       const node = createMockNode('node1', state);
 
@@ -375,29 +321,10 @@ describe('query_node utilities', () => {
       const node1 = createMockNode('node1', state1);
       const node2 = createMockNode('node2', state2);
       const node3 = createMockNode('node3', state3);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_node_unittest.ts
 
       node1.nextNodes = [node2];
       node2.nextNodes = [node3];
 
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_node_unittest.ts
-      node1.context.hasOperationChanged = true;
-
-      // Only the node itself should be marked, not children
-      // (propagation is handled by QueryExecutionService.invalidateNode)
-      expect(node1.context.hasOperationChanged).toBe(true);
-      expect(node2.context.hasOperationChanged).toBe(false);
-      expect(node3.context.hasOperationChanged).toBe(false);
-    });
-
-    it('should mark node as changed even if already changed', () => {
-      const node1 = createMockNode('node1');
-      node1.context.hasOperationChanged = true;
-
-      node1.context.hasOperationChanged = true;
-
-      expect(node1.context.hasOperationChanged).toBe(true);
-=======
       setOperationChanged(node1);
 
       expect(state1.hasOperationChanged).toBe(true);
@@ -440,7 +367,6 @@ describe('query_node utilities', () => {
       expect(state1.hasOperationChanged).toBe(true);
       expect(state2.hasOperationChanged).toBe(true);
       expect(state3.hasOperationChanged).toBe(true);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_node_unittest.ts
     });
   });
 
@@ -449,13 +375,9 @@ describe('query_node utilities', () => {
       const query: Query = {
         sql: 'SELECT * FROM table',
         textproto: '',
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_node_unittest.ts
-        standaloneSql: '',
-=======
         modules: [],
         preambles: [],
         columns: [],
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_node_unittest.ts
       };
 
       expect(isAQuery(query)).toBe(true);
@@ -471,11 +393,7 @@ describe('query_node utilities', () => {
     });
 
     it('should return false for object without sql', () => {
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_node_unittest.ts
-      const notAQuery = {textproto: ''};
-=======
       const notAQuery = {textproto: '', modules: [], preambles: []};
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_node_unittest.ts
       expect(isAQuery(notAQuery as unknown as Query | undefined | Error)).toBe(
         false,
       );
@@ -492,17 +410,6 @@ describe('query_node utilities', () => {
         type: NodeType.kTable,
         nextNodes: [],
         finalCols: [],
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_node_unittest.ts
-        attrs: {},
-        context: {},
-        validate: () => true,
-        getTitle: () => 'Test',
-        nodeSpecificModify: () => null,
-        nodeDetails: () => ({content: null}),
-        nodeInfo: () => null,
-        clone: () => createPartialNode(nodeId, onPrevNodesUpdated),
-        getStructuredQuery: () => undefined,
-=======
         state: {},
         validate: () => true,
         getTitle: () => 'Test',
@@ -510,19 +417,13 @@ describe('query_node utilities', () => {
         clone: () => createPartialNode(nodeId, onPrevNodesUpdated),
         getStructuredQuery: () => undefined,
         serializeState: () => ({}),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_node_unittest.ts
         onPrevNodesUpdated,
       } as QueryNode;
     }
 
     it('should call onPrevNodesUpdated on next nodes', () => {
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_node_unittest.ts
-      const mockCallback1 = vi.fn();
-      const mockCallback2 = vi.fn();
-=======
       const mockCallback1 = jest.fn();
       const mockCallback2 = jest.fn();
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_node_unittest.ts
 
       const node: QueryNode = {
         nodeId: 'node1',
@@ -532,17 +433,6 @@ describe('query_node utilities', () => {
           createPartialNode('node3', mockCallback2),
         ],
         finalCols: [],
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_node_unittest.ts
-        attrs: {},
-        context: {},
-        validate: () => true,
-        getTitle: () => 'Test',
-        nodeSpecificModify: () => null,
-        nodeDetails: () => ({content: null}),
-        nodeInfo: () => null,
-        clone: () => node,
-        getStructuredQuery: () => undefined,
-=======
         state: {},
         validate: () => true,
         getTitle: () => 'Test',
@@ -550,7 +440,6 @@ describe('query_node utilities', () => {
         clone: () => node,
         getStructuredQuery: () => undefined,
         serializeState: () => ({}),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_node_unittest.ts
       } as QueryNode;
 
       notifyNextNodes(node);
@@ -565,17 +454,6 @@ describe('query_node utilities', () => {
         type: NodeType.kTable,
         nextNodes: [createPartialNode('node2')],
         finalCols: [],
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_node_unittest.ts
-        attrs: {},
-        context: {},
-        validate: () => true,
-        getTitle: () => 'Test',
-        nodeSpecificModify: () => null,
-        nodeDetails: () => ({content: null}),
-        nodeInfo: () => null,
-        clone: () => node,
-        getStructuredQuery: () => undefined,
-=======
         state: {},
         validate: () => true,
         getTitle: () => 'Test',
@@ -583,7 +461,6 @@ describe('query_node utilities', () => {
         clone: () => node,
         getStructuredQuery: () => undefined,
         serializeState: () => ({}),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_node_unittest.ts
       } as QueryNode;
 
       expect(() => notifyNextNodes(node)).not.toThrow();
@@ -595,17 +472,6 @@ describe('query_node utilities', () => {
         type: NodeType.kTable,
         nextNodes: [],
         finalCols: [],
-<<<<<<< HEAD:third_party/perfetto/ui/src/plugins/dev.perfetto.DataExplorer/query_node_unittest.ts
-        attrs: {},
-        context: {},
-        validate: () => true,
-        getTitle: () => 'Test',
-        nodeSpecificModify: () => null,
-        nodeDetails: () => ({content: null}),
-        nodeInfo: () => null,
-        clone: () => node,
-        getStructuredQuery: () => undefined,
-=======
         state: {},
         validate: () => true,
         getTitle: () => 'Test',
@@ -613,7 +479,6 @@ describe('query_node utilities', () => {
         clone: () => node,
         getStructuredQuery: () => undefined,
         serializeState: () => ({}),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/plugins/dev.perfetto.ExplorePage/query_node_unittest.ts
       } as QueryNode;
 
       expect(() => notifyNextNodes(node)).not.toThrow();

@@ -231,15 +231,7 @@ int32_t ChineseCalendar::handleGetExtendedYear(UErrorCode& status) {
         // adjust to the instance specific epoch
         int32_t cycle = internalGet(UCAL_ERA, 1);
         year = internalGet(UCAL_YEAR, 1);
-<<<<<<< HEAD
-        // Handle int32 overflow calculation for
-        // year = year + (cycle-1) * 60 + CYCLE_EPOCH - CHINESE_EPOCH_YEAR
-        if (uprv_add32_overflow(cycle, -1, &cycle) || // 0-based cycle
-            uprv_mul32_overflow(cycle, 60, &cycle) ||
-            uprv_add32_overflow(year, cycle, &year) ||
-            uprv_add32_overflow(year, CYCLE_EPOCH-CHINESE_EPOCH_YEAR,
-=======
-        const Setting setting = getSetting(status);
+const Setting setting = getSetting(status);
         if (U_FAILURE(status)) {
             return 0;
         }
@@ -248,9 +240,7 @@ int32_t ChineseCalendar::handleGetExtendedYear(UErrorCode& status) {
         if (uprv_add32_overflow(cycle, -1, &cycle) || // 0-based cycle
             uprv_mul32_overflow(cycle, 60, &cycle) ||
             uprv_add32_overflow(year, cycle, &year) ||
-            uprv_add32_overflow(year, -(setting.epochYear-CHINESE_EPOCH_YEAR),
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                                &year)) {
+            uprv_add32_overflow(year, -(setting.epochYear-CHINESE_EPOCH_YEAR),                                &year)) {
             status = U_ILLEGAL_ARGUMENT_ERROR;
             return 0;
         }
@@ -376,8 +366,7 @@ int64_t ChineseCalendar::handleComputeMonthStartWithLeap(int32_t eyear, int32_t 
     if (U_FAILURE(status)) {
        return 0;
     }
-<<<<<<< HEAD
-    int32_t gyear = eyear;
+int32_t gyear = eyear;
     int32_t theNewYear = newYear(setting, gyear, status);
     int32_t newMoon = newMoonNear(setting.zoneAstroCalc, theNewYear + month * 29, true, status);
     if (U_FAILURE(status)) {
@@ -397,42 +386,10 @@ int64_t ChineseCalendar::handleComputeMonthStartWithLeap(int32_t eyear, int32_t 
         }
     }
     int32_t julianDay;
-    if (uprv_add32_overflow(newMoon-1, kEpochStartAsJulianDay, &julianDay)) {
-=======
-    int32_t gyear;
-    if (uprv_add32_overflow(eyear, setting.epochYear - 1, &gyear)) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        status = U_ILLEGAL_ARGUMENT_ERROR;
+    if (uprv_add32_overflow(newMoon-1, kEpochStartAsJulianDay, &julianDay)) {        status = U_ILLEGAL_ARGUMENT_ERROR;
         return 0;
     }
 
-<<<<<<< HEAD
-=======
-    int32_t theNewYear = newYear(setting, gyear, status);
-    int32_t newMoon = newMoonNear(setting.zoneAstroCalc, theNewYear + month * 29, true, status);
-    if (U_FAILURE(status)) {
-       return 0;
-    }
-
-    int32_t newMonthYear = Grego::dayToYear(newMoon, status);
-
-    struct MonthInfo monthInfo = computeMonthInfo(setting, newMonthYear, newMoon, status);
-    if (U_FAILURE(status)) {
-       return 0;
-    }
-    if (month != monthInfo.month-1 || isLeapMonth != monthInfo.isLeapMonth) {
-        newMoon = newMoonNear(setting.zoneAstroCalc, newMoon + SYNODIC_GAP, true, status);
-        if (U_FAILURE(status)) {
-           return 0;
-        }
-    }
-    int32_t julianDay;
-    if (uprv_add32_overflow(newMoon-1, kEpochStartAsJulianDay, &julianDay)) {
-        status = U_ILLEGAL_ARGUMENT_ERROR;
-        return 0;
-    }
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
     return julianDay;
 }
 
@@ -832,8 +789,7 @@ struct MonthInfo computeMonthInfo(
         return output;
     }
     if (days < solsticeAfter) {
-<<<<<<< HEAD
-        int32_t gprevious_year;
+int32_t gprevious_year;
         if (uprv_add32_overflow(gyear, -1, &gprevious_year)) {
             status = U_ILLEGAL_ARGUMENT_ERROR;
             return output;
@@ -846,14 +802,7 @@ struct MonthInfo computeMonthInfo(
             status = U_ILLEGAL_ARGUMENT_ERROR;
             return output;
         }
-        solsticeAfter = winterSolstice(setting, gnext_year, status);
-=======
-        solsticeBefore = winterSolstice(setting, gyear - 1, status);
-    } else {
-        solsticeBefore = solsticeAfter;
-        solsticeAfter = winterSolstice(setting, gyear + 1, status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        solsticeAfter = winterSolstice(setting, gnext_year, status);    }
     if (!(solsticeBefore <= days && days < solsticeAfter)) {
         status = U_ILLEGAL_ARGUMENT_ERROR;
     }
@@ -882,8 +831,7 @@ struct MonthInfo computeMonthInfo(
         return output;
     }
     if (days < theNewYear) {
-<<<<<<< HEAD
-        int32_t gprevious_year;
+int32_t gprevious_year;
         if (uprv_add32_overflow(gyear, -1, &gprevious_year)) {
             status = U_ILLEGAL_ARGUMENT_ERROR;
             return output;
@@ -891,14 +839,7 @@ struct MonthInfo computeMonthInfo(
         theNewYear = newYear(setting, gprevious_year, status);
         if (U_FAILURE(status)) {
             return output;
-        }
-=======
-        theNewYear = newYear(setting, gyear-1, status);
-        if (U_FAILURE(status)) {
-            return output;
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
     if (output.hasLeapMonthBetweenWinterSolstices &&
         isLeapMonthBetween(timeZone, firstMoon, output.thisMoon, status)) {
         output.month--;
@@ -967,8 +908,7 @@ void ChineseCalendar::handleComputeFields(int32_t julianDay, UErrorCode & status
     hasLeapMonthBetweenWinterSolstices = monthInfo.hasLeapMonthBetweenWinterSolstices;
 
     // Extended year and cycle year is based on the epoch year
-<<<<<<< HEAD
-    int32_t eyear;
+int32_t eyear;
     int32_t cycle_year;
     if (uprv_add32_overflow(gyear, -CHINESE_EPOCH_YEAR, &eyear) ||
         uprv_add32_overflow(gyear, -CYCLE_EPOCH, &cycle_year)) {
@@ -982,16 +922,7 @@ void ChineseCalendar::handleComputeFields(int32_t julianDay, UErrorCode & status
             uprv_add32_overflow(cycle_year, 1, &cycle_year)) {
             status = U_ILLEGAL_ARGUMENT_ERROR;
             return;
-        }
-=======
-    int32_t eyear = gyear - setting.epochYear;
-    int32_t cycle_year = gyear - CHINESE_EPOCH_YEAR;
-    if (monthInfo.month < 11 ||
-        gmonth >= UCAL_JULY) {
-        eyear++;
-        cycle_year++;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
     int32_t dayOfMonth = days - monthInfo.thisMoon + 1;
 
     // 0->0,60  1->1,1  60->1,60  61->2,1  etc.
@@ -1007,17 +938,12 @@ void ChineseCalendar::handleComputeFields(int32_t julianDay, UErrorCode & status
        return;
     }
     if (days < theNewYear) {
-<<<<<<< HEAD
-        int32_t gprevious_year;
+int32_t gprevious_year;
         if (uprv_add32_overflow(gyear, -1, &gprevious_year)) {
             status = U_ILLEGAL_ARGUMENT_ERROR;
             return;
         }
-        theNewYear = newYear(setting, gprevious_year, status);
-=======
-        theNewYear = newYear(setting, gyear-1, status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        theNewYear = newYear(setting, gprevious_year, status);    }
     if (U_FAILURE(status)) {
        return;
     }
@@ -1079,17 +1005,12 @@ int32_t newYear(const icu::ChineseCalendar::Setting& setting,
 
     if (cacheValue == 0) {
 
-<<<<<<< HEAD
-        int32_t gprevious_year;
+int32_t gprevious_year;
         if (uprv_add32_overflow(gyear, -1, &gprevious_year)) {
             status = U_ILLEGAL_ARGUMENT_ERROR;
             return 0;
         }
-        int32_t solsticeBefore= winterSolstice(setting, gprevious_year, status);
-=======
-        int32_t solsticeBefore= winterSolstice(setting, gyear - 1, status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        int32_t solsticeAfter = winterSolstice(setting, gyear, status);
+        int32_t solsticeBefore= winterSolstice(setting, gprevious_year, status);        int32_t solsticeAfter = winterSolstice(setting, gyear, status);
         int32_t newMoon1 = newMoonNear(timeZone, solsticeBefore + 1, true, status);
         int32_t newMoon2 = newMoonNear(timeZone, newMoon1 + SYNODIC_GAP, true, status);
         int32_t newMoon11 = newMoonNear(timeZone, solsticeAfter + 1, false, status);
@@ -1180,30 +1101,6 @@ void ChineseCalendar::offsetMonth(int32_t newMoon, int32_t dayOfMonth, int32_t d
     }
 }
 
-<<<<<<< HEAD
-=======
-constexpr uint32_t kChineseRelatedYearDiff = -2637;
-
-int32_t ChineseCalendar::getRelatedYear(UErrorCode &status) const
-{
-    int32_t year = get(UCAL_EXTENDED_YEAR, status);
-    if (U_FAILURE(status)) {
-        return 0;
-    }
-    if (uprv_add32_overflow(year, kChineseRelatedYearDiff, &year)) {
-        status = U_ILLEGAL_ARGUMENT_ERROR;
-        return 0;
-    }
-    return year;
-}
-
-void ChineseCalendar::setRelatedYear(int32_t year)
-{
-    // set extended year
-    set(UCAL_EXTENDED_YEAR, year - kChineseRelatedYearDiff);
-}
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 IMPL_SYSTEM_DEFAULT_CENTURY(ChineseCalendar, "@calendar=chinese")
 
 bool
@@ -1285,8 +1182,7 @@ int32_t ChineseCalendar::internalGetMonth(UErrorCode& status) const {
 int32_t ChineseCalendar::internalGetMonth(int32_t defaultValue, UErrorCode& status) const {
     if (U_FAILURE(status)) {
         return 0;
-<<<<<<< HEAD
-    }
+}
     switch (resolveFields(kMonthPrecedence)) {
         case UCAL_MONTH:
             return internalGet(UCAL_MONTH);
@@ -1294,22 +1190,10 @@ int32_t ChineseCalendar::internalGetMonth(int32_t defaultValue, UErrorCode& stat
             return internalGetMonth(status);
         default:
             return defaultValue;
-    }
-=======
-    }
-    if (resolveFields(kMonthPrecedence) == UCAL_MONTH) {
-        return internalGet(UCAL_MONTH, defaultValue);
-    }
-    return internalGetMonth(status);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+    }}
 
 ChineseCalendar::Setting ChineseCalendar::getSetting(UErrorCode&) const {
   return {
-<<<<<<< HEAD
-=======
-        CHINESE_EPOCH_YEAR,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
         getAstronomerTimeZone(),
         &gWinterSolsticeCache,
         &gNewYearCache

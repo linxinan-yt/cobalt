@@ -56,10 +56,6 @@
 #include "modules/rtp_rtcp/source/rtp_rtcp_interface.h"
 #include "rtc_base/checks.h"
 #include "rtc_base/containers/flat_map.h"
-<<<<<<< HEAD
-=======
-#include "rtc_base/experiments/field_trial_parser.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "rtc_base/logging.h"
 #include "rtc_base/network/sent_packet.h"
 #include "rtc_base/network_route.h"
@@ -133,10 +129,7 @@ RtpTransportControllerSend::RtpTransportControllerSend(
   initial_config_.default_pacing_time_window =
       config.default_pacing_time_window;
   RTC_DCHECK(config.bitrate_config.start_bitrate_bps > 0);
-<<<<<<< HEAD
-=======
-
-  pacer_.SetConfig(PacerConfig::Create(
+pacer_.SetConfig(PacerConfig::Create(
       env_.clock().CurrentTime(),
       DataRate::BitsPerSec(config.bitrate_config.start_bitrate_bps),
       DataRate::Zero(), config.default_pacing_time_window));
@@ -145,9 +138,7 @@ RtpTransportControllerSend::RtpTransportControllerSend(
       [this](const RtpPacketToSend& packet,
              const PacedPacketInfo& pacing_info) {
         return NotifyBweOfPacedSentPacket(packet, pacing_info);
-      });
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+      });}
 
 RtpTransportControllerSend::~RtpTransportControllerSend() {
   RTC_DCHECK_RUN_ON(worker_thread_);
@@ -410,8 +401,7 @@ void RtpTransportControllerSend::OnNetworkRouteChanged(
                      << " bps.";
   }
 
-<<<<<<< HEAD
-  env_.event_log().Log(std::make_unique<RtcEventRouteChange>(
+env_.event_log().Log(std::make_unique<RtcEventRouteChange>(
       network_route.connected, network_route.packet_overhead));
   transport_feedback_adapter_.SetNetworkRoute(network_route);
 
@@ -436,32 +426,7 @@ void RtpTransportControllerSend::OnNetworkRouteChanged(
     sending_packets_as_ect1_ = true;
     packet_router_.ConfigureForRtcpFeedback(
         /*set_transport_seq=*/rfc_8888_feedback_negotiated_,
-        sending_packets_as_ect1_);
-=======
-    env_.event_log().Log(std::make_unique<RtcEventRouteChange>(
-        network_route.connected, network_route.packet_overhead));
-    if (rfc_8888_feedback_negotiated_) {
-      sending_packets_as_ect1_ = true;
-      packet_router_.ConfigureForRtcpFeedback(
-          /*set_transport_seq=*/rfc_8888_feedback_negotiated_,
-          sending_packets_as_ect1_);
-    }
-    NetworkRouteChange msg;
-    msg.at_time = env_.clock().CurrentTime();
-    msg.constraints = ConvertConstraints(bitrate_config, &env_.clock());
-    transport_overhead_bytes_per_packet_ = network_route.packet_overhead;
-    if (reset_feedback_on_route_change_) {
-      transport_feedback_adapter_.SetNetworkRoute(network_route);
-    }
-    if (controller_) {
-      PostUpdates(controller_->OnNetworkRouteChange(msg));
-    } else {
-      UpdateInitialConstraints(msg.constraints);
-    }
-    is_congested_ = false;
-    pacer_.SetCongested(false);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+        sending_packets_as_ect1_);  }
 }
 
 void RtpTransportControllerSend::OnNetworkAvailability(bool network_available) {
@@ -660,12 +625,7 @@ void RtpTransportControllerSend::NotifyBweOfPacedSentPacket(
 
 void RtpTransportControllerSend::SetPreferredRtcpCcAckType(
     RtcpFeedbackType preferred_rtcp_cc_ack_type) {
-<<<<<<< HEAD
-  RTC_DCHECK_RUN_ON(worker_thread_);
-=======
-  RTC_DCHECK_RUN_ON(&sequence_checker_);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  RTC_DCHECK(preferred_rtcp_cc_ack_type == RtcpFeedbackType::CCFB ||
+RTC_DCHECK_RUN_ON(&sequence_checker_);  RTC_DCHECK(preferred_rtcp_cc_ack_type == RtcpFeedbackType::CCFB ||
              preferred_rtcp_cc_ack_type == RtcpFeedbackType::TRANSPORT_CC);
   if (preferred_rtcp_cc_ack_type == RtcpFeedbackType::CCFB) {
     rfc_8888_feedback_negotiated_ = true;
@@ -680,16 +640,12 @@ void RtpTransportControllerSend::SetPreferredRtcpCcAckType(
   packet_router_.ConfigureForRtcpFeedback(
       /*set_transport_seq=*/rfc_8888_feedback_negotiated_,
       sending_packets_as_ect1_);
-<<<<<<< HEAD
-  // TODO: bugs.webrtc.org/447037083 - Remove method
+// TODO: bugs.webrtc.org/447037083 - Remove method
   // IncludeOverheadInPacedSender once once support for
   // RFC8888 is per default enabled. Also remove or update and SetPacingFactor
   // since it is not used with RFC 8888. SetPreferredRtcpCcAckType is only
   // called if field trial "WebRTC-RFC8888CongestionControlFeedback" is enabled.
-  pacer_.SetIncludeOverhead();
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  pacer_.SetIncludeOverhead();}
 
 std::optional<int>
 RtpTransportControllerSend::ReceivedCongestionControlFeedbackCount() const {
@@ -702,12 +658,7 @@ RtpTransportControllerSend::ReceivedCongestionControlFeedbackCount() const {
 
 flat_map<uint32_t, ReceivedCongestionControlFeedbackStats>
 RtpTransportControllerSend::GetCongestionControlFeedbackStatsPerSsrc() const {
-<<<<<<< HEAD
-  RTC_DCHECK_RUN_ON(worker_thread_);
-=======
-  RTC_DCHECK_RUN_ON(&sequence_checker_);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  return received_ccfb_stats_;
+RTC_DCHECK_RUN_ON(worker_thread_);  return received_ccfb_stats_;
 }
 
 std::optional<int>

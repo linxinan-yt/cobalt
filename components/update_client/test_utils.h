@@ -5,12 +5,9 @@
 #ifndef COMPONENTS_UPDATE_CLIENT_TEST_UTILS_H_
 #define COMPONENTS_UPDATE_CLIENT_TEST_UTILS_H_
 
-<<<<<<< HEAD
 #include <string_view>
-=======
-#include "build/build_config.h"
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
+#include "build/build_config.h"
 namespace base {
 class FilePath;
 }

@@ -1463,13 +1463,9 @@ vi{
         MUR{
             other{"rupee Mauritius"}
         }
-<<<<<<< HEAD
-=======
-        MVP{
+MVP{
             other{"Rupee Maldives (1947–1981)"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        MWK{
+        }        MWK{
             other{"kwacha Malawi"}
         }
         MXN{
@@ -1652,11 +1648,7 @@ vi{
         ZMW{
             other{"kwacha Zambia"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             other{"Zimbabwean Gold"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

@@ -21,11 +21,7 @@
 
 #include "perfetto/protozero/field.h"
 
-<<<<<<< HEAD
-#include "protos/perfetto/trace/android/android_aflags.pbzero.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "protos/perfetto/trace/power/power_rails.pbzero.h"
+#include "protos/perfetto/trace/android/android_aflags.pbzero.h"#include "protos/perfetto/trace/power/power_rails.pbzero.h"
 #include "src/trace_processor/storage/trace_storage.h"
 
 namespace perfetto::trace_processor {
@@ -53,24 +49,24 @@ class AndroidProbesParser {
   void ParseEntityStateResidency(int64_t ts, ConstBytes);
   void ParseInitialDisplayState(int64_t ts, ConstBytes);
   void ParseAndroidSystemProperty(int64_t ts, ConstBytes);
-<<<<<<< HEAD
-  void ParseAndroidAflags(int64_t ts, ConstBytes);
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
+void ParseAndroidAflags(int64_t ts, ConstBytes);
   void ParseBtTraceEvent(int64_t ts, ConstBytes);
 
  private:
   void ParseAndroidLogEvent(int64_t ts, protozero::ConstBytes);
 
-<<<<<<< HEAD
   StringId ToPermissionId(int32_t);
   StringId ToValuePickedFromId(int32_t);
   StringId ToStorageBackendId(int32_t);
-  StringId ToFlagTypeId(int32_t);
+  StringId ToFlagTypeId(int32_t);  void ParseBtTraceEvent(int64_t ts, ConstBytes);
 
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  TraceProcessorContext* const context_;
+ private:
+  void ParseAndroidLogEvent(int64_t ts, protozero::ConstBytes);
+
+StringId ToPermissionId(int32_t);
+  StringId ToValuePickedFromId(int32_t);
+  StringId ToStorageBackendId(int32_t);
+  StringId ToFlagTypeId(int32_t);  TraceProcessorContext* const context_;
   AndroidProbesTracker* const tracker_;
 
   std::unique_ptr<ArgsTracker> power_rails_args_tracker_;
@@ -91,8 +87,7 @@ class AndroidProbesParser {
   const StringId power_rail_raw_name_id_;
   const StringId power_rail_subsys_name_arg_id_;
   const StringId rail_packet_timestamp_id_;
-<<<<<<< HEAD
-  const StringId aflags_read_only_id_;
+const StringId aflags_read_only_id_;
   const StringId aflags_read_write_id_;
   const StringId aflags_default_id_;
   const StringId aflags_server_id_;
@@ -103,10 +98,7 @@ class AndroidProbesParser {
   const StringId aflags_boolean_id_;
   const StringId aflags_integer_id_;
   const StringId aflags_unspecified_id_;
-  const StringId android_logcat_;
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-};
+  const StringId android_logcat_;};
 }  // namespace perfetto::trace_processor
 
 #endif  // SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_ANDROID_PROBES_PARSER_H_

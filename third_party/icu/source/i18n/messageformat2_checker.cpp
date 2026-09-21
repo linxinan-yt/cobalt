@@ -13,11 +13,7 @@
 #include "messageformat2_allocation.h"
 #include "messageformat2_checker.h"
 #include "messageformat2_evaluation.h"
-<<<<<<< HEAD
-#include "messageformat2_function_registry_internal.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "messageformat2_macros.h"
+#include "messageformat2_function_registry_internal.h"#include "messageformat2_macros.h"
 #include "uvector.h" // U_ASSERT
 
 U_NAMESPACE_BEGIN
@@ -117,12 +113,7 @@ Key Checker::normalizeNFC(const Key& k) const {
         return k;
     }
     return Key(Literal(k.asLiteral().isQuoted(),
-<<<<<<< HEAD
-                       StandardFunctions::normalizeNFC(k.asLiteral().unquoted())));
-=======
-                       context.normalizeNFC(k.asLiteral().unquoted())));
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+StandardFunctions::normalizeNFC(k.asLiteral().unquoted())));}
 
 static bool areDefaultKeys(const Key* keys, int32_t len) {
     U_ASSERT(len > 0);

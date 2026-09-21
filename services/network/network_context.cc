@@ -49,16 +49,7 @@
 #include "build/chromecast_buildflags.h"
 #include "components/cookie_config/cookie_store_util.h"
 #include "components/domain_reliability/monitor.h"
-<<<<<<< HEAD
-#include "components/enterprise/buildflags/buildflags.h"
-=======
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-#include "components/ip_protection/common/ip_protection_core_host_remote.h"  // nogncheck
-#include "components/ip_protection/common/ip_protection_core_impl_mojo.h"    // nogncheck
-#include "components/ip_protection/common/ip_protection_proxy_delegate.h"   // nogncheck
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "components/network_session_configurator/browser/network_session_configurator.h"
+#include "components/enterprise/buildflags/buildflags.h"#include "components/network_session_configurator/browser/network_session_configurator.h"
 #include "components/network_session_configurator/common/network_switches.h"
 #include "components/os_crypt/async/common/encryptor.h"
 #include "components/prefs/json_pref_store.h"
@@ -1348,19 +1339,6 @@ void NetworkContext::SetBlockTrustTokens(bool block) {
 #endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 }
 
-<<<<<<< HEAD
-=======
-void NetworkContext::SetTrackingProtectionContentSetting(
-    const ContentSettingsForOneType& settings) {
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-  if (!ip_protection_core_) {
-    return;
-  }
-  ip_protection_core_->SetTrackingProtectionContentSetting(settings);
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-}
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 void NetworkContext::OnProxyLookupComplete(
     ProxyLookupRequest* proxy_lookup_request) {
   auto it = proxy_lookup_requests_.find(proxy_lookup_request);
@@ -2960,50 +2938,8 @@ URLRequestContextOwner NetworkContext::MakeURLRequestContext(
   network_delegate_ = network_delegate.get();
   builder.set_network_delegate(std::move(network_delegate));
 
-<<<<<<< HEAD
-  if (params_->initial_custom_proxy_config ||
-      params_->custom_proxy_config_client_receiver) {
-=======
-  // Decide which ProxyDelegate to create. At most one of these will be the
-  // case for any given NetworkContext: either PrefetchProxy, handling its
-  // custom proxy configs, or IpProtection, using the proxy allowlist.
-  bool requires_ipp_proxy_delegate = false;
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-  auto* mdl_manager = network_service_->masked_domain_list_manager();
-  requires_ipp_proxy_delegate =
-      (mdl_manager->IsEnabled() ||
-       !net::features::kIpPrivacyUnconditionalProxyDomainList.Get().empty()) &&
-      (params_->ip_protection_core_host ||
-       net::features::kIpPrivacyAlwaysCreateCore.Get());
-  if (requires_ipp_proxy_delegate) {
-    CHECK(!params_->initial_custom_proxy_config);
-    CHECK(!params_->custom_proxy_config_client_receiver);
-    scoped_refptr<ip_protection::IpProtectionCoreHostRemote> core_host_remote =
-        params_->ip_protection_core_host
-            ? base::MakeRefCounted<ip_protection::IpProtectionCoreHostRemote>(
-                  std::move(params_->ip_protection_core_host))
-            : nullptr;
-    auto ip_protection_core_impl =
-        std::make_unique<ip_protection::IpProtectionCoreImplMojo>(
-            std::move(params_->ip_protection_control), core_host_remote,
-            mdl_manager, params_->enable_ip_protection,
-            params_->ip_protection_incognito,
-            std::move(params_->initial_ip_protection_tokens));
-    builder.set_proxy_delegate(
-        std::make_unique<ip_protection::IpProtectionProxyDelegate>(
-            ip_protection_core_impl.get()));
-    // Set tracking protection content settings if there are any provided.
-    ip_protection_core_impl->SetTrackingProtectionContentSetting(
-        params_->tracking_protection_content_settings);
-
-    ip_protection_core_ = std::move(ip_protection_core_impl);
-  }
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-  if (!requires_ipp_proxy_delegate &&
-      (params_->initial_custom_proxy_config ||
-       params_->custom_proxy_config_client_receiver)) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    builder.set_proxy_delegate(std::make_unique<NetworkServiceProxyDelegate>(
+if (params_->initial_custom_proxy_config ||
+      params_->custom_proxy_config_client_receiver) {    builder.set_proxy_delegate(std::make_unique<NetworkServiceProxyDelegate>(
         std::move(params_->initial_custom_proxy_config),
         std::move(params_->custom_proxy_config_client_receiver),
         std::move(params_->custom_proxy_connection_observer_remote)));
@@ -3294,18 +3230,13 @@ URLRequestContextOwner NetworkContext::MakeURLRequestContext(
       *base::CommandLine::ForCurrentProcess(), is_quic_force_disabled,
       &session_params, quic_context->params());
 
-<<<<<<< HEAD
-=======
 #if BUILDFLAG(IS_COBALT)
   // TODO: b/550183348 - disabled as part of the 140.7298 roll.
   session_params.use_quic_for_unknown_origins = false;
 #endif
 
   session_params.disable_idle_sockets_close_on_memory_pressure =
-      params_->disable_idle_sockets_close_on_memory_pressure;
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  session_params.key_auth_cache_server_entries_by_network_anonymization_key =
+      params_->disable_idle_sockets_close_on_memory_pressure;  session_params.key_auth_cache_server_entries_by_network_anonymization_key =
       params_->split_auth_cache_by_network_anonymization_key;
 
   builder.set_http_network_session_params(session_params);
@@ -3981,56 +3912,12 @@ void NetworkContext::AddQuicHints(
   }
 }
 
-<<<<<<< HEAD
 bool NetworkContext::IsNetworkForNetworkRestrictionsIdAndUrlAllowed(
     const base::UnguessableToken& network_restrictions_id,
     const GURL& url,
     const net::NetworkAnonymizationKey& network_anonymization_key,
     bool is_redirect) {
-  if (!base::FeatureList::IsEnabled(network::features::kConnectionAllowlists)) {
-=======
-void NetworkContext::GetIpProxyStatus(GetIpProxyStatusCallback callback) {
-  ip_protection::IpProxyStatus status =
-      ip_protection::IpProxyStatus::kUnavailable;
-
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
-  if (!base::FeatureList::IsEnabled(net::features::kEnableIpProtectionProxy)) {
-    status = ip_protection::IpProxyStatus::kFeatureNotEnabled;
-    std::move(callback).Run(status);
-    return;
-  }
-  if (!base::FeatureList::IsEnabled(features::kMaskedDomainList)) {
-    status = ip_protection::IpProxyStatus::kMaskedDomainListNotEnabled;
-    std::move(callback).Run(status);
-    return;
-  }
-  if (ip_protection_core()) {
-    // ip_protection_core() should be null if either of the above features are
-    // disabled, so check beforehand
-    status = ip_protection_core()->GetIpProxyStatus();
-    std::move(callback).Run(status);
-    return;
-  }
-#endif
-
-  std::move(callback).Run(status);
-}
-
-void NetworkContext::SetBypassIpProtectionProxy(bool bypass_proxy) {
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
-  if (ip_protection_core()) {
-    ip_protection_core()->SetBypassProxy(bypass_proxy);
-  }
-#endif
-}
-
-bool NetworkContext::IsNetworkForNonceAndUrlAllowed(
-    const base::UnguessableToken& nonce,
-    const GURL& url) const {
-  // If network hasn't been revoked for the nonce, it's allowed.
-  if (!network_revocation_nonces_.contains(nonce)) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    return true;
+  if (!base::FeatureList::IsEnabled(network::features::kConnectionAllowlists)) {    return true;
   }
 
   // If network hasn't been revoked for the network restrictions ID, it's

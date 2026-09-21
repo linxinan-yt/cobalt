@@ -247,16 +247,11 @@ constexpr bool AllowsHeterogeneousLookup() {
          (IsStringLike<T>() && IsStringLike<U>());
 }
 
-<<<<<<< HEAD
 // Helper to detect pointers in Combine(...).
 // Hashing pointers directly is prohibited as it often indicates a misuse
 // (e.g., passing ptr and len instead of a single std::string_view).
 template <typename... Args>
-constexpr bool HasPointerV = (std::is_pointer_v<Args> || ...);
-
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}  // namespace murmur_internal
+constexpr bool HasPointerV = (std::is_pointer_v<Args> || ...);}  // namespace murmur_internal
 
 // ============================================================================
 // MurmurHashCombiner - the core hasher state object
@@ -299,15 +294,11 @@ class MurmurHashCombiner {
   // The combination is order-dependent.
   template <typename... Args>
   void Combine(const Args&... args) {
-<<<<<<< HEAD
-    static_assert(!murmur_internal::HasPointerV<Args...>,
+static_assert(!murmur_internal::HasPointerV<Args...>,
                   "MurmurHashCombiner::Combine() does not support pointers. "
                   "If you want to hash the contents of a memory range, use a "
                   "single hashable object (e.g., std::string_view). If you "
-                  "want to hash a pointer address, cast it to uintptr_t.");
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    // Uses a C++17 fold expression with CombineOne for each argument.
+                  "want to hash a pointer address, cast it to uintptr_t.");    // Uses a C++17 fold expression with CombineOne for each argument.
     (CombineOne(args), ...);
   }
 

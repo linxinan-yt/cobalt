@@ -97,12 +97,7 @@ class SqliteTokenizer {
   // Returns the next SQL token.
   Token Next();
 
-<<<<<<< HEAD
-  // Returns the next SQL token which is not whitespace or a comment.
-=======
-  // Returns the next SQL token which is not of type TK_SPACE or TK_COMMENT.
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  Token NextNonWhitespace();
+// Returns the next SQL token which is not whitespace or a comment.  Token NextNonWhitespace();
 
   // Returns the next SQL token which is terminal.
   Token NextTerminal();

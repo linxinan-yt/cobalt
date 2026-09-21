@@ -36,10 +36,6 @@ export const defaultPlugins = [
   'com.android.Bluetooth',
   'com.android.ContainedTraces',
   'com.android.CpuPerUid',
-<<<<<<< HEAD:third_party/perfetto/ui/src/core/embedder/default_plugins.ts
-  'com.android.CujFrameDebugTrack',
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.):third_party/perfetto/ui/src/core/default_plugins.ts
   'com.android.DayExplorer',
   'com.android.GpuWorkPeriod',
   'com.android.HeapDumpExplorer',

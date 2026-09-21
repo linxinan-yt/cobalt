@@ -877,14 +877,9 @@ static ATTRIBUTE_NOINLINE bool SymbolizeAndDemangle(void* pc,
   }
 #else
   int object_fd = OpenObjectFileContainingPcAndGetStartAddress(
-<<<<<<< HEAD
-      pc0, start_address, ignored_end_address, base_address, out + 1,
+pc0, start_address, ignored_end_address, base_address, out + 1,
       out_size - 1);
-=======
-      pc0, start_address, base_address, out + 1, out_size - 1);
 #endif
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   FileDescriptor wrapped_object_fd(object_fd);
 
 #if defined(PRINT_UNSYMBOLIZED_STACK_TRACES)

@@ -12,25 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-<<<<<<< HEAD
 use std::{
     env, fs,
     path::{Path, PathBuf},
     process::Command,
 };
-=======
-use std::env;
-use std::path::{Path, PathBuf};
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 fn main() {
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
     let crate_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
-<<<<<<< HEAD
-    #[cfg_attr(not(feature = "bindgen"), allow(unused_variables))]
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    let include_path = env::var("PERFETTO_SYS_INCLUDE_DIR").unwrap_or_else(|_| {
+#[cfg_attr(not(feature = "bindgen"), allow(unused_variables))]    let include_path = env::var("PERFETTO_SYS_INCLUDE_DIR").unwrap_or_else(|_| {
         PathBuf::from(&crate_dir)
             .join("include")
             .display()
@@ -46,26 +36,19 @@ fn main() {
                 ❌ Missing amalgamated source file: {}.\n\n\
                 To fix this, run:\n\
                 \n\
-<<<<<<< HEAD
-                $ tools/gen_amalgamated --sdk c \
-                --output contrib/rust-sdk/perfetto-sys/libperfetto_c/perfetto\n\
-=======
-                $ tools/gen_amalgamated --gn_args \"is_debug=false \
+$ tools/gen_amalgamated --gn_args \"is_debug=false \
                 is_clang=true use_custom_libcxx=false \
                 enable_perfetto_ipc=true \
                 perfetto_enable_git_rev_version_header=true \
                 is_perfetto_build_generator=true \
                 enable_perfetto_zlib=false\" \
                 --output contrib/rust-sdk/perfetto-sys/libperfetto_c/perfetto_c \
-                //src/shared_lib:libperfetto_c\n\
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                \n\
+                //src/shared_lib:libperfetto_c\n\                \n\
                 💡 Tip: invoke cargo with --no-default-features to use an external library\n",
                 source_file.display()
             );
         }
-<<<<<<< HEAD
-        // Extra code to verify that size of `std::atomic<bool>` and `_Atomic(bool)`
+// Extra code to verify that size of `std::atomic<bool>` and `_Atomic(bool)`
         // match `bool` type. Only targets where this is the case are supported.
         let atomic_bool_check_file = out_path.join("atomic_bool_check.cc");
         fs::write(
@@ -75,17 +58,13 @@ fn main() {
             int check_size[sizeof(std::atomic<bool>) == sizeof(bool) ? 1 : -1];
         "#,
         )
-        .unwrap();
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        let mut build = cc::Build::new();
+        .unwrap();        let mut build = cc::Build::new();
         // `PERFETTO_SYS_LIB_DEBUG=true` enables debug build of the shared library.
         let lib_debug = env::var("PERFETTO_SYS_LIB_DEBUG").ok().as_deref() == Some("true");
         if !lib_debug {
             build.define("NDEBUG", None);
         }
-<<<<<<< HEAD
-        if env::var("CXX").is_err() {
+if env::var("CXX").is_err() {
             if Command::new("clang++").arg("--version").output().is_ok() {
                 build.compiler("clang++");
             } else {
@@ -106,20 +85,7 @@ fn main() {
         println!("cargo:rerun-if-changed=libperfetto_c/perfetto_c.cc");
         println!("cargo:rerun-if-changed=libperfetto_c/perfetto_c.h");
         println!("cargo:rerun-if-env-changed=PERFETTO_SYS_LIB_DEBUG");
-        println!("cargo:rerun-if-env-changed=CXX");
-=======
-        build
-            .cpp(true)
-            .file(source_file)
-            .std("c++17")
-            .debug(lib_debug)
-            .warnings(false)
-            .compile("libperfetto_c");
-        println!("cargo:rerun-if-changed=libperfetto_c/perfetto_c.cc");
-        println!("cargo:rerun-if-changed=libperfetto_c/perfetto_c.h");
-        println!("cargo:rerun-if-env-changed=PERFETTO_SYS_LIB_DEBUG");
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    } else {
+        println!("cargo:rerun-if-env-changed=CXX");    } else {
         let lib_path = env::var("PERFETTO_SYS_LIB_DIR")
             .expect("Set PERFETTO_SYS_LIB_DIR for non-vendored builds");
         println!("cargo:rustc-link-search=native={}", lib_path);
@@ -130,8 +96,7 @@ fn main() {
     println!("cargo:rerun-if-env-changed=PERFETTO_SYS_INCLUDE_DIR");
     println!("cargo:rerun-if-changed=wrapper.h");
 
-<<<<<<< HEAD
-    #[cfg(feature = "bindgen")]
+#[cfg(feature = "bindgen")]
     {
         let bindings = bindgen::Builder::default()
             .header("wrapper.h")
@@ -155,24 +120,4 @@ fn main() {
         bindings
             .write_to_file(out_path.join("bindings.rs"))
             .expect("Couldn't write bindings!");
-    }
-=======
-    let bindings = bindgen::Builder::default()
-        .header("wrapper.h")
-        .clang_arg(format!("-I{}", include_path))
-        .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
-        .allowlist_type("(?:Perfetto|perfetto).*")
-        .allowlist_function("(?:Perfetto|perfetto).*")
-        .allowlist_var("(?:PERFETTO|perfetto)_.*")
-        .layout_tests(false)
-        .derive_default(false)
-        .derive_eq(false)
-        .blocklist_type("max_align_t")
-        .generate()
-        .expect("Unable to generate bindings");
-
-    bindings
-        .write_to_file(out_path.join("bindings.rs"))
-        .expect("Couldn't write bindings!");
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+    }}

@@ -44,15 +44,10 @@ Advanced query/data features in UI:
   Alexander Timin <alexander@timin.me> - @altimin
 
 Rust SDK:
-<<<<<<< HEAD
-  David Reveman <reveman@meta.com> - @dreveman
+David Reveman <reveman@meta.com> - @dreveman
 
 Standard library, data explorer and UI:
   Anna Mayzner <mayzneranna@gmail.com> - @mayzner
-=======
-  David Reveman <dreveman@gmail.com> - @dreveman
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
 
 Community maintainers
 ---------------------
@@ -61,12 +56,6 @@ Maintainers for community-maintained code found in contrib/ directory.
 See /rfcs/0007-community-maintained-code.md for details.
 
 Rust SDK maintainers:
-<<<<<<< HEAD
-  David Reveman <reveman@meta.com> - @dreveman
-  Jonathan Bailey <jb0@meta.com> - @jon-rv
-  Elisa Tai <elisatai@meta.com> - @zytyz
-=======
-  David Reveman <dreveman@gmail.com> - @dreveman
+David Reveman <dreveman@gmail.com> - @dreveman
   Jonathan Bailey <jon.bailey45@gmail.com> - @jon-rv
   Elisa Tai <ziyi.elisa.tai@gmail.com> - @zytyz
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

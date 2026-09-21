@@ -671,14 +671,10 @@ jv{
                 dnam{"mililiter"}
                 other{"{0} mililiter"}
             }
-<<<<<<< HEAD
-=======
-            pinch{
+pinch{
                 dnam{"jiwit"}
                 other{"{0} jiwit"}
-            }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            tablespoon{
+            }            tablespoon{
                 dnam{"sendok mangan"}
                 other{"{0} sendok mangan"}
             }
@@ -811,11 +807,7 @@ jv{
                 other{"{0}oz lm by"}
             }
             pinch{
-<<<<<<< HEAD
-=======
-                dnam{"jiwit"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                other{"{0}jiwit"}
+dnam{"jiwit"}                other{"{0}jiwit"}
             }
             pint-metric{
                 other{"{0}mpt"}

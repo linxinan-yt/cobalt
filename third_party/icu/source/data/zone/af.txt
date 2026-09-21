@@ -18,13 +18,9 @@ af{
         "Africa:Mogadishu"{
             ec{"Mogadisjoe"}
         }
-<<<<<<< HEAD
-=======
-        "America:Bahia_Banderas"{
+"America:Bahia_Banderas"{
             ec{"Bahia Banderas"}
-        }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "America:Cambridge_Bay"{
+        }        "America:Cambridge_Bay"{
             ec{"Cambridgebaai"}
         }
         "America:Cayman"{
@@ -69,8 +65,7 @@ af{
         "America:St_Vincent"{
             ec{"Sint Vincent"}
         }
-<<<<<<< HEAD
-        "Antarctica:Casey"{
+"Antarctica:Casey"{
             ec{"Casey-stasie"}
         }
         "Antarctica:Davis"{
@@ -93,10 +88,7 @@ af{
         }
         "Antarctica:Troll"{
             ec{"Troll-stasie"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        "Antarctica:Vostok"{
+        }        "Antarctica:Vostok"{
             ec{"Wostok-stasie"}
         }
         "Asia:Ashgabat"{

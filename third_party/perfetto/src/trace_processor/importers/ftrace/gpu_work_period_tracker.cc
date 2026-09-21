@@ -23,11 +23,7 @@
 #include "protos/perfetto/trace/ftrace/ftrace_event.pbzero.h"
 #include "protos/perfetto/trace/ftrace/power.pbzero.h"
 #include "src/trace_processor/importers/common/event_tracker.h"
-<<<<<<< HEAD
-#include "src/trace_processor/importers/common/gpu_tracker.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "src/trace_processor/importers/common/import_logs_tracker.h"
+#include "src/trace_processor/importers/common/gpu_tracker.h"#include "src/trace_processor/importers/common/import_logs_tracker.h"
 #include "src/trace_processor/importers/common/slice_tracker.h"
 #include "src/trace_processor/importers/common/track_tracker.h"
 #include "src/trace_processor/importers/common/tracks.h"
@@ -63,12 +59,7 @@ void GpuWorkPeriodTracker::ParseGpuWorkPeriodEvent(int64_t timestamp,
   const auto duration =
       static_cast<int64_t>(evt.end_time_ns() - evt.start_time_ns());
   if (duration < 0) {
-<<<<<<< HEAD
-    context_->import_logs_tracker->RecordParserLog(
-=======
-    context_->import_logs_tracker->RecordParserError(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        stats::gpu_work_period_negative_duration, timestamp,
+context_->import_logs_tracker->RecordParserError(        stats::gpu_work_period_negative_duration, timestamp,
         [&](ArgsTracker::BoundInserter& inserter) {
           inserter.AddArg(
               start_time_ns_key_id_,

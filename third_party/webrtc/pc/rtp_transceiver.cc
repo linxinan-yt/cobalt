@@ -676,16 +676,6 @@ void RtpTransceiver::ClearChannel() {
   if (!channel_) {
     return;
   }
-<<<<<<< HEAD
-=======
-  context()->worker_thread()->BlockingCall([&]() {
-    RTC_DCHECK_RUN_ON(context()->worker_thread());
-    // Push down the new media_channel.
-    auto* media_send_channel = channel_->media_send_channel();
-    for (const auto& sender : senders_) {
-      sender->internal()->SetMediaChannel(media_send_channel);
-    }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   absl::AnyInvocable<void() &&> network_task = GetClearChannelNetworkTask();
   if (network_task) {
@@ -700,7 +690,6 @@ void RtpTransceiver::ClearChannel() {
   }
 }
 
-<<<<<<< HEAD
 // RTC_RUN_ON(context()->worker_thread());
 void RtpTransceiver::SetMediaChannels(MediaSendChannelInterface* send,
                                       MediaReceiveChannelInterface* receive) {
@@ -736,29 +725,7 @@ RtpTransceiver::GetEncoderSwitchRequestCallback() {
                 std::move(action)();
               });
             }));
-      };
-=======
-void RtpTransceiver::DeleteChannel() {
-  RTC_DCHECK(channel_);
-  // Ensure that channel_ is not reachable via transceiver, but is deleted
-  // only after clearing the references in senders_ and receivers_.
-  context()->worker_thread()->BlockingCall([&]() {
-    RTC_DCHECK_RUN_ON(context()->worker_thread());
-    auto channel_to_delete = std::move(channel_);
-    // Clear the media channel reference from senders and receivers.
-    for (const auto& sender : senders_) {
-      sender->internal()->SetMediaChannel(nullptr);
-    }
-    for (const auto& receiver : receivers_) {
-      receiver->internal()->SetMediaChannel(nullptr);
-    }
-    // The channel is destroyed here, on the worker thread as it needs to
-    // be.
-    channel_to_delete.reset();
-    media_engine_ref_.reset();
-  });
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+      };}
 
 absl::AnyInvocable<void()> RtpTransceiver::GetParametersChangedCallback() {
   RTC_DCHECK(signaling_thread_safety_);
@@ -878,22 +845,7 @@ std::optional<std::string> RtpTransceiver::mid() const {
   return mid_;
 }
 
-<<<<<<< HEAD
-void RtpTransceiver::OnFirstPacketReceived(uint32_t ssrc) {
-=======
-// RTC_RUN_ON(context()->worker_thread())
-MediaEngineInterface* RtpTransceiver::media_engine() {
-  if (!media_engine_ref_) {
-    media_engine_ref_ =
-        std::make_unique<ConnectionContext::MediaEngineReference>(
-            scoped_refptr<ConnectionContext>(context_));
-  }
-  return media_engine_ref_->media_engine();
-}
-
-void RtpTransceiver::OnFirstPacketReceived() {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  for (const auto& receiver : receivers_) {
+void RtpTransceiver::OnFirstPacketReceived(uint32_t ssrc) {  for (const auto& receiver : receivers_) {
     receiver->internal()->NotifyFirstPacketReceived(ssrc);
   }
 }
@@ -1007,9 +959,6 @@ std::optional<RtpTransceiverDirection> RtpTransceiver::fired_direction() const {
   return fired_direction_;
 }
 
-<<<<<<< HEAD
-RTCError RtpTransceiver::TryToEnableSframe() {
-=======
 bool RtpTransceiver::receptive() const {
   RTC_DCHECK_RUN_ON(thread_);
   return receptive_;
@@ -1026,8 +975,8 @@ void RtpTransceiver::StopSendingAndReceiving() {
   //
   // 3. Stop sending media with sender.
   //
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  RTC_DCHECK_RUN_ON(thread_);
+
+RTCError RtpTransceiver::TryToEnableSframe() {  RTC_DCHECK_RUN_ON(thread_);
 
   if (sframe_enabled_.has_value() && sframe_enabled_.value() == false) {
     return RTC_LOG_ERROR(RTCError::InvalidModification()
@@ -1371,12 +1320,7 @@ bool IsMandatoryHeaderExtension(absl::string_view uri) {
 }
 
 RTCError RtpTransceiver::SetHeaderExtensionsToNegotiate(
-<<<<<<< HEAD
-    std::span<const RtpHeaderExtensionCapability> header_extensions) {
-=======
-    ArrayView<const RtpHeaderExtensionCapability> header_extensions) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  RTC_DCHECK_RUN_ON(thread_);
+std::span<const RtpHeaderExtensionCapability> header_extensions) {  RTC_DCHECK_RUN_ON(thread_);
   // https://w3c.github.io/webrtc-extensions/#dom-rtcrtptransceiver-setheaderextensionstonegotiate
   if (header_extensions.size() != header_extensions_to_negotiate_.size()) {
     return RTCError::InvalidModification()

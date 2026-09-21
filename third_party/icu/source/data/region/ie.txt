@@ -5,17 +5,12 @@ ie{
     Countries{
         001{"munde"}
         002{"Africa"}
-<<<<<<< HEAD
-        003{"septentrional America"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        005{"Sud-America"}
+003{"septentrional America"}        005{"Sud-America"}
         009{"Oceania"}
         013{"central America"}
         019{"Americas"}
         021{"Nord-America"}
-<<<<<<< HEAD
-        029{"Caribes"}
+029{"Caribes"}
         030{"Ost-Asia"}
         034{"Sud-Asia"}
         035{"Sudost-Asia"}
@@ -42,20 +37,7 @@ ie{
         BG{"Bulgaria"}
         BY{"Bielorussia"}
         CH{"Svissia"}
-        CQ{"Sark"}
-=======
-        142{"Asia"}
-        150{"Europa"}
-        419{"latin America"}
-        AL{"Albania"}
-        AQ{"Antarctica"}
-        AT{"Austria"}
-        BA{"Bosnia e Herzegovina"}
-        BE{"Belgia"}
-        BG{"Bulgaria"}
-        CH{"Svissia"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        CZ{"Tchekia"}
+        CQ{"Sark"}        CZ{"Tchekia"}
         DE{"Germania"}
         DK{"Dania"}
         EE{"Estonia"}
@@ -68,27 +50,18 @@ ie{
         FJ{"Fidji"}
         FR{"Francia"}
         GB{"Unit Reyia"}
-<<<<<<< HEAD
-        GG{"Guernsey"}
-        GI{"Gibraltar"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        GR{"Grecia"}
+GG{"Guernsey"}
+        GI{"Gibraltar"}        GR{"Grecia"}
         GY{"Guyana"}
         HR{"Croatia"}
         HU{"Hungaria"}
         ID{"Indonesia"}
         IE{"Irland"}
-<<<<<<< HEAD
-        IM{"Insul de Man"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        IN{"India"}
+IM{"Insul de Man"}        IN{"India"}
         IR{"Iran"}
         IS{"Island"}
         IT{"Italia"}
-<<<<<<< HEAD
-        JE{"Jersey"}
+JE{"Jersey"}
         KH{"Cambodja"}
         LI{"Liechtenstein"}
         LK{"Sri-Lanka"}
@@ -96,26 +69,15 @@ ie{
         LU{"Luxemburg"}
         LV{"Lettonia"}
         MC{"Mónaco"}
-        MD{"Moldova"}
-=======
-        KH{"Cambodja"}
-        LK{"Sri-Lanka"}
-        LU{"Luxemburg"}
-        MC{"Mónaco"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        ME{"Montenegro"}
+        MD{"Moldova"}        ME{"Montenegro"}
         MK{"Nord-Macedonia"}
         MQ{"Martinica"}
         MT{"Malta"}
         MU{"Mauricio"}
         MV{"Maldivas"}
         NF{"Insul Norfolk"}
-<<<<<<< HEAD
-        NL{"Nederland"}
-        NO{"Norvegia"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        NR{"Nauru"}
+NL{"Nederland"}
+        NO{"Norvegia"}        NR{"Nauru"}
         NZ{"Nov-Zeland"}
         PE{"Perú"}
         PH{"Filipines"}
@@ -124,20 +86,12 @@ ie{
         PR{"Porto-Rico"}
         PT{"Portugal"}
         PW{"Palau"}
-<<<<<<< HEAD
-        QO{"periferic Oceania"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        RO{"Rumania"}
+QO{"periferic Oceania"}        RO{"Rumania"}
         RS{"Serbia"}
         RU{"Russia"}
         SE{"Svedia"}
         SI{"Slovenia"}
-<<<<<<< HEAD
-        SJ{"Svalbard e Jan Mayen"}
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        SK{"Slovakia"}
+SJ{"Svalbard e Jan Mayen"}        SK{"Slovakia"}
         SM{"San-Marino"}
         SX{"Sint-Maarten"}
         TC{"Turks e Caicos"}
@@ -148,17 +102,11 @@ ie{
         TV{"Tuvalu"}
         UA{"Ukraina"}
         UN{"Unit Nationes"}
-<<<<<<< HEAD
-        VA{"Cité de Vatican"}
+VA{"Cité de Vatican"}
         VU{"Vanuatu"}
         WS{"Samoa"}
         XA{"pseudo-diacritica"}
-        XB{"pseudo-bidi"}
-=======
-        VU{"Vanuatu"}
-        WS{"Samoa"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        XK{"Kosovo"}
+        XB{"pseudo-bidi"}        XK{"Kosovo"}
         ZZ{"ínconosset region"}
     }
     Countries%short{

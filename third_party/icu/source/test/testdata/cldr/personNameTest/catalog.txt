@@ -9,11 +9,7 @@ am.txt
 ar.txt
 as.txt
 az.txt
-<<<<<<< HEAD
-ba.txt
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-bal_Latn.txt
+ba.txtbal_Latn.txt
 be.txt
 bg.txt
 blo.txt

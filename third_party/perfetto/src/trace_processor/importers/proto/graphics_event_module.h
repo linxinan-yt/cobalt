@@ -39,24 +39,9 @@ class GraphicsEventModule : public ProtoImporterModule {
 
   ~GraphicsEventModule() override;
 
-<<<<<<< HEAD
-  ModuleResult TokenizePacket(const TokenizePacketArgs& args) override;
+ModuleResult TokenizePacket(const TokenizePacketArgs& args) override;
 
   void ParseField(const ParseFieldArgs& args) override;
-=======
-  ModuleResult TokenizePacket(
-      const protos::pbzero::TracePacket_Decoder&,
-      TraceBlobView* packet,
-      int64_t packet_timestamp,
-      RefPtr<PacketSequenceStateGeneration> sequence_state,
-      uint32_t field_id) override;
-
-  void ParseTracePacketData(const protos::pbzero::TracePacket::Decoder&,
-                            int64_t ts,
-                            const TracePacketData&,
-                            uint32_t field_id) override;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
  private:
   // Parses the GpuCounterDescriptor portion of a GpuCounterEvent (if present)
   // at tokenization time: interns the counter tracks and inserts the counter

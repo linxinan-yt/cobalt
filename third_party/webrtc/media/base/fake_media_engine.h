@@ -643,12 +643,6 @@ class FakeVoiceMediaSendChannel
 
   bool SenderNackEnabled() const override { return false; }
   bool SenderNonSenderRttEnabled() const override { return false; }
-<<<<<<< HEAD
-=======
-  void SetReceiveNackEnabled(bool /* enabled */) {}
-  void SetReceiveNonSenderRttEnabled(bool /* enabled */) {}
-  bool SendCodecHasNack() const override { return false; }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   std::optional<Codec> GetSendCodec() const override;
 
   bool GetStats(VoiceMediaSendInfo* stats) override;
@@ -796,11 +790,7 @@ class FakeVideoMediaSendChannel
 
   void GenerateSendKeyFrame(uint32_t ssrc,
                             const std::vector<std::string>& rids) override;
-<<<<<<< HEAD
-=======
-  RtcpMode SendCodecRtcpMode() const override { return RtcpMode::kCompound; }
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  void SetSsrcListChangedCallback(
+RtcpMode SendCodecRtcpMode() const override { return RtcpMode::kCompound; }  void SetSsrcListChangedCallback(
       absl::AnyInvocable<void(const std::set<uint32_t>&)> /* callback */)
       override {}
 

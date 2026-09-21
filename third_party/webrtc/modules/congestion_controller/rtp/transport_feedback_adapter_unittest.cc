@@ -863,8 +863,7 @@ TEST(TransportFeedbackAdapterCongestionFeedbackTest,
 }
 
 TEST(TransportFeedbackAdapterCongestionFeedbackTest,
-<<<<<<< HEAD
-     CongestionControlFeedbackResultReportsImplicitlyLostPacketOnce) {
+CongestionControlFeedbackResultReportsImplicitlyLostPacketOnce) {
   TransportFeedbackAdapter adapter;
 
   PacketTemplate packets[] = {{.ssrc = 1,
@@ -883,25 +882,6 @@ TEST(TransportFeedbackAdapterCongestionFeedbackTest,
                                .transport_sequence_number = 4,
                                .rtp_sequence_number = 202,
                                .send_timestamp = Timestamp::Millis(120)}};
-=======
-     CongestionControlFeedbackResultReportsLostPacketOnce) {
-  TransportFeedbackAdapter adapter;
-
-  const PacketTemplate packets[] = {
-      {.transport_sequence_number = 1,
-       .rtp_sequence_number = 101,
-       .send_timestamp = Timestamp::Millis(100),
-       .receive_timestamp = Timestamp::Millis(200)},
-      {.transport_sequence_number = 2,
-       .rtp_sequence_number = 102,
-       .send_timestamp = Timestamp::Millis(110),
-       .receive_timestamp = Timestamp::MinusInfinity()},
-      {.transport_sequence_number = 3,
-       .rtp_sequence_number = 103,
-       .send_timestamp = Timestamp::Millis(120),
-       .receive_timestamp = Timestamp::Millis(210)}};
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   for (const PacketTemplate& packet : packets) {
     adapter.AddPacket(CreatePacketToSend(packet), packet.pacing_info,
                       /*overhead=*/0u, TimeNow());
@@ -910,8 +890,7 @@ TEST(TransportFeedbackAdapterCongestionFeedbackTest,
                                              packet.send_timestamp.ms()));
   }
 
-<<<<<<< HEAD
-  // Produce feedback where 2nd packet is lost.
+// Produce feedback where 2nd packet is lost.
   packets[0].receive_timestamp = Timestamp::Millis(200);
   packets[2].receive_timestamp = Timestamp::Millis(220);
   std::vector<PacketTemplate> feedback_1 = {packets[0], packets[2]};
@@ -928,20 +907,7 @@ TEST(TransportFeedbackAdapterCongestionFeedbackTest,
   std::vector<PacketTemplate> feedback_2 = {packets[1], packets[3]};
   rtcp::CongestionControlFeedback rtcp_feedback =
       BuildRtcpCongestionControlFeedbackPacket(feedback_2);
-  // 2nd packet is still lost.
-=======
-  rtcp::CongestionControlFeedback rtcp_feedback =
-      BuildRtcpCongestionControlFeedbackPacket(packets);
-  std::optional<PacketResult> packet_feedback = FindFeedback(
-      adapter.ProcessCongestionControlFeedback(rtcp_feedback, TimeNow()),
-      /*transport_sequence_number=*/2);
-  ASSERT_TRUE(packet_feedback.has_value());
-  EXPECT_FALSE(packet_feedback->IsReceived());
-  EXPECT_TRUE(packet_feedback->reported_lost_for_the_first_time);
-
-  // Process the same report again.
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  packet_feedback = FindFeedback(
+  // 2nd packet is still lost.  packet_feedback = FindFeedback(
       adapter.ProcessCongestionControlFeedback(rtcp_feedback, TimeNow()),
       /*transport_sequence_number=*/2);
   ASSERT_TRUE(packet_feedback.has_value());

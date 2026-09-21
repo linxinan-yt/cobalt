@@ -403,8 +403,7 @@ class GraphicsGpuTrace(TestSuite):
           "process_indicator","distinct_track_count","total_slices"
           "vkcube_process",6,3220
           "vulkan_sam_process",22,111019
-<<<<<<< HEAD
-        '''))
+'''))
 
   def test_gpu_counter_duplicate_ids_different_sequences(self):
     # With the legacy inline counter_descriptor path, counter specs are
@@ -782,6 +781,3 @@ class GraphicsGpuTrace(TestSuite):
           "gpufreq","gpu_frequency",1000,1500000.000000
           "gpufreq","gpu_frequency",2000,2100000.000000
         '''))
-=======
-        '''))
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

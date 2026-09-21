@@ -39,16 +39,9 @@ namespace {
 using ::testing::_;
 using ::testing::Return;
 
-<<<<<<< HEAD
 const TimeDelta kTimeout = TimeDelta::Millis(5000);
 
-Socket* CreateSocket() {
-=======
-static const TimeDelta kTimeout = TimeDelta::Millis(5000);
-
-static Socket* CreateSocket() {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  SocketAddress address(IPAddress(INADDR_ANY), 0);
+Socket* CreateSocket() {  SocketAddress address(IPAddress(INADDR_ANY), 0);
 
   Socket* socket = Thread::Current()->socketserver()->CreateSocket(
       address.family(), SOCK_STREAM);
@@ -81,12 +74,7 @@ class SSLAdapterTestDummy {
 
     ssl_adapter_->SubscribeReadEvent(
         this, [this](Socket* socket) { OnSSLAdapterReadEvent(socket); });
-<<<<<<< HEAD
-    ssl_adapter_->SubscribeCloseEvent(this, [this](Socket* socket, int error) {
-=======
-    ssl_adapter_->SubscribeCloseEvent([this](Socket* socket, int error) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      OnSSLAdapterCloseEvent(socket, error);
+ssl_adapter_->SubscribeCloseEvent(this, [this](Socket* socket, int error) {      OnSSLAdapterCloseEvent(socket, error);
     });
     ssl_adapter_->SetRole(role);
   }
@@ -302,12 +290,7 @@ class SSLAdapterTestBase : public ::testing::Test {
 
  protected:
   std::unique_ptr<VirtualSocketServer> vss_;
-<<<<<<< HEAD
-  test::RunLoop thread_;
-=======
-  AutoSocketServerThread thread_;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  std::unique_ptr<SSLAdapterTestDummyServer> server_;
+test::RunLoop thread_;  std::unique_ptr<SSLAdapterTestDummyServer> server_;
   std::unique_ptr<SSLAdapterTestDummyClient> client_;
   std::unique_ptr<SSLCertificateVerifier> cert_verifier_;
 

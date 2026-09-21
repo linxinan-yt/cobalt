@@ -2123,14 +2123,10 @@ ru{
             one{"замбийская квача"}
             other{"замбийской квачи"}
         }
-<<<<<<< HEAD
-        ZWG{
+ZWG{
             few{"зимбабвийских золотых"}
             many{"зимбабвийских золотых"}
             one{"зимбабвийский золотой"}
             other{"зимбабвийского золотого"}
-        }
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    }
+        }    }
 }

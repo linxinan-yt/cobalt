@@ -11,11 +11,7 @@
 #include <optional>
 
 #include "api/units/time_delta.h"
-<<<<<<< HEAD
-#include "api/units/timestamp.h"
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-#include "api/video_codecs/encoder_speed_controller.h"
+#include "api/units/timestamp.h"#include "api/video_codecs/encoder_speed_controller.h"
 #include "test/gmock.h"
 #include "test/gtest.h"
 
@@ -69,12 +65,7 @@ TEST(EncoderSpeedControllerTest, GetEncodeSettingsBaseLayers) {
   ASSERT_NE(controller, nullptr);
 
   EncoderSpeedController::FrameEncodingInfo frame_info = {
-<<<<<<< HEAD
-      .reference_type = ReferenceClass::kMain, .timestamp = Timestamp::Zero()};
-=======
-      .reference_type = ReferenceClass::kMain};
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+.reference_type = ReferenceClass::kMain, .timestamp = Timestamp::Zero()};
   // Starts at index 1 (speed 6)
   EXPECT_EQ(controller->GetEncodeSettings(frame_info).speed, 6);
 
@@ -82,13 +73,8 @@ TEST(EncoderSpeedControllerTest, GetEncodeSettingsBaseLayers) {
   for (int i = 0; i < 10; ++i) {
     controller->OnEncodedFrame({.encode_time = kFrameInterval * 0.90,
                                 .qp = 30,
-<<<<<<< HEAD
-                                .frame_info = frame_info},
-                               /*baseline_results=*/std::nullopt);
-=======
-                                .frame_info = frame_info});
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+.frame_info = frame_info},
+                               /*baseline_results=*/std::nullopt);  }
   // Speed should increase to 7
   EXPECT_EQ(controller->GetEncodeSettings(frame_info).speed, 7);
 
@@ -96,13 +82,8 @@ TEST(EncoderSpeedControllerTest, GetEncodeSettingsBaseLayers) {
   for (int i = 0; i < 20; ++i) {
     controller->OnEncodedFrame({.encode_time = kFrameInterval * 0.10,
                                 .qp = 20,
-<<<<<<< HEAD
-                                .frame_info = frame_info},
-                               /*baseline_results=*/std::nullopt);
-=======
-                                .frame_info = frame_info});
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+.frame_info = frame_info},
+                               /*baseline_results=*/std::nullopt);  }
   // Speed should decrease to 6
   EXPECT_EQ(controller->GetEncodeSettings(frame_info).speed, 6);
 }
@@ -112,19 +93,11 @@ TEST(EncoderSpeedControllerTest, GetEncodeSettingsKeyFrame) {
   auto controller = EncoderSpeedController::Create(config, kFrameInterval);
   ASSERT_NE(controller, nullptr);
 
-<<<<<<< HEAD
-  EXPECT_EQ(controller
+EXPECT_EQ(controller
                 ->GetEncodeSettings({.reference_type = ReferenceClass::kKey,
                                      .timestamp = Timestamp::Zero()})
                 .speed,
-            6);
-=======
-  EXPECT_EQ(
-      controller->GetEncodeSettings({.reference_type = ReferenceClass::kKey})
-          .speed,
-      6);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+            6);}
 
 TEST(EncoderSpeedControllerTest, GetEncodeSettingsWithTemporalLayers) {
   EncoderSpeedController::Config config;
@@ -133,8 +106,7 @@ TEST(EncoderSpeedControllerTest, GetEncodeSettingsWithTemporalLayers) {
   auto controller = EncoderSpeedController::Create(config, kFrameInterval);
   ASSERT_NE(controller, nullptr);
 
-<<<<<<< HEAD
-  EXPECT_EQ(controller
+EXPECT_EQ(controller
                 ->GetEncodeSettings({.reference_type = ReferenceClass::kKey,
                                      .timestamp = Timestamp::Zero()})
                 .speed,
@@ -155,28 +127,7 @@ TEST(EncoderSpeedControllerTest, GetEncodeSettingsWithTemporalLayers) {
           ->GetEncodeSettings({.reference_type = ReferenceClass::kNoneReference,
                                .timestamp = Timestamp::Zero()})
           .speed,
-      8);
-=======
-  EXPECT_EQ(
-      controller->GetEncodeSettings({.reference_type = ReferenceClass::kKey})
-          .speed,
-      5);
-  EXPECT_EQ(
-      controller->GetEncodeSettings({.reference_type = ReferenceClass::kMain})
-          .speed,
-      6);
-  EXPECT_EQ(
-      controller
-          ->GetEncodeSettings({.reference_type = ReferenceClass::kIntermediate})
-          .speed,
-      7);
-  EXPECT_EQ(controller
-                ->GetEncodeSettings(
-                    {.reference_type = ReferenceClass::kNoneReference})
-                .speed,
-            8);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+      8);}
 
 TEST(EncoderSpeedControllerTest, StaysAtMaxSpeed) {
   EncoderSpeedController::Config config = GetDefaultConfig();
@@ -185,22 +136,12 @@ TEST(EncoderSpeedControllerTest, StaysAtMaxSpeed) {
   ASSERT_NE(controller, nullptr);
 
   EncoderSpeedController::FrameEncodingInfo frame_info = {
-<<<<<<< HEAD
-      .reference_type = ReferenceClass::kMain, .timestamp = Timestamp::Zero()};
-=======
-      .reference_type = ReferenceClass::kMain};
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+.reference_type = ReferenceClass::kMain, .timestamp = Timestamp::Zero()};
   for (int i = 0; i < 20; ++i) {
     controller->OnEncodedFrame({.encode_time = kFrameInterval * 0.95,
                                 .qp = 30,
-<<<<<<< HEAD
-                                .frame_info = frame_info},
-                               /*baseline_results=*/std::nullopt);
-=======
-                                .frame_info = frame_info});
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+.frame_info = frame_info},
+                               /*baseline_results=*/std::nullopt);  }
 
   EXPECT_EQ(controller->GetEncodeSettings(frame_info).speed,
             7);  // Still at max speed
@@ -213,19 +154,11 @@ TEST(EncoderSpeedControllerTest, StaysAtMinSpeed) {
   ASSERT_NE(controller, nullptr);
 
   EncoderSpeedController::FrameEncodingInfo frame_info = {
-<<<<<<< HEAD
-      .reference_type = ReferenceClass::kMain, .timestamp = Timestamp::Zero()};
+.reference_type = ReferenceClass::kMain, .timestamp = Timestamp::Zero()};
 
   for (int i = 0; i < 20; ++i) {
     controller->OnEncodedFrame({.speed = 5, .frame_info = frame_info},
-                               /*baseline_results=*/std::nullopt);
-=======
-      .reference_type = ReferenceClass::kMain};
-
-  for (int i = 0; i < 20; ++i) {
-    controller->OnEncodedFrame({.speed = 5, .frame_info = frame_info});
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+                               /*baseline_results=*/std::nullopt);  }
 
   EXPECT_EQ(controller->GetEncodeSettings(frame_info).speed,
             5);  // Still at min speed
@@ -239,30 +172,19 @@ TEST(EncoderSpeedControllerTest, IncreasesSpeedOnLowQp) {
   ASSERT_NE(controller, nullptr);
 
   EncoderSpeedController::FrameEncodingInfo frame_info = {
-<<<<<<< HEAD
-      .reference_type = ReferenceClass::kMain, .timestamp = Timestamp::Zero()};
-=======
-      .reference_type = ReferenceClass::kMain};
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+.reference_type = ReferenceClass::kMain, .timestamp = Timestamp::Zero()};
   EXPECT_EQ(controller->GetEncodeSettings(frame_info).speed, 6);
 
   // Simulate low QP, normal encode time
   for (int i = 0; i < 20; ++i) {
     controller->OnEncodedFrame({.encode_time = kFrameInterval * 0.60,
                                 .qp = 10,
-<<<<<<< HEAD
-                                .frame_info = frame_info},
-                               /*baseline_results=*/std::nullopt);
-=======
-                                .frame_info = frame_info});
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+.frame_info = frame_info},
+                               /*baseline_results=*/std::nullopt);  }
   // Speed should increase to 7 due to low QP
   EXPECT_EQ(controller->GetEncodeSettings(frame_info).speed, 7);
 }
 
-<<<<<<< HEAD
 TEST(EncoderSpeedControllerTest, TriggersRegularPsnrSampling) {
   EncoderSpeedController::Config config = GetDefaultConfig();
   config.psnr_probing_settings = {
@@ -490,20 +412,11 @@ TEST(EncoderSpeedControllerTest, OnEncodedFrameIgnoresResultWithMissingPsnr) {
       .mode = EncoderSpeedController::Config::PsnrProbingSettings::Mode::
           kOnlyWhenProbing,
       .sampling_interval = TimeDelta::Seconds(1)};
-  config.start_speed_index = 1;
-
-=======
-TEST(EncoderSpeedControllerTest, DoesNotDecreaseSpeedIfQpIsTooLow) {
-  EncoderSpeedController::Config config = GetDefaultConfig();
-  config.speed_levels[0].min_qp = 20;  // Min QP for speed 5 is 20
-  config.start_speed_index = 1;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  auto controller = EncoderSpeedController::Create(config, kFrameInterval);
+  config.start_speed_index = 1;  auto controller = EncoderSpeedController::Create(config, kFrameInterval);
   ASSERT_NE(controller, nullptr);
 
   EncoderSpeedController::FrameEncodingInfo frame_info = {
-<<<<<<< HEAD
-      .reference_type = ReferenceClass::kMain, .timestamp = Timestamp::Zero()};
+.reference_type = ReferenceClass::kMain, .timestamp = Timestamp::Zero()};
 
   // Trigger probe.
   constexpr int kNumFrames = 10;
@@ -650,21 +563,4 @@ TEST(EncoderSpeedControllerTest, KeyFrameIsAlwaysTreatedAsRegularFrame) {
       .timestamp =
           Timestamp::Zero() + config.psnr_probing_settings->sampling_interval};
   EXPECT_FALSE(controller->GetEncodeSettings(repeat_frame_info).calculate_psnr);
-}
-
-=======
-      .reference_type = ReferenceClass::kMain};
-
-  EXPECT_EQ(controller->GetEncodeSettings(frame_info).speed, 6);
-
-  // Simulate low encode time but also low QP
-  for (int i = 0; i < 20; ++i) {
-    controller->OnEncodedFrame({.encode_time = kFrameInterval * 0.10,
-                                .qp = 10,
-                                .frame_info = frame_info});
-  }
-  // Speed should NOT decrease to 5 because QP is below the next level's min_qp
-  EXPECT_EQ(controller->GetEncodeSettings(frame_info).speed, 6);
-}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}  // namespace webrtc
+}}  // namespace webrtc

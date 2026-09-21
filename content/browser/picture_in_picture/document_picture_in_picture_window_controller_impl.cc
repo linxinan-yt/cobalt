@@ -186,17 +186,6 @@ void DocumentPictureInPictureWindowControllerImpl::NotifyClosedAndStopObserving(
   // API and/or onleavepictureinpicture event once that's implemented.
   web_contents_impl->ExitPictureInPicture();
   Observe(/*web_contents=*/nullptr);
-<<<<<<< HEAD
-=======
-
-#if BUILDFLAG(ENABLE_SCREEN_CAPTURE)
-  PipScreenCaptureCoordinator* pip_screen_capture_coordinator =
-      PipScreenCaptureCoordinator::GetOrCreateForWebContents(web_contents_impl);
-  if (pip_screen_capture_coordinator) {
-    pip_screen_capture_coordinator->OnPipClosed();
-  }
-#endif  // BUILDFLAG(ENABLE_SCREEN_CAPTURE)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 }
 
 void DocumentPictureInPictureWindowControllerImpl::
@@ -206,21 +195,13 @@ void DocumentPictureInPictureWindowControllerImpl::
     return;
   }
 
-<<<<<<< HEAD
+#if BUILDFLAG(ENABLE_SCREEN_CAPTURE)
   if (auto* coordinator = PipScreenCaptureCoordinator::GetInstance()) {
     if (child_contents_) {
       coordinator->OnPipShown(
           *child_contents_,
           web_contents_impl->GetPrimaryMainFrame()->GetGlobalId());
-    }
-=======
-#if BUILDFLAG(ENABLE_SCREEN_CAPTURE)
-  PipScreenCaptureCoordinator* pip_screen_capture_coordinator =
-      PipScreenCaptureCoordinator::GetOrCreateForWebContents(web_contents_impl);
-  if (pip_screen_capture_coordinator && child_contents_) {
-    pip_screen_capture_coordinator->OnPipShown(*child_contents_);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    }  }
 #endif  // BUILDFLAG(ENABLE_SCREEN_CAPTURE)
 }
 

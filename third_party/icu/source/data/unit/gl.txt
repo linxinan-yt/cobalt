@@ -345,13 +345,9 @@ gl{
                 other{"{0} nanosegundos"}
             }
             night{
-<<<<<<< HEAD
-=======
-                dnam{"noites"}
+dnam{"noites"}
                 one{"{0} noite"}
-                other{"{0} noites"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                per{"{0} por noite"}
+                other{"{0} noites"}                per{"{0} por noite"}
             }
             quarter{
                 dnam{"trimestres"}
@@ -1140,8 +1136,7 @@ gl{
             karat{
                 dnam{"kt"}
             }
-<<<<<<< HEAD
-            katal{
+katal{
                 one{"{0} kat"}
                 other{"{0} kat"}
             }
@@ -1156,14 +1151,7 @@ gl{
                 other{"{0} partes"}
             }
             part-per-1e9{
-                dnam{"ppmm"}
-=======
-            portion-per-1e9{
-                dnam{"ppmm"}
-                one{"{0} ppmm"}
-                other{"{0} ppmm"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                dnam{"ppmm"}            }
         }
         consumption{
             liter-per-100-kilometer{

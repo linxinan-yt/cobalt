@@ -25,8 +25,7 @@ export default class implements PerfettoPlugin {
   static readonly id = 'com.android.AndroidBinderViz';
 
   async onTraceLoad(ctx: Trace): Promise<void> {
-<<<<<<< HEAD
-    // Build the server and client trees concurrently so the trace engine isn't
+// Build the server and client trees concurrently so the trace engine isn't
     // left idle between the two sides' query streams. Attach after both finish,
     // server first: the root tracks carry no sortOrder, so addChildInOrder falls
     // back to insertion order and a bare Promise.all would race the ordering.
@@ -51,19 +50,13 @@ export default class implements PerfettoPlugin {
     const binderGroup = new TrackNode({name: 'Binder', isSummary: true});
     binderGroup.addChildInOrder(serverRoot);
     binderGroup.addChildInOrder(clientRoot);
-    ctx.defaultWorkspace.addChildInOrder(binderGroup);
-=======
-    await this.createBinderTransactionTrack(ctx, 'server', 'client');
-    await this.createBinderTransactionTrack(ctx, 'client', 'server');
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+    ctx.defaultWorkspace.addChildInOrder(binderGroup);  }
 
   async createBinderTransactionTrack(
     ctx: Trace,
     perspective: string,
     oppositePerspective: string,
-<<<<<<< HEAD
-    sliceIdColumn: string,
+sliceIdColumn: string,
     description: string,
   ): Promise<TrackNode> {
     // The titles live under a "Binder" group, so drop the redundant prefix.
@@ -72,15 +65,7 @@ export default class implements PerfettoPlugin {
       trace: ctx,
       trackTitle: `${sideName} Transaction Counts`,
       description,
-      modules: ['android.binder'],
-=======
-  ) {
-    const binderCounterBreakdowns = new BreakdownTracks({
-      trace: ctx,
-      trackTitle: `Binder ${perspective} Transaction Counts`,
-      modules: ['android.binder', 'android.binder_breakdown'],
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      aggregationType: BreakdownTrackAggType.COUNT,
+      modules: ['android.binder'],      aggregationType: BreakdownTrackAggType.COUNT,
       aggregation: {
         columns: [
           `${perspective}_process`,
@@ -98,9 +83,7 @@ export default class implements PerfettoPlugin {
         tableName: 'android_binder_txns',
         tsCol: `${oppositePerspective}_ts`,
         durCol: `${oppositePerspective}_dur`,
-<<<<<<< HEAD
-=======
-      },
+},
       pivots: {
         columns: ['reason_type', 'reason'],
         tableName: 'android_binder_client_server_breakdown',
@@ -111,20 +94,11 @@ export default class implements PerfettoPlugin {
             joinTableName: 'android_binder_client_server_breakdown',
             joinColumns: ['binder_txn_id'],
           },
-        ],
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      },
+        ],      },
       sliceIdColumn: sliceIdColumn,
       sortTracks: false,
       detailsPanel: (trace: Trace) => new BinderSliceDetailsPanel(trace),
     });
 
-<<<<<<< HEAD
-    return await binderCounterBreakdowns.createTracks();
-=======
-    ctx.defaultWorkspace.addChildInOrder(
-      await binderCounterBreakdowns.createTracks(),
-    );
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  }
+return await binderCounterBreakdowns.createTracks();  }
 }

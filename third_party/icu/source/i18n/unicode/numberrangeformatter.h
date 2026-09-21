@@ -493,12 +493,7 @@ class U_I18N_API_CLASS LocalizedNumberRangeFormatter
      * @return The fluent chain.
      * @stable ICU 75
      */
-<<<<<<< HEAD
-    U_I18N_API UnlocalizedNumberRangeFormatter withoutLocale() const &;
-=======
-    UnlocalizedNumberRangeFormatter withoutLocale() const &;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API UnlocalizedNumberRangeFormatter withoutLocale() const &;
     /**
      * Overload of withoutLocale() for use on an rvalue reference.
      *
@@ -506,12 +501,7 @@ class U_I18N_API_CLASS LocalizedNumberRangeFormatter
      * @see #withoutLocale
      * @stable ICU 75
      */
-<<<<<<< HEAD
-    U_I18N_API UnlocalizedNumberRangeFormatter withoutLocale() &&;
-=======
-    UnlocalizedNumberRangeFormatter withoutLocale() &&;
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
+U_I18N_API UnlocalizedNumberRangeFormatter withoutLocale() &&;
     /**
      * Default constructor: puts the formatter into a valid but undefined state.
      *

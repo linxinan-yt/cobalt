@@ -9815,12 +9815,7 @@ TEST_F(VideoStreamEncoderTest, LowComplexityVP9WithTwoCores) {
 }
 
 TEST_F(VideoStreamEncoderTest,
-<<<<<<< HEAD
-       LowComplexityVP9WithDynamicSpeedAndLowTierOptimizations) {
-=======
-       NormalComplexityVP9WithDynamicSpeedDespiteLowTierOptimizations) {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  FieldTrials trials(field_trials_);
+NormalComplexityVP9WithDynamicSpeedDespiteLowTierOptimizations) {  FieldTrials trials(field_trials_);
   trials.Set("WebRTC-VP9-LowTierOptimizations", "Enabled");
   trials.Set("WebRTC-EncoderSpeed", "dynamic_speed:true");
 
@@ -9838,8 +9833,7 @@ TEST_F(VideoStreamEncoderTest,
       CreateFrame(1, /*width=*/320, /*height=*/180));
   WaitForEncodedFrame(1);
   EXPECT_EQ(fake_encoder_.LastEncoderComplexity(),
-<<<<<<< HEAD
-            VideoCodecComplexity::kComplexityLow);
+VideoCodecComplexity::kComplexityLow);
   video_stream_encoder_->Stop();
 }
 
@@ -9862,11 +9856,7 @@ TEST_F(VideoStreamEncoderTest, DynamicSpeedCanOverrideVp9LowComplexity) {
       CreateFrame(1, /*width=*/320, /*height=*/180));
   WaitForEncodedFrame(1);
   EXPECT_EQ(fake_encoder_.LastEncoderComplexity(),
-            VideoCodecComplexity::kComplexityHigh);
-=======
-            VideoCodecComplexity::kComplexityNormal);
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  video_stream_encoder_->Stop();
+            VideoCodecComplexity::kComplexityHigh);  video_stream_encoder_->Stop();
 }
 
 TEST_F(VideoStreamEncoderTest, ConfiguresCameraEncoderComplexityViaFieldTrial) {

@@ -17,26 +17,15 @@ import m from 'mithril';
 import {MenuDivider, MenuItem} from '../../../../widgets/menu';
 import {buildSqlQuery} from './query_builder';
 import {Icons} from '../../../../base/semantic_icons';
-<<<<<<< HEAD
-import type {Row} from '../../../../trace_processor/query_result';
-=======
-import {Row, SqlValue} from '../../../../trace_processor/query_result';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {Spinner} from '../../../../widgets/spinner';
+import type {Row} from '../../../../trace_processor/query_result';import {Spinner} from '../../../../widgets/spinner';
 import {
   Grid,
   GridCell,
-<<<<<<< HEAD
-  type GridColumn,
-=======
-  GridColumn,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  GridHeaderCell,
+type GridColumn,  GridHeaderCell,
   renderSortMenuItems,
   type SortDirection,
 } from '../../../../widgets/grid';
 
-<<<<<<< HEAD
 import type {SqlTableState} from './state';
 import type {SqlTableDescription} from './table_description';
 import {
@@ -45,19 +34,7 @@ import {
   type RenderCellContext,
   tableColumnId,
 } from './table_column';
-import {type SqlColumn, sqlColumnId} from './sql_column';
-=======
-import {SqlTableState} from './state';
-import {SqlTableDescription} from './table_description';
-import {
-  RenderedCell,
-  TableColumn,
-  TableManager,
-  tableColumnId,
-} from './table_column';
-import {SqlColumn, sqlColumnId} from './sql_column';
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-import {SelectColumnMenu} from './menus/select_column_menu';
+import {type SqlColumn, sqlColumnId} from './sql_column';import {SelectColumnMenu} from './menus/select_column_menu';
 import {renderColumnFilterOptions} from './menus/add_column_filter_menu';
 import {renderCastColumnMenu} from './menus/cast_column_menu';
 import {renderTransformColumnMenu} from './menus/transform_column_menu';
@@ -262,34 +239,20 @@ export class SqlTable implements m.ClassComponent<SqlTableConfig> {
           },
           columnTitle(column),
         ),
-<<<<<<< HEAD
-        reorderable: {reorderGroup: 'column'},
-=======
-        reorderable: {handle: 'column'},
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      };
+reorderable: {handle: 'column'},      };
 
       return gridColumn;
     });
 
     // Build VirtualGrid rows
     const virtualGridRows = rows.map((row) => {
-<<<<<<< HEAD
-      return columns.map((col, i) => {
-=======
-      return columns.map((col) => {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        const {content, menu, isNumerical, isNull} = renderCell(
+return columns.map((col, i) => {        const {content, menu, isNumerical, isNull} = renderCell(
           col,
           row,
           this.state,
-<<<<<<< HEAD
-          (column) => {
+(column) => {
             this.state.addColumn(column, i);
-          },
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-        );
+          },        );
         return m(
           GridCell,
           {

@@ -174,12 +174,7 @@ kxv{
         }
         hc{
             h11{"12 gṇṭati pddti (0 - 11)"}
-<<<<<<< HEAD
-            h12{"12 gṇṭati pddti (1 - 12)"}
-=======
-            h12{"12 gṇṭati pddti (1–12)"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            h23{"24 gṇṭati pddti (0 - 23)"}
+h12{"12 gṇṭati pddti (1–12)"}            h23{"24 gṇṭati pddti (0 - 23)"}
             h24{"24 gṇṭati pddti (1 - 24)"}
         }
         ms{

@@ -1161,16 +1161,10 @@ pcm{
                 other{"{0}Mọnt"}
             }
             night{
-<<<<<<< HEAD
+dnam{"nait"}
                 one{"{0}nait"}
                 other{"{0}nait"}
-=======
-                dnam{"nait"}
-                one{"{0}nait"}
-                other{"{0}nait"}
-                per{"{0}/nait"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-            }
+                per{"{0}/nait"}            }
             second{
                 dnam{"Sẹ́kọn"}
                 one{"{0}Sẹ́kọn"}
@@ -1243,11 +1237,7 @@ pcm{
                 dnam{"km/áw"}
             }
             light-speed{
-<<<<<<< HEAD
-=======
-                dnam{"laít"}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-                one{"{0}laít"}
+dnam{"laít"}                one{"{0}laít"}
                 other{"{0}laít"}
             }
         }

@@ -16,13 +16,6 @@ import type {PerfettoPlugin} from '../../public/plugin';
 import type {Trace} from '../../public/trace';
 import {COUNTER_TRACK_KIND} from '../../public/track_kinds';
 import {TrackNode} from '../../public/workspace';
-<<<<<<< HEAD
-import {NUM, NUM_NULL, STR_NULL} from '../../trace_processor/query_result';
-import TraceProcessorTrackPlugin from '../dev.perfetto.TraceProcessorTrack';
-import {TraceProcessorCounterTrack} from '../dev.perfetto.TraceProcessorTrack/trace_processor_counter_track';
-
-export default class LinuxPerfPlugin implements PerfettoPlugin {
-=======
 import {
   LONG,
   NUM,
@@ -42,23 +35,11 @@ function makeUriForProc(upid: number, sessionId: number) {
   return `/process_${upid}/perf_samples_profile_${sessionId}`;
 }
 
-export default class implements PerfettoPlugin {
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  static readonly id = 'dev.perfetto.LinuxPerf';
+export default class implements PerfettoPlugin {  static readonly id = 'dev.perfetto.LinuxPerf';
   static readonly dependencies = [TraceProcessorTrackPlugin];
 
   async onTraceLoad(trace: Trace): Promise<void> {
-<<<<<<< HEAD
-    const perfCountersGroup = new TrackNode({
-      name: 'Perf counters',
-      isSummary: true,
-    });
-    const result = await trace.engine.query(`
-      select id, name, unit, cpu
-      from perf_counter_track
-      order by name, cpu
-=======
-    await this.addProcessPerfSamplesTracks(trace);
+await this.addProcessPerfSamplesTracks(trace);
     await this.addThreadPerfSamplesTracks(trace);
     await this.addPerfCounterTracks(trace);
 
@@ -177,9 +158,7 @@ export default class implements PerfettoPlugin {
       WHERE
         callsite_id IS NOT NULL AND
         pct.is_timebase
-      ORDER BY cntrName, perf_session_id
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    `);
+      ORDER BY cntrName, perf_session_id    `);
 
     const countersByUtid = new Map<
       number,
@@ -192,38 +171,15 @@ export default class implements PerfettoPlugin {
       }[]
     >();
     for (
-<<<<<<< HEAD
-      const it = result.iter({
+const it = result.iter({
         id: NUM,
         name: STR_NULL,
         unit: STR_NULL,
-        cpu: NUM_NULL,
-=======
-      const it = tResult.iter({
-        utid: NUM,
-        tid: LONG,
-        threadName: STR_NULL,
-        upid: NUM_NULL,
-        cntrName: STR,
-        sessionId: NUM,
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-      });
+        cpu: NUM_NULL,      });
       it.valid();
       it.next()
     ) {
-<<<<<<< HEAD
-      const uri = `/counter_${it.id}`;
-      const title = it.cpu === null ? `${it.name}` : `Cpu ${it.cpu} ${it.name}`;
-      trace.tracks.registerTrack({
-        uri,
-        tags: {
-          kinds: [COUNTER_TRACK_KIND],
-          trackIds: [it.id],
-          cpu: it.cpu ?? undefined,
-        },
-        renderer: new TraceProcessorCounterTrack({
-=======
-      const {threadName, utid, tid, upid, cntrName, sessionId} = it;
+const {threadName, utid, tid, upid, cntrName, sessionId} = it;
       if (!countersByUtid.has(utid)) {
         countersByUtid.set(utid, []);
       }
@@ -324,9 +280,7 @@ export default class implements PerfettoPlugin {
           trackIds: [trackId],
           cpu: cpu ?? undefined,
         },
-        renderer: new TraceProcessorCounterTrack(
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-          trace,
+        renderer: new TraceProcessorCounterTrack(          trace,
           uri,
           yMode: 'rate',
           unit: it.unit ?? undefined,
@@ -338,148 +292,5 @@ export default class implements PerfettoPlugin {
     }
     if (perfCountersGroup.hasChildren) {
       trace.defaultWorkspace.addChildInOrder(perfCountersGroup);
-<<<<<<< HEAD
-    }
-  }
-=======
-    }
-
-    trace.selection.registerAreaSelectionTab(createAreaSelectionTab(trace));
-  }
 }
-
-async function selectPerfTracksIfSingleProcess(trace: Trace) {
-  const profile = await assertExists(trace.engine).query(`
-    select distinct upid
-    from perf_sample
-    join thread using (utid)
-    where callsite_id is not null
-    order by ts asc
-    limit 2
-  `);
-  if (profile.numRows() == 1) {
-    trace.commands.runCommand('dev.perfetto.SelectAllPerfSamples');
-  }
-}
-
-function createAreaSelectionTab(trace: Trace) {
-  let previousSelection: undefined | AreaSelection;
-  let flamegraph: undefined | QueryFlamegraph;
-
-  return {
-    id: 'perf_sample_flamegraph',
-    name: 'Perf sample flamegraph',
-    render(selection: AreaSelection) {
-      const changed =
-        previousSelection === undefined ||
-        !areaSelectionsEqual(previousSelection, selection);
-
-      if (changed) {
-        flamegraph = computePerfSampleFlamegraph(trace, selection);
-        previousSelection = selection;
-      }
-
-      if (flamegraph === undefined) {
-        return undefined;
-      }
-
-      return {isLoading: false, content: flamegraph.render()};
-    },
-  };
-}
-
-function getSelectedProcessTrackTags(currentSelection: AreaSelection) {
-  const ret: number[][] = [];
-  for (const trackInfo of currentSelection.tracks) {
-    // process-level aggregate tracks have a upid tag but no utid tags
-    if (
-      trackInfo?.tags?.kinds?.includes(PERF_SAMPLES_PROFILE_TRACK_KIND) &&
-      trackInfo.tags?.perfSessionId !== undefined &&
-      trackInfo.tags?.utid === undefined
-    ) {
-      ret.push([
-        assertExists(trackInfo.tags?.upid),
-        Number(trackInfo.tags.perfSessionId),
-      ]);
-    }
-  }
-  return ret;
-}
-
-function getSelectedThreadTrackTags(currentSelection: AreaSelection) {
-  const ret: number[][] = [];
-  for (const trackInfo of currentSelection.tracks) {
-    if (
-      trackInfo?.tags?.kinds?.includes(PERF_SAMPLES_PROFILE_TRACK_KIND) &&
-      trackInfo.tags?.perfSessionId !== undefined &&
-      trackInfo.tags?.utid !== undefined
-    ) {
-      ret.push([trackInfo.tags?.utid, Number(trackInfo.tags.perfSessionId)]);
-    }
-  }
-  return ret;
-}
-
-function computePerfSampleFlamegraph(
-  trace: Trace,
-  currentSelection: AreaSelection,
-) {
-  const processTrackTags = getSelectedProcessTrackTags(currentSelection);
-  const threadTrackTags = getSelectedThreadTrackTags(currentSelection);
-  if (processTrackTags.length === 0 && threadTrackTags.length === 0) {
-    return undefined;
-  }
-
-  const trackConstraints = [
-    ...processTrackTags.map(
-      ([upid, sessionId]) =>
-        `(t.upid = ${upid} AND p.perf_session_id = ${sessionId})`,
-    ),
-    ...threadTrackTags.map(
-      ([utid, sessionId]) =>
-        `(p.utid = ${utid} AND p.perf_session_id = ${sessionId})`,
-    ),
-  ].join(' OR ');
-
-  const metrics = metricsFromTableOrSubquery(
-    `
-      (
-        select
-          id,
-          parent_id as parentId,
-          name,
-          mapping_name,
-          source_file || ':' || line_number as source_location,
-          self_count
-        from _callstacks_for_callsites!((
-          select p.callsite_id
-          from perf_sample p
-          join thread t using (utid)
-          where p.ts >= ${currentSelection.start}
-            and p.ts <= ${currentSelection.end}
-            and (${trackConstraints})
-        ))
-      )
-    `,
-    [
-      {
-        name: 'count',
-        unit: '',
-        columnName: 'self_count',
-      },
-    ],
-    'include perfetto module linux.perf.samples',
-    [{name: 'mapping_name', displayName: 'Mapping'}],
-    [
-      {
-        name: 'source_location',
-        displayName: 'Source location',
-        mergeAggregation: 'ONE_OR_SUMMARY',
-      },
-    ],
-  );
-  return new QueryFlamegraph(trace, metrics, {
-    state: Flamegraph.createDefaultState(metrics),
-  });
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  }}

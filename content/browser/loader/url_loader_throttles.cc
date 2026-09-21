@@ -156,17 +156,6 @@ CreateContentBrowserURLLoaderThrottlesForKeepAlive(
   variations::VariationsURLLoaderThrottle::AppendThrottleIfNeeded(
       browser_context->GetVariationsClient(), &throttles);
 
-<<<<<<< HEAD
-=======
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
-  auto throttle = MaybeCreateIdentityUrlLoaderThrottle(base::BindRepeating(
-      webid::SetIdpSigninStatus, browser_context, frame_tree_node_id));
-  if (throttle) {
-    throttles.push_back(std::move(throttle));
-  }
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
   return throttles;
 }
 }  // namespace content

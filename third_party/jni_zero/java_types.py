@@ -183,22 +183,14 @@ class JavaClass:
                      self._prefix)
 
   def is_prefixed(self):
-<<<<<<< HEAD
-    assert self.upper_bound_type is None
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    return bool(self._prefix)
+assert self.upper_bound_type is None    return bool(self._prefix)
 
   def is_system_class(self):
     return self._fqn.startswith(('android/', 'java/'))
 
   def to_java(self, type_resolver=None):
-<<<<<<< HEAD
-    if self.upper_bound_type is not None:
-      return self._fqn
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-    # Empty resolver used to shorten java.lang classes.
+if self.upper_bound_type is not None:
+      return self._fqn    # Empty resolver used to shorten java.lang classes.
     type_resolver = type_resolver or _EMPTY_TYPE_RESOLVER
     return type_resolver.contextualize(self)
 
@@ -502,12 +494,8 @@ class TypeResolver:
 
   def __init__(self,
                java_class,
-<<<<<<< HEAD
-               type_params=None,
-               parent_resolver=None,
-=======
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-               null_marked=False,
+type_params=None,
+               parent_resolver=None,               null_marked=False,
                package_prefix=None,
                package_prefix_filter=None):
     self.java_class = java_class
@@ -518,8 +506,7 @@ class TypeResolver:
     self.nested_classes = []
     self.package_prefix = package_prefix
     self.package_prefix_filter = package_prefix_filter
-<<<<<<< HEAD
-    self._cache = {}
+self._cache = {}
 
     assert self.java_class == self._maybe_prefix(
         self.java_class.class_without_prefix)
@@ -541,11 +528,6 @@ class TypeResolver:
                         package_prefix=self.package_prefix,
                         package_prefix_filter=self.package_prefix_filter,
                         parent_resolver=self)
-=======
-
-    assert java_class == self._maybe_prefix(java_class.class_without_prefix)
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   def _maybe_prefix(self, java_class):
     if (not java_class.is_prefixed()
         and self.package_prefix and common.should_prefix_package(
@@ -556,8 +538,7 @@ class TypeResolver:
   def add_import(self, java_class):
     self.imports.append(self._maybe_prefix(java_class))
 
-<<<<<<< HEAD
-  def add_child(self, *, java_class):
+def add_child(self, *, java_class):
     java_class = self._maybe_prefix(java_class)
     assert java_class not in self.nested_classes
     self.nested_classes.append(java_class)
@@ -566,11 +547,6 @@ class TypeResolver:
                         null_marked=self.null_marked,
                         package_prefix=self.package_prefix,
                         package_prefix_filter=self.package_prefix_filter)
-=======
-  def add_nested_class(self, java_class):
-    self.nested_classes.append(self._maybe_prefix(java_class))
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-
   def contextualize(self, java_class):
     """Return the shortest string that resolves to the given class."""
     type_package = java_class.package_with_slashes

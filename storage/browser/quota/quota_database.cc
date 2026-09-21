@@ -932,15 +932,8 @@ void QuotaDatabase::Commit() {
     timer_.Stop();
   }
 
-<<<<<<< HEAD
+last_operation_ = "Commit";
   CHECK_EQ(1, db_->transaction_nesting(), base::NotFatalUntil::M148);
-  db_->CommitTransactionDeprecated();
-  CHECK_EQ(0, db_->transaction_nesting(), base::NotFatalUntil::M148);
-  db_->BeginTransactionDeprecated();
-  CHECK_EQ(1, db_->transaction_nesting(), base::NotFatalUntil::M148);
-=======
-  last_operation_ = "Commit";
-  DCHECK_EQ(1, db_->transaction_nesting());
 #if BUILDFLAG(IS_STARBOARD)
   if (!db_->CommitTransactionDeprecated()) {
     LOG(ERROR) << "Failed to commit QuotaDatabase transaction, disabling database.";
@@ -950,7 +943,7 @@ void QuotaDatabase::Commit() {
 #else
   db_->CommitTransactionDeprecated();
 #endif
-  DCHECK_EQ(0, db_->transaction_nesting());
+  CHECK_EQ(0, db_->transaction_nesting(), base::NotFatalUntil::M148);
 #if BUILDFLAG(IS_STARBOARD)
   if (!db_->BeginTransactionDeprecated()) {
     LOG(ERROR) << "Failed to start a new transaction for QuotaDatabase, disabling database.";
@@ -960,9 +953,7 @@ void QuotaDatabase::Commit() {
 #else
   db_->BeginTransactionDeprecated();
 #endif
-  DCHECK_EQ(1, db_->transaction_nesting());
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-}
+  CHECK_EQ(1, db_->transaction_nesting(), base::NotFatalUntil::M148);}
 
 #if BUILDFLAG(IS_STARBOARD)
 void QuotaDatabase::DisableDatabase() {
@@ -1041,10 +1032,7 @@ QuotaError QuotaDatabase::EnsureOpened() {
   }
 
   // Start a long-running transaction.
-<<<<<<< HEAD
-  CHECK_EQ(0, db_->transaction_nesting(), base::NotFatalUntil::M148);
-=======
-  DCHECK_EQ(0, db_->transaction_nesting());
+CHECK_EQ(0, db_->transaction_nesting(), base::NotFatalUntil::M148);
 #if BUILDFLAG(IS_STARBOARD)
   if (!db_->BeginTransactionDeprecated()) {
     LOG(ERROR) << "Could not start initial transaction on quota database, resetting.";
@@ -1058,9 +1046,7 @@ QuotaError QuotaDatabase::EnsureOpened() {
     DisableDatabase();
     return QuotaError::kDatabaseError;
   }
-#else
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
-  db_->BeginTransactionDeprecated();
+#else  db_->BeginTransactionDeprecated();
 #endif
 
   return QuotaError::kNone;
