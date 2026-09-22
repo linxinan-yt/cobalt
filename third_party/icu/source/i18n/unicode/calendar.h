@@ -979,7 +979,8 @@ U_I18N_API UCalendarWallTimeOption getSkippedWallTimeOption() const;
      * @return   The first day of the week.
      * @deprecated ICU 2.6 use the overload with error code
      */
-U_I18N_API EDaysOfWeek getFirstDayOfWeek() const;#endif  /* U_HIDE_DEPRECATED_API */
+U_I18N_API EDaysOfWeek getFirstDayOfWeek() const;
+#endif  /* U_HIDE_DEPRECATED_API */
 
     /**
      * Gets what the first day of the week is; e.g., Sunday in US, Monday in France.
@@ -1560,7 +1561,8 @@ U_I18N_API virtual bool isEra0CountingBackward() const { return false; }
      * @return The difference in Related year.
      * @internal
      */
-    U_I18N_API virtual int32_t getRelatedYearDifference() const;#endif  /* U_HIDE_INTERNAL_API */
+    U_I18N_API virtual int32_t getRelatedYearDifference() const;
+#endif  /* U_HIDE_INTERNAL_API */
 
     /**
      * Use this function instead of internalGet(UCAL_MONTH). The implementation
@@ -2129,7 +2131,8 @@ U_I18N_API virtual int32_t getDefaultDayInMonth(int32_t eyear, int32_t month, UE
      * returns the local DOW, valid range 0..6
      * @internal
      */
-U_I18N_API int32_t getLocalDOW(UErrorCode& status);#endif  /* U_HIDE_INTERNAL_API */
+U_I18N_API int32_t getLocalDOW(UErrorCode& status);
+#endif  /* U_HIDE_INTERNAL_API */
 
 private:
 

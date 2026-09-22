@@ -35,7 +35,8 @@
 
 #if !PERFETTO_BUILDFLAG(PERFETTO_OS_WIN)
 // For isatty(), getpagesize(), geteuid(), fork() & sysconf().
-#include <unistd.h>#endif
+#include <unistd.h>
+#endif
 
 #if PERFETTO_BUILDFLAG(PERFETTO_OS_APPLE)
 #include <mach-o/dyld.h>

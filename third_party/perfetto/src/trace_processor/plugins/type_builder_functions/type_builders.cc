@@ -30,6 +30,7 @@
 #include <vector>
 
 #include "perfetto/base/build_config.h"
+#include "perfetto/base/compiler.h"
 #include "perfetto/base/logging.h"
 #include "perfetto/base/status.h"
 #include "perfetto/ext/base/flat_hash_map.h"
@@ -39,7 +40,9 @@
 #include "perfetto/public/compiler.h"
 #include "perfetto/trace_processor/basic_types.h"
 #include "src/trace_processor/containers/interval_tree.h"
-#include "src/trace_processor/perfetto_sql/engine/perfetto_sql_engine.h"
+#include "src/trace_processor/containers/string_pool.h"
+#include "src/trace_processor/core/plugin/plugin.h"
+#include "src/trace_processor/perfetto_sql/engine/perfetto_sql_connection.h"
 #include "src/trace_processor/perfetto_sql/intrinsics/types/array.h"
 #include "src/trace_processor/perfetto_sql/intrinsics/types/counter.h"
 #include "src/trace_processor/perfetto_sql/intrinsics/types/node.h"
@@ -66,7 +69,7 @@ inline void HashSqlValue(base::MurmurHashCombiner& h, const SqlValue& v) {
   h.Combine(v.type);
   switch (v.type) {
     case SqlValue::Type::kString:
-      h.Combine(v.AsString());
+      h.Combine(base::StringView(v.AsString()));
       break;
     case SqlValue::Type::kDouble:
       h.Combine(v.AsDouble());
@@ -522,9 +525,9 @@ struct CounterPerTrackAgg
         new_rows_track->last_equal_id = id;
         new_rows_track->last_equal_ts = ts;
         new_rows_track->last_equal_val = val;
-        // TODO(mayzner): In the future we should also support "lagging" - if
-        // the next one has the same value as the previous, we should remove the
-        // previous.
+        // TODO(b/509816724): In the future we should also support "lagging" -
+        // if the next one has the same value as the previous, we should remove
+        // the previous.
         return;
       } else {
         if (new_rows_track->last_equal_ts != 0) {
@@ -642,24 +645,15 @@ TypeBuilderFunctionsPlugin::~TypeBuilderFunctionsPlugin() = default;
 
 }  // namespace
 
-base::Status RegisterTypeBuilderFunctions(PerfettoSqlEngine& engine,
-                                          StringPool* pool) {
-  RETURN_IF_ERROR(engine.RegisterAggregateFunction<ArrayAgg>(nullptr));
-  RETURN_IF_ERROR(engine.RegisterFunction<Struct>(nullptr));
-  RETURN_IF_ERROR(engine.RegisterAggregateFunction<RowDataframeAgg>(nullptr));
-  // Use a static UserData since aggregate functions don't take ownership.
-  static auto interval_tree_user_data =
-      perfetto_sql::PartitionedTable::UserData{pool};
-  RETURN_IF_ERROR(engine.RegisterAggregateFunction<IntervalTreeIntervalsAgg>(
-      &interval_tree_user_data));
-  RETURN_IF_ERROR(
-      engine.RegisterAggregateFunction<CounterPerTrackAgg>(nullptr));
-
-#if PERFETTO_BUILDFLAG(PERFETTO_LLVM_SYMBOLIZER)
-  RETURN_IF_ERROR(engine.RegisterAggregateFunction<SymbolizeAgg>(nullptr));
-#endif
-
-  return engine.RegisterAggregateFunction<NodeAgg>(nullptr);
+void RegisterPlugin() {
+  static PluginRegistration reg(
+      []() -> std::unique_ptr<PluginBase> {
+        return std::make_unique<TypeBuilderFunctionsPlugin>();
+      },
+      TypeBuilderFunctionsPlugin::kPluginId,
+      TypeBuilderFunctionsPlugin::kDepIds.data(),
+      TypeBuilderFunctionsPlugin::kDepIds.size());
+  base::ignore_result(reg);
 }
 
 }  // namespace perfetto::trace_processor::type_builder_functions

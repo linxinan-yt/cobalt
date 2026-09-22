@@ -17,6 +17,8 @@
 #ifndef SRC_TRACE_PROCESSOR_SHELL_METATRACE_H_
 #define SRC_TRACE_PROCESSOR_SHELL_METATRACE_H_
 
+#include <string>
+
 #include "perfetto/base/status.h"
 #include "perfetto/trace_processor/metatrace_config.h"
 #include "perfetto/trace_processor/trace_processor.h"

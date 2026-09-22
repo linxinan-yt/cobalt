@@ -51,7 +51,8 @@
 #include "components/services/storage/public/mojom/filesystem/directory.mojom.h"
 #include "components/services/storage/public/mojom/storage_service.mojom.h"
 #include "components/services/storage/storage_service_impl.h"
-#include "components/variations/net/variations_http_headers.h"#include "content/browser/background_fetch/background_fetch_context.h"
+#include "components/variations/net/variations_http_headers.h"
+#include "content/browser/background_fetch/background_fetch_context.h"
 #include "content/browser/blob_storage/blob_registry_wrapper.h"
 #include "content/browser/blob_storage/chrome_blob_storage_context.h"
 #if !BUILDFLAG(IS_COBALT)
@@ -2911,7 +2912,8 @@ quota_manager_.get(),
       cache_quota_manager_.get(),
 #endif
       special_storage_policy_.get(),
-      filesystem_context_.get(), GetCookieManagerForBrowserProcess(),#if BUILDFLAG(ENABLE_LIBRARY_CDMS)
+      filesystem_context_.get(), GetCookieManagerForBrowserProcess(),
+#if BUILDFLAG(ENABLE_LIBRARY_CDMS)
       cdm_storage_manager_.get(),
 #endif  // BUILDFLAG(ENABLE_LIBRARY_CDMS)
       GetDeviceBoundSessionManager(), GetKeepAliveURLLoaderService(),

@@ -398,11 +398,15 @@ IntervalIntersectPlugin::~IntervalIntersectPlugin() = default;
 
 }  // namespace
 
-base::Status RegisterIntervalIntersectFunctions(PerfettoSqlEngine& engine,
-                                                StringPool* pool) {
-  return engine.RegisterFunction<IntervalIntersect>(
-      std::make_unique<IntervalIntersect::UserData>(
-          IntervalIntersect::UserData{&engine, pool}));
+void RegisterPlugin() {
+  static PluginRegistration reg(
+      []() -> std::unique_ptr<PluginBase> {
+        return std::make_unique<IntervalIntersectPlugin>();
+      },
+      IntervalIntersectPlugin::kPluginId,
+      IntervalIntersectPlugin::kDepIds.data(),
+      IntervalIntersectPlugin::kDepIds.size());
+  base::ignore_result(reg);
 }
 
 }  // namespace perfetto::trace_processor::interval_intersect

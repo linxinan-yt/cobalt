@@ -29,13 +29,12 @@
 #include "perfetto/ext/base/status_macros.h"
 #include "perfetto/ext/base/status_or.h"
 #include "src/trace_processor/containers/string_pool.h"
-#include "src/trace_processor/dataframe/cursor_impl.h"  // IWYU pragma: keep
-#include "src/trace_processor/dataframe/impl/bytecode_instructions.h"
-#include "src/trace_processor/dataframe/impl/query_plan.h"
-#include "src/trace_processor/dataframe/impl/types.h"
-#include "src/trace_processor/dataframe/specs.h"
-#include "src/trace_processor/dataframe/typed_cursor.h"
-#include "src/trace_processor/dataframe/types.h"
+#include "src/trace_processor/core/dataframe/query_plan.h"
+#include "src/trace_processor/core/dataframe/specs.h"
+#include "src/trace_processor/core/dataframe/typed_cursor.h"
+#include "src/trace_processor/core/dataframe/types.h"
+#include "src/trace_processor/core/interpreter/bytecode_to_string.h"
+#include "src/trace_processor/core/util/ops.h"
 
 namespace perfetto::trace_processor::core::dataframe {
 namespace {
@@ -340,9 +339,34 @@ std::vector<std::shared_ptr<Column>> Dataframe::CreateColumnVector(
 std::vector<std::string> Dataframe::QueryPlan::BytecodeToString() const {
   std::vector<std::string> result;
   for (const auto& instr : plan_.bytecode) {
-    result.push_back(impl::bytecode::ToString(instr));
+    result.push_back(interpreter::ToString(instr));
   }
   return result;
 }
 
-}  // namespace perfetto::trace_processor::dataframe
+std::string Dataframe::QueryPlan::Serialize() const {
+  return plan_.Serialize();
+}
+
+Dataframe::QueryPlan Dataframe::QueryPlan::Deserialize(
+    std::string_view serialized) {
+  return QueryPlan(QueryPlanImpl::Deserialize(serialized));
+}
+
+const QueryPlanImpl& Dataframe::QueryPlan::GetImplForTesting() const {
+  return plan_;
+}
+
+uint32_t Dataframe::QueryPlan::max_row_count() const {
+  return plan_.params.max_row_count;
+}
+
+uint32_t Dataframe::QueryPlan::estimated_row_count() const {
+  return plan_.params.estimated_row_count;
+}
+
+double Dataframe::QueryPlan::estimated_cost() const {
+  return plan_.params.estimated_cost;
+}
+
+}  // namespace perfetto::trace_processor::core::dataframe

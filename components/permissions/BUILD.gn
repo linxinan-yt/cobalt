@@ -169,6 +169,10 @@ source_set("permissions") {
     "//ui/strings:ui_strings_grit",
     "//url",
   ]
+  public_deps = [
+    ":permissions_common",
+    "//components/permissions/prediction_service",
+  ]
   if (enable_vr) {
     deps += [ "//device/vr/public/cpp" ]
   }
@@ -242,7 +246,7 @@ source_set("permissions") {
         "android/permissions_android_feature_map.cc",
         "android/permissions_android_feature_map.h",
       ]
-      deps += [ "//components/permissions/android:core" ]
+      public_deps += [ "//components/permissions/android:core" ]
     }
   } else if (is_ios) {
     sources += [
@@ -275,11 +279,6 @@ source_set("permissions") {
       "permission_prompt_impl.cc",
     ]
   }
-
-  public_deps = [
-    ":permissions_common",
-    "//components/permissions/prediction_service",
-  ]
 
   configs += [ "//build/config/compiler:wexit_time_destructors" ]
 }

@@ -464,7 +464,8 @@ U_I18N_API inline const char16_t* getCurrencyPattern() const;
      * Returns the numbering system with which this DecimalFormatSymbols was initialized.
      * @internal
      */
-U_I18N_API inline const char* getNumberingSystemName() const;#endif  /* U_HIDE_INTERNAL_API */
+U_I18N_API inline const char* getNumberingSystemName() const;
+#endif  /* U_HIDE_INTERNAL_API */
 
 private:
     /**

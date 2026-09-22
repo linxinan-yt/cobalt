@@ -889,7 +889,6 @@ source_set("unit_tests") {
   ]
 
   # If in the future privacy sandbox components are removed from the code base, ignore this if block.
-  # If in the future privacy sandbox components are removed from the code base, ignore this if block.
   if (!enable_privacy_sandbox_apis) {
     sources -= [
       "credentialmanagement/authentication_credentials_container_test.cc",
@@ -899,10 +898,8 @@ source_set("unit_tests") {
       "credentialmanagement/public_key_credential_unittest.cc",
       "payments/payment_request_secure_payment_confirmation_availability_test.cc",
       "payments/secure_payment_confirmation_helper_test.cc",
-      "shared_storage/shared_storage_worklet_unittest.cc",
     ]
     deps -= [
-      "//third_party/blink/renderer/modules/ad_auction:unit_tests",
       "//third_party/blink/renderer/modules/storage_access:unit_tests",
     ]
   }

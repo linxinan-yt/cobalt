@@ -1491,7 +1491,7 @@ void QueryPlanBuilder::AddLinearFilterEqBytecode(
 
 template <typename T>
 T& QueryPlanBuilder::AddOpcode(RowCountModifier rc) {
-  return AddOpcode<T>(bytecode::Index<T>(), rc, T::kCost);
+  return AddOpcode<T>(i::Index<T>(), rc, T::kCost);
 }
 
-}  // namespace perfetto::trace_processor::dataframe::impl
+}  // namespace perfetto::trace_processor::core::dataframe

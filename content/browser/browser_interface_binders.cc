@@ -23,7 +23,8 @@
 #endif  // !BUILDFLAG(IS_COBALT)
 #include "components/optimization_guide/public/mojom/model_broker.mojom.h"
 #include "components/viz/host/gpu_client.h"
-#include "components/vrp_flags/buildflags.h"#include "content/browser/background_fetch/background_fetch_service_impl.h"
+#include "components/vrp_flags/buildflags.h"
+#include "content/browser/background_fetch/background_fetch_service_impl.h"
 #include "content/browser/bad_message.h"
 #if !BUILDFLAG(IS_COBALT)
 #include "content/browser/bluetooth/web_bluetooth_service_impl.h"
@@ -902,7 +903,8 @@ map->Add<blink::mojom::ScriptToolHost>(
   }
 
   map->Add<blink::mojom::DeclarativePerformanceObserverHost>(
-      base::BindRepeating(&DeclarativePerformanceObserver::Bind));#if !BUILDFLAG(IS_ANDROID)
+      base::BindRepeating(&DeclarativePerformanceObserver::Bind));
+#if !BUILDFLAG(IS_ANDROID)
   map->Add<blink::mojom::DirectSocketsService>(
       &DirectSocketsServiceImpl::CreateForFrame);
   map->Add<media::mojom::SpeechRecognitionContext>(

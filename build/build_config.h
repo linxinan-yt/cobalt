@@ -365,7 +365,8 @@
 #if __PTRAUTH__
 #define BUILDFLAG_INTERNAL_ARCH_CPU_PTRAUTH() (1)
 #else
-#define BUILDFLAG_INTERNAL_ARCH_CPU_PTRAUTH() (0)#endif
+#define BUILDFLAG_INTERNAL_ARCH_CPU_PTRAUTH() (0)
+#endif
 
 // Compiler detection. Note: clang masquerades as GCC on POSIX and as MSVC on
 // Windows.

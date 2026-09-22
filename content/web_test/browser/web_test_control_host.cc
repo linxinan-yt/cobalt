@@ -45,7 +45,8 @@
 #include "components/subresource_filter/core/common/test_ruleset_creator.h"
 #include "components/subresource_filter/core/common/test_ruleset_utils.h"
 #include "components/viz/common/frame_sinks/copy_output_result.h"
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)#include "content/browser/in_memory_federated_permission_context.h"
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
+#include "content/browser/in_memory_federated_permission_context.h"
 #endif
 #include "content/browser/renderer_host/frame_tree.h"
 #include "content/browser/renderer_host/frame_tree_node.h"

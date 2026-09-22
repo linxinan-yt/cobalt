@@ -49,7 +49,8 @@ ScopedPlatformHandle OpenFileForMmap(const std::string& file_path) {
   return ScopedPlatformHandle(
       CreateFileA(file_path.c_str(), GENERIC_READ,
                   FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE,
-                  nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr));#else
+                  nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr));
+#else
   // mmap is not supported. Do not even open the file.
   base::ignore_result(file_path);
   return ScopedPlatformHandle();

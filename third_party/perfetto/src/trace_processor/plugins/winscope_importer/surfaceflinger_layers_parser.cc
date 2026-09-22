@@ -120,7 +120,8 @@ const SnapshotId SurfaceFlingerLayersParser::ParseSnapshot(
   auto* storage = context_->trace_processor_context_->storage.get();
   tables::SurfaceFlingerLayersSnapshotTable::Row snapshot;
   snapshot.ts = timestamp;
-  protos::pbzero::LayersSnapshotProto::Decoder snapshot_decoder(blob);
+  com::android::internal::pbzero::LayersSnapshotProto::Decoder snapshot_decoder(
+      blob);
   snapshot.has_invalid_elapsed_ts =
       snapshot_decoder.elapsed_realtime_nanos() == 0;
   snapshot.base64_proto_id = storage->mutable_string_pool()

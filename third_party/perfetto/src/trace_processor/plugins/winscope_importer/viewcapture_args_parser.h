@@ -22,6 +22,7 @@
 #include "perfetto/protozero/field.h"
 #include "src/trace_processor/importers/proto/args_parser.h"
 #include "src/trace_processor/tables/winscope_tables_py.h"
+#include "src/trace_processor/types/trace_processor_context.h"
 
 namespace perfetto::trace_processor::winscope {
 
@@ -33,12 +34,12 @@ class ViewCaptureArgsParser : public ArgsParser {
 
   ViewCaptureArgsParser(int64_t packet_timestamp,
                         ArgsTracker::BoundInserter& inserter,
-                        TraceStorage& storage,
+                        TraceProcessorContext& context,
                         PacketSequenceStateGeneration* sequence_state,
                         tables::ViewCaptureTable::RowReference* snapshot_row,
                         tables::ViewCaptureViewTable::RowReference* view_row);
-  void AddInteger(const Key&, int64_t) override;
-  void AddUnsignedInteger(const Key&, uint64_t) override;
+  void AddInteger(Id flat_key, Id key, int64_t) override;
+  void AddUnsignedInteger(Id flat_key, Id key, uint64_t) override;
 
   base::FlatHashMap<StringId, IidToStringMap> flat_key_to_iid_args;
 
@@ -46,12 +47,15 @@ class ViewCaptureArgsParser : public ArgsParser {
   bool TryAddDeinternedString(const Key&, uint64_t);
   std::optional<protozero::ConstChars> TryDeinternString(const Key&, uint64_t);
 
+  template <uint32_t FieldNumber>
+  std::optional<protozero::ConstChars> DeinternString(uint64_t);
+
   template <uint32_t FieldNumber, typename RowRef>
   std::optional<protozero::ConstChars>
   DeinternString(uint64_t, RowRef*, void (RowRef::*setter)(StringPool::Id));
 
   const base::StringView ERROR_MSG{"STRING DE-INTERNING ERROR"};
-  TraceStorage& storage_;
+  TraceProcessorContext& context_;
   tables::ViewCaptureTable::RowReference* snapshot_row_;
   tables::ViewCaptureViewTable::RowReference* view_row_;
 };

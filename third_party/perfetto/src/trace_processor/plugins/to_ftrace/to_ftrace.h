@@ -23,7 +23,7 @@
 #include <optional>
 #include <vector>
 
-#include "perfetto/ext/base/fixed_string_writer.h"
+#include "perfetto/ext/base/dynamic_string_writer.h"
 #include "perfetto/ext/base/flat_hash_map.h"
 #include "src/trace_processor/sqlite/bindings/sqlite_function.h"
 #include "src/trace_processor/storage/trace_storage.h"
@@ -44,7 +44,7 @@ class SystraceSerializer {
   using StringIdMap =
       base::FlatHashMap<StringId, std::vector<std::optional<uint32_t>>>;
 
-  void SerializePrefix(uint32_t raw_row, base::FixedStringWriter* writer);
+  void SerializePrefix(uint32_t raw_row, base::DynamicStringWriter* writer);
 
   StringIdMap proto_id_to_arg_index_by_event_;
   const TraceStorage* storage_ = nullptr;

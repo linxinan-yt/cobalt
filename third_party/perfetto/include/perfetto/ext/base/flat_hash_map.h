@@ -34,7 +34,8 @@
 #include <limits>
 #include <memory>
 #include <string>
-#include <string_view>#include <type_traits>
+#include <string_view>
+#include <type_traits>
 #include <utility>
 
 #if PERFETTO_BUILDFLAG(PERFETTO_X64_CPU_OPT)

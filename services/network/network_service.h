@@ -27,7 +27,8 @@
 #include "base/timer/elapsed_timer.h"
 #include "base/timer/timer.h"
 #include "build/build_config.h"
-#include "components/vrp_flags/buildflags.h"#include "mojo/public/cpp/bindings/pending_receiver.h"
+#include "components/vrp_flags/buildflags.h"
+#include "mojo/public/cpp/bindings/pending_receiver.h"
 #include "mojo/public/cpp/bindings/pending_remote.h"
 #include "mojo/public/cpp/bindings/receiver.h"
 #include "mojo/public/cpp/bindings/receiver_set.h"
@@ -66,7 +67,8 @@
 #include "services/network/public/mojom/trust_tokens.mojom.h"
 #include "services/network/public/mojom/url_loader_network_service_observer.mojom.h"
 #include "services/network/restricted_cookie_manager.h"
-#include "services/network/trust_tokens/trust_token_key_commitments.h"#include "services/service_manager/public/cpp/binder_registry.h"
+#include "services/network/trust_tokens/trust_token_key_commitments.h"  // nogncheck
+#include "services/service_manager/public/cpp/binder_registry.h"
 
 #if BUILDFLAG(IS_CT_SUPPORTED)
 #include "services/network/public/mojom/ct_log_info.mojom.h"

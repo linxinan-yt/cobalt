@@ -12,7 +12,8 @@
 
 #include <cstddef>
 #include <cstdint>
-#include <span>#include <type_traits>
+#include <span>
+#include <type_traits>
 
 #include "absl/functional/any_invocable.h"
 #include "absl/strings/string_view.h"

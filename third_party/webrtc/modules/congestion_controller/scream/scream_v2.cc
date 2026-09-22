@@ -21,7 +21,8 @@
 #include "api/units/timestamp.h"
 #include "logging/rtc_event_log/events/rtc_event_bwe_update_scream.h"
 #include "modules/congestion_controller/scream/delay_based_congestion_control.h"
-#include "modules/congestion_controller/scream/scream_feedback.h"#include "rtc_base/checks.h"
+#include "modules/congestion_controller/scream/scream_feedback.h"
+#include "rtc_base/checks.h"
 #include "rtc_base/experiments/field_trial_parser.h"
 #include "rtc_base/logging.h"
 

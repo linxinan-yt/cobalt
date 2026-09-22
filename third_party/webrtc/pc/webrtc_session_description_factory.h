@@ -18,7 +18,8 @@
 #include <string>
 
 #include "absl/functional/any_invocable.h"
-#include "absl/strings/string_view.h"#include "api/environment/environment.h"
+#include "absl/strings/string_view.h"
+#include "api/environment/environment.h"
 #include "api/jsep.h"
 #include "api/peer_connection_interface.h"
 #include "api/rtc_error.h"

@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-#ifndef SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_VIEWCAPTURE_TEST_UTILS_H_
-#define SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_VIEWCAPTURE_TEST_UTILS_H_
+#ifndef SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_VIEWCAPTURE_TEST_UTILS_H_
+#define SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_VIEWCAPTURE_TEST_UTILS_H_
 
 #include <cstdint>
 #include <optional>
 #include <vector>
 
 #include "perfetto/protozero/scattered_heap_buffer.h"
-#include "protos/perfetto/trace/android/viewcapture.pbzero.h"
+#include "protos/third_party/android/frameworks/base/proto/tracing/winscope/viewcapture.pbzero.h"
 
 namespace perfetto::trace_processor::winscope::viewcapture::test {
 
@@ -47,9 +47,21 @@ class View {
     return *this;
   }
 
+  View& SetWidth(int32_t value) {
+    width_ = value;
+    return *this;
+  }
+
+  View& SetHeight(int32_t value) {
+    height_ = value;
+    return *this;
+  }
+
   std::optional<int32_t> id_;
   std::optional<int32_t> parent_id_;
   std::optional<int32_t> visibility_;
+  std::optional<int32_t> width_;
+  std::optional<int32_t> height_;
 };
 
 class SnapshotProtoBuilder {
@@ -62,7 +74,8 @@ class SnapshotProtoBuilder {
   }
 
   std::string Build() {
-    protozero::HeapBuffered<protos::pbzero::ViewCapture> snapshot_proto;
+    protozero::HeapBuffered<com::android::internal::pbzero::ViewCapture>
+        snapshot_proto;
 
     int32_t i = 0;
     for (const auto& view : views_) {
@@ -78,6 +91,14 @@ class SnapshotProtoBuilder {
       if (view.visibility_.has_value()) {
         view_proto->set_visibility(view.visibility_.value());
       }
+
+      if (view.width_.has_value()) {
+        view_proto->set_width(view.width_.value());
+      }
+
+      if (view.height_.has_value()) {
+        view_proto->set_height(view.height_.value());
+      }
     }
 
     return snapshot_proto.SerializeAsString();
@@ -89,4 +110,4 @@ class SnapshotProtoBuilder {
 
 }  // namespace perfetto::trace_processor::winscope::viewcapture::test
 
-#endif  // SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_VIEWCAPTURE_TEST_UTILS_H_
+#endif  // SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_VIEWCAPTURE_TEST_UTILS_H_

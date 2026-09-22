@@ -19,7 +19,8 @@
 
 #include <optional>
 
-#include "perfetto/ext/base/dynamic_string_writer.h"#include "src/trace_processor/types/version_number.h"
+#include "perfetto/ext/base/dynamic_string_writer.h"
+#include "src/trace_processor/types/version_number.h"
 
 namespace perfetto {
 namespace trace_processor {

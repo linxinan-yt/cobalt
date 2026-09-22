@@ -637,7 +637,8 @@ void RenderThreadImpl::Init() {
       discardable_memory_allocator_.get());
 
 #if (BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_COBALT_HERMETIC_BUILD)) || BUILDFLAG(IS_CHROMEOS)
-  ChildProcess::current()->SetIOThreadType(base::ThreadType::kPresentation);#endif
+  ChildProcess::current()->SetIOThreadType(base::ThreadType::kPresentation);
+#endif
 
   process_foregrounded_count_ = 0;
 

@@ -1898,6 +1898,7 @@ private:
 
 }  // namespace U_HEADER_ONLY_NAMESPACE
 
-#endif  // U_HIDE_DRAFT_API#endif  // U_SHOW_CPLUSPLUS_API || U_SHOW_CPLUSPLUS_HEADER_API
+#endif  // U_HIDE_DRAFT_API
+#endif  // U_SHOW_CPLUSPLUS_API || U_SHOW_CPLUSPLUS_HEADER_API
 
 #endif  // __USET_H__

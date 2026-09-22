@@ -176,7 +176,7 @@ def _parse_java_classes(contents,
                         package_prefix=None,
                         package_prefix_filter=None,
                         is_javap=False):
-  package = _parse_package(contents, require=not is_javap)  null_marked = False
+  package = _parse_package(contents, require=not is_javap)
   parsed_classes = []
   for m in _find_iter_with_note(_CLASSES_REGEX, contents):
     preamble, class_name, generics_str = m.groups()
@@ -211,7 +211,7 @@ def _parse_java_classes(contents,
             f'Found class "{class_name}" but expected "{expected_name}".')
 
       null_marked = contents.find('@NullMarked', 0, m.start(2)) != -1
-if package_prefix and common.should_prefix_package(
+      if package_prefix and common.should_prefix_package(
           java_class.package_with_dots, package_prefix_filter):
         java_class = java_class.make_prefixed(package_prefix)
       end_idx = len(contents)
@@ -222,7 +222,8 @@ if package_prefix and common.should_prefix_package(
           package_prefix_filter=package_prefix_filter)
       if not is_javap:
         for c in _parse_imports(contents, m.end()):
-          type_resolver.add_import(c)    else:
+          type_resolver.add_import(c)
+    else:
       outer_class = parsed_classes[0]
       type_resolver = outer_class.type_resolver
       java_class = type_resolver.java_class.make_nested(class_name)
@@ -659,7 +660,7 @@ def parse_java_file_data(filename, contents, *, package_prefix,
   parsed_classes = _parse_java_classes(contents, expected_name, package_prefix,
                                        package_prefix_filter)
 
-if not parsed_classes:
+  if not parsed_classes:
     raise ParseError('No classes found.')
 
   outer_class = parsed_classes[0]

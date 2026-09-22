@@ -390,7 +390,7 @@ component("network_service") {
     "//services/network/public/mojom",
     "//services/network/public/proto",
     "//services/network/shared_storage",
-"//services/network/tpcd/metadata:manager",    "//services/service_manager/public/cpp",
+    "//services/service_manager/public/cpp",
     "//services/service_manager/public/mojom",
     "//third_party/liburlpattern",
     "//third_party/re2",

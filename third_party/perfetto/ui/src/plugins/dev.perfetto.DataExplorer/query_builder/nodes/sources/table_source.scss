@@ -12,13 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-@import "../../common";
+@use "../../common" as *;
 
 .pf-stdlib-table-node {
   .pf-details-box {
-    padding: 1rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 }
 

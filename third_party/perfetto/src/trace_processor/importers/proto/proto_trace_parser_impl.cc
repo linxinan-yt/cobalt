@@ -25,11 +25,11 @@
 #include <vector>
 
 #include "perfetto/base/logging.h"
-#include "perfetto/ext/base/fixed_string_writer.h"
 #include "perfetto/ext/base/metatrace_events.h"
 #include "perfetto/ext/base/string_utils.h"
 #include "perfetto/ext/base/string_view.h"
-#include "perfetto/protozero/field.h"#include "perfetto/trace_processor/trace_blob_view.h"
+#include "perfetto/protozero/field.h"
+#include "perfetto/trace_processor/trace_blob_view.h"
 #include "src/trace_processor/containers/null_term_string_view.h"
 #include "src/trace_processor/importers/common/args_tracker.h"
 #include "src/trace_processor/importers/common/cpu_tracker.h"
@@ -186,9 +186,10 @@ void ProtoTraceParserImpl::ParseChromeEvents(int64_t ts, ConstBytes blob) {
       StringId name_id = storage->InternString(metadata.name());
       inserter.AddArg(name_id, value);
 
-// metadata.name() comes from the trace and is untrusted/unbounded,
+      // metadata.name() comes from the trace and is untrusted/unbounded,
       // so we build the key on the heap rather than a fixed stack buffer.
-      std::string key = "cr-";      // If we have data from multiple Chrome instances, append a suffix
+      std::string key = "cr-";
+      // If we have data from multiple Chrome instances, append a suffix
       // to differentiate them.
       if (bundle_index > 1) {
         key += std::to_string(bundle_index);

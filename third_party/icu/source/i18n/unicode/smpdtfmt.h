@@ -865,7 +865,8 @@ U_I18N_API virtual const TimeZoneFormat* getTimeZoneFormat() const;
      * @return   locale in this simple date formatter
      * @internal ICU 4.0
      */
-U_I18N_API const Locale& getSmpFmtLocale() const;#endif  /* U_HIDE_INTERNAL_API */
+U_I18N_API const Locale& getSmpFmtLocale() const;
+#endif  /* U_HIDE_INTERNAL_API */
 
 private:
     friend class DateFormat;

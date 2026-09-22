@@ -7,7 +7,8 @@
 
 #include "base/memory/scoped_refptr.h"
 #include "base/memory/weak_ptr.h"
-#include "base/task/updateable_sequenced_task_runner.h"#include "mojo/public/cpp/bindings/receiver.h"
+#include "base/task/updateable_sequenced_task_runner.h"
+#include "mojo/public/cpp/bindings/receiver.h"
 #include "services/passage_embeddings/public/mojom/passage_embeddings.mojom.h"
 
 namespace passage_embeddings {

@@ -59,7 +59,8 @@
 #elif PERFETTO_BUILDFLAG(PERFETTO_OS_LINUX) || \
     PERFETTO_BUILDFLAG(PERFETTO_OS_APPLE)
 #define _PERFETTO_MUTEX_MODE _PERFETTO_MUTEX_MODE_RT_MUTEX
-#endif#endif
+#endif
+#endif
 
 // If no RT implementation was selected, default to std::mutex.
 #ifndef _PERFETTO_MUTEX_MODE

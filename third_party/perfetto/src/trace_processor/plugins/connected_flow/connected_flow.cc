@@ -236,6 +236,7 @@ bool ConnectedFlow::Cursor::Run(const std::vector<SqlValue>& arguments) {
     return OnFailure(
         base::ErrStatus("invalid slice id %" PRId64, arguments[0].AsLong()));
   }
+  SliceId start_id = *maybe_start_id;
 
   // Use cached graph if available, otherwise build a new one.
   FlowGraph graph = cached_flow_graph_.has_value()

@@ -12,7 +12,8 @@
 #include "unicode/messageformat2_formattable.h"
 #include "unicode/smpdtfmt.h"
 #include "messageformat2_allocation.h"
-#include "messageformat2_function_registry_internal.h"#include "messageformat2_macros.h"
+#include "messageformat2_function_registry_internal.h"
+#include "messageformat2_macros.h"
 
 #include "limits.h"
 

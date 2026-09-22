@@ -57,7 +57,8 @@
 #endif
 
 #if BUILDFLAG(ENABLE_JXL_DECODER)
-#include "third_party/blink/renderer/platform/image-decoders/jxl/jxl_image_decoder.h"#endif
+#include "third_party/blink/renderer/platform/image-decoders/jxl/jxl_image_decoder.h"
+#endif
 
 namespace blink {
 
@@ -331,7 +332,8 @@ std::unique_ptr<ImageDecoder> ImageDecoder::CreateByMimeType(
   } else if (mime_type == "image/bmp" || mime_type == "image/x-xbitmap") {
 decoder =
         CreateBmpImageDecoder(alpha_option, high_bit_depth_decoding_option,
-                              color_behavior, max_decoded_bytes);#if BUILDFLAG(ENABLE_DAV1D_DECODER)
+                              color_behavior, max_decoded_bytes);
+#if BUILDFLAG(ENABLE_DAV1D_DECODER)
   } else if (mime_type == "image/avif") {
     decoder = std::make_unique<AVIFImageDecoder>(
         alpha_option, high_bit_depth_decoding_option, color_behavior, aux_image,

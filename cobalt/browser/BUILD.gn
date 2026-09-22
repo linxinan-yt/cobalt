@@ -106,7 +106,6 @@ source_set("browser") {
     "//components/metrics",
     "//components/metrics_services_manager",
     "//components/os_crypt/async/browser",
-    "//components/os_crypt/sync",
     "//components/prefs",
     "//components/variations/service",
     "//components/viz/common",
@@ -246,7 +245,7 @@ if (is_starboard || is_androidtv) {
     deps = [
       ":global_features",
       "//base",
-      "//cobalt/browser/h5vcc_native_stability:h5vcc_native_stability",
+      "//cobalt/browser/h5vcc_native_stability",
       "//cobalt/build/configs:buildflags",
     ]
   }

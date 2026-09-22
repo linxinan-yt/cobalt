@@ -24,7 +24,8 @@ class FeatureParserDelegate(java_cpp_utils.CppConstantParser.Delegate):
   #   ExtractValue() -> '"StringNameOfTheFeature"' or '"ConstantName"'
 # TODO(crbug.com/482451012): Support parsing `BASE_RUNTIME_MUTABLE_FEATURE`
   # macros with mutabilty support in the generated Java code.
-  _FEATURE_RE = re.compile(r'(?:BASE_FEATURE|STARBOARD_FEATURE)\(\s*(k\w+),')  _STRING_LITERAL_RE = re.compile(r'"(?:\\"|[^"])*"')
+  _FEATURE_RE = re.compile(r'(?:BASE_FEATURE|STARBOARD_FEATURE)\(\s*(k\w+),')
+  _STRING_LITERAL_RE = re.compile(r'"(?:\\"|[^"])*"')
   _constant_name = None  # The name of the current macro.
   _comma_count = 0  # Number of commas seen in the current macro.
   _string_literals = []  # All string literals seen in the current macro.

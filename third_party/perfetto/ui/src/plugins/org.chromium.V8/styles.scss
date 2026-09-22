@@ -12,26 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-@import "../common";
-@import "./filter.scss";
-@import "./aggregations.scss";
-
-.pf-exp-query-operations {
+.pf-v8-loading-container {
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-  .pf-exp-section {
-    padding: 1rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+.pf-v8-percent-cell {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    h2 {
-      margin-top: 0;
-      margin-bottom: 1rem;
-      font-size: var(--pf-exp-font-size-md);
-      font-weight: 500;
-    }
+  .bar {
+    position: relative;
+    height: 100%;
+  }
 
   .value {
     position: absolute;

@@ -1375,7 +1375,9 @@ HEAP_GRAPH_PRIMITIVE_TABLE = Table(
                 '''Value for float fields.''',
             'double_value':
                 '''Value for double fields.''',
-        }))AGGREGATE_PROFILE_TABLE = Table(
+        }))
+
+AGGREGATE_PROFILE_TABLE = Table(
     python_module=__file__,
     class_name='AggregateProfileTable',
     sql_name='__intrinsic_aggregate_profile',
@@ -1644,8 +1646,8 @@ EXPERIMENTAL_FLAMEGRAPH_TABLE = Table(
 ALL_TABLES = [
     AGGREGATE_PROFILE_TABLE,
     AGGREGATE_SAMPLE_TABLE,
-CHROME_STACK_SAMPLE_EXTRAS_TABLE,
-    CPU_PROFILE_STACK_SAMPLE_TABLE,    EXPERIMENTAL_FLAMEGRAPH_TABLE,
+    CHROME_STACK_SAMPLE_EXTRAS_TABLE,
+    EXPERIMENTAL_FLAMEGRAPH_TABLE,
     GPU_CONTEXT_TABLE,
     GPU_COUNTER_GROUP_TABLE,
     HEAP_GRAPH_CLASS_TABLE,

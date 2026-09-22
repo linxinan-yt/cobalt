@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-#ifndef SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_VIEWCAPTURE_VISIBILITY_COMPUTATION_H_
-#define SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_VIEWCAPTURE_VISIBILITY_COMPUTATION_H_
+#ifndef SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_VIEWCAPTURE_VISIBILITY_COMPUTATION_H_
+#define SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_VIEWCAPTURE_VISIBILITY_COMPUTATION_H_
 
 #include <unordered_map>
 #include <unordered_set>
 #include "perfetto/protozero/field.h"
-#include "protos/perfetto/trace/android/viewcapture.pbzero.h"
+#include "protos/third_party/android/frameworks/base/proto/tracing/winscope/viewcapture.pbzero.h"
 
 namespace perfetto::trace_processor::winscope::viewcapture {
 
 namespace {
-using ViewDecoder = protos::pbzero::ViewCapture::View::Decoder;
+using ViewDecoder = com::android::internal::pbzero::ViewCapture::View::Decoder;
 }
 
 // Computes visibility for every view in hierarchy, based on its properties and
@@ -44,4 +44,4 @@ class VisibilityComputation {
 
 }  // namespace perfetto::trace_processor::winscope::viewcapture
 
-#endif  // SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_VIEWCAPTURE_VISIBILITY_COMPUTATION_H_
+#endif  // SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_VIEWCAPTURE_VISIBILITY_COMPUTATION_H_

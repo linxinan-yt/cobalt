@@ -16,7 +16,8 @@
 #include "device/bluetooth/bluetooth_adapter_factory.h"  // nogncheck
 #include "device/fido/cable/cable_mock_bluetooth_adapter.h"
 #endif
-#include "device/fido/cable/pairing.h"#include "device/fido/cable/v2_authenticator.h"
+#include "device/fido/cable/pairing.h"
+#include "device/fido/cable/v2_authenticator.h"
 #include "device/fido/cable/v2_constants.h"
 #include "device/fido/cable/v2_handshake.h"
 #include "device/fido/cable/v2_test_util.h"

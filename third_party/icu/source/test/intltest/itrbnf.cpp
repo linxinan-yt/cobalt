@@ -85,7 +85,8 @@ void IntlTestRBNF::runIndexedTest(int32_t index, UBool exec, const char* &name, 
         TESTCASE(33, TestInfiniteRecursion);
         TESTCASE(34, testOmissionReplacementWithPluralRules);
 TESTCASE(35, TestNullDereferenceWRITE23149);
-        TESTCASE(36, TestNullDereferenceREAD23184);#else
+        TESTCASE(36, TestNullDereferenceREAD23184);
+#else
         TESTCASE(0, TestRBNFDisabled);
 #endif
     default:

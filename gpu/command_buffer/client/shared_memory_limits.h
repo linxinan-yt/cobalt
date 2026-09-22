@@ -7,7 +7,8 @@
 
 #include <stddef.h>
 
-#include "base/byte_size.h"#include "base/system/sys_info.h"
+#include "base/byte_size.h"
+#include "base/system/sys_info.h"
 #include "build/build_config.h"
 #include "ui/gfx/geometry/size.h"
 

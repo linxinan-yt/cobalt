@@ -84,7 +84,8 @@ absl::string_view IceUsernameFragment() override {
     return ice_username_fragment_;
   }
 
-  absl::string_view IcePassword() override { return ice_password_; }#if RTC_DCHECK_IS_ON
+  absl::string_view IcePassword() override { return ice_password_; }
+#if RTC_DCHECK_IS_ON
   DtlsSrtpTransport* GetDtlsSrtpTransportForTesting() {
     return dtls_srtp_transport_.get();
   }

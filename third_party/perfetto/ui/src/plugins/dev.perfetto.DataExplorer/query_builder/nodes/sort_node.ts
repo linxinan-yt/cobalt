@@ -14,59 +14,72 @@
 
 import m from 'mithril';
 import {
-  QueryNode,
-  QueryNodeState,
+  type QueryNode,
+  type NodeContext,
   nextNodeId,
   NodeType,
-  ModificationNode,
 } from '../../query_node';
-import {ColumnInfo} from '../column_info';
-import protos from '../../../../protos';
-import {Card} from '../../../../widgets/card';
-import {MultiselectInput} from '../../../../widgets/multiselect_input';
+import type {ColumnInfo} from '../column_info';
+import type protos from '../../../../protos';
 import {Button} from '../../../../widgets/button';
+import {
+  StructuredQueryBuilder,
+  type SortCriterion as BuilderSortCriterion,
+} from '../structured_query_builder';
+import {setValidationError} from '../node_issues';
+import {
+  LabeledControl,
+  DraggableItem,
+  OutlinedMultiSelect,
+  type MultiSelectOption,
+  type MultiSelectDiff,
+} from '../widgets';
+import type {NodeDetailsAttrs, NodeModifyAttrs} from '../../node_types';
+import {loadNodeDoc} from '../node_doc_loader';
+import {createErrorSections} from '../widgets';
+import {NodeDetailsMessage} from '../node_styling_widgets';
 
 export interface SortCriterion {
   colName: string;
   direction: 'ASC' | 'DESC';
 }
 
-export interface SortNodeState extends QueryNodeState {
-  prevNode: QueryNode;
-  sortColNames?: string[]; // For backwards compatibility
+// Serializable node configuration. This IS the serialized format —
+// no separate serializeState()/deserializeState() needed.
+export interface SortNodeAttrs {
   sortCriteria?: SortCriterion[];
 }
 
-export class SortNode implements ModificationNode {
+export class SortNode implements QueryNode {
   readonly nodeId: string;
   readonly type = NodeType.kSort;
-  readonly prevNode: QueryNode;
+  primaryInput?: QueryNode;
   nextNodes: QueryNode[];
-  readonly state: SortNodeState;
-  sortCols: ColumnInfo[];
+  readonly attrs: SortNodeAttrs;
+  readonly context: NodeContext;
 
-  constructor(state: SortNodeState) {
+  constructor(attrs: SortNodeAttrs, context: NodeContext) {
     this.nodeId = nextNodeId();
-    this.state = state;
-    this.prevNode = state.prevNode;
+    this.attrs = {
+      ...attrs,
+      sortCriteria: attrs.sortCriteria ?? [],
+    };
+    this.context = context;
     this.nextNodes = [];
-
-    this.state.sortCriteria = this.state.sortCriteria ?? [];
-    this.sortCols = this.resolveSortCols();
   }
 
-  private resolveSortCols(): ColumnInfo[] {
-    if (!this.state.sortCriteria) {
+  get sortCols(): ColumnInfo[] {
+    if (!this.attrs.sortCriteria) {
       return [];
     }
     const sourceCols = this.sourceCols;
-    return this.state.sortCriteria
+    return this.attrs.sortCriteria
       .map((criterion) => sourceCols.find((c) => c.name === criterion.colName))
       .filter((c): c is ColumnInfo => c !== undefined);
   }
 
   get sourceCols(): ColumnInfo[] {
-    return this.prevNode?.finalCols ?? [];
+    return this.primaryInput?.finalCols ?? [];
   }
 
   get finalCols(): ColumnInfo[] {
@@ -77,146 +90,208 @@ export class SortNode implements ModificationNode {
     return 'Sort';
   }
 
-  nodeDetails(): m.Child {
-    if (this.sortCols.length > 0 && this.state.sortCriteria) {
-      const criteria = this.state.sortCriteria
-        .map((c) => c.direction === 'DESC' ? `${c.colName} DESC` : c.colName)
-        .join(', ');
-      return m(
-        '.pf-aggregation-node-details',
-        `Sort by `,
-        m('strong', criteria),
-      );
+  nodeDetails(): NodeDetailsAttrs {
+    if (!this.attrs.sortCriteria || this.attrs.sortCriteria.length === 0) {
+      return {
+        content: NodeDetailsMessage('No sort columns'),
+      };
     }
-    return m('.pf-aggregation-node-details', 'No sort column selected');
+
+    const label = this.attrs.sortCriteria
+      .map((c) =>
+        c.direction === 'DESC' ? `${c.colName} ↓` : `${c.colName} ↑`,
+      )
+      .join(', ');
+
+    return {
+      content: m('div', `Sort by ${label}`),
+    };
   }
 
-  nodeSpecificModify(): m.Child {
-    return m(Card, [
-      m('label', 'Pick order by columns '),
-      m(MultiselectInput, {
-        options: this.sourceCols.map((c) => ({key: c.name, label: c.name})),
-        selectedOptions: this.sortCols?.map((c) => c.column.name) ?? [],
-        onOptionAdd: (key: string) => {
-          if (!this.state.sortCriteria) {
-            this.state.sortCriteria = [];
+  nodeSpecificModify(): NodeModifyAttrs {
+    if (!this.attrs.sortCriteria) {
+      this.attrs.sortCriteria = [];
+    }
+
+    const sections: NodeModifyAttrs['sections'] = [
+      ...createErrorSections(this),
+    ];
+
+    // Column selector section
+    sections.push({
+      content: this.renderColumnSelector(),
+    });
+
+    // Sort criteria list section
+    sections.push({
+      content: this.renderSortCriteriaList(),
+    });
+
+    return {
+      info: 'Orders rows by selected columns. Add columns to sort by, then drag to reorder. Click column chips to toggle between ascending (ASC) and descending (DESC) order.',
+      sections,
+    };
+  }
+
+  private renderColumnSelector(): m.Child {
+    const sortCriteria = this.attrs.sortCriteria ?? [];
+
+    const sortOptions: MultiSelectOption[] = this.sourceCols.map((col) => ({
+      id: col.name,
+      name: col.name,
+      checked: sortCriteria.some((c) => c.colName === col.name),
+    }));
+
+    const label =
+      sortCriteria.length > 0
+        ? sortCriteria
+            .map((c) =>
+              c.direction === 'DESC' ? `${c.colName} ↓` : `${c.colName} ↑`,
+            )
+            .join(', ')
+        : 'None';
+
+    return m(
+      LabeledControl,
+      {
+        label: 'Sort by:',
+      },
+      m(OutlinedMultiSelect, {
+        label,
+        options: sortOptions,
+        showNumSelected: false,
+        onChange: (diffs: MultiSelectDiff[]) => {
+          if (!this.attrs.sortCriteria) {
+            this.attrs.sortCriteria = [];
           }
-          this.state.sortCriteria.push({colName: key, direction: 'ASC'});
-          this.sortCols = this.resolveSortCols();
-          m.redraw();
-        },
-        onOptionRemove: (key: string) => {
-          if (this.state.sortCriteria) {
-            this.state.sortCriteria = this.state.sortCriteria.filter(
-              (c) => c.colName !== key,
-            );
-            this.sortCols = this.resolveSortCols();
-            m.redraw();
+          for (const diff of diffs) {
+            if (diff.checked) {
+              // Add column if not already present
+              if (!this.attrs.sortCriteria.some((c) => c.colName === diff.id)) {
+                this.attrs.sortCriteria.push({
+                  colName: diff.id,
+                  direction: 'ASC',
+                });
+              }
+            } else {
+              // Remove column
+              this.attrs.sortCriteria = this.attrs.sortCriteria.filter(
+                (c) => c.colName !== diff.id,
+              );
+            }
           }
+          this.context.onchange?.();
         },
       }),
-      this.state.sortCriteria?.map((criterion, index) =>
-        m(
-          '.sort-criterion',
-          {
-            draggable: true,
-            ondragstart: (e: DragEvent) => {
-              e.dataTransfer!.setData('text/plain', index.toString());
-            },
-            ondragover: (e: DragEvent) => {
-              e.preventDefault();
-            },
-            ondrop: (e: DragEvent) => {
-              e.preventDefault();
-              if (!this.state.sortCriteria) return;
-              const from = parseInt(e.dataTransfer!.getData('text/plain'), 10);
-              const to = index;
-
-              const newSortCriteria = [...this.state.sortCriteria];
-              const [removed] = newSortCriteria.splice(from, 1);
-              newSortCriteria.splice(to, 0, removed);
-              this.state.sortCriteria = newSortCriteria;
-              this.sortCols = this.resolveSortCols();
-              m.redraw();
-            },
-          },
-          [
-            m('span.pf-drag-handle', '☰'),
-            m('span', criterion.colName),
-            m(Button, {
-              label: criterion.direction,
-              onclick: () => {
-                if (this.state.sortCriteria) {
-                  this.state.sortCriteria[index].direction =
-                    criterion.direction === 'ASC' ? 'DESC' : 'ASC';
-                  m.redraw();
-                }
-              },
-            }),
-          ],
-        ),
-      ),
-    ]);
-  }
-
-  validate(): boolean {
-    return (
-      this.prevNode !== undefined &&
-      this.sortCols !== undefined &&
-      this.sortCols.length > 0
     );
   }
 
+  private renderSortCriteriaList(): m.Child {
+    const sortCriteria = this.attrs.sortCriteria ?? [];
+
+    if (sortCriteria.length === 0) {
+      return null;
+    }
+
+    const handleReorder = (from: number, to: number) => {
+      if (!this.attrs.sortCriteria) return;
+      const newSortCriteria = [...this.attrs.sortCriteria];
+      const [removed] = newSortCriteria.splice(from, 1);
+      newSortCriteria.splice(to, 0, removed);
+      this.attrs.sortCriteria = newSortCriteria;
+      this.context.onchange?.();
+      m.redraw();
+    };
+
+    return m(
+      '.pf-sort-criteria-list',
+      sortCriteria.map((criterion, index) =>
+        m(
+          DraggableItem,
+          {
+            index,
+            onReorder: handleReorder,
+          },
+          m('span', criterion.colName),
+          m(Button, {
+            label: criterion.direction,
+            onclick: () => {
+              if (this.attrs.sortCriteria) {
+                this.attrs.sortCriteria[index].direction =
+                  criterion.direction === 'ASC' ? 'DESC' : 'ASC';
+                this.context.onchange?.();
+                m.redraw();
+              }
+            },
+          }),
+        ),
+      ),
+    );
+  }
+
+  nodeInfo(): m.Children {
+    return loadNodeDoc('sort');
+  }
+
+  validate(): boolean {
+    // Clear any previous errors at the start of validation
+    if (this.context.issues) {
+      this.context.issues.clear();
+    }
+
+    if (this.primaryInput === undefined) {
+      setValidationError(this.context, 'No input node connected');
+      return false;
+    }
+
+    if (!this.primaryInput.validate()) {
+      setValidationError(this.context, 'Previous node is invalid');
+      return false;
+    }
+
+    if (this.sortCols === undefined || this.sortCols.length === 0) {
+      setValidationError(this.context, 'No sort columns selected');
+      return false;
+    }
+
+    return true;
+  }
+
   clone(): QueryNode {
-    return new SortNode(this.state);
+    return new SortNode(
+      {sortCriteria: this.attrs.sortCriteria?.map((c) => ({...c}))},
+      this.context,
+    );
   }
 
   getStructuredQuery(): protos.PerfettoSqlStructuredQuery | undefined {
-    if (this.prevNode === undefined) return undefined;
-    const prevQuery = this.prevNode.getStructuredQuery();
-    if (!prevQuery) return undefined;
+    if (this.primaryInput === undefined) return undefined;
 
     if (this.sortCols.length === 0) {
-      return prevQuery;
+      // No sortable columns - return passthrough to maintain reference chain
+      return StructuredQueryBuilder.passthrough(this.primaryInput, this.nodeId);
     }
 
-    const orderingSpecs: protos.PerfettoSqlStructuredQuery.OrderBy.IOrderingSpec[] =
-      [];
-    for (const criterion of this.state.sortCriteria ?? []) {
-      const col = this.sortCols.find(
-        (c) => c.column.name === criterion.colName,
-      );
+    const criteria: BuilderSortCriterion[] = [];
+    for (const criterion of this.attrs.sortCriteria ?? []) {
+      const col = this.sortCols.find((c) => c.name === criterion.colName);
       if (!col) continue;
 
-      orderingSpecs.push({
-        columnName: col.column.name,
-        direction:
-          criterion.direction === 'DESC'
-            ? protos.PerfettoSqlStructuredQuery.OrderBy.Direction.DESC
-            : protos.PerfettoSqlStructuredQuery.OrderBy.Direction.ASC,
+      criteria.push({
+        columnName: col.name,
+        direction: criterion.direction,
       });
     }
 
-    if (orderingSpecs.length === 0) {
-      return prevQuery;
+    if (criteria.length === 0) {
+      // No valid sort criteria - return passthrough to maintain reference chain
+      return StructuredQueryBuilder.passthrough(this.primaryInput, this.nodeId);
     }
 
-    return protos.PerfettoSqlStructuredQuery.create({
-      innerQuery: prevQuery,
-      orderBy: protos.PerfettoSqlStructuredQuery.OrderBy.create({
-        orderingSpecs,
-      }),
-    });
-  }
-
-  serializeState(): object {
-    return this.state;
-  }
-
-  static deserializeState(state: SortNodeState): SortNodeState {
-    return {
-      ...state,
-      prevNode: undefined as unknown as QueryNode,
-    };
+    return StructuredQueryBuilder.withOrderBy(
+      this.primaryInput,
+      criteria,
+      this.nodeId,
+    );
   }
 }

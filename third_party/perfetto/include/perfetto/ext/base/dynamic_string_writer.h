@@ -16,6 +16,7 @@
 
 #ifndef INCLUDE_PERFETTO_EXT_BASE_DYNAMIC_STRING_WRITER_H_
 #define INCLUDE_PERFETTO_EXT_BASE_DYNAMIC_STRING_WRITER_H_
+
 #include <string.h>
 
 #include <algorithm>
@@ -26,13 +27,6 @@
 #include <memory>
 #include <type_traits>
 
-=======
-#ifndef INCLUDE_PERFETTO_EXT_BASE_DYNAMIC_STRING_WRITER_H_
-#define INCLUDE_PERFETTO_EXT_BASE_DYNAMIC_STRING_WRITER_H_
-
-#include <string.h>
-
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 #include "perfetto/base/logging.h"
 #include "perfetto/ext/base/string_utils.h"
 #include "perfetto/ext/base/string_view.h"
@@ -43,16 +37,12 @@ namespace base {
 // A helper class which writes formatted data to a string buffer.
 // This is used in the trace processor where we write O(GBs) of strings and
 // sprintf is too slow.
-class DynamicStringWriter { public:
+class DynamicStringWriter {
+ public:
   using ScopedCString = std::unique_ptr<char, void (*)(void*)>;
 
   // Creates a string buffer from a char buffer and length.
-DynamicStringWriter() {}=======
-class DynamicStringWriter {
- public:
-  // Creates a string buffer from a char buffer and length.
   DynamicStringWriter() {}
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
 
   // Appends n instances of a char to the buffer.
   void AppendChar(char in, size_t n = 1) { buffer_.append(n, in); }
@@ -80,7 +70,7 @@ class DynamicStringWriter {
     AppendString(buf.string_view());
   }
 
-// Appends an integer to the buffer, padding with |padchar| if the number of
+  // Appends an integer to the buffer, padding with |padchar| if the number of
   // digits of the integer is less than |padding|.
   template <char padchar, uint64_t padding>
   void AppendPaddedInt(int64_t sign_value) {
@@ -93,13 +83,15 @@ class DynamicStringWriter {
       absolute_value = static_cast<uint64_t>(std::abs(sign_value));
     }
     AppendPaddedIntImpl<padchar, padding>(absolute_value, negate);
-  }  void AppendUnsignedInt(uint64_t value) {
+  }
+
+  void AppendUnsignedInt(uint64_t value) {
     constexpr size_t STACK_BUFFER_SIZE = 32;
     StackString<STACK_BUFFER_SIZE> buf("%" PRIu64, value);
     AppendString(buf.string_view());
   }
 
-template <char padchar, uint64_t padding>
+  template <char padchar, uint64_t padding>
   void AppendPaddedUnsignedInt(uint64_t value) {
     AppendPaddedIntImpl<padchar, padding>(value, false);
   }
@@ -132,7 +124,9 @@ template <char padchar, uint64_t padding>
       }
     }
     AppendString(&data[idx + 1], size_needed - idx - 1);
-  }  // Appends a hex integer to the buffer.
+  }
+
+  // Appends a hex integer to the buffer.
   template <typename IntType>
   void AppendHexInt(IntType value) {
     constexpr size_t STACK_BUFFER_SIZE = 64;
@@ -140,7 +134,7 @@ template <char padchar, uint64_t padding>
     AppendString(buf.string_view());
   }
 
-void AppendHexString(const uint8_t* data, size_t size, char separator);
+  void AppendHexString(const uint8_t* data, size_t size, char separator);
 
   void AppendHexString(StringView data, char separator) {
     AppendHexString(reinterpret_cast<const uint8_t*>(data.data()), data.size(),
@@ -150,7 +144,8 @@ void AppendHexString(const uint8_t* data, size_t size, char separator);
   // Appends a double to the buffer.
   void AppendDouble(double value) {
     constexpr size_t STACK_BUFFER_SIZE = 32;
-    StackString<STACK_BUFFER_SIZE> buf("%.16g", value);    AppendString(buf.string_view());
+    StackString<STACK_BUFFER_SIZE> buf("%.16g", value);
+    AppendString(buf.string_view());
   }
 
   void AppendBool(bool value) {
@@ -165,7 +160,7 @@ void AppendHexString(const uint8_t* data, size_t size, char separator);
     return StringView(buffer_.c_str(), buffer_.size());
   }
 
-ScopedCString CreateStringCopy() const {
+  ScopedCString CreateStringCopy() const {
     size_t n = buffer_.size();
     char* dup = reinterpret_cast<char*>(malloc(n + 1));
     if (dup) {
@@ -209,12 +204,12 @@ ScopedCString CreateStringCopy() const {
     if (negate)
       AppendChar('-');
     AppendString(&data[idx + 1], kSizeNeeded - idx - 1);
-  }  std::string buffer_;
+  }
+
+  std::string buffer_;
 };
 
 }  // namespace base
 }  // namespace perfetto
 
-#endif  // INCLUDE_PERFETTO_EXT_BASE_DYNAMIC_STRING_WRITER_H_=======
 #endif  // INCLUDE_PERFETTO_EXT_BASE_DYNAMIC_STRING_WRITER_H_
->>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)

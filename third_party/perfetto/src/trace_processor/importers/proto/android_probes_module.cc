@@ -16,7 +16,8 @@
 
 #include "src/trace_processor/importers/proto/android_probes_module.h"
 
-#include <atomic>#include <cstdint>
+#include <atomic>
+#include <cstdint>
 #include <memory>
 #include <optional>
 #include <string>
@@ -33,7 +34,8 @@
 #include "src/trace_processor/importers/common/event_tracker.h"
 #include "src/trace_processor/importers/common/import_logs_tracker.h"
 #include "src/trace_processor/importers/common/parser_types.h"
-#include "src/trace_processor/importers/common/stats_tracker.h"#include "src/trace_processor/importers/proto/android_probes_parser.h"
+#include "src/trace_processor/importers/common/stats_tracker.h"
+#include "src/trace_processor/importers/proto/android_probes_parser.h"
 #include "src/trace_processor/importers/proto/android_probes_tracker.h"
 #include "src/trace_processor/importers/proto/blob_packet_writer.h"
 #include "src/trace_processor/importers/proto/packet_sequence_state_generation.h"

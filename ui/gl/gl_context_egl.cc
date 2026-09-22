@@ -13,7 +13,8 @@
 #if BUILDFLAG(IS_COBALT_HERMETIC_BUILD)
 #include "base/strings/string_split.h"
 #include "base/strings/string_number_conversions.h"
-#endif#include "base/trace_event/trace_event.h"
+#endif
+#include "base/trace_event/trace_event.h"
 #include "build/build_config.h"
 #include "third_party/khronos/EGL/egl.h"
 #include "third_party/khronos/EGL/eglext.h"

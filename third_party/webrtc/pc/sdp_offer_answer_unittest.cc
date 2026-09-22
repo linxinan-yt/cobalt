@@ -2380,7 +2380,8 @@ TEST_F(SdpOfferAnswerTest, SubsequentOfferDoesNotNegotiateSctpInit) {
     sctp_description->set_sctp_init(example_init);
   }
   EXPECT_FALSE(pc1->SetRemoteDescription(std::move(reoffer)));
-}#endif  // WEBRTC_HAVE_SCTP
+}
+#endif  // WEBRTC_HAVE_SCTP
 
 class SdpOfferAnswerDirectionTest
     : public SdpOfferAnswerTest,

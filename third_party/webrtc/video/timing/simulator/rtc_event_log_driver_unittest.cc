@@ -30,7 +30,8 @@
 #include "system_wrappers/include/ntp_time.h"
 #include "test/gmock.h"
 #include "test/gtest.h"
-#include "video/timing/simulator/rtp_packet_simulator.h"#include "video/timing/simulator/test/parsed_rtc_event_log_builder.h"
+#include "video/timing/simulator/rtp_packet_simulator.h"
+#include "video/timing/simulator/test/parsed_rtc_event_log_builder.h"
 
 namespace webrtc::video_timing_simulator {
 namespace {

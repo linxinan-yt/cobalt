@@ -485,7 +485,8 @@ bool RenderFrameDevToolsAgentHost::AttachSession(DevToolsSession* session) {
 #if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
   session->CreateAndAddHandler<protocol::FedCmHandler>();
 session->CreateAndAddHandler<protocol::DigitalCredentialsHandler>();
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)#if !BUILDFLAG(IS_ANDROID)
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
+#if !BUILDFLAG(IS_ANDROID)
   session->CreateAndAddHandler<protocol::WebAuthnHandler>();
 #endif  // !BUILDFLAG(IS_ANDROID)
 

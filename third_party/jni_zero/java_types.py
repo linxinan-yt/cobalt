@@ -183,14 +183,15 @@ class JavaClass:
                      self._prefix)
 
   def is_prefixed(self):
-assert self.upper_bound_type is None    return bool(self._prefix)
+    return bool(self._prefix)
 
   def is_system_class(self):
     return self._fqn.startswith(('android/', 'java/'))
 
   def to_java(self, type_resolver=None):
-if self.upper_bound_type is not None:
-      return self._fqn    # Empty resolver used to shorten java.lang classes.
+    if self.upper_bound_type is not None:
+      return self._fqn
+    # Empty resolver used to shorten java.lang classes.
     type_resolver = type_resolver or _EMPTY_TYPE_RESOLVER
     return type_resolver.contextualize(self)
 
@@ -494,8 +495,9 @@ class TypeResolver:
 
   def __init__(self,
                java_class,
-type_params=None,
-               parent_resolver=None,               null_marked=False,
+               type_params=None,
+               parent_resolver=None,
+               null_marked=False,
                package_prefix=None,
                package_prefix_filter=None):
     self.java_class = java_class
@@ -506,7 +508,7 @@ type_params=None,
     self.nested_classes = []
     self.package_prefix = package_prefix
     self.package_prefix_filter = package_prefix_filter
-self._cache = {}
+    self._cache = {}
 
     assert self.java_class == self._maybe_prefix(
         self.java_class.class_without_prefix)
@@ -538,7 +540,7 @@ self._cache = {}
   def add_import(self, java_class):
     self.imports.append(self._maybe_prefix(java_class))
 
-def add_child(self, *, java_class):
+  def add_child(self, *, java_class):
     java_class = self._maybe_prefix(java_class)
     assert java_class not in self.nested_classes
     self.nested_classes.append(java_class)

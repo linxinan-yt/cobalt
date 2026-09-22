@@ -120,7 +120,8 @@ int64_t GetSocketRecvTimestamp(int socket) {
 int64_t GetSocketRecvTimestamp(int /* socket */) {
   return -1;
 }
-#endif#if defined(WEBRTC_WIN)
+#endif
+#if defined(WEBRTC_WIN)
 typedef char* SockOptArg;
 #endif
 

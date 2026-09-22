@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-#include "src/trace_processor/importers/proto/winscope/viewcapture_views_extractor.h"
+#include "src/trace_processor/plugins/winscope_importer/viewcapture_views_extractor.h"
 
 #include <vector>
 
-#include "src/trace_processor/importers/proto/winscope/viewcapture_test_utils.h"
+#include "src/trace_processor/plugins/winscope_importer/viewcapture_test_utils.h"
 #include "test/gtest_and_gmock.h"
 
 namespace perfetto::trace_processor::winscope::viewcapture::test {
@@ -27,7 +27,8 @@ namespace {
 
 void CheckExtractionTopToBottom(const std::string& snapshot,
                                 const std::vector<int32_t> expected) {
-  protos::pbzero::ViewCapture::Decoder snapshot_decoder(snapshot);
+  com::android::internal::pbzero::ViewCapture::Decoder snapshot_decoder(
+      snapshot);
   const auto& result = ExtractViewsTopToBottom(snapshot_decoder);
 
   std::vector<int32_t> layer_ids;

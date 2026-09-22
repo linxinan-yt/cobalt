@@ -59,6 +59,4 @@ std::string SqlStripHex(const std::string& input, int64_t min_repeated_digits);
 
 }  // namespace perfetto::trace_processor
 
-}  // namespace perfetto::trace_processor
-
 #endif  // SRC_TRACE_PROCESSOR_PLUGINS_STRING_FUNCTIONS_REPLACE_NUMBERS_FUNCTION_H_

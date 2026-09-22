@@ -16,7 +16,8 @@
 
 #include "perfetto/ext/trace_processor/trace_processor_shell.h"
 
-#include <algorithm>#include <cctype>
+#include <algorithm>
+#include <cctype>
 #include <cerrno>
 #include <cstddef>
 #include <cstdio>
@@ -48,7 +49,8 @@
 #include "perfetto/trace_processor/basic_types.h"
 #include "perfetto/trace_processor/metatrace_config.h"
 #include "perfetto/trace_processor/read_trace.h"
-#include "perfetto/trace_processor/trace_blob.h"#include "perfetto/trace_processor/trace_processor.h"
+#include "perfetto/trace_processor/trace_blob.h"
+#include "perfetto/trace_processor/trace_processor.h"
 #include "src/trace_processor/read_trace_internal.h"
 #include "src/trace_processor/rpc/rpc.h"
 #include "src/trace_processor/rpc/stdiod.h"

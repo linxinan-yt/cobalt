@@ -28,7 +28,8 @@
 #include "perfetto/base/build_config.h"
 #include "perfetto/base/logging.h"
 #include "perfetto/ext/base/dynamic_string_writer.h"
-#include "perfetto/ext/base/string_utils.h"#include "perfetto/trace_processor/trace_processor.h"
+#include "perfetto/ext/base/string_utils.h"
+#include "perfetto/trace_processor/trace_processor.h"
 #include "src/traceconv/utils.h"
 
 namespace perfetto {
@@ -83,7 +84,8 @@ const char kSystemTraceEventsFooter[] =
 inline void FormatProcess(uint32_t pid,
                           uint32_t ppid,
                           const base::StringView& name,
-base::DynamicStringWriter* writer) {  writer->AppendLiteral("root             ");
+                          base::DynamicStringWriter* writer) {
+  writer->AppendLiteral("root             ");
   writer->AppendInt(pid);
   writer->AppendLiteral("     ");
   writer->AppendInt(ppid);
@@ -95,7 +97,8 @@ base::DynamicStringWriter* writer) {  writer->AppendLiteral("root             ")
 inline void FormatThread(uint32_t tid,
                          uint32_t tgid,
                          const base::StringView& name,
-base::DynamicStringWriter* writer) {  writer->AppendLiteral("root         ");
+                         base::DynamicStringWriter* writer) {
+  writer->AppendLiteral("root         ");
   writer->AppendInt(tgid);
   writer->AppendChar(' ');
   writer->AppendInt(tid);
@@ -117,7 +120,8 @@ class QueryWriter {
     base::DynamicStringWriter line_writer;
     auto iterator = tp_->ExecuteQuery(sql);
     for (uint32_t rows = 0; iterator.Next(); rows++) {
-line_writer.Clear();      callback(&iterator, &line_writer);
+      line_writer.Clear();
+      callback(&iterator, &line_writer);
 
       if (global_writer_.pos() + line_writer.pos() >= kFlushThreshold) {
         fprintf(stderr, "Writing row %" PRIu32 "%c", rows, kProgressChar);
@@ -146,7 +150,8 @@ line_writer.Clear();      callback(&iterator, &line_writer);
   static constexpr size_t kFlushThreshold = size_t{1024} * 1024 * 16;
 
   trace_processor::TraceProcessor* tp_ = nullptr;
-base::DynamicStringWriter global_writer_;  TraceWriter* trace_writer_;
+  base::DynamicStringWriter global_writer_;
+  TraceWriter* trace_writer_;
 };
 
 int ExtractRawEvents(TraceWriter* trace_writer,
@@ -157,7 +162,8 @@ int ExtractRawEvents(TraceWriter* trace_writer,
 
   static const char kRawEventsCountSql[] = "select count(1) from ftrace_event";
   uint32_t raw_events = 0;
-auto e_callback = [&raw_events](Iterator* it, base::FixedStringWriter*) {    raw_events = static_cast<uint32_t>(it->Get(0).long_value);
+  auto e_callback = [&raw_events](Iterator* it, base::DynamicStringWriter*) {
+    raw_events = static_cast<uint32_t>(it->Get(0).long_value);
   };
   if (!q_writer.RunQuery(kRawEventsCountSql, e_callback))
     return 1;
@@ -175,7 +181,8 @@ auto e_callback = [&raw_events](Iterator* it, base::FixedStringWriter*) {    raw
   fflush(stderr);
 
   auto raw_callback = [wrapped_in_json](Iterator* it,
-base::DynamicStringWriter* writer) {    const char* line = it->Get(0 /* col */).string_value;
+                                        base::DynamicStringWriter* writer) {
+    const char* line = it->Get(0 /* col */).string_value;
     if (wrapped_in_json) {
       for (uint32_t i = 0; line[i] != '\0'; i++) {
         char c = line[i];
@@ -298,7 +305,8 @@ int ExtractSystrace(trace_processor::TraceProcessor* tp,
     // TODO(lalitm): change this query to actually use ppid when it is exposed
     // by the process table.
     static const char kPSql[] = "select pid, 0 as ppid, name from process";
-auto p_callback = [](Iterator* it, base::DynamicStringWriter* writer) {      uint32_t pid = static_cast<uint32_t>(it->Get(0 /* col */).long_value);
+    auto p_callback = [](Iterator* it, base::DynamicStringWriter* writer) {
+      uint32_t pid = static_cast<uint32_t>(it->Get(0 /* col */).long_value);
       uint32_t ppid = static_cast<uint32_t>(it->Get(1 /* col */).long_value);
       const auto& name_col = it->Get(2 /* col */);
       auto name_view = name_col.type == trace_processor::SqlValue::kString
@@ -315,7 +323,8 @@ auto p_callback = [](Iterator* it, base::DynamicStringWriter* writer) {      uin
     static const char kTSql[] =
         "select tid, COALESCE(upid, 0), thread.name "
         "from thread left join process using (upid)";
-auto t_callback = [](Iterator* it, base::DynamicStringWriter* writer) {      uint32_t tid = static_cast<uint32_t>(it->Get(0 /* col */).long_value);
+    auto t_callback = [](Iterator* it, base::DynamicStringWriter* writer) {
+      uint32_t tid = static_cast<uint32_t>(it->Get(0 /* col */).long_value);
       uint32_t tgid = static_cast<uint32_t>(it->Get(1 /* col */).long_value);
       const auto& name_col = it->Get(2 /* col */);
       auto name_view = name_col.type == trace_processor::SqlValue::kString

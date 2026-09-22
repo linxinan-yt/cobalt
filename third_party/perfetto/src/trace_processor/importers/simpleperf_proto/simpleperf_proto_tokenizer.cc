@@ -16,7 +16,8 @@
 
 #include "src/trace_processor/importers/simpleperf_proto/simpleperf_proto_tokenizer.h"
 
-#include <cstddef>#include <cstdint>
+#include <cstddef>
+#include <cstdint>
 #include <cstring>
 #include <memory>
 #include <string>
@@ -30,7 +31,8 @@
 #include "perfetto/protozero/field.h"
 #include "perfetto/trace_processor/trace_blob_view.h"
 #include "src/trace_processor/importers/common/builtin_trace_importers.h"
-#include "src/trace_processor/importers/common/clock_tracker.h"#include "src/trace_processor/importers/common/mapping_tracker.h"
+#include "src/trace_processor/importers/common/clock_tracker.h"
+#include "src/trace_processor/importers/common/mapping_tracker.h"
 #include "src/trace_processor/importers/common/virtual_memory_mapping.h"
 #include "src/trace_processor/importers/simpleperf_proto/simpleperf_proto_parser.h"
 #include "src/trace_processor/sorter/trace_sorter.h"
@@ -39,7 +41,8 @@
 #include "src/trace_processor/util/clock_synchronizer.h"
 #include "src/trace_processor/util/trace_type.h"
 
-#include "protos/perfetto/common/builtin_clock.pbzero.h"#include "protos/third_party/simpleperf/cmd_report_sample.pbzero.h"
+#include "protos/perfetto/common/builtin_clock.pbzero.h"
+#include "protos/third_party/simpleperf/cmd_report_sample.pbzero.h"
 
 namespace perfetto::trace_processor::simpleperf_proto_importer {
 

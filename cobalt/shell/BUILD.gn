@@ -26,8 +26,8 @@ if (is_ios) {
   import("//build/config/apple/mobile_config.gni")
 }
 
-# TODO(crbug.com/1336055, spang): Investigate using shell_views with cast builds as
-# true.
+# TODO(crbug.com/1336055, spang): Investigate using shell_views with cast builds
+# as true.
 shell_use_toolkit_views = toolkit_views && !is_castos
 
 support_web_tests =
@@ -97,6 +97,7 @@ group("cobalt_shell_lib_deps") {
     "//content/public/app",
     "//content/public/browser",
     "//content/public/gpu",
+    "//device/bluetooth",
     "//media",
     "//media/mojo:buildflags",
     "//net",
@@ -408,7 +409,6 @@ repack("pak") {
     "$root_gen_dir/content/content_resources.pak",
     "$root_gen_dir/content/gpu_resources.pak",
     "$root_gen_dir/content/histograms_resources.pak",
-    "$root_gen_dir/content/private_aggregation_internals_resources.pak",
     "$root_gen_dir/content/process_resources.pak",
     "$root_gen_dir/content/service_worker_resources.pak",
     "$root_gen_dir/mojo/public/js/mojo_bindings_resources.pak",

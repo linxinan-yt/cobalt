@@ -18,7 +18,7 @@
 
 #include "perfetto/ext/base/dynamic_string_writer.h"
 #include "perfetto/ext/base/file_utils.h"
-#include "perfetto/ext/base/fixed_string_writer.h"#include "perfetto/ext/base/lock_free_task_runner.h"
+#include "perfetto/ext/base/lock_free_task_runner.h"
 #include "perfetto/ext/base/string_splitter.h"
 #include "perfetto/ext/base/string_utils.h"
 #include "perfetto/ext/base/utils.h"
@@ -78,7 +78,8 @@ void DumpAllCpuStats() {
     base::StringSplitter splitter(std::move(text), '\n');
     base::DynamicStringWriter writer;
     while (splitter.Next()) {
-writer.Clear();      writer.AppendLiteral("C|");
+      writer.Clear();
+      writer.AppendLiteral("C|");
       writer.AppendInt(getpid());
       writer.AppendLiteral("|");
 

@@ -74,7 +74,8 @@ class AcceptHeaderTest : public ContentBrowserTest {
     if (base::FeatureList::IsEnabled(blink::features::kJXLImageFormat)) {
       result.append("image/jxl,");
     }
-#endif#if BUILDFLAG(ENABLE_DAV1D_DECODER)
+#endif
+#if BUILDFLAG(ENABLE_DAV1D_DECODER)
     result.append("image/avif,");
 #endif
     return result;

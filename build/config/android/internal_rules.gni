@@ -215,9 +215,10 @@ template("write_build_config") {
                                  ".targets.build_config.json") ]
   }
 
-if (current_toolchain == default_toolchain) {
+  if (current_toolchain == default_toolchain) {
     # Ensure targets match naming patterns so that __assetres, __header, __host
-    # targets work properly.    if (filter_exclude([ _type ], _java_resource_types) == []) {
+    # targets work properly.
+    if (filter_exclude([ _type ], _java_resource_types) == []) {
       if (filter_exclude([ _target_label ], java_resource_patterns) != []) {
         assert(false, "Invalid java resource target name: $_target_label")
       }

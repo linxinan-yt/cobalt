@@ -13,20 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_WINDOWMANAGER_PROTO_CLONE_H_
-#define SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_WINDOWMANAGER_PROTO_CLONE_H_
+#ifndef SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_WINDOWMANAGER_PROTO_CLONE_H_
+#define SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_WINDOWMANAGER_PROTO_CLONE_H_
 
 #include <vector>
 
-#include "protos/perfetto/trace/android/server/windowmanagerservice.pbzero.h"
+#include "protos/third_party/android/frameworks/base/proto/tracing/winscope/server/windowmanagerservice.pbzero.h"
+#include "protos/third_party/android/frameworks/base/proto/tracing/winscope/windowmanager.pbzero.h"
 
 namespace perfetto::trace_processor::winscope::windowmanager_proto_clone {
 
+std::vector<uint8_t> CloneEntryProtoPruningChildren(
+    const com::android::internal::pbzero::WindowManagerTraceEntry::Decoder&);
 std::vector<uint8_t> CloneRootWindowContainerProtoPruningChildren(
-    const protos::pbzero::RootWindowContainerProto::Decoder&);
+    const com::android::internal::pbzero::RootWindowContainerProto::Decoder&);
 std::vector<uint8_t> CloneWindowContainerChildProtoPruningChildren(
-    const protos::pbzero::WindowContainerChildProto::Decoder&);
+    const com::android::internal::pbzero::WindowContainerChildProto::Decoder&);
 
 }  // namespace perfetto::trace_processor::winscope::windowmanager_proto_clone
 
-#endif  // SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_WINDOWMANAGER_PROTO_CLONE_H_
+#endif  // SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_WINDOWMANAGER_PROTO_CLONE_H_

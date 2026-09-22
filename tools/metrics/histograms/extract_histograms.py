@@ -85,7 +85,8 @@ class EnumDict(TypedDict, total=False):
 
   name: str
   type: Optional[str]
-buckets: list[BucketDict]  summary: str
+  buckets: list[BucketDict]
+  summary: str
 
 
 # TODO: crbug.com/443050753 - Rename CapCase names to using snake_case.

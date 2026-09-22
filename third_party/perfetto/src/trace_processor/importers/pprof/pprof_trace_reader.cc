@@ -19,7 +19,8 @@
 #include <algorithm>
 #include <cstddef>
 #include <cstdint>
-#include <memory>#include <optional>
+#include <memory>
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -29,7 +30,8 @@
 #include "perfetto/protozero/proto_utils.h"
 #include "perfetto/trace_processor/trace_blob_view.h"
 #include "src/trace_processor/importers/common/address_range.h"
-#include "src/trace_processor/importers/common/builtin_trace_importers.h"#include "src/trace_processor/importers/common/create_mapping_params.h"
+#include "src/trace_processor/importers/common/builtin_trace_importers.h"
+#include "src/trace_processor/importers/common/create_mapping_params.h"
 #include "src/trace_processor/importers/common/mapping_tracker.h"
 #include "src/trace_processor/importers/common/stack_profile_tracker.h"
 #include "src/trace_processor/importers/common/virtual_memory_mapping.h"
@@ -39,7 +41,8 @@
 #include "src/trace_processor/util/build_id.h"
 #include "src/trace_processor/util/trace_type.h"
 
-#include "perfetto/protozero/proto_decoder.h"#include "protos/third_party/pprof/profile.pbzero.h"
+#include "perfetto/protozero/proto_decoder.h"
+#include "protos/third_party/pprof/profile.pbzero.h"
 
 namespace perfetto::third_party::perftools::profiles::pbzero {
 using Profile = ::perfetto::third_party::perftools::profiles::pbzero::Profile;

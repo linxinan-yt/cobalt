@@ -570,7 +570,8 @@ U_COMMON_API inline UBool isBufferClone();
      * @return a StringEnumeration over the locales available at the time of the call
      * @stable ICU 2.4
      */
-U_COMMON_API static StringEnumeration* U_EXPORT2 getAvailableLocales();#endif
+U_COMMON_API static StringEnumeration* U_EXPORT2 getAvailableLocales();
+#endif
 
     /**
      * Returns the locale for this break iterator. Two flavors are available: valid and

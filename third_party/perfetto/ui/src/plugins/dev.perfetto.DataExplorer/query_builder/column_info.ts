@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import {perfettoSqlTypeToString} from '../../../trace_processor/perfetto_sql_type';
-import {SqlColumn} from '../../dev.perfetto.SqlModules/sql_modules';
+import type {PerfettoSqlType} from '../../../trace_processor/perfetto_sql_type';
+import type {SqlColumn} from '../../dev.perfetto.SqlModules/sql_modules';
 
 export interface ColumnInfo {
   name: string;
@@ -32,21 +32,9 @@ export function columnInfoFromSqlColumn(
 ): ColumnInfo {
   return {
     name: column.name,
-    type: perfettoSqlTypeToString(column.type),
+    type: column.type,
+    description: column.description,
     checked,
-    column: column,
-  };
-}
-
-export function columnInfoFromName(
-  name: string,
-  checked: boolean = false,
-): ColumnInfo {
-  return {
-    name,
-    type: 'NA',
-    checked,
-    column: {name},
   };
 }
 
@@ -56,9 +44,9 @@ export function newColumnInfo(
 ): ColumnInfo {
   const finalName = col.alias ?? col.name;
   return {
-    name: col.alias ?? col.column.name,
-    type: perfettoSqlTypeToString(col.column.type),
-    column: col.column,
+    name: finalName,
+    type: col.type,
+    description: col.description,
     alias: undefined,
     checked: checked ?? col.checked,
     typeUserModified: col.typeUserModified,

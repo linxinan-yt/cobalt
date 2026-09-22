@@ -26,6 +26,7 @@
 #include <utility>
 #include <vector>
 
+#include "perfetto/base/compiler.h"
 #include "perfetto/base/logging.h"
 #include "perfetto/base/status.h"
 #include "src/trace_processor/containers/string_pool.h"
@@ -38,6 +39,10 @@
 #include "src/trace_processor/sqlite/bindings/sqlite_result.h"
 #include "src/trace_processor/sqlite/bindings/sqlite_value.h"
 #include "src/trace_processor/sqlite/sqlite_utils.h"
+#include "src/trace_processor/storage/trace_storage.h"
+#include "src/trace_processor/types/trace_processor_context.h"
+#include "src/trace_processor/util/symbolizer/llvm_symbolizer.h"
+#include "src/trace_processor/util/symbolizer/llvm_symbolizer_c_api.h"
 
 namespace perfetto::trace_processor::symbolize {
 namespace {
@@ -64,8 +69,8 @@ struct Symbolize : public sqlite::Function<Symbolize> {
   static void Step(sqlite3_context* ctx, int argc, sqlite3_value** argv) {
     PERFETTO_DCHECK(argc == kArgCount);
     Symbolize::UserData* user_data = GetUserData(ctx);
-    auto* input = sqlite::value::Pointer<SymbolizationInput>(
-        argv[0], SymbolizationInput::kName);
+    auto* input = sqlite::value::Pointer<perfetto_sql::SymbolizationInput>(
+        argv[0], perfetto_sql::SymbolizationInput::kName);
     if (!input) {
       return;
     }
@@ -132,11 +137,14 @@ SymbolizePlugin::~SymbolizePlugin() = default;
 
 }  // namespace
 
-base::Status RegisterSymbolizeFunction(PerfettoSqlEngine& engine,
-                                       StringPool* pool) {
-  return engine.RegisterFunction<Symbolize>(
-      std::make_unique<Symbolize::UserData>(
-          Symbolize::UserData{&engine, pool}));
+void RegisterPlugin() {
+  static PluginRegistration reg(
+      []() -> std::unique_ptr<PluginBase> {
+        return std::make_unique<SymbolizePlugin>();
+      },
+      SymbolizePlugin::kPluginId, SymbolizePlugin::kDepIds.data(),
+      SymbolizePlugin::kDepIds.size());
+  base::ignore_result(reg);
 }
 
 }  // namespace perfetto::trace_processor::symbolize

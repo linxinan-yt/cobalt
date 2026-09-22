@@ -18,7 +18,8 @@
 
 #include <cstring>
 #include <limits>
-#include <string>#include "test/gtest_and_gmock.h"
+#include <string>
+#include "test/gtest_and_gmock.h"
 
 namespace perfetto {
 namespace base {

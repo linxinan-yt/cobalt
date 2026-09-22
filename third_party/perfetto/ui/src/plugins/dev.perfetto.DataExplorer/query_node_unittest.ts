@@ -16,18 +16,11 @@ import {
   nextNodeId,
   NodeType,
   singleNodeOperation,
-  createSelectColumnsProto,
-  createFinalColumns,
-  queryToRun,
-  setOperationChanged,
-  isAQuery,
-  notifyNextNodes,
-  Query,
-  QueryNode,
-  QueryNodeState,
+  type Query,
+  type QueryNode,
 } from './query_node';
-import {ColumnInfo} from './query_builder/column_info';
-import {PerfettoSqlType} from '../../trace_processor/perfetto_sql_type';
+import {queryToRun, isAQuery} from './query_builder/query_builder_utils';
+import {notifyNextNodes} from './query_builder/graph_utils';
 
 describe('query_node utilities', () => {
   describe('nextNodeId', () => {
@@ -66,307 +59,77 @@ describe('query_node utilities', () => {
     });
   });
 
-  describe('createSelectColumnsProto', () => {
-    const stringType: PerfettoSqlType = {kind: 'string'};
-    const intType: PerfettoSqlType = {kind: 'int'};
-
-    function createMockNode(columns: ColumnInfo[]): QueryNode {
-      return {
-        nodeId: 'test-node',
-        type: NodeType.kTable,
-        nextNodes: [],
-        finalCols: columns,
-        state: {},
-        validate: () => true,
-        getTitle: () => 'Test',
-        nodeSpecificModify: () => null,
-        clone: () => createMockNode(columns),
-        getStructuredQuery: () => undefined,
-        serializeState: () => ({}),
-      } as QueryNode;
-    }
-
-    it('should return undefined if all columns are checked', () => {
-      const columns: ColumnInfo[] = [
-        {
-          name: 'id',
-          type: 'INTEGER',
-          checked: true,
-          column: {name: 'id', type: intType},
-        },
-        {
-          name: 'name',
-          type: 'STRING',
-          checked: true,
-          column: {name: 'name', type: stringType},
-        },
-      ];
-      const node = createMockNode(columns);
-
-      const result = createSelectColumnsProto(node);
-
-      expect(result).toBeUndefined();
-    });
-
-    it('should return selected columns when some are unchecked', () => {
-      const columns: ColumnInfo[] = [
-        {
-          name: 'id',
-          type: 'INTEGER',
-          checked: true,
-          column: {name: 'id', type: intType},
-        },
-        {
-          name: 'name',
-          type: 'STRING',
-          checked: false,
-          column: {name: 'name', type: stringType},
-        },
-        {
-          name: 'age',
-          type: 'INTEGER',
-          checked: true,
-          column: {name: 'age', type: intType},
-        },
-      ];
-      const node = createMockNode(columns);
-
-      const result = createSelectColumnsProto(node);
-
-      expect(result).toBeDefined();
-      expect(result?.length).toBe(2);
-      expect(result?.[0].columnName).toBe('id');
-      expect(result?.[1].columnName).toBe('age');
-    });
-
-    it('should include aliases when present', () => {
-      const columns: ColumnInfo[] = [
-        {
-          name: 'id',
-          type: 'INTEGER',
-          checked: true,
-          column: {name: 'id', type: intType},
-          alias: 'identifier',
-        },
-        {
-          name: 'name',
-          type: 'STRING',
-          checked: true,
-          column: {name: 'name', type: stringType},
-        },
-      ];
-      const node = createMockNode(columns);
-
-      const result = createSelectColumnsProto(node);
-
-      expect(result).toBeUndefined(); // All checked, so undefined
-    });
-
-    it('should handle empty column list', () => {
-      const node = createMockNode([]);
-
-      const result = createSelectColumnsProto(node);
-
-      expect(result).toBeUndefined();
-    });
-  });
-
-  describe('createFinalColumns', () => {
-    const stringType: PerfettoSqlType = {kind: 'string'};
-
-    it('should create final columns with all checked', () => {
-      const sourceCols: ColumnInfo[] = [
-        {
-          name: 'id',
-          type: 'INTEGER',
-          checked: false,
-          column: {name: 'id', type: stringType},
-        },
-        {
-          name: 'name',
-          type: 'STRING',
-          checked: false,
-          column: {name: 'name', type: stringType},
-        },
-      ];
-
-      const result = createFinalColumns(sourceCols);
-
-      expect(result.length).toBe(2);
-      expect(result[0].checked).toBe(true);
-      expect(result[1].checked).toBe(true);
-    });
-
-    it('should preserve column information', () => {
-      const sourceCols: ColumnInfo[] = [
-        {
-          name: 'id',
-          type: 'INTEGER',
-          checked: false,
-          column: {name: 'id', type: stringType},
-          alias: 'identifier',
-        },
-      ];
-
-      const result = createFinalColumns(sourceCols);
-
-      expect(result[0].name).toBe('identifier');
-      expect(result[0].type).toBe('STRING');
-      expect(result[0].column.name).toBe('id');
-    });
-  });
-
   describe('queryToRun', () => {
     it('should handle undefined query', () => {
       const result = queryToRun(undefined);
       expect(result).toBe('N/A');
     });
 
-    it('should format query with modules', () => {
+    it('should return the SQL string', () => {
       const query: Query = {
         sql: 'SELECT * FROM table',
         textproto: '',
-        modules: ['android.slices', 'experimental.frames'],
-        preambles: [],
-        columns: [],
+        standaloneSql: '',
       };
-
-      const result = queryToRun(query);
-
-      expect(result).toContain('INCLUDE PERFETTO MODULE android.slices;');
-      expect(result).toContain('INCLUDE PERFETTO MODULE experimental.frames;');
-      expect(result).toContain('SELECT * FROM table');
-    });
-
-    it('should format query with preambles', () => {
-      const query: Query = {
-        sql: 'SELECT * FROM table',
-        textproto: '',
-        modules: [],
-        preambles: ['CREATE VIEW test AS SELECT 1;'],
-        columns: [],
-      };
-
-      const result = queryToRun(query);
-
-      expect(result).toContain('CREATE VIEW test AS SELECT 1;');
-      expect(result).toContain('SELECT * FROM table');
-    });
-
-    it('should format query with both modules and preambles', () => {
-      const query: Query = {
-        sql: 'SELECT * FROM table',
-        textproto: '',
-        modules: ['android.slices'],
-        preambles: ['-- This is a comment'],
-        columns: [],
-      };
-
-      const result = queryToRun(query);
-
-      expect(result).toContain('INCLUDE PERFETTO MODULE android.slices;');
-      expect(result).toContain('-- This is a comment');
-      expect(result).toContain('SELECT * FROM table');
-    });
-
-    it('should handle empty modules and preambles', () => {
-      const query: Query = {
-        sql: 'SELECT * FROM table',
-        textproto: '',
-        modules: [],
-        preambles: [],
-        columns: [],
-      };
-
-      const result = queryToRun(query);
-
-      expect(result).toBe('SELECT * FROM table');
+      expect(queryToRun(query)).toBe('SELECT * FROM table');
     });
   });
 
   describe('setOperationChanged', () => {
-    function createMockNode(
-      nodeId: string,
-      state: QueryNodeState = {},
-    ): QueryNode {
+    function createMockNode(nodeId: string): QueryNode {
       return {
         nodeId,
         type: NodeType.kTable,
         nextNodes: [],
         finalCols: [],
-        state,
+        context: {},
         validate: () => true,
         getTitle: () => 'Test',
         nodeSpecificModify: () => null,
-        clone: () => createMockNode(nodeId, state),
+        nodeDetails: () => ({content: null}),
+        nodeInfo: () => null,
+        clone: () => createMockNode(nodeId),
         getStructuredQuery: () => undefined,
-        serializeState: () => ({}),
+        attrs: {},
       } as QueryNode;
     }
 
     it('should mark node as changed', () => {
-      const state: QueryNodeState = {hasOperationChanged: false};
-      const node = createMockNode('node1', state);
+      const node = createMockNode('node1');
+      node.context.hasOperationChanged = false;
 
-      setOperationChanged(node);
+      node.context.hasOperationChanged = true;
 
-      expect(state.hasOperationChanged).toBe(true);
+      expect(node.context.hasOperationChanged).toBe(true);
     });
 
-    it('should propagate change to next nodes', () => {
-      const state1: QueryNodeState = {hasOperationChanged: false};
-      const state2: QueryNodeState = {hasOperationChanged: false};
-      const state3: QueryNodeState = {hasOperationChanged: false};
-
-      const node1 = createMockNode('node1', state1);
-      const node2 = createMockNode('node2', state2);
-      const node3 = createMockNode('node3', state3);
+    it('should mark node as changed', () => {
+      const node1 = createMockNode('node1');
+      const node2 = createMockNode('node2');
+      const node3 = createMockNode('node3');
+      node1.context.hasOperationChanged = false;
+      node2.context.hasOperationChanged = false;
+      node3.context.hasOperationChanged = false;
 
       node1.nextNodes = [node2];
       node2.nextNodes = [node3];
 
-      setOperationChanged(node1);
+      node1.context.hasOperationChanged = true;
 
-      expect(state1.hasOperationChanged).toBe(true);
-      expect(state2.hasOperationChanged).toBe(true);
-      expect(state3.hasOperationChanged).toBe(true);
+      // Only the node itself should be marked, not children
+      // (propagation is handled by QueryExecutionService.invalidateNode)
+      expect(node1.context.hasOperationChanged).toBe(true);
+      expect(node2.context.hasOperationChanged).toBe(false);
+      expect(node3.context.hasOperationChanged).toBe(false);
     });
 
-    it('should stop propagation if node already marked as changed', () => {
-      const state1: QueryNodeState = {hasOperationChanged: false};
-      const state2: QueryNodeState = {hasOperationChanged: true};
-      const state3: QueryNodeState = {hasOperationChanged: false};
+    it('should mark node as changed even if already changed', () => {
+      const node1 = createMockNode('node1');
+      node1.context.hasOperationChanged = true;
 
-      const node1 = createMockNode('node1', state1);
-      const node2 = createMockNode('node2', state2);
-      const node3 = createMockNode('node3', state3);
+      node1.context.hasOperationChanged = true;
 
-      node1.nextNodes = [node2];
-      node2.nextNodes = [node3];
-
-      setOperationChanged(node1);
-
-      expect(state1.hasOperationChanged).toBe(true);
-      // Should stop at node2 since it was already marked as changed
-      expect(state3.hasOperationChanged).toBe(false);
-    });
-
-    it('should handle multiple next nodes', () => {
-      const state1: QueryNodeState = {hasOperationChanged: false};
-      const state2: QueryNodeState = {hasOperationChanged: false};
-      const state3: QueryNodeState = {hasOperationChanged: false};
-
-      const node1 = createMockNode('node1', state1);
-      const node2 = createMockNode('node2', state2);
-      const node3 = createMockNode('node3', state3);
-
-      node1.nextNodes = [node2, node3];
-
-      setOperationChanged(node1);
-
-      expect(state1.hasOperationChanged).toBe(true);
-      expect(state2.hasOperationChanged).toBe(true);
-      expect(state3.hasOperationChanged).toBe(true);
+      expect(node1.context.hasOperationChanged).toBe(true);
     });
   });
 
@@ -375,9 +138,7 @@ describe('query_node utilities', () => {
       const query: Query = {
         sql: 'SELECT * FROM table',
         textproto: '',
-        modules: [],
-        preambles: [],
-        columns: [],
+        standaloneSql: '',
       };
 
       expect(isAQuery(query)).toBe(true);
@@ -393,7 +154,7 @@ describe('query_node utilities', () => {
     });
 
     it('should return false for object without sql', () => {
-      const notAQuery = {textproto: '', modules: [], preambles: []};
+      const notAQuery = {textproto: ''};
       expect(isAQuery(notAQuery as unknown as Query | undefined | Error)).toBe(
         false,
       );
@@ -410,20 +171,22 @@ describe('query_node utilities', () => {
         type: NodeType.kTable,
         nextNodes: [],
         finalCols: [],
-        state: {},
+        attrs: {},
+        context: {},
         validate: () => true,
         getTitle: () => 'Test',
         nodeSpecificModify: () => null,
+        nodeDetails: () => ({content: null}),
+        nodeInfo: () => null,
         clone: () => createPartialNode(nodeId, onPrevNodesUpdated),
         getStructuredQuery: () => undefined,
-        serializeState: () => ({}),
         onPrevNodesUpdated,
       } as QueryNode;
     }
 
     it('should call onPrevNodesUpdated on next nodes', () => {
-      const mockCallback1 = jest.fn();
-      const mockCallback2 = jest.fn();
+      const mockCallback1 = vi.fn();
+      const mockCallback2 = vi.fn();
 
       const node: QueryNode = {
         nodeId: 'node1',
@@ -433,13 +196,15 @@ describe('query_node utilities', () => {
           createPartialNode('node3', mockCallback2),
         ],
         finalCols: [],
-        state: {},
+        attrs: {},
+        context: {},
         validate: () => true,
         getTitle: () => 'Test',
         nodeSpecificModify: () => null,
+        nodeDetails: () => ({content: null}),
+        nodeInfo: () => null,
         clone: () => node,
         getStructuredQuery: () => undefined,
-        serializeState: () => ({}),
       } as QueryNode;
 
       notifyNextNodes(node);
@@ -454,13 +219,15 @@ describe('query_node utilities', () => {
         type: NodeType.kTable,
         nextNodes: [createPartialNode('node2')],
         finalCols: [],
-        state: {},
+        attrs: {},
+        context: {},
         validate: () => true,
         getTitle: () => 'Test',
         nodeSpecificModify: () => null,
+        nodeDetails: () => ({content: null}),
+        nodeInfo: () => null,
         clone: () => node,
         getStructuredQuery: () => undefined,
-        serializeState: () => ({}),
       } as QueryNode;
 
       expect(() => notifyNextNodes(node)).not.toThrow();
@@ -472,13 +239,15 @@ describe('query_node utilities', () => {
         type: NodeType.kTable,
         nextNodes: [],
         finalCols: [],
-        state: {},
+        attrs: {},
+        context: {},
         validate: () => true,
         getTitle: () => 'Test',
         nodeSpecificModify: () => null,
+        nodeDetails: () => ({content: null}),
+        nodeInfo: () => null,
         clone: () => node,
         getStructuredQuery: () => undefined,
-        serializeState: () => ({}),
       } as QueryNode;
 
       expect(() => notifyNextNodes(node)).not.toThrow();

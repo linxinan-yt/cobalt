@@ -27,7 +27,8 @@
 #include "perfetto/tracing/core/forward_decls.h"
 #include "perfetto/tracing/data_source.h"
 #include "perfetto/tracing/internal/data_source_internal.h"
-#include "perfetto/tracing/internal/data_source_type.h"#include "src/shared_lib/track_event/category_impl.h"
+#include "perfetto/tracing/internal/data_source_type.h"
+#include "src/shared_lib/track_event/category_impl.h"
 #include "src/shared_lib/track_event/global_state.h"
 #include "src/shared_lib/track_event/intern_map.h"
 

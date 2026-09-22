@@ -15,7 +15,8 @@
 #include <optional>
 #include <utility>
 
-#include "absl/algorithm/container.h"#include "absl/base/nullability.h"
+#include "absl/algorithm/container.h"
+#include "absl/base/nullability.h"
 #include "absl/container/flat_hash_map.h"
 #include "api/environment/environment.h"
 #include "api/sequence_checker.h"
@@ -23,7 +24,8 @@
 #include "api/units/time_delta.h"
 #include "api/units/timestamp.h"
 #include "api/video/encoded_frame.h"
-#include "logging/rtc_event_log/rtc_event_log_parser.h"#include "rtc_base/checks.h"
+#include "logging/rtc_event_log/rtc_event_log_parser.h"
+#include "rtc_base/checks.h"
 #include "rtc_base/logging.h"
 #include "rtc_base/numerics/sequence_number_unwrapper.h"
 #include "rtc_base/thread_annotations.h"

@@ -18,7 +18,8 @@
 #include <vector>
 
 #include "absl/strings/string_view.h"
-#include "api/environment/force_test_environment.h"#include "rtc_base/system/file_wrapper.h"
+#include "api/environment/force_test_environment.h"
+#include "rtc_base/system/file_wrapper.h"
 #include "test/gtest.h"
 #include "test/testsupport/file_utils.h"
 

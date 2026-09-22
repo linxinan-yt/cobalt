@@ -6,7 +6,8 @@
  * others. All Rights Reserved.
  ********************************************************************/
 
-#include <algorithm>#include <string>
+#include <algorithm>
+#include <string>
 #include <string_view>
 #include <utility>
 
@@ -32,7 +33,8 @@ using namespace std::string_view_literals;
 // Same for u"literal"s std::u16string literals.
 using namespace std::string_literals;
 
-using icu::header::utfStringCodePoints;#if 0
+using icu::header::utfStringCodePoints;
+#if 0
 #include "unicode/ustream.h"
 
 #include <iostream>

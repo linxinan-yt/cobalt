@@ -15,7 +15,8 @@
 #include <string.h>
 
 #include <array>
-#include <map>#include <string_view>
+#include <map>
+#include <string_view>
 #include <unordered_map>
 
 #include "unicode/utypes.h"

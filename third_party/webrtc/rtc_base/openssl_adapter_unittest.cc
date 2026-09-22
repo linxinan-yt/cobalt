@@ -29,7 +29,8 @@
 #include "rtc_base/strings/string_builder.h"
 #include "test/gmock.h"
 #include "test/gtest.h"
-#include "test/run_loop.h"#include "test/wait_until.h"  // IWYU pragma: keep
+#include "test/run_loop.h"
+#include "test/wait_until.h"  // IWYU pragma: keep
 
 namespace webrtc {
 namespace {

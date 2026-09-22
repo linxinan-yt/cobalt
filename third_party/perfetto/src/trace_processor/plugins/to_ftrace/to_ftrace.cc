@@ -28,14 +28,16 @@
 #include "perfetto/base/compiler.h"
 #include "perfetto/base/logging.h"
 #include "perfetto/base/status.h"
-#include "perfetto/ext/base/fixed_string_writer.h"
+#include "perfetto/ext/base/dynamic_string_writer.h"
 #include "perfetto/ext/base/string_view.h"
+#include "perfetto/ext/base/utils.h"
 #include "perfetto/public/compiler.h"
 #include "src/trace_processor/containers/null_term_string_view.h"
 #include "src/trace_processor/core/dataframe/specs.h"
 #include "src/trace_processor/core/plugin/plugin.h"
 #include "src/trace_processor/importers/common/system_info_tracker.h"
 #include "src/trace_processor/importers/ftrace/ftrace_descriptors.h"
+#include "src/trace_processor/perfetto_sql/engine/perfetto_sql_connection.h"
 #include "src/trace_processor/sqlite/bindings/sqlite_result.h"
 #include "src/trace_processor/sqlite/bindings/sqlite_type.h"
 #include "src/trace_processor/sqlite/bindings/sqlite_value.h"
@@ -87,7 +89,7 @@ class ArgsSerializer {
                  tables::ArgTable::ConstCursor*,
                  NullTermStringView event_name,
                  std::vector<std::optional<uint32_t>>* field_id_to_arg_index,
-                 base::FixedStringWriter*);
+                 base::DynamicStringWriter*);
 
   void SerializeArgs();
 
@@ -182,7 +184,7 @@ class ArgsSerializer {
 
   uint32_t start_row_ = 0;
 
-  base::FixedStringWriter* writer_ = nullptr;
+  base::DynamicStringWriter* writer_ = nullptr;
 };
 
 ArgsSerializer::ArgsSerializer(
@@ -191,7 +193,7 @@ ArgsSerializer::ArgsSerializer(
     tables::ArgTable::ConstCursor* cursor,
     NullTermStringView event_name,
     std::vector<std::optional<uint32_t>>* field_id_to_arg_index,
-    base::FixedStringWriter* writer)
+    base::DynamicStringWriter* writer)
     : storage_(context->storage.get()),
       context_(context),
       cursor_(cursor),
@@ -718,9 +720,6 @@ SystraceSerializer::ScopedCString SystraceSerializer::SerializeToString(
     uint32_t raw_row) {
   const auto& raw = storage_->ftrace_event_table();
 
-  char line[4096];
-  base::FixedStringWriter writer(line, sizeof(line));
-
   auto row = raw[raw_row];
   StringId event_name_id = row.name();
   NullTermStringView event_name = storage_->GetString(event_name_id);
@@ -751,7 +750,7 @@ SystraceSerializer::ScopedCString SystraceSerializer::SerializeToString(
 }
 
 void SystraceSerializer::SerializePrefix(uint32_t raw_row,
-                                         base::FixedStringWriter* writer) {
+                                         base::DynamicStringWriter* writer) {
   const auto& raw = storage_->ftrace_event_table();
   const auto& cpu_table = storage_->cpu_table();
 

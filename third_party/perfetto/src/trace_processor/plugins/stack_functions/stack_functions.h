@@ -17,14 +17,7 @@
 #ifndef SRC_TRACE_PROCESSOR_PLUGINS_STACK_FUNCTIONS_STACK_FUNCTIONS_H_
 #define SRC_TRACE_PROCESSOR_PLUGINS_STACK_FUNCTIONS_STACK_FUNCTIONS_H_
 
-#include <cstddef>
-
-#include "perfetto/base/status.h"
-
-namespace perfetto::trace_processor {
-
-class PerfettoSqlEngine;
-class TraceProcessorContext;
+namespace perfetto::trace_processor::stack_functions {
 
 // Registers the stack manipulation related functions:
 //
@@ -49,6 +42,6 @@ class TraceProcessorContext;
 // See protos/perfetto/trace_processor/stack.proto
 void RegisterPlugin();
 
-}  // namespace perfetto::trace_processor
+}  // namespace perfetto::trace_processor::stack_functions
 
 #endif  // SRC_TRACE_PROCESSOR_PLUGINS_STACK_FUNCTIONS_STACK_FUNCTIONS_H_

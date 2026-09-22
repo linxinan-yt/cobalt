@@ -26,7 +26,8 @@
 #include <vector>
 
 #include "perfetto/base/logging.h"
-#include "perfetto/ext/base/dynamic_string_writer.h"#include "perfetto/ext/base/string_utils.h"
+#include "perfetto/ext/base/dynamic_string_writer.h"
+#include "perfetto/ext/base/string_utils.h"
 #include "perfetto/ext/base/string_view.h"
 #include "perfetto/protozero/field.h"
 #include "src/trace_processor/importers/common/args_tracker.h"

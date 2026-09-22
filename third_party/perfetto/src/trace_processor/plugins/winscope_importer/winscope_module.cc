@@ -61,15 +61,20 @@ WinscopeModule::WinscopeModule(ProtoImporterModuleContext* module_context,
       android_input_event_parser_(context),
       viewcapture_parser_(&context_),
       windowmanager_parser_(&context_) {
-  context->descriptor_pool_->AddFromFileDescriptorSet(
-      kWinscopeDescriptor.data(), kWinscopeDescriptor.size());
-  RegisterForField(TracePacket::kSurfaceflingerLayersSnapshotFieldNumber);
-  RegisterForField(TracePacket::kSurfaceflingerTransactionsFieldNumber);
-  RegisterForField(TracePacket::kShellTransitionFieldNumber);
-  RegisterForField(TracePacket::kShellHandlerMappingsFieldNumber);
-  RegisterForField(TracePacket::kProtologMessageFieldNumber);
-  RegisterForField(TracePacket::kProtologViewerConfigFieldNumber);
-  RegisterForField(TracePacket::kWinscopeExtensionsFieldNumber);
+  RegisterForField(FrameworksNativeWinscopeTracePacket::
+                       kSurfaceflingerLayersSnapshotFieldNumber);
+  RegisterForField(FrameworksNativeWinscopeTracePacket::
+                       kSurfaceflingerTransactionsFieldNumber);
+  RegisterForField(
+      FrameworksBaseWinscopeTracePacket::kShellTransitionFieldNumber);
+  RegisterForField(
+      FrameworksBaseWinscopeTracePacket::kShellHandlerMappingsFieldNumber);
+  RegisterForField(
+      FrameworksNativeWinscopeTracePacket::kProtologMessageFieldNumber);
+  RegisterForField(
+      FrameworksNativeWinscopeTracePacket::kProtologViewerConfigFieldNumber);
+  RegisterForField(
+      FrameworksNativeWinscopeTracePacket::kWinscopeExtensionsFieldNumber);
 }
 
 ModuleResult WinscopeModule::TokenizePacket(const TokenizePacketArgs& args) {
@@ -133,34 +138,49 @@ void WinscopeModule::ParseField(const ParseFieldArgs& args) {
 void WinscopeModule::ParseWinscopeExtensionsData(protozero::ConstBytes blob,
                                                  int64_t timestamp,
                                                  const TracePacketData& data) {
-  WinscopeExtensionsImpl::Decoder decoder(blob.data, blob.size);
-
-  if (auto field =
-          decoder.Get(WinscopeExtensionsImpl::kInputmethodClientsFieldNumber);
-      field.valid()) {
-    ParseInputMethodClientsData(timestamp, field.as_bytes());
-  } else if (field = decoder.Get(
-                 WinscopeExtensionsImpl::kInputmethodManagerServiceFieldNumber);
-             field.valid()) {
-    ParseInputMethodManagerServiceData(timestamp, field.as_bytes());
-  } else if (field = decoder.Get(
-                 WinscopeExtensionsImpl::kInputmethodServiceFieldNumber);
-             field.valid()) {
-    ParseInputMethodServiceData(timestamp, field.as_bytes());
-  } else if (field =
-                 decoder.Get(WinscopeExtensionsImpl::kViewcaptureFieldNumber);
-             field.valid()) {
-    viewcapture_parser_.Parse(timestamp, field.as_bytes(),
-                              data.sequence_state.get());
-  } else if (field = decoder.Get(
-                 WinscopeExtensionsImpl::kAndroidInputEventFieldNumber);
-             field.valid()) {
-    android_input_event_parser_.ParseAndroidInputEvent(timestamp,
-                                                       field.as_bytes());
-  } else if (field =
-                 decoder.Get(WinscopeExtensionsImpl::kWindowmanagerFieldNumber);
-             field.valid()) {
-    windowmanager_parser_.Parse(timestamp, field.as_bytes());
+  // WinscopeExtensions is purely a carrier of extension fields: walk them
+  // all in wire order and dispatch on the field id.
+  protozero::ProtoDecoder decoder(blob);
+  for (protozero::Field f = decoder.ReadField(); f.valid();
+       f = decoder.ReadField()) {
+    TypedProtoField field(f);
+    switch (field.id()) {
+      case FrameworksBaseWinscopeExtensions::kInputmethodClientsFieldNumber:
+        ParseInputMethodClientsData(
+            timestamp,
+            field
+                .Cast<FrameworksBaseWinscopeExtensions::kInputmethodClients>());
+        return;
+      case FrameworksBaseWinscopeExtensions::
+          kInputmethodManagerServiceFieldNumber:
+        ParseInputMethodManagerServiceData(
+            timestamp, field.Cast<FrameworksBaseWinscopeExtensions::
+                                      kInputmethodManagerService>());
+        return;
+      case FrameworksBaseWinscopeExtensions::kInputmethodServiceFieldNumber:
+        ParseInputMethodServiceData(
+            timestamp,
+            field
+                .Cast<FrameworksBaseWinscopeExtensions::kInputmethodService>());
+        return;
+      case FrameworksBaseWinscopeExtensions::kViewcaptureFieldNumber:
+        viewcapture_parser_.Parse(
+            timestamp,
+            field.Cast<FrameworksBaseWinscopeExtensions::kViewcapture>(),
+            data.sequence_state.get());
+        return;
+      case FrameworksNativeWinscopeExtensions::kAndroidInputEventFieldNumber:
+        android_input_event_parser_.ParseAndroidInputEvent(
+            timestamp,
+            field.Cast<
+                FrameworksNativeWinscopeExtensions::kAndroidInputEvent>());
+        return;
+      case FrameworksBaseWinscopeExtensions::kWindowmanagerFieldNumber:
+        windowmanager_parser_.Parse(
+            timestamp,
+            field.Cast<FrameworksBaseWinscopeExtensions::kWindowmanager>());
+        return;
+    }
   }
 }
 
@@ -252,7 +272,7 @@ void WinscopeModule::ParseInputMethodServiceData(int64_t timestamp,
   }
 }
 
-void WinscopeModule::NotifyEndOfFile() {
+void WinscopeModule::OnEventsFullyExtracted() {
   context_.shell_transitions_tracker_.Flush();
 }
 

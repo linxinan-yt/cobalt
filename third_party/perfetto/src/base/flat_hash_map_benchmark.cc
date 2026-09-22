@@ -17,7 +17,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-#include <optional>#include <random>
+#include <optional>
+#include <random>
 #include <string>
 #include <string_view>
 #include <unordered_map>
@@ -28,7 +29,8 @@
 
 #include "perfetto/base/logging.h"
 #include "perfetto/ext/base/flat_hash_map.h"
-#include "perfetto/ext/base/flat_hash_map_v1.h"#include "perfetto/ext/base/hash.h"
+#include "perfetto/ext/base/flat_hash_map_v1.h"
+#include "perfetto/ext/base/hash.h"
 #include "perfetto/ext/base/murmur_hash.h"
 #include "perfetto/ext/base/scoped_file.h"
 

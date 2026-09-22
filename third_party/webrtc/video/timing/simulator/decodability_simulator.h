@@ -17,7 +17,8 @@
 #include <vector>
 
 #include "absl/algorithm/container.h"
-#include "api/numerics/samples_stats_counter.h"#include "api/units/data_size.h"
+#include "api/numerics/samples_stats_counter.h"
+#include "api/units/data_size.h"
 #include "api/units/time_delta.h"
 #include "api/units/timestamp.h"
 #include "logging/rtc_event_log/rtc_event_log_parser.h"

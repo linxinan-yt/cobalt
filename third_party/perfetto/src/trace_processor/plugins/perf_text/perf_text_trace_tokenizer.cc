@@ -167,7 +167,8 @@ base::Status PerfTextTraceTokenizer::Parse(TraceBlobView blob) {
     evt.callsite_id = *parent_callsite;
 
     std::optional<int64_t> trace_ts = context_->clock_tracker->ToTraceTime(
-        protos::pbzero::ClockSnapshot::Clock::MONOTONIC, sample->ts);
+        ClockId::Machine(protos::pbzero::ClockSnapshot::Clock::MONOTONIC),
+        sample->ts);
     if (trace_ts) {
       stream_->Push(*trace_ts, evt);
     }

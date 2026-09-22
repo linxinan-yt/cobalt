@@ -17,7 +17,8 @@
 #include "src/trace_processor/importers/instruments/instruments_xml_tokenizer.h"
 
 #include "perfetto/ext/base/murmur_hash.h"
-#include "src/trace_processor/importers/instruments/row_parser.h"#include <expat.h>
+#include "src/trace_processor/importers/instruments/row_parser.h"
+#include <expat.h>
 #include <algorithm>
 #include <cctype>
 #include <cinttypes>

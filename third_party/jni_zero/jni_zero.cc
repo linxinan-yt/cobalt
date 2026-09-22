@@ -15,7 +15,8 @@
 #include "third_party/jni_zero/jni_methods.h"
 #include "third_party/jni_zero/jni_zero_internal.h"
 #include "third_party/jni_zero/logging.h"
-#include "third_party/jni_zero/system_jni_unchecked_exceptions/ClassLoader_jni.h"#if defined(JNI_ZERO_MULTIPLEXING_ENABLED)
+#include "third_party/jni_zero/system_jni_unchecked_exceptions/ClassLoader_jni.h"
+#if defined(JNI_ZERO_MULTIPLEXING_ENABLED)
 extern const int64_t kJniZeroHashWhole;
 extern const int64_t kJniZeroHashPriority;
 #endif

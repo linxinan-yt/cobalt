@@ -54,7 +54,8 @@
 #include <d3d11on12.h>
 
 #include "third_party/dawn/include/dawn/native/D3D11Backend.h"
-#include "third_party/dawn/include/dawn/native/D3D12Backend.h"#include "ui/gl/direct_composition_support.h"
+#include "third_party/dawn/include/dawn/native/D3D12Backend.h"
+#include "ui/gl/direct_composition_support.h"
 #include "ui/gl/gl_angle_util_win.h"
 #endif
 

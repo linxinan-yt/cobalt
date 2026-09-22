@@ -21,7 +21,8 @@
 #include "testutil.h"
 #include "uparse.h"
 #include "ucdtest.h"
-#include "uprops.h"#include "usettest.h"
+#include "uprops.h"
+#include "usettest.h"
 
 #include <iostream>
 

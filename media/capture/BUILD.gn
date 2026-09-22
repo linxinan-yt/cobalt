@@ -301,15 +301,15 @@ test("capture_unittests") {
     sources -= [ "run_all_unittests.cc" ]
   }
 
-  if (is_cobalt) {
-    sources -= [
-      "video/file_video_capture_device_unittest.cc",
-      "video/video_capture_device_unittest.cc",
-    ]
-  }
-
   if (!is_android) {
     sources += [ "video/file_video_capture_device_unittest.cc" ]
+  }
+
+  if (is_cobalt) {
+    if (!is_android) {
+      sources -= [ "video/file_video_capture_device_unittest.cc" ]
+    }
+    sources -= [ "video/video_capture_device_unittest.cc" ]
   }
 
   data = [ "//media/test/data/bear.mjpeg" ]
@@ -333,8 +333,9 @@ test("capture_unittests") {
     "//ui/gfx:test_support",
   ]
 
-if (is_linux) {
-    deps += [ "video/linux:unit_tests" ]    data += [ "//media/test/data/one_frame_1280x720.mjpeg" ]
+  if (is_linux) {
+    deps += [ "video/linux:unit_tests" ]
+    data += [ "//media/test/data/one_frame_1280x720.mjpeg" ]
   }
 
   if (is_android) {

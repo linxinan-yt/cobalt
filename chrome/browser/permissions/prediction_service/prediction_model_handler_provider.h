@@ -9,7 +9,8 @@
 
 #include "base/scoped_observation.h"
 #include "components/keyed_service/core/keyed_service.h"
-#include "components/passage_embeddings/core/passage_embeddings_types.h"#include "components/permissions/request_type.h"
+#include "components/passage_embeddings/core/passage_embeddings_types.h"
+#include "components/permissions/request_type.h"
 
 namespace optimization_guide {
 class OptimizationGuideModelProvider;

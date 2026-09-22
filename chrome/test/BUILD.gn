@@ -1486,7 +1486,9 @@ if (enable_extensions_core) {
       sources += [ "../browser/extensions/api/mdns/mdns_apitest.cc" ]
       deps += [ "../browser/media/router:test_support" ]
     }
-  }  # enable_extensions_core  if (enable_pdf) {
+  }  # enable_extensions_core
+
+  if (enable_pdf) {
     deps += [
       "//chrome/browser/pdf:pdf_extension_test_utils",
       "//extensions/browser/mime_handler",

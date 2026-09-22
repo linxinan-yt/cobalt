@@ -14,23 +14,23 @@
  * limitations under the License.
  */
 
-#ifndef SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_VIEWCAPTURE_RECT_COMPUTATION_H_
-#define SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_VIEWCAPTURE_RECT_COMPUTATION_H_
+#ifndef SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_VIEWCAPTURE_RECT_COMPUTATION_H_
+#define SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_VIEWCAPTURE_RECT_COMPUTATION_H_
 
 #include <optional>
 #include <unordered_map>
 #include <vector>
-#include "protos/perfetto/trace/android/viewcapture.pbzero.h"
-#include "src/trace_processor/importers/proto/winscope/winscope_geometry.h"
-#include "src/trace_processor/importers/proto/winscope/winscope_rect_tracker.h"
+#include "protos/third_party/android/frameworks/base/proto/tracing/winscope/viewcapture.pbzero.h"
+#include "src/trace_processor/plugins/winscope_importer/winscope_geometry.h"
+#include "src/trace_processor/plugins/winscope_importer/winscope_rect_tracker.h"
 #include "src/trace_processor/tables/winscope_tables_py.h"
 
 namespace perfetto::trace_processor::winscope::viewcapture {
 
 namespace {
 using TraceRectTableId = tables::WinscopeTraceRectTable::Id;
-using SnapshotDecoder = protos::pbzero::ViewCapture::Decoder;
-using ViewDecoder = protos::pbzero::ViewCapture::View::Decoder;
+using SnapshotDecoder = com::android::internal::pbzero::ViewCapture::Decoder;
+using ViewDecoder = com::android::internal::pbzero::ViewCapture::View::Decoder;
 }  // namespace
 
 struct SurfaceFlingerRects {
@@ -58,4 +58,4 @@ class RectComputation {
 };
 }  // namespace perfetto::trace_processor::winscope::viewcapture
 
-#endif  // SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_VIEWCAPTURE_RECT_COMPUTATION_H_
+#endif  // SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_VIEWCAPTURE_RECT_COMPUTATION_H_

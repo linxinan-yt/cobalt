@@ -97,9 +97,10 @@ _blink_protocol_path =
     config_values = [ "protocol.path=$protocol_path" ]
     use_embedder_types = true
 
-inputs = [
+    inputs = [
       _concatenated_protocol_path,
-      config_file,    ]
+      config_file,
+    ]
 
     # These are relative to $target_gen_dir.
     outputs = [
@@ -113,8 +114,12 @@ inputs = [
       "protocol/device_access.h",
       "protocol/device_orientation.cc",
       "protocol/device_orientation.h",
+      "protocol/digital_credentials.cc",
+      "protocol/digital_credentials.h",
       "protocol/dom.cc",
       "protocol/dom.h",
+      "protocol/debugger.cc",
+      "protocol/debugger.h",
       "protocol/emulation.cc",
       "protocol/emulation.h",
       "protocol/fed_cm.cc",
@@ -159,6 +164,8 @@ inputs = [
       "protocol/tethering.h",
       "protocol/tracing.cc",
       "protocol/tracing.h",
+      "protocol/web_mcp.cc",
+      "protocol/web_mcp.h",
       "protocol/web_authn.cc",
       "protocol/web_authn.h",
     ]

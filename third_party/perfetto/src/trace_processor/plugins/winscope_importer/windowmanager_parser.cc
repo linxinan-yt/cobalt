@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-#include "src/trace_processor/importers/proto/winscope/windowmanager_parser.h"
+#include "src/trace_processor/plugins/winscope_importer/windowmanager_parser.h"
 
 #include "perfetto/ext/base/base64.h"
 #include "perfetto/protozero/field.h"
-#include "protos/perfetto/trace/android/server/windowmanagerservice.pbzero.h"
-#include "protos/perfetto/trace/android/windowmanager.pbzero.h"
+#include "protos/third_party/android/frameworks/base/proto/tracing/winscope/windowmanager.pbzero.h"
 #include "src/trace_processor/importers/common/args_tracker.h"
-#include "src/trace_processor/importers/proto/winscope/windowmanager_hierarchy_walker.h"
+#include "src/trace_processor/importers/common/stats_tracker.h"
+#include "src/trace_processor/plugins/winscope_importer/windowmanager_hierarchy_walker.h"
+#include "src/trace_processor/plugins/winscope_importer/windowmanager_proto_clone.h"
+#include "src/trace_processor/plugins/winscope_importer/winscope_proto_mapping.h"
 #include "src/trace_processor/tables/winscope_tables_py.h"
 #include "src/trace_processor/types/trace_processor_context.h"
 
@@ -31,36 +33,48 @@ WindowManagerParser::WindowManagerParser(WinscopeContext* context)
     : context_{context},
       hierarchy_walker_{
           context_->trace_processor_context_->storage->mutable_string_pool()},
-      args_parser_{*context->trace_processor_context_->descriptor_pool_} {}
+      args_parser_{
+          *context->trace_processor_context_->descriptor_pool_,
+          *context->trace_processor_context_->storage->mutable_string_pool()} {}
 
 void WindowManagerParser::Parse(int64_t timestamp, protozero::ConstBytes blob) {
-  auto snapshot_id = InsertSnapshotRow(timestamp, blob);
+  com::android::internal::pbzero::WindowManagerTraceEntry::Decoder
+      entry_decoder(blob);
 
-  auto window_containers = hierarchy_walker_.ExtractWindowContainers(
-      protos::pbzero::WindowManagerTraceEntry::Decoder(blob));
-  if (!window_containers.ok()) {
-    context_->trace_processor_context_->storage->IncrementStats(
+  auto snapshot_id = InsertSnapshotRow(timestamp, entry_decoder);
+
+  auto result = hierarchy_walker_.ExtractWindowContainers(entry_decoder);
+  if (result.has_parse_error) {
+    context_->trace_processor_context_->stats_tracker->IncrementStats(
         stats::winscope_windowmanager_parse_errors);
     return;
   }
 
-  InsertWindowContainerRows(timestamp, snapshot_id, *window_containers);
+  InsertWindowContainerRows(timestamp, snapshot_id, result.window_containers);
 }
 
 tables::WindowManagerTable::Id WindowManagerParser::InsertSnapshotRow(
     int64_t timestamp,
-    protozero::ConstBytes blob) {
+    com::android::internal::pbzero::WindowManagerTraceEntry::Decoder&
+        entry_decoder) {
+  const auto pruned_entry_proto =
+      windowmanager_proto_clone::CloneEntryProtoPruningChildren(entry_decoder);
+  protozero::ConstBytes pruned_proto_bytes{pruned_entry_proto.data(),
+                                           pruned_entry_proto.size()};
+
   auto* trace_processor_context = context_->trace_processor_context_;
   tables::WindowManagerTable::Row row;
   row.ts = timestamp;
-  protos::pbzero::WindowManagerTraceEntry::Decoder entry(blob);
+  com::android::internal::pbzero::WindowManagerTraceEntry::Decoder entry(
+      pruned_proto_bytes);
   row.has_invalid_elapsed_ts = entry.elapsed_realtime_nanos() == 0;
-  row.base64_proto_id = trace_processor_context->storage->mutable_string_pool()
-                            ->InternString(base::StringView(
-                                base::Base64Encode(blob.data, blob.size)))
-                            .raw_id();
-  protos::pbzero::WindowManagerServiceDumpProto::Decoder service(
-      entry.window_manager_service());
+  row.base64_proto_id =
+      trace_processor_context->storage->mutable_string_pool()
+          ->InternString(base::StringView(base::Base64Encode(
+              pruned_proto_bytes.data, pruned_proto_bytes.size)))
+          .raw_id();
+  com::android::internal::pbzero::WindowManagerServiceDumpProto::Decoder
+      service(entry_decoder.window_manager_service());
   row.focused_display_id = static_cast<uint32_t>(service.focused_display_id());
   auto row_id = trace_processor_context->storage->mutable_windowmanager_table()
                     ->Insert(row)
@@ -68,14 +82,15 @@ tables::WindowManagerTable::Id WindowManagerParser::InsertSnapshotRow(
 
   ArgsTracker tracker(trace_processor_context);
   auto inserter = tracker.AddArgsTo(row_id);
-  ArgsParser writer(timestamp, inserter, *trace_processor_context->storage);
+  ArgsParser writer(timestamp, inserter, *trace_processor_context->storage,
+                    *trace_processor_context->process_tracker);
   base::Status status =
-      args_parser_.ParseMessage(blob,
+      args_parser_.ParseMessage(pruned_proto_bytes,
                                 *util::winscope_proto_mapping::GetProtoName(
                                     tables::WindowManagerTable::Name()),
                                 nullptr /* parse all fields */, writer);
   if (!status.ok()) {
-    trace_processor_context->storage->IncrementStats(
+    trace_processor_context->stats_tracker->IncrementStats(
         stats::winscope_windowmanager_parse_errors);
   }
 
@@ -174,21 +189,22 @@ void WindowManagerParser::InsertWindowContainerArgs(
     const WindowManagerHierarchyWalker::ExtractedWindowContainer&
         window_container) {
   bool is_root = !window_container.parent_token.has_value();
-  const char* proto_name = is_root
-                               ? ".perfetto.protos.RootWindowContainerProto"
-                               : ".perfetto.protos.WindowContainerChildProto";
+  const char* proto_name =
+      is_root ? ".com.android.internal.RootWindowContainerProto"
+              : ".com.android.internal.WindowContainerChildProto";
   protozero::ConstBytes bytes{window_container.pruned_proto.data(),
                               window_container.pruned_proto.size()};
   ArgsTracker tracker(context_->trace_processor_context_);
 
   auto inserter = tracker.AddArgsTo(row_id);
   ArgsParser writer(timestamp, inserter,
-                    *context_->trace_processor_context_->storage);
+                    *context_->trace_processor_context_->storage,
+                    *context_->trace_processor_context_->process_tracker);
 
   base::Status status = args_parser_.ParseMessage(
       bytes, proto_name, nullptr /* parse all fields */, writer);
   if (!status.ok()) {
-    context_->trace_processor_context_->storage->IncrementStats(
+    context_->trace_processor_context_->stats_tracker->IncrementStats(
         stats::winscope_windowmanager_parse_errors);
   }
 }

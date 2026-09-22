@@ -15,7 +15,8 @@
 #include <optional>
 
 #include "api/units/time_delta.h"
-#include "api/units/timestamp.h"#include "api/video_codecs/encoder_speed_controller.h"
+#include "api/units/timestamp.h"
+#include "api/video_codecs/encoder_speed_controller.h"
 namespace webrtc {
 
 // Utility class intended to help dynamically find the optimal speed settings to

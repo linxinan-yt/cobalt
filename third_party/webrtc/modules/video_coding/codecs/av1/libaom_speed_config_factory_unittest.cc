@@ -20,7 +20,8 @@
 #include "api/video_codecs/video_codec.h"
 #include "rtc_base/checks.h"
 #include "test/create_test_environment.h"
-#include "test/create_test_field_trials.h"#include "test/gtest.h"
+#include "test/create_test_field_trials.h"
+#include "test/gtest.h"
 
 namespace webrtc {
 

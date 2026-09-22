@@ -23,7 +23,6 @@
 #include <string>
 #include <vector>
 
-#include "perfetto/base/logging.h"
 #include "perfetto/ext/base/flat_hash_map.h"
 #include "perfetto/trace_processor/basic_types.h"
 #include "src/trace_processor/core/dataframe/specs.h"
@@ -34,25 +33,6 @@
 #include "src/trace_processor/tables/slice_tables_py.h"
 
 namespace perfetto::trace_processor {
-
-// Represents the flow graph with pre-computed adjacency lists.
-struct FlowGraph {
-  base::FlatHashMap<SliceId, std::vector<tables::FlowTable::RowNumber>>
-      outgoing_flows;
-  base::FlatHashMap<SliceId, std::vector<tables::FlowTable::RowNumber>>
-      incoming_flows;
-
-  static FlowGraph Build(const tables::FlowTable& flow_table) {
-    FlowGraph graph;
-    for (uint32_t i = 0; i < flow_table.row_count(); ++i) {
-      tables::FlowTable::RowNumber row(i);
-      auto ref = row.ToRowReference(flow_table);
-      graph.outgoing_flows[ref.slice_out()].push_back(row);
-      graph.incoming_flows[ref.slice_in()].push_back(row);
-    }
-    return graph;
-  }
-};
 
 // Represents the flow graph with pre-computed adjacency lists.
 struct FlowGraph {

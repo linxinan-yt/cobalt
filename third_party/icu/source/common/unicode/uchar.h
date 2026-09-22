@@ -556,7 +556,8 @@ typedef enum UProperty {
      * Used by the AMTRA algorithm in UAX #53.
      * @stable ICU 76
      */
-    UCHAR_MODIFIER_COMBINING_MARK=75,#ifndef U_HIDE_DEPRECATED_API
+    UCHAR_MODIFIER_COMBINING_MARK=75,
+#ifndef U_HIDE_DEPRECATED_API
     /**
      * One more than the last constant for binary Unicode properties.
      * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
@@ -683,7 +684,8 @@ typedef enum UProperty {
      * Used in the grapheme cluster break algorithm in UAX #29.
      * @stable ICU 76
      */
-    UCHAR_INDIC_CONJUNCT_BREAK=0x101A,#ifndef U_HIDE_DEPRECATED_API
+    UCHAR_INDIC_CONJUNCT_BREAK=0x101A,
+#ifndef U_HIDE_DEPRECATED_API
     /**
      * One more than the last constant for enumerated/integer Unicode properties.
      * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
@@ -1995,14 +1997,16 @@ enum UBlockCode {
     /** @stable ICU 78 */
     UBLOCK_TANGUT_COMPONENTS_SUPPLEMENT = 345, /*[18D80]*/
     /** @stable ICU 78 */
-    UBLOCK_TOLONG_SIKI = 346, /*[11DB0]*/#ifndef U_HIDE_DEPRECATED_API
+    UBLOCK_TOLONG_SIKI = 346, /*[11DB0]*/
+#ifndef U_HIDE_DEPRECATED_API
     /**
      * One more than the highest normal UBlockCode value.
      * The highest value is available via u_getIntPropertyMaxValue(UCHAR_BLOCK).
      *
      * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
      */
-UBLOCK_COUNT = 347,#endif  // U_HIDE_DEPRECATED_API
+    UBLOCK_COUNT = 347,
+#endif  // U_HIDE_DEPRECATED_API
 
     /** @stable ICU 2.0 */
     UBLOCK_INVALID_CODE=-1
@@ -2298,7 +2302,8 @@ typedef enum UJoiningGroup {
 
     U_JG_KASHMIRI_YEH,  /**< @stable ICU 76 */
 
-U_JG_THIN_NOON,  /**< @stable ICU 78 */#ifndef U_HIDE_DEPRECATED_API
+    U_JG_THIN_NOON,  /**< @stable ICU 78 */
+#ifndef U_HIDE_DEPRECATED_API
     /**
      * One more than the highest normal UJoiningGroup value.
      * The highest value is available via u_getIntPropertyMaxValue(UCHAR_JOINING_GROUP).

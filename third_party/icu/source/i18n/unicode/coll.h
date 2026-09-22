@@ -629,7 +629,8 @@ public:
      * Like <code>std::less_equal</code> but uses the collator instead of <code>operator&lt;=</code>.
 * @stable ICU 76
      */
-    inline auto less_equal() const { return Predicate<std::not_equal_to, UCOL_GREATER>(*this); }#ifndef U_FORCE_HIDE_DEPRECATED_API
+    inline auto less_equal() const { return Predicate<std::not_equal_to, UCOL_GREATER>(*this); }
+#ifndef U_FORCE_HIDE_DEPRECATED_API
     /**
      * Determines the minimum strength that will be used in comparison or
      * transformation.

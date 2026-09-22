@@ -12,7 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-.pf-explore-page-help {
+@use "./common" as *;
+
+.pf-data-explorer-help {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -41,20 +43,19 @@
     h4 {
       margin-top: 0;
       margin-bottom: 0.5rem;
-      font-size: var(--pf-exp-font-size-md);
+      font-size: var(--pf-font-size-m);
       font-weight: 500;
     }
 
     p {
       margin-bottom: 0;
-      font-size: var(--pf-exp-font-size-sm);
+      font-size: var(--pf-font-size-s);
       color: var(--pf-color-text-muted);
     }
   }
 }
 
 .pf-exp-table-list {
-  padding: 0.5rem;
   overflow-y: auto;
   height: 100%;
 
@@ -97,7 +98,7 @@
     }
 
     .table-description {
-      font-size: var(--pf-exp-font-size-sm);
+      font-size: var(--pf-font-size-s);
       color: var(--pf-color-text-muted);
     }
   }

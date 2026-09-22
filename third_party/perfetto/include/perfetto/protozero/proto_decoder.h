@@ -22,7 +22,8 @@
 #include <cstdint>
 #include <cstring>
 #include <memory>
-#include <new>#include <string>
+#include <new>
+#include <string>
 #include <type_traits>
 #include <variant>
 

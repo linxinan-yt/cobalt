@@ -13,7 +13,8 @@
 #include <cstring>
 #include <memory>
 #include <set>
-#include <span>#include <string>
+#include <span>
+#include <string>
 #include <utility>
 #include <vector>
 
@@ -33,13 +34,15 @@
 #include "pc/datagram_connection_internal.h"
 #include "pc/test/fake_rtc_certificate_generator.h"
 #include "rtc_base/copy_on_write_buffer.h"
-#include "rtc_base/network/sent_packet.h"#include "rtc_base/rtc_certificate.h"
+#include "rtc_base/network/sent_packet.h"
+#include "rtc_base/rtc_certificate.h"
 #include "rtc_base/socket_address.h"
 #include "rtc_base/ssl_fingerprint.h"
 #include "test/create_test_environment.h"
 #include "test/gmock.h"
 #include "test/gtest.h"
-#include "test/run_loop.h"#include "test/wait_until.h"
+#include "test/run_loop.h"
+#include "test/wait_until.h"
 
 namespace webrtc {
 namespace {

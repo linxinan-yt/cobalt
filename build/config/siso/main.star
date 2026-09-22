@@ -84,7 +84,7 @@ def init(ctx):
     step_config = mojo.step_config(ctx, step_config)
     step_config = rust.step_config(ctx, step_config)
     step_config = simple.step_config(ctx, step_config)
-step_config = typescript_all.step_config(ctx, step_config)
+    step_config = typescript_all.step_config(ctx, step_config)
     step_config = cobalt.step_config(ctx, step_config)
     if reclient.enabled(ctx):
         step_config = reclient.step_config(ctx, step_config)
@@ -98,7 +98,7 @@ step_config = typescript_all.step_config(ctx, step_config)
     filegroups.update(host.filegroups(ctx))
     filegroups.update(rust.filegroups(ctx))
     filegroups.update(simple.filegroups(ctx))
-filegroups.update(typescript_all.filegroups(ctx))
+    filegroups.update(typescript_all.filegroups(ctx))
     filegroups.update(cobalt.filegroups(ctx))
     handlers = {}
     handlers.update(blink_all.handlers)

@@ -13,7 +13,8 @@
 #include <algorithm>
 #include <vector>
 
-#include "api/transport/ecn_marking.h"#include "api/units/data_rate.h"
+#include "api/transport/ecn_marking.h"
+#include "api/units/data_rate.h"
 #include "api/units/time_delta.h"
 #include "api/units/timestamp.h"
 

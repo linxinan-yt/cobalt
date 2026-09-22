@@ -2863,7 +2863,8 @@ class CONTENT_EXPORT WebContentsImpl
   // page load and stores it in the primary main frame's PageUserData. Metrics
   // are logged via UMA every time the PageUserData is destroyed.
   std::unique_ptr<FencedFrameViewportObserver> fenced_frame_viewport_observer_;
-#endif#if BUILDFLAG(IS_ANDROID)
+#endif
+#if BUILDFLAG(IS_ANDROID)
   bool supports_forward_transition_animation_ = true;
 #endif  // !BUILDFLAG(IS_ANDROID)
 

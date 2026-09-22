@@ -45,7 +45,8 @@ PlatformThreadId PlatformThread::CurrentId() {
   // overhead of not using thread_local is acceptable and outweighed by avoiding
   // the bug. If necessary we could cache it but we'd have to ensure it was
   // while we were inside PartitionAlloc itself for allocation already.
-  return syscall(__NR_gettid);#elif PA_BUILDFLAG(IS_ANDROID)
+  return syscall(__NR_gettid);
+#elif PA_BUILDFLAG(IS_ANDROID)
   // Note: do not cache the return value inside a thread_local variable on
   // Android (as above). The reasons are:
   // - thread_local is slow on Android (goes through emutls)

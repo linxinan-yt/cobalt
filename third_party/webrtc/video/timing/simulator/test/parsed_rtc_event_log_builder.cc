@@ -12,7 +12,8 @@
 
 #include <cstdint>
 #include <memory>
-#include <optional>#include <string>
+#include <optional>
+#include <string>
 #include <utility>
 
 #include "absl/functional/any_invocable.h"
@@ -23,14 +24,16 @@
 #include "api/units/time_delta.h"
 #include "api/units/timestamp.h"
 #include "logging/rtc_event_log/events/rtc_event_rtcp_packet_incoming.h"
-#include "logging/rtc_event_log/events/rtc_event_rtcp_packet_outgoing.h"#include "logging/rtc_event_log/events/rtc_event_rtp_packet_incoming.h"
+#include "logging/rtc_event_log/events/rtc_event_rtcp_packet_outgoing.h"
+#include "logging/rtc_event_log/events/rtc_event_rtp_packet_incoming.h"
 #include "logging/rtc_event_log/events/rtc_event_video_receive_stream_config.h"
 #include "logging/rtc_event_log/rtc_event_log_parser.h"
 #include "logging/rtc_event_log/rtc_stream_config.h"
 #include "modules/rtp_rtcp/source/rtcp_packet.h"
 #include "modules/rtp_rtcp/source/rtp_packet_received.h"
 #include "rtc_base/checks.h"
-#include "system_wrappers/include/ntp_time.h"#include "test/create_test_environment.h"
+#include "system_wrappers/include/ntp_time.h"
+#include "test/create_test_environment.h"
 
 namespace webrtc::video_timing_simulator {
 

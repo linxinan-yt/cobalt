@@ -12,7 +12,8 @@
 
 #include <algorithm>
 #include <cmath>
-#include <memory>#include <optional>
+#include <memory>
+#include <optional>
 #include <utility>
 
 #include "api/transport/network_control.h"
@@ -21,7 +22,8 @@
 #include "api/units/data_size.h"
 #include "api/units/time_delta.h"
 #include "api/units/timestamp.h"
-#include "logging/rtc_event_log/events/rtc_event_remote_estimate.h"#include "modules/congestion_controller/scream/scream_v2.h"
+#include "logging/rtc_event_log/events/rtc_event_remote_estimate.h"
+#include "modules/congestion_controller/scream/scream_v2.h"
 #include "rtc_base/checks.h"
 #include "rtc_base/logging.h"
 namespace webrtc {

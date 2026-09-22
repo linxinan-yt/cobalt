@@ -33,12 +33,11 @@
 #include "perfetto/ext/base/status_or.h"
 #include "perfetto/public/compiler.h"
 #include "src/trace_processor/containers/string_pool.h"
-#include "src/trace_processor/dataframe/cursor.h"
-#include "src/trace_processor/dataframe/impl/bit_vector.h"
-#include "src/trace_processor/dataframe/impl/query_plan.h"
-#include "src/trace_processor/dataframe/impl/types.h"
-#include "src/trace_processor/dataframe/specs.h"
-#include "src/trace_processor/dataframe/types.h"
+#include "src/trace_processor/core/dataframe/cursor.h"
+#include "src/trace_processor/core/dataframe/query_plan.h"
+#include "src/trace_processor/core/dataframe/specs.h"
+#include "src/trace_processor/core/dataframe/types.h"
+#include "src/trace_processor/core/util/bit_vector.h"
 
 namespace perfetto::trace_processor::util {
 class TraceBlobViewReader;

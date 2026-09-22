@@ -678,7 +678,8 @@ TEST_F(AudioEncoderCopyRedTest, SingleRedundantPathNoIteratorUnderflow) {
   EXPECT_EQ(encoded_info_.payload_type, red_payload_type_);
   EXPECT_EQ(encoded_info_.redundant[0].payload_type, primary_payload_type);
   EXPECT_EQ(encoded_info_.redundant[1].payload_type, primary_payload_type);
-}#if GTEST_HAS_DEATH_TEST && !defined(WEBRTC_ANDROID)
+}
+#if GTEST_HAS_DEATH_TEST && !defined(WEBRTC_ANDROID)
 
 // This test fixture tests various error conditions that makes the
 // AudioEncoderCng die via CHECKs.

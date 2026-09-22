@@ -34,7 +34,8 @@
 #include <cstddef>
 #include <optional>
 #include <string_view>
-#include <type_traits>#include <utility>
+#include <type_traits>
+#include <utility>
 
 #include "unicode/bytestream.h"
 #include "unicode/locid.h"

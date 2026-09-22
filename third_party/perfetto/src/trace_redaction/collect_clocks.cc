@@ -27,7 +27,8 @@
 #include "src/trace_redaction/trace_redaction_framework.h"
 
 #include "protos/perfetto/trace/clock_snapshot.pbzero.h"
-#include "protos/perfetto/trace/trace_packet.pbzero.h"#include "protos/perfetto/trace/trace_packet_defaults.pbzero.h"
+#include "protos/perfetto/trace/trace_packet.pbzero.h"
+#include "protos/perfetto/trace/trace_packet_defaults.pbzero.h"
 
 using namespace perfetto::trace_processor;
 

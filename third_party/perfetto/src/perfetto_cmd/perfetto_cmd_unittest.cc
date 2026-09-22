@@ -23,7 +23,8 @@
 #include "perfetto/ext/base/temp_file.h"
 #include "src/perfetto_cmd/packet_writer.h"
 
-#include "protos/perfetto/common/trace_attributes.gen.h"#include "protos/perfetto/config/trace_config.gen.h"
+#include "protos/perfetto/common/trace_attributes.gen.h"
+#include "protos/perfetto/config/trace_config.gen.h"
 #include "protos/perfetto/trace/test_event.gen.h"
 #include "protos/perfetto/trace/trace_packet.gen.h"
 
@@ -47,7 +48,8 @@ static std::optional<int> ParseCmdline(PerfettoCmd* cmd,
 
   static const TraceConfig* GetTraceConfig(const PerfettoCmd& cmd) {
     return cmd.trace_config_.get();
-  }#if PERFETTO_BUILDFLAG(PERFETTO_OS_ANDROID)
+  }
+#if PERFETTO_BUILDFLAG(PERFETTO_OS_ANDROID)
   static std::optional<TraceConfig> ParseTraceConfigFromMmapedTrace(
       base::ScopedMmap mmapped_trace) {
     return PerfettoCmd::ParseTraceConfigFromMmapedTrace(
@@ -119,7 +121,8 @@ TEST_F(PerfettoCmdlineUnitTest, AddAttributeRejectsEmptyArgument) {
                           "--add-attribute", ""});
   ASSERT_TRUE(res.has_value());
   EXPECT_EQ(*res, 1);
-}#if PERFETTO_BUILDFLAG(PERFETTO_OS_ANDROID)
+}
+#if PERFETTO_BUILDFLAG(PERFETTO_OS_ANDROID)
 
 // Copied from src/perfetto_cmd/packet_writer_unittest.cc
 template <typename F>

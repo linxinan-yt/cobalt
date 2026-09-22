@@ -725,14 +725,37 @@ struct GraphScan : public sqlite::Function<GraphScan> {
 
 }  // namespace
 
-base::Status RegisterGraphScanFunctions(PerfettoSqlEngine& engine,
-                                        StringPool* pool) {
-  RETURN_IF_ERROR(
-      engine.RegisterFunction<GraphScan>(std::make_unique<GraphScan::UserData>(
-          GraphScan::UserData{&engine, pool})));
-  return engine.RegisterFunction<GraphAggregatingScan>(
-      std::make_unique<GraphAggregatingScan::UserData>(
-          GraphAggregatingScan::UserData{&engine, pool}));
+namespace graph_scan {
+namespace {
+
+class GraphScanPlugin : public Plugin<GraphScanPlugin> {
+ public:
+  ~GraphScanPlugin() override;
+
+  void RegisterFunctions(PerfettoSqlConnection* connection,
+                         std::vector<FunctionRegistration>& out) override {
+    StringPool* pool = trace_context_->storage->mutable_string_pool();
+    out.push_back(MakeFunctionRegistration<GraphScan>(
+        std::make_unique<GraphScan::UserData>(
+            GraphScan::UserData{connection, pool})));
+    out.push_back(MakeFunctionRegistration<GraphAggregatingScan>(
+        std::make_unique<GraphAggregatingScan::UserData>(
+            GraphAggregatingScan::UserData{connection, pool})));
+  }
+};
+
+GraphScanPlugin::~GraphScanPlugin() = default;
+
+}  // namespace
+
+void RegisterPlugin() {
+  static PluginRegistration reg(
+      []() -> std::unique_ptr<PluginBase> {
+        return std::make_unique<GraphScanPlugin>();
+      },
+      GraphScanPlugin::kPluginId, GraphScanPlugin::kDepIds.data(),
+      GraphScanPlugin::kDepIds.size());
+  base::ignore_result(reg);
 }
 
 }  // namespace graph_scan

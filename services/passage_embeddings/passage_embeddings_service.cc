@@ -9,7 +9,8 @@
 #include "base/files/file.h"
 #include "base/task/bind_post_task.h"
 #include "base/task/sequenced_task_runner.h"
-#include "base/task/thread_pool.h"#include "services/passage_embeddings/passage_embedder.h"
+#include "base/task/thread_pool.h"
+#include "services/passage_embeddings/passage_embedder.h"
 
 namespace passage_embeddings {
 

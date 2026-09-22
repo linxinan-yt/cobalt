@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "src/trace_processor/importers/proto/winscope/viewcapture_rect_computation.h"
+#include "src/trace_processor/plugins/winscope_importer/viewcapture_rect_computation.h"
 
 #include "src/trace_processor/storage/trace_storage.h"
 

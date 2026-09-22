@@ -593,12 +593,6 @@ rtc_library("video_test_support") {
     "//third_party/abseil-cpp/absl/strings:string_view",
   ]
 
-  if (is_cobalt && (is_starboard || use_starboard_media)) {
-    deps -= [
-      "../modules/video_coding:webrtc_vp8",
-      "../modules/video_coding:webrtc_vp9",
-    ]
-  }
 }
 
 if (rtc_include_tests) {

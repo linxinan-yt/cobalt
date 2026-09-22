@@ -221,9 +221,14 @@ LayoutFunctionsPlugin::~LayoutFunctionsPlugin() = default;
 
 }  // namespace
 
-base::Status RegisterLayoutFunctions(PerfettoSqlEngine& engine) {
-  return engine.RegisterWindowFunction<InternalLayout>(kFunctionName, 2,
-                                                       nullptr);
+void RegisterPlugin() {
+  static PluginRegistration reg(
+      []() -> std::unique_ptr<PluginBase> {
+        return std::make_unique<LayoutFunctionsPlugin>();
+      },
+      LayoutFunctionsPlugin::kPluginId, LayoutFunctionsPlugin::kDepIds.data(),
+      LayoutFunctionsPlugin::kDepIds.size());
+  base::ignore_result(reg);
 }
 
 }  // namespace perfetto::trace_processor::layout_functions

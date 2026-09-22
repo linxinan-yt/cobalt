@@ -171,11 +171,14 @@ CounterIntervalsPlugin::~CounterIntervalsPlugin() = default;
 
 }  // namespace
 
-base::Status RegisterCounterIntervalsFunctions(PerfettoSqlEngine& engine,
-                                               StringPool* pool) {
-  return engine.RegisterFunction<CounterIntervals>(
-      std::make_unique<CounterIntervals::UserData>(
-          CounterIntervals::UserData{&engine, pool}));
+void RegisterPlugin() {
+  static PluginRegistration reg(
+      []() -> std::unique_ptr<PluginBase> {
+        return std::make_unique<CounterIntervalsPlugin>();
+      },
+      CounterIntervalsPlugin::kPluginId, CounterIntervalsPlugin::kDepIds.data(),
+      CounterIntervalsPlugin::kDepIds.size());
+  base::ignore_result(reg);
 }
 
 }  // namespace perfetto::trace_processor::counter_intervals

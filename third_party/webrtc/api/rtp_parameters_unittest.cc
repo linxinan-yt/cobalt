@@ -19,7 +19,8 @@
 #include "absl/strings/string_view.h"
 #include "api/rtp_header_extension_id.h"
 #include "rtc_base/checks.h"
-#include "test/gmock.h"#include "test/gtest.h"
+#include "test/gmock.h"
+#include "test/gtest.h"
 
 namespace webrtc {
 

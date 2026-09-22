@@ -25,7 +25,8 @@
 #include "third_party/webrtc_overrides/environment.h"
 
 #if !BUILDFLAG(IS_FUCHSIA)
-#include "components/optimization_guide/core/tflite_op_resolver.h"  // nogncheck#endif
+#include "components/optimization_guide/core/tflite_op_resolver.h"  // nogncheck
+#endif
 
 namespace media {
 namespace {

@@ -203,10 +203,33 @@ struct Bfs : public sqlite::AggregateFunction<Bfs> {
 
 }  // namespace
 
-base::Status RegisterGraphTraversalFunctions(PerfettoSqlEngine& engine,
-                                             StringPool& pool) {
-  RETURN_IF_ERROR(engine.RegisterFunction<Dfs>(&pool));
-  return engine.RegisterFunction<Bfs>(&pool);
+namespace graph_traversal {
+namespace {
+
+class GraphTraversalPlugin : public Plugin<GraphTraversalPlugin> {
+ public:
+  ~GraphTraversalPlugin() override;
+
+  void RegisterFunctions(PerfettoSqlConnection*,
+                         std::vector<FunctionRegistration>& out) override {
+    StringPool* pool = trace_context_->storage->mutable_string_pool();
+    out.push_back(MakeFunctionRegistration<Dfs>(pool));
+    out.push_back(MakeFunctionRegistration<Bfs>(pool));
+  }
+};
+
+GraphTraversalPlugin::~GraphTraversalPlugin() = default;
+
+}  // namespace
+
+void RegisterPlugin() {
+  static PluginRegistration reg(
+      []() -> std::unique_ptr<PluginBase> {
+        return std::make_unique<GraphTraversalPlugin>();
+      },
+      GraphTraversalPlugin::kPluginId, GraphTraversalPlugin::kDepIds.data(),
+      GraphTraversalPlugin::kDepIds.size());
+  base::ignore_result(reg);
 }
 
 }  // namespace graph_traversal

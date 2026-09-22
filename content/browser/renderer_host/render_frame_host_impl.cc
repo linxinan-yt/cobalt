@@ -178,7 +178,8 @@
 #include "content/browser/scoped_active_url.h"
 #include "content/browser/security/coop/cross_origin_opener_policy_reporter.h"
 #include "content/browser/security/cpsp/child_process_security_policy_impl.h"
-#if !BUILDFLAG(IS_COBALT)#include "content/browser/serial/serial_service.h"
+#if !BUILDFLAG(IS_COBALT)
+#include "content/browser/serial/serial_service.h"
 #endif
 #include "content/browser/service_worker/service_worker_client.h"
 #include "content/browser/site_info.h"
@@ -194,7 +195,8 @@
 #include "content/browser/web_package/prefetched_signed_exchange_cache.h"
 #include "content/browser/webauth/authenticator_impl.h"
 #include "content/browser/webauth/webauth_request_security_checker.h"
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)#include "content/browser/webid/flags.h"
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
+#include "content/browser/webid/flags.h"
 #include "content/browser/webid/request_service.h"
 #endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 #include "content/browser/websockets/websocket_connector_impl.h"
@@ -368,7 +370,8 @@
 #else
 #if !BUILDFLAG(IS_COBALT)
 #include "content/browser/hid/hid_service.h"
-#endif#include "content/browser/host_zoom_map_impl.h"
+#endif
+#include "content/browser/host_zoom_map_impl.h"
 #endif
 
 #if BUILDFLAG(IS_CHROMEOS)

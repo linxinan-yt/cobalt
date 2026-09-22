@@ -18,7 +18,8 @@
 
 #include <algorithm>
 #include <cstddef>
-#include <cstdint>#include <optional>
+#include <cstdint>
+#include <optional>
 
 #include "perfetto/base/logging.h"
 #include "perfetto/base/status.h"
@@ -26,7 +27,8 @@
 #include "perfetto/ext/base/status_or.h"
 #include "perfetto/public/compiler.h"
 #include "src/trace_processor/importers/common/args_tracker.h"
-#include "src/trace_processor/importers/common/global_stats_tracker.h"#include "src/trace_processor/importers/common/import_logs_tracker.h"
+#include "src/trace_processor/importers/common/global_stats_tracker.h"
+#include "src/trace_processor/importers/common/import_logs_tracker.h"
 #include "src/trace_processor/importers/common/metadata_tracker.h"
 #include "src/trace_processor/storage/metadata.h"
 #include "src/trace_processor/storage/stats.h"

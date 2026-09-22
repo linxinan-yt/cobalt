@@ -33,7 +33,8 @@
 #include "perfetto/ext/base/status_or.h"
 #include "perfetto/ext/base/string_view.h"
 #include "perfetto/trace_processor/basic_types.h"
-#include "src/trace_processor/perfetto_sql/engine/perfetto_sql_connection.h"#include "src/trace_processor/perfetto_sql/parser/function_util.h"
+#include "src/trace_processor/perfetto_sql/engine/perfetto_sql_connection.h"
+#include "src/trace_processor/perfetto_sql/parser/function_util.h"
 #include "src/trace_processor/sqlite/bindings/sqlite_function.h"
 #include "src/trace_processor/sqlite/bindings/sqlite_result.h"
 #include "src/trace_processor/sqlite/scoped_db.h"
@@ -41,7 +42,8 @@
 #include "src/trace_processor/sqlite/sqlite_connection.h"
 #include "src/trace_processor/sqlite/sqlite_utils.h"
 #include "src/trace_processor/tp_metatrace.h"
-#include "src/trace_processor/util/owned_sql_value.h"#include "src/trace_processor/util/sql_argument.h"
+#include "src/trace_processor/util/owned_sql_value.h"
+#include "src/trace_processor/util/sql_argument.h"
 
 namespace perfetto::trace_processor {
 

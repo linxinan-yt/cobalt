@@ -1486,7 +1486,8 @@ const base::FeatureParam<int> kTextClassifierTimeoutMs{&kTextClassifierTimeout,
 
 BASE_FEATURE(kDoNotGenerateChromiumA11yTree,
              BUILDFLAG(IS_COBALT) ? base::FEATURE_ENABLED_BY_DEFAULT
-                                  : base::FEATURE_DISABLED_BY_DEFAULT);#endif  // BUILDFLAG(IS_ANDROID)
+                                  : base::FEATURE_DISABLED_BY_DEFAULT);
+#endif  // BUILDFLAG(IS_ANDROID)
 
 #if BUILDFLAG(IS_MAC)
 // Enables backgrounding hidden renderers on Mac.

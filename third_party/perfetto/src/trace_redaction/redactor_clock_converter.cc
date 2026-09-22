@@ -16,7 +16,8 @@
 
 #include "src/trace_redaction/redactor_clock_converter.h"
 #include <cinttypes>
-#include <cstddef>#include <cstdint>
+#include <cstddef>
+#include <cstdint>
 #include <memory>
 #include <optional>
 #include <vector>

@@ -1798,13 +1798,13 @@
     "includes": [10140],
   },
 
-  "cobalt/shell/shell_resources.grd": {
-    "includes": [31500],
-  },
-
   "<(SHARED_INTERMEDIATE_DIR)/THIS_IS_A_PLACEHOLDER.grd": {
     "META": {"sizes": {"includes": [800]}},
     "includes": [12000],  },
+
+  "cobalt/shell/shell_resources.grd": {
+    "includes": [31500],
+  },
 
   # END "everything else" section.
   # Everything but chrome/, components/, content/, and ios/

@@ -820,11 +820,6 @@ static_library("test_support") {
     ])
     sources = []
     sources = _filtered_sources
-
-    deps -= [
-      "//content/browser/attribution_reporting:mojo_bindings",
-      "//content/browser/attribution_reporting:registration_result_mojom",
-    ]
   }
 
   if (is_android) {
@@ -2582,11 +2577,6 @@ if (is_cobalt) {
     ])
     sources = []
     sources = _filtered_sources
-
-    deps -= [
-      "//content/browser/attribution_reporting:mojo_bindings",
-      "//content/browser/attribution_reporting:registration_result_mojom",
-    ]
   }
 }
 
@@ -3891,14 +3881,6 @@ if (enable_smart_card) {
     ])
     sources = []
     sources = _filtered_sources
-
-    deps -= [
-      "//content/browser/attribution_reporting:attribution_reporting_proto",
-      "//content/browser/attribution_reporting:mojo_bindings",
-      "//content/browser/attribution_reporting:registration_result_mojom",
-      "//content/browser/interest_group:interest_group_proto",
-      "//content/browser/private_aggregation:for_content_tests",
-    ]
   }
 }
 

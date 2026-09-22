@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "src/trace_processor/importers/proto/winscope/viewcapture_views_extractor.h"
+#include "src/trace_processor/plugins/winscope_importer/viewcapture_views_extractor.h"
 
 #include <unordered_map>
 #include <utility>

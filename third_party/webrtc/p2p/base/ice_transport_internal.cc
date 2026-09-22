@@ -22,7 +22,8 @@
 #include "api/task_queue/task_queue_base.h"
 #include "api/units/time_delta.h"
 #include "p2p/base/p2p_constants.h"
-#include "p2p/base/packet_transport_internal.h"#include "rtc_base/checks.h"
+#include "p2p/base/packet_transport_internal.h"
+#include "rtc_base/checks.h"
 #include "rtc_base/net_helper.h"
 
 namespace webrtc {

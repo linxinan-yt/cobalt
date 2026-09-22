@@ -70,10 +70,10 @@ use_gtk = false
 use_gio = false
 use_pangocairo = false
 
-# Overriding from components/optimization_guide/features.gni
 # TFLite is a part of the open-source machine-learning library TensorFlow.
 # We are not using tflite in cobalt currently.
-build_with_tflite_lib = false
+# Note: build_with_tflite_lib was removed upstream in M152 (it was declared in
+# //components/optimization_guide/features.gni); setting it now breaks gn gen.
 
 # Override from //third_party/angle/BUILD.gn
 # This flag uses the Use the PCI lib to collect GPU information on Linux.
@@ -100,8 +100,10 @@ optimize_for_size = true
 # Disable cast remote RPC as we don't use it.
 enable_media_remoting_rpc = false
 
-# Enable v8 snapshot compression to reduce binary size (~167KB) for a small startup cost (<10ms).
+# Enable v8 snapshot compression to reduce binary size (~167KB) for a small
+# startup cost (<10ms).
 v8_enable_snapshot_compression = true
 
-# Disable the Compute Pressure API to reduce binary size as it is not used in Cobalt.
+# Disable the Compute Pressure API to reduce binary size as it is not used in
+# Cobalt.
 enable_compute_pressure = false

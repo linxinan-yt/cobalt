@@ -24,7 +24,8 @@
 
 #include "perfetto/base/status.h"
 #include "perfetto/protozero/field.h"
-#include "protos/perfetto/trace/trace_packet.pbzero.h"#include "src/trace_redaction/filtering.h"
+#include "protos/perfetto/trace/trace_packet.pbzero.h"
+#include "src/trace_redaction/filtering.h"
 #include "src/trace_redaction/trace_redaction_framework.h"
 
 namespace perfetto::trace_redaction {

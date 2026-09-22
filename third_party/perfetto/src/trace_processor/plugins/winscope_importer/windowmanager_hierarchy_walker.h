@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-#ifndef SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_WINDOWMANAGER_HIERARCHY_WALKER_H_
-#define SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_WINDOWMANAGER_HIERARCHY_WALKER_H_
+#ifndef SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_WINDOWMANAGER_HIERARCHY_WALKER_H_
+#define SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_WINDOWMANAGER_HIERARCHY_WALKER_H_
 
 #include <optional>
 #include <vector>
 
 #include "perfetto/base/status.h"
 #include "perfetto/ext/base/status_or.h"
-#include "protos/perfetto/trace/android/server/windowmanagerservice.pbzero.h"
-#include "protos/perfetto/trace/android/windowmanager.pbzero.h"
+#include "protos/third_party/android/frameworks/base/proto/tracing/winscope/server/windowmanagerservice.pbzero.h"
+#include "protos/third_party/android/frameworks/base/proto/tracing/winscope/windowmanager.pbzero.h"
 #include "src/trace_processor/containers/string_pool.h"
 
 namespace perfetto::trace_processor::winscope {
@@ -54,13 +54,19 @@ class WindowManagerHierarchyWalker {
                                           // DisplayContent, ActivityRecord
   };
 
+  struct ExtractResult {
+    std::vector<ExtractedWindowContainer> window_containers;
+    bool has_parse_error;
+  };
+
   static constexpr const char* kErrorMessageMissingField =
       "Protobuf message is missing expected field";
 
   explicit WindowManagerHierarchyWalker(StringPool* pool);
 
-  base::StatusOr<std::vector<ExtractedWindowContainer>> ExtractWindowContainers(
-      const protos::pbzero::WindowManagerTraceEntry::Decoder& entry);
+  ExtractResult ExtractWindowContainers(
+      const com::android::internal::pbzero::WindowManagerTraceEntry::Decoder&
+          entry);
 
  private:
   struct TokenAndTitle {
@@ -69,70 +75,82 @@ class WindowManagerHierarchyWalker {
   };
 
   base::Status ParseRootWindowContainer(
-      const protos::pbzero::RootWindowContainerProto::Decoder& root,
+      const com::android::internal::pbzero::RootWindowContainerProto::Decoder&
+          root,
       std::vector<ExtractedWindowContainer>* result);
 
   base::Status ParseWindowContainerChildren(
-      const protos::pbzero::WindowContainerProto::Decoder& window_container,
+      const com::android::internal::pbzero::WindowContainerProto::Decoder&
+          window_container,
       int32_t parent_token,
       std::vector<ExtractedWindowContainer>* result);
 
   base::Status ParseWindowContainerChildProto(
-      const protos::pbzero::WindowContainerChildProto::Decoder& child,
+      const com::android::internal::pbzero::WindowContainerChildProto::Decoder&
+          child,
       int32_t parent_token,
       uint32_t child_index,
       std::vector<ExtractedWindowContainer>* result);
 
   base::Status ParseWindowContainerProto(
-      const protos::pbzero::WindowContainerChildProto::Decoder& child,
+      const com::android::internal::pbzero::WindowContainerChildProto::Decoder&
+          child,
       int32_t parent_token,
       uint32_t child_index,
       std::vector<ExtractedWindowContainer>* result);
 
   base::Status ParseDisplayContentProto(
-      const protos::pbzero::WindowContainerChildProto::Decoder& child,
+      const com::android::internal::pbzero::WindowContainerChildProto::Decoder&
+          child,
       int32_t parent_token,
       uint32_t child_index,
       std::vector<ExtractedWindowContainer>* result);
 
   base::Status ParseDisplayAreaProto(
-      const protos::pbzero::WindowContainerChildProto::Decoder& child,
+      const com::android::internal::pbzero::WindowContainerChildProto::Decoder&
+          child,
       int32_t parent_token,
       uint32_t child_index,
       std::vector<ExtractedWindowContainer>* result);
 
   base::Status ParseTaskProto(
-      const protos::pbzero::WindowContainerChildProto::Decoder& child,
+      const com::android::internal::pbzero::WindowContainerChildProto::Decoder&
+          child,
       int32_t parent_token,
       uint32_t child_index,
       std::vector<ExtractedWindowContainer>* result);
 
   base::Status ParseActivityRecordProto(
-      const protos::pbzero::WindowContainerChildProto::Decoder& child,
+      const com::android::internal::pbzero::WindowContainerChildProto::Decoder&
+          child,
       int32_t parent_token,
       uint32_t child_index,
       std::vector<ExtractedWindowContainer>* result);
 
   base::Status ParseWindowTokenProto(
-      const protos::pbzero::WindowContainerChildProto::Decoder& child,
+      const com::android::internal::pbzero::WindowContainerChildProto::Decoder&
+          child,
       int32_t parent_token,
       uint32_t child_index,
       std::vector<ExtractedWindowContainer>* result);
 
   base::Status ParseWindowStateProto(
-      const protos::pbzero::WindowContainerChildProto::Decoder& child,
+      const com::android::internal::pbzero::WindowContainerChildProto::Decoder&
+          child,
       int32_t parent_token,
       uint32_t child_index,
       std::vector<ExtractedWindowContainer>* result);
 
   base::Status ParseTaskFragmentProto(
-      const protos::pbzero::WindowContainerChildProto::Decoder& child,
+      const com::android::internal::pbzero::WindowContainerChildProto::Decoder&
+          child,
       int32_t parent_token,
       uint32_t child_index,
       std::vector<ExtractedWindowContainer>* result);
 
   base::StatusOr<TokenAndTitle> ParseIdentifierProto(
-      const protos::pbzero::IdentifierProto::Decoder& identifier);
+      const com::android::internal::pbzero::IdentifierProto::Decoder&
+          identifier);
 
   StringPool* pool_{nullptr};
   int32_t current_display_id_{-1};
@@ -150,4 +168,4 @@ class WindowManagerHierarchyWalker {
 
 }  // namespace perfetto::trace_processor::winscope
 
-#endif  // SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_WINSCOPE_WINDOWMANAGER_HIERARCHY_WALKER_H_
+#endif  // SRC_TRACE_PROCESSOR_PLUGINS_WINSCOPE_IMPORTER_WINDOWMANAGER_HIERARCHY_WALKER_H_

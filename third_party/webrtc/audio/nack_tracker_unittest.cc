@@ -17,7 +17,8 @@
 #include <vector>
 
 #include "api/units/time_delta.h"
-#include "test/gmock.h"#include "test/gtest.h"
+#include "test/gmock.h"
+#include "test/gtest.h"
 
 namespace webrtc {
 namespace {

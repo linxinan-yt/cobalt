@@ -21,7 +21,8 @@
 
 #include "perfetto/protozero/field.h"
 
-#include "protos/perfetto/trace/android/android_aflags.pbzero.h"#include "protos/perfetto/trace/power/power_rails.pbzero.h"
+#include "protos/perfetto/trace/android/android_aflags.pbzero.h"
+#include "protos/perfetto/trace/power/power_rails.pbzero.h"
 #include "src/trace_processor/storage/trace_storage.h"
 
 namespace perfetto::trace_processor {

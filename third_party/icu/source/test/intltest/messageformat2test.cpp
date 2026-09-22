@@ -8,7 +8,8 @@
 
 #if !UCONFIG_NO_MF2
 
-#include "unicode/gregocal.h"#include "messageformat2test.h"
+#include "unicode/gregocal.h"
+#include "messageformat2test.h"
 
 using namespace icu::message2;
 

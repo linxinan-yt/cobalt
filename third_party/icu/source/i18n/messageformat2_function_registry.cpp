@@ -17,7 +17,8 @@
 #include "unicode/messageformat2_data_model_names.h"
 #include "unicode/messageformat2_function_registry.h"
 #include "unicode/normalizer2.h"
-#include "unicode/simpletz.h"#include "unicode/smpdtfmt.h"
+#include "unicode/simpletz.h"
+#include "unicode/smpdtfmt.h"
 #include "charstr.h"
 #include "double-conversion.h"
 #include "messageformat2_allocation.h"
@@ -26,7 +27,8 @@
 #include "hash.h"
 #include "mutex.h"
 #include "number_types.h"
-#include "ucln_in.h"#include "uvector.h" // U_ASSERT
+#include "ucln_in.h"
+#include "uvector.h" // U_ASSERT
 
 // The C99 standard suggested that C++ implementations not define PRId64 etc. constants
 // unless this macro is defined.

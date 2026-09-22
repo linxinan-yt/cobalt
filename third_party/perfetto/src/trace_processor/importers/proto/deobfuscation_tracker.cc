@@ -19,7 +19,8 @@
 #include <cstddef>
 #include <cstdint>
 #include <optional>
-#include <set>#include <string>
+#include <set>
+#include <string>
 #include <unordered_set>
 #include <vector>
 
@@ -30,7 +31,8 @@
 #include "perfetto/protozero/field.h"
 #include "perfetto/trace_processor/trace_blob.h"
 #include "protos/perfetto/trace/profiling/deobfuscation.pbzero.h"
-#include "src/trace_processor/core/dataframe/specs.h"#include "src/trace_processor/importers/common/stack_profile_tracker.h"
+#include "src/trace_processor/core/dataframe/specs.h"
+#include "src/trace_processor/importers/common/stack_profile_tracker.h"
 #include "src/trace_processor/importers/proto/heap_graph_tracker.h"
 #include "src/trace_processor/storage/trace_storage.h"
 #include "src/trace_processor/tables/metadata_tables_py.h"

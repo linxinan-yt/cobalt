@@ -14,57 +14,78 @@
 
 import m from 'mithril';
 import {
-  QueryNode,
-  QueryNodeState,
+  type QueryNode,
   nextNodeId,
   NodeType,
-  MultiSourceNode,
-  notifyNextNodes,
+  type SecondaryInputSpec,
+  type NodeContext,
 } from '../../query_node';
-import protos from '../../../../protos';
-import {ColumnInfo, newColumnInfoList} from '../column_info';
+import {notifyNextNodes} from '../graph_utils';
+import type protos from '../../../../protos';
+import {type ColumnInfo, newColumnInfo} from '../column_info';
 import {Callout} from '../../../../widgets/callout';
 import {NodeIssues} from '../node_issues';
-import {UIFilter} from '../operations/filter';
-import {Card, CardStack} from '../../../../widgets/card';
-import {Checkbox} from '../../../../widgets/checkbox';
+import {
+  StructuredQueryBuilder,
+  type ColumnSpec,
+} from '../structured_query_builder';
+import {loadNodeDoc} from '../node_doc_loader';
+import type {NodeModifyAttrs, NodeDetailsAttrs} from '../../node_types';
+import {ResultsPanelEmptyState} from '../widgets';
+import {ColumnSelector} from '../column_selector';
+import {
+  NodeDetailsMessage,
+  NodeTitle,
+  ColumnName,
+} from '../node_styling_widgets';
 
-export interface UnionSerializedState {
-  unionNodes: string[];
+// Serializable node configuration.
+export interface UnionNodeAttrs {
   selectedColumns: ColumnInfo[];
-  filters?: UIFilter[];
-  comment?: string;
 }
 
-export interface UnionNodeState extends QueryNodeState {
-  readonly prevNodes: QueryNode[];
-  selectedColumns: ColumnInfo[];
-}
-
-export class UnionNode implements MultiSourceNode {
+export class UnionNode implements QueryNode {
   readonly nodeId: string;
   readonly type = NodeType.kUnion;
-  readonly prevNodes: QueryNode[];
+  secondaryInputs: SecondaryInputSpec;
   nextNodes: QueryNode[];
-  readonly state: UnionNodeState;
-  comment?: string;
-  filters?: UIFilter[];
+  readonly attrs: UnionNodeAttrs;
+  readonly context: NodeContext;
 
-  get finalCols(): ColumnInfo[] {
-    return this.state.selectedColumns.filter((col) => col.checked);
+  get inputNodesList(): QueryNode[] {
+    return [...this.secondaryInputs.connections.entries()]
+      .sort(([a], [b]) => a - b)
+      .map(([, node]) => node);
   }
 
-  constructor(state: UnionNodeState) {
+  get finalCols(): ColumnInfo[] {
+    return this.attrs.selectedColumns.filter((col) => col.checked);
+  }
+
+  constructor(
+    attrs: UnionNodeAttrs & {inputNodes?: QueryNode[]},
+    context: NodeContext,
+  ) {
     this.nodeId = nextNodeId();
-    this.state = {
-      ...state,
-      autoExecute: state.autoExecute ?? false,
+    const {inputNodes, ...rest} = attrs;
+    this.attrs = rest as UnionNodeAttrs;
+    this.context = context;
+    this.secondaryInputs = {
+      connections: new Map(),
+      min: 2,
+      max: 'unbounded',
+      portNames: (portIndex: number) => `Input ${portIndex}`,
     };
-    this.prevNodes = state.prevNodes;
+    // Initialize connections from inputNodes
+    if (inputNodes) {
+      for (let i = 0; i < inputNodes.length; i++) {
+        this.secondaryInputs.connections.set(i, inputNodes[i]);
+      }
+    }
     this.nextNodes = [];
 
-    const userOnChange = this.state.onchange;
-    this.state.onchange = () => {
+    const userOnChange = this.context.onchange;
+    this.context.onchange = () => {
       notifyNextNodes(this);
       userOnChange?.();
     };
@@ -74,36 +95,35 @@ export class UnionNode implements MultiSourceNode {
     const newCommonColumns = this.getCommonColumns();
 
     // Preserve checked status for columns that still exist.
-    for (const oldCol of this.state.selectedColumns ?? []) {
-      const newCol = newCommonColumns.find(
-        (c) => c.column.name === oldCol.column.name,
-      );
+    for (const oldCol of this.attrs.selectedColumns ?? []) {
+      const newCol = newCommonColumns.find((c) => c.name === oldCol.name);
       if (newCol) {
         newCol.checked = oldCol.checked;
       }
     }
 
-    this.state.selectedColumns = newCommonColumns;
+    this.attrs.selectedColumns = newCommonColumns;
   }
 
   private getCommonColumns(): ColumnInfo[] {
-    if (this.prevNodes.length === 0) {
+    if (this.inputNodesList.length === 0) {
       return [];
     }
     // Filter out undefined entries before processing
-    const validPrevNodes = this.prevNodes.filter(
+    const validPrevNodes = this.inputNodesList.filter(
       (node): node is QueryNode => node !== undefined,
     );
     if (validPrevNodes.length === 0) {
       return [];
     }
-    let commonCols = newColumnInfoList(validPrevNodes[0].finalCols, true);
+    let commonCols = validPrevNodes[0].finalCols.map((col) =>
+      newColumnInfo(col, true),
+    );
     for (let i = 1; i < validPrevNodes.length; i++) {
       const currentNodeCols = validPrevNodes[i].finalCols;
       commonCols = commonCols.filter((commonCol) =>
         currentNodeCols.some(
-          (currentNodeCol) =>
-            currentNodeCol.column.name === commonCol.column.name,
+          (currentNodeCol) => currentNodeCol.name === commonCol.name,
         ),
       );
     }
@@ -112,23 +132,23 @@ export class UnionNode implements MultiSourceNode {
 
   validate(): boolean {
     // Clear any previous errors at the start of validation
-    if (this.state.issues) {
-      this.state.issues.clear();
+    if (this.context.issues) {
+      this.context.issues.clear();
     }
 
     // Check for undefined entries (disconnected inputs)
-    const validPrevNodes = this.prevNodes.filter(
+    const validPrevNodes = this.inputNodesList.filter(
       (node): node is QueryNode => node !== undefined,
     );
 
-    if (validPrevNodes.length < this.prevNodes.length) {
+    if (validPrevNodes.length < this.inputNodesList.length) {
       this.setValidationError(
         'Union node has disconnected inputs. Please connect all inputs or remove this node.',
       );
       return false;
     }
 
-    if (this.prevNodes.length < 2) {
+    if (this.inputNodesList.length < 2) {
       this.setValidationError('Union node requires at least two sources.');
       return false;
     }
@@ -140,14 +160,14 @@ export class UnionNode implements MultiSourceNode {
       return false;
     }
 
-    for (const prevNode of this.prevNodes) {
+    for (const inputNode of this.inputNodesList) {
       // Skip undefined entries (already handled above)
-      if (prevNode === undefined) continue;
+      if (inputNode === undefined) continue;
 
-      if (!prevNode.validate()) {
+      if (!inputNode.validate()) {
         this.setValidationError(
-          prevNode.state.issues?.queryError?.message ??
-            `Previous node '${prevNode.getTitle()}' is invalid`,
+          inputNode.context.issues?.queryError?.message ??
+            `Input node '${inputNode.getTitle()}' is invalid`,
         );
         return false;
       }
@@ -157,141 +177,128 @@ export class UnionNode implements MultiSourceNode {
   }
 
   private setValidationError(message: string): void {
-    if (!this.state.issues) {
-      this.state.issues = new NodeIssues();
+    if (!this.context.issues) {
+      this.context.issues = new NodeIssues();
     }
-    this.state.issues.queryError = new Error(message);
+    this.context.issues.queryError = new Error(message);
   }
 
   getTitle(): string {
     return 'Union';
   }
 
-  nodeDetails(): m.Child {
-    const cards: m.Child[] = [];
-    const selectedCols = this.state.selectedColumns.filter((c) => c.checked);
-    if (selectedCols.length > 0) {
-      // If more than 3 columns, just show the count
-      if (selectedCols.length > 3) {
-        cards.push(
-          m(
-            Card,
-            {className: 'pf-node-details-card'},
-            m('div', `${selectedCols.length} common columns`),
-          ),
-        );
-      } else {
-        // Show individual column names for 3 or fewer
-        const selectedItems = selectedCols.map((c) => {
-          return m('div', c.column.name);
-        });
-        cards.push(
-          m(Card, {className: 'pf-node-details-card'}, ...selectedItems),
-        );
-      }
-    }
-
-    if (cards.length === 0) {
-      return m('.pf-node-details-message', 'No common columns');
-    }
-
-    return m(CardStack, cards);
+  nodeInfo(): m.Children {
+    return loadNodeDoc('union');
   }
 
-  nodeSpecificModify(): m.Child {
+  nodeDetails(): NodeDetailsAttrs {
+    const selectedCols = this.attrs.selectedColumns.filter((c) => c.checked);
+    let message: m.Child;
+
+    if (selectedCols.length === 0) {
+      message = NodeDetailsMessage('No common columns selected');
+    } else if (selectedCols.length > 3) {
+      // Show the count of common columns
+      message = m('div', `${selectedCols.length} common columns`);
+    } else {
+      // Show individual column names
+      const selectedItems = selectedCols.map((c) =>
+        m('div', ColumnName(c.name)),
+      );
+      message = m('div', ...selectedItems);
+    }
+
+    const content = [NodeTitle(this.getTitle()), message];
+    return {content};
+  }
+
+  nodeSpecificModify(): NodeModifyAttrs {
     this.validate();
-    const error = this.state.issues?.queryError;
+    const error = this.context.issues?.queryError;
 
-    return m(
-      '.pf-exp-query-operations',
-      error && m(Callout, {icon: 'error'}, error.message),
-      m(
-        CardStack,
-        m(
-          Card,
-          m('h2.pf-columns-box-title', 'Selected Columns'),
-          m(
-            'div.pf-column-list',
-            this.state.selectedColumns.map((col, index) =>
-              this.renderSelectedColumn(col, index),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+    const selectedCount = this.attrs.selectedColumns.filter(
+      (col) => col.checked,
+    ).length;
+    const totalCount = this.attrs.selectedColumns.length;
 
-  private renderSelectedColumn(col: ColumnInfo, index: number): m.Child {
-    return m(
-      '.pf-column',
-      m(Checkbox, {
-        checked: col.checked,
-        label: col.column.name,
-        onchange: (e) => {
-          const newSelectedColumns = [...this.state.selectedColumns];
-          newSelectedColumns[index] = {
-            ...newSelectedColumns[index],
-            checked: (e.target as HTMLInputElement).checked,
-          };
-          this.state.selectedColumns = newSelectedColumns;
-          this.state.onchange?.();
-        },
-      }),
-    );
+    const sections: NodeModifyAttrs['sections'] = [];
+
+    // Add error if present
+    if (error) {
+      sections.push({
+        content: m(Callout, {icon: 'error'}, error.message),
+      });
+    }
+
+    // Selected columns section
+    if (totalCount === 0) {
+      // Show empty state when no common columns
+      sections.push({
+        content: m(ResultsPanelEmptyState, {
+          icon: 'table',
+          title: 'No common columns between sources',
+          variant: 'warning',
+        }),
+      });
+    } else {
+      sections.push({
+        title: `Select Common Columns (${selectedCount} / ${totalCount} selected)`,
+        content: m(ColumnSelector, {
+          columns: this.attrs.selectedColumns,
+          onColumnsChange: (columns) => {
+            this.attrs.selectedColumns = columns;
+            this.context.onchange?.();
+          },
+          helpText: 'Select which common columns to include in the union',
+          draggable: true,
+        }),
+      });
+    }
+
+    return {
+      info: 'Stacks rows from multiple inputs vertically (UNION ALL). All inputs must have compatible column schemas. Useful for combining similar data from different sources.',
+      sections,
+    };
   }
 
   clone(): QueryNode {
-    const stateCopy: UnionNodeState = {
-      prevNodes: [...this.state.prevNodes],
-      selectedColumns: this.state.selectedColumns.map((c) => ({...c})),
-    };
-    const clone = new UnionNode(stateCopy);
-    clone.filters = this.filters ? [...this.filters] : undefined;
-    clone.comment = this.comment;
-    return clone;
+    return new UnionNode(
+      {selectedColumns: this.attrs.selectedColumns.map((c) => ({...c}))},
+      this.context,
+    );
   }
 
   getStructuredQuery(): protos.PerfettoSqlStructuredQuery | undefined {
-    if (this.prevNodes.length < 2) return undefined;
+    if (this.inputNodesList.length < 2) return undefined;
 
-    const queries: protos.IPerfettoSqlStructuredQuery[] = [];
-    for (const prevNode of this.prevNodes) {
-      if (prevNode === undefined) return undefined;
-      const query = prevNode.getStructuredQuery();
-      if (!query) return undefined;
-      queries.push(query);
+    // Check for undefined entries
+    for (const inputNode of this.inputNodesList) {
+      if (inputNode === undefined) return undefined;
     }
 
-    return protos.PerfettoSqlStructuredQuery.create({
-      id: this.nodeId,
-      experimentalUnion:
-        protos.PerfettoSqlStructuredQuery.ExperimentalUnion.create({
-          queries,
-          useUnionAll: true,
-        }),
-    });
-  }
+    // Get the list of checked common columns
+    const selectedColumns = this.attrs.selectedColumns.filter((c) => c.checked);
+    if (selectedColumns.length === 0) return undefined;
 
-  serializeState(): UnionSerializedState {
-    return {
-      unionNodes: this.prevNodes.slice(1).map((n) => n.nodeId),
-      selectedColumns: this.state.selectedColumns,
-      filters: this.filters,
-      comment: this.comment,
-    };
-  }
+    // Build column specifications for the SELECT
+    const columnSpecs: ColumnSpec[] = selectedColumns.map((col) => ({
+      columnNameOrExpression: col.name,
+    }));
 
-  static deserializeState(
-    nodes: Map<string, QueryNode>,
-    state: UnionSerializedState,
-    baseNode: QueryNode,
-  ): {prevNodes: QueryNode[]; selectedColumns: ColumnInfo[]} {
-    const unionNodes = state.unionNodes
-      .map((id) => nodes.get(id))
-      .filter((node): node is QueryNode => node !== undefined);
-    return {
-      prevNodes: [baseNode, ...unionNodes],
-      selectedColumns: state.selectedColumns,
-    };
+    // Create wrapper queries for each input that selects only the common columns
+    // Pass the query protos directly to withUnion (not nodes)
+    const wrappedQueries: protos.PerfettoSqlStructuredQuery[] = [];
+    for (const inputNode of this.inputNodesList) {
+      const selectQuery = StructuredQueryBuilder.withSelectColumns(
+        inputNode,
+        columnSpecs,
+        undefined,
+      );
+      if (!selectQuery) return undefined;
+      wrappedQueries.push(selectQuery);
+    }
+
+    // Create the union from the wrapped queries
+    return StructuredQueryBuilder.withUnion(wrappedQueries, true, this.nodeId);
   }
 }

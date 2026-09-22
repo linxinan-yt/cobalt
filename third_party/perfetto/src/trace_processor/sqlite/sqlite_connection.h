@@ -25,9 +25,6 @@
 #include <string>
 
 #include "perfetto/base/status.h"
-#include "perfetto/ext/base/flat_hash_map.h"
-#include "perfetto/ext/base/hash.h"
-#include "perfetto/ext/base/murmur_hash.h"
 #include "src/trace_processor/sqlite/scoped_db.h"
 #include "src/trace_processor/sqlite/sql_source.h"
 
@@ -170,10 +167,7 @@ class SqliteConnection {
  private:
   std::optional<uint32_t> GetErrorOffset() const;
 
-  base::FlatHashMap<std::pair<std::string, int>,
-                    void*,
-                    base::MurmurHash<std::pair<std::string, int>>>
-      fn_ctx_;
+  std::shared_ptr<SqliteDatabase> database_;
   ScopedDb db_;
 };
 
