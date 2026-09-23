@@ -24,12 +24,8 @@ JOIN _wattson_device AS device
 
 -- Table that is empty if the actual cpuidle counters do not exist on this trace
 CREATE PERFETTO VIEW _wattson_cpuidle_counters_exist AS
-SELECT
-  id
-FROM cpu_counter_track
-WHERE
-  name = 'cpuidle'
-LIMIT 1;
+SELECT id FROM cpu_counter_track WHERE name = 'cpuidle' LIMIT 1;
+
 -- Create table that uses idle counters if present, otherwise extrapolates idle
 -- states in a simplified way (only 2 states, active or idle) from the swapper
 -- thread.
@@ -109,7 +105,8 @@ FROM continuous_idle_slices;
 CREATE PERFETTO TABLE _adjusted_deep_idle AS
 -- Adjusted ts if applicable, which makes the current active state longer if
 -- it is coming from an idle exit.
-WITH  idle_mod AS (
+WITH
+  idle_mod AS (
     SELECT
       iif(
         idle_prev = 1
@@ -121,8 +118,8 @@ WITH  idle_mod AS (
       cpu,
       idle
     FROM _unified_idle_state
-JOIN _filtered_deep_idle_offsets
-      USING (cpu)  ),
+    JOIN _filtered_deep_idle_offsets USING (cpu)
+  ),
   -- Use EITHER idle states as is OR device specific override of idle states
   _cpu_idle AS (
     -- Idle state calculations as is

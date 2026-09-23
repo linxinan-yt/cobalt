@@ -210,10 +210,11 @@ scoped_refptr<AudioSourceInterface> PeerConnectionFactory::CreateAudioSource(
 
 bool PeerConnectionFactory::StartAecDump(FILE* file, int64_t max_size_bytes) {
   RTC_DCHECK_RUN_ON(worker_thread());
-if (!file) {
+  if (!file) {
     RTC_LOG(LS_ERROR) << "Cannot start AEC dump with null file pointer.";
     return false;
-  }  if (media_engine_ref_) {
+  }
+  if (media_engine_ref_) {
     RTC_LOG(LS_WARNING) << "Replacing ongoing AEC dump.";
   } else {
     media_engine_ref_ =
@@ -371,7 +372,8 @@ std::unique_ptr<Call> PeerConnectionFactory::CreateCall_s(
     const PeerConnectionInterface::RTCConfiguration& configuration) {
   RTC_DCHECK_RUN_ON(signaling_thread());
 
-CallConfig call_config(env, worker_thread(), network_thread());  if (!context_->media_engine() || !context_->call_factory()) {
+  CallConfig call_config(env, worker_thread(), network_thread());
+  if (!context_->media_engine() || !context_->call_factory()) {
     return nullptr;
   }
   call_config.audio_state = media_engine()->voice().GetAudioState();

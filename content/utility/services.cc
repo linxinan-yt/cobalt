@@ -201,7 +201,8 @@ auto RunNetworkService(
 #if !BUILDFLAG(IS_COBALT)
 auto RunDevToolsMediaEncodingService(
     mojo::PendingReceiver<
-        devtools_media_encoding_service::mojom::DevToolsMediaEncodingService>        receiver) {
+        devtools_media_encoding_service::mojom::DevToolsMediaEncodingService>
+        receiver) {
   return std::make_unique<DevToolsMediaEncodingServiceImpl>(std::move(receiver));
 }
 #endif  // !BUILDFLAG(IS_COBALT)
@@ -411,10 +412,11 @@ void RegisterIOThreadServices(mojo::ServiceFactory& services) {
 }
 
 void RegisterMainThreadServices(mojo::ServiceFactory& services) {
-services.Add(RunDevToolsMediaEncodingService);
 #if !BUILDFLAG(IS_COBALT)
+  services.Add(RunDevToolsMediaEncodingService);
   services.Add(RunAuctionWorkletService);
-#endif  // !BUILDFLAG(IS_COBALT)  services.Add(RunAudio);
+#endif  // !BUILDFLAG(IS_COBALT)
+  services.Add(RunAudio);
 
 #if !BUILDFLAG(IS_COBALT)
   services.Add(RunDataDecoder);

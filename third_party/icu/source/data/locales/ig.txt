@@ -678,7 +678,8 @@ M{"MM-dd, E – MM-dd, E"}
         }
 second-narrow{
             dn{"sekọnd"}
-        }        second-short{
+        }
+        second-short{
             dn{"sekọnd"}
         }
         sun{
@@ -799,7 +800,8 @@ relative{
                 "-1"{"Afọ gara aga"}
                 "0"{"Afọ a"}
                 "1"{"afọ na-abịa"}
-            }            relativeTime{
+            }
+            relativeTime{
                 past{
                     other{"Afọ {0} gara aga"}
                 }
@@ -828,7 +830,8 @@ or-narrow{
         or-short{
             2{"{0} ma ọ bụ {1}"}
             end{"{0}, ma ọ bụ {1}"}
-        }        standard{
+        }
+        standard{
             2{"{0} na {1}"}
             end{"{0}, na {1}"}
         }
@@ -839,7 +842,8 @@ or-narrow{
 unit{
             2{"{0}, {1}"}
             end{"{0}, {1}"}
-        }        unit-narrow{
+        }
+        unit-narrow{
             2{"{0} {1}"}
             end{"{0} {1}"}
         }

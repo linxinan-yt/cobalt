@@ -19,7 +19,6 @@
 #include <span>
 #include <string>
 
-#include "api/array_view.h"
 #include "api/environment/environment.h"
 #include "api/task_queue/pending_task_safety_flag.h"
 #include "api/task_queue/task_queue_base.h"
@@ -71,7 +70,8 @@ class StunRequestManager {
   // Determines whether the given message is a response to one of the
   // outstanding requests, and if so, processes it appropriately.
   bool CheckResponse(StunMessage* msg);
-bool CheckResponse(std::span<const uint8_t> payload);
+  bool CheckResponse(std::span<const uint8_t> payload);
+
   // Called from a StunRequest when a timeout occurs.
   void OnRequestTimedOut(StunRequest* request);
 

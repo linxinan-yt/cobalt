@@ -245,8 +245,9 @@ private:
  */
 class U_COMMON_API_CLASS Normalizer2Impl : public UObject {
 public:
-U_COMMON_API Normalizer2Impl() : normTrie(nullptr), fCanonIterData(nullptr) {}
+    U_COMMON_API Normalizer2Impl() : normTrie(nullptr), fCanonIterData(nullptr) {}
     U_COMMON_API virtual ~Normalizer2Impl();
+
     U_COMMON_API void init(const int32_t* inIndexes,
                            const UCPTrie* inTrie,
                            const uint16_t* inExtraData,
@@ -280,7 +281,7 @@ U_COMMON_API Normalizer2Impl() : normTrie(nullptr), fCanonIterData(nullptr) {}
             return UNORM_NO;
         }
     }
-U_COMMON_API UBool isAlgorithmicNoNo(uint16_t norm16) const {
+    U_COMMON_API UBool isAlgorithmicNoNo(uint16_t norm16) const {
         return limitNoNo <= norm16 && norm16 < minMaybeNo;
     }
     U_COMMON_API UBool isCompNo(uint16_t norm16) const {
@@ -289,6 +290,7 @@ U_COMMON_API UBool isAlgorithmicNoNo(uint16_t norm16) const {
     U_COMMON_API UBool isDecompYes(uint16_t norm16) const {
         return norm16 < minYesNo || minMaybeYes <= norm16;
     }
+
     U_COMMON_API uint8_t getCC(uint16_t norm16) const {
         if(norm16>=MIN_NORMAL_MAYBE_YES) {
             return getCCFromNormalYesOrMaybe(norm16);
@@ -298,13 +300,14 @@ U_COMMON_API UBool isAlgorithmicNoNo(uint16_t norm16) const {
         }
         return getCCFromNoNo(norm16);
     }
-U_COMMON_API static uint8_t getCCFromNormalYesOrMaybe(uint16_t norm16) {
+    U_COMMON_API static uint8_t getCCFromNormalYesOrMaybe(uint16_t norm16) {
         return static_cast<uint8_t>(norm16 >> OFFSET_SHIFT);
     }
     U_COMMON_API static uint8_t getCCFromYesOrMaybeYes(uint16_t norm16) {
         return norm16>=MIN_NORMAL_MAYBE_YES ? getCCFromNormalYesOrMaybe(norm16) : 0;
     }
-    U_COMMON_API uint8_t getCCFromYesOrMaybeYesCP(UChar32 c) const {        if (c < minCompNoMaybeCP) { return 0; }
+    U_COMMON_API uint8_t getCCFromYesOrMaybeYesCP(UChar32 c) const {
+        if (c < minCompNoMaybeCP) { return 0; }
         return getCCFromYesOrMaybeYes(getNorm16(c));
     }
 
@@ -377,8 +380,6 @@ U_COMMON_API static uint8_t getCCFromNormalYesOrMaybe(uint16_t norm16) {
     U_COMMON_API uint16_t getFCD16FromNormData(UChar32 c) const;
 
     U_COMMON_API uint16_t getFCD16FromMaybeOrNonZeroCC(uint16_t norm16) const;
-
-    uint16_t getFCD16FromMaybeOrNonZeroCC(uint16_t norm16) const;
 
     /**
      * Gets the decomposition for one code point.

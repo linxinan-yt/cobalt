@@ -866,7 +866,8 @@ gd{
         Tirh{"Tirhuta"}
         Tnsa{"Tangsa"}
         Todr{"Todhri"}
-Tols{"Tolong Siki"}        Tutg{"Tulu-Tigalari"}
+Tols{"Tolong Siki"}
+        Tutg{"Tulu-Tigalari"}
         Ugar{"Ugariticeach"}
         Vaii{"Vai"}
         Vith{"Vithkuqi"}

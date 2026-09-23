@@ -1126,7 +1126,8 @@ dnam{"gecə"}
         }
         speed{
             light-speed{
-dnam{"işıq"}                one{"{0}işıq"}
+dnam{"işıq"}
+                one{"{0}işıq"}
                 other{"{0}işıq"}
             }
             meter-per-second{

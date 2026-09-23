@@ -261,7 +261,8 @@ ofglucose{
             }
             night{
 dnam{"박"}
-                other{"{0}박"}                per{"1박당 {0}"}
+                other{"{0}박"}
+                per{"1박당 {0}"}
             }
             second{
                 per{"초당 {0}"}
@@ -1069,7 +1070,8 @@ angle{
             part-per-1e6{
                 other{"{0}ppm"}
             }
-portion-per-1e9{                other{"{0}ppb"}
+portion-per-1e9{
+                other{"{0}ppb"}
             }
         }
         consumption{

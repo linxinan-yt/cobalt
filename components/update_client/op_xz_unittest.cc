@@ -34,7 +34,7 @@ namespace update_client {
 // FilePath and expect a FilePath back) so they can stay identical to upstream.
 base::OnceClosure XzOperation(
     std::unique_ptr<Unzipper> unzipper,
-    base::RepeatingCallback<void(base::Value::Dict)> event_adder,
+    base::RepeatingCallback<void(base::DictValue)> event_adder,
     const base::FilePath& in_file,
     base::OnceCallback<void(base::expected<base::FilePath, CategorizedError>)> callback) {
   OperationResult op_result;
@@ -54,7 +54,8 @@ base::OnceClosure XzOperation(
 
 class XzOperationTest : public ::testing::TestWithParam<bool> {
  public:
-  bool IsForeground() const { return GetParam(); } private:
+  bool IsForeground() const { return GetParam(); }
+ private:
   // `env_` must be constructed before sequence_checker_.
   base::test::TaskEnvironment env_;
 

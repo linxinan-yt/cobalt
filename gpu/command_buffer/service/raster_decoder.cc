@@ -195,14 +195,7 @@ class GpuTransferCacheImageProvider : public cc::ImageProvider {
 };
 #endif  // BUILDFLAG(IS_COBALT)
 
-// Controls whether we may yield during rasterization.
-BASE_FEATURE(kGpuYieldRasterization, base::FEATURE_DISABLED_BY_DEFAULT);
-
-// Controls how many ops are rastered before checking if we should yield.
-const base::FeatureParam<int> kGpuYieldRasterizationOpCount(
-    &kGpuYieldRasterization,
-    "gpu_yield_rasterization_op_count",
-    500);// This class prevents any GL errors that occur when it is in scope from
+// This class prevents any GL errors that occur when it is in scope from
 // being reported to the client.
 class ScopedGLErrorSuppressor {
  public:
@@ -839,7 +832,8 @@ void DoRasterCHROMIUM(GLuint raster_shm_id,
 #if BUILDFLAG(IS_COBALT)
   void DoRasterCHROMIUMInProcess(
       std::unique_ptr<InProcessRasterPayload> payload);
-#endif  // BUILDFLAG(IS_COBALT)  void DoEndRasterCHROMIUM();
+#endif  // BUILDFLAG(IS_COBALT)
+  void DoEndRasterCHROMIUM();
   void DoFlushTileRasterGraphiteCommandsCHROMIUM();
   void DoCreateTransferCacheEntryINTERNAL(GLuint entry_type,
                                           GLuint entry_id,
@@ -3084,13 +3078,13 @@ void RasterDecoderImpl::DoRasterCHROMIUM(GLuint raster_shm_id,
   if (base::FeatureList::IsEnabled(features::kCobaltInProcessDirectRaster) &&
       raster_shm_size == sizeof(InProcessRasterPayload*)) {
     InProcessRasterPayload* in_process_payload = nullptr;
-    std::memcpy(&in_process_payload, paint_buffer_memory,
+    std::memcpy(&in_process_payload, paint_buffer.data(),
                 sizeof(in_process_payload));
     if (in_process_payload &&
         InProcessRasterPayloadRegistry::GetInstance().Take(
             in_process_payload)) {
-      return DoRasterCHROMIUMInProcess(
-          base::WrapUnique(in_process_payload));
+      DoRasterCHROMIUMInProcess(base::WrapUnique(in_process_payload));
+      return;
     }
   }
 #endif  // BUILDFLAG(IS_COBALT)
@@ -3159,11 +3153,10 @@ void RasterDecoderImpl::DoRasterCHROMIUM(GLuint raster_shm_id,
 
     paint_buffer = paint_buffer.subspan(skip);
   }
-return error::kNoError;
 }
 
 #if BUILDFLAG(IS_COBALT)
-error::Error RasterDecoderImpl::DoRasterCHROMIUMInProcess(
+void RasterDecoderImpl::DoRasterCHROMIUMInProcess(
     std::unique_ptr<InProcessRasterPayload> payload) {
   // |scoped_shared_image_raster_write_| is only used by RawDraw, which is not
   // used in Cobalt. Skip the handling for it in DoRasterCHROMIUMInProcess.
@@ -3174,7 +3167,7 @@ error::Error RasterDecoderImpl::DoRasterCHROMIUMInProcess(
     if (!payload->playback_rect.IsEmpty() &&
         !raster_bounds.intersect(
             gfx::RectToSkIRect(payload->playback_rect))) {
-      return error::kNoError;
+      return;
     }
 
     int save_count = raster_canvas_->getSaveCount();
@@ -3240,24 +3233,8 @@ error::Error RasterDecoderImpl::DoRasterCHROMIUMInProcess(
 
     raster_canvas_->restoreToCount(save_count);
   }
-
-  return error::kNoError;
 }
 #endif  // BUILDFLAG(IS_COBALT)
-
-error::Error RasterDecoderImpl::HandleRasterCHROMIUM(
-    uint32_t immediate_data_size,
-    const volatile void* cmd_data) {
-  const volatile raster::cmds::RasterCHROMIUM& c =
-      *static_cast<const volatile raster::cmds::RasterCHROMIUM*>(cmd_data);
-  GLuint raster_shm_id = static_cast<GLuint>(c.raster_shm_id);
-  GLuint raster_shm_offset = static_cast<GLuint>(c.raster_shm_offset);
-  GLuint raster_shm_size = static_cast<GLuint>(c.raster_shm_size);
-  GLuint font_shm_id = static_cast<GLuint>(c.font_shm_id);
-  GLuint font_shm_offset = static_cast<GLuint>(c.font_shm_offset);
-  GLuint font_shm_size = static_cast<GLuint>(c.font_shm_size);
-  return DoRasterCHROMIUM(raster_shm_id, raster_shm_offset, raster_shm_size,
-                          font_shm_id, font_shm_offset, font_shm_size);}
 
 void RasterDecoderImpl::DoEndRasterCHROMIUM() {
   TRACE_EVENT0("gpu", "RasterDecoderImpl::DoEndRasterCHROMIUM");

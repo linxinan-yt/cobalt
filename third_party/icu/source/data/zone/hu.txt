@@ -41,7 +41,8 @@ hu{
         }
         "America:Argentina:Tucuman"{
             ec{"Tucumán"}
-        }        "America:Bahia_Banderas"{
+        }
+        "America:Bahia_Banderas"{
             ec{"Bahia Banderas"}
         }
         "America:Cayman"{
@@ -52,7 +53,8 @@ hu{
         }
         "America:Cuiaba"{
             ec{"Cuiabá"}
-        }        "America:Dominica"{
+        }
+        "America:Dominica"{
             ec{"Dominika"}
         }
         "America:El_Salvador"{
@@ -78,7 +80,8 @@ hu{
         }
 "America:Sao_Paulo"{
             ec{"São Paulo"}
-        }        "America:St_Barthelemy"{
+        }
+        "America:St_Barthelemy"{
             ec{"Saint-Barthélemy"}
         }
         "Antarctica:Vostok"{

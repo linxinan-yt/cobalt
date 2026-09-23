@@ -1515,7 +1515,8 @@ dnam{"naktis"}
                 gender{"feminine"}
                 one{"{0} nakts"}
                 other{"{0} naktis"}
-                per{"{0}/nakts"}                zero{"{0} nakšu"}
+                per{"{0}/nakts"}
+                zero{"{0} nakšu"}
             }
             quarter{
                 case{
@@ -3420,7 +3421,8 @@ dnam{"naktis"}
                         zero{"{0} gaismas"}
                     }
                 }
-dnam{"gaisma"}                gender{"feminine"}
+dnam{"gaisma"}
+                gender{"feminine"}
                 one{"{0} gaisma"}
                 other{"{0} gaismas"}
                 zero{"{0} gaismas"}

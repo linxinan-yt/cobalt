@@ -326,14 +326,6 @@ bool NeedEchoController(const AudioProcessing::Config& config,
   return config.echo_canceller.enabled || has_echo_control_factory;
 }
 
-bool NeedEchoController(const AudioProcessing::Config& config,
-                        bool has_echo_control_factory) {
-  // For legacy reasons, having an echo control factory overrides the config.
-  return (config.echo_canceller.enabled &&
-          !config.echo_canceller.mobile_mode) ||
-         has_echo_control_factory;
-}
-
 constexpr int kUnspecifiedDataDumpInputVolume = -100;
 constexpr int kBandSplitRate = AudioProcessing::kSampleRate16kHz;
 

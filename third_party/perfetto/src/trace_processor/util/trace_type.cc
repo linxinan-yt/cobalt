@@ -37,71 +37,6 @@ constexpr uint8_t kTracePacketTag =
     protozero::proto_utils::MakeTagLengthDelimited(
         protos::pbzero::Trace::kPacketFieldNumber);
 
-bool IsPprofProfile(const uint8_t* data, size_t size) {
-  // Minimum size to parse a protobuf tag and small varint
-  constexpr size_t kMinPprofSize = 10;
-  if (size < kMinPprofSize) {
-    return false;
-  }
-
-  const uint8_t* ptr = data;
-  const uint8_t* const end = ptr + size;
-
-  // Check if first field is sample_type (field 1, length-delimited)
-  uint64_t tag;
-  const uint8_t* next = protozero::proto_utils::ParseVarInt(ptr, end, &tag);
-  if (next == ptr) {
-    return false;
-  }
-
-  constexpr uint64_t kSampleTypeTag =
-      protozero::proto_utils::MakeTagLengthDelimited(1);
-
-  if (tag != kSampleTypeTag) {
-    return false;
-  }
-
-  // Parse the length of the sample_type field
-  uint64_t sample_type_length;
-  const uint8_t* len_next =
-      protozero::proto_utils::ParseVarInt(next, end, &sample_type_length);
-  if (len_next == next ||
-      sample_type_length > static_cast<uint64_t>(end - len_next)) {
-    return false;
-  }
-
-  // Look inside the sample_type field for pprof ValueType structure
-  // In pprof: ValueType has field 1 (type) and field 2 (unit) as varints (wire
-  // type 0)
-  // In Perfetto: field 1 would contain length-delimited data (wire type 2)
-  const uint8_t* value_type_ptr = len_next;
-  const uint8_t* value_type_end = len_next + sample_type_length;
-
-  // Parse the first ValueType message
-  if (value_type_ptr >= value_type_end) {
-    return false;
-  }
-
-  // Check for field 1 (type) as varint
-  uint64_t inner_tag;
-  const uint8_t* inner_next = protozero::proto_utils::ParseVarInt(
-      value_type_ptr, value_type_end, &inner_tag);
-  if (inner_next == value_type_ptr) {
-    return false;
-  }
-
-  // Use proto_utils to create proper field tags for pprof ValueType fields:
-  // Field 1 (type) and Field 2 (unit) are both varints in pprof format
-  constexpr uint64_t kValueTypeTypeFieldTag =
-      protozero::proto_utils::MakeTagVarInt(1);
-  constexpr uint64_t kValueTypeUnitFieldTag =
-      protozero::proto_utils::MakeTagVarInt(2);
-
-  // Accept either field 1 (type) or field 2 (unit) as evidence of pprof format
-  return inner_tag == kValueTypeTypeFieldTag ||
-         inner_tag == kValueTypeUnitFieldTag;
-}
-
 }  // namespace
 
 TraceImporterBase::~TraceImporterBase() = default;
@@ -110,7 +45,8 @@ TraceImporterId TraceImporterRegistry::Register(
     std::unique_ptr<TraceImporterBase> importer) {
   TraceImporterId id = importer->id();
   PERFETTO_CHECK(importers_.Insert(id, std::move(importer)).second);
-  return id;}
+  return id;
+}
 
 const TraceTypeDescriptor* TraceImporterRegistry::Find(
     TraceImporterId id) const {
@@ -173,10 +109,11 @@ CompressedTraceType SniffCompressedTraceType(const uint8_t* data, size_t size) {
       data[3] == 0xfd) {
     return CompressedTraceType::kZstd;
   }
-// A raw proto trace starts with the length-delimited Trace.packet field tag.
+  // A raw proto trace starts with the length-delimited Trace.packet field tag.
   if (size > 0 && data[0] == kTracePacketTag) {
     return CompressedTraceType::kProto;
   }
-  return CompressedTraceType::kOther;}
+  return CompressedTraceType::kOther;
+}
 
 }  // namespace perfetto::trace_processor

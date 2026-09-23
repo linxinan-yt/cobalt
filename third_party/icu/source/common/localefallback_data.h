@@ -11,109 +11,111 @@
 //======================================================================
 // Default script table
 const char scriptCodeChars[] =
-"Aghb\0Ahom\0Arab\0Armi\0Armn\0Avst\0Bali\0Bamu\0Bass\0Batk\0Beng\0"
-    "Bopo\0Brah\0Cakm\0Cans\0Cari\0Cham\0Cher\0Chrs\0Copt\0Cprt\0Cyrl\0"
-    "Deva\0Egyp\0Elym\0Ethi\0Geor\0Gong\0Gonm\0Goth\0Gran\0Grek\0Gujr\0"
-    "Guru\0Hang\0Hani\0Hans\0Hant\0Hebr\0Hluw\0Hmnp\0Ital\0Java\0Jpan\0"
-    "Kali\0Kana\0Khar\0Khmr\0Kits\0Knda\0Kore\0Lana\0Laoo\0Latf\0Latg\0"
-    "Lepc\0Lina\0Linb\0Lisu\0Lyci\0Lydi\0Mand\0Mani\0Marc\0Medf\0Merc\0"
-    "Mlym\0Modi\0Mong\0Mroo\0Mtei\0Mymr\0Narb\0Newa\0Nkoo\0Nshu\0Ogam\0"
-    "Olck\0Orkh\0Orya\0Osge\0Ougr\0Pauc\0Phli\0Phnx\0Plrd\0Prti\0Rjng\0"
-    "Rohg\0Runr\0Samr\0Sarb\0Saur\0Sgnw\0Sinh\0Sogd\0Sora\0Soyo\0Sunu\0"
-    "Syrc\0Tagb\0Takr\0Tale\0Talu\0Taml\0Tang\0Tavt\0Telu\0Tfng\0Thaa\0"
-    "Thai\0Tibt\0Tnsa\0Toto\0Ugar\0Vaii\0Wcho\0Xpeo\0Xsux\0Yiii\0";
+    "Aghb\0Ahom\0Arab\0Armi\0Armn\0Avst\0Bali\0Bamu\0Batk\0Beng\0Bopo\0"
+    "Brah\0Cakm\0Cans\0Cari\0Cham\0Cher\0Chrs\0Copt\0Cprt\0Cyrl\0Deva\0"
+    "Egyp\0Elym\0Ethi\0Geor\0Gong\0Gonm\0Goth\0Gran\0Grek\0Gujr\0Guru\0"
+    "Hang\0Hani\0Hans\0Hant\0Hebr\0Hluw\0Hmnp\0Ital\0Java\0Jpan\0Kali\0"
+    "Kana\0Khar\0Khmr\0Kits\0Knda\0Kore\0Lana\0Laoo\0Latf\0Latg\0Lepc\0"
+    "Lina\0Linb\0Lisu\0Lyci\0Lydi\0Mand\0Mani\0Marc\0Medf\0Merc\0Mlym\0"
+    "Modi\0Mong\0Mroo\0Mtei\0Mymr\0Narb\0Newa\0Nkoo\0Ogam\0Olck\0Orkh\0"
+    "Orya\0Osge\0Ougr\0Pauc\0Phli\0Phnx\0Plrd\0Prti\0Rjng\0Rohg\0Runr\0"
+    "Samr\0Sarb\0Saur\0Sgnw\0Sidt\0Sinh\0Sogd\0Sora\0Soyo\0Syrc\0Tagb\0"
+    "Takr\0Tale\0Talu\0Taml\0Tang\0Tavt\0Telu\0Tfng\0Thaa\0Thai\0Tibt\0"
+    "Tnsa\0Toto\0Ugar\0Vaii\0Wcho\0Xpeo\0Xsux\0Yiii\0";
 
 const char dsLocaleIDChars[] =
-    "aaf\0aao\0aat\0ab\0abh\0abl\0abv\0acm\0acq\0acw\0acx\0adf\0adx\0"
-    "ady\0ae\0aeb\0aec\0aee\0aeq\0afb\0agi\0agj\0agx\0ahg\0aho\0ahr\0"
-    "aib\0aii\0aij\0ain\0aio\0aiq\0akk\0akv\0alk\0all\0alr\0alt\0alw\0"
-    "am\0ams\0amw\0ani\0anp\0anq\0anr\0anu\0aot\0apc\0apd\0aph\0aqc\0"
-    "ar\0arc\0arq\0ars\0ary\0arz\0as\0ase\0ask\0asr\0atn\0atv\0auj\0"
-    "auz\0av\0avd\0avl\0awa\0awn\0axm\0ayh\0ayl\0ayn\0ayp\0az_IQ\0"
+    "aaf\0aao\0aat\0ab\0abh\0abl\0abq\0abv\0acm\0acq\0acw\0acx\0adf\0"
+    "adx\0ady\0ae\0aeb\0aec\0aee\0aeq\0afb\0agi\0agj\0agx\0ahg\0aho\0"
+    "ahr\0aib\0aii\0aij\0ain\0aio\0aiq\0akk\0akv\0alk\0all\0alr\0alt\0"
+    "alw\0am\0ams\0amw\0ani\0anp\0anq\0anr\0anu\0aot\0apc\0apd\0aph\0"
+    "aqc\0ar\0arc\0arq\0ars\0ary\0arz\0as\0ase\0ask\0asr\0atn\0atv\0"
+    "auj\0auz\0av\0avd\0avl\0awa\0awn\0axm\0ayh\0ayl\0ayn\0ayp\0az_IQ\0"
     "az_IR\0az_RU\0azb\0ba\0bal\0bap\0bax\0bbl\0bcq\0bdv\0bdz\0be\0"
     "bee\0bej\0bfb\0bfq\0bft\0bfu\0bfw\0bfy\0bfz\0bg\0bgc\0bgd\0bgn\0"
     "bgp\0bgq\0bgw\0bgx\0bha\0bhb\0bhd\0bhe\0bhh\0bhi\0bhj\0bhm\0bhn\0"
-    "bho\0bht\0bhu\0biy\0bjf\0bjj\0bjm\0bkk\0blk\0blt\0bmj\0bn\0bns\0"
-    "bo\0bph\0bpx\0bpy\0bqi\0bra\0brb\0brd\0brh\0brk\0bro\0brv\0brw\0"
-    "brx\0bsh\0bsk\0bsq\0bst\0btd\0btm\0btv\0bua\0bwe\0bxm\0bxu\0byh\0"
-    "byn\0byw\0bzi\0cbn\0ccp\0cde\0cdh\0cdi\0cdj\0cdm\0cdo\0cdz\0ce\0"
-    "cgk\0chg\0chm\0chr\0chx\0cih\0cja\0cji\0cjm\0cjy\0ckb\0ckt\0clh\0"
-    "clw\0cmg\0cna\0cnp\0cog\0cop\0cpg\0cr\0crh\0crj\0crk\0crl\0crm\0"
-    "csh\0csp\0csw\0ctd\0ctg\0ctn\0ctt\0cty\0cu\0cuu\0cv\0czh\0czk\0"
-    "daq\0dar\0dcc\0ddo\0def\0deh\0der\0dgl\0dhi\0dhn\0dho\0dhw\0dka\0"
-    "dlg\0dmf\0dmk\0dml\0dng\0dnu\0dnv\0doi\0dox\0dre\0drq\0drs\0dry\0"
-    "dso\0dty\0dub\0duh\0dus\0dv\0dwk\0dwz\0dz\0dzl\0ecr\0ecy\0egy\0"
-    "eky\0el\0emg\0emu\0enf\0enh\0era\0esg\0esh\0ett\0eve\0evn\0fa\0"
-    "fay\0faz\0fia\0fmu\0fub\0gan\0gaq\0gas\0gau\0gbj\0gbk\0gbl\0gbm\0"
-    "gbz\0gdb\0gdo\0gdx\0gez\0ggg\0gha\0ghe\0gho\0ghr\0ght\0gig\0gin\0"
-    "gjk\0gju\0gld\0glh\0glk\0gml\0gmv\0gmy\0goe\0gof\0goj\0gok\0gon\0"
-    "got\0gra\0grc\0grt\0gru\0gu\0gvr\0gwc\0gwf\0gwt\0gyo\0gzi\0ha_CM\0"
-    "ha_SD\0hac\0hak\0hak_TW\0har\0haz\0hbo\0hdy\0he\0hi\0hif\0hii\0"
-    "hit\0hkh\0hlb\0hlu\0hmd\0hmj\0hmq\0hnd\0hne\0hnj\0hno\0hoc\0hoh\0"
-    "hoj\0how\0hoy\0hpo\0hrt\0hrz\0hsn\0hss\0htx\0hut\0huy\0huz\0hy\0"
-    "hyw\0ii\0imy\0inh\0int\0ior\0iru\0isk\0itk\0itl\0iu\0iw\0ja\0"
-    "jad\0jat\0jbe\0jbn\0jct\0jda\0jdg\0jdt\0jee\0jge\0ji\0jje\0jkm\0"
-    "jml\0jna\0jnd\0jnl\0jns\0jog\0jpa\0jpr\0jrb\0jul\0jun\0juy\0jya\0"
-    "jye\0ka\0kaa\0kap\0kaw\0kbd\0kbg\0kbu\0kby\0kca\0kcy\0kdq\0kdt\0"
-    "ket\0kev\0kex\0key\0kfa\0kfb\0kfc\0kfd\0kfe\0kfg\0kfh\0kfi\0kfk\0"
-    "kfm\0kfp\0kfq\0kfr\0kfs\0kfu\0kfx\0kfy\0kgj\0kgy\0khb\0khf\0khg\0"
-    "khn\0kho\0kht\0khv\0khw\0kif\0kim\0kip\0kjg\0kjh\0kjl\0kjo\0kjp\0"
-    "kjt\0kjz\0kk\0kk_AF\0kk_CN\0kk_IR\0kk_MN\0kkf\0kkh\0kkt\0kle\0"
-    "klj\0klr\0km\0kmj\0kmz\0kn\0knn\0ko\0koi\0kok\0kpt\0kpy\0kqd\0"
-    "kqy\0kra\0krc\0krk\0krr\0kru\0krv\0ks\0ksu\0ksw\0ksz\0ktb\0kte\0"
-    "ktl\0ktp\0ku_LB\0kuf\0kum\0kv\0kva\0kvq\0kvt\0kvx\0kvy\0kxf\0"
+    "bho\0bht\0bhu\0bix\0biy\0bjf\0bjj\0bjm\0bkk\0blk\0blt\0bmj\0bn\0"
+    "bns\0bo\0bph\0bpx\0bpy\0bqi\0bra\0brb\0brd\0brh\0brk\0bro\0brv\0"
+    "brw\0brx\0bsh\0bsk\0bst\0btd\0btm\0btv\0bua\0bwe\0bxm\0bxu\0byh\0"
+    "byn\0byw\0bzi\0cbn\0ccp\0cde\0cdh\0cdi\0cdj\0cdm\0cdn\0cdo\0cdz\0"
+    "ce\0cgk\0chg\0chm\0chr\0chx\0cih\0cja\0cji\0cjm\0cjy\0ckb\0ckt\0"
+    "clh\0clw\0cmg\0cna\0cnp\0cog\0cop\0cpg\0cr\0crh\0crj\0crk\0crl\0"
+    "crm\0csh\0csp\0csw\0ctd\0ctg\0ctn\0ctt\0cty\0cu\0cuu\0cv\0czh\0"
+    "czk\0daq\0dar\0dcc\0ddo\0def\0deh\0der\0dgl\0dhi\0dhn\0dho\0dhw\0"
+    "dka\0dlg\0dmf\0dmk\0dml\0dng\0dnu\0dnv\0doi\0dox\0dre\0drq\0drs\0"
+    "dry\0dso\0dty\0dub\0duh\0dus\0dv\0dwk\0dwz\0dz\0dzl\0ecr\0ecy\0"
+    "egy\0eky\0el\0emg\0emu\0enf\0enh\0era\0esg\0esh\0ett\0eve\0evn\0"
+    "fa\0fay\0faz\0fia\0fmu\0fub\0gan\0gaq\0gas\0gau\0gbj\0gbk\0gbl\0"
+    "gbm\0gbz\0gdb\0gdo\0gdx\0gez\0ggg\0gha\0ghe\0gho\0ghr\0ght\0gig\0"
+    "gin\0gjk\0gju\0gld\0glh\0glk\0gml\0gmv\0gmy\0goe\0gof\0goj\0gok\0"
+    "gon\0got\0gra\0grc\0grr\0grt\0gru\0gu\0gvr\0gwc\0gwf\0gwt\0gyo\0"
+    "gzi\0ha_CM\0ha_SD\0hac\0hak\0hak_TW\0har\0haz\0hbo\0hdy\0he\0"
+    "hi\0hif\0hii\0hit\0hkh\0hlb\0hlu\0hmd\0hmj\0hmq\0hnd\0hne\0hnj\0"
+    "hnm\0hno\0hoc\0hoh\0hoj\0how\0hoy\0hpo\0hrt\0hrz\0hsn\0hss\0htx\0"
+    "hut\0huy\0huz\0hy\0hyw\0ii\0imy\0inh\0int\0ior\0iru\0isk\0itk\0"
+    "itl\0iu\0iw\0ja\0jad\0jat\0jbe\0jbn\0jct\0jda\0jdg\0jdt\0jee\0"
+    "jge\0ji\0jje\0jkm\0jml\0jna\0jnd\0jnl\0jns\0jog\0jpa\0jpr\0jrb\0"
+    "jul\0jun\0juy\0jya\0jye\0ka\0kaa\0kap\0kaw\0kbd\0kbg\0kbu\0kby\0"
+    "kca\0kcy\0kdq\0kdt\0ket\0kev\0kex\0key\0kfa\0kfb\0kfc\0kfd\0kfe\0"
+    "kfg\0kfh\0kfi\0kfk\0kfm\0kfp\0kfq\0kfr\0kfs\0kfu\0kfx\0kfy\0kgj\0"
+    "kgy\0khb\0khf\0khg\0khn\0kho\0kht\0khv\0khw\0kif\0kim\0kip\0kjg\0"
+    "kjh\0kjl\0kjo\0kjp\0kjt\0kjz\0kk\0kk_AF\0kk_CN\0kk_IR\0kk_MN\0"
+    "kkf\0kkh\0kkt\0kle\0klj\0klr\0km\0kmj\0kmz\0kn\0knn\0ko\0koi\0"
+    "kok\0kpt\0kpy\0kqd\0kqy\0kra\0krc\0krk\0krr\0kru\0krv\0ks\0ksu\0"
+    "ksw\0ksz\0ktb\0kte\0ktl\0ktp\0ku_AM\0ku_AZ\0ku_GE\0ku_IQ\0ku_IR\0"
+    "ku_LB\0ku_TM\0kuf\0kum\0kv\0kva\0kvq\0kvt\0kvx\0kvy\0kwx\0kxf\0"
     "kxk\0kxm\0kxp\0ky\0ky_CN\0kyu\0kyv\0kyw\0lab\0lad\0lae\0lah\0"
     "lbe\0lbf\0lbj\0lbm\0lbo\0lbr\0lcp\0lep\0lez\0lhm\0lhs\0lif\0lis\0"
     "lkh\0lki\0lmh\0lmn\0lo\0loy\0lpo\0lrc\0lrk\0lrl\0lsa\0lsd\0lss\0"
-    "ltc\0luk\0luu\0luv\0luz\0lwl\0lwm\0lya\0lzh\0lzz_GE\0mag\0mai\0"
-    "mby\0mde\0mdf\0mdx\0mdy\0mfa\0mfi\0mga\0mgp\0mhj\0mid\0mjl\0mjq\0"
-    "mjr\0mjt\0mju\0mjv\0mjz\0mk\0mkb\0mke\0mki\0mkm\0ml\0mlf\0mn\0"
-    "mn_CN\0mnc\0mni\0mnj\0mns\0mnw\0mpz\0mr\0mra\0mrd\0mrj\0mro\0"
-    "mrr\0ms_CC\0mtm\0mtr\0mud\0muk\0mut\0muv\0muz\0mve\0mvf\0mvy\0"
-    "mvz\0mwr\0mwt\0mww\0my\0mym\0myv\0myz\0mzn\0nan\0nan_TW\0nao\0"
-    "ncd\0ncq\0ndf\0ne\0neg\0neh\0nei\0new\0ngt\0nio\0nit\0niv\0nli\0"
-    "nlm\0nlx\0nmm\0nnp\0nod\0noe\0nog\0noi\0non\0nos\0npb\0nqo\0nrn\0"
-    "nsd\0nsf\0nsk\0nst\0nsv\0nty\0ntz\0nwc\0nwx\0nyl\0nyq\0nyw\0oaa\0"
-    "oac\0oar\0oav\0obm\0obr\0odk\0oht\0oj\0ojs\0okm\0oko\0okz\0ola\0"
-    "ole\0omk\0omp\0omr\0omx\0oon\0or\0ort\0oru\0orv\0os\0osa\0osc\0"
-    "osi\0ota\0otb\0otk\0oty\0oui\0pa\0pa_PK\0pal\0paq\0pbt\0pcb\0"
-    "pce\0pcf\0pcg\0pch\0pci\0pcj\0peg\0peo\0pgd\0pgg\0pgl\0pgn\0phd\0"
-    "phk\0phl\0phn\0pho\0phr\0pht\0phu\0phv\0phw\0pi\0pka\0pkr\0plk\0"
-    "pll\0pmh\0pnt\0pnt_RU\0pra\0prc\0prd\0prt\0prx\0ps\0psh\0psi\0"
-    "pst\0psu\0pum\0pwo\0pwr\0pww\0pyx\0qxq\0raa\0rab\0raf\0rah\0raj\0"
-    "rav\0rbb\0rdb\0rei\0rhg\0rji\0rjs\0rka\0rki\0rkt\0rmi\0rmt\0rmz\0"
-    "rsk\0rtw\0ru\0rue\0rut\0rwr\0ryu\0sa\0sah\0sam\0sat\0saz\0sbn\0"
-    "sbu\0sck\0scl\0scp\0sct\0scu\0scx\0sd\0sd_IN\0sdb\0sdf\0sdg\0"
-    "sdh\0sdr\0sds\0sel\0sfm\0sgh\0sgj\0sgr\0sgt\0sgw\0sgy\0shd\0shi\0"
-    "shm\0shn\0shu\0shv\0si\0sia\0sip\0siy\0siz\0sjd\0sjp\0sjt\0skb\0"
-    "skj\0skr\0smh\0smp\0smu\0smy\0soa\0sog\0soi\0sou\0spt\0spv\0sqo\0"
-    "sqq\0sqt\0sr\0srb\0srh\0srx\0srz\0ssh\0sss\0sts\0stv\0sty\0suz\0"
-    "sva\0swb\0swi\0swv\0sxu\0syc\0syl\0syn\0syr\0syw\0ta\0tab\0taj\0"
-    "tbk\0tcn\0tco\0tcx\0tcy\0tda\0tdb\0tdd\0tdg\0tdh\0te\0tes\0tg\0"
-    "tg_PK\0tge\0tgf\0th\0the\0thf\0thi\0thl\0thm\0thq\0thr\0ths\0"
-    "ti\0tig\0tij\0tin\0tjl\0tjo\0tkb\0tks\0tkt\0tmr\0tnv\0tov\0tpu\0"
-    "tra\0trg\0trm\0trw\0tsd\0tsj\0tt\0tth\0tto\0tts\0ttz\0tvn\0twm\0"
-    "txg\0txo\0tyr\0tyv\0ude\0udg\0udi\0udm\0ug\0ug_KZ\0ug_MN\0uga\0"
-    "ugh\0ugo\0uk\0uki\0ulc\0unr\0unr_NP\0unx\0ur\0urk\0ush\0uum\0"
-    "uz_AF\0uz_CN\0uzs\0vaa\0vaf\0vah\0vai\0vas\0vav\0vay\0vgr\0vjk\0"
-    "vmd\0vmh\0wal\0wbk\0wbq\0wbr\0wle\0wlo\0wme\0wne\0wni\0wsg\0wsv\0"
-    "wtm\0wuu\0xag\0xal\0xan\0xas\0xco\0xcr\0xdq\0xhe\0xhm\0xis\0xka\0"
-    "xkc\0xkf\0xkj\0xkp\0xlc\0xld\0xly\0xmf\0xmn\0xmr\0xna\0xnr\0xpg\0"
-    "xpi\0xpm\0xpr\0xrm\0xrn\0xsa\0xsr\0xtq\0xub\0xuj\0xve\0xvi\0xwo\0"
-    "xzh\0yai\0ybh\0ybi\0ydg\0yea\0yej\0yeu\0ygp\0yhd\0yi\0yig\0yih\0"
-    "yiv\0ykg\0ykh\0yna\0ynk\0yoi\0yoy\0yrk\0ysd\0ysn\0ysp\0ysr\0ysy\0"
-    "yud\0yue\0yue_CN\0yug\0yux\0ywq\0ywu\0zau\0zba\0zch\0zdj\0zeh\0"
-    "zen\0zgb\0zgh\0zgm\0zgn\0zh\0zh_AU\0zh_BN\0zh_GB\0zh_GF\0zh_HK\0"
-    "zh_ID\0zh_MO\0zh_PA\0zh_PF\0zh_PH\0zh_SR\0zh_TH\0zh_TW\0zh_US\0"
-    "zh_VN\0zhd\0zhx\0zko\0zkt\0zkz\0zlj\0zln\0zlq\0zqe\0zrg\0zrp\0"
-    "zum\0zwa\0zyg\0zyn\0zzj\0";
+    "ltc\0luh\0luk\0luu\0luv\0luz\0lwl\0lwm\0lya\0lzh\0lzz_GE\0mag\0"
+    "mai\0mby\0mde\0mdf\0mdx\0mdy\0mey\0mfa\0mfi\0mga\0mgp\0mhj\0mid\0"
+    "mjl\0mjq\0mjr\0mjt\0mju\0mjv\0mjz\0mk\0mkb\0mke\0mki\0mkm\0ml\0"
+    "mlf\0mn\0mn_CN\0mnc\0mni\0mnj\0mns\0mnw\0mpz\0mr\0mra\0mrd\0mrj\0"
+    "mro\0mrr\0ms_CC\0mtm\0mtr\0mud\0muk\0mut\0muv\0muz\0mve\0mvf\0"
+    "mvy\0mvz\0mwr\0mwt\0mww\0my\0mym\0myv\0myz\0mzb\0mzn\0nan\0nan_MO\0"
+    "nan_TW\0nao\0ncd\0ncq\0ndf\0ne\0neg\0neh\0nei\0new\0ngt\0nio\0"
+    "nit\0niv\0nli\0nlm\0nlx\0nmm\0nnp\0nod\0noe\0nog\0noi\0non\0nos\0"
+    "npb\0nqo\0nrn\0nsd\0nsf\0nsk\0nst\0nsv\0nty\0ntz\0nwc\0nwx\0nyl\0"
+    "nyq\0nyw\0oaa\0oac\0oar\0oav\0obm\0obr\0odk\0oht\0oj\0ojs\0okm\0"
+    "oko\0okz\0ola\0ole\0omk\0omp\0omr\0omx\0oon\0or\0ort\0oru\0orv\0"
+    "os\0osa\0osc\0osi\0ota\0otb\0otk\0oty\0oui\0oyb\0pa\0pa_PK\0pal\0"
+    "paq\0pbt\0pcb\0pce\0pcf\0pcg\0pch\0pci\0pcj\0peg\0peo\0pgd\0pgg\0"
+    "pgl\0pgn\0phd\0phk\0phl\0phn\0pho\0phr\0pht\0phu\0phv\0phw\0pi_IN\0"
+    "pi_LK\0pi_MM\0pi_TH\0pka\0pkr\0plk\0pll\0pmh\0pnt\0pnt_RU\0prc\0"
+    "prd\0prt\0prx\0ps\0psh\0psi\0pst\0psu\0pum\0pwo\0pwr\0pww\0pyx\0"
+    "qxq\0raa\0rab\0raf\0rah\0raj\0rav\0rbb\0rdb\0rei\0rhg\0rji\0rjs\0"
+    "rka\0rki\0rkt\0rmi\0rmt\0rmz\0rsk\0rtw\0ru\0rue\0rut\0rwr\0ryu\0"
+    "sa\0sah\0sam\0sat\0saz\0sbn\0sbu\0sck\0scl\0scp\0sct\0scu\0scx\0"
+    "sd\0sd_IN\0sdb\0sdf\0sdg\0sdh\0sdr\0sds\0sel\0sfm\0sgh\0sgj\0"
+    "sgr\0sgt\0sgw\0sgy\0shd\0shi\0shm\0shn\0shu\0shv\0si\0sia\0sip\0"
+    "siy\0siz\0sjc\0sjd\0sjp\0sjt\0skb\0skj\0skr\0smh\0smp\0smu\0smy\0"
+    "soa\0sog\0soi\0sou\0spt\0spv\0sqo\0sqq\0sqt\0sr\0srb\0srh\0srx\0"
+    "srz\0ssh\0sss\0sts\0stu\0stu_CN\0stv\0sty\0suz\0sva\0swb\0swi\0"
+    "swv\0sxu\0syc\0syl\0syn\0syr\0syw\0ta\0tab\0taj\0tbk\0tcn\0tco\0"
+    "tcx\0tcy\0tda\0tdb\0tdd\0tdg\0tdh\0te\0tes\0tg\0tg_PK\0tge\0tgf\0"
+    "th\0the\0thf\0thi\0thl\0thm\0thq\0thr\0ths\0ti\0tig\0tij\0tin\0"
+    "tjl\0tjo\0tkb\0tks\0tkt\0tmr\0tnv\0tov\0tpu\0tra\0trg\0trm\0trw\0"
+    "tsd\0tsj\0tt\0tth\0tto\0tts\0ttz\0tvn\0twm\0txg\0txo\0tyr\0tyv\0"
+    "ude\0udg\0udi\0udm\0ug\0ug_KZ\0ug_MN\0uga\0ugh\0ugo\0uk\0uki\0"
+    "ulc\0unr\0unr_NP\0unx\0ur\0urk\0ush\0uum\0uz_AF\0uz_CN\0uzs\0"
+    "vaa\0vaf\0vah\0vai\0vas\0vav\0vay\0vgr\0vjk\0vmd\0vmh\0wal\0wbk\0"
+    "wbq\0wbr\0wle\0wlo\0wme\0wne\0wni\0wsg\0wsv\0wtm\0wuu\0xag\0xal\0"
+    "xan\0xas\0xco\0xcr\0xdq\0xhe\0xhm\0xis\0xka\0xkc\0xkf\0xkj\0xkp\0"
+    "xlc\0xld\0xly\0xmf\0xmn\0xmr\0xna\0xnr\0xpg\0xpi\0xpm\0xpr\0xrm\0"
+    "xrn\0xsa\0xsd\0xsr\0xtq\0xub\0xuj\0xve\0xvi\0xwo\0xzh\0yai\0ybh\0"
+    "ybi\0ydg\0yea\0yej\0yeu\0ygp\0yhd\0yi\0yig\0yih\0yiv\0ykg\0ykh\0"
+    "yna\0ynk\0yoi\0yoy\0yrk\0ysd\0ysn\0ysp\0ysr\0ysy\0yud\0yue\0yue_CN\0"
+    "yug\0yux\0ywq\0ywu\0zau\0zba\0zch\0zdj\0zeh\0zen\0zgb\0zgh\0zgm\0"
+    "zgn\0zh\0zh_AU\0zh_BN\0zh_GB\0zh_GF\0zh_HK\0zh_ID\0zh_MO\0zh_PA\0"
+    "zh_PF\0zh_PH\0zh_SR\0zh_TH\0zh_TW\0zh_US\0zh_VN\0zhd\0zko\0zkt\0"
+    "zkz\0zlj\0zln\0zlq\0zqe\0zrg\0zrp\0zum\0zwa\0zyg\0zyn\0zzj\0";
 
 const int32_t defaultScriptTable[] = {
-    0, 330,  // aaf -> Mlym    4, 10,  // aao -> Arab
-    8, 155,  // aat -> Grek
-    12, 105,  // ab -> Cyrl
+    0, 325,  // aaf -> Mlym
+    4, 10,  // aao -> Arab
+    8, 150,  // aat -> Grek
+    12, 100,  // ab -> Cyrl
     15, 10,  // abh -> Arab
-19, 425,  // abl -> Rjng
+    19, 425,  // abl -> Rjng
     23, 100,  // abq -> Cyrl
     27, 10,  // abv -> Arab
     31, 10,  // acm -> Arab
@@ -1173,7 +1175,8 @@ const int32_t defaultScriptTable[] = {
     4298, 120,  // zwa -> Ethi
     4302, 170,  // zyg -> Hani
     4306, 170,  // zyn -> Hani
-    4310, 170,  // zzj -> Hani};
+    4310, 170,  // zzj -> Hani
+};
 
 //======================================================================
 // Parent locale table
@@ -1182,7 +1185,7 @@ const char parentLocaleChars[] =
     "cu_Glag\0dje_Arab\0dyo_Arab\0en_001\0en_150\0en_AG\0en_AI\0en_AT\0"
     "en_AU\0en_BB\0en_BE\0en_BM\0en_BS\0en_BW\0en_BZ\0en_CC\0en_CH\0"
     "en_CK\0en_CM\0en_CX\0en_CY\0en_CZ\0en_DE\0en_DG\0en_DK\0en_DM\0"
-"en_Dsrt\0en_EE\0en_ER\0en_ES\0en_FI\0en_FJ\0en_FK\0en_FM\0en_FR\0"
+    "en_Dsrt\0en_EE\0en_ER\0en_ES\0en_FI\0en_FJ\0en_FK\0en_FM\0en_FR\0"
     "en_GB\0en_GD\0en_GE\0en_GG\0en_GH\0en_GI\0en_GM\0en_GS\0en_GY\0"
     "en_HK\0en_HU\0en_ID\0en_IE\0en_IL\0en_IM\0en_IN\0en_IO\0en_IT\0"
     "en_JE\0en_JM\0en_KE\0en_KI\0en_KN\0en_KY\0en_LC\0en_LR\0en_LS\0"
@@ -1214,7 +1217,8 @@ const int32_t parentLocaleTable[] = {
     50, 1176,  // byn_Latn -> root
     59, 1176,  // cu_Glag -> root
     67, 1176,  // dje_Arab -> root
-    76, 1176,  // dyo_Arab -> root    92, 85,  // en_150 -> en_001
+    76, 1176,  // dyo_Arab -> root
+    92, 85,  // en_150 -> en_001
     99, 85,  // en_AG -> en_001
     105, 85,  // en_AI -> en_001
     111, 92,  // en_AT -> en_150
@@ -1236,7 +1240,7 @@ const int32_t parentLocaleTable[] = {
     207, 85,  // en_DG -> en_001
     213, 92,  // en_DK -> en_150
     219, 85,  // en_DM -> en_001
-225, 1176,  // en_Dsrt -> root
+    225, 1176,  // en_Dsrt -> root
     233, 92,  // en_EE -> en_150
     239, 85,  // en_ER -> en_001
     245, 92,  // en_ES -> en_150
@@ -1402,7 +1406,8 @@ const int32_t parentLocaleTable[] = {
     1305, 1176,  // yo_Arab -> root
     1313, 1176,  // yue_Hans -> root
     1322, 1176,  // zh_Hant -> root
-    1341, 1330,  // zh_Hant_MO -> zh_Hant_HK};
+    1341, 1330,  // zh_Hant_MO -> zh_Hant_HK
+};
 
 
 #endif  // INCLUDED_FROM_URESBUND_CPP

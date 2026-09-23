@@ -85,7 +85,8 @@ ak{
         CN{"Kyaena"}
         CO{"Kolombia"}
         CP{"Klepatin Aeland"}
-CQ{"Sark"}        CR{"Kɔsta Rika"}
+CQ{"Sark"}
+        CR{"Kɔsta Rika"}
         CU{"Kiuba"}
         CV{"Kepvɛdfo Islands"}
         CW{"Kurakaw"}
@@ -106,7 +107,8 @@ CQ{"Sark"}        CR{"Kɔsta Rika"}
         EH{"Sahara Atɔeɛ"}
         ER{"Ɛritrea"}
         ES{"Spain"}
-ET{"Ithiopia"}        EU{"Yuropu Nkabomkuo"}
+ET{"Ithiopia"}
+        EU{"Yuropu Nkabomkuo"}
         EZ{"Yuropu Fam"}
         FI{"Finland"}
         FJ{"Figyi"}
@@ -140,7 +142,8 @@ ET{"Ithiopia"}        EU{"Yuropu Nkabomkuo"}
         HT{"Heiti"}
         HU{"Hangari"}
         IC{"Canary Islands"}
-ID{"Indɔnehyia"}        IE{"Aereland"}
+ID{"Indɔnehyia"}
+        IE{"Aereland"}
         IL{"Israe"}
         IM{"Isle of Man"}
         IN{"India"}
@@ -158,7 +161,8 @@ ID{"Indɔnehyia"}        IE{"Aereland"}
         KH{"Kambodia"}
         KI{"Kiribati"}
         KM{"Kɔmɔrɔs"}
-KN{"Saint Kitts ne Nɛves"}        KP{"Korea Atifi"}
+KN{"Saint Kitts ne Nɛves"}
+        KP{"Korea Atifi"}
         KR{"Korea Anaafoɔ"}
         KW{"Kuweti"}
         KY{"Kemanfo Islands"}
@@ -238,7 +242,8 @@ KN{"Saint Kitts ne Nɛves"}        KP{"Korea Atifi"}
         SE{"Sweden"}
         SG{"Singapɔ"}
         SH{"Saint Helena"}
-SI{"Slovenia"}        SJ{"Svalbard ne Jan Mayen"}
+SI{"Slovenia"}
+        SJ{"Svalbard ne Jan Mayen"}
         SK{"Slovakia"}
         SL{"Sɛra Liɔn"}
         SM{"San Marino"}

@@ -15,7 +15,8 @@ U_NAMESPACE_BEGIN
 namespace number::impl {
 
 // Exported as U_I18N_API_CLASS for tests
-class U_I18N_API_CLASS CurrencySymbols : public UMemory {  public:
+class U_I18N_API_CLASS CurrencySymbols : public UMemory {
+  public:
     CurrencySymbols() = default; // default constructor: leaves class in valid but undefined state
 
     /** Creates an instance in which all symbols are loaded from data. */

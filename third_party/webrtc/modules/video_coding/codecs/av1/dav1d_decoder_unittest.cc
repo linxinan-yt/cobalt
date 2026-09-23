@@ -46,7 +46,8 @@ constexpr uint8_t kAv1FrameWithBT709FullRangeColorSpace[] = {
     0x22, 0x02, 0x02, 0x03, 0x08, 0x32, 0x0e, 0x10, 0x00, 0xac, 0x02, 0x05,
     0x14, 0x20, 0x81, 0x00, 0x02, 0x00, 0x95, 0xe1, 0xe0};
 
-EncodedImage CreateEncodedImage(std::span<const uint8_t> data) {  EncodedImage image;
+EncodedImage CreateEncodedImage(std::span<const uint8_t> data) {
+  EncodedImage image;
   image.SetEncodedData(EncodedImageBuffer::Create(data.data(), data.size()));
   return image;
 }
@@ -119,9 +120,11 @@ TEST(Dav1dDecoderTest, DoesNotCropToRenderResolutionWhenCropIsDisabled) {
 }
 
 TEST(Dav1dDecoderTest, SetsColorSpaceOnDecodedFrame) {
-TestAv1Decoder decoder(CreateEnvironment());
-  decoder.Decode(
-      CreateEncodedImage(kAv1FrameWithBT709FullRangeColorSpace));  auto color_space = decoder.decoded_frame().color_space();
+  TestAv1Decoder decoder(CreateTestEnvironment());
+  EXPECT_EQ(
+      decoder.Decode(CreateEncodedImage(kAv1FrameWithBT709FullRangeColorSpace)),
+      WEBRTC_VIDEO_CODEC_OK);
+  auto color_space = decoder.decoded_frame().color_space();
   EXPECT_TRUE(color_space.has_value());
   EXPECT_EQ(color_space->primaries(), ColorSpace::PrimaryID::kBT709);
   EXPECT_EQ(color_space->transfer(), ColorSpace::TransferID::kBT709);
@@ -158,6 +161,8 @@ TEST(Dav1dDecoderTest, FailDecoderOnTiles) {
   TestAv1Decoder decoder(CreateTestEnvironment());
   decoder.Decode(CreateEncodedImage(kTile0));
   decoder.Decode(CreateEncodedImage(kTile1));
-}}  // namespace
+}
+
+}  // namespace
 }  // namespace test
 }  // namespace webrtc

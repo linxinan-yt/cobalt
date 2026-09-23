@@ -22,10 +22,11 @@ import {
 } from './category_logs';
 
 export type ImportErrorsData = CategoryLogsData;
+
 export async function loadImportErrorsData(
   engine: Engine,
 ): Promise<ImportErrorsData> {
-return loadCategoryLogsData(
+  return loadCategoryLogsData(
     engine,
     "severity = 'error' AND source = 'analysis' AND value > 0",
     'error',
@@ -40,11 +41,13 @@ const CONFIG: CategoryLogsViewConfig = {
   cardSeverity: 'danger',
   cardIcon: 'error',
 };
+
 export interface ImportErrorsTabAttrs {
   data: ImportErrorsData;
 }
 
 export class ImportErrorsTab implements m.ClassComponent<ImportErrorsTabAttrs> {
-view({attrs}: m.CVnode<ImportErrorsTabAttrs>) {
-    return m(CategoryLogsTab, {data: attrs.data, config: CONFIG});  }
+  view({attrs}: m.CVnode<ImportErrorsTabAttrs>) {
+    return m(CategoryLogsTab, {data: attrs.data, config: CONFIG});
+  }
 }

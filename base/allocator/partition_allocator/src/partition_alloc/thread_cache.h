@@ -64,7 +64,8 @@ struct ThreadCache {
 
 PA_COMPONENT_EXPORT(PARTITION_ALLOC)
   static void SetThreadCacheMultiplier(float multiplier);
-  PA_COMPONENT_EXPORT(PARTITION_ALLOC)  static void SetLargestCachedSize(size_t size);
+  PA_COMPONENT_EXPORT(PARTITION_ALLOC)
+  static void SetLargestCachedSize(size_t size);
 
   // Purge the thread cache of the current thread, if one exists.
   PA_COMPONENT_EXPORT(PARTITION_ALLOC) static void PurgeCurrentThread();

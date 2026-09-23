@@ -681,8 +681,9 @@ void RunMetric::Step(sqlite3_context* ctx, int argc, sqlite3_value** argv) {
                         metric_it->sql.c_str()));
   }
 
-auto res = user_ctx->connection->Execute(
-      SqlSource::FromMetricFile(subbed_sql, path));  if (!res.status().ok()) {
+  auto res = user_ctx->connection->Execute(
+      SqlSource::FromMetricFile(subbed_sql, path));
+  if (!res.status().ok()) {
     return sqlite::utils::SetError(ctx, res.status());
   }
 

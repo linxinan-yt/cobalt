@@ -1192,7 +1192,8 @@ brx{
         }
 "Pacific:Kanton"{
             ec{"केन्ट’न"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"किरीतिमाति"}
         }
         "Pacific:Kosrae"{

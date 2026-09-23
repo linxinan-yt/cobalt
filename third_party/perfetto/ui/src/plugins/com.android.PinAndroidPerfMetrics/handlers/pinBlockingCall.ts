@@ -146,7 +146,7 @@ class BlockingCallMetricHandler implements MetricHandler {
     ctx: Trace,
     metricData: BlockingCallMetricData,
   ): Promise<
-| Pick<DebugSliceTrackArgs, 'data' | 'columns' | 'rawColumns' | 'title'>
+    | Pick<DebugSliceTrackArgs, 'data' | 'columns' | 'rawColumns' | 'title'>
     | undefined
   > {
     const result = await this.getFrameIdWithMaxDurationBlockingCall(
@@ -157,7 +157,8 @@ class BlockingCallMetricHandler implements MetricHandler {
       console.warn(
         `No frame found for: process=${metricData.process},` +
           ` CUJ=${metricData.cujName},` +
-          ` blocking_call=${metricData.blockingCallName}`,      );
+          ` blocking_call=${metricData.blockingCallName}`,
+      );
       return undefined;
     }
     const row = result.firstRow({frame_id: LONG});

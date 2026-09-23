@@ -237,20 +237,6 @@ void DtlsStunPiggybackController::ReportDtlsPacket(
     std::span<const uint8_t> data) {
   RTC_DCHECK_RUN_ON(&sequence_checker_);
 
-  if (state_ == State::OFF || state_ == State::COMPLETE) {    return;
-  }
-
-  ReportDtlsPacket(*data);
-
-  // Forwards the data to the DTLS layer. Note that this will call
-  // ProcessDtlsPacket() again which does not change the state.
-  dtls_data_callback_(*data);
-}
-
-void DtlsStunPiggybackController::ReportDtlsPacket(
-    ArrayView<const uint8_t> data) {
-  RTC_DCHECK_RUN_ON(&sequence_checker_);
-
   if (state_ == State::OFF || state_ == State::COMPLETE) {
     return;
   }
@@ -279,6 +265,7 @@ void DtlsStunPiggybackController::CallCompleteCallback(bool success) {
     RTC_DCHECK_NOTREACHED() << "CompleteCallback called twice!";
     return;
   }
-  std::move(piggyback_complete_callback_)(success);}
+  std::move(piggyback_complete_callback_)(success);
+}
 
 }  // namespace webrtc

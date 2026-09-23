@@ -33,7 +33,8 @@ RtpFrameReferenceFinder::ReturnVector RtpVp9RefFinder::ManageFrame(
   const RTPVideoHeaderVP9& codec_header =
       std::get<RTPVideoHeaderVP9>(frame->GetRtpVideoHeader().video_type_header);
 
-if (codec_header.temporal_idx >= kMaxTemporalLayers ||      codec_header.spatial_idx >= kMaxSpatialLayers) {
+  if (codec_header.temporal_idx >= kMaxTemporalStreams ||
+      codec_header.spatial_idx >= kMaxSpatialLayers) {
     return {};
   }
 

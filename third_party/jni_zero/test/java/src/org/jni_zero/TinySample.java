@@ -5,7 +5,8 @@
 package org.jni_zero;
 
 public class TinySample {
-    @NativeMethods()    interface Natives {
+    @NativeMethods()
+    interface Natives {
         void foo(Object a, int b);
 
         boolean bar(int a, Object b);

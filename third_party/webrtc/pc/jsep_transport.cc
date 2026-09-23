@@ -253,13 +253,14 @@ RTCError JsepTransport::SetRemoteJsepTransportDescription(
 }
 
 RTCError JsepTransport::AddRemoteCandidates(const Candidates& candidates) {
-RTC_DCHECK_RUN_ON(&transport_sequence_);
+  RTC_DCHECK_RUN_ON(&transport_sequence_);
   if (!remote_description_) {
     StringBuilder sb;
     sb << name()
        << " is not ready to use the remote candidate because the "
           "remote description is not set.";
-    return RTCError(RTCErrorType::INVALID_STATE, sb.Release());  }
+    return RTCError(RTCErrorType::INVALID_STATE, sb.Release());
+  }
 
   for (const Candidate& candidate : candidates) {
     DtlsTransportInternal* dtls_transport =

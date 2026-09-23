@@ -19,10 +19,8 @@ import {JANK_COLOR} from './jank_colors';
 import {getColorForSlice, makeColorScheme} from '../../components/colorizer';
 import {HSLColor} from '../../base/color';
 import {ScrollTimelineDetailsPanel} from './scroll_timeline_details_panel';
-import {
-  ScrollTimelineModel,
-  ScrollUpdateClassification,
-} from './scroll_timeline_model';import {SliceTrack} from '../../components/tracks/slice_track';
+import {ScrollUpdateClassification} from './scroll_timeline_model';
+import {SliceTrack} from '../../components/tracks/slice_track';
 import {SourceDataset} from '../../trace_processor/dataset';
 import {SCROLL_TIMELINE_TRACK} from './tracks';
 
@@ -50,7 +48,8 @@ function toColorScheme(
   }
 }
 
-export function createScrollTimelineTrack(trace: Trace) {  return SliceTrack.create({
+export function createScrollTimelineTrack(trace: Trace) {
+  return SliceTrack.create({
     trace,
     uri: SCROLL_TIMELINE_TRACK.uri,
     rootTableName: SCROLL_TIMELINE_TRACK.tableName,

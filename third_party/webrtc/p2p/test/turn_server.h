@@ -97,7 +97,8 @@ class TurnServerAllocation final {
   std::string ToString() const;
 
   void HandleTurnMessage(const TurnMessage* msg, EcnMarking ecn);
-void HandleChannelData(std::span<const uint8_t> payload, EcnMarking ecn);
+  void HandleChannelData(std::span<const uint8_t> payload, EcnMarking ecn);
+
  private:
   struct Channel {
     ScopedTaskSafety pending_delete;
@@ -289,7 +290,8 @@ class TurnServer {
   void OnInternalSocketClose(AsyncPacketSocket* socket, int err);
 
   void HandleStunMessage(TurnServerConnection* conn,
-std::span<const uint8_t> payload,                         EcnMarking ecn) RTC_RUN_ON(thread_);
+                         std::span<const uint8_t> payload,
+                         EcnMarking ecn) RTC_RUN_ON(thread_);
   void HandleBindingRequest(TurnServerConnection* conn, const StunMessage* msg)
       RTC_RUN_ON(thread_);
   void HandleAllocateRequest(TurnServerConnection* conn,

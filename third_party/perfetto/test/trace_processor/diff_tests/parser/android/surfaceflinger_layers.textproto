@@ -16,7 +16,8 @@ packet {
   first_packet_on_sequence: true
   timestamp: 2748300281655
   timestamp_clock_id: 3
-[com.android.internal.FrameworksNativeWinscopeTracePacket.surfaceflinger_layers_snapshot] {    elapsed_realtime_nanos: 123
+  [com.android.internal.FrameworksNativeWinscopeTracePacket.surfaceflinger_layers_snapshot] {
+    elapsed_realtime_nanos: 123
     where: "visibleRegionsDirty"
     layers {
       layers {
@@ -284,7 +285,8 @@ packet {
 packet {
   timestamp: 2749700000000
   timestamp_clock_id: 3
-[com.android.internal.FrameworksNativeWinscopeTracePacket.surfaceflinger_layers_snapshot] {    elapsed_realtime_nanos: 0
+  [com.android.internal.FrameworksNativeWinscopeTracePacket.surfaceflinger_layers_snapshot] {
+    elapsed_realtime_nanos: 0
     excludes_composition_state: true
     layers {
       layers { parent: -1 }

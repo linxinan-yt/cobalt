@@ -20,6 +20,7 @@ import type {
   SettingsManager,
 } from '../public/settings';
 import type {Storage} from './storage';
+
 export const PERFETTO_SETTINGS_STORAGE_KEY = 'perfettoSettings';
 
 function deepFreeze<T>(obj: T): T {
@@ -31,14 +32,15 @@ function deepFreeze<T>(obj: T): T {
 
 // Implement the Setting interface for registered settings
 export class SettingImpl<T> implements Setting<T> {
-// Record what the raw value was at startup. This is used to determine if a
+  // Record what the raw value was at startup. This is used to determine if a
   // reload is required.
   readonly bootRawValue: unknown;
   private cache?: {rawValue: unknown; normalizedValue: T};
 
   constructor(
     private readonly manager: SettingsManagerImpl,
-    public readonly pluginId: string | undefined,    public readonly id: string,
+    public readonly pluginId: string | undefined,
+    public readonly id: string,
     public readonly name: string,
     public readonly description: string,
     public readonly defaultValue: T,
@@ -100,8 +102,7 @@ export class SettingsManagerImpl implements SettingsManager {
   }
 
   register<T>(setting: SettingDescriptor<T>, pluginId?: string): Setting<T> {
-// Default to CORE_PLUGIN_ID if no pluginId is provided
-    const resolvedPluginId = pluginId ?? CORE_PLUGIN_ID;    // Determine the initial value: stored value if valid, otherwise default.
+    // Determine the initial value: stored value if valid, otherwise default.
 
     if (this.registry.has(setting.id)) {
       throw new Error(`Setting with id "${setting.id}" already registered.`);
@@ -109,7 +110,8 @@ export class SettingsManagerImpl implements SettingsManager {
 
     const settingImpl = new SettingImpl<T>(
       this,
-resolvedPluginId,      setting.id,
+      pluginId,
+      setting.id,
       setting.name,
       setting.description,
       setting.defaultValue,

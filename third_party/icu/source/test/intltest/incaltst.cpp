@@ -238,7 +238,8 @@ void IntlCalendarTest::quasiGregorianTest(Calendar& cal, const Locale& gcl, cons
             cal.get(UCAL_YEAR, status) + "/" +
             (cal.get(UCAL_MONTH, status) + 1) + "/" + cal.get(UCAL_DATE, status) + " (" + UnicodeString(cal.getType()) + ")");
     } else {
-errln(UnicodeString("Fail: (millis to fields)") + D + " => " + cal.get(UCAL_ERA, status) + ":" +            cal.get(UCAL_YEAR, status) + "/" +
+        errln(UnicodeString("Fail: (millis to fields)") + D + " => " + cal.get(UCAL_ERA, status) + ":" +
+            cal.get(UCAL_YEAR, status) + "/" +
             (cal.get(UCAL_MONTH, status)+1) + "/" + cal.get(UCAL_DATE, status) +
             ", expected " + era + ":" + year + "/" + (month+1) + "/" +
             dayOfMonth +  " (" + UnicodeString(cal.getType()));

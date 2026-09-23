@@ -54,7 +54,6 @@
 #include "third_party/blink/renderer/modules/encryptedmedia/encrypted_media_utils.h"
 #include "third_party/blink/renderer/modules/encryptedmedia/media_key_system_access.h"
 #include "third_party/blink/renderer/modules/encryptedmedia/media_key_system_access_initializer_base.h"
-#include "third_party/blink/renderer/modules/media_capabilities/media_capabilities_identifiability_metrics.h"
 #include "third_party/blink/renderer/modules/media_capabilities_names.h"
 #if !BUILDFLAG(IS_COBALT)
 #include "third_party/blink/renderer/modules/mediarecorder/media_recorder_handler.h"  // nogncheck
@@ -264,7 +263,7 @@ bool IsValidMimeType(const String& content_type,
     return true;
 
   for (const auto& param : parameters) {
-    if (EqualIgnoringASCIICase(param.name, kCodecsMimeTypeParam))
+    if (EqualIgnoringAsciiCase(param.name, kCodecsMimeTypeParam))
       return true;
   }
   return false;
@@ -276,7 +275,8 @@ bool IsValidMimeType(const String& content_type,
     return true;
 
 return EqualIgnoringAsciiCase(parameters.begin()->name, kCodecsMimeTypeParam);
-#endif  // BUILDFLAG(IS_COBALT)}
+#endif  // BUILDFLAG(IS_COBALT)
+}
 
 bool IsValidMediaConfiguration(const MediaConfiguration* configuration) {
   return configuration->hasAudio() || configuration->hasVideo();

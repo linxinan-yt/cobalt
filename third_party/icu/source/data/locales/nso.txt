@@ -220,7 +220,8 @@ abbreviated{
                         "Kotara 2",
                         "Kotara 3",
                         "Kotara 4",
-                    }                    wide{
+                    }
+                    wide{
                         "1st Kotara",
                         "2nd Kotara",
                         "3rd Kotara",

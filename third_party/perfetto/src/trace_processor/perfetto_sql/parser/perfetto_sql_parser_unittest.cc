@@ -372,7 +372,9 @@ TEST_F(PerfettoSqlParserTest, CreatePerfettoFunctionVariadicNotLastError) {
   ASSERT_FALSE(parsed.status().ok());
   EXPECT_THAT(parsed.status().message(),
               testing::HasSubstr("Variadic argument must be the last"));
-}TEST_F(PerfettoSqlParserTest, IncludePerfettoTrivial) {
+}
+
+TEST_F(PerfettoSqlParserTest, IncludePerfettoTrivial) {
   auto res =
       SqlSource::FromExecuteQuery("include perfetto module cheese.bre_ad;");
   ASSERT_THAT(*Parse(res), testing::ElementsAre(Include{"cheese.bre_ad"}));

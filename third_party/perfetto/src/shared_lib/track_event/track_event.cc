@@ -46,12 +46,13 @@ void PerfettoTeInit(void) {
 }
 
 struct PerfettoTeTimestamp PerfettoTeGetTimestamp(void) {
-// Clock ID values are kept in sync as PerfettoTeTimestampType uses values
+  // Clock ID values are kept in sync as PerfettoTeTimestampType uses values
   // from PerfettoDsClockId.
   struct PerfettoDsTimestamp ds_ts = PerfettoDsGetTimestamp();
   struct PerfettoTeTimestamp ret;
   ret.clock_id = ds_ts.clock_id;
-  ret.value = ds_ts.value;  return ret;
+  ret.value = ds_ts.value;
+  return ret;
 }
 
 struct PerfettoTeCategoryImpl* PerfettoTeCategoryImplCreate(

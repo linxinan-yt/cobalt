@@ -4,7 +4,8 @@
 # Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
 # For terms of use and license, see https://www.unicode.org/terms_of_use.html
 # UCA Version: 17.0.0
-# UCD Version: 17.0.0# For a description of the format and usage, see
+# UCD Version: 17.0.0
+# For a description of the format and usage, see
 # http://www.unicode.org/reports/tr35/tr35-collation.html#Root_Data_Files
 
 & [last tertiary ignorable]
@@ -1349,7 +1350,8 @@
   <<	 ࣺ
   <<	 ٰ
     =	 𐻼
-<<	 𐻺  <<	 ܑ
+<<	 𐻺
+  <<	 ܑ
   <<	 ܰ
   <<	 ܱ
   <<	 ܲ
@@ -4218,7 +4220,8 @@
  <	 𜳕
 <	 𜳺
  <	 𜳻
- <	 𜳼 <	 𜴀
+ <	 𜳼
+ <	 𜴀
  <	 𜴁
  <	 𜴂
  <	 𜴃
@@ -4693,7 +4696,8 @@
  <	 𜻭
  <	 𜻮
  <	 𜻯
- <	 𜻰 <	 🬀
+ <	 𜻰
+ <	 🬀
  <	 🬁
  <	 🬂
  <	 🬃
@@ -4932,7 +4936,8 @@
  <	 🯭
  <	 🯮
  <	 🯯
-<	 🯺 <	 ☀
+<	 🯺
+ <	 ☀
  <	 ☁
  <	 ☂
  <	 ☃
@@ -8715,7 +8720,8 @@
  <	 🪈
  <	 🪉
 <	 🪊
- <	 🪎 <	 🪏
+ <	 🪎
+ <	 🪏
  <	 🪐
  <	 🪑
  <	 🪒
@@ -8772,7 +8778,8 @@
  <	 🫅
  <	 🫆
 <	 🫈
- <	 🫍 <	 🫎
+ <	 🫍
+ <	 🫎
  <	 🫏
  <	 🫐
  <	 🫑
@@ -8799,7 +8806,8 @@
  <	 🫨
  <	 🫩
 <	 🫪
- <	 🫯 <	 🫰
+ <	 🫯
+ <	 🫰
  <	 🫱
  <	 🫲
  <	 🫳
@@ -9456,7 +9464,8 @@
  <	 🣕
  <	 🣖
  <	 🣗
- <	 🣘 <	 𝠀
+ <	 🣘
+ <	 𝠀
  <	 𝠁
  <	 𝠂
  <	 𝠃
@@ -10098,7 +10107,8 @@
  <	 ー
    <<<	 ｰ
  <	 ヽ
-&\u20C1  # TODO: reset to the last currency symbol <	 ¤
+&\u20C1  # TODO: reset to the last currency symbol
+ <	 ¤
  <	 ¢
    <<<	 ￠
  <	 '$'
@@ -10158,7 +10168,8 @@
  <	 ₾
  <	 ₿
  <	 ⃀
-<	 ⃁&[last regular]  # TODO: digits & letters from here
+<	 ⃁
+&[last regular]  # TODO: digits & letters from here
  <	 0
     =	 ٠
     =	 ۰
@@ -10220,7 +10231,8 @@
     =	 𑱐
     =	 𑵐
     =	 𑶠
-=	 𑷠    =	 𑽐
+=	 𑷠
+    =	 𑽐
     =	 𖄰
     =	 𖩠
     =	 𖫀
@@ -10547,7 +10559,8 @@
     =	 𑱛
     =	 𑵒
     =	 𑶢
-=	 𑷢    =	 𑽒
+=	 𑷢
+    =	 𑽒
     =	 𒐀
     =	 𒐖
     =	 𒐟
@@ -10713,7 +10726,8 @@
     =	 𑱜
     =	 𑵓
     =	 𑶣
-=	 𑷣    =	 𑽓
+=	 𑷣
+    =	 𑽓
     =	 𒐁
     =	 𒐈
     =	 𒐗
@@ -10864,7 +10878,8 @@
     =	 𑱝
     =	 𑵔
     =	 𑶤
-=	 𑷤    =	 𑽔
+=	 𑷤
+    =	 𑽔
     =	 𒐂
     =	 𒐉
     =	 𒐏
@@ -11014,7 +11029,8 @@
     =	 𑱞
     =	 𑵕
     =	 𑶥
-=	 𑷥    =	 𑽕
+=	 𑷥
+    =	 𑽕
     =	 𒐃
     =	 𒐊
     =	 𒐐
@@ -11142,7 +11158,8 @@
     =	 𑱟
     =	 𑵖
     =	 𑶦
-=	 𑷦    =	 𑽖
+=	 𑷦
+    =	 𑽖
     =	 𒐄
     =	 𒐋
     =	 𒐑
@@ -11260,7 +11277,8 @@
     =	 𑱠
     =	 𑵗
     =	 𑶧
-=	 𑷧    =	 𑽗
+=	 𑷧
+    =	 𑽗
     =	 𒐅
     =	 𒐌
     =	 𒐒
@@ -11380,7 +11398,8 @@
     =	 𑱡
     =	 𑵘
     =	 𑶨
-=	 𑷨    =	 𑽘
+=	 𑷨
+    =	 𑽘
     =	 𒐆
     =	 𒐍
     =	 𒐓
@@ -11498,7 +11517,8 @@
     =	 𑱢
     =	 𑵙
     =	 𑶩
-=	 𑷩    =	 𑽙
+=	 𑷩
+    =	 𑽙
     =	 𒐇
     =	 𒐎
     =	 𒐔
@@ -11551,7 +11571,8 @@
   <<	 ‎𞴶‎
 <	 𖿴
  <	 𖿵
- <	 𖿶 <	 ৴
+ <	 𖿶
+ <	 ৴
  <	 ৵
  <	 ৶
  <	 ৷
@@ -24208,7 +24229,8 @@
  <	 𖻒
    <<<	 𖺷
  <	 𖻓
-   <<<	 𖺸 <	 ‎𐵊‎
+   <<<	 𖺸
+ <	 ‎𐵊‎
  <	 ‎𐵋‎
  <	 ‎𐵌‎
  <	 ‎𐵍‎

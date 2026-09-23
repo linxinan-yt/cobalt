@@ -18,6 +18,7 @@
 #include "unicode/numberformatter.h"
 #include "unicode/messageformat2_data_model_names.h"
 #include "unicode/smpdtfmt.h"
+
 #ifndef U_HIDE_DEPRECATED_API
 
 #include <map>
@@ -66,7 +67,7 @@ namespace message2 {
         virtual ~FormattableObject();
     }; // class FormattableObject
 
-/**
+    /**
      * The `DateInfo` struct represents all the information needed to
      * format a date with a time zone. It includes an absolute date and a time zone name,
      * as well as a calendar name. The calendar name is not currently used.
@@ -92,7 +93,9 @@ namespace message2 {
          * @deprecated This API is for technology preview only.
          */
         UnicodeString zoneId;
-    };    /**
+    };
+
+    /**
      * The `Formattable` class represents a typed value that can be formatted,
      * originating either from a message argument or a literal in the code.
      * ICU's Formattable class is not used in MessageFormat 2 because it's unsafe to copy an
@@ -107,7 +110,8 @@ namespace message2 {
      * @internal ICU 75 technology preview
      * @deprecated This API is for technology preview only.
      */
-class U_I18N_API Formattable : public UObject {    public:
+    class U_I18N_API_CLASS Formattable : public UObject {
+    public:
 
         /**
          * Gets the data type of this Formattable object.
@@ -115,7 +119,8 @@ class U_I18N_API Formattable : public UObject {    public:
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API UFormattableType getType() const;
+        U_I18N_API UFormattableType getType() const;
+
         /**
          * Gets the double value of this object. If this object is not of type
          * UFMT_DOUBLE, then the result is undefined and the error code is set.
@@ -125,7 +130,8 @@ U_I18N_API UFormattableType getType() const;
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-double getDouble(UErrorCode& status) const {            if (U_SUCCESS(status)) {
+        U_I18N_API double getDouble(UErrorCode& status) const {
+            if (U_SUCCESS(status)) {
                 if (isDecimal() && getType() == UFMT_DOUBLE) {
                     return (std::get_if<icu::Formattable>(&contents))->getDouble();
                 }
@@ -146,7 +152,8 @@ double getDouble(UErrorCode& status) const {            if (U_SUCCESS(status)) {
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API int32_t getLong(UErrorCode& status) const {            if (U_SUCCESS(status)) {
+        U_I18N_API int32_t getLong(UErrorCode& status) const {
+            if (U_SUCCESS(status)) {
                 if (isDecimal() && getType() == UFMT_LONG) {
                     return std::get_if<icu::Formattable>(&contents)->getLong();
                 }
@@ -168,7 +175,8 @@ U_I18N_API int32_t getLong(UErrorCode& status) const {            if (U_SUCCESS(
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API int64_t getInt64Value(UErrorCode& status) const {            if (U_SUCCESS(status)) {
+        U_I18N_API int64_t getInt64Value(UErrorCode& status) const {
+            if (U_SUCCESS(status)) {
                 if (isDecimal() && getType() == UFMT_INT64) {
                     return std::get_if<icu::Formattable>(&contents)->getInt64();
                 }
@@ -194,7 +202,8 @@ U_I18N_API int64_t getInt64Value(UErrorCode& status) const {            if (U_SU
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API int64_t getInt64(UErrorCode& status) const;        /**
+        U_I18N_API int64_t getInt64(UErrorCode& status) const;
+        /**
          * Gets the string value of this object. If this object is not of type
          * kString then the result is undefined and the error code is set.
          *
@@ -203,7 +212,8 @@ U_I18N_API int64_t getInt64(UErrorCode& status) const;        /**
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API const UnicodeString& getString(UErrorCode& status) const {            if (U_SUCCESS(status)) {
+        U_I18N_API const UnicodeString& getString(UErrorCode& status) const {
+            if (U_SUCCESS(status)) {
                 if (std::holds_alternative<UnicodeString>(contents)) {
                     return *std::get_if<UnicodeString>(&contents);
                 }
@@ -213,7 +223,7 @@ U_I18N_API const UnicodeString& getString(UErrorCode& status) const {           
         }
 
         /**
-* Gets the struct representing the date value of this object.
+         * Gets the struct representing the date value of this object.
          * If this object is not of type kDate then the result is
          * undefined and the error code is set.
          *
@@ -230,7 +240,8 @@ U_I18N_API const UnicodeString& getString(UErrorCode& status) const {           
                 }
                 status = U_ILLEGAL_ARGUMENT_ERROR;
             }
-            return nullptr;        }
+            return nullptr;
+        }
 
         /**
          * Returns true if the data type of this Formattable object
@@ -239,7 +250,8 @@ U_I18N_API const UnicodeString& getString(UErrorCode& status) const {           
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-UBool isNumeric() const { return (getType() == UFMT_DOUBLE || getType() == UFMT_LONG || getType() == UFMT_INT64); }
+        U_I18N_API UBool isNumeric() const { return (getType() == UFMT_DOUBLE || getType() == UFMT_LONG || getType() == UFMT_INT64); }
+
         /**
          * Gets the array value and count of this object. If this object
          * is not of type kArray then the result is undefined and the error code is set.
@@ -250,7 +262,8 @@ UBool isNumeric() const { return (getType() == UFMT_DOUBLE || getType() == UFMT_
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API const Formattable* getArray(int32_t& count, UErrorCode& status) const;
+        U_I18N_API const Formattable* getArray(int32_t& count, UErrorCode& status) const;
+
         /**
          * Returns a pointer to the FormattableObject contained within this
          * formattable, or if this object does not contain a FormattableObject,
@@ -261,7 +274,8 @@ U_I18N_API const Formattable* getArray(int32_t& count, UErrorCode& status) const
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-const FormattableObject* getObject(UErrorCode& status) const {            if (U_SUCCESS(status)) {
+        U_I18N_API const FormattableObject* getObject(UErrorCode& status) const {
+            if (U_SUCCESS(status)) {
                 // Can't return a reference since FormattableObject
                 // is an abstract class
                 if (getType() == UFMT_OBJECT) {
@@ -280,30 +294,34 @@ const FormattableObject* getObject(UErrorCode& status) const {            if (U_
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API friend inline void swap(Formattable& f1, Formattable& f2) noexcept {
+        U_I18N_API friend inline void swap(Formattable& f1, Formattable& f2) noexcept {
             using std::swap;
 
-            swap(f1.contents, f2.contents);        }
+            swap(f1.contents, f2.contents);
+        }
         /**
          * Copy constructor.
          *
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API Formattable(const Formattable&);        /**
+        U_I18N_API Formattable(const Formattable&);
+        /**
          * Assignment operator
          *
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API Formattable& operator=(Formattable) noexcept;        /**
+        U_I18N_API Formattable& operator=(Formattable) noexcept;
+        /**
          * Default constructor. Leaves the Formattable in a
          * valid but undefined state.
          *
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-Formattable() : contents(0.0) {}        /**
+        U_I18N_API Formattable() : contents(0.0) {}
+        /**
          * String constructor.
          *
          * @param s A string to wrap as a Formattable.
@@ -311,7 +329,8 @@ Formattable() : contents(0.0) {}        /**
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-Formattable(const UnicodeString& s) : contents(s) {}        /**
+        U_I18N_API Formattable(const UnicodeString& s) : contents(s) {}
+        /**
          * Double constructor.
          *
          * @param d A double value to wrap as a Formattable.
@@ -319,7 +338,8 @@ Formattable(const UnicodeString& s) : contents(s) {}        /**
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API Formattable(double d) : contents(d) {}        /**
+        U_I18N_API Formattable(double d) : contents(d) {}
+        /**
          * Int64 constructor.
          *
          * @param i An int64 value to wrap as a Formattable.
@@ -327,7 +347,7 @@ U_I18N_API Formattable(double d) : contents(d) {}        /**
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API Formattable(int64_t i) : contents(i) {}
+        U_I18N_API Formattable(int64_t i) : contents(i) {}
         /**
          * Date constructor.
          *
@@ -337,7 +357,8 @@ U_I18N_API Formattable(int64_t i) : contents(i) {}
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-        U_I18N_API Formattable(DateInfo&& d) : contents(std::move(d)) {}        /**
+        U_I18N_API Formattable(DateInfo&& d) : contents(std::move(d)) {}
+        /**
          * Creates a Formattable object of an appropriate numeric type from a
          * a decimal number in string form.  The Formattable will retain the
          * full precision of the input in decimal format, even when it exceeds
@@ -351,7 +372,8 @@ U_I18N_API Formattable(int64_t i) : contents(i) {}
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API static Formattable forDecimal(std::string_view number, UErrorCode& status);        /**
+        U_I18N_API static Formattable forDecimal(std::string_view number, UErrorCode& status);
+        /**
          * Array constructor.
          *
          * @param arr An array of Formattables, which is adopted.
@@ -360,7 +382,8 @@ U_I18N_API static Formattable forDecimal(std::string_view number, UErrorCode& st
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API Formattable(const Formattable* arr, int32_t len) : contents(std::pair(arr, len)) {}        /**
+        U_I18N_API Formattable(const Formattable* arr, int32_t len) : contents(std::pair(arr, len)) {}
+        /**
          * Object constructor.
          *
          * @param obj A FormattableObject (not adopted).
@@ -368,13 +391,15 @@ U_I18N_API Formattable(const Formattable* arr, int32_t len) : contents(std::pair
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API Formattable(const FormattableObject* obj) : contents(obj) {}        /**
+        U_I18N_API Formattable(const FormattableObject* obj) : contents(obj) {}
+        /**
          * Destructor.
          *
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API virtual ~Formattable();        /**
+        U_I18N_API virtual ~Formattable();
+        /**
          * Converts the Formattable object to an ICU Formattable object.
          * If this has type UFMT_OBJECT or kArray, then `status` is set to
          * U_ILLEGAL_ARGUMENT_ERROR.
@@ -385,21 +410,24 @@ U_I18N_API virtual ~Formattable();        /**
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API icu::Formattable asICUFormattable(UErrorCode& status) const;    private:
+        U_I18N_API icu::Formattable asICUFormattable(UErrorCode& status) const;
+    private:
 
         std::variant<double,
                      int64_t,
                      UnicodeString,
                      icu::Formattable, // represents a Decimal
-DateInfo,
+                     DateInfo,
                      const FormattableObject*,
-                     std::pair<const Formattable*, int32_t>> contents;        UnicodeString bogusString; // :((((
+                     std::pair<const Formattable*, int32_t>> contents;
+        UnicodeString bogusString; // :((((
 
         UBool isDecimal() const {
             return std::holds_alternative<icu::Formattable>(contents);
         }
         UBool isDate() const {
-return std::holds_alternative<DateInfo>(contents);        }
+            return std::holds_alternative<DateInfo>(contents);
+        }
     }; // class Formattable
 
 /**
@@ -416,11 +444,12 @@ return std::holds_alternative<DateInfo>(contents);        }
  * @deprecated This API is for technology preview only.
  */
 #ifndef U_IN_DOXYGEN
-class U_I18N_API_CLASS ResolvedFunctionOption : public UObject {  private:
+class U_I18N_API_CLASS ResolvedFunctionOption : public UObject {
+  private:
 
     /* const */ UnicodeString name;
     /* const */ Formattable value;
-// True iff this option was represented in the syntax by a literal value.
+    // True iff this option was represented in the syntax by a literal value.
     // This is necessary in order to implement the spec for the `select` option
     // of `:number` and `:integer`.
     /* const */ bool sourceIsLiteral;
@@ -439,7 +468,8 @@ class U_I18N_API_CLASS ResolvedFunctionOption : public UObject {  private:
           sourceIsLiteral = other.sourceIsLiteral;
           return *this;
     }
-    U_I18N_API virtual ~ResolvedFunctionOption();}; // class ResolvedFunctionOption
+    U_I18N_API virtual ~ResolvedFunctionOption();
+}; // class ResolvedFunctionOption
 #endif
 
 /**
@@ -528,10 +558,11 @@ class U_I18N_API FunctionOptions : public UObject {
     explicit FunctionOptions(UVector&&, UErrorCode&);
 
     const ResolvedFunctionOption* getResolvedFunctionOptions(int32_t& len) const;
-UBool getFunctionOption(std::u16string_view, Formattable&) const;
+    UBool getFunctionOption(std::u16string_view, Formattable&) const;
     UBool wasSetFromLiteral(const UnicodeString&) const;
     // Returns empty string if option doesn't exist
-    UnicodeString getStringFunctionOption(std::u16string_view) const;    int32_t optionsCount() const { return functionOptionsLen; }
+    UnicodeString getStringFunctionOption(std::u16string_view) const;
+    int32_t optionsCount() const { return functionOptionsLen; }
 
     // Named options passed to functions
     // This is not a Hashtable in order to make it possible for code in a public header file
@@ -540,10 +571,11 @@ UBool getFunctionOption(std::u16string_view, Formattable&) const;
     ResolvedFunctionOption* options;
     int32_t functionOptionsLen = 0;
 
-/**
+    /**
      * The original FunctionOptions isn't usable after this call.
      * @returns A new, merged FunctionOptions.
-     */    FunctionOptions mergeOptions(FunctionOptions&& other, UErrorCode&);
+     */
+    FunctionOptions mergeOptions(FunctionOptions&& other, UErrorCode&);
 }; // class FunctionOptions
 
     /**
@@ -656,7 +688,8 @@ UBool getFunctionOption(std::u16string_view, Formattable&) const;
      * @internal ICU 75 technology preview
      * @deprecated This API is for technology preview only.
      */
-class U_I18N_API_CLASS FormattedPlaceholder : public UObject {    public:
+    class U_I18N_API_CLASS FormattedPlaceholder : public UObject {
+    public:
         /**
          * Fallback constructor. Constructs a value that represents a formatting error,
          * without recording an input `Formattable` as the source.
@@ -667,7 +700,8 @@ class U_I18N_API_CLASS FormattedPlaceholder : public UObject {    public:
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API explicit FormattedPlaceholder(const UnicodeString& s) : fallback(s), type(kFallback) {}        /**
+        U_I18N_API explicit FormattedPlaceholder(const UnicodeString& s) : fallback(s), type(kFallback) {}
+        /**
          * Constructor for fully formatted placeholders.
          *
          * @param input A `FormattedPlaceholder` containing the fallback string and source
@@ -678,7 +712,8 @@ U_I18N_API explicit FormattedPlaceholder(const UnicodeString& s) : fallback(s), 
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API FormattedPlaceholder(const FormattedPlaceholder& input, FormattedValue&& output)            : fallback(input.fallback), source(input.source),
+        U_I18N_API FormattedPlaceholder(const FormattedPlaceholder& input, FormattedValue&& output)
+            : fallback(input.fallback), source(input.source),
             formatted(std::move(output)), previousOptions(FunctionOptions()), type(kEvaluated) {}
         /**
          * Constructor for fully formatted placeholders with options.
@@ -692,7 +727,8 @@ U_I18N_API FormattedPlaceholder(const FormattedPlaceholder& input, FormattedValu
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API FormattedPlaceholder(const FormattedPlaceholder& input, FunctionOptions&& opts, FormattedValue&& output)            : fallback(input.fallback), source(input.source),
+        U_I18N_API FormattedPlaceholder(const FormattedPlaceholder& input, FunctionOptions&& opts, FormattedValue&& output)
+            : fallback(input.fallback), source(input.source),
             formatted(std::move(output)), previousOptions(std::move(opts)), type(kEvaluated) {}
         /**
          * Constructor for unformatted placeholders.
@@ -703,7 +739,8 @@ U_I18N_API FormattedPlaceholder(const FormattedPlaceholder& input, FunctionOptio
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API FormattedPlaceholder(const Formattable& input, const UnicodeString& fb)            : fallback(fb), source(input), type(kUnevaluated) {}
+        U_I18N_API FormattedPlaceholder(const Formattable& input, const UnicodeString& fb)
+            : fallback(fb), source(input), type(kUnevaluated) {}
         /**
          * Default constructor. Leaves the FormattedPlaceholder in a
          * valid but undefined state.
@@ -711,7 +748,8 @@ U_I18N_API FormattedPlaceholder(const Formattable& input, const UnicodeString& f
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API FormattedPlaceholder() : type(kNull) {}        /**
+        U_I18N_API FormattedPlaceholder() : type(kNull) {}
+        /**
          * Returns the source `Formattable` value for this placeholder.
          * The result is undefined if this is a null operand.
          *
@@ -720,7 +758,8 @@ U_I18N_API FormattedPlaceholder() : type(kNull) {}        /**
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API const message2::Formattable& asFormattable() const;        /**
+        U_I18N_API const message2::Formattable& asFormattable() const;
+        /**
          * Returns true iff this is a fallback placeholder.
          *
          * @return True if and only if this placeholder was constructed from a fallback string,
@@ -729,7 +768,8 @@ U_I18N_API const message2::Formattable& asFormattable() const;        /**
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API bool isFallback() const { return type == kFallback; }        /**
+        U_I18N_API bool isFallback() const { return type == kFallback; }
+        /**
          * Returns true iff this is a null placeholder.
          *
          * @return True if and only if this placeholder represents the absent argument to a formatter
@@ -738,7 +778,8 @@ U_I18N_API bool isFallback() const { return type == kFallback; }        /**
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API bool isNullOperand() const { return type == kNull; }        /**
+        U_I18N_API bool isNullOperand() const { return type == kNull; }
+        /**
          * Returns true iff this has formatting output.
          *
          * @return True if and only if this was constructed from both an input `Formattable` and
@@ -747,7 +788,8 @@ U_I18N_API bool isNullOperand() const { return type == kNull; }        /**
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API bool isEvaluated() const { return (type == kEvaluated); }        /**
+        U_I18N_API bool isEvaluated() const { return (type == kEvaluated); }
+        /**
          * Returns true iff this represents a valid argument to the formatter.
          *
          * @return True if and only if this is neither the null argument nor a fallback placeholder.
@@ -755,14 +797,16 @@ U_I18N_API bool isEvaluated() const { return (type == kEvaluated); }        /**
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API bool canFormat() const { return !(isFallback() || isNullOperand()); }        /**
+        U_I18N_API bool canFormat() const { return !(isFallback() || isNullOperand()); }
+        /**
          * Gets the fallback value of this placeholder, to be used in its place if an error occurs while
          * formatting it.
          * @return          A reference to this placeholder's fallback string.
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API const UnicodeString& getFallback() const { return fallback; }        /**
+        U_I18N_API const UnicodeString& getFallback() const { return fallback; }
+        /**
          * Returns the options of this placeholder. The result is the empty map if !isEvaluated().
          * @return A reference to an option map, capturing the options that were used
          *         in producing the output of this `FormattedPlaceholder`
@@ -770,27 +814,31 @@ U_I18N_API const UnicodeString& getFallback() const { return fallback; }        
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API const FunctionOptions& options() const { return previousOptions; }        /**
+        U_I18N_API const FunctionOptions& options() const { return previousOptions; }
+        /**
          * Returns the formatted output of this placeholder. The result is undefined if !isEvaluated().
          * @return          A fully formatted `FormattedPlaceholder`.
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-const FormattedValue& output() const { return formatted; }        /**
+        U_I18N_API const FormattedValue& output() const { return formatted; }
+        /**
          * Move assignment operator:
          * The source FormattedPlaceholder will be left in a valid but undefined state.
          *
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API FormattedPlaceholder& operator=(FormattedPlaceholder&&) noexcept;        /**
+        U_I18N_API FormattedPlaceholder& operator=(FormattedPlaceholder&&) noexcept;
+        /**
          * Move constructor:
          * The source FormattedPlaceholder will be left in a valid but undefined state.
          *
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-FormattedPlaceholder(FormattedPlaceholder&& other) { *this = std::move(other); }        /**
+        U_I18N_API FormattedPlaceholder(FormattedPlaceholder&& other) { *this = std::move(other); }
+        /**
          * Formats this as a string, using defaults.  If this is
          * either the null operand or is a fallback value, the return value is the result of formatting the
          * fallback value (which is the default fallback string if this is the null operand).
@@ -805,7 +853,8 @@ FormattedPlaceholder(FormattedPlaceholder&& other) { *this = std::move(other); }
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API UnicodeString formatToString(const Locale& locale,                                     UErrorCode& status) const;
+        U_I18N_API UnicodeString formatToString(const Locale& locale,
+                                     UErrorCode& status) const;
 
     private:
         friend class MessageFormatter;

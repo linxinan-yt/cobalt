@@ -25,7 +25,8 @@ U_NAMESPACE_BEGIN
 namespace numparse::impl {
 
 // Exported as U_I18N_API_CLASS for tests
-class U_I18N_API_CLASS NumberParserImpl : public MutableMatcherCollection, public UMemory {  public:
+class U_I18N_API_CLASS NumberParserImpl : public MutableMatcherCollection, public UMemory {
+  public:
     virtual ~NumberParserImpl();
 
     U_I18N_API static NumberParserImpl *createSimpleParser(const Locale& locale,

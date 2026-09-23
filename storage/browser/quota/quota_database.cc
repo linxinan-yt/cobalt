@@ -932,7 +932,6 @@ void QuotaDatabase::Commit() {
     timer_.Stop();
   }
 
-last_operation_ = "Commit";
   CHECK_EQ(1, db_->transaction_nesting(), base::NotFatalUntil::M148);
 #if BUILDFLAG(IS_STARBOARD)
   if (!db_->CommitTransactionDeprecated()) {
@@ -953,7 +952,8 @@ last_operation_ = "Commit";
 #else
   db_->BeginTransactionDeprecated();
 #endif
-  CHECK_EQ(1, db_->transaction_nesting(), base::NotFatalUntil::M148);}
+  CHECK_EQ(1, db_->transaction_nesting(), base::NotFatalUntil::M148);
+}
 
 #if BUILDFLAG(IS_STARBOARD)
 void QuotaDatabase::DisableDatabase() {
@@ -1046,7 +1046,8 @@ CHECK_EQ(0, db_->transaction_nesting(), base::NotFatalUntil::M148);
     DisableDatabase();
     return QuotaError::kDatabaseError;
   }
-#else  db_->BeginTransactionDeprecated();
+#else
+  db_->BeginTransactionDeprecated();
 #endif
 
   return QuotaError::kNone;

@@ -340,7 +340,8 @@ permillion{
             night{
                 dnam{"gauak"}
 one{"{0} gau"}
-                other{"{0} gau"}                per{"{0} gau bakoitzeko"}
+                other{"{0} gau"}
+                per{"{0} gau bakoitzeko"}
             }
             quarter{
                 dnam{"laurdenak"}
@@ -1034,7 +1035,8 @@ ofglucose{
                 one{"{0} zati"}
                 other{"{0} zati"}
             }
-            part-per-1e9{                dnam{"zati / m. m."}
+            part-per-1e9{
+                dnam{"zati / m. m."}
                 one{"{0} zati / m. m."}
                 other{"{0} zati / m. m."}
             }
@@ -1220,7 +1222,8 @@ dnam{"gau"}
                 other{"{0}kn"}
             }
             light-speed{
-dnam{"argia"}                one{"{0} a."}
+dnam{"argia"}
+                one{"{0} a."}
                 other{"{0} a."}
             }
         }

@@ -288,7 +288,8 @@ void UpdateCheckerImpl::CheckForUpdatesHelper(
 #else
         app_id, crx_component->version, crx_component->ap, crx_component->brand,
 #endif
-        active_ids.contains(app_id) ? metadata->GetInstallId(app_id) : "",        crx_component->lang.empty() ? config_->GetLang() : crx_component->lang,
+        active_ids.contains(app_id) ? metadata->GetInstallId(app_id) : "",
+        crx_component->lang.empty() ? config_->GetLang() : crx_component->lang,
         metadata->GetInstallDate(app_id), install_source,
         crx_component->install_location, crx_component->installer_attributes,
         metadata->GetCohort(app_id), metadata->GetCohortHint(app_id),

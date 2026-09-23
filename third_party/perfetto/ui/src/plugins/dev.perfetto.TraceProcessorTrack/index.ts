@@ -15,13 +15,15 @@
 import m from 'mithril';
 import {removeFalsyValues} from '../../base/array_utils';
 import {AsyncLimiter} from '../../base/async_limiter';
-import {ensureExists} from '../../base/assert';import {Time} from '../../base/time';
+import {ensureExists} from '../../base/assert';
+import {Time} from '../../base/time';
 import {
   createAggregationTab,
   createIITable,
 } from '../../components/aggregation_adapter';
 import {sliceDistributionCellRenderers} from '../../components/details/slice_details';
-import {openDistributionTab} from '../../components/distribution_panel';import {
+import {openDistributionTab} from '../../components/distribution_panel';
+import {
   metricsFromTableOrSubquery,
   type QueryFlamegraphMetric,
 } from '../../components/query_flamegraph';
@@ -131,7 +133,8 @@ export default class TraceProcessorTrackPlugin implements PerfettoPlugin {
           machine.label_index as machineLabelIndex,
           extract_arg(ct.dimension_arg_set_id, 'utid') as utid,
           extract_arg(ct.dimension_arg_set_id, 'upid') as upid,
-extract_arg(ct.dimension_arg_set_id, 'gpu') as gpu_id,          extract_arg(ct.source_arg_set_id, 'description') as description
+          extract_arg(ct.dimension_arg_set_id, 'gpu') as gpu_id,
+          extract_arg(ct.source_arg_set_id, 'description') as description
         from counter_track ct
         join _counter_track_summary using (id)
         left join machine on machine.id = ct.machine_id
@@ -168,8 +171,9 @@ extract_arg(ct.dimension_arg_set_id, 'gpu') as gpu_id,          extract_arg(ct.s
       pid: LONG_NULL,
       isMainThread: NUM,
       isKernelThread: NUM,
-machine: NUM,
-      machineLabelIndex: NUM_NULL,      description: STR_NULL,
+      machine: NUM,
+      machineLabelIndex: NUM_NULL,
+      description: STR_NULL,
     });
     for (; it.valid(); it.next()) {
       const {
@@ -185,7 +189,8 @@ machine: NUM,
         pid,
         isMainThread,
         isKernelThread,
-machineLabelIndex,        description,
+        machineLabelIndex,
+        description,
       } = it;
       const schema = schemas.get(type);
       if (schema === undefined) {
@@ -254,7 +259,8 @@ machineLabelIndex,        description,
   private async addSlices(ctx: Trace) {
     await ctx.engine.query(`
       include perfetto module viz.threads;
-include perfetto module viz.track_event_callstacks;    `);
+      include perfetto module viz.track_event_callstacks;
+    `);
 
     // Step 1: Materialize track metadata
     // Can be cleaned up at the end of this function as only tables and
@@ -369,10 +375,11 @@ include perfetto module viz.track_event_callstacks;    `);
       processName: STR_NULL,
       isMainThread: NUM,
       isKernelThread: NUM,
-hasCallstacks: NUM,
+      hasCallstacks: NUM,
       description: STR_NULL,
       track_rank: NUM,
-      lower_name: STR_NULL,    });
+      lower_name: STR_NULL,
+    });
     for (; it.valid(); it.next()) {
       const {
         trackIds: rawTrackIds,
@@ -387,7 +394,8 @@ hasCallstacks: NUM,
         pid,
         isMainThread,
         isKernelThread,
-hasCallstacks,        description,
+        hasCallstacks,
+        description,
       } = it;
       const schema = schemas.get(type);
       if (schema === undefined) {
@@ -408,10 +416,12 @@ hasCallstacks,        description,
       });
       const uri = `/slice_${trackIds[0]}`;
 
-// Apply displayName function from schema if available
+      // Apply displayName function from schema if available
       const displayName = schema.displayName
         ? schema.displayName(trackName)
-        : trackName;      const maybeDescriptionRenderer = schema.description?.({
+        : trackName;
+
+      const maybeDescriptionRenderer = schema.description?.({
         name: trackName ?? undefined,
         description: description ?? undefined,
       });
@@ -538,9 +548,14 @@ hasCallstacks,        description,
         break;
       }
       default: {
-const standardGroup = ctx.plugins
-          .getPlugin(StandardGroupsPlugin)
-          .getOrCreateStandardGroup(ctx.defaultWorkspace, topLevelGroup);        this.getGroupByName(standardGroup, group, null).addChildInOrder(track);
+        const standardGroupsPlugin =
+          ctx.plugins.getPlugin(StandardGroupsPlugin);
+        const standardGroup = standardGroupsPlugin.getOrCreateStandardGroup(
+          ctx.defaultWorkspace,
+          topLevelGroup,
+        );
+
+        this.getGroupByName(standardGroup, group, null).addChildInOrder(track);
         break;
       }
     }
@@ -845,8 +860,9 @@ const standardGroup = ctx.plugins
         // Only process upids that have valid track groups
         const rows: MinimapRow[] = [];
         const sortedUpids = Array.from(upidOrderMap.keys()).sort((a, b) => {
-const orderA = ensureExists(upidOrderMap.get(a));
-          const orderB = ensureExists(upidOrderMap.get(b));          return orderA - orderB;
+          const orderA = ensureExists(upidOrderMap.get(a));
+          const orderB = ensureExists(upidOrderMap.get(b));
+          return orderA - orderB;
         });
 
         for (const upid of sortedUpids) {
@@ -923,136 +939,4 @@ const orderA = ensureExists(upidOrderMap.get(a));
       },
     });
   }
-}
-function createSliceFlameGraphPanel(trace: Trace) {
-  let previousSelection: AreaSelection | undefined;
-  let currentFlamegraph:
-    | Awaited<ReturnType<typeof computeSliceFlamegraph>>
-    | undefined;
-  const limiter = new AsyncLimiter();
-
-  return {
-    id: 'slice_flamegraph_selection',
-    name: 'Slice Flamegraph',
-    render(selection: AreaSelection) {
-      const selectionChanged =
-        previousSelection === undefined ||
-        !areaSelectionsEqual(previousSelection, selection);
-      previousSelection = selection;
-      if (selectionChanged) {
-        limiter.schedule(async () => {
-          // Compute the new flamegraph
-          const flamegraph = await computeSliceFlamegraph(trace, selection);
-
-          // Swap the current flamegraph with the newly computed one, keeping
-          // track of the previous one so we can dispose of it.
-          const previousFlamegraph = currentFlamegraph;
-          currentFlamegraph = flamegraph;
-
-          // If we had a previous flamegraph, dispose of it now that the new
-          // one is ready.
-          if (previousFlamegraph) {
-            await previousFlamegraph[Symbol.asyncDispose]();
-          }
-        });
-      }
-
-      if (currentFlamegraph === undefined) {
-        return undefined;
-      }
-
-      return {isLoading: false, content: currentFlamegraph.render()};
-    },
-  };
-}
-
-async function computeSliceFlamegraph(
-  trace: Trace,
-  currentSelection: AreaSelection,
-): Promise<QueryFlamegraph | undefined> {
-  const trackIds = [];
-  for (const trackInfo of currentSelection.tracks) {
-    if (!trackInfo?.tags?.kinds?.includes(SLICE_TRACK_KIND)) {
-      continue;
-    }
-    if (trackInfo.tags?.trackIds === undefined) {
-      continue;
-    }
-    trackIds.push(...trackInfo.tags.trackIds);
-  }
-  if (trackIds.length === 0) {
-    return undefined;
-  }
-
-  const dataset = new SourceDataset({
-    src: `
-      select
-        id,
-        dur,
-        ts,
-        parent_id,
-        name
-      from slice
-      where track_id in (${trackIds.join(',')})
-    `,
-    schema: {
-      id: NUM,
-      ts: LONG,
-      dur: LONG,
-      parent_id: NUM_NULL,
-      name: STR_NULL,
-    },
-  });
-
-  const iiTable = await createIITable(
-    trace.engine,
-    dataset,
-    currentSelection.start,
-    currentSelection.end,
-  );
-
-  const metrics = metricsFromTableOrSubquery(
-    `(
-      select *
-      from _viz_slice_ancestor_agg!(
-        (
-          select s.id, s.dur
-          from ${iiTable.name} s
-          left join ${iiTable.name} t on t.parent_id = s.id
-          where t.id is null
-        ),
-        ${iiTable.name}
-      )
-    )`,
-    [
-      {
-        name: 'Duration',
-        unit: 'ns',
-        columnName: 'self_dur',
-      },
-      {
-        name: 'Samples',
-        unit: '',
-        columnName: 'self_count',
-      },
-    ],
-    'include perfetto module viz.slices;',
-    undefined,
-    [
-      {
-        name: 'simple_count',
-        displayName: 'Slice Count',
-        mergeAggregation: 'SUM',
-        isVisible: (_) => true,
-      },
-    ],
-  );
-  return new QueryFlamegraph(
-    trace,
-    metrics,
-    {
-      state: Flamegraph.createDefaultState(metrics),
-    },
-    [iiTable],
-  );
 }

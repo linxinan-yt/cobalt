@@ -434,7 +434,8 @@ fr{
                 other{"{0} nanosecondes"}
             }
             night{
-gender{"feminine"}                per{"{0} par nuit"}
+gender{"feminine"}
+                per{"{0} par nuit"}
             }
             quarter{
                 dnam{"trimestres"}

@@ -22,7 +22,8 @@
 INCLUDE PERFETTO MODULE prelude.after_eof.views;
 
 -- Contains information about the CPUs on the device this trace was taken on.
-CREATE PERFETTO VIEW cpu(  -- Unique identifier for this CPU. Identical to |ucpu|, prefer using |ucpu|
+CREATE PERFETTO VIEW cpu(
+  -- Unique identifier for this CPU. Identical to |ucpu|, prefer using |ucpu|
   -- instead.
   id ID,
   -- Unique identifier for this CPU. Isn't equal to |cpu| for remote machines
@@ -34,8 +35,9 @@ CREATE PERFETTO VIEW cpu(  -- Unique identifier for this CPU. Identical to |ucpu
   cluster_id LONG,
   -- A string describing this core.
   processor STRING,
--- Machine identifier
-  machine_id JOINID(machine.id),  -- Capacity of a CPU of a device, a metric which indicates the
+  -- Machine identifier
+  machine_id JOINID(machine.id),
+  -- Capacity of a CPU of a device, a metric which indicates the
   -- relative performance of a CPU on a device
   -- For details see:
   -- https://www.kernel.org/doc/Documentation/devicetree/bindings/arm/cpu-capacity.txt
@@ -43,7 +45,8 @@ CREATE PERFETTO VIEW cpu(  -- Unique identifier for this CPU. Identical to |ucpu
   -- Extra key/value pairs associated with this cpu.
   arg_set_id ARGSETID
 )
-ASSELECT
+AS
+SELECT
   id,
   id AS ucpu,
   cpu,
@@ -58,7 +61,8 @@ WHERE
 
 -- Contains the frequency values that the CPUs on the device are capable of
 -- running at.
-CREATE PERFETTO VIEW cpu_available_frequencies (  -- Unique identifier for this cpu frequency.
+CREATE PERFETTO VIEW cpu_available_frequencies(
+  -- Unique identifier for this cpu frequency.
   id ID,
   -- The CPU for this frequency, meaningful only in single machine traces.
   -- For multi-machine, join with the `cpu` table on `ucpu` to get the CPU
@@ -70,22 +74,19 @@ CREATE PERFETTO VIEW cpu_available_frequencies (  -- Unique identifier for this 
   -- traces). For multi-machine, join with the `cpu` table on `ucpu` to get the
   -- CPU identifier of each machine.
   ucpu LONG
-) AS
-SELECT
-  id,
-  ucpu AS cpu,
-  freq,
-  ucpu
-FROM __intrinsic_cpu_freq;
+)
+AS
+SELECT id, ucpu AS cpu, freq, ucpu FROM __intrinsic_cpu_freq;
 
--- This table holds slices with kernel thread scheduling information. These
--- slices are collected when the Linux "ftrace" data source is used with the
--- "sched/switch" and "sched/wakeup*" events enabled.
+-- Contains scheduling slices with kernel thread scheduling information.
+-- These slices are collected when the Linux "ftrace" data source is used with
+-- the "sched/switch" and "sched/wakeup*" events enabled.
 --
--- The rows in this table will always have a matching row in the |thread_state|
+-- The rows in this view will always have a matching row in the |thread_state|
 -- table with |thread_state.state| = 'Running'
-CREATE PERFETTO VIEW sched_slice (
-  --  Unique identifier for this scheduling slice.  id ID,
+CREATE PERFETTO VIEW sched(
+  -- Unique identifier for this scheduling slice.
+  id ID,
   -- The timestamp at the start of the slice.
   ts TIMESTAMP,
   -- The duration of the slice.
@@ -108,11 +109,12 @@ CREATE PERFETTO VIEW sched_slice (
   -- The kernel priority that the thread ran at.
   priority LONG,
   -- The unique CPU identifier that the slice executed on.
-ucpu LONG,
+  ucpu LONG,
   -- Legacy column, should no longer be used.
   ts_end LONG
 )
-ASSELECT
+AS
+SELECT
   id,
   ts,
   dur,
@@ -120,7 +122,7 @@ ASSELECT
   utid,
   end_state,
   priority,
-ucpu,
+  ucpu,
   ts + dur AS ts_end
 FROM __intrinsic_sched_slice;
 
@@ -145,12 +147,14 @@ CREATE PERFETTO VIEW sched_slice(
 )
 AS
 SELECT id, ts, dur, cpu, utid, end_state, priority, ucpu FROM sched;
+
 -- This table contains the scheduling state of every thread on the system during
 -- the trace.
 --
 -- The rows in this table which have |state| = 'Running', will have a
 -- corresponding row in the |sched_slice| table.
-CREATE PERFETTO VIEW thread_state (  -- Unique identifier for this thread state.
+CREATE PERFETTO VIEW thread_state(
+  -- Unique identifier for this thread state.
   id ID,
   -- The timestamp at the start of the slice.
   ts TIMESTAMP,
@@ -176,9 +180,10 @@ CREATE PERFETTO VIEW thread_state (  -- Unique identifier for this thread state.
   -- Whether the wakeup was from interrupt context or process context.
   irq_context LONG,
   -- The unique CPU identifier that the thread executed on.
-ucpu JOINID(cpu.id)
+  ucpu JOINID(cpu.id)
 )
-ASSELECT
+AS
+SELECT
   id,
   ts,
   dur,

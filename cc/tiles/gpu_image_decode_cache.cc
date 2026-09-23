@@ -2071,7 +2071,8 @@ void GpuImageDecodeCache::OnInProcessImageTransferCompleted(
   base::AutoLock lock(lock_);
   UnrefImageDecode(image_data.get());
 }
-#endif  // BUILDFLAG(IS_COBALT)bool GpuImageDecodeCache::NeedsDarkModeFilter(const DrawImage& draw_image,
+#endif  // BUILDFLAG(IS_COBALT)
+bool GpuImageDecodeCache::NeedsDarkModeFilter(const DrawImage& draw_image,
                                               ImageData* image_data) {
   DCHECK(image_data);
 

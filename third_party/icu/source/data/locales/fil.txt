@@ -470,7 +470,8 @@ narrow{
                         "Huw",
                         "Biy",
                         "Sab",
-                    }                    wide{
+                    }
+                    wide{
                         "Linggo",
                         "Lunes",
                         "Martes",
@@ -525,7 +526,8 @@ morning2{"madaling-araw"}
                         afternoon1{"ng hapon"}
                         evening1{"ng gabi"}
                         midnight{"hatinggabi"}
-                        morning1{"ng umaga"}                        morning2{"madaling-araw"}
+                        morning1{"ng umaga"}
+                        morning2{"madaling-araw"}
                         night1{"ng gabi"}
                         noon{"tanghaling-tapat"}
                     }
@@ -1451,7 +1453,8 @@ general{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }        number{
+        }
+        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ، ٫ 、﹑､︑]",

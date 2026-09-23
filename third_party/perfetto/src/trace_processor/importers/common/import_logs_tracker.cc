@@ -30,21 +30,22 @@
 namespace perfetto::trace_processor {
 
 ImportLogsTracker::ImportLogsTracker(TraceProcessorContext* context,
-tables::TraceFileTable::Id trace_id)
+                                     tables::TraceFileTable::Id trace_id)
     : context_(context), trace_id_(trace_id) {}
+
 void ImportLogsTracker::RecordImportLog(
     size_t stat_key,
     std::optional<int64_t> timestamp,
     std::optional<int64_t> byte_offset,
     std::function<void(ArgsTracker::BoundInserter&)> args_callback) {
-PERFETTO_CHECK(stats::kSources[stat_key] == stats::Source::kAnalysis);
+  context_->stats_tracker->IncrementStats(stat_key);
 
-  context_->storage->IncrementStats(stat_key);
   tables::TraceImportLogsTable::Row row;
   row.trace_id = trace_id_;
   row.ts = timestamp;
   row.byte_offset = byte_offset;
-row.stat_key = static_cast<int64_t>(stat_key);
+  row.stat_key = static_cast<int64_t>(stat_key);
+
   auto id =
       context_->storage->mutable_trace_import_logs_table()->Insert(row).id;
 
@@ -55,7 +56,8 @@ row.stat_key = static_cast<int64_t>(stat_key);
   }
 }
 
-void ImportLogsTracker::RecordTokenizationLog(    size_t stat_key,
+void ImportLogsTracker::RecordTokenizationLog(
+    size_t stat_key,
     int64_t byte_offset,
     std::function<void(ArgsTracker::BoundInserter&)> args_callback) {
   RecordImportLog(stat_key,
@@ -63,7 +65,8 @@ void ImportLogsTracker::RecordTokenizationLog(    size_t stat_key,
                   std::move(args_callback));
 }
 
-void ImportLogsTracker::RecordParserLog(    size_t stat_key,
+void ImportLogsTracker::RecordParserLog(
+    size_t stat_key,
     int64_t timestamp,
     std::function<void(ArgsTracker::BoundInserter&)> args_callback) {
   RecordImportLog(stat_key, timestamp,
@@ -85,7 +88,8 @@ void ImportLogsTracker::RecordCollectionLog(
                   /*byte_offset=*/std::nullopt, std::move(args_callback));
 }
 
-void ImportLogsTracker::RecordAnalysisLog(    size_t stat_key,
+void ImportLogsTracker::RecordAnalysisLog(
+    size_t stat_key,
     std::function<void(ArgsTracker::BoundInserter&)> args_callback) {
   RecordImportLog(stat_key,
                   /*timestamp=*/std::nullopt,

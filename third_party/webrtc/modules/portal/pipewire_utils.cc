@@ -104,10 +104,11 @@ PipeWireInitializer::PipeWireInitializer() {
 
 RTC_NO_SANITIZE("cfi-icall")
 PipeWireInitializer::~PipeWireInitializer() {
-PipeWireVersion pw_client_version =
+  PipeWireVersion pw_client_version =
       PipeWireVersion::Parse(pw_get_library_version());
   if (pw_client_version >= kReentrantDeinitMinVersion) {
     pw_deinit();
-  }}
+  }
+}
 
 }  // namespace webrtc

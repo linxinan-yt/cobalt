@@ -398,6 +398,7 @@ SELECT
 FROM _estimate_cpu_subsystem_sum cpu_ss
 JOIN _estimate_gpu_subsystem_sum gpu_ss USING (period_id, period_dur)
 JOIN _estimate_tpu_subsystem_sum tpu_ss USING (period_id, period_dur);
+
 DROP VIEW IF EXISTS _wattson_rails_metric_metadata;
 CREATE PERFETTO VIEW _wattson_rails_metric_metadata AS
 SELECT

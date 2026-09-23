@@ -26,7 +26,8 @@ no{
         }
         "America:Argentina:Tucuman"{
             ec{"Tucumán"}
-        }        "America:Bahia_Banderas"{
+        }
+        "America:Bahia_Banderas"{
             ec{"Bahía Banderas"}
         }
         "America:Cayman"{
@@ -40,7 +41,8 @@ no{
         }
         "America:Maceio"{
             ec{"Maceió"}
-        }        "America:Mexico_City"{
+        }
+        "America:Mexico_City"{
             ec{"Mexico by"}
         }
         "America:North_Dakota:Beulah"{
@@ -57,7 +59,8 @@ no{
         }
         "America:Sao_Paulo"{
             ec{"São Paulo"}
-        }        "America:St_Barthelemy"{
+        }
+        "America:St_Barthelemy"{
             ec{"Saint-Barthélemy"}
         }
         "Asia:Aqtau"{

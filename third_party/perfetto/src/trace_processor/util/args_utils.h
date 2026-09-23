@@ -37,6 +37,7 @@
 #include "src/trace_processor/types/variadic.h"
 
 namespace perfetto::trace_processor {
+
 class ArgSet;
 
 class ArgNode {
@@ -200,6 +201,8 @@ inline Variadic GetArgValue(const TraceStorage& storage, uint32_t row_index) {
       break;
   }
   return v;
-}}  // namespace perfetto::trace_processor
+}
+
+}  // namespace perfetto::trace_processor
 
 #endif  // SRC_TRACE_PROCESSOR_UTIL_ARGS_UTILS_H_

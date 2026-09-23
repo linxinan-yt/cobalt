@@ -217,7 +217,8 @@ portion-per-1e9{
             }
             night{
 dnam{"យប់"}
-                other{"{0} យប់"}                per{"{0} ក្នុងមួយយប់"}
+                other{"{0} យប់"}
+                per{"{0} ក្នុងមួយយប់"}
             }
             second{
                 per{"{0} ក្នុង​មួយ​វិនាទី"}
@@ -742,7 +743,8 @@ night{
                 dnam{"យប់"}
                 other{"{0} យប់"}
                 per{"{0}/យប់"}
-            }            quarter{
+            }
+            quarter{
                 other{"{0} ត្រី"}
             }
         }

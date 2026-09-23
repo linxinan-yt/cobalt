@@ -2015,7 +2015,8 @@ el{
                         other{"{0} φωτός"}
                     }
                 }
-dnam{"φως"}                gender{"neuter"}
+dnam{"φως"}
+                gender{"neuter"}
                 one{"{0} φως"}
                 other{"{0} φως"}
             }

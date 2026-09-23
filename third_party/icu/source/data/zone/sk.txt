@@ -47,7 +47,8 @@ sk{
         }
 "America:Cuiaba"{
             ec{"Cuiabá"}
-        }        "America:Dominica"{
+        }
+        "America:Dominica"{
             ec{"Dominika"}
         }
         "America:El_Salvador"{
@@ -79,7 +80,8 @@ sk{
         }
         "America:Sao_Paulo"{
             ec{"São Paulo"}
-        }        "America:St_Barthelemy"{
+        }
+        "America:St_Barthelemy"{
             ec{"Svätý Bartolomej"}
         }
         "America:St_Lucia"{

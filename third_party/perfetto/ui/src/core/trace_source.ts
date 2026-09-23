@@ -14,6 +14,7 @@
 
 import type {SerializedAppState} from './state_serialization_schema';
 import type {TraceStream} from '../public/stream';
+
 interface CommonTraceProps {
   serializedAppState?: SerializedAppState;
 }

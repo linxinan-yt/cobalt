@@ -210,7 +210,8 @@ my{
                 GyMMMd{"G d MMM y"}
                 GyMd{"GGGGG y/M/d"}
 Hv{"v HH'h'"}
-                MEd{"MM-dd၊ E"}                MMMEd{"MMM d E"}
+                MEd{"MM-dd၊ E"}
+                MMMEd{"MMM d E"}
                 MMMMEd{"MMMM d Eနေ့"}
                 Md{"d/M"}
                 h{"a h"}
@@ -351,7 +352,8 @@ Eh{"E a h"}
                 GyMd{"G y/M/d"}
                 Hmsv{"v HH:mm:ss"}
                 Hmv{"v HH:mm"}
-                Hv{"v HH"}                MEd{"d/M E"}
+                Hv{"v HH"}
+                MEd{"d/M E"}
                 MMMEd{"MMM d E"}
                 MMMMEd{"MMMM d E"}
                 MMMMW{
@@ -363,7 +365,8 @@ Eh{"E a h"}
                 hms{"a h:mm:ss"}
                 hmsv{"v a h:mm:ss"}
                 hmv{"v a h:mm"}
-hv{"v a h"}                yMEd{"d/M/y E"}
+hv{"v a h"}
+                yMEd{"d/M/y E"}
                 yMMMEd{"y MMM d E"}
                 yMd{"d/M/y"}
                 yw{
@@ -1038,7 +1041,8 @@ general{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }        number{
+        }
+        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ، ٫ 、﹑､︑]",

@@ -19,7 +19,8 @@ import type {PerfettoPlugin} from '../../public/plugin';
 import type {Track} from '../../public/track';
 import {z} from 'zod';
 import {ensureIsInstance} from '../../base/assert';
-import type {RouteArg, RouteArgs} from '../../public/route_schema';import {arrayEquals} from '../../base/array_utils';
+import type {RouteArg, RouteArgs} from '../../public/route_schema';
+import {arrayEquals} from '../../base/array_utils';
 
 const PLUGIN_ID = 'dev.perfetto.AutoPinAndExpandTracks';
 const SAVED_TRACKS_KEY = `${PLUGIN_ID}#savedPerfettoTracks`;
@@ -368,7 +369,8 @@ export default class AutoPinAndExpandTracks implements PerfettoPlugin {
       trackName: trackNode.name,
       pluginId: track?.pluginId,
       kinds: track?.tags?.kinds,
-isMainThread: track?.chips?.includes('main thread') || false,    };
+      isMainThread: trackNode.chips?.includes('main thread') || false,
+    };
   }
 }
 

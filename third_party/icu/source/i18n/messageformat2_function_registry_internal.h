@@ -69,7 +69,9 @@ static constexpr std::u16string_view TWO_DIGIT = u"2-digit";
 static constexpr std::u16string_view USE_GROUPING = u"useGrouping";
 static constexpr std::u16string_view WEEKDAY = u"weekday";
 static constexpr std::u16string_view YEAR = u"year";
-} // namespace options    // Built-in functions
+} // namespace options
+
+    // Built-in functions
     /*
       The standard functions are :datetime, :date, :time,
       :number, :integer, and :string,
@@ -79,7 +81,7 @@ static constexpr std::u16string_view YEAR = u"year";
     class StandardFunctions {
         friend class MessageFormatter;
 
-public:
+        public:
         // Used for normalizing variable names and keys for comparison
         static UnicodeString normalizeNFC(const UnicodeString&);
 
@@ -87,7 +89,8 @@ public:
         static void validateDigitSizeOptions(const FunctionOptions&, UErrorCode&);
         static void checkSelectOption(const FunctionOptions&, UErrorCode&);
         static UnicodeString getStringOption(const FunctionOptions& opts,
-                                             std::u16string_view optionName,                                             UErrorCode& errorCode);
+                                             std::u16string_view optionName,
+                                             UErrorCode& errorCode);
 
         class DateTime;
 
@@ -122,14 +125,16 @@ public:
             const Locale& locale;
             const DateTimeFactory::DateTimeType type;
             friend class DateTimeFactory;
-DateTime(const Locale& l, DateTimeFactory::DateTimeType t)
+            DateTime(const Locale& l, DateTimeFactory::DateTimeType t)
                 : locale(l), type(t) {}
             const LocalPointer<icu::DateFormat> icuFormatter;
 
             // Methods for parsing date literals
             UDate tryPatterns(const UnicodeString&, UErrorCode&) const;
             UDate tryTimeZonePatterns(const UnicodeString&, UErrorCode&) const;
-            DateInfo createDateInfoFromString(const UnicodeString&, UErrorCode&) const;            /*
+            DateInfo createDateInfoFromString(const UnicodeString&, UErrorCode&) const;
+
+            /*
               Looks up an option by name, first checking `opts`, then the cached options
               in `toFormat` if applicable, and finally using a default
 
@@ -137,11 +142,13 @@ DateTime(const Locale& l, DateTimeFactory::DateTimeType t)
              */
             UnicodeString getFunctionOption(const FormattedPlaceholder& toFormat,
                                             const FunctionOptions& opts,
-std::u16string_view optionName) const;            // Version for options that don't have defaults; sets the error
+                                            std::u16string_view optionName) const;
+            // Version for options that don't have defaults; sets the error
             // code instead of returning a default value
             UnicodeString getFunctionOption(const FormattedPlaceholder& toFormat,
                                             const FunctionOptions& opts,
-std::u16string_view optionName,                                            UErrorCode& errorCode) const;
+                                            std::u16string_view optionName,
+                                            UErrorCode& errorCode) const;
 
         };
 
@@ -321,7 +328,8 @@ std::u16string_view optionName,                                            UErro
 
     };
 
-extern void formatDateWithDefaults(const Locale& locale, const DateInfo& date, UnicodeString&, UErrorCode& errorCode);    extern number::FormattedNumber formatNumberWithDefaults(const Locale& locale, double toFormat, UErrorCode& errorCode);
+    extern void formatDateWithDefaults(const Locale& locale, const DateInfo& date, UnicodeString&, UErrorCode& errorCode);
+    extern number::FormattedNumber formatNumberWithDefaults(const Locale& locale, double toFormat, UErrorCode& errorCode);
     extern number::FormattedNumber formatNumberWithDefaults(const Locale& locale, int32_t toFormat, UErrorCode& errorCode);
     extern number::FormattedNumber formatNumberWithDefaults(const Locale& locale, int64_t toFormat, UErrorCode& errorCode);
     extern number::FormattedNumber formatNumberWithDefaults(const Locale& locale, StringPiece toFormat, UErrorCode& errorCode);

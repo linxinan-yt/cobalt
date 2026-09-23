@@ -14,7 +14,8 @@
 
 import type {Trace} from '../../public/trace';
 import StandardGroupsPlugin from '../dev.perfetto.StandardGroups';
-import type {PerfettoPlugin} from '../../public/plugin';import {
+import type {PerfettoPlugin} from '../../public/plugin';
+import {
   STR,
   LONG,
   UNKNOWN,

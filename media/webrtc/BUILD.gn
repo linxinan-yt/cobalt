@@ -31,11 +31,13 @@ component("webrtc") {
   deps = [
     "//base",
     "//build:chromecast_buildflags",
-"//components/optimization_guide:machine_learning_tflite_buildflags",    "//media",
+"//components/optimization_guide:machine_learning_tflite_buildflags",
+    "//media",
     "//third_party/webrtc_overrides:webrtc_component",
   ]
 
-if (!is_fuchsia) {    deps += [ "//components/optimization_guide/core/inference:op_resolver" ]
+if (!is_fuchsia) {
+    deps += [ "//components/optimization_guide/core/inference:op_resolver" ]
   }
 
   public_deps = [ "//third_party/tflite" ]

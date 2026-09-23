@@ -66,7 +66,8 @@ TEST(EncoderSpeedControllerTest, GetEncodeSettingsBaseLayers) {
   ASSERT_NE(controller, nullptr);
 
   EncoderSpeedController::FrameEncodingInfo frame_info = {
-.reference_type = ReferenceClass::kMain, .timestamp = Timestamp::Zero()};
+      .reference_type = ReferenceClass::kMain, .timestamp = Timestamp::Zero()};
+
   // Starts at index 1 (speed 6)
   EXPECT_EQ(controller->GetEncodeSettings(frame_info).speed, 6);
 
@@ -74,8 +75,9 @@ TEST(EncoderSpeedControllerTest, GetEncodeSettingsBaseLayers) {
   for (int i = 0; i < 10; ++i) {
     controller->OnEncodedFrame({.encode_time = kFrameInterval * 0.90,
                                 .qp = 30,
-.frame_info = frame_info},
-                               /*baseline_results=*/std::nullopt);  }
+                                .frame_info = frame_info},
+                               /*baseline_results=*/std::nullopt);
+  }
   // Speed should increase to 7
   EXPECT_EQ(controller->GetEncodeSettings(frame_info).speed, 7);
 
@@ -83,8 +85,9 @@ TEST(EncoderSpeedControllerTest, GetEncodeSettingsBaseLayers) {
   for (int i = 0; i < 20; ++i) {
     controller->OnEncodedFrame({.encode_time = kFrameInterval * 0.10,
                                 .qp = 20,
-.frame_info = frame_info},
-                               /*baseline_results=*/std::nullopt);  }
+                                .frame_info = frame_info},
+                               /*baseline_results=*/std::nullopt);
+  }
   // Speed should decrease to 6
   EXPECT_EQ(controller->GetEncodeSettings(frame_info).speed, 6);
 }
@@ -94,11 +97,12 @@ TEST(EncoderSpeedControllerTest, GetEncodeSettingsKeyFrame) {
   auto controller = EncoderSpeedController::Create(config, kFrameInterval);
   ASSERT_NE(controller, nullptr);
 
-EXPECT_EQ(controller
+  EXPECT_EQ(controller
                 ->GetEncodeSettings({.reference_type = ReferenceClass::kKey,
                                      .timestamp = Timestamp::Zero()})
                 .speed,
-            6);}
+            6);
+}
 
 TEST(EncoderSpeedControllerTest, GetEncodeSettingsWithTemporalLayers) {
   EncoderSpeedController::Config config;
@@ -107,7 +111,7 @@ TEST(EncoderSpeedControllerTest, GetEncodeSettingsWithTemporalLayers) {
   auto controller = EncoderSpeedController::Create(config, kFrameInterval);
   ASSERT_NE(controller, nullptr);
 
-EXPECT_EQ(controller
+  EXPECT_EQ(controller
                 ->GetEncodeSettings({.reference_type = ReferenceClass::kKey,
                                      .timestamp = Timestamp::Zero()})
                 .speed,
@@ -128,7 +132,8 @@ EXPECT_EQ(controller
           ->GetEncodeSettings({.reference_type = ReferenceClass::kNoneReference,
                                .timestamp = Timestamp::Zero()})
           .speed,
-      8);}
+      8);
+}
 
 TEST(EncoderSpeedControllerTest, StaysAtMaxSpeed) {
   EncoderSpeedController::Config config = GetDefaultConfig();
@@ -137,12 +142,14 @@ TEST(EncoderSpeedControllerTest, StaysAtMaxSpeed) {
   ASSERT_NE(controller, nullptr);
 
   EncoderSpeedController::FrameEncodingInfo frame_info = {
-.reference_type = ReferenceClass::kMain, .timestamp = Timestamp::Zero()};
+      .reference_type = ReferenceClass::kMain, .timestamp = Timestamp::Zero()};
+
   for (int i = 0; i < 20; ++i) {
     controller->OnEncodedFrame({.encode_time = kFrameInterval * 0.95,
                                 .qp = 30,
-.frame_info = frame_info},
-                               /*baseline_results=*/std::nullopt);  }
+                                .frame_info = frame_info},
+                               /*baseline_results=*/std::nullopt);
+  }
 
   EXPECT_EQ(controller->GetEncodeSettings(frame_info).speed,
             7);  // Still at max speed
@@ -155,11 +162,12 @@ TEST(EncoderSpeedControllerTest, StaysAtMinSpeed) {
   ASSERT_NE(controller, nullptr);
 
   EncoderSpeedController::FrameEncodingInfo frame_info = {
-.reference_type = ReferenceClass::kMain, .timestamp = Timestamp::Zero()};
+      .reference_type = ReferenceClass::kMain, .timestamp = Timestamp::Zero()};
 
   for (int i = 0; i < 20; ++i) {
     controller->OnEncodedFrame({.speed = 5, .frame_info = frame_info},
-                               /*baseline_results=*/std::nullopt);  }
+                               /*baseline_results=*/std::nullopt);
+  }
 
   EXPECT_EQ(controller->GetEncodeSettings(frame_info).speed,
             5);  // Still at min speed
@@ -173,15 +181,17 @@ TEST(EncoderSpeedControllerTest, IncreasesSpeedOnLowQp) {
   ASSERT_NE(controller, nullptr);
 
   EncoderSpeedController::FrameEncodingInfo frame_info = {
-.reference_type = ReferenceClass::kMain, .timestamp = Timestamp::Zero()};
+      .reference_type = ReferenceClass::kMain, .timestamp = Timestamp::Zero()};
+
   EXPECT_EQ(controller->GetEncodeSettings(frame_info).speed, 6);
 
   // Simulate low QP, normal encode time
   for (int i = 0; i < 20; ++i) {
     controller->OnEncodedFrame({.encode_time = kFrameInterval * 0.60,
                                 .qp = 10,
-.frame_info = frame_info},
-                               /*baseline_results=*/std::nullopt);  }
+                                .frame_info = frame_info},
+                               /*baseline_results=*/std::nullopt);
+  }
   // Speed should increase to 7 due to low QP
   EXPECT_EQ(controller->GetEncodeSettings(frame_info).speed, 7);
 }
@@ -413,11 +423,13 @@ TEST(EncoderSpeedControllerTest, OnEncodedFrameIgnoresResultWithMissingPsnr) {
       .mode = EncoderSpeedController::Config::PsnrProbingSettings::Mode::
           kOnlyWhenProbing,
       .sampling_interval = TimeDelta::Seconds(1)};
-  config.start_speed_index = 1;  auto controller = EncoderSpeedController::Create(config, kFrameInterval);
+  config.start_speed_index = 1;
+
+  auto controller = EncoderSpeedController::Create(config, kFrameInterval);
   ASSERT_NE(controller, nullptr);
 
   EncoderSpeedController::FrameEncodingInfo frame_info = {
-.reference_type = ReferenceClass::kMain, .timestamp = Timestamp::Zero()};
+      .reference_type = ReferenceClass::kMain, .timestamp = Timestamp::Zero()};
 
   // Trigger probe.
   constexpr int kNumFrames = 10;
@@ -564,4 +576,6 @@ TEST(EncoderSpeedControllerTest, KeyFrameIsAlwaysTreatedAsRegularFrame) {
       .timestamp =
           Timestamp::Zero() + config.psnr_probing_settings->sampling_interval};
   EXPECT_FALSE(controller->GetEncodeSettings(repeat_frame_info).calculate_psnr);
-}}  // namespace webrtc
+}
+
+}  // namespace webrtc

@@ -65,13 +65,14 @@ class EditorDemo implements m.ClassComponent {
             text: `m(Editor, {
   language: 'perfetto-sql',
   fillHeight: true,
-  readonly: false,  initialText: 'SELECT * FROM slice',
+  readonly: false,
+  initialText: 'SELECT * FROM slice',
   onUpdate: (text) => {
     // Handle text changes
     console.log('Editor content:', text);
   },
 })`,
-language: 'typescript',
+            language: 'typescript',
           }),
         ),
       ]),
@@ -94,4 +95,5 @@ language: 'typescript',
 }
 
 export function renderEditor(): m.Children {
-  return m(EditorDemo);}
+  return m(EditorDemo);
+}

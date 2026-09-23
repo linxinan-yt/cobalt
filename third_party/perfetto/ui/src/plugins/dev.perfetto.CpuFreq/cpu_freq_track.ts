@@ -387,7 +387,8 @@ export class CpuFreqTrack implements TrackRenderer {
     colors,
     renderer,
     visibleWindow,
-resolution,  }: TrackRenderContext): void {
+    resolution,
+  }: TrackRenderContext): void {
     // Step 1: Declaratively ensure mipmap tables exist
     const tableResult = this.tableSlot.use({
       // Key is constant - tables only need to be created once

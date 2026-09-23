@@ -245,7 +245,8 @@ TrackEventParser::TrackEventParser(
       callsite_id_key_id_(context_->storage->InternString("callsite_id")),
       end_callsite_id_key_id_(
           context_->storage->InternString("end_callsite_id")),
-extension_parser_context_(extension_parser_context),      chrome_string_lookup_(context->storage.get()),
+      extension_parser_context_(extension_parser_context),
+      chrome_string_lookup_(context->storage.get()),
       active_chrome_processes_tracker_(context) {
   // Opt into DebugAnnotation handling: ParseMessage routes DebugAnnotation
   // sub-fields and direct DebugAnnotation parses through the iterative
@@ -405,7 +406,8 @@ void TrackEventParser::ParseChromeProcessDescriptor(
           : ProcessNamePriority::kChromeProcessLabel;
   context_->process_tracker->UpdateProcessName(upid, name_id, priority);
 
-ArgsTracker::BoundInserter process_args =      context_->process_tracker->AddArgsToProcess(upid);
+  ArgsTracker::BoundInserter& process_args =
+      context_->process_tracker->AddArgsToProcess(upid);
   // For identifying Chrome processes in system traces.
   process_args.AddArg(chrome_process_type_id_, Variadic::String(name_id));
   if (decoder.has_host_app_package_name()) {
@@ -497,6 +499,7 @@ DummyMemoryMapping* TrackEventParser::GetOrCreateInlineCallstackDummyMapping() {
 }
 
 void TrackEventParser::OnEventsFullyExtracted() {
-  active_chrome_processes_tracker_.OnEventsFullyExtracted();}
+  active_chrome_processes_tracker_.OnEventsFullyExtracted();
+}
 
 }  // namespace perfetto::trace_processor

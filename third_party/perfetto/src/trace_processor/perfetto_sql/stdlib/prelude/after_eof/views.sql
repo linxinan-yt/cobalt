@@ -181,13 +181,14 @@ CREATE PERFETTO VIEW thread(
   is_main_thread BOOL,
   -- Boolean indicating if this thread is a kernel idle thread.
   is_idle BOOL,
--- Machine identifier
+  -- Machine identifier
   machine_id JOINID(machine.id),
   -- Extra args for this thread.
   arg_set_id ARGSETID
 )
 AS
 SELECT id AS utid, * FROM __intrinsic_thread;
+
 -- Contains information of processes seen during the trace.
 CREATE PERFETTO VIEW process(
   -- The id of the process. Prefer using `upid` instead.

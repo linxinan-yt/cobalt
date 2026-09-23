@@ -101,13 +101,14 @@ void DownloadComplete(
     const std::string& id,
     scoped_refptr<CrxDownloader> crx_downloader,
     scoped_refptr<Cancellation> cancellation,
-base::RepeatingCallback<void(base::Value::Dict)> event_adder,
+base::RepeatingCallback<void(base::DictValue)> event_adder,
 #if defined(IN_MEMORY_UPDATES)
     const std::string* crx_str,
 #endif
 #if BUILDFLAG(IS_STARBOARD)
     base::OnceCallback<void(base::expected<OperationResult, CategorizedError>)>
-#else    base::OnceCallback<void(base::expected<base::FilePath, CategorizedError>)>
+#else
+    base::OnceCallback<void(base::expected<base::FilePath, CategorizedError>)>
 #endif
         callback,
     const CrxDownloader::Result& download_result) {
@@ -161,7 +162,12 @@ base::RepeatingCallback<void(base::Value::Dict)> event_adder,
 #endif
 }
 
-void HandleAvailableSpace(
+#if BUILDFLAG(IS_STARBOARD)
+// Cobalt doesn't use the temp dir for the download, and relies on
+// UpdateChecker::SkipUpdate to handle insufficient disk space by sending
+// UpdateCheckError::OUT_OF_SPACE to the server. So unlike upstream, there is no
+// free-space precheck here.
+void StartCobaltDownload(
     scoped_refptr<Configurator> config,
     const std::string& id,
     scoped_refptr<Cancellation> cancellation,
@@ -170,37 +176,12 @@ void HandleAvailableSpace(
     int64_t size,
     const std::string& hash,
     CrxDownloader::ProgressCallback progress_callback,
-    base::RepeatingCallback<void(base::Value::Dict)> event_adder,
+    base::RepeatingCallback<void(base::DictValue)> event_adder,
 #if defined(IN_MEMORY_UPDATES)
     std::string* crx_str,
 #endif
-#if BUILDFLAG(IS_STARBOARD)
     base::OnceCallback<void(base::expected<OperationResult, CategorizedError>)>
-#else
-    base::OnceCallback<void(base::expected<base::FilePath, CategorizedError>)>
-#endif
-        callback,
-    int64_t available_bytes) {
-#if BUILDFLAG(IS_STARBOARD)
-  // Cobalt doesn't use the temp dir for the download,
-  // and relies on UpdateChecker::SkipUpdate to handle this error case when
-  // available space is insufficient. It sends UpdateCheckError::OUT_OF_SPACE
-  // error to the server.
-  (void)available_bytes;
-#else
-  if (available_bytes / 2 <= size) {
-    VLOG(1) << "available_bytes: " << available_bytes
-            << ", download size: " << size;
-    base::SequencedTaskRunner::GetCurrentDefault()->PostTask(
-        FROM_HERE,
-        base::BindOnce(
-            std::move(callback),
-            base::unexpected<CategorizedError>(
-                {.category = ErrorCategory::kDownload,
-                 .code = static_cast<int>(CrxDownloaderError::DISK_FULL)})));
-    return;
-  }
-#endif
+        callback) {
 #if BUILDFLAG(IS_STARBOARD) && defined(IN_MEMORY_UPDATES)
   int64_t total_memory = SbSystemGetTotalCPUMemory();
   int64_t used_memory = SbSystemGetUsedCPUMemory();
@@ -249,7 +230,10 @@ void HandleAvailableSpace(
 #else
                      event_adder, std::move(callback))));
 #endif
-}}  // namespace
+}
+#endif  // BUILDFLAG(IS_STARBOARD)
+
+}  // namespace
 
 base::OnceClosure DownloadOperation(
     scoped_refptr<Configurator> config,
@@ -275,7 +259,22 @@ base::OnceClosure DownloadOperation(
   state_tracker.Run(ComponentState::kDownloading);
   auto cancellation = base::MakeRefCounted<Cancellation>();
   progress_callback.Run(-1, -1);
-scoped_refptr<CrxDownloader> crx_downloader =
+#if BUILDFLAG(IS_STARBOARD)
+  StartCobaltDownload(config, id, cancellation, is_foreground, urls, size, hash,
+                      base::BindRepeating(
+                          [](CrxDownloader::ProgressCallback progress_callback,
+                             int64_t file_size, int64_t downloaded_bytes,
+                             int64_t /*content_length*/) {
+                            progress_callback.Run(downloaded_bytes, file_size);
+                          },
+                          progress_callback, size),
+                      event_adder,
+#if defined(IN_MEMORY_UPDATES)
+                      crx_str,
+#endif
+                      std::move(callback));
+#else
+  scoped_refptr<CrxDownloader> crx_downloader =
       config->GetCrxDownloaderFactory()->MakeCrxDownloader(
           config->GetProdId(),
           CanDoBackgroundDownload(is_foreground,
@@ -289,7 +288,9 @@ scoped_refptr<CrxDownloader> crx_downloader =
   cancellation->OnCancel(crx_downloader->StartDownload(
       urls, hash,
       base::BindOnce(&DownloadComplete, id, crx_downloader, cancellation,
-                     event_adder, std::move(callback))));  return base::BindOnce(&Cancellation::Cancel, cancellation);
+                     event_adder, std::move(callback))));
+#endif  // BUILDFLAG(IS_STARBOARD)
+  return base::BindOnce(&Cancellation::Cancel, cancellation);
 }
 
 }  // namespace update_client

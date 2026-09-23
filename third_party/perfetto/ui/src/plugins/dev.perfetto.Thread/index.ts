@@ -27,6 +27,7 @@ import {
   STR_NULL,
 } from '../../trace_processor/query_result';
 import {ensureExists} from '../../base/assert';
+
 async function listThreads(trace: Trace) {
   const query = `
     select

@@ -78,9 +78,10 @@ void UnitsDataTest::testGetAllConversionRates() {
         ConversionRateInfo *cri = conversionInfo[i];
         logln("* conversionInfo %d: source=\"%s\", baseUnit=\"%s\", factor=\"%s\", offset=\"%s\"", i,
               cri->sourceUnit.data(), cri->baseUnit.data(), cri->factor.data(), cri->offset.data());
-assertFalse("sourceUnit", cri->sourceUnit.isEmpty());
+        assertFalse("sourceUnit", cri->sourceUnit.isEmpty());
         assertFalse("baseUnit", cri->baseUnit.isEmpty());
-        assertFalse("factor || special", cri->factor.isEmpty() && cri->specialMappingName.isEmpty());    }
+        assertFalse("factor || special", cri->factor.isEmpty() && cri->specialMappingName.isEmpty());
+    }
 }
 
 class UnitPreferencesOpenedUp : public UnitPreferences {

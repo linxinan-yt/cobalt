@@ -7,7 +7,8 @@ yo{
         cf{"Ònà Ìgbekalẹ̀ owó"}
         collation{"Ètò Ẹlẹ́sẹẹsẹ"}
         currency{"Owó"}
-em{"Ìgbékalẹ̀ Ẹ̀mójì"}        hc{"Òbíríkiti Wákàtí (12 vs 24)"}
+em{"Ìgbékalẹ̀ Ẹ̀mójì"}
+        hc{"Òbíríkiti Wákàtí (12 vs 24)"}
         lb{"Àra Ìda Ìlà"}
         lw{"Àwọn Ìdá Ìlà Láàárín Àwọn Ọ̀rọ̀"}
         ms{"Èto Ìdiwọ̀n"}
@@ -30,7 +31,8 @@ em{"Ìgbékalẹ̀ Ẹ̀mójì"}        hc{"Òbíríkiti Wákàtí (12 vs 24)"}
         ann{"Èdè Obolo"}
         anp{"Èdè Angika"}
         ar{"Èdè Lárúbáwá"}
-ar_001{"Èdè Lárúbáwá (Agbáyé)"}        arn{"Èdè Mapushe"}
+ar_001{"Èdè Lárúbáwá (Agbáyé)"}
+        arn{"Èdè Mapushe"}
         arp{"Èdè Arapaho"}
         ars{"Èdè Arabiki ti Najidi"}
         as{"Èdè Assam"}

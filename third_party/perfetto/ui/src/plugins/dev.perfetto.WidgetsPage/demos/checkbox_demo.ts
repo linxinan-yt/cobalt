@@ -15,6 +15,7 @@
 import m from 'mithril';
 import {Checkbox} from '../../../widgets/checkbox';
 import {EnumOption, renderWidgetShowcase} from '../widgets_page_utils';
+
 export function renderCheckbox(): m.Children {
   return [
     m(
@@ -26,7 +27,7 @@ export function renderCheckbox(): m.Children {
       ),
     ),
     renderWidgetShowcase({
-renderWidget: ({label, labelLeft, showInlineText, ...opts}) => {
+      renderWidget: ({label, labelLeft, showInlineText, ...opts}) => {
         const checkbox = m(Checkbox, {
           label: label ? 'Checkbox' : undefined,
           labelLeft: labelLeft ? 'Checkbox' : undefined,
@@ -41,7 +42,7 @@ renderWidget: ({label, labelLeft, showInlineText, ...opts}) => {
         labelLeft: false,
         disabled: false,
         variant: new EnumOption('checkbox', ['checkbox', 'switch'] as const),
-        showInlineText: false,>>>>>>> parent of ef1b4419c4a (CONFLICTED Chromium Cherry pick: Revert Cobalt.)
+        showInlineText: false,
       },
     }),
   ];

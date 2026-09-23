@@ -492,7 +492,8 @@ endName
 
 # foreignGS
 name ; given; ಕ್ಯಾಥಿ
-name ; surname; ಮುಲ್ಲರ್name ; locale; ja_AQ
+name ; surname; ಮುಲ್ಲರ್
+name ; locale; ja_AQ
 
 expectedResult; ಮುಲ್ಲರ್, ಕ್ಯಾಥಿ
 

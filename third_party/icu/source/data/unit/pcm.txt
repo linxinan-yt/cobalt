@@ -1237,7 +1237,8 @@ dnam{"nait"}
                 dnam{"km/áw"}
             }
             light-speed{
-dnam{"laít"}                one{"{0}laít"}
+dnam{"laít"}
+                one{"{0}laít"}
                 other{"{0}laít"}
             }
         }

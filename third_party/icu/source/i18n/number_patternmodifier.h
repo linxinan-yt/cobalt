@@ -17,13 +17,7 @@
 
 U_NAMESPACE_BEGIN
 
-// Export an explicit template instantiation of the LocalPointer that is used as a
-// data member of AdoptingModifierStore.
-// (When building DLLs for Windows this is required.)
-#if U_PF_WINDOWS <= U_PLATFORM && U_PLATFORM <= U_PF_CYGWIN
-template class U_I18N_API LocalPointerBase<number::impl::AdoptingModifierStore>;
-template class U_I18N_API LocalPointer<number::impl::AdoptingModifierStore>;
-#endifnamespace number::impl {
+namespace number::impl {
 
 // Forward declaration
 class MutablePatternModifier;

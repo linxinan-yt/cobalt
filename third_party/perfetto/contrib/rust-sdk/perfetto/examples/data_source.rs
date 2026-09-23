@@ -21,9 +21,10 @@ use perfetto_sdk::{
         trace::{
             test_event::*,
             trace_packet::TracePacket,
-track_event::debug_annotation::{
+            track_event::debug_annotation::{
                 DebugAnnotation, DebugAnnotationNestedValue, NestedValueNestedType,
-            },        },
+            },
+        },
     },
 };
 use std::{
@@ -52,7 +53,7 @@ struct DummyFields {
 impl DummyFields {
     fn decode(&mut self, data: &[u8]) -> &mut Self {
         use PbDecoderField::*;
-const UINT32_ID: u32 = TestConfigDummyFieldsFieldNumber::FieldUint32 as u32;
+        const UINT32_ID: u32 = TestConfigDummyFieldsFieldNumber::FieldUint32 as u32;
         const INT32_ID: u32 = TestConfigDummyFieldsFieldNumber::FieldInt32 as u32;
         const UINT64_ID: u32 = TestConfigDummyFieldsFieldNumber::FieldUint64 as u32;
         const INT64_ID: u32 = TestConfigDummyFieldsFieldNumber::FieldInt64 as u32;
@@ -65,7 +66,8 @@ const UINT32_ID: u32 = TestConfigDummyFieldsFieldNumber::FieldUint32 as u32;
         const SINT64_ID: u32 = TestConfigDummyFieldsFieldNumber::FieldSint64 as u32;
         const SINT32_ID: u32 = TestConfigDummyFieldsFieldNumber::FieldSint32 as u32;
         const STRING_ID: u32 = TestConfigDummyFieldsFieldNumber::FieldString as u32;
-        const BYTES_ID: u32 = TestConfigDummyFieldsFieldNumber::FieldBytes as u32;        for item in PbDecoder::new(data) {
+        const BYTES_ID: u32 = TestConfigDummyFieldsFieldNumber::FieldBytes as u32;
+        for item in PbDecoder::new(data) {
             match item.as_ref().unwrap_or_else(|e| panic!("Error: {}", e)) {
                 (UINT32_ID, Varint(v)) => self.field_uint32 = Some(*v as u32),
                 (INT32_ID, Varint(v)) => self.field_int32 = Some(*v as i32),
@@ -137,7 +139,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let producer_args = ProducerInitArgsBuilder::new().backends(Backends::SYSTEM);
     Producer::init(producer_args.build());
     let mut data_source = DataSource::new();
-let setup_data = 1234;
+    let setup_data = 1234;
     let test_configs: Arc<Mutex<[Option<TestConfig>; 8]>> =
         Arc::new(Mutex::new([None, None, None, None, None, None, None, None]));
     let test_configs_for_on_setup = Arc::clone(&test_configs);
@@ -147,14 +149,15 @@ let setup_data = 1234;
     let data_source_args = DataSourceArgsBuilder::new()
         .on_setup(move |inst_id, config, _| {
             let mut test_configs = test_configs_for_on_setup.lock().unwrap();
-            let mut test_config = TestConfig::default();            for item in PbDecoder::new(config) {
+            let mut test_config = TestConfig::default();
+            for item in PbDecoder::new(config) {
                 if let (FOR_TESTING_ID, PbDecoderField::Delimited(value)) =
                     item.unwrap_or_else(|e| panic!("Error: {}", e))
                 {
                     test_config.decode(value);
                 }
             }
-test_configs[inst_id as usize] = Some(test_config);
+            test_configs[inst_id as usize] = Some(test_config);
             println!("OnSetup id: {} data: {}", inst_id, setup_data);
         })
         .on_start(move |inst_id, _| {
@@ -167,7 +170,8 @@ test_configs[inst_id as usize] = Some(test_config);
         .on_stop(move |inst_id, args| {
             let mut stop_guards = stop_guards_for_on_stop.lock().unwrap();
             stop_guards[inst_id as usize] = Some(args.postpone());
-            println!("OnStop id: {}", inst_id);        });
+            println!("OnStop id: {}", inst_id);
+        });
     data_source.register("com.example.custom_data_source", data_source_args.build())?;
     loop {
         data_source.trace(|ctx: &mut TraceContext| {
@@ -193,11 +197,13 @@ test_configs[inst_id as usize] = Some(test_config);
                     .set_for_testing(|for_testing: &mut TestEvent| {
                         for_testing.set_str("This is a long string");
                         for_testing.set_counter(10);
-for_testing.set_payload(|payload: &mut TestEventTestPayload| {                            payload.set_debug_annotations(
+                        for_testing.set_payload(|payload: &mut TestEventTestPayload| {
+                            payload.set_debug_annotations(
                                 |debug_annotation: &mut DebugAnnotation| {
                                     debug_annotation.set_name("This is a payload debug annotation");
                                     debug_annotation.set_nested_value(
-|nested_value: &mut DebugAnnotationNestedValue| {                                            nested_value.set_nested_type(
+                                        |nested_value: &mut DebugAnnotationNestedValue| {
+                                            nested_value.set_nested_type(
                                                 NestedValueNestedType::Unspecified,
                                             );
                                             nested_value.set_string_value(
@@ -213,7 +219,7 @@ for_testing.set_payload(|payload: &mut TestEventTestPayload| {                  
                         });
                     });
             });
-if let Some(stop_guard) = stop_guards.lock().unwrap()[inst_id as usize].take() {
+            if let Some(stop_guard) = stop_guards.lock().unwrap()[inst_id as usize].take() {
                 ctx.add_packet(|packet: &mut TracePacket| {
                     packet
                         .set_timestamp(10)
@@ -227,7 +233,8 @@ if let Some(stop_guard) = stop_guards.lock().unwrap()[inst_id as usize].take() {
                 // call is just for documentation purposes as the guard would go out of scope
                 // here and the behavior would be the same.
                 drop(stop_guard);
-            }        });
+            }
+        });
         std::thread::sleep(std::time::Duration::from_secs(1));
     }
 }

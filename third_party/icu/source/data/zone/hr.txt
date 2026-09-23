@@ -17,7 +17,8 @@ hr{
         }
 "Africa:Lome"{
             ec{"Lomé"}
-        }        "America:Anguilla"{
+        }
+        "America:Anguilla"{
             ec{"Angvila"}
         }
         "America:Bahia_Banderas"{
@@ -313,7 +314,8 @@ hr{
         }
 "Pacific:Enderbury"{
             ec{"Enderbury"}
-        }        "Pacific:Fiji"{
+        }
+        "Pacific:Fiji"{
             ec{"Fidži"}
         }
         "Pacific:Honolulu"{

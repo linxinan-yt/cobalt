@@ -1430,7 +1430,8 @@ af{
 unit{
             2{"{0}, {1}"}
             end{"{0}, {1}"}
-        }        unit-narrow{
+        }
+        unit-narrow{
             2{"{0} {1}"}
             end{"{0} {1}"}
             middle{"{0} {1}"}

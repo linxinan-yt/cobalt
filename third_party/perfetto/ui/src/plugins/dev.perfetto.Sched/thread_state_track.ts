@@ -15,7 +15,8 @@
 import {HSLColor} from '../../base/color';
 import type {ColorScheme} from '../../base/color_scheme';
 import {ColorVariant, SliceTrack} from '../../components/tracks/slice_track';
-import type {Trace} from '../../public/trace';import {SourceDataset} from '../../trace_processor/dataset';
+import type {Trace} from '../../public/trace';
+import {SourceDataset} from '../../trace_processor/dataset';
 import {LONG, NUM, NUM_NULL, STR} from '../../trace_processor/query_result';
 import {colorForThreadState} from './common';
 import {ThreadStateDetailsPanel} from './thread_state_details_panel';
@@ -35,6 +36,7 @@ export function createThreadStateTrack(
   uri: string,
   utid: number,
 ) {
+  let hoveredSliceId: number | undefined;
   return SliceTrack.create({
     trace,
     uri,
@@ -49,7 +51,7 @@ export function createThreadStateTrack(
         state: STR,
         depth: NUM,
       },
-select: {
+      select: {
         id: 'id',
         ts: 'ts',
         dur: 'dur',
@@ -60,7 +62,8 @@ select: {
         // Move sleeping and idle slices to the back layer, others on top
         layer: "CASE WHEN state IN ('S', 'I') THEN 0 ELSE 1 END",
       },
-      src: 'thread_state',      filter: {
+      src: 'thread_state',
+      filter: {
         col: 'utid',
         eq: utid,
       },
@@ -70,7 +73,7 @@ select: {
       sliceHeight: 12,
       titleSizePx: 10,
     },
-// The following set of callbacks work around base slice_track's behaviour
+    // The following set of callbacks work around base slice_track's behaviour
     // of globally highlighting all slices with the same title. Highlighting
     // all "running" or "sleeping" slices across all visible thread tracks is
     // both visually noisy, and distracts from the actual slice being hovered.
@@ -86,7 +89,8 @@ select: {
     onUpdatedSlices: (slices) =>
       slices.map((s) =>
         s.id === hoveredSliceId ? ColorVariant.VARIANT : ColorVariant.BASE,
-      ),    sliceName: (row) => row.state || '[Unknown]',
+      ),
+    sliceName: (row) => row.state || '[Unknown]',
     colorizer: (row): ColorScheme => {
       const colorForState = colorForThreadState(row.state || '[Unknown]');
       if (row.state.includes('Sleeping') || row.state.includes('Idle')) {

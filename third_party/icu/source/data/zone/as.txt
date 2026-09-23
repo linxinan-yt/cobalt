@@ -1195,7 +1195,8 @@ as{
         }
 "Pacific:Kanton"{
             ec{"কেণ্টন"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"কিৰিটিমাটি"}
         }
         "Pacific:Kosrae"{

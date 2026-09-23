@@ -32,10 +32,7 @@ import {Spinner} from '../../widgets/spinner';
 import {SplitPanel} from '../../widgets/split_panel';
 import {Tabs, type TabsTab} from '../../widgets/tabs';
 import {Stack, StackAuto} from '../../widgets/stack';
-import {
-  CopyHelper,
-  CopyToClipboardButton,
-} from '../../widgets/copy_to_clipboard_button';import {Anchor} from '../../widgets/anchor';
+import {Anchor} from '../../widgets/anchor';
 import SqlModulesPlugin from '../dev.perfetto.SqlModules';
 import {TableList} from './table_list';
 import {ResultsTable} from './results_table';

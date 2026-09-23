@@ -25,7 +25,7 @@ export default class implements PerfettoPlugin {
   static readonly id = 'com.android.AndroidBinderViz';
 
   async onTraceLoad(ctx: Trace): Promise<void> {
-// Build the server and client trees concurrently so the trace engine isn't
+    // Build the server and client trees concurrently so the trace engine isn't
     // left idle between the two sides' query streams. Attach after both finish,
     // server first: the root tracks carry no sortOrder, so addChildInOrder falls
     // back to insertion order and a bare Promise.all would race the ordering.
@@ -50,13 +50,14 @@ export default class implements PerfettoPlugin {
     const binderGroup = new TrackNode({name: 'Binder', isSummary: true});
     binderGroup.addChildInOrder(serverRoot);
     binderGroup.addChildInOrder(clientRoot);
-    ctx.defaultWorkspace.addChildInOrder(binderGroup);  }
+    ctx.defaultWorkspace.addChildInOrder(binderGroup);
+  }
 
   async createBinderTransactionTrack(
     ctx: Trace,
     perspective: string,
     oppositePerspective: string,
-sliceIdColumn: string,
+    sliceIdColumn: string,
     description: string,
   ): Promise<TrackNode> {
     // The titles live under a "Binder" group, so drop the redundant prefix.
@@ -65,7 +66,8 @@ sliceIdColumn: string,
       trace: ctx,
       trackTitle: `${sideName} Transaction Counts`,
       description,
-      modules: ['android.binder'],      aggregationType: BreakdownTrackAggType.COUNT,
+      modules: ['android.binder'],
+      aggregationType: BreakdownTrackAggType.COUNT,
       aggregation: {
         columns: [
           `${perspective}_process`,
@@ -83,22 +85,12 @@ sliceIdColumn: string,
         tableName: 'android_binder_txns',
         tsCol: `${oppositePerspective}_ts`,
         durCol: `${oppositePerspective}_dur`,
-},
-      pivots: {
-        columns: ['reason_type', 'reason'],
-        tableName: 'android_binder_client_server_breakdown',
-        tsCol: 'ts',
-        durCol: 'dur',
-        joins: [
-          {
-            joinTableName: 'android_binder_client_server_breakdown',
-            joinColumns: ['binder_txn_id'],
-          },
-        ],      },
+      },
       sliceIdColumn: sliceIdColumn,
       sortTracks: false,
       detailsPanel: (trace: Trace) => new BinderSliceDetailsPanel(trace),
     });
 
-return await binderCounterBreakdowns.createTracks();  }
+    return await binderCounterBreakdowns.createTracks();
+  }
 }

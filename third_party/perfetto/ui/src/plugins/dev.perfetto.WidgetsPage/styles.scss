@@ -29,7 +29,8 @@
 
   h3 {
     margin: 12px 0 0 0;
-font-size: var(--pf-font-size-xxl);  }
+    font-size: var(--pf-font-size-xxl);
+  }
 
   p,
   ul {
@@ -52,18 +53,21 @@ font-size: var(--pf-font-size-xxl);  }
   }
 
   &__options {
-flex: 0;
+    overflow: hidden;
+    flex: 0;
     min-width: 250px;
-    overflow: hidden;    padding-inline: 16px;
+    overflow: hidden;
+    padding-inline: 16px;
 
     background: var(--pf-color-background-secondary);
     border-radius: 3px;
     padding-block: 16px;
 
     label {
-overflow: hidden;
+      overflow: hidden;
       white-space: nowrap;
-      text-overflow: ellipsis;    }
+      text-overflow: ellipsis;
+    }
   }
 
   &__options-title {
@@ -117,7 +121,8 @@ overflow: hidden;
   &__content-container {
     flex: 1;
     overflow-y: auto;
-// Full-width pages own their own scrolling (e.g. a fillHeight DataGrid), so
+
+    // Full-width pages own their own scrolling (e.g. a fillHeight DataGrid), so
     // clip here instead of letting content grow this scroll region unbounded.
     // Combined with min-height:0 down the chain, this bounds the height so a
     // fillHeight child can't feed its own content back into its available
@@ -126,11 +131,21 @@ overflow: hidden;
       overflow: hidden;
       display: flex;
       min-height: 0;
-    }  }
+    }
+  }
 
   &__content {
     flex: 1;
     padding-inline: 16px;
-max-width: 900px;
-    padding-bottom: 32px;  }
+    padding-bottom: 16px;
+    max-width: 900px;
+
+    &--full-width {
+      max-width: none;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      overflow: hidden;
+    }
+  }
 }

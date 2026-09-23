@@ -2895,7 +2895,8 @@ per{"{0}/noć"}            }
                     }
                     instrumental{
                         few{"{0} milimetra živina stupca"}
-one{"{0} milimetrom živina stupca"}                        other{"{0} milimetara živina stupca"}
+one{"{0} milimetrom živina stupca"}
+                        other{"{0} milimetara živina stupca"}
                     }
                 }
                 dnam{"milimetri živina stupca"}
@@ -2993,7 +2994,8 @@ one{"{0} milimetrom živina stupca"}                        other{"{0} milimetar
                         other{"{0} svjetala"}
                     }
                 }
-dnam{"svjetlo"}                few{"{0} svjetla"}
+dnam{"svjetlo"}
+                few{"{0} svjetla"}
                 gender{"neuter"}
                 one{"{0} svjetlo"}
                 other{"{0} svjetala"}

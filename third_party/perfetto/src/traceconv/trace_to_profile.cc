@@ -162,7 +162,8 @@ int TraceToProfile(std::istream* input,
                    const std::string& output_dir,
                    std::optional<ConversionMode> explicit_mode,
                    bool verbose) {
-  // Pre-parse trace.  trace_processor::Config config;
+  // Pre-parse trace.
+  trace_processor::Config config;
   std::unique_ptr<trace_processor::TraceProcessor> tp =
       trace_processor::TraceProcessor::CreateInstance(config);
   if (!ReadTraceUnfinalized(tp.get(), input))

@@ -223,7 +223,9 @@ RTC_EXPORT std::optional<SdpType> SdpTypeFromString(
 // An instance can be created by CreateSessionDescription.
 struct EncodingOptions {
   bool use_wildcard = false;
-};class RTC_EXPORT SessionDescriptionInterface final {
+};
+
+class RTC_EXPORT SessionDescriptionInterface final {
  public:
   static std::unique_ptr<SessionDescriptionInterface> Create(
       SdpType type,
@@ -334,8 +336,9 @@ struct EncodingOptions {
       std::unique_ptr<SessionDescription> description,
       absl::string_view id,
       absl::string_view version,
-std::vector<IceCandidateCollection> candidates = {},
+      std::vector<IceCandidateCollection> candidates = {},
       EncodingOptions encoding_options = {});
+
  private:
   bool IsValidMLineIndex(int index) const;
   bool GetMediasectionIndex(const IceCandidate* candidate, size_t* index) const;
@@ -350,7 +353,8 @@ std::vector<IceCandidateCollection> candidates = {},
       SequenceChecker::kDetached};
   std::vector<IceCandidateCollection> candidate_collection_
       RTC_GUARDED_BY(sequence_checker_);
-const EncodingOptions encoding_options_ RTC_GUARDED_BY(sequence_checker_);};
+  const EncodingOptions encoding_options_ RTC_GUARDED_BY(sequence_checker_);
+};
 
 // Creates a SessionDescriptionInterface based on the SDP string and the type.
 // Returns null if the SDP string cannot be parsed.

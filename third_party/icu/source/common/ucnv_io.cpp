@@ -248,7 +248,7 @@ static void U_CALLCONV initAliasData(UErrorCode &errCode) {
     }
 
     sectionSizes = static_cast<const uint32_t*>(udata_getMemory(data));
-int32_t dataLength = udata_getLength(data); // This is the length minus the UDataInfo size
+    int32_t dataLength = udata_getLength(data); // This is the length minus the UDataInfo size
     if (dataLength <= int32_t(sizeof(sectionSizes[0]))) {
         // We don't even have a TOC!
         goto invalidFormat;
@@ -258,7 +258,8 @@ int32_t dataLength = udata_getLength(data); // This is the length minus the UDat
     sizeOfTOC = int32_t((tableStart + 1) * sizeof(sectionSizes[0]));
     if (tableStart < minTocLength || dataLength <= sizeOfTOC) {
         // We don't have a whole TOC!
-        goto invalidFormat;    }
+        goto invalidFormat;
+    }
     gAliasData = data;
 
     gMainTable.converterListSize      = sectionSizes[1];

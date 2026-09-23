@@ -115,8 +115,9 @@ UnicodeSetTest::runIndexedTest(int32_t index, UBool exec,
     TESTCASE_AUTO(TestRangeIterator);
     TESTCASE_AUTO(TestStringIterator);
     TESTCASE_AUTO(TestElementIterator);
-TESTCASE_AUTO(TestToPatternOutput);
-    TESTCASE_AUTO(TestParseErrors);    TESTCASE_AUTO_END;
+    TESTCASE_AUTO(TestToPatternOutput);
+    TESTCASE_AUTO(TestParseErrors);
+    TESTCASE_AUTO_END;
 }
 
 static const char NOT[] = "%%%%";
@@ -4647,6 +4648,7 @@ void UnicodeSetTest::TestElementIterator() {
     // begin() & end() return USetElementIterator for which explicit APIs are tested via USet
     // in a header-only unit test file.
 }
+
 void UnicodeSetTest::TestToPatternOutput() {
     for (const auto &[expression, expected] :
         std::vector<std::pair<std::u16string_view, std::u16string_view>>{

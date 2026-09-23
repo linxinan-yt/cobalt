@@ -708,7 +708,8 @@ _force_current_toolchain = defined(invoker.force_current_toolchain) &&
                              invoker.force_current_toolchain
   _use_current_toolchain =
       _force_current_toolchain || current_toolchain == default_toolchain
-  if ((_needs_cpp_codegen && _use_current_toolchain) || _needs_native_dep) {    _subdir = rebase_path(target_gen_dir, root_gen_dir)
+  if ((_needs_cpp_codegen && _use_current_toolchain) || _needs_native_dep) {
+    _subdir = rebase_path(target_gen_dir, root_gen_dir)
     _registration_cpp_codegen_output =
         "$jni_headers_dir/$_subdir/${target_name}__jni_registration_generated"
 
@@ -724,7 +725,8 @@ if (_needs_native_dep || _use_current_toolchain) {
     _jni_registration_target_name = "${target_name}__jni_registration"
   }
 
-  if (_use_current_toolchain) {    if (defined(invoker.visibility)) {
+  if (_use_current_toolchain) {
+    if (defined(invoker.visibility)) {
       _target_name_for_visibility = target_name
     }
     generate_jni_registration(_jni_registration_target_name) {
@@ -798,7 +800,8 @@ if (defined(invoker.jni_registration_toolchain)) {
           deps += [ ":$_jni_registration_target_name(${invoker.jni_registration_toolchain})" ]
         } else {
           deps += [ ":$_jni_registration_target_name($default_toolchain)" ]
-        }        if (!defined(sources)) {
+        }
+        if (!defined(sources)) {
           sources = []
         }
         sources += [ _registration_cpp_codegen_output ]

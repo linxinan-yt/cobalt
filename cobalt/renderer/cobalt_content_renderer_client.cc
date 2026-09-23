@@ -226,7 +226,7 @@ void CobaltContentRendererClient::RenderThreadStarted() {
 
   // Register h5vcc scheme for renders to use Fetch API.
   blink::WebSecurityPolicy::RegisterURLSchemeAsSupportingFetchAPI(
-      blink::WebString::FromASCII(content::kH5vccEmbeddedScheme));
+      blink::WebString::FromAscii(content::kH5vccEmbeddedScheme));
 }
 
 void AddStarboardCmaKeySystems(::media::KeySystemInfos* key_system_infos) {
@@ -328,7 +328,8 @@ void CobaltContentRendererClient::RunScriptsAtDocumentStart(
   CHECK(content::RenderThread::IsMainThread());
   js_injection::JsCommunication* communication =
       js_injection::JsCommunication::Get(render_frame);
-  communication->RunScriptsAtDocumentStart();
+  communication->RunScripts(
+      js_injection::mojom::DocumentInjectionTime::kDocumentStart);
 }
 
 void CobaltContentRendererClient::GetStarboardRendererFactoryTraits(

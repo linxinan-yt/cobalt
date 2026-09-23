@@ -89,7 +89,8 @@ BASE_FEATURE_PARAM(int,
                    &kCobaltCCImageCacheLimitItems,
                    "cc_image_cache_limit_items",
                    0);
-#endif  // BUILDFLAG(IS_COBALT)// Controls caching within BASE_FEATURE_PARAM(). This is feature-controlled
+#endif  // BUILDFLAG(IS_COBALT)
+// Controls caching within BASE_FEATURE_PARAM(). This is feature-controlled
 // so that ScopedFeatureList can disable it to turn off caching.
 BASE_FEATURE(kFeatureParamWithCache, FEATURE_ENABLED_BY_DEFAULT);
 

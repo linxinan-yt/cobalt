@@ -21,7 +21,6 @@
 #include <memory>
 #include <utility>
 
-#include "perfetto/ext/base/fnv_hash.h"
 #include "perfetto/ext/base/murmur_hash.h"
 #include "perfetto/protozero/field.h"
 #include "perfetto/trace_processor/ref_counted.h"

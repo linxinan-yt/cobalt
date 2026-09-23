@@ -66,7 +66,7 @@ namespace message2 {
     enum DynamicErrorType {
         UnresolvedVariable,
         FormattingError,
-BadOptionError,
+        BadOptionError,
         /**
            This is used to signal errors from :number and :integer when a
             bad `select` option is passed. In this case, fallback output
@@ -76,7 +76,8 @@ BadOptionError,
             See https://github.com/unicode-org/message-format-wg/blob/main/spec/functions/number.md#number-selection
             "The formatting of the _resolved value_ is not affected by the `select` option.")
         */
-        RecoverableBadOptionError,        OperandMismatchError,
+        RecoverableBadOptionError,
+        OperandMismatchError,
         SelectorError,
         UnknownFunction,
     };
@@ -124,7 +125,8 @@ BadOptionError,
         const StaticErrors& staticErrors;
         LocalPointer<UVector> resolutionAndFormattingErrors;
         bool formattingError = false;
-bool badOptionError = false;        bool selectorError = false;
+        bool badOptionError = false;
+        bool selectorError = false;
         bool unknownFunctionError = false;
         bool unresolvedVariableError = false;
 
@@ -138,12 +140,13 @@ bool badOptionError = false;        bool selectorError = false;
         void setFormattingError(const FunctionName&, UErrorCode&);
         // Used when the name of the offending formatter is unknown
         void setFormattingError(UErrorCode&);
-void setBadOption(const FunctionName&, UErrorCode&);
+        void setBadOption(const FunctionName&, UErrorCode&);
         void setRecoverableBadOption(const FunctionName&, UErrorCode&);
         void setOperandMismatchError(const FunctionName&, UErrorCode&);
         bool hasDataModelError() const { return staticErrors.hasDataModelError(); }
         bool hasFormattingError() const { return formattingError; }
-        bool hasBadOptionError() const { return badOptionError; }        bool hasSelectorError() const { return selectorError; }
+        bool hasBadOptionError() const { return badOptionError; }
+        bool hasSelectorError() const { return selectorError; }
         bool hasSyntaxError() const { return staticErrors.hasSyntaxError(); }
         bool hasUnknownFunctionError() const { return unknownFunctionError; }
         bool hasMissingSelectorAnnotationError() const { return staticErrors.hasMissingSelectorAnnotationError(); }

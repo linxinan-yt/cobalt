@@ -3,7 +3,8 @@
 ## Overview
 
 Perfetto depends on SQLite internals:
-- SQLite grammar processing via the syntaqlite library- Internal SQLite constants and structures
+- SQLite grammar processing via the syntaqlite library
+- Internal SQLite constants and structures
 
 ## Upgrade Procedure
 
@@ -16,9 +17,10 @@ Only upgrade when Chrome, Android, and Google3 all support the target SQLite ver
    - `tools/install-build-deps` - update SQLite version/hash
    - `bazel/deps.bzl` - update SQLite version/hash
 
-2. **Run parser update:**
+2. **Regenerate the PerfettoSQL parser:**
    ```bash
-   python3 tools/update_sql_parsers.py   ```
+   python3 tools/gen_syntaqlite_parser
+   ```
 
 3. **Build and test:**
    ```bash
@@ -29,15 +31,7 @@ Only upgrade when Chrome, Android, and Google3 all support the target SQLite ver
 
 ## Common Issues
 
-### SQLite Special Tokens Changed
-**Error:** `SQLite special tokens have changed! Expected: %token SPACE COMMENT ILLEGAL.`
-
-**Fix:** Update `EXPECTED_SPECIAL_TOKENS` in `tools/update_sql_parsers.py`
-
-### Missing Token Definitions
-**Error:** `use of undeclared identifier 'TK_COMMENT'` or `'SQLITE_DIGIT_SEPARATOR'`
-
-**Fix:** Add missing constants to `tokenize_internal_helper.h`### SQLite Internal API Changes
+### SQLite Internal API Changes
 **Error:** Compilation errors in `sqlite_utils.h` or `sqlite/bindings/*.h`
 
 **Fix:** Update bindings for SQLite API changes
@@ -59,4 +53,5 @@ Only upgrade when Chrome, Android, and Google3 all support the target SQLite ver
 
 ## Rollback
 1. Revert version changes in `tools/install-build-deps` and `bazel/deps.bzl`
-2. Re-run `python3 tools/gen_syntaqlite_parser`3. Rebuild
+2. Re-run `python3 tools/gen_syntaqlite_parser`
+3. Rebuild

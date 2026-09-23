@@ -460,7 +460,8 @@ return ::media::RendererType::kTest;
 #if BUILDFLAG(USE_STARBOARD_MEDIA)
       case media::mojom::RendererType::kStarboard:
         return ::media::RendererType::kStarboard;
-#endif  // BUILDFLAG(USE_STARBOARD_MEDIA)    }
+#endif  // BUILDFLAG(USE_STARBOARD_MEDIA)
+    }
 
     NOTREACHED();
   }
@@ -514,7 +515,8 @@ return ::media::DemuxerType::kManifestDemuxer;
 #if BUILDFLAG(IS_IOS_TVOS) && BUILDFLAG(USE_STARBOARD_MEDIA)
       case media::mojom::DemuxerType::kUrlPlayerDemuxer:
         return ::media::DemuxerType::kUrlPlayerDemuxer;
-#endif  // BUILDFLAG(IS_IOS_TVOS) && BUILDFLAG(USE_STARBOARD_MEDIA)    }
+#endif  // BUILDFLAG(IS_IOS_TVOS) && BUILDFLAG(USE_STARBOARD_MEDIA)
+    }
 
     NOTREACHED();
   }

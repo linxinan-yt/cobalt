@@ -17,12 +17,9 @@
 #ifndef SRC_TRACE_PROCESSOR_UTIL_CLOCK_SYNCHRONIZER_H_
 #define SRC_TRACE_PROCESSOR_UTIL_CLOCK_SYNCHRONIZER_H_
 
-#include <algorithm>
 #include <array>
-#include <cinttypes>
 #include <cstddef>
 #include <cstdint>
-#include <limits>
 #include <map>
 #include <memory>
 #include <optional>
@@ -44,16 +41,16 @@
 
 namespace perfetto::trace_processor {
 
-class ClockTrackerTest;
-class TraceProcessorContext;// This class handles synchronization of timestamps across different clock
+// This class handles synchronization of timestamps across different clock
 // domains. This includes multi-hop conversions from two clocks A and D, e.g.
 // A->B -> B->C -> C->D, even if we never saw a snapshot that contains A and D
 // at the same time.
 // The API is fairly simple (but the inner operation is not):
 // - AddSnapshot(map<clock_id, timestamp>): pushes a set of clocks that have
 //   been snapshotted at the same time (within technical limits).
-// - ToTraceTime(src_clock_id, src_timestamp):
-//   converts a timestamp between clock domain and TraceTime.//
+// - Convert(src_clock_id, src_timestamp, target_clock_id):
+//   converts a timestamp between two clock domains.
+//
 // Concepts:
 // - Snapshot hash:
 //   As new snapshots are pushed via AddSnapshot() we compute a snapshot hash.
@@ -282,13 +279,14 @@ class ClockSynchronizer {
   // Returns true if the clock synchronizer has seen the given clock in any
   // snapshot.
   bool HasClock(ClockId clock_id) const {
-    return clocks_.find(clock_id) != clocks_.end();  }
+    return clocks_.find(clock_id) != clocks_.end();
+  }
 
   // Appends a new snapshot for the given clock domains.
   // This is typically called by the code that reads the ClockSnapshot packet.
   // Returns the internal snapshot id of this set of clocks.
   base::StatusOr<uint32_t> AddSnapshot(
-const std::vector<ClockTimestamp>& clock_timestamps);
+      const std::vector<ClockTimestamp>& clock_timestamps);
 
   // Converts a timestamp between two clock domains. Tries to use the cache
   // first (only for single-path resolutions), then falls back on path finding
@@ -325,6 +323,7 @@ const std::vector<ClockTimestamp>& clock_timestamps);
   // The reason the most recent Convert that returned nullopt failed. Valid
   // only until the next Convert call. Undefined if the last Convert succeeded.
   const ClockSyncError& last_error() const { return last_error_; }
+
   // For testing:
   void set_cache_lookups_disabled_for_testing(bool v) {
     cache_lookups_disabled_for_testing_ = v;
@@ -365,7 +364,8 @@ const std::vector<ClockTimestamp>& clock_timestamps);
     }
 
     uint32_t len = 0;
-ClockId last = 0;    std::array<ClockGraphEdge, kMaxLen> path;  // Deliberately uninitialized.
+    ClockId last;
+    std::array<ClockGraphEdge, kMaxLen> path;  // Deliberately uninitialized.
   };
 
   struct ClockSnapshots {
@@ -421,7 +421,7 @@ ClockId last = 0;    std::array<ClockGraphEdge, kMaxLen> path;  // Deliberately 
   ClockSynchronizer(const ClockSynchronizer&) = delete;
   ClockSynchronizer& operator=(const ClockSynchronizer&) = delete;
 
-std::optional<int64_t> ConvertSlowpath(ClockId src_clock_id,
+  std::optional<int64_t> ConvertSlowpath(ClockId src_clock_id,
                                          int64_t src_timestamp,
                                          std::optional<int64_t> src_ts_ns,
                                          ClockId target_clock_id);
@@ -429,26 +429,30 @@ std::optional<int64_t> ConvertSlowpath(ClockId src_clock_id,
   // Returns whether |global_clock_id| represents a sequence-scoped clock, i.e.
   // a ClockId returned by SequenceToGlobalClock().
   static bool IsConvertedSequenceClock(ClockId global_clock_id) {
-    return global_clock_id.seq_id != 0;  }
+    return global_clock_id.seq_id != 0;
+  }
 
   // Finds the shortest clock resolution path in the graph that allows to
   // translate a timestamp from |src| to |target| clocks.
-ClockPath FindPath(ClockId src, ClockId target);
+  ClockPath FindPath(ClockId src, ClockId target);
 
   ClockDomain* GetClock(ClockId clock_id);
 
-  TraceTimeState* trace_time_state_;  std::map<ClockId, ClockDomain> clocks_;
+  TraceTimeState* trace_time_state_;
+  std::map<ClockId, ClockDomain> clocks_;
   std::set<ClockGraphEdge> graph_;
   std::set<ClockId> non_monotonic_clocks_;
   std::array<CachedClockPath, 8> cache_{};
   bool cache_lookups_disabled_for_testing_ = false;
   uint32_t cache_hits_for_testing_ = 0;
-// Set by ConvertSlowpath whenever it returns nullopt; read by the caller via
+
+  // Set by ConvertSlowpath whenever it returns nullopt; read by the caller via
   // last_error() before the next Convert call.
   ClockSyncError last_error_{};
   std::minstd_rand rnd_;  // For cache eviction.
   uint32_t cur_snapshot_id_ = 0;
   std::unique_ptr<ClockSynchronizerListener> clock_event_listener_;
+
   // A queue of paths to explore. Stored as a field to reduce allocations
   // on every call to FindPath().
   base::CircularQueue<ClockPath> queue_find_path_cache_;

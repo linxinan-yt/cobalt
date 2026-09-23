@@ -92,7 +92,8 @@ class RtcEventLogEncoderNewFormat final : public RtcEventLogEncoder {
   void EncodeBweUpdateLossBased(
       std::span<const RtcEventBweUpdateLossBased*> batch,
       rtclog2::EventStream* event_stream);
-void EncodeBweUpdateScream(std::span<const RtcEventBweUpdateScream*> batch,                             rtclog2::EventStream* event_stream);
+  void EncodeBweUpdateScream(std::span<const RtcEventBweUpdateScream*> batch,
+                             rtclog2::EventStream* event_stream);
   void EncodeDtlsTransportState(
       std::span<const RtcEventDtlsTransportState*> batch,
       rtclog2::EventStream* event_stream);

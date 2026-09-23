@@ -11,7 +11,8 @@ latn{
                 accountingFormat%alphaNextToNumber{"¤ #,##0.00;(¤ #,##0.00)"}
                 accountingFormat%noCurrency{"#,##0.00;(#,##0.00)"}
             }
-        }        minimalPairs{
+        }
+        minimalPairs{
             ordinal{
                 other{"ni ji {0}"}
             }
@@ -22,7 +23,8 @@ latn{
     }
     calendar{
         gregorian{
-AmPmMarkersAbbr{                "LEEBI",
+AmPmMarkersAbbr{
+                "LEEBI",
                 "SHWANE",
             }
             DateTimePatterns{
@@ -95,7 +97,8 @@ fields{
                 "1"{"Hɔgbaa ni baaba"}
             }
         }
-    }    listPattern{
+    }
+    listPattern{
         standard-short{
             2{"{0} kɛ {1}"}
             end{"{0}, kɛ {1}"}

@@ -38,11 +38,6 @@
 #include "protos/perfetto/trace/trace.pbzero.h"
 #include "protos/perfetto/trace/trace_packet.pbzero.h"
 
-#include "protos/perfetto/config/trace_config.gen.h"
-
-#include "protos/perfetto/trace/trace.pbzero.h"
-#include "protos/perfetto/trace/trace_packet.pbzero.h"
-
 namespace perfetto {
 namespace {
 

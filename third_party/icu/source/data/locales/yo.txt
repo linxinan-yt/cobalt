@@ -233,7 +233,8 @@ yo{
             }
             DateTimePatterns%relative{
                 "{1} 'ní' {0}",
-                "{1} 'ní' {0}",                "{1}, {0}",
+                "{1} 'ní' {0}",
+                "{1}, {0}",
                 "{1}, {0}",
             }
             DateTimeSkeletons{
@@ -455,7 +456,8 @@ abbreviated{
                         "Oṣù Ọ̀wàrà",
                         "Oṣù Bélú",
                         "Oṣù Ọ̀pẹ̀",
-                    }                    narrow{
+                    }
+                    narrow{
                         "S",
                         "È",
                         "Ẹ",
@@ -889,7 +891,8 @@ abbreviated{
             relativeTime{
 future{
                     other{"ní {0} Ọdún"}
-                }                past{
+                }
+                past{
                     other{"Ọdún {0} sẹ́yìn"}
                 }
             }
@@ -899,7 +902,8 @@ future{
         }
 zone-narrow{
             dn{"Agbègbè"}
-        }        zone-short{
+        }
+        zone-short{
             dn{"Agbègbè"}
         }
     }
@@ -910,7 +914,8 @@ zone-narrow{
         }
 or-short{
             start{"{0}, {1}"}
-        }        standard{
+        }
+        standard{
             2{"{0} àti{1}"}
         }
         standard-short{

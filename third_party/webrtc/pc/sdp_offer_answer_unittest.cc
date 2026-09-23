@@ -2120,7 +2120,7 @@ TEST_F(SdpOfferAnswerTest, SctpInitDisabled) {
   auto pc2 = CreatePeerConnection("WebRTC-Sctp-Snap/Disabled/");
   EXPECT_TRUE(pc1->pc()->CreateDataChannelOrError("dc", nullptr).ok());
   auto offer = pc1->CreateOfferAndSetAsLocal();
-ASSERT_THAT(offer, NotNull());
+  ASSERT_THAT(offer, NotNull());
 
   {
     auto& contents = offer->description()->contents();
@@ -2159,37 +2159,7 @@ TEST_F(SdpOfferAnswerTest, SctpInitWithConfig) {
   EXPECT_TRUE(pc1->pc()->CreateDataChannelOrError("dc", nullptr).ok());
   auto offer = pc1->CreateOfferAndSetAsLocal();
   ASSERT_THAT(offer, NotNull());
-  {
-    auto& contents = offer->description()->contents();
-    ASSERT_EQ(contents.size(), 1u);
-    auto* media_description = contents[0].media_description();
-    ASSERT_TRUE(media_description);
-    auto* sctp_description = media_description->as_sctp();
-    ASSERT_TRUE(sctp_description);
-EXPECT_TRUE(sctp_description->sctp_init());  }
 
-  RTCError error;
-  EXPECT_TRUE(pc2->SetRemoteDescription(std::move(offer)));
-  auto answer = pc2->CreateAnswerAndSetAsLocal();
-ASSERT_THAT(answer, NotNull());
-  {
-    auto& contents = answer->description()->contents();
-    ASSERT_EQ(contents.size(), 1u);
-    auto* media_description = contents[0].media_description();
-    ASSERT_TRUE(media_description);
-    auto* sctp_description = media_description->as_sctp();
-    ASSERT_TRUE(sctp_description);
-EXPECT_TRUE(sctp_description->sctp_init());  }
-
-  EXPECT_TRUE(pc1->SetRemoteDescription(std::move(answer)));
-}
-
-TEST_F(SdpOfferAnswerTest, SctpInitWithTrial) {
-  auto pc1 = CreatePeerConnection("WebRTC-Sctp-Snap/Enabled/");
-  auto pc2 = CreatePeerConnection("WebRTC-Sctp-Snap/Enabled/");
-  EXPECT_TRUE(pc1->pc()->CreateDataChannelOrError("dc", nullptr).ok());
-  auto offer = pc1->CreateOfferAndSetAsLocal();
-ASSERT_THAT(offer, NotNull());
   {
     auto& contents = offer->description()->contents();
     ASSERT_EQ(contents.size(), 1u);
@@ -2203,7 +2173,43 @@ ASSERT_THAT(offer, NotNull());
   RTCError error;
   EXPECT_TRUE(pc2->SetRemoteDescription(std::move(offer)));
   auto answer = pc2->CreateAnswerAndSetAsLocal();
-ASSERT_THAT(answer, NotNull());
+  ASSERT_THAT(answer, NotNull());
+
+  {
+    auto& contents = answer->description()->contents();
+    ASSERT_EQ(contents.size(), 1u);
+    auto* media_description = contents[0].media_description();
+    ASSERT_TRUE(media_description);
+    auto* sctp_description = media_description->as_sctp();
+    ASSERT_TRUE(sctp_description);
+    EXPECT_TRUE(sctp_description->sctp_init());
+  }
+
+  EXPECT_TRUE(pc1->SetRemoteDescription(std::move(answer)));
+}
+
+TEST_F(SdpOfferAnswerTest, SctpInitWithTrial) {
+  auto pc1 = CreatePeerConnection("WebRTC-Sctp-Snap/Enabled/");
+  auto pc2 = CreatePeerConnection("WebRTC-Sctp-Snap/Enabled/");
+  EXPECT_TRUE(pc1->pc()->CreateDataChannelOrError("dc", nullptr).ok());
+  auto offer = pc1->CreateOfferAndSetAsLocal();
+  ASSERT_THAT(offer, NotNull());
+
+  {
+    auto& contents = offer->description()->contents();
+    ASSERT_EQ(contents.size(), 1u);
+    auto* media_description = contents[0].media_description();
+    ASSERT_TRUE(media_description);
+    auto* sctp_description = media_description->as_sctp();
+    ASSERT_TRUE(sctp_description);
+    EXPECT_TRUE(sctp_description->sctp_init());
+  }
+
+  RTCError error;
+  EXPECT_TRUE(pc2->SetRemoteDescription(std::move(offer)));
+  auto answer = pc2->CreateAnswerAndSetAsLocal();
+  ASSERT_THAT(answer, NotNull());
+
   {
     auto& contents = answer->description()->contents();
     ASSERT_EQ(contents.size(), 1u);
@@ -2242,7 +2248,8 @@ TEST_F(SdpOfferAnswerTest, AnswerNoSctpInitInOffer) {
 
   EXPECT_TRUE(pc->SetRemoteDescription(std::move(desc)));
   auto answer = pc->CreateAnswerAndSetAsLocal();
-ASSERT_THAT(answer, NotNull());  EXPECT_TRUE(answer->ToString(&sdp));
+  ASSERT_THAT(answer, NotNull());
+  EXPECT_TRUE(answer->ToString(&sdp));
 
   auto& contents = answer->description()->contents();
   ASSERT_EQ(contents.size(), 1u);
@@ -2274,6 +2281,7 @@ TEST_F(SdpOfferAnswerTest, AnswerNonBase64SctpInit) {
   auto desc = CreateSessionDescription(SdpType::kOffer, sdp);
   EXPECT_EQ(desc, nullptr);
 }
+
 TEST_F(SdpOfferAnswerTest,
        AnswerFromNewPeerAfterProvisionalAnswerFailsSnapSctpInit) {
   auto pc1 = CreatePeerConnection("WebRTC-Sctp-Snap/Enabled/");

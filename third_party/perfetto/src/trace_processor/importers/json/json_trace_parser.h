@@ -49,7 +49,7 @@ class JsonTraceParser {
 
   StringId process_sort_index_hint_id_;
   StringId thread_sort_index_hint_id_;
-StringId running_string_id_;
+  StringId running_string_id_;
 
   void MaybeAddFlow(int64_t timestamp,
                     StringPool* pool,
@@ -63,7 +63,8 @@ StringId running_string_id_;
       int64_t timestamp,
       const JsonEvent& event,
       size_t stat_key,
-      std::function<void(ArgsTracker::BoundInserter&)> extra_args = {});};
+      std::function<void(ArgsTracker::BoundInserter&)> extra_args = {});
+};
 
 }  // namespace perfetto::trace_processor
 

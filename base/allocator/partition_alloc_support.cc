@@ -1101,7 +1101,8 @@ void PartitionAllocSupport::ReconfigureAfterFeatureListInit(
   }
 
 #if !BUILDFLAG(IS_COBALT)
-  if (config.configure_dangling_pointer_detector) {    base::allocator::InstallDanglingRawPtrChecks();
+  if (config.configure_dangling_pointer_detector) {
+    base::allocator::InstallDanglingRawPtrChecks();
   }
   base::allocator::InstallUnretainedDanglingRawPtrChecks();
 #endif  // !BUILDFLAG(IS_COBALT)
@@ -1134,7 +1135,7 @@ void PartitionAllocSupport::ReconfigureAfterFeatureListInit(
   }
 
 #if BUILDFLAG(IS_COBALT)
-  if (configure_dangling_pointer_detector) {
+  if (config.configure_dangling_pointer_detector) {
     base::allocator::InstallDanglingRawPtrChecks();
   }
   base::allocator::InstallUnretainedDanglingRawPtrChecks();

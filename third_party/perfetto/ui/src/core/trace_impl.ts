@@ -58,6 +58,7 @@ import type {OmniboxModeDescriptor} from '../public/omnibox';
 import type {SidePanelManagerImpl} from './side_panel_manager';
 import type {SidePanelTabDescriptor} from '../public/side_panel';
 import type {Route} from '../public/app';
+
 /**
  * This implementation provides the plugin access to trace related resources,
  * such as the engine and the store. This exists for the whole duration a plugin
@@ -116,7 +117,7 @@ export class TraceImpl implements Trace, Disposable {
       this.onSelectionChange.bind(this),
     );
 
-this.notes.onNoteDeleted = (noteId) => {
+    this.notes.onNoteDeleted = (noteId) => {
       if (
         this.selection.selection.kind === 'note' &&
         this.selection.selection.id === noteId
@@ -137,7 +138,9 @@ this.notes.onNoteDeleted = (noteId) => {
       engine: this.engine,
       workspace: this.workspaces.currentWorkspace,
       onResultStep: this.onResultStep.bind(this),
-    });    // CommandManager is global. Here we intercept the registerCommand() because
+    });
+
+    // CommandManager is global. Here we intercept the registerCommand() because
     // we want any commands registered via the Trace interface to be
     // unregistered when the trace unloads (before a new trace is loaded) to
     // avoid ending up with duplicate commands.
@@ -147,10 +150,11 @@ this.notes.onNoteDeleted = (noteId) => {
         this.trash.use(disposable);
         return disposable;
       },
-registerMacro: (macro, source) => {
+      registerMacro: (macro, source) => {
         const disposable = app.commands.registerMacro(macro, source);
         this.trash.use(disposable);
-        return disposable;      },
+        return disposable;
+      },
     });
 
     // Likewise, remove all trace-scoped sidebar entries when the trace unloads.
@@ -269,8 +273,9 @@ registerMacro: (macro, source) => {
     return this.workspaces.currentWorkspace;
   }
 
-get defaultWorkspace() {
-    return this.workspaces.defaultWorkspace;  }
+  get defaultWorkspace() {
+    return this.workspaces.defaultWorkspace;
+  }
 
   get commands(): CommandManagerImpl {
     return this.commandMgrProxy;
@@ -318,7 +323,7 @@ get defaultWorkspace() {
     this.app.navigate(newHash);
   }
 
-getCurrentRoute(): Route {
+  getCurrentRoute(): Route {
     return this.app.getCurrentRoute();
   }
 
@@ -331,13 +336,15 @@ getCurrentRoute(): Route {
   }
 
   openTraceFromStream(stream: TraceStream) {
-    return this.app.openTraceFromStream(stream);  }
+    return this.app.openTraceFromStream(stream);
+  }
 
   openTraceFromBuffer(
     args: OpenTraceArrayBufArgs,
     serializedAppState?: SerializedAppState,
   ) {
-return this.appImpl.openTraceFromBuffer(args, serializedAppState);  }
+    return this.app.openTraceFromBuffer(args, serializedAppState);
+  }
 
   closeCurrentTrace(): void {
     this.app.closeCurrentTrace();

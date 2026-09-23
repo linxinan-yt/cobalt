@@ -9815,7 +9815,8 @@ TEST_F(VideoStreamEncoderTest, LowComplexityVP9WithTwoCores) {
 }
 
 TEST_F(VideoStreamEncoderTest,
-NormalComplexityVP9WithDynamicSpeedDespiteLowTierOptimizations) {  FieldTrials trials(field_trials_);
+       LowComplexityVP9WithDynamicSpeedAndLowTierOptimizations) {
+  FieldTrials trials(field_trials_);
   trials.Set("WebRTC-VP9-LowTierOptimizations", "Enabled");
   trials.Set("WebRTC-EncoderSpeed", "dynamic_speed:true");
 
@@ -9833,7 +9834,7 @@ NormalComplexityVP9WithDynamicSpeedDespiteLowTierOptimizations) {  FieldTrials t
       CreateFrame(1, /*width=*/320, /*height=*/180));
   WaitForEncodedFrame(1);
   EXPECT_EQ(fake_encoder_.LastEncoderComplexity(),
-VideoCodecComplexity::kComplexityLow);
+            VideoCodecComplexity::kComplexityLow);
   video_stream_encoder_->Stop();
 }
 
@@ -9856,7 +9857,8 @@ TEST_F(VideoStreamEncoderTest, DynamicSpeedCanOverrideVp9LowComplexity) {
       CreateFrame(1, /*width=*/320, /*height=*/180));
   WaitForEncodedFrame(1);
   EXPECT_EQ(fake_encoder_.LastEncoderComplexity(),
-            VideoCodecComplexity::kComplexityHigh);  video_stream_encoder_->Stop();
+            VideoCodecComplexity::kComplexityHigh);
+  video_stream_encoder_->Stop();
 }
 
 TEST_F(VideoStreamEncoderTest, ConfiguresCameraEncoderComplexityViaFieldTrial) {

@@ -21,7 +21,8 @@ sd{
         arabext{
 patterns{
                 accountingFormat%alphaNextToNumber{"¤ #,##0.00;(¤ #,##0.00)"}
-            }            symbols{
+            }
+            symbols{
                 decimal{"."}
                 group{"،"}
             }
@@ -30,7 +31,8 @@ patterns{
         deva{
 patterns{
                 accountingFormat%alphaNextToNumber{"¤ #,##0.00;(¤ #,##0.00)"}
-            }            symbols{
+            }
+            symbols{
                 group{"،"}
             }
         }
@@ -263,7 +265,8 @@ patterns{
             availableFormats{
 EBh{"E B h"}
                 GyM{"MM-y G"}
-                GyMEd{"E, dd-MM-y G"}                GyMd{"M/d/y G"}
+                GyMEd{"E, dd-MM-y G"}
+                GyMd{"M/d/y G"}
                 MMMMW{
                     one{"ھفتو W جو MMMM"}
                     other{"ھفتو W جو MMMM"}

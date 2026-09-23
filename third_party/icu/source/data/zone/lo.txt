@@ -1195,7 +1195,8 @@ lo{
         }
 "Pacific:Kanton"{
             ec{"ແຄນຕອນ"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"ຄີຣິທີມາຕີ"}
         }
         "Pacific:Kosrae"{

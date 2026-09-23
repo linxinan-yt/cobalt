@@ -402,7 +402,8 @@ base::Status ProtoTraceReader::ParsePacket(TraceBlobView packet) {
         PacketAnalyzer::Get(context_)->ProcessPacket(packet, annotation);
       }
       scoped_state->needs_incremental_state_skipped++;
-context_->import_logs_tracker->RecordTokenizationLog(          stats::packet_skipped_seq_needs_incremental_state_invalid,
+      context_->import_logs_tracker->RecordTokenizationLog(
+          stats::packet_skipped_seq_needs_incremental_state_invalid,
           packet.offset(),
           [this, seq_id](ArgsTracker::BoundInserter& inserter) {
             inserter.AddArg(packet_sequence_id_key_id_,
@@ -491,7 +492,8 @@ base::Status ProtoTraceReader::TimestampTokenizeAndPushToSorter(
       // TODO(eseckler): Set timestamp_clock_id and emit ClockSnapshots in
       // chrome and then remove this.
       auto trace_ts = context_->clock_tracker->ToTraceTime(
-ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_MONOTONIC), timestamp);      if (trace_ts)
+          ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_MONOTONIC), timestamp);
+      if (trace_ts)
         timestamp = *trace_ts;
     } else if (timestamp_clock_id) {
       // If the TracePacket specifies a non-zero clock-id, translate the
@@ -515,12 +517,13 @@ ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_MONOTONIC), timestamp);      if (
       } else {
         converted_clock_id = ClockId::Machine(timestamp_clock_id);
       }
-auto resolution =
+      auto resolution =
           ResolveTimestampToTraceTime(converted_clock_id, &timestamp, &packet);
       if (resolution == ClockResolution::kDeferred ||
           resolution == ClockResolution::kDropped) {
         return base::OkStatus();
-      }    }
+      }
+    }
   } else {
     timestamp = std::max(latest_timestamp_, context_->sorter->max_timestamp());
   }
@@ -578,7 +581,8 @@ void ProtoTraceReader::HandleIncrementalStateCleared(
     const protos::pbzero::TracePacket::Decoder& packet_decoder,
     const TraceBlobView& packet) {
   if (PERFETTO_UNLIKELY(!packet_decoder.has_trusted_packet_sequence_id())) {
-context_->import_logs_tracker->RecordTokenizationLog(        stats::incremental_state_cleared_missing_sequence_id, packet.offset());
+    context_->import_logs_tracker->RecordTokenizationLog(
+        stats::incremental_state_cleared_missing_sequence_id, packet.offset());
     return;
   }
   GetIncrementalStateForPacketSequence(
@@ -621,7 +625,8 @@ void ProtoTraceReader::HandlePreviousPacketDropped(
     const protos::pbzero::TracePacket::Decoder& packet_decoder,
     const TraceBlobView& packet) {
   if (PERFETTO_UNLIKELY(!packet_decoder.has_trusted_packet_sequence_id())) {
-context_->import_logs_tracker->RecordTokenizationLog(        stats::previous_packet_dropped_missing_sequence_id, packet.offset());
+    context_->import_logs_tracker->RecordTokenizationLog(
+        stats::previous_packet_dropped_missing_sequence_id, packet.offset());
     return;
   }
   GetIncrementalStateForPacketSequence(
@@ -656,7 +661,8 @@ void ProtoTraceReader::ParseTracePacketDefaults(
     const protos::pbzero::TracePacket_Decoder& packet_decoder,
     TraceBlobView trace_packet_defaults) {
   if (PERFETTO_UNLIKELY(!packet_decoder.has_trusted_packet_sequence_id())) {
-context_->import_logs_tracker->RecordTokenizationLog(        stats::trace_packet_defaults_missing_sequence_id,
+    context_->import_logs_tracker->RecordTokenizationLog(
+        stats::trace_packet_defaults_missing_sequence_id,
         trace_packet_defaults.offset());
     return;
   }
@@ -670,7 +676,8 @@ void ProtoTraceReader::ParseInternedData(
     const protos::pbzero::TracePacket::Decoder& packet_decoder,
     TraceBlobView interned_data) {
   if (PERFETTO_UNLIKELY(!packet_decoder.has_trusted_packet_sequence_id())) {
-context_->import_logs_tracker->RecordTokenizationLog(        stats::interned_data_missing_sequence_id, interned_data.offset());
+    context_->import_logs_tracker->RecordTokenizationLog(
+        stats::interned_data_missing_sequence_id, interned_data.offset());
     return;
   }
 
@@ -681,7 +688,8 @@ context_->import_logs_tracker->RecordTokenizationLog(        stats::interned_dat
   // they could otherwise be associated with the wrong generation in the state.
   if (!state->IsIncrementalStateValid()) {
     uint32_t seq_id = packet_decoder.trusted_packet_sequence_id();
-context_->import_logs_tracker->RecordTokenizationLog(        stats::interned_data_skipped_incremental_state_invalid,
+    context_->import_logs_tracker->RecordTokenizationLog(
+        stats::interned_data_skipped_incremental_state_invalid,
         interned_data.offset(),
         [this, seq_id](ArgsTracker::BoundInserter& inserter) {
           inserter.AddArg(packet_sequence_id_key_id_,
@@ -818,7 +826,8 @@ PERFETTO_NO_INLINE base::Status ProtoTraceReader::CreateRemoteMachineReader(
       return base::ErrStatus(
           "perfetto_manifest: machines: trace has a packet from undeclared "
           "machine id %u",
-          machine_id);    }
+          machine_id);
+    }
     raw_machine_id = *mapped;
   }
   auto* machine_context =
@@ -853,7 +862,8 @@ base::Status ProtoTraceReader::CheckManifestSingleMachine() {
         "machines. Remove the `clocks` override and let the trace's own "
         "remote clock snapshots align the machines; if you need to anchor a "
         "specific embedded machine, split it into its own file and override "
-        "that.");  }
+        "that.");
+  }
   return base::OkStatus();
 }
 

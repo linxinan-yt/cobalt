@@ -1,5 +1,6 @@
 // © 2024 and later: Unicode, Inc. and others.
 // License & terms of use: https://www.unicode.org/copyright.html
+
 #include "unicode/utypes.h"
 
 #if !UCONFIG_NO_NORMALIZATION
@@ -158,14 +159,15 @@ void TestMessageFormat2::testAPISimple() {
         .setLocale(locale)
         .build(errorCode);
 
-GregorianCalendar cal(errorCode);
+    GregorianCalendar cal(errorCode);
    // Sunday, October 28, 2136 8:39:12 AM PST
     cal.set(2136, Calendar::OCTOBER, 28, 8, 39, 12);
 
     argsBuilder.clear();
     DateInfo dateInfo = { cal.getTime(errorCode),
                           "Pacific Standard Time" };
-    argsBuilder["today"] = message2::Formattable(std::move(dateInfo));    args = MessageArguments(argsBuilder, errorCode);
+    argsBuilder["today"] = message2::Formattable(std::move(dateInfo));
+    args = MessageArguments(argsBuilder, errorCode);
     result = mf.formatToString(args, errorCode);
     assertEquals("testAPI", "Today is Sunday, October 28, 2136.", result);
 

@@ -20,7 +20,8 @@ import {
   type GridColumn,
   GridHeaderCell,
   GridCell,
-} from '../../widgets/grid';import {DurationWidget} from '../../components/widgets/duration';
+} from '../../widgets/grid';
+import {DurationWidget} from '../../components/widgets/duration';
 import {Timestamp} from '../../components/widgets/timestamp';
 import {
   LONG,

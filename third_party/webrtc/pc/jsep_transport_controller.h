@@ -68,7 +68,8 @@
 
 namespace webrtc {
 
-class JsepTransportController final { public:
+class JsepTransportController final {
+ public:
   // Used when the RtpTransport/DtlsTransport of the m= section is changed
   // because the section is rejected or BUNDLE is enabled.
   class Observer {

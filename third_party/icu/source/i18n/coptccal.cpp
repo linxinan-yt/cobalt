@@ -60,7 +60,7 @@ CopticCalendar::getType() const
 int32_t
 CopticCalendar::handleGetExtendedYear(UErrorCode& status)
 {
-if (U_FAILURE(status)) {
+    if (U_FAILURE(status)) {
         return 0;
     }
     if (newerField(UCAL_EXTENDED_YEAR, UCAL_YEAR) == UCAL_EXTENDED_YEAR) {
@@ -75,7 +75,8 @@ if (U_FAILURE(status)) {
         return internalGet(UCAL_YEAR, 1); // Default to year 1
     }
     status = U_ILLEGAL_ARGUMENT_ERROR;
-    return 0;}
+    return 0;
+}
 
 IMPL_SYSTEM_DEFAULT_CENTURY(CopticCalendar, "@calendar=coptic")
 
@@ -101,7 +102,10 @@ int32_t
 CopticCalendar::getRelatedYearDifference() const {
     constexpr int32_t kCopticCalendarRelatedYearDifference = 284;
     return kCopticCalendarRelatedYearDifference;
-}U_NAMESPACE_END
+}
+
+
+U_NAMESPACE_END
 
 #endif /* #if !UCONFIG_NO_FORMATTING */
 //eof

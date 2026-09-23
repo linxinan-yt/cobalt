@@ -1198,7 +1198,8 @@ zh{
         }
 "Pacific:Kanton"{
             ec{"坎顿岛"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"基里地马地岛"}
         }
         "Pacific:Kosrae"{

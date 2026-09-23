@@ -63,8 +63,8 @@ class StarboardGLTextureBacking::
   ~GLTexturePassthroughStarboardImageRepresentation() override = default;
 
   const scoped_refptr<gles2::TexturePassthrough>& GetTexturePassthrough(
-      int plane_index) override {
-    CHECK_LT(static_cast<size_t>(plane_index), passthrough_textures_.size());
+      size_t plane_index) override {
+    CHECK_LT(plane_index, passthrough_textures_.size());
     return passthrough_textures_[plane_index];
   }
 
@@ -108,13 +108,13 @@ StarboardGLTextureBacking::StarboardGLTextureBacking(
 #endif
     )
     : ClearTrackingSharedImageBacking(mailbox,
-                                      format,
-                                      size,
-                                      color_space,
-                                      surface_origin,
-                                      alpha_type,
-                                      usage,
-                                      "StarboardGLTexture",
+                                      SharedImageInfo(format,
+                                                      size,
+                                                      color_space,
+                                                      surface_origin,
+                                                      alpha_type,
+                                                      usage,
+                                                      "StarboardGLTexture"),
                                       format.EstimatedSizeInBytes(size),
                                       /*is_thread_safe=*/false),
       decode_target_(reinterpret_cast<SbDecodeTarget>(decode_target)) {

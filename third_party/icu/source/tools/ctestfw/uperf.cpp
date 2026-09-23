@@ -189,8 +189,9 @@ void UPerfTest::init(UOption addOptions[], int32_t addOptionsCount,
     int32_t len = 0;
     if(fileName!=nullptr){
         //pre-flight
-UErrorCode bufferStatus = U_ZERO_ERROR;
-        ucbuf_resolveFileName(sourceDir, fileName, nullptr, &len, &bufferStatus);        resolvedFileName = static_cast<char*>(uprv_malloc(len));
+        UErrorCode bufferStatus = U_ZERO_ERROR;
+        ucbuf_resolveFileName(sourceDir, fileName, nullptr, &len, &bufferStatus);
+        resolvedFileName = static_cast<char*>(uprv_malloc(len));
         if(resolvedFileName==nullptr){
             status= U_MEMORY_ALLOCATION_ERROR;
             return;

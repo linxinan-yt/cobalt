@@ -98,14 +98,16 @@ pb_msg!(GpuCounterDescriptorGpuCounterGroupSpec {
     counter_ids: u32, primitive, 4,
 });
 
-pb_msg!(GpuCounterDescriptorGpuCounterBlock {    block_id: u32, primitive, 1,
+pb_msg!(GpuCounterDescriptorGpuCounterBlock {
+    block_id: u32, primitive, 1,
     block_capacity: u32, primitive, 2,
     name: String, primitive, 3,
     description: String, primitive, 4,
     counter_ids: u32, primitive, 5,
 });
 
-pb_msg!(GpuCounterDescriptorGpuCounterSpec {    counter_id: u32, primitive, 1,
+pb_msg!(GpuCounterDescriptorGpuCounterSpec {
+    counter_id: u32, primitive, 1,
     name: String, primitive, 2,
     description: String, primitive, 3,
     int_peak_value: i64, primitive, 5,
@@ -114,4 +116,5 @@ pb_msg!(GpuCounterDescriptorGpuCounterSpec {    counter_id: u32, primitive, 1,
     denominator_units: GpuCounterDescriptorMeasureUnit, enum, 8,
     select_by_default: bool, primitive, 9,
     groups: GpuCounterDescriptorGpuCounterGroup, enum, 10,
-value_direction: GpuCounterSpecValueDirection, enum, 11,});
+    value_direction: GpuCounterSpecValueDirection, enum, 11,
+});

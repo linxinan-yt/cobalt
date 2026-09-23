@@ -370,7 +370,7 @@ public final class PerfettoTrackEventBuilder {
     return this;
   }
 
-/**
+  /**
    * Emits this event on {@code track}, a (possibly nested) named track. The
    * descriptor for each level of the chain is emitted once per sequence; the
    * native side derives the per-level uuids. The handle owns its native track
@@ -410,7 +410,8 @@ public final class PerfettoTrackEventBuilder {
    * TrackDescriptor).
    */
   private PerfettoTrackEventBuilder usingNamedTrack(
-          long id, String name, long parentUuid, boolean isNameStatic) {    if (!mIsCategoryEnabled) {
+          long id, String name, long parentUuid, boolean isNameStatic) {
+    if (!mIsCategoryEnabled) {
       return this;
     }
     if (mIsDebug) {
@@ -418,8 +419,9 @@ public final class PerfettoTrackEventBuilder {
     }
 
     NamedTrack track = mObjectsCache.mNamedTrackCache.get(name.hashCode());
-if (track == null || !track.getName().equals(name) || track.isNameStatic() != isNameStatic) {
-      track = new NamedTrack(id, name, parentUuid, isNameStatic, mNativeMemoryCleaner);      mObjectsCache.mNamedTrackCache.put(name.hashCode(), track);
+    if (track == null || !track.getName().equals(name) || track.isNameStatic() != isNameStatic) {
+      track = new NamedTrack(id, name, parentUuid, isNameStatic, mNativeMemoryCleaner);
+      mObjectsCache.mNamedTrackCache.put(name.hashCode(), track);
     }
     addPerfettoPointerToExtra(track);
     return this;
@@ -429,7 +431,7 @@ if (track == null || !track.getName().equals(name) || track.isNameStatic() != is
    * Adds the events to a process scoped named track instead of the thread track where the event
    * occurred.
    */
-public PerfettoTrackEventBuilder usingProcessNamedTrack(
+  public PerfettoTrackEventBuilder usingProcessNamedTrack(
           long id, @CompileTimeConstant String name) {
       if (!mIsCategoryEnabled) {
           return this;
@@ -446,13 +448,14 @@ public PerfettoTrackEventBuilder usingProcessNamedTrack(
     if (!mIsCategoryEnabled) {
       return this;
     }
-    return usingNamedTrackWithDynamicName(id, name, PerfettoTrace.getProcessTrackUuid());  }
+    return usingNamedTrackWithDynamicName(id, name, PerfettoTrace.getProcessTrackUuid());
+  }
 
   /**
    * Adds the events to a thread scoped named track instead of the thread track where the event
    * occurred.
    */
-public PerfettoTrackEventBuilder usingThreadNamedTrack(
+  public PerfettoTrackEventBuilder usingThreadNamedTrack(
           long id, @CompileTimeConstant String name, long tid) {
       if (!mIsCategoryEnabled) {
           return this;
@@ -469,7 +472,8 @@ public PerfettoTrackEventBuilder usingThreadNamedTrack(
     if (!mIsCategoryEnabled) {
       return this;
     }
-    return usingNamedTrackWithDynamicName(id, name, PerfettoTrace.getThreadTrackUuid(tid));  }
+    return usingNamedTrackWithDynamicName(id, name, PerfettoTrace.getThreadTrackUuid(tid));
+  }
 
   /** Adds the events to a counter track instead. This is required for setting counter values. */
   public PerfettoTrackEventBuilder usingCounterTrack(

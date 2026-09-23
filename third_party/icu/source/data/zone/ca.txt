@@ -41,7 +41,8 @@ ca{
         }
         "America:Belem"{
             ec{"Belém"}
-        }        "America:Blanc-Sablon"{
+        }
+        "America:Blanc-Sablon"{
             ec{"Blanc Sablon"}
         }
         "America:Bogota"{
@@ -67,7 +68,8 @@ ca{
         }
         "America:Maceio"{
             ec{"Maceió"}
-        }        "America:Martinique"{
+        }
+        "America:Martinique"{
             ec{"Martinica"}
         }
         "America:Mexico_City"{
@@ -93,7 +95,8 @@ ca{
         }
         "America:Sao_Paulo"{
             ec{"São Paulo"}
-        }        "America:Scoresbysund"{
+        }
+        "America:Scoresbysund"{
             ec{"Scoresbysund"}
         }
         "America:St_Barthelemy"{

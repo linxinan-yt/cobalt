@@ -418,19 +418,18 @@ public:
                                   const Formattable& actual);
 #endif
 #endif
-    UBool assertNotEquals(const char* message, int32_t expectedNot, int32_t actual);    UBool assertTrue(std::u16string_view message, UBool condition, UBool quiet=false, UBool possibleDataError=false);
+    UBool assertTrue(std::u16string_view message, UBool condition, UBool quiet=false, UBool possibleDataError=false);
     UBool assertFalse(std::u16string_view message, UBool condition, UBool quiet=false, UBool possibleDataError=false);
     UBool assertSuccess(std::u16string_view message, UErrorCode ec);
     UBool assertEquals(std::u16string_view message, std::u16string_view expected,
                        std::u16string_view actual, UBool possibleDataError=false);
     UBool assertEquals(std::u16string_view message, const char* expected, const char* actual);
-UBool assertEquals(std::u16string_view message, UBool expected, UBool actual);
-    UBool assertEquals(std::u16string_view message, int32_t expected, int32_t actual);
-    UBool assertEquals(std::u16string_view message, int64_t expected, int64_t actual);    UBool assertEquals(std::u16string_view message, double expected, double actual);
+    UBool assertEquals(std::u16string_view message, double expected, double actual);
 
     // for disambiguation
     UBool assertEquals(std::u16string_view message, const char* expected,
                        std::u16string_view actual, UBool possibleDataError=false);
+
 
     /**
      * Asserts that two doubles are equal to within a positive delta. Returns
@@ -452,7 +451,7 @@ UBool assertEquals(std::u16string_view message, UBool expected, UBool actual);
 #endif
     UBool assertEquals(std::u16string_view message,
         const std::vector<std::string>& expected, const std::vector<std::string>& actual);
-UBool assertNotEquals(std::u16string_view message, int32_t expectedNot, int32_t actual);
+
     virtual void runIndexedTest( int32_t index, UBool exec, const char* &name, char* par = nullptr ); // override !
 
     virtual UBool runTestLoop( char* testname, char* par, char *baseName );

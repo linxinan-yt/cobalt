@@ -333,7 +333,8 @@ DateTimePatterns%relative{
                 "{1} {0}",
                 "{1} {0}",
                 "{1} {0}",
-            }            DateTimeSkeletons{
+            }
+            DateTimeSkeletons{
                 "Hmmsszzzz",
                 "Hmmssz",
                 "Hmmss",

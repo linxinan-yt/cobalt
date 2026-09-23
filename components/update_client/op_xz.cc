@@ -42,7 +42,8 @@ void Done(const OperationResult& in_file_result,
 void Done(base::OnceCallback<
               void(base::expected<base::FilePath, CategorizedError>)> callback,
 #endif
-          base::RepeatingCallback<void(base::DictValue)> event_adder,          const base::FilePath& out_file,
+          base::RepeatingCallback<void(base::DictValue)> event_adder,
+          const base::FilePath& out_file,
           bool success) {
   const auto result =
       success ? base::expected<base::FilePath, CategorizedError>(out_file)
@@ -50,6 +51,29 @@ void Done(base::OnceCallback<
                     {.category = ErrorCategory::kUnpack,
                      .code = static_cast<int>(UnpackerError::kXzFailed)});
 
+#if BUILDFLAG(IS_STARBOARD)
+  base::OnceClosure done = base::BindOnce(
+      [](const base::expected<base::FilePath, CategorizedError>& result,
+         OperationResult in_file_result,
+         base::OnceCallback<void(
+             base::expected<OperationResult, CategorizedError>)> callback,
+         base::RepeatingCallback<void(base::DictValue)> event_adder) {
+        event_adder.Run(
+            MakeSimpleOperationEvent(result, protocol_request::kEventXz));
+        if (!result.has_value()) {
+          base::SequencedTaskRunner::GetCurrentDefault()->PostTask(
+              FROM_HERE, base::BindOnce(std::move(callback),
+                                        base::unexpected(result.error())));
+          return;
+        }
+#if !defined(IN_MEMORY_UPDATES)
+        in_file_result.response = result.value();
+#endif
+        base::SequencedTaskRunner::GetCurrentDefault()->PostTask(
+            FROM_HERE, base::BindOnce(std::move(callback), in_file_result));
+      },
+      result, in_file_result, std::move(callback), event_adder);
+#else
   base::OnceClosure done = base::BindOnce(
       [](const base::expected<base::FilePath, CategorizedError>& result,
          base::OnceCallback<void(
@@ -61,6 +85,7 @@ void Done(base::OnceCallback<
             FROM_HERE, base::BindOnce(std::move(callback), result));
       },
       result, std::move(callback), event_adder);
+#endif  // BUILDFLAG(IS_STARBOARD)
 
   if (result.has_value()) {
     base::SequencedTaskRunner::GetCurrentDefault()->PostTask(FROM_HERE,
@@ -70,6 +95,11 @@ void Done(base::OnceCallback<
   base::ThreadPool::PostTaskAndReply(
       FROM_HERE, kTaskTraits,
       base::BindOnce(
+          [](const base::FilePath& out_file) {
+            DeleteFileAndEmptyParentDirectory(out_file);
+          },
+          out_file),
+      std::move(done));
 }
 
 }  // namespace
@@ -78,7 +108,7 @@ base::OnceClosure XzOperation(
     std::unique_ptr<Unzipper> unzipper,
     base::RepeatingCallback<void(base::DictValue)> event_adder,
     base::RepeatingCallback<void(ComponentState)> state_tracker,
-bool /*is_foreground*/,
+    bool /*is_foreground*/,
 #if BUILDFLAG(IS_STARBOARD)
     const OperationResult& in_file_result,
     base::OnceCallback<void(base::expected<OperationResult, CategorizedError>)>
@@ -92,7 +122,8 @@ bool /*is_foreground*/,
   const base::FilePath& in_file = in_file_result.response;
   base::FilePath dest_file = in_file.DirName().AppendUTF8("decoded_xz");
 #endif  // defined(IN_MEMORY_UPDATES)
-#else    const base::FilePath& in_file,
+#else
+    const base::FilePath& in_file,
     base::OnceCallback<void(base::expected<base::FilePath, CategorizedError>)>
         callback) {
   // `is_foreground` is unused right now since XZ is primarily used in

@@ -253,7 +253,8 @@ hy{
                 MEd{"dd.MM, E"}
 MMMEd{"d MMM, E"}
                 MMMMd{"d MMMM"}
-                MMMd{"d MMM"}                Md{"dd.MM"}
+                MMMd{"d MMM"}
+                Md{"dd.MM"}
                 y{"y, G"}
                 yyyy{"y, G"}
                 yyyyM{"G y թ. MM"}

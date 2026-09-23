@@ -359,7 +359,8 @@ blo{
         zh{"gɩcaɩnaja, manɖarɛŋ"}
     }
     Languages%short{
-az{"Aserii kagɩja"}        en_US{"gɛɛshɩ (GKA)"}
+az{"Aserii kagɩja"}
+        en_US{"gɛɛshɩ (GKA)"}
     }
     Languages%variant{
         ckb{"Kurɖish, Sorani kagɩja"}

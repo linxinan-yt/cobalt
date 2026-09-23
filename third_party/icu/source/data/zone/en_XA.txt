@@ -5,7 +5,8 @@ en_XA{
     zoneStrings{
 "America:Mexico_City"{
             ec{"[Ṁéẋîçö Çîţý one two]"}
-        }        "America:St_Barthelemy"{
+        }
+        "America:St_Barthelemy"{
             ec{"[Šţ· Ɓåŕţĥéļéɱý one two]"}
         }
         "America:St_Johns"{
@@ -33,7 +34,8 @@ en_XA{
         }
 "Asia:Saigon"{
             ec{"[Ĥö Çĥî Ṁîñĥ Çîţý one two three]"}
-        }        "Atlantic:St_Helena"{
+        }
+        "Atlantic:St_Helena"{
             ec{"[Šţ· Ĥéļéñå one two]"}
         }
         "Australia:Lord_Howe"{
@@ -52,7 +54,8 @@ ec{"[Ûñķñöŵñ Ļöçåţîöñ one two three]"}        }
         }
 "Indian:Chagos"{
             ec{"[Çĥåĝöš Åŕçĥîþéļåĝö one two three]"}
-        }        "Indian:Christmas"{
+        }
+        "Indian:Christmas"{
             ec{"[Çĥŕîšţɱåš Îšļåñð one two three]"}
         }
         "Indian:Cocos"{
@@ -89,7 +92,8 @@ ec{"[Ûñķñöŵñ Ļöçåţîöñ one two three]"}        }
         }
 "Pacific:Pitcairn"{
             ec{"[Þîţçåîŕñ Îšļåñðš one two three]"}
-        }        "Pacific:Wake"{
+        }
+        "Pacific:Wake"{
             ec{"[Ŵåķé Îšļåñð one two]"}
         }
         "meta:Acre"{

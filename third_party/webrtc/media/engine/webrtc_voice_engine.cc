@@ -556,8 +556,9 @@ void WebRtcVoiceEngine::Init() {
   adm_helpers::Init(adm());
 
   // Set default engine options.
-AudioOptions options = CreateDefaultAudioOptions();
+  AudioOptions options = CreateDefaultAudioOptions();
   ApplyOptions(options);
+
   // Connect the ADM to our audio path. It's important to do this after applying
   // the configuration so that the audio callback receives calls with the
   // correct init options already applied.

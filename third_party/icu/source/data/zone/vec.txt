@@ -615,7 +615,8 @@ vec{
         }
 "Pacific:Kanton"{
             ec{"Atolo Canton"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"Atolo Kiritimati"}
         }
         "Pacific:Kosrae"{

@@ -422,14 +422,15 @@ class CONTENT_EXPORT MediaStreamManager
       const base::UnguessableToken& session_id,
       const std::optional<gfx::Rect>& region_capture_rect);
 
-void OpenNativeScreenCapturePicker(
+  void OpenNativeScreenCapturePicker(
       DesktopMediaID::Type type,
       base::OnceCallback<void(DesktopMediaID::Id)> created_callback,
       base::OnceCallback<void(webrtc::DesktopCapturer::Source)> picker_callback,
       base::OnceCallback<void()> cancel_callback,
       base::OnceCallback<void()> error_callback);
 
-#if BUILDFLAG(ENABLE_SCREEN_CAPTURE)  // Determines whether the captured surface (tab/window) should be focused.
+#if BUILDFLAG(ENABLE_SCREEN_CAPTURE)
+  // Determines whether the captured surface (tab/window) should be focused.
   // This can be called at most once, and only within the first 1s of the
   // capture session being initiated. If a call with |focus=false| is not
   // executed within this time period, the captured surface *is* focused.
@@ -443,6 +444,7 @@ void OpenNativeScreenCapturePicker(
                                       bool focus,
                                       bool is_from_microtask,
                                       bool is_from_timer);
+#endif  // BUILDFLAG(ENABLE_SCREEN_CAPTURE)
 
 #if !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_IOS)
   // Captured Surface Control APIs.

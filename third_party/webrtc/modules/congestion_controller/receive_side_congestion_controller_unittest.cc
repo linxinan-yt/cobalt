@@ -149,9 +149,10 @@ TEST(ReceiveSideCongestionControllerTest, SendsRfc8888FeedbackIfEnabled) {
       rtcp_sender;
   MockFunction<void(uint64_t, std::vector<uint32_t>)> remb_sender;
   SimulatedClock clock(123456);
-ReceiveSideCongestionController controller(
+  ReceiveSideCongestionController controller(
       CreateTestEnvironment({.time = &clock}), rtcp_sender.AsStdFunction(),
-      remb_sender.AsStdFunction());  controller.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
+      remb_sender.AsStdFunction());
+  controller.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
 
   // Expect that RTCP feedback is sent.
   EXPECT_CALL(rtcp_sender, Call)
@@ -176,9 +177,10 @@ TEST(ReceiveSideCongestionControllerTest,
       rtcp_sender;
   MockFunction<void(uint64_t, std::vector<uint32_t>)> remb_sender;
   SimulatedClock clock(123456);
-ReceiveSideCongestionController controller(
+  ReceiveSideCongestionController controller(
       CreateTestEnvironment({.time = &clock}), rtcp_sender.AsStdFunction(),
-      remb_sender.AsStdFunction());  controller.SetPreferredRtcpCcAckType(RtcpFeedbackType::TRANSPORT_CC);
+      remb_sender.AsStdFunction());
+  controller.SetPreferredRtcpCcAckType(RtcpFeedbackType::TRANSPORT_CC);
 
   // Expect that RTCP feedback is sent.
   EXPECT_CALL(rtcp_sender, Call)
@@ -190,7 +192,8 @@ ReceiveSideCongestionController controller(
   EXPECT_CALL(remb_sender, Call).Times(0);
 
   RtpHeaderExtensionMap extensions;
-extensions.Register<TransportSequenceNumber>(RtpHeaderExtensionId(1));  RtpPacketReceived packet(&extensions);
+  extensions.Register<TransportSequenceNumber>(RtpHeaderExtensionId(1));
+  RtpPacketReceived packet(&extensions);
   packet.set_arrival_time(clock.CurrentTime());
   packet.SetExtension<TransportSequenceNumber>(123);
   controller.OnReceivedPacket(packet, MediaType::VIDEO);

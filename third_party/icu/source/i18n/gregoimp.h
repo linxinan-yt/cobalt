@@ -214,8 +214,9 @@ class Grego {
                             int8_t& dom, int8_t& dow, int16_t& doy, UErrorCode& status);
 
     /**
-* Convert a 1970-epoch day number to proleptic Gregorian year.
-     * @param day 1970-epoch day     * @param status error code.
+     * Convert a 1970-epoch day number to proleptic Gregorian year.
+     * @param day 1970-epoch day
+     * @param status error code.
      * @return year.
      */
     static int32_t dayToYear(int32_t day, UErrorCode& status);

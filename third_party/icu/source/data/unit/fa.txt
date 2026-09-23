@@ -212,7 +212,8 @@ fa{
             night{
 dnam{"شب"}
                 one{"{0} شب"}
-                other{"{0} شب"}                per{"{0} در شب"}
+                other{"{0} شب"}
+                per{"{0} در شب"}
             }
             quarter{
                 one{"{0} سه‌ماهه"}
@@ -846,7 +847,8 @@ coulomb{
             }
             henry{
                 dnam{"هنری"}
-            }            milliampere{
+            }
+            milliampere{
                 dnam{"mA"}
                 one{"{0}mA"}
                 other{"{0}mA"}
@@ -873,7 +875,8 @@ coulomb{
             }
 calorie-it{
                 dnam{"کالری-IT"}
-            }            electronvolt{
+            }
+            electronvolt{
                 dnam{"eV"}
                 one{"{0}eV"}
                 other{"{0}eV"}
@@ -885,7 +888,8 @@ calorie-it{
             }
 gray{
                 dnam{"گری"}
-            }            joule{
+            }
+            joule{
                 one{"{0}J"}
                 other{"{0}J"}
             }

@@ -35,14 +35,16 @@ class PprofTraceReader : public ChunkedTraceReader {
   ~PprofTraceReader() override;
 
   base::Status Parse(TraceBlobView blob) override;
-base::Status OnPushDataToSorter() override;
+  base::Status OnPushDataToSorter() override;
   void OnEventsFullyExtracted() override {}
+
  private:
   base::Status ParseProfile();
 
   TraceProcessorContext* const context_;
   std::vector<uint8_t> buffer_;
-bool parsed_any_data_ = false;
+  bool parsed_any_data_ = false;
+
   // Constant strings interned at construction time
   const StringId unknown_string_id_;
   const StringId unknown_no_brackets_string_id_;

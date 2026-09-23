@@ -15,14 +15,16 @@
 import m from 'mithril';
 import type {TrackEventDetailsPanel} from '../../public/details_panel';
 import type {Trace} from '../../public/trace';
-import type {SourceDataset} from '../../trace_processor/dataset';import {sqlValueToReadableString} from '../../trace_processor/sql_utils';
+import type {SourceDataset} from '../../trace_processor/dataset';
+import {sqlValueToReadableString} from '../../trace_processor/sql_utils';
 import {DetailsShell} from '../../widgets/details_shell';
 import {GridLayout} from '../../widgets/grid_layout';
 import {Section} from '../../widgets/section';
 import {Tree, TreeNode} from '../../widgets/tree';
 import {DurationWidget} from '../widgets/duration';
 import {Timestamp} from '../widgets/timestamp';
-import type {RowSchema} from './slice_track';import {exists} from '../../base/utils';
+import type {RowSchema} from './slice_track';
+import {exists} from '../../base/utils';
 import {Time} from '../../base/time';
 
 /**
@@ -34,9 +36,10 @@ import {Time} from '../../base/time';
  * - Common slice fields (name, ts, dur) with appropriate formatting
  * - All other dataset columns as readable strings
  */
-export class SliceTrackDetailsPanel<T extends RowSchema>
-  implements TrackEventDetailsPanel
-{  constructor(
+export class SliceTrackDetailsPanel<
+  T extends RowSchema,
+> implements TrackEventDetailsPanel {
+  constructor(
     private readonly trace: Trace,
     private readonly dataset: SourceDataset<T>,
     private readonly data: T,

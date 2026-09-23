@@ -53,7 +53,8 @@ et{
         }
         "America:Eirunepe"{
             ec{"Eirunepé"}
-        }        "America:Havana"{
+        }
+        "America:Havana"{
             ec{"Havanna"}
         }
         "America:Mexico_City"{
@@ -73,7 +74,8 @@ et{
         }
         "America:Sao_Paulo"{
             ec{"São Paulo"}
-        }        "America:St_Barthelemy"{
+        }
+        "America:St_Barthelemy"{
             ec{"Saint-Barthélemy"}
         }
         "America:St_Johns"{

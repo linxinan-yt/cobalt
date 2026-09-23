@@ -125,10 +125,11 @@ source_set("blob") {
 }
 
 source_set("clock") {
-sources = [
+  sources = [
     "clock_synchronizer.cc",
     "clock_synchronizer.h",
-  ]  deps = [
+  ]
+  deps = [
     "../../../gn:default_deps",
     "../../../include/perfetto/ext/base:base",
     "../../../protos/perfetto/common:zero",
@@ -382,17 +383,6 @@ source_set("json_value") {
   ]
 }
 
-source_set("json_writer") {
-  sources = [
-    "json_writer.cc",
-    "json_writer.h",
-  ]
-  deps = [
-    "../../../gn:default_deps",
-    "../../../include/perfetto/ext/base",
-  ]
-}
-
 source_set("proto_profiler") {
   sources = [
     "proto_profiler.cc",
@@ -499,8 +489,9 @@ source_set("unittests") {
     "galloping_search_unittest.cc",
     "glob_unittest.cc",
     "json_parser_unittest.cc",
-"json_serializer_unittest.cc",
-    "json_value_unittest.cc",    "proto_profiler_unittest.cc",
+    "json_serializer_unittest.cc",
+    "json_value_unittest.cc",
+    "proto_profiler_unittest.cc",
     "proto_to_args_parser_unittest.cc",
     "protozero_to_json_unittests.cc",
     "protozero_to_text_unittests.cc",
@@ -523,8 +514,9 @@ source_set("unittests") {
     ":galloping_search",
     ":glob",
     ":json_parser",
-":json_serializer",
-    ":json_value",    ":proto_profiler",
+    ":json_serializer",
+    ":json_value",
+    ":proto_profiler",
     ":proto_to_args_parser",
     ":protozero_to_json",
     ":protozero_to_text",

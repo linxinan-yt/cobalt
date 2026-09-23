@@ -17,46 +17,20 @@
 .pf-settings-page {
   &__plugin-section {
     margin-bottom: 32px;
-&:last-child {
+
+    &:last-child {
       margin-bottom: 0;
     }
   }
 
   &__plugin-title {
-    font-size: 18px;
+    font-size: var(--pf-font-size-xl);
     font-weight: 600;
     margin: 0 0 16px 0;
     padding: 8px 12px;
     background: var(--pf-minimal-background);
     border-radius: 4px;
   }
-
-  &__card {
-    display: flex;
-    flex-direction: row;
-    gap: 6px;
-    justify-content: space-between;
-    &:last-child {
-      margin-bottom: 0;
-    }
-
-    &--focused {
-      background-color: color-mix(
-        in srgb,
-        var(--pf-color-highlight) 70%,
-        transparent
-      );
-      animation: highlight-flash 1s ease-out;
-    }
-  }
-
-&__plugin-title {
-    font-size: var(--pf-font-size-xl);
-    font-weight: 600;
-    margin: 0 0 16px 0;
-    padding: 8px 12px;
-    background: var(--pf-minimal-background);
-    border-radius: 4px;  }
 
   &__complex-error {
     display: flex;
@@ -71,25 +45,5 @@
     flex-direction: row;
     column-gap: 16px;
     align-items: center;
-  }
-}
-
-.pf-card:hover .pf-settings-page__link-button {
-  visibility: visible;
-}
-
-@keyframes highlight-flash {
-  0% {
-    background-color: transparent;
-  }
-  30% {
-    background-color: var(--pf-color-highlight);
-  }
-  100% {
-    background-color: color-mix(
-      in srgb,
-      var(--pf-color-highlight) 70%,
-      transparent
-    );
   }
 }

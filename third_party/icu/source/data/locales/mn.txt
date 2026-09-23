@@ -350,7 +350,8 @@ mlym{
                 accountingFormat%alphaNextToNumber{"¤ #,##0.00"}
                 accountingFormat%noCurrency{"#,##0.00"}
                 currencyFormat%alphaNextToNumber{"¤ #,##0.00"}
-            }            symbols{
+            }
+            symbols{
                 decimal{","}
                 group{" "}
             }
@@ -563,7 +564,8 @@ mtei{
                 Ehm{"E. h:mm a"}
                 Ehms{"E. h:mm:ss a"}
 GyM{"G y.MM"}
-                GyMEd{"E, y.MM.dd G"}                GyMMM{"G y 'оны' MM-'р' 'сар'"}
+                GyMEd{"E, y.MM.dd G"}
+                GyMMM{"G y 'оны' MM-'р' 'сар'"}
                 GyMMMEd{"G y 'оны' MM-'р' 'сарын' d, E"}
                 GyMMMd{"G y 'оны' MM-'р' 'сарын' d"}
                 GyMd{"GGGGG y.MM.dd"}

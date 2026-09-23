@@ -1180,7 +1180,8 @@ dnam{"คืน"}
                 other{"{0}นอต"}
             }
             light-speed{
-dnam{"แสง"}                other{"{0}แสง"}
+dnam{"แสง"}
+                other{"{0}แสง"}
             }
             meter-per-second{
                 dnam{"ม./วิ"}

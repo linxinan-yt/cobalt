@@ -12,9 +12,10 @@
 
 root
 {
-Version { 48.0 }
+    Version { 48.0 }
     ExpectCLDRVersionAtLeast { 48.0 } // 'base' cldr version. Allow up to version =.=.* of this
     CurrentCLDRVersion { 48.0 } // Current CLDR version as of the test update. Warn if not an exact match.
+
     ShortLanguage { xxx }
 
     string_only_in_Root { ROOT }

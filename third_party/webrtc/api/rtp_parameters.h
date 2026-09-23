@@ -901,7 +901,8 @@ struct RTC_EXPORT RtpParameters {
   // If at least two active encodings have different codec values
   // (including one being unset and another set), this is considered mixed.
   bool IsMixedCodec() const;
-template <typename Sink>
+
+  template <typename Sink>
   friend void AbslStringify(Sink& sink, const RtpParameters& p) {
     sink.Append("{");
     absl::Format(&sink, "transaction_id: '%s', ", p.transaction_id);
@@ -916,7 +917,8 @@ template <typename Sink>
                    DegradationPreferenceToString(*p.degradation_preference));
     }
     sink.Append("}");
-  }};
+  }
+};
 
 }  // namespace webrtc
 

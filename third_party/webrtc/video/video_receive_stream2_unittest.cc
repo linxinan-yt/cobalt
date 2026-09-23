@@ -226,7 +226,8 @@ class VideoReceiveStream2Test : public ::testing::TestWithParam<bool> {
         .WillByDefault(Invoke(&fake_decoder_, &test::FakeDecoder::Release));
     ON_CALL(mock_transport_, SendRtcp)
         .WillByDefault(
-[this](std::span<const uint8_t> packet, ::testing::Unused) {              return rtcp_packet_parser_.Parse(packet);
+            [this](std::span<const uint8_t> packet, ::testing::Unused) {
+              return rtcp_packet_parser_.Parse(packet);
             });
   }
 

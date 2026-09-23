@@ -21,7 +21,8 @@ import {LinearProgress} from '../widgets/linear_progress';
 import {maybeRenderFullscreenModalDialog} from '../widgets/modal';
 import {initCssConstants} from './css_constants';
 import {Sidebar} from './views/sidebar';
-import {SidePanelContainer} from './side_panel';import {renderStatusBar} from './statusbar';
+import {SidePanelContainer} from './side_panel';
+import {renderStatusBar} from './statusbar';
 import {taskTracker} from './task_tracker';
 import {Topbar} from './topbar';
 
@@ -33,6 +34,7 @@ const showStatusBarFlag = featureFlags.register({
 // Read the page title set by index.html. This can be overridden at build time
 // via --title (e.g. to distinguish multiple dev server instances).
 const APP_TITLE = document.title || 'Perfetto UI';
+
 // This components gets destroyed and recreated every time the current trace
 // changes. Note that in the beginning the current trace is undefined.
 export class UiMain implements m.ClassComponent {
@@ -49,7 +51,7 @@ export class UiMain implements m.ClassComponent {
     }
   }
 
-view(): m.Children {
+  view(): m.Children {
     // Update the trace reference on each render so that it's kept up to date.
     const app = AppImpl.instance;
     const trace = app.trace;
@@ -81,5 +83,6 @@ view(): m.Children {
   }
 
   oncreate({dom}: m.VnodeDOM) {
-    initCssConstants(dom);  }
+    initCssConstants(dom);
+  }
 }

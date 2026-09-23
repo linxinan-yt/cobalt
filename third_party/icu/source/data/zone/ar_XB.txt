@@ -5,7 +5,8 @@ ar_XB{
     zoneStrings{
 "America:Mexico_City"{
             ec{"؜‮Mexico‬؜ ؜‮City‬؜"}
-        }        "America:St_Barthelemy"{
+        }
+        "America:St_Barthelemy"{
             ec{"؜‮St‬؜. ؜‮Barthélemy‬؜"}
         }
         "America:St_Johns"{
@@ -69,7 +70,8 @@ ar_XB{
         }
         "Atlantic:Faeroe"{
             ec{"؜‮Faroes‬؜"}
-        }        "Atlantic:St_Helena"{
+        }
+        "Atlantic:St_Helena"{
             ec{"؜‮St‬؜. ؜‮Helena‬؜"}
         }
         "Australia:Lord_Howe"{
@@ -88,7 +90,8 @@ ec{"؜‮Unknown‬؜ ؜‮Location‬؜"}        }
         }
 "Indian:Chagos"{
             ec{"؜‮Chagos‬؜ ؜‮Archipelago‬؜"}
-        }        "Indian:Christmas"{
+        }
+        "Indian:Christmas"{
             ec{"؜‮Christmas‬؜ ؜‮Island‬؜"}
         }
         "Indian:Cocos"{
@@ -737,7 +740,8 @@ ld{"؜‮Qyzylorda‬؜ ؜‮Summer‬؜ ؜‮Time‬؜"}
             ld{"؜‮Türkiye‬؜ ؜‮Summer‬؜ ؜‮Time‬؜"}
             lg{"؜‮Türkiye‬؜ ؜‮Time‬؜"}
             ls{"؜‮Türkiye‬؜ ؜‮Standard‬؜ ؜‮Time‬؜"}
-        }        "meta:Turkmenistan"{
+        }
+        "meta:Turkmenistan"{
             ld{"؜‮Turkmenistan‬؜ ؜‮Summer‬؜ ؜‮Time‬؜"}
             lg{"؜‮Turkmenistan‬؜ ؜‮Time‬؜"}
             ls{"؜‮Turkmenistan‬؜ ؜‮Standard‬؜ ؜‮Time‬؜"}

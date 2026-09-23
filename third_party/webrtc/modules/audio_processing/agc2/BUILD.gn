@@ -28,7 +28,7 @@ rtc_library("speech_level_estimator") {
   deps = [
     ":common",
     "..:apm_logging",
-"../../../api:array_view",    "../../../api:field_trials_view",
+    "../../../api:field_trials_view",
     "../../../api/audio:audio_processing",
     "../../../rtc_base:checks",
     "../../../rtc_base:logging",
@@ -299,7 +299,8 @@ rtc_library("speech_level_estimator_experimental_unittest") {
 
 rtc_library("speech_level_estimator_unittest_test") {
   testonly = true
-  sources = [ "speech_level_estimator_unittest.cc" ]  deps = [
+  sources = [ "speech_level_estimator_unittest.cc" ]
+  deps = [
     ":common",
     ":speech_level_estimator",
     "..:apm_logging",

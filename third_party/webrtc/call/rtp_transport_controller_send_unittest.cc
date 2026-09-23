@@ -27,6 +27,7 @@
 #include "test/gmock.h"
 #include "test/gtest.h"
 #include "test/run_loop.h"
+
 namespace webrtc {
 namespace {
 
@@ -101,10 +102,11 @@ rtcp::CongestionControlFeedback GenerateFeedback(
 
 TEST(RtpTransportControllerSendTest,
      IgnoresFeedbackForReportedReceivedPacketThatWereNotSent) {
-test::RunLoop main_thread;
+  test::RunLoop main_thread;
   RtpTransportControllerSend transport(
       {.env = CreateTestEnvironment(),
-       .worker_thread = main_thread.task_queue()});  transport.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
+       .worker_thread = main_thread.task_queue()});
+  transport.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
   PacketSender sender(transport);
   sender.SimulateSentPackets({.ssrc = 123,
                               .first_sequence_number = 111,
@@ -131,10 +133,11 @@ TEST(RtpTransportControllerSendTest,
      AccumulatesNumberOfReportedReceivedPacketsPerSsrcPerEcnMarkingType) {
   constexpr uint32_t kSsrc1 = 1'000;
   constexpr uint32_t kSsrc2 = 2'000;
-test::RunLoop main_thread;
+  test::RunLoop main_thread;
   RtpTransportControllerSend transport(
       {.env = CreateTestEnvironment(),
-       .worker_thread = main_thread.task_queue()});  transport.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
+       .worker_thread = main_thread.task_queue()});
+  transport.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
 
   PacketSender sender(transport);
   sender.SimulateSentPackets(
@@ -177,10 +180,11 @@ test::RunLoop main_thread;
 }
 
 TEST(RtpTransportControllerSendTest, CalculatesNumberOfBleachedPackets) {
-test::RunLoop main_thread;
+  test::RunLoop main_thread;
   RtpTransportControllerSend transport(
       {.env = CreateTestEnvironment(),
-       .worker_thread = main_thread.task_queue()});  transport.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
+       .worker_thread = main_thread.task_queue()});
+  transport.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
   PacketSender sender(transport);
 
   // Packets send as ect1 and received without ect1 are the bleached packets.
@@ -213,10 +217,11 @@ test::RunLoop main_thread;
 
 TEST(RtpTransportControllerSendTest,
      AccumulatesNumberOfReportedLostAndRecoveredPackets) {
-test::RunLoop main_thread;
+  test::RunLoop main_thread;
   RtpTransportControllerSend transport(
       {.env = CreateTestEnvironment(),
-       .worker_thread = main_thread.task_queue()});  transport.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
+       .worker_thread = main_thread.task_queue()});
+  transport.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
 
   PacketSender sender(transport);
   sender.SimulateSentPackets({.first_sequence_number = 1, .num_packets = 30});
@@ -261,10 +266,11 @@ test::RunLoop main_thread;
 
 TEST(RtpTransportControllerSendTest,
      DoesNotCountGapsInSequenceNumberBetweenReportsAsLoss) {
-test::RunLoop main_thread;
+  test::RunLoop main_thread;
   RtpTransportControllerSend transport(
       {.env = CreateTestEnvironment(),
-       .worker_thread = main_thread.task_queue()});  transport.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
+       .worker_thread = main_thread.task_queue()});
+  transport.SetPreferredRtcpCcAckType(RtcpFeedbackType::CCFB);
 
   PacketSender sender(transport);
   sender.SimulateSentPackets({.first_sequence_number = 1, .num_packets = 30});

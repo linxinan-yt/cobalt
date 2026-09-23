@@ -244,7 +244,8 @@ class KeepAliveURLLoaderService::KeepAliveURLLoaderFactoriesBase {
         service_->storage_partition_,
         base::BindRepeating(&KeepAliveURLLoaderFactoriesBase::CreateThrottles,
                             base::Unretained(this)),
-base::PassKey<KeepAliveURLLoaderService>());    // Adds a new loader receiver to the set held by `this`, binding the pending
+base::PassKey<KeepAliveURLLoaderService>());
+    // Adds a new loader receiver to the set held by `this`, binding the pending
     // `receiver` from a renderer to `raw_loader` with `loader` as its context.
     // The set will keep `loader` alive.
     auto* raw_loader = loader.get();

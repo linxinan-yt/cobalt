@@ -710,7 +710,8 @@ dn{"guyyaa"}
                 "-1"{"kaleessa"}
                 "0"{"har’a"}
                 "1"{"boru"}
-            }            relativeTime{
+            }
+            relativeTime{
                 future{
                     one{"g {0} keessatti"}
                     other{"g {0} keessatti"}
@@ -744,7 +745,8 @@ day-short{
         }
         dayOfYear-narrow{
             dn{"guyyaa kan wg."}
-        }        dayOfYear-short{
+        }
+        dayOfYear-short{
             dn{"guyyaa kan wg."}
         }
         dayperiod{
@@ -764,7 +766,8 @@ dayperiod-narrow{
         }
         era-short{
             dn{"bara"}
-        }        fri{
+        }
+        fri{
             relative{
                 "-1"{"Jimaata darbe"}
                 "0"{"Jimaata kana"}
@@ -835,7 +838,8 @@ dayperiod-narrow{
             dn{"sa"}
 relative{
                 "0"{"sa’aatii kana"}
-            }            relativeTime{
+            }
+            relativeTime{
                 future{
                     one{"h {0} keessatti"}
                     other{"h {0} keessatti"}
@@ -850,7 +854,8 @@ relative{
             dn{"sa."}
 relative{
                 "0"{"sa’aatii kana"}
-            }            relativeTime{
+            }
+            relativeTime{
                 future{
                     one{"sa. {0} keessatti"}
                     other{"sa. {0} keessatti"}
@@ -878,7 +883,8 @@ relative{
             dn{"dq"}
 relative{
                 "0"{"daqiiqaa kana"}
-            }            relativeTime{
+            }
+            relativeTime{
                 future{
                     one{"d {0} keessatti"}
                     other{"d {0} keessatti"}
@@ -980,7 +986,8 @@ relative{
                 "-1"{"ji. darbe"}
                 "0"{"ji. kana"}
                 "1"{"ji. dhufu"}
-            }            relativeTime{
+            }
+            relativeTime{
                 future{
                     one{"ji {0} keessatti"}
                     other{"ji {0} keessatti"}
@@ -1134,7 +1141,8 @@ relative{
             dn{"sek"}
 relative{
                 "0"{"amma"}
-            }            relativeTime{
+            }
+            relativeTime{
                 future{
                     one{"s {0} keessatti"}
                     other{"s {0} keessatti"}
@@ -1149,7 +1157,8 @@ relative{
             dn{"sek."}
 relative{
                 "0"{"amma"}
-            }            relativeTime{
+            }
+            relativeTime{
                 future{
                     one{"sek. {0} keessatti"}
                     other{"sek. {0} keessatti"}
@@ -1390,7 +1399,8 @@ relative{
                 "0"{"tr. kana"}
                 "1"{"tr. dhufu"}
             }
-            relativePeriod{"torban {0}"}            relativeTime{
+            relativePeriod{"torban {0}"}
+            relativeTime{
                 future{
                     one{"w {0} keessatti"}
                     other{"w {0} keessatti"}
@@ -1408,7 +1418,8 @@ relative{
                 "0"{"tr. kana"}
                 "1"{"tr. dhufu"}
             }
-relativePeriod{"torban {0}"}            relativeTime{
+relativePeriod{"torban {0}"}
+            relativeTime{
                 future{
                     one{"tr. {0} keessatti"}
                     other{"tr. {0} keessatti"}
@@ -1433,7 +1444,8 @@ relativePeriod{"torban {0}"}            relativeTime{
         }
 weekday-narrow{
             dn{"guyyaa kan tr."}
-        }        weekday-short{
+        }
+        weekday-short{
             dn{"guyyaa kan tr."}
         }
         weekdayOfMonth{
@@ -1441,7 +1453,8 @@ weekday-narrow{
         }
 weekdayOfMonth-narrow{
             dn{"gytr. kan ji."}
-        }        weekdayOfMonth-short{
+        }
+        weekdayOfMonth-short{
             dn{"gytr. kan ji."}
         }
         year{
@@ -1468,7 +1481,8 @@ relative{
                 "-1"{"wg. darbe"}
                 "0"{"wg. kana"}
                 "1"{"wg. dhufu"}
-            }            relativeTime{
+            }
+            relativeTime{
                 future{
                     one{"w {0} keessatti"}
                     other{"w {0} keessatti"}
@@ -1502,7 +1516,8 @@ relative{
         }
 zone-narrow{
             dn{"zoonii"}
-        }        zone-short{
+        }
+        zone-short{
             dn{"zoonii"}
         }
     }

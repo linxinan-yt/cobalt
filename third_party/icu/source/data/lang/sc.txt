@@ -61,7 +61,8 @@ sc{
         bin{"bini"}
         bla{"pees nieddos"}
         blo{"anii"}
-blt{"tai dam"}        bm{"bambara"}
+blt{"tai dam"}
+        bm{"bambara"}
         bn{"bengalesu"}
         bo{"tibetanu"}
         bqi{"bakhtiari"}

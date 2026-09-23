@@ -5,7 +5,8 @@ ie{
     Countries{
         001{"munde"}
         002{"Africa"}
-003{"septentrional America"}        005{"Sud-America"}
+003{"septentrional America"}
+        005{"Sud-America"}
         009{"Oceania"}
         013{"central America"}
         019{"Americas"}
@@ -37,7 +38,8 @@ ie{
         BG{"Bulgaria"}
         BY{"Bielorussia"}
         CH{"Svissia"}
-        CQ{"Sark"}        CZ{"Tchekia"}
+        CQ{"Sark"}
+        CZ{"Tchekia"}
         DE{"Germania"}
         DK{"Dania"}
         EE{"Estonia"}
@@ -51,13 +53,15 @@ ie{
         FR{"Francia"}
         GB{"Unit Reyia"}
 GG{"Guernsey"}
-        GI{"Gibraltar"}        GR{"Grecia"}
+        GI{"Gibraltar"}
+        GR{"Grecia"}
         GY{"Guyana"}
         HR{"Croatia"}
         HU{"Hungaria"}
         ID{"Indonesia"}
         IE{"Irland"}
-IM{"Insul de Man"}        IN{"India"}
+IM{"Insul de Man"}
+        IN{"India"}
         IR{"Iran"}
         IS{"Island"}
         IT{"Italia"}
@@ -69,7 +73,8 @@ JE{"Jersey"}
         LU{"Luxemburg"}
         LV{"Lettonia"}
         MC{"Mónaco"}
-        MD{"Moldova"}        ME{"Montenegro"}
+        MD{"Moldova"}
+        ME{"Montenegro"}
         MK{"Nord-Macedonia"}
         MQ{"Martinica"}
         MT{"Malta"}
@@ -77,7 +82,8 @@ JE{"Jersey"}
         MV{"Maldivas"}
         NF{"Insul Norfolk"}
 NL{"Nederland"}
-        NO{"Norvegia"}        NR{"Nauru"}
+        NO{"Norvegia"}
+        NR{"Nauru"}
         NZ{"Nov-Zeland"}
         PE{"Perú"}
         PH{"Filipines"}
@@ -86,12 +92,14 @@ NL{"Nederland"}
         PR{"Porto-Rico"}
         PT{"Portugal"}
         PW{"Palau"}
-QO{"periferic Oceania"}        RO{"Rumania"}
+QO{"periferic Oceania"}
+        RO{"Rumania"}
         RS{"Serbia"}
         RU{"Russia"}
         SE{"Svedia"}
         SI{"Slovenia"}
-SJ{"Svalbard e Jan Mayen"}        SK{"Slovakia"}
+SJ{"Svalbard e Jan Mayen"}
+        SK{"Slovakia"}
         SM{"San-Marino"}
         SX{"Sint-Maarten"}
         TC{"Turks e Caicos"}
@@ -106,7 +114,8 @@ VA{"Cité de Vatican"}
         VU{"Vanuatu"}
         WS{"Samoa"}
         XA{"pseudo-diacritica"}
-        XB{"pseudo-bidi"}        XK{"Kosovo"}
+        XB{"pseudo-bidi"}
+        XK{"Kosovo"}
         ZZ{"ínconosset region"}
     }
     Countries%short{

@@ -56,7 +56,7 @@ void PluralMapTest::runIndexedTest(int32_t index, UBool exec, const char* &name,
 }
 
 void PluralMapTest::TestToCategory() {
-assertEquals("", PluralMapBase::OTHER, PluralMapBase::toCategory("other"));
+    assertEquals("", PluralMapBase::OTHER, PluralMapBase::toCategory("other"));
     assertEquals("", PluralMapBase::ZERO, PluralMapBase::toCategory("zero"));
     assertEquals("", PluralMapBase::ONE, PluralMapBase::toCategory("one"));
     assertEquals("", PluralMapBase::TWO, PluralMapBase::toCategory("two"));
@@ -65,7 +65,8 @@ assertEquals("", PluralMapBase::OTHER, PluralMapBase::toCategory("other"));
     assertEquals("", PluralMapBase::NONE, PluralMapBase::toCategory("Many"));
     assertEquals("", PluralMapBase::FEW, PluralMapBase::toCategory(UnicodeString("few")));
     assertEquals("", PluralMapBase::MANY, PluralMapBase::toCategory(UnicodeString("many")));
-    assertEquals("", PluralMapBase::NONE, PluralMapBase::toCategory(UnicodeString("Many")));}
+    assertEquals("", PluralMapBase::NONE, PluralMapBase::toCategory(UnicodeString("Many")));
+}
 
 void PluralMapTest::TestGetCategoryName() {
     assertTrue("", PluralMapBase::getCategoryName(PluralMapBase::NONE) == nullptr);
@@ -107,23 +108,25 @@ void PluralMapTest::TestIterate() {
     PluralMapBase::Category index = PluralMapBase::NONE;
     const UnicodeString *current = map.next(index);
     assertEquals("", "pickles", *current);
-assertEquals("", static_cast<int32_t>(PluralMapBase::OTHER), index);
+    assertEquals("", PluralMapBase::OTHER, index);
     current = map.next(index);
     assertEquals("", "pickle", *current);
-    assertEquals("", static_cast<int32_t>(PluralMapBase::ONE), index);
+    assertEquals("", PluralMapBase::ONE, index);
     current = map.next(index);
     assertEquals("", "picklefew", *current);
-    assertEquals("", static_cast<int32_t>(PluralMapBase::FEW), index);
+    assertEquals("", PluralMapBase::FEW, index);
     current = map.next(index);
-    assertEquals("", static_cast<int32_t>(PluralMapBase::CATEGORY_COUNT), index);    assertTrue("", current == nullptr);
+    assertEquals("", PluralMapBase::CATEGORY_COUNT, index);
+    assertTrue("", current == nullptr);
 
     PluralMapForPluralMapTest map2;
     index = PluralMapBase::NONE;
     current = map2.next(index);
     assertEquals("", "", *current);
-assertEquals("", static_cast<int32_t>(PluralMapBase::OTHER), index);
+    assertEquals("", PluralMapBase::OTHER, index);
     current = map2.next(index);
-    assertEquals("", static_cast<int32_t>(PluralMapBase::CATEGORY_COUNT), index);    assertTrue("", current == nullptr);
+    assertEquals("", PluralMapBase::CATEGORY_COUNT, index);
+    assertTrue("", current == nullptr);
 }
 
 void PluralMapTest::TestEqual() {

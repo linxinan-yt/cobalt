@@ -19,7 +19,8 @@ class RenderFrameHostImpl;
 class ServiceWorkerDevToolsAgentHost;
 
 class FrameAutoAttacher : public protocol::RendererAutoAttacherBase,
-public ServiceWorkerDevToolsManager::Observer { public:
+public ServiceWorkerDevToolsManager::Observer {
+ public:
   explicit FrameAutoAttacher(DevToolsRendererChannel* renderer_channel);
   ~FrameAutoAttacher() override;
 

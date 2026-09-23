@@ -145,7 +145,8 @@ ak{
                         other{"¤ 0G"}
                     }
                     10000000000{
-one{"¤ 00G"}                        other{"¤ 00G"}
+one{"¤ 00G"}
+                        other{"¤ 00G"}
                     }
                     100000000000{
                         one{"¤ 000G"}
@@ -250,7 +251,8 @@ one{"¤ 00G"}                        other{"¤ 00G"}
 "EEE, d, MMMM, y",
                 "d, MMMM, y",
                 "d, MMM, y",
-                "d/M/yy",                "{1}, {0}",
+                "d/M/yy",
+                "{1}, {0}",
                 "{1}, {0}",
                 "{1}, {0}",
                 "{1}, {0}",
@@ -309,7 +311,8 @@ one{"¤ 00G"}                        other{"¤ 00G"}
                         "Mem",
                     }
                     wide{
-"Kwasiada",                        "Dwoada",
+"Kwasiada",
+                        "Dwoada",
                         "Benada",
                         "Wukuada",
                         "Yawoada",
@@ -337,7 +340,8 @@ one{"¤ 00G"}                        other{"¤ 00G"}
                         "M",
                     }
 wide{
-                        "Kwasiada",                        "Dwoada",
+                        "Kwasiada",
+                        "Dwoada",
                         "Benada",
                         "Wukuada",
                         "Yawoada",
@@ -355,7 +359,8 @@ abbreviated{
                     narrow{
                         am{"AN"}
                         pm{"ANW"}
-                    }                    wide{
+                    }
+                    wide{
                         am{"AN"}
                         pm{"ANW"}
                     }
@@ -670,7 +675,8 @@ wide{
         day-narrow{
             relative{
                 "-1"{"ɛnnora"}
-                "0"{"ɛnnɛ"}                "1"{"Ɔkyena"}
+                "0"{"ɛnnɛ"}
+                "1"{"Ɔkyena"}
             }
             relativeTime{
                 future{
@@ -740,7 +746,8 @@ era-narrow{
         }
         era-short{
             dn{"berɛ"}
-        }        fri{
+        }
+        fri{
             relative{
                 "-1"{"Fiada a atwam"}
                 "0"{"Fiada yi"}
@@ -839,7 +846,8 @@ minute-narrow{
                     other{"sima {0} a atwam"}
                 }
             }
-        }        mon{
+        }
+        mon{
             relative{
                 "-1"{"Dwoada a atwam"}
                 "0"{"Dwoada yi"}
@@ -929,7 +937,8 @@ month-narrow{
                 "-1"{"bosome a atwam"}
                 "0"{"bosome yi"}
                 "1"{"bosome a ɛdi hɔ"}
-            }            relativeTime{
+            }
+            relativeTime{
                 future{
                     one{"bosome {0} mu"}
                     other{"abosome{0} mu"}
@@ -959,7 +968,8 @@ month-narrow{
             }
         }
         quarter-narrow{
-dn{"kɔta"}            relativeTime{
+dn{"kɔta"}
+            relativeTime{
                 future{
                     one{"kɔta {0} mu"}
                     other{"kɔta {0} mu"}
@@ -1110,7 +1120,8 @@ sun-narrow{
                     other{"Kwasiada {0} a atwam"}
                 }
             }
-        }        thu{
+        }
+        thu{
             relative{
                 "-1"{"Yawoada a atwam"}
                 "0"{"Yawoada yi"}
@@ -1177,7 +1188,8 @@ tue-narrow{
                     other{"Benada {0} a atwam"}
                 }
             }
-        }        wed{
+        }
+        wed{
             relative{
                 "-1"{"Wukuada a atwam"}
                 "0"{"Wukuada yi"}
@@ -1325,7 +1337,8 @@ weekday-narrow{
         }
 zone-narrow{
             dn{"nkyekyɛmu"}
-        }        zone-short{
+        }
+        zone-short{
             dn{"nkyekyɛmu"}
         }
     }
@@ -1341,7 +1354,8 @@ or-narrow{
         or-short{
             2{"{0} anaa {1}"}
             end{"{0}, anaa {1}"}
-        }        standard{
+        }
+        standard{
             2{"{0} ne {1}"}
             end{"{0}, ne {1}"}
         }
@@ -1355,7 +1369,8 @@ standard-narrow{
         unit{
             2{"{0} ne {1}"}
             end{"{0}, ne {1}"}
-        }        unit-narrow{
+        }
+        unit-narrow{
             2{"{0} {1}"}
             end{"{0} {1}"}
             middle{"{0} {1}"}

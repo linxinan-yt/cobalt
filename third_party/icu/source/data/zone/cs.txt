@@ -80,7 +80,8 @@ cs{
         }
         "America:Sao_Paulo"{
             ec{"São Paulo"}
-        }        "America:St_Barthelemy"{
+        }
+        "America:St_Barthelemy"{
             ec{"Svatý Bartoloměj"}
         }
         "America:St_Kitts"{

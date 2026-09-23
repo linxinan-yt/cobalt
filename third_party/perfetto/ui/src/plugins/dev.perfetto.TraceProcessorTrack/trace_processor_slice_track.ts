@@ -20,7 +20,8 @@ import {getColorForSlice} from '../../components/colorizer';
 import {ThreadSliceDetailsPanel} from '../../components/details/thread_slice_details_tab';
 import {SliceTrack, renderTooltip} from '../../components/tracks/slice_track';
 import type {TrackEventDetailsPanel} from '../../public/details_panel';
-import type {Trace} from '../../public/trace';import {SourceDataset} from '../../trace_processor/dataset';
+import type {Trace} from '../../public/trace';
+import {SourceDataset} from '../../trace_processor/dataset';
 import type {Engine} from '../../trace_processor/engine';
 import {
   LONG,

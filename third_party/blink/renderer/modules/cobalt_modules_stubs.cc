@@ -45,6 +45,8 @@
 #include "third_party/blink/renderer/modules/xr/xr_frame_provider.h"  // nogncheck
 #include "third_party/blink/renderer/modules/xr/xr_session.h"  // nogncheck
 #include "third_party/blink/renderer/modules/xr/xr_system.h"  // nogncheck
+#include "third_party/blink/renderer/modules/ai/semantic_embedder.h"  // nogncheck
+#include "third_party/blink/renderer/bindings/modules/v8/v8_create_monitor_callback.h"
 #include "third_party/blink/renderer/platform/bindings/wrapper_type_info.h"
 
 namespace blink {
@@ -256,6 +258,13 @@ STUB_V8_NAMESPACE_WRAPPER(V8GPUTextureUsage)
 STUB_V8_WRAPPER(V8GPUTextureView)
 STUB_V8_WRAPPER(V8GPUUncapturedErrorEvent)
 STUB_V8_WRAPPER(V8GPUValidationError)
+STUB_V8_WRAPPER(V8GPUResourceTable)
+STUB_V8_WRAPPER(V8LanguageModelToolCall)
+STUB_V8_WRAPPER(V8LanguageModelToolError)
+STUB_V8_WRAPPER(V8LanguageModelToolSuccess)
+STUB_V8_WRAPPER(V8XRMediaBinding)
+STUB_V8_WRAPPER(V8XRMesh)
+STUB_V8_WRAPPER(V8XRMeshSet)
 
 
 #undef STUB_V8_WRAPPER
@@ -416,7 +425,9 @@ scoped_refptr<WebGPUMailboxTexture> GPUTexture::GetMailboxTexture() {
   return mailbox_texture_;
 }
 
-void GPUTexture::DissociateMailbox() {}
+gpu::SyncToken GPUTexture::DissociateMailbox() {
+  return gpu::SyncToken();
+}
 
 const char* const V8GPUTextureFormat::string_table_[] = { "r8unorm" };
 
@@ -463,18 +474,6 @@ String Canvas2dGPUTransferOption::getLabelOr(String&& fallback_value) const {
   return label();
 }
 
-// --- BaseRenderingContext2D WebGPU Stubs ---
-
-GPUTexture* BaseRenderingContext2D::transferToGPUTexture(
-    const Canvas2dGPUTransferOption* options,
-    ExceptionState& exception_state) {
-  return nullptr;
-}
-
-void BaseRenderingContext2D::transferBackFromGPUTexture(
-    ExceptionState& exception_state) {
-}
-
 // --- GC Trace Stubs for incomplete types ---
 
 class GPUMappedDOMArrayBuffer : public DOMArrayBuffer {
@@ -493,8 +492,33 @@ void ExternalTextureCache::Trace(Visitor* visitor) const {
   visitor->Trace(device_);
 }
 
-V8GPUTextureFormat BaseRenderingContext2D::getTextureFormat() const {
-  return V8GPUTextureFormat(V8GPUTextureFormat::Enum::kR8Unorm);
+const char* V8CreateMonitorCallback::GetHumanReadableName() const {
+  return "V8CreateMonitorCallback";
 }
+
+ScriptPromise<V8Availability> SemanticEmbedder::availability(
+    ScriptState* script_state,
+    SemanticEmbedderCreateOptions* options,
+    ExceptionState& exception_state) {
+  return EmptyPromise();
+}
+
+ScriptPromise<SemanticEmbedder> SemanticEmbedder::create(
+    ScriptState* script_state,
+    SemanticEmbedderCreateOptions* options,
+    ExceptionState& exception_state) {
+  return EmptyPromise();
+}
+
+ScriptPromise<SemanticEmbedderResult> SemanticEmbedder::embed(
+    ScriptState* script_state,
+    const V8UnionStringOrStringSequence* input,
+    const SemanticEmbedderEmbedOptions* options,
+    ExceptionState& exception_state) {
+  return EmptyPromise();
+}
+
+void SemanticEmbedder::destroy(ScriptState* script_state,
+                               ExceptionState& exception_state) {}
 
 }  // namespace blink

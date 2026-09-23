@@ -37,7 +37,8 @@ class MODULES_EXPORT InspectorWebAudioAgent final : public InspectorAgent {
   explicit InspectorWebAudioAgent(Page*) {}
   void Init(CoreProbeSink*,
             protocol::UberDispatcher*,
-            InspectorSessionState*) override {}
+            InspectorSessionState*,
+            V8SessionHolder) override {}
   void Dispose() override {}
   void Trace(Visitor* visitor) const override {
     InspectorAgent::Trace(visitor);

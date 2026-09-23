@@ -449,7 +449,8 @@ TEST_F(VideoFrameStructTraitsTest, SharedImageVideoFrameMismatchedSize) {
                                                          &new_frame));
 }
 
-#if (BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_COBALT_HERMETIC_BUILD)) || BUILDFLAG(IS_CHROMEOS)TEST_F(VideoFrameStructTraitsTest, DmabufsVideoFrame) {
+#if (BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_COBALT_HERMETIC_BUILD)) || BUILDFLAG(IS_CHROMEOS)
+TEST_F(VideoFrameStructTraitsTest, DmabufsVideoFrame) {
   constexpr gfx::Size kCodedSize = gfx::Size(256, 256);
   constexpr gfx::Rect kVisibleRect(kCodedSize);
   constexpr gfx::Size kNaturalSize = kCodedSize;

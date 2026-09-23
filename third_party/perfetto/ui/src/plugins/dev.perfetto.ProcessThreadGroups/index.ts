@@ -23,6 +23,7 @@ import {
   STR_NULL,
 } from '../../trace_processor/query_result';
 import {getMachineCount, maybeMachineLabel} from '../../public/utils';
+
 function stripPathFromExecutable(path: string) {
   if (path[0] === '/') {
     return path.split('/').slice(-1)[0];
@@ -34,7 +35,8 @@ function stripPathFromExecutable(path: string) {
 function getThreadDisplayName(
   threadName: string | undefined,
   tid: bigint | number,
-machineLabel: string = '',) {
+  machineLabel: string = '',
+) {
   if (threadName) {
     return `${stripPathFromExecutable(threadName)} ${tid}${machineLabel}`;
   } else {
@@ -178,9 +180,10 @@ export default class implements PerfettoPlugin {
           thread.name as threadName,
           sum_running_dur as sumRunningDur,
           slice_count as sliceCount,
-stack_sample_count as stackSampleCount,
+          stack_sample_count as stackSampleCount,
           ifnull(extract_arg(thread.arg_set_id, 'thread_sort_index_hint'), 0) as threadSortIndexHint,
-          machine_id as machine        from _thread_available_info_summary
+          machine_id as machine
+        from _thread_available_info_summary
         join thread using (utid)
         where upid is null
       )
@@ -222,7 +225,8 @@ stack_sample_count as stackSampleCount,
         left join machine m on m.id = threadGroups.machine
         order by
           threadSortIndexHint asc,
-stackSampleCount desc,          sumRunningDur desc,
+          stackSampleCount desc,
+          sumRunningDur desc,
           sliceCount desc,
           threadName asc,
           utid asc

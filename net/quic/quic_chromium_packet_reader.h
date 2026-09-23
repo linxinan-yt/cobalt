@@ -113,7 +113,8 @@ base::circular_deque<DatagramMetadata> pending_datagrams_;
   Socket::ReadPacketResults read_results_;
 #endif
 
-  // Note: This has to remain the last member of the class.  base::WeakPtrFactory<QuicChromiumPacketReader> weak_factory_{this};
+  // Note: This has to remain the last member of the class.
+  base::WeakPtrFactory<QuicChromiumPacketReader> weak_factory_{this};
 };
 
 }  // namespace net

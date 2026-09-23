@@ -1198,7 +1198,8 @@ hy{
         }
 "Pacific:Kanton"{
             ec{"Կանտոն"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"Կիրիտիմատի"}
         }
         "Pacific:Kosrae"{

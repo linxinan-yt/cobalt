@@ -689,7 +689,8 @@ da{
                         other{"{0} nætters"}
                     }
                 }
-dnam{"nætter"}                gender{"common"}
+dnam{"nætter"}
+                gender{"common"}
                 one{"{0} nat"}
                 other{"{0} nætter"}
                 per{"{0} pr. nat"}
@@ -2106,7 +2107,8 @@ dnam{"nætter"}
             }
             kilowatt-hour-per-100-kilometer{
                 dnam{"kWh/100 km"}
-one{"{0}kWh/100km"}                other{"{0} kWh/100 km"}
+one{"{0}kWh/100km"}
+                other{"{0} kWh/100 km"}
             }
             newton{
                 dnam{"N"}

@@ -1,6 +1,7 @@
 # Fractional UCA Table, generated from the UCA DUCET
 # 2025-08-04 [MS]
-# VERSION: UCA=17.0.0, UCD=17.0.0# © 2016 and later: Unicode, Inc. and others.
+# VERSION: UCA=17.0.0, UCD=17.0.0
+# © 2016 and later: Unicode, Inc. and others.
 # License & terms of use: http://www.unicode.org/copyright.html
 # For a description of the format and usage, see
 #   http://www.unicode.org/reports/tr35/tr35-collation.html
@@ -28,7 +29,8 @@
 [radical 17=⼐凵:凵𠙴𠙵凶𠙶-𠙸𰄑凷-击𠙹-𠙻𠙽𪞶凼㓙𠙾-𠚊𭂻函𠚋-𠚍𪞷𰄒𱐍凾𠚎-𠚐𱐎𱐏𲒠𠚒𠚓𪞸𫥤𭂼𰄓𰄔𠚔-𠚗𭂽𰄕𲒡凿𠚘𪞹𫥥𫥦𭂾𱐐𪞺𪞻𫥧-𫥩𱐑𠚙𠚚𢍭𫥪𫥫𭂿𰄖𠚜𫥬𭃀𰄗𰄘𠚝𠚞𭃁𢇕𪞼𠚟𪞽𫥭-𫥯𲒢𠚠-𠚢𲒣]
 [radical 18=⼑刀:刀-刂𠚣刃刄𠚤刅-刈𠚥-𠚬𭃂-𭃄𰄙𰄚刉-刍㓚-㓜𠚭-𠚴𠚶𠚻𫥰𫥱𭃅-𭃇𰄛-𰄝刎-创㓝㓞𠚵𠚷-𠚺𠚼-𠛍𪞾-𪟀𫥲-𫥴𬺨𭃈-𭃌𰄞-𰄢𱐒-𱐕𲒤刜-刭㓟㓠𠛎-𠛦𪟁𪟂𫥵-𫥻𭃍-𭃔𰄣-𰄦𱐖𱐗𲒥刮-剂㓡-㓦𠛧-𠜏𪟃-𪟅𫥼-𫥿𭃕-𭃡𰄧-𰄫𱐘𱐙𮰌𲒦𲒧剃-剑㓧-㓫𠜐-𠜰𪟆𪟇𫝐𫦀𫦁𭃢-𭃨𰄬-𰄲𱐚𱐛𲒨-𲒫剒-剧㓬-㓰𠜱-𠝜𠝶𪟈𪟉𫦂-𫦅𭃩-𭃳𰄳-𰄶𱐜-𱐠𲒬-𲒮剨剪-剱剶㓱-㓶𠝝-𠝵𠝷-𠝾𪟊-𪟍𫦆-𫦌𭃴-𭃾𰄷-𰄺𲒯-𲒱剩割-創㓷-㓻𠝿-𠞛𠞝-𠞤𪟎-𪟐𫦍-𫦑𭃿-𭄅𱐡𲒲剷-剿㓼㓽𠞥-𠟁𪟑-𪟓𫦒-𫦔𭄆-𭄏𰄻-𰄽𱐢𱐣𲒳劀-劄㓾-㔉𠟂-𠟟𠟡-𠟥𫦕-𫦙𭄐𭄑𰄾-𰅂𱐤𲒴劅-劏㔊𠟠𠟦-𠟹𪟔𫦚𭄒𰅃𲒵-𲒹劐-劔㔋-㔍𠟺-𠠊𪟕𪟖𭄓-𭄗𰅄𱐥𲒺-𲒼劕㔎㔏𠠌-𠠚𫦛𭄘𭄙𰅅-𰅇𲒽-𲒿㔐𠠛-𠠠𫦜-𫦞𭄚𭄛𱐦𲓀劖㔑𠠡-𠠣𫦟𫦠𭄜㔒𠠤𠠦-𠠩𱐧𱐨𲓁劗劘𠠥𠠪-𠠭劙劚𠠮𫦡𰅈𠠯𭄝𫦢𠠰𠠱𫦣]
 [radical 19=⼒力:力劜𠠲𫦤劝办𠠳-𠠵𭄞𱐩功-劢㔓㘞𠆮𠠶-𠠸𭄟𭄠𱐪劣-动㔔-㔖𠠹-𠡁𫦥𰅉助-劲労㔗㔘𠡂-𠡐𪟗-𪟙𫦦𫦧𰅊-𰅌𱐫-𱐯劳劵-势㔙-㔛𠡑-𠡝𪟚𪟛𫦨𭄡-𭄥𰅍𰅎𮰍𲓂𲓃勀-勋㔜𠡞-𠡪𠡺𪟜𫦩-𫦭𭄦-𭄫𱐰𲓄勌-勑㔝-㔟𠡫-𠡹𪟝-𪟟𫦮-𫦲𭄬-𭄲𰅏𰅐𱐱-𱐳𮰎𲓅勒-勖勘-勚㔠𠡻-𠢄𪟠𫦳𭄳-𭄶𰅑-𰅓𱐴𲓆勛-勞㔡𠢅-𠢒𪟡𪟢𫦴𫦵𭄷-𭄹𰅔𲓇𲓈募-勧𠢓-𠢟𪟣𫝑𫦶𫦷𭄺-𭄾𰅕𲓉-𲓋勨-勭㔢𠢠-𠢯𪟤𪟥𫦸𭄿-𭅃𰅖𰅗勮-勲𠢰-𠢵𪟦𫦹𫦺𰅘𱐵𱐶勳𠢶-𠢸𫦻𫦼𱐷勴-勶㔣-㔦𠢹-𠢿𲓌㔧𠣀-𠣃𫦽𫦾𰅙𲓍𲓎勷𠣄𠣅勸𠣆𠣇𪟧𲓏𰅚𠣈𠣉𲓐𠣊𫦿𠣋]
-[radical 20=⼓勹:勹-匂𠣌𭅄𰅛匃-匇𠣍-𠣐𫧀𫧁𭅅匈𠣑-𠣓𭅆匉𠣔-𠣗𭅇𭅈匊-匌𠣘-𠣝𭅉𭅊𲓑匍𠣞-𠣣𭅋𰅜𰅝𱐸𲓒匎𠣤-𠣭𫧂𫧃𱐹匏匐㔨𠣮-𠣴𭅌𰅞𰅟𱐺𱐻𲓓匑匒㔩𠣵-𠣷𫧄𭅍匓㔪𠣸-𠣼𭅎𭅏𱐼𠣽-𠤂𰅠𱐽-𱑀匔𠤃𫧅𠤄-𠤇𫧆𱑁𲓔𠤈-𠤊𱑂𲓕-𲓘𱑃𲓙𠤋-𠤍][radical 21=⼔匕:匕𠤎𪟨化㔫𠤏𫧇北𠤐𰅡𪟩𭅐𠤑-𠤕㔬𠤖𭅑𰅢𱑄𠤗-𠤝𪟪𭅒𠤞-𠤡𭅓匘匙㔭𫧈𫧉𠤣𠤤𰅣𠤥𪟫𠤦-𠤨𱑅𠤩𠤪𫧊]
+[radical 20=⼓勹:勹-匂𠣌𭅄𰅛匃-匇𠣍-𠣐𫧀𫧁𭅅匈𠣑-𠣓𭅆匉𠣔-𠣗𭅇𭅈匊-匌𠣘-𠣝𭅉𭅊𲓑匍𠣞-𠣣𭅋𰅜𰅝𱐸𲓒匎𠣤-𠣭𫧂𫧃𱐹匏匐㔨𠣮-𠣴𭅌𰅞𰅟𱐺𱐻𲓓匑匒㔩𠣵-𠣷𫧄𭅍匓㔪𠣸-𠣼𭅎𭅏𱐼𠣽-𠤂𰅠𱐽-𱑀匔𠤃𫧅𠤄-𠤇𫧆𱑁𲓔𠤈-𠤊𱑂𲓕-𲓘𱑃𲓙𠤋-𠤍]
+[radical 21=⼔匕:匕𠤎𪟨化㔫𠤏𫧇北𠤐𰅡𪟩𭅐𠤑-𠤕㔬𠤖𭅑𰅢𱑄𠤗-𠤝𪟪𭅒𠤞-𠤡𭅓匘匙㔭𫧈𫧉𠤣𠤤𰅣𠤥𪟫𠤦-𠤨𱑅𠤩𠤪𫧊]
 [radical 22=⼕匚:匚𠤬𠤭𫧋𭅔匛-匞𫧌𭅕𭅖𲓚匟-匢𠤮-𠤱𪟬𫧍-𫧏匣-匥㔯㔰𠤳-𠤷𪟭𪟮𫧐𫧒𭅗𭅘𰅤匦𠤸-𠤻𫧑𭅙𭅚匧-匩𠤼-𠥂𠥄-𠥈𪟯𫧓匪匫龨𠥉-𠥍𪟰𫧔𭅛𰅥𰅦匬-匮㔱𠥎𠥏𭅜𭅝𰅧𱑆𠥐-𠥕𫧕𱑇匯㔲-㔴𠥖-𠥘𫧖𰅨匰-匲㔵𠥙-𠥛𪟱𫧗𭅞𲓛匳𠥜-𠥡𫧘𫧙匴𠥢𠥣𫧚匵𫧛𫧜𠥤𠥥𰅩匶𠥦𠥧匷𠥨𠥩𪟲𱑈𠥪𫧝𱑉㔶𠥫𠥬]
 [radical 23=⼖匸:匸-区𠥭𠤲𠥮𠥯𰅪医㔷𠥰-𠥲𰅫匼𠥳匽𠥃𠥴𠥵𭅟𱑊𠥶𰅬匾-區㔸𱑋𠥷𱑌𠥸-𠥺𱑍]
 [radical 24=⼗十:十-千卅-午㔹𠥻𠥼𠥿𭅠𰅭𰅮𲓜-𲓞卉半卌𠆱𠥽𠥾𠦀𠦁𰅯卋卍-卐㔺㔻𠦂-𠦐𰅰𰅱𲓟𲓠𠦑-𠦗𪟳𫝒𫧞𰅲-𰅴𲓡𲓢卑-卖龺𠦘-𠦢𣥥𫝓𫧟𫧠𰅵𱑎𲓣𲓤南単𫝔𫧡𫧢𭅡𭅢𰅶𰅷𲓥𲓦𠦣-𠦩𪟴𭅣𰅸𰅹𮰏𲓧𲓨卙𠦪-𠦯𪟵𭅤𰅺𰅻𱑏博𠦰-𠦳𫧣𭅥𭅦𲓩㔼𠦴-𠦼𪟶𫧤𫧥𭅧𰅼𲓪𠦽-𠦿𪟷𫧦𰅽𰅾𠧀-𠧄𪟸𪟹𫧧𫧨𭅨𭅩𱑐𱑑𭅪𱑒𱑓𮰐𠧅-𠧈𪟺𫧩-𫧫𰅿𱑔𠧉-𠧍𪟻𭅫𭅬𰆀𰆁𠧎𫧬𱑕𪟼𭅭卛𠧏𫧭𲓫𠧐𭅮𠧑𰆂]
@@ -49,7 +51,8 @@
 [radical 39=⼦子:子-孓𡤼孔𡤽孕𡤾-𡥂𫲡𭒶-𭒹𲛼孖-孙㜽𡉗𡥃-𡥅𭒺-𭒼𰌜𰌝𱙵孚-孞㜾㜿𡥆-𡥊𡥌𡥍𪦶-𪦹𰌞-𰌢𱙶-𱙸𲛽孟-孧㝀𠃱𡥎-𡥚𪦺𫲢-𫲤𭒽-𭓀𰌣-𰌥𱙹𮱜孨-孪㝁𡥛-𡥧𪦻𫲥𭓁𭓂𰌦𰌧𱙺𲛾孫-孭㝂㝃𡥨-𡥭𢈲𨹴𫲦𭓃-𭓇𰌨𱙻𲛿孮-孰孲𡥮-𡥵𪦼-𪦾𫲧𫲨𭓈-𭓎𰌩-𰌫𱙼𱙽𲜀孱㝄𡥶-𡦂𪦿𫲩𫲪𭓏-𭓔𰌬𰌭𱙾𲜁孳孴㝅𡦃-𡦐𫲫𫲬𭓕𭓖𰌮𱙿𮱝孵-孷𡦑-𡦖𪧀𫲭𫲮𭓗𭓘𰌯𲜂𲜃㝆𡦗-𡦝𫝯𫲯𫲰𲜄𲜅學孹㝇𡦞-𡦨𪧁𫲱𫲲𭓙𭓚𰌰𱚀𱚁𲜆𲜇孺孻𡦩𪧂𪧃𭓛𲜈𡦪-𡦬𰌱𱚂孼𡦭-𡦰𫲳𭓜孽孾𡦱-𡦶𰌲𪧄孿𡦷𫲴㝈𡦸𭓝]
 [radical 40=⼧宀:宀㝉𡦹宁-宄㝊㝋𡦺-𡦼𰌳宅-安㝌㝍𡦽-𡧊𫲵𫲶𭓞𰌴𰌵𱚃𮱞𲜉𲜊宊-宒㝎-㝑𡧋-𡧕𪧅-𪧇𫲷-𫲽𭓟-𭓡𰌶-𰌸𱚄𮱟𲜋宓-审㝒𡧖-𡧨𪧈𪧉𫲾-𫳀𭓢-𭓩𰌹𰌺𱚅𲜌客-宦宨-宫㝓-㝖𡧩-𡧿𪧊-𪧌𫳁-𫳆𭓪-𭓯𰌻-𰌽𱚆𲜍宧宬-宾㝗-㝚𡨀-𡨡𪧍-𪧐𫳇-𫳏𭓰-𭓳𰌾-𰍀𱚇𱚈𲜎宿-寉㝛-㝡𡨢-𡨼𪧑-𪧓𫳐-𫳙𭓴-𭓿𰍁-𰍅𱚉-𱚌𲜏寊-寕寪㝢㝣𡨽-𡩞𪧔-𪧚𫳚-𫳣𭔀-𭔅𰍆-𰍍𱚍𱚎𲜐-𲜔寖-寝㝤-㝨𡩟-𡩺𪧛-𪧠𫳤-𫳮𭔆-𭔌𰍎-𰍗𱚏𱚐𲜕寞-寨㝩-㝬𡩻-𡪝𪧡-𪧥𫝰𫳯-𫳼𭔍-𭔐𰍘-𰍚𱚑𲜖-𲜘審寫-寮㝭-㝯𡪟-𡪽𪧦-𪧪𫝱𫳽-𫴁𭔑-𭔖𰍛𰍜𱚒𱚓寯寰𡪾-𡫐𪧫-𪧮𫴂-𫴏𭔗-𭔙𰍝-𰍟𱚔𱚕𲜙𲜚寱寲𡫑-𡫝𪧯𫴐-𫴗𭔚-𭔞𰍠𱚖-𱚚𲜛㝰𡫞-𡫫𪧰-𪧲𫴘-𫴛𭔟-𭔡𰍡𮱠寳-寵𡫬-𡫶𫴜-𫴟𭔢-𭔤𲜜寶𡫷-𡫻𪧳𪧴𫴠𭔥𭔦𰍢寷㝱𡫼-𡬃𪧵𫴡-𫴣𭔧𡬄-𡬋𫴤𫴥𭔨𱚛𲜝𲜞𡬌𫴦𫴧𰍣𡬍𡬏𡬐𪧶𫴨-𫴪𰍤𡬑𡬓-𡬕𱚜𲜟㝲𡬖-𡬘𡬎𡬙𡬚𡬒𡬛𫴫𡬜]
 [radical 41=⼨寸:寸𡬝对㝳寺-导𡬞𪧷𭔩寽-寿㝴𭔪𱚝尀㝵𡬟-𡬦𭔫𭔬𱚞𱚟𲜠封専将𡬧-𡬬𫴬𭔭-𭔯𱚠尃-尅㝶𡬭𫴭𭔰-𭔲𲜡將-尉𡬮-𡬲𪧸𪧹𭔳-𭔵尊-尌㝷𡬳-𡬸𪧺𫴮𫴯𭔶-𭔸𲜢𲜣𡬹-𡬼𫴰-𫴳𭔹-𭔼對𡬽-𡭂𭔽-𭔿𰍥𲜤導𡭃-𡭉𣊒𪧻𪧼𫴴𫴵𭕀𭕁𰍦𱚡𱚢𡭊-𡭌𪧽𭕂𡭍-𡭏𪧾𲜥𲜦𡭐𲜧𡭑𭕃𡭒𡭓𫴶𫴷]
-[radical 42=⼩小:小𡭔𭕄𰍧𰍨尐少𡭕𡭖尒-尕龸𡭗𡭘𰍩尖-尘𡭙-𡭜𭕅𮱡𡭝-𡭤𪧿𫴸𫴹𭕆𭕇𰍪𱚣尙尚𠈤𡭥-𡭩𪨀𫴺𫴻𭕈𭕉𱚤𮱢𲜨尛-尝𡭪-𡭳𫴼𫴽𭕊𰍫𱚥㝸𡭴-𡭼𪨁𪨂𲜩𲜪𡭽-𡮍𫴾-𫵃𲜫尞㝹𡮎-𡮗𫵄𫵅𱚦𱚧𲜬-𲜯尟尠𠅽𡮘-𡮝𭕋尡㝺𡮞-𡮥𪨃𫵆𫵇𱚨𲜰㝻𡮦-𡮯𪨄𫵈𫵉𱚩𡮰-𡮳𪨅𫵊-𫵌𭕌𡮴-𡮶𢇔𪨆𰍬𱚪𱚫𲜱𡮷-𡮻𤯏𡮼-𡮾𫵍𡮿𱚬𡯀][radical 43=⼪尢:尢尣𡯁𡯂尤𡯃-𡯊𫵎尥-尧㝼𡯋-𡯎𭕍尨-尬㝽𡯏-𡯙𫵏尭㝾㝿𡯚-𡯡𫵐𭕎𰍭尮尯㞀㞁𡯢-𡯤𡯦𡯧𰍮㞂𡯨-𡯲𰍯㞃-㞆𡯳-𡯸𫵑𭕏𭕐尰就㞇㞈𡯹-𡰂𪨇尲-尴㞉㞊𡰃-𡰊𪨈𭕑𭕒𱚭𡰋-𡰏𭕓尵𡰐-𡰕𫵒𮱣𡰖-𡰚尶尷𡰛𡰜𱚮𱚯𡰝-𡰢]
+[radical 42=⼩小:小𡭔𭕄𰍧𰍨尐少𡭕𡭖尒-尕龸𡭗𡭘𰍩尖-尘𡭙-𡭜𭕅𮱡𡭝-𡭤𪧿𫴸𫴹𭕆𭕇𰍪𱚣尙尚𠈤𡭥-𡭩𪨀𫴺𫴻𭕈𭕉𱚤𮱢𲜨尛-尝𡭪-𡭳𫴼𫴽𭕊𰍫𱚥㝸𡭴-𡭼𪨁𪨂𲜩𲜪𡭽-𡮍𫴾-𫵃𲜫尞㝹𡮎-𡮗𫵄𫵅𱚦𱚧𲜬-𲜯尟尠𠅽𡮘-𡮝𭕋尡㝺𡮞-𡮥𪨃𫵆𫵇𱚨𲜰㝻𡮦-𡮯𪨄𫵈𫵉𱚩𡮰-𡮳𪨅𫵊-𫵌𭕌𡮴-𡮶𢇔𪨆𰍬𱚪𱚫𲜱𡮷-𡮻𤯏𡮼-𡮾𫵍𡮿𱚬𡯀]
+[radical 43=⼪尢:尢尣𡯁𡯂尤𡯃-𡯊𫵎尥-尧㝼𡯋-𡯎𭕍尨-尬㝽𡯏-𡯙𫵏尭㝾㝿𡯚-𡯡𫵐𭕎𰍭尮尯㞀㞁𡯢-𡯤𡯦𡯧𰍮㞂𡯨-𡯲𰍯㞃-㞆𡯳-𡯸𫵑𭕏𭕐尰就㞇㞈𡯹-𡰂𪨇尲-尴㞉㞊𡰃-𡰊𪨈𭕑𭕒𱚭𡰋-𡰏𭕓尵𡰐-𡰕𫵒𮱣𡰖-𡰚尶尷𡰛𡰜𱚮𱚯𡰝-𡰢]
 [radical 44=⼫尸:尸𡰣尺𪛛𰍰𲜲尻尼㞋𡰤-𡰨𡰴𭕔𱚰尽㞌㞍𡰩-𡰳𫝲𱚱𱚲尾-屃㞎𡰵-𡰽𪨉-𪨋𫵓-𫵕𰍱𰍲𱚳𱚴𲜳𲜴屄-届㞏-㞑𡰾-𡱋𪨌𫵖-𫵘𭕕-𭕘𰍳𰍴𱚵𱚶𲜵𲜶屋-屏㞒-㞖𡱌-𡱡𢇀𪨍𪨎𫵙-𫵝𭕙-𭕝𰍵-𰍷𱚷-𱚹𲜷屐-屘㞗𡱢-𡱹𪨏𪨐𫵞𫵟𭕞𭕟𰍸-𰍻𱚺屙-屝㞘㞙𡱺-𡲓𪨑𫵠𭕠-𭕣𰍼-𰍾𱚻𲜸𲜹属-屡㞚㞛𡲔-𡲫𪨕-𪨘𫵡𭕤𰍿𰎀𱚼𲜺𲜻𡲬-𡳃𪨒-𪨔𭕥-𭕭𰎁𱚽𲜼屢屣㞜-㞞𡳄-𡳏𪨙𪨚𫵢-𫵥𭕮𭕯𰎂𱚾𲜽-𲜿層-屧㞟㞠𡳐-𡳞𪨛𪨜𭕰-𭕵𰎃-𰎅𱚿𱛀𡳟-𡳧𪨝𫵦𫵧𰎆𲝀屨𡳨𡳩𪨞𫵨𭕶屩屪𡳪𡳫𫵩𭕷𭕸𱛁𱛂𲝁屫㞡𡳬-𡳰𪨟𪨠𫵪𫵫𭕹𭕺𰎇𲝂𡳱-𡳴屬𡳵-𡳷𫵬𫵭𭕻𡳸-𡳺𪨡𭕼屭𡳻𭕽𡳼𡳽𱛃]
 [radical 45=⼬屮:屮䶹𡳾屯㞢𡳿𭕾屰𡴀-𡴅𭕿㞣㞷𡴆-𡴚𫵮𱛄𡴛-𡴣𰎈𡴤𡴥𫵯𫵰𡴦-𡴬]
 [radical 46=⼭山:山乢屲𡴭-𡴯屳-屷㞤-㞧𡴰-𡴽𫵱-𫵴𭖀𱛅𱛆𲝃屸-岃㞨-㞯𡴾-𡵒𪨢-𪨥𫝳𫵵𭖁-𭖄𰎉𱛇𲝄岄-岌岎-岜㞰-㞶㞸𡵓-𡶂𪨦-𪨨𫵶𫵷𭖅-𭖊𰎊-𰎍𱛈-𱛒𮱤-𮱦𲝅-𲝉岝-峅㞹-㟃𡶃-𡶣𡶥-𡶪𪨩-𪨮𫜺𫵸𫵹𭖋-𭖔𰎎-𰎓𱛓-𱛛𮱧𲝊-𲝐岍峆-峧㟄-㟆𡶫-𡷔𪨯-𪨴𫝴𫵺𫵻𭖕-𭖞𰎔-𰎞𱛜-𱛧𮱨𮱩𲝑-𲝚峨-崅㟇-㟖𡷕-𡸐𦊤𪨵-𪨺𫝵𫵼-𫶀𭖟-𭖨𰎟-𰎤𱛨-𱛰𮱪-𮱬𲝛-𲝞崆-崰㟗-㟥𡸑-𡹩𪨻-𪩁𫶁-𫶅𭖩-𭖱𰎥-𰎨𱛱-𱛶𮱭-𮱯𲝟-𲝬崱-嵉嵋-嵝㟦-㟯𡹪-𡺩𪩂-𪩇𫶆-𫶉𭖲-𭖿𰎩-𰎭𱛷-𱜀𲝭-𲝲﨑嵊嵞-嵶㟰-㟸𡺪-𡻗𪩈-𪩋𫶊-𫶐𭗀-𭗆𰎮-𰎰𱜁-𱜄𲝳-𲝵嵷-嶎㟹-㠄𡻘-𡼉𪩌-𪩒𫶑-𫶔𭗇-𭗓𰎱-𰎴𱜅-𱜌𲝶-𲞀嶏-嶥㠅-㠐𡼊-𡼼𪩓-𪩖𫶕𫶖𭗔-𭗞𰎵-𰎸𱜍-𱜏𲞁-𲞆嶦-嶶㠑-㠗𡼽-𡽈𡽊-𡽛𪩗-𪩚𫶗-𫶜𭗟𭗠𰎹𰎺𱜐-𱜒𮱰𲞇-𲞋嶷-嶺嶼-嶿㠘-㠜𡽉𡽜-𡾁𡾻𪩛-𪩝𫶝𭗡-𭗤𰎻𮱱𮱲𲞌-𲞏巀-巂㠝-㠟𡾂-𡾖𡾠𫶞𭗥-𭗫𰎼-𰎾𱜓𲞐-𲞖嶻巃-巅㠠-㠣𡾘-𡾟𡾡-𡾭𣦭𪩞𫶟-𫶣𭗬-𭗱𰎿-𰏁𲞗-𲞙巆-巌㠤𡾮-𡾺𬺫𭗲-𭗴巍巏巐㠥㠦𡾼-𡿆𪩟𫶤𭗵𭗶𱜔巎巑-巕巗㠧𡿇-𡿑𪩠𭗷𲞚巖巘-巚𡿒𡿓𭗸𡿔-𡿜𫶥𭗹𡿝-𡿟𫶦𰏂𡿠𡿡𡿣𡿤㠨𡿢𱜕𡿥]
@@ -162,7 +165,8 @@
 [radical 153=⾘豸:豸𧲠𧲡𮙥豹-豻𧲢𧲣𫎊豼豽䝖-䝙𧲤-𧲫𮙦𮙧𳂉豾-貃䝚䝛𧲬-𧲽𮙨𮙩𲂤𲂥𳂊貄-貊𧲾-𧳉𫎋𬥈貋-貍䝜𧳊-𧳘𮙪𳂋貎貏䝝䝞𧳙-𧳥𧳱𬥉𲂦貐-貓䝟𧳦-𧳰𧳲-𧳴𫎌𮙫𳂌𳂍貔-貖䝠𧳵-𧴀𫎍貗-貙䝡䝢𧴁-𧴅𧴇-𧴋𬥊𬥋𳂎𳂏貚䝣-䝦𧴆𧴌-𧴏𧴑-𧴕𬥌𮙬𳂐𧴐𧴖-𧴟𬥍𲂧𧴠-𧴢貛貜𧴣]
 [radical 154=⾙貝⻉贝:貝贝𮷌貞-負𧴤-𧴩𫎎𬥎𮙭𰶱𳂑贞-贠財-貤𧴪-𧴲𫎏-𫎑𮙮-𮙱𰶲贡财𰷞-𰷠𲂺貥-貮䝧䝨𧴳-𧵈𫎒𫎓𬥏-𬥒𮙲-𮙸𰶳-𰶻𲂨𲂩𳂒𳂓责-贯𧹑𬥳𰷡𲂻-𲂽𳂫貯-賁䝩-䝯𧵉-𧵢𫎔𫎕𬥓𮙹-𮚀𰶼-𰶿𲂪-𲂬𳂔贰-贻𧹒𫎦𫎧𬥴-𬥶𰷢𲂾-𲃁𮷍賂-賎䝰-䝲𣣬𧵣-𧶄𫎖𬥔𬥕𮚁-𮚄𰷀-𰷄𲂭-𲂯𳂕-𳂘贼-赆䞌𬥷賏-賘㕢䝳-䝵𧶅-𧶚𫎗-𫎙𬥖-𬥚𮚅-𮚊𰷅𳂙赇-赊𧹓𫎨𬥸𮷎𮷏賙-賬䝶-䝿𧶛-𧶰𫎚𫎛𬥛-𬥟𮚋-𮚔𰷆-𰷈𲂰𲂱𳂚𳂛赋-赕䞍䞎𧹔-𧹖𫎩𬥹𰷣-𰷥𲃂𲃃賭-賵䞀-䞄𠠋𧶱-𧷄𧷆-𧷋𫎜-𫎞𬥠-𬥢𮚕-𮚙𰷉𲂲𲂳𳂜赖赗䞏䞐𫎪𬥺-𬥽𰷦𰷧𲃄𲃅𳂬賶-賽䞅䞆𧷌-𧷝𫎟𫎠𬥣-𬥥𮚚-𮚝𰷊-𰷌𲂴𲂵𳂝-𳂟赘-赛𬥾𰷨-𰷪𲃆𮷐賾-贀贂-贅䞇𧷞-𧷻𫎡𬥦𬥧𮚞-𮚠𰷍-𰷐𳂠𳂡赜𧹗贆-贌䞈𧷼-𧸕𫎢𬥨𮚡-𮚦𰷑-𰷗𳂢-𳂤赝-赠𫎫𰷫贍-贏䞉𧸖-𧸥𬥩𮚧𮚨赡赢𰷬贐-贔𧸦-𧸰𬥪𬥫𬥭𮚩-𮚫𰷘-𰷚𫎬𬥿𰷭贕-贘䞊𧸱-𧸼𧸿𫎣𫎤𬥮-𬥰𮚬𰷛𲂶𳂥𳂦贙贚䞋𧸽𧸾𧹀-𧹇𫎥𬥬𬥱𮚭𲂷𳂧𳂨𰷮贛𧹈-𧹋𲂸𳂩赣贜𧹌𧹍𰷜𰷝𳂪𧹎-𧹐𮚮-𮚰𬥲𬦀𲂹]
 [radical 155=⾚赤:赤𧹘-𧹚䞑赥赦𧹛𧹜𬦁𳂭赧𧹝-𧹟𫎭𳂮𳂯赨-赪䞒𧹠-𧹢𫎮𬦂𰷯赫䞓䞔𧹣-𧹦𮷑𧹧-𧹫𫎯𲃇赬-赮𧹬-𧹱𬦃𮚱𳂰赯𧹲-𧹷𫎰𧹸-𧹼𳂱𳂲𲃈䞕𧹽-𧺁𬦄𧺂-𧺅𰷰]
-[radical 156=⾛走:走赱𧺆𧺇𮚲𳂳赲-赵龪𧺈-𧺎𳂴赶-赸䞖-䞘𧺏-𧺜𬦅𮚳𰷱𲃉𳂵赹-赿䞙-䞜𧺝-𧺵𫎱𬦆-𬦈𮚴𮚵𰷲𲃊𳂶𳂷﨣趀-趋䞝-䞤𧺶-𧻏𫎲𬦉-𬦋𮚶𮚷𰷳𰷴𲃋𳂸𳂹趌-趔䞥-䞪𧻐-𧻮𫎳𫎴𬦌𬦍𮚸𮚹𰷵-𰷷𲃌𳂺趕-趚䞫-䞲𧻯-𧼍𧼝𫎵-𫎷𬦎-𬦑𮚺𮚻𲃍𲃎𳂻𳂼趛-趤䞳-䞸𧼎-𧼜𧼞𧼠-𧼧𫎸-𫎺𬦒𬦓𰷸𰷹𲃏趥-趧䞹-䞼𧼟𧼨-𧽈𫎻𫎼𬦔-𬦗𮚼𰷺𲃐𳂽-𳃀趨䞽-䟀𧽉-𧽝[radical 191=⾾鬥:鬥𩰊-𩰌鬦𩰍-𩰏鬧𩰐鬨𩰑𩰒鬩𩰓𩰔𬴰𮫔鬪䰗𩰕𮫕䰘𩰖-𩰘鬫𩰙-𩰛鬬鬭𩰜-𩰞𱆉𬴱鬮𩰟]
+[radical 156=⾛走:走赱𧺆𧺇𮚲𳂳赲-赵龪𧺈-𧺎𳂴赶-赸䞖-䞘𧺏-𧺜𬦅𮚳𰷱𲃉𳂵赹-赿䞙-䞜𧺝-𧺵𫎱𬦆-𬦈𮚴𮚵𰷲𲃊𳂶𳂷﨣趀-趋䞝-䞤𧺶-𧻏𫎲𬦉-𬦋𮚶𮚷𰷳𰷴𲃋𳂸𳂹趌-趔䞥-䞪𧻐-𧻮𫎳𫎴𬦌𬦍𮚸𮚹𰷵-𰷷𲃌𳂺趕-趚䞫-䞲𧻯-𧼍𧼝𫎵-𫎷𬦎-𬦑𮚺𮚻𲃍𲃎𳂻𳂼趛-趤䞳-䞸𧼎-𧼜𧼞𧼠-𧼧𫎸-𫎺𬦒𬦓𰷸𰷹𲃏趥-趧䞹-䞼𧼟𧼨-𧽈𫎻𫎼𬦔-𬦗𮚼𰷺𲃐𳂽-𳃀趨䞽-䟀𧽉-𧽝
+[radical 191=⾾鬥:鬥𩰊-𩰌鬦𩰍-𩰏鬧𩰐鬨𩰑𩰒鬩𩰓𩰔𬴰𮫔鬪䰗𩰕𮫕䰘𩰖-𩰘鬫𩰙-𩰛鬬鬭𩰜-𩰞𱆉𬴱鬮𩰟]
 [radical 192=⾿鬯:鬯𮫖𱆊𩰠-𩰣𲌤𩰤-𩰦𮫗𩰧𲌥𩰨𲌦𮫘𳌮鬰𩰩𩰪鬱]
 [radical 193=⿀鬲:鬲𮫙𬴲𩰫𩰬𬴳䰙䰚𩰭𩰮𫙄䰛𩰯𩰰𫙅𬴴𱆋-𱆍鬳䰜𩰱-𩰸𬴵𮹑鬴𩰹-𩰽𬴶𱆎鬵鬶𩰾-𩱂鬷𩱃-𩱆𬴷鬸𩱇-𩱋鬹鬺𩱌-𩱑𫙆𱆏𱆐鬻䰝𩱒-𩱕𬴸𩱖-𩱣𬴹𱆑䰞𩍻𩱤𩱥𬴺𮫚𱆒𩱦-𩱪𱆓𱆔𩱫𩱬𮫛𩱭𩱮𫙇𩱯-𩱳𬴻𬴼𩱴-𩱶𱆕𩱷𩱸]
 [radical 194=⿁鬼:鬼𩱹-𩱼𫙈𬴽𱆖鬽𩱽-𩲉𬴾𮹒鬾-魂䰟𩲊-𩲠𫙉𮫜𮫝𱆗𱆘𳌯-𳌴魃-魆䰠䰡𩲡-𩲹𲌧𲌨𳌵魇䰢䰣𩲺-𩳋𫙊𬴿𮫞𮫟𱆙𱆚𳌶𳌷魈魉𩳌-𩳡𫙋𬵀𮫠𱆛𲌩𳌸-𳌺魊-魏䰤-䰧𩳢-𩳴𫙌𫙍𮫡-𮫣𱆜𱆝𲌪-𲌮𳌻䰨䰩𩳵-𩴅𮫤𱆞𱆟𳌼-𳌾魐䰪𩴆-𩴏𮫥𮫦𲌯𳌿魑-魔𩴐-𩴛𮫧𳍀魕魖䰫-䰭𩴜-𩴭𫙎𳍁-𳍃䰮𩴮-𩴰𮫨魗-魙䰯䰰𩴱-𩴹𱆠𱆡𲌰𳍄𩴺-𩴿𮫩𩵀-𩵃𮫪𩵄-𩵈𮫫𩵉𩵊䰱𱆢]
@@ -183,7 +187,8 @@
 [radical 209=⿐鼻:鼻𮮰-𮮵𪖐鼼鼽𪖑𪖒𱌑𱌒鼾鼿𪖓𪖔𮮶䶊䶋𪖕-𪖙𫜤𱌓齀齁䶌𪖚-𪖠𱌔䶍䶎𪖡-𪖤𬹯𮮷𱌕𱌖䶏𪖥-𪖬齂𪖭𪖮𬹰𳑦齃齄𪖯-𪖲齅齆𪕿𪖳-𪖵𲎡𳑧齇𪖶-𪖽𮮸齈䶐𪖾-𪗀䶑𪗁𪗂𮮹𪗃齉]
 [radical 210=⿑齊⻬齐⻫斉:齊𪗄𬹱𮮺-𮮼齐𪗅齋䶒䶓𪗆齌𠆜𪗇𪗈𬹳𱌗齍𪗉𪗊𬹲𱌘𪗋𪗌𱌙齎𪗎𪗍𳑨齏齑𪗏-𪗓]
 [radical 211=⿒齒⻮齿⻭歯:齒𣦋𮮽齿齓齔𪗔-𪗗龀𮮾齕䶔𪗘-𪗚𮮿龁𱌩𳑮齖-齘䶕䶖𪗛-𪗤𫠙𮯀𮯁𱌚-𱌜龂𫜨𬹺-𬹽𱌪𲎧齙-齡齣䶗-䶙𠎜𪗥-𪗰𪗲-𪗶𮯂𱌝𳑩龃-龆𬹾-𬺀𮯙𱌫-𱌯齢𪗱𫠚𬹴𮯃齤-齩䶚䶛𪗷-𪘁𪘃-𪘍𫜥𬹵-𬹷𮯄𮯆𳑪龇龈𪚏𫜩𫜪𬺁-𬺅𱌰-𱌳𲎨𳑯𪘂𮯅齪-齬䶜䶝𪘎-𪘙𪘛-𪘤𫜦𱌞𲎢𳑫𳑬龉龊𫜫𬺆𬺇𱌴𱌵𳑰𪘚𮯇齭-齱䶞䶟𪘥-𪘸𮯉𮯊𲎣𪚐𫜬𫜭𫠜𬺈-𬺌𱌶-𱌸𲎩𮯈𳑲齲-齷䶠-䶢𪘹-𪙈𫠛𮯍𱌟-𱌡龋龌𫜮𬺍𬺎𱌹𮯋𮯌𮯎齸-齻䶣䶤𪙉-𪙙𮯏𮯐𱌢𱌣𫜯𬺏-𬺑𱌺-𱌽𳑱䶥䶦𪙚-𪙢𮯑-𮯓𱌤𲎤-𲎦𬺒䶧𪙣-𪙯𫜧𬹸𮯔-𮯖𱌥𳑭𲎪齼齽䶨𪙰-𪙵𮯗𱌦𫜰𬺓𬺔䶩䶪𪙶𱌧𬺕𪙷-𪚀𬹹𱌨𲎫𪚁-𪚄𮯘𬺖𪚅-𪚉齾䶫𪚊-𪚎]
-[radical 212=⿓龍⻰龙⻯竜𱷥:龍𳑳龙龎龏𪚑-𪚔𬺛𱍁𬺗𬺘龑𪚕-𪚘𪚚𪚛𳑴䶭䶮𬺜𳑹龒𪚙𱌾𱍂𲎬龓-龕䶬𪚜-𪚟𮯚𱌿龚龛𫜲𪚠𪚡𫜱𬺙𳑵𬺚𳑷𪚢𱍀𲎭𳑸𮹝𪚣𪚤𳑶𬺝龖-龘𪚥][radical 213=⿔龜⻳龟⻲亀:龜𪚦𪛉𮯛-𮯟龟𬺞𪚨䶯𪚩𪚪𱍃䶰𪚫-𪚱𪚳-𪚵𱍄-𱍆𲎮𪚲龝䶱䶲𪚧𪚶-𪚽𫜳𱍇𪚾-𪛀𪓻𪛁-𪛄𱍈龞𪛅𪛆𫠝𪛇𪛈]
+[radical 212=⿓龍⻰龙⻯竜𱷥:龍𳑳龙龎龏𪚑-𪚔𬺛𱍁𬺗𬺘龑𪚕-𪚘𪚚𪚛𳑴䶭䶮𬺜𳑹龒𪚙𱌾𱍂𲎬龓-龕䶬𪚜-𪚟𮯚𱌿龚龛𫜲𪚠𪚡𫜱𬺙𳑵𬺚𳑷𪚢𱍀𲎭𳑸𮹝𪚣𪚤𳑶𬺝龖-龘𪚥]
+[radical 213=⿔龜⻳龟⻲亀:龜𪚦𪛉𮯛-𮯟龟𬺞𪚨䶯𪚩𪚪𱍃䶰𪚫-𪚱𪚳-𪚵𱍄-𱍆𲎮𪚲龝䶱䶲𪚧𪚶-𪚽𫜳𱍇𪚾-𪛀𪓻𪛁-𪛄𱍈龞𪛅𪛆𫠝𪛇𪛈]
 [radical 214=⿕龠:龠龡䶳𪛊𬺟龢𱍉龣䶴𪛋-𪛍𬺠𮯠𱍊龤龥𪛎-𪛑𲎯䶵𪛒𪛓𫜴𬺡𪛔-𪛖]
 [radical end]
 
@@ -191,7 +196,8 @@
 [top_byte	00	TERMINATOR ]
 [top_byte	01	LEVEL-SEPARATOR ]
 [top_byte	02	FIELD-SEPARATOR ]
-[top_byte	03	SPACE PUNCTUATION ]  # 738 primary weights[top_byte	04	SPACE PUNCTUATION ]
+[top_byte	03	SPACE PUNCTUATION ]  # 738 primary weights
+[top_byte	04	SPACE PUNCTUATION ]
 [top_byte	05	SPACE PUNCTUATION ]
 [top_byte	06	SPACE PUNCTUATION ]
 [top_byte	07	SPACE PUNCTUATION ]
@@ -202,7 +208,8 @@
 [top_byte	0C	SYMBOL CURRENCY ]  # 7431 primary weights
 [top_byte	0D	SYMBOL CURRENCY ]
 [top_byte	0E	SYMBOL CURRENCY ]
-[top_byte	0F	DIGIT ]  # 520 primary weights[top_byte	10	DIGIT ]
+[top_byte	0F	DIGIT ]  # 520 primary weights
+[top_byte	10	DIGIT ]
 [top_byte	11	DIGIT ]
 [top_byte	12	DIGIT ]
 [top_byte	13	DIGIT ]
@@ -228,7 +235,8 @@
 [top_byte	27	DIGIT ]
 [top_byte	28	REORDER_RESERVED_BEFORE_LATIN ]
 [top_byte	29	REORDER_RESERVED_BEFORE_LATIN ]
-[top_byte	2A	Latn ]  # 435 primary weights[top_byte	2B	Latn ]
+[top_byte	2A	Latn ]  # 435 primary weights
+[top_byte	2B	Latn ]
 [top_byte	2C	Latn ]
 [top_byte	2D	Latn ]
 [top_byte	2E	Latn ]
@@ -288,7 +296,8 @@
 [top_byte	64	Geor	COMPRESS ]  # 87 primary weights
 [top_byte	65	Armn	COMPRESS ]  # 42 primary weights
 [top_byte	66	Hebr Phnx Samr	COMPRESS ]  # 73 primary weights
-[top_byte	67	Arab	COMPRESS ]  # 242 primary weights[top_byte	68	Syrc Mand Thaa Nkoo Tfng Ethi	COMPRESS ]  # 689 primary weights
+[top_byte	67	Arab	COMPRESS ]  # 242 primary weights
+[top_byte	68	Syrc Mand Thaa Nkoo Tfng Ethi	COMPRESS ]  # 689 primary weights
 [top_byte	69	Deva	COMPRESS ]  # 103 primary weights
 [top_byte	6A	Beng	COMPRESS ]  # 67 primary weights
 [top_byte	6B	Guru	COMPRESS ]  # 58 primary weights
@@ -299,7 +308,8 @@
 [top_byte	70	Knda	COMPRESS ]  # 75 primary weights
 [top_byte	71	Mlym	COMPRESS ]  # 75 primary weights
 [top_byte	72	Sinh Mtei Sylo Saur Kthi Mahj Shrd Khoj Sind Mult Gran Tutg	COMPRESS ]  # 711 primary weights
-[top_byte	73	Newa Tirh Sidd Modi Takr Diak Nand Dogr Ahom Gonm Gong Tols Sund Brah Khar Bhks	COMPRESS ]  # 934 primary weights[top_byte	74	Thai	COMPRESS ]  # 65 primary weights
+[top_byte	73	Newa Tirh Sidd Modi Takr Diak Nand Dogr Ahom Gonm Gong Tols Sund Brah Khar Bhks	COMPRESS ]  # 934 primary weights
+[top_byte	74	Thai	COMPRESS ]  # 65 primary weights
 [top_byte	75	Laoo Tavt	COMPRESS ]  # 132 primary weights
 [top_byte	76	Tibt Zanb Soyo	COMPRESS ]  # 208 primary weights
 [top_byte	77	Marc Lepc Phag Limb Tglg Hano Buhd Tagb Bugi Maka Batk Rjng Kali Mymr Rohg Cakm Khmr	COMPRESS ]  # 809 primary weights
@@ -311,7 +321,8 @@
 [top_byte	7D	Hira Hrkt Kana	COMPRESS ]  # 339 primary weights
 [top_byte	7E	Bopo Yiii Lisu Plrd Wara	COMPRESS ]  # 1451 primary weights
 [top_byte	7F	Pauc Hmng Hmnp Toto Wcho Nagm Lyci Cari Lydi Sidt Ital Goth Dsrt Shaw Dupl Osma Elba Aghb Vith Todr Sora Mroo Tnsa Sunu Gukh Krai Linb Lina Cprt Cpmn Sarb Narb Avst Palm Nbat Hatr Armi Prti Phli Phlp Elym Mani Sogo Sogd Ougr	COMPRESS ]  # 2310 primary weights
-[top_byte	80	Yezi Chrs Ugar Xpeo Xsux Egyp Merc Mero Hluw Tang Nshu Kits	COMPRESS ]  # 14876 primary weights[top_byte	81	Hani Hans Hant ]
+[top_byte	80	Yezi Chrs Ugar Xpeo Xsux Egyp Merc Mero Hluw Tang Nshu Kits	COMPRESS ]  # 14876 primary weights
+[top_byte	81	Hani Hans Hant ]
 [top_byte	82	Hani Hans Hant ]
 [top_byte	83	Hani Hans Hant ]
 [top_byte	84	Hani Hans Hant ]
@@ -6317,7 +6328,8 @@ FDD0 004D;	[, E6 D4, 2E]
 FDD0 004E;	[, E9 A4, 10]
 FDD0 004F;	[, E9 A4, 1E]
 FDD0 0050;	[, E9 A4, 2C]
-FDD0 0051;	[, EF 88, 20]FDD0 0052;	[, , 3D 02]	# CONSTRUCTED FAKE SECONDARY-IGNORABLE
+FDD0 0051;	[, EF 88, 20]
+FDD0 0052;	[, , 3D 02]	# CONSTRUCTED FAKE SECONDARY-IGNORABLE
 
 # VALUES BASED ON UCA
 [first tertiary ignorable [,,]] # CONSTRUCTED
@@ -6335,7 +6347,8 @@ FDD0 0051;	[, EF 88, 20]FDD0 0052;	[, , 3D 02]	# CONSTRUCTED FAKE SECONDARY-IGNO
 [last variable [0B 8E 64, 05, 05]] # U+1E5FF OL ONAL ABBREVIATION SIGN
 [variable top = 0B FF FF FF]
 [first regular [0C 04, 05, 05]] # U+0060 GRAVE ACCENT
-[last regular [80 CC FB, 05, 05]] # U+18CFF KHITAN SMALL SCRIPT CHARACTER-18CFF[first implicit [E0, 05, 05]] # CONSTRUCTED
+[last regular [80 CC FB, 05, 05]] # U+18CFF KHITAN SMALL SCRIPT CHARACTER-18CFF
+[first implicit [E0, 05, 05]] # CONSTRUCTED
 [last implicit [E4, 05, 05]] # CONSTRUCTED
 [first trailing [EF FD, 05, 05]] # U+FFFD REPLACEMENT CHARACTER
 [last trailing [EF FF, 05, 05]] # U+FFFF <noncharacter-FFFF>
@@ -6344,7 +6357,8 @@ FDD0 0051;	[, EF 88, 20]FDD0 0052;	[, , 3D 02]	# CONSTRUCTED FAKE SECONDARY-IGNO
 [reorderingTokens	Adlm	7B=69 ]
 [reorderingTokens	Aghb	7F=53 ]
 [reorderingTokens	Ahom	73=35 ]
-[reorderingTokens	Arab	67=1130 ][reorderingTokens	Armi	7F=23 ]
+[reorderingTokens	Arab	67=1130 ]
+[reorderingTokens	Armi	7F=23 ]
 [reorderingTokens	Armn	65=85 ]
 [reorderingTokens	Avst	7F=55 ]
 [reorderingTokens	Bali	78=62 ]
@@ -6352,7 +6366,8 @@ FDD0 0051;	[, EF 88, 20]FDD0 0052;	[, , 3D 02]	# CONSTRUCTED FAKE SECONDARY-IGNO
 [reorderingTokens	Bass	7A=31 ]
 [reorderingTokens	Batk	77=39 ]
 [reorderingTokens	Beng	6A=56 ]
-[reorderingTokens	Berf	7B=51 ][reorderingTokens	Bhks	73=48 ]
+[reorderingTokens	Berf	7B=51 ]
+[reorderingTokens	Bhks	73=48 ]
 [reorderingTokens	Bopo	7E=76 ]
 [reorderingTokens	Brah	73=57 ]
 [reorderingTokens	Bugi	77=24 ]
@@ -6363,7 +6378,8 @@ FDD0 0051;	[, EF 88, 20]FDD0 0052;	[, , 3D 02]	# CONSTRUCTED FAKE SECONDARY-IGNO
 [reorderingTokens	Cari	7F=50 ]
 [reorderingTokens	Cham	78=53 ]
 [reorderingTokens	Cher	78=173 ]
-[reorderingTokens	Chrs	80=22 ][reorderingTokens	Copt	61=122 ]
+[reorderingTokens	Chrs	80=22 ]
+[reorderingTokens	Copt	61=122 ]
 [reorderingTokens	Cpmn	7F=98 ]
 [reorderingTokens	Cprt	7F=56 ]
 [reorderingTokens	Cyrl	62=451 ]
@@ -6378,11 +6394,13 @@ FDD0 0051;	[, EF 88, 20]FDD0 0052;	[, , 3D 02]	# CONSTRUCTED FAKE SECONDARY-IGNO
 [reorderingTokens	Elym	7F=24 ]
 [reorderingTokens	Ethi	68=482 ]
 [reorderingTokens	FIELD-SEPARATOR	02=1 ]
-[reorderingTokens	Gara	7B=50 ][reorderingTokens	Geor	64=174 ]
+[reorderingTokens	Gara	7B=50 ]
+[reorderingTokens	Geor	64=174 ]
 [reorderingTokens	Glag	63=97 ]
 [reorderingTokens	Gong	73=42 ]
 [reorderingTokens	Gonm	73=49 ]
-[reorderingTokens	Goth	7F=26 ][reorderingTokens	Gran	72=54 ]
+[reorderingTokens	Goth	7F=26 ]
+[reorderingTokens	Gran	72=54 ]
 [reorderingTokens	Grek	61=645 ]
 [reorderingTokens	Gujr	6C=54 ]
 [reorderingTokens	Gukh	7F=31 ]
@@ -6401,7 +6419,8 @@ FDD0 0051;	[, EF 88, 20]FDD0 0052;	[, , 3D 02]	# CONSTRUCTED FAKE SECONDARY-IGNO
 [reorderingTokens	Hrkt	7D=1 ]
 [reorderingTokens	Hung	79=103 ]
 [reorderingTokens	IMPLICIT	E0=5 E1=5 E2=5 E3=5 E4=5 ]
-[reorderingTokens	Ital	7F=36 ][reorderingTokens	Java	78=48 ]
+[reorderingTokens	Ital	7F=36 ]
+[reorderingTokens	Java	78=48 ]
 [reorderingTokens	Kali	77=29 ]
 [reorderingTokens	Kana	7D=689 ]
 [reorderingTokens	Kawi	78=49 ]
@@ -6409,18 +6428,21 @@ FDD0 0051;	[, EF 88, 20]FDD0 0052;	[, , 3D 02]	# CONSTRUCTED FAKE SECONDARY-IGNO
 [reorderingTokens	Khmr	77=54 ]
 [reorderingTokens	Khoj	72=46 ]
 [reorderingTokens	Kits	80=1 ]
-[reorderingTokens	Knda	70=59 ][reorderingTokens	Krai	7F=46 ]
+[reorderingTokens	Knda	70=59 ]
+[reorderingTokens	Krai	7F=46 ]
 [reorderingTokens	Kthi	72=46 ]
 [reorderingTokens	LEVEL-SEPARATOR	01=1 ]
 [reorderingTokens	Lana	78=54 ]
 [reorderingTokens	Laoo	75=280 ]
-[reorderingTokens	Latn	2A=2398 2B=2398 2C=2398 2D=2398 2E=2398 2F=2398 30=2398 31=2398 32=2398 33=2398 34=2398 35=2398 36=2398 37=2398 38=2398 39=2398 3A=2398 3B=2398 3C=2398 3D=2398 3E=2398 3F=2398 40=2398 41=2398 42=2398 43=2398 44=2398 45=2398 46=2398 47=2398 48=2398 49=2398 4A=2398 4B=2398 4C=2398 4D=2398 4E=2398 4F=2398 50=2398 51=2398 52=2398 53=2398 54=2398 55=2398 56=2398 57=2398 58=2398 59=2398 5A=2398 5B=2398 5C=2398 5D=2398 5E=2398 ][reorderingTokens	Lepc	77=40 ]
+[reorderingTokens	Latn	2A=2398 2B=2398 2C=2398 2D=2398 2E=2398 2F=2398 30=2398 31=2398 32=2398 33=2398 34=2398 35=2398 36=2398 37=2398 38=2398 39=2398 3A=2398 3B=2398 3C=2398 3D=2398 3E=2398 3F=2398 40=2398 41=2398 42=2398 43=2398 44=2398 45=2398 46=2398 47=2398 48=2398 49=2398 4A=2398 4B=2398 4C=2398 4D=2398 4E=2398 4F=2398 50=2398 51=2398 52=2398 53=2398 54=2398 55=2398 56=2398 57=2398 58=2398 59=2398 5A=2398 5B=2398 5C=2398 5D=2398 5E=2398 ]
+[reorderingTokens	Lepc	77=40 ]
 [reorderingTokens	Limb	77=32 ]
 [reorderingTokens	Lina	7F=342 ]
 [reorderingTokens	Linb	7F=212 ]
 [reorderingTokens	Lisu	7E=42 ]
 [reorderingTokens	Lyci	7F=30 ]
-[reorderingTokens	Lydi	7F=27 ][reorderingTokens	Mahj	72=37 ]
+[reorderingTokens	Lydi	7F=27 ]
+[reorderingTokens	Mahj	72=37 ]
 [reorderingTokens	Maka	77=20 ]
 [reorderingTokens	Mand	68=26 ]
 [reorderingTokens	Mani	7F=37 ]
@@ -6436,7 +6458,8 @@ FDD0 0051;	[, EF 88, 20]FDD0 0052;	[, , 3D 02]	# CONSTRUCTED FAKE SECONDARY-IGNO
 [reorderingTokens	Mtei	72=48 ]
 [reorderingTokens	Mult	72=38 ]
 [reorderingTokens	Mymr	77=120 ]
-[reorderingTokens	Nagm	7F=28 ][reorderingTokens	Nand	73=50 ]
+[reorderingTokens	Nagm	7F=28 ]
+[reorderingTokens	Nand	73=50 ]
 [reorderingTokens	Narb	7F=30 ]
 [reorderingTokens	Nbat	7F=32 ]
 [reorderingTokens	Newa	73=61 ]
@@ -6452,7 +6475,8 @@ FDD0 0051;	[, EF 88, 20]FDD0 0052;	[, , 3D 02]	# CONSTRUCTED FAKE SECONDARY-IGNO
 [reorderingTokens	Ougr	7F=19 ]
 [reorderingTokens	PUNCTUATION	05=1 06=1 07=1 08=1 09=1 0A=1 0B=1 ]
 [reorderingTokens	Palm	7F=24 ]
-[reorderingTokens	Pauc	7F=58 ][reorderingTokens	Perm	63=39 ]
+[reorderingTokens	Pauc	7F=58 ]
+[reorderingTokens	Perm	63=39 ]
 [reorderingTokens	Phag	77=53 ]
 [reorderingTokens	Phli	7F=20 ]
 [reorderingTokens	Phlp	7F=19 ]
@@ -6471,7 +6495,8 @@ FDD0 0051;	[, EF 88, 20]FDD0 0052;	[, , 3D 02]	# CONSTRUCTED FAKE SECONDARY-IGNO
 [reorderingTokens	Shaw	7F=49 ]
 [reorderingTokens	Shrd	72=55 ]
 [reorderingTokens	Sidd	73=52 ]
-[reorderingTokens	Sidt	7F=27 ][reorderingTokens	Sind	72=48 ]
+[reorderingTokens	Sidt	7F=27 ]
+[reorderingTokens	Sind	72=48 ]
 [reorderingTokens	Sinh	72=60 ]
 [reorderingTokens	Sogd	7F=23 ]
 [reorderingTokens	Sogo	7F=31 ]
@@ -6491,7 +6516,8 @@ FDD0 0051;	[, EF 88, 20]FDD0 0052;	[, , 3D 02]	# CONSTRUCTED FAKE SECONDARY-IGNO
 [reorderingTokens	Tang	80=1 ]
 [reorderingTokens	Tavt	75=301 ]
 [reorderingTokens	Tayo	78=50 ]
-[reorderingTokens	Telu	6F=59 ][reorderingTokens	Tfng	68=58 ]
+[reorderingTokens	Telu	6F=59 ]
+[reorderingTokens	Tfng	68=58 ]
 [reorderingTokens	Tglg	77=20 ]
 [reorderingTokens	Thaa	68=40 ]
 [reorderingTokens	Thai	74=286 ]
@@ -6509,7 +6535,8 @@ FDD0 0051;	[, EF 88, 20]FDD0 0052;	[, , 3D 02]	# CONSTRUCTED FAKE SECONDARY-IGNO
 [reorderingTokens	Wcho	7F=45 ]
 [reorderingTokens	Xpeo	80=45 ]
 [reorderingTokens	Xsux	80=1119 ]
-[reorderingTokens	Yezi	80=45 ][reorderingTokens	Yiii	7E=1165 ]
+[reorderingTokens	Yezi	80=45 ]
+[reorderingTokens	Yiii	7E=1165 ]
 [reorderingTokens	Zanb	76=43 ]
 
 
@@ -6532,7 +6559,8 @@ FDD0 0051;	[, EF 88, 20]FDD0 0052;	[, , 3D 02]	# CONSTRUCTED FAKE SECONDARY-IGNO
 [categories	Sc	0D{CURRENCY}=54 0E{CURRENCY}=8 2A{Latn}=1 2B{Latn}=1 2C{Latn}=1 2D{Latn}=1 2E{Latn}=1 2F{Latn}=1 30{Latn}=1 31{Latn}=1 32{Latn}=1 33{Latn}=1 34{Latn}=1 35{Latn}=1 36{Latn}=1 37{Latn}=1 38{Latn}=1 39{Latn}=1 3A{Latn}=1 3B{Latn}=1 3C{Latn}=1 3D{Latn}=1 3E{Latn}=1 3F{Latn}=1 40{Latn}=1 41{Latn}=1 42{Latn}=1 43{Latn}=1 44{Latn}=1 45{Latn}=1 46{Latn}=1 47{Latn}=1 48{Latn}=1 49{Latn}=1 4A{Latn}=1 4B{Latn}=1 4C{Latn}=1 4D{Latn}=1 4E{Latn}=1 4F{Latn}=1 50{Latn}=1 51{Latn}=1 52{Latn}=1 53{Latn}=1 54{Latn}=1 55{Latn}=1 56{Latn}=1 57{Latn}=1 58{Latn}=1 59{Latn}=1 5A{Latn}=1 5B{Latn}=1 5C{Latn}=1 5D{Latn}=1 5E{Latn}=1 ]
 [categories	Sk	0C{SYMBOL}=91 0D{CURRENCY}=5 ]
 [categories	Sm	0C{SYMBOL}=949 0D{CURRENCY}=10 ]
-[categories	So	0C{SYMBOL}=2588 0D{CURRENCY}=3759 14{DIGIT}=1 16{DIGIT}=3 18{DIGIT}=1 1A{DIGIT}=1 1C{DIGIT}=1 1E{DIGIT}=1 20{DIGIT}=1 22{DIGIT}=1 2A{Latn}=77 2B{Latn}=77 2C{Latn}=77 2D{Latn}=77 2E{Latn}=77 2F{Latn}=77 30{Latn}=77 31{Latn}=77 32{Latn}=77 33{Latn}=77 34{Latn}=77 35{Latn}=77 36{Latn}=77 37{Latn}=77 38{Latn}=77 39{Latn}=77 3A{Latn}=77 3B{Latn}=77 3C{Latn}=77 3D{Latn}=77 3E{Latn}=77 3F{Latn}=77 40{Latn}=77 41{Latn}=77 42{Latn}=77 43{Latn}=77 44{Latn}=77 45{Latn}=77 46{Latn}=77 47{Latn}=77 48{Latn}=77 49{Latn}=77 4A{Latn}=77 4B{Latn}=77 4C{Latn}=77 4D{Latn}=77 4E{Latn}=77 4F{Latn}=77 50{Latn}=77 51{Latn}=77 52{Latn}=77 53{Latn}=77 54{Latn}=77 55{Latn}=77 56{Latn}=77 57{Latn}=77 58{Latn}=77 59{Latn}=77 5A{Latn}=77 5B{Latn}=77 5C{Latn}=77 5D{Latn}=77 5E{Latn}=77 67{Arab}=2 78{Tale Talu Lana Tayo Cham Bali Java Kawi Mong Olck Onao Cher Osge}=2 7F{Pauc Hmng Hmnp Toto Wcho Nagm Lyci Cari Lydi Sidt Ital Goth Dsrt Shaw Dupl Osma Elba Aghb Vith Todr Sora Mroo Tnsa Sunu Gukh Krai Linb Lina Cprt Cpmn Sarb Narb Avst Palm Nbat Hatr Armi Prti Phli Phlp Elym Mani Sogo Sogd Ougr}=1 E5{TRAILING}=1 E6{TRAILING}=1 E7{TRAILING}=1 E8{TRAILING}=1 E9{TRAILING}=1 EA{TRAILING}=1 EB{TRAILING}=1 EC{TRAILING}=1 ED{TRAILING}=1 EE{TRAILING}=1 EF{TRAILING}=1 ][categories	Zl	03{SPACE}=1 ]
+[categories	So	0C{SYMBOL}=2588 0D{CURRENCY}=3759 14{DIGIT}=1 16{DIGIT}=3 18{DIGIT}=1 1A{DIGIT}=1 1C{DIGIT}=1 1E{DIGIT}=1 20{DIGIT}=1 22{DIGIT}=1 2A{Latn}=77 2B{Latn}=77 2C{Latn}=77 2D{Latn}=77 2E{Latn}=77 2F{Latn}=77 30{Latn}=77 31{Latn}=77 32{Latn}=77 33{Latn}=77 34{Latn}=77 35{Latn}=77 36{Latn}=77 37{Latn}=77 38{Latn}=77 39{Latn}=77 3A{Latn}=77 3B{Latn}=77 3C{Latn}=77 3D{Latn}=77 3E{Latn}=77 3F{Latn}=77 40{Latn}=77 41{Latn}=77 42{Latn}=77 43{Latn}=77 44{Latn}=77 45{Latn}=77 46{Latn}=77 47{Latn}=77 48{Latn}=77 49{Latn}=77 4A{Latn}=77 4B{Latn}=77 4C{Latn}=77 4D{Latn}=77 4E{Latn}=77 4F{Latn}=77 50{Latn}=77 51{Latn}=77 52{Latn}=77 53{Latn}=77 54{Latn}=77 55{Latn}=77 56{Latn}=77 57{Latn}=77 58{Latn}=77 59{Latn}=77 5A{Latn}=77 5B{Latn}=77 5C{Latn}=77 5D{Latn}=77 5E{Latn}=77 67{Arab}=2 78{Tale Talu Lana Tayo Cham Bali Java Kawi Mong Olck Onao Cher Osge}=2 7F{Pauc Hmng Hmnp Toto Wcho Nagm Lyci Cari Lydi Sidt Ital Goth Dsrt Shaw Dupl Osma Elba Aghb Vith Todr Sora Mroo Tnsa Sunu Gukh Krai Linb Lina Cprt Cpmn Sarb Narb Avst Palm Nbat Hatr Armi Prti Phli Phlp Elym Mani Sogo Sogd Ougr}=1 E5{TRAILING}=1 E6{TRAILING}=1 E7{TRAILING}=1 E8{TRAILING}=1 E9{TRAILING}=1 EA{TRAILING}=1 EB{TRAILING}=1 EC{TRAILING}=1 ED{TRAILING}=1 EE{TRAILING}=1 EF{TRAILING}=1 ]
+[categories	Zl	03{SPACE}=1 ]
 [categories	Zp	03{SPACE}=1 ]
 [categories	Zs	03{SPACE}=1 04{SPACE}=17 05{PUNCTUATION}=6 0C{SYMBOL}=29 61{Grek Copt}=1 ]
 

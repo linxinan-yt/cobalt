@@ -17,7 +17,8 @@ nl{
         }
 "America:Cancun"{
             ec{"Cancun"}
-        }        "America:Lower_Princes"{
+        }
+        "America:Lower_Princes"{
             ec{"Beneden Prinsen Kwartier"}
         }
         "America:Mexico_City"{
@@ -34,7 +35,8 @@ nl{
         }
 "America:Sao_Paulo"{
             ec{"São Paulo"}
-        }        "America:St_Barthelemy"{
+        }
+        "America:St_Barthelemy"{
             ec{"Saint-Barthélemy"}
         }
         "America:St_Johns"{
@@ -217,7 +219,8 @@ nl{
         }
 "Europe:Tirane"{
             ec{"Tirana"}
-        }        "Europe:Vatican"{
+        }
+        "Europe:Vatican"{
             ec{"Vaticaanstad"}
         }
         "Europe:Vienna"{

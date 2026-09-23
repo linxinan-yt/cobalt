@@ -2602,6 +2602,7 @@ void NavigationRequest::BeginNavigation() {
     // NavigationRequest.
     return;
   }
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 
   // Send any potential navigation start automatic beacons for this frame.
   frame_tree_node_->current_frame_host()
@@ -6297,7 +6298,7 @@ void NavigationRequest::OnRedirectChecksComplete(
       std::move(headers_update_params_);
   headers_update_params_.Clear();
 
-if (remove_extra_headers_on_cross_origin_redirect_ &&
+  if (remove_extra_headers_on_cross_origin_redirect_ &&
       !url::Origin::Create(commit_params_->redirects.back())
            .IsSameOriginWith(common_params_->url)) {
     CHECK(commit_params_->is_browser_initiated);
@@ -6318,7 +6319,6 @@ if (remove_extra_headers_on_cross_origin_redirect_ &&
     nav_entry->set_extra_headers(std::string());
     nav_entry->SetRemoveExtraHeadersOnCrossOriginRedirect(false);
   }
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
 
   if (shared_storage_writable_opted_in_) {
     // On a redirect, the PermissionsPolicy may change the status of this
@@ -12057,7 +12057,8 @@ NavigationRequest::GetMutableRuntimeFeatureStateContext() {
   return runtime_feature_state_context_;
 }
 
-const blink::RuntimeFeatureStateContext&
+const 
+blink::RuntimeFeatureStateContext&
 NavigationRequest::GetRuntimeFeatureStateContext() const {
   return runtime_feature_state_context_;
 }

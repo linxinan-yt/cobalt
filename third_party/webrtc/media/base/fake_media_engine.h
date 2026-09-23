@@ -790,7 +790,7 @@ class FakeVideoMediaSendChannel
 
   void GenerateSendKeyFrame(uint32_t ssrc,
                             const std::vector<std::string>& rids) override;
-RtcpMode SendCodecRtcpMode() const override { return RtcpMode::kCompound; }  void SetSsrcListChangedCallback(
+  void SetSsrcListChangedCallback(
       absl::AnyInvocable<void(const std::set<uint32_t>&)> /* callback */)
       override {}
 

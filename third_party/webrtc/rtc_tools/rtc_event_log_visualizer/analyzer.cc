@@ -404,17 +404,19 @@ void EventLogAnalyzer::CreateTotalIncomingBitrateGraph(
     Plot* plot,
     bool include_overhead) const {
   webrtc::CreateTotalIncomingBitrateGraph(parsed_log_, config_, plot,
-                                          include_overhead);}
+                                          include_overhead);
+}
 
 void EventLogAnalyzer::CreateTotalOutgoingBitrateGraph(
     Plot* plot,
     bool show_detector_state,
     bool show_alr_state,
-bool show_link_capacity,
+    bool show_link_capacity,
     bool include_overhead) const {
   webrtc::CreateTotalOutgoingBitrateGraph(parsed_log_, config_, plot,
                                           show_detector_state, show_alr_state,
-                                          show_link_capacity, include_overhead);}
+                                          show_link_capacity, include_overhead);
+}
 
 void EventLogAnalyzer::CreateGoogCcSimulationGraph(Plot* plot) const {
   webrtc::CreateGoogCcSimulationGraph(parsed_log_, config_, plot);
@@ -429,7 +431,8 @@ void EventLogAnalyzer::CreateScreamSimulationBitrateGraph(Plot* plot) const {
 }
 
 void EventLogAnalyzer::CreateScreamSimulationRefWindowGraph(Plot* plot) const {
-  webrtc::CreateScreamSimulationRefWindowGraph(parsed_log_, config_, plot);}
+  webrtc::CreateScreamSimulationRefWindowGraph(parsed_log_, config_, plot);
+}
 
 void EventLogAnalyzer::CreateScreamSimulationRatiosGraph(Plot* plot) const {
   webrtc::CreateScreamSimulationRatiosGraph(parsed_log_, config_, plot);

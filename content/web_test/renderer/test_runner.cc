@@ -316,7 +316,8 @@ class TestRunnerBindings final : public gin::Wrappable<TestRunnerBindings> {
   #if !BUILDFLAG(IS_COBALT)
   void GetBluetoothManualChooserEvents(v8::Local<v8::Function> callback);
 #endif
-  gin::Dictionary GetClipboardReadState(v8::Isolate* isolate);  void GetManifestThen(v8::Local<v8::Function> callback);
+  gin::Dictionary GetClipboardReadState(v8::Isolate* isolate);
+  void GetManifestThen(v8::Local<v8::Function> callback);
   std::string GetWritableDirectory();
   void InsertStyleSheet(const std::string& source_code);
   void UpdateAllLifecyclePhasesAndComposite();
@@ -688,7 +689,8 @@ gin::ObjectTemplateBuilder TestRunnerBindings::GetObjectTemplateBuilder(
       // readHtmlCalled, readUnsanitizedCustomFormatCalled,
       // readAvailableFormatsCalled.
       .SetMethod("getClipboardReadState",
-                 &TestRunnerBindings::GetClipboardReadState)      .SetMethod("getManifestThen", &TestRunnerBindings::GetManifestThen)
+                 &TestRunnerBindings::GetClipboardReadState)
+      .SetMethod("getManifestThen", &TestRunnerBindings::GetManifestThen)
       // Returns the absolute path to a directory this test can write data in.
       // This returns the path to a fresh empty directory every time this method
       // is called. Additionally when this method is called any previously

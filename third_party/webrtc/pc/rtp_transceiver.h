@@ -357,7 +357,7 @@ class RtpTransceiver : public RtpTransceiverInterface {
       RtpTransceiverDirection new_direction) override;
   std::optional<RtpTransceiverDirection> current_direction() const override;
   std::optional<RtpTransceiverDirection> fired_direction() const override;
-// Records the user's intent to use Sframe and fires negotiation needed.
+  // Records the user's intent to use Sframe and fires negotiation needed.
   // Triggered by the sender/receiver when
   // CreateSframeEncryptorOrError/CreateSframeDecryptorOrError is called.
   // Returns an error if Sframe has already been locked to false by a
@@ -369,7 +369,8 @@ class RtpTransceiver : public RtpTransceiverInterface {
   // new transceivers created from remote offers.
   void ApplySframeEnabled(bool sframe_enabled);
   // Returns the current Sframe state.
-  std::optional<bool> SframeEnabled() const override;  bool receptive() const override;
+  std::optional<bool> SframeEnabled() const override;
+  bool receptive() const override;
   RTCError StopStandard() override;
   void StopInternal() override;
   RTCError SetCodecPreferences(std::span<RtpCodecCapability> codecs) override;
@@ -437,12 +438,13 @@ class RtpTransceiver : public RtpTransceiverInterface {
   VoiceMediaReceiveChannelInterface* voice_media_receive_channel();
 
  private:
-VoiceChannelFactoryInterface* voice_channel_factory() const {
+  VoiceChannelFactoryInterface* voice_channel_factory() const {
     return context_->voice_channel_factory();
   }
   VideoChannelFactoryInterface* video_channel_factory() const {
     return context_->video_channel_factory();
-  }  ConnectionContext* context() const { return context_; }
+  }
+  ConnectionContext* context() const { return context_; }
   CodecVendor& codec_vendor() {
     return *codec_lookup_helper_->GetCodecVendor();
   }
@@ -483,7 +485,8 @@ VoiceChannelFactoryInterface* voice_channel_factory() const {
   std::vector<RtpHeaderExtensionCapability>
   GetOfferedAndImplementedHeaderExtensions(
       const MediaContentDescription* content) const;
-// Configures the channel with the provided content description.
+
+  // Configures the channel with the provided content description.
   // Pushes a multi-stage execution task into the provided
   // `ScopedOperationsBatcher`.
   //
@@ -515,6 +518,7 @@ VoiceChannelFactoryInterface* voice_channel_factory() const {
   //    the cached parameters on the senders.
   void SetChannelContent(absl::AnyInvocable<RTCError() &&> set_content,
                          ScopedOperationsBatcher& batcher);
+
   const Environment env_;
   // Enforce that this object is created, used and destroyed on one thread.
   // This TQ typically represents the signaling thread.
@@ -542,17 +546,16 @@ VoiceChannelFactoryInterface* voice_channel_factory() const {
   bool reused_for_addtrack_ = false;
   bool has_ever_been_used_to_send_ = false;
   bool receptive_ RTC_GUARDED_BY(thread_) = false;
-bool receptive_n_ RTC_GUARDED_BY(context()->network_thread()) = false;
+  bool receptive_n_ RTC_GUARDED_BY(context()->network_thread()) = false;
   bool packet_notified_after_receptive_
       RTC_GUARDED_BY(context()->network_thread()) = false;
   RtpTransportInternal* rtp_transport_
       RTC_GUARDED_BY(context()->network_thread()) = nullptr;
+
   // Accessed on both thread_ and the network thread. Considered safe
   // because all access on the network thread is within an invoke()
   // from thread_.
   std::unique_ptr<ChannelInterface> channel_ = nullptr;
-  std::unique_ptr<ConnectionContext::MediaEngineReference> media_engine_ref_
-      RTC_GUARDED_BY(context()->worker_thread());
   ConnectionContext* const context_;
   CodecLookupHelper* const codec_lookup_helper_;
   LegacyStatsCollectorInterface* const legacy_stats_;

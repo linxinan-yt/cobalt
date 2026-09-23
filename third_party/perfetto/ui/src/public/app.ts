@@ -36,6 +36,7 @@ export interface Route {
   fragment: string;
   args: RouteArgs;
 }
+
 /**
  * The API endpoint to interact programmatically with the UI before a trace has
  * been loaded. This is passed to plugins' OnActivate().
@@ -91,10 +92,12 @@ export interface App {
    */
   navigate(newHash: string): void;
 
-/**
+  /**
    * Returns the route/page we're on.
    */
-  getCurrentRoute(): Route;  openTraceFromFile(file: File): Promise<Trace>;
+  getCurrentRoute(): Route;
+
+  openTraceFromFile(file: File): Promise<Trace>;
   openTraceFromUrl(url: string): Promise<Trace>;
   openTraceFromStream(stream: TraceStream): Promise<Trace>;
   openTraceFromBuffer(args: {

@@ -36,7 +36,8 @@ export function renderButtonDemo(): m.Children {
         rightIcon,
         showAsGrid,
         showInlineWithText,
-tooltip,        ...rest
+        tooltip,
+        ...rest
       }) =>
         showAsGrid
           ? m(
@@ -58,19 +59,25 @@ tooltip,        ...rest
                     label: variant,
                     variant,
                     intent,
-tooltip: tooltip ? 'Tooltip text' : undefined,                  });
+                    tooltip: tooltip ? 'Tooltip text' : undefined,
+                  });
                 });
               }),
             )
-: (() => {
-              const button = m(Button, {                icon: icon ? 'send' : undefined,
+          : (() => {
+              const button = m(Button, {
+                icon: icon ? 'send' : undefined,
                 rightIcon: rightIcon ? 'arrow_forward' : undefined,
                 label: (label ? 'Button' : undefined) as string,
                 onclick: () => console.log('button pressed'),
-...rest,
-              }),
-              showInlineWithText && ' text',
-            ]),      initialOpts: {
+                tooltip: tooltip ? 'Tooltip text' : undefined,
+                ...rest,
+              });
+              return showInlineWithText
+                ? m('span', 'Inline ', button, ' text')
+                : button;
+            })(),
+      initialOpts: {
         label: true,
         icon: true,
         rightIcon: false,
@@ -86,7 +93,8 @@ tooltip: tooltip ? 'Tooltip text' : undefined,                  });
         showAsGrid: false,
         showInlineWithText: false,
         rounded: false,
-tooltip: false,      },
+        tooltip: false,
+      },
     }),
 
     m('.pf-widget-doc-section', [
@@ -160,7 +168,8 @@ m(Button, {label: 'Danger', intent: Intent.Danger})`,
         ]),
         m('li', [
           m('strong', 'Button Groups: '),
-'Group related buttons with ButtonGroup or SegmentedButtons',        ]),
+          'Group related buttons with ButtonGroup',
+        ]),
       ]),
     ]),
   ];

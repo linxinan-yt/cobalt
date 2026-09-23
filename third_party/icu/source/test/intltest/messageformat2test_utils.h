@@ -28,7 +28,8 @@ class TestCase : public UMemory {
     /* const */ Locale locale;
     /* const */ std::map<UnicodeString, Formattable> arguments;
     /* const */ UErrorCode expectedError;
-/* const */ bool arbitraryError = false;    /* const */ bool expectedNoSyntaxError;
+    /* const */ bool arbitraryError = false;
+    /* const */ bool expectedNoSyntaxError;
     /* const */ bool hasExpectedOutput;
     /* const */ UnicodeString expected;
     /* const */ bool hasLineNumberAndOffset;
@@ -45,13 +46,15 @@ class TestCase : public UMemory {
     std::map<UnicodeString, Formattable> getArguments() const { return std::move(arguments); }
     const UnicodeString& getTestName() const { return testName; }
     bool expectSuccess() const {
-return (!ignoreError && U_SUCCESS(expectedError) && !arbitraryError);    }
+        return (!ignoreError && U_SUCCESS(expectedError) && !arbitraryError);
+    }
     bool expectFailure() const {
         return (!ignoreError && U_FAILURE(expectedError));
     }
-bool expectArbitraryError() const {
+    bool expectArbitraryError() const {
         return arbitraryError;
-    }    bool expectNoSyntaxError() const {
+    }
+    bool expectNoSyntaxError() const {
         return expectedNoSyntaxError;
     }
     UErrorCode expectedErrorCode() const {
@@ -110,12 +113,13 @@ bool expectArbitraryError() const {
             return *this;
         }
         Builder& setDateArgument(const UnicodeString& k, UDate date) {
-// This ignores time zones; the data-driven tests represent date/time values
+            // This ignores time zones; the data-driven tests represent date/time values
             // as a datestamp, so this code suffices to handle those.
             // Date/time literal strings would be handled using `setArgument()` with a string
             // argument.
             DateInfo dateInfo = { date, {} }; // No time zone or calendar name
-            arguments[k] = Formattable(std::move(dateInfo));            return *this;
+            arguments[k] = Formattable(std::move(dateInfo));
+            return *this;
         }
         Builder& setDecimalArgument(const UnicodeString& k, std::string_view decimal, UErrorCode& errorCode) {
             THIS_ON_ERROR(errorCode);
@@ -144,10 +148,11 @@ bool expectArbitraryError() const {
             expectedError = U_SUCCESS(errorCode) ? U_ZERO_ERROR : errorCode;
             return *this;
         }
-Builder& setExpectedAnyError() {
+        Builder& setExpectedAnyError() {
             arbitraryError = true;
             return *this;
-        }        Builder& setNoSyntaxError() {
+        }
+        Builder& setNoSyntaxError() {
             expectNoSyntaxError = true;
             return *this;
         }
@@ -190,7 +195,8 @@ Builder& setExpectedAnyError() {
         bool hasExpectedOutput;
         UnicodeString expected;
         UErrorCode expectedError;
-bool arbitraryError;        bool expectNoSyntaxError;
+        bool arbitraryError;
+        bool expectNoSyntaxError;
         bool hasLineNumberAndOffset;
         uint32_t lineNumber;
         uint32_t offset;
@@ -198,7 +204,8 @@ bool arbitraryError;        bool expectNoSyntaxError;
         const MFFunctionRegistry* functionRegistry  = nullptr; // Not owned
 
         public:
-Builder() : pattern(""), locale(Locale::getDefault()), hasExpectedOutput(false), expected(""), expectedError(U_ZERO_ERROR), arbitraryError(false), expectNoSyntaxError(false), hasLineNumberAndOffset(false), ignoreError(false) {}    };
+        Builder() : pattern(""), locale(Locale::getDefault()), hasExpectedOutput(false), expected(""), expectedError(U_ZERO_ERROR), arbitraryError(false), expectNoSyntaxError(false), hasLineNumberAndOffset(false), ignoreError(false) {}
+    };
 
     private:
     TestCase(const Builder& builder) :
@@ -207,7 +214,8 @@ Builder() : pattern(""), locale(Locale::getDefault()), hasExpectedOutput(false),
         locale(builder.locale),
         arguments(builder.arguments),
         expectedError(builder.expectedError),
-arbitraryError(builder.arbitraryError),        expectedNoSyntaxError(builder.expectNoSyntaxError),
+        arbitraryError(builder.arbitraryError),
+        expectedNoSyntaxError(builder.expectNoSyntaxError),
         hasExpectedOutput(builder.hasExpectedOutput),
         expected(builder.expected),
         hasLineNumberAndOffset(builder.hasLineNumberAndOffset),
@@ -277,9 +285,10 @@ class TestUtils {
             failExpectedSuccess(tmsg, testCase, errorCode, parseError.line, parseError.offset);
             return;
         }
-if (testCase.expectArbitraryError() && U_SUCCESS(errorCode)) {
+        if (testCase.expectArbitraryError() && U_SUCCESS(errorCode)) {
             failExpectedArbitraryError(tmsg, testCase);
-        }        if (testCase.expectFailure() && errorCode != testCase.expectedErrorCode()) {
+        }
+        if (testCase.expectFailure() && errorCode != testCase.expectedErrorCode()) {
             failExpectedFailure(tmsg, testCase, errorCode);
             return;
         }
@@ -332,10 +341,11 @@ if (testCase.expectArbitraryError() && U_SUCCESS(errorCode)) {
         tmsg.errln(testCase.getTestName() + " failed test with wrong error code; pattern: " + testCase.getPattern() + " and error code " + UnicodeString(u_errorName(errorCode)) + " and expected error code: " + UnicodeString(u_errorName(testCase.expectedErrorCode())));
         errorCode.reset();
     }
-static void failExpectedArbitraryError(IntlTest& tmsg, const TestCase& testCase) {
+    static void failExpectedArbitraryError(IntlTest& tmsg, const TestCase& testCase) {
         tmsg.dataerrln(testCase.getTestName());
         tmsg.errln(testCase.getTestName() + " succeeded although any error was expected; pattern: " + testCase.getPattern());
-    }    static void failWrongOutput(IntlTest& tmsg, const TestCase& testCase, const UnicodeString& result) {
+    }
+    static void failWrongOutput(IntlTest& tmsg, const TestCase& testCase, const UnicodeString& result) {
         tmsg.dataerrln(testCase.getTestName());
         tmsg.logln(testCase.getTestName() + " failed test with wrong output; pattern: " + testCase.getPattern() + " and expected output = " + testCase.expectedOutput() + " and actual output = " + result);
     }

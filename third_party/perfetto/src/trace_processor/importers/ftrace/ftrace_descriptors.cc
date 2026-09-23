@@ -24,7 +24,8 @@ namespace perfetto {
 namespace trace_processor {
 namespace {
 
-std::array<FtraceMessageDescriptor, 616> descriptors{{    {nullptr, 0, {}},
+std::array<FtraceMessageDescriptor, 616> descriptors{{
+    {nullptr, 0, {}},
     {nullptr, 0, {}},
     {nullptr, 0, {}},
     {
@@ -6629,7 +6630,7 @@ std::array<FtraceMessageDescriptor, 616> descriptors{{    {nullptr, 0, {}},
             {"seqno", ProtoSchemaType::kUint64},
         },
     },
-{
+    {
         "fwtp_perfetto_counter",
         5,
         {
@@ -6876,7 +6877,8 @@ std::array<FtraceMessageDescriptor, 616> descriptors{{    {nullptr, 0, {}},
             {"state", ProtoSchemaType::kUint32},
             {"s2idle", ProtoSchemaType::kUint32},
         },
-    },}};
+    },
+}};
 
 }  // namespace
 

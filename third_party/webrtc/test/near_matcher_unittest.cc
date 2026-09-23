@@ -74,8 +74,7 @@ TEST(NearMatcherTest, CanMatchTypesWrappedIntoOptional) {
               Near(Timestamp::Seconds(1), TimeDelta::Millis(10)));
 }
 
-// Unless issues.webrtc.org/42224652 is agreed to be implemented, potentially
-// negative `Timestamp` values need special treatment.TEST(NearMatcherTest, CanMatchTimestampNearZero) {
+TEST(NearMatcherTest, CanMatchTimestampNearZero) {
   EXPECT_THAT(Timestamp::Zero(), Near(Timestamp::Zero()));
 
   // Check lower bound behave as usual when `max_error.us() == expected.us()`

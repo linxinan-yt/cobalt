@@ -466,6 +466,8 @@ TEST(UtilsTest, SaturatingMultiply) {
   EXPECT_EQ(SaturatingMultiply(kMax, -2), kMin);
   EXPECT_EQ(SaturatingMultiply(-9223372036854776, 1000), kMin);
   EXPECT_EQ(SaturatingMultiply(1000, -9223372036854776), kMin);
-}}  // namespace
+}
+
+}  // namespace
 }  // namespace base
 }  // namespace perfetto

@@ -853,7 +853,8 @@ DateTimePatternGenerator::addICUPatterns(const Locale& locale, UErrorCode& statu
         
         if (U_SUCCESS(status)) {
             UnicodeString conflictingPattern;
-addPatternWithOptionalSkeleton(pattern, nullptr, false, conflictingPattern, status);        }
+            addPatternWithOptionalSkeleton(pattern, nullptr, false, conflictingPattern, status);
+        }
     }
 }
 

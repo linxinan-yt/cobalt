@@ -114,7 +114,8 @@ hr{
         FJ{"Fidži"}
         FK{"Falklandski Otoci (Malvini)"}
         FM{"Mikronezija"}
-FO{"Farski Otoci"}        FR{"Francuska"}
+FO{"Farski Otoci"}
+        FR{"Francuska"}
         GA{"Gabon"}
         GB{"Ujedinjeno Kraljevstvo"}
         GD{"Grenada"}

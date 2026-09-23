@@ -17,8 +17,11 @@
 
 namespace jni_zero {
 
+#if defined(__cpp_concepts) && __cpp_concepts >= 201907L
+
 // Conversion from a Java object to a std::optional.
-// A null Java reference results in std::nullopt.template <internal::IsOptional T>
+// A null Java reference results in std::nullopt.
+template <internal::IsOptional T>
 inline T FromJniType(JNIEnv* env, const JavaRef<jobject>& j_object) {
   if (!j_object) {
     return std::nullopt;

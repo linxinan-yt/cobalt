@@ -571,7 +571,8 @@ permillion{
                 gender{"neuter"}
                 one{"{0} പാർട്ട് / മില്ല്യൺ"}
                 other{"{0} പാർട്‌സ് / മില്ല്യൺ"}
-            }            permyriad{
+            }
+            permyriad{
                 case{
                     accusative{
                         one{"{0} പിരമിഡിനെ"}

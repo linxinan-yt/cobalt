@@ -85,8 +85,10 @@ class ConnectionContext final : public RefCountedNonVirtual<ConnectionContext> {
     return media_engine_.get();
   }
 
-VoiceChannelFactoryInterface* voice_channel_factory();
-  VideoChannelFactoryInterface* video_channel_factory();  bool is_configured_for_media() const { return is_configured_for_media_; }
+  VoiceChannelFactoryInterface* voice_channel_factory();
+  VideoChannelFactoryInterface* video_channel_factory();
+
+  bool is_configured_for_media() const { return is_configured_for_media_; }
 
   Thread* signaling_thread() { return signaling_thread_; }
   const Thread* signaling_thread() const { return signaling_thread_; }
@@ -118,8 +120,10 @@ VoiceChannelFactoryInterface* voice_channel_factory();
   // For use by tests.
   void set_use_rtx(bool use_rtx) { use_rtx_ = use_rtx; }
 
-// Apply global audio options. Must be called on the worker thread.
-  void ApplyGlobalAudioOptions(const AudioOptions& options); protected:
+  // Apply global audio options. Must be called on the worker thread.
+  void ApplyGlobalAudioOptions(const AudioOptions& options);
+
+ protected:
   friend class MediaEngineReference;
   // Registers a media engine usage. Calls Init() to initialize the media engine
   // on the first reference. Must be called on the worker thread.

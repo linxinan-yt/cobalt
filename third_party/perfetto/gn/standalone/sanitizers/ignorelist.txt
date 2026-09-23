@@ -11,4 +11,5 @@ src:*sqlite3.c
 # Same problem, in libprotobuf's DiskSourceTree::OpenDiskFile -> fstat().
 fun:*OpenDiskFile*
 
-# Same problem, in libunwindstack's MemoryFileAtOffset::Init -> fstat().fun:_ZN11unwindstack18MemoryFileAtOffset4InitERKNSt4__Cr12basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEmm
+# Same problem, in libunwindstack's MemoryFileAtOffset::Init -> fstat().
+fun:_ZN11unwindstack18MemoryFileAtOffset4InitERKNSt4__Cr12basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEmm

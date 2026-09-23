@@ -1678,7 +1678,8 @@ other{"{0} przyspieszenia ziemskiego"}
                         other{"{0} nocy"}
                     }
                 }
-dnam{"noce"}                few{"{0} noce"}
+dnam{"noce"}
+                few{"{0} noce"}
                 gender{"feminine"}
                 many{"{0} nocy"}
                 one{"{0} noc"}

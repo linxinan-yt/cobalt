@@ -96,8 +96,8 @@ class ProxyMediaResource : public MediaResource {
                      std::unique_ptr<ProxyDemuxerStream> video)
       : audio_(std::move(audio)), video_(std::move(video)) {}
 
-  std::vector<DemuxerStream*> GetAllStreams() override {
-    std::vector<DemuxerStream*> streams;
+  std::vector<raw_ptr<DemuxerStream>> GetAllStreams() override {
+    std::vector<raw_ptr<DemuxerStream>> streams;
     if (audio_) {
       streams.push_back(audio_.get());
     }
@@ -701,7 +701,7 @@ void StarboardRendererWrapper::CreateVideoFrame_OnImageReady(
 
   auto frame = VideoFrame::WrapSharedImage(
       format, std::move(shared_image), gpu::SyncToken(), std::move(release_cb),
-      coded_size, visible_rect, natural_size, base::TimeDelta());
+      visible_rect, natural_size, base::TimeDelta());
   if (!frame) {
     LOG(ERROR) << __func__ << " failed to create video frame";
     return;

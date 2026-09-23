@@ -428,7 +428,8 @@ es{
 dnam{"noches"}
                 gender{"feminine"}
                 one{"{0} noche"}
-                other{"{0} noches"}                per{"{0} por noche"}
+                other{"{0} noches"}
+                per{"{0} por noche"}
             }
             quarter{
                 dnam{"trimestres"}
@@ -1981,7 +1982,8 @@ dnam{"noches"}
                 other{"{0}kn"}
             }
             light-speed{
-dnam{"luz"}                one{"{0}luz"}
+dnam{"luz"}
+                one{"{0}luz"}
                 other{"{0}luz"}
             }
             meter-per-second{

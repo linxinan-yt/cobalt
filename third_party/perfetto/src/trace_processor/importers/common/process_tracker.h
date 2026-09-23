@@ -216,8 +216,9 @@ class ProcessTracker {
   // to the pid.
   UniquePid GetOrCreateProcessWithoutMainThread(int64_t pid);
 
-// Non-mutating lookup of the upid for |pid| (cf. GetThreadOrNull).
-  std::optional<UniquePid> GetProcessOrNull(int64_t pid) {    auto* it = pids_.Find(pid);
+  // Non-mutating lookup of the upid for |pid| (cf. GetThreadOrNull).
+  std::optional<UniquePid> GetProcessOrNull(int64_t pid) {
+    auto* it = pids_.Find(pid);
     return it ? std::make_optional(*it) : std::nullopt;
   }
 
@@ -246,13 +247,14 @@ class ProcessTracker {
   // traces, we always have the "swapper" (idle) process having tid/pid 0.
   void SetPidZeroIsUpidZeroIdleProcess();
 
-// Returns the inserter accumulating args for a process; args from all callers
+  // Returns the inserter accumulating args for a process; args from all callers
   // merge into one arg set, committed in OnEventsFullyExtracted. The reference
   // is valid until the next AddArgsToProcess call.
   ArgsTracker::BoundInserter& AddArgsToProcess(UniquePid upid);
 
   // As AddArgsToProcess, for a thread.
   ArgsTracker::BoundInserter& AddArgsToThread(UniqueTid utid);
+
   // Called when the trace was fully loaded.
   void OnEventsFullyExtracted();
 

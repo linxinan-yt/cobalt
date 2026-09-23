@@ -32,7 +32,9 @@ namespace perfetto::protos::pbzero {
 class Callstack_Decoder;
 }  // namespace perfetto::protos::pbzero
 
-namespace perfetto::trace_processor {class DummyMemoryMapping;
+namespace perfetto::trace_processor {
+
+class DummyMemoryMapping;
 class TraceProcessorContext;
 class VirtualMemoryMapping;
 
@@ -46,7 +48,7 @@ class StackProfileSequenceState final
   virtual ~StackProfileSequenceState() override;
 
   // Returns `nullptr`if non could be found.
-VirtualMemoryMapping* FindOrInsertMapping(
+  VirtualMemoryMapping* FindOrInsertMapping(
       PacketSequenceStateGeneration* state,
       uint64_t iid);
   std::optional<CallsiteId> FindOrInsertCallstack(
@@ -81,7 +83,8 @@ VirtualMemoryMapping* FindOrInsertMapping(
       std::optional<UniquePid> upid,
       uint64_t iid);
   std::optional<FrameId> FindOrInsertFrame(PacketSequenceStateGeneration* state,
-                                           std::optional<UniquePid> upid,                                           uint64_t iid);
+                                           std::optional<UniquePid> upid,
+                                           uint64_t iid);
 
   TraceProcessorContext* const context_;
   DummyMemoryMapping* dummy_mapping_for_interned_frames_ = nullptr;

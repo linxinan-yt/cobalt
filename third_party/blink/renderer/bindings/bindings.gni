@@ -334,6 +334,7 @@ if (is_cobalt) {
       "*identity_provider*",
       "*identity_request_provider*",
       "*identity_resolve_options*",
+      "*resolve_redirect_request_method*",
       "*identity_user_info*",
       "*identityprovider*",
       "*interest_group*",

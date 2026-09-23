@@ -2,7 +2,8 @@
 // License & terms of use: http://www.unicode.org/copyright.html
 // Generated using tools/cldr/cldr-to-icu/
 pa{
-AuxExemplarCharacters{"[\u200C\u200Dਃ ਂ {ਲ਼}]"}    ExemplarCharacters{
+AuxExemplarCharacters{"[\u200C\u200Dਃ ਂ {ਲ਼}]"}
+    ExemplarCharacters{
         "[ੱ ੰ ਂ ਼ ੦ ੧ ੨ ੩ ੪ ੫ ੬ ੭ ੮ ੯ ੴ ੳ ਉ ਊ ਓ ਅ ਆ ਐ ਔ ੲ ਇ ਈ ਏ ਸ{ਸ਼} ਹ ਕ ਖ{ਖ਼} ਗ{ਗ਼}"
         " ਘ ਙ ਚ ਛ ਜ{ਜ਼} ਝ ਞ ਟ ਠ ਡ ਢ ਣ ਤ ਥ ਦ ਧ ਨ ਪ ਫ{ਫ਼} ਬ ਭ ਮ ਯ ਰ ਲ{ਲ਼} ਵ ੜ ੍ ਾ ਿ ੀ ੁ"
         " ੂ ੇ ੈ ੋ ੌ]"
@@ -20,7 +21,8 @@ accountingFormat%alphaNextToNumber{"¤ #,##,##0.00"}
             }
             rationalFormats{
                 rationalUsage{"never"}
-            }            symbols{
+            }
+            symbols{
                 decimal{"."}
                 exponential{"E"}
                 group{","}
@@ -1502,7 +1504,8 @@ general{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }        number{
+        }
+        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ، ٫ 、﹑､︑]",

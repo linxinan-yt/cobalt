@@ -64,7 +64,8 @@ typedef enum ECleanupI18NType {
     UCLN_I18N_LIST_FORMATTER,
     UCLN_I18N_NUMSYS,
     UCLN_I18N_MF2_UNISETS,
-UCLN_I18N_MF2_DATE_PARSERS,    UCLN_I18N_COUNT /* This must be last */
+    UCLN_I18N_MF2_DATE_PARSERS,
+    UCLN_I18N_COUNT /* This must be last */
 } ECleanupI18NType;
 
 /* Main library cleanup registration function. */

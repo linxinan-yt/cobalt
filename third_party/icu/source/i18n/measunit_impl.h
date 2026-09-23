@@ -331,14 +331,6 @@ class U_I18N_API_CLASS MeasureUnitImpl : public UMemory {
      */
     uint64_t constantDenominator = 0;
 
-    /**
-     * Represents the unit constant denominator.
-     *
-     * NOTE:
-     *   if set to 0, it means that the constant is not set.
-     */
-    uint64_t constantDenominator = 0;
-
     // For calling serialize
     // TODO(icu-units#147): revisit serialization
     friend class number::impl::LongNameHandler;

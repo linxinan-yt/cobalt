@@ -96,14 +96,15 @@ base::StatusOr<RefPtr<PerfInvocation>> PerfInvocation::Builder::Build() {
     // recording was using leader sampling (this would require proper handling
     // of HEADER_GROUP_DESC). But this is fine since the samples will still be
     // attributed to the first counter in the group.
-tables::ProfilerSessionTable::Row session_row;
+    tables::ProfilerSessionTable::Row session_row;
     session_row.source = context_->storage->InternString("linux.perf");
     if (const char* unit = TimebaseUnit(entry.attr); unit) {
       session_row.timebase_unit = context_->storage->InternString(unit);
     }
     auto perf_session_id = context_->storage->mutable_profiler_session_table()
                                ->Insert(session_row)
-                               .id;    RefPtr<PerfEventAttr> attr(
+                               .id;
+    RefPtr<PerfEventAttr> attr(
         new PerfEventAttr(context_, perf_session_id, entry.attr));
     if (!first_attr) {
       first_attr = attr;
@@ -130,9 +131,10 @@ tables::ProfilerSessionTable::Row session_row;
         !first_attr->id_offset_from_end().has_value()))) {
     return base::ErrStatus("No id offsets for multiple perf_event_attr");
   }
-return RefPtr<PerfInvocation>(new PerfInvocation(context_, std::move(first_attr),
-                                                   std::move(attrs_by_id),
-                                                   attr_with_ids_.size() == 1));}
+  return RefPtr<PerfInvocation>(
+      new PerfInvocation(context_, std::move(first_attr),
+                         std::move(attrs_by_id), attr_with_ids_.size() == 1));
+}
 
 base::StatusOr<RefPtr<PerfEventAttr>> PerfInvocation::FindAttrForRecord(
     const perf_event_header& header,
@@ -166,8 +168,9 @@ base::StatusOr<RefPtr<PerfEventAttr>> PerfInvocation::FindAttrForRecord(
 }
 
 bool PerfInvocation::ReadEventId(const perf_event_header& header,
-const TraceBlobView& payload,
-                                 uint64_t& id) const {  const PerfEventAttr& first = *attrs_by_id_.GetIterator().value();
+                                 const TraceBlobView& payload,
+                                 uint64_t& id) const {
+  const PerfEventAttr& first = *attrs_by_id_.GetIterator().value();
   Reader reader(payload.copy());
 
   if (header.type != PERF_RECORD_SAMPLE) {
@@ -199,8 +202,9 @@ void PerfInvocation::SetEventName(uint64_t event_id, std::string name) {
 }
 
 void PerfInvocation::SetEventName(uint32_t type,
-uint64_t config,
-                                  const std::string& name) {  for (auto it = attrs_by_id_.GetIterator(); it; ++it) {
+                                  uint64_t config,
+                                  const std::string& name) {
+  for (auto it = attrs_by_id_.GetIterator(); it; ++it) {
     if (it.value()->type() == type && it.value()->config() == config) {
       it.value()->set_event_name(name);
     }
@@ -208,8 +212,9 @@ uint64_t config,
 }
 
 void PerfInvocation::AddBuildId(int32_t pid,
-std::string filename,
-                                BuildId build_id) {  build_ids_.Insert({pid, std::move(filename)}, std::move(build_id));
+                                std::string filename,
+                                BuildId build_id) {
+  build_ids_.Insert({pid, std::move(filename)}, std::move(build_id));
 }
 
 std::optional<BuildId> PerfInvocation::LookupBuildId(
@@ -227,8 +232,9 @@ std::optional<BuildId> PerfInvocation::LookupBuildId(
 void PerfInvocation::SetCmdline(const std::vector<std::string>& args) {
   for (auto it = attrs_by_id_.GetIterator(); it; ++it) {
     auto session_id = it.value()->perf_session_id();
-(*context_->storage->mutable_profiler_session_table())[session_id]
-        .set_cmdline(context_->storage->InternString(            base::StringView(base::Join(args, " "))));
+    (*context_->storage->mutable_profiler_session_table())[session_id]
+        .set_cmdline(context_->storage->InternString(
+            base::StringView(base::Join(args, " "))));
   }
 }
 

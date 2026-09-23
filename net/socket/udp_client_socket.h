@@ -8,7 +8,6 @@
 #include <stdint.h>
 
 #include "net/base/net_export.h"
-#include "net/net_buildflags.h"
 #include "net/socket/datagram_client_socket.h"
 #include "net/socket/socket_descriptor.h"
 #include "net/socket/udp_socket.h"
@@ -59,12 +58,13 @@ class NET_EXPORT_PRIVATE UDPClientSocket final : public DatagramClientSocket {
   int Read(IOBuffer* buf,
            int buf_len,
            CompletionOnceCallback callback) override;
-base::expected<DatagramsMetadata, Error> ReadMultiple(
+  base::expected<DatagramsMetadata, Error> ReadMultiple(
       IOBuffer* buf,
       size_t buf_len,
       size_t maximum_packet_size,
       base::OnceCallback<void(base::expected<DatagramsMetadata, Error>)>
-          callback) override;  int Write(IOBuffer* buf,
+          callback) override;
+  int Write(IOBuffer* buf,
             int buf_len,
             CompletionOnceCallback callback,
             const NetworkTrafficAnnotationTag& traffic_annotation) override;

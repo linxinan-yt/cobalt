@@ -183,11 +183,13 @@ void TurnServer::OnInternalPacket(AsyncPacketSocket* socket,
   uint16_t msg_type = GetBE16(payload);
   if (!IsTurnChannelData(msg_type)) {
     // This is a STUN message.
-HandleStunMessage(&conn, payload, packet.ecn());  } else {
+    HandleStunMessage(&conn, payload, packet.ecn());
+  } else {
     // This is a channel message; let the allocation handle it.
     TurnServerAllocation* allocation = FindAllocation(&conn);
     if (allocation) {
-allocation->HandleChannelData(payload, packet.ecn());    }
+      allocation->HandleChannelData(payload, packet.ecn());
+    }
     if (stun_message_observer_ != nullptr) {
       stun_message_observer_->ReceivedChannelData(payload);
     }
@@ -195,7 +197,8 @@ allocation->HandleChannelData(payload, packet.ecn());    }
 }
 
 void TurnServer::HandleStunMessage(TurnServerConnection* conn,
-std::span<const uint8_t> payload,                                   EcnMarking ecn) {
+                                   std::span<const uint8_t> payload,
+                                   EcnMarking ecn) {
   RTC_DCHECK_RUN_ON(thread_);
   TurnMessage msg;
   ByteBufferReader buf(payload);
@@ -776,7 +779,8 @@ void TurnServerAllocation::HandleChannelBindRequest(const TurnMessage* msg) {
   SendResponse(&response);
 }
 
-void TurnServerAllocation::HandleChannelData(std::span<const uint8_t> payload,                                             EcnMarking ecn) {
+void TurnServerAllocation::HandleChannelData(std::span<const uint8_t> payload,
+                                             EcnMarking ecn) {
   // Extract the channel number from the data.
   uint16_t channel_id = GetBE16(payload);
   auto channel = FindChannel(channel_id);
@@ -800,7 +804,8 @@ void TurnServerAllocation::OnExternalPacket(AsyncPacketSocket* socket,
     ByteBufferWriter buf;
     buf.WriteUInt16(channel->id);
     buf.WriteUInt16(static_cast<uint16_t>(packet.payload().size()));
-buf.Write(std::span<const uint8_t>(packet.payload()));    server_->Send(&conn_, buf, packet.ecn());
+    buf.Write(std::span<const uint8_t>(packet.payload()));
+    server_->Send(&conn_, buf, packet.ecn());
   } else if (!server_->enable_permission_checks_ ||
              HasPermission(packet.source_address().ipaddr())) {
     // No channel, but a permission exists. Send as a data indication.
@@ -808,7 +813,8 @@ buf.Write(std::span<const uint8_t>(packet.payload()));    server_->Send(&conn_, 
     msg.AddAttribute(std::make_unique<StunXorAddressAttribute>(
         STUN_ATTR_XOR_PEER_ADDRESS, packet.source_address()));
     msg.AddAttribute(std::make_unique<StunByteStringAttribute>(
-STUN_ATTR_DATA, packet.payload()));    server_->SendStun(&conn_, &msg, packet.ecn());
+        STUN_ATTR_DATA, packet.payload()));
+    server_->SendStun(&conn_, &msg, packet.ecn());
   } else {
     RTC_LOG(LS_WARNING)
         << ToString() << ": Received external packet without permission, peer="

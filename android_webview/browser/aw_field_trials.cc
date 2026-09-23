@@ -91,7 +91,8 @@ void AwFieldTrials::RegisterFeatureOverrides(base::FeatureList* feature_list) {
 
 #if BUILDFLAG(ENABLE_VALIDATING_COMMAND_DECODER)
   // DISABLED_TEMPORARY: https://crbug.com/40593023
-  // Disable the passthrough on WebView.  aw_feature_overrides.DisableFeature(
+  // Disable the passthrough on WebView.
+  aw_feature_overrides.DisableFeature(
       ::features::kDefaultPassthroughCommandDecoder);
 #endif
 

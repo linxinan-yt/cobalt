@@ -15,7 +15,8 @@
 import {HighPrecisionTimeSpan} from '../base/high_precision_time_span';
 import type {time} from '../base/time';
 import {calculateResolution} from '../base/resolution';
-import type {  MinimapContentProvider,
+import type {
+  MinimapContentProvider,
   MinimapManager,
   MinimapRow,
 } from '../public/minimap';

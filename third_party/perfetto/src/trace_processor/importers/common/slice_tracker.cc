@@ -21,7 +21,6 @@
 #include <utility>
 
 #include "perfetto/base/logging.h"
-#include "perfetto/ext/base/murmur_hash.h"
 #include "src/trace_processor/importers/common/args_translation_table.h"
 #include "src/trace_processor/importers/common/import_logs_tracker.h"
 #include "src/trace_processor/importers/common/slice_tracker.h"
@@ -109,6 +108,7 @@ void SliceTracker::LogMaxDepthExceeded(const SliceInfo& parent,
   StringId parent_name_id =
       parent.row.ToRowReference(slices).name().value_or(kNullStringId);
   StringId current_name_id = name.is_null() ? kNullStringId : name;
+
   context_->import_logs_tracker->RecordParserLog(
       stats::slice_max_depth_exceeded, timestamp,
       [this, parent_name_id,
@@ -483,7 +483,8 @@ void SliceTracker::StackPop(TrackInfo& track_info) {
     // Move translatable args out first (deferred to end-of-trace); reset then
     // commits whatever remains.
     MaybeAddTranslatableArgs(info);
-    info.args.reset();  }
+    info.args.reset();
+  }
   stack.pop_back();
 }
 

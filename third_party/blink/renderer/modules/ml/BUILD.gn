@@ -69,7 +69,8 @@ if (webnn_enable_graph_dump) {
     # TODO(b/543717825): Cobalt excludes "ml" from the "modules" component's sub
     #_modules, so it no longer gets modules_export.h via that target's
     # allow_circular_includes_from. Depend on it directly instead.
-    deps += [ "//third_party/blink/renderer/modules" ]  }
+    deps += [ "//third_party/blink/renderer/modules" ]
+  }
 }
 
 source_set("operand_id_hash_traits") {

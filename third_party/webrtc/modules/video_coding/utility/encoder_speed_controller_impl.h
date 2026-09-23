@@ -42,11 +42,12 @@ class EncoderSpeedControllerImpl : public webrtc::EncoderSpeedController {
   // thereafter be configured with requested settings.
   EncodeSettings GetEncodeSettings(FrameEncodingInfo frame_info) override;
 
-// Should be called after each frame has completed encoding. If a baseline
+  // Should be called after each frame has completed encoding. If a baseline
   // comparison speed was set in the `EncodeSettings`, the `baseline_results`
   // parameter should be set with the results corresponding to those settings.
   void OnEncodedFrame(EncodeResults results,
                       std::optional<EncodeResults> baseline_results) override;
+
   const Config& config() const { return config_; }
 
  private:
@@ -54,9 +55,10 @@ class EncoderSpeedControllerImpl : public webrtc::EncoderSpeedController {
                              TimeDelta start_frame_interval);
 
   bool ShouldIncreaseSpeed() const;
-bool ShouldDecreaseSpeedDisregardingPsnr() const;
+  bool ShouldDecreaseSpeedDisregardingPsnr() const;
   bool PsnrProbeRequiredForNextSlowerSpeed() const;
   bool ShouldRecheckPsnrGain(Timestamp current_time) const;
+
   void ResetStats();
   void IncreaseSpeed();
   void DecreaseSpeed();
@@ -71,7 +73,8 @@ bool ShouldDecreaseSpeedDisregardingPsnr() const;
   double slow_filtered_encode_time_ms_;
   double fast_filtered_encode_time_ms_;
   double filtered_qp_;
-// Timestamp of last request for a PSNR measurement, either due to periodic
+
+  // Timestamp of last request for a PSNR measurement, either due to periodic
   // sampling or requested for speed index change. Negative infinity if not set.
   Timestamp last_psnr_probe_;
 
@@ -83,7 +86,8 @@ bool ShouldDecreaseSpeedDisregardingPsnr() const;
     int speed_level;
     Timestamp timestamp;
   };
-  std::optional<PsnrGainCheck> last_psnr_gain_check_;};
+  std::optional<PsnrGainCheck> last_psnr_gain_check_;
+};
 
 }  // namespace webrtc
 

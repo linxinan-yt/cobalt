@@ -358,7 +358,8 @@ void NetworkManager::SubscribeError(void* tag,
 }
 
 void NetworkManager::UnsubscribeError(void* tag) {
-  error_callbacks_.RemoveReceivers(tag);}
+  error_callbacks_.RemoveReceivers(tag);
+}
 
 NetworkManagerBase::NetworkManagerBase()
     : enumeration_permission_(NetworkManager::ENUMERATION_ALLOWED) {}

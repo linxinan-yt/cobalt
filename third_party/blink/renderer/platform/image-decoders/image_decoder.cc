@@ -219,7 +219,8 @@ String SniffMimeTypeInternal(scoped_refptr<SegmentReader> reader) {
     return "image/bmp";
   }
 #if BUILDFLAG(ENABLE_DAV1D_DECODER)
-if (AVIFImageDecoder::MatchesAVIFSignature(fast_reader)) {    return "image/avif";
+if (AVIFImageDecoder::MatchesAVIFSignature(fast_reader)) {
+    return "image/avif";
   }
 #endif
 #if BUILDFLAG(ENABLE_JXL_DECODER)

@@ -38,7 +38,8 @@ it{
         }
         "America:Bogota"{
             ec{"Bogotá"}
-        }        "America:Cayenne"{
+        }
+        "America:Cayenne"{
             ec{"Caienna"}
         }
         "America:Guadeloupe"{
@@ -70,7 +71,8 @@ it{
         }
 "America:Santarem"{
             ec{"Santarém"}
-        }        "America:Sao_Paulo"{
+        }
+        "America:Sao_Paulo"{
             ec{"San Paolo"}
         }
         "America:St_Barthelemy"{
@@ -248,7 +250,8 @@ it{
         }
 "Europe:Tirane"{
             ec{"Tirana"}
-        }        "Europe:Vatican"{
+        }
+        "Europe:Vatican"{
             ec{"Città del Vaticano"}
         }
         "Europe:Warsaw"{

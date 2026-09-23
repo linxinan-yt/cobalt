@@ -22,12 +22,14 @@ import {
   STR_NULL,
 } from '../../trace_processor/query_result';
 import type {PerfettoPlugin} from '../../public/plugin';
-import type {Trace} from '../../public/trace';import {TrackNode} from '../../public/workspace';
+import type {Trace} from '../../public/trace';
+import {TrackNode} from '../../public/workspace';
 import {SLICE_TRACK_KIND} from '../../public/track_kinds';
 import {SliceTrack} from '../../components/tracks/slice_track';
 import {SourceDataset} from '../../trace_processor/dataset';
 import GpuPlugin, {SUMMARY_GROUP_SORT_BASE} from '../dev.perfetto.Gpu';
 import StandardGroupsPlugin from '../dev.perfetto.StandardGroups';
+
 export default class implements PerfettoPlugin {
   static readonly id = 'com.android.GpuWorkPeriod';
   static readonly dependencies = [GpuPlugin, StandardGroupsPlugin];
@@ -113,7 +115,8 @@ export default class implements PerfettoPlugin {
         },
         renderer: track,
       });
-// The per-GPU split (when there is more than one GPU) is flattened into
+
+      // The per-GPU split (when there is more than one GPU) is flattened into
       // the group name rather than adding a second nesting level, keeping the
       // tree one level deep under GPU.
       let groupName = 'Work Period';
@@ -125,7 +128,8 @@ export default class implements PerfettoPlugin {
           it.gpuName ?? undefined,
           it.machineName ?? undefined,
         );
-        groupName = `Work Period (${gpu.displayName})${gpu.maybeMachineLabel()}`;      }
+        groupName = `Work Period (${gpu.displayName})${gpu.maybeMachineLabel()}`;
+      }
 
       let group = groupsByName.get(groupName);
       if (group === undefined) {

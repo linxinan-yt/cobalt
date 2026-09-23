@@ -33,7 +33,8 @@ export function renderCopyableLink(): m.Children {
           url: 'https://perfetto.dev/docs/',
         }),
       initialOpts: {
-        noicon: false,      },
+        noicon: false,
+      },
     }),
   ];
 }

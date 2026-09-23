@@ -822,7 +822,7 @@ dcsctp::DcSctpOptions DcSctpTransport::CreateDcSctpOptions(
 
 std::vector<uint8_t> DcSctpTransport::GenerateConnectionToken(
     const Environment& env) {
-Random random(env.clock().TimeInMicroseconds());
+  Random random(env.clock().TimeInMicroseconds());
   auto temp_factory = std::make_unique<dcsctp::DcSctpSocketFactory>();
   return temp_factory->GenerateConnectionToken(
       CreateDcSctpOptions({}, env.field_trials()),
@@ -833,6 +833,7 @@ Random random(env.clock().TimeInMicroseconds());
 
 size_t DcSctpTransport::EarlyReceivedPacketCountForTesting() const {
   RTC_DCHECK_RUN_ON(network_thread_);
-  return early_received_packets_.size();}
+  return early_received_packets_.size();
+}
 
 }  // namespace webrtc

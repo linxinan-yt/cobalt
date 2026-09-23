@@ -135,9 +135,6 @@ your `trace_converter_template.py` script.
 
 </details>
 
-If you only have symbolized function names, call `add_frame(...)` with just the
-interned function name ID: e.g. `add_frame(packet.interned_data, FRAME_MAIN, FUNC_MAIN)`.
-
 ![Associating Tracks with Processes](/docs/images/synthetic-track-event-process-counter.png)
 
 You can query process-associated counter data using SQL in the Perfetto UI's Query tab or with [Trace Processor](/docs/analysis/getting-started.md):
@@ -1331,7 +1328,9 @@ flamegraph changes, as `RenderOutput` allocates many more objects than
 ![Callstacks by Objects](/docs/images/synthetic-track-event-callstack-objects.png)
 
 As with `callstack_weight`, only samples which actually have that argument are
-included in the measure.### Linking Related Events with Correlation IDs
+included in the measure.
+
+### Linking Related Events with Correlation IDs
 
 Correlation IDs provide a way to visually link slices that are part of the same
 logical operation, even when they are not causally connected. Unlike flows,

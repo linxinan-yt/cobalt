@@ -19,12 +19,10 @@
 
 #include <cstdint>
 
-#include "perfetto/trace_processor/ref_counted.h"
 #include "src/trace_processor/importers/common/parser_types.h"
 #include "src/trace_processor/importers/proto/frame_timeline_event_parser.h"
 #include "src/trace_processor/importers/proto/gpu_event_parser.h"
 #include "src/trace_processor/importers/proto/graphics_frame_event_parser.h"
-#include "src/trace_processor/importers/proto/packet_sequence_state_generation.h"
 #include "src/trace_processor/importers/proto/proto_importer_module.h"
 
 #include "protos/perfetto/trace/gpu/gpu_counter_event.pbzero.h"
@@ -39,9 +37,10 @@ class GraphicsEventModule : public ProtoImporterModule {
 
   ~GraphicsEventModule() override;
 
-ModuleResult TokenizePacket(const TokenizePacketArgs& args) override;
+  ModuleResult TokenizePacket(const TokenizePacketArgs& args) override;
 
   void ParseField(const ParseFieldArgs& args) override;
+
  private:
   // Parses the GpuCounterDescriptor portion of a GpuCounterEvent (if present)
   // at tokenization time: interns the counter tracks and inserts the counter

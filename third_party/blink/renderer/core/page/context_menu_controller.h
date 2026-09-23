@@ -126,7 +126,8 @@ bool ShowContextMenu(LocalFrame*,
                        ui::mojom::blink::MenuSourceType);
   virtual bool ShowContextMenu(LocalFrame*,
                                const PhysicalOffset&,
-                               ui::mojom::blink::MenuSourceType,                               const MouseEvent* mouse_event);
+                               ui::mojom::blink::MenuSourceType,
+                               const MouseEvent* mouse_event);
 
   bool ShouldShowContextMenuFromTouch(const ContextMenuData&);
 

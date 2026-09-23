@@ -2,7 +2,8 @@
 // License & terms of use: http://www.unicode.org/copyright.html
 // Generated using tools/cldr/cldr-to-icu/
 root{
-Version{"48"}    zoneStrings{
+Version{"48"}
+    zoneStrings{
         "Africa:Asmera"{
             ec{"Asmara"}
         }
@@ -104,7 +105,8 @@ Version{"48"}    zoneStrings{
         }
         "America:Miquelon"{
             ec{"Saint-Pierre"}
-        }        "America:Noronha"{
+        }
+        "America:Noronha"{
             ec{"Fernando de Noronha"}
         }
         "America:North_Dakota:Beulah"{
@@ -186,7 +188,8 @@ Version{"48"}    zoneStrings{
         }
         "Europe:Chisinau"{
             ec{"Chișinău"}
-        }        "Europe:Kiev"{
+        }
+        "Europe:Kiev"{
             ec{"Kyiv"}
         }
         "Europe:Tirane"{

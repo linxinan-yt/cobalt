@@ -347,7 +347,8 @@ gl{
             night{
 dnam{"noites"}
                 one{"{0} noite"}
-                other{"{0} noites"}                per{"{0} por noite"}
+                other{"{0} noites"}
+                per{"{0} por noite"}
             }
             quarter{
                 dnam{"trimestres"}

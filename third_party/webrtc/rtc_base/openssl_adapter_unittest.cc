@@ -161,7 +161,8 @@ TEST(OpenSSLAdapterTest, TestBeginSSLBeforeConnection) {
 // build and run this test.
 TEST(OpenSSLAdaptorTest, TestRealSSLConnection) {
   PhysicalSocketServer socket_server;
-test::RunLoop main_thread(&socket_server);
+  test::RunLoop main_thread(&socket_server);
+
   constexpr absl::string_view kHostname = "webrtc.org";
   constexpr int kPort = 443;
   constexpr TimeDelta kTimeout = TimeDelta::Millis(10000);
@@ -198,9 +199,9 @@ test::RunLoop main_thread(&socket_server);
   EXPECT_TRUE(connect_result == 0 || ssl_adapter->IsBlocking());
 
   // Wait for SSL handshake to complete.
-EXPECT_THAT(WaitUntil([&] { return handler.IsSSLConnected(); },
-                        ::testing::IsTrue(), {.timeout = kTimeout}),
-              IsRtcOk())      << "SSL handshake failed. Socket state: " << ssl_adapter->GetState()
+  EXPECT_TRUE(WaitUntil([&] { return handler.IsSSLConnected(); },
+                        {.timeout = kTimeout}))
+      << "SSL handshake failed. Socket state: " << ssl_adapter->GetState()
       << ", Has error: " << handler.HasError();
 
   // Verify the connection is established.

@@ -162,7 +162,7 @@ ModuleResult ProfileModule::TokenizeStreamingProfilePacket(
   protos::pbzero::StreamingProfilePacket::Decoder decoder(
       streaming_profile_packet.data, streaming_profile_packet.size);
 
-// We have to resolve the timestamps of a StreamingProfilePacket during
+  // We have to resolve the timestamps of a StreamingProfilePacket during
   // tokenization. If we did this during parsing instead, the tokenization of a
   // subsequent ThreadDescriptor with a new reference timestamp would cause us
   // to later calculate timestamps based on the wrong reference value during
@@ -176,7 +176,8 @@ ModuleResult ProfileModule::TokenizeStreamingProfilePacket(
   if (PERFETTO_UNLIKELY(packet_ts < 0)) {
     context_->import_logs_tracker->RecordTokenizationLog(
         stats::streaming_profile_invalid_timestamp, packet->offset());
-    return ModuleResult::Handled();  }
+    return ModuleResult::Handled();
+  }
 
   std::optional<int64_t> trace_ts = context_->clock_tracker->ToTraceTime(
       ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_MONOTONIC), packet_ts);
@@ -446,11 +447,13 @@ void ProfileModule::ParseProfilePacket(
   for (auto it = packet.process_dumps(); it; ++it) {
     protos::pbzero::ProfilePacket::ProcessHeapSamples::Decoder entry(*it);
 
-// End of the window: the state this dump represents.
-    std::optional<int64_t> maybe_window_end =        context_->clock_tracker->ToTraceTime(
+    // End of the window: the state this dump represents.
+    std::optional<int64_t> maybe_window_end =
+        context_->clock_tracker->ToTraceTime(
             ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_MONOTONIC_COARSE),
             static_cast<int64_t>(entry.timestamp()));
-if (!maybe_window_end)      continue;
+    if (!maybe_window_end)
+      continue;
 
     int64_t window_end = *maybe_window_end;
 

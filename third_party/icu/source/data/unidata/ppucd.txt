@@ -154,7 +154,8 @@ value;age;14.0;V14_0
 value;age;15.0;V15_0
 value;age;15.1;V15_1
 value;age;16.0;V16_0
-value;age;17.0;V17_0value;age;2.0;V2_0
+value;age;17.0;V17_0
+value;age;2.0;V2_0
 value;age;2.1;V2_1
 value;age;3.0;V3_0
 value;age;3.1;V3_1
@@ -520,7 +521,8 @@ value;blk;Tibetan;Tibetan
 value;blk;Tifinagh;Tifinagh
 value;blk;Tirhuta;Tirhuta
 value;blk;Todhri;Todhri
-value;blk;Tolong_Siki;Tolong_Sikivalue;blk;Toto;Toto
+value;blk;Tolong_Siki;Tolong_Siki
+value;blk;Toto;Toto
 value;blk;Transport_And_Map;Transport_And_Map_Symbols
 value;blk;Tulu_Tigalari;Tulu_Tigalari
 value;blk;UCAS;Unified_Canadian_Aboriginal_Syllabics;Canadian_Syllabics
@@ -1236,7 +1238,8 @@ value;sc;Tibt;Tibetan
 value;sc;Tirh;Tirhuta
 value;sc;Tnsa;Tangsa
 value;sc;Todr;Todhri
-value;sc;Tols;Tolong_Sikivalue;sc;Toto;Toto
+value;sc;Tols;Tolong_Siki
+value;sc;Toto;Toto
 value;sc;Tutg;Tulu_Tigalari
 value;sc;Ugar;Ugaritic
 value;sc;Vaii;Vai
@@ -1549,7 +1552,8 @@ cp;00B4;bc=ON;CI;CWKCF;Dia;dm=0020 0301;dt=Com;ea=A;gc=Sk;ID_Type=Not_NFKC;lb=BB
 cp;00B5;Alpha;Cased;cf=03BC;CWCF;CWCM;CWKCF;CWT;CWU;dm=03BC;dt=Com;IDC;IDS;ID_Type=Not_NFKC;Lower;na=MICRO SIGN;NFKC_CF=03BC;NFKC_QC=N;NFKC_SCF=03BC;SB=LO;sc=Zyyy;scf=03BC;stc=039C;suc=039C;XIDC;XIDS
 cp;00B6;bc=ON;ea=A;gc=Po;ID_Type=Not_XID;lb=AI;na=PILCROW SIGN;NFKD_QC=Y;Pat_Syn;sc=Zyyy;WB=XX
 cp;00B7;bc=ON;CI;Dia;ea=A;Ext;gc=Po;IDC;ID_Status=Allowed;ID_Type=Inclusion;lb=AI;na=MIDDLE DOT;NFKD_QC=Y;sc=Zyyy;scx=Avst Cari Copt Dupl Elba Geor Glag Gong Goth Grek Hani Latn Lydi Mahj Perm Shaw;WB=ML;XIDC
-cp;00B8;bc=ON;CI;CWKCF;Dia;dm=0020 0327;dt=Com;ea=A;gc=Sk;ID_Type=Not_NFKC;lb=AI;na=CEDILLA;NFKC_CF=0020 0327;NFKC_QC=N;NFKC_SCF=0020 0327;sc=Zyyy;WB=XXcp;00B9;bc=EN;CWKCF;dm=0031;dt=Sup;ea=A;gc=No;ID_Compat_Math_Continue;ID_Type=Not_NFKC;lb=AI;na=SUPERSCRIPT ONE;NFKC_CF=0031;NFKC_QC=N;NFKC_SCF=0031;nt=Di;nv=1;sc=Zyyy;WB=XX
+cp;00B8;bc=ON;CI;CWKCF;Dia;dm=0020 0327;dt=Com;ea=A;gc=Sk;ID_Type=Not_NFKC;lb=AI;na=CEDILLA;NFKC_CF=0020 0327;NFKC_QC=N;NFKC_SCF=0020 0327;sc=Zyyy;WB=XX
+cp;00B9;bc=EN;CWKCF;dm=0031;dt=Sup;ea=A;gc=No;ID_Compat_Math_Continue;ID_Type=Not_NFKC;lb=AI;na=SUPERSCRIPT ONE;NFKC_CF=0031;NFKC_QC=N;NFKC_SCF=0031;nt=Di;nv=1;sc=Zyyy;WB=XX
 cp;00BA;Alpha;Cased;CWKCF;dm=006F;dt=Sup;ea=A;gc=Lo;IDC;IDS;ID_Type=Not_NFKC;lb=AI;Lower;na=MASCULINE ORDINAL INDICATOR;NFKC_CF=006F;NFKC_QC=N;NFKC_SCF=006F;SB=LO;XIDC;XIDS
 cp;00BB;bc=ON;Bidi_M;bmg=00AB;gc=Pf;ID_Type=Not_XID;lb=QU;na=RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK;NFKD_QC=Y;Pat_Syn;QMark;SB=CL;sc=Zyyy;WB=XX
 # Vulgar fractions
@@ -1827,7 +1831,8 @@ cp;01B9;CWT;CWU;gc=Ll;ID_Type=Obsolete;Lower;na=LATIN SMALL LETTER EZH REVERSED;
 cp;01BA;-CWCM;gc=Ll;ID_Type=Technical Obsolete;Lower;na=LATIN SMALL LETTER EZH WITH TAIL;SB=LO
 cp;01BB;-Cased;-CWCM;gc=Lo;ID_Type=Technical Obsolete;na=LATIN LETTER TWO WITH STROKE;SB=LE
 cp;01BC;cf=01BD;CWCF;CWKCF;CWL;ID_Type=Uncommon_Use;na=LATIN CAPITAL LETTER TONE FIVE;NFKC_CF=01BD;NFKC_SCF=01BD;scf=01BD;slc=01BD;Upper
-cp;01BD;CWT;CWU;gc=Ll;ID_Type=Uncommon_Use;Lower;na=LATIN SMALL LETTER TONE FIVE;SB=LO;stc=01BC;suc=01BCcp;01BE;-CWCM;gc=Ll;ID_Type=Technical Obsolete;Lower;na=LATIN LETTER INVERTED GLOTTAL STOP WITH STROKE;SB=LO
+cp;01BD;CWT;CWU;gc=Ll;ID_Type=Uncommon_Use;Lower;na=LATIN SMALL LETTER TONE FIVE;SB=LO;stc=01BC;suc=01BC
+cp;01BE;-CWCM;gc=Ll;ID_Type=Technical Obsolete;Lower;na=LATIN LETTER INVERTED GLOTTAL STOP WITH STROKE;SB=LO
 cp;01BF;CWT;CWU;gc=Ll;ID_Type=Obsolete;Lower;na=LATIN LETTER WYNN;SB=LO;stc=01F7;suc=01F7
 # African letters for clicks
 cp;01C0;-Cased;-CWCM;gc=Lo;ID_Type=Technical;na=LATIN LETTER DENTAL CLICK;SB=LE
@@ -1941,7 +1946,8 @@ cp;0225;age=3.0;CWT;CWU;gc=Ll;ID_Type=Uncommon_Use;Lower;na=LATIN SMALL LETTER Z
 cp;0226;age=3.0;cf=0227;CWCF;CWKCF;CWL;dm=0041 0307;dt=Can;ID_Status=Allowed;na=LATIN CAPITAL LETTER A WITH DOT ABOVE;NFD_QC=N;NFKC_CF=0227;NFKC_SCF=0227;NFKD_QC=N;scf=0227;slc=0227;Upper
 cp;0227;age=3.0;CWT;CWU;dm=0061 0307;dt=Can;gc=Ll;ID_Status=Allowed;Lower;na=LATIN SMALL LETTER A WITH DOT ABOVE;NFD_QC=N;NFKD_QC=N;SB=LO;stc=0226;suc=0226
 cp;0228;age=3.0;cf=0229;CWCF;CWKCF;CWL;dm=0045 0327;dt=Can;ID_Status=Allowed;na=LATIN CAPITAL LETTER E WITH CEDILLA;NFD_QC=N;NFKC_CF=0229;NFKC_SCF=0229;NFKD_QC=N;scf=0229;slc=0229;Upper
-cp;0229;age=3.0;CWT;CWU;dm=0065 0327;dt=Can;gc=Ll;ID_Status=Allowed;Lower;na=LATIN SMALL LETTER E WITH CEDILLA;NFD_QC=N;NFKD_QC=N;SB=LO;stc=0228;suc=0228# Additions for Livonian
+cp;0229;age=3.0;CWT;CWU;dm=0065 0327;dt=Can;gc=Ll;ID_Status=Allowed;Lower;na=LATIN SMALL LETTER E WITH CEDILLA;NFD_QC=N;NFKD_QC=N;SB=LO;stc=0228;suc=0228
+# Additions for Livonian
 cp;022A;age=3.0;cf=022B;CWCF;CWKCF;CWL;dm=00D6 0304;dt=Can;ID_Status=Allowed;na=LATIN CAPITAL LETTER O WITH DIAERESIS AND MACRON;NFD_QC=N;NFKC_CF=022B;NFKC_SCF=022B;NFKD_QC=N;scf=022B;slc=022B;Upper
 cp;022B;age=3.0;CWT;CWU;dm=00F6 0304;dt=Can;gc=Ll;ID_Status=Allowed;Lower;na=LATIN SMALL LETTER O WITH DIAERESIS AND MACRON;NFD_QC=N;NFKD_QC=N;SB=LO;stc=022A;suc=022A
 cp;022C;age=3.0;cf=022D;CWCF;CWKCF;CWL;dm=00D5 0304;dt=Can;ID_Status=Allowed;na=LATIN CAPITAL LETTER O WITH TILDE AND MACRON;NFD_QC=N;NFKC_CF=022D;NFKC_SCF=022D;NFKD_QC=N;scf=022D;slc=022D;Upper
@@ -2000,19 +2006,22 @@ cp;0257;CWCM;CWT;CWU;ID_Status=Allowed;ID_Type=Recommended;na=LATIN SMALL LETTER
 cp;0258;na=LATIN SMALL LETTER REVERSED E
 cp;0259;CWCM;CWT;CWU;ID_Status=Allowed;ID_Type=Recommended;na=LATIN SMALL LETTER SCHWA;stc=018F;suc=018F
 cp;025A;na=LATIN SMALL LETTER SCHWA WITH HOOK
-cp;025B;CWCM;CWT;CWU;ID_Status=Allowed;ID_Type=Recommended;na=LATIN SMALL LETTER OPEN E;stc=0190;suc=0190cp;025C;CWCM;CWT;CWU;na=LATIN SMALL LETTER REVERSED OPEN E;stc=A7AB;suc=A7AB
+cp;025B;CWCM;CWT;CWU;ID_Status=Allowed;ID_Type=Recommended;na=LATIN SMALL LETTER OPEN E;stc=0190;suc=0190
+cp;025C;CWCM;CWT;CWU;na=LATIN SMALL LETTER REVERSED OPEN E;stc=A7AB;suc=A7AB
 cp;025D;na=LATIN SMALL LETTER REVERSED OPEN E WITH HOOK
 cp;025E;na=LATIN SMALL LETTER CLOSED REVERSED OPEN E
 cp;025F;na=LATIN SMALL LETTER DOTLESS J WITH STROKE
 cp;0260;CWCM;CWT;CWU;na=LATIN SMALL LETTER G WITH HOOK;stc=0193;suc=0193
 cp;0261;CWCM;CWT;CWU;ea=A;na=LATIN SMALL LETTER SCRIPT G;stc=A7AC;suc=A7AC
 cp;0262;na=LATIN LETTER SMALL CAPITAL G
-cp;0263;CWCM;CWT;CWU;ID_Status=Allowed;ID_Type=Recommended;na=LATIN SMALL LETTER GAMMA;stc=0194;suc=0194cp;0264;CWCM;CWT;CWU;na=LATIN SMALL LETTER RAMS HORN;stc=A7CB;suc=A7CB
+cp;0263;CWCM;CWT;CWU;ID_Status=Allowed;ID_Type=Recommended;na=LATIN SMALL LETTER GAMMA;stc=0194;suc=0194
+cp;0264;CWCM;CWT;CWU;na=LATIN SMALL LETTER RAMS HORN;stc=A7CB;suc=A7CB
 cp;0265;CWCM;CWT;CWU;na=LATIN SMALL LETTER TURNED H;stc=A78D;suc=A78D
 cp;0266;CWCM;CWT;CWU;na=LATIN SMALL LETTER H WITH HOOK;stc=A7AA;suc=A7AA
 cp;0267;na=LATIN SMALL LETTER HENG WITH HOOK
 cp;0268;CWCM;CWT;CWU;ID_Type=Uncommon_Use Technical;na=LATIN SMALL LETTER I WITH STROKE;SD;stc=0197;suc=0197
-cp;0269;CWCM;CWT;CWU;ID_Type=Uncommon_Use Technical;na=LATIN SMALL LETTER IOTA;stc=0196;suc=0196cp;026A;CWCM;CWT;CWU;na=LATIN LETTER SMALL CAPITAL I;stc=A7AE;suc=A7AE
+cp;0269;CWCM;CWT;CWU;ID_Type=Uncommon_Use Technical;na=LATIN SMALL LETTER IOTA;stc=0196;suc=0196
+cp;026A;CWCM;CWT;CWU;na=LATIN LETTER SMALL CAPITAL I;stc=A7AE;suc=A7AE
 cp;026B;CWCM;CWT;CWU;na=LATIN SMALL LETTER L WITH MIDDLE TILDE;stc=2C62;suc=2C62
 cp;026C;CWCM;CWT;CWU;na=LATIN SMALL LETTER L WITH BELT;stc=A7AD;suc=A7AD
 cp;026D;na=LATIN SMALL LETTER L WITH RETROFLEX HOOK
@@ -2020,7 +2029,8 @@ cp;026E;na=LATIN SMALL LETTER LEZH
 cp;026F;CWCM;CWT;CWU;na=LATIN SMALL LETTER TURNED M;stc=019C;suc=019C
 cp;0270;na=LATIN SMALL LETTER TURNED M WITH LONG LEG
 cp;0271;CWCM;CWT;CWU;na=LATIN SMALL LETTER M WITH HOOK;stc=2C6E;suc=2C6E
-cp;0272;CWCM;CWT;CWU;ID_Status=Allowed;ID_Type=Recommended;na=LATIN SMALL LETTER N WITH LEFT HOOK;stc=019D;suc=019Dcp;0273;na=LATIN SMALL LETTER N WITH RETROFLEX HOOK
+cp;0272;CWCM;CWT;CWU;ID_Status=Allowed;ID_Type=Recommended;na=LATIN SMALL LETTER N WITH LEFT HOOK;stc=019D;suc=019D
+cp;0273;na=LATIN SMALL LETTER N WITH RETROFLEX HOOK
 cp;0274;na=LATIN LETTER SMALL CAPITAL N
 cp;0275;CWCM;CWT;CWU;na=LATIN SMALL LETTER BARRED O;stc=019F;suc=019F
 cp;0276;na=LATIN LETTER SMALL CAPITAL OE
@@ -2046,7 +2056,8 @@ cp;0285;na=LATIN SMALL LETTER SQUAT REVERSED ESH
 cp;0286;na=LATIN SMALL LETTER ESH WITH CURL
 cp;0287;CWCM;CWT;CWU;na=LATIN SMALL LETTER TURNED T;stc=A7B1;suc=A7B1
 cp;0288;CWCM;CWT;CWU;na=LATIN SMALL LETTER T WITH RETROFLEX HOOK;stc=01AE;suc=01AE
-cp;0289;CWCM;CWT;CWU;ID_Status=Allowed;ID_Type=Recommended;na=LATIN SMALL LETTER U BAR;stc=0244;suc=0244cp;028A;CWCM;CWT;CWU;na=LATIN SMALL LETTER UPSILON;stc=01B1;suc=01B1
+cp;0289;CWCM;CWT;CWU;ID_Status=Allowed;ID_Type=Recommended;na=LATIN SMALL LETTER U BAR;stc=0244;suc=0244
+cp;028A;CWCM;CWT;CWU;na=LATIN SMALL LETTER UPSILON;stc=01B1;suc=01B1
 cp;028B;CWCM;CWT;CWU;ID_Status=Allowed;ID_Type=Recommended;na=LATIN SMALL LETTER V WITH HOOK;stc=01B2;suc=01B2
 cp;028C;CWCM;CWT;CWU;na=LATIN SMALL LETTER TURNED V;stc=0245;suc=0245
 cp;028D;na=LATIN SMALL LETTER TURNED W
@@ -2054,7 +2065,8 @@ cp;028E;na=LATIN SMALL LETTER TURNED Y
 cp;028F;na=LATIN LETTER SMALL CAPITAL Y
 cp;0290;na=LATIN SMALL LETTER Z WITH RETROFLEX HOOK
 cp;0291;na=LATIN SMALL LETTER Z WITH CURL
-cp;0292;CWCM;CWT;CWU;ID_Status=Allowed;ID_Type=Recommended;na=LATIN SMALL LETTER EZH;stc=01B7;suc=01B7cp;0293;na=LATIN SMALL LETTER EZH WITH CURL
+cp;0292;CWCM;CWT;CWU;ID_Status=Allowed;ID_Type=Recommended;na=LATIN SMALL LETTER EZH;stc=01B7;suc=01B7
+cp;0293;na=LATIN SMALL LETTER EZH WITH CURL
 cp;0294;-Cased;gc=Lo;-Lower;na=LATIN LETTER GLOTTAL STOP;SB=LE
 cp;0295;-Cased;gc=Lo;-Lower;na=LATIN LETTER PHARYNGEAL VOICED FRICATIVE;SB=LE
 cp;0296;na=LATIN LETTER INVERTED GLOTTAL STOP
@@ -2102,7 +2114,8 @@ cp;02B8;Alpha;bc=L;Cased;CWKCF;dm=0079;dt=Sup;gc=Lm;IDC;IDS;ID_Type=Not_NFKC;Low
 cp;02B9;Alpha;gc=Lm;IDC;IDS;ID_Type=Technical;na=MODIFIER LETTER PRIME;SB=LE;XIDC;XIDS
 cp;02BA;Alpha;gc=Lm;IDC;IDS;ID_Type=Technical;na=MODIFIER LETTER DOUBLE PRIME;SB=LE;XIDC;XIDS
 cp;02BB;Alpha;bc=L;gc=Lm;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;na=MODIFIER LETTER TURNED COMMA;SB=LE;XIDC;XIDS
-cp;02BC;Alpha;bc=L;gc=Lm;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;na=MODIFIER LETTER APOSTROPHE;SB=LE;scx=Beng Cyrl Deva Latn Lisu Thai Toto;XIDC;XIDScp;02BD;Alpha;bc=L;gc=Lm;IDC;IDS;ID_Type=Technical;na=MODIFIER LETTER REVERSED COMMA;SB=LE;XIDC;XIDS
+cp;02BC;Alpha;bc=L;gc=Lm;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;na=MODIFIER LETTER APOSTROPHE;SB=LE;scx=Beng Cyrl Deva Latn Lisu Thai Toto;XIDC;XIDS
+cp;02BD;Alpha;bc=L;gc=Lm;IDC;IDS;ID_Type=Technical;na=MODIFIER LETTER REVERSED COMMA;SB=LE;XIDC;XIDS
 cp;02BE;Alpha;bc=L;gc=Lm;IDC;IDS;ID_Type=Technical;na=MODIFIER LETTER RIGHT HALF RING;SB=LE;XIDC;XIDS
 cp;02BF;Alpha;bc=L;gc=Lm;IDC;IDS;ID_Type=Technical;na=MODIFIER LETTER LEFT HALF RING;SB=LE;XIDC;XIDS
 cp;02C0;Alpha;bc=L;Cased;gc=Lm;IDC;IDS;ID_Type=Technical;Lower;na=MODIFIER LETTER GLOTTAL STOP;SB=LO;XIDC;XIDS
@@ -2154,7 +2167,8 @@ cp;02E9;na=MODIFIER LETTER EXTRA-LOW TONE BAR
 cp;02EA;age=3.0;ID_Type=Limited_Use Not_XID;na=MODIFIER LETTER YIN DEPARTING TONE MARK;sc=Bopo;vo=U
 cp;02EB;age=3.0;ID_Type=Limited_Use Not_XID;na=MODIFIER LETTER YANG DEPARTING TONE MARK;sc=Bopo;vo=U
 # IPA modifiers
-cp;02EC;age=3.0;Alpha;gc=Lm;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;na=MODIFIER LETTER VOICING;SB=LE;XIDC;XIDScp;02ED;age=3.0;na=MODIFIER LETTER UNASPIRATED
+cp;02EC;age=3.0;Alpha;gc=Lm;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;na=MODIFIER LETTER VOICING;SB=LE;XIDC;XIDS
+cp;02ED;age=3.0;na=MODIFIER LETTER UNASPIRATED
 # Other modifier letter
 cp;02EE;age=3.0;Alpha;bc=L;gc=Lm;IDC;IDS;ID_Type=Technical;na=MODIFIER LETTER DOUBLE APOSTROPHE;SB=LE;XIDC;XIDS
 # UPA modifiers
@@ -2187,7 +2201,8 @@ cp;0304;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING MACRON;NFC_QC=M;NFKC_
 cp;0305;ID_Type=Uncommon_Use;na=COMBINING OVERLINE;scx=Copt Elba Glag Goth Kana Latn
 cp;0306;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING BREVE;NFC_QC=M;NFKC_QC=M;scx=Cyrl Grek Latn Perm Tfng
 cp;0307;Conditional_Case_Mappings=lt After_Soft_Dotted:lc=0307&tc=&uc=,tr After_I:lc=&tc=0307&uc=0307,az After_I:lc=&tc=0307&uc=0307;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING DOT ABOVE;NFC_QC=M;NFKC_QC=M;scx=Copt Dupl Hebr Latn Perm Syrc Tale Tfng Todr
-cp;0308;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING DIAERESIS;NFC_QC=M;NFKC_QC=M;scx=Armn Cyrl Dupl Goth Grek Hebr Latn Perm Syrc Tale Tfngcp;0309;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING HOOK ABOVE;NFC_QC=M;NFKC_QC=M;scx=Latn Tfng
+cp;0308;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING DIAERESIS;NFC_QC=M;NFKC_QC=M;scx=Armn Cyrl Dupl Goth Grek Hebr Latn Perm Syrc Tale Tfng
+cp;0309;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING HOOK ABOVE;NFC_QC=M;NFKC_QC=M;scx=Latn Tfng
 cp;030A;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING RING ABOVE;NFC_QC=M;NFKC_QC=M;scx=Dupl Latn Syrc
 cp;030B;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING DOUBLE ACUTE ACCENT;NFC_QC=M;NFKC_QC=M;scx=Cher Cyrl Latn Osge
 cp;030C;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING CARON;NFC_QC=M;NFKC_QC=M;scx=Cher Latn Tale
@@ -2198,7 +2213,8 @@ cp;0310;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING CANDRABINDU;scx=Latn 
 cp;0311;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING INVERTED BREVE;NFC_QC=M;NFKC_QC=M;scx=Cyrl Latn Todr
 cp;0312;na=COMBINING TURNED COMMA ABOVE
 cp;0313;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING COMMA ABOVE;NFC_QC=M;NFKC_QC=M;scx=Grek Latn Perm Todr
-cp;0314;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING REVERSED COMMA ABOVE;NFC_QC=M;NFKC_QC=Mcp;0315;ccc=232;na=COMBINING COMMA ABOVE RIGHT
+cp;0314;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING REVERSED COMMA ABOVE;NFC_QC=M;NFKC_QC=M
+cp;0315;ccc=232;na=COMBINING COMMA ABOVE RIGHT
 cp;0316;ccc=220;ID_Type=Uncommon_Use;na=COMBINING GRAVE ACCENT BELOW
 cp;0317;ccc=220;na=COMBINING ACUTE ACCENT BELOW
 cp;0318;ccc=220;na=COMBINING LEFT TACK BELOW
@@ -2214,7 +2230,8 @@ cp;0321;ccc=202;ID_Type=Uncommon_Use;na=COMBINING PALATALIZED HOOK BELOW
 cp;0322;ccc=202;ID_Type=Uncommon_Use;na=COMBINING RETROFLEX HOOK BELOW
 cp;0323;ccc=220;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING DOT BELOW;NFC_QC=M;NFKC_QC=M;scx=Cher Dupl Kana Latn Syrc Tfng
 cp;0324;ccc=220;na=COMBINING DIAERESIS BELOW;NFC_QC=M;NFKC_QC=M;scx=Cher Dupl Latn Syrc
-cp;0325;ccc=220;na=COMBINING RING BELOW;NFC_QC=M;NFKC_QC=M;scx=Latn Syrccp;0326;ccc=220;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING COMMA BELOW;NFC_QC=M;NFKC_QC=M
+cp;0325;ccc=220;na=COMBINING RING BELOW;NFC_QC=M;NFKC_QC=M;scx=Latn Syrc
+cp;0326;ccc=220;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING COMMA BELOW;NFC_QC=M;NFKC_QC=M
 cp;0327;ccc=202;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING CEDILLA;NFC_QC=M;NFKC_QC=M
 cp;0328;ccc=202;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING OGONEK;NFC_QC=M;NFKC_QC=M
 cp;0329;ccc=220;na=COMBINING VERTICAL LINE BELOW
@@ -2225,11 +2242,13 @@ cp;032D;ccc=220;na=COMBINING CIRCUMFLEX ACCENT BELOW;NFC_QC=M;NFKC_QC=M;scx=Latn
 cp;032E;ccc=220;na=COMBINING BREVE BELOW;NFC_QC=M;NFKC_QC=M;scx=Latn Syrc
 cp;032F;ccc=220;na=COMBINING INVERTED BREVE BELOW
 cp;0330;ccc=220;na=COMBINING TILDE BELOW;NFC_QC=M;NFKC_QC=M;scx=Cher Latn Syrc
-cp;0331;ccc=220;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING MACRON BELOW;NFC_QC=M;NFKC_QC=M;scx=Aghb Cher Goth Latn Sunu Syrc Thaicp;0332;ccc=220;ID_Type=Uncommon_Use;na=COMBINING LOW LINE
+cp;0331;ccc=220;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING MACRON BELOW;NFC_QC=M;NFKC_QC=M;scx=Aghb Cher Goth Latn Sunu Syrc Thai
+cp;0332;ccc=220;ID_Type=Uncommon_Use;na=COMBINING LOW LINE
 cp;0333;ccc=220;na=COMBINING DOUBLE LOW LINE
 # Overstruck diacritics
 cp;0334;ccc=1;ID_Type=Uncommon_Use;na=COMBINING TILDE OVERLAY
-cp;0335;ccc=1;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING SHORT STROKE OVERLAYcp;0336;ccc=1;ID_Type=Uncommon_Use;na=COMBINING LONG STROKE OVERLAY
+cp;0335;ccc=1;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING SHORT STROKE OVERLAY
+cp;0336;ccc=1;ID_Type=Uncommon_Use;na=COMBINING LONG STROKE OVERLAY
 cp;0337;ccc=1;na=COMBINING SHORT SOLIDUS OVERLAY
 cp;0338;ccc=1;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING LONG SOLIDUS OVERLAY;NFC_QC=M;NFKC_QC=M
 # Miscellaneous additions
@@ -2247,7 +2266,8 @@ cp;0341;Comp_Ex;CWKCF;dm=0301;dt=Can;ID_Type=Not_NFKC;na=COMBINING ACUTE TONE MA
 cp;0342;ID_Status=Allowed;ID_Type=Recommended;na=COMBINING GREEK PERISPOMENI;NFC_QC=M;NFKC_QC=M;scx=Grek
 cp;0343;Comp_Ex;CWKCF;dm=0313;dt=Can;ID_Type=Not_NFKC;na=COMBINING GREEK KORONIS;NFC_QC=N;NFD_QC=N;NFKC_CF=0313;NFKC_QC=N;NFKC_SCF=0313;NFKD_QC=N
 cp;0344;Comp_Ex;CWKCF;dm=0308 0301;dt=Can;ID_Type=Not_NFKC;na=COMBINING GREEK DIALYTIKA TONOS;NFC_QC=N;NFD_QC=N;NFKC_CF=0308 0301;NFKC_QC=N;NFKC_SCF=0308 0301;NFKD_QC=N
-cp;0345;Alpha;Cased;ccc=240;cf=03B9;CWCF;CWCM;CWKCF;CWT;CWU;ID_Status=Allowed;ID_Type=Recommended;Lower;na=COMBINING GREEK YPOGEGRAMMENI;NFC_QC=M;NFKC_CF=03B9;NFKC_QC=M;NFKC_SCF=03B9;scf=03B9;scx=Grek;stc=0399;suc=0399# Additions for IPA
+cp;0345;Alpha;Cased;ccc=240;cf=03B9;CWCF;CWCM;CWKCF;CWT;CWU;ID_Status=Allowed;ID_Type=Recommended;Lower;na=COMBINING GREEK YPOGEGRAMMENI;NFC_QC=M;NFKC_CF=03B9;NFKC_QC=M;NFKC_SCF=03B9;scf=03B9;scx=Grek;stc=0399;suc=0399
+# Additions for IPA
 cp;0346;age=3.0;na=COMBINING BRIDGE ABOVE
 cp;0347;age=3.0;ccc=220;na=COMBINING EQUALS SIGN BELOW
 cp;0348;age=3.0;ccc=220;na=COMBINING DOUBLE VERTICAL LINE BELOW
@@ -2259,7 +2279,8 @@ cp;034C;age=3.0;na=COMBINING ALMOST EQUAL TO ABOVE
 cp;034D;age=3.0;ccc=220;na=COMBINING LEFT RIGHT ARROW BELOW
 cp;034E;age=3.0;ccc=220;na=COMBINING UPWARDS ARROW BELOW
 # Grapheme joiner
-cp;034F;age=3.2;ccc=0;CWKCF;DI;-Dia;ID_Type=Default_Ignorable;lb=GL;na=COMBINING GRAPHEME JOINER;Name_Alias=abbreviation=CGJ;NFKC_CF=;NFKC_SCF=# Additions for the Uralic Phonetic Alphabet
+cp;034F;age=3.2;ccc=0;CWKCF;DI;-Dia;ID_Type=Default_Ignorable;lb=GL;na=COMBINING GRAPHEME JOINER;Name_Alias=abbreviation=CGJ;NFKC_CF=;NFKC_SCF=
+# Additions for the Uralic Phonetic Alphabet
 cp;0350;age=4.0;na=COMBINING RIGHT ARROWHEAD ABOVE
 cp;0351;age=4.0;na=COMBINING LEFT HALF RING ABOVE
 cp;0352;age=4.0;na=COMBINING FERMATA
@@ -2311,7 +2332,8 @@ cp;0376;age=5.1;cf=0377;CWCF;CWL;gc=Lu;ID_Status=Restricted;ID_Type=Obsolete;na=
 cp;0377;age=5.1;-CWKCF;CWT;CWU;ID_Status=Restricted;ID_Type=Obsolete;Lower;na=GREEK SMALL LETTER PAMPHYLIAN DIGAMMA;stc=0376;suc=0376
 unassigned;0378..0379
 # Iota subscript
-cp;037A;CI;-CWCM;Dia;dm=0020 0345;dt=Com;FC_NFKC=0020 03B9;gc=Lm;ID_Status=Restricted;ID_Type=Not_NFKC;Lower;na=GREEK YPOGEGRAMMENI;NFKC_CF=0020 03B9;NFKC_QC=N;NFKC_SCF=0020 03B9;NFKD_QC=N;-XIDC;-XIDS# Lowercase of editorial symbols
+cp;037A;CI;-CWCM;Dia;dm=0020 0345;dt=Com;FC_NFKC=0020 03B9;gc=Lm;ID_Status=Restricted;ID_Type=Not_NFKC;Lower;na=GREEK YPOGEGRAMMENI;NFKC_CF=0020 03B9;NFKC_QC=N;NFKC_SCF=0020 03B9;NFKD_QC=N;-XIDC;-XIDS
+# Lowercase of editorial symbols
 cp;037B;age=5.0;-CWKCF;CWT;CWU;ID_Type=Obsolete;Lower;na=GREEK SMALL REVERSED LUNATE SIGMA SYMBOL;stc=03FD;suc=03FD
 cp;037C;age=5.0;-CWKCF;CWT;CWU;ID_Type=Obsolete;Lower;na=GREEK SMALL DOTTED LUNATE SIGMA SYMBOL;stc=03FE;suc=03FE
 cp;037D;age=5.0;-CWKCF;CWT;CWU;ID_Type=Obsolete;Lower;na=GREEK SMALL REVERSED DOTTED LUNATE SIGMA SYMBOL;stc=03FF;suc=03FF
@@ -2322,10 +2344,12 @@ cp;037F;age=7.0;cf=03F3;CWCF;CWL;gc=Lu;ID_Status=Restricted;ID_Type=Obsolete;na=
 unassigned;0380..0383
 # Spacing accent marks
 cp;0384;-Alpha;bc=ON;-Cased;CI;-CWCM;Dia;dm=0020 0301;dt=Com;gc=Sk;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_NFKC;na=GREEK TONOS;NFKC_CF=0020 0301;NFKC_QC=N;NFKC_SCF=0020 0301;NFKD_QC=N;SB=XX;WB=XX;-XIDC;-XIDS
-cp;0385;-Alpha;bc=ON;-Cased;CI;-CWCM;Dia;dm=00A8 0301;dt=Can;gc=Sk;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_NFKC;na=GREEK DIALYTIKA TONOS;NFD_QC=N;NFKC_CF=0020 0308 0301;NFKC_QC=N;NFKC_SCF=0020 0308 0301;NFKD_QC=N;SB=XX;sc=Zyyy;WB=XX;-XIDC;-XIDS# Letter
+cp;0385;-Alpha;bc=ON;-Cased;CI;-CWCM;Dia;dm=00A8 0301;dt=Can;gc=Sk;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_NFKC;na=GREEK DIALYTIKA TONOS;NFD_QC=N;NFKC_CF=0020 0308 0301;NFKC_QC=N;NFKC_SCF=0020 0308 0301;NFKD_QC=N;SB=XX;sc=Zyyy;WB=XX;-XIDC;-XIDS
+# Letter
 cp;0386;cf=03AC;CWCF;CWL;dm=0391 0301;dt=Can;gc=Lu;ID_Status=Allowed;na=GREEK CAPITAL LETTER ALPHA WITH TONOS;NFD_QC=N;NFKC_CF=03AC;NFKC_SCF=03AC;NFKD_QC=N;SB=UP;scf=03AC;slc=03AC;Upper
 # Punctuation
-cp;0387;-Alpha;bc=ON;-Cased;CI;Comp_Ex;-CWCM;dm=00B7;dt=Can;gc=Po;-IDS;ID_Status=Restricted;ID_Type=Not_NFKC;na=GREEK ANO TELEIA;NFC_QC=N;NFD_QC=N;NFKC_CF=00B7;NFKC_QC=N;NFKC_SCF=00B7;NFKD_QC=N;SB=XX;sc=Zyyy;Term;WB=ML;-XIDS# Letters
+cp;0387;-Alpha;bc=ON;-Cased;CI;Comp_Ex;-CWCM;dm=00B7;dt=Can;gc=Po;-IDS;ID_Status=Restricted;ID_Type=Not_NFKC;na=GREEK ANO TELEIA;NFC_QC=N;NFD_QC=N;NFKC_CF=00B7;NFKC_QC=N;NFKC_SCF=00B7;NFKD_QC=N;SB=XX;sc=Zyyy;Term;WB=ML;-XIDS
+# Letters
 cp;0388;cf=03AD;CWCF;CWL;dm=0395 0301;dt=Can;gc=Lu;ID_Status=Allowed;na=GREEK CAPITAL LETTER EPSILON WITH TONOS;NFD_QC=N;NFKC_CF=03AD;NFKC_SCF=03AD;NFKD_QC=N;SB=UP;scf=03AD;slc=03AD;Upper
 cp;0389;cf=03AE;CWCF;CWL;dm=0397 0301;dt=Can;gc=Lu;ID_Status=Allowed;na=GREEK CAPITAL LETTER ETA WITH TONOS;NFD_QC=N;NFKC_CF=03AE;NFKC_SCF=03AE;NFKD_QC=N;SB=UP;scf=03AE;slc=03AE;Upper
 cp;038A;cf=03AF;CWCF;CWL;dm=0399 0301;dt=Can;gc=Lu;ID_Status=Allowed;na=GREEK CAPITAL LETTER IOTA WITH TONOS;NFD_QC=N;NFKC_CF=03AF;NFKC_SCF=03AF;NFKD_QC=N;SB=UP;scf=03AF;slc=03AF;Upper
@@ -2450,7 +2474,8 @@ cp;03F8;age=4.0;-CWKCF;CWT;CWU;ID_Status=Restricted;ID_Type=Obsolete;Lower;na=GR
 cp;03F9;age=4.0;cf=03F2;CWCF;CWL;dm=03A3;dt=Com;FC_NFKC=03C3;gc=Lu;ID_Status=Restricted;ID_Type=Not_NFKC;na=GREEK CAPITAL LUNATE SIGMA SYMBOL;NFKC_CF=03C3;NFKC_QC=N;NFKC_SCF=03C3;NFKD_QC=N;SB=UP;scf=03F2;slc=03F2;Upper
 # Archaic letters
 cp;03FA;age=4.0;cf=03FB;CWCF;CWL;gc=Lu;ID_Status=Restricted;ID_Type=Obsolete;na=GREEK CAPITAL LETTER SAN;NFKC_CF=03FB;NFKC_SCF=03FB;SB=UP;scf=03FB;slc=03FB;Upper
-cp;03FB;age=4.0;-CWKCF;CWT;CWU;ID_Status=Restricted;ID_Type=Obsolete;Lower;na=GREEK SMALL LETTER SAN;stc=03FA;suc=03FA# Symbol
+cp;03FB;age=4.0;-CWKCF;CWT;CWU;ID_Status=Restricted;ID_Type=Obsolete;Lower;na=GREEK SMALL LETTER SAN;stc=03FA;suc=03FA
+# Symbol
 cp;03FC;age=4.1;-CWCM;-CWKCF;ID_Type=Technical Obsolete;Lower;na=GREEK RHO WITH STROKE SYMBOL
 # Editorial symbols
 cp;03FD;age=4.1;cf=037B;CWCF;CWL;gc=Lu;ID_Type=Obsolete;na=GREEK CAPITAL REVERSED LUNATE SIGMA SYMBOL;NFKC_CF=037B;NFKC_SCF=037B;SB=UP;scf=037B;slc=037B;Upper
@@ -2725,7 +2750,8 @@ cp;04FD;age=5.0;CWT;CWU;ID_Status=Restricted;ID_Type=Uncommon_Use;Lower;na=CYRIL
 cp;04FE;age=5.0;cf=04FF;CWCF;CWKCF;CWL;gc=Lu;ID_Status=Restricted;ID_Type=Uncommon_Use;na=CYRILLIC CAPITAL LETTER HA WITH STROKE;NFKC_CF=04FF;NFKC_SCF=04FF;SB=UP;scf=04FF;slc=04FF;Upper
 cp;04FF;age=5.0;CWT;CWU;ID_Status=Restricted;ID_Type=Uncommon_Use;Lower;na=CYRILLIC SMALL LETTER HA WITH STROKE;stc=04FE;suc=04FE
 
-block;0500..052F;age=3.2;Alpha;blk=Cyrillic_Sup;Cased;CWCM;gc=Ll;Gr_Base;IDC;IDS;ID_Type=Obsolete;lb=AL;SB=LO;sc=Cyrl;WB=LE;XIDC;XIDS# 0500..052F Cyrillic Supplement
+block;0500..052F;age=3.2;Alpha;blk=Cyrillic_Sup;Cased;CWCM;gc=Ll;Gr_Base;IDC;IDS;ID_Type=Obsolete;lb=AL;SB=LO;sc=Cyrl;WB=LE;XIDC;XIDS
+# 0500..052F Cyrillic Supplement
 # Komi letters
 cp;0500;cf=0501;CWCF;CWKCF;CWL;gc=Lu;ID_Status=Restricted;ID_Type=Obsolete;na=CYRILLIC CAPITAL LETTER KOMI DE;NFKC_CF=0501;NFKC_SCF=0501;SB=UP;scf=0501;slc=0501;Upper
 cp;0501;CWT;CWU;ID_Status=Restricted;ID_Type=Obsolete;Lower;na=CYRILLIC SMALL LETTER KOMI DE;stc=0500;suc=0500
@@ -2831,7 +2857,8 @@ cp;0555;cf=0585;CWCF;CWKCF;CWL;gc=Lu;na=ARMENIAN CAPITAL LETTER OH;NFKC_CF=0585;
 cp;0556;cf=0586;CWCF;CWKCF;CWL;gc=Lu;na=ARMENIAN CAPITAL LETTER FEH;NFKC_CF=0586;NFKC_SCF=0586;SB=UP;scf=0586;slc=0586;Upper
 unassigned;0557..0558
 # Modifier letters
-cp;0559;-Cased;CI;-CWCM;Dia;gc=Lm;ID_Status=Restricted;ID_Type=Technical;na=ARMENIAN MODIFIER LETTER LEFT HALF RING;SB=LEcp;055A;-Alpha;-Cased;-CWCM;gc=Po;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;na=ARMENIAN APOSTROPHE;SB=XX;-XIDC;-XIDS
+cp;0559;-Cased;CI;-CWCM;Dia;gc=Lm;ID_Status=Restricted;ID_Type=Technical;na=ARMENIAN MODIFIER LETTER LEFT HALF RING;SB=LE
+cp;055A;-Alpha;-Cased;-CWCM;gc=Po;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;na=ARMENIAN APOSTROPHE;SB=XX;-XIDC;-XIDS
 cp;055B;-Alpha;-Cased;-CWCM;gc=Po;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;na=ARMENIAN EMPHASIS MARK;SB=XX;-XIDC;-XIDS
 cp;055C;-Alpha;-Cased;-CWCM;gc=Po;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;na=ARMENIAN EXCLAMATION MARK;SB=XX;-XIDC;-XIDS
 cp;055D;-Alpha;-Cased;-CWCM;gc=Po;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;na=ARMENIAN COMMA;SB=SC;WB=XX;-XIDC;-XIDS
@@ -2881,7 +2908,8 @@ cp;0587;cf=0565 0582;CWCF;CWKCF;CWT;CWU;dm=0565 0582;dt=Com;ID_Status=Restricted
 cp;0588;age=11.0;-CWCM;ID_Status=Restricted;ID_Type=Technical;Lower;na=ARMENIAN SMALL LETTER YI WITH STROKE
 # Punctuation
 cp;0589;-Alpha;-Cased;-CWCM;gc=Po;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;lb=IS;na=ARMENIAN FULL STOP;SB=ST;scx=Armn Geor Glag;STerm;Term;WB=MN;-XIDC;-XIDS
-cp;058A;age=3.0;-Alpha;bc=ON;-Cased;-CWCM;Dash;gc=Pd;Hyphen;-IDC;-IDS;ID_Type=Inclusion;lb=HH;na=ARMENIAN HYPHEN;SB=XX;-XIDC;-XIDSunassigned;058B..058C
+cp;058A;age=3.0;-Alpha;bc=ON;-Cased;-CWCM;Dash;gc=Pd;Hyphen;-IDC;-IDS;ID_Type=Inclusion;lb=HH;na=ARMENIAN HYPHEN;SB=XX;-XIDC;-XIDS
+unassigned;058B..058C
 # Religious symbols
 cp;058D;age=7.0;-Alpha;bc=ON;-Cased;-CWCM;gc=So;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;na=RIGHT-FACING ARMENIAN ETERNITY SIGN;SB=XX;WB=XX;-XIDC;-XIDS
 cp;058E;age=7.0;-Alpha;bc=ON;-Cased;-CWCM;gc=So;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;na=LEFT-FACING ARMENIAN ETERNITY SIGN;SB=XX;WB=XX;-XIDC;-XIDS
@@ -2988,7 +3016,8 @@ cp;05F1;bc=R;-CI;gc=Lo;GCB=XX;Gr_Base;-Gr_Ext;IDS;ID_Status=Allowed;ID_Type=Reco
 cp;05F2;bc=R;-CI;gc=Lo;GCB=XX;Gr_Base;-Gr_Ext;IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=None;jt=U;lb=HL;na=HEBREW LIGATURE YIDDISH DOUBLE YOD;SB=LE;WB=HL;XIDS
 # Additional punctuation
 cp;05F3;-Alpha;bc=R;-CI;gc=Po;GCB=XX;Gr_Base;-Gr_Ext;-IDC;ID_Status=Allowed;ID_Type=Inclusion;InCB=None;jt=U;lb=AL;na=HEBREW PUNCTUATION GERESH;SB=LE;WB=LE;-XIDC
-cp;05F4;-Alpha;bc=R;gc=Po;GCB=XX;Gr_Base;-Gr_Ext;-IDC;ID_Status=Allowed;ID_Type=Inclusion;InCB=None;jt=U;lb=AL;na=HEBREW PUNCTUATION GERSHAYIM;SB=XX;WB=ML;-XIDCunassigned;05F5..05FF;bc=R
+cp;05F4;-Alpha;bc=R;gc=Po;GCB=XX;Gr_Base;-Gr_Ext;-IDC;ID_Status=Allowed;ID_Type=Inclusion;InCB=None;jt=U;lb=AL;na=HEBREW PUNCTUATION GERSHAYIM;SB=XX;WB=ML;-XIDC
+unassigned;05F5..05FF;bc=R
 
 block;0600..06FF;age=1.1;Alpha;bc=AL;blk=Arabic;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;jt=D;lb=AL;SB=LE;sc=Arab;WB=LE;XIDC;XIDS
 # 0600..06FF Arabic
@@ -3096,7 +3125,8 @@ cp;0650;bc=NSM;ccc=32;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;jt=T;
 cp;0651;bc=NSM;ccc=33;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;jt=T;lb=CM;na=ARABIC SHADDA;SB=EX;sc=Zinh;scx=Arab Syrc;WB=Extend;-XIDS
 cp;0652;bc=NSM;ccc=34;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;jt=T;lb=CM;na=ARABIC SUKUN;SB=EX;sc=Zinh;scx=Arab Syrc;WB=Extend;-XIDS
 # Combining maddah and hamza
-cp;0653;age=3.0;bc=NSM;ccc=230;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use Technical;InCB=Extend;jt=T;lb=CM;na=ARABIC MADDAH ABOVE;NFC_QC=M;NFKC_QC=M;SB=EX;sc=Zinh;scx=Arab Syrc;WB=Extend;-XIDScp;0654;age=3.0;bc=NSM;ccc=230;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;jt=T;lb=CM;MCM;na=ARABIC HAMZA ABOVE;NFC_QC=M;NFKC_QC=M;SB=EX;sc=Zinh;scx=Arab Syrc;WB=Extend;-XIDS
+cp;0653;age=3.0;bc=NSM;ccc=230;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use Technical;InCB=Extend;jt=T;lb=CM;na=ARABIC MADDAH ABOVE;NFC_QC=M;NFKC_QC=M;SB=EX;sc=Zinh;scx=Arab Syrc;WB=Extend;-XIDS
+cp;0654;age=3.0;bc=NSM;ccc=230;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;jt=T;lb=CM;MCM;na=ARABIC HAMZA ABOVE;NFC_QC=M;NFKC_QC=M;SB=EX;sc=Zinh;scx=Arab Syrc;WB=Extend;-XIDS
 cp;0655;age=3.0;bc=NSM;ccc=220;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;jt=T;lb=CM;MCM;na=ARABIC HAMZA BELOW;NFC_QC=M;NFKC_QC=M;SB=EX;sc=Zinh;scx=Arab Syrc;WB=Extend;-XIDS
 # Other combining marks
 cp;0656;age=4.0;bc=NSM;ccc=220;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;jt=T;lb=CM;na=ARABIC SUBSCRIPT ALEF;SB=EX;WB=Extend;-XIDS
@@ -3183,7 +3213,8 @@ cp;069D;ID_Status=Restricted;ID_Type=Uncommon_Use;jg=Sad;na=ARABIC LETTER SAD WI
 cp;069E;ID_Status=Restricted;ID_Type=Uncommon_Use;jg=Sad;na=ARABIC LETTER SAD WITH THREE DOTS ABOVE
 cp;069F;jg=Tah;na=ARABIC LETTER TAH WITH THREE DOTS ABOVE
 cp;06A0;jg=Ain;na=ARABIC LETTER AIN WITH THREE DOTS ABOVE
-cp;06A1;ID_Status=Restricted;ID_Type=Uncommon_Use;jg=Feh;na=ARABIC LETTER DOTLESS FEHcp;06A2;jg=Feh;na=ARABIC LETTER FEH WITH DOT MOVED BELOW
+cp;06A1;ID_Status=Restricted;ID_Type=Uncommon_Use;jg=Feh;na=ARABIC LETTER DOTLESS FEH
+cp;06A2;jg=Feh;na=ARABIC LETTER FEH WITH DOT MOVED BELOW
 cp;06A3;ID_Status=Restricted;ID_Type=Uncommon_Use;jg=Feh;na=ARABIC LETTER FEH WITH DOT BELOW
 cp;06A4;jg=Feh;na=ARABIC LETTER VEH
 cp;06A5;jg=Feh;na=ARABIC LETTER FEH WITH THREE DOTS BELOW
@@ -3254,7 +3285,8 @@ cp;06E2;bc=NSM;ccc=230;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted
 cp;06E3;bc=NSM;ccc=220;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;jt=T;lb=CM;MCM;na=ARABIC SMALL LOW SEEN;SB=EX;WB=Extend;-XIDS
 cp;06E4;bc=NSM;ccc=230;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;jt=T;lb=CM;na=ARABIC SMALL HIGH MADDA;SB=EX;WB=Extend;-XIDS
 cp;06E5;CI;Dia;gc=Lm;ID_Status=Restricted;ID_Type=Technical;jt=U;na=ARABIC SMALL WAW
-cp;06E6;CI;Dia;gc=Lm;ID_Status=Restricted;ID_Type=Technical;jt=U;na=ARABIC SMALL YEHcp;06E7;bc=NSM;ccc=230;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;jt=T;lb=CM;MCM;na=ARABIC SMALL HIGH YEH;SB=EX;WB=Extend;-XIDS
+cp;06E6;CI;Dia;gc=Lm;ID_Status=Restricted;ID_Type=Technical;jt=U;na=ARABIC SMALL YEH
+cp;06E7;bc=NSM;ccc=230;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;jt=T;lb=CM;MCM;na=ARABIC SMALL HIGH YEH;SB=EX;WB=Extend;-XIDS
 cp;06E8;bc=NSM;ccc=230;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;jt=T;lb=CM;MCM;na=ARABIC SMALL HIGH NOON;SB=EX;WB=Extend;-XIDS
 cp;06E9;-Alpha;bc=ON;gc=So;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;jt=U;na=ARABIC PLACE OF SAJDAH;SB=XX;WB=XX;-XIDC;-XIDS
 cp;06EA;-Alpha;bc=NSM;ccc=220;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;jt=T;lb=CM;na=ARABIC EMPTY CENTRE LOW STOP;SB=EX;WB=Extend;-XIDS
@@ -3374,7 +3406,8 @@ cp;074D;age=4.0;IDS;jg=Zhain;jt=R;na=SYRIAC LETTER SOGDIAN ZHAIN;WB=LE;XIDS
 cp;074E;age=4.0;IDS;jg=Khaph;jt=D;na=SYRIAC LETTER SOGDIAN KHAPH;WB=LE;XIDS
 cp;074F;age=4.0;IDS;jg=Fe;jt=D;na=SYRIAC LETTER SOGDIAN FE;WB=LE;XIDS
 
-block;0750..077F;age=4.1;Alpha;bc=AL;blk=Arabic_Sup;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;jg=Beh;jt=D;lb=AL;SB=LE;sc=Arab;WB=LE;XIDC;XIDS# 0750..077F Arabic Supplement
+block;0750..077F;age=4.1;Alpha;bc=AL;blk=Arabic_Sup;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;jg=Beh;jt=D;lb=AL;SB=LE;sc=Arab;WB=LE;XIDC;XIDS
+# 0750..077F Arabic Supplement
 # Extended Arabic letters
 cp;0750;na=ARABIC LETTER BEH WITH THREE DOTS HORIZONTALLY BELOW
 cp;0751;ID_Status=Allowed;ID_Type=Recommended;na=ARABIC LETTER BEH WITH DOT BELOW AND THREE DOTS ABOVE
@@ -3688,7 +3721,8 @@ cp;0869;jg=Malayalam_Llla;jt=R;na=SYRIAC LETTER MALAYALAM LLLA
 cp;086A;jg=Malayalam_Ssa;jt=R;na=SYRIAC LETTER MALAYALAM SSA
 unassigned;086B..086F;bc=AL
 
-block;0870..089F;age=14.0;Alpha;bc=AL;blk=Arabic_Ext_B;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;jt=R;lb=AL;SB=LE;sc=Arab;WB=LE;XIDC;XIDS# 0870..089F Arabic Extended-B
+block;0870..089F;age=14.0;Alpha;bc=AL;blk=Arabic_Ext_B;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;jt=R;lb=AL;SB=LE;sc=Arab;WB=LE;XIDC;XIDS
+# 0870..089F Arabic Extended-B
 # Additions for Quranic orthographies
 cp;0870;jg=Alef;na=ARABIC LETTER ALEF WITH ATTACHED FATHA
 cp;0871;jg=Alef;na=ARABIC LETTER ALEF WITH ATTACHED TOP RIGHT FATHA
@@ -3714,7 +3748,8 @@ cp;0884;jt=C;na=ARABIC TATWEEL WITH OVERSTRUCK WAW
 cp;0885;jt=C;na=ARABIC TATWEEL WITH TWO DOTS BELOW
 cp;0886;jg=Thin_Yeh;jt=D;na=ARABIC LETTER THIN YEH
 cp;0887;jt=U;na=ARABIC BASELINE ROUND DOT
-cp;0888;-Alpha;CI;gc=Sk;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;jt=U;na=ARABIC RAISED ROUND DOT;SB=XX;WB=XX;-XIDC;-XIDS# Additions for Bosnian orthographies
+cp;0888;-Alpha;CI;gc=Sk;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;jt=U;na=ARABIC RAISED ROUND DOT;SB=XX;WB=XX;-XIDC;-XIDS
+# Additions for Bosnian orthographies
 cp;0889;ID_Type=Uncommon_Use;jg=Noon;jt=D;na=ARABIC LETTER NOON WITH INVERTED SMALL V
 cp;088A;ID_Type=Uncommon_Use;jg=Hah;jt=D;na=ARABIC LETTER HAH WITH INVERTED SMALL V BELOW
 # Additions for Pegon orthographies
@@ -3744,7 +3779,8 @@ block;08A0..08FF;age=6.1;Alpha;bc=NSM;blk=Arabic_Ext_A;ccc=230;gc=Mn;GCB=EX;Gr_E
 # 08A0..08FF Arabic Extended-A
 # Arabic letters for African languages
 cp;08A0;bc=AL;ccc=0;gc=Lo;GCB=XX;Gr_Base;-Gr_Ext;IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=None;jg=Beh;jt=D;lb=AL;na=ARABIC LETTER BEH WITH SMALL V BELOW;SB=LE;WB=LE;XIDS
-cp;08A1;age=7.0;bc=AL;ccc=0;gc=Lo;GCB=XX;Gr_Base;-Gr_Ext;IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=None;jg=Beh;jt=D;lb=AL;na=ARABIC LETTER BEH WITH HAMZA ABOVE;SB=LE;WB=LE;XIDScp;08A2;bc=AL;ccc=0;gc=Lo;GCB=XX;Gr_Base;-Gr_Ext;IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=None;jg=Hah;jt=D;lb=AL;na=ARABIC LETTER JEEM WITH TWO DOTS ABOVE;SB=LE;WB=LE;XIDS
+cp;08A1;age=7.0;bc=AL;ccc=0;gc=Lo;GCB=XX;Gr_Base;-Gr_Ext;IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=None;jg=Beh;jt=D;lb=AL;na=ARABIC LETTER BEH WITH HAMZA ABOVE;SB=LE;WB=LE;XIDS
+cp;08A2;bc=AL;ccc=0;gc=Lo;GCB=XX;Gr_Base;-Gr_Ext;IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=None;jg=Hah;jt=D;lb=AL;na=ARABIC LETTER JEEM WITH TWO DOTS ABOVE;SB=LE;WB=LE;XIDS
 cp;08A3;bc=AL;ccc=0;gc=Lo;GCB=XX;Gr_Base;-Gr_Ext;IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=None;jg=Tah;jt=D;lb=AL;na=ARABIC LETTER TAH WITH TWO DOTS ABOVE;SB=LE;WB=LE;XIDS
 cp;08A4;bc=AL;ccc=0;gc=Lo;GCB=XX;Gr_Base;-Gr_Ext;IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=None;jg=Feh;jt=D;lb=AL;na=ARABIC LETTER FEH WITH DOT BELOW AND THREE DOTS ABOVE;SB=LE;WB=LE;XIDS
 cp;08A5;bc=AL;ccc=0;gc=Lo;GCB=XX;Gr_Base;-Gr_Ext;IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=None;jg=Qaf;jt=D;lb=AL;na=ARABIC LETTER QAF WITH DOT BELOW;SB=LE;WB=LE;XIDS
@@ -3768,7 +3804,8 @@ cp;08B2;age=7.0;bc=AL;ccc=0;gc=Lo;GCB=XX;Gr_Base;-Gr_Ext;IDS;ID_Status=Allowed;I
 cp;08B3;age=8.0;bc=AL;ccc=0;gc=Lo;GCB=XX;Gr_Base;-Gr_Ext;IDS;InCB=None;jg=Ain;jt=D;lb=AL;na=ARABIC LETTER AIN WITH THREE DOTS BELOW;SB=LE;WB=LE;XIDS
 cp;08B4;age=8.0;bc=AL;ccc=0;gc=Lo;GCB=XX;Gr_Base;-Gr_Ext;IDS;InCB=None;jg=Kaf;jt=D;lb=AL;na=ARABIC LETTER KAF WITH DOT BELOW;SB=LE;WB=LE;XIDS
 # Early Arabic letter
-cp;08B5;age=14.0;bc=AL;ccc=0;gc=Lo;GCB=XX;Gr_Base;-Gr_Ext;IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=None;jg=Qaf;jt=D;lb=AL;na=ARABIC LETTER QAF WITH DOT BELOW AND NO DOTS ABOVE;SB=LE;WB=LE;XIDS# Arabic letters for Bravanese
+cp;08B5;age=14.0;bc=AL;ccc=0;gc=Lo;GCB=XX;Gr_Base;-Gr_Ext;IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=None;jg=Qaf;jt=D;lb=AL;na=ARABIC LETTER QAF WITH DOT BELOW AND NO DOTS ABOVE;SB=LE;WB=LE;XIDS
+# Arabic letters for Bravanese
 cp;08B6;age=9.0;bc=AL;ccc=0;gc=Lo;GCB=XX;Gr_Base;-Gr_Ext;IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=None;jg=Beh;jt=D;lb=AL;na=ARABIC LETTER BEH WITH SMALL MEEM ABOVE;SB=LE;WB=LE;XIDS
 cp;08B7;age=9.0;bc=AL;ccc=0;gc=Lo;GCB=XX;Gr_Base;-Gr_Ext;IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=None;jg=Beh;jt=D;lb=AL;na=ARABIC LETTER PEH WITH SMALL MEEM ABOVE;SB=LE;WB=LE;XIDS
 cp;08B8;age=9.0;bc=AL;ccc=0;gc=Lo;GCB=XX;Gr_Base;-Gr_Ext;IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=None;jg=Beh;jt=D;lb=AL;na=ARABIC LETTER TEH WITH SMALL TEH ABOVE;SB=LE;WB=LE;XIDS
@@ -3794,7 +3831,8 @@ cp;08C7;age=13.0;bc=AL;ccc=0;gc=Lo;GCB=XX;Gr_Base;-Gr_Ext;IDS;ID_Status=Allowed;
 # Arabic letter for Balti
 cp;08C8;age=14.0;bc=AL;ccc=0;gc=Lo;GCB=XX;Gr_Base;-Gr_Ext;IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=None;jg=Gaf;jt=D;lb=AL;na=ARABIC LETTER GRAF;SB=LE;WB=LE;XIDS
 # Additions for Quranic orthographies
-cp;08C9;age=14.0;bc=AL;ccc=0;CI;Dia;gc=Lm;GCB=XX;Gr_Base;-Gr_Ext;IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=None;jt=U;lb=AL;na=ARABIC SMALL FARSI YEH;SB=LE;WB=LE;XIDScp;08CA;age=14.0;-Alpha;CI;Dia;MCM;na=ARABIC SMALL HIGH FARSI YEH
+cp;08C9;age=14.0;bc=AL;ccc=0;CI;Dia;gc=Lm;GCB=XX;Gr_Base;-Gr_Ext;IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=None;jt=U;lb=AL;na=ARABIC SMALL FARSI YEH;SB=LE;WB=LE;XIDS
+cp;08CA;age=14.0;-Alpha;CI;Dia;MCM;na=ARABIC SMALL HIGH FARSI YEH
 cp;08CB;age=14.0;-Alpha;CI;Dia;MCM;na=ARABIC SMALL HIGH YEH BARREE WITH TWO DOTS BELOW
 cp;08CC;age=14.0;-Alpha;CI;Dia;na=ARABIC SMALL HIGH WORD SAH
 cp;08CD;age=14.0;-Alpha;CI;Dia;MCM;na=ARABIC SMALL HIGH ZAH
@@ -3932,7 +3970,8 @@ cp;0940;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=DEV
 cp;0941;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=DEVANAGARI VOWEL SIGN U;SB=EX;WB=Extend;-XIDS
 cp;0942;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=DEVANAGARI VOWEL SIGN UU;SB=EX;WB=Extend;-XIDS
 cp;0943;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=DEVANAGARI VOWEL SIGN VOCALIC R;SB=EX;WB=Extend;-XIDS
-cp;0944;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=DEVANAGARI VOWEL SIGN VOCALIC RR;SB=EX;WB=Extend;-XIDScp;0945;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=DEVANAGARI VOWEL SIGN CANDRA E;SB=EX;WB=Extend;-XIDS
+cp;0944;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=DEVANAGARI VOWEL SIGN VOCALIC RR;SB=EX;WB=Extend;-XIDS
+cp;0945;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=DEVANAGARI VOWEL SIGN CANDRA E;SB=EX;WB=Extend;-XIDS
 cp;0946;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=DEVANAGARI VOWEL SIGN SHORT E;SB=EX;WB=Extend;-XIDS
 cp;0947;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=DEVANAGARI VOWEL SIGN E;SB=EX;WB=Extend;-XIDS
 cp;0948;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=DEVANAGARI VOWEL SIGN AI;SB=EX;WB=Extend;-XIDS
@@ -3949,7 +3988,8 @@ cp;094F;age=6.0;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=C
 cp;0950;ID_Status=Restricted;ID_Type=Technical;InCB=None;InSC=Other;na=DEVANAGARI OM
 # Vedic tone marks
 cp;0951;-Alpha;bc=NSM;ccc=230;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=Extend;InPC=Top;InSC=Cantillation_Mark;jt=T;lb=CM;na=DEVANAGARI STRESS SIGN UDATTA;SB=EX;sc=Zinh;scx=Beng Deva Gran Gujr Guru Knda Latn Mlym Nand Newa Orya Shrd Taml Telu Tirh;WB=Extend;-XIDS
-cp;0952;-Alpha;bc=NSM;ccc=220;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=Extend;InPC=Bottom;InSC=Cantillation_Mark;jt=T;lb=CM;na=DEVANAGARI STRESS SIGN ANUDATTA;SB=EX;sc=Zinh;scx=Beng Deva Gran Gujr Guru Knda Latn Mlym Newa Orya Taml Telu Tirh;WB=Extend;-XIDS# Accent marks
+cp;0952;-Alpha;bc=NSM;ccc=220;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=Extend;InPC=Bottom;InSC=Cantillation_Mark;jt=T;lb=CM;na=DEVANAGARI STRESS SIGN ANUDATTA;SB=EX;sc=Zinh;scx=Beng Deva Gran Gujr Guru Knda Latn Mlym Newa Orya Taml Telu Tirh;WB=Extend;-XIDS
+# Accent marks
 cp;0953;-Alpha;bc=NSM;ccc=230;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Technical;InCB=Extend;InSC=Other;jt=T;lb=CM;na=DEVANAGARI GRAVE ACCENT;SB=EX;sc=Zinh;WB=Extend;-XIDS
 cp;0954;-Alpha;bc=NSM;ccc=230;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Technical;InCB=Extend;InSC=Other;jt=T;lb=CM;na=DEVANAGARI ACUTE ACCENT;SB=EX;sc=Zinh;WB=Extend;-XIDS
 # Dependent vowel sign
@@ -3970,7 +4010,8 @@ cp;095F;Comp_Ex;CWKCF;dm=092F 093C;dt=Can;ID_Status=Restricted;ID_Type=Not_NFKC;
 cp;0960;ID_Status=Restricted;ID_Type=Obsolete;InCB=None;InSC=Vowel_Independent;na=DEVANAGARI LETTER VOCALIC RR
 cp;0961;ID_Status=Restricted;ID_Type=Obsolete;InCB=None;InSC=Vowel_Independent;na=DEVANAGARI LETTER VOCALIC LL
 cp;0962;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=DEVANAGARI VOWEL SIGN VOCALIC L;SB=EX;WB=Extend;-XIDS
-cp;0963;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=DEVANAGARI VOWEL SIGN VOCALIC LL;SB=EX;WB=Extend;-XIDS# Generic punctuation for scripts of India
+cp;0963;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=DEVANAGARI VOWEL SIGN VOCALIC LL;SB=EX;WB=Extend;-XIDS
+# Generic punctuation for scripts of India
 cp;0964;-Alpha;gc=Po;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;InCB=None;InSC=Other;lb=BA;na=DEVANAGARI DANDA;SB=ST;sc=Zyyy;scx=Beng Deva Dogr Gong Gonm Gran Gujr Guru Knda Mahj Mlym Nand Onao Orya Sind Sinh Sylo Takr Taml Telu Tirh;STerm;Term;WB=XX;-XIDC;-XIDS
 cp;0965;-Alpha;gc=Po;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;InCB=None;InSC=Other;lb=BA;na=DEVANAGARI DOUBLE DANDA;SB=ST;sc=Zyyy;scx=Beng Deva Dogr Gong Gonm Gran Gujr Gukh Guru Knda Limb Mahj Mlym Nand Onao Orya Sind Sinh Sylo Takr Taml Telu Tirh;STerm;Term;WB=XX;-XIDC;-XIDS
 # Digits
@@ -3986,7 +4027,8 @@ cp;096E;-Alpha;gc=Nd;-IDS;InCB=None;InSC=Number;lb=NU;na=DEVANAGARI DIGIT EIGHT;
 cp;096F;-Alpha;gc=Nd;-IDS;InCB=None;InSC=Number;lb=NU;na=DEVANAGARI DIGIT NINE;nt=De;nv=9;SB=NU;scx=Deva Dogr Kthi Mahj;WB=NU;-XIDS
 # Additional signs
 cp;0970;-Alpha;gc=Po;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;InCB=None;InSC=Other;na=DEVANAGARI ABBREVIATION SIGN;SB=XX;WB=XX;-XIDC;-XIDS
-cp;0971;age=5.1;CI;Dia;gc=Lm;ID_Status=Restricted;ID_Type=Obsolete;InCB=None;InSC=Other;na=DEVANAGARI SIGN HIGH SPACING DOT# Independent vowel for Marathi
+cp;0971;age=5.1;CI;Dia;gc=Lm;ID_Status=Restricted;ID_Type=Obsolete;InCB=None;InSC=Other;na=DEVANAGARI SIGN HIGH SPACING DOT
+# Independent vowel for Marathi
 cp;0972;age=5.1;InCB=None;InSC=Vowel_Independent;na=DEVANAGARI LETTER CANDRA A
 # Independent vowels
 cp;0973;age=6.0;InCB=None;InSC=Vowel_Independent;na=DEVANAGARI LETTER OE
@@ -3998,7 +4040,8 @@ cp;0977;age=6.0;InCB=None;InSC=Vowel_Independent;na=DEVANAGARI LETTER UUE
 # Additional consonants
 cp;0978;age=7.0;ID_Status=Restricted;ID_Type=Obsolete;na=DEVANAGARI LETTER MARWARI DDA
 cp;0979;age=5.2;ID_Status=Restricted;ID_Type=Uncommon_Use;na=DEVANAGARI LETTER ZHA
-cp;097A;age=5.2;ID_Status=Restricted;ID_Type=Uncommon_Use;na=DEVANAGARI LETTER HEAVY YA# Sindhi implosives
+cp;097A;age=5.2;ID_Status=Restricted;ID_Type=Uncommon_Use;na=DEVANAGARI LETTER HEAVY YA
+# Sindhi implosives
 cp;097B;age=5.0;na=DEVANAGARI LETTER GGA
 cp;097C;age=5.0;na=DEVANAGARI LETTER JJA
 # Glottal stop
@@ -4023,7 +4066,8 @@ cp;0988;InCB=None;InSC=Vowel_Independent;na=BENGALI LETTER II
 cp;0989;InCB=None;InSC=Vowel_Independent;na=BENGALI LETTER U
 cp;098A;InCB=None;InSC=Vowel_Independent;na=BENGALI LETTER UU
 cp;098B;InCB=None;InSC=Vowel_Independent;na=BENGALI LETTER VOCALIC R
-cp;098C;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=None;InSC=Vowel_Independent;na=BENGALI LETTER VOCALIC Lunassigned;098D..098E
+cp;098C;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=None;InSC=Vowel_Independent;na=BENGALI LETTER VOCALIC L
+unassigned;098D..098E
 cp;098F;InCB=None;InSC=Vowel_Independent;na=BENGALI LETTER E
 cp;0990;InCB=None;InSC=Vowel_Independent;na=BENGALI LETTER AI
 unassigned;0991..0992
@@ -4068,7 +4112,8 @@ cp;09B9;na=BENGALI LETTER HA
 unassigned;09BA..09BB
 # Various signs
 cp;09BC;-Alpha;bc=NSM;ccc=7;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Nukta;jt=T;lb=CM;na=BENGALI SIGN NUKTA;SB=EX;WB=Extend;-XIDS
-cp;09BD;age=4.0;ID_Status=Restricted;ID_Type=Obsolete;InCB=None;InSC=Avagraha;na=BENGALI SIGN AVAGRAHA# Dependent vowel signs
+cp;09BD;age=4.0;ID_Status=Restricted;ID_Type=Obsolete;InCB=None;InSC=Avagraha;na=BENGALI SIGN AVAGRAHA
+# Dependent vowel signs
 cp;09BE;gc=Mc;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=BENGALI VOWEL SIGN AA;NFC_QC=M;NFKC_QC=M;SB=EX;WB=Extend;-XIDS
 cp;09BF;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Left;InSC=Vowel_Dependent;lb=CM;na=BENGALI VOWEL SIGN I;SB=EX;WB=Extend;-XIDS
 cp;09C0;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=BENGALI VOWEL SIGN II;SB=EX;WB=Extend;-XIDS
@@ -4089,7 +4134,8 @@ cp;09CD;-Alpha;bc=NSM;ccc=9;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;Gr_Link;-IDS;InC
 cp;09CE;age=4.1;InCB=None;InSC=Consonant_Dead;na=BENGALI LETTER KHANDA TA
 unassigned;09CF..09D6
 # Sign
-cp;09D7;gc=Mc;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=BENGALI AU LENGTH MARK;NFC_QC=M;NFKC_QC=M;SB=EX;WB=Extend;-XIDSunassigned;09D8..09DB
+cp;09D7;gc=Mc;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=BENGALI AU LENGTH MARK;NFC_QC=M;NFKC_QC=M;SB=EX;WB=Extend;-XIDS
+unassigned;09D8..09DB
 # Additional consonants
 cp;09DC;Comp_Ex;CWKCF;dm=09A1 09BC;dt=Can;ID_Status=Restricted;ID_Type=Not_NFKC;na=BENGALI LETTER RRA;NFC_QC=N;NFD_QC=N;NFKC_CF=09A1 09BC;NFKC_QC=N;NFKC_SCF=09A1 09BC;NFKD_QC=N
 cp;09DD;Comp_Ex;CWKCF;dm=09A2 09BC;dt=Can;ID_Status=Restricted;ID_Type=Not_NFKC;na=BENGALI LETTER RHA;NFC_QC=N;NFD_QC=N;NFKC_CF=09A2 09BC;NFKC_QC=N;NFKC_SCF=09A2 09BC;NFKD_QC=N
@@ -4099,7 +4145,8 @@ cp;09DF;Comp_Ex;CWKCF;dm=09AF 09BC;dt=Can;ID_Status=Restricted;ID_Type=Not_NFKC;
 cp;09E0;ID_Status=Restricted;ID_Type=Obsolete;InCB=None;InSC=Vowel_Independent;na=BENGALI LETTER VOCALIC RR
 cp;09E1;ID_Status=Restricted;ID_Type=Obsolete;InCB=None;InSC=Vowel_Independent;na=BENGALI LETTER VOCALIC LL
 cp;09E2;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=BENGALI VOWEL SIGN VOCALIC L;SB=EX;WB=Extend;-XIDS
-cp;09E3;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=BENGALI VOWEL SIGN VOCALIC LL;SB=EX;WB=Extend;-XIDS# Reserved
+cp;09E3;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=BENGALI VOWEL SIGN VOCALIC LL;SB=EX;WB=Extend;-XIDS
+# Reserved
 unassigned;09E4..09E5
 # Digits
 cp;09E6;-Alpha;gc=Nd;-IDS;InCB=None;InSC=Number;lb=NU;na=BENGALI DIGIT ZERO;nt=De;nv=0;SB=NU;scx=Beng Cakm Sylo;WB=NU;-XIDS
@@ -4132,7 +4179,8 @@ cp;09FB;age=5.2;-Alpha;bc=ET;gc=Sc;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XI
 # Signs
 cp;09FC;age=10.0;ID_Status=Restricted;ID_Type=Obsolete;InCB=None;InSC=Bindu;na=BENGALI LETTER VEDIC ANUSVARA
 cp;09FD;age=10.0;-Alpha;gc=Po;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;InCB=None;InSC=Other;na=BENGALI ABBREVIATION SIGN;SB=XX;WB=XX;-XIDC;-XIDS
-cp;09FE;age=11.0;-Alpha;bc=NSM;ccc=230;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Top;InSC=Syllable_Modifier;jt=T;lb=CM;na=BENGALI SANDHI MARK;SB=EX;WB=Extend;-XIDSunassigned;09FF
+cp;09FE;age=11.0;-Alpha;bc=NSM;ccc=230;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Top;InSC=Syllable_Modifier;jt=T;lb=CM;na=BENGALI SANDHI MARK;SB=EX;WB=Extend;-XIDS
+unassigned;09FF
 
 block;0A00..0A7F;age=1.1;Alpha;blk=Gurmukhi;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;InSC=Consonant;lb=AL;SB=LE;sc=Guru;WB=LE;XIDC;XIDS
 # 0A00..0A7F Gurmukhi
@@ -4140,7 +4188,8 @@ unassigned;0A00
 # Various signs
 cp;0A01;age=4.0;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=GURMUKHI SIGN ADAK BINDI;SB=EX;WB=Extend;-XIDS
 cp;0A02;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=GURMUKHI SIGN BINDI;SB=EX;WB=Extend;-XIDS
-cp;0A03;age=4.0;gc=Mc;GCB=SM;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InPC=Right;InSC=Visarga;lb=CM;na=GURMUKHI SIGN VISARGA;SB=EX;WB=Extend;-XIDSunassigned;0A04
+cp;0A03;age=4.0;gc=Mc;GCB=SM;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InPC=Right;InSC=Visarga;lb=CM;na=GURMUKHI SIGN VISARGA;SB=EX;WB=Extend;-XIDS
+unassigned;0A04
 # Independent vowels
 cp;0A05;InSC=Vowel_Independent;na=GURMUKHI LETTER A
 cp;0A06;InSC=Vowel_Independent;na=GURMUKHI LETTER AA
@@ -4242,7 +4291,8 @@ cp;0A71;bc=NSM;CI;Ext;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InS
 cp;0A72;ID_Status=Restricted;ID_Type=Uncommon_Use;InSC=Consonant_Placeholder;na=GURMUKHI IRI
 cp;0A73;ID_Status=Restricted;ID_Type=Uncommon_Use;InSC=Consonant_Placeholder;na=GURMUKHI URA
 # Signs
-cp;0A74;ID_Status=Restricted;ID_Type=Technical;InSC=Other;na=GURMUKHI EK ONKARcp;0A75;age=5.1;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Bottom;InSC=Consonant_Medial;jt=T;lb=CM;na=GURMUKHI SIGN YAKASH;SB=EX;WB=Extend;-XIDS
+cp;0A74;ID_Status=Restricted;ID_Type=Technical;InSC=Other;na=GURMUKHI EK ONKAR
+cp;0A75;age=5.1;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Bottom;InSC=Consonant_Medial;jt=T;lb=CM;na=GURMUKHI SIGN YAKASH;SB=EX;WB=Extend;-XIDS
 cp;0A76;age=11.0;-Alpha;gc=Po;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;InSC=Other;na=GURMUKHI ABBREVIATION SIGN;SB=XX;WB=XX;-XIDC;-XIDS
 unassigned;0A77..0A7F
 
@@ -4250,7 +4300,8 @@ block;0A80..0AFF;age=1.1;Alpha;blk=Gujarati;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allo
 # 0A80..0AFF Gujarati
 unassigned;0A80
 # Various signs
-cp;0A81;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=GUJARATI SIGN CANDRABINDU;SB=EX;WB=Extend;-XIDScp;0A82;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=GUJARATI SIGN ANUSVARA;SB=EX;WB=Extend;-XIDS
+cp;0A81;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=GUJARATI SIGN CANDRABINDU;SB=EX;WB=Extend;-XIDS
+cp;0A82;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=GUJARATI SIGN ANUSVARA;SB=EX;WB=Extend;-XIDS
 cp;0A83;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Visarga;lb=CM;na=GUJARATI SIGN VISARGA;SB=EX;WB=Extend;-XIDS
 unassigned;0A84
 # Independent vowels
@@ -4311,7 +4362,8 @@ cp;0AB9;na=GUJARATI LETTER HA
 unassigned;0ABA..0ABB
 # Various signs
 cp;0ABC;-Alpha;bc=NSM;ccc=7;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Nukta;jt=T;lb=CM;na=GUJARATI SIGN NUKTA;SB=EX;WB=Extend;-XIDS
-cp;0ABD;ID_Status=Restricted;ID_Type=Obsolete;InCB=None;InSC=Avagraha;na=GUJARATI SIGN AVAGRAHA# Dependent vowel signs
+cp;0ABD;ID_Status=Restricted;ID_Type=Obsolete;InCB=None;InSC=Avagraha;na=GUJARATI SIGN AVAGRAHA
+# Dependent vowel signs
 cp;0ABE;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=GUJARATI VOWEL SIGN AA;SB=EX;WB=Extend;-XIDS
 cp;0ABF;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Left;InSC=Vowel_Dependent;lb=CM;na=GUJARATI VOWEL SIGN I;SB=EX;WB=Extend;-XIDS
 cp;0AC0;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=GUJARATI VOWEL SIGN II;SB=EX;WB=Extend;-XIDS
@@ -4337,7 +4389,8 @@ unassigned;0AD1..0ADF
 cp;0AE0;ID_Status=Restricted;ID_Type=Obsolete;InCB=None;InSC=Vowel_Independent;na=GUJARATI LETTER VOCALIC RR
 cp;0AE1;age=4.0;ID_Status=Restricted;ID_Type=Obsolete;InCB=None;InSC=Vowel_Independent;na=GUJARATI LETTER VOCALIC LL
 cp;0AE2;age=4.0;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=GUJARATI VOWEL SIGN VOCALIC L;SB=EX;WB=Extend;-XIDS
-cp;0AE3;age=4.0;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=GUJARATI VOWEL SIGN VOCALIC LL;SB=EX;WB=Extend;-XIDS# Reserved
+cp;0AE3;age=4.0;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=GUJARATI VOWEL SIGN VOCALIC LL;SB=EX;WB=Extend;-XIDS
+# Reserved
 unassigned;0AE4..0AE5
 # Digits
 cp;0AE6;-Alpha;gc=Nd;-IDS;InCB=None;InSC=Number;lb=NU;na=GUJARATI DIGIT ZERO;nt=De;nv=0;SB=NU;scx=Gujr Khoj;WB=NU;-XIDS
@@ -4450,7 +4503,8 @@ unassigned;0B4E..0B54
 # Various signs
 cp;0B55;age=13.0;-Alpha;bc=NSM;CI;Dia;Ext;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=ORIYA SIGN OVERLINE;SB=EX;WB=Extend;-XIDS
 cp;0B56;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=ORIYA AI LENGTH MARK;NFC_QC=M;NFKC_QC=M;SB=EX;WB=Extend;-XIDS
-cp;0B57;gc=Mc;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Top_And_Right;InSC=Vowel_Dependent;lb=CM;na=ORIYA AU LENGTH MARK;NFC_QC=M;NFKC_QC=M;SB=EX;WB=Extend;-XIDSunassigned;0B58..0B5B
+cp;0B57;gc=Mc;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Top_And_Right;InSC=Vowel_Dependent;lb=CM;na=ORIYA AU LENGTH MARK;NFC_QC=M;NFKC_QC=M;SB=EX;WB=Extend;-XIDS
+unassigned;0B58..0B5B
 # Additional consonants
 cp;0B5C;Comp_Ex;CWKCF;dm=0B21 0B3C;dt=Can;ID_Status=Restricted;ID_Type=Not_NFKC;na=ORIYA LETTER RRA;NFC_QC=N;NFD_QC=N;NFKC_CF=0B21 0B3C;NFKC_QC=N;NFKC_SCF=0B21 0B3C;NFKD_QC=N
 cp;0B5D;Comp_Ex;CWKCF;dm=0B22 0B3C;dt=Can;ID_Status=Restricted;ID_Type=Not_NFKC;na=ORIYA LETTER RHA;NFC_QC=N;NFD_QC=N;NFKC_CF=0B22 0B3C;NFKC_QC=N;NFKC_SCF=0B22 0B3C;NFKD_QC=N
@@ -4492,7 +4546,8 @@ block;0B80..0BFF;age=1.1;Alpha;blk=Tamil;gc=Lo;Gr_Base;IDC;ID_Status=Allowed;ID_
 # 0B80..0BFF Tamil
 unassigned;0B80..0B81
 # Various signs
-cp;0B82;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;ID_Status=Restricted;ID_Type=Technical;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=TAMIL SIGN ANUSVARA;SB=EX;WB=Extendcp;0B83;IDS;InSC=Modifying_Letter;na=TAMIL SIGN VISARGA;XIDS
+cp;0B82;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;ID_Status=Restricted;ID_Type=Technical;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=TAMIL SIGN ANUSVARA;SB=EX;WB=Extend
+cp;0B83;IDS;InSC=Modifying_Letter;na=TAMIL SIGN VISARGA;XIDS
 unassigned;0B84
 # Independent vowels
 cp;0B85;IDS;InSC=Vowel_Independent;na=TAMIL LETTER A;XIDS
@@ -4561,7 +4616,8 @@ unassigned;0BCE..0BCF
 # Various signs
 cp;0BD0;age=5.1;IDS;ID_Status=Restricted;ID_Type=Technical;InSC=Other;na=TAMIL OM;XIDS
 unassigned;0BD1..0BD6
-cp;0BD7;gc=Mc;GCB=EX;-Gr_Base;Gr_Ext;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=TAMIL AU LENGTH MARK;NFC_QC=M;NFKC_QC=M;SB=EX;WB=Extendunassigned;0BD8..0BE3
+cp;0BD7;gc=Mc;GCB=EX;-Gr_Base;Gr_Ext;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=TAMIL AU LENGTH MARK;NFC_QC=M;NFKC_QC=M;SB=EX;WB=Extend
+unassigned;0BD8..0BE3
 # Reserved
 unassigned;0BE4..0BE5
 # Digits
@@ -4600,7 +4656,8 @@ cp;0C00;age=7.0;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted
 cp;0C01;gc=Mc;GCB=SM;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=None;InPC=Right;InSC=Bindu;lb=CM;na=TELUGU SIGN CANDRABINDU;SB=EX;WB=Extend;-XIDS
 cp;0C02;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Bindu;lb=CM;na=TELUGU SIGN ANUSVARA;SB=EX;WB=Extend;-XIDS
 cp;0C03;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Visarga;lb=CM;na=TELUGU SIGN VISARGA;SB=EX;WB=Extend;-XIDS
-cp;0C04;age=11.0;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=TELUGU SIGN COMBINING ANUSVARA ABOVE;SB=EX;WB=Extend;-XIDS# Independent vowels
+cp;0C04;age=11.0;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=TELUGU SIGN COMBINING ANUSVARA ABOVE;SB=EX;WB=Extend;-XIDS
+# Independent vowels
 cp;0C05;InCB=None;InSC=Vowel_Independent;na=TELUGU LETTER A
 cp;0C06;InCB=None;InSC=Vowel_Independent;na=TELUGU LETTER AA
 cp;0C07;InCB=None;InSC=Vowel_Independent;na=TELUGU LETTER I
@@ -4608,7 +4665,8 @@ cp;0C08;InCB=None;InSC=Vowel_Independent;na=TELUGU LETTER II
 cp;0C09;InCB=None;InSC=Vowel_Independent;na=TELUGU LETTER U
 cp;0C0A;InCB=None;InSC=Vowel_Independent;na=TELUGU LETTER UU
 cp;0C0B;InCB=None;InSC=Vowel_Independent;na=TELUGU LETTER VOCALIC R
-cp;0C0C;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=None;InSC=Vowel_Independent;na=TELUGU LETTER VOCALIC Lunassigned;0C0D
+cp;0C0C;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=None;InSC=Vowel_Independent;na=TELUGU LETTER VOCALIC L
+unassigned;0C0D
 cp;0C0E;InCB=None;InSC=Vowel_Independent;na=TELUGU LETTER E
 cp;0C0F;InCB=None;InSC=Vowel_Independent;na=TELUGU LETTER EE
 cp;0C10;InCB=None;InSC=Vowel_Independent;na=TELUGU LETTER AI
@@ -4645,7 +4703,8 @@ cp;0C2D;na=TELUGU LETTER BHA
 cp;0C2E;na=TELUGU LETTER MA
 cp;0C2F;na=TELUGU LETTER YA
 cp;0C30;na=TELUGU LETTER RA
-cp;0C31;ID_Status=Restricted;ID_Type=Uncommon_Use;na=TELUGU LETTER RRAcp;0C32;na=TELUGU LETTER LA
+cp;0C31;ID_Status=Restricted;ID_Type=Uncommon_Use;na=TELUGU LETTER RRA
+cp;0C32;na=TELUGU LETTER LA
 cp;0C33;na=TELUGU LETTER LLA
 cp;0C34;age=7.0;ID_Status=Restricted;ID_Type=Obsolete;na=TELUGU LETTER LLLA
 cp;0C35;na=TELUGU LETTER VA
@@ -4657,7 +4716,8 @@ unassigned;0C3A..0C3B
 # Sign
 cp;0C3C;age=14.0;-Alpha;bc=NSM;ccc=7;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Bottom;InSC=Nukta;jt=T;lb=CM;na=TELUGU SIGN NUKTA;SB=EX;WB=Extend;-XIDS
 # Addition for Sanskrit
-cp;0C3D;age=5.1;ID_Status=Restricted;ID_Type=Obsolete;InCB=None;InSC=Avagraha;na=TELUGU SIGN AVAGRAHA# Dependent vowel signs
+cp;0C3D;age=5.1;ID_Status=Restricted;ID_Type=Obsolete;InCB=None;InSC=Avagraha;na=TELUGU SIGN AVAGRAHA
+# Dependent vowel signs
 cp;0C3E;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=TELUGU VOWEL SIGN AA;SB=EX;WB=Extend;-XIDS
 cp;0C3F;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=TELUGU VOWEL SIGN I;SB=EX;WB=Extend;-XIDS
 cp;0C40;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=TELUGU VOWEL SIGN II;SB=EX;WB=Extend;-XIDS
@@ -4692,7 +4752,8 @@ cp;0C5D;age=14.0;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=None;InSC=Conson
 unassigned;0C5E..0C5F
 # Additional vowels for Sanskrit
 cp;0C60;ID_Status=Restricted;ID_Type=Obsolete;InCB=None;InSC=Vowel_Independent;na=TELUGU LETTER VOCALIC RR
-cp;0C61;ID_Status=Restricted;ID_Type=Obsolete;InCB=None;InSC=Vowel_Independent;na=TELUGU LETTER VOCALIC LL# Dependent vowels
+cp;0C61;ID_Status=Restricted;ID_Type=Obsolete;InCB=None;InSC=Vowel_Independent;na=TELUGU LETTER VOCALIC LL
+# Dependent vowels
 cp;0C62;age=5.1;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=TELUGU VOWEL SIGN VOCALIC L;SB=EX;WB=Extend;-XIDS
 cp;0C63;age=5.1;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=TELUGU VOWEL SIGN VOCALIC LL;SB=EX;WB=Extend;-XIDS
 # Reserved
@@ -4707,7 +4768,8 @@ cp;0C6B;-Alpha;gc=Nd;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=None;In
 cp;0C6C;-Alpha;gc=Nd;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=None;InSC=Number;lb=NU;na=TELUGU DIGIT SIX;nt=De;nv=6;SB=NU;WB=NU;-XIDS
 cp;0C6D;-Alpha;gc=Nd;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=None;InSC=Number;lb=NU;na=TELUGU DIGIT SEVEN;nt=De;nv=7;SB=NU;WB=NU;-XIDS
 cp;0C6E;-Alpha;gc=Nd;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=None;InSC=Number;lb=NU;na=TELUGU DIGIT EIGHT;nt=De;nv=8;SB=NU;WB=NU;-XIDS
-cp;0C6F;-Alpha;gc=Nd;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=None;InSC=Number;lb=NU;na=TELUGU DIGIT NINE;nt=De;nv=9;SB=NU;WB=NU;-XIDSunassigned;0C70..0C76
+cp;0C6F;-Alpha;gc=Nd;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=None;InSC=Number;lb=NU;na=TELUGU DIGIT NINE;nt=De;nv=9;SB=NU;WB=NU;-XIDS
+unassigned;0C70..0C76
 # Sign
 cp;0C77;age=12.0;-Alpha;gc=Po;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;InCB=None;InSC=Other;lb=BB;na=TELUGU SIGN SIDDHAM;SB=XX;WB=XX;-XIDC;-XIDS
 # Telugu fractions and weights
@@ -4723,7 +4785,8 @@ cp;0C7F;age=5.1;-Alpha;gc=So;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;InCB
 block;0C80..0CFF;age=1.1;Alpha;blk=Kannada;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;InSC=Consonant;lb=AL;SB=LE;sc=Knda;WB=LE;XIDC;XIDS
 # 0C80..0CFF Kannada
 # Various signs
-cp;0C80;age=9.0;ID_Status=Restricted;ID_Type=Uncommon_Use;InSC=Bindu;na=KANNADA SIGN SPACING CANDRABINDUcp;0C81;age=7.0;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=KANNADA SIGN CANDRABINDU;SB=EX;WB=Extend;-XIDS
+cp;0C80;age=9.0;ID_Status=Restricted;ID_Type=Uncommon_Use;InSC=Bindu;na=KANNADA SIGN SPACING CANDRABINDU
+cp;0C81;age=7.0;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=KANNADA SIGN CANDRABINDU;SB=EX;WB=Extend;-XIDS
 cp;0C82;gc=Mc;GCB=SM;-IDS;InPC=Right;InSC=Bindu;lb=CM;na=KANNADA SIGN ANUSVARA;SB=EX;WB=Extend;-XIDS
 cp;0C83;gc=Mc;GCB=SM;-IDS;InPC=Right;InSC=Visarga;lb=CM;na=KANNADA SIGN VISARGA;SB=EX;WB=Extend;-XIDS
 cp;0C84;age=11.0;-Alpha;gc=Po;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;InSC=Other;lb=BB;na=KANNADA SIGN SIDDHAM;SB=XX;WB=XX;-XIDC;-XIDS
@@ -4812,14 +4875,16 @@ unassigned;0CD7..0CDB
 # Ligature
 cp;0CDC;age=17.0;ID_Status=Restricted;ID_Type=Obsolete;InSC=Other;na=KANNADA ARCHAIC SHRII
 # Additional consonants
-cp;0CDD;age=14.0;ID_Status=Restricted;ID_Type=Uncommon_Use;InSC=Consonant_Dead;na=KANNADA LETTER NAKAARA POLLUcp;0CDE;ID_Status=Restricted;ID_Type=Obsolete;na=KANNADA LETTER FA;Name_Alias=correction=KANNADA LETTER LLLA
+cp;0CDD;age=14.0;ID_Status=Restricted;ID_Type=Uncommon_Use;InSC=Consonant_Dead;na=KANNADA LETTER NAKAARA POLLU
+cp;0CDE;ID_Status=Restricted;ID_Type=Obsolete;na=KANNADA LETTER FA;Name_Alias=correction=KANNADA LETTER LLLA
 unassigned;0CDF
 # Additional vowels for Sanskrit
 cp;0CE0;ID_Status=Restricted;ID_Type=Obsolete;InSC=Vowel_Independent;na=KANNADA LETTER VOCALIC RR
 cp;0CE1;ID_Status=Restricted;ID_Type=Obsolete;InSC=Vowel_Independent;na=KANNADA LETTER VOCALIC LL
 # Dependent vowels
 cp;0CE2;age=5.0;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=KANNADA VOWEL SIGN VOCALIC L;SB=EX;WB=Extend;-XIDS
-cp;0CE3;age=5.0;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=KANNADA VOWEL SIGN VOCALIC LL;SB=EX;WB=Extend;-XIDS# Reserved
+cp;0CE3;age=5.0;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=KANNADA VOWEL SIGN VOCALIC LL;SB=EX;WB=Extend;-XIDS
+# Reserved
 unassigned;0CE4..0CE5
 # Digits
 cp;0CE6;-Alpha;gc=Nd;-IDS;InSC=Number;lb=NU;na=KANNADA DIGIT ZERO;nt=De;nv=0;SB=NU;scx=Knda Nand Tutg;WB=NU;-XIDS
@@ -4842,7 +4907,8 @@ unassigned;0CF4..0CFF
 block;0D00..0D7F;age=1.1;Alpha;blk=Malayalam;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;InSC=Consonant;lb=AL;SB=LE;sc=Mlym;WB=LE;XIDC;XIDS
 # 0D00..0D7F Malayalam
 # Various signs
-cp;0D00;age=10.0;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=MALAYALAM SIGN COMBINING ANUSVARA ABOVE;SB=EX;WB=Extend;-XIDScp;0D01;age=7.0;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=MALAYALAM SIGN CANDRABINDU;SB=EX;WB=Extend;-XIDS
+cp;0D00;age=10.0;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=MALAYALAM SIGN COMBINING ANUSVARA ABOVE;SB=EX;WB=Extend;-XIDS
+cp;0D01;age=7.0;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=MALAYALAM SIGN CANDRABINDU;SB=EX;WB=Extend;-XIDS
 cp;0D02;gc=Mc;GCB=SM;-IDS;InPC=Right;InSC=Bindu;lb=CM;na=MALAYALAM SIGN ANUSVARA;SB=EX;WB=Extend;-XIDS
 cp;0D03;gc=Mc;GCB=SM;-IDS;InPC=Right;InSC=Visarga;lb=CM;na=MALAYALAM SIGN VISARGA;SB=EX;WB=Extend;-XIDS
 cp;0D04;age=13.0;ID_Status=Restricted;ID_Type=Technical Obsolete;InSC=Bindu;na=MALAYALAM LETTER VEDIC ANUSVARA
@@ -5005,7 +5071,8 @@ cp;0D8A;InSC=Vowel_Independent;na=SINHALA LETTER IIYANNA
 cp;0D8B;InSC=Vowel_Independent;na=SINHALA LETTER UYANNA
 cp;0D8C;InSC=Vowel_Independent;na=SINHALA LETTER UUYANNA
 cp;0D8D;InSC=Vowel_Independent;na=SINHALA LETTER IRUYANNA
-cp;0D8E;ID_Status=Restricted;ID_Type=Uncommon_Use;InSC=Vowel_Independent;na=SINHALA LETTER IRUUYANNAcp;0D8F;ID_Status=Restricted;ID_Type=Uncommon_Use Technical;InSC=Vowel_Independent;na=SINHALA LETTER ILUYANNA
+cp;0D8E;ID_Status=Restricted;ID_Type=Uncommon_Use;InSC=Vowel_Independent;na=SINHALA LETTER IRUUYANNA
+cp;0D8F;ID_Status=Restricted;ID_Type=Uncommon_Use Technical;InSC=Vowel_Independent;na=SINHALA LETTER ILUYANNA
 cp;0D90;ID_Status=Restricted;ID_Type=Uncommon_Use Technical;InSC=Vowel_Independent;na=SINHALA LETTER ILUUYANNA
 cp;0D91;InSC=Vowel_Independent;na=SINHALA LETTER EYANNA
 cp;0D92;InSC=Vowel_Independent;na=SINHALA LETTER EEYANNA
@@ -5094,7 +5161,8 @@ cp;0DEB;age=7.0;-Alpha;gc=Nd;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InSC=Num
 cp;0DEC;age=7.0;-Alpha;gc=Nd;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InSC=Number;lb=NU;na=SINHALA LITH DIGIT SIX;nt=De;nv=6;SB=NU;WB=NU;-XIDS
 cp;0DED;age=7.0;-Alpha;gc=Nd;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InSC=Number;lb=NU;na=SINHALA LITH DIGIT SEVEN;nt=De;nv=7;SB=NU;WB=NU;-XIDS
 cp;0DEE;age=7.0;-Alpha;gc=Nd;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InSC=Number;lb=NU;na=SINHALA LITH DIGIT EIGHT;nt=De;nv=8;SB=NU;WB=NU;-XIDS
-cp;0DEF;age=7.0;-Alpha;gc=Nd;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InSC=Number;lb=NU;na=SINHALA LITH DIGIT NINE;nt=De;nv=9;SB=NU;WB=NU;-XIDSunassigned;0DF0..0DF1
+cp;0DEF;age=7.0;-Alpha;gc=Nd;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InSC=Number;lb=NU;na=SINHALA LITH DIGIT NINE;nt=De;nv=9;SB=NU;WB=NU;-XIDS
+unassigned;0DF0..0DF1
 # Additional dependent vowel signs
 cp;0DF2;gc=Mc;GCB=SM;-IDS;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=SINHALA VOWEL SIGN DIGA GAETTA-PILLA;SB=EX;WB=Extend;-XIDS
 cp;0DF3;gc=Mc;GCB=SM;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use Technical;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=SINHALA VOWEL SIGN DIGA GAYANUKITTA;SB=EX;WB=Extend;-XIDS
@@ -5189,7 +5257,8 @@ cp;0E4B;-Alpha;bc=NSM;ccc=107;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Exte
 # Signs
 cp;0E4C;-Alpha;bc=NSM;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Consonant_Killer;jt=T;na=THAI CHARACTER THANTHAKHAT;SB=EX;WB=Extend;-XIDS
 cp;0E4D;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;na=THAI CHARACTER NIKHAHIT;SB=EX;WB=Extend;-XIDS
-cp;0E4E;-Alpha;bc=NSM;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Top;InSC=Pure_Killer;jt=T;na=THAI CHARACTER YAMAKKAN;SB=EX;WB=Extend;-XIDScp;0E4F;-Alpha;gc=Po;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;InSC=Other;lb=AL;na=THAI CHARACTER FONGMAN;SB=XX;-XIDC;-XIDS
+cp;0E4E;-Alpha;bc=NSM;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Top;InSC=Pure_Killer;jt=T;na=THAI CHARACTER YAMAKKAN;SB=EX;WB=Extend;-XIDS
+cp;0E4F;-Alpha;gc=Po;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;InSC=Other;lb=AL;na=THAI CHARACTER FONGMAN;SB=XX;-XIDC;-XIDS
 # Digits
 cp;0E50;-Alpha;gc=Nd;-IDS;InSC=Number;lb=NU;na=THAI DIGIT ZERO;nt=De;nv=0;SB=NU;WB=NU;-XIDS
 cp;0E51;-Alpha;gc=Nd;-IDS;InSC=Number;lb=NU;na=THAI DIGIT ONE;nt=De;nv=1;SB=NU;WB=NU;-XIDS
@@ -5295,7 +5364,8 @@ cp;0ECB;-Alpha;bc=NSM;ccc=122;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Exte
 # Signs
 cp;0ECC;-Alpha;bc=NSM;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Other;jt=T;na=LAO CANCELLATION MARK;SB=EX;WB=Extend;-XIDS
 cp;0ECD;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;na=LAO NIGGAHITA;SB=EX;WB=Extend;-XIDS
-cp;0ECE;age=15.0;-Alpha;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Top;InSC=Syllable_Modifier;jt=T;na=LAO YAMAKKAN;SB=EX;WB=Extend;-XIDSunassigned;0ECF
+cp;0ECE;age=15.0;-Alpha;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Top;InSC=Syllable_Modifier;jt=T;na=LAO YAMAKKAN;SB=EX;WB=Extend;-XIDS
+unassigned;0ECF
 # Digits
 cp;0ED0;-Alpha;gc=Nd;-IDS;InSC=Number;lb=NU;na=LAO DIGIT ZERO;nt=De;nv=0;SB=NU;WB=NU;-XIDS
 cp;0ED1;-Alpha;gc=Nd;-IDS;InSC=Number;lb=NU;na=LAO DIGIT ONE;nt=De;nv=1;SB=NU;WB=NU;-XIDS
@@ -5316,7 +5386,8 @@ cp;0EDE;age=6.1;ID_Status=Restricted;ID_Type=Uncommon_Use;na=LAO LETTER KHMU GO
 cp;0EDF;age=6.1;ID_Status=Restricted;ID_Type=Uncommon_Use;na=LAO LETTER KHMU NYO
 unassigned;0EE0..0EFF
 
-block;0F00..0FFF;age=2.0;Alpha;blk=Tibetan;gc=Mn;Gr_Base;IDC;ID_Status=Allowed;ID_Type=Recommended;InSC=Consonant_Subjoined;lb=AL;SB=EX;sc=Tibt;WB=Extend;XIDC# 0F00..0FFF Tibetan
+block;0F00..0FFF;age=2.0;Alpha;blk=Tibetan;gc=Mn;Gr_Base;IDC;ID_Status=Allowed;ID_Type=Recommended;InSC=Consonant_Subjoined;lb=AL;SB=EX;sc=Tibt;WB=Extend;XIDC
+# 0F00..0FFF Tibetan
 # Syllable
 cp;0F00;gc=Lo;IDS;ID_Type=Technical;InSC=Other;na=TIBETAN SYLLABLE OM;SB=LE;WB=LE;XIDS
 # Head marks
@@ -5352,7 +5423,8 @@ cp;0F1B;-Alpha;gc=So;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InSC=Other;na=TIB
 cp;0F1C;-Alpha;gc=So;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InSC=Other;na=TIBETAN SIGN RDEL DKAR GSUM;SB=XX;WB=XX;-XIDC
 cp;0F1D;-Alpha;gc=So;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InSC=Other;na=TIBETAN SIGN RDEL NAG GCIG;SB=XX;WB=XX;-XIDC
 cp;0F1E;-Alpha;gc=So;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InSC=Other;na=TIBETAN SIGN RDEL NAG GNYIS;SB=XX;WB=XX;-XIDC
-cp;0F1F;-Alpha;gc=So;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InSC=Other;na=TIBETAN SIGN RDEL DKAR RDEL NAG;SB=XX;WB=XX;-XIDC# Digits
+cp;0F1F;-Alpha;gc=So;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InSC=Other;na=TIBETAN SIGN RDEL DKAR RDEL NAG;SB=XX;WB=XX;-XIDC
+# Digits
 cp;0F20;-Alpha;gc=Nd;ID_Status=Allowed;InSC=Number;lb=NU;na=TIBETAN DIGIT ZERO;nt=De;nv=0;SB=NU;WB=NU
 cp;0F21;-Alpha;gc=Nd;ID_Status=Allowed;InSC=Number;lb=NU;na=TIBETAN DIGIT ONE;nt=De;nv=1;SB=NU;WB=NU
 cp;0F22;-Alpha;gc=Nd;ID_Status=Allowed;InSC=Number;lb=NU;na=TIBETAN DIGIT TWO;nt=De;nv=2;SB=NU;WB=NU
@@ -5385,7 +5457,8 @@ cp;0F39;-Alpha;bc=NSM;ccc=216;CI;Dia;GCB=EX;-Gr_Base;Gr_Ext;ID_Status=Restricted
 cp;0F3A;-Alpha;bc=ON;Bidi_M;bmg=0F3B;bpb=0F3B;bpt=o;gc=Ps;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InSC=Other;lb=OP;na=TIBETAN MARK GUG RTAGS GYON;SB=CL;WB=XX;-XIDC
 cp;0F3B;-Alpha;bc=ON;Bidi_M;bmg=0F3A;bpb=0F3A;bpt=c;gc=Pe;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InSC=Other;lb=CL;na=TIBETAN MARK GUG RTAGS GYAS;SB=CL;WB=XX;-XIDC
 cp;0F3C;-Alpha;bc=ON;Bidi_M;bmg=0F3D;bpb=0F3D;bpt=o;gc=Ps;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InSC=Other;lb=OP;na=TIBETAN MARK ANG KHANG GYON;SB=CL;WB=XX;-XIDC
-cp;0F3D;-Alpha;bc=ON;Bidi_M;bmg=0F3C;bpb=0F3C;bpt=c;gc=Pe;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InSC=Other;lb=CL;na=TIBETAN MARK ANG KHANG GYAS;SB=CL;WB=XX;-XIDC# Astrological signs
+cp;0F3D;-Alpha;bc=ON;Bidi_M;bmg=0F3C;bpb=0F3C;bpt=c;gc=Pe;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InSC=Other;lb=CL;na=TIBETAN MARK ANG KHANG GYAS;SB=CL;WB=XX;-XIDC
+# Astrological signs
 cp;0F3E;-Alpha;Dia;gc=Mc;GCB=SM;ID_Type=Technical;InPC=Right;InSC=Other;lb=CM;na=TIBETAN SIGN YAR TSHES
 cp;0F3F;-Alpha;Dia;gc=Mc;GCB=SM;ID_Type=Technical;InPC=Left;InSC=Other;lb=CM;na=TIBETAN SIGN MAR TSHES
 # Consonants
@@ -5431,7 +5504,8 @@ cp;0F66;gc=Lo;IDS;InSC=Consonant;na=TIBETAN LETTER SA;SB=LE;WB=LE;XIDS
 cp;0F67;gc=Lo;IDS;InSC=Consonant;na=TIBETAN LETTER HA;SB=LE;WB=LE;XIDS
 cp;0F68;gc=Lo;IDS;InSC=Consonant;na=TIBETAN LETTER A;SB=LE;WB=LE;XIDS
 cp;0F69;Comp_Ex;CWKCF;dm=0F40 0FB5;dt=Can;gc=Lo;IDS;ID_Status=Restricted;ID_Type=Not_NFKC;InSC=Consonant;na=TIBETAN LETTER KSSA;NFC_QC=N;NFD_QC=N;NFKC_CF=0F40 0FB5;NFKC_QC=N;NFKC_SCF=0F40 0FB5;NFKD_QC=N;SB=LE;WB=LE;XIDS
-cp;0F6A;age=3.0;gc=Lo;IDS;InSC=Consonant;na=TIBETAN LETTER FIXED-FORM RA;SB=LE;WB=LE;XIDS# Extensions for Balti
+cp;0F6A;age=3.0;gc=Lo;IDS;InSC=Consonant;na=TIBETAN LETTER FIXED-FORM RA;SB=LE;WB=LE;XIDS
+# Extensions for Balti
 cp;0F6B;age=5.1;gc=Lo;IDS;ID_Type=Uncommon_Use;InSC=Consonant;na=TIBETAN LETTER KKA;SB=LE;WB=LE;XIDS
 cp;0F6C;age=5.1;gc=Lo;IDS;ID_Type=Uncommon_Use;InSC=Consonant;na=TIBETAN LETTER RRA;SB=LE;WB=LE;XIDS
 unassigned;0F6D..0F70
@@ -5461,7 +5535,8 @@ cp;0F83;bc=NSM;ccc=230;CI;Dia;GCB=EX;-Gr_Base;Gr_Ext;ID_Type=Uncommon_Use Obsole
 cp;0F84;-Alpha;bc=NSM;ccc=9;CI;Dia;GCB=EX;-Gr_Base;Gr_Ext;Gr_Link;ID_Status=Allowed;InCB=Extend;InPC=Bottom;InSC=Pure_Killer;jt=T;lb=CM;na=TIBETAN MARK HALANTA
 cp;0F85;-Alpha;gc=Po;-IDC;ID_Type=Not_XID;InSC=Avagraha;lb=BA;na=TIBETAN MARK PALUTA;SB=XX;WB=XX;-XIDC
 cp;0F86;-Alpha;bc=NSM;ccc=230;CI;Dia;GCB=EX;-Gr_Base;Gr_Ext;ID_Type=Obsolete;InCB=Extend;InPC=Top;InSC=Other;jt=T;lb=CM;na=TIBETAN SIGN LCI RTAGS
-cp;0F87;-Alpha;bc=NSM;ccc=230;CI;Dia;GCB=EX;-Gr_Base;Gr_Ext;ID_Type=Obsolete;InCB=Extend;InPC=Top;InSC=Other;jt=T;lb=CM;na=TIBETAN SIGN YANG RTAGS# Transliteration head letters
+cp;0F87;-Alpha;bc=NSM;ccc=230;CI;Dia;GCB=EX;-Gr_Base;Gr_Ext;ID_Type=Obsolete;InCB=Extend;InPC=Top;InSC=Other;jt=T;lb=CM;na=TIBETAN SIGN YANG RTAGS
+# Transliteration head letters
 cp;0F88;gc=Lo;IDS;ID_Type=Obsolete;InSC=Consonant_Head_Letter;na=TIBETAN SIGN LCE TSA CAN;SB=LE;WB=LE;XIDS
 cp;0F89;gc=Lo;IDS;ID_Type=Obsolete;InSC=Consonant_Head_Letter;na=TIBETAN SIGN MCHU CAN;SB=LE;WB=LE;XIDS
 cp;0F8A;gc=Lo;IDS;ID_Type=Obsolete;InSC=Consonant_Head_Letter;na=TIBETAN SIGN GRU CAN RGYINGS;SB=LE;WB=LE;XIDS
@@ -5558,7 +5633,8 @@ cp;0FD9;age=6.0;-Alpha;gc=Po;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InSC=Othe
 cp;0FDA;age=6.0;-Alpha;gc=Po;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InSC=Other;lb=GL;na=TIBETAN MARK TRAILING MCHAN RTAGS;SB=XX;WB=XX;-XIDC
 unassigned;0FDB..0FFF
 
-block;1000..109F;age=3.0;Alpha;blk=Myanmar;gc=Lo;Gr_Base;IDC;ID_Status=Allowed;ID_Type=Recommended;InSC=Consonant;lb=SA;SB=LE;sc=Mymr;WB=Extend;XIDC# 1000..109F Myanmar
+block;1000..109F;age=3.0;Alpha;blk=Myanmar;gc=Lo;Gr_Base;IDC;ID_Status=Allowed;ID_Type=Recommended;InSC=Consonant;lb=SA;SB=LE;sc=Mymr;WB=Extend;XIDC
+# 1000..109F Myanmar
 # Consonants
 cp;1000;IDS;na=MYANMAR LETTER KA;WB=XX;XIDS
 cp;1001;IDS;na=MYANMAR LETTER KHA;WB=XX;XIDS
@@ -5606,11 +5682,13 @@ cp;1029;IDS;InSC=Vowel_Independent;na=MYANMAR LETTER O;WB=XX;XIDS
 cp;102A;IDS;InSC=Vowel_Independent;na=MYANMAR LETTER AU;WB=XX;XIDS
 # Dependent vowel signs
 cp;102B;age=5.1;gc=Mc;InCB=None;InPC=Right;InSC=Vowel_Dependent;na=MYANMAR VOWEL SIGN TALL AA;SB=EX
-cp;102C;gc=Mc;InCB=None;InPC=Right;InSC=Vowel_Dependent;na=MYANMAR VOWEL SIGN AA;SB=EXcp;102D;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=MYANMAR VOWEL SIGN I;SB=EX
+cp;102C;gc=Mc;InCB=None;InPC=Right;InSC=Vowel_Dependent;na=MYANMAR VOWEL SIGN AA;SB=EX
+cp;102D;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=MYANMAR VOWEL SIGN I;SB=EX
 cp;102E;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=MYANMAR VOWEL SIGN II;NFC_QC=M;NFKC_QC=M;SB=EX
 cp;102F;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;na=MYANMAR VOWEL SIGN U;SB=EX
 cp;1030;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;na=MYANMAR VOWEL SIGN UU;SB=EX
-cp;1031;gc=Mc;GCB=SM;InCB=None;InPC=Left;InSC=Vowel_Dependent;na=MYANMAR VOWEL SIGN E;SB=EXcp;1032;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=MYANMAR VOWEL SIGN AI;SB=EX
+cp;1031;gc=Mc;GCB=SM;InCB=None;InPC=Left;InSC=Vowel_Dependent;na=MYANMAR VOWEL SIGN E;SB=EX
+cp;1032;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=MYANMAR VOWEL SIGN AI;SB=EX
 cp;1033;age=5.1;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=MYANMAR VOWEL SIGN MON II;SB=EX
 cp;1034;age=5.1;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=MYANMAR VOWEL SIGN MON O;SB=EX
 cp;1035;age=5.1;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=MYANMAR VOWEL SIGN E ABOVE;SB=EX
@@ -5623,7 +5701,8 @@ cp;1039;-Alpha;bc=NSM;ccc=9;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;Gr_Link;InCB=Lin
 cp;103A;age=5.1;-Alpha;bc=NSM;ccc=9;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;Gr_Link;InCB=Extend;InPC=Top;InSC=Pure_Killer;jt=T;na=MYANMAR SIGN ASAT;SB=EX
 # Dependent consonant signs
 cp;103B;age=5.1;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Consonant_Medial;na=MYANMAR CONSONANT SIGN MEDIAL YA;SB=EX
-cp;103C;age=5.1;gc=Mc;GCB=SM;InCB=None;InPC=Top_And_Bottom_And_Left;InSC=Consonant_Medial;na=MYANMAR CONSONANT SIGN MEDIAL RA;SB=EXcp;103D;age=5.1;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Bottom;InSC=Consonant_Medial;jt=T;na=MYANMAR CONSONANT SIGN MEDIAL WA;SB=EX
+cp;103C;age=5.1;gc=Mc;GCB=SM;InCB=None;InPC=Top_And_Bottom_And_Left;InSC=Consonant_Medial;na=MYANMAR CONSONANT SIGN MEDIAL RA;SB=EX
+cp;103D;age=5.1;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Bottom;InSC=Consonant_Medial;jt=T;na=MYANMAR CONSONANT SIGN MEDIAL WA;SB=EX
 cp;103E;age=5.1;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Bottom;InSC=Consonant_Medial;jt=T;na=MYANMAR CONSONANT SIGN MEDIAL HA;SB=EX
 # Consonant
 cp;103F;age=5.1;IDS;na=MYANMAR LETTER GREAT SA;WB=XX;XIDS
@@ -5656,7 +5735,8 @@ cp;1055;IDS;ID_Status=Restricted;ID_Type=Uncommon_Use Obsolete;InSC=Vowel_Indepe
 cp;1056;gc=Mc;GCB=SM;ID_Status=Restricted;ID_Type=Uncommon_Use Obsolete;InCB=None;InPC=Right;InSC=Vowel_Dependent;na=MYANMAR VOWEL SIGN VOCALIC R;SB=EX
 cp;1057;gc=Mc;GCB=SM;ID_Status=Restricted;ID_Type=Uncommon_Use Obsolete;InCB=None;InPC=Right;InSC=Vowel_Dependent;na=MYANMAR VOWEL SIGN VOCALIC RR;SB=EX
 cp;1058;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;ID_Status=Restricted;ID_Type=Uncommon_Use Obsolete;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;na=MYANMAR VOWEL SIGN VOCALIC L;SB=EX
-cp;1059;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;ID_Status=Restricted;ID_Type=Uncommon_Use Obsolete;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;na=MYANMAR VOWEL SIGN VOCALIC LL;SB=EX# Extensions for Mon
+cp;1059;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;ID_Status=Restricted;ID_Type=Uncommon_Use Obsolete;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;na=MYANMAR VOWEL SIGN VOCALIC LL;SB=EX
+# Extensions for Mon
 cp;105A;age=5.1;IDS;na=MYANMAR LETTER MON NGA;WB=XX;XIDS
 cp;105B;age=5.1;IDS;na=MYANMAR LETTER MON JHA;WB=XX;XIDS
 cp;105C;age=5.1;IDS;na=MYANMAR LETTER MON BBA;WB=XX;XIDS
@@ -5688,7 +5768,8 @@ cp;1071;age=5.1;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC
 # Extensions for Kayah
 cp;1072;age=5.1;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=MYANMAR VOWEL SIGN KAYAH OE;SB=EX
 cp;1073;age=5.1;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=MYANMAR VOWEL SIGN KAYAH U;SB=EX
-cp;1074;age=5.1;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=MYANMAR VOWEL SIGN KAYAH EE;SB=EX# Extensions for Shan
+cp;1074;age=5.1;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=MYANMAR VOWEL SIGN KAYAH EE;SB=EX
+# Extensions for Shan
 cp;1075;age=5.1;IDS;na=MYANMAR LETTER SHAN KA;WB=XX;XIDS
 cp;1076;age=5.1;IDS;na=MYANMAR LETTER SHAN KHA;WB=XX;XIDS
 cp;1077;age=5.1;IDS;na=MYANMAR LETTER SHAN GA;WB=XX;XIDS
@@ -5713,7 +5794,8 @@ cp;1089;age=5.1;Dia;gc=Mc;InCB=None;InPC=Right;InSC=Tone_Mark;na=MYANMAR SIGN SH
 cp;108A;age=5.1;Dia;gc=Mc;InCB=None;InPC=Right;InSC=Tone_Mark;na=MYANMAR SIGN SHAN TONE-6;SB=EX
 cp;108B;age=5.1;Dia;gc=Mc;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=None;InPC=Right;InSC=Tone_Mark;na=MYANMAR SIGN SHAN COUNCIL TONE-2;SB=EX
 cp;108C;age=5.1;Dia;gc=Mc;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=None;InPC=Right;InSC=Tone_Mark;na=MYANMAR SIGN SHAN COUNCIL TONE-3;SB=EX
-cp;108D;age=5.1;bc=NSM;ccc=220;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Bottom;InSC=Tone_Mark;jt=T;na=MYANMAR SIGN SHAN COUNCIL EMPHATIC TONE;SB=EX# Extensions for Rumai Palaung
+cp;108D;age=5.1;bc=NSM;ccc=220;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;InPC=Bottom;InSC=Tone_Mark;jt=T;na=MYANMAR SIGN SHAN COUNCIL EMPHATIC TONE;SB=EX
+# Extensions for Rumai Palaung
 cp;108E;age=5.1;IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;na=MYANMAR LETTER RUMAI PALAUNG FA;WB=XX;XIDS
 cp;108F;age=5.1;Dia;gc=Mc;InCB=None;InPC=Right;InSC=Tone_Mark;na=MYANMAR SIGN RUMAI PALAUNG TONE-5;SB=EX
 # Shan digits
@@ -5737,7 +5819,8 @@ cp;109D;age=5.2;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;ID_Status=Restricted;ID_T
 cp;109E;age=5.1;-Alpha;gc=So;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InCB=None;InSC=Other;na=MYANMAR SYMBOL SHAN ONE;SB=XX;WB=XX;-XIDC
 cp;109F;age=5.1;-Alpha;gc=So;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InCB=None;InSC=Other;na=MYANMAR SYMBOL SHAN EXCLAMATION;SB=XX;WB=XX;-XIDC
 
-block;10A0..10FF;age=1.1;Alpha;blk=Georgian;Cased;CWCM;gc=Ll;Gr_Base;IDC;IDS;ID_Type=Obsolete;lb=AL;SB=LE;sc=Geor;WB=LE;XIDC;XIDS# 10A0..10FF Georgian
+block;10A0..10FF;age=1.1;Alpha;blk=Georgian;Cased;CWCM;gc=Ll;Gr_Base;IDC;IDS;ID_Type=Obsolete;lb=AL;SB=LE;sc=Geor;WB=LE;XIDC;XIDS
+# 10A0..10FF Georgian
 # Capital letters (Khutsuri)
 cp;10A0;cf=2D00;CWCF;CWKCF;CWL;gc=Lu;ID_Type=Obsolete;na=GEORGIAN CAPITAL LETTER AN;NFKC_CF=2D00;NFKC_SCF=2D00;SB=UP;scf=2D00;slc=2D00;Upper
 cp;10A1;cf=2D01;CWCF;CWKCF;CWL;gc=Lu;ID_Type=Obsolete;na=GEORGIAN CAPITAL LETTER BAN;NFKC_CF=2D01;NFKC_SCF=2D01;SB=UP;scf=2D01;slc=2D01;Upper
@@ -5817,7 +5900,8 @@ cp;10EC;CWU;ID_Status=Allowed;ID_Type=Recommended;Lower;na=GEORGIAN LETTER CIL;s
 cp;10ED;CWU;ID_Status=Allowed;ID_Type=Recommended;Lower;na=GEORGIAN LETTER CHAR;stc=10ED;suc=1CAD
 cp;10EE;CWU;ID_Status=Allowed;ID_Type=Recommended;Lower;na=GEORGIAN LETTER XAN;stc=10EE;suc=1CAE
 cp;10EF;CWU;ID_Status=Allowed;ID_Type=Recommended;Lower;na=GEORGIAN LETTER JHAN;stc=10EF;suc=1CAF
-cp;10F0;CWU;ID_Status=Allowed;ID_Type=Recommended;Lower;na=GEORGIAN LETTER HAE;stc=10F0;suc=1CB0# Archaic letters
+cp;10F0;CWU;ID_Status=Allowed;ID_Type=Recommended;Lower;na=GEORGIAN LETTER HAE;stc=10F0;suc=1CB0
+# Archaic letters
 cp;10F1;CWU;ID_Type=Obsolete;Lower;na=GEORGIAN LETTER HE;stc=10F1;suc=1CB1
 cp;10F2;CWU;ID_Type=Obsolete;Lower;na=GEORGIAN LETTER HIE;stc=10F2;suc=1CB2
 cp;10F3;CWU;ID_Type=Obsolete;Lower;na=GEORGIAN LETTER WE;stc=10F3;suc=1CB3
@@ -5829,7 +5913,8 @@ cp;10F7;age=3.2;CWU;ID_Status=Allowed;Lower;na=GEORGIAN LETTER YN;stc=10F7;suc=1
 cp;10F8;age=3.2;CWU;ID_Status=Allowed;Lower;na=GEORGIAN LETTER ELIFI;stc=10F8;suc=1CB8
 # Additional letters
 cp;10F9;age=4.1;CWU;ID_Status=Allowed;Lower;na=GEORGIAN LETTER TURNED GAN;stc=10F9;suc=1CB9
-cp;10FA;age=4.1;CWU;ID_Status=Allowed;Lower;na=GEORGIAN LETTER AIN;stc=10FA;suc=1CBA# Punctuation
+cp;10FA;age=4.1;CWU;ID_Status=Allowed;Lower;na=GEORGIAN LETTER AIN;stc=10FA;suc=1CBA
+# Punctuation
 cp;10FB;-Alpha;-Cased;-CWCM;gc=Po;-IDC;-IDS;ID_Type=Not_XID;na=GEORGIAN PARAGRAPH SEPARATOR;SB=XX;sc=Zyyy;scx=Geor Glag Latn;WB=XX;-XIDC;-XIDS
 # Modifier letter
 cp;10FC;age=4.1;CI;-CWCM;CWKCF;dm=10DC;dt=Sup;gc=Lm;ID_Type=Not_NFKC;Lower;na=MODIFIER LETTER GEORGIAN NAR;NFKC_CF=10DC;NFKC_QC=N;NFKC_SCF=10DC;NFKD_QC=N;SB=LO
@@ -6485,7 +6570,8 @@ cp;137B;-Alpha;gc=No;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;na=ETHIOPIC 
 cp;137C;-Alpha;gc=No;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;na=ETHIOPIC NUMBER TEN THOUSAND;nt=Nu;nv=10000;SB=XX;WB=XX;-XIDC;-XIDS
 unassigned;137D..137F
 
-block;1380..139F;age=4.1;Alpha;blk=Ethiopic_Sup;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=AL;SB=LE;sc=Ethi;WB=LE;XIDC;XIDS# 1380..139F Ethiopic Supplement
+block;1380..139F;age=4.1;Alpha;blk=Ethiopic_Sup;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=AL;SB=LE;sc=Ethi;WB=LE;XIDC;XIDS
+# 1380..139F Ethiopic Supplement
 # Syllables for Gurage
 cp;1380;na=ETHIOPIC SYLLABLE SEBATBEIT MWA
 cp;1381;na=ETHIOPIC SYLLABLE MWI
@@ -6513,7 +6599,8 @@ cp;1395;-Alpha;bc=ON;gc=So;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;na=ETH
 cp;1396;-Alpha;bc=ON;gc=So;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;na=ETHIOPIC TONAL MARK CHIRET;SB=XX;WB=XX;-XIDC;-XIDS
 cp;1397;-Alpha;bc=ON;gc=So;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;na=ETHIOPIC TONAL MARK HIDET;SB=XX;WB=XX;-XIDC;-XIDS
 cp;1398;-Alpha;bc=ON;gc=So;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;na=ETHIOPIC TONAL MARK DERET-HIDET;SB=XX;WB=XX;-XIDC;-XIDS
-cp;1399;-Alpha;bc=ON;gc=So;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;na=ETHIOPIC TONAL MARK KURT;SB=XX;WB=XX;-XIDC;-XIDSunassigned;139A..139F
+cp;1399;-Alpha;bc=ON;gc=So;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_XID;na=ETHIOPIC TONAL MARK KURT;SB=XX;WB=XX;-XIDC;-XIDS
+unassigned;139A..139F
 
 block;13A0..13FF;age=3.0;Alpha;blk=Cherokee;Cased;CWCM;CWL;gc=Lu;Gr_Base;IDC;IDS;ID_Type=Limited_Use;lb=AL;SB=UP;sc=Cher;Upper;WB=LE;XIDC;XIDS
 # 13A0..13FF Cherokee
@@ -6619,7 +6706,8 @@ unassigned;13FE..13FF
 block;1400..167F;age=3.0;Alpha;blk=UCAS;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Limited_Use;lb=AL;SB=LE;sc=Cans;vo=U;WB=LE;XIDC;XIDS
 # 1400..167F Unified Canadian Aboriginal Syllabics
 # Punctuation
-cp;1400;age=5.2;-Alpha;bc=ON;Dash;gc=Pd;-IDC;-IDS;ID_Type=Limited_Use Not_XID;lb=BA;na=CANADIAN SYLLABICS HYPHEN;SB=XX;vo=R;WB=XX;-XIDC;-XIDS# Syllables
+cp;1400;age=5.2;-Alpha;bc=ON;Dash;gc=Pd;-IDC;-IDS;ID_Type=Limited_Use Not_XID;lb=BA;na=CANADIAN SYLLABICS HYPHEN;SB=XX;vo=R;WB=XX;-XIDC;-XIDS
+# Syllables
 cp;1401;na=CANADIAN SYLLABICS E
 cp;1402;na=CANADIAN SYLLABICS AAI
 cp;1403;na=CANADIAN SYLLABICS I
@@ -7517,7 +7605,8 @@ cp;1772;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Vo
 cp;1773;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=TAGBANWA VOWEL SIGN U;SB=EX;WB=Extend;-XIDS
 unassigned;1774..177F
 
-block;1780..17FF;age=3.0;Alpha;blk=Khmer;gc=Lo;Gr_Base;IDC;ID_Status=Allowed;ID_Type=Recommended;InCB=Consonant;InSC=Consonant;lb=SA;SB=LE;sc=Khmr;XIDC# 1780..17FF Khmer
+block;1780..17FF;age=3.0;Alpha;blk=Khmer;gc=Lo;Gr_Base;IDC;ID_Status=Allowed;ID_Type=Recommended;InCB=Consonant;InSC=Consonant;lb=SA;SB=LE;sc=Khmr;XIDC
+# 1780..17FF Khmer
 # Consonants
 cp;1780;IDS;na=KHMER LETTER KA;XIDS
 cp;1781;IDS;na=KHMER LETTER KHA;XIDS
@@ -7562,7 +7651,8 @@ cp;17A5;IDS;InSC=Vowel_Independent;na=KHMER INDEPENDENT VOWEL QI;XIDS
 cp;17A6;IDS;InSC=Vowel_Independent;na=KHMER INDEPENDENT VOWEL QII;XIDS
 cp;17A7;IDS;InSC=Vowel_Independent;na=KHMER INDEPENDENT VOWEL QU;XIDS
 cp;17A8;IDS;ID_Status=Restricted;ID_Type=Obsolete;InSC=Vowel_Independent;na=KHMER INDEPENDENT VOWEL QUK;XIDS
-cp;17A9;IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InSC=Vowel_Independent;na=KHMER INDEPENDENT VOWEL QUU;XIDScp;17AA;IDS;InSC=Vowel_Independent;na=KHMER INDEPENDENT VOWEL QUUV;XIDS
+cp;17A9;IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InSC=Vowel_Independent;na=KHMER INDEPENDENT VOWEL QUU;XIDS
+cp;17AA;IDS;InSC=Vowel_Independent;na=KHMER INDEPENDENT VOWEL QUUV;XIDS
 cp;17AB;IDS;InSC=Vowel_Independent;na=KHMER INDEPENDENT VOWEL RY;XIDS
 cp;17AC;IDS;InSC=Vowel_Independent;na=KHMER INDEPENDENT VOWEL RYY;XIDS
 cp;17AD;IDS;InSC=Vowel_Independent;na=KHMER INDEPENDENT VOWEL LY;XIDS
@@ -7576,7 +7666,8 @@ cp;17B3;IDS;InSC=Vowel_Independent;na=KHMER INDEPENDENT VOWEL QAU;XIDS
 cp;17B4;-Alpha;bc=NSM;CI;CWKCF;DI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;ID_Status=Restricted;ID_Type=Default_Ignorable;InCB=Extend;InSC=Other;jt=T;na=KHMER VOWEL INHERENT AQ;NFKC_CF=;NFKC_SCF=;SB=EX;WB=Extend
 cp;17B5;-Alpha;bc=NSM;CI;CWKCF;DI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;ID_Status=Restricted;ID_Type=Default_Ignorable;InCB=Extend;InSC=Other;jt=T;na=KHMER VOWEL INHERENT AA;NFKC_CF=;NFKC_SCF=;SB=EX;WB=Extend
 # Dependent vowel signs
-cp;17B6;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Vowel_Dependent;na=KHMER VOWEL SIGN AA;SB=EX;WB=Extendcp;17B7;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=KHMER VOWEL SIGN I;SB=EX;WB=Extend
+cp;17B6;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Vowel_Dependent;na=KHMER VOWEL SIGN AA;SB=EX;WB=Extend
+cp;17B7;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=KHMER VOWEL SIGN I;SB=EX;WB=Extend
 cp;17B8;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=KHMER VOWEL SIGN II;SB=EX;WB=Extend
 cp;17B9;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=KHMER VOWEL SIGN Y;SB=EX;WB=Extend
 cp;17BA;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=KHMER VOWEL SIGN YY;SB=EX;WB=Extend
@@ -7597,7 +7688,8 @@ cp;17C5;gc=Mc;GCB=SM;InCB=None;InPC=Left_And_Right;InSC=Vowel_Dependent;na=KHMER
 # Various signs
 cp;17C6;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;na=KHMER SIGN NIKAHIT;SB=EX;WB=Extend
 cp;17C7;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Visarga;na=KHMER SIGN REAHMUK;SB=EX;WB=Extend
-cp;17C8;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Vowel_Dependent;na=KHMER SIGN YUUKALEAPINTU;SB=EX;WB=Extend# Consonant shifters
+cp;17C8;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Vowel_Dependent;na=KHMER SIGN YUUKALEAPINTU;SB=EX;WB=Extend
+# Consonant shifters
 cp;17C9;-Alpha;bc=NSM;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Register_Shifter;jt=T;na=KHMER SIGN MUUSIKATOAN;SB=EX;WB=Extend
 cp;17CA;-Alpha;bc=NSM;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Register_Shifter;jt=T;na=KHMER SIGN TRIISAP;SB=EX;WB=Extend
 # Various signs
@@ -7622,7 +7714,8 @@ cp;17DA;-Alpha;gc=Po;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InCB=None;InSC=Ot
 # Currency symbol
 cp;17DB;-Alpha;bc=ET;gc=Sc;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InCB=None;InSC=Other;lb=PR;na=KHMER CURRENCY SYMBOL RIEL;SB=XX;-XIDC
 # Various signs
-cp;17DC;IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=None;InSC=Avagraha;na=KHMER SIGN AVAKRAHASANYA;XIDScp;17DD;age=4.0;-Alpha;bc=NSM;ccc=230;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;ID_Status=Restricted;ID_Type=Technical Obsolete;InCB=Extend;InPC=Top;InSC=Syllable_Modifier;jt=T;na=KHMER SIGN ATTHACAN;SB=EX;WB=Extend
+cp;17DC;IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=None;InSC=Avagraha;na=KHMER SIGN AVAKRAHASANYA;XIDS
+cp;17DD;age=4.0;-Alpha;bc=NSM;ccc=230;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;ID_Status=Restricted;ID_Type=Technical Obsolete;InCB=Extend;InPC=Top;InSC=Syllable_Modifier;jt=T;na=KHMER SIGN ATTHACAN;SB=EX;WB=Extend
 unassigned;17DE..17DF
 # Digits
 cp;17E0;-Alpha;gc=Nd;InCB=None;InSC=Number;lb=NU;na=KHMER DIGIT ZERO;nt=De;nv=0;SB=NU;WB=NU
@@ -7646,7 +7739,8 @@ cp;17F5;age=4.0;-Alpha;bc=ON;gc=No;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InC
 cp;17F6;age=4.0;-Alpha;bc=ON;gc=No;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InCB=None;InSC=Other;lb=AL;na=KHMER SYMBOL LEK ATTAK PRAM-MUOY;nt=Nu;nv=6;SB=XX;-XIDC
 cp;17F7;age=4.0;-Alpha;bc=ON;gc=No;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InCB=None;InSC=Other;lb=AL;na=KHMER SYMBOL LEK ATTAK PRAM-PII;nt=Nu;nv=7;SB=XX;-XIDC
 cp;17F8;age=4.0;-Alpha;bc=ON;gc=No;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InCB=None;InSC=Other;lb=AL;na=KHMER SYMBOL LEK ATTAK PRAM-BEI;nt=Nu;nv=8;SB=XX;-XIDC
-cp;17F9;age=4.0;-Alpha;bc=ON;gc=No;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InCB=None;InSC=Other;lb=AL;na=KHMER SYMBOL LEK ATTAK PRAM-BUON;nt=Nu;nv=9;SB=XX;-XIDCunassigned;17FA..17FF
+cp;17F9;age=4.0;-Alpha;bc=ON;gc=No;-IDC;ID_Status=Restricted;ID_Type=Not_XID;InCB=None;InSC=Other;lb=AL;na=KHMER SYMBOL LEK ATTAK PRAM-BUON;nt=Nu;nv=9;SB=XX;-XIDC
+unassigned;17FA..17FF
 
 block;1800..18AF;age=3.0;Alpha;blk=Mongolian;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Exclusion;jt=D;lb=AL;SB=LE;sc=Mong;WB=LE;XIDC;XIDS
 # 1800..18AF Mongolian
@@ -8192,7 +8286,8 @@ unassigned;1A1C..1A1D
 cp;1A1E;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InSC=Other;na=BUGINESE PALLAWA;SB=XX;WB=XX;-XIDC;-XIDS
 cp;1A1F;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InSC=Other;na=BUGINESE END OF SECTION;SB=XX;WB=XX;-XIDC;-XIDS
 
-block;1A20..1AAF;age=5.2;Alpha;blk=Tai_Tham;gc=Lo;Gr_Base;IDC;ID_Type=Limited_Use;InCB=Consonant;InSC=Consonant;lb=SA;SB=LE;sc=Lana;XIDC# 1A20..1AAF Tai Tham
+block;1A20..1AAF;age=5.2;Alpha;blk=Tai_Tham;gc=Lo;Gr_Base;IDC;ID_Type=Limited_Use;InCB=Consonant;InSC=Consonant;lb=SA;SB=LE;sc=Lana;XIDC
+# 1A20..1AAF Tai Tham
 # Consonants
 cp;1A20;IDS;na=TAI THAM LETTER HIGH KA;XIDS
 cp;1A21;IDS;na=TAI THAM LETTER HIGH KHA;XIDS
@@ -8252,7 +8347,8 @@ cp;1A54;IDS;na=TAI THAM LETTER GREAT SA;XIDS
 # Consonant signs
 cp;1A55;gc=Mc;GCB=SM;InCB=None;InPC=Left;InSC=Consonant_Medial;na=TAI THAM CONSONANT SIGN MEDIAL RA;SB=EX;WB=Extend
 cp;1A56;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Bottom;InSC=Consonant_Medial;jt=T;na=TAI THAM CONSONANT SIGN MEDIAL LA;SB=EX;WB=Extend
-cp;1A57;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Consonant_Subjoined;na=TAI THAM CONSONANT SIGN LA TANG LAI;SB=EX;WB=Extendcp;1A58;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Consonant_Final;jt=T;na=TAI THAM SIGN MAI KANG LAI;SB=EX;WB=Extend
+cp;1A57;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Consonant_Subjoined;na=TAI THAM CONSONANT SIGN LA TANG LAI;SB=EX;WB=Extend
+cp;1A58;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Consonant_Final;jt=T;na=TAI THAM SIGN MAI KANG LAI;SB=EX;WB=Extend
 cp;1A59;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Consonant_Final;jt=T;na=TAI THAM CONSONANT SIGN FINAL NGA;SB=EX;WB=Extend
 cp;1A5A;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Consonant_Initial_Postfixed;jt=T;na=TAI THAM CONSONANT SIGN LOW PA;SB=EX;WB=Extend
 cp;1A5B;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Bottom;InSC=Consonant_Subjoined;jt=T;na=TAI THAM CONSONANT SIGN HIGH RATHA OR LOW PA;SB=EX;WB=Extend
@@ -8266,7 +8362,8 @@ cp;1A60;-Alpha;bc=NSM;ccc=9;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;Gr_Link;InCB=Lin
 cp;1A61;gc=Mc;InCB=None;InPC=Right;InSC=Vowel_Dependent;na=TAI THAM VOWEL SIGN A;SB=EX;WB=Extend
 cp;1A62;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=TAI THAM VOWEL SIGN MAI SAT;SB=EX;WB=Extend
 cp;1A63;gc=Mc;InCB=None;InPC=Right;InSC=Vowel_Dependent;na=TAI THAM VOWEL SIGN AA;SB=EX;WB=Extend
-cp;1A64;gc=Mc;InCB=None;InPC=Right;InSC=Vowel_Dependent;na=TAI THAM VOWEL SIGN TALL AA;SB=EX;WB=Extendcp;1A65;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=TAI THAM VOWEL SIGN I;SB=EX;WB=Extend
+cp;1A64;gc=Mc;InCB=None;InPC=Right;InSC=Vowel_Dependent;na=TAI THAM VOWEL SIGN TALL AA;SB=EX;WB=Extend
+cp;1A65;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=TAI THAM VOWEL SIGN I;SB=EX;WB=Extend
 cp;1A66;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=TAI THAM VOWEL SIGN II;SB=EX;WB=Extend
 cp;1A67;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=TAI THAM VOWEL SIGN UE;SB=EX;WB=Extend
 cp;1A68;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=TAI THAM VOWEL SIGN UUE;SB=EX;WB=Extend
@@ -8279,7 +8376,8 @@ cp;1A6E;gc=Mc;GCB=SM;InCB=None;InPC=Left;InSC=Vowel_Dependent;na=TAI THAM VOWEL 
 cp;1A6F;gc=Mc;GCB=SM;InCB=None;InPC=Left;InSC=Vowel_Dependent;na=TAI THAM VOWEL SIGN AE;SB=EX;WB=Extend
 cp;1A70;gc=Mc;GCB=SM;InCB=None;InPC=Left;InSC=Vowel_Dependent;na=TAI THAM VOWEL SIGN OO;SB=EX;WB=Extend
 cp;1A71;gc=Mc;GCB=SM;InCB=None;InPC=Left;InSC=Vowel_Dependent;na=TAI THAM VOWEL SIGN AI;SB=EX;WB=Extend
-cp;1A72;gc=Mc;GCB=SM;InCB=None;InPC=Left;InSC=Vowel_Dependent;na=TAI THAM VOWEL SIGN THAM AI;SB=EX;WB=Extendcp;1A73;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=TAI THAM VOWEL SIGN OA ABOVE;SB=EX;WB=Extend
+cp;1A72;gc=Mc;GCB=SM;InCB=None;InPC=Left;InSC=Vowel_Dependent;na=TAI THAM VOWEL SIGN THAM AI;SB=EX;WB=Extend
+cp;1A73;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=TAI THAM VOWEL SIGN OA ABOVE;SB=EX;WB=Extend
 cp;1A74;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;na=TAI THAM SIGN MAI KANG;SB=EX;WB=Extend
 # Tone marks
 cp;1A75;-Alpha;bc=NSM;ccc=230;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Tone_Mark;jt=T;na=TAI THAM SIGN TONE-1;SB=EX;WB=Extend
@@ -8326,7 +8424,8 @@ cp;1AA2;-Alpha;gc=Po;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;na=TA
 cp;1AA3;-Alpha;gc=Po;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;na=TAI THAM SIGN KEOW;SB=XX;-XIDC
 cp;1AA4;-Alpha;gc=Po;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;na=TAI THAM SIGN HOY;SB=XX;-XIDC
 cp;1AA5;-Alpha;gc=Po;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;na=TAI THAM SIGN DOKMAI;SB=XX;-XIDC
-cp;1AA6;-Alpha;gc=Po;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;na=TAI THAM SIGN REVERSED ROTATED RANA;SB=XX;-XIDC# Sign
+cp;1AA6;-Alpha;gc=Po;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;na=TAI THAM SIGN REVERSED ROTATED RANA;SB=XX;-XIDC
+# Sign
 cp;1AA7;CI;Ext;gc=Lm;IDS;InCB=None;InSC=Other;na=TAI THAM SIGN MAI YAMOK;XIDS
 # Punctuation
 cp;1AA8;-Alpha;gc=Po;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;na=TAI THAM SIGN KAAN;SB=ST;STerm;Term;-XIDC
@@ -8337,7 +8436,8 @@ cp;1AAC;-Alpha;gc=Po;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;na=TA
 cp;1AAD;-Alpha;gc=Po;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;na=TAI THAM SIGN CAANG;SB=XX;-XIDC
 unassigned;1AAE..1AAF
 
-block;1AB0..1AFF;age=17.0;bc=NSM;blk=Diacriticals_Ext;ccc=230;CI;Dia;gc=Mn;GCB=EX;Gr_Ext;IDC;ID_Type=Technical;InCB=Extend;jt=T;lb=CM;SB=EX;sc=Zinh;WB=Extend;XIDC# 1AB0..1AFF Combining Diacritical Marks Extended
+block;1AB0..1AFF;age=17.0;bc=NSM;blk=Diacriticals_Ext;ccc=230;CI;Dia;gc=Mn;GCB=EX;Gr_Ext;IDC;ID_Type=Technical;InCB=Extend;jt=T;lb=CM;SB=EX;sc=Zinh;WB=Extend;XIDC
+# 1AB0..1AFF Combining Diacritical Marks Extended
 # Used in German dialectology
 cp;1AB0;age=7.0;ID_Type=Obsolete;na=COMBINING DOUBLED CIRCUMFLEX ACCENT
 cp;1AB1;age=7.0;ID_Type=Obsolete;na=COMBINING DIAERESIS-RING
@@ -8411,13 +8511,15 @@ cp;1AEA;na=COMBINING UPWARDS ARROW ABOVE
 cp;1AEB;ccc=234;lb=GL;na=COMBINING DOUBLE RIGHTWARDS ARROW ABOVE
 unassigned;1AEC..1AFF
 
-block;1B00..1B7F;age=5.0;Alpha;blk=Balinese;gc=Lo;Gr_Base;IDC;ID_Type=Limited_Use;InCB=Consonant;InSC=Consonant;lb=AK;SB=LE;sc=Bali;WB=LE;XIDC# 1B00..1B7F Balinese
+block;1B00..1B7F;age=5.0;Alpha;blk=Balinese;gc=Lo;Gr_Base;IDC;ID_Type=Limited_Use;InCB=Consonant;InSC=Consonant;lb=AK;SB=LE;sc=Bali;WB=LE;XIDC
+# 1B00..1B7F Balinese
 # Various signs
 cp;1B00;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=BALINESE SIGN ULU RICEM;SB=EX;WB=Extend
 cp;1B01;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=BALINESE SIGN ULU CANDRA;SB=EX;WB=Extend
 cp;1B02;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=BALINESE SIGN CECEK;SB=EX;WB=Extend
 cp;1B03;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Consonant_Final;jt=T;lb=CM;na=BALINESE SIGN SURANG;SB=EX;WB=Extend
-cp;1B04;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Visarga;lb=CM;na=BALINESE SIGN BISAH;SB=EX;WB=Extend# Independent vowels
+cp;1B04;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Visarga;lb=CM;na=BALINESE SIGN BISAH;SB=EX;WB=Extend
+# Independent vowels
 cp;1B05;IDS;InCB=None;InSC=Vowel_Independent;na=BALINESE LETTER AKARA;XIDS
 cp;1B06;dm=1B05 1B35;dt=Can;IDS;InCB=None;InSC=Vowel_Independent;na=BALINESE LETTER AKARA TEDUNG;NFD_QC=N;NFKD_QC=N;XIDS
 cp;1B07;IDS;InCB=None;InSC=Vowel_Independent;na=BALINESE LETTER IKARA;XIDS
@@ -8485,7 +8587,8 @@ cp;1B41;dm=1B3F 1B35;dt=Can;gc=Mc;GCB=SM;InCB=None;InPC=Left_And_Right;InSC=Vowe
 cp;1B42;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=BALINESE VOWEL SIGN PEPET;SB=EX;WB=Extend
 cp;1B43;dm=1B42 1B35;dt=Can;gc=Mc;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top_And_Right;InSC=Vowel_Dependent;lb=CM;na=BALINESE VOWEL SIGN PEPET TEDUNG;NFD_QC=N;NFKD_QC=N;SB=EX;WB=Extend
 # Sign
-cp;1B44;-Alpha;ccc=9;Dia;gc=Mc;GCB=EX;-Gr_Base;Gr_Ext;Gr_Link;InCB=Linker;InPC=Right;InSC=Virama;lb=VI;na=BALINESE ADEG ADEG;SB=EX;WB=Extend# Additional consonants
+cp;1B44;-Alpha;ccc=9;Dia;gc=Mc;GCB=EX;-Gr_Base;Gr_Ext;Gr_Link;InCB=Linker;InPC=Right;InSC=Virama;lb=VI;na=BALINESE ADEG ADEG;SB=EX;WB=Extend
+# Additional consonants
 cp;1B45;IDS;na=BALINESE LETTER KAF SASAK;XIDS
 cp;1B46;IDS;na=BALINESE LETTER KHOT SASAK;XIDS
 cp;1B47;IDS;na=BALINESE LETTER TZIR SASAK;XIDS
@@ -8527,7 +8630,8 @@ cp;1B66;-Alpha;gc=So;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;lb=ID
 cp;1B67;-Alpha;gc=So;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;lb=ID;na=BALINESE MUSICAL SYMBOL DAENG;SB=XX;WB=XX;-XIDC
 cp;1B68;-Alpha;gc=So;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;lb=ID;na=BALINESE MUSICAL SYMBOL DEUNG;SB=XX;WB=XX;-XIDC
 cp;1B69;-Alpha;gc=So;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;lb=ID;na=BALINESE MUSICAL SYMBOL DAING;SB=XX;WB=XX;-XIDC
-cp;1B6A;-Alpha;gc=So;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;lb=ID;na=BALINESE MUSICAL SYMBOL DANG GEDE;SB=XX;WB=XX;-XIDC# Diacritical marks for musical symbols
+cp;1B6A;-Alpha;gc=So;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;lb=ID;na=BALINESE MUSICAL SYMBOL DANG GEDE;SB=XX;WB=XX;-XIDC
+# Diacritical marks for musical symbols
 cp;1B6B;-Alpha;bc=NSM;ccc=230;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;ID_Type=Limited_Use Technical;InCB=Extend;InPC=Top;InSC=Other;jt=T;lb=CM;na=BALINESE MUSICAL SYMBOL COMBINING TEGEH;SB=EX;WB=Extend
 cp;1B6C;-Alpha;bc=NSM;ccc=220;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;ID_Type=Limited_Use Technical;InCB=Extend;InPC=Bottom;InSC=Other;jt=T;lb=CM;na=BALINESE MUSICAL SYMBOL COMBINING ENDEP;SB=EX;WB=Extend
 cp;1B6D;-Alpha;bc=NSM;ccc=230;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;ID_Type=Limited_Use Technical;InCB=Extend;InPC=Top;InSC=Other;jt=T;lb=CM;na=BALINESE MUSICAL SYMBOL COMBINING KEMPUL;SB=EX;WB=Extend
@@ -8552,11 +8656,13 @@ cp;1B7D;age=14.0;-Alpha;gc=Po;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Ot
 cp;1B7E;age=14.0;-Alpha;gc=Po;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;lb=BA;na=BALINESE PAMADA LANTANG;SB=ST;STerm;Term;WB=XX;-XIDC
 cp;1B7F;age=16.0;-Alpha;gc=Po;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;lb=BA;na=BALINESE PANTI BAWAK;SB=ST;STerm;Term;WB=XX;-XIDC
 
-block;1B80..1BBF;age=5.1;Alpha;blk=Sundanese;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Limited_Use;InCB=Consonant;InSC=Consonant;lb=AL;SB=LE;sc=Sund;WB=LE;XIDC;XIDS# 1B80..1BBF Sundanese
+block;1B80..1BBF;age=5.1;Alpha;blk=Sundanese;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Limited_Use;InCB=Consonant;InSC=Consonant;lb=AL;SB=LE;sc=Sund;WB=LE;XIDC;XIDS
+# 1B80..1BBF Sundanese
 # Various signs
 cp;1B80;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=SUNDANESE SIGN PANYECEK;SB=EX;WB=Extend;-XIDS
 cp;1B81;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Consonant_Final;jt=T;lb=CM;na=SUNDANESE SIGN PANGLAYAR;SB=EX;WB=Extend;-XIDS
-cp;1B82;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Visarga;lb=CM;na=SUNDANESE SIGN PANGWISAD;SB=EX;WB=Extend;-XIDS# Vowels
+cp;1B82;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Visarga;lb=CM;na=SUNDANESE SIGN PANGWISAD;SB=EX;WB=Extend;-XIDS
+# Vowels
 cp;1B83;InSC=Vowel_Independent;na=SUNDANESE LETTER A
 cp;1B84;InSC=Vowel_Independent;na=SUNDANESE LETTER I
 cp;1B85;InSC=Vowel_Independent;na=SUNDANESE LETTER U
@@ -8589,17 +8695,20 @@ cp;1B9E;na=SUNDANESE LETTER SA
 cp;1B9F;na=SUNDANESE LETTER XA
 cp;1BA0;na=SUNDANESE LETTER HA
 # Consonant signs
-cp;1BA1;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Consonant_Subjoined;lb=CM;na=SUNDANESE CONSONANT SIGN PAMINGKAL;SB=EX;WB=Extend;-XIDScp;1BA2;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Consonant_Subjoined;jt=T;lb=CM;na=SUNDANESE CONSONANT SIGN PANYAKRA;SB=EX;WB=Extend;-XIDS
+cp;1BA1;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Consonant_Subjoined;lb=CM;na=SUNDANESE CONSONANT SIGN PAMINGKAL;SB=EX;WB=Extend;-XIDS
+cp;1BA2;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Consonant_Subjoined;jt=T;lb=CM;na=SUNDANESE CONSONANT SIGN PANYAKRA;SB=EX;WB=Extend;-XIDS
 cp;1BA3;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Consonant_Subjoined;jt=T;lb=CM;na=SUNDANESE CONSONANT SIGN PANYIKU;SB=EX;WB=Extend;-XIDS
 # Vowel signs
 cp;1BA4;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=SUNDANESE VOWEL SIGN PANGHULU;SB=EX;WB=Extend;-XIDS
 cp;1BA5;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=SUNDANESE VOWEL SIGN PANYUKU;SB=EX;WB=Extend;-XIDS
 cp;1BA6;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Left;InSC=Vowel_Dependent;lb=CM;na=SUNDANESE VOWEL SIGN PANAELAENG;SB=EX;WB=Extend;-XIDS
-cp;1BA7;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=SUNDANESE VOWEL SIGN PANOLONG;SB=EX;WB=Extend;-XIDScp;1BA8;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=SUNDANESE VOWEL SIGN PAMEPET;SB=EX;WB=Extend;-XIDS
+cp;1BA7;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=SUNDANESE VOWEL SIGN PANOLONG;SB=EX;WB=Extend;-XIDS
+cp;1BA8;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=SUNDANESE VOWEL SIGN PAMEPET;SB=EX;WB=Extend;-XIDS
 cp;1BA9;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=SUNDANESE VOWEL SIGN PANEULEUNG;SB=EX;WB=Extend;-XIDS
 # Viramas
 cp;1BAA;-Alpha;ccc=9;Dia;gc=Mc;GCB=EX;-Gr_Base;Gr_Ext;Gr_Link;-IDS;InCB=Extend;InPC=Right;InSC=Pure_Killer;lb=CM;na=SUNDANESE SIGN PAMAAEH;SB=EX;WB=Extend;-XIDS
-cp;1BAB;age=6.1;-Alpha;bc=NSM;ccc=9;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;Gr_Link;-IDS;InCB=Linker;InSC=Invisible_Stacker;jt=T;lb=CM;na=SUNDANESE SIGN VIRAMA;SB=EX;WB=Extend;-XIDS# Consonant signs
+cp;1BAB;age=6.1;-Alpha;bc=NSM;ccc=9;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;Gr_Link;-IDS;InCB=Linker;InSC=Invisible_Stacker;jt=T;lb=CM;na=SUNDANESE SIGN VIRAMA;SB=EX;WB=Extend;-XIDS
+# Consonant signs
 cp;1BAC;age=6.1;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Consonant_Subjoined;jt=T;lb=CM;na=SUNDANESE CONSONANT SIGN PASANGAN MA;SB=EX;WB=Extend;-XIDS
 cp;1BAD;age=6.1;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Consonant_Subjoined;jt=T;lb=CM;na=SUNDANESE CONSONANT SIGN PASANGAN WA;SB=EX;WB=Extend;-XIDS
 # Additional consonants
@@ -9433,10 +9542,12 @@ cp;1E9A;cf=0061 02BE;CWCF;CWKCF;CWT;CWU;dm=0061 02BE;dt=Com;ID_Type=Not_NFKC;lc=
 cp;1E9B;age=2.0;cf=1E61;CWCF;CWKCF;CWT;CWU;dm=017F 0307;ID_Type=Not_NFKC;Lower;na=LATIN SMALL LETTER LONG S WITH DOT ABOVE;NFKC_CF=1E61;NFKC_QC=N;NFKC_SCF=1E61;scf=1E61;stc=1E60;suc=1E60
 # Medievalist additions
 cp;1E9C;age=5.1;-CWCM;dt=None;ID_Type=Technical;Lower;na=LATIN SMALL LETTER LONG S WITH DIAGONAL STROKE;NFD_QC=Y;NFKD_QC=Y
-cp;1E9D;age=5.1;-CWCM;dt=None;ID_Type=Technical;Lower;na=LATIN SMALL LETTER LONG S WITH HIGH STROKE;NFD_QC=Y;NFKD_QC=Y# Addition for German typography
+cp;1E9D;age=5.1;-CWCM;dt=None;ID_Type=Technical;Lower;na=LATIN SMALL LETTER LONG S WITH HIGH STROKE;NFD_QC=Y;NFKD_QC=Y
+# Addition for German typography
 cp;1E9E;age=5.1;cf=0073 0073;CWCF;CWKCF;CWL;dt=None;gc=Lu;ID_Status=Allowed;na=LATIN CAPITAL LETTER SHARP S;NFD_QC=Y;NFKC_CF=0073 0073;NFKC_SCF=00DF;NFKD_QC=Y;SB=UP;scf=00DF;slc=00DF;Upper
 # Medievalist addition
-cp;1E9F;age=5.1;-CWCM;dt=None;ID_Status=Restricted;ID_Type=Technical;Lower;na=LATIN SMALL LETTER DELTA;NFD_QC=Y;NFKD_QC=Y# Latin extensions for Vietnamese
+cp;1E9F;age=5.1;-CWCM;dt=None;ID_Status=Restricted;ID_Type=Technical;Lower;na=LATIN SMALL LETTER DELTA;NFD_QC=Y;NFKD_QC=Y
+# Latin extensions for Vietnamese
 cp;1EA0;cf=1EA1;CWCF;CWKCF;CWL;dm=0041 0323;gc=Lu;ID_Status=Allowed;na=LATIN CAPITAL LETTER A WITH DOT BELOW;NFKC_CF=1EA1;NFKC_SCF=1EA1;SB=UP;scf=1EA1;slc=1EA1;Upper
 cp;1EA1;CWT;CWU;dm=0061 0323;ID_Status=Allowed;Lower;na=LATIN SMALL LETTER A WITH DOT BELOW;stc=1EA0;suc=1EA0
 cp;1EA2;cf=1EA3;CWCF;CWKCF;CWL;dm=0041 0309;gc=Lu;ID_Status=Allowed;na=LATIN CAPITAL LETTER A WITH HOOK ABOVE;NFKC_CF=1EA3;NFKC_SCF=1EA3;SB=UP;scf=1EA3;slc=1EA3;Upper
@@ -9536,7 +9647,8 @@ cp;1EFD;age=5.1;CWT;CWU;dt=None;ID_Status=Restricted;ID_Type=Technical;Lower;na=
 cp;1EFE;age=5.1;cf=1EFF;CWCF;CWKCF;CWL;dt=None;gc=Lu;ID_Status=Restricted;ID_Type=Technical;na=LATIN CAPITAL LETTER Y WITH LOOP;NFD_QC=Y;NFKC_CF=1EFF;NFKC_SCF=1EFF;NFKD_QC=Y;SB=UP;scf=1EFF;slc=1EFF;Upper
 cp;1EFF;age=5.1;CWT;CWU;dt=None;ID_Status=Restricted;ID_Type=Technical;Lower;na=LATIN SMALL LETTER Y WITH LOOP;NFD_QC=Y;NFKD_QC=Y;stc=1EFE;suc=1EFE
 
-block;1F00..1FFF;age=1.1;Alpha;blk=Greek_Ext;Cased;CWCF;CWCM;CWKCF;CWU;dt=Can;gc=Ll;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=AL;NFD_QC=N;NFKD_QC=N;SB=LO;sc=Grek;WB=LE;XIDC;XIDS# 1F00..1FFF Greek Extended
+block;1F00..1FFF;age=1.1;Alpha;blk=Greek_Ext;Cased;CWCF;CWCM;CWKCF;CWU;dt=Can;gc=Ll;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=AL;NFD_QC=N;NFKD_QC=N;SB=LO;sc=Grek;WB=LE;XIDC;XIDS
+# 1F00..1FFF Greek Extended
 # Precomposed polytonic Greek
 cp;1F00;-CWCF;-CWKCF;CWT;dm=03B1 0313;Lower;na=GREEK SMALL LETTER ALPHA WITH PSILI;stc=1F08;suc=1F08
 cp;1F01;-CWCF;-CWKCF;CWT;dm=03B1 0314;Lower;na=GREEK SMALL LETTER ALPHA WITH DASIA;stc=1F09;suc=1F09
@@ -9659,7 +9771,8 @@ cp;1F79;Comp_Ex;-CWCF;CWT;dm=03CC;ID_Status=Restricted;ID_Type=Not_NFKC;Lower;na
 cp;1F7A;-CWCF;-CWKCF;CWT;dm=03C5 0300;Lower;na=GREEK SMALL LETTER UPSILON WITH VARIA;stc=1FEA;suc=1FEA
 cp;1F7B;Comp_Ex;-CWCF;CWT;dm=03CD;ID_Status=Restricted;ID_Type=Not_NFKC;Lower;na=GREEK SMALL LETTER UPSILON WITH OXIA;NFC_QC=N;NFKC_CF=03CD;NFKC_QC=N;NFKC_SCF=03CD;stc=1FEB;suc=1FEB
 cp;1F7C;-CWCF;-CWKCF;CWT;dm=03C9 0300;Lower;na=GREEK SMALL LETTER OMEGA WITH VARIA;stc=1FFA;suc=1FFA
-cp;1F7D;Comp_Ex;-CWCF;CWT;dm=03CE;ID_Status=Restricted;ID_Type=Not_NFKC;Lower;na=GREEK SMALL LETTER OMEGA WITH OXIA;NFC_QC=N;NFKC_CF=03CE;NFKC_QC=N;NFKC_SCF=03CE;stc=1FFB;suc=1FFBunassigned;1F7E..1F7F
+cp;1F7D;Comp_Ex;-CWCF;CWT;dm=03CE;ID_Status=Restricted;ID_Type=Not_NFKC;Lower;na=GREEK SMALL LETTER OMEGA WITH OXIA;NFC_QC=N;NFKC_CF=03CE;NFKC_QC=N;NFKC_SCF=03CE;stc=1FFB;suc=1FFB
+unassigned;1F7E..1F7F
 cp;1F80;cf=1F00 03B9;CWT;dm=1F00 0345;lc=1F80;Lower;na=GREEK SMALL LETTER ALPHA WITH PSILI AND YPOGEGRAMMENI;NFKC_CF=1F00 03B9;stc=1F88;suc=1F88;tc=1F88;uc=1F08 0399
 cp;1F81;cf=1F01 03B9;CWT;dm=1F01 0345;lc=1F81;Lower;na=GREEK SMALL LETTER ALPHA WITH DASIA AND YPOGEGRAMMENI;NFKC_CF=1F01 03B9;stc=1F89;suc=1F89;tc=1F89;uc=1F09 0399
 cp;1F82;cf=1F02 03B9;CWT;dm=1F02 0345;lc=1F82;Lower;na=GREEK SMALL LETTER ALPHA WITH PSILI AND VARIA AND YPOGEGRAMMENI;NFKC_CF=1F02 03B9;stc=1F8A;suc=1F8A;tc=1F8A;uc=1F0A 0399
@@ -9725,7 +9838,8 @@ cp;1FBD;-Alpha;bc=ON;-Cased;CI;-CWCF;-CWCM;-CWU;Dia;dm=0020 0313;dt=Com;gc=Sk;-I
 cp;1FBE;cf=03B9;Comp_Ex;-CWCF;CWT;dm=03B9;ID_Status=Restricted;ID_Type=Not_NFKC;Lower;na=GREEK PROSGEGRAMMENI;NFC_QC=N;NFKC_CF=03B9;NFKC_QC=N;NFKC_SCF=03B9;scf=03B9;stc=0399;suc=0399
 cp;1FBF;-Alpha;bc=ON;-Cased;CI;-CWCF;-CWCM;-CWU;Dia;dm=0020 0313;dt=Com;gc=Sk;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_NFKC;na=GREEK PSILI;NFD_QC=Y;NFKC_CF=0020 0313;NFKC_QC=N;NFKC_SCF=0020 0313;SB=XX;WB=XX;-XIDC;-XIDS
 cp;1FC0;-Alpha;bc=ON;-Cased;CI;-CWCF;-CWCM;-CWU;Dia;dm=0020 0342;dt=Com;gc=Sk;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_NFKC;na=GREEK PERISPOMENI;NFD_QC=Y;NFKC_CF=0020 0342;NFKC_QC=N;NFKC_SCF=0020 0342;SB=XX;WB=XX;-XIDC;-XIDS
-cp;1FC1;-Alpha;bc=ON;-Cased;CI;-CWCF;-CWCM;-CWU;Dia;dm=00A8 0342;gc=Sk;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_NFKC;na=GREEK DIALYTIKA AND PERISPOMENI;NFKC_CF=0020 0308 0342;NFKC_QC=N;NFKC_SCF=0020 0308 0342;SB=XX;WB=XX;-XIDC;-XIDScp;1FC2;cf=1F74 03B9;CWT;dm=1F74 0345;lc=1FC2;Lower;na=GREEK SMALL LETTER ETA WITH VARIA AND YPOGEGRAMMENI;NFKC_CF=1F74 03B9;tc=1FCA 0345;uc=1FCA 0399
+cp;1FC1;-Alpha;bc=ON;-Cased;CI;-CWCF;-CWCM;-CWU;Dia;dm=00A8 0342;gc=Sk;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_NFKC;na=GREEK DIALYTIKA AND PERISPOMENI;NFKC_CF=0020 0308 0342;NFKC_QC=N;NFKC_SCF=0020 0308 0342;SB=XX;WB=XX;-XIDC;-XIDS
+cp;1FC2;cf=1F74 03B9;CWT;dm=1F74 0345;lc=1FC2;Lower;na=GREEK SMALL LETTER ETA WITH VARIA AND YPOGEGRAMMENI;NFKC_CF=1F74 03B9;tc=1FCA 0345;uc=1FCA 0399
 cp;1FC3;cf=03B7 03B9;CWT;dm=03B7 0345;lc=1FC3;Lower;na=GREEK SMALL LETTER ETA WITH YPOGEGRAMMENI;NFKC_CF=03B7 03B9;stc=1FCC;suc=1FCC;tc=1FCC;uc=0397 0399
 cp;1FC4;cf=03AE 03B9;CWT;dm=03AE 0345;lc=1FC4;Lower;na=GREEK SMALL LETTER ETA WITH OXIA AND YPOGEGRAMMENI;NFKC_CF=03AE 03B9;tc=0389 0345;uc=0389 0399
 unassigned;1FC5
@@ -9742,7 +9856,8 @@ cp;1FCF;-Alpha;bc=ON;-Cased;CI;-CWCF;-CWCM;-CWU;Dia;dm=1FBF 0342;gc=Sk;-IDC;-IDS
 cp;1FD0;-CWCF;-CWKCF;CWT;dm=03B9 0306;Lower;na=GREEK SMALL LETTER IOTA WITH VRACHY;stc=1FD8;suc=1FD8
 cp;1FD1;-CWCF;-CWKCF;CWT;dm=03B9 0304;Lower;na=GREEK SMALL LETTER IOTA WITH MACRON;stc=1FD9;suc=1FD9
 cp;1FD2;cf=03B9 0308 0300;-CWCF;-CWKCF;CWT;dm=03CA 0300;lc=1FD2;Lower;na=GREEK SMALL LETTER IOTA WITH DIALYTIKA AND VARIA;tc=0399 0308 0300;uc=0399 0308 0300
-cp;1FD3;cf=03B9 0308 0301;Comp_Ex;-CWCF;CWT;dm=0390;ID_Status=Restricted;ID_Type=Not_NFKC;lc=1FD3;Lower;na=GREEK SMALL LETTER IOTA WITH DIALYTIKA AND OXIA;NFC_QC=N;NFKC_CF=0390;NFKC_QC=N;NFKC_SCF=0390;scf=0390;tc=0399 0308 0301;uc=0399 0308 0301unassigned;1FD4..1FD5
+cp;1FD3;cf=03B9 0308 0301;Comp_Ex;-CWCF;CWT;dm=0390;ID_Status=Restricted;ID_Type=Not_NFKC;lc=1FD3;Lower;na=GREEK SMALL LETTER IOTA WITH DIALYTIKA AND OXIA;NFC_QC=N;NFKC_CF=0390;NFKC_QC=N;NFKC_SCF=0390;scf=0390;tc=0399 0308 0301;uc=0399 0308 0301
+unassigned;1FD4..1FD5
 cp;1FD6;cf=03B9 0342;-CWCF;-CWKCF;CWT;dm=03B9 0342;lc=1FD6;Lower;na=GREEK SMALL LETTER IOTA WITH PERISPOMENI;tc=0399 0342;uc=0399 0342
 cp;1FD7;cf=03B9 0308 0342;-CWCF;-CWKCF;CWT;dm=03CA 0342;lc=1FD7;Lower;na=GREEK SMALL LETTER IOTA WITH DIALYTIKA AND PERISPOMENI;tc=0399 0308 0342;uc=0399 0308 0342
 cp;1FD8;cf=1FD0;CWL;-CWU;dm=0399 0306;gc=Lu;na=GREEK CAPITAL LETTER IOTA WITH VRACHY;NFKC_CF=1FD0;NFKC_SCF=1FD0;SB=UP;scf=1FD0;slc=1FD0;Upper
@@ -9756,7 +9871,8 @@ cp;1FDF;-Alpha;bc=ON;-Cased;CI;-CWCF;-CWCM;-CWU;Dia;dm=1FFE 0342;gc=Sk;-IDC;-IDS
 cp;1FE0;-CWCF;-CWKCF;CWT;dm=03C5 0306;Lower;na=GREEK SMALL LETTER UPSILON WITH VRACHY;stc=1FE8;suc=1FE8
 cp;1FE1;-CWCF;-CWKCF;CWT;dm=03C5 0304;Lower;na=GREEK SMALL LETTER UPSILON WITH MACRON;stc=1FE9;suc=1FE9
 cp;1FE2;cf=03C5 0308 0300;-CWCF;-CWKCF;CWT;dm=03CB 0300;lc=1FE2;Lower;na=GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND VARIA;tc=03A5 0308 0300;uc=03A5 0308 0300
-cp;1FE3;cf=03C5 0308 0301;Comp_Ex;-CWCF;CWT;dm=03B0;ID_Status=Restricted;ID_Type=Not_NFKC;lc=1FE3;Lower;na=GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND OXIA;NFC_QC=N;NFKC_CF=03B0;NFKC_QC=N;NFKC_SCF=03B0;scf=03B0;tc=03A5 0308 0301;uc=03A5 0308 0301cp;1FE4;cf=03C1 0313;-CWCF;-CWKCF;CWT;dm=03C1 0313;lc=1FE4;Lower;na=GREEK SMALL LETTER RHO WITH PSILI;tc=03A1 0313;uc=03A1 0313
+cp;1FE3;cf=03C5 0308 0301;Comp_Ex;-CWCF;CWT;dm=03B0;ID_Status=Restricted;ID_Type=Not_NFKC;lc=1FE3;Lower;na=GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND OXIA;NFC_QC=N;NFKC_CF=03B0;NFKC_QC=N;NFKC_SCF=03B0;scf=03B0;tc=03A5 0308 0301;uc=03A5 0308 0301
+cp;1FE4;cf=03C1 0313;-CWCF;-CWKCF;CWT;dm=03C1 0313;lc=1FE4;Lower;na=GREEK SMALL LETTER RHO WITH PSILI;tc=03A1 0313;uc=03A1 0313
 cp;1FE5;-CWCF;-CWKCF;CWT;dm=03C1 0314;Lower;na=GREEK SMALL LETTER RHO WITH DASIA;stc=1FEC;suc=1FEC
 cp;1FE6;cf=03C5 0342;-CWCF;-CWKCF;CWT;dm=03C5 0342;lc=1FE6;Lower;na=GREEK SMALL LETTER UPSILON WITH PERISPOMENI;tc=03A5 0342;uc=03A5 0342
 cp;1FE7;cf=03C5 0308 0342;-CWCF;-CWKCF;CWT;dm=03CB 0342;lc=1FE7;Lower;na=GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND PERISPOMENI;tc=03A5 0308 0342;uc=03A5 0308 0342
@@ -9767,7 +9883,8 @@ cp;1FEB;cf=1F7B;Comp_Ex;CWL;-CWU;dm=038E;gc=Lu;ID_Status=Restricted;ID_Type=Not_
 cp;1FEC;cf=1FE5;CWL;-CWU;dm=03A1 0314;gc=Lu;na=GREEK CAPITAL LETTER RHO WITH DASIA;NFKC_CF=1FE5;NFKC_SCF=1FE5;SB=UP;scf=1FE5;slc=1FE5;Upper
 cp;1FED;-Alpha;bc=ON;-Cased;CI;-CWCF;-CWCM;-CWU;Dia;dm=00A8 0300;gc=Sk;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_NFKC;na=GREEK DIALYTIKA AND VARIA;NFKC_CF=0020 0308 0300;NFKC_QC=N;NFKC_SCF=0020 0308 0300;SB=XX;WB=XX;-XIDC;-XIDS
 cp;1FEE;-Alpha;bc=ON;-Cased;CI;Comp_Ex;-CWCF;-CWCM;-CWU;Dia;dm=0385;gc=Sk;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_NFKC;na=GREEK DIALYTIKA AND OXIA;NFC_QC=N;NFKC_CF=0020 0308 0301;NFKC_QC=N;NFKC_SCF=0020 0308 0301;SB=XX;WB=XX;-XIDC;-XIDS
-cp;1FEF;-Alpha;bc=ON;-Cased;CI;Comp_Ex;-CWCF;-CWCM;-CWU;Dia;dm=0060;gc=Sk;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_NFKC;na=GREEK VARIA;NFC_QC=N;NFKC_CF=0060;NFKC_QC=N;NFKC_SCF=0060;SB=XX;WB=XX;-XIDC;-XIDSunassigned;1FF0..1FF1
+cp;1FEF;-Alpha;bc=ON;-Cased;CI;Comp_Ex;-CWCF;-CWCM;-CWU;Dia;dm=0060;gc=Sk;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_NFKC;na=GREEK VARIA;NFC_QC=N;NFKC_CF=0060;NFKC_QC=N;NFKC_SCF=0060;SB=XX;WB=XX;-XIDC;-XIDS
+unassigned;1FF0..1FF1
 cp;1FF2;cf=1F7C 03B9;CWT;dm=1F7C 0345;lc=1FF2;Lower;na=GREEK SMALL LETTER OMEGA WITH VARIA AND YPOGEGRAMMENI;NFKC_CF=1F7C 03B9;tc=1FFA 0345;uc=1FFA 0399
 cp;1FF3;cf=03C9 03B9;CWT;dm=03C9 0345;lc=1FF3;Lower;na=GREEK SMALL LETTER OMEGA WITH YPOGEGRAMMENI;NFKC_CF=03C9 03B9;stc=1FFC;suc=1FFC;tc=1FFC;uc=03A9 0399
 cp;1FF4;cf=03CE 03B9;CWT;dm=03CE 0345;lc=1FF4;Lower;na=GREEK SMALL LETTER OMEGA WITH OXIA AND YPOGEGRAMMENI;NFKC_CF=03CE 03B9;tc=038F 0345;uc=038F 0399
@@ -9780,7 +9897,8 @@ cp;1FFA;cf=1F7C;CWL;-CWU;dm=03A9 0300;gc=Lu;na=GREEK CAPITAL LETTER OMEGA WITH V
 cp;1FFB;cf=1F7D;Comp_Ex;CWL;-CWU;dm=038F;gc=Lu;ID_Status=Restricted;ID_Type=Not_NFKC;na=GREEK CAPITAL LETTER OMEGA WITH OXIA;NFC_QC=N;NFKC_CF=03CE;NFKC_QC=N;NFKC_SCF=03CE;SB=UP;scf=1F7D;slc=1F7D;Upper
 cp;1FFC;cf=03C9 03B9;CWL;dm=03A9 0345;gc=Lt;lc=1FF3;na=GREEK CAPITAL LETTER OMEGA WITH PROSGEGRAMMENI;NFKC_CF=03C9 03B9;NFKC_SCF=1FF3;SB=UP;scf=1FF3;slc=1FF3;tc=1FFC;uc=03A9 0399
 cp;1FFD;-Alpha;bc=ON;-Cased;CI;Comp_Ex;-CWCF;-CWCM;-CWU;Dia;dm=00B4;gc=Sk;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_NFKC;lb=BB;na=GREEK OXIA;NFC_QC=N;NFKC_CF=0020 0301;NFKC_QC=N;NFKC_SCF=0020 0301;SB=XX;WB=XX;-XIDC;-XIDS
-cp;1FFE;-Alpha;bc=ON;-Cased;CI;-CWCF;-CWCM;-CWU;Dia;dm=0020 0314;dt=Com;gc=Sk;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_NFKC;na=GREEK DASIA;NFD_QC=Y;NFKC_CF=0020 0314;NFKC_QC=N;NFKC_SCF=0020 0314;SB=XX;WB=XX;-XIDC;-XIDSunassigned;1FFF
+cp;1FFE;-Alpha;bc=ON;-Cased;CI;-CWCF;-CWCM;-CWU;Dia;dm=0020 0314;dt=Com;gc=Sk;-IDC;-IDS;ID_Status=Restricted;ID_Type=Not_NFKC;na=GREEK DASIA;NFD_QC=Y;NFKC_CF=0020 0314;NFKC_QC=N;NFKC_SCF=0020 0314;SB=XX;WB=XX;-XIDC;-XIDS
+unassigned;1FFF
 
 block;2000..206F;age=1.1;bc=ON;blk=Punctuation;gc=Po;Gr_Base;ID_Type=Not_XID;lb=AL;Pat_Syn;sc=Zyyy
 # 2000..206F General Punctuation
@@ -9806,14 +9924,16 @@ cp;200F;bc=R;Bidi_C;CI;CWKCF;DI;gc=Cf;GCB=CN;-Gr_Base;ID_Type=Default_Ignorable;
 cp;2010;Dash;ea=A;gc=Pd;Hyphen;ID_Status=Allowed;ID_Type=Inclusion;InSC=Consonant_Placeholder;lb=HH;na=HYPHEN
 cp;2011;CWKCF;Dash;dm=2010;dt=Nb;gc=Pd;Hyphen;ID_Type=Not_NFKC;InSC=Consonant_Placeholder;lb=GL;na=NON-BREAKING HYPHEN;NFKC_CF=2010;NFKC_QC=N;NFKC_SCF=2010;NFKD_QC=N
 cp;2012;Dash;gc=Pd;InSC=Consonant_Placeholder;lb=HH;na=FIGURE DASH
-cp;2013;Dash;ea=A;gc=Pd;InSC=Consonant_Placeholder;lb=HH;na=EN DASH;SB=SCcp;2014;Dash;ea=A;gc=Pd;InSC=Consonant_Placeholder;lb=B2;na=EM DASH;SB=SC
+cp;2013;Dash;ea=A;gc=Pd;InSC=Consonant_Placeholder;lb=HH;na=EN DASH;SB=SC
+cp;2014;Dash;ea=A;gc=Pd;InSC=Consonant_Placeholder;lb=B2;na=EM DASH;SB=SC
 cp;2015;Dash;ea=A;gc=Pd;lb=AI;na=HORIZONTAL BAR
 # General punctuation
 cp;2016;ea=A;lb=AI;Math;na=DOUBLE VERTICAL LINE;vo=U
 cp;2017;CWKCF;dm=0020 0333;dt=Com;ID_Type=Not_NFKC;na=DOUBLE LOW LINE;NFKC_CF=0020 0333;NFKC_QC=N;NFKC_SCF=0020 0333;NFKD_QC=N
 # Quotation marks and apostrophe
 cp;2018;CI;ea=A;gc=Pi;lb=QU;na=LEFT SINGLE QUOTATION MARK;QMark;SB=CL;vo=Tr;WB=MB
-cp;2019;CI;ea=A;gc=Pf;ID_Status=Allowed;ID_Type=Inclusion;lb=QU;na=RIGHT SINGLE QUOTATION MARK;QMark;SB=CL;vo=Tr;WB=MBcp;201A;gc=Ps;lb=OP;na=SINGLE LOW-9 QUOTATION MARK;QMark;SB=CL
+cp;2019;CI;ea=A;gc=Pf;ID_Status=Allowed;ID_Type=Inclusion;lb=QU;na=RIGHT SINGLE QUOTATION MARK;QMark;SB=CL;vo=Tr;WB=MB
+cp;201A;gc=Ps;lb=OP;na=SINGLE LOW-9 QUOTATION MARK;QMark;SB=CL
 cp;201B;gc=Pi;lb=QU;na=SINGLE HIGH-REVERSED-9 QUOTATION MARK;QMark;SB=CL
 cp;201C;ea=A;gc=Pi;lb=QU;na=LEFT DOUBLE QUOTATION MARK;QMark;SB=CL;vo=Tr
 cp;201D;ea=A;gc=Pf;lb=QU;na=RIGHT DOUBLE QUOTATION MARK;QMark;SB=CL;vo=Tr
@@ -11461,7 +11581,8 @@ cp;25FD;age=3.2;ea=W;Emoji;EPres;ExtPict;gc=Sm;Math;na=WHITE MEDIUM SMALL SQUARE
 cp;25FE;age=3.2;ea=W;Emoji;EPres;ExtPict;gc=Sm;Math;na=BLACK MEDIUM SMALL SQUARE
 cp;25FF;age=3.2;gc=Sm;Math;na=LOWER RIGHT TRIANGLE
 
-block;2600..26FF;age=1.1;bc=ON;blk=Misc_Symbols;ExtPict;gc=So;Gr_Base;ID_Type=Not_XID;lb=AL;Pat_Syn;sc=Zyyy;vo=U# 2600..26FF Miscellaneous Symbols
+block;2600..26FF;age=1.1;bc=ON;blk=Misc_Symbols;ExtPict;gc=So;Gr_Base;ID_Type=Not_XID;lb=AL;Pat_Syn;sc=Zyyy;vo=U
+# 2600..26FF Miscellaneous Symbols
 # Weather and astrological symbols
 cp;2600;Emoji;ExtPict;lb=ID;na=BLACK SUN WITH RAYS
 cp;2601;Emoji;ExtPict;lb=ID;na=CLOUD
@@ -11631,7 +11752,8 @@ cp;268B;age=4.0;ea=W;-ExtPict;na=MONOGRAM FOR YIN
 cp;268C;age=4.0;ea=W;-ExtPict;na=DIGRAM FOR GREATER YANG
 cp;268D;age=4.0;ea=W;-ExtPict;na=DIGRAM FOR LESSER YIN
 cp;268E;age=4.0;ea=W;-ExtPict;na=DIGRAM FOR LESSER YANG
-cp;268F;age=4.0;ea=W;-ExtPict;na=DIGRAM FOR GREATER YIN# Dictionary and map symbols
+cp;268F;age=4.0;ea=W;-ExtPict;na=DIGRAM FOR GREATER YIN
+# Dictionary and map symbols
 cp;2690;age=4.0;na=WHITE FLAG
 cp;2691;age=4.0;na=BLACK FLAG
 cp;2692;age=4.1;Emoji;ExtPict;na=HAMMER AND PICK
@@ -13527,7 +13649,8 @@ unassigned;2D26
 cp;2D27;age=6.1;ID_Status=Allowed;ID_Type=Recommended;na=GEORGIAN SMALL LETTER YN;stc=10C7;suc=10C7
 unassigned;2D28..2D2C
 # Additional letter for Ossetian
-cp;2D2D;age=6.1;ID_Status=Allowed;ID_Type=Recommended;na=GEORGIAN SMALL LETTER AEN;stc=10CD;suc=10CDunassigned;2D2E..2D2F
+cp;2D2D;age=6.1;ID_Status=Allowed;ID_Type=Recommended;na=GEORGIAN SMALL LETTER AEN;stc=10CD;suc=10CD
+unassigned;2D2E..2D2F
 
 block;2D30..2D7F;age=4.1;Alpha;blk=Tifinagh;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Limited_Use;lb=AL;SB=LE;sc=Tfng;WB=LE;XIDC;XIDS
 # 2D30..2D7F Tifinagh
@@ -13597,7 +13720,8 @@ unassigned;2D71..2D7E
 # Sign
 cp;2D7F;age=6.0;-Alpha;bc=NSM;ccc=9;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;Gr_Link;-IDS;InCB=Extend;jt=T;lb=CM;na=TIFINAGH CONSONANT JOINER;SB=EX;WB=Extend;-XIDS
 
-block;2D80..2DDF;age=4.1;Alpha;blk=Ethiopic_Ext;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=AL;SB=LE;sc=Ethi;WB=LE;XIDC;XIDS# 2D80..2DDF Ethiopic Extended
+block;2D80..2DDF;age=4.1;Alpha;blk=Ethiopic_Ext;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=AL;SB=LE;sc=Ethi;WB=LE;XIDC;XIDS
+# 2D80..2DDF Ethiopic Extended
 # Syllables for Me'en
 cp;2D80;na=ETHIOPIC SYLLABLE LOA
 cp;2D81;na=ETHIOPIC SYLLABLE MOA
@@ -13755,7 +13879,8 @@ cp;2E14;ID_Type=Obsolete Not_XID;na=DOWNWARDS ANCORA
 cp;2E15;ID_Type=Obsolete Not_XID;na=UPWARDS ANCORA
 cp;2E16;ID_Type=Obsolete Not_XID;lb=AL;na=DOTTED RIGHT-POINTING ANGLE
 # Ancient Near-Eastern linguistic symbol
-cp;2E17;Dash;gc=Pd;Hyphen;lb=HH;na=DOUBLE OBLIQUE HYPHEN;scx=Copt Latn# General punctuation
+cp;2E17;Dash;gc=Pd;Hyphen;lb=HH;na=DOUBLE OBLIQUE HYPHEN;scx=Copt Latn
+# General punctuation
 cp;2E18;age=5.1;lb=OP;na=INVERTED INTERROBANG
 cp;2E19;age=5.1;na=PALM BRANCH
 # Dictionary punctuation
@@ -14389,7 +14514,8 @@ cp;3096;age=3.2;lb=CJ;na=HIRAGANA LETTER SMALL KE;vo=Tu
 unassigned;3097..3098;vo=U
 # Voicing marks
 cp;3099;-Alpha;bc=NSM;ccc=8;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;jt=T;lb=CM;na=COMBINING KATAKANA-HIRAGANA VOICED SOUND MARK;NFC_QC=M;NFKC_QC=M;SB=EX;sc=Zinh;scx=Hira Kana;WB=Extend;-XIDS
-cp;309A;-Alpha;bc=NSM;ccc=8;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;jt=T;lb=CM;na=COMBINING KATAKANA-HIRAGANA SEMI-VOICED SOUND MARK;NFC_QC=M;NFKC_QC=M;SB=EX;sc=Zinh;scx=Hira Kana;WB=Extend;-XIDScp;309B;-Alpha;bc=ON;CI;CWKCF;Dia;dm=0020 3099;dt=Com;gc=Sk;ID_Status=Restricted;ID_Type=Not_NFKC;lb=NS;na=KATAKANA-HIRAGANA VOICED SOUND MARK;NFKC_CF=0020 3099;NFKC_QC=N;NFKC_SCF=0020 3099;NFKD_QC=N;SB=XX;sc=Zyyy;scx=Hira Kana;vo=Tu;WB=KA;-XIDC;-XIDS
+cp;309A;-Alpha;bc=NSM;ccc=8;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Uncommon_Use;InCB=Extend;jt=T;lb=CM;na=COMBINING KATAKANA-HIRAGANA SEMI-VOICED SOUND MARK;NFC_QC=M;NFKC_QC=M;SB=EX;sc=Zinh;scx=Hira Kana;WB=Extend;-XIDS
+cp;309B;-Alpha;bc=ON;CI;CWKCF;Dia;dm=0020 3099;dt=Com;gc=Sk;ID_Status=Restricted;ID_Type=Not_NFKC;lb=NS;na=KATAKANA-HIRAGANA VOICED SOUND MARK;NFKC_CF=0020 3099;NFKC_QC=N;NFKC_SCF=0020 3099;NFKD_QC=N;SB=XX;sc=Zyyy;scx=Hira Kana;vo=Tu;WB=KA;-XIDC;-XIDS
 cp;309C;-Alpha;bc=ON;CI;CWKCF;Dia;dm=0020 309A;dt=Com;gc=Sk;ID_Status=Restricted;ID_Type=Not_NFKC;lb=NS;na=KATAKANA-HIRAGANA SEMI-VOICED SOUND MARK;NFKC_CF=0020 309A;NFKC_QC=N;NFKC_SCF=0020 309A;NFKD_QC=N;SB=XX;sc=Zyyy;scx=Hira Kana;vo=Tu;WB=KA;-XIDC;-XIDS
 # Iteration marks
 cp;309D;CI;Ext;gc=Lm;lb=NS;na=HIRAGANA ITERATION MARK
@@ -14501,7 +14627,8 @@ cp;30FE;CI;dm=30FD 3099;dt=Can;Ext;gc=Lm;lb=NS;na=KATAKANA VOICED ITERATION MARK
 # Katakana digraph
 cp;30FF;age=3.2;CWKCF;dm=30B3 30C8;dt=Vert;ID_Status=Restricted;ID_Type=Not_NFKC;na=KATAKANA DIGRAPH KOTO;NFKC_CF=30B3 30C8;NFKC_QC=N;NFKC_SCF=30B3 30C8;NFKD_QC=N
 
-block;3100..312F;age=1.1;Alpha;blk=Bopomofo;ea=W;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=ID;SB=LE;sc=Bopo;vo=U;WB=LE;XIDC;XIDS# 3100..312F Bopomofo
+block;3100..312F;age=1.1;Alpha;blk=Bopomofo;ea=W;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=ID;SB=LE;sc=Bopo;vo=U;WB=LE;XIDC;XIDS
+# 3100..312F Bopomofo
 unassigned;3100..3104;vo=U
 # Based on GB 2312
 cp;3105;na=BOPOMOFO LETTER B
@@ -14547,7 +14674,8 @@ cp;312B;na=BOPOMOFO LETTER NG
 cp;312C;na=BOPOMOFO LETTER GN
 # Miscellaneous additions
 cp;312D;age=5.1;na=BOPOMOFO LETTER IH
-cp;312E;age=10.0;ID_Status=Restricted;ID_Type=Obsolete;na=BOPOMOFO LETTER O WITH DOT ABOVEcp;312F;age=11.0;na=BOPOMOFO LETTER NN
+cp;312E;age=10.0;ID_Status=Restricted;ID_Type=Obsolete;na=BOPOMOFO LETTER O WITH DOT ABOVE
+cp;312F;age=11.0;na=BOPOMOFO LETTER NN
 
 block;3130..318F;age=1.1;Alpha;blk=Compat_Jamo;CWKCF;dt=Com;ea=W;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Not_NFKC;lb=ID;NFKC_QC=N;NFKD_QC=N;SB=LE;sc=Hang;vo=U;WB=LE;XIDC;XIDS
 # 3130..318F Hangul Compatibility Jamo
@@ -14674,7 +14802,8 @@ cp;319D;dm=5929;na=IDEOGRAPHIC ANNOTATION HEAVEN MARK;NFKC_CF=5929;NFKC_SCF=5929
 cp;319E;dm=5730;na=IDEOGRAPHIC ANNOTATION EARTH MARK;NFKC_CF=5730;NFKC_SCF=5730
 cp;319F;dm=4EBA;na=IDEOGRAPHIC ANNOTATION MAN MARK;NFKC_CF=4EBA;NFKC_SCF=4EBA
 
-block;31A0..31BF;age=3.0;Alpha;blk=Bopomofo_Ext;ea=W;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=ID;SB=LE;sc=Bopo;vo=U;WB=LE;XIDC;XIDS# 31A0..31BF Bopomofo Extended
+block;31A0..31BF;age=3.0;Alpha;blk=Bopomofo_Ext;ea=W;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=ID;SB=LE;sc=Bopo;vo=U;WB=LE;XIDC;XIDS
+# 31A0..31BF Bopomofo Extended
 # Extended Bopomofo for Minnan and Hakka
 cp;31A0;na=BOPOMOFO LETTER BU
 cp;31A1;na=BOPOMOFO LETTER ZI
@@ -15324,7 +15453,8 @@ cp;33FE;dm=0033 0031 65E5;dt=Com;na=IDEOGRAPHIC TELEGRAPH SYMBOL FOR DAY THIRTY-
 # Squared Latin abbreviation
 cp;33FF;age=4.0;bc=ON;dm=0067 0061 006C;na=SQUARE GAL;NFKC_CF=0067 0061 006C;NFKC_SCF=0067 0061 006C
 
-block;3400..4DBF;age=3.0;Alpha;blk=CJK_Ext_A;ea=W;gc=Lo;Gr_Base;IDC;Ideo;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=ID;SB=LE;sc=Hani;UIdeo;vo=U;XIDC;XIDS# 3400..4DBF CJK Unified Ideographs Extension A
+block;3400..4DBF;age=3.0;Alpha;blk=CJK_Ext_A;ea=W;gc=Lo;Gr_Base;IDC;Ideo;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=ID;SB=LE;sc=Hani;UIdeo;vo=U;XIDC;XIDS
+# 3400..4DBF CJK Unified Ideographs Extension A
 algnamesrange;3400..4DBF;han;CJK UNIFIED IDEOGRAPH-
 cp;3405;nt=Nu;nv=5
 cp;3447;ID_Status=Allowed;ID_Type=Recommended
@@ -15476,7 +15606,8 @@ cp;4DFD;na=HEXAGRAM FOR SMALL PREPONDERANCE
 cp;4DFE;na=HEXAGRAM FOR AFTER COMPLETION
 cp;4DFF;na=HEXAGRAM FOR BEFORE COMPLETION
 
-block;4E00..9FFF;age=1.1;Alpha;blk=CJK;ea=W;gc=Lo;Gr_Base;IDC;Ideo;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=ID;SB=LE;sc=Hani;UIdeo;vo=U;XIDC;XIDS# 4E00..9FFF CJK Unified Ideographs
+block;4E00..9FFF;age=1.1;Alpha;blk=CJK;ea=W;gc=Lo;Gr_Base;IDC;Ideo;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=ID;SB=LE;sc=Hani;UIdeo;vo=U;XIDC;XIDS
+# 4E00..9FFF CJK Unified Ideographs
 algnamesrange;4E00..9FFF;han;CJK UNIFIED IDEOGRAPH-
 cp;4E00;ID_Status=Allowed;nt=Nu;nv=1
 cp;4E01..4E02;ID_Status=Allowed
@@ -19685,7 +19816,8 @@ cp;A71D;age=5.1;Alpha;gc=Lm;IDC;IDS;ID_Type=Technical;na=MODIFIER LETTER RAISED 
 cp;A71E;age=5.1;Alpha;gc=Lm;IDC;IDS;ID_Type=Technical;na=MODIFIER LETTER RAISED INVERTED EXCLAMATION MARK;SB=LE;XIDC;XIDS
 cp;A71F;age=5.1;Alpha;gc=Lm;IDC;IDS;ID_Type=Technical;na=MODIFIER LETTER LOW INVERTED EXCLAMATION MARK;SB=LE;XIDC;XIDS
 
-block;A720..A7FF;age=5.1;Alpha;blk=Latin_Ext_D;Cased;CWCM;gc=Lu;Gr_Base;IDC;IDS;ID_Type=Obsolete;lb=AL;SB=LO;sc=Latn;WB=LE;XIDC;XIDS# A720..A7FF Latin Extended-D
+block;A720..A7FF;age=5.1;Alpha;blk=Latin_Ext_D;Cased;CWCM;gc=Lu;Gr_Base;IDC;IDS;ID_Type=Obsolete;lb=AL;SB=LO;sc=Latn;WB=LE;XIDC;XIDS
+# A720..A7FF Latin Extended-D
 # Additions for UPA
 cp;A720;age=5.0;-Alpha;bc=ON;-Cased;CI;-CWCM;Dia;gc=Sk;-IDC;-IDS;ID_Type=Not_XID;na=MODIFIER LETTER STRESS AND HIGH TONE;SB=XX;sc=Zyyy;-XIDC;-XIDS
 cp;A721;age=5.0;-Alpha;bc=ON;-Cased;CI;-CWCM;Dia;gc=Sk;-IDC;-IDS;ID_Type=Not_XID;na=MODIFIER LETTER STRESS AND LOW TONE;SB=XX;sc=Zyyy;-XIDC;-XIDS
@@ -19778,7 +19910,8 @@ cp;A774;-CWCM;Lower;na=LATIN SMALL LETTER NUM
 cp;A775;-CWCM;Lower;na=LATIN SMALL LETTER RUM
 cp;A776;-CWCM;Lower;na=LATIN LETTER SMALL CAPITAL RUM
 cp;A777;-CWCM;Lower;na=LATIN SMALL LETTER TUM
-cp;A778;-CWCM;Lower;na=LATIN SMALL LETTER UM# Insular and Celticist letters
+cp;A778;-CWCM;Lower;na=LATIN SMALL LETTER UM
+# Insular and Celticist letters
 cp;A779;cf=A77A;CWCF;CWKCF;CWL;na=LATIN CAPITAL LETTER INSULAR D;NFKC_CF=A77A;NFKC_SCF=A77A;SB=UP;scf=A77A;slc=A77A;Upper
 cp;A77A;CWT;CWU;gc=Ll;Lower;na=LATIN SMALL LETTER INSULAR D;stc=A779;suc=A779
 cp;A77B;cf=A77C;CWCF;CWKCF;CWL;na=LATIN CAPITAL LETTER INSULAR F;NFKC_CF=A77C;NFKC_SCF=A77C;SB=UP;scf=A77C;slc=A77C;Upper
@@ -19811,7 +19944,8 @@ cp;A78F;age=8.0;-Cased;-CWCM;gc=Lo;ID_Type=Uncommon_Use;na=LATIN LETTER SINOLOGI
 cp;A790;age=6.0;cf=A791;CWCF;CWKCF;CWL;gc=Lu;na=LATIN CAPITAL LETTER N WITH DESCENDER;NFKC_CF=A791;NFKC_SCF=A791;SB=UP;scf=A791;slc=A791;Upper
 cp;A791;age=6.0;CWT;CWU;Lower;na=LATIN SMALL LETTER N WITH DESCENDER;stc=A790;suc=A790
 cp;A792;age=6.1;cf=A793;CWCF;CWKCF;CWL;gc=Lu;ID_Status=Allowed;ID_Type=Recommended;na=LATIN CAPITAL LETTER C WITH BAR;NFKC_CF=A793;NFKC_SCF=A793;SB=UP;scf=A793;slc=A793;Upper
-cp;A793;age=6.1;CWT;CWU;ID_Status=Allowed;ID_Type=Recommended;Lower;na=LATIN SMALL LETTER C WITH BAR;stc=A792;suc=A792# Additions for Lithuanian dialectology
+cp;A793;age=6.1;CWT;CWU;ID_Status=Allowed;ID_Type=Recommended;Lower;na=LATIN SMALL LETTER C WITH BAR;stc=A792;suc=A792
+# Additions for Lithuanian dialectology
 cp;A794;age=7.0;CWT;CWU;gc=Ll;Lower;na=LATIN SMALL LETTER C WITH PALATAL HOOK;stc=A7C4;suc=A7C4
 cp;A795;age=7.0;-CWCM;gc=Ll;Lower;na=LATIN SMALL LETTER H WITH PALATAL HOOK
 # Letters for Middle Vietnamese
@@ -19846,7 +19980,8 @@ cp;A7AD;age=7.0;cf=026C;CWCF;CWKCF;CWL;gc=Lu;na=LATIN CAPITAL LETTER L WITH BELT
 # Letter for West African languages
 cp;A7AE;age=9.0;cf=026A;CWCF;CWKCF;CWL;gc=Lu;ID_Type=Technical;na=LATIN CAPITAL LETTER SMALL CAPITAL I;NFKC_CF=026A;NFKC_SCF=026A;SB=UP;scf=026A;slc=026A;Upper
 # Letter for Japanese phonemic transcription
-cp;A7AF;age=11.0;-CWCM;ID_Type=Technical;Lower;na=LATIN LETTER SMALL CAPITAL Q# Letters for Americanist orthographies
+cp;A7AF;age=11.0;-CWCM;ID_Type=Technical;Lower;na=LATIN LETTER SMALL CAPITAL Q
+# Letters for Americanist orthographies
 cp;A7B0;age=7.0;cf=029E;CWCF;CWKCF;CWL;na=LATIN CAPITAL LETTER TURNED K;NFKC_CF=029E;NFKC_SCF=029E;SB=UP;scf=029E;slc=029E;Upper
 cp;A7B1;age=7.0;cf=0287;CWCF;CWKCF;CWL;na=LATIN CAPITAL LETTER TURNED T;NFKC_CF=0287;NFKC_SCF=0287;SB=UP;scf=0287;slc=0287;Upper
 # Letter for African languages
@@ -19908,7 +20043,8 @@ cp;A7DB;age=16.0;CWT;CWU;gc=Ll;ID_Type=Uncommon_Use;Lower;na=LATIN SMALL LETTER 
 cp;A7DC;age=16.0;cf=019B;CWCF;CWKCF;CWL;ID_Type=Uncommon_Use;na=LATIN CAPITAL LETTER LAMBDA WITH STROKE;NFKC_CF=019B;NFKC_SCF=019B;SB=UP;scf=019B;slc=019B;Upper
 unassigned;A7DD..A7F0
 # Modifier letters for Chatino (M\u00E9xico)
-cp;A7F1;age=17.0;CI;-CWCM;CWKCF;Dia;dm=0053;dt=Sup;FC_NFKC=0073;gc=Lm;ID_Type=Not_NFKC;Lower;na=MODIFIER LETTER CAPITAL S;NFKC_CF=0073;NFKC_QC=N;NFKC_SCF=0073;NFKD_QC=Ncp;A7F2;age=14.0;CI;-CWCM;CWKCF;dm=0043;dt=Sup;FC_NFKC=0063;gc=Lm;ID_Type=Not_NFKC;Lower;na=MODIFIER LETTER CAPITAL C;NFKC_CF=0063;NFKC_QC=N;NFKC_SCF=0063;NFKD_QC=N
+cp;A7F1;age=17.0;CI;-CWCM;CWKCF;Dia;dm=0053;dt=Sup;FC_NFKC=0073;gc=Lm;ID_Type=Not_NFKC;Lower;na=MODIFIER LETTER CAPITAL S;NFKC_CF=0073;NFKC_QC=N;NFKC_SCF=0073;NFKD_QC=N
+cp;A7F2;age=14.0;CI;-CWCM;CWKCF;dm=0043;dt=Sup;FC_NFKC=0063;gc=Lm;ID_Type=Not_NFKC;Lower;na=MODIFIER LETTER CAPITAL C;NFKC_CF=0063;NFKC_QC=N;NFKC_SCF=0063;NFKD_QC=N
 cp;A7F3;age=14.0;CI;-CWCM;CWKCF;dm=0046;dt=Sup;FC_NFKC=0066;gc=Lm;ID_Type=Not_NFKC;Lower;na=MODIFIER LETTER CAPITAL F;NFKC_CF=0066;NFKC_QC=N;NFKC_SCF=0066;NFKD_QC=N
 # Modifier letter for Japanese phonemic transcription
 cp;A7F4;age=14.0;CI;-CWCM;CWKCF;dm=0051;dt=Sup;FC_NFKC=0071;gc=Lm;ID_Type=Not_NFKC;Lower;na=MODIFIER LETTER CAPITAL Q;NFKC_CF=0071;NFKC_QC=N;NFKC_SCF=0071;NFKD_QC=N
@@ -19920,7 +20056,8 @@ cp;A7F7;age=7.0;-Cased;-CWCM;gc=Lo;na=LATIN EPIGRAPHIC LETTER SIDEWAYS I;SB=LE
 cp;A7F8;age=6.1;CI;-CWCM;CWKCF;Dia;dm=0126;dt=Sup;FC_NFKC=0127;gc=Lm;ID_Type=Not_NFKC;Lower;na=MODIFIER LETTER CAPITAL H WITH STROKE;NFKC_CF=0127;NFKC_QC=N;NFKC_SCF=0127;NFKD_QC=N
 cp;A7F9;age=6.1;CI;-CWCM;CWKCF;Dia;dm=0153;dt=Sup;gc=Lm;ID_Type=Not_NFKC;Lower;na=MODIFIER LETTER SMALL LIGATURE OE;NFKC_CF=0153;NFKC_QC=N;NFKC_SCF=0153;NFKD_QC=N
 # Addition for UPA
-cp;A7FA;age=6.0;-CWCM;ID_Type=Technical;Lower;na=LATIN LETTER SMALL CAPITAL TURNED M# Ancient Roman epigraphic letters
+cp;A7FA;age=6.0;-CWCM;ID_Type=Technical;Lower;na=LATIN LETTER SMALL CAPITAL TURNED M
+# Ancient Roman epigraphic letters
 cp;A7FB;-Cased;-CWCM;gc=Lo;na=LATIN EPIGRAPHIC LETTER REVERSED F;SB=LE
 cp;A7FC;-Cased;-CWCM;gc=Lo;na=LATIN EPIGRAPHIC LETTER REVERSED P;SB=LE
 cp;A7FD;-Cased;-CWCM;gc=Lo;na=LATIN EPIGRAPHIC LETTER INVERTED M;SB=LE
@@ -20344,12 +20481,14 @@ cp;A97B;na=HANGUL CHOSEONG HIEUH-SIOS
 cp;A97C;na=HANGUL CHOSEONG SSANGYEORINHIEUH
 unassigned;A97D..A97F;vo=U
 
-block;A980..A9DF;age=5.2;Alpha;blk=Javanese;gc=Lo;Gr_Base;IDC;ID_Type=Limited_Use;InCB=Consonant;InSC=Consonant;lb=AK;SB=LE;sc=Java;WB=LE;XIDC# A980..A9DF Javanese
+block;A980..A9DF;age=5.2;Alpha;blk=Javanese;gc=Lo;Gr_Base;IDC;ID_Type=Limited_Use;InCB=Consonant;InSC=Consonant;lb=AK;SB=LE;sc=Java;WB=LE;XIDC
+# A980..A9DF Javanese
 # Various signs
 cp;A980;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=JAVANESE SIGN PANYANGGA;SB=EX;WB=Extend
 cp;A981;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=JAVANESE SIGN CECAK;SB=EX;WB=Extend
 cp;A982;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Consonant_Final;jt=T;lb=CM;na=JAVANESE SIGN LAYAR;SB=EX;WB=Extend
-cp;A983;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Visarga;lb=CM;na=JAVANESE SIGN WIGNYAN;SB=EX;WB=Extend# Letters
+cp;A983;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Visarga;lb=CM;na=JAVANESE SIGN WIGNYAN;SB=EX;WB=Extend
+# Letters
 cp;A984;IDS;InCB=None;InSC=Vowel_Independent;na=JAVANESE LETTER A;XIDS
 cp;A985;IDS;InCB=None;InSC=Vowel_Independent;na=JAVANESE LETTER I KAWI;XIDS
 cp;A986;IDS;InCB=None;InSC=Vowel_Independent;na=JAVANESE LETTER I;XIDS
@@ -20401,7 +20540,8 @@ cp;A9B2;IDS;na=JAVANESE LETTER HA;XIDS
 cp;A9B3;-Alpha;bc=NSM;ccc=7;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Nukta;jt=T;lb=CM;na=JAVANESE SIGN CECAK TELU;SB=EX;WB=Extend
 # Dependent vowel signs
 cp;A9B4;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=JAVANESE VOWEL SIGN TARUNG;SB=EX;WB=Extend
-cp;A9B5;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=JAVANESE VOWEL SIGN TOLONG;SB=EX;WB=Extendcp;A9B6;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=JAVANESE VOWEL SIGN WULU;SB=EX;WB=Extend
+cp;A9B5;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=JAVANESE VOWEL SIGN TOLONG;SB=EX;WB=Extend
+cp;A9B6;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=JAVANESE VOWEL SIGN WULU;SB=EX;WB=Extend
 cp;A9B7;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=JAVANESE VOWEL SIGN WULU MELIK;SB=EX;WB=Extend
 cp;A9B8;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=JAVANESE VOWEL SIGN SUKU;SB=EX;WB=Extend
 cp;A9B9;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=JAVANESE VOWEL SIGN SUKU MENDUT;SB=EX;WB=Extend
@@ -20457,7 +20597,8 @@ cp;A9E3;ID_Status=Restricted;ID_Type=Obsolete;na=MYANMAR LETTER SHAN NNA
 cp;A9E4;ID_Status=Restricted;ID_Type=Obsolete;na=MYANMAR LETTER SHAN BHA
 cp;A9E5;bc=NSM;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Restricted;ID_Type=Obsolete;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;na=MYANMAR SIGN SHAN SAW;SB=EX;WB=Extend;-XIDS
 # Reduplication mark
-cp;A9E6;CI;Ext;gc=Lm;ID_Status=Restricted;ID_Type=Obsolete;InSC=Other;na=MYANMAR MODIFIER LETTER SHAN REDUPLICATION# Tai Laing consonants
+cp;A9E6;CI;Ext;gc=Lm;ID_Status=Restricted;ID_Type=Obsolete;InSC=Other;na=MYANMAR MODIFIER LETTER SHAN REDUPLICATION
+# Tai Laing consonants
 cp;A9E7;na=MYANMAR LETTER TAI LAING NYA
 cp;A9E8;na=MYANMAR LETTER TAI LAING FA
 cp;A9E9;na=MYANMAR LETTER TAI LAING GA
@@ -20582,7 +20723,8 @@ cp;AA5D;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Limited_Use Not_XID;InSC=Other;lb=BA;na=C
 cp;AA5E;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Limited_Use Not_XID;InSC=Other;lb=BA;na=CHAM PUNCTUATION DOUBLE DANDA;SB=ST;STerm;Term;WB=XX;-XIDC;-XIDS
 cp;AA5F;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Limited_Use Not_XID;InSC=Other;lb=BA;na=CHAM PUNCTUATION TRIPLE DANDA;SB=ST;STerm;Term;WB=XX;-XIDC;-XIDS
 
-block;AA60..AA7F;age=5.2;Alpha;blk=Myanmar_Ext_A;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Uncommon_Use;InCB=Consonant;InSC=Consonant;lb=SA;SB=LE;sc=Mymr;XIDC;XIDS# AA60..AA7F Myanmar Extended-A
+block;AA60..AA7F;age=5.2;Alpha;blk=Myanmar_Ext_A;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Uncommon_Use;InCB=Consonant;InSC=Consonant;lb=SA;SB=LE;sc=Mymr;XIDC;XIDS
+# AA60..AA7F Myanmar Extended-A
 # Khamti Shan consonants
 cp;AA60;na=MYANMAR LETTER KHAMTI GA
 cp;AA61;na=MYANMAR LETTER KHAMTI CA
@@ -20611,12 +20753,14 @@ cp;AA76;InCB=None;InSC=Consonant_Placeholder;na=MYANMAR LOGOGRAM KHAMTI HM
 # Aiton symbols and letters
 cp;AA77;-Alpha;gc=So;-IDC;-IDS;ID_Type=Not_XID;InCB=None;InSC=Other;na=MYANMAR SYMBOL AITON EXCLAMATION;SB=XX;-XIDC;-XIDS
 cp;AA78;-Alpha;gc=So;-IDC;-IDS;ID_Type=Not_XID;InCB=None;InSC=Other;na=MYANMAR SYMBOL AITON ONE;SB=XX;-XIDC;-XIDS
-cp;AA79;-Alpha;gc=So;-IDC;-IDS;ID_Type=Not_XID;InCB=None;InSC=Other;na=MYANMAR SYMBOL AITON TWO;SB=XX;-XIDC;-XIDScp;AA7A;na=MYANMAR LETTER AITON RA
+cp;AA79;-Alpha;gc=So;-IDC;-IDS;ID_Type=Not_XID;InCB=None;InSC=Other;na=MYANMAR SYMBOL AITON TWO;SB=XX;-XIDC;-XIDS
+cp;AA7A;na=MYANMAR LETTER AITON RA
 # Pa'o Karen tone mark
 cp;AA7B;Dia;gc=Mc;-IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=None;InPC=Right;InSC=Tone_Mark;na=MYANMAR SIGN PAO KAREN TONE;SB=EX;WB=Extend;-XIDS
 # Tai Laing tone marks
 cp;AA7C;age=7.0;bc=NSM;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Tone_Mark;jt=T;na=MYANMAR SIGN TAI LAING TONE-2;SB=EX;WB=Extend;-XIDS
-cp;AA7D;age=7.0;Dia;gc=Mc;-IDS;InCB=None;InPC=Right;InSC=Tone_Mark;na=MYANMAR SIGN TAI LAING TONE-5;SB=EX;WB=Extend;-XIDS# Shwe Palaung letters
+cp;AA7D;age=7.0;Dia;gc=Mc;-IDS;InCB=None;InPC=Right;InSC=Tone_Mark;na=MYANMAR SIGN TAI LAING TONE-5;SB=EX;WB=Extend;-XIDS
+# Shwe Palaung letters
 cp;AA7E;age=7.0;na=MYANMAR LETTER SHWE PALAUNG CHA
 cp;AA7F;age=7.0;na=MYANMAR LETTER SHWE PALAUNG SHA
 
@@ -20702,7 +20846,8 @@ cp;AADD;CI;Ext;gc=Lm;InSC=Other;na=TAI VIET SYMBOL SAM
 cp;AADE;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Limited_Use Not_XID;InSC=Other;na=TAI VIET SYMBOL HO HOI;SB=XX;-XIDC;-XIDS
 cp;AADF;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Limited_Use Not_XID;InSC=Other;na=TAI VIET SYMBOL KOI KOI;SB=XX;Term;-XIDC;-XIDS
 
-block;AAE0..AAFF;age=6.1;Alpha;blk=Meetei_Mayek_Ext;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Limited_Use;InCB=Consonant;InSC=Consonant;lb=AL;SB=LE;sc=Mtei;WB=LE;XIDC;XIDS# AAE0..AAFF Meetei Mayek Extensions
+block;AAE0..AAFF;age=6.1;Alpha;blk=Meetei_Mayek_Ext;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Limited_Use;InCB=Consonant;InSC=Consonant;lb=AL;SB=LE;sc=Mtei;WB=LE;XIDC;XIDS
+# AAE0..AAFF Meetei Mayek Extensions
 # Independent vowel signs
 cp;AAE0;InSC=Vowel_Independent;na=MEETEI MAYEK LETTER E
 cp;AAE1;InSC=Vowel_Independent;na=MEETEI MAYEK LETTER O
@@ -20724,7 +20869,8 @@ cp;AAEE;gc=Mc;GCB=SM;-IDS;InPC=Left;InSC=Vowel_Dependent;lb=CM;na=MEETEI MAYEK V
 cp;AAEF;gc=Mc;GCB=SM;-IDS;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=MEETEI MAYEK VOWEL SIGN AAU;SB=EX;WB=Extend;-XIDS
 # Punctuation
 cp;AAF0;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Limited_Use Not_XID;InSC=Other;lb=BA;na=MEETEI MAYEK CHEIKHAN;SB=ST;STerm;Term;WB=XX;-XIDC;-XIDS
-cp;AAF1;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Limited_Use Not_XID;InSC=Other;lb=BA;na=MEETEI MAYEK AHANG KHUDAM;SB=ST;STerm;Term;WB=XX;-XIDC;-XIDS# Sign
+cp;AAF1;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Limited_Use Not_XID;InSC=Other;lb=BA;na=MEETEI MAYEK AHANG KHUDAM;SB=ST;STerm;Term;WB=XX;-XIDC;-XIDS
+# Sign
 cp;AAF2;InCB=None;InSC=Other;na=MEETEI MAYEK ANJI
 # Repetition marks
 cp;AAF3;CI;Ext;gc=Lm;InCB=None;InSC=Other;na=MEETEI MAYEK SYLLABLE REPETITION MARK
@@ -20735,7 +20881,8 @@ cp;AAF5;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Visarga;lb=CM;na=MEETEI MAYE
 cp;AAF6;-Alpha;bc=NSM;ccc=9;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;Gr_Link;-IDS;InCB=Linker;InSC=Invisible_Stacker;jt=T;lb=CM;na=MEETEI MAYEK VIRAMA;SB=EX;WB=Extend;-XIDS
 unassigned;AAF7..AAFF
 
-block;AB00..AB2F;age=6.0;Alpha;blk=Ethiopic_Ext_A;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=AL;SB=LE;sc=Ethi;WB=LE;XIDC;XIDS# AB00..AB2F Ethiopic Extended-A
+block;AB00..AB2F;age=6.0;Alpha;blk=Ethiopic_Ext_A;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=AL;SB=LE;sc=Ethi;WB=LE;XIDC;XIDS
+# AB00..AB2F Ethiopic Extended-A
 unassigned;AB00
 # Gamo-Gofa-Dawro and Basketo
 cp;AB01;na=ETHIOPIC SYLLABLE TTHU
@@ -20840,7 +20987,8 @@ cp;AB64;na=LATIN SMALL LETTER INVERTED ALPHA
 cp;AB65;na=GREEK LETTER SMALL CAPITAL OMEGA;sc=Grek
 # Letters for sinological and Tibetanist phonetic transcription
 cp;AB66;age=12.0;ID_Status=Allowed;ID_Type=Recommended;na=LATIN SMALL LETTER DZ DIGRAPH WITH RETROFLEX HOOK
-cp;AB67;age=12.0;ID_Status=Allowed;ID_Type=Recommended;na=LATIN SMALL LETTER TS DIGRAPH WITH RETROFLEX HOOK# Letters for Scots dialectology
+cp;AB67;age=12.0;ID_Status=Allowed;ID_Type=Recommended;na=LATIN SMALL LETTER TS DIGRAPH WITH RETROFLEX HOOK
+# Letters for Scots dialectology
 cp;AB68;age=13.0;ID_Type=Technical;na=LATIN SMALL LETTER TURNED R WITH MIDDLE TILDE
 cp;AB69;age=13.0;CI;CWKCF;Dia;dm=028D;dt=Sup;gc=Lm;ID_Type=Not_NFKC;na=MODIFIER LETTER SMALL TURNED W;NFKC_CF=028D;NFKC_QC=N;NFKC_SCF=028D;NFKD_QC=N
 cp;AB6A;age=13.0;-Alpha;bc=ON;-Cased;CI;Dia;gc=Sk;-IDC;-IDS;ID_Type=Not_XID;-Lower;na=MODIFIER LETTER LEFT TACK;SB=XX;sc=Zyyy;WB=XX;-XIDC;-XIDS
@@ -20931,7 +21079,8 @@ cp;ABBD;cf=13ED;na=CHEROKEE SMALL LETTER WU;NFKC_CF=13ED;NFKC_SCF=13ED;scf=13ED;
 cp;ABBE;cf=13EE;na=CHEROKEE SMALL LETTER WV;NFKC_CF=13EE;NFKC_SCF=13EE;scf=13EE;stc=13EE;suc=13EE
 cp;ABBF;cf=13EF;na=CHEROKEE SMALL LETTER YA;NFKC_CF=13EF;NFKC_SCF=13EF;scf=13EF;stc=13EF;suc=13EF
 
-block;ABC0..ABFF;age=5.2;Alpha;blk=Meetei_Mayek;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Limited_Use;InCB=Consonant;InSC=Consonant;lb=AL;SB=LE;sc=Mtei;WB=LE;XIDC;XIDS# ABC0..ABFF Meetei Mayek
+block;ABC0..ABFF;age=5.2;Alpha;blk=Meetei_Mayek;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Limited_Use;InCB=Consonant;InSC=Consonant;lb=AL;SB=LE;sc=Mtei;WB=LE;XIDC;XIDS
+# ABC0..ABFF Meetei Mayek
 # Letters
 cp;ABC0;na=MEETEI MAYEK LETTER KOK
 cp;ABC1;na=MEETEI MAYEK LETTER SAM
@@ -20980,7 +21129,8 @@ cp;ABE9;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=MEE
 cp;ABEA;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=MEETEI MAYEK VOWEL SIGN NUNG;SB=EX;WB=Extend;-XIDS
 # Punctuation
 cp;ABEB;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;lb=BA;na=MEETEI MAYEK CHEIKHEI;SB=ST;STerm;Term;WB=XX;-XIDC;-XIDS
-cp;ABEC;-Alpha;Dia;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Tone_Mark;lb=CM;na=MEETEI MAYEK LUM IYEK;SB=EX;WB=Extend;-XIDScp;ABED;-Alpha;bc=NSM;ccc=9;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;Gr_Link;-IDS;InCB=Extend;InPC=Bottom;InSC=Pure_Killer;jt=T;lb=CM;na=MEETEI MAYEK APUN IYEK;SB=EX;WB=Extend;-XIDS
+cp;ABEC;-Alpha;Dia;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Tone_Mark;lb=CM;na=MEETEI MAYEK LUM IYEK;SB=EX;WB=Extend;-XIDS
+cp;ABED;-Alpha;bc=NSM;ccc=9;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;Gr_Link;-IDS;InCB=Extend;InPC=Bottom;InSC=Pure_Killer;jt=T;lb=CM;na=MEETEI MAYEK APUN IYEK;SB=EX;WB=Extend;-XIDS
 unassigned;ABEE..ABEF
 # Digits
 cp;ABF0;-Alpha;gc=Nd;-IDS;InCB=None;InSC=Number;lb=NU;na=MEETEI MAYEK DIGIT ZERO;nt=De;nv=0;SB=NU;WB=NU;-XIDS
@@ -22170,7 +22320,8 @@ cp;FA10;dm=585A;na=CJK COMPATIBILITY IDEOGRAPH-FA10;NFKC_CF=585A;NFKC_SCF=585A
 cp;FA11;-Comp_Ex;-CWKCF;dt=None;ID_Type=Uncommon_Use;na=CJK COMPATIBILITY IDEOGRAPH-FA11;NFC_QC=Y;NFD_QC=Y;NFKC_QC=Y;NFKD_QC=Y;UIdeo
 cp;FA12;dm=6674;na=CJK COMPATIBILITY IDEOGRAPH-FA12;NFKC_CF=6674;NFKC_SCF=6674
 cp;FA13;-Comp_Ex;-CWKCF;dt=None;ID_Type=Uncommon_Use;na=CJK COMPATIBILITY IDEOGRAPH-FA13;NFC_QC=Y;NFD_QC=Y;NFKC_QC=Y;NFKD_QC=Y;UIdeo
-cp;FA14;-Comp_Ex;-CWKCF;dt=None;ID_Type=Uncommon_Use;na=CJK COMPATIBILITY IDEOGRAPH-FA14;NFC_QC=Y;NFD_QC=Y;NFKC_QC=Y;NFKD_QC=Y;UIdeocp;FA15;dm=51DE;na=CJK COMPATIBILITY IDEOGRAPH-FA15;NFKC_CF=51DE;NFKC_SCF=51DE
+cp;FA14;-Comp_Ex;-CWKCF;dt=None;ID_Type=Uncommon_Use;na=CJK COMPATIBILITY IDEOGRAPH-FA14;NFC_QC=Y;NFD_QC=Y;NFKC_QC=Y;NFKD_QC=Y;UIdeo
+cp;FA15;dm=51DE;na=CJK COMPATIBILITY IDEOGRAPH-FA15;NFKC_CF=51DE;NFKC_SCF=51DE
 cp;FA16;dm=732A;na=CJK COMPATIBILITY IDEOGRAPH-FA16;NFKC_CF=732A;NFKC_SCF=732A
 cp;FA17;dm=76CA;na=CJK COMPATIBILITY IDEOGRAPH-FA17;NFKC_CF=76CA;NFKC_SCF=76CA
 cp;FA18;dm=793C;na=CJK COMPATIBILITY IDEOGRAPH-FA18;NFKC_CF=793C;NFKC_SCF=793C
@@ -22190,7 +22341,8 @@ cp;FA25;dm=9038;na=CJK COMPATIBILITY IDEOGRAPH-FA25;NFKC_CF=9038;NFKC_SCF=9038
 cp;FA26;dm=90FD;na=CJK COMPATIBILITY IDEOGRAPH-FA26;NFKC_CF=90FD;NFKC_SCF=90FD
 cp;FA27;-Comp_Ex;-CWKCF;dt=None;ID_Type=Uncommon_Use;na=CJK COMPATIBILITY IDEOGRAPH-FA27;NFC_QC=Y;NFD_QC=Y;NFKC_QC=Y;NFKD_QC=Y;UIdeo
 cp;FA28;-Comp_Ex;-CWKCF;dt=None;ID_Type=Uncommon_Use;na=CJK COMPATIBILITY IDEOGRAPH-FA28;NFC_QC=Y;NFD_QC=Y;NFKC_QC=Y;NFKD_QC=Y;UIdeo
-cp;FA29;-Comp_Ex;-CWKCF;dt=None;ID_Type=Uncommon_Use;na=CJK COMPATIBILITY IDEOGRAPH-FA29;NFC_QC=Y;NFD_QC=Y;NFKC_QC=Y;NFKD_QC=Y;UIdeocp;FA2A;dm=98EF;na=CJK COMPATIBILITY IDEOGRAPH-FA2A;NFKC_CF=98EF;NFKC_SCF=98EF
+cp;FA29;-Comp_Ex;-CWKCF;dt=None;ID_Type=Uncommon_Use;na=CJK COMPATIBILITY IDEOGRAPH-FA29;NFC_QC=Y;NFD_QC=Y;NFKC_QC=Y;NFKD_QC=Y;UIdeo
+cp;FA2A;dm=98EF;na=CJK COMPATIBILITY IDEOGRAPH-FA2A;NFKC_CF=98EF;NFKC_SCF=98EF
 cp;FA2B;dm=98FC;na=CJK COMPATIBILITY IDEOGRAPH-FA2B;NFKC_CF=98FC;NFKC_SCF=98FC
 cp;FA2C;dm=9928;na=CJK COMPATIBILITY IDEOGRAPH-FA2C;NFKC_CF=9928;NFKC_SCF=9928
 cp;FA2D;dm=9DB4;na=CJK COMPATIBILITY IDEOGRAPH-FA2D;NFKC_CF=9DB4;NFKC_SCF=9DB4
@@ -22577,7 +22729,8 @@ cp;FBCE;age=17.0;-Alpha;bc=ON;-CWKCF;dt=None;gc=So;-IDC;-IDS;ID_Type=Technical N
 cp;FBCF;age=17.0;-Alpha;bc=ON;-CWKCF;dt=None;gc=So;-IDC;-IDS;ID_Type=Technical Not_XID;na=ARABIC LIGATURE HAFIZAHUMAA ALLAAHU TAAALAA;NFKC_QC=Y;NFKD_QC=Y;SB=XX;WB=XX;-XIDC;-XIDS
 cp;FBD0;age=17.0;-Alpha;bc=ON;-CWKCF;dt=None;gc=So;-IDC;-IDS;ID_Type=Technical Not_XID;na=ARABIC LIGATURE SALLALLAAHU TAAALAA ALAYHI WA-SALLAM;NFKC_QC=Y;NFKD_QC=Y;SB=XX;WB=XX;-XIDC;-XIDS
 cp;FBD1;age=17.0;-Alpha;bc=ON;-CWKCF;dt=None;gc=So;-IDC;-IDS;ID_Type=Technical Not_XID;na=ARABIC LIGATURE AJJAL ALLAAHU FARAJAHU ASH-SHAREEF;NFKC_QC=Y;NFKD_QC=Y;SB=XX;WB=XX;-XIDC;-XIDS
-cp;FBD2;age=17.0;-Alpha;bc=ON;-CWKCF;dt=None;gc=So;-IDC;-IDS;ID_Type=Technical Not_XID;na=ARABIC LIGATURE ALAYHI AR-RAHMAH;NFKC_QC=Y;NFKD_QC=Y;SB=XX;WB=XX;-XIDC;-XIDS# Glyphs for contextual forms of letters for Central Asian languages
+cp;FBD2;age=17.0;-Alpha;bc=ON;-CWKCF;dt=None;gc=So;-IDC;-IDS;ID_Type=Technical Not_XID;na=ARABIC LIGATURE ALAYHI AR-RAHMAH;NFKC_QC=Y;NFKD_QC=Y;SB=XX;WB=XX;-XIDC;-XIDS
+# Glyphs for contextual forms of letters for Central Asian languages
 cp;FBD3;dm=06AD;dt=Iso;na=ARABIC LETTER NG ISOLATED FORM;NFKC_CF=06AD;NFKC_SCF=06AD
 cp;FBD4;dm=06AD;na=ARABIC LETTER NG FINAL FORM;NFKC_CF=06AD;NFKC_SCF=06AD
 cp;FBD5;dm=06AD;dt=Init;na=ARABIC LETTER NG INITIAL FORM;NFKC_CF=06AD;NFKC_SCF=06AD
@@ -23092,7 +23245,8 @@ cp;FDCA;age=17.0;-Alpha;bc=ON;-CWKCF;dt=None;gc=So;-IDC;-IDS;ID_Type=Technical N
 cp;FDCB;age=17.0;-Alpha;bc=ON;-CWKCF;dt=None;gc=So;-IDC;-IDS;ID_Type=Technical Not_XID;na=ARABIC LIGATURE RADI ALLAAHU TAAALAA ANHUMAA;NFKC_QC=Y;NFKD_QC=Y;SB=XX;WB=XX;-XIDC;-XIDS
 cp;FDCC;age=17.0;-Alpha;bc=ON;-CWKCF;dt=None;gc=So;-IDC;-IDS;ID_Type=Technical Not_XID;na=ARABIC LIGATURE SALLALLAHU ALAYHI WA-ALAA AALIHEE WA-SALLAM;NFKC_QC=Y;NFKD_QC=Y;SB=XX;WB=XX;-XIDC;-XIDS
 cp;FDCD;age=17.0;-Alpha;bc=ON;-CWKCF;dt=None;gc=So;-IDC;-IDS;ID_Type=Technical Not_XID;na=ARABIC LIGATURE AJJAL ALLAAHU TAAALAA FARAJAHU ASH-SHAREEF;NFKC_QC=Y;NFKD_QC=Y;SB=XX;WB=XX;-XIDC;-XIDS
-cp;FDCE;age=17.0;-Alpha;bc=ON;-CWKCF;dt=None;gc=So;-IDC;-IDS;ID_Type=Technical Not_XID;na=ARABIC LIGATURE KARRAMA ALLAAHU WAJHAH;NFKC_QC=Y;NFKD_QC=Y;SB=XX;WB=XX;-XIDC;-XIDScp;FDCF;age=14.0;-Alpha;bc=ON;-CWKCF;dt=None;gc=So;-IDC;-IDS;ID_Type=Technical Not_XID;na=ARABIC LIGATURE SALAAMUHU ALAYNAA;NFKC_QC=Y;NFKD_QC=Y;SB=XX;WB=XX;-XIDC;-XIDS
+cp;FDCE;age=17.0;-Alpha;bc=ON;-CWKCF;dt=None;gc=So;-IDC;-IDS;ID_Type=Technical Not_XID;na=ARABIC LIGATURE KARRAMA ALLAAHU WAJHAH;NFKC_QC=Y;NFKD_QC=Y;SB=XX;WB=XX;-XIDC;-XIDS
+cp;FDCF;age=14.0;-Alpha;bc=ON;-CWKCF;dt=None;gc=So;-IDC;-IDS;ID_Type=Technical Not_XID;na=ARABIC LIGATURE SALAAMUHU ALAYNAA;NFKC_QC=Y;NFKD_QC=Y;SB=XX;WB=XX;-XIDC;-XIDS
 # Noncharacters
 unassigned;FDD0..FDEF;age=3.1;bc=BN;NChar
 # Word ligatures
@@ -25856,7 +26010,8 @@ cp;109FD;na=MEROITIC CURSIVE FRACTION EIGHT TWELFTHS;nv=2/3
 cp;109FE;na=MEROITIC CURSIVE FRACTION NINE TWELFTHS;nv=3/4
 cp;109FF;na=MEROITIC CURSIVE FRACTION TEN TWELFTHS;nv=5/6
 
-block;10A00..10A5F;age=4.1;Alpha;bc=R;blk=Kharoshthi;gc=Lo;Gr_Base;IDC;ID_Type=Exclusion;InCB=Consonant;InSC=Consonant;lb=AL;SB=LE;sc=Khar;WB=LE;XIDC# 10A00..10A5F Kharoshthi
+block;10A00..10A5F;age=4.1;Alpha;bc=R;blk=Kharoshthi;gc=Lo;Gr_Base;IDC;ID_Type=Exclusion;InCB=Consonant;InSC=Consonant;lb=AL;SB=LE;sc=Khar;WB=LE;XIDC
+# 10A00..10A5F Kharoshthi
 # Vowels
 cp;10A00;IDS;na=KHAROSHTHI LETTER A;XIDS
 cp;10A01;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Overstruck;InSC=Vowel_Dependent;jt=T;lb=CM;na=KHAROSHTHI VOWEL SIGN I;SB=EX;WB=Extend
@@ -25940,7 +26095,8 @@ cp;10A54;-Alpha;gc=Po;-IDC;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;lb=BA;
 cp;10A55;-Alpha;gc=Po;-IDC;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;lb=BA;na=KHAROSHTHI PUNCTUATION LOTUS;SB=XX;WB=XX;-XIDC
 cp;10A56;-Alpha;gc=Po;-IDC;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;lb=BA;na=KHAROSHTHI PUNCTUATION DANDA;SB=ST;STerm;Term;WB=XX;-XIDC
 cp;10A57;-Alpha;gc=Po;-IDC;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;lb=BA;na=KHAROSHTHI PUNCTUATION DOUBLE DANDA;SB=ST;STerm;Term;WB=XX;-XIDC
-cp;10A58;-Alpha;gc=Po;-IDC;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;na=KHAROSHTHI PUNCTUATION LINES;SB=XX;WB=XX;-XIDCunassigned;10A59..10A5F;bc=R
+cp;10A58;-Alpha;gc=Po;-IDC;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;na=KHAROSHTHI PUNCTUATION LINES;SB=XX;WB=XX;-XIDC
+unassigned;10A59..10A5F;bc=R
 
 block;10A60..10A7F;age=5.2;Alpha;bc=R;blk=Old_South_Arabian;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Exclusion;lb=AL;SB=LE;sc=Sarb;WB=LE;XIDC;XIDS
 # 10A60..10A7F Old South Arabian
@@ -26572,7 +26728,8 @@ cp;10D6B;-Alpha;bc=NSM;-Cased;ccc=230;CI;-CWCM;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;
 cp;10D6C;-Alpha;bc=NSM;-Cased;ccc=230;CI;-CWCM;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;jt=T;lb=CM;na=GARAY COMBINING DOUBLE DOT ABOVE;SB=EX;WB=Extend;-XIDS
 cp;10D6D;-Alpha;bc=NSM;-Cased;ccc=230;CI;-CWCM;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;jt=T;lb=CM;na=GARAY CONSONANT NASALIZATION MARK;SB=EX;WB=Extend;-XIDS
 # Punctuation and reduplication mark
-cp;10D6E;-Alpha;bc=ON;-Cased;-CWCM;Dash;gc=Pd;-IDC;-IDS;ID_Type=Exclusion Not_XID;lb=HH;na=GARAY HYPHEN;SB=XX;WB=XX;-XIDC;-XIDScp;10D6F;-Cased;CI;-CWCM;Ext;gc=Lm;na=GARAY REDUPLICATION MARK;SB=LE
+cp;10D6E;-Alpha;bc=ON;-Cased;-CWCM;Dash;gc=Pd;-IDC;-IDS;ID_Type=Exclusion Not_XID;lb=HH;na=GARAY HYPHEN;SB=XX;WB=XX;-XIDC;-XIDS
+cp;10D6F;-Cased;CI;-CWCM;Ext;gc=Lm;na=GARAY REDUPLICATION MARK;SB=LE
 # Lowercase consonant letters
 cp;10D70;CWT;CWU;Lower;na=GARAY SMALL LETTER A;stc=10D50;suc=10D50
 cp;10D71;CWT;CWU;Lower;na=GARAY SMALL LETTER CA;stc=10D51;suc=10D51
@@ -26692,7 +26849,8 @@ unassigned;10EAA;bc=R
 cp;10EAB;bc=NSM;ccc=230;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;jt=T;lb=CM;na=YEZIDI COMBINING HAMZA MARK;SB=EX;WB=Extend;-XIDS
 cp;10EAC;bc=NSM;ccc=230;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;jt=T;lb=CM;na=YEZIDI COMBINING MADDA MARK;SB=EX;WB=Extend;-XIDS
 # Punctuation
-cp;10EAD;-Alpha;Dash;gc=Pd;-IDC;-IDS;ID_Type=Exclusion Not_XID;lb=HH;na=YEZIDI HYPHENATION MARK;SB=XX;WB=XX;-XIDC;-XIDSunassigned;10EAE..10EAF;bc=R
+cp;10EAD;-Alpha;Dash;gc=Pd;-IDC;-IDS;ID_Type=Exclusion Not_XID;lb=HH;na=YEZIDI HYPHENATION MARK;SB=XX;WB=XX;-XIDC;-XIDS
+unassigned;10EAE..10EAF;bc=R
 # Historical letters with diacritics
 cp;10EB0;na=YEZIDI LETTER LAM WITH DOT ABOVE
 cp;10EB1;na=YEZIDI LETTER YOT WITH CIRCUMFLEX ABOVE
@@ -27187,7 +27345,8 @@ cp;110F8;-Alpha;gc=Nd;-IDS;lb=NU;na=SORA SOMPENG DIGIT EIGHT;nt=De;nv=8;SB=NU;WB
 cp;110F9;-Alpha;gc=Nd;-IDS;lb=NU;na=SORA SOMPENG DIGIT NINE;nt=De;nv=9;SB=NU;WB=NU;-XIDS
 unassigned;110FA..110FF
 
-block;11100..1114F;age=6.1;Alpha;blk=Chakma;gc=Lo;Gr_Base;IDC;ID_Type=Limited_Use;InCB=Consonant;InSC=Consonant;lb=AL;SB=LE;sc=Cakm;WB=LE;XIDC# 11100..1114F Chakma
+block;11100..1114F;age=6.1;Alpha;blk=Chakma;gc=Lo;Gr_Base;IDC;ID_Type=Limited_Use;InCB=Consonant;InSC=Consonant;lb=AL;SB=LE;sc=Cakm;WB=LE;XIDC
+# 11100..1114F Chakma
 # Various signs
 cp;11100;bc=NSM;ccc=230;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=CHAKMA SIGN CANDRABINDU;SB=EX;WB=Extend
 cp;11101;bc=NSM;ccc=230;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=CHAKMA SIGN ANUSVARA;SB=EX;WB=Extend
@@ -27236,7 +27395,8 @@ cp;11128;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_
 cp;11129;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=CHAKMA VOWEL SIGN II;SB=EX;WB=Extend
 cp;1112A;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=CHAKMA VOWEL SIGN U;SB=EX;WB=Extend
 cp;1112B;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=CHAKMA VOWEL SIGN UU;SB=EX;WB=Extend
-cp;1112C;gc=Mc;GCB=SM;InCB=None;InPC=Left;InSC=Vowel_Dependent;lb=CM;na=CHAKMA VOWEL SIGN E;SB=EX;WB=Extendcp;1112D;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=CHAKMA VOWEL SIGN AI;SB=EX;WB=Extend
+cp;1112C;gc=Mc;GCB=SM;InCB=None;InPC=Left;InSC=Vowel_Dependent;lb=CM;na=CHAKMA VOWEL SIGN E;SB=EX;WB=Extend
+cp;1112D;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=CHAKMA VOWEL SIGN AI;SB=EX;WB=Extend
 cp;1112E;bc=NSM;CI;dm=11131 11127;dt=Can;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top_And_Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=CHAKMA VOWEL SIGN O;NFD_QC=N;NFKD_QC=N;SB=EX;WB=Extend
 cp;1112F;bc=NSM;CI;dm=11132 11127;dt=Can;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top_And_Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=CHAKMA VOWEL SIGN AU;NFD_QC=N;NFKD_QC=N;SB=EX;WB=Extend
 cp;11130;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=CHAKMA VOWEL SIGN OI;SB=EX;WB=Extend
@@ -27261,7 +27421,8 @@ cp;1113F;-Alpha;gc=Nd;InCB=None;InSC=Number;lb=NU;na=CHAKMA DIGIT NINE;nt=De;nv=
 cp;11140;-Alpha;gc=Po;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;lb=BA;na=CHAKMA SECTION MARK;SB=XX;WB=XX;-XIDC
 cp;11141;-Alpha;gc=Po;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;lb=BA;na=CHAKMA DANDA;SB=ST;STerm;Term;WB=XX;-XIDC
 cp;11142;-Alpha;gc=Po;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;lb=BA;na=CHAKMA DOUBLE DANDA;SB=ST;STerm;Term;WB=XX;-XIDC
-cp;11143;-Alpha;gc=Po;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;lb=BA;na=CHAKMA QUESTION MARK;SB=ST;STerm;Term;WB=XX;-XIDC# Consonant
+cp;11143;-Alpha;gc=Po;-IDC;ID_Type=Limited_Use Not_XID;InCB=None;InSC=Other;lb=BA;na=CHAKMA QUESTION MARK;SB=ST;STerm;Term;WB=XX;-XIDC
+# Consonant
 cp;11144;age=11.0;IDS;na=CHAKMA LETTER LHAA;XIDS
 # Dependent vowel signs
 cp;11145;age=11.0;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=CHAKMA VOWEL SIGN AA;SB=EX;WB=Extend
@@ -27730,7 +27891,8 @@ cp;11338;na=GRANTHA LETTER SA;WB=LE
 cp;11339;na=GRANTHA LETTER HA;WB=LE
 unassigned;1133A
 # Various signs
-cp;1133B;age=11.0;-Alpha;bc=NSM;ccc=7;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=Extend;InPC=Bottom;InSC=Nukta;jt=T;lb=CM;na=COMBINING BINDU BELOW;SB=EX;sc=Zinh;scx=Gran Taml;-XIDScp;1133C;-Alpha;bc=NSM;ccc=7;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=Extend;InPC=Bottom;InSC=Nukta;jt=T;lb=CM;na=GRANTHA SIGN NUKTA;SB=EX;scx=Gran Taml;-XIDS
+cp;1133B;age=11.0;-Alpha;bc=NSM;ccc=7;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=Extend;InPC=Bottom;InSC=Nukta;jt=T;lb=CM;na=COMBINING BINDU BELOW;SB=EX;sc=Zinh;scx=Gran Taml;-XIDS
+cp;1133C;-Alpha;bc=NSM;ccc=7;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;ID_Status=Allowed;ID_Type=Recommended;InCB=Extend;InPC=Bottom;InSC=Nukta;jt=T;lb=CM;na=GRANTHA SIGN NUKTA;SB=EX;scx=Gran Taml;-XIDS
 cp;1133D;InSC=Avagraha;lb=BA;na=GRANTHA SIGN AVAGRAHA;WB=LE
 # Dependent vowel signs
 cp;1133E;gc=Mc;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=GRANTHA VOWEL SIGN AA;NFC_QC=M;NFKC_QC=M;SB=EX;-XIDS
@@ -27784,7 +27946,8 @@ cp;11373;-Alpha;bc=NSM;ccc=230;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Ext
 cp;11374;-Alpha;bc=NSM;ccc=230;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Cantillation_Mark;jt=T;lb=CM;na=COMBINING GRANTHA LETTER PA;SB=EX;-XIDS
 unassigned;11375..1137F
 
-block;11380..113FF;age=16.0;Alpha;blk=Tulu_Tigalari;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Exclusion;InCB=Consonant;InSC=Consonant;lb=AK;SB=LE;sc=Tutg;WB=LE;XIDC;XIDS# 11380..113FF Tulu-Tigalari
+block;11380..113FF;age=16.0;Alpha;blk=Tulu_Tigalari;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Exclusion;InCB=Consonant;InSC=Consonant;lb=AK;SB=LE;sc=Tutg;WB=LE;XIDC;XIDS
+# 11380..113FF Tulu-Tigalari
 # Independent vowels
 cp;11380;InSC=Vowel_Independent;lb=AS;na=TULU-TIGALARI LETTER A
 cp;11381;InSC=Vowel_Independent;lb=AS;na=TULU-TIGALARI LETTER AA
@@ -27846,7 +28009,8 @@ cp;113B7;InCB=None;InSC=Avagraha;lb=ID;na=TULU-TIGALARI SIGN AVAGRAHA
 # Vowel signs
 cp;113B8;gc=Mc;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=TULU-TIGALARI VOWEL SIGN AA;NFC_QC=M;NFKC_QC=M;SB=EX;WB=Extend;-XIDS
 cp;113B9;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Top_And_Right;InSC=Vowel_Dependent;lb=CM;na=TULU-TIGALARI VOWEL SIGN I;SB=EX;WB=Extend;-XIDS
-cp;113BA;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Top_And_Right;InSC=Vowel_Dependent;lb=CM;na=TULU-TIGALARI VOWEL SIGN II;SB=EX;WB=Extend;-XIDScp;113BB;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=TULU-TIGALARI VOWEL SIGN U;NFC_QC=M;NFKC_QC=M;SB=EX;WB=Extend;-XIDS
+cp;113BA;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Top_And_Right;InSC=Vowel_Dependent;lb=CM;na=TULU-TIGALARI VOWEL SIGN II;SB=EX;WB=Extend;-XIDS
+cp;113BB;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=TULU-TIGALARI VOWEL SIGN U;NFC_QC=M;NFKC_QC=M;SB=EX;WB=Extend;-XIDS
 cp;113BC;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=TULU-TIGALARI VOWEL SIGN UU;SB=EX;WB=Extend;-XIDS
 cp;113BD;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=TULU-TIGALARI VOWEL SIGN VOCALIC R;SB=EX;WB=Extend;-XIDS
 cp;113BE;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=TULU-TIGALARI VOWEL SIGN VOCALIC RR;SB=EX;WB=Extend;-XIDS
@@ -27877,7 +28041,8 @@ cp;113D4;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;l
 cp;113D5;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;lb=ID;na=TULU-TIGALARI DOUBLE DANDA;SB=ST;STerm;Term;WB=XX;-XIDC;-XIDS
 unassigned;113D6
 cp;113D7;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;lb=ID;na=TULU-TIGALARI SIGN OM PUSHPIKA;SB=XX;WB=XX;-XIDC;-XIDS
-cp;113D8;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;lb=ID;na=TULU-TIGALARI SIGN SHRII PUSHPIKA;SB=XX;WB=XX;-XIDC;-XIDSunassigned;113D9..113E0
+cp;113D8;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;lb=ID;na=TULU-TIGALARI SIGN SHRII PUSHPIKA;SB=XX;WB=XX;-XIDC;-XIDS
+unassigned;113D9..113E0
 # Vedic tone marks
 cp;113E1;-Alpha;bc=NSM;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Cantillation_Mark;jt=T;lb=CM;na=TULU-TIGALARI VEDIC TONE SVARITA;SB=EX;WB=Extend;-XIDS
 cp;113E2;-Alpha;bc=NSM;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Cantillation_Mark;jt=T;lb=CM;na=TULU-TIGALARI VEDIC TONE ANUDATTA;SB=EX;WB=Extend;-XIDS
@@ -28654,7 +28819,8 @@ unassigned;118F3..118FE
 # Sign
 cp;118FF;-Cased;-CWCM;gc=Lo;na=WARANG CITI OM;SB=LE
 
-block;11900..1195F;age=13.0;Alpha;blk=Dives_Akuru;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Exclusion;InCB=Consonant;InSC=Consonant;lb=AK;SB=LE;sc=Diak;WB=LE;XIDC;XIDS# 11900..1195F Dives Akuru
+block;11900..1195F;age=13.0;Alpha;blk=Dives_Akuru;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Exclusion;InCB=Consonant;InSC=Consonant;lb=AK;SB=LE;sc=Diak;WB=LE;XIDC;XIDS
+# 11900..1195F Dives Akuru
 # Independent vowels
 cp;11900;InSC=Vowel_Independent;na=DIVES AKURU LETTER A
 cp;11901;InSC=Vowel_Independent;na=DIVES AKURU LETTER AA
@@ -28709,7 +28875,8 @@ cp;11931;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=DI
 cp;11932;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=DIVES AKURU VOWEL SIGN II;SB=EX;WB=Extend;-XIDS
 cp;11933;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=DIVES AKURU VOWEL SIGN U;SB=EX;WB=Extend;-XIDS
 cp;11934;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=DIVES AKURU VOWEL SIGN UU;SB=EX;WB=Extend;-XIDS
-cp;11935;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Left;InSC=Vowel_Dependent;lb=CM;na=DIVES AKURU VOWEL SIGN E;SB=EX;WB=Extend;-XIDSunassigned;11936
+cp;11935;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Left;InSC=Vowel_Dependent;lb=CM;na=DIVES AKURU VOWEL SIGN E;SB=EX;WB=Extend;-XIDS
+unassigned;11936
 cp;11937;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Left;InSC=Vowel_Dependent;lb=CM;na=DIVES AKURU VOWEL SIGN AI;SB=EX;WB=Extend;-XIDS
 cp;11938;dm=11935 11930;dt=Can;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Left_And_Right;InSC=Vowel_Dependent;lb=CM;na=DIVES AKURU VOWEL SIGN O;NFD_QC=N;NFKD_QC=N;SB=EX;WB=Extend;-XIDS
 unassigned;11939..1193A
@@ -28719,7 +28886,8 @@ cp;1193C;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=B
 # Signs
 cp;1193D;-Alpha;ccc=9;Dia;gc=Mc;GCB=EX;-Gr_Base;Gr_Ext;Gr_Link;-IDS;InCB=Extend;InPC=Right;InSC=Pure_Killer;lb=CM;na=DIVES AKURU SIGN HALANTA;SB=EX;WB=Extend;-XIDS
 cp;1193E;-Alpha;bc=NSM;ccc=9;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;Gr_Link;-IDS;InCB=Linker;InSC=Invisible_Stacker;jt=T;lb=VI;na=DIVES AKURU VIRAMA;SB=EX;WB=Extend;-XIDS
-cp;1193F;GCB=PP;InCB=None;InPC=Top;InSC=Consonant_Prefixed;lb=AP;na=DIVES AKURU PREFIXED NASAL SIGN# Conjunct-specific letters
+cp;1193F;GCB=PP;InCB=None;InPC=Top;InSC=Consonant_Prefixed;lb=AP;na=DIVES AKURU PREFIXED NASAL SIGN
+# Conjunct-specific letters
 cp;11940;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Consonant_Medial;lb=CM;na=DIVES AKURU MEDIAL YA;SB=EX;WB=Extend;-XIDS
 cp;11941;GCB=PP;InCB=None;InPC=Top;InSC=Consonant_Preceding_Repha;lb=AP;na=DIVES AKURU INITIAL RA
 cp;11942;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Bottom_And_Right;InSC=Consonant_Medial;lb=CM;na=DIVES AKURU MEDIAL RA;SB=EX;WB=Extend;-XIDS
@@ -28740,7 +28908,8 @@ cp;11955;-Alpha;gc=Nd;-IDS;InCB=None;InSC=Number;lb=AS;na=DIVES AKURU DIGIT FIVE
 cp;11956;-Alpha;gc=Nd;-IDS;InCB=None;InSC=Number;lb=AS;na=DIVES AKURU DIGIT SIX;nt=De;nv=6;SB=NU;WB=NU;-XIDS
 cp;11957;-Alpha;gc=Nd;-IDS;InCB=None;InSC=Number;lb=AS;na=DIVES AKURU DIGIT SEVEN;nt=De;nv=7;SB=NU;WB=NU;-XIDS
 cp;11958;-Alpha;gc=Nd;-IDS;InCB=None;InSC=Number;lb=AS;na=DIVES AKURU DIGIT EIGHT;nt=De;nv=8;SB=NU;WB=NU;-XIDS
-cp;11959;-Alpha;gc=Nd;-IDS;InCB=None;InSC=Number;lb=AS;na=DIVES AKURU DIGIT NINE;nt=De;nv=9;SB=NU;WB=NU;-XIDSunassigned;1195A..1195F
+cp;11959;-Alpha;gc=Nd;-IDS;InCB=None;InSC=Number;lb=AS;na=DIVES AKURU DIGIT NINE;nt=De;nv=9;SB=NU;WB=NU;-XIDS
+unassigned;1195A..1195F
 
 block;119A0..119FF;age=12.0;Alpha;blk=Nandinagari;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Exclusion;InSC=Consonant;lb=AL;SB=LE;sc=Nand;WB=LE;XIDC;XIDS
 # 119A0..119FF Nandinagari
@@ -28819,7 +28988,8 @@ cp;119E3;InSC=Other;na=NANDINAGARI HEADSTROKE
 cp;119E4;gc=Mc;GCB=SM;-IDS;InPC=Left;InSC=Vowel_Dependent;lb=CM;na=NANDINAGARI VOWEL SIGN PRISHTHAMATRA E;SB=EX;WB=Extend;-XIDS
 unassigned;119E5..119FF
 
-block;11A00..11A4F;age=10.0;Alpha;blk=Zanabazar_Square;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Exclusion;InCB=Consonant;InSC=Consonant;lb=AL;SB=LE;sc=Zanb;vo=U;WB=LE;XIDC;XIDS# 11A00..11A4F Zanabazar Square
+block;11A00..11A4F;age=10.0;Alpha;blk=Zanabazar_Square;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Exclusion;InCB=Consonant;InSC=Consonant;lb=AL;SB=LE;sc=Zanb;vo=U;WB=LE;XIDC;XIDS
+# 11A00..11A4F Zanabazar Square
 # Vowel letter
 cp;11A00;na=ZANABAZAR SQUARE LETTER A
 # Vowel signs
@@ -28885,7 +29055,8 @@ cp;11A36;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=B
 cp;11A37;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=ZANABAZAR SQUARE SIGN CANDRA WITH ORNAMENT;SB=EX;WB=Extend;-XIDS
 # Signs for Sanskrit
 cp;11A38;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=ZANABAZAR SQUARE SIGN ANUSVARA;SB=EX;WB=Extend;-XIDS
-cp;11A39;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Visarga;lb=CM;na=ZANABAZAR SQUARE SIGN VISARGA;SB=EX;WB=Extend;-XIDS# Cluster-initial consonant
+cp;11A39;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Visarga;lb=CM;na=ZANABAZAR SQUARE SIGN VISARGA;SB=EX;WB=Extend;-XIDS
+# Cluster-initial consonant
 cp;11A3A;InCB=None;InSC=Consonant_With_Stacker;na=ZANABAZAR SQUARE CLUSTER-INITIAL LETTER RA
 # Cluster-final consonants
 cp;11A3B;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Consonant_Medial;jt=T;lb=CM;na=ZANABAZAR SQUARE CLUSTER-FINAL LETTER YA;SB=EX;WB=Extend;-XIDS
@@ -28902,11 +29073,13 @@ cp;11A43;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;l
 cp;11A44;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;lb=BA;na=ZANABAZAR SQUARE MARK LONG TSHEG;SB=XX;WB=XX;-XIDC;-XIDS
 # Head marks
 cp;11A45;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InCB=None;InSC=Consonant_Placeholder;lb=BB;na=ZANABAZAR SQUARE INITIAL DOUBLE-LINED HEAD MARK;SB=XX;WB=XX;-XIDC;-XIDS
-cp;11A46;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;na=ZANABAZAR SQUARE CLOSING DOUBLE-LINED HEAD MARK;SB=XX;WB=XX;-XIDC;-XIDS# Subjoiner
+cp;11A46;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;na=ZANABAZAR SQUARE CLOSING DOUBLE-LINED HEAD MARK;SB=XX;WB=XX;-XIDC;-XIDS
+# Subjoiner
 cp;11A47;-Alpha;bc=NSM;ccc=9;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;Gr_Link;-IDS;InCB=Linker;InSC=Invisible_Stacker;jt=T;lb=CM;na=ZANABAZAR SQUARE SUBJOINER;SB=EX;WB=Extend;-XIDS
 unassigned;11A48..11A4F;vo=U
 
-block;11A50..11AAF;age=10.0;Alpha;blk=Soyombo;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Exclusion;InCB=Consonant;InSC=Consonant;lb=AL;SB=LE;sc=Soyo;vo=U;WB=LE;XIDC;XIDS# 11A50..11AAF Soyombo
+block;11A50..11AAF;age=10.0;Alpha;blk=Soyombo;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Exclusion;InCB=Consonant;InSC=Consonant;lb=AL;SB=LE;sc=Soyo;vo=U;WB=LE;XIDC;XIDS
+# 11A50..11AAF Soyombo
 # Vowel letter
 cp;11A50;na=SOYOMBO LETTER A
 # Vowel signs
@@ -28917,7 +29090,8 @@ cp;11A54;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=V
 cp;11A55;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=SOYOMBO VOWEL SIGN O;SB=EX;WB=Extend;-XIDS
 cp;11A56;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=SOYOMBO VOWEL SIGN OE;SB=EX;WB=Extend;-XIDS
 cp;11A57;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=SOYOMBO VOWEL SIGN AI;SB=EX;WB=Extend;-XIDS
-cp;11A58;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=SOYOMBO VOWEL SIGN AU;SB=EX;WB=Extend;-XIDScp;11A59;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=SOYOMBO VOWEL SIGN VOCALIC R;SB=EX;WB=Extend;-XIDS
+cp;11A58;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=SOYOMBO VOWEL SIGN AU;SB=EX;WB=Extend;-XIDS
+cp;11A59;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=SOYOMBO VOWEL SIGN VOCALIC R;SB=EX;WB=Extend;-XIDS
 cp;11A5A;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=SOYOMBO VOWEL SIGN VOCALIC L;SB=EX;WB=Extend;-XIDS
 # Vowel length mark
 cp;11A5B;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=SOYOMBO VOWEL LENGTH MARK;SB=EX;WB=Extend;-XIDS
@@ -28985,14 +29159,16 @@ cp;11A94;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InS
 cp;11A95;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Bottom;InSC=Consonant_Final;jt=T;lb=CM;na=SOYOMBO FINAL CONSONANT SIGN -A;SB=EX;WB=Extend;-XIDS
 # Various signs
 cp;11A96;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=SOYOMBO SIGN ANUSVARA;SB=EX;WB=Extend;-XIDS
-cp;11A97;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Visarga;lb=CM;na=SOYOMBO SIGN VISARGA;SB=EX;WB=Extend;-XIDS# Gemination mark
+cp;11A97;gc=Mc;GCB=SM;-IDS;InCB=None;InPC=Right;InSC=Visarga;lb=CM;na=SOYOMBO SIGN VISARGA;SB=EX;WB=Extend;-XIDS
+# Gemination mark
 cp;11A98;-Alpha;bc=NSM;CI;Ext;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;InPC=Top;InSC=Gemination_Mark;jt=T;lb=CM;na=SOYOMBO GEMINATION MARK;SB=EX;WB=Extend;-XIDS
 # Subjoiner
 cp;11A99;-Alpha;bc=NSM;ccc=9;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;Gr_Link;-IDS;InCB=Linker;InSC=Invisible_Stacker;jt=T;lb=CM;na=SOYOMBO SUBJOINER;SB=EX;WB=Extend;-XIDS
 # Punctuation
 cp;11A9A;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;lb=BA;na=SOYOMBO MARK TSHEG;SB=XX;WB=XX;-XIDC;-XIDS
 cp;11A9B;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;lb=BA;na=SOYOMBO MARK SHAD;SB=ST;STerm;Term;WB=XX;-XIDC;-XIDS
-cp;11A9C;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;lb=BA;na=SOYOMBO MARK DOUBLE SHAD;SB=ST;STerm;Term;WB=XX;-XIDC;-XIDS# Elongation mark
+cp;11A9C;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;lb=BA;na=SOYOMBO MARK DOUBLE SHAD;SB=ST;STerm;Term;WB=XX;-XIDC;-XIDS
+# Elongation mark
 cp;11A9D;age=11.0;InCB=None;InSC=Avagraha;na=SOYOMBO MARK PLUTA
 # Head marks
 cp;11A9E;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;lb=BB;na=SOYOMBO HEAD MARK WITH MOON AND SUN AND TRIPLE FLAME;SB=XX;WB=XX;-XIDC;-XIDS
@@ -29000,7 +29176,8 @@ cp;11A9F;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;l
 cp;11AA0;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;lb=BB;na=SOYOMBO HEAD MARK WITH MOON AND SUN;SB=XX;WB=XX;-XIDC;-XIDS
 # Terminal marks
 cp;11AA1;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;lb=BA;na=SOYOMBO TERMINAL MARK-1;SB=XX;Term;WB=XX;-XIDC;-XIDS
-cp;11AA2;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;lb=BA;na=SOYOMBO TERMINAL MARK-2;SB=XX;Term;WB=XX;-XIDC;-XIDSunassigned;11AA3..11AAF;vo=U
+cp;11AA2;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InCB=None;InSC=Other;lb=BA;na=SOYOMBO TERMINAL MARK-2;SB=XX;Term;WB=XX;-XIDC;-XIDS
+unassigned;11AA3..11AAF;vo=U
 
 block;11AB0..11ABF;age=14.0;Alpha;blk=UCAS_Ext_A;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Limited_Use;lb=AL;SB=LE;sc=Cans;vo=U;WB=LE;XIDC;XIDS
 # 11AB0..11ABF Unified Canadian Aboriginal Syllabics Extended-A
@@ -29115,7 +29292,8 @@ cp;11B64;CI;InPC=Top;na=SHARADA VOWEL SIGN SHORT E
 cp;11B65;bc=L;gc=Mc;GCB=SM;Gr_Base;-Gr_Ext;InCB=None;jt=U;na=SHARADA VOWEL SIGN SHORT O
 cp;11B66;CI;InPC=Top;na=SHARADA VOWEL SIGN CANDRA E
 cp;11B67;bc=L;gc=Mc;GCB=SM;Gr_Base;-Gr_Ext;InCB=None;jt=U;na=SHARADA VOWEL SIGN CANDRA O
-unassigned;11B68..11B7Fblock;11BC0..11BFF;age=16.0;Alpha;blk=Sunuwar;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Exclusion;lb=AL;SB=LE;sc=Sunu;WB=LE;XIDC;XIDS
+unassigned;11B68..11B7F
+block;11BC0..11BFF;age=16.0;Alpha;blk=Sunuwar;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Exclusion;lb=AL;SB=LE;sc=Sunu;WB=LE;XIDC;XIDS
 # 11BC0..11BFF Sunuwar
 # Letters
 cp;11BC0;na=SUNUWAR LETTER DEVI
@@ -29451,7 +29629,8 @@ cp;11D58;-Alpha;gc=Nd;-IDS;InSC=Number;lb=NU;na=MASARAM GONDI DIGIT EIGHT;nt=De;
 cp;11D59;-Alpha;gc=Nd;-IDS;InSC=Number;lb=NU;na=MASARAM GONDI DIGIT NINE;nt=De;nv=9;SB=NU;WB=NU;-XIDS
 unassigned;11D5A..11D5F
 
-block;11D60..11DAF;age=11.0;Alpha;blk=Gunjala_Gondi;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Limited_Use;InSC=Consonant;lb=AL;SB=LE;sc=Gong;WB=LE;XIDC;XIDS# 11D60..11DAF Gunjala Gondi
+block;11D60..11DAF;age=11.0;Alpha;blk=Gunjala_Gondi;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Limited_Use;InSC=Consonant;lb=AL;SB=LE;sc=Gong;WB=LE;XIDC;XIDS
+# 11D60..11DAF Gunjala Gondi
 # Independent vowels
 cp;11D60;InSC=Vowel_Independent;na=GUNJALA GONDI LETTER A
 cp;11D61;InSC=Vowel_Independent;na=GUNJALA GONDI LETTER AA
@@ -29591,7 +29770,8 @@ cp;11DE6;-Alpha;gc=Nd;-IDS;lb=NU;na=TOLONG SIKI DIGIT SIX;nt=De;nv=6;SB=NU;WB=NU
 cp;11DE7;-Alpha;gc=Nd;-IDS;lb=NU;na=TOLONG SIKI DIGIT SEVEN;nt=De;nv=7;SB=NU;WB=NU;-XIDS
 cp;11DE8;-Alpha;gc=Nd;-IDS;lb=NU;na=TOLONG SIKI DIGIT EIGHT;nt=De;nv=8;SB=NU;WB=NU;-XIDS
 cp;11DE9;-Alpha;gc=Nd;-IDS;lb=NU;na=TOLONG SIKI DIGIT NINE;nt=De;nv=9;SB=NU;WB=NU;-XIDS
-unassigned;11DEA..11DEFblock;11EE0..11EFF;age=11.0;Alpha;blk=Makasar;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Exclusion;InSC=Consonant;lb=AS;SB=LE;sc=Maka;WB=LE;XIDC;XIDS
+unassigned;11DEA..11DEF
+block;11EE0..11EFF;age=11.0;Alpha;blk=Makasar;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Exclusion;InSC=Consonant;lb=AS;SB=LE;sc=Maka;WB=LE;XIDC;XIDS
 # 11EE0..11EFF Makasar
 # Consonants
 cp;11EE0;na=MAKASAR LETTER KA
@@ -29624,12 +29804,14 @@ cp;11EF7;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InSC=Other;lb=BA;na=MA
 cp;11EF8;-Alpha;gc=Po;-IDC;-IDS;ID_Type=Exclusion Not_XID;InSC=Other;lb=BA;na=MAKASAR END OF SECTION;SB=ST;STerm;Term;WB=XX;-XIDC;-XIDS
 unassigned;11EF9..11EFF
 
-block;11F00..11F5F;age=15.0;Alpha;blk=Kawi;gc=Lo;Gr_Base;IDC;ID_Type=Exclusion;InCB=Consonant;InSC=Consonant;lb=AK;SB=LE;sc=Kawi;WB=LE;XIDC;XIDS# 11F00..11F5F Kawi
+block;11F00..11F5F;age=15.0;Alpha;blk=Kawi;gc=Lo;Gr_Base;IDC;ID_Type=Exclusion;InCB=Consonant;InSC=Consonant;lb=AK;SB=LE;sc=Kawi;WB=LE;XIDC;XIDS
+# 11F00..11F5F Kawi
 # Signs
 cp;11F00;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=KAWI SIGN CANDRABINDU;SB=EX;WB=Extend;-XIDS
 cp;11F01;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Bindu;jt=T;lb=CM;na=KAWI SIGN ANUSVARA;SB=EX;WB=Extend;-XIDS
 cp;11F02;GCB=PP;IDS;InCB=None;InPC=Top;InSC=Consonant_Preceding_Repha;lb=AP;na=KAWI SIGN REPHA
-cp;11F03;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Visarga;lb=CM;na=KAWI SIGN VISARGA;SB=EX;WB=Extend;-XIDS# Independent vowels
+cp;11F03;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Visarga;lb=CM;na=KAWI SIGN VISARGA;SB=EX;WB=Extend;-XIDS
+# Independent vowels
 cp;11F04;IDS;InSC=Vowel_Independent;na=KAWI LETTER A
 cp;11F05;IDS;InSC=Vowel_Independent;na=KAWI LETTER AA
 cp;11F06;IDS;InSC=Vowel_Independent;na=KAWI LETTER I
@@ -29681,7 +29863,8 @@ cp;11F32;IDS;na=KAWI LETTER HA
 cp;11F33;IDS;na=KAWI LETTER JNYA
 # Dependent vowel signs
 cp;11F34;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=KAWI VOWEL SIGN AA;SB=EX;WB=Extend;-XIDS
-cp;11F35;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=KAWI VOWEL SIGN ALTERNATE AA;SB=EX;WB=Extend;-XIDScp;11F36;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=KAWI VOWEL SIGN I;SB=EX;WB=Extend;-XIDS
+cp;11F35;gc=Mc;GCB=SM;InCB=None;InPC=Right;InSC=Vowel_Dependent;lb=CM;na=KAWI VOWEL SIGN ALTERNATE AA;SB=EX;WB=Extend;-XIDS
+cp;11F36;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=KAWI VOWEL SIGN I;SB=EX;WB=Extend;-XIDS
 cp;11F37;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Vowel_Dependent;jt=T;lb=CM;na=KAWI VOWEL SIGN II;SB=EX;WB=Extend;-XIDS
 cp;11F38;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=KAWI VOWEL SIGN U;SB=EX;WB=Extend;-XIDS
 cp;11F39;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Bottom;InSC=Vowel_Dependent;jt=T;lb=CM;na=KAWI VOWEL SIGN UU;SB=EX;WB=Extend;-XIDS
@@ -29717,7 +29900,8 @@ cp;11F55;-Alpha;gc=Nd;InCB=None;InSC=Number;lb=AS;na=KAWI DIGIT FIVE;nt=De;nv=5;
 cp;11F56;-Alpha;gc=Nd;InCB=None;InSC=Number;lb=AS;na=KAWI DIGIT SIX;nt=De;nv=6;SB=NU;WB=NU;-XIDS
 cp;11F57;-Alpha;gc=Nd;InCB=None;InSC=Number;lb=AS;na=KAWI DIGIT SEVEN;nt=De;nv=7;SB=NU;WB=NU;-XIDS
 cp;11F58;-Alpha;gc=Nd;InCB=None;InSC=Number;lb=AS;na=KAWI DIGIT EIGHT;nt=De;nv=8;SB=NU;WB=NU;-XIDS
-cp;11F59;-Alpha;gc=Nd;InCB=None;InSC=Number;lb=AS;na=KAWI DIGIT NINE;nt=De;nv=9;SB=NU;WB=NU;-XIDS# Nukta
+cp;11F59;-Alpha;gc=Nd;InCB=None;InSC=Number;lb=AS;na=KAWI DIGIT NINE;nt=De;nv=9;SB=NU;WB=NU;-XIDS
+# Nukta
 cp;11F5A;age=16.0;-Alpha;bc=NSM;CI;Dia;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;InCB=Extend;InPC=Top;InSC=Nukta;jt=T;lb=CM;na=KAWI SIGN NUKTA;SB=EX;WB=Extend;-XIDS
 unassigned;11F5B..11F5F
 
@@ -33739,7 +33923,8 @@ cp;1398B;na=EGYPTIAN HIEROGLYPH-1398B
 cp;1398C;na=EGYPTIAN HIEROGLYPH-1398C
 cp;1398D;na=EGYPTIAN HIEROGLYPH-1398D
 cp;1398E;na=EGYPTIAN HIEROGLYPH-1398E
-# D09. Eye oudjat componentscp;1398F;na=EGYPTIAN HIEROGLYPH-1398F
+# D09. Eye oudjat components
+cp;1398F;na=EGYPTIAN HIEROGLYPH-1398F
 # D10. Ear
 cp;13990;na=EGYPTIAN HIEROGLYPH-13990
 # D11. Face sideways
@@ -34317,7 +34502,8 @@ cp;13B93;na=EGYPTIAN HIEROGLYPH-13B93
 cp;13B94;na=EGYPTIAN HIEROGLYPH-13B94
 cp;13B95;na=EGYPTIAN HIEROGLYPH-13B95
 cp;13B96;na=EGYPTIAN HIEROGLYPH-13B96
-# F09. Donkey and horse protomescp;13B97;na=EGYPTIAN HIEROGLYPH-13B97
+# F09. Donkey and horse protomes
+cp;13B97;na=EGYPTIAN HIEROGLYPH-13B97
 cp;13B98;na=EGYPTIAN HIEROGLYPH-13B98
 cp;13B99;na=EGYPTIAN HIEROGLYPH-13B99
 cp;13B9A;na=EGYPTIAN HIEROGLYPH-13B9A
@@ -35252,7 +35438,8 @@ cp;13ED0;na=EGYPTIAN HIEROGLYPH-13ED0
 cp;13ED1;na=EGYPTIAN HIEROGLYPH-13ED1
 # N02. Sun
 cp;13ED2;na=EGYPTIAN HIEROGLYPH-13ED2
-# N03. Sun with Uraeuscp;13ED3;na=EGYPTIAN HIEROGLYPH-13ED3
+# N03. Sun with Uraeus
+cp;13ED3;na=EGYPTIAN HIEROGLYPH-13ED3
 cp;13ED4;na=EGYPTIAN HIEROGLYPH-13ED4
 cp;13ED5;na=EGYPTIAN HIEROGLYPH-13ED5
 cp;13ED6;na=EGYPTIAN HIEROGLYPH-13ED6
@@ -35516,7 +35703,8 @@ cp;13FBC;na=EGYPTIAN HIEROGLYPH-13FBC
 cp;13FBD;na=EGYPTIAN HIEROGLYPH-13FBD
 cp;13FBE;na=EGYPTIAN HIEROGLYPH-13FBE
 cp;13FBF;na=EGYPTIAN HIEROGLYPH-13FBF
-# O11. Double platform (sed-festival)cp;13FC0;na=EGYPTIAN HIEROGLYPH-13FC0
+# O11. Double platform (sed-festival)
+cp;13FC0;na=EGYPTIAN HIEROGLYPH-13FC0
 cp;13FC1;na=EGYPTIAN HIEROGLYPH-13FC1
 cp;13FC2;na=EGYPTIAN HIEROGLYPH-13FC2
 cp;13FC3;na=EGYPTIAN HIEROGLYPH-13FC3
@@ -36278,7 +36466,8 @@ cp;1425D;na=EGYPTIAN HIEROGLYPH-1425D
 cp;1425E;na=EGYPTIAN HIEROGLYPH-1425E
 cp;1425F;na=EGYPTIAN HIEROGLYPH-1425F
 cp;14260;na=EGYPTIAN HIEROGLYPH-14260
-# T15. Reed float (Object db.)cp;14261;na=EGYPTIAN HIEROGLYPH-14261
+# T15. Reed float (Object db.)
+cp;14261;na=EGYPTIAN HIEROGLYPH-14261
 cp;14262;na=EGYPTIAN HIEROGLYPH-14262
 cp;14263;na=EGYPTIAN HIEROGLYPH-14263
 cp;14264;na=EGYPTIAN HIEROGLYPH-14264
@@ -38569,7 +38758,8 @@ cp;16ED0;CWT;CWU;Lower;na=BERIA ERFE SMALL LETTER TATASOUE;stc=16EB5;suc=16EB5
 cp;16ED1;CWT;CWU;Lower;na=BERIA ERFE SMALL LETTER UI;stc=16EB6;suc=16EB6
 cp;16ED2;CWT;CWU;Lower;na=BERIA ERFE SMALL LETTER WASSE;stc=16EB7;suc=16EB7
 cp;16ED3;CWT;CWU;Lower;na=BERIA ERFE SMALL LETTER AY;stc=16EB8;suc=16EB8
-unassigned;16ED4..16EDFblock;16F00..16F9F;age=6.1;Alpha;blk=Miao;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Limited_Use;lb=AL;SB=LE;sc=Plrd;WB=Extend;XIDC;XIDS
+unassigned;16ED4..16EDF
+block;16F00..16F9F;age=6.1;Alpha;blk=Miao;gc=Lo;Gr_Base;IDC;IDS;ID_Type=Limited_Use;lb=AL;SB=LE;sc=Plrd;WB=Extend;XIDC;XIDS
 # 16F00..16F9F Miao
 # Consonant onsets
 cp;16F00;na=MIAO LETTER PA;WB=LE
@@ -38755,7 +38945,8 @@ unassigned;16FF7..16FFF;vo=U
 
 block;17000..187FF;Alpha;blk=Tangut;ea=W;gc=Lo;Gr_Base;IDC;Ideo;IDS;ID_Type=Exclusion;lb=ID;SB=LE;sc=Tang;vo=U;XIDC;XIDS
 # 17000..187FF Tangut
-algnamesrange;17000..187FF;han;TANGUT IDEOGRAPH-cp;17000..187EC;age=9.0
+algnamesrange;17000..187FF;han;TANGUT IDEOGRAPH-
+cp;17000..187EC;age=9.0
 cp;187ED..187F1;age=11.0
 cp;187F2..187F7;age=12.0
 cp;187F8..187FF;age=17.0
@@ -40184,7 +40375,8 @@ cp;18DF0;na=TANGUT COMPONENT-881
 cp;18DF1;na=TANGUT COMPONENT-882
 # Fourteen-stroke component
 cp;18DF2;na=TANGUT COMPONENT-883
-unassigned;18DF3..18DFF;vo=Ublock;1AFF0..1AFFF;age=14.0;Alpha;blk=Kana_Ext_B;CI;Dia;ea=W;gc=Lm;Gr_Base;IDC;IDS;ID_Type=Uncommon_Use;lb=AL;SB=LE;sc=Kana;vo=U;WB=KA;XIDC;XIDS
+unassigned;18DF3..18DFF;vo=U
+block;1AFF0..1AFFF;age=14.0;Alpha;blk=Kana_Ext_B;CI;Dia;ea=W;gc=Lm;Gr_Base;IDC;IDS;ID_Type=Uncommon_Use;lb=AL;SB=LE;sc=Kana;vo=U;WB=KA;XIDC;XIDS
 # 1AFF0..1AFFF Kana Extended-B
 # Tone marks
 cp;1AFF0;na=KATAKANA LETTER MINNAN TONE-2
@@ -40509,7 +40701,8 @@ cp;1B121;age=14.0;ID_Status=Allowed;ID_Type=Recommended;na=KATAKANA LETTER ARCHA
 cp;1B122;age=14.0;ID_Status=Allowed;ID_Type=Recommended;na=KATAKANA LETTER ARCHAIC WU;sc=Kana;WB=KA
 unassigned;1B123..1B12F;vo=U
 
-block;1B130..1B16F;age=12.0;Alpha;blk=Small_Kana_Ext;ea=W;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=CJ;SB=LE;sc=Kana;vo=U;XIDC;XIDS# 1B130..1B16F Small Kana Extension
+block;1B130..1B16F;age=12.0;Alpha;blk=Small_Kana_Ext;ea=W;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=CJ;SB=LE;sc=Kana;vo=U;XIDC;XIDS
+# 1B130..1B16F Small Kana Extension
 unassigned;1B130..1B131;vo=U
 # Historic small hiragana letters
 cp;1B132;age=15.0;na=HIRAGANA LETTER SMALL KO;sc=Hira
@@ -41398,7 +41591,8 @@ cp;1CCF9;bc=EN;CWKCF;dm=0039;dt=Font;gc=Nd;IDC;ID_Type=Not_NFKC;lb=NU;na=OUTLINE
 cp;1CCFA;age=17.0;na=SNAKE SYMBOL
 cp;1CCFB;age=17.0;na=FLYING SAUCER SYMBOL
 cp;1CCFC;age=17.0;na=NOSE SYMBOL
-unassigned;1CCFD..1CCFF# Block mosaic terminal graphic characters
+unassigned;1CCFD..1CCFF
+# Block mosaic terminal graphic characters
 cp;1CD00;na=BLOCK OCTANT-3
 cp;1CD01;na=BLOCK OCTANT-23
 cp;1CD02;na=BLOCK OCTANT-123
@@ -44630,7 +44824,8 @@ cp;1DAAD;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;IDC;ID_Type=Exclusion;InCB=Exten
 cp;1DAAE;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;IDC;ID_Type=Exclusion;InCB=Extend;jt=T;lb=CM;na=SIGNWRITING ROTATION MODIFIER-15;SB=EX;WB=Extend;XIDC
 cp;1DAAF;bc=NSM;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;IDC;ID_Type=Exclusion;InCB=Extend;jt=T;lb=CM;na=SIGNWRITING ROTATION MODIFIER-16;SB=EX;WB=Extend;XIDC
 
-block;1DF00..1DFFF;age=14.0;Alpha;blk=Latin_Ext_G;Cased;gc=Ll;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=AL;Lower;SB=LO;sc=Latn;WB=LE;XIDC;XIDS# 1DF00..1DFFF Latin Extended-G
+block;1DF00..1DFFF;age=14.0;Alpha;blk=Latin_Ext_G;Cased;gc=Ll;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=AL;Lower;SB=LO;sc=Latn;WB=LE;XIDC;XIDS
+# 1DF00..1DFFF Latin Extended-G
 # Extended IPA for disordered speech
 cp;1DF00;na=LATIN SMALL LETTER FENG DIGRAPH WITH TRILL
 cp;1DF01;na=LATIN SMALL LETTER REVERSED SCRIPT G
@@ -45149,7 +45344,8 @@ cp;1E6F5;bc=NSM;ccc=230;CI;gc=Mn;GCB=EX;-Gr_Base;Gr_Ext;-IDS;InCB=Extend;jt=T;lb
 unassigned;1E6F6..1E6FD
 # Symbols
 cp;1E6FE;na=TAI YO SYMBOL MUEANG
-cp;1E6FF;CI;gc=Lm;na=TAI YO XAM LAIblock;1E7E0..1E7FF;age=14.0;Alpha;blk=Ethiopic_Ext_B;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=AL;SB=LE;sc=Ethi;WB=LE;XIDC;XIDS
+cp;1E6FF;CI;gc=Lm;na=TAI YO XAM LAI
+block;1E7E0..1E7FF;age=14.0;Alpha;blk=Ethiopic_Ext_B;gc=Lo;Gr_Base;IDC;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=AL;SB=LE;sc=Ethi;WB=LE;XIDC;XIDS
 # 1E7E0..1E7FF Ethiopic Extended-B
 # Syllables for Gurage
 cp;1E7E0;na=ETHIOPIC SYLLABLE HHYA
@@ -45894,7 +46090,8 @@ unassigned;1EEF2..1EEFF;bc=AL
 # No block
 unassigned;1EF00..1EFFF;bc=R
 
-block;1F000..1F02F;age=5.1;bc=ON;blk=Mahjong;ExtPict;gc=So;Gr_Base;ID_Type=Not_XID;lb=ID;sc=Zyyy;vo=U# 1F000..1F02F Mahjong Tiles
+block;1F000..1F02F;age=5.1;bc=ON;blk=Mahjong;ExtPict;gc=So;Gr_Base;ID_Type=Not_XID;lb=ID;sc=Zyyy;vo=U
+# 1F000..1F02F Mahjong Tiles
 # Prevailing wind tiles
 cp;1F000;na=MAHJONG TILE EAST WIND
 cp;1F001;na=MAHJONG TILE SOUTH WIND
@@ -45949,7 +46146,8 @@ cp;1F02A;na=MAHJONG TILE JOKER
 cp;1F02B;na=MAHJONG TILE BACK
 unassigned;1F02C..1F02F;ExtPict;lb=ID;vo=U
 
-block;1F030..1F09F;age=5.1;bc=ON;blk=Domino;ExtPict;gc=So;Gr_Base;ID_Type=Not_XID;lb=ID;sc=Zyyy;vo=U# 1F030..1F09F Domino Tiles
+block;1F030..1F09F;age=5.1;bc=ON;blk=Domino;ExtPict;gc=So;Gr_Base;ID_Type=Not_XID;lb=ID;sc=Zyyy;vo=U
+# 1F030..1F09F Domino Tiles
 # Horizontal tiles
 cp;1F030;na=DOMINO TILE HORIZONTAL BACK
 # Zeroes
@@ -46068,7 +46266,8 @@ cp;1F092;na=DOMINO TILE VERTICAL-06-05
 cp;1F093;na=DOMINO TILE VERTICAL-06-06
 unassigned;1F094..1F09F;ExtPict;lb=ID;vo=U
 
-block;1F0A0..1F0FF;age=6.0;bc=ON;blk=Playing_Cards;ExtPict;gc=So;Gr_Base;ID_Type=Not_XID;lb=ID;sc=Zyyy;vo=U# 1F0A0..1F0FF Playing Cards
+block;1F0A0..1F0FF;age=6.0;bc=ON;blk=Playing_Cards;ExtPict;gc=So;Gr_Base;ID_Type=Not_XID;lb=ID;sc=Zyyy;vo=U
+# 1F0A0..1F0FF Playing Cards
 # Back of card
 cp;1F0A0;na=PLAYING CARD BACK
 # Spades or swords
@@ -46186,7 +46385,8 @@ cp;1F10C;age=7.0;bc=ON;ea=N;gc=No;na=DINGBAT NEGATIVE CIRCLED SANS-SERIF DIGIT Z
 # Creative Commons symbols
 cp;1F10D;age=13.0;bc=ON;ea=N;ExtPict;lb=AL;na=CIRCLED ZERO WITH SLASH
 cp;1F10E;age=13.0;bc=ON;ea=N;ExtPict;lb=AL;na=CIRCLED ANTICLOCKWISE ARROW
-cp;1F10F;age=13.0;bc=ON;ea=N;ExtPict;lb=AL;na=CIRCLED DOLLAR SIGN WITH OVERLAID BACKSLASH# Parenthesized Latin letters
+cp;1F10F;age=13.0;bc=ON;ea=N;ExtPict;lb=AL;na=CIRCLED DOLLAR SIGN WITH OVERLAID BACKSLASH
+# Parenthesized Latin letters
 cp;1F110;age=5.2;CWKCF;dm=0028 0041 0029;dt=Com;FC_NFKC=0028 0061 0029;ID_Type=Not_NFKC;na=PARENTHESIZED LATIN CAPITAL LETTER A;NFKC_CF=0028 0061 0029;NFKC_QC=N;NFKC_SCF=0028 0061 0029;NFKD_QC=N
 cp;1F111;age=5.2;CWKCF;dm=0028 0042 0029;dt=Com;FC_NFKC=0028 0062 0029;ID_Type=Not_NFKC;na=PARENTHESIZED LATIN CAPITAL LETTER B;NFKC_CF=0028 0062 0029;NFKC_QC=N;NFKC_SCF=0028 0062 0029;NFKD_QC=N
 cp;1F112;age=5.2;CWKCF;dm=0028 0043 0029;dt=Com;FC_NFKC=0028 0063 0029;ID_Type=Not_NFKC;na=PARENTHESIZED LATIN CAPITAL LETTER C;NFKC_CF=0028 0063 0029;NFKC_QC=N;NFKC_SCF=0028 0063 0029;NFKD_QC=N
@@ -46221,7 +46421,8 @@ cp;1F12C;age=5.2;CWKCF;dm=0052;dt=Enc;FC_NFKC=0072;ID_Type=Not_NFKC;na=CIRCLED I
 # Circled Latin letters or letter sequences
 cp;1F12D;age=5.2;CWKCF;dm=0043 0044;dt=Enc;FC_NFKC=0063 0064;ID_Type=Not_NFKC;na=CIRCLED CD;NFKC_CF=0063 0064;NFKC_QC=N;NFKC_SCF=0063 0064;NFKD_QC=N
 cp;1F12E;age=5.2;CWKCF;dm=0057 005A;dt=Enc;ea=N;FC_NFKC=0077 007A;ID_Type=Not_NFKC;lb=AL;na=CIRCLED WZ;NFKC_CF=0077 007A;NFKC_QC=N;NFKC_SCF=0077 007A;NFKD_QC=N
-cp;1F12F;age=11.0;bc=ON;ea=N;ExtPict;lb=AL;na=COPYLEFT SYMBOL# Squared Latin letters
+cp;1F12F;age=11.0;bc=ON;ea=N;ExtPict;lb=AL;na=COPYLEFT SYMBOL
+# Squared Latin letters
 cp;1F130;Alpha;Cased;CWKCF;dm=0041;dt=Sqr;FC_NFKC=0061;ID_Type=Not_NFKC;na=SQUARED LATIN CAPITAL LETTER A;NFKC_CF=0061;NFKC_QC=N;NFKC_SCF=0061;NFKD_QC=N;SB=UP;Upper;WB=LE
 cp;1F131;age=5.2;Alpha;Cased;CWKCF;dm=0042;dt=Sqr;FC_NFKC=0062;ID_Type=Not_NFKC;na=SQUARED LATIN CAPITAL LETTER B;NFKC_CF=0062;NFKC_QC=N;NFKC_SCF=0062;NFKD_QC=N;SB=UP;Upper;WB=LE
 cp;1F132;Alpha;Cased;CWKCF;dm=0043;dt=Sqr;FC_NFKC=0063;ID_Type=Not_NFKC;na=SQUARED LATIN CAPITAL LETTER C;NFKC_CF=0063;NFKC_QC=N;NFKC_SCF=0063;NFKD_QC=N;SB=UP;Upper;WB=LE
@@ -46288,7 +46489,8 @@ cp;1F16C;age=12.0;bc=ON;CWKCF;dm=004D 0052;dt=Sup;ea=N;ExtPict;FC_NFKC=006D 0072
 # Creative Commons symbols
 cp;1F16D;age=13.0;bc=ON;ea=N;ExtPict;lb=AL;na=CIRCLED CC
 cp;1F16E;age=13.0;bc=ON;ea=N;ExtPict;lb=AL;na=CIRCLED C WITH OVERLAID BACKSLASH
-cp;1F16F;age=13.0;bc=ON;ea=N;ExtPict;lb=AL;na=CIRCLED HUMAN FIGURE# White on black squared Latin letters
+cp;1F16F;age=13.0;bc=ON;ea=N;ExtPict;lb=AL;na=CIRCLED HUMAN FIGURE
+# White on black squared Latin letters
 cp;1F170;Alpha;Cased;Emoji;ExtPict;na=NEGATIVE SQUARED LATIN CAPITAL LETTER A;SB=UP;Upper;WB=LE
 cp;1F171;Alpha;Cased;Emoji;ExtPict;na=NEGATIVE SQUARED LATIN CAPITAL LETTER B;SB=UP;Upper;WB=LE
 cp;1F172;Alpha;Cased;na=NEGATIVE SQUARED LATIN CAPITAL LETTER C;SB=UP;Upper;WB=LE
@@ -46353,7 +46555,8 @@ cp;1F1AA;age=9.0;na=SQUARED SHV
 cp;1F1AB;age=9.0;na=SQUARED UHD
 cp;1F1AC;age=9.0;na=SQUARED VOD
 # Miscellaneous symbol
-cp;1F1AD;age=13.0;bc=ON;ea=N;ExtPict;lb=AL;na=MASK WORK SYMBOLunassigned;1F1AE..1F1E5;ExtPict;lb=ID;vo=U
+cp;1F1AD;age=13.0;bc=ON;ea=N;ExtPict;lb=AL;na=MASK WORK SYMBOL
+unassigned;1F1AE..1F1E5;ExtPict;lb=ID;vo=U
 # Regional indicator symbols
 cp;1F1E6;ea=N;EComp;Emoji;EPres;GCB=RI;lb=RI;na=REGIONAL INDICATOR SYMBOL LETTER A;RI;WB=RI
 cp;1F1E7;ea=N;EComp;Emoji;EPres;GCB=RI;lb=RI;na=REGIONAL INDICATOR SYMBOL LETTER B;RI;WB=RI
@@ -46458,7 +46661,8 @@ cp;1F261;age=10.0;bc=ON;-CWKCF;dt=None;ExtPict;ID_Type=Not_XID;na=ROUNDED SYMBOL
 cp;1F262;age=10.0;bc=ON;-CWKCF;dt=None;ExtPict;ID_Type=Not_XID;na=ROUNDED SYMBOL FOR SHOU;NFKC_QC=Y;NFKD_QC=Y
 cp;1F263;age=10.0;bc=ON;-CWKCF;dt=None;ExtPict;ID_Type=Not_XID;na=ROUNDED SYMBOL FOR XI;NFKC_QC=Y;NFKD_QC=Y
 cp;1F264;age=10.0;bc=ON;-CWKCF;dt=None;ExtPict;ID_Type=Not_XID;na=ROUNDED SYMBOL FOR SHUANGXI;NFKC_QC=Y;NFKD_QC=Y
-cp;1F265;age=10.0;bc=ON;-CWKCF;dt=None;ExtPict;ID_Type=Not_XID;na=ROUNDED SYMBOL FOR CAI;NFKC_QC=Y;NFKD_QC=Yunassigned;1F266..1F2FF;ExtPict;lb=ID;vo=U
+cp;1F265;age=10.0;bc=ON;-CWKCF;dt=None;ExtPict;ID_Type=Not_XID;na=ROUNDED SYMBOL FOR CAI;NFKC_QC=Y;NFKD_QC=Y
+unassigned;1F266..1F2FF;ExtPict;lb=ID;vo=U
 
 block;1F300..1F5FF;age=6.0;bc=ON;blk=Misc_Pictographs;ea=W;Emoji;EPres;ExtPict;gc=So;Gr_Base;ID_Type=Not_XID;lb=ID;sc=Zyyy;vo=U
 # 1F300..1F5FF Miscellaneous Symbols and Pictographs
@@ -47108,7 +47312,8 @@ cp;1F54C;age=8.0;na=MOSQUE
 cp;1F54D;age=8.0;na=SYNAGOGUE
 cp;1F54E;age=8.0;na=MENORAH WITH NINE BRANCHES
 # Miscellaneous symbol
-cp;1F54F;age=8.0;ea=N;-Emoji;-EPres;-ExtPict;ID_Type=Uncommon_Use Not_XID;na=BOWL OF HYGIEIA# Clock face symbols
+cp;1F54F;age=8.0;ea=N;-Emoji;-EPres;-ExtPict;ID_Type=Uncommon_Use Not_XID;na=BOWL OF HYGIEIA
+# Clock face symbols
 cp;1F550;na=CLOCK FACE ONE OCLOCK
 cp;1F551;na=CLOCK FACE TWO OCLOCK
 cp;1F552;na=CLOCK FACE THREE OCLOCK
@@ -48356,7 +48561,8 @@ cp;1F9FD;age=11.0;na=SPONGE
 cp;1F9FE;age=11.0;na=RECEIPT
 cp;1F9FF;age=11.0;na=NAZAR AMULET
 
-block;1FA00..1FA6F;age=12.0;bc=ON;blk=Chess_Symbols;ExtPict;gc=So;Gr_Base;ID_Type=Not_XID;lb=AL;sc=Zyyy;vo=U# 1FA00..1FA6F Chess Symbols
+block;1FA00..1FA6F;age=12.0;bc=ON;blk=Chess_Symbols;ExtPict;gc=So;Gr_Base;ID_Type=Not_XID;lb=AL;sc=Zyyy;vo=U
+# 1FA00..1FA6F Chess Symbols
 # Neutral chess symbols
 cp;1FA00;na=NEUTRAL CHESS KING
 cp;1FA01;na=NEUTRAL CHESS QUEEN
@@ -48509,7 +48715,8 @@ cp;1FA89;age=16.0;na=HARP
 cp;1FA8A;age=17.0;na=TROMBONE
 unassigned;1FA8B..1FA8D;ExtPict;lb=ID;vo=U
 # Miscellaneous objects
-cp;1FA8E;age=17.0;na=TREASURE CHESTcp;1FA8F;age=16.0;na=SHOVEL
+cp;1FA8E;age=17.0;na=TREASURE CHEST
+cp;1FA8F;age=16.0;na=SHOVEL
 cp;1FA90;age=12.0;na=RINGED PLANET
 cp;1FA91;age=12.0;na=CHAIR
 cp;1FA92;age=12.0;na=RAZOR
@@ -48570,7 +48777,8 @@ cp;1FAC4;age=14.0;EBase;lb=EB;na=PREGNANT PERSON
 cp;1FAC5;age=14.0;EBase;lb=EB;na=PERSON WITH CROWN
 # Miscellaneous
 cp;1FAC6;age=16.0;na=FINGERPRINT
-unassigned;1FAC7;ExtPict;lb=ID;vo=U# Animals and nature
+unassigned;1FAC7;ExtPict;lb=ID;vo=U
+# Animals and nature
 cp;1FAC8;age=17.0;na=HAIRY CREATURE
 unassigned;1FAC9..1FACC;ExtPict;lb=ID;vo=U
 cp;1FACD;age=17.0;na=ORCA
@@ -48609,7 +48817,8 @@ cp;1FAE9;age=16.0;na=FACE WITH BAGS UNDER EYES
 cp;1FAEA;age=17.0;na=DISTORTED FACE
 unassigned;1FAEB..1FAEE;ExtPict;lb=ID;vo=U
 # Emotion
-cp;1FAEF;age=17.0;na=FIGHT CLOUD# Hand symbols
+cp;1FAEF;age=17.0;na=FIGHT CLOUD
+# Hand symbols
 cp;1FAF0;age=14.0;EBase;lb=EB;na=HAND WITH INDEX FINGER AND THUMB CROSSED
 cp;1FAF1;age=14.0;EBase;lb=EB;na=RIGHTWARDS HAND
 cp;1FAF2;age=14.0;EBase;lb=EB;na=LEFTWARDS HAND
@@ -48905,7 +49114,8 @@ unassigned;1FF80..1FFFD;ExtPict;lb=ID
 # Noncharacters
 unassigned;1FFFE..1FFFF;age=2.0;bc=BN;NChar
 
-block;20000..2A6DF;age=3.1;Alpha;blk=CJK_Ext_B;ea=W;gc=Lo;Gr_Base;IDC;Ideo;IDS;ID_Type=Uncommon_Use;lb=ID;SB=LE;sc=Hani;UIdeo;vo=U;XIDC;XIDS# 20000..2A6DF CJK Unified Ideographs Extension B
+block;20000..2A6DF;age=3.1;Alpha;blk=CJK_Ext_B;ea=W;gc=Lo;Gr_Base;IDC;Ideo;IDS;ID_Type=Uncommon_Use;lb=ID;SB=LE;sc=Hani;UIdeo;vo=U;XIDC;XIDS
+# 20000..2A6DF CJK Unified Ideographs Extension B
 algnamesrange;20000..2A6DF;han;CJK UNIFIED IDEOGRAPH-
 cp;20001;nt=Nu;nv=7
 cp;20064;nt=Nu;nv=4
@@ -48988,12 +49198,14 @@ unassigned;2A6E0..2A6FF;ea=W;lb=ID;vo=U
 
 block;2A700..2B73F;Alpha;blk=CJK_Ext_C;ea=W;gc=Lo;Gr_Base;IDC;Ideo;IDS;ID_Type=Uncommon_Use;lb=ID;SB=LE;sc=Hani;UIdeo;vo=U;XIDC;XIDS
 # 2A700..2B73F CJK Unified Ideographs Extension C
-algnamesrange;2A700..2B73F;han;CJK UNIFIED IDEOGRAPH-cp;2A700..2B734;age=5.2
+algnamesrange;2A700..2B73F;han;CJK UNIFIED IDEOGRAPH-
+cp;2A700..2B734;age=5.2
 cp;2B735..2B738;age=14.0
 cp;2B739;age=15.0
 cp;2B73A..2B73F;age=17.0
 
-block;2B740..2B81F;age=6.0;Alpha;blk=CJK_Ext_D;ea=W;gc=Lo;Gr_Base;IDC;Ideo;IDS;ID_Type=Uncommon_Use;lb=ID;SB=LE;sc=Hani;UIdeo;vo=U;XIDC;XIDS# 2B740..2B81D CJK Unified Ideographs Extension D
+block;2B740..2B81F;age=6.0;Alpha;blk=CJK_Ext_D;ea=W;gc=Lo;Gr_Base;IDC;Ideo;IDS;ID_Type=Uncommon_Use;lb=ID;SB=LE;sc=Hani;UIdeo;vo=U;XIDC;XIDS
+# 2B740..2B81D CJK Unified Ideographs Extension D
 algnamesrange;2B740..2B81D;han;CJK UNIFIED IDEOGRAPH-
 unassigned;2B81E..2B81F;ea=W;lb=ID;vo=U
 
@@ -49004,11 +49216,13 @@ cp;2B820..2CEA1;age=8.0
 cp;2CEA2..2CEAD;age=17.0
 unassigned;2CEAE..2CEAF;ea=W;lb=ID;vo=U
 
-block;2CEB0..2EBEF;age=10.0;Alpha;blk=CJK_Ext_F;ea=W;gc=Lo;Gr_Base;IDC;Ideo;IDS;ID_Type=Uncommon_Use;lb=ID;SB=LE;sc=Hani;UIdeo;vo=U;XIDC;XIDS# 2CEB0..2EBE0 CJK Unified Ideographs Extension F
+block;2CEB0..2EBEF;age=10.0;Alpha;blk=CJK_Ext_F;ea=W;gc=Lo;Gr_Base;IDC;Ideo;IDS;ID_Type=Uncommon_Use;lb=ID;SB=LE;sc=Hani;UIdeo;vo=U;XIDC;XIDS
+# 2CEB0..2EBE0 CJK Unified Ideographs Extension F
 algnamesrange;2CEB0..2EBE0;han;CJK UNIFIED IDEOGRAPH-
 unassigned;2EBE1..2EBEF;ea=W;lb=ID;vo=U
 
-block;2EBF0..2EE5F;age=15.1;Alpha;blk=CJK_Ext_I;ea=W;gc=Lo;Gr_Base;IDC;Ideo;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=ID;SB=LE;sc=Hani;UIdeo;vo=U;XIDC;XIDS# 2EBF0..2EE5D CJK Unified Ideographs Extension I
+block;2EBF0..2EE5F;age=15.1;Alpha;blk=CJK_Ext_I;ea=W;gc=Lo;Gr_Base;IDC;Ideo;IDS;ID_Status=Allowed;ID_Type=Recommended;lb=ID;SB=LE;sc=Hani;UIdeo;vo=U;XIDC;XIDS
+# 2EBF0..2EE5D CJK Unified Ideographs Extension I
 algnamesrange;2EBF0..2EE5D;han;CJK UNIFIED IDEOGRAPH-
 unassigned;2EE5E..2EE5F;ea=W;lb=ID;vo=U
 
@@ -49569,11 +49783,13 @@ unassigned;2FF80..2FFFD;ea=W;lb=ID;vo=U
 # Noncharacters
 unassigned;2FFFE..2FFFF;age=2.0;bc=BN;NChar
 
-block;30000..3134F;age=13.0;Alpha;blk=CJK_Ext_G;ea=W;gc=Lo;Gr_Base;IDC;Ideo;IDS;ID_Type=Uncommon_Use;lb=ID;SB=LE;sc=Hani;UIdeo;vo=U;XIDC;XIDS# 30000..3134A CJK Unified Ideographs Extension G
+block;30000..3134F;age=13.0;Alpha;blk=CJK_Ext_G;ea=W;gc=Lo;Gr_Base;IDC;Ideo;IDS;ID_Type=Uncommon_Use;lb=ID;SB=LE;sc=Hani;UIdeo;vo=U;XIDC;XIDS
+# 30000..3134A CJK Unified Ideographs Extension G
 algnamesrange;30000..3134A;han;CJK UNIFIED IDEOGRAPH-
 unassigned;3134B..3134F;ea=W;lb=ID;vo=U
 
-block;31350..323AF;age=15.0;Alpha;blk=CJK_Ext_H;ea=W;gc=Lo;Gr_Base;IDC;Ideo;IDS;ID_Type=Uncommon_Use;lb=ID;SB=LE;sc=Hani;UIdeo;vo=U;XIDC;XIDS# 31350..323AF CJK Unified Ideographs Extension H
+block;31350..323AF;age=15.0;Alpha;blk=CJK_Ext_H;ea=W;gc=Lo;Gr_Base;IDC;Ideo;IDS;ID_Type=Uncommon_Use;lb=ID;SB=LE;sc=Hani;UIdeo;vo=U;XIDC;XIDS
+# 31350..323AF CJK Unified Ideographs Extension H
 algnamesrange;31350..323AF;han;CJK UNIFIED IDEOGRAPH-
 
 block;323B0..3347F;age=17.0;Alpha;blk=CJK_Ext_J;ea=W;gc=Lo;Gr_Base;IDC;Ideo;IDS;ID_Type=Uncommon_Use;lb=ID;SB=LE;sc=Hani;UIdeo;vo=U;XIDC;XIDS

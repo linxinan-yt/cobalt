@@ -85,8 +85,6 @@ class DcSctpTransport : public SctpTransportInternal,
   // SCTP socket to be created. See `early_received_packets_`.
   size_t EarlyReceivedPacketCountForTesting() const override;
 
-  static std::vector<uint8_t> GenerateConnectionToken(const Environment& env);
-
  private:
   // dcsctp::DcSctpSocketCallbacks
   dcsctp::SendPacketStatus SendPacketWithStatus(

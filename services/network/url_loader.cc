@@ -398,7 +398,8 @@ URLLoader::URLLoader(
 local_network_access_interceptor_(request,
                                         GetClientSecurityState(),
                                         options_),
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)      trust_token_interceptor_(TrustTokenUrlLoaderInterceptor::MaybeCreate(
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
+      trust_token_interceptor_(TrustTokenUrlLoaderInterceptor::MaybeCreate(
           std::move(trust_token_helper_factory))),
 #endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
       shared_dictionary_checker_(std::move(shared_dictionary_checker)),

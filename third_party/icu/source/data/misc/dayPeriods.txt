@@ -1141,7 +1141,8 @@ from{"12:00"}
         }
         set22{
             afternoon1{
-                before{"18:00"}                from{"14:00"}
+                before{"18:00"}
+                from{"14:00"}
             }
             evening1{
                 before{"22:00"}

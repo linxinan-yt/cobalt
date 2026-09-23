@@ -68,7 +68,8 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
       id: 'dev.perfetto.FindTrackByName',
       name: 'Find track by name',
       callback: async () => {
-const tracksWithUris = ctx.currentWorkspace.flatTracksOrdered.filter(          (track) => track.uri !== undefined,
+        const tracksWithUris = ctx.currentWorkspace.flatTracksOrdered.filter(
+          (track) => track.uri !== undefined,
         ) as ReadonlyArray<RequiredField<TrackNode, 'uri'>>;
         const track = await ctx.omnibox.prompt('Choose a track...', {
           values: tracksWithUris,
@@ -148,10 +149,11 @@ const tracksWithUris = ctx.currentWorkspace.flatTracksOrdered.filter(          (
         );
         if (!regex) return;
 
-const matchingTracks = findTracksMatchingRegex(
+        const matchingTracks = findTracksMatchingRegex(
           ctx.currentWorkspace,
           regex,
-          nameOrPath,        );
+          nameOrPath,
+        );
         matchingTracks.forEach((track) => track.pin());
       },
     });
@@ -189,10 +191,11 @@ const matchingTracks = findTracksMatchingRegex(
         );
         if (!regex) return;
 
-const matchingTracks = findTracksMatchingRegex(
+        const matchingTracks = findTracksMatchingRegex(
           ctx.currentWorkspace,
           regex,
-          nameOrPath,        );
+          nameOrPath,
+        );
         matchingTracks.forEach((track) => track.expand());
       },
     });
@@ -214,10 +217,11 @@ const matchingTracks = findTracksMatchingRegex(
         );
         if (!regex) return;
 
-const matchingTracks = findTracksMatchingRegex(
+        const matchingTracks = findTracksMatchingRegex(
           ctx.currentWorkspace,
           regex,
-          nameOrPath,        );
+          nameOrPath,
+        );
         matchingTracks.forEach((track) => track.collapse());
       },
     });
@@ -255,10 +259,11 @@ const matchingTracks = findTracksMatchingRegex(
           ctx.workspaces.createEmptyWorkspace(workspaceName);
 
         // Find matching tracks from current workspace
-const matchingTracks = findTracksMatchingRegex(
+        const matchingTracks = findTracksMatchingRegex(
           ctx.currentWorkspace,
           regex,
-          nameOrPath,        );
+          nameOrPath,
+        );
 
         // Copy matching tracks to target workspace
         matchingTracks.forEach((track) => {
@@ -332,10 +337,11 @@ const matchingTracks = findTracksMatchingRegex(
           ctx.workspaces.createEmptyWorkspace(workspaceName);
 
         // Find matching tracks from current workspace
-const matchingTracks = findTracksMatchingRegex(
+        const matchingTracks = findTracksMatchingRegex(
           ctx.currentWorkspace,
           regex,
-          nameOrPath,        );
+          nameOrPath,
+        );
 
         // Copy matching tracks with their ancestors to target workspace
         copyTracksWithAncestors(matchingTracks, targetWorkspace);
@@ -581,7 +587,8 @@ function findTracksMatchingRegex(
     node.children.forEach(visit);
   };
   workspace.tracks.children.forEach(visit);
-  return matches;}
+  return matches;
+}
 
 // Copy tracks with their ancestor hierarchy preserved
 function copyTracksWithAncestors(

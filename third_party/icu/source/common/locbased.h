@@ -18,7 +18,6 @@
 
 U_NAMESPACE_BEGIN
 
-class CharString;
 /**
  * A utility class that unifies the implementation of getLocale() by
  * various ICU services.  This class is likely to be removed in the
@@ -40,8 +39,9 @@ class U_COMMON_API LocaleBased : public UMemory {
      * @param status input-output error code
      * @return the indicated locale
      */
-static const Locale& getLocale(
-        const Locale& valid, const Locale& actual,        ULocDataLocaleType type, UErrorCode& status);
+    static const Locale& getLocale(
+        const Locale& valid, const Locale& actual,
+        ULocDataLocaleType type, UErrorCode& status);
 
     /**
      * Return the locale ID for the service object wrapped by this
@@ -54,9 +54,11 @@ static const Locale& getLocale(
      * @return the indicated locale ID
      */
     static const char* getLocaleID(
-const Locale& valid, const Locale& actual,
+        const Locale& valid, const Locale& actual,
         ULocDataLocaleType type, UErrorCode& status);
 
-};U_NAMESPACE_END
+};
+
+U_NAMESPACE_END
 
 #endif

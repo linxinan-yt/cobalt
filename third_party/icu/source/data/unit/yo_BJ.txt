@@ -147,7 +147,8 @@ speed{
                 dnam{"ìmɔ́lɛ̀"}
                 other{"{0} ìmɔ́lɛ̀"}
             }
-        }        volume{
+        }
+        volume{
             bushel{
                 dnam{"búsɛ́ɛ̀li"}
                 other{"{0} búsɛ́ɛ̀li"}
@@ -197,7 +198,8 @@ dnam{"àwɔn alɛ́"}
         }
         speed{
             light-speed{
-dnam{"ìmɔ́lɛ̀"}                other{"{0}ìmɔ́lɛ̀"}
+dnam{"ìmɔ́lɛ̀"}
+                other{"{0}ìmɔ́lɛ̀"}
             }
         }
         volume{

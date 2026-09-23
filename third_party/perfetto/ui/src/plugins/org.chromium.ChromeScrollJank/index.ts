@@ -63,7 +63,8 @@ export default class implements PerfettoPlugin {
     await this.addScrollTimelineTrack(ctx, group);
     await this.addScrollTimelineV4Track(ctx, group);
     await this.addVsyncTracks(ctx, group);
-this.registerShowFrameTimelinesCommand(ctx, group);    ctx.defaultWorkspace.addChildInOrder(group);
+    this.registerShowFrameTimelinesCommand(ctx, group);
+    ctx.defaultWorkspace.addChildInOrder(group);
     group.expand();
   }
 

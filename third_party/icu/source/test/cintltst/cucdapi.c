@@ -435,8 +435,9 @@ void TestUScriptCodeAPI(void){
             "Aran",
             // new in ICU 76
             "Garay", "Gurung_Khema", "Kirat_Rai", "Ol_Onal", "Sunuwar", "Todhri", "Tulu_Tigalari",
-// new in ICU 78
-            "Beria_Erfe", "Sidetic", "Tai_Yo", "Tolong_Siki", "Hntl",        };
+            // new in ICU 78
+            "Beria_Erfe", "Sidetic", "Tai_Yo", "Tolong_Siki", "Hntl",
+        };
         static const char* expectedShort[] = {
             "Bali", "Batk", "Blis", "Brah", "Cham", "Cirt", "Cyrs", "Egyd", "Egyh", "Egyp",
             "Geok", "Hans", "Hant", "Hmng", "Hung", "Inds", "Java", "Kali", "Latf", "Latg",
@@ -480,8 +481,9 @@ void TestUScriptCodeAPI(void){
             "Aran",
             // new in ICU 76
             "Gara", "Gukh", "Krai", "Onao", "Sunu", "Todr", "Tutg",
-// new in ICU 78
-            "Berf", "Sidt", "Tayo", "Tols", "Hntl",        };
+            // new in ICU 78
+            "Berf", "Sidt", "Tayo", "Tols", "Hntl",
+        };
         int32_t j = 0;
         if(UPRV_LENGTHOF(expectedLong)!=(USCRIPT_CODE_LIMIT-USCRIPT_BALINESE)) {
             log_err("need to add new script codes in cucdapi.c!\n");

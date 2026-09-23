@@ -569,7 +569,8 @@ ga{
         Egyh{"Éigipteach cliarúil"}
         Egyp{"Iairiglifí Éigipteacha"}
         Elba{"Elbasan"}
-Ethi{"Aetóipice"}        Geor{"Seoirseach"}
+Ethi{"Aetóipice"}
+        Geor{"Seoirseach"}
         Glag{"Glagalach"}
         Gonm{"Masaram Gondi"}
         Goth{"Gotach"}

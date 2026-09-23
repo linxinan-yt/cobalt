@@ -205,7 +205,8 @@ af{"Afrikaans"}
         Cyrl{"Cyrili"}
         Deva{"Devanagari"}
         Grek{"Grik"}
-        Hebr{"Hebrev"}        Latn{"Romi"}
+        Hebr{"Hebrev"}
+        Latn{"Romi"}
     }
     codePatterns{
         language{"Bhas: {0}"}

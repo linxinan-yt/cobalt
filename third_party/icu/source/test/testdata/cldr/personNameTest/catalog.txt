@@ -9,7 +9,8 @@ am.txt
 ar.txt
 as.txt
 az.txt
-ba.txtbal_Latn.txt
+ba.txt
+bal_Latn.txt
 be.txt
 bg.txt
 blo.txt

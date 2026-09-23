@@ -311,7 +311,8 @@ static size_t SkipFlags(const std::string& fmt, size_t ix) {
 // argument from the payload that must be resolved at detokenization time.
 static size_t SkipAsteriskOrInteger(const std::string& fmt,
                                     size_t ix,
-                                    bool* is_star) {  if (fmt[ix] == '*') {
+                                    bool* is_star) {
+  if (fmt[ix] == '*') {
     *is_star = true;
     return ix + 1;
   }

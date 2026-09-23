@@ -715,7 +715,7 @@ private:
         for (int32_t i = 0; i < UTZNM_INDEX_COUNT; i++) {
             const char16_t* name = fNames[i];
             if (name != nullptr) {
-LocalMemory<ZNameInfo> nameinfo(static_cast<ZNameInfo*>(uprv_malloc(sizeof(ZNameInfo))));
+                LocalMemory<ZNameInfo> nameinfo(static_cast<ZNameInfo*>(uprv_malloc(sizeof(ZNameInfo))));
                 if (nameinfo.isNull()) {
                     status = U_MEMORY_ALLOCATION_ERROR;
                     return;
@@ -723,13 +723,8 @@ LocalMemory<ZNameInfo> nameinfo(static_cast<ZNameInfo*>(uprv_malloc(sizeof(ZName
                 nameinfo->mzID = mzID;
                 nameinfo->tzID = tzID;
                 nameinfo->type = getTZNameType(static_cast<UTimeZoneNameTypeIndex>(i));
-                trie.put(name, nameinfo.orphan(), status); // trie.put() takes ownership of the key                    status = U_MEMORY_ALLOCATION_ERROR;
-                    return;
-                }
-                nameinfo->mzID = mzID;
-                nameinfo->tzID = tzID;
-                nameinfo->type = getTZNameType(static_cast<UTimeZoneNameTypeIndex>(i));
-trie.put(name, nameinfo.orphan(), status); // trie.put() takes ownership of the key                if (U_FAILURE(status)) {
+                trie.put(name, nameinfo.orphan(), status); // trie.put() takes ownership of the key
+                if (U_FAILURE(status)) {
                     return;
                 }
             }
@@ -2154,20 +2149,22 @@ TZDBTimeZoneNames::TZDBTimeZoneNames(const Locale& locale)
     if (regionLen == 0) {
         UErrorCode status = U_ZERO_ERROR;
         CharString loc = ulocimp_addLikelySubtags(fLocale.getName(), status);
-CharString tmp;
+        CharString tmp;
         ulocimp_getSubtags(loc.toStringPiece(), nullptr, nullptr, &tmp, nullptr, nullptr, status);
         fRegion = tmp.toStringPiece();
-        U_ASSERT(fRegion.isEmpty() == tmp.isEmpty());        if (U_SUCCESS(status)) {
+        U_ASSERT(fRegion.isEmpty() == tmp.isEmpty());
+        if (U_SUCCESS(status)) {
             useWorld = false;
         }
     } else {
-fRegion = {region, static_cast<std::string_view::size_type>(regionLen)};
+        fRegion = {region, static_cast<std::string_view::size_type>(regionLen)};
         U_ASSERT(!fRegion.isEmpty());
         useWorld = false;
     }
     if (useWorld) {
         fRegion = "001";
-        U_ASSERT(!fRegion.isEmpty());    }
+        U_ASSERT(!fRegion.isEmpty());
+    }
 }
 
 TZDBTimeZoneNames::~TZDBTimeZoneNames() {
@@ -2244,7 +2241,8 @@ TZDBTimeZoneNames::find(const UnicodeString& text, int32_t start, uint32_t types
         return nullptr;
     }
 
-TZDBNameSearchHandler handler(types, fRegion.data());    gTZDBNamesTrie->search(text, start, (TextTrieMapSearchResultHandler *)&handler, status);
+    TZDBNameSearchHandler handler(types, fRegion.data());
+    gTZDBNamesTrie->search(text, start, (TextTrieMapSearchResultHandler *)&handler, status);
     if (U_FAILURE(status)) {
         return nullptr;
     }

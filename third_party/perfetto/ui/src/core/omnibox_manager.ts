@@ -17,7 +17,8 @@ import type {
   OmniboxManager,
   OmniboxModeDescriptor,
   PromptChoices,
-} from '../public/omnibox';import {raf} from './raf_scheduler';
+} from '../public/omnibox';
+import {raf} from './raf_scheduler';
 
 export enum OmniboxMode {
   Search,
@@ -224,7 +225,7 @@ export class OmniboxManagerImpl implements OmniboxManager {
     this._promptsDisabled = true;
     this.rejectPendingPrompt();
     return trash;
-}
+  }
 
   get activeRegisteredMode(): OmniboxModeDescriptor | undefined {
     return this._activeRegisteredMode;
@@ -266,7 +267,8 @@ export class OmniboxManagerImpl implements OmniboxManager {
     this._focusOmniboxNextRender = focus;
     this._omniboxSelectionIndex = 0;
     this._text = '';
-    this.rejectPendingPrompt();  }
+    this.rejectPendingPrompt();
+  }
 
   private rejectPendingPrompt() {
     if (this._pendingPrompt) {

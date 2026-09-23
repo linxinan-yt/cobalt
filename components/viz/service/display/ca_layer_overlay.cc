@@ -360,7 +360,8 @@ void CALayerOverlayProcessor::PutForcedOverlayContentIntoUnderlays(
     AggregatedRenderPass* render_pass,
     const gfx::RectF& display_rect,
     QuadList* quad_list,
-OverlayCandidateList* ca_layer_overlays) const {  bool failed = false;
+OverlayCandidateList* ca_layer_overlays) const {
+  bool failed = false;
 
   for (auto it = quad_list->begin(); it != quad_list->end(); ++it) {
     const DrawQuad* quad = *it;
@@ -396,7 +397,8 @@ OverlayCandidateList* ca_layer_overlays) const {  bool failed = false;
     if (force_quad_to_overlay) {
 if (!PutQuadInSeparateOverlay(it, resource_provider, render_pass,
                                     display_rect, quad, protected_video_type,
-                                    ca_layer_overlays)) {        failed = true;
+                                    ca_layer_overlays)) {
+        failed = true;
         break;
       }
     }
@@ -510,7 +512,8 @@ resource_provider, display_rect, quad, &ca_layer, &skip,
       // below provides the information this function needs.
       && at->material != DrawQuad::Material::kVideoHole
 #endif  // BUILDFLAG(USE_STARBOARD_MEDIA)
-  ) {    return false;
+  ) {
+    return false;
   }
 
   if (skip)

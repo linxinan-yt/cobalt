@@ -188,11 +188,13 @@ UnicodeSet* initNameStartChars(UErrorCode& status) {
     if (U_FAILURE(status)) {
         return nullptr;
     }
-UnicodeSet* result = new UnicodeSet(*isAlpha);    if (result == nullptr) {
+    UnicodeSet* result = new UnicodeSet();
+    if (result == nullptr) {
         status = U_MEMORY_ALLOCATION_ERROR;
         return nullptr;
     };
-result->addAll(*isAlpha);
+
+    result->addAll(*isAlpha);
     result->add(0x002B);
     result->add(0x005F);
     result->add(0x00A1, 0x061B);
@@ -221,7 +223,8 @@ result->addAll(*isAlpha);
     result->add(0xD0000, 0xDFFFD);
     result->add(0xE0000, 0xEFFFD);
     result->add(0xF0000, 0xFFFFD);
-    result->add(0x100000, 0x10FFFD);    result->freeze();
+    result->add(0x100000, 0x10FFFD);
+    result->freeze();
     return result;
 }
 
@@ -244,9 +247,7 @@ UnicodeSet* initNameChars(UErrorCode& status) {
     result->addAll(*digit);
     result->add(HYPHEN);
     result->add(PERIOD);
-result->add(0x00B7);
-    result->add(0x0300, 0x036F);
-    result->add(0x203F, 0x2040);    result->freeze();
+    result->freeze();
     return result;
 }
 
@@ -756,7 +757,7 @@ void Parser::parseTokenWithWhitespace(UChar32 c, UErrorCode& errorCode) {
 }
 
 /*
-Consumes a possibly-empty sequence of name-chars. Appends to `str`
+  Consumes a possibly-empty sequence of name-chars. Appends to `str`
   and returns `str`.
 */
 UnicodeString Parser::parseNameChars(UnicodeString& str, UErrorCode& errorCode) {
@@ -778,7 +779,8 @@ UnicodeString Parser::parseNameChars(UnicodeString& str, UErrorCode& errorCode) 
     return str;
 }
 
-/*  Consumes a non-empty sequence of `name-char`s, the first of which is
+/*
+  Consumes a non-empty sequence of `name-char`s, the first of which is
   also a `name-start`.
   that begins with a character `start` such that `isNameStart(start)`.
 
@@ -802,7 +804,8 @@ UnicodeString Parser::parseName(UErrorCode& errorCode) {
     parseOptionalBidi();
 
     // name-start *name-char
-parseNameChars(name, errorCode);
+    parseNameChars(name, errorCode);
+
     // [bidi]
     parseOptionalBidi();
 
@@ -1024,27 +1027,16 @@ Literal Parser::parseUnquotedLiteral(UErrorCode& errorCode) {
     if (U_FAILURE(errorCode)) {
         return {};
     }
-// unquoted -> name
-    if (isNameStart(peek())) {
-        return Literal(false, parseName(errorCode));
-    }
+    // unquoted-literal = 1*name-char
 
-    // unquoted -> number
-    // Parse the contents
-    UnicodeString contents;
-
-    // Parse the sign
-    if (peek() == HYPHEN) {
-        contents += peek();
-        normalizedInput += peek();
-        next();
-    }
-    if (!inBounds()) {        ERROR(errorCode);
+    if (!(isNameChar(peek()))) {
+        ERROR(errorCode);
         return {};
     }
 
-UnicodeString contents;
-    parseNameChars(contents, errorCode);    return Literal(false, contents);
+    UnicodeString contents;
+    parseNameChars(contents, errorCode);
+    return Literal(false, contents);
 }
 
 /*

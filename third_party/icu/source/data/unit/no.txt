@@ -397,7 +397,8 @@ permillion{
                 gender{"masculine"}
                 one{"{0} del per million"}
                 other{"{0} deler per million"}
-            }            permyriad{
+            }
+            permyriad{
                 case{
                     genitive{
                         one{"{0} promyriades"}
@@ -714,7 +715,8 @@ permillion{
                         other{"{0} netters"}
                     }
                 }
-dnam{"netter"}                gender{"masculine"}
+dnam{"netter"}
+                gender{"masculine"}
                 one{"{0} natt"}
                 other{"{0} netter"}
                 per{"{0} per natt"}
@@ -1629,7 +1631,8 @@ dnam{"netter"}                gender{"masculine"}
                         other{"{0} lys'"}
                     }
                 }
-dnam{"lys"}                gender{"neuter"}
+dnam{"lys"}
+                gender{"neuter"}
                 one{"{0} lys"}
                 other{"{0} lys"}
             }
@@ -2475,7 +2478,8 @@ ofglucose{
                 other{"{0}kn"}
             }
             light-speed{
-dnam{"lys"}                one{"{0}lys"}
+dnam{"lys"}
+                one{"{0}lys"}
                 other{"{0}lys"}
             }
             meter-per-second{
@@ -3116,7 +3120,8 @@ dnam{"lys"}                one{"{0}lys"}
             }
             pinch{
                 dnam{"klype"}
-one{"{0} klype"}                other{"{0} klyper"}
+one{"{0} klype"}
+                other{"{0} klyper"}
             }
             pint{
                 dnam{"pint"}

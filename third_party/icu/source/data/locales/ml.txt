@@ -434,7 +434,8 @@ Eh{"E, h a"}
                 GyMd{"G y/M/d"}
                 Hmsv{"v HH:mm:ss"}
                 Hmv{"v HH:mm"}
-                Hv{"v HH'h'"}                MEd{"d/M, E"}
+                Hv{"v HH'h'"}
+                MEd{"d/M, E"}
                 MMMMEd{"MMMM d, E"}
                 MMMMW{
                     one{"MMMM - ആഴ്ച W"}

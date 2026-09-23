@@ -14,7 +14,6 @@
 
 import {
   LONG,
-  LONG_NULL,
   NUM,
   NUM_NULL,
   STR,
@@ -395,7 +394,7 @@ export default class implements PerfettoPlugin {
     const fallbackTracks = await discoverFallbackTracks(ctx, numMachines);
     const allTracks = [...apiTracks, ...fallbackTracks];
 
-const processGroups = ctx.plugins.getPlugin(ProcessThreadGroupsPlugin);
+    const processGroups = ctx.plugins.getPlugin(ProcessThreadGroupsPlugin);
     const gpuGroupByUpid = new Map<number, TrackNode>();
     const subGroupByKey = new Map<string, TrackNode>();
     const processInfoByUpid = new Map<
@@ -407,7 +406,8 @@ const processGroups = ctx.plugins.getPlugin(ProcessThreadGroupsPlugin);
         processInfoByUpid.set(t.upid, {
           pid: t.pid,
           processName: t.processName,
-        });      }
+        });
+      }
     }
 
     for (const t of allTracks) {
@@ -421,7 +421,8 @@ const processGroups = ctx.plugins.getPlugin(ProcessThreadGroupsPlugin);
           detailsPanel: () => new ThreadSliceDetailsPanel(ctx),
         }),
       });
-let processGroup = processGroups.getGroupForProcess(t.upid);
+
+      let processGroup = processGroups.getGroupForProcess(t.upid);
       if (processGroup === undefined) {
         const info = processInfoByUpid.get(t.upid)!;
         const displayName = getProcessDisplayName(info.processName, info.pid);
@@ -471,6 +472,7 @@ let processGroup = processGroups.getGroupForProcess(t.upid);
           name: t.leafName,
           sortOrder: t.leafSortOrder,
         }),
-      );    }
+      );
+    }
   }
 }

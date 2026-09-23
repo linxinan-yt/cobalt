@@ -259,7 +259,8 @@ TEST_F(GenericDecoderTest, UsesMappedColorSpaceIfSet) {
   FrameInfo frame_info;
   frame_info.rtp_timestamp = kRtpTimestamp;
   frame_info.decode_start = Timestamp::Zero();
-frame_info.rotation = kVideoRotation_0;  frame_info.content_type = VideoContentType::UNSPECIFIED;
+  frame_info.rotation = kVideoRotation_0;
+  frame_info.content_type = VideoContentType::UNSPECIFIED;
   frame_info.frame_type = VideoFrameType::kVideoFrameKey;
   frame_info.color_space = kMappedColorSpace;
 
@@ -314,7 +315,9 @@ TEST_F(GenericDecoderTest, SetsUnspecifiedContentTypeIfSetInFrameInfo) {
   std::optional<VideoFrame> decoded_frame = user_callback_.PopLastFrame();
   ASSERT_TRUE(decoded_frame.has_value());
   EXPECT_EQ(decoded_frame->content_type(), VideoContentType::UNSPECIFIED);
-}TEST_F(GenericDecoderTest, UsesDecoderColorSpaceIfNoneMapped) {
+}
+
+TEST_F(GenericDecoderTest, UsesDecoderColorSpaceIfNoneMapped) {
   constexpr uint32_t kRtpTimestamp = 1;
   const ColorSpace kDecoderColorSpace(
       webrtc::ColorSpace::PrimaryID::kBT2020,
@@ -325,7 +328,8 @@ TEST_F(GenericDecoderTest, SetsUnspecifiedContentTypeIfSetInFrameInfo) {
   FrameInfo frame_info;
   frame_info.rtp_timestamp = kRtpTimestamp;
   frame_info.decode_start = Timestamp::Zero();
-frame_info.rotation = kVideoRotation_0;  frame_info.content_type = VideoContentType::UNSPECIFIED;
+  frame_info.rotation = kVideoRotation_0;
+  frame_info.content_type = VideoContentType::UNSPECIFIED;
   frame_info.frame_type = VideoFrameType::kVideoFrameKey;
   frame_info.color_space = std::nullopt;
 

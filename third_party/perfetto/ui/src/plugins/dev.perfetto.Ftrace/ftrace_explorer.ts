@@ -31,7 +31,7 @@ import {
 import {PopupPosition} from '../../widgets/popup';
 import {
   Grid,
-type GridColumn,
+  type GridColumn,
   GridHeaderCell,
   GridCell,
   type GridRow,
@@ -77,14 +77,16 @@ interface FtraceExplorerAttrs {
   readonly excludeList: ReadonlyArray<string>;
   readonly onExcludeListChange: (excludeList: ReadonlyArray<string>) => void;
   // How events are scoped by cpu, and whether the scope is settable.
-  readonly cpuFilter: FtraceCpuFilter;}
+  readonly cpuFilter: FtraceCpuFilter;
+}
 
 interface FtraceEvent {
   readonly id: number;
   readonly ts: time;
   readonly name: string;
   readonly cpu: number;
-readonly ucpu: number;  readonly thread: string | null;
+  readonly ucpu: number;
+  readonly thread: string | null;
   readonly process: string | null;
   readonly args: string;
 }
@@ -137,13 +139,15 @@ export class FtraceExplorer implements m.ClassComponent<FtraceExplorerAttrs> {
     offset: 0,
     count: 0,
   };
-// Query slots for declarative data fetching
+
+  // Query slots for declarative data fetching
   private readonly executor = new AtomicTaskQueue();
   private readonly countSlot = new AsyncMemo<number>(this.executor);
   private readonly eventsSlot = new AsyncMemo<FtracePanelData>(this.executor);
 
   constructor({attrs}: m.CVnode<FtraceExplorerAttrs>) {
     this.trace = attrs.trace;
+
     if (attrs.cache.state === 'blank') {
       getFtraceCounters(attrs.trace.engine)
         .then((counters) => {
@@ -163,7 +167,7 @@ export class FtraceExplorer implements m.ClassComponent<FtraceExplorerAttrs> {
   }
 
   view({attrs}: m.CVnode<FtraceExplorerAttrs>) {
-const {start, end} =
+    const {start, end} =
       attrs.bounds ?? attrs.trace.timeline.visibleWindow.toTimeSpan();
     const filters: FtraceEventFilters = {
       excludeEvents: attrs.excludeList,
@@ -193,17 +197,20 @@ const {start, end} =
           end,
           filters,
         ),
-    });    const columns: GridColumn[] = [
+    });
+
+    const columns: GridColumn[] = [
       {key: 'id', header: m(GridHeaderCell, 'ID')},
       {key: 'timestamp', header: m(GridHeaderCell, 'Timestamp')},
       {key: 'name', header: m(GridHeaderCell, 'Name')},
       {key: 'cpu', header: m(GridHeaderCell, 'CPU')},
       {key: 'process', header: m(GridHeaderCell, 'Process')},
-{
+      {
         key: 'args',
         header: m(GridHeaderCell, 'Args'),
         maxInitialWidthPx: Infinity,
-      },    ];
+      },
+    ];
 
     return m(
       DetailsShell,
@@ -216,11 +223,12 @@ const {start, end} =
         className: 'pf-ftrace-explorer',
         columns,
         rowData: {
-data: this.renderData(data, cpuByUcpu),
+          data: this.renderData(data, cpuByUcpu),
           total: numEvents ?? 0,
           offset: data?.offset ?? 0,
           onLoadData: (offset, count) => {
-            this.pagination = {offset, count};          },
+            this.pagination = {offset, count};
+          },
         },
         virtualization: {
           rowHeightPx: ROW_H,
@@ -228,8 +236,9 @@ data: this.renderData(data, cpuByUcpu),
         fillHeight: true,
         onRowHover: (rowIndex) => {
           // Calculate the actual row index from virtualization offset
-const actualIndex = rowIndex - (data?.offset ?? 0);
-          const event = data?.events[actualIndex];          if (event) {
+          const actualIndex = rowIndex - (data?.offset ?? 0);
+          const event = data?.events[actualIndex];
+          if (event) {
             attrs.trace.timeline.hoverCursorTimestamp = event.ts;
           }
         },
@@ -240,7 +249,7 @@ const actualIndex = rowIndex - (data?.offset ?? 0);
     );
   }
 
-private renderData(
+  private renderData(
     data: FtracePanelData | undefined,
     cpuByUcpu: ReadonlyMap<number, Cpu>,
   ): ReadonlyArray<GridRow> {
@@ -249,12 +258,13 @@ private renderData(
     }
 
     return data.events.map((event) => {
-      const {ts, name, cpu, ucpu, process, args, id} = event;      const color = materialColorScheme(name).base.cssString;
+      const {ts, name, cpu, ucpu, process, args, id} = event;
+      const color = materialColorScheme(name).base.cssString;
       const cpuLabel = cpuByUcpu.get(ucpu)?.toString() ?? String(cpu);
 
       return [
         m(GridCell, {align: 'right'}, id),
-m(
+        m(
           GridCell,
           {
             menuItems: m(MenuItem, {
@@ -269,7 +279,8 @@ m(
             }),
           },
           m(Timestamp, {trace: this.trace, ts}),
-        ),        m(
+        ),
+        m(
           GridCell,
           m(
             '.pf-ftrace-namebox',
@@ -277,7 +288,8 @@ m(
             name,
           ),
         ),
-m(GridCell, {align: 'right'}, cpu),        m(GridCell, process ?? ''),
+        m(GridCell, cpuLabel),
+        m(GridCell, process ?? ''),
         m(GridCell, args),
       ];
     });
@@ -325,11 +337,12 @@ m(GridCell, {align: 'right'}, cpu),        m(GridCell, process ?? ''),
       }),
     );
 
-const eventFilterButton = m(PopupMultiSelect, {
+    const eventFilterButton = m(PopupMultiSelect, {
       label: 'Events',
       icon: Icons.Filter,
       position: PopupPosition.Top,
-      options: eventOptions,      onChange: (diffs: MultiSelectDiff[]) => {
+      options: eventOptions,
+      onChange: (diffs: MultiSelectDiff[]) => {
         const next = new Set<string>(attrs.excludeList);
         diffs.forEach(({checked, id}) => {
           if (checked) {
@@ -399,11 +412,13 @@ function ftraceWhere(
     `ftrace_event.ucpu in (${includeSql})`,
     `ts >= ${start} and ts <= ${end}`,
   ].join(' and ');
-}async function fetchFtraceEventCount(
+}
+
+async function fetchFtraceEventCount(
   engine: Engine,
   start: time,
   end: time,
-filters: FtraceEventFilters,
+  filters: FtraceEventFilters,
 ): Promise<number> {
   const queryRes = await engine.query(`
     select count(id) as numEvents
@@ -423,6 +438,7 @@ async function queryFtraceEvents(
   const limitClause = pagination
     ? `limit ${pagination.count} offset ${pagination.offset}`
     : '';
+
   const queryRes = await engine.query(`
     select
       ftrace_event.id as id,
@@ -462,7 +478,7 @@ async function queryFtraceEvents(
       args: it.args,
     });
   }
-return events;
+  return events;
 }
 
 async function fetchFtraceEvents(
@@ -486,4 +502,5 @@ async function fetchAllFtraceEvents(
   end: time,
   filters: FtraceEventFilters,
 ): Promise<FtraceEvent[]> {
-  return queryFtraceEvents(engine, start, end, filters);}
+  return queryFtraceEvents(engine, start, end, filters);
+}

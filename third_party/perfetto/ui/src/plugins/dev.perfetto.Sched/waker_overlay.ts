@@ -27,7 +27,8 @@ import {
 import type {CanvasColors} from '../../public/canvas_colors';
 import type {Selection, TrackEventSelection} from '../../public/selection';
 import type {Trace} from '../../public/trace';
-import type {Overlay, TrackBounds} from '../../public/track';import {CPU_SLICE_URI_PREFIX, uriForSchedTrack} from './common';
+import type {Overlay, TrackBounds} from '../../public/track';
+import {CPU_SLICE_URI_PREFIX, uriForSchedTrack} from './common';
 
 const MARGIN = 3;
 const DIAMOND_SIZE = 8;

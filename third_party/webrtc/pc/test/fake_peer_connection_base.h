@@ -80,7 +80,8 @@ class FakePeerConnectionBase : public PeerConnectionInternal {
  public:
   // PeerConnectionInterface implementation.
   FakePeerConnectionBase() : env_(CreateEnvironment()) {}
-explicit FakePeerConnectionBase(const Environment& env) : env_(env) {}
+  explicit FakePeerConnectionBase(const Environment& env) : env_(env) {}
+
   PLAN_B_ONLY scoped_refptr<StreamCollectionInterface> local_streams()
       override {
     return nullptr;

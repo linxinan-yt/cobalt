@@ -65,8 +65,9 @@ CREATE PERFETTO MACRO counter_leading_intervals(
 --     Value for the leading row.
 -- delta_value DOUBLE
 --     Delta to the *lagging* row - note that this is not the same thing as (next_value - value).
-RETURNS TableOrSubquery AS
-(  SELECT
+RETURNS TableOrSubquery
+AS (
+  SELECT
     c0 AS id,
     c1 AS ts,
     c2 AS dur,

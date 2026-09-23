@@ -41,7 +41,7 @@
     align-items: center;
   }
 
-&__deps {
+  &__deps {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -83,5 +83,6 @@
 
   &__warning {
     margin-bottom: 8px;
-    font-weight: 600;  }
+    font-weight: 600;
+  }
 }

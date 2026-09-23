@@ -26,7 +26,8 @@ INCLUDE PERFETTO MODULE callstacks.stack_profile;
 -- other quantity (off-cpu sampling, tracepoint-based sampling, ...) are
 -- excluded.
 CREATE PERFETTO TABLE cpu_profiling_samples(
-  -- The id of the sample. Joinable with stack_sample.id.  id LONG,
+  -- The id of the sample. Joinable with stack_sample.id.
+  id LONG,
   -- The timestamp of the sample.
   ts TIMESTAMP,
   -- The utid of the thread of the sample, if available.

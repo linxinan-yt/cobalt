@@ -347,7 +347,8 @@ class CONTENT_EXPORT RenderWidgetHostView {
   // Kabuki will resize its contents to respond to the smaller viewport and the
   // page will appear smaller.
   virtual void SetAllowAutomaticViewBoundsUpdates(bool allowed) = 0;
-#endif  // BUILDFLAG(IS_COBALT) && BUILDFLAG(IS_IOS_TVOS)};
+#endif  // BUILDFLAG(IS_COBALT) && BUILDFLAG(IS_IOS_TVOS)
+};
 
 }  // namespace content
 

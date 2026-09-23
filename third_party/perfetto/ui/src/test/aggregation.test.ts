@@ -52,7 +52,7 @@ test('sched', async () => {
     .filter({has: page.getByText('AVG', {exact: true})});
   await hdr.hover();
 
-// Press the sort button to sort ascending.
+  // Press the sort button to sort ascending.
   await hdr.getByRole('button', {name: 'Sort column'}).click();
   await pth.waitForIdleAndScreenshot('sort-by-wall-duration.png', {
     locator: drawerPanel,
@@ -66,13 +66,15 @@ test('sched', async () => {
 
   const hdrCount = page
     .getByRole('columnheader')
-    .filter({has: page.getByText('Count', {exact: true})});  await hdrCount.hover();
+    .filter({has: page.getByText('Count', {exact: true})});
+  await hdrCount.hover();
 
   // Press the sort button to sort ascending on this column.
   await hdrCount.getByRole('button', {name: 'Sort column'}).click();
-await pth.waitForIdleAndScreenshot('sort-by-occurrences.png', {
+  await pth.waitForIdleAndScreenshot('sort-by-occurrences.png', {
     locator: drawerPanel,
-  });});
+  });
+});
 
 test('gpu counter', async () => {
   await page.keyboard.press('Escape');

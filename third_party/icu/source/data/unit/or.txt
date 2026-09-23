@@ -319,7 +319,8 @@ or{
             night{
 dnam{"ରାତି"}
                 one{"{0} ରାତି"}
-                other{"{0} ରାତି"}                per{"{0} ପ୍ରତି ରାତି"}
+                other{"{0} ରାତି"}
+                per{"{0} ପ୍ରତି ରାତି"}
             }
             quarter{
                 one{"{0} କ୍ୱାର୍ଟର୍"}
@@ -1459,7 +1460,8 @@ dnam{"ରାତି"}
                 other{"{0} କପ"}
             }
             cup-metric{
-dnam{"mcup"}                one{"{0}mc"}
+dnam{"mcup"}
+                one{"{0}mc"}
                 other{"{0}mc"}
             }
             deciliter{

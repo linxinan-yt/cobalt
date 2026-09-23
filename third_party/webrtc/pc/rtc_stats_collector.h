@@ -271,7 +271,8 @@ class RTCStatsCollector {
       RTCStatsReport* report) const;
   void ProduceVideoRTPStreamStats_s(Timestamp timestamp,
                                     const RtpTransceiverStatsInfo& stats,
-const Call::Stats& call_stats,                                    RTCStatsReport* report) const;
+                                    const Call::Stats& call_stats,
+                                    RTCStatsReport* report) const;
   // Produces `RTCTransportStats`.
   void ProduceTransportStats_s(
       Timestamp timestamp,

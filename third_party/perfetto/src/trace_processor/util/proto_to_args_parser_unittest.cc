@@ -277,7 +277,8 @@ TEST_F(ProtoToArgsParserTest, PackedEncodingWithoutDescriptorPackedFlag) {
   ASSERT_OK(pool.AddFromFileDescriptorSet(kTestMessagesDescriptor.data(),
                                           kTestMessagesDescriptor.size()));
 
-ProtoToArgsParser parser(pool, string_pool_);  ASSERT_OK(parser.ParseMessage(
+  ProtoToArgsParser parser(pool, string_pool_);
+  ASSERT_OK(parser.ParseMessage(
       protozero::ConstBytes{binary_proto.data(), binary_proto.size()},
       ".protozero.test.protos.EveryField", nullptr, *this));
   EXPECT_THAT(args(),

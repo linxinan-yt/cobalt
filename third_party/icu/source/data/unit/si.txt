@@ -781,7 +781,8 @@ dnam{"රාත්‍රිය"}
                 other{"නාවික සැතපුම් {0}"}
             }
             light-speed{
-dnam{"ආලෝකය"}                one{"{0} ආලෝකය"}
+dnam{"ආලෝකය"}
+                one{"{0} ආලෝකය"}
                 other{"ආලෝකය {0}"}
             }
             meter-per-second{

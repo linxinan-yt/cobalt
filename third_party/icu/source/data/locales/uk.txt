@@ -697,7 +697,8 @@ midnight{"ночі"}
                     }
                     narrow{
                         afternoon1{"дня"}
-                        evening1{"вечора"}                        midnight{"ночі"}
+                        evening1{"вечора"}
+                        midnight{"ночі"}
                         morning1{"ранку"}
                         night1{"ночі"}
                         noon{"дня"}
@@ -2128,7 +2129,8 @@ general{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }        number{
+        }
+        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ، ٫ 、﹑､︑]",

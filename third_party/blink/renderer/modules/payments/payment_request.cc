@@ -890,7 +890,9 @@ void OnGetSecurePaymentConfirmationCapabilitiesComplete(
       });
 
   resolver->Resolve(std::move(results));
-}}  // namespace
+}
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
+}  // namespace
 
 // static
 ScriptPromise<V8SecurePaymentConfirmationAvailability>
@@ -921,11 +923,12 @@ PaymentRequest::securePaymentConfirmationAvailability(
 #if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
   CredentialManagerProxy::From(script_state)
       ->SecurePaymentConfirmationService()
-->SecurePaymentConfirmationAvailability(BindOnce(
+      ->SecurePaymentConfirmationAvailability(BindOnce(
           &OnSecurePaymentConfirmationAvailabilityResponse,
           std::make_unique<ScopedPromiseResolver>(
               resolver,
               ScopedPromiseResolver::ConnectionType::kPaymentConfirmation)));
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 
   return promise;
 }
@@ -964,6 +967,7 @@ PaymentRequest::getSecurePaymentConfirmationCapabilities(
       execution_context,
       WebFeature::kPaymentRequestGetSecurePaymentConfirmationCapabilities);
 
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
   CredentialManagerProxy::From(script_state)
       ->SecurePaymentConfirmationService()
       ->GetSecurePaymentConfirmationCapabilities(BindOnce(
@@ -971,6 +975,7 @@ PaymentRequest::getSecurePaymentConfirmationCapabilities(
           std::make_unique<ScopedPromiseResolver>(
               resolver,
               ScopedPromiseResolver::ConnectionType::kPaymentConfirmation)));
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
   return promise;
 }
 

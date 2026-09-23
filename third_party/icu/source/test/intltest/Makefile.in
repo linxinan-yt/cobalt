@@ -79,6 +79,7 @@ numbertest_simple.o \
 cplusplus_header_api_build_test.o uchar_type_build_test.o \
 ucolheaderonlytest.o usetheaderonlytest.o utfiteratortest.o utfstringtest.o \
 intltesttest.o
+
 DEPS = $(OBJECTS:.o=.d)
 
 -include Makefile.local

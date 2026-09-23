@@ -97,10 +97,11 @@ void InstallComplete(
     base::OnceCallback<void(base::expected<base::FilePath, CategorizedError>)>
 #endif
         callback,
-base::RepeatingCallback<void(base::Value::Dict)> event_adder,
+base::RepeatingCallback<void(base::DictValue)> event_adder,
 #if BUILDFLAG(IS_STARBOARD)
     const OperationResult& crx_operation_result,
-#else    base::FilePath crx_file,
+#else
+    base::FilePath crx_file,
 #endif
     const CrxInstaller::Result& result) {
   event_adder.Run(
@@ -303,7 +304,8 @@ void Unpack(base::OnceCallback<void(const Unpacker::Result&)> callback,
 #else
               cache_result.has_value() ? cache_result.value() : crx_file,
 #endif
-              std::move(unzipper), crx_format, is_foreground,              base::BindPostTaskToCurrentDefault(std::move(callback))));
+              std::move(unzipper), crx_format, is_foreground,
+              base::BindPostTaskToCurrentDefault(std::move(callback))));
 }
 
 }  // namespace
@@ -323,7 +325,8 @@ bool is_foreground,
     PersistedData* metadata,
     const std::string& next_version,
 #endif
-    base::RepeatingCallback<void(base::Value::Dict)> event_adder,    base::RepeatingCallback<void(ComponentState)> state_tracker,
+    base::RepeatingCallback<void(base::DictValue)> event_adder,
+    base::RepeatingCallback<void(ComponentState)> state_tracker,
     CrxInstaller::ProgressCallback progress_callback,
     base::OnceCallback<void(const CrxInstaller::Result&)>
         installer_result_callback,
@@ -359,7 +362,8 @@ bool is_foreground,
               std::move(install_params), installer, progress_callback),
 id, prod_id, crx_file, std::move(unzipper), pk_hash, crx_format,
           is_foreground));
-#endif  return base::DoNothing();
+#endif
+  return base::DoNothing();
 }
 
 }  // namespace update_client

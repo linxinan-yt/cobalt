@@ -189,8 +189,9 @@ base::Status RecordParser::InternSample(Sample sample) {
   std::optional<CallsiteId> callsite_id = InternCallchain(
       upid, sample.callchain, sample.perf_invocation->needs_pc_adjustment());
 
-// Update counters and create counter set.
+  // Update counters and create counter set.
   ASSIGN_OR_RETURN(std::vector<CounterId> counter_ids, UpdateCounters(sample));
+
   tables::ProfilerSampleTable::Row row;
   row.ts = sample.trace_ts;
   row.source = linux_perf_source_id_;

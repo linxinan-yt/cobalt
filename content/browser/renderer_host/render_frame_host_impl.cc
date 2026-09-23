@@ -194,7 +194,7 @@
 #include "content/browser/web_exposed_isolation_info.h"
 #include "content/browser/web_package/prefetched_signed_exchange_cache.h"
 #include "content/browser/webauth/authenticator_impl.h"
-#include "content/browser/webauth/webauth_request_security_checker.h"
+#include "content/browser/webauth/webauth_request_security_checker_impl.h"
 #if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 #include "content/browser/webid/flags.h"
 #include "content/browser/webid/request_service.h"
@@ -1158,7 +1158,6 @@ FencedDocumentData* GetFencedDocumentData(
   }
   return nullptr;
 }
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 
 bool FencedFrameAutomaticBeaconsAllowed(RenderFrameHostImpl* rfh) {
   if (!rfh->GetLastResponseHead() || !rfh->GetLastResponseHead()->headers) {
@@ -10744,59 +10743,7 @@ void RenderFrameHostImpl::SendLegacyTechEvent(
       code_location->line, code_location->column, std::nullopt);
 }
 
-void RenderFrameHostImpl::SendPrivateAggregationRequestsForFencedFrameEvent(
-    const std::string& event_type) {
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
-  if (!base::FeatureList::IsEnabled(blink::features::kPrivateAggregationApi) ||
-      !blink::features::kPrivateAggregationApiEnabledInProtectedAudience
-           .Get()) {
-    mojo::ReportBadMessage(
-        "Private Aggregation must be enabled in Protected Audience to use "
-        "reportEvent() for private aggregation events.");
-    return;
-  }
-  // Only check if the event type starts with "reserved." - We allow event types
-  // like "myevent.reserved.name".
-  if (base::StartsWith(event_type, blink::kFencedFrameReservedPAEventPrefix)) {
-    mojo::ReportBadMessage("Reserved events cannot be triggered manually.");
-    return;
-  }
-  const std::optional<FencedFrameProperties>& fenced_frame_properties =
-      frame_tree_node_->GetFencedFrameProperties();
-  if (!fenced_frame_properties.has_value()) {
-    // No associated fenced frame properties. This should have been captured
-    // in the renderer process at `Fence::reportEvent`.
-    // This implies there is an inconsistency between the browser and the
-    // renderer.
-    mojo::ReportBadMessage(
-        "This frame had fenced frame properties registered in its renderer "
-        "process but not in its browser process. This should be consistent "
-        "between the two.");
-    return;
-  }
-  if (!fenced_frame_properties->fenced_frame_reporter()) {
-    AddMessageToConsole(
-        blink::mojom::ConsoleMessageLevel::kWarning,
-        "This frame was loaded with a FencedFrameConfig that did not have any "
-        "reporting metadata associated with it (via selectURL()'s "
-        "reportingMetadata or Protected Audience's registerAdBeacon()).");
-    return;
-  }
-  if (!fenced_frame_properties->mapped_url().has_value() ||
-      !GetLastCommittedOrigin().IsSameOriginWith(
-          url::Origin::Create(fenced_frame_properties->mapped_url()
-                                  ->GetValueIgnoringVisibility()))) {
-    AddMessageToConsole(
-        blink::mojom::ConsoleMessageLevel::kError,
-        "This frame is cross-origin to the mapped url of its fenced frame "
-        "config and cannot report a Private Aggregation event.");
-    return;
-  }
-
-  fenced_frame_properties->fenced_frame_reporter()
-      ->SendPrivateAggregationRequestsForEvent(event_type);
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
-}std::vector<FencedFrame*> RenderFrameHostImpl::GetFencedFrames() const {
+std::vector<FencedFrame*> RenderFrameHostImpl::GetFencedFrames() const {
 #if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
   std::vector<FencedFrame*> result;
   for (const std::unique_ptr<FencedFrame>& fenced_frame : fenced_frames_) {
@@ -10821,7 +10768,8 @@ void RenderFrameHostImpl::DestroyFencedFrame(FencedFrame& fenced_frame) {
   fenced_frames_.erase(it);
 // An ancestor's network revocation status could've changed as a result of
   GetOutermostMainFrame()->CalculateUntrustedNetworkStatus();
-#endif}
+#endif
+}
 
 void RenderFrameHostImpl::TakeGuestOwnership(
     std::unique_ptr<GuestPageHolderImpl> guest_page) {
@@ -10915,7 +10863,9 @@ void RenderFrameHostImpl::CreateFencedFrame(
   // opaque origin, simply because the frame hasn't had any navigations yet.
   // Fenced frames (after their first navigation) do not have opaque origins,
   // and this default-constructed FRS does not impact that.
-CHECK(initial_replicated_state.origin.opaque());}
+  CHECK(initial_replicated_state.origin.opaque());
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
+}
 
 // TODO(crbug.com/40250533): Move SendFencedFrameReportingBeacon into a separate
 // refcounted class, so that pending beacons can outlive the RFHI.
@@ -11265,6 +11215,7 @@ void RenderFrameHostImpl::SetFencedFrameAutomaticBeaconReportEventData(
       FencedDocumentData::GetOrCreateForCurrentDocument(this);
   fenced_document_data->UpdateAutomaticBeaconData(
       event_type, event_data_to_use, destinations, once, cross_origin_exposed);
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 }
 
 RenderFrameHostImpl* RenderFrameHostImpl::GetBeforeUnloadInitiator() {
@@ -15108,10 +15059,12 @@ void RenderFrameHostImpl::BindModelContextHost(
   ModelContextUserData::Bind(this, std::move(receiver));
 }
 
-#if !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)void RenderFrameHostImpl::GetHidService(
+#if !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)
+void RenderFrameHostImpl::GetHidService(
     mojo::PendingReceiver<blink::mojom::HidService> receiver) {
   HidService::Create(this, std::move(receiver));
 }
+#endif
 
 #if BUILDFLAG(IS_CHROMEOS)
 void RenderFrameHostImpl::GetSmartCardService(
@@ -15217,9 +15170,12 @@ void RenderFrameHostImpl::BindDigitalIdentityRequestReceiver(
 
 void RenderFrameHostImpl::BindFederatedRequestServiceReceiver(
     mojo::PendingReceiver<blink::mojom::FederatedRequestService> receiver) {
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
   webid::RequestService* service =
       webid::RequestService::GetOrCreateForCurrentDocument(this);
-  service->BindFederatedRequestService(std::move(receiver));}
+  service->BindFederatedRequestService(std::move(receiver));
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
+}
 
 void RenderFrameHostImpl::BindRestrictedCookieManager(
     mojo::PendingReceiver<network::mojom::RestrictedCookieManager> receiver) {

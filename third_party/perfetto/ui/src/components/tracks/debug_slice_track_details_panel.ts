@@ -21,7 +21,8 @@ import {getThreadState, type ThreadState} from '../sql_utils/thread_state';
 import {DurationWidget} from '../widgets/duration';
 import {Timestamp} from '../widgets/timestamp';
 import {
-type SqlValue,  LONG,
+  type SqlValue,
+  LONG,
   STR,
   NUM_NULL,
 } from '../../trace_processor/query_result';
@@ -259,7 +260,8 @@ export class DebugSliceTrackDetailsPanel implements TrackEventDetailsPanel {
     ]);
   }
 
-private renderArgsSection(args: ArgsDict) {    return m(Section, {title: 'Arguments'}, [
+  private renderArgsSection(args: ArgsDict) {
+    return m(Section, {title: 'Arguments'}, [
       m(Tree, renderArguments(this.trace, args)),
     ]);
   }

@@ -941,7 +941,8 @@ en{
         Tirh{"Tirhuta"}
         Tnsa{"Tangsa"}
         Todr{"Todhri"}
-Tols{"Tolong Siki"}        Toto{"Toto"}
+Tols{"Tolong Siki"}
+        Toto{"Toto"}
         Tutg{"Tulu-Tigalari"}
         Ugar{"Ugaritic"}
         Vaii{"Vai"}

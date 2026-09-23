@@ -14,6 +14,7 @@
 -- limitations under the License.
 INCLUDE PERFETTO MODULE android.cujs.base;
 INCLUDE PERFETTO MODULE android.cujs.cuj_frame_counters;
+
 DROP TABLE IF EXISTS android_jank_cuj_counter_metrics;
 CREATE PERFETTO TABLE android_jank_cuj_counter_metrics AS
 -- Order CUJs to get the ts of the next CUJ with the same name.
@@ -41,7 +42,7 @@ SELECT
   cuj_name,
   upid,
   state,
-_android_jank_cuj_counter_value(cuj_name, 'totalFrames', ts_earliest_allowed_counter, ts_end_next_cuj) AS total_frames,
+  _android_jank_cuj_counter_value(cuj_name, 'totalFrames', ts_earliest_allowed_counter, ts_end_next_cuj) AS total_frames,
   _android_jank_cuj_counter_value(cuj_name, 'missedFrames', ts_earliest_allowed_counter, ts_end_next_cuj) AS missed_frames,
   _android_jank_cuj_counter_value(cuj_name, 'missedAppFrames', ts_earliest_allowed_counter, ts_end_next_cuj) AS missed_app_frames,
   _android_jank_cuj_counter_value(cuj_name, 'missedSfFrames', ts_earliest_allowed_counter, ts_end_next_cuj) AS missed_sf_frames,
@@ -50,8 +51,9 @@ _android_jank_cuj_counter_value(cuj_name, 'totalFrames', ts_earliest_allowed_cou
   -- weighted jank is stored in janks per ms in the counters, since the counters are ints.
   _android_jank_cuj_counter_value(cuj_name, 'weightedJank', ts_earliest_allowed_counter, ts_end_next_cuj) / 1000.0 AS weighted_missed_frames,
   _android_jank_cuj_counter_value(cuj_name, 'weightedAppJank', ts_earliest_allowed_counter, ts_end_next_cuj) / 1000.0 AS weighted_missed_app_frames,
-  _android_jank_cuj_counter_value(cuj_name, 'weightedSfJank', ts_earliest_allowed_counter, ts_end_next_cuj) / 1000.0 AS weighted_missed_sf_frames,  -- convert ms to nanos to align with the unit for `dur` in the other tables
-  android_jank_cuj_counter_value(cuj_name, 'maxFrameTimeMillis', ts_earliest_allowed_counter, ts_end_next_cuj) * 1000000 AS frame_dur_max,
-  android_missed_vsyncs_for_callback(cuj_slice_name, ts_earliest_allowed_counter, ts_end_next_cuj, '*SF*') AS sf_callback_missed_frames,
-  android_missed_vsyncs_for_callback(cuj_slice_name, ts_earliest_allowed_counter, ts_end_next_cuj, '*HWUI*') AS hwui_callback_missed_frames
+  _android_jank_cuj_counter_value(cuj_name, 'weightedSfJank', ts_earliest_allowed_counter, ts_end_next_cuj) / 1000.0 AS weighted_missed_sf_frames,
+  -- convert ms to nanos to align with the unit for `dur` in the other tables
+  _android_jank_cuj_counter_value(cuj_name, 'maxFrameTimeMillis', ts_earliest_allowed_counter, ts_end_next_cuj) * 1000000 AS frame_dur_max,
+  _android_cuj_missed_vsyncs_for_callback(cuj_slice_name, ts_earliest_allowed_counter, ts_end_next_cuj, '*SF*') AS sf_callback_missed_frames,
+  _android_cuj_missed_vsyncs_for_callback(cuj_slice_name, ts_earliest_allowed_counter, ts_end_next_cuj, '*HWUI*') AS hwui_callback_missed_frames
 FROM cujs_ordered cuj;

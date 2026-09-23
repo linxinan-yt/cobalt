@@ -56,7 +56,8 @@ namespace message2 {
 
     UFormattableType Formattable::getType() const {
         if (std::holds_alternative<double>(contents)) {
-return UFMT_DOUBLE;        }
+            return UFMT_DOUBLE;
+        }
         if (std::holds_alternative<int64_t>(contents)) {
             return UFMT_INT64;
         }
@@ -76,9 +77,10 @@ return UFMT_DOUBLE;        }
             }
             }
         }
-if (isDate()) {
+        if (isDate()) {
             return UFMT_DATE;
-        }        if (std::holds_alternative<const FormattableObject*>(contents)) {
+        }
+        if (std::holds_alternative<const FormattableObject*>(contents)) {
             return UFMT_OBJECT;
         }
         return UFMT_ARRAY;
@@ -227,13 +229,7 @@ if (isDate()) {
         return df.orphan();
     }
 
-void formatDateWithDefaults(const Locale& locale, UDate date, UnicodeString& result, UErrorCode& errorCode) {
-        CHECK_ERROR(errorCode);
-
-        LocalPointer<DateFormat> df(defaultDateTimeInstance(locale, errorCode));
-        CHECK_ERROR(errorCode);
-        df->format(date, result, 0, errorCode);
-    }    // Called when output is required and the contents are an unevaluated `Formattable`;
+    // Called when output is required and the contents are an unevaluated `Formattable`;
     // formats the source `Formattable` to a string with defaults, if it can be
     // formatted with a default formatter
     static FormattedPlaceholder formatWithDefaults(const Locale& locale, const FormattedPlaceholder& input, UErrorCode& status) {
@@ -261,9 +257,10 @@ void formatDateWithDefaults(const Locale& locale, UDate date, UnicodeString& res
         switch (type) {
         case UFMT_DATE: {
             UnicodeString result;
-const DateInfo* dateInfo = toFormat.getDate(status);
+            const DateInfo* dateInfo = toFormat.getDate(status);
             U_ASSERT(U_SUCCESS(status));
-            formatDateWithDefaults(locale, *dateInfo, result, status);            return FormattedPlaceholder(input, FormattedValue(std::move(result)));
+            formatDateWithDefaults(locale, *dateInfo, result, status);
+            return FormattedPlaceholder(input, FormattedValue(std::move(result)));
         }
         case UFMT_DOUBLE: {
             double d = toFormat.getDouble(status);

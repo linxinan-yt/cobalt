@@ -275,23 +275,25 @@ class TfLiteModelRunner : public NeuralResidualEchoEstimatorImpl::ModelRunner {
  public:
   TfLiteModelRunner(std::unique_ptr<tflite::Interpreter> tflite_interpreter,
                     audioproc::ReeModelMetadata metadata)
-: input_tensor_size_(static_cast<int>(tflite::NumElements(
+      : input_tensor_size_(static_cast<int>(tflite::NumElements(
             tflite_interpreter->input_tensor_by_signature(kMicFrameInput,
-                                                          kServingDefault)))),        frame_size_(metadata.version() == 1 ? input_tensor_size_
+                                                          kServingDefault)))),
+        frame_size_(metadata.version() == 1 ? input_tensor_size_
                                             : (input_tensor_size_ - 1) * 2),
         step_size_(frame_size_ / 2),
         use_unbounded_mask_(tflite_interpreter->output_tensor_by_signature(
                                 kUnboundedEchoMaskFrameOutput,
                                 kServingDefault) != nullptr),
         metadata_(metadata),
-model_state_(
+        model_state_(
             tflite::NumElements(
                 tflite_interpreter->input_tensor_by_signature(kLstmStateInput,
                                                               kServingDefault)),
             0.0f),
         input_tensor_indexes_(GetInputTensorIndexes(tflite_interpreter)),
         output_tensor_indexes_(
-            GetOutputTensorIndexes(tflite_interpreter, use_unbounded_mask_)),        tflite_interpreter_(std::move(tflite_interpreter)) {
+            GetOutputTensorIndexes(tflite_interpreter, use_unbounded_mask_)),
+        tflite_interpreter_(std::move(tflite_interpreter)) {
     for (const auto input_enum :
          {ModelInputEnum::kMic, ModelInputEnum::kLinearAecOutput,
           ModelInputEnum::kAecRef}) {
@@ -434,7 +436,7 @@ NeuralResidualEchoEstimatorImpl::LoadTfLiteModel(
                       << " expected 1 or 2.";
     return nullptr;
   }
-if (!AllExpectedInputsArePresent(interpreter, *metadata)) {
+  if (!AllExpectedInputsArePresent(interpreter, *metadata)) {
     RTC_LOG(LS_ERROR) << "Model is missing expected input tensors or they "
                          "have the wrong type/size.";
     return nullptr;
@@ -443,7 +445,8 @@ if (!AllExpectedInputsArePresent(interpreter, *metadata)) {
     RTC_LOG(LS_ERROR)
         << "Not all the expected outputs are present in the model.";
     return nullptr;
-  }  return std::make_unique<TfLiteModelRunner>(std::move(interpreter), *metadata);
+  }
+  return std::make_unique<TfLiteModelRunner>(std::move(interpreter), *metadata);
 }
 
 absl_nullable std::unique_ptr<NeuralResidualEchoEstimator>

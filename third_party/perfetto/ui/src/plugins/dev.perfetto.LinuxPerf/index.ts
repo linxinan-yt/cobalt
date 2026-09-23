@@ -16,271 +16,45 @@ import type {PerfettoPlugin} from '../../public/plugin';
 import type {Trace} from '../../public/trace';
 import {COUNTER_TRACK_KIND} from '../../public/track_kinds';
 import {TrackNode} from '../../public/workspace';
-import {
-  LONG,
-  NUM,
-  NUM_NULL,
-  STR,
-  STR_NULL,
-} from '../../trace_processor/query_result';
-import {Flamegraph} from '../../widgets/flamegraph';
-import ProcessThreadGroupsPlugin from '../dev.perfetto.ProcessThreadGroups';
+import {NUM, NUM_NULL, STR_NULL} from '../../trace_processor/query_result';
 import TraceProcessorTrackPlugin from '../dev.perfetto.TraceProcessorTrack';
 import {TraceProcessorCounterTrack} from '../dev.perfetto.TraceProcessorTrack/trace_processor_counter_track';
-import {createPerfCallsitesTrack} from './perf_samples_profile_track';
 
-const PERF_SAMPLES_PROFILE_TRACK_KIND = 'PerfSamplesProfileTrack';
-
-function makeUriForProc(upid: number, sessionId: number) {
-  return `/process_${upid}/perf_samples_profile_${sessionId}`;
-}
-
-export default class implements PerfettoPlugin {  static readonly id = 'dev.perfetto.LinuxPerf';
+export default class LinuxPerfPlugin implements PerfettoPlugin {
+  static readonly id = 'dev.perfetto.LinuxPerf';
   static readonly dependencies = [TraceProcessorTrackPlugin];
 
   async onTraceLoad(trace: Trace): Promise<void> {
-await this.addProcessPerfSamplesTracks(trace);
-    await this.addThreadPerfSamplesTracks(trace);
-    await this.addPerfCounterTracks(trace);
-
-    trace.onTraceReady.addListener(async () => {
-      await selectPerfTracksIfSingleProcess(trace);
-    });
-  }
-
-  private async addProcessPerfSamplesTracks(trace: Trace) {
-    const pResult = await trace.engine.query(`
-      SELECT DISTINCT upid, pct.name AS cntrName, perf_session_id AS sessionId
-      FROM perf_sample
-      JOIN thread USING (utid)
-      JOIN perf_counter_track AS pct USING (perf_session_id)
-      WHERE
-        callsite_id IS NOT NULL AND
-        upid IS NOT NULL AND
-        pct.is_timebase
-      ORDER BY cntrName, perf_session_id
-    `);
-
-    // Remember all the track URIs so we can use them in a command.
-    const trackUris: string[] = [];
-
-    const countersByUpid = new Map<
-      number,
-      {cntrName: string; sessionId: number}[]
-    >();
-    for (
-      const it = pResult.iter({upid: NUM, cntrName: STR, sessionId: NUM});
-      it.valid();
-      it.next()
-    ) {
-      const {upid, cntrName, sessionId} = it;
-      if (!countersByUpid.has(upid)) {
-        countersByUpid.set(upid, []);
-      }
-      countersByUpid.get(upid)!.push({cntrName, sessionId});
-    }
-
-    for (const [upid, counters] of countersByUpid) {
-      // Summary track containing all callstacks, hidden if there's only one counter.
-      const headless = counters.length == 1;
-      const uri = `/process_${upid}/perf_samples_profile`;
-      trace.tracks.registerTrack({
-        uri,
-        tags: {
-          kinds: [PERF_SAMPLES_PROFILE_TRACK_KIND],
-          upid,
-        },
-        renderer: createPerfCallsitesTrack(trace, uri, upid),
-      });
-      const group = trace.plugins
-        .getPlugin(ProcessThreadGroupsPlugin)
-        .getGroupForProcess(upid);
-      const summaryTrack = new TrackNode({
-        uri,
-        name: `Process callstacks`,
-        isSummary: true,
-        headless: headless,
-        sortOrder: -40,
-      });
-      group?.addChildInOrder(summaryTrack);
-
-      // Nested tracks: one per counter being sampled on.
-      for (const {cntrName, sessionId} of counters) {
-        const uri = makeUriForProc(upid, sessionId);
-        trackUris.push(uri);
-        trace.tracks.registerTrack({
-          uri,
-          tags: {
-            kinds: [PERF_SAMPLES_PROFILE_TRACK_KIND],
-            upid,
-            perfSessionId: sessionId,
-          },
-          renderer: createPerfCallsitesTrack(
-            trace,
-            uri,
-            upid,
-            undefined,
-            sessionId,
-          ),
-        });
-        const track = new TrackNode({
-          uri,
-          name: `Process callstacks ${cntrName}`,
-          sortOrder: -40,
-        });
-        summaryTrack.addChildInOrder(track);
-      }
-    }
-
-    // Add a command to select all the perf samples in the trace - it selects
-    // the entirety of each (non-summary) process scoped perf sample track.
-    trace.commands.registerCommand({
-      id: 'dev.perfetto.SelectAllPerfSamples',
-      name: 'Select all perf samples',
-      callback: () => {
-        trace.selection.selectArea({
-          start: trace.traceInfo.start,
-          end: trace.traceInfo.end,
-          trackUris,
-        });
-      },
-    });
-  }
-
-  private async addThreadPerfSamplesTracks(trace: Trace) {
-    const tResult = await trace.engine.query(`
-      SELECT DISTINCT
-        upid, utid, tid, thread.name AS threadName,
-        pct.name AS cntrName, perf_session_id AS sessionId
-      FROM perf_sample
-      JOIN thread USING (utid)
-      JOIN perf_counter_track AS pct USING (perf_session_id)
-      WHERE
-        callsite_id IS NOT NULL AND
-        pct.is_timebase
-      ORDER BY cntrName, perf_session_id    `);
-
-    const countersByUtid = new Map<
-      number,
-      {
-        threadName: string | null;
-        tid: bigint;
-        upid: number | null;
-        cntrName: string;
-        sessionId: number;
-      }[]
-    >();
-    for (
-const it = result.iter({
-        id: NUM,
-        name: STR_NULL,
-        unit: STR_NULL,
-        cpu: NUM_NULL,      });
-      it.valid();
-      it.next()
-    ) {
-const {threadName, utid, tid, upid, cntrName, sessionId} = it;
-      if (!countersByUtid.has(utid)) {
-        countersByUtid.set(utid, []);
-      }
-      countersByUtid
-        .get(utid)!
-        .push({threadName, tid, upid, cntrName, sessionId});
-    }
-
-    for (const [utid, counters] of countersByUtid) {
-      // Summary track containing all callstacks, hidden if there's only one counter.
-      const headless = counters.length == 1;
-      const tid = counters[0].tid;
-      const threadName = counters[0].threadName;
-      const upid = counters[0].upid;
-      const uri = `${getThreadUriPrefix(upid, utid)}_perf_samples_profile`;
-      trace.tracks.registerTrack({
-        uri,
-        tags: {
-          kinds: [PERF_SAMPLES_PROFILE_TRACK_KIND],
-          utid,
-          upid: upid ?? undefined,
-        },
-        renderer: createPerfCallsitesTrack(trace, uri, upid ?? undefined, utid),
-      });
-      const group = trace.plugins
-        .getPlugin(ProcessThreadGroupsPlugin)
-        .getGroupForThread(utid);
-      const summaryTrack = new TrackNode({
-        uri,
-        name: `${threadName ?? 'Thread'} ${tid} callstacks`,
-        isSummary: true,
-        headless: headless,
-        sortOrder: -50,
-      });
-      group?.addChildInOrder(summaryTrack);
-
-      // Nested tracks: one per counter being sampled on.
-      for (const {cntrName, sessionId} of counters) {
-        const uri = `${getThreadUriPrefix(upid, utid)}_perf_samples_profile_${sessionId}`;
-        trace.tracks.registerTrack({
-          uri,
-          tags: {
-            kinds: [PERF_SAMPLES_PROFILE_TRACK_KIND],
-            utid,
-            upid: upid ?? undefined,
-            perfSessionId: sessionId,
-          },
-          renderer: createPerfCallsitesTrack(
-            trace,
-            uri,
-            upid ?? undefined,
-            utid,
-            sessionId,
-          ),
-        });
-        const track = new TrackNode({
-          uri,
-          name: `${threadName ?? 'Thread'} ${tid} callstacks ${cntrName}`,
-          sortOrder: -50,
-        });
-        summaryTrack.addChildInOrder(track);
-      }
-    }
-  }
-
-  private async addPerfCounterTracks(trace: Trace) {
     const perfCountersGroup = new TrackNode({
       name: 'Perf counters',
       isSummary: true,
     });
-
     const result = await trace.engine.query(`
-      select
-        id,
-        name,
-        unit,
-        cpu
+      select id, name, unit, cpu
       from perf_counter_track
       order by name, cpu
     `);
-
-    const it = result.iter({
-      id: NUM,
-      name: STR_NULL,
-      unit: STR_NULL,
-      cpu: NUM_NULL,
-    });
-
-    for (; it.valid(); it.next()) {
-      const {id: trackId, name, unit, cpu} = it;
-      const uri = `/counter_${trackId}`;
-
-      const title = cpu === null ? `${name}` : `Cpu ${cpu} ${name}`;
+    for (
+      const it = result.iter({
+        id: NUM,
+        name: STR_NULL,
+        unit: STR_NULL,
+        cpu: NUM_NULL,
+      });
+      it.valid();
+      it.next()
+    ) {
+      const uri = `/counter_${it.id}`;
+      const title = it.cpu === null ? `${it.name}` : `Cpu ${it.cpu} ${it.name}`;
       trace.tracks.registerTrack({
         uri,
         tags: {
           kinds: [COUNTER_TRACK_KIND],
-          trackIds: [trackId],
-          cpu: cpu ?? undefined,
+          trackIds: [it.id],
+          cpu: it.cpu ?? undefined,
         },
-        renderer: new TraceProcessorCounterTrack(          trace,
+        renderer: new TraceProcessorCounterTrack({
+          trace,
           uri,
           yMode: 'rate',
           unit: it.unit ?? undefined,
@@ -292,5 +66,6 @@ const {threadName, utid, tid, upid, cntrName, sessionId} = it;
     }
     if (perfCountersGroup.hasChildren) {
       trace.defaultWorkspace.addChildInOrder(perfCountersGroup);
+    }
+  }
 }
-  }}

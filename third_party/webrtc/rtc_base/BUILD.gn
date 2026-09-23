@@ -495,9 +495,7 @@ rtc_library("platform_thread") {
   deps = [
     ":checks",
     ":platform_thread_types",
-":rtc_event",
-    ":timeutils",
-    "../api:sequence_checker",    "//third_party/abseil-cpp/absl/functional:any_invocable",
+    "//third_party/abseil-cpp/absl/functional:any_invocable",
     "//third_party/abseil-cpp/absl/strings:string_view",
   ]
 }
@@ -1782,9 +1780,9 @@ rtc_library("ssl_adapter") {
     "//third_party/abseil-cpp/absl/base:nullability",
     "//third_party/abseil-cpp/absl/functional:any_invocable",
     "//third_party/abseil-cpp/absl/memory",
-"//third_party/abseil-cpp/absl/strings",
     "//third_party/abseil-cpp/absl/strings:str_format",
-    "//third_party/abseil-cpp/absl/strings:string_view",  ]
+    "//third_party/abseil-cpp/absl/strings:string_view",
+  ]
 
   # If we are building the SSL library ourselves, we know it's BoringSSL.
   if (rtc_build_ssl) {
@@ -1809,8 +1807,7 @@ rtc_library("testclient") {
     ":buffer",
     ":socket",
     ":socket_address",
-":threading",
-    ":timeutils",    "../api/transport:ecn_marking",
+    "../api/transport:ecn_marking",
     "../api/units:time_delta",
     "../api/units:timestamp",
     "../test:wait_until",
@@ -2085,7 +2082,7 @@ if (rtc_include_tests) {
         "../api/units:timestamp",
         "../test:create_test_environment",
         "../test:fileutils",
-"../test:test_support",
+        "../test:test_support",
         "system:file_wrapper",
         "//third_party/abseil-cpp/absl/strings:string_view",
       ]
@@ -2119,7 +2116,8 @@ if (rtc_include_tests) {
         ":socket_unittest",
         ":threading",
         "../api:rtc_error_matchers",
-        "../test:run_loop",        "../test:test_support",
+        "../test:run_loop",
+        "../test:test_support",
         "../test:wait_until",
       ]
     }
@@ -2240,7 +2238,8 @@ if (rtc_include_tests) {
         "../api:scoped_refptr",
         "../api/environment",
         "../api/numerics",
-"../api/task_queue",        "../api/transport:ecn_marking",
+        "../api/task_queue",
+        "../api/transport:ecn_marking",
         "../api/units:data_rate",
         "../api/units:data_size",
         "../api/units:frequency",

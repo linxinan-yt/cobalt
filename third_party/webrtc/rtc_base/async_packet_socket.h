@@ -87,7 +87,8 @@ class RTC_EXPORT AsyncPacketSocket {
     STATE_CONNECTED
   };
 
-AsyncPacketSocket() = default;  virtual ~AsyncPacketSocket();
+  AsyncPacketSocket() = default;
+  virtual ~AsyncPacketSocket();
 
   AsyncPacketSocket(const AsyncPacketSocket&) = delete;
   AsyncPacketSocket& operator=(const AsyncPacketSocket&) = delete;
@@ -144,7 +145,7 @@ AsyncPacketSocket() = default;  virtual ~AsyncPacketSocket();
   void DeregisterReceivedPacketCallback();
 
   // Emitted each time a packet is sent.
-void SubscribeSentPacket(
+  void SubscribeSentPacket(
       void* tag,
       absl::AnyInvocable<void(AsyncPacketSocket*, const SentPacketInfo&)>
           callback);
@@ -165,7 +166,8 @@ void SubscribeSentPacket(
     ready_to_send_callbacks_.RemoveReceivers(tag);
   }
   void NotifyReadyToSend(AsyncPacketSocket* socket) {
-    ready_to_send_callbacks_.Send(socket);  }
+    ready_to_send_callbacks_.Send(socket);
+  }
 
   // Emitted after address for the socket is allocated, i.e. binding
   // is finished. State of the socket is changed from BINDING to BOUND
@@ -174,14 +176,15 @@ void SubscribeSentPacket(
       void* tag,
       absl::AnyInvocable<void(AsyncPacketSocket*, const SocketAddress&)>
           callback) {
-address_ready_callbacks_.AddReceiver(tag, std::move(callback));
+    address_ready_callbacks_.AddReceiver(tag, std::move(callback));
   }
   void UnsubscribeAddressReady(void* tag) {
     address_ready_callbacks_.RemoveReceivers(tag);
   }
   void NotifyAddressReady(AsyncPacketSocket* socket,
                           const SocketAddress& address) {
-    address_ready_callbacks_.Send(socket, address);  }
+    address_ready_callbacks_.Send(socket, address);
+  }
 
   // Emitted for client TCP sockets when state is changed from
   // CONNECTING to CONNECTED.
@@ -215,12 +218,13 @@ address_ready_callbacks_.AddReceiver(tag, std::move(callback));
       RTC_GUARDED_BY(&network_checker_);
   absl::AnyInvocable<void(AsyncPacketSocket*, const ReceivedIpPacket&)>
       received_packet_callback_ RTC_GUARDED_BY(&network_checker_);
-CallbackList<AsyncPacketSocket*> connect_callbacks_;
+  CallbackList<AsyncPacketSocket*> connect_callbacks_;
   CallbackList<AsyncPacketSocket*, const SentPacketInfo&>
       sent_packet_callbacks_;
   CallbackList<AsyncPacketSocket*> ready_to_send_callbacks_;
   CallbackList<AsyncPacketSocket*, const SocketAddress&>
-      address_ready_callbacks_;};
+      address_ready_callbacks_;
+};
 
 // Listen socket, producing an AsyncPacketSocket when a peer connects.
 class RTC_EXPORT AsyncListenSocket {
@@ -230,7 +234,8 @@ class RTC_EXPORT AsyncListenSocket {
     kBound,
   };
 
-AsyncListenSocket() = default;  virtual ~AsyncListenSocket() = default;
+  AsyncListenSocket() = default;
+  virtual ~AsyncListenSocket() = default;
 
   // Returns current state of the socket.
   virtual State GetState() const = 0;
@@ -243,7 +248,7 @@ AsyncListenSocket() = default;  virtual ~AsyncListenSocket() = default;
       void* tag,
       absl::AnyInvocable<void(AsyncListenSocket*, AsyncPacketSocket*)>
           callback) {
-new_connection_callbacks_.AddReceiver(tag, std::move(callback));
+    new_connection_callbacks_.AddReceiver(tag, std::move(callback));
   }
   void UnsubscribeNewConnection(void* tag) {
     new_connection_callbacks_.RemoveReceivers(tag);
@@ -255,7 +260,8 @@ new_connection_callbacks_.AddReceiver(tag, std::move(callback));
 
  private:
   CallbackList<AsyncListenSocket*, AsyncPacketSocket*>
-      new_connection_callbacks_;};
+      new_connection_callbacks_;
+};
 
 void CopySocketInformationToPacketInfo(size_t packet_size_bytes,
                                        const AsyncPacketSocket& socket_from,

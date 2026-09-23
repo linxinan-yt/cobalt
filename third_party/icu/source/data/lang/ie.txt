@@ -18,7 +18,8 @@ en_AU{"australian anglesi"}
         en_CA{"canadian anglesi"}
         en_GB{"britannic anglesi"}
         en_US{"american anglesi"}
-        eo{"Esperanto"}        es{"hispan"}
+        eo{"Esperanto"}
+        es{"hispan"}
         es_419{"hispan del latin America"}
         es_ES{"europan hispan"}
         es_MX{"mexican hispan"}
@@ -42,7 +43,8 @@ fi{"finn"}
         it{"italian"}
         ja{"japanesi"}
         jv{"javan"}
-        ka{"georgian"}        ko{"korean"}
+        ka{"georgian"}
+        ko{"korean"}
         lij{"ligurian"}
         lv{"lettonian"}
         mt{"maltesi"}
@@ -86,7 +88,8 @@ th{"thai"}
         Mong{"mongolian"}
         Zmth{"matematic notation"}
         Zsye{"emoji"}
-        Zsym{"simboles"}        Zxxx{"ínscrit"}
+        Zsym{"simboles"}
+        Zxxx{"ínscrit"}
         Zzzz{"ínconosset scritura"}
     }
     Scripts%stand-alone{
@@ -114,7 +117,8 @@ buddhist{"buddhist calendare"}
         }
 collation%core{
             standard{"standard"}
-        }        numbers{
+        }
+        numbers{
             latn{"occidental ciffres"}
         }
     }

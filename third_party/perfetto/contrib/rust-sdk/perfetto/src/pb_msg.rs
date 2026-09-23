@@ -41,10 +41,12 @@ impl PbMsgWriter {
     pub fn new() -> Self {
         Self::default()
     }
-/// Returns reference to internal stream writer.
+
+    /// Returns reference to internal stream writer.
     pub fn stream_writer(&self) -> &StreamWriter {
         &self.writer
-    }}
+    }
+}
 
 // The number of bytes reserved by this implementation to encode a protobuf type
 // 2 field size as var-int. Keep this in sync with kMessageLengthFieldSize in

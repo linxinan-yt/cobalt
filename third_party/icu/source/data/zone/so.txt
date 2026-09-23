@@ -1007,7 +1007,8 @@ so{
         }
 "Pacific:Kanton"{
             ec{"Kantoon"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"Kiritimaati"}
         }
         "Pacific:Kosrae"{

@@ -61,7 +61,8 @@ bu-jp{
                 dnam{"[çĥö ⁅ĴÞ⁆ one two]"}
                 one{"[{0} çĥö ⁅ĴÞ⁆ one two]"}
                 other{"[{0} çĥö ⁅ĴÞ⁆ one two]"}
-            }            dunam{
+            }
+            dunam{
                 dnam{"[ðûñåɱš one]"}
                 one{"[{0} ðûñåɱ one two]"}
                 other{"[{0} ðûñåɱš one two]"}
@@ -75,7 +76,8 @@ se-jp{
                 dnam{"[šé ⁅ĴÞ⁆ one two]"}
                 one{"[{0} šé ⁅ĴÞ⁆ one two]"}
                 other{"[{0} šé ⁅ĴÞ⁆ one two]"}
-            }            square-centimeter{
+            }
+            square-centimeter{
                 dnam{"[šǫûåŕé çéñţîɱéţéŕš one two three]"}
                 one{"[{0} šǫûåŕé çéñţîɱéţéŕ one two three]"}
                 other{"[{0} šǫûåŕé çéñţîɱéţéŕš one two three]"}
@@ -191,7 +193,8 @@ katal{
                 dnam{"[ķåţåļš one]"}
                 one{"[{0} ķåţåļ one two]"}
                 other{"[{0} ķåţåļš one two]"}
-            }            milligram-ofglucose-per-deciliter{
+            }
+            milligram-ofglucose-per-deciliter{
                 dnam{"[ɱîļļîĝŕåɱš þéŕ ðéçîļîţéŕ one two three]"}
                 one{"[{0} ɱîļļîĝŕåɱ þéŕ ðéçîļîţéŕ one two three four]"}
                 other{"[{0} ɱîļļîĝŕåɱš þéŕ ðéçîļîţéŕ one two three four]"}
@@ -225,7 +228,8 @@ ofglucose{
                 dnam{"[þåŕţš þéŕ ƀîļļîöñ one two three]"}
                 one{"[{0} þåŕţ þéŕ ƀîļļîöñ one two three]"}
                 other{"[{0} þåŕţš þéŕ ƀîļļîöñ one two three]"}
-            }            percent{
+            }
+            percent{
                 dnam{"[þéŕçéñţ one two]"}
                 one{"[{0} þéŕçéñţ one two]"}
                 other{"[{0} þéŕçéñţ one two]"}
@@ -348,7 +352,8 @@ fortnight{
                 dnam{"[ƒöŕţñîĝĥţš one two]"}
                 one{"[{0} ƒöŕţñîĝĥţ one two]"}
                 other{"[{0} ƒöŕţñîĝĥţš one two]"}
-            }            hour{
+            }
+            hour{
                 dnam{"[ĥöûŕš one]"}
                 one{"[{0} ĥöûŕ one two]"}
                 other{"[{0} ĥöûŕš one two]"}
@@ -432,7 +437,8 @@ coulomb{
                 dnam{"[ĥéñŕýš one]"}
                 one{"[{0} ĥéñŕý one two]"}
                 other{"[{0} ĥéñŕýš one two]"}
-            }            milliampere{
+            }
+            milliampere{
                 dnam{"[ɱîļļîåɱþéŕéš one two]"}
                 one{"[{0} ɱîļļîåɱþéŕé one two three]"}
                 other{"[{0} ɱîļļîåɱþéŕéš one two three]"}
@@ -446,7 +452,8 @@ siemens{
                 dnam{"[šîéɱéñš one two]"}
                 one{"[{0} šîéɱéñš one two]"}
                 other{"[{0} šîéɱéñš one two]"}
-            }            volt{
+            }
+            volt{
                 dnam{"[ṽöļţš one]"}
                 one{"[{0} ṽöļţ one two]"}
                 other{"[{0} ṽöļţš one two]"}
@@ -457,7 +464,8 @@ becquerel{
                 dnam{"[ƀéçǫûéŕéļš one two]"}
                 one{"[{0} ƀéçǫûéŕéļ one two]"}
                 other{"[{0} ƀéçǫûéŕéļš one two]"}
-            }            british-thermal-unit{
+            }
+            british-thermal-unit{
                 dnam{"[Ɓŕîţîšĥ ţĥéŕɱåļ ûñîţš one two three]"}
                 one{"[{0} Ɓŕîţîšĥ ţĥéŕɱåļ ûñîţ one two three]"}
                 other{"[{0} Ɓŕîţîšĥ ţĥéŕɱåļ ûñîţš one two three]"}
@@ -466,7 +474,8 @@ british-thermal-unit-it{
                 dnam{"[Ɓŕîţîšĥ ţĥéŕɱåļ ûñîţš ⁅ÎŢ⁆ one two three]"}
                 one{"[{0} Ɓŕîţîšĥ ţĥéŕɱåļ ûñîţ ⁅ÎŢ⁆ one two three four]"}
                 other{"[{0} Ɓŕîţîšĥ ţĥéŕɱåļ ûñîţš ⁅ÎŢ⁆ one two three four]"}
-            }            calorie{
+            }
+            calorie{
                 dnam{"[çåļöŕîéš one two]"}
                 one{"[{0} çåļöŕîé one two]"}
                 other{"[{0} çåļöŕîéš one two]"}
@@ -475,7 +484,8 @@ calorie-it{
                 dnam{"[çåļöŕîéš ⁅ÎŢ⁆ one two]"}
                 one{"[{0} çåļöŕîé ⁅ÎŢ⁆ one two three]"}
                 other{"[{0} çåļöŕîéš ⁅ÎŢ⁆ one two three]"}
-            }            electronvolt{
+            }
+            electronvolt{
                 dnam{"[éļéçţŕöñṽöļţš one two]"}
                 one{"[{0} éļéçţŕöñṽöļţ one two three]"}
                 other{"[{0} éļéçţŕöñṽöļţš one two three]"}
@@ -489,7 +499,8 @@ gray{
                 dnam{"[ĝŕåýš one]"}
                 one{"[{0} ĝŕåý one two]"}
                 other{"[{0} ĝŕåýš one two]"}
-            }            joule{
+            }
+            joule{
                 dnam{"[ĵöûļéš one]"}
                 one{"[{0} ĵöûļé one two]"}
                 other{"[{0} ĵöûļéš one two]"}
@@ -520,7 +531,8 @@ kilogram-force{
                 dnam{"[ķîļöĝŕåɱš‐ƒöŕçé one two three]"}
                 one{"[{0} ķîļöĝŕåɱ‐ƒöŕçé one two three]"}
                 other{"[{0} ķîļöĝŕåɱš‐ƒöŕçé one two three]"}
-            }            kilowatt-hour-per-100-kilometer{
+            }
+            kilowatt-hour-per-100-kilometer{
                 dnam{"[ķîļöŵåţţ‐ĥöûŕš þéŕ ①⓪⓪ ķîļöɱéţéŕš one two three four]"}
                 one{"[{0} ķîļöŵåţţ‐ĥöûŕ þéŕ ①⓪⓪ ķîļöɱéţéŕš one two three four]"}
                 other{"[{0} ķîļöŵåţţ‐ĥöûŕš þéŕ ①⓪⓪ ķîļöɱéţéŕš one two three four five]"}
@@ -616,7 +628,8 @@ chain{
                 dnam{"[çĥåîñš one]"}
                 one{"[{0} çĥåîñ one two]"}
                 other{"[{0} çĥåîñš one two]"}
-            }            decimeter{
+            }
+            decimeter{
                 dnam{"[ðéçîɱéţéŕš one two]"}
                 one{"[{0} ðéçîɱéţéŕ one two]"}
                 other{"[{0} ðéçîɱéţéŕš one two]"}
@@ -657,7 +670,8 @@ jo-jp{
                 dnam{"[ķéñ ⁅ĴÞ⁆ one two]"}
                 one{"[{0} ķéñ ⁅ĴÞ⁆ one two]"}
                 other{"[{0} ķéñ ⁅ĴÞ⁆ one two]"}
-            }            kilometer{
+            }
+            kilometer{
                 dnam{"[ķîļöɱéţéŕš one two]"}
                 one{"[{0} ķîļöɱéţéŕ one two]"}
                 other{"[{0} ķîļöɱéţéŕš one two]"}
@@ -743,7 +757,8 @@ ri-jp{
                 dnam{"[šĥåķû ⁅ĴÞ⁆ one two]"}
                 one{"[{0} šĥåķû ⁅ĴÞ⁆ one two]"}
                 other{"[{0} šĥåķû ⁅ĴÞ⁆ one two]"}
-            }            solar-radius{
+            }
+            solar-radius{
                 dnam{"[šöļåŕ ŕåðîî one two]"}
                 one{"[{0} šöļåŕ ŕåðîûš one two three]"}
                 other{"[{0} šöļåŕ ŕåðîî one two three]"}
@@ -752,7 +767,8 @@ sun{
                 dnam{"[šûñ ⁅ĴÞ⁆ one two]"}
                 one{"[{0} šûñ ⁅ĴÞ⁆ one two]"}
                 other{"[{0} šûñ ⁅ĴÞ⁆ one two]"}
-            }            yard{
+            }
+            yard{
                 dnam{"[ýåŕðš one]"}
                 one{"[{0} ýåŕð one two]"}
                 other{"[{0} ýåŕðš one two]"}
@@ -791,7 +807,8 @@ magnetic{
                 one{"[{0} ŵéƀéŕ one two]"}
                 other{"[{0} ŵéƀéŕš one two]"}
             }
-        }        mass{
+        }
+        mass{
             carat{
                 dnam{"[çåŕåţš one]"}
                 one{"[{0} çåŕåţ one two]"}
@@ -811,7 +828,8 @@ fun{
                 dnam{"[ƒûñ ⁅ĴÞ⁆ one two]"}
                 one{"[{0} ƒûñ ⁅ĴÞ⁆ one two]"}
                 other{"[{0} ƒûñ ⁅ĴÞ⁆ one two]"}
-            }            grain{
+            }
+            grain{
                 dnam{"[ĝŕåîñš one]"}
                 one{"[{0} ĝŕåîñ one two]"}
                 other{"[{0} ĝŕåîñš one two]"}
@@ -859,7 +877,8 @@ slug{
                 dnam{"[šļûĝš one]"}
                 one{"[{0} šļûĝ one two]"}
                 other{"[{0} šļûĝš one two]"}
-            }            solar-mass{
+            }
+            solar-mass{
                 dnam{"[šöļåŕ ɱåššéš one two]"}
                 one{"[{0} šöļåŕ ɱåšš one two]"}
                 other{"[{0} šöļåŕ ɱåššéš one two three]"}
@@ -962,7 +981,8 @@ ofhg{
                 dnam{"[öƒ ɱéŕçûŕý one two]"}
                 one{"[{0} öƒ ɱéŕçûŕý one two]"}
                 other{"[{0} öƒ ɱéŕçûŕý one two]"}
-            }            pascal{
+            }
+            pascal{
                 dnam{"[þåšçåļš one two]"}
                 one{"[{0} þåšçåļ one two]"}
                 other{"[{0} þåšçåļš one two]"}
@@ -1115,7 +1135,8 @@ cup-imperial{
                 dnam{"[çûþ ⁅ĴÞ⁆ one two]"}
                 one{"[{0} çûþ ⁅ĴÞ⁆ one two]"}
                 other{"[{0} çûþ ⁅ĴÞ⁆ one two]"}
-            }            cup-metric{
+            }
+            cup-metric{
                 dnam{"[ɱéţŕîç çûþš one two]"}
                 one{"[{0} ɱéţŕîç çûþ one two]"}
                 other{"[{0} ɱéţŕîç çûþš one two three]"}
@@ -1159,7 +1180,8 @@ fluid-ounce-metric{
                 dnam{"[ɱéţŕîç ƒļûîð öûñçéš one two three]"}
                 one{"[{0} ɱéţŕîç ƒļûîð öûñçé one two three]"}
                 other{"[{0} ɱéţŕîç ƒļûîð öûñçéš one two three]"}
-            }            gallon{
+            }
+            gallon{
                 dnam{"[ĝåļļöñš one two]"}
                 one{"[{0} ĝåļļöñ one two]"}
                 other{"[{0} ĝåļļöñš one two]"}
@@ -1190,7 +1212,8 @@ koku{
                 dnam{"[ķöšåĵî ⁅ĴÞ⁆ one two]"}
                 one{"[{0} ķöšåĵî ⁅ĴÞ⁆ one two three]"}
                 other{"[{0} ķöšåĵî ⁅ĴÞ⁆ one two three]"}
-            }            liter{
+            }
+            liter{
                 dnam{"[ļîţéŕš one]"}
                 one{"[{0} ļîţéŕ one two]"}
                 other{"[{0} ļîţéŕš one two]"}
@@ -1210,7 +1233,8 @@ osaji{
                 dnam{"[öšåĵî ⁅ĴÞ⁆ one two]"}
                 one{"[{0} öšåĵî ⁅ĴÞ⁆ one two]"}
                 other{"[{0} öšåĵî ⁅ĴÞ⁆ one two]"}
-            }            pinch{
+            }
+            pinch{
                 dnam{"[þîñçĥéš one two]"}
                 one{"[{0} þîñçĥ one two]"}
                 other{"[{0} þîñçĥéš one two]"}
@@ -1224,7 +1248,8 @@ pint-imperial{
                 dnam{"[þîñţš Îɱþéŕîåļ one two]"}
                 one{"[{0} þîñţ Îɱþéŕîåļ one two three]"}
                 other{"[{0} þîñţš Îɱþéŕîåļ one two three]"}
-            }            pint-metric{
+            }
+            pint-metric{
                 dnam{"[ɱéţŕîç þîñţš one two]"}
                 one{"[{0} ɱéţŕîç þîñţ one two three]"}
                 other{"[{0} ɱéţŕîç þîñţš one two three]"}
@@ -1248,7 +1273,8 @@ sai{
                 dnam{"[šĥåķû ⁅ṽöļûɱé، ĴÞ⁆ one two three]"}
                 one{"[{0} šĥåķû ⁅ṽöļûɱé، ĴÞ⁆ one two three]"}
                 other{"[{0} šĥåķû ⁅ṽöļûɱé، ĴÞ⁆ one two three]"}
-            }            tablespoon{
+            }
+            tablespoon{
                 dnam{"[ţåƀļéšþööñš one two]"}
                 one{"[{0} ţåƀļéšþööñ one two]"}
                 other{"[{0} ţåƀļéšþööñš one two three]"}
@@ -1323,7 +1349,8 @@ bu-jp{
                 dnam{"[çĥö ⁅ĴÞ⁆ one two]"}
                 one{"[{0} çĥö ⁅ĴÞ⁆ one two]"}
                 other{"[{0} çĥö ⁅ĴÞ⁆ one two]"}
-            }            dunam{
+            }
+            dunam{
                 dnam{"[ðûñåɱš one]"}
                 one{"[{0} ðûñåɱ one two]"}
                 other{"[{0} ðûñåɱ one two]"}
@@ -1337,7 +1364,8 @@ se-jp{
                 dnam{"[šé ⁅ĴÞ⁆ one two]"}
                 one{"[{0} šé ⁅ĴÞ⁆ one two]"}
                 other{"[{0} šé ⁅ĴÞ⁆ one two]"}
-            }            square-centimeter{
+            }
+            square-centimeter{
                 dnam{"[çɱ² one]"}
                 one{"[{0} çɱ² one two]"}
                 other{"[{0} çɱ² one two]"}
@@ -1483,7 +1511,8 @@ ofglucose{
                 dnam{"[þåŕţš⁄ƀîļļîöñ one two]"}
                 one{"[{0} þþƀ one two]"}
                 other{"[{0} þþƀ one two]"}
-            }            percent{
+            }
+            percent{
                 dnam{"[þéŕçéñţ one two]"}
                 one{"[{0}‰ one]"}
                 other{"[{0}‰ one]"}
@@ -1497,7 +1526,8 @@ permillion{
                 dnam{"[þåŕţš⁄ɱîļļîöñ one two]"}
                 one{"[{0} þþɱ one two]"}
                 other{"[{0} þþɱ one two]"}
-            }            permyriad{
+            }
+            permyriad{
                 dnam{"[þéŕɱýŕîåð one two]"}
                 one{"[{0}‱ one]"}
                 other{"[{0}‱ one]"}
@@ -1614,7 +1644,8 @@ fortnight{
                 dnam{"[ƒŵ one]"}
                 one{"[{0} ƒŵ one]"}
                 other{"[{0} ƒŵ one]"}
-            }            hour{
+            }
+            hour{
                 dnam{"[ĥöûŕš one]"}
                 one{"[{0} ĥŕ one]"}
                 other{"[{0} ĥŕ one]"}
@@ -1698,7 +1729,8 @@ coulomb{
                 dnam{"[Ĥ one]"}
                 one{"[{0} Ĥ one]"}
                 other{"[{0} Ĥ one]"}
-            }            milliampere{
+            }
+            milliampere{
                 dnam{"[ɱîļļîåɱþš one two]"}
                 one{"[{0} ɱÅ one]"}
                 other{"[{0} ɱÅ one]"}
@@ -1712,7 +1744,8 @@ siemens{
                 dnam{"[Š one]"}
                 one{"[{0} Š one]"}
                 other{"[{0} Š one]"}
-            }            volt{
+            }
+            volt{
                 dnam{"[ṽöļţš one]"}
                 one{"[{0} Ṽ one]"}
                 other{"[{0} Ṽ one]"}
@@ -1723,7 +1756,8 @@ becquerel{
                 dnam{"[Ɓǫ one]"}
                 one{"[{0} Ɓǫ one]"}
                 other{"[{0} Ɓǫ one]"}
-            }            british-thermal-unit{
+            }
+            british-thermal-unit{
                 dnam{"[ƁŢÛ one]"}
                 one{"[{0} Ɓţû one two]"}
                 other{"[{0} Ɓţû one two]"}
@@ -1732,7 +1766,8 @@ british-thermal-unit-it{
                 dnam{"[ƁŢÛ‐ÎŢ one]"}
                 one{"[{0} ƁŢÛ‐ÎŢ one two]"}
                 other{"[{0} ƁŢ‐ÎŢ one two]"}
-            }            calorie{
+            }
+            calorie{
                 dnam{"[çåļ one]"}
                 one{"[{0} çåļ one two]"}
                 other{"[{0} çåļ one two]"}
@@ -1741,7 +1776,8 @@ calorie-it{
                 dnam{"[çåļ‐ÎŢ one]"}
                 one{"[{0} çåļ‐ÎŢ one two]"}
                 other{"[{0} çåļ‐ÎŢ one two]"}
-            }            electronvolt{
+            }
+            electronvolt{
                 dnam{"[éļéçţŕöñṽöļţ one two]"}
                 one{"[{0} éṼ one]"}
                 other{"[{0} éṼ one]"}
@@ -1755,7 +1791,8 @@ gray{
                 dnam{"[Ĝý one]"}
                 one{"[{0} Ĝý one]"}
                 other{"[{0} Ĝý one]"}
-            }            joule{
+            }
+            joule{
                 dnam{"[ĵöûļéš one]"}
                 one{"[{0} Ĵ one]"}
                 other{"[{0} Ĵ one]"}
@@ -1779,7 +1816,8 @@ sievert{
                 dnam{"[Šṽ one]"}
                 one{"[{0} Šṽ one]"}
                 other{"[{0} Šṽ one]"}
-            }            therm-us{
+            }
+            therm-us{
                 dnam{"[ÛŠ ţĥéŕɱ one two]"}
                 one{"[{0} ÛŠ ţĥéŕɱ one two]"}
                 other{"[{0} ÛŠ ţĥéŕɱš one two]"}
@@ -1790,7 +1828,8 @@ kilogram-force{
                 dnam{"[ķĝƒ one]"}
                 one{"[{0} ķĝƒ one two]"}
                 other{"[{0} ķĝƒ one two]"}
-            }            kilowatt-hour-per-100-kilometer{
+            }
+            kilowatt-hour-per-100-kilometer{
                 dnam{"[ķŴĥ⁄①⓪⓪ķɱ one two]"}
                 one{"[{0} ķŴĥ⁄①⓪⓪ķɱ one two]"}
                 other{"[{0} ķŴĥ⁄①⓪⓪ķɱ one two]"}
@@ -1886,7 +1925,8 @@ chain{
                 dnam{"[çĥ one]"}
                 one{"[{0} çĥ one]"}
                 other{"[{0} çĥ one]"}
-            }            decimeter{
+            }
+            decimeter{
                 dnam{"[ðɱ one]"}
                 one{"[{0} ðɱ one]"}
                 other{"[{0} ðɱ one]"}
@@ -1927,7 +1967,8 @@ jo-jp{
                 dnam{"[ķéñ ⁅ĴÞ⁆ one two]"}
                 one{"[{0} ķéñ ⁅ĴÞ⁆ one two]"}
                 other{"[{0} ķéñ ⁅ĴÞ⁆ one two]"}
-            }            kilometer{
+            }
+            kilometer{
                 dnam{"[ķɱ one]"}
                 one{"[{0} ķɱ one]"}
                 other{"[{0} ķɱ one]"}
@@ -1998,7 +2039,8 @@ sun{
                 dnam{"[šûñ ⁅ĴÞ⁆ one two]"}
                 one{"[{0} šûñ ⁅ĴÞ⁆ one two]"}
                 other{"[{0} šûñ ⁅ĴÞ⁆ one two]"}
-            }            yard{
+            }
+            yard{
                 dnam{"[ýåŕðš one]"}
                 one{"[{0} ýð one]"}
                 other{"[{0} ýð one]"}
@@ -2037,7 +2079,8 @@ magnetic{
                 one{"[{0} Ŵƀ one]"}
                 other{"[{0} Ŵƀ one]"}
             }
-        }        mass{
+        }
+        mass{
             carat{
                 dnam{"[çåŕåţš one]"}
                 one{"[{0} ÇÐ one]"}
@@ -2057,7 +2100,8 @@ fun{
                 dnam{"[ƒûñ ⁅ĴÞ⁆ one two]"}
                 one{"[{0} ƒûñ ⁅ĴÞ⁆ one two]"}
                 other{"[{0} ƒûñ ⁅ĴÞ⁆ one two]"}
-            }            grain{
+            }
+            grain{
                 dnam{"[ĝŕåîñš one]"}
                 one{"[{0} ĝŕ one]"}
                 other{"[{0} ĝŕ one]"}
@@ -2204,7 +2248,8 @@ ofhg{
                 dnam{"[öƒ Ĥĝ one]"}
                 one{"[{0} öƒ Ĥĝ one two]"}
                 other{"[{0} öƒ Ĥĝ one two]"}
-            }            pascal{
+            }
+            pascal{
                 dnam{"[Þå one]"}
                 one{"[{0} Þå one]"}
                 other{"[{0} Þå one]"}
@@ -2353,7 +2398,8 @@ cup-imperial{
                 dnam{"[çûþ ⁅ĴÞ⁆ one two]"}
                 one{"[{0} çûþ ⁅ĴÞ⁆ one two]"}
                 other{"[{0} çûþ ⁅ĴÞ⁆ one two]"}
-            }            cup-metric{
+            }
+            cup-metric{
                 dnam{"[ɱçûþ one]"}
                 one{"[{0} ɱç one]"}
                 other{"[{0} ɱç one]"}
@@ -2397,7 +2443,8 @@ fluid-ounce-metric{
                 dnam{"[ƒļ öž ɱ· one two]"}
                 one{"[{0} ƒļ öž ɱ· one two]"}
                 other{"[{0} ƒļ öž ɱ· one two]"}
-            }            gallon{
+            }
+            gallon{
                 dnam{"[ĝåļ one]"}
                 one{"[{0} ĝåļ one two]"}
                 other{"[{0} ĝåļ one two]"}
@@ -2428,7 +2475,8 @@ koku{
                 dnam{"[ķöšåĵî ⁅ĴÞ⁆ one two]"}
                 one{"[{0} ķöšåĵî ⁅ĴÞ⁆ one two three]"}
                 other{"[{0} ķöšåĵî ⁅ĴÞ⁆ one two three]"}
-            }            liter{
+            }
+            liter{
                 dnam{"[ļîţéŕš one]"}
                 one{"[{0} Ļ one]"}
                 other{"[{0} Ļ one]"}
@@ -2448,7 +2496,8 @@ osaji{
                 dnam{"[öšåĵî ⁅ĴÞ⁆ one two]"}
                 one{"[{0} öšåĵî ⁅ĴÞ⁆ one two]"}
                 other{"[{0} öšåĵî ⁅ĴÞ⁆ one two]"}
-            }            pinch{
+            }
+            pinch{
                 dnam{"[þîñçĥéš one two]"}
                 one{"[{0} þñ one]"}
                 other{"[{0} þñ one]"}
@@ -2462,7 +2511,8 @@ pint-imperial{
                 dnam{"[þţ Îɱþ· one two]"}
                 one{"[{0} þţ Îɱþ· one two]"}
                 other{"[{0} þţ Îɱþ· one two]"}
-            }            pint-metric{
+            }
+            pint-metric{
                 dnam{"[ɱþţ one]"}
                 one{"[{0} ɱþţ one two]"}
                 other{"[{0} ɱþţ one two]"}
@@ -2486,7 +2536,8 @@ sai{
                 dnam{"[šĥåķû ⁅ṽöļ، ĴÞ⁆ one two three]"}
                 one{"[{0} šĥåķû ⁅ṽöļ، ĴÞ⁆ one two three]"}
                 other{"[{0} šĥåķû ⁅ṽöļ، ĴÞ⁆ one two three]"}
-            }            tablespoon{
+            }
+            tablespoon{
                 dnam{"[ţƀšþ one]"}
                 one{"[{0} ţƀšþ one two]"}
                 other{"[{0} ţƀšþ one two]"}

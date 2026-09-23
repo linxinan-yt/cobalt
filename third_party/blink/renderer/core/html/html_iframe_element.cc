@@ -320,7 +320,7 @@ void HTMLIFrameElement::ParseAttribute(
       should_call_did_change_attributes = true;
       UseCounter::Count(GetDocument(), WebFeature::kIFrameCSPAttribute);
     }
-} else if (name == html_names::kConnectionallowlistAttr) {
+  } else if (name == html_names::kConnectionallowlistAttr) {
     // The `connectionallowlist` attribute lets an embedder require a
     // Connection-Allowlist of the document it frames (Connection-Allowlist
     // embedded enforcement). Gate on the runtime feature, validate the value by
@@ -332,7 +332,8 @@ void HTMLIFrameElement::ParseAttribute(
     //
     // `ConnectionAllowlistEmbeddedEnforcement` depends_on `ConnectionAllowlist`
     // (see runtime_enabled_features.json5), so this accessor already returns
-    // false unless the `ConnectionAllowlist` origin trial is also enabled.    if (GetExecutionContext() &&
+    // false unless the `ConnectionAllowlist` origin trial is also enabled.
+    if (GetExecutionContext() &&
         RuntimeEnabledFeatures::ConnectionAllowlistEmbeddedEnforcementEnabled(
             GetExecutionContext())) {
       // Validate by parsing: the structured-field grammar rejects values
@@ -363,7 +364,6 @@ void HTMLIFrameElement::ParseAttribute(
         should_call_did_change_attributes = true;
       }
     }
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
   } else if (name == html_names::kAdauctionheadersAttr &&
              GetExecutionContext()) {
     if (!GetExecutionContext()->IsSecureContext()) {

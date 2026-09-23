@@ -472,7 +472,8 @@ ga{
                 two{"{0} nanashoicind"}
             }
             night{
-dnam{"oícheanta"}                few{"{0} oíche"}
+dnam{"oícheanta"}
+                few{"{0} oíche"}
                 many{"{0} n-oíche"}
                 one{"{0} oíche amháin"}
                 other{"{0} oíche"}
@@ -1701,7 +1702,8 @@ dnam{"oícheanta"}                few{"{0} oíche"}
                 many{"{0}oí"}
                 one{"{0}oí"}
                 other{"{0}oí"}
-per{"{0}/oíche"}                two{"{0}oí"}
+per{"{0}/oíche"}
+                two{"{0}oí"}
             }
             quarter{
                 few{"{0} cna"}

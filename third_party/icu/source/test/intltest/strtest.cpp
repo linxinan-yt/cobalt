@@ -881,7 +881,7 @@ void
 StringTest::Testctou() {
   const char *cs = "Fa\\u0127mu";
   UnicodeString u = ctou(cs);
-assertEquals("Testing unescape@0", 0x0046, u.charAt(0));
+  assertEquals("Testing unescape@0", 0x0046, u.charAt(0));
   assertEquals("Testing unescape@2", 295, u.charAt(2));
 }
 
@@ -988,4 +988,5 @@ StringTest::TestCopyInvariantChars() {
     status.errIfFailureAndReset();
     assertTrue("copied is empty", dst.isEmpty());
     assertTrue("copied alias is nullptr", dst.getAlias() == nullptr);
-    assertEquals("copied data is empty", "", dst.data());}
+    assertEquals("copied data is empty", "", dst.data());
+}

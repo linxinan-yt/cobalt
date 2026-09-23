@@ -49,7 +49,8 @@ void IntlTestDateTimePatternGeneratorAPI::runIndexedTest( int32_t index, UBool e
         TESTCASE(13, testDateTimePatterns);
         TESTCASE(14, testISO8601);
         TESTCASE(15, testRegionOverride);
-TESTCASE(16, testAlphabeticSubstitution23114);        default: name = ""; break;
+        TESTCASE(16, testAlphabeticSubstitution23114);
+        default: name = ""; break;
     }
 }
 

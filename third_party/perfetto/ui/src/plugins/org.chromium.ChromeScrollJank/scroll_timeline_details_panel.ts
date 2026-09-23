@@ -32,11 +32,12 @@ import {
   stdlibRef,
 } from './utils';
 import {
-EVENT_LATENCY_TRACK,
+  EVENT_LATENCY_TRACK,
   SCROLL_TIMELINE_TRACK,
   SCROLL_TIMELINE_V4_TRACK,
 } from './tracks';
 import {SCROLL_TIMELINE_TABLE_DEFINITION} from './scroll_timeline_model';
+
 export class ScrollTimelineDetailsPanel implements TrackEventDetailsPanel {
   // Information about the scroll update.
   private scrollUpdateData?: {

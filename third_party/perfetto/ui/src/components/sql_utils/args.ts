@@ -22,7 +22,8 @@ export type Args = ArgValue | Args[] | ArgsDict;
 export type ArgsDict = {[key: string]: Args};
 
 export function parseArgs(args: string): ArgsDict {
-  return parseJsonWithBigints(args) as ArgsDict;}
+  return parseJsonWithBigints(args) as ArgsDict;
+}
 
 export async function getArgs(
   engine: Engine,
@@ -35,9 +36,10 @@ export async function getArgs(
     args_json: STR_NULL,
   });
 
-if (!it.valid() || it.args_json === null) {
+  if (!it.valid() || it.args_json === null) {
     return {};
   }
 
   const argsDict = parseJsonWithBigints(it.args_json);
-  return argsDict;}
+  return argsDict;
+}

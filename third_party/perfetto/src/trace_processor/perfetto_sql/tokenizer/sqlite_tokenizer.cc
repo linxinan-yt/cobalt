@@ -59,12 +59,14 @@ SqliteTokenizer::Token SqliteTokenizer::Next() {
     const char* end = source_.sql().data() + source_.sql().size();
     return Token{std::string_view(end, 0), sql_token::kIllegal};
   }
-return Token{std::string_view(st.text, st.length), static_cast<int>(st.type)};}
+  return Token{std::string_view(st.text, st.length), static_cast<int>(st.type)};
+}
 
 SqliteTokenizer::Token SqliteTokenizer::NextNonWhitespace() {
   Token t;
-for (t = Next();
-       t.token_type == sql_token::kSpace || t.token_type == sql_token::kComment;       t = Next()) {
+  for (t = Next();
+       t.token_type == sql_token::kSpace || t.token_type == sql_token::kComment;
+       t = Next()) {
   }
   return t;
 }

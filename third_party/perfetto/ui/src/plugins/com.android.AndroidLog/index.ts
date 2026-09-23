@@ -181,7 +181,8 @@ export default class implements PerfettoPlugin {
           ]);
         },
         tags: {kinds: [ANDROID_LOGS_TRACK_KIND]},
-renderer: createAndroidLogTrack(ctx, summaryUri),      });
+        renderer: createAndroidLogTrack(ctx, summaryUri),
+      });
 
       const rootGroup = new TrackNode({
         name: 'Android logs',
@@ -189,7 +190,8 @@ renderer: createAndroidLogTrack(ctx, summaryUri),      });
         isSummary: true,
         collapsed: true,
       });
-const sortedProcesses = [...byProcess.entries()].sort(
+
+      const sortedProcesses = [...byProcess.entries()].sort(
         ([, a], [, b]) => b.logCount - a.logCount,
       );
 
@@ -236,7 +238,8 @@ const sortedProcesses = [...byProcess.entries()].sort(
         rootGroup.addChildInOrder(processGroup);
       }
 
-      ctx.defaultWorkspace.addChildInOrder(rootGroup);    }
+      ctx.defaultWorkspace.addChildInOrder(rootGroup);
+    }
 
     const androidLogsTabUri = 'perfetto.AndroidLog#tab';
 

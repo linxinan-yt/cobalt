@@ -60,11 +60,12 @@ packet {
       iid: 1
       str: "com.google.android.apps.nexuslauncher"
     }
-[com.android.internal.FrameworksBaseInternedData.viewcapture_window_name] { iid: 2 str: "PhoneWindow" }
+    [com.android.internal.FrameworksBaseInternedData.viewcapture_window_name] { iid: 2 str: "PhoneWindow" }
     [com.android.internal.FrameworksBaseInternedData.viewcapture_view_id] { iid: 1 str: "NO_ID" }
     [com.android.internal.FrameworksBaseInternedData.viewcapture_view_id] { iid: 2 str: "TEST_VIEW_ID" }
     [com.android.internal.FrameworksBaseInternedData.viewcapture_content_description] { iid: 1 str: "Content Description 1" }
-    [com.android.internal.FrameworksBaseInternedData.viewcapture_text] { iid: 1 str: "Text 1" }  }
+    [com.android.internal.FrameworksBaseInternedData.viewcapture_text] { iid: 1 str: "Text 1" }
+  }
   trusted_uid: 10230
   trusted_packet_sequence_id: 2
   trusted_pid: 2688
@@ -115,8 +116,9 @@ packet {
 
 packet {
   timestamp: 448883575876
-winscope_extensions {
-    [perfetto.protos.WinscopeExtensionsImpl.viewcapture] {      window_name_iid: 2
+  [com.android.internal.FrameworksNativeWinscopeTracePacket.winscope_extensions] {
+    [com.android.internal.FrameworksBaseWinscopeExtensions.viewcapture] {
+      window_name_iid: 2
       views {
         parent_id: -1
         width: 1

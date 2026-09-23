@@ -34,6 +34,7 @@ export interface CounterColumnMapping {
   readonly ts: string;
   readonly value: string;
 }
+
 export interface SqlDataSource {
   // SQL source selecting the necessary data.
   readonly sqlSource: string;

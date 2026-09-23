@@ -227,7 +227,8 @@ if (arm_use_neon && float_suffix != "") {
         rust_abi_target = "thumbv7neon-unknown-linux-gnueabi" + float_suffix
       } else {
         rust_abi_target = "armv7-unknown-linux-gnueabi" + float_suffix
-      }    } else {
+      }
+    } else {
       rust_abi_target = "arm-unknown-linux-gnueabi" + float_suffix
     }
   } else if (current_cpu == "riscv64") {

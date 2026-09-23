@@ -387,7 +387,8 @@ bs{
 dnam{"noći"}
                 few{"{0} noći"}
                 one{"{0} noć"}
-                other{"{0} noći"}                per{"{0} po noći"}
+                other{"{0} noći"}
+                per{"{0} po noći"}
             }
             quarter{
                 dnam{"četvrtine"}
@@ -1417,7 +1418,8 @@ angle{
             }
 meter{
                 dnam{"m"}
-            }            mile{
+            }
+            mile{
                 dnam{"mi"}
             }
             yard{

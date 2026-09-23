@@ -15,7 +15,6 @@
 #include <optional>
 #include <utility>
 
-#include "absl/algorithm/container.h"
 #include "absl/base/nullability.h"
 #include "absl/container/flat_hash_map.h"
 #include "api/environment/environment.h"
@@ -35,6 +34,7 @@
 #include "video/timing/simulator/receiver.h"
 #include "video/timing/simulator/rtc_event_log_driver.h"
 #include "video/timing/simulator/rtp_packet_simulator.h"
+
 namespace webrtc::video_timing_simulator {
 
 namespace {
@@ -48,7 +48,8 @@ class DecodableFrameCollector : public AssemblerEvents,
       : env_(env), ssrc_(ssrc) {
     RTC_DCHECK_NE(ssrc_, 0);
   }
-~DecodableFrameCollector() override { RTC_DCHECK_RUN_ON(&sequence_checker_); }
+  ~DecodableFrameCollector() override { RTC_DCHECK_RUN_ON(&sequence_checker_); }
+
   DecodableFrameCollector(const DecodableFrameCollector&) = delete;
   DecodableFrameCollector& operator=(const DecodableFrameCollector&) = delete;
 
@@ -104,7 +105,8 @@ class DecodableFrameCollector : public AssemblerEvents,
     for (const auto& [key, value] : frames_) {
       stream.frames.push_back(value);
     }
-SortByArrivalOrder(stream.frames);    return stream;
+    SortByArrivalOrder(stream.frames);
+    return stream;
   }
 
  private:
@@ -127,16 +129,18 @@ class DecodabilitySimulatorStream : public RtcEventLogDriver::StreamInterface {
  public:
   DecodabilitySimulatorStream(const Environment& env,
                               uint32_t ssrc,
-uint32_t rtx_ssrc,                              DecodabilitySimulator::Results* absl_nonnull
+                              uint32_t rtx_ssrc,
+                              DecodabilitySimulator::Results* absl_nonnull
                                   results)
       : collector_(env, ssrc),
         tracker_(env, DecodabilityTracker::Config{.ssrc = ssrc}, &collector_),
         assembler_(env, ssrc, &collector_, &tracker_),
-receiver_(env, ssrc, rtx_ssrc, &assembler_),        results_(*results) {
+        receiver_(env, ssrc, rtx_ssrc, &assembler_),
+        results_(*results) {
     RTC_DCHECK_RUN_ON(&sequence_checker_);
     tracker_.SetDecodedFrameIdCallback(&assembler_);
   }
-~DecodabilitySimulatorStream() override {
+  ~DecodabilitySimulatorStream() override {
     RTC_DCHECK_RUN_ON(&sequence_checker_);
   }
 
@@ -149,7 +153,8 @@ receiver_(env, ssrc, rtx_ssrc, &assembler_),        results_(*results) {
 
   void UpdateMaxRtt(TimeDelta max_rtt) override {
     RTC_DCHECK_RUN_ON(&sequence_checker_);
-    assembler_.UpdateMaxRtt(max_rtt);  }
+    assembler_.UpdateMaxRtt(max_rtt);
+  }
 
   void Close() override {
     RTC_DCHECK_RUN_ON(&sequence_checker_);
@@ -165,20 +170,23 @@ receiver_(env, ssrc, rtx_ssrc, &assembler_),        results_(*results) {
   DecodableFrameCollector collector_ RTC_GUARDED_BY(sequence_checker_);
   DecodabilityTracker tracker_ RTC_GUARDED_BY(sequence_checker_);
   Assembler assembler_ RTC_GUARDED_BY(sequence_checker_);
-Receiver receiver_ RTC_GUARDED_BY(sequence_checker_);  DecodabilitySimulator::Results& results_;
+  Receiver receiver_ RTC_GUARDED_BY(sequence_checker_);
+  DecodabilitySimulator::Results& results_;
 };
 
 }  // namespace
 
 DecodabilitySimulator::DecodabilitySimulator(Config config) : config_(config) {}
 
-DecodabilitySimulator::~DecodabilitySimulator() = default;DecodabilitySimulator::Results DecodabilitySimulator::Simulate(
+DecodabilitySimulator::~DecodabilitySimulator() = default;
+
+DecodabilitySimulator::Results DecodabilitySimulator::Simulate(
     const ParsedRtcEventLog& parsed_log) const {
   // Outputs.
   Results results;
 
   // Simulation.
-auto stream_factory = [&results](const Environment& env, uint32_t ssrc,
+  auto stream_factory = [&results](const Environment& env, uint32_t ssrc,
                                    uint32_t rtx_ssrc) {
     return std::make_unique<DecodabilitySimulatorStream>(env, ssrc, rtx_ssrc,
                                                          &results);
@@ -193,7 +201,8 @@ auto stream_factory = [&results](const Environment& env, uint32_t ssrc,
   rtc_event_log_simulator.Simulate();
 
   // Return.
-  SortByStreamOrder(results.streams);  return results;
+  SortByStreamOrder(results.streams);
+  return results;
 }
 
 }  // namespace webrtc::video_timing_simulator

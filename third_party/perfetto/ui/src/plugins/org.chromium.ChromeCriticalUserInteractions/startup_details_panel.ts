@@ -25,6 +25,7 @@ import {Tree, TreeNode} from '../../widgets/tree';
 import {asUpid, type Upid} from '../../components/sql_utils/core_types';
 import type {Trace} from '../../public/trace';
 import type {TrackEventDetailsPanel} from '../../public/details_panel';
+
 interface Data {
   startupId: number;
   eventName: string;

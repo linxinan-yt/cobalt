@@ -397,11 +397,12 @@ class P2PTransportChannelTestBase : public ::testing::Test {
     Candidate candidate;
   };
 
-class Endpoint {
+  class Endpoint {
    public:
     explicit Endpoint(Thread* thread)
         : network_manager_(thread),
-          role_(ICEROLE_UNKNOWN),          role_conflict_(false),
+          role_(ICEROLE_UNKNOWN),
+          role_conflict_(false),
           save_candidates_(false) {}
     bool HasTransport(const PacketTransportInternal* transport) const {
       return (transport == cd1_.ch() || transport == cd2_.ch());

@@ -17,7 +17,8 @@ import {findRef} from '../../base/dom_utils';
 import {assertUnreachable} from '../../base/assert';
 import type {Trace} from '../../public/trace';
 import {Form, FormGrid, FormLabel, FormSection} from '../../widgets/form';
-import {RadioGroup} from '../../widgets/radio_group';import {Select} from '../../widgets/select';
+import {RadioGroup} from '../../widgets/radio_group';
+import {Select} from '../../widgets/select';
 import {TextInput} from '../../widgets/text_input';
 import {addDebugCounterTrack, addDebugSliceTrack} from './debug_tracks';
 
@@ -82,7 +83,8 @@ export class AddDebugTrackMenu implements m.ClassComponent<AddDebugTrackMenuAttr
       value: chooseDefaultColumn(columns, 'value'),
       argSetId: chooseDefaultColumn(columns, 'arg_set_id'),
       pivot: undefined,
-color: '', // Empty string means "from slice name"    };
+      color: '', // Empty string means "from slice name"
+    };
   }
 
   oncreate({dom}: m.VnodeDOM<AddDebugTrackMenuAttrs>) {
@@ -129,12 +131,13 @@ color: '', // Empty string means "from slice name"    };
         this.trackName,
       ),
       m(FormLabel, {for: 'track_type'}, 'Track type'),
-m(
+      m(
         RadioGroup,
         {
           fillWidth: true,
           selectedValue: this.trackType,
-          onValueChange: (value) => (this.trackType = value as TrackType),        },
+          onValueChange: (value) => (this.trackType = value as TrackType),
+        },
         [
           m(RadioGroup.Button, {value: 'slice'}, 'Slice Track'),
           m(RadioGroup.Button, {value: 'counter'}, 'Counter Track'),
@@ -160,7 +163,7 @@ m(
   }
 
   private renderSliceOptions(availableColumns: ReadonlyArray<string>) {
-return m(
+    return m(
       FormGrid,
       this.renderFormSelectInput('Timestamp *', 'ts', availableColumns),
       this.renderFormSelectInput('Duration *', 'dur', [
@@ -175,7 +178,8 @@ return m(
       this.renderFormSelectInput('Pivot on', 'pivot', availableColumns, {
         optional: true,
       }),
-    );  }
+    );
+  }
 
   private renderCounterTrackOptions(availableColumns: ReadonlyArray<string>) {
     return m(
@@ -190,7 +194,7 @@ return m(
 
   private renderColorSelect(availableColumns: ReadonlyArray<string>) {
     return [
-m(FormLabel, {for: 'color'}, 'Color'),
+      m(FormLabel, {for: 'color'}, 'Color'),
       m(
         Select,
         {
@@ -207,7 +211,8 @@ m(FormLabel, {for: 'color'}, 'Color'),
         ),
         availableColumns.map((col) =>
           m('option', {selected: this.options.color === col, value: col}, col),
-        ),      ),
+        ),
+      ),
     ];
   }
 

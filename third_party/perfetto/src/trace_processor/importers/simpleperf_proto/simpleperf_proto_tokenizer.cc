@@ -65,7 +65,7 @@ base::Status SimpleperfProtoTokenizer::Parse(TraceBlobView blob) {
   reader_.PushBack(std::move(blob));
 
   for (;;) {
-ParseResult result;
+    ParseResult result;
     switch (state_) {
       case State::kExpectingMagic: {
         ASSIGN_OR_RETURN(result, ParseMagic());
@@ -95,7 +95,8 @@ ParseResult result;
 base::Status SimpleperfProtoTokenizer::OnPushDataToSorter() {
   if (state_ != State::kFinished) {
     return base::ErrStatus(
-        "Unexpected end of simpleperf_proto file (ERR:tp-corrupt)");  }
+        "Unexpected end of simpleperf_proto file (ERR:tp-corrupt)");
+  }
   return base::OkStatus();
 }
 
@@ -104,7 +105,8 @@ SimpleperfProtoTokenizer::ParseMagic() {
   auto iter = reader_.GetIterator();
   auto magic_data = iter.MaybeRead(kSimpleperfMagicSize);
   if (!magic_data) {
-    return ParseResult::kNeedsMoreData;  }
+    return ParseResult::kNeedsMoreData;
+  }
 
   if (std::memcmp(magic_data->data(), kSimpleperfMagic, kSimpleperfMagicSize) !=
       0) {
@@ -113,7 +115,7 @@ SimpleperfProtoTokenizer::ParseMagic() {
 
   reader_.PopFrontUntil(iter.file_offset());
   state_ = State::kExpectingVersion;
-return ParseResult::kOk;
+  return ParseResult::kOk;
 }
 
 base::StatusOr<SimpleperfProtoTokenizer::ParseResult>
@@ -121,7 +123,8 @@ SimpleperfProtoTokenizer::ParseVersion() {
   auto iter = reader_.GetIterator();
   auto version_data = iter.MaybeRead(kVersionSize);
   if (!version_data) {
-    return ParseResult::kNeedsMoreData;  }
+    return ParseResult::kNeedsMoreData;
+  }
 
   uint16_t version = *reinterpret_cast<const uint16_t*>(version_data->data());
   if (version != 1) {
@@ -130,7 +133,7 @@ SimpleperfProtoTokenizer::ParseVersion() {
 
   reader_.PopFrontUntil(iter.file_offset());
   state_ = State::kExpectingRecordSize;
-return ParseResult::kOk;
+  return ParseResult::kOk;
 }
 
 base::StatusOr<SimpleperfProtoTokenizer::ParseResult>
@@ -138,7 +141,8 @@ SimpleperfProtoTokenizer::ParseRecordSize() {
   auto iter = reader_.GetIterator();
   auto size_data = iter.MaybeRead(kRecordSizeSize);
   if (!size_data) {
-    return ParseResult::kNeedsMoreData;  }
+    return ParseResult::kNeedsMoreData;
+  }
 
   current_record_size_ = *reinterpret_cast<const uint32_t*>(size_data->data());
 
@@ -146,7 +150,7 @@ SimpleperfProtoTokenizer::ParseRecordSize() {
   if (current_record_size_ == 0) {
     // End of records marker
     state_ = State::kFinished;
-return ParseResult::kOk;
+    return ParseResult::kOk;
   }
 
   state_ = State::kExpectingRecord;
@@ -158,7 +162,8 @@ SimpleperfProtoTokenizer::ParseRecord() {
   auto iter = reader_.GetIterator();
   auto record_data = iter.MaybeRead(current_record_size_);
   if (!record_data) {
-    return ParseResult::kNeedsMoreData;  }
+    return ParseResult::kNeedsMoreData;
+  }
 
   using namespace perfetto::third_party::simpleperf::proto::pbzero;
   Record::Decoder record(record_data->data(), record_data->size());
@@ -189,7 +194,8 @@ SimpleperfProtoTokenizer::ParseRecord() {
 
     reader_.PopFrontUntil(iter.file_offset());
     state_ = State::kExpectingRecordSize;
-return ParseResult::kOk;  }
+    return ParseResult::kOk;
+  }
 
   if (record.has_meta_info()) {
     MetaInfo::Decoder meta(record.meta_info());
@@ -204,7 +210,8 @@ return ParseResult::kOk;  }
 
     reader_.PopFrontUntil(iter.file_offset());
     state_ = State::kExpectingRecordSize;
-return ParseResult::kOk;  }
+    return ParseResult::kOk;
+  }
 
   if (record.has_lost()) {
     // TODO(lalitm): Process LostSituation record. This contains:
@@ -213,7 +220,8 @@ return ParseResult::kOk;  }
     // Should emit a track event or stat to indicate data loss occurred.
     reader_.PopFrontUntil(iter.file_offset());
     state_ = State::kExpectingRecordSize;
-return ParseResult::kOk;  }
+    return ParseResult::kOk;
+  }
 
   // Process timestamped records and Thread records (push to sorter)
   int64_t ts = 0;
@@ -235,7 +243,7 @@ return ParseResult::kOk;  }
   }
 
   // Create event with the record data and push to sorter
-auto trace_ts = context_->clock_tracker->ToTraceTime(
+  auto trace_ts = context_->clock_tracker->ToTraceTime(
       ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_MONOTONIC), ts);
   if (trace_ts) {
     SimpleperfProtoEvent event;

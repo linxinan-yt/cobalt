@@ -509,7 +509,7 @@ TEST(RtpTransportTest, ReceivedPacketEcnMarkingPropagatedToDemuxedPacket) {
 }
 
 TEST(RtpTransportTest, RtcpSentAsEct1IfReceivedRtpPacketAsEct1) {
-test::RunLoop thread;
+  test::RunLoop thread;
   const Environment env = CreateTestEnvironment();
   RtpTransport transport(kMuxDisabled, env.field_trials());
   // Setup FakePacketTransport to send packets to itself.
@@ -518,7 +518,8 @@ test::RunLoop thread;
   transport.SetRtpPacketTransport(&fake_rtp);
   // Setup RTCP transport to send to another fake transport.
   FakePacketTransport fake_rtcp_recipient(env, "rtcp_recipient");
-  FakePacketTransport fake_rtcp(env, "fake_rtcp");  fake_rtcp.SetDestination(&fake_rtcp_recipient, true);
+  FakePacketTransport fake_rtcp(env, "fake_rtcp");
+  fake_rtcp.SetDestination(&fake_rtcp_recipient, true);
   transport.SetRtcpPacketTransport(&fake_rtcp);
 
   AsyncSocketPacketOptions rtp_options;

@@ -24,7 +24,8 @@ AsyncSocketAdapter::AsyncSocketAdapter(Socket* socket)
     : socket_(absl::WrapUnique(socket)) {
   RTC_DCHECK(socket_);
   socket_->SubscribeConnectEvent(
-this, [this](Socket* socket) { OnConnectEvent(socket); });  socket_->SubscribeReadEvent(this,
+      this, [this](Socket* socket) { OnConnectEvent(socket); });
+  socket_->SubscribeReadEvent(this,
                               [this](Socket* socket) { OnReadEvent(socket); });
   socket_->SubscribeWriteEvent(
       this, [this](Socket* socket) { OnWriteEvent(socket); });

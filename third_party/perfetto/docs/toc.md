@@ -91,7 +91,7 @@
 
   - [Visualization](#)
 
-- [Perfetto UI](visualization/perfetto-ui.md) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
+    - [Perfetto UI](visualization/perfetto-ui.md) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
     - [Merging traces in the Perfetto UI](visualization/merging-traces.md) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
     - [Data Explorer](visualization/data-explorer.md) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
     - [Opening Large Traces](visualization/large-traces.md) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
@@ -99,6 +99,7 @@
     - [Embedding the UI](visualization/embedding-the-ui.md) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
     - [Debug Tracks](analysis/debug-tracks.md) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
     - [Heap Dump Explorer](visualization/heap-dump-explorer.md) {.tag-android}
+
     - [Extending the UI](#)
 
       - [Overview](visualization/extending-the-ui.md) {.tag-android .tag-linux .tag-cpp-rust .tag-perf}
@@ -149,7 +150,7 @@
 
     - [PerfettoSQL](#)
 
-- [Prelude Tables](analysis/sql-tables.autogen) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
+      - [Prelude Tables](analysis/sql-tables.autogen) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
       - [Built-in Functions](analysis/builtin.md) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
       - [Stats Table](analysis/sql-stats.autogen) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
 
@@ -159,6 +160,7 @@
     - [Extension Server Protocol](visualization/extension-server-protocol.md) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
     - [Embedding API](visualization/embedding-api-reference.md) {.tag-android .tag-linux .tag-cpp-rust .tag-chrome .tag-perf}
     - [Android Version Notes](reference/android-version-notes.md) {.tag-android}
+
   - [Advanced Topics](#)
 
     - [Detached Mode](concepts/detached-mode.md) {.tag-android}

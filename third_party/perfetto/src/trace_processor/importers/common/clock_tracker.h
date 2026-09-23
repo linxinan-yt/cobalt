@@ -262,9 +262,8 @@ class ClockSynchronizerListenerImpl : public ClockSynchronizerListener {
   base::Status OnInvalidClockSnapshot() override;
 
  private:
-  TraceProcessorContext* context_;};
-
-using ClockTracker = ClockSynchronizer<ClockSynchronizerListenerImpl>;
+  TraceProcessorContext* context_;
+};
 
 }  // namespace perfetto::trace_processor
 

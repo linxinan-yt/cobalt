@@ -42,7 +42,9 @@ FROM slice AS s
 JOIN track AS t
   ON s.track_id = t.id
 WHERE
-  t.name = 'powervr_gpu_power_state';-- Gapless time slices of GPU freq from trace_start() to trace_end()
+  t.name = 'powervr_gpu_power_state';
+
+-- Gapless time slices of GPU freq from trace_start() to trace_end()
 CREATE PERFETTO TABLE _gapless_gpu_freq AS
 WITH
   nominal_freqs AS (
@@ -56,9 +58,10 @@ WITH
       gpu_id
     FROM android_gpu_frequency
     WHERE
-gpu_id = (
-        SELECT
-          gpu_id        FROM _gpuid_map
+      gpu_id
+      = (
+        SELECT gpu_id
+        FROM _gpuid_map
         JOIN _wattson_device
           ON _gpuid_map.device = _wattson_device.name
       )
@@ -72,9 +75,10 @@ gpu_id = (
       gpu_id
     FROM android_gpu_frequency
     WHERE
-gpu_id = (
-        SELECT
-          gpu_id        FROM _gpuid_map
+      gpu_id
+      = (
+        SELECT gpu_id
+        FROM _gpuid_map
         JOIN _wattson_device
           ON _gpuid_map.device = _wattson_device.name
       )

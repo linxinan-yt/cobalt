@@ -6,7 +6,8 @@ en_AU{
     zoneStrings{
 "Pacific:Wallis"{
             ec{"Wallis and Futuna"}
-        }        "meta:Australia_Central"{
+        }
+        "meta:Australia_Central"{
             sd{"ACDT"}
             sg{"ACT"}
             ss{"ACST"}
@@ -33,7 +34,8 @@ en_AU{
         }
 "meta:French_Southern"{
             ls{"French Southern and Antarctic Time"}
-        }        "meta:Japan"{
+        }
+        "meta:Japan"{
             ld{"Japan Summer Time"}
             lg{"Japan Time"}
             ls{"Japan Standard Time"}

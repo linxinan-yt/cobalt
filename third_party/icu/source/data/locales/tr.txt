@@ -498,7 +498,8 @@ tr{
                 GyMMMEd{"G d MMM y E"}
                 GyMMMd{"G d MMM y"}
 GyMd{"GGGGG dd.MM.y"}
-                MEd{"d/MM E"}                MMMEd{"d MMM E"}
+                MEd{"d/MM E"}
+                MMMEd{"d MMM E"}
                 MMMMEd{"d MMMM E"}
                 MMMMW{
                     one{"MMMM 'ayının' W. 'haftası'"}

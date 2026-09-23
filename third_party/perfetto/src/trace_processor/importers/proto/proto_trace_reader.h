@@ -127,18 +127,21 @@ class ProtoTraceReader : public ChunkedTraceReader {
   base::Status ParseServiceEvent(int64_t ts, ConstBytes);
   base::Status ParseClockSnapshot(ConstBytes blob, uint32_t seq_id);
   base::Status ParseRemoteClockSync(ConstBytes blob);
-// Returns an error if a perfetto_manifest clock or machine override (both
+
+  // Returns an error if a perfetto_manifest clock or machine override (both
   // single-machine by construction) pinned this trace, given evidence that it
   // is actually multi-machine (a remote machine_id or a remote_clock_sync).
-  base::Status CheckManifestSingleMachine();  void HandleIncrementalStateCleared(const protos::pbzero::TracePacket_Decoder&,
+  base::Status CheckManifestSingleMachine();
+  void HandleIncrementalStateCleared(const protos::pbzero::TracePacket_Decoder&,
                                      const TraceBlobView& packet);
   void HandleFirstPacketOnSequence(uint32_t packet_sequence_id);
   void HandlePreviousPacketDropped(const protos::pbzero::TracePacket_Decoder&,
                                    const TraceBlobView& packet);
-// Breaks down a |previous_packet_dropped| bitmask into per-cause stats
+  // Breaks down a |previous_packet_dropped| bitmask into per-cause stats
   // (see TracePacket::DataLossReason).
   void RecordDataLossCauses(SequenceScopedState* seq, uint32_t reasons);
-  void HandleTraceAttributes(ConstBytes);  void ParseTracePacketDefaults(const protos::pbzero::TracePacket_Decoder&,
+  void HandleTraceAttributes(ConstBytes);
+  void ParseTracePacketDefaults(const protos::pbzero::TracePacket_Decoder&,
                                 TraceBlobView trace_packet_defaults);
   void ParseInternedData(const protos::pbzero::TracePacket_Decoder&,
                          TraceBlobView interned_data);

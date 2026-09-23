@@ -179,9 +179,10 @@ TimeZoneNamesDelegate::TimeZoneNamesDelegate(const Locale& locale, UErrorCode& s
                 status = U_MEMORY_ALLOCATION_ERROR;
             } else {
                 cacheEntry->names = tznames;
-// The initial refCount is 2 because the entry is referenced both
+                // The initial refCount is 2 because the entry is referenced both
                 // by this TimeZoneDelegate and by the gTimeZoneNamesCache
-                cacheEntry->refCount = 2;                cacheEntry->lastAccess = static_cast<double>(uprv_getUTCtime());
+                cacheEntry->refCount = 2;
+                cacheEntry->lastAccess = static_cast<double>(uprv_getUTCtime());
 
                 uhash_put(gTimeZoneNamesCache, newKey, cacheEntry, &status);
             }

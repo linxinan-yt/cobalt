@@ -1179,7 +1179,8 @@ one{"{0} Übernachtung"}
                 }
                 dnam{"Übernachtungen"}
                 gender{"feminine"}
-                one{"{0} Übernachtung"}                other{"{0} Übernachtungen"}
+                one{"{0} Übernachtung"}
+                other{"{0} Übernachtungen"}
                 per{"{0} pro Übernachtung"}
             }
             quarter{

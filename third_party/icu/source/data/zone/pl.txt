@@ -86,7 +86,8 @@ pl{
         }
 "America:Cuiaba"{
             ec{"Cuiabá"}
-        }        "America:Dominica"{
+        }
+        "America:Dominica"{
             ec{"Dominika"}
         }
         "America:El_Salvador"{
@@ -109,7 +110,8 @@ pl{
         }
 "America:Maceio"{
             ec{"Maceió"}
-        }        "America:Martinique"{
+        }
+        "America:Martinique"{
             ec{"Martynika"}
         }
         "America:Merida"{

@@ -23,10 +23,11 @@ import {
 } from '../../trace_processor/query_result';
 import ThreadPlugin from '../dev.perfetto.Thread';
 import {
-type Config,
+  type Config,
   SLICE_TRACK_SUMMARY_KIND,
   GroupSummaryTrack,
 } from './group_summary_track';
+
 // This plugin is responsible for adding summary tracks for process and thread
 // groups.
 export default class implements PerfettoPlugin {
@@ -35,7 +36,7 @@ export default class implements PerfettoPlugin {
 
   async onTraceLoad(ctx: Trace): Promise<void> {
     await this.addProcessTrackGroups(ctx);
-await this.addKernelThreadSummary(ctx);  }
+  }
 
   private async addProcessTrackGroups(ctx: Trace): Promise<void> {
     const threads = ctx.plugins.getPlugin(ThreadPlugin).getThreadMap();
@@ -44,11 +45,12 @@ await this.addKernelThreadSummary(ctx);  }
 
       WITH machine_cpu_counts AS (
         SELECT
-IFNULL(machine_id, 0) AS machine,          COUNT(*) AS cpu_count
+          machine_id AS machine,
+          COUNT(*) AS cpu_count
         FROM cpu
         GROUP BY machine
       )
-IFNULL(machine_id, 0) AS machine,      select *
+      select *
       from (
         select
           _process_available_info_summary.upid,
@@ -74,12 +76,14 @@ IFNULL(machine_id, 0) AS machine,      select *
               arg_set_id = process.arg_set_id and
               flat_key = 'chrome.process_label'
           ), '') as chromeProcessLabels,
-ifnull(machine_id, 0) as machine,          IFNULL(machine_cpu_counts.cpu_count, 0) AS cpuCount
+          machine_id as machine,
+          IFNULL(machine_cpu_counts.cpu_count, 0) AS cpuCount
         from _process_available_info_summary
         join process using(upid)
         left join android_process_metadata using(upid)
         LEFT JOIN machine_cpu_counts
-ON machine_cpu_counts.machine = IFNULL(machine_id, 0)      )
+          ON machine_cpu_counts.machine = machine_id
+      )
       union all
       select *
       from (
@@ -94,11 +98,13 @@ ON machine_cpu_counts.machine = IFNULL(machine_id, 0)      )
           0 as isDebuggable,
           0 as isBootImageProfiling,
           '' as chromeProcessLabels,
-ifnull(machine_id, 0) as machine,          IFNULL(machine_cpu_counts.cpu_count, 0) AS cpuCount
+          machine_id as machine,
+          IFNULL(machine_cpu_counts.cpu_count, 0) AS cpuCount
         from _thread_available_info_summary
         join thread using (utid)
         LEFT JOIN machine_cpu_counts
-ON machine_cpu_counts.machine = IFNULL(machine_id, 0)        where upid is null
+          ON machine_cpu_counts.machine = machine_id
+        where upid is null
       )
     `);
     const it = result.iter({
@@ -159,7 +165,7 @@ ON machine_cpu_counts.machine = IFNULL(machine_id, 0)        where upid is null
         renderer: track,
       });
 
-// TODO(stevegolton): Probably add these when we create the process group
+      // TODO(stevegolton): Probably add these when we create the process group
       // node to begin with.
       const trackNode = ctx.defaultWorkspace.getTrackByUri(uri);
       if (trackNode) {
@@ -167,4 +173,5 @@ ON machine_cpu_counts.machine = IFNULL(machine_id, 0)        where upid is null
         trackNode.chips = chips;
       }
     }
-  }}
+  }
+}

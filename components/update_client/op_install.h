@@ -49,7 +49,8 @@ base::OnceClosure InstallOperation(
     PersistedData* metadata,
     const std::string& next_version,
 #endif
-    base::RepeatingCallback<void(base::Value::Dict)> event_adder,    base::RepeatingCallback<void(ComponentState)> state_tracker,
+    base::RepeatingCallback<void(base::DictValue)> event_adder,
+    base::RepeatingCallback<void(ComponentState)> state_tracker,
     CrxInstaller::ProgressCallback progress_callback,
     base::OnceCallback<void(const CrxInstaller::Result&)>
         install_result_callback,

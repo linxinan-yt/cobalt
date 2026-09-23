@@ -48,7 +48,7 @@ class ScreamNetworkController : public NetworkControllerInterface {
   bool SupportsEcnAdaptation() const override { return true; }
 
  private:
-void UpdateScreamTargetBitrateConstraints();
+  void UpdateScreamTargetBitrateConstraints();
   NetworkControlUpdate CreateFirstUpdate(Timestamp now);
   NetworkControlUpdate CreateUpdate(Timestamp now);
   std::optional<PacerConfig> MaybeCreatePacerConfig(Timestamp now);
@@ -58,10 +58,11 @@ void UpdateScreamTargetBitrateConstraints();
   // Otherwise, if pacer queue delay exceeds min_pacing_delay_for_pushback,
   // the ratio scales linearly up to 1.0 at max_pacing_delay_for_pushback.
   double CalculateCwndReduceRatio() const;
+
   Environment env_;
   const ScreamV2Parameters params_;
   const TimeDelta default_pacing_window_;
-const bool allow_initial_bwe_before_media_ = false;
+  const bool allow_initial_bwe_before_media_ = false;
   bool first_update_created_ = false;
   bool network_available_ = false;
   TimeDelta current_pacing_window_;
@@ -83,7 +84,8 @@ const bool allow_initial_bwe_before_media_ = false;
   DataRate reported_padding_rate_;
   DataRate reported_pacing_rate_;
   bool reported_is_bandwidth_limited_ = true;
-  double reported_cwnd_reduce_ratio_ = 0.0;};
+  double reported_cwnd_reduce_ratio_ = 0.0;
+};
 
 }  // namespace webrtc
 

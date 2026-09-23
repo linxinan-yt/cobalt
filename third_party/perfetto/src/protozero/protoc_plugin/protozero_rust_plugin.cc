@@ -56,7 +56,9 @@ void Assert(bool condition) {
 // Maximum line length for single-line pb_enum! macro invocations.
 // Enums that would produce output longer than this threshold will be
 // formatted across multiple lines for readability.
-constexpr size_t kMaxSingleLinePbEnumLength = 60;struct FileDescriptorComp {
+constexpr size_t kMaxSingleLinePbEnumLength = 60;
+
+struct FileDescriptorComp {
   bool operator()(const FileDescriptor* lhs, const FileDescriptor* rhs) const {
     int comp = lhs->name().compare(rhs->name());
     Assert(comp != 0 || lhs == rhs);
@@ -105,8 +107,9 @@ class GeneratorJob {
       GenerateEnumDescriptor(enumeration);
     for (const Descriptor* message : messages_)
       GenerateMessageDescriptor(message);
-for (const auto& key_value : extensions_)
-      GenerateExtensionDescriptor(key_value.first, key_value.second);    return error_.empty();
+    for (const auto& key_value : extensions_)
+      GenerateExtensionDescriptor(key_value.first, key_value.second);
+    return error_.empty();
   }
 
   void SetOption(const std::string& name, const std::string& value) {
@@ -118,12 +121,13 @@ for (const auto& key_value : extensions_)
       path_add_prefix_ = value;
     } else if (name == "invoker") {
       invoker_ = value;
-} else if (name == "external_crate") {
+    } else if (name == "external_crate") {
       external_crate_ = value;
     } else if (name == "local_files") {
       for (const auto& f : SplitString(value, "|")) {
         local_files_.insert(std::string(f));
-      }    } else {
+      }
+    } else {
       Abort(std::string() + "Unknown plugin option '" + name + "'.");
     }
   }
@@ -139,12 +143,13 @@ for (const auto& key_value : extensions_)
       error_ = reason;
   }
 
-// Get Rust struct name corresponding to proto descriptor (simple name only).  template <class T>
+  // Get Rust struct name corresponding to proto descriptor (simple name only).
+  template <class T>
   inline std::string GetRustStructName(const T* descriptor) {
     return StripChars(std::string(descriptor->name()), ".", '_');
   }
 
-// Get full Rust struct name including parent type names for nested messages.
+  // Get full Rust struct name including parent type names for nested messages.
   std::string GetFullRustMessageName(const Descriptor* descriptor) {
     std::string name;
     if (descriptor->containing_type()) {
@@ -152,7 +157,9 @@ for (const auto& key_value : extensions_)
     }
     name.append(GetRustStructName(descriptor));
     return name;
-  }  std::string FieldToRustTypeName(const FieldDescriptor* field) {
+  }
+
+  std::string FieldToRustTypeName(const FieldDescriptor* field) {
     switch (field->type()) {
       case FieldDescriptor::TYPE_BOOL:
         return "bool";
@@ -193,7 +200,8 @@ for (const auto& key_value : extensions_)
       case FieldDescriptor::TYPE_BYTES:
         return "String";
       case FieldDescriptor::TYPE_MESSAGE:
-return GetFullRustMessageName(field->message_type());      case FieldDescriptor::TYPE_GROUP:
+        return GetFullRustMessageName(field->message_type());
+      case FieldDescriptor::TYPE_GROUP:
         Abort("Groups not supported.");
         return "";
     }
@@ -299,7 +307,8 @@ return GetFullRustMessageName(field->message_type());      case FieldDescriptor:
         }
       }
     }
-// Collect dependencies for extension fields (base message and field types).
+
+    // Collect dependencies for extension fields (base message and field types).
     for (const auto& key_value : extensions_) {
       for (const FieldDescriptor* field : key_value.second) {
         // The extended message type (e.g. TrackEvent).
@@ -318,7 +327,8 @@ return GetFullRustMessageName(field->message_type());      case FieldDescriptor:
           }
         }
       }
-    }  }
+    }
+  }
 
   void Preprocess() {
     // Package name maps to a series of namespaces.
@@ -366,12 +376,13 @@ return GetFullRustMessageName(field->message_type());      case FieldDescriptor:
     if (!enums_.empty()) {
       stub_rs_->Print("use crate::pb_enum;\n");
     }
-if (!messages_.empty() || !extensions_.empty()) {
+    if (!messages_.empty() || !extensions_.empty()) {
       stub_rs_->Print("use crate::pb_msg;\n");
     }
     if (!extensions_.empty()) {
       stub_rs_->Print("use crate::pb_msg_ext;\n");
     }
+
     // Print use statements for public imports, enums and messages.
     std::vector<std::string> imports;
     for (const FileDescriptor* dependency : public_imports_) {
@@ -399,13 +410,14 @@ if (!messages_.empty() || !extensions_.empty()) {
       if (!path_strip_prefix_.empty()) {
         mod_path = StripPrefix(imp, path_strip_prefix_);
       }
-// When external_crate is set and this import is not a local file,
+      // When external_crate is set and this import is not a local file,
       // use the external crate path instead of crate::.
       bool is_external =
           !external_crate_.empty() && local_files_.count(imp + ".proto") == 0;
       std::string crate_prefix = is_external ? external_crate_ : "crate";
       stub_rs_->Print("use $crate$::protos$mod$::*;\n", "crate", crate_prefix,
-                      "mod", ReplaceAll(mod_path, "/", "::"));    }
+                      "mod", ReplaceAll(mod_path, "/", "::"));
+    }
   }
 
   void GenerateEnumDescriptor(const EnumDescriptor* enumeration) {
@@ -414,7 +426,8 @@ if (!messages_.empty() || !extensions_.empty()) {
       name.append(GetRustStructName(enumeration->containing_type()));
     }
     name.append(GetRustStructName(enumeration));
-// Build enum values content and calculate single-line length
+
+    // Build enum values content and calculate single-line length
     std::string values_content;
     for (int i = 0; i < enumeration->value_count(); ++i) {
       const EnumValueDescriptor* value = enumeration->value(i);
@@ -507,7 +520,8 @@ if (!messages_.empty() || !extensions_.empty()) {
     stub_rs_->Print("\npb_msg_ext!($base$ {\n", "base", base_name);
     for (const FieldDescriptor* field : fields) {
       stub_rs_->Print("    $field$\n", "field",
-                      GetFieldDescriptorContent(field));    }
+                      GetFieldDescriptorContent(field));
+    }
     stub_rs_->Print("});\n");
   }
 
@@ -519,8 +533,9 @@ if (!messages_.empty() || !extensions_.empty()) {
   std::string wrapper_namespace_;
   std::string path_strip_prefix_;
   std::string path_add_prefix_;
-std::string external_crate_;
-  std::set<std::string> local_files_;  std::string invoker_;
+  std::string external_crate_;
+  std::set<std::string> local_files_;
+  std::string invoker_;
   std::vector<std::string> namespaces_;
   std::string full_namespace_prefix_;
   std::vector<const Descriptor*> messages_;

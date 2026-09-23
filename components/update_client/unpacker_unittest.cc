@@ -105,7 +105,8 @@ TEST_P(UnpackerTest, UnpackFullCrx) {
 }
 
 #if !defined(IN_MEMORY_UPDATES)
-TEST_P(UnpackerTest, UnpackFileNotFound) {  SEQUENCE_CHECKER(sequence_checker);
+TEST_P(UnpackerTest, UnpackFileNotFound) {
+  SEQUENCE_CHECKER(sequence_checker);
   base::RunLoop loop;
 #if BUILDFLAG(IS_STARBOARD)
   OperationResult op_result2;
@@ -119,7 +120,8 @@ TEST_P(UnpackerTest, UnpackFileNotFound) {  SEQUENCE_CHECKER(sequence_checker);
       "jebgalgnebhfojomionfpkfelancnnkf", "UnpackerTest",
 base::ToVector(jebg_hash), GetTestFilePath("file_not_found.crx"), nullptr,
 #endif
-      crx_file::VerifierFormat::CRX3, IsForeground(),      base::BindLambdaForTesting([&](const Unpacker::Result& result) {
+      crx_file::VerifierFormat::CRX3, IsForeground(),
+      base::BindLambdaForTesting([&](const Unpacker::Result& result) {
         DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker);
         EXPECT_EQ(result.error, UnpackerError::kInvalidFile);
         EXPECT_EQ(result.extended_error,
@@ -156,7 +158,8 @@ TEST_P(UnpackerTest, UnpackFileHashMismatch) {
       base::ToVector(abag_hash),
       GetTestFilePath("jebgalgnebhfojomionfpkfelancnnkf.crx"), nullptr,
 #endif
-      crx_file::VerifierFormat::CRX3, IsForeground(),      base::BindLambdaForTesting([&](const Unpacker::Result& result) {
+      crx_file::VerifierFormat::CRX3, IsForeground(),
+      base::BindLambdaForTesting([&](const Unpacker::Result& result) {
         DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker);
         EXPECT_EQ(result.error, UnpackerError::kInvalidFile);
         EXPECT_EQ(result.extended_error,

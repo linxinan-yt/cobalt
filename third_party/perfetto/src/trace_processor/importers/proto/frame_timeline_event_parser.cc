@@ -87,11 +87,12 @@ StringId JankTypeBitmaskToStringId(TraceProcessorContext* context,
     jank_reasons.emplace_back("Non Animating");
   if (jank_type & FrameTimelineEvent::JANK_DISPLAY_NOT_ON)
     jank_reasons.emplace_back("Display not ON");
-if (jank_type & FrameTimelineEvent::JANK_DISPLAY_MODE_CHANGE_IN_PROGRESS)
+  if (jank_type & FrameTimelineEvent::JANK_DISPLAY_MODE_CHANGE_IN_PROGRESS)
     jank_reasons.emplace_back("ModeChange in progress");
   if (jank_type &
       FrameTimelineEvent::JANK_DISPLAY_POWER_MODE_CHANGE_IN_PROGRESS)
     jank_reasons.emplace_back("PowerModeChange in progress");
+
   std::string jank_str(
       std::accumulate(jank_reasons.begin(), jank_reasons.end(), std::string(),
                       [](const std::string& l, const std::string& r) {
@@ -210,12 +211,13 @@ FrameTimelineEventParser::FrameTimelineEventParser(
           context->storage->InternString("Surface frame token")),
       display_frame_token_id_(
           context->storage->InternString("Display frame token")),
-animation_time_millis_id_(
+      animation_time_millis_id_(
           context->storage->InternString("Animation Time (ms)")),
       present_delay_millis_id_(
           context->storage->InternString("Present Delay (ms)")),
       vsync_resynced_jitter_millis_id_(
-          context->storage->InternString("Vsync Resynced Jitter (ms)")),      present_type_id_(context->storage->InternString("Present type")),
+          context->storage->InternString("Vsync Resynced Jitter (ms)")),
+      present_type_id_(context->storage->InternString("Present type")),
       present_type_experimental_id_(
           context->storage->InternString("Present type (experimental)")),
       on_time_finish_id_(context->storage->InternString("On time finish")),
@@ -226,20 +228,22 @@ animation_time_millis_id_(
       jank_severity_type_id_(
           context->storage->InternString("Jank severity type")),
       jank_severity_score_id_(
-context->storage->InternString("Jank Severity Score")),
+          context->storage->InternString("Jank Severity Score")),
       jank_debug_metadata_id_(
-          context->storage->InternString("Jank Metadata (debugging only)")),      layer_name_id_(context->storage->InternString("Layer name")),
+          context->storage->InternString("Jank Metadata (debugging only)")),
+      layer_name_id_(context->storage->InternString("Layer name")),
       prediction_type_id_(context->storage->InternString("Prediction type")),
       jank_tag_id_(context->storage->InternString("Jank tag")),
       jank_tag_experimental_id_(
           context->storage->InternString("Jank tag (experimental)")),
       is_buffer_id_(context->storage->InternString("Is Buffer?")),
-latched_unsignaled_count_id_(
+      latched_unsignaled_count_id_(
           context->storage->InternString("Latched unsignaled count")),
       addressable_unsignaled_latch_count_id_(
           context->storage->InternString("Addressable unsignaled latch count")),
       latched_fence_state_id_(
-          context->storage->InternString("Latched fence state")),      jank_tag_unspecified_id_(context->storage->InternString("Unspecified")),
+          context->storage->InternString("Latched fence state")),
+      jank_tag_unspecified_id_(context->storage->InternString("Unspecified")),
       jank_tag_none_id_(context->storage->InternString("No Jank")),
       jank_tag_self_id_(context->storage->InternString("Self Jank")),
       jank_tag_other_id_(context->storage->InternString("Other Jank")),
@@ -248,8 +252,9 @@ latched_unsignaled_count_id_(
           context->storage->InternString("Buffer Stuffing")),
       jank_tag_sf_stuffing_id_(
           context->storage->InternString("SurfaceFlinger Stuffing")),
-jank_tag_none_perceivable_id_(
+      jank_tag_none_perceivable_id_(
           context->storage->InternString("Non-perceivable Jank")) {}
+
 void FrameTimelineEventParser::ParseExpectedDisplayFrameStart(int64_t timestamp,
                                                               ConstBytes blob) {
   ExpectedDisplayFrameStartDecoder event(blob);
@@ -288,11 +293,12 @@ StringId FrameTimelineEventParser::CalculateDisplayFrameJankTag(
     jank_tag = jank_tag_sf_stuffing_id_;
   } else if (jank_type == FrameTimelineEvent::JANK_DROPPED) {
     jank_tag = jank_tag_dropped_id_;
-} else if (jank_type == FrameTimelineEvent::JANK_NON_ANIMATING ||
+  } else if (jank_type == FrameTimelineEvent::JANK_NON_ANIMATING ||
              jank_type == FrameTimelineEvent::JANK_DISPLAY_NOT_ON ||
              jank_type == FrameTimelineEvent::
                               JANK_DISPLAY_POWER_MODE_CHANGE_IN_PROGRESS) {
-    jank_tag = jank_tag_none_perceivable_id_;  } else {
+    jank_tag = jank_tag_none_perceivable_id_;
+  } else {
     jank_tag = jank_tag_none_id_;
   }
 
@@ -312,7 +318,8 @@ void FrameTimelineEventParser::ParseActualDisplayFrameStart(int64_t timestamp,
   int64_t cookie = event.cookie();
   int64_t token = event.token();
   double jank_severity_score = static_cast<double>(event.jank_severity_score());
-double jank_debug_metadata = static_cast<double>(event.jank_debug_metadata());  double present_delay_millis =
+  double jank_debug_metadata = static_cast<double>(event.jank_debug_metadata());
+  double present_delay_millis =
       static_cast<double>(event.present_delay_millis());
   StringId name_id =
       context_->storage->InternString(base::StringView(std::to_string(token)));
@@ -396,7 +403,7 @@ double jank_debug_metadata = static_cast<double>(event.jank_debug_metadata());  
         inserter->AddArg(jank_tag_id_, Variadic::String(jank_tag));
         inserter->AddArg(jank_tag_experimental_id_,
                          Variadic::String(jank_tag_experimental));
-inserter->AddArg(jank_debug_metadata_id_,
+        inserter->AddArg(jank_debug_metadata_id_,
                          Variadic::Real(jank_debug_metadata));
         if (event.has_latched_unsignaled_count()) {
           inserter->AddArg(latched_unsignaled_count_id_,
@@ -406,7 +413,8 @@ inserter->AddArg(jank_debug_metadata_id_,
           inserter->AddArg(
               addressable_unsignaled_latch_count_id_,
               Variadic::Integer(event.addressable_unsignaled_latch_count()));
-        }      });
+        }
+      });
 
   // SurfaceFrames will always be parsed before the matching DisplayFrame
   // (since the app works on the frame before SurfaceFlinger does). Because
@@ -487,7 +495,7 @@ StringId FrameTimelineEventParser::CalculateSurfaceFrameJankTag(
     jank_tag = jank_tag_other_id_;
   } else if (jank_type == FrameTimelineEvent::JANK_BUFFER_STUFFING) {
     jank_tag = jank_tag_buffer_stuffing_id_;
-} else if (jank_type == FrameTimelineEvent::JANK_SF_STUFFING) {
+  } else if (jank_type == FrameTimelineEvent::JANK_SF_STUFFING) {
     jank_tag = jank_tag_sf_stuffing_id_;
   } else if (present_type_opt.has_value() &&
              *present_type_opt == FrameTimelineEvent::PRESENT_DROPPED) {
@@ -496,7 +504,8 @@ StringId FrameTimelineEventParser::CalculateSurfaceFrameJankTag(
              jank_type == FrameTimelineEvent::JANK_DISPLAY_NOT_ON ||
              jank_type == FrameTimelineEvent::
                               JANK_DISPLAY_POWER_MODE_CHANGE_IN_PROGRESS) {
-    jank_tag = jank_tag_none_perceivable_id_;  } else {
+    jank_tag = jank_tag_none_perceivable_id_;
+  } else {
     jank_tag = jank_tag_none_id_;
   }
 
@@ -518,9 +527,10 @@ void FrameTimelineEventParser::ParseActualSurfaceFrameStart(int64_t timestamp,
   int64_t token = event.token();
   int64_t display_frame_token = event.display_frame_token();
   double jank_severity_score = static_cast<double>(event.jank_severity_score());
-double jank_debug_metadata = static_cast<double>(event.jank_debug_metadata());
+  double jank_debug_metadata = static_cast<double>(event.jank_debug_metadata());
   double animation_time_millis =
-      static_cast<double>(event.animation_time_millis());  double present_delay_millis =
+      static_cast<double>(event.animation_time_millis());
+  double present_delay_millis =
       static_cast<double>(event.present_delay_millis());
   double vsync_resynced_jitter_millis =
       static_cast<double>(event.vsync_resynced_jitter_millis());
@@ -611,10 +621,11 @@ double jank_debug_metadata = static_cast<double>(event.jank_debug_metadata());
         inserter->AddArg(surface_frame_token_id_, Variadic::Integer(token));
         inserter->AddArg(display_frame_token_id_,
                          Variadic::Integer(display_frame_token));
-if (event.has_animation_time_millis()) {
+        if (event.has_animation_time_millis()) {
           inserter->AddArg(animation_time_millis_id_,
                            Variadic::Real(animation_time_millis));
-        }        inserter->AddArg(present_delay_millis_id_,
+        }
+        inserter->AddArg(present_delay_millis_id_,
                          Variadic::Real(present_delay_millis));
         inserter->AddArg(vsync_resynced_jitter_millis_id_,
                          Variadic::Real(vsync_resynced_jitter_millis));

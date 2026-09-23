@@ -130,7 +130,8 @@ class RTC_EXPORT PacketTransportInternal {
   virtual ~PacketTransportInternal();
 
  protected:
-explicit PacketTransportInternal(TaskQueueBase* attached_queue = nullptr);
+  explicit PacketTransportInternal(TaskQueueBase* attached_queue = nullptr);
+
   void NotifyPacketReceived(const ReceivedIpPacket& packet);
   void NotifyOnClose();
 

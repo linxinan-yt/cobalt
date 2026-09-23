@@ -7,7 +7,8 @@ yo_BJ{
         cf{"Ònà Ìgbekalɛ̀ owó"}
         collation{"Ètò Ɛlɛ́sɛɛsɛ"}
 em{"Ìgbékalɛ̀ Ɛ̀mójì"}
-        lw{"Àwɔn Ìdá Ìlà Láàárín Àwɔn Ɔ̀rɔ̀"}        ms{"Èto Ìdiwɔ̀n"}
+        lw{"Àwɔn Ìdá Ìlà Láàárín Àwɔn Ɔ̀rɔ̀"}
+        ms{"Èto Ìdiwɔ̀n"}
         numbers{"Àwɔn nɔ́ńbà"}
         ss{"Ìdá Gbólóhùn Lɛ́yìn Ìgékúrú"}
     }

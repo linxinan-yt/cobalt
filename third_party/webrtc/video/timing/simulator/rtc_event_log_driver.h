@@ -34,6 +34,7 @@
 #include "test/time_controller/simulated_time_task_queue_controller.h"
 #include "video/timing/simulator/rtp_packet_simulator.h"
 #include "video/timing/simulator/rtt_simulator.h"
+
 namespace webrtc::video_timing_simulator {
 
 // The `RtcEventLogDriver` is responsible for driving a simulation given an
@@ -67,29 +68,34 @@ class RtcEventLogDriver {
     // If non-empty, will only simulate video streams whose main SSRCs is
     // contained in the set.
     std::set<uint32_t> ssrc_filter = {};
-  };  // A stream that is driven by simulated RTP packets coming from the log.
+  };
+
+  // A stream that is driven by simulated RTP packets coming from the log.
   class StreamInterface {
    public:
     virtual ~StreamInterface() = default;
-// Insert `simulated_packet` into the stream.
+    // Insert `simulated_packet` into the stream.
     virtual void InsertSimulatedPacket(
         const RtpPacketSimulator::SimulatedPacket& simulated_packet) = 0;
     // Propagate an RTT update to the stream components.
-    virtual void UpdateMaxRtt(TimeDelta max_rtt) = 0;    // Notify the stream that no more packets will be inserted.
+    virtual void UpdateMaxRtt(TimeDelta max_rtt) = 0;
+    // Notify the stream that no more packets will be inserted.
     virtual void Close() = 0;
   };
 
-// Factory that creates a stream given the environment and the stream SSRCs.
+  // Factory that creates a stream given the environment and the stream SSRCs.
   using StreamInterfaceFactory =
       absl::AnyInvocable<std::unique_ptr<StreamInterface>(const Environment&,
                                                           /*ssrc=*/uint32_t,
                                                           /*rtx_ssrc=*/uint32_t)
                              const>;
+
   // Slack added after final event, in order to catch any straggling frames.
   static constexpr TimeDelta kShutdownAdvanceTimeSlack = TimeDelta::Millis(100);
 
-RtcEventLogDriver(const Config& config,
-                    const ParsedRtcEventLog* absl_nonnull parsed_log,                    absl::string_view field_trials_string,
+  RtcEventLogDriver(const Config& config,
+                    const ParsedRtcEventLog* absl_nonnull parsed_log,
+                    absl::string_view field_trials_string,
                     StreamInterfaceFactory stream_factory);
   ~RtcEventLogDriver();
 
@@ -99,7 +105,7 @@ RtcEventLogDriver(const Config& config,
   // Perform the simulation. Should only be called once per instantiation.
   void Simulate();
 
-Timestamp GetCurrentTimeForTesting() {
+  Timestamp GetCurrentTimeForTesting() {
     return time_controller_.GetClock()->CurrentTime();
   }
 
@@ -115,7 +121,9 @@ Timestamp GetCurrentTimeForTesting() {
 
    private:
     RtcEventLogDriver& driver_;
-  };  // Simulation.
+  };
+
+  // Simulation.
   // Sets the `time_controller_` simulated time to `log_timestamp`, thus
   // executing all relevant tasks on the `simulator_queue_`.
   void AdvanceTime(Timestamp log_timestamp);
@@ -128,7 +136,7 @@ Timestamp GetCurrentTimeForTesting() {
   // RtcEventProcessor callbacks (running on main thread).
   void OnLoggedVideoRecvConfig(const LoggedVideoRecvConfig& config);
   void OnLoggedRtpPacketIncoming(const LoggedRtpPacketIncoming& packet);
-void OnLoggedRtcpPacketSenderReportOutgoing(
+  void OnLoggedRtcpPacketSenderReportOutgoing(
       const LoggedRtcpPacketSenderReport& packet);
   void OnLoggedRtcpPacketExtendedReportsOutgoing(
       const LoggedRtcpPacketExtendedReports& packet);
@@ -146,7 +154,8 @@ void OnLoggedRtcpPacketSenderReportOutgoing(
 
   // Environment.
   const Config config_;
-  SimulatedTimeTaskQueueController time_controller_;  const Environment env_;
+  SimulatedTimeTaskQueueController time_controller_;
+  const Environment env_;
 
   // Input.
   const ParsedRtcEventLog& parsed_log_;
@@ -157,7 +166,7 @@ void OnLoggedRtcpPacketSenderReportOutgoing(
   std::optional<Timestamp> prev_log_timestamp_;
   std::unique_ptr<TaskQueueBase, TaskQueueDeleter> simulator_queue_;
   RtpPacketSimulator packet_simulator_ RTC_GUARDED_BY(simulator_queue_);
-RttCallbackAdapter rtt_callback_adapter_ RTC_GUARDED_BY(simulator_queue_);
+  RttCallbackAdapter rtt_callback_adapter_ RTC_GUARDED_BY(simulator_queue_);
   std::unique_ptr<RttSimulator> rtt_simulator_ RTC_GUARDED_BY(simulator_queue_);
   // Owned streams. Keyed by `ssrc`, so that they can be replaced if needed.
   absl::flat_hash_map<uint32_t, std::unique_ptr<StreamInterface>> streams_
@@ -167,7 +176,8 @@ RttCallbackAdapter rtt_callback_adapter_ RTC_GUARDED_BY(simulator_queue_);
       RTC_GUARDED_BY(simulator_queue_);
   // Keep track of all logged `ssrc`s for text logging purposes.
   absl::flat_hash_set<uint32_t> all_known_ssrcs_
-      RTC_GUARDED_BY(simulator_queue_);};
+      RTC_GUARDED_BY(simulator_queue_);
+};
 
 }  // namespace webrtc::video_timing_simulator
 

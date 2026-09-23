@@ -3190,7 +3190,8 @@ TEST_F(TracingServiceImplTest, NoFlushBeforeWriteIntoFile) {
   trace_config.add_data_sources()->mutable_config()->set_name("data_source");
   trace_config.set_write_into_file(true);
   trace_config.set_file_write_period_ms(10000);  // 10s
-trace_config.set_write_flush_mode(TraceConfig::WRITE_FLUSH_DISABLED);
+  trace_config.set_write_flush_mode(TraceConfig::WRITE_FLUSH_DISABLED);
+
   auto write_into_file_session_file = base::TempFile::Create();
   consumer->EnableTracing(
       trace_config, base::ScopedFile(dup(write_into_file_session_file.fd())));
@@ -3218,7 +3219,8 @@ trace_config.set_write_flush_mode(TraceConfig::WRITE_FLUSH_DISABLED);
 }
 
 TEST_F(TracingServiceImplTest, WriteIntoFileCloneSessionBeforeWrite) {
-if (!PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER)) {    GTEST_SKIP() << "This test requires buffer_clone_preserve_read_iter=true";
+  if (!PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER)) {
+    GTEST_SKIP() << "This test requires buffer_clone_preserve_read_iter=true";
   }
 
   auto write_into_file_session_file = base::TempFile::Create();
@@ -3313,7 +3315,8 @@ if (!PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER)) {    GTEST_SKIP() << "This
 }
 
 TEST_F(TracingServiceImplTest, WriteIntoFileCloneSessionAfterWrite) {
-if (!PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER)) {    GTEST_SKIP() << "This test requires buffer_clone_preserve_read_iter=true";
+  if (!PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER)) {
+    GTEST_SKIP() << "This test requires buffer_clone_preserve_read_iter=true";
   }
 
   auto write_into_file_session_file = base::TempFile::Create();
@@ -3424,7 +3427,8 @@ if (!PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER)) {    GTEST_SKIP() << "This
 // session. This is test is needed, because we have a slightly different code
 // path when we clone the 'write_into_file' session.
 TEST_F(TracingServiceImplTest, WriteIntoFileCloneSessionLifecycleEvents) {
-if (!PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER)) {    GTEST_SKIP() << "This test requires buffer_clone_preserve_read_iter=true";
+  if (!PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER)) {
+    GTEST_SKIP() << "This test requires buffer_clone_preserve_read_iter=true";
   }
 
   using TracingServiceEvent = protos::gen::TracingServiceEvent;
@@ -3538,8 +3542,9 @@ if (!PERFETTO_FLAGS(BUFFER_CLONE_PRESERVE_READ_ITER)) {    GTEST_SKIP() << "This
     consumer->Connect(svc.get());
     TraceConfig trace_config = create_trace_config_fn();
     trace_config.set_write_into_file(true);
-// Large period so the periodic drain/flush timers don't race the clone.
-    trace_config.set_file_write_period_ms(100000);  // 100s    consumer->EnableTracing(
+    // Large period so the periodic drain/flush timers don't race the clone.
+    trace_config.set_file_write_period_ms(100000);  // 100s
+    consumer->EnableTracing(
         trace_config, base::ScopedFile(dup(write_into_file_session_file.fd())));
 
     producer->WaitForTracingSetup();

@@ -17,7 +17,8 @@ import type {Engine} from '../../../trace_processor/engine';
 import {Section} from '../../../widgets/section';
 import {GridLayout} from '../../../widgets/grid_layout';
 import {
-  type StatsSectionRow,  loadStatsWithFilter,
+  type StatsSectionRow,
+  loadStatsWithFilter,
   groupByCategory,
   renderErrorCategoryCard,
   renderCategorySection,
@@ -25,8 +26,9 @@ import {
 
 export interface DataLossesData {
   losses: StatsSectionRow[];
-isMultiTrace: boolean;
-  isMultiMachine: boolean;}
+  isMultiTrace: boolean;
+  isMultiMachine: boolean;
+}
 
 export async function loadDataLossesData(
   engine: Engine,
@@ -35,7 +37,7 @@ export async function loadDataLossesData(
     engine,
     "severity = 'data_loss' AND value > 0",
   );
-const traceIds = new Set<number>();
+  const traceIds = new Set<number>();
   const machineIds = new Set<number>();
   for (const l of losses) {
     if (l.traceId !== null) traceIds.add(l.traceId);
@@ -45,7 +47,8 @@ const traceIds = new Set<number>();
     losses,
     isMultiTrace: traceIds.size > 1,
     isMultiMachine: machineIds.size > 1,
-  };}
+  };
+}
 
 export interface DataLossesTabAttrs {
   data: DataLossesData;
@@ -86,8 +89,9 @@ export class DataLossesTab implements m.ClassComponent<DataLossesTabAttrs> {
           categories.map((cat) =>
             renderCategorySection(cat, {
               className: 'pf-trace-info-page__logs-grid',
-isMultiTrace: attrs.data.isMultiTrace,
-              isMultiMachine: attrs.data.isMultiMachine,            }),
+              isMultiTrace: attrs.data.isMultiTrace,
+              isMultiMachine: attrs.data.isMultiMachine,
+            }),
           ),
         ),
     );

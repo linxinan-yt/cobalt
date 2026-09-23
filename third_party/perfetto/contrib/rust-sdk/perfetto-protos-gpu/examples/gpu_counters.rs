@@ -32,7 +32,9 @@ use std::{
 struct InstanceState {
     config: GpuCounterConfig,
     need_counter_descriptors: bool,
-}#[derive(Debug, Default)]
+}
+
+#[derive(Debug, Default)]
 struct GpuCounterConfig {
     counter_period_ns: Option<u64>,
     counter_ids: Vec<u32>,
@@ -66,7 +68,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let producer_args = ProducerInitArgsBuilder::new().backends(Backends::SYSTEM);
     Producer::init(producer_args.build());
     let mut data_source = DataSource::new();
-let instances: Arc<Mutex<[Option<InstanceState>; 8]>> =
+    let instances: Arc<Mutex<[Option<InstanceState>; 8]>> =
         Arc::new(Mutex::new([None, None, None, None, None, None, None, None]));
     let instances_for_setup = Arc::clone(&instances);
     let instances_for_start = Arc::clone(&instances);
@@ -107,11 +109,12 @@ let instances: Arc<Mutex<[Option<InstanceState>; 8]>> =
             println!("OnStop id: {}", inst_id);
         });
     let start_time = Instant::now();
-    data_source.register("gpu.counters.example", data_source_args.build())?;    loop {
+    data_source.register("gpu.counters.example", data_source_args.build())?;
+    loop {
         data_source.trace(|ctx: &mut TraceContext| {
             // Fixed set of counters: sin, cos, tan.
             const COUNTER_IDS: [u32; 3] = [1, 2, 3];
-let inst_id = ctx.instance_index();
+            let inst_id = ctx.instance_index();
             let elapsed_secs = start_time.elapsed().as_secs_f64();
             let need_descriptors = {
                 let mut instances = instances.lock().unwrap();
@@ -159,7 +162,8 @@ let inst_id = ctx.instance_index();
             .iter()
             .filter_map(|s| s.as_ref()?.config.counter_period_ns)
             .map(Duration::from_nanos)
-            .min()            .unwrap_or(Duration::from_secs(1));
+            .min()
+            .unwrap_or(Duration::from_secs(1));
         std::thread::sleep(counter_period);
     }
 }

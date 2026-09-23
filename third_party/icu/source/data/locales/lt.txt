@@ -752,7 +752,8 @@ h{
                     M{"y MMM d, E – MMM d, E"}
                     d{"y MMM d, E – MMM d, E"}
                     y{"y MMM d, E – y MMM d, E"}
-                }                yMMMM{
+                }
+                yMMMM{
                     M{"y LLLL–LLLL"}
                     y{"y LLLL – y LLLL"}
                 }
@@ -1846,7 +1847,8 @@ general{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }        number{
+        }
+        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ، ٫ 、﹑､︑]",

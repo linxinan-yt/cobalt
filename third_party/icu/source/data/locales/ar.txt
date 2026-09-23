@@ -33,7 +33,8 @@ patterns{
             rationalFormats{
                 integerAndRationalPattern{"{1} {0}"}
                 rationalPattern{"{1}⁄{0}"}
-            }            symbols{
+            }
+            symbols{
                 nan{"ليس رقمًا"}
             }
         }

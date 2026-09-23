@@ -1078,8 +1078,10 @@ map->Add<blink::mojom::ScriptToolHost>(
           &RenderFrameHostImpl::GetManagedConfigurationService>);
 #endif  // !BUILDFLAG(IS_ANDROID)
 
+#if !BUILDFLAG(IS_COBALT)
   map->Add<blink::mojom::WebUsbService>(
       &BindRenderFrameHostImpl<&RenderFrameHostImpl::CreateWebUsbService>);
+#endif
 
   map->Add<blink::mojom::WebSocketConnector>(
       &BindRenderFrameHostImpl<&RenderFrameHostImpl::CreateWebSocketConnector>);
@@ -1135,8 +1137,10 @@ map->Add<blink::mojom::ScriptToolHost>(
         &BindWebNNWeightsFileCreatorForRenderFrame);
   }
 
+#if !BUILDFLAG(IS_COBALT)
   map->Add<blink::mojom::WebBluetoothService>(
       &WebBluetoothServiceImpl::BindIfAllowed);
+#endif
 
   map->Add<blink::mojom::PushMessaging>(
       &BindRenderFrameHostImpl<&RenderFrameHostImpl::GetPushMessaging>);
@@ -1288,8 +1292,10 @@ map->Add<blink::mojom::ScriptToolHost>(
   }
 
 #if BUILDFLAG(IS_ANDROID) || (BUILDFLAG(IS_IOS) && !BUILDFLAG(IS_IOS_TVOS))
+#if !BUILDFLAG(IS_COBALT)
   map->Add<device::mojom::NFC>(
       &BindRenderFrameHostImpl<&RenderFrameHostImpl::BindNFCReceiver>);
+#endif
 #else
   map->Add<blink::mojom::InstalledAppProvider>(
       &BindRenderFrameHostImpl<
@@ -1297,13 +1303,15 @@ map->Add<blink::mojom::ScriptToolHost>(
 #endif  // BUILDFLAG(IS_ANDROID) || (BUILDFLAG(IS_IOS) &&
         // !BUILDFLAG(IS_IOS_TVOS))
 
-#if !BUILDFLAG(IS_IOS)
+#if !BUILDFLAG(IS_IOS) && !BUILDFLAG(IS_COBALT)
   map->Add<blink::mojom::HidService>(
       &BindRenderFrameHostImpl<&RenderFrameHostImpl::GetHidService>);
-#endif  // !BUILDFLAG(IS_IOS)
+#endif  // !BUILDFLAG(IS_IOS) && !BUILDFLAG(IS_COBALT)
 
+#if !BUILDFLAG(IS_COBALT)
   map->Add<blink::mojom::SerialService>(
       &BindRenderFrameHostImpl<&RenderFrameHostImpl::BindSerialService>);
+#endif
 
   map->Add<blink::mojom::ModelContextHost>(
       &BindRenderFrameHostImpl<&RenderFrameHostImpl::BindModelContextHost>);
@@ -1357,6 +1365,7 @@ map->Add<blink::mojom::ScriptToolHost>(
             host->GetLastCommittedOrigin(), std::move(receiver));
       }));
 
+#if !BUILDFLAG(IS_COBALT)
   map->Add<language_detection::mojom::ContentLanguageDetectionDriver>(
       base::BindRepeating(
           [](RenderFrameHost* host,
@@ -1368,6 +1377,7 @@ map->Add<blink::mojom::ScriptToolHost>(
                 &RenderFrameHostImpl::From(host)->document_associated_data(),
                 std::move(receiver));
           }));
+#endif
 
   map->Add<blink::mojom::BackgroundFetchService>(
       &BackgroundFetchServiceImpl::CreateForFrame);
@@ -1640,7 +1650,8 @@ if (base::FeatureList::IsEnabled(blink::features::kTranslationAPI)) {
             },
             base::Unretained(host)));
   }
-#endif  // !BUILDFLAG(IS_COBALT)}
+#endif  // !BUILDFLAG(IS_COBALT)
+}
 
 void PopulateBinderMapWithContext(
     DedicatedWorkerHost* host,
@@ -1752,6 +1763,7 @@ map->Add<blink::mojom::TranslationManager>(base::BindRepeating(
             host->GetWorkerStorageKey().origin(), std::move(receiver));
       },
       base::Unretained(host)));
+#if !BUILDFLAG(IS_COBALT)
   map->Add<language_detection::mojom::ContentLanguageDetectionDriver>(
       base::BindRepeating(
           [](SharedWorkerHost* host,
@@ -1763,6 +1775,7 @@ map->Add<blink::mojom::TranslationManager>(base::BindRepeating(
                 std::move(receiver));
           },
           base::Unretained(host)));
+#endif
 #if !BUILDFLAG(IS_ANDROID)
   map->Add<blink::mojom::DirectSocketsService>(base::BindRepeating(
       [](SharedWorkerHost* host,
@@ -1900,6 +1913,7 @@ map->Add<blink::mojom::TranslationManager>(base::BindRepeating(
         }
       },
       base::Unretained(host)));
+#if !BUILDFLAG(IS_COBALT)
   map->Add<language_detection::mojom::ContentLanguageDetectionDriver>(
       base::BindRepeating(
           [](ServiceWorkerHost* host,
@@ -1913,6 +1927,7 @@ map->Add<blink::mojom::TranslationManager>(base::BindRepeating(
             }
           },
           base::Unretained(host)));
+#endif
   // RenderProcessHost binders
   map->Add<media::mojom::VideoDecodePerfHistory>(BindServiceWorkerReceiver(
       &RenderProcessHostImpl::BindVideoDecodePerfHistory, host));

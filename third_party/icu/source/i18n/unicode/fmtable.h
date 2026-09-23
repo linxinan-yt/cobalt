@@ -35,6 +35,7 @@
 U_NAMESPACE_BEGIN
 
 class FixedString;
+
 namespace number::impl {
 class DecimalQuantity;
 }

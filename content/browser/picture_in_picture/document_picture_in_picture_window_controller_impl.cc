@@ -164,9 +164,11 @@ void DocumentPictureInPictureWindowControllerImpl::NotifyClosedAndStopObserving(
   child_contents_ = nullptr;
   child_contents_observer_.reset();
 
+#if BUILDFLAG(ENABLE_SCREEN_CAPTURE)
   if (auto* coordinator = PipScreenCaptureCoordinator::GetInstance()) {
     coordinator->OnPipClosed();
   }
+#endif  // BUILDFLAG(ENABLE_SCREEN_CAPTURE)
 
   WebContentsImpl* web_contents_impl = GetWebContentsImpl();
 

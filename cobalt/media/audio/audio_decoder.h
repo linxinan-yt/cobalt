@@ -17,6 +17,8 @@
 
 #include <stddef.h>
 
+#include <memory>
+
 #include "base/containers/span.h"
 
 namespace blink {
@@ -28,6 +30,8 @@ namespace cobalt {
 // Decode in-memory audio file data.
 bool DecodeAudioFileData(blink::WebAudioBus* destination_bus,
                          base::span<const char> audio_file_data);
+std::unique_ptr<blink::WebAudioBus> DecodeAudioFileData(
+    base::span<const char> audio_file_data);
 
 }  // namespace cobalt
 

@@ -156,7 +156,8 @@ void MediaPermissionDispatcher::OnPermissionStatus(
 #else // BUILDFLAG(USE_STARBOARD_MEDIA)
   std::move(permission_status_cb)
 .Run(status->status == blink::mojom::PermissionStatus::GRANTED);
-#endif // BUILDFLAG(USE_STARBOARD_MEDIA)}
+#endif // BUILDFLAG(USE_STARBOARD_MEDIA)
+}
 
 #if BUILDFLAG(IS_WIN)
 void MediaPermissionDispatcher::IsHardwareSecureDecryptionAllowed(

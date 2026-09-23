@@ -53,13 +53,8 @@ WITH
     SELECT ts, dur, cpu, idle_group, min(ts) AS min
     FROM _ii_idle_tasks
     WHERE
-utid IN (
-        SELECT
-          utid
-        FROM thread
-        WHERE
-          is_idle
-      )    GROUP BY
+      utid IN (SELECT utid FROM thread WHERE is_idle)
+    GROUP BY
       idle_group
   ),
   -- MIN() here will give the first active task immediately succeeding the idle
@@ -79,13 +74,8 @@ utid IN (
     SELECT ts, dur, cpu, idle_group, max(ts) AS min
     FROM _ii_idle_tasks
     WHERE
-utid IN (
-        SELECT
-          utid
-        FROM thread
-        WHERE
-          is_idle
-      )    GROUP BY
+      utid IN (SELECT utid FROM thread WHERE is_idle)
+    GROUP BY
       idle_group
   )
 SELECT

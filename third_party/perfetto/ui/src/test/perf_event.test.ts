@@ -12,7 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import {test, type Page} from '@playwright/test';import {PerfettoTestHelper} from './perfetto_ui_test_helper';
+import {test, type Page} from '@playwright/test';
+import {PerfettoTestHelper} from './perfetto_ui_test_helper';
 
 test.describe.configure({mode: 'serial'});
 
@@ -30,21 +31,24 @@ test('multiple callstack tracks', async () => {
   await grp.scrollIntoViewIfNeeded();
   await pth.toggleTrackGroup(grp);
 
-await pth.waitForIdleAndScreenshot('perf_event_sf.png', {
+  await pth.waitForIdleAndScreenshot('perf_event_sf.png', {
     locator: page.locator('.pf-timeline-page__timeline'),
   });
 
   const processGrp = pth.locateTrack(
-    'surfaceflinger 558/Perf Process Callstacks',    grp,
+    'surfaceflinger 558/Perf Process Callstacks',
+    grp,
   );
   await processGrp.scrollIntoViewIfNeeded();
   await pth.toggleTrackGroup(processGrp);
   const threadGrp = pth.locateTrack(
-'surfaceflinger 558/Thread 558 Perf Callstacks',    grp,
+    'surfaceflinger 558/Thread 558 Perf Callstacks',
+    grp,
   );
   await threadGrp.scrollIntoViewIfNeeded();
   await pth.toggleTrackGroup(threadGrp);
 
-await pth.waitForIdleAndScreenshot('perf_event_sf_expanded.png', {
+  await pth.waitForIdleAndScreenshot('perf_event_sf_expanded.png', {
     locator: page.locator('.pf-timeline-page__timeline'),
-  });});
+  });
+});

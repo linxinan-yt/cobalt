@@ -377,7 +377,8 @@ kn{
 AmPmMarkers{
                 "AM",
                 "PM",
-            }            AmPmMarkersNarrow{
+            }
+            AmPmMarkersNarrow{
                 "a",
                 "p",
             }
@@ -880,7 +881,8 @@ AmPmMarkers{
         }
 dayperiod-narrow{
             dn{"AM/PM"}
-        }        era{
+        }
+        era{
             dn{"ಯುಗ"}
         }
         fri{
@@ -907,7 +909,8 @@ fri-narrow{
                     other{"{0} ಶುಕ್ರವಾರಗಳ ಹಿಂದೆ"}
                 }
             }
-        }        hour{
+        }
+        hour{
             dn{"ಗಂಟೆ"}
             relative{
                 "0"{"ಈ ಗಂಟೆ"}

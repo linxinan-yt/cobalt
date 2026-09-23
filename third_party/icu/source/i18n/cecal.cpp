@@ -102,7 +102,8 @@ CECalendar::handleGetLimit(UCalendarDateFields field, ELimitType limitType) cons
 //-------------------------------------------------------------------------
 
 namespace {
-void jdToCE(int32_t julianDay, int32_t jdEpochOffset, int32_t& year, int32_t& month, int32_t& day, int32_t& doy, UErrorCode& status){
+void jdToCE(int32_t julianDay, int32_t jdEpochOffset, int32_t& year, int32_t& month, int32_t& day, int32_t& doy, UErrorCode& status)
+{
     int32_t c4; // number of 4 year cycle (1461 days)
     int32_t r4; // remainder of 4 year cycle, always positive
 

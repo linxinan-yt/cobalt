@@ -32,7 +32,7 @@ class ConversionRateInfo : public UMemory {
     ConversionRateInfo() {}
     ConversionRateInfo(StringPiece sourceUnit, StringPiece baseUnit, StringPiece factor,
                        StringPiece offset, UErrorCode &status)
-: sourceUnit(sourceUnit), baseUnit(baseUnit), factor(factor), offset(offset),
+        : sourceUnit(sourceUnit), baseUnit(baseUnit), factor(factor), offset(offset),
           specialMappingName(), systems() {
         if (this->sourceUnit.isEmpty() != sourceUnit.empty() ||
             this->baseUnit.isEmpty() != baseUnit.empty() ||
@@ -46,7 +46,8 @@ class ConversionRateInfo : public UMemory {
     FixedString factor;
     FixedString offset;
     FixedString specialMappingName; // the name of a special mapping used instead of factor + optional offset.
-    FixedString systems;};
+    FixedString systems;
+};
 
 /**
  * Returns ConversionRateInfo for all supported conversions.

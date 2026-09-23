@@ -13,7 +13,8 @@
 // limitations under the License.
 
 import {SliceTrack} from '../../components/tracks/slice_track';
-import type {Trace} from '../../public/trace';import {SourceDataset} from '../../trace_processor/dataset';
+import type {Trace} from '../../public/trace';
+import {SourceDataset} from '../../trace_processor/dataset';
 import {LONG, NUM, STR} from '../../trace_processor/query_result';
 import {ScrollDetailsPanel} from './scroll_details_panel';
 

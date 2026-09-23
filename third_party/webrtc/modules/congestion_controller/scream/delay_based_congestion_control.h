@@ -39,14 +39,15 @@ class DelayBasedCongestionControl {
            queue_delay_avg_ > params_.queue_delay_target.Get() / 2;
   }
 
-// Returns false if the minimum queue delay has been above the drain threshold
+  // Returns false if the minimum queue delay has been above the drain threshold
   // for a prolonged time. This can happen if minimum possible latency has
   // increased, or queues has been filled for a longer period of time without
   // being drained.
   bool IsQueueDrainedInTime(Timestamp now) const {
     return min_queue_delay_above_threshold_start_.IsInfinite() ||
            (now - min_queue_delay_above_threshold_start_ <
-            params_.queue_delay_drain_period.Get());  }
+            params_.queue_delay_drain_period.Get());
+  }
 
   // Resets queue delay estimates to start values.
   void ResetQueueDelay();

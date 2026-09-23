@@ -20,7 +20,8 @@ fr{
         }
 "Africa:Ndjamena"{
             ec{"N’Djamena"}
-        }        "Africa:Tripoli"{
+        }
+        "Africa:Tripoli"{
             ec{"Tripoli (Libye)"}
         }
         "America:Argentina:Ushuaia"{
@@ -40,7 +41,8 @@ fr{
         }
         "America:Cuiaba"{
             ec{"Cuiabá"}
-        }        "America:Detroit"{
+        }
+        "America:Detroit"{
             ec{"Détroit"}
         }
         "America:Dominica"{
@@ -102,7 +104,8 @@ fr{
         }
 "America:Santarem"{
             ec{"Santarém"}
-        }        "America:Santo_Domingo"{
+        }
+        "America:Santo_Domingo"{
             ec{"Saint-Domingue"}
         }
         "America:St_Barthelemy"{
@@ -357,7 +360,8 @@ fr{
         }
         "Indian:Mahe"{
             ec{"Mahé"}
-        }        "Indian:Mauritius"{
+        }
+        "Indian:Mauritius"{
             ec{"Maurice"}
         }
         "Indian:Reunion"{

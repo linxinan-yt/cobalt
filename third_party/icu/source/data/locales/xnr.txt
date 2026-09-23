@@ -145,7 +145,8 @@ currencyFormat%alphaNextToNumber{
                     100000000000000{
                         other{"¤ 00 नील"}
                     }
-                }                decimalFormat{
+                }
+                decimalFormat{
                     1000{
                         other{"0 हजार"}
                     }

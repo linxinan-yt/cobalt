@@ -425,4 +425,5 @@ TEST(CodecParameterMapTest, InitializerListWithAbslStringView) {
               UnorderedElementsAre(Pair("key1", "val2"), Pair("key2", "val1")));
 }
 
-}  // namespace}  // namespace webrtc
+}  // namespace
+}  // namespace webrtc

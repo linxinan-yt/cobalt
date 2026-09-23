@@ -16,6 +16,7 @@ import {defer, type Deferred} from '../base/deferred';
 import {ensureExists, assertTrue} from '../base/assert';
 import {exists} from '../base/utils';
 import type {TraceChunk, TraceStream} from '../public/stream';
+
 export const TRACE_SLICE_SIZE = 32 * 1024 * 1024;
 
 // Loads a trace from a File object. For the "open file" use case.

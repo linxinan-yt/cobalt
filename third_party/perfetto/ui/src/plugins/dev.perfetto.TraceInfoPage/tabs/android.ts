@@ -28,6 +28,7 @@ import {Select} from '../../../widgets/select';
 import {FormGrid, FormLabel} from '../../../widgets/form';
 import {Time} from '../../../base/time';
 import {renderTimecode} from '../../../components/time_utils';
+
 // Row specs
 const packageDataSpec = {
   packageName: STR,
@@ -75,7 +76,8 @@ export interface AndroidData {
   packageList: PackageData[];
   gameInterventions: AndroidGameInterventionRow[];
   aflags: AflagRow[];
-  aflagErrors: string[];}
+  aflagErrors: string[];
+}
 
 export async function loadAndroidData(engine: Engine): Promise<AndroidData> {
   // Load package list
@@ -146,7 +148,7 @@ export async function loadAndroidData(engine: Engine): Promise<AndroidData> {
     });
   }
 
-// Load aflags
+  // Load aflags
   const aflagsResult = await engine.query(`
     include perfetto module android.aflags;
     select
@@ -211,7 +213,9 @@ export function hasAndroidData(data?: AndroidData): boolean {
     data.aflags.length > 0 ||
     data.aflagErrors.length > 0
   );
-}export interface AndroidTabAttrs {
+}
+
+export interface AndroidTabAttrs {
   data: AndroidData;
 }
 
@@ -221,10 +225,11 @@ export class AndroidTab implements m.ClassComponent<AndroidTabAttrs> {
       '.pf-trace-info-page__tab-content',
       m(PackageListSection, {packageList: attrs.data.packageList}),
       m(AndroidGameInterventionList, {data: attrs.data.gameInterventions}),
-m(AndroidAflagsSection, {
+      m(AndroidAflagsSection, {
         aflags: attrs.data.aflags,
         aflagErrors: attrs.data.aflagErrors,
-      }),    );
+      }),
+    );
   }
 }
 
@@ -263,8 +268,9 @@ class PackageListSection implements m.ClassComponent<PackageListSectionAttrs> {
         ],
         rowData: packageList.map((pkg) => {
           const flags = [
-(pkg.debuggable ?? 0) ? 'debuggable' : '',
-            (pkg.profileableFromShell ?? 0) ? 'profileable' : '',          ]
+            (pkg.debuggable ?? 0) ? 'debuggable' : '',
+            (pkg.profileableFromShell ?? 0) ? 'profileable' : '',
+          ]
             .filter(Boolean)
             .join(' ');
 
@@ -308,9 +314,8 @@ function formatCurrentMode(mode: number | null): string {
   return mode !== null ? String(mode) : 'Unknown';
 }
 
-class AndroidGameInterventionList
-  implements m.ClassComponent<AndroidGameInterventionListAttrs>
-{  view({attrs}: m.CVnode<AndroidGameInterventionListAttrs>) {
+class AndroidGameInterventionList implements m.ClassComponent<AndroidGameInterventionListAttrs> {
+  view({attrs}: m.CVnode<AndroidGameInterventionListAttrs>) {
     const data = attrs.data;
     if (data === undefined || data.length === 0) {
       return undefined;
@@ -381,6 +386,7 @@ class AndroidGameInterventionList
     );
   }
 }
+
 interface AndroidAflagsSectionAttrs {
   aflags: AflagRow[];
   aflagErrors: string[];

@@ -114,7 +114,8 @@ Key Checker::normalizeNFC(const Key& k) const {
         return k;
     }
     return Key(Literal(k.asLiteral().isQuoted(),
-StandardFunctions::normalizeNFC(k.asLiteral().unquoted())));}
+                       StandardFunctions::normalizeNFC(k.asLiteral().unquoted())));
+}
 
 static bool areDefaultKeys(const Key* keys, int32_t len) {
     U_ASSERT(len > 0);

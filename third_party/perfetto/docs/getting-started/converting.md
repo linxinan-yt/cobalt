@@ -1128,6 +1128,7 @@ repeated callstacks or when you need binary mapping information, use
 instead.
 
 ### Python Example: Inline Callstacks
+
 Each frame includes a function name, and optionally a source file and line
 number.
 
@@ -1138,8 +1139,7 @@ your `trace_converter_template.py` script.
 <summary><b>Click to expand/collapse Python code</b></summary>
 
 ```python
-# Define a unique ID for this sequence of packets
-    TRUSTED_PACKET_SEQUENCE_ID = 7001    # Define a unique UUID for your custom track
+    # Define a unique UUID for your custom track
     CALLSTACK_TRACK_UUID = 98765432
 
     def emit_track_event(
@@ -1321,12 +1321,15 @@ Perfetto UI's Query tab or with
 SELECT name, ifnull(str_value, cast(int_value as text)) AS value
 FROM metadata
 WHERE name GLOB 'trace_attribute.*';
-```## Next Steps
+```
+
+## Next Steps
 
 You've now seen how to convert custom timestamped data into Perfetto traces
 using Python and `TrackEvent`. With these techniques, you can represent slices,
 counters, flows, track hierarchies, debug annotations, callstacks, and
 trace-level metadata.
+
 Once you have your custom data in the Perfetto trace format (`.pftrace` file),
 you can:
 

@@ -654,7 +654,8 @@ void VideoReceiveStream2::CalculateCorruptionScore(
     FrameInstrumentationData frame_instrumentation_data,
     VideoContentType content_type) {
   RTC_DCHECK_RUNS_SERIALIZED(&decode_callback_race_checker_);
-if (post_decode_queue_) {
+
+  if (post_decode_queue_) {
     // Set the max number of pending post decode tasks very conservative since
     // each one has a refcounted VideoFrame.
     constexpr int kMaxPendingPostDecodeFrames = 2;
@@ -686,7 +687,8 @@ if (post_decode_queue_) {
     // Do the frame evaluation synchronously.
     frame_evaluator_->OnInstrumentedFrame(std::move(frame_instrumentation_data),
                                           frame, content_type);
-  }}
+  }
+}
 
 bool VideoReceiveStream2::SetBaseMinimumPlayoutDelayMs(int delay_ms) {
   RTC_DCHECK_RUN_ON(&worker_sequence_checker_);

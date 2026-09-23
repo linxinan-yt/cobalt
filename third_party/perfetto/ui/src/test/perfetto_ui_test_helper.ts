@@ -24,6 +24,7 @@ import type {IdleDetectorWindow} from '../frontend/idle_detector_interface';
 import {ensureExists} from '../base/assert';
 import type {Size2D} from '../base/geom';
 import type {AppImpl} from '../core/app_impl';
+
 export class PerfettoTestHelper {
   private cachedSidebarSize?: Size2D;
 

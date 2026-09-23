@@ -60,7 +60,8 @@ void NumberRangeFormatterTest::runIndexedTest(int32_t index, UBool exec, const c
         TESTCASE_AUTO(test21683_StateLeak);
         TESTCASE_AUTO(testCreateLNRFFromNumberingSystemInSkeleton);
         TESTCASE_AUTO(test22288_DifferentStartEndSettings);
-TESTCASE_AUTO(test23110_PercentApproximately);    TESTCASE_AUTO_END;
+        TESTCASE_AUTO(test23110_PercentApproximately);
+    TESTCASE_AUTO_END;
 }
 
 void NumberRangeFormatterTest::testSanity() {
@@ -1201,7 +1202,9 @@ void NumberRangeFormatterTest::test23110_PercentApproximately() {
         u"499,900% – 500,100%",
         u"~500,000%",
         u"500,000% – 500,000,000%");
-}void  NumberRangeFormatterTest::assertFormatRange(
+}
+
+void  NumberRangeFormatterTest::assertFormatRange(
       const char16_t* message,
       const UnlocalizedNumberRangeFormatter& f,
       Locale locale,

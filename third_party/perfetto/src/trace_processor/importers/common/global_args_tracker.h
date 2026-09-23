@@ -32,7 +32,9 @@
 #include "src/trace_processor/types/variadic.h"
 
 namespace perfetto::trace_processor {
+
 class ArgsInserter;
+
 // Interns args into the storage from all ArgsTrackers across trace processor.
 // Note: most users will want to use ArgsTracker to push args to the strorage
 // and not this class. This class is really intended for ArgsTracker to use for

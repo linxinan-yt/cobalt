@@ -196,8 +196,9 @@ class TracingServiceImpl : public TracingService {
   ProducerEndpointImpl* GetProducer(ProducerID) const;
 
  private:
-friend class ProducerEndpointImpl;
+  friend class ProducerEndpointImpl;
   friend class ConsumerEndpointImpl;
+
   TracingServiceImpl(const TracingServiceImpl&) = delete;
   TracingServiceImpl& operator=(const TracingServiceImpl&) = delete;
 

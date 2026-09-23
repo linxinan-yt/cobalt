@@ -675,7 +675,8 @@ void MediaDevicesManager::HandleEnumerateDevicesRequest(
 DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
 
 // Starboard doesn't support video input.
-#if !BUILDFLAG(IS_STARBOARD)  DCHECK(request_video_input_capabilities &&
+#if !BUILDFLAG(IS_STARBOARD)
+  DCHECK(request_video_input_capabilities &&
              requested_types[static_cast<size_t>(
                  MediaDeviceType::kMediaVideoInput)] ||
          !request_video_input_capabilities);

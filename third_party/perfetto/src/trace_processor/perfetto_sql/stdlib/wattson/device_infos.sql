@@ -385,22 +385,12 @@ WITH
     JOIN _wattson_device AS device
       ON v.device = device.name
   )
-SELECT
-  cpu,
-  vote_by_freq
-FROM base
-ORDER BY
-  cpu;
+SELECT cpu, vote_by_freq FROM base ORDER BY cpu;
+
 -- Device specific mapping to GPU ID
 CREATE PERFETTO TABLE _gpuid_map AS
 WITH
   data(device, gpu_id) AS (
-SELECT
-      *
-    FROM (VALUES
-      ("Tensor G5", 0),
-      ("Tensor", 1)) AS _values
+    SELECT * FROM (VALUES ("Tensor G5", 0), ("Tensor", 1)) AS _values
   )
-SELECT
-  *
-FROM data;
+SELECT * FROM data;

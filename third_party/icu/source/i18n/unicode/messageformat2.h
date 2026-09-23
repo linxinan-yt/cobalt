@@ -51,7 +51,8 @@ namespace message2 {
      * @internal ICU 75 technology preview
      * @deprecated This API is for technology preview only.
      */
-class U_I18N_API_CLASS MessageFormatter : public UObject {        // Note: This class does not currently inherit from the existing
+    class U_I18N_API_CLASS MessageFormatter : public UObject {
+        // Note: This class does not currently inherit from the existing
         // `Format` class.
     public:
         /**
@@ -61,13 +62,15 @@ class U_I18N_API_CLASS MessageFormatter : public UObject {        // Note: This 
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API MessageFormatter& operator=(MessageFormatter&&) noexcept;        /**
+        U_I18N_API MessageFormatter& operator=(MessageFormatter&&) noexcept;
+        /**
          * Destructor.
          *
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API virtual ~MessageFormatter();
+        U_I18N_API virtual ~MessageFormatter();
+
         /**
          * Formats the message to a string, using the data model that was previously set or parsed,
          * and the given `arguments` object.
@@ -82,7 +85,8 @@ U_I18N_API virtual ~MessageFormatter();
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-UnicodeString formatToString(const MessageArguments& arguments, UErrorCode &status);
+        U_I18N_API UnicodeString formatToString(const MessageArguments& arguments, UErrorCode& status);
+
         /**
          * Not yet implemented; formats the message to a `FormattedMessage` object,
          * using the data model that was previously set or parsed,
@@ -98,7 +102,8 @@ UnicodeString formatToString(const MessageArguments& arguments, UErrorCode &stat
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API FormattedMessage format(const MessageArguments& arguments, UErrorCode& status) const {            (void) arguments;
+        U_I18N_API FormattedMessage format(const MessageArguments& arguments, UErrorCode& status) const {
+            (void) arguments;
             if (U_SUCCESS(status)) {
                 status = U_UNSUPPORTED_ERROR;
             }
@@ -113,7 +118,8 @@ U_I18N_API FormattedMessage format(const MessageArguments& arguments, UErrorCode
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API const Locale& getLocale() const { return locale; }
+        U_I18N_API const Locale& getLocale() const { return locale; }
+
         /**
          * Serializes the data model as a string in MessageFormat 2.0 syntax.
          *
@@ -123,7 +129,8 @@ U_I18N_API const Locale& getLocale() const { return locale; }
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API UnicodeString getPattern() const;
+        U_I18N_API UnicodeString getPattern() const;
+
         /**
          * Accesses the data model referred to by this
          * `MessageFormatter` object.
@@ -133,7 +140,8 @@ U_I18N_API UnicodeString getPattern() const;
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API const MFDataModel& getDataModel() const;
+        U_I18N_API const MFDataModel& getDataModel() const;
+
         /**
          * Used in conjunction with the
          * MessageFormatter::Builder::setErrorHandlingBehavior() method.
@@ -165,7 +173,8 @@ U_I18N_API const MFDataModel& getDataModel() const;
          *
          * Not copyable or movable.
          */
-class U_I18N_API_CLASS Builder : public UObject {        private:
+        class U_I18N_API_CLASS Builder : public UObject {
+        private:
             friend class MessageFormatter;
 
             // The pattern to be parsed to generate the formatted message
@@ -199,7 +208,8 @@ class U_I18N_API_CLASS Builder : public UObject {        private:
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-U_I18N_API Builder& setLocale(const Locale& locale);            /**
+            U_I18N_API Builder& setLocale(const Locale& locale);
+            /**
              * Sets the pattern (contents of the message) and parses it
              * into a data model. If a data model was
              * previously set, it is removed.
@@ -214,9 +224,10 @@ U_I18N_API Builder& setLocale(const Locale& locale);            /**
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-U_I18N_API Builder& setPattern(const UnicodeString& pattern,
+            U_I18N_API Builder& setPattern(const UnicodeString& pattern,
                                            UParseError& parseError,
-                                           UErrorCode& status);            /**
+                                           UErrorCode& status);
+            /**
              * Sets a custom function registry.
              *
              * @param functionRegistry Reference to the function registry to use.
@@ -229,7 +240,8 @@ U_I18N_API Builder& setPattern(const UnicodeString& pattern,
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-U_I18N_API Builder& setFunctionRegistry(const MFFunctionRegistry& functionRegistry);            /**
+            U_I18N_API Builder& setFunctionRegistry(const MFFunctionRegistry& functionRegistry);
+            /**
              * Sets a data model. If a pattern was previously set, it is removed.
              *
              * @param dataModel Data model to format. Passed by move.
@@ -238,7 +250,8 @@ U_I18N_API Builder& setFunctionRegistry(const MFFunctionRegistry& functionRegist
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-U_I18N_API Builder& setDataModel(MFDataModel&& dataModel);            /**
+            U_I18N_API Builder& setDataModel(MFDataModel&& dataModel);
+            /**
              * Set the error handling behavior for this formatter.
              *
              * "Strict" error behavior means that that formatting methods
@@ -267,7 +280,8 @@ U_I18N_API Builder& setDataModel(MFDataModel&& dataModel);            /**
              * @internal ICU 76 technology preview
              * @deprecated This API is for technology preview only.
              */
-Builder& setErrorHandlingBehavior(UMFErrorHandlingBehavior type);            /**
+            U_I18N_API Builder& setErrorHandlingBehavior(UMFErrorHandlingBehavior type);
+            /**
              * Constructs a new immutable MessageFormatter using the pattern or data model
              * that was previously set, and the locale (if it was previously set)
              * or default locale (otherwise).
@@ -281,7 +295,8 @@ Builder& setErrorHandlingBehavior(UMFErrorHandlingBehavior type);            /**
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-U_I18N_API MessageFormatter build(UErrorCode& status) const;            /**
+            U_I18N_API MessageFormatter build(UErrorCode& status) const;
+            /**
              * Default constructor.
              * Returns a Builder with the default locale and with no
              * data model or pattern set. Either `setPattern()`
@@ -292,13 +307,15 @@ U_I18N_API MessageFormatter build(UErrorCode& status) const;            /**
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-U_I18N_API Builder(UErrorCode& status);            /**
+            U_I18N_API Builder(UErrorCode& status);
+            /**
              * Destructor.
              *
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-U_I18N_API virtual ~Builder();        }; // class MessageFormatter::Builder
+            U_I18N_API virtual ~Builder();
+        }; // class MessageFormatter::Builder
 
         // TODO: Shouldn't be public; only used for testing
         /**
@@ -309,7 +326,8 @@ U_I18N_API virtual ~Builder();        }; // class MessageFormatter::Builder
          * @internal ICU 75 technology preview
          * @deprecated This API is for technology preview only.
          */
-U_I18N_API const UnicodeString& getNormalizedPattern() const { return normalizedInput; }
+        U_I18N_API const UnicodeString& getNormalizedPattern() const { return normalizedInput; }
+
     private:
         friend class Builder;
         friend class Checker;
@@ -339,9 +357,8 @@ U_I18N_API const UnicodeString& getNormalizedPattern() const { return normalized
 
         // Formatting methods
 
-// Used for normalizing variable names and keys for comparison
-        UnicodeString normalizeNFC(const UnicodeString&) const;
-        [[nodiscard]] FormattedPlaceholder formatLiteral(const data_model::Literal&) const;        void formatPattern(MessageContext&, const Environment&, const data_model::Pattern&, UErrorCode&, UnicodeString&) const;
+        [[nodiscard]] FormattedPlaceholder formatLiteral(const UnicodeString&, const data_model::Literal&) const;
+        void formatPattern(MessageContext&, const Environment&, const data_model::Pattern&, UErrorCode&, UnicodeString&) const;
         // Evaluates a function call
         // Dispatches on argument type
         [[nodiscard]] InternalValue* evalFunctionCall(FormattedPlaceholder&& argument,
@@ -354,7 +371,7 @@ U_I18N_API const UnicodeString& getNormalizedPattern() const { return normalized
                                                      MessageContext& context,
                                                      UErrorCode& status) const;
         // Formats an expression that appears in a pattern or as the definition of a local variable
-[[nodiscard]] InternalValue* formatExpression(const UnicodeString&,
+        [[nodiscard]] InternalValue* formatExpression(const UnicodeString&,
                                                       const Environment&,
                                                       const data_model::Expression&,
                                                       MessageContext&,
@@ -368,7 +385,8 @@ U_I18N_API const UnicodeString& getNormalizedPattern() const { return normalized
         [[nodiscard]] FormattedPlaceholder evalArgument(const UnicodeString&,
                                                         const data_model::VariableName&,
                                                         MessageContext&,
-                                                        UErrorCode&) const;        void formatSelectors(MessageContext& context, const Environment& env, UErrorCode &status, UnicodeString& result) const;
+                                                        UErrorCode&) const;
+        void formatSelectors(MessageContext& context, const Environment& env, UErrorCode &status, UnicodeString& result) const;
 
         // Function registry methods
         bool hasCustomMFFunctionRegistry() const {
@@ -442,8 +460,7 @@ U_I18N_API const UnicodeString& getNormalizedPattern() const { return normalized
         // The default is false.
         bool signalErrors = false;
 
-// Used for implementing normalizeNFC()
-        const Normalizer2* nfcNormalizer = nullptr;    }; // class MessageFormatter
+    }; // class MessageFormatter
 
 } // namespace message2
 

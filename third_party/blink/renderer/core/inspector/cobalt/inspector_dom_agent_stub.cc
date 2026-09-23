@@ -14,6 +14,8 @@
 
 #include "third_party/blink/renderer/core/inspector/inspector_dom_agent.h"
 
+#include "third_party/blink/renderer/core/inspector/ad_tagging_utils.h"
+
 namespace blink {
 
 void InspectorDOMAgent::WillHidePopover(HTMLElement*, bool*) {}
@@ -42,9 +44,17 @@ void InspectorDOMAgent::DidModifyDOMAttr(Element*,
                                          const AtomicString&) {}
 void InspectorDOMAgent::DidRemoveDOMAttr(Element*, const QualifiedName&) {}
 void InspectorDOMAgent::CharacterDataModified(CharacterData*) {}
-void InspectorDOMAgent::DidInvalidateStyleAttr(Node*) {}
+void InspectorDOMAgent::DidInvalidateStyleAttr(Element*) {}
+void InspectorDOMAgent::DidModifyAdoptedStyleSheets(Node*) {}
+void InspectorDOMAgent::UpdateAdRelatedState(Node&,
+                                             std::optional<AdProvenance>) {}
 void InspectorDOMAgent::DidPerformSlotDistribution(HTMLSlotElement*) {}
 void InspectorDOMAgent::DidPushShadowRoot(Element*, ShadowRoot*) {}
 void InspectorDOMAgent::WillPopShadowRoot(Element*, ShadowRoot*) {}
+
+std::unique_ptr<protocol::Network::AdAncestry> CreateAdAncestryProtocolObject(
+    const AdTracker::AdScriptAncestry&) {
+  return nullptr;
+}
 
 }  // namespace blink

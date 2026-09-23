@@ -1330,10 +1330,8 @@ RTCError MediaSessionDescriptionFactory::AddDataContentForOffer(
           current_content->media_description()->as_sctp();
       RTC_DCHECK(current_data_description);
       data->set_sctp_init(current_data_description->sctp_init());
-}
-    if (!data->sctp_init().has_value()) {
-      // Create a sctp-init on subsequent offers even if the remote side
-      // has not negotiated one previously.      data->set_sctp_init(sctp_factory_->GenerateConnectionToken(env_));
+    } else {
+      data->set_sctp_init(sctp_factory_->GenerateConnectionToken(env_));
     }
   }
 
@@ -1582,8 +1580,8 @@ RTCError MediaSessionDescriptionFactory::AddDataContentForAnswer(
           RTC_DCHECK(current_data_description);
           data_answer->as_sctp()->set_sctp_init(
               current_data_description->sctp_init());
-}
-        if (!data_answer->as_sctp()->sctp_init().has_value()) {          data_answer->as_sctp()->set_sctp_init(
+        } else {
+          data_answer->as_sctp()->set_sctp_init(
               sctp_factory_->GenerateConnectionToken(env_));
         }
       }

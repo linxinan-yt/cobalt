@@ -127,7 +127,8 @@ class GoogCcNetworkController : public NetworkControllerInterface {
   std::optional<uint8_t> last_estimated_fraction_loss_ = 0;
   TimeDelta last_estimated_round_trip_time_ = TimeDelta::PlusInfinity();
 
-std::optional<double> pacing_factor_;  TimeDelta pacing_time_window_;
+  std::optional<double> pacing_factor_;
+  TimeDelta pacing_time_window_;
   DataRate min_total_allocated_bitrate_;
   DataRate max_padding_rate_;
 

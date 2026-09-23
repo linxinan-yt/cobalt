@@ -121,9 +121,10 @@ NFRule::makeRules(UnicodeString& description,
     // (this also strips the rule descriptor, if any, off the
     // description string)
     LocalPointer<NFRule> rule1(new NFRule(rbnf, description, status));
-if (U_FAILURE(status)) {
+    if (U_FAILURE(status)) {
         return;
-    }    /* test for nullptr */
+    }
+    /* test for nullptr */
     if (rule1.isNull()) {
         status = U_MEMORY_ALLOCATION_ERROR;
         return;
@@ -172,9 +173,10 @@ if (U_FAILURE(status)) {
             // increment the original rule's base value ("rule1" actually
             // goes SECOND in the rule set's rule list)
             rule2.adoptInstead(new NFRule(rbnf, UnicodeString(), status));
-if (U_FAILURE(status)) {
+            if (U_FAILURE(status)) {
                 return;
-            }            /* test for nullptr */
+            }
+            /* test for nullptr */
             if (rule2.isNull()) {
                 status = U_MEMORY_ALLOCATION_ERROR;
                 return;

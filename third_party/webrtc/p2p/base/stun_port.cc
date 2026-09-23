@@ -185,8 +185,9 @@ UDPPort::UDPPort(const PortParametersRef& args,
     : Port(args, type),
       request_manager_(
           args.network_thread,
-[this](std::span<const uint8_t> data, StunRequest* request) {
-            SendStunRequest(data, request);          }),
+          [this](std::span<const uint8_t> data, StunRequest* request) {
+            SendStunRequest(data, request);
+          }),
       socket_(socket),
       error_(0),
       ready_(false),
@@ -202,8 +203,9 @@ UDPPort::UDPPort(const PortParametersRef& args,
     : Port(args, type, min_port, max_port),
       request_manager_(
           args.network_thread,
-[this](std::span<const uint8_t> data, StunRequest* request) {
-            SendStunRequest(data, request);          }),
+          [this](std::span<const uint8_t> data, StunRequest* request) {
+            SendStunRequest(data, request);
+          }),
       socket_(nullptr),
       error_(0),
       ready_(false),
@@ -634,6 +636,7 @@ void UDPPort::SendStunRequest(std::span<const uint8_t> data, StunRequest* req) {
   AsyncSocketPacketOptions options(StunDscpValue());
   options.info_signaled_after_sent.packet_type = PacketType::kStunMessage;
   SendTo(data, sreq->server_addr(), options, /*payload=*/true);
+
   stats_.stun_binding_requests_sent++;
 }
 

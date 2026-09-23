@@ -83,7 +83,8 @@ rm{
         }
 "Asia:Chita"{
             ec{"Tschita"}
-        }        "Asia:Dushanbe"{
+        }
+        "Asia:Dushanbe"{
             ec{"Duschanbe"}
         }
         "Asia:Hong_Kong"{
@@ -227,7 +228,8 @@ rm{
         }
 "Europe:Tirane"{
             ec{"Tirana"}
-        }        "Europe:Warsaw"{
+        }
+        "Europe:Warsaw"{
             ec{"Varsovia"}
         }
         "Europe:Zurich"{

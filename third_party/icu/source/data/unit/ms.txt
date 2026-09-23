@@ -256,7 +256,8 @@ ms{
             }
             night{
 dnam{"malam"}
-                other{"{0} malam"}                per{"{0} setiap malam"}
+                other{"{0} malam"}
+                per{"{0} setiap malam"}
             }
             quarter{
                 dnam{"suku"}
@@ -930,7 +931,8 @@ night{
                 dnam{"malam"}
                 other{"{0} malam"}
                 per{"{0}/malam"}
-            }            second{
+            }
+            second{
                 other{"{0} s"}
             }
             year{

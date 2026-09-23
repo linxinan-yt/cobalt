@@ -622,8 +622,9 @@ class PeerConnection : public PeerConnectionInternal,
 
   MediaEngineInterface* media_engine() const RTC_RUN_ON(worker_thread());
 
-absl::AnyInvocable<void(const CopyOnWriteBuffer& packet,
-                          int64_t packet_time_us) const>  InitializeRtcpCallback();
+  absl::AnyInvocable<void(const CopyOnWriteBuffer& packet,
+                          int64_t packet_time_us) const>
+  InitializeRtcpCallback();
 
   absl::AnyInvocable<void(const RtpPacketReceived& parsed_packet) const>
   InitializeUnDemuxablePacketHandler();

@@ -559,7 +559,8 @@ mk{
                 "EEEE, d MMMM y 'г'.",
                 "d MMMM y 'г'.",
 "d.M.y 'г'.",
-                "d.M.yy",                "{1}, {0}",
+                "d.M.yy",
+                "{1}, {0}",
                 "{1}, {0}",
                 "{1}, {0}",
                 "{1}, {0}",
@@ -593,12 +594,14 @@ mk{
                 Ehms{"E h:mm:ss a"}
                 Gy{"y 'г'. G"}
 GyM{"M.y 'г'. G"}
-                GyMEd{"E, d.M.y 'г'. G"}                GyMMM{"MMM y 'г'. G"}
+                GyMEd{"E, d.M.y 'г'. G"}
+                GyMMM{"MMM y 'г'. G"}
                 GyMMMEd{"E, d MMM y 'г'. G"}
                 GyMMMd{"d MMM y 'г'. G"}
                 GyMd{"d.M.y 'г'. G"}
 H{"H"}
-                Hv{"HH 'ч'. v"}                MEd{"E, d.M"}
+                Hv{"HH 'ч'. v"}
+                MEd{"E, d.M"}
                 MMMEd{"E, d MMM"}
                 MMMMEd{"E, d MMMM"}
                 MMMMW{
@@ -1854,7 +1857,8 @@ general{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }        number{
+        }
+        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ، ٫ 、﹑､︑]",

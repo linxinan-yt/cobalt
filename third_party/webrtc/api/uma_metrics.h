@@ -253,7 +253,8 @@ enum SdpMungingType {
   // DataChannel-related munging.
   kDataChannelSctpInit = 100,
   kDataChannelMaxMessageSize = 101,
-kDataChannelSctpPort = 102,  kMaxValue,
+  kDataChannelSctpPort = 102,
+  kMaxValue,
 };
 
 // The outcome of setting the local description, whether SDP munging is detected

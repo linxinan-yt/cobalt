@@ -27,6 +27,7 @@ const tsColumn = createTableColumn({
   column: 'ts',
   type: PerfettoSqlTypes.TIMESTAMP,
 });
+
 const table: SqlTableDescription = {
   name: 'table',
   displayName: 'Table',

@@ -9,7 +9,8 @@ en_IN{
         }
         "Asia:Qyzylorda"{
             ec{"Kyzylorda"}
-        }        "meta:Gulf"{
+        }
+        "meta:Gulf"{
             ss{"GST"}
         }
         "meta:Hovd"{

@@ -124,10 +124,6 @@ typedef FILE* FileHandle;
 #include "base/fuchsia/scoped_fx_logger.h"
 #endif
 
-#if !BUILDFLAG(IS_STARBOARD) || defined(SB_IS_DEFAULT_TC)
-#include "base/logging/rust_logger.rs.h"
-#endif
-
 namespace logging {
 
 namespace {
@@ -568,7 +564,7 @@ bool BaseInitLoggingImpl(const LoggingSettings& settings) {
 
 #if !BUILDFLAG(IS_STARBOARD) || defined(SB_IS_DEFAULT_TC)
   // Connects Rust logging with the //base logging functionality.
-internal::init_rust_log_crate();
+  internal::init_rust_logging();
 #endif
   // Ignore file options unless logging to file is set.
   if ((g_logging_destination & LOG_TO_FILE) == 0) {

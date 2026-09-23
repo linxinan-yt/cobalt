@@ -467,7 +467,8 @@ blo{
         }
 "America:Nome"{
             ec{"Noome"}
-        }        "America:Noronha"{
+        }
+        "America:Noronha"{
             ec{"Norɔnya"}
         }
         "America:North_Dakota:Beulah"{
@@ -505,7 +506,8 @@ blo{
         }
 "America:Punta_Arenas"{
             ec{"Punta Arenaasɩ"}
-        }        "America:Rankin_Inlet"{
+        }
+        "America:Rankin_Inlet"{
             ec{"Raŋkɩn Ɩnlɛɛtɩ"}
         }
         "America:Recife"{
@@ -585,7 +587,8 @@ blo{
         }
 "America:Yakutat"{
             ec{"Yakutaatɩ"}
-        }        "Antarctica:Casey"{
+        }
+        "Antarctica:Casey"{
             ec{"Keesi"}
         }
         "Antarctica:Davis"{
@@ -1184,7 +1187,8 @@ blo{
         }
 "Pacific:Kanton"{
             ec{"Kantɔn"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"Kirimatii"}
         }
         "Pacific:Kosrae"{

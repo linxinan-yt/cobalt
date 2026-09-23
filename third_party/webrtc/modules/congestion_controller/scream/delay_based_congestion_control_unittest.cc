@@ -116,13 +116,14 @@ TEST(DelayBasedCongestionControlTest, ResetQueueDelay) {
   ASSERT_EQ(delay_controller.queue_delay(), TimeDelta::PlusInfinity());
 
   TransportPacketsFeedback feedback =
-feedback_generator.ProcessUntilNextFeedback(DataRate::KilobitsPerSec(150),
+      feedback_generator.ProcessUntilNextFeedback(DataRate::KilobitsPerSec(150),
                                                   clock);
   delay_controller.Update(ParseScreamFeedback(feedback), /*alr=*/false);
   // RTT is still increasing or equal to the last feedback.
   EXPECT_GE(delay_controller.rtt(), last_smoothed_rtt);
   // But queue delay should be lower.
-  EXPECT_LT(delay_controller.queue_delay(), queue_delay_before_reset);}
+  EXPECT_LT(delay_controller.queue_delay(), queue_delay_before_reset);
+}
 
 TEST(DelayBasedCongestionControlTest,
      IsQueueDrainedInTimeReturnFalseIfLongOverUse) {
@@ -143,9 +144,10 @@ TEST(DelayBasedCongestionControlTest,
             DataRate::KilobitsPerSec(150), clock);
     delay_controller.Update(ParseScreamFeedback(feedback), /*alr=*/false);
   }
-EXPECT_LT(clock.CurrentTime(), start_time + TimeDelta::Seconds(30));
+  EXPECT_LT(clock.CurrentTime(), start_time + TimeDelta::Seconds(30));
   EXPECT_GT(clock.CurrentTime(), start_time + TimeDelta::Seconds(10));
-  EXPECT_FALSE(delay_controller.IsQueueDrainedInTime(clock.CurrentTime()));}
+  EXPECT_FALSE(delay_controller.IsQueueDrainedInTime(clock.CurrentTime()));
+}
 
 TEST(DelayBasedCongestionControlTest,
      RefWindowScaleFactorDueToMinAverageQueueDelay) {
@@ -279,7 +281,7 @@ TEST(DelayBasedCongestionControlTest, RttDecaysSlowerInAlr) {
     controller.Update(ParseScreamFeedback(msg), alr);
   };
 
-// Establish initial smoothed RTT of 200ms.
+  // Establish initial smoothed RTT of 200ms.
   feed_feedback(delay_controller_alr, TimeDelta::Millis(200), /*alr=*/false);
   feed_feedback(delay_controller_no_alr, TimeDelta::Millis(200), /*alr=*/false);
 
@@ -344,7 +346,8 @@ TEST(DelayBasedCongestionControlTest, RttIncreasesSlowerInAlr) {
   // no_alr: 200 * 0.125 + 100 * 0.875 = 112.5ms
   // alr: 200 * (1/128) + 100 * (127/128) = 100.78125ms
   EXPECT_NEAR(delay_controller_no_alr.rtt().ms<double>(), 112.5, 0.1);
-  EXPECT_NEAR(delay_controller_alr.rtt().ms<double>(), 100.8, 0.1);}
+  EXPECT_NEAR(delay_controller_alr.rtt().ms<double>(), 100.8, 0.1);
+}
 
 // TODO: bugs.webrtc.org/447037083 - add tests for clock drift in feedback NTP
 // time.

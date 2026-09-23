@@ -43,7 +43,8 @@ import {Grid, GridCell, GridHeaderCell} from '../../widgets/grid';
 import {ensureIsInstance} from '../../base/assert';
 import type {Trace} from '../../public/trace';
 import type {TrackEventDetailsPanel} from '../../public/details_panel';
-import type {TrackEventSelection} from '../../public/selection';import {extensions} from '../extensions';
+import type {TrackEventSelection} from '../../public/selection';
+import {extensions} from '../extensions';
 import {TraceImpl} from '../../core/trace_impl';
 import {renderSliceArguments} from './slice_args';
 import {SLICE_TABLE} from '../widgets/sql/table_definitions';
@@ -230,7 +231,8 @@ export class ThreadSliceDetailsPanel implements TrackEventDetailsPanel {
     // Rationale for the assertIsInstance: ThreadSliceDetailsPanel requires a
     // TraceImpl (because of flows) but here we must take a Trace interface,
     // because this track is exposed to plugins (which see only Trace).
-this.trace = ensureIsInstance(trace, TraceImpl);    this.attrs = attrs ?? {};
+    this.trace = ensureIsInstance(trace, TraceImpl);
+    this.attrs = attrs ?? {};
   }
 
   async load(selection: TrackEventSelection) {
@@ -302,7 +304,8 @@ this.trace = ensureIsInstance(trace, TraceImpl);    this.attrs = attrs ?? {};
     slice: SliceDetails,
     additionalSections?: m.Children,
   ): m.Children {
-const distribution = this.renderDistribution(slice);    const precFlows = this.renderPrecedingFlows(slice);
+    const distribution = this.renderDistribution(slice);
+    const precFlows = this.renderPrecedingFlows(slice);
     const followingFlows = this.renderFollowingFlows(slice);
     const args =
       hasArgs(slice.args) &&
@@ -311,19 +314,21 @@ const distribution = this.renderDistribution(slice);    const precFlows = this.r
         {title: 'Arguments'},
         m(Tree, renderSliceArguments(trace, slice.args)),
       );
-if (
+    if (
       distribution !== undefined ||
       precFlows !== undefined ||
       followingFlows !== undefined ||
       args !== undefined ||
       additionalSections !== undefined
-    ) {      return m(
+    ) {
+      return m(
         GridLayoutColumn,
         precFlows,
         followingFlows,
         args,
         additionalSections,
-distribution,      );
+        distribution,
+      );
     } else {
       return undefined;
     }
@@ -350,9 +355,11 @@ distribution,      );
           rowData: inFlows.map((flow) => [
             m(
               GridCell,
-m(SliceRef, {
+              m(TrackEventRef, {
                 trace: this.trace,
-                id: asSliceSqlId(flow.begin.sliceId),                name: flow.begin.sliceChromeCustomName ?? flow.begin.sliceName,
+                table: 'slice',
+                id: flow.begin.sliceId,
+                name: flow.begin.sliceChromeCustomName ?? flow.begin.sliceName,
               }),
             ),
             m(
@@ -392,9 +399,11 @@ m(SliceRef, {
           rowData: outFlows.map((flow) => [
             m(
               GridCell,
-m(SliceRef, {
+              m(TrackEventRef, {
                 trace: this.trace,
-                id: asSliceSqlId(flow.end.sliceId),                name: flow.end.sliceChromeCustomName ?? flow.end.sliceName,
+                table: 'slice',
+                id: flow.end.sliceId,
+                name: flow.end.sliceChromeCustomName ?? flow.end.sliceName,
               }),
             ),
             m(

@@ -365,6 +365,7 @@ class RTC_EXPORT IceTransportInternal : public PacketTransportInternal {
     ice_transport_state_changed_callbacks_.Send(transport);
   }
   void SubscribeIceTransportStateChanged(
+      void* tag,
       absl::AnyInvocable<void(IceTransportInternal*)> callback);
 
   // Invoked when remote dictionary has been updated,
@@ -418,8 +419,9 @@ class RTC_EXPORT IceTransportInternal : public PacketTransportInternal {
  private:
   CallbackList<IceTransportInternal*, const Candidate&>
       candidate_gathered_callbacks_;
-CallbackList<IceTransportInternal*> role_conflict_callbacks_;
-  CallbackList<IceTransportInternal*> ice_transport_state_changed_callbacks_;};
+  CallbackList<IceTransportInternal*> role_conflict_callbacks_;
+  CallbackList<IceTransportInternal*> ice_transport_state_changed_callbacks_;
+};
 
 }  //  namespace webrtc
 

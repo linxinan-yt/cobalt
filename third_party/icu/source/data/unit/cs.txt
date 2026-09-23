@@ -2180,7 +2180,8 @@ cs{
                         other{"{0} nocích"}
                     }
                 }
-dnam{"noci"}                few{"{0} noci"}
+dnam{"noci"}
+                few{"{0} noci"}
                 gender{"feminine"}
                 many{"{0} noci"}
                 one{"{0} noc"}
@@ -3716,7 +3717,8 @@ dnam{"noci"}                few{"{0} noci"}
                         other{"{0} bodech"}
                     }
                 }
-dnam{"body"}                few{"{0} body"}
+dnam{"body"}
+                few{"{0} body"}
                 gender{"inanimate"}
                 many{"{0} bodu"}
                 one{"{0} bod"}
@@ -4652,27 +4654,32 @@ dnam{"body"}                few{"{0} body"}
                 case{
                     accusative{
                         few{"{0} milimetry rtuťového sloupce"}
-many{"{0} milimetrů rtuťového sloupce"}                        one{"{0} milimetr rtuťového sloupce"}
+many{"{0} milimetrů rtuťového sloupce"}
+                        one{"{0} milimetr rtuťového sloupce"}
                         other{"{0} milimetrů rtuťového sloupce"}
                     }
                     dative{
                         few{"{0} milimetrům rtuťového sloupce"}
-many{"{0} milimetrům rtuťového sloupce"}                        one{"{0} milimetru rtuťového sloupce"}
+many{"{0} milimetrům rtuťového sloupce"}
+                        one{"{0} milimetru rtuťového sloupce"}
                         other{"{0} milimetrům rtuťového sloupce"}
                     }
                     genitive{
                         few{"{0} milimetrů rtuťového sloupce"}
-many{"{0} milimetrů rtuťového sloupce"}                        one{"{0} milimetru rtuťového sloupce"}
+many{"{0} milimetrů rtuťového sloupce"}
+                        one{"{0} milimetru rtuťového sloupce"}
                         other{"{0} milimetrů rtuťového sloupce"}
                     }
                     instrumental{
                         few{"{0} milimetry rtuťového sloupce"}
-many{"{0} milimetru rtuťového sloupce"}                        one{"{0} milimetrem rtuťového sloupce"}
+many{"{0} milimetru rtuťového sloupce"}
+                        one{"{0} milimetrem rtuťového sloupce"}
                         other{"{0} milimetry rtuťového sloupce"}
                     }
                     locative{
                         few{"{0} milimetrech rtuťového sloupce"}
-many{"{0} milimetrech rtuťového sloupce"}                        one{"{0} milimetru rtuťového sloupce"}
+many{"{0} milimetrech rtuťového sloupce"}
+                        one{"{0} milimetru rtuťového sloupce"}
                         other{"{0} milimetrech rtuťového sloupce"}
                     }
                 }
@@ -4826,7 +4833,8 @@ many{"{0} milimetrech rtuťového sloupce"}                        one{"{0} mili
                         other{"{0} světlech"}
                     }
                 }
-dnam{"světlo"}                few{"{0} světla"}
+dnam{"světlo"}
+                few{"{0} světla"}
                 gender{"neuter"}
                 many{"{0} světla"}
                 one{"{0} světlo"}
@@ -5840,7 +5848,8 @@ dnam{"světlo"}                few{"{0} světla"}
         }
         speed{
             light-speed{
-dnam{"světlo"}                few{"{0} sv."}
+dnam{"světlo"}
+                few{"{0} sv."}
                 many{"{0} sv."}
                 one{"{0} sv."}
                 other{"{0} sv."}

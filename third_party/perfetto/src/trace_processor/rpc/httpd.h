@@ -23,13 +23,15 @@
 #include <vector>
 #include "src/trace_processor/rpc/rpc.h"
 #include "src/trace_processor/rpc/session_lifecycle.h"
+
 namespace perfetto::trace_processor {
 
 class TraceProcessor;
 
 // Starts a RPC server that handles requests using protobuf-over-HTTP.
 // It takes control of the calling thread. It returns only if the idle reaper
-// (below) fires; otherwise it runs forever.//
+// (below) fires; otherwise it runs forever.
+//
 // `rpc` is the Rpc instance that will handle the requests.
 // `listen_ip` is the ip address which http server will listen on,
 // it can be an ipv4 or an ipv6 or a domain.
@@ -38,7 +40,8 @@ class TraceProcessor;
 // addition to the default origins defined in httpd.cc.
 // `idle_timeout_ms` reaps the server after that much inactivity (0 = never,
 // preserving the always-on behaviour the UI relies on). `idle_start` controls
-// when the idle clock applies.void RunHttpRPCServer(Rpc& rpc,
+// when the idle clock applies.
+void RunHttpRPCServer(Rpc& rpc,
                       const std::string& listen_ip,
                       const std::string& port_number,
                       const std::vector<std::string>& additional_cors_origins,

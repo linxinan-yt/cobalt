@@ -1198,7 +1198,8 @@ ta{
         }
 "Pacific:Kanton"{
             ec{"கேன்டன்"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"கிரிடிமாட்டி"}
         }
         "Pacific:Kosrae"{

@@ -180,7 +180,8 @@ sw{
             night{
 dnam{"usiku"}
                 one{"usiku {0}"}
-                other{"usiku {0}"}                per{"{0} kila usiku"}
+                other{"usiku {0}"}
+                per{"{0} kila usiku"}
             }
         }
         electric{
@@ -655,7 +656,8 @@ dnam{"usiku"}
             part-per-1e6{
                 dnam{"ppm"}
             }
-part-per-1e9{                dnam{"sehemu kwa kila bilioni"}
+part-per-1e9{
+                dnam{"sehemu kwa kila bilioni"}
             }
         }
         consumption{

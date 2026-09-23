@@ -34,7 +34,7 @@ ScreamNetworkController::ScreamNetworkController(NetworkControllerConfig config)
     : env_(config.env),
       params_(env_.field_trials()),
       default_pacing_window_(config.default_pacing_time_window),
-allow_initial_bwe_before_media_(
+      allow_initial_bwe_before_media_(
           config.stream_based_config.enable_repeated_initial_probing),
       current_pacing_window_(config.default_pacing_time_window),
       scream_(std::in_place, env_),
@@ -67,7 +67,8 @@ NetworkControlUpdate ScreamNetworkController::CreateFirstUpdate(Timestamp now) {
   first_update_created_ = true;
   padding_interval_end_time_ = Timestamp::MinusInfinity();
   if (allow_initial_bwe_before_media_) {
-    initial_bwe_probe_end_time_ = now + params_.initial_probing_duration.Get();  }
+    initial_bwe_probe_end_time_ = now + params_.initial_probing_duration.Get();
+  }
   NetworkControlUpdate update = CreateUpdate(now);
 
   if (allow_initial_bwe_before_media_) {
@@ -156,7 +157,7 @@ NetworkControlUpdate ScreamNetworkController::OnReceivedPacket(
 
 NetworkControlUpdate ScreamNetworkController::OnStreamsConfig(
     StreamsConfig msg) {
-RTC_LOG_IF(LS_VERBOSE, msg.max_total_allocated_bitrate.has_value())
+  RTC_LOG_IF(LS_VERBOSE, msg.max_total_allocated_bitrate.has_value())
       << "OnStreamsConfig: max_total_allocated_bitrate="
       << *msg.max_total_allocated_bitrate;
   streams_config_ = msg;
@@ -166,7 +167,8 @@ RTC_LOG_IF(LS_VERBOSE, msg.max_total_allocated_bitrate.has_value())
   if (!first_update_created_ && network_available_ &&
       streams_config_.max_total_allocated_bitrate > DataRate::Zero()) {
     return CreateFirstUpdate(msg.at_time);
-  }  return NetworkControlUpdate();
+  }
+  return NetworkControlUpdate();
 }
 
 NetworkControlUpdate ScreamNetworkController::OnTargetRateConstraints(
@@ -195,9 +197,10 @@ NetworkControlUpdate ScreamNetworkController::OnNetworkStateEstimate(
 
 NetworkControlUpdate ScreamNetworkController::OnTransportPacketsFeedback(
     TransportPacketsFeedback msg) {
-scream_->OnTransportPacketsFeedback(msg);
+  scream_->OnTransportPacketsFeedback(msg);
   data_in_flight_ = msg.data_in_flight;
-  return CreateUpdate(msg.feedback_time);}
+  return CreateUpdate(msg.feedback_time);
+}
 
 double ScreamNetworkController::CalculateCwndReduceRatio() const {
   if (data_in_flight_ > scream_->max_data_in_flight()) {
@@ -220,8 +223,9 @@ double ScreamNetworkController::CalculateCwndReduceRatio() const {
 
 NetworkControlUpdate ScreamNetworkController::CreateUpdate(Timestamp now) {
   NetworkControlUpdate update;
-bool is_bandwidth_limited = !scream_->is_application_limited();
+  bool is_bandwidth_limited = !scream_->is_application_limited();
   double cwnd_reduce_ratio = CalculateCwndReduceRatio();
+
   if (scream_->target_rate() != reported_target_rate_ ||
       is_bandwidth_limited != reported_is_bandwidth_limited_ ||
       std::abs(cwnd_reduce_ratio - reported_cwnd_reduce_ratio_) > 0.1) {
@@ -303,6 +307,7 @@ std::optional<PacerConfig> ScreamNetworkController::MaybeCreatePacerConfig(
     return PacerConfig::Create(now, pacing_rate, padding_rate,
                                current_pacing_window_);
   }
-  return std::nullopt;}
+  return std::nullopt;
+}
 
 }  // namespace webrtc

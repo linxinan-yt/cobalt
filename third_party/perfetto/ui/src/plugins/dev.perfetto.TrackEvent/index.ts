@@ -44,6 +44,7 @@ import {
   GroupSummaryTrack,
 } from '../dev.perfetto.ProcessSummary/group_summary_track';
 import {TrackEventCallstackFlamegraphTab} from './track_event_callstack_flamegraph';
+
 function createTrackEventDetailsPanel(trace: Trace) {
   return () =>
     new ThreadSliceDetailsPanel(trace, {
@@ -267,16 +268,18 @@ export default class TrackEventPlugin implements PerfettoPlugin {
             upid: upid ?? undefined,
             utid: utid ?? undefined,
             trackEvent: true,
-hasCallstacks: hasCallstacks === 1,          },
+            hasCallstacks: hasCallstacks === 1,
+          },
           renderer: await createTraceProcessorSliceTrack({
             trace: ctx,
             uri,
             trackIds,
             detailsPanel: createTrackEventDetailsPanel(ctx),
-depthTableName:
+            depthTableName:
               trackIds.length > 1
                 ? '__trackevent_track_layout_depth'
-                : undefined,          }),
+                : undefined,
+          }),
         });
       } else {
         // Summary track with no data but has children - use SliceTrackSummary
@@ -326,9 +329,18 @@ depthTableName:
       trackIdToTrackNode.set(trackIds[0], node);
     }
 
-// Register area selection tab for callstack flamegraph
+    const store = ensureExists(this.store);
     ctx.selection.registerAreaSelectionTab(
-      createTrackEventCallstackFlamegraphTab(ctx),    );
+      new TrackEventCallstackFlamegraphTab(
+        ctx,
+        () => store.state.areaSelectionFlamegraphState,
+        (state) => {
+          store.edit((draft) => {
+            draft.areaSelectionFlamegraphState = state;
+          });
+        },
+      ),
+    );
   }
 
   private findParentTrackNode(

@@ -39,6 +39,7 @@ import {findRef} from '../../base/dom_utils';
 import {Callout} from '../../widgets/callout';
 
 const SEARCH_BOX_REF = 'plugin-search-box';
+
 enum SortOrder {
   Name = 'name',
   Slowest = 'slowest',
@@ -92,6 +93,7 @@ function sortText(sortOrder: SortOrder) {
 export interface PluginsPageAttrs {
   readonly subpage?: string;
 }
+
 export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
   private filterText: string = '';
   private readonly dependenciesByPluginId: ReadonlyMap<
@@ -122,7 +124,9 @@ export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
     }
     this.dependenciesByPluginId = dependencies;
     this.dependantsByPluginId = dependants;
-  }  view({attrs}: m.Vnode<PluginsPageAttrs>): m.Children {
+  }
+
+  view({attrs}: m.Vnode<PluginsPageAttrs>): m.Children {
     const pluginManager = AppImpl.instance.plugins;
     const registeredPlugins = pluginManager.getAllPlugins();
     const needsRestart = registeredPlugins.some((p) => {
@@ -135,8 +139,24 @@ export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
 
     const isFiltering = this.filterText !== '';
     const filteredPlugins = isFiltering
-? finder.find(this.filterText)
-      : sorted.map((item) => ({item, segments: []}));    const subpage = decodeURIComponent(attrs.subpage ?? '');
+      ? fuzzySearch(
+          sorted,
+          [
+            (p: PluginWrapper) => p.desc.id,
+            (p: PluginWrapper) => p.desc.description ?? '',
+          ],
+          this.filterText,
+        ).map((res) => ({
+          item: res.item,
+          idSegments: res.segments[0],
+          descriptionSegments: res.segments[1],
+        }))
+      : sorted.map((item) => ({
+          item,
+          idSegments: item.desc.id,
+          descriptionSegments: item.desc.description?.trim(),
+        }));
+    const subpage = decodeURIComponent(attrs.subpage ?? '');
 
     const page = m(
       SettingsShell,
@@ -227,7 +247,7 @@ export class PluginsPage implements m.ClassComponent<PluginsPageAttrs> {
         filteredPlugins.length > 0
           ? m(
               CardStack,
-filteredPlugins.map(
+              filteredPlugins.map(
                 ({item: plugin, idSegments, descriptionSegments}) => {
                   return this.renderPluginCard(
                     plugin,
@@ -236,7 +256,8 @@ filteredPlugins.map(
                     descriptionSegments,
                   );
                 },
-              ),            )
+              ),
+            )
           : this.renderEmptyState(isFiltering),
       ),
     );
@@ -290,7 +311,7 @@ filteredPlugins.map(
   private renderPluginCard(
     plugin: PluginWrapper,
     focused: boolean,
-idSegments?: readonly FuzzySegment[] | string,
+    idSegments?: readonly FuzzySegment[] | string,
     descriptionSegments?: readonly FuzzySegment[] | string,
   ): m.Children {
     const loadTime = plugin.traceContext?.loadTimeMs;
@@ -306,7 +327,8 @@ idSegments?: readonly FuzzySegment[] | string,
       className: classNames(
         'pf-plugins-page__card',
         plugin.enableFlag.get() && 'pf-plugins-page__card--enabled',
-        isExperimental && 'pf-plugins-page__card--experimental',      ),
+        isExperimental && 'pf-plugins-page__card--experimental',
+      ),
       title: renderSegments(idSegments ?? plugin.desc.id),
       linkHref: `#!/plugins/${encodeURIComponent(plugin.desc.id)}`,
       description: [
@@ -408,20 +430,6 @@ idSegments?: readonly FuzzySegment[] | string,
         );
       }),
     );
-  }
-
-  oncreate(vnode: m.VnodeDOM<PluginsPageAttrs>) {
-    const subpage = decodeURIComponent(vnode.attrs.subpage ?? '');
-    console.log(subpage);
-    const pluginId = /[/](.+)/.exec(subpage)?.[1];
-    console.log('Scrolling to plugin', pluginId);
-    if (pluginId) {
-      const plugin = vnode.dom.querySelector(`#${CSS.escape(pluginId)}`);
-      console.log('Scrolling to plugin', pluginId, plugin);
-      if (plugin) {
-        plugin.scrollIntoView({block: 'center'});
-      }
-    }
   }
 }
 

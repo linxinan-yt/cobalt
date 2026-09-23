@@ -1764,7 +1764,8 @@ dnam{"ᏚᎵᏏᏂᏒ"}
                 other{"{0}kn"}
             }
             light-speed{
-dnam{"ᎠᏨᏍᏗ"}                one{"{0}ᎠᏨᏍᏗ"}
+dnam{"ᎠᏨᏍᏗ"}
+                one{"{0}ᎠᏨᏍᏗ"}
                 other{"{0}ᎠᏨᏍᏗ"}
             }
             meter-per-second{

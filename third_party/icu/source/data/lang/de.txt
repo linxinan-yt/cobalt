@@ -20,7 +20,8 @@ de{
         lw{"Zeilenumbruch im Wortinneren"}
         ms{"Maßsystem"}
         numbers{"Ziffern"}
-ss{"Satzabbruch nach Abk."}        timezone{"Zeitzone"}
+ss{"Satzabbruch nach Abk."}
+        timezone{"Zeitzone"}
         va{"Lokale Variante"}
         x{"Privatnutzung"}
     }

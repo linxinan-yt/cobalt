@@ -18,9 +18,10 @@ export const SIDEBAR_SECTIONS = {
     title: 'Current Trace',
     summary: 'Actions on the current trace',
   },
-trace_files: {
+  trace_files: {
     title: 'New Trace',
-    summary: 'Open or record a new trace',  },
+    summary: 'Open or record a new trace',
+  },
   settings: {
     title: 'Settings',
     summary: 'Preferences and configuration',

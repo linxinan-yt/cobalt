@@ -16,10 +16,10 @@
 #include <optional>
 #include <utility>
 
-#include "absl/algorithm/container.h"
 #include "absl/base/nullability.h"
 #include "absl/container/flat_hash_map.h"
 #include "api/environment/environment.h"
+#include "api/numerics/samples_stats_counter.h"
 #include "api/sequence_checker.h"
 #include "api/units/data_size.h"
 #include "api/units/time_delta.h"
@@ -39,6 +39,7 @@
 #include "video/timing/simulator/rendering_tracker.h"
 #include "video/timing/simulator/rtc_event_log_driver.h"
 #include "video/timing/simulator/rtp_packet_simulator.h"
+
 namespace webrtc::video_timing_simulator {
 
 namespace {
@@ -52,7 +53,8 @@ class RenderedFrameCollector : public AssemblerEvents,
       : env_(env), ssrc_(ssrc) {
     RTC_DCHECK_NE(ssrc_, 0);
   }
-~RenderedFrameCollector() override { RTC_DCHECK_RUN_ON(&sequence_checker_); }
+  ~RenderedFrameCollector() override { RTC_DCHECK_RUN_ON(&sequence_checker_); }
+
   RenderedFrameCollector(const RenderedFrameCollector&) = delete;
   RenderedFrameCollector& operator=(const RenderedFrameCollector&) = delete;
 
@@ -153,7 +155,8 @@ class RenderedFrameCollector : public AssemblerEvents,
       RTC_DCHECK_EQ(key, value.frame_id);
       stream.frames.push_back(value);
     }
-SortByArrivalOrder(stream.frames);    return stream;
+    SortByArrivalOrder(stream.frames);
+    return stream;
   }
 
  private:
@@ -181,7 +184,9 @@ std::unique_ptr<VCMTiming> CreateVCMTiming(
   return std::make_unique<VCMTiming>(&env.clock(), env.field_trials(),
                                      RenderingSimulator::kRenderDelay,
                                      std::move(video_jitter_timing));
-}// Combines all objects needed to perform rendering simulation of a single
+}
+
+// Combines all objects needed to perform rendering simulation of a single
 // stream. Inserts the streams results to the `results` pointer when `Close()`
 // is called (at the end of simulation).
 class RenderingSimulatorStream : public RtcEventLogDriver::StreamInterface {
@@ -189,20 +194,22 @@ class RenderingSimulatorStream : public RtcEventLogDriver::StreamInterface {
   RenderingSimulatorStream(const RenderingSimulator::Config& config,
                            const Environment& env,
                            uint32_t ssrc,
-uint32_t rtx_ssrc,                           RenderingSimulator::Results* absl_nonnull results)
+                           uint32_t rtx_ssrc,
+                           RenderingSimulator::Results* absl_nonnull results)
       : collector_(env, ssrc),
         tracker_(env,
                  RenderingTracker::Config{
                      .ssrc = ssrc,
                      .render_delay = RenderingSimulator::kRenderDelay},
-CreateVCMTiming(env, config),
+                 CreateVCMTiming(env, config),
                  &collector_),
         assembler_(env, ssrc, &collector_, &tracker_),
-        receiver_(env, ssrc, rtx_ssrc, &assembler_),        results_(*results) {
+        receiver_(env, ssrc, rtx_ssrc, &assembler_),
+        results_(*results) {
     RTC_DCHECK_RUN_ON(&sequence_checker_);
     tracker_.SetDecodedFrameIdCallback(&assembler_);
   }
-~RenderingSimulatorStream() override {
+  ~RenderingSimulatorStream() override {
     RTC_DCHECK_RUN_ON(&sequence_checker_);
   }
 
@@ -216,7 +223,8 @@ CreateVCMTiming(env, config),
   void UpdateMaxRtt(TimeDelta max_rtt) override {
     RTC_DCHECK_RUN_ON(&sequence_checker_);
     assembler_.UpdateMaxRtt(max_rtt);
-    tracker_.UpdateMaxRtt(max_rtt);  }
+    tracker_.UpdateMaxRtt(max_rtt);
+  }
 
   void Close() override {
     RTC_DCHECK_RUN_ON(&sequence_checker_);
@@ -232,7 +240,8 @@ CreateVCMTiming(env, config),
   RenderedFrameCollector collector_ RTC_GUARDED_BY(sequence_checker_);
   RenderingTracker tracker_ RTC_GUARDED_BY(sequence_checker_);
   Assembler assembler_ RTC_GUARDED_BY(sequence_checker_);
-Receiver receiver_ RTC_GUARDED_BY(sequence_checker_);  RenderingSimulator::Results& results_;
+  Receiver receiver_ RTC_GUARDED_BY(sequence_checker_);
+  RenderingSimulator::Results& results_;
 };
 
 }  // namespace
@@ -248,18 +257,19 @@ RenderingSimulator::Results RenderingSimulator::Simulate(
   results.config_name = config_.name;
 
   // Simulation.
-auto stream_factory = [this, &results](const Environment& env, uint32_t ssrc,
+  auto stream_factory = [this, &results](const Environment& env, uint32_t ssrc,
                                          uint32_t rtx_ssrc) {
     return std::make_unique<RenderingSimulatorStream>(config_, env, ssrc,
                                                       rtx_ssrc, &results);
   };
   RtcEventLogDriver rtc_event_log_simulator(
       {.reuse_streams = config_.reuse_streams,
-       .ssrc_filter = config_.ssrc_filter},      &parsed_log, config_.field_trials_string, std::move(stream_factory));
+       .ssrc_filter = config_.ssrc_filter},
+      &parsed_log, config_.field_trials_string, std::move(stream_factory));
   rtc_event_log_simulator.Simulate();
 
   // Return.
-SortByStreamOrder(results.streams);
+  SortByStreamOrder(results.streams);
   return results;
 }
 
@@ -276,4 +286,6 @@ SamplesStatsCounter RenderingSimulator::Stream::InterDecodedTimeMs() {
 SamplesStatsCounter RenderingSimulator::Stream::InterRenderedTimeMs() {
   SortByRenderedOrder(frames);
   return BuildSamplesMs(&InterRenderedTime);
-}}  // namespace webrtc::video_timing_simulator
+}
+
+}  // namespace webrtc::video_timing_simulator

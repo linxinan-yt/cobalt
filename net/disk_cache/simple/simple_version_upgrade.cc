@@ -45,7 +45,8 @@ bool WriteFakeIndexFile(disk_cache::BackendFileOperations* file_operations,
   std::unique_ptr<disk_cache::CacheFile> file = file_operations->OpenFile(
       file_name, base::File::FLAG_CREATE | base::File::FLAG_WRITE);
 #endif
-  if (!file->IsValid()) {    return false;
+  if (!file->IsValid()) {
+    return false;
   }
 
   disk_cache::FakeIndexData file_contents;

@@ -418,7 +418,8 @@ it{
 dnam{"notti"}
                 gender{"feminine"}
                 one{"{0} notte"}
-                other{"{0} notti"}                per{"{0} a notte"}
+                other{"{0} notti"}
+                per{"{0} a notte"}
             }
             quarter{
                 dnam{"trimestri"}
@@ -2487,7 +2488,8 @@ part-per-1e9{
                 other{"Bft {0}"}
             }
             light-speed{
-dnam{"luce"}                one{"{0} luce"}
+dnam{"luce"}
+                one{"{0} luce"}
                 other{"{0} luce"}
             }
         }

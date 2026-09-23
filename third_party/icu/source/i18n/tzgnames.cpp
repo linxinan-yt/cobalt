@@ -295,7 +295,8 @@ private:
     TextTrieMap fGNamesTrie;
     UBool fGNamesTrieFullyLoaded;
 
-FixedString fTargetRegion;
+    FixedString fTargetRegion;
+
     void initialize(const Locale& locale, UErrorCode& status);
     void cleanup();
 
@@ -406,7 +407,7 @@ TZGNCore::initialize(const Locale& locale, UErrorCode& status) {
     int32_t regionLen = static_cast<int32_t>(uprv_strlen(region));
     if (regionLen == 0) {
         CharString loc = ulocimp_addLikelySubtags(fLocale.getName(), status);
-CharString tmp;
+        CharString tmp;
         ulocimp_getSubtags(loc.toStringPiece(), nullptr, nullptr, &tmp, nullptr, nullptr, status);
         if (U_FAILURE(status)) {
             cleanup();
@@ -414,16 +415,18 @@ CharString tmp;
         }
         fTargetRegion = tmp.toStringPiece();
         if (fTargetRegion.isEmpty() != tmp.isEmpty()) {
-            status = U_MEMORY_ALLOCATION_ERROR;            cleanup();
+            status = U_MEMORY_ALLOCATION_ERROR;
+            cleanup();
             return;
         }
     } else {
-fTargetRegion = {region, static_cast<std::string_view::size_type>(regionLen)};
+        fTargetRegion = {region, static_cast<std::string_view::size_type>(regionLen)};
         if (fTargetRegion.isEmpty()) {
             status = U_MEMORY_ALLOCATION_ERROR;
             cleanup();
             return;
-        }    }
+        }
+    }
 
     // preload generic names for the default zone
     TimeZone *tz = TimeZone::createDefault();
@@ -1202,7 +1205,6 @@ TimeZoneGenericNames::createInstance(const Locale& locale, UErrorCode& status) {
             }
         }
         if (U_FAILURE(status)) {
-            delete instance;
             return nullptr;
         }
 

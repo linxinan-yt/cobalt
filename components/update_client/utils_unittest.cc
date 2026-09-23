@@ -76,7 +76,8 @@ TEST(UpdateClientUtils, VerifyHash256) {
       std::string(
           "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")));
 }
-#elseTEST(UpdateClientUtils, VerifyFileHash256) {
+#else
+TEST(UpdateClientUtils, VerifyFileHash256) {
   EXPECT_TRUE(VerifyFileHash256(
       GetTestFilePath("jebgalgnebhfojomionfpkfelancnnkf.crx"),
       std::string(

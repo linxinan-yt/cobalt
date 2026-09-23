@@ -14,7 +14,8 @@
 
 import m from 'mithril';
 import {LONG, NUM, STR, STR_NULL} from '../../trace_processor/query_result';
-import type {Trace} from '../../public/trace';import {SliceTrack} from '../../components/tracks/slice_track';
+import type {Trace} from '../../public/trace';
+import {SliceTrack} from '../../components/tracks/slice_track';
 import {SourceDataset} from '../../trace_processor/dataset';
 import {makeColorScheme} from '../../components/colorizer';
 import {HSLColor} from '../../base/color';
@@ -154,7 +155,8 @@ export function createAndroidLogTrack(trace: Trace, uri: string) {
   return SliceTrack.create({
     trace,
     uri,
-dataset: new SourceDataset({src: LOGS_SQL, schema: LOGS_SCHEMA}),    initialMaxDepth: 4,
+    dataset: new SourceDataset({src: LOGS_SQL, schema: LOGS_SCHEMA}),
+    initialMaxDepth: 4,
     colorizer: (row) => PRIO_TO_COLOR[row.prio] ?? DEFAULT_PRIO_COLOR,
     tooltip: (slice) => [m('', m('b', slice.row.tag)), m('', slice.row.msg)],
     // All log events are instant events, render them as a little box rather

@@ -48,21 +48,7 @@ MATCHER_P(IsOkAndHolds, matcher, "") {
 TEST(PerfInvocationTest, NoAttrBuildFails) {
   TraceProcessorContext context;
   context.storage.reset(new TraceStorage());
-context.global_stats_tracker =
-      std::make_unique<GlobalStatsTracker>(context.storage.get());
-  context.machine_tracker.reset(
-      new MachineTracker(&context, kDefaultMachineId));
-  context.trace_state =
-      TraceProcessorContextPtr<TraceProcessorContext::TraceState>::MakeRoot(
-          TraceProcessorContext::TraceState{TraceId{0}});
-  context.stats_tracker = std::make_unique<StatsTracker>(&context);  PerfInvocation::Builder builder(&context);
-  EXPECT_FALSE(builder.Build().ok());
-}
-
-TEST(PerfInvocationTest, OneAttrAndNoIdBuildSucceeds) {
-  TraceProcessorContext context;
-  context.storage.reset(new TraceStorage());
-context.global_stats_tracker =
+  context.global_stats_tracker =
       std::make_unique<GlobalStatsTracker>(context.storage.get());
   context.machine_tracker.reset(
       new MachineTracker(&context, kDefaultMachineId));
@@ -71,7 +57,23 @@ context.global_stats_tracker =
           TraceProcessorContext::TraceState{TraceId{0}});
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
   PerfInvocation::Builder builder(&context);
-  perf_event_attr attr{};  attr.sample_id_all = false;
+  EXPECT_FALSE(builder.Build().ok());
+}
+
+TEST(PerfInvocationTest, OneAttrAndNoIdBuildSucceeds) {
+  TraceProcessorContext context;
+  context.storage.reset(new TraceStorage());
+  context.global_stats_tracker =
+      std::make_unique<GlobalStatsTracker>(context.storage.get());
+  context.machine_tracker.reset(
+      new MachineTracker(&context, kDefaultMachineId));
+  context.trace_state =
+      TraceProcessorContextPtr<TraceProcessorContext::TraceState>::MakeRoot(
+          TraceProcessorContext::TraceState{TraceId{0}});
+  context.stats_tracker = std::make_unique<StatsTracker>(&context);
+  PerfInvocation::Builder builder(&context);
+  perf_event_attr attr{};
+  attr.sample_id_all = false;
   attr.sample_type = PERF_SAMPLE_CALLCHAIN | PERF_SAMPLE_CPU | PERF_SAMPLE_TIME;
   builder.AddAttrAndIds(attr, {1});
 
@@ -86,7 +88,7 @@ context.global_stats_tracker =
 TEST(PerfInvocationTest, MultipleAttrsAndNoIdBuildFails) {
   TraceProcessorContext context;
   context.storage.reset(new TraceStorage());
-context.global_stats_tracker =
+  context.global_stats_tracker =
       std::make_unique<GlobalStatsTracker>(context.storage.get());
   context.machine_tracker.reset(
       new MachineTracker(&context, kDefaultMachineId));
@@ -95,7 +97,8 @@ context.global_stats_tracker =
           TraceProcessorContext::TraceState{TraceId{0}});
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
   PerfInvocation::Builder builder(&context);
-  perf_event_attr attr{};  attr.sample_id_all = true;
+  perf_event_attr attr{};
+  attr.sample_id_all = true;
   attr.sample_type = PERF_SAMPLE_CALLCHAIN | PERF_SAMPLE_CPU | PERF_SAMPLE_TIME;
   builder.AddAttrAndIds(attr, {1});
   builder.AddAttrAndIds(attr, {2});
@@ -105,7 +108,7 @@ context.global_stats_tracker =
 TEST(PerfInvocationTest, MultipleIdsSameAttrAndNoIdCanExtractAttrFromRecord) {
   TraceProcessorContext context;
   context.storage.reset(new TraceStorage());
-context.global_stats_tracker =
+  context.global_stats_tracker =
       std::make_unique<GlobalStatsTracker>(context.storage.get());
   context.machine_tracker.reset(
       new MachineTracker(&context, kDefaultMachineId));
@@ -114,7 +117,8 @@ context.global_stats_tracker =
           TraceProcessorContext::TraceState{TraceId{0}});
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
   PerfInvocation::Builder builder(&context);
-  perf_event_attr attr{};  attr.sample_id_all = true;
+  perf_event_attr attr{};
+  attr.sample_id_all = true;
   attr.sample_type = PERF_SAMPLE_IP | PERF_SAMPLE_CPU | PERF_SAMPLE_TIME;
   builder.AddAttrAndIds(attr, {1, 2, 3});
 
@@ -138,7 +142,7 @@ context.global_stats_tracker =
 TEST(PerfInvocationTest, NoCommonSampleIdAllBuildFails) {
   TraceProcessorContext context;
   context.storage.reset(new TraceStorage());
-context.global_stats_tracker =
+  context.global_stats_tracker =
       std::make_unique<GlobalStatsTracker>(context.storage.get());
   context.machine_tracker.reset(
       new MachineTracker(&context, kDefaultMachineId));
@@ -147,7 +151,8 @@ context.global_stats_tracker =
           TraceProcessorContext::TraceState{TraceId{0}});
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
   PerfInvocation::Builder builder(&context);
-  perf_event_attr attr{};  attr.sample_id_all = true;
+  perf_event_attr attr{};
+  attr.sample_id_all = true;
   attr.sample_type = PERF_SAMPLE_IDENTIFIER;
   builder.AddAttrAndIds(attr, {1});
   builder.AddAttrAndIds(attr, {2});
@@ -163,7 +168,7 @@ context.global_stats_tracker =
 TEST(PerfInvocationTest, NoCommonOffsetForSampleBuildFails) {
   TraceProcessorContext context;
   context.storage.reset(new TraceStorage());
-context.global_stats_tracker =
+  context.global_stats_tracker =
       std::make_unique<GlobalStatsTracker>(context.storage.get());
   context.machine_tracker.reset(
       new MachineTracker(&context, kDefaultMachineId));
@@ -172,7 +177,8 @@ context.global_stats_tracker =
           TraceProcessorContext::TraceState{TraceId{0}});
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
   PerfInvocation::Builder builder(&context);
-  perf_event_attr attr{};  attr.sample_id_all = true;
+  perf_event_attr attr{};
+  attr.sample_id_all = true;
   attr.sample_type = PERF_SAMPLE_IP | PERF_SAMPLE_ID;
   builder.AddAttrAndIds(attr, {1});
   attr.sample_type |= PERF_SAMPLE_TID;
@@ -183,7 +189,7 @@ context.global_stats_tracker =
 TEST(PerfInvocationTest, NoCommonOffsetForNonSampleBuildFails) {
   TraceProcessorContext context;
   context.storage.reset(new TraceStorage());
-context.global_stats_tracker =
+  context.global_stats_tracker =
       std::make_unique<GlobalStatsTracker>(context.storage.get());
   context.machine_tracker.reset(
       new MachineTracker(&context, kDefaultMachineId));
@@ -192,7 +198,8 @@ context.global_stats_tracker =
           TraceProcessorContext::TraceState{TraceId{0}});
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
   PerfInvocation::Builder builder(&context);
-  perf_event_attr attr{};  attr.sample_id_all = true;
+  perf_event_attr attr{};
+  attr.sample_id_all = true;
   attr.sample_type = PERF_SAMPLE_ID | PERF_SAMPLE_TID;
   builder.AddAttrAndIds(attr, {1});
   builder.AddAttrAndIds(attr, {2});
@@ -218,7 +225,8 @@ TEST(PerfInvocationTest,
           TraceProcessorContext::TraceState{TraceId{0}});
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
   PerfInvocation::Builder builder(&context);
-  perf_event_attr attr{};  attr.sample_id_all = false;
+  perf_event_attr attr{};
+  attr.sample_id_all = false;
   attr.sample_type = PERF_SAMPLE_IDENTIFIER | PERF_SAMPLE_TID;
   builder.AddAttrAndIds(attr, {1});
   attr.sample_type |= PERF_SAMPLE_ID;
@@ -229,7 +237,7 @@ TEST(PerfInvocationTest,
 TEST(PerfInvocationTest, MultiplesessionBuildSucceeds) {
   TraceProcessorContext context;
   context.storage.reset(new TraceStorage());
-context.global_stats_tracker =
+  context.global_stats_tracker =
       std::make_unique<GlobalStatsTracker>(context.storage.get());
   context.machine_tracker.reset(
       new MachineTracker(&context, kDefaultMachineId));
@@ -238,7 +246,8 @@ context.global_stats_tracker =
           TraceProcessorContext::TraceState{TraceId{0}});
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
   PerfInvocation::Builder builder(&context);
-  perf_event_attr attr{};  attr.sample_id_all = true;
+  perf_event_attr attr{};
+  attr.sample_id_all = true;
   attr.sample_type = PERF_SAMPLE_IP | PERF_SAMPLE_ID;
   builder.AddAttrAndIds(attr, {1});
   builder.AddAttrAndIds(attr, {2});
@@ -248,7 +257,7 @@ context.global_stats_tracker =
 TEST(PerfInvocationTest, FindAttrInRecordWithId) {
   TraceProcessorContext context;
   context.storage.reset(new TraceStorage());
-context.global_stats_tracker =
+  context.global_stats_tracker =
       std::make_unique<GlobalStatsTracker>(context.storage.get());
   context.machine_tracker.reset(
       new MachineTracker(&context, kDefaultMachineId));
@@ -257,7 +266,8 @@ context.global_stats_tracker =
           TraceProcessorContext::TraceState{TraceId{0}});
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
   PerfInvocation::Builder builder(&context);
-  perf_event_attr attr{};  attr.sample_id_all = true;
+  perf_event_attr attr{};
+  attr.sample_id_all = true;
   attr.sample_type = PERF_SAMPLE_IP | PERF_SAMPLE_ID;
   attr.read_format = 1;
   builder.AddAttrAndIds(attr, {1});
@@ -292,7 +302,7 @@ context.global_stats_tracker =
 TEST(PerfInvocationTest, FindAttrInRecordWithIdentifier) {
   TraceProcessorContext context;
   context.storage.reset(new TraceStorage());
-context.global_stats_tracker =
+  context.global_stats_tracker =
       std::make_unique<GlobalStatsTracker>(context.storage.get());
   context.machine_tracker.reset(
       new MachineTracker(&context, kDefaultMachineId));
@@ -301,7 +311,8 @@ context.global_stats_tracker =
           TraceProcessorContext::TraceState{TraceId{0}});
   context.stats_tracker = std::make_unique<StatsTracker>(&context);
   PerfInvocation::Builder builder(&context);
-  perf_event_attr attr{};  attr.sample_id_all = true;
+  perf_event_attr attr{};
+  attr.sample_id_all = true;
   attr.sample_type = PERF_SAMPLE_IDENTIFIER | PERF_SAMPLE_IP;
   attr.read_format = 1;
   builder.AddAttrAndIds(attr, {1});

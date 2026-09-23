@@ -233,7 +233,8 @@ class V8_BASE_EXPORT CPU final {
   bool has_zfa_ = false;
   bool has_rvc_ = false;
   bool has_lsx_ = false;
-  bool has_lasx_ = false;};
+  bool has_lasx_ = false;
+};
 
 }  // namespace base
 }  // namespace v8

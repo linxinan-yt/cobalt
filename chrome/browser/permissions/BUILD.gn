@@ -190,7 +190,8 @@ source_set("permissions") {
       "//chrome/browser/ash/shimless_rma",
     ]
 if (use_cups) {
-      deps += [ "//chrome/browser/printing" ]    }
+      deps += [ "//chrome/browser/printing" ]
+    }
   }
 
   if (!is_android) {

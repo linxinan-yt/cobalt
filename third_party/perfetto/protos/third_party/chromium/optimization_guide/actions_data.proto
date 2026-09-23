@@ -394,71 +394,6 @@ message AttemptOtpFillingAction {
   }
 }
 
-// Specifies a form by a set of fields (from different autofill sections) and
-// the kind of data to fill in these sections. See AttemptFormFillingAction.
-//
-// If a form consists of multiple autofill sections, only fields from the
-// section corresponding to the trigger field will be filled.
-//
-// This FormFillingRequest in development and future changes are possible once
-// the model constraings/performance are understood.
-//
-// Next ID: 3
-message FormFillingRequest {
-  // Specifies a field that is part of the form. Autofill will be triggered from
-  // this field, but will fill other fields of the same autofill section with
-  // the available data.
-  //
-  // TODO(crbug.com/452946211): This field is repeated to be able to support a form that
-  // is spread over multiple autofill sections.
-  repeated ActionTarget trigger_fields = 1;
-
-  // Specifies which data is requested. The requested data type will be
-  // presented in the UI to the user (e.g. a user chooses an address for the
-  // "shipping address").
-  RequestedData requested_data = 2 [features = { field_presence: EXPLICIT }];
-
-  // Enumerates the purposes for forms. Note that although the type of data
-  // (address or credit card) is encoded that autofill already detects the type,
-  // but does not detect the purpose (e.g. shipping v.s. billing address)
-  // provide here.
-  enum RequestedData {
-    // The requested data is not specified.
-    REQUESTED_DATA_UNKNOWN = 0;
-
-    // An address should be filled. This value can be used as a catch-all when
-    // the more specific address options below do not fit.
-    ADDRESS = 1;
-
-    // A shipping address should be filled.
-    SHIPPING_ADDRESS = 2;
-
-    // A billing address should be filled.
-    BILLING_ADDRESS = 3;
-
-    // A home address should be filled.
-    HOME_ADDRESS = 4;
-
-    // A work address should be filled.
-    WORK_ADDRESS = 5;
-
-    // A credit card should be filled.
-    CREDIT_CARD = 6;
-  }
-}
-
-// Attempts to fill forms on the website.
-//
-// This AttemptFormFillingAction in development and future changes are possible
-// once the model constraings/performance are understood.
-//
-// Next ID: 3
-message AttemptFormFillingAction {
-  int32 tab_id = 1 [features = { field_presence: EXPLICIT }];
-
-  repeated FormFillingRequest form_filling_requests = 2;
-}
-
 // Scrolls the DOM element into viewport.
 // Next ID: 5
 message ScrollToAction {
@@ -527,11 +462,13 @@ message MediaControlAction {
 
 // Loads the given URLs and extracts content from them.
 message LoadAndExtractContentAction {
-  repeated string urls = 1;}
+  repeated string urls = 1;
+}
 
 // All of the actions that can be taken.
 // Only one of these is allowed per action.
-// Next ID: 25message Action {
+// Next ID: 25
+message Action {
 
   oneof action {
     ClickAction click = 1;
@@ -577,9 +514,11 @@ message LoadAndExtractContentAction {
     MediaControlAction media_control = 21;
 
     AttemptFormFillingAction attempt_form_filling = 22;
-LoadAndExtractContentAction load_and_extract_content = 23;
 
-    AttemptOtpFillingAction attempt_otp_filling = 24;  }
+    LoadAndExtractContentAction load_and_extract_content = 23;
+
+    AttemptOtpFillingAction attempt_otp_filling = 24;
+  }
 }
 
 // Container for any type of metadata that is associated with a task.
@@ -589,14 +528,16 @@ message TaskMetadata {
 }
 
 // Metadata related to action security.
-// Next ID: 3message SecurityMetadata {
+// Next ID: 3
+message SecurityMetadata {
   // If the server predicted that new mainframe origins may be navigated to as a
   // result of the current task turn, those are given here.
   //
   // These origins, if any, are added to the set of all writeable origins kept
   // by the Chrome browser process.
   repeated string added_writable_mainframe_origins = 1;
-// If set, this config will be used to determine which locations the agent
+
+  // If set, this config will be used to determine which locations the agent
   // may visit and what resources and capabilities are available.
   // This field is only respected the first turn if it is received; any
   // subsequent turns' values are ignored.
@@ -628,7 +569,8 @@ message ScreenshotCollectionOptions {
 }
 
 // A single set of actions to be taken by Chrome. The response is ActionsResult.
-// Next ID: 6message Actions {
+// Next ID: 6
+message Actions {
   // The actions to be taken by Chrome.
   repeated Action actions = 1;
 
@@ -645,8 +587,10 @@ message ScreenshotCollectionOptions {
 
   // Metadata that is associated with a task.
   TaskMetadata task_metadata = 4 [features = { field_presence: EXPLICIT }];
-// Options for screenshot collection.
-  ScreenshotCollectionOptions screenshot_options = 5 [features = { field_presence: EXPLICIT }];}
+
+  // Options for screenshot collection.
+  ScreenshotCollectionOptions screenshot_options = 5 [features = { field_presence: EXPLICIT }];
+}
 
 // Information about a chrome window.
 // Next ID: 5
@@ -720,7 +664,8 @@ message TabObservation {
 
     // The page crashed.
     TAB_OBSERVATION_PAGE_CRASHED = 3;
-// A generic error has occurred.
+
+    // A generic error has occurred.
     TAB_OBSERVATION_UNKNOWN_ERROR = 4;
 
     // The web contents of the tab changed so the tab observation was abandoned.
@@ -753,7 +698,8 @@ message TabObservation {
     SCREENSHOT_TIMEOUT = 1;
 
     // Fetching the screenshot encountered an unspecified error.
-    SCREENSHOT_ERROR = 2;  }
+    SCREENSHOT_ERROR = 2;
+  }
 }
 
 // All relevant state in chrome after the actions are taken or an error has

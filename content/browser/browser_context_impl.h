@@ -43,7 +43,8 @@ class DownloadManager;
 #if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 class InMemoryFederatedPermissionContext;
 #endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
-class NavigationStateKeepAlive;class PermissionController;
+class NavigationStateKeepAlive;
+class PermissionController;
 class PrefetchService;
 class StoragePartitionImplMap;
 

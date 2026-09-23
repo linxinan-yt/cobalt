@@ -164,7 +164,8 @@ void VCMDecodedFrameCallback::Decoded(VideoFrame& decodedImage,
   const TimeDelta decode_time = decode_time_ms
                                     ? TimeDelta::Millis(*decode_time_ms)
                                     : now - *frame_info->decode_start;
-timing_->UpdateDecodeTimeEstimate(decode_time, now);  decodedImage.set_processing_time(
+  timing_->UpdateDecodeTimeEstimate(decode_time, now);
+  decodedImage.set_processing_time(
       {.start = *frame_info->decode_start,
        .finish = *frame_info->decode_start + decode_time});
 
@@ -235,14 +236,16 @@ timing_->UpdateDecodeTimeEstimate(decode_time, now);  decodedImage.set_processin
   RTC_HISTOGRAM_COUNTS_1000(
       "WebRTC.Video.GenericDecoder.DecodeDelay",
       timing_frame_info.decode_finish_ms - timing_frame_info.decode_start_ms);
-decodedImage.set_timestamp_us(
+  decodedImage.set_timestamp_us(
       frame_info->render_time ? frame_info->render_time->us() : -1);
-  decodedImage.set_content_type(frame_info->content_type);  receive_callback_->OnFrameToRender({.video_frame = decodedImage,
+  decodedImage.set_content_type(frame_info->content_type);
+  receive_callback_->OnFrameToRender({.video_frame = decodedImage,
                                       .qp = qp,
                                       .decode_time = decode_time,
                                       .content_type = frame_info->content_type,
-.frame_type = frame_info->frame_type,
+                                      .frame_type = frame_info->frame_type,
                                       .timing_frame_info = timing_frame_info});
+
   if (corruption_score_calculator_ &&
       frame_info->frame_instrumentation_data.has_value()) {
     corruption_score_calculator_->CalculateCorruptionScore(
@@ -350,7 +353,8 @@ int32_t VCMGenericDecoder::Decode(
   } else {
     frame_info.content_type = last_keyframe_content_type_;
   }
-frame_info.frame_type = frame.FrameType();  callback_->Map(std::move(frame_info));
+  frame_info.frame_type = frame.frame_type();
+  callback_->Map(std::move(frame_info));
 
   int32_t ret = decoder_->Decode(frame, render_time_ms);
   VideoDecoder::DecoderInfo decoder_info = decoder_->GetDecoderInfo();

@@ -185,8 +185,9 @@ class RTC_EXPORT Socket {
   void UnsubscribeConnectEvent(void* tag) {
     connect_event_callbacks_.RemoveReceivers(tag);
   }
-[[deprecated]] void SubscribeConnectEvent(
-      absl::AnyInvocable<void(Socket*)> callback) {    connect_event_callbacks_.AddReceiver(std::move(callback));
+  [[deprecated]] void SubscribeConnectEvent(
+      absl::AnyInvocable<void(Socket*)> callback) {
+    connect_event_callbacks_.AddReceiver(std::move(callback));
   }
   void NotifyConnectEvent(Socket* socket) {
     connect_event_callbacks_.Send(socket);
@@ -199,8 +200,9 @@ class RTC_EXPORT Socket {
   void UnsubscribeCloseEvent(void* tag) {
     close_event_callbacks_.RemoveReceivers(tag);
   }
-[[deprecated]] void SubscribeCloseEvent(
-      absl::AnyInvocable<void(Socket*, int)> callback) {    close_event_callbacks_.AddReceiver(std::move(callback));
+  [[deprecated]] void SubscribeCloseEvent(
+      absl::AnyInvocable<void(Socket*, int)> callback) {
+    close_event_callbacks_.AddReceiver(std::move(callback));
   }
   void NotifyCloseEvent(Socket* socket, int error) {
     close_event_callbacks_.Send(socket, error);

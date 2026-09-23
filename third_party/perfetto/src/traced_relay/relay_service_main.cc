@@ -15,8 +15,8 @@
  */
 
 #include <stdio.h>
-
 #include "perfetto/ext/traced/traced.h"
+
 int main(int argc, char** argv) {
   return perfetto::RelayServiceMain(argc, argv);
 }

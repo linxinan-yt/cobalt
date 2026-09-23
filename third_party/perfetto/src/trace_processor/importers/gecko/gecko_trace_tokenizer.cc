@@ -522,7 +522,8 @@ base::Status GeckoTraceTokenizer::OnPushDataToSorter() {
       ProcessLegacySamples(t, callsites);
     }
 
-ProcessMarkers(t, strings, profile_or->category_names);  }
+    ProcessMarkers(t, strings, profile_or->category_names);
+  }
   return base::OkStatus();
 }
 

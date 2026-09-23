@@ -163,6 +163,7 @@ class U_I18N_API PlusSignMatcher : public SymbolMatcher {
     bool fAllowTrailing;
 };
 
+
 // Exported as U_I18N_API for tests
 class U_I18N_API ApproximatelySignMatcher : public SymbolMatcher {
   public:
@@ -177,7 +178,9 @@ class U_I18N_API ApproximatelySignMatcher : public SymbolMatcher {
 
   private:
     bool fAllowTrailing;
-};} // namespace numparse::impl
+};
+
+} // namespace numparse::impl
 U_NAMESPACE_END
 
 #endif //__NUMPARSE_SYMBOLS_H__

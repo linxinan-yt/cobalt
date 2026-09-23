@@ -560,8 +560,9 @@ class State : public CreatedFunction::UserData {
 State::~State() = default;
 
 std::unique_ptr<CreatedFunction::UserData> CreatedFunction::MakeContext(
-PerfettoSqlEngine* engine) {
-  return std::make_unique<State>(engine);}
+    PerfettoSqlConnection* connection) {
+  return std::make_unique<State>(connection);
+}
 
 bool CreatedFunction::IsValid(UserData* ctx) {
   return static_cast<State*>(ctx)->is_valid();
@@ -569,7 +570,8 @@ bool CreatedFunction::IsValid(UserData* ctx) {
 
 void CreatedFunction::Reset(UserData* ctx, PerfettoSqlConnection* connection) {
   ctx->~UserData();
-  new (ctx) State(connection);}
+  new (ctx) State(connection);
+}
 
 void CreatedFunction::Step(sqlite3_context* ctx,
                            int argc,
@@ -665,9 +667,10 @@ void CreatedFunction::Step(sqlite3_context* ctx,
     return sqlite::utils::SetError(ctx, status.c_message());
   }
 
-auto result = EvaluateScalarStatement(
+  auto result = EvaluateScalarStatement(
       state->CurrentStatement(), state->connection()->sqlite_connection()->db(),
-      state->prototype());  if (!result.ok()) {
+      state->prototype());
+  if (!result.ok()) {
     return sqlite::utils::SetError(ctx, result.status().c_message());
   }
 

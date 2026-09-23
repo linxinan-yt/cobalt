@@ -16,6 +16,7 @@
 #include "api/video_codecs/encoder_speed_controller.h"
 #include "api/video_codecs/video_codec.h"
 #include "rtc_base/experiments/psnr_experiment.h"
+
 namespace webrtc {
 
 namespace {
@@ -32,7 +33,8 @@ SpeedLevel kAllLevels[kNumLevels] = {
     {.speeds = {5, 6, 8, 10}, .min_qp = 30},
     {.speeds = {5, 6, 9, 11},
      .min_qp = 29,
-     .min_psnr_gain = PsnrGain{.baseline_speed = 7, .psnr_threshold = 0.25}},    {.speeds = {5, 7, 7, 7}, .min_qp = 29},
+     .min_psnr_gain = PsnrGain{.baseline_speed = 7, .psnr_threshold = 0.25}},
+    {.speeds = {5, 7, 7, 7}, .min_qp = 29},
     {.speeds = {7, 7, 8, 8}, .min_qp = 28},
     {.speeds = {7, 7, 8, 9}, .min_qp = 28},
     {.speeds = {7, 7, 10, 10}, .min_qp = 28},
@@ -45,7 +47,8 @@ SpeedLevel kAllLevels[kNumLevels] = {
     {.speeds = {10, 11, 11, 11}, .min_qp = std::nullopt}};
 
 bool HasSameSpeeds(const SpeedLevel& a,
-                   const SpeedLevel& b,                   int num_temporal_layers) {
+                   const SpeedLevel& b,
+                   int num_temporal_layers) {
   if (a.speeds[0] != b.speeds[0] || a.speeds[1] != b.speeds[1]) {
     // Keyframe or base layer speed differs.
     return false;
@@ -86,8 +89,9 @@ LibaomSpeedConfigFactory::LibaomSpeedConfigFactory(
 EncoderSpeedController::Config LibaomSpeedConfigFactory::GetSpeedConfig(
     int width,
     int height,
-int num_temporal_layers,
-    const FieldTrialsView& field_trials) {  EncoderSpeedController::Config config;
+    int num_temporal_layers,
+    const FieldTrialsView& field_trials) {
+  EncoderSpeedController::Config config;
   int num_levels = 0;
   switch (complexity_) {
     case VideoCodecComplexity::kComplexityLow:
@@ -135,7 +139,7 @@ int num_temporal_layers,
     config.start_speed_index = std::max(available_speed_levels - 1, 0);
   }
 
-PsnrExperiment psnr_experiment(field_trials);
+  PsnrExperiment psnr_experiment(field_trials);
   if (psnr_experiment.IsEnabled()) {
     config.psnr_probing_settings = {
         .mode = EncoderSpeedController::Config::PsnrProbingSettings::Mode::
@@ -148,7 +152,9 @@ PsnrExperiment psnr_experiment(field_trials);
             kOnlyWhenProbing,
         .sampling_interval = TimeDelta::Seconds(1),
         .average_base_layer_ratio = 1.0 / num_temporal_layers};
-  }  return config;
+  }
+
+  return config;
 }
 
 }  // namespace webrtc

@@ -1198,7 +1198,8 @@ ti{
         }
 "Pacific:Kanton"{
             ec{"ካንቶን"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"ኪሪቲማቲ"}
         }
         "Pacific:Kosrae"{
@@ -1527,7 +1528,8 @@ ld{"ግዜ ክረምቲ ምዕራብ ኣፍሪቃ"}
         }
 "meta:Hawaii"{
             ls{"ናይ መደበኛ ሃዋይ-ኣሌውቲያን ግዘ"}
-        }        "meta:Hawaii_Aleutian"{
+        }
+        "meta:Hawaii_Aleutian"{
             ld{"ናይ መዓልቲ ሃዋይ-ኣሌውቲያን ግዘ"}
             lg{"ናይ ሃዋይ-ኣሌውቲያን ግዘ"}
             ls{"ናይ መደበኛ ሃዋይ-ኣሌውቲያን ግዘ"}

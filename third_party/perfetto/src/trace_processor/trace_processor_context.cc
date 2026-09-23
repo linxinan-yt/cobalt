@@ -104,10 +104,11 @@ void InitPerMachineState(TraceProcessorContext* context, int64_t machine_id) {
   context->symbol_tracker = Ptr<SymbolTracker>::MakeRoot(context);
   context->machine_tracker = Ptr<MachineTracker>::MakeRoot(context, machine_id);
   context->process_tracker = Ptr<ProcessTracker>::MakeRoot(context);
-context->mapping_tracker = Ptr<MappingTracker>::MakeRoot(context);
+  context->mapping_tracker = Ptr<MappingTracker>::MakeRoot(context);
   context->cpu_tracker = Ptr<CpuTracker>::MakeRoot(context);
   context->gpu_tracker = Ptr<GpuTracker>::MakeRoot(context);
-  context->user_tracker = Ptr<UserTracker>::MakeRoot(context);}
+  context->user_tracker = Ptr<UserTracker>::MakeRoot(context);
+}
 
 void CopyPerMachineState(const TraceProcessorContext* source,
                          TraceProcessorContext* dest) {
@@ -116,15 +117,17 @@ void CopyPerMachineState(const TraceProcessorContext* source,
   dest->process_tracker = source->process_tracker.Fork();
   dest->mapping_tracker = source->mapping_tracker.Fork();
   dest->cpu_tracker = source->cpu_tracker.Fork();
-dest->gpu_tracker = source->gpu_tracker.Fork();
-  dest->user_tracker = source->user_tracker.Fork();}
+  dest->gpu_tracker = source->gpu_tracker.Fork();
+  dest->user_tracker = source->user_tracker.Fork();
+}
 
 void InitPerTraceState(TraceProcessorContext* context, TraceId trace_id) {
   context->trace_state = Ptr<TraceProcessorContext::TraceState>::MakeRoot(
       TraceProcessorContext::TraceState{trace_id});
   context->content_analyzer = nullptr;
   context->import_logs_tracker =
-Ptr<ImportLogsTracker>::MakeRoot(context, trace_id);}
+      Ptr<ImportLogsTracker>::MakeRoot(context, trace_id);
+}
 
 void CopyTraceState(const TraceProcessorContext* source,
                     TraceProcessorContext* dest) {
@@ -189,11 +192,12 @@ void InitGlobalState(TraceProcessorContext* context, const Config& config) {
   context->track_group_idx_state =
       Ptr<TrackCompressorGroupIdxState>::MakeRoot();
   context->stack_profile_tracker = Ptr<StackProfileTracker>::MakeRoot(context);
-context->profiler_sample_tracker =
+  context->profiler_sample_tracker =
       Ptr<ProfilerSampleTracker>::MakeRoot(context);
   context->deobfuscation_tracker = nullptr;
   context->blob_packet_writer = Ptr<BlobPacketWriter>::MakeRoot();
   context->register_additional_proto_modules = {};
+
   // Per-Trace State (Miscategorized).
   context->registered_file_tracker =
       Ptr<RegisteredFileTracker>::MakeRoot(context);
@@ -230,9 +234,10 @@ void CopyGlobalState(const TraceProcessorContext* source,
   dest->uuid_state = source->uuid_state.Fork();
   dest->heap_graph_tracker = source->heap_graph_tracker.Fork();
   dest->deobfuscation_tracker = source->deobfuscation_tracker.Fork();
-dest->blob_packet_writer = source->blob_packet_writer.Fork();
+  dest->blob_packet_writer = source->blob_packet_writer.Fork();
   dest->stack_profile_tracker = source->stack_profile_tracker.Fork();
-  dest->profiler_sample_tracker = source->profiler_sample_tracker.Fork();}
+  dest->profiler_sample_tracker = source->profiler_sample_tracker.Fork();
+}
 
 }  // namespace
 

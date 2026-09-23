@@ -73,9 +73,8 @@ export interface MultiselectInputAttrs extends HTMLAttrs {
   readonly placeholder?: string;
 }
 
-export class MultiselectInput
-  implements m.ClassComponent<MultiselectInputAttrs>
-{  private currentTextValue = '';
+export class MultiselectInput implements m.ClassComponent<MultiselectInputAttrs> {
+  private currentTextValue = '';
   private selectedItemIndex = 0;
   private popupIsOpen = false;
 
@@ -119,7 +118,7 @@ export class MultiselectInput
             },
             onblur: () => {
               this.popupIsOpen = false;
-},
+            },
             onkeydown: (ev: KeyboardEvent) => {
               const filteredOptions = this.filterOptions(attrs);
 
@@ -166,7 +165,8 @@ export class MultiselectInput
                   ev.preventDefault();
                 }
               }
-            },            oninput: (ev: InputEvent) => {
+            },
+            oninput: (ev: InputEvent) => {
               const el = ev.target as HTMLInputElement;
               this.currentTextValue = el.value;
               this.selectedItemIndex = 0;
@@ -183,7 +183,8 @@ export class MultiselectInput
 
     const filtered = this.filterOptions(attrs);
     if (filtered.length === 0) {
-return m(EmptyState, {title: 'No results found', icon: 'search_off'});    }
+      return m(EmptyState, {title: 'No results found'});
+    }
 
     return m(
       '.pf-multiselect-input__scroller',

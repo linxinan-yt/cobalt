@@ -493,7 +493,8 @@ class U_I18N_API_CLASS LocalizedNumberRangeFormatter
      * @return The fluent chain.
      * @stable ICU 75
      */
-U_I18N_API UnlocalizedNumberRangeFormatter withoutLocale() const &;
+    U_I18N_API UnlocalizedNumberRangeFormatter withoutLocale() const &;
+
     /**
      * Overload of withoutLocale() for use on an rvalue reference.
      *
@@ -501,7 +502,8 @@ U_I18N_API UnlocalizedNumberRangeFormatter withoutLocale() const &;
      * @see #withoutLocale
      * @stable ICU 75
      */
-U_I18N_API UnlocalizedNumberRangeFormatter withoutLocale() &&;
+    U_I18N_API UnlocalizedNumberRangeFormatter withoutLocale() &&;
+
     /**
      * Default constructor: puts the formatter into a valid but undefined state.
      *

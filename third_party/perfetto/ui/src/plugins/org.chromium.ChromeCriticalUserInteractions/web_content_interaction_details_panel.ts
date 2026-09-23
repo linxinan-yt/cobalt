@@ -39,6 +39,7 @@ import {SqlRef} from '../../widgets/sql_ref';
 import {Tree, TreeNode} from '../../widgets/tree';
 import type {TrackEventDetailsPanel} from '../../public/details_panel';
 import type {Trace} from '../../public/trace';
+
 interface Data {
   ts: time;
   dur: duration;
@@ -115,13 +116,7 @@ export class WebContentInteractionPanel implements TrackEventDetailsPanel {
               }),
               m(TreeNode, {left: 'Renderer Upid', right: this.data.upid}),
               m(TreeNode, {
-left: 'Total duration of all events',
-                right: m(DurationWidget, {
-                  trace: this.trace,
-                  dur: this.data.totalDurationMs,
-                }),
-              }),
-              m(TreeNode, {                left: 'SQL ID',
+                left: 'SQL ID',
                 right: m(SqlRef, {
                   table: 'chrome_web_content_interactions',
                   id: this.id,

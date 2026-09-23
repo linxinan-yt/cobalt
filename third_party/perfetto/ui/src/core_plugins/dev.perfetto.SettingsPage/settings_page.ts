@@ -16,7 +16,8 @@ import type {Setting} from '../../public/settings';
 import type {
   SettingImpl,
   SettingsManagerImpl,
-} from '../../core/settings_manager';import m from 'mithril';
+} from '../../core/settings_manager';
+import m from 'mithril';
 import {AppImpl} from '../../core/app_impl';
 import {Button, ButtonVariant} from '../../widgets/button';
 import {getZodSchemaInfo} from '../../base/zod_utils';
@@ -37,7 +38,9 @@ import {GateDetector, renderSegments} from '../../base/mithril_utils';
 import {findRef} from '../../base/dom_utils';
 
 const SEARCH_BOX_REF = 'settings-search-box';
-const CORE_GROUP = 'Core';export interface SettingsPageAttrs {
+const CORE_GROUP = 'Core';
+
+export interface SettingsPageAttrs {
   readonly subpage?: string;
 }
 
@@ -57,14 +60,15 @@ export class SettingsPage implements m.ClassComponent<SettingsPageAttrs> {
       : this.getAllSettingsGrouped(settingsManager);
     const groupedSettings = this.groupSettingsByPlugin(settings);
 
-// Sort plugin IDs: CORE_GROUP first, then alphabetically
+    // Sort plugin IDs: CORE_GROUP first, then alphabetically
     const sortedPluginIds = Array.from(groupedSettings.keys()).sort((a, b) => {
       if (a === CORE_GROUP) return -1;
       if (b === CORE_GROUP) return 1;
       return a.localeCompare(b);
     });
 
-    const page = m(      SettingsShell,
+    const page = m(
+      SettingsShell,
       {
         title: 'Settings',
         className: 'page',
@@ -135,7 +139,8 @@ export class SettingsPage implements m.ClassComponent<SettingsPageAttrs> {
             }),
       ),
     );
-return m(
+
+    return m(
       GateDetector,
       {
         onVisibilityChanged: (visible: boolean, dom: Element) => {
@@ -160,11 +165,12 @@ return m(
       item,
       nameSegments: item.name,
       descriptionSegments: item.description.trim(),
-    }));  }
+    }));
+  }
 
   private getFilteredSettingsGrouped(settingsManager: SettingsManagerImpl) {
     const allSettings = settingsManager.getAllSettings();
-return fuzzySearch(
+    return fuzzySearch(
       allSettings,
       [
         (s: SettingImpl<unknown>) => s.name,
@@ -183,11 +189,12 @@ return fuzzySearch(
       item: SettingImpl<unknown>;
       nameSegments: readonly FuzzySegment[] | string;
       descriptionSegments: readonly FuzzySegment[] | string;
-    }>,  ) {
+    }>,
+  ) {
     const app = AppImpl.instance;
     const grouped = new Map<
       string,
-{
+      {
         item: Setting<unknown>;
         nameSegments: readonly FuzzySegment[] | string;
         descriptionSegments: readonly FuzzySegment[] | string;
@@ -200,6 +207,7 @@ return fuzzySearch(
         setting.pluginId === undefined ||
         app.plugins.isCorePlugin(setting.pluginId);
       const targetGroup = isCore ? CORE_GROUP : setting.pluginId;
+
       const existing = grouped.get(targetGroup) ?? [];
       existing.push(result);
       grouped.set(targetGroup, existing);
@@ -209,7 +217,7 @@ return fuzzySearch(
 
   private renderPluginSection(
     pluginId: string,
-settings: readonly {
+    settings: readonly {
       item: Setting<unknown>;
       nameSegments: readonly FuzzySegment[] | string;
       descriptionSegments: readonly FuzzySegment[] | string;
@@ -228,7 +236,8 @@ settings: readonly {
             subpage,
             nameSegments,
             descriptionSegments,
-          );        }),
+          );
+        }),
       ),
     );
   }
@@ -258,7 +267,7 @@ settings: readonly {
     }
   }
 
-private renderSettingCard(
+  private renderSettingCard(
     setting: Setting<unknown>,
     subpage: string,
     nameSegments?: readonly FuzzySegment[] | string,
@@ -268,7 +277,8 @@ private renderSettingCard(
       id: setting.id,
       title: renderSegments(nameSegments ?? setting.name),
       description: renderSegments(
-        descriptionSegments ?? setting.description.trim(),      ),
+        descriptionSegments ?? setting.description.trim(),
+      ),
       focused: subpage === `/${setting.id}`,
       controls: m('.pf-settings-page__controls', [
         !setting.isDefault &&
@@ -358,17 +368,6 @@ private renderSettingCard(
           m(Icon, {icon: 'error_outline'}),
           m('span', 'Cannot edit this setting directly'),
         ]);
-    }
-  }
-
-  oncreate(vnode: m.VnodeDOM<SettingsPageAttrs>) {
-    const subpage = decodeURIComponent(vnode.attrs.subpage ?? '');
-    const settingId = /[/](.+)/.exec(subpage)?.[1];
-    if (settingId) {
-      const setting = vnode.dom.querySelector(`#${CSS.escape(settingId)}`);
-      if (setting) {
-        setting.scrollIntoView({block: 'center'});
-      }
     }
   }
 }

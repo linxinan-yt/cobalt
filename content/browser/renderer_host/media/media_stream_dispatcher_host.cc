@@ -729,7 +729,8 @@ void MediaStreamDispatcherHost::ApplySubCaptureTarget(
     const base::Token& sub_capture_target,
     uint32_t sub_capture_version,
     ApplySubCaptureTargetCallback callback) {
-CHECK_CURRENTLY_ON(BrowserThread::IO, base::NotFatalUntil::M152);
+#if BUILDFLAG(ENABLE_SCREEN_CAPTURE)
+  CHECK_CURRENTLY_ON(BrowserThread::IO, base::NotFatalUntil::M152);
   const GlobalRenderFrameHostId captured_id =
       media_stream_manager_->video_capture_manager()
           ->GetGlobalRenderFrameHostId(device_id);

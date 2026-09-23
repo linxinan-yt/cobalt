@@ -14,12 +14,14 @@ lb{"Line Break Nhyehyɛeɛ"}
     Languages{
         af{"Afrikaans"}
         ak{"Akan"}
-am{"Amariki"}        ar{"Arabeke"}
+am{"Amariki"}
+        ar{"Arabeke"}
         ar_001{"Arabeke Kasa Nhyehyɛeɛ Foforɔ"}
         as{"Asamese"}
         ast{"Asturiani"}
         az{"Asabegyanni"}
-bal{"Balukyi"}        be{"Belarus kasa"}
+bal{"Balukyi"}
+        be{"Belarus kasa"}
         bg{"Bɔlgeria kasa"}
         bgc{"Harianvi"}
         bho{"Bopuri"}
@@ -41,13 +43,15 @@ bal{"Balukyi"}        be{"Belarus kasa"}
         de_CH{"Swisalande Gyaaman"}
         doi{"Dɔgri"}
         dsb{"Sɔɔbia a ɛwɔ fam"}
-ee{"Ayigbe"}        el{"Greek kasa"}
+ee{"Ayigbe"}
+        el{"Greek kasa"}
         en{"Borɔfo"}
         en_GB{"Ngresi Borɔfo"}
         en_US{"Amɛrika Borɔfo"}
         eo{"Esperanto"}
         es{"Spain kasa"}
-es_419{"Spain kasa (Laaten Amɛrika)"}        et{"Estonia kasa"}
+es_419{"Spain kasa (Laaten Amɛrika)"}
+        et{"Estonia kasa"}
         eu{"Baske"}
         fa{"Pɛɛhyia kasa"}
         ff{"Fula kasa"}
@@ -282,7 +286,8 @@ collation%core{
         }
         hc{
             h11{"Nnɔnhwere 12 Sestɛm (0–11)"}
-            h12{"Nnɔnhwere 12 Sestɛm (1–12)"}            h23{"Nnɔnhwere 24 Sestɛm (0–23)"}
+            h12{"Nnɔnhwere 12 Sestɛm (1–12)"}
+            h23{"Nnɔnhwere 24 Sestɛm (0–23)"}
             h24{"Nnɔnhwere 24 Sestɛm (0–24)"}
         }
         lb{
@@ -342,7 +347,8 @@ collation%core{
         compatibility{"{0} — kɔmpatebiliti"}
         enclosed{"{0} — ɛnkloso"}
         extended{"{0} — ɛstɛndɛde"}
-facing-left{"{0} rehwɛ bɛnkum"}        facing-right{"{0} rehwɛ nifa"}
+facing-left{"{0} rehwɛ bɛnkum"}
+        facing-right{"{0} rehwɛ nifa"}
         historic{"{0} — histɔrike"}
         miscellaneous{"{0} — mɛsɛleniɔso"}
         other{"{0} — afoforɔ"}

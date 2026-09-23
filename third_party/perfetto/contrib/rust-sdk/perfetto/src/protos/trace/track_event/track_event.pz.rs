@@ -44,7 +44,8 @@ pb_enum!(TrackEventType {
     TYPE_SLICE_END: 2,
     TYPE_INSTANT: 3,
     TYPE_COUNTER: 4,
-TYPE_STATE: 5,});
+    TYPE_STATE: 5,
+});
 
 pb_enum!(LegacyEventFlowDirection {
     FLOW_UNSPECIFIED: 0,
@@ -96,7 +97,8 @@ pb_msg!(TrackEvent {
     correlation_id: u64, primitive, 52,
     correlation_id_str: String, primitive, 53,
     correlation_id_str_iid: u64, primitive, 54,
-callstack: TrackEventCallstack, msg, 55,    callstack_iid: u64, primitive, 56,
+    callstack: TrackEventCallstack, msg, 55,
+    callstack_iid: u64, primitive, 56,
     debug_annotations: DebugAnnotation, msg, 4,
     task_execution: TaskExecution, msg, 5,
     log_message: LogMessage, msg, 21,
@@ -123,10 +125,11 @@ callstack: TrackEventCallstack, msg, 55,    callstack_iid: u64, primitive, 56,
     thread_time_absolute_us: i64, primitive, 17,
     thread_instruction_count_delta: i64, primitive, 8,
     thread_instruction_count_absolute: i64, primitive, 20,
-legacy_event: TrackEventLegacyEvent, msg, 6,
+    legacy_event: TrackEventLegacyEvent, msg, 6,
 });
 
-pb_msg!(TrackEventLegacyEvent {    name_iid: u64, primitive, 1,
+pb_msg!(TrackEventLegacyEvent {
+    name_iid: u64, primitive, 1,
     phase: i32, primitive, 2,
     duration_us: i64, primitive, 3,
     thread_duration_us: i64, primitive, 4,
@@ -148,7 +151,8 @@ pb_msg!(TrackEventCallstack {
     frames: TrackEventCallstackFrame, msg, 1,
 });
 
-pb_msg!(TrackEventCallstackFrame {    function_name: String, primitive, 1,
+pb_msg!(TrackEventCallstackFrame {
+    function_name: String, primitive, 1,
     source_file: String, primitive, 2,
     line_number: u32, primitive, 3,
 });

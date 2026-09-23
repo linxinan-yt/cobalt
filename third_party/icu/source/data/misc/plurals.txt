@@ -35,7 +35,8 @@ plurals:table(nofallback){
         cs{"set27"}
         csw{"set5"}
 cv{"set14"}
-        cy{"set39"}        da{"set8"}
+        cy{"set39"}
+        da{"set8"}
         de{"set3"}
         doi{"set1"}
         dsb{"set26"}
@@ -56,7 +57,8 @@ cv{"set14"}
         fr{"set20"}
         fur{"set7"}
         fy{"set3"}
-ga{"set35"}        gd{"set24"}
+ga{"set35"}
+        gd{"set24"}
         gl{"set3"}
         gsw{"set7"}
         gu{"set1"}
@@ -173,7 +175,8 @@ ga{"set35"}        gd{"set24"}
         seh{"set7"}
         ses{"set0"}
         sg{"set0"}
-sgs{"set32"}        sh{"set19"}
+sgs{"set32"}
+        sh{"set19"}
         shi{"set17"}
         si{"set4"}
         sk{"set27"}
@@ -691,7 +694,8 @@ few{
             }
             two{"n = 2 @integer 2 @decimal 2.0, 2.00, 2.000, 2.0000"}
         }
-        set33{            few{
+        set33{
+            few{
                 "n % 10 = 3..4,9 and n % 100 != 10..19,70..79,90..99 @integer 3, 4, 9"
                 ", 23, 24, 29, 33, 34, 39, 43, 44, 49, 103, 1003, … @decimal 3.0, 4.0"
                 ", 9.0, 23.0, 24.0, 29.0, 33.0, 34.0, 103.0, 1003.0, …"
@@ -1029,7 +1033,8 @@ set6{
                 "1~0.9, 1.1~1.7, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0, …"
             }
         }
-        set60{            few{"n = 4 @integer 4"}
+        set60{
+            few{"n = 4 @integer 4"}
             many{"n = 6 @integer 6"}
             one{"n = 1 @integer 1"}
             other{" @integer 0, 5, 7~20, 100, 1000, 10000, 100000, 1000000, …"}

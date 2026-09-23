@@ -102,7 +102,7 @@ class TraceBuffer {
   // Returns the next packet in the buffer, if any, and the producer_id,
   // producer_uid, and writer_id of the producer/writer that wrote it.
   // Returns false if no packets can be read at this point.
-// |previous_packet_on_sequence_dropped| is a bitmask: 0 if no data was lost
+  // |previous_packet_on_sequence_dropped| is a bitmask: 0 if no data was lost
   // on the sequence before this packet, otherwise nonzero. TraceBufferV2 sets
   // the DataLossReason cause bits; TraceBufferV1 just sets 1. The value is
   // forwarded into TracePacket.previous_packet_dropped.
@@ -110,6 +110,7 @@ class TraceBuffer {
       TracePacket*,
       PacketSequenceProperties* sequence_properties,
       uint32_t* previous_packet_on_sequence_dropped) = 0;
+
   // Creates a read-only clone of the trace buffer. The read iterators of the
   // new buffer will be reset, as if no Read() had been called.
   virtual std::unique_ptr<TraceBuffer> CloneReadOnly() const = 0;
@@ -119,10 +120,11 @@ class TraceBuffer {
   virtual const WriterStats& writer_stats() const = 0;
   virtual size_t size() const = 0;
   virtual size_t used_size() const = 0;
-virtual size_t GetMemoryUsageBytes() const = 0;
+  virtual size_t GetMemoryUsageBytes() const = 0;
   virtual OverwritePolicy overwrite_policy() const = 0;
   virtual bool has_data() const = 0;
   virtual BufType buf_type() const = 0;
+
   // Exposed for test/fake_packet.{cc,h}.
   static inline constexpr size_t InlineChunkHeaderSize = 16;
 };

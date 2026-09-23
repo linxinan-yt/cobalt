@@ -74,7 +74,7 @@ PprofTraceReader::~PprofTraceReader() = default;
 
 base::Status PprofTraceReader::Parse(TraceBlobView blob) {
   buffer_.insert(buffer_.end(), blob.data(), blob.data() + blob.size());
-parsed_any_data_ = true;
+  parsed_any_data_ = true;
   return base::OkStatus();
 }
 
@@ -94,7 +94,8 @@ base::Status PprofTraceReader::OnPushDataToSorter() {
   // Clear buffer for idempotency
   buffer_.clear();
 
-  return status;}
+  return status;
+}
 
 base::Status PprofTraceReader::ParseProfile() {
   using namespace perfetto::third_party::perftools::profiles::pbzero;
@@ -277,7 +278,8 @@ base::Status PprofTraceReader::ParseProfile() {
     // Link the frame to the symbol set if we created any symbols
     if (has_symbols) {
       auto* frames = storage->mutable_stack_profile_frame_table();
-auto frame_row = *frames->FindById(frame_id);      frame_row.set_symbol_set_id(symbol_set_id);
+      auto frame_row = (*frames)[frame_id];
+      frame_row.set_symbol_set_id(symbol_set_id);
     }
   }
 
@@ -444,4 +446,6 @@ PprofImporter::~PprofImporter() = default;
 
 std::unique_ptr<TraceImporterBase> CreatePprofImporter() {
   return std::make_unique<PprofImporter>();
-}}  // namespace perfetto::trace_processor
+}
+
+}  // namespace perfetto::trace_processor

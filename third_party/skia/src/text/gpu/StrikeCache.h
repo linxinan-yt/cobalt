@@ -13,7 +13,6 @@
 #include "src/core/SkDescriptor.h"
 #include "src/core/SkStrikeSpec.h"
 #include "src/core/SkTHash.h"
-#include "src/gpu/AtlasTypes.h"
 
 #include <cstddef>
 #include <cstdint>
@@ -38,7 +37,8 @@ class StrikeCache;
  * Abstract base class for backend-specific text strike caches. This allows a
  * shared StrikeCache implementation.
  */
-class TextStrikeBase : public SkRefCnt {public:
+class TextStrikeBase : public SkRefCnt {
+public:
     ~TextStrikeBase() override = default;
 
     const SkStrikeSpec& strikeSpec() const { return fStrikeSpec; }
@@ -59,7 +59,8 @@ protected:
     StrikeCache* const fStrikeCache;
     const SkStrikeSpec fStrikeSpec;
 
-// Store for the glyph information (backend-specific glyphs allocated here)    SkArenaAlloc fAlloc{512};
+    // Store for the glyph information (backend-specific glyphs allocated here)
+    SkArenaAlloc fAlloc{512};
 
     // Linked list for LRU cache management
     TextStrikeBase* fNext{nullptr};

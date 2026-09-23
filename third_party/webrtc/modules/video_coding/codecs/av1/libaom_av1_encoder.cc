@@ -126,8 +126,9 @@ EncoderSpeedController::EncodeResults ToSpeedControllerEncodeResult(
       .speed = speed,
       .encode_time = encode_result.encode_time,
       .qp = image.qp_ / 4,  // Use [0, 63] range instead of [0, 255].
-.psnr = image.psnr().has_value() ? std::optional<double>(image.psnr()->y)
-                                       : std::nullopt,      .frame_info = frame_info};
+      .psnr = image.psnr().has_value() ? std::optional<double>(image.psnr()->y)
+                                       : std::nullopt,
+      .frame_info = frame_info};
 }
 
 class LibaomAv1Encoder final : public VideoEncoder {
@@ -461,31 +462,6 @@ int LibaomAv1Encoder::InitEncode(const VideoCodec* codec_settings,
     }
   }
 
-  if (encoder_speed_experiment_.IsDynamicSpeedEnabled()) {
-    LibaomSpeedConfigFactory speed_config_factory(
-        codec_settings->GetVideoEncoderComplexity(), codec_settings->mode);
-
-    if (SvcEnabled()) {
-      for (int si = 0; si < svc_params_->number_spatial_layers; ++si) {
-        EncoderSpeedController::Config speed_config =
-            speed_config_factory.GetSpeedConfig(
-                encoder_settings_.spatialLayers[si].width,
-                encoder_settings_.spatialLayers[si].height,
-                svc_controller_->StreamConfig().num_temporal_layers);
-
-        speed_controllers_.push_back(
-            EncoderSpeedController::Create(speed_config, GetFrameInterval(si)));
-      }
-    } else {
-      EncoderSpeedController::Config speed_config =
-          speed_config_factory.GetSpeedConfig(encoder_settings_.width,
-                                              encoder_settings_.height,
-                                              /*num_temporal_layers=*/1);
-      speed_controllers_.push_back(EncoderSpeedController::Create(
-          speed_config, GetFrameInterval(/*spatial_index=*/0)));
-    }
-  }
-
   return WEBRTC_VIDEO_CODEC_OK;
 }
 
@@ -775,7 +751,9 @@ TimeDelta LibaomAv1Encoder::GetFrameInterval(int spatial_index) const {
     return frame_interval;
   }
 
-RTC_DCHECK_LT(spatial_index, svc_params_->number_spatial_layers);  // Allocate a time slice for each spatial layer, proportional to the
+  RTC_DCHECK_LT(spatial_index, svc_params_->number_spatial_layers);
+
+  // Allocate a time slice for each spatial layer, proportional to the
   // fraction of pixels allocated for that layer.
   // E.g. if QVGA + VGA is used, 20% of the encoder time will be allocated
   // for QVGA + 80% for VGA - since VGA has 4x the number of pixels.
@@ -941,9 +919,10 @@ int32_t LibaomAv1Encoder::Encode(
       svc_params_ ? svc_params_->number_spatial_layers : 1;
   auto next_layer_frame = layer_frames.begin();
   std::vector<std::pair<EncodedImage, CodecSpecificInfo>> encoded_images;
-// Index into `encoded_images` indicating the last active layer which produced
+  // Index into `encoded_images` indicating the last active layer which produced
   // an encoded image. Used to correctly set `end_of_picture`.
-  std::optional<size_t> last_encoded_image_index;  for (size_t sid = 0; sid < num_spatial_layers; ++sid) {
+  std::optional<size_t> last_encoded_image_index;
+  for (size_t sid = 0; sid < num_spatial_layers; ++sid) {
     // The libaom AV1 encoder requires that `aom_codec_encode` is called for
     // every spatial layer, even if the configured bitrate for that layer is
     // zero. For zero bitrate spatial layers no frames will be produced.
@@ -963,11 +942,12 @@ int32_t LibaomAv1Encoder::Encode(
     aom_enc_frame_flags_t flags =
         layer_frame->IsKeyframe() ? AOM_EFLAG_FORCE_KF : 0;
 
-    if (!speed_controllers_.empty()) {
-      RTC_DCHECK_GT(speed_controllers_.size(), sid);
-      EncoderSpeedController& speed_controller = *speed_controllers_[sid];
+    if (SvcEnabled()) {
+      SetSvcLayerId(*layer_frame);
+      SetSvcRefFrameConfig(*layer_frame);
+    }
 
-EncodeResult output;
+    EncodeResult output;
     if (!speed_controllers_.empty()) {
       RTC_DCHECK_GT(speed_controllers_.size(), sid);
       EncoderSpeedController& speed_controller = *speed_controllers_[sid];
@@ -1010,14 +990,15 @@ EncodeResult output;
       }
 
       SET_ENCODER_PARAM_OR_RETURN_ERROR(AOME_SET_CPUUSED, settings.speed);
-      output = DoEncode(duration, flags, layer_frame);      if (output.status_code != AOM_CODEC_OK) {
+      output = DoEncode(duration, flags, layer_frame);
+      if (output.status_code != AOM_CODEC_OK) {
         RTC_LOG(LS_WARNING)
             << "LibaomAv1Encoder::Encode returned error: '"
             << aom_codec_err_to_string(output.status_code) << "'.";
         return WEBRTC_VIDEO_CODEC_ERROR;
       }
 
-if (non_encoded_layer_frame || !output.encoded_image.has_value()) {
+      if (non_encoded_layer_frame || !output.encoded_image.has_value()) {
         // Frame dropped, presumably by rate controller. This is not an error.
         if (baseline_output.has_value() &&
             baseline_output->encoded_image.has_value()) {
@@ -1054,13 +1035,14 @@ if (non_encoded_layer_frame || !output.encoded_image.has_value()) {
         flags |= AOM_EFLAG_CALCULATE_PSNR;
       }
 
-      output = DoEncode(duration, flags, layer_frame);      if (output.status_code != AOM_CODEC_OK) {
+      output = DoEncode(duration, flags, layer_frame);
+      if (output.status_code != AOM_CODEC_OK) {
         RTC_LOG(LS_WARNING)
             << "LibaomAv1Encoder::Encode returned error: '"
             << aom_codec_err_to_string(output.status_code) << "'.";
         return WEBRTC_VIDEO_CODEC_ERROR;
       }
-if (non_encoded_layer_frame || !output.encoded_image.has_value()) {
+      if (non_encoded_layer_frame || !output.encoded_image.has_value()) {
         // Frame dropped, presumably by rate controller. This is not an error.
         EncodedImage dropped_image;
         dropped_image.SetSpatialIndex(sid);
@@ -1082,7 +1064,8 @@ if (non_encoded_layer_frame || !output.encoded_image.has_value()) {
                                                    num_spatial_layers - 1);
     last_encoded_image_index = encoded_images.size();
     encoded_images.emplace_back(std::move(*output.encoded_image),
-                                std::move(codec_specifics));  }
+                                std::move(codec_specifics));
+  }
 
   for (size_t i = 0; i < encoded_images.size(); ++i) {
     auto& [encoded_image, codec_specifics] = encoded_images[i];

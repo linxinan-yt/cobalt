@@ -16,7 +16,8 @@ import './empty_state.scss';
 import m from 'mithril';
 import {classNames} from '../base/classnames';
 import {Icons} from '../base/semantic_icons';
-import type {HTMLAttrs} from './common';import {Icon} from './icon';
+import type {HTMLAttrs} from './common';
+import {Icon} from './icon';
 
 export interface EmptyStateAttrs extends HTMLAttrs {
   // Which material icon to show.
@@ -39,7 +40,8 @@ export interface EmptyStateAttrs extends HTMLAttrs {
 // actions for things you might want to do next (e.g. clear a search box).
 export class EmptyState implements m.ClassComponent<EmptyStateAttrs> {
   view({attrs, children}: m.Vnode<EmptyStateAttrs, this>): void | m.Children {
-const {icon = Icons.NoData, title, className, fillHeight, ...rest} = attrs;    return m(
+    const {icon = Icons.NoData, title, className, fillHeight, ...rest} = attrs;
+    return m(
       '.pf-empty-state',
       {
         className: classNames(

@@ -74,7 +74,8 @@ es{
         }
         "America:Argentina:Tucuman"{
             ec{"Tucumán"}
-        }        "America:Bahia"{
+        }
+        "America:Bahia"{
             ec{"Bahía"}
         }
         "America:Belem"{
@@ -145,7 +146,8 @@ es{
         }
 "America:Santarem"{
             ec{"Santarém"}
-        }        "America:Santiago"{
+        }
+        "America:Santiago"{
             ec{"Santiago de Chile"}
         }
         "America:St_Barthelemy"{

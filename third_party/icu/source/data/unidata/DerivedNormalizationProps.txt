@@ -1,6 +1,7 @@
 # DerivedNormalizationProps-17.0.0.txt
 # Date: 2025-01-27, 18:09:14 GMT
-# © 2025 Unicode®, Inc.# Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+# © 2025 Unicode®, Inc.
+# Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
 # For terms of use and license, see https://www.unicode.org/terms_of_use.html
 #
 # Unicode Character Database
@@ -5445,14 +5446,16 @@ A7C7          ; NFKC_CF; A7C8
 A7C9          ; NFKC_CF; A7CA
 A7CB          ; NFKC_CF; 0264
 A7CC          ; NFKC_CF; A7CD
-A7CE          ; NFKC_CF; A7CFA7D0          ; NFKC_CF; A7D1
+A7CE          ; NFKC_CF; A7CF
+A7D0          ; NFKC_CF; A7D1
 A7D2          ; NFKC_CF; A7D3
 A7D4          ; NFKC_CF; A7D5
 A7D6          ; NFKC_CF; A7D7
 A7D8          ; NFKC_CF; A7D9
 A7DA          ; NFKC_CF; A7DB
 A7DC          ; NFKC_CF; 019B
-A7F1          ; NFKC_CF; 0073A7F2          ; NFKC_CF; 0063
+A7F1          ; NFKC_CF; 0073
+A7F2          ; NFKC_CF; 0063
 A7F3          ; NFKC_CF; 0066
 A7F4          ; NFKC_CF; 0071
 A7F5          ; NFKC_CF; A7F6
@@ -11605,14 +11608,16 @@ A7C7          ; NFKC_SCF; A7C8
 A7C9          ; NFKC_SCF; A7CA
 A7CB          ; NFKC_SCF; 0264
 A7CC          ; NFKC_SCF; A7CD
-A7CE          ; NFKC_SCF; A7CFA7D0          ; NFKC_SCF; A7D1
+A7CE          ; NFKC_SCF; A7CF
+A7D0          ; NFKC_SCF; A7D1
 A7D2          ; NFKC_SCF; A7D3
 A7D4          ; NFKC_SCF; A7D5
 A7D6          ; NFKC_SCF; A7D7
 A7D8          ; NFKC_SCF; A7D9
 A7DA          ; NFKC_SCF; A7DB
 A7DC          ; NFKC_SCF; 019B
-A7F1          ; NFKC_SCF; 0073A7F2          ; NFKC_SCF; 0063
+A7F1          ; NFKC_SCF; 0073
+A7F2          ; NFKC_SCF; 0063
 A7F3          ; NFKC_SCF; 0066
 A7F4          ; NFKC_SCF; 0071
 A7F5          ; NFKC_SCF; A7F6
@@ -16101,14 +16106,16 @@ A7C2          ; Changes_When_NFKC_Casefolded
 A7C4..A7C7    ; Changes_When_NFKC_Casefolded
 A7C9          ; Changes_When_NFKC_Casefolded
 A7CB..A7CC    ; Changes_When_NFKC_Casefolded
-A7CE          ; Changes_When_NFKC_CasefoldedA7D0          ; Changes_When_NFKC_Casefolded
+A7CE          ; Changes_When_NFKC_Casefolded
+A7D0          ; Changes_When_NFKC_Casefolded
 A7D2          ; Changes_When_NFKC_Casefolded
 A7D4          ; Changes_When_NFKC_Casefolded
 A7D6          ; Changes_When_NFKC_Casefolded
 A7D8          ; Changes_When_NFKC_Casefolded
 A7DA          ; Changes_When_NFKC_Casefolded
 A7DC          ; Changes_When_NFKC_Casefolded
-A7F1..A7F4    ; Changes_When_NFKC_CasefoldedA7F5          ; Changes_When_NFKC_Casefolded
+A7F1..A7F4    ; Changes_When_NFKC_Casefolded
+A7F5          ; Changes_When_NFKC_Casefolded
 A7F8..A7F9    ; Changes_When_NFKC_Casefolded
 AB5C..AB5F    ; Changes_When_NFKC_Casefolded
 AB69          ; Changes_When_NFKC_Casefolded

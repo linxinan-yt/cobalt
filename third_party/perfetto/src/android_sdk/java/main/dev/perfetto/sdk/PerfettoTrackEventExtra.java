@@ -119,7 +119,7 @@ final class PerfettoTrackEventExtra {
     private final long mExtraPtr;
     private final String mName;
     private final long mId;
-private final boolean mIsNameStatic;
+    private final boolean mIsNameStatic;
 
     NamedTrack(
         long id,
@@ -131,7 +131,8 @@ private final boolean mIsNameStatic;
       mExtraPtr = native_get_extra_ptr(mPtr);
       mName = name;
       mId = id;
-      mIsNameStatic = isNameStatic;      memoryCleaner.registerNativeAllocation(this, mPtr, native_delete());
+      mIsNameStatic = isNameStatic;
+      memoryCleaner.registerNativeAllocation(this, mPtr, native_delete());
     }
 
     @Override

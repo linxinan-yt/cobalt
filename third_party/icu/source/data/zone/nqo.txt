@@ -1168,7 +1168,8 @@ nqo{
         }
 "Pacific:Enderbury"{
             ec{"ߞߊ߲ߕߐ߲߫"}
-        }        "Pacific:Fakaofo"{
+        }
+        "Pacific:Fakaofo"{
             ec{"ߝߞߊߏߝߏ߫"}
         }
         "Pacific:Fiji"{
@@ -1191,7 +1192,8 @@ nqo{
         }
 "Pacific:Kanton"{
             ec{"ߞߊ߲ߕߐ߲߫"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"ߞߙߌߕߌߡߊߕߌ߫"}
         }
         "Pacific:Kosrae"{
@@ -1623,7 +1625,8 @@ nqo{
         }
 "meta:Hawaii"{
             ls{"ߤߥߊߦ - ߊߟߋߦߎߕߌߦߊ߲߫ ߕߎ߬ߡߘߊ߬ ߛߎߡߊ߲ߘߊ߲ߕߊ"}
-        }        "meta:Hawaii_Aleutian"{
+        }
+        "meta:Hawaii_Aleutian"{
             ld{"ߤߥߊߦ - ߊߟߋߦߎߕߌߦߊ߲߫ ߕߟߋ߬ߡߊ߬ ߕߎߡߘߊ"}
             lg{"ߤߥߊߦ - ߊߟߋߦߎߕߌߦߊ߲߫ ߕߎ߬ߡߊ߬ߘߊ"}
             ls{"ߤߥߊߦ - ߊߟߋߦߎߕߌߦߊ߲߫ ߕߎ߬ߡߘߊ߬ ߛߎߡߊ߲ߘߊ߲ߕߊ"}

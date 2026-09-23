@@ -112,7 +112,8 @@ fil{
         dav{"Taita"}
         de{"German"}
 de_AT{"Austrian German"}
-        de_CH{"Swiss High German"}        dgr{"Dogrib"}
+        de_CH{"Swiss High German"}
+        dgr{"Dogrib"}
         dje{"Zarma"}
         doi{"Dogri"}
         dsb{"Lower Sorbian"}
@@ -239,7 +240,8 @@ de_AT{"Austrian German"}
         kw{"Cornish"}
         kwk{"Kwakʼwala"}
         kxv{"Kuvi"}
-ky{"Kyrgyz"}        la{"Latin"}
+ky{"Kyrgyz"}
+        la{"Latin"}
         lad{"Ladino"}
         lag{"Langi"}
         lb{"Luxembourgish"}

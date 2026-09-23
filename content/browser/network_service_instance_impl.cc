@@ -808,7 +808,8 @@ void RemoveNetworkServiceProcessObserver(
   g_observed_network_service->RemoveObserver(observer);
 }
 
-#if BUILDFLAG(IS_CHROMEOS) || BUILDFLAG(IS_COBALT)net::NetworkChangeNotifier* GetNetworkChangeNotifier() {
+#if BUILDFLAG(IS_CHROMEOS) || BUILDFLAG(IS_COBALT)
+net::NetworkChangeNotifier* GetNetworkChangeNotifier() {
   return BrowserMainLoop::GetInstance()->network_change_notifier();
 }
 #endif

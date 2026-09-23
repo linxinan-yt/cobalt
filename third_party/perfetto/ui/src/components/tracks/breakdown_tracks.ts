@@ -30,6 +30,7 @@ import {
 } from '../../trace_processor/query_result';
 import type {TrackRenderer} from '../../public/track';
 import type {TrackEventDetailsPanel} from '../../public/details_panel';
+
 /**
  * Aggregation types for the BreakdownTracks.
  * These aggregations will be displayed in a set of counter tracks.
@@ -498,7 +499,7 @@ export class BreakdownTracks {
     title: string,
     newFilters: Filter[],
     columnIndex: number,
-isPivot: boolean,
+    isPivot: boolean,
   ): Promise<TrackNode> {
     return this.createTrackNode(title, newFilters, (uri, filtersClause) => {
       // Pivot tracks render the joined sub-intervals (one slice per joined row)
@@ -549,7 +550,8 @@ isPivot: boolean,
           ? () => this.props.detailsPanel!(this.props.trace)
           : undefined,
       });
-    });  }
+    });
+  }
 
   private async getCounterTrackSortOrder(
     filtersClause: string,
@@ -588,7 +590,8 @@ isPivot: boolean,
   private async createTrackNode(
     name: string,
     filters: Filter[],
-createTrack: (uri: string, filtersClause: string) => TrackRenderer,    getSortOrder?: (filterClause: string) => Promise<number>,
+    createTrack: (uri: string, filtersClause: string) => TrackRenderer,
+    getSortOrder?: (filterClause: string) => Promise<number>,
   ): Promise<TrackNode> {
     const filtersClause =
       filters.length > 0 ? `\nWHERE ${buildFilterSqlClause(filters)}` : '';

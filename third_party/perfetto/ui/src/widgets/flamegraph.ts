@@ -51,6 +51,7 @@ import {hash} from '../base/hash';
 import {escapeRegex, parseUserFilterRegex} from './flamegraph_regex';
 import type {MithrilEvent} from '../base/mithril_utils';
 import {Icons} from '../base/semantic_icons';
+
 const LABEL_FONT_STYLE = '12px Roboto';
 const NODE_HEIGHT = 20;
 const MIN_PIXEL_DISPLAYED = 3;
@@ -153,11 +154,6 @@ export interface FlamegraphOptionalMarker {
   isVisible: (properties: ReadonlyMap<string, string>) => boolean;
 }
 
-export interface FlamegraphOptionalMarker {
-  readonly name: string;
-  isVisible: (properties: ReadonlyMap<string, string>) => boolean;
-}
-
 export type FlamegraphPropertyDefinition = {
   displayName: string;
   value: string;
@@ -180,7 +176,8 @@ export interface FlamegraphNode {
 }
 
 export interface FlamegraphQueryData {
-readonly nodes: ReadonlyArray<FlamegraphNode>;  readonly unfilteredCumulativeValue: number;
+  readonly nodes: ReadonlyArray<FlamegraphNode>;
+  readonly unfilteredCumulativeValue: number;
   readonly allRootsCumulativeValue: number;
   readonly minDepth: number;
   readonly maxDepth: number;
@@ -710,7 +707,7 @@ export class Flamegraph implements m.ClassComponent<FlamegraphAttrs> {
               this.zoomRegion = renderNode?.source;
             },
           },
-(() => {
+          (() => {
             const popupVisible =
               this.isPopupAnchorVisible() &&
               (this.tooltipPos?.state === 'HOVER' ||
@@ -725,8 +722,6 @@ export class Flamegraph implements m.ClassComponent<FlamegraphAttrs> {
                     top: this.tooltipPos?.y + 'px',
                   },
                 }),
-                // We have a wide set of buttons that would overflow given the
-                // normal width constraints of the popup.
                 fitContent: true,
                 position: PopupPosition.Right,
                 isOpen: popupVisible,
@@ -735,7 +730,8 @@ export class Flamegraph implements m.ClassComponent<FlamegraphAttrs> {
               },
               this.renderTooltip(),
             );
-          })(),        ),
+          })(),
+        ),
       ),
     );
   }
@@ -867,8 +863,9 @@ export class Flamegraph implements m.ClassComponent<FlamegraphAttrs> {
         name = nodes[source.queryIdx].name;
         colorScheme = getFlamegraphColorScheme(name, state === 'PARTIAL');
       }
-const highlighted =
-        source.kind === 'NODE' && this.highlightRegex?.test(name) === true;      const bgColor = hover ? colorScheme.variant : colorScheme.base;
+      const highlighted =
+        source.kind === 'NODE' && this.highlightRegex?.test(name) === true;
+      const bgColor = hover ? colorScheme.variant : colorScheme.base;
       const textColor = hover ? colorScheme.textVariant : colorScheme.textBase;
       ctx.fillStyle = bgColor.cssString;
       ctx.fillRect(x, y, width - 1, NODE_HEIGHT - 1);
@@ -1277,11 +1274,12 @@ const highlighted =
       // Show marker at the top of the tooltip
       marker &&
         m('.tooltip-text-line', m('.tooltip-marker-text', `■ ${marker}`)),
-m(
+      m(
         '.tooltip-text-line',
         m('.tooltip-bold-text', `${nameLabel}:`),
         m('.tooltip-text', name),
-      ),      m(
+      ),
+      m(
         '.tooltip-text-line',
         m('.tooltip-bold-text', 'Cumulative:'),
         m(
@@ -2151,7 +2149,9 @@ function parseFilter(
       o.shortLabel.toLowerCase() === prefix || o.label.toLowerCase() === prefix,
   );
   return match ? {type: match.value, value} : {type: defaultType, value: text};
-}// Unfortunately, widgets *cannot* depend on components so we cannot use the
+}
+
+// Unfortunately, widgets *cannot* depend on components so we cannot use the
 // colorizer code. Since we need very little of that code anyway, just inline
 // what we need here.
 const PERCEIVED_BRIGHTNESS_LIMIT = 180;
@@ -2207,8 +2207,13 @@ function getFlamegraphColorScheme(name: string, greyed: boolean): ColorScheme {
   let scheme = colorSchemeCache.get(name);
   if (scheme !== undefined) {
     return scheme;
-  }  // Hash the name to get a predictable hue, then create color with fixed
+  }
+
+  // Hash the name to get a predictable hue, then create color with fixed
   // saturation and lightness values to match what pprof web UI does.
   const hue = hash(name, 360);
   const base = new HSLColor({h: hue, s: 46, l: 80});
-return makeColorScheme(base, base.darken(15).saturate(15));}
+  scheme = makeColorScheme(base, base.darken(15).saturate(15));
+  colorSchemeCache.set(name, scheme);
+  return scheme;
+}

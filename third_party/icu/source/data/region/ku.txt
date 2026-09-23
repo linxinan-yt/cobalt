@@ -75,11 +75,13 @@ ku{
         CA{"Kanada"}
         CC{"Giravên Kokosê (Keeling)"}
         CD{"Kongo - Kînşasa"}
-CF{"Komara Afrîkaya Navîn"}        CG{"Kongo - Brazzaville"}
+CF{"Komara Afrîkaya Navîn"}
+        CG{"Kongo - Brazzaville"}
         CH{"Swîsre"}
         CI{"Côte d’Ivoire"}
         CK{"Giravên Cookê"}
-CL{"Şîlî"}        CM{"Kamerûn"}
+CL{"Şîlî"}
+        CM{"Kamerûn"}
         CN{"Çîn"}
         CO{"Kolombîya"}
         CP{"Girava Clippertonê"}
@@ -183,7 +185,8 @@ CL{"Şîlî"}        CM{"Kamerûn"}
         MF{"Saint Martin"}
         MG{"Madagaskar"}
         MH{"Giravên Marşalê"}
-MK{"Makendonyaya Bakur"}        ML{"Malî"}
+MK{"Makendonyaya Bakur"}
+        ML{"Malî"}
         MM{"Myanmar (Bûrma)"}
         MN{"Moxolistan"}
         MO{"Makao"}
@@ -193,7 +196,8 @@ MK{"Makendonyaya Bakur"}        ML{"Malî"}
         MS{"Montserat"}
         MT{"Malta"}
         MU{"Mauritius"}
-MV{"Maldîv"}        MW{"Malawî"}
+MV{"Maldîv"}
+        MW{"Malawî"}
         MX{"Meksîka"}
         MY{"Malezya"}
         MZ{"Mozambîk"}
@@ -264,7 +268,8 @@ MV{"Maldîv"}        MW{"Malawî"}
         TM{"Tirkmenistan"}
         TN{"Tûnis"}
         TO{"Tonga"}
-TR{"Türkiye"}        TT{"Trînîdad û Tobago"}
+TR{"Türkiye"}
+        TT{"Trînîdad û Tobago"}
         TV{"Tûvalû"}
         TW{"Taywan"}
         TZ{"Tanzanya"}
@@ -272,7 +277,8 @@ TR{"Türkiye"}        TT{"Trînîdad û Tobago"}
         UG{"Ûganda"}
 UM{"Giravên Biçûk ên Derveyî DAYê"}
         UN{"Miletên Yekbûyî"}
-        US{"Dewletên Amerîkayê yên Yekbûyî"}        UY{"Ûrûguay"}
+        US{"Dewletên Amerîkayê yên Yekbûyî"}
+        UY{"Ûrûguay"}
         UZ{"Ozbekistan"}
         VA{"Vatîkan"}
         VC{"Saint Vincent û Giravên Grenadînê"}

@@ -170,11 +170,6 @@ export class PluginManagerImpl {
     return plugin?.isCore ?? false;
   }
 
-  isCorePlugin(pluginId: string): boolean {
-    const plugin = this.registry.tryGet(pluginId);
-    return plugin?.isCore ?? false;
-  }
-
   /**
    * Sort plugins in dependency order, ensuring that if a plugin depends on
    * other plugins, those plugins will appear fist in the list.

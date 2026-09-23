@@ -39,11 +39,12 @@ class ImportLogsTracker {
 
   // For "tokenization" logs (pre-parsing, only have byte offset).
   // Use when reading raw bytes and encountering malformed data.
-  void RecordTokenizationLog(      size_t stat_key,
+  void RecordTokenizationLog(
+      size_t stat_key,
       int64_t byte_offset,
       std::function<void(ArgsTracker::BoundInserter&)> args_callback = {});
 
-// Overload for size_t byte offset (e.g., from TraceBlobView::offset()).
+  // Overload for size_t byte offset (e.g., from TraceBlobView::offset()).
   void RecordTokenizationLog(
       size_t stat_key,
       size_t byte_offset,
@@ -54,11 +55,12 @@ class ImportLogsTracker {
 
   // For "parser" logs (post-parsing, have timestamp + context).
   // Use when you have a parsed event but it's invalid/problematic.
-  void RecordParserLog(      size_t stat_key,
+  void RecordParserLog(
+      size_t stat_key,
       int64_t timestamp,
       std::function<void(ArgsTracker::BoundInserter&)> args_callback = {});
 
-// For "collection" logs (e.g. errors occurring during trace recording on
+  // For "collection" logs (e.g. errors occurring during trace recording on
   // device).
   // Use when recording information that was explicitly supplied by the
   // producer.
@@ -81,7 +83,8 @@ class ImportLogsTracker {
   // IMPORTANT: Since this API has neither timestamp nor byte offset, you MUST
   // provide args_callback with sufficient context to identify and disambiguate
   // the specific error occurrence (e.g., track_uuid, utid, upid, etc.).
-  void RecordAnalysisLog(      size_t stat_key,
+  void RecordAnalysisLog(
+      size_t stat_key,
       std::function<void(ArgsTracker::BoundInserter&)> args_callback);
 
  private:
@@ -92,7 +95,8 @@ class ImportLogsTracker {
       std::function<void(ArgsTracker::BoundInserter&)> args_callback);
 
   TraceProcessorContext* context_;
-tables::TraceFileTable::Id trace_id_;};
+  tables::TraceFileTable::Id trace_id_;
+};
 
 }  // namespace perfetto::trace_processor
 

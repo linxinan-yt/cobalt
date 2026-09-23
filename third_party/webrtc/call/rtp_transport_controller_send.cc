@@ -129,16 +129,7 @@ RtpTransportControllerSend::RtpTransportControllerSend(
   initial_config_.default_pacing_time_window =
       config.default_pacing_time_window;
   RTC_DCHECK(config.bitrate_config.start_bitrate_bps > 0);
-pacer_.SetConfig(PacerConfig::Create(
-      env_.clock().CurrentTime(),
-      DataRate::BitsPerSec(config.bitrate_config.start_bitrate_bps),
-      DataRate::Zero(), config.default_pacing_time_window));
-
-  packet_router_.RegisterNotifyBweCallback(
-      [this](const RtpPacketToSend& packet,
-             const PacedPacketInfo& pacing_info) {
-        return NotifyBweOfPacedSentPacket(packet, pacing_info);
-      });}
+}
 
 RtpTransportControllerSend::~RtpTransportControllerSend() {
   RTC_DCHECK_RUN_ON(worker_thread_);
@@ -401,7 +392,7 @@ void RtpTransportControllerSend::OnNetworkRouteChanged(
                      << " bps.";
   }
 
-env_.event_log().Log(std::make_unique<RtcEventRouteChange>(
+  env_.event_log().Log(std::make_unique<RtcEventRouteChange>(
       network_route.connected, network_route.packet_overhead));
   transport_feedback_adapter_.SetNetworkRoute(network_route);
 
@@ -426,7 +417,8 @@ env_.event_log().Log(std::make_unique<RtcEventRouteChange>(
     sending_packets_as_ect1_ = true;
     packet_router_.ConfigureForRtcpFeedback(
         /*set_transport_seq=*/rfc_8888_feedback_negotiated_,
-        sending_packets_as_ect1_);  }
+        sending_packets_as_ect1_);
+  }
 }
 
 void RtpTransportControllerSend::OnNetworkAvailability(bool network_available) {
@@ -625,7 +617,8 @@ void RtpTransportControllerSend::NotifyBweOfPacedSentPacket(
 
 void RtpTransportControllerSend::SetPreferredRtcpCcAckType(
     RtcpFeedbackType preferred_rtcp_cc_ack_type) {
-RTC_DCHECK_RUN_ON(&sequence_checker_);  RTC_DCHECK(preferred_rtcp_cc_ack_type == RtcpFeedbackType::CCFB ||
+  RTC_DCHECK_RUN_ON(worker_thread_);
+  RTC_DCHECK(preferred_rtcp_cc_ack_type == RtcpFeedbackType::CCFB ||
              preferred_rtcp_cc_ack_type == RtcpFeedbackType::TRANSPORT_CC);
   if (preferred_rtcp_cc_ack_type == RtcpFeedbackType::CCFB) {
     rfc_8888_feedback_negotiated_ = true;
@@ -640,12 +633,13 @@ RTC_DCHECK_RUN_ON(&sequence_checker_);  RTC_DCHECK(preferred_rtcp_cc_ack_type ==
   packet_router_.ConfigureForRtcpFeedback(
       /*set_transport_seq=*/rfc_8888_feedback_negotiated_,
       sending_packets_as_ect1_);
-// TODO: bugs.webrtc.org/447037083 - Remove method
+  // TODO: bugs.webrtc.org/447037083 - Remove method
   // IncludeOverheadInPacedSender once once support for
   // RFC8888 is per default enabled. Also remove or update and SetPacingFactor
   // since it is not used with RFC 8888. SetPreferredRtcpCcAckType is only
   // called if field trial "WebRTC-RFC8888CongestionControlFeedback" is enabled.
-  pacer_.SetIncludeOverhead();}
+  pacer_.SetIncludeOverhead();
+}
 
 std::optional<int>
 RtpTransportControllerSend::ReceivedCongestionControlFeedbackCount() const {
@@ -658,7 +652,8 @@ RtpTransportControllerSend::ReceivedCongestionControlFeedbackCount() const {
 
 flat_map<uint32_t, ReceivedCongestionControlFeedbackStats>
 RtpTransportControllerSend::GetCongestionControlFeedbackStatsPerSsrc() const {
-RTC_DCHECK_RUN_ON(worker_thread_);  return received_ccfb_stats_;
+  RTC_DCHECK_RUN_ON(worker_thread_);
+  return received_ccfb_stats_;
 }
 
 std::optional<int>

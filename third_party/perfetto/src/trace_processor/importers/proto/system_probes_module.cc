@@ -67,8 +67,9 @@ ModuleResult SystemProbesModule::TokenizePacket(
 void SystemProbesModule::ParseField(const ParseFieldArgs& args) {
   switch (args.field.id()) {
     case TracePacket::kProcessTreeFieldNumber:
-parser_.ParseProcessTree(args.ts,
-                               args.field.Cast<TracePacket::kProcessTree>());      return;
+      parser_.ParseProcessTree(args.ts,
+                               args.field.Cast<TracePacket::kProcessTree>());
+      return;
     case TracePacket::kProcessStatsFieldNumber:
       parser_.ParseProcessStats(args.ts,
                                 args.field.Cast<TracePacket::kProcessStats>());

@@ -1161,7 +1161,8 @@ kxv_Deva{
         }
 "Pacific:Enderbury"{
             ec{"केंटन"}
-        }        "Pacific:Fakaofo"{
+        }
+        "Pacific:Fakaofo"{
             ec{"प़ाकाओप़ो"}
         }
         "Pacific:Fiji"{
@@ -1184,7 +1185,8 @@ kxv_Deva{
         }
 "Pacific:Kanton"{
             ec{"केंटन"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"किरीतिमाति"}
         }
         "Pacific:Kosrae"{

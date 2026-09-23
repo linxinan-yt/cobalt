@@ -255,7 +255,9 @@ void IndianCalendar::handleComputeFields(int32_t julianDay, UErrorCode& /* statu
     double jdAtStartOfGregYear;
     int32_t leapMonth, IndianYear, yday, IndianMonth, IndianDayOfMonth, mday;
     // Stores gregorian date corresponding to Julian day;
-int32_t gregorianYear = getGregorianYear();    IndianYear = gregorianYear - INDIAN_ERA_START;            // Year in Saka era
+    int32_t gregorianYear = getGregorianYear();
+
+    IndianYear = gregorianYear - INDIAN_ERA_START;            // Year in Saka era
     jdAtStartOfGregYear = gregorianToJD(gregorianYear, 0, 1); // JD at start of Gregorian year
     yday = static_cast<int32_t>(julianDay - jdAtStartOfGregYear); // Day number in Gregorian year (starting from 0)
 

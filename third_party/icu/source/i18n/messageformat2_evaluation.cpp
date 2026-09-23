@@ -29,7 +29,8 @@ using namespace data_model;
 ResolvedFunctionOption::ResolvedFunctionOption(ResolvedFunctionOption&& other) {
     name = std::move(other.name);
     value = std::move(other.value);
-sourceIsLiteral = other.sourceIsLiteral;}
+    sourceIsLiteral = other.sourceIsLiteral;
+}
 
 ResolvedFunctionOption::~ResolvedFunctionOption() {}
 
@@ -61,7 +62,8 @@ UBool FunctionOptions::wasSetFromLiteral(const UnicodeString& key) const {
     return false;
 }
 
-UBool FunctionOptions::getFunctionOption(std::u16string_view key, Formattable& option) const {    if (options == nullptr) {
+UBool FunctionOptions::getFunctionOption(std::u16string_view key, Formattable& option) const {
+    if (options == nullptr) {
         U_ASSERT(functionOptionsLen == 0);
     }
     for (int32_t i = 0; i < functionOptionsLen; i++) {
@@ -74,7 +76,8 @@ UBool FunctionOptions::getFunctionOption(std::u16string_view key, Formattable& o
     return false;
 }
 
-UnicodeString FunctionOptions::getStringFunctionOption(std::u16string_view key) const {    Formattable option;
+UnicodeString FunctionOptions::getStringFunctionOption(std::u16string_view key) const {
+    Formattable option;
     if (getFunctionOption(key, option)) {
         if (option.getType() == UFMT_STRING) {
             UErrorCode localErrorCode = U_ZERO_ERROR;
@@ -224,10 +227,10 @@ PrioritizedVariant::~PrioritizedVariant() {}
         errors.checkErrors(status);
     }
 
-const Formattable* MessageContext::getGlobal(const MessageFormatter& context,
-                                                 const VariableName& v,
+    const Formattable* MessageContext::getGlobal(const VariableName& v,
                                                  UErrorCode& errorCode) const {
-       return arguments.getArgument(context, v, errorCode);    }
+       return arguments.getArgument(v, errorCode);
+    }
 
     MessageContext::MessageContext(const MessageArguments& args,
                                    const StaticErrors& e,
@@ -316,13 +319,15 @@ const Formattable* MessageContext::getGlobal(const MessageFormatter& context,
         FunctionOptions opts;
         InternalValue* p = this;
         FunctionName selectorName = name;
-bool operandSelect = false;        while (std::holds_alternative<InternalValue*>(p->argument)) {
+
+        bool operandSelect = false;
+        while (std::holds_alternative<InternalValue*>(p->argument)) {
             if (p->name != selectorName) {
                 // Can only compose calls to the same selector
                 errorCode = U_ILLEGAL_ARGUMENT_ERROR;
                 return;
             }
-// Very special case to detect something like:
+            // Very special case to detect something like:
             // .local $sel = {1 :integer select=exact} .local $bad = {$sel :integer} .match $bad 1 {{ONE}} * {{operand select {$bad}}}
             // This can be done better once function composition is fully implemented.
             if (p != this &&
@@ -332,7 +337,8 @@ bool operandSelect = false;        while (std::holds_alternative<InternalValue*>
                 // `bad-option` error, possibly with the outcome of normal-looking output (with relaxed
                 // error handling) and an error (with strict error handling).
                 operandSelect = true;
-            }            // First argument to mergeOptions takes precedence
+            }
+            // First argument to mergeOptions takes precedence
             opts = opts.mergeOptions(std::move(p->options), errorCode);
             if (U_FAILURE(errorCode)) {
                 return;
@@ -342,7 +348,7 @@ bool operandSelect = false;        while (std::holds_alternative<InternalValue*>
         }
         FormattedPlaceholder arg = std::move(*std::get_if<FormattedPlaceholder>(&p->argument));
 
-// This condition can't be checked in the selector.
+        // This condition can't be checked in the selector.
         // Effectively, there are two different kinds of "bad option" errors:
         // one that can be recovered from (used for select=$var) and one that
         // can't (used for bad digit size options and other cases).
@@ -384,7 +390,9 @@ bool operandSelect = false;        while (std::holds_alternative<InternalValue*>
         }
         // Otherwise, return true if the option was set from a literal
         return options.wasSetFromLiteral(UnicodeString("select"));
-    }    FormattedPlaceholder InternalValue::forceFormatting(DynamicErrors& errs, UErrorCode& errorCode) {
+    }
+
+    FormattedPlaceholder InternalValue::forceFormatting(DynamicErrors& errs, UErrorCode& errorCode) {
         if (U_FAILURE(errorCode)) {
             return {};
         }
@@ -411,9 +419,11 @@ bool operandSelect = false;        while (std::holds_alternative<InternalValue*>
             return {};
         }
 
-if (arg.isFallback()) {
+        if (arg.isFallback()) {
             return arg;
-        }        // The fallback for a nullary function call is the function name
+        }
+
+        // The fallback for a nullary function call is the function name
         UnicodeString fallback;
         if (arg.isNullOperand()) {
             fallback = u":";
@@ -422,7 +432,7 @@ if (arg.isFallback()) {
             fallback = arg.getFallback();
         }
 
-// Very special case for :number select=foo and :integer select=foo
+        // Very special case for :number select=foo and :integer select=foo
         // This check can't be done inside the function implementation because
         // it doesn't have a way to both signal an error and return usable output,
         // and the spec stipulates that fallback output shouldn't be used in the
@@ -434,21 +444,23 @@ if (arg.isFallback()) {
         if (U_SUCCESS(errorCode) && errorCode == U_USING_DEFAULT_WARNING) {
             // Ignore this warning
             errorCode = U_ZERO_ERROR;
-        }        if (U_FAILURE(errorCode)) {
+        }
+        if (U_FAILURE(errorCode)) {
             if (errorCode == U_MF_OPERAND_MISMATCH_ERROR) {
                 errorCode = U_ZERO_ERROR;
                 errs.setOperandMismatchError(name, errorCode);
-} else if (errorCode == U_MF_BAD_OPTION) {
+            } else if (errorCode == U_MF_BAD_OPTION) {
                 errorCode = U_ZERO_ERROR;
                 errs.setBadOption(name, errorCode);
             } else {
                 errorCode = U_ZERO_ERROR;
                 // Convey any other error generated by the formatter
-                // as a formatting error                errs.setFormattingError(name, errorCode);
+                // as a formatting error
+                errs.setFormattingError(name, errorCode);
             }
         }
         // Ignore the output if any error occurred
-// We don't ignore the output in the case of a Bad Option Error,
+        // We don't ignore the output in the case of a Bad Option Error,
         // because of the select=bad case where we want both an error
         // and non-fallback output.
         if (errs.hasFormattingError() || errs.hasBadOptionError()) {
@@ -458,7 +470,8 @@ if (arg.isFallback()) {
             // In this case, we want to set an error but not replace
             // the output with a fallback
             errs.setRecoverableBadOption(name, errorCode);
-        }        return result;
+        }
+        return result;
     }
 
     InternalValue& InternalValue::operator=(InternalValue&& other) noexcept {

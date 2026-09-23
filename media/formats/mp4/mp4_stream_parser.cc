@@ -146,7 +146,8 @@ std::unique_ptr<HdrMetadataTrack> MakeMetadataTrack(
 
   return std::make_unique<HdrMetadataTrack>(
       metadata_track_id, it35_sample_entry.it35_prefix_type, render_track_ids);
-}}  // namespace
+}
+}  // namespace
 
 MP4StreamParser::MP4StreamParser(
     std::optional<base::flat_set<int>> strict_audio_object_types,
@@ -212,7 +213,8 @@ for (auto& [track_id, metadata_track] : metadata_tracks_) {
 #if BUILDFLAG(USE_STARBOARD_MEDIA)
   scratch_frame_buf_.clear();
   scratch_frame_buf_.shrink_to_fit();
-#endif}
+#endif
+}
 
 void MP4StreamParser::Flush() {
   DCHECK_NE(state_, kWaitingForInit);
@@ -1248,7 +1250,7 @@ ParseResult MP4StreamParser::EnqueueSample(BufferQueueMap* buffers) {
   const size_t original_scratch_capacity = scratch_frame_buf_.capacity();
 #endif
 
-  const auto buffer_type = audio ? DemuxerStream::AUDIO : DemuxerStream::VIDEO;  scoped_refptr<StreamParserBuffer> stream_buf;
+  scoped_refptr<StreamParserBuffer> stream_buf;
 
   if (auto* media_client = GetMediaClient()) {
     if (auto* alloc = media_client->GetMediaAllocator()) {

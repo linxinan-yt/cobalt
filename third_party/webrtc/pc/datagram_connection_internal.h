@@ -62,7 +62,8 @@ class RTC_EXPORT DatagramConnectionInternal : public DatagramConnection,
                                const uint8_t* digest,
                                size_t digest_len,
                                SSLRole ssl_role) override;
-void SendPackets(std::span<PacketSendParameters> packets) override;
+  void SendPackets(std::span<PacketSendParameters> packets) override;
+
   void Terminate(
       absl::AnyInvocable<void()> terminate_complete_callback) override;
 
@@ -80,11 +81,12 @@ void SendPackets(std::span<PacketSendParameters> packets) override;
 
   void OnSentPacket(const SentPacketInfo& packet);
 
-absl::string_view IceUsernameFragment() override {
+  absl::string_view IceUsernameFragment() override {
     return ice_username_fragment_;
   }
 
   absl::string_view IcePassword() override { return ice_password_; }
+
 #if RTC_DCHECK_IS_ON
   DtlsSrtpTransport* GetDtlsSrtpTransportForTesting() {
     return dtls_srtp_transport_.get();

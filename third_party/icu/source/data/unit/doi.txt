@@ -75,7 +75,8 @@ doi{
             }
 part-per-1e6{
                 dnam{"हिस्से फी दस लक्ख"}
-            }            percent{
+            }
+            percent{
                 dnam{"प्रतिशत/फीसदी"}
             }
             permille{
@@ -638,7 +639,8 @@ part-per-1e6{
             mole{
                 dnam{"मोल"}
             }
-part-per-1e6{                dnam{"हिफीदल"}
+part-per-1e6{
+                dnam{"हिफीदल"}
             }
         }
         consumption{

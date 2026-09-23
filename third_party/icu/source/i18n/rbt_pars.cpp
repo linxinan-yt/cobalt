@@ -1454,11 +1454,13 @@ int32_t TransliteratorParser::parseRule(const UnicodeString& rule, int32_t pos, 
     // Flatten segment objects vector to an array
     LocalMemory<UnicodeFunctor*> segmentsArray;
     if (segmentObjects.size() > 0) {
-segmentsArray.adoptInstead(static_cast<UnicodeFunctor**>(uprv_malloc(segmentObjects.size() * sizeof(UnicodeFunctor*))));        // Null pointer check
+        segmentsArray.adoptInstead(static_cast<UnicodeFunctor**>(uprv_malloc(segmentObjects.size() * sizeof(UnicodeFunctor*))));
+        // Null pointer check
         if (segmentsArray.isNull()) {
             return syntaxError(U_MEMORY_ALLOCATION_ERROR, rule, start, status);
         }
-segmentObjects.toArray(reinterpret_cast<void**>(segmentsArray.getAlias()));    }
+        segmentObjects.toArray(reinterpret_cast<void**>(segmentsArray.getAlias()));
+    }
     LocalPointer<TransliterationRule> temptr(new TransliterationRule(
             left->text, left->ante, left->post,
             right->text, right->cursor, right->cursorOffset,
@@ -1621,9 +1623,10 @@ void TransliteratorParser::setSegmentObject(int32_t seg, StringMatcher* adopted,
  */
 char16_t TransliteratorParser::getDotStandIn(UErrorCode& status) {
     if (dotStandIn == static_cast<char16_t>(-1)) {
-LocalPointer<UnicodeSet> tempus(new UnicodeSet(UnicodeString(true, DOT_SET, -1), status), status);
+        LocalPointer<UnicodeSet> tempus(new UnicodeSet(UnicodeString(true, DOT_SET, -1), status), status);
         // Null pointer check.
-        if (U_FAILURE(status)) {            return static_cast<char16_t>(0x0000);
+        if (U_FAILURE(status)) {
+            return static_cast<char16_t>(0x0000);
         }
         dotStandIn = generateStandInFor(tempus.orphan(), status);
     }

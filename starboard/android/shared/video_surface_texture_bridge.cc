@@ -22,7 +22,6 @@
 
 namespace starboard {
 namespace {
-using jni_zero::JavaParamRef;
 using jni_zero::JavaRef;
 using jni_zero::ScopedJavaGlobalRef;
 using jni_zero::ScopedJavaLocalRef;
@@ -73,3 +72,5 @@ std::array<float, 16> VideoSurfaceTextureBridge::GetTransformMatrix(
 }
 
 }  // namespace starboard
+
+DEFINE_JNI(VideoSurfaceTexture)

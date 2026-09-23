@@ -32,7 +32,8 @@ xh{
         }
 "Pacific:Enderbury"{
             ec{"ICanton Island"}
-        }        "meta:Afghanistan"{
+        }
+        "meta:Afghanistan"{
             ls{"Afghanistan Time"}
         }
         "meta:Africa_Central"{

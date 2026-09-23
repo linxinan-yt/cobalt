@@ -247,7 +247,8 @@ zu{
         kv{"isi-Komi"}
         kw{"isi-Cornish"}
         kwk{"Kwakʼwala"}
-kxv{"Kuvi"}        ky{"isi-Kyrgyz"}
+kxv{"Kuvi"}
+        ky{"isi-Kyrgyz"}
         la{"isi-Latin"}
         lad{"isi-Ladino"}
         lag{"isi-Langi"}
@@ -459,7 +460,8 @@ kxv{"Kuvi"}        ky{"isi-Kyrgyz"}
         ve{"isi-Venda"}
 vec{"IsiVenetian"}
         vi{"isi-Vietnamese"}
-        vmw{"Makhuwa"}        vo{"isi-Volapük"}
+        vmw{"Makhuwa"}
+        vo{"isi-Volapük"}
         vun{"isiVunjo"}
         wa{"isi-Walloon"}
         wae{"isi-Walser"}

@@ -137,6 +137,7 @@ export function createTableColumn(args: {
     startsHidden: args.startsHidden,
   });
 }
+
 function wrongTypeError(type: string, name: SqlColumn, value: SqlValue) {
   return renderError(
     `Wrong type for ${type} column ${sqlColumnId(
@@ -162,7 +163,8 @@ export class StandardColumn implements TableColumn {
   constructor(
     public readonly column: SqlColumn,
     public readonly type: PerfettoSqlType | undefined,
-private params?: ColumnParams,  ) {}
+    private params?: ColumnParams,
+  ) {}
 
   renderCell(value: SqlValue, context?: RenderCellContext) {
     return renderStandardCell(value, this.column, context);
@@ -240,12 +242,13 @@ export class DurationColumn implements TableColumn {
   }
 }
 
-export class IdColumn implements TableColumn {  public readonly type: PerfettoSqlType;
+export class IdColumn implements TableColumn {
+  public readonly type: PerfettoSqlType;
 
   constructor(
     public readonly trace: Trace,
     public readonly column: SqlColumn,
-private readonly args: {
+    private readonly args: {
       table: {
         name: string;
         columns: {name: string; type: PerfettoSqlType; showWithId?: boolean}[];
@@ -255,7 +258,8 @@ private readonly args: {
   ) {
     this.type = {
       kind: args.type === 'id' ? 'id' : 'joinid',
-      source: {table: args.table.name, column: 'id'},    };
+      source: {table: args.table.name, column: 'id'},
+    };
   }
 
   renderCell(value: SqlValue, context?: RenderCellContext): RenderedCell {
@@ -280,7 +284,7 @@ private readonly args: {
   }
 
   listDerivedColumns() {
-if (this.args.type === 'id') return undefined;
+    if (this.args.type === 'id') return undefined;
     return async () => {
       const result = new Map<string, TableColumn>();
       for (const col of this.args.table.columns) {
@@ -311,7 +315,8 @@ if (this.args.type === 'id') return undefined;
         );
       }
     }
-    return result;  }
+    return result;
+  }
 
   private getChildColumn(name: string): SqlColumn {
     return {
@@ -355,6 +360,7 @@ export function sliceIdColumn(
     ...params,
   });
 }
+
 export function schedIdColumn(
   trace: Trace,
   column: SqlColumn,
@@ -415,7 +421,8 @@ export function threadStateIdColumn(
         },
       ],
     },
-    render: (id) => ({      content: m(ThreadStateRef, {
+    render: (id) => ({
+      content: m(ThreadStateRef, {
         trace,
         id: asThreadStateSqlId(Number(id)),
         name: `${id}`,
@@ -479,7 +486,8 @@ export function processIdColumn(
       menu: showProcessDetailsMenuItem(trace, asUpid(Number(id))),
     }),
     ...params,
-  });}
+  });
+}
 
 export function trackIdColumn(
   trace: Trace,
@@ -511,7 +519,8 @@ export function trackIdColumn(
 
 class ArgColumn implements TableColumn {
   public readonly column: SqlColumn;
-public readonly display: SqlColumn;  public readonly type: PerfettoSqlType | undefined = undefined;
+  public readonly display: SqlColumn;
+  public readonly type: PerfettoSqlType | undefined = undefined;
   private id: string;
 
   constructor(

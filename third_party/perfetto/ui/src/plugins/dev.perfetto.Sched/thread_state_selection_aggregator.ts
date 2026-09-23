@@ -153,8 +153,9 @@ export class ThreadStateSelectionAggregator implements Aggregator {
         });
 
         const states: BarChartData[] = [];
-for (; it.valid(); it.next()) {
-          const name = it.state ?? 'Unknown';          states.push({
+        for (; it.valid(); it.next()) {
+          const name = it.state ?? 'Unknown';
+          states.push({
             title: `${name}: ${Duration.humanise(it.totalDur)}`,
             value: Number(it.totalDur),
             color: colorForThreadState(name),

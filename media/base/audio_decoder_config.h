@@ -179,7 +179,8 @@ class MEDIA_EXPORT AudioDecoderConfig {
 #if BUILDFLAG(USE_STARBOARD_MEDIA)
   // Full mime string for the audio decoder config.
   std::string mime_type_ = "";
-#endif  // BUILDFLAG(USE_STARBOARD_MEDIA)  // Not using DISALLOW_COPY_AND_ASSIGN here intentionally to allow the compiler
+#endif  // BUILDFLAG(USE_STARBOARD_MEDIA)
+  // Not using DISALLOW_COPY_AND_ASSIGN here intentionally to allow the compiler
   // generated copy constructor and assignment operator. Since the extra data is
   // typically small, the performance impact is minimal.
 };

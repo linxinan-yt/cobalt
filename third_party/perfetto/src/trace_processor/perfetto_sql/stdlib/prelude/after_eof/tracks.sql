@@ -19,11 +19,14 @@
 -- This module provides the track concept and specialized track tables for
 -- organizing events by thread, process, CPU, and GPU contexts.
 
-INCLUDE PERFETTO MODULE prelude.after_eof.views;-- Tracks are a fundamental concept in trace processor and represent a
+INCLUDE PERFETTO MODULE prelude.after_eof.views;
+
+-- Tracks are a fundamental concept in trace processor and represent a
 -- "timeline" for events of the same type and with the same context. See
 -- https://perfetto.dev/docs/analysis/trace-processor#tracks for a more
 -- detailed explanation, with examples.
-CREATE PERFETTO VIEW track(  -- Unique identifier for this track. Identical to |track_id|, prefer using
+CREATE PERFETTO VIEW track(
+  -- Unique identifier for this track. Identical to |track_id|, prefer using
   -- |track_id| instead.
   id ID,
   -- Name of the track; can be null for some types of tracks (e.g. thread
@@ -50,8 +53,9 @@ CREATE PERFETTO VIEW track(  -- Unique identifier for this track. Identical to |
   -- Join with the `args` table or use the `EXTRACT_ARG` helper function to
   -- expand the args.
   source_arg_set_id ARGSETID,
--- Machine identifier
-  machine_id JOINID(machine.id),  -- An opaque key indicating that this track belongs to a group of tracks which
+  -- Machine identifier
+  machine_id JOINID(machine.id),
+  -- An opaque key indicating that this track belongs to a group of tracks which
   -- are "conceptually" the same track.
   --
   -- Tracks in trace processor don't allow overlapping events to allow for easy
@@ -61,7 +65,8 @@ CREATE PERFETTO VIEW track(  -- Unique identifier for this track. Identical to |
   -- should be merged together into a single logical "UI track".
   track_group_id LONG
 )
-ASSELECT
+AS
+SELECT
   id,
   name,
   type,
@@ -73,7 +78,8 @@ ASSELECT
 FROM __intrinsic_track;
 
 -- Tracks which are associated to a single thread.
-CREATE PERFETTO TABLE thread_track (  -- Unique identifier for this thread track.
+CREATE PERFETTO TABLE thread_track(
+  -- Unique identifier for this thread track.
   id ID(track.id),
   -- Name of the track.
   name STRING,
@@ -91,12 +97,13 @@ CREATE PERFETTO TABLE thread_track (  -- Unique identifier for this thread track
   -- the trace. For example: whether this track orginated from atrace, Chrome
   -- tracepoints etc.
   source_arg_set_id ARGSETID,
--- Machine identifier
+  -- Machine identifier
   machine_id JOINID(machine.id),
   -- The utid that the track is associated with.
   utid JOINID(thread.id)
 )
-ASSELECT
+AS
+SELECT
   t.id,
   t.name,
   t.type,
@@ -108,10 +115,12 @@ FROM __intrinsic_track AS t
 JOIN args AS a
   ON t.dimension_arg_set_id = a.arg_set_id
 WHERE
-t.event_type = 'slice' AND a.key = 'utid';
+  t.event_type = 'slice'
+  AND a.key = 'utid';
 
 -- Tracks which are associated to a single process.
-CREATE PERFETTO TABLE process_track (  -- Unique identifier for this process track.
+CREATE PERFETTO TABLE process_track(
+  -- Unique identifier for this process track.
   id ID(track.id),
   -- Name of the track.
   name STRING,
@@ -129,12 +138,13 @@ CREATE PERFETTO TABLE process_track (  -- Unique identifier for this process tra
   -- the trace. For example: whether this track orginated from atrace, Chrome
   -- tracepoints etc.
   source_arg_set_id ARGSETID,
--- Machine identifier
+  -- Machine identifier
   machine_id JOINID(machine.id),
   -- The upid that the track is associated with.
   upid JOINID(process.id)
 )
-ASSELECT
+AS
+SELECT
   t.id,
   t.name,
   t.type,
@@ -146,10 +156,12 @@ FROM __intrinsic_track AS t
 JOIN args AS a
   ON t.dimension_arg_set_id = a.arg_set_id
 WHERE
-t.event_type = 'slice' AND a.key = 'upid';
+  t.event_type = 'slice'
+  AND a.key = 'upid';
 
 -- Tracks which are associated to a single CPU.
-CREATE PERFETTO TABLE cpu_track (  -- Unique identifier for this cpu track.
+CREATE PERFETTO TABLE cpu_track(
+  -- Unique identifier for this cpu track.
   id ID(track.id),
   -- Name of the track.
   name STRING,
@@ -167,12 +179,13 @@ CREATE PERFETTO TABLE cpu_track (  -- Unique identifier for this cpu track.
   -- the trace. For example: whether this track orginated from atrace, Chrome
   -- tracepoints etc.
   source_arg_set_id ARGSETID,
--- Machine identifier
+  -- Machine identifier
   machine_id JOINID(machine.id),
   -- The CPU that the track is associated with.
   cpu LONG
 )
-ASSELECT
+AS
+SELECT
   t.id,
   t.name,
   t.type,
@@ -184,14 +197,17 @@ FROM __intrinsic_track AS t
 JOIN args AS a
   ON t.dimension_arg_set_id = a.arg_set_id
 WHERE
-t.event_type = 'slice' AND a.key = 'cpu';
+  t.event_type = 'slice'
+  AND a.key = 'cpu';
+
 -- Table containing tracks which are loosely tied to a GPU.
 --
 -- NOTE: this table is deprecated due to inconsistency of it's design with
 -- other track tables (e.g. not having a GPU column, mixing a bunch of different
 -- tracks which are barely related). Please use the track table directly
 -- instead.
-CREATE PERFETTO TABLE gpu_track (  -- Unique identifier for this cpu track.
+CREATE PERFETTO TABLE gpu_track(
+  -- Unique identifier for this cpu track.
   id ID(track.id),
   -- Name of the track.
   name STRING,
@@ -212,15 +228,17 @@ CREATE PERFETTO TABLE gpu_track (  -- Unique identifier for this cpu track.
   -- The dimensions of the track which uniquely identify the track within a
   -- given type.
   dimension_arg_set_id ARGSETID,
--- Machine identifier
-  machine_id JOINID(machine.id),  -- The source of the track. Deprecated.
+  -- Machine identifier
+  machine_id JOINID(machine.id),
+  -- The source of the track. Deprecated.
   scope STRING,
   -- The description for the track.
   description STRING,
   -- The context id for the GPU this track is associated to.
   context_id LONG
 )
-ASSELECT
+AS
+SELECT
   id,
   name,
   type,
@@ -233,7 +251,7 @@ ASSELECT
   extract_arg(dimension_arg_set_id, 'context_id') AS context_id
 FROM __intrinsic_track
 WHERE
-type IN (
+  type IN (
     'drm_vblank',
     'drm_sched_ring',
     'drm_fence',

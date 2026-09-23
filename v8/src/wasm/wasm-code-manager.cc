@@ -2311,7 +2311,8 @@ void WasmCodeManager::Decommit(base::AddressRegion region) {
 #endif
 
   if (V8_UNLIKELY(!success)) {
-    // Decommit/Discard can fail in near-OOM situations.    auto oom_detail = base::FormattedString{} << "region size: "
+    // Decommit/Discard can fail in near-OOM situations.
+    auto oom_detail = base::FormattedString{} << "region size: "
                                               << region.size();
     V8::FatalProcessOutOfMemory(nullptr, "Decommit Wasm code space",
                                 {.detail = oom_detail.PrintToArray().data()});

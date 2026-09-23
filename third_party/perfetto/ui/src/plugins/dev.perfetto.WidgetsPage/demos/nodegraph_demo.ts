@@ -27,17 +27,84 @@ import {
   type NodeGraphAttrs,
   type NodePort,
 } from '../../../widgets/nodegraph';
-import {Combobox} from '../../../widgets/combobox';import {Select} from '../../../widgets/select';
+import {Combobox} from '../../../widgets/combobox';
+import {Select} from '../../../widgets/select';
 import {TextInput} from '../../../widgets/text_input';
 import {renderDocSection, renderWidgetShowcase} from '../widgets_page_utils';
 
-interface NodeModelKernel<StateT = unknown> {
-  readonly name: string;  readonly inputs?: ReadonlyArray<NodePort>;
+const MAX_HISTORY_DEPTH = 500;
+
+// Base node data interface
+interface BaseNodeData {
+  readonly id: string;
+  x: number;
+  y: number;
+  nextId?: string;
+}
+
+// Individual node type interfaces
+interface TableNodeData extends BaseNodeData {
+  readonly type: 'table';
+  readonly table: string;
+}
+
+interface SelectNodeData extends BaseNodeData {
+  readonly type: 'select';
+  readonly columns: Record<string, boolean>;
+}
+
+interface FilterNodeData extends BaseNodeData {
+  readonly type: 'filter';
+  readonly filterExpression: string;
+}
+
+interface SortNodeData extends BaseNodeData {
+  readonly type: 'sort';
+  readonly sortColumn: string;
+  readonly sortOrder: 'ASC' | 'DESC';
+}
+
+interface JoinNodeData extends BaseNodeData {
+  readonly type: 'join';
+  readonly joinType: 'INNER' | 'LEFT' | 'RIGHT' | 'FULL';
+  readonly joinOn: string;
+}
+
+interface UnionNodeData extends BaseNodeData {
+  readonly type: 'union';
+  readonly unionType: 'UNION' | 'UNION ALL';
+}
+
+interface ResultNodeData extends BaseNodeData {
+  readonly type: 'result';
+}
+
+// Discriminated union of all node types
+type NodeData =
+  | TableNodeData
+  | SelectNodeData
+  | FilterNodeData
+  | SortNodeData
+  | JoinNodeData
+  | UnionNodeData
+  | ResultNodeData;
+
+// Store interface (only data that should be in undo/redo history)
+interface NodeGraphStore {
+  readonly nodes: Map<string, NodeData>;
+  readonly connections: Connection[];
+  readonly labels: Label[];
+  readonly invalidNodes: Set<string>; // Track which nodes are marked as invalid
+}
+
+// Node metadata configuration
+interface NodeConfig {
+  readonly inputs?: ReadonlyArray<NodePort>;
   readonly outputs?: ReadonlyArray<NodePort>;
   readonly canDockTop?: boolean;
   readonly canDockBottom?: boolean;
   readonly hue: number;
-readonly icon: string;
+  readonly icon: string;
 }
 
 const NODE_CONFIGS: Record<NodeData['type'], NodeConfig> = {
@@ -362,20 +429,23 @@ function renderNodeContent(
       return renderUnionNode(node, updateNode);
     case 'result':
       return renderResultNode();
-  }}
+  }
+}
 
 interface NodeGraphDemoAttrs {
   readonly multiselect?: boolean;
   readonly titleBars?: boolean;
-readonly headerIcons?: boolean;
+  readonly headerIcons?: boolean;
   readonly accentBars?: boolean;
   readonly colors?: boolean;
   readonly contextMenus?: boolean;
-  readonly contextMenuOnHover?: boolean;}
+  readonly contextMenuOnHover?: boolean;
+}
 
 export function NodeGraphDemo(): m.Component<NodeGraphDemoAttrs> {
   let graphApi: NodeGraphApi | undefined;
-// Initialize store with a single table node
+
+  // Initialize store with a single table node
   const initialId = uuidv4();
   let store: NodeGraphStore = {
     nodes: new Map([[initialId, createTableNode(initialId, 150, 100)]]),
@@ -418,7 +488,8 @@ export function NodeGraphDemo(): m.Component<NodeGraphDemoAttrs> {
   function findDockedParent(
     nodes: Map<string, NodeData>,
     nodeId: string,
-  ): NodeData | undefined {    for (const node of nodes.values()) {
+  ): NodeData | undefined {
+    for (const node of nodes.values()) {
       if (node.nextId === nodeId) {
         return node;
       }
@@ -427,8 +498,13 @@ export function NodeGraphDemo(): m.Component<NodeGraphDemoAttrs> {
   }
 
   // Helper to find input nodes via connections
-function findConnectedInputs(nodeId: string): Map<number, NodeModel> {
-    const inputs = new Map<number, NodeModel>();    for (const conn of connections) {
+  function findConnectedInputs(
+    nodes: Map<string, NodeData>,
+    connections: Connection[],
+    nodeId: string,
+  ): Map<number, NodeData> {
+    const inputs = new Map<number, NodeData>();
+    for (const conn of connections) {
       if (conn.toNode === nodeId) {
         const inputNode = nodes.get(conn.fromNode);
         if (inputNode) {
@@ -439,7 +515,7 @@ function findConnectedInputs(nodeId: string): Map<number, NodeModel> {
     return inputs;
   }
 
-// Update store with history
+  // Update store with history
   const updateStore = (updater: (draft: NodeGraphStore) => void) => {
     // Apply the update
     const newStore = produce(store, updater);
@@ -709,29 +785,33 @@ function findConnectedInputs(nodeId: string): Map<number, NodeModel> {
                 connections,
                 connectedInputs.get(0)!.id,
                 newVisited,
-              )            : '';
+              )
+            : '';
 
         if (!inputSql) return `SELECT ${colList}`;
         return `SELECT ${colList} FROM (${inputSql})`;
       }
 
       case 'filter': {
-const state = node.kernel.state as
-          | {filterExpression: string}
-          | undefined;
-        const filterExpr = state?.filterExpression || '';
+        const filterExpr = node.filterExpression || '';
 
         const inputSql = dockedParent
-          ? buildSqlFromNode(dockedParent.id)
+          ? buildSqlFromNode(nodes, connections, dockedParent.id, newVisited)
           : connectedInputs.get(0)
-            ? buildSqlFromNode(connectedInputs.get(0)!.id)            : '';
+            ? buildSqlFromNode(
+                nodes,
+                connections,
+                connectedInputs.get(0)!.id,
+                newVisited,
+              )
+            : '';
 
         if (!inputSql) return '';
         if (!filterExpr) return inputSql;
         return `SELECT * FROM (${inputSql}) WHERE ${filterExpr}`;
       }
 
-case 'sort': {
+      case 'sort': {
         const sortColumn = node.sortColumn || '';
         const sortOrder = node.sortOrder || 'ASC';
 
@@ -766,24 +846,29 @@ case 'sort': {
               connections,
               connectedInputs.get(0)!.id,
               newVisited,
-            )          : '';
+            )
+          : '';
 
         if (!leftInput || !rightInput) return leftInput || rightInput || '';
         return `SELECT * FROM (${leftInput}) ${joinType} JOIN (${rightInput}) ON ${joinOn}`;
       }
 
       case 'union': {
-const state = node.kernel.state as {unionType: string} | undefined;
-        const unionType = state?.unionType || '';
+        const unionType = node.unionType || '';
 
         const inputs: string[] = [];
 
-        // Collect all inputs (docked + connections)
+        // Collect all inputs from left connections (no docked parent for union)
         if (dockedParent) {
-          inputs.push(buildSqlFromNode(dockedParent.id));
+          inputs.push(
+            buildSqlFromNode(nodes, connections, dockedParent.id, newVisited),
+          );
         }
         for (const [_, inputNode] of connectedInputs) {
-          inputs.push(buildSqlFromNode(inputNode.id));        }
+          inputs.push(
+            buildSqlFromNode(nodes, connections, inputNode.id, newVisited),
+          );
+        }
 
         const validInputs = inputs.filter((sql) => sql);
         if (validInputs.length === 0) return '';
@@ -793,7 +878,7 @@ const state = node.kernel.state as {unionType: string} | undefined;
 
       case 'result': {
         const inputSql = dockedParent
-? buildSqlFromNode(nodes, connections, dockedParent.id, newVisited)
+          ? buildSqlFromNode(nodes, connections, dockedParent.id, newVisited)
           : connectedInputs.get(0)
             ? buildSqlFromNode(
                 nodes,
@@ -838,7 +923,8 @@ const state = node.kernel.state as {unionType: string} | undefined;
   }
 
   // Find root nodes (not referenced by any other node's nextId)
-  function getRootNodeIds(nodes: Map<string, NodeData>): string[] {    const referenced = new Set<string>();
+  function getRootNodeIds(nodes: Map<string, NodeData>): string[] {
+    const referenced = new Set<string>();
     for (const node of nodes.values()) {
       if (node.nextId) referenced.add(node.nextId);
     }
@@ -849,16 +935,17 @@ const state = node.kernel.state as {unionType: string} | undefined;
     view: ({attrs}: m.Vnode<NodeGraphDemoAttrs>) => {
       // Log the SQL queries for all result nodes
       const queries = [];
-for (const node of nodes.values()) {
-        if (node.kernel.name === 'result') {
-          const sql = buildSqlFromNode(node.id);          queries.push(sql);
+      for (const node of store.nodes.values()) {
+        if (node.type === 'result') {
+          const sql = buildSqlFromNode(store.nodes, store.connections, node.id);
+          queries.push(sql);
         }
       }
       if (queries.length > 0) {
         console.log('Generated SQL queries for result nodes:', queries);
       }
 
-function renderAddNodeMenu(toNode: string) {
+      function renderAddNodeMenu(toNode: string) {
         return [
           m(MenuItem, {
             label: 'Select',
@@ -1014,11 +1101,12 @@ function renderAddNodeMenu(toNode: string) {
           contextMenuItems: attrs.contextMenus
             ? renderNodeContextMenu(nodeData)
             : undefined,
-          invalid: store.invalidNodes.has(nodeData.id),        };
+          invalid: store.invalidNodes.has(nodeData.id),
+        };
       }
 
       // Render child node (keep all ports visible)
-function renderChildNode(nodeData: NodeData): Omit<Node, 'x' | 'y'> {
+      function renderChildNode(nodeData: NodeData): Omit<Node, 'x' | 'y'> {
         const hasNext = nodeData.nextId !== undefined;
         const nextModel = hasNext
           ? store.nodes.get(nodeData.nextId!)
@@ -1049,22 +1137,24 @@ function renderChildNode(nodeData: NodeData): Omit<Node, 'x' | 'y'> {
           contextMenuItems: attrs.contextMenus
             ? renderNodeContextMenu(nodeData)
             : undefined,
-          invalid: store.invalidNodes.has(nodeData.id),        };
+          invalid: store.invalidNodes.has(nodeData.id),
+        };
       }
 
       // Render model state into NodeGraph nodes
       function renderNodes(): Node[] {
-const rootIds = getRootNodeIds(store.nodes);
+        const rootIds = getRootNodeIds(store.nodes);
         return rootIds
           .map((id) => {
-            const model = store.nodes.get(id);            if (!model) return null;
+            const model = store.nodes.get(id);
+            if (!model) return null;
             return renderNodeChain(model);
           })
           .filter((n): n is Node => n !== null);
       }
 
       const nodeGraphAttrs: NodeGraphAttrs = {
-toolbarItems: [
+        toolbarItems: [
           m(
             PopupMenu,
             {
@@ -1197,7 +1287,8 @@ toolbarItems: [
           console.log('onConnectionRemove:', index);
           updateStore((draft) => {
             draft.connections.splice(index, 1);
-          });        },
+          });
+        },
         onNodeRemove: (nodeId: string) => {
           removeNode(nodeId);
           console.log(`onNodeRemove: ${nodeId}`);
@@ -1205,23 +1296,26 @@ toolbarItems: [
         onNodeSelect: (nodeId: string) => {
           selectedNodeIds.clear();
           selectedNodeIds.add(nodeId);
-m.redraw();          console.log(`onNodeSelect: ${nodeId}`);
+          m.redraw();
+          console.log(`onNodeSelect: ${nodeId}`);
         },
         onNodeAddToSelection: (nodeId: string) => {
           selectedNodeIds.add(nodeId);
-m.redraw();          console.log(
+          m.redraw();
+          console.log(
             `onNodeAddToSelection: ${nodeId} (total: ${selectedNodeIds.size})`,
           );
         },
         onNodeRemoveFromSelection: (nodeId: string) => {
           selectedNodeIds.delete(nodeId);
-m.redraw();          console.log(
+          m.redraw();
+          console.log(
             `onNodeRemoveFromSelection: ${nodeId} (total: ${selectedNodeIds.size})`,
           );
         },
         onSelectionClear: () => {
           selectedNodeIds.clear();
-m.redraw();
+          m.redraw();
           console.log(`onSelectionClear`);
         },
         onDock: (targetId: string, childNode: Omit<Node, 'x' | 'y'>) => {
@@ -1284,7 +1378,8 @@ m.redraw();
         },
         onLabelRemove: (labelId: string) => {
           removeLabel(labelId);
-          console.log(`onLabelRemove: ${labelId}`);        },
+          console.log(`onLabelRemove: ${labelId}`);
+        },
       };
 
       return m(NodeGraph, nodeGraphAttrs);
@@ -1307,12 +1402,13 @@ export function renderNodeGraph() {
       renderWidget: (opts) => m(NodeGraphDemo, opts),
       initialOpts: {
         multiselect: true,
-accentBars: false,
+        accentBars: false,
         titleBars: true,
         headerIcons: true,
         colors: true,
         contextMenus: true,
-        contextMenuOnHover: false,      },
+        contextMenuOnHover: false,
+      },
     }),
 
     renderDocSection('User Interaction Guide', [

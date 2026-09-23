@@ -134,40 +134,9 @@ static constexpr int kDefaultLoadLimitPct = 75;
 
 }  // namespace flat_hash_map_v2_internal
 
-// Non-templated base class to hold helpers for FlatHashMap.
-struct FlatHashMapBase {
- public:
-  // Helper to detect if a hasher has is_transparent defined.
-  template <typename, typename = void>
-  struct HasIsTransparent : std::false_type {};
-
-  template <typename H>
-  struct HasIsTransparent<H, std::void_t<typename H::is_transparent>>
-      : std::true_type {};
-
-  // Helper to check if a lookup key type K is allowed.
-  // Returns true if:
-  // 1. K can be implicitly converted to Key, OR
-  // 2. Hasher has is_transparent AND Hasher is invocable with K AND Key and K
-  // are equality comparable
-  template <typename K, typename Key, typename Hasher>
-  static constexpr bool IsLookupKeyAllowed() {
-    if constexpr (HasIsTransparent<Hasher>::value) {
-      return std::is_invocable_v<Hasher, const K&> &&
-             std::is_same_v<decltype(std::declval<const Key&>() ==
-                                     std::declval<const K&>()),
-                            bool>;
-    } else if constexpr (std::is_convertible_v<K, Key>) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-};
-
 template <typename Key,
           typename Value,
-typename Hasher = base::MurmurHash<Key>,
+          typename Hasher = base::MurmurHash<Key>,
           typename Eq = flat_hash_map_v2_internal::HashEq<Key>>
 class FlatHashMapV2 {
  private:
@@ -181,7 +150,9 @@ class FlatHashMapV2 {
   struct Slot {
     Key key;
     Value value;
-  }; public:
+  };
+
+ public:
   class Iterator {
    public:
     explicit Iterator(const uint8_t* ctrl, const uint8_t* ctrl_end, Slot* slot)
@@ -220,8 +191,10 @@ class FlatHashMapV2 {
     const uint8_t* ctrl_end_ = nullptr;
     Slot* slot_ = nullptr;
   };  // Iterator
-explicit FlatHashMapV2(size_t initial_capacity = 0,
-                         int load_limit_pct = kDefaultLoadLimitPct)      : load_limit_percent_(load_limit_pct) {
+
+  explicit FlatHashMapV2(size_t initial_capacity = 0,
+                         int load_limit_pct = kDefaultLoadLimitPct)
+      : load_limit_percent_(load_limit_pct) {
     if (initial_capacity > 0) {
       Reset(initial_capacity, true);
     }
@@ -251,22 +224,24 @@ explicit FlatHashMapV2(size_t initial_capacity = 0,
   FlatHashMapV2(const FlatHashMapV2&) = delete;
   FlatHashMapV2& operator=(const FlatHashMapV2&) = delete;
 
-template <typename K = Key>
+  template <typename K = Key>
   PERFETTO_ALWAYS_INLINE Value* Find(const K& key) const {
     size_t key_hash = Hasher{}(key);
     uint8_t h2 = H2(key_hash);
     FindResult res = FindSlotIgnoringTombstones<false>(key, key_hash, h2);
-    if (PERFETTO_UNLIKELY(res.needs_insert)) {      return nullptr;
+    if (PERFETTO_UNLIKELY(res.needs_insert)) {
+      return nullptr;
     }
     return &slots_[res.idx].value;
   }
 
   template <typename K = Key>
   bool Erase(const K& key) {
-size_t key_hash = Hasher{}(key);
+    size_t key_hash = Hasher{}(key);
     uint8_t h2 = H2(key_hash);
     FindResult res = FindSlotIgnoringTombstones<false>(key, key_hash, h2);
-    if (PERFETTO_UNLIKELY(res.needs_insert)) {      return false;
+    if (PERFETTO_UNLIKELY(res.needs_insert)) {
+      return false;
     }
     PERFETTO_DCHECK(size_ > 0);
     SetCtrl(res.idx, kTombstone);
@@ -343,12 +318,13 @@ size_t key_hash = Hasher{}(key);
     uint64_t needs_insert : 1;
   };
 
-// Tracks growth capacity and whether any deletions have occurred.
+  // Tracks growth capacity and whether any deletions have occurred.
   // Using bitfields like absl's GrowthInfo to avoid manual bit manipulation.
   struct GrowthInfo {
     uint64_t growth_left : 63;
     uint64_t has_tombstones : 1;
   };
+
   // Not found sentinel (must fit in 63-bit FindResult.idx)
   static constexpr size_t kNotFound = std::numeric_limits<size_t>::max() >> 1;
 

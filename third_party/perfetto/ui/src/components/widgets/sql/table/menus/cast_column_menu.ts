@@ -23,13 +23,15 @@ import type {
 } from '../table_column';
 import type {SqlTableState} from '../state';
 import {
-  type PerfettoSqlType,  PerfettoSqlTypes,
+  type PerfettoSqlType,
+  PerfettoSqlTypes,
   typesEqual,
   underlyingSqlType,
 } from '../../../../../trace_processor/perfetto_sql_type';
 import {type SqlColumn, sqlColumnId, SqlExpression} from '../sql_column';
 import type {SqlValue} from '../../../../../trace_processor/query_result';
 import {createTableColumn} from '../columns';
+
 type CastParams = {
   type: PerfettoSqlType;
 };
@@ -97,14 +99,15 @@ export class CastColumn implements TableColumn {
     return this.wrappedColumn.getTitle?.();
   }
 
-renderCell(value: SqlValue, context?: RenderCellContext): RenderedCell {
+  renderCell(value: SqlValue, context?: RenderCellContext): RenderedCell {
     // Delegate rendering to the appropriate column type based on the cast type
     // This allows proper formatting for timestamps, durations, etc.
     return this.wrappedColumn.renderCell(value, context);
   }
 
   listDerivedColumns(context: ListColumnsContext) {
-    return this.wrappedColumn.listDerivedColumns?.(context);  }
+    return this.wrappedColumn.listDerivedColumns?.(context);
+  }
 
   getColumnSpecificMenuItems(args: {
     replaceColumn: (column: TableColumn) => void;

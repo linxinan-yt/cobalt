@@ -31,6 +31,7 @@ namespace cc {
 // static
 size_t ImageDecodeCacheUtils::GetWorkingSetBytesForImageDecode(
     bool for_renderer) {
+  base::ByteSize decoded_image_working_set_budget = base::MiBU(128);
 #if !BUILDFLAG(IS_ANDROID)
   if (for_renderer) {
     const bool using_low_memory_policy = base::SysInfo::IsLowEndDevice();
@@ -45,7 +46,8 @@ size_t ImageDecodeCacheUtils::GetWorkingSetBytesForImageDecode(
     }
   }
 #endif  // !BUILDFLAG(IS_ANDROID)
-return decoded_image_working_set_budget.InBytes();}
+  return decoded_image_working_set_budget.InBytes();
+}
 
 #if BUILDFLAG(IS_COBALT)
 // static

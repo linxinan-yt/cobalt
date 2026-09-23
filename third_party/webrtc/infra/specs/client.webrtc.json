@@ -2654,7 +2654,7 @@
         "merge": {
           "script": "//testing/merge_scripts/standard_isolated_script_merge.py"
         },
-"module_name": "//:rust_tests",
+        "module_name": "//:rust_tests",
         "name": "rust_tests",
         "resultdb": {
           "result_format": "json"
@@ -2672,7 +2672,8 @@
         "merge": {
           "script": "//testing/merge_scripts/standard_isolated_script_merge.py"
         },
-        "module_name": "//modules/desktop_capture:shared_screencast_stream_test",        "name": "shared_screencast_stream_test",
+        "module_name": "//modules/desktop_capture:shared_screencast_stream_test",
+        "name": "shared_screencast_stream_test",
         "resultdb": {
           "result_format": "json"
         },
@@ -2689,7 +2690,8 @@
         "merge": {
           "script": "//testing/merge_scripts/standard_isolated_script_merge.py"
         },
-"module_name": "//pc:slow_peer_connection_unittests",        "name": "slow_peer_connection_unittests",
+        "module_name": "//pc:slow_peer_connection_unittests",
+        "name": "slow_peer_connection_unittests",
         "resultdb": {
           "result_format": "json"
         },
@@ -3202,7 +3204,7 @@
         "merge": {
           "script": "//testing/merge_scripts/standard_isolated_script_merge.py"
         },
-"module_name": "//:rust_tests",
+        "module_name": "//:rust_tests",
         "name": "rust_tests",
         "resultdb": {
           "result_format": "json"
@@ -3220,7 +3222,8 @@
         "merge": {
           "script": "//testing/merge_scripts/standard_isolated_script_merge.py"
         },
-        "module_name": "//modules/desktop_capture:shared_screencast_stream_test",        "name": "shared_screencast_stream_test",
+        "module_name": "//modules/desktop_capture:shared_screencast_stream_test",
+        "name": "shared_screencast_stream_test",
         "resultdb": {
           "result_format": "json"
         },
@@ -3237,6 +3240,7 @@
         "merge": {
           "script": "//testing/merge_scripts/standard_isolated_script_merge.py"
         },
+        "module_name": "//pc:slow_peer_connection_unittests",
         "name": "slow_peer_connection_unittests",
         "resultdb": {
           "result_format": "json"

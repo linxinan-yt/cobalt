@@ -51,12 +51,13 @@ export interface MultiSelectAttrs {
 }
 
 export type PopupMultiSelectAttrs = MultiSelectAttrs & {
-readonly intent?: Intent;
+  readonly intent?: Intent;
   readonly compact?: boolean;
   readonly icon?: string;
   readonly label: string;
   readonly variant?: ButtonVariant;
-  readonly position?: PopupPosition;};
+  readonly position?: PopupPosition;
+};
 
 // A component which shows a list of items with checkboxes, allowing the user to
 // select from the list which ones they want to be selected.
@@ -239,13 +240,14 @@ export class MultiSelect implements m.ClassComponent<MultiSelectAttrs> {
 // a list.
 export class PopupMultiSelect implements m.ClassComponent<PopupMultiSelectAttrs> {
   view({attrs}: m.CVnode<PopupMultiSelectAttrs>) {
-const {
+    const {
       icon,
       position = PopupPosition.Auto,
       intent,
       compact,
       variant,
     } = attrs;
+
     return m(
       Popup,
       {

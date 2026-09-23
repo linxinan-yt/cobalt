@@ -178,7 +178,8 @@ es_US{
                     wide{
                         "1er trimestre",
                         "2.º trimestre",
-"3.º trimestre",                        "4.º trimestre",
+"3.º trimestre",
+                        "4.º trimestre",
                     }
                 }
             }
@@ -233,7 +234,8 @@ sun{
                     other{"dentro de {0} domingos"}
                 }
             }
-        }        wed-short{
+        }
+        wed-short{
             relative{
                 "-1"{"el mie. pasado"}
                 "0"{"este mié."}

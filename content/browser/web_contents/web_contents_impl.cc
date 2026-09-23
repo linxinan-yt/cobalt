@@ -1359,7 +1359,8 @@ WebContentsImpl::WebContentsImpl(BrowserContext* browser_context)
       is_overlay_content_(false),
       showing_context_menu_(false),
       prerender_host_registry_(std::make_unique<PrerenderHostRegistry>(*this)),
-compositor_frame_sink_grouping_id_(base::UnguessableToken::Create()) {  TRACE_EVENT0("content", "WebContentsImpl::WebContentsImpl");
+compositor_frame_sink_grouping_id_(base::UnguessableToken::Create()) {
+  TRACE_EVENT0("content", "WebContentsImpl::WebContentsImpl");
   back_forward_cache_ = std::make_unique<BackForwardCacheImpl>(*this);
   WebContentsOfBrowserContext::Attach(*this);
   node_.SetFocusedFrameTree(&primary_frame_tree_);
@@ -4361,7 +4362,8 @@ void WebContentsImpl::Init(const WebContents::CreateParams& params,
   DateTimeChooser::CreateDateTimeChooser(this);
 #endif
 
-SchedulerLoopQuarantineWebContentsObserver::MaybeCreateForWebContents(this);  RedirectChainDetector::CreateForWebContents(this);
+SchedulerLoopQuarantineWebContentsObserver::MaybeCreateForWebContents(this);
+  RedirectChainDetector::CreateForWebContents(this);
   BtmWebContentsObserver::MaybeCreateForWebContents(this);
   DeclarativePerformanceObserverCoordinator::CreateForWebContents(this);
 

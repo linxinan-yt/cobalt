@@ -89,27 +89,30 @@ def main():
 
   sql_files = expand_inputs(args.inputs)
 
-# Soong cannot pass us a path to the Perfetto source directory, so when
+  # Soong cannot pass us a path to the Perfetto source directory, so when
   # --root-dir is omitted we fall back to the longest common path. This
-  # fails on empty path, but it's a price worth paying to avoid hacks.  root_dir = args.root_dir if args.root_dir else os.path.commonpath(sql_files)
+  # fails on empty path, but it's a price worth paying to avoid hacks.
+  root_dir = args.root_dir if args.root_dir else os.path.commonpath(sql_files)
 
   file_to_sql = {}
   for file_name in sql_files:
-with open(file_name, 'r', encoding='utf-8') as f:      relpath = os.path.relpath(file_name, root_dir)
+    with open(file_name, 'rb') as f:
+      relpath = os.path.relpath(file_name, root_dir)
       # We've had bugs (e.g. b/264711057) when Soong's common path logic
       # ends up with a bunch of ../ prefixing the path: disallow any ../.
       assert '../' not in relpath, relpath
       relpath = relpath.replace('\\', '/')
       file_to_sql[relpath] = f.read()
 
-blob = pack_bundle(file_to_sql)
+  blob = pack_bundle(file_to_sql)
   cpp_blob_emitter.emit_array(
       blob,
       args.output,
       symbol=cpp_blob_emitter.derive_symbol(args.output),
       namespace=args.namespace,
       include_guard=cpp_blob_emitter.derive_include_guard(
-          args.output, args.gen_dir))  return 0
+          args.output, args.gen_dir))
+  return 0
 
 
 if __name__ == '__main__':

@@ -187,7 +187,8 @@ steradian{
             }
 katal{
                 dnam{"ɩkataal"}
-            }            milligram-ofglucose-per-deciliter{
+            }
+            milligram-ofglucose-per-deciliter{
                 dnam{"ɩmiligram ɖesilitri nɩ"}
                 one{"miligram ɖesilitri nɩ {0}"}
                 other{"ɩmiligram ɖesilitri nɩ {0}"}
@@ -213,7 +214,8 @@ ofglucose{
             }
             part{
                 dnam{"ɩpaartɩ"}
-            }            percent{
+            }
+            percent{
                 dnam{"ɩshɩnʊn nɩ"}
                 one{"ɩshɩnʊn nɩ {0}"}
                 other{"ɩshɩnʊn nɩ {0}"}
@@ -325,7 +327,8 @@ coulomb{
             }
             henry{
                 dnam{"ɩhɛnrii"}
-            }            milliampere{
+            }
+            milliampere{
                 dnam{"mili-Ampɛɛr mána"}
                 one{"mili-Ampɛɛr {0}"}
                 other{"mili-Ampɛɛr {0} mána"}
@@ -339,7 +342,8 @@ coulomb{
             }
 siemens{
                 dnam{"ɩsimɛɛnsɩ"}
-            }            volt{
+            }
+            volt{
                 dnam{"ɩFɔltɩ"}
                 one{"Fɔltɩ {0}"}
                 other{"ɩFɔltɩ {0}"}
@@ -349,7 +353,8 @@ siemens{
         energy{
 becquerel{
                 dnam{"ɩbɛkɛrɛɛl"}
-            }            calorie{
+            }
+            calorie{
                 dnam{"ɩkalorii"}
                 one{"kalorii {0}"}
                 other{"ɩkalorii {0}"}
@@ -363,7 +368,8 @@ becquerel{
             }
 gray{
                 dnam{"ɩgrɛɛ"}
-            }            joule{
+            }
+            joule{
                 dnam{"ɩjul"}
                 one{"jul {0}"}
                 other{"ɩjul {0}"}
@@ -622,7 +628,8 @@ magnetic{
             weber{
                 dnam{"ɩwɛbaasɩ"}
             }
-        }        mass{
+        }
+        mass{
             carat{
                 dnam{"wʊra karaatɩ mána"}
             }
@@ -767,7 +774,8 @@ magnetic{
             }
 ofhg{
                 dnam{"mɛrkiir kaja"}
-            }            pascal{
+            }
+            pascal{
                 dnam{"ɩPaskal"}
                 one{"Paskal {0}"}
                 other{"ɩPaskal {0}"}
@@ -1114,7 +1122,8 @@ ofglucose{
                 one{"ppb{0}"}
                 other{"ppb{0}"}
                 zero{"ppb{0}"}
-            }            percent{
+            }
+            percent{
                 one{"%{0}"}
                 other{"%{0}"}
                 zero{"%{0}"}
@@ -1128,7 +1137,8 @@ permillion{
                 one{"ppm{0}"}
                 other{"ppm{0}"}
                 zero{"ppm{0}"}
-            }            permyriad{
+            }
+            permyriad{
                 one{"‱{0}"}
                 other{"‱{0}"}
                 zero{"‱{0}"}
@@ -1896,7 +1906,8 @@ ofglucose{
                 one{"ppb {0}"}
                 other{"ppb {0}"}
                 zero{"ppb {0}"}
-            }            percent{
+            }
+            percent{
                 one{"%{0}"}
                 other{"%{0}"}
                 zero{"%{0}"}
@@ -1910,7 +1921,8 @@ permillion{
                 one{"ppm {0}"}
                 other{"ppm {0}"}
                 zero{"ppm {0}"}
-            }            permyriad{
+            }
+            permyriad{
                 one{"‱{0}"}
                 other{"‱{0}"}
                 zero{"‱{0}"}

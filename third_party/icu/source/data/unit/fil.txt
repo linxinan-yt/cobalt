@@ -344,7 +344,8 @@ fil{
             night{
 dnam{"mga gabi"}
                 one{"{0} gabi"}
-                other{"{0} gabi"}                per{"{0} kada gabi"}
+                other{"{0} gabi"}
+                per{"{0} kada gabi"}
             }
             quarter{
                 dnam{"mga quarter"}

@@ -1196,7 +1196,8 @@ ff_Adlm{
         }
         "Pacific:Kanton"{
             ec{"𞤑𞤢𞤲𞤼𞤮𞤲"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"𞤑𞤭𞤪𞤭𞤼𞤭𞤥𞤢𞤼𞤭"}
         }
         "Pacific:Kosrae"{

@@ -464,7 +464,8 @@ Languages%core{
     }
     Languages%extension{
         ku{"Kurmanji"}
-    }    Languages%long{
+    }
+    Languages%long{
         zh_Hans{"Shiineeska Mandarin ee Rasmiga ah"}
         zh_Hant{"Af-Shiineeska Mandarin ee Qadiimiga ah"}
     }

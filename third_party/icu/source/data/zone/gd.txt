@@ -32,7 +32,8 @@ gd{
         }
 "America:Belem"{
             ec{"Belém"}
-        }        "America:Belize"{
+        }
+        "America:Belize"{
             ec{"A’ Bheilìs"}
         }
         "America:Cayman"{
@@ -43,7 +44,8 @@ gd{
         }
 "America:Cuiaba"{
             ec{"Cuiabá"}
-        }        "America:Dominica"{
+        }
+        "America:Dominica"{
             ec{"Doiminicea"}
         }
         "America:El_Salvador"{
@@ -102,7 +104,8 @@ gd{
         }
         "America:Sao_Paulo"{
             ec{"São Paulo"}
-        }        "America:St_Barthelemy"{
+        }
+        "America:St_Barthelemy"{
             ec{"Saint Barthélemy"}
         }
         "America:St_Kitts"{

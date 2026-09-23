@@ -147,7 +147,8 @@ en_CA{
         }
         "meta:Nepal"{
             ss{"NPT"}
-        }        "meta:Newfoundland"{
+        }
+        "meta:Newfoundland"{
             sd{"NDT"}
             sg{"NT"}
             ss{"NST"}

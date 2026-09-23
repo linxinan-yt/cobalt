@@ -419,7 +419,8 @@ class SctpDataContentDescription final : public MediaContentDescription {
         port_(o.port_),
         max_message_size_(o.max_message_size_),
         sctp_init_(o.sctp_init_) {}
-webrtc::MediaType type() const override { return webrtc::MediaType::DATA; }  SctpDataContentDescription* as_sctp() override { return this; }
+  MediaType type() const override { return MediaType::DATA; }
+  SctpDataContentDescription* as_sctp() override { return this; }
   const SctpDataContentDescription* as_sctp() const override { return this; }
 
   bool has_codecs() const override { return false; }

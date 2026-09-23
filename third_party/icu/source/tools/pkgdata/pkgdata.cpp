@@ -781,7 +781,6 @@ static int32_t pkg_executeOptions(UPKGOptions *o) {
                         (optMatchArch[0] == 0 ? nullptr : optMatchArch),
                         o->cpuArch,
                         nullptr,
-                        nullptr,
                         gencFilePath,
                         sizeof(gencFilePath),
                         true);

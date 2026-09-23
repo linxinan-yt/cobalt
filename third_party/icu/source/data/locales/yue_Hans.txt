@@ -243,7 +243,8 @@ DateTimeSkeletons{
                 "GyMMMd",
                 "GyMMMd",
                 "GyMd",
-            }            availableFormats{
+            }
+            availableFormats{
                 Ed{"d日（E）"}
                 Gy{"Gy年"}
                 GyMMM{"Gy年M月"}
@@ -1372,7 +1373,8 @@ DateTimeSkeletons{
                 "GyMMMd",
                 "GyMMMd",
                 "GyMd",
-            }            eras{
+            }
+            eras{
                 abbreviated{
                     0{"创世纪元"}
                 }
@@ -1448,7 +1450,8 @@ DateTimeSkeletons{
                 "GyMMMd",
                 "GyMMMd",
                 "GyMd",
-            }            availableFormats{
+            }
+            availableFormats{
                 Ed{"d日（E）"}
                 Gy{"Gy年"}
                 GyMMM{"Gy年M月"}
@@ -1530,7 +1533,8 @@ DateTimeSkeletons{
                 "GyMMMd",
                 "GyMMMd",
                 "GyyMMdd",
-            }            availableFormats{
+            }
+            availableFormats{
                 Ed{"d日（E）"}
                 Gy{"Gy年"}
                 GyMMM{"Gy年M月"}
@@ -1845,7 +1849,8 @@ DateTimeSkeletons{
                 "GyMMMd",
                 "GyMMMd",
                 "GyyMd",
-            }            availableFormats{
+            }
+            availableFormats{
                 Ed{"d日（E）"}
                 Gy{"Gy年"}
                 GyMMM{"Gy年M月"}

@@ -426,9 +426,10 @@ base::Status ProtoToArgsParser::StepProtoMessage(WorkItem& item,
     return ParseSimpleField(*field_descriptor, field, node, delegate);
   }
 
-done = true;
+  done = true;
   if (PERFETTO_UNLIKELY(add_defaults_)) {
-    RETURN_IF_ERROR(AddMessageDefaults(item, delegate));  }
+    RETURN_IF_ERROR(AddMessageDefaults(item, delegate));
+  }
   if (PERFETTO_UNLIKELY(item.empty_message)) {
     InternCurrentKey();
     delegate.AddNull(key_prefix_.flat_key_id, key_prefix_.key_id);

@@ -20,7 +20,8 @@ af{
         }
 "America:Bahia_Banderas"{
             ec{"Bahia Banderas"}
-        }        "America:Cambridge_Bay"{
+        }
+        "America:Cambridge_Bay"{
             ec{"Cambridgebaai"}
         }
         "America:Cayman"{
@@ -88,7 +89,8 @@ af{
         }
         "Antarctica:Troll"{
             ec{"Troll-stasie"}
-        }        "Antarctica:Vostok"{
+        }
+        "Antarctica:Vostok"{
             ec{"Wostok-stasie"}
         }
         "Asia:Ashgabat"{

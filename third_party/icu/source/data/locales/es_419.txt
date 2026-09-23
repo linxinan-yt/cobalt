@@ -505,7 +505,8 @@ african_scripts{"Símbolos de escritura de África"}
         format{"Formato"}
         format_whitespace{"formato y espacio duro"}
         full_width_form_variant{"Variantes de formato de ancho completo"}
-        geometric_shapes{"Formas geométricas"}        half_width_form_variant{"Variantes de formato de ancho medio"}
+        geometric_shapes{"Formas geométricas"}
+        half_width_form_variant{"Variantes de formato de ancho medio"}
         hanzi_simplified{"Hanzi (simplificado)"}
         hanzi_traditional{"Hanzi (tradicional)"}
         japanese_kana{"Kana japonés"}
@@ -537,7 +538,8 @@ sun{
                     other{"en {0} domingos"}
                 }
             }
-        }        week-short{
+        }
+        week-short{
             relative{
                 "-1"{"sem. pas."}
                 "0"{"esta sem."}

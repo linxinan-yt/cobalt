@@ -14,7 +14,8 @@
 
 import type {Trace} from '../../public/trace';
 import {TrackNode} from '../../public/workspace';
-import type {PerfettoPlugin} from '../../public/plugin';import StandardGroupsPlugin from '../dev.perfetto.StandardGroups';
+import type {PerfettoPlugin} from '../../public/plugin';
+import StandardGroupsPlugin from '../dev.perfetto.StandardGroups';
 import TraceProcessorTrackPlugin from '../dev.perfetto.TraceProcessorTrack';
 
 const NESTING_SEPARATOR: string = ' -> ';

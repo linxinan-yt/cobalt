@@ -365,7 +365,8 @@ class VideoReceiveStream2
   std::vector<std::unique_ptr<EncodedFrame>> buffered_encoded_frames_
       RTC_GUARDED_BY(decode_sequence_checker_);
 
-std::unique_ptr<FrameInstrumentationEvaluation> frame_evaluator_;
+  std::unique_ptr<FrameInstrumentationEvaluation> frame_evaluator_;
+
   // Used to signal destruction to potentially pending tasks.
   ScopedTaskSafety task_safety_;
 

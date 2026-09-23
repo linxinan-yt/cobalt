@@ -206,9 +206,10 @@ PerfSampleTracker::SamplingStreamInfo PerfSampleTracker::GetSamplingStreamInfo(
   if (perf_defaults.has_value()) {
     PerfEvents::Timebase::Decoder timebase(perf_defaults->timebase());
     name_id = InternCounterName(timebase, context_);
-if (const char* unit = TimebaseUnit(timebase); unit) {
+    if (const char* unit = TimebaseUnit(timebase); unit) {
       timebase_unit_id = context_->storage->InternString(unit);
-    }  } else {
+    }
+  } else {
     // No defaults means legacy producer implementation, assume default timebase
     // of per-cpu timer. This means either an Android R or early S build.
     name_id = context_->storage->InternString(

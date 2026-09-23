@@ -67,8 +67,9 @@ public:
      * the assignment operator, to make copies explicit and to
      * use a UErrorCode where memory allocations might be needed.
      */
-U_COMMON_API CharString &copyFrom(const CharString &other, UErrorCode &errorCode);
+    U_COMMON_API CharString &copyFrom(const CharString &other, UErrorCode &errorCode);
     U_COMMON_API CharString &copyFrom(StringPiece s, UErrorCode &errorCode);
+
     U_COMMON_API UBool isEmpty() const { return len==0; }
     U_COMMON_API int32_t length() const { return len; }
     U_COMMON_API char operator[](int32_t index) const { return buffer[index]; }
@@ -98,7 +99,8 @@ U_COMMON_API CharString &copyFrom(const CharString &other, UErrorCode &errorCode
      */
     U_COMMON_API int32_t extract(char *dest, int32_t capacity, UErrorCode &errorCode) const;
 
-U_COMMON_API bool operator==(const CharString& other) const {        return len == other.length() && (len == 0 || uprv_memcmp(data(), other.data(), len) == 0);
+    U_COMMON_API bool operator==(const CharString& other) const {
+        return len == other.length() && (len == 0 || uprv_memcmp(data(), other.data(), len) == 0);
     }
     U_COMMON_API bool operator!=(const CharString& other) const {
         return !operator==(other);
@@ -128,7 +130,8 @@ U_COMMON_API bool operator==(const CharString& other) const {        return len 
     }
     U_COMMON_API CharString &append(const char *s, int32_t sLength, UErrorCode &status);
 
-U_COMMON_API CharString &appendNumber(int64_t number, UErrorCode &status);
+    U_COMMON_API CharString &appendNumber(int64_t number, UErrorCode &status);
+
     /**
      * Returns a writable buffer for appending and writes the buffer's capacity to
      * resultCapacity. Guarantees resultCapacity>=minCapacity if U_SUCCESS().

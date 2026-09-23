@@ -56,7 +56,8 @@ ld{"West Africa dzomeŋɔli gaƒoƒo me"}
             lg{"West Africa game"}
             ls{"West Africa nutome gaƒoƒo me"}
             sd{"WAST"}
-            sg{"WAT"}            ss{"WAT"}
+            sg{"WAT"}
+            ss{"WAT"}
         }
         "meta:Alaska"{
             ld{"Alaska kele gaƒoƒo me"}

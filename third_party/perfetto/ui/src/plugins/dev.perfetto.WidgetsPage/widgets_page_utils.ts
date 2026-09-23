@@ -64,9 +64,10 @@ export interface WidgetShowcaseAttrs<T extends Options> {
  * this component as using the component directly can be fiddly to get right
  * with the generics.
  */
-class WidgetShowcase<T extends Options>
-  implements m.ClassComponent<WidgetShowcaseAttrs<T>>
-{  private options?: Options;
+class WidgetShowcase<T extends Options> implements m.ClassComponent<
+  WidgetShowcaseAttrs<T>
+> {
+  private options?: Options;
   private optionValues: Record<string, unknown> = {};
 
   oninit({attrs: {initialOpts: opts}}: m.Vnode<WidgetShowcaseAttrs<T>>) {

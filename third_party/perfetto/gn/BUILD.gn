@@ -112,10 +112,11 @@ action("gen_buildflags") {
     "PERFETTO_ENABLE_WINSCOPE=$enable_perfetto_winscope",
     "PERFETTO_ENABLE_RT_MUTEX=$enable_perfetto_rt_mutex",
     "PERFETTO_ENABLE_LOCKFREE_TASKRUNNER=$enable_perfetto_lockfree_taskrunner",
-"PERFETTO_ENABLE_SOCK_INOTIFY=$enable_perfetto_sock_inotify",
+    "PERFETTO_ENABLE_SOCK_INOTIFY=$enable_perfetto_sock_inotify",
     "PERFETTO_RE2=$enable_perfetto_re2",
     "PERFETTO_PCRE2=$enable_perfetto_pcre2",
-    "PERFETTO_AMALGAMATED_SDK=$perfetto_amalgamated_sdk",  ]
+    "PERFETTO_AMALGAMATED_SDK=$perfetto_amalgamated_sdk",
+  ]
 
   rel_out_path = rebase_path(gen_header_path, "$root_build_dir")
   args = [
@@ -404,14 +405,6 @@ if (enable_perfetto_trace_processor_mac_instruments) {
     } else {
       public_deps = [ "//third_party/expat:expat" ]
     }
-  }
-}
-
-group("jsoncpp") {
-  if (perfetto_root_path == "//") {
-    public_deps = [ "//buildtools:jsoncpp" ]
-  } else {
-    public_deps = [ "//third_party/jsoncpp" ]
   }
 }
 

@@ -1060,7 +1060,8 @@ lv{
         }
 "Pacific:Kanton"{
             ec{"Kantona"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"Kirisimasi"}
         }
         "Pacific:Kosrae"{

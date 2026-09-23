@@ -21,7 +21,8 @@ patternsLong{
                     10000{
                         one{"00 thousand"}
                         other{"00 thousand"}
-                    }                    100000{
+                    }
+                    100000{
                         one{"0 lakh"}
                         other{"0 lakh"}
                     }

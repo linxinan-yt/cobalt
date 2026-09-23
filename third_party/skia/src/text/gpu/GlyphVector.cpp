@@ -99,12 +99,13 @@ void GlyphVector::flatten(SkWriteBuffer& buffer) const {
 
     // Write out the span of packedGlyphIDs.
     buffer.write32(SkTo<int32_t>(fGlyphs.size()));
-for (const auto& g : fGlyphs) {
+    for (const auto& g : fGlyphs) {
         SkPackedGlyphID id;
         if (this->hasBackendData()) {
             id = fGetGlyphID(g.data());
         } else {
-            id = *reinterpret_cast<const SkPackedGlyphID*>(g.data());        }
+            id = *reinterpret_cast<const SkPackedGlyphID*>(g.data());
+        }
         buffer.writeUInt(id.value());
     }
 }

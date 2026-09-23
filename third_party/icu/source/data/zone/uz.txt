@@ -761,7 +761,8 @@ uz{
         }
 "Europe:Tirane"{
             ec{"Tirana"}
-        }        "Europe:Vaduz"{
+        }
+        "Europe:Vaduz"{
             ec{"Vaduts"}
         }
         "Europe:Vatican"{

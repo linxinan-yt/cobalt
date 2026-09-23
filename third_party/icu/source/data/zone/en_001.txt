@@ -31,7 +31,8 @@ en_001{
             sd{"∅∅∅"}
             sg{"∅∅∅"}
             ss{"∅∅∅"}
-        }        "meta:Alaska"{
+        }
+        "meta:Alaska"{
             sd{"∅∅∅"}
             sg{"∅∅∅"}
             ss{"∅∅∅"}

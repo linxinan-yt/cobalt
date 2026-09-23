@@ -12,7 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import type {Engine} from '../../trace_processor/engine';import {LONG, NUM_NULL, STR_NULL} from '../../trace_processor/query_result';
+import type {Engine} from '../../trace_processor/engine';
+import {LONG, NUM_NULL, STR_NULL} from '../../trace_processor/query_result';
 import {fromNumNull} from '../../trace_processor/sql_utils';
 import {type ProcessInfo, getProcessInfo, getProcessName} from './process';
 import type {Upid, Utid} from './core_types';

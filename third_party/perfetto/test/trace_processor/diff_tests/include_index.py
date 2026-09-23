@@ -103,7 +103,8 @@ from diff_tests.parser.parsing.tests_sys_stats import ParsingSysStats
 from diff_tests.parser.parsing.tests_traced_stats import ParsingTracedStats
 from diff_tests.parser.perf_text.tests import PerfTextParser
 from diff_tests.parser.pprof.tests_pprof import PprofParser
-from diff_tests.parser.collapsed_stack.tests_collapsed_stack import CollapsedStackParserfrom diff_tests.parser.power.tests_battery_stats import BatteryStats
+from diff_tests.parser.collapsed_stack.tests_collapsed_stack import CollapsedStackParser
+from diff_tests.parser.power.tests_battery_stats import BatteryStats
 from diff_tests.parser.power.tests_energy_breakdown import PowerEnergyBreakdown
 from diff_tests.parser.power.tests_entity_state_residency import EntityStateResidency
 from diff_tests.parser.power.tests_linux_sysfs_power import LinuxSysfsPower
@@ -119,7 +120,8 @@ from diff_tests.parser.profiling.tests_llvm_symbolizer import ProfilingLlvmSymbo
 from diff_tests.parser.sched.tests import SchedParser
 from diff_tests.parser.simpleperf.tests import Simpleperf
 from diff_tests.parser.simpleperf_proto.tests import SimpleperfProtoParser
-from diff_tests.parser.smaps.tests import SmapsParserfrom diff_tests.parser.smoke.tests import Smoke
+from diff_tests.parser.smaps.tests import SmapsParser
+from diff_tests.parser.smoke.tests import Smoke
 from diff_tests.parser.smoke.tests_compute_metrics import SmokeComputeMetrics
 from diff_tests.parser.smoke.tests_json import SmokeJson
 from diff_tests.parser.smoke.tests_sched_events import SmokeSchedEvents
@@ -249,7 +251,8 @@ def fetch_all_diff_tests(
       SchedParser,
       Simpleperf,
       SimpleperfProtoParser,
-SmapsParser,      StdlibSched,
+      SmapsParser,
+      StdlibSched,
       Smoke,
       SmokeComputeMetrics,
       SmokeJson,
@@ -290,8 +293,9 @@ SmapsParser,      StdlibSched,
       ArtMethodParser,
       PerfTextParser,
       PprofParser,
-CollapsedStackParser,
-      PrimesTraceParser,  ]
+      CollapsedStackParser,
+      PrimesTraceParser,
+  ]
 
   metrics_tests = [
       AndroidMetrics,

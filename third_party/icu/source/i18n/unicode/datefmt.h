@@ -518,7 +518,8 @@ public:
      * @return A date/time formatter which the caller owns.
      * @stable ICU 2.0
      */
-U_I18N_API static DateFormat* U_EXPORT2 createInstance();
+    U_I18N_API static DateFormat* U_EXPORT2 createInstance();
+
     /**
      * Creates a time formatter with the given formatting style for the given
      * locale.
@@ -654,7 +655,8 @@ U_I18N_API static DateFormat* U_EXPORT2 createInstance();
      * numeric processing is lenient.
      * @stable ICU 2.0
      */
-virtual UBool isLenient() const;
+    U_I18N_API virtual UBool isLenient() const;
+
     /**
      * Specifies whether date/time parsing is to be lenient.  With
      * lenient parsing, the parser may use heuristics to interpret inputs that
@@ -682,7 +684,8 @@ virtual UBool isLenient() const;
      * Returns whether date/time parsing in the encapsulated Calendar object processing is lenient.
      * @stable ICU 53
      */
-U_I18N_API virtual UBool isCalendarLenient() const;
+    U_I18N_API virtual UBool isCalendarLenient() const;
+
     /**
      * Specifies whether encapsulated Calendar date/time parsing is to be lenient.  With
      * lenient parsing, the parser may use heuristics to interpret inputs that
@@ -703,7 +706,8 @@ U_I18N_API virtual UBool isCalendarLenient() const;
      * @return the calendar associated with this date/time formatter.
      * @stable ICU 2.0
      */
-virtual const Calendar* getCalendar() const;
+    U_I18N_API virtual const Calendar* getCalendar() const;
+
     /**
      * Set the calendar to be used by this date format. Initially, the default
      * calendar for the specified or default locale is used.  The caller should
@@ -730,7 +734,8 @@ virtual const Calendar* getCalendar() const;
      * @return the number formatter which this date/time formatter uses.
      * @stable ICU 2.0
      */
-U_I18N_API virtual const NumberFormat* getNumberFormat() const;
+    U_I18N_API virtual const NumberFormat* getNumberFormat() const;
+
     /**
      * Allows you to set the number formatter.  The caller should
      * not delete the NumberFormat object after it is adopted by this call.
@@ -751,7 +756,8 @@ U_I18N_API virtual const NumberFormat* getNumberFormat() const;
      * @return the time zone associated with the calendar of DateFormat.
      * @stable ICU 2.0
      */
-U_I18N_API virtual const TimeZone& getTimeZone() const;
+    U_I18N_API virtual const TimeZone& getTimeZone() const;
+
     /**
      * Sets the time zone for the calendar of this DateFormat object. The caller
      * no longer owns the TimeZone object and should not delete it after this call.

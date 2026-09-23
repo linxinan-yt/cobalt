@@ -36,6 +36,7 @@ int TraceToProfile(std::istream* input,
                    const std::string& output_dir,
                    std::optional<ConversionMode> conversion_mode,
                    bool verbose);
+
 }  // namespace trace_to_text
 }  // namespace perfetto
 

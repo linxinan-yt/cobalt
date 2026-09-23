@@ -1044,12 +1044,13 @@ FractionalPartSubstitution::FractionalPartSubstitution(int32_t _pos,
         }
     } else {
         // cast away const
-NFRuleSet* rs = const_cast<NFRuleSet*>(getRuleSet());
+        NFRuleSet* rs = const_cast<NFRuleSet*>(getRuleSet());
         if (rs != nullptr) {
             rs->makeIntoFractionRuleSet();
         } else {
             status = U_PARSE_ERROR;
-        }    }
+        }
+    }
 }
 
 //-----------------------------------------------------------------------

@@ -570,7 +570,8 @@ public:
      *
      * @stable ICU 3.8
      */
-U_I18N_API static UClassID getStaticClassID();
+    U_I18N_API static UClassID getStaticClassID();
+
 private:
     /**
      * Constructor.

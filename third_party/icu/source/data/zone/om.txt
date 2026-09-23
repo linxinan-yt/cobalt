@@ -292,7 +292,8 @@ ld{"Sa’aatii Bonaa Afrikaa Dhihaa"}
 "meta:Hawaii"{
             ls{"Sa’aatii Istaandaardii Haawayi-Alewutiyan"}
             ss{"HAS"}
-        }        "meta:Hawaii_Aleutian"{
+        }
+        "meta:Hawaii_Aleutian"{
             ld{"Sa’aatii Guyyaa Haawayi-Alewutiyan"}
             lg{"Sa’aatii Haawayi-Alewutiyan"}
             ls{"Sa’aatii Istaandaardii Haawayi-Alewutiyan"}

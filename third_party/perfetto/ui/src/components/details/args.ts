@@ -123,8 +123,9 @@ function renderArgKey(
 
 function renderArgValue(value: ArgValue): m.Children {
   if (isWebLink(value)) {
-    return renderWebLink(value);  } else {
-    return `${displayValue}`;
+    return renderWebLink(value);
+  } else {
+    return `${value}`;
   }
 }
 

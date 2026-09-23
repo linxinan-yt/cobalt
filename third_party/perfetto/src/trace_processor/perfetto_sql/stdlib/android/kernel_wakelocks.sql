@@ -18,27 +18,22 @@ INCLUDE PERFETTO MODULE counters.intervals;
 INCLUDE PERFETTO MODULE android.suspend;
 
 CREATE PERFETTO TABLE _kernel_wakelock_track AS
-SELECT
-  id,
-  name,
-  extract_arg(dimension_arg_set_id, 'wakelock_type') AS typeFROM track AS t
+SELECT id, name, extract_arg(dimension_arg_set_id, 'wakelock_type') AS type
+FROM track AS t
 WHERE
   type = 'android_kernel_wakelock';
 
 CREATE PERFETTO TABLE _android_kernel_wakelocks_base AS
 WITH
   kernel_wakelock_counter AS (
-SELECT
-      *
+    SELECT *
     FROM counter_leading_intervals!((
-        SELECT
-          id,
-          ts,
-          track_id,
-          value
+        SELECT id, ts, track_id, value
         FROM counter
-        WHERE track_id IN (SELECT id FROM _kernel_wakelock_track)
-    ))  )
+        WHERE
+          track_id IN (SELECT id FROM _kernel_wakelock_track)
+      ))
+  )
 SELECT
   ts,
   ts AS original_ts,

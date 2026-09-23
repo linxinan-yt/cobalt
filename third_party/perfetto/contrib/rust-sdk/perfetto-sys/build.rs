@@ -17,10 +17,12 @@ use std::{
     path::{Path, PathBuf},
     process::Command,
 };
+
 fn main() {
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
     let crate_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
-#[cfg_attr(not(feature = "bindgen"), allow(unused_variables))]    let include_path = env::var("PERFETTO_SYS_INCLUDE_DIR").unwrap_or_else(|_| {
+    #[cfg_attr(not(feature = "bindgen"), allow(unused_variables))]
+    let include_path = env::var("PERFETTO_SYS_INCLUDE_DIR").unwrap_or_else(|_| {
         PathBuf::from(&crate_dir)
             .join("include")
             .display()
@@ -36,19 +38,14 @@ fn main() {
                 ❌ Missing amalgamated source file: {}.\n\n\
                 To fix this, run:\n\
                 \n\
-$ tools/gen_amalgamated --gn_args \"is_debug=false \
-                is_clang=true use_custom_libcxx=false \
-                enable_perfetto_ipc=true \
-                perfetto_enable_git_rev_version_header=true \
-                is_perfetto_build_generator=true \
-                enable_perfetto_zlib=false\" \
-                --output contrib/rust-sdk/perfetto-sys/libperfetto_c/perfetto_c \
-                //src/shared_lib:libperfetto_c\n\                \n\
+                $ tools/gen_amalgamated --sdk c \
+                --output contrib/rust-sdk/perfetto-sys/libperfetto_c/perfetto\n\
+                \n\
                 💡 Tip: invoke cargo with --no-default-features to use an external library\n",
                 source_file.display()
             );
         }
-// Extra code to verify that size of `std::atomic<bool>` and `_Atomic(bool)`
+        // Extra code to verify that size of `std::atomic<bool>` and `_Atomic(bool)`
         // match `bool` type. Only targets where this is the case are supported.
         let atomic_bool_check_file = out_path.join("atomic_bool_check.cc");
         fs::write(
@@ -58,13 +55,14 @@ $ tools/gen_amalgamated --gn_args \"is_debug=false \
             int check_size[sizeof(std::atomic<bool>) == sizeof(bool) ? 1 : -1];
         "#,
         )
-        .unwrap();        let mut build = cc::Build::new();
+        .unwrap();
+        let mut build = cc::Build::new();
         // `PERFETTO_SYS_LIB_DEBUG=true` enables debug build of the shared library.
         let lib_debug = env::var("PERFETTO_SYS_LIB_DEBUG").ok().as_deref() == Some("true");
         if !lib_debug {
             build.define("NDEBUG", None);
         }
-if env::var("CXX").is_err() {
+        if env::var("CXX").is_err() {
             if Command::new("clang++").arg("--version").output().is_ok() {
                 build.compiler("clang++");
             } else {
@@ -85,7 +83,8 @@ if env::var("CXX").is_err() {
         println!("cargo:rerun-if-changed=libperfetto_c/perfetto_c.cc");
         println!("cargo:rerun-if-changed=libperfetto_c/perfetto_c.h");
         println!("cargo:rerun-if-env-changed=PERFETTO_SYS_LIB_DEBUG");
-        println!("cargo:rerun-if-env-changed=CXX");    } else {
+        println!("cargo:rerun-if-env-changed=CXX");
+    } else {
         let lib_path = env::var("PERFETTO_SYS_LIB_DIR")
             .expect("Set PERFETTO_SYS_LIB_DIR for non-vendored builds");
         println!("cargo:rustc-link-search=native={}", lib_path);
@@ -96,7 +95,7 @@ if env::var("CXX").is_err() {
     println!("cargo:rerun-if-env-changed=PERFETTO_SYS_INCLUDE_DIR");
     println!("cargo:rerun-if-changed=wrapper.h");
 
-#[cfg(feature = "bindgen")]
+    #[cfg(feature = "bindgen")]
     {
         let bindings = bindgen::Builder::default()
             .header("wrapper.h")
@@ -120,4 +119,5 @@ if env::var("CXX").is_err() {
         bindings
             .write_to_file(out_path.join("bindings.rs"))
             .expect("Couldn't write bindings!");
-    }}
+    }
+}

@@ -1124,10 +1124,11 @@ TRACE_IMPORT_LOGS_TABLE = Table(
     class_name='TraceImportLogsTable',
     sql_name='__intrinsic_trace_import_logs',
     columns=[
-C('trace_id', CppTableId(TRACE_FILE_TABLE)),
+        C('trace_id', CppTableId(TRACE_FILE_TABLE)),
         C('ts', CppOptional(CppInt64())),
         C('byte_offset', CppOptional(CppInt64())),
-        C('stat_key', CppInt64()),        C(
+        C('stat_key', CppInt64()),
+        C(
             'arg_set_id',
             CppOptional(CppUint32()),
             cpp_access=CppAccess.READ_AND_LOW_PERF_WRITE,
@@ -1146,8 +1147,9 @@ ALL_TABLES = [
     EXP_MISSING_CHROME_PROC_TABLE,
     FILEDESCRIPTOR_TABLE,
     FTRACE_EVENT_TABLE,
-GPU_TABLE,
-    INTERRUPT_MAPPING_TABLE,    TRACE_IMPORT_LOGS_TABLE,
+    GPU_TABLE,
+    INTERRUPT_MAPPING_TABLE,
+    TRACE_IMPORT_LOGS_TABLE,
     MACHINE_TABLE,
     METADATA_TABLE,
     STATS_TABLE,

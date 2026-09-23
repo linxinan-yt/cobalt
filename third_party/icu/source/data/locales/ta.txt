@@ -20,7 +20,8 @@ ta{
                 accountingFormat%alphaNextToNumber{"¤ #,##0.00;(¤ #,##0.00)"}
                 accountingFormat%noCurrency{"#,##0.00;(#,##0.00)"}
                 currencyFormat{"¤#,##,##0.00"}
-currencyFormat%alphaNextToNumber{"¤ #,##,##0.00"}                currencyFormat%noCurrency{"#,##,##0.00"}
+currencyFormat%alphaNextToNumber{"¤ #,##,##0.00"}
+                currencyFormat%noCurrency{"#,##,##0.00"}
                 decimalFormat{"#,##,##0.###"}
                 percentFormat{"#,##,##0%"}
             }
@@ -862,7 +863,8 @@ currencyFormat%alphaNextToNumber{"¤ #,##,##0.00"}                currencyForma
                         "கா.4",
                     }
                     wide{
-                        "முதல் காலாண்டு",                        "இரண்டாம் காலாண்டு",
+                        "முதல் காலாண்டு",
+                        "இரண்டாம் காலாண்டு",
                         "மூன்றாம் காலாண்டு",
                         "நான்காம் காலாண்டு",
                     }
@@ -1785,7 +1787,8 @@ general{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }        number{
+        }
+        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ، ٫ 、﹑､︑]",

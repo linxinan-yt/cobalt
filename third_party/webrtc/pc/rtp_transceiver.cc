@@ -725,7 +725,8 @@ RtpTransceiver::GetEncoderSwitchRequestCallback() {
                 std::move(action)();
               });
             }));
-      };}
+      };
+}
 
 absl::AnyInvocable<void()> RtpTransceiver::GetParametersChangedCallback() {
   RTC_DCHECK(signaling_thread_safety_);
@@ -845,7 +846,8 @@ std::optional<std::string> RtpTransceiver::mid() const {
   return mid_;
 }
 
-void RtpTransceiver::OnFirstPacketReceived(uint32_t ssrc) {  for (const auto& receiver : receivers_) {
+void RtpTransceiver::OnFirstPacketReceived(uint32_t ssrc) {
+  for (const auto& receiver : receivers_) {
     receiver->internal()->NotifyFirstPacketReceived(ssrc);
   }
 }
@@ -959,24 +961,8 @@ std::optional<RtpTransceiverDirection> RtpTransceiver::fired_direction() const {
   return fired_direction_;
 }
 
-bool RtpTransceiver::receptive() const {
+RTCError RtpTransceiver::TryToEnableSframe() {
   RTC_DCHECK_RUN_ON(thread_);
-  return receptive_;
-}
-
-void RtpTransceiver::set_receptive(bool receptive) {
-  RTC_DCHECK_RUN_ON(thread_);
-  receptive_ = receptive;
-}
-
-void RtpTransceiver::StopSendingAndReceiving() {
-  // 1. Let sender be transceiver.[[Sender]].
-  // 2. Let receiver be transceiver.[[Receiver]].
-  //
-  // 3. Stop sending media with sender.
-  //
-
-RTCError RtpTransceiver::TryToEnableSframe() {  RTC_DCHECK_RUN_ON(thread_);
 
   if (sframe_enabled_.has_value() && sframe_enabled_.value() == false) {
     return RTC_LOG_ERROR(RTCError::InvalidModification()
@@ -1320,7 +1306,8 @@ bool IsMandatoryHeaderExtension(absl::string_view uri) {
 }
 
 RTCError RtpTransceiver::SetHeaderExtensionsToNegotiate(
-std::span<const RtpHeaderExtensionCapability> header_extensions) {  RTC_DCHECK_RUN_ON(thread_);
+    std::span<const RtpHeaderExtensionCapability> header_extensions) {
+  RTC_DCHECK_RUN_ON(thread_);
   // https://w3c.github.io/webrtc-extensions/#dom-rtcrtptransceiver-setheaderextensionstonegotiate
   if (header_extensions.size() != header_extensions_to_negotiate_.size()) {
     return RTCError::InvalidModification()

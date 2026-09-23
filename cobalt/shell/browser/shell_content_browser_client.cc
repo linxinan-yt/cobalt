@@ -182,8 +182,8 @@ class ShellVariationsServiceClient
   }
   bool IsEnterprise() override { return false; }
   // Profiles aren't supported, so nothing to do here.
-  void RemoveGoogleGroupsFromPrefsForDeletedProfiles(
-      PrefService* local_state) override {}
+  void RemoveGoogleGroupsFromPrefsForDeletedProfiles(PrefService* local_state) {
+  }
 };
 
 void BindNetworkHintsHandler(
@@ -530,13 +530,13 @@ std::unique_ptr<LoginDelegate> ShellContentBrowserClient::CreateLoginDelegate(
   return nullptr;
 }
 
-base::Value::Dict ShellContentBrowserClient::GetNetLogConstants() {
-  base::Value::Dict client_constants;
+base::DictValue ShellContentBrowserClient::GetNetLogConstants() {
+  base::DictValue client_constants;
   client_constants.Set("name", "content_shell");
   base::CommandLine::StringType command_line =
       base::CommandLine::ForCurrentProcess()->GetCommandLineString();
   client_constants.Set("command_line", command_line);
-  base::Value::Dict constants;
+  base::DictValue constants;
   constants.Set("clientInfo", std::move(client_constants));
   return constants;
 }
@@ -638,8 +638,10 @@ void ShellContentBrowserClient::ConfigureNetworkContextParamsForShell(
     network::mojom::NetworkContextParams* context_params,
     cert_verifier::mojom::CertVerifierCreationParams*
         cert_verifier_creation_params) {
+#if CHROMIUM_MILESTONE_LE_150
   context_params->allow_any_cors_exempt_header_for_browser =
       allow_any_cors_exempt_header_for_browser_;
+#endif
   context_params->user_agent = GetUserAgent();
   context_params->accept_language = GetAcceptLangs(context);
   auto exempt_header =
@@ -745,6 +747,8 @@ ShellContentBrowserClient::CreateNonNetworkNavigationURLLoaderFactory(
 void ShellContentBrowserClient::
     RegisterNonNetworkWorkerMainResourceURLLoaderFactories(
         BrowserContext* browser_context,
+        const std::optional<url::Origin>& request_initiator,
+        network::mojom::RequestDestination request_destination,
         NonNetworkURLLoaderFactoryMap* factories) {
   // Registers factories for kH5vccEmbeddedScheme used to load the main script
   // for Web Workers.

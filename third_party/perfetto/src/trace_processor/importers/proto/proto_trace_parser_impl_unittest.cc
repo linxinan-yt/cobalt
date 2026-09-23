@@ -245,12 +245,13 @@ class ProtoTraceParserTest : public ::testing::Test {
     context_.track_tracker = std::make_unique<TrackTracker>(&context_);
     context_.global_args_tracker =
         std::make_unique<GlobalArgsTracker>(context_.storage.get());
-context_.global_metadata_tracker =
+    context_.global_metadata_tracker =
         std::make_unique<GlobalMetadataTracker>(context_.storage.get());
     context_.global_stats_tracker =
         std::make_unique<GlobalStatsTracker>(context_.storage.get());
     context_.import_logs_tracker =
-        std::make_unique<ImportLogsTracker>(&context_, TraceId(1));    context_.mapping_tracker.reset(new MappingTracker(&context_));
+        std::make_unique<ImportLogsTracker>(&context_, TraceId(1));
+    context_.mapping_tracker.reset(new MappingTracker(&context_));
     context_.trace_state =
         TraceProcessorContextPtr<TraceProcessorContext::TraceState>::MakeRoot(
             TraceProcessorContext::TraceState{TraceId(0)});
@@ -271,7 +272,7 @@ context_.global_metadata_tracker =
     context_.slice_tracker = std::make_unique<SliceTracker>(&context_);
     context_.slice_translation_table =
         std::make_unique<SliceTranslationTable>(storage_);
-context_.trace_time_state = std::make_unique<TraceTimeState>(
+    context_.trace_time_state = std::make_unique<TraceTimeState>(
         ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_BOOTTIME));
     primary_sync_ = std::make_unique<ClockSynchronizer>(
         context_.trace_time_state.get(),
@@ -280,7 +281,10 @@ context_.trace_time_state = std::make_unique<TraceTimeState>(
         &context_, primary_sync_.get(), /*is_primary=*/true);
     context_.stats_tracker = std::make_unique<StatsTracker>(&context_);
     context_.profiler_sample_tracker =
-        std::make_unique<ProfilerSampleTracker>(&context_);    context_.flow_tracker = std::make_unique<FlowTracker>(&context_);
+        std::make_unique<ProfilerSampleTracker>(&context_);
+    context_.trace_diagnostics_tracker =
+        std::make_unique<TraceDiagnosticsTracker>(&context_);
+    context_.flow_tracker = std::make_unique<FlowTracker>(&context_);
     context_.sorter = std::make_unique<TraceSorter>(
         &context_, TraceSorter::SortingMode::kFullSort);
     context_.descriptor_pool_ = std::make_unique<DescriptorPool>();
@@ -342,7 +346,8 @@ context_.trace_time_state = std::make_unique<TraceTimeState>(
     bool found = false;
     for (cursor.Execute(); !cursor.Eof(); cursor.Next()) {
       EXPECT_EQ(cursor.flat_key(), key_id);
-if (GetArgValue(*storage_, cursor) == value) {        found = true;
+      if (GetArgValue(*storage_, cursor) == value) {
+        found = true;
         break;
       }
     }

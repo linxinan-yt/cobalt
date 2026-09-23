@@ -5067,7 +5067,8 @@ message DataSourceConfig {
 // It contains the general config for the logging buffer(s) and the configs for
 // all the data source being enabled.
 //
-// Next id: 49.message TraceConfig {
+// Next id: 49.
+message TraceConfig {
   message BufferConfig {
     optional uint32 size_kb = 1;
 
@@ -7565,7 +7566,8 @@ message DiskIoEtwEvent {
   optional int64 response_time = 7;
   optional uint32 issuing_thread_id = 8;
   optional uint32 opcode = 9;
-}// End of protos/perfetto/trace/etw/etw.proto
+}
+// End of protos/perfetto/trace/etw/etw.proto
 
 // Begin of protos/perfetto/trace/etw/etw_event.proto
 
@@ -15084,7 +15086,8 @@ message TaskExecution {
 // their default track association) can be emitted as part of a
 // TrackEventDefaults message.
 //
-// Next reserved id: 13 (up to 15). Next id: 58.message TrackEvent {
+// Next reserved id: 13 (up to 15). Next id: 58.
+message TrackEvent {
   // Names of categories of the event. In the client library, categories are a
   // way to turn groups of individual events on or off.
   // interned EventCategoryName.
@@ -15290,7 +15293,8 @@ InlineCallstack callstack = 55;
   // Use this for simple callstacks with function names and source locations.
   // For binary/library information (mappings, build IDs, relative PCs), use
   // interned callstacks via callstack_iid instead.
-message InlineCallstack {    // Frame within an inline callstack.
+message InlineCallstack {
+    // Frame within an inline callstack.
     message Frame {
       // Function name, e.g., "malloc" or "std::vector<int>::push_back"
       optional string function_name = 1;
@@ -15313,7 +15317,8 @@ message InlineCallstack {    // Frame within an inline callstack.
   // have this field set; they do not mix weighted and unweighted samples.
   // Consumers can use sample count as a separate fallback measure when no
   // weighted occurrences are available.
-  optional double callstack_weight = 57;  // Debug annotations associated with this event. These are arbitrary key-value
+  optional double callstack_weight = 57;
+  // Debug annotations associated with this event. These are arbitrary key-value
   // pairs that can be used to attach additional information to the event.
   // See DebugAnnotation message for details on supported value types.
   //

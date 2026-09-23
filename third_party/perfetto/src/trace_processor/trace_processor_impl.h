@@ -159,7 +159,8 @@ class TraceProcessorImpl : public TraceProcessor,
 
   bool IsRootMetricField(const std::string& metric_name);
 
-void CacheBoundsAndBuildTable();
+  void CacheBoundsAndBuildTable();
+
   struct InitPerfettoSqlConnectionArgs {
     TraceProcessorContext* context;
     TraceStorage* storage;
@@ -220,12 +221,14 @@ void CacheBoundsAndBuildTable();
   // tables are finalized and reused in RestoreInitialTables to avoid
   // iterating over finalized dataframes.
   std::pair<int64_t, int64_t> cached_trace_bounds_ = {0, 0};
-// Tracks the sum of mutations across all tables used by
+
+  // Tracks the sum of mutations across all tables used by
   // CacheBoundsAndBuildTable to avoid recomputing bounds when unchanged.
   uint64_t bounds_tables_mutations_ = 0;
 
   // Auto-incrementing counter for generating unique summarizer ids.
-  uint32_t next_summarizer_id_ = 0;};
+  uint32_t next_summarizer_id_ = 0;
+};
 
 }  // namespace perfetto::trace_processor
 

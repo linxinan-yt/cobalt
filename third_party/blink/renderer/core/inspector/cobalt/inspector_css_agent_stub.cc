@@ -14,6 +14,8 @@
 
 #include "third_party/blink/renderer/core/inspector/inspector_css_agent.h"
 
+#include "third_party/blink/renderer/core/inspector/inspector_web_mcp_agent.h"
+
 namespace blink {
 
 void InspectorCSSAgent::Will(const probe::RecalculateStyle&) {}
@@ -34,11 +36,30 @@ void InspectorCSSAgent::DidUpdateComputedStyle(Element*,
                                                const ComputedStyle*) {}
 void InspectorCSSAgent::Trace(Visitor*) const {}
 void InspectorCSSAgent::WillChangeStyleElement(Element*) {}
+void InspectorCSSAgent::DidInvalidateStyleAttr(Element*) {}
 void InspectorCSSAgent::DocumentDetached(Document*) {}
 void InspectorCSSAgent::ActiveStyleSheetsUpdated(Document*) {}
 void InspectorCSSAgent::FontsUpdated(const FontFace*,
                                      const String&,
                                      const FontCustomPlatformData*) {}
 void InspectorCSSAgent::MediaQueryResultChanged() {}
+
+void InspectorWebMCPAgent::Trace(Visitor* visitor) const {
+  InspectorBaseAgent::Trace(visitor);
+}
+void InspectorWebMCPAgent::WebMCPToolAdded(Document*, const ToolData&) {}
+void InspectorWebMCPAgent::WebMCPToolRemoved(Document*, const ToolData&) {}
+void InspectorWebMCPAgent::WebMCPToolExecuted(Document*,
+                                              const String&,
+                                              const String&,
+                                              const base::UnguessableToken&) {}
+void InspectorWebMCPAgent::WebMCPToolResponded(Document*,
+                                               const String&,
+                                               const base::UnguessableToken&) {}
+void InspectorWebMCPAgent::WebMCPToolFailed(
+    Document*,
+    const ScriptToolError&,
+    const base::UnguessableToken&,
+    std::optional<std::pair<ScriptValue, ScriptState*>>) {}
 
 }  // namespace blink

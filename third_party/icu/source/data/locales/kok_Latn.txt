@@ -23,7 +23,8 @@ accountingFormat%alphaNextToNumber{"¤ #,##,##0.00"}
                 accountingFormat%noCurrency{"#,##,##0.00"}
                 currencyFormat{"¤#,##,##0.00"}
                 currencyFormat%alphaNextToNumber{"¤ #,##,##0.00"}
-                currencyFormat%noCurrency{"#,##,##0.00"}                decimalFormat{"#,##,##0.###"}
+                currencyFormat%noCurrency{"#,##,##0.00"}
+                decimalFormat{"#,##,##0.###"}
             }
             patternsLong{
                 decimalFormat{
@@ -141,7 +142,8 @@ currencyFormat%alphaNextToNumber{
                     100000000000000{
                         other{"¤ 0hoz'.'nikh'.'"}
                     }
-                }                decimalFormat{
+                }
+                decimalFormat{
                     1000{
                         other{"0hoz"}
                     }
@@ -231,12 +233,14 @@ DateTimePatterns%relative{
                 Ehm{"E a h:mm "}
                 Ehms{"E a h:mm:ss"}
                 GyM{"M-y G"}
-                GyMEd{"E, d-M-y G"}                GyMMM{"MMM y G"}
+                GyMEd{"E, d-M-y G"}
+                GyMMM{"MMM y G"}
                 GyMMMEd{"E, d MMM, y G"}
                 GyMMMd{"d MMM, y G"}
                 GyMd{"d-M-y GGGGG"}
 H{"HH'v'"}
-                Hv{"HH'v' v"}                MEd{"E, d-M"}
+                Hv{"HH'v' v"}
+                MEd{"E, d-M"}
                 MMMEd{"E, d MMM"}
                 MMMMd{"d MMMM"}
                 MMMd{"d MMM"}
@@ -244,7 +248,8 @@ H{"HH'v'"}
                 h{"a h"}
                 hm{"a h:mm"}
                 hms{"a h:mm:ss"}
-hv{"a h 'vaztam' v"}                y{"y G"}
+hv{"a h 'vaztam' v"}
+                y{"y G"}
                 yyyy{"y G"}
                 yyyyM{"M-y GGGGG"}
                 yyyyMEd{"E, d-M-y GGGGG"}
@@ -261,7 +266,8 @@ hv{"a h 'vaztam' v"}                y{"y G"}
 h{"h – h B"}
                 }
                 Bhm{
-                    B{"h:mm B – h:mm B"}                    h{"h:mm – h:mm B"}
+                    B{"h:mm B – h:mm B"}
+                    h{"h:mm – h:mm B"}
                     m{"h:mm – h:mm B"}
                 }
                 Gy{
@@ -404,7 +410,8 @@ h{"h – h B"}
 AmPmMarkersNarrow{
                 "a",
                 "p",
-            }            DateTimePatterns{
+            }
+            DateTimePatterns{
                 "a h:mm:ss zzzz",
                 "a h:mm:ss z",
                 "a h:mm:ss",
@@ -442,22 +449,26 @@ DateTimePatterns%relative{
                 Ehm{"E a h:mm"}
                 Ehms{"E a h:mm:ss"}
                 GyM{"M/y G"}
-                GyMEd{"E, d-M-y G"}                GyMMM{"MMM y G"}
+                GyMEd{"E, d-M-y G"}
+                GyMMM{"MMM y G"}
                 GyMMMEd{"E, d MMM, y G"}
                 GyMMMd{"d MMM, y G"}
                 GyMd{"d-M-y G"}
 MEd{"dd-MM, E"}
                 MMMEd{"E, d MMM"}
-                MMMMW{                    other{"MMMM -'acho' 'suman' W"}
+                MMMMW{
+                    other{"MMMM -'acho' 'suman' W"}
                 }
                 MMMMd{"d MMMM"}
                 MMMd{"d MMM"}
                 Md{"d/M"}
-h{"a h 'vaztam'"}                hm{"a h:mm"}
+h{"a h 'vaztam'"}
+                hm{"a h:mm"}
                 hms{"a h:mm:ss"}
                 hmsv{"a h:mm:ss v"}
                 hmv{"a h:mm v"}
-yM{"M-y"}                yMEd{"E, d-M-y"}
+yM{"M-y"}
+                yMEd{"E, d-M-y"}
                 yMMM{"MMM y"}
                 yMMMEd{"E, d MMM, y"}
                 yMMMM{"MMMM y"}
@@ -466,7 +477,8 @@ yM{"M-y"}                yMEd{"E, d-M-y"}
                 yQQQ{"QQQ y"}
                 yQQQQ{"QQQQ y"}
                 yw{
-one{"Y -'acho' 'suman' w"}                    other{"Y -'acho' 'suman' w"}
+one{"Y -'acho' 'suman' w"}
+                    other{"Y -'acho' 'suman' w"}
                 }
             }
             dayNames{
@@ -488,7 +500,8 @@ narrow{
                         "B",
                         "S",
                         "S",
-                    }                    short{
+                    }
+                    short{
                         "Ai",
                         "Sm",
                         "Mg",
@@ -564,7 +577,8 @@ format{
                         evening1{"sanje"}
                         midnight{"modhyanrat"}
                         morning1{"sokallim"}
-                        night1{"rati"}                        pm{"sanje"}
+                        night1{"rati"}
+                        pm{"sanje"}
                     }
                 }
             }
@@ -597,7 +611,8 @@ B{"B h – B h"}
 Gy{
                     G{"y G – y G"}
                     y{"y – y G"}
-                }                GyM{
+                }
+                GyM{
                     G{"M/y G – M/y G"}
                     M{"M/y – M/y G"}
                     y{"M/y – M/y G"}
@@ -749,7 +764,8 @@ narrow{
                         "O",
                         "N",
                         "D",
-                    }                    wide{
+                    }
+                    wide{
                         "Janer",
                         "Febrer",
                         "Mars",
@@ -818,7 +834,8 @@ narrow{
                 future{
 other{"{0} disanim"}
                 }
-                past{                    other{"{0} dis adim"}
+                past{
+                    other{"{0} dis adim"}
                 }
             }
         }
@@ -833,7 +850,8 @@ other{"{0} disanim"}
                 future{
 other{"{0}disanim"}
                 }
-                past{                    other{"{0}d adim"}
+                past{
+                    other{"{0}d adim"}
                 }
             }
         }
@@ -878,7 +896,8 @@ dayOfYear-short{
         }
         era-short{
             dn{"yug"}
-        }        fri{
+        }
+        fri{
             relative{
                 "-1"{"fattlo Sukrar"}
                 "0"{"ho Sukrar"}
@@ -890,7 +909,8 @@ one{"{0} Sukraran"}
                     other{"{0} Sukraranim"}
                 }
                 past{
-                    one{"{0} Sukrar adim"}                    other{"{0} Sukraram adim"}
+                    one{"{0} Sukrar adim"}
+                    other{"{0} Sukraram adim"}
                 }
             }
         }
@@ -904,7 +924,8 @@ one{"{0} Sukraran"}
                 future{
 other{"{0} Sukraranim"}
                 }
-                past{                    other{"{0} Su adim"}
+                past{
+                    other{"{0} Su adim"}
                 }
             }
         }
@@ -920,7 +941,8 @@ one{"{0} Sukraran"}
                     other{"{0} Sukraranim"}
                 }
                 past{
-                    one{"{0} Suk. adim"}                    other{"{0} Suk. adim"}
+                    one{"{0} Suk. adim"}
+                    other{"{0} Suk. adim"}
                 }
             }
         }
@@ -935,7 +957,8 @@ one{"{0} voran"}
                     other{"{0} voranim"}
                 }
                 past{
-                    one{"{0} vor adim"}                    other{"{0} voram adim"}
+                    one{"{0} vor adim"}
+                    other{"{0} voram adim"}
                 }
             }
         }
@@ -946,7 +969,8 @@ relativeTime{
                     other{"{0}voranim"}
                 }
                 past{
-                    one{"{0}vor adim"}                    other{"{0}voram adim"}
+                    one{"{0}vor adim"}
+                    other{"{0}voram adim"}
                 }
             }
         }
@@ -961,7 +985,8 @@ dn{"vor"}
                     other{"{0} voranim"}
                 }
                 past{
-                    one{"{0} vor adim"}                    other{"{0} voram adim"}
+                    one{"{0} vor adim"}
+                    other{"{0} voram adim"}
                 }
             }
         }
@@ -974,7 +999,8 @@ dn{"vor"}
                 future{
 other{"{0} mintanim"}
                 }
-                past{                    other{"{0} mintam adim"}
+                past{
+                    other{"{0} mintam adim"}
                 }
             }
         }
@@ -989,7 +1015,8 @@ one{"{0}mintan"}
                     other{"{0}min"}
                 }
                 past{
-                    one{"{0}min adim"}                    other{"{0}min adim"}
+                    one{"{0}min adim"}
+                    other{"{0}min adim"}
                 }
             }
         }
@@ -1004,7 +1031,8 @@ one{"{0} mintan"}
                     other{"{0} min."}
                 }
                 past{
-                    one{"{0} min. adim"}                    other{"{0} min. adim"}
+                    one{"{0} min. adim"}
+                    other{"{0} min. adim"}
                 }
             }
         }
@@ -1020,7 +1048,8 @@ one{"{0} Somaran"}
                     other{"{0} Somaranim"}
                 }
                 past{
-                    one{"{0} Somar adim"}                    other{"{0} Somaram adim"}
+                    one{"{0} Somar adim"}
+                    other{"{0} Somaram adim"}
                 }
             }
         }
@@ -1036,7 +1065,8 @@ one{"{0} Somaran"}
                     other{"{0} Somaranim"}
                 }
                 past{
-                    one{"{0} Sm adim"}                    other{"{0} Sm adim"}
+                    one{"{0} Sm adim"}
+                    other{"{0} Sm adim"}
                 }
             }
         }
@@ -1052,7 +1082,8 @@ one{"{0} Somaran"}
                     other{"{0} Somaranim"}
                 }
                 past{
-                    one{"{0} Som. adim"}                    other{"{0} Som. adim"}
+                    one{"{0} Som. adim"}
+                    other{"{0} Som. adim"}
                 }
             }
         }
@@ -1069,7 +1100,8 @@ one{"{0} mhoinean"}
                     other{"{0} mhoineanim"}
                 }
                 past{
-                    one{"{0} mhoino adim"}                    other{"{0} mhoine adim"}
+                    one{"{0} mhoino adim"}
+                    other{"{0} mhoine adim"}
                 }
             }
         }
@@ -1086,7 +1118,8 @@ one{"{0}mhoinean"}
                     other{"{0}mhoineanim"}
                 }
                 past{
-                    one{"{0}mh adim"}                    other{"{0}mh adim"}
+                    one{"{0}mh adim"}
+                    other{"{0}mh adim"}
                 }
             }
         }
@@ -1101,7 +1134,8 @@ one{"{0}mhoinean"}
                 future{
 other{"{0} mhoineanim"}
                 }
-                past{                    other{"{0} mho. adim"}
+                past{
+                    other{"{0} mho. adim"}
                 }
             }
         }
@@ -1116,7 +1150,8 @@ other{"{0} mhoineanim"}
                 future{
 other{"{0} timhoinalleanim"}
                 }
-                past{                    other{"{0} timhoinalle adim"}
+                past{
+                    other{"{0} timhoinalle adim"}
                 }
             }
         }
@@ -1133,7 +1168,8 @@ one{"{0}timhoinallean"}
                     other{"{0}timhoinalleanim"}
                 }
                 past{
-                    one{"{0}timh adim"}                    other{"{0}timh adim"}
+                    one{"{0}timh adim"}
+                    other{"{0}timh adim"}
                 }
             }
         }
@@ -1150,7 +1186,8 @@ one{"{0} timhoinallean"}
                     other{"{0} timhoinalleanim"}
                 }
                 past{
-                    one{"{0} timho. adim"}                    other{"{0} timho. adim"}
+                    one{"{0} timho. adim"}
+                    other{"{0} timho. adim"}
                 }
             }
         }
@@ -1164,7 +1201,8 @@ one{"{0} timhoinallean"}
                 future{
 other{"{0} Sonvaranim"}
                 }
-                past{                    other{"{0} Sonvaram adim"}
+                past{
+                    other{"{0} Sonvaram adim"}
                 }
             }
         }
@@ -1180,7 +1218,8 @@ one{"{0} Sonvaran"}
                     other{"{0} Sonvaranim"}
                 }
                 past{
-                    one{"{0} Sn adim"}                    other{"{0} Sn adim"}
+                    one{"{0} Sn adim"}
+                    other{"{0} Sn adim"}
                 }
             }
         }
@@ -1196,7 +1235,8 @@ one{"{0} Sonvaran"}
                     other{"{0} Sonvaranim"}
                 }
                 past{
-                    one{"{0} Son. adim"}                    other{"{0} Son. adim"}
+                    one{"{0} Son. adim"}
+                    other{"{0} Son. adim"}
                 }
             }
         }
@@ -1211,7 +1251,8 @@ one{"{0} sekondan"}
                     other{"{0} sekondanim"}
                 }
                 past{
-                    one{"{0} sekond adim"}                    other{"{0} sekond adim"}
+                    one{"{0} sekond adim"}
+                    other{"{0} sekond adim"}
                 }
             }
         }
@@ -1224,7 +1265,8 @@ relative{
                 future{
                     other{"{0}sekondanim"}
                 }
-                past{                    other{"{0}sek adim"}
+                past{
+                    other{"{0}sek adim"}
                 }
             }
         }
@@ -1237,7 +1279,8 @@ relative{
                 future{
                     other{"{0} sekondanim"}
                 }
-                past{                    other{"{0} sek. adim"}
+                past{
+                    other{"{0} sek. adim"}
                 }
             }
         }
@@ -1253,7 +1296,8 @@ one{"{0} Aitaran"}
                     other{"{0} Aitaranim"}
                 }
                 past{
-                    one{"{0} Aitar adim"}                    other{"{0} Aitaram adim"}
+                    one{"{0} Aitar adim"}
+                    other{"{0} Aitaram adim"}
                 }
             }
         }
@@ -1267,7 +1311,8 @@ one{"{0} Aitaran"}
                 future{
 other{"{0} Aitaranim"}
                 }
-                past{                    other{"{0} Ai adim"}
+                past{
+                    other{"{0} Ai adim"}
                 }
             }
         }
@@ -1283,7 +1328,8 @@ one{"{0} Aitaran"}
                     other{"{0} Aitaranim"}
                 }
                 past{
-                    one{"{0} Ait. adim"}                    other{"{0} Ait. adim"}
+                    one{"{0} Ait. adim"}
+                    other{"{0} Ait. adim"}
                 }
             }
         }
@@ -1299,7 +1345,8 @@ one{"{0} Birestaran"}
                     other{"{0} Birestaranim"}
                 }
                 past{
-                    one{"{0} Birestar adim"}                    other{"{0} Birestaram adim"}
+                    one{"{0} Birestar adim"}
+                    other{"{0} Birestaram adim"}
                 }
             }
         }
@@ -1313,7 +1360,8 @@ one{"{0} Birestaran"}
                 future{
 other{"{0} Birestaranim"}
                 }
-                past{                    other{"{0} Br adim"}
+                past{
+                    other{"{0} Br adim"}
                 }
             }
         }
@@ -1329,7 +1377,8 @@ one{"{0} Birestaran"}
                     other{"{0} Birestaranim"}
                 }
                 past{
-                    one{"{0} Bre. adim"}                    other{"{0} Bre. adim"}
+                    one{"{0} Bre. adim"}
+                    other{"{0} Bre. adim"}
                 }
             }
         }
@@ -1345,7 +1394,8 @@ one{"{0} Mongllaran"}
                     other{"{0} Mongllaranim"}
                 }
                 past{
-                    one{"{0} Mongllar adim"}                    other{"{0} Mongllaram adim"}
+                    one{"{0} Mongllar adim"}
+                    other{"{0} Mongllaram adim"}
                 }
             }
         }
@@ -1359,7 +1409,8 @@ one{"{0} Mongllaran"}
                 future{
 other{"{0} Mongllaranim"}
                 }
-                past{                    other{"{0} Mg adim"}
+                past{
+                    other{"{0} Mg adim"}
                 }
             }
         }
@@ -1375,7 +1426,8 @@ one{"{0} Mongllaran"}
                     other{"{0} Mongllaranim"}
                 }
                 past{
-                    one{"{0} Mon. adim"}                    other{"{0} Mon. adim"}
+                    one{"{0} Mon. adim"}
+                    other{"{0} Mon. adim"}
                 }
             }
         }
@@ -1389,7 +1441,8 @@ one{"{0} Mongllaran"}
                 future{
 other{"{0} Budhvaranim"}
                 }
-                past{                    other{"{0} Budhvaram adim"}
+                past{
+                    other{"{0} Budhvaram adim"}
                 }
             }
         }
@@ -1405,7 +1458,8 @@ one{"{0} Budhvaran"}
                     other{"{0} Budhvaranim"}
                 }
                 past{
-                    one{"{0} Bu adim"}                    other{"{0} Bu adim"}
+                    one{"{0} Bu adim"}
+                    other{"{0} Bu adim"}
                 }
             }
         }
@@ -1421,7 +1475,8 @@ one{"{0} Budhvaran"}
                     other{"{0} Budhvaranim"}
                 }
                 past{
-                    one{"{0} Bud. adim"}                    other{"{0} Bud. adim"}
+                    one{"{0} Bud. adim"}
+                    other{"{0} Bud. adim"}
                 }
             }
         }
@@ -1437,7 +1492,8 @@ one{"{0} Budhvaran"}
                 future{
 other{"{0} sumananim"}
                 }
-                past{                    other{"{0} suman adim"}
+                past{
+                    other{"{0} suman adim"}
                 }
             }
         }
@@ -1455,7 +1511,8 @@ one{"{0}sumanan"}
                     other{"{0}sumananim"}
                 }
                 past{
-                    one{"{0}sum adim"}                    other{"{0}sum adim"}
+                    one{"{0}sum adim"}
+                    other{"{0}sum adim"}
                 }
             }
         }
@@ -1483,7 +1540,8 @@ dn{"suman"}
         }
 weekOfMonth-short{
             dn{"mhoineacho suman"}
-        }        weekday{
+        }
+        weekday{
             dn{"sumanacho dis"}
         }
         weekday-narrow{
@@ -1501,7 +1559,8 @@ weekdayOfMonth{
             dn{"voros"}
             relative{
 "-1"{"fattlem voros"}
-                "0"{"hem voros"}                "1"{"fuddlem voros"}
+                "0"{"hem voros"}
+                "1"{"fuddlem voros"}
             }
             relativeTime{
                 future{
@@ -1509,7 +1568,8 @@ one{"{0} vorsan"}
                     other{"{0} vorsanim"}
                 }
                 past{
-                    one{"{0} voros adim"}                    other{"{0} vorsam adim"}
+                    one{"{0} voros adim"}
+                    other{"{0} vorsam adim"}
                 }
             }
         }
@@ -1517,13 +1577,15 @@ one{"{0} vorsan"}
 dn{"voros"}
             relative{
                 "-1"{"fattlem voros"}
-                "0"{"hem voros"}                "1"{"fuddlem voros"}
+                "0"{"hem voros"}
+                "1"{"fuddlem voros"}
             }
             relativeTime{
                 future{
 other{"{0}vorsanim"}
                 }
-                past{                    other{"{0}vorsam adim"}
+                past{
+                    other{"{0}vorsam adim"}
                 }
             }
         }
@@ -1531,13 +1593,15 @@ other{"{0}vorsanim"}
 dn{"voros"}
             relative{
                 "-1"{"fattlem voros"}
-                "0"{"hem voros"}                "1"{"fuddlem voros"}
+                "0"{"hem voros"}
+                "1"{"fuddlem voros"}
             }
             relativeTime{
                 future{
 other{"{0} vorsanim"}
                 }
-                past{                    other{"{0} vorsam adim"}
+                past{
+                    other{"{0} vorsam adim"}
                 }
             }
         }
@@ -1546,7 +1610,8 @@ other{"{0} vorsanim"}
         }
 zone-narrow{
             dn{"kxetr"}
-        }        zone-short{
+        }
+        zone-short{
             dn{"kxetr"}
         }
     }

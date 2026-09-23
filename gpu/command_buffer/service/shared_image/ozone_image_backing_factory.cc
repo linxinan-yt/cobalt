@@ -97,7 +97,8 @@ CHECK(viz::HasEquivalentBufferFormat(format));
   if (vulkan_context_provider) {
     device_queue = vulkan_context_provider->GetDeviceQueue();
   }
-#endif  // BUILDFLAG(ENABLE_VULKAN)  scoped_refptr<gfx::NativePixmap> pixmap =
+#endif  // BUILDFLAG(ENABLE_VULKAN)
+  scoped_refptr<gfx::NativePixmap> pixmap =
       ui::OzonePlatform::GetInstance()
           ->GetSurfaceFactoryOzone()
           ->CreateNativePixmap(gpu::kNullSurfaceHandle, device_queue, size,

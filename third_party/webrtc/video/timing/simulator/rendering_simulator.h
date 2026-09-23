@@ -29,6 +29,7 @@
 #include "video/timing/simulator/frame_base.h"
 #include "video/timing/simulator/results_base.h"
 #include "video/timing/simulator/stream_base.h"
+
 namespace webrtc::video_timing_simulator {
 
 // The `RenderingSimulator` takes an `ParsedRtcEventLog` and produces a
@@ -37,41 +38,49 @@ namespace webrtc::video_timing_simulator {
 class RenderingSimulator {
  public:
   struct Config {
-using VideoTimingFactory =
-        std::function<std::unique_ptr<VCMTiming>(Environment)>;
-
     std::string name = "";
     std::string field_trials_string = "";
-    VideoTimingFactory video_timing_factory = [](Environment env) {
-      return std::make_unique<VCMTiming>(&env.clock(), env.field_trials());
-    };
+    const VideoJitterTimingFactory* video_jitter_timing_factory = nullptr;
+
+    // Whether or not to reset the stream state on newly logged streams with the
+    // same SSRC.
+    bool reuse_streams = false;
+
+    // If non-empty, will only simulate video streams whose main SSRCs is
+    // contained in the set.
+    std::set<uint32_t> ssrc_filter = {};
   };
 
   // Metadata about a single rendered frame.
-  struct Frame {
+  struct Frame : public FrameBase<Frame> {
+    // -- Values --
     // Frame information.
-    int num_packets = -1;
-    DataSize size = DataSize::Zero();
+    int num_packets = -1;              // Required.
+    DataSize size = DataSize::Zero();  // Required.
+
     // RTP header information.
     int payload_type = -1;
     uint32_t rtp_timestamp = 0;
-int64_t unwrapped_rtp_timestamp = -1;  // Required.
+    int64_t unwrapped_rtp_timestamp = -1;  // Required.
+
     // Dependency descriptor information.
     int64_t frame_id = -1;
     int spatial_id = -1;
     int temporal_id = -1;
     int num_references = -1;
 
-// Packet timestamps. Both are required.    Timestamp first_packet_arrival_timestamp = Timestamp::PlusInfinity();
+    // Packet timestamps. Both are required.
+    Timestamp first_packet_arrival_timestamp = Timestamp::PlusInfinity();
     Timestamp last_packet_arrival_timestamp = Timestamp::MinusInfinity();
 
     // Frame timestamps.
-Timestamp assembled_timestamp = Timestamp::PlusInfinity();  // Required.    Timestamp render_timestamp = Timestamp::PlusInfinity();
+    Timestamp assembled_timestamp = Timestamp::PlusInfinity();  // Required.
+    Timestamp render_timestamp = Timestamp::PlusInfinity();
     Timestamp decoded_timestamp = Timestamp::PlusInfinity();
     Timestamp rendered_timestamp = Timestamp::PlusInfinity();
 
     // Jitter buffer state at the time of this frame.
-int frames_dropped = 0;
+    int frames_dropped = 0;
     // TODO: b/423646186 - Add `current_delay_ms`.
     // The `jitter_buffer_*` metrics below are recorded by the production code,
     // and should be compatible with the `webrtc-stats` definitions. One major
@@ -253,15 +262,17 @@ int frames_dropped = 0;
         return std::nullopt;
       }
       return *rendered_late ? std::optional<TimeDelta>(RenderedMargin())
-                            : std::nullopt;    }
+                            : std::nullopt;
+    }
   };
 
   // All frames in one stream.
-struct Stream : public StreamBase<Stream, Frame> {    Timestamp creation_timestamp = Timestamp::PlusInfinity();
+  struct Stream : public StreamBase<Stream, Frame> {
+    Timestamp creation_timestamp = Timestamp::PlusInfinity();
     uint32_t ssrc = 0;
     std::vector<Frame> frames;
 
-// -- Per-stream metrics --
+    // -- Per-stream metrics --
 
     // Total number of frames that were assembled in time or late.
     int NumAssembledInTimeFrames() const {
@@ -341,18 +352,22 @@ struct Stream : public StreamBase<Stream, Frame> {    Timestamp creation_timesta
       return BuildSamplesMs(&Frame::RenderedMarginExcess);
     }
     SamplesStatsCounter RenderedMarginDeficitMs() const {
-      return BuildSamplesMs(&Frame::RenderedMarginDeficit);    }
+      return BuildSamplesMs(&Frame::RenderedMarginDeficit);
+    }
   };
 
   // All streams.
-struct Results : public ResultsBase<Results> {    std::string config_name;
+  struct Results : public ResultsBase<Results> {
+    std::string config_name;
     std::vector<Stream> streams;
   };
 
   // Static configuration.
-// The "render delay" that is passed through the timing component and
+
+  // The "render delay" that is passed through the timing component and
   // render buffer. It is added and subtracted through the pipeline, so it is
-  // important to have it set.  static constexpr TimeDelta kRenderDelay = TimeDelta::Millis(10);
+  // important to have it set.
+  static constexpr TimeDelta kRenderDelay = TimeDelta::Millis(10);
 
   explicit RenderingSimulator(Config config);
   ~RenderingSimulator();
@@ -418,6 +433,8 @@ inline TimeDelta InterRenderedTime(const RenderingSimulator::Frame& cur,
     return TimeDelta::PlusInfinity();
   }
   return cur.rendered_timestamp - prev.rendered_timestamp;
-}}  // namespace webrtc::video_timing_simulator
+}
+
+}  // namespace webrtc::video_timing_simulator
 
 #endif  // VIDEO_TIMING_SIMULATOR_RENDERING_SIMULATOR_H_

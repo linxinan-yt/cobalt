@@ -694,7 +694,8 @@ sv{
                         other{"{0} nätters"}
                     }
                 }
-dnam{"nätter"}                gender{"common"}
+dnam{"nätter"}
+                gender{"common"}
                 one{"{0} natt"}
                 other{"{0} nätter"}
                 per{"{0} per natt"}

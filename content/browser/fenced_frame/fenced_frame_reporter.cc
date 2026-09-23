@@ -279,7 +279,8 @@ bool FencedFrameReporter::SendReport(
   }
 
 const std::string devtools_request_id =
-      base::UnguessableToken::Create().ToString();  url::Origin request_initiator =
+      base::UnguessableToken::Create().ToString();
+  url::Origin request_initiator =
       request_initiator_frame->GetLastCommittedOrigin();
   net::ReferrerPolicy request_referrer_policy = net::ReferrerPolicy::ORIGIN;
 
@@ -288,6 +289,7 @@ const std::string devtools_request_id =
         request_initiator_frame->policy_container_host()->referrer_policy());
   }
 
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
   // Automatic beacons that originate from component ads shouldn't expose the ad
   // component's origin in the referrer for the beacon or the frame's referrer
   // policy. Instead, use the origin and referrer policy of the ad frame root.
@@ -311,6 +313,7 @@ const std::string devtools_request_id =
                                                   ->policy_container_host()
                                                   ->referrer_policy());
   }
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
 
   // If the reporting URL map is pending, queue the event.
   NotifyIsBeaconQueued(
@@ -594,43 +597,7 @@ FencedFrameReporter::GetAdMacrosForTesting() {
   return out;
 }
 
-std::set<std::string> FencedFrameReporter::GetReceivedPaEventsForTesting()
-    const {
-  return received_pa_events_;
-}
-
-std::map<std::string, FencedFrameReporter::FinalizedPrivateAggregationRequests>
-FencedFrameReporter::GetPrivateAggregationEventMapForTesting() {
-  std::map<std::string, FinalizedPrivateAggregationRequests> out;
-  for (auto& [event_type, requests] : private_aggregation_event_map_) {
-    for (auction_worklet::mojom::FinalizedPrivateAggregationRequestPtr&
-             request : requests) {
-      out[event_type].emplace_back(request.Clone());
-    }
-  }
-  return out;
-}
-
-void FencedFrameReporter::NotifyFencedFrameReportingBeaconFailed(
-    const std::optional<AttributionReportingData>& attribution_reporting_data) {
-  if (!attribution_reporting_data.has_value()) {
-    return;
-  }
-
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-  AttributionDataHostManager* attribution_data_host_manager =
-      attribution_manager_ ? attribution_manager_->GetDataHostManager()
-                           : nullptr;
-  if (!attribution_data_host_manager) {
-    return;
-  }
-
-  attribution_data_host_manager->NotifyFencedFrameReportingBeaconData(
-      attribution_reporting_data->beacon_id,
-      /*reporting_url=*/GURL(), /*headers=*/nullptr,
-      /*is_final_response=*/true);
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
-}void FencedFrameReporter::NotifyIsBeaconQueued(
+void FencedFrameReporter::NotifyIsBeaconQueued(
     const DestinationVariant& event_variant,
     bool is_queued) {
   for (ObserverForTesting& observer : observers_) {

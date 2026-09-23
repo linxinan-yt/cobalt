@@ -526,7 +526,8 @@ if (is_android) {
       "//starboard:starboard_group",
       "//starboard/common",
     ]
-  } else if (is_android) {    sources += [ "demuxer_memory_limit_android.cc" ]
+  } else if (is_android) {
+    sources += [ "demuxer_memory_limit_android.cc" ]
   } else if (is_castos) {
     sources += [ "demuxer_memory_limit_cast.cc" ]
   } else {

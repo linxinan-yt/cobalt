@@ -17,6 +17,7 @@ import {SplitPanel} from '../../../widgets/split_panel';
 import {EnumOption, renderWidgetShowcase} from '../widgets_page_utils';
 
 let splitValue = 50;
+
 export function renderSplitPanel(): m.Children {
   return [
     m(
@@ -24,7 +25,8 @@ export function renderSplitPanel(): m.Children {
       m('h1', 'SplitPanel'),
       m(
         'p',
-'A simple resizable split panel with a draggable handle. Supports both horizontal and vertical layouts, with percentage or fixed-pixel sizing modes.',      ),
+        'A simple resizable split panel with a draggable handle. Supports both horizontal and vertical layouts, with percentage or fixed-pixel sizing modes.',
+      ),
     ),
     renderWidgetShowcase({
       renderWidget: (opts) => {
@@ -32,7 +34,7 @@ export function renderSplitPanel(): m.Children {
           '',
           {
             style: {
-height: '300px',
+              height: '300px',
               width: '500px',
               border: '1px solid var(--pf-color-border)',
             },
@@ -102,7 +104,8 @@ height: '300px',
       initialOpts: {
         vertical: false,
         pixels: false,
-        controlledPanel: new EnumOption('first', ['first', 'second'] as const),      },
+        controlledPanel: new EnumOption('first', ['first', 'second'] as const),
+      },
     }),
   ];
 }

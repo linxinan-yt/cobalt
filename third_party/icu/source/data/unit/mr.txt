@@ -5113,7 +5113,8 @@ kilocalorie{
             }
 calorie-it{
                 dnam{"कॅल-IT"}
-            }            electronvolt{
+            }
+            electronvolt{
                 dnam{"इलेक्ट्रॉनव्होल्ट"}
             }
             foodcalorie{

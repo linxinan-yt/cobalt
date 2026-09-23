@@ -42,7 +42,7 @@ namespace update_client {
 base::OnceClosure ZucchiniOperation(
     scoped_refptr<CrxCache> crx_cache,
     scoped_refptr<Patcher> patcher,
-    base::RepeatingCallback<void(base::Value::Dict)> event_adder,
+    base::RepeatingCallback<void(base::DictValue)> event_adder,
     const std::string& previous_hash,
     const std::string& output_hash,
     const base::FilePath& patch_file,
@@ -64,7 +64,8 @@ base::OnceClosure ZucchiniOperation(
 
 class ZucchiniOperationTest : public ::testing::TestWithParam<bool> {
  public:
-  bool IsForeground() const { return GetParam(); } private:
+  bool IsForeground() const { return GetParam(); }
+ private:
   // env_ must be constructed before sequence_checker_.
   base::test::TaskEnvironment env_;
 

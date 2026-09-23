@@ -84,11 +84,12 @@ RtcEventLogDriver::RtcEventLogDriver(
       parsed_log_.video_recv_configs(),
       [this](const auto& config) { OnLoggedVideoRecvConfig(config); });
 
-  // RTP video packet events (media + RTX).  for (const auto& stream : parsed_log_.incoming_rtp_packets_by_ssrc()) {
+  // RTP video packet events (media + RTX).
+  for (const auto& stream : parsed_log_.incoming_rtp_packets_by_ssrc()) {
     bool is_video = parsed_log_.GetMediaType(
                         stream.ssrc, PacketDirection::kIncomingPacket) ==
                     ParsedRtcEventLog::MediaType::VIDEO;
-if (!is_video) {
+    if (!is_video) {
       continue;
     }
     processor_.AddEvents(stream.incoming_packets, [this](const auto& packet) {
@@ -128,7 +129,8 @@ if (!is_video) {
       [this](const auto& packet) {
         OnLoggedRtcpPacketExtendedReportsIncoming(packet);
       },
-      PacketDirection::kIncomingPacket);}
+      PacketDirection::kIncomingPacket);
+}
 
 RtcEventLogDriver::~RtcEventLogDriver() = default;
 
@@ -138,22 +140,25 @@ void RtcEventLogDriver::Simulate() {
 
   // Attempt to get straggling frames out by advancing time a little bit after
   // the last logged event.
-time_controller_.AdvanceTime(kShutdownAdvanceTimeSlack);
+  time_controller_.AdvanceTime(kShutdownAdvanceTimeSlack);
+
   // Tear down on the queue.
   bool done = false;
   simulator_queue_->PostTask([this, &done]() {
     RTC_DCHECK_RUN_ON(simulator_queue_.get());
-TeardownOnQueue();
+    TeardownOnQueue();
     done = true;
   });
   time_controller_.AdvanceTime(TimeDelta::Zero());
-  RTC_DCHECK(done);}
+  RTC_DCHECK(done);
+}
 
 void RtcEventLogDriver::AdvanceTime(Timestamp log_timestamp) {
   if (!prev_log_timestamp_) {
     // For the first event, set the clock in absolute terms.
     prev_log_timestamp_ = log_timestamp;
-time_controller_.AdvanceTime(log_timestamp - env_.clock().CurrentTime());    RTC_DCHECK_EQ(env_.clock().CurrentTime(), log_timestamp);
+    time_controller_.AdvanceTime(log_timestamp - env_.clock().CurrentTime());
+    RTC_DCHECK_EQ(env_.clock().CurrentTime(), log_timestamp);
     return;
   }
   TimeDelta duration = log_timestamp - *prev_log_timestamp_;
@@ -164,7 +169,8 @@ time_controller_.AdvanceTime(log_timestamp - env_.clock().CurrentTime());    RTC
         << " (simulated_ts=" << env_.clock().CurrentTime() << ")";
     return;
   }
-time_controller_.AdvanceTime(duration);}
+  time_controller_.AdvanceTime(duration);
+}
 
 void RtcEventLogDriver::HandleEvent(Timestamp log_timestamp,
                                     absl::AnyInvocable<void() &&> handler) {
@@ -185,7 +191,7 @@ void RtcEventLogDriver::HandleEvent(Timestamp log_timestamp,
 void RtcEventLogDriver::OnLoggedVideoRecvConfig(
     const webrtc::LoggedVideoRecvConfig& config) {
   uint32_t ssrc = config.config.remote_ssrc;
-uint32_t rtx_ssrc = config.config.rtx_ssrc;
+  uint32_t rtx_ssrc = config.config.rtx_ssrc;
   HandleEvent(config.log_time(), [this, ssrc, rtx_ssrc]() {
     RTC_DCHECK_RUN_ON(simulator_queue_.get());
 
@@ -227,14 +233,15 @@ uint32_t rtx_ssrc = config.config.rtx_ssrc;
     receiving_streams_[ssrc] = streams_[ssrc].get();
     if (rtx_ssrc != 0) {
       receiving_streams_[rtx_ssrc] = streams_[ssrc].get();
-    }  });
+    }
+  });
 }
 
 void RtcEventLogDriver::OnLoggedRtpPacketIncoming(
     const webrtc::LoggedRtpPacketIncoming& packet) {
   HandleEvent(packet.log_time(), [this, packet]() {
     RTC_DCHECK_RUN_ON(simulator_queue_.get());
-uint32_t ssrc = packet.rtp.header.ssrc;
+    uint32_t ssrc = packet.rtp.header.ssrc;
     if (auto it = receiving_streams_.find(ssrc);
         it != receiving_streams_.end()) {
       RtpPacketSimulator::SimulatedPacket simulated_packet =
@@ -244,7 +251,8 @@ uint32_t ssrc = packet.rtp.header.ssrc;
       RTC_DCHECK_EQ(env_.clock().CurrentTime(), packet.log_time());
       it->second->InsertSimulatedPacket(simulated_packet);
     } else if (!all_known_ssrcs_.contains(ssrc)) {
-      RTC_LOG(LS_WARNING) << "Received packet for unknown ssrc=" << ssrc                          << " (simulated_ts=" << env_.clock().CurrentTime()
+      RTC_LOG(LS_WARNING) << "Received packet for unknown ssrc=" << ssrc
+                          << " (simulated_ts=" << env_.clock().CurrentTime()
                           << ")";
     }
   });
@@ -306,4 +314,6 @@ void RtcEventLogDriver::TeardownOnQueue() {
   receiving_streams_.clear();
   streams_.clear();
   rtt_simulator_.reset();
-}}  // namespace webrtc::video_timing_simulator
+}
+
+}  // namespace webrtc::video_timing_simulator

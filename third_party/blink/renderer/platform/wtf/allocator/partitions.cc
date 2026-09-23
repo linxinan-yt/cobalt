@@ -200,7 +200,8 @@ void Partitions::InitializeArrayBufferPartition() {
 #endif
 
   // BackupRefPtr disallowed because it will prevent allocations from being 16B
-  // aligned as required by ArrayBufferContents.  static base::NoDestructor<partition_alloc::PartitionAllocator>
+  // aligned as required by ArrayBufferContents.
+  static base::NoDestructor<partition_alloc::PartitionAllocator>
       array_buffer_allocator([]() {
         partition_alloc::PartitionOptions opts;
         // When the V8 virtual memory cage is enabled, the ArrayBuffer
@@ -302,7 +303,7 @@ size_t Partitions::TotalSizeOfCommittedPages() {
           base::features::kPartitionAllocReuseMainPartitionForBuffers)) {
     if (buffer_root_) {
       total_size +=
-          TS_UNCHECKED_READ(buffer_root_->total_size_of_committed_pages);
+          TS_UNCHECKED_READ(buffer_root_->total_size_of_committed_pages_);
     }
     return total_size;
   }

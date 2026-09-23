@@ -863,7 +863,7 @@ TEST(TransportFeedbackAdapterCongestionFeedbackTest,
 }
 
 TEST(TransportFeedbackAdapterCongestionFeedbackTest,
-CongestionControlFeedbackResultReportsImplicitlyLostPacketOnce) {
+     CongestionControlFeedbackResultReportsImplicitlyLostPacketOnce) {
   TransportFeedbackAdapter adapter;
 
   PacketTemplate packets[] = {{.ssrc = 1,
@@ -882,6 +882,7 @@ CongestionControlFeedbackResultReportsImplicitlyLostPacketOnce) {
                                .transport_sequence_number = 4,
                                .rtp_sequence_number = 202,
                                .send_timestamp = Timestamp::Millis(120)}};
+
   for (const PacketTemplate& packet : packets) {
     adapter.AddPacket(CreatePacketToSend(packet), packet.pacing_info,
                       /*overhead=*/0u, TimeNow());
@@ -890,7 +891,7 @@ CongestionControlFeedbackResultReportsImplicitlyLostPacketOnce) {
                                              packet.send_timestamp.ms()));
   }
 
-// Produce feedback where 2nd packet is lost.
+  // Produce feedback where 2nd packet is lost.
   packets[0].receive_timestamp = Timestamp::Millis(200);
   packets[2].receive_timestamp = Timestamp::Millis(220);
   std::vector<PacketTemplate> feedback_1 = {packets[0], packets[2]};
@@ -907,7 +908,8 @@ CongestionControlFeedbackResultReportsImplicitlyLostPacketOnce) {
   std::vector<PacketTemplate> feedback_2 = {packets[1], packets[3]};
   rtcp::CongestionControlFeedback rtcp_feedback =
       BuildRtcpCongestionControlFeedbackPacket(feedback_2);
-  // 2nd packet is still lost.  packet_feedback = FindFeedback(
+  // 2nd packet is still lost.
+  packet_feedback = FindFeedback(
       adapter.ProcessCongestionControlFeedback(rtcp_feedback, TimeNow()),
       /*transport_sequence_number=*/2);
   ASSERT_TRUE(packet_feedback.has_value());

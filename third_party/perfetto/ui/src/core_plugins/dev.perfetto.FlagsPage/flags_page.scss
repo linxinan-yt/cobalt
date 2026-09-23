@@ -19,30 +19,4 @@
     display: flex;
     justify-content: center;
   }
-
-  // Highlight the focused flag when navigating directly to it
-  &__card--focused {
-    background-color: color-mix(
-      in srgb,
-      var(--pf-color-highlight) 70%,
-      transparent
-    );
-    animation: highlight-flash 1s ease-out;
-  }
-}
-
-@keyframes highlight-flash {
-  0% {
-    background-color: transparent;
-  }
-  30% {
-    background-color: var(--pf-color-highlight);
-  }
-  100% {
-    background-color: color-mix(
-      in srgb,
-      var(--pf-color-highlight) 70%,
-      transparent
-    );
-  }
 }

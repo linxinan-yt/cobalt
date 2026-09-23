@@ -1195,7 +1195,8 @@ am{
         }
 "Pacific:Kanton"{
             ec{"ካንቶን"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"ኪሪቲማቲ"}
         }
         "Pacific:Kosrae"{

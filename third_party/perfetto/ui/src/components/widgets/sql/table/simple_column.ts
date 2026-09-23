@@ -13,7 +13,8 @@
 // limitations under the License.
 
 import type {SqlValue} from '../../../../trace_processor/query_result';
-import type {PerfettoSqlType} from '../../../../trace_processor/perfetto_sql_type';import {renderStandardCell} from './render_cell_utils';
+import type {PerfettoSqlType} from '../../../../trace_processor/perfetto_sql_type';
+import {renderStandardCell} from './render_cell_utils';
 import type {SqlColumn} from './sql_column';
 import type {TableColumn, TableManager} from './table_column';
 

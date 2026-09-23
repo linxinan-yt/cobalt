@@ -22,6 +22,7 @@ import {Anchor} from '../../widgets/anchor';
 import {Icons} from '../../base/semantic_icons';
 import {Cpu} from '../../components/cpu';
 import {getMachineCount} from '../../public/utils';
+
 export default class implements PerfettoPlugin {
   static readonly id = 'dev.perfetto.CpuFreq';
 
@@ -36,19 +37,21 @@ export default class implements PerfettoPlugin {
         track.id AS freqTrackId,
         t2.id AS idleTrackId,
         cpu.ucpu AS ucpu,
-track.machine_id AS machineId,
+        track.machine_id AS machineId,
         machine.name AS machineName,
-        machine.label_index AS machineLabelIndex,        track.cpu AS cpu
+        machine.label_index AS machineLabelIndex,
+        track.cpu AS cpu
       FROM cpu_counter_track track
       JOIN cpu
         ON track.cpu = cpu.cpu
-AND track.machine_id = cpu.machine_id
+       AND track.machine_id = cpu.machine_id
       LEFT JOIN cpu_counter_track t2
         ON track.cpu = t2.cpu
        AND track.machine_id = t2.machine_id
        AND t2.type = 'cpu_idle'
       LEFT JOIN machine
-        ON machine.id = track.machine_id      WHERE
+        ON machine.id = track.machine_id
+      WHERE
         track.type = 'cpu_frequency'
       ORDER BY ucpu
     `);
@@ -75,15 +78,16 @@ AND track.machine_id = cpu.machine_id
       const it = tracksResult.iter({
         freqTrackId: NUM,
         machineId: NUM,
-machineName: STR_NULL,
-        machineLabelIndex: NUM_NULL,        cpu: NUM,
+        machineName: STR_NULL,
+        machineLabelIndex: NUM_NULL,
+        cpu: NUM,
         ucpu: NUM,
         idleTrackId: NUM_NULL,
       });
       it.valid();
       it.next()
     ) {
-const {
+      const {
         freqTrackId,
         idleTrackId,
         machineId,
@@ -91,7 +95,8 @@ const {
         machineLabelIndex,
         cpu,
         ucpu,
-      } = it;      const uri = `/cpu_freq_cpu${ucpu}`;
+      } = it;
+      const uri = `/cpu_freq_cpu${ucpu}`;
 
       ctx.tracks.registerTrack({
         uri,
@@ -127,7 +132,8 @@ const {
 
       const trackNode = new TrackNode({
         uri,
-name: `CPU ${new Cpu(ucpu, cpu, machineId, machineName ?? undefined, machineLabelIndex ?? undefined, numMachines).toString()} Frequency`,      });
+        name: `CPU ${new Cpu(ucpu, cpu, machineId, machineName ?? undefined, machineLabelIndex ?? undefined, numMachines).toString()} Frequency`,
+      });
 
       group.addChildInOrder(trackNode);
     }

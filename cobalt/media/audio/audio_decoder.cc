@@ -58,8 +58,11 @@ bool DecodeAudioFileData(blink::WebAudioBus* destination_bus,
 
   // Allocate and configure the output audio channel data and then
   // copy the decoded data to the destination.
-  destination_bus->Initialize(handler->GetNumChannels(), number_of_frames,
-                              handler->GetSampleRate());
+  if (!destination_bus->TryInitialize(handler->GetNumChannels(),
+                                      number_of_frames,
+                                      handler->GetSampleRate())) {
+    return false;
+  }
 
   DCHECK_EQ(static_cast<int>(destination_bus->NumberOfChannels()),
             handler->GetNumChannels());
@@ -71,7 +74,7 @@ bool DecodeAudioFileData(blink::WebAudioBus* destination_bus,
     size_t bytes_per_channel = source_bus->frames() * sizeof(float);
     for (int channel_index = 0; channel_index < source_bus->channels();
          ++channel_index) {
-      const float* source_data = source_bus->channel_span(channel_index).data();
+      const float* source_data = source_bus->channel(channel_index).data();
       float* dest_data = destination_bus->ChannelData(channel_index);
       memcpy(dest_data, source_data, bytes_per_channel);
     }
@@ -86,6 +89,15 @@ bool DecodeAudioFileData(blink::WebAudioBus* destination_bus,
   }
 
   return number_of_frames > 0;
+}
+
+std::unique_ptr<blink::WebAudioBus> DecodeAudioFileData(
+    base::span<const char> audio_file_data) {
+  auto destination_bus = std::make_unique<blink::WebAudioBus>();
+  if (!DecodeAudioFileData(destination_bus.get(), audio_file_data)) {
+    return nullptr;
+  }
+  return destination_bus;
 }
 
 }  // namespace cobalt

@@ -19,6 +19,7 @@
 #include "api/units/time_delta.h"
 #include "modules/include/module_common_types_public.h"
 #include "rtc_base/checks.h"
+
 namespace webrtc {
 namespace {
 
@@ -32,19 +33,21 @@ constexpr TimeDelta kMaxNackDelay = TimeDelta::Seconds(1);
 NackTracker::NackTracker(size_t max_nack_list_size)
     : max_nack_list_size_(max_nack_list_size),
       sample_rate_(kDefaultSampleRate) {}
+
 NackTracker::~NackTracker() = default;
 
 void NackTracker::UpdateSampleRate(int sample_rate_hz) {
   RTC_DCHECK_GT(sample_rate_hz, 0);
-Frequency sample_rate = Frequency::Hertz(sample_rate_hz);
+  Frequency sample_rate = Frequency::Hertz(sample_rate_hz);
   if (sample_rate != sample_rate_) {
     Reset();
-    sample_rate_ = sample_rate;  }
+    sample_rate_ = sample_rate;
+  }
 }
 
 void NackTracker::UpdateLastReceivedPacket(uint16_t sequence_number,
                                            uint32_t timestamp) {
-if (!sequence_num_last_received_rtp_.has_value()) {
+  if (!sequence_num_last_received_rtp_.has_value()) {
     sequence_num_last_received_rtp_ = sequence_number;
     timestamp_last_received_rtp_ = timestamp;
     return;
@@ -56,6 +59,7 @@ if (!sequence_num_last_received_rtp_.has_value()) {
                              *sequence_num_last_received_rtp_)) {
     return;
   }
+
   UpdateList(sequence_number, timestamp);
 
   sequence_num_last_received_rtp_ = sequence_number;
@@ -67,13 +71,14 @@ std::optional<int> NackTracker::GetSamplesPerPacket(
     uint16_t sequence_number_current_received_rtp,
     uint32_t timestamp_current_received_rtp) const {
   uint32_t timestamp_increase =
-timestamp_current_received_rtp - *timestamp_last_received_rtp_;
+      timestamp_current_received_rtp - *timestamp_last_received_rtp_;
   uint16_t sequence_num_increase =
       sequence_number_current_received_rtp - *sequence_num_last_received_rtp_;
 
   int samples_per_packet = timestamp_increase / sequence_num_increase;
   if (samples_per_packet == 0 ||
-      samples_per_packet > kMaxPacketDuration * sample_rate_) {    // Not a valid samples per packet.
+      samples_per_packet > kMaxPacketDuration * sample_rate_) {
+    // Not a valid samples per packet.
     return std::nullopt;
   }
   return samples_per_packet;
@@ -82,7 +87,8 @@ timestamp_current_received_rtp - *timestamp_last_received_rtp_;
 void NackTracker::UpdateList(uint16_t sequence_number_current_received_rtp,
                              uint32_t timestamp_current_received_rtp) {
   if (!IsNewerSequenceNumber(sequence_number_current_received_rtp,
-*sequence_num_last_received_rtp_ + 1)) {    return;
+                             *sequence_num_last_received_rtp_ + 1)) {
+    return;
   }
 
   std::optional<int> samples_per_packet = GetSamplesPerPacket(
@@ -91,29 +97,32 @@ void NackTracker::UpdateList(uint16_t sequence_number_current_received_rtp,
     return;
   }
 
-for (uint16_t sequence_number = *sequence_num_last_received_rtp_ + 1;
+  for (uint16_t sequence_number = *sequence_num_last_received_rtp_ + 1;
        IsNewerSequenceNumber(sequence_number_current_received_rtp,
                              sequence_number);
        ++sequence_number) {
     nack_list_[sequence_number] =
-        EstimateTimestamp(sequence_number, *samples_per_packet);  }
+        EstimateTimestamp(sequence_number, *samples_per_packet);
+  }
 }
 
 uint32_t NackTracker::EstimateTimestamp(uint16_t sequence_num,
                                         int samples_per_packet) {
-uint16_t sequence_num_diff = sequence_num - *sequence_num_last_received_rtp_;
-  return sequence_num_diff * samples_per_packet + *timestamp_last_received_rtp_;}
+  uint16_t sequence_num_diff = sequence_num - *sequence_num_last_received_rtp_;
+  return sequence_num_diff * samples_per_packet + *timestamp_last_received_rtp_;
+}
 
 void NackTracker::Reset() {
   nack_list_.clear();
 
-sequence_num_last_received_rtp_.reset();
+  sequence_num_last_received_rtp_.reset();
   timestamp_last_received_rtp_.reset();
   sample_rate_ = kDefaultSampleRate;
 }
 
 void NackTracker::LimitNackListSize() {
-  uint16_t limit = *sequence_num_last_received_rtp_ -                   static_cast<uint16_t>(max_nack_list_size_) - 1;
+  uint16_t limit = *sequence_num_last_received_rtp_ -
+                   static_cast<uint16_t>(max_nack_list_size_) - 1;
   nack_list_.erase(nack_list_.begin(), nack_list_.upper_bound(limit));
 }
 
@@ -135,4 +144,6 @@ bool NackTracker::Nack(uint32_t timestamp, TimeDelta round_trip_time) {
   TimeDelta time_since_packet =
       (*timestamp_last_received_rtp_ - timestamp) / sample_rate_;
   return time_since_packet + round_trip_time < kMaxNackDelay;
-}}  // namespace webrtc
+}
+
+}  // namespace webrtc

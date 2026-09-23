@@ -38,7 +38,8 @@ pb_enum!(ThreadDescriptorChromeThreadType {
 
 pb_msg!(ThreadDescriptor {
     pid: i32, primitive, 1,
-tid: i64, primitive, 2,    thread_name: String, primitive, 5,
+    tid: i64, primitive, 2,
+    thread_name: String, primitive, 5,
     chrome_thread_type: ThreadDescriptorChromeThreadType, enum, 4,
     reference_timestamp_us: i64, primitive, 6,
     reference_thread_time_us: i64, primitive, 7,

@@ -1198,7 +1198,8 @@ ml{
         }
 "Pacific:Kanton"{
             ec{"കാൻട്ടൻ"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"കിരിറ്റിമാറ്റി"}
         }
         "Pacific:Kosrae"{

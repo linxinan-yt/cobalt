@@ -107,9 +107,10 @@ export class TrackManagerImpl implements TrackManager {
     return this.tracks.tryGet(uri)?.desc;
   }
 
-// Returns a wrapped track that provides error containment for rendering.
+  // Returns a wrapped track that provides error containment for rendering.
   getWrappedTrack(uri: string): TrackWrapper | undefined {
-    return this.tracks.tryGet(uri);  }
+    return this.tracks.tryGet(uri);
+  }
 
   registerTrackFilterCriteria(filter: TrackFilterCriteria): void {
     this.filterCriteria.push(filter);

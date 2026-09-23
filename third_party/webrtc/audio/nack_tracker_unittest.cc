@@ -30,6 +30,7 @@ constexpr int kSampleRateHz = 16000;
 constexpr uint32_t kTimestampIncrement = 480;  // 30 ms.
 constexpr TimeDelta kShortRoundTripTime = TimeDelta::Zero();
 constexpr int kDefaultNackListSize = 200;
+
 bool IsNackListCorrect(const std::vector<uint16_t>& nack_list,
                        const uint16_t* lost_sequence_numbers,
                        size_t num_lost_packets) {
@@ -57,7 +58,8 @@ bool IsNackListCorrect(const std::vector<uint16_t>& nack_list,
 }  // namespace
 
 TEST(NackTrackerTest, EmptyListWhenNoPacketLoss) {
-NackTracker nack(kDefaultNackListSize);  nack.UpdateSampleRate(kSampleRateHz);
+  NackTracker nack(kDefaultNackListSize);
+  nack.UpdateSampleRate(kSampleRateHz);
 
   int seq_num = 1;
   uint32_t timestamp = 0;
@@ -65,20 +67,22 @@ NackTracker nack(kDefaultNackListSize);  nack.UpdateSampleRate(kSampleRateHz);
   std::vector<uint16_t> nack_list;
   for (int n = 0; n < 100; n++) {
     nack.UpdateLastReceivedPacket(seq_num, timestamp);
-nack_list = nack.GetNackList(kShortRoundTripTimeMs);
+    nack_list = nack.GetNackList(kShortRoundTripTime);
     seq_num++;
     timestamp += kTimestampIncrement;
-    nack_list = nack.GetNackList(kShortRoundTripTimeMs);    EXPECT_TRUE(nack_list.empty());
+    nack_list = nack.GetNackList(kShortRoundTripTime);
+    EXPECT_TRUE(nack_list.empty());
   }
 }
 
 TEST(NackTrackerTest, LatePacketsMovedToNackThenNackListDoesNotChange) {
-FieldTrials field_trials = CreateTestFieldTrials();  const uint16_t kSequenceNumberLostPackets[] = {2, 3, 4, 5, 6, 7, 8, 9};
+  const uint16_t kSequenceNumberLostPackets[] = {2, 3, 4, 5, 6, 7, 8, 9};
   static const int kNumAllLostPackets = sizeof(kSequenceNumberLostPackets) /
                                         sizeof(kSequenceNumberLostPackets[0]);
 
   for (int k = 0; k < 2; k++) {  // Two iteration with/without wrap around.
-NackTracker nack(field_trials);    nack.UpdateSampleRate(kSampleRateHz);
+    NackTracker nack(kDefaultNackListSize);
+    nack.UpdateSampleRate(kSampleRateHz);
 
     uint16_t sequence_num_lost_packets[kNumAllLostPackets];
     for (int n = 0; n < kNumAllLostPackets; n++) {
@@ -92,22 +96,25 @@ NackTracker nack(field_trials);    nack.UpdateSampleRate(kSampleRateHz);
     std::vector<uint16_t> nack_list;
 
     nack.UpdateLastReceivedPacket(seq_num, timestamp);
-nack_list = nack.GetNackList(kShortRoundTripTime);    EXPECT_TRUE(nack_list.empty());
+    nack_list = nack.GetNackList(kShortRoundTripTime);
+    EXPECT_TRUE(nack_list.empty());
 
     seq_num = sequence_num_lost_packets[kNumAllLostPackets - 1] + 1;
     timestamp += kTimestampIncrement * (kNumAllLostPackets + 1);
     int num_lost_packets = std::max(0, kNumAllLostPackets);
 
     nack.UpdateLastReceivedPacket(seq_num, timestamp);
-nack_list = nack.GetNackList(kShortRoundTripTime);    EXPECT_TRUE(IsNackListCorrect(nack_list, sequence_num_lost_packets,
+    nack_list = nack.GetNackList(kShortRoundTripTime);
+    EXPECT_TRUE(IsNackListCorrect(nack_list, sequence_num_lost_packets,
                                   num_lost_packets));
     seq_num++;
     timestamp += kTimestampIncrement;
     num_lost_packets++;
 
-for (int n = 0; n < 20; ++n) {
+    for (int n = 0; n < 20; ++n) {
       nack.UpdateLastReceivedPacket(seq_num, timestamp);
-      nack_list = nack.GetNackList(kShortRoundTripTime);      EXPECT_TRUE(IsNackListCorrect(nack_list, sequence_num_lost_packets,
+      nack_list = nack.GetNackList(kShortRoundTripTime);
+      EXPECT_TRUE(IsNackListCorrect(nack_list, sequence_num_lost_packets,
                                     kNumAllLostPackets));
       seq_num++;
       timestamp += kTimestampIncrement;
@@ -116,12 +123,13 @@ for (int n = 0; n < 20; ++n) {
 }
 
 TEST(NackTrackerTest, ArrivedPacketsAreRemovedFromNackList) {
-FieldTrials field_trials = CreateTestFieldTrials();  const uint16_t kSequenceNumberLostPackets[] = {2, 3, 4, 5, 6, 7, 8, 9};
+  const uint16_t kSequenceNumberLostPackets[] = {2, 3, 4, 5, 6, 7, 8, 9};
   static const int kNumAllLostPackets = sizeof(kSequenceNumberLostPackets) /
                                         sizeof(kSequenceNumberLostPackets[0]);
 
   for (int k = 0; k < 2; ++k) {  // Two iteration with/without wrap around.
-NackTracker nack(kDefaultNackListSize);    nack.UpdateSampleRate(kSampleRateHz);
+    NackTracker nack(kDefaultNackListSize);
+    nack.UpdateSampleRate(kSampleRateHz);
 
     uint16_t sequence_num_lost_packets[kNumAllLostPackets];
     for (int n = 0; n < kNumAllLostPackets; ++n) {
@@ -133,7 +141,8 @@ NackTracker nack(kDefaultNackListSize);    nack.UpdateSampleRate(kSampleRateHz);
     uint32_t timestamp = 0;
 
     nack.UpdateLastReceivedPacket(seq_num, timestamp);
-std::vector<uint16_t> nack_list = nack.GetNackList(kShortRoundTripTime);    EXPECT_TRUE(nack_list.empty());
+    std::vector<uint16_t> nack_list = nack.GetNackList(kShortRoundTripTime);
+    EXPECT_TRUE(nack_list.empty());
 
     size_t index_retransmitted_rtp = 0;
     uint32_t timestamp_retransmitted_rtp = timestamp + kTimestampIncrement;
@@ -149,7 +158,8 @@ std::vector<uint16_t> nack_list = nack.GetNackList(kShortRoundTripTime);    EXPE
         num_lost_packets--;
 
       nack.UpdateLastReceivedPacket(seq_num, timestamp);
-nack_list = nack.GetNackList(kShortRoundTripTime);      EXPECT_TRUE(IsNackListCorrect(
+      nack_list = nack.GetNackList(kShortRoundTripTime);
+      EXPECT_TRUE(IsNackListCorrect(
           nack_list, &sequence_num_lost_packets[index_retransmitted_rtp],
           num_lost_packets));
       seq_num++;
@@ -162,7 +172,8 @@ nack_list = nack.GetNackList(kShortRoundTripTime);      EXPECT_TRUE(IsNackListCo
       index_retransmitted_rtp++;
       timestamp_retransmitted_rtp += kTimestampIncrement;
 
-nack_list = nack.GetNackList(kShortRoundTripTime);      EXPECT_TRUE(IsNackListCorrect(
+      nack_list = nack.GetNackList(kShortRoundTripTime);
+      EXPECT_TRUE(IsNackListCorrect(
           nack_list, &sequence_num_lost_packets[index_retransmitted_rtp],
           num_lost_packets - 1));  // One less lost packet in the list.
     }
@@ -171,7 +182,8 @@ nack_list = nack.GetNackList(kShortRoundTripTime);      EXPECT_TRUE(IsNackListCo
 }
 
 TEST(NackTrackerTest, Reset) {
-  NackTracker nack(kDefaultNackListSize);  nack.UpdateSampleRate(kSampleRateHz);
+  NackTracker nack(kDefaultNackListSize);
+  nack.UpdateSampleRate(kSampleRateHz);
 
   // Two consecutive packets to have a correct estimate of timestamp increase.
   uint16_t seq_num = 0;
@@ -185,21 +197,21 @@ TEST(NackTrackerTest, Reset) {
   nack.UpdateLastReceivedPacket(seq_num, seq_num * kTimestampIncrement);
 
   const size_t kExpectedListSize = kNumLostPackets;
-std::vector<uint16_t> nack_list = nack.GetNackList(kShortRoundTripTimeMs);
+  std::vector<uint16_t> nack_list = nack.GetNackList(kShortRoundTripTime);
   EXPECT_EQ(kExpectedListSize, nack_list.size());
 
   nack.Reset();
-  nack_list = nack.GetNackList(kShortRoundTripTimeMs);  EXPECT_TRUE(nack_list.empty());
+  nack_list = nack.GetNackList(kShortRoundTripTime);
+  EXPECT_TRUE(nack_list.empty());
 }
 
 TEST(NackTrackerTest, ListSizeAppliedFromBeginning) {
-FieldTrials field_trials = CreateTestFieldTrials();
   const size_t kNackListSize = 10;
   for (int m = 0; m < 2; ++m) {
     uint16_t seq_num_offset = (m == 0) ? 0 : 65525;  // Wrap around if `m` is 1.
-    NackTracker nack(field_trials);
+    NackTracker nack(kNackListSize);
     nack.UpdateSampleRate(kSampleRateHz);
-    nack.SetMaxNackListSize(kNackListSize);
+
     uint16_t seq_num = seq_num_offset;
     uint32_t timestamp = 0x12345678;
     nack.UpdateLastReceivedPacket(seq_num, timestamp);
@@ -211,7 +223,8 @@ FieldTrials field_trials = CreateTestFieldTrials();
     timestamp += (num_lost_packets + 1) * kTimestampIncrement;
     nack.UpdateLastReceivedPacket(seq_num, timestamp);
 
-std::vector<uint16_t> nack_list = nack.GetNackList(kShortRoundTripTimeMs);    EXPECT_EQ(kNackListSize, nack_list.size());
+    std::vector<uint16_t> nack_list = nack.GetNackList(kShortRoundTripTime);
+    EXPECT_EQ(kNackListSize, nack_list.size());
   }
 }
 
@@ -219,6 +232,7 @@ TEST(NackTrackerTest, RoudTripTimeIsApplied) {
   const int kNackListSize = 200;
   NackTracker nack(kNackListSize);
   nack.UpdateSampleRate(kSampleRateHz);
+
   uint16_t seq_num = 0;
   uint32_t timestamp = 0x87654321;
   nack.UpdateLastReceivedPacket(seq_num, timestamp);
@@ -236,7 +250,7 @@ TEST(NackTrackerTest, RoudTripTimeIsApplied) {
   // sequence number:  1,  2,  3,   4,   5
   // time-to-play:    20, 50, 80, 110, 140
   //
-std::vector<uint16_t> nack_list = nack.GetNackList(TimeDelta::Millis(930));
+  std::vector<uint16_t> nack_list = nack.GetNackList(TimeDelta::Millis(930));
   EXPECT_THAT(nack_list, ElementsAre(4, 5));
 }
 
@@ -271,6 +285,7 @@ TEST(NackTrackerTest, FixedDelayMode) {
   // the fixed delay.
   nack.UpdateLastReceivedPacket(
       seq_num + 3, timestamp + 2 * kTimestampIncrement + kSampleRateHz);
-  EXPECT_THAT(nack.GetNackList(kShortRoundTripTime), IsEmpty());}
+  EXPECT_THAT(nack.GetNackList(kShortRoundTripTime), IsEmpty());
+}
 
 }  // namespace webrtc

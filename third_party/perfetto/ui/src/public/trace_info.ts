@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import type {time} from '../base/time';
+
 export interface TraceInfo {
   readonly traceTitle: string; // File name and size of the current trace.
   readonly traceUrl: string; // URL of the Trace.

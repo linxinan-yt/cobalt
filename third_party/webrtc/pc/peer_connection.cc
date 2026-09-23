@@ -2050,7 +2050,8 @@ void PeerConnection::ReportFirstConnectUsageMetrics() {
       // Rollback does not have SDP so can not be munged.
       break;
   }
-// Below this point are features where we check what was negotiated in
+
+  // Below this point are features where we check what was negotiated in
   // SDP. `desc` will contain the answer, i.e. what was negotiated.
   const SessionDescription* desc = nullptr;
   if (local_description()->GetType() == SdpType::kAnswer ||
@@ -2073,11 +2074,13 @@ void PeerConnection::ReportFirstConnectUsageMetrics() {
     const SctpDataContentDescription* sctp_desc =
         sctp_content->media_description()->as_sctp();
     if (sctp_desc) {
-      negotiated_sctp_snap |= sctp_desc->sctp_init().has_value();    }
+      negotiated_sctp_snap |= sctp_desc->sctp_init().has_value();
+    }
   }
   RTC_HISTOGRAM_BOOLEAN("WebRTC.PeerConnection.NegotiatedSctpSnap",
                         negotiated_sctp_snap);
-// Record congestion control mechanism in use, if any.
+
+  // Record congestion control mechanism in use, if any.
   // The information is taken from the last seen answer SDP.
   std::optional<RtcpFeedbackType> feedback_type;
   for (const auto& content : desc->contents()) {
@@ -2114,7 +2117,8 @@ void PeerConnection::ReportFirstConnectUsageMetrics() {
       break;
   }
   RTC_HISTOGRAM_ENUMERATION("WebRTC.PeerConnection.CryptexUsage", cryptex,
-                            kCryptexPolicyUsageMax);}
+                            kCryptexPolicyUsageMax);
+}
 
 void PeerConnection::ReportCloseUsageMetrics() {
   if (!was_ever_connected_) {

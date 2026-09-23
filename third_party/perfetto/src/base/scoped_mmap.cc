@@ -42,7 +42,7 @@ ScopedPlatformHandle OpenFileForMmap(const std::string& file_path) {
   return OpenFile(file_path, O_RDONLY);
 #elif PERFETTO_BUILDFLAG(PERFETTO_OS_WIN)
   // This does not use base::OpenFile to avoid getting an exclusive lock.
-//
+  //
   // The share flags mirror the POSIX open(O_RDONLY) above, which has no notion
   // of share modes. Same flags as LLVM's openNativeFileInternal():
   // https://github.com/llvm/llvm-project/blob/main/llvm/lib/Support/Windows/Path.inc

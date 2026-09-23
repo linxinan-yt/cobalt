@@ -1459,7 +1459,8 @@ void RenderFrameHostManager::UnloadOldFrame(
       }
 
 auto stored_page = CollectPage(std::move(old_render_frame_host),
-                                     focused_frame_tree_node_id);      auto entry =
+                                     focused_frame_tree_node_id);
+      auto entry =
           std::make_unique<BackForwardCacheImpl::Entry>(std::move(stored_page));
       // Ensures RenderViewHosts are not reused while they are in the cache.
       for (const auto& rvh : entry->render_view_hosts()) {

@@ -857,7 +857,8 @@ sat-narrow{
                 future{
                     one{"cikin Asabar {0}"}
                     other{"cikin Asabar {0}"}
-                }                past{
+                }
+                past{
                     one{"Asabar {0} da ta wuce"}
                     other{"Asabar {0} da suka wuce"}
                 }

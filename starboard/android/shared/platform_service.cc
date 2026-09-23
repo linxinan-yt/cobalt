@@ -200,7 +200,7 @@ const void* GetPlatformServiceApiAndroid() {
 void JNI_CobaltService_NativeSendToClient(
     JNIEnv* env,
     jlong nativeService,
-    const jni_zero::JavaParamRef<jbyteArray>& j_data) {
+    const jni_zero::JavaRef<jbyteArray>& j_data) {
   auto* service =
       reinterpret_cast<CobaltExtensionPlatformServicePrivate*>(nativeService);
 
@@ -223,3 +223,5 @@ void JNI_CobaltService_NativeSendToClient(
 }
 
 }  // namespace starboard
+
+DEFINE_JNI(CobaltService)

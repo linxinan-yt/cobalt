@@ -184,5 +184,4 @@ export function formatPercentValue(value: SqlValue): string {
   } else {
     return String(value);
   }
-}  }
 }

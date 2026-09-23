@@ -97,7 +97,8 @@ katal{
                 dnam{"akụkụ gasị"}
                 other{"{0} akụkụ gasị"}
             }
-            portion-per-1e9{                dnam{"akụkụ kwa ijeri"}
+            portion-per-1e9{
+                dnam{"akụkụ kwa ijeri"}
                 other{"{0} akụkụ kwa ijeri"}
             }
         }
@@ -134,7 +135,8 @@ katal{
             }
             night{
 dnam{"Ọtụtụ abali"}
-                other{"{0} Ọtụtụ abali"}                per{"{0} kwa abali"}
+                other{"{0} Ọtụtụ abali"}
+                per{"{0} kwa abali"}
             }
             quarter{
                 dnam{"Nkeji Nkeano"}
@@ -664,7 +666,8 @@ kilometer-per-hour{
             part-per-1e6{
                 other{"{0}ppm"}
             }
-portion-per-1e9{                dnam{"akụkụ/ijeri"}
+portion-per-1e9{
+                dnam{"akụkụ/ijeri"}
             }
         }
         duration{
@@ -753,7 +756,8 @@ dnam{"dpcm"}
                 other{"{0}dpcm"}
             }
             dot-per-inch{
-                dnam{"dpi"}                other{"{0}dpi"}
+                dnam{"dpi"}
+                other{"{0}dpi"}
             }
             em{
                 other{"{0}em"}
@@ -919,7 +923,8 @@ ofglucose{
                 dnam{"akụkụ"}
                 other{"{0} akụkụ"}
             }
-            part-per-1e9{                dnam{"akụkụ/ijeri"}
+            part-per-1e9{
+                dnam{"akụkụ/ijeri"}
             }
         }
         duration{
@@ -1052,7 +1057,8 @@ length{
         speed{
             kilometer-per-hour{
                 dnam{"km/hour"}
-            }            light-speed{
+            }
+            light-speed{
                 dnam{"ìhè"}
                 other{"{0} ìhè"}
             }

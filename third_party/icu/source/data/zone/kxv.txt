@@ -1189,7 +1189,8 @@ kxv{
         }
 "Pacific:Kanton"{
             ec{"kanṭon"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"kiritimati"}
         }
         "Pacific:Kosrae"{

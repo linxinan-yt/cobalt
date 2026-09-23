@@ -816,7 +816,8 @@ ConversionTest::TestUTF8ToUTF8Overflow() {
     assertEquals("illFormed number of bytes written", 0, length);
     errorLength = UPRV_LENGTHOF(errorBytes);
     ucnv_getInvalidChars(cnv1.getAlias(), errorBytes, &errorLength, errorCode);
-assertEquals("illFormed truncated errorLength", 2, static_cast<int32_t>(errorLength));    if (errorLength == 2) {
+    assertEquals("illFormed truncated errorLength", 2, errorLength);
+    if (errorLength == 2) {
         assertEquals("illFormed truncated errorBytes", 0xf191, 
                      (static_cast<int32_t>(static_cast<uint8_t>(errorBytes[0])) << 8) | static_cast<uint8_t>(errorBytes[1]));
     }
@@ -832,7 +833,8 @@ assertEquals("illFormed truncated errorLength", 2, static_cast<int32_t>(errorLen
     assertEquals("illFormed trail byte number of bytes written", 0, length);
     errorLength = UPRV_LENGTHOF(errorBytes);
     ucnv_getInvalidChars(cnv1.getAlias(), errorBytes, &errorLength, errorCode);
-assertEquals("illFormed trail byte errorLength", 1, static_cast<int32_t>(errorLength));    if (errorLength == 1) {
+    assertEquals("illFormed trail byte errorLength", 1, errorLength);
+    if (errorLength == 1) {
         assertEquals("illFormed trail byte errorBytes", 0x93, static_cast<int32_t>(static_cast<uint8_t>(errorBytes[0])));
     }
 }

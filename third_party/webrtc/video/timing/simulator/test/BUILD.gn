@@ -79,7 +79,3 @@ if (rtc_enable_protobuf && rtc_include_tests) {
     }
   }
 }
-if (false) {
-  if (false) {    }
-  }
-}

@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import {errResult, okResult, type Result} from '../base/result';
+
 // Representation of a PerfettoSQL type:
 // https://perfetto.dev/docs/analysis/perfetto-sql-syntax#types
 export type PerfettoSqlType = SimpleType | PerfettoSqlIdType;
@@ -28,7 +29,8 @@ export type SimpleTypeKind =
   | 'arg_set_id';
 
 type SimpleType = {
-  kind: SimpleTypeKind;};
+  kind: SimpleTypeKind;
+};
 
 type PerfettoSqlIdType = {
   kind: 'id' | 'joinid';
@@ -106,7 +108,8 @@ export class PerfettoSqlTypes {
 // Maps PerfettoSQL type name strings to their canonical SimpleTypeKind.
 // Used by parsePerfettoSqlTypeFromString (input is lowercased before lookup).
 const SIMPLE_TYPES: Record<string, SimpleType['kind']> = {
-  // Canonical PerfettoSQL type names.  long: 'int',
+  // Canonical PerfettoSQL type names.
+  long: 'int',
   int: 'int',
   bool: 'boolean',
   float: 'double',
@@ -116,7 +119,8 @@ const SIMPLE_TYPES: Record<string, SimpleType['kind']> = {
   timestamp: 'timestamp',
   duration: 'duration',
   argsetid: 'arg_set_id',
-// Legacy aliases: the old serialized format stored types as
+
+  // Legacy aliases: the old serialized format stored types as
   // SimpleTypeKind values (e.g. "boolean", "arg_set_id") which don't
   // match the canonical PerfettoSQL names above.
   boolean: 'boolean',
@@ -138,7 +142,8 @@ export const SIMPLE_TYPE_KINDS: SimpleType['kind'][] = [
 export function parsePerfettoSqlTypeFromString(args: {
   type: string;
   table?: string;
-  column?: string;}): Result<PerfettoSqlType> {
+  column?: string;
+}): Result<PerfettoSqlType> {
   const value = args.type.toLowerCase();
   const maybeSimpleType = SIMPLE_TYPES[value];
   if (maybeSimpleType !== undefined) {
@@ -148,11 +153,12 @@ export function parsePerfettoSqlTypeFromString(args: {
   }
   if (value === 'id') {
     // The plain `ID` are resolved into `ID($current_table.$current_column)`.
-if (args.table === undefined || args.column === undefined) {
+    if (args.table === undefined || args.column === undefined) {
       return errResult(
         `Cannot parse plain 'id' type without table and column context`,
       );
-    }    return okResult({
+    }
+    return okResult({
       kind: 'id',
       source: {
         table: args.table,
@@ -213,7 +219,9 @@ export function perfettoSqlTypeIcon(type?: PerfettoSqlType): string {
     case 'arg_set_id':
       return 'dataset';
   }
-}export function perfettoSqlTypeToString(type?: PerfettoSqlType): string {
+}
+
+export function perfettoSqlTypeToString(type?: PerfettoSqlType): string {
   if (type === undefined) {
     return 'ANY';
   }

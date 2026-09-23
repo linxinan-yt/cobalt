@@ -1292,7 +1292,8 @@ dnam{"泊"}
                 other{"{0}kn"}
             }
             light-speed{
-dnam{"光"}                other{"{0}光"}
+dnam{"光"}
+                other{"{0}光"}
             }
             meter-per-second{
                 other{"{0}m/s"}

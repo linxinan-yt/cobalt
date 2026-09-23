@@ -22,7 +22,8 @@ import {
   type CounterTrackAttrs,
 } from '../../components/tracks/counter_track';
 import {TrackNode} from '../../public/workspace';
-import type {SourceDataset} from '../../trace_processor/dataset';import {STR} from '../../trace_processor/query_result';
+import type {SourceDataset} from '../../trace_processor/dataset';
+import {STR} from '../../trace_processor/query_result';
 
 export default class implements PerfettoPlugin {
   static readonly id = 'com.android.AndroidLongBatterySupport';
@@ -90,18 +91,16 @@ export default class implements PerfettoPlugin {
     name: string,
     query: string,
     groupName: string,
-options?: Partial<CounterOptions>,
+    config?: Omit<CounterTrackAttrs, 'trace' | 'uri' | 'sqlSource'>,
     groupCollapsed = true,
   ) {
     const uri = `/long_battery_tracing_${name}`;
-    const track = await createQueryCounterTrack({
+    const track = await CounterTrack.createMaterialized({
       trace: ctx,
       uri,
-      data: {
-        sqlSource: query,
-        columns: ['ts', 'value'],
-      },
-      options,    });
+      sqlSource: query,
+      ...config,
+    });
     ctx.tracks.registerTrack({
       uri,
       renderer: track,
@@ -158,7 +157,8 @@ options?: Partial<CounterOptions>,
               google3.wireless.android.telemetry.trace_extractor.modules.atom_counters_slices`,
       );
       features.add('google3');
-} catch {}
+    } catch {}
+
     return features;
   }
 

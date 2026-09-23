@@ -336,8 +336,9 @@ void FtraceTokenizer::TokenizeFtraceEvent(
     return;
   }
 
-// Generic path: queue ts equals raw_ts, so leave FtraceData::raw_ts as the
-  // kRawTsUnset sentinel (compressed away in the token buffer).  module_context_->PushFtraceEvent(
+  // Generic path: queue ts equals raw_ts, so leave FtraceData::raw_ts as the
+  // kRawTsUnset sentinel (compressed away in the token buffer).
+  module_context_->PushFtraceEvent(
       cpu, raw_ts, FtraceData{std::move(event), std::move(state)});
 }
 
@@ -546,7 +547,8 @@ void FtraceTokenizer::TokenizeFtraceGpuWorkPeriod(
   // Enforce clock type for the event data to be CLOCK_MONOTONIC_RAW
   // as specified, to calculate the timestamp correctly.
   std::optional<int64_t> timestamp = context_->clock_tracker->ToTraceTime(
-ClockId::Machine(BuiltinClock::BUILTIN_CLOCK_MONOTONIC_RAW),      static_cast<int64_t>(raw_timestamp));
+      ClockId::Machine(BuiltinClock::BUILTIN_CLOCK_MONOTONIC_RAW),
+      static_cast<int64_t>(raw_timestamp));
 
   // ClockTracker will increment some error stats if it failed to convert the
   // timestamp so just return.

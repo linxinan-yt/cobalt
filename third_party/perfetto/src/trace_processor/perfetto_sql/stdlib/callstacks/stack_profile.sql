@@ -117,7 +117,10 @@ CREATE PERFETTO INDEX _callstack_spc_index ON _callstack_spc_forest(callsite_id)
 -- This index is necessary to optimize the leaf-finding query in
 -- _callstacks_self_to_cumulative. Without this index, the anti-join on
 -- parent_id can be very slow on large traces.
-CREATE PERFETTO INDEX _callstack_spc_parent_index ON _callstack_spc_forest(parent_id);
+CREATE PERFETTO INDEX _callstack_spc_parent_index ON _callstack_spc_forest(
+  parent_id
+);
+
 CREATE PERFETTO MACRO _callstacks_for_stack_profile_samples(
   spc_samples TableOrSubquery
 )

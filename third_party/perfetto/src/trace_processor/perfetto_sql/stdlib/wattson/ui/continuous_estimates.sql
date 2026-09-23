@@ -21,11 +21,10 @@ INCLUDE PERFETTO MODULE wattson.estimates;
 -- slices. This macro recombines all the slices such that adjacent slices will
 -- always have different values. This means less slices to process, and from the
 -- UI perspective, the counter track will be displayed cleaner.
-CREATE PERFETTO MACRO _get_continuous_estimates(
-    rail ColumnName
-)
-RETURNS TableOrSubquery AS
-(  SELECT
+CREATE PERFETTO MACRO _get_continuous_estimates(rail ColumnName)
+RETURNS TableOrSubquery
+AS (
+  SELECT
     ts,
     dur,
     value AS $rail

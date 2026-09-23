@@ -14,7 +14,8 @@
 
 import {SliceTrack} from '../../components/tracks/slice_track';
 import type {PerfettoPlugin} from '../../public/plugin';
-import type {Trace} from '../../public/trace';import {TrackNode} from '../../public/workspace';
+import type {Trace} from '../../public/trace';
+import {TrackNode} from '../../public/workspace';
 import {SourceDataset} from '../../trace_processor/dataset';
 import {LONG, LONG_NULL, STR} from '../../trace_processor/query_result';
 

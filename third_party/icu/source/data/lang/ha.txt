@@ -7,7 +7,8 @@ ha{
         cf{"Yanayin Kudi"}
         collation{"Tsarin Rabewa"}
         currency{"Kudin Kasa"}
-em{"Gabatar da Imoji"}        hc{"Zagayen Awowi (12 da 24)"}
+em{"Gabatar da Imoji"}
+        hc{"Zagayen Awowi (12 da 24)"}
         lb{"Salo na Raba Layi"}
         lw{"Layi Zai Karye tsakanin Kalmomi"}
         ms{"Tsarin Awo"}

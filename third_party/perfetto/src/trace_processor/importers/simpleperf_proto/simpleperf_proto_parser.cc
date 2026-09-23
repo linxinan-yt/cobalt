@@ -24,7 +24,9 @@
 #include "perfetto/ext/base/string_view.h"
 #include "src/trace_processor/importers/common/mapping_tracker.h"
 #include "src/trace_processor/importers/common/process_tracker.h"
+#include "src/trace_processor/importers/common/profiler_sample_tracker.h"
 #include "src/trace_processor/importers/common/stack_profile_tracker.h"
+#include "src/trace_processor/importers/common/stats_tracker.h"
 #include "src/trace_processor/importers/common/virtual_memory_mapping.h"
 #include "src/trace_processor/importers/simpleperf_proto/simpleperf_proto_tracker.h"
 #include "src/trace_processor/storage/stats.h"
@@ -37,9 +39,10 @@ namespace perfetto::trace_processor::simpleperf_proto_importer {
 
 SimpleperfProtoParser::SimpleperfProtoParser(TraceProcessorContext* context,
                                              SimpleperfProtoTracker* tracker)
-: context_(context),
+    : context_(context),
       tracker_(tracker),
       simpleperf_source_id_(context->storage->InternString("simpleperf")) {}
+
 SimpleperfProtoParser::~SimpleperfProtoParser() = default;
 
 void SimpleperfProtoParser::Parse(int64_t ts,
@@ -86,7 +89,8 @@ void SimpleperfProtoParser::Parse(int64_t ts,
       DummyMemoryMapping* mapping = tracker_->GetMapping(file_id);
       if (!mapping) {
         // Drop sample if file_id not found
-context_->storage->IncrementStats(            stats::simpleperf_missing_file_mapping);
+        context_->stats_tracker->IncrementStats(
+            stats::simpleperf_missing_file_mapping);
         return;
       }
 
@@ -102,7 +106,7 @@ context_->storage->IncrementStats(            stats::simpleperf_missing_file_map
       depth++;
     }
 
-// Insert the leaf callsite (the last callsite created, which has the
+    // Insert the leaf callsite (the last callsite created, which has the
     // highest depth) as a profiler sample.
     if (callsite_id.has_value()) {
       tables::ProfilerSampleTable::Row row;
@@ -113,7 +117,8 @@ context_->storage->IncrementStats(            stats::simpleperf_missing_file_map
       row.task_context_id =
           context_->profiler_sample_tracker->InternTaskContext(task_context);
       row.callsite_id = *callsite_id;
-      context_->profiler_sample_tracker->AddSample(row);    }
+      context_->profiler_sample_tracker->AddSample(row);
+    }
     return;
   }
 

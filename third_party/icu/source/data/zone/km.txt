@@ -1198,7 +1198,8 @@ km{
         }
 "Pacific:Kanton"{
             ec{"កាន់តុន"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"គិរីទីម៉ាទិ"}
         }
         "Pacific:Kosrae"{

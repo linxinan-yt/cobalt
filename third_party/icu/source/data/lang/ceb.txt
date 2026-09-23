@@ -22,7 +22,8 @@ en_GB{"English (British)"}
         hi{"Hindi"}
         id{"Indonesian"}
         it{"Italian"}
-        ja{"Japanese"}        ko{"Korean"}
+        ja{"Japanese"}
+        ko{"Korean"}
         nl{"Dutch"}
         nl_BE{"Flemish"}
         pl{"Polish"}
@@ -31,7 +32,8 @@ en_GB{"English (British)"}
         th{"Thai"}
         tr{"Turkish"}
 und{"Wala Mailhing Pinulongan"}
-        zh{"Inintsik"}        zh_Hans{"Pinasimple nga Chinese"}
+        zh{"Inintsik"}
+        zh_Hans{"Pinasimple nga Chinese"}
         zh_Hant{"Tradisyonal nga Chinese"}
     }
     Languages%long{
@@ -49,7 +51,8 @@ und{"Wala Mailhing Pinulongan"}
         hi_Latn{"Hinglish"}
     }
     Scripts{
-Arab{"Arabiko"}        Cyrl{"Cyrillic"}
+Arab{"Arabiko"}
+        Cyrl{"Cyrillic"}
         Hans{"Pinasimple"}
         Hant{"Tradisyonal"}
         Jpan{"Japanese"}

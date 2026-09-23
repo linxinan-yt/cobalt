@@ -62,7 +62,8 @@ bool IsRtpOrRtcpPacket(uint8_t first_byte) {
   return (first_byte & 0xc0) == 0x80;
 }
 
-class DatagramConnectionTest : public ::testing::Test { public:
+class DatagramConnectionTest : public ::testing::Test {
+ public:
   DatagramConnectionTest() : env_(CreateTestEnvironment()) {}
 
   ~DatagramConnectionTest() override {
@@ -153,15 +154,14 @@ TEST_F(DatagramConnectionTest, IceCredsGettersReturnCorrectValues) {
 }
 
 TEST_F(DatagramConnectionTest, TransportsBecomeWritable) {
-main_thread_.BlockingCall([&]() {
-    CreateConnections();
-    Connect();
+  CreateConnections();
+  Connect();
 
-    ASSERT_TRUE(
-        WaitUntil([&]() { return conn1_->Writable() && conn2_->Writable(); }));
-    EXPECT_TRUE(conn1_->Writable());
-    EXPECT_TRUE(conn2_->Writable());
-  });}
+  ASSERT_TRUE(
+      WaitUntil([&]() { return conn1_->Writable() && conn2_->Writable(); }));
+  EXPECT_TRUE(conn1_->Writable());
+  EXPECT_TRUE(conn2_->Writable());
+}
 
 TEST_F(DatagramConnectionTest, ObserverNotifiedOnWritableChange) {
   CreateConnections();
@@ -175,8 +175,9 @@ TEST_F(DatagramConnectionTest, ObserverNotifiedOnWritableChange) {
 
   Connect();
 
-loop_.Run();
-  EXPECT_TRUE(callback_called);  EXPECT_TRUE(conn1_->Writable());
+  loop_.Run();
+  EXPECT_TRUE(callback_called);
+  EXPECT_TRUE(conn1_->Writable());
 }
 
 TEST_F(DatagramConnectionTest, ObserverCalledOnReceivedRtpPacket) {
@@ -210,30 +211,36 @@ TEST_F(DatagramConnectionTest, RtpPacketsAreSent) {
   // Calling SendPacket causes the packet to be sent on ice1_
   CreateConnections();
   Connect();
-ASSERT_TRUE(
+
+  ASSERT_TRUE(
       WaitUntil([&]() { return conn1_->Writable() && conn2_->Writable(); }));
 
   auto data = MakeRtpPacketBuffer();
-  bool callback_called = false;  EXPECT_CALL(*observer1_ptr_, OnSendOutcome(_))
+  bool callback_called = false;
+  EXPECT_CALL(*observer1_ptr_, OnSendOutcome(_))
       .WillOnce([&](const SendOutcome& outcome) {
         EXPECT_EQ(outcome.id, 1u);
         EXPECT_EQ(outcome.status, SendOutcome::Status::kSuccess);
         EXPECT_NE(outcome.send_time, Timestamp::MinusInfinity());
-callback_called = true;
-        loop_.Quit();      });
+        callback_called = true;
+        loop_.Quit();
+      });
   std::vector<PacketSendParameters> packets = {
       PacketSendParameters{.id = 1, .payload = data}};
   conn1_->SendPackets(packets);
-// Pull the RTP sequence number from ice1's last_sent_packet
+
+  // Pull the RTP sequence number from ice1's last_sent_packet
   uint16_t seq_num = ParseRtpSequenceNumber(ice1_->last_sent_packet());
   EXPECT_EQ(seq_num, 1);
   loop_.Run();
-  EXPECT_TRUE(callback_called);}
+  EXPECT_TRUE(callback_called);
+}
 
 TEST_F(DatagramConnectionTest, RtpPacketsAreReceived) {
   CreateConnections();
   Connect();
-ASSERT_TRUE(
+
+  ASSERT_TRUE(
       WaitUntil([&]() { return conn1_->Writable() && conn2_->Writable(); }));
 
   auto data = MakeRtpPacketBuffer();
@@ -246,7 +253,9 @@ ASSERT_TRUE(
   auto check_done = [&] {
     if (callbacks.packet_received && callbacks.send_outcome)
       loop_.Quit();
-  };  EXPECT_CALL(*observer2_ptr_, OnPacketReceived(_, _))
+  };
+
+  EXPECT_CALL(*observer2_ptr_, OnPacketReceived(_, _))
       .WillOnce(
           [&](std::span<const uint8_t> received_data,
               const DatagramConnection::Observer::PacketMetadata& metadata) {
@@ -254,22 +263,26 @@ ASSERT_TRUE(
             EXPECT_EQ(memcmp(received_data.data(), data.data(), data.size()),
                       0);
             EXPECT_NE(metadata.receive_time, Timestamp::Zero());
-callbacks.packet_received = true;
+            callbacks.packet_received = true;
             check_done();
-          });  EXPECT_CALL(*observer1_ptr_, OnSendOutcome(_))
+          });
+
+  EXPECT_CALL(*observer1_ptr_, OnSendOutcome(_))
       .WillOnce([&](const SendOutcome& outcome) {
         EXPECT_EQ(outcome.id, 1u);
         EXPECT_EQ(outcome.status, SendOutcome::Status::kSuccess);
         EXPECT_NE(outcome.send_time, Timestamp::MinusInfinity());
-callbacks.send_outcome = true;
-        check_done();      });
+        callbacks.send_outcome = true;
+        check_done();
+      });
 
   std::vector<PacketSendParameters> packets = {
       PacketSendParameters{.id = 1, .payload = data}};
   conn1_->SendPackets(packets);
-loop_.Run();
+  loop_.Run();
   EXPECT_TRUE(callbacks.packet_received);
-  EXPECT_TRUE(callbacks.send_outcome);}
+  EXPECT_TRUE(callbacks.send_outcome);
+}
 
 TEST_F(DatagramConnectionTest, SendMultipleRtpPackets) {
   CreateConnections();
@@ -393,7 +406,8 @@ TEST_F(DatagramConnectionTest, NonRtpPacketsInSRTPModeAreDTLSProtected) {
           });
 
   loop_.Run();
-  EXPECT_TRUE(callback_called);}
+  EXPECT_TRUE(callback_called);
+}
 
 TEST_F(DatagramConnectionTest, OnCandidateGathered) {
   CreateConnections();
@@ -436,14 +450,16 @@ TEST_F(DatagramConnectionTest, DirectDtlsPacketsAreSent) {
   Connect();
   ASSERT_TRUE(
       WaitUntil([&]() { return conn1_->Writable() && conn2_->Writable(); }));
-std::vector<uint8_t> data = {1, 2, 3, 4, 5};
-  Event event;
+
+  std::vector<uint8_t> data = {1, 2, 3, 4, 5};
+  bool callback_called = false;
   EXPECT_CALL(*observer1_ptr_, OnSendOutcome(_))
       .WillOnce([&](const SendOutcome& outcome) {
         EXPECT_EQ(outcome.id, 1u);
         EXPECT_EQ(outcome.status, SendOutcome::Status::kSuccess);
         EXPECT_NE(outcome.send_time, Timestamp::MinusInfinity());
-        event.Set();
+        callback_called = true;
+        loop_.Quit();
       });
   std::vector<PacketSendParameters> packets = {
       PacketSendParameters{.id = 1, .payload = data}};
@@ -451,7 +467,8 @@ std::vector<uint8_t> data = {1, 2, 3, 4, 5};
   // For direct DTLS, the sent packet should be larger than the data due to
   // DTLS overhead.
   EXPECT_GT(ice1_->last_sent_packet().size(), data.size());
-  ASSERT_TRUE(event.Wait(TimeDelta::Millis(1000)));
+  loop_.Run();
+  EXPECT_TRUE(callback_called);
 }
 
 TEST_F(DatagramConnectionTest, DirectDtlsPacketsAreReceived) {
@@ -462,7 +479,17 @@ TEST_F(DatagramConnectionTest, DirectDtlsPacketsAreReceived) {
       WaitUntil([&]() { return conn1_->Writable() && conn2_->Writable(); }));
 
   std::vector<uint8_t> data = {1, 2, 3, 4, 5};
-  Event receive_event;  EXPECT_CALL(*observer2_ptr_, OnPacketReceived(_, _))
+  struct Callbacks {
+    bool packet_received = false;
+    bool send_outcome = false;
+  } callbacks;
+
+  auto check_done = [&] {
+    if (callbacks.packet_received && callbacks.send_outcome)
+      loop_.Quit();
+  };
+
+  EXPECT_CALL(*observer2_ptr_, OnPacketReceived(_, _))
       .WillOnce(
           [&](std::span<const uint8_t> received_data,
               const DatagramConnection::Observer::PacketMetadata& metadata) {
@@ -470,20 +497,23 @@ TEST_F(DatagramConnectionTest, DirectDtlsPacketsAreReceived) {
             EXPECT_EQ(memcmp(received_data.data(), data.data(), data.size()),
                       0);
             EXPECT_NE(metadata.receive_time, Timestamp::Zero());
-callbacks.packet_received = true;
+            callbacks.packet_received = true;
             check_done();
-          });  EXPECT_CALL(*observer1_ptr_, OnSendOutcome(_))
+          });
+
+  EXPECT_CALL(*observer1_ptr_, OnSendOutcome(_))
       .WillOnce([&](const SendOutcome& outcome) {
         EXPECT_EQ(outcome.id, 1u);
         EXPECT_EQ(outcome.status, SendOutcome::Status::kSuccess);
         EXPECT_NE(outcome.send_time, Timestamp::MinusInfinity());
-callbacks.send_outcome = true;
-        check_done();      });
+        callbacks.send_outcome = true;
+        check_done();
+      });
 
   std::vector<PacketSendParameters> packets = {
       PacketSendParameters{.id = 1, .payload = data}};
   conn1_->SendPackets(packets);
-loop_.Run();
+  loop_.Run();
   EXPECT_TRUE(callbacks.packet_received);
   EXPECT_TRUE(callbacks.send_outcome);
 }
@@ -542,7 +572,8 @@ TEST_F(DatagramConnectionTest, UserSentPacketsTriggerOnSendOutcome) {
   user_packet.info.packet_size_bytes = 100;
 
   conn1_->OnSentPacket(user_packet);
-  EXPECT_TRUE(callback_called);}
+  EXPECT_TRUE(callback_called);
+}
 
 }  // namespace
 }  // namespace webrtc

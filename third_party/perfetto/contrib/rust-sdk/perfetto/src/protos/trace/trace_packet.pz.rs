@@ -49,4 +49,5 @@ pb_msg!(TracePacket {
     for_testing: TestEvent, msg, 900,
     interned_data: InternedData, msg, 12,
     sequence_flags: u32, primitive, 13,
-    trace_packet_defaults: TracePacketDefaults, msg, 59,});
+    trace_packet_defaults: TracePacketDefaults, msg, 59,
+});

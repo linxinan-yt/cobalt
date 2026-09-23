@@ -31,7 +31,6 @@
 #include "third_party/perfetto/include/perfetto/tracing/track.h"
 
 #if BUILDFLAG(USE_STARBOARD_MEDIA)
-#include "base/containers/contains.h"
 #include "base/strings/string_split.h"
 #include "starboard/media.h"  // nogncheck
 #endif  // BUILDFLAG(USE_STARBOARD_MEDIA)
@@ -1343,7 +1342,7 @@ void ChunkDemuxer::ChangeType(const std::string& id,
   DCHECK(IsValidId_Locked(id));
 
   std::unique_ptr<media::StreamParser> stream_parser(
-      CreateParserForTypeAndCodecs(content_type, codecs, media_log_));
+      CreateParserForTypeAndCodecs(content_type, codecs, media_log_.get()));
   // Caller should query CanChangeType() first to protect from failing this.
   DCHECK(stream_parser);
 

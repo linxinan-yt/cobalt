@@ -31,7 +31,8 @@ using ::testing::ElementsAre;
 using ::testing::Eq;
 using ::testing::Field;
 using ::testing::Matcher;
-using ::testing::Ne;using ::testing::SizeIs;
+using ::testing::Ne;
+using ::testing::SizeIs;
 
 using Frame = DecodabilitySimulator::Frame;
 using Stream = DecodabilitySimulator::Stream;
@@ -60,7 +61,9 @@ TEST(DecodabilitySimulatorStreamTest, UndecodableDurationMs) {
   EXPECT_THAT(
       stream.UndecodableDurationMs().GetTimedSamples(),
       ElementsAre(Field(&SamplesStatsCounter::StatsSample::value, Eq(4))));
-}Matcher<const Frame&> EqualsFrame(const Frame& expected) {
+}
+
+Matcher<const Frame&> EqualsFrame(const Frame& expected) {
   return AllOf(
       Field("num_packets", &Frame::num_packets, Eq(expected.num_packets)),
       Field("size", &Frame::size, Eq(expected.size)),
@@ -72,12 +75,13 @@ TEST(DecodabilitySimulatorStreamTest, UndecodableDurationMs) {
             Eq(expected.decodable_timestamp)));
 }
 
-// TODO: b/423646186 - Add tests for logs with losses.TEST(DecodabilitySimulatorTest, VideoRecvVp8) {
+TEST(DecodabilitySimulatorTest, VideoRecvVp8) {
   std::unique_ptr<ParsedRtcEventLog> parsed_log =
       ParsedRtcEventLogFromResources("video_recv_vp8_pt96");
 
-DecodabilitySimulator::Config config;
-  DecodabilitySimulator simulator(config);  DecodabilitySimulator::Results results = simulator.Simulate(*parsed_log);
+  DecodabilitySimulator::Config config;
+  DecodabilitySimulator simulator(config);
+  DecodabilitySimulator::Results results = simulator.Simulate(*parsed_log);
 
   ASSERT_THAT(results.streams, SizeIs(1));
   const auto& stream = results.streams.front();
@@ -99,8 +103,9 @@ TEST(DecodabilitySimulatorTest, VideoRecvVp9) {
   std::unique_ptr<ParsedRtcEventLog> parsed_log =
       ParsedRtcEventLogFromResources("video_recv_vp9_pt98");
 
-DecodabilitySimulator::Config config;
-  DecodabilitySimulator simulator(config);  DecodabilitySimulator::Results results = simulator.Simulate(*parsed_log);
+  DecodabilitySimulator::Config config;
+  DecodabilitySimulator simulator(config);
+  DecodabilitySimulator::Results results = simulator.Simulate(*parsed_log);
 
   ASSERT_THAT(results.streams, SizeIs(1));
   const auto& stream = results.streams.front();
@@ -122,8 +127,9 @@ TEST(DecodabilitySimulatorTest, VideoRecvAv1) {
   std::unique_ptr<ParsedRtcEventLog> parsed_log =
       ParsedRtcEventLogFromResources("video_recv_av1_pt45");
 
-DecodabilitySimulator::Config config;
-  DecodabilitySimulator simulator(config);  DecodabilitySimulator::Results results = simulator.Simulate(*parsed_log);
+  DecodabilitySimulator::Config config;
+  DecodabilitySimulator simulator(config);
+  DecodabilitySimulator::Results results = simulator.Simulate(*parsed_log);
 
   ASSERT_THAT(results.streams, SizeIs(1));
   const auto& stream = results.streams.front();
@@ -146,8 +152,9 @@ TEST(DecodabilitySimulatorTest, VideoRecvSequentialJoinVp8Vp9Av1) {
   std::unique_ptr<ParsedRtcEventLog> parsed_log =
       ParsedRtcEventLogFromResources("video_recv_sequential_join_vp8_vp9_av1");
 
-DecodabilitySimulator::Config config;
-  DecodabilitySimulator simulator(config);  DecodabilitySimulator::Results results = simulator.Simulate(*parsed_log);
+  DecodabilitySimulator::Config config;
+  DecodabilitySimulator simulator(config);
+  DecodabilitySimulator::Results results = simulator.Simulate(*parsed_log);
 
   EXPECT_THAT(results.streams,
               ElementsAre(AllOf(Field(&Stream::ssrc, Eq(2827012235)),
@@ -195,5 +202,7 @@ TEST(DecodabilitySimulatorTest, VideoRecvVp8Lossy) {
                         .unwrapped_rtp_timestamp = 2607363343,
                         .assembled_timestamp = Timestamp::Millis(821457158),
                         .decodable_timestamp = Timestamp::Millis(821457158)}));
-}}  // namespace
+}
+
+}  // namespace
 }  // namespace webrtc::video_timing_simulator

@@ -31,9 +31,10 @@ test('get query for simple dataset', () => {
     schema: {id: NUM},
   });
 
-expect(dataset.query()).toEqual(`SELECT
+  expect(dataset.query()).toEqual(`SELECT
   id
-FROM (slice)`);});
+FROM (slice)`);
+});
 
 test("get query for simple dataset with 'eq' filter", () => {
   const dataset = new SourceDataset({
@@ -45,10 +46,11 @@ test("get query for simple dataset with 'eq' filter", () => {
     },
   });
 
-expect(dataset.query()).toEqual(`SELECT
+  expect(dataset.query()).toEqual(`SELECT
   id
 FROM (slice)
-WHERE id = 123`);});
+WHERE id = 123`);
+});
 
 test("get query for simple dataset with an 'in' filter", () => {
   const dataset = new SourceDataset({
@@ -60,7 +62,7 @@ test("get query for simple dataset with an 'in' filter", () => {
     },
   });
 
-expect(dataset.query()).toEqual(`SELECT
+  expect(dataset.query()).toEqual(`SELECT
   id
 FROM (slice)
 WHERE id IN (123, 456)`);
@@ -364,7 +366,8 @@ WHERE id IN (123, 456)`);
   name,
   thread.name AS thread_name
 FROM (slice) JOIN thread AS thread USING (utid)
-WHERE id IN (123, 456)`);});
+WHERE id IN (123, 456)`);
+});
 
 test('get query for union dataset', () => {
   const dataset = UnionDataset.create([
@@ -386,11 +389,12 @@ test('get query for union dataset', () => {
     }),
   ]);
 
-// Query automatically optimizes the union into a single source with IN filter
+  // Query automatically optimizes the union into a single source with IN filter
   expect(dataset.query()).toEqual(`SELECT
   id
 FROM (slice)
-WHERE id IN (123, 456)`);});
+WHERE id IN (123, 456)`);
+});
 
 test('union dataset batches large numbers of unions', () => {
   const datasets = [];

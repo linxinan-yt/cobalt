@@ -153,11 +153,12 @@ export class WasmTraceAnalyzer implements TraceAnalyzer {
   async analyze(
     file: File,
     onProgress: (progress: number) => void,
-): Promise<FileAnalysis> {
+  ): Promise<FileAnalysis> {
     using engine = newTokenizeOnlyEngine();
     await parseStream(engine, new TraceFileStream(file), (n) =>
       onProgress(n / file.size),
-    );    const result = await engine.query(`
+    );
+    const result = await engine.query(`
         SELECT trace_type
         FROM __intrinsic_trace_file
         WHERE is_container = 0

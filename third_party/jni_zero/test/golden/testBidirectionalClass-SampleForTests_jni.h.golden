@@ -736,7 +736,8 @@ static ::jni_zero::ScopedJavaLocalRef<jobject> Java_SampleForTests_addStructA(
     JNIEnv* env,
 const ::jni_zero::JavaRef<jobject>& obj,
     const ::jni_zero::JavaRef<jobject>& a,
-    const ::jni_zero::JavaRef<jobject>& b) {  static std::atomic<jmethodID> cached_method_id(nullptr);
+    const ::jni_zero::JavaRef<jobject>& b) {
+  static std::atomic<jmethodID> cached_method_id(nullptr);
   jclass clazz = org_jni_1zero_SampleForTests_clazz(env);
   CHECK_CLAZZ(env, obj.obj(), clazz, nullptr);
   ::jni_zero::internal::JniJavaCallContext<true> call_context;
@@ -804,7 +805,8 @@ static std::string Java_SampleForTests_getFirstString(
 static ::jni_zero::ScopedJavaLocalRef<jthrowable> Java_SampleForTests_getThrowable(
     JNIEnv* env,
 const ::jni_zero::JavaRef<jobject>& obj,
-    const ::jni_zero::JavaRef<jthrowable>& arg0) {  static std::atomic<jmethodID> cached_method_id(nullptr);
+    const ::jni_zero::JavaRef<jthrowable>& arg0) {
+  static std::atomic<jmethodID> cached_method_id(nullptr);
   jclass clazz = org_jni_1zero_SampleForTests_clazz(env);
   CHECK_CLAZZ(env, obj.obj(), clazz, nullptr);
   ::jni_zero::internal::JniJavaCallContext<true> call_context;

@@ -138,10 +138,11 @@ struct ConfigHelper {
                TaskQueueBase* worker_thread,
                scoped_refptr<MockAudioMixer> audio_mixer,
                bool use_null_audio_processing)
-: audio_mixer_(audio_mixer),
+      : audio_mixer_(audio_mixer),
         rtp_stream_receiver_controller_(network_thread,
                                         worker_thread,
-                                        &dummy_validator_) {    AudioState::Config config;
+                                        &dummy_validator_) {
+    AudioState::Config config;
     config.audio_mixer = audio_mixer_;
     config.audio_processing =
         use_null_audio_processing
@@ -157,8 +158,9 @@ struct ConfigHelper {
         .WillRepeatedly([](const std::map<int, SdpAudioFormat>& codecs) {
           EXPECT_THAT(codecs, ::testing::IsEmpty());
         });
-EXPECT_CALL(*channel_receive_, remote_ssrc)
+    EXPECT_CALL(*channel_receive_, remote_ssrc)
         .WillRepeatedly(Return(kRemoteSsrc));
+
     stream_config_.rtp.remote_ssrc = kRemoteSsrc;
     stream_config_.rtp.nack.rtp_history_ms = 300;
     stream_config_.rtcp_send_transport = &rtcp_send_transport_;

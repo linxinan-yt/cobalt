@@ -332,7 +332,7 @@ PERFETTO_PB_FIELD(perfetto_protos_TraceConfig,
                   41);
 PERFETTO_PB_FIELD(perfetto_protos_TraceConfig,
                   VARINT,
-enum perfetto_protos_TraceConfig_WriteFlushMode,
+                  enum perfetto_protos_TraceConfig_WriteFlushMode,
                   write_flush_mode,
                   44);
 PERFETTO_PB_FIELD(perfetto_protos_TraceConfig,
@@ -350,6 +350,7 @@ PERFETTO_PB_FIELD(perfetto_protos_TraceConfig,
                   perfetto_protos_TraceAttributes,
                   trace_attributes,
                   48);
+
 PERFETTO_PB_MSG(perfetto_protos_TraceConfig_SessionSemaphore);
 PERFETTO_PB_FIELD(perfetto_protos_TraceConfig_SessionSemaphore,
                   STRING,

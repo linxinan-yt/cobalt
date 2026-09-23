@@ -20,6 +20,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <optional>
+#include <vector>
 
 #include "perfetto/base/logging.h"
 #include "perfetto/base/status.h"
@@ -36,6 +37,7 @@
 #include "src/trace_processor/types/trace_processor_context.h"
 #include "src/trace_processor/types/variadic.h"
 #include "src/trace_processor/util/clock_synchronizer.h"
+
 #include "protos/perfetto/common/builtin_clock.pbzero.h"
 
 namespace perfetto::trace_processor {
@@ -44,14 +46,15 @@ namespace perfetto::trace_processor {
 
 ClockTracker::ClockTracker(TraceProcessorContext* context,
                            ClockSynchronizer* sync,
-                           bool is_primary)    : context_(context),
+                           bool is_primary)
+    : context_(context),
       source_clock_id_key_(context->storage->InternString("source_clock_id")),
       target_clock_id_key_(context->storage->InternString("target_clock_id")),
       source_timestamp_key_(context->storage->InternString("source_timestamp")),
       source_sequence_id_key_(
           context->storage->InternString("source_sequence_id")),
       target_sequence_id_key_(
-context->storage->InternString("target_sequence_id")),
+          context->storage->InternString("target_sequence_id")),
       sync_(sync),
       machine_id_(context->machine_id().value),
       own_file_id_(context->trace_id().value),
@@ -405,6 +408,7 @@ base::Status ClockSynchronizerListenerImpl::OnClockSyncCacheMiss() {
 base::Status ClockSynchronizerListenerImpl::OnInvalidClockSnapshot() {
   context_->global_stats_tracker->IncrementStats(
       std::nullopt, std::nullopt, stats::invalid_clock_snapshots);
-  return base::OkStatus();}
+  return base::OkStatus();
+}
 
 }  // namespace perfetto::trace_processor

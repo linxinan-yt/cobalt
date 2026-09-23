@@ -112,8 +112,9 @@ rtc_library("encoder_speed_controller_factory") {
   sources = [ "encoder_speed_controller.cc" ]
   deps = [
     ":video_codecs_api",
-"../../modules/video_coding:encoder_speed_controller_impl",
-    "../units:time_delta",  ]
+    "../../modules/video_coding:encoder_speed_controller_impl",
+    "../units:time_delta",
+  ]
 }
 
 rtc_source_set("bitstream_parser_api") {

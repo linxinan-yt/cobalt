@@ -17,7 +17,8 @@ import {
   type TableColumn,
   type ListColumnsContext,
   tableColumnId,
-} from '../table_column';import {MenuDivider, MenuItem} from '../../../../../widgets/menu';
+} from '../table_column';
+import {MenuDivider, MenuItem} from '../../../../../widgets/menu';
 import {raf} from '../../../../../core/raf_scheduler';
 import {uuidv4} from '../../../../../base/uuid';
 import {hasModKey, modKey} from '../../../../../base/hotkeys';
@@ -26,6 +27,7 @@ import {Spinner} from '../../../../../widgets/spinner';
 import type {Filters} from '../filters';
 import type {Trace} from '../../../../../public/trace';
 import type {SqlColumn} from '../sql_column';
+
 export type SelectColumnMenuAttrs = {
   columns:
     | {key: string; column: TableColumn}[]

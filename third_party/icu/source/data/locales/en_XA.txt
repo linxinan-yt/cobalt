@@ -50,12 +50,14 @@ en_XA{
                 Bhm{"[h:mm B 'one']"}
                 Bhms{"[h:mm:ss B 'one' 'two']"}
                 E{"[ccc 'one']"}
-EBh{"[E h B 'one']"}                EBhm{"[E h:mm B 'one' 'two']"}
+EBh{"[E h B 'one']"}
+                EBhm{"[E h:mm B 'one' 'two']"}
                 EBhms{"[E h:mm:ss B 'one' 'two']"}
                 EHm{"[E HH:mm 'one' 'two']"}
                 EHms{"[E HH:mm:ss 'one' 'two']"}
                 Ed{"[d E 'one']"}
-Eh{"[E h a 'one']"}                Ehm{"[E h:mm a 'one' 'two']"}
+Eh{"[E h a 'one']"}
+                Ehm{"[E h:mm a 'one' 'two']"}
                 Ehms{"[E h:mm:ss a 'one' 'two']"}
                 Gy{"[r(U) 'one']"}
                 GyMMM{"[MMM r 'one']"}
@@ -67,7 +69,8 @@ Eh{"[E h a 'one']"}                Ehm{"[E h:mm a 'one' 'two']"}
                 H{"[HH 'one']"}
                 Hm{"[HH:mm 'one']"}
                 Hms{"[HH:mm:ss 'one' 'two']"}
-Hv{"[HH'ĥ' v 'one' 'two']"}                M{"[L 'one']"}
+Hv{"[HH'ĥ' v 'one' 'two']"}
+                M{"[L 'one']"}
                 MEd{"[E, M/d 'one']"}
                 MMM{"[LLL 'one']"}
                 MMMEd{"[E, MMM d 'one' 'two']"}
@@ -82,7 +85,8 @@ Hv{"[HH'ĥ' v 'one' 'two']"}                M{"[L 'one']"}
                 h{"[h a 'one']"}
                 hm{"[h:mm a 'one']"}
                 hms{"[h:mm:ss a 'one' 'two']"}
-hv{"[h a v 'one']"}                ms{"[mm:ss 'one']"}
+hv{"[h a v 'one']"}
+                ms{"[mm:ss 'one']"}
                 y{"[r(U) 'one']"}
                 yyyy{"[r(U) 'one']"}
                 yyyyM{"[M/r 'one']"}
@@ -293,7 +297,8 @@ hv{"[h a v 'one']"}                ms{"[mm:ss 'one']"}
                 "[EEEE, MMMM d, y G 'one' 'two' 'three']",
                 "[MMMM d, y G 'one' 'two']",
                 "[MMM d, y G 'one' 'two']",
-"[M/d/y GGGGG 'one' 'two']",                "[{1}, {0} 'one' 'two']",
+"[M/d/y GGGGG 'one' 'two']",
+                "[{1}, {0} 'one' 'two']",
                 "[{1}, {0} 'one' 'two']",
                 "[{1}, {0} 'one' 'two']",
                 "[{1}, {0} 'one' 'two']",
@@ -310,7 +315,8 @@ DateTimePatterns%relative{
                 "[{1} 'åţ' {0} 'one' 'two']",
                 "[{1}, {0} 'one' 'two']",
                 "[{1}, {0} 'one' 'two']",
-            }            DateTimeSkeletons{
+            }
+            DateTimeSkeletons{
                 "ahmmsszzzz",
                 "ahmmssz",
                 "ahmmss",
@@ -338,7 +344,8 @@ DateTimePatterns%relative{
                 Bhm{"[h:mm B 'one']"}
                 Bhms{"[h:mm:ss B 'one' 'two']"}
                 E{"[ccc 'one']"}
-EBh{"[E h B 'one']"}                EBhm{"[E h:mm B 'one' 'two']"}
+EBh{"[E h B 'one']"}
+                EBhm{"[E h:mm B 'one' 'two']"}
                 EBhms{"[E h:mm:ss B 'one' 'two']"}
                 EHm{"[E HH:mm 'one' 'two']"}
                 EHms{"[E HH:mm:ss 'one' 'two']"}
@@ -356,7 +363,8 @@ Eh{"[E h a 'one']"}
                 H{"[HH 'one']"}
                 Hm{"[HH:mm 'one']"}
                 Hms{"[HH:mm:ss 'one' 'two']"}
-                Hv{"[HH'ĥ' v 'one' 'two']"}                M{"[L 'one']"}
+                Hv{"[HH'ĥ' v 'one' 'two']"}
+                M{"[L 'one']"}
                 MEd{"[E, M/d 'one']"}
                 MMM{"[LLL 'one']"}
                 MMMEd{"[E, MMM d 'one' 'two']"}
@@ -372,11 +380,13 @@ hv{"[h a v 'one']"}
                 y{"[y G 'one']"}
                 yyyy{"[y G 'one']"}
                 yyyyM{"[M/y GGGGG 'one' 'two']"}
-                yyyyMEd{"[E, M/d/y GGGGG 'one' 'two']"}                yyyyMMM{"[MMM y G 'one' 'two']"}
+                yyyyMEd{"[E, M/d/y GGGGG 'one' 'two']"}
+                yyyyMMM{"[MMM y G 'one' 'two']"}
                 yyyyMMMEd{"[E, MMM d, y G 'one' 'two']"}
                 yyyyMMMM{"[MMMM y G 'one' 'two']"}
                 yyyyMMMd{"[MMM d, y G 'one' 'two']"}
-yyyyMd{"[M/d/y GGGGG 'one' 'two']"}                yyyyQQQ{"[QQQ y G 'one' 'two']"}
+yyyyMd{"[M/d/y GGGGG 'one' 'two']"}
+                yyyyQQQ{"[QQQ y G 'one' 'two']"}
                 yyyyQQQQ{"[QQQQ y G 'one' 'two']"}
             }
             intervalFormats{
@@ -561,7 +571,8 @@ DateTimePatterns%relative{
                 "[{1} 'åţ' {0} 'one' 'two']",
                 "[{1}, {0} 'one' 'two']",
                 "[{1}, {0} 'one' 'two']",
-            }            DateTimeSkeletons{
+            }
+            DateTimeSkeletons{
                 "[ahmmsszzzz 'one' 'two']",
                 "[ahmmssz 'one' 'two']",
                 "[ahmmss 'one']",
@@ -589,7 +600,8 @@ DateTimePatterns%relative{
                 Bhm{"[h:mm B 'one']"}
                 Bhms{"[h:mm:ss B 'one' 'two']"}
                 E{"[ccc 'one']"}
-EBh{"[E h B 'one']"}                EBhm{"[E h:mm B 'one' 'two']"}
+EBh{"[E h B 'one']"}
+                EBhm{"[E h:mm B 'one' 'two']"}
                 EBhms{"[E h:mm:ss B 'one' 'two']"}
                 EHm{"[E HH:mm 'one' 'two']"}
                 EHms{"[E HH:mm:ss 'one' 'two']"}
@@ -599,7 +611,8 @@ Eh{"[E h a 'one']"}
                 Ehms{"[E h:mm:ss a 'one' 'two']"}
                 Gy{"[y G 'one']"}
                 GyM{"[M/y G 'one']"}
-                GyMEd{"[E, M/d/y G 'one' 'two']"}                GyMMM{"[MMM y G 'one' 'two']"}
+                GyMEd{"[E, M/d/y G 'one' 'two']"}
+                GyMMM{"[MMM y G 'one' 'two']"}
                 GyMMMEd{"[E, MMM d, y G 'one' 'two']"}
                 GyMMMd{"[MMM d, y G 'one' 'two']"}
                 GyMd{"[M/d/y G 'one' 'two']"}
@@ -625,7 +638,8 @@ Eh{"[E h a 'one']"}
                 hms{"[h:mm:ss a 'one' 'two']"}
                 hmsv{"[h:mm:ss a v 'one' 'two']"}
                 hmv{"[h:mm a v 'one' 'two']"}
-hv{"[h a v 'one']"}                ms{"[mm:ss 'one']"}
+hv{"[h a v 'one']"}
+                ms{"[mm:ss 'one']"}
                 y{"[y 'one']"}
                 yM{"[M/y 'one']"}
                 yMEd{"[E, M/d/y 'one' 'two']"}
@@ -1226,7 +1240,8 @@ hv{"[h a v 'one']"}                ms{"[mm:ss 'one']"}
                 "[EEEE, MMMM d, y G 'one' 'two' 'three']",
                 "[MMMM d, y G 'one' 'two']",
                 "[MMM d, y G 'one' 'two']",
-"[M/d/y GGGGG 'one' 'two']",                "{1}, {0}",
+"[M/d/y GGGGG 'one' 'two']",
+                "{1}, {0}",
                 "{1}, {0}",
                 "{1}, {0}",
                 "{1}, {0}",
@@ -1239,7 +1254,8 @@ hv{"[h a v 'one']"}                ms{"[mm:ss 'one']"}
 GyMMM{"[MMM y G 'one' 'two']"}
                 GyMMMEd{"[E, MMM d, y G 'one' 'two']"}
                 GyMMMd{"[MMM d, y G 'one' 'two']"}
-                GyMd{"[M/d/y GGGGG 'one' 'two']"}                M{"[L 'one']"}
+                GyMd{"[M/d/y GGGGG 'one' 'two']"}
+                M{"[L 'one']"}
                 MEd{"[E, M/d 'one']"}
                 MMM{"[LLL 'one']"}
                 MMMEd{"[E, MMM d 'one' 'two']"}
@@ -1250,11 +1266,13 @@ GyMMM{"[MMM y G 'one' 'two']"}
                 y{"[y G 'one']"}
                 yyyy{"[y G 'one']"}
 yyyyM{"[M/y GGGGG 'one' 'two']"}
-                yyyyMEd{"[E, M/d/y GGGGG 'one' 'two']"}                yyyyMMM{"[MMM y G 'one' 'two']"}
+                yyyyMEd{"[E, M/d/y GGGGG 'one' 'two']"}
+                yyyyMMM{"[MMM y G 'one' 'two']"}
                 yyyyMMMEd{"[E, MMM d, y G 'one' 'two']"}
                 yyyyMMMM{"[MMMM y G 'one' 'two']"}
                 yyyyMMMd{"[MMM d, y G 'one' 'two']"}
-yyyyMd{"[M/d/y GGGGG 'one' 'two']"}                yyyyQQQ{"[QQQ y G 'one' 'two']"}
+yyyyMd{"[M/d/y GGGGG 'one' 'two']"}
+                yyyyQQQ{"[QQQ y G 'one' 'two']"}
                 yyyyQQQQ{"[QQQQ y G 'one' 'two']"}
             }
             eras{

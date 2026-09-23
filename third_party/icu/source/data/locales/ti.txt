@@ -362,7 +362,8 @@ ti{
                 GyMMMEd{"E፣ d MMM y G"}
                 GyMMMd{"MMM d, y G"}
                 GyMd{"M/d/y GGGGG"}
-Hv{"HHሰ v"}                MEd{"E፣ d/M"}
+Hv{"HHሰ v"}
+                MEd{"E፣ d/M"}
                 MMMEd{"E, MMM d"}
                 MMMMd{"d MMMM"}
                 MMMMdd{"dd MMMM"}
@@ -808,7 +809,8 @@ Hv{"HHሰ v"}                MEd{"E፣ d/M"}
             }
             availableFormats{
                 Ed{"d E"}
-GyMEd{"G y-MM-dd፣ E"}                GyMMMd{"MMM d, y G"}
+GyMEd{"G y-MM-dd፣ E"}
+                GyMMMd{"MMM d, y G"}
                 GyMd{"M/d/y GGGGG"}
                 MMMEd{"E, MMM d"}
                 MMMMd{"MMMM d"}
@@ -1328,7 +1330,8 @@ GyMEd{"G y-MM-dd፣ E"}                GyMMMd{"MMM d, y G"}
             sorting-long-referring-formal{"{surname-core}፣ {given} {given2} {surname-prefix}"}
 sorting-long-referring-informal{"{surname}፣ {given-informal}"}
             sorting-medium-referring-formal{"{surname-core}፣ {given} {given2-initial} {surname-prefix}"}
-            sorting-medium-referring-informal{"{surname}፣ {given-informal}"}            sorting-short-referring-formal{"{surname-core}፣ {given} {given2} {surname-prefix}"}
+            sorting-medium-referring-informal{"{surname}፣ {given-informal}"}
+            sorting-short-referring-formal{"{surname-core}፣ {given} {given2} {surname-prefix}"}
             sorting-short-referring-informal{"{surname-core}፣ {given} {given2} {surname-prefix}"}
             surnameFirst-long-addressing-formal{"{title} {surname}"}
             surnameFirst-long-addressing-informal{"{given-informal}"}

@@ -31,7 +31,7 @@ U_NAMESPACE_BEGIN
 
 namespace message2 {
 
-namespace functions {
+    namespace functions {
     static constexpr std::u16string_view DATETIME = u"datetime";
     static constexpr std::u16string_view DATE = u"date";
     static constexpr std::u16string_view TIME = u"time";
@@ -41,7 +41,9 @@ namespace functions {
     static constexpr std::u16string_view TEST_FORMAT = u"test:format";
     static constexpr std::u16string_view TEST_SELECT = u"test:select";
     static constexpr std::u16string_view STRING = u"string";
-    }    using namespace data_model;
+    }
+
+    using namespace data_model;
 
     // PrioritizedVariant
 
@@ -159,7 +161,8 @@ namespace functions {
     public:
         MessageContext(const MessageArguments&, const StaticErrors&, UErrorCode&);
 
-const Formattable* getGlobal(const VariableName&, UErrorCode&) const;
+        const Formattable* getGlobal(const VariableName&, UErrorCode&) const;
+
         // If any errors were set, update `status` accordingly
         void checkErrors(UErrorCode& status) const;
         DynamicErrors& getErrors() { return errors; }
@@ -210,6 +213,7 @@ const Formattable* getGlobal(const VariableName&, UErrorCode&) const;
         FunctionName name;
         const Selector* selector; // May be null
         const Formatter* formatter; // May be null, but one or the other should be non-null unless argument is a FormattedPlaceholder
+        bool checkSelectOption() const;
     }; // class InternalValue
 
 } // namespace message2

@@ -531,7 +531,8 @@ class SQLitePersistentCookieStore::Backend
 #if BUILDFLAG(IS_COBALT)
   // Timer for the total load time of the cookie database.
   std::unique_ptr<base::ElapsedTimer> load_timer_;
-#endif  // BUILDFLAG(IS_COBALT)};
+#endif  // BUILDFLAG(IS_COBALT)
+};
 
 namespace {
 
@@ -1558,7 +1559,8 @@ TRACE_EVENT("loading",
                         load_timer_->Elapsed());
     load_timer_.reset();
   }
-#endif  // BUILDFLAG(IS_COBALT)  PostClientTask(FROM_HERE,
+#endif  // BUILDFLAG(IS_COBALT)
+  PostClientTask(FROM_HERE,
                  base::BindOnce(&Backend::NotifyLoadCompleteInForeground, this,
                                 std::move(loaded_callback), success));
 }

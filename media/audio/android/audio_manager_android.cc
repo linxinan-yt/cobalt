@@ -18,6 +18,7 @@
 #include "base/containers/flat_map.h"
 #include "base/feature_list.h"
 #include "base/functional/bind.h"
+#include "base/functional/callback_helpers.h"
 #include "base/logging.h"
 #include "base/metrics/histogram_functions.h"
 #include "base/strings/strcat.h"
@@ -116,7 +117,8 @@ class JniDelegateImpl : public AudioManagerAndroid::JniDelegate {
       : j_audio_manager_(Java_AudioManagerAndroid_createAudioManagerAndroid(
             AttachCurrentThread(),
 reinterpret_cast<int64_t>(audio_manager))) {
-#if !BUILDFLAG(USE_STARBOARD_MEDIA)    Java_AudioManagerAndroid_init(AttachCurrentThread(), j_audio_manager_);
+#if !BUILDFLAG(USE_STARBOARD_MEDIA)
+    Java_AudioManagerAndroid_init(AttachCurrentThread(), j_audio_manager_);
 #endif  // !BUILDFLAG(USE_STARBOARD_MEDIA)
   }
 

@@ -212,7 +212,8 @@ bool StunRequestManager::empty() const {
   return requests_.empty();
 }
 
-bool StunRequestManager::CheckResponse(std::span<const uint8_t> payload) {  RTC_DCHECK_RUN_ON(thread_);
+bool StunRequestManager::CheckResponse(std::span<const uint8_t> payload) {
+  RTC_DCHECK_RUN_ON(thread_);
   // Check the appropriate bytes of the stream to see if they match the
   // transaction ID of a response we are expecting.
 

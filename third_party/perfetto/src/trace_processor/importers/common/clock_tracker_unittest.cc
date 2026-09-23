@@ -45,7 +45,7 @@ class ClockTrackerTest : public ::testing::Test {
  public:
   ClockTrackerTest() {
     context_.storage.reset(new TraceStorage());
-context_.global_stats_tracker =
+    context_.global_stats_tracker =
         std::make_unique<GlobalStatsTracker>(context_.storage.get());
     context_.global_args_tracker.reset(
         new GlobalArgsTracker(context_.storage.get()));
@@ -66,14 +66,15 @@ context_.global_stats_tracker =
         context_.trace_time_state.get(),
         std::make_unique<ClockSynchronizerListenerImpl>(&context_));
     ct_ = std::make_unique<ClockTracker>(&context_, primary_sync_.get(),
-                                         /*is_primary=*/true);  }
+                                         /*is_primary=*/true);
+  }
   std::optional<int64_t> Convert(ClockTracker::ClockId src_clock_id,
                                  int64_t src_timestamp,
                                  ClockTracker::ClockId target_clock_id) {
     return ct_->Convert(src_clock_id, src_timestamp, target_clock_id, {});
   }
 
-// Builds a ClockTracker for a remote machine sharing the global graph.
+  // Builds a ClockTracker for a remote machine sharing the global graph.
   std::unique_ptr<ClockTracker> MakeRemoteTracker(uint32_t raw_machine_id) {
     context_.machine_tracker =
         std::make_unique<MachineTracker>(&context_, raw_machine_id);
@@ -82,7 +83,8 @@ context_.global_stats_tracker =
   }
 
   TraceProcessorContext context_;
-  std::unique_ptr<ClockSynchronizer> primary_sync_;  std::unique_ptr<ClockTracker> ct_;
+  std::unique_ptr<ClockSynchronizer> primary_sync_;
+  std::unique_ptr<ClockTracker> ct_;
 };
 
 namespace {
@@ -162,7 +164,8 @@ TEST_F(ClockTrackerTest, RemoteNonPrimaryFileResolvesThroughSharedRealtime) {
 
   // A BOOTTIME event on the non-primary trace reaches trace time only because
   // its REALTIME is the shared machine-canonical node feeding the rendezvous.
-  EXPECT_TRUE(remote_np.ToTraceTime(BOOTTIME, 300000).has_value());}
+  EXPECT_TRUE(remote_np.ToTraceTime(BOOTTIME, 300000).has_value());
+}
 
 // When a clock moves backwards conversions *from* that clock are forbidden
 // but conversions *to* that clock should still work.
@@ -405,17 +408,18 @@ TEST_F(ClockTrackerTest, CacheDoesntAffectResultsTwoStep) {
 // instant the host BOOTTIME reads 10000 and the remote's reads 0 (so remote +
 // 10000 == host), exactly what a remote_clock_sync would establish.
 TEST_F(ClockTrackerTest, ClockOffset) {
-auto rt = MakeRemoteTracker(0x1001);
+  auto rt = MakeRemoteTracker(0x1001);
   uint32_t m = context_.machine_id().value;  // rt's (table) machine id.
   rt->AddQualifiedSnapshot(
       {{ClockId::Machine(0, protos::pbzero::BUILTIN_CLOCK_BOOTTIME), 10000},
        {ClockId::Machine(m, protos::pbzero::BUILTIN_CLOCK_BOOTTIME), 0}});
+
   rt->AddSnapshot({{REALTIME, 10}, {BOOTTIME, 10010}});
   rt->AddSnapshot({{REALTIME, 20}, {BOOTTIME, 20220}});
   rt->AddSnapshot({{REALTIME, 30}, {BOOTTIME, 30030}});
   rt->AddSnapshot({{MONOTONIC, 1000}, {BOOTTIME, 100000}});
 
-auto seq_clock_1 = ClockId::Sequence(0, 1, 64);
+  auto seq_clock_1 = ClockId::Sequence(0, 1, 64);
   auto seq_clock_2 = ClockId::Sequence(0, 2, 64);
   rt->AddSnapshot({{MONOTONIC, 2000}, {seq_clock_1, 1200}});
   rt->AddSnapshot({{seq_clock_1, 1300}, {seq_clock_2, 2000, 10, false}});
@@ -441,7 +445,8 @@ auto seq_clock_1 = ClockId::Sequence(0, 1, 64);
   // seq_clock_1 -> MONOTONIC -> BOOTTIME -> cross-machine edge.
   EXPECT_EQ(*rt->ToTraceTime(seq_clock_1, 1100), -100 + 1000 + 100000 + 10000);
   // seq_clock_2 -> seq_clock_1 -> MONOTONIC -> BOOTTIME -> cross-machine edge.
-  EXPECT_EQ(*rt->ToTraceTime(seq_clock_2, 2100),            (100 * 10) + 100 + 1000 + 100000 + 10000);
+  EXPECT_EQ(*rt->ToTraceTime(seq_clock_2, 2100),
+            (100 * 10) + 100 + 1000 + 100000 + 10000);
 }
 
 // A remote machine with no cross-machine sync: the deferred identity edge makes
@@ -450,7 +455,7 @@ TEST_F(ClockTrackerTest, RemoteNoClockOffset) {
   auto rt = MakeRemoteTracker(0x1001);
   rt->AddDeferredClockSync(BOOTTIME);
 
-rt->AddSnapshot({{REALTIME, 10}, {BOOTTIME, 10010}});
+  rt->AddSnapshot({{REALTIME, 10}, {BOOTTIME, 10010}});
   rt->AddSnapshot({{REALTIME, 20}, {BOOTTIME, 20220}});
   rt->AddSnapshot({{MONOTONIC, 1000}, {BOOTTIME, 100000}});
 
@@ -476,7 +481,9 @@ rt->AddSnapshot({{REALTIME, 10}, {BOOTTIME, 10010}});
   EXPECT_EQ(*rt->ToTraceTime(seq_clock_1, 1100), -100 + 1000 + 100000);
   EXPECT_EQ(*rt->ToTraceTime(seq_clock_2, 2100),
             (100 * 10) + 100 + 1000 + 100000);
-}TEST_F(ClockTrackerTest, MultiHopCacheIsHit) {
+}
+
+TEST_F(ClockTrackerTest, MultiHopCacheIsHit) {
   // Path: MONOTONIC_RAW -> MONOTONIC -> BOOTTIME
   ct_->AddSnapshot({{MONOTONIC_RAW, 100}, {MONOTONIC, 200}});
   ct_->AddSnapshot({{MONOTONIC, 300}, {BOOTTIME, 4000}});
@@ -538,18 +545,20 @@ TEST_F(ClockTrackerTest, CacheInvalidationAndPathReoptimization) {
   EXPECT_EQ(*Convert(MONOTONIC, 50, BOOTTIME), 50 + (200 - 100) + (4000 - 300));
   EXPECT_EQ(ct_->cache_hits_for_testing(), 1u);
 
-// 2. Add a direct, more optimal path. This will clear the cache. Recording
+  // 2. Add a direct, more optimal path. This will clear the cache. Recording
   // the snapshot into the clock_snapshot table converts its clocks, which
-  // immediately re-warms the cache with the new path.  ct_->AddSnapshot({{MONOTONIC, 500}, {BOOTTIME, 6000}});
+  // immediately re-warms the cache with the new path.
+  ct_->AddSnapshot({{MONOTONIC, 500}, {BOOTTIME, 6000}});
 
   // 3. Convert again. The new, more optimal path should be used for the
   // conversion (cached by the recording above).
   EXPECT_EQ(*Convert(MONOTONIC, 400, BOOTTIME), 400 + (6000 - 500));
-EXPECT_EQ(ct_->cache_hits_for_testing(), 2u);
+  EXPECT_EQ(ct_->cache_hits_for_testing(), 2u);
 
   // The new path should now be cached.
   EXPECT_EQ(*Convert(MONOTONIC, 400, BOOTTIME), 400 + (6000 - 500));
-  EXPECT_EQ(ct_->cache_hits_for_testing(), 3u);}
+  EXPECT_EQ(ct_->cache_hits_for_testing(), 3u);
+}
 
 TEST_F(ClockTrackerTest, ThreeHopConversion) {
   // Path: REALTIME -> MONOTONIC_RAW -> MONOTONIC -> BOOTTIME
@@ -736,7 +745,8 @@ TEST_F(ClockTrackerTest, SetTraceDefaultClock_DoesNotChangeGlobalClock) {
   ct_->SetTraceDefaultClock(MONOTONIC);
 
   // Global clock should still be BOOTTIME (test fixture default).
-  EXPECT_EQ(context_.trace_time_state->clock_id, BOOTTIME);}
+  EXPECT_EQ(context_.trace_time_state->clock_id, BOOTTIME);
+}
 
 }  // namespace
 }  // namespace perfetto::trace_processor

@@ -231,16 +231,13 @@ int32_t ChineseCalendar::handleGetExtendedYear(UErrorCode& status) {
         // adjust to the instance specific epoch
         int32_t cycle = internalGet(UCAL_ERA, 1);
         year = internalGet(UCAL_YEAR, 1);
-const Setting setting = getSetting(status);
-        if (U_FAILURE(status)) {
-            return 0;
-        }
         // Handle int32 overflow calculation for
-        // year = year + (cycle-1) * 60 -(fEpochYear - CHINESE_EPOCH_YEAR)
+        // year = year + (cycle-1) * 60 + CYCLE_EPOCH - CHINESE_EPOCH_YEAR
         if (uprv_add32_overflow(cycle, -1, &cycle) || // 0-based cycle
             uprv_mul32_overflow(cycle, 60, &cycle) ||
             uprv_add32_overflow(year, cycle, &year) ||
-            uprv_add32_overflow(year, -(setting.epochYear-CHINESE_EPOCH_YEAR),                                &year)) {
+            uprv_add32_overflow(year, CYCLE_EPOCH-CHINESE_EPOCH_YEAR,
+                                &year)) {
             status = U_ILLEGAL_ARGUMENT_ERROR;
             return 0;
         }
@@ -366,7 +363,7 @@ int64_t ChineseCalendar::handleComputeMonthStartWithLeap(int32_t eyear, int32_t 
     if (U_FAILURE(status)) {
        return 0;
     }
-int32_t gyear = eyear;
+    int32_t gyear = eyear;
     int32_t theNewYear = newYear(setting, gyear, status);
     int32_t newMoon = newMoonNear(setting.zoneAstroCalc, theNewYear + month * 29, true, status);
     if (U_FAILURE(status)) {
@@ -386,7 +383,8 @@ int32_t gyear = eyear;
         }
     }
     int32_t julianDay;
-    if (uprv_add32_overflow(newMoon-1, kEpochStartAsJulianDay, &julianDay)) {        status = U_ILLEGAL_ARGUMENT_ERROR;
+    if (uprv_add32_overflow(newMoon-1, kEpochStartAsJulianDay, &julianDay)) {
+        status = U_ILLEGAL_ARGUMENT_ERROR;
         return 0;
     }
 
@@ -789,7 +787,7 @@ struct MonthInfo computeMonthInfo(
         return output;
     }
     if (days < solsticeAfter) {
-int32_t gprevious_year;
+        int32_t gprevious_year;
         if (uprv_add32_overflow(gyear, -1, &gprevious_year)) {
             status = U_ILLEGAL_ARGUMENT_ERROR;
             return output;
@@ -802,7 +800,8 @@ int32_t gprevious_year;
             status = U_ILLEGAL_ARGUMENT_ERROR;
             return output;
         }
-        solsticeAfter = winterSolstice(setting, gnext_year, status);    }
+        solsticeAfter = winterSolstice(setting, gnext_year, status);
+    }
     if (!(solsticeBefore <= days && days < solsticeAfter)) {
         status = U_ILLEGAL_ARGUMENT_ERROR;
     }
@@ -831,7 +830,7 @@ int32_t gprevious_year;
         return output;
     }
     if (days < theNewYear) {
-int32_t gprevious_year;
+        int32_t gprevious_year;
         if (uprv_add32_overflow(gyear, -1, &gprevious_year)) {
             status = U_ILLEGAL_ARGUMENT_ERROR;
             return output;
@@ -839,7 +838,8 @@ int32_t gprevious_year;
         theNewYear = newYear(setting, gprevious_year, status);
         if (U_FAILURE(status)) {
             return output;
-        }    }
+        }
+    }
     if (output.hasLeapMonthBetweenWinterSolstices &&
         isLeapMonthBetween(timeZone, firstMoon, output.thisMoon, status)) {
         output.month--;
@@ -908,7 +908,7 @@ void ChineseCalendar::handleComputeFields(int32_t julianDay, UErrorCode & status
     hasLeapMonthBetweenWinterSolstices = monthInfo.hasLeapMonthBetweenWinterSolstices;
 
     // Extended year and cycle year is based on the epoch year
-int32_t eyear;
+    int32_t eyear;
     int32_t cycle_year;
     if (uprv_add32_overflow(gyear, -CHINESE_EPOCH_YEAR, &eyear) ||
         uprv_add32_overflow(gyear, -CYCLE_EPOCH, &cycle_year)) {
@@ -922,7 +922,8 @@ int32_t eyear;
             uprv_add32_overflow(cycle_year, 1, &cycle_year)) {
             status = U_ILLEGAL_ARGUMENT_ERROR;
             return;
-        }    }
+        }
+    }
     int32_t dayOfMonth = days - monthInfo.thisMoon + 1;
 
     // 0->0,60  1->1,1  60->1,60  61->2,1  etc.
@@ -938,12 +939,13 @@ int32_t eyear;
        return;
     }
     if (days < theNewYear) {
-int32_t gprevious_year;
+        int32_t gprevious_year;
         if (uprv_add32_overflow(gyear, -1, &gprevious_year)) {
             status = U_ILLEGAL_ARGUMENT_ERROR;
             return;
         }
-        theNewYear = newYear(setting, gprevious_year, status);    }
+        theNewYear = newYear(setting, gprevious_year, status);
+    }
     if (U_FAILURE(status)) {
        return;
     }
@@ -1005,12 +1007,13 @@ int32_t newYear(const icu::ChineseCalendar::Setting& setting,
 
     if (cacheValue == 0) {
 
-int32_t gprevious_year;
+        int32_t gprevious_year;
         if (uprv_add32_overflow(gyear, -1, &gprevious_year)) {
             status = U_ILLEGAL_ARGUMENT_ERROR;
             return 0;
         }
-        int32_t solsticeBefore= winterSolstice(setting, gprevious_year, status);        int32_t solsticeAfter = winterSolstice(setting, gyear, status);
+        int32_t solsticeBefore= winterSolstice(setting, gprevious_year, status);
+        int32_t solsticeAfter = winterSolstice(setting, gyear, status);
         int32_t newMoon1 = newMoonNear(timeZone, solsticeBefore + 1, true, status);
         int32_t newMoon2 = newMoonNear(timeZone, newMoon1 + SYNODIC_GAP, true, status);
         int32_t newMoon11 = newMoonNear(timeZone, solsticeAfter + 1, false, status);
@@ -1182,7 +1185,7 @@ int32_t ChineseCalendar::internalGetMonth(UErrorCode& status) const {
 int32_t ChineseCalendar::internalGetMonth(int32_t defaultValue, UErrorCode& status) const {
     if (U_FAILURE(status)) {
         return 0;
-}
+    }
     switch (resolveFields(kMonthPrecedence)) {
         case UCAL_MONTH:
             return internalGet(UCAL_MONTH);
@@ -1190,7 +1193,8 @@ int32_t ChineseCalendar::internalGetMonth(int32_t defaultValue, UErrorCode& stat
             return internalGetMonth(status);
         default:
             return defaultValue;
-    }}
+    }
+}
 
 ChineseCalendar::Setting ChineseCalendar::getSetting(UErrorCode&) const {
   return {

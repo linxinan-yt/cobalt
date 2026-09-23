@@ -1703,7 +1703,8 @@ TEST(ContentSecurityPolicy, ParseSerializedSourceList) {
           "'wrong' 'cobalt_insecure_local_network'",
           base::BindOnce([] {
             auto csp = mojom::CSPSourceList::New();
-            csp->cobalt_insecure_local_network = true;            return csp;
+            csp->cobalt_insecure_local_network = true;
+            return csp;
           }),
           "The source list for the Content Security Policy directive "
           "'script-src' contains an invalid source: ''wrong''. It will be "
@@ -1721,7 +1722,8 @@ TEST(ContentSecurityPolicy, ParseSerializedSourceList) {
           "'script-src' contains an invalid source: ''wrong''. It will be "
           "ignored.",
       },
-#endif  };
+#endif
+  };
 
   for (auto& test : cases) {
     SCOPED_TRACE(ToString(test.directive_name) + " " + test.directive_value);

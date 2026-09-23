@@ -1198,7 +1198,8 @@ uk{
         }
 "Pacific:Kanton"{
             ec{"Кантон"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"Кірітіматі"}
         }
         "Pacific:Kosrae"{

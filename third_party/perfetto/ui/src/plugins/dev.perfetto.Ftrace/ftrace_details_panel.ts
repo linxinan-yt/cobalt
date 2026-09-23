@@ -15,7 +15,8 @@
 import m from 'mithril';
 import {Time} from '../../base/time';
 import {renderArguments} from '../../components/details/args';
-import {type ArgsDict, parseArgs} from '../../components/sql_utils/args';import {Timestamp} from '../../components/widgets/timestamp';
+import {type ArgsDict, parseArgs} from '../../components/sql_utils/args';
+import {Timestamp} from '../../components/widgets/timestamp';
 import type {TrackEventDetailsPanel} from '../../public/details_panel';
 import type {Trace} from '../../public/trace';
 import {NUM_NULL, STR} from '../../trace_processor/query_result';
@@ -105,7 +106,8 @@ export class FtraceEventDetailsPanel implements TrackEventDetailsPanel {
       args: STR,
     });
 
-if (res !== undefined && res.arg_set_id !== null) {
+    if (res !== undefined && res.arg_set_id !== null) {
       this.args = parseArgs(res.args);
-    }  }
+    }
+  }
 }

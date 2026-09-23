@@ -15,7 +15,8 @@
 import m from 'mithril';
 import {Button} from '../../widgets/button';
 import {Icons} from '../../base/semantic_icons';
-import type {Trace} from '../../public/trace';import {SliceTrack} from './slice_track';
+import type {Trace} from '../../public/trace';
+import {SliceTrack} from './slice_track';
 import {SourceDataset} from '../../trace_processor/dataset';
 import {LONG, LONG_NULL, NUM, STR} from '../../trace_processor/query_result';
 import {ThreadSliceDetailsPanel} from '../details/thread_slice_details_tab';
@@ -37,7 +38,8 @@ export async function createVisualizedArgsTrack({
   argName,
   onClose,
 }: VisualizedArgsTrackAttrs) {
-return SliceTrack.createMaterialized({    trace,
+  return SliceTrack.createMaterialized({
+    trace,
     uri,
     dataset: new SourceDataset({
       schema: {

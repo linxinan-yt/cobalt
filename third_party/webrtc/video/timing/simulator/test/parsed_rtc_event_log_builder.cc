@@ -71,8 +71,9 @@ ParsedRtcEventLogBuilder::ParsedRtcEventLogBuilder()
     : log_clock_(Timestamp::Seconds(10000)),
       log_env_(CreateTestEnvironment(
           CreateTestEnvironmentOptions{.time = &log_clock_})),
-log_(RtcEventLogFactory().Create(log_env_)),
-      parsed_log_(nullptr) {  log_->StartLogging(std::make_unique<ParsingRtcEventLogOutput>(
+      parsed_log_(nullptr),
+      log_(RtcEventLogFactory().Create(log_env_)) {
+  log_->StartLogging(std::make_unique<ParsingRtcEventLogOutput>(
                          [this](std::unique_ptr<ParsedRtcEventLog> parsed_log) {
                            parsed_log_ = std::move(parsed_log);
                          }),
@@ -87,7 +88,9 @@ Timestamp ParsedRtcEventLogBuilder::CurrentTime() {
 
 NtpTime ParsedRtcEventLogBuilder::CurrentNtpTime() {
   return log_clock_.ConvertTimestampToNtpTime(log_clock_.CurrentTime());
-}void ParsedRtcEventLogBuilder::AdvanceTime(TimeDelta duration) {
+}
+
+void ParsedRtcEventLogBuilder::AdvanceTime(TimeDelta duration) {
   log_clock_.AdvanceTime(duration);
 }
 
@@ -115,7 +118,8 @@ void ParsedRtcEventLogBuilder::LogRtcpPacketOutgoing(
 
 void ParsedRtcEventLogBuilder::LogRtcpPacketIncoming(
     const rtcp::RtcpPacket& rtcp_packet) {
-  Log(std::make_unique<RtcEventRtcpPacketIncoming>(rtcp_packet.Build()));}
+  Log(std::make_unique<RtcEventRtcpPacketIncoming>(rtcp_packet.Build()));
+}
 
 void ParsedRtcEventLogBuilder::Log(std::unique_ptr<RtcEvent> event) {
   RTC_DCHECK(log_);

@@ -744,7 +744,8 @@ ArgsTracker::BoundInserter& ProcessTracker::AddArgsToProcess(UniquePid upid) {
       process_args_.Insert(upid, ArgsTracker::BoundInserter());
   if (PERFETTO_UNLIKELY(inserted))
     *it = args_tracker_.AddArgsToProcess(upid);
-  return *it;}
+  return *it;
+}
 
 ArgsTracker::BoundInserter& ProcessTracker::AddArgsToThread(UniqueTid utid) {
   auto [it, inserted] = thread_args_.Insert(utid, ArgsTracker::BoundInserter());

@@ -259,7 +259,8 @@ def CompileAssetCatalog(output, target_os, target_environment, product_type,
             # If the asset is either an app icon or a brand asset, and the
 # caller has specified an app icon to use, then skip this asset
             # as it will be included in the app icon set. Otherwise, add the
-            # asset to the command-line.            if asset_type in (APP_ICON_ASSET_TYPE, BRAND_ASSETS_TYPE):
+            # asset to the command-line.
+            if asset_type in (APP_ICON_ASSET_TYPE, BRAND_ASSETS_TYPE):
                 if app_icon:
                     continue
                 else:

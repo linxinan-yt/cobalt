@@ -18,6 +18,7 @@ SELECT RUN_METRIC('android/jank/android_jank_cuj_init.sql');
 
 INCLUDE PERFETTO MODULE android.cujs.base;
 INCLUDE PERFETTO MODULE android.cujs.cuj_frame_counters;
+
 DROP VIEW IF EXISTS android_jank_cuj_output;
 CREATE PERFETTO VIEW android_jank_cuj_output AS
 SELECT

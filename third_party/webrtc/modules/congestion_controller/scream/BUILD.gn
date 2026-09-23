@@ -99,7 +99,7 @@ rtc_library("scream_network_controller") {
   deps = [
     ":scream_v2",
     ":scream_v2_parameters",
-"../../../api:field_trials_view",    "../../../api/environment",
+    "../../../api/environment",
     "../../../api/transport:network_control",
     "../../../api/units:data_rate",
     "../../../api/units:data_size",

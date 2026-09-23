@@ -1176,7 +1176,8 @@ fi{
                         other{"{0} yötä"}
                     }
                 }
-dnam{"yöt"}                one{"{0} yö"}
+dnam{"yöt"}
+                one{"{0} yö"}
                 other{"{0} yötä"}
                 per{"{0} / yö"}
             }

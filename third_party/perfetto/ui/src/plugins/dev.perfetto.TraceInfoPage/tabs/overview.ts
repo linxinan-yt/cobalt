@@ -13,11 +13,7 @@
 // limitations under the License.
 
 import m from 'mithril';
-import {
-  LONG_NULL,
-  NUM_NULL,
-  STR_NULL,
-} from '../../../trace_processor/query_result';import {Icon} from '../../../widgets/icon';
+import {Icon} from '../../../widgets/icon';
 import {Tooltip} from '../../../widgets/tooltip';
 import {Section} from '../../../widgets/section';
 import {Card} from '../../../widgets/card';
@@ -40,20 +36,15 @@ import {
   type StatusCardConfig,
   createStatusCards,
 } from './overview_data';
+
 export interface OverviewTabAttrs {
   trace: Trace;
   data: OverviewData;
-onTabChange(key: TabKey): void;
+  diagnostics: ReadonlyArray<Diagnostic>;
+  onTabChange(key: TabKey): void;
 }
 
-interface StatusCardConfig {
-  title: string;
-  count: number;
-  severity: 'success' | 'danger' | 'warning';
-  icon: string;
-  helpText: string;
-  targetTab: TabKey;
-}interface MetricCardConfig {
+interface MetricCardConfig {
   label: string;
   value: string | undefined;
   help?: string;
@@ -71,7 +62,7 @@ export class OverviewTab implements m.ClassComponent<OverviewTabAttrs> {
           renderStatusCard(attrs, card),
         ),
       ),
-m(
+      m(
         Section,
         {
           title: 'Trace Doctor',
@@ -95,20 +86,22 @@ m(
                 }),
               ),
             ),
-      ),      this.renderCardSection(
+      ),
+      this.renderCardSection(
         'Trace Overview',
         'Key metadata and properties of the trace file',
         createTraceMetrics(attrs.trace, attrs.data).map((metric) =>
           renderMetricCard(metric),
         ),
-{
+        {
           banner: attrs.data.traceCount > 1 && {
             icon: 'layers',
             text:
               'This session contains multiple traces; the values here are ' +
               'session-wide. See the "Traces" tab for per-trace details.',
           },
-        },      ),
+        },
+      ),
       this.renderCardSection(
         'System Information',
         'Operating system and hardware details from the traced device',
@@ -120,12 +113,13 @@ m(
             icon: 'computer',
             title: 'No system information available',
           },
-banner: attrs.data.machineCount > 1 && {
+          banner: attrs.data.machineCount > 1 && {
             icon: 'computer',
             text:
               'This session contains multiple machines; only the host ' +
               'machine is shown here. See the "Machines" tab for the others.',
-          },        },
+          },
+        },
       ),
     );
   }
@@ -134,7 +128,7 @@ banner: attrs.data.machineCount > 1 && {
     title: string,
     subtitle: string,
     cards: m.Children[],
-options?: {
+    options?: {
       emptyState?: {icon: string; title: string};
       banner?: {icon: string; text: string} | false;
     },
@@ -156,7 +150,8 @@ options?: {
     return m(
       Section,
       {title, subtitle},
-      banner,      filteredCards.length === 0 && options?.emptyState
+      banner,
+      filteredCards.length === 0 && options?.emptyState
         ? m(EmptyState, options.emptyState)
         : m(GridLayout, {}, ...filteredCards),
     );
@@ -252,50 +247,7 @@ function renderMetricCard({
   );
 }
 
-function createStatusCards(data: OverviewData): StatusCardConfig[] {
-  const statusCards: StatusCardConfig[] = [
-    {
-      title: 'Import Errors',
-      count: data.importErrors,
-      severity: data.importErrors === 0 ? 'success' : 'danger',
-      icon: data.importErrors === 0 ? 'check_circle' : 'error',
-      helpText:
-        'Errors encountered during trace import by the trace processor. These may indicate missing or corrupted data.',
-      targetTab: data.importErrors > 0 ? 'import_errors' : 'stats',
-    },
-    {
-      title: 'Trace Errors',
-      count: data.traceErrors,
-      severity: data.traceErrors === 0 ? 'success' : 'danger',
-      icon: data.traceErrors === 0 ? 'check_circle' : 'error',
-      helpText:
-        'Errors that occurred during trace recording. These indicate problems during data collection.',
-      targetTab: data.traceErrors > 0 ? 'trace_errors' : 'stats',
-    },
-    {
-      title: 'Data Losses',
-      count: data.dataLosses,
-      severity: data.dataLosses === 0 ? 'success' : 'warning',
-      icon: data.dataLosses === 0 ? 'check_circle' : 'warning',
-      helpText:
-        'Events that were dropped during trace recording due to buffer overflow or other issues.',
-      targetTab: data.dataLosses > 0 ? 'data_losses' : 'stats',
-    },
-  ];
-  // Optional UI loading errors card - only show if there are errors
-  if (data.uiLoadingErrorCount > 0) {
-    statusCards.push({
-      title: 'UI Loading Errors',
-      count: data.uiLoadingErrorCount,
-      severity: 'danger',
-      icon: 'error',
-      helpText:
-        'Errors that occurred in the UI while loading or processing the trace.',
-      targetTab: 'ui_loading_errors',
-    });
-  }
-  return statusCards;
-}function createTraceMetrics(
+function createTraceMetrics(
   trace: Trace,
   data: OverviewData,
 ): MetricCardConfig[] {
@@ -304,13 +256,15 @@ function createStatusCards(data: OverviewData): StatusCardConfig[] {
       label: 'Trace Size',
       value:
         data.traceSizeBytes !== undefined
-? formatFileSize(Number(data.traceSizeBytes))          : undefined,
+          ? formatFileSize(Number(data.traceSizeBytes))
+          : undefined,
       help: 'Total size of the trace file on disk',
     },
     {
       label: 'Trace Type',
-value:
-        data.traceTypes.length > 0 ? data.traceTypes.join(', ') : 'Unknown',      help: 'Format of the trace file (proto, json, etc.)',
+      value:
+        data.traceTypes.length > 0 ? data.traceTypes.join(', ') : 'Unknown',
+      help: 'Format of the trace file (proto, json, etc.)',
     },
     {
       label: 'Recording Duration',
@@ -329,7 +283,7 @@ value:
       help: 'Duration from first to last scheduling event (max(ts) - min(ts) from sched)',
     },
     {
-label: 'Recording Started',
+      label: 'Recording Started',
       value: formatTraceStartWallClock(trace),
       help: "Wall-clock time recording began, from the trace's REALTIME clock",
       wide: true,
@@ -340,7 +294,8 @@ label: 'Recording Started',
       help:
         data.traceCount > 1
           ? 'Session-wide identifier. Individual UUIDs are in the "Traces" tab.'
-          : 'Unique identifier for this trace session',      wide: true,
+          : 'Unique identifier for this trace session',
+      wide: true,
     },
   ];
 }
@@ -367,7 +322,9 @@ function formatTzOffset(tzOffMin: number): string {
   const hh = String(Math.floor(abs / 60)).padStart(2, '0');
   const mm = String(abs % 60).padStart(2, '0');
   return `UTC${sign}${hh}:${mm}`;
-}function createSystemInfoMetrics(data: OverviewData): MetricCardConfig[] {
+}
+
+function createSystemInfoMetrics(data: OverviewData): MetricCardConfig[] {
   return [
     {
       label: 'Android Fingerprint',

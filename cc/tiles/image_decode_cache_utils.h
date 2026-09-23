@@ -8,6 +8,7 @@
 #include <stddef.h>
 
 #include "cc/cc_export.h"
+#include "build/build_config.h"
 
 namespace cc {
 

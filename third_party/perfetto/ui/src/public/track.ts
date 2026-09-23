@@ -33,6 +33,7 @@ export interface SnapPoint {
   /** The timestamp to snap to */
   time: time;
 }
+
 export interface TrackFilterCriteria {
   readonly name: string;
 
@@ -126,11 +127,13 @@ export interface TrackRenderContext extends TrackContext {
    * Semantic colors which can vary depending on the current theme.
    */
   readonly colors: CanvasColors;
-/**
+
+  /**
    * A high-performance renderer for drawing rectangles and billboards.
    * Uses WebGL when available, with Canvas 2D fallback.
    */
-  readonly renderer: Renderer;}
+  readonly renderer: Renderer;
+}
 
 // A definition of a track, including a renderer implementation and metadata.
 export interface Track {

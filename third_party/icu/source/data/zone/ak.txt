@@ -97,7 +97,8 @@ ak{
         }
 "America:Cancun"{
             ec{"Kankun"}
-        }        "America:Caracas"{
+        }
+        "America:Caracas"{
             ec{"Karakas"}
         }
         "America:Catamarca"{
@@ -108,7 +109,8 @@ ak{
         }
 "America:Cayman"{
             ec{"Kemanfo"}
-        }        "America:Chicago"{
+        }
+        "America:Chicago"{
             ec{"Kyikago"}
         }
         "America:Chihuahua"{
@@ -349,7 +351,8 @@ ec{"Aktopɛ"}        }
         }
 "Asia:Calcutta"{
             ec{"Kɔɔkata"}
-        }        "Asia:Chita"{
+        }
+        "Asia:Chita"{
             ec{"Kyita"}
         }
         "Asia:Colombo"{
@@ -357,7 +360,8 @@ ec{"Aktopɛ"}        }
         }
 "Asia:Damascus"{
             ec{"Damaskɔso"}
-        }        "Asia:Dhaka"{
+        }
+        "Asia:Dhaka"{
             ec{"Daka"}
         }
         "Asia:Hebron"{
@@ -365,7 +369,8 @@ ec{"Aktopɛ"}        }
         }
 "Asia:Irkutsk"{
             ec{"Yiikusk"}
-        }        "Asia:Jakarta"{
+        }
+        "Asia:Jakarta"{
             ec{"Gyakaata"}
         }
         "Asia:Jayapura"{
@@ -520,7 +525,8 @@ ec{"Kɔpɛhangɛne"}        }
         }
 "Europe:Kiev"{
             ec{"Kiivu"}
-        }        "Europe:Lisbon"{
+        }
+        "Europe:Lisbon"{
             ec{"Lisbɔn"}
         }
         "Europe:Ljubljana"{
@@ -537,7 +543,8 @@ ld{"Ingresi Awia Berɛ"}        }
         }
 "Europe:Monaco"{
             ec{"Monako"}
-        }        "Europe:Moscow"{
+        }
+        "Europe:Moscow"{
             ec{"Mɔsko"}
         }
         "Europe:Podgorica"{
@@ -556,7 +563,8 @@ ld{"Ingresi Awia Berɛ"}        }
         }
 "Europe:Sofia"{
             ec{"Sɔfia"}
-        }        "Europe:Stockholm"{
+        }
+        "Europe:Stockholm"{
             ec{"Stɔkhɔm"}
         }
         "Europe:Vatican"{
@@ -632,7 +640,8 @@ ec{"Madwuro"}
         }
 "Pacific:Wake"{
             ec{"Wake Supᴐ"}
-        }        "meta:Afghanistan"{
+        }
+        "meta:Afghanistan"{
             ls{"Afganistan Berɛ"}
         }
         "meta:Africa_Central"{
@@ -886,7 +895,8 @@ ls{"Brunei Darusalam Berɛ"}        }
         }
 "meta:Hawaii"{
             ls{"Hawaii-Aleutian Susudua Berɛ"}
-        }        "meta:Hawaii_Aleutian"{
+        }
+        "meta:Hawaii_Aleutian"{
             ld{"Hawaii-Aleutian Awia Berɛ"}
             lg{"Hawaii-Aleutian Berɛ"}
             ls{"Hawaii-Aleutian Susudua Berɛ"}

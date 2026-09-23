@@ -7757,20 +7757,23 @@ class lexer : public lexer_base<BasicJsonType>
                                     }
                                     else
                                     {
-// ICU PATCH - See ICU-23090
-                                        codepoint = codepoint1;                                    }
+                                        // ICU PATCH - See ICU-23090
+                                        codepoint = codepoint1;
+                                    }
                                 }
                                 else
                                 {
-// ICU PATCH - See ICU-23090
-                                        codepoint = codepoint1;                                }
+                                    // ICU PATCH - See ICU-23090
+                                    codepoint = codepoint1;
+                                }
                             }
                             else
                             {
                                 if (JSON_HEDLEY_UNLIKELY(0xDC00 <= codepoint1 && codepoint1 <= 0xDFFF))
                                 {
-// ICU PATCH - See ICU-23090
-                                    codepoint = codepoint1;                                }
+                                    // ICU PATCH - See ICU-23090
+                                    codepoint = codepoint1;
+                                }
                             }
 
                             // result of the above calculation yields a proper codepoint

@@ -1127,7 +1127,8 @@ sc{
                 one{"{0}ppm"}
                 other{"{0}ppm"}
             }
-portion-per-1e9{                one{"{0}ppb"}
+portion-per-1e9{
+                one{"{0}ppb"}
                 other{"{0}ppb"}
             }
         }
@@ -1861,7 +1862,8 @@ portion-per-1e9{                one{"{0}ppb"}
                 one{"{0} mmol/l"}
                 other{"{0} mmol/l"}
             }
-portion-per-1e9{                dnam{"partes/milliardu"}
+portion-per-1e9{
+                dnam{"partes/milliardu"}
             }
         }
         consumption{

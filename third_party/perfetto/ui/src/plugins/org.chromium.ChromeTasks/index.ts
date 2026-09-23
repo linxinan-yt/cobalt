@@ -15,7 +15,8 @@
 import {asUtid} from '../../components/sql_utils/core_types';
 import {LONG_NULL, NUM, STR_NULL} from '../../trace_processor/query_result';
 import type {Trace} from '../../public/trace';
-import type {PerfettoPlugin} from '../../public/plugin';import {createChromeTasksThreadTrack} from './track';
+import type {PerfettoPlugin} from '../../public/plugin';
+import {createChromeTasksThreadTrack} from './track';
 import {TrackNode} from '../../public/workspace';
 
 export default class implements PerfettoPlugin {

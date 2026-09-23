@@ -238,6 +238,7 @@ RTCError IceConfig::IsValid() const {
 
 IceTransportInternal::IceTransportInternal(TaskQueueBase* attached_queue)
     : PacketTransportInternal(attached_queue) {}
+
 IceTransportInternal::~IceTransportInternal() = default;
 
 void IceTransportInternal::AddGatheringStateCallback(
@@ -264,8 +265,9 @@ void IceTransportInternal::SubscribeRoleConflict(
 }
 
 void IceTransportInternal::SubscribeIceTransportStateChanged(
-void* tag,
+    void* tag,
     absl::AnyInvocable<void(IceTransportInternal*)> callback) {
-  ice_transport_state_changed_callbacks_.AddReceiver(tag, std::move(callback));}
+  ice_transport_state_changed_callbacks_.AddReceiver(tag, std::move(callback));
+}
 
 }  // namespace webrtc

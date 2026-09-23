@@ -501,7 +501,9 @@ TEST_P(SharedMemoryArbiterImplTest, ScrapeEmulatedSharedMemoryBufferSplits) {
       {kWriterId, kTargetBuffer}};
   arbiter_->ScrapeEmulatedSharedMemoryBuffer(buffer_for_writers);
   EXPECT_EQ(total_moves, kNumPages);
-}// Check that we can create up to many TraceWriter(s).
+}
+
+// Check that we can create up to many TraceWriter(s).
 TEST_P(SharedMemoryArbiterImplTest, WriterIDsAllocation) {
   constexpr size_t kBigWriterCount = (1 << 12);
   static_assert(kBigWriterCount < kMaxWriterID);

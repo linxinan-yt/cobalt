@@ -258,9 +258,7 @@ class H5vccSchemeURLLoader : public network::mojom::URLLoader {
 
   // network::mojom::URLLoader:
   void FollowRedirect(
-      const std::vector<std::string>& removed_headers,
-      const net::HttpRequestHeaders& modified_headers,
-      const net::HttpRequestHeaders& modified_cors_exempt_headers,
+      network::HttpRequestHeadersUpdateParams headers_update_params,
       const std::optional<GURL>& new_url) override {}
   void SetPriority(net::RequestPriority priority,
                    int32_t intra_priority_value) override {}
@@ -404,7 +402,8 @@ class H5vccSchemeURLLoader : public network::mojom::URLLoader {
 
     std::string status_line =
         "HTTP/1.1 " + std::to_string(http_status) + " " +
-        net::GetHttpReasonPhrase(static_cast<net::HttpStatusCode>(http_status));
+        std::string(net::GetHttpReasonPhrase(
+            static_cast<net::HttpStatusCode>(http_status)));
     response_head->headers =
         base::MakeRefCounted<net::HttpResponseHeaders>(status_line);
     response_head->headers->AddHeader(net::HttpRequestHeaders::kContentType,
@@ -445,8 +444,8 @@ class H5vccSchemeURLLoader : public network::mojom::URLLoader {
     }
 
     network::URLLoaderCompletionStatus status(net::OK);
-    status.encoded_data_length = content_.size();
-    status.encoded_body_length = content_.size();
+    status.encoded_data_length = base::ByteSize(content_.size());
+    status.encoded_body_length = base::ByteSize(content_.size());
     client_->OnComplete(status);
   }
 

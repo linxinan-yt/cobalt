@@ -93,7 +93,9 @@ The following applets are available:
      [Multi-machine architecture](/docs/deployment/multi-machine-architecture.md)
      for the design and
      [Multi-machine recording](/docs/learning-more/multi-machine-tracing.md)
-     for setup.`traced_perf`
+     for setup.
+
+`traced_perf`
 :    Perf-based CPU profiling data source.
 
 `perfetto`

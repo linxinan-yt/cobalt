@@ -37,8 +37,9 @@ export class WattsonEstimateSelectionAggregator implements Aggregator {
     for (const trackInfo of area.tracks) {
       if (
         (trackInfo?.tags?.kinds?.includes(CPUSS_ESTIMATE_TRACK_KIND) ||
-trackInfo?.tags?.kinds?.includes(GPUSS_ESTIMATE_TRACK_KIND) ||
-          trackInfo?.tags?.kinds?.includes(TPUSS_ESTIMATE_TRACK_KIND)) &&        exists(trackInfo.tags?.wattson)
+          trackInfo?.tags?.kinds?.includes(GPUSS_ESTIMATE_TRACK_KIND) ||
+          trackInfo?.tags?.kinds?.includes(TPUSS_ESTIMATE_TRACK_KIND)) &&
+        exists(trackInfo.tags?.wattson)
       ) {
         estimateTracks.push(`${trackInfo.tags.wattson}`);
       }

@@ -75,7 +75,8 @@ class StreamInterfaceChannel : public StreamInterface {
   StreamInterfaceChannel& operator=(const StreamInterfaceChannel&) = delete;
 
   // Push in a packet; this gets pulled out from Read().
-bool OnPacketReceived(std::span<const uint8_t> data);
+  bool OnPacketReceived(std::span<const uint8_t> data);
+
   // Sets the options for the next packet to be written to ice_transport,
   // corresponding to the next Write() call. Safe since BoringSSL guarantees
   // that "In DTLS ... a single call to |SSL_write| only ever writes a single
@@ -135,7 +136,7 @@ bool OnPacketReceived(std::span<const uint8_t> data);
 // as the constructor.
 class DtlsTransportInternalImpl : public DtlsTransportInternal {
  public:
-// See https://datatracker.ietf.org/doc/html/rfc9147#section-5.8.2,
+  // See https://datatracker.ietf.org/doc/html/rfc9147#section-5.8.2,
   // the RFC specifies 400ms...but in ComputeRetransmissionTimeout
   // the RTT estimate is multiplied by 2, so the first timeout will be 400 ms.
   static constexpr int kDefaultHandshakeEstimateRttMs = 200;
@@ -145,6 +146,7 @@ class DtlsTransportInternalImpl : public DtlsTransportInternal {
       const Environment&,
       std::unique_ptr<StreamInterface>,
       absl::AnyInvocable<void(SSLHandshakeError)> handshake_error_callback)>;
+
   // `ice_transport` is the ICE transport this DTLS transport is wrapping.  It
   // must outlive this DTLS transport.
   //
@@ -156,7 +158,8 @@ class DtlsTransportInternalImpl : public DtlsTransportInternal {
       const CryptoOptions& crypto_options,
       SSLProtocolVersion max_version = SSL_PROTOCOL_DTLS_12,
       SslStreamFactory ssl_stream_factory = nullptr);
-bool OnPacketReceived(std::span<const uint8_t> data);
+
+
   ~DtlsTransportInternalImpl() override;
 
   DtlsTransportInternalImpl(const DtlsTransportInternalImpl&) = delete;
@@ -297,12 +300,14 @@ bool OnPacketReceived(std::span<const uint8_t> data);
                               const ReceivedIpPacket& packet)> callback);
   void FlushPendingDtlsPacket();
 
-// SetRemoteFingerprint must be called after SetLocalCertificate, and any
+  // SetRemoteFingerprint must be called after SetLocalCertificate, and any
   // other methods like SetDtlsRole. It's what triggers the actual DTLS setup.
   // TODO(deadbeef): Rename to "Start" like in ORTC?
   bool SetRemoteFingerprint(absl::string_view digest_alg,
                             const uint8_t* digest,
-                            size_t digest_len);  SslStreamFactory ssl_stream_factory_;
+                            size_t digest_len);
+
+  SslStreamFactory ssl_stream_factory_;
   const Environment env_;
   RTC_NO_UNIQUE_ADDRESS SequenceChecker thread_checker_;
 

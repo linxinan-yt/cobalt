@@ -657,7 +657,8 @@ ak{
 XCG{
             "Cg.",
             "Karibiafoᴐ giida",
-        }        XOF{
+        }
+        XOF{
             "AAS",
             "Afrika Atɔeɛ Sefa",
         }

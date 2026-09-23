@@ -41,15 +41,17 @@ SELECT
     ELSE 'UNKNOWN_ANR_TYPE'
   END;
 
-CREATE PERFETTO FUNCTION _get_broadcast_flag(
-    subject STRING
-)
-RETURNS LONG AS
+CREATE PERFETTO FUNCTION _get_broadcast_flag(subject STRING)
+RETURNS LONG
+AS
 SELECT
   CASE
-    WHEN $subject IS NULL OR NOT $subject GLOB 'Broadcast of Intent *flg=*'
-    THEN NULL
-    ELSE unhex(str_split(substr($subject, instr($subject, ' flg=') + 5), ' ', 0))  END AS flag;
+    WHEN $subject IS NULL
+    OR NOT ($subject GLOB 'Broadcast of Intent *flg=*') THEN NULL
+    ELSE unhex(
+      str_split(substr($subject, instr($subject, ' flg=') + 5), ' ', 0)
+    )
+  END AS flag;
 
 -- Function to get the default ANR duration in milliseconds based on ANR type.
 -- Note: These are common defaults. Actual timeouts can vary by OEM, Android version, and FG/BG status.
@@ -92,7 +94,8 @@ SELECT
       $subject,
       ' for ([0-9]+)s'
     )
-    * 1000 AS LONG)    ELSE NULL
+    * 1000 AS LONG)
+    ELSE NULL
   END;
 
 -- Some of the anr timer events don't use the standard anr types and we have to convert them (temporal solution).
@@ -185,7 +188,8 @@ SELECT
   END AS component;
 
 -- List of all ANRs that occurred in the trace (one row per ANR).
-CREATE PERFETTO TABLE android_anrs(  -- Name of the process that triggered the ANR.
+CREATE PERFETTO TABLE android_anrs(
+  -- Name of the process that triggered the ANR.
   process_name STRING,
   -- PID of the process that triggered the ANR.
   pid LONG,
@@ -197,20 +201,23 @@ CREATE PERFETTO TABLE android_anrs(  -- Name of the process that triggered the A
   ts TIMESTAMP,
   -- Subject line of the ANR.
   subject STRING,
--- The intent that caused the ANR (if applicable).
+  -- The intent that caused the ANR (if applicable).
   intent STRING,
   -- The component associated with the ANR (if applicable).
-  component STRING,  -- The duration between the timer expiration event and the anr counter event
+  component STRING,
+  -- The duration between the timer expiration event and the anr counter event
   timer_delay LONG,
   -- The standard type of ANR.
   anr_type STRING,
--- Duration of the ANR, computed from the timer expiration event OR extracted from the subject line  anr_dur_ms LONG,
+  -- Duration of the ANR, computed from the timer expiration event OR extracted from the subject line
+  anr_dur_ms LONG,
   -- Default duration of the ANR, based on the anr_type (default means in AOSP/Pixel).
   -- Note: Other OEMs may have customized these timeout values, so the defaults
   -- provided here might not be accurate for all devices.
   default_anr_dur_ms LONG
 )
-AS-- Process and PID that ANRed.
+AS
+-- Process and PID that ANRed.
 WITH
   anr AS (
     SELECT
@@ -275,21 +282,18 @@ WITH
   ),
   -- Matching error_id with anr timers
   anr_potential_timers AS (
-SELECT
-      *,
-      (
-        a.ts - at.timer_ts
-      ) AS time_diff
+    SELECT *, (a.ts - at.timer_ts) AS time_diff
     FROM anr AS a
-    LEFT JOIN anr_timer AS at
-      USING (pid)
+    LEFT JOIN anr_timer AS at USING (pid)
     WHERE
-      at.pid IS NULL OR a.ts >= at.timer_ts  ),
+      at.pid IS NULL
+      OR a.ts >= at.timer_ts
+  ),
   -- for each error_id, we choose the closest matching timer
   anr_ranked_timers AS (
     SELECT
       *,
-row_number() OVER (
+      row_number() OVER (
         PARTITION BY
           error_id
         ORDER BY CASE WHEN timer_ts IS NULL THEN 1 ELSE 0 END, time_diff

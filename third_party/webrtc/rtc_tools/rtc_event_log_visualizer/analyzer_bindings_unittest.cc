@@ -74,7 +74,8 @@ TEST_F(RtcEventLogAnalyzerBindingsTest, OutgoingBitrateChart) {
   ASSERT_GT(output_size, 0u);
 
   // Parse output as charts.
-webrtc::analytics::ChartCollection collection;  bool success = collection.ParseFromString(
+  analytics::ChartCollection collection;
+  bool success = collection.ParseFromString(
       absl::string_view(output.data(), static_cast<int>(output_size)));
   ASSERT_TRUE(success);
   ASSERT_EQ(collection.charts().size(), 1);
@@ -95,7 +96,8 @@ TEST_F(RtcEventLogAnalyzerBindingsTest, NetWorkDelayFeedbackChart) {
   ASSERT_GT(output_size, 0u);
 
   // Parse output as charts.
-webrtc::analytics::ChartCollection collection;  bool success = collection.ParseFromString(
+  analytics::ChartCollection collection;
+  bool success = collection.ParseFromString(
       absl::string_view(output.data(), static_cast<int>(output_size)));
   ASSERT_TRUE(success);
   ASSERT_EQ(collection.charts().size(), 1);

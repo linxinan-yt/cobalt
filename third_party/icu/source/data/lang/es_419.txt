@@ -19,7 +19,8 @@ es_419{
         ht{"haitiano"}
         kbd{"cabardiano"}
         krc{"karachái-bálkaro"}
-ks{"cachemiro"}        lij{"genovés"}
+ks{"cachemiro"}
+        lij{"genovés"}
         ml{"malabar"}
         mni{"manipuri"}
         nr{"ndebele del sur"}

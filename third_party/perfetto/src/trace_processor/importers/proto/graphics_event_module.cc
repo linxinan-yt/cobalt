@@ -35,6 +35,7 @@
 #include "protos/perfetto/trace/interned_data/interned_data.pbzero.h"
 #include "protos/perfetto/trace/trace_packet.pbzero.h"
 #include "protos/third_party/android/frameworks/native/tracing/frameworks_native_trace_packet.pbzero.h"
+
 namespace perfetto::trace_processor {
 
 using com::android::internal::pbzero::FrameworksNativeTracePacket;
@@ -67,7 +68,7 @@ GraphicsEventModule::GraphicsEventModule(
 GraphicsEventModule::~GraphicsEventModule() = default;
 
 ModuleResult GraphicsEventModule::TokenizePacket(
-const TokenizePacketArgs& args) {
+    const TokenizePacketArgs& args) {
   if (args.field.id() != TracePacket::kGpuCounterEventFieldNumber) {
     return ModuleResult::Ignored();
   }
@@ -199,7 +200,8 @@ void GraphicsEventModule::TokenizeGpuCounterEvent(
   }
 }
 
-void GraphicsEventModule::ParseGpuCounterEvent(    int64_t ts,
+void GraphicsEventModule::ParseGpuCounterEvent(
+    int64_t ts,
     PacketSequenceStateGeneration* state,
     protozero::ConstBytes blob) {
   GpuCounterEvent::Decoder event(blob);

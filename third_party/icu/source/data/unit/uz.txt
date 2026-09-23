@@ -906,7 +906,8 @@ part-per-1e9{
             night{
 dnam{"kecha"}
                 one{"{0} kecha"}
-                other{"{0} kecha"}                per{"{0}/nkecha"}
+                other{"{0} kecha"}
+                per{"{0}/nkecha"}
             }
             quarter{
                 per{"{0}/ch."}

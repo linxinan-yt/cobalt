@@ -742,7 +742,8 @@ void OS::FreeAddressSpaceReservation(AddressSpaceReservation reservation) {
 DISABLE_CFI_ICALL
 std::optional<SharedMemoryHandle> OS::CreateSharedMemoryHandleForTesting(
     size_t size) {
-#if V8_OS_LINUX && !V8_OS_ANDROID && !BUILDFLAG(IS_STARBOARD)  // Use memfd_create if available, otherwise mkstemp.
+#if V8_OS_LINUX && !V8_OS_ANDROID && !BUILDFLAG(IS_STARBOARD)
+  // Use memfd_create if available, otherwise mkstemp.
   using memfd_create_t = int (*)(const char*, unsigned int);
   memfd_create_t memfd_create =
       reinterpret_cast<memfd_create_t>(dlsym(RTLD_DEFAULT, "memfd_create"));

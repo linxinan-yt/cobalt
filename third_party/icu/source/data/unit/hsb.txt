@@ -1576,7 +1576,8 @@ hsb{
             }
         }
         concentr{
-part-per-1e9{                dnam{"n"}
+part-per-1e9{
+                dnam{"n"}
                 few{"{0} n"}
                 one{"{0} n"}
                 other{"{0} n"}

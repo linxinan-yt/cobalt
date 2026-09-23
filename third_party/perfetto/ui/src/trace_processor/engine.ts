@@ -573,9 +573,8 @@ export abstract class EngineBase implements Engine, Disposable {
     rpc.request = TPM.TPM_QUERY_STREAMING;
     rpc.queryArgs = new protos.QueryArgs();
     rpc.queryArgs.sqlQuery = sqlQuery;
-if (tag) {
-      rpc.queryArgs.tag = tag;
-    }    this.pendingQueries.push(result);
+    rpc.queryArgs.tag = tag;
+    this.pendingQueries.push(result);
     this.rpcSendRequest(rpc);
   }
 
@@ -607,11 +606,12 @@ if (tag) {
   async query(sqlQuery: string, tag?: string): Promise<QueryResult> {
     const queryLog = this.logQueryStart(sqlQuery, tag);
     try {
-const result = createQueryResult({query: sqlQuery, tag});
+      const result = createQueryResult({query: sqlQuery, tag});
       this.streamingQuery(result, sqlQuery, tag);
       const resolvedResult = await result;
       queryLog.success = true;
-      queryLog.elapsedTimeMs = resolvedResult.elapsedTimeMs();      return resolvedResult;
+      queryLog.elapsedTimeMs = resolvedResult.elapsedTimeMs();
+      return resolvedResult;
     } catch (e) {
       // Replace the error's stack trace with the one from here
       // Note: It seems only V8 can trace the stack up the promise chain, so its

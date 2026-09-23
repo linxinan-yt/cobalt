@@ -397,7 +397,10 @@ es-Cyrl-MX; Spain kasa (Kreleke, Mɛksiko)
 hi-Latn; Laatenfoɔ Hindi
 nl-BE; Dɛɛkye [Bɛɛgyiɔm
 nl-Latn-BE; Dɛɛkye [Bɛɛgyiɔm (Laatin)
-zh-Hans-fonipa; Kyaena kasa a emu yɛ mmrɛ (fonipa)@locale=am
+zh-Hans-fonipa; Kyaena kasa a emu yɛ mmrɛ (fonipa)
+
+
+@locale=am
 @languageDisplay=standard
 
 en-MM; እንግሊዝኛ (ማይናማር[በርማ])
@@ -417,7 +420,8 @@ en-MM; እንግሊዝኛ (ማይናማር[በርማ])
 es; ስፓኒሽ
 es-419; የላቲን አሜሪካ ስፓኒሽ
 es-Cyrl-MX; የሜክሲኮ ስፓኒሽ (ሲይሪልክ)
-hi-Latn; ሕንድኛ (ላቲን)nl-BE; ፍሌሚሽ
+hi-Latn; ሕንድኛ (ላቲን)
+nl-BE; ፍሌሚሽ
 nl-Latn-BE; ፍሌሚሽ (ላቲን)
 zh-Hans-fonipa; ቀለል ያለ ቻይንኛ (fonipa)
 
@@ -549,7 +553,10 @@ es-Cyrl-MX; испан [Мексика] (кириллица)
 hi-Latn; һинди [латиница]
 nl-BE; фламанд
 nl-Latn-BE; фламанд (латиница)
-zh-Hans-fonipa; ҡытай [ябайлаштырылған] (fonipa)@locale=be
+zh-Hans-fonipa; ҡытай [ябайлаштырылған] (fonipa)
+
+
+@locale=be
 @languageDisplay=standard
 
 en-MM; англійская (М’янма [Бірма])
@@ -780,7 +787,10 @@ es-Cyrl-MX; мексика испан чӗлхи (кирилл ҫырулӑхӗ)
 hi-Latn; хинди чӗлхи [латин ҫырулӑхӗ]
 nl-BE; фламанд чӗлхи
 nl-Latn-BE; фламанд чӗлхи (латин ҫырулӑхӗ)
-zh-Hans-fonipa; ҫӑмӑллатнӑ китай чӗлхи (Тӗнчери фонетика алфавичӗ)@locale=cy
+zh-Hans-fonipa; ҫӑмӑллатнӑ китай чӗлхи (Тӗнчери фонетика алфавичӗ)
+
+
+@locale=cy
 @languageDisplay=standard
 
 en-MM; Saesneg (Myanmar [Burma])
@@ -1243,8 +1253,9 @@ es; Sifaniyanci
 es-419; Sifaniyancin Latin Amirka
 es-Cyrl-MX; Sifaniyanci Mesiko (Cyrillic)
 hi-Latn; Harshen Hindi (Latin)
-nl-BE; Holanci (Belgiyom)
-nl-Latn-BE; Holanci (Latin, Belgiyom)zh-Hans-fonipa; Sauƙaƙaƙƙen Sinanci (fonipa)
+nl-BE; Flemish
+nl-Latn-BE; Flemish (Latin)
+zh-Hans-fonipa; Sauƙaƙaƙƙen Sinanci (fonipa)
 
 
 @locale=he
@@ -1686,7 +1697,10 @@ es-Cyrl-MX; يسپان ءتىلى (كيريل جازۋى، مەكسيكا)
 hi-Latn; حيندي ءتىلى (لاتىن جازۋى)
 nl-BE; فلاماند ءتىلى
 nl-Latn-BE; فلاماند ءتىلى (لاتىن جازۋى)
-zh-Hans-fonipa; جەڭىلجەتىلگەن قىتاي ءتىلى (حالىقارالىق فونەتيكالىق ءالىپبي)@locale=kk_Cyrl
+zh-Hans-fonipa; جەڭىلدەتىلگەن قىتاي ءتىلى (حالىقارالىق فونەتيكالىق ءالىپبي)
+
+
+@locale=kk_Cyrl
 @languageDisplay=standard
 
 en-MM; ағылшын тілі (Мьянма [Бирма])
@@ -1793,49 +1807,53 @@ zh-Hans-fonipa; 중국어(간체, fonipa)
 @locale=kok
 @languageDisplay=standard
 
-en-MM; इंग्लीश (म्यानमार [बर्मा])
+en-MM; इंग्लीश (म्यानमार)
 es; स्पॅनीश
 es-419; स्पॅनीश (लॅटीन अमेरिका)
 es-Cyrl-MX; स्पॅनीश (सिरिलिक, मेक्सिको)
-hi-Latn; हिन्दी (लॅटीन)
-nl-BE; डच (बेल्जियम)
-nl-Latn-BE; डच (लॅटीन, बेल्जियम)
-zh-Hans-fonipa; चिनी (सोंपी, fonipa)
+hi-Latn; हिन्दी (रोमी)
+nl-BE; हाॅलँडी (बेल्जियम)
+nl-Latn-BE; हाॅलँडी (रोमी, बेल्जियम)
+zh-Hans-fonipa; चीनी (सोंपी, fonipa)
+
 
 @locale=kok
 @languageDisplay=dialect
 
-en-MM; इंग्लीश (म्यानमार [बर्मा])
+en-MM; इंग्लीश (म्यानमार)
 es; स्पॅनीश
 es-419; लातीं अमेरिकन स्पॅनीश
 es-Cyrl-MX; मॅक्सिकन स्पॅनीश (सिरिलिक)
-hi-Latn; हिन्दी (लॅटीन)
+hi-Latn; हिन्दी [रोमी]
 nl-BE; फ्लेमिश
-nl-Latn-BE; फ्लेमिश (लॅटीन)zh-Hans-fonipa; सोंपी चिनी (fonipa)
+nl-Latn-BE; फ्लेमिश (रोमी)
+zh-Hans-fonipa; सोंपी चिनी (fonipa)
 
 
 @locale=kok_Deva
 @languageDisplay=standard
 
-en-MM; इंग्लीश (म्यानमार [बर्मा])
+en-MM; इंग्लीश (म्यानमार)
 es; स्पॅनीश
 es-419; स्पॅनीश (लॅटीन अमेरिका)
 es-Cyrl-MX; स्पॅनीश (सिरिलिक, मेक्सिको)
-hi-Latn; हिन्दी (लॅटीन)
-nl-BE; डच (बेल्जियम)
-nl-Latn-BE; डच (लॅटीन, बेल्जियम)
-zh-Hans-fonipa; चिनी (सोंपी, fonipa)
+hi-Latn; हिन्दी (रोमी)
+nl-BE; हाॅलँडी (बेल्जियम)
+nl-Latn-BE; हाॅलँडी (रोमी, बेल्जियम)
+zh-Hans-fonipa; चीनी (सोंपी, fonipa)
+
 
 @locale=kok_Deva
 @languageDisplay=dialect
 
-en-MM; इंग्लीश (म्यानमार [बर्मा])
+en-MM; इंग्लीश (म्यानमार)
 es; स्पॅनीश
 es-419; लातीं अमेरिकन स्पॅनीश
 es-Cyrl-MX; मॅक्सिकन स्पॅनीश (सिरिलिक)
-hi-Latn; हिन्दी (लॅटीन)
+hi-Latn; हिन्दी [रोमी]
 nl-BE; फ्लेमिश
-nl-Latn-BE; फ्लेमिश (लॅटीन)zh-Hans-fonipa; सोंपी चिनी (fonipa)
+nl-Latn-BE; फ्लेमिश (रोमी)
+zh-Hans-fonipa; सोंपी चिनी (fonipa)
 
 
 @locale=ky
@@ -2092,7 +2110,8 @@ en-MM; အင်္ဂလိပ် (မြန်မာ)
 es; စပိန်
 es-419; စပိန် (လက်တင်အမေရိက)
 es-Cyrl-MX; စပိန် [မက္ကဆီကို] (စစ်ရိလစ်)
-hi-Latn; ဟိန္ဒီ [လက်တင်]nl-BE; ဖလီမစ်ရှ်
+hi-Latn; ဟိန္ဒီ (လက်တင်)
+nl-BE; ဖလီမစ်ရှ်
 nl-Latn-BE; ဖလီမစ်ရှ် (လက်တင်)
 zh-Hans-fonipa; တရုတ် (ရိုးရှင်း/ IPA အသံထွက်)
 
@@ -2390,7 +2409,8 @@ en-MM; inglês (Mianmar [Birmânia])
 es; espanhol
 es-419; espanhol (América Latina)
 es-Cyrl-MX; espanhol (cirílico, México)
-hi-Latn; híndi (latim)nl-BE; holandês (Bélgica)
+hi-Latn; hindi (latim)
+nl-BE; holandês (Bélgica)
 nl-Latn-BE; holandês (latim, Bélgica)
 zh-Hans-fonipa; chinês (simplificado, fonética do Alfabeto Fonético Internacional)
 
@@ -2402,7 +2422,8 @@ en-MM; inglês (Mianmar [Birmânia])
 es; espanhol
 es-419; espanhol (América Latina)
 es-Cyrl-MX; espanhol (cirílico, México)
-hi-Latn; híndi (latim)nl-BE; flamengo
+hi-Latn; hindi [latim]
+nl-BE; flamengo
 nl-Latn-BE; flamengo (latim)
 zh-Hans-fonipa; chinês simplificado (fonética do Alfabeto Fonético Internacional)
 
@@ -2456,7 +2477,10 @@ es-Cyrl-MX; spagnol mexican (cirillic)
 hi-Latn; hindi (latin)
 nl-BE; flam
 nl-Latn-BE; flam (latin)
-zh-Hans-fonipa; chinais simplifitgà (alfabet fonetic internaziunal [IPA])@locale=ro
+zh-Hans-fonipa; chinais simplifitgà (alfabet fonetic internaziunal [IPA])
+
+
+@locale=ro
 @languageDisplay=standard
 
 en-MM; engleză (Myanmar [Birmania])
@@ -2609,7 +2633,10 @@ es-Cyrl-MX; သပဵၼ်ႇ [မႅၵ်ႇသီႇၵူဝ်ႇ] (သရ
 hi-Latn; ႁိၼ်ႇတီႇ [လတိၼ်ႇ]
 nl-BE; တၢတ်ႉၶျ် [ပႄႇၵျီႇယမ်ႇ]
 nl-Latn-BE; တၢတ်ႉၶျ် [ပႄႇၵျီႇယမ်ႇ] (လတိၼ်ႇ)
-zh-Hans-fonipa; ၶႄႇ [ပၢၼ်မႂ်ႇ] (ပၢႆးသဵင် IPA)@locale=si
+zh-Hans-fonipa; ၶႄႇ [ပၢၼ်မႂ်ႇ] (ပၢႆးသဵင် IPA)
+
+
+@locale=si
 @languageDisplay=standard
 
 en-MM; ඉංග්‍රීසි (මියන්මාරය [බුරුමය])
@@ -2758,7 +2785,8 @@ zh-Hans-fonipa; кинески (поједностављено кинеско п
 en-MM; енглески (Мијанмар [Бурма])
 es; шпански
 es-419; латиноамерички шпански
-es-Cyrl-MX; мексички шпански (ћирилица)hi-Latn; хинди (латиница)
+es-Cyrl-MX; мексички шпански (ћирилица)
+hi-Latn; хинди (латиница)
 nl-BE; фламански
 nl-Latn-BE; фламански (латиница)
 zh-Hans-fonipa; поједностављени кинески (ИПА фонетика)
@@ -2783,7 +2811,8 @@ zh-Hans-fonipa; кинески (поједностављено кинеско п
 en-MM; енглески (Мијанмар [Бурма])
 es; шпански
 es-419; латиноамерички шпански
-es-Cyrl-MX; мексички шпански (ћирилица)hi-Latn; хинди (латиница)
+es-Cyrl-MX; мексички шпански (ћирилица)
+hi-Latn; хинди (латиница)
 nl-BE; фламански
 nl-Latn-BE; фламански (латиница)
 zh-Hans-fonipa; поједностављени кинески (ИПА фонетика)
@@ -2808,7 +2837,8 @@ zh-Hans-fonipa; kineski (pojednostavljeno kinesko pismo, IPA fonetika)
 en-MM; engleski (Mijanmar [Burma])
 es; španski
 es-419; latinoamerički španski
-es-Cyrl-MX; meksički španski (ćirilica)hi-Latn; hindi (latinica)
+es-Cyrl-MX; meksički španski (ćirilica)
+hi-Latn; hindi (latinica)
 nl-BE; flamanski
 nl-Latn-BE; flamanski (latinica)
 zh-Hans-fonipa; pojednostavljeni kineski (IPA fonetika)
@@ -2869,7 +2899,8 @@ zh-Hans-fonipa; Kichina [Kilichorahisishwa] (fonipa)
 @locale=ta
 @languageDisplay=standard
 
-en-MM; ஆங்கிலம் (மியான்மார் [பர்மா])es; ஸ்பானிஷ்
+en-MM; ஆங்கிலம் (மியான்மர் [பர்மா])
+es; ஸ்பானிஷ்
 es-419; ஸ்பானிஷ் (லத்தீன் அமெரிக்கா)
 es-Cyrl-MX; ஸ்பானிஷ் (சிரிலிக், மெக்சிகோ)
 hi-Latn; இந்தி (லத்தின்)
@@ -2881,7 +2912,8 @@ zh-Hans-fonipa; சீனம் (எளிதாக்கப்பட்டத�
 @locale=ta
 @languageDisplay=dialect
 
-en-MM; ஆங்கிலம் (மியான்மார் [பர்மா])es; ஸ்பானிஷ்
+en-MM; ஆங்கிலம் (மியான்மர் [பர்மா])
+es; ஸ்பானிஷ்
 es-419; லத்தின் அமெரிக்க ஸ்பானிஷ்
 es-Cyrl-MX; மெக்ஸிகன் ஸ்பானிஷ் (சிரிலிக்)
 hi-Latn; இந்தி (லத்தின்)
@@ -2961,7 +2993,8 @@ zh-Hans-fonipa; ቻይንኛ (ዝተቐለለ፣ fonipa)
 en-MM; እንግሊዝኛ (ሚያንማር [በርማ])
 es; ስጳንኛ
 es-419; ላቲን ኣመሪካዊ ስጳንኛ
-es-Cyrl-MX; ስጳንኛ ሜክሲኮ (ቋንቋ ሲሪል)hi-Latn; ሂንዲ (ላቲን)
+es-Cyrl-MX; ስጳንኛ ሜክሲኮ (ቋንቋ ሲሪል)
+hi-Latn; ሂንዲ (ላቲን)
 nl-BE; ፍላሚሽ
 nl-Latn-BE; ፍላሚሽ (ላቲን)
 zh-Hans-fonipa; ቀሊል ቻይንኛ (fonipa)
@@ -3094,7 +3127,8 @@ es-Cyrl-MX; ispan [Meksika] (kirill)
 hi-Latn; hind (lotin)
 nl-BE; flamand
 nl-Latn-BE; flamand (lotin)
-zh-Hans-fonipa; xitoy [soddalashgan] (fonipa)
+zh-Hans-fonipa; xitoy (soddalashgan, fonipa)
+
 
 @locale=uz_Latn
 @languageDisplay=standard
@@ -3119,7 +3153,8 @@ es-Cyrl-MX; ispan [Meksika] (kirill)
 hi-Latn; hind (lotin)
 nl-BE; flamand
 nl-Latn-BE; flamand (lotin)
-zh-Hans-fonipa; xitoy [soddalashgan] (fonipa)
+zh-Hans-fonipa; xitoy (soddalashgan, fonipa)
+
 
 @locale=vi
 @languageDisplay=standard

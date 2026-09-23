@@ -370,7 +370,8 @@ copying that version number into the $ICU_SRC/.bazeliskrc config file.
 - make sure that changes to Unicode tools are checked in:
   https://github.com/unicode-org/unicodetools
 
----------------------------------------------------------------------------- ***Unicode 16.0 update for ICU 76
+---------------------------------------------------------------------------- ***
+Unicode 16.0 update for ICU 76
 
 https://www.unicode.org/versions/Unicode16.0.0/
 https://www.unicode.org/versions/beta-16.0.0.html

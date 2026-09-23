@@ -119,7 +119,9 @@ void RenderingTracker::OnAssembledFrame(
 void RenderingTracker::UpdateMaxRtt(TimeDelta max_rtt) {
   RTC_DCHECK_RUN_ON(&sequence_checker_);
   video_stream_buffer_controller_.UpdateRtt(max_rtt.ms());
-}void RenderingTracker::OnEncodedFrame(
+}
+
+void RenderingTracker::OnEncodedFrame(
     std::unique_ptr<EncodedFrame> encoded_frame) {
   RTC_DCHECK_RUN_ON(&sequence_checker_);
   RTC_CHECK(decoded_frame_id_cb_) << "Callback must be set before running";
@@ -140,12 +142,13 @@ void RenderingTracker::UpdateMaxRtt(TimeDelta max_rtt) {
   decoded_frame_id_cb_->OnDecodedFrameId(encoded_frame->Id());
   encoded_frame.reset();  // Just to be explicit.
 
-// We need to "update the decode time", in order for `video_timing_` to know
+  // We need to "update the decode time", in order for `video_timing_` to know
   // that a frame was "decoded".
   // TODO: b/423646186 - Consider introducing a decode time delay model.
   // See `SimulateDecode()` below.
   video_timing_->UpdateDecodeTimeEstimate(/*decode_time=*/TimeDelta::Zero(),
                                           env_.clock().CurrentTime());
+
   // Send the "decoded" video frame for "rendering".
   // TODO: b/423646186 - Consider making this step configurable, since Chromium
   // disables "prerender smoothing".
@@ -159,23 +162,26 @@ void RenderingTracker::UpdateMaxRtt(TimeDelta max_rtt) {
 
 void RenderingTracker::OnDecodableFrameTimeout(TimeDelta wait_time) {
   RTC_DCHECK_RUN_ON(&sequence_checker_);
-// Log as verbose because this timeout will periodically trigger when the
+  // Log as verbose because this timeout will periodically trigger when the
   // stream has been deregistered. Unfortunately there is no log event for the
   // deregistration, so the simulator will keep expecting packets forever.
-  RTC_LOG(LS_VERBOSE) << "VideoStreamBufferController timed out after wait_ms="                      << wait_time << " on ssrc=" << config_.ssrc
+  RTC_LOG(LS_VERBOSE) << "VideoStreamBufferController timed out after wait_ms="
+                      << wait_time << " on ssrc=" << config_.ssrc
                       << " (simulated_ts=" << env_.clock().CurrentTime() << ")";
   // TODO: b/423646186 - Consider adding this as a callback event.
   video_stream_buffer_controller_.StartNextDecode(/*keyframe_required=*/true);
 }
 
 void RenderingTracker::OnDroppedFrames(uint32_t frames_dropped) {
-RTC_DCHECK_RUN_ON(&sequence_checker_);  vsbc_frames_dropped_ = frames_dropped;
+  RTC_DCHECK_RUN_ON(&sequence_checker_);
+  vsbc_frames_dropped_ = frames_dropped;
 }
 
 void RenderingTracker::OnDecodableFrame(TimeDelta jitter_buffer_delay,
                                         TimeDelta jitter_buffer_target_delay,
                                         TimeDelta jitter_buffer_minimum_delay) {
-RTC_DCHECK_RUN_ON(&sequence_checker_);  vsbc_decodable_stats_ = VideoStreamBufferControllerObserverDecodableStats{
+  RTC_DCHECK_RUN_ON(&sequence_checker_);
+  vsbc_decodable_stats_ = VideoStreamBufferControllerObserverDecodableStats{
       .jitter_buffer_delay = jitter_buffer_delay,
       .jitter_buffer_target_delay = jitter_buffer_target_delay,
       .jitter_buffer_minimum_delay = jitter_buffer_minimum_delay};
@@ -196,7 +202,8 @@ void RenderingTracker::OnFrame(const VideoFrame& decoded_frame) {
 }
 
 void RenderingTracker::ResetVideoStreamBufferControllerObserverStats() {
-RTC_DCHECK_RUN_ON(&sequence_checker_);  vsbc_frames_dropped_.reset();
+  RTC_DCHECK_RUN_ON(&sequence_checker_);
+  vsbc_frames_dropped_.reset();
   vsbc_decodable_stats_.reset();
 }
 

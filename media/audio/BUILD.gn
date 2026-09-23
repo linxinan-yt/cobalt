@@ -285,7 +285,8 @@ if (enable_passthrough_audio_codecs) {
         "android/audio_track_output_stream.cc",
         "android/audio_track_output_stream.h",
       ]
-    }    libs += [ "aaudio" ]
+    }
+    libs += [ "aaudio" ]
 
     deps += [ "//media/base/android:media_jni_headers" ]
 

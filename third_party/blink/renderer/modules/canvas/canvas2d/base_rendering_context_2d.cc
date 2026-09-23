@@ -183,7 +183,8 @@ void BaseRenderingContext2D::ResetInternal() {
     webgpu_access_texture_->destroy();
     webgpu_access_texture_ = nullptr;
   }
-#endif  // !BUILDFLAG(IS_COBALT)}
+#endif  // !BUILDFLAG(IS_COBALT)
+}
 
 CanvasRenderingContext2DSettings* BaseRenderingContext2D::getContextAttributes()
     const {
@@ -749,7 +750,8 @@ void BaseRenderingContext2D::Trace(Visitor* visitor) const {
   visitor->Trace(try_restore_context_event_timer_);
 #if !BUILDFLAG(IS_COBALT)
   visitor->Trace(webgpu_access_texture_);
-#endif  CanvasRenderingContext::Trace(visitor);
+#endif
+  CanvasRenderingContext::Trace(visitor);
   Canvas2DRecorderContext::Trace(visitor);
 }
 
@@ -1608,7 +1610,8 @@ void BaseRenderingContext2D::transferBackFromGPUTexture(
   WillDraw(SkIRect::MakeXYWH(0, 0, Width(), Height()),
            CanvasPerformanceMonitor::DrawType::kOther);
 }
-#endif  // !BUILDFLAG(IS_COBALT)int BaseRenderingContext2D::LayerCount() const {
+#endif  // !BUILDFLAG(IS_COBALT)
+int BaseRenderingContext2D::LayerCount() const {
   return Canvas2DRecorderContext::LayerCount();
 }
 

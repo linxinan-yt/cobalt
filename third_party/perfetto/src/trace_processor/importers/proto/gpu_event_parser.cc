@@ -399,7 +399,8 @@ void GpuEventParser::InsertCustomCounterGroups(
     for (auto cid_it = group.counter_ids(); cid_it; ++cid_it) {
       uint32_t counter_id = *cid_it;
       auto* track_id_ptr = counter_id_to_track.Find(counter_id);
-      if (!track_id_ptr) {        continue;
+      if (!track_id_ptr) {
+        continue;
       }
       tables::GpuCounterGroupTable::Row row;
       row.group_id = group_id;
@@ -526,7 +527,8 @@ void GpuEventParser::InsertTrackForUninternedRenderStage(
   auto ugpu = context_->gpu_tracker->GetOrCreateGpu(gpu_id);
   auto factory = context_->track_compressor->CreateTrackFactory(
       kRenderStageBlueprint,
-tracks::Dimensions(ugpu.value, gpu_id, "id", hw_queue_id, kNullStringId),      tracks::DynamicName(name),
+      tracks::Dimensions(ugpu.value, gpu_id, "id", hw_queue_id, kNullStringId),
+      tracks::DynamicName(name),
       [&, this](ArgsTracker::BoundInserter& inserter) {
         inserter.AddArg(description_id_, Variadic::String(description));
       });
@@ -560,7 +562,8 @@ StringId GpuEventParser::ParseRenderSubpasses(
   if (!event.has_render_subpass_index_mask()) {
     return kNullStringId;
   }
-base::DynamicStringWriter writer;  uint32_t bit_index = 0;
+  base::DynamicStringWriter writer;
+  uint32_t bit_index = 0;
   bool first = true;
   for (auto it = event.render_subpass_index_mask(); it; ++it) {
     auto subpasses_bits = *it;
@@ -819,7 +822,8 @@ void GpuEventParser::ParseGpuRenderStageEvent(
     auto ugpu = context_->gpu_tracker->GetOrCreateGpu(gpu_id);
     TrackId track_id = context_->track_compressor->InternScoped(
         kRenderStageBlueprint,
-tracks::Dimensions(ugpu.value, gpu_id, base::StringView(source),                           static_cast<uint32_t>(hw_queue_id), dimension_name),
+        tracks::Dimensions(ugpu.value, gpu_id, base::StringView(source),
+                           static_cast<uint32_t>(hw_queue_id), dimension_name),
         ts, static_cast<int64_t>(event.duration()),
         tracks::DynamicName(track_name),
         [&](ArgsTracker::BoundInserter& inserter) {

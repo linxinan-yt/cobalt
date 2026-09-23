@@ -261,7 +261,8 @@ DrawAtlas::ErrorCode TextAtlasManager::addGlyphToAtlas(const SkGlyph& skGlyph,
     }
     SkASSERT(glyph != nullptr);
 
-MaskFormat expectedMaskFormat = this->resolveMaskFormat(glyph->fGlyphEntryKey.fFormat);    int bytesPerPixel = MaskFormatBytesPerPixel(expectedMaskFormat);
+    MaskFormat expectedMaskFormat = this->resolveMaskFormat(glyph->fGlyphEntryKey.fFormat);
+    int bytesPerPixel = MaskFormatBytesPerPixel(expectedMaskFormat);
 
     int padding;
     switch (srcPadding) {

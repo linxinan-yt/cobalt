@@ -41,7 +41,8 @@ import {
   FLAMEGRAPH_STATE_SCHEMA,
   type FlamegraphOptionalAction,
 } from '../../widgets/flamegraph';
-import type {SqlTableDefinition} from '../../components/widgets/sql/table/table_description';import {PerfettoSqlTypes} from '../../trace_processor/perfetto_sql_type';
+import type {SqlTableDefinition} from '../../components/widgets/sql/table/table_description';
+import {PerfettoSqlTypes} from '../../trace_processor/perfetto_sql_type';
 import {Stack} from '../../widgets/stack';
 import {Anchor} from '../../widgets/anchor';
 import {Icon} from '../../widgets/icon';
@@ -653,14 +654,15 @@ async function downloadPprof(trace: Trace, upid: number, ts: time) {
     return;
   }
   const blob = await trace.getTraceFile();
-// This is only reachable for heapprofd-based profiles (native heap and
+  // This is only reachable for heapprofd-based profiles (native heap and
   // Java heap samples), which are both allocator profiles for traceconv.
   await convertTraceToPprofAndDownload(
     blob,
     'alloc',
     pid.firstRow({pid: NUM}).pid,
     ts,
-  );}
+  );
+}
 
 function getHeapGraphDuplicateObjectsView(
   isDominator: boolean,
@@ -668,11 +670,12 @@ function getHeapGraphDuplicateObjectsView(
   return {
     name: `_heap_graph${tableModifier(isDominator)}duplicate_objects`,
     columns: [
-new StandardColumn('class_name', PerfettoSqlTypes.STRING),
-      new StandardColumn('path_count', PerfettoSqlTypes.INT),
-      new StandardColumn('object_count', PerfettoSqlTypes.INT),
-      new StandardColumn('total_size', PerfettoSqlTypes.INT),
-      new StandardColumn('total_native_size', PerfettoSqlTypes.INT),    ],
+      {column: 'class_name', type: PerfettoSqlTypes.STRING},
+      {column: 'path_count', type: PerfettoSqlTypes.INT},
+      {column: 'object_count', type: PerfettoSqlTypes.INT},
+      {column: 'total_size', type: PerfettoSqlTypes.INT},
+      {column: 'total_native_size', type: PerfettoSqlTypes.INT},
+    ],
   };
 }
 

@@ -57,10 +57,11 @@ class TrackEventTokenizer {
                                TraceProcessorContext*,
                                TrackEventTracker*);
 
-ModuleResult TokenizeRangeOfInterestPacket(const TokenizePacketArgs& args);
+  ModuleResult TokenizeRangeOfInterestPacket(const TokenizePacketArgs& args);
   ModuleResult TokenizeTrackDescriptorPacket(const TokenizePacketArgs& args);
   ModuleResult TokenizeThreadDescriptorPacket(const TokenizePacketArgs& args);
   ModuleResult TokenizeTrackEventPacket(const TokenizePacketArgs& args);
+
  private:
   void TokenizeThreadDescriptor(PacketSequenceStateGeneration& state,
                                 const protos::pbzero::ThreadDescriptor_Decoder&,
@@ -81,7 +82,8 @@ ModuleResult TokenizeRangeOfInterestPacket(const TokenizePacketArgs& args);
       PacketSequenceStateGeneration& state);
 
   // Helper to record tokenization errors with packet offset
-void RecordTokenizationError(size_t stat_key, TraceBlobView* packet);  // Helper to record tokenization errors with track_uuid arg
+  void RecordTokenizationLog(size_t stat_key, TraceBlobView* packet);
+  // Helper to record tokenization errors with track_uuid arg
   void RecordTokenizationErrorWithTrackUuid(size_t stat_key,
                                             uint64_t track_uuid,
                                             TraceBlobView* packet);

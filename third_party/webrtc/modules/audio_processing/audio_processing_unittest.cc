@@ -1979,7 +1979,7 @@ INSTANTIATE_TEST_SUITE_P(
                       std::make_tuple(44100, 16000, 32000, 16000),
                       std::make_tuple(44100, 16000, 16000, 16000),
 
-std::make_tuple(32000, 48000, 48000, 48000),
+                      std::make_tuple(32000, 48000, 48000, 48000),
                       std::make_tuple(32000, 48000, 32000, 48000),
                       std::make_tuple(32000, 48000, 16000, 48000),
                       std::make_tuple(32000, 44100, 48000, 44100),
@@ -2004,6 +2004,7 @@ std::make_tuple(32000, 48000, 48000, 48000),
                       std::make_tuple(16000, 16000, 48000, 16000),
                       std::make_tuple(16000, 16000, 32000, 16000),
                       std::make_tuple(16000, 16000, 16000, 16000),
+
                       // Other sample rates are not tested exhaustively, to keep
                       // the test runtime manageable.
                       //
@@ -2012,11 +2013,12 @@ std::make_tuple(32000, 48000, 48000, 48000),
                       //  - WebRTC.AudioOutputSampleRate
                       // ApmConfiguration.HandlingOfRateCombinations covers
                       // remaining sample rates.
-std::make_tuple(192000, 192000, 48000, 192000),
+                      std::make_tuple(192000, 192000, 48000, 192000),
                       std::make_tuple(176400, 176400, 48000, 176400),
                       std::make_tuple(96000, 96000, 48000, 96000),
                       std::make_tuple(88200, 88200, 48000, 88200),
                       std::make_tuple(44100, 44100, 48000, 44100)));
+
 // Produces a scoped trace debug output.
 std::string ProduceDebugText(int render_input_sample_rate_hz,
                              int render_output_sample_rate_hz,

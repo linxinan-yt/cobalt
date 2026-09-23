@@ -91,7 +91,7 @@ class ShellContentBrowserClient : public ContentBrowserClient {
   std::unique_ptr<WebContentsViewDelegate> GetWebContentsViewDelegate(
       WebContents* web_contents) override;
   bool IsIsolatedContextAllowedForUrl(BrowserContext* browser_context,
-                                      const GURL& lock_url) override;
+                                      const GURL& lock_url);
   bool IsSharedStorageAllowed(
       content::BrowserContext* browser_context,
       content::RenderFrameHost* rfh,
@@ -151,7 +151,7 @@ class ShellContentBrowserClient : public ContentBrowserClient {
       bool first_auth_attempt,
       GuestPageHolder* guest,
       LoginDelegate::LoginAuthRequiredCallback auth_required_callback) override;
-  base::Value::Dict GetNetLogConstants() override;
+  base::DictValue GetNetLogConstants() override;
   base::FilePath GetSandboxedStorageServiceDataDirectory() override;
   base::FilePath GetFirstPartySetsDirectory() override;
   std::string GetUserAgent() override;
@@ -189,6 +189,8 @@ class ShellContentBrowserClient : public ContentBrowserClient {
       FrameTreeNodeId frame_tree_node_id) override;
   void RegisterNonNetworkWorkerMainResourceURLLoaderFactories(
       BrowserContext* browser_context,
+      const std::optional<url::Origin>& request_initiator,
+      network::mojom::RequestDestination request_destination,
       NonNetworkURLLoaderFactoryMap* factories) override;
   void RegisterNonNetworkServiceWorkerUpdateURLLoaderFactories(
       BrowserContext* browser_context,
@@ -203,7 +205,7 @@ class ShellContentBrowserClient : public ContentBrowserClient {
   // Web Platform Tests.
   std::optional<network::ParsedPermissionsPolicy>
   GetPermissionsPolicyForIsolatedWebApp(content::WebContents* web_contents,
-                                        const url::Origin& app_origin) override;
+                                        const url::Origin& app_origin);
 
   virtual void CreateFeatureListAndFieldTrials();
   ShellBrowserContext* browser_context();

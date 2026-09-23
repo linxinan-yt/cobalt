@@ -1404,7 +1404,8 @@ dn{"Minggu dalam Bulan"}
         }
 weekdayOfMonth-narrow{
             dn{"Hari dlm bln"}
-        }        weekdayOfMonth-short{
+        }
+        weekdayOfMonth-short{
             dn{"Hari dlm bln"}
         }
         year{
@@ -1493,7 +1494,8 @@ general{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }        number{
+        }
+        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ، ٫ 、﹑､︑]",

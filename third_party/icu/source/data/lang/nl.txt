@@ -97,7 +97,8 @@ nl{
         bkm{"Kom"}
         bla{"Siksika"}
         blo{"Anii"}
-blt{"Tai Dam"}        bm{"Bambara"}
+blt{"Tai Dam"}
+        bm{"Bambara"}
         bn{"Bengaals"}
         bo{"Tibetaans"}
         bpy{"Bishnupriya"}

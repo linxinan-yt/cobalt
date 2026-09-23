@@ -118,6 +118,7 @@ and ProGuard/R8 mappings into a single self-contained TAR, which is the
 right artifact to share with teammates, attach to bugs, or archive for
 later analysis. Prefer `bundle` over `symbolize`/`deobfuscate` unless you
 have a specific reason not to.
+
 ```bash
 ./traceconv bundle trace.perfetto-trace trace.bundle.tar
 
@@ -127,6 +128,7 @@ have a specific reason not to.
   --proguard-map com.example.app=/path/to/mapping.txt \
   trace.perfetto-trace trace.bundle.tar
 ```
+
 `bundle`-specific options:
 
 - `--symbol-paths PATH1,PATH2,...` — additional paths to search for

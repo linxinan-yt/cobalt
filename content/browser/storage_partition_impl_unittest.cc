@@ -1059,7 +1059,8 @@ TEST_F(StoragePartitionImplTest, RemoveCookieWithDeleteInfo) {
   EXPECT_FALSE(tester.ContainsCookie(kOrigin));
 }
 
-TEST_P(LocalStoragePartitionImplTest, RemoveUnprotectedLocalStorageForever) {  const url::Origin kOrigin1 = url::Origin::Create(GURL("http://host1:1/"));
+TEST_P(LocalStoragePartitionImplTest, RemoveUnprotectedLocalStorageForever) {
+  const url::Origin kOrigin1 = url::Origin::Create(GURL("http://host1:1/"));
   const url::Origin kOrigin2 = url::Origin::Create(GURL("http://host2:1/"));
   const url::Origin kOrigin3 = url::Origin::Create(GURL("http://host3:1/"));
 
@@ -1626,7 +1627,8 @@ using StoragePartitionImplLocalNetworkAccessTest = RenderViewHostTestHarness;
 
 // Mock ContentBrowserClient to test Android OS-level platform local network
 // permission requests delegated from StoragePartitionImpl.
-class PlatformPermissionTestContentBrowserClient : public ContentBrowserClient { public:
+class PlatformPermissionTestContentBrowserClient : public ContentBrowserClient {
+ public:
   void RequestPlatformLocalNetworkPermission(
       WebContents& web_contents,
       base::OnceCallback<void(bool)> callback) override {
@@ -1647,7 +1649,8 @@ class PlatformPermissionTestContentBrowserClient : public ContentBrowserClient {
 };
 
 // Local network access tests require there to be a (minimal) frame setup.
-using StoragePartitionImplLocalNetworkAccessTest = RenderViewHostTestHarness;// Tests triggering the Local Network Access permission check for a subresource
+using StoragePartitionImplLocalNetworkAccessTest = RenderViewHostTestHarness;
+// Tests triggering the Local Network Access permission check for a subresource
 // request.
 TEST_F(StoragePartitionImplLocalNetworkAccessTest,
        LocalNetworkAccessPermission_SubresourceContext) {

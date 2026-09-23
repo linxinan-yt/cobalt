@@ -2665,7 +2665,8 @@ ofglucose{
                 one{"{0} parte"}
                 other{"{0} de părți"}
             }
-            part-per-1e9{                dnam{"părți/miliard"}
+            part-per-1e9{
+                dnam{"părți/miliard"}
             }
         }
         consumption{

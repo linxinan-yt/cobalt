@@ -642,7 +642,8 @@ case{
                 dnam{"रातें"}
                 gender{"feminine"}
                 one{"{0} रात"}
-                other{"{0} रातें"}                per{"{0} प्रति रात"}
+                other{"{0} रातें"}
+                per{"{0} प्रति रात"}
             }
             quarter{
                 case{
@@ -2251,7 +2252,8 @@ light-speed{
             meter-per-second{
                 one{"{0} मी/से"}
                 other{"{0}मी॰/से॰"}
-            }            mile-per-hour{
+            }
+            mile-per-hour{
                 one{"{0} मीप्रघं"}
                 other{"{0} मीप्रघं"}
             }

@@ -1194,7 +1194,8 @@ ec{"Чӗмпӗр"}        }
         }
 "Pacific:Kanton"{
             ec{"Кантон"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"Киритимати"}
         }
         "Pacific:Kosrae"{
@@ -1853,7 +1854,8 @@ sd{"CST China DST"}
             sd{"MST Macao DST"}
             sg{"MST Macao"}
             ss{"MST Macao"}
-        }        "meta:Magadan"{
+        }
+        "meta:Magadan"{
             ld{"Магадан ҫуллахи вӑхӑчӗ"}
             lg{"Магадан вӑхӑчӗ"}
             ls{"Магадан стандартлӑ вӑхӑчӗ"}

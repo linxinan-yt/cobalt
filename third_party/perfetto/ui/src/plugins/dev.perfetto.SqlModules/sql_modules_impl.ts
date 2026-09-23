@@ -52,6 +52,7 @@ async function runDataCheck(trace: Trace, sql: string): Promise<boolean> {
     return false;
   }
 }
+
 export class SqlModulesImpl implements SqlModules {
   readonly packages: SqlPackage[];
   private disabledModules: Set<string> = new Set();
@@ -66,7 +67,7 @@ export class SqlModulesImpl implements SqlModules {
     this.startInit = () => this.computeDisabledModules(trace, docs);
   }
 
-ensureInitialized(): Promise<void> {
+  ensureInitialized(): Promise<void> {
     if (this.initPromise === undefined) {
       this.initPromise = this.startInit();
     }
@@ -197,7 +198,9 @@ ensureInitialized(): Promise<void> {
 
   getDisabledModules(): ReadonlySet<string> {
     return this.disabledModules;
-  }  getTable(tableName: string): SqlTable | undefined {
+  }
+
+  getTable(tableName: string): SqlTable | undefined {
     for (const p of this.packages) {
       const t = p.getTable(tableName);
       if (t !== undefined) {
@@ -411,8 +414,9 @@ class SqlTableImpl implements SqlTable {
     this.includeKey = includeKey;
     this.description = docs.desc;
     this.type = docs.type;
-this.importance = docs.importance ?? undefined;
-    this.dataCheckSql = docs.data_check_sql ?? undefined;    this.columns = docs.cols.map(
+    this.importance = docs.importance ?? undefined;
+    this.dataCheckSql = docs.data_check_sql ?? undefined;
+    this.columns = docs.cols.map(
       (json) => new StdlibColumnImpl(json, this.name),
     );
   }
@@ -458,7 +462,8 @@ class StdlibFunctionArgImpl implements SqlArgument {
   }
 }
 
-export const ARG_OR_COL_SCHEMA = z.object({  name: z.string(),
+export const ARG_OR_COL_SCHEMA = z.object({
+  name: z.string(),
   type: z.string(),
   desc: z.string(),
   table: z.string().nullable(),

@@ -47,7 +47,8 @@ ga{
         }
 "America:Bahia_Banderas"{
             ec{"Bahia Banderas"}
-        }        "America:Barbados"{
+        }
+        "America:Barbados"{
             ec{"Barbadós"}
         }
         "America:Belize"{
@@ -100,7 +101,8 @@ ga{
         }
 "America:Sao_Paulo"{
             ec{"São Paulo"}
-        }        "America:St_Barthelemy"{
+        }
+        "America:St_Barthelemy"{
             ec{"Saint Barthélemy"}
         }
         "America:St_Kitts"{
@@ -264,7 +266,8 @@ ga{
         }
 "Australia:Lord_Howe"{
             ec{"Oileán an Tiarna Howe"}
-        }        "Etc:UTC"{
+        }
+        "Etc:UTC"{
             ls{"Am Uilíoch Lárnach"}
         }
         "Etc:Unknown"{

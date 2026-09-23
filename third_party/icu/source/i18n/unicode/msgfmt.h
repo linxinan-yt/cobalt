@@ -441,7 +441,8 @@ public:
      * @return    the locale of the object.
      * @stable ICU 2.0
      */
-U_I18N_API virtual const Locale& getLocale() const;
+    U_I18N_API virtual const Locale& getLocale() const;
+
     /**
      * Applies the given pattern string to this message format.
      *
@@ -844,7 +845,8 @@ U_I18N_API virtual const Locale& getLocale() const;
      *                  other classes have different class IDs.
      * @stable ICU 2.0
      */
-U_I18N_API virtual UClassID getDynamicClassID() const override;
+    U_I18N_API virtual UClassID getDynamicClassID() const override;
+
     /**
      * Return the class ID for this class.  This is useful only for
      * comparing to a return value from getDynamicClassID().  For example:
@@ -856,7 +858,8 @@ U_I18N_API virtual UClassID getDynamicClassID() const override;
      * @return          The class ID for all objects of this class.
      * @stable ICU 2.0
      */
-static UClassID U_EXPORT2 getStaticClassID();
+    U_I18N_API static UClassID getStaticClassID();
+
 #ifndef U_HIDE_INTERNAL_API
     /**
      * Compares two Format objects. This is used for constructing the hash

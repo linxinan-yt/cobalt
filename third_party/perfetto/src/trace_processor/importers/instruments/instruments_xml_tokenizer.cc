@@ -16,8 +16,6 @@
 
 #include "src/trace_processor/importers/instruments/instruments_xml_tokenizer.h"
 
-#include "perfetto/ext/base/murmur_hash.h"
-#include "src/trace_processor/importers/instruments/row_parser.h"
 #include <expat.h>
 #include <algorithm>
 #include <cctype>
@@ -155,7 +153,7 @@ class InstrumentsXmlTokenizer::Impl {
  public:
   explicit Impl(TraceProcessorContext* context)
       : context_(context),
-parser_(nullptr),
+        parser_(nullptr),
         has_data_(false),
         clock_(ClockId::TraceFile(context->trace_id().value)),
         stream_(context->sorter->CreateStream(
@@ -163,7 +161,8 @@ parser_(nullptr),
   ~Impl() {
     if (parser_) {
       XML_ParserFree(parser_);
-    }  }
+    }
+  }
 
   base::Status Parse(TraceBlobView view) {
     // Create parser on first call
@@ -481,7 +480,8 @@ parser_(nullptr),
 
   std::optional<int64_t> ToTraceTimestamp(int64_t time) {
     std::optional<int64_t> trace_ts =
-context_->clock_tracker->ToTraceTime(clock_, time);    if (PERFETTO_LIKELY(trace_ts.has_value())) {
+        context_->clock_tracker->ConvertDefaultClockToTraceTime(time);
+    if (PERFETTO_LIKELY(trace_ts.has_value())) {
       latest_timestamp_ = std::max(latest_timestamp_, *trace_ts);
     }
     return trace_ts;

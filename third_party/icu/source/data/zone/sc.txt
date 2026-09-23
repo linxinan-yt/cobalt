@@ -29,7 +29,8 @@ sc{
         }
 "America:Argentina:Tucuman"{
             ec{"Tucumán"}
-        }        "America:Havana"{
+        }
+        "America:Havana"{
             ec{"S’Avana"}
         }
         "America:Martinique"{

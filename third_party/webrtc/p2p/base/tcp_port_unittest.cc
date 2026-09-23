@@ -233,7 +233,8 @@ class SentPacketCounter {
  public:
   explicit SentPacketCounter(TCPPort* p) {
     p->SubscribeSentPacket(
-[this](const webrtc::SentPacketInfo& info) { OnSentPacket(info); });  }
+        this, [this](const SentPacketInfo& info) { OnSentPacket(info); });
+  }
 
   int sent_packets() const { return sent_packets_; }
 

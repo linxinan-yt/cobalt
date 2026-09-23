@@ -90,6 +90,7 @@ constexpr TimeDelta kDefaultReportInterval = TimeDelta::Millis(1000);
 constexpr RtpHeaderExtensionId kAbsoluteSendTimeExtensionId(1);
 constexpr RtpHeaderExtensionId kTransportSequenceNumberExtensionId(2);
 constexpr RtpHeaderExtensionId kTransmissionOffsetExtensionId(3);
+
 class RtcpRttStatsTestImpl : public RtcpRttStats {
  public:
   RtcpRttStatsTestImpl() : rtt_ms_(0) {}

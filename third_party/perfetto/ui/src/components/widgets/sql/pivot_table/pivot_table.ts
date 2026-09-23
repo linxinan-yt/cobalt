@@ -22,16 +22,18 @@ import {Icons} from '../../../../base/semantic_icons';
 import {type TableColumn, tableColumnId} from '../table/table_column';
 import {MenuDivider, MenuItem} from '../../../../widgets/menu';
 import {SelectColumnMenu} from '../table/menus/select_column_menu';
-import type {SqlColumn} from '../table/sql_column';import {buildSqlQuery} from '../table/query_builder';
+import type {SqlColumn} from '../table/sql_column';
+import {buildSqlQuery} from '../table/query_builder';
 import {type Aggregation, AGGREGATIONS} from './aggregations';
 import {aggregationId, aggregationLabel, pivotId} from './ids';
 import {
   Grid,
   GridCell,
-type GridColumn,
+  type GridColumn,
   GridHeaderCell,
   renderSortMenuItems,
-  type SortDirection,} from '../../../../widgets/grid';
+  type SortDirection,
+} from '../../../../widgets/grid';
 
 export interface PivotTableAttrs {
   readonly state: PivotTableState;
@@ -69,7 +71,8 @@ export class PivotTable implements m.ClassComponent<PivotTableAttrs> {
             },
             pivotId(pivot),
           ),
-reorderable: {reorderGroup: 'pivot'},          thickRightBorder: index === pivots.length - 1,
+          reorderable: {reorderGroup: 'pivot'},
+          thickRightBorder: index === pivots.length - 1,
         };
         return gridColumn;
       }),
@@ -85,9 +88,10 @@ reorderable: {reorderGroup: 'pivot'},          thickRightBorder: index === pivot
                 state.sortByAggregation(agg, direction),
               menuItems: this.renderAggregationColumnMenu(attrs, agg, index),
             },
-aggregationLabel(agg),
+            aggregationLabel(agg),
           ),
-          reorderable: {reorderGroup: 'aggregation'},        };
+          reorderable: {reorderGroup: 'aggregation'},
+        };
         return gridColumn;
       }),
     ];
@@ -95,7 +99,8 @@ aggregationLabel(agg),
     if (extraRowButton) {
       columns.push({
         key: 'action-button',
-minWidth: 0,        header: m(GridHeaderCell, ''),
+        widthPx: 24,
+        header: m(GridHeaderCell, ''),
       });
     }
 

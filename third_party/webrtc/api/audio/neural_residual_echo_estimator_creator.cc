@@ -42,6 +42,7 @@ CreateNeuralResidualEchoEstimatorAsync(
   RTC_CHECK(op_resolver);
   return NeuralResidualEchoEstimatorImpl::CreateAsync(env.task_queue_factory(),
                                                       std::move(op_resolver),
-                                                      std::move(model_handle));}
+                                                      std::move(model_handle));
+}
 
 }  // namespace webrtc

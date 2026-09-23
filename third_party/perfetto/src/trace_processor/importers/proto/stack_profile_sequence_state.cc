@@ -196,7 +196,8 @@ StackProfileSequenceState::LookupInternedMappingPath(
 }
 
 std::optional<CallsiteId> StackProfileSequenceState::FindOrInsertCallstack(
-PacketSequenceStateGeneration* state,    std::optional<UniquePid> upid,
+    PacketSequenceStateGeneration* state,
+    std::optional<UniquePid> upid,
     uint64_t iid) {
   if (CallsiteId* id = cached_callstacks_.Find({upid, iid}); id) {
     return *id;
@@ -248,7 +249,8 @@ StackProfileSequenceState::FindOrInsertCallstackFromFrames(
 }
 
 std::optional<FrameId> StackProfileSequenceState::FindOrInsertFrame(
-PacketSequenceStateGeneration* state,    std::optional<UniquePid> upid,
+    PacketSequenceStateGeneration* state,
+    std::optional<UniquePid> upid,
     uint64_t iid) {
   if (FrameId* id = cached_frames_.Find({upid, iid}); id) {
     return *id;
@@ -257,8 +259,9 @@ PacketSequenceStateGeneration* state,    std::optional<UniquePid> upid,
       protos::pbzero::InternedData::kFramesFieldNumber, protos::pbzero::Frame>(
       iid);
   if (!decoder) {
-context_->stats_tracker->IncrementStats(
-        stats::stackprofile_invalid_frame_id);    return std::nullopt;
+    context_->stats_tracker->IncrementStats(
+        stats::stackprofile_invalid_frame_id);
+    return std::nullopt;
   }
 
   base::StringView function_name;
@@ -274,10 +277,11 @@ context_->stats_tracker->IncrementStats(
   // Extract source file and line number (used by both dummy and regular frames)
   std::optional<base::StringView> source_file;
   if (decoder->has_source_path_iid()) {
-source_file = LookupInternedSourcePath(state, decoder->source_path_iid());
+    source_file = LookupInternedSourcePath(state, decoder->source_path_iid());
     if (!source_file) {
       return std::nullopt;
-    }  }
+    }
+  }
 
   std::optional<uint32_t> line_number;
   if (decoder->has_line_number()) {
@@ -367,22 +371,6 @@ StackProfileSequenceState::LookupInternedSourcePath(
     return std::nullopt;
   }
   return *str;
-}
-
-std::optional<base::StringView>
-StackProfileSequenceState::LookupInternedSourcePath(uint64_t iid) {
-  if (iid == 0) {
-    return std::nullopt;
-  }
-  auto* decoder = LookupInternedMessage<
-      protos::pbzero::InternedData::kSourcePathsFieldNumber,
-      protos::pbzero::InternedString>(iid);
-  if (!decoder) {
-    context_->storage->IncrementStats(stats::stackprofile_invalid_string_id);
-    return std::nullopt;
-  }
-
-  return ToStringView(decoder->str());
 }
 
 }  // namespace trace_processor

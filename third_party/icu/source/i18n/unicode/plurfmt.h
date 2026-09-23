@@ -505,7 +505,8 @@ public:
      * @stable ICU 4.0
      *
      */
-static UClassID U_EXPORT2 getStaticClassID();
+    U_I18N_API static UClassID getStaticClassID();
+
     /**
      * ICU "poor man's RTTI", returns a UClassID for the actual class.
      *

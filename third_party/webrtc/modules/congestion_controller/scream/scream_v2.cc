@@ -12,7 +12,7 @@
 
 #include <algorithm>
 #include <memory>
-#include <vector>
+
 #include "api/environment/environment.h"
 #include "api/transport/network_types.h"
 #include "api/units/data_rate.h"
@@ -51,7 +51,8 @@ void ScreamV2::SetTargetBitrateConstraints(DataRate min,
                         << " start_bitrate_=" << target_rate_;
 }
 
-void ScreamV2::OnPacketSent(DataSize data_in_flight) {  max_data_in_flight_this_rtt_ =
+void ScreamV2::OnPacketSent(DataSize data_in_flight) {
+  max_data_in_flight_this_rtt_ =
       std::max(max_data_in_flight_this_rtt_, data_in_flight);
 }
 
@@ -137,12 +138,13 @@ void ScreamV2::UpdateRefWindow(const ScreamFeedback& parsed) {
     if (!loss_estimator_.congested() &&
         !delay_based_congestion_control_.IsQueueDelayDetected()) {
       is_loss = false;
-    }  }
+    }
+  }
 
   DataSize previous_ref_window = ref_window_;
 
   if ((is_virtual_ce || is_ce || is_loss) &&
-parsed.feedback_time - last_reaction_to_congestion_time_ >=
+      parsed.feedback_time - last_reaction_to_congestion_time_ >=
           std::min(delay_based_congestion_control_.rtt(),
                    params_.virtual_rtt.Get())) {
     last_reaction_to_congestion_time_ = parsed.feedback_time;
@@ -214,12 +216,13 @@ parsed.feedback_time - last_reaction_to_congestion_time_ >=
           params_.virtual_rtt.Get();
       increase_scale_factor = increase_scale_factor * (rtt_ratio * rtt_ratio);
     }
+
     // Limit increase when close to the last inflection point.
     increase_scale_factor =
         increase_scale_factor *
         std::max(0.25, ref_window_scale_factor_close_to_ref_window_i());
 
-// Put a additional restriction on reference window growth if rtt varies a
+    // Put a additional restriction on reference window growth if rtt varies a
     // lot.
     // Better to enforce a slow increase in reference window and get
     // a more stable bitrate.
@@ -252,7 +255,8 @@ parsed.feedback_time - last_reaction_to_congestion_time_ >=
     DataSize max_ref_window = max_allowed_ref_window();
     if (ref_window_ < max_ref_window) {
       ref_window_ = std::clamp(ref_window_ + increase,
-                               params_.min_ref_window.Get(), max_ref_window);    }
+                               params_.min_ref_window.Get(), max_ref_window);
+    }
   }
 
   if (previous_ref_window < ref_window_) {
@@ -274,7 +278,7 @@ parsed.feedback_time - last_reaction_to_congestion_time_ >=
       << ", ref_window = " << ref_window_ << " ref_window_i_=" << ref_window_i_
       << ", change=" << ref_window_.bytes() - previous_ref_window.bytes()
       << " bytes "
-<< ", l4s_alpha=" << l4s_alpha_ << ", is_ce=" << is_ce
+      << ", l4s_alpha=" << l4s_alpha_ << ", is_ce=" << is_ce
       << " is_virtual_ce=" << is_virtual_ce << " is_loss=" << is_loss
       << " smoothed_rtt=" << delay_based_congestion_control_.rtt().ms()
       << ", queue_delay=" << delay_based_congestion_control_.queue_delay().ms()
@@ -379,7 +383,8 @@ void ScreamV2::UpdateReceiveRate(const ScreamFeedback& feedback) {
         feedback.feedback_time - last_received_rate_update_time_;
     received_rate_ = accumulated_received_bytes_ / duration;
     accumulated_received_bytes_ = DataSize::Zero();
-    last_received_rate_update_time_ = feedback.feedback_time;  }
+    last_received_rate_update_time_ = feedback.feedback_time;
+  }
 }
 
 }  // namespace webrtc

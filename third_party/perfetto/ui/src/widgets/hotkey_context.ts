@@ -14,7 +14,8 @@
 
 import './hotkey_context.scss';
 import m from 'mithril';
-import {checkHotkey, type Hotkey} from '../base/hotkeys';import {toHTMLElement} from '../base/dom_utils';
+import {checkHotkey, type Hotkey} from '../base/hotkeys';
+import {toHTMLElement} from '../base/dom_utils';
 import {classNames} from '../base/classnames';
 
 export interface HotkeyConfig {

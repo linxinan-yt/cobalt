@@ -61,7 +61,8 @@ schemas, function arguments and return types:
 
 | Type | Description |
 |------|-------------|
-| `INT` | 64-bit signed integer || `DOUBLE` | Double precision floating-point number |
+| `LONG` | 64-bit signed integer |
+| `DOUBLE` | Double precision floating-point number |
 | `BOOLEAN` | Boolean value (true/false) |
 | `STRING` | Text string |
 | `BYTES` | Binary data |
@@ -73,7 +74,8 @@ schemas, function arguments and return types:
 | `ID(table.column)` | A variant of the `ID` type, which is both primary key for this table and simultaneously is a foreign key reference into another table. Useful when a given table is based on a subset of rows from another table (e.g. `slice`). |
 
 ## Defining functions
-`CREATE PERFETTO FUNCTION` allows functions to be defined in SQL, which can beeither scalar (returning a single value) or table-value (returning a set of rows).
+`CREATE PERFETTO FUNCTION` allows functions to be defined in SQL, which can be
+either scalar (returning a single value) or table-value (returning a set of rows).
 The syntax is similar to the syntax in PostgreSQL or GoogleSQL:
 - Scalar: `CREATE PERFETTO FUNCTION function_name(arg_list) RETURNS return_type AS sql_select_statement;`
 - Table-valued: `CREATE PERFETTO FUNCTION function_name(arg_list) RETURNS TABLE(column_list) AS sql_select_statement;`

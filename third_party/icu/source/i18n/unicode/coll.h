@@ -594,42 +594,48 @@ public:
      */
     UBool equals(const UnicodeString& source, const UnicodeString& target) const;
 
-/**
+    /**
      * Creates a comparison function object that uses this collator.
      * Like <code>std::equal_to</code> but uses the collator instead of <code>operator==</code>.
-     * @stable ICU 76     */
+     * @stable ICU 76
+     */
     inline auto equal_to() const { return Predicate<std::equal_to, UCOL_EQUAL>(*this); }
 
     /**
      * Creates a comparison function object that uses this collator.
      * Like <code>std::greater</code> but uses the collator instead of <code>operator&gt;</code>.
-* @stable ICU 76     */
+     * @stable ICU 76
+     */
     inline auto greater() const { return Predicate<std::equal_to, UCOL_GREATER>(*this); }
 
     /**
      * Creates a comparison function object that uses this collator.
      * Like <code>std::less</code> but uses the collator instead of <code>operator&lt;</code>.
-* @stable ICU 76     */
+     * @stable ICU 76
+     */
     inline auto less() const { return Predicate<std::equal_to, UCOL_LESS>(*this); }
 
     /**
      * Creates a comparison function object that uses this collator.
      * Like <code>std::not_equal_to</code> but uses the collator instead of <code>operator!=</code>.
-* @stable ICU 76     */
+     * @stable ICU 76
+     */
     inline auto not_equal_to() const { return Predicate<std::not_equal_to, UCOL_EQUAL>(*this); }
 
     /**
      * Creates a comparison function object that uses this collator.
      * Like <code>std::greater_equal</code> but uses the collator instead of <code>operator&gt;=</code>.
-* @stable ICU 76     */
+     * @stable ICU 76
+     */
     inline auto greater_equal() const { return Predicate<std::not_equal_to, UCOL_LESS>(*this); }
 
     /**
      * Creates a comparison function object that uses this collator.
      * Like <code>std::less_equal</code> but uses the collator instead of <code>operator&lt;=</code>.
-* @stable ICU 76
+     * @stable ICU 76
      */
     inline auto less_equal() const { return Predicate<std::not_equal_to, UCOL_GREATER>(*this); }
+
 #ifndef U_FORCE_HIDE_DEPRECATED_API
     /**
      * Determines the minimum strength that will be used in comparison or

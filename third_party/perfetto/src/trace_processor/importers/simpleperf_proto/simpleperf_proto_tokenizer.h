@@ -39,7 +39,9 @@ class SimpleperfProtoTokenizer : public ChunkedTraceReader {
 
   // ChunkedTraceReader implementation.
   base::Status Parse(TraceBlobView) override;
-base::Status NotifyEndOfFile() override;
+  base::Status OnPushDataToSorter() override;
+  void OnEventsFullyExtracted() override {}
+
  private:
   enum class State : uint8_t {
     kExpectingMagic,
@@ -49,12 +51,13 @@ base::Status NotifyEndOfFile() override;
     kFinished
   };
 
-enum class ParseResult { kOk, kNeedsMoreData };
+  enum class ParseResult { kOk, kNeedsMoreData };
 
   base::StatusOr<ParseResult> ParseMagic();
   base::StatusOr<ParseResult> ParseVersion();
   base::StatusOr<ParseResult> ParseRecordSize();
   base::StatusOr<ParseResult> ParseRecord();
+
   TraceProcessorContext* const context_;
   util::TraceBlobViewReader reader_;
   State state_ = State::kExpectingMagic;

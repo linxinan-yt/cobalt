@@ -286,12 +286,6 @@ class ArgsTracker {
                 tables::ThreadTable::ColumnIndex::arg_set_id, id, id);
   }
 
-  BoundInserter AddArgsToThread(UniqueTid id) {
-    auto* table = context_->storage->mutable_thread_table();
-    return BoundInserter(this, &table->dataframe(),
-                         tables::ThreadTable::ColumnIndex::arg_set_id, id);
-  }
-
   BoundInserter AddArgsTo(tables::ExperimentalProtoPathTable::Id id) {
     return AddArgsTo(context_->storage->mutable_experimental_proto_path_table(),
                      id);
@@ -301,9 +295,10 @@ class ArgsTracker {
     return AddArgsTo(context_->storage->mutable_cpu_table(), id);
   }
 
-BoundInserter AddArgsTo(tables::GpuTable::Id id) {
+  BoundInserter AddArgsTo(tables::GpuTable::Id id) {
     return AddArgsTo(context_->storage->mutable_gpu_table(), id);
   }
+
   BoundInserter AddArgsTo(tables::TraceImportLogsTable::Id id) {
     return AddArgsTo(context_->storage->mutable_trace_import_logs_table(), id);
   }

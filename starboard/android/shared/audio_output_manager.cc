@@ -32,7 +32,7 @@ namespace starboard {
 
 namespace {
 
-using jni_zero::JavaParamRef;
+using jni_zero::JavaRef;
 using jni_zero::ScopedJavaLocalRef;
 
 // Constants for output types from
@@ -277,3 +277,5 @@ jboolean JNI_AudioOutputManager_IsSeamlessAudioSwitchingEnabled(JNIEnv* env) {
 }
 
 }  // namespace starboard
+
+DEFINE_JNI(AudioOutputManager)

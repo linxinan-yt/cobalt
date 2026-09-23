@@ -331,8 +331,9 @@ void ModulesInitializer::InitWorkerInspectorAgentSession(
     WorkerGlobalScope* worker_global_scope) const {
 #if BUILDFLAG(ENABLE_DEVTOOLS_BACKEND)
   session->CreateAndAppend<InspectorIndexedDBAgent>(
-/*inspected_frames=*/nullptr, worker_global_scope, session->V8Session());
-#endif}
+      /*inspected_frames=*/nullptr, worker_global_scope);
+#endif
+}
 
 void ModulesInitializer::OnClearWindowObjectInMainWorld(
     Document& document,

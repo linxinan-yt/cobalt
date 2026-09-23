@@ -167,7 +167,8 @@ void StreamInterfaceChannel::ClearNextPacketOptions() {
   next_packet_options_.reset();
 }
 
-StreamResult StreamInterfaceChannel::Write(std::span<const uint8_t> data,                                           size_t& written,
+StreamResult StreamInterfaceChannel::Write(std::span<const uint8_t> data,
+                                           size_t& written,
                                            int& /* error */) {
   RTC_DCHECK_RUN_ON(&callback_sequence_);
 
@@ -198,7 +199,8 @@ bool StreamInterfaceChannel::Flush() {
   return false;
 }
 
-bool StreamInterfaceChannel::OnPacketReceived(std::span<const uint8_t> data) {  RTC_DCHECK_RUN_ON(&callback_sequence_);
+bool StreamInterfaceChannel::OnPacketReceived(std::span<const uint8_t> data) {
+  RTC_DCHECK_RUN_ON(&callback_sequence_);
   if (packets_.size() > 0) {
     RTC_LOG(LS_WARNING) << "Packet already in queue.";
   }
@@ -240,8 +242,9 @@ DtlsTransportInternalImpl::DtlsTransportInternalImpl(
     SslStreamFactory ssl_stream_factory)
     : ssl_stream_factory_(ssl_stream_factory),
       env_(env),
-component_(ice_transport->internal()->component()),
-      ice_transport_(std::move(ice_transport)),      downward_(nullptr),
+      component_(ice_transport->internal()->component()),
+      ice_transport_(std::move(ice_transport)),
+      downward_(nullptr),
       srtp_ciphers_(crypto_options.GetSupportedDtlsSrtpCryptoSuites()),
       ephemeral_key_exchange_cipher_groups_(
           crypto_options.ephemeral_key_exchange_cipher_groups.GetEnabled()),
@@ -658,8 +661,9 @@ int DtlsTransportInternalImpl::SendPacket(
         // StreamInterfaceChannel::Write function. Such change would remove the
         // need of the next_packet_options_.
         StreamResult result = dtls_->Write(
-std::span(reinterpret_cast<const uint8_t*>(data), size), written,
-            error);        if (result != SR_SUCCESS) {
+            std::span(reinterpret_cast<const uint8_t*>(data), size), written,
+            error);
+        if (result != SR_SUCCESS) {
           // Explicitly clear the next packet options, in case no packet was
           // sent.
           downward_->ClearNextPacketOptions();

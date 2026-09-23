@@ -22,7 +22,8 @@ import {getColorForSlice} from '../../components/colorizer';
 import {EVENT_LATENCY_TRACK} from './tracks';
 import {JANKY_LATENCY_NAME} from './event_latency_model';
 
-export function createEventLatencyTrack(trace: Trace) {  return SliceTrack.create({
+export function createEventLatencyTrack(trace: Trace) {
+  return SliceTrack.create({
     trace,
     uri: EVENT_LATENCY_TRACK.uri,
     rootTableName: EVENT_LATENCY_TRACK.tableName,

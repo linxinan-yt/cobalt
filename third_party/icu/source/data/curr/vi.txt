@@ -1465,7 +1465,8 @@ vi{
         }
 MVP{
             other{"Rupee Maldives (1947–1981)"}
-        }        MWK{
+        }
+        MWK{
             other{"kwacha Malawi"}
         }
         MXN{

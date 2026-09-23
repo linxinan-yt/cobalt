@@ -161,7 +161,7 @@ class FuchsiaTraceParserTest : public ::testing::Test {
     context_.track_tracker = std::make_unique<TrackTracker>(&context_);
     context_.global_args_tracker =
         std::make_unique<GlobalArgsTracker>(context_.storage.get());
-context_.global_metadata_tracker =
+    context_.global_metadata_tracker =
         std::make_unique<GlobalMetadataTracker>(context_.storage.get());
     context_.global_stats_tracker =
         std::make_unique<GlobalStatsTracker>(context_.storage.get());
@@ -169,7 +169,8 @@ context_.global_metadata_tracker =
         TraceProcessorContextPtr<TraceProcessorContext::TraceState>::MakeRoot(
             TraceProcessorContext::TraceState{TraceId(0)});
     context_.import_logs_tracker =
-        std::make_unique<ImportLogsTracker>(&context_, TraceId(1));    context_.stack_profile_tracker.reset(new StackProfileTracker(&context_));
+        std::make_unique<ImportLogsTracker>(&context_, TraceId(1));
+    context_.stack_profile_tracker.reset(new StackProfileTracker(&context_));
     context_.args_translation_table.reset(new ArgsTranslationTable(storage_));
     context_.metadata_tracker = std::make_unique<MetadataTracker>(&context_);
     context_.cpu_tracker = std::make_unique<CpuTracker>(&context_);
@@ -184,13 +185,14 @@ context_.global_metadata_tracker =
     context_.slice_tracker = std::make_unique<SliceTracker>(&context_);
     context_.slice_translation_table =
         std::make_unique<SliceTranslationTable>(storage_);
-context_.trace_time_state = std::make_unique<TraceTimeState>(
+    context_.trace_time_state = std::make_unique<TraceTimeState>(
         ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_BOOTTIME));
     primary_sync_ = std::make_unique<ClockSynchronizer>(
         context_.trace_time_state.get(),
         std::make_unique<ClockSynchronizerListenerImpl>(&context_));
     context_.clock_tracker = std::make_unique<ClockTracker>(
-        &context_, primary_sync_.get(), /*is_primary=*/true);    clock_ = context_.clock_tracker.get();
+        &context_, primary_sync_.get(), /*is_primary=*/true);
+    clock_ = context_.clock_tracker.get();
     // ForwardingTraceParser normally sets the file's default clock; the
     // tokenizer converts its events through it
     // (ConvertDefaultClockToTraceTime).

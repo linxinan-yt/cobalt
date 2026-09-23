@@ -658,10 +658,11 @@ bool PerfettoSqlParser::Impl::Next(
       break;
   }
 
-// Every layer-0 offset the parser emits (node extents, spans, macro
+  // Every layer-0 offset the parser emits (node extents, spans, macro
   // rewrite call offsets) is relative to this position within the bound
   // source; callers that slice `stmt` add it back on.
   uint32_t stmt_doc_offset = CurrentStatementDocOffset(synq);
+
   MacroRewriteBuilder rb(synq, stmt, stmt_doc_offset, macros);
   auto root_src = rb.NodeSource(root);
   out_statement_sql = root_src.has_value() ? *std::move(root_src) : stmt;
@@ -689,7 +690,8 @@ void PerfettoSqlParser::Reset(SqlSource source) {
 PerfettoSqlParser::~PerfettoSqlParser() = default;
 
 bool PerfettoSqlParser::Next() {
-return impl_->Next(statement_sql_);}
+  return impl_->Next(statement_sql_);
+}
 
 const PerfettoSqlParser::Statement& PerfettoSqlParser::statement() const {
   PERFETTO_DCHECK(impl_->current_statement.has_value());

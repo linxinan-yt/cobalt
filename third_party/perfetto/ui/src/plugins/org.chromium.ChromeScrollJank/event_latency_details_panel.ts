@@ -36,7 +36,8 @@ import {
   TreeTable,
   type TreeTableAttrs,
 } from '../../components/widgets/treetable';
-import {LONG, NUM, NUM_NULL, STR} from '../../trace_processor/query_result';import {DetailsShell} from '../../widgets/details_shell';
+import {LONG, NUM, NUM_NULL, STR} from '../../trace_processor/query_result';
+import {DetailsShell} from '../../widgets/details_shell';
 import {GridLayout, GridLayoutColumn} from '../../widgets/grid_layout';
 import {Section} from '../../widgets/section';
 import {MultiParagraphText, TextParagraph} from '../../widgets/text_paragraph';
@@ -428,7 +429,8 @@ export class EventLatencySliceDetailsPanel implements TrackEventDetailsPanel {
 
     return m(
       Section,
-{title: this.isJankStage ? `Jank Cause: ${name}` : (name ?? '[null]')},      childWidgets,
+      {title: this.isJankStage ? `Jank Cause: ${name}` : (name ?? '[null]')},
+      childWidgets,
     );
   }
 

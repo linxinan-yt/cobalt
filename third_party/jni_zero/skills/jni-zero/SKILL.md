@@ -37,7 +37,8 @@ API Usage:
 - When returning or passing a null `JavaRef`, use `nullptr` rather than calling
   a constructor.
 - Prefer type-safe `JArray<JFoo>` over `jobjectArray` / `JArray<jobject>`, as
-  well as for other array types (`JArray<T>` over `jTArray`).- Use the `jni_zero::` namespace instead of the `base::android::` aliases (e.g.
+  well as for other array types (`JArray<T>` over `jTArray`).
+- Use the `jni_zero::` namespace instead of the `base::android::` aliases (e.g.
   for `*JavaRef`, and `AttachBaseContext()`)
 - To call static Java methods, do not call the `Java_Clazz_method()` functions
   directly. Call them through their typed wrappers: `ClazzJni::method()`

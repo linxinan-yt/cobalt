@@ -3142,10 +3142,11 @@ TEST_P(WebRtcVoiceEngineTestFake, SkipInitRecordingOnSend) {
 // This test verifies DSCP settings are properly applied on voice media channel.
 TEST_P(WebRtcVoiceEngineTestFake, TestSetDscpOptions) {
   EXPECT_TRUE(SetupSendStream());
-webrtc::FakeNetworkInterface network_interface(env_);
-  webrtc::MediaConfig config;
-  std::unique_ptr<webrtc::VoiceMediaSendChannelInterface> channel;
-  webrtc::RtpParameters parameters;
+  FakeNetworkInterface network_interface(env_);
+  MediaConfig config;
+  std::unique_ptr<VoiceMediaSendChannelInterface> channel;
+  RtpParameters parameters;
+
   channel = engine_->CreateSendChannel(env_, &call_, config, AudioOptions(),
                                        CryptoOptions());
   channel->SetInterface(&network_interface);

@@ -71,7 +71,8 @@ class StdlibCounterIntervals(TestSuite):
         5,50,10,1,11.000000,12.000000,0.000000
         6,60,19940,1,12.000000,"[NULL]",1.000000
         """))
-# A counter track nested under another track should expose its parent via
+
+  # A counter track nested under another track should expose its parent via
   # counter_track.parent_id, mirroring the track table.
   def test_counter_track_parent_id(self):
     return DiffTestBlueprint(

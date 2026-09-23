@@ -16,7 +16,8 @@ import m from 'mithril';
 import {Icons} from '../../base/semantic_icons';
 import {channelChanged, getNextChannel, setChannel} from '../../core/channels';
 import {featureFlags} from '../../core/feature_flags';
-import {type Flag, OverrideState} from '../../public/feature_flag';import {Button, ButtonVariant} from '../../widgets/button';
+import {type Flag, OverrideState} from '../../public/feature_flag';
+import {Button, ButtonVariant} from '../../widgets/button';
 import {CardStack} from '../../widgets/card';
 import {EmptyState} from '../../widgets/empty_state';
 import {Icon} from '../../widgets/icon';
@@ -33,6 +34,7 @@ import {GateDetector, renderSegments} from '../../base/mithril_utils';
 import {findRef} from '../../base/dom_utils';
 
 const SEARCH_BOX_REF = 'flags-search-box';
+
 const RELEASE_PROCESS_URL =
   'https://perfetto.dev/docs/visualization/perfetto-ui-release-process';
 
@@ -43,17 +45,18 @@ interface FlagOption {
 
 interface SelectWidgetAttrs {
   readonly id: string;
-readonly label: m.Children;
+  readonly label: m.Children;
   readonly description: m.Children;
   readonly options: FlagOption[];
   readonly selected: string;
   readonly isChanged: boolean;
-  readonly focused: boolean;  readonly onSelect: (id: string) => void;
+  readonly focused: boolean;
+  readonly onSelect: (id: string) => void;
 }
 
 class SelectWidget implements m.ClassComponent<SelectWidgetAttrs> {
   view({attrs}: m.Vnode<SelectWidgetAttrs>) {
-return m(SettingsCard, {
+    return m(SettingsCard, {
       id: attrs.id,
       title: attrs.label,
       description: attrs.description,
@@ -65,7 +68,8 @@ return m(SettingsCard, {
         {
           onchange: (e: InputEvent) => {
             const value = (e.target as HTMLSelectElement).value;
-            attrs.onSelect(value);          },
+            attrs.onSelect(value);
+          },
         },
         attrs.options.map((o) => {
           const selected = o.id === attrs.selected;
@@ -78,15 +82,17 @@ return m(SettingsCard, {
 
 interface FlagWidgetAttrs {
   readonly flag: Flag;
-readonly nameSegments?: readonly FuzzySegment[] | string;
-  readonly descriptionSegments?: readonly FuzzySegment[] | string;  readonly focused: boolean;
+  readonly nameSegments?: readonly FuzzySegment[] | string;
+  readonly descriptionSegments?: readonly FuzzySegment[] | string;
+  readonly focused: boolean;
 }
 
 class FlagWidget implements m.ClassComponent<FlagWidgetAttrs> {
   view({attrs}: m.Vnode<FlagWidgetAttrs>) {
     const flag = attrs.flag;
     const defaultState = flag.defaultValue ? 'Enabled' : 'Disabled';
-return m(SelectWidget, {
+
+    return m(SelectWidget, {
       label: renderSegments(attrs.nameSegments ?? flag.name),
       id: flag.id,
       description: renderSegments(
@@ -114,7 +120,8 @@ return m(SelectWidget, {
             break;
         }
       },
-    });  }
+    });
+  }
 }
 
 export interface FlagsPageAttrs {
@@ -175,7 +182,8 @@ export class FlagsPage implements m.ClassComponent<FlagsPageAttrs> {
 
     const subpage = decodeURIComponent(attrs.subpage ?? '');
 
-const page = m(      SettingsShell,
+    const page = m(
+      SettingsShell,
       {
         stickyHeaderContent: m(
           Stack,
@@ -238,7 +246,7 @@ const page = m(      SettingsShell,
       m(
         Stack,
         {spacing: 'large'},
-m(SelectWidget, {
+        m(SelectWidget, {
           label: 'Release channel',
           id: 'releaseChannel',
           isChanged: getNextChannel() !== 'stable',
@@ -261,7 +269,8 @@ m(SelectWidget, {
           ],
           selected: getNextChannel(),
           onSelect: (id) => setChannel(id),
-        }),        m(
+        }),
+        m(
           'span',
           m(
             'h1',
@@ -277,14 +286,15 @@ m(SelectWidget, {
           ? this.renderEmptyState(isFiltering)
           : m(
               CardStack,
-filteredFlags.map(
+              filteredFlags.map(
                 ({item: flag, nameSegments, descriptionSegments}) =>
                   m(FlagWidget, {
                     flag,
                     nameSegments,
                     descriptionSegments,
                     focused: attrs.subpage === `/${flag.id}`,
-                  }),              ),
+                  }),
+              ),
             ),
         m(
           '.pf-flags-page__footer',
@@ -298,7 +308,7 @@ filteredFlags.map(
       ),
     );
 
-return m(
+    return m(
       GateDetector,
       {
         onVisibilityChanged: (visible: boolean, dom: Element) => {
@@ -315,5 +325,6 @@ return m(
         },
       },
       page,
-    );  }
+    );
+  }
 }

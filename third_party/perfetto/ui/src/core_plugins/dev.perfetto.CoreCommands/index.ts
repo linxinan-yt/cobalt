@@ -48,6 +48,7 @@ import {ensureExists} from '../../base/assert';
 import type {Setting} from '../../public/settings';
 import {toggleHelp} from '../../frontend/help_modal';
 import {legacyMacrosConfigSchema} from './legacy_macros_schema';
+
 const QUICKSAVE_LOCALSTORAGE_KEY = 'quicksave';
 
 const SQL_STATS = `
@@ -132,6 +133,7 @@ const macrosConfigSchema = z.array(macroSchema);
 type MacrosConfig = z.infer<typeof macrosConfigSchema>;
 
 type LegacyMacrosConfig = z.infer<typeof legacyMacrosConfigSchema>;
+
 export default class CoreCommands implements PerfettoPlugin {
   static readonly id = 'dev.perfetto.CoreCommands';
   static readonly dependencies = [QueryPagePlugin];
@@ -139,8 +141,6 @@ export default class CoreCommands implements PerfettoPlugin {
   static macrosSetting: Setting<MacrosConfig> | undefined = undefined;
   static legacyMacrosSetting: Setting<LegacyMacrosConfig> | undefined =
     undefined;
-
-  static macrosSetting: Setting<MacroConfig> | undefined = undefined;
 
   static onActivate(ctx: AppImpl) {
     // Register global commands (commands that are required even without a trace
@@ -170,7 +170,7 @@ export default class CoreCommands implements PerfettoPlugin {
       });
     }
 
-ctx.commands.registerCommand({
+    ctx.commands.registerCommand({
       id: 'dev.perfetto.NameTab',
       name: 'Rename current browser tab',
       callback: async () => {
@@ -186,7 +186,8 @@ ctx.commands.registerCommand({
       schema: macrosConfigSchema,
     });
     CoreCommands.macrosSetting = ctx.settings.register({
-      id: 'perfetto.CoreCommands#Macros',      name: 'Macros',
+      id: 'perfetto.CoreCommands#Macros',
+      name: 'Macros',
       description:
         'Custom command macros that execute multiple commands in sequence',
       schema: macrosConfigSchema,
@@ -195,7 +196,7 @@ ctx.commands.registerCommand({
       render: (setting) => macroSettingsEditor.render(setting),
     });
 
-// Register the legacy macros setting (dictionary format) - deprecated
+    // Register the legacy macros setting (dictionary format) - deprecated
     CoreCommands.legacyMacrosSetting = ctx.settings.register({
       id: 'perfetto.CoreCommands#UserDefinedMacros',
       name: 'Macros (Legacy)',
@@ -232,7 +233,9 @@ ctx.commands.registerCommand({
         }),
       );
       CoreCommands.macrosSetting.set(migratedMacros);
-    }    const input = document.createElement('input');
+    }
+
+    const input = document.createElement('input');
     input.classList.add('trace_file');
     input.setAttribute('type', 'file');
     input.setAttribute('multiple', 'multiple');
@@ -269,11 +272,15 @@ ctx.commands.registerCommand({
     const app = AppImpl.instance;
 
     // Rgister macros from settings first.
-registerMacros(ctx, assertExists(CoreCommands.macrosSetting).get());
+    const settingMacros = ensureExists(CoreCommands.macrosSetting).get();
+    for (const macro of settingMacros) {
+      ctx.commands.registerMacro(macro);
+    }
+
     // Register the macros from extras at onTraceReady (the latest time
     // possible).
     ctx.onTraceReady.addListener(async (_) => {
-// Await the promises: we've tried to be async as long as possible but
+      // Await the promises: we've tried to be async as long as possible but
       // now we need the extras to be loaded.
       const macros = await app.macros();
       for (const macro of macros) {
@@ -281,7 +288,9 @@ registerMacros(ctx, assertExists(CoreCommands.macrosSetting).get());
       }
     });
 
-    const queryPlugin = ctx.plugins.getPlugin(QueryPagePlugin);    ctx.commands.registerCommand({
+    const queryPlugin = ctx.plugins.getPlugin(QueryPagePlugin);
+
+    ctx.commands.registerCommand({
       id: 'dev.perfetto.RunQueryAllProcesses',
       name: 'Run query: All processes',
       callback: () => {
@@ -881,22 +890,4 @@ function onInputElementFileSelectionChanged(e: Event) {
 
   AppImpl.instance.analytics.logEvent('Trace Actions', 'Open trace from file');
   openTraceFiles(files);
-}
-
-function registerMacros(trace: TraceImpl, config: MacroConfig) {
-  for (const [macroName, commands] of Object.entries(config)) {
-    trace.commands.registerCommand({
-      id: `dev.perfetto.UserMacro.${macroName}`,
-      name: macroName,
-      callback: async () => {
-        // Macros could run multiple commands, some of which might prompt the
-        // user in an optional way. But macros should be self-contained
-        // so we disable prompts during their execution.
-        using _ = trace.omnibox.disablePrompts();
-        for (const command of commands) {
-          await trace.commands.runCommand(command.id, ...command.args);
-        }
-      },
-    });
-  }
 }

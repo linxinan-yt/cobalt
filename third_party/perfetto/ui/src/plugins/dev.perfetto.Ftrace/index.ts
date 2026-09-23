@@ -26,7 +26,8 @@ import {
   type FtracePluginState as FtraceFilters,
   FTRACE_RAW_TRACK_KIND,
 } from './common';
-import {FtraceExplorer, type FtraceExplorerCache} from './ftrace_explorer';import {createFtraceTrack} from './ftrace_track';
+import {FtraceExplorer, type FtraceExplorerCache} from './ftrace_explorer';
+import {createFtraceTrack} from './ftrace_track';
 
 const VERSION = 2;
 
@@ -62,12 +63,13 @@ export default class implements PerfettoPlugin {
       (x) => x as FtraceFilter,
     );
 
-const ftraceTabUri = 'perfetto.FtraceRaw#FtraceEventsTab';
+    const ftraceTabUri = 'perfetto.FtraceRaw#FtraceEventsTab';
 
     let hasExpandedOnce = false;
 
     const numMachines = await getMachineCount(ctx.engine);
-    const cpus = await getFtraceCpus(ctx, numMachines);    const group = new TrackNode({
+    const cpus = await getFtraceCpus(ctx, numMachines);
+    const group = new TrackNode({
       name: 'Ftrace Events',
       sortOrder: -5,
       isSummary: true,
@@ -151,7 +153,8 @@ const ftraceTabUri = 'perfetto.FtraceRaw#FtraceEventsTab';
         ctx.tabs.showTab(ftraceTabUri);
       },
     });
-// Also use the ftrace explorer for area selections, as a child of the
+
+    // Also use the ftrace explorer for area selections, as a child of the
     // selection tab. It shares the (persisted) event-name filter with the
     // standalone tab, but takes its CPU list from the selected ftrace tracks.
     ctx.selection.registerAreaSelectionTab({
@@ -178,9 +181,8 @@ const ftraceTabUri = 'perfetto.FtraceRaw#FtraceEventsTab';
           }),
         };
       },
-    });  }
-
-  return ucpus;
+    });
+  }
 }
 
 /**

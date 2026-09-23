@@ -1166,7 +1166,8 @@ kxv_Telu{
         }
 "Pacific:Enderbury"{
             ec{"కాంటన్"}
-        }        "Pacific:Fakaofo"{
+        }
+        "Pacific:Fakaofo"{
             ec{"ఫాకోఫో"}
         }
         "Pacific:Fiji"{
@@ -1189,7 +1190,8 @@ kxv_Telu{
         }
 "Pacific:Kanton"{
             ec{"కాంటన్"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"కిరీటిమాటి"}
         }
         "Pacific:Kosrae"{
@@ -1513,7 +1515,8 @@ ld{"పశ్చిమ ఆఫ్రికా వేసవి సమయం"}
         }
 "meta:Hawaii"{
             ls{"హవాయ్-అల్యూషియన్ ప్రామాణిక సమయం"}
-        }        "meta:Hawaii_Aleutian"{
+        }
+        "meta:Hawaii_Aleutian"{
             ld{"హవాయ్-అల్యూషియన్ పగటి వెలుతురు సమయం"}
             lg{"హవాయ్-అల్యూషియన్ సమయం"}
             ls{"హవాయ్-అల్యూషియన్ ప్రామాణిక సమయం"}

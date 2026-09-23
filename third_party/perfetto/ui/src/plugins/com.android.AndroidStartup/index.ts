@@ -21,7 +21,8 @@ import {
   STR_NULL,
 } from '../../trace_processor/query_result';
 import type {Trace} from '../../public/trace';
-import type {PerfettoPlugin} from '../../public/plugin';import {SliceTrack} from '../../components/tracks/slice_track';
+import type {PerfettoPlugin} from '../../public/plugin';
+import {SliceTrack} from '../../components/tracks/slice_track';
 import {SourceDataset} from '../../trace_processor/dataset';
 import {TrackNode} from '../../public/workspace';
 import {optimizationsTrack} from './optimizations';
@@ -96,18 +97,18 @@ export default class AndroidStartup implements PerfettoPlugin {
       include perfetto module android.startup.startup_breakdowns;
     `);
 
-const startupTrackUri = `/android_startups`;
     ctx.tracks.registerTrack({
-      uri: startupTrackUri,
+      uri: STARTUP_TRACK_URI,
       renderer: await SliceTrack.createMaterialized({
         trace: ctx,
-        uri: startupTrackUri,        dataset: new SourceDataset({
+        uri: STARTUP_TRACK_URI,
+        dataset: new SourceDataset({
           schema: {
             id: NUM,
             ts: LONG,
             dur: LONG_NULL,
             name: STR,
-startup_type: STR_NULL,
+            startup_type: STR_NULL,
             upid: NUM_NULL,
           },
           src: `
@@ -126,21 +127,24 @@ startup_type: STR_NULL,
             FROM android_startups s
           `,
         }),
-        detailsPanel: () => new StartupDetailsPanel(ctx),      }),
+        detailsPanel: () => new StartupDetailsPanel(ctx),
+      }),
     });
 
     // Needs a sort order lower than 'Ftrace Events' so that it is prioritized in the UI.
     const startupTrack = new TrackNode({
       name: 'Android App Startups',
-uri: STARTUP_TRACK_URI,      sortOrder: -6,
+      uri: STARTUP_TRACK_URI,
+      sortOrder: -6,
     });
     ctx.defaultWorkspace.addChildInOrder(startupTrack);
 
-ctx.tracks.registerTrack({
+    ctx.tracks.registerTrack({
       uri: BREAKDOWN_TRACK_URI,
       renderer: await SliceTrack.createMaterialized({
         trace: ctx,
-        uri: BREAKDOWN_TRACK_URI,        dataset: new SourceDataset({
+        uri: BREAKDOWN_TRACK_URI,
+        dataset: new SourceDataset({
           schema: {
             ts: LONG,
             dur: LONG_NULL,
@@ -160,7 +164,8 @@ ctx.tracks.registerTrack({
     // Needs a sort order lower than 'Ftrace Events' so that it is prioritized in the UI.
     const breakdownTrack = new TrackNode({
       name: 'Android App Startups Breakdown',
-uri: BREAKDOWN_TRACK_URI,      sortOrder: -6,
+      uri: BREAKDOWN_TRACK_URI,
+      sortOrder: -6,
     });
     startupTrack.addChildLast(breakdownTrack);
 
@@ -171,7 +176,8 @@ uri: BREAKDOWN_TRACK_URI,      sortOrder: -6,
 
     await this.selectStartupMainThread(ctx, startupArgs);
   }
-private async selectStartupMainThread(ctx: Trace, args: StartupArgs) {
+
+  private async selectStartupMainThread(ctx: Trace, args: StartupArgs) {
     const e = ctx.engine;
 
     const whereFilters = [];
@@ -267,4 +273,5 @@ private async selectStartupMainThread(ctx: Trace, args: StartupArgs) {
         startupInfo.dur,
       );
     });
-  }}
+  }
+}

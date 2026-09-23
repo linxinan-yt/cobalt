@@ -63,6 +63,7 @@
 #include "protos/perfetto/trace/power/power_rails.pbzero.h"
 #include "protos/perfetto/trace/trace_packet.pbzero.h"
 #include "protos/third_party/android/packages/modules/bluetooth/tracing/bluetooth_trace.pbzero.h"
+
 namespace perfetto::trace_processor {
 namespace {
 
@@ -155,7 +156,7 @@ AndroidProbesParser::AndroidProbesParser(TraceProcessorContext* context,
       power_rail_raw_name_id_(context->storage->InternString("raw_name")),
       power_rail_subsys_name_arg_id_(
           context->storage->InternString("subsystem_name")),
-rail_packet_timestamp_id_(context->storage->InternString("packet_ts")),
+      rail_packet_timestamp_id_(context->storage->InternString("packet_ts")),
       aflags_read_only_id_(context->storage->InternString("read-only")),
       aflags_read_write_id_(context->storage->InternString("read-write")),
       aflags_default_id_(context->storage->InternString("default")),
@@ -168,6 +169,7 @@ rail_packet_timestamp_id_(context->storage->InternString("packet_ts")),
       aflags_integer_id_(context->storage->InternString("integer")),
       aflags_unspecified_id_(context->storage->InternString("unspecified")),
       android_logcat_(context->storage->InternString("android_logcat")) {}
+
 void AndroidProbesParser::ParseRailDescriptor(
     const protos::pbzero::PowerRails_Decoder& evt) {
   for (auto it = evt.rail_descriptor(); it; ++it) {
@@ -473,7 +475,7 @@ void AndroidProbesParser::ParseAndroidLogEvent(int64_t ts,
       msg_id = context_->storage->InternString(base::StringView(new_msg));
     }
   }
-// Log events are NOT required to be sorted by trace_time. The virtual table
+  // Log events are NOT required to be sorted by trace_time. The virtual table
   // will take care of sorting on-demand.
   tables::LogTable::Row row;
   row.ts = ts;
@@ -483,7 +485,8 @@ void AndroidProbesParser::ParseAndroidLogEvent(int64_t ts,
   row.log_source = android_logcat_;
   row.tag = evt.has_tag() ? std::make_optional(tag_id) : std::nullopt;
   row.msg = msg_id;
-  context_->storage->mutable_log_table()->Insert(row);}
+  context_->storage->mutable_log_table()->Insert(row);
+}
 
 void AndroidProbesParser::ParseAndroidLogStats(protozero::ConstBytes blob) {
   protos::pbzero::AndroidLogPacket::Stats::Decoder evt(blob);

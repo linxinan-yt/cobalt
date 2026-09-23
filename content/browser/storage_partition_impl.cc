@@ -99,7 +99,6 @@
 #include "content/browser/renderer_host/navigation_state_keep_alive.h"
 #include "content/browser/service_worker/service_worker_client.h"
 #include "content/browser/service_worker/service_worker_context_core.h"
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
 #include "content/browser/service_worker/service_worker_context_wrapper.h"
 #include "content/browser/ssl/ssl_client_auth_handler.h"
 #include "content/browser/ssl/ssl_error_handler.h"
@@ -1601,12 +1600,14 @@ shared_storage_runtime_manager_ =
   bucket_manager_ = std::make_unique<BucketManager>(this);
 
   // The Topics API is not available in Incognito mode.
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
   if (!is_in_memory() &&
       base::FeatureList::IsEnabled(network::features::kBrowsingTopics)) {
     browsing_topics_site_data_manager_ =
         std::make_unique<BrowsingTopicsSiteDataManagerImpl>(path);
   }
-base::UmaHistogramTimes(
+#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+  base::UmaHistogramTimes(
       "Storage.StoragePartition.InitializeDuration.BackgroundTasks",
       step_timer.Elapsed());
   step_timer = base::ElapsedTimer();
@@ -1972,6 +1973,7 @@ StoragePartitionImpl::GetDeviceBoundSessionManager() {
 #endif  // BUILDFLAG(ENABLE_DEVICE_BOUND_SESSIONS)
 }
 
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
 BrowsingTopicsSiteDataManager*
 StoragePartitionImpl::GetBrowsingTopicsSiteDataManager() {
   DCHECK(initialized_);

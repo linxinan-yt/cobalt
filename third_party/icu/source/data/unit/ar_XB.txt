@@ -61,7 +61,8 @@ bu-jp{
                 dnam{"؜‮cho‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮cho‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮cho‬؜ [؜‮JP‬؜]"}
-            }            dunam{
+            }
+            dunam{
                 dnam{"؜‮dunams‬؜"}
                 one{"{0} ؜‮dunam‬؜"}
                 other{"{0} ؜‮dunams‬؜"}
@@ -75,7 +76,8 @@ se-jp{
                 dnam{"؜‮se‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮se‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮se‬؜ [؜‮JP‬؜]"}
-            }            square-centimeter{
+            }
+            square-centimeter{
                 dnam{"؜‮square‬؜ ؜‮centimeters‬؜"}
                 one{"{0} ؜‮square‬؜ ؜‮centimeter‬؜"}
                 other{"{0} ؜‮square‬؜ ؜‮centimeters‬؜"}
@@ -191,7 +193,8 @@ katal{
                 dnam{"؜‮katals‬؜"}
                 one{"{0} ؜‮katal‬؜"}
                 other{"{0} ؜‮katals‬؜"}
-            }            milligram-ofglucose-per-deciliter{
+            }
+            milligram-ofglucose-per-deciliter{
                 dnam{"؜‮milligrams‬؜ ؜‮per‬؜ ؜‮deciliter‬؜"}
                 one{"{0} ؜‮milligram‬؜ ؜‮per‬؜ ؜‮deciliter‬؜"}
                 other{"{0} ؜‮milligrams‬؜ ؜‮per‬؜ ؜‮deciliter‬؜"}
@@ -225,7 +228,8 @@ ofglucose{
                 dnam{"؜‮parts‬؜ ؜‮per‬؜ ؜‮billion‬؜"}
                 one{"{0} ؜‮part‬؜ ؜‮per‬؜ ؜‮billion‬؜"}
                 other{"{0} ؜‮parts‬؜ ؜‮per‬؜ ؜‮billion‬؜"}
-            }            percent{
+            }
+            percent{
                 dnam{"؜‮percent‬؜"}
                 one{"{0} ؜‮percent‬؜"}
                 other{"{0} ؜‮percent‬؜"}
@@ -239,7 +243,8 @@ permillion{
                 dnam{"؜‮parts‬؜ ؜‮per‬؜ ؜‮million‬؜"}
                 one{"{0} ؜‮part‬؜ ؜‮per‬؜ ؜‮million‬؜"}
                 other{"{0} ؜‮parts‬؜ ؜‮per‬؜ ؜‮million‬؜"}
-            }            permyriad{
+            }
+            permyriad{
                 dnam{"؜‮permyriad‬؜"}
                 one{"{0} ؜‮permyriad‬؜"}
                 other{"{0} ؜‮permyriad‬؜"}
@@ -356,7 +361,8 @@ fortnight{
                 dnam{"؜‮fortnights‬؜"}
                 one{"{0} ؜‮fortnight‬؜"}
                 other{"{0} ؜‮fortnights‬؜"}
-            }            hour{
+            }
+            hour{
                 dnam{"؜‮hours‬؜"}
                 one{"{0} ؜‮hour‬؜"}
                 other{"{0} ؜‮hours‬؜"}
@@ -440,7 +446,8 @@ coulomb{
                 dnam{"؜‮henrys‬؜"}
                 one{"{0} ؜‮henry‬؜"}
                 other{"{0} ؜‮henrys‬؜"}
-            }            milliampere{
+            }
+            milliampere{
                 dnam{"؜‮milliamperes‬؜"}
                 one{"{0} ؜‮milliampere‬؜"}
                 other{"{0} ؜‮milliamperes‬؜"}
@@ -454,7 +461,8 @@ siemens{
                 dnam{"؜‮siemens‬؜"}
                 one{"{0} ؜‮siemens‬؜"}
                 other{"{0} ؜‮siemens‬؜"}
-            }            volt{
+            }
+            volt{
                 dnam{"؜‮volts‬؜"}
                 one{"{0} ؜‮volt‬؜"}
                 other{"{0} ؜‮volts‬؜"}
@@ -465,7 +473,8 @@ becquerel{
                 dnam{"؜‮becquerels‬؜"}
                 one{"{0} ؜‮becquerel‬؜"}
                 other{"{0} ؜‮becquerels‬؜"}
-            }            british-thermal-unit{
+            }
+            british-thermal-unit{
                 dnam{"؜‮British‬؜ ؜‮thermal‬؜ ؜‮units‬؜"}
                 one{"{0} ؜‮British‬؜ ؜‮thermal‬؜ ؜‮unit‬؜"}
                 other{"{0} ؜‮British‬؜ ؜‮thermal‬؜ ؜‮units‬؜"}
@@ -474,7 +483,8 @@ british-thermal-unit-it{
                 dnam{"؜‮British‬؜ ؜‮thermal‬؜ ؜‮units‬؜ [؜‮IT‬؜]"}
                 one{"{0} ؜‮British‬؜ ؜‮thermal‬؜ ؜‮unit‬؜ [؜‮IT‬؜]"}
                 other{"{0} ؜‮British‬؜ ؜‮thermal‬؜ ؜‮units‬؜ [؜‮IT‬؜]"}
-            }            calorie{
+            }
+            calorie{
                 dnam{"؜‮calories‬؜"}
                 one{"{0} ؜‮calorie‬؜"}
                 other{"{0} ؜‮calories‬؜"}
@@ -483,7 +493,8 @@ calorie-it{
                 dnam{"؜‮calories‬؜ [؜‮IT‬؜]"}
                 one{"{0} ؜‮calorie‬؜ [؜‮IT‬؜]"}
                 other{"{0} ؜‮calories‬؜ [؜‮IT‬؜]"}
-            }            electronvolt{
+            }
+            electronvolt{
                 dnam{"؜‮electronvolts‬؜"}
                 one{"{0} ؜‮electronvolt‬؜"}
                 other{"{0} ؜‮electronvolts‬؜"}
@@ -497,7 +508,8 @@ gray{
                 dnam{"؜‮grays‬؜"}
                 one{"{0} ؜‮gray‬؜"}
                 other{"{0} ؜‮grays‬؜"}
-            }            joule{
+            }
+            joule{
                 dnam{"؜‮joules‬؜"}
                 one{"{0} ؜‮joule‬؜"}
                 other{"{0} ؜‮joules‬؜"}
@@ -521,7 +533,8 @@ sievert{
                 dnam{"؜‮sieverts‬؜"}
                 one{"{0} ؜‮sievert‬؜"}
                 other{"{0} ؜‮sieverts‬؜"}
-            }            therm-us{
+            }
+            therm-us{
                 dnam{"؜‮US‬؜ ؜‮therms‬؜"}
                 one{"{0} ؜‮US‬؜ ؜‮therm‬؜"}
                 other{"{0} ؜‮US‬؜ ؜‮therms‬؜"}
@@ -532,7 +545,8 @@ kilogram-force{
                 dnam{"؜‮kilograms‬؜-؜‮force‬؜"}
                 one{"{0} ؜‮kilogram‬؜-؜‮force‬؜"}
                 other{"{0} ؜‮kilograms‬؜-؜‮force‬؜"}
-            }            kilowatt-hour-per-100-kilometer{
+            }
+            kilowatt-hour-per-100-kilometer{
                 dnam{"؜‮kilowatt‬؜-؜‮hours‬؜ ؜‮per‬؜ 100 ؜‮kilometers‬؜"}
                 one{"{0} ؜‮kilowatt‬؜-؜‮hour‬؜ ؜‮per‬؜ 100 ؜‮kilometers‬؜"}
                 other{"{0} ؜‮kilowatt‬؜-؜‮hours‬؜ ؜‮per‬؜ 100 ؜‮kilometers‬؜"}
@@ -628,7 +642,8 @@ chain{
                 dnam{"؜‮chains‬؜"}
                 one{"{0} ؜‮chain‬؜"}
                 other{"{0} ؜‮chains‬؜"}
-            }            decimeter{
+            }
+            decimeter{
                 dnam{"؜‮decimeters‬؜"}
                 one{"{0} ؜‮decimeter‬؜"}
                 other{"{0} ؜‮decimeters‬؜"}
@@ -669,7 +684,8 @@ jo-jp{
                 dnam{"؜‮ken‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮ken‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮ken‬؜ [؜‮JP‬؜]"}
-            }            kilometer{
+            }
+            kilometer{
                 dnam{"؜‮kilometers‬؜"}
                 one{"{0} ؜‮kilometer‬؜"}
                 other{"{0} ؜‮kilometers‬؜"}
@@ -755,7 +771,8 @@ ri-jp{
                 dnam{"؜‮shaku‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮shaku‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮shaku‬؜ [؜‮JP‬؜]"}
-            }            solar-radius{
+            }
+            solar-radius{
                 dnam{"؜‮solar‬؜ ؜‮radii‬؜"}
                 one{"{0} ؜‮solar‬؜ ؜‮radius‬؜"}
                 other{"{0} ؜‮solar‬؜ ؜‮radii‬؜"}
@@ -764,7 +781,8 @@ sun{
                 dnam{"؜‮sun‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮sun‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮sun‬؜ [؜‮JP‬؜]"}
-            }            yard{
+            }
+            yard{
                 dnam{"؜‮yards‬؜"}
                 one{"{0} ؜‮yard‬؜"}
                 other{"{0} ؜‮yards‬؜"}
@@ -803,7 +821,8 @@ magnetic{
                 one{"{0} ؜‮weber‬؜"}
                 other{"{0} ؜‮webers‬؜"}
             }
-        }        mass{
+        }
+        mass{
             carat{
                 dnam{"؜‮carats‬؜"}
                 one{"{0} ؜‮carat‬؜"}
@@ -823,7 +842,8 @@ fun{
                 dnam{"؜‮fun‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮fun‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮fun‬؜ [؜‮JP‬؜]"}
-            }            grain{
+            }
+            grain{
                 dnam{"؜‮grains‬؜"}
                 one{"{0} ؜‮grain‬؜"}
                 other{"{0} ؜‮grains‬؜"}
@@ -871,7 +891,8 @@ slug{
                 dnam{"؜‮slugs‬؜"}
                 one{"{0} ؜‮slug‬؜"}
                 other{"{0} ؜‮slugs‬؜"}
-            }            solar-mass{
+            }
+            solar-mass{
                 dnam{"؜‮solar‬؜ ؜‮masses‬؜"}
                 one{"{0} ؜‮solar‬؜ ؜‮mass‬؜"}
                 other{"{0} ؜‮solar‬؜ ؜‮masses‬؜"}
@@ -1123,7 +1144,8 @@ cup-imperial{
                 dnam{"؜‮cup‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮cup‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮cup‬؜ [؜‮JP‬؜]"}
-            }            cup-metric{
+            }
+            cup-metric{
                 dnam{"؜‮metric‬؜ ؜‮cups‬؜"}
                 one{"{0} ؜‮metric‬؜ ؜‮cup‬؜"}
                 other{"{0} ؜‮metric‬؜ ؜‮cups‬؜"}
@@ -1167,7 +1189,8 @@ fluid-ounce-metric{
                 dnam{"؜‮metric‬؜ ؜‮fluid‬؜ ؜‮ounces‬؜"}
                 one{"{0} ؜‮metric‬؜ ؜‮fluid‬؜ ؜‮ounce‬؜"}
                 other{"{0} ؜‮metric‬؜ ؜‮fluid‬؜ ؜‮ounces‬؜"}
-            }            gallon{
+            }
+            gallon{
                 dnam{"؜‮gallons‬؜"}
                 one{"{0} ؜‮gallon‬؜"}
                 other{"{0} ؜‮gallons‬؜"}
@@ -1198,7 +1221,8 @@ koku{
                 dnam{"؜‮kosaji‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮kosaji‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮kosaji‬؜ [؜‮JP‬؜]"}
-            }            liter{
+            }
+            liter{
                 dnam{"؜‮liters‬؜"}
                 one{"{0} ؜‮liter‬؜"}
                 other{"{0} ؜‮liters‬؜"}
@@ -1218,7 +1242,8 @@ osaji{
                 dnam{"؜‮osaji‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮osaji‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮osaji‬؜ [؜‮JP‬؜]"}
-            }            pinch{
+            }
+            pinch{
                 dnam{"؜‮pinches‬؜"}
                 one{"{0} ؜‮pinch‬؜"}
                 other{"{0} ؜‮pinches‬؜"}
@@ -1232,7 +1257,8 @@ pint-imperial{
                 dnam{"؜‮pints‬؜ ؜‮Imperial‬؜"}
                 one{"{0} ؜‮pint‬؜ ؜‮Imperial‬؜"}
                 other{"{0} ؜‮pints‬؜ ؜‮Imperial‬؜"}
-            }            pint-metric{
+            }
+            pint-metric{
                 dnam{"؜‮metric‬؜ ؜‮pints‬؜"}
                 one{"{0} ؜‮metric‬؜ ؜‮pint‬؜"}
                 other{"{0} ؜‮metric‬؜ ؜‮pints‬؜"}
@@ -1256,7 +1282,8 @@ sai{
                 dnam{"؜‮shaku‬؜ [؜‮volume‬؜, ؜‮JP‬؜]"}
                 one{"{0} ؜‮shaku‬؜ [؜‮volume‬؜, ؜‮JP‬؜]"}
                 other{"{0} ؜‮shaku‬؜ [؜‮volume‬؜, ؜‮JP‬؜]"}
-            }            tablespoon{
+            }
+            tablespoon{
                 dnam{"؜‮tablespoons‬؜"}
                 one{"{0} ؜‮tablespoon‬؜"}
                 other{"{0} ؜‮tablespoons‬؜"}
@@ -1331,7 +1358,8 @@ bu-jp{
                 dnam{"؜‮cho‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮cho‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮cho‬؜ [؜‮JP‬؜]"}
-            }            dunam{
+            }
+            dunam{
                 dnam{"؜‮dunams‬؜"}
                 one{"{0} ؜‮dunam‬؜"}
                 other{"{0} ؜‮dunam‬؜"}
@@ -1345,7 +1373,8 @@ se-jp{
                 dnam{"؜‮se‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮se‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮se‬؜ [؜‮JP‬؜]"}
-            }            square-centimeter{
+            }
+            square-centimeter{
                 dnam{"؜‮cm‬؜²"}
                 one{"{0} ؜‮cm‬؜²"}
                 other{"{0} ؜‮cm‬؜²"}
@@ -1461,7 +1490,8 @@ katal{
                 dnam{"؜‮kat‬؜"}
                 one{"{0} ؜‮kat‬؜"}
                 other{"{0} ؜‮kat‬؜"}
-            }            milligram-ofglucose-per-deciliter{
+            }
+            milligram-ofglucose-per-deciliter{
                 dnam{"؜‮mg‬؜/؜‮dL‬؜"}
                 one{"{0} ؜‮mg‬؜/؜‮dL‬؜"}
                 other{"{0} ؜‮mg‬؜/؜‮dL‬؜"}
@@ -1495,7 +1525,8 @@ ofglucose{
                 dnam{"؜‮parts‬؜/؜‮billion‬؜"}
                 one{"{0} ؜‮ppb‬؜"}
                 other{"{0} ؜‮ppb‬؜"}
-            }            percent{
+            }
+            percent{
                 dnam{"؜‮percent‬؜"}
                 one{"{0}%"}
                 other{"{0}%"}
@@ -1622,7 +1653,8 @@ fortnight{
                 dnam{"؜‮fw‬؜"}
                 one{"{0} ؜‮fw‬؜"}
                 other{"{0} ؜‮fw‬؜"}
-            }            hour{
+            }
+            hour{
                 dnam{"؜‮hours‬؜"}
                 one{"{0} ؜‮hr‬؜"}
                 other{"{0} ؜‮hr‬؜"}
@@ -1706,7 +1738,8 @@ coulomb{
                 dnam{"؜‮H‬؜"}
                 one{"{0} ؜‮H‬؜"}
                 other{"{0} ؜‮H‬؜"}
-            }            milliampere{
+            }
+            milliampere{
                 dnam{"؜‮milliamps‬؜"}
                 one{"{0} ؜‮mA‬؜"}
                 other{"{0} ؜‮mA‬؜"}
@@ -1720,7 +1753,8 @@ siemens{
                 dnam{"؜‮S‬؜"}
                 one{"{0} ؜‮S‬؜"}
                 other{"{0} ؜‮S‬؜"}
-            }            volt{
+            }
+            volt{
                 dnam{"؜‮volts‬؜"}
                 one{"{0} ؜‮V‬؜"}
                 other{"{0} ؜‮V‬؜"}
@@ -1731,7 +1765,8 @@ becquerel{
                 dnam{"؜‮Bq‬؜"}
                 one{"{0} ؜‮Bq‬؜"}
                 other{"{0} ؜‮Bq‬؜"}
-            }            british-thermal-unit{
+            }
+            british-thermal-unit{
                 dnam{"؜‮BTU‬؜"}
                 one{"{0} ؜‮Btu‬؜"}
                 other{"{0} ؜‮Btu‬؜"}
@@ -1740,7 +1775,8 @@ british-thermal-unit-it{
                 dnam{"؜‮BTU‬؜-؜‮IT‬؜"}
                 one{"{0} ؜‮BTU‬؜-؜‮IT‬؜"}
                 other{"{0} ؜‮BT‬؜-؜‮IT‬؜"}
-            }            calorie{
+            }
+            calorie{
                 dnam{"؜‮cal‬؜"}
                 one{"{0} ؜‮cal‬؜"}
                 other{"{0} ؜‮cal‬؜"}
@@ -1749,7 +1785,8 @@ calorie-it{
                 dnam{"؜‮cal‬؜-؜‮IT‬؜"}
                 one{"{0} ؜‮cal‬؜-؜‮IT‬؜"}
                 other{"{0} ؜‮cal‬؜-؜‮IT‬؜"}
-            }            electronvolt{
+            }
+            electronvolt{
                 dnam{"؜‮electronvolt‬؜"}
                 one{"{0} ؜‮eV‬؜"}
                 other{"{0} ؜‮eV‬؜"}
@@ -1763,7 +1800,8 @@ gray{
                 dnam{"؜‮Gy‬؜"}
                 one{"{0} ؜‮Gy‬؜"}
                 other{"{0} ؜‮Gy‬؜"}
-            }            joule{
+            }
+            joule{
                 dnam{"؜‮joules‬؜"}
                 one{"{0} ؜‮J‬؜"}
                 other{"{0} ؜‮J‬؜"}
@@ -1787,7 +1825,8 @@ sievert{
                 dnam{"؜‮Sv‬؜"}
                 one{"{0} ؜‮Sv‬؜"}
                 other{"{0} ؜‮Sv‬؜"}
-            }            therm-us{
+            }
+            therm-us{
                 dnam{"؜‮US‬؜ ؜‮therm‬؜"}
                 one{"{0} ؜‮US‬؜ ؜‮therm‬؜"}
                 other{"{0} ؜‮US‬؜ ؜‮therms‬؜"}
@@ -1798,7 +1837,8 @@ kilogram-force{
                 dnam{"؜‮kgf‬؜"}
                 one{"{0} ؜‮kgf‬؜"}
                 other{"{0} ؜‮kgf‬؜"}
-            }            kilowatt-hour-per-100-kilometer{
+            }
+            kilowatt-hour-per-100-kilometer{
                 dnam{"؜‮kWh‬؜/100؜‮km‬؜"}
                 one{"{0} ؜‮kWh‬؜/100؜‮km‬؜"}
                 other{"{0} ؜‮kWh‬؜/100؜‮km‬؜"}
@@ -1894,7 +1934,8 @@ chain{
                 dnam{"؜‮ch‬؜"}
                 one{"{0} ؜‮ch‬؜"}
                 other{"{0} ؜‮ch‬؜"}
-            }            decimeter{
+            }
+            decimeter{
                 dnam{"؜‮dm‬؜"}
                 one{"{0} ؜‮dm‬؜"}
                 other{"{0} ؜‮dm‬؜"}
@@ -1935,7 +1976,8 @@ jo-jp{
                 dnam{"؜‮ken‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮ken‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮ken‬؜ [؜‮JP‬؜]"}
-            }            kilometer{
+            }
+            kilometer{
                 dnam{"؜‮km‬؜"}
                 one{"{0} ؜‮km‬؜"}
                 other{"{0} ؜‮km‬؜"}
@@ -2021,7 +2063,8 @@ ri-jp{
                 dnam{"؜‮shaku‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮shaku‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮shaku‬؜ [؜‮JP‬؜]"}
-            }            solar-radius{
+            }
+            solar-radius{
                 dnam{"؜‮solar‬؜ ؜‮radii‬؜"}
                 one{"{0} ؜‮R‬؜☉"}
                 other{"{0} ؜‮R‬؜☉"}
@@ -2030,7 +2073,8 @@ sun{
                 dnam{"؜‮sun‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮sun‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮sun‬؜ [؜‮JP‬؜]"}
-            }            yard{
+            }
+            yard{
                 dnam{"؜‮yards‬؜"}
                 one{"{0} ؜‮yd‬؜"}
                 other{"{0} ؜‮yd‬؜"}
@@ -2069,7 +2113,8 @@ magnetic{
                 one{"{0} ؜‮Wb‬؜"}
                 other{"{0} ؜‮Wb‬؜"}
             }
-        }        mass{
+        }
+        mass{
             carat{
                 dnam{"؜‮carats‬؜"}
                 one{"{0} ؜‮CD‬؜"}
@@ -2089,7 +2134,8 @@ fun{
                 dnam{"؜‮fun‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮fun‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮fun‬؜ [؜‮JP‬؜]"}
-            }            grain{
+            }
+            grain{
                 dnam{"؜‮grains‬؜"}
                 one{"{0} ؜‮gr‬؜"}
                 other{"{0} ؜‮gr‬؜"}
@@ -2137,7 +2183,8 @@ slug{
                 dnam{"؜‮slug‬؜"}
                 one{"{0} ؜‮slug‬؜"}
                 other{"{0} ؜‮slug‬؜"}
-            }            solar-mass{
+            }
+            solar-mass{
                 dnam{"؜‮solar‬؜ ؜‮masses‬؜"}
                 one{"{0} ؜‮M‬؜☉"}
                 other{"{0} ؜‮M‬؜☉"}
@@ -2240,7 +2287,8 @@ ofhg{
                 dnam{"؜‮of‬؜ ؜‮Hg‬؜"}
                 one{"{0} ؜‮of‬؜ ؜‮Hg‬؜"}
                 other{"{0} ؜‮of‬؜ ؜‮Hg‬؜"}
-            }            pascal{
+            }
+            pascal{
                 dnam{"؜‮Pa‬؜"}
                 one{"{0} ؜‮Pa‬؜"}
                 other{"{0} ؜‮Pa‬؜"}
@@ -2393,7 +2441,8 @@ cup-imperial{
                 dnam{"؜‮cup‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮cup‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮cup‬؜ [؜‮JP‬؜]"}
-            }            cup-metric{
+            }
+            cup-metric{
                 dnam{"؜‮mcup‬؜"}
                 one{"{0} ؜‮mc‬؜"}
                 other{"{0} ؜‮mc‬؜"}
@@ -2437,7 +2486,8 @@ fluid-ounce-metric{
                 dnam{"؜‮fl‬؜ ؜‮oz‬؜ ؜‮m‬؜."}
                 one{"{0} ؜‮fl‬؜ ؜‮oz‬؜ ؜‮m‬؜."}
                 other{"{0} ؜‮fl‬؜ ؜‮oz‬؜ ؜‮m‬؜."}
-            }            gallon{
+            }
+            gallon{
                 dnam{"؜‮gal‬؜"}
                 one{"{0} ؜‮gal‬؜"}
                 other{"{0} ؜‮gal‬؜"}
@@ -2468,7 +2518,8 @@ koku{
                 dnam{"؜‮kosaji‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮kosaji‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮kosaji‬؜ [؜‮JP‬؜]"}
-            }            liter{
+            }
+            liter{
                 dnam{"؜‮liters‬؜"}
                 one{"{0} ؜‮L‬؜"}
                 other{"{0} ؜‮L‬؜"}
@@ -2488,7 +2539,8 @@ osaji{
                 dnam{"؜‮osaji‬؜ [؜‮JP‬؜]"}
                 one{"{0} ؜‮osaji‬؜ [؜‮JP‬؜]"}
                 other{"{0} ؜‮osaji‬؜ [؜‮JP‬؜]"}
-            }            pinch{
+            }
+            pinch{
                 dnam{"؜‮pinches‬؜"}
                 one{"{0} ؜‮pn‬؜"}
                 other{"{0} ؜‮pn‬؜"}
@@ -2502,7 +2554,8 @@ pint-imperial{
                 dnam{"؜‮pt‬؜ ؜‮Imp‬؜."}
                 one{"{0} ؜‮pt‬؜ ؜‮Imp‬؜."}
                 other{"{0} ؜‮pt‬؜ ؜‮Imp‬؜."}
-            }            pint-metric{
+            }
+            pint-metric{
                 dnam{"؜‮mpt‬؜"}
                 one{"{0} ؜‮mpt‬؜"}
                 other{"{0} ؜‮mpt‬؜"}
@@ -2526,7 +2579,8 @@ sai{
                 dnam{"؜‮shaku‬؜ [؜‮vol‬؜, ؜‮JP‬؜]"}
                 one{"{0} ؜‮shaku‬؜ [؜‮vol‬؜, ؜‮JP‬؜]"}
                 other{"{0} ؜‮shaku‬؜ [؜‮vol‬؜, ؜‮JP‬؜]"}
-            }            tablespoon{
+            }
+            tablespoon{
                 dnam{"؜‮tbsp‬؜"}
                 one{"{0} ؜‮tbsp‬؜"}
                 other{"{0} ؜‮tbsp‬؜"}

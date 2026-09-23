@@ -15,7 +15,8 @@
 import type {Trace} from '../../public/trace';
 import type {PerfettoPlugin} from '../../public/plugin';
 import {TrackNode} from '../../public/workspace';
-import {CounterTrack} from '../../components/tracks/counter_track';import StandardGroupsPlugin from '../dev.perfetto.StandardGroups';
+import {CounterTrack} from '../../components/tracks/counter_track';
+import StandardGroupsPlugin from '../dev.perfetto.StandardGroups';
 import {NUM, STR} from '../../trace_processor/query_result';
 
 export default class implements PerfettoPlugin {
@@ -32,7 +33,7 @@ export default class implements PerfettoPlugin {
     group: TrackNode,
     sharing?: string,
   ) {
-const track = CounterTrack.create({
+    const track = CounterTrack.create({
       trace: ctx,
       uri,
       sqlSource: sql,
@@ -40,7 +41,8 @@ const track = CounterTrack.create({
       yOverrideMaximum: 100,
       yOverrideMinimum: 0,
       yRangeSharingKey: sharing,
-      yMode: 'rate',    });
+      yMode: 'rate',
+    });
     ctx.tracks.registerTrack({
       uri,
       renderer: track,
@@ -59,7 +61,8 @@ const track = CounterTrack.create({
 
   async addSummaryCpuCounters(ctx: Trace): Promise<void> {
     const e = ctx.engine;
-const tracks = await e.query(
+
+    const tracks = await e.query(
       `select distinct
          id,
          extract_arg(dimension_arg_set_id, 'type') as type,
@@ -69,7 +72,8 @@ const tracks = await e.query(
        order by type, cluster`,
     );
 
-    const it = tracks.iter({id: NUM, type: STR, cluster: NUM});    if (it.valid()) {
+    const it = tracks.iter({id: NUM, type: STR, cluster: NUM});
+    if (it.valid()) {
       const group = new TrackNode({
         name: 'Summary',
         isSummary: true,
@@ -81,8 +85,9 @@ const tracks = await e.query(
         await this.addCpuPerUidTrack(
           ctx,
           `select ts, value
-from _android_cpu_per_uid_summary
-          where type = '${it.type}' and cluster = ${it.cluster}`,          name,
+          from counter
+          where track_id = ${it.id}`,
+          name,
           `/cpu_per_uid_summary_${it.type}_${it.cluster}`,
           group,
           'cpu-per-uid-summary',
@@ -99,13 +104,14 @@ from _android_cpu_per_uid_summary
   ): Promise<void> {
     const e = ctx.engine;
     const tracks = await e.query(
-`select
+      `select
          id,
          cluster,
          IFNULL(package_name, 'UID ' || uid) AS name
        from android_cpu_per_uid_track
        where total_cpu_millis > ${thresholdMs}
-       order by name, cluster`,    );
+       order by name, cluster`,
+    );
     const it = tracks.iter({id: NUM, cluster: NUM, name: STR});
     if (it.valid()) {
       const group = new TrackNode({
@@ -120,8 +126,9 @@ from _android_cpu_per_uid_summary
           ctx,
           `select
            ts,
-min(100, 100 * cpu_ratio) as value
-         from android_cpu_per_uid_counter         where track_id = ${it.id}`,
+           value
+         from counter
+         where track_id = ${it.id}`,
           name,
           `/${uriPrefix}_${it.id}`,
           group,

@@ -267,8 +267,9 @@ rtc_library("dtls_transport") {
     ":packet_transport_internal",
     "../api:dtls_transport_interface",
     "../api:field_trials_view",
-"../api:ice_transport_interface",
-    "../api:make_ref_counted",    "../api:rtc_error",
+    "../api:ice_transport_interface",
+    "../api:make_ref_counted",
+    "../api:rtc_error",
     "../api:scoped_refptr",
     "../api:sequence_checker",
     "../api/crypto:options",
@@ -729,7 +730,6 @@ rtc_library("stun_request") {
     "base/stun_request.h",
   ]
   deps = [
-    "../api:array_view",
     "../api:sequence_checker",
     "../api/environment",
     "../api/task_queue",
@@ -1217,7 +1217,7 @@ if (rtc_include_tests) {
       "../rtc_base:network",
       "../rtc_base:network_constants",
       "../rtc_base:network_route",
-"../rtc_base:platform_thread_types",      "../rtc_base:random",
+      "../rtc_base:random",
       "../rtc_base:rtc_base_tests_utils",
       "../rtc_base:rtc_event",
       "../rtc_base:socket",

@@ -239,7 +239,8 @@ day{
                 "0"{"beke eno"}
                 "1"{"beke e tlang"}
             }
-        }        year{
+        }
+        year{
             relative{
                 "-1"{"ngogola"}
                 "0"{"monongwaga"}

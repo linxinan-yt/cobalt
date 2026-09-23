@@ -288,7 +288,8 @@ void LoadV8SnapshotFile(const base::CommandLine& command_line) {
 NO_SANITIZE("address")
 void AsanProcessInfoCB(const char* reason,
                        bool* should_exit_cleanly,
-                       bool* should_abort) {  auto* cmd_line = base::CommandLine::ForCurrentProcess();
+                       bool* should_abort) {
+  auto* cmd_line = base::CommandLine::ForCurrentProcess();
 #if BUILDFLAG(IS_WIN)
   std::string cmd_string = base::WideToUTF8(cmd_line->GetCommandLineString());
 #else

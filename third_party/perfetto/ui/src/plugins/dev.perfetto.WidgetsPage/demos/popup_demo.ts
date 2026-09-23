@@ -53,7 +53,8 @@ export function renderPopup(): m.Children {
         m(
           Popup,
           {
-trigger: m(Button, {label: 'Toggle Popup'}),            ...rest,
+            trigger: m(Button, {label: 'Toggle popup'}),
+            ...rest,
           },
           lorem(),
         ),
@@ -69,7 +70,8 @@ trigger: m(Button, {label: 'Toggle Popup'}),            ...rest,
       },
     }),
 
-renderDocSection('Controlled Popups', [      m('p', [
+    renderDocSection('Controlled Popup', [
+      m('p', [
         `The open/close state of a controlled popup is passed in via
       the 'isOpen' attribute. This means we can get open or close the popup
       from wherever we like. E.g. from a button inside the popup.
@@ -82,8 +84,22 @@ renderDocSection('Controlled Popups', [      m('p', [
     ]),
 
     renderWidgetShowcase({
-renderWidget: (opts) => m(ControlledPopup, opts),
-      initialOpts: {},    }),
+      renderWidget: ({isOpen}) =>
+        m(
+          Popup,
+          {
+            trigger: m(Button, {
+              disabled: true,
+              label: `Popup is ${isOpen ? 'open' : 'closed'}`,
+            }),
+            isOpen,
+          },
+          lorem(),
+        ),
+      initialOpts: {
+        isOpen: false,
+      },
+    }),
 
     renderDocSection('Nested Popups', [
       m('p', [`Popups can be nested inside other popups. Here is an example.`]),
@@ -94,7 +110,8 @@ renderWidget: (opts) => m(ControlledPopup, opts),
         m(
           Popup,
           {
-trigger: m(Button, {label: 'Open the popup'}),          },
+            trigger: m(Button, {label: 'Toggle nested popup'}),
+          },
           m(ButtonBar, [
             m(
               PopupMenu,

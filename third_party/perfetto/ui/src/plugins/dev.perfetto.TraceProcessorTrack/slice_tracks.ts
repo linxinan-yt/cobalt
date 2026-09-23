@@ -16,6 +16,7 @@ import m from 'mithril';
 import type {StandardGroup} from '../dev.perfetto.StandardGroups';
 import {Anchor} from '../../widgets/anchor';
 import {Icons} from '../../base/semantic_icons';
+
 export interface SliceTrackGroupSchema {
   name: string;
   expanded?: true;
@@ -29,7 +30,7 @@ interface SliceTrackTypeSchema {
   readonly topLevelGroup: 'PROCESS' | 'THREAD' | StandardGroup | undefined;
 
   /**
-* Optional function to customize the display name of the track.
+   * Optional function to customize the display name of the track.
    *
    * This function is called during track registration to transform the raw
    * track name into a more user-friendly display name.
@@ -39,12 +40,13 @@ interface SliceTrackTypeSchema {
    *
    * @example
    * ```typescript
-   * displayName: (name) => `${name} (Custom)`
+   * displayName: (name) =>`${name} (Custom)`
    * ```
    */
   readonly displayName?: (trackName: string) => string;
 
-  /**   * Optional function to provide a rich description renderer for the track.
+  /**
+   * Optional function to provide a rich description renderer for the track.
    *
    * This function is called during track registration to generate custom
    * descriptive content that will be displayed to users. The function receives

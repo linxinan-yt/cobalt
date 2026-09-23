@@ -25,11 +25,12 @@ export class Cpu {
   ) {}
 
   public maybeMachineLabel(): string {
-return maybeMachineLabel(
+    return maybeMachineLabel(
       this.labelIndex,
       this.machineName,
       this.numMachines,
-    );  }
+    );
+  }
 
   public toString(): string {
     return `${this.cpu}${this.maybeMachineLabel()}`;

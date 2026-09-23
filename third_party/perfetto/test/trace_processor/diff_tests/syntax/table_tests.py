@@ -734,7 +734,8 @@ class PerfettoTable(TestSuite):
           OR flat_key GLOB '*content_description'
           OR flat_key GLOB '*text'
         ORDER BY base64_proto_id, key
-LIMIT 17        """,
+        LIMIT 17
+        """,
         out=Csv("""
         "flat_key","key","int_value","string_value"
         "class_name","class_name","[NULL]","com.android.internal.policy.PhoneWindow@6cec234"
@@ -750,9 +751,11 @@ LIMIT 17        """,
         "text_iid","text_iid",0,"[NULL]"
         "view_id","view_id","[NULL]","STRING DE-INTERNING ERROR"
         "view_id_iid","view_id_iid",3,"[NULL]"
-"class_name","class_name","[NULL]","STRING DE-INTERNING ERROR"
-        "class_name_iid","class_name_iid",3,"[NULL]"
-        "view_id","view_id","[NULL]","TEST_VIEW_ID"        """))
+        "class_name","class_name","[NULL]","com.android.internal.policy.PhoneWindow@6cec234"
+        "content_description","content_description","[NULL]","Content Description 1"
+        "text","text","[NULL]","Text 1"
+        "view_id","view_id","[NULL]","NO_ID"
+        """))
 
   def test_winscope_surfaceflinger_hierarchy_paths(self):
     return DiffTestBlueprint(

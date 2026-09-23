@@ -38,7 +38,8 @@ fi{
         }
         "America:Eirunepe"{
             ec{"Eirunepé"}
-        }        "America:Godthab"{
+        }
+        "America:Godthab"{
             ec%secondary{"Godthåb"}
         }
         "America:Havana"{
@@ -58,7 +59,8 @@ fi{
         }
 "America:Santarem"{
             ec{"Santarém"}
-        }        "America:Santiago"{
+        }
+        "America:Santiago"{
             ec{"Santiago de Chile"}
         }
         "America:Scoresbysund"{

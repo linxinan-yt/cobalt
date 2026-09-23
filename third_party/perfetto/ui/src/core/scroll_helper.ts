@@ -15,7 +15,8 @@
 import {HighPrecisionTimeSpan} from '../base/high_precision_time_span';
 import type {time} from '../base/time';
 import type {ScrollToArgs} from '../public/scroll_helper';
-import type {WorkspaceManager} from '../public/workspace';import {raf} from './raf_scheduler';
+import type {WorkspaceManager} from '../public/workspace';
+import {raf} from './raf_scheduler';
 import type {TimelineImpl} from './timeline';
 import type {TrackManagerImpl} from './track_manager';
 

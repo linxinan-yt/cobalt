@@ -1135,7 +1135,8 @@ class IntervalsIntersect(TestSuite):
         4,2,"alpha"
         11,3,"gamma"
         """))
-def test_counter_intervals_with_interval_intersect(self):
+
+  def test_counter_intervals_with_interval_intersect(self):
     return DiffTestBlueprint(
         trace=TextProto(""),
         #      0 1 2 3 4 5 6 7 8

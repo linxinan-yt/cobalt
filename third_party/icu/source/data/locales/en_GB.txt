@@ -162,7 +162,8 @@ en_GB{
     calendar{
         generic{
             availableFormats{
-GyMEd{"E, d/M/y G"}                GyMMMEEEEd{"EEEE, d MMM y G"}
+GyMEd{"E, d/M/y G"}
+                GyMMMEEEEd{"EEEE, d MMM y G"}
                 MEd{"E dd/MM"}
                 MMMEEEEd{"EEEE d MMM"}
                 MMMEd{"E d MMM"}
@@ -224,7 +225,8 @@ GyMEd{"E, d/M/y G"}                GyMMMEEEEd{"EEEE, d MMM y G"}
             availableFormats{
 GyMd{"dd/MM/y G"}
                 GyMEd{"E, d/M/y G"}
-                GyMMMEEEEd{"EEEE, d MMM y G"}                MEd{"E dd/MM"}
+                GyMMMEEEEd{"EEEE, d MMM y G"}
+                MEd{"E dd/MM"}
                 MMMEEEEd{"EEEE d MMM"}
                 MMMEd{"E d MMM"}
                 MMMMEEEEd{"EEEE d MMMM"}

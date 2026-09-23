@@ -117,7 +117,7 @@ class AndroidStdlib(TestSuite):
         trace=Path('../../metrics/android/android_anr_metric.py'),
         query="""
         INCLUDE PERFETTO MODULE android.anrs;
-SELECT process_name, pid, upid, error_id, ts, subject, anr_type, intent, component, anr_dur_ms, default_anr_dur_ms
+        SELECT process_name, pid, upid, error_id, ts, subject, anr_type, intent, component, anr_dur_ms, default_anr_dur_ms
         FROM android_anrs;
       """,
         out=Csv("""
@@ -140,7 +140,8 @@ SELECT process_name, pid, upid, error_id, ts, subject, anr_type, intent, compone
         "com.google.netops.pager",28509,"[NULL]","62abad99-bd09-44ef-bbbb-40db5c4d5539",17000,"A foreground service of FOREGROUND_SERVICE_TYPE_SHORT_SERVICE did not stop within a timeout: ComponentInfo{com.google.netops.pager/com.google.netops.pager.NotifierService}","FOREGROUND_SHORT_SERVICE_TIMEOUT","[NULL]","com.google.netops.pager/com.google.netops.pager.NotifierService","[NULL]",180000
         "com.whatsapp",11456,"[NULL]","975b36a1-8b4a-4d69-875e-2c33e140bd1c",18000,"A foreground service of type dataSync did not stop within a timeout: ComponentInfo{com.whatsapp/com.whatsapp.service.GcmFGService}","FOREGROUND_SERVICE_TIMEOUT","[NULL]","com.whatsapp/com.whatsapp.service.GcmFGService","[NULL]",30000
         "com.android.chrome",22768,"[NULL]","05122f25-2f5b-4650-aeeb-cf59a9d6295a",19000,"required notification not provided","JOB_SERVICE_NOTIFICATION_NOT_PROVIDED","[NULL]","[NULL]","[NULL]",8000
-        "system_server",1234,2,"e701066e-985b-476b-8467-21a2548f134b",20000,"Blocked in handler on foreground thread (android.fg) for 2s","SYSTEM_SERVER_WATCHDOG_TIMEOUT","[NULL]","[NULL]",2000,"[NULL]"      """))
+        "system_server",1234,2,"e701066e-985b-476b-8467-21a2548f134b",20000,"Blocked in handler on foreground thread (android.fg) for 2s","SYSTEM_SERVER_WATCHDOG_TIMEOUT","[NULL]","[NULL]",2000,"[NULL]"
+      """))
 
   def test_anr_with_timer(self):
     return DiffTestBlueprint(

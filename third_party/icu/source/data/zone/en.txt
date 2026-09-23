@@ -38,7 +38,8 @@ en{
         }
         "Asia:Aqtau"{
             ec{"Aktau"}
-        }        "Asia:Qostanay"{
+        }
+        "Asia:Qostanay"{
             ec{"Kostanay"}
         }
         "Asia:Qyzylorda"{
@@ -52,7 +53,8 @@ en{
         }
         "Atlantic:Faeroe"{
             ec{"Faroes"}
-        }        "Australia:Lord_Howe"{
+        }
+        "Australia:Lord_Howe"{
             ec{"Lord Howe Island"}
         }
         "Etc:UTC"{

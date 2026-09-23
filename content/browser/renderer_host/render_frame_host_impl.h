@@ -209,7 +209,7 @@
 #if BUILDFLAG(IS_ANDROID)
 #include "base/containers/id_map.h"
 #elif !BUILDFLAG(IS_COBALT)
-#include "content/browser/webauth/webauth_request_security_checker.h"
+#include "content/browser/webauth/webauth_request_security_checker_impl.h"
 #include "third_party/blink/public/mojom/hid/hid.mojom-forward.h"
 #endif
 

@@ -60,11 +60,12 @@ TraceSorter::SortingMode ConvertSortingMode(SortingMode sorting_mode) {
 std::optional<TraceSorter::SortingMode> GetMinimumSortingMode(
     TraceImporterId trace_type,
     const TraceProcessorContext& context) {
-const TraceTypeDescriptor* d =
+  const TraceTypeDescriptor* d =
       context.trace_importer_registry->Find(trace_type);
   PERFETTO_CHECK(d);
   switch (d->sort_policy) {
-    case TraceSortPolicy::kFullSort:      return TraceSorter::SortingMode::kFullSort;
+    case TraceSortPolicy::kFullSort:
+      return TraceSorter::SortingMode::kFullSort;
     case TraceSortPolicy::kConfigDriven:
       return ConvertSortingMode(context.config.sorting_mode);
     case TraceSortPolicy::kNone:

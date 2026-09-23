@@ -59,7 +59,7 @@ constexpr auto BOOTTIME = protos::pbzero::BUILTIN_CLOCK_BOOTTIME;
 class ProtoTraceReaderTest : public ::testing::Test {
  public:
   ProtoTraceReaderTest() {
-host_context_.storage = std::make_unique<TraceStorage>();
+    host_context_.storage = std::make_unique<TraceStorage>();
     host_context_.trace_state =
         TraceProcessorContextPtr<TraceProcessorContext::TraceState>::MakeRoot(
             TraceProcessorContext::TraceState{TraceId{1}});
@@ -93,7 +93,8 @@ host_context_.storage = std::make_unique<TraceStorage>();
     host_context_.descriptor_pool_ = std::make_unique<DescriptorPool>();
     host_context_.register_additional_proto_modules =
         &RegisterAdditionalModules;
-    proto_trace_reader_ = std::make_unique<ProtoTraceReader>(&host_context_);  }
+    proto_trace_reader_ = std::make_unique<ProtoTraceReader>(&host_context_);
+  }
 
   base::Status Tokenize() {
     trace_->Finalize();

@@ -20,6 +20,7 @@ import {Icon} from '../../widgets/icon';
 import {Tooltip} from '../../widgets/tooltip';
 import {ALL_CATEGORIES, getFlowCategories} from '../../core/flow_types';
 import type {TraceImpl} from '../../core/trace_impl';
+
 export interface FlowEventsAreaSelectedPanelAttrs {
   trace: TraceImpl;
 }

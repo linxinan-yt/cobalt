@@ -80,7 +80,8 @@ export class Form implements m.ClassComponent<FormAttrs> {
             m(Button, {
               type: 'submit',
               label: submitLabel,
-rightIcon: submitIcon,              className: Popup.DISMISS_POPUP_GROUP_CLASS,
+              icon: submitIcon,
+              className: Popup.DISMISS_POPUP_GROUP_CLASS,
               intent: Intent.Primary,
               variant: ButtonVariant.Filled,
               onclick: (e: Event) => {
@@ -108,7 +109,7 @@ rightIcon: submitIcon,              className: Popup.DISMISS_POPUP_GROUP_CLASS,
   }
 
   oncreate(vnode: m.VnodeDOM<FormAttrs, this>) {
-this.maybeDisableSubmitButton(vnode.attrs.validation, vnode.dom);
+    this.maybeDisableSubmitButton(vnode.attrs.validation, vnode.dom);
   }
 
   onupdate(vnode: m.VnodeDOM<FormAttrs, this>) {
@@ -118,16 +119,18 @@ this.maybeDisableSubmitButton(vnode.attrs.validation, vnode.dom);
   private maybeDisableSubmitButton(
     validation: (() => boolean) | undefined,
     dom: Element,
-  ) {    // Work out if the form is valid and enable/disable the submit button.
+  ) {
+    // Work out if the form is valid and enable/disable the submit button.
     const formElement = dom as HTMLFormElement;
     const submitButton = formElement.querySelector(
       'button[type="submit"]',
     ) as HTMLButtonElement | null;
     if (submitButton) {
-// Check both native HTML validation and custom validation function
+      // Check both native HTML validation and custom validation function
       const nativeValid = formElement.checkValidity();
       const customValid = validation ? validation() : true;
-      submitButton.disabled = !nativeValid || !customValid;    }
+      submitButton.disabled = !nativeValid || !customValid;
+    }
   }
 }
 
@@ -176,7 +179,9 @@ export class FormGrid implements m.ClassComponent<HTMLAttrs> {
   view({attrs, children}: m.CVnode<HTMLAttrs>) {
     return m('.pf-form__grid', attrs, children);
   }
-}export interface FormSectionAttrs extends HTMLLabelAttrs {
+}
+
+export interface FormSectionAttrs extends HTMLLabelAttrs {
   readonly label: string;
 }
 
@@ -184,9 +189,10 @@ export class FormSection implements m.ClassComponent<FormSectionAttrs> {
   view({attrs, children}: m.CVnode<FormSectionAttrs>) {
     const {label, ...rest} = attrs;
     return m(
-'fieldset.pf-form__section',
+      'fieldset.pf-form__section',
       rest,
-      m('legend.pf-form__section-label', label),      children,
+      m('legend.pf-form__section-label', label),
+      children,
     );
   }
 }

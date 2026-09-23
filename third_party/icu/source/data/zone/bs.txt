@@ -345,7 +345,8 @@ bs{
         }
 "Europe:Tirane"{
             ec{"Tirana"}
-        }        "Europe:Vatican"{
+        }
+        "Europe:Vatican"{
             ec{"Vatikan"}
         }
         "Europe:Vienna"{

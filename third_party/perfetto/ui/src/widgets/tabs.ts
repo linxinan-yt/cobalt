@@ -22,10 +22,11 @@ import {Icons} from '../base/semantic_icons';
 import {PopupMenu} from './menu';
 import {PopupPosition} from './popup';
 import {maybeUndefined} from '../base/utils';
+
 export interface TabsTab {
   // Unique identifier for the tab.
   readonly key: string;
-// Content to display in the tab handle.
+  // Content to display in the tab handle.
   readonly title: m.Children;
   // Content to display when this tab is active.
   readonly content: m.Children;
@@ -35,7 +36,8 @@ export interface TabsTab {
   readonly leftIcon?: string | m.Children;
   // Optional menu items to show in a dropdown menu on the tab.
   // When provided, a menu button appears on hover.
-  readonly menuItems?: m.Children;}
+  readonly menuItems?: m.Children;
+}
 
 export interface TabsAttrs {
   // The tabs to display.
@@ -253,12 +255,14 @@ export class Tabs implements m.ClassComponent<TabsAttrs> {
     } = attrs;
 
     // Get active tab key (controlled or uncontrolled)
-    const activeKey = activeTabKey ?? this.internalActiveTab ?? tabs[0]?.key;    return m(
+    const activeKey = activeTabKey ?? this.internalActiveTab ?? tabs[0]?.key;
+
+    return m(
       '.pf-tabs',
       {className},
       m(
         '.pf-tabs__tabs',
-tabs.map((tab, index) => {
+        tabs.map((tab, index) => {
           const isDragTarget = this.dropTargetKey === tab.key;
           const showDropBefore =
             isDragTarget &&
@@ -275,7 +279,9 @@ tabs.map((tab, index) => {
             this.dropTargetKey === tabs[index]?.key &&
             this.dropPosition === 'before' &&
             this.draggedKey !== prevTab.key &&
-            this.draggedKey !== tab.key;          return m(
+            this.draggedKey !== tab.key;
+
+          return m(
             '.pf-tabs__tab-wrapper',
             {
               key: tab.key,
@@ -286,7 +292,7 @@ tabs.map((tab, index) => {
                 this.draggedKey === tab.key && 'pf-tabs__tab-wrapper--dragging',
               ),
             },
-m(
+            m(
               TabHandle,
               {
                 active: tab.key === activeKey,
@@ -369,7 +375,8 @@ m(
                 },
               },
               tab.title,
-            ),          );
+            ),
+          );
         }),
         newTabContent ??
           (onNewTab &&

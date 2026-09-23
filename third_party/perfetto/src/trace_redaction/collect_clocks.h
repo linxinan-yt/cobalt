@@ -56,7 +56,8 @@ class CollectClocks : public CollectPrimitive {
       const protos::pbzero::TracePacket::Decoder& packet,
       Context* context) const;
 
-mutable std::vector<ClockTimestamp> clock_snapshot_;};
+  mutable std::vector<ClockTimestamp> clock_snapshot_;
+};
 
 }  // namespace perfetto::trace_redaction
 

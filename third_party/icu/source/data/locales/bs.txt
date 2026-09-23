@@ -1540,7 +1540,8 @@ minute-narrow{
                     other{"prije {0} min"}
                 }
             }
-        }        minute-short{
+        }
+        minute-short{
             dn{"min"}
             relativeTime{
                 future{
@@ -1591,7 +1592,8 @@ mon-narrow{
                     other{"prije {0} pon"}
                 }
             }
-        }        mon-short{
+        }
+        mon-short{
             relative{
                 "-1"{"prošli pon"}
                 "0"{"ovaj pon."}

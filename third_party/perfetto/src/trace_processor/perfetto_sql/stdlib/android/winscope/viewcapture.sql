@@ -25,13 +25,10 @@ CREATE PERFETTO VIEW android_viewcapture(
   package_name STRING,
   -- Window name deinterned from proto message
   window_name STRING
-) AS
-SELECT
-  id,
-  ts,
-  arg_set_id,
-  package_name,
-  window_nameFROM __intrinsic_viewcapture;
+)
+AS
+SELECT id, ts, arg_set_id, package_name, window_name
+FROM __intrinsic_viewcapture;
 
 -- Android viewcapture view (from android.viewcapture data source).
 CREATE PERFETTO VIEW android_viewcapture_view(
@@ -56,7 +53,8 @@ CREATE PERFETTO VIEW android_viewcapture_view(
   -- Trace rect id
   trace_rect_id LONG
 )
-ASSELECT
+AS
+SELECT
   id,
   snapshot_id,
   arg_set_id,

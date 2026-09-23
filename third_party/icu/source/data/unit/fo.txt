@@ -982,7 +982,8 @@ part-per-1e6{
                 dnam{"partar/mia."}
                 one{"{0}part/mia."}
                 other{"{0}partar/mia."}
-            }            percent{
+            }
+            percent{
                 dnam{"%"}
             }
             permille{
@@ -994,7 +995,8 @@ permillion{
                 dnam{"pt./mill."}
                 one{"{0}pt./mill"}
                 other{"{0}pt./mill"}
-            }            permyriad{
+            }
+            permyriad{
                 dnam{"‱"}
                 one{"{0}‱"}
                 other{"{0}‱"}

@@ -643,7 +643,8 @@ void TestRenderFrameHost::SetPrefetchedSignedExchangeCacheForTesting(
   prefetched_signed_exchange_cache_ = std::move(cache);
 }
 
-#if !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)void TestRenderFrameHost::CreateHidServiceForTesting(
+#if !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)
+void TestRenderFrameHost::CreateHidServiceForTesting(
     mojo::PendingReceiver<blink::mojom::HidService> receiver) {
   RenderFrameHostImpl::GetHidService(std::move(receiver));
 }

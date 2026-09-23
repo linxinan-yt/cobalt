@@ -36,7 +36,8 @@ import {
   TraceHttpStream,
   TraceMultipleFilesStream,
 } from '../core/trace_stream';
-import type {TraceStream} from '../public/stream';import {
+import type {TraceStream} from '../public/stream';
+import {
   deserializeAppStatePhase1,
   deserializeAppStatePhase2,
 } from './state_serialization';
@@ -56,6 +57,7 @@ import {GUTTER_FRACTION} from './timeline';
 import {sha1} from '../base/hash';
 import {showModal} from '../widgets/modal';
 import m from 'mithril';
+
 const ENABLE_CHROME_RELIABLE_RANGE_ZOOM_FLAG = featureFlags.register({
   id: 'enableChromeReliableRangeZoom',
   name: 'Enable Chrome reliable range zoom',
@@ -111,6 +113,7 @@ const KEEP_CURRENT_PAGE_ON_TRACE_LOAD_FLAG = featureFlags.register({
     'When loading a new trace, stay on the current page instead of navigating to the default landing page',
   defaultValue: false,
 });
+
 // TODO(stevegolton): Move this into some global "SQL extensions" file and
 // ensure it's only run once.
 async function defineMaxLayoutDepthSqlFunction(engine: Engine): Promise<void> {
@@ -154,9 +157,11 @@ async function createEngine(
   if (app.httpRpc.newEngineMode === 'USE_HTTP_RPC_IF_AVAILABLE') {
     useRpc = (await HttpRpcEngine.checkConnection()).connected;
   }
-const descriptorBlobs: Uint8Array[] = [];
+
+  const descriptorBlobs: Uint8Array[] = [];
   for (const b64Str of await app.protoDescriptors()) {
-    descriptorBlobs.push(base64Decode(b64Str));  }
+    descriptorBlobs.push(base64Decode(b64Str));
+  }
   let engine;
   if (useRpc) {
     console.log('Opening trace using native accelerator over HTTP+RPC');
@@ -261,22 +266,7 @@ async function loadTraceIntoEngine(
   trace.timeline.setVisibleWindow(newViewport);
 
   const cacheUuid = traceDetails.cached ? traceDetails.uuid : '';
-// Attempt to preserve the existing page, only add/change the local_cache_key.
-  //
-  // This is so that if the user opens a trace from a URL or has navigated to a
-  // page before opening a trace, we stay on that page. This allows links to
-  // e.g. #!/explore to work as expected.
-  //
-  // Only navigate to the timeline page if we are currently on the home page.
-  const route = Router.parseUrl(window.location.href);
 
-  let nextPage = route.page;
-  if (route.page === '/' || route.page === '') {
-    // Currently on the home page, navigate to the timeline page.
-    nextPage = '/viewer';
-  }
-
-  Router.navigate(`#!${nextPage}${route.subpage}?local_cache_key=${cacheUuid}`);
   // Make sure the helper views are available before we start adding tracks.
   await includeSummaryTables(trace);
 
@@ -350,7 +340,8 @@ async function loadTraceIntoEngine(
   if (allStartupCommands.length > 0) {
     updateStatus(app, 'Running startup commands');
     using _ = trace.omnibox.disablePrompts();
-// Execute startup commands in trace context after everything is ready.
+
+    // Execute startup commands in trace context after everything is ready.
     // This simulates user actions taken after trace load is complete,
     // including any saved app state restoration. At this point:
     // - All plugins have loaded and registered their commands
@@ -386,7 +377,8 @@ async function loadTraceIntoEngine(
 
     if (blocked.length > 0 || failed.length > 0) {
       showStartupCommandIssuesDialog(blocked, failed);
-    }  }
+    }
+  }
 
   return trace;
 }

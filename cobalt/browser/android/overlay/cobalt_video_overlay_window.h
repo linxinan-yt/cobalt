@@ -90,15 +90,19 @@ class CobaltVideoOverlayWindow : public content::VideoOverlayWindow,
   void SetFaviconImages(
       const std::vector<media_session::MediaImage>& images) override;
   void SetSurfaceId(const viz::SurfaceId& surface_id) override;
+  void SetMediaMuted(bool muted) override;
+  void SetPlaybackControlsVisibility(bool is_visible) override;
+  void SetImmersiveVideoOptions(
+      const content::ImmersiveOptions& options) override;
 
   // JNI callbacks from CobaltPictureInPictureActivity.java
   void SetJavaActivity(JNIEnv* env,
-                       const base::android::JavaParamRef<jobject>& activity);
+                       const base::android::JavaRef<jobject>& activity);
   void OnActivityDestroyed(JNIEnv* env);
   void OnViewSizeChanged(JNIEnv* env, int width, int height);
   void CompositorViewCreated(
       JNIEnv* env,
-      const base::android::JavaParamRef<jobject>& compositor_view);
+      const base::android::JavaRef<jobject>& compositor_view);
 
  private:
   // Pointer to the controller that owns this window.

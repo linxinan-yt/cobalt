@@ -450,7 +450,8 @@ public:
      *         IDs.
      * @stable ICU 2.0
      */
-U_I18N_API virtual UClassID getDynamicClassID() const override;
+    U_I18N_API virtual UClassID getDynamicClassID() const override;
+
     /**
      * Returns the class ID for this class. This is useful only for comparing to
      * a return value from getDynamicClassID(). For example:
@@ -462,7 +463,8 @@ U_I18N_API virtual UClassID getDynamicClassID() const override;
      * @return The class ID for all objects of this class.
      * @stable ICU 2.0
      */
-static UClassID U_EXPORT2 getStaticClassID();
+    U_I18N_API static UClassID getStaticClassID();
+
 #ifndef U_HIDE_DEPRECATED_API
     /**
      * Do not use this method: The caller and the ICU library might use different heaps.

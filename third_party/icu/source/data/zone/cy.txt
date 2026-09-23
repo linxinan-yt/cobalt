@@ -8,7 +8,8 @@ cy{
         }
 "America:Argentina:Tucuman"{
             ec{"Tucumán"}
-        }        "America:Bahia_Banderas"{
+        }
+        "America:Bahia_Banderas"{
             ec{"Bae Banderas"}
         }
         "America:Cambridge_Bay"{
@@ -19,7 +20,8 @@ cy{
         }
         "America:Eirunepe"{
             ec{"Eirunepé"}
-        }        "America:Indiana:Tell_City"{
+        }
+        "America:Indiana:Tell_City"{
             ec{"Dinas Tell, Indiana"}
         }
         "America:Merida"{

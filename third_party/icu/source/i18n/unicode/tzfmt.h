@@ -433,7 +433,8 @@ public:
      * @see ParseOption
      * @stable ICU 50
      */
-U_I18N_API uint32_t getDefaultParseOptions() const;
+    U_I18N_API uint32_t getDefaultParseOptions() const;
+
     /**
      * Sets the default parse options.
      * <p><b>Note</b>: By default, an instance of <code>TimeZoneFormat</code>
@@ -681,7 +682,8 @@ U_I18N_API uint32_t getDefaultParseOptions() const;
      * ICU "poor man's RTTI", returns a UClassID for this class.
      * @stable ICU 50
      */
-static UClassID U_EXPORT2 getStaticClassID();
+    U_I18N_API static UClassID getStaticClassID();
+
     /**
      * ICU "poor man's RTTI", returns a UClassID for the actual class.
      * @stable ICU 50

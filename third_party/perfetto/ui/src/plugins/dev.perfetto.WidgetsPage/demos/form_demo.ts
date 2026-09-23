@@ -22,6 +22,7 @@ import {Select} from '../../../widgets/select';
 import {Switch} from '../../../widgets/switch';
 import {TextInput} from '../../../widgets/text_input';
 import {renderDocSection, renderWidgetShowcase} from '../widgets_page_utils';
+
 function renderFormContent(
   id: string,
   options: {
@@ -94,7 +95,7 @@ function renderFormContent(
         id: `${id}-switch`,
       }),
     ),
-m(
+    m(
       FormSection,
       {label: 'Grid Section'},
       m(
@@ -110,7 +111,8 @@ m(
           placeholder: 'Doe',
         }),
       ),
-    ),  );
+    ),
+  );
 }
 
 export function renderForm(): m.Children {
@@ -148,20 +150,16 @@ export function renderForm(): m.Children {
     renderWidgetShowcase({
       renderWidget: () =>
         m(
-Popup,          {
+          Popup,
+          {
             trigger: m(Button, {
               label: 'Click me',
               icon: Icons.ContextMenu,
               variant: ButtonVariant.Filled,
             }),
           },
-m(
-            MenuItem,
-            {
-              label: 'Open form...',
-            },
-            renderFormContent('popup-form'),
-          ),        ),
+          renderFormContent('popup-form'),
+        ),
     }),
   ];
 }

@@ -16,7 +16,6 @@
 
 #include "src/trace_processor/importers/proto/android_probes_module.h"
 
-#include <atomic>
 #include <cstdint>
 #include <memory>
 #include <optional>
@@ -26,9 +25,7 @@
 #include "perfetto/base/logging.h"
 #include "perfetto/ext/base/string_view.h"
 #include "perfetto/protozero/field.h"
-#include "perfetto/protozero/scattered_heap_buffer.h"
 #include "perfetto/trace_processor/ref_counted.h"
-#include "perfetto/trace_processor/trace_blob.h"
 #include "protos/perfetto/common/builtin_clock.pbzero.h"
 #include "src/trace_processor/importers/common/clock_tracker.h"
 #include "src/trace_processor/importers/common/event_tracker.h"
@@ -45,6 +42,7 @@
 #include "src/trace_processor/storage/stats.h"
 #include "src/trace_processor/storage/trace_storage.h"
 #include "src/trace_processor/util/clock_synchronizer.h"
+
 #include "protos/perfetto/common/android_energy_consumer_descriptor.pbzero.h"
 #include "protos/perfetto/common/android_log_constants.pbzero.h"
 #include "protos/perfetto/config/trace_config.pbzero.h"
@@ -114,12 +112,13 @@ ModuleResult AndroidProbesModule::TokenizePacket(
   // to shepherd these events through the sorting queues in a special way.
   // Therefore, we just forge new packets and sort them as if they came from the
   // underlying trace.
-if (args.field.id() == TracePacket::kPowerRailsFieldNumber) {    auto power_rails = decoder.power_rails();
+  if (args.field.id() == TracePacket::kPowerRailsFieldNumber) {
+    auto power_rails = decoder.power_rails();
     protos::pbzero::PowerRails::Decoder evt(power_rails);
 
     parser_.ParseRailDescriptor(evt);
 
-if (!evt.has_energy_data()) {
+    if (!evt.has_energy_data()) {
       context_->import_logs_tracker->RecordParserLog(
           stats::power_rail_empty_packet, args.ts);
       return ModuleResult::Handled();
@@ -162,25 +161,28 @@ if (!evt.has_energy_data()) {
           });
       module_context_->trace_packet_stream->Push(
           actual_ts, TracePacketData{std::move(tbv), args.state});
-    }    return ModuleResult::Handled();
+    }
+    return ModuleResult::Handled();
   }
 
   // We treat Android logs similarly to ftrace in that they have many events, so
   // we just mimic the sorting logic to the one from kPowerRailsFieldNumber
   // above.
-if (args.field.id() == TracePacket::kAndroidLogFieldNumber) {    auto android_log = decoder.android_log();
+  if (args.field.id() == TracePacket::kAndroidLogFieldNumber) {
+    auto android_log = decoder.android_log();
     protos::pbzero::AndroidLogPacket::Decoder pkt(android_log);
     for (auto it = pkt.events(); it; ++it) {
       protos::pbzero::AndroidLogPacket::LogEvent::Decoder evt(*it);
       auto realtime_ts = static_cast<int64_t>(evt.timestamp());
       std::optional<int64_t> trace_ts = context_->clock_tracker->ToTraceTime(
-ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_REALTIME),
-          realtime_ts);      if (!trace_ts.has_value()) {
+          ClockId::Machine(protos::pbzero::BUILTIN_CLOCK_REALTIME),
+          realtime_ts);
+      if (!trace_ts.has_value()) {
         continue;
       }
       int64_t actual_ts = *trace_ts;
 
-TraceBlobView tbv =
+      TraceBlobView tbv =
           context_->blob_packet_writer->WritePacket([&](auto* data_packet) {
             data_packet->set_timestamp(static_cast<uint64_t>(actual_ts));
 
@@ -211,7 +213,8 @@ TraceBlobView tbv =
             }
           });
       module_context_->trace_packet_stream->Push(
-          actual_ts, TracePacketData{std::move(tbv), args.state});    }
+          actual_ts, TracePacketData{std::move(tbv), args.state});
+    }
     if (pkt.has_stats()) {
       parser_.ParseAndroidLogStats(pkt.stats());
     }
@@ -252,7 +255,8 @@ void AndroidProbesModule::ParseField(const ParseFieldArgs& args) {
     case TracePacket::kEntityStateResidencyFieldNumber:
       parser_.ParseEntityStateResidency(
           args.ts, args.field.Cast<TracePacket::kEntityStateResidency>());
-      return;    case TracePacket::kInitialDisplayStateFieldNumber:
+      return;
+    case TracePacket::kInitialDisplayStateFieldNumber:
       parser_.ParseInitialDisplayState(
           args.ts, args.field.Cast<TracePacket::kInitialDisplayState>());
       return;

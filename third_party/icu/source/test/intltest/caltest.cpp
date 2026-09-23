@@ -208,7 +208,8 @@ void CalendarTest::runIndexedTest( int32_t index, UBool exec, const char* &name,
     TESTCASE_AUTO(Test22633RollTwiceGetTimeOverflow);
 
     TESTCASE_AUTO(Test22633HebrewLargeNegativeDay);
-TESTCASE_AUTO(Test23069HebrewHanukkah);    TESTCASE_AUTO(Test22730JapaneseOverflow);
+    TESTCASE_AUTO(Test23069HebrewHanukkah);
+    TESTCASE_AUTO(Test22730JapaneseOverflow);
     TESTCASE_AUTO(Test22730CopticOverflow);
     TESTCASE_AUTO(Test22962ComputeJulianDayOverflow);
 
@@ -5894,7 +5895,8 @@ void CalendarTest::TestChineseCalendarComputeMonthStart() {  // ICU-22639
     UErrorCode status = U_ZERO_ERROR;
 
     // An extended year for which hasLeapMonthBetweenWinterSolstices is true.
-constexpr int32_t eyear = 4643;    constexpr int64_t monthStart = 2453764;
+    constexpr int32_t eyear = 2006;
+    constexpr int64_t monthStart = 2453764;
 
     LocalPointer<Calendar> calendar(
         Calendar::createInstance(Locale("en_US@calendar=chinese"), status),
@@ -6037,6 +6039,7 @@ void CalendarTest::Test23069HebrewHanukkah() {
         }
     }
 }
+
 void CalendarTest::Test22730JapaneseOverflow() {
     UErrorCode status = U_ZERO_ERROR;
     LocalPointer<Calendar> calendar(

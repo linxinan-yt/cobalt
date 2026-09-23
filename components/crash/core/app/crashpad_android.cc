@@ -407,6 +407,8 @@ void MakePackagePaths(std::string* classpath, std::string* libpath) {
 
 
 
+const char kCrashReportUrl[] = "https://clients2.google.com/cr/report";
+
 void BuildHandlerArgs(CrashReporterClient* crash_reporter_client,
                       base::FilePath* database_path,
                       base::FilePath* metrics_path,
@@ -487,7 +489,8 @@ class HandlerStarter {
     // thread contention during the critical crash dumping window.
     // TODO: Implement actual database pruning for Android TV.
     arguments.push_back("--no-periodic-tasks");
-#endif    if (crashpad::SetSanitizationInfo(GetCrashReporterClient(),
+#endif
+    if (crashpad::SetSanitizationInfo(GetCrashReporterClient(),
                                       &browser_sanitization_info_)) {
       arguments.push_back(base::StringPrintf("--sanitization-information=%p",
                                              &browser_sanitization_info_));
@@ -521,15 +524,8 @@ class HandlerStarter {
       return database_path;
     }
 
-if (use_java_handler_ || !handler_trampoline_.empty()) {
-#if BUILDFLAG(IS_COBALT) && BUILDFLAG(IS_ANDROIDTV)
-      // Cobalt on Android TV skips the Java fallback handler for API 24-28.
-      // Reporting is not supported on these versions due to engineering cost
-      // and low traffic.
-      if (use_java_handler_) {
-        return database_path;
-      }
-#endif      std::vector<std::string> env;
+    if (!handler_trampoline_.empty()) {
+      std::vector<std::string> env;
       if (!internal::BuildEnvironmentWithApk(kUse64Bit, &env)) {
         return database_path;
       }
@@ -561,7 +557,8 @@ if (use_java_handler_ || !handler_trampoline_.empty()) {
       return true;
     }
 
-if (!handler_trampoline_.empty()) {      std::vector<std::string> env;
+if (!handler_trampoline_.empty()) {
+      std::vector<std::string> env;
       if (!internal::BuildEnvironmentWithApk(kUse64Bit, &env)) {
         return false;
       }
@@ -571,7 +568,8 @@ return GetCrashpadClient().StartHandlerWithLinkerForClient(
           metrics_path, url, process_annotations, arguments, fd);
     }
 
-    return false;  }
+    return false;
+  }
 
  private:
   HandlerStarter() = default;

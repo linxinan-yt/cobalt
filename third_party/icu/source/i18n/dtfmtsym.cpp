@@ -402,10 +402,9 @@ DateFormatSymbols::createZoneStrings(const UnicodeString *const * otherStrings)
  */
 void
 DateFormatSymbols::copyData(const DateFormatSymbols& other) {
-UErrorCode status = U_ZERO_ERROR;
-    U_LOCALE_BASED(locBased, *this);
-    locBased.setLocaleIDs(other.validLocale, other.actualLocale, status);
-    U_ASSERT(U_SUCCESS(status));    assignArray(fEras, fErasCount, other.fEras, other.fErasCount);
+    validLocale = other.validLocale;
+    actualLocale = other.actualLocale;
+    assignArray(fEras, fErasCount, other.fEras, other.fErasCount);
     assignArray(fEraNames, fEraNamesCount, other.fEraNames, other.fEraNamesCount);
     assignArray(fNarrowEras, fNarrowErasCount, other.fNarrowEras, other.fNarrowErasCount);
     assignArray(fMonths, fMonthsCount, other.fMonths, other.fMonthsCount);
@@ -498,8 +497,6 @@ DateFormatSymbols& DateFormatSymbols::operator=(const DateFormatSymbols& other)
 DateFormatSymbols::~DateFormatSymbols()
 {
     dispose();
-    delete actualLocale;
-    delete validLocale;
 }
 
 void DateFormatSymbols::dispose()
@@ -540,8 +537,9 @@ void DateFormatSymbols::dispose()
     delete[] fStandaloneWideDayPeriods;
     delete[] fStandaloneNarrowDayPeriods;
 
-actualLocale = Locale::getRoot();
-    validLocale = Locale::getRoot();    disposeZoneStrings();
+    actualLocale = Locale::getRoot();
+    validLocale = Locale::getRoot();
+    disposeZoneStrings();
 }
 
 void DateFormatSymbols::disposeZoneStrings()
@@ -1291,7 +1289,8 @@ DateFormatSymbols::setAmPmStrings(const UnicodeString* amPmsArray, int32_t count
     }
 
     // delete the old list if we own it
-delete[] *targetArray;
+    delete[] *targetArray;
+
     // we always own the new list, which we create here (we duplicate rather
     // than adopting the list passed in)
     *targetArray = newUnicodeStringArray(count);
@@ -2401,8 +2400,9 @@ DateFormatSymbols::initializeData(const Locale& locale, const char *type, UError
     // if we make it to here, the resource data is cool, and we can get everything out
     // of it that we need except for the time-zone and localized-pattern data, which
     // are stored in a separate file
-locBased.setLocaleIDs(ures_getLocaleByType(cb.getAlias(), ULOC_VALID_LOCALE, &status),
-                          ures_getLocaleByType(cb.getAlias(), ULOC_ACTUAL_LOCALE, &status), status);
+    validLocale = Locale(ures_getLocaleByType(cb.getAlias(), ULOC_VALID_LOCALE, &status));
+    actualLocale = Locale(ures_getLocaleByType(cb.getAlias(), ULOC_ACTUAL_LOCALE, &status));
+
     // Era setup
     if (type == nullptr) {
         type = "gregorian";

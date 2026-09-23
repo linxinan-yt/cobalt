@@ -25,6 +25,7 @@ import type {SqlTableState} from '../state';
 import type {TableColumn} from '../table_column';
 import {sqlValueToSqliteString} from '../../../../../trace_processor/sql_utils';
 import {type Result, errResult, okResult} from '../../../../../base/result';
+
 type FilterParams = {
   op: string;
   label: string;

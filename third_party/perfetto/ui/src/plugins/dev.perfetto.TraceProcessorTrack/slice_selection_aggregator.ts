@@ -14,7 +14,8 @@
 
 import m from 'mithril';
 import {AsyncDisposableStack} from '../../base/disposable_stack';
-import {Icons} from '../../base/semantic_icons';import {
+import {Icons} from '../../base/semantic_icons';
+import {
   type Aggregation,
   type Aggregator,
   type AggregatorGridConfig,
@@ -29,7 +30,8 @@ import {
   SourceDataset,
   UnionDatasetWithLineage,
 } from '../../trace_processor/dataset';
-import type {Engine} from '../../trace_processor/engine';import {
+import type {Engine} from '../../trace_processor/engine';
+import {
   LONG,
   NUM,
   NUM_NULL,
@@ -59,25 +61,10 @@ const SLICELIKE_SPEC = {
   arg_set_id: NUM_NULL,
 };
 
-const SLICE_WITH_PARENT_SPEC = {
-  id: NUM,
-  name: STR_NULL,
-  ts: LONG,
-  dur: LONG,
-  parent_id: NUM_NULL,
-};
-
-const SLICELIKE_SPEC = {
-  id: NUM,
-  name: STR_NULL,
-  ts: LONG,
-  dur: LONG,
-};
-
 export class SliceSelectionAggregator implements Aggregator {
   readonly id = 'slice_aggregation';
 
-private readonly trace: Trace;
+  private readonly trace: Trace;
   // Store track-to-dataset mapping for lineage resolution
   private trackDatasetMap?: Map<Dataset, Track>;
   // Store union datasets for lineage resolution
@@ -104,14 +91,15 @@ private readonly trace: Trace;
       }
     }
 
-    if (sliceTracks.length === 0 && slicelikeTracks.length === 0) {      return undefined;
+    if (sliceTracks.length === 0 && slicelikeTracks.length === 0) {
+      return undefined;
     }
 
     return {
       prepareData: async (engine: Engine) => {
         const unionQueries: string[] = [];
         await using trash = new AsyncDisposableStack();
-this.trackDatasetMap = new Map();
+        this.trackDatasetMap = new Map();
 
         if (sliceTracks.length > 0) {
           const {query, unionDataset, trackDatasetMap} =
@@ -141,18 +129,19 @@ this.trackDatasetMap = new Map();
           this.slicelikeUnionDataset = unionDataset;
           for (const [dataset, track] of trackDatasetMap.entries()) {
             this.trackDatasetMap.set(dataset, track);
-          }        }
+          }
+        }
 
         await engine.query(`
           CREATE OR REPLACE PERFETTO TABLE ${this.id} AS
           SELECT
-name,
-            SUM(dur) AS total_dur,
-            SUM(dur) / COUNT() AS avg_dur,
-            COUNT() AS occurrences,
-            SUM(self_dur) AS total_self_dur
+            json_object('id', id, 'groupid', __groupid, 'partition', __partition) as id_with_lineage,
+            name,
+            dur,
+            self_dur,
+            arg_set_id
           FROM (${unionQueries.join(' UNION ALL ')})
-          GROUP BY name        `);
+        `);
 
         return {tableName: this.id};
       },
@@ -161,7 +150,7 @@ name,
 
   private async buildSliceQuery(
     engine: Engine,
-tracks: Track[],
+    tracks: Track[],
     area: AreaSelection,
     trash: AsyncDisposableStack,
   ): Promise<{
@@ -194,7 +183,8 @@ tracks: Track[],
     // Create interval-intersect table for time filtering
     const iiTable = await createIITable(
       engine,
-      new SourceDataset({src: `(${sql})`, schema: iiQuerySchema}),      area.start,
+      new SourceDataset({src: `(${sql})`, schema: iiQuerySchema}),
+      area.start,
       area.end,
     );
     trash.use(iiTable);
@@ -213,7 +203,7 @@ tracks: Track[],
     });
     trash.use(childDurTable);
 
-return {
+    return {
       query: `
         SELECT
           id,
@@ -229,11 +219,12 @@ return {
       `,
       unionDataset,
       trackDatasetMap,
-    };  }
+    };
+  }
 
   private async buildSlicelikeQuery(
     engine: Engine,
-tracks: Track[],
+    tracks: Track[],
     area: AreaSelection,
     trash: AsyncDisposableStack,
   ): Promise<{
@@ -266,20 +257,29 @@ tracks: Track[],
     // Create interval-intersect table for time filtering
     const iiTable = await createIITable(
       engine,
-      new SourceDataset({src: `(${sql})`, schema: iiQuerySchema}),      area.start,
+      new SourceDataset({src: `(${sql})`, schema: iiQuerySchema}),
+      area.start,
       area.end,
     );
     trash.use(iiTable);
 
-return `
-      SELECT
-        id,
-        name,
-        ts,
-        dur,
-        dur AS self_dur
-      FROM ${iiTable.name}
-    `;  }
+    return {
+      query: `
+        SELECT
+          id,
+          name,
+          ts,
+          dur,
+          dur AS self_dur,
+          arg_set_id,
+          __groupid,
+          __partition
+        FROM ${iiTable.name}
+      `,
+      unionDataset,
+      trackDatasetMap,
+    };
+  }
 
   getTabName() {
     return 'Slices';

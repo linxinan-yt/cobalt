@@ -83,7 +83,8 @@ class FrameTimelineEventParser {
 
   const StringId surface_frame_token_id_;
   const StringId display_frame_token_id_;
-const StringId animation_time_millis_id_;  const StringId present_delay_millis_id_;
+  const StringId animation_time_millis_id_;
+  const StringId present_delay_millis_id_;
   const StringId vsync_resynced_jitter_millis_id_;
   const StringId present_type_id_;
   const StringId present_type_experimental_id_;
@@ -93,7 +94,8 @@ const StringId animation_time_millis_id_;  const StringId present_delay_millis_i
   const StringId jank_type_experimental_id_;
   const StringId jank_severity_type_id_;
   const StringId jank_severity_score_id_;
-const StringId jank_debug_metadata_id_;  const StringId layer_name_id_;
+  const StringId jank_debug_metadata_id_;
+  const StringId layer_name_id_;
   const StringId prediction_type_id_;
   const StringId jank_tag_id_;
   const StringId jank_tag_experimental_id_;
@@ -109,7 +111,8 @@ const StringId jank_debug_metadata_id_;  const StringId layer_name_id_;
   const StringId jank_tag_dropped_id_;
   const StringId jank_tag_buffer_stuffing_id_;
   const StringId jank_tag_sf_stuffing_id_;
-const StringId jank_tag_none_perceivable_id_;
+  const StringId jank_tag_none_perceivable_id_;
+
   // upid -> set of tokens map. The expected timeline is the same for a given
   // token no matter how many times its seen. We can safely ignore duplicates
   // for the expected timeline slices by caching the set of tokens seen so far

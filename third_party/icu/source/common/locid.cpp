@@ -1971,7 +1971,6 @@ Locale& Locale::init(StringPiece localeID, UBool canonicalize)
         int32_t length;
         UErrorCode err;
 
-
         const auto parse = [canonicalize](std::string_view localeID,
                                           char* name,
                                           int32_t nameCapacity,
@@ -1991,7 +1990,7 @@ Locale& Locale::init(StringPiece localeID, UBool canonicalize)
         // "canonicalize" the locale ID to ICU/Java format
         char* fullName = nest.baseName;
         err = U_ZERO_ERROR;
-length = parse(localeID, fullName, sizeof Nest::baseName, err);
+        length = parse(localeID, fullName, sizeof Nest::baseName, err);
 
         FixedString fullNameBuffer;
         if (err == U_BUFFER_OVERFLOW_ERROR || length >= static_cast<int32_t>(sizeof Nest::baseName)) {
@@ -1999,7 +1998,8 @@ length = parse(localeID, fullName, sizeof Nest::baseName, err);
             if (!fullNameBuffer.reserve(length + 1)) {
                 break; // error: out of memory
             }
-            fullName = fullNameBuffer.getAlias();            err = U_ZERO_ERROR;
+            fullName = fullNameBuffer.getAlias();
+            err = U_ZERO_ERROR;
             length = parse(localeID, fullName, length + 1, err);
         }
         if(U_FAILURE(err) || err == U_STRING_NOT_TERMINATED_WARNING) {
@@ -2037,7 +2037,8 @@ length = parse(localeID, fullName, sizeof Nest::baseName, err);
         }
         bool hasKeywords = at != nullptr && uprv_strchr(at + 1, '=') != nullptr;
 
-if (fieldLen[0] >= ULOC_LANG_CAPACITY)        {
+        if (fieldLen[0] >= ULOC_LANG_CAPACITY)
+        {
             break; // error: the language field is too long
         }
 
@@ -2065,11 +2066,12 @@ if (fieldLen[0] >= ULOC_LANG_CAPACITY)        {
         if (fieldLen[variantField] > 0) {
             /* We have a variant */
             variantBegin = static_cast<int32_t>(field[variantField] - fullName);
-} else if (hasKeywords) {
+        } else if (hasKeywords) {
             // The original computation of variantBegin leaves it equal to the length
             // of fullName if there is no variant.  It should instead be
             // the length of the baseName.
-            variantBegin = static_cast<int32_t>(at - fullName);        }
+            variantBegin = static_cast<int32_t>(at - fullName);
+        }
 
         if (!hasKeywords && Nest::fits(length, language, script, region)) {
             U_ASSERT(fullName == nest.baseName);
@@ -2181,7 +2183,8 @@ Locale::addLikelySubtags(UErrorCode& status) {
         return;
     }
 
-CharString maximizedLocaleID = ulocimp_addLikelySubtags(getName(), status);
+    CharString maximizedLocaleID = ulocimp_addLikelySubtags(getName(), status);
+
     if (U_FAILURE(status)) {
         if (status == U_MEMORY_ALLOCATION_ERROR) {
             setToBogus();
@@ -2205,7 +2208,8 @@ Locale::minimizeSubtags(bool favorScript, UErrorCode& status) {
         return;
     }
 
-CharString minimizedLocaleID = ulocimp_minimizeSubtags(getName(), favorScript, status);
+    CharString minimizedLocaleID = ulocimp_minimizeSubtags(getName(), favorScript, status);
+
     if (U_FAILURE(status)) {
         if (status == U_MEMORY_ALLOCATION_ERROR) {
             setToBogus();
@@ -2296,7 +2300,8 @@ Locale::toLanguageTag(ByteSink& sink, UErrorCode& status) const
         return;
     }
 
-ulocimp_toLanguageTag(getName(), sink, /*strict=*/false, status);}
+    ulocimp_toLanguageTag(getName(), sink, /*strict=*/false, status);
+}
 
 Locale U_EXPORT2
 Locale::createFromName (const char *name)
@@ -2527,8 +2532,10 @@ Locale::getLocaleCache()
 
 class KeywordEnumeration : public StringEnumeration {
 protected:
-CharString keywords;
-private:    const char *current;
+    FixedString keywords;
+private:
+    int32_t length;
+    const char *current;
     static const char fgClassID;
 
 public:
@@ -2536,16 +2543,18 @@ public:
     virtual UClassID getDynamicClassID() const override { return getStaticClassID(); }
 public:
     KeywordEnumeration(const char *keys, int32_t keywordLen, int32_t currentIndex, UErrorCode &status)
-: keywords(), length(keywordLen), current(nullptr) {        if(U_SUCCESS(status) && keywordLen != 0) {
+        : keywords(), length(keywordLen), current(nullptr) {
+        if(U_SUCCESS(status) && keywordLen != 0) {
             if(keys == nullptr || keywordLen < 0) {
                 status = U_ILLEGAL_ARGUMENT_ERROR;
             } else {
-keywords = {keys, static_cast<std::string_view::size_type>(length)};
+                keywords = {keys, static_cast<std::string_view::size_type>(length)};
                 if (keywords.isEmpty()) {
                     status = U_MEMORY_ALLOCATION_ERROR;
                 } else {
                     current = keywords.data() + currentIndex;
-                }            }
+                }
+            }
         }
     }
 
@@ -2555,7 +2564,8 @@ keywords = {keys, static_cast<std::string_view::size_type>(length)};
     {
         UErrorCode status = U_ZERO_ERROR;
         return new KeywordEnumeration(
-keywords.data(), keywords.length(),                static_cast<int32_t>(current - keywords.data()), status);
+                keywords.data(), length,
+                static_cast<int32_t>(current - keywords.data()), status);
     }
 
     virtual int32_t count(UErrorCode& status) const override {
@@ -2717,7 +2727,8 @@ Locale::getKeywordValue(StringPiece keywordName, ByteSink& sink, UErrorCode& sta
         return;
     }
 
-ulocimp_getKeywordValue(getName(), keywordName, sink, status);}
+    ulocimp_getKeywordValue(getName(), keywordName, sink, status);
+}
 
 void
 Locale::getUnicodeKeywordValue(StringPiece keywordName,
@@ -2762,7 +2773,7 @@ Locale::setKeywordValue(StringPiece keywordName,
         status = U_ZERO_ERROR;
     }
 
-CharString localeID(getName(), -1, status);
+    CharString localeID(getName(), -1, status);
     ulocimp_setKeywordValue(keywordName, keywordValue, localeID, status);
     if (U_FAILURE(status)) {
         if (status == U_MEMORY_ALLOCATION_ERROR) {
@@ -2832,7 +2843,8 @@ CharString localeID(getName(), -1, status);
                     return;
                 }
             }
-        }    }
+        }
+    }
 }
 
 void

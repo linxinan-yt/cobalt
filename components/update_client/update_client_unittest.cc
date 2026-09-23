@@ -2312,7 +2312,8 @@ TEST_F(UpdateClientTest, OneCrxInstallError) {
           base::MakeRefCounted<MockInstaller>();
 
 #if !BUILDFLAG(IS_STARBOARD)
-      EXPECT_CALL(*installer, OnUpdateError(_)).Times(0);      EXPECT_CALL(*installer, DoInstall(_));
+      EXPECT_CALL(*installer, OnUpdateError(_)).Times(0);
+      EXPECT_CALL(*installer, DoInstall(_));
       EXPECT_CALL(*installer, GetInstalledFile(_)).Times(0);
       EXPECT_CALL(*installer, Uninstall()).Times(0);
 #endif
@@ -5359,7 +5360,8 @@ base::ToVector(gjpm_hash), GetTestFilePath("runaction_test_win.crx3"),
 #endif
 #if BUILDFLAG(IS_STARBOARD) && defined(IN_MEMORY_UPDATES)
         base::MakeRefCounted<UnzipCobaltFactory>()
-#else        base::MakeRefCounted<UnzipChromiumFactory>(
+#else
+        base::MakeRefCounted<UnzipChromiumFactory>(
             base::BindRepeating(&unzip::LaunchInProcessUnzipper))
 #endif
             ->Create(),

@@ -63,7 +63,8 @@ class DeobfuscationTracker : public Destructible {
   }
 
   void AddDeobfuscationMapping(protozero::ConstBytes blob);
-void OnEventsFullyExtracted();
+  void OnEventsFullyExtracted();
+
  private:
   using JavaFrameMap = base::
       FlatHashMap<NameInPackage, base::FlatSet<FrameId>, NameInPackage::Hasher>;

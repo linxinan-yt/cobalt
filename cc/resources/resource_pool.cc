@@ -14,6 +14,7 @@
 #include <utility>
 
 #include "base/atomic_sequence_num.h"
+#include "base/command_line.h"
 #include "base/feature_list.h"
 #include "base/format_macros.h"
 #include "base/functional/bind.h"
@@ -27,6 +28,7 @@
 #include "build/build_config.h"
 #include "cc/base/container_util.h"
 #include "cc/base/features.h"
+#include "cc/base/switches.h"
 #include "components/viz/client/client_resource_provider.h"
 #include "components/viz/common/gpu/raster_context_provider.h"
 #include "components/viz/common/resources/shared_image_format_utils.h"

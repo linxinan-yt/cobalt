@@ -36,7 +36,8 @@ class TraceProcessorContext;
 enum class TraceSortPolicy {
   kFullSort,
   kConfigDriven,
-  kNone,};
+  kNone,
+};
 
 // The clock domain a trace type's native timestamps are expressed in.
 enum class TraceClockPolicy {

@@ -130,7 +130,7 @@ namespace message2 {
         FormatterFactory* time = StandardFunctions::DateTimeFactory::time(success);
         FormatterFactory* number = new StandardFunctions::NumberFactory();
         FormatterFactory* integer = new StandardFunctions::IntegerFactory();
-standardFunctionsBuilder.adoptFormatter(FunctionName(functions::DATETIME), dateTime, success)
+        standardFunctionsBuilder.adoptFormatter(FunctionName(functions::DATETIME), dateTime, success)
             .adoptFormatter(FunctionName(functions::DATE), date, success)
             .adoptFormatter(FunctionName(functions::TIME), time, success)
             .adoptFormatter(FunctionName(functions::NUMBER), number, success)
@@ -141,7 +141,8 @@ standardFunctionsBuilder.adoptFormatter(FunctionName(functions::DATETIME), dateT
             .adoptSelector(FunctionName(functions::INTEGER), new StandardFunctions::PluralFactory(StandardFunctions::PluralFactory::integer()), success)
             .adoptSelector(FunctionName(functions::STRING), new StandardFunctions::TextFactory(), success)
             .adoptSelector(FunctionName(functions::TEST_FUNCTION), new StandardFunctions::TestSelectFactory(), success)
-            .adoptSelector(FunctionName(functions::TEST_SELECT), new StandardFunctions::TestSelectFactory(), success);        CHECK_ERROR(success);
+            .adoptSelector(FunctionName(functions::TEST_SELECT), new StandardFunctions::TestSelectFactory(), success);
+        CHECK_ERROR(success);
         standardMFFunctionRegistry = standardFunctionsBuilder.build();
         CHECK_ERROR(success);
         standardMFFunctionRegistry.checkStandard();
@@ -169,7 +170,7 @@ standardFunctionsBuilder.adoptFormatter(FunctionName(functions::DATETIME), dateT
             errors = errorsNew.orphan();
         }
 
-nfcNormalizer = Normalizer2::getNFCInstance(success);        // Note: we currently evaluate variables lazily,
+        // Note: we currently evaluate variables lazily,
         // without memoization. This call is still necessary
         // to check out-of-scope uses of local variables in
         // right-hand sides (unresolved variable errors can
@@ -197,7 +198,7 @@ nfcNormalizer = Normalizer2::getNFCInstance(success);        // Note: we current
         signalErrors = other.signalErrors;
         errors = other.errors;
         other.errors = nullptr;
-nfcNormalizer = other.nfcNormalizer;        return *this;
+        return *this;
     }
 
     const MFDataModel& MessageFormatter::getDataModel() const { return dataModel; }

@@ -673,7 +673,8 @@ dnam{"àwọn alẹ́"}
                 other{"{0}kn"}
             }
             light-speed{
-dnam{"ìmọ́lẹ̀"}                other{"{0}ìmọ́lẹ̀"}
+dnam{"ìmọ́lẹ̀"}
+                other{"{0}ìmọ́lẹ̀"}
             }
             meter-per-second{
                 other{"{0}m/s"}
@@ -998,7 +999,8 @@ pressure{
             ofhg{
                 other{"{0} ti Hg"}
             }
-        }        speed{
+        }
+        speed{
             light-speed{
                 dnam{"ìmọ́lẹ̀"}
                 other{"{0} ìmọ́lẹ̀"}

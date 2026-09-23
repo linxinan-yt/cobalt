@@ -25,6 +25,7 @@ export async function getMachineCount(engine: Engine): Promise<number> {
   const res = await engine.query(`select count(*) as cnt from machine`);
   return res.firstRow({cnt: NUM}).cnt;
 }
+
 export function getTrackName(
   args: Partial<{
     name: string | null;
@@ -166,4 +167,5 @@ export function maybeMachineLabel(
   if (machineName !== undefined && machineName !== null && machineName !== '') {
     return ` (${machineName})`;
   }
-  return ` (machine ${labelIndex})`;}
+  return ` (machine ${labelIndex})`;
+}

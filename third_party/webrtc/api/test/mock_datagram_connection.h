@@ -45,13 +45,15 @@ class MockDatagramConnection : public DatagramConnection {
               (override));
   MOCK_METHOD(void,
               SendPackets,
-(std::span<PacketSendParameters> packets),              (override));
+              (std::span<PacketSendParameters> packets),
+              (override));
   MOCK_METHOD(void,
               Terminate,
               (absl::AnyInvocable<void()> terminate_complete_callback),
               (override));
-MOCK_METHOD(absl::string_view, IceUsernameFragment, (), (override));
-  MOCK_METHOD(absl::string_view, IcePassword, (), (override));};
+  MOCK_METHOD(absl::string_view, IceUsernameFragment, (), (override));
+  MOCK_METHOD(absl::string_view, IcePassword, (), (override));
+};
 
 static_assert(!std::is_abstract_v<RefCountedObject<MockDatagramConnection>>,
               "");

@@ -548,7 +548,8 @@ RegisterWebUIControllerInterfaceBinder<::iwa_dev::mojom::PageHandlerFactory,
         multistep_filter_internals::mojom::PageHandlerFactory,
         multistep_filter_internals::MultistepFilterInternalsUI>(map);
   }
-#if !BUILDFLAG(IS_COBALT)  if (base::FeatureList::IsEnabled(
+#if !BUILDFLAG(IS_COBALT)
+  if (base::FeatureList::IsEnabled(
           optimization_guide::features::kOptimizationGuideOnDeviceModel)) {
     RegisterWebUIControllerInterfaceBinder<
         on_device_internals::mojom::PageHandlerFactory,

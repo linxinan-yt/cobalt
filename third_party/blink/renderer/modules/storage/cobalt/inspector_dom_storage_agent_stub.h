@@ -30,7 +30,8 @@ class MODULES_EXPORT InspectorDOMStorageAgent final : public InspectorAgent {
   explicit InspectorDOMStorageAgent(InspectedFrames*) {}
   void Init(CoreProbeSink*,
             protocol::UberDispatcher*,
-            InspectorSessionState*) override {}
+            InspectorSessionState*,
+            V8SessionHolder) override {}
   void Dispose() override {}
 
   void DidDispatchDOMStorageEvent(const String&,

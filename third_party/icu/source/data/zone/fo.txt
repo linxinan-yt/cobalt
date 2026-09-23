@@ -137,7 +137,8 @@ fo{
         }
 "Pacific:Enderbury"{
             ec{"Enderbury"}
-        }        "Pacific:Honolulu"{
+        }
+        "Pacific:Honolulu"{
             ec{"Honolulu"}
         }
         "meta:Afghanistan"{

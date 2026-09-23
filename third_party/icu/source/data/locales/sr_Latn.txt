@@ -546,7 +546,8 @@ morning1{"ujutru"}
                     narrow{
                         afternoon1{"po podne"}
                         evening1{"uveče"}
-                        midnight{"ponoć"}                        morning1{"ujutru"}
+                        midnight{"ponoć"}
+                        morning1{"ujutru"}
                         night1{"noću"}
                         noon{"podne"}
                     }
@@ -1844,7 +1845,8 @@ general{
                 "[₩￦]",
                 "[₹ {Rp} {Rs}₨]",
             }
-        }        number{
+        }
+        number{
             lenient{
                 "[\\-－﹣ ‑ ‒ −⁻₋ ➖]",
                 "[,，﹐︐ ⹁ ، ٫ 、﹑､︑]",

@@ -311,7 +311,8 @@ initFromResourceBundle(UErrorCode& sts) {
                                             fromBuf->getAlias(),
                                             fromBuf->getAlias() + fromView.length(),
                                             ':', '/');
-alias->from = {fromBuf->data(), fromView.length()};                                }
+                                    alias->from = {fromBuf->data(), fromView.length()};
+                                }
                             }
                             uhash_put(typeDataMap, &alias->from, t, &sts);
                         }

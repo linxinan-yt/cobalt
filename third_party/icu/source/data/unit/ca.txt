@@ -407,7 +407,8 @@ ca{
 dnam{"nits"}
                 gender{"feminine"}
                 one{"{0} nit"}
-                other{"{0} nits"}                per{"{0} per nit"}
+                other{"{0} nits"}
+                per{"{0} per nit"}
             }
             quarter{
                 dnam{"trimestres"}

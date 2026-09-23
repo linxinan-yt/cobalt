@@ -574,7 +574,8 @@ void InsertTransferCacheEntry(
 #if BUILDFLAG(IS_COBALT)
   void OnInProcessImageTransferCompleted(
       scoped_refptr<ImageData> image_data);
-#endif  // BUILDFLAG(IS_COBALT)  bool NeedsDarkModeFilter(const DrawImage& draw_image, ImageData* image_data);
+#endif  // BUILDFLAG(IS_COBALT)
+  bool NeedsDarkModeFilter(const DrawImage& draw_image, ImageData* image_data);
   void DecodeImageAndGenerateDarkModeFilterIfNecessary(
       const DrawImage& draw_image,
       ImageData* image_data,
@@ -750,7 +751,8 @@ void InsertTransferCacheEntry(
   // threads to safely copy and pass it to in-process image transfer completion
   // callbacks.
   base::WeakPtr<GpuImageDecodeCache> weak_ptr_;
-#endif  // BUILDFLAG(IS_COBALT)  base::WeakPtrFactory<GpuImageDecodeCache> weak_ptr_factory_{this};
+#endif  // BUILDFLAG(IS_COBALT)
+  base::WeakPtrFactory<GpuImageDecodeCache> weak_ptr_factory_{this};
 };
 
 }  // namespace cc

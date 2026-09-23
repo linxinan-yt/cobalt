@@ -48,7 +48,8 @@ class RTC_EXPORT DatagramConnection : public RefCountInterface {
     struct PacketMetadata {
       Timestamp receive_time;
     };
-virtual void OnPacketReceived(std::span<const uint8_t> data,                                  PacketMetadata metadata) = 0;
+    virtual void OnPacketReceived(std::span<const uint8_t> data,
+                                  PacketMetadata metadata) = 0;
 
     // Notification of outcome of an earlier call to SendPacket.
     struct SendOutcome {
@@ -95,12 +96,14 @@ virtual void OnPacketReceived(std::span<const uint8_t> data,                    
     // performed, the caller is responsible for ensuring uniqueness and handing
     // rollovers.
     PacketId id = 0;
-std::span<const uint8_t> payload;  };
+    std::span<const uint8_t> payload;
+  };
 
   // Send a batch of packets on this connection. Listen to
   // Observer::OnSendOutcome for notification of whether each was sent
   // successfully.
-virtual void SendPackets(std::span<PacketSendParameters> packets) = 0;
+  virtual void SendPackets(std::span<PacketSendParameters> packets) = 0;
+
   // Initiate closing connection and releasing resources. Must be called before
   // destruction.
   virtual void Terminate(

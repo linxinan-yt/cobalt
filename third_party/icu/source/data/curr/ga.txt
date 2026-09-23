@@ -1130,7 +1130,8 @@ ga{
 ZWG{
             "ZWG",
             "ór na Siombáibe",
-        }        ZWL{
+        }
+        ZWL{
             "ZWL",
             "Dollar na Siombáibe (2009)",
         }

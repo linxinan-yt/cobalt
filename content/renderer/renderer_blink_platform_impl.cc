@@ -573,7 +573,12 @@ std::unique_ptr<WebAudioDevice> RendererBlinkPlatformImpl::CreateAudioDevice(
 std::unique_ptr<blink::WebAudioBus>
 RendererBlinkPlatformImpl::DecodeAudioFileData(
     base::span<const char> audio_file_data) {
-return content::DecodeAudioFileData(audio_file_data);}
+#if BUILDFLAG(IS_COBALT)
+  return cobalt::DecodeAudioFileData(audio_file_data);
+#else
+  return content::DecodeAudioFileData(audio_file_data);
+#endif
+}
 
 //------------------------------------------------------------------------------
 

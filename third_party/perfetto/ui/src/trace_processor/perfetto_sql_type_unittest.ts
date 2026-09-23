@@ -34,10 +34,11 @@ test('PerfettoSqlType.ParseSimpleTypes', () => {
 
   for (const [rawInput, expectedKind] of Object.entries(TEST_CASES)) {
     for (const input of [rawInput, rawInput.toUpperCase()]) {
-// Simple types don't need table/column parameters
+      // Simple types don't need table/column parameters
       expect(
         parsePerfettoSqlTypeFromString({
-          type: input,        }),
+          type: input,
+        }),
       ).toEqual(okResult({kind: expectedKind}));
     }
   }
@@ -138,14 +139,16 @@ test('PerfettoSqlType.ParseUnknownTypes', () => {
   );
 
   expect(parse('')).toEqual(errResult('Unknown type: '));
-// Plain 'id' requires table and column context
+
+  // Plain 'id' requires table and column context
   expect(
     parsePerfettoSqlTypeFromString({
       type: 'id',
     }),
   ).toEqual(
     errResult(`Cannot parse plain 'id' type without table and column context`),
-  );});
+  );
+});
 
 test('PerfettoSqlType.ToString', () => {
   expect(perfettoSqlTypeToString({kind: 'int'})).toBe('INT');

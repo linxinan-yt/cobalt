@@ -43,7 +43,8 @@ class PrunePerfEvents : public TransformPrimitive {
  private:
   base::Status OnPerfSample(const Context& context,
                             uint64_t ts,
-std::optional<int64_t> trace_packet_clock_id,                            std::optional<int64_t> trusted_packet_sequence_id,
+                            std::optional<uint32_t> trace_packet_clock_id,
+                            std::optional<int64_t> trusted_packet_sequence_id,
                             protozero::Field& field,
                             protos::pbzero::TracePacket* message) const;
 

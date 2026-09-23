@@ -17,7 +17,8 @@ import {getTimeSpanOfSelectionOrVisibleWindow} from '../../public/utils';
 import {uuidv4} from '../../base/uuid';
 import {LONG, LONG_NULL, STR} from '../../trace_processor/query_result';
 import type {PerfettoPlugin} from '../../public/plugin';
-import type {Trace} from '../../public/trace';import {SliceTrack} from '../../components/tracks/slice_track';
+import type {Trace} from '../../public/trace';
+import {SliceTrack} from '../../components/tracks/slice_track';
 import {SourceDataset} from '../../trace_processor/dataset';
 import {TrackNode} from '../../public/workspace';
 import StandardGroupsPlugin from '../dev.perfetto.StandardGroups';
@@ -49,7 +50,7 @@ export default class AndroidInputEvents implements PerfettoPlugin {
       return;
     }
 
-await ctx.engine.query('INCLUDE PERFETTO MODULE android.input;');    const uri = 'com.android.InputEvents#InputEventsTrack';
+    const uri = 'com.android.InputEvents#InputEventsTrack';
     const track = await SliceTrack.createMaterialized({
       trace: ctx,
       uri,
@@ -60,7 +61,8 @@ await ctx.engine.query('INCLUDE PERFETTO MODULE android.input;');    const uri =
             end_to_end_latency_dur AS dur,
             CONCAT(event_type, ' ', event_action, ': ', process_name, ' (', input_event_id, ')') as name
           FROM android_input_events
-WHERE end_to_end_latency_dur IS NOT NULL        `,
+          WHERE end_to_end_latency_dur > 0
+        `,
         schema: {
           ts: LONG,
           dur: LONG_NULL,

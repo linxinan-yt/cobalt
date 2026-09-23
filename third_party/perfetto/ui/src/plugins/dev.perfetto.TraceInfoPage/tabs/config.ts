@@ -32,11 +32,12 @@ export interface ConfigEntry {
 }
 
 export interface ConfigData {
-  readonly configs: ReadonlyArray<ConfigEntry>;}
+  readonly configs: ReadonlyArray<ConfigEntry>;
+}
 
 export async function loadConfigData(engine: Engine): Promise<ConfigData> {
   const configResult = await engine.query(`
-INCLUDE PERFETTO MODULE std.traceinfo.trace;
+    INCLUDE PERFETTO MODULE std.traceinfo.trace;
     SELECT
       trace_id as traceId,
       extract_metadata_for_trace(trace_id, 'trace_config_pbtxt') as configText,
@@ -64,7 +65,8 @@ INCLUDE PERFETTO MODULE std.traceinfo.trace;
     });
   }
 
-  return {configs};}
+  return {configs};
+}
 
 export interface ConfigTabAttrs {
   data: ConfigData;
@@ -72,7 +74,7 @@ export interface ConfigTabAttrs {
 
 export class ConfigTab implements m.ClassComponent<ConfigTabAttrs> {
   view({attrs}: m.CVnode<ConfigTabAttrs>) {
-const configs = attrs.data.configs;
+    const configs = attrs.data.configs;
     if (configs.length === 0) {
       return m(
         '.pf-trace-info-page__tab-content',
@@ -120,6 +122,7 @@ const configs = attrs.data.configs;
                 : 'config.txtpb',
           }),
         );
-      }),    );
+      }),
+    );
   }
 }

@@ -36,7 +36,9 @@
 include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
 
 #[cfg(not(feature = "bindgen"))]
-include!("bindings.rs");#[cfg(test)]
+include!("bindings.rs");
+
+#[cfg(test)]
 mod tests {
     use super::*;
     use std::sync::Once;

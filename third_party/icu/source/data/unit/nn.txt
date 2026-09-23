@@ -717,7 +717,8 @@ nn{
             millimole-per-liter{
                 dnam{"mmol/l"}
             }
-part-per-1e9{                dnam{"delar/milliard"}
+part-per-1e9{
+                dnam{"delar/milliard"}
             }
         }
         consumption{

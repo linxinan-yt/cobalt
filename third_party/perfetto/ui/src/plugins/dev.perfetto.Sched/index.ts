@@ -62,6 +62,7 @@ import type {App} from '../../public/app';
 import type {Flag} from '../../public/feature_flag';
 import type {Setting} from '../../public/settings';
 import {z} from 'zod';
+
 function uriForThreadStateTrack(upid: number | null, utid: number): string {
   return `${getThreadUriPrefix(upid, utid)}_state`;
 }
@@ -79,14 +80,15 @@ export default class SchedPlugin implements PerfettoPlugin {
   static readonly id = 'dev.perfetto.Sched';
   static readonly dependencies = [ProcessThreadGroupsPlugin, ThreadPlugin];
   static threadStateByCpuFlag: Flag;
-static taskColorModeSetting: Setting<'process' | 'priority'>;
+  static taskColorModeSetting: Setting<'process' | 'priority'>;
+
   static onActivate(app: App) {
     SchedPlugin.threadStateByCpuFlag = app.featureFlags.register({
       id: 'threadStateByCpu',
       name: 'Thread State by CPU Aggregation',
       description:
         'Add a new area selection aggregation tab showing thread states broken down by CPU.',
-defaultValue: true,
+      defaultValue: true,
     });
 
     SchedPlugin.taskColorModeSetting = app.settings.register({
@@ -106,7 +108,8 @@ defaultValue: true,
         const current = SchedPlugin.taskColorModeSetting.get();
         const next = current === 'process' ? 'priority' : 'process';
         SchedPlugin.taskColorModeSetting.set(next);
-      },    });
+      },
+    });
   }
 
   private _schedCpus: Cpu[] = [];
@@ -116,8 +119,9 @@ defaultValue: true,
   }
 
   async onTraceLoad(ctx: Trace): Promise<void> {
-const numMachines = await getMachineCount(ctx.engine);
-    const cpus = await getSchedCpus(ctx, numMachines);    this._schedCpus = cpus;
+    const numMachines = await getMachineCount(ctx.engine);
+    const cpus = await getSchedCpus(ctx, numMachines);
+    this._schedCpus = cpus;
 
     const hasSched = await this.hasSched(ctx.engine);
     if (!hasSched) {
@@ -241,7 +245,8 @@ const numMachines = await getMachineCount(ctx.engine);
           kinds: [CPU_SLICE_TRACK_KIND],
           cpu: cpu.ucpu,
         },
-renderer: createCpuSliceTrack(ctx, uri, table.name, cpu.ucpu, threads),      });
+        renderer: createCpuSliceTrack(ctx, uri, table.name, cpu.ucpu, threads),
+      });
       group.addChildInOrder(new TrackNode({name, uri}));
     }
     if (group.children.length > 0) {
@@ -565,12 +570,13 @@ async function getSchedCpus(ctx: Trace, numMachines: number): Promise<Cpu[]> {
       machine.label_index AS machine_label_index
     FROM sched
     JOIN cpu USING (ucpu)
-    LEFT JOIN machine ON machine.id = cpu.machine_id    ORDER BY ucpu
+    LEFT JOIN machine ON machine.id = cpu.machine_id
+    ORDER BY ucpu
   `);
 
   const ucpus: Cpu[] = [];
   for (
-const it = queryRes.iter({
+    const it = queryRes.iter({
       ucpu: NUM,
       machine_id: NUM,
       cpu: NUM,
@@ -589,7 +595,8 @@ const it = queryRes.iter({
         it.machine_label_index ?? undefined,
         numMachines,
       ),
-    );  }
+    );
+  }
 
   return ucpus;
 }

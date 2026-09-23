@@ -30,6 +30,7 @@ export let COLOR_TEXT_MUTED = 'hotpink';
 export let COLOR_NEUTRAL = 'hotpink';
 export let COLOR_HIGHLIGHT = 'hotpink';
 export let COLOR_TIMELINE_OVERLAY = 'hotpink';
+
 export function setTrackShellWidth(width: number) {
   TRACK_SHELL_WIDTH = Math.round(width);
   document.body.style.setProperty(
@@ -37,6 +38,7 @@ export function setTrackShellWidth(width: number) {
     `${TRACK_SHELL_WIDTH}px`,
   );
 }
+
 export function initCssConstants(element?: Element) {
   function getCssStr(prop: string): string | undefined {
     if (typeof window === 'undefined') return undefined;

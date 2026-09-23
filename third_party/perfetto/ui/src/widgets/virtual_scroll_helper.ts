@@ -14,6 +14,7 @@
 
 import {DisposableStack} from '../base/disposable_stack';
 import {type Bounds2D, Rect2D, Vector2D} from '../base/geom';
+
 export interface VirtualScrollHelperZoneConfig {
   overdrawPx: number;
 

@@ -21,7 +21,8 @@ import {LONG, NUM, NUM_NULL, STR} from '../../trace_processor/query_result';
 import {
   escapeQuery,
   escapeSearchQuery,
-  escapeRegexQuery,} from '../../trace_processor/query_utils';
+  escapeRegexQuery,
+} from '../../trace_processor/query_utils';
 import {Select} from '../../widgets/select';
 import {
   type MultiSelectDiff,
@@ -33,8 +34,9 @@ import {Button} from '../../widgets/button';
 import {TextInput} from '../../widgets/text_input';
 import {
   Grid,
-type GridColumn,
-  type GridRow,  GridHeaderCell,
+  type GridColumn,
+  type GridRow,
+  GridHeaderCell,
   GridCell,
 } from '../../widgets/grid';
 import {classNames} from '../../base/classnames';
@@ -50,7 +52,8 @@ const ROW_H = 24;
 export interface LogFilteringCriteria {
   readonly minimumLevel: number;
   readonly tags: string[];
-readonly isTagRegex?: boolean;  readonly textEntry: string;
+  readonly isTagRegex?: boolean;
+  readonly textEntry: string;
   readonly hideNonMatching: boolean;
   readonly machineExcludeList: number[];
 }
@@ -72,7 +75,8 @@ interface Pagination {
 
 interface LogEntries {
   readonly offset: number;
-readonly ids: number[];  readonly machineIds: number[];
+  readonly ids: number[];
+  readonly machineIds: number[];
   readonly timestamps: time[];
   readonly pids: bigint[];
   readonly tids: bigint[];
@@ -86,9 +90,10 @@ readonly ids: number[];  readonly machineIds: number[];
 
 export class LogPanel implements m.ClassComponent<LogPanelAttrs> {
   private readonly trace: Trace;
-private readonly executor = new AtomicTaskQueue();
+  private readonly executor = new AtomicTaskQueue();
   private readonly viewQuery = new AsyncMemo<AsyncDisposable>(this.executor);
-  private readonly entriesQuery = new AsyncMemo<LogEntries>(this.executor);  private pagination: Pagination = {
+  private readonly entriesQuery = new AsyncMemo<LogEntries>(this.executor);
+  private pagination: Pagination = {
     offset: 0,
     count: 0,
   };
@@ -103,10 +108,11 @@ private readonly executor = new AtomicTaskQueue();
   }
 
   view({attrs}: m.CVnode<LogPanelAttrs>) {
-const visibleSpan = attrs.trace.timeline.visibleWindow.toTimeSpan();
+    const visibleSpan = attrs.trace.timeline.visibleWindow.toTimeSpan();
     const filters = attrs.filterStore.state;
     const pagination = this.pagination;
     const engine = attrs.trace.engine;
+
     // Query 1: Create the filtered_logs table (no staleOn = always-fresh)
     const viewResult = this.viewQuery.use({
       key: {filters},
@@ -128,26 +134,6 @@ const visibleSpan = attrs.trace.timeline.visibleWindow.toTimeSpan();
     const entries = entriesResult.data;
     const totalEvents = entries?.totalEvents ?? 0;
 
-    const columns: GridColumn[] = [
-      ...(hasMachineIds
-        ? [{key: 'machine', header: m(GridHeaderCell, 'Machine')}]
-        : []),
-      {key: 'timestamp', header: m(GridHeaderCell, 'Timestamp')},
-      {key: 'pid', header: m(GridHeaderCell, 'PID')},
-      {key: 'tid', header: m(GridHeaderCell, 'TID')},
-      {key: 'level', header: m(GridHeaderCell, 'Level')},
-      ...(hasProcessNames
-        ? [{key: 'process', header: m(GridHeaderCell, 'Process')}]
-        : []),
-      {key: 'tag', header: m(GridHeaderCell, 'Tag')},
-      {
-        key: 'message',
-        // Allow the initial width of the message column to expand as needed.
-        maxInitialWidthPx: Infinity,
-        header: m(GridHeaderCell, 'Message'),
-      },
-    ];
-
     return m(
       DetailsShell,
       {
@@ -159,7 +145,7 @@ const visibleSpan = attrs.trace.timeline.visibleWindow.toTimeSpan();
           store: attrs.filterStore,
         }),
       },
-this.renderGrid(attrs.trace, entries, attrs.cache),
+      this.renderGrid(attrs.trace, entries, attrs.cache),
     );
   }
 
@@ -223,7 +209,8 @@ this.renderGrid(attrs.trace, entries, attrs.cache),
       });
     } else {
       return null;
-    }  }
+    }
+  }
 
   private renderRows(
     entries: LogEntries,
@@ -242,12 +229,14 @@ this.renderGrid(attrs.trace, entries, attrs.cache),
     const processNames = entries.processName;
 
     const rows: GridRow[] = [];
-for (let i = 0; i < entries.timestamps.length; i++) {      const priority = priorities[i];
+    for (let i = 0; i < entries.timestamps.length; i++) {
+      const priority = priorities[i];
       const priorityLetter = LOG_PRIORITIES[priority][0];
       const ts = timestamps[i];
       const eventId = ids[i];
       const priorityClass = `pf-logs-panel__row--${classForPriority(priority)}`;
-const isHighlighted = entries.isHighlighted[i];      const className = classNames(
+      const isHighlighted = entries.isHighlighted[i];
+      const className = classNames(
         priorityClass,
         isHighlighted && 'pf-logs-panel__row--highlighted',
       );
@@ -255,7 +244,7 @@ const isHighlighted = entries.isHighlighted[i];      const className = className
       const row = [
         hasMachineIds &&
           m(GridCell, {className, align: 'right'}, machineIds[i]),
-m(
+        m(
           GridCell,
           {
             className,
@@ -271,7 +260,8 @@ m(
             }),
           },
           m(Timestamp, {trace, ts}),
-        ),        m(GridCell, {className, align: 'right'}, String(pids[i])),
+        ),
+        m(GridCell, {className, align: 'right'}, String(pids[i])),
         m(GridCell, {className, align: 'right'}, String(tids[i])),
         m(GridCell, {className}, priorityLetter || '?'),
         hasProcessNames && m(GridCell, {className}, processNames[i]),
@@ -374,7 +364,8 @@ interface FilterByTextWidgetAttrs {
 
 class FilterByTextWidget implements m.ClassComponent<FilterByTextWidgetAttrs> {
   view({attrs}: m.Vnode<FilterByTextWidgetAttrs>) {
-const icon = attrs.hideNonMatching ? Icons.Filter : Icons.FilterOff;    const tooltip = attrs.hideNonMatching
+    const icon = attrs.hideNonMatching ? Icons.Filter : Icons.FilterOff;
+    const tooltip = attrs.hideNonMatching
       ? 'Show all logs and highlight matches'
       : 'Show only matching logs';
     return m(Button, {
@@ -468,7 +459,8 @@ export class LogsFilters implements m.ClassComponent<LogsFiltersAttrs> {
 
     return m(PopupMultiSelect, {
       label: 'Filter by machine',
-icon: Icons.Filter,      position: PopupPosition.Top,
+      icon: Icons.Filter,
+      position: PopupPosition.Top,
       options,
       onChange: (diffs: MultiSelectDiff[]) => {
         const newList = new Set<number>(machineExcludeList);

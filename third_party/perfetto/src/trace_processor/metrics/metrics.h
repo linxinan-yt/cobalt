@@ -174,7 +174,8 @@ struct BuildProto : public sqlite::Function<BuildProto> {
 // Implements the RUN_METRIC SQL function.
 struct RunMetric : public sqlite::Function<RunMetric> {
   struct UserData {
-PerfettoSqlEngine* engine;    std::vector<SqlMetricFile>* metrics;
+    PerfettoSqlConnection* connection;
+    std::vector<SqlMetricFile>* metrics;
   };
 
   static constexpr char kName[] = "run_metric";

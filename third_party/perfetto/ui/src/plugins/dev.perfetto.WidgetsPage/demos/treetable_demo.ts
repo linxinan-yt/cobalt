@@ -16,7 +16,8 @@ import m from 'mithril';
 import {
   TreeTable,
   type TreeTableAttrs,
-} from '../../../components/widgets/treetable';import {renderWidgetShowcase} from '../widgets_page_utils';
+} from '../../../components/widgets/treetable';
+import {renderWidgetShowcase} from '../widgets_page_utils';
 
 interface File {
   name: string;

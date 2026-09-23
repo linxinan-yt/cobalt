@@ -23,7 +23,8 @@ katal{
                 dnam{"partes por millón"}
                 one{"{0} parte por millón"}
                 other{"{0} partes por millón"}
-            }            percent{
+            }
+            percent{
                 dnam{"por ciento"}
             }
             permille{
@@ -250,7 +251,8 @@ force{
                 one{"{0} kp"}
                 other{"{0} kp"}
             }
-        }        length{
+        }
+        length{
             fathom{
                 dnam{"braza"}
             }

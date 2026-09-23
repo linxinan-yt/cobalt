@@ -33,7 +33,8 @@ am{
                         other{"{0} ራዲያኖች"}
                     }
                 }
-dnam{"ራዲ"}                one{"{0} ራዲ"}
+dnam{"ራዲ"}
+                one{"{0} ራዲ"}
                 other{"{0} ራዲ"}
             }
             revolution{
@@ -43,7 +44,8 @@ dnam{"ራዲ"}                one{"{0} ራዲ"}
                         other{"{0} ኡደቶች"}
                     }
                 }
-dnam{"ኡደት"}                one{"{0} ኡደት"}
+dnam{"ኡደት"}
+                one{"{0} ኡደት"}
                 other{"{0} ኡደት"}
             }
         }
@@ -348,7 +350,8 @@ dnam{"አምፒር"}
                         other{"{0} ቮልቶች"}
                     }
                 }
-dnam{"ቮልት"}                one{"{0} ቮልት"}
+dnam{"ቮልት"}
+                one{"{0} ቮልት"}
                 other{"{0} ቮልት"}
             }
         }
@@ -465,7 +468,8 @@ frequency{
                 one{"{0} ሜጋኸርዝ"}
                 other{"{0} ሜጋኸርዝ"}
             }
-        }        graphics{
+        }
+        graphics{
             em{
                 dnam{"ታይፖግራፊክ em"}
             }
@@ -607,7 +611,8 @@ dalton{
                 dnam{"ዳልተንስ"}
                 one{"{0} ዳልተንስ"}
                 other{"{0} ዳልተንስ"}
-            }            earth-mass{
+            }
+            earth-mass{
                 one{"{0} ኤርዝማስስ"}
                 other{"{0} ኤርዝማስስ"}
             }
@@ -810,7 +815,8 @@ case{
                         other{"{0} ኬልቪኖች"}
                     }
                 }
-dnam{"ኬ"}                one{"{0} ኬ"}
+dnam{"ኬ"}
+                one{"{0} ኬ"}
                 other{"{0} ኬ"}
             }
         }
@@ -906,7 +912,8 @@ megaliter{
                 dnam{"ሜጋሊትር"}
                 one{"{0} ሜሊ"}
                 other{"{0} ሜሊ"}
-            }            pint-metric{
+            }
+            pint-metric{
                 case{
                     accusative{
                         one{"{0} ሜትሪክ ፒንት"}
@@ -1196,7 +1203,8 @@ cubic-yard{
                 dnam{"ኩባያ"}
                 one{"{0} ኩባያ"}
                 other{"{0} ኩባያ"}
-            }            dram{
+            }
+            dram{
                 one{"{0} ክመ"}
                 other{"{0} ክመ"}
             }
@@ -1570,7 +1578,8 @@ henry{
                 dnam{"ሄ"}
                 one{"{0} ሄ"}
                 other{"{0} ሄ"}
-            }            volt{
+            }
+            volt{
                 dnam{"ቮልት"}
                 one{"{0} ቮልት"}
                 other{"{0} ቮልት"}

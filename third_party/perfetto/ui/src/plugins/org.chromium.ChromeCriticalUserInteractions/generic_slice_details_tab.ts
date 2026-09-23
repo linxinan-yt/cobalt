@@ -22,6 +22,7 @@ import {Section} from '../../widgets/section';
 import {SqlRef} from '../../widgets/sql_ref';
 import {Tree, TreeNode} from '../../widgets/tree';
 import type {Trace} from '../../public/trace';
+
 export interface ColumnConfig {
   readonly displayName?: string;
 }

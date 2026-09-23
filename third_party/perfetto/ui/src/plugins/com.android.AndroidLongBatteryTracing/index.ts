@@ -14,15 +14,18 @@
 
 import type {Trace} from '../../public/trace';
 import StandardGroupsPlugin from '../dev.perfetto.StandardGroups';
-import type {PerfettoPlugin} from '../../public/plugin';import {
+import type {PerfettoPlugin} from '../../public/plugin';
+import {
   STR,
   LONG,
   UNKNOWN,
-type SqlValue,  LONG_NULL,
+  type SqlValue,
+  LONG_NULL,
 } from '../../trace_processor/query_result';
 import {SourceDataset} from '../../trace_processor/dataset';
 import SupportPlugin from '../com.android.AndroidLongBatterySupport';
 import {TrackNode} from '../../public/workspace';
+
 const PACKAGE_LOOKUP = `
   create or replace perfetto table package_name_lookup as
   with installed as (

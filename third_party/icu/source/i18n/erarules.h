@@ -14,7 +14,8 @@
 
 U_NAMESPACE_BEGIN
 
-class U_I18N_API_CLASS EraRules : public UMemory {public:
+class U_I18N_API_CLASS EraRules : public UMemory {
+public:
     U_I18N_API ~EraRules();
 
     U_I18N_API static EraRules* createInstance(const char* calType,

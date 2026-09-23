@@ -20,11 +20,14 @@
 -- events and slices including ftrace events, graphics frames, GPU events,
 -- and frame timeline information.
 
-INCLUDE PERFETTO MODULE prelude.after_eof.views;-- Contains all the ftrace events in the trace. This table exists only for
+INCLUDE PERFETTO MODULE prelude.after_eof.views;
+
+-- Contains all the ftrace events in the trace. This table exists only for
 -- debugging purposes and should not be relied on in production usecases (i.e.
 -- metrics, standard library etc). Note also that this table might be empty if
 -- raw ftrace parsing has been disabled.
-CREATE PERFETTO VIEW ftrace_event(  -- Unique identifier for this ftrace event.
+CREATE PERFETTO VIEW ftrace_event(
+  -- Unique identifier for this ftrace event.
   id ID,
   -- The timestamp of this event.
   ts TIMESTAMP,
@@ -43,20 +46,15 @@ CREATE PERFETTO VIEW ftrace_event(  -- Unique identifier for this ftrace event.
   common_flags LONG,
   -- The unique CPU identifier that this event was emitted on.
   ucpu LONG
-) AS
-SELECT
-  id,
-  ts,
-  name,
-  ucpu AS cpu,
-  utid,
-  arg_set_id,
-  common_flags,
-  ucpuFROM __intrinsic_ftrace_event;
+)
+AS
+SELECT id, ts, name, ucpu AS cpu, utid, arg_set_id, common_flags, ucpu
+FROM __intrinsic_ftrace_event;
 
 -- This table is deprecated. Use `ftrace_event` instead which contains the same
 -- rows; this table is simply a (badly named) alias.
-CREATE PERFETTO VIEW raw (  -- Unique identifier for this raw event.
+CREATE PERFETTO VIEW raw(
+  -- Unique identifier for this raw event.
   id ID,
   -- The timestamp of this event.
   ts TIMESTAMP,
@@ -76,13 +74,13 @@ CREATE PERFETTO VIEW raw (  -- Unique identifier for this raw event.
   common_flags LONG,
   -- The unique CPU identifier that this event was emitted on.
   ucpu LONG
-) AS
-SELECT
-  *
-FROM ftrace_event;
+)
+AS
+SELECT * FROM ftrace_event;
 
 -- Table containing graphics frame events on Android.
-CREATE PERFETTO VIEW frame_slice (  -- Alias of `slice.id`.
+CREATE PERFETTO VIEW frame_slice(
+  -- Alias of `slice.id`.
   id ID(slice.id),
   -- Alias of `slice.ts`.
   ts TIMESTAMP,
@@ -110,7 +108,9 @@ CREATE PERFETTO VIEW frame_slice (  -- Alias of `slice.id`.
   acquire_to_latch_time LONG,
   -- The time between latch and present for this buffer and layer.
   latch_to_present_time LONG
-) ASSELECT
+)
+AS
+SELECT
   s.id,
   s.ts,
   s.dur,
@@ -132,7 +132,8 @@ WHERE
   t.type = 'graphics_frame_event';
 
 -- Table containing graphics frame events on Android.
-CREATE PERFETTO VIEW gpu_slice (  -- Alias of `slice.id`.
+CREATE PERFETTO VIEW gpu_slice(
+  -- Alias of `slice.id`.
   id ID(slice.id),
   -- Alias of `slice.ts`.
   ts TIMESTAMP,
@@ -173,11 +174,12 @@ CREATE PERFETTO VIEW gpu_slice (  -- Alias of `slice.id`.
   -- The id of the process.
   upid JOINID(process.id),
   -- Render subpasses.
-render_subpasses STRING,
+  render_subpasses STRING,
   -- Render stage category (0=OTHER, 1=GRAPHICS, 2=COMPUTE).
   render_stage_category LONG
 )
-ASSELECT
+AS
+SELECT
   s.id,
   s.ts,
   s.dur,
@@ -198,8 +200,9 @@ ASSELECT
   extract_arg(s.arg_set_id, 'submission_id') AS submission_id,
   extract_arg(s.arg_set_id, 'hw_queue_id') AS hw_queue_id,
   extract_arg(s.arg_set_id, 'upid') AS upid,
-extract_arg(s.arg_set_id, 'render_subpasses') AS render_subpasses,
-  extract_arg(s.arg_set_id, 'render_stage_category') AS render_stage_categoryFROM slice AS s
+  extract_arg(s.arg_set_id, 'render_subpasses') AS render_subpasses,
+  extract_arg(s.arg_set_id, 'render_stage_category') AS render_stage_category
+FROM slice AS s
 JOIN track AS t
   ON s.track_id = t.id
 WHERE
@@ -207,7 +210,8 @@ WHERE
 
 -- This table contains information on the expected timeline of either a display
 -- frame or a surface frame.
-CREATE PERFETTO TABLE expected_frame_timeline_slice(  -- Alias of `slice.id`.
+CREATE PERFETTO TABLE expected_frame_timeline_slice(
+  -- Alias of `slice.id`.
   id ID(slice.id),
   -- Alias of `slice.ts`.
   ts TIMESTAMP,
@@ -233,7 +237,9 @@ CREATE PERFETTO TABLE expected_frame_timeline_slice(  -- Alias of `slice.id`.
   upid JOINID(process.id),
   -- Layer name if this is a surface frame.
   layer_name STRING
-) ASSELECT
+)
+AS
+SELECT
   s.id,
   s.ts,
   s.dur,
@@ -258,7 +264,8 @@ ORDER BY
 -- This table contains information on the actual timeline and additional
 -- analysis related to the performance of either a display frame or a surface
 -- frame.
-CREATE PERFETTO TABLE actual_frame_timeline_slice (  -- Alias of `slice.id`.
+CREATE PERFETTO TABLE actual_frame_timeline_slice(
+  -- Alias of `slice.id`.
   id ID(slice.id),
   -- Alias of `slice.ts`.
   ts TIMESTAMP,
@@ -300,7 +307,7 @@ CREATE PERFETTO TABLE actual_frame_timeline_slice (  -- Alias of `slice.id`.
   -- Jank tag based on jank type, used for slice visualization.
   jank_tag STRING,
   -- Jank tag (experimental) based on jank type, used for slice visualization.
-jank_tag_experimental STRING,
+  jank_tag_experimental STRING,
   -- Jank severity score.
   jank_score DOUBLE,
   -- The number of surfaceframes that were latched unsignaled and displayed
@@ -313,7 +320,8 @@ jank_tag_experimental STRING,
   -- attempt.
   latched_fence_state STRING
 )
-ASSELECT
+AS
+SELECT
   s.id,
   s.ts,
   s.dur,
@@ -334,11 +342,12 @@ ASSELECT
   extract_arg(s.arg_set_id, 'Jank severity type') AS jank_severity_type,
   extract_arg(s.arg_set_id, 'Prediction type') AS prediction_type,
   extract_arg(s.arg_set_id, 'Jank tag') AS jank_tag,
-extract_arg(s.arg_set_id, 'Jank tag (experimental)') AS jank_tag_experimental,
+  extract_arg(s.arg_set_id, 'Jank tag (experimental)') AS jank_tag_experimental,
   extract_arg(s.arg_set_id, 'Jank Severity Score') AS jank_score,
   extract_arg(s.arg_set_id, 'Latched unsignaled count') AS latched_unsignaled_count,
   extract_arg(s.arg_set_id, 'Addressable unsignaled latch count') AS addressable_unsignaled_latch_count,
-  extract_arg(s.arg_set_id, 'Latched fence state') AS latched_fence_stateFROM slice AS s
+  extract_arg(s.arg_set_id, 'Latched fence state') AS latched_fence_state
+FROM slice AS s
 JOIN process_track AS t
   ON s.track_id = t.id
 WHERE

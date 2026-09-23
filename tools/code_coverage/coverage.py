@@ -950,7 +950,8 @@ def _GetBinaryPathForWebTests():
 
 
 @telemetry_utils.tracer.start_as_current_span(
-    'coverage.py._GenerateCoverageReport')def _GenerateCoverageReport(args, binary_paths, profdata_file_path,
+    'coverage.py._GenerateCoverageReport')
+def _GenerateCoverageReport(args, binary_paths, profdata_file_path,
                             absolute_filter_paths):
   """Generate the coverage report in the supported format."""
   assert args.format in [

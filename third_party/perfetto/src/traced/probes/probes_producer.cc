@@ -76,7 +76,9 @@ constexpr uint32_t kFlushTimeoutMs = 1000;
 // tight on short traces and trip the watchdog even though the producer can
 // recover. 5 minutes gives enough slack while still killing genuinely stuck
 // producers.
-constexpr uint32_t kMinTraceDidntStopTimeoutMs = 5 * 60 * 1000;constexpr size_t kTracingSharedMemSizeHintBytes = 2 * 1024 * 1024;
+constexpr uint32_t kMinTraceDidntStopTimeoutMs = 5 * 60 * 1000;
+
+constexpr size_t kTracingSharedMemSizeHintBytes = 2 * 1024 * 1024;
 constexpr size_t kTracingSharedMemPageSizeHintBytes = 32 * 1024;
 
 base::CrashKey g_crash_key_ds_count("ds_instance_count");

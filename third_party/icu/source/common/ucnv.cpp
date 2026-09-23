@@ -1752,8 +1752,9 @@ ucnv_fromUChars(UConverter *cnv,
         destLimit=dest+destCapacity;
 
         /* perform the conversion */
-UErrorCode bufferStatus = U_ZERO_ERROR;
-        ucnv_fromUnicode(cnv, &dest, destLimit, &src, srcLimit, nullptr, true, &bufferStatus);        destLength=(int32_t)(dest-originalDest);
+        UErrorCode bufferStatus = U_ZERO_ERROR;
+        ucnv_fromUnicode(cnv, &dest, destLimit, &src, srcLimit, nullptr, true, &bufferStatus);
+        destLength=(int32_t)(dest-originalDest);
 
         /* if an overflow occurs, then get the preflighting length */
         if(bufferStatus==U_BUFFER_OVERFLOW_ERROR) {
@@ -1762,8 +1763,9 @@ UErrorCode bufferStatus = U_ZERO_ERROR;
             destLimit=buffer+sizeof(buffer);
             do {
                 dest=buffer;
-bufferStatus=U_ZERO_ERROR;
-                ucnv_fromUnicode(cnv, &dest, destLimit, &src, srcLimit, nullptr, true, &bufferStatus);                destLength+=(int32_t)(dest-buffer);
+                bufferStatus=U_ZERO_ERROR;
+                ucnv_fromUnicode(cnv, &dest, destLimit, &src, srcLimit, nullptr, true, &bufferStatus);
+                destLength+=(int32_t)(dest-buffer);
             } while(bufferStatus==U_BUFFER_OVERFLOW_ERROR);
         }
         if (U_FAILURE(bufferStatus)) {
@@ -1810,8 +1812,9 @@ ucnv_toUChars(UConverter *cnv,
         destLimit=dest+destCapacity;
 
         /* perform the conversion */
-UErrorCode bufferStatus = U_ZERO_ERROR;
-        ucnv_toUnicode(cnv, &dest, destLimit, &src, srcLimit, nullptr, true, &bufferStatus);        destLength=(int32_t)(dest-originalDest);
+        UErrorCode bufferStatus = U_ZERO_ERROR;
+        ucnv_toUnicode(cnv, &dest, destLimit, &src, srcLimit, nullptr, true, &bufferStatus);
+        destLength=(int32_t)(dest-originalDest);
 
         /* if an overflow occurs, then get the preflighting length */
         if(bufferStatus==U_BUFFER_OVERFLOW_ERROR)
@@ -1821,8 +1824,9 @@ UErrorCode bufferStatus = U_ZERO_ERROR;
             destLimit=buffer+UPRV_LENGTHOF(buffer);
             do {
                 dest=buffer;
-bufferStatus=U_ZERO_ERROR;
-                ucnv_toUnicode(cnv, &dest, destLimit, &src, srcLimit, nullptr, true, &bufferStatus);                destLength+=(int32_t)(dest-buffer);
+                bufferStatus=U_ZERO_ERROR;
+                ucnv_toUnicode(cnv, &dest, destLimit, &src, srcLimit, nullptr, true, &bufferStatus);
+                destLength+=(int32_t)(dest-buffer);
             }
             while(bufferStatus==U_BUFFER_OVERFLOW_ERROR);
         }

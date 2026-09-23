@@ -276,12 +276,13 @@ std::queue<Operation> MakeErrorOperations(
     const int event_type) {
   std::queue<Operation> error_ops;
   error_ops.push(base::BindOnce(
-[](base::RepeatingCallback<void(base::Value::Dict)> event_adder,
+[](base::RepeatingCallback<void(base::DictValue)> event_adder,
 #if BUILDFLAG(IS_STARBOARD)
          CategorizedError error, const int event_type, const OperationResult&,
          base::OnceCallback<void(
              base::expected<OperationResult, CategorizedError>)> callback)
-#else         CategorizedError error, const int event_type, const base::FilePath&,
+#else
+         CategorizedError error, const int event_type, const base::FilePath&,
          base::OnceCallback<void(
              base::expected<base::FilePath, CategorizedError>)> callback)
 #endif
@@ -349,7 +350,8 @@ base::BindOnce(&DownloadOperation, config, id, is_foreground,
                          event_adder, state_tracker,
 #if defined(IN_MEMORY_UPDATES)
                          crx_str,
-#endif                         download_progress_callback)));
+#endif
+                         download_progress_callback)));
     } else if (operation.type == "puff") {
       // expects: `previous` (hash object) and `out` (hash object)
       if (operation.sha256_previous.empty() || operation.sha256_out.empty()) {
@@ -402,7 +404,8 @@ is_foreground,
 #if BUILDFLAG(IS_STARBOARD)
           metadata, next_version,
 #endif
-          event_adder, state_tracker, install_progress_callback,          install_complete_callback));
+          event_adder, state_tracker, install_progress_callback,
+          install_complete_callback));
     } else if (operation.type == "run") {
       // expects: `path`
       // Note: `arguments` field is optional.

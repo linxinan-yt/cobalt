@@ -614,7 +614,8 @@ wo{
 XCG{
             "Cg.",
             "Gildiye Karayib",
-        }        XOF{
+        }
+        XOF{
             "F CFA",
             "Franc CFA bu Afrik Sowwu-jant",
         }
@@ -701,7 +702,8 @@ BIF{
         }
         BND{
             other{"Brunei dollars"}
-        }        BOB{
+        }
+        BOB{
             other{"Bolivian bolivianos"}
         }
         BRL{
@@ -712,7 +714,8 @@ BIF{
         }
 BTN{
             other{"Bhutanese ngultrums"}
-        }        BWP{
+        }
+        BWP{
             other{"Botswanan pulas"}
         }
         BYN{
@@ -720,7 +723,8 @@ BTN{
         }
 BZD{
             other{"Belize dollars"}
-        }        CAD{
+        }
+        CAD{
             other{"Canadian dollars"}
         }
         CDF{
@@ -743,7 +747,8 @@ BZD{
         }
 CRC{
             other{"Costa Rican colóns"}
-        }        CUC{
+        }
+        CUC{
             other{"Cuban convertible pesos"}
         }
         CUP{
@@ -789,7 +794,8 @@ ERN{
         }
 GEL{
             other{"Georgian laris"}
-        }        GHS{
+        }
+        GHS{
             other{"Ghanaian cedis"}
         }
         GIP{
@@ -851,7 +857,8 @@ GEL{
         }
 KES{
             other{"Kenyan shillings"}
-        }        KGS{
+        }
+        KGS{
             other{"Kyrgystani soms"}
         }
         KHR{
@@ -859,7 +866,8 @@ KES{
         }
 KMF{
             other{"Comorian francs"}
-        }        KPW{
+        }
+        KPW{
             other{"North Korean won"}
         }
         KRW{
@@ -882,7 +890,8 @@ KMF{
         }
 LKR{
             other{"Sri Lankan rupees"}
-        }        LRD{
+        }
+        LRD{
             other{"Liberian dollars"}
         }
         LSL{
@@ -893,7 +902,8 @@ LKR{
         }
 MAD{
             other{"Moroccan dirhams"}
-        }        MDL{
+        }
+        MDL{
             other{"Moldovan lei"}
         }
         MGA{
@@ -922,7 +932,8 @@ MUR{
         }
         MWK{
             other{"Malawian kwachas"}
-        }        MXN{
+        }
+        MXN{
             other{"Mexican pesos"}
         }
         MYR{
@@ -945,7 +956,8 @@ MUR{
         }
 NPR{
             other{"Nepalese rupees"}
-        }        NZD{
+        }
+        NZD{
             other{"New Zealand dollars"}
         }
         OMR{
@@ -965,7 +977,8 @@ PHP{
         }
         PKR{
             other{"Pakistani rupees"}
-        }        PLN{
+        }
+        PLN{
             other{"Polish zlotys"}
         }
         PYG{
@@ -1003,7 +1016,8 @@ PHP{
         }
 SGD{
             other{"Singapore dollars"}
-        }        SHP{
+        }
+        SHP{
             other{"St. Helena pounds"}
         }
         SLE{
@@ -1032,7 +1046,8 @@ SGD{
         }
 THB{
             other{"Thai baht"}
-        }        TJS{
+        }
+        TJS{
             other{"Tajikistani somonis"}
         }
         TMT{
@@ -1046,7 +1061,8 @@ THB{
         }
 TRY{
             other{"Turkish Lira"}
-        }        TTD{
+        }
+        TTD{
             other{"Trinidad & Tobago dollars"}
         }
         TWD{
@@ -1090,7 +1106,8 @@ TRY{
         }
 XCG{
             other{"Gildiye Karayib"}
-        }        XOF{
+        }
+        XOF{
             other{"Franc CFA yu Afrik Sowwu-jant"}
         }
         XPF{

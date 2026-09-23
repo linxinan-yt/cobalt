@@ -479,7 +479,8 @@ dnam{"oidhche"}
                 few{"{0} oidhcheannan"}
                 one{"{0} oidhche"}
                 other{"{0} oidhche"}
-                per{"{0}/oidhche"}                two{"{0} oidhche"}
+                per{"{0}/oidhche"}
+                two{"{0} oidhche"}
             }
             quarter{
                 dnam{"cairteal"}
@@ -1915,7 +1916,8 @@ dnam{"oidhche"}
                 two{"{0}ns"}
             }
             night{
-dnam{"oidhche"}                few{"{0}oidh."}
+dnam{"oidhche"}
+                few{"{0}oidh."}
                 one{"{0}oidh."}
                 other{"{0}oidh."}
                 per{"{0}/oidh."}
@@ -2638,7 +2640,8 @@ dnam{"oidhche"}                few{"{0}oidh."}
                 two{"{0}kn"}
             }
             light-speed{
-dnam{"solas"}                few{"{0}solas."}
+dnam{"solas"}
+                few{"{0}solas."}
                 one{"{0}sholas"}
                 other{"{0}solas"}
                 two{"{0}sholas"}

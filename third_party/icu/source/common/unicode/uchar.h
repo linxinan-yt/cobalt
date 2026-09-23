@@ -62,6 +62,7 @@ U_CDECL_BEGIN
  * @stable ICU 2.0
  */
 #define U_UNICODE_VERSION "17.0"
+
 /**
  * \file
  * \brief C API: Unicode Properties
@@ -551,7 +552,7 @@ typedef enum UProperty {
      * @stable ICU 74
      */
     UCHAR_ID_COMPAT_MATH_CONTINUE=74,
-/**
+    /**
      * Binary property Modifier_Combining_Mark.
      * Used by the AMTRA algorithm in UAX #53.
      * @stable ICU 76
@@ -679,7 +680,7 @@ typedef enum UProperty {
      * @stable ICU 75
      */
     UCHAR_IDENTIFIER_STATUS=0x1019,
-/**
+    /**
      * Enumerated property Indic_Conjunct_Break.
      * Used in the grapheme cluster break algorithm in UAX #29.
      * @stable ICU 76
@@ -1980,7 +1981,7 @@ enum UBlockCode {
     /** @stable ICU 76 */
     UBLOCK_TULU_TIGALARI = 338, /*[11380]*/
 
-// New blocks in Unicode 17.0.0
+    // New blocks in Unicode 17.0.0
 
     /** @stable ICU 78 */
     UBLOCK_BERIA_ERFE = 339, /*[16EA0]*/
@@ -1998,6 +1999,7 @@ enum UBlockCode {
     UBLOCK_TANGUT_COMPONENTS_SUPPLEMENT = 345, /*[18D80]*/
     /** @stable ICU 78 */
     UBLOCK_TOLONG_SIKI = 346, /*[11DB0]*/
+
 #ifndef U_HIDE_DEPRECATED_API
     /**
      * One more than the highest normal UBlockCode value.
@@ -2303,6 +2305,7 @@ typedef enum UJoiningGroup {
     U_JG_KASHMIRI_YEH,  /**< @stable ICU 76 */
 
     U_JG_THIN_NOON,  /**< @stable ICU 78 */
+
 #ifndef U_HIDE_DEPRECATED_API
     /**
      * One more than the highest normal UJoiningGroup value.
@@ -2756,31 +2759,6 @@ typedef enum UIndicSyllabicCategory {
     /** @stable ICU 76 */
     U_INSC_REORDERING_KILLER,
 } UIndicSyllabicCategory;
-
-#ifndef U_HIDE_DRAFT_API
-/**
- * Indic Conjunct Break constants.
- *
- * @see UCHAR_INDIC_CONJUNCT_BREAK
- * @draft ICU 76
- */
-typedef enum UIndicConjunctBreak {
-    /*
-    * Note: UIndicConjunctBreak constants are parsed by preparseucd.py.
-    * It matches lines like
-    *     U_INCB_<Unicode Indic_Conjunct_Break value name>
-    */
-
-    /** @draft ICU 76 */
-    U_INCB_NONE,
-    /** @draft ICU 76 */
-    U_INCB_CONSONANT,
-    /** @draft ICU 76 */
-    U_INCB_EXTEND,
-    /** @draft ICU 76 */
-    U_INCB_LINKER,
-} UIndicConjunctBreak;
-#endif  // U_HIDE_DRAFT_API
 
 /**
  * Indic Conjunct Break constants.

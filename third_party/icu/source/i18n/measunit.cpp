@@ -39,7 +39,7 @@ UOBJECT_DEFINE_RTTI_IMPLEMENTATION(MeasureUnit)
 static const int32_t gOffsets[] = {
     0,
     2,
-8,
+    8,
     21,
     34,
     38,
@@ -61,7 +61,8 @@ static const int32_t gOffsets[] = {
     487,
     492,
     494,
-    538};
+    538
+};
 
 static const int32_t kCurrencyOffset = 5;
 
@@ -129,7 +130,6 @@ static const char * const gSubTypes[] = {
     "percent",
     "permille",
     "permyriad",
-    "portion-per-1e9",
     "liter-per-100-kilometer",
     "liter-per-kilometer",
     "mile-per-gallon",
@@ -926,7 +926,9 @@ MeasureUnit *MeasureUnit::createPermyriad(UErrorCode &status) {
 
 MeasureUnit MeasureUnit::getPermyriad() {
     return MeasureUnit(3, 12);
-}MeasureUnit *MeasureUnit::createLiterPer100Kilometers(UErrorCode &status) {
+}
+
+MeasureUnit *MeasureUnit::createLiterPer100Kilometers(UErrorCode &status) {
     return MeasureUnit::create(4, 0, status);
 }
 
@@ -1196,7 +1198,9 @@ MeasureUnit *MeasureUnit::createYearPerson(UErrorCode &status) {
 
 MeasureUnit MeasureUnit::getYearPerson() {
     return MeasureUnit(7, 18);
-}MeasureUnit *MeasureUnit::createAmpere(UErrorCode &status) {
+}
+
+MeasureUnit *MeasureUnit::createAmpere(UErrorCode &status) {
     return MeasureUnit::create(8, 0, status);
 }
 
@@ -1849,7 +1853,8 @@ MeasureUnit *MeasureUnit::createKilogram(UErrorCode &status) {
 }
 
 MeasureUnit MeasureUnit::getKilogram() {
-return MeasureUnit(16, 6);}
+    return MeasureUnit(16, 6);
+}
 
 MeasureUnit *MeasureUnit::createMicrogram(UErrorCode &status) {
     return MeasureUnit::create(16, 7, status);
@@ -1937,14 +1942,6 @@ MeasureUnit *MeasureUnit::createMetricTon(UErrorCode &status) {
 
 MeasureUnit MeasureUnit::getMetricTon() {
     return MeasureUnit(16, 16);
-}
-
-MeasureUnit *MeasureUnit::createMetricTon(UErrorCode &status) {
-    return MeasureUnit::create(15, 14, status);
-}
-
-MeasureUnit MeasureUnit::getMetricTon() {
-    return MeasureUnit(15, 14);
 }
 
 MeasureUnit *MeasureUnit::createGigawatt(UErrorCode &status) {
@@ -2091,7 +2088,8 @@ MeasureUnit MeasureUnit::getPoundPerSquareInch() {
     return MeasureUnit(19, 11);
 }
 
-MeasureUnit *MeasureUnit::createBeaufort(UErrorCode &status) {    return MeasureUnit::create(20, 0, status);
+MeasureUnit *MeasureUnit::createBeaufort(UErrorCode &status) {
+    return MeasureUnit::create(20, 0, status);
 }
 
 MeasureUnit MeasureUnit::getBeaufort() {
@@ -2812,7 +2810,12 @@ int32_t MeasureUnit::getOffset() const {
 MeasureUnitImpl MeasureUnitImpl::copy(UErrorCode &status) const {
     MeasureUnitImpl result;
     result.complexity = complexity;
-result.identifier.append(identifier, status);    result.constantDenominator = constantDenominator;
+    result.identifier = identifier;
+    if (result.identifier.isEmpty() != identifier.isEmpty()) {
+        status = U_MEMORY_ALLOCATION_ERROR;
+        return result;
+    }
+    result.constantDenominator = constantDenominator;
     for (int32_t i = 0; i < singleUnits.length(); i++) {
         SingleUnitImpl *item = result.singleUnits.emplaceBack(*singleUnits[i]);
         if (!item) {

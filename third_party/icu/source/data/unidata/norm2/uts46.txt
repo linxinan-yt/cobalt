@@ -1,7 +1,8 @@
 # Original file:
 # IdnaMappingTable.txt
 # Date: 2025-07-25, 18:08:44 GMT
-# © 2025 Unicode®, Inc.# Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+# © 2025 Unicode®, Inc.
+# Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
 # For terms of use and license, see https://www.unicode.org/terms_of_use.html
 #
 # Unicode IDNA Compatible Preprocessing for UTS #46
@@ -4273,7 +4274,8 @@ A7CB          >0264                     # 16.0 LATIN CAPITAL LETTER RAMS HORN
 A7CC          >A7CD                     # 16.0 LATIN CAPITAL LETTER S WITH DIAGONAL STROKE
 # A7CD        valid                     # 16.0 LATIN SMALL LETTER S WITH DIAGONAL STROKE
 A7CE          >A7CF                     # 17.0 LATIN CAPITAL LETTER PHARYNGEAL VOICED FRICATIVE
-# A7CF        valid                     # 17.0 LATIN SMALL LETTER PHARYNGEAL VOICED FRICATIVEA7D0          >A7D1                     # 14.0 LATIN CAPITAL LETTER CLOSED INSULAR G
+# A7CF        valid                     # 17.0 LATIN SMALL LETTER PHARYNGEAL VOICED FRICATIVE
+A7D0          >A7D1                     # 14.0 LATIN CAPITAL LETTER CLOSED INSULAR G
 # A7D1        valid                     # 14.0 LATIN SMALL LETTER CLOSED INSULAR G
 A7D2          >A7D3                     # 17.0 LATIN CAPITAL LETTER DOUBLE THORN
 # A7D3        valid                     # 14.0 LATIN SMALL LETTER DOUBLE THORN
@@ -4287,7 +4289,8 @@ A7DA          >A7DB                     # 16.0 LATIN CAPITAL LETTER LAMBDA
 # A7DB        valid                     # 16.0 LATIN SMALL LETTER LAMBDA
 A7DC          >019B                     # 16.0 LATIN CAPITAL LETTER LAMBDA WITH STROKE
 A7DD..A7F0    >FFFD                     # NA   <reserved-A7DD>..<reserved-A7F0>
-A7F1          >0073                     # 17.0 MODIFIER LETTER CAPITAL SA7F2          >0063                     # 14.0 MODIFIER LETTER CAPITAL C
+A7F1          >0073                     # 17.0 MODIFIER LETTER CAPITAL S
+A7F2          >0063                     # 14.0 MODIFIER LETTER CAPITAL C
 A7F3          >0066                     # 14.0 MODIFIER LETTER CAPITAL F
 A7F4          >0071                     # 14.0 MODIFIER LETTER CAPITAL Q
 A7F5          >A7F6                     # 13.0 LATIN CAPITAL LETTER REVERSED HALF H
@@ -6310,7 +6313,8 @@ FFFE..FFFF    >FFFD                     # 1.1  <noncharacter-FFFE>..<noncharacte
 10EC8..10ECF  >FFFD                     # NA   <reserved-10EC8>..<reserved-10ECF>
 # 10ED0..10ED8valid                     # 17.0 ARABIC BIBLICAL END OF VERSE..ARABIC LIGATURE NAWWARA ALLAAHU MARQADAH
 10ED9..10EF9  >FFFD                     # NA   <reserved-10ED9>..<reserved-10EF9>
-# 10EFA..10EFBvalid                     # 17.0 ARABIC DOUBLE VERTICAL BAR BELOW..ARABIC SMALL LOW NOON# 10EFC       valid                     # 16.0 ARABIC COMBINING ALEF OVERLAY
+# 10EFA..10EFBvalid                     # 17.0 ARABIC DOUBLE VERTICAL BAR BELOW..ARABIC SMALL LOW NOON
+# 10EFC       valid                     # 16.0 ARABIC COMBINING ALEF OVERLAY
 # 10EFD..10EFFvalid                     # 15.0 ARABIC SMALL LOW WORD SAKTA..ARABIC SMALL LOW WORD MADDA
 # 10F00..10F1Cvalid                     # 11.0 OLD SOGDIAN LETTER ALEPH..OLD SOGDIAN LETTER FINAL TAW WITH VERTICAL TAIL
 # 10F1D..10F26valid                     # 11.0 OLD SOGDIAN NUMBER ONE..OLD SOGDIAN FRACTION ONE HALF
@@ -6578,7 +6582,8 @@ FFFE..FFFF    >FFFD                     # 1.1  <noncharacter-FFFE>..<noncharacte
 # 11B00..11B09valid                     # 15.0 DEVANAGARI HEAD MARK..DEVANAGARI SIGN MINDU
 11B0A..11B5F  >FFFD                     # NA   <reserved-11B0A>..<reserved-11B5F>
 # 11B60..11B67valid                     # 17.0 SHARADA VOWEL SIGN OE..SHARADA VOWEL SIGN CANDRA O
-11B68..11BBF  >FFFD                     # NA   <reserved-11B68>..<reserved-11BBF># 11BC0..11BE0valid                     # 16.0 SUNUWAR LETTER DEVI..SUNUWAR LETTER KLOKO
+11B68..11BBF  >FFFD                     # NA   <reserved-11B68>..<reserved-11BBF>
+# 11BC0..11BE0valid                     # 16.0 SUNUWAR LETTER DEVI..SUNUWAR LETTER KLOKO
 # 11BE1       valid                     # 16.0 SUNUWAR SIGN PVO
 11BE2..11BEF  >FFFD                     # NA   <reserved-11BE2>..<reserved-11BEF>
 # 11BF0..11BF9valid                     # 16.0 SUNUWAR DIGIT ZERO..SUNUWAR DIGIT NINE
@@ -6879,7 +6884,8 @@ FFFE..FFFF    >FFFD                     # 1.1  <noncharacter-FFFE>..<noncharacte
 # 1CEBA..1CED0valid                     # 17.0 FRAGILE SYMBOL..LEUKOTHEA
 1CED1..1CEDF  >FFFD                     # NA   <reserved-1CED1>..<reserved-1CEDF>
 # 1CEE0..1CEF0valid                     # 17.0 GEOMANTIC FIGURE POPULUS..MEDIUM SMALL WHITE CIRCLE WITH HORIZONTAL BAR
-1CEF1..1CEFF  >FFFD                     # NA   <reserved-1CEF1>..<reserved-1CEFF># 1CF00..1CF2Dvalid                     # 14.0 ZNAMENNY COMBINING MARK GORAZDO NIZKO S KRYZHEM ON LEFT..ZNAMENNY COMBINING MARK KRYZH ON LEFT
+1CEF1..1CEFF  >FFFD                     # NA   <reserved-1CEF1>..<reserved-1CEFF>
+# 1CF00..1CF2Dvalid                     # 14.0 ZNAMENNY COMBINING MARK GORAZDO NIZKO S KRYZHEM ON LEFT..ZNAMENNY COMBINING MARK KRYZH ON LEFT
 1CF2E..1CF2F  >FFFD                     # NA   <reserved-1CF2E>..<reserved-1CF2F>
 # 1CF30..1CF46valid                     # 14.0 ZNAMENNY COMBINING TONAL RANGE MARK MRACHNO..ZNAMENNY PRIZNAK MODIFIER ROG
 1CF47..1CF4F  >FFFD                     # NA   <reserved-1CF47>..<reserved-1CF4F>
@@ -8051,7 +8057,8 @@ FFFE..FFFF    >FFFD                     # 1.1  <noncharacter-FFFE>..<noncharacte
 # 1E6E0..1E6F5valid                     # 17.0 TAI YO LETTER AA..TAI YO SIGN OM
 1E6F6..1E6FD  >FFFD                     # NA   <reserved-1E6F6>..<reserved-1E6FD>
 # 1E6FE..1E6FFvalid                     # 17.0 TAI YO SYMBOL MUEANG..TAI YO XAM LAI
-1E700..1E7DF  >FFFD                     # NA   <reserved-1E700>..<reserved-1E7DF># 1E7E0..1E7E6valid                     # 14.0 ETHIOPIC SYLLABLE HHYA..ETHIOPIC SYLLABLE HHYO
+1E700..1E7DF  >FFFD                     # NA   <reserved-1E700>..<reserved-1E7DF>
+# 1E7E0..1E7E6valid                     # 14.0 ETHIOPIC SYLLABLE HHYA..ETHIOPIC SYLLABLE HHYO
 1E7E7         >FFFD                     # NA   <reserved-1E7E7>
 # 1E7E8..1E7EBvalid                     # 14.0 ETHIOPIC SYLLABLE GURAGE HHWA..ETHIOPIC SYLLABLE HHWE
 1E7EC         >FFFD                     # NA   <reserved-1E7EC>
@@ -8578,7 +8585,8 @@ FFFE..FFFF    >FFFD                     # 1.1  <noncharacter-FFFE>..<noncharacte
 # 1F8C0..1F8C1valid                     # 16.0 LEFTWARDS ARROW FROM DOWNWARDS ARROW..RIGHTWARDS ARROW FROM DOWNWARDS ARROW
 1F8C2..1F8CF  >FFFD                     # NA   <reserved-1F8C2>..<reserved-1F8CF>
 # 1F8D0..1F8D8valid                     # 17.0 LONG RIGHTWARDS ARROW OVER LONG LEFTWARDS ARROW..LONG LEFT RIGHT ARROW WITH DEPENDENT LOBE
-1F8D9..1F8FF  >FFFD                     # NA   <reserved-1F8D9>..<reserved-1F8FF># 1F900..1F90Bvalid                     # 10.0 CIRCLED CROSS FORMEE WITH FOUR DOTS..DOWNWARD FACING NOTCHED HOOK WITH DOT
+1F8D9..1F8FF  >FFFD                     # NA   <reserved-1F8D9>..<reserved-1F8FF>
+# 1F900..1F90Bvalid                     # 10.0 CIRCLED CROSS FORMEE WITH FOUR DOTS..DOWNWARD FACING NOTCHED HOOK WITH DOT
 # 1F90C       valid                     # 13.0 PINCHED FINGERS
 # 1F90D..1F90Fvalid                     # 12.0 WHITE HEART..PINCHING HAND
 # 1F910..1F918valid                     # 8.0  ZIPPER-MOUTH FACE..SIGN OF THE HORNS
@@ -8639,7 +8647,8 @@ FFFE..FFFF    >FFFD                     # 1.1  <noncharacter-FFFE>..<noncharacte
 # 1FA89       valid                     # 16.0 HARP
 # 1FA8A       valid                     # 17.0 TROMBONE
 1FA8B..1FA8D  >FFFD                     # NA   <reserved-1FA8B>..<reserved-1FA8D>
-# 1FA8E       valid                     # 17.0 TREASURE CHEST# 1FA8F       valid                     # 16.0 SHOVEL
+# 1FA8E       valid                     # 17.0 TREASURE CHEST
+# 1FA8F       valid                     # 16.0 SHOVEL
 # 1FA90..1FA95valid                     # 12.0 RINGED PLANET..BANJO
 # 1FA96..1FAA8valid                     # 13.0 MILITARY HELMET..ROCK
 # 1FAA9..1FAACvalid                     # 14.0 MIRROR BALL..HAMSA
@@ -8655,7 +8664,8 @@ FFFE..FFFF    >FFFD                     # 1.1  <noncharacter-FFFE>..<noncharacte
 1FAC7         >FFFD                     # NA   <reserved-1FAC7>
 # 1FAC8       valid                     # 17.0 HAIRY CREATURE
 1FAC9..1FACC  >FFFD                     # NA   <reserved-1FAC9>..<reserved-1FACC>
-# 1FACD       valid                     # 17.0 ORCA# 1FACE..1FACFvalid                     # 15.0 MOOSE..DONKEY
+# 1FACD       valid                     # 17.0 ORCA
+# 1FACE..1FACFvalid                     # 15.0 MOOSE..DONKEY
 # 1FAD0..1FAD6valid                     # 13.0 BLUEBERRIES..TEAPOT
 # 1FAD7..1FAD9valid                     # 14.0 POURING LIQUID..JAR
 # 1FADA..1FADBvalid                     # 15.0 GINGER ROOT..PEA POD
@@ -8667,7 +8677,8 @@ FFFE..FFFF    >FFFD                     # 1.1  <noncharacter-FFFE>..<noncharacte
 # 1FAE9       valid                     # 16.0 FACE WITH BAGS UNDER EYES
 # 1FAEA       valid                     # 17.0 DISTORTED FACE
 1FAEB..1FAEE  >FFFD                     # NA   <reserved-1FAEB>..<reserved-1FAEE>
-# 1FAEF       valid                     # 17.0 FIGHT CLOUD# 1FAF0..1FAF6valid                     # 14.0 HAND WITH INDEX FINGER AND THUMB CROSSED..HEART HANDS
+# 1FAEF       valid                     # 17.0 FIGHT CLOUD
+# 1FAF0..1FAF6valid                     # 14.0 HAND WITH INDEX FINGER AND THUMB CROSSED..HEART HANDS
 # 1FAF7..1FAF8valid                     # 15.0 LEFTWARDS PUSHING HAND..RIGHTWARDS PUSHING HAND
 1FAF9..1FAFF  >FFFD                     # NA   <reserved-1FAF9>..<reserved-1FAFF>
 # 1FB00..1FB92valid                     # 13.0 BLOCK SEXTANT-1..UPPER HALF INVERSE MEDIUM SHADE AND LOWER HALF BLOCK

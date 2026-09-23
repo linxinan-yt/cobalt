@@ -15,6 +15,8 @@
 #ifndef MEDIA_MOJO_MOJOM_STARBOARD_STARBOARD_RENDERING_MODE_MOJOM_TRAITS_H_
 #define MEDIA_MOJO_MOJOM_STARBOARD_STARBOARD_RENDERING_MODE_MOJOM_TRAITS_H_
 
+#include <optional>
+
 #include "media/base/starboard/starboard_rendering_mode.h"
 #include "media/mojo/mojom/renderer_extensions.mojom-shared.h"
 
@@ -22,21 +24,17 @@ template <>
 struct mojo::EnumTraits<media::mojom::StarboardRenderingMode,
                         media::StarboardRenderingMode> {
  public:
-  static bool FromMojom(media::mojom::StarboardRenderingMode data,
-                        media::StarboardRenderingMode* output) {
+  static std::optional<media::StarboardRenderingMode> FromMojom(
+      media::mojom::StarboardRenderingMode data) {
     switch (data) {
       case media::mojom::StarboardRenderingMode::kDecodeToTexture:
-        *output = media::StarboardRenderingMode::kDecodeToTexture;
-        return true;
+        return media::StarboardRenderingMode::kDecodeToTexture;
       case media::mojom::StarboardRenderingMode::kPunchOut:
-        *output = media::StarboardRenderingMode::kPunchOut;
-        return true;
+        return media::StarboardRenderingMode::kPunchOut;
       case media::mojom::StarboardRenderingMode::kInvalid:
-        *output = media::StarboardRenderingMode::kInvalid;
-        return true;
+        return media::StarboardRenderingMode::kInvalid;
     }
     NOTREACHED();
-    return false;
   }
 
   static media::mojom::StarboardRenderingMode ToMojom(

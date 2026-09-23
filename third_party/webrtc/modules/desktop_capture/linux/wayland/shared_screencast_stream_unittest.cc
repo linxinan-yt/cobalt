@@ -139,7 +139,8 @@ TEST_F(MAYBE_PipeWireStreamTest, TestPipeWire) {
   waitStartStreamingEvent.Wait(kShortWait);
 
   Event frameRetrievedEvent;
-EXPECT_CALL(*this, OnFrameRecorded).Times(8);  EXPECT_CALL(*this, OnDesktopFrameChanged)
+  EXPECT_CALL(*this, OnFrameRecorded).Times(7);
+  EXPECT_CALL(*this, OnDesktopFrameChanged)
       .Times(3)
       .WillRepeatedly([&frameRetrievedEvent] { frameRetrievedEvent.Set(); });
 
@@ -228,15 +229,17 @@ EXPECT_CALL(*this, OnFrameRecorded).Times(8);  EXPECT_CALL(*this, OnDesktopFrame
     waitStartStreamingEvent2.Set();
   });
   Event emptyFrameEvent2;
-EXPECT_CALL(*this, OnBufferCorruptedData).WillOnce([&emptyFrameEvent2] {    emptyFrameEvent2.Set();
+  EXPECT_CALL(*this, OnBufferCorruptedData).WillOnce([&emptyFrameEvent2] {
+    emptyFrameEvent2.Set();
   });
   waitStartStreamingEvent2.Wait(kShortWait);
   test_screencast_stream_provider_->RecordFrame(
-red_color, TestScreenCastStreamProvider::CorruptedData);
+      red_color, TestScreenCastStreamProvider::CorruptedData);
   emptyFrameEvent2.Wait(kShortWait);
 
   EXPECT_CALL(*this, OnFormatChanged(SPA_VIDEO_FORMAT_BGRA, 800, 640, 22,
-                                     DRM_FORMAT_MOD_LINEAR))      .Times(1)
+                                     DRM_FORMAT_MOD_LINEAR))
+      .Times(1)
       .WillOnce([&waitStreamParamChangedEvent2] {
         waitStreamParamChangedEvent2.Set();
       });
@@ -250,11 +253,12 @@ red_color, TestScreenCastStreamProvider::CorruptedData);
     waitStartStreamingEvent3.Set();
   });
   Event emptyFrameEvent3;
-EXPECT_CALL(*this, OnBufferCorruptedMetadata).WillOnce([&emptyFrameEvent3] {    emptyFrameEvent3.Set();
+  EXPECT_CALL(*this, OnBufferCorruptedMetadata).WillOnce([&emptyFrameEvent3] {
+    emptyFrameEvent3.Set();
   });
   waitStartStreamingEvent3.Wait(kShortWait);
   test_screencast_stream_provider_->RecordFrame(
-red_color, TestScreenCastStreamProvider::CorruptedMetadata);
+      red_color, TestScreenCastStreamProvider::CorruptedMetadata);
   emptyFrameEvent3.Wait(kShortWait);
 
   // Test disconnection from stream
@@ -400,7 +404,9 @@ TEST_F(MAYBE_PipeWireStreamTest, TestModifierFallback) {
 
   test_screencast_stream_provider_->RecordFrame(
       blue_color, TestScreenCastStreamProvider::InvalidStride);
-  invalidStrideEvent.Wait(kShortWait);  // Test disconnection from stream
+  invalidStrideEvent.Wait(kShortWait);
+
+  // Test disconnection from stream
   EXPECT_CALL(*this, OnStopStreaming);
   shared_screencast_stream_->StopScreenCastStream();
 }

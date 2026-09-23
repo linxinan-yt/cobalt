@@ -31,18 +31,20 @@ import {
 } from '../trace_processor/query_result';
 import {
   Flamegraph,
-type FlamegraphAddableMetric,
+  type FlamegraphAddableMetric,
   type FlamegraphPropertyDefinition,
   type FlamegraphQueryData,
   type FlamegraphState,
   type FlamegraphView,
   type FlamegraphOptionalAction,
-  type FlamegraphOptionalMarker,} from '../widgets/flamegraph';
+  type FlamegraphOptionalMarker,
+} from '../widgets/flamegraph';
 import type {Trace} from '../public/trace';
 import {sqliteString} from '../base/string_utils';
 import {parseUserFilterRegex} from '../widgets/flamegraph_regex';
 import {SharedAsyncDisposable} from '../base/shared_disposable';
 import {Monitor} from '../base/monitor';
+
 export interface QueryFlamegraphColumn {
   // The name of the column in SQL.
   readonly name: string;
@@ -197,14 +199,15 @@ export class QueryFlamegraph implements AsyncDisposable {
   private readonly dependencies: ReadonlyArray<
     SharedAsyncDisposable<AsyncDisposable>
   >;
-private lastAttrs?: QueryFlamegraphAttrs;
+  private lastAttrs?: QueryFlamegraphAttrs;
   private monitor = new Monitor([
     () => this.lastAttrs?.metrics,
     () => this.lastAttrs?.state,
   ]);
 
   constructor(
-    private readonly trace: Trace,    dependencies: ReadonlyArray<AsyncDisposable> = [],
+    private readonly trace: Trace,
+    dependencies: ReadonlyArray<AsyncDisposable> = [],
   ) {
     this.dependencies = dependencies.map((d) => SharedAsyncDisposable.wrap(d));
   }
@@ -220,9 +223,10 @@ private lastAttrs?: QueryFlamegraphAttrs;
     this.lastAttrs = attrs;
     if (this.monitor.ifStateChanged()) {
       this.data = undefined;
-if (metrics && state) {
+      if (metrics && state) {
         this.fetchData(metrics, state);
-      }    }
+      }
+    }
     return m(Flamegraph, {
       metrics: metrics ?? [],
       data: this.data,
@@ -540,7 +544,7 @@ async function computeFlamegraphTree(
           displayName: a.displayName,
           value,
           isVisible: a.isVisible ? a.isVisible(value) : true,
-isAggregatable: false,
+          isAggregatable: false,
         });
       }
     }
@@ -557,6 +561,7 @@ isAggregatable: false,
         });
       }
     }
+
     // Evaluate marker
     let marker: string | undefined;
     if (

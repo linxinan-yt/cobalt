@@ -14,6 +14,8 @@
 
 #include "base/base_export.h"
 #include "base/byte_size.h"
+#include "build/build_config.h"
+
 namespace base::debug {
 
 // Describes a region of mapped memory and the path of the file mapped.

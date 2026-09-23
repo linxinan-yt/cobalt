@@ -19,6 +19,7 @@
 #include <cstring>
 #include <limits>
 #include <string>
+
 #include "test/gtest_and_gmock.h"
 
 namespace perfetto {
@@ -43,7 +44,7 @@ TEST(DynamicStringWriterTest, BasicCases) {
   }
   {
     base::DynamicStringWriter writer;
-writer.AppendPaddedInt<'0', 3>(0);
+    writer.AppendPaddedInt<'0', 3>(0);
     ASSERT_EQ(writer.GetStringView().ToStdString(), "000");
   }
   {
@@ -79,7 +80,8 @@ writer.AppendPaddedInt<'0', 3>(0);
   {
     base::DynamicStringWriter writer;
     writer.AppendDouble(1e100);
-    ASSERT_EQ(writer.GetStringView().ToStdString(), "1e+100");  }
+    ASSERT_EQ(writer.GetStringView().ToStdString(), "1e+100");
+  }
   {
     base::DynamicStringWriter writer;
     writer.AppendInt(std::numeric_limits<int64_t>::min());
@@ -134,13 +136,14 @@ TEST(DynamicStringWriterTest, WriteAllTypes) {
   writer.AppendChar('0');
   writer.AppendInt(132545);
   writer.AppendUnsignedInt(523);
-writer.AppendPaddedInt<'0', 0>(1);
+  writer.AppendPaddedInt<'0', 0>(1);
   writer.AppendPaddedInt<'0', 3>(0);
   writer.AppendPaddedInt<'0', 1>(1);
   writer.AppendPaddedInt<'0', 2>(1);
   writer.AppendPaddedInt<'0', 3>(1);
   writer.AppendPaddedInt<' ', 5>(123);
-  writer.AppendPaddedUnsignedInt<' ', 5>(456);  writer.AppendDouble(123.25);
+  writer.AppendPaddedUnsignedInt<' ', 5>(456);
+  writer.AppendDouble(123.25);
   writer.AppendBool(true);
 
   constexpr char kTestStr[] = "test";
@@ -149,7 +152,7 @@ writer.AppendPaddedInt<'0', 0>(1);
   writer.AppendString(kTestStr);
 
   ASSERT_EQ(writer.GetStringView().ToStdString(),
-"01325455231000101001  123  456123.25truetesttesttest");
+            "01325455231000101001  123  456123.25truetesttesttest");
 }
 
 TEST(DynamicStringWriterTest, PaddedHexInt) {
@@ -338,7 +341,8 @@ TEST(DynamicStringWriterTest, GrowsBeyondInitial) {
   writer.AppendString(huge.c_str(), huge.size());
   ASSERT_EQ(writer.pos(), huge.size());
   ASSERT_EQ(writer.GetStringView().size(), huge.size());
-  ASSERT_EQ(memcmp(writer.GetStringView().data(), huge.data(), huge.size()), 0);}
+  ASSERT_EQ(memcmp(writer.GetStringView().data(), huge.data(), huge.size()), 0);
+}
 
 }  // namespace
 }  // namespace base

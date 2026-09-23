@@ -549,7 +549,9 @@ TEST(EventConfigTest, RawEventRejectsTypeAndPmu) {
 
   std::optional<EventConfig> event_config = CreateEventConfig(cfg);
   EXPECT_FALSE(event_config.has_value());
-}TEST(EventConfigTest, EventModifiers) {
+}
+
+TEST(EventConfigTest, EventModifiers) {
   protos::gen::PerfEventConfig cfg;
   {
     // timebase with modifier:

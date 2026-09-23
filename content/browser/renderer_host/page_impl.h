@@ -156,14 +156,8 @@ class CONTENT_EXPORT PageImpl : public Page {
 
   void SetContentsMimeType(std::string mime_type);
 
-void OnTextAutosizerPageInfoChanged(
-      blink::mojom::TextAutosizerPageInfoPtr page_info);
-
-  blink::mojom::TextAutosizerPageInfo text_autosizer_page_info() const {
-    return text_autosizer_page_info_;
-  }
-
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)  FencedFrameURLMapping& fenced_frame_urls_map() {
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
+  FencedFrameURLMapping& fenced_frame_urls_map() {
     return fenced_frame_urls_map_;
   }
 #endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)

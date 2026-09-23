@@ -379,7 +379,8 @@ ur{
 dnam{"راتیں"}
                 gender{"feminine"}
                 one{"{0} رات"}
-                other{"{0} راتیں"}                per{"{0} فی رات"}
+                other{"{0} راتیں"}
+                per{"{0} فی رات"}
             }
             quarter{
                 dnam{"کوارٹرز"}

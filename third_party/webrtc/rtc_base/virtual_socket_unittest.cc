@@ -51,7 +51,8 @@ namespace {
 using ::testing::ContainerEq;
 using ::testing::Eq;
 using ::testing::NotNull;
-using ::testing::Pointwise;using testing::SSE_CLOSE;
+using ::testing::Pointwise;
+using testing::SSE_CLOSE;
 using testing::SSE_ERROR;
 using testing::SSE_OPEN;
 using testing::SSE_READ;
@@ -881,13 +882,15 @@ class VirtualSocketServerTest : public ::testing::Test {
 
     TestClient client1(
         std::make_unique<AsyncUDPSocket>(env_, std::move(socket)),
-&time_controller_);
+        &time_controller_);
+
     SocketAddress client2_addr;
     std::unique_ptr<Socket> socket2 =
         ss_.Create(initial_addr.family(), SOCK_DGRAM);
     TestClient client2(
         std::make_unique<AsyncUDPSocket>(env_, std::move(socket2)),
-&time_controller_);
+        &time_controller_);
+
     client2.SendTo("foo", 3, server_addr);
     std::unique_ptr<TestClient::Packet> packet_1 = client1.NextPacket();
     ASSERT_THAT(packet_1.get(), NotNull());

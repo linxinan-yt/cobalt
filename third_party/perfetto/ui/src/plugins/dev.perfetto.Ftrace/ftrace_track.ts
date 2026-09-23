@@ -15,7 +15,8 @@
 import type {Store} from '../../base/store';
 import {materialColorScheme} from '../../components/colorizer';
 import {SliceTrack} from '../../components/tracks/slice_track';
-import type {Trace} from '../../public/trace';import {SourceDataset} from '../../trace_processor/dataset';
+import type {Trace} from '../../public/trace';
+import {SourceDataset} from '../../trace_processor/dataset';
 import {LONG, NUM, STR} from '../../trace_processor/query_result';
 import type {FtraceFilter} from './common';
 import {FtraceEventDetailsPanel} from './ftrace_details_panel';

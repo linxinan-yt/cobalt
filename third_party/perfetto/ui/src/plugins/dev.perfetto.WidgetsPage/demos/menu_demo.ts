@@ -13,7 +13,8 @@
 // limitations under the License.
 
 import m from 'mithril';
-import {Menu, MenuDivider, MenuItem, MenuTitle} from '../../../widgets/menu';import {renderWidgetShowcase} from '../widgets_page_utils';
+import {Menu, MenuDivider, MenuItem, MenuTitle} from '../../../widgets/menu';
+import {renderWidgetShowcase} from '../widgets_page_utils';
 
 export function renderMenu(): m.Children {
   return [
@@ -29,7 +30,8 @@ export function renderMenu(): m.Children {
       renderWidget: () =>
         m(
           Menu,
-m(MenuTitle, {label: 'Common Actions'}),          m(MenuItem, {label: 'New', icon: 'add'}),
+          m(MenuTitle, {label: 'Common Actions'}),
+          m(MenuItem, {label: 'New', icon: 'add'}),
           m(MenuItem, {label: 'Open', icon: 'folder_open'}),
           m(MenuItem, {label: 'Save', icon: 'save', disabled: true}),
           m(MenuDivider),
@@ -40,7 +42,8 @@ m(MenuTitle, {label: 'Common Actions'}),          m(MenuItem, {label: 'New', ico
             {label: 'Share', icon: 'share'},
             m(MenuItem, {label: 'Everyone', icon: 'public'}),
             m(MenuItem, {label: 'Friends', icon: 'group'}),
-m(MenuTitle, {label: 'Other'}),            m(
+            m(MenuTitle, {label: 'Other'}),
+            m(
               MenuItem,
               {label: 'Specific people', icon: 'person_add'},
               m(MenuItem, {label: 'Alice', icon: 'person'}),

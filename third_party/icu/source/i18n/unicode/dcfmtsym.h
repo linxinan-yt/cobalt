@@ -48,7 +48,6 @@
 
 U_NAMESPACE_BEGIN
 
-class CharString;
 /**
  * This class represents the set of symbols needed by DecimalFormat
  * to format numbers. DecimalFormat creates for itself an instance of
@@ -459,12 +458,13 @@ public:
      * Returns that pattern stored in currency info. Internal API for use by NumberFormat API.
      * @internal
      */
-U_I18N_API inline const char16_t* getCurrencyPattern() const;
+    U_I18N_API inline const char16_t* getCurrencyPattern() const;
+
     /**
      * Returns the numbering system with which this DecimalFormatSymbols was initialized.
      * @internal
      */
-U_I18N_API inline const char* getNumberingSystemName() const;
+    U_I18N_API inline const char* getNumberingSystemName() const;
 #endif  /* U_HIDE_INTERNAL_API */
 
 private:
@@ -507,8 +507,9 @@ private:
 
     Locale locale;
 
-CharString* actualLocale = nullptr;
-    CharString* validLocale = nullptr;    const char16_t* currPattern = nullptr;
+    Locale actualLocale;
+    Locale validLocale;
+    const char16_t* currPattern = nullptr;
 
     UnicodeString currencySpcBeforeSym[UNUM_CURRENCY_SPACING_COUNT];
     UnicodeString currencySpcAfterSym[UNUM_CURRENCY_SPACING_COUNT];

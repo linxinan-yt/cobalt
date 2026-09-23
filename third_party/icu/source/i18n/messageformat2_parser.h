@@ -164,7 +164,8 @@ namespace message2 {
 	void parseToken(const std::u16string_view&, UErrorCode&);
 	void parseTokenWithWhitespace(const std::u16string_view&, UErrorCode&);
         bool nextIs(const std::u16string_view&) const;
-UnicodeString parseNameChars(UnicodeString&, UErrorCode&);	UnicodeString parseName(UErrorCode&);
+	UnicodeString parseNameChars(UnicodeString&, UErrorCode&);
+	UnicodeString parseName(UErrorCode&);
         UnicodeString parseIdentifier(UErrorCode&);
         UnicodeString parseDigits(UErrorCode&);
 	VariableName parseVariableName(UErrorCode&);

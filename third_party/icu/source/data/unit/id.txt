@@ -274,7 +274,8 @@ id{
             }
             night{
 dnam{"malam"}
-                other{"{0} malam"}                per{"{0} per malam"}
+                other{"{0} malam"}
+                per{"{0} per malam"}
             }
             quarter{
                 dnam{"kuartal"}

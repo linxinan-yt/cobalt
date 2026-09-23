@@ -47,7 +47,9 @@ namespace perfetto {
 // Forward declaration for a proto.
 namespace protos::gen {
 class TraceConfig_AndroidReportConfig;
-}  // namespace protos::genclass PerfettoCmd : public Consumer {
+}  // namespace protos::gen
+
+class PerfettoCmd : public Consumer {
  public:
   PerfettoCmd();
   ~PerfettoCmd() override;

@@ -407,7 +407,8 @@ nl{
 dnam{"nachten"}
                 gender{"common"}
                 one{"{0} nacht"}
-                other{"{0} nachten"}                per{"{0} per nacht"}
+                other{"{0} nachten"}
+                per{"{0} per nacht"}
             }
             quarter{
                 dnam{"kwartaal"}
@@ -1399,7 +1400,8 @@ dnam{"licht"}
         }
         speed{
             light-speed{
-dnam{"licht"}                one{"{0}licht"}
+dnam{"licht"}
+                one{"{0}licht"}
                 other{"{0}licht"}
             }
         }

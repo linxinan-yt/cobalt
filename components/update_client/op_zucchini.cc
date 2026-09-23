@@ -30,14 +30,37 @@ base::OnceClosure ZucchiniOperation(
     base::RepeatingCallback<void(ComponentState)> state_tracker,
     const std::string& previous_hash,
     const std::string& output_hash,
-bool is_foreground,
+    bool is_foreground,
 #if BUILDFLAG(IS_STARBOARD)
     const OperationResult& patch_operation_result,
     base::OnceCallback<void(base::expected<OperationResult, CategorizedError>)>
-#else    const base::FilePath& patch_file,
+#else
+    const base::FilePath& patch_file,
     base::OnceCallback<void(base::expected<base::FilePath, CategorizedError>)>
 #endif
         callback) {
+#if BUILDFLAG(IS_STARBOARD)
+  // Cobalt's pipeline passes an OperationResult around, but DeltaPatchOperation
+  // only deals in file paths. Unwrap the input and re-wrap the output.
+  const base::FilePath& patch_file = patch_operation_result.response;
+  base::OnceCallback<void(base::expected<base::FilePath, CategorizedError>)>
+      patch_callback = base::BindOnce(
+          [](OperationResult previous_result,
+             base::OnceCallback<void(
+                 base::expected<OperationResult, CategorizedError>)> callback,
+             base::expected<base::FilePath, CategorizedError> result) {
+            if (!result.has_value()) {
+              std::move(callback).Run(base::unexpected(result.error()));
+              return;
+            }
+            previous_result.response = result.value();
+            std::move(callback).Run(previous_result);
+          },
+          patch_operation_result, std::move(callback));
+#else
+  base::OnceCallback<void(base::expected<base::FilePath, CategorizedError>)>
+      patch_callback = std::move(callback);
+#endif
   base::MakeRefCounted<DeltaPatchOperation>(
       crx_cache, event_adder, state_tracker, previous_hash,
       base::File::FLAG_CREATE | base::File::FLAG_READ | base::File::FLAG_WRITE |
@@ -45,10 +68,10 @@ bool is_foreground,
           base::File::FLAG_WIN_SHARE_DELETE |
           base::File::FLAG_CAN_DELETE_ON_CLOSE | base::File::FLAG_NO_FOLLOW,
       output_hash, 0, patch_file, protocol_request::kEventZucchini,
-      is_foreground, std::move(callback))
+      is_foreground, std::move(patch_callback))
       ->Operation(
-          base::BindOnce(&Patcher::PatchZucchini, patcher, is_foreground));  return base::DoNothing();
-#endif  // defined(IN_MEMORY_UPDATES)
+          base::BindOnce(&Patcher::PatchZucchini, patcher, is_foreground));
+  return base::DoNothing();
 }
 
 }  // namespace update_client

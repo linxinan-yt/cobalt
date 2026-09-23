@@ -13,7 +13,8 @@
 // limitations under the License.
 
 import m from 'mithril';
-import type {Engine} from '../../trace_processor/engine';import {NUM_NULL, STR} from '../../trace_processor/query_result';
+import type {Engine} from '../../trace_processor/engine';
+import {NUM_NULL, STR} from '../../trace_processor/query_result';
 import {Icon} from '../../widgets/icon';
 import {Tooltip} from '../../widgets/tooltip';
 import {Card} from '../../widgets/card';
@@ -22,7 +23,7 @@ import {Grid, GridCell, GridHeaderCell} from '../../widgets/grid';
 // All possible tab keys - single source of truth
 export const ALL_TAB_KEYS = [
   'overview',
-'trace_doctor',
+  'trace_doctor',
   'config',
   'android',
   'traces',
@@ -31,7 +32,8 @@ export const ALL_TAB_KEYS = [
   'import_errors',
   'trace_errors',
   'data_losses',
-  'notices',  'ui_loading_errors',
+  'notices',
+  'ui_loading_errors',
   'stats',
 ] as const;
 
@@ -51,8 +53,9 @@ export const statsSpec = {
   idx: STR,
   severity: STR,
   source: STR,
-machineId: NUM_NULL,
-  traceId: NUM_NULL,};
+  machineId: NUM_NULL,
+  traceId: NUM_NULL,
+};
 
 export type StatsSectionRow = typeof statsSpec;
 
@@ -82,7 +85,9 @@ export async function getTraceInfos(
     });
   }
   return map;
-}// Generic error category interface
+}
+
+// Generic error category interface
 export interface ErrorCategory {
   name: string;
   description: string;
@@ -102,12 +107,13 @@ export async function loadStatsWithFilter(
       cast(ifnull(idx, '') as text) as idx,
       description,
       severity,
-source,
+      source,
       machine_id as machineId,
       trace_id as traceId
     from stats
     where ${whereClause}
-    order by trace_id, machine_id, name, idx  `);
+    order by trace_id, machine_id, name, idx
+  `);
 
   const stats: StatsSectionRow[] = [];
   for (const iter = result.iter(statsSpec); iter.valid(); iter.next()) {
@@ -118,8 +124,9 @@ source,
       idx: iter.idx,
       severity: iter.severity,
       source: iter.source,
-machineId: iter.machineId,
-      traceId: iter.traceId,    });
+      machineId: iter.machineId,
+      traceId: iter.traceId,
+    });
   }
 
   return stats;
@@ -145,32 +152,11 @@ export function groupByCategory(stats: StatsSectionRow[]): ErrorCategory[] {
   return Array.from(categoryMap.values());
 }
 
-// Format file size from bytes to human-readable string
-export function formatFileSize(bytes: bigint | number): {
-  formatted: string;
-  exact: string;
-} {
-  const numBytes = Number(bytes);
-  const exact = `${numBytes.toLocaleString()} bytes`;
-
-  let formatted: string;
-  if (numBytes >= 1024 * 1024 * 1024) {
-    formatted = `${(numBytes / (1024 * 1024 * 1024)).toFixed(2)} GB`;
-  } else if (numBytes >= 1024 * 1024) {
-    formatted = `${(numBytes / (1024 * 1024)).toFixed(2)} MB`;
-  } else if (numBytes >= 1024) {
-    formatted = `${(numBytes / 1024).toFixed(2)} KB`;
-  } else {
-    formatted = `${numBytes} bytes`;
-  }
-
-  return {formatted, exact};
-}
-
 // Render an error category card
 export function renderErrorCategoryCard(
   category: ErrorCategory,
-  severity: 'danger' | 'warning' | 'notice',  icon: string,
+  severity: 'danger' | 'warning' | 'notice',
+  icon: string,
 ): m.Children {
   const scrollToSection = () => {
     const targetId = categoryToId(category.name);
@@ -232,7 +218,7 @@ function categoryToId(categoryName: string): string {
 // Render a category section with detailed breakdown
 export function renderCategorySection(
   category: ErrorCategory,
-options?: {
+  options?: {
     className?: string;
     isMultiTrace?: boolean;
     isMultiMachine?: boolean;
@@ -250,12 +236,13 @@ options?: {
   columns.push(
     {key: 'idx', header: m(GridHeaderCell, 'Index')},
     {key: 'value', header: m(GridHeaderCell, 'Count')},
-  );  return m(
+  );
+  return m(
     '',
     m('h3', {id: categoryToId(category.name)}, category.name),
     category.description && m('p', category.description),
     m(Grid, {
-columns,
+      columns,
       rowData: category.entries.map((row) => {
         const cells = [];
         if (isMultiTrace) {
@@ -269,7 +256,8 @@ columns,
           m(GridCell, row.value !== null ? row.value : '-'),
         );
         return cells;
-      }),      className: options?.className,
+      }),
+      className: options?.className,
     }),
   );
 }

@@ -476,12 +476,9 @@ void CobaltContentBrowserClient::ConfigureNetworkContextParams(
 
   network_context_params->sct_auditing_mode =
       network::mojom::SCTAuditingMode::kDisabled;
-
-  // Avoid closing idle HTTP/2 sessions on memory pressure signals. On resource-
-  // constrained TV hardware, PartitionAlloc memory compaction cycles repeatedly
-  // trigger memory pressure, which otherwise results in high connection churn
-  // and aborted session spikes (ERR_ABORTED).
+#if CHROMIUM_MILESTONE_LE_150
   network_context_params->disable_idle_sockets_close_on_memory_pressure = true;
+#endif
 
   // All consumers of the main NetworkContext must provide
   // NetworkAnonymizationKey / IsolationInfos, so storage can be isolated on a
@@ -683,9 +680,9 @@ void CobaltContentBrowserClient::SetUpCobaltFeaturesAndParams(
   const bool use_safe_config =
       (config_type == ExperimentConfigType::kSafeConfig);
 
-  const base::Value::Dict& feature_map = experiment_config->GetDict(
+  const base::DictValue& feature_map = experiment_config->GetDict(
       use_safe_config ? kSafeConfigFeatures : kExperimentConfigFeatures);
-  const base::Value::Dict& param_map = experiment_config->GetDict(
+  const base::DictValue& param_map = experiment_config->GetDict(
       use_safe_config ? kSafeConfigFeatureParams
                       : kExperimentConfigFeatureParams);
 
@@ -825,3 +822,7 @@ void CobaltContentBrowserClient::SetUserAgentCrashAnnotation() {
 #endif  // !BUILDFLAG(IS_ANDROIDTV)
 
 }  // namespace cobalt
+
+#if BUILDFLAG(IS_ANDROID)
+DEFINE_JNI(CobaltContentBrowserClient)
+#endif

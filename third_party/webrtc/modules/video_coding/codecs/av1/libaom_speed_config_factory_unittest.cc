@@ -40,28 +40,33 @@ using ::testing::Values;
 
 // Test that the number of speed levels increases with complexity.
 TEST(LibaomSpeedConfigFactoryTest, NumLevelsIncreaseWithComplexity) {
-FieldTrials empty_trial = CreateTestFieldTrials("");
+  FieldTrials empty_trial = CreateTestFieldTrials("");
   LibaomSpeedConfigFactory factory_low(VideoCodecComplexity::kComplexityLow,
                                        VideoCodecMode::kRealtimeVideo);
   EncoderSpeedController::Config config_low =
       factory_low.GetSpeedConfig(640, 360, 3, empty_trial);
+
   LibaomSpeedConfigFactory factory_normal(
       VideoCodecComplexity::kComplexityNormal, VideoCodecMode::kRealtimeVideo);
   EncoderSpeedController::Config config_normal =
-factory_normal.GetSpeedConfig(640, 360, 3, empty_trial);
+      factory_normal.GetSpeedConfig(640, 360, 3, empty_trial);
+
   LibaomSpeedConfigFactory factory_high(VideoCodecComplexity::kComplexityHigh,
                                         VideoCodecMode::kRealtimeVideo);
   EncoderSpeedController::Config config_high =
-factory_high.GetSpeedConfig(640, 360, 3, empty_trial);
+      factory_high.GetSpeedConfig(640, 360, 3, empty_trial);
+
   LibaomSpeedConfigFactory factory_higher(
       VideoCodecComplexity::kComplexityHigher, VideoCodecMode::kRealtimeVideo);
   EncoderSpeedController::Config config_higher =
-factory_higher.GetSpeedConfig(640, 360, 3);
+      factory_higher.GetSpeedConfig(640, 360, 3, empty_trial);
 
   LibaomSpeedConfigFactory factory_max(VideoCodecComplexity::kComplexityMax,
                                        VideoCodecMode::kRealtimeVideo);
+
   EncoderSpeedController::Config config_max =
-      factory_max.GetSpeedConfig(640, 360, 3);
+      factory_max.GetSpeedConfig(640, 360, 3, empty_trial);
+
   EXPECT_GE(config_normal.speed_levels.size(), config_low.speed_levels.size());
   EXPECT_GE(config_high.speed_levels.size(), config_normal.speed_levels.size());
   EXPECT_GE(config_higher.speed_levels.size(), config_high.speed_levels.size());
@@ -72,8 +77,9 @@ factory_higher.GetSpeedConfig(640, 360, 3);
 TEST(LibaomSpeedConfigFactoryTest, SpeedsAreMonotonic) {
   LibaomSpeedConfigFactory factory(VideoCodecComplexity::kComplexityMax,
                                    VideoCodecMode::kRealtimeVideo);
-EncoderSpeedController::Config config =
+  EncoderSpeedController::Config config =
       factory.GetSpeedConfig(1280, 720, 3, CreateTestFieldTrials(""));
+
   for (const auto& level : config.speed_levels) {
     // Lower reference class index means more important, so speed should be
     // lower or equal.
@@ -96,8 +102,9 @@ EncoderSpeedController::Config config =
 TEST(LibaomSpeedConfigFactoryTest, KeyAndMainSpeedsIncreaseBetweenLevels) {
   LibaomSpeedConfigFactory factory(VideoCodecComplexity::kComplexityMax,
                                    VideoCodecMode::kRealtimeVideo);
-EncoderSpeedController::Config config =
+  EncoderSpeedController::Config config =
       factory.GetSpeedConfig(1280, 720, 3, CreateTestFieldTrials(""));
+
   for (size_t i = 0; i < config.speed_levels.size() - 1; ++i) {
     const auto& current_level = config.speed_levels[i];
     const auto& next_level = config.speed_levels[i + 1];
@@ -133,19 +140,22 @@ TEST_P(LibaomSpeedConfigFactoryResolutionTest, GetSpeedConfigStartSpeedIndex) {
   const ResolutionParams& params = GetParam();
   LibaomSpeedConfigFactory factory(VideoCodecComplexity::kComplexityMax,
                                    VideoCodecMode::kRealtimeVideo);
-EncoderSpeedController::Config config = factory.GetSpeedConfig(
-      params.width, params.height, 3, CreateTestFieldTrials(""));  int expected_index =
+  EncoderSpeedController::Config config = factory.GetSpeedConfig(
+      params.width, params.height, 3, CreateTestFieldTrials(""));
+  int expected_index =
       std::max(0, static_cast<int>(config.speed_levels.size()) -
                       params.expected_start_index_offset);
   EXPECT_EQ(config.start_speed_index, expected_index);
 }
 
-void CheckDistinctConfigs(const LibaomSpeedConfigFactory& factory,                          int num_temporal_layers) {
+void CheckDistinctConfigs(LibaomSpeedConfigFactory& factory,
+                          int num_temporal_layers) {
   RTC_DCHECK_GT(num_temporal_layers, 0);
   RTC_DCHECK_LE(num_temporal_layers, 3);
 
-EncoderSpeedController::Config config = factory.GetSpeedConfig(
+  EncoderSpeedController::Config config = factory.GetSpeedConfig(
       640, 360, num_temporal_layers, CreateTestFieldTrials(""));
+
   std::set<EncoderSpeedController::Config::SpeedLevel> unique_configs(
       config.speed_levels.begin(), config.speed_levels.end());
   EXPECT_EQ(unique_configs.size(), config.speed_levels.size());
@@ -186,5 +196,7 @@ TEST(LibaomSpeedConfigFactoryTest, PropagatesPsnrExperimentSettings) {
   EXPECT_EQ(config.psnr_probing_settings->sampling_interval,
             TimeDelta::Seconds(3));
   EXPECT_EQ(config.psnr_probing_settings->average_base_layer_ratio, 0.5);
-}}  // namespace
+}
+
+}  // namespace
 }  // namespace webrtc

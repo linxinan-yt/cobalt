@@ -1458,7 +1458,8 @@ permillion{
             part-per-1e6{
                 dnam{"ნაწილი/მილიონზე"}
             }
-portion-per-1e9{                dnam{"ნაწილი/მილიარდზე"}
+portion-per-1e9{
+                dnam{"ნაწილი/მილიარდზე"}
                 one{"{0} ნ/მ"}
                 other{"{0} ნ/მ"}
             }

@@ -209,7 +209,8 @@ class RTC_EXPORT UDPPort : public Port {
       absl::string_view reason);
 
   // Sends STUN requests to the server.
-void SendStunRequest(std::span<const uint8_t> data, StunRequest* req);
+  void SendStunRequest(std::span<const uint8_t> data, StunRequest* req);
+
   // TODO(mallinaht): Move this up to Port when SignalAddressReady is
   // changed to SignalPortReady.
   void MaybeSetPortCompleteOrError();

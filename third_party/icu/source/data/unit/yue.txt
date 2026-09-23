@@ -42,7 +42,8 @@ katal{
                 dnam{"等份"}
                 other{"{0} 等份"}
             }
-            part-per-1e9{                dnam{"十億分點濃度"}
+            part-per-1e9{
+                dnam{"十億分點濃度"}
                 other{"{0} 十億分點濃度"}
             }
         }
@@ -248,7 +249,8 @@ katal{
     }
     unitsNarrow{
 concentr{
-            portion-per-1e9{                other{"{0}ppb"}
+            portion-per-1e9{
+                other{"{0}ppb"}
             }
         }
         digital{
@@ -364,7 +366,8 @@ other{"{0}晚"}
                 other{"每小時 {0} 公里"}
             }
             light-speed{
-dnam{"光速"}                other{"{0}光速"}
+dnam{"光速"}
+                other{"{0}光速"}
             }
             meter-per-second{
                 other{"每秒 {0} 米"}

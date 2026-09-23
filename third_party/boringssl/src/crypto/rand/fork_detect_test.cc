@@ -51,7 +51,8 @@
 
 
 BSSL_NAMESPACE_BEGIN
-namespace {static pid_t WaitpidEINTR(pid_t pid, int *out_status, int options) {
+namespace {
+static pid_t WaitpidEINTR(pid_t pid, int *out_status, int options) {
   pid_t ret;
   do {
     ret = waitpid(pid, out_status, options);

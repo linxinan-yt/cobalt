@@ -298,7 +298,8 @@ TurnPort::~TurnPort() {
 
   if (socket_) {
     socket_->UnsubscribeSentPacket(this);
-socket_->UnsubscribeReadyToSend(this);    socket_->UnsubscribeConnect(this);
+    socket_->UnsubscribeReadyToSend(this);
+    socket_->UnsubscribeConnect(this);
     socket_->UnsubscribeCloseEvent(this);
   }
 }
@@ -501,7 +502,7 @@ bool TurnPort::CreateTurnClientSocket() {
   }
 
   socket_->SubscribeReadyToSend(
-this, [this, flag = task_safety_.flag()](AsyncPacketSocket* socket) {
+      this, [this, flag = task_safety_.flag()](AsyncPacketSocket* socket) {
         if (flag->alive()) {
           OnReadyToSend(socket);
         }
@@ -512,7 +513,8 @@ this, [this, flag = task_safety_.flag()](AsyncPacketSocket* socket) {
                                                const SentPacketInfo& info) {
         if (flag->alive()) {
           OnSentPacket(socket, info);
-        }      });
+        }
+      });
 
   // TCP and UDP with DTLS port is ready to send stun requests after the socket
   // is connected, while pure UDP port is ready to do so once the socket is
@@ -1113,9 +1115,10 @@ void TurnPort::HandleChannelData(uint16_t channel_id,
   //   +-------------------------------+
 
   // Extract header fields from the message.
-std::span<const uint8_t> payload = packet.payload();
+  std::span<const uint8_t> payload = packet.payload();
   uint16_t len = GetBE16(payload.subspan(2, 2));
-  if (len > payload.size() - TURN_CHANNEL_HEADER_SIZE) {    RTC_LOG(LS_WARNING) << ToString()
+  if (len > payload.size() - TURN_CHANNEL_HEADER_SIZE) {
+    RTC_LOG(LS_WARNING) << ToString()
                         << ": Received TURN channel data message with "
                            "incorrect length, len: "
                         << len;
@@ -1132,7 +1135,8 @@ std::span<const uint8_t> payload = packet.payload();
     return;
   }
   ReceivedIpPacket unwrapped_packet = ReceivedIpPacket(
-payload.subspan(TURN_CHANNEL_HEADER_SIZE, len), entry->address(),      packet.arrival_time(), packet.ecn(), packet.decryption_info());
+      payload.subspan(TURN_CHANNEL_HEADER_SIZE, len), entry->address(),
+      packet.arrival_time(), packet.ecn(), packet.decryption_info());
   DispatchPacket(unwrapped_packet, PROTO_UDP);
 }
 

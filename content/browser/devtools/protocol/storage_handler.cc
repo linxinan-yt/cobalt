@@ -429,7 +429,6 @@ Response StorageHandler::Disable() {
   indexed_db_observer_.reset();
   quota_override_handle_.reset();
   SetSharedStorageTracking(false);
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
   quota_manager_observer_.reset();
   return Response::Success();
 }
@@ -1038,18 +1037,6 @@ void StorageHandler::GetSharedStorageEntries(
     std::unique_ptr<GetSharedStorageEntriesCallback> callback) {
   callback->sendFailure(Response::ServerError("Shared storage is disabled."));
 }
-#else
-void StorageHandler::GetSharedStorageMetadata(
-    const std::string& owner_origin_string,
-    std::unique_ptr<GetSharedStorageMetadataCallback> callback) {
-  callback->sendFailure(Response::ServerError("Shared storage is disabled."));
-}
-void StorageHandler::GetSharedStorageEntries(
-    const std::string& owner_origin_string,
-    std::unique_ptr<GetSharedStorageEntriesCallback> callback) {
-  callback->sendFailure(Response::ServerError("Shared storage is disabled."));
-}
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
 
 void StorageHandler::SetSharedStorageEntry(
     const std::string& owner_origin_string,
@@ -1066,53 +1053,23 @@ void StorageHandler::DeleteSharedStorageEntry(
     std::unique_ptr<DeleteSharedStorageEntryCallback> callback) {
   callback->sendFailure(Response::ServerError("Shared storage is disabled."));
 }
-#else
-void StorageHandler::SetSharedStorageEntry(
-    const std::string& owner_origin_string,
-    const std::string& key,
-    const std::string& value,
-    std::optional<bool> ignore_if_present,
-    std::unique_ptr<SetSharedStorageEntryCallback> callback) {
-  callback->sendFailure(Response::ServerError("Shared storage is disabled."));
-}
-void StorageHandler::DeleteSharedStorageEntry(
-    const std::string& owner_origin_string,
-    const std::string& key,
-    std::unique_ptr<DeleteSharedStorageEntryCallback> callback) {
-  callback->sendFailure(Response::ServerError("Shared storage is disabled."));
-}
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
 
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
 void StorageHandler::ClearSharedStorageEntries(
     const std::string& owner_origin_string,
     std::unique_ptr<ClearSharedStorageEntriesCallback> callback) {
   callback->sendFailure(Response::ServerError("Shared storage is disabled."));
 }
-#else
-void StorageHandler::ClearSharedStorageEntries(
-    const std::string& owner_origin_string,
-    std::unique_ptr<ClearSharedStorageEntriesCallback> callback) {
-  callback->sendFailure(Response::ServerError("Shared storage is disabled."));
-}
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
 
 Response StorageHandler::SetSharedStorageTracking(bool enable) {
-return Response::ServerError("Shared storage is disabled.");}
+  return Response::ServerError("Shared storage is disabled.");
+}
 
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
 void StorageHandler::ResetSharedStorageBudget(
     const std::string& owner_origin_string,
     std::unique_ptr<ResetSharedStorageBudgetCallback> callback) {
   callback->sendFailure(Response::ServerError("Shared storage is disabled."));
 }
-#else
-void StorageHandler::ResetSharedStorageBudget(
-    const std::string& owner_origin_string,
-    std::unique_ptr<ResetSharedStorageBudgetCallback> callback) {
-  callback->sendFailure(Response::ServerError("Shared storage is disabled."));
-}
-#endif  // BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS) && CHROMIUM_MILESTONE_LE_150
+
 
 
 DispatchResponse StorageHandler::SetStorageBucketTracking(
@@ -1171,6 +1128,7 @@ void StorageHandler::NotifyDeleteBucket(
   frontend_->StorageBucketDeleted(
       base::NumberToString(bucket_locator.id.value()));
 }
+
 
 
 }  // namespace protocol

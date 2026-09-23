@@ -282,7 +282,8 @@ class NATSocket : public Socket {
     result = (socket_) ? socket_->Bind(addr) : -1;
     if (result >= 0) {
       socket_->SubscribeConnectEvent(
-this, [this](Socket* socket) { OnConnectEvent(socket); });      socket_->SubscribeReadEvent(
+          this, [this](Socket* socket) { OnConnectEvent(socket); });
+      socket_->SubscribeReadEvent(
           this, [this](Socket* socket) { OnReadEvent(socket); });
       socket_->SubscribeWriteEvent(
           this, [this](Socket* socket) { OnWriteEvent(socket); });

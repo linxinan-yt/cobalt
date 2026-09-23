@@ -31,9 +31,10 @@ abstract class WattsonBasePackageSelectionAggregator implements Aggregator {
   abstract readonly id: string;
   private scaleNumericData: boolean = false;
 
-probe(area: AreaSelection): Aggregation | undefined {
+  probe(area: AreaSelection): Aggregation | undefined {
     const probeResult = this.doProbe(area);
     if (probeResult === undefined) return undefined;
+
     return {
       prepareData: async (engine: Engine) => {
         await engine.query(`drop view if exists ${this.id};`);

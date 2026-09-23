@@ -2280,7 +2280,8 @@ RTCError SdpOfferAnswerHandler::ApplyLocalDescription(
         }
         transceiver->set_receptive(
             RtpTransceiverDirectionHasRecv(media_desc->direction()));
-transceiver->ApplySframeEnabled(media_desc->sframe_enabled());      }
+        transceiver->ApplySframeEnabled(media_desc->sframe_enabled());
+      }
       pc_->RunWithObserver([&](auto observer) {
         for (const auto& transceiver : remove_list) {
           observer->OnRemoveTrack(transceiver->receiver());
@@ -5777,7 +5778,8 @@ RTCError SdpOfferAnswerHandler::PushdownMediaDescription(
           {.local_port = local_sctp_description->port(),
            .remote_port = remote_sctp_description->port(),
            .max_message_size = max_message_size,
-.max_sctp_streams = max_sctp_streams_,           .local_init = local_sctp_description->sctp_init(),
+           .max_sctp_streams = max_sctp_streams_,
+           .local_init = local_sctp_description->sctp_init(),
            .remote_init = remote_sctp_description->sctp_init()});
       if (!error.ok()) {
         return error;

@@ -66,7 +66,7 @@ class GpuEventParser {
       protos::pbzero::VulkanMemoryEvent::Operation;
   explicit GpuEventParser(TraceProcessorContext*);
 
-// GPU counter descriptor helpers, used at tokenization time by
+  // GPU counter descriptor helpers, used at tokenization time by
   // GraphicsEventModule to turn a GpuCounterDescriptor into tracks and counter
   // groups.
   struct GroupMetadata {
@@ -98,7 +98,8 @@ class GpuEventParser {
       int64_t ts,
       const CounterTrackMap& counter_map,
       bool report_missing,
-      const protos::pbzero::GpuCounterEvent::Decoder& event);  void ParseGpuRenderStageEvent(int64_t ts,
+      const protos::pbzero::GpuCounterEvent::Decoder& event);
+  void ParseGpuRenderStageEvent(int64_t ts,
                                 PacketSequenceStateGeneration*,
                                 ConstBytes);
   void ParseGraphicsFrameEvent(int64_t timestamp, ConstBytes);

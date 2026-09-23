@@ -226,7 +226,8 @@ one{"{0} مهينو"}
             night{
                 dnam{"راتيون"}
                 one{"{0} رات"}
-                other{"{0} راتيون"}                per{"{0} في رات"}
+                other{"{0} راتيون"}
+                per{"{0} في رات"}
             }
             quarter{
                 dnam{"ٽه ماهيون"}
@@ -239,7 +240,8 @@ one{"{0} ٽه ماهيون"}
             }
             week{
 one{"{0} هفتو"}
-                other{"{0} هفتا"}                per{"{0} في هفتو"}
+                other{"{0} هفتا"}
+                per{"{0} في هفتو"}
             }
         }
         electric{
@@ -643,14 +645,16 @@ one{"{0} هفتو"}
             }
         }
         concentr{
-portion-per-1e9{                dnam{"ح ف ا"}
+portion-per-1e9{
+                dnam{"ح ف ا"}
                 one{"{0}ح ف ا"}
                 other{"{0}ح ف ا"}
             }
         }
         duration{
             century{
-dnam{"ص"}                one{"{0}ص"}
+dnam{"ص"}
+                one{"{0}ص"}
                 other{"{0}ص"}
             }
             day{
@@ -794,7 +798,8 @@ per{"{0}/هفتو"}            }
                 other{"{0} km/h"}
             }
             light-speed{
-dnam{"نوري"}                one{"{0}نوري"}
+dnam{"نوري"}
+                one{"{0}نوري"}
                 other{"{0}نوري"}
             }
         }

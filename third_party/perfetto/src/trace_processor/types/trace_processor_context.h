@@ -32,11 +32,11 @@
 
 namespace perfetto::trace_processor {
 
-class ClockSynchronizerListenerImpl;
 class ArgsTranslationTable;
 class ClockConverter;
 class ClockSynchronizer;
-class ClockTracker;class CpuTracker;
+class ClockTracker;
+class CpuTracker;
 class GpuTracker;
 class UserTracker;
 class DescriptorPool;
@@ -46,7 +46,8 @@ class FlowTracker;
 class BlobPacketWriter;
 class GlobalArgsTracker;
 class GlobalMetadataTracker;
-class GlobalStatsTracker;class ImportLogsTracker;
+class GlobalStatsTracker;
+class ImportLogsTracker;
 class MachineTracker;
 class MappingTracker;
 class MetadataTracker;
@@ -82,6 +83,7 @@ class PerfTracker;
 
 using MachineId = tables::MachineTable::Id;
 using TraceId = tables::TraceFileTable::Id;
+
 class TraceProcessorContext {
  public:
   template <typename T>
@@ -187,9 +189,10 @@ class TraceProcessorContext {
   GlobalPtr<TraceManifestState> trace_manifest_state;
   GlobalPtr<TrackCompressorGroupIdxState> track_group_idx_state;
   GlobalPtr<StackProfileTracker> stack_profile_tracker;
-GlobalPtr<ProfilerSampleTracker> profiler_sample_tracker;
+  GlobalPtr<ProfilerSampleTracker> profiler_sample_tracker;
   GlobalPtr<Destructible> deobfuscation_tracker;  // DeobfuscationTracker
   GlobalPtr<BlobPacketWriter> blob_packet_writer;
+
   // The registration function for additional proto modules.
   // This is populated by TraceProcessorImpl to allow for late registration of
   // modules.
@@ -226,7 +229,8 @@ GlobalPtr<ProfilerSampleTracker> profiler_sample_tracker;
   PerTracePtr<TraceState> trace_state;
   PerTracePtr<Destructible> content_analyzer;
   PerTracePtr<ImportLogsTracker> import_logs_tracker;
-PerTracePtr<TraceDiagnosticsTracker> trace_diagnostics_tracker;
+  PerTracePtr<TraceDiagnosticsTracker> trace_diagnostics_tracker;
+
   // Per-Machine State
   // =================
   //
@@ -238,8 +242,9 @@ PerTracePtr<TraceDiagnosticsTracker> trace_diagnostics_tracker;
   PerMachinePtr<MappingTracker> mapping_tracker;
   PerMachinePtr<MachineTracker> machine_tracker;
   PerMachinePtr<CpuTracker> cpu_tracker;
-PerMachinePtr<GpuTracker> gpu_tracker;
+  PerMachinePtr<GpuTracker> gpu_tracker;
   PerMachinePtr<UserTracker> user_tracker;
+
   // Per-Machine, Per-Trace State
   // ==========================
   //
@@ -301,7 +306,8 @@ PerMachinePtr<GpuTracker> gpu_tracker;
 
 class TraceProcessorContext::ForkedContextState {
  public:
-using TraceIdAndMachineId = std::pair<uint32_t, int64_t>;  base::FlatHashMap<TraceIdAndMachineId,
+  using TraceIdAndMachineId = std::pair<uint32_t, int64_t>;
+  base::FlatHashMap<TraceIdAndMachineId,
                     std::unique_ptr<TraceProcessorContext>,
                     base::MurmurHash<TraceIdAndMachineId>>
       trace_and_machine_to_context;

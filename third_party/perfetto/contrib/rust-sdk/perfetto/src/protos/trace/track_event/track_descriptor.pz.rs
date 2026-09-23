@@ -22,7 +22,8 @@ use crate::protos::trace::track_event::chrome_process_descriptor::*;
 use crate::protos::trace::track_event::chrome_thread_descriptor::*;
 use crate::protos::trace::track_event::counter_descriptor::*;
 use crate::protos::trace::track_event::process_descriptor::*;
-use crate::protos::trace::track_event::state_descriptor::*;use crate::protos::trace::track_event::thread_descriptor::*;
+use crate::protos::trace::track_event::state_descriptor::*;
+use crate::protos::trace::track_event::thread_descriptor::*;
 
 pb_enum!(TrackDescriptorChildTracksOrdering {
     UNKNOWN: 0,
@@ -46,7 +47,9 @@ pb_enum!(TrackDescriptorProcessOrdering {
 pb_enum!(TrackDescriptorThreadOrdering {
     THREAD_ORDERING_UNSPECIFIED: 0,
     THREAD_ORDERING_EXPLICIT: 1,
-});pb_msg!(TrackDescriptor {
+});
+
+pb_msg!(TrackDescriptor {
     uuid: u64, primitive, 1,
     parent_uuid: u64, primitive, 5,
     name: String, primitive, 2,
@@ -58,11 +61,13 @@ pb_enum!(TrackDescriptorThreadOrdering {
     thread: ThreadDescriptor, msg, 4,
     chrome_thread: ChromeThreadDescriptor, msg, 7,
     counter: CounterDescriptor, msg, 8,
-state: StateDescriptor, msg, 18,    disallow_merging_with_system_tracks: bool, primitive, 9,
+    state: StateDescriptor, msg, 18,
+    disallow_merging_with_system_tracks: bool, primitive, 9,
     child_ordering: TrackDescriptorChildTracksOrdering, enum, 11,
     sibling_order_rank: i32, primitive, 12,
     sibling_merge_behavior: TrackDescriptorSiblingMergeBehavior, enum, 15,
     sibling_merge_key: String, primitive, 16,
     sibling_merge_key_int: u64, primitive, 17,
-process_ordering: TrackDescriptorProcessOrdering, enum, 19,
-    thread_ordering: TrackDescriptorThreadOrdering, enum, 20,});
+    process_ordering: TrackDescriptorProcessOrdering, enum, 19,
+    thread_ordering: TrackDescriptorThreadOrdering, enum, 20,
+});

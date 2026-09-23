@@ -319,7 +319,7 @@ class StunPortTest : public ::testing::Test {
   std::vector<std::unique_ptr<Network>> networks_;
   Network* network_;
 
-Thread* network_thread_;
+  Thread* network_thread_;
   NATSocketFactory nat_factory_;
   BasicPacketSocketFactory nat_socket_factory_;
   // Note that stun_port_ can refer to socket_, so must be destroyed
@@ -328,7 +328,8 @@ Thread* network_thread_;
   std::unique_ptr<UDPPort> stun_port_;
   std::vector<TestStunServer::StunServerPtr> stun_servers_;
   std::unique_ptr<MdnsResponderProvider> mdns_responder_provider_;
-  std::unique_ptr<NATServer> nat_server_;  bool done_;
+  std::unique_ptr<NATServer> nat_server_;
+  bool done_;
   bool error_;
   TimeDelta stun_keepalive_delay_;
   std::optional<TimeDelta> stun_keepalive_lifetime_;

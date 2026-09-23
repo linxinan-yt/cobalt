@@ -32,7 +32,7 @@ namespace perfetto {
 
 class PerfettoCmdlineUnitTest : public ::testing::Test {
  protected:
-static std::optional<int> ParseCmdline(PerfettoCmd* cmd,
+  static std::optional<int> ParseCmdline(PerfettoCmd* cmd,
                                          std::vector<std::string> args) {
     // getopt() expects a null-terminated argv (argv[argc] == nullptr).
     std::vector<char*> argv;
@@ -49,6 +49,7 @@ static std::optional<int> ParseCmdline(PerfettoCmd* cmd,
   static const TraceConfig* GetTraceConfig(const PerfettoCmd& cmd) {
     return cmd.trace_config_.get();
   }
+
 #if PERFETTO_BUILDFLAG(PERFETTO_OS_ANDROID)
   static std::optional<TraceConfig> ParseTraceConfigFromMmapedTrace(
       base::ScopedMmap mmapped_trace) {
@@ -122,6 +123,7 @@ TEST_F(PerfettoCmdlineUnitTest, AddAttributeRejectsEmptyArgument) {
   ASSERT_TRUE(res.has_value());
   EXPECT_EQ(*res, 1);
 }
+
 #if PERFETTO_BUILDFLAG(PERFETTO_OS_ANDROID)
 
 // Copied from src/perfetto_cmd/packet_writer_unittest.cc

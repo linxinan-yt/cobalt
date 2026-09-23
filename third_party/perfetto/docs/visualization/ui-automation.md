@@ -3,6 +3,7 @@
 This page covers how to automate common Perfetto UI tasks using commands,
 startup commands, and macros. For an overview of all ways to extend the UI, see
 [Extending the UI](/docs/visualization/extending-the-ui.md).
+
 ## Running commands
 
 Commands are individual UI actions — pin a track, run a query, create a debug
@@ -28,58 +29,9 @@ Startup commands are a JSON array of command objects:
 ]
 ```
 
-#### Notes
+Commands execute in order. These affect only the UI display — the trace file
+is unchanged.
 
-- Commands execute in the order specified
-- Invalid JSON or unknown command IDs will cause errors
-- These commands affect only the UI display - the trace file is unchanged
-
-### Macros
-
-**Macros** are named sequences of commands you trigger manually when needed.
-Configure them in **Settings > Macros** and run them via the command palette
-(`Ctrl-Shift-P` and then type `>macro name`). Use macros for analysis workflows
-you run occasionally rather than always.
-
-#### JSON Schema
-
-Macros must be a JSON object with macro names as keys and command arrays as
-values:
-
-```typescript
-{
-  "macro_name": [
-    {
-      "id": string,      // Command identifier
-      "args": unknown[]  // Array of arguments (types depend on the command)
-    },
-    ...
-  ],
-  ...
-}
-```
-
-#### Notes
-
-- Macro names must be valid JSON string keys. Simple names without special
-  characters are recommended for easier use in the command palette.
-- Run macros by typing `>macro name` in the command palette (e.g.,
-  `>CPU Analysis`)
-- Commands in a macro execute sequentially
-
-### Common Issues
-
-- **JSON syntax errors**: Missing commas, trailing commas, or unescaped quotes
-- **Invalid command IDs**: Use autocomplete in the command palette to find valid
-  IDs
-- **Wrong argument types**: All arguments must be strings, even numbers
-- **Wrong argument count**: Each command expects a specific number of arguments
-- **Module dependency errors**: If your debug track query uses Perfetto modules
-  (e.g., `android.screen_state`), you must include a `RunQuery` command with the
-  module include statement before the debug track command. The module include
-  must come first in the command sequence.
-
-## Startup Command Examples
 ### Pin important tracks automatically
 
 ```json
@@ -105,12 +57,11 @@ values:
 ]
 ```
 
-### Debug tracks using Perfetto modules
+### Use Perfetto SQL modules in debug tracks
 
-When your query uses Perfetto modules (like `android.screen_state` or
-`android.memory.lmk`), you must include the module first as a separate command.
-**Important: The module include command must come before the query that uses
-it.**
+When your query uses Perfetto modules, include the module first as a separate
+command:
+
 ```json
 [
   {
@@ -127,24 +78,7 @@ it.**
 ]
 ```
 
-Another example with memory LMK events:
-
-```json
-[
-  {
-    "id": "dev.perfetto.RunQuery",
-    "args": ["include perfetto module android.memory.lmk"]
-  },
-  {
-    "id": "dev.perfetto.AddDebugSliceTrackWithPivot",
-    "args": [
-      "SELECT ts, process_name as name, 0 as dur FROM android_lmk_events",
-      "name",
-      "LMK Events by Process"
-    ]
-  }
-]
-```Debug tracks visualize SQL query results on the timeline. The query must return:
+Debug tracks visualize SQL query results on the timeline. The query must return:
 
 - `ts` (timestamp)
 - For slice tracks: `dur` (duration)
@@ -283,7 +217,8 @@ This macro helps identify performance bottlenecks:
       }
     ]
   }
-]```
+]
+```
 
 ## Combining with trace recording
 

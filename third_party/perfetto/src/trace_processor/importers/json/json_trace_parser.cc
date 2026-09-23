@@ -109,8 +109,9 @@ JsonTraceParser::JsonTraceParser(TraceProcessorContext* context)
       process_sort_index_hint_id_(
           context->storage->InternString("process_sort_index_hint")),
       thread_sort_index_hint_id_(
-context->storage->InternString("thread_sort_index_hint")),
+          context->storage->InternString("thread_sort_index_hint")),
       running_string_id_(context->storage->InternString("Running")) {}
+
 JsonTraceParser::~JsonTraceParser() = default;
 
 void JsonTraceParser::ParseSystraceLine(int64_t, SystraceLine line) {
@@ -520,24 +521,25 @@ void JsonTraceParser::ParseJsonPacket(int64_t timestamp, JsonEvent event) {
                   base::unchecked_get<double>(it_.value()));
               break;
             default:
-context_->storage->IncrementStats(stats::json_parser_failure);              continue;
+              RecordEventError(timestamp, event, stats::json_parser_failure);
+              continue;
           }
           if (name == "process_sort_index") {
             UniquePid upid = procs->GetOrCreateProcess(event.pid);
-auto inserter = procs->AddArgsToProcess(upid);
-            inserter.AddArg(process_sort_index_hint_id_,
-                            Variadic::Integer(sort_index));
+            procs->SetProcessSortIndex(upid, static_cast<int32_t>(sort_index),
+                                       SortIndexPriority::kOther);
           } else {
-            auto inserter = procs->AddArgsToThread(utid);
-            inserter.AddArg(thread_sort_index_hint_id_,
-                            Variadic::Integer(sort_index));          }
+            procs->SetThreadSortIndex(utid, static_cast<int32_t>(sort_index),
+                                      SortIndexPriority::kOther);
+          }
         } else {
           if (it_.key() != "name") {
             continue;
           }
           std::string_view args_name = GetStringValue(it_.value());
           if (args_name.empty()) {
-RecordEventError(timestamp, event, stats::json_parser_failure);            continue;
+            RecordEventError(timestamp, event, stats::json_parser_failure);
+            continue;
           }
           if (name == "thread_name") {
             auto thread_name_id = context_->storage->InternString(args_name);

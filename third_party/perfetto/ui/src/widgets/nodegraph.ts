@@ -12,7 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import './nodegraph.scss';/**
+import './nodegraph.scss';
+/**
  * A component for displaying and interacting with a node-based graph.
  *
  * Features:
@@ -41,8 +42,9 @@ import './nodegraph.scss';/**
  *   onConnect: (newConnection) => {
  *     // Handle new connection
  *   },
-*   onNodeMove: (nodeId, x, y) => {
- *     // Handle node position change (called when node is dropped) *   },
+ *   onNodeMove: (nodeId, x, y) => {
+ *     // Handle node position change (called when node is dropped)
+ *   },
  * });
  * ```
  */
@@ -62,6 +64,7 @@ const DEFAULT_LABEL_MIN_HEIGHT = 30;
 // Labels can vary in height based on content, but this provides a reasonable
 // estimate for bounding box calculations when actual DOM measurements aren't available
 const TYPICAL_LABEL_HEIGHT = 100;
+
 interface Position {
   x: number;
   y: number;
@@ -78,7 +81,8 @@ export interface Connection {
 
 export interface NodeTitleBar {
   readonly title: m.Children;
-readonly icon?: string;}
+  readonly icon?: string;
+}
 
 export interface NodePort {
   readonly content?: m.Children;
@@ -102,7 +106,7 @@ export interface Node {
   readonly canDockTop?: boolean;
   readonly canDockBottom?: boolean;
   readonly contextMenuItems?: m.Children;
-readonly invalid?: boolean; // Whether this node is in an invalid state
+  readonly invalid?: boolean; // Whether this node is in an invalid state
   readonly className?: string; // Extra CSS class(es) on the .pf-node element
 }
 
@@ -112,7 +116,8 @@ export interface Label {
   y: number;
   width: number; // Width of the label box (user can resize)
   content?: m.Children; // Content to render inside the label (optional, defaults to empty)
-  selectable?: boolean; // Whether clicking the label selects it (default: false, only shift+click works)}
+  selectable?: boolean; // Whether clicking the label selects it (default: false, only shift+click works)
+}
 
 interface ConnectingState {
   nodeId: string;
@@ -136,7 +141,9 @@ interface UndockCandidate {
 interface UndockedNode {
   nodeId: string;
   parentId: string;
-}interface SelectionRect {
+}
+
+interface SelectionRect {
   startX: number;
   startY: number;
   currentX: number;
@@ -156,27 +163,29 @@ interface CanvasState {
   dockTarget: string | null; // Node being targeted for docking
   isDockZone: boolean; // Whether we're in valid dock position
   undockCandidate: UndockCandidate | null; // Tracks potential undock before threshold
-undockedNode: UndockedNode | null; // Node that was undocked (set when threshold exceeded)  hoveredPort: {
+  undockedNode: UndockedNode | null; // Node that was undocked (set when threshold exceeded)
+  hoveredPort: {
     nodeId: string;
     portIndex: number;
     type: 'input' | 'output';
   } | null;
   selectionRect: SelectionRect | null; // Box selection state
   canvasMouseDownPos: Position;
-tempNodePositions: Map<string, Position>; // Temporary positions during drag
+  tempNodePositions: Map<string, Position>; // Temporary positions during drag
   tempLabelPositions: Map<string, Position>; // Temporary label positions during drag
   tempLabelWidths: Map<string, number>; // Temporary label widths during resize
   draggedLabel: string | null; // ID of label being dragged
   labelDragStartPos: Position | null; // Position where label drag started
   resizingLabel: string | null; // ID of label being resized
   resizeStartWidth: number; // Width when resize started
-  resizeStartX: number; // Mouse X position when resize started}
+  resizeStartX: number; // Mouse X position when resize started
+}
 
 export interface NodeGraphApi {
   autoLayout: () => void;
   recenter: () => void;
   findPlacementForNode: (node: Omit<Node, 'x' | 'y'>) => Position;
-panBy: (dx: number, dy: number) => void;
+  panBy: (dx: number, dy: number) => void;
   /**
    * Zooms the canvas by the given delta factor.
    * @param deltaZoom - The zoom delta (e.g., 0.1 for 10% zoom in, -0.1 for 10% zoom out)
@@ -188,12 +197,13 @@ panBy: (dx: number, dy: number) => void;
    * Reset the canvas zoom level to the default (1.0) retaining the current
    * center point.
    */
-  resetZoom: () => void;}
+  resetZoom: () => void;
+}
 
 export interface NodeGraphAttrs {
   readonly nodes: ReadonlyArray<Node>;
   readonly connections: ReadonlyArray<Connection>;
-readonly labels?: ReadonlyArray<Label>;
+  readonly labels?: ReadonlyArray<Label>;
   readonly onConnect?: (connection: Connection) => void;
   readonly onNodeMove?: (nodeId: string, x: number, y: number) => void;
   readonly onConnectionRemove?: (index: number) => void;
@@ -205,13 +215,14 @@ readonly labels?: ReadonlyArray<Label>;
   readonly onNodeSelect?: (nodeId: string) => void;
   // Called when a node or label is added to the current selection (multiselect).
   readonly onNodeAddToSelection?: (nodeId: string) => void;
-  // Called when a node or label is removed from the current selection.  readonly onNodeRemoveFromSelection?: (nodeId: string) => void;
+  // Called when a node or label is removed from the current selection.
+  readonly onNodeRemoveFromSelection?: (nodeId: string) => void;
   readonly onSelectionClear?: () => void;
   readonly onDock?: (
     parentId: string,
     childNode: Omit<Node, 'x' | 'y'>,
   ) => void;
-readonly onUndock?: (
+  readonly onUndock?: (
     parentId: string,
     nodeId: string,
     x: number,
@@ -223,7 +234,8 @@ readonly onUndock?: (
   readonly onLabelRemove?: (labelId: string) => void;
   readonly hideControls?: boolean;
   readonly multiselect?: boolean; // Enable multi-node selection (default: true)
-  readonly contextMenuOnHover?: boolean; // Show context menu on hover (default: false)  readonly fillHeight?: boolean;
+  readonly contextMenuOnHover?: boolean; // Show context menu on hover (default: false)
+  readonly fillHeight?: boolean;
   readonly toolbarItems?: m.Children;
   readonly style?: Partial<CSSStyleDeclaration>;
 }
@@ -343,7 +355,7 @@ export function NodeGraph(): m.Component<NodeGraphAttrs> {
     dockTarget: null,
     isDockZone: false,
     undockCandidate: null,
-undockedNode: null,
+    undockedNode: null,
     hoveredPort: null,
     selectionRect: null,
     canvasMouseDownPos: {x: 0, y: 0},
@@ -412,7 +424,9 @@ undockedNode: null,
   let recenterApi: (() => void) | null = null;
   let resetZoom: (() => void) | null = null;
   let findPlacementForNodeApi:
-    ((newNode: Omit<Node, 'x' | 'y'>) => Position) | null = null;  const handleMouseMove = (e: PointerEvent) => {
+    ((newNode: Omit<Node, 'x' | 'y'>) => Position) | null = null;
+
+  const handleMouseMove = (e: PointerEvent) => {
     m.redraw();
     if (!latestVnode || !canvasElement) return;
     const vnode = latestVnode;
@@ -464,7 +478,7 @@ undockedNode: null,
       canvasState.selectionRect.currentY =
         canvasState.mousePos.transformedY ?? 0;
       m.redraw();
-} else if (canvasState.draggedLabel !== null) {
+    } else if (canvasState.draggedLabel !== null) {
       // Handle label dragging - store temp position, don't call callback yet
       const newX =
         (canvasState.mousePos.transformedX ?? 0) - canvasState.dragOffset.x;
@@ -485,11 +499,13 @@ undockedNode: null,
 
       // Store temporary width during resize
       canvasState.tempLabelWidths.set(canvasState.resizingLabel, newWidth);
-      m.redraw();    } else if (canvasState.isPanning) {
+      m.redraw();
+    } else if (canvasState.isPanning) {
       // Pan the canvas
       const dx = e.clientX - canvasState.panStart.x;
       const dy = e.clientY - canvasState.panStart.y;
-panBy(dx, dy);      canvasState.panStart = {x: e.clientX, y: e.clientY};
+      panBy(dx, dy);
+      canvasState.panStart = {x: e.clientX, y: e.clientY};
       m.redraw();
     } else if (canvasState.undockCandidate !== null) {
       // Check if we've exceeded the undock threshold
@@ -498,7 +514,7 @@ panBy(dx, dy);      canvasState.panStart = {x: e.clientX, y: e.clientY};
       const distance = Math.sqrt(dx * dx + dy * dy);
 
       if (distance > UNDOCK_THRESHOLD) {
-// Exceeded threshold - call onUndock immediately so node becomes independent
+        // Exceeded threshold - call onUndock immediately so node becomes independent
         const {onUndock} = vnode.attrs;
         const tempX =
           (canvasState.undockCandidate.startX -
@@ -531,7 +547,8 @@ panBy(dx, dy);      canvasState.panStart = {x: e.clientX, y: e.clientY};
         };
 
         canvasState.undockCandidate = null;
-        m.redraw(); // Force update so nodes array regenerates      }
+        m.redraw(); // Force update so nodes array regenerates
+      }
     } else if (canvasState.draggedNode !== null) {
       // Calculate new position relative to canvas container (accounting for pan and zoom)
       const newX =
@@ -543,7 +560,7 @@ panBy(dx, dy);      canvasState.panStart = {x: e.clientX, y: e.clientY};
           canvasState.zoom -
         canvasState.dragOffset.y / canvasState.zoom;
 
-// Store current position internally
+      // Store current position internally
       currentDragPosition = {x: newX, y: newY};
       canvasState.tempNodePositions.set(canvasState.draggedNode, {
         x: newX,
@@ -551,7 +568,8 @@ panBy(dx, dy);      canvasState.panStart = {x: e.clientX, y: e.clientY};
       });
 
       // Check if we're in a dock zone (exclude the parent we just undocked from)
-      const {nodes} = vnode.attrs;      const draggedNode = nodes.find((n) => n.id === canvasState.draggedNode);
+      const {nodes} = vnode.attrs;
+      const draggedNode = nodes.find((n) => n.id === canvasState.draggedNode);
       if (draggedNode) {
         const dockInfo = findDockTarget(draggedNode, newX, newY, nodes);
         canvasState.dockTarget = dockInfo.targetNodeId;
@@ -567,7 +585,8 @@ panBy(dx, dy);      canvasState.panStart = {x: e.clientX, y: e.clientY};
 
     // Handle box selection completion
     if (canvasState.selectionRect) {
-const {nodes = [], labels = []} = vnode.attrs;      const rect = canvasState.selectionRect;
+      const {nodes = [], labels = []} = vnode.attrs;
+      const rect = canvasState.selectionRect;
       const minX = Math.min(rect.startX, rect.currentX);
       const maxX = Math.max(rect.startX, rect.currentX);
       const minY = Math.min(rect.startY, rect.currentY);
@@ -585,6 +604,19 @@ const {nodes = [], labels = []} = vnode.attrs;      const rect = canvasState.sel
 
         return (
           nodeX < maxX && nodeRight > minX && nodeY < maxY && nodeBottom > minY
+        );
+      };
+
+      // Helper to check if a label overlaps with selection rectangle
+      const labelOverlapsRect = (label: Label): boolean => {
+        const labelRight = label.x + label.width;
+        const labelBottom = label.y + DEFAULT_LABEL_MIN_HEIGHT;
+
+        return (
+          label.x < maxX &&
+          labelRight > minX &&
+          label.y < maxY &&
+          labelBottom > minY
         );
       };
 
@@ -610,7 +642,7 @@ const {nodes = [], labels = []} = vnode.attrs;      const rect = canvasState.sel
         });
       });
 
-// Find all labels that intersect with the selection rectangle
+      // Find all labels that intersect with the selection rectangle
       labels.forEach((label) => {
         if (labelOverlapsRect(label)) {
           selectedInRect.push(label.id);
@@ -622,7 +654,8 @@ const {nodes = [], labels = []} = vnode.attrs;      const rect = canvasState.sel
       selectedInRect.forEach((id) => {
         if (!canvasState.selectedNodes.has(id)) {
           if (onNodeAddToSelection !== undefined) {
-            onNodeAddToSelection(id);          }
+            onNodeAddToSelection(id);
+          }
         }
       });
 
@@ -647,13 +680,14 @@ const {nodes = [], labels = []} = vnode.attrs;      const rect = canvasState.sel
       }
     }
 
-// Check for collision and finalize drag (only for non-docked/undocked nodes)
+    // Check for collision and finalize drag (only for non-docked/undocked nodes)
     if (canvasState.draggedNode !== null && !canvasState.isDockZone) {
       const {nodes = [], onNodeMove} = vnode.attrs;
       const draggedNode = nodes.find((n) => n.id === canvasState.draggedNode);
 
       // Only do overlap checking if NOT being docked
-      if (draggedNode) {        // Get actual node dimensions from DOM
+      if (draggedNode) {
+        // Get actual node dimensions from DOM
         const dims = getNodeDimensions(draggedNode.id);
 
         // Calculate total height of the dragged node's chain
@@ -665,10 +699,11 @@ const {nodes = [], labels = []} = vnode.attrs;      const rect = canvasState.sel
 
         // Check if node (and its entire chain) overlaps with any other nodes
         if (
-currentDragPosition &&
+          currentDragPosition &&
           checkNodeOverlap(
             currentDragPosition.x,
-            currentDragPosition.y,            draggedNode.id,
+            currentDragPosition.y,
+            draggedNode.id,
             nodes,
             dims.width,
             chainHeight,
@@ -676,14 +711,15 @@ currentDragPosition &&
         ) {
           // Find nearest non-overlapping position
           const newPos = findNearestNonOverlappingPosition(
-currentDragPosition.x,
-            currentDragPosition.y,            draggedNode.id,
+            currentDragPosition.x,
+            currentDragPosition.y,
+            draggedNode.id,
             nodes,
             dims.width,
             chainHeight,
           );
           // Update to the non-overlapping position
-currentDragPosition = newPos;
+          currentDragPosition = newPos;
           canvasState.tempNodePositions.set(draggedNode.id, newPos);
         }
       }
@@ -702,11 +738,12 @@ currentDragPosition = newPos;
             canvasState.draggedNode,
             currentDragPosition.x,
             currentDragPosition.y,
-          );        }
+          );
+        }
       }
     }
 
-// Handle label callbacks with final values
+    // Handle label callbacks with final values
     const {onLabelMove, onLabelResize} = vnode.attrs;
 
     if (canvasState.draggedLabel !== null) {
@@ -736,14 +773,16 @@ currentDragPosition = newPos;
 
     canvasState.draggedNode = null;
     dragStartPosition = null;
-    currentDragPosition = null;    canvasState.connecting = null;
+    currentDragPosition = null;
+    canvasState.connecting = null;
     canvasState.hoveredPort = null;
     canvasState.isPanning = false;
     canvasState.dockTarget = null;
     canvasState.isDockZone = false;
     canvasState.undockCandidate = null;
-canvasState.undockedNode = null;
-    canvasState.tempNodePositions.clear();    m.redraw();
+    canvasState.undockedNode = null;
+    canvasState.tempNodePositions.clear();
+    m.redraw();
   };
 
   // Helper to determine port type based on port index
@@ -790,7 +829,7 @@ canvasState.undockedNode = null;
     nodes: ReadonlyArray<Node>,
     onConnectionRemove?: (index: number) => void,
   ) {
-const shortenLength = 16;
+    const shortenLength = 16;
     const arrowheadLength = 4;
 
     // Cache all port positions at once for performance
@@ -921,14 +960,15 @@ const shortenLength = 16;
           nodes,
         );
 
-        const pathData = createCurve(          from.x,
+        const pathData = createCurve(
+          from.x,
           from.y,
           to.x,
           to.y,
           fromPortType,
           toPortType,
           shortenLength,
-);
+        );
 
         const handlePointerDown = (e: PointerEvent) => {
           e.stopPropagation();
@@ -975,14 +1015,14 @@ const shortenLength = 16;
 
     // Build temp connection if connecting
     let tempConnectionPath = null;
-    if (canvasState.connecting) {      const fromX = canvasState.connecting.transformedX;
+    if (canvasState.connecting) {
+      const fromX = canvasState.connecting.transformedX;
       const fromY = canvasState.connecting.transformedY;
       let toX = canvasState.mousePos.transformedX ?? 0;
       let toY = canvasState.mousePos.transformedY ?? 0;
 
-// For temp connections, use the stored port type
       const fromPortType = canvasState.connecting.portType;
-      // The target end defaults to the opposite type for visual feedback      let toPortType: 'top' | 'left' | 'right' | 'bottom' =
+      let toPortType: 'top' | 'left' | 'right' | 'bottom' =
         fromPortType === 'top' || fromPortType === 'bottom' ? 'top' : 'left';
 
       if (
@@ -991,16 +1031,18 @@ const shortenLength = 16;
         canvasState.hoveredPort.type === 'input'
       ) {
         const {nodeId, portIndex, type} = canvasState.hoveredPort;
-const hoverPos = getPortPos(nodeId, type, portIndex);        if (hoverPos.x !== 0 || hoverPos.y !== 0) {
+        const hoverPos = getPortPos(nodeId, type, portIndex);
+        if (hoverPos.x !== 0 || hoverPos.y !== 0) {
           toX = hoverPos.x;
           toY = hoverPos.y;
           toPortType = getPortType(nodeId, type, portIndex, nodes);
         }
       }
 
-tempConnectionPath = m('path', {
+      tempConnectionPath = m('path', {
         'class': 'pf-temp-connection',
-        'd': createCurve(          fromX,
+        'd': createCurve(
+          fromX,
           fromY,
           toX,
           toY,
@@ -1008,7 +1050,7 @@ tempConnectionPath = m('path', {
           toPortType,
           shortenLength,
         ),
-'marker-end': `url(#arrowhead-${instanceId})`,
+        'marker-end': `url(#arrowhead-${instanceId})`,
       });
     }
 
@@ -1020,7 +1062,8 @@ tempConnectionPath = m('path', {
       m('defs', [arrowheadMarker(markerId)]),
       m('g', connectionPaths),
       tempConnectionPath,
-    ]);  }
+    ]);
+  }
 
   function getPortPosition(
     nodeId: string,
@@ -1034,16 +1077,18 @@ tempConnectionPath = m('path', {
         ? `[data-node="${nodeId}"] .pf-port[data-port="${portType}-${portIndex}"]`
         : `[data-node="${nodeId}"] [data-port="${portType}-${portIndex}"] .pf-port`;
 
-// Scope to this NodeGraph instance to avoid matching elements from other
+    // Scope to this NodeGraph instance to avoid matching elements from other
     // instances (e.g. hidden tabs with the same node IDs).
     const scope = ensureExists(canvasElement);
     const portElement = scope.querySelector(selector);
+
     if (portElement) {
       const nodeElement = portElement.closest('.pf-node') as HTMLElement | null;
       if (nodeElement !== null) {
         // Check if node is in a dock chain (flexbox positioning)
         const chainContainer = nodeElement.closest(
-'.pf-node-wrapper',        ) as HTMLElement | null;
+          '.pf-node-wrapper',
+        ) as HTMLElement | null;
 
         let nodeLeft: number;
         let nodeTop: number;
@@ -1151,8 +1196,9 @@ tempConnectionPath = m('path', {
   }
 
   function getNodeDimensions(nodeId: string): {width: number; height: number} {
-const scope = ensureExists(canvasElement);
-    const nodeElement = scope.querySelector(`[data-node="${nodeId}"]`);    if (nodeElement) {
+    const scope = ensureExists(canvasElement);
+    const nodeElement = scope.querySelector(`[data-node="${nodeId}"]`);
+    if (nodeElement) {
       const rect = nodeElement.getBoundingClientRect();
       // Divide by zoom to get canvas content space dimensions
       return {
@@ -1276,6 +1322,7 @@ const scope = ensureExists(canvasElement);
   function autoLayoutGraph(
     nodes: ReadonlyArray<Node>,
     connections: ReadonlyArray<Connection>,
+    onNodeMove: ((nodeId: string, x: number, y: number) => void) | undefined,
   ) {
     // Build a map from any node ID (including nodes in chains) to its root node ID
     const nodeIdToRootId = new Map<string, string>();
@@ -1356,8 +1403,9 @@ const scope = ensureExists(canvasElement);
       let currentY = 50;
       layer.forEach((nodeId) => {
         const node = nodes.find((n) => n.id === nodeId);
-if (node && onNodeDrag) {
-          onNodeDrag(node.id, currentX, currentY);
+        if (node && onNodeMove) {
+          onNodeMove(node.id, currentX, currentY);
+
           // Calculate height of entire chain
           const chain = getChain(node);
           let chainHeight = 0;
@@ -1377,7 +1425,7 @@ if (node && onNodeDrag) {
     m.redraw();
   }
 
-function autofit(
+  function autofit(
     nodes: ReadonlyArray<Node>,
     labels: ReadonlyArray<Label>,
     canvas: HTMLElement,
@@ -1407,6 +1455,7 @@ function autofit(
       maxX = Math.max(maxX, label.x + label.width);
       maxY = Math.max(maxY, label.y + TYPICAL_LABEL_HEIGHT);
     });
+
     // Calculate bounding box dimensions
     const boundingWidth = maxX - minX;
     const boundingHeight = maxY - minY;
@@ -1418,7 +1467,8 @@ function autofit(
     const bufferFactor = 0.9; // Use 90% of viewport to leave 10% buffer
     const zoomX = (canvasRect.width * bufferFactor) / boundingWidth;
     const zoomY = (canvasRect.height * bufferFactor) / boundingHeight;
-const newZoom = Math.max(0.1, Math.min(5.0, Math.min(zoomX, zoomY)));
+    const newZoom = Math.max(0.1, Math.min(1.0, Math.min(zoomX, zoomY)));
+
     // Calculate the scaled bounding box dimensions
     const scaledWidth = boundingWidth * newZoom;
     const scaledHeight = boundingHeight * newZoom;
@@ -1467,12 +1517,13 @@ const newZoom = Math.max(0.1, Math.min(5.0, Math.min(zoomX, zoomY)));
         x: mouseX - canvasX * newZoom,
         y: mouseY - canvasY * newZoom,
       };
-} else if (e.shiftKey) {
+    } else if (e.shiftKey) {
       // Emulate horizontal scroll while shift held
       panBy(-e.deltaY, 0);
     } else {
       // Pan the canvas based on wheel delta
-      panBy(-e.deltaX, -e.deltaY);    }
+      panBy(-e.deltaX, -e.deltaY);
+    }
 
     m.redraw();
   };
@@ -1487,7 +1538,8 @@ const newZoom = Math.max(0.1, Math.min(5.0, Math.min(zoomX, zoomY)));
       isDockTarget: boolean;
       rootNode?: Node;
       multiselect: boolean;
-contextMenuOnHover: boolean;    },
+      contextMenuOnHover: boolean;
+    },
   ): m.Vnode {
     const {
       id,
@@ -1498,7 +1550,7 @@ contextMenuOnHover: boolean;    },
       hue,
       accentBar,
       contextMenuItems,
-invalid,
+      invalid,
       className: nodeClassName,
     } = node;
     const {
@@ -1508,7 +1560,8 @@ invalid,
       rootNode,
       multiselect,
       contextMenuOnHover,
-    } = options;    const {connections = [], onConnect, nodes = []} = vnode.attrs;
+    } = options;
+    const {connections = [], onConnect, nodes = []} = vnode.attrs;
 
     // Separate ports by direction
     const topInputs = inputs.filter((p) => p.direction === 'top');
@@ -1522,15 +1575,16 @@ invalid,
       hasDockedChild && 'pf-has-docked-child',
       isDockTarget && 'pf-dock-target',
       accentBar && 'pf-node--has-accent-bar',
-invalid && 'pf-invalid',
-      nodeClassName,    );
+      invalid && 'pf-invalid',
+      nodeClassName,
+    );
 
     // Helper to render a port
     const renderPort = (
       port: NodePort,
       portIndex: number,
       portType: 'input' | 'output',
-forceConnected?: boolean,
+      forceConnected?: boolean,
     ) => {
       const portId = `${portType}-${portIndex}`;
       const cssClass = classNames(
@@ -1538,12 +1592,13 @@ forceConnected?: boolean,
         `pf-port-${port.direction}`,
         (forceConnected ||
           isPortConnected(id, portType, portIndex, connections)) &&
-          'pf-connected',        canvasState.connecting &&
+          'pf-connected',
+        canvasState.connecting &&
           canvasState.connecting.nodeId === id &&
           canvasState.connecting.portIndex === portIndex &&
           canvasState.connecting.type === portType &&
           'pf-active',
-port.contextMenuItems !== undefined && 'pf-port--with-context-menu',
+        port.contextMenuItems !== undefined && 'pf-port--with-context-menu',
       );
 
       const portElement = m('.pf-port', {
@@ -1606,7 +1661,8 @@ port.contextMenuItems !== undefined && 'pf-port--with-context-menu',
               canvasState.connecting &&
               canvasState.connecting.type === 'output'
             ) {
-              // Input port receiving connection              const existingConnIdx = connections.findIndex(
+              // Input port receiving connection
+              const existingConnIdx = connections.findIndex(
                 (conn) => conn.toNode === id && conn.toPort === portIndex,
               );
               if (existingConnIdx !== -1) {
@@ -1614,7 +1670,7 @@ port.contextMenuItems !== undefined && 'pf-port--with-context-menu',
                 if (onConnectionRemove !== undefined) {
                   onConnectionRemove(existingConnIdx);
                 }
-}
+              }
               const connection = {
                 fromNode: canvasState.connecting.nodeId,
                 fromPort: canvasState.connecting.portIndex,
@@ -1632,6 +1688,7 @@ port.contextMenuItems !== undefined && 'pf-port--with-context-menu',
           }
         },
       });
+
       // Wrap with PopupMenu if contextMenuItems exist
       if (port.contextMenuItems !== undefined) {
         return m(PopupMenu, {trigger: portElement}, port.contextMenuItems);
@@ -1639,16 +1696,7 @@ port.contextMenuItems !== undefined && 'pf-port--with-context-menu',
       return portElement;
     };
 
-const isPositioned = (node: Node | Omit<Node, 'x' | 'y'>): node is Node => {
-      return (node as Node).x !== undefined && (node as Node).y !== undefined;
-    };
-
-    const position = isPositioned(node)
-      ? {
-          left: `${node.x}px`,
-          top: `${node.y}px`,
-        }
-      : undefined;    const style = hue !== undefined ? {'--pf-node-hue': `${hue}`} : undefined;
+    const style = hue !== undefined ? {'--pf-node-hue': `${hue}`} : undefined;
 
     return m(
       '.pf-node',
@@ -1658,7 +1706,7 @@ const isPositioned = (node: Node | Omit<Node, 'x' | 'y'>): node is Node => {
         'class': classes,
         'style': {
           ...style,
-...position,        },
+        },
         'onpointerdown': (e: PointerEvent) => {
           if ((e.target as HTMLElement).closest('.pf-port')) {
             return;
@@ -1679,7 +1727,8 @@ const isPositioned = (node: Node | Omit<Node, 'x' | 'y'>): node is Node => {
                 onNodeAddToSelection(id);
               }
             }
-// Focus the canvas element to ensure keyboard events (like Delete) are captured
+
+            // Focus the canvas element to ensure keyboard events (like Delete) are captured
             if (canvasElement) {
               canvasElement.focus();
             }
@@ -1699,7 +1748,8 @@ const isPositioned = (node: Node | Omit<Node, 'x' | 'y'>): node is Node => {
             // Focus the canvas for keyboard events (Delete, etc.)
             if (canvasElement) {
               canvasElement.focus();
-            }            return;
+            }
+            return;
           }
 
           // Check if this is a chained node (not root)
@@ -1733,7 +1783,7 @@ const isPositioned = (node: Node | Omit<Node, 'x' | 'y'>): node is Node => {
 
           canvasState.draggedNode = id;
 
-// Store initial drag position for batching
+          // Store initial drag position for batching
           // Check if node has x,y properties (root nodes) vs docked children (no x,y)
           if ('x' in node && 'y' in node) {
             dragStartPosition = {nodeId: id, x: node.x, y: node.y};
@@ -1749,7 +1799,9 @@ const isPositioned = (node: Node | Omit<Node, 'x' | 'y'>): node is Node => {
           // Focus the canvas element to ensure keyboard events (like Delete) are captured
           if (canvasElement) {
             canvasElement.focus();
-          }          const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+          }
+
+          const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
           canvasState.dragOffset = {
             x: e.clientX - rect.left,
             y: e.clientY - rect.top,
@@ -1760,8 +1812,9 @@ const isPositioned = (node: Node | Omit<Node, 'x' | 'y'>): node is Node => {
         // Render node title if it exists
         titleBar !== undefined &&
           m('.pf-node-header', [
-titleBar.icon !== undefined &&
-              m(Icon, {icon: titleBar.icon, className: 'pf-node-title-icon'}),            m('.pf-node-title', titleBar.title),
+            titleBar.icon !== undefined &&
+              m(Icon, {icon: titleBar.icon, className: 'pf-node-title-icon'}),
+            m('.pf-node-title', titleBar.title),
             contextMenuItems !== undefined &&
               m(
                 PopupMenu,
@@ -1769,7 +1822,8 @@ titleBar.icon !== undefined &&
                   trigger: m(Button, {
                     rounded: true,
                     icon: Icons.ContextMenuAlt,
-className: contextMenuOnHover ? 'pf-show-on-hover' : '',                  }),
+                    className: contextMenuOnHover ? 'pf-show-on-hover' : '',
+                  }),
                 },
                 contextMenuItems,
               ),
@@ -1780,7 +1834,8 @@ className: contextMenuOnHover ? 'pf-show-on-hover' : '',                  }),
           contextMenuItems !== undefined &&
           m(
             '.pf-node-context-menu',
-{className: contextMenuOnHover ? 'pf-show-on-hover' : ''},            m(
+            {className: contextMenuOnHover ? 'pf-show-on-hover' : ''},
+            m(
               PopupMenu,
               {
                 trigger: m(Button, {
@@ -1793,11 +1848,11 @@ className: contextMenuOnHover ? 'pf-show-on-hover' : '',                  }),
           ),
 
         // Top input ports (if not docked child)
-!isDockedChild &&
-          topInputs.map((port) => {
-            const portIndex = inputs.indexOf(port);
-            return renderPort(port, portIndex, 'input');
-          }),
+        topInputs.map((port) => {
+          const portIndex = inputs.indexOf(port);
+          return renderPort(port, portIndex, 'input');
+        }),
+
         m('.pf-node-body', [
           content !== undefined &&
             m(
@@ -1836,7 +1891,7 @@ className: contextMenuOnHover ? 'pf-show-on-hover' : '',                  }),
         ]),
 
         // Bottom output ports (if no docked child below)
-bottomOutputs.map((port) => {
+        bottomOutputs.map((port) => {
           const portIndex = outputs.indexOf(port);
           return renderPort(port, portIndex, 'output');
         }),
@@ -1967,7 +2022,8 @@ bottomOutputs.map((port) => {
             },
           },
           m(Icon, {icon: 'close'}),
-        ),      ],
+        ),
+      ],
     );
   }
 
@@ -1979,12 +2035,13 @@ bottomOutputs.map((port) => {
       document.addEventListener('pointerup', handleMouseUp);
       canvasElement.addEventListener('wheel', handleWheel, {passive: false});
 
-const {
+      const {
         connections = [],
         nodes = [],
         onConnectionRemove,
         onReady,
       } = vnode.attrs;
+
       // Render connections after DOM is ready
       const svg = vnode.dom.querySelector('svg');
       if (svg) {
@@ -1997,7 +2054,7 @@ const {
       }
 
       // Create auto-layout function that uses actual DOM dimensions
-autoLayoutApi = () => {
+      autoLayoutApi = () => {
         const {nodes = [], connections = [], onNodeMove} = vnode.attrs;
         autoLayoutGraph(nodes, connections, onNodeMove);
       };
@@ -2013,7 +2070,8 @@ autoLayoutApi = () => {
       };
 
       // Find a non-overlapping position for a new node
-      findPlacementForNodeApi = (newNode: Omit<Node, 'x' | 'y'>): Position => {        if (latestVnode === null || canvasElement === null) {
+      findPlacementForNodeApi = (newNode: Omit<Node, 'x' | 'y'>): Position => {
+        if (latestVnode === null || canvasElement === null) {
           return {x: 0, y: 0};
         }
 
@@ -2041,7 +2099,7 @@ autoLayoutApi = () => {
         tempContainer.style.visibility = 'hidden';
         canvas.appendChild(tempContainer);
 
-// Render the node into the temporary container with animation disabled
+        // Render the node into the temporary container with animation disabled
         m.render(
           tempContainer,
           m(
@@ -2082,7 +2140,8 @@ autoLayoutApi = () => {
                     ),
                 ]),
               ],
-            ),          ),
+            ),
+          ),
         );
 
         // Get dimensions from the rendered element
@@ -2101,8 +2160,9 @@ autoLayoutApi = () => {
 
         // Find non-overlapping position starting from center
         const finalPos = findNearestNonOverlappingPosition(
-centerX - dims.width / 2,
-          centerY - dims.height / 2,          tempNode.id,
+          centerX - dims.width / 2,
+          centerY - dims.height / 2,
+          tempNode.id,
           nodes,
           dims.width,
           chainHeight,
@@ -2111,7 +2171,7 @@ centerX - dims.width / 2,
         return finalPos;
       };
 
-// Reset zoom to 100% (1.0x) around canvas center
+      // Reset zoom to 100% (1.0x) around canvas center
       resetZoom = () => {
         if (!canvasElement) return;
 
@@ -2150,17 +2210,19 @@ centerX - dims.width / 2,
           panBy,
           zoomBy,
           resetZoom,
-        });      }
+        });
+      }
     },
 
     onupdate: (vnode: m.VnodeDOM<NodeGraphAttrs>) => {
       latestVnode = vnode;
-const {
+      const {
         connections = [],
         nodes = [],
         onConnectionRemove,
         onReady,
       } = vnode.attrs;
+
       // Re-render connections when component updates
       const svg = vnode.dom.querySelector('svg');
       if (svg) {
@@ -2171,7 +2233,8 @@ const {
           onConnectionRemove,
         );
       }
-// Call onReady after every render cycle so parent can perform
+
+      // Call onReady after every render cycle so parent can perform
       // post-render actions like recentering
       if (
         onReady !== undefined &&
@@ -2188,7 +2251,8 @@ const {
           zoomBy,
           resetZoom,
         });
-      }    },
+      }
+    },
 
     onremove: (vnode: m.VnodeDOM<NodeGraphAttrs>) => {
       document.removeEventListener('pointermove', handleMouseMove);
@@ -2201,9 +2265,9 @@ const {
       const {
         nodes,
         selectedNodeIds = new Set<string>(),
-hideControls = false,
         multiselect = true,
-        contextMenuOnHover = false,        fillHeight,
+        contextMenuOnHover = false,
+        fillHeight,
       } = vnode.attrs;
 
       // Sync internal state with prop
@@ -2272,15 +2336,16 @@ hideControls = false,
           },
           onkeydown: (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
-// Deselect all nodes and labels
+              // Deselect all nodes and labels
               const hasSelection = canvasState.selectedNodes.size > 0;
-              if (hasSelection) {                const {onSelectionClear} = vnode.attrs;
+              if (hasSelection) {
+                const {onSelectionClear} = vnode.attrs;
                 if (onSelectionClear !== undefined) {
                   onSelectionClear();
                 }
               }
             } else if (e.key === 'Delete' || e.key === 'Backspace') {
-const {onNodeRemove, onLabelRemove, labels = []} = vnode.attrs;
+              const {onNodeRemove, onLabelRemove, labels = []} = vnode.attrs;
 
               if (canvasState.selectedNodes.size > 0) {
                 // Flatten all nodes including docked nodes (via 'next' property)
@@ -2305,12 +2370,13 @@ const {onNodeRemove, onLabelRemove, labels = []} = vnode.attrs;
                     onNodeRemove(id);
                   } else if (labelIds.has(id) && onLabelRemove !== undefined) {
                     onLabelRemove(id);
-                  }                });
+                  }
+                });
               }
             }
           },
           style: {
-backgroundSize: (() => {
+            backgroundSize: (() => {
               const minPixelSpacing = 10;
               let gridSize = 20;
               while (gridSize * canvasState.zoom < minPixelSpacing) {
@@ -2331,11 +2397,12 @@ backgroundSize: (() => {
               const x = canvasState.panOffset.x - size / 2;
               const y = canvasState.panOffset.y - size / 2;
               return `${x}px ${y}px`;
-            })(),            ...vnode.attrs.style,
+            })(),
+            ...vnode.attrs.style,
           },
         },
         [
-(vnode.attrs.toolbarItems !== undefined ||
+          (vnode.attrs.toolbarItems !== undefined ||
             !vnode.attrs.hideControls) &&
             m('.pf-nodegraph-controls', [
               vnode.attrs.toolbarItems,
@@ -2372,7 +2439,8 @@ backgroundSize: (() => {
                   variant: ButtonVariant.Filled,
                   onclick: () => zoomBy(-0.2),
                 }),
-              ),            ]),
+              ),
+            ]),
 
           // Container for nodes and SVG that gets transformed
           m(
@@ -2404,7 +2472,7 @@ backgroundSize: (() => {
                   const chain = getChain(node);
                   const isChainRoot = chain.length > 1;
 
-// Check if we have a temp position for this node (during drag)
+                  // Check if we have a temp position for this node (during drag)
                   const tempPos = canvasState.tempNodePositions.get(id);
                   const renderPos = tempPos || {x: node.x, y: node.y};
 
@@ -2420,7 +2488,8 @@ backgroundSize: (() => {
                         className: classNames(
                           canvasState.draggedNode === id &&
                             'pf-node-wrapper--dragging',
-                        ),                      },
+                        ),
+                      },
                       chain.map((chainNode) => {
                         const cIsDockedChild = 'x' in chainNode === false;
                         const cHasDockedChild = chainNode.next !== undefined;
@@ -2434,7 +2503,7 @@ backgroundSize: (() => {
                           isDockTarget: cIsDockTarget,
                           rootNode: node,
                           multiselect,
-contextMenuOnHover,
+                          contextMenuOnHover,
                         });
                       }),
                     );
@@ -2469,7 +2538,8 @@ contextMenuOnHover,
               // Render all labels
               (vnode.attrs.labels ?? []).map((label: Label) => {
                 return renderLabel(label, vnode);
-              }),            ],
+              }),
+            ],
           ),
         ],
       );

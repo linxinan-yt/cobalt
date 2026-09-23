@@ -52,7 +52,7 @@ export class Icons {
   static readonly Search = 'search';
   static readonly Save = 'save';
   static readonly Undo = 'undo';
-static readonly Redo = 'redo';
+  static readonly Redo = 'redo';
   static readonly NoData = 'inbox';
   static readonly AddColumnRight = 'add_column_right';
   static readonly AddColumnLeft = 'add_column_left';
@@ -60,6 +60,7 @@ static readonly Redo = 'redo';
   static readonly UnfoldMore = 'unfold_more';
   static readonly RadioChecked = 'radio_button_checked';
   static readonly RadioUnchecked = 'radio_button_unchecked';
+
   // Page control
   static readonly NextPage = 'chevron_right';
   static readonly PrevPage = 'chevron_left';

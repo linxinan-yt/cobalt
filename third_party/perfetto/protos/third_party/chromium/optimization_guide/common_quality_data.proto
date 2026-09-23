@@ -196,7 +196,8 @@ message PageContext {
 
 // The page content represented as a tree of semantic chunks and (in the
 // future) annotated with additional information about the page.
-// Next ID: 11message AnnotatedPageContent {
+// Next ID: 11
+message AnnotatedPageContent {
   // The version of the proto. Each time a backwards incompatible change is made
   // to the proto, the version should be incremented.
   AnnotatedPageContentVersion version = 1 [features = { field_presence: EXPLICIT }];
@@ -229,22 +230,25 @@ message PageContext {
   // be unique within the browsing session.
   int32 tab_id = 7 [features = { field_presence: EXPLICIT }];
 
-// Provides APC for internal popup widgets created by elements like <select>
+  // Provides APC for internal popup widgets created by elements like <select>
   // and <input type="color"> . Does not provide APC for separate windows opened
   // via window.open() or similar. A page can only have one popup window open at
   // a time. If one is open, its details are populated here. The popup window
   // draws on top of the tab and as such has a higher z order than the main
-  // frame's Document.  PopupWindow popup_window = 8 [features = { field_presence: EXPLICIT }];
+  // frame's Document.
+  PopupWindow popup_window = 8 [features = { field_presence: EXPLICIT }];
 
   // Information that pertains to the user's profile, not the page.
   // TODO(crbug.com/454610456): This should be moved out of AnnotatedPageContent because
   // it does not semantically belong here.
   ProfileInformation profile_information = 9 [features = { field_presence: EXPLICIT }];
-// Metadata about the page when Gemini in Chrome captures Annotated Page
+
+  // Metadata about the page when Gemini in Chrome captures Annotated Page
   // Content.
   // TODO(crbug.com/484011242): This should be moved out of AnnotatedPageContent because
   // it does not semantically belong here.
-  GeminiInChromePageMetadata gemini_in_chrome_page_metadata = 10 [features = { field_presence: EXPLICIT }];}
+  GeminiInChromePageMetadata gemini_in_chrome_page_metadata = 10 [features = { field_presence: EXPLICIT }];
+}
 
 // The ContentNode tree is a sparse representation of the DOM tree for a web
 // page, i.e., not every DOM node generates a ContentNode. For example, a `div`
@@ -272,7 +276,8 @@ message ContentNode {
   ContentAttributes content_attributes = 2 [features = { field_presence: EXPLICIT }];
 }
 
-// Next ID: 30message ContentAttributes {
+// Next ID: 30
+message ContentAttributes {
   oneof content_data {
     // Only set if attribute_type is CONTENT_ATTRIBUTE_TEXT.
     TextInfo text_data = 10;
@@ -364,8 +369,10 @@ message ContentNode {
   // Whether the content node is from an ad.
   bool is_ad_related = 28 [features = { field_presence: EXPLICIT }];
 
-// Redaction decision for the node.
-  RedactionDecision redaction_decision = 29 [features = { field_presence: EXPLICIT }];  reserved 5, 6, 7, 17, 18, 1, 22;
+  // Redaction decision for the node.
+  RedactionDecision redaction_decision = 29 [features = { field_presence: EXPLICIT }];
+
+  reserved 5, 6, 7, 17, 18, 1, 22;
 }
 
 // The geometry of the content, in the page coordinate system.
@@ -436,7 +443,8 @@ message BoundingRect {
 // Note: ScrollerInfo is populated for ANNOTATED_PAGE_CONTENT_MODE_DEFAULT. The
 // rest of the fields are only populated for
 // ANNOTATED_PAGE_CONTENT_MODE_ACTIONABLE_ELEMENTS.
-// Next ID: 21message InteractionInfo {
+// Next ID: 21
+message InteractionInfo {
   // Set if the content node is scrollable.
   ScrollerInfo scroller_info = 12 [features = { field_presence: EXPLICIT }];
 
@@ -513,7 +521,7 @@ message BoundingRect {
   // may be triggered by clicking or hovering on the element.
   repeated ClickabilityReason clickability_reasons = 15;
 
-// Whether the node is in a strong disabled state. When this is true, attempts
+  // Whether the node is in a strong disabled state. When this is true, attempts
   // to generate a click action for the node are rejected.
   //
   // This is true for:
@@ -550,7 +558,9 @@ message BoundingRect {
   // Secondary-action targets for a container widget. This lets APC represent
   // cases like split buttons or tabs with close buttons where both the
   // container and the secondary action element are actionable.
-  repeated int32 aria_action_target_node_ids = 20;  reserved 8, 1, 2, 11;
+  repeated int32 aria_action_target_node_ids = 20;
+
+  reserved 8, 1, 2, 11;
 }
 
 // The coordinate space for the dimensions here is physical coordinates (not
@@ -676,7 +686,8 @@ message FormInfo {
   string action_url = 2 [features = { field_presence: EXPLICIT }];
 }
 
-// Next ID: 12message FormControlData {
+// Next ID: 12
+message FormControlData {
   // The name for the field.
   string field_name = 1 [features = { field_presence: EXPLICIT }];
 
@@ -700,11 +711,12 @@ message FormInfo {
   bool is_required = 7 [features = { field_presence: EXPLICIT }];
 
   // Redaction decision for form fields.
-// Deprecated in favor of redaction_decision on ContentAttributes.
+  // Deprecated in favor of redaction_decision on ContentAttributes.
   RedactionDecision redaction_decision = 8 [
     deprecated = true,
     features = { field_presence: EXPLICIT }
   ];
+
   // The types of data that can be autofilled this field. This does not imply
   // that the user has data to fill of this type on file.
   repeated CoarseAutofillFieldType coarse_autofill_field_type = 9;
@@ -716,8 +728,10 @@ message FormInfo {
   // in AnnotatedPageContent traversal order according to Autofill's
   // understanding of forms).
   uint32 autofill_section_id = 10 [features = { field_presence: EXPLICIT }];
-// Whether the field is readonly.
-  bool is_readonly = 11 [features = { field_presence: EXPLICIT }];}
+
+  // Whether the field is readonly.
+  bool is_readonly = 11 [features = { field_presence: EXPLICIT }];
+}
 
 // Represents an option in a select field. See below for example.
 //
@@ -975,7 +989,8 @@ message TableRowData {
 // there can only be one unique value.
 // Currently this is only tracked for the main frame. The IDs correspond to the
 // DOM node IDs of the content nodes in the main frame.
-// Next ID: 6message PageInteractionInfo {
+// Next ID: 6
+message PageInteractionInfo {
   // The content node ID of the content node that is currently focused.
   // TODO(linnan): Deprecate this field in favor of
   // FrameInteractionInfo.focused_node_id.
@@ -1007,20 +1022,24 @@ message Point {
 }
 
 // Represents a popup window that is open on a web page.
-// Next ID: 6message PopupWindow {
+// Next ID: 6
+message PopupWindow {
   // Root node for the document in the window.
   ContentNode root_node = 1 [features = { field_presence: EXPLICIT }];
 
-// The bounding box of the popup window relative to the viewport. The popup is
+  // The bounding box of the popup window relative to the viewport. The popup is
   // not clipped by any ancestor except the viewport clipping the screenshot.
   BoundingRect visible_bounding_box = 5 [features = { field_presence: EXPLICIT }];
+
   // Unique identifier for the document which opened this popup window.
   DocumentIdentifier opener_document_id = 3 [features = { field_presence: EXPLICIT }];
 
   // Unique identifier for the node which opened this popup window. Relies on
   // opener_document_id to determine which document contains the node.
   int32 opener_common_ancestor_dom_node_id = 4 [features = { field_presence: EXPLICIT }];
-reserved 2;}
+
+  reserved 2;
+}
 
 // Information that pertains the user's Chrome profile.
 // Next ID: 2
@@ -1086,7 +1105,9 @@ message IframeInfo {
   // The bounding box of the iframe node in the coordinate space of the
   // screenshot, including all ancestor clipping.
   BoundingRect bounding_box = 3 [features = { field_presence: EXPLICIT }];
-}// Uniquely identifies a DOM elements across all frames.
+}
+
+// Uniquely identifies a DOM elements across all frames.
 message AutofillGlobalId {
   string frame_token = 1 [features = { field_presence: EXPLICIT }];
 
@@ -2363,7 +2384,8 @@ enum CssPosition {
 }
 
 // The reason why a node is clickable.
-// Next ID: 17enum ClickabilityReason {
+// Next ID: 17
+enum ClickabilityReason {
   // The node is a native form control.
   CLICKABILITY_REASON_CLICKABLE_CONTROL = 0;
 
@@ -2373,7 +2395,8 @@ enum CssPosition {
   // The node has mouse event handlers like mouseup, mousedown, mouseover and
   // mouseenter. Deprecated in favor of
   // CLICKABILITY_REASON_MOUSE_CLICK and CLICKABILITY_REASON_MOUSE_HOVER.
-// TODO(crbug.com/490195093): Remove this value.  CLICKABILITY_REASON_MOUSE_EVENTS = 2 [deprecated = true];
+  // TODO(crbug.com/490195093): Remove this value.
+  CLICKABILITY_REASON_MOUSE_EVENTS = 2 [deprecated = true];
 
   // The node has keyboard event handlers like keydown, keypress, keyup.
   CLICKABILITY_REASON_KEY_EVENTS = 3;
@@ -2420,7 +2443,8 @@ enum CssPosition {
   // in Chrome to know what properties the rule might effect, so this reason
   // just indicates that a :hover rule is defined.
   CLICKABILITY_REASON_HOVER_PSEUDO_CLASS = 14;
-// The node has the aria-checked or aria-pressed attribute indicating it can
+
+  // The node has the aria-checked or aria-pressed attribute indicating it can
   // be toggled.
   CLICKABILITY_REASON_ARIA_TOGGLE = 15;
 
@@ -2448,7 +2472,8 @@ enum InteractionDisabledReason {
   INTERACTION_DISABLED_REASON_ARIA_HIDDEN = 4;
 
   // The node has an ARIA Role of `presentation` or `none`.
-  INTERACTION_DISABLED_REASON_ARIA_ROLE_PRESENTATIONAL = 5;}
+  INTERACTION_DISABLED_REASON_ARIA_ROLE_PRESENTATIONAL = 5;
+}
 
 // Next ID: 5
 enum TextSize {
@@ -2567,7 +2592,8 @@ enum RedactionDecision {
   // Is a non-empty field that autofill recognized as a sensitive payment field
   // type and so must be redacted.
   REDACTION_DECISION_REDACTED_IS_SENSITIVE_PAYMENT_FIELD = 4;
-// Empty inputs which have been classified as password-like by heuristic
+
+  // Empty inputs which have been classified as password-like by heuristic
   // redaction (e.g. `-webkit-text-security`). These are not redacted since they
   // contain no sensitive content, but the classification is preserved.
   REDACTION_DECISION_UNREDACTED_EMPTY_CUSTOM_PASSWORD = 5;
@@ -2585,7 +2611,8 @@ enum RedactionDecision {
   REDACTION_DECISION_REDACTED_IS_OTP = 8;
 
   // Is a empty field that autofill recognized as an OTP field.
-  REDACTION_DECISION_UNREDACTED_EMPTY_OTP_FIELD = 9;}
+  REDACTION_DECISION_UNREDACTED_EMPTY_OTP_FIELD = 9;
+}
 
 // The type of data that can be autofilled into a form.
 enum CoarseAutofillFieldType {
@@ -2594,7 +2621,9 @@ enum CoarseAutofillFieldType {
   COARSE_AUTOFILL_FIELD_TYPE_ADDRESS = 1;
 
   COARSE_AUTOFILL_FIELD_TYPE_CREDIT_CARD = 2;
-COARSE_AUTOFILL_FIELD_TYPE_OTP = 3;}
+
+  COARSE_AUTOFILL_FIELD_TYPE_OTP = 3;
+}
 
 // Indicates the type of media in the media data.
 // Next ID: 3

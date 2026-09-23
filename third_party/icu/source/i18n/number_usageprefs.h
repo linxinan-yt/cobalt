@@ -61,20 +61,7 @@ class UsagePrefsHandler : public MicroPropsGenerator, public UMemory {
     const MicroPropsGenerator *fParent;
 };
 
-} // namespace number::impl
-
-// Export explicit template instantiations of LocalPointerBase and LocalPointer.
-// This is required when building DLLs for Windows. (See datefmt.h,
-// collationiterator.h, erarules.h and others for similar examples.)
-//
-// Note: These need to be outside of the number::impl namespace, or Clang will
-// generate a compile error.
-#if U_PF_WINDOWS <= U_PLATFORM && U_PLATFORM <= U_PF_CYGWIN
-template class U_I18N_API LocalPointerBase<ComplexUnitsConverter>;
-template class U_I18N_API LocalPointer<ComplexUnitsConverter>;
-#endif
-
-namespace number::impl {/**
+/**
  * A MicroPropsGenerator which converts a measurement from one MeasureUnit to
  * another. In particular, the output MeasureUnit may be a mixed unit. (The
  * input unit may not be a mixed unit.)

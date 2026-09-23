@@ -30,7 +30,8 @@ namespace trace_processor {
 // flag.
 void WriteGfpFlag(uint64_t value,
                   std::optional<VersionNumber> version,
-base::DynamicStringWriter* writer);
+                  base::DynamicStringWriter* writer);
+
 }  // namespace trace_processor
 }  // namespace perfetto
 

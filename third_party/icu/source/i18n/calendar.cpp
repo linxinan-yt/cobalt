@@ -780,8 +780,6 @@ actualLocale(Locale::getRoot())
 Calendar::~Calendar()
 {
     delete fZone;
-    delete actualLocale;
-    delete validLocale;
 }
 
 // -------------------------------------
@@ -820,10 +818,9 @@ Calendar::operator=(const Calendar &right)
         fWeekendCease            = right.fWeekendCease;
         fWeekendCeaseMillis      = right.fWeekendCeaseMillis;
         fNextStamp               = right.fNextStamp;
-UErrorCode status = U_ZERO_ERROR;
-        U_LOCALE_BASED(locBased, *this);
-        locBased.setLocaleIDs(right.validLocale, right.actualLocale, status);
-        U_ASSERT(U_SUCCESS(status));    }
+        validLocale = right.validLocale;
+        actualLocale = right.actualLocale;
+    }
 
     return *this;
 }
@@ -1549,7 +1546,7 @@ void Calendar::computeGregorianFields(int32_t julianDay, UErrorCode& ec) {
         ec = U_ILLEGAL_ARGUMENT_ERROR;
         return;
     }
-int8_t dayOfWeek;
+    int8_t dayOfWeek;
     Grego::dayToFields(julianDay, fGregorianYear, fGregorianMonth,
                        fGregorianDayOfMonth,
                        dayOfWeek,
@@ -1557,7 +1554,8 @@ int8_t dayOfWeek;
     if (U_FAILURE(ec)) {
         return;
     }
-    internalSet(UCAL_DAY_OF_WEEK, dayOfWeek);}
+    internalSet(UCAL_DAY_OF_WEEK, dayOfWeek);
+}
 
 /**
 * Compute the fields WEEK_OF_YEAR, YEAR_WOY, WEEK_OF_MONTH,
@@ -1585,8 +1583,8 @@ void Calendar::computeWeekFields(UErrorCode &ec) {
     }
 
     // Compute day of week: JD 0 = Monday
-int32_t dayOfWeek = julianDayToDayOfWeek(fFields[UCAL_JULIAN_DAY]);
-    internalSet(UCAL_DAY_OF_WEEK, dayOfWeek);    int32_t firstDayOfWeek = getFirstDayOfWeek();
+    int32_t dayOfWeek = fFields[UCAL_DAY_OF_WEEK];
+    int32_t firstDayOfWeek = getFirstDayOfWeek();
     // Calculate 1-based localized day of week
     int32_t dowLocal = dayOfWeek - firstDayOfWeek + 1;
     if (dowLocal < 1) {
@@ -4139,8 +4137,9 @@ Calendar::setWeekData(const Locale& desiredLocale, const char *type, UErrorCode&
     }
 
     if (U_SUCCESS(status)) {
-validLocale = Locale(ures_getLocaleByType(monthNames.getAlias(), ULOC_VALID_LOCALE, &status));
-        actualLocale = Locale(ures_getLocaleByType(monthNames.getAlias(), ULOC_ACTUAL_LOCALE, &status));    } else {
+        validLocale = Locale(ures_getLocaleByType(monthNames.getAlias(), ULOC_VALID_LOCALE, &status));
+        actualLocale = Locale(ures_getLocaleByType(monthNames.getAlias(), ULOC_ACTUAL_LOCALE, &status));
+    } else {
         status = U_USING_FALLBACK_WARNING;
         return;
     }
@@ -4273,7 +4272,7 @@ int32_t Calendar::internalGetMonth(UErrorCode& status) const {
     if (U_FAILURE(status)) {
         return 0;
     }
-if (resolveFields(kMonthPrecedence) == UCAL_ORDINAL_MONTH) {
+    if (resolveFields(kMonthPrecedence) == UCAL_ORDINAL_MONTH) {
         return internalGet(UCAL_ORDINAL_MONTH);
     }
     return internalGet(UCAL_MONTH);
@@ -4281,7 +4280,8 @@ if (resolveFields(kMonthPrecedence) == UCAL_ORDINAL_MONTH) {
 
 int32_t Calendar::internalGetMonth(int32_t defaultValue, UErrorCode& status) const {
     if (U_FAILURE(status)) {
-        return 0;    }
+        return 0;
+    }
     if (resolveFields(kMonthPrecedence) == UCAL_ORDINAL_MONTH) {
         return internalGet(UCAL_ORDINAL_MONTH);
     }

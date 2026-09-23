@@ -42,7 +42,8 @@ class RtpPacketSimulator {
   // Notably, the simulated arrival time is taken from `env_.clock()` and not
   // from `logged_packet.log_time()`. This allows the caller to provide its own
   // clock offset, that might be different from the logged time base.
-SimulatedPacket SimulateRtpPacketReceived(      const LoggedRtpPacket& logged_packet) const;
+  SimulatedPacket SimulateRtpPacketReceived(
+      const LoggedRtpPacket& logged_packet) const;
 
  private:
   const Environment env_;

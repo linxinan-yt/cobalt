@@ -57,7 +57,8 @@ class DigitalCredentialsCrossDeviceRequestDispatcherTest
                  sizeof(peer_identity_x962_), /*ctx=*/nullptr));
 
 #if !BUILDFLAG(IS_COBALT)
-    mock_adapter_ = device::cablev2::CableMockBluetoothAdapter::MakePoweredOn();    device::BluetoothAdapterFactory::SetAdapterForTesting(mock_adapter_);
+    mock_adapter_ = device::cablev2::CableMockBluetoothAdapter::MakePoweredOn();
+    device::BluetoothAdapterFactory::SetAdapterForTesting(mock_adapter_);
 #endif
   }
 

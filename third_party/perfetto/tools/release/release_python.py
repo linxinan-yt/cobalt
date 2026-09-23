@@ -35,6 +35,7 @@ VENV_PYTHON = (
     os.path.abspath(os.path.join('.venv', 'bin', 'python')) if sys.platform
     != 'win32' else os.path.join('.venv', 'Scripts', 'python.exe'))
 
+
 def info(msg: str) -> None:
   print(f"{GREEN}INFO:{NC} {msg}")
 

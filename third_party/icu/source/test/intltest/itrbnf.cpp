@@ -84,7 +84,7 @@ void IntlTestRBNF::runIndexedTest(int32_t index, UBool exec, const char* &name, 
         TESTCASE(32, TestParseRuleDescriptorOverflow23002);
         TESTCASE(33, TestInfiniteRecursion);
         TESTCASE(34, testOmissionReplacementWithPluralRules);
-TESTCASE(35, TestNullDereferenceWRITE23149);
+        TESTCASE(35, TestNullDereferenceWRITE23149);
         TESTCASE(36, TestNullDereferenceREAD23184);
 #else
         TESTCASE(0, TestRBNFDisabled);
@@ -2779,7 +2779,9 @@ IntlTestRBNF::TestNullDereferenceREAD23184() {
     if (U_SUCCESS(status)) {
        errln("Construct \"x00:>%%>>;%%;<0<<\" should get error");
     }
-}/* U_HAVE_RBNF */
+}
+
+/* U_HAVE_RBNF */
 #else
 
 void

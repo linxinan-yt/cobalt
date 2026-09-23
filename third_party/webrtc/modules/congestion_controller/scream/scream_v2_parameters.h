@@ -133,7 +133,7 @@ struct ScreamV2Parameters {
   // even of no streams have been configured.
   FieldTrialParameter<TimeDelta> initial_probing_duration;
 
-// Factor multiplied by the current target rate to decide the pacing rate.
+  // Factor multiplied by the current target rate to decide the pacing rate.
   FieldTrialParameter<double> pacing_factor;
   // Minimum pacing rate relative to received_rate.
   FieldTrialParameter<double> pacing_rate_received_factor;
@@ -163,7 +163,8 @@ struct ScreamV2Parameters {
   // Minimum pacing delay before starting cwnd pushback reduction.
   FieldTrialParameter<TimeDelta> min_pacing_delay_for_pushback;
   // Maximum pacing delay for full cwnd pushback reduction.
-  FieldTrialParameter<TimeDelta> max_pacing_delay_for_pushback;};
+  FieldTrialParameter<TimeDelta> max_pacing_delay_for_pushback;
+};
 
 }  // namespace webrtc
 #endif  // MODULES_CONGESTION_CONTROLLER_SCREAM_SCREAM_V2_PARAMETERS_H_

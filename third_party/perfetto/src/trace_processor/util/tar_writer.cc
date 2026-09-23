@@ -92,7 +92,8 @@ base::Status ValidateFilename(const std::string& filename) {
   return base::OkStatus();
 }
 
-TarHeader MakeTarHeader(const std::string& filename, size_t file_size) {  TarHeader header;
+TarHeader MakeTarHeader(const std::string& filename, size_t file_size) {
+  TarHeader header;
 
   // Initialize header
   memset(&header, 0, sizeof(TarHeader));

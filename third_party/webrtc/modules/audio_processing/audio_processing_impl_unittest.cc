@@ -1047,7 +1047,8 @@ TEST(AudioProcessingImplTest, DoesNotFailProcessReverseStreamAfterApplyConfig) {
   StreamConfig stream_config(kSampleRateHz, kNumChannels);
 
   scoped_refptr<AudioProcessing> apm =
-BuiltinAudioProcessingBuilder().Build(CreateTestEnvironment());  apm->Initialize({{
+      BuiltinAudioProcessingBuilder().Build(CreateTestEnvironment());
+  apm->Initialize({{
       StreamConfig(16000, /*num_channels=*/1),
       StreamConfig(16000, /*num_channels=*/1),
       stream_config,

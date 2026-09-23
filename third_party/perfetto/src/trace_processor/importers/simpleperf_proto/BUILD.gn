@@ -24,12 +24,14 @@ source_set("simpleperf_proto") {
     "../../../../gn:default_deps",
     "../../../../include/perfetto/ext/base:base",
     "../../../../include/perfetto/protozero:protozero",
-"../../../../protos/perfetto/common:zero",    "../../../../protos/third_party/simpleperf:zero",
+    "../../../../protos/perfetto/common:zero",
+    "../../../../protos/third_party/simpleperf:zero",
     "../../importers/common:common",
     "../../sorter",
     "../../storage",
     "../../tables:tables_python",
     "../../types",
     "../../util:trace_blob_view_reader",
-"../../util:trace_type",  ]
+    "../../util:trace_type",
+  ]
 }

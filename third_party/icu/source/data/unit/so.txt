@@ -341,7 +341,8 @@ so{
             night{
 dnam{"habeeno"}
                 one{"{0} habeen"}
-                other{"{0} habeeno"}                per{"{0} halkii habeen"}
+                other{"{0} habeeno"}
+                per{"{0} halkii habeen"}
             }
             quarter{
                 dnam{"Rubucyo"}
@@ -544,7 +545,8 @@ dnam{"habeeno"}
                 other{"{0} dsimitir"}
             }
             fathom{
-dnam{"fathoms"}                one{"{0} fathom"}
+dnam{"fathoms"}
+                one{"{0} fathom"}
                 other{"{0} fathoms"}
             }
             foot{
@@ -554,7 +556,8 @@ dnam{"fathoms"}                one{"{0} fathom"}
                 per{"{0} fiitkiiba"}
             }
             furlong{
-dnam{"furlongs"}                one{"{0} furlong"}
+dnam{"furlongs"}
+                one{"{0} furlong"}
                 other{"{0} furlongs"}
             }
             inch{
@@ -636,11 +639,13 @@ dnam{"furlongs"}                one{"{0} furlong"}
         }
         light{
             candela{
-dnam{"candela"}                one{"{0} candela"}
+dnam{"candela"}
+                one{"{0} candela"}
                 other{"{0} candela"}
             }
             lumen{
-dnam{"lumen"}                one{"{0} lumen"}
+dnam{"lumen"}
+                one{"{0} lumen"}
                 other{"{0} lumen"}
             }
             lux{
@@ -723,7 +728,8 @@ dnam{"lumen"}                one{"{0} lumen"}
                 other{"{0} cufka qorraxda"}
             }
             stone{
-dnam{"dhagaxo"}                one{"{0} dhagax"}
+dnam{"dhagaxo"}
+                one{"{0} dhagax"}
                 other{"{0} dhagaxo"}
             }
             ton{
@@ -1061,7 +1067,8 @@ dnam{"dhagaxo"}                one{"{0} dhagax"}
                 one{"{0}ppm"}
                 other{"{0}ppm#"}
             }
-part-per-1e9{                dnam{"qb"}
+part-per-1e9{
+                dnam{"qb"}
                 one{"{0}qb"}
                 other{"{0}qb"}
             }
@@ -1264,7 +1271,8 @@ dnam{"habeeno"}
                 other{"{0}nt"}
             }
             light-speed{
-dnam{"nal"}                one{"{0}nal"}
+dnam{"nal"}
+                one{"{0}nal"}
                 other{"{0}nal"}
             }
         }

@@ -299,8 +299,9 @@ checkAssemblyHeaderName(const char* optAssembly) {
 
 U_CAPI UBool U_EXPORT2
 checkCpuArchitecture(const char* optCpuArch) {
-return strcmp(optCpuArch, "x64") == 0 || strcmp(optCpuArch, "x86") == 0 || strcmp(optCpuArch, "arm64") == 0 || strcmp(optCpuArch, "arm") == 0
-        || strcmp(optCpuArch, "X64") == 0 || strcmp(optCpuArch, "X86") == 0 || strcmp(optCpuArch, "ARM64") == 0 || strcmp(optCpuArch, "ARM") == 0;}
+    return strcmp(optCpuArch, "x64") == 0 || strcmp(optCpuArch, "x86") == 0 || strcmp(optCpuArch, "arm64") == 0 || strcmp(optCpuArch, "arm") == 0
+        || strcmp(optCpuArch, "X64") == 0 || strcmp(optCpuArch, "X86") == 0 || strcmp(optCpuArch, "ARM64") == 0 || strcmp(optCpuArch, "ARM") == 0;
+}
 
 
 U_CAPI void U_EXPORT2
@@ -867,7 +868,7 @@ getArchitecture(
         // would most likely be ran on host machine to generate the .obj file for
         // the target architecture.
 #       if defined(__clang__)
-if (!optCpuArch) {
+            if (!optCpuArch) {
                 fprintf(stderr, "genccode: CPU architecture must be set for Clang-CL\n");
                 exit(U_ILLEGAL_ARGUMENT_ERROR);
             } if (strcmp(optCpuArch, "x64") == 0 || strcmp(optCpuArch, "X64") == 0) {
@@ -877,7 +878,8 @@ if (!optCpuArch) {
             } else if (strcmp(optCpuArch, "arm64") == 0 || strcmp(optCpuArch, "ARM64") == 0) {
                 *pCPU = IMAGE_FILE_MACHINE_ARM64;
             } else if (strcmp(optCpuArch, "arm") == 0 || strcmp(optCpuArch, "ARM") == 0) {
-                *pCPU = IMAGE_FILE_MACHINE_ARM;            } else {
+                *pCPU = IMAGE_FILE_MACHINE_ARM;
+            } else {
                 std::terminate(); // Unreachable.
             }
 #       else

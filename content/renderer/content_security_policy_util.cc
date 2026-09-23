@@ -43,7 +43,8 @@ source_list.allow_unsafe_hashes, source_list.report_sample,
       source_list.cobalt_insecure_private_range);
 #else
       source_list.report_hash_algorithm);
-#endif // BUILDFLAG(IS_COBALT)}
+#endif // BUILDFLAG(IS_COBALT)
+}
 
 std::vector<blink::WebString> ToVectorOfWebStrings(
     const std::vector<std::string>& list_in) {
@@ -84,7 +85,8 @@ source_list->allow_trusted_types_eval,
           source_list->report_hash_algorithm,
           source_list->cobalt_insecure_local_network,
           source_list->cobalt_insecure_private_range};
-#else          source_list->report_hash_algorithm};
+#else
+          source_list->report_hash_algorithm};
 #endif  // BUILDFLAG(IS_COBALT)
 }
 

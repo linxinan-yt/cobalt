@@ -318,16 +318,19 @@ void MediaDevicesDispatcherHost::SetCaptureHandleConfig(
 
 void MediaDevicesDispatcherHost::CloseFocusWindowOfOpportunity(
     const std::string& label) {
+#if BUILDFLAG(ENABLE_SCREEN_CAPTURE)
   media_stream_manager_->SetCapturedDisplaySurfaceFocus(
       label, /*focus=*/true,
       /*is_from_microtask=*/true,
       /*is_from_timer=*/false);
+#endif  // BUILDFLAG(ENABLE_SCREEN_CAPTURE)
 }
 
 void MediaDevicesDispatcherHost::ProduceSubCaptureTargetId(
     media::mojom::SubCaptureTargetType type,
     ProduceSubCaptureTargetIdCallback callback) {
-CHECK_CURRENTLY_ON(BrowserThread::IO, base::NotFatalUntil::M152);
+#if BUILDFLAG(ENABLE_SCREEN_CAPTURE)
+  CHECK_CURRENTLY_ON(BrowserThread::IO, base::NotFatalUntil::M152);
   GetUIThreadTaskRunner({})->PostTaskAndReplyWithResult(
       FROM_HERE,
       base::BindOnce(

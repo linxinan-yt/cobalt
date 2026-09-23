@@ -170,7 +170,8 @@ bool CSPSourceListIsNone(
          !source_list.cobalt_insecure_private_range;
 #else
          !source_list.hashes.size() && !source_list.allow_trusted_types_eval;
-#endif}
+#endif
+}
 
 bool CSPSourceListIsSelf(
     const network::mojom::blink::CSPSourceList& source_list) {
@@ -185,7 +186,8 @@ bool CSPSourceListIsSelf(
          !source_list.cobalt_insecure_local_network;
 #else
          !source_list.hashes.size() && !source_list.allow_trusted_types_eval;
-#endif}
+#endif
+}
 
 bool CSPSourceListIsHashOrNoncePresent(
     const network::mojom::blink::CSPSourceList& source_list) {

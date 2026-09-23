@@ -11,7 +11,6 @@
 #ifndef PC_CODEC_VENDOR_H_
 #define PC_CODEC_VENDOR_H_
 
-#include <string>
 #include <utility>
 #include <vector>
 
@@ -116,7 +115,7 @@ class CodecVendor {
       const RtpTransceiverDirection& offer,
       const RtpTransceiverDirection& answer) const;
 
-RTCError MergeCodecsByDirection(MediaType type,
+  RTCError MergeCodecsByDirection(MediaType type,
                                   RtpTransceiverDirection direction,
                                   absl::string_view mid,
                                   CodecList& codecs_out,
@@ -127,6 +126,7 @@ RTCError MergeCodecsByDirection(MediaType type,
   // and to makessure we consistently make calls to GetNegotiatedCodecsForOffer
   // and GetNegotiatedCodecsForAnswer in the same calling context.
   RTC_NO_UNIQUE_ADDRESS SequenceChecker sequence_checker_;
+
   const FieldTrialsView& trials_;
 
   const TypedCodecVendor audio_send_codecs_;
@@ -163,6 +163,7 @@ RTCError MergeCodecsForTesting(const CodecList& reference_codecs,
                                CodecList& offered_codecs,
                                PayloadTypeSuggester& pt_suggester,
                                bool pick_from_top_of_range = false);
+
 }  //  namespace webrtc
 
 #endif  // PC_CODEC_VENDOR_H_

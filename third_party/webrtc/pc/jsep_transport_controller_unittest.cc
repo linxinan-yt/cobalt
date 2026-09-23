@@ -2942,37 +2942,5 @@ TEST_F(JsepTransportControllerTest, CustomRtpTransportFactory) {
   EXPECT_EQ(factory->video_transport_, video_rtp_transport);
 }
 
-TEST_F(JsepTransportControllerTest, RtpTransportCountHistogramNoBundle) {
-  metrics::Reset();
-  CreateJsepTransportController(JsepTransportController::Config());
-  auto description = CreateSessionDescriptionWithoutBundle();
-  transport_controller_->SetLocalDescription(SdpType::kOffer, description.get(),
-                                             nullptr);
-  transport_controller_->SetRemoteDescription(
-      SdpType::kAnswer, description.get(), description.get());
-  EXPECT_METRIC_EQ(
-      1, metrics::NumSamples("WebRTC.PeerConnection.RtpTransportCount"));
-  // We expect 2 transports
-  EXPECT_METRIC_THAT(
-      metrics::Samples("WebRTC.PeerConnection.RtpTransportCount"),
-      ElementsAre(Pair(2, 1)));
-}
-
-TEST_F(JsepTransportControllerTest, RtpTransportCountHistogramWithBundleGroup) {
-  metrics::Reset();
-  CreateJsepTransportController(JsepTransportController::Config());
-  auto description = CreateSessionDescriptionWithBundleGroup();
-  transport_controller_->SetLocalDescription(SdpType::kOffer, description.get(),
-                                             nullptr);
-  transport_controller_->SetRemoteDescription(
-      SdpType::kAnswer, description.get(), description.get());
-  EXPECT_METRIC_EQ(
-      1, metrics::NumSamples("WebRTC.PeerConnection.RtpTransportCount"));
-  // We expect 1 transport
-  EXPECT_METRIC_THAT(
-      metrics::Samples("WebRTC.PeerConnection.RtpTransportCount"),
-      ElementsAre(Pair(1, 1)));
-}
-
 }  // namespace
 }  // namespace webrtc

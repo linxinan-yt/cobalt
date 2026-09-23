@@ -18,13 +18,22 @@
 #include "third_party/blink/renderer/bindings/core/v8/script_promise_resolver.h"
 #include "third_party/blink/renderer/bindings/modules/v8/v8_user_on_exit_strategy.h"
 #include "third_party/blink/renderer/core/frame/local_dom_window.h"
-#include "third_party/blink/renderer/modules/event_interface_modules_names.h"
+#include "third_party/blink/renderer/modules/event_target_modules_names.h"
 
 namespace blink {
 
 H5vccSystem::H5vccSystem(LocalDOMWindow& window)
     : ExecutionContextLifecycleObserver(window.GetExecutionContext()),
       remote_h5vcc_system_(window.GetExecutionContext()) {}
+
+const AtomicString& H5vccSystem::InterfaceName() const {
+  DEFINE_STATIC_LOCAL(const AtomicString, interface_name, ("H5vccSystem"));
+  return interface_name;
+}
+
+ExecutionContext* H5vccSystem::GetExecutionContext() const {
+  return ExecutionContextLifecycleObserver::GetExecutionContext();
+}
 
 void H5vccSystem::ContextDestroyed() {}
 
@@ -237,7 +246,7 @@ void H5vccSystem::EnsureReceiverIsBound() {
 }
 
 void H5vccSystem::Trace(Visitor* visitor) const {
-  ScriptWrappable::Trace(visitor);
+  EventTarget::Trace(visitor);
   ExecutionContextLifecycleObserver::Trace(visitor);
   visitor->Trace(remote_h5vcc_system_);
 }

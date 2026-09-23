@@ -900,10 +900,8 @@ void UserMediaRequest::OnMediaStreamsInitialized(MediaStreamVector streams) {
     for (const auto& video_track : video_tracks)
       video_track->SetInitialConstraints(video_);
 
-RecordIdentifiabilityMetric(
-        surface_, GetExecutionContext(),
-        IdentifiabilityBenignStringToken(g_empty_string));
-#if BUILDFLAG(USE_WEBRTC_PEER_CONNECTION)    if (auto* window = GetWindow()) {
+#if BUILDFLAG(USE_WEBRTC_PEER_CONNECTION)
+    if (auto* window = GetWindow()) {
       if (media_type_ == UserMediaRequestType::kUserMedia) {
         PeerConnectionTracker::From(*window).TrackGetUserMediaSuccess(this,
                                                                       stream);
@@ -928,9 +926,8 @@ void UserMediaRequest::FailConstraint(const String& constraint_name,
   DCHECK(!is_resolved_);
   if (!GetExecutionContext())
     return;
-RecordIdentifiabilityMetric(surface_, GetExecutionContext(),
-                              IdentifiabilityBenignStringToken(message));
-#if BUILDFLAG(USE_WEBRTC_PEER_CONNECTION)  if (auto* window = GetWindow()) {
+#if BUILDFLAG(USE_WEBRTC_PEER_CONNECTION)
+  if (auto* window = GetWindow()) {
     if (media_type_ == UserMediaRequestType::kUserMedia) {
       PeerConnectionTracker::From(*window).TrackGetUserMediaFailure(
           this, "OverConstrainedError", message);
@@ -1047,10 +1044,9 @@ void UserMediaRequest::Fail(Result error, const String& message) {
   CHECK(exception_code.has_value());
   CHECK(result_enum.has_value());
 
-RecordIdentifiabilityMetric(surface_, GetExecutionContext(),
-                              IdentifiabilityBenignStringToken(message));
 
-#if BUILDFLAG(USE_WEBRTC_PEER_CONNECTION)  if (auto* window = GetWindow()) {
+#if BUILDFLAG(USE_WEBRTC_PEER_CONNECTION)
+  if (auto* window = GetWindow()) {
     if (media_type_ == UserMediaRequestType::kUserMedia) {
       PeerConnectionTracker::From(*window).TrackGetUserMediaFailure(
           this, DOMException::GetErrorName(*exception_code), message);

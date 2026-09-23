@@ -82,9 +82,10 @@ base::Status TraceRedactor::Redact(std::string_view source_filename,
                                    std::string_view dest_filename,
                                    Context* context) const {
   const std::string source_filename_str(source_filename);
-ASSIGN_OR_RETURN(trace_processor::TraceBlob blob,
+  ASSIGN_OR_RETURN(trace_processor::TraceBlob blob,
                    LoadTrace(source_filename_str));
   trace_processor::TraceBlobView whole_view(std::move(blob));
+
   RETURN_IF_ERROR(Collect(context, whole_view));
 
   if (!context->timeline || context->timeline->empty()) {

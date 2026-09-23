@@ -70,7 +70,8 @@ template <typename V
 #else   // BUILDFLAG(IS_COBALT)
 template <typename V>
   requires(!IsJavaRef<V>)
-#endif  // BUILDFLAG(IS_COBALT)inline ScopedJavaLocalRef<jobject> ListSet(JNIEnv* env,
+#endif  // BUILDFLAG(IS_COBALT)
+inline ScopedJavaLocalRef<jobject> ListSet(JNIEnv* env,
                                            const JavaRef<jobject>& list,
                                            int32_t idx,
                                            const V& value) {
@@ -134,7 +135,8 @@ template <typename K, typename V
 #else   // BUILDFLAG(IS_COBALT)
 template <typename K, typename V>
   requires(!IsJavaRef<K> || !IsJavaRef<V>)
-#endif  // BUILDFLAG(IS_COBALT)inline ScopedJavaLocalRef<jobject> MapPut(JNIEnv* env,
+#endif  // BUILDFLAG(IS_COBALT)
+inline ScopedJavaLocalRef<jobject> MapPut(JNIEnv* env,
                                           const JavaRef<jobject>& map,
                                           const K& key,
                                           const V& value) {

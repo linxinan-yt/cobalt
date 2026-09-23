@@ -710,7 +710,8 @@ public:
      * with this date-time formatter.
      * @stable ICU 2.0
      */
-U_I18N_API virtual const DateFormatSymbols* getDateFormatSymbols() const;
+    U_I18N_API virtual const DateFormatSymbols* getDateFormatSymbols() const;
+
     /**
      * Set the date/time formatting symbols.  The caller no longer owns the
      * DateFormatSymbols object and should not delete it after making this call.
@@ -737,7 +738,8 @@ U_I18N_API virtual const DateFormatSymbols* getDateFormatSymbols() const;
      * @return          The class ID for all objects of this class.
      * @stable ICU 2.0
      */
-static UClassID U_EXPORT2 getStaticClassID();
+    U_I18N_API static UClassID getStaticClassID();
+
     /**
      * Returns a unique class ID POLYMORPHICALLY. Pure virtual override. This
      * method is to implement a simple version of RTTI, since not all C++
@@ -749,7 +751,8 @@ static UClassID U_EXPORT2 getStaticClassID();
      *                  other classes have different class IDs.
      * @stable ICU 2.0
      */
-U_I18N_API virtual UClassID getDynamicClassID() const override;
+    U_I18N_API virtual UClassID getDynamicClassID() const override;
+
     /**
      * Set the calendar to be used by this date format. Initially, the default
      * calendar for the specified or default locale is used.  The caller should
@@ -783,7 +786,8 @@ U_I18N_API virtual UClassID getDynamicClassID() const override;
      * @return the time zone format associated with this date/time formatter.
      * @internal ICU 49 technology preview
      */
-U_I18N_API virtual const TimeZoneFormat* getTimeZoneFormat() const;
+    U_I18N_API virtual const TimeZoneFormat* getTimeZoneFormat() const;
+
     /**
      * Set a particular UDisplayContext value in the formatter, such as
      * UDISPCTX_CAPITALIZATION_FOR_STANDALONE. Note: For getContext, see
@@ -865,7 +869,7 @@ U_I18N_API virtual const TimeZoneFormat* getTimeZoneFormat() const;
      * @return   locale in this simple date formatter
      * @internal ICU 4.0
      */
-U_I18N_API const Locale& getSmpFmtLocale() const;
+    U_I18N_API const Locale& getSmpFmtLocale() const;
 #endif  /* U_HIDE_INTERNAL_API */
 
 private:

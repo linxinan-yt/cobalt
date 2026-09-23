@@ -2228,7 +2228,8 @@ zh_Hant{
         }
 hour-narrow{
             dn{"時"}
-        }        hour-short{
+        }
+        hour-short{
             dn{"時"}
         }
         minute{
@@ -2247,7 +2248,8 @@ hour-narrow{
         }
 minute-narrow{
             dn{"分"}
-        }        minute-short{
+        }
+        minute-short{
             dn{"分"}
         }
         mon{
@@ -2408,7 +2410,8 @@ minute-narrow{
         }
 weekOfMonth-narrow{
             dn{"月週次"}
-        }        weekOfMonth-short{
+        }
+        weekOfMonth-short{
             dn{"月週次"}
         }
         weekday{

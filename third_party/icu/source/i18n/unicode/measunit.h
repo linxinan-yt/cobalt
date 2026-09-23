@@ -1367,24 +1367,6 @@ class U_I18N_API MeasureUnit: public UObject {
      */
     static MeasureUnit getPermyriad();
 
-#ifndef U_HIDE_DRAFT_API
-    /**
-     * Returns by pointer, unit of concentr: portion-per-1e9.
-     * Caller owns returned value and must free it.
-     * Also see {@link #getPortionPer1E9()}.
-     * @param status ICU error code.
-     * @draft ICU 77
-     */
-    static MeasureUnit *createPortionPer1E9(UErrorCode &status);
-
-    /**
-     * Returns by value, unit of concentr: portion-per-1e9.
-     * Also see {@link #createPortionPer1E9()}.
-     * @draft ICU 77
-     */
-    static MeasureUnit getPortionPer1E9();
-#endif /* U_HIDE_DRAFT_API */
-
     /**
      * Returns by pointer, unit of consumption: liter-per-100-kilometer.
      * Caller owns returned value and must free it.
@@ -1818,24 +1800,6 @@ class U_I18N_API MeasureUnit: public UObject {
      * @stable ICU 64
      */
     static MeasureUnit getNanosecond();
-
-#ifndef U_HIDE_DRAFT_API
-    /**
-     * Returns by pointer, unit of duration: night.
-     * Caller owns returned value and must free it.
-     * Also see {@link #getNight()}.
-     * @param status ICU error code.
-     * @draft ICU 76
-     */
-    static MeasureUnit *createNight(UErrorCode &status);
-
-    /**
-     * Returns by value, unit of duration: night.
-     * Also see {@link #createNight()}.
-     * @draft ICU 76
-     */
-    static MeasureUnit getNight();
-#endif /* U_HIDE_DRAFT_API */
 
     /**
      * Returns by pointer, unit of duration: night.
@@ -3488,30 +3452,6 @@ class U_I18N_API MeasureUnit: public UObject {
 #endif  /* U_HIDE_DEPRECATED_API */
 
     /**
-     * Returns by pointer, unit of mass: metric-ton
-     * (renamed to tonne in CLDR 42 / ICU 72).
-     * Caller owns returned value and must free it.
-     * Note: In ICU 74 this will be deprecated in favor of
-     * createTonne(), which is currently draft but will
-     * become stable in ICU 74, and which uses the preferred naming.
-     * Also see {@link #getMetricTon()} and {@link #createTonne()}.
-     * @param status ICU error code.
-     * @stable ICU 54
-     */
-    static MeasureUnit *createMetricTon(UErrorCode &status);
-
-    /**
-     * Returns by value, unit of mass: metric-ton
-     * (renamed to tonne in CLDR 42 / ICU 72).
-     * Note: In ICU 74 this will be deprecated in favor of
-     * getTonne(), which is currently draft but will
-     * become stable in ICU 74, and which uses the preferred naming.
-     * Also see {@link #createMetricTon()} and {@link #getTonne()}.
-     * @stable ICU 64
-     */
-    static MeasureUnit getMetricTon();
-
-    /**
      * Returns by pointer, unit of power: gigawatt.
      * Caller owns returned value and must free it.
      * Also see {@link #getGigawatt()}.
@@ -3848,24 +3788,6 @@ class U_I18N_API MeasureUnit: public UObject {
      * @stable ICU 64
      */
     static MeasureUnit getKnot();
-
-#ifndef U_HIDE_DRAFT_API
-    /**
-     * Returns by pointer, unit of speed: light-speed.
-     * Caller owns returned value and must free it.
-     * Also see {@link #getLightSpeed()}.
-     * @param status ICU error code.
-     * @draft ICU 76
-     */
-    static MeasureUnit *createLightSpeed(UErrorCode &status);
-
-    /**
-     * Returns by value, unit of speed: light-speed.
-     * Also see {@link #createLightSpeed()}.
-     * @draft ICU 76
-     */
-    static MeasureUnit getLightSpeed();
-#endif /* U_HIDE_DRAFT_API */
 
     /**
      * Returns by pointer, unit of speed: light-speed.

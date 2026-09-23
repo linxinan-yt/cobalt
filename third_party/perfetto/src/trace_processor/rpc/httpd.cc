@@ -326,9 +326,10 @@ void Httpd::OnWebsocketMessage(const base::WebsocketMessage& msg) {
 void RunHttpRPCServer(Rpc& rpc,
                       const std::string& listen_ip,
                       const std::string& port_number,
-const std::vector<std::string>& additional_cors_origins,
+                      const std::vector<std::string>& additional_cors_origins,
                       uint32_t idle_timeout_ms,
-                      IdleStart idle_start) {  Httpd srv(rpc);
+                      IdleStart idle_start) {
+  Httpd srv(rpc);
   std::optional<int> port_opt = base::StringToInt32(port_number);
   std::string ip = listen_ip.empty() ? "localhost" : listen_ip;
   int port = port_opt.has_value() ? *port_opt : kBindPort;

@@ -1275,7 +1275,8 @@ Md{"d/M"}
                 hv{"a h वाजतां v"}
                 yM{"M-y"}
                 yMEd{"d-M-y, E"}
-                yMMM{"MMM y"}                yMMMM{"MMMM, y"}
+                yMMM{"MMM y"}
+                yMMMM{"MMMM, y"}
                 yMMMd{"d MMM, y"}
                 yMd{"d-M-y"}
                 yw{

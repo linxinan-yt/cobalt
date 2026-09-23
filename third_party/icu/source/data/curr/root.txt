@@ -206,7 +206,8 @@ root{
     CurrencyUnitPatterns{
         other{"{0} {1}"}
     }
-Version{"48"}    currencySpacing{
+Version{"48"}
+    currencySpacing{
         afterCurrency{
             currencyMatch{"[[:^S:]&[:^Z:]]"}
             insertBetween{" "}

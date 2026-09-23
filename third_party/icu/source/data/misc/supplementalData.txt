@@ -2223,7 +2223,8 @@ supplementalData:table(nofallback){
             "islamic-tbla",
         }
     }
-cldrVersion{"48"}    codeMappings{
+cldrVersion{"48"}
+    codeMappings{
         {
             "AA",
             "958",
@@ -8076,7 +8077,8 @@ cldrVersion{"48"}    codeMappings{
                 "Tirh",
                 "Tnsa",
                 "Todr",
-"Tols",                "Toto",
+"Tols",
+                "Toto",
                 "Tutg",
                 "Ugar",
                 "Vaii",
@@ -12037,7 +12039,8 @@ cldrVersion{"48"}    codeMappings{
                 "biscayan",
                 "biske",
                 "blasl",
-"bohairic",                "bohoric",
+"bohairic",
+                "bohoric",
                 "boont",
                 "bornholm",
                 "cisaup",
@@ -12048,7 +12051,8 @@ cldrVersion{"48"}    codeMappings{
                 "ekavsk",
                 "emodeng",
                 "fascia",
-"fayyumic",                "fodom",
+"fayyumic",
+                "fodom",
                 "fonipa",
                 "fonkirsh",
                 "fonnapa",
@@ -12074,7 +12078,8 @@ cldrVersion{"48"}    codeMappings{
                 "kleinsch",
                 "kociewie",
                 "kscor",
-"leidentr",                "lemosin",
+"leidentr",
+                "lemosin",
                 "lengadoc",
                 "lipaw",
                 "ltg1929",
@@ -12703,7 +12708,8 @@ secondary{
         bsq{
             primary{
                 scripts{"Latn"}
-            }            secondary{
+            }
+            secondary{
                 scripts{"Bass"}
             }
         }
@@ -15457,7 +15463,8 @@ scripts{"Latn"}
             secondary{
                 scripts{
                     "Deva",
-                    "Mymr",                    "Sinh",
+                    "Mymr",
+                    "Sinh",
                     "Deva",
                     "Thai",
                 }
@@ -16367,7 +16374,8 @@ toi{
             secondary{
                 territories{"ZM"}
             }
-        }        tok{
+        }
+        tok{
             primary{
                 scripts{"Latn"}
             }
@@ -19460,7 +19468,8 @@ territories{
             "en_HU",
             "en_IT",
             "en_LT",
-            "en_LV",            "en_NL",
+            "en_LV",
+            "en_NL",
             "en_NO",
             "en_PL",
             "en_PT",
@@ -30338,7 +30347,8 @@ populationShareF:int{48110000}            }
             fil{
                 populationShareF:int{48310000}
             }
-nan{                populationShareF:int{48370000}
+nan{
+                populationShareF:int{48370000}
             }
             pt{
                 officialStatus{"official"}
@@ -32400,7 +32410,8 @@ nan{                populationShareF:int{48370000}
             kaa{
                 populationShareF:int{47100000}
             }
-ku{                populationShareF:int{47400000}
+ku{
+                populationShareF:int{47400000}
             }
             ru{
                 populationShareF:int{49120000}

@@ -129,4 +129,6 @@ bool TransportPacketsFeedback::HasPacketWithEcnCe() const {
     }
   }
   return false;
-}}  // namespace webrtc
+}
+
+}  // namespace webrtc

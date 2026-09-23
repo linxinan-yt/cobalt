@@ -15,18 +15,19 @@
 #ifndef CONTENT_BROWSER_DEVTOOLS_COBALT_RENDER_FRAME_DEVTOOLS_AGENT_HOST_STUB_H_
 #define CONTENT_BROWSER_DEVTOOLS_COBALT_RENDER_FRAME_DEVTOOLS_AGENT_HOST_STUB_H_
 
+#include "content/browser/devtools/devtools_agent_host_impl.h"
 #include "content/common/content_export.h"
 #include "content/public/browser/devtools_agent_host.h"
 
 namespace content {
 
-class DevToolsAgentHostImpl;
 class FrameTreeNode;
 class RenderFrameHost;
 class RenderFrameHostImpl;
 class WebContents;
 
-class CONTENT_EXPORT RenderFrameDevToolsAgentHost {
+class CONTENT_EXPORT RenderFrameDevToolsAgentHost
+    : public DevToolsAgentHostImpl {
  public:
   static bool WasEverAttachedToAnyFrame();
   static bool IsDebuggerAttached(WebContents* web_contents);
@@ -36,6 +37,8 @@ class CONTENT_EXPORT RenderFrameDevToolsAgentHost {
       FrameTreeNode* frame_tree_node);
   static bool ShouldCreateDevToolsForHost(RenderFrameHostImpl* rfh);
   static void AttachToWebContents(WebContents* web_contents);
+
+  FrameTreeNode* frame_tree_node() const { return nullptr; }
 };
 
 }  // namespace content

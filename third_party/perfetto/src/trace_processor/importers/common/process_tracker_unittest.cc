@@ -642,5 +642,7 @@ TEST_F(ProcessTrackerTest, IsThreadAliveTruthTable) {
   // (3) explicit end -> dead.
   context.process_tracker->EndThread(1000, /*tid=*/31);
   ASSERT_FALSE(context.process_tracker->IsThreadAlive(worker));
-}}  // namespace
+}
+
+}  // namespace
 }  // namespace perfetto::trace_processor

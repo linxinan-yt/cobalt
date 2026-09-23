@@ -367,7 +367,7 @@ void UnitsTest::testConverter() {
         {"meter-per-10", "foot", 1.0, 0.328084},
         {"meter", "foot-per-10", 1.0, 32.8084},
         {"meter", "foot-per-100", 1.0, 328.084},
-{"part", "part-per-1000", 1.0, 1000},
+        {"part", "part-per-1000", 1.0, 1000},
         {"part", "part-per-10000", 1.0, 10000},
         {"part", "part-per-100000", 1.0, 100000},
         {"part", "part-per-1000000", 1.0, 1000000},
@@ -376,7 +376,8 @@ void UnitsTest::testConverter() {
         {"part-per-1000", "part", 1.0, 0.001},
         {"part-per-10000", "part", 1.0, 0.0001},
         {"part-per-100000", "part", 1.0, 0.00001},
-        {"part-per-1000000", "part", 1.0, 0.000001},        {"mile-per-hour", "meter-per-second", 1.0, 0.44704},
+        {"part-per-1000000", "part", 1.0, 0.000001},
+        {"mile-per-hour", "meter-per-second", 1.0, 0.44704},
         {"mile-per-100-hour", "meter-per-100-second", 1.0, 0.44704},
         {"mile-per-hour", "meter-per-100-second", 1.0, 44.704},
         {"mile-per-100-hour", "meter-per-second", 1.0, 0.0044704},
@@ -1191,11 +1192,12 @@ void UnitsTest::testUnitsConstantsDenomenator() {
     } testCases[]{
         {"meter-per-1000", 1000},
         {"liter-per-1000-kiloliter", 1000},
-{"meter-per-100-kilometer", 100}, // Failing: ICU-23045        {"liter-per-kilometer", 0},
+        {"meter-per-100-kilometer", 100},
+        {"liter-per-kilometer", 0},
         {"second-per-1000-minute", 1000},
         {"gram-per-1000-kilogram", 1000},
         {"meter-per-100", 100},
-{"part-per-1", 1},
+        {"part-per-1", 1},
         {"part-per-2", 2},
         {"part-per-3", 3},
         {"part-per-4", 4},
@@ -1246,6 +1248,7 @@ void UnitsTest::testUnitsConstantsDenomenator() {
         {"part-per-1E10", 10000000000},
         {"part-per-1e18", 1000000000000000000},
         {"part-per-1E18", 1000000000000000000},
+
         // Test for constant denominators that are randomly selected.
         {"liter-per-12345-kilometer", 12345},
         {"per-1000-kilometer", 1000},
@@ -1258,13 +1261,7 @@ void UnitsTest::testUnitsConstantsDenomenator() {
     };
 
     for (const auto &testCase : testCases) {
-if (uprv_strcmp(testCase.source, "portion-per-1000000000") == 0 ||
-            uprv_strcmp(testCase.source, "portion-per-1e9") == 0 ||
-            uprv_strcmp(testCase.source, "portion-per-1E9") == 0 ||
-            uprv_strcmp(testCase.source, "meter-per-100-kilometer") == 0) {
-            logKnownIssue("ICU-23045", "Incorrect constant denominator for certain unit identifiers");
-            continue;
-        }        MeasureUnit unit = MeasureUnit::forIdentifier(testCase.source, status);
+        MeasureUnit unit = MeasureUnit::forIdentifier(testCase.source, status);
         if (status.errIfFailureAndReset("forIdentifier(\"%s\")", testCase.source)) {
             continue;
         }
@@ -1280,7 +1277,7 @@ if (uprv_strcmp(testCase.source, "portion-per-1000000000") == 0 ||
         }
 
         if (constant != testCase.expectedConstant) {
-CharString msg;
+            CharString msg;
             msg.append("getConstantDenominator (\"", status);
             msg.append(testCase.source, status);
             msg.append("\")", status);
@@ -1294,7 +1291,8 @@ CharString msg;
             msg.append(testCase.source, status);
             msg.append("\")", status);
             assertEquals(msg.data(), UMEASURE_UNIT_COMPOUND, complexity);
-            status.reset();        }
+            status.reset();
+        }
     }
 }
 
@@ -1309,8 +1307,9 @@ void UnitsTest::testMeasureUnit_withConstantDenominator() {
     } testCases[]{
         {"meter-per-second", 100, UMEASURE_UNIT_COMPOUND},
         {"meter-per-100-second", 0, UMEASURE_UNIT_COMPOUND},
-{"part", 100, UMEASURE_UNIT_COMPOUND},
+        {"part", 100, UMEASURE_UNIT_COMPOUND},
         {"part-per-100", 0, UMEASURE_UNIT_SINGLE},
+
     };
 
     for (auto testCase : testCases) {
@@ -1334,21 +1333,34 @@ void UnitsTest::testMeasureUnit_withConstantDenominator() {
             continue;
         }
 
-if (actualConstantDenominator != testCase.constantDenominator) {
-            assertTrue("getConstantDenominator(\"%s\")", false);
+        CharString msg;
+        if (actualConstantDenominator != testCase.constantDenominator) {
+            msg.clear();
+            msg.append("getConstantDenominator (\"", status);
+            msg.append(testCase.source, status);
+            msg.append("\")", status);
+            assertTrue(msg.data(), false);
+            status.reset();
         }
-        assertEquals("getComplexity(\"%s\")", testCase.expectedComplexity, actualComplexity);
+        msg.clear();
+        msg.append("getComplexity (\"", status);
+        msg.append(testCase.source, status);
+        msg.append("\")", status);
+        assertEquals(msg.data(), testCase.expectedComplexity, actualComplexity);
+        status.reset();
     }
 
     // Test for invalid constant denominator
-    auto unit = MeasureUnit::forIdentifier("portion", status);
-    if (status.errIfFailureAndReset("forIdentifier(\"portion\")")) {        return;
+    auto unit = MeasureUnit::forIdentifier("part", status);
+    if (status.errIfFailureAndReset("forIdentifier(\"part\")")) {
+        return;
     }
 
     uint64_t denominator = LONG_MAX;
     denominator++;
     unit = unit.withConstantDenominator(denominator, status);
-assertTrue("There is a failure caused by withConstantDenominator(\"portion\")", status.isFailure());    status.reset();
+    assertTrue("There is a failure caused by withConstantDenominator(\"part\")", status.isFailure());
+    status.reset();
 }
 
 void UnitsTest::testUnitsConstantsDenomenator_getIdentifier() {
@@ -1382,12 +1394,14 @@ void UnitsTest::testUnitsConstantsDenomenator_getIdentifier() {
         }
 
         auto actualIdentifier = unit.getIdentifier();
-CharString msg;
+
+        CharString msg;
         msg.append("getIdentifier (\"", status);
         msg.append(testCase.source, status);
         msg.append("\")", status);
         assertEquals(msg.data(), testCase.expectedIdentifier, actualIdentifier);
-        status.reset();    }
+        status.reset();
+    }
 }
 
 #endif /* #if !UCONFIG_NO_FORMATTING */

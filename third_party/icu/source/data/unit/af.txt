@@ -334,7 +334,8 @@ af{
             night{
 dnam{"nagte"}
                 one{"{0} nag"}
-                other{"{0} nagte"}                per{"{0} per nag"}
+                other{"{0} nagte"}
+                per{"{0} per nag"}
             }
             quarter{
                 dnam{"kwartale"}
@@ -1391,7 +1392,8 @@ dnam{"nagte"}
 megapixel{
                 one{"{0} MP"}
                 other{"{0} MP"}
-            }            pixel{
+            }
+            pixel{
                 dnam{"px"}
                 one{"{0}px"}
                 other{"{0}px"}

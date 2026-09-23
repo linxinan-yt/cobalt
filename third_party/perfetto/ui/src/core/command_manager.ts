@@ -150,9 +150,9 @@ export function parseUrlCommands(
 
 export class CommandManagerImpl implements CommandManager {
   private readonly registry = new Registry<Command>((cmd) => cmd.id);
-private allowlistCheckFn: (id: string) => boolean = () => true;
   private readonly macros = new Registry<string>((macroId) => macroId);
   private isExecutingStartupCommands = false;
+
   constructor(private omnibox: OmniboxManagerImpl) {}
 
   getCommand(commandId: string): Command | undefined {
@@ -173,9 +173,10 @@ private allowlistCheckFn: (id: string) => boolean = () => true;
     return this.registry.register(cmd);
   }
 
-async runCommand(id: string, ...args: unknown[]): Promise<unknown> {
+  async runCommand(id: string, ...args: unknown[]): Promise<unknown> {
     if (this.isExecutingStartupCommands && !this.isStartupCommandAllowed(id)) {
-      throw new StartupCommandNotAllowedError(id);    }
+      throw new StartupCommandNotAllowedError(id);
+    }
     const cmd = this.registry.get(id);
     try {
       return await cmd.callback(...args);

@@ -56,7 +56,7 @@ constexpr auto SliceBlueprint(const char type[],
       name,
       UnitBlueprintT::Unknown{},
       description,
-};
+  };
 }
 
 // Creates a blueprint for a state track.
@@ -80,7 +80,8 @@ constexpr auto StateBlueprint(const char type[],
       },
       name,
       UnitBlueprintT::Unknown{},
-      description,  };
+      description,
+  };
 }
 
 // Creates a blueprint for a counter track.

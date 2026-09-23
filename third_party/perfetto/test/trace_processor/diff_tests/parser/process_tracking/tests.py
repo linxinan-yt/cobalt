@@ -549,7 +549,8 @@ class ProcessTracking(TestSuite):
           trusted_uid: 304336
           trusted_packet_sequence_id: 3
           trusted_pid: 1137063
-previous_packet_dropped: true        }
+          previous_packet_dropped: 1
+        }
         """),
         query="""
         select tid, pid, t.name as thread_name, p.name as process_name
@@ -561,7 +562,7 @@ previous_packet_dropped: true        }
         "tid","pid","thread_name","process_name"
         27,27,"ksoftirqd/1","ksoftirqd/1"
         28,28,"kworker/1:0","kworker/1:0"
-"""))
+        """))
 
   # perfetto v58+: main threads are now explicitly serialised, so we know
   # the main thread's comm.

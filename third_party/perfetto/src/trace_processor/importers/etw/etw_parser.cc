@@ -68,8 +68,9 @@ bool IsIoWait(uint8_t reason) {
 EtwParser::EtwParser(TraceProcessorContext* context)
     : context_(context),
       anonymized_process_string_id_(
-context->storage->InternString("Anonymized Process")),
+          context->storage->InternString("Anonymized Process")),
       disk_io_tracker_(context) {}
+
 base::Status EtwParser::ParseEtwEvent(uint32_t cpu,
                                       int64_t ts,
                                       const TracePacketData& data) {

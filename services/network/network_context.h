@@ -1016,7 +1016,8 @@ class COMPONENT_EXPORT(NETWORK_SERVICE) NetworkContext
 
 mojo::ReceiverSet<mojom::SocketFactory> socket_factory_receivers_;
 
-#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)  // See the comment for |trust_token_store()|.
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
+  // See the comment for |trust_token_store()|.
   std::unique_ptr<PendingTrustTokenStore> trust_token_store_;
 
   // Ordering: this must be after |trust_token_store_| since the

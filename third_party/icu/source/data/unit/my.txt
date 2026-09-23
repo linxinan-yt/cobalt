@@ -743,7 +743,8 @@ area{
             }
         }
         concentr{
-            portion-per-1e9{                other{"{0}ppb"}
+            portion-per-1e9{
+                other{"{0}ppb"}
             }
         }
         consumption{
@@ -877,7 +878,8 @@ area{
         }
         speed{
             light-speed{
-dnam{"အလင်း"}                other{"{0}အလင်း"}
+dnam{"အလင်း"}
+                other{"{0}အလင်း"}
             }
         }
         volume{

@@ -752,7 +752,8 @@ BYN{
         CNH{
             one{"yuwan na ƙasar Sin (na wajen ƙasa)"}
             other{"yuwan na ƙasar Sin (na wajen ƙasa)"}
-        }        CUP{
+        }
+        CUP{
             one{"peso na ƙasar Cuba"}
             other{"Peso na ƙasar Kuba"}
         }
@@ -823,7 +824,8 @@ BYN{
 HKD{
             one{"dalar Hong Kong"}
             other{"Dalar Hong Kong"}
-        }        HNL{
+        }
+        HNL{
             one{"lempira na ƙasar Honduras"}
             other{"Lempira na ƙasar Honduras"}
         }
@@ -1052,7 +1054,8 @@ one{"Kuɗin Saliyo (1964—2022)"}
 UZS{
             one{"som na ƙasar Uzbekistan"}
             other{"Som na ƙasar Uzbekistan"}
-        }        VND{
+        }
+        VND{
             one{"Dong na ƙasar Vietnam"}
             other{"Dong na ƙasar Vietnam"}
         }

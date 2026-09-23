@@ -171,8 +171,9 @@ struct SctpOptions {
   // It must be smaller than or equal to kSctpSendBufferSize.
   int max_message_size = kSctpSendBufferSize;
 
-// Negotiated in the SCTP handshake.
-  int max_sctp_streams = kMaxSctpStreams;  // draft-hancke-tsvwg-snap
+  // Negotiated in the SCTP handshake.
+  int max_sctp_streams = kMaxSctpStreams;
+  // draft-hancke-tsvwg-snap
   std::optional<std::vector<uint8_t>> local_init;
   std::optional<std::vector<uint8_t>> remote_init;
 };

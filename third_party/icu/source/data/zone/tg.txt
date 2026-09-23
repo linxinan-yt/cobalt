@@ -272,7 +272,8 @@ tg{
         }
 "America:Coyhaique"{
             ec{"Койҳайке"}
-        }        "America:Creston"{
+        }
+        "America:Creston"{
             ec{"Крестон"}
         }
         "America:Cuiaba"{
@@ -1191,7 +1192,8 @@ tg{
         }
 "Pacific:Kanton"{
             ec{"Кантон"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"Киритимати"}
         }
         "Pacific:Kosrae"{
@@ -1515,7 +1517,8 @@ ld{"Вақти тобистонаи Африқои Ғарбӣ"}
         }
 "meta:Hawaii"{
             ls{"Вақти стандартии Ҳавайӣ-Алеутӣ"}
-        }        "meta:Hawaii_Aleutian"{
+        }
+        "meta:Hawaii_Aleutian"{
             ld{"Вақти рӯзонаи Ҳавайӣ-Алеутӣ"}
             lg{"Вақти Ҳавайӣ-Алеутӣ"}
             ls{"Вақти стандартии Ҳавайӣ-Алеутӣ"}

@@ -380,7 +380,8 @@ class TurnPortTest : public ::testing::Test, public TurnPort::CallbacksForTest {
     // UDP port will be controlled.
     udp_port_->SetIceRole(ICEROLE_CONTROLLED);
     udp_port_->SubscribePortComplete(
-[this](Port* port) { OnUdpPortComplete(port); });    udp_port_->SetOption(Socket::OPT_RECV_ECN, 1);
+        this, [this](Port* port) { OnUdpPortComplete(port); });
+    udp_port_->SetOption(Socket::OPT_RECV_ECN, 1);
   }
 
   void PrepareTurnAndUdpPorts(ProtocolType protocol_type) {
@@ -788,13 +789,14 @@ class TurnPortTest : public ::testing::Test, public TurnPort::CallbacksForTest {
     // Send some data.
     size_t num_packets = 256;
     for (size_t i = 0; i < num_packets; ++i) {
-std::array<uint8_t, 256> buf;
+      std::array<uint8_t, 256> buf;
       uint8_t val = 0xFF;
       std::generate(buf.begin(), buf.begin() + i + 1, [&val] { return val--; });
       options.ect_1 = (i % 2 == 0);
       conn1->Send(std::span(buf).first(i + 1), options);
       conn2->Send(std::span(buf).first(i + 1), options);
-      time_controller_.AdvanceTime(kSimulatedRtt);    }
+      time_controller_.AdvanceTime(kSimulatedRtt);
+    }
 
     // Check the data.
     ASSERT_EQ(num_packets, turn_packets_.size());

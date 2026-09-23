@@ -35,12 +35,7 @@ import {postMessageHandler} from './post_message_handler';
 import {Router} from '../core/router';
 import {checkHttpRpcConnection} from './rpc_http_dialog';
 import {maybeOpenTraceFromRoute} from './trace_url_handler';
-import {
-  DEFAULT_TRACK_MIN_HEIGHT_PX,
-  MINIMUM_TRACK_MIN_HEIGHT_PX,
-  TRACK_MIN_HEIGHT_SETTING,
-} from './timeline_page/track_view';
-import {renderTimelinePage} from './timeline_page/timeline_page';import {HttpRpcEngine} from '../trace_processor/http_rpc_engine';
+import {HttpRpcEngine} from '../trace_processor/http_rpc_engine';
 import {showModal} from '../widgets/modal';
 import {IdleDetector} from './idle_detector';
 import type {IdleDetectorWindow} from './idle_detector_interface';
@@ -109,6 +104,7 @@ import type {Route} from '../public/app';
 //        └─────────────────────────────────────────────────────────────────┘
 //
 // =============================================================================
+
 const CSP_WS_PERMISSIVE_PORT = featureFlags.register({
   id: 'cspAllowAnyWebsocketPort',
   name: 'Relax Content Security Policy for 127.0.0.1:*',
@@ -319,8 +315,9 @@ function main() {
   document.body.classList.add('pf-fonts-loading');
   document.head.append(css);
 
-Promise.race([document.fonts.ready, sleepMs(15000)]).then(() => {
-    document.body.classList.remove('pf-fonts-loading');  });
+  Promise.race([document.fonts.ready, sleepMs(15000)]).then(() => {
+    document.body.classList.remove('pf-fonts-loading');
+  });
 
   const app = AppImpl.instance;
 
@@ -389,9 +386,10 @@ function onCssLoaded(app: AppImpl) {
   // Mount the main mithril component. This also forces a sync render pass.
   raf.mount(document.body, {
     view: () => {
-const commands = app.commands;
+      const commands = app.commands;
       const hotkeys: HotkeyConfig[] = [];
-      for (const {id, defaultHotkey} of commands.getCommands()) {        if (defaultHotkey) {
+      for (const {id, defaultHotkey} of commands.getCommands()) {
+        if (defaultHotkey) {
           hotkeys.push({
             callback: () => commands.runCommand(id),
             hotkey: defaultHotkey,
@@ -399,7 +397,7 @@ const commands = app.commands;
         }
       }
 
-// Add a dummy binding to prevent Mod+P from opening the print dialog.
+      // Add a dummy binding to prevent Mod+P from opening the print dialog.
       // Firstly, there is no reason to print the UI. Secondly, plugins might
       // register a Mod+P hotkey later at trace load time. It would be confusing
       // if this hotkey sometimes does what you want, but sometimes shows the
@@ -407,7 +405,9 @@ const commands = app.commands;
       hotkeys.push({
         hotkey: 'Mod+P',
         callback: () => {},
-      });      const currentTraceId = app.trace?.engine.engineId ?? 'no-trace';
+      });
+
+      const currentTraceId = app.trace?.engine.engineId ?? 'no-trace';
 
       // Trace data is cached inside many components on the tree. To avoid
       // issues with stale data when reloading a trace, we force-remount the
@@ -473,9 +473,10 @@ const commands = app.commands;
   });
 
   // Initialize plugins, now that we are ready to go.
-const pluginManager = AppImpl.instance.plugins;
-  CORE_PLUGINS.forEach((p) => pluginManager.registerPlugin(p, true));
-  NON_CORE_PLUGINS.forEach((p) => pluginManager.registerPlugin(p, false));  const route = Router.parseUrl(window.location.href);
+  const pluginManager = app.plugins;
+  corePlugins.forEach((p) => pluginManager.registerPlugin(p, true));
+  plugins.forEach((p) => pluginManager.registerPlugin(p, false));
+  const route = Router.parseUrl(window.location.href);
   const overrides = (route.args.enablePlugins ?? '').split(',');
   pluginManager.activatePlugins(app, overrides);
 

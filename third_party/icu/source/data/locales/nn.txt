@@ -71,7 +71,8 @@ generic{
                     d{"E d.–E d. MMM y G"}
                 }
             }
-        }        gregorian{
+        }
+        gregorian{
             AmPmMarkersAbbr{
                 "f.m.",
                 "e.m.",

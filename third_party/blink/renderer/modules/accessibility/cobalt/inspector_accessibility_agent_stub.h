@@ -33,7 +33,8 @@ class MODULES_EXPORT InspectorAccessibilityAgent : public InspectorAgent {
   static void ProvideTo(LocalFrame* frame) {}
   void Init(CoreProbeSink*,
             protocol::UberDispatcher*,
-            InspectorSessionState*) override {}
+            InspectorSessionState*,
+            V8SessionHolder) override {}
   void Dispose() override {}
 
   void AXReadyCallback(Document&) {}

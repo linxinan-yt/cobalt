@@ -62,7 +62,8 @@ rtc_library("libaom_av1_encoder") {
   ]
   deps = [
     ":libaom_speed_config_factory",
-"../..:frame_sampler",    "../..:video_codec_interface",
+    "../..:frame_sampler",
+    "../..:video_codec_interface",
     "../../../../api:field_trials_view",
     "../../../../api:scoped_refptr",
     "../../../../api/environment",
@@ -74,7 +75,6 @@ rtc_library("libaom_av1_encoder") {
     "../../../../api/video:video_frame",
     "../../../../api/video:video_frame_type",
     "../../../../api/video:video_rtp_headers",
-    "../../../../api/video_codecs:encoder_speed_controller_factory",
     "../../../../api/video_codecs:scalability_mode",
     "../../../../api/video_codecs:video_codecs_api",
     "../../../../common_video/generic_frame_descriptor",
@@ -84,7 +84,8 @@ rtc_library("libaom_av1_encoder") {
     "../../../../rtc_base/experiments:encoder_speed_experiment",
     "../../../../rtc_base/experiments:psnr_experiment",
     "../../../../system_wrappers",
-"../../../rtp_rtcp:rtp_rtcp_format",    "../../svc:scalability_structures",
+    "../../../rtp_rtcp:rtp_rtcp_format",
+    "../../svc:scalability_structures",
     "../../svc:scalable_video_controller",
     "//third_party/abseil-cpp/absl/algorithm:container",
     "//third_party/abseil-cpp/absl/base:core_headers",
@@ -122,15 +123,18 @@ rtc_library("libaom_av1_encoder_v2") {
     "//third_party/abseil-cpp/absl/cleanup",
     "//third_party/libaom",
   ]
-}rtc_library("libaom_speed_config_factory") {
+}
+
+rtc_library("libaom_speed_config_factory") {
   sources = [
     "libaom_speed_config_factory.cc",
     "libaom_speed_config_factory.h",
   ]
   deps = [
-"../../../../api:field_trials_view",
+    "../../../../api:field_trials_view",
     "../../../../api/units:time_delta",
-    "../../../../api/video_codecs:video_codecs_api",    "../../../../rtc_base/experiments:psnr_experiment",
+    "../../../../api/video_codecs:video_codecs_api",
+    "../../../../rtc_base/experiments:psnr_experiment",
   ]
 }
 
@@ -187,7 +191,6 @@ if (rtc_include_tests) {
       "../../../../api/video:video_bitrate_allocation",
       "../../../../api/video:video_frame",
       "../../../../api/video:video_frame_type",
-      "../../../../api/video:video_rtp_headers",
       "../../../../api/video_codecs:scalability_mode",
       "../../../../api/video_codecs:video_codecs_api",
       "../../../../modules/rtp_rtcp:rtp_rtcp_format",
@@ -258,10 +261,11 @@ if (rtc_include_tests) {
     ]
 
     if (enable_libaom) {
-deps += [
+      deps += [
         ":libaom_av1_encoder_unittest",
         ":libaom_av1_unittest",
-        ":libaom_speed_config_factory_unittest",      ]
+        ":libaom_speed_config_factory_unittest",
+      ]
     }
   }
 }

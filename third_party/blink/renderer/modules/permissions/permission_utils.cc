@@ -409,6 +409,7 @@ case V8PermissionName::Enum::kClipboardWrite: {
     }
 
     case V8PermissionName::Enum::kTopLevelStorageAccess: {
+#if BUILDFLAG(ENABLE_PRIVACY_SANDBOX_APIS)
       TopLevelStorageAccessPermissionDescriptor*
           top_level_storage_access_permission =
               NativeValueTraits<TopLevelStorageAccessPermissionDescriptor>::
@@ -425,6 +426,11 @@ case V8PermissionName::Enum::kClipboardWrite: {
       }
 
       return CreateTopLevelStorageAccessPermissionDescriptor(origin_as_kurl);
+#else
+      exception_state.ThrowTypeError(
+          "Top-level Storage Access API is not enabled.");
+      return nullptr;
+#endif
     }
 
     case V8PermissionName::Enum::kCapturedSurfaceControl: {

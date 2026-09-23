@@ -314,10 +314,6 @@ __attribute__((weak)) void  wgpuComputePassEncoderSetBindGroup(WGPUComputePassEn
     procs.computePassEncoderSetBindGroup(computePassEncoder, groupIndex, group, dynamicOffsetCount, dynamicOffsets);
 }
 DAWN_NO_SANITIZE("cfi-icall")
-__attribute__((weak)) void  wgpuComputePassEncoderSetImmediateData(WGPUComputePassEncoder computePassEncoder, uint32_t offset, void const * data, size_t size) {
-    procs.computePassEncoderSetImmediateData(computePassEncoder, offset, data, size);
-}
-DAWN_NO_SANITIZE("cfi-icall")
 __attribute__((weak)) void  wgpuComputePassEncoderSetLabel(WGPUComputePassEncoder computePassEncoder, WGPUStringView label) {
     procs.computePassEncoderSetLabel(computePassEncoder, label);
 }
@@ -705,10 +701,6 @@ __attribute__((weak)) void  wgpuRenderBundleEncoderSetBindGroup(WGPURenderBundle
     procs.renderBundleEncoderSetBindGroup(renderBundleEncoder, groupIndex, group, dynamicOffsetCount, dynamicOffsets);
 }
 DAWN_NO_SANITIZE("cfi-icall")
-__attribute__((weak)) void  wgpuRenderBundleEncoderSetImmediateData(WGPURenderBundleEncoder renderBundleEncoder, uint32_t offset, void const * data, size_t size) {
-    procs.renderBundleEncoderSetImmediateData(renderBundleEncoder, offset, data, size);
-}
-DAWN_NO_SANITIZE("cfi-icall")
 __attribute__((weak)) void  wgpuRenderBundleEncoderSetIndexBuffer(WGPURenderBundleEncoder renderBundleEncoder, WGPUBuffer buffer, WGPUIndexFormat format, uint64_t offset, uint64_t size) {
     procs.renderBundleEncoderSetIndexBuffer(renderBundleEncoder, buffer, format, offset, size);
 }
@@ -796,10 +788,6 @@ __attribute__((weak)) void  wgpuRenderPassEncoderSetBindGroup(WGPURenderPassEnco
 DAWN_NO_SANITIZE("cfi-icall")
 __attribute__((weak)) void  wgpuRenderPassEncoderSetBlendConstant(WGPURenderPassEncoder renderPassEncoder, WGPUColor const * color) {
     procs.renderPassEncoderSetBlendConstant(renderPassEncoder, color);
-}
-DAWN_NO_SANITIZE("cfi-icall")
-__attribute__((weak)) void  wgpuRenderPassEncoderSetImmediateData(WGPURenderPassEncoder renderPassEncoder, uint32_t offset, void const * data, size_t size) {
-    procs.renderPassEncoderSetImmediateData(renderPassEncoder, offset, data, size);
 }
 DAWN_NO_SANITIZE("cfi-icall")
 __attribute__((weak)) void  wgpuRenderPassEncoderSetIndexBuffer(WGPURenderPassEncoder renderPassEncoder, WGPUBuffer buffer, WGPUIndexFormat format, uint64_t offset, uint64_t size) {

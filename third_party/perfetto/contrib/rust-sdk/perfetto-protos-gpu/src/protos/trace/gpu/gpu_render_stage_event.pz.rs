@@ -30,7 +30,7 @@ pb_enum!(InternedGraphicsContextApi {
     OPEN_GL: 1,
     VULKAN: 2,
     OPEN_CL: 3,
-CUDA: 4,
+    CUDA: 4,
     HIP: 5,
 });
 
@@ -44,7 +44,8 @@ pb_msg!(InternedComputeKernel {
     name: String, primitive, 2,
     demangled_name: String, primitive, 3,
     arch: String, primitive, 4,
-    args: GpuRenderStageEventExtraComputeArg, msg, 5,});
+    args: GpuRenderStageEventExtraComputeArg, msg, 5,
+});
 
 pb_msg!(InternedGpuRenderStageSpecification {
     iid: u64, primitive, 1,
@@ -68,16 +69,18 @@ pb_msg!(GpuRenderStageEvent {
     context: u64, primitive, 5,
     render_target_handle: u64, primitive, 8,
     submission_id: u32, primitive, 10,
-extra_data: GpuRenderStageEventExtraData, msg, 6,    render_pass_handle: u64, primitive, 9,
+    extra_data: GpuRenderStageEventExtraData, msg, 6,
+    render_pass_handle: u64, primitive, 9,
     render_pass_instance_id: u64, primitive, 16,
     render_subpass_index_mask: u64, primitive, 15,
     command_buffer_handle: u64, primitive, 12,
-name: String, primitive, 17,
+    name: String, primitive, 17,
     name_iid: u64, primitive, 20,
     event_wait_ids: u64, primitive, 18,
     kernel_iid: u64, primitive, 19,
     launch: GpuRenderStageEventComputeKernelLaunch, msg, 21,
-    specifications: GpuRenderStageEventSpecifications, msg, 7,    hw_queue_id: i32, primitive, 3,
+    specifications: GpuRenderStageEventSpecifications, msg, 7,
+    hw_queue_id: i32, primitive, 3,
     stage_id: i32, primitive, 4,
 });
 
@@ -87,11 +90,13 @@ pb_msg!(GpuRenderStageEventSpecifications {
     stage: GpuRenderStageEventSpecificationsDescription, msg, 3,
 });
 
-pb_msg!(GpuRenderStageEventSpecificationsDescription {    name: String, primitive, 1,
+pb_msg!(GpuRenderStageEventSpecificationsDescription {
+    name: String, primitive, 1,
     description: String, primitive, 2,
 });
 
-pb_msg!(GpuRenderStageEventSpecificationsContextSpec {    context: u64, primitive, 1,
+pb_msg!(GpuRenderStageEventSpecificationsContextSpec {
+    context: u64, primitive, 1,
     pid: i32, primitive, 2,
 });
 
@@ -117,6 +122,7 @@ pb_msg!(GpuRenderStageEventDim3 {
     z: u32, primitive, 3,
 });
 
-pb_msg!(GpuRenderStageEventExtraData {    name: String, primitive, 1,
+pb_msg!(GpuRenderStageEventExtraData {
+    name: String, primitive, 1,
     value: String, primitive, 2,
 });

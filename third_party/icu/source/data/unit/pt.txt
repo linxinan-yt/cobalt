@@ -416,7 +416,8 @@ pt{
 dnam{"noites"}
                 gender{"feminine"}
                 one{"{0} noite"}
-                other{"{0} noites"}                per{"{0} por noite"}
+                other{"{0} noites"}
+                per{"{0} por noite"}
             }
             quarter{
                 dnam{"trimestre"}

@@ -734,7 +734,8 @@ public:
              + fVertexFiller.unflattenSize();
     }
 
-int glyphSrcPadding() const override { return kGlyphInsetting; }
+    int glyphSrcPadding() const override { return kGlyphInsetting; }
+
     std::tuple<bool, SkRect> deviceRectAndNeedsTransform(
             const SkMatrix &positionMatrix) const override {
         auto [integerTranslate, deviceRect] =
@@ -829,11 +830,8 @@ public:
 
     const AtlasSubRun* testingOnly_atlasSubRun() const override { return this; }
 
-void testingOnly_packedGlyphIDToGlyph(StrikeCache *cache) const override {
-        fGlyphs.packedGlyphIDToGlyph(cache, fVertexFiller.grMaskType());
-    }
-
     int glyphSrcPadding() const override { return 1; } // Padding NOT equal to insetting
+
     void draw(SkCanvas*,
               SkPoint drawOrigin,
               const SkPaint& paint,
@@ -966,7 +964,8 @@ public:
 
     const AtlasSubRun* testingOnly_atlasSubRun() const override { return this; }
 
-int glyphSrcPadding() const override { return kGlyphInsetting; }
+    int glyphSrcPadding() const override { return kGlyphInsetting; }
+
     void draw(SkCanvas*,
               SkPoint drawOrigin,
               const SkPaint& paint,

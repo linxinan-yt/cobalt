@@ -26,13 +26,14 @@
 #include "video/timing/simulator/frame_base.h"
 #include "video/timing/simulator/results_base.h"
 #include "video/timing/simulator/stream_base.h"
+
 namespace webrtc::video_timing_simulator {
 
 // The `DecodabilitySimulator` takes an `ParsedRtcEventLog` and produces a
 // sequence of metadata about decodable frames that were contained in the log.
 class DecodabilitySimulator {
  public:
-struct Config {
+  struct Config {
     // Whether or not to reset the stream state on newly logged streams with the
     // same SSRC. This can be useful for simulation, but likely not for data
     // analysis.
@@ -68,15 +69,17 @@ struct Config {
     // Time spent waiting for reference frames to arrive.
     TimeDelta UndecodableDuration() const {
       RTC_DCHECK(assembled_timestamp.IsFinite());
-      return decodable_timestamp - assembled_timestamp;    }
+      return decodable_timestamp - assembled_timestamp;
+    }
   };
 
   // All frames in one stream.
-struct Stream : public StreamBase<Stream, Frame> {    Timestamp creation_timestamp = Timestamp::PlusInfinity();
+  struct Stream : public StreamBase<Stream, Frame> {
+    Timestamp creation_timestamp = Timestamp::PlusInfinity();
     uint32_t ssrc = 0;
     std::vector<Frame> frames;
 
-// -- Per-stream metrics --
+    // -- Per-stream metrics --
 
     // Total number of decodable frames.
     int NumDecodableFrames() const {
@@ -85,21 +88,24 @@ struct Stream : public StreamBase<Stream, Frame> {    Timestamp creation_timesta
 
     // Samples of undecodable durations in ms.
     SamplesStatsCounter UndecodableDurationMs() const {
-      return BuildSamplesMs(&Frame::UndecodableDuration);    }
+      return BuildSamplesMs(&Frame::UndecodableDuration);
+    }
   };
 
   // All streams.
-struct Results : public ResultsBase<Results> {
+  struct Results : public ResultsBase<Results> {
     std::vector<Stream> streams;
   };
 
   explicit DecodabilitySimulator(Config config);
   ~DecodabilitySimulator();
+
   DecodabilitySimulator(const DecodabilitySimulator&) = delete;
   DecodabilitySimulator& operator=(const DecodabilitySimulator&) = delete;
 
   Results Simulate(const ParsedRtcEventLog& parsed_log) const;
-private:
+
+ private:
   const Config config_;
 };
 
@@ -122,6 +128,8 @@ inline TimeDelta InterDecodableTime(const DecodabilitySimulator::Frame& cur,
     return TimeDelta::PlusInfinity();
   }
   return cur.decodable_timestamp - prev.decodable_timestamp;
-}}  // namespace webrtc::video_timing_simulator
+}
+
+}  // namespace webrtc::video_timing_simulator
 
 #endif  // VIDEO_TIMING_SIMULATOR_DECODABILITY_SIMULATOR_H_

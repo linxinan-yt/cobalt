@@ -191,7 +191,8 @@ class RTC_EXPORT NetworkManager : public DefaultLocalAddressProvider,
   MdnsResponderInterface* GetMdnsResponder() const override;
 
   virtual void set_vpn_list(const std::vector<NetworkMask>& /* vpn */) {}
-// The implementation of the Subscribe methods is in the .cc file due
+
+  // The implementation of the Subscribe methods is in the .cc file due
   // to linking issues with Chrome.
 
   [[deprecated]] void SubscribeNetworksChanged(
@@ -203,6 +204,7 @@ class RTC_EXPORT NetworkManager : public DefaultLocalAddressProvider,
   void SubscribeError(void* tag, absl::AnyInvocable<void()> callback);
   void UnsubscribeError(void* tag);
   void NotifyError() { error_callbacks_.Send(); }
+
  private:
   CallbackList<> networks_changed_callbacks_;
   CallbackList<> error_callbacks_;

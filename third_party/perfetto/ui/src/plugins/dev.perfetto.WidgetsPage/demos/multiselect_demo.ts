@@ -17,7 +17,8 @@ import {MultiselectInput} from '../../../widgets/multiselect_input';
 import {renderDocSection, renderWidgetShowcase} from '../widgets_page_utils';
 import {
   MultiSelect,
-type MultiSelectDiff,  PopupMultiSelect,
+  type MultiSelectDiff,
+  PopupMultiSelect,
 } from '../../../widgets/multiselect';
 import {PopupPosition} from '../../../widgets/popup';
 import {Icons} from '../../../base/semantic_icons';
@@ -36,7 +37,8 @@ const availableOptions: ReadonlyArray<string> = [
   'plugh',
   'xyzzy',
   'thud',
-'a really really long option to test overflow and wrapping handling',];
+  'a really really long option to test overflow and wrapping handling',
+];
 let selectedOptions: string[] = ['foo', 'qux', 'grault'];
 
 export function renderMultiselect() {

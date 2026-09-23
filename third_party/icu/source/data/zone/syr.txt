@@ -1195,7 +1195,8 @@ syr{
         }
 "Pacific:Kanton"{
             ec{"ܟܐܢܬܘܢ"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"ܟܝܪܝܡܐܬܝ"}
         }
         "Pacific:Kosrae"{

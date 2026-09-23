@@ -46,8 +46,8 @@ int GetBitsPerPixel(const VideoDecoderConfig& video_config) {
   } else if (video_config.codec() == VideoCodec::kAV1) {
     const VideoColorSpace& color_space = video_config.color_space_info();
 
-    if (color_space.primaries >= VideoColorSpace::PrimaryID::BT2020 ||
-        color_space.transfer >= VideoColorSpace::TransferID::BT2020_10) {
+    if (color_space.primaries() >= VideoColorSpace::PrimaryID::BT2020 ||
+        color_space.transfer() >= VideoColorSpace::TransferID::BT2020_10) {
       is_hdr = true;
     }
   }
@@ -68,15 +68,15 @@ void SetVideoBufferSizeReductionPercent(int reduction_pct) {
   g_video_buffer_size_reduction_percent = reduction_pct;
 }
 
-base::ByteCount GetDemuxerStreamAudioMemoryLimit(
+base::ByteSize GetDemuxerStreamAudioMemoryLimit(
     const AudioDecoderConfig* /*audio_config*/) {
   return GetAudioDecoderBufferLimitBytes();
 }
 
-base::ByteCount GetDemuxerStreamVideoMemoryLimit(
+base::ByteSize GetDemuxerStreamVideoMemoryLimit(
     DemuxerType /*demuxer_type*/,
     const VideoDecoderConfig* video_config) {
-  base::ByteCount limit;
+  base::ByteSize limit;
   if (!video_config) {
     limit = GetVideoDecoderBufferLimitBytes(
         VideoCodec::kH264, /*resolution=*/{1920, 1080}, /*bits_per_pixel=*/8);
@@ -97,11 +97,10 @@ base::ByteCount GetDemuxerStreamVideoMemoryLimit(
   // overflow.
   const uint64_t remaining_pct = 100 - reduction_pct.value();
 
-  return base::ByteCount::FromUnsigned(
-      (limit.InBytesUnsigned() * remaining_pct) / 100);
+  return base::ByteSize((limit.InBytes() * remaining_pct) / 100);
 }
 
-base::ByteCount GetDemuxerMemoryLimit(DemuxerType demuxer_type) {
+base::ByteSize GetDemuxerMemoryLimit(DemuxerType demuxer_type) {
   return GetDemuxerStreamAudioMemoryLimit(nullptr) +
          GetDemuxerStreamVideoMemoryLimit(demuxer_type, nullptr);
 }

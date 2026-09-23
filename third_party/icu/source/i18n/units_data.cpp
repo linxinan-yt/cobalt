@@ -109,7 +109,7 @@ class ConversionRateDataSink : public ResourceSink {
                 status = U_MEMORY_ALLOCATION_ERROR;
                 return;
             } else {
-cr->sourceUnit = srcUnit;
+                cr->sourceUnit = srcUnit;
                 if (cr->sourceUnit.isEmpty() != (*srcUnit == '\0')) {
                     status = U_MEMORY_ALLOCATION_ERROR;
                 }
@@ -127,7 +127,8 @@ cr->sourceUnit = srcUnit;
                 }
                 if (!offset.isBogus()) { copyInvariantChars(offset, cr->offset, status); }
                 if (!special.isBogus()) { copyInvariantChars(special, cr->specialMappingName, status); }
-                copyInvariantChars(systems, cr->systems, status);            }
+                copyInvariantChars(systems, cr->systems, status);
+            }
         }
     }
 
@@ -395,7 +396,10 @@ void U_I18N_API getAllConversionRates(MaybeStackVector<ConversionRateInfo> &resu
 const ConversionRateInfo *ConversionRates::extractConversionInfo(StringPiece source,
                                                                  UErrorCode &status) const {
     for (size_t i = 0, n = conversionInfo_.length(); i < n; ++i) {
-if (conversionInfo_[i]->sourceUnit == source) return conversionInfo_[i];    }
+        if (uprv_strncmp(conversionInfo_[i]->sourceUnit.data(), source.data(), source.size()) == 0) {
+            return conversionInfo_[i];
+        }
+    }
 
     status = U_INTERNAL_PROGRAM_ERROR;
     return nullptr;

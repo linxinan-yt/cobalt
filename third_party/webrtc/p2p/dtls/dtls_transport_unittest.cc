@@ -30,7 +30,6 @@
 #include "api/dtls_transport_interface.h"
 #include "api/environment/environment.h"
 #include "api/field_trials.h"
-#include "api/field_trials_view.h"
 #include "api/ice_transport_interface.h"
 #include "api/make_ref_counted.h"
 #include "api/scoped_refptr.h"
@@ -58,7 +57,6 @@
 #include "rtc_base/ssl_identity.h"
 #include "rtc_base/ssl_stream_adapter.h"
 #include "rtc_base/stream.h"
-#include "rtc_base/thread.h"
 #include "system_wrappers/include/metrics.h"
 #include "test/create_test_environment.h"
 #include "test/create_test_field_trials.h"
@@ -158,8 +156,9 @@ class DtlsTestClient {
         make_ref_counted<FakeIceTransport>(std::move(fake_ice_transport));
 
     dtls_transport_ = std::make_unique<DtlsTransportInternalImpl>(
-env, ice_transport_, crypto_options, ssl_max_version_,
-        ssl_stream_factory_);    // Note: Certificate may be null here if testing passthrough.
+        env, ice_transport_, crypto_options, ssl_max_version_,
+        ssl_stream_factory_);
+    // Note: Certificate may be null here if testing passthrough.
     dtls_transport_->SetLocalCertificate(certificate_);
     dtls_transport_->SubscribeWritableState(
         this, [this](PacketTransportInternal* transport) {
@@ -444,9 +443,10 @@ env, ice_transport_, crypto_options, ssl_max_version_,
   DtlsTransportInternalImpl::SslStreamFactory ssl_stream_factory_;
 };
 
-class FakeSSLStreamAdapter : public webrtc::SSLStreamAdapter {
+class FakeSSLStreamAdapter : public SSLStreamAdapter {
  public:
-  explicit FakeSSLStreamAdapter(std::unique_ptr<webrtc::SSLStreamAdapter> impl_)      : impl_(std::move(impl_)) {}
+  explicit FakeSSLStreamAdapter(std::unique_ptr<SSLStreamAdapter> impl_)
+      : impl_(std::move(impl_)) {}
 
   void Init() {
     impl_->SetEventCallback([this](int events, int err) {
@@ -458,35 +458,35 @@ class FakeSSLStreamAdapter : public webrtc::SSLStreamAdapter {
   void SetWriteError(std::optional<int> error) { write_error_ = error; }
 
   // SSLStreamAdapter overrides.
-void SetIdentity(std::unique_ptr<webrtc::SSLIdentity> identity) override {
+  void SetIdentity(std::unique_ptr<SSLIdentity> identity) override {
     impl_->SetIdentity(std::move(identity));
   }
-  webrtc::SSLIdentity* GetIdentityForTesting() const override {
+  SSLIdentity* GetIdentityForTesting() const override {
     return impl_->GetIdentityForTesting();
   }
-  void SetServerRole(webrtc::SSLRole role) override {
-    impl_->SetServerRole(role);
-  }
+  void SetServerRole(SSLRole role) override { impl_->SetServerRole(role); }
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-  void SetMode(webrtc::SSLMode mode) override { impl_->SetMode(mode); }
-  webrtc::SSLProtocolVersion GetSslVersion() const override {
+  void SetMode(SSLMode mode) override { impl_->SetMode(mode); }
+  SSLProtocolVersion GetSslVersion() const override {
     return impl_->GetSslVersion();
   }
 #pragma clang diagnostic pop
-  void SetMaxProtocolVersion(webrtc::SSLProtocolVersion version) override {    impl_->SetMaxProtocolVersion(version);
+  void SetMaxProtocolVersion(SSLProtocolVersion version) override {
+    impl_->SetMaxProtocolVersion(version);
   }
   void SetInitialRetransmissionTimeout(int timeout_ms) override {
     impl_->SetInitialRetransmissionTimeout(timeout_ms);
   }
   void SetMTU(int mtu) override { impl_->SetMTU(mtu); }
   int StartSSL() override { return impl_->StartSSL(); }
-SSLPeerCertificateDigestError SetPeerCertificateDigest(
+  SSLPeerCertificateDigestError SetPeerCertificateDigest(
       absl::string_view digest_alg,
       std::span<const uint8_t> digest_val) override {
     return impl_->SetPeerCertificateDigest(digest_alg, digest_val);
   }
-  std::unique_ptr<SSLCertChain> GetPeerSSLCertChain() const override {    return impl_->GetPeerSSLCertChain();
+  std::unique_ptr<SSLCertChain> GetPeerSSLCertChain() const override {
+    return impl_->GetPeerSSLCertChain();
   }
   bool GetSslCipherSuite(int* cipher_suite) const override {
     return impl_->GetSslCipherSuite(cipher_suite);
@@ -497,14 +497,15 @@ SSLPeerCertificateDigestError SetPeerCertificateDigest(
   bool GetSslVersionBytes(int* version) const override {
     return impl_->GetSslVersionBytes(version);
   }
-[[deprecated]] bool ExportSrtpKeyingMaterial(
+  [[deprecated]] bool ExportSrtpKeyingMaterial(
       ZeroOnFreeBuffer<uint8_t>& keying_material) override {
     return impl_->ExportSrtpKeyingMaterial(keying_material);
   }
   bool AppendSrtpKeyingMaterial(
       ZeroOnFreeBuffer<uint8_t>& keying_material) override {
     return impl_->AppendSrtpKeyingMaterial(keying_material);
-  }  uint16_t GetPeerSignatureAlgorithm() const override {
+  }
+  uint16_t GetPeerSignatureAlgorithm() const override {
     return impl_->GetPeerSignatureAlgorithm();
   }
   bool SetDtlsSrtpCryptoSuites(const std::vector<int>& crypto_suites) override {
@@ -523,7 +524,7 @@ SSLPeerCertificateDigestError SetPeerCertificateDigest(
   uint16_t GetSslGroupId() const override { return impl_->GetSslGroupId(); }
 
   // StreamInterface overrides.
-StreamState GetState() const override { return impl_->GetState(); }
+  StreamState GetState() const override { return impl_->GetState(); }
   void Close() override { impl_->Close(); }
   StreamResult Read(std::span<uint8_t> buffer,
                     size_t& read,
@@ -535,14 +536,16 @@ StreamState GetState() const override { return impl_->GetState(); }
                      int& error) override {
     if (write_error_) {
       error = *write_error_;
-      return SR_ERROR;    }
+      return SR_ERROR;
+    }
     return impl_->Write(data, written, error);
   }
   bool Flush() override { return impl_->Flush(); }
 
  private:
-std::unique_ptr<webrtc::StreamInterface> stream_;
-  std::unique_ptr<webrtc::SSLStreamAdapter> impl_;  std::optional<int> write_error_;
+  std::unique_ptr<StreamInterface> stream_;
+  std::unique_ptr<SSLStreamAdapter> impl_;
+  std::optional<int> write_error_;
 };
 
 // Base class for DtlsTransportInternalImplTest and DtlsEventOrderingTest, which
@@ -776,9 +779,10 @@ TEST_F(DtlsTransportInternalImplTest, TestSendPacketWithOptions) {
   std::unique_ptr<char[]> packet(new char[size]);
   memset(packet.get(), 0, size);
   packet[0] = 0x00;
-SetBE32(std::span<uint8_t>(
+  SetBE32(std::span<uint8_t>(
               reinterpret_cast<uint8_t*>(packet.get() + kPacketNumOffset), 4),
           0);
+
   AsyncSocketPacketOptions packet_options;
   packet_options.packet_id = kFakePacketId;
   int rv = client1_.dtls_transport()->SendPacket(packet.get(), size,
@@ -790,7 +794,8 @@ SetBE32(std::span<uint8_t>(
   EXPECT_THAT(
       webrtc::WaitUntil(
           [&] { return client2_.NumPacketsReceived(); }, Eq(1u),
-{.timeout = TimeDelta::Millis(kTimeout), .clock = &time_controller_}),      IsRtcOk());
+          {.timeout = TimeDelta::Millis(kTimeout), .clock = &time_controller_}),
+      IsRtcOk());
 
   // Now check the sent packet info on client1.
   EXPECT_EQ(kFakePacketId, client1_.sent_packet().packet_id);
@@ -806,9 +811,10 @@ TEST_F(DtlsTransportInternalImplTest, TestSendSrtpBypassPacketWithOptions) {
   std::unique_ptr<char[]> packet(new char[size]);
   memset(packet.get(), 0, size);
   packet[0] = kRtpLeadByte;  // Make it look like an SRTP packet.
-SetBE32(std::span<uint8_t>(
+  SetBE32(std::span<uint8_t>(
               reinterpret_cast<uint8_t*>(packet.get() + kPacketNumOffset), 4),
           0);
+
   AsyncSocketPacketOptions packet_options;
   packet_options.packet_id = kFakePacketId;
   int rv = client1_.dtls_transport()->SendPacket(
@@ -820,7 +826,8 @@ SetBE32(std::span<uint8_t>(
   EXPECT_THAT(
       webrtc::WaitUntil(
           [&] { return client2_.NumPacketsReceived(); }, Eq(1u),
-{.timeout = TimeDelta::Millis(kTimeout), .clock = &time_controller_}),      IsRtcOk());
+          {.timeout = TimeDelta::Millis(kTimeout), .clock = &time_controller_}),
+      IsRtcOk());
 
   // Now check the sent packet info on client1.
   EXPECT_EQ(kFakePacketId, client1_.sent_packet().packet_id);
@@ -841,16 +848,19 @@ TEST_F(DtlsTransportInternalImplTest,
   client1_.fake_ice_transport()->NotifySentPacket(client1_.fake_ice_transport(),
                                                   SentPacketInfo(0, 0));
   client1_.fake_ice_transport()->NotifyNetworkRouteChanged(std::nullopt);
-}TEST_F(DtlsTransportInternalImplTest, TestWriteError) {
+}
+
+TEST_F(DtlsTransportInternalImplTest, TestWriteError) {
   PrepareDtls(KT_DEFAULT);
   FakeSSLStreamAdapter* fake_stream = nullptr;
   client1_.set_ssl_stream_factory(
-[&](const Environment& env, std::unique_ptr<StreamInterface> stream,
+      [&](const Environment& env, std::unique_ptr<StreamInterface> stream,
           absl::AnyInvocable<void(SSLHandshakeError)>
               handshake_error_callback) {
         auto fake =
             std::make_unique<FakeSSLStreamAdapter>(SSLStreamAdapter::Create(
-                env, std::move(stream), std::move(handshake_error_callback)));        fake->Init();
+                env, std::move(stream), std::move(handshake_error_callback)));
+        fake->Init();
         fake_stream = fake.get();
         return fake;
       });
@@ -866,12 +876,13 @@ TEST_F(DtlsTransportInternalImplTest, TestPacketOptionsResetAfterWriteError) {
   PrepareDtls(KT_DEFAULT);
   FakeSSLStreamAdapter* fake_stream = nullptr;
   client1_.set_ssl_stream_factory(
-[&](const Environment& env, std::unique_ptr<StreamInterface> stream,
+      [&](const Environment& env, std::unique_ptr<StreamInterface> stream,
           absl::AnyInvocable<void(SSLHandshakeError)>
               handshake_error_callback) {
         auto fake =
             std::make_unique<FakeSSLStreamAdapter>(SSLStreamAdapter::Create(
-                env, std::move(stream), std::move(handshake_error_callback)));        fake->Init();
+                env, std::move(stream), std::move(handshake_error_callback)));
+        fake->Init();
         fake_stream = fake.get();
         return fake;
       });

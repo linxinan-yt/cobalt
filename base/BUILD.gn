@@ -1877,8 +1877,8 @@ if (use_asan_backup_ref_ptr) {
 
   if (is_cobalt && is_partner_toolchain) {
     sources -= [
-      "logging/rust_log_integration.cc",
-      "logging/rust_log_integration.h",
+      "logging/rust_logger/print_rust_log_ffi.cc",
+      "logging/rust_logger/print_rust_log_ffi.h",
     ]
   }
 
@@ -1933,7 +1933,8 @@ if (use_asan_backup_ref_ptr) {
     ]
 
     # Find a way to fix the offending customizations instead.
-    configs -= [ "//build/config/compiler:prevent_unsafe_narrowing" ]  }
+    configs -= [ "//build/config/compiler:prevent_unsafe_narrowing" ]
+  }
 
   # Windows.
   if (is_win) {
@@ -4268,7 +4269,8 @@ test("base_unittests") {
 
   if (is_asan) {
     sources += [ "memory/raw_ptr_asan_unittest.cc" ]
-  }  if (is_ios) {
+  }
+  if (is_ios) {
     deps += [ "//base/test:test_shared_library_ios+bundle" ]
   }
 

@@ -1199,7 +1199,8 @@ yue_Hans{
         }
 "Pacific:Kanton"{
             ec{"坎顿"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"基里地马地岛"}
         }
         "Pacific:Kosrae"{

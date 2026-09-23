@@ -272,7 +272,8 @@ tt{
         }
 "America:Coyhaique"{
             ec{"Куяйкә"}
-        }        "America:Creston"{
+        }
+        "America:Creston"{
             ec{"Крестон"}
         }
         "America:Cuiaba"{
@@ -1167,7 +1168,8 @@ tt{
         }
 "Pacific:Enderbury"{
             ec{"Кантон"}
-        }        "Pacific:Fakaofo"{
+        }
+        "Pacific:Fakaofo"{
             ec{"Факаофо"}
         }
         "Pacific:Fiji"{
@@ -1190,7 +1192,8 @@ tt{
         }
 "Pacific:Kanton"{
             ec{"Кантон"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"Киритимати"}
         }
         "Pacific:Kosrae"{
@@ -1524,7 +1527,8 @@ ld{"Көнбатыш Африка җәйге вакыты"}
         }
 "meta:Hawaii"{
             ls{"Гавай-Алеут стандарт вакыты"}
-        }        "meta:Hawaii_Aleutian"{
+        }
+        "meta:Hawaii_Aleutian"{
             ld{"Гавай-Алеут җәйге вакыты"}
             lg{"Гавай-Алеут вакыты"}
             ls{"Гавай-Алеут стандарт вакыты"}

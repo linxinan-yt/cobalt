@@ -23,234 +23,240 @@ import android.util.DisplayMetrics;
 import android.util.Size;
 import android.view.Display;
 import android.view.WindowManager;
+
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import java.util.concurrent.CopyOnWriteArrayList;
+
 import org.jni_zero.CalledByNative;
 import org.jni_zero.JNINamespace;
 import org.jni_zero.NativeMethods;
 
+import java.util.concurrent.CopyOnWriteArrayList;
+
 /** Utility functions for querying display attributes. */
 public class DisplayUtil {
 
-  /** A simple wrapper for display DPI to allow JNI generation for its methods. */
-  public static class DisplayDpi {
-    private final float mX;
-    private final float mY;
+    /** A simple wrapper for display DPI to allow JNI generation for its methods. */
+    public static class DisplayDpi {
+        private final float mX;
+        private final float mY;
 
-    public DisplayDpi(float xdpi, float ydpi) {
-      this.mX = xdpi;
-      this.mY = ydpi;
+        public DisplayDpi(float xdpi, float ydpi) {
+            this.mX = xdpi;
+            this.mY = ydpi;
+        }
+
+        @CalledByNative
+        public float getX() {
+            return mX;
+        }
+
+        @CalledByNative
+        public float getY() {
+            return mY;
+        }
     }
 
-    @CalledByNative("DisplayDpi")
-    public float getX() {
-      return mX;
+    private DisplayUtil() {}
+
+    @JNINamespace("starboard")
+    @NativeMethods
+    interface Natives {
+        void onDisplayChanged();
     }
 
-    @CalledByNative("DisplayDpi")
-    public float getY() {
-      return mY;
+    private static Display sDefaultDisplay;
+    private static DisplayMetrics sCachedDisplayMetrics = null;
+
+    public static final double DISPLAY_REFRESH_RATE_UNKNOWN = -1;
+
+    /** Returns the physical pixels per inch of the screen in the X and Y dimensions. */
+    @CalledByNative
+    public static DisplayDpi getDisplayDpi() {
+        DisplayMetrics metrics = getDisplayMetrics();
+        return new DisplayDpi(metrics.xdpi, metrics.ydpi);
     }
-  }
 
-  private DisplayUtil() {}
-
-  @JNINamespace("starboard")
-  @NativeMethods
-  interface Natives {
-    void onDisplayChanged();
-  }
-
-  private static Display sDefaultDisplay;
-  private static DisplayMetrics sCachedDisplayMetrics = null;
-
-  public static final double DISPLAY_REFRESH_RATE_UNKNOWN = -1;
-
-  /** Returns the physical pixels per inch of the screen in the X and Y dimensions. */
-  @CalledByNative
-  public static DisplayDpi getDisplayDpi() {
-    DisplayMetrics metrics = getDisplayMetrics();
-    return new DisplayDpi(metrics.xdpi, metrics.ydpi);
-  }
-
-  /** Return supported hdr types. */
-  @CalledByNative
-  @Nullable
-  public static int[] getSupportedHdrTypes() {
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-      return null;
+    /** Return supported hdr types. */
+    @CalledByNative
+    @Nullable
+    public static int[] getSupportedHdrTypes() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+            return null;
+        }
+        Display display = getDefaultDisplay();
+        if (display == null) {
+            return null;
+        }
+        Display.HdrCapabilities hdrCapabilities = display.getHdrCapabilities();
+        return hdrCapabilities != null ? hdrCapabilities.getSupportedHdrTypes() : null;
     }
-    Display display = getDefaultDisplay();
-    if (display == null) {
-      return null;
-    }
-    Display.HdrCapabilities hdrCapabilities = display.getHdrCapabilities();
-    return hdrCapabilities != null ? hdrCapabilities.getSupportedHdrTypes() : null;
-  }
 
-  /** Returns the default display associated with a context. */
-  @Nullable
-  public static Display getDefaultDisplay() {
-    synchronized (DisplayUtil.class) {
-      if (sDefaultDisplay != null && !sDefaultDisplay.isValid()) {
+    /** Returns the default display associated with a context. */
+    @Nullable
+    public static Display getDefaultDisplay() {
+        synchronized (DisplayUtil.class) {
+            if (sDefaultDisplay != null && !sDefaultDisplay.isValid()) {
+                return null;
+            }
+
+            return sDefaultDisplay;
+        }
+    }
+
+    /** Returns the refresh rate of the default display. */
+    public static double getDefaultDisplayRefreshRate() {
+        Display defaultDisplay = getDefaultDisplay();
+        return defaultDisplay != null
+                ? defaultDisplay.getRefreshRate()
+                : DISPLAY_REFRESH_RATE_UNKNOWN;
+    }
+
+    /**
+     * Cache the default display and display metrics, this will be triggered when a NativeActivity
+     * starts.
+     */
+    public static void cacheDefaultDisplay(Context context) {
+        Display display = getDisplayFromContext(context);
+        synchronized (DisplayUtil.class) {
+            sDefaultDisplay = display;
+            sCachedDisplayMetrics = ((Activity) context).getResources().getDisplayMetrics();
+        }
+    }
+
+    /**
+     * Returns the default display associated with a context. When API Level >= 30, pass {@link
+     * android.app.Activity} for the context parameter.
+     */
+    @Nullable
+    public static Display getDisplayFromContext(Context context) {
+        if (context == null) {
+            return null;
+        }
+        if (android.os.Build.VERSION.SDK_INT >= 30) {
+            return getDefaultDisplayV30(context);
+        } else {
+            return getDefaultDisplayDeprecated(context);
+        }
+    }
+
+    @Nullable
+    @SuppressWarnings("deprecation")
+    private static Display getDefaultDisplayDeprecated(Context context) {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        return (wm == null) ? null : wm.getDefaultDisplay();
+    }
+
+    @Nullable
+    @RequiresApi(30)
+    private static Display getDefaultDisplayV30(Context context) {
+        return context.getDisplay();
+    }
+
+    /**
+     * Returns the size of the physical display size in pixels.
+     *
+     * <p>This differs from {@link #getSystemDisplaySize()} because it only uses {@link
+     * DisplayMetrics}.
+     */
+    public static Size getDisplaySize() {
+        DisplayMetrics metrics = getDisplayMetrics();
+        return new Size(metrics.widthPixels, metrics.heightPixels);
+    }
+
+    /**
+     * Returns the size of the current physical display size in pixels.
+     *
+     * <p>This differs from {@link #getDisplaySize()} because it allows the system property
+     * "sys.display-size" to override {@link DisplayMetrics}.
+     */
+    public static Size getSystemDisplaySize() {
+        Size widthAndHeightPx = getSystemDisplayWidthAndHeightPxInternal();
+        if (widthAndHeightPx == null) {
+            widthAndHeightPx = getDisplaySize();
+        }
+        return widthAndHeightPx;
+    }
+
+    /**
+     * Returns the size of the current physical display size in pixels. or {@code null} if
+     * unavailable.
+     */
+    private static Size getSystemDisplayWidthAndHeightPxInternal() {
+        final String displaySize = SystemPropertiesHelper.getString("sys.display-size");
+        if (displaySize != null) {
+            final String[] widthAndHeightPx = displaySize.split("x");
+            if (widthAndHeightPx.length == 2) {
+                try {
+                    return new Size(
+                            Integer.parseInt(widthAndHeightPx[0]),
+                            Integer.parseInt(widthAndHeightPx[1]));
+                } catch (NumberFormatException exception) {
+                    // pass
+                }
+            }
+        }
         return null;
-      }
-
-      return sDefaultDisplay;
     }
-  }
 
-  /** Returns the refresh rate of the default display. */
-  public static double getDefaultDisplayRefreshRate() {
-    Display defaultDisplay = getDefaultDisplay();
-    return defaultDisplay != null ? defaultDisplay.getRefreshRate() : DISPLAY_REFRESH_RATE_UNKNOWN;
-  }
-
-  /**
-   * Cache the default display and display metrics, this will be triggered when a NativeActivity
-   * starts.
-   */
-  public static void cacheDefaultDisplay(Context context) {
-    Display display = getDisplayFromContext(context);
-    synchronized (DisplayUtil.class) {
-      sDefaultDisplay = display;
-      sCachedDisplayMetrics = ((Activity) context).getResources().getDisplayMetrics();
+    private static DisplayMetrics getDisplayMetrics() {
+        return sCachedDisplayMetrics;
     }
-  }
 
-  /**
-   * Returns the default display associated with a context. When API Level >= 30, pass {@link
-   * android.app.Activity} for the context parameter.
-   */
-  @Nullable
-  public static Display getDisplayFromContext(Context context) {
-    if (context == null) {
-      return null;
+    public interface Listener {
+        void onDisplayChanged(int displayId);
     }
-    if (android.os.Build.VERSION.SDK_INT >= 30) {
-      return getDefaultDisplayV30(context);
-    } else {
-      return getDefaultDisplayDeprecated(context);
+
+    private static final CopyOnWriteArrayList<Listener> sListeners = new CopyOnWriteArrayList<>();
+
+    public static void registerListener(Listener listener) {
+        sListeners.add(listener);
     }
-  }
 
-  @Nullable
-  @SuppressWarnings("deprecation")
-  private static Display getDefaultDisplayDeprecated(Context context) {
-    WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-    return (wm == null) ? null : wm.getDefaultDisplay();
-  }
-
-  @Nullable
-  @RequiresApi(30)
-  private static Display getDefaultDisplayV30(Context context) {
-    return context.getDisplay();
-  }
-
-  /**
-   * Returns the size of the physical display size in pixels.
-   *
-   * <p>This differs from {@link #getSystemDisplaySize()} because it only uses {@link
-   * DisplayMetrics}.
-   */
-  public static Size getDisplaySize() {
-    DisplayMetrics metrics = getDisplayMetrics();
-    return new Size(metrics.widthPixels, metrics.heightPixels);
-  }
-
-  /**
-   * Returns the size of the current physical display size in pixels.
-   *
-   * <p>This differs from {@link #getDisplaySize()} because it allows the system property
-   * "sys.display-size" to override {@link DisplayMetrics}.
-   */
-  public static Size getSystemDisplaySize() {
-    Size widthAndHeightPx = getSystemDisplayWidthAndHeightPxInternal();
-    if (widthAndHeightPx == null) {
-      widthAndHeightPx = getDisplaySize();
+    public static void unregisterListener(Listener listener) {
+        sListeners.remove(listener);
     }
-    return widthAndHeightPx;
-  }
 
-  /**
-   * Returns the size of the current physical display size in pixels. or {@code null} if
-   * unavailable.
-   */
-  private static Size getSystemDisplayWidthAndHeightPxInternal() {
-    final String displaySize = SystemPropertiesHelper.getString("sys.display-size");
-    if (displaySize != null) {
-      final String[] widthAndHeightPx = displaySize.split("x");
-      if (widthAndHeightPx.length == 2) {
-        try {
-          return new Size(
-              Integer.parseInt(widthAndHeightPx[0]), Integer.parseInt(widthAndHeightPx[1]));
-        } catch (NumberFormatException exception) {
-          // pass
-        }
-      }
-    }
-    return null;
-  }
+    private static DisplayListener sDisplayerListener =
+            new DisplayListener() {
+                private void notifyListeners(int displayId) {
+                    for (Listener listener : sListeners) {
+                        listener.onDisplayChanged(displayId);
+                    }
+                }
 
-  private static DisplayMetrics getDisplayMetrics() {
-    return sCachedDisplayMetrics;
-  }
+                @Override
+                public void onDisplayAdded(int displayId) {
+                    DisplayUtilJni.get().onDisplayChanged();
+                    notifyListeners(displayId);
+                }
 
-  public interface Listener {
-    void onDisplayChanged(int displayId);
-  }
+                @Override
+                public void onDisplayChanged(int displayId) {
+                    DisplayUtilJni.get().onDisplayChanged();
+                    notifyListeners(displayId);
+                }
 
-  private static final CopyOnWriteArrayList<Listener> sListeners = new CopyOnWriteArrayList<>();
+                @Override
+                public void onDisplayRemoved(int displayId) {
+                    DisplayUtilJni.get().onDisplayChanged();
+                    notifyListeners(displayId);
+                }
+            };
 
-  public static void registerListener(Listener listener) {
-    sListeners.add(listener);
-  }
+    private static boolean sDisplayerListenerAdded = false;
 
-  public static void unregisterListener(Listener listener) {
-    sListeners.remove(listener);
-  }
-
-  private static DisplayListener sDisplayerListener =
-      new DisplayListener() {
-        private void notifyListeners(int displayId) {
-          for (Listener listener : sListeners) {
-            listener.onDisplayChanged(displayId);
-          }
+    public static void addDisplayListener(Context context) {
+        if (sDisplayerListenerAdded) {
+            return;
         }
 
-        @Override
-        public void onDisplayAdded(int displayId) {
-          DisplayUtilJni.get().onDisplayChanged();
-          notifyListeners(displayId);
-        }
+        DisplayManager displayManager = context.getSystemService(DisplayManager.class);
+        displayManager.registerDisplayListener(sDisplayerListener, null);
+        sDisplayerListenerAdded = true;
 
-        @Override
-        public void onDisplayChanged(int displayId) {
-          DisplayUtilJni.get().onDisplayChanged();
-          notifyListeners(displayId);
-        }
-
-        @Override
-        public void onDisplayRemoved(int displayId) {
-          DisplayUtilJni.get().onDisplayChanged();
-          notifyListeners(displayId);
-        }
-      };
-
-  private static boolean sDisplayerListenerAdded = false;
-
-  public static void addDisplayListener(Context context) {
-    if (sDisplayerListenerAdded) {
-      return;
+        // Call nativeOnDisplayChanged() to reload supported hdr types here after a default
+        // Display created.
+        DisplayUtilJni.get().onDisplayChanged();
     }
-
-    DisplayManager displayManager = context.getSystemService(DisplayManager.class);
-    displayManager.registerDisplayListener(sDisplayerListener, null);
-    sDisplayerListenerAdded = true;
-
-    // Call nativeOnDisplayChanged() to reload supported hdr types here after a default
-    // Display created.
-    DisplayUtilJni.get().onDisplayChanged();
-  }
 }

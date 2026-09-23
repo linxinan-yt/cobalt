@@ -359,7 +359,8 @@ export default class QueryPagePlugin implements PerfettoPlugin {
       text: 'Query (SQL)',
       href: '#!/query',
       icon: 'database',
-sortOrder: 21,    });
+      sortOrder: 21,
+    });
 
     trace.tabs.registerTab({
       uri: 'dev.perfetto.QueryPage',
@@ -415,6 +416,7 @@ sortOrder: 21,    });
         getTitle() {
           return 'Query Page Results';
         },
-},
-    });  }
+      },
+    });
+  }
 }

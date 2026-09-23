@@ -34,7 +34,8 @@ using ::testing::Field;
 using ::testing::IsEmpty;
 using ::testing::Matcher;
 using ::testing::Ne;
-using ::testing::Optional;using ::testing::SizeIs;
+using ::testing::Optional;
+using ::testing::SizeIs;
 
 using Frame = RenderingSimulator::Frame;
 using Stream = RenderingSimulator::Stream;
@@ -254,7 +255,9 @@ TEST(RenderingSimulatorStreamTest, Margins) {
   EXPECT_THAT(
       stream.RenderedMarginDeficitMs().GetTimedSamples(),
       ElementsAre(Field(&SamplesStatsCounter::StatsSample::value, Eq(-5))));
-}Matcher<const Frame&> EqualsFrame(const Frame& expected) {
+}
+
+Matcher<const Frame&> EqualsFrame(const Frame& expected) {
   return AllOf(
       Field("num_packets", &Frame::num_packets, Eq(expected.num_packets)),
       Field("size", &Frame::size, Eq(expected.size)),
@@ -296,7 +299,7 @@ TEST(RenderingSimulatorStreamTest, Margins) {
             Eq(expected.jitter_buffer_delay)));
 }
 
-// TODO: b/423646186 - Add tests for logs with losses.TEST(RenderingSimulatorTest, VideoRecvVp8) {
+TEST(RenderingSimulatorTest, VideoRecvVp8) {
   std::unique_ptr<ParsedRtcEventLog> parsed_log =
       ParsedRtcEventLogFromResources("video_recv_vp8_pt96");
 
@@ -382,13 +385,14 @@ TEST(RenderingSimulatorTest, VideoRecvVp9) {
            // Frame timestamps.
            .assembled_timestamp = Timestamp::Millis(98768284),
            .render_timestamp = Timestamp::Millis(98768325),
-.decoded_timestamp = Timestamp::Micros(98768315253),
+           .decoded_timestamp = Timestamp::Micros(98768315253),
            .rendered_timestamp = Timestamp::Micros(98768315253),
            // Jitter buffer state.
            .frames_dropped = 0,
            .jitter_buffer_minimum_delay = TimeDelta::Micros(26604),
            .jitter_buffer_target_delay = TimeDelta::Micros(26604),
-           .jitter_buffer_delay = TimeDelta::Micros(41253)}));}
+           .jitter_buffer_delay = TimeDelta::Micros(41253)}));
+}
 
 TEST(RenderingSimulatorTest, VideoRecvAv1) {
   std::unique_ptr<ParsedRtcEventLog> parsed_log =
@@ -429,12 +433,14 @@ TEST(RenderingSimulatorTest, VideoRecvAv1) {
            // Frame timestamps.
            .assembled_timestamp = Timestamp::Millis(98868790),
            .render_timestamp = Timestamp::Millis(98868822),
-.decoded_timestamp = Timestamp::Micros(98868811531),
-           .rendered_timestamp = Timestamp::Micros(98868811531),           // Jitter buffer state.
+           .decoded_timestamp = Timestamp::Micros(98868811530),
+           .rendered_timestamp = Timestamp::Micros(98868811530),
+           // Jitter buffer state.
            .frames_dropped = 0,
            .jitter_buffer_minimum_delay = TimeDelta::Micros(23864),
            .jitter_buffer_target_delay = TimeDelta::Micros(23864),
-.jitter_buffer_delay = TimeDelta::Micros(36531)}));}
+           .jitter_buffer_delay = TimeDelta::Micros(36530)}));
+}
 
 TEST(RenderingSimulatorTest, VideoRecvSequentialJoinVp8Vp9Av1) {
   std::unique_ptr<ParsedRtcEventLog> parsed_log =
@@ -513,5 +519,7 @@ TEST(RenderingSimulatorTest, VideoRecvVp8Lossy) {
            .jitter_buffer_minimum_delay = TimeDelta::Micros(213371),
            .jitter_buffer_target_delay = TimeDelta::Micros(213371),
            .jitter_buffer_delay = TimeDelta::Micros(221242)}));
-}}  // namespace
+}
+
+}  // namespace
 }  // namespace webrtc::video_timing_simulator

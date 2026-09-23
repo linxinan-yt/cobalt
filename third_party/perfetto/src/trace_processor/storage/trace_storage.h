@@ -423,14 +423,6 @@ class TraceStorage {
     return mutable_table<tables::TraceImportLogsTable>();
   }
 
-  const tables::TraceImportLogsTable& trace_import_logs_table() const {
-    return trace_import_logs_table_;
-  }
-
-  tables::TraceImportLogsTable* mutable_trace_import_logs_table() {
-    return &trace_import_logs_table_;
-  }
-
   const tables::ClockSnapshotTable& clock_snapshot_table() const {
     return table<tables::ClockSnapshotTable>();
   }
@@ -708,22 +700,6 @@ class TraceStorage {
 
   tables::AggregateSampleTable* mutable_aggregate_sample_table() {
     return mutable_table<tables::AggregateSampleTable>();
-  }
-
-  const tables::AggregateProfileTable& aggregate_profile_table() const {
-    return aggregate_profile_table_;
-  }
-
-  tables::AggregateProfileTable* mutable_aggregate_profile_table() {
-    return &aggregate_profile_table_;
-  }
-
-  const tables::AggregateSampleTable& aggregate_sample_table() const {
-    return aggregate_sample_table_;
-  }
-
-  tables::AggregateSampleTable* mutable_aggregate_sample_table() {
-    return &aggregate_sample_table_;
   }
 
   const tables::VulkanMemoryAllocationsTable& vulkan_memory_allocations_table()
@@ -1019,15 +995,6 @@ class TraceStorage {
     return mutable_table<tables::WindowManagerWindowContainerTable>();
   }
 
-  const tables::WindowManagerWindowContainerTable&
-  windowmanager_windowcontainer_table() const {
-    return windowmanager_windowcontainer_table_;
-  }
-  tables::WindowManagerWindowContainerTable*
-  mutable_windowmanager_windowcontainer_table() {
-    return &windowmanager_windowcontainer_table_;
-  }
-
   const tables::WindowManagerShellTransitionsTable&
   window_manager_shell_transitions_table() const {
     return table<tables::WindowManagerShellTransitionsTable>();
@@ -1202,10 +1169,11 @@ class TraceStorage {
   // Indexed by heap_graph_object_data.array_data_id
   std::vector<HprofArrayBlob> hprof_array_blobs_;
 
-// Aligned storage for all table dataframes.
+  // Aligned storage for all table dataframes.
   alignas(
       dataframe::Dataframe) char tables_storage_[tables::kTableCount *
                                                  sizeof(dataframe::Dataframe)];
+
   // The below array allow us to map between enums and their string
   // representations.
   std::array<StringId, Variadic::kMaxType + 1> variadic_type_ids_;

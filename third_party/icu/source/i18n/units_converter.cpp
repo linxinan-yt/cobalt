@@ -50,9 +50,10 @@ void Factor::divideBy(const Factor& rhs) {
     offset = std::max(rhs.offset, offset);
 }
 
-void U_I18N_API Factor::divideBy(const uint64_t constant) { factorDen *= constant; }
+void Factor::divideBy(const uint64_t constant) { factorDen *= constant; }
 
-void U_I18N_API Factor::power(int32_t power) {    // multiply all the constant by the power.
+void Factor::power(int32_t power) {
+    // multiply all the constant by the power.
     for (int i = 0; i < CONSTANTS_COUNT; i++) {
         constantExponents[i] *= power;
     }
@@ -284,7 +285,8 @@ UBool checkSimpleUnit(const MeasureUnitImpl &unit, UErrorCode &status) {
 // from that we get the specialMappingName (which may be empty if the simple unit
 // converts to base using factor + offset instelad of a special mapping).
 StringPiece getSpecialMappingName(const MeasureUnitImpl& simpleUnit, const ConversionRates& ratesInfo,
-                                  UErrorCode& status) {    if (!checkSimpleUnit(simpleUnit, status)) {
+                                  UErrorCode& status) {
+    if (!checkSimpleUnit(simpleUnit, status)) {
         return {};
     }
     SingleUnitImpl singleUnit = *simpleUnit.singleUnits[0];
@@ -297,7 +299,8 @@ StringPiece getSpecialMappingName(const MeasureUnitImpl& simpleUnit, const Conve
         status = U_INTERNAL_PROGRAM_ERROR;
         return {};
     }
-return conversionUnit->specialMappingName.data();}
+    return conversionUnit->specialMappingName.data();
+}
 
 /**
  *  Extract conversion rate from `source` to `target`
@@ -307,7 +310,7 @@ return conversionUnit->specialMappingName.data();}
 void loadConversionRate(ConversionRate &conversionRate, const MeasureUnitImpl &source,
                         const MeasureUnitImpl &target, Convertibility unitsState,
                         const ConversionRates &ratesInfo, UErrorCode &status) {
-StringPiece specialSource = getSpecialMappingName(source, ratesInfo, status);
+    StringPiece specialSource = getSpecialMappingName(source, ratesInfo, status);
     StringPiece specialTarget = getSpecialMappingName(target, ratesInfo, status);
 
     conversionRate.specialSource = specialSource;
@@ -373,7 +376,8 @@ StringPiece specialSource = getSpecialMappingName(source, ratesInfo, status);
         finalFactor.substituteConstants();
         conversionRate.factorNum = finalFactor.factorNum;
         conversionRate.factorDen = finalFactor.factorDen;
-    }}
+    }
+}
 
 struct UnitIndexAndDimension : UMemory {
     int32_t index = 0;
@@ -629,20 +633,20 @@ int32_t UnitsConverter::compareTwoUnits(const MeasureUnitImpl &firstUnit,
         return 0;
     }
 
-CharString firstSpecial = getSpecialMappingName(firstUnit, ratesInfo, status);
-    CharString secondSpecial = getSpecialMappingName(secondUnit, ratesInfo, status);
-    if (!firstSpecial.isEmpty() || !secondSpecial.isEmpty()) {
-        if (firstSpecial.isEmpty()) {
+    StringPiece firstSpecial = getSpecialMappingName(firstUnit, ratesInfo, status);
+    StringPiece secondSpecial = getSpecialMappingName(secondUnit, ratesInfo, status);
+    if (!firstSpecial.empty() || !secondSpecial.empty()) {
+        if (firstSpecial.empty()) {
             // non-specials come first
             return -1;
         }
-        if (secondSpecial.isEmpty()) {            // non-specials come first
+        if (secondSpecial.empty()) {
+            // non-specials come first
             return 1;
         }
         // both are specials, compare lexicographically
-StringPiece firstSpecialPiece = firstSpecial.toStringPiece();
-        StringPiece secondSpecialPiece = secondSpecial.toStringPiece();
-        return firstSpecialPiece.compare(secondSpecialPiece);    }
+        return firstSpecial.compare(secondSpecial);
+    }
 
     // Represents the conversion factor from the firstUnit to the base
     // unit that specified in the conversion data which is considered as
@@ -758,7 +762,8 @@ double UnitsConverter::convert(double inputValue) const {
         if (!conversionRate_.specialSource.isEmpty()) {
             // We  have a special mapping from source to base (not using factor, offset).
             // Currently the only supported mapping is a scale-based mapping for beaufort.
-base = uprv_strcmp(conversionRate_.specialSource.data(), "beaufort") == 0 ?                scaleToBase(inputValue, minMetersPerSecForBeaufort, maxBeaufort): inputValue;
+            base = uprv_strcmp(conversionRate_.specialSource.data(), "beaufort") == 0 ?
+                scaleToBase(inputValue, minMetersPerSecForBeaufort, maxBeaufort): inputValue;
         } else {
             // Standard mapping (using factor) from source to base.
             base = inputValue * conversionRate_.factorNum / conversionRate_.factorDen;
@@ -767,7 +772,8 @@ base = uprv_strcmp(conversionRate_.specialSource.data(), "beaufort") == 0 ?     
         if (!conversionRate_.specialTarget.isEmpty()) {
             // We  have a special mapping from base to target (not using factor, offset).
             // Currently the only supported mapping is a scale-based mapping for beaufort.
-result = (conversionRate_.specialTarget == StringPiece("beaufort"))?                baseToScale(base, minMetersPerSecForBeaufort, maxBeaufort): base;
+            result = uprv_strcmp(conversionRate_.specialTarget.data(), "beaufort") == 0 ?
+                baseToScale(base, minMetersPerSecForBeaufort, maxBeaufort): base;
         } else {
             // Standard mapping (using factor) from base to target.
             result = base * conversionRate_.factorDen / conversionRate_.factorNum;
@@ -799,7 +805,8 @@ double UnitsConverter::convertInverse(double inputValue) const {
         if (!conversionRate_.specialTarget.isEmpty()) {
             // We  have a special mapping from target to base (not using factor).
             // Currently the only supported mapping is a scale-based mapping for beaufort.
-base = uprv_strcmp(conversionRate_.specialTarget.data(), "beaufort") == 0 ?                scaleToBase(inputValue, minMetersPerSecForBeaufort, maxBeaufort): inputValue;
+            base = uprv_strcmp(conversionRate_.specialTarget.data(), "beaufort") == 0 ?
+                scaleToBase(inputValue, minMetersPerSecForBeaufort, maxBeaufort): inputValue;
         } else {
             // Standard mapping (using factor) from target to base.
             base = inputValue * conversionRate_.factorNum / conversionRate_.factorDen;
@@ -808,7 +815,8 @@ base = uprv_strcmp(conversionRate_.specialTarget.data(), "beaufort") == 0 ?     
         if (!conversionRate_.specialSource.isEmpty()) {
             // We  have a special mapping from base to source (not using factor).
             // Currently the only supported mapping is a scale-based mapping for beaufort.
-result = uprv_strcmp(conversionRate_.specialSource.data(), "beaufort") == 0 ?                baseToScale(base, minMetersPerSecForBeaufort, maxBeaufort): base;
+            result = uprv_strcmp(conversionRate_.specialSource.data(), "beaufort") == 0 ?
+                baseToScale(base, minMetersPerSecForBeaufort, maxBeaufort): base;
         } else {
             // Standard mapping (using factor) from base to source.
             result = base * conversionRate_.factorDen / conversionRate_.factorNum;

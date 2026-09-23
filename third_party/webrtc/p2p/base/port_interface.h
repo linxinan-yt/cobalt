@@ -33,7 +33,6 @@
 #include "rtc_base/net_helper.h"
 #include "rtc_base/network.h"
 #include "rtc_base/network/sent_packet.h"
-#include "rtc_base/sigslot_trampoline.h"
 #include "rtc_base/socket.h"
 #include "rtc_base/socket_address.h"
 #include "rtc_base/span_helpers.h"
@@ -158,13 +157,14 @@ class PortInterface {
   // unknown address).  Calling this method turns off delivery of packets
   // through this port.
   virtual void EnablePortPackets() = 0;
-virtual void SubscribeReadPacket(
+  virtual void SubscribeReadPacket(
       const void* tag,
       absl::AnyInvocable<void(PortInterface*,
                               std::span<const uint8_t>,
                               const SocketAddress&)> callback) = 0;
 
-  ABSL_DEPRECATE_AND_INLINE()  virtual void SubscribeReadPacket(
+  ABSL_DEPRECATE_AND_INLINE()
+  virtual void SubscribeReadPacket(
       absl::AnyInvocable<
           void(PortInterface*, const char*, size_t, const SocketAddress&)>
           callback) {

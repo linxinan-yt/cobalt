@@ -702,6 +702,7 @@ BENCHMARK_TEMPLATE(BM_HashMap_InsertDupeInts, FollyF14_Default);
 
 BENCHMARK_TEMPLATE(BM_HashMap_RandomIntsClear, Ours_Default);
 BENCHMARK_TEMPLATE(BM_HashMap_RandomIntsClear, OursV2_Default);
+
 // Heterogeneous lookup benchmarks
 template <typename MapType>
 void BM_HashMap_HeterogeneousLookup_String(benchmark::State& state) {

@@ -38,7 +38,8 @@ de{
         }
 "America:Cordoba"{
             ec{"Córdoba"}
-        }        "America:Havana"{
+        }
+        "America:Havana"{
             ec{"Havanna"}
         }
         "America:Jamaica"{
@@ -52,7 +53,8 @@ de{
         }
 "America:Sao_Paulo"{
             ec{"São Paulo"}
-        }        "America:St_Barthelemy"{
+        }
+        "America:St_Barthelemy"{
             ec{"Saint-Barthélemy"}
         }
         "Antarctica:Vostok"{

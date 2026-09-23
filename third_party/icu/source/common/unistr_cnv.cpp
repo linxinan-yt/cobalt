@@ -275,8 +275,9 @@ UnicodeString::doExtract(int32_t start, int32_t length,
     }
 
     // perform the conversion
-UErrorCode bufferStatus = U_ZERO_ERROR;
-    ucnv_fromUnicode(cnv, &dest, destLimit, &src, srcLimit, nullptr, true, &bufferStatus);    length = static_cast<int32_t>(dest - originalDest);
+    UErrorCode bufferStatus = U_ZERO_ERROR;
+    ucnv_fromUnicode(cnv, &dest, destLimit, &src, srcLimit, nullptr, true, &bufferStatus);
+    length = static_cast<int32_t>(dest - originalDest);
 
     // if an overflow occurs, then get the preflighting length
     if(bufferStatus==U_BUFFER_OVERFLOW_ERROR) {
@@ -285,13 +286,14 @@ UErrorCode bufferStatus = U_ZERO_ERROR;
         destLimit=buffer+sizeof(buffer);
         do {
             dest=buffer;
-bufferStatus=U_ZERO_ERROR;
+            bufferStatus=U_ZERO_ERROR;
             ucnv_fromUnicode(cnv, &dest, destLimit, &src, srcLimit, nullptr, true, &bufferStatus);
             length += static_cast<int32_t>(dest - buffer);
         } while(bufferStatus==U_BUFFER_OVERFLOW_ERROR);
     }
     if (U_FAILURE(bufferStatus)) {
-        errorCode = bufferStatus;    }
+        errorCode = bufferStatus;
+    }
 
     return u_terminateChars(originalDest, destCapacity, length, &errorCode);
 }
@@ -393,7 +395,8 @@ UnicodeString::doCodepageCreate(const char *codepageData,
         myTarget = array + length();
         UErrorCode bufferStatus = U_ZERO_ERROR;
         ucnv_toUnicode(converter, &myTarget,  array + getCapacity(),
-&mySource, mySourceEnd, nullptr, true, &bufferStatus);
+            &mySource, mySourceEnd, nullptr, true, &bufferStatus);
+
         // update the conversion parameters
         setLength(static_cast<int32_t>(myTarget - array));
 

@@ -23,7 +23,8 @@ import {
 } from '../../components/aggregation_adapter';
 import type {AreaSelection} from '../../public/selection';
 import {THREAD_STATE_TRACK_KIND} from '../../public/track_kinds';
-import type {Engine} from '../../trace_processor/engine';import {
+import type {Engine} from '../../trace_processor/engine';
+import {
   LONG,
   NUM,
   NUM_NULL,
@@ -35,6 +36,7 @@ import {
   formatDurationValue,
   formatPercentValue,
 } from '../../components/aggregation_panel';
+
 export class ThreadStateByCpuAggregator implements Aggregator {
   readonly id = 'thread_state_by_cpu_aggregation';
 
@@ -74,15 +76,14 @@ export class ThreadStateByCpuAggregator implements Aggregator {
             thread.name as thread_name,
             thread.tid,
             tstate.state as state,
-ucpu,
-            sum(tstate.dur) AS total_dur,
-            sum(tstate.dur) / count() as avg_dur,
-            count() as occurrences,
-            cast(sum(dur) as real) / sum(sum(dur)) over () as percent_of_total
+            utid,
+            ucpu,
+            dur,
+            dur * 1.0 / sum(dur) OVER () as fraction_of_total
           from (${iiTable.name}) tstate
           join thread using (utid)
           left join process using (upid)
-          group by utid, state, ucpu        `);
+        `);
 
         const query = `
           select
@@ -100,7 +101,8 @@ ucpu,
         });
 
         const states: BarChartData[] = [];
-for (; it.valid(); it.next()) {          const name = it.state ?? 'Unknown';
+        for (; it.valid(); it.next()) {
+          const name = it.state ?? 'Unknown';
           states.push({
             title: `${name}: ${Duration.humanise(it.totalDur)}`,
             value: Number(it.totalDur),
@@ -116,7 +118,7 @@ for (; it.valid(); it.next()) {          const name = it.state ?? 'Unknown';
     };
   }
 
-getGridConfig(): AggregatorGridConfig {
+  getGridConfig(): AggregatorGridConfig {
     return {
       schema: {
         process_name: {title: 'Process', columnType: 'text'},
@@ -158,11 +160,10 @@ getGridConfig(): AggregatorGridConfig {
           {id: 'dur_avg', field: 'dur', function: 'AVG'},
         ],
       },
-    };  }
+    };
+  }
 
   getTabName() {
     return 'Thread States by CPU';
   }
-getDefaultSorting(): Sorting {
-    return {column: 'total_dur', direction: 'DESC'};
-  }}
+}

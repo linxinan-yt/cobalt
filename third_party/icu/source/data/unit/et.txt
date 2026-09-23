@@ -348,7 +348,8 @@ et{
             night{
 dnam{"ööd"}
                 one{"{0} öö"}
-                other{"{0} ööd"}                per{"{0} öö kohta"}
+                other{"{0} ööd"}
+                per{"{0} öö kohta"}
             }
             quarter{
                 dnam{"kvartalid"}

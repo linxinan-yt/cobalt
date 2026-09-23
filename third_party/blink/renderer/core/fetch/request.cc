@@ -210,7 +210,8 @@ static bool AreAnyMembersPresent(const RequestInit* init) {
          init->hasCache() || init->hasRedirect() || init->hasIntegrity() ||
 init->hasKeepalive() || init->hasAdAuctionHeaders() ||
          init->hasSharedStorageWritable() || init->hasPriority() ||
-         init->hasSignal() || init->hasDuplex() || init->hasPrivateToken() ||         init->hasRetryOptions();
+         init->hasSignal() || init->hasDuplex() || init->hasPrivateToken() ||
+         init->hasRetryOptions();
 }
 
 static BodyStreamBuffer* ExtractBody(ScriptState* script_state,

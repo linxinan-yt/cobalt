@@ -39,7 +39,8 @@ import {createTableColumn, PrintArgsColumn} from '../columns';
 type Transform = {
   apply: (trace: Trace, column: SqlColumn, ...params: string[]) => TableColumn;
   parameters?: TransformParameter[];
-  requiredType?: PerfettoSqlType;};
+  requiredType?: PerfettoSqlType;
+};
 
 type TransformParameter = {
   name: string;
@@ -48,19 +49,38 @@ type TransformParameter = {
   validate?: (value: string) => boolean;
 };
 
+// Helper function to create a transform from a SQL expression.
+function fromExpression(
+  exprFn: (col: string, ...params: string[]) => string,
+  resultType: PerfettoSqlType,
+): (trace: Trace, column: SqlColumn, ...params: string[]) => TableColumn {
+  return (trace: Trace, column: SqlColumn, ...params: string[]) => {
+    const sqlExpr = new SqlExpression(
+      (cols: string[]) => exprFn(cols[0], ...params),
+      [column],
+    );
+    return createTableColumn({
+      trace,
+      column: sqlExpr,
+      type: resultType,
+    });
+  };
+}
+
 const TRANSFORMS = {
   'length': {
-    expression: (col) => `length(${col})`,
+    apply: fromExpression((col) => `length(${col})`, PerfettoSqlTypes.INT),
     requiredType: PerfettoSqlTypes.STRING,
-    resultType: {kind: 'int'},
   },
   'substring': {
-    expression: (col, start, length) => {
-      if (length) {
-        return `substr(${col}, ${start}, ${length})`;
-      }
-      return `substr(${col}, ${start})`;
-    },    parameters: [
+    apply: fromExpression(
+      (col, start, length) =>
+        length
+          ? `substr(${col}, ${start}, ${length})`
+          : `substr(${col}, ${start})`,
+      PerfettoSqlTypes.STRING,
+    ),
+    parameters: [
       {
         name: 'start',
         placeholder: '1-based, can be negative (optional)',
@@ -86,48 +106,52 @@ const TRANSFORMS = {
       },
     ],
     requiredType: PerfettoSqlTypes.STRING,
-},
+  },
   'extract regex': {
     apply: fromExpression(
       (col, pattern) => `regexp_extract(${col}, '${pattern}')`,
       PerfettoSqlTypes.STRING,
-    ),    parameters: [
+    ),
+    parameters: [
       {
         name: 'pattern',
         placeholder: 'regex pattern (e.g., \\d+)',
       },
     ],
     requiredType: PerfettoSqlTypes.STRING,
-},
+  },
   'strip prefix': {
     apply: fromExpression(
       (col, prefix) =>
         `CASE WHEN ${col} GLOB '${prefix}*' THEN substr(${col}, ${prefix.length + 1}) ELSE ${col} END`,
       PerfettoSqlTypes.STRING,
-    ),    parameters: [
+    ),
+    parameters: [
       {
         name: 'prefix',
         placeholder: 'prefix to remove',
       },
     ],
     requiredType: PerfettoSqlTypes.STRING,
-},
+  },
   'strip suffix': {
     apply: fromExpression(
       (col, suffix) =>
         `CASE WHEN ${col} GLOB '*${suffix}' THEN substr(${col}, 1, length(${col}) - ${suffix.length}) ELSE ${col} END`,
       PerfettoSqlTypes.STRING,
-    ),    parameters: [
+    ),
+    parameters: [
       {
         name: 'suffix',
         placeholder: 'suffix to remove',
       },
     ],
     requiredType: PerfettoSqlTypes.STRING,
-},
+  },
   'print_args': {
     apply: (_trace: Trace, column: SqlColumn) => new PrintArgsColumn(column),
-    requiredType: PerfettoSqlTypes.ARG_SET_ID,  },
+    requiredType: PerfettoSqlTypes.ARG_SET_ID,
+  },
 } satisfies Record<string, Transform>;
 
 type TransformType = keyof typeof TRANSFORMS;
@@ -145,18 +169,20 @@ export class TransformColumn implements TableColumn {
     },
   ) {
     this.column = args.transformed.column;
-this.type = args.transformed.type;  }
+    this.type = args.transformed.type;
+  }
 
   getTitle(): string | undefined {
     return this.args.transformed.getTitle?.();
   }
 
-renderCell(value: SqlValue, context?: RenderCellContext): RenderedCell {
+  renderCell(value: SqlValue, context?: RenderCellContext): RenderedCell {
     return this.args.transformed.renderCell(value, context);
   }
 
   listDerivedColumns(context: ListColumnsContext) {
-    return this.args.transformed.listDerivedColumns?.(context);  }
+    return this.args.transformed.listDerivedColumns?.(context);
+  }
 
   getColumnSpecificMenuItems(args: {
     replaceColumn: (column: TableColumn) => void;
@@ -194,17 +220,15 @@ function applyTransform(args: {
   state: SqlTableState;
 }): TableColumn {
   const transform: Transform = TRANSFORMS[args.transformType];
-const values = args.values;
-  const transformExpression = (cols: string[]) =>
-    transform.expression(cols[0], ...values);
 
   return new TransformColumn({
     source: args.column,
-    transformed: createTableColumn({
-      trace: args.state.trace,
-      column: new SqlExpression(transformExpression, [args.column.column]),
-      type: transform.resultType,
-    }),    state: args.state,
+    transformed: transform.apply(
+      args.state.trace,
+      args.column.column,
+      ...args.values,
+    ),
+    state: args.state,
     transformType: args.transformType,
     transformParams: args.values,
   });
@@ -219,9 +243,8 @@ interface TransformMenuItemAttrs {
   formSubmitLabel: string;
 }
 
-class ConfigureTransformMenu
-  implements m.ClassComponent<TransformMenuItemAttrs>
-{  private paramState: {value: string; error: boolean}[] = [];
+class ConfigureTransformMenu implements m.ClassComponent<TransformMenuItemAttrs> {
+  private paramState: {value: string; error: boolean}[] = [];
   private readonly uuid = uuidv4();
 
   view({attrs}: m.Vnode<TransformMenuItemAttrs>) {

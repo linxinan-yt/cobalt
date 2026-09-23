@@ -180,7 +180,8 @@ export function renderDetails(
           {
             trigger: m(Anchor, slice.name),
           },
-renderMatchingSlicesMenu(trace, slice),        ),
+          renderMatchingSlicesMenu(trace, slice),
+        ),
       }),
       m(TreeNode, {
         left: 'Category',

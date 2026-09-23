@@ -69,9 +69,10 @@ test('mark', async () => {
   await page.keyboard.press('M');
   await pth.waitForPerfettoIdle();
 
-await pth.waitForIdleAndScreenshot(`mark.png`, {
+  await pth.waitForIdleAndScreenshot(`mark.png`, {
     locator: page.locator('.pf-timeline-page__timeline'),
-  });});
+  });
+});
 
 test('track expand and collapse', async () => {
   const trackGroup = pth.locateTrack('traced_probes 1054');

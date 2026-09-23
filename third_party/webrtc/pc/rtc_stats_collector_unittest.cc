@@ -106,7 +106,8 @@
 using ::testing::_;
 using ::testing::IsEmpty;
 using ::testing::Not;
-using ::testing::NotNull;using ::testing::Return;
+using ::testing::NotNull;
+using ::testing::Return;
 
 namespace webrtc {
 
@@ -255,9 +256,10 @@ scoped_refptr<MockRtpSenderInternal> CreateMockSender(
   EXPECT_CALL(*sender, ssrc()).WillRepeatedly(Return(ssrc));
   EXPECT_CALL(*sender, media_type()).WillRepeatedly(Return(media_type));
   EXPECT_CALL(*sender, GetParameters()).WillRepeatedly([s = sender.get()]() {
-return s->GetParametersInternal(false, false);
+    return s->GetParametersInternal(false, false);
   });
-  EXPECT_CALL(*sender, GetParametersInternal(_, _)).WillRepeatedly([ssrc]() {    RtpParameters params;
+  EXPECT_CALL(*sender, GetParametersInternal(_, _)).WillRepeatedly([ssrc]() {
+    RtpParameters params;
     params.encodings.push_back(RtpEncodingParameters());
     params.encodings[0].ssrc = ssrc;
     return params;
@@ -2325,7 +2327,8 @@ TEST_P(RTCStatsCollectorTest, CollectRTCInboundRtpStreamStats_Audio) {
       .num_packets_reported_lost = 222, .num_packets_reported_recovered = 200};
   pc_->SetCallStats(call_stats);
 
-RTC_ALLOW_PLAN_B_DEPRECATION_BEGIN();  auto voice_media_channels =
+  RTC_ALLOW_PLAN_B_DEPRECATION_BEGIN();
+  auto voice_media_channels =
       pc_->AddVoiceChannel("AudioMid", "TransportName", voice_media_info);
   RTC_ALLOW_PLAN_B_DEPRECATION_END();
   stats_->SetupRemoteTrackAndReceiver(MediaType::AUDIO, "RemoteAudioTrackID",
@@ -2518,7 +2521,8 @@ TEST_P(RTCStatsCollectorTest, CollectRTCInboundRtpStreamStats_Video) {
       .num_packets_reported_lost = 222, .num_packets_reported_recovered = 200};
   pc_->SetCallStats(call_stats);
 
-RTC_ALLOW_PLAN_B_DEPRECATION_BEGIN();  auto video_media_channels =
+  RTC_ALLOW_PLAN_B_DEPRECATION_BEGIN();
+  auto video_media_channels =
       pc_->AddVideoChannel("VideoMid", "TransportName", video_media_info);
   RTC_ALLOW_PLAN_B_DEPRECATION_END();
   stats_->SetupRemoteTrackAndReceiver(MediaType::VIDEO, "RemoteVideoTrackID",
@@ -3556,7 +3560,8 @@ TEST_P(RTCStatsCollectorTestWithParamKind,
 
   // The report block's timestamp cannot be from the future, set the fake clock
   // to match.
-time_controller_.AdvanceTime(kReportBlockTimestampUtcOffset);  uint32_t ssrcs[] = {12, 13};
+  time_controller_.AdvanceTime(kReportBlockTimestampUtcOffset);
+  uint32_t ssrcs[] = {12, 13};
   std::vector<ReportBlockData> report_block_datas;
   Call::Stats call_stats;
   for (uint32_t ssrc : ssrcs) {
@@ -3586,11 +3591,12 @@ time_controller_.AdvanceTime(kReportBlockTimestampUtcOffset);  uint32_t ssrcs[] 
                                std::nullopt);
   pc_->SetCallStats(call_stats);
 
-const Timestamp expected_timestamp = std::get<1>(GetParam())
+  const Timestamp expected_timestamp = std::get<1>(GetParam())
                                            ? kReportBlockTimestamp
                                            : kReportBlockTimestampUtc;
   scoped_refptr<const RTCStatsReport> report =
-      stats_->GetStatsReport(main_thread_);  for (uint32_t ssrc : ssrcs) {
+      stats_->GetStatsReport(main_thread_);
+  for (uint32_t ssrc : ssrcs) {
     std::string stream_id = "" + std::to_string(ssrc);
     RTCRemoteInboundRtpStreamStats expected_remote_inbound_rtp(
         "RI" + MediaTypeCharStr() + stream_id, expected_timestamp);

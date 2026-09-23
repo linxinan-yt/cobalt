@@ -13,7 +13,8 @@
 // limitations under the License.
 
 import type {RecordProbe, RecordSubpage} from '../config/config_interfaces';
-import type {TraceConfigBuilder} from '../config/trace_config_builder';import {Toggle} from './widgets/toggle';
+import type {TraceConfigBuilder} from '../config/trace_config_builder';
+import {Toggle} from './widgets/toggle';
 import {Textarea} from './widgets/textarea';
 import {splitLinesNonEmpty} from '../../../base/string_utils';
 import {Slider} from './widgets/slider';

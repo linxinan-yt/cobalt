@@ -11,7 +11,8 @@ import("//build/nocompile.gni")
 import("//components/guest_view/buildflags/buildflags.gni")
 import("//components/viz/common/debugger/viz_debugger.gni")
 import("//components/vrp_flags/features.gni")
-import("//content/browser/devtools/features.gni")import("//content/common/features.gni")
+import("//content/browser/devtools/features.gni")
+import("//content/common/features.gni")
 import("//content/public/common/features.gni")
 import("//device/vr/buildflags/buildflags.gni")
 import("//extensions/buildflags/buildflags.gni")
@@ -3314,7 +3315,7 @@ if (!is_ios) {
       "../browser/devtools/protocol/tracing_handler_unittest.cc",
       "../browser/devtools/protocol_unittest.cc",
       "../browser/devtools/request_body_collector_unittest.cc",
-      "../browser/devtools/shared_storage_worklet_devtools_agent_host_unittest.cc",    ]
+    ]
   }
 
   configs += [ "//build/config:precompiled_headers" ]
@@ -3541,7 +3542,8 @@ if (enable_smart_card) {
   if ((is_win || is_mac || is_linux || is_chromeos) && enable_privacy_sandbox_apis) {
     sources += [ "../browser/attribution_reporting/attribution_storage_sql_query_plans_unittest.cc" ]
     deps += [ "../browser/attribution_reporting:sqlite_test_utils" ]
-  }  if (is_mac) {
+  }
+  if (is_mac) {
     data_deps += [ "//device/fido/strings:fido_test_strings" ]
   }
 

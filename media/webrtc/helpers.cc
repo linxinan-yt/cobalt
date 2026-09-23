@@ -167,7 +167,7 @@ CreateWebRtcAudioProcessingModule(
   // Fuchsia does not use the optimization guide.
   // Avoid linking the op resolver to keep Fuchsia binary size down.
   // TODO(crbug.com/450466837): Investigate if this build guard can be avoided.
-#if !BUILDFLAG(IS_FUCHSIA) && BUILDFLAG(BUILD_WITH_TFLITE_LIB)
+#if !BUILDFLAG(IS_FUCHSIA)
   if (residual_echo_estimator_model) {
     if (base::FeatureList::IsEnabled(
             features::kWebRtcNeuralResidualEchoEstimationAsyncInit)) {
@@ -185,7 +185,7 @@ CreateWebRtcAudioProcessingModule(
       LOG(ERROR) << "Failed to initialize neural residual echo estimator.";
     }
   }
-#endif  // !BUILDFLAG(IS_FUCHSIA) && BUILDFLAG(BUILD_WITH_TFLITE_LIB)
+#endif  // !BUILDFLAG(IS_FUCHSIA)
 
 #if BUILDFLAG(SYSTEM_LOOPBACK_AS_AEC_REFERENCE)
   if (settings.use_loopback_aec_reference) {

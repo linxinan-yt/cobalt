@@ -175,14 +175,15 @@ rtc_library("rtc_event_bwe") {
 }
 
 rtc_library("rtc_event_bwe_update_scream") {
-visibility = [ "*" ]  sources = [
+  visibility = [ "*" ]
+  sources = [
     "rtc_event_log/events/rtc_event_bwe_update_scream.cc",
     "rtc_event_log/events/rtc_event_bwe_update_scream.h",
   ]
 
   deps = [
     ":rtc_event_log_parse_status",
-"../api:array_view",    "../api/rtc_event_log",
+    "../api/rtc_event_log",
     "../api/units:data_rate",
     "../api/units:data_size",
     "../api/units:time_delta",

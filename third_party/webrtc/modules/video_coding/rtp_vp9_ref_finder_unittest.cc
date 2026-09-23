@@ -665,17 +665,19 @@ TEST_F(RtpVp9RefFinderTest, StashedFramesDoNotWrapTl0Backwards) {
 }
 
 TEST_F(RtpVp9RefFinderTest, TemporalIndexTooHighDropsFrame) {
-Insert(Frame().Pid(0).SidAndTid(0, kMaxTemporalStreams).AsKeyFrame());  EXPECT_THAT(frames_, SizeIs(0));
+  Insert(Frame().Pid(0).SidAndTid(0, kMaxTemporalStreams).AsKeyFrame());
+  EXPECT_THAT(frames_, SizeIs(0));
 
   // Using a GoF frame type.
   GofInfoVP9 ss;
   ss.SetGofInfoVP9(kTemporalStructureMode1);
-Insert(Frame()
+  Insert(Frame()
              .Pid(1)
              .SidAndTid(0, kMaxTemporalStreams)
              .Tl0(0)
              .AsKeyFrame()
-             .Gof(&ss));  EXPECT_THAT(frames_, SizeIs(0));
+             .Gof(&ss));
+  EXPECT_THAT(frames_, SizeIs(0));
 }
 
 TEST_F(RtpVp9RefFinderTest, SpatialIndexTooHighDropsFrame) {
@@ -746,4 +748,6 @@ TEST_F(RtpVp9RefFinderTest, GofUpSwitchMultipleRefs) {
   Insert(Frame().Pid(2).SidAndTid(0, 2).Tl0(0));
   EXPECT_THAT(frames_, SizeIs(3));
   EXPECT_THAT(frames_, HasFrameWithIdAndRefs(10, {5}));
-}}  // namespace webrtc
+}
+
+}  // namespace webrtc

@@ -55,6 +55,7 @@
 #include "src/trace_processor/types/variadic.h"
 #include "src/trace_processor/util/args_utils.h"
 #include "src/trace_processor/util/json_value.h"
+
 namespace perfetto::trace_processor::json {
 
 namespace {
@@ -535,14 +536,16 @@ class JsonExporter {
       for (auto it = arg_table.IterateRows(); it; ++it) {
         ArgSetId set_id = it.arg_set_id();
         if (set_id != cur_args_set_id) {
-args_sets_.Insert(cur_args_set_id, ArgNodeToJson(arg_set.root()));          arg_set = ArgSet();
+          args_sets_.Insert(cur_args_set_id, ArgNodeToJson(arg_set.root()));
+          arg_set = ArgSet();
           cur_args_set_id = set_id;
         }
         arg_set.AppendArg(storage->GetString(it.key()),
-GetArgValue(*storage_, it.row_number().row_number()));
+                          GetArgValue(*storage_, it.row_number().row_number()));
       }
       if (cur_args_set_id != std::numeric_limits<uint32_t>::max()) {
-        args_sets_.Insert(cur_args_set_id, ArgNodeToJson(arg_set.root()));      }
+        args_sets_.Insert(cur_args_set_id, ArgNodeToJson(arg_set.root()));
+      }
       PostprocessArgs();
     }
 
@@ -594,17 +597,20 @@ GetArgValue(*storage_, it.row_number().row_number()));
       PERFETTO_FATAL("Not reached");  // For gcc.
     }
 
-Dom ArgNodeToJson(const ArgNode& node) {      switch (node.GetType()) {
+    Dom ArgNodeToJson(const ArgNode& node) {
+      switch (node.GetType()) {
         case ArgNode::Type::kPrimitive:
           return VariadicToJson(node.GetPrimitiveValue());
         case ArgNode::Type::kArray: {
-Dom result(Type::kArray);
+          Dom result(Type::kArray);
           for (const auto& child : node.GetArray()) {
-            result.Append(ArgNodeToJson(child));          }
+            result.Append(ArgNodeToJson(child));
+          }
           return result;
         }
         case ArgNode::Type::kDict: {
-Dom result(Type::kObject);          for (const auto& [key, value] : node.GetDict()) {
+          Dom result(Type::kObject);
+          for (const auto& [key, value] : node.GetDict()) {
             result[key] = ArgNodeToJson(value);
           }
           return result;

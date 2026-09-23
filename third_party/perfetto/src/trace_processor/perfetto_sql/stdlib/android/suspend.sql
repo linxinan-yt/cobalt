@@ -37,13 +37,14 @@ WITH
     SELECT
       ts,
       dur,
-coalesce(
+      coalesce(
         lead(ts) OVER (PARTITION BY t.machine_id ORDER BY ts),
         trace_end()
       )
       - ts
       - dur AS duration_gap,
-      t.machine_id    FROM track AS t
+      t.machine_id
+    FROM track AS t
     JOIN slice AS s
       ON s.track_id = t.id
     WHERE
@@ -53,13 +54,14 @@ coalesce(
     SELECT
       ts,
       dur,
-coalesce(
+      coalesce(
         lead(ts) OVER (PARTITION BY track.machine_id ORDER BY ts),
         trace_end()
       )
       - ts
       - dur AS duration_gap,
-      track.machine_id    FROM slice
+      track.machine_id
+    FROM slice
     JOIN track
       ON slice.track_id = track.id
     WHERE
@@ -75,9 +77,10 @@ coalesce(
       )
   ),
   suspend_slice_pre_filter AS (
-SELECT ts, dur, duration_gap, machine_id FROM suspend_slice_from_minimal
+    SELECT ts, dur, duration_gap, machine_id FROM suspend_slice_from_minimal
     UNION ALL
-    SELECT ts, dur, duration_gap, machine_id FROM suspend_slice_latency  ),
+    SELECT ts, dur, duration_gap, machine_id FROM suspend_slice_latency
+  ),
   suspend_slice AS (
     -- Filter out all the slices that overlapped with the following slices.
     -- This happens with data loss where we lose start and end slices for suspends.

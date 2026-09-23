@@ -258,7 +258,7 @@ static const FieldsDat fr_attrDef_long_midSent_day[kNumOffsets*2] = {
 
 static const char* ak_decDef_long_stdAlon_sec[kNumOffsets*2] = { // falls back to root
 /*  text                    numeric */
-"simasin 5 a atwam",     "simasin 5 a atwam",               /* -5   */
+    "simasin 5 a atwam",     "simasin 5 a atwam",               /* -5   */
     "simasin 2.2 a atwam",   "simasin 2.2 a atwam",             /* -2.2 */
     "simasin 2 a atwam",     "simasin 2 a atwam",               /* -2   */
     "simasin 1 a atwam",     "simasin 1 a atwam",               /* -1   */
@@ -282,7 +282,8 @@ static const FieldsDat ak_attrDef_long_stdAlon_sec[kNumOffsets*2] = {
     {UDAT_REL_NUMERIC_FIELD, 8, 11}, {UDAT_REL_NUMERIC_FIELD, 8, 11},
     {UDAT_REL_NUMERIC_FIELD, 8, 9}, {UDAT_REL_NUMERIC_FIELD, 8, 9},
     {UDAT_REL_NUMERIC_FIELD, 8, 9}, {UDAT_REL_NUMERIC_FIELD, 8, 9},
-    {UDAT_REL_NUMERIC_FIELD, 8, 9}, {UDAT_REL_NUMERIC_FIELD, 8, 9},};
+    {UDAT_REL_NUMERIC_FIELD, 8, 9}, {UDAT_REL_NUMERIC_FIELD, 8, 9},
+};
 
 static const char* enIN_decDef_short_midSent_weds[kNumOffsets*2] = {
 /*  text                    numeric */

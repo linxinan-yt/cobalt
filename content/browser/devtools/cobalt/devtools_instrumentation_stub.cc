@@ -109,7 +109,9 @@ bool WillCreateURLLoaderFactoryParams::Run(
     bool is_navigation,
     bool is_download,
     network::URLLoaderFactoryBuilder& factory_builder,
-    network::mojom::URLLoaderFactoryOverridePtr* factory_override) {
+    network::mojom::URLLoaderFactoryOverridePtr* factory_override,
+    mojo::PendingRemote<network::mojom::TrustedURLLoaderHeaderClient>*
+        header_client) {
   return false;
 }
 
@@ -189,7 +191,7 @@ void OnInterestGroupAuctionEventOccurred(
     InterestGroupAuctionEventType type,
     const std::string& unique_auction_id,
     base::optional_ref<const std::string> parent_auction_id,
-    const base::Value::Dict& auction_config) {}
+    const base::DictValue& auction_config) {}
 
 void OnInterestGroupAuctionNetworkRequestCreated(
     FrameTreeNodeId frame_tree_node_id,
@@ -211,12 +213,14 @@ void DidUpdatePrerenderStatus(
     const base::UnguessableToken& initiator_devtools_navigation_token,
     blink::mojom::SpeculationAction action,
     const GURL& prerender_url,
+    bool form_submission,
     std::optional<blink::mojom::SpeculationTargetHint> target_hint,
     const base::UnguessableToken& preload_pipeline_id,
     PreloadingTriggeringOutcome status,
     std::optional<PrerenderFinalStatus> prerender_status,
     std::optional<std::string> disallowed_mojo_interface,
-    const std::vector<PrerenderMismatchedHeaders>* mismatched_headers) {}
+    const std::vector<network::MismatchedHttpRequestHeader>*
+        mismatched_headers) {}
 
 void FencedFrameCreated(
     base::SafeRef<RenderFrameHostImpl> owner_render_frame_host,
@@ -303,9 +307,39 @@ void OnServiceWorkerMainScriptRequestWillBeSent(
     network::ResourceRequest& request) {}
 
 void OnWorkerMainScriptRequestWillBeSent(
-    RenderFrameHostImpl& render_frame_host,
-    const base::UnguessableToken& devtools_worker_token,
+    RenderFrameHostImpl& ancestor_frame_host,
+    DedicatedWorkerHost* creator_worker,
+    const base::UnguessableToken& worker_token,
     network::ResourceRequest& request) {}
+
+void OnNavigationEntryMarkedSkippable(const GURL& url,
+                                      RenderFrameHostImpl* rfh) {}
+
+void OnBackUINavigationWouldSkipAd(RenderFrameHostImpl* rfh) {}
+
+void ApplyExtraHeadersForWebSocket(
+    const GlobalRenderFrameHostId& frame_id,
+    const std::optional<base::UnguessableToken>& devtools_worker_token,
+    net::HttpRequestHeaders* headers) {}
+
+void OnPrefetchActivationBeaconWillBeSent(
+    FrameTreeNodeId frame_tree_node_id,
+    const std::string& request_id,
+    const network::ResourceRequest& request,
+    std::optional<std::pair<const GURL&,
+                            const network::mojom::URLResponseHeadDevToolsInfo&>>
+        redirect_info) {}
+
+void OnPrefetchActivationBeaconResponseReceived(
+    FrameTreeNodeId frame_tree_node_id,
+    const std::string& request_id,
+    const GURL& url,
+    const network::mojom::URLResponseHead& head) {}
+
+void OnPrefetchActivationBeaconRequestComplete(
+    FrameTreeNodeId frame_tree_node_id,
+    const std::string& request_id,
+    const network::URLLoaderCompletionStatus& status) {}
 
 void DidChangeFrameLoadingState(FrameTreeNode& ftn) {}
 

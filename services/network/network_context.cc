@@ -2940,7 +2940,8 @@ URLRequestContextOwner NetworkContext::MakeURLRequestContext(
   builder.set_network_delegate(std::move(network_delegate));
 
 if (params_->initial_custom_proxy_config ||
-      params_->custom_proxy_config_client_receiver) {    builder.set_proxy_delegate(std::make_unique<NetworkServiceProxyDelegate>(
+      params_->custom_proxy_config_client_receiver) {
+    builder.set_proxy_delegate(std::make_unique<NetworkServiceProxyDelegate>(
         std::move(params_->initial_custom_proxy_config),
         std::move(params_->custom_proxy_config_client_receiver),
         std::move(params_->custom_proxy_connection_observer_remote)));
@@ -3236,8 +3237,7 @@ if (params_->initial_custom_proxy_config ||
   session_params.use_quic_for_unknown_origins = false;
 #endif
 
-  session_params.disable_idle_sockets_close_on_memory_pressure =
-      params_->disable_idle_sockets_close_on_memory_pressure;  session_params.key_auth_cache_server_entries_by_network_anonymization_key =
+  session_params.key_auth_cache_server_entries_by_network_anonymization_key =
       params_->split_auth_cache_by_network_anonymization_key;
 
   builder.set_http_network_session_params(session_params);
@@ -3918,7 +3918,8 @@ bool NetworkContext::IsNetworkForNetworkRestrictionsIdAndUrlAllowed(
     const GURL& url,
     const net::NetworkAnonymizationKey& network_anonymization_key,
     bool is_redirect) {
-  if (!base::FeatureList::IsEnabled(network::features::kConnectionAllowlists)) {    return true;
+  if (!base::FeatureList::IsEnabled(network::features::kConnectionAllowlists)) {
+    return true;
   }
 
   // If network hasn't been revoked for the network restrictions ID, it's

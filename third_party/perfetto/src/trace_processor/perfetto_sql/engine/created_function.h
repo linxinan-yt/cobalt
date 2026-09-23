@@ -38,13 +38,15 @@ struct CreatedFunction : public sqlite::Function<CreatedFunction> {
 
   static constexpr char* kName = nullptr;
   static constexpr int kArgCount = -1;
-// sqlite::Function implementation
+
+  // sqlite::Function implementation
   static void Step(sqlite3_context* ctx, int argc, sqlite3_value** argv);
 
   // Glue code for PerfettoSqlConnection.
   static std::unique_ptr<UserData> MakeContext(PerfettoSqlConnection*);
   static bool IsValid(UserData*);
-  static void Reset(UserData*, PerfettoSqlConnection*);  static base::Status Prepare(UserData*,
+  static void Reset(UserData*, PerfettoSqlConnection*);
+  static base::Status Prepare(UserData*,
                               FunctionPrototype,
                               sql_argument::Type return_type,
                               SqlSource sql);

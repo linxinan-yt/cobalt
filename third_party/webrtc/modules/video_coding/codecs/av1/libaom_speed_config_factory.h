@@ -20,11 +20,12 @@ class LibaomSpeedConfigFactory {
   LibaomSpeedConfigFactory(VideoCodecComplexity complexity,
                            VideoCodecMode mode);
 
-EncoderSpeedController::Config GetSpeedConfig(
+  EncoderSpeedController::Config GetSpeedConfig(
       int width,
       int height,
       int num_temporal_layers,
       const FieldTrialsView& field_trials);
+
  private:
   const VideoCodecComplexity complexity_;
   const VideoCodecMode mode_;

@@ -810,7 +810,8 @@ ls{"Saeta Standard a Fîjîyê"}        }
             ld{"Saeta Havînê ya Macaoyê"}
             lg{"Saeta Macaoyê"}
             ls{"Saeta Macaoyê ya Standard"}
-        }        "meta:Magadan"{
+        }
+        "meta:Magadan"{
             ld{"Saeta Havînê ya Magadanê"}
             lg{"Saeta Magadanê"}
             ls{"Saeta Magadanê ya Standard"}

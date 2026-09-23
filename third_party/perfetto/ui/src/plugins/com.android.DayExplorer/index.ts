@@ -50,7 +50,9 @@ export default class DayExplorerPlugin implements PerfettoPlugin {
   private migrateDayExplorerPluginState(init: unknown): DayExplorerPluginState {
     const result = DAY_EXPLORER_PLUGIN_STATE_SCHEMA.safeParse(init);
     return result.data ?? {};
-  }  private support(ctx: Trace) {
+  }
+
+  private support(ctx: Trace) {
     return ctx.plugins.getPlugin(SupportPlugin);
   }
 
@@ -116,19 +118,12 @@ export default class DayExplorerPlugin implements PerfettoPlugin {
     query: string,
   ): Promise<TrackNode> {
     const uri = `/day_explorer_${uuidv4()}`;
-const renderer = await createQueryCounterTrack({
+    const renderer = await CounterTrack.createMaterialized({
       trace: ctx,
       uri,
-      data: {
-        sqlSource: query,
-      },
-      columns: {
-        ts: 'ts',
-        value: 'value',
-      },
-      options: {
-        yRangeSharingKey: groupKey,
-      },    });
+      sqlSource: query,
+      yRangeSharingKey: groupKey,
+    });
 
     ctx.tracks.registerTrack({
       uri,
@@ -146,7 +141,8 @@ const renderer = await createQueryCounterTrack({
 
   private createDayExplorerFlameGraphPanel(trace: Trace) {
     let previousSelection: AreaSelection | undefined;
-let flamegraph: QueryFlamegraph | undefined;    return {
+    let flamegraphMetrics: ReadonlyArray<QueryFlamegraphMetric> | undefined;
+    return {
       id: 'day_explorer_flamegraph_selection',
       name: 'Day Explorer Flamegraph',
       render: (selection: AreaSelection) => {
@@ -155,7 +151,7 @@ let flamegraph: QueryFlamegraph | undefined;    return {
           !areaSelectionsEqual(previousSelection, selection);
         previousSelection = selection;
         if (selectionChanged) {
-flamegraphMetrics = this.computeDayExplorerFlameGraph(selection);
+          flamegraphMetrics = this.computeDayExplorerFlameGraph(selection);
         }
         if (flamegraphMetrics === undefined) {
           return undefined;
@@ -173,13 +169,15 @@ flamegraphMetrics = this.computeDayExplorerFlameGraph(selection);
               });
             },
           }),
-        };      },
+        };
+      },
     };
   }
 
-private computeDayExplorerFlameGraph(
+  private computeDayExplorerFlameGraph(
     currentSelection: AreaSelection,
-  ): ReadonlyArray<QueryFlamegraphMetric> | undefined {    // The flame graph will be shown when any day explorer track is in the area
+  ): ReadonlyArray<QueryFlamegraphMetric> | undefined {
+    // The flame graph will be shown when any day explorer track is in the area
     // selection. The selection is used to filter by time, but not by track. All
     // day explorer tracks are considered for the graph.
     let hasDayExplorer = false;
@@ -192,8 +190,9 @@ private computeDayExplorerFlameGraph(
     if (!hasDayExplorer) {
       return undefined;
     }
-const metrics = metricsFromTableOrSubquery({
-      tableOrSubquery: `        (
+    const metrics = metricsFromTableOrSubquery({
+      tableOrSubquery: `
+        (
           WITH
             total_energy AS (
               SELECT track_id, parent_id, display_name, SUM(energy_uws) AS energy_uws
@@ -220,17 +219,24 @@ const metrics = metricsFromTableOrSubquery({
           FROM with_child
         )
       `,
-[
+      tableMetrics: [
         {
-          name: 'Energy mWs',
-          unit: '',
+          name: 'Energy',
+          unit: 'mWs',
           columnName: 'self_count',
         },
       ],
-    );
-    return new QueryFlamegraph(trace, metrics, {
-      state: Flamegraph.createDefaultState(metrics),
-    });  }
+      nameColumnLabel: 'Component',
+    });
+    const store = ensureExists(this.store);
+    store.edit((draft) => {
+      draft.areaSelectionFlamegraphState = Flamegraph.updateState(
+        draft.areaSelectionFlamegraphState,
+        metrics,
+      );
+    });
+    return metrics;
+  }
 
   async addDayExplorerUsage(
     ctx: Trace,
@@ -297,6 +303,10 @@ const metrics = metricsFromTableOrSubquery({
   }
 
   async onTraceLoad(ctx: Trace): Promise<void> {
+    this.store = ctx.mountStore(DayExplorerPlugin.id, (init) =>
+      this.migrateDayExplorerPluginState(init),
+    );
+
     const support = this.support(ctx);
     const features = await support.features(ctx.engine);
 

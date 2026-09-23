@@ -103,12 +103,13 @@ def main():
     with open(args.json_out, 'w', encoding='utf-8') as f:
       json.dump(output_data, f, indent=None if args.minify else 2)
 
-return 0
+    return 0
   except Exception as e:
     print(f"Error generating docs JSON: {e}", file=sys.stderr)
     import traceback
     traceback.print_exc()
     return 1
+
 
 if __name__ == '__main__':
   sys.exit(main())

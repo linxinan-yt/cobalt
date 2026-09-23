@@ -139,7 +139,8 @@ angle{
                 one{"{0} xekddo"}
                 other{"{0} xekdde"}
             }
-            day{                per{"dor disa {0}"}
+            day{
+                per{"dor disa {0}"}
             }
             decade{
                 dnam{"doskam"}
@@ -152,20 +153,24 @@ one{"{0} dosok"}
                 other{"{0} pondros"}
             }
             hour{
-                one{"{0} vor"}                other{"{0} voram"}
+                one{"{0} vor"}
+                other{"{0} voram"}
                 per{"dor vora {0}"}
             }
             microsecond{
                 dnam{"maikrosekond"}
-one{"{0} maikrosekond"}                other{"{0} maikrosekond"}
+one{"{0} maikrosekond"}
+                other{"{0} maikrosekond"}
             }
             millisecond{
                 dnam{"milisekond"}
-one{"{0} milisekond"}                other{"{0} milisekond"}
+one{"{0} milisekond"}
+                other{"{0} milisekond"}
             }
             minute{
                 dnam{"mintam"}
-one{"{0} minut"}                other{"{0} mintam"}
+one{"{0} minut"}
+                other{"{0} mintam"}
                 per{"dor minut {0}"}
             }
             month{
@@ -178,7 +183,8 @@ one{"{0} minut"}                other{"{0} mintam"}
 other{"{0} nanosekond"}
             }
             night{
-                dnam{"rati"}                other{"{0} rati"}
+                dnam{"rati"}
+                other{"{0} rati"}
                 per{"dor rat {0}"}
             }
             quarter{
@@ -188,7 +194,8 @@ other{"{0} nanosekond"}
             }
             second{
                 dnam{"sekond"}
-one{"{0} sekond"}                other{"{0} sekond"}
+one{"{0} sekond"}
+                other{"{0} sekond"}
                 per{"dor sekond {0}"}
             }
             week{
@@ -197,7 +204,8 @@ dnam{"suman"}
                 per{"dor sumanak {0}"}
             }
             year{
-                dnam{"vorsam"}                other{"{0} vorsam"}
+                dnam{"vorsam"}
+                other{"{0} vorsam"}
                 per{"dor voros {0}"}
             }
         }
@@ -378,7 +386,8 @@ graphics{
         }
         duration{
             century{
-                one{"{0}x"}                other{"{0}x"}
+                one{"{0}x"}
+                other{"{0}x"}
             }
             day{
                 dnam{"d"}
@@ -429,7 +438,8 @@ other{"{0}d"}
                 per{"{0}/sek"}
             }
             week{
-                dnam{"sum"}                other{"{0}sum"}
+                dnam{"sum"}
+                other{"{0}sum"}
                 per{"{0}/sum"}
             }
             year{
@@ -490,11 +500,13 @@ angle{
         duration{
             century{
                 dnam{"x"}
-                one{"{0} x"}                other{"{0} x"}
+                one{"{0} x"}
+                other{"{0} x"}
             }
             day{
                 dnam{"dis"}
-one{"{0} dis"}                other{"{0} dis"}
+one{"{0} dis"}
+                other{"{0} dis"}
                 per{"{0}/dis"}
             }
             decade{
@@ -502,7 +514,8 @@ one{"{0} dis"}                other{"{0} dis"}
 other{"{0} dos"}
             }
             hour{
-                dnam{"voram"}                other{"{0} vor"}
+                dnam{"voram"}
+                other{"{0} vor"}
                 per{"{0}/vor"}
             }
             microsecond{
@@ -511,7 +524,8 @@ other{"{0} dos"}
             }
             millisecond{
                 dnam{"msek"}
-one{"{0} msek"}                other{"{0} msek"}
+one{"{0} msek"}
+                other{"{0} msek"}
             }
             month{
                 dnam{"mho"}
@@ -520,16 +534,19 @@ one{"{0} msek"}                other{"{0} msek"}
             }
             nanosecond{
                 dnam{"nanosek"}
-one{"{0} nsek"}                other{"{0} nsek"}
+one{"{0} nsek"}
+                other{"{0} nsek"}
             }
             night{
                 dnam{"rati"}
-one{"{0} rat"}                other{"{0} rati"}
+one{"{0} rat"}
+                other{"{0} rati"}
                 per{"{0}/rat"}
             }
             quarter{
                 dnam{"timho"}
-one{"{0} timho"}                other{"{0} timho"}
+one{"{0} timho"}
+                other{"{0} timho"}
                 per{"{0}/timho"}
             }
             second{
@@ -539,12 +556,14 @@ one{"{0} timho"}                other{"{0} timho"}
             }
             week{
                 dnam{"suman"}
-one{"{0} suman"}                other{"{0} suman"}
+one{"{0} suman"}
+                other{"{0} suman"}
                 per{"{0}/suman"}
             }
             year{
                 dnam{"vorsam"}
-one{"{0} voros"}                other{"{0} vorsam"}
+one{"{0} voros"}
+                other{"{0} vorsam"}
                 per{"{0}/voros"}
             }
         }

@@ -210,7 +210,9 @@ export function renderDataGrid(app: App): m.Children {
       engine: app.trace.engine,
       ...SLICE_SQL_SCHEMA,
     });
-  }  return [
+  }
+
+  return [
     m(
       '.pf-widget-intro',
       m('h1', 'DataGrid'),
@@ -218,7 +220,7 @@ export function renderDataGrid(app: App): m.Children {
         'DataGrid is an opinionated data table and analysis tool designed for exploring ',
         'and analyzing SQL-like data with built-in sorting, filtering, and aggregation features. It is based on ',
         m(Anchor, {href: '#!/widgets/grid'}, 'Grid'),
-' but unlike the grid component is specifically opinionated about the types of data it can receive.',
+        ' but unlike the grid component is specifically opinionated about the types of data it can receive.',
       ]),
       m('p', [
         'This example demonstrates a schema with multiple related tables: ',
@@ -238,11 +240,12 @@ export function renderDataGrid(app: App): m.Children {
           {href: '#!/widgets/datagrid-playground'},
           'DataGrid Playground',
         ),
-        ' for an interactive editor where you can define and test your own DataGrid configs.',      ]),
+        ' for an interactive editor where you can define and test your own DataGrid configs.',
+      ]),
     ),
 
     renderWidgetShowcase({
-renderWidget: ({emulateError, ...rest}) => {
+      renderWidget: ({emulateError, ...rest}) => {
         if (!employeeErrorDataSource) {
           employeeErrorDataSource = new ErrorEmulatingDataSource(
             new InMemoryDataSource(EMPLOYEE_DATA),
@@ -263,11 +266,12 @@ renderWidget: ({emulateError, ...rest}) => {
         disablePivotControls: false,
         disableColumnControls: false,
         disableFilterControls: false,
-        emulateError: false,      },
+        emulateError: false,
+      },
       noPadding: true,
     }),
 
-renderDocSection('Schema-Based Column Definition', [
+    renderDocSection('Schema-Based Column Definition', [
       m(
         'p',
         'DataGrid uses a schema-based approach for column definitions. ' +

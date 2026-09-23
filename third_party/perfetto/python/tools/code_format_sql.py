@@ -78,12 +78,13 @@ class SyntaqliteFmt(CodeFormatterBase):
     return filtered
 
   def run_formatter(self, repo_root: str, check_only: bool, files: list[str]):
-binary = _syntaqlite_binary(repo_root)
+    binary = _syntaqlite_binary(repo_root)
     if not os.path.isfile(binary):
       print(
           f'syntaqlite binary not found at {binary}\n'
           'Run `tools/install-build-deps` to fetch it.',
-          file=sys.stderr)      return 127
+          file=sys.stderr)
+      return 127
 
     out_dir = _resolve_out_dir(repo_root)
     if not out_dir:

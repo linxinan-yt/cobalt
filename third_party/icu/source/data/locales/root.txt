@@ -1251,7 +1251,8 @@ root{
             symbols:alias{"/LOCALE/NumberElements/latn/symbols"}
         }
     }
-Version{"48"}    calendar{
+Version{"48"}
+    calendar{
         buddhist{
             AmPmMarkers:alias{"/LOCALE/calendar/gregorian/AmPmMarkers"}
             AmPmMarkersNarrow:alias{"/LOCALE/calendar/gregorian/AmPmMarkersNarrow"}
@@ -2760,7 +2761,8 @@ G{"G y-MM-dd – G y-MM-dd"}
                 M{"L"}
                 MEd{"MM-dd, E"}
                 MMM{"LLL"}
-MMMEd{"MMM d, E"}                MMMMW{
+MMMEd{"MMM d, E"}
+                MMMMW{
                     other{"MMMM 'week' W"}
                 }
                 MMMMd{"MMMM d"}

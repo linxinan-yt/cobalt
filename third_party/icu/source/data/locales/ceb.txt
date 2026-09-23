@@ -656,7 +656,8 @@ ceb{
                         "Hunyo",
                         "Hulyo",
                         "Agosto",
-"Septiyembre",                        "Oktubre",
+"Septiyembre",
+                        "Oktubre",
                         "Nobyembre",
                         "Disyembre",
                     }

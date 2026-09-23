@@ -20,6 +20,7 @@
 #include <atomic>
 #include <cstdint>
 #include <string>
+
 #include "perfetto/base/flat_set.h"
 #include "perfetto/ext/base/flat_hash_map.h"
 #include "perfetto/protozero/scattered_heap_buffer.h"
@@ -34,7 +35,9 @@
 
 #include "protos/perfetto/common/data_source_descriptor.gen.h"  // IWYU pragma: keep
 #include "protos/perfetto/config/track_event/track_event_config.gen.h"
-#include "protos/perfetto/trace/interned_data/interned_data.pbzero.h"namespace perfetto::shlib {
+#include "protos/perfetto/trace/interned_data/interned_data.pbzero.h"
+
+namespace perfetto::shlib {
 
 struct TrackEventIncrementalState {
   // A heap-allocated message for storing newly seen interned data while we are
@@ -53,7 +56,8 @@ struct TrackEventIncrementalState {
   // state.
   base::FlatHashMap<std::string, bool> dynamic_categories;
   InternMap iids;
-// Clears the incremental state without destroying and recreating this object.
+
+  // Clears the incremental state without destroying and recreating this object.
   // This allows reusing allocated memory in hash maps and other data structures
   // instead of deallocating and reallocating them.
   void Clear() {
@@ -63,7 +67,8 @@ struct TrackEventIncrementalState {
     seen_track_uuids.clear();
     dynamic_categories.Clear();
     iids.Clear();
-  }};
+  }
+};
 
 struct TrackEventTlsState {
   template <typename TraceContext>
@@ -81,7 +86,8 @@ struct TrackEventTlsState {
     }
     if (disable_incremental_timestamps) {
       if (timestamp_unit_multiplier == 1) {
-default_clock_id = PERFETTO_I_CLOCK_INCREMENTAL_UNDERNEATH;      } else {
+        default_clock_id = PerfettoDsGetDefaultClockId();
+      } else {
         default_clock_id = PERFETTO_TE_TIMESTAMP_TYPE_ABSOLUTE;
       }
     } else {
@@ -95,12 +101,14 @@ default_clock_id = PERFETTO_I_CLOCK_INCREMENTAL_UNDERNEATH;      } else {
 struct TrackEventDataSourceTraits : public perfetto::DefaultDataSourceTraits {
   using IncrementalStateType = TrackEventIncrementalState;
   using TlsStateType = TrackEventTlsState;
-// Clear the incremental state without destroying and recreating it. This
+
+  // Clear the incremental state without destroying and recreating it. This
   // allows reusing allocated memory in hash maps.
   static bool ClearIncrementalState(TrackEventIncrementalState* incr_state) {
     incr_state->Clear();
     return true;
-  }};
+  }
+};
 
 class TrackEvent
     : public perfetto::DataSource<TrackEvent, TrackEventDataSourceTraits> {

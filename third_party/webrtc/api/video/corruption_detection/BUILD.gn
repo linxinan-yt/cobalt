@@ -114,7 +114,7 @@ if (rtc_include_tests) {
     deps = [
       ":corruption_detection_settings_generator",
       ":filter_settings",
-"../../:field_trials",      "../../../test:test_support",
+      "../../../test:test_support",
     ]
   }
 

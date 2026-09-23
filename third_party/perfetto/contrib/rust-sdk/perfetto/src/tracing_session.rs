@@ -207,9 +207,10 @@ impl Drop for TracingSession {
 
 #[cfg(test)]
 mod tests {
-use crate::data_source::*;
+    use crate::data_source::DataSource;
     use crate::tests::{TracingSessionBuilder, acquire_test_environment};
-    use crate::{track_event::*, track_event_categories, track_event_category_enabled};    use std::{
+    use crate::{track_event::TrackEvent, track_event_categories};
+    use std::{
         error::Error,
         sync::{MutexGuard, OnceLock},
     };
@@ -218,7 +219,8 @@ use crate::data_source::*;
     static DATA_SOURCE: OnceLock<DataSource> = OnceLock::new();
 
     fn get_data_source() -> &'static DataSource<'static> {
-use crate::data_source::DataSourceArgsBuilder;        DATA_SOURCE.get_or_init(|| {
+        use crate::data_source::DataSourceArgsBuilder;
+        DATA_SOURCE.get_or_init(|| {
             let data_source_args = DataSourceArgsBuilder::new();
             let mut data_source = DataSource::new();
             data_source
@@ -230,7 +232,8 @@ use crate::data_source::DataSourceArgsBuilder;        DATA_SOURCE.get_or_init(||
 
     #[test]
     fn data_source() -> Result<(), Box<dyn Error>> {
-use crate::data_source::*;        let _lock = acquire_test_environment();
+        use crate::data_source::*;
+        let _lock = acquire_test_environment();
         let data_source = get_data_source();
         let mut session = TracingSessionBuilder::new()
             .set_data_source_name(DATA_SOURCE_NAME)
@@ -274,7 +277,8 @@ use crate::data_source::*;        let _lock = acquire_test_environment();
 
     #[test]
     fn track_event() -> Result<(), Box<dyn Error>> {
-use crate::{trace_for_category, track_event::TraceContext, track_event_category_enabled};        use session_test_te_ns as perfetto_te_ns;
+        use crate::{trace_for_category, track_event::TraceContext, track_event_category_enabled};
+        use session_test_te_ns as perfetto_te_ns;
         let _fx = TeTestFixture::new();
         let mut session = TracingSessionBuilder::new()
             .set_data_source_name("track_event")
@@ -295,7 +299,8 @@ use crate::{trace_for_category, track_event::TraceContext, track_event_category_
 
     #[test]
     fn read_trace() -> Result<(), Box<dyn Error>> {
-use crate::data_source::TraceContext;        use crate::pb_decoder::{PbDecoder, PbDecoderField};
+        use crate::data_source::TraceContext;
+        use crate::pb_decoder::{PbDecoder, PbDecoderField};
         use crate::protos::trace::{test_event::*, trace::*, trace_packet::*};
         use std::sync::{Arc, Mutex};
         let _lock = acquire_test_environment();

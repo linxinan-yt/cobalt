@@ -38,7 +38,7 @@ using base::android::JavaByteBufferToMutableSpan;
 using base::android::ToJavaByteArray;
 using base::android::ToJavaIntArray;
 using jni_zero::AttachCurrentThread;
-using jni_zero::JavaParamRef;
+using jni_zero::JavaRef;
 using jni_zero::ScopedJavaLocalRef;
 
 // See
@@ -405,7 +405,7 @@ void MediaCodecBridge::OnMediaCodecError(
     JNIEnv* env,
     jboolean is_recoverable,
     jboolean is_transient,
-    const JavaParamRef<jstring>& diagnostic_info) {
+    const JavaRef<jstring>& diagnostic_info) {
   std::string diagnostic_info_in_str =
       ConvertJavaStringToUTF8(env, diagnostic_info);
   handler_->OnMediaCodecError(is_recoverable, is_transient,
@@ -444,3 +444,5 @@ void MediaCodecBridge::OnMediaCodecFirstTunnelFrameReady(JNIEnv* env) {
 }
 
 }  // namespace starboard
+
+DEFINE_JNI(MediaCodecBridge)

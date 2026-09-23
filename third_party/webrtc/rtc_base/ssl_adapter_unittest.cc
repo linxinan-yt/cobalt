@@ -41,7 +41,8 @@ using ::testing::Return;
 
 const TimeDelta kTimeout = TimeDelta::Millis(5000);
 
-Socket* CreateSocket() {  SocketAddress address(IPAddress(INADDR_ANY), 0);
+Socket* CreateSocket() {
+  SocketAddress address(IPAddress(INADDR_ANY), 0);
 
   Socket* socket = Thread::Current()->socketserver()->CreateSocket(
       address.family(), SOCK_STREAM);
@@ -74,7 +75,8 @@ class SSLAdapterTestDummy {
 
     ssl_adapter_->SubscribeReadEvent(
         this, [this](Socket* socket) { OnSSLAdapterReadEvent(socket); });
-ssl_adapter_->SubscribeCloseEvent(this, [this](Socket* socket, int error) {      OnSSLAdapterCloseEvent(socket, error);
+    ssl_adapter_->SubscribeCloseEvent(this, [this](Socket* socket, int error) {
+      OnSSLAdapterCloseEvent(socket, error);
     });
     ssl_adapter_->SetRole(role);
   }
@@ -290,7 +292,8 @@ class SSLAdapterTestBase : public ::testing::Test {
 
  protected:
   std::unique_ptr<VirtualSocketServer> vss_;
-test::RunLoop thread_;  std::unique_ptr<SSLAdapterTestDummyServer> server_;
+  test::RunLoop thread_;
+  std::unique_ptr<SSLAdapterTestDummyServer> server_;
   std::unique_ptr<SSLAdapterTestDummyClient> client_;
   std::unique_ptr<SSLCertificateVerifier> cert_verifier_;
 

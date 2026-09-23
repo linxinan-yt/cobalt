@@ -614,7 +614,8 @@ inline constexpr std::array<uint8_t, 4u> FloatToLittleEndian(float val) {
   return numerics_internal::ToLittleEndian(std::bit_cast<uint32_t>(val));
 #else
   return numerics_internal::ToLittleEndian(BitCast<uint32_t>(val));
-#endif}
+#endif
+}
 // Returns a byte array holding the value of a double encoded as the
 // little-endian encoding of the number.
 //
@@ -628,7 +629,8 @@ inline constexpr std::array<uint8_t, 8u> DoubleToLittleEndian(double val) {
   return numerics_internal::ToLittleEndian(std::bit_cast<uint64_t>(val));
 #else
   return numerics_internal::ToLittleEndian(BitCast<uint64_t>(val));
-#endif}
+#endif
+}
 
 // Returns a byte array holding the value of a uint8_t encoded as the big-endian
 // encoding of the integer.
@@ -727,8 +729,14 @@ inline constexpr std::array<uint8_t, 8u> I64ToBigEndian(int64_t val) {
 // IPC) as a byte buffer. Use the little-endian encoding for storing and reading
 // from storage.
 inline constexpr std::array<uint8_t, 4u> FloatToBigEndian(float val) {
-return numerics_internal::ToLittleEndian(
-      std::byteswap(std::bit_cast<uint32_t>(val)));}
+#if !BUILDFLAG(IS_STARBOARD) || defined(SB_IS_DEFAULT_TC)
+  return numerics_internal::ToLittleEndian(
+      std::byteswap(std::bit_cast<uint32_t>(val)));
+#else
+  return numerics_internal::ToLittleEndian(
+      std::byteswap(BitCast<uint32_t>(val)));
+#endif
+}
 // Returns a byte array holding the value of a double encoded as the big-endian
 // encoding of the number.
 //
@@ -744,7 +752,8 @@ inline constexpr std::array<uint8_t, 8u> DoubleToBigEndian(double val) {
 #else
   return numerics_internal::ToLittleEndian(
       std::byteswap(BitCast<uint64_t>(val)));
-#endif}
+#endif
+}
 
 }  // namespace base
 

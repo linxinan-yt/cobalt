@@ -243,10 +243,11 @@ class TraceBufferV1 : public TraceBuffer {
   //   P1, P4, P7, P2, P3, P5, P8, P9, P6
   // But the following is guaranteed to NOT happen:
   //   P1, P5, P7, P4 (P4 cannot come after P5)
-bool ReadNextTracePacket(
+  bool ReadNextTracePacket(
       TracePacket*,
       PacketSequenceProperties* sequence_properties,
       uint32_t* previous_packet_on_sequence_dropped) override;
+
   // Creates a read-only clone of the trace buffer. Calls to
   // CopyChunkUntrusted() and TryPatchChunkContents() on the returned cloned
   // TraceBuffer will CHECK().
@@ -257,11 +258,13 @@ bool ReadNextTracePacket(
   const WriterStats& writer_stats() const override { return writer_stats_; }
   size_t size() const override { return size_; }
   size_t used_size() const override { return used_size_; }
-size_t GetMemoryUsageBytes() const override { return size_; }  OverwritePolicy overwrite_policy() const override {
+  size_t GetMemoryUsageBytes() const override { return size_; }
+  OverwritePolicy overwrite_policy() const override {
     return overwrite_policy_;
   }
   bool has_data() const override { return has_data_; }
-BufType buf_type() const override { return kV1; }
+  BufType buf_type() const override { return kV1; }
+
  private:
   friend class TraceBufferTest;
 

@@ -288,19 +288,6 @@ constexpr char kSdpSctpDataChannelStringWithSctpInit[] =
     "4A:AD:B9:B1:3F:82:18:3B:54:02:12:DF:3E:5D:49:6B:19:E5:7C:AB\r\n"
     "a=mid:data_content_name\r\n";
 
-// draft-hancke-tsvwg-snap
-// a=sctp-init:<base64("CookieMonster")>
-constexpr char kSdpSctpDataChannelStringWithSctpInit[] =
-    "m=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\n"
-    "a=sctp-port:5000\r\n"
-    "a=sctp-init:Q29va2llTW9uc3Rlcg==\r\n"
-    "c=IN IP4 0.0.0.0\r\n"
-    "a=ice-ufrag:ufrag_data\r\n"
-    "a=ice-pwd:pwd_data\r\n"
-    "a=fingerprint:sha-1 "
-    "4A:AD:B9:B1:3F:82:18:3B:54:02:12:DF:3E:5D:49:6B:19:E5:7C:AB\r\n"
-    "a=mid:data_content_name\r\n";
-
 constexpr char kSdpConferenceString[] =
     "v=0\r\n"
     "o=- 18446744069414584320 18446462598732840960 IN IP4 127.0.0.1\r\n"
@@ -2838,7 +2825,9 @@ TEST_F(WebRtcSdpTest, DeserializeSdpWithStringSctpPort) {
       SdpDeserialize(sdp, &error);
   ASSERT_THAT(output, IsNull());
   EXPECT_EQ(error.line, "a=sctp-port:webrtc");
-}TEST_F(WebRtcSdpTest, DeserializeSdpWithSctpDataChannelsWithSctpInit) {
+}
+
+TEST_F(WebRtcSdpTest, DeserializeSdpWithSctpDataChannelsWithSctpInit) {
   bool use_sctpmap = false;
   AddSctpDataChannel(use_sctpmap);
 

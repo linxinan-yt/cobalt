@@ -131,7 +131,8 @@ uCharsToChars(char *target, int32_t targetLen, const char16_t *source, int32_t s
                     target[j + 1] = static_cast<char>(source[i]);
                 }
                 j+=2;
-}else{                target[j++] = static_cast<char>(source[i]);
+            }else{
+                target[j++] = static_cast<char>(source[i]);
             }
         }else if(source[i]=='\\'){
             if(i+1<sourceLen){

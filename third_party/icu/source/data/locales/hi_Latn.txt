@@ -152,7 +152,8 @@ hi_Latn{
             availableFormats{
 EBh{"E, B h"}
                 Eh{"E, h a"}
-                GyMMMEEEEd{"EEEE, d MMM, y G"}                MMMMW{
+                GyMMMEEEEd{"EEEE, d MMM, y G"}
+                MMMMW{
                     one{"MMMM 'kaa' 'week' W"}
                     other{"MMMM 'kaa' 'week' W"}
                 }

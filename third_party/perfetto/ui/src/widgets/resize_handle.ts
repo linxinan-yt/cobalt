@@ -33,15 +33,17 @@ export interface ResizeHandleAttrs extends HTMLAttrs {
 export class ResizeHandle implements m.ClassComponent<ResizeHandleAttrs> {
   private handleElement?: HTMLElement;
   private previousY: number | undefined;
-private previousX: number | undefined;
+  private previousX: number | undefined;
+
   oncreate(vnode: m.VnodeDOM<ResizeHandleAttrs, this>) {
     this.handleElement = vnode.dom as HTMLElement;
   }
 
   private endDrag(attrs: ResizeHandleAttrs, pointerId: number) {
-if (this.previousY !== undefined || this.previousX !== undefined) {
+    if (this.previousY !== undefined || this.previousX !== undefined) {
       this.previousY = undefined;
-      this.previousX = undefined;      this.handleElement!.releasePointerCapture(pointerId);
+      this.previousX = undefined;
+      this.handleElement!.releasePointerCapture(pointerId);
       attrs.onResizeEnd?.();
     }
   }
@@ -59,14 +61,16 @@ if (this.previousY !== undefined || this.previousX !== undefined) {
     const isHorizontal = direction === 'horizontal';
 
     return m('.pf-resize-handle', {
-class: isHorizontal
+      class: isHorizontal
         ? 'pf-resize-handle--horizontal'
-        : 'pf-resize-handle--vertical',      oncontextmenu: (e: Event) => {
+        : 'pf-resize-handle--vertical',
+      oncontextmenu: (e: Event) => {
         e.preventDefault();
       },
       onpointerdown: (e: PointerEvent) => {
         const offsetParent = this.handleElement?.offsetParent as HTMLElement;
-if (isHorizontal) {
+
+        if (isHorizontal) {
           const offsetLeft = offsetParent?.getBoundingClientRect().left ?? 0;
           const mouseOffsetX = e.clientX - offsetLeft;
           this.previousX = mouseOffsetX;
@@ -75,6 +79,7 @@ if (isHorizontal) {
           const mouseOffsetY = e.clientY - offsetTop;
           this.previousY = mouseOffsetY;
         }
+
         this.handleElement!.setPointerCapture(e.pointerId);
         attrs.onResizeStart?.();
 
@@ -86,7 +91,8 @@ if (isHorizontal) {
         // We typically just resize some element when dragging the handle, so we
         // tell Mithril not to redraw after this event.
         e.redraw = false;
-// Note: We don't check hasPointerCapture() here because pointer capture
+
+        // Note: We don't check hasPointerCapture() here because pointer capture
         // already ensures we only receive move events during an active drag.
         // The previousX/previousY check is sufficient to determine drag state.
 
@@ -107,7 +113,8 @@ if (isHorizontal) {
             attrs.onResize?.(mouseOffsetY - this.previousY);
             attrs.onResizeAbsolute?.(mouseOffsetY);
             this.previousY = mouseOffsetY;
-          }        }
+          }
+        }
       },
       onpointerup: (e: PointerEvent) => {
         this.endDrag(attrs, e.pointerId);

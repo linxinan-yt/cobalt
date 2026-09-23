@@ -31,7 +31,8 @@ SymbolTracker::SymbolTracker(TraceProcessorContext* context)
 
 SymbolTracker::~SymbolTracker() = default;
 
-void SymbolTracker::OnEventsFullyExtracted() {  const StringId kEmptyString = context_->storage->InternString("");
+void SymbolTracker::OnEventsFullyExtracted() {
+  const StringId kEmptyString = context_->storage->InternString("");
   for (auto frame = context_->storage->mutable_stack_profile_frame_table()
                         ->IterateRows();
        frame; ++frame) {

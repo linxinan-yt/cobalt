@@ -136,11 +136,14 @@ DelayBasedCongestionControl::ref_window_scale_factor_due_to_latency_difference()
                     1.0);
 }
 
+
+
 double DelayBasedCongestionControl::l4s_alpha_v() const {
   // 4.2.2.1
   double l4s_alpha_v =
       (queue_delay_avg_ - params_.queue_delay_target.Get() / 2) /
       (params_.queue_delay_target.Get() / 2);
-  return std::clamp(l4s_alpha_v, 0.0, 1.0);}
+  return std::clamp(l4s_alpha_v, 0.0, 1.0);
+}
 
 }  // namespace webrtc

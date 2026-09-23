@@ -462,7 +462,8 @@ EBh{"E B h"}
                 EBhm{"E B h:mm"}
                 EBhms{"E B h:mm:ss"}
                 Ed{"E d"}
-                Eh{"E a h"}                Ehm{"E a h:mm"}
+                Eh{"E a h"}
+                Ehm{"E a h:mm"}
                 Ehms{"E a h:mm:ss"}
                 Gy{"y G"}
                 GyM{"M/y G"}
@@ -483,7 +484,8 @@ EBh{"E B h"}
                 h{"a h"}
                 hm{"a h:mm"}
                 hms{"a h:mm:ss"}
-hv{"a h v"}                yM{"M/y"}
+hv{"a h v"}
+                yM{"M/y"}
                 yMEd{"E፣ d/M/y"}
                 yMMM{"MMM y"}
                 yMMMEd{"E፣ MMM d y"}
@@ -564,7 +566,8 @@ hv{"a h v"}                yM{"M/y"}
                         night1{"ሌሊት"}
                     }
                     narrow{
-afternoon1{"ከሰዓት"}                        am{"ጠ"}
+afternoon1{"ከሰዓት"}
+                        am{"ጠ"}
                         pm{"ከ"}
                     }
                 }

@@ -81,7 +81,8 @@ holder->task_executor(), holder->gpu_service()->gr_shader_cache(),
 
 // TODO(sherryzy): Investigate why this ContextResult check fails
 // specifically in single-process-test mode.
-#if !BUILDFLAG(IS_STARBOARD)    CHECK_EQ(result, gpu::ContextResult::kSuccess);
+#if !BUILDFLAG(IS_STARBOARD)
+    CHECK_EQ(result, gpu::ContextResult::kSuccess);
 #else
     (void)result;
 #endif  // BUILDFLAG(IS_STARBOARD)

@@ -44,7 +44,7 @@ ScriptPromise<IDLUndefined> H5vccExperiments::setExperimentState(
 
   EnsureReceiverIsBound();
 
-  std::optional<base::Value::Dict> experiment_config_dict =
+  std::optional<base::DictValue> experiment_config_dict =
       ParseConfigToDictionary(experiment_configuration);
 
   if (!experiment_config_dict.has_value()) {
@@ -99,7 +99,7 @@ ScriptPromise<V8OverrideState> H5vccExperiments::getFeature(
 
 const String& H5vccExperiments::getFeatureParam(
     const String& feature_param_name) {
-  feature_param_value_ = String::FromUTF8(base::GetFieldTrialParamValue(
+  feature_param_value_ = String::FromUtf8(base::GetFieldTrialParamValue(
       cobalt::kCobaltExperimentName, feature_param_name.Utf8()));
   return feature_param_value_;
 }
@@ -164,7 +164,7 @@ ScriptPromise<IDLUndefined> H5vccExperiments::setFinchParameters(
 
   EnsureReceiverIsBound();
 
-  std::optional<base::Value::Dict> settings_dict =
+  std::optional<base::DictValue> settings_dict =
       ParseSettingsToDictionary(settings);
 
   if (!settings_dict.has_value()) {

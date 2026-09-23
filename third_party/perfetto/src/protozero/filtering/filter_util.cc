@@ -70,7 +70,9 @@ ProtoFilterOptions ReadProtoFilterAnnotation(
         options.GetExtension(perfetto::protos::proto_filter_merge_passthrough);
   }
   return opts;
-}}  // namespace
+}
+
+}  // namespace
 
 FilterUtil::FilterUtil() = default;
 FilterUtil::~FilterUtil() = default;

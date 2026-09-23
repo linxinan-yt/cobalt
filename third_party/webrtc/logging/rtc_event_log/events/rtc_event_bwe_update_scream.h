@@ -82,7 +82,8 @@ class RtcEventBweUpdateScream final : public RtcEvent {
   uint32_t avg_queue_delay_ms() const { return avg_queue_delay_ms_; }
   uint32_t l4s_marked_permille() const { return l4s_marked_permille_; }
 
-static std::string Encode(std::span<const RtcEvent*> batch) {    // TODO(terelius): Implement
+  static std::string Encode(std::span<const RtcEvent*> batch) {
+    // TODO(terelius): Implement
     return "";
   }
 

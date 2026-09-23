@@ -110,14 +110,14 @@ bool ReadProcMaps(std::string* proc_maps) {
 
 #if BUILDFLAG(IS_COBALT)
 
-bool ParseProcMaps(const std::string& input,
+bool ParseProcMaps(std::string_view input,
                    std::vector<MappedMemoryRegion>* regions_out) {
   CHECK(regions_out);
   std::vector<MappedMemoryRegion> regions;
 
   // Use SplitStringPiece to avoid heap allocations for every line.
   std::vector<std::string_view> lines = base::SplitStringPiece(
-      input, "\n", base::TRIM_WHICE, base::SPLIT_WANT_ALL);
+      input, "\n", base::TRIM_WHITESPACE, base::SPLIT_WANT_ALL);
 
   for (size_t i = 0; i < lines.size(); ++i) {
     // Due to splitting on '\n' the last line should be empty.
@@ -252,7 +252,7 @@ std::optional<SmapsRollup> ParseSmapsRollup(const std::string& buffer) {
   std::vector<std::string_view> lines = base::SplitStringPiece(
       buffer, "\n", base::TRIM_WHITESPACE, base::SPLIT_WANT_NONEMPTY);
 
-  base::flat_map<std::string_view, ByteCount> tmp;
+  base::flat_map<std::string_view, ByteSize> tmp;
   for (const auto& line : lines) {
     std::vector<std::string_view> tokens = base::SplitStringPiece(
         line, " ", base::TRIM_WHITESPACE, base::SPLIT_WANT_NONEMPTY);
@@ -271,7 +271,7 @@ std::optional<SmapsRollup> ParseSmapsRollup(const std::string& buffer) {
 
     size_t val;
     if (base::StringToSizeT(tokens[1], &val)) {
-      tmp[key] = KiB(val);
+      tmp[key] = KiBU(val);
     }
   }
 
@@ -302,7 +302,8 @@ std::optional<SmapsRollup> ReadAndParseSmapsRollup() {
 
 #else  // !BUILDFLAG(IS_COBALT)
 
-bool ParseProcMaps(std::string_view input,                   std::vector<MappedMemoryRegion>* regions_out) {
+bool ParseProcMaps(std::string_view input,
+                   std::vector<MappedMemoryRegion>* regions_out) {
   CHECK(regions_out);
   std::vector<MappedMemoryRegion> regions;
 

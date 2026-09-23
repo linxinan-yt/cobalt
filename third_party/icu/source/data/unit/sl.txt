@@ -2138,7 +2138,8 @@ sl{
                         two{"{0} nočeh"}
                     }
                 }
-dnam{"noči"}                few{"{0} noči"}
+dnam{"noči"}
+                few{"{0} noči"}
                 gender{"feminine"}
                 one{"{0} noč"}
                 other{"{0} noči"}
@@ -3649,7 +3650,8 @@ dnam{"noči"}                few{"{0} noči"}
                         two{"{0} točkah"}
                     }
                 }
-dnam{"točke"}                few{"{0} točke"}
+dnam{"točke"}
+                few{"{0} točke"}
                 gender{"feminine"}
                 one{"{0} točka"}
                 other{"{0} točk"}
@@ -4756,7 +4758,8 @@ dnam{"točke"}                few{"{0} točke"}
                         two{"{0} svetlobah"}
                     }
                 }
-dnam{"svetloba"}                few{"{0} svetlobe"}
+dnam{"svetloba"}
+                few{"{0} svetlobe"}
                 gender{"feminine"}
                 one{"{0} svetloba"}
                 other{"{0} svetlob"}
@@ -5618,7 +5621,8 @@ dnam{"noči"}
                 few{"{0} n"}
                 one{"{0} n"}
                 other{"{0} n"}
-                per{"{0}/noč"}                two{"{0} n"}
+                per{"{0}/noč"}
+                two{"{0} n"}
             }
             quarter{
                 few{"{0} čl."}
@@ -5660,7 +5664,8 @@ dnam{"noči"}
             }
             em{
                 few{"{0} emi"}
-one{"{0} em"}                other{"{0} emov"}
+one{"{0} em"}
+                other{"{0} emov"}
                 two{"{0} ema"}
             }
         }
@@ -5984,7 +5989,8 @@ one{"{0} em"}                other{"{0} emov"}
             }
             em{
                 few{"{0} emi"}
-one{"{0} em"}                other{"{0} emov"}
+one{"{0} em"}
+                other{"{0} emov"}
                 two{"{0} ema"}
             }
         }

@@ -88,7 +88,8 @@ void SubresourceProxyingURLLoaderService::CreateLoaderAndStart(
 
   if (!PrefetchURLLoaderServiceContext::IsPrefetchRequest(
           resource_request_in) &&
-!resource_request_in.browsing_topics) {    loader_factory_receivers_.ReportBadMessage(
+!resource_request_in.browsing_topics) {
+    loader_factory_receivers_.ReportBadMessage(
         "Unexpected `resource_request_in` in "
         "SubresourceProxyingURLLoaderService::CreateLoaderAndStart(): it's not "
         "a prefetch or browsing_topics request.");
@@ -96,7 +97,8 @@ void SubresourceProxyingURLLoaderService::CreateLoaderAndStart(
   }
 
   if (PrefetchURLLoaderServiceContext::IsPrefetchRequest(resource_request_in) &&
-resource_request_in.browsing_topics) {    loader_factory_receivers_.ReportBadMessage(
+resource_request_in.browsing_topics) {
+    loader_factory_receivers_.ReportBadMessage(
         "Unexpected `resource_request_in` in "
         "SubresourceProxyingURLLoaderService::CreateLoaderAndStart(): prefetch "
         "cannot be set at the same time with browsing_topics.");

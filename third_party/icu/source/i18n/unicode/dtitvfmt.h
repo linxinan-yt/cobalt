@@ -584,7 +584,8 @@ public:
      * this date interval formatter.
      * @stable ICU 4.0
      */
-U_I18N_API const DateIntervalInfo* getDateIntervalInfo() const;
+    U_I18N_API const DateIntervalInfo* getDateIntervalInfo() const;
+
     /**
      * Set the date time interval patterns.
      * @param newIntervalPatterns   the given interval patterns to copy.
@@ -604,13 +605,15 @@ U_I18N_API const DateIntervalInfo* getDateIntervalInfo() const;
      * @return the date formatter associated with this date interval formatter.
      * @stable ICU 4.0
      */
-U_I18N_API const DateFormat* getDateFormat() const;
+    U_I18N_API const DateFormat* getDateFormat() const;
+
     /**
      * Returns a reference to the TimeZone used by this DateIntervalFormat's calendar.
      * @return the time zone associated with the calendar of DateIntervalFormat.
      * @stable ICU 4.8
      */
-U_I18N_API virtual const TimeZone& getTimeZone() const;
+    U_I18N_API virtual const TimeZone& getTimeZone() const;
+
     /**
      * Sets the time zone for the calendar used by this DateIntervalFormat object. The
      * caller no longer owns the TimeZone object and should not delete it after this call.
@@ -663,7 +666,8 @@ U_I18N_API virtual const TimeZone& getTimeZone() const;
      * @return          The class ID for all objects of this class.
      * @stable ICU 4.0
      */
-U_I18N_API static UClassID getStaticClassID();
+    U_I18N_API static UClassID getStaticClassID();
+
     /**
      * Returns a unique class ID POLYMORPHICALLY. Pure virtual override. This
      * method is to implement a simple version of RTTI, since not all C++
@@ -675,7 +679,8 @@ U_I18N_API static UClassID getStaticClassID();
      *                  other classes have different class IDs.
      * @stable ICU 4.0
      */
-U_I18N_API virtual UClassID getDynamicClassID() const override;
+    U_I18N_API virtual UClassID getDynamicClassID() const override;
+
 protected:
 
     /**

@@ -217,7 +217,8 @@ source_list->allow_unsafe_hashes,
 #else
       source_list->report_sample, source_list->allow_trusted_types_eval,
       source_list->report_hash_algorithm);
-#endif}
+#endif
+}
 
 blink::ContentSecurityPolicyHeaderPtr ConvertToBlink(
     const ContentSecurityPolicyHeaderPtr& in) {

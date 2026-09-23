@@ -743,7 +743,8 @@ kok{
             }
             light-speed{
                 dnam{"प्रकाश"}
-one{"{0} प्रकाश"}                other{"{0} प्रकाश"}
+one{"{0} प्रकाश"}
+                other{"{0} प्रकाश"}
             }
             meter-per-second{
                 dnam{"मीटर प्रती सेकंद"}
@@ -1557,7 +1558,8 @@ one{"{0} प्रकाश"}                other{"{0} प्रकाश"}
         speed{
             light-speed{
                 dnam{"प्रकाश"}
-one{"{0} प्रकाश"}                other{"{0} प्रकाश"}
+one{"{0} प्रकाश"}
+                other{"{0} प्रकाश"}
             }
             meter-per-second{
                 one{"{0} मी/से"}
@@ -2223,7 +2225,8 @@ one{"{0} प्रकाश"}                other{"{0} प्रकाश"}
             }
             light-speed{
                 dnam{"प्रकाश"}
-one{"{0} प्रकाश"}                other{"{0} प्रकाश"}
+one{"{0} प्रकाश"}
+                other{"{0} प्रकाश"}
             }
             meter-per-second{
                 dnam{"मी/से"}

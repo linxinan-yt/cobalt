@@ -2168,7 +2168,8 @@ sk{
                         other{"{0} nociach"}
                     }
                 }
-dnam{"noci"}                few{"{0} noci"}
+dnam{"noci"}
+                few{"{0} noci"}
                 gender{"feminine"}
                 many{"{0} noci"}
                 one{"{0} noc"}
@@ -5906,7 +5907,8 @@ kilogram-force{
                 many{"{0} kp"}
                 one{"{0} kp"}
                 other{"{0} kp"}
-            }            kilowatt-hour-per-100-kilometer{
+            }
+            kilowatt-hour-per-100-kilometer{
                 dnam{"kWh/100 km"}
                 few{"{0} kWh/100 km"}
                 many{"{0} kWh/100 km"}

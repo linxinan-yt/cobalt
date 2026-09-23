@@ -32,6 +32,7 @@
 
 #include "protos/perfetto/trace/profiling/profile_packet.pbzero.h"
 #include "protos/perfetto/trace/trace_packet.pbzero.h"
+
 using namespace perfetto::trace_processor;
 namespace perfetto::trace_redaction {
 
@@ -48,7 +49,8 @@ base::Status PrunePerfEvents::Transform(const Context& context,
   std::optional<int64_t> trace_packet_clock_id;
   std::optional<int64_t> trusted_packet_sequence_id;
   if (PERFETTO_UNLIKELY(packet_decoder.has_timestamp_clock_id())) {
-// A clock id was overridden for the packet.    trace_packet_clock_id =
+    // A clock id was overridden for the packet.
+    trace_packet_clock_id =
         static_cast<int64_t>(packet_decoder.timestamp_clock_id());
   } else {
     // No clock if provided, we need to use the trace defaults. Find the
@@ -88,7 +90,8 @@ base::Status PrunePerfEvents::Transform(const Context& context,
 base::Status PrunePerfEvents::OnPerfSample(
     const Context& context,
     uint64_t ts,
-std::optional<int64_t> trace_packet_clock_id,    std::optional<int64_t> trusted_packet_sequence_id,
+    std::optional<uint32_t> trace_packet_clock_id,
+    std::optional<int64_t> trusted_packet_sequence_id,
     protozero::Field& perf_sample_field,
     protos::pbzero::TracePacket* message) const {
   protos::pbzero::PerfSample::Decoder decoder(perf_sample_field.as_bytes());
@@ -124,7 +127,8 @@ std::optional<int64_t> trace_packet_clock_id,    std::optional<int64_t> trusted_
                       static_cast<uint32_t>(trusted_packet_sequence_id.value()),
                       RedactorClockConverter::DataSourceType::kPerfDataSource));
   } else {
-clock_id = ClockId::Machine(trace_packet_clock_id.value());  }
+    clock_id = ClockId::Machine(trace_packet_clock_id.value());
+  }
 
   ASSIGN_OR_RETURN(trace_ts,
                    context.clock_converter.ConvertToTrace(clock_id, ts));

@@ -43,9 +43,10 @@ export function renderTree(): m.Children {
       ),
     ),
     renderWidgetShowcase({
-initialOpts: {
+      initialOpts: {
         bordered: false,
-      },      renderWidget: (opts) =>
+      },
+      renderWidget: (opts) =>
         m(
           Tree,
           opts,

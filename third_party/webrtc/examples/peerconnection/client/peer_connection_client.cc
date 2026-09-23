@@ -64,7 +64,8 @@ void PeerConnectionClient::InitSocketSignals() {
   control_socket_->SubscribeConnectEvent(
       this, [this](webrtc::Socket* socket) { OnConnect(socket); });
   hanging_get_->SubscribeConnectEvent(
-this, [this](webrtc::Socket* socket) { OnHangingGetConnect(socket); });  control_socket_->SubscribeReadEvent(
+      this, [this](webrtc::Socket* socket) { OnHangingGetConnect(socket); });
+  control_socket_->SubscribeReadEvent(
       this, [this](webrtc::Socket* socket) { OnRead(socket); });
   hanging_get_->SubscribeReadEvent(
       this, [this](webrtc::Socket* socket) { OnHangingGetRead(socket); });

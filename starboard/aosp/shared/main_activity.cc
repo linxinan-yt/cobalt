@@ -129,7 +129,7 @@ void JNI_MainActivity_StartLoader(JNIEnv* env) {
 // MainActivity hands the Activity window's Surface to Starboard here.
 void JNI_MainActivity_NativeOnSurfaceCreated(
     JNIEnv* env,
-    const jni_zero::JavaParamRef<jobject>& surface) {
+    const jni_zero::JavaRef<jobject>& surface) {
   ANativeWindow* native_window = ANativeWindow_fromSurface(env, surface.obj());
   SB_LOG(INFO) << "cobalt_loader: Starboard surface created, native_window="
                << native_window;

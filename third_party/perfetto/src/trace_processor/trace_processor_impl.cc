@@ -211,7 +211,7 @@ base::Status RegisterAllProtoBuilderFunctions(
           fn_name.c_str(), desc.full_name().c_str(),
           registered_fn->second.c_str());
     }
-PerfettoSqlConnection::RegisterFunctionArgs args(fn_name.c_str());
+    PerfettoSqlConnection::RegisterFunctionArgs args(fn_name.c_str());
     auto status = connection->RegisterFunction<metrics::BuildProto>(
         std::make_unique<metrics::BuildProto::UserData>(
             metrics::BuildProto::UserData{tp, pool, i}),
@@ -219,7 +219,8 @@ PerfettoSqlConnection::RegisterFunctionArgs args(fn_name.c_str());
     if (!status.ok()) {
       PERFETTO_FATAL("Failed to register %s function: %s", fn_name.c_str(),
                      status.c_message());
-    }    proto_fn_name_to_path->emplace(fn_name, desc.full_name());
+    }
+    proto_fn_name_to_path->emplace(fn_name, desc.full_name());
   }
   return base::OkStatus();
 }
@@ -256,7 +257,8 @@ base::StatusOr<sql_modules::RegisteredPackage> ToRegisteredPackage(
           "Module name '%s' must start with package name '%s.' as prefix.",
           module_name.c_str(), name.c_str());
     }
-new_package.modules.Insert(module_name, std::string_view(sql));  }
+    new_package.modules.Insert(module_name, std::string_view(sql));
+  }
   return base::StatusOr<sql_modules::RegisteredPackage>(std::move(new_package));
 }
 
@@ -299,10 +301,11 @@ std::pair<int64_t, int64_t> AggregatePluginTimestampBounds(
     const std::vector<std::unique_ptr<PluginBase>>& plugins) {
   int64_t start_ns = std::numeric_limits<int64_t>::max();
   int64_t end_ns = 0;
-for (const auto& p : plugins) {
+  for (const auto& p : plugins) {
     auto b = p->GetTimestampBounds();
     start_ns = std::min(start_ns, b.first);
-    end_ns = std::max(end_ns, b.second);  }
+    end_ns = std::max(end_ns, b.second);
+  }
   if (start_ns == std::numeric_limits<int64_t>::max()) {
     return {0, 0};
   }
@@ -323,7 +326,7 @@ std::string NormalizeExecuteQuerySql(const std::string& sql) {
 
 TraceProcessorImpl::TraceProcessorImpl(const Config& cfg)
     : TraceProcessorStorageImpl(cfg), config_(cfg) {
-// TODO(lalitm): plugins should self-register via PERFETTO_TP_REGISTER_PLUGIN
+  // TODO(lalitm): plugins should self-register via PERFETTO_TP_REGISTER_PLUGIN
   // (a global static initializer). That's currently disabled due to build-time
   // issues, so instead each plugin exposes an explicit Register* function that
   // we call here before GetPluginSet() builds its cached set. Remove these
@@ -418,7 +421,7 @@ TraceProcessorImpl::TraceProcessorImpl(const Config& cfg)
       p->OnDataframesRegistered(plugin_dataframes_);
     }
   }
-context()->register_additional_proto_modules =
+  context()->register_additional_proto_modules =
       [this](ProtoImporterModuleContext* mctx, TraceProcessorContext* tctx) {
         RegisterAdditionalModules(mctx, tctx);
         for (auto& p : plugins_) {
@@ -468,16 +471,13 @@ context()->register_additional_proto_modules =
   reg.Register(CreateSimpleperfProtoImporter());
   reg.Register(CreateTarImporter());
   reg.Register(CreatePrimesImporter());
+
   // Force initialization of heap graph tracker.
   //
   // TODO(lalitm): remove heap graph tracker from global context and get rid
   // of this.
   context()->heap_graph_tracker = std::make_unique<HeapGraphTracker>(
       context()->storage.get(), context()->global_stats_tracker.get());
-
-  // Initialize deobfuscation tracker.
-  context()->deobfuscation_tracker =
-      std::make_unique<DeobfuscationTracker>(context());
 
   // Initialize deobfuscation tracker.
   context()->deobfuscation_tracker =
@@ -511,7 +511,7 @@ context()->register_additional_proto_modules =
   // Compute initial trace bounds before any tables are finalized.
   cached_trace_bounds_ = AggregatePluginTimestampBounds(plugins_);
 
-engine_ = InitPerfettoSqlConnection({
+  engine_ = InitPerfettoSqlConnection({
       context(),
       context()->storage.get(),
       config_,
@@ -525,6 +525,7 @@ engine_ = InitPerfettoSqlConnection({
       plugins_,
       plugin_dataframes_,
   });
+
   sqlite_objects_post_prelude_ = engine_->SqliteRegisteredObjectCount();
 
   bool skip_all_sql = std::find(config_.skip_builtin_metric_paths.begin(),
@@ -556,7 +557,8 @@ base::Status TraceProcessorImpl::Parse(TraceBlobView blob) {
 
 void TraceProcessorImpl::Flush() {
   TraceProcessorStorageImpl::Flush();
-CacheBoundsAndBuildTable();}
+  CacheBoundsAndBuildTable();
+}
 
 base::Status TraceProcessorImpl::NotifyEndOfFile() {
   if (notify_eof_called_) {
@@ -580,7 +582,7 @@ base::Status TraceProcessorImpl::NotifyEndOfFile() {
   // is confined to OnPushDataToSorter and OnEventsFullyExtracted,
   // so we can just call those directly here.
 
-// Stage 1: push all data to the sorter
+  // Stage 1: push all data to the sorter
   RETURN_IF_ERROR(TraceProcessorStorageImpl::OnPushDataToSorter());
 
   // Stage 2: finalize all data.
@@ -588,6 +590,7 @@ base::Status TraceProcessorImpl::NotifyEndOfFile() {
   TraceProcessorStorageImpl::OnEventsFullyExtracted();
   DeobfuscationTracker::Get(context())->OnEventsFullyExtracted();
   CacheBoundsAndBuildTable();
+
   // Run trace-config diagnostics before the parser context is destroyed (rules
   // may read metadata/clocks off the context). Rules are per-(trace, machine),
   // so loop the fork map like OnEventsFullyExtracted does.
@@ -766,61 +769,7 @@ void TraceProcessorImpl::EnableMetatrace(MetatraceConfig config) {
 // |                      Experimental                             |
 // =================================================================
 
-base::Status TraceProcessorImpl::AnalyzeStructuredQueries(
-    const std::vector<StructuredQueryBytes>& sqs,
-    std::vector<AnalyzedStructuredQuery>* output) {
-  auto opt_idx = metrics_descriptor_pool_.FindDescriptorIdx(
-      ".perfetto.protos.TraceSummarySpec");
-  if (!opt_idx) {
-    metrics_descriptor_pool_.AddFromFileDescriptorSet(
-        kTraceSummaryDescriptor.data(), kTraceSummaryDescriptor.size());
-  }
-  perfetto_sql::generator::StructuredQueryGenerator sqg;
-  for (const auto& sq : sqs) {
-    AnalyzedStructuredQuery analyzed_sq;
-    ASSIGN_OR_RETURN(analyzed_sq.sql, sqg.Generate(sq.ptr, sq.size));
-    analyzed_sq.textproto =
-        perfetto::trace_processor::protozero_to_text::ProtozeroToText(
-            metrics_descriptor_pool_,
-            ".perfetto.protos.PerfettoSqlStructuredQuery",
-            protozero::ConstBytes{sq.ptr, sq.size},
-            perfetto::trace_processor::protozero_to_text::kIncludeNewLines);
-    analyzed_sq.modules = sqg.ComputeReferencedModules();
-    analyzed_sq.preambles = sqg.ComputePreambles();
-    sqg.AddQuery(sq.ptr, sq.size);
-
-    // Execute modules
-    // TODO(mayzner): Should be done on an empty engine as we don't actually
-    // care about the results of execution of this code.
-    for (const auto& module : analyzed_sq.modules) {
-      engine_->Execute(SqlSource::FromTraceProcessorImplementation(
-          "INCLUDE PERFETTO MODULE " + module));
-    }
-
-    // Execute preambles
-    // TODO(mayzner): Should be done on an empty engine as we don't actually
-    // care about the results of execution of this code.
-    for (const auto& preamble : analyzed_sq.preambles) {
-      engine_->Execute(SqlSource::FromTraceProcessorImplementation(preamble));
-    }
-
-    // Fetch columns
-    ASSIGN_OR_RETURN(
-        auto last_stmt,
-        engine_->PrepareSqliteStatement(
-            SqlSource::FromTraceProcessorImplementation(analyzed_sq.sql)));
-    auto* sqlite_stmt = last_stmt.sqlite_stmt();
-    int col_count = sqlite3_column_count(sqlite_stmt);
-    std::vector<std::string> cols;
-    for (int i = 0; i < col_count; i++) {
-      cols.emplace_back(sqlite3_column_name(sqlite_stmt, i));
-    }
-    analyzed_sq.columns = std::move(cols);
-
-    output->push_back(analyzed_sq);
-  }
-  return base::OkStatus();
-}namespace {
+namespace {
 
 class StringInterner {
  public:
@@ -931,7 +880,7 @@ size_t TraceProcessorImpl::RestoreInitialTables() {
   uint64_t registered_count_before = engine_->SqliteRegisteredObjectCount();
   PERFETTO_CHECK(registered_count_before >= sqlite_objects_post_prelude_);
 
-// Reset the connection (and the database it owns) to its initial state.
+  // Reset the connection (and the database it owns) to its initial state.
   // Pass cached bounds to avoid recomputing them.
   engine_ = InitPerfettoSqlConnection({
       context(),
@@ -947,6 +896,7 @@ size_t TraceProcessorImpl::RestoreInitialTables() {
       plugins_,
       plugin_dataframes_,
   });
+
   // The registered count should now be the same as it was in the constructor.
   uint64_t registered_count_after = engine_->SqliteRegisteredObjectCount();
   PERFETTO_CHECK(registered_count_after == sqlite_objects_post_prelude_);
@@ -1091,10 +1041,11 @@ TraceProcessorImpl::InitPerfettoSqlConnection(
   auto cached_trace_bounds = args.cached_trace_bounds;
   const auto& plugins = args.plugins;
   const auto& plugin_dataframes = args.plugin_dataframes;
+
   auto connection = PerfettoSqlConnection::CreateConnectionToNewDatabase(
       storage->mutable_string_pool(), config.enable_extra_checks);
 
-PerfettoSqlConnection::Initializer init;
+  PerfettoSqlConnection::Initializer init;
   init.static_tables.reserve(plugin_dataframes.size());
   for (const auto& df : plugin_dataframes) {
     init.static_tables.push_back({df.dataframe, df.name});
@@ -1109,6 +1060,7 @@ PerfettoSqlConnection::Initializer init;
     p->RegisterAggregateFunctions(connection.get(), init.aggregate_functions);
     p->RegisterWindowFunctions(connection.get(), init.window_functions);
   }
+
   // Carve-outs that don't fit cleanly in a plugin:
   // - metrics::RunMetric needs &sql_metrics (a TraceProcessorImpl member).
   // - metrics aggregates / NullIfEmpty / UnwrapMetricProto belong to the
@@ -1127,7 +1079,8 @@ PerfettoSqlConnection::Initializer init;
   init.aggregate_functions.push_back(
       MakeAggregateRegistration<metrics::RepeatedField>(nullptr));
 
-connection->Initialize(std::move(init));
+  connection->Initialize(std::move(init));
+
   // Proto-builder registrations are descriptor-pool-driven and don't fit
   // the data-only Initializer shape; register them directly after Initialize.
   {
@@ -1203,8 +1156,9 @@ connection->Initialize(std::move(init));
       }
     }
   }
-BuildBoundsTable(connection.get(), cached_trace_bounds);
-  return connection;}
+  BuildBoundsTable(connection.get(), cached_trace_bounds);
+  return connection;
+}
 
 void TraceProcessorImpl::IncludeAfterEofPrelude(
     PerfettoSqlConnection* connection) {

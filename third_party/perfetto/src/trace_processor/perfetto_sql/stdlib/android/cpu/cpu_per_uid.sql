@@ -18,14 +18,15 @@ INCLUDE PERFETTO MODULE counters.intervals;
 
 -- Table of tracks for CPU-per-UID data. Each row represents one UID / cluster
 -- combination.
-CREATE PERFETTO TABLE android_cpu_per_uid_track (  -- ID of the track; can be joined with cpu_per_uid_counter.
+CREATE PERFETTO TABLE android_cpu_per_uid_track(
+  -- ID of the track; can be joined with cpu_per_uid_counter.
   id LONG,
   -- UID doing the work.
   uid LONG,
   -- Cluster ID for the track, starting from 0, typically with larger numbers
   -- meaning larger cores.
   cluster LONG,
--- Total number of cpu millis used by this track.
+  -- Total number of cpu millis used by this track.
   total_cpu_millis LONG,
   -- A package name for the UID. If there are multiple for a UID, one is chosen
   -- arbitrarily. UIDs below 10000 always have null package name.
@@ -49,7 +50,8 @@ FROM __intrinsic_android_cpu_per_uid_track AS track;
 
 -- View of counters for CPU-per-UID data. Each row represents one instant in
 -- time for one UID / cluster.
-CREATE PERFETTO VIEW android_cpu_per_uid_counter(  -- ID for the row.
+CREATE PERFETTO VIEW android_cpu_per_uid_counter(
+  -- ID for the row.
   id LONG,
   -- Timestamp for the row.
   ts LONG,
@@ -71,15 +73,15 @@ WITH
         SELECT c.id, c.ts, c.track_id, c.value
         FROM counter AS c
         JOIN android_cpu_per_uid_track AS t ON t.id = c.track_id
-      ))  )
+      ))
+  )
 SELECT
   id,
   ts,
   dur,
   track_id,
   next_value - value AS diff_ms,
-(
-    next_value - value
-  ) * 1e6 / dur AS cpu_ratioFROM deltas
+  (next_value - value) * 1e6 / dur AS cpu_ratio
+FROM deltas
 WHERE
   next_value IS NOT NULL;

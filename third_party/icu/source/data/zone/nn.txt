@@ -18,7 +18,8 @@ nn{
         }
 "Asia:Hovd"{
             ec{"Khovd"}
-        }        "Asia:Rangoon"{
+        }
+        "Asia:Rangoon"{
             ec{"Yangôn"}
         }
         "Atlantic:Azores"{

@@ -136,6 +136,7 @@ def run_native(args):
 
   # Install the chromium through playwright
   subprocess.check_call(['./pnpm', 'exec', 'playwright', 'install', 'chromium'], cwd=UI_DIR)
+
   cmd = ['./pnpm', 'exec', 'playwright', 'test']
   if args.interactive:
     if args.rebaseline:
@@ -156,10 +157,7 @@ def run_native(args):
     out_rel_path = os.path.relpath(args.out, UI_DIR)
     env['OUT_DIR'] = out_rel_path
     dev_server_args += ['--out', out_rel_path]
-if args.no_build:
-    dev_server_args += ['--no-build']
-  if args.no_depscheck:
-    dev_server_args += ['--no-depscheck']  env['DEV_SERVER_ARGS'] = ' '.join(dev_server_args)
+  env['DEV_SERVER_ARGS'] = ' '.join(dev_server_args)
   os.chdir(UI_DIR)
   os.execve(cmd[0], cmd, env)
 

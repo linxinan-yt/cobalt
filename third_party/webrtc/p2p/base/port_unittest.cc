@@ -4166,4 +4166,5 @@ class TestPortWrapper : public TurnPort {
   RelayCredentials credentials_;
 };
 
-}  // namespace}  // namespace webrtc
+}  // namespace
+}  // namespace webrtc

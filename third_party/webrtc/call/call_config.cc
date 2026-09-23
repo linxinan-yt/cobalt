@@ -50,7 +50,7 @@ CallConfig CallConfig::CreateSingleThreaded(const Environment& env) {
 }
 
 RtpTransportConfig CallConfig::ExtractTransportConfig() const {
-return RtpTransportConfig{
+  return RtpTransportConfig{
       .env = env,
       .bitrate_config = bitrate_config,
       .network_state_predictor_factory = network_state_predictor_factory,
@@ -61,7 +61,8 @@ return RtpTransportConfig{
       .default_pacing_time_window =
           pacer_burst_interval.value_or(PacerConfig::kDefaultTimeInterval),
       .worker_thread = worker_task_queue,
-  };}
+  };
+}
 
 CallConfig::~CallConfig() = default;
 

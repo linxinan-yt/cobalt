@@ -135,7 +135,8 @@ typedef uint8_t UVersionInfo[U_MAX_VERSION_LENGTH];
  * this is always "header". Header-only types are not marked for export,
  * which on Windows already avoids callers linking with library instantiations.
  *
-* @stable ICU 76 * @see U_HEADER_ONLY_NAMESPACE
+ * @stable ICU 76
+ * @see U_HEADER_ONLY_NAMESPACE
  */
 
 /**
@@ -145,10 +146,11 @@ typedef uint8_t UVersionInfo[U_MAX_VERSION_LENGTH];
  * "U_ICU_NAMESPACE::header" or "U_ICU_NAMESPACE::internal",
  * see U_HEADER_NESTED_NAMESPACE for details.
  *
-* @stable ICU 76
+ * @stable ICU 76
  */
 
-#ifndef U_FORCE_HIDE_DRAFT_API/**
+#ifndef U_FORCE_HIDE_DRAFT_API
+/**
  * \def U_ICU_NAMESPACE_OR_INTERNAL
  * Namespace used for header-only APIs that used to be regular C++ APIs.
  * Different when used inside ICU to prevent public use of internal instantiations.
@@ -175,6 +177,7 @@ typedef uint8_t UVersionInfo[U_MAX_VERSION_LENGTH];
 #   define U_HEADER_NESTED_NAMESPACE header
 #   define U_ICU_NAMESPACE_OR_INTERNAL U_ICU_NAMESPACE
 #endif
+
 #define U_HEADER_ONLY_NAMESPACE U_ICU_NAMESPACE::U_HEADER_NESTED_NAMESPACE
 
 namespace U_HEADER_ONLY_NAMESPACE {}

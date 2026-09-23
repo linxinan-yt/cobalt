@@ -22,7 +22,6 @@
 #include "perfetto/trace_processor/ref_counted.h"
 #include "perfetto/trace_processor/trace_blob_view.h"
 #include "src/trace_processor/importers/common/parser_types.h"
-#include "src/trace_processor/importers/proto/android_track_event.descriptor.h"
 #include "src/trace_processor/importers/proto/chrome_track_event_extension.descriptor.h"
 #include "src/trace_processor/importers/proto/gpu_track_event.descriptor.h"
 #include "src/trace_processor/importers/proto/packet_sequence_state_generation.h"
@@ -63,13 +62,15 @@ TrackEventModule::~TrackEventModule() = default;
 ModuleResult TrackEventModule::TokenizePacket(const TokenizePacketArgs& args) {
   switch (args.field.id()) {
     case TracePacket::kTrackEventRangeOfInterestFieldNumber:
-return tokenizer_.TokenizeRangeOfInterestPacket(args);
+      return tokenizer_.TokenizeRangeOfInterestPacket(args);
     case TracePacket::kTrackDescriptorFieldNumber:
-      return tokenizer_.TokenizeTrackDescriptorPacket(args);    case TracePacket::kTrackEventFieldNumber:
+      return tokenizer_.TokenizeTrackDescriptorPacket(args);
+    case TracePacket::kTrackEventFieldNumber:
       return tokenizer_.TokenizeTrackEventPacket(args);
     case TracePacket::kThreadDescriptorFieldNumber:
       // TODO(eseckler): Remove once Chrome has switched to TrackDescriptors.
-return tokenizer_.TokenizeThreadDescriptorPacket(args);  }
+      return tokenizer_.TokenizeThreadDescriptorPacket(args);
+  }
   return ModuleResult::Ignored();
 }
 

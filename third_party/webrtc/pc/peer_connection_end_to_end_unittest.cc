@@ -68,7 +68,8 @@ using ::testing::Ge;
 using ::testing::Gt;
 using ::testing::IsTrue;
 using ::testing::Ne;
-using ::testing::SizeIs;using ::testing::StrictMock;
+using ::testing::SizeIs;
+using ::testing::StrictMock;
 using ::testing::Values;
 
 namespace webrtc {
@@ -287,13 +288,14 @@ std::unique_ptr<AudioDecoder> CreateForwardingMockDecoder(
       .WillRepeatedly([dec] { return dec->Channels(); });
   EXPECT_CALL(*mock_decoder, DecodeInternal(_, _, _, _, _))
       .Times(AtLeast(1))
-.WillRepeatedly(
-          [dec](const uint8_t* encoded, size_t encoded_len, int sample_rate_hz,
-                int16_t* decoded, AudioDecoder::SpeechType* speech_type) {
-            return dec->Decode(encoded, encoded_len, sample_rate_hz,
-                               std::numeric_limits<size_t>::max(), decoded,
-                               speech_type);
-          });  EXPECT_CALL(*mock_decoder, Die());
+      .WillRepeatedly([dec](const uint8_t* encoded, size_t encoded_len,
+                            int sample_rate_hz, int16_t* decoded,
+                            AudioDecoder::SpeechType* speech_type) {
+        return dec->Decode(encoded, encoded_len, sample_rate_hz,
+                           std::numeric_limits<size_t>::max(), decoded,
+                           speech_type);
+      });
+  EXPECT_CALL(*mock_decoder, Die());
   EXPECT_CALL(*mock_decoder, HasDecodePlc()).WillRepeatedly([dec] {
     return dec->HasDecodePlc();
   });

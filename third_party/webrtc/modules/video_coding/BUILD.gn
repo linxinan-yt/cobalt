@@ -364,8 +364,7 @@ rtc_library("video_coding_utility") {
     "../../api/video:video_codec_constants",
     "../../api/video:video_frame",
     "../../api/video:video_frame_type",
-"../../api/video/corruption_detection:corruption_detection_settings_generator",
-    "../../api/video/corruption_detection:filter_settings",    "../../api/video_codecs:video_codecs_api",
+    "../../api/video_codecs:video_codecs_api",
     "../../common_video",
     "../../rtc_base:bitstream_reader",
     "../../rtc_base:checks",
@@ -404,14 +403,16 @@ rtc_library("av1_qp_parser") {
     "//third_party/libgav1:libgav1_parser",
   ]
   public_configs = [ "//third_party/libgav1:libgav1_public_config" ]
-}rtc_library("encoder_speed_controller_impl") {
+}
+
+rtc_library("encoder_speed_controller_impl") {
   visibility = [ "*" ]
   sources = [
     "utility/encoder_speed_controller_impl.cc",
     "utility/encoder_speed_controller_impl.h",
   ]
   deps = [
-"../../api:array_view",    "../../api/units:time_delta",
+    "../../api/units:time_delta",
     "../../api/units:timestamp",
     "../../api/video_codecs:video_codecs_api",
     "../../rtc_base:checks",
@@ -1159,8 +1160,7 @@ if (rtc_include_tests) {
       ":av1_qp_parser",
       ":chain_diff_calculator",
       ":codec_globals_headers",
-":encoded_frame",
-      ":encoder_speed_controller_impl",      ":frame_dependencies_calculator",
+      ":frame_dependencies_calculator",
       ":frame_helpers",
       ":h264_sprop_parameter_sets",
       ":h26x_packet_buffer",
@@ -1213,7 +1213,7 @@ if (rtc_include_tests) {
       "../../api/video:video_frame_type",
       "../../api/video:video_rtp_headers",
       "../../api/video/corruption_detection:corruption_detection_unittests",
-"../../api/video/corruption_detection:filter_settings",      "../../api/video/corruption_detection:frame_instrumentation_data",
+      "../../api/video/corruption_detection:frame_instrumentation_data",
       "../../api/video_codecs:scalability_mode",
       "../../api/video_codecs:video_codecs_api",
       "../../api/video_codecs:vp8_temporal_layers_factory",

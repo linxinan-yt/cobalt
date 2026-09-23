@@ -27,13 +27,14 @@ import {CodeSnippet} from '../../../widgets/code_snippet';
 import {Button, ButtonVariant} from '../../../widgets/button';
 import {Intent} from '../../../widgets/common';
 import {Icons} from '../../../base/semantic_icons';
+
 export function renderGrid(): m.Children {
   return [
     m(
       '.pf-widget-intro',
       m('h1', 'Grid'),
       m('p', [
-'Grid is a ',
+        'Grid is a ',
         m('code', '<table>'),
         ' on steroids! It adds quality of life features such as:',
       ]),
@@ -507,7 +508,8 @@ function renderSimpleGridDemo(
         ),
         m(GridCell, {wrap, menuItems}, renderValue(row.status)),
       ];
-    }),    fillHeight: true,
+    }),
+    fillHeight: true,
   });
 }
 
@@ -516,16 +518,19 @@ interface VirtualGridDemoAttrs {
   readonly sortArrows: boolean;
 }
 
-function VirtualGridDemo(): m.ClassComponent<VirtualGridDemoAttrs> {  const totalRows = 10_000;
+function VirtualGridDemo(): m.ClassComponent<VirtualGridDemoAttrs> {
+  const totalRows = 10_000;
   let currentOffset = 0;
   let loadedRows: GridRow[] = [];
 
-const loadData = (offset: number, limit: number, contextMenus: boolean) => {    currentOffset = offset;
+  const loadData = (offset: number, limit: number, contextMenus: boolean) => {
+    currentOffset = offset;
     loadedRows = [];
     for (let i = 0; i < limit && offset + i < totalRows; i++) {
       const idx = offset + i;
       const langData = languages[idx % languages.length];
-const menuItems = contextMenus
+
+      const menuItems = contextMenus
         ? [
             m(MenuItem, {
               label: `Copy "${langData.lang}"`,
@@ -543,12 +548,13 @@ const menuItems = contextMenus
         m(GridCell, {menuItems}, langData.lang),
         m(GridCell, {align: 'right', menuItems}, langData.year),
         m(GridCell, {menuItems}, langData.creator),
-        m(GridCell, {menuItems}, langData.typing),      ]);
+        m(GridCell, {menuItems}, langData.typing),
+      ]);
     }
     m.redraw();
   };
 
-const makeHeaderMenuItems = (columnKey: string) => {
+  const makeHeaderMenuItems = (columnKey: string) => {
     return [
       m(MenuItem, {
         label: `Hide "${columnKey}" column`,
@@ -628,12 +634,14 @@ const makeHeaderMenuItems = (columnKey: string) => {
               },
               'Typing',
             ),
-          },        ],
+          },
+        ],
         rowData: {
           data: loadedRows,
           total: totalRows,
           offset: currentOffset,
-onLoadData: (offset, limit) => loadData(offset, limit, contextMenus),        },
+          onLoadData: (offset, limit) => loadData(offset, limit, contextMenus),
+        },
         virtualization: {
           rowHeightPx: 24,
         },

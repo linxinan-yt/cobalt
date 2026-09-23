@@ -51,7 +51,8 @@ source_set("track_event") {
     "serialization.h",
     "track_event.cc",
   ]
-configs += [ "..:shlib_impl_config" ]}
+  configs += [ "..:shlib_impl_config" ]
+}
 
 perfetto_unittest_source_set("unittests") {
   testonly = true

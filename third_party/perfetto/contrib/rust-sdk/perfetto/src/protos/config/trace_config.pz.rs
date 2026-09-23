@@ -19,7 +19,8 @@
 use crate::pb_enum;
 use crate::pb_msg;
 use crate::protos::common::builtin_clock::*;
-use crate::protos::common::semantic_type::*;use crate::protos::config::data_source_config::*;
+use crate::protos::common::semantic_type::*;
+use crate::protos::config::data_source_config::*;
 use crate::protos::config::priority_boost::priority_boost_config::*;
 
 pb_enum!(TraceConfigLockdownModeOperation {
@@ -50,7 +51,9 @@ pb_enum!(TraceConfigFFlushMode {
     FFLUSH_UNSPECIFIED: 0,
     FFLUSH_DISABLED: 1,
     FFLUSH_ENABLED: 2,
-});pb_enum!(TraceFilterStringFilterPolicy {
+});
+
+pb_enum!(TraceFilterStringFilterPolicy {
     SFP_UNSPECIFIED: 0,
     SFP_MATCH_REDACT_GROUPS: 1,
     SFP_ATRACE_MATCH_REDACT_GROUPS: 2,
@@ -81,23 +84,26 @@ pb_enum!(BufferConfigExperimentalMode {
 pb_msg!(TraceConfig {
     buffers: TraceConfigBufferConfig, msg, 1,
     data_sources: TraceConfigDataSource, msg, 2,
-    builtin_data_sources: TraceConfigBuiltinDataSource, msg, 20,    duration_ms: u32, primitive, 3,
+    builtin_data_sources: TraceConfigBuiltinDataSource, msg, 20,
+    duration_ms: u32, primitive, 3,
     prefer_suspend_clock_for_duration: bool, primitive, 36,
     enable_extra_guardrails: bool, primitive, 4,
     lockdown_mode: TraceConfigLockdownModeOperation, enum, 5,
-producers: TraceConfigProducerConfig, msg, 6,
-    statsd_metadata: TraceConfigStatsdMetadata, msg, 7,    write_into_file: bool, primitive, 8,
+    producers: TraceConfigProducerConfig, msg, 6,
+    statsd_metadata: TraceConfigStatsdMetadata, msg, 7,
+    write_into_file: bool, primitive, 8,
     output_path: String, primitive, 29,
     file_write_period_ms: u32, primitive, 9,
     max_file_size_bytes: u64, primitive, 10,
-guardrail_overrides: TraceConfigGuardrailOverrides, msg, 11,    deferred_start: bool, primitive, 12,
+    guardrail_overrides: TraceConfigGuardrailOverrides, msg, 11,
+    deferred_start: bool, primitive, 12,
     flush_period_ms: u32, primitive, 13,
     flush_timeout_ms: u32, primitive, 14,
     data_source_stop_timeout_ms: u32, primitive, 23,
     notify_traceur: bool, primitive, 16,
     bugreport_score: i32, primitive, 30,
     bugreport_filename: String, primitive, 38,
-trigger_config: TraceConfigTriggerConfig, msg, 17,
+    trigger_config: TraceConfigTriggerConfig, msg, 17,
     activate_triggers: String, primitive, 18,
     incremental_state_config: TraceConfigIncrementalStateConfig, msg, 21,
     allow_user_build_tracing: bool, primitive, 19,
@@ -124,15 +130,18 @@ pb_msg!(TraceConfigNote {
     value: String, primitive, 2,
 });
 
-pb_msg!(TraceConfigSessionSemaphore {    name: String, primitive, 1,
+pb_msg!(TraceConfigSessionSemaphore {
+    name: String, primitive, 1,
     max_other_session_count: u64, primitive, 2,
 });
 
-pb_msg!(CmdTraceStartDelay {    min_delay_ms: u32, primitive, 1,
+pb_msg!(TraceConfigCmdTraceStartDelay {
+    min_delay_ms: u32, primitive, 1,
     max_delay_ms: u32, primitive, 2,
 });
 
-pb_msg!(TraceConfigAndroidReportConfig {    reporter_service_package: String, primitive, 1,
+pb_msg!(TraceConfigAndroidReportConfig {
+    reporter_service_package: String, primitive, 1,
     reporter_service_class: String, primitive, 2,
     skip_report: bool, primitive, 3,
     use_pipe_in_framework_for_testing: bool, primitive, 4,
@@ -158,7 +167,8 @@ pb_msg!(TraceConfigTraceFilterStringFilterRule {
     semantic_type: SemanticType, enum, 5,
 });
 
-pb_msg!(TraceConfigIncidentReportConfig {    destination_package: String, primitive, 1,
+pb_msg!(TraceConfigIncidentReportConfig {
+    destination_package: String, primitive, 1,
     destination_class: String, primitive, 2,
     privacy_level: i32, primitive, 3,
     skip_incidentd: bool, primitive, 5,
@@ -176,29 +186,34 @@ pb_msg!(TraceConfigTriggerConfig {
     trigger_timeout_ms: u32, primitive, 3,
 });
 
-pb_msg!(TraceConfigTriggerConfigTrigger {    name: String, primitive, 1,
+pb_msg!(TraceConfigTriggerConfigTrigger {
+    name: String, primitive, 1,
     producer_name_regex: String, primitive, 2,
     stop_delay_ms: u32, primitive, 3,
     max_per_24_h: u32, primitive, 4,
     skip_probability: f64, primitive, 5,
 });
 
-pb_msg!(TraceConfigGuardrailOverrides {    max_upload_per_day_bytes: u64, primitive, 1,
+pb_msg!(TraceConfigGuardrailOverrides {
+    max_upload_per_day_bytes: u64, primitive, 1,
     max_tracing_buffer_size_kb: u32, primitive, 2,
 });
 
-pb_msg!(TraceConfigStatsdMetadata {    triggering_alert_id: i64, primitive, 1,
+pb_msg!(TraceConfigStatsdMetadata {
+    triggering_alert_id: i64, primitive, 1,
     triggering_config_uid: i32, primitive, 2,
     triggering_config_id: i64, primitive, 3,
     triggering_subscription_id: i64, primitive, 4,
 });
 
-pb_msg!(TraceConfigProducerConfig {    producer_name: String, primitive, 1,
+pb_msg!(TraceConfigProducerConfig {
+    producer_name: String, primitive, 1,
     shm_size_kb: u32, primitive, 2,
     page_size_kb: u32, primitive, 3,
 });
 
-pb_msg!(TraceConfigBuiltinDataSource {    disable_clock_snapshotting: bool, primitive, 1,
+pb_msg!(TraceConfigBuiltinDataSource {
+    disable_clock_snapshotting: bool, primitive, 1,
     disable_trace_config: bool, primitive, 2,
     disable_system_info: bool, primitive, 3,
     disable_service_events: bool, primitive, 4,
@@ -206,18 +221,21 @@ pb_msg!(TraceConfigBuiltinDataSource {    disable_clock_snapshotting: bool, prim
     snapshot_interval_ms: u32, primitive, 6,
     prefer_suspend_clock_for_snapshot: bool, primitive, 7,
     disable_chunk_usage_histograms: bool, primitive, 8,
-disable_extension_descriptors: bool, primitive, 9,
+    disable_extension_descriptors: bool, primitive, 9,
 });
 
-pb_msg!(TraceConfigDataSource {    config: DataSourceConfig, msg, 1,
+pb_msg!(TraceConfigDataSource {
+    config: DataSourceConfig, msg, 1,
     producer_name_filter: String, primitive, 2,
     producer_name_regex_filter: String, primitive, 3,
     machine_name_filter: String, primitive, 4,
 });
 
-pb_msg!(TraceConfigBufferConfig {    size_kb: u32, primitive, 1,
+pb_msg!(TraceConfigBufferConfig {
+    size_kb: u32, primitive, 1,
     fill_policy: BufferConfigFillPolicy, enum, 4,
     transfer_on_clone: bool, primitive, 5,
     clear_before_clone: bool, primitive, 6,
-name: String, primitive, 7,
-    experimental_mode: BufferConfigExperimentalMode, enum, 8,});
+    name: String, primitive, 7,
+    experimental_mode: BufferConfigExperimentalMode, enum, 8,
+});

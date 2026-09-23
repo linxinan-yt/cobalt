@@ -34,7 +34,8 @@ class StoragePartition;
 
 namespace protocol {
 
-class StorageHandler : public DevToolsDomainHandler, public Storage::Backend { public:
+class StorageHandler : public DevToolsDomainHandler, public Storage::Backend {
+ public:
   explicit StorageHandler(DevToolsAgentHostImpl* host,
                           DevToolsAgentHostClient* client);
 
@@ -170,7 +171,8 @@ class StorageHandler : public DevToolsDomainHandler, public Storage::Backend { p
       StoragePartition** storage_partition);
 
 Response GetStorageKeyForFrameInternal(const std::string& frame_id,
-                                         std::string* serialized_storage_key);  void GotAllCookies(
+                                         std::string* serialized_storage_key);
+  void GotAllCookies(
       std::unique_ptr<Storage::Backend::GetCookiesCallback> callback,
       const std::vector<net::CanonicalCookie>& cookies);
 

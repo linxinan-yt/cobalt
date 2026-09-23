@@ -178,7 +178,7 @@ protected:
      */
     int32_t getJDEpochOffset() const override;
 
-/**
+    /**
      * Compute the era from extended year.
      * @internal
      */
@@ -193,7 +193,8 @@ protected:
     /**
      * @internal
      */
-    bool isEra0CountingBackward() const override;public:
+    bool isEra0CountingBackward() const override;
+public:
     /**
      * Override Calendar Returns a unique class ID POLYMORPHICALLY. Pure virtual
      * override. This method is to implement a simple version of RTTI, since not all C++

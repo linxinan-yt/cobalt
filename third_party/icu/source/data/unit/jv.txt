@@ -674,7 +674,8 @@ jv{
 pinch{
                 dnam{"jiwit"}
                 other{"{0} jiwit"}
-            }            tablespoon{
+            }
+            tablespoon{
                 dnam{"sendok mangan"}
                 other{"{0} sendok mangan"}
             }
@@ -807,7 +808,8 @@ pinch{
                 other{"{0}oz lm by"}
             }
             pinch{
-dnam{"jiwit"}                other{"{0}jiwit"}
+dnam{"jiwit"}
+                other{"{0}jiwit"}
             }
             pint-metric{
                 other{"{0}mpt"}

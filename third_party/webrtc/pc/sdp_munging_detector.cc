@@ -788,11 +788,12 @@ bool IsSdpMungingAllowed(SdpMungingType sdp_munging_type,
       return true;
     case SdpMungingType::kNumberOfContents:
       return false;
-case SdpMungingType::kSframe:
+    case SdpMungingType::kSframe:
       return false;
     case SdpMungingType::kDataChannelSctpInit:
       return false;
-    case SdpMungingType::kCryptex:      return false;
+    case SdpMungingType::kCryptex:
+      return false;
     default:
       // Handled below.
       break;

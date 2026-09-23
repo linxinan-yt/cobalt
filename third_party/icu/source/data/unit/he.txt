@@ -72,7 +72,8 @@ acre{
                 one{"{0} אקר"}
                 other{"{0} אקר"}
                 two{"{0} אקר"}
-            }            hectare{
+            }
+            hectare{
                 gender{"masculine"}
                 many{"{0} הקטאר"}
                 one{"{0} הקטאר"}
@@ -887,7 +888,8 @@ one{"{0} em"}
             point{
                 gender{"feminine"}
                 many{"{0} נקודות"}
-one{"{0} נקודה"}                other{"{0} נקודות"}
+one{"{0} נקודה"}
+                other{"{0} נקודות"}
                 two{"{0} נקודות"}
             }
             solar-radius{
@@ -1532,7 +1534,8 @@ area{
                 other{"{0} קמ״ר"}
                 two{"{0} קמ״ר"}
             }
-        }        compound{
+        }
+        compound{
             10p27{"רונא{0}"}
             10p30{"קווטא{0}"}
         }
@@ -1615,7 +1618,8 @@ digital{
                 other{"TB‏{0}"}
                 two{"TB‏{0}"}
             }
-        }        duration{
+        }
+        duration{
             day{
                 dnam{"יום"}
                 many{"{0} י׳"}
@@ -1774,7 +1778,8 @@ cubic-meter{
                 one{"{0} מ\u0022ק"}
                 other{"{0} מ\u0022ק"}
                 two{"{0} מ\u0022ק"}
-            }            dessert-spoon-imperial{
+            }
+            dessert-spoon-imperial{
                 many{"{0}dsp-Imp"}
                 one{"{0}dsp-Imp"}
                 other{"{0}dsp-Imp"}
@@ -1875,7 +1880,8 @@ cubic-meter{
                 dnam{"מייל רבוע"}
                 one{"{0} sq mi"}
                 other{"{0} sq mi"}
-per{"{0}/mi²"}                two{"{0} sq mi"}
+per{"{0}/mi²"}
+                two{"{0} sq mi"}
             }
             square-yard{
                 dnam{"yards²"}
@@ -2144,7 +2150,8 @@ ofglucose{
             }
             kilowatt-hour-per-100-kilometer{
                 dnam{"קוט״ש/100 ק״מ"}
-many{"{0} קוט״ש/100 ק״מ"}                one{"{0} קוט״ש/100 ק״מ"}
+many{"{0} קוט״ש/100 ק״מ"}
+                one{"{0} קוט״ש/100 ק״מ"}
                 other{"{0} קוט״ש/100 ק״מ"}
                 two{"{0} קוט״ש/100 ק״מ"}
             }
@@ -2201,7 +2208,8 @@ one{"{0} ppi"}
                 one{"{0} au"}
                 other{"{0} au"}
                 two{"{0} au"}
-            }            centimeter{
+            }
+            centimeter{
                 dnam{"ס״מ"}
                 one{"{0} ס״מ"}
                 other{"{0} ס״מ"}
@@ -2251,7 +2259,8 @@ micrometer{
                 one{"{0} μm"}
                 other{"{0} μm"}
                 two{"{0} μm"}
-            }            mile{
+            }
+            mile{
                 dnam{"מייל"}
                 one{"{0} מייל"}
                 other{"{0} מייל"}
@@ -2267,7 +2276,8 @@ nanometer{
                 one{"{0} nm"}
                 other{"{0} nm"}
                 two{"{0} nm"}
-            }            nautical-mile{
+            }
+            nautical-mile{
                 dnam{"מ״י"}
                 one{"מ״י אחד"}
                 other{"{0} מ״י"}
@@ -2277,7 +2287,8 @@ parsec{
                 one{"{0} pc"}
                 other{"{0} pc"}
                 two{"{0} pc"}
-            }            picometer{
+            }
+            picometer{
                 dnam{"פ״מ"}
                 one{"{0} פ“מ"}
                 other{"{0} פ\u0022מ"}
@@ -2430,7 +2441,8 @@ acre-foot{
                 one{"{0} cL"}
                 other{"{0} cL"}
                 two{"{0} cL"}
-            }            cubic-centimeter{
+            }
+            cubic-centimeter{
                 dnam{"סמ״ק"}
                 one{"{0} סמ״ק"}
                 other{"{0} סמ״ק"}
@@ -2468,7 +2480,8 @@ cup-metric{
                 one{"{0} mc"}
                 other{"{0} mc"}
                 two{"{0} mc"}
-            }            deciliter{
+            }
+            deciliter{
                 dnam{"דצ״ל"}
                 one{"{0} דצ״ל"}
                 other{"{0} דצ״ל"}
@@ -2508,7 +2521,8 @@ hectoliter{
                 one{"{0} hL"}
                 other{"{0} hL"}
                 two{"{0} hL"}
-            }            liter{
+            }
+            liter{
                 dnam{"ליטר"}
                 one{"{0} ל׳"}
                 other{"{0} ל׳"}
@@ -2519,7 +2533,8 @@ megaliter{
                 one{"{0} ML"}
                 other{"{0} ML"}
                 two{"{0} ML"}
-            }            milliliter{
+            }
+            milliliter{
                 dnam{"מ״ל"}
                 one{"{0} מ״ל"}
                 other{"{0} מ״ל"}

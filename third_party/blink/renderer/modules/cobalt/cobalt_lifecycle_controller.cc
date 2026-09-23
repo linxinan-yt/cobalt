@@ -14,6 +14,7 @@
 
 #include "third_party/blink/renderer/modules/cobalt/cobalt_lifecycle_controller.h"
 
+#include "third_party/blink/public/mojom/frame/lifecycle.mojom-blink.h"
 #include "third_party/blink/renderer/core/frame/local_dom_window.h"
 #include "third_party/blink/renderer/core/frame/local_frame.h"
 #include "third_party/blink/renderer/core/page/focus_controller.h"

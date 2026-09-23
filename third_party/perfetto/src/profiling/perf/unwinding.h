@@ -316,8 +316,9 @@ class UnwinderHandle {
                                         Unwinder*)> initializer,
                      Unwinder::Delegate* delegate) {
     base::MaybeLockFreeTaskRunner task_runner;
-// Can't use make_unique because ctor is private.
-    std::unique_ptr<Unwinder> unwinder(new Unwinder(delegate, &task_runner));    task_runner.PostTask(
+    // Can't use make_unique because ctor is private.
+    std::unique_ptr<Unwinder> unwinder(new Unwinder(delegate, &task_runner));
+    task_runner.PostTask(
         std::bind(std::move(initializer), &task_runner, unwinder.get()));
     task_runner.Run();
   }

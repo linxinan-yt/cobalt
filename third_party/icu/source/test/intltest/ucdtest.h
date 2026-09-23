@@ -55,7 +55,8 @@ public:
     void TestPropertiesUsingPpucd();
     void TestIDStatus();
     void TestIDType();
-void TestScriptExtensionsCodePoints();
+    void TestScriptExtensionsCodePoints();
+
 private:
 
     friend void U_CALLCONV unicodeDataLineFn(void *context,

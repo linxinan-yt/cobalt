@@ -15,9 +15,8 @@
 import type m from 'mithril';
 import type {YMode} from '../../components/tracks/counter_track';
 import type {TopLevelTrackGroup, TrackGroupSchema} from './types';
-type CounterMode = YMode;
 
-type DescriptionRenderer = () => m.Children;
+type CounterMode = YMode;
 
 type DescriptionRenderer = () => m.Children;
 
@@ -27,7 +26,8 @@ interface CounterTrackTypeSchema {
   readonly group: string | TrackGroupSchema | undefined;
   readonly shareYAxis?: true;
   readonly mode?: CounterMode;
-readonly unit?: string;
+  readonly unit?: string;
+
   /**
    * Optional function to provide a rich description renderer for the track.
    *

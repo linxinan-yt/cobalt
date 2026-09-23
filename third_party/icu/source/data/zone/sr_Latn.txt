@@ -1199,7 +1199,8 @@ sr_Latn{
         }
 "Pacific:Kanton"{
             ec{"Kanton"}
-        }        "Pacific:Kiritimati"{
+        }
+        "Pacific:Kiritimati"{
             ec{"Kiritimati"}
         }
         "Pacific:Kosrae"{

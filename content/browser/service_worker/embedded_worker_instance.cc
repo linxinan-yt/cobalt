@@ -809,7 +809,8 @@ void EmbeddedWorkerInstance::BindCacheStorage(
   BindCacheStorageInternal();
 }
 
-#if !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)void EmbeddedWorkerInstance::BindHidService(
+#if !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_COBALT)
+void EmbeddedWorkerInstance::BindHidService(
     const url::Origin& origin,
     mojo::PendingReceiver<blink::mojom::HidService> receiver) {
   DCHECK_CURRENTLY_ON(BrowserThread::UI);

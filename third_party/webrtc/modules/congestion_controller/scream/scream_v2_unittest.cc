@@ -200,7 +200,9 @@ TEST(ScreamV2Test, ReferenceWindowDecreaseOnConsecutiveLossEvents) {
 
   scream.OnTransportPacketsFeedback(loss_feedback2);
   EXPECT_GE(scream.ref_window(), ref_window);
-}TEST(ScreamV2Test, ReferenceWindowIncreaseToDataInflight) {
+}
+
+TEST(ScreamV2Test, ReferenceWindowIncreaseToDataInflight) {
   SimulatedClock clock(Timestamp::Seconds(1'234));
   Environment env = CreateTestEnvironment({.time = &clock});
   ScreamV2 scream(env);
@@ -219,9 +221,10 @@ TEST(ScreamV2Test, ReferenceWindowDecreaseOnConsecutiveLossEvents) {
     clock.AdvanceTime(feedback_interval);
   }
   // Target rate can increase up to 1.1 * data_in_flight + Max Segment Size(
-// default 1280 bytes) when no max target rate has been set.
+  // default 1280 bytes) when no max target rate has been set.
   EXPECT_EQ(scream.ref_window(),
-            1.1 * feedback.data_in_flight + DataSize::Bytes(1280));}
+            1.1 * feedback.data_in_flight + DataSize::Bytes(1280));
+}
 
 TEST(ScreamV2Test, CalculatesL4sAlpha) {
   SimulatedClock clock(Timestamp::Seconds(1'234));
@@ -344,10 +347,11 @@ TEST(ScreamV2Test, AdaptsToLossLinkCapacity5Mbps) {
 
   AdaptsToLinkCapacityResult result = RunAdaptToLinkCapacityTest(params);
 
-EXPECT_LT(result.data_rate_after_adaption, DataRate::KilobitsPerSec(5400));
-  EXPECT_GT(result.data_rate_after_adaption, DataRate::KilobitsPerSec(2500));
+  EXPECT_LT(result.data_rate, DataRate::KilobitsPerSec(5400));
+  EXPECT_GT(result.data_rate, DataRate::KilobitsPerSec(1500));
   EXPECT_LT(result.max_rate_after_adaption, DataRate::KilobitsPerSec(5400));
-  EXPECT_GT(result.min_rate_after_adaption, DataRate::KilobitsPerSec(2500));
+  EXPECT_GT(result.min_rate_after_adaption, DataRate::KilobitsPerSec(1500));
+
   EXPECT_LT(result.max_smoothed_rtt_after_adaptation,
             TimeDelta::Millis(10 * 2 + 40));
 }

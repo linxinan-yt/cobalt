@@ -21,7 +21,8 @@ import {Button} from './button';
 
 export interface ChipAttrs extends HTMLAttrs {
   // Chips require a label.
-readonly label: m.Children;  // Chips can have an optional icon.
+  readonly label: m.Children;
+  // Chips can have an optional icon.
   readonly icon?: string;
   // Use minimal padding, reducing the overall size of the chip by a few px.
   // Defaults to false.
@@ -66,8 +67,9 @@ export class Chip implements m.ClassComponent<ChipAttrs> {
       removable,
       onRemove,
       label,
-removeButtonTitle,
-      removeButtonAriaLabel,      ...htmlAttrs
+      removeButtonTitle,
+      removeButtonAriaLabel,
+      ...htmlAttrs
     } = attrs;
 
     const classes = classNames(

@@ -17,11 +17,13 @@ import m from 'mithril';
 import {MenuDivider, MenuItem} from '../../../../widgets/menu';
 import {buildSqlQuery} from './query_builder';
 import {Icons} from '../../../../base/semantic_icons';
-import type {Row} from '../../../../trace_processor/query_result';import {Spinner} from '../../../../widgets/spinner';
+import type {Row} from '../../../../trace_processor/query_result';
+import {Spinner} from '../../../../widgets/spinner';
 import {
   Grid,
   GridCell,
-type GridColumn,  GridHeaderCell,
+  type GridColumn,
+  GridHeaderCell,
   renderSortMenuItems,
   type SortDirection,
 } from '../../../../widgets/grid';
@@ -34,7 +36,8 @@ import {
   type RenderCellContext,
   tableColumnId,
 } from './table_column';
-import {type SqlColumn, sqlColumnId} from './sql_column';import {SelectColumnMenu} from './menus/select_column_menu';
+import {type SqlColumn, sqlColumnId} from './sql_column';
+import {SelectColumnMenu} from './menus/select_column_menu';
 import {renderColumnFilterOptions} from './menus/add_column_filter_menu';
 import {renderCastColumnMenu} from './menus/cast_column_menu';
 import {renderTransformColumnMenu} from './menus/transform_column_menu';
@@ -239,20 +242,23 @@ export class SqlTable implements m.ClassComponent<SqlTableConfig> {
           },
           columnTitle(column),
         ),
-reorderable: {handle: 'column'},      };
+        reorderable: {reorderGroup: 'column'},
+      };
 
       return gridColumn;
     });
 
     // Build VirtualGrid rows
     const virtualGridRows = rows.map((row) => {
-return columns.map((col, i) => {        const {content, menu, isNumerical, isNull} = renderCell(
+      return columns.map((col, i) => {
+        const {content, menu, isNumerical, isNull} = renderCell(
           col,
           row,
           this.state,
-(column) => {
+          (column) => {
             this.state.addColumn(column, i);
-          },        );
+          },
+        );
         return m(
           GridCell,
           {

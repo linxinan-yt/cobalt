@@ -2,7 +2,8 @@
 edition = "2024"
 name = "perfetto-sdk-protos-gpu"
 version = "1.0.2"
-authors = ["David Reveman <reveman@meta.com>"]description = "Extra protobuf bindings for GPU events"
+authors = ["David Reveman <reveman@meta.com>"]
+description = "Extra protobuf bindings for GPU events"
 readme = "README.md"
 keywords = [
     "tracing",
@@ -18,7 +19,8 @@ default = ["vendored"]
 vendored = ["perfetto-sdk/vendored"]
 
 [dependencies]
-perfetto-sdk = { path = "../perfetto", version = "1", default-features = false }paste = "1"
+perfetto-sdk = { path = "../perfetto", version = "1", default-features = false }
+paste = "1"
 
 [[example]]
 name = "gpu_counters"

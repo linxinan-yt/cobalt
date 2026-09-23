@@ -1142,7 +1142,8 @@ kilogram-force{
                 other{"{0} km/h"}
             }
             light-speed{
-dnam{"আলোক"}                one{"{0}আলোক"}
+dnam{"আলোক"}
+                one{"{0}আলোক"}
                 other{"{0}আলোক"}
             }
         }

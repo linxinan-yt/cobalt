@@ -17,21 +17,24 @@ ar_XB{
         currency{"؜‮Currency‬؜"}
         d0{"؜‮Transform‬؜ ؜‮Destination‬؜"}
         dx{"؜‮Dictionary‬؜ ؜‮Break‬؜ ؜‮Exclusions‬؜"}
-em{"؜‮Emoji‬؜ ؜‮Presentation‬؜ ؜‮Style‬؜"}        fw{"؜‮First‬؜ ؜‮day‬؜ ؜‮of‬؜ ؜‮week‬؜"}
+em{"؜‮Emoji‬؜ ؜‮Presentation‬؜ ؜‮Style‬؜"}
+        fw{"؜‮First‬؜ ؜‮day‬؜ ؜‮of‬؜ ؜‮week‬؜"}
         h0{"؜‮Mixed‬؜-؜‮in‬؜"}
         hc{"؜‮Hour‬؜ ؜‮Cycle‬؜ (12 ؜‮vs‬؜ 24)"}
         i0{"؜‮Input‬؜ ؜‮Method‬؜"}
         k0{"؜‮Keyboard‬؜"}
         kv{"؜‮Highest‬؜ ؜‮Ignored‬؜"}
 lb{"؜‮CJK‬؜ ؜‮Line‬؜ ؜‮Break‬؜"}
-        lw{"؜‮Line‬؜ ؜‮Breaks‬؜ ؜‮within‬؜ ؜‮Words‬؜"}        m0{"؜‮Transform‬؜ ؜‮Rules‬؜"}
+        lw{"؜‮Line‬؜ ؜‮Breaks‬؜ ؜‮within‬؜ ؜‮Words‬؜"}
+        m0{"؜‮Transform‬؜ ؜‮Rules‬؜"}
         ms{"؜‮Measurement‬؜ ؜‮System‬؜"}
         mu{"؜‮Measurement‬؜ ؜‮Unit‬؜"}
         numbers{"؜‮Numbers‬؜"}
         rg{"؜‮Region‬؜ ؜‮For‬؜ ؜‮Supplemental‬؜ ؜‮Data‬؜"}
         s0{"؜‮Transform‬؜ ؜‮Source‬؜"}
         sd{"؜‮Region‬؜ ؜‮Subdivision‬؜"}
-ss{"؜‮Sentence‬؜ ؜‮Break‬؜ ؜‮Suppressions‬؜ ؜‮Type‬؜"}        t{"؜‮Transform‬؜"}
+ss{"؜‮Sentence‬؜ ؜‮Break‬؜ ؜‮Suppressions‬؜ ؜‮Type‬؜"}
+        t{"؜‮Transform‬؜"}
         t0{"؜‮Machine‬؜ ؜‮Translated‬؜"}
         timezone{"؜‮Time‬؜ ؜‮Zone‬؜"}
         va{"؜‮Locale‬؜ ؜‮Variant‬؜"}
@@ -321,7 +324,8 @@ ss{"؜‮Sentence‬؜ ؜‮Break‬؜ ؜‮Suppressions‬؜ ؜‮Type‬؜"}  
         kcg{"؜‮Tyap‬؜"}
         kde{"؜‮Makonde‬؜"}
         kea{"؜‮Kabuverdianu‬؜"}
-kek{"؜‮Qʼeqchiʼ‬؜"}        ken{"؜‮Kenyang‬؜"}
+kek{"؜‮Qʼeqchiʼ‬؜"}
+        ken{"؜‮Kenyang‬؜"}
         kfo{"؜‮Koro‬؜"}
         kg{"؜‮Kongo‬؜"}
         kgp{"؜‮Kaingang‬؜"}
@@ -615,7 +619,8 @@ kek{"؜‮Qʼeqchiʼ‬؜"}        ken{"؜‮Kenyang‬؜"}
         tig{"؜‮Tigre‬؜"}
         tiv{"؜‮Tiv‬؜"}
         tk{"؜‮Turkmen‬؜"}
-tkl{"؜‮Tokelau‬؜"}        tkr{"؜‮Tsakhur‬؜"}
+tkl{"؜‮Tokelau‬؜"}
+        tkr{"؜‮Tsakhur‬؜"}
         tl{"؜‮Tagalog‬؜"}
         tlh{"؜‮Klingon‬؜"}
         tli{"؜‮Tlingit‬؜"}
@@ -707,7 +712,8 @@ Languages%core{
         ckb{"؜‮Central‬؜"}
         ku{"؜‮Kurmanji‬؜"}
         sdh{"؜‮Southern‬؜"}
-    }    Languages%long{
+    }
+    Languages%long{
         cr{"؜‮Woods‬؜ ؜‮Cree‬؜"}
         zh{"؜‮Mandarin‬؜ ؜‮Chinese‬؜"}
         zh_Hans{"؜‮Simplified‬؜ ؜‮Mandarin‬؜ ؜‮Chinese‬؜"}
@@ -733,12 +739,14 @@ Languages%core{
         en_US{"؜‮US‬؜ ؜‮English‬؜"}
     }
     Languages%variant{
-bqi{"؜‮Luri‬؜ ؜‮Bakhtiari‬؜"}        ckb{"؜‮Kurdish‬؜, ؜‮Sorani‬؜"}
+bqi{"؜‮Luri‬؜ ؜‮Bakhtiari‬؜"}
+        ckb{"؜‮Kurdish‬؜, ؜‮Sorani‬؜"}
         hi_Latn{"؜‮Hinglish‬؜"}
         ky{"؜‮Kirghiz‬؜"}
         my{"؜‮Myanmar‬؜ ؜‮Language‬؜"}
 oka{"؜‮Colville‬؜ ؜‮Salish‬؜"}
-        pi{"؜‮Pāli‬؜"}        ps{"؜‮Pushto‬؜"}
+        pi{"؜‮Pāli‬؜"}
+        ps{"؜‮Pushto‬؜"}
         ug{"؜‮Uighur‬؜"}
     }
     Scripts{
@@ -756,7 +764,8 @@ oka{"؜‮Colville‬؜ ؜‮Salish‬؜"}
         Bass{"؜‮Bassa‬؜ ؜‮Vah‬؜"}
         Batk{"؜‮Batak‬؜"}
         Beng{"؜‮Bangla‬؜"}
-Berf{"؜‮Beria‬؜ ؜‮Erfe‬؜"}        Bhks{"؜‮Bhaiksuki‬؜"}
+Berf{"؜‮Beria‬؜ ؜‮Erfe‬؜"}
+        Bhks{"؜‮Bhaiksuki‬؜"}
         Blis{"؜‮Blissymbols‬؜"}
         Bopo{"؜‮Bopomofo‬؜"}
         Brah{"؜‮Brahmi‬؜"}
@@ -900,7 +909,8 @@ Berf{"؜‮Beria‬؜ ؜‮Erfe‬؜"}        Bhks{"؜‮Bhaiksuki‬؜"}
         Shaw{"؜‮Shavian‬؜"}
         Shrd{"؜‮Sharada‬؜"}
         Sidd{"؜‮Siddham‬؜"}
-Sidt{"؜‮Sidetic‬؜"}        Sind{"؜‮Khudawadi‬؜"}
+Sidt{"؜‮Sidetic‬؜"}
+        Sind{"؜‮Khudawadi‬؜"}
         Sinh{"؜‮Sinhala‬؜"}
         Sogd{"؜‮Sogdian‬؜"}
         Sogo{"؜‮Old‬؜ ؜‮Sogdian‬؜"}
@@ -920,7 +930,8 @@ Sidt{"؜‮Sidetic‬؜"}        Sind{"؜‮Khudawadi‬؜"}
         Taml{"؜‮Tamil‬؜"}
         Tang{"؜‮Tangut‬؜"}
         Tavt{"؜‮Tai‬؜ ؜‮Viet‬؜"}
-Tayo{"؜‮Tai‬؜ ؜‮Yo‬؜"}        Telu{"؜‮Telugu‬؜"}
+Tayo{"؜‮Tai‬؜ ؜‮Yo‬؜"}
+        Telu{"؜‮Telugu‬؜"}
         Teng{"؜‮Tengwar‬؜"}
         Tfng{"؜‮Tifinagh‬؜"}
         Tglg{"؜‮Tagalog‬؜"}
@@ -930,7 +941,8 @@ Tayo{"؜‮Tai‬؜ ؜‮Yo‬؜"}        Telu{"؜‮Telugu‬؜"}
         Tirh{"؜‮Tirhuta‬؜"}
         Tnsa{"؜‮Tangsa‬؜"}
         Todr{"؜‮Todhri‬؜"}
-Tols{"؜‮Tolong‬؜ ؜‮Siki‬؜"}        Toto{"؜‮Toto‬؜"}
+Tols{"؜‮Tolong‬؜ ؜‮Siki‬؜"}
+        Toto{"؜‮Toto‬؜"}
         Tutg{"؜‮Tulu‬؜-؜‮Tigalari‬؜"}
         Ugar{"؜‮Ugaritic‬؜"}
         Vaii{"؜‮Vai‬؜"}
@@ -980,7 +992,8 @@ Tols{"؜‮Tolong‬؜ ؜‮Siki‬؜"}        Toto{"؜‮Toto‬؜"}
             islamic-rgsa{"؜‮Hijri‬؜ ؜‮Calendar‬؜ (؜‮Saudi‬؜ ؜‮Arabia‬؜, ؜‮sighting‬؜)"}
             islamic-tbla{"؜‮Hijri‬؜ ؜‮Calendar‬؜ (؜‮tabular‬؜, ؜‮astronomical‬؜ ؜‮epoch‬؜)"}
             islamic-umalqura{"؜‮Hijri‬؜ ؜‮Calendar‬؜ (؜‮Umm‬؜ ؜‮al‬؜-؜‮Qura‬؜)"}
-iso8601{"؜‮Gregorian‬؜ ؜‮Calendar‬؜ (؜‮ISO‬؜ 8601 ؜‮Weeks‬؜)"}            japanese{"؜‮Japanese‬؜ ؜‮Calendar‬؜"}
+iso8601{"؜‮Gregorian‬؜ ؜‮Calendar‬؜ (؜‮ISO‬؜ 8601 ؜‮Weeks‬؜)"}
+            japanese{"؜‮Japanese‬؜ ؜‮Calendar‬؜"}
             persian{"؜‮Persian‬؜ ؜‮Calendar‬؜"}
             roc{"؜‮Minguo‬؜ ؜‮Calendar‬؜"}
         }
@@ -1010,7 +1023,8 @@ calendar%core{
 cf%core{
             account{"؜‮Accounting‬؜"}
             standard{"؜‮Standard‬؜"}
-        }        colAlternate{
+        }
+        colAlternate{
             non-ignorable{"؜‮Sort‬؜ ؜‮Symbols‬؜"}
             shifted{"؜‮Sort‬؜ ؜‮Ignoring‬؜ ؜‮Symbols‬؜"}
         }
@@ -1050,7 +1064,8 @@ cf%core{
             tertiary{"؜‮Sort‬؜ ؜‮Accents‬؜/؜‮Case‬؜/؜‮Width‬؜"}
         }
         collation{
-big5han{"؜‮Traditional‬؜ ؜‮Chinese‬؜ ؜‮Sort‬؜ ؜‮Order‬؜ - ؜‮Big‬؜5"}            compat{"؜‮Previous‬؜ ؜‮Sort‬؜ ؜‮Order‬؜, ؜‮for‬؜ ؜‮compatibility‬؜"}
+big5han{"؜‮Traditional‬؜ ؜‮Chinese‬؜ ؜‮Sort‬؜ ؜‮Order‬؜ - ؜‮Big‬؜5"}
+            compat{"؜‮Previous‬؜ ؜‮Sort‬؜ ؜‮Order‬؜, ؜‮for‬؜ ؜‮compatibility‬؜"}
             dictionary{"؜‮Dictionary‬؜ ؜‮Sort‬؜ ؜‮Order‬؜"}
             ducet{"؜‮Default‬؜ ؜‮Unicode‬؜ ؜‮Sort‬؜ ؜‮Order‬؜"}
             emoji{"؜‮Emoji‬؜ ؜‮Sort‬؜ ؜‮Order‬؜"}
@@ -1375,7 +1390,8 @@ ms%core{
             tibt{"؜‮Tibetan‬؜ ؜‮Digits‬؜"}
             tirh{"؜‮Tirhuta‬؜ ؜‮Digits‬؜"}
             tnsa{"؜‮Tangsa‬؜ ؜‮Digits‬؜"}
-tols{"؜‮Tolong‬؜ ؜‮Siki‬؜ ؜‮Digits‬؜"}            traditional{"؜‮Traditional‬؜ ؜‮Numerals‬؜"}
+tols{"؜‮Tolong‬؜ ؜‮Siki‬؜ ؜‮Digits‬؜"}
+            traditional{"؜‮Traditional‬؜ ؜‮Numerals‬؜"}
             vaii{"؜‮Vai‬؜ ؜‮Digits‬؜"}
             wara{"؜‮Warang‬؜ ؜‮Citi‬؜ ؜‮Digits‬؜"}
             wcho{"؜‮Wancho‬؜ ؜‮Digits‬؜"}
@@ -1452,7 +1468,8 @@ Types%variant{
         calendar{
             iso8601{"؜‮ISO‬؜ 8601 ؜‮Weeks‬؜"}
         }
-    }    Variants{
+    }
+    Variants{
         1606NICT{"؜‮Late‬؜ ؜‮Middle‬؜ ؜‮French‬؜ ؜‮to‬؜ 1606"}
         1694ACAD{"؜‮Early‬؜ ؜‮Modern‬؜ ؜‮French‬؜"}
         1901{"؜‮Traditional‬؜ ؜‮German‬؜ ؜‮orthography‬؜"}
@@ -1491,7 +1508,8 @@ Types%variant{
         OSOJS{"؜‮Oseacco‬؜/؜‮Osojane‬؜ ؜‮dialect‬؜"}
         OXENDICT{"؜‮Oxford‬؜ ؜‮English‬؜ ؜‮Dictionary‬؜ ؜‮spelling‬؜"}
         PAMAKA{"؜‮Pamaka‬؜ ؜‮dialect‬؜"}
-PINYIN{"؜‮Pinyin‬؜ ؜‮Romanization‬؜"}        POLYTON{"؜‮Polytonic‬؜"}
+PINYIN{"؜‮Pinyin‬؜ ؜‮Romanization‬؜"}
+        POLYTON{"؜‮Polytonic‬؜"}
         POSIX{"؜‮Computer‬؜"}
         REVISED{"؜‮Revised‬؜ ؜‮Orthography‬؜"}
         RIGIK{"؜‮Classic‬؜ ؜‮Volapük‬؜"}

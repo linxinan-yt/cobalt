@@ -135,7 +135,8 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
     }
 #else
     [self addSwipeAndPanGestureRecognizers];
-#endif  }
+#endif
+  }
   return self;
 }
 
@@ -238,7 +239,8 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
     [self removeGestureRecognizer:recognizer];
   }
 }
-#endif// Helper method to add swipe gestures for `direction`.
+#endif
+// Helper method to add swipe gestures for `direction`.
 - (void)addSwipeGestureRecognizerWithDirection:
     (UISwipeGestureRecognizerDirection)direction {
   UISwipeGestureRecognizer* swipeGesture = [[UISwipeGestureRecognizer alloc]
@@ -309,7 +311,8 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
       return YES;
     }
 // Reset `_selectWillShowKeyboard` to NO. If a previous press was
-    // cancelled, the flag could remain YES.    _selectWillShowKeyboard = NO;
+    // cancelled, the flag could remain YES.
+    _selectWillShowKeyboard = NO;
   } else if (type == blink::WebInputEvent::Type::kKeyUp) {
     if (_selectWillShowKeyboard) {
       _selectWillShowKeyboard = NO;
@@ -325,7 +328,8 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
 // Returns the set of unhanlded UIPress events to propagate to `super`.
 - (NSSet<UIPress*>*)handlePresses:(NSSet<UIPress*>*)presses
                          withType:(blink::WebInputEvent::Type)type {
-  NSMutableSet<UIPress*>* unhandled = [NSMutableSet set];  for (UIPress* press in presses) {
+  NSMutableSet<UIPress*>* unhandled = [NSMutableSet set];
+  for (UIPress* press in presses) {
     RemoteButton button = remoteButtonFromPressType(press.type);
     if (button == kNone) {
       // Since UIPress has key information from the physical keyboard,
@@ -334,7 +338,8 @@ RemoteButton remoteButtonFromPressType(UIPressType type) {
       // added in `unhandled`.
       if (![self sendKeyboardEvent:press eventType:type]) {
         [unhandled addObject:press];
-      }      continue;
+      }
+      continue;
     }
     if (button == kSelect && [self handleSelectPressWithType:type]) {
       continue;
@@ -370,7 +375,8 @@ if (![self sendKeyEventWithRemoteButton:button eventType:type]) {
            withEvent:(UIPressesEvent*)event {
 NSSet<UIPress*>* unhandled =
       [self handlePresses:presses withType:blink::WebInputEvent::Type::kKeyUp];
-  if (unhandled.count > 0) {    [super pressesEnded:presses withEvent:event];
+  if (unhandled.count > 0) {
+    [super pressesEnded:presses withEvent:event];
   }
 }
 

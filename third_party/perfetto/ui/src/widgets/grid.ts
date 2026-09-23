@@ -15,13 +15,15 @@
 import './grid.scss';
 import m from 'mithril';
 import {classNames} from '../base/classnames';
-import {isEmptyVnodes, type MithrilEvent} from '../base/mithril_utils';import {Icons} from '../base/semantic_icons';
+import {isEmptyVnodes, type MithrilEvent} from '../base/mithril_utils';
+import {Icons} from '../base/semantic_icons';
 import {exists} from '../base/utils';
 import {Button} from './button';
 import {MenuItem, PopupMenu} from './menu';
 import {PopupPosition} from './popup';
 import {VirtualScrollHelper} from './virtual_scroll_helper';
 import type {HTMLAttrs} from './common';
+
 const DEFAULT_ROW_HEIGHT = 24;
 const COL_WIDTH_INITIAL_MAX_PX = 600;
 const COL_WIDTH_MIN_PX = 50;
@@ -62,11 +64,12 @@ export interface GridHeaderCellAttrs extends m.Attributes {
   readonly onSort?: (direction: SortDirection) => void;
   readonly menuItems?: m.Children;
   readonly subContent?: m.Children;
-readonly hintSortDirection?: SortDirection;}
+  readonly hintSortDirection?: SortDirection;
+}
 
 export class GridHeaderCell implements m.ClassComponent<GridHeaderCellAttrs> {
   view({attrs, children}: m.Vnode<GridHeaderCellAttrs>) {
-const {
+    const {
       sort,
       onSort,
       menuItems,
@@ -88,7 +91,9 @@ const {
       const sortIconDirection: SortDirection | undefined = (() => {
         if (!sort) return hintSortDirection;
         return sort;
-      })();      return m(Button, {
+      })();
+
+      return m(Button, {
         className: classNames(
           'pf-grid-header-cell__sort-button',
           !sort && 'pf-grid-cell--hint',
@@ -96,7 +101,8 @@ const {
         ),
         ariaLabel: 'Sort column',
         rounded: true,
-icon: sortIconDirection === 'DESC' ? Icons.SortDesc : Icons.SortAsc,        onclick: (e: MouseEvent) => {
+        icon: sortIconDirection === 'DESC' ? Icons.SortDesc : Icons.SortAsc,
+        onclick: (e: MouseEvent) => {
           onSort(nextDirection);
           e.stopPropagation();
         },
@@ -104,12 +110,13 @@ icon: sortIconDirection === 'DESC' ? Icons.SortDesc : Icons.SortAsc,        oncl
     };
 
     const renderMenu = () => {
-if (isEmptyVnodes(menuItems)) return undefined;      return m(
+      if (isEmptyVnodes(menuItems)) return undefined;
+      return m(
         PopupMenu,
         {
           trigger: m(Button, {
-className:
-              'pf-visible-on-hover pf-grid-header-cell__menu-button pf-grid--no-measure',            icon: Icons.ContextMenuAlt,
+            className: 'pf-visible-on-hover pf-grid-header-cell__menu-button',
+            icon: Icons.ContextMenuAlt,
             rounded: true,
             ariaLabel: 'Column menu',
           }),
@@ -118,20 +125,23 @@ className:
       );
     };
 
-const nextSortDirection: SortDirection = (() => {
+    const nextSortDirection: SortDirection = (() => {
       if (!sort) return hintSortDirection || 'ASC';
       return sort === 'ASC' ? 'DESC' : 'ASC';
-    })();    return m(
+    })();
+
+    return m(
       '.pf-grid-header-cell',
       {
         ...htmlAttrs,
-role: 'columnheader',      },
+        role: 'columnheader',
+      },
       [
         m(
           '.pf-grid-header-cell__main-content',
           m(
             '.pf-grid-header-cell__title',
-{
+            {
               onclick: onSort
                 ? (e: MouseEvent) => {
                     onSort(nextSortDirection);
@@ -139,7 +149,8 @@ role: 'columnheader',      },
                   }
                 : undefined,
               style: onSort ? {cursor: 'pointer'} : undefined,
-            },            m('.pf-grid-header-cell__title-wrapper', children),
+            },
+            m('.pf-grid-header-cell__title-wrapper', children),
             renderSortButton(),
           ),
           renderMenu(),
@@ -157,11 +168,12 @@ export interface GridCellAttrs extends HTMLAttrs {
   readonly nullish?: boolean;
   readonly padding?: boolean;
   readonly wrap?: boolean;
-readonly label?: string;
+  readonly label?: string;
   readonly indent?: number;
   readonly chevron?: 'expanded' | 'collapsed' | 'leaf';
   readonly onChevronClick?: () => void;
-  readonly actionButtons?: m.Children;}
+  readonly actionButtons?: m.Children;
+}
 
 export class GridCell implements m.ClassComponent<GridCellAttrs> {
   view({attrs, children}: m.Vnode<GridCellAttrs>) {
@@ -172,7 +184,7 @@ export class GridCell implements m.ClassComponent<GridCellAttrs> {
       className,
       padding = true,
       wrap,
-indent,
+      indent,
       chevron,
       onChevronClick,
       actionButtons,
@@ -236,18 +248,20 @@ indent,
         ...htmlAttrs,
         className: classNames(
           className,
-          chevron ? 'pf-grid-cell--align-left' : `pf-grid-cell--align-${align}`,          padding && 'pf-grid-cell--padded',
+          chevron ? 'pf-grid-cell--align-left' : `pf-grid-cell--align-${align}`,
+          padding && 'pf-grid-cell--padded',
           nullish && 'pf-grid-cell--nullish',
           wrap && 'pf-grid-cell--wrap',
         ),
-role: 'cell',
+        role: 'cell',
       },
       renderIndent(),
       renderChevron(),
       m('.pf-grid-cell__content', children),
       !isEmptyVnodes(cellActions) &&
         m('.pf-grid-cell__actions.pf-visible-on-hover', cellActions),
-    );  }
+    );
+  }
 }
 
 /**
@@ -259,7 +273,7 @@ export type GridRow = ReadonlyArray<m.Children>;
  * Column definition for Grid.
  */
 export interface GridColumn {
-// A unique key identifying this column - used to store cached column widths
+  // A unique key identifying this column - used to store cached column widths
   // and for reordering callbacks.
   readonly key: string;
 
@@ -284,7 +298,8 @@ export interface GridColumn {
   readonly thickRightBorder?: boolean;
 
   // Content to put in the column header.
-  readonly header?: m.Children;}
+  readonly header?: m.Children;
+}
 
 /**
  * Partial row data for virtual scrolling with paginated data.
@@ -456,12 +471,14 @@ export interface GridAttrs {
    *   const newOrder = reorderArray(columnOrder, from, to, position);
    *   setColumnOrder(newOrder);
    * }
-   */  readonly onColumnReorder?: (
+   */
+  readonly onColumnReorder?: (
     from: string | number | undefined,
     to: string | number | undefined,
     position: ReorderPosition,
   ) => void;
-/**
+
+  /**
    * Callback fired when the grid is fully initialized.
    * Receives an API object for programmatic control of the grid.
    * Use this to access methods like autoFitColumn() and autoFitAllColumns().
@@ -486,7 +503,8 @@ export interface GridAttrs {
    *   title: 'No data available',
    * })
    */
-  readonly emptyState?: m.Children;}
+  readonly emptyState?: m.Children;
+}
 
 /**
  * Grid is a purely presentational component that renders tabular data with
@@ -704,14 +722,15 @@ export class Grid implements m.ClassComponent<GridAttrs> {
       e.clipboardData?.setData('text/plain', tsvData);
       e.preventDefault();
     }
-  }  private getColumnId(field: string): number {
+  }
+  private getColumnId(field: string): number {
     if (!this.fieldToId.has(field)) {
       this.fieldToId.set(field, this.nextId++);
     }
     return this.fieldToId.get(field)!;
   }
 
-private setColumnWidth(
+  private setColumnWidth(
     gridDom: HTMLElement,
     columnKey: string,
     widthPx: number,
@@ -723,7 +742,9 @@ private setColumnWidth(
   private clearColumnWidth(gridDom: HTMLElement, columnKey: string): void {
     const columnId = this.getColumnId(columnKey);
     gridDom.style.setProperty(`--pf-grid-col-${columnId}`, 'fit-content');
-  }  view({attrs}: m.Vnode<GridAttrs>) {
+  }
+
+  view({attrs}: m.Vnode<GridAttrs>) {
     const {
       columns,
       rowData,
@@ -750,12 +771,14 @@ private setColumnWidth(
     const isVirtualized = virtualization !== undefined;
     const rowHeight = virtualization?.rowHeightPx ?? DEFAULT_ROW_HEIGHT;
 
-// Check if any columns are reorderable
-    const hasReorderableColumns = columns.some((c) => c.reorderable);    // Render the grid structure inline
+    // Check if any columns are reorderable
+    const hasReorderableColumns = columns.some((c) => c.reorderable);
+
+    // Render the grid structure inline
     return m(
       '.pf-grid',
       {
-className: classNames(
+        className: classNames(
           fillHeight && 'pf-grid--fill-height',
           className,
           this.dragState && 'pf-grid--dragging',
@@ -804,7 +827,8 @@ className: classNames(
               this.dragState = undefined;
               m.redraw();
             }
-          : undefined,      },
+          : undefined,
+      },
       m(
         '.pf-grid__header',
         m(
@@ -813,7 +837,8 @@ className: classNames(
             role: 'row',
           },
           columns.map((column) => {
-return this.renderHeaderCell(column, attrs.onColumnReorder);          }),
+            return this.renderHeaderCell(column);
+          }),
         ),
       ),
       isVirtualized
@@ -826,9 +851,10 @@ return this.renderHeaderCell(column, attrs.onColumnReorder);          }),
             attrs,
           )
         : this.renderGridBody(columns, rows, attrs),
-totalRows === 0 &&
+      totalRows === 0 &&
         attrs.emptyState !== undefined &&
-        m('.pf-grid__empty-state', attrs.emptyState),    );
+        m('.pf-grid__empty-state', attrs.emptyState),
+    );
   }
 
   private renderVirtualizedGridBody(
@@ -884,7 +910,7 @@ totalRows === 0 &&
     );
   }
 
-oncreate({attrs, dom}: m.VnodeDOM<GridAttrs, this>) {
+  oncreate({attrs, dom}: m.VnodeDOM<GridAttrs, this>) {
     const {virtualization, columns, rowData, onReady} = attrs;
 
     // Add copy event handler for spreadsheet-friendly formatting
@@ -961,13 +987,14 @@ oncreate({attrs, dom}: m.VnodeDOM<GridAttrs, this>) {
                 Math.max(width, minWidthPx),
               );
             }
-          }        },
+          }
+        },
       });
     }
   }
 
   onupdate(vnode: m.VnodeDOM<GridAttrs, this>) {
-const {columns} = vnode.attrs;
+    const {columns} = vnode.attrs;
     this.maybeAutosizeColumns(vnode.dom as HTMLElement, columns);
   }
 
@@ -1073,7 +1100,8 @@ const {columns} = vnode.attrs;
 
     gridClone.remove();
 
-    return new Map(columnKeyWidthTuples);  }
+    return new Map(columnKeyWidthTuples);
+  }
 
   private renderRows(
     columns: ReadonlyArray<GridColumn>,
@@ -1095,7 +1123,7 @@ const {columns} = vnode.attrs;
       (_, i) => rowStart + i,
     );
 
-// Generate a list of rows that should be rendered
+    // Generate a list of rows that should be rendered
     const renderableRows = indices.map((rowIndex) => {
       const relativeIndex = rowIndex - rowOffset;
       const row =
@@ -1106,7 +1134,8 @@ const {columns} = vnode.attrs;
     });
 
     const renderedRows = renderableRows
-      .map(([rowIndex, row]) => {        if (row !== undefined) {
+      .map(([rowIndex, row]) => {
+        if (row !== undefined) {
           return m(
             '.pf-grid__row',
             {
@@ -1125,7 +1154,8 @@ const {columns} = vnode.attrs;
               return this.renderCell(
                 children,
                 columnId,
-column.key,                column.thickRightBorder,
+                column.key,
+                column.thickRightBorder,
               );
             }),
           );
@@ -1141,7 +1171,8 @@ column.key,                column.thickRightBorder,
         }
       })
       .filter(exists);
-if (!this.hasRenderedBodyRows) {
+
+    if (!this.hasRenderedBodyRows) {
       // Check if any rows have content in them so we know when to trigger our
       // initial column autosize
       const hasContent = renderableRows.some(
@@ -1153,7 +1184,8 @@ if (!this.hasRenderedBodyRows) {
       }
     }
 
-    return renderedRows;  }
+    return renderedRows;
+  }
 
   private renderAllRows(
     columns: ReadonlyArray<GridColumn>,
@@ -1161,9 +1193,10 @@ if (!this.hasRenderedBodyRows) {
     onRowHover?: (rowIndex: number) => void,
     onRowOut?: () => void,
   ): m.Children {
-if (rows.length > 0) {
+    if (rows.length > 0) {
       this.hasRenderedBodyRows = true;
-    }    return rows.map((row, rowIndex) => {
+    }
+    return rows.map((row, rowIndex) => {
       return m(
         '.pf-grid__row',
         {
@@ -1176,12 +1209,13 @@ if (rows.length > 0) {
           const children = row[index];
           const columnId = this.getColumnId(column.key);
 
-return this.renderCell(
+          return this.renderCell(
             children,
             columnId,
             column.key,
             column.thickRightBorder,
-          );        }),
+          );
+        }),
       );
     });
   }
@@ -1189,25 +1223,33 @@ return this.renderCell(
   private renderCell(
     children: m.Children,
     columnId: number,
-thickRightBorder?: boolean,
-  ): m.Children {    return m(
+    columnKey: string,
+    thickRightBorder?: boolean,
+  ): m.Children {
+    // Check if this column is the drag target (findColumnAtX already filters by handle)
+    const isDragTarget =
+      this.dragState &&
+      this.dragState.targetKey === columnKey &&
+      this.dragState.fromKey !== columnKey;
+
+    return m(
       '.pf-grid__cell-container',
       {
         'style': {
           width: `var(--pf-grid-col-${columnId})`,
         },
-'role': 'cell',
         'data-column-id': columnId,
         'className': classNames(
           thickRightBorder && 'pf-grid__cell-container--border-right-thick',
           isDragTarget &&
-            `pf-grid__cell-container--drag-over-${this.dragState!.position}`,        ),
+            `pf-grid__cell-container--drag-over-${this.dragState!.position}`,
+        ),
       },
       children,
     );
   }
 
-private renderHeaderCell(column: GridColumn): m.Children {
+  private renderHeaderCell(column: GridColumn): m.Children {
     const {
       key,
       reorderable,
@@ -1219,6 +1261,7 @@ private renderHeaderCell(column: GridColumn): m.Children {
 
     const columnId = this.getColumnId(column.key);
     const isFixedWidth = exists(widthPx);
+
     const renderResizeHandle = () => {
       return m('.pf-grid__resize-handle', {
         onpointerdown: (e: MouseEvent) => {
@@ -1242,14 +1285,10 @@ private renderHeaderCell(column: GridColumn): m.Children {
 
           const handlePointerMove = (e: MouseEvent) => {
             const delta = e.clientX - startX;
-const minWidth = column.minWidth ?? COL_WIDTH_MIN_PX;
+            const minWidth = column.minWidthPx ?? COL_WIDTH_MIN_PX;
             const newWidth = Math.max(minWidth, startWidth + delta);
-
-            // Set the css variable for the column being resized
-            gridDom.style.setProperty(
-              `--pf-grid-col-${columnId}`,
-              `${newWidth}px`,
-            );          };
+            this.setColumnWidth(gridDom, column.key, newWidth);
+          };
 
           const handlePointerUp = () => {
             document.removeEventListener('pointermove', handlePointerMove);
@@ -1275,26 +1314,26 @@ const minWidth = column.minWidth ?? COL_WIDTH_MIN_PX;
 
           if (gridDom === null) return;
 
-this.measureAndApplyWidths(gridDom, [
-            {
-              key: column.key,
-              minWidth: column.minWidth ?? COL_WIDTH_MIN_PX,
-              // No max - columns can grow as wide as needed on double-click
-              maxWidth: Infinity,
-            },
-          ]);        },
+          const width = this.measureColumns(gridDom, [column.key]).get(
+            column.key,
+          )!;
+          this.setColumnWidth(gridDom, column.key, Math.max(width, minWidthPx));
+        },
       });
     };
 
-const reorderHandle = column.reorderable?.handle;
-    const dragOverState = this.columnDragState.get(column.key) ?? {
-      count: 0,
-      position: 'after' as ReorderPosition,
-    };
+    const reorderHandle = reorderable?.reorderGroup;
+
+    // Check if this column is the drag target
+    const isDragTarget =
+      this.dragState &&
+      this.dragState.targetKey === key &&
+      this.dragState.fromKey !== key;
+
     return m(
       '.pf-grid__cell-container',
       {
-'data-column-id': columnId,
+        'data-column-id': columnId,
         'data-column-key': key,
         'key': key,
         'style': {
@@ -1321,6 +1360,7 @@ const reorderHandle = column.reorderable?.handle;
         },
       },
       header,
-      !isFixedWidth && renderResizeHandle(),    );
+      !isFixedWidth && renderResizeHandle(),
+    );
   }
 }

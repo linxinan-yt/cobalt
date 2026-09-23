@@ -42,8 +42,9 @@ message BlinkTaskScope {
     TASK_SCOPE_SOFT_NAVIGATION = 9;
     TASK_SCOPE_MISC_EVENT = 10;
     TASK_SCOPE_MICROTASK = 11;
-TASK_SCOPE_RESOURCE_TIMING = 12;
-    TASK_SCOPE_SCRIPT_TOOL_EXECUTION = 13;  }
+    TASK_SCOPE_RESOURCE_TIMING = 12;
+    TASK_SCOPE_SCRIPT_TOOL_EXECUTION = 13;
+  }
   optional TaskScopeType type = 1;
   optional int64 scope_task_id = 2;
   optional int64 running_task_id_to_be_restored = 3;
@@ -727,8 +728,9 @@ message BackForwardCacheCanStoreDocumentResult {
     CACHE_LIMIT_PRUNED_ON_CRITICAL_MEMORY_PRESSURE = 67;
     SHARED_WORKER_MESSAGE = 68;
     SHARED_WORKER_WITH_NO_ACTIVE_CLIENT = 69;
-WEB_LOCKS_CONTENTION = 70;
-    FORWARD_CACHE_DISABLED = 71;  }
+    WEB_LOCKS_CONTENTION = 70;
+    FORWARD_CACHE_DISABLED = 71;
+  }
 
   optional BackForwardCacheNotRestoredReason
       back_forward_cache_not_restored_reason = 1;
@@ -908,8 +910,7 @@ message EventLatency {
   // and the Event.ScrollJank.DelayedFramesPercentage4.FixedWindow histogram's
   // documentation for more information.
   //
-// To simplify the documentation below, we use "this frame" to refer to the
-  // frame in which the scroll update was presented.  message ScrollJankV4Result {
+  message ScrollJankV4Result {
     // Next ID: 15
 
     // This field is a new version of `EventLatency.is_janky_scrolled_frame`
@@ -992,8 +993,9 @@ message EventLatency {
     // The delivery cut-off of this frame. Empty if this frame is non-damaging.
     optional int64 current_delivery_cutoff_us = 8;
 
-// Deprecated in favor of `damage_type`.
-    //    // Whether this frame is damaging. This frame is non-damaging if the
+    // Deprecated in favor of `damage_type`.
+    //
+    // Whether this frame is damaging. This frame is non-damaging if the
     // following conditions are BOTH true:
     //
     //   1. All scroll updates in this frame are non-damaging. A scroll update
@@ -1005,7 +1007,8 @@ message EventLatency {
     //        b. this frame
     //      are non-damaging.
     optional bool is_damaging_frame = 9;
-// Information about the scroll updates that were included in this frame.
+
+    // Information about the scroll updates that were included in this frame.
     message ScrollUpdates {
       // Real scroll updates which originated from hardware/OS.
       message Real {
@@ -1173,7 +1176,8 @@ message EventLatency {
       // LINT.ThenChange(//cc/metrics/scroll_jank_v4_frame_stage_calculator.cc:HasSeen)
       optional HasSeen has_seen_in_current_scroll = 2;
     }
-    optional FrameStageCalculation frame_stage_calculation = 14;  }
+    optional FrameStageCalculation frame_stage_calculation = 14;
+  }
 
   // Deprecated in favor of top-level `ChromeTrackEvent.scroll_jank_v4`.
   optional ScrollJankV4Result scroll_jank_v4 = 10 [deprecated = true];
@@ -2331,7 +2335,7 @@ message WebViewStartup {
     STATIC_GET_SAFE_BROWSING_PRIVACY_POLICY_URL = 100;
     STATIC_IS_MULTI_PROCESS_ENABLED = 101;
     STATIC_GET_VARIATIONS_HEADER = 102;
-reserved 103, 104, 105, 106;
+    reserved 103, 104, 105, 106;
     reserved "STATIC_SET_DEFAULT_TRAFFIC_STATS_TAG", "STATIC_SET_DEFAULT_TRAFFIC_STATS_UID";
     reserved "STATIC_SET_RENDERER_LIBRARY_PREFETCH_MODE", "STATIC_GET_RENDERER_LIBRARY_PREFETCH_MODE";
     GET_DEFAULT_COOKIE_MANAGER = 107;
@@ -2371,7 +2375,8 @@ reserved 103, 104, 105, 106;
     PROFILE_ADD_QUIC_HINTS = 141;
     PROFILE_GET_HTTP_CACHE_MANAGER = 142;
     PROFILE_SET_CROSS_ORIGIN_ISOLATED_ALLOW_LIST = 143;
-    PROFILE_GET_CROSS_ORIGIN_ISOLATED_ALLOW_LIST = 144;    // Remember to update WebViewStartupCallSite in enums.xml when adding new
+    PROFILE_GET_CROSS_ORIGIN_ISOLATED_ALLOW_LIST = 144;
+    // Remember to update WebViewStartupCallSite in enums.xml when adding new
     // values here.
   }
   // LINT.ThenChange(//android_webview/glue/java/src/com/android/webview/chromium/WebViewChromiumAwInit.java:CallSite)

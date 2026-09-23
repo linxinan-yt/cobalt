@@ -2,7 +2,8 @@
 edition = "2024"
 name = "perfetto-sdk-sys"
 version = "1.3.0"
-authors = ["David Reveman <reveman@meta.com>"]build = "build.rs"
+authors = ["David Reveman <reveman@meta.com>"]
+build = "build.rs"
 description = "Low-level FFI bindings for Perfetto"
 readme = "README.md"
 keywords = [
@@ -23,11 +24,14 @@ include = [
     "src/**",
     "wrapper.h",
 ]
+
 [features]
 default = ["vendored"]
 vendored = []
 bindgen = ["dep:bindgen"]
+
 [dependencies]
 
 [build-dependencies]
-bindgen = { version = "0.72", optional = true }cc = "1.1"
+bindgen = { version = "0.72", optional = true }
+cc = "1.1"

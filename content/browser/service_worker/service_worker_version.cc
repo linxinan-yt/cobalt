@@ -54,6 +54,7 @@
 #include "content/browser/service_worker/service_worker_installed_scripts_sender.h"
 #include "content/browser/service_worker/service_worker_metrics.h"
 #include "content/browser/service_worker/service_worker_security_utils.h"
+#include "content/browser/storage_partition_impl.h"
 #if !BUILDFLAG(IS_COBALT)
 #include "content/browser/service_worker/service_worker_usb_delegate_observer.h"
 #endif
@@ -458,7 +459,8 @@ void ServiceWorkerVersion::SetStatus(Status status) {
     // event handlers. This is limited to platforms that support extensions.
     context_->usb_delegate_observer()->UpdateHasEventHandlers(
         registration_id_, has_usb_event_handlers_);
-#endif  // (!BUILDFLAG(IS_ANDROID) || BUILDFLAG(IS_DESKTOP_ANDROID)) && !BUILDFLAG(IS_COBALT)  } else if (status == REDUNDANT) {
+#endif  // (!BUILDFLAG(IS_ANDROID) || BUILDFLAG(IS_DESKTOP_ANDROID)) && !BUILDFLAG(IS_COBALT)
+  } else if (status == REDUNDANT) {
     embedded_worker_->OnWorkerVersionDoomed();
 
     // Drop the remote reference to tell the storage system that the worker

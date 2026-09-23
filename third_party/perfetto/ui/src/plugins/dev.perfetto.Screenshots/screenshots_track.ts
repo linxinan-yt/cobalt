@@ -16,12 +16,13 @@ import m from 'mithril';
 import {AsyncMemo} from '../../base/async_memo';
 import {materialColorScheme} from '../../components/colorizer';
 import {SliceTrack} from '../../components/tracks/slice_track';
-import type {Trace} from '../../public/trace';import {SourceDataset} from '../../trace_processor/dataset';
+import type {Trace} from '../../public/trace';
+import {SourceDataset} from '../../trace_processor/dataset';
 import {LONG, NUM, STR} from '../../trace_processor/query_result';
 import {ScreenshotDetailsPanel} from './screenshot_panel';
 
 export function createScreenshotsTrack(trace: Trace, uri: string) {
-const imageSlot = new AsyncMemo<string>();
+  const imageSlot = new AsyncMemo<string>();
 
   // Screenshot slices are instants (0 dur), but we want the tooltip to show up
   // not only when hovering over the instant event exactly, but also when
@@ -47,7 +48,8 @@ const imageSlot = new AsyncMemo<string>();
       -1 AS dur,
       0 AS depth
     FROM android_screenshots
-  `;  return SliceTrack.create({
+  `;
+  return SliceTrack.create({
     trace,
     uri,
     dataset: new SourceDataset({

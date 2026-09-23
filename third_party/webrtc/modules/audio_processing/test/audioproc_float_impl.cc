@@ -788,9 +788,7 @@ void SetDependencies(const SimulationSettings& settings,
     std::unique_ptr<NeuralResidualEchoEstimator> estimator =
         CreateNeuralResidualEchoEstimator(builder_state.model.get(),
                                           &op_resolver);
-aec3_config = estimator->GetConfiguration(/*multi_channel=*/false);
-    aec3_multichannel_config =
-        estimator->GetConfiguration(/*multi_channel=*/true);    RTC_CHECK(estimator);
+    RTC_CHECK(estimator);
     builder.SetNeuralResidualEchoEstimator(std::move(estimator));
   }
 
@@ -811,7 +809,8 @@ aec3_config = estimator->GetConfiguration(/*multi_channel=*/false);
     }
     std::cout << Aec3ConfigToJsonString(aec3_config) << std::endl;
   }
-builder.SetEchoCancellerConfig(aec3_config, std::nullopt);
+  builder.SetEchoCancellerConfig(aec3_config, std::nullopt);
+
   if (settings.use_ed && *settings.use_ed) {
     builder.SetEchoDetector(CreateEchoDetector());
   }

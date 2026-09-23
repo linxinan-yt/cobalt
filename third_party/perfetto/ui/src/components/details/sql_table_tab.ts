@@ -32,7 +32,8 @@ import {
   type Filter,
   Filters,
   renderFilters,
-} from '../widgets/sql/table/filters';import {PivotTableState} from '../widgets/sql/pivot_table/pivot_table_state';
+} from '../widgets/sql/table/filters';
+import {PivotTableState} from '../widgets/sql/pivot_table/pivot_table_state';
 import type {TableColumn} from '../widgets/sql/table/table_column';
 import {PivotTable} from '../widgets/sql/pivot_table/pivot_table';
 import {pivotId} from '../widgets/sql/pivot_table/ids';
@@ -44,7 +45,8 @@ import {sqlColumnId, type SqlColumn} from '../widgets/sql/table/sql_column';
 import {buildSqlQuery} from '../widgets/sql/table/query_builder';
 import {uuidv4} from '../../base/uuid';
 import {StandardFilters} from '../widgets/sql/table/filters';
-import {type TabOption, TabStrip} from '../../widgets/tab_strip';import {Gate} from '../../base/mithril_utils';
+import {type TabOption, TabStrip} from '../../widgets/tab_strip';
+import {Gate} from '../../base/mithril_utils';
 import {isQuantitativeType} from '../../trace_processor/perfetto_sql_type';
 
 export interface AddSqlTableTabParams {
@@ -99,8 +101,9 @@ class SqlTableTab implements Tab {
   private selectedTab: string;
 
   private pivots: PivotTableState[] = [];
-private barCharts: BarChartTabState[] = [];
+  private barCharts: BarChartTabState[] = [];
   private histograms: HistogramTabState[] = [];
+
   private getTableButtons() {
     const range = this.tableState.getDisplayedRange();
     const rowCount = this.tableState.getTotalRowCount();
@@ -189,13 +192,15 @@ private barCharts: BarChartTabState[] = [];
         label: 'Add bar chart',
         icon: Icons.Chart,
         onclick: () => {
-const state = new SqlBarChartState({
-            trace: this.tableState.trace,
-            sqlSource: this.tableState.config.name,
+          const uuid = uuidv4();
+          const columnName = sqlColumnId(column.column);
+          const state: BarChartTabState = {
+            uuid,
             column: column.column,
-            filters: this.tableState.filters,
-          });
-          this.selectedTab = state.uuid;          this.barCharts.push(state);
+            columnName,
+          };
+          this.selectedTab = uuid;
+          this.barCharts.push(state);
         },
       }),
       (column.type === undefined ? true : isQuantitativeType(column.type)) &&
@@ -203,13 +208,15 @@ const state = new SqlBarChartState({
           label: 'Add histogram',
           icon: Icons.Chart,
           onclick: () => {
-const state = new SqlHistogramState({
-              trace: this.tableState.trace,
-              sqlSource: this.tableState.config.name,
+            const uuid = uuidv4();
+            const columnName = sqlColumnId(column.column);
+            const state: HistogramTabState = {
+              uuid,
               column: column.column,
-              filters: this.tableState.filters,
-            });
-            this.selectedTab = state.uuid;            this.histograms.push(state);
+              columnName,
+            };
+            this.selectedTab = uuid;
+            this.histograms.push(state);
           },
         }),
     );
@@ -241,7 +248,8 @@ const state = new SqlHistogramState({
         }),
         content: m(PivotTable, {
           state: pivot,
-getSelectableColumns: () => getSelectableColumns(this.tableState),          extraRowButton: (node) =>
+          getSelectableColumns: () => getSelectableColumns(this.tableState),
+          extraRowButton: (node) =>
             // Do not show any buttons for root as it doesn't have any filters anyway.
             !node.isRoot() &&
             m(
@@ -271,7 +279,7 @@ getSelectableColumns: () => getSelectableColumns(this.tableState),          extr
     }
 
     for (const chart of this.barCharts) {
-// Build query with current filters
+      // Build query with current filters
       const query = buildSqlQuery({
         table: this.tableState.config.name,
         filters: this.tableState.filters.get(),
@@ -297,16 +305,32 @@ getSelectableColumns: () => getSelectableColumns(this.tableState),          extr
         rightIcon: m(Button, {
           icon: Icons.Close,
           onclick: () => {
-            chart.loader?.dispose();            this.barCharts = this.barCharts.filter(
+            chart.loader?.dispose();
+            this.barCharts = this.barCharts.filter(
               (c) => c.uuid !== chart.uuid,
             );
           },
         }),
-content: m(SqlBarChart, {state: chart}),      });
+        content: m(BarChart, {
+          data: result.data,
+          orientation: 'horizontal',
+          dimensionLabel: chart.columnName,
+          measureLabel: 'Count',
+          fillParent: true,
+          onBrush: (labels) => {
+            this.tableState.filters.addFilter(
+              StandardFilters.valueIsOneOf(
+                chart.column,
+                labels.map((l) => (l === '(null)' ? null : l)),
+              ),
+            );
+          },
+        }),
+      });
     }
 
     for (const histogram of this.histograms) {
-// Build query with current filters
+      // Build query with current filters
       const query = buildSqlQuery({
         table: this.tableState.config.name,
         filters: this.tableState.filters.get(),
@@ -331,17 +355,19 @@ content: m(SqlBarChart, {state: chart}),      });
         rightIcon: m(Button, {
           icon: Icons.Close,
           onclick: () => {
-            histogram.loader?.dispose();            this.histograms = this.histograms.filter(
+            histogram.loader?.dispose();
+            this.histograms = this.histograms.filter(
               (h) => h.uuid !== histogram.uuid,
             );
           },
         }),
-content: m(HistogramSvg, {
+        content: m(HistogramSvg, {
           fillParent: true,
           data: result.data,
           xAxisLabel: histogram.columnName,
           yAxisLabel: 'Count',
-        }),      });
+        }),
+      });
     }
 
     // Fall back to the table view if the selected tab was closed.

@@ -108,8 +108,9 @@ TEST(RtcpCompoundPacketTest, BuildWithInputBuffer) {
   const size_t kFirLength = 20;
 
   const size_t kBufferSize = kRrLength + kReportBlockLength + kFirLength;
-MockFunction<void(std::span<const uint8_t>)> callback;
-  EXPECT_CALL(callback, Call(_)).WillOnce([&](std::span<const uint8_t> packet) {    RtcpPacketParser parser;
+  MockFunction<void(std::span<const uint8_t>)> callback;
+  EXPECT_CALL(callback, Call(_)).WillOnce([&](std::span<const uint8_t> packet) {
+    RtcpPacketParser parser;
     parser.Parse(packet);
     EXPECT_EQ(1, parser.receiver_report()->num_packets());
     EXPECT_EQ(1u, parser.receiver_report()->report_blocks().size());
@@ -136,13 +137,15 @@ TEST(RtcpCompoundPacketTest, BuildWithTooSmallBuffer_FragmentedSend) {
   const size_t kBufferSize = kRrLength + kReportBlockLength;
   MockFunction<void(std::span<const uint8_t>)> callback;
   EXPECT_CALL(callback, Call(_))
-.WillOnce([&](std::span<const uint8_t> packet) {        RtcpPacketParser parser;
+      .WillOnce([&](std::span<const uint8_t> packet) {
+        RtcpPacketParser parser;
         parser.Parse(packet);
         EXPECT_EQ(1, parser.receiver_report()->num_packets());
         EXPECT_EQ(1U, parser.receiver_report()->report_blocks().size());
         EXPECT_EQ(0, parser.fir()->num_packets());
       })
-.WillOnce([&](std::span<const uint8_t> packet) {        RtcpPacketParser parser;
+      .WillOnce([&](std::span<const uint8_t> packet) {
+        RtcpPacketParser parser;
         parser.Parse(packet);
         EXPECT_EQ(0, parser.receiver_report()->num_packets());
         EXPECT_EQ(0U, parser.receiver_report()->report_blocks().size());

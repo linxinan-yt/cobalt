@@ -403,7 +403,7 @@ class GraphicsGpuTrace(TestSuite):
           "process_indicator","distinct_track_count","total_slices"
           "vkcube_process",6,3220
           "vulkan_sam_process",22,111019
-'''))
+        '''))
 
   def test_gpu_counter_duplicate_ids_different_sequences(self):
     # With the legacy inline counter_descriptor path, counter specs are
